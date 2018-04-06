@@ -7,13 +7,13 @@ app.controller('userAuthCtrl', function ($scope, $window, httpFactory) {
          $scope.userLoginType='admin';
     }
     else{
-        window.location.href="https://vc4all.in";
+        window.location.href="https://norecruits.com";
     }
     
 
     $scope.getUser = function () {
         console.log("getUser-->");
-        var api = "https://vc4all.in/vc/getUserData";
+        var api = "https://norecruits.com/vc/getUserData";
         //var api = "http://localhost:5000/vc/getUserData";
 
         httpFactory.get(api).then(function (data) {
@@ -37,7 +37,7 @@ app.controller('userAuthCtrl', function ($scope, $window, httpFactory) {
 
     $scope.getStudentList = function () {
         console.log("getStudentList-->");
-        var api = "https://vc4all.in/vc/getStudData";
+        var api = "https://norecruits.com/vc/getStudData";
         //var api = "http://localhost:5000/vc/getUserData";
 
         httpFactory.get(api).then(function (data) {
@@ -60,7 +60,7 @@ app.controller('userAuthCtrl', function ($scope, $window, httpFactory) {
 
     $scope.updateUserStatus = function (id, status, index) {
         console.log("updateUserStatus-->");
-        var api = "https://vc4all.in/vc/updateUserStatus";
+        var api = "https://norecruits.com/vc/updateUserStatus";
         //var api = "http://localhost:5000/vc/updateUserStatus";
 
         var obj = {
@@ -87,7 +87,7 @@ app.controller('userAuthCtrl', function ($scope, $window, httpFactory) {
     }
     $scope.deleteUser = function (id, index) {
         console.log("deleteUser-->");
-        var api = "https://vc4all.in/vc/deleteUser";
+        var api = "https://norecruits.com/vc/deleteUser";
         //var api = "http://localhost:5000/vc/updateUserStatus";
 
         var obj = {
@@ -116,7 +116,7 @@ app.controller('userAuthCtrl', function ($scope, $window, httpFactory) {
 
     $scope.updateStudStatus = function (id, status, index) {
         console.log("updateUserStatus-->");
-        var api = "https://vc4all.in/vc/updateStudStatus";
+        var api = "https://norecruits.com/vc/updateStudStatus";
         //var api = "http://localhost:5000/vc/updateUserStatus";
 
         var obj = {
@@ -143,7 +143,7 @@ app.controller('userAuthCtrl', function ($scope, $window, httpFactory) {
     }
     $scope.deleteStud = function (id, index) {
         console.log("deleteUser-->");
-        var api = "https://vc4all.in/vc/deleteStud";
+        var api = "https://norecruits.com/vc/deleteStud";
         //var api = "http://localhost:5000/vc/updateUserStatus";
 
         var obj = {

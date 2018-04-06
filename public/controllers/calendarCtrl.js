@@ -3,7 +3,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
 
   // if(localStorage.getItem("loginType")!='teacher'){
 
-  //   window.location.href="https://vc4all.in";
+  //   window.location.href="https://norecruits.com";
 
 
   // }
@@ -11,7 +11,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     console.log("getTeacherData-->");
     var id = localStorage.getItem("id");
     
-    var api = "https://vc4all.in/vc/teacherdetail" + "/" + id;
+    var api = "https://norecruits.com/vc/teacherdetail" + "/" + id;
     //var api = "http://localhost:5000/vc/eventGet";
     console.log("api: " + api);
     httpFactory.get(api).then(function (data) {
@@ -42,14 +42,14 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
 
   }
   else {
-    window.location.href = "https://vc4all.in";
+    window.location.href = "https://norecruits.com";
   }
 
   $scope.eventColors = ['red', 'green', 'blue'];
 
   $scope.deleteEvent = function (id, index) {
     console.log("deleteEvent-->");
-    var api = "https://vc4all.in/vc/deleteEvent";
+    var api = "https://norecruits.com/vc/deleteEvent";
     //var api = "http://localhost:5000/vc/deleteEvent";
     vm.events.splice(index, 1);
     var obj = {
@@ -109,7 +109,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     }
     console.log("obj: " + JSON.stringify(obj));
 
-    var api = "https://vc4all.in/vc/eventUpdate" + "/" + id;
+    var api = "https://norecruits.com/vc/eventUpdate" + "/" + id;
 
     httpFactory.post(api, obj).then(function (data) {
       var checkStatus = httpFactory.dataValidation(data);
@@ -164,7 +164,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     //alert("a: "+a+"b: "+b);
     console.log("eventSend-->");
 
-    var SIGNALING_SERVER = "https://vc4all.in";
+    var SIGNALING_SERVER = "https://norecruits.com";
     var queryLink = null;
     var peerNew_id = null;
     var url;
@@ -179,9 +179,9 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
         queryLink = config.queryId;
         peerNew_id = config.peer_id;
 
-        url = "https://vc4all.in/client/" + peerNew_id + "/" + $scope.urlDate;
+        url = "https://norecruits.com/client/" + peerNew_id + "/" + $scope.urlDate;
 
-        var api = "https://vc4all.in/vc/eventSend";
+        var api = "https://norecruits.com/vc/eventSend";
         //var api = "http://localhost:5000/vc/eventSend";
         console.log("api: " + api);
         var email = document.getElementById('eventEmails').value;
@@ -246,7 +246,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
   $scope.eventGet = function () {
     console.log("eventGet-->");
     var id = localStorage.getItem("id");
-    var api = "https://vc4all.in/vc/eventGet" + "/" + id;
+    var api = "https://norecruits.com/vc/eventGet" + "/" + id;
     //var api = "http://localhost:5000/vc/eventGet";
 
     httpFactory.get(api).then(function (data) {

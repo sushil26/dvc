@@ -72,7 +72,7 @@ function logVC() {
     console.log("obj: " + JSON.stringify(obj));
     console.log("logVC");
     $.ajax({
-        url: "https://norecruits.com/vc/login4VC",
+        url: "https://vc4all.in/vc/login4VC",
         //  url: "http://localhost:5000/vc/login4VC",
         type: "POST",
         data: JSON.stringify(obj),
@@ -121,12 +121,16 @@ function sessionSet(data) {
             "email": data.data.email,
             "loginType": data.loginType
         }
-        localStorage.setItem("userData", userData);
-        localStorage.setItem("userName", data.data.userName);
-        localStorage.setItem("status", data.data.status);
-        localStorage.setItem("email", data.data.email);
-        localStorage.setItem("loginType", data.loginType);
-        localStorage.setItem("id", data.data._id);
+        if(data.data.loginType=='teacher'){
+            localStorage.setItem("userData", userData);
+            localStorage.setItem("userName", data.data.teacherName);
+            localStorage.setItem("status", data.data.status);
+            localStorage.setItem("email", data.data.teacherEmail);
+            localStorage.setItem("loginType", data.loginType);
+            localStorage.setItem("id", data.data._id);
+            
+        }
+        
         // Retrieve
         var info = localStorage.getItem("userData");
 
@@ -149,7 +153,7 @@ function regVc() {
         "password": pswd
     };
     $.ajax({
-        url: "https://norecruits.com/vc/register4VC",
+        url: "https://vc4all.in/vc/register4VC",
         //url: "http://localhost:5000/vc/register4VC",
         type: "POST",
         data: JSON.stringify(obj),
@@ -181,6 +185,10 @@ function vcLogout() {
     localStorage.removeItem("userName");
     localStorage.removeItem("status");
     localStorage.removeItem("email");
+    localStorage.removeItem("loginType");
+    localStorage.removeItem("id");
+    localStorage.removeItem("css");
+
     document.getElementById("userAuth").style.display = 'none';
     document.getElementById("appLogout").style.display = 'none';
     document.getElementById("appLogin").style.display = 'block';

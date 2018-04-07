@@ -535,7 +535,7 @@ module.exports.studentInsert = function (req, res) {
         "parentName": req.body.parentName,
         "parentEmail": req.body.parentEmail,
         "mobileNum": req.body.mobileNum,
-        "css": req.body.css,
+        "cs": req.body.cs,
         "pswd": req.body.pswd,
         "status": "inactive",
         "loginType": "studParent"

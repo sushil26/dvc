@@ -1,12 +1,6 @@
 app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, httpFactory, moment, calendarConfig, $uibModal) {
   console.log("calendarCtrl==>: " + localStorage.getItem("userData"));
 
-  // if(localStorage.getItem("loginType")!='teacher'){
-
-  //   window.location.href="https://norecruits.com";
-
-
-  // }
   $scope.getTeacherData = function () {
     console.log("getTeacherData-->");
     var id = localStorage.getItem("id");
@@ -20,7 +14,9 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
       if (checkStatus) {
         $scope.teacherData = data.data.data;
         console.log("teacherData: " + JSON.stringify($scope.teacherData));
-      }
+      //   $scope.css = $scope.teacherData[0].css;
+      //   console.log("$scope.css: " + JSON.stringify($scope.css));
+       }
       else {
 
       }
@@ -45,6 +41,35 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     window.location.href = "https://norecruits.com";
   }
 
+
+ 
+  $scope.getStudListForCS = function(css){
+    
+    console.log("getStudListForCS-->");
+console.log("$scope.cssSelect: "+JSON.stringify($scope.cssSelect));
+console.log("cssSelect"+cssSelect);
+console.log("JSON.cssSelect"+JSON.stringify(cssSelect));
+var api = "https://norecruits.com/vc/getStudListForCS";
+
+console.log("api: " + api);
+// httpFactory.get(api).then(function (data) {
+//   var checkStatus = httpFactory.dataValidation(data);
+//   console.log("data--" + JSON.stringify(data.data));
+//   if (checkStatus) {
+//     $scope.teacherData = data.data.data;
+//     console.log("teacherData: " + JSON.stringify($scope.teacherData));
+//   //   $scope.css = $scope.teacherData[0].css;
+//   //   console.log("$scope.css: " + JSON.stringify($scope.css));
+//    }
+//   else {
+
+//   }
+// })
+    console.log("<--getStudListForCS");
+
+  }
+
+ 
   $scope.eventColors = ['red', 'green', 'blue'];
 
   $scope.deleteEvent = function (id, index) {

@@ -51,9 +51,10 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     console.log("JSON.css" + JSON.stringify(css));
     var clas = css.class;
     var section = css.section;
+    var cssRef = {"clas":css.class, "section": css.section}
   
     
-    var api = "https://norecruits.com/vc/getStudListForCS"+"/"+css;
+    var api = "https://norecruits.com/vc/getStudListForCS"+"/"+cssRef;
 
     console.log("api: " + api);
     httpFactory.get(api).then(function (data) {

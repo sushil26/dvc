@@ -249,7 +249,7 @@ module.exports.parentCredential = function (req, res) {
 
 module.exports.getStudListForCS = function (req, res) {
     console.log("getStudListForCS-->");
-    console.log("req.params.css: "+JSON.stringify(req.params.clas));
+    console.log("req.params.css: "+JSON.stringify(req.params.cssRef));
     //console.log("class: " + req.params.clas + "section: " + section);
     // if (general.emptyCheck(req.params.clas) && general.emptyCheck(req.params.section)) {
     //     var obj = { "class": req.params.clas, "section": req.params.section };

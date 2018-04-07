@@ -250,45 +250,45 @@ module.exports.parentCredential = function (req, res) {
 module.exports.getStudListForCS = function (req, res) {
     console.log("getStudListForCS-->");
     console.log("class: " + req.params.clas + "section: " + section);
-    if (general.emptyCheck(req.params.clas) && general.emptyCheck(req.params.section)) {
-        var obj = { "class": req.params.clas, "section": req.params.section };
-        // var id = {
-        //     "userId": req.params.id
-        // }
-        stud.find({ "cs": obj }).toArray(function (err, data) {
-            if (err) {
+    // if (general.emptyCheck(req.params.clas) && general.emptyCheck(req.params.section)) {
+    //     var obj = { "class": req.params.clas, "section": req.params.section };
+    //     // var id = {
+    //     //     "userId": req.params.id
+    //     // }
+    //     stud.find({ "cs": obj }).toArray(function (err, data) {
+    //         if (err) {
 
-                responseData = {
-                    "status": false,
-                    "message": "Failed to get Data",
-                    "data": data
-                }
-                res.status(400).send(responseData);
-            }
-            else {
-                responseData = {
-                    "status": true,
-                    "message": "Registeration Successfull",
-                    "data": listOfevents
-                }
+    //             responseData = {
+    //                 "status": false,
+    //                 "message": "Failed to get Data",
+    //                 "data": data
+    //             }
+    //             res.status(400).send(responseData);
+    //         }
+    //         else {
+    //             responseData = {
+    //                 "status": true,
+    //                 "message": "Registeration Successfull",
+    //                 "data": listOfevents
+    //             }
 
-                console.log("data:" + JSON.stringify(data));
+    //             console.log("data:" + JSON.stringify(data));
 
-                res.status(200).send(responseData);
-            }
+    //             res.status(200).send(responseData);
+    //         }
 
-        })
+    //     })
 
-    }
-    else {
-        console.log("Epty value found");
-        responseData = {
-            "status": false,
-            "message": "there is no userId to find",
+    // }
+    // else {
+    //     console.log("Epty value found");
+    //     responseData = {
+    //         "status": false,
+    //         "message": "there is no userId to find",
 
-        }
-        res.status(400).send(responseData);
-    }
+    //     }
+    //     res.status(400).send(responseData);
+    // }
     console.log("<--getStudListForCS");
 
 }

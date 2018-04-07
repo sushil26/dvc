@@ -115,13 +115,14 @@ function logVC() {
 
 function sessionSet(data) {
     if (typeof (Storage) !== "undefined") {
-        var userData = {
-            "userName": data.data.userName,
-            "status": data.data.status,
-            "email": data.data.email,
-            "loginType": data.loginType
-        }
+      
         if(data.data.loginType=='teacher'){
+            var userData = {
+                "userName": data.data.teacherName,
+                "status": data.data.status,
+                "email": data.data.teacherEmail,
+                "loginType": data.loginType
+            }
             localStorage.setItem("userData", userData);
             localStorage.setItem("userName", data.data.teacherName);
             localStorage.setItem("status", data.data.status);
@@ -131,6 +132,12 @@ function sessionSet(data) {
             
         }
         else{
+            var userData = {
+                "userName": data.data.userName,
+                "status": data.data.status,
+                "email": data.data.email,
+                "loginType": data.loginType
+            }
             localStorage.setItem("userName", data.data.userName);
         }
         

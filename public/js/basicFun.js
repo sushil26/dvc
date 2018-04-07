@@ -113,29 +113,53 @@ function logVC() {
 
 }
 
+
 function sessionSet(data) {
+    console.log("sessionSet-->");
+    console.log("data: "+JSON.stringify(data));
     if (typeof (Storage) !== "undefined") {
-        var userData = {
-            "userName": data.data.userName,
-            "status": data.data.status,
-            "email": data.data.email,
-            "loginType": data.loginType
+      
+        if(data.data.loginType=='teacher'){
+            var userData = {
+                "userName": data.data.teacherName,
+                "status": data.data.status,
+                "email": data.data.teacherEmail,
+                "loginType": data.loginType
+            }
+            localStorage.setItem("userData", userData);
+            localStorage.setItem("userName", data.data.teacherName);
+            localStorage.setItem("status", data.data.status);
+            localStorage.setItem("email", data.data.teacherEmail);
+            localStorage.setItem("loginType", data.loginType);
+            localStorage.setItem("id", data.data._id);
+            
         }
-        localStorage.setItem("userData", userData);
-        localStorage.setItem("userName", data.data.userName);
-        localStorage.setItem("status", data.data.status);
-        localStorage.setItem("email", data.data.email);
-        localStorage.setItem("loginType", data.loginType);
-        localStorage.setItem("id", data.data._id);
+        else{
+            var userData = {
+                "userName": data.data.userName,
+                "status": data.data.status,
+                "email": data.data.email,
+                "loginType": data.loginType
+            }
+            localStorage.setItem("userData", userData);
+            localStorage.setItem("userName", data.data.userName);
+            localStorage.setItem("status", data.data.status);
+            localStorage.setItem("email", data.data.email);
+            localStorage.setItem("loginType", data.loginType);
+            document.getElementById('userAuth').style.display = "block";
+        }
+        
         // Retrieve
         var info = localStorage.getItem("userData");
-
+console.log("info: "+JSON.stringify(info));
         userName = info.userName;
 
     } else {
         alert("Sorry, your browser does not support Web Storage...");
 
     }
+
+    console.log("<--sessionSet");
 }
 function regVc() {
     console.log("regVc");
@@ -181,6 +205,10 @@ function vcLogout() {
     localStorage.removeItem("userName");
     localStorage.removeItem("status");
     localStorage.removeItem("email");
+    localStorage.removeItem("loginType");
+    localStorage.removeItem("id");
+    localStorage.removeItem("css");
+
     document.getElementById("userAuth").style.display = 'none';
     document.getElementById("appLogout").style.display = 'none';
     document.getElementById("appLogin").style.display = 'block';

@@ -141,12 +141,13 @@ function sessionSet(data) {
                 "email": data.data.email,
                 "loginType": data.loginType
             }
+            localStorage.setItem("userData", userData);
             localStorage.setItem("userName", data.data.userName);
         }
         
         // Retrieve
         var info = localStorage.getItem("userData");
-
+console.log("info: "+JSON.stringify(info));
         userName = info.userName;
 
     } else {

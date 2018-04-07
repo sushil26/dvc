@@ -21,20 +21,20 @@
 
         </tr>
       </thead>
-      <tbody>
+      <tbody >
         <tr>
           <td>Mon</td>
-          <td>7C-Math</td>
-          <td>8A-Math</td>
-          <td>Free</td>
-          <td>7C-Math</td>
-          <td>7C-Math</td>
+          <td  ng-repeat="mtt in userData.timeTable[0].Monday">{{mtt.class}}-{{mtt.section}}-{mtt.subject}}</td>
+          <!-- <td>>{{mtt.monday.class}}-{{mtt.monday.section}}-{mtt.monday.subject}}</td>
+          <td>{{mtt.monday.class}}-{{mtt.monday.section}}-{mtt.monday.subject}}</td>
           <td>7C-Math</td>
           <td>7C-Math</td>
           <td>7C-Math</td>
-
+          <td>7C-Math</td>
+          <td>7C-Math</td>
+ -->
         </tr>
-        <tr>
+        <!-- <tr>
           <td>Tue</td>
           <td>7C-Math</td>
           <td>free</td>
@@ -93,7 +93,7 @@
           <td>##</td>
           <td>##</td>
 
-        </tr>
+        </tr> -->
       </tbody>
 
     </table>

@@ -65,7 +65,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
       //   console.log("$scope.css: " + JSON.stringify($scope.css));
        }
       else {
-
+console.log("sorry");
       }
     })
     console.log("<--getStudListForCS");

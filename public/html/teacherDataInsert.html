@@ -1,25 +1,123 @@
 <div style="margin-top: 85px;" ng-controller="teacherInsertCtrl">
     <div class="container">
         <h2>Teacher Data Insert</h2>
-  
 
-    <form>
-        
-        <input type="text" ng-model="schoolName" placeholder="Enter school Name"><br><br>
-        <input type="text" ng-model="teacherId" placeholder="Enter teacher id"><br><br>
-        <input type="text" ng-model="teacherName" placeholder="Enter Teacher Name"><br><br>
-        <input type="email" ng-model="teacherEmail" placeholder="Enter Teacher Email"><br><br>
-        <input type="text" ng-model="mobileNum" placeholder="Enter Teacher mobile number"><br><br>
-        <div ng-repeat="x in css">
-            <input type="text" ng-model="x.class" placeholder="Enter Class"><br><br>
-            <input type="text" ng-model="x.section" placeholder="Enter Section"><br><br>
-            <input type="text" ng-model="x.subject" placeholder="Enter Subject"><br><br>
-        </div>
-        <button ng-click="addSCC()">Add Class-Section-Subject</button><br><br>
-       
-        <input type="password" ng-model="pswd" placeholder="Enter password"><br><br>
 
-        <button ng-click="saveTeacher()">Submit</button>
-    </form>
-</div>
+        <form>
+
+            <input type="text" ng-model="schoolName" placeholder="Enter school Name">
+            <br>
+            <br>
+            <input type="text" ng-model="teacherId" placeholder="Enter teacher id">
+            <br>
+            <br>
+            <input type="text" ng-model="teacherName" placeholder="Enter Teacher Name">
+            <br>
+            <br>
+            <input type="email" ng-model="teacherEmail" placeholder="Enter Teacher Email">
+            <br>
+            <br>
+            <input type="text" ng-model="mobileNum" placeholder="Enter Teacher mobile number">
+            <br>
+            <br>
+            <div ng-repeat="x in css">
+                <input type="text" ng-model="x.class" placeholder="Enter Class">
+                <br>
+                <br>
+                <input type="text" ng-model="x.section" placeholder="Enter Section">
+                <br>
+                <br>
+                <input type="text" ng-model="x.subject" placeholder="Enter Subject">
+                <br>
+                <br>
+            </div>
+            <button ng-click="addSCC()">Add Class-Section-Subject</button>
+            <br>
+            <br>
+
+            <input type="password" ng-model="pswd" placeholder="Enter password">
+            <br>
+            <br>
+            <table class="table table-bordered">
+
+                <thead>
+                    <tr style="background: darkturquoise;">
+                        <th>Timeing</th>
+
+                        <th>09:00-09:45</th>
+                        <th>9:45-10:30</th>
+                        <th>10:30-11:15</th>
+                        <th>11:15-12:00</th>
+                        <th>01:00-01:45</th>
+                        <th>01:45-02:30</th>
+                        <th>02:30-03:15</th>
+                        <th>03:15-04:00</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Mon</td>
+                        <td>
+                                <select ng-model="selectedClass">
+                                        <option value="10">10th</option>
+                                        <option value="9">9th</option>
+                                        <option value="8">8th</option>
+                                        <option value="7">7th</option>
+                                        <option value="Free">Free</option>
+
+                                      </select>
+                                      <select ng-model="selectedSection">
+                                            <option value="A">A</option>
+                                            <option value="B">B</option>
+                                            <option value="C">C</option>
+                                            <option value="D">D</option>
+                                          </select>
+                            <input type="text" ng-model="" placeholder="Subject">
+                        </td>
+                        <td>
+                            <input type="text" ng-model="" placeholder="class">
+                            <input type="text" ng-model="" placeholder="section">
+                            <input type="text" ng-model="" placeholder="Subject">
+                        </td>
+                        <td>
+                            <input type="text" ng-model="" placeholder="class">
+                            <input type="text" ng-model="" placeholder="section">
+                            <input type="text" ng-model="" placeholder="Subject">
+                        </td>
+                        <td>
+                            <input type="text" ng-model="" placeholder="class">
+                            <input type="text" ng-model="" placeholder="section">
+                            <input type="text" ng-model="" placeholder="Subject">
+                        </td>
+                        <td>
+                            <input type="text" ng-model="" placeholder="class">
+                            <input type="text" ng-model="" placeholder="section">
+                            <input type="text" ng-model="" placeholder="Subject">
+                        </td>
+                        <td>
+                            <input type="text" ng-model="" placeholder="class">
+                            <input type="text" ng-model="" placeholder="section">
+                            <input type="text" ng-model="" placeholder="Subject">
+                        </td>
+                        <td>
+                            <input type="text" ng-model="" placeholder="class">
+                            <input type="text" ng-model="" placeholder="section">
+                            <input type="text" ng-model="" placeholder="Subject">
+                        </td>
+                        <td>
+                            <input type="text" ng-model="" placeholder="class">
+                            <input type="text" ng-model="" placeholder="section">
+                            <input type="text" ng-model="" placeholder="Subject">
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+            <button ng-click="saveTeacher()">Submit</button>
+        </form>
+    </div>
 </div>

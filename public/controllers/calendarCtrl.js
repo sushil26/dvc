@@ -66,7 +66,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
         $scope.studentList = data.data.data;
         console.log("teacherData: " + JSON.stringify($scope.studentList));
         for(var x=0;x<$scope.studentList.length;x++){
-          $scope.studList.push({"userType":$scope.studentList[x]._id,"name":$scope.studentList[x].studName})
+          $scope.studList.push({"id":$scope.studentList[x]._id, "name":$scope.studentList[x].studName, "studId":$scope.studentList[x].studId});
           
         }
         //   $scope.css = $scope.teacherData[0].css;

@@ -44,12 +44,13 @@
         </div>
       </div>
       <form name="getStudentCal">
-      
 
-          <select placeholder="select" ng-model="cssSelect" ng-change="getStudListForCS(cssSelect)" ng-options="css as css.class+ '-' + css.section + '-' + css.subject for css in teacherData[0].css">Class
-          </select>
---{{cssSelect}}
-        
+
+        <select placeholder="select" ng-model="cssSelect" ng-change="getStudListForCS(cssSelect)" ng-options="css as css.class+ '-' + css.section + '-' + css.subject for css in teacherData[0].css">Class
+        </select>
+        --{{cssSelect}}
+        <select placeholder="select" ng-model="csSelect"  ng-options="cs as class + '-' + section for cs in studList">Class
+        </select>
 
       </form>
     </div>

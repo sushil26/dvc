@@ -45,7 +45,10 @@
           </div>
         </div>
         <form name="getStudentCal">
-
+            <select ng-options="partner as partner.partner_name 
+            for partner in jsonPartners" ng-model="service_id"></select>
+          <select ng-model="cssSelect" ng-options="css as css.class+ '-' + css.section + '-' + css.subject for css in $scope.teacherData.css">
+          </select>
         </form>
       </div>
 

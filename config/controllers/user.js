@@ -100,6 +100,7 @@ module.exports.login4VC = function (req, res) {
                   
                     "data": adminData
                 }
+                console.log("responseData: "+JSON.stringify(responseData));
                 res.status(200).send(responseData);
             }
             else {

@@ -18,12 +18,13 @@ module.exports = function (app) {
     app.post('/vc/studentInsert', user.studentInsert);
     app.get('/vc/teacherDetail/:id', user.teacherDetail);
 
+    app.get('/vc/getStudListForCS', event.getStudListForCS);
     app.post('/vc/eventSend', event.eventSend);
     app.get('/vc/eventGet/:id', event.eventGet);
     app.post('/vc/deleteEvent', event.deleteEvent);
     app.post('/vc/parentCredential', event.parentCredential);
     app.post('/vc/eventUpdate/:id', event.eventUpdate);
-    app.get('/vc/getStudListForCS', event.getStudListForCS);
+   
     
     // app.get('/vc/teacherGet/:id', event.teacherGet);
    

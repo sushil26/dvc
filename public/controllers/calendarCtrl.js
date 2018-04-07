@@ -19,7 +19,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
       console.log("data--" + JSON.stringify(data.data));
       if (checkStatus) {
         $scope.teacherData = data.data.data;
-        console.log("teacherData: " + JSON.stringify(teacherData));
+        console.log("teacherData: " + JSON.stringify($scope.teacherData));
       }
       else {
 

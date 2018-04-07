@@ -2,11 +2,11 @@ app.controller('studentInsertCtrl', function ($scope, $window, httpFactory) {
     console.log("studInsertCtrl==>");
     console.log("$scope.parentName: "+$scope.parentName);
 
-    $scope.cs = [{ "class": "", "section": ""}];
+   
   
     $scope.saveStudent = function(){
         console.log("saveStudent-->");
-
+        $scope.cs = [{ "class": $scope.class, "section": $scope.section}];
         var obj ={
 
             "schoolName": $scope.schoolName,

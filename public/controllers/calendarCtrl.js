@@ -62,8 +62,8 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
       var checkStatus = httpFactory.dataValidation(data);
       console.log("data--" + JSON.stringify(data.data));
       if (checkStatus) {
-        $scope.teacherData = data.data.data;
-        console.log("teacherData: " + JSON.stringify($scope.teacherData));
+        $scope.studentList = data.data.data;
+        console.log("teacherData: " + JSON.stringify($scope.studentList));
         //   $scope.css = $scope.teacherData[0].css;
         //   console.log("$scope.css: " + JSON.stringify($scope.css));
       }

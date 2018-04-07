@@ -46,7 +46,7 @@
       <form name="getStudentCal">
       
 
-          <select placeholder="select" ng-model="cssSelect" ng-change="getStudListForCS()" ng-options="css as css.class+ '-' + css.section + '-' + css.subject for css in teacherData[0].css">Class
+          <select placeholder="select" ng-model="cssSelect" ng-change="getStudListForCS(cssSelect)" ng-options="css as css.class+ '-' + css.section + '-' + css.subject for css in teacherData[0].css">Class
           </select>
 --{{cssSelect}}
         

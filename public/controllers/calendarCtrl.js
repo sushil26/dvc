@@ -43,11 +43,12 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
 
 
  
-  $scope.getStudListForCS = function(){
+  $scope.getStudListForCS = function(css){
     
     console.log("getStudListForCS-->");
 console.log("$scope.cssSelect: "+JSON.stringify($scope.cssSelect));
-    
+console.log("cssSelect"+cssSelect);
+console.log("JSON.cssSelect"+JSON.stringify(cssSelect));
 var api = "https://norecruits.com/vc/getStudListForCS";
 
 console.log("api: " + api);

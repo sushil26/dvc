@@ -45,10 +45,16 @@
           </div>
         </div>
         <form name="getStudentCal">
-            <select ng-options="partner as partner.partner_name 
-            for partner in jsonPartners" ng-model="service_id"></select>
-          <select ng-model="cssSelect" ng-options="css as css.class+ '-' + css.section + '-' + css.subject for css in $scope.teacherData.css">
-          </select>
+           
+                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Class
+                <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                  <li><a href="#">6</a></li>
+                  <li><a href="#">7</a></li>
+                  <li><a href="#">8</a></li>
+                  <li><a href="#">9</a></li>
+                </ul>
+              </div>
         </form>
       </div>
 

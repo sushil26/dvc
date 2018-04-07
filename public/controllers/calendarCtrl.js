@@ -51,10 +51,11 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     console.log("JSON.css" + JSON.stringify(css));
     var clas = css.class;
     var section = css.section;
-    var cssRef = {"clas":css.class, "section": css.section}
-  
-    
-    var api = "https://norecruits.com/vc/getStudListForCS"+"/"+cssRef;
+    // var cssRef = [{"clas":css.class, "section": css.section}];
+    // console.log("cssRef: "+JSON.stringify(cssRef));
+      
+    // var api = "https://norecruits.com/vc/getStudListForCS"+"/"+cssRef;
+    var api = "https://norecruits.com/vc/getStudListForCS";
 
     console.log("api: " + api);
     httpFactory.get(api).then(function (data) {

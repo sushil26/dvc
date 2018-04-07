@@ -11,7 +11,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     console.log("getTeacherData-->");
     var id = localStorage.getItem("id");
     
-    var api = "https://norecruits.com/vc/teacherdetail" + "/" + id;
+    var api = "https://norecruits.com/vc/teacherDetail" + "/" + id;
     //var api = "http://localhost:5000/vc/eventGet";
     console.log("api: " + api);
     httpFactory.get(api).then(function (data) {
@@ -19,7 +19,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
       console.log("data--" + JSON.stringify(data.data));
       if (checkStatus) {
         $scope.teacherData = data.data.data;
-        console.log("teacherData: " + JSON.stringify(teacherData));
+        console.log("teacherData: " + JSON.stringify($scope.teacherData));
       }
       else {
 

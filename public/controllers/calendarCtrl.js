@@ -24,7 +24,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     console.log("<--getTeacherData");
   }
 
-  
+
   if (localStorage.getItem("loginType") == 'admin') {
     console.log("loginType: " + localStorage.getItem("loginType"));
     document.getElementById('userAuth').style.display = "block";
@@ -46,7 +46,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
   $scope.getStudListForCS = function(){
     
     console.log("getStudListForCS-->");
-console.log("$scope.cssSelect: "+$scope.cssSelect);
+console.log("$scope.cssSelect: "+JSON.stringify($scope.cssSelect));
     
 var api = "https://norecruits.com/vc/getStudListForCS";
 

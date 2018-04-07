@@ -25,7 +25,7 @@ app.controller("teacherInsertCtrl", function($scope, $window, httpFactory) {
       pswd: $scope.pswd,
       timetabletech: [
         {
-          M: [
+          Monday: [
             {
               class: $scope.selectedClass1,
               section: $scope.selectedSection1,

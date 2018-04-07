@@ -21,26 +21,31 @@
 
         </tr>
       </thead>
-      <tbody >
+      <tbody>
         <tr>
-          <td>Mon</td>
-          <td  ng-repeat="mtt in userData[2].timeTable[0].Monday">{{mtt.class}}-{{mtt.section}}-{{mtt.subject}}</td>
-         </tr>
-         <tr>
-          <td  ng-repeat="mtt in userData[2].timeTable[1].Tues">{{mtt.class}}-{{mtt.section}}-{{mtt.subject}}</td>
-         </tr>
-         <tr>
-          <td  ng-repeat="mtt in userData[2].timeTable[2].Wed">{{mtt.class}}-{{mtt.section}}-{{mtt.subject}}</td>
-         </tr>
-         <tr>
-          <td  ng-repeat="mtt in userData[2].timeTable[3].Thurs">{{mtt.class}}-{{mtt.section}}-{{mtt.subject}}</td>
-         </tr>
-         <tr>
-          <td  ng-repeat="mtt in userData[2].timeTable[4].Fri">{{mtt.class}}-{{mtt.section}}-{{mtt.subject}}</td>
-         </tr>
-         <tr>
-          <td  ng-repeat="mtt in userData[2].timeTable[5].Sat">{{mtt.class}}-{{mtt.section}}-{{mtt.subject}}</td>
-         </tr>
+          <td>Monday</td>
+          <td ng-repeat="mtt in userData[2].timeTable[0].Monday">{{mtt.class}}-{{mtt.section}}-{{mtt.subject}}</td>
+        </tr>
+        <tr>
+          <td>Tuesday</td>
+          <td ng-repeat="mtt in userData[2].timeTable[1].Tues">{{mtt.class}}-{{mtt.section}}-{{mtt.subject}}</td>
+        </tr>
+        <tr>
+          <td>Wednesday</td>
+          <td ng-repeat="mtt in userData[2].timeTable[2].Wed">{{mtt.class}}-{{mtt.section}}-{{mtt.subject}}</td>
+        </tr>
+        <tr>
+          <td>Thursday</td>
+          <td ng-repeat="mtt in userData[2].timeTable[3].Thurs">{{mtt.class}}-{{mtt.section}}-{{mtt.subject}}</td>
+        </tr>
+        <tr>
+          <td>Friday</td>
+          <td ng-repeat="mtt in userData[2].timeTable[4].Fri">{{mtt.class}}-{{mtt.section}}-{{mtt.subject}}</td>
+        </tr>
+        <tr>
+          <td>Saturday</td>
+          <td ng-repeat="mtt in userData[2].timeTable[5].Sat">{{mtt.class}}-{{mtt.section}}-{{mtt.subject}}</td>
+        </tr>
         <!-- <tr>
           <td>Tue</td>
           <td>7C-Math</td>

@@ -15,7 +15,7 @@ app.controller('studentInsertCtrl', function ($scope, $window, httpFactory) {
             "parentName" : $scope.parentName,
             "parentEmail": $scope.parentEmail,
             "mobileNum": $scope.mobileNum,
-            "css": $scope.css,
+            "cs": $scope.cs,
             "pswd": $scope.pswd
         }
         console.log("obj: " + JSON.stringify(obj));

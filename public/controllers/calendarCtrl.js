@@ -53,8 +53,8 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     var section = css.section;
     // var cssRef = [{"clas":css.class, "section": css.section}];
     // console.log("cssRef: "+JSON.stringify(cssRef));
-      
-     var api = "https://norecruits.com/vc/getStudListForCS"+"/"+clas+"/"+section;
+
+    var api = "https://norecruits.com/vc/getStudListForCS" + "/" + clas + "/" + section;
     //var api = "https://norecruits.com/vc/getStudListForCS";
 
     console.log("api: " + api);
@@ -64,11 +64,11 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
       if (checkStatus) {
         $scope.teacherData = data.data.data;
         console.log("teacherData: " + JSON.stringify($scope.teacherData));
-      //   $scope.css = $scope.teacherData[0].css;
-      //   console.log("$scope.css: " + JSON.stringify($scope.css));
-       }
+        //   $scope.css = $scope.teacherData[0].css;
+        //   console.log("$scope.css: " + JSON.stringify($scope.css));
+      }
       else {
-console.log("sorry");
+        console.log("sorry");
       }
     })
     console.log("<--getStudListForCS");

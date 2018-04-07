@@ -273,7 +273,7 @@ module.exports.getStudListForCS = function (req, res) {
                 responseData = {
                     "status": true,
                     "message": "Registeration Successfull",
-                    "data": listOfevents
+                    "data": data
                 }
 
                 console.log("data:" + JSON.stringify(data));

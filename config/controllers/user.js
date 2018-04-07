@@ -495,6 +495,7 @@ module.exports.teacherInsert = function (req, res) {
         "mobileNum": req.body.mobileNum,
         "css": req.body.css,
         "pswd": req.body.pswd,
+        "timeTable":req.body.timetabletech,
         "status": "inactive",
         "loginType": "teacher"
     }

@@ -23,7 +23,7 @@
       </thead>
       <tbody >
         <tr>
-          <td>Mon</td>---{{userData.timeTable.Monday.class}}
+          <td>Mon</td>---1---{{userData.timeTable.Monday.class}}---2---{{userData.timeTable[0].Monday.class}}---3--{{userData.timeTable[0].Monday[0].class}}---4----{{userData.timeTable.Monday[0].class}}
           <td  ng-repeat="mtt in userData.timeTable[0].Monday">{{mtt.class}}-{{mtt.section}}-{mtt.subject}}</td>
           <!-- <td>>{{mtt.monday.class}}-{{mtt.monday.section}}-{mtt.monday.subject}}</td>
           <td>{{mtt.monday.class}}-{{mtt.monday.section}}-{mtt.monday.subject}}</td>

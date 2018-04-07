@@ -1,23 +1,6 @@
 app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, httpFactory, moment, calendarConfig, $uibModal) {
   console.log("calendarCtrl==>: " + localStorage.getItem("userData"));
 
-  if (localStorage.getItem("loginType") == 'admin') {
-    console.log("loginType: " + localStorage.getItem("loginType"));
-    document.getElementById('userAuth').style.display = "block";
-    $scope.userLoginType = 'admin';
-  }
-  else if (localStorage.getItem("loginType") == 'teacher') {
-    document.getElementById('userAuth').style.display = "none";
-    $scope.userLoginType = 'teacher';
-    $scope.getTeacherData();
-
-
-  }
-  else {
-    window.location.href = "https://norecruits.com";
-  }
-
-
   $scope.getTeacherData = function () {
     console.log("getTeacherData-->");
     var id = localStorage.getItem("id");
@@ -41,6 +24,25 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     console.log("<--getTeacherData");
   }
 
+  
+  if (localStorage.getItem("loginType") == 'admin') {
+    console.log("loginType: " + localStorage.getItem("loginType"));
+    document.getElementById('userAuth').style.display = "block";
+    $scope.userLoginType = 'admin';
+  }
+  else if (localStorage.getItem("loginType") == 'teacher') {
+    document.getElementById('userAuth').style.display = "none";
+    $scope.userLoginType = 'teacher';
+    $scope.getTeacherData();
+
+
+  }
+  else {
+    window.location.href = "https://norecruits.com";
+  }
+
+
+ 
   $scope.getStudListForCS = function(){
     
     console.log("getStudListForCS-->");

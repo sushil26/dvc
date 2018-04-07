@@ -113,7 +113,10 @@ function logVC() {
 
 }
 
+
 function sessionSet(data) {
+    console.log("sessionSet-->");
+    console.log("data: "+JSON.stringify(data));
     if (typeof (Storage) !== "undefined") {
       
         if(data.data.loginType=='teacher'){
@@ -150,6 +153,8 @@ function sessionSet(data) {
         alert("Sorry, your browser does not support Web Storage...");
 
     }
+
+    console.log("<--sessionSet");
 }
 function regVc() {
     console.log("regVc");

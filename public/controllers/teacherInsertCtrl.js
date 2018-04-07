@@ -66,7 +66,8 @@ app.controller("teacherInsertCtrl", function($scope, $window, httpFactory) {
               section: $scope.selectedSection8,
               subject: $scope.subj8
             }
-          ], Tues: [
+          ]}, 
+          {Tues: [
             {
               class: $scope.selectedClass9,
               section: $scope.selectedSection9,
@@ -107,7 +108,8 @@ app.controller("teacherInsertCtrl", function($scope, $window, httpFactory) {
               section: $scope.selectedSection16,
               subject: $scope.subj16
             }
-          ],Wed: [
+          ]},
+          {Wed: [
             {
               class: $scope.selectedClass17,
               section: $scope.selectedSection17,
@@ -148,7 +150,8 @@ app.controller("teacherInsertCtrl", function($scope, $window, httpFactory) {
               section: $scope.selectedSection24,
               subject: $scope.subj24
             }
-          ],Thurs: [
+          ]},
+          {Thurs: [
             {
               class: $scope.selectedClass25,
               section: $scope.selectedSection25,
@@ -189,7 +192,8 @@ app.controller("teacherInsertCtrl", function($scope, $window, httpFactory) {
               section: $scope.selectedSection32,
               subject: $scope.subj32
             }
-          ],Fri: [
+          ]},
+          {Fri: [
             {
               class: $scope.selectedClass33,
               section: $scope.selectedSection33,
@@ -230,7 +234,8 @@ app.controller("teacherInsertCtrl", function($scope, $window, httpFactory) {
               section: $scope.selectedSection40,
               subject: $scope.subj40
             }
-          ],Sat: [
+          ]},
+          {Sat: [
             {
               class: $scope.selectedClass41,
               section: $scope.selectedSection41,
@@ -271,8 +276,8 @@ app.controller("teacherInsertCtrl", function($scope, $window, httpFactory) {
               section: $scope.selectedSection48,
               subject: $scope.subj48
             }
-          ]
-        }
+          ]}
+        
       ]
     };
     console.log("obj: " + JSON.stringify(obj));

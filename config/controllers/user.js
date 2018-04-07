@@ -90,12 +90,14 @@ module.exports.login4VC = function (req, res) {
                 adminData = {
                     "userName": "admin",
                     "status": "active",
-                    "email": "admin123@gmail.com"
+                    "email": "admin123@gmail.com",
+                    "loginType": "admin"
+
                 }
                 responseData = {
                     "status": true,
                     "message": "Login Successfully",
-                    "loginType": "admin",
+                  
                     "data": adminData
                 }
                 res.status(200).send(responseData);

@@ -568,11 +568,11 @@ module.exports.studentInsert = function (req, res) {
 
 }
 
-module.exports.teacherdetail = function (req, res) {
+module.exports.teacherDetail = function (req, res) {
     console.log("teacherdetail-->");
     if(general.emptyCheck(req.params.id)){
         var id = {
-            "userId": req.params.id
+            "_id": ObjectId(req.params.id)
         }
         user.find(id).toArray(function (err, data) {
             console.log("data: "+JSON.stringify(data));
@@ -588,7 +588,7 @@ module.exports.teacherdetail = function (req, res) {
             else {
                 responseData = {
                     "status": true,
-                    "message": "Registeration Successfull",
+                    "message": "get data successfully",
                     "data": data
                 }
     

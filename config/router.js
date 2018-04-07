@@ -15,7 +15,7 @@ module.exports = function (app) {
     app.post('/vc/sessionCreate', user.sessionCreate);
     app.post('/vc/teacherInsert', user.teacherInsert);
     app.post('/vc/studentInsert', user.studentInsert);
-    app.get('/vc/teacherdetail/:id', user.teacherdetail);
+    app.get('/vc/teacherDetail/:id', user.teacherDetail);
 
     app.post('/vc/eventSend', event.eventSend);
     app.get('/vc/eventGet/:id', event.eventGet);

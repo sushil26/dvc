@@ -139,13 +139,13 @@ function sessionSet(data) {
                 "userName": data.data.userName,
                 "status": data.data.status,
                 "email": data.data.email,
-                "loginType": data.loginType
+                "loginType": data.data.loginType
             }
             localStorage.setItem("userData", userData);
             localStorage.setItem("userName", data.data.userName);
             localStorage.setItem("status", data.data.status);
             localStorage.setItem("email", data.data.email);
-            localStorage.setItem("loginType", data.loginType);
+            localStorage.setItem("loginType", data.data.loginType);
             document.getElementById('userAuth').style.display = "block";
         }
         

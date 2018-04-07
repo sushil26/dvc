@@ -3,6 +3,7 @@ var event = require('./controllers/event');
 
 
 module.exports = function (app) {
+
     app.post('/vc/register4VC', user.register4VC);
     app.post('/vc/login4VC', user.login4VC);
     app.get('/vc/getUserData', user.getUserData);
@@ -22,6 +23,7 @@ module.exports = function (app) {
     app.post('/vc/deleteEvent', event.deleteEvent);
     app.post('/vc/parentCredential', event.parentCredential);
     app.post('/vc/eventUpdate/:id', event.eventUpdate);
+    app.get('/vc/getStudListForCS/:cssRef', event.getStudListForCS);
     
     // app.get('/vc/teacherGet/:id', event.teacherGet);
    

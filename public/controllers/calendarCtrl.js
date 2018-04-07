@@ -4,7 +4,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
   $scope.getTeacherData = function () {
     console.log("getTeacherData-->");
     var id = localStorage.getItem("id");
-    
+
     var api = "https://norecruits.com/vc/teacherDetail" + "/" + id;
     //var api = "http://localhost:5000/vc/eventGet";
     console.log("api: " + api);
@@ -14,9 +14,9 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
       if (checkStatus) {
         $scope.teacherData = data.data.data;
         console.log("teacherData: " + JSON.stringify($scope.teacherData));
-      //   $scope.css = $scope.teacherData[0].css;
-      //   console.log("$scope.css: " + JSON.stringify($scope.css));
-       }
+        //   $scope.css = $scope.teacherData[0].css;
+        //   console.log("$scope.css: " + JSON.stringify($scope.css));
+      }
       else {
 
       }
@@ -42,34 +42,39 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
   }
 
 
- 
-  $scope.getStudListForCS = function(css){
-    
+
+  $scope.getStudListForCS = function (css) {
+
     console.log("getStudListForCS-->");
-// console.log("$scope.cssSelect: "+JSON.stringify($scope.cssSelect));
-console.log("css"+css);
-console.log("JSON.css"+JSON.stringify(css));
-var api = "https://norecruits.com/vc/getStudListForCS";
+    // console.log("$scope.cssSelect: "+JSON.stringify($scope.cssSelect));
+    console.log("css" + css);
+    console.log("JSON.css" + JSON.stringify(css));
+    var clas = css.class;
+    var section = css.section;
+    var cssRef = {"clas":css.class, "section": css.section}
+  
+    
+    var api = "https://norecruits.com/vc/getStudListForCS"+"/"+cssRef;
 
-console.log("api: " + api);
-// httpFactory.get(api).then(function (data) {
-//   var checkStatus = httpFactory.dataValidation(data);
-//   console.log("data--" + JSON.stringify(data.data));
-//   if (checkStatus) {
-//     $scope.teacherData = data.data.data;
-//     console.log("teacherData: " + JSON.stringify($scope.teacherData));
-//   //   $scope.css = $scope.teacherData[0].css;
-//   //   console.log("$scope.css: " + JSON.stringify($scope.css));
-//    }
-//   else {
-
-//   }
-// })
+    console.log("api: " + api);
+    httpFactory.get(api).then(function (data) {
+      var checkStatus = httpFactory.dataValidation(data);
+      console.log("data--" + JSON.stringify(data.data));
+      if (checkStatus) {
+        $scope.teacherData = data.data.data;
+        console.log("teacherData: " + JSON.stringify($scope.teacherData));
+      //   $scope.css = $scope.teacherData[0].css;
+      //   console.log("$scope.css: " + JSON.stringify($scope.css));
+       }
+      else {
+console.log("sorry");
+      }
+    })
     console.log("<--getStudListForCS");
 
   }
 
- 
+
   $scope.eventColors = ['red', 'green', 'blue'];
 
   $scope.deleteEvent = function (id, index) {

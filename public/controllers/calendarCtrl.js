@@ -20,6 +20,8 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
       if (checkStatus) {
         $scope.teacherData = data.data.data;
         console.log("teacherData: " + JSON.stringify($scope.teacherData));
+        $scope.css = $scope.teacherData.css;
+        console.log("$scope.css: " + JSON.stringify($scope.css));
       }
       else {
 

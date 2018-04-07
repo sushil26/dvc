@@ -1,36 +1,6 @@
 app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, httpFactory, moment, calendarConfig, $uibModal) {
   console.log("calendarCtrl==>: " + localStorage.getItem("userData"));
 
-  // if(localStorage.getItem("loginType")!='teacher'){
-
-  //   window.location.href="https://norecruits.com";
-
-
-  // }
-  $scope.getTeacherData = function () {
-    console.log("getTeacherData-->");
-    var id = localStorage.getItem("id");
-    
-    var api = "https://norecruits.com/vc/teacherDetail" + "/" + id;
-    //var api = "http://localhost:5000/vc/eventGet";
-    console.log("api: " + api);
-    httpFactory.get(api).then(function (data) {
-      var checkStatus = httpFactory.dataValidation(data);
-      console.log("data--" + JSON.stringify(data.data));
-      if (checkStatus) {
-        $scope.teacherData = data.data.data;
-        console.log("teacherData: " + JSON.stringify($scope.teacherData));
-        $scope.css = $scope.teacherData[0].css;
-        console.log("$scope.css: " + JSON.stringify($scope.css));
-      }
-      else {
-
-      }
-    })
-    console.log("<--getTeacherData");
-  }
-
-
   if (localStorage.getItem("loginType") == 'admin') {
     console.log("loginType: " + localStorage.getItem("loginType"));
     document.getElementById('userAuth').style.display = "block";
@@ -47,6 +17,56 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     window.location.href = "https://norecruits.com";
   }
 
+
+  $scope.getTeacherData = function () {
+    console.log("getTeacherData-->");
+    var id = localStorage.getItem("id");
+    
+    var api = "https://norecruits.com/vc/teacherDetail" + "/" + id;
+    //var api = "http://localhost:5000/vc/eventGet";
+    console.log("api: " + api);
+    httpFactory.get(api).then(function (data) {
+      var checkStatus = httpFactory.dataValidation(data);
+      console.log("data--" + JSON.stringify(data.data));
+      if (checkStatus) {
+        $scope.teacherData = data.data.data;
+        console.log("teacherData: " + JSON.stringify($scope.teacherData));
+      //   $scope.css = $scope.teacherData[0].css;
+      //   console.log("$scope.css: " + JSON.stringify($scope.css));
+       }
+      else {
+
+      }
+    })
+    console.log("<--getTeacherData");
+  }
+
+  $scope.getStudListForCS = function(){
+    
+    console.log("getStudListForCS-->");
+console.log("$scope.cssSelect: "+$scope.cssSelect);
+    
+var api = "https://norecruits.com/vc/getStudListForCS";
+
+console.log("api: " + api);
+// httpFactory.get(api).then(function (data) {
+//   var checkStatus = httpFactory.dataValidation(data);
+//   console.log("data--" + JSON.stringify(data.data));
+//   if (checkStatus) {
+//     $scope.teacherData = data.data.data;
+//     console.log("teacherData: " + JSON.stringify($scope.teacherData));
+//   //   $scope.css = $scope.teacherData[0].css;
+//   //   console.log("$scope.css: " + JSON.stringify($scope.css));
+//    }
+//   else {
+
+//   }
+// })
+    console.log("<--getStudListForCS");
+
+  }
+
+ 
   $scope.eventColors = ['red', 'green', 'blue'];
 
   $scope.deleteEvent = function (id, index) {

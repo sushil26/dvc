@@ -1,81 +1,113 @@
 <div style="margin-top: 85px;" ng-controller="userAuthCtrl">
   <div class="container" ng-if="userLoginType=='admin'">
-    <thead>
-      <tr style="background: darkturquoise;">
-        <th>Sun</th>
-        <th>Mon</th>
-        <th>Tue</th>
-        <th>Wed</th>
-        <th>Thu</th>
-        <th>Fri</th>
-        <th>Sat</th>
-      </tr>
+    <table class="table table-bordered">
+      <thead>
+        <tr style="background: darkturquoise;">
+          <th>Sun</th>
+          <th>Mon</th>
+          <th>Tue</th>
+          <th>Wed</th>
+          <th>Thu</th>
+          <th>Fri</th>
+          <th>Sat</th>
+        </tr>
       </thead>
       <tbody>
         <tr>
-          <td>1</td> <td>2</td> <td>3</td> <td>4</td> <td>5</td> <td>6</td> <td>7</td>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+          <td>4</td>
+          <td>5</td>
+          <td>6</td>
+          <td>7</td>
         </tr>
         <tr>
-            <td>8</td> <td>9</td> <td>10</td> <td>11</td> <td>12</td> <td>13</td> <td>14</td>
-          </tr>
-          <tr>
-              <td>15</td> <td>16</td> <td>17</td> <td>18</td> <td>19</td> <td>20</td> <td>21</td>
-            </tr>
-            <tr>
-                <td>22</td> <td>23</td> <td>24</td> <td>25</td> <td>26</td> <td>27</td><td>28</td>
-            </tr>
-            <tr>
-                <td>29</td> <td>30</td> <td>&nbsp</td><td>&nbsp</td><td>&nbsp</td><td>&nbsp</td><td>&nbsp</td> </tr>
+          <td>8</td>
+          <td>9</td>
+          <td>10</td>
+          <td>11</td>
+          <td>12</td>
+          <td>13</td>
+          <td>14</td>
+        </tr>
+        <tr>
+          <td>15</td>
+          <td>16</td>
+          <td>17</td>
+          <td>18</td>
+          <td>19</td>
+          <td>20</td>
+          <td>21</td>
+        </tr>
+        <tr>
+          <td>22</td>
+          <td>23</td>
+          <td>24</td>
+          <td>25</td>
+          <td>26</td>
+          <td>27</td>
+          <td>28</td>
+        </tr>
+        <tr>
+          <td>29</td>
+          <td>30</td>
+          <td>&nbsp</td>
+          <td>&nbsp</td>
+          <td>&nbsp</td>
+          <td>&nbsp</td>
+          <td>&nbsp</td>
+        </tr>
       </tbody>
 
 
 
+    </table>
+    <h2>Teacher Time Table</h2>
+    <!-- ##### Start the Teacher List ##### -->
+    <table class="table table-bordered">
 
-      <h2>Teacher Time Table</h2>
-      <!-- ##### Start the Teacher List ##### -->
-      <table class="table table-bordered">
+      <thead>
+        <tr style="background: darkturquoise;">
+          <th>Timeing</th>
 
-        <thead>
-          <tr style="background: darkturquoise;">
-            <th>Timeing</th>
+          <th>09:00-09:45</th>
+          <th>9:45-10:30</th>
+          <th>10:30-11:15</th>
+          <th>11:15-12:00</th>
+          <th>01:00-01:45</th>
+          <th>01:45-02:30</th>
+          <th>02:30-03:15</th>
+          <th>03:15-04:00</th>
 
-            <th>09:00-09:45</th>
-            <th>9:45-10:30</th>
-            <th>10:30-11:15</th>
-            <th>11:15-12:00</th>
-            <th>01:00-01:45</th>
-            <th>01:45-02:30</th>
-            <th>02:30-03:15</th>
-            <th>03:15-04:00</th>
-
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Monday</td>
-            <td ng-repeat="mtt in userData[2].timeTable[0].Monday">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
-          </tr>
-          <tr>
-            <td>Tuesday</td>
-            <td ng-repeat="mtt in userData[2].timeTable[1].Tues">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
-          </tr>
-          <tr>
-            <td>Wednesday</td>
-            <td ng-repeat="mtt in userData[2].timeTable[2].Wed">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
-          </tr>
-          <tr>
-            <td>Thursday</td>
-            <td ng-repeat="mtt in userData[2].timeTable[3].Thurs">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
-          </tr>
-          <tr>
-            <td>Friday</td>
-            <td ng-repeat="mtt in userData[2].timeTable[4].Fri">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
-          </tr>
-          <tr>
-            <td>Saturday</td>
-            <td ng-repeat="mtt in userData[2].timeTable[5].Sat">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
-          </tr>
-          <!-- <tr>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Monday</td>
+          <td ng-repeat="mtt in userData[2].timeTable[0].Monday">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
+        </tr>
+        <tr>
+          <td>Tuesday</td>
+          <td ng-repeat="mtt in userData[2].timeTable[1].Tues">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
+        </tr>
+        <tr>
+          <td>Wednesday</td>
+          <td ng-repeat="mtt in userData[2].timeTable[2].Wed">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
+        </tr>
+        <tr>
+          <td>Thursday</td>
+          <td ng-repeat="mtt in userData[2].timeTable[3].Thurs">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
+        </tr>
+        <tr>
+          <td>Friday</td>
+          <td ng-repeat="mtt in userData[2].timeTable[4].Fri">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
+        </tr>
+        <tr>
+          <td>Saturday</td>
+          <td ng-repeat="mtt in userData[2].timeTable[5].Sat">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
+        </tr>
+        <!-- <tr>
           <td>Tue</td>
           <td>7C-Math</td>
           <td>free</td>
@@ -135,134 +167,134 @@
           <td>##</td>
 
         </tr> -->
-        </tbody>
+      </tbody>
 
-      </table>
-
-
+    </table>
 
 
 
-      <h2>Teacher List</h2>
-      <!-- ##### Start the Teacher List ##### -->
-      <table class="table table-bordered">
 
-        <thead>
-          <tr style="background: darkturquoise;">
-            <th>Sr.no</th>
-            <th>Teacher Name</th>
-            <th>Teacher Id</th>
-            <th>Email</th>
-            <th>Mobile Number</th>
-            <th>Status</th>
-            <th>Activation</th>
-            <th>Delete</th>
-          </tr>
-        </thead>
 
-        <tbody>
-          <tr ng-repeat="ud in userData">
-            <td style="background-color:aliceblue;">{{$index+1}}.</td>
-            <td style="background-color:aliceblue;">
-              <button type="button" class="btn-info " data-toggle="modal" data-target="#myModal">{{ud.teacherName}}</button>
-              <!-- Modal -->
-            </td>
-            <td style="background-color:aliceblue;">{{ud.teacherId}}</td>
-            <td style="background-color:aliceblue;">{{ud.teacherEmail}}</td>
-            <td style="background-color:aliceblue;">{{ud.mobileNum}}</td>
-            <td ng-if="ud.status=='active'" style="background-color:aliceblue;">{{ud.status}}</td>
-            <td ng-if="ud.status=='inactive'" style="background-color:tomato;">{{ud.status}}</td>
-            <td style="background-color:aliceblue;">
-              <button class="btn" ng-if="ud.status=='active'" ng-click="updateUserStatus(ud._id,'inactive',$index)" style="width: 70px;">Dectivate</button>
-              <button class="btn" ng-if="ud.status=='inactive'" ng-click="updateUserStatus(ud._id,'active',$index)" style="width: 70px;">Activate</button>
-            </td>
-            <td style="background-color:aliceblue;">
-              <button class="btn" ng-click="deleteUser(ud._id, $index)">Delete</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <!-- ##### Start the Teacher List ##### -->
+    <h2>Teacher List</h2>
+    <!-- ##### Start the Teacher List ##### -->
+    <table class="table table-bordered">
 
-      <div class="modal fade" id="myModal" role="dialog">
-        <div class="modal-dialog">
-          <center>
-            <!-- Modal content Login -->
-            <div class="modal-content" style="
+      <thead>
+        <tr style="background: darkturquoise;">
+          <th>Sr.no</th>
+          <th>Teacher Name</th>
+          <th>Teacher Id</th>
+          <th>Email</th>
+          <th>Mobile Number</th>
+          <th>Status</th>
+          <th>Activation</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr ng-repeat="ud in userData">
+          <td style="background-color:aliceblue;">{{$index+1}}.</td>
+          <td style="background-color:aliceblue;">
+            <button type="button" class="btn-info " data-toggle="modal" data-target="#myModal">{{ud.teacherName}}</button>
+            <!-- Modal -->
+          </td>
+          <td style="background-color:aliceblue;">{{ud.teacherId}}</td>
+          <td style="background-color:aliceblue;">{{ud.teacherEmail}}</td>
+          <td style="background-color:aliceblue;">{{ud.mobileNum}}</td>
+          <td ng-if="ud.status=='active'" style="background-color:aliceblue;">{{ud.status}}</td>
+          <td ng-if="ud.status=='inactive'" style="background-color:tomato;">{{ud.status}}</td>
+          <td style="background-color:aliceblue;">
+            <button class="btn" ng-if="ud.status=='active'" ng-click="updateUserStatus(ud._id,'inactive',$index)" style="width: 70px;">Dectivate</button>
+            <button class="btn" ng-if="ud.status=='inactive'" ng-click="updateUserStatus(ud._id,'active',$index)" style="width: 70px;">Activate</button>
+          </td>
+          <td style="background-color:aliceblue;">
+            <button class="btn" ng-click="deleteUser(ud._id, $index)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- ##### Start the Teacher List ##### -->
+
+    <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog">
+        <center>
+          <!-- Modal content Login -->
+          <div class="modal-content" style="
                   max-width: 350px;
                   background: #00000075; color:#777; border: 0px;">
-              <div class="modal-header" style="background-color: darkturquoise; border-bottom: 0px;">
-                <h4 class="modal-title" style="margin-left: 2px;">Login</h4>
-                <button class="btn-default fa fa-close" style="margin-top: 2px;    border-color: white;
+            <div class="modal-header" style="background-color: darkturquoise; border-bottom: 0px;">
+              <h4 class="modal-title" style="margin-left: 2px;">Login</h4>
+              <button class="btn-default fa fa-close" style="margin-top: 2px;    border-color: white;
                 border-radius: 25%;" aria-hidden="true" type="reset" data-dismiss="modal"></button>
-              </div>
-              <div class="modal-body">
-                <input style="
+            </div>
+            <div class="modal-body">
+              <input style="
                         background:  #ddd;
                         border-radius: inherit;
                         height: 50px;
                         border: #ddd;" type="email" class="form-control" placeholder="Email" id="crdEmail">
-                <br>
-                <input style="
+              <br>
+              <input style="
                         background:  #ddd;
                         border-radius: inherit;
                         height: 50px;
                         border: #ddd;" type="password" id="crdPswd" class="form-control" placeholder="Password">
-              </div>
-              <div class="modal-footer" style="border-top:0px; padding: 15px;">
-
-                <button id="crdsubmit" type="button" style="background-color: #29b6bd;color:#f1f1f1; width: 100%; height:50px;" class="btn"
-                  onclick="logVC()" data-dismiss="modal">Submit</button>
-              </div>
-              <p style="font-size:12px;" class="message">Not registered?
-                <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#regVC">Register Here</a>
-              </p>
             </div>
-          </center>
-        </div>
+            <div class="modal-footer" style="border-top:0px; padding: 15px;">
+
+              <button id="crdsubmit" type="button" style="background-color: #29b6bd;color:#f1f1f1; width: 100%; height:50px;" class="btn"
+                onclick="logVC()" data-dismiss="modal">Submit</button>
+            </div>
+            <p style="font-size:12px;" class="message">Not registered?
+              <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#regVC">Register Here</a>
+            </p>
+          </div>
+        </center>
       </div>
+    </div>
 
-      <h2>Student List</h2>
+    <h2>Student List</h2>
 
-      <!-- ##### Start the Student List ##### -->
-      <table class="table table-bordered">
+    <!-- ##### Start the Student List ##### -->
+    <table class="table table-bordered">
 
-        <thead>
-          <tr style="background: darkturquoise;">
-            <th>Sr.no</th>
-            <th>Student Name</th>
-            <th>Student Id</th>
-            <th>Parent Name</th>
-            <th>Parent Email</th>
-            <th>Status</th>
-            <th>Activation</th>
-            <th>Delete</th>
-          </tr>
-        </thead>
+      <thead>
+        <tr style="background: darkturquoise;">
+          <th>Sr.no</th>
+          <th>Student Name</th>
+          <th>Student Id</th>
+          <th>Parent Name</th>
+          <th>Parent Email</th>
+          <th>Status</th>
+          <th>Activation</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
 
-        <tbody>
-          <tr ng-repeat="sd in studData">
-            <td style="background-color:aliceblue;">{{$index+1}}.</td>
-            <td style="background-color:aliceblue;">
-              <button type="button" class="btn-info " data-toggle="modal" data-target="#myModal">{{sd.studName}}</button>
-              <!-- Modal -->
-            </td>
-            <td style="background-color:aliceblue;">{{sd.studId}}</td>
-            <td style="background-color:aliceblue;">{{sd.parentName}}</td>
-            <td style="background-color:aliceblue;">{{sd.parentEmail}}</td>
-            <td ng-if="sd.status=='active'" style="background-color:aliceblue;">{{sd.status}}</td>
-            <td ng-if="sd.status=='inactive'" style="background-color:tomato;">{{sd.status}}</td>
-            <td style="background-color:aliceblue;">
-              <button class="btn" ng-if="sd.status=='active'" ng-click="updateStudStatus(sd._id,'inactive',$index)" style="width: 70px;">Dectivate</button>
-              <button class="btn" ng-if="sd.status=='inactive'" ng-click="updateStudStatus(sd._id,'active',$index)" style="width: 70px;">Activate</button>
-            </td>
-            <td style="background-color:aliceblue;">
-              <button class="btn" ng-click="deleteStud(sd._id, $index)">Delete</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <!-- ##### End the Student List ##### -->
+      <tbody>
+        <tr ng-repeat="sd in studData">
+          <td style="background-color:aliceblue;">{{$index+1}}.</td>
+          <td style="background-color:aliceblue;">
+            <button type="button" class="btn-info " data-toggle="modal" data-target="#myModal">{{sd.studName}}</button>
+            <!-- Modal -->
+          </td>
+          <td style="background-color:aliceblue;">{{sd.studId}}</td>
+          <td style="background-color:aliceblue;">{{sd.parentName}}</td>
+          <td style="background-color:aliceblue;">{{sd.parentEmail}}</td>
+          <td ng-if="sd.status=='active'" style="background-color:aliceblue;">{{sd.status}}</td>
+          <td ng-if="sd.status=='inactive'" style="background-color:tomato;">{{sd.status}}</td>
+          <td style="background-color:aliceblue;">
+            <button class="btn" ng-if="sd.status=='active'" ng-click="updateStudStatus(sd._id,'inactive',$index)" style="width: 70px;">Dectivate</button>
+            <button class="btn" ng-if="sd.status=='inactive'" ng-click="updateStudStatus(sd._id,'active',$index)" style="width: 70px;">Activate</button>
+          </td>
+          <td style="background-color:aliceblue;">
+            <button class="btn" ng-click="deleteStud(sd._id, $index)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- ##### End the Student List ##### -->
   </div>
 </div>
 <!-- </html> -->

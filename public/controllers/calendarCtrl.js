@@ -478,7 +478,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
   vm.timespanClicked = function (date) {
   
     vm.lastDateClicked = date;
-    alert("date: "+date);
+ 
 
   };
 

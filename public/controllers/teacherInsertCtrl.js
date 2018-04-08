@@ -283,6 +283,7 @@ app.controller("teacherInsertCtrl", function($scope, $window, httpFactory) {
     console.log("obj: " + JSON.stringify(obj));
 
     var api = "https://norecruits.com/vc/teacherInsert";
+    //var api = "http://localhost:5000/vc/teacherInsert";
     httpFactory.post(api, obj).then(function(data) {
       var checkStatus = httpFactory.dataValidation(data);
       console.log("data--" + JSON.stringify(data.data));

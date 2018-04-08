@@ -6,6 +6,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     var id = localStorage.getItem("id");
 
     var api = "https://norecruits.com/vc/teacherDetail" + "/" + id;
+    //var api = "http://localhost:5000/vc/teacherDetail" + "/" + id;
     //var api = "http://localhost:5000/vc/eventGet";
     console.log("api: " + api);
     httpFactory.get(api).then(function (data) {
@@ -38,7 +39,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
 
   }
   else {
-    window.location.href = "https://norecruits.com";
+     window.location.href = "https://norecruits.com";
   }
 
 
@@ -56,6 +57,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     // console.log("cssRef: "+JSON.stringify(cssRef));
 
     var api = "https://norecruits.com/vc/getStudListForCS" + "/" + clas + "/" + section;
+    //var api = "http://localhost:5000/vc/getStudListForCS" + "/" + clas + "/" + section;
     //var api = "https://norecruits.com/vc/getStudListForCS";
 
     console.log("api: " + api);
@@ -147,6 +149,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     console.log("obj: " + JSON.stringify(obj));
 
     var api = "https://norecruits.com/vc/eventUpdate" + "/" + id;
+    //var api = "http://localhost:5000/vc/eventUpdate" + "/" + id;
 
     httpFactory.post(api, obj).then(function (data) {
       var checkStatus = httpFactory.dataValidation(data);
@@ -202,6 +205,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     console.log("eventSend-->");
 
     var SIGNALING_SERVER = "https://norecruits.com";
+    //var SIGNALING_SERVER = "http://localhost:5000";
     var queryLink = null;
     var peerNew_id = null;
     var url;
@@ -284,7 +288,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     console.log("eventGet-->");
     var id = localStorage.getItem("id");
     var api = "https://norecruits.com/vc/eventGet" + "/" + id;
-    //var api = "http://localhost:5000/vc/eventGet";
+    //var api = "http://localhost:5000/vc/eventGet"+ "/" + id;;
 
     httpFactory.get(api).then(function (data) {
       var checkStatus = httpFactory.dataValidation(data);

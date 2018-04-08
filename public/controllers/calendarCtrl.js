@@ -42,8 +42,6 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
      window.location.href = "https://norecruits.com";
   }
 
-
-
   $scope.getStudListForCS = function (css) {
 
     console.log("getStudListForCS-->");
@@ -82,7 +80,6 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     console.log("<--getStudListForCS");
 
   }
-
 
   $scope.eventColors = ['red', 'green', 'blue'];
 
@@ -485,7 +482,8 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
         vm.cellIsOpen = true;
         vm.viewDate = date;
       }
-    } else if (vm.calendarView === 'year') {
+    } 
+    else if (vm.calendarView === 'year') {
       if ((vm.cellIsOpen && moment(date).startOf('month').isSame(moment(vm.viewDate).startOf('month'))) || cell.events.length === 0) {
         vm.cellIsOpen = false;
       } else {
@@ -495,7 +493,11 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     }
 
   };
+  vm.modifyCell = function(calendarCell){
+    alert("calendarCell: "+calendarCell);
+    alert("calendarCell: "+JSON.stringify(calendarCell));
 
+  }
 
 
 

@@ -477,7 +477,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
   };
 
   vm.timespanClicked = function (date, cell) {
-    alert("date: "+ $filter('date')(date, "medium"));
+    alert("date: "+ $filter('date')(e, "HH:mm:ss 'GMT'Z (IST)'"));
     alert("cell: "+cell);
 
     // if (vm.calendarView === 'month') {

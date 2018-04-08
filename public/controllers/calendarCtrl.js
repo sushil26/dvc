@@ -477,8 +477,8 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
   };
 
   vm.timespanClicked = function (date, cell) {
-    alert("date: "+ $filter('date')(date, "HH:mm:ss 'GMT'Z (IST)'"));
-    alert("cell: "+cell);
+   var x = $filter('date')(date, "HH:mm:ss 'GMT'Z (IST)'");
+    alert("x: "+x);
 
     // if (vm.calendarView === 'month') {
     //   if ((vm.cellIsOpen && moment(date).startOf('day').isSame(moment(vm.viewDate).startOf('day'))) || cell.events.length === 0 || !cell.inMonth) {
@@ -497,11 +497,11 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     // }
 
   };
-  vm.timeClick = function (event) {
-    alert("timeClick-->");
-    console.log("cliecked: " + JSON.stringify(event));
+  // vm.timeClick = function (event) {
+  //   alert("timeClick-->");
+  //   console.log("cliecked: " + JSON.stringify(event));
 
-  }
+  // }
 
 
 

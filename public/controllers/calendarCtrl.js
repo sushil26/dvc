@@ -495,7 +495,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     }
 
   };
-  $scope.timeClick = function (event) {
+  vm.timeClick = function (event) {
     alert("timeClick-->");
     console.log("cliecked: " + JSON.stringify(event));
 

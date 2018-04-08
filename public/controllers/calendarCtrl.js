@@ -477,22 +477,24 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
   };
 
   vm.timespanClicked = function (date, cell) {
+    alert("date: "+date);
+    alert("cell: "+cell);
 
-    if (vm.calendarView === 'month') {
-      if ((vm.cellIsOpen && moment(date).startOf('day').isSame(moment(vm.viewDate).startOf('day'))) || cell.events.length === 0 || !cell.inMonth) {
-        vm.cellIsOpen = false;
-      } else {
-        vm.cellIsOpen = true;
-        vm.viewDate = date;
-      }
-    } else if (vm.calendarView === 'year') {
-      if ((vm.cellIsOpen && moment(date).startOf('month').isSame(moment(vm.viewDate).startOf('month'))) || cell.events.length === 0) {
-        vm.cellIsOpen = false;
-      } else {
-        vm.cellIsOpen = true;
-        vm.viewDate = date;
-      }
-    }
+    // if (vm.calendarView === 'month') {
+    //   if ((vm.cellIsOpen && moment(date).startOf('day').isSame(moment(vm.viewDate).startOf('day'))) || cell.events.length === 0 || !cell.inMonth) {
+    //     vm.cellIsOpen = false;
+    //   } else {
+    //     vm.cellIsOpen = true;
+    //     vm.viewDate = date;
+    //   }
+    // } else if (vm.calendarView === 'year') {
+    //   if ((vm.cellIsOpen && moment(date).startOf('month').isSame(moment(vm.viewDate).startOf('month'))) || cell.events.length === 0) {
+    //     vm.cellIsOpen = false;
+    //   } else {
+    //     vm.cellIsOpen = true;
+    //     vm.viewDate = date;
+    //   }
+    // }
 
   };
   vm.timeClick = function (event) {

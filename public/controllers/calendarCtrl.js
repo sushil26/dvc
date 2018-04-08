@@ -493,11 +493,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     }
 
   };
-  vm.modifyCell = function(calendarCell){
-    alert("calendarCell: "+calendarCell);
-    alert("calendarCell: "+JSON.stringify(calendarCell));
 
-  }
 
 
 

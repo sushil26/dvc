@@ -39,7 +39,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
 
   }
   else {
-     window.location.href = "https://norecruits.com";
+    window.location.href = "https://norecruits.com";
   }
 
 
@@ -52,7 +52,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     console.log("JSON.css" + JSON.stringify(css));
     var clas = css.class;
     var section = css.section;
-    $scope.studList=[];
+    $scope.studList = [];
     // var cssRef = [{"clas":css.class, "section": css.section}];
     // console.log("cssRef: "+JSON.stringify(cssRef));
 
@@ -67,11 +67,11 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
       if (checkStatus) {
         $scope.studentList = data.data.data;
         console.log("studentList: " + JSON.stringify($scope.studentList));
-        for(var x=0;x<$scope.studentList.length;x++){
-          $scope.studList.push({"id":$scope.studentList[x]._id, "name":$scope.studentList[x].studName, "studId":$scope.studentList[x].studId});
-          
+        for (var x = 0; x < $scope.studentList.length; x++) {
+          $scope.studList.push({ "id": $scope.studentList[x]._id, "name": $scope.studentList[x].studName, "studId": $scope.studentList[x].studId });
+
         }
-        console.log(" $scope.studList.length: "+ $scope.studList.length);
+        console.log(" $scope.studList.length: " + $scope.studList.length);
         //   $scope.css = $scope.teacherData[0].css;
         //   console.log("$scope.css: " + JSON.stringify($scope.css));
       }
@@ -495,8 +495,10 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     }
 
   };
-  $scope.timeClick = function(){
-alert("timeClick-->");
+  $scope.timeClick = function (event) {
+    alert("timeClick-->");
+    console.log("cliecked: " + JSON.stringify(event));
+
   }
 
 

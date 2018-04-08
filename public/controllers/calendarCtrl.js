@@ -495,6 +495,9 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     }
 
   };
+  $scope.timeClick = function(){
+alert("timeClick-->");
+  }
 
 
 

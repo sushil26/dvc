@@ -9,10 +9,15 @@
     <!-- on-event-click="eventClicked(calendarEvent)" -->
 
     <div class="col-md-6 text-center" style="background:#e5caa74d;">
-      <mwl-calendar events="vm.events" view="vm.calendarView" view-title="vm.calendarTitle" view-date="vm.viewDate" on-event-click="vm.eventClicked(calendarEvent)"
+      <!-- <mwl-calendar events="vm.events" view="vm.calendarView" view-title="vm.calendarTitle" view-date="vm.viewDate" on-event-click="vm.eventClicked(calendarEvent)"
         on-event-times-changed="vm.eventTimesChanged(calendarEvent); calendarEvent.startsAt = calendarNewEventStart; calendarEvent.endsAt = calendarNewEventEnd"
         cell-is-open="vm.cellIsOpen" day-view-start="09:00" day-view-end="16:00" day-view-split="20" cell-modifier="vm.modifyCell(calendarCell)"
         cell-auto-open-disabled="true" on-timespan-click="vm.timespanClicked(calendarDate , calendarCell)" ng-click="vm.timeClick(calendarEvent)">
+      </mwl-calendar> -->
+      <mwl-calendar events="vm.events" view="vm.calendarView" view-title="vm.calendarTitle" view-date="vm.viewDate" on-event-click="vm.eventClicked(calendarEvent)"
+        on-event-times-changed="vm.eventTimesChanged(calendarEvent); calendarEvent.startsAt = calendarNewEventStart; calendarEvent.endsAt = calendarNewEventEnd"
+        cell-is-open="vm.cellIsOpen" day-view-start="09:00" day-view-end="16:00" day-view-split="20" cell-modifier="vm.modifyCell(calendarCell)"
+        cell-auto-open-disabled="true" on-timespan-click="vm.timespanClicked(calendarDate | date:'medium' )" ng-click="vm.timeClick(calendarEvent)">
       </mwl-calendar>
     </div>
 

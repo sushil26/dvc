@@ -475,31 +475,33 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     $event.stopPropagation();
     event[field] = !event[field];
   };
-
-  vm.timespanClicked = function (date, cell) {
+  vm.timespanClicked = function (date) {
   
-    if (vm.calendarView === 'month') {
-      if ((vm.cellIsOpen && moment(date).startOf('day').isSame(moment(vm.viewDate).startOf('day'))) || cell.events.length === 0 || !cell.inMonth) {
-        vm.cellIsOpen = false;
-      } else {
-        vm.cellIsOpen = true;
-        vm.viewDate = date;
-      }
-    } else if (vm.calendarView === 'year') {
-      if ((vm.cellIsOpen && moment(date).startOf('month').isSame(moment(vm.viewDate).startOf('month'))) || cell.events.length === 0) {
-        vm.cellIsOpen = false;
-      } else {
-        vm.cellIsOpen = true;
-        vm.viewDate = date;
-      }
-    }
-    else{
-      var x = date;
-      alert("x: "+x);
-      alert("date: "+date);
-    }
+    vm.lastDateClicked = date;
+    alert("date: "+date);
 
   };
+
+  // vm.timespanClicked = function (date, cell) {
+  
+  //   if (vm.calendarView === 'month') {
+  //     if ((vm.cellIsOpen && moment(date).startOf('day').isSame(moment(vm.viewDate).startOf('day'))) || cell.events.length === 0 || !cell.inMonth) {
+  //       vm.cellIsOpen = false;
+  //     } else {
+  //       vm.cellIsOpen = true;
+  //       vm.viewDate = date;
+  //     }
+  //   } else if (vm.calendarView === 'year') {
+  //     if ((vm.cellIsOpen && moment(date).startOf('month').isSame(moment(vm.viewDate).startOf('month'))) || cell.events.length === 0) {
+  //       vm.cellIsOpen = false;
+  //     } else {
+  //       vm.cellIsOpen = true;
+  //       vm.viewDate = date;
+  //     }
+  //   }
+    
+
+  // };
   // vm.timeClick = function (event) {
   //   alert("timeClick-->");
   //   console.log("cliecked: " + JSON.stringify(event));

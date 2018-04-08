@@ -477,9 +477,9 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
   };
 
   vm.timespanClicked = function (date, cell) {
-   var x = $filter('date')(date, "HH:mm:ss 'GMT'Z (IST)'");
+   var x = date;
     alert("x: "+x);
-
+    alert("date: "+date);
     // if (vm.calendarView === 'month') {
     //   if ((vm.cellIsOpen && moment(date).startOf('day').isSame(moment(vm.viewDate).startOf('day'))) || cell.events.length === 0 || !cell.inMonth) {
     //     vm.cellIsOpen = false;

@@ -330,7 +330,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
   var vm = this;
 
   //These variables MUST be set as a minimum for the calendar to work
-  vm.calendarView = 'month';
+  vm.calendarView = 'day';
   vm.viewDate = new Date();
   var actions = [{
     label: '<i class=\'glyphicon glyphicon-pencil\'></i>',

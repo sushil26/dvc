@@ -176,10 +176,10 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     console.log("ed: " + ed);
 
     var res = $filter('limitTo')(s, 2);
-
     console.log("res: " + res);
     console.log("$scope.startDate with filter : " + $filter('date')(s, "EEE MMM dd y"));
     console.log("$scope.endDate with filter: " + $filter('date')(e, "HH:mm:ss 'GMT'Z (IST)'"));
+
     $scope.title = title;
     $scope.date = date,
       $scope.sd = sd,
@@ -192,7 +192,6 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
 
     $scope.endDateRes = $scope.startDate + ' ' + $scope.endDate;
     $scope.urlDate = $filter('date')(s, "EEEMMMddyHHmmss");
-
     console.log("$scope.endDate: " + $scope.endDate);
     console.log("$scope.urlDate: " + $scope.urlDate);
     console.log("$scope.endDate: " + $scope.endDate);
@@ -478,6 +477,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
   vm.timespanClicked = function (date) {
   
     vm.lastDateClicked = date;
+    alert("moment().startOf('day').toDate(): "+moment().startOf('day').Date(date));
  
 
   };

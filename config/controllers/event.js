@@ -304,6 +304,7 @@ module.exports.getTeacherListForCS = function (req, res) {
     //console.log("req.params.css: "+JSON.stringify(req.params.cssRef));
     console.log("class: " + req.params.clas + "section: " + req.params.section);
     if (general.emptyCheck(req.params.clas) && general.emptyCheck(req.params.section)) {
+        console.log("value not empty");
         var clas= req.params.clas;
           var section = req.params.section;
         
@@ -311,7 +312,7 @@ module.exports.getTeacherListForCS = function (req, res) {
         //     "userId": req.params.id
         // }
         user.find({"css":{ $elemMatch:{"class" : clas,"section" : section}}}).toArray(function (err, data) {
-            console.log("data: "+JSON.stringify(data));
+            console.log("getTeacherListForCS data: "+JSON.stringify(data));
             if (err) {
 
                 responseData = {

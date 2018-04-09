@@ -50,7 +50,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
             $scope.teacherListForStudent = data.data.data;
             console.log("teacherListForStudent: " + JSON.stringify($scope.teacherListForStudent));
             for (var x = 0; x < $scope.teacherListForStudent.length; x++) {
-              $scope.teacherList.push({ "id": $scope.teacherListForStudent[x]._id, "name": $scope.teacherListForStudent[x].studName, "studId": $scope.teacherListForStudent[x].studId });
+              $scope.teacherList.push({ "id": $scope.teacherListForStudent[x]._id, "name": $scope.teacherListForStudent[x].studName, "teacherId": $scope.teacherListForStudent[x].studId, "subject": $scope.teacherListForStudent[x].subject });
     
             }
             // console.log(" $scope.studList.length: " + $scope.studList.length);

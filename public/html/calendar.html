@@ -23,48 +23,46 @@
     </div>
 
     <div class="col-md-6 text-center">
-      <br>
-      <br>
-      <div style="background:#e5caa74d;border-top-left-radius: 30px; border-bottom-right-radius: 30px;padding: 1%;">
-        <div style=" border:1px solid rgb(173, 173, 173); border-top-left-radius: 30px; border-bottom-right-radius: 30px;padding: 19%;">
-          <div class="btn-group">
-            <button class="btn btn-primary" mwl-date-modifier date="vm.viewDate" decrement="vm.calendarView" ng-click="vm.cellIsOpen = false">
-              Previous
-            </button>
-            <button class="btn btn-default" mwl-date-modifier date="vm.viewDate" set-to-today ng-click="vm.cellIsOpen = false">
-              Today
-            </button>
-            <button class="btn btn-primary" mwl-date-modifier date="vm.viewDate" increment="vm.calendarView" ng-click="vm.cellIsOpen = false">
-              Next
-            </button>
-          </div>
+      <h3 class="text-center">Select Time</h2>
+        <div style="background:#e5caa74d;border-top-left-radius: 30px; border-bottom-right-radius: 30px;padding: 1%;">
+          <div style=" border:1px solid rgb(173, 173, 173); border-top-left-radius: 30px; border-bottom-right-radius: 30px;padding: 19%;">
+            <div class="btn-group">
+              <button class="btn btn-primary" mwl-date-modifier date="vm.viewDate" decrement="vm.calendarView" ng-click="vm.cellIsOpen = false">
+                Previous
+              </button>
+              <button class="btn btn-default" mwl-date-modifier date="vm.viewDate" set-to-today ng-click="vm.cellIsOpen = false">
+                Today
+              </button>
+              <button class="btn btn-primary" mwl-date-modifier date="vm.viewDate" increment="vm.calendarView" ng-click="vm.cellIsOpen = false">
+                Next
+              </button>
+            </div>
 
-          <hr>
+            <hr>
 
-          <div class="btn-group ">
-            <label class="btn btn-primary" ng-model="vm.calendarView" uib-btn-radio="'year'" ng-click="vm.cellIsOpen = false">Year</label>
-            <label class="btn btn-primary" ng-model="vm.calendarView" uib-btn-radio="'month'" ng-click="vm.cellIsOpen = false">Month</label>
-            <label class="btn btn-primary" ng-model="vm.calendarView" uib-btn-radio="'week'" ng-click="vm.cellIsOpen = false">Week</label>
-            <!-- <label class="btn btn-primary" ng-model="vm.calendarView" uib-btn-radio="'day'" ng-click="vm.cellIsOpen = false">Day</label> -->
-            <label class="btn btn-primary" ng-model="vm.calendarView" ng-click="vm.cellIsOpen = false">Day</label>
+            <div class="btn-group ">
+              <label class="btn btn-primary" ng-model="vm.calendarView" uib-btn-radio="'year'" ng-click="vm.cellIsOpen = false">Year</label>
+              <label class="btn btn-primary" ng-model="vm.calendarView" uib-btn-radio="'month'" ng-click="vm.cellIsOpen = false">Month</label>
+              <label class="btn btn-primary" ng-model="vm.calendarView" uib-btn-radio="'week'" ng-click="vm.cellIsOpen = false">Week</label>
+              <!-- <label class="btn btn-primary" ng-model="vm.calendarView" uib-btn-radio="'day'" ng-click="vm.cellIsOpen = false">Day</label> -->
+              <label class="btn btn-primary" ng-model="vm.calendarView" ng-click="vm.cellIsOpen = false">Day</label>
+            </div>
           </div>
         </div>
-      </div>
-      <div style="background:#e5caa74d;border-top-left-radius: 30px; border-bottom-right-radius: 30px;padding: 1%;">
-        <div style=" border:1px solid rgb(173, 173, 173); border-top-left-radius: 30px; border-bottom-right-radius: 30px;padding: 19%;">
-          <form name="getStudentCal">
+        <h3 class="text-center">Select Student</h2>
+          <div style="background:#e5caa74d;border-top-left-radius: 30px; border-bottom-right-radius: 30px;padding: 1%;">
+            <div style=" border:1px solid rgb(173, 173, 173); border-top-left-radius: 30px; border-bottom-right-radius: 30px;padding: 19%;">
+              <form name="getStudentCal">
+                <select class="btn btn-primary" placeholder="select" ng-model="cssSelect" ng-change="getStudListForCS(cssSelect)" ng-options="css as css.class+ '-' + css.section + '-' + css.subject for css in teacherData[0].css">
+                  <option value="" disabled selected>Class</option>
+                </select>
+                <select class="btn btn-primary" placeholder="select" ng-model="csSelect" ng-options="cs as cs.name + '-' + cs.studId for cs in studList">
+                  <option value="" disabled selected>Student</option>
+                </select>
 
-
-            <select  class="btn btn-primary" placeholder="select" ng-model="cssSelect" ng-change="getStudListForCS(cssSelect)" ng-options="css as css.class+ '-' + css.section + '-' + css.subject for css in teacherData[0].css">
-              <option value="" disabled selected>Class</option>
-            </select>
-            <select  class="btn btn-primary" placeholder="select" ng-model="csSelect" ng-options="cs as cs.name + '-' + cs.studId for cs in studList">
-              <option value="" disabled selected>Student</option>
-            </select>
-
-          </form>
-        </div>
-      </div>
+              </form>
+            </div>
+          </div>
     </div>
 
     <br>

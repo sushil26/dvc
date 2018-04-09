@@ -309,7 +309,7 @@ module.exports.getTeacherListForCS = function (req, res) {
         // var id = {
         //     "userId": req.params.id
         // }
-        user.find({ "css": obj }).toArray(function (err, data) {
+        user.find({"css":{ $elemMatch(obj)}}).toArray(function (err, data) {
             if (err) {
 
                 responseData = {

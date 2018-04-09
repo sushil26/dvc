@@ -481,23 +481,23 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     vm.lastDateClicked = date;
     alert("date: "+moment(date).format('dd MMMM yyyy'));
     alert("date: "+moment(date).format('dd MMMM yyyy'));
-    onClick: function (args) {
-      alert('Edited', args.calendarEvent);
-      console.log("args.calendarEvent: " + args.calendarEvent);
-      console.log("JSON args.calendarEvent: " + JSON.stringify(args.calendarEvent));
-      var eClicked = $uibModal.open({
-        scope: $scope,
-        templateUrl: '/html/templates/eventDetails_edit.html',
-        windowClass: 'show',
-        backdropClass: 'show',
-        controller: function ($scope, $uibModalInstance) {
-          $scope.
-          $scope.eventDetails = args.calendarEvent;
-          console.log("$scope.eventDetails: " + $scope.eventDetails);
-        }
-      })
-      // alert.show('Edited', args.calendarEvent);
-    }
+    // onClick: function (args) {
+    //   alert('Edited', args.calendarEvent);
+    //   console.log("args.calendarEvent: " + args.calendarEvent);
+    //   console.log("JSON args.calendarEvent: " + JSON.stringify(args.calendarEvent));
+    //   var eClicked = $uibModal.open({
+    //     scope: $scope,
+    //     templateUrl: '/html/templates/eventDetails_edit.html',
+    //     windowClass: 'show',
+    //     backdropClass: 'show',
+    //     controller: function ($scope, $uibModalInstance) {
+    //       $scope.
+    //       $scope.eventDetails = args.calendarEvent;
+    //       console.log("$scope.eventDetails: " + $scope.eventDetails);
+    //     }
+    //   })
+    //   // alert.show('Edited', args.calendarEvent);
+    // }
  
 
   };

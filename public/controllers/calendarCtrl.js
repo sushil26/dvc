@@ -78,6 +78,16 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     console.log("<--getTeacherData");
   }
 
+  $scope.getTeacherCalendar = function(css){
+    console.log("getTeacherCalendar-->");
+    console.log("css" + css.id);
+    console.log("JSON.css" + JSON.stringify(css));
+   
+   
+    
+    console.log("<--getTeacherCalendar");
+  }
+
   if (localStorage.getItem("loginType") == 'admin') {
     console.log("loginType: " + localStorage.getItem("loginType"));
     document.getElementById('userAuth').style.display = "block";

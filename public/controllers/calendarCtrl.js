@@ -332,7 +332,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
   // vm.calendarView = 'month';
   // vm.viewDate = new Date();
   vm.calendarView = 'day';
-  vm.viewDate = moment().startOf('month').toDate();
+  vm.viewDate = moment().startOf('day').toDate();
   var actions = [{
     label: '<i class=\'glyphicon glyphicon-pencil\'></i>',
     onClick: function (args) {

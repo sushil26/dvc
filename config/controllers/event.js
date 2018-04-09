@@ -298,7 +298,7 @@ module.exports.getStudListForCS = function (req, res) {
 }
 
 module.exports.getTeacherListForCS = function (req, res) {
-    console.log("getStudListForCS-->");
+    console.log("getTeacherListForCS-->");
     //console.log("req.params.css: "+JSON.stringify(req.params.cssRef));
     console.log("class: " + req.params.clas + "section: " + req.params.section);
     if (general.emptyCheck(req.params.clas) && general.emptyCheck(req.params.section)) {
@@ -309,7 +309,7 @@ module.exports.getTeacherListForCS = function (req, res) {
         // var id = {
         //     "userId": req.params.id
         // }
-        stud.find({ "css": obj }).toArray(function (err, data) {
+        user.find({ "css": obj }).toArray(function (err, data) {
             if (err) {
 
                 responseData = {
@@ -343,6 +343,6 @@ module.exports.getTeacherListForCS = function (req, res) {
         }
         res.status(400).send(responseData);
     }
-    console.log("<--getStudListForCS");
+    console.log("<--getTeacherListForCS");
 
 }

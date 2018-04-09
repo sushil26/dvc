@@ -478,7 +478,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
   vm.timespanClicked = function (date) {
   
     vm.lastDateClicked = date;
-    alert("date: "+moment(date).startOf('day')+"date*: "+moment().startOf('day'));
+    // alert("date: "+moment(date).startOf('day')+"date*: "+moment().startOf('day'));
  
    
  
@@ -487,7 +487,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
       // console.log("JSON args.calendarEvent: " + JSON.stringify(args.calendarEvent));
       var eClicked = $uibModal.open({
         scope: $scope,
-        templateUrl: '/html/templates/eventDetails_edit.html',
+        templateUrl: '/html/templates/dayEventBook.html',
         windowClass: 'show',
         backdropClass: 'show',
         controller: function ($scope, $uibModalInstance) {
@@ -495,8 +495,8 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
           var dt = new Date();
           $scope.eventDetails = {
             
-            "startsAt": date.toDate(),
-            "endsAt":moment(date).format('dd MMMM yyyy')
+            "startsAt": date.toDate()
+            
           }
 
           console.log("$scope.eventDetails: " + $scope.eventDetails);

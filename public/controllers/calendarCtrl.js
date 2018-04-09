@@ -478,7 +478,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
   vm.timespanClicked = function (date) {
   
     vm.lastDateClicked = date;
-    alert("date: "+moment(date).format('dd MMMM yyyy'));
+    alert("date: "+moment(date).startOf('day')+"date*: "+moment(date).startOf('day'));
  
    
  
@@ -495,7 +495,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
           var dt = new Date();
           $scope.eventDetails = {
             
-            "startsAt": moment().startOf('day').dt(date),
+            "startsAt": moment(date).startOf('day'),
             "endsAt":moment(date).format('dd MMMM yyyy')
           }
 

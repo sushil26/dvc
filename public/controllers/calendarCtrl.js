@@ -492,9 +492,10 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
         backdropClass: 'show',
         controller: function ($scope, $uibModalInstance) {
           // moment().startOf('day').toDate()
+          var dt = new Date();
           $scope.eventDetails = {
             
-            "startsAt": moment().startOf('day').date,
+            "startsAt": moment().startOf('day').dt(date),
             "endsAt":moment(date).format('dd MMMM yyyy')
           }
 

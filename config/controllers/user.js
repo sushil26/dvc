@@ -113,7 +113,7 @@ module.exports.login4VC = function (req, res) {
 
         }
         else {
-            if(req.body.email=='teacher'){
+            if(req.body.loginType=='teacher'){
                 user.find({ 'teacherEmail': req.body.email }).toArray(function (err, data) {
                     if (data.length > 0) {
                         if (data[0].password == req.body.pswd) {

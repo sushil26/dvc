@@ -249,7 +249,7 @@ module.exports.parentCredential = function (req, res) {
 
 module.exports.getStudListForCS = function (req, res) {
     console.log("getStudListForCS-->");
-    //console.log("req.params.css: "+JSON.stringify(req.params.cssRef));
+    //console.log("req.params.: "+JSON.stringify(req.params.cssRef));
     console.log("class: " + req.params.clas + "section: " + req.params.section);
     if (general.emptyCheck(req.params.clas) && general.emptyCheck(req.params.section)) {
         var obj = {
@@ -260,6 +260,56 @@ module.exports.getStudListForCS = function (req, res) {
         //     "userId": req.params.id
         // }
         stud.find({ "cs": obj }).toArray(function (err, data) {
+            if (err) {
+
+                responseData = {
+                    "status": false,
+                    "message": "Failed to get Data",
+                    "data": data
+                }
+                res.status(400).send(responseData);
+            }
+            else {
+                responseData = {
+                    "status": true,
+                    "message": "Registeration Successfull",
+                    "data": data
+                }
+
+                console.log("data:" + JSON.stringify(data));
+
+                res.status(200).send(responseData);
+            }
+
+        })
+
+    }
+    else {
+        console.log("Epty value found");
+        responseData = {
+            "status": false,
+            "message": "there is no userId to find",
+
+        }
+        res.status(400).send(responseData);
+    }
+    console.log("<--getStudListForCS");
+
+}
+
+module.exports.getTeacherListForCS = function (req, res) {
+    console.log("getStudListForCS-->");
+    //console.log("req.params.css: "+JSON.stringify(req.params.cssRef));
+    console.log("class: " + req.params.clas + "section: " + req.params.section);
+    if (general.emptyCheck(req.params.clas) && general.emptyCheck(req.params.section)) {
+        var obj = {
+            "class": req.params.clas,
+            "section": req.params.section
+        };
+        // var id = {
+        //     "userId": req.params.id
+        // }
+        stud.find({ "css": obj }).toArray(function (err, data) {
             if (err) {
 
                 responseData = {

@@ -500,9 +500,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
         }
       })
       // alert.show('Edited', args.calendarEvent);
-    
- 
-
+   
   };
 
   // vm.timespanClicked = function (date, cell) {

@@ -484,8 +484,8 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
    
  
       // alert('Edited', args.calendarEvent);
-      console.log("args.calendarEvent: " + args.calendarEvent);
-      console.log("JSON args.calendarEvent: " + JSON.stringify(args.calendarEvent));
+      // console.log("args.calendarEvent: " + args.calendarEvent);
+      // console.log("JSON args.calendarEvent: " + JSON.stringify(args.calendarEvent));
       var eClicked = $uibModal.open({
         scope: $scope,
         templateUrl: '/html/templates/eventDetails_edit.html',

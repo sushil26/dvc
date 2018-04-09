@@ -53,7 +53,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
 
               for(var y = 0; y < $scope.teacherListForStudent[x].css.length; y++){
                 if($scope.teacherListForStudent[x].css[y].class ==  $scope.studClass && $scope.teacherListForStudent[x].css[y].section == $scope.studSection)
-                $scope.teacherList.push({ "id": $scope.teacherListForStudent[x]._id, "name": $scope.teacherListForStudent[x].studName, "teacherId": $scope.teacherListForStudent[x].studId, "subject": $scope.teacherListForStudent[x].css[y].subject });
+                $scope.teacherList.push({ "id": $scope.teacherListForStudent[x]._id, "name": $scope.teacherListForStudent[x].teacherName, "teacherId": $scope.teacherListForStudent[x].teacherId, "subject": $scope.teacherListForStudent[x].css[y].subject });
               }
               
     

@@ -327,12 +327,11 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
   $scope.eventGet();
 
   var vm = this;
-
   //These variables MUST be set as a minimum for the calendar to work
   // vm.calendarView = 'month';
   // vm.viewDate = new Date();
   vm.calendarView = 'day';
-  vm.viewDate = moment().startOf('month').toDate();
+  vm.viewDate = moment().startOf('day').toDate();
   var actions = [{
     label: '<i class=\'glyphicon glyphicon-pencil\'></i>',
     onClick: function (args) {
@@ -479,7 +478,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
   vm.timespanClicked = function (date) {
   
     vm.lastDateClicked = date;
-    alert("date: "+moment(date).format('dd MMMM yyyy'));
+    // alert("date: "+moment(date).startOf('day')+"date*: "+moment().startOf('day'));
  
    
  
@@ -488,15 +487,16 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
       // console.log("JSON args.calendarEvent: " + JSON.stringify(args.calendarEvent));
       var eClicked = $uibModal.open({
         scope: $scope,
-        templateUrl: '/html/templates/eventDetails_edit.html',
+        templateUrl: '/html/templates/dayEventBook.html',
         windowClass: 'show',
         backdropClass: 'show',
         controller: function ($scope, $uibModalInstance) {
           // moment().startOf('day').toDate()
+          var dt = new Date();
           $scope.eventDetails = {
             
-            "startsAt": moment().startOf('day').date,
-            "endsAt":moment(date).format('dd MMMM yyyy')
+            "startsAt": date.toDate()
+            
           }
 
           console.log("$scope.eventDetails: " + $scope.eventDetails);

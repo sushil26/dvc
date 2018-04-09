@@ -43,25 +43,24 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
         var api = "https://norecruits.com/vc/getTeacherListForCS" + "/" + $scope.studClass + "/" + $scope.studSection;
       
         console.log("api: " + api);
-        // httpFactory.get(api).then(function (data) {
-        //   var checkStatus = httpFactory.dataValidation(data);
-        //   console.log("data--" + JSON.stringify(data.data));
-        //   if (checkStatus) {
-        //     $scope.teacherListForStudent = data.data.data;
-        //     console.log("teacherListForStudent: " + JSON.stringify($scope.teacherListForStudent));
-        //     for (var x = 0; x < $scope.teacherListForStudent.length; x++) {
-        //       $scope.teacherList.push({ "id": $scope.teacherListForStudent[x]._id, "name": $scope.teacherListForStudent[x].studName, "studId": $scope.teacherListForStudent[x].studId });
+        httpFactory.get(api).then(function (data) {
+          var checkStatus = httpFactory.dataValidation(data);
+          console.log("data--" + JSON.stringify(data.data));
+          if (checkStatus) {
+            $scope.teacherListForStudent = data.data.data;
+            console.log("teacherListForStudent: " + JSON.stringify($scope.teacherListForStudent));
+            for (var x = 0; x < $scope.teacherListForStudent.length; x++) {
+              $scope.teacherList.push({ "id": $scope.teacherListForStudent[x]._id, "name": $scope.teacherListForStudent[x].studName, "teacherId": $scope.teacherListForStudent[x].studId, "subject": $scope.teacherListForStudent[x].subject });
     
-        //     }
-        //     console.log(" $scope.studList.length: " + $scope.studList.length);
-        //     //   $scope.css = $scope.teacherData[0].css;
-        //     //   console.log("$scope.css: " + JSON.stringify($scope.css));
-        //   }
-        //   else {
-        //     console.log("sorry");
-        //   }
-        // })
-
+            }
+            // console.log(" $scope.studList.length: " + $scope.studList.length);
+            //   $scope.css = $scope.teacherData[0].css;
+            //   console.log("$scope.css: " + JSON.stringify($scope.css));
+          }
+          else {
+            console.log("sorry");
+          }
+        })
         console.log("studClass: " + JSON.stringify($scope.studClass));
         console.log("studSection: " + JSON.stringify($scope.studSection));
         console.log("studentData: " + JSON.stringify($scope.studentData));

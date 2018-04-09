@@ -65,11 +65,12 @@ function logVC() {
     var email = document.getElementById("crdEmail").value;
     var Password = document.getElementById('crdPswd').value;
     alert($("input[name=loginType]:checked").val());
+    var loginType = $("input[name=loginType]:checked").val();
     console.log("email: " + email);
     var obj = {
         "email": email,
         "password": Password,
-        "loginType":
+        "loginType": loginType
     };
     console.log("obj: " + JSON.stringify(obj));
     console.log("logVC");

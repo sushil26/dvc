@@ -476,11 +476,12 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     $event.stopPropagation();
     event[field] = !event[field];
   };
-  vm.timespanClicked = function (date) {
+  vm.timespanClicked = function (date, x) {
   
     vm.lastDateClicked = date;
     alert("date: "+moment(date).format('dd MMMM yyyy'));
     alert("date: "+moment(date).format('dd MMMM yyyy'));
+    alert("x: "+x);
     // onClick: function (args) {
     //   alert('Edited', args.calendarEvent);
     //   console.log("args.calendarEvent: " + args.calendarEvent);

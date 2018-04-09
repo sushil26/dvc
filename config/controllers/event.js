@@ -309,29 +309,29 @@ module.exports.getTeacherListForCS = function (req, res) {
         // var id = {
         //     "userId": req.params.id
         // }
-        user.find({"css":{ $elemMatch(obj)}}).toArray(function (err, data) {
-            if (err) {
+        // user.find({"css":{ $elemMatch(obj)}}).toArray(function (err, data) {
+        //     if (err) {
 
-                responseData = {
-                    "status": false,
-                    "message": "Failed to get Data",
-                    "data": data
-                }
-                res.status(400).send(responseData);
-            }
-            else {
-                responseData = {
-                    "status": true,
-                    "message": "Registeration Successfull",
-                    "data": data
-                }
+        //         responseData = {
+        //             "status": false,
+        //             "message": "Failed to get Data",
+        //             "data": data
+        //         }
+        //         res.status(400).send(responseData);
+        //     }
+        //     else {
+        //         responseData = {
+        //             "status": true,
+        //             "message": "Registeration Successfull",
+        //             "data": data
+        //         }
 
-                console.log("data:" + JSON.stringify(data));
+        //         console.log("data:" + JSON.stringify(data));
 
-                res.status(200).send(responseData);
-            }
+        //         res.status(200).send(responseData);
+        //     }
 
-        })
+        // })
 
     }
     else {

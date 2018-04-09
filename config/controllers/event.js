@@ -261,6 +261,7 @@ module.exports.getStudListForCS = function (req, res) {
         //     "userId": req.params.id
         // }
         stud.find({ "cs": obj }).toArray(function (err, data) {
+            console.log("data: "+JSON.stringify(data));
             if (err) {
 
                 responseData = {
@@ -310,6 +311,7 @@ module.exports.getTeacherListForCS = function (req, res) {
         //     "userId": req.params.id
         // }
         user.find({"css":{ $elemMatch:{"class" : clas,"section" : section}}}).toArray(function (err, data) {
+            console.log("data: "+JSON.stringify(data));
             if (err) {
 
                 responseData = {

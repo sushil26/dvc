@@ -6,6 +6,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     var id = localStorage.getItem("id");
 
     var api = "https://norecruits.com/vc/teacherDetail" + "/" + id;
+    //var api = "http://localhost:5000/vc/teacherDetail" + "/" + id;
     //var api = "http://localhost:5000/vc/eventGet";
     console.log("api: " + api);
     httpFactory.get(api).then(function (data) {
@@ -51,11 +52,12 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     console.log("JSON.css" + JSON.stringify(css));
     var clas = css.class;
     var section = css.section;
-    $scope.studList=[];
+    $scope.studList = [];
     // var cssRef = [{"clas":css.class, "section": css.section}];
     // console.log("cssRef: "+JSON.stringify(cssRef));
 
     var api = "https://norecruits.com/vc/getStudListForCS" + "/" + clas + "/" + section;
+    //var api = "http://localhost:5000/vc/getStudListForCS" + "/" + clas + "/" + section;
     //var api = "https://norecruits.com/vc/getStudListForCS";
 
     console.log("api: " + api);
@@ -65,11 +67,11 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
       if (checkStatus) {
         $scope.studentList = data.data.data;
         console.log("studentList: " + JSON.stringify($scope.studentList));
-        for(var x=0;x<$scope.studentList.length;x++){
-          $scope.studList.push({"id":$scope.studentList[x]._id, "name":$scope.studentList[x].studName, "studId":$scope.studentList[x].studId});
-          
+        for (var x = 0; x < $scope.studentList.length; x++) {
+          $scope.studList.push({ "id": $scope.studentList[x]._id, "name": $scope.studentList[x].studName, "studId": $scope.studentList[x].studId });
+
         }
-        console.log(" $scope.studList.length: "+ $scope.studList.length);
+        console.log(" $scope.studList.length: " + $scope.studList.length);
         //   $scope.css = $scope.teacherData[0].css;
         //   console.log("$scope.css: " + JSON.stringify($scope.css));
       }
@@ -147,6 +149,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     console.log("obj: " + JSON.stringify(obj));
 
     var api = "https://norecruits.com/vc/eventUpdate" + "/" + id;
+    //var api = "http://localhost:5000/vc/eventUpdate" + "/" + id;
 
     httpFactory.post(api, obj).then(function (data) {
       var checkStatus = httpFactory.dataValidation(data);
@@ -173,10 +176,10 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     console.log("ed: " + ed);
 
     var res = $filter('limitTo')(s, 2);
-
     console.log("res: " + res);
     console.log("$scope.startDate with filter : " + $filter('date')(s, "EEE MMM dd y"));
     console.log("$scope.endDate with filter: " + $filter('date')(e, "HH:mm:ss 'GMT'Z (IST)'"));
+
     $scope.title = title;
     $scope.date = date,
       $scope.sd = sd,
@@ -189,7 +192,6 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
 
     $scope.endDateRes = $scope.startDate + ' ' + $scope.endDate;
     $scope.urlDate = $filter('date')(s, "EEEMMMddyHHmmss");
-
     console.log("$scope.endDate: " + $scope.endDate);
     console.log("$scope.urlDate: " + $scope.urlDate);
     console.log("$scope.endDate: " + $scope.endDate);
@@ -202,6 +204,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     console.log("eventSend-->");
 
     var SIGNALING_SERVER = "https://norecruits.com";
+    //var SIGNALING_SERVER = "http://localhost:5000";
     var queryLink = null;
     var peerNew_id = null;
     var url;
@@ -284,7 +287,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     console.log("eventGet-->");
     var id = localStorage.getItem("id");
     var api = "https://norecruits.com/vc/eventGet" + "/" + id;
-    //var api = "http://localhost:5000/vc/eventGet";
+    //var api = "http://localhost:5000/vc/eventGet"+ "/" + id;;
 
     httpFactory.get(api).then(function (data) {
       var checkStatus = httpFactory.dataValidation(data);
@@ -326,8 +329,10 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
   var vm = this;
 
   //These variables MUST be set as a minimum for the calendar to work
-  vm.calendarView = 'month';
-  vm.viewDate = new Date();
+  // vm.calendarView = 'month';
+  // vm.viewDate = new Date();
+  vm.calendarView = 'day';
+  vm.viewDate = moment().startOf('month').toDate();
   var actions = [{
     label: '<i class=\'glyphicon glyphicon-pencil\'></i>',
     onClick: function (args) {
@@ -471,26 +476,61 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     $event.stopPropagation();
     event[field] = !event[field];
   };
-
-  vm.timespanClicked = function (date, cell) {
-
-    if (vm.calendarView === 'month') {
-      if ((vm.cellIsOpen && moment(date).startOf('day').isSame(moment(vm.viewDate).startOf('day'))) || cell.events.length === 0 || !cell.inMonth) {
-        vm.cellIsOpen = false;
-      } else {
-        vm.cellIsOpen = true;
-        vm.viewDate = date;
-      }
-    } else if (vm.calendarView === 'year') {
-      if ((vm.cellIsOpen && moment(date).startOf('month').isSame(moment(vm.viewDate).startOf('month'))) || cell.events.length === 0) {
-        vm.cellIsOpen = false;
-      } else {
-        vm.cellIsOpen = true;
-        vm.viewDate = date;
-      }
-    }
+  vm.timespanClicked = function (date) {
+  
+    vm.lastDateClicked = date;
+    alert("date: "+moment(date).format('dd MMMM yyyy'));
+ 
+   
+ 
+      // alert('Edited', args.calendarEvent);
+      // console.log("args.calendarEvent: " + args.calendarEvent);
+      // console.log("JSON args.calendarEvent: " + JSON.stringify(args.calendarEvent));
+      var eClicked = $uibModal.open({
+        scope: $scope,
+        templateUrl: '/html/templates/eventDetails_edit.html',
+        windowClass: 'show',
+        backdropClass: 'show',
+        controller: function ($scope, $uibModalInstance) {
+         
+          $scope.eventDetails = {
+            "startsAt":moment(date),
+            "endsAt":moment(date)
+          }
+          console.log("$scope.eventDetails: " + $scope.eventDetails);
+        }
+      })
+      // alert.show('Edited', args.calendarEvent);
+    
+ 
 
   };
+
+  // vm.timespanClicked = function (date, cell) {
+  
+  //   if (vm.calendarView === 'month') {
+  //     if ((vm.cellIsOpen && moment(date).startOf('day').isSame(moment(vm.viewDate).startOf('day'))) || cell.events.length === 0 || !cell.inMonth) {
+  //       vm.cellIsOpen = false;
+  //     } else {
+  //       vm.cellIsOpen = true;
+  //       vm.viewDate = date;
+  //     }
+  //   } else if (vm.calendarView === 'year') {
+  //     if ((vm.cellIsOpen && moment(date).startOf('month').isSame(moment(vm.viewDate).startOf('month'))) || cell.events.length === 0) {
+  //       vm.cellIsOpen = false;
+  //     } else {
+  //       vm.cellIsOpen = true;
+  //       vm.viewDate = date;
+  //     }
+  //   }
+    
+
+  // };
+  // vm.timeClick = function (event) {
+  //   alert("timeClick-->");
+  //   console.log("cliecked: " + JSON.stringify(event));
+
+  // }
 
 
 

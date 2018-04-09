@@ -21,6 +21,8 @@ app.controller('studentInsertCtrl', function ($scope, $window, httpFactory) {
         console.log("obj: " + JSON.stringify(obj));
         
         var api = "https://norecruits.com/vc/studentInsert";
+        //var api = "http://localhost:5000/vc/studentInsert";
+
         httpFactory.post(api, obj).then(function (data) {
             var checkStatus = httpFactory.dataValidation(data);
             console.log("data--" + JSON.stringify(data.data));

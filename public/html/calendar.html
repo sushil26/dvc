@@ -7,12 +7,18 @@
 
     <br>
     <!-- on-event-click="eventClicked(calendarEvent)" -->
+    <strong ng-show="vm.lastDateClicked">You clicked on this day: {{ vm.lastDateClicked | date:'medium' }}</strong>
 
     <div class="col-md-6 text-center" style="background:#e5caa74d;">
+      <!-- <mwl-calendar events="vm.events" view="vm.calendarView" view-title="vm.calendarTitle" view-date="vm.viewDate" on-event-click="vm.eventClicked(calendarEvent)"
+        on-event-times-changed="vm.eventTimesChanged(calendarEvent); calendarEvent.startsAt = calendarNewEventStart; calendarEvent.endsAt = calendarNewEventEnd"
+        cell-is-open="vm.cellIsOpen" day-view-start="09:00" day-view-end="16:00" day-view-split="20" cell-modifier="vm.modifyCell(calendarCell)"
+        cell-auto-open-disabled="true" on-timespan-click="vm.timespanClicked(calendarDate , calendarCell)" ng-click="vm.timeClick(calendarEvent)">
+      </mwl-calendar> -->
       <mwl-calendar events="vm.events" view="vm.calendarView" view-title="vm.calendarTitle" view-date="vm.viewDate" on-event-click="vm.eventClicked(calendarEvent)"
         on-event-times-changed="vm.eventTimesChanged(calendarEvent); calendarEvent.startsAt = calendarNewEventStart; calendarEvent.endsAt = calendarNewEventEnd"
-        cell-is-open="vm.cellIsOpen" day-view-start="06:00" day-view-end="22:59" day-view-split="15" cell-modifier="vm.modifyCell(calendarCell)"
-        cell-auto-open-disabled="true" on-timespan-click="vm.timespanClicked(calendarDate, calendarCell)">
+        cell-is-open="vm.cellIsOpen" day-view-start="09:00" day-view-end="16:00" day-view-split="20" cell-modifier="vm.modifyCell(calendarCell)"
+        cell-auto-open-disabled="true" on-timespan-click="vm.timespanClicked(calendarDate)" ng-click="vm.timeClick(calendarEvent)">
       </mwl-calendar>
     </div>
 
@@ -39,7 +45,8 @@
             <label class="btn btn-primary" ng-model="vm.calendarView" uib-btn-radio="'year'" ng-click="vm.cellIsOpen = false">Year</label>
             <label class="btn btn-primary" ng-model="vm.calendarView" uib-btn-radio="'month'" ng-click="vm.cellIsOpen = false">Month</label>
             <label class="btn btn-primary" ng-model="vm.calendarView" uib-btn-radio="'week'" ng-click="vm.cellIsOpen = false">Week</label>
-            <label class="btn btn-primary" ng-model="vm.calendarView" uib-btn-radio="'day'" ng-click="vm.cellIsOpen = false">Day</label>
+            <!-- <label class="btn btn-primary" ng-model="vm.calendarView" uib-btn-radio="'day'" ng-click="vm.cellIsOpen = false">Day</label> -->
+            <label class="btn btn-primary" ng-model="vm.calendarView" ng-click="vm.cellIsOpen = false">Day</label>
           </div>
         </div>
       </div>
@@ -124,10 +131,10 @@
               </p>
               <div class="row" style="padding:2%">
 
-                <div uib-timepicker ng-model="event.startsAt" hour-step="1" minute-step="10" show-meridian="true">
+                <div uib-timepicker ng-model="event.startsAt" hour-step="1" minute-step="20" show-meridian="true">
                 </div>
                 &nbspTo&nbsp
-                <div uib-timepicker ng-model="event.endsAt" hour-step="1" minute-step="10" show-meridian="true">
+                <div uib-timepicker ng-model="event.endsAt" hour-step="1" minute-step="20" show-meridian="true">
                 </div>
               </div>
 

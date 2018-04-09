@@ -35,8 +35,8 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
       console.log("data--" + JSON.stringify(data.data));
       if (checkStatus) {
         $scope.studentData = data.data.data;
-        $scope.studClass = $scope.studentData[0].cs.class;
-        $scope.studSection = $scope.studentData[0].cs.section;
+        $scope.studClass = $scope.studentData.cs[0].class;
+        $scope.studSection = $scope.studentData[0].cs[0].section;
         var api = "https://norecruits.com/vc/getTeacherListForCS" + "/" + $scope.studClass + "/" + $scope.studSection;
       
         console.log("api: " + api);

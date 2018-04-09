@@ -51,7 +51,7 @@ if (localStorage.getItem("userData")) {
         document.getElementById("videoConferenceLinkExtention").style.display = 'block';
 
     }
-    else if (loginType == 'parent') {
+    else if (loginType == 'studParent') {
         document.getElementById('userAuth').style.display = "none";
         document.getElementById("appLogin").style.display = 'none';
         document.getElementById("appReg").style.display = 'none';

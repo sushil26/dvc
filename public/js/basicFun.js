@@ -107,8 +107,9 @@ function logVC() {
                 document.getElementById("appLogin").style.display = 'none';
                 document.getElementById("appReg").style.display = 'none';
                 document.getElementById("appLogout").style.display = 'block';
-               
-
+            }
+            else{
+                document.getElementById("userAuth").style.display = 'none';
             }
         }
 

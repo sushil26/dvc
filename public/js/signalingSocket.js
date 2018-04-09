@@ -58,7 +58,7 @@ if (localStorage.getItem("userData")) {
         document.getElementById("LoginUrl").style.display = 'none';
         document.getElementById("appLogout").style.display = 'none';
         document.getElementById("videoConferenceUrl").style.display = 'none';
-        document.getElementById("scheduleMeeting").style.display = 'none';
+        document.getElementById("scheduleMeeting").style.display = 'block';
         document.getElementById("videoConferenceLinkExtention").style.display = 'block';
 
     }

@@ -35,7 +35,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
       console.log("data--" + JSON.stringify(data.data));
       if (checkStatus) {
         $scope.studentData = data.data.data;
-        console.log("studSection: " + JSON.stringify($scope.studSection));
+        console.log("studentData: " + JSON.stringify($scope.studentData));
         console.log("studClass: "+$scope.studentData.cs.class+"class: "+$scope.studentData.cs.class);
       
 

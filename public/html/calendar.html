@@ -60,7 +60,7 @@
                 <select  ng-if="userLoginType=='teacher'" class="btn btn-primary" placeholder="select" ng-model="csSelect" ng-options="cs as cs.name + '-' + cs.studId for cs in studList">
                   <option value="" disabled selected>Student</option>
                 </select>
-                <select  ng-if="userLoginType=='studParent'" class="btn btn-primary" placeholder="select" ng-model="csSelect" ng-change="getTeacherListForCS()" ng-options="cs as cs.name + '-' + cs.teacherId+'-'+cs.subject for cs in teacherList">
+                <select  ng-if="userLoginType=='studParent'" class="btn btn-primary" placeholder="select" ng-model="csSelect" ng-change="getTeacherCalendar(csSelect)" ng-options="cs as cs.name + '-' + cs.teacherId+'-'+cs.subject for cs in teacherList">
                     <option value="" disabled selected>Teacher</option>
                   </select>
 

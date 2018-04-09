@@ -20,7 +20,7 @@ if (localStorage.getItem("userData")) {
         document.getElementById("appLogout").style.display = 'block';
         document.getElementById("userAuth").style.display = 'block';
     }
-    else if (loginType == 'parent') {
+    else if (loginType == 'studParent') {
         document.getElementById("appLogin").style.display = 'none';
         document.getElementById("appReg").style.display = 'none';
         document.getElementById("appLogout").style.display = 'block';
@@ -64,10 +64,13 @@ function logVC() {
     console.log("email: " + document.getElementById("crdEmail").value);
     var email = document.getElementById("crdEmail").value;
     var Password = document.getElementById('crdPswd').value;
+    alert($("input[name=loginType]:checked").val());
+    var loginType = $("input[name=loginType]:checked").val();
     console.log("email: " + email);
     var obj = {
         "email": email,
-        "password": Password
+        "password": Password,
+        "loginType": loginType
     };
     console.log("obj: " + JSON.stringify(obj));
     console.log("logVC");
@@ -104,8 +107,9 @@ function logVC() {
                 document.getElementById("appLogin").style.display = 'none';
                 document.getElementById("appReg").style.display = 'none';
                 document.getElementById("appLogout").style.display = 'block';
-               
-
+            }
+            else{
+                document.getElementById("userAuth").style.display = 'none';
             }
         }
 
@@ -148,6 +152,11 @@ function sessionSet(data) {
             localStorage.setItem("loginType", data.data.loginType);
             document.getElementById('userAuth').style.display = "block";
         }
+        if(data.data.loginType=='studParent'){
+            localStorage.setItem("id", data.data._id);
+        }
+        
+
         
         // Retrieve
         var info = localStorage.getItem("userData");

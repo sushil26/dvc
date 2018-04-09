@@ -113,50 +113,99 @@ module.exports.login4VC = function (req, res) {
 
         }
         else {
-            user.find({ 'teacherEmail': req.body.email }).toArray(function (err, data) {
-                if (data.length > 0) {
-                    if (data[0].password == req.body.pswd) {
-                        if (data[0].status == 'active') {
-                            console.log("Successfully Logged in");
-                            responseData = {
-                                "status": true,
-                                "message": "Login Successfully",
-                                "loginType": "teacher",
-                                "data": data[0]
+            if(req.body.loginType=='teacher'){
+                user.find({ 'teacherEmail': req.body.email }).toArray(function (err, data) {
+                    if (data.length > 0) {
+                        if (data[0].password == req.body.pswd) {
+                            if (data[0].status == 'active') {
+                                console.log("Successfully Logged in");
+                                responseData = {
+                                    "status": true,
+                                    "message": "Login Successfully",
+                                    "loginType": "teacher",
+                                    "data": data[0]
+                                }
+                                res.status(200).send(responseData);
                             }
-                            res.status(200).send(responseData);
+                            else {
+                                console.log("Profile Inactive");
+                                responseData = {
+                                    "status": false,
+                                    "message": "Profile Inactive",
+                                    "data": data[0]
+                                }
+                                res.status(200).send(responseData);
+    
+                            }
+    
                         }
                         else {
-                            console.log("Profile Inactive");
                             responseData = {
                                 "status": false,
-                                "message": "Profile Inactive",
-                                "data": data[0]
+                                "errorCode": "E005",
+                                "message": "Password is wrong"
                             }
                             res.status(200).send(responseData);
-
                         }
-
                     }
                     else {
                         responseData = {
                             "status": false,
-                            "errorCode": "E005",
-                            "message": "Password is wrong"
+                            "errorCode": "No Match",
+                            "message": "There is no match for this EMail id from Teacher database"
                         }
                         res.status(200).send(responseData);
+    
                     }
-                }
-                else {
-                    responseData = {
-                        "status": false,
-                        "errorCode": "No Match",
-                        "message": "There is no match for this EMail id from student database"
+                })
+            }
+            else{
+                stud.find({ 'parentEmail': req.body.email }).toArray(function (err, data) {
+                    if (data.length > 0) {
+                        if (data[0].password == req.body.pswd) {
+                            if (data[0].status == 'active') {
+                                console.log("Successfully Logged in");
+                                responseData = {
+                                    "status": true,
+                                    "message": "Login Successfully",
+                                    "loginType": "teacher",
+                                    "data": data[0]
+                                }
+                                res.status(200).send(responseData);
+                            }
+                            else {
+                                console.log("Profile Inactive");
+                                responseData = {
+                                    "status": false,
+                                    "message": "Profile Inactive",
+                                    "data": data[0]
+                                }
+                                res.status(200).send(responseData);
+    
+                            }
+    
+                        }
+                        else {
+                            responseData = {
+                                "status": false,
+                                "errorCode": "E005",
+                                "message": "Password is wrong"
+                            }
+                            res.status(200).send(responseData);
+                        }
                     }
-                    res.status(200).send(responseData);
-
-                }
-            })
+                    else {
+                        responseData = {
+                            "status": false,
+                            "errorCode": "No Match",
+                            "message": "There is no match for this EMail id from student database"
+                        }
+                        res.status(200).send(responseData);
+    
+                    }
+                })
+            }
+           
         }
     }
     else {
@@ -613,4 +662,46 @@ module.exports.teacherDetail = function (req, res) {
     console.log("<--teacherdetail");
 }
 
-
+module.exports.studentDetail = function (req, res) {
+    console.log("teacherdetail-->");
+    if(general.emptyCheck(req.params.id)){
+        var id = {
+            "_id": ObjectId(req.params.id)
+        }
+        stud.find(id).toArray(function (err, data) {
+            console.log("data: "+JSON.stringify(data));
+            if (err) {
+    
+                responseData = {
+                    "status": false,
+                    "message": "Failed to get Data",
+                    "data": data
+                }
+                res.status(400).send(responseData);
+            }
+            else {
+                responseData = {
+                    "status": true,
+                    "message": "get data successfully",
+                    "data": data
+                }
+    
+    
+    
+                res.status(200).send(responseData);
+            }
+    
+        })
+    
+    }
+    else{
+        console.log("Epty value found");
+        responseData = {
+            "status": false,
+            "message": "there is no userId to find",
+           
+        }
+        res.status(400).send(responseData);
+    }
+    console.log("<--teacherdetail");
+}

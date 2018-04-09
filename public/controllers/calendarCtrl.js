@@ -25,6 +25,53 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     console.log("<--getTeacherData");
   }
 
+  $scope.getStudentData = function () {
+    console.log("getTeacherData-->");
+    var id = localStorage.getItem("id");
+    var api = "https://norecruits.com/vc/studentDetail" + "/" + id;
+    console.log("api: " + api);
+    $scope.teacherList = [];
+    httpFactory.get(api).then(function (data) {
+      var checkStatus = httpFactory.dataValidation(data);
+      console.log("data--" + JSON.stringify(data.data));
+      if (checkStatus) {
+        $scope.studentData = data.data.data;
+        console.log("studentData: " + JSON.stringify($scope.studentData));
+       
+        $scope.studClass = $scope.studentData[0].cs[0].class;
+        $scope.studSection = $scope.studentData[0].cs[0].section;
+        var api = "https://norecruits.com/vc/getTeacherListForCS" + "/" + $scope.studClass + "/" + $scope.studSection;
+      
+        console.log("api: " + api);
+        // httpFactory.get(api).then(function (data) {
+        //   var checkStatus = httpFactory.dataValidation(data);
+        //   console.log("data--" + JSON.stringify(data.data));
+        //   if (checkStatus) {
+        //     $scope.teacherListForStudent = data.data.data;
+        //     console.log("teacherListForStudent: " + JSON.stringify($scope.teacherListForStudent));
+        //     for (var x = 0; x < $scope.teacherListForStudent.length; x++) {
+        //       $scope.teacherList.push({ "id": $scope.teacherListForStudent[x]._id, "name": $scope.teacherListForStudent[x].studName, "studId": $scope.teacherListForStudent[x].studId });
+    
+        //     }
+        //     console.log(" $scope.studList.length: " + $scope.studList.length);
+        //     //   $scope.css = $scope.teacherData[0].css;
+        //     //   console.log("$scope.css: " + JSON.stringify($scope.css));
+        //   }
+        //   else {
+        //     console.log("sorry");
+        //   }
+        // })
+
+        console.log("studClass: " + JSON.stringify($scope.studClass));
+        console.log("studSection: " + JSON.stringify($scope.studSection));
+        console.log("studentData: " + JSON.stringify($scope.studentData));
+        
+      }
+      else {
+      }
+    })
+    console.log("<--getTeacherData");
+  }
 
   if (localStorage.getItem("loginType") == 'admin') {
     console.log("loginType: " + localStorage.getItem("loginType"));
@@ -36,6 +83,12 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     $scope.userLoginType = 'teacher';
     $scope.getTeacherData();
 
+
+  }
+  else if (localStorage.getItem("loginType") == 'studParent') {
+    document.getElementById('userAuth').style.display = "none";
+    $scope.userLoginType = 'studParent';
+    $scope.getStudentData();
 
   }
   else {
@@ -476,40 +529,40 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     event[field] = !event[field];
   };
   vm.timespanClicked = function (date) {
-  
+
     vm.lastDateClicked = date;
     // alert("date: "+moment(date).startOf('day')+"date*: "+moment().startOf('day'));
- 
-   
- 
-      // alert('Edited', args.calendarEvent);
-      // console.log("args.calendarEvent: " + args.calendarEvent);
-      // console.log("JSON args.calendarEvent: " + JSON.stringify(args.calendarEvent));
-      var eClicked = $uibModal.open({
-        scope: $scope,
-        templateUrl: '/html/templates/dayEventBook.html',
-        windowClass: 'show',
-        backdropClass: 'show',
-        controller: function ($scope, $uibModalInstance) {
-          // moment().startOf('day').toDate()
-          var dt = new Date();
-          $scope.eventDetails = {
-            
-            "startsAt": date.toDate()
-            
-          }
 
-          console.log("$scope.eventDetails: " + $scope.eventDetails);
+
+
+    // alert('Edited', args.calendarEvent);
+    // console.log("args.calendarEvent: " + args.calendarEvent);
+    // console.log("JSON args.calendarEvent: " + JSON.stringify(args.calendarEvent));
+    var eClicked = $uibModal.open({
+      scope: $scope,
+      templateUrl: '/html/templates/dayEventBook.html',
+      windowClass: 'show',
+      backdropClass: 'show',
+      controller: function ($scope, $uibModalInstance) {
+        // moment().startOf('day').toDate()
+        var dt = new Date();
+        $scope.eventDetails = {
+
+          "startsAt": date.toDate()
+
         }
-      })
-      // alert.show('Edited', args.calendarEvent);
-    
- 
+
+        console.log("$scope.eventDetails: " + $scope.eventDetails);
+      }
+    })
+    // alert.show('Edited', args.calendarEvent);
+
+
 
   };
 
   // vm.timespanClicked = function (date, cell) {
-  
+
   //   if (vm.calendarView === 'month') {
   //     if ((vm.cellIsOpen && moment(date).startOf('day').isSame(moment(vm.viewDate).startOf('day'))) || cell.events.length === 0 || !cell.inMonth) {
   //       vm.cellIsOpen = false;
@@ -525,7 +578,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
   //       vm.viewDate = date;
   //     }
   //   }
-    
+
 
   // };
   // vm.timeClick = function (event) {

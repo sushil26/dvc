@@ -20,7 +20,7 @@ if (localStorage.getItem("userData")) {
         document.getElementById("appLogout").style.display = 'block';
         document.getElementById("userAuth").style.display = 'block';
     }
-    else if (loginType == 'parent') {
+    else if (loginType == 'studParent') {
         document.getElementById("appLogin").style.display = 'none';
         document.getElementById("appReg").style.display = 'none';
         document.getElementById("appLogout").style.display = 'block';

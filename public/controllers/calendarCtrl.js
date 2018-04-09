@@ -495,7 +495,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
           var dt = new Date();
           $scope.eventDetails = {
             
-            "startsAt": moment(date).startOf('day').toDate(),
+            "startsAt": date.toDate(),
             "endsAt":moment(date).format('dd MMMM yyyy')
           }
 

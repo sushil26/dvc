@@ -64,7 +64,7 @@ function logVC() {
     console.log("email: " + document.getElementById("crdEmail").value);
     var email = document.getElementById("crdEmail").value;
     var Password = document.getElementById('crdPswd').value;
-    var logintype = document.getElementById('crdPswd').value;
+    alert($("input[name=loginType]:checked").val());
     console.log("email: " + email);
     var obj = {
         "email": email,

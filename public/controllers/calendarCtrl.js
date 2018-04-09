@@ -61,7 +61,6 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
             console.log("sorry");
           }
         })
-
         console.log("studClass: " + JSON.stringify($scope.studClass));
         console.log("studSection: " + JSON.stringify($scope.studSection));
         console.log("studentData: " + JSON.stringify($scope.studentData));

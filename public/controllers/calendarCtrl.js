@@ -84,7 +84,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     console.log("JSON.css" + JSON.stringify(css));
    
     var api = "https://norecruits.com/vc/eventGet" + "/" + css.id;
-  
+  console.log("api: "+api);
     httpFactory.get(api).then(function (data) {
       var checkStatus = httpFactory.dataValidation(data);
       console.log("data--" + JSON.stringify(data.data));
@@ -578,13 +578,11 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     $event.stopPropagation();
     event[field] = !event[field];
   };
-  vm.timespanClicked = function (date) {
-
+  vm.timespanClicked = function (date, event) {
+  console.log("timespanClicked-->");
+  console.log("event: "+JSON.stringify(event));
     vm.lastDateClicked = date;
     // alert("date: "+moment(date).startOf('day')+"date*: "+moment().startOf('day'));
-
-
-
     // alert('Edited', args.calendarEvent);
     // console.log("args.calendarEvent: " + args.calendarEvent);
     // console.log("JSON args.calendarEvent: " + JSON.stringify(args.calendarEvent));
@@ -608,7 +606,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     // alert.show('Edited', args.calendarEvent);
 
 
-
+    console.log("<--timespanClicked");
   };
 
   // vm.timespanClicked = function (date, cell) {

@@ -119,6 +119,7 @@ module.exports.eventSend = function (req, res) {
 module.exports.eventGet = function (req, res) {
     console.log("getEvent-->");
     var responseData;
+     console.log("req.params.id: "+req.params.id)
     // var id ={
     //     userId = req.params.id
     // } 
@@ -127,6 +128,7 @@ module.exports.eventGet = function (req, res) {
             "userId": req.params.id
         }
         event.find(id).toArray(function (err, listOfevents) {
+            console.log("listOfevents: "+JSON.stringify(listOfevents))
             if (err) {
 
                 responseData = {
@@ -325,7 +327,7 @@ module.exports.getTeacherListForCS = function (req, res) {
             else {
                 responseData = {
                     "status": true,
-                    "message": "Registeration Successfull",
+                    "message": "Data Captured Successfully",
                     "data": data
                 }
 

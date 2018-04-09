@@ -49,16 +49,20 @@
             </div>
           </div>
         </div>
-        <h3 class="text-center">Select Student</h2>
+        <h3 ng-if="userLoginType=='teacher'" class="text-center">Select Student</h2>
+          <h3 ng-if="userLoginType=='studParent'" class="text-center">Select Teacher</h2>
           <div style="background:#e5caa74d;border-top-left-radius: 30px; border-bottom-right-radius: 30px;padding: 1%;">
             <div style=" border:1px solid rgb(173, 173, 173); border-top-left-radius: 30px; border-bottom-right-radius: 30px;padding: 5%;">
               <form name="getStudentCal">
-                <select class="btn btn-primary" placeholder="select" ng-model="cssSelect" ng-change="getStudListForCS(cssSelect)" ng-options="css as css.class+ '-' + css.section + '-' + css.subject for css in teacherData[0].css">
+                <select  ng-if="userLoginType=='teacher'" class="btn btn-primary" placeholder="select" ng-model="cssSelect" ng-change="getStudListForCS(cssSelect)" ng-options="css as css.class+ '-' + css.section + '-' + css.subject for css in teacherData[0].css">
                   <option value="" disabled selected>Class</option>
                 </select>
-                <select class="btn btn-primary" placeholder="select" ng-model="csSelect" ng-options="cs as cs.name + '-' + cs.studId for cs in studList">
+                <select  ng-if="userLoginType=='teacher'" class="btn btn-primary" placeholder="select" ng-model="csSelect" ng-options="cs as cs.name + '-' + cs.studId for cs in studList">
                   <option value="" disabled selected>Student</option>
                 </select>
+                <select  ng-if="userLoginType=='studParent'" class="btn btn-primary" placeholder="select" ng-model="csSelect" ng-change="getTeacherListForCS()" ng-options="cs as cs.name + '-' + cs.studId for cs in studList">
+                    <option value="" disabled selected>Teacher</option>
+                  </select>
 
               </form>
             </div>

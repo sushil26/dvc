@@ -662,4 +662,46 @@ module.exports.teacherDetail = function (req, res) {
     console.log("<--teacherdetail");
 }
 
-
+module.exports.studentDetail = function (req, res) {
+    console.log("teacherdetail-->");
+    if(general.emptyCheck(req.params.id)){
+        var id = {
+            "_id": ObjectId(req.params.id)
+        }
+        stud.find(id).toArray(function (err, data) {
+            console.log("data: "+JSON.stringify(data));
+            if (err) {
+    
+                responseData = {
+                    "status": false,
+                    "message": "Failed to get Data",
+                    "data": data
+                }
+                res.status(400).send(responseData);
+            }
+            else {
+                responseData = {
+                    "status": true,
+                    "message": "get data successfully",
+                    "data": data
+                }
+    
+    
+    
+                res.status(200).send(responseData);
+            }
+    
+        })
+    
+    }
+    else{
+        console.log("Epty value found");
+        responseData = {
+            "status": false,
+            "message": "there is no userId to find",
+           
+        }
+        res.status(400).send(responseData);
+    }
+    console.log("<--teacherdetail");
+}

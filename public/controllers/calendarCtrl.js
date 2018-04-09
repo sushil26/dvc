@@ -481,7 +481,9 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     vm.lastDateClicked = date;
     alert("date: "+moment(date).format('dd MMMM yyyy'));
  
-     // alert('Edited', args.calendarEvent);
+   
+ 
+      // alert('Edited', args.calendarEvent);
       // console.log("args.calendarEvent: " + args.calendarEvent);
       // console.log("JSON args.calendarEvent: " + JSON.stringify(args.calendarEvent));
       var eClicked = $uibModal.open({
@@ -490,17 +492,19 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
         windowClass: 'show',
         backdropClass: 'show',
         controller: function ($scope, $uibModalInstance) {
-         
+          // moment().startOf('day').toDate()
           $scope.eventDetails = {
-            
-            "startsAt":moment().startOf('day').toDate(date),
-            "endsAt":moment(date)
+            "startsAt":moment(date).format('dd MMMM yyyy'),
+            "endsAt":moment(date).format('dd MMMM yyyy')
           }
+
           console.log("$scope.eventDetails: " + $scope.eventDetails);
         }
       })
       // alert.show('Edited', args.calendarEvent);
-   
+    
+ 
+
   };
 
   // vm.timespanClicked = function (date, cell) {

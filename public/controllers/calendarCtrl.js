@@ -480,8 +480,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
   
     vm.lastDateClicked = date;
     alert("date: "+moment(date).format('dd MMMM yyyy'));
-    alert("date: "+moment(date).format('dd MMMM yyyy'));
-    alert("x: "+JSON.stringify(x));
+ 
    
  
       // alert('Edited', args.calendarEvent);

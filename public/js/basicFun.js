@@ -138,9 +138,6 @@ function sessionSet(data) {
             localStorage.setItem("id", data.data._id);
             
         }
-        else if(data.data.loginType=='studParent'){
-            localStorage.setItem("id", data.data._id);
-        }
         else{
             var userData = {
                 "userName": data.data.userName,
@@ -155,6 +152,10 @@ function sessionSet(data) {
             localStorage.setItem("loginType", data.data.loginType);
             document.getElementById('userAuth').style.display = "block";
         }
+        if(data.data.loginType=='studParent'){
+            localStorage.setItem("id", data.data._id);
+        }
+        
 
         
         // Retrieve

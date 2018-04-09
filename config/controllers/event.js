@@ -302,14 +302,13 @@ module.exports.getTeacherListForCS = function (req, res) {
     //console.log("req.params.css: "+JSON.stringify(req.params.cssRef));
     console.log("class: " + req.params.clas + "section: " + req.params.section);
     if (general.emptyCheck(req.params.clas) && general.emptyCheck(req.params.section)) {
-        var obj = {
-            "class": req.params.clas,
-            "section": req.params.section
-        };
+        var clas= req.params.clas;
+          var section = req.params.section;
+        
         // var id = {
         //     "userId": req.params.id
         // }
-        user.find({"css":{ $elemMatch:{"class" : req.params.clas,"section" : req.params.section}}}.toArray(function (err, data) {
+        user.find({"css":{ $elemMatch:{"class" : clas,"section" : section}}}.toArray(function (err, data) {
             if (err) {
 
                 responseData = {

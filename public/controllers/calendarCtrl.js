@@ -50,9 +50,15 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
             $scope.teacherListForStudent = data.data.data;
             console.log("teacherListForStudent: " + JSON.stringify($scope.teacherListForStudent));
             for (var x = 0; x < $scope.teacherListForStudent.length; x++) {
-              $scope.teacherList.push({ "id": $scope.teacherListForStudent[x]._id, "name": $scope.teacherListForStudent[x].studName, "teacherId": $scope.teacherListForStudent[x].studId, "subject": $scope.teacherListForStudent[x].subject });
+
+              for(var y = 0; y < $scope.teacherListForStudent[x].length; y++){
+                if($scope.teacherListForStudent[x].css[y].class ==  $scope.studClass && $scope.teacherListForStudent[x].css[y].section == $scope.studSection)
+                $scope.teacherList.push({ "id": $scope.teacherListForStudent[x]._id, "name": $scope.teacherListForStudent[x].studName, "teacherId": $scope.teacherListForStudent[x].studId, "subject": $scope.teacherListForStudent[x].css[y].subject });
+              }
+              
     
             }
+            console.log(" $scope.teacherList: " + $scope.teacherList);
             // console.log(" $scope.studList.length: " + $scope.studList.length);
             //   $scope.css = $scope.teacherData[0].css;
             //   console.log("$scope.css: " + JSON.stringify($scope.css));

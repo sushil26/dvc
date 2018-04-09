@@ -127,6 +127,7 @@ module.exports.eventGet = function (req, res) {
             "userId": req.params.id
         }
         event.find(id).toArray(function (err, listOfevents) {
+            console.log("listOfevents: "+JSON.stringify(listOfevents))
             if (err) {
 
                 responseData = {

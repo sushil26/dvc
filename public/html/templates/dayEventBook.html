@@ -12,8 +12,8 @@
     </select>
     <!-- <label>Event Name</label>
         <input type="text" class="form-control" ng-model="eventDetails.title"> -->
-    <label>Timing</label>
-    <p class="input-group">
+    <label>Timing</label>   <h2>{{eventDetails.startsAt}}</h2>
+    <!-- <p class="input-group">
         <input type="text" style="margin-bottom: -4px;" class="form-control" readonly uib-datepicker-popup="dd MMMM yyyy" ng-model="eventDetails.startsAt"
             is-open="event.startOpen" close-text="Close">
         <span class="input-group-btn">
@@ -21,7 +21,7 @@
                 <i class="glyphicon glyphicon-calendar"></i>
             </button>
         </span>
-    </p>
+    </p> -->
     <div class="row" style="padding:2%">
 
         <div uib-timepicker ng-model="eventDetails.startsAt" hour-step="1" minute-step="10" show-meridian="true">

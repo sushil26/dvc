@@ -329,8 +329,10 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
   var vm = this;
 
   //These variables MUST be set as a minimum for the calendar to work
+  // vm.calendarView = 'month';
+  // vm.viewDate = new Date();
   vm.calendarView = 'day';
-  vm.viewDate = new Date();
+  vm.viewDate = moment().startOf('month').toDate();
   var actions = [{
     label: '<i class=\'glyphicon glyphicon-pencil\'></i>',
     onClick: function (args) {
@@ -477,7 +479,25 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
   vm.timespanClicked = function (date) {
   
     vm.lastDateClicked = date;
-    alert("moment().startOf('day').toDate(): "+moment(date).format('YYYY-MM-DD'));
+    alert("date: "+moment(date).format('dd MMMM yyyy'));
+    alert("date: "+moment(date).format('dd MMMM yyyy'));
+    onClick: function (args) {
+      alert('Edited', args.calendarEvent);
+      console.log("args.calendarEvent: " + args.calendarEvent);
+      console.log("JSON args.calendarEvent: " + JSON.stringify(args.calendarEvent));
+      var eClicked = $uibModal.open({
+        scope: $scope,
+        templateUrl: '/html/templates/eventDetails_edit.html',
+        windowClass: 'show',
+        backdropClass: 'show',
+        controller: function ($scope, $uibModalInstance) {
+          $scope.
+          $scope.eventDetails = args.calendarEvent;
+          console.log("$scope.eventDetails: " + $scope.eventDetails);
+        }
+      })
+      // alert.show('Edited', args.calendarEvent);
+    }
  
 
   };

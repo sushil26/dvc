@@ -53,7 +53,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
               $scope.teacherList.push({ "id": $scope.teacherListForStudent[x]._id, "name": $scope.teacherListForStudent[x].studName, "studId": $scope.teacherListForStudent[x].studId });
     
             }
-            console.log(" $scope.studList.length: " + $scope.studList.length);
+            // console.log(" $scope.studList.length: " + $scope.studList.length);
             //   $scope.css = $scope.teacherData[0].css;
             //   console.log("$scope.css: " + JSON.stringify($scope.css));
           }

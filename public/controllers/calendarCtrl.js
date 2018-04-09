@@ -83,7 +83,42 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     console.log("css" + css.id);
     console.log("JSON.css" + JSON.stringify(css));
    
-   
+    var api = "https://norecruits.com/vc/eventGet" + "/" + css.id;
+  
+    httpFactory.get(api).then(function (data) {
+      var checkStatus = httpFactory.dataValidation(data);
+      console.log("data--" + JSON.stringify(data.data));
+      if (checkStatus) {
+        $scope.specificTED = data.data.data;/* ### Note:Function Name specificTED --> specificTeachEventData(specificTED) ### */
+        console.log("$scope.specificTED.length: "+$scope.specificTED.length);
+        for (var x = 0; x < $scope.specificTED.length; x++) {
+          console.log("$scope.specificTED[" + x + "]: " + JSON.stringify($scope.specificTED[x]));
+          var obj = {
+            'id': $scope.specificTED[x]._id,
+            'title': $scope.specificTED[x].title,
+            'color': $scope.specificTED[x].primColor,
+            'startsAt': new Date($scope.specificTED[x].start),
+            'endsAt': new Date($scope.specificTED[x].end),
+            'draggable': true,
+            'resizable': true,
+            'actions': actions,
+            'url': $scope.specificTED[x].url,
+            "studentName": $scope.specificTED[x].studName,
+            "studendtId": $scope.specificTED[x].studId,
+            "title": $scope.specificTED[x].title,
+            "reason": $scope.specificTED[x].reason,
+            "email": $scope.specificTED[x].email
+          }
+          console.log(" obj" + JSON.stringify(obj))
+          vm.events.push(obj);
+
+        }
+      }
+      else {
+        //alert("Event get Failed");
+      }
+
+    })
     
     console.log("<--getTeacherCalendar");
   }

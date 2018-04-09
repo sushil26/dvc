@@ -84,7 +84,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     console.log("JSON.css" + JSON.stringify(css));
    
     var api = "https://norecruits.com/vc/eventGet" + "/" + css.id;
-  
+  console.log("api: "+api);
     httpFactory.get(api).then(function (data) {
       var checkStatus = httpFactory.dataValidation(data);
       console.log("data--" + JSON.stringify(data.data));

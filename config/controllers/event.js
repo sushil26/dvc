@@ -325,7 +325,7 @@ module.exports.getTeacherListForCS = function (req, res) {
             else {
                 responseData = {
                     "status": true,
-                    "message": "Registeration Successfull",
+                    "message": "Data Captured Successfully",
                     "data": data
                 }
 

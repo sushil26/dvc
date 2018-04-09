@@ -119,6 +119,7 @@ module.exports.eventSend = function (req, res) {
 module.exports.eventGet = function (req, res) {
     console.log("getEvent-->");
     var responseData;
+     console.log("req.params.id: "+req.params.id)
     // var id ={
     //     userId = req.params.id
     // } 

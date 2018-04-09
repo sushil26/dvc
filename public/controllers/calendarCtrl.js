@@ -327,7 +327,6 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
   $scope.eventGet();
 
   var vm = this;
-
   //These variables MUST be set as a minimum for the calendar to work
   // vm.calendarView = 'month';
   // vm.viewDate = new Date();

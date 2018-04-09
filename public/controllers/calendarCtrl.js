@@ -477,7 +477,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
   vm.timespanClicked = function (date) {
   
     vm.lastDateClicked = date;
-    alert("moment().startOf('day').toDate(): "+moment().startOf('day').Date(date));
+    alert("moment().startOf('day').toDate(): "+moment().moment(date).format('YYYY-MM-DD'));
  
 
   };

@@ -150,8 +150,8 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
             "email": $scope.specificTED[x].email
           }
           console.log(" obj" + JSON.stringify(obj))
-          vm.events.push(obj);
-
+          //vm.events.push(obj);
+          vm.events = obj;
         }
       }
       else {
@@ -195,9 +195,9 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
             "reason": $scope.specificTED[x].reason,
             "email": $scope.specificTED[x].email
           }
-          console.log(" obj" + JSON.stringify(obj))
-          vm.events.push(obj);
-
+          console.log(" obj" + JSON.stringify(obj));
+          // vm.events.push(obj);
+          vm.events = obj;
         }
       }
       else {

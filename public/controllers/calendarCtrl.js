@@ -338,7 +338,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
         var api = "https://norecruits.com/vc/eventSend";
         //var api = "http://localhost:5000/vc/eventSend";
         console.log("api: " + api);
-        var email = document.getElementById('eventEmails').value;
+        // var email = document.getElementById('eventEmails').value;
         var obj = {
           "userId": localStorage.getItem("userId"),
           "title": $scope.title,

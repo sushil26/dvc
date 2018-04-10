@@ -19,6 +19,7 @@
                     </h3>
                 </th>
                 <th>:&nbsp
+                        <input style="margin-top:10px;" type="time" ng-model="eventDetails.title" > <br>
                     <input style="margin-top:10px;" type="time" ng-model="eventDetails.startsAt" readonly> to
                     <input style="margin-top:10px;" type="time" ng-model="eventDetails.endsAt">
                 </th>
@@ -69,7 +70,7 @@
 </div>
 <div class="modal-footer loginpopUp_footer">
     <button class="btn btn-default loginpopUp_footerBtn" type="button" ng-click="$close()">Close</button>
-    <button class="btn btn-primary" style="width: 80px;" ng-click="save(eventDetails.startsAt| date:'M/d/yy',eventDetails.startsAt| date:'h:mm a', eventDetails.endsAt| date:'h:mm a', eventDetails.startsAt, eventDetails.endsAt, eventDetails.startsAt | date:'M/d/yy h:mm a', eventDetails.endsAt | date:'M/d/yy h:mm a', eventDetails.title)">
+    <button class="btn btn-primary" style="width: 80px;" ng-click="save(eventDetails.startsAt| date:'M/d/yy',eventDetails.startsAt| date:'h:mm a', eventDetails.endsAt| date:'h:mm a', eventDetails.startsAt, eventDetails.endsAt, eventDetails.startsAt | date:'M/d/yy h:mm a', eventDetails.endsAt | date:'M/d/yy h:mm a', eventDetails.title, eventDetails.reason)">
         Save
     </button>
     <!-- <button type="submit" class="btn btn-default loginpopUp_footerBtn" ng-click="specOffSub(speOff_uploadForm, speOffTitle, speOffMsg, file.upload)">Upload</button> -->

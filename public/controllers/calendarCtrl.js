@@ -82,6 +82,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     console.log("getTeacherCalendar-->");
     console.log("css" + css.id);
     console.log("JSON.css" + JSON.stringify(css));
+    $scope.remoteCalendarId = css.id;
    
     var api = "https://norecruits.com/vc/eventGet" + "/" + css.id;
   console.log("api: "+api);
@@ -270,7 +271,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     console.log("<--updatedEvent");
   }
 
-  $scope.save = function (date, sd, ed, s, e, sFiltered, eFiltered, title) {
+  $scope.save = function (date, sd, ed, s, e, sFiltered, eFiltered, title, reason) {
     console.log("s: " + s);
     console.log("e: " + e);
     console.log("sd: " + sd);
@@ -297,20 +298,32 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     console.log("$scope.urlDate: " + $scope.urlDate);
     console.log("$scope.endDate: " + $scope.endDate);
     console.log("$scope.endDateRes: " + $scope.endDateRes);
+    
+    if($scope.userLoginType=='studParent'){
+      var senderName = $scope.studentData[0].studName;
+      var studId = $scope.studentData[0].studId;
+      var sendUserId = $scope.studentData[0]._id;
+      var studEmail = $scope.studentData[0].parentEmail;
+      $scope.eventSend(reason,name,studId,email);
+    }
+    // if($scope.userLoginType=='teacher'){
+    //   var name = $scope.studentData[0].studName;
+    //   var studId = $scope.studentData[0].studId;
+    //   var userId = $scope.studentData[0]._id;
+    //   $scope.eventSend(reason,name,studId,userId);
+    // }
+  
+
   }
 
-  $scope.eventSend = function (res, name, id, primColor) {
-    //$scope.eventSend = function (a, b) {
-    //alert("a: "+a+"b: "+b);
+  $scope.eventSend = function (res, name, id,email) {
     console.log("eventSend-->");
-
     var SIGNALING_SERVER = "https://norecruits.com";
     //var SIGNALING_SERVER = "http://localhost:5000";
     var queryLink = null;
     var peerNew_id = null;
     var url;
     signaling_socket = io(SIGNALING_SERVER);
-
     signaling_socket.on('connect', function () {
       console.log("signaling_socket connect-->");
 
@@ -327,7 +340,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
         console.log("api: " + api);
         var email = document.getElementById('eventEmails').value;
         var obj = {
-          "userId": localStorage.getItem("id"),
+          "userId": localStorage.getItem("userId"),
           "title": $scope.title,
           "reason": res,
           "studName": name,
@@ -341,8 +354,8 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
           "url": url,
           "date": $scope.date,
           "sd": $scope.sd,
-          "ed": $scope.ed
-
+          "ed": $scope.ed,
+          "remoteCalendarId": $scope.remoteCalendarId
         }
         console.log("obj: " + JSON.stringify(obj));
 
@@ -350,7 +363,6 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
           var checkStatus = httpFactory.dataValidation(data);
           console.log("data--" + JSON.stringify(data.data));
           if (checkStatus) {
-
             console.log("data" + JSON.stringify(data.data))
             // $window.location.href = $scope.propertyJson.R082;
             alert("Successfully sent the event " + data.data.message);

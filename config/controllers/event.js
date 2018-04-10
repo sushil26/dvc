@@ -42,6 +42,7 @@ module.exports.eventSend = function (req, res) {
             "endAt": req.body.endAt,
             "primColor": req.body.primColor,
             "url": req.body.url,
+            "remoteCalendarId": req.body.remoteCalendarId,
             "password": password
 
         }

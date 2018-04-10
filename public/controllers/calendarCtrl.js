@@ -1,6 +1,11 @@
 app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, httpFactory, moment, calendarConfig, $uibModal) {
   console.log("calendarCtrl==>: " + localStorage.getItem("userData"));
-
+  $scope.timesTable=function(id){
+    console.log("timeTable-->");
+    $scope.getUserData=$scope.userData[id]
+    console.log("<--timeTable");
+  }
+  
   $scope.getTeacherData = function () {
     console.log("getTeacherData-->");
     var id = localStorage.getItem("id");
@@ -739,11 +744,6 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
   // }
 
 
-$scope.timeTable=function(id){
-  console.log("timeTable-->");
-  $scope.getUserData=$scope.userData[id]
-  console.log("<--timeTable");
-}
 
 
 

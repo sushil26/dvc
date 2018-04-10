@@ -107,7 +107,6 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
         if (checkStatus) {
           $scope.studentPersonalData = data.data.data;
           console.log("$scope.studentPersonalData: "+JSON.stringify($scope.studentPersonalData));
-        
         }
         else {
           //alert("Event get Failed");
@@ -389,14 +388,14 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
       var studId = $scope.studentData[0].studId;
       var email = $scope.teacherPersonalData[0].teacherEmail;/* ### Note: teacher email Id ### */
      
-      $scope.eventSend(reason,senderName,studId,email);
+      $scope.eventSend(reason, senderName, studId, email);
     }
-    // if($scope.userLoginType=='teacher'){
-    //   var name = $scope.studentData[0].studName;
-    //   var studId = $scope.studentData[0].studId;
-    //   var userId = $scope.studentData[0]._id;
-    //   $scope.eventSend(reason,name,studId,userId);
-    // }
+    if($scope.userLoginType=='teacher'){
+      var teacherName = $scope.teacherData[0].teacherName;
+      var teacherId = $scope.teacherData[0].teacherId;
+      var email = $scope.studentPersonalData[0].parentEmail;/* ### Note: parentEmail email Id ### */
+      $scope.eventSend(reason, teacherName, teacherId, email);
+    }
   
 
   }

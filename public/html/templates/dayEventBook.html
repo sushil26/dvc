@@ -14,16 +14,30 @@
         <tbody>
             <tr>
                 <th>
+                    <h3>Title &nbsp</h3>
+                </th>
+                <th>
+                    <h3 style="color:coral">:&nbsp
+                        <input style="margin-top:10px; border:none;" type="text" ng-model="eventDetails.title">
+                    </h3>
+                </th>
+            </tr>
+            <tr>
+                <th>
                     <h3>
                         Timing &nbsp
                     </h3>
                 </th>
-                <th>:&nbsp
-                       title: <input style="margin-top:10px; border:none;" type="text" ng-model="eventDetails.title" > <br>
-                    <input style="margin-top:10px; border:none;" type="time" ng-model="eventDetails.startsAt" readonly> to
-                    <input style="margin-top:10px; border:none;" type="time" ng-model="eventDetails.endsAt">
+                <th>
+
+
+                    <h3 style="color:coral">:&nbsp
+                        <input style="margin-top:10px; border:none;" type="time" ng-model="eventDetails.startsAt" readonly> to
+                        <input style="margin-top:10px; border:none;" type="time" ng-model="eventDetails.endsAt">
+                    </h3>
                 </th>
             </tr>
+
 
         </tbody>
     </table>
@@ -57,11 +71,11 @@
 
             </tr>
             <tr>
-                    <div class="form-group">
-                            <label for="comment">Message:</label>
-                            <textarea class="form-control" rows="5" id="comment" ng-model="eventDetails.reason"></textarea>
-                          </div>
-               
+                <div class="form-group">
+                    <label for="comment">Message:</label>
+                    <textarea class="form-control" rows="5" id="comment" ng-model="eventDetails.reason"></textarea>
+                </div>
+
 
             </tr>
         </thead>

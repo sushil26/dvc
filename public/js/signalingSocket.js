@@ -350,7 +350,7 @@ function regVc() {
 /** Also see: https://gist.github.com/zziuni/3741933 **/
 var ICE_SERVERS = [
     { url: "stun:stun.l.google.com:19302" },
-    { urls:"https://global.xirsys.net",credential: 'c5ff1812-38b6-11e8-8243-0a2390021b65', username: 'sushil'
+    { url: "https://global.xirsys.net", credential: 'c5ff1812-38b6-11e8-8243-0a2390021b65', username: 'sushil'
   }
 ];
 

@@ -78,12 +78,32 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     console.log("<--getTeacherData");
   }
 
+  $scope.getSelectedTeacherPersonalData = function(id){
+    console.log("getSelectedTeacherPersonalData-->");
+    var api = "https://norecruits.com/vc/teacherPersonalData" + "/" + id;
+    console.log("api: "+api);
+      httpFactory.get(api).then(function (data) {
+        var checkStatus = httpFactory.dataValidation(data);
+        console.log("data--" + JSON.stringify(data.data));
+        if (checkStatus) {
+          $scope.teacherPersonalData = data.data.data;
+          console.log("$scope.teacherPersonalData: "+JSON.stringify($scope.teacherPersonalData));
+        
+        }
+        else {
+          //alert("Event get Failed");
+        }
+  
+      })
+    console.log("<--getSelectedTeacherPersonalData");
+  }
+
   $scope.getTeacherCalendar = function(css){
     console.log("getTeacherCalendar-->");
     console.log("css" + css.id);
     console.log("JSON.css" + JSON.stringify(css));
     $scope.remoteCalendarId = css.id;
-   
+   $scope.getSelectedTeacherPersonalData($scope.remoteCalendarId);
     var api = "https://norecruits.com/vc/eventGet" + "/" + css.id;
   console.log("api: "+api);
     httpFactory.get(api).then(function (data) {
@@ -302,7 +322,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     if($scope.userLoginType=='studParent'){
       var senderName = $scope.studentData[0].studName;
       var studId = $scope.studentData[0].studId;
-      var email = $scope.specificTED.email;/* ### Note: teacher email Id ### */
+      var email = $scope.specificTED[0].email;/* ### Note: teacher email Id ### */
      
       $scope.eventSend(reason,senderName,studId,email);
     }

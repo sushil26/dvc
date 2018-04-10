@@ -18,6 +18,7 @@ module.exports = function (app) {
     app.post('/vc/studentInsert', user.studentInsert);
     app.get('/vc/teacherDetail/:id', user.teacherDetail);
     app.get('/vc/studentDetail/:id', user.studentDetail);
+    app.get('/vc/teacherPersonalData/:id', user.teacherPersonalData);
     app.get('/vc/getStudListForCS/:clas/:section', event.getStudListForCS);
     app.get('/vc/getTeacherListForCS/:clas/:section', event.getTeacherListForCS);
     app.post('/vc/eventSend', event.eventSend);

@@ -58,25 +58,10 @@
     <table>
         <thead>
             <tr>
-                <td>
-                    <select class="btn btn-primary" placeholder="select" ng-model="cssSelect" ng-change="getStudListForCS(cssSelect)" ng-options="css as css.class+ '-' + css.section + '-' + css.subject for css in teacherData[0].css">
-                        <option value="" disabled selected>Class</option>
-                    </select>
-                </td>
-                <td>
-                    <select class="btn btn-primary" placeholder="select" ng-model="csSelect" ng-options="cs as cs.name + '-' + cs.studId for cs in studList">
-                        <option value="" disabled selected>Student</option>
-                    </select>
-                </td>
-
-            </tr>
-            <tr>
                 <div class="form-group">
                     <label for="comment">Message:</label>
                     <textarea class="form-control" rows="5" id="comment" ng-model="eventDetails.reason"></textarea>
                 </div>
-
-
             </tr>
         </thead>
     </table>

@@ -1,14 +1,37 @@
 <div class="modal-header loginpopUp_header">
- 
-  
-         <h3 class="modal-title loginpopUp_headerTitle">Event Book :</h3>
-                <h3>{{ eventDetails.startsAt | date }}</h3>
-                <br>
-                <hr>
-                <input type="time" ng-model="eventDetails.startsAt">
-                <input type="time" ng-model="eventDetails.endsAt" value="00:00:00">
 
-        <!-- <div uib-timepicker ng-model="eventDetails.startsAt" hour-step="1" minute-step="10" show-meridian="true">
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    <h3>Shedule on  &nbsp</h3>
+                </th>
+                <th>
+                   
+                    <h3 style="color:coral">{{ eventDetails.startsAt | date }}</h3>
+                </th>
+                <th><h3>at</h3></th>
+                <th>
+                    &nbsp
+                    <input style="margin-top:10px;" type="time" ng-model="eventDetails.startsAt">
+                </th>
+                <th><h3>to</h3></th>
+                <th>
+                    &nbsp
+                    <input style="margin-top:10px;" type="time" ng-model="eventDetails.endsAt">
+                </th>
+            </tr>
+
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+
+
+
+    <!-- <div uib-timepicker ng-model="eventDetails.startsAt" hour-step="1" minute-step="10" show-meridian="true">
         </div>
         &nbspTo&nbsp
         <div uib-timepicker ng-model="eventDetails.endsAt" hour-step="1" minute-step="10" show-meridian="true">

@@ -24,10 +24,13 @@
           background-color: skyblue;
           box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
         }
+        .day-event{
+          width:90% !important;
+        }
       </style>
       <mwl-calendar events="vm.events" view="vm.calendarView" view-title="vm.calendarTitle" view-date="vm.viewDate" on-event-click="vm.eventClicked(calendarEvent)"
         on-event-times-changed="vm.eventTimesChanged(calendarEvent); calendarEvent.startsAt = calendarNewEventStart; calendarEvent.endsAt = calendarNewEventEnd"
-        cell-is-open="vm.cellIsOpen" day-view-start="09:00" day-view-end="16:00" day-view-split="20" cell-modifier="vm.modifyCell(calendarCell)"
+        cell-is-open="vm.cellIsOpen" day-view-start="09:00" day-view-end="15:00" day-view-split="20" cell-modifier="vm.modifyCell(calendarCell)"
         cell-auto-open-disabled="true" on-timespan-click="vm.timespanClicked(calendarDate)" ng-click="vm.timeClick(calendarEvent)">
       </mwl-calendar>
     </div>

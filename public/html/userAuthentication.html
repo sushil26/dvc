@@ -23,27 +23,27 @@
       <tbody>
         <tr>
           <td>Monday</td>
-          <td ng-repeat="mtt in userData[2].timeTable[0].Monday">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
+          <td ng-repeat="mtt in getUserData.timeTable[0].Monday">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
         </tr>
         <tr>
           <td>Tuesday</td>
-          <td ng-repeat="mtt in userData[2].timeTable[1].Tues">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
+          <td ng-repeat="mtt in getUserData.timeTable[1].Tues">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
         </tr>
         <tr>
           <td>Wednesday</td>
-          <td ng-repeat="mtt in userData[2].timeTable[2].Wed">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
+          <td ng-repeat="mtt in getUserData.timeTable[2].Wed">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
         </tr>
         <tr>
           <td>Thursday</td>
-          <td ng-repeat="mtt in userData[2].timeTable[3].Thurs">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
+          <td ng-repeat="mtt in getUserData.timeTable[3].Thurs">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
         </tr>
         <tr>
           <td>Friday</td>
-          <td ng-repeat="mtt in userData[2].timeTable[4].Fri">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
+          <td ng-repeat="mtt in getUserData.timeTable[4].Fri">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
         </tr>
         <tr>
           <td>Saturday</td>
-          <td ng-repeat="mtt in userData[2].timeTable[5].Sat">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
+          <td ng-repeat="mtt in getUserData.timeTable[5].Sat">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
         </tr>
       </tbody>
 
@@ -74,7 +74,7 @@
         <tr ng-repeat="ud in userData">
           <td style="background-color:aliceblue;">{{$index+1}}.</td>
           <td style="background-color:aliceblue;">
-            <button type="button" class="btn-info ">{{ud.teacherName}}</button>
+            <button type="button" class="btn-info " ng-click="timeTable($index)">{{ud.teacherName}}</button>
           </td>
           <td style="background-color:aliceblue;">{{ud.teacherId}}</td>
           <td style="background-color:aliceblue;">{{ud.teacherEmail}}</td>

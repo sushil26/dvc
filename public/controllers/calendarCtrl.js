@@ -739,7 +739,11 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
   // }
 
 
-
+$scope.timeTable=function(id){
+  console.log("timeTable-->");
+  $scope.getUserData=$scope.userData[id]
+  console.log("<--timeTable");
+}
 
 
 

@@ -80,8 +80,8 @@
                     <option value="" disabled selected>Teacher</option>
                   </select>
                   <button class="btn btn-primary" ng-if="calendarOwner!='Your'" ng-click="eventGet()">My Calendar</button>
-                  <button class="btn btn-primary" ng-if="calendarOwner=='Your' && userLoginType=='studParent' && csSelect.name !=null" ng-click="getSelectedTeacherPersonalData(csSelect.id)">{{csSelect.name}} Calendar</button>
-                  <button class="btn btn-primary" ng-if="calendarOwner=='Your' && userLoginType=='teacher' && csSelect.name !=null" ng-click="getSelectedStudentPersonalData(csSelect.id)">{{csSelect.name}} Calendar</button>
+                  <button class="btn btn-primary" ng-if="calendarOwner=='Your' && userLoginType=='studParent' && csSelect.name != 'undefined'" ng-click="getSelectedTeacherPersonalData(csSelect.id)">{{csSelect.name}} Calendar</button>
+                  <button class="btn btn-primary" ng-if="calendarOwner=='Your' && userLoginType=='teacher' && csSelect.name !='undefined'" ng-click="getSelectedStudentPersonalData(csSelect.id)">{{csSelect.name}} Calendar</button>
                 </form>
               </div>
             </div>

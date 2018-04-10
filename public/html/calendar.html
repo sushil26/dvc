@@ -79,7 +79,7 @@
                     ng-options="cs as cs.name + '-' + cs.teacherId+'-'+cs.subject for cs in teacherList">
                     <option value="" disabled selected>Teacher</option>
                   </select>
-                  <button ng-if="csSelect.teacherId" ng-click="eventGet()">My Calendar</button>
+                  <button ng-if="csSelect.teacherId!=undefined" ng-click="eventGet()">My Calendar</button>
                 </form>
               </div>
             </div>

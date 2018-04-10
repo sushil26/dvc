@@ -435,6 +435,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
   vm.viewDate = moment().startOf('day').toDate();
   var originalFormat = calendarConfig.dateFormats.hour;
     calendarConfig.dateFormats.hour = 'HH:mm';
+
   var actions = [{
     label: '<i class=\'glyphicon glyphicon-pencil\'></i>',
     onClick: function (args) {

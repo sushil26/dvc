@@ -3,12 +3,14 @@
     <div class="row" style="padding:2%">
             <span>  <h3 class="modal-title loginpopUp_headerTitle">Event Book</h3>:
                 <h3>{{ eventDetails.startsAt | date }}</h3></span>
+                <input type="time" ng-model="eventDetails.startsAt" value="00:00:00">
+                <input type="time" ng-model="eventDetails.endsAt" value="00:00:00">
 
-        <div uib-timepicker ng-model="eventDetails.startsAt" hour-step="1" minute-step="10" show-meridian="true">
+        <!-- <div uib-timepicker ng-model="eventDetails.startsAt" hour-step="1" minute-step="10" show-meridian="true">
         </div>
         &nbspTo&nbsp
         <div uib-timepicker ng-model="eventDetails.endsAt" hour-step="1" minute-step="10" show-meridian="true">
-        </div>
+        </div> -->
     </div>
     <button type="button" class="close" ng-click="$close()">&times;</button>
 </div>

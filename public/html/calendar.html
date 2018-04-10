@@ -80,6 +80,7 @@
                     <option value="" disabled selected>Teacher</option>
                   </select>
                   <button class="btn btn-primary" ng-if="calendarOwner!='Your'" ng-click="eventGet()">My Calendar</button>
+                  <button class="btn btn-primary" ng-if="calendarOwner!='Your'" ng-click="getSelectedTeacherPersonalData(csSelect.id)">{{csSelect.name}} Calendar</button>
                 </form>
               </div>
             </div>

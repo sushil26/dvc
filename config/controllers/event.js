@@ -126,7 +126,8 @@ module.exports.eventGet = function (req, res) {
     // } 
     if (general.emptyCheck(req.params.id)) {
         var id = {
-            "userId": req.params.id
+            "userId": req.params.id,
+            "remoteCalendarId": req.params.id
         }
         event.find(id).toArray(function (err, listOfevents) {
             console.log("listOfevents: "+JSON.stringify(listOfevents))

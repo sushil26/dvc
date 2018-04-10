@@ -1,10 +1,28 @@
 <div class="modal-header loginpopUp_header">
 
+    <table>
+        <thead>
+            <tr>
+                <th>Event on</th>
+                <th>
+                    <h3 style="color:coral">{{ eventDetails.startsAt | date }}</h3>
+                </th>
+                <th>
+                    <input type="time" ng-model="eventDetails.startsAt">
+                </th>
+                <th>
+                    <input type="time" ng-model="eventDetails.endsAt">
+                </th>
+            </tr>
 
-    <h3>Event Book :</h3>
-    <h3 style="color:coral">{{ eventDetails.startsAt | date }}</h3>
-    <input type="time" ng-model="eventDetails.startsAt">
-    <input type="time" ng-model="eventDetails.endsAt">
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+
+
 
     <!-- <div uib-timepicker ng-model="eventDetails.startsAt" hour-step="1" minute-step="10" show-meridian="true">
         </div>

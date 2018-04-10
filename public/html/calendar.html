@@ -28,6 +28,7 @@
           width:90% !important;
         }
       </style>
+      <b><h2>{{calendarOwner}} Calendar</h2></b>
       <mwl-calendar events="vm.events" view="vm.calendarView" view-title="vm.calendarTitle" view-date="vm.viewDate" on-event-click="vm.eventClicked(calendarEvent)"
         on-event-times-changed="vm.eventTimesChanged(calendarEvent); calendarEvent.startsAt = calendarNewEventStart; calendarEvent.endsAt = calendarNewEventEnd"
         cell-is-open="vm.cellIsOpen" day-view-start="09:00" day-view-end="15:00" day-view-split="15" cell-modifier="vm.modifyCell(calendarCell)"
@@ -62,8 +63,8 @@
             </div>
           </div>
         </div>
-        <h3 ng-if="userLoginType=='teacher'" class="text-center">Select Student</h2>
-          <h3 ng-if="userLoginType=='studParent'" class="text-center">Select Teacher</h2>
+        <h3 ng-if="userLoginType=='teacher'" class="text-center">Select  and Get Student Calendar</h2>
+          <h3 ng-if="userLoginType=='studParent'" class="text-center">Select and Get Teacher Calendar</h2>
             <div style="background:#e5caa74d;border-top-left-radius: 30px; border-bottom-right-radius: 30px;padding: 1%;">
               <div style=" border:1px solid rgb(173, 173, 173); border-top-left-radius: 30px; border-bottom-right-radius: 30px;padding: 5%;">
                 <form name="getStudentCal">
@@ -78,7 +79,7 @@
                     ng-options="cs as cs.name + '-' + cs.teacherId+'-'+cs.subject for cs in teacherList">
                     <option value="" disabled selected>Teacher</option>
                   </select>
-
+                  <button ng-if="csSelect" ng-click="eventGet()">My Calendar</button>
                 </form>
               </div>
             </div>

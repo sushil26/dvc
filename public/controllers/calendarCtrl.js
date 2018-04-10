@@ -116,8 +116,6 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     console.log("<--get Selected Student PersonalData");
   }
 
-
-
   $scope.getStudentCalendar = function (css) {
     console.log("getStudentCalendar-->");
     console.log("css" + css.id);
@@ -130,6 +128,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
       var checkStatus = httpFactory.dataValidation(data);
       console.log("data--" + JSON.stringify(data.data));
       if (checkStatus) {
+        $scope.calendarOwner=css.name;
         $scope.specificTED = data.data.data;/* ### Note:Function Name specificTED --> specificTeachEventData(specificTED) ### */
         console.log("$scope.specificTED.length: " + $scope.specificTED.length);
         for (var x = 0; x < $scope.specificTED.length; x++) {
@@ -177,6 +176,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
       var checkStatus = httpFactory.dataValidation(data);
       console.log("data--" + JSON.stringify(data.data));
       if (checkStatus) {
+        $scope.calendarOwner=css.name;
         $scope.specificTED = data.data.data;/* ### Note:Function Name specificTED --> specificTeachEventData(specificTED) ### */
         console.log("$scope.specificTED.length: " + $scope.specificTED.length);
         for (var x = 0; x < $scope.specificTED.length; x++) {
@@ -491,7 +491,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     var id = localStorage.getItem("id");
     var api = "https://norecruits.com/vc/eventGet" + "/" + id;
     //var api = "http://localhost:5000/vc/eventGet"+ "/" + id;;
-
+    $scope.calendarOwner="Your";
     httpFactory.get(api).then(function (data) {
       var checkStatus = httpFactory.dataValidation(data);
       console.log("data--" + JSON.stringify(data.data));

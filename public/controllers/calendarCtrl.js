@@ -1,6 +1,6 @@
 app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, httpFactory, moment, calendarConfig, $uibModal) {
   console.log("calendarCtrl==>: " + localStorage.getItem("userData"));
-  $scope.aa=function(){
+  $scope.timesTable=function(id){
     console.log("timeTable-->");
     $scope.getUserData=$scope.userData[id]
     console.log("<--timeTable");

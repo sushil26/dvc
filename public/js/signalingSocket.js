@@ -79,8 +79,8 @@ if (localStorage.getItem("userData")) {
       userName = localStorage.getItem("userName");
       // startVideoAction();
       document.getElementById("userAuth").style.display = "none";
-      document.getElementById("appLogin").style.display = "none";
-      document.getElementById("appReg").style.display = "none";
+      // document.getElementById("appLogin").style.display = "none";
+      // document.getElementById("appReg").style.display = "none";
       document.getElementById("LoginUrl").style.display = "none";
       document.getElementById("appLogout").style.display = "none";
       document.getElementById("videoConferenceUrl").style.display = "none";
@@ -125,8 +125,8 @@ function saveName() {
         localStorage.setItem("status", "instantActive");
         localStorage.setItem("loginType", "parent");
         document.getElementById("userAuth").style.display = "none";
-        document.getElementById("appLogin").style.display = "none";
-        document.getElementById("appReg").style.display = "none";
+        // document.getElementById("appLogin").style.display = "none";
+        // document.getElementById("appReg").style.display = "none";
         document.getElementById("LoginUrl").style.display = "none";
         document.getElementById("appLogout").style.display = "none";
         document.getElementById("videoConferenceUrl").style.display = "none";
@@ -139,8 +139,8 @@ function saveName() {
         localStorage.setItem("status", "instantActive");
         localStorage.setItem("loginType", "parent");
         document.getElementById("userAuth").style.display = "none";
-        document.getElementById("appLogin").style.display = "none";
-        document.getElementById("appReg").style.display = "none";
+        // document.getElementById("appLogin").style.display = "none";
+        // document.getElementById("appReg").style.display = "none";
         document.getElementById("LoginUrl").style.display = "none";
         document.getElementById("appLogout").style.display = "none";
         document.getElementById("videoConferenceUrl").style.display = "none";

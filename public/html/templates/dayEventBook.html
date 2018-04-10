@@ -1,5 +1,15 @@
 <div class="modal-header loginpopUp_header">
-    <h3 class="modal-title loginpopUp_headerTitle">Event Book</h3>
+ 
+    <div class="row" style="padding:2%">
+            <span>  <h3 class="modal-title loginpopUp_headerTitle">Event Book</h3>:
+                <h3>{{ eventDetails.startsAt | date }}</h3></span>
+
+        <div uib-timepicker ng-model="eventDetails.startsAt" hour-step="1" minute-step="10" show-meridian="true">
+        </div>
+        &nbspTo&nbsp
+        <div uib-timepicker ng-model="eventDetails.endsAt" hour-step="1" minute-step="10" show-meridian="true">
+        </div>
+    </div>
     <button type="button" class="close" ng-click="$close()">&times;</button>
 </div>
 
@@ -13,7 +23,7 @@
     <!-- <label>Event Name</label>
         <input type="text" class="form-control" ng-model="eventDetails.title"> -->
     <label>Timing</label>
-    <p class="input-group">
+    <!-- <p class="input-group">
         <input type="text" style="margin-bottom: -4px;" class="form-control" readonly uib-datepicker-popup="dd MMMM yyyy" ng-model="eventDetails.startsAt"
             is-open="event.startOpen" close-text="Close">
         <span class="input-group-btn">
@@ -21,15 +31,8 @@
                 <i class="glyphicon glyphicon-calendar"></i>
             </button>
         </span>
-    </p>
-    <div class="row" style="padding:2%">
+    </p> -->
 
-        <div uib-timepicker ng-model="eventDetails.startsAt" hour-step="1" minute-step="10" show-meridian="true">
-        </div>
-        &nbspTo&nbsp
-        <div uib-timepicker ng-model="eventDetails.endsAt" hour-step="1" minute-step="10" show-meridian="true">
-        </div>
-    </div>
     <!-- <label>Student Name</label>
         <br>
         <input type="text" ng-model="eventDetails.studentName"><br>

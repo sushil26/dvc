@@ -19,7 +19,7 @@
                     </h3>
                 </th>
                 <th>:&nbsp
-                    <input style="margin-top:10px;" type="time" ng-model="eventDetails.startsAt"> to
+                    <input style="margin-top:10px;" type="time" ng-model="eventDetails.startsAt" readonly> to
                     <input style="margin-top:10px;" type="time" ng-model="eventDetails.endsAt">
                 </th>
             </tr>
@@ -56,10 +56,11 @@
 
             </tr>
             <tr>
-                <td>Message</td>
-                <td>
-                    <textarea type="text" ng-model="eventDetails.reason"></textarea>
-                </td>
+                    <div class="form-group">
+                            <label for="comment">Message:</label>
+                            <textarea class="form-control" rows="5" id="comment" ng-model="eventDetails.reason"></textarea>
+                          </div>
+               
 
             </tr>
         </thead>

@@ -145,8 +145,6 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     window.location.href = "https://norecruits.com";
   }
 
-
-
   $scope.getStudListForCS = function (css) {
 
     console.log("getStudListForCS-->");
@@ -435,6 +433,8 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
   // vm.viewDate = new Date();
   vm.calendarView = 'day';
   vm.viewDate = moment().startOf('day').toDate();
+  var originalFormat = calendarConfig.dateFormats.hour;
+    calendarConfig.dateFormats.hour = 'HH:mm';
   var actions = [{
     label: '<i class=\'glyphicon glyphicon-pencil\'></i>',
     onClick: function (args) {
@@ -578,9 +578,9 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     $event.stopPropagation();
     event[field] = !event[field];
   };
-  vm.timespanClicked = function (date, event) {
+  vm.timespanClicked = function (date) {
   console.log("timespanClicked-->");
-  console.log("event: "+JSON.stringify(event));
+ 
     vm.lastDateClicked = date;
     // alert("date: "+moment(date).startOf('day')+"date*: "+moment().startOf('day'));
     // alert('Edited', args.calendarEvent);

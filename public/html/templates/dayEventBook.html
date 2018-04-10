@@ -8,12 +8,14 @@
                 </th>
                 <th>
                    
-                    <h3 style="color:coral">{{ eventDetails.startsAt | date }} at</h3>
+                    <h3 style="color:coral">{{ eventDetails.startsAt | date }}</h3>
                 </th>
+                <th>at</th>
                 <th>
                     &nbsp
                     <input style="margin-top:10px;" type="time" ng-model="eventDetails.startsAt">
                 </th>
+                <th>to</th>
                 <th>
                     &nbsp
                     <input style="margin-top:10px;" type="time" ng-model="eventDetails.endsAt">

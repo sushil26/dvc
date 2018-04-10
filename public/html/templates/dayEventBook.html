@@ -4,26 +4,25 @@
         <thead>
             <tr>
                 <th>
-                    <h3>Shedule on  &nbsp</h3>
+                    <h3>Shedule on &nbsp</h3>
                 </th>
                 <th>
-                   
-                    <h3 style="color:coral">{{ eventDetails.startsAt | date }}</h3>
+                    <h3 style="color:coral">:&nbsp{{ eventDetails.startsAt | date }}</h3>
                 </th>
-                <th><h3>at</h3></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
                 <th>
-                    &nbsp
-                    <input style="margin-top:10px;" type="time" ng-model="eventDetails.startsAt">
+                    <h3>
+                        Timing &nbsp
+                    </h3>
                 </th>
-                <th><h3>to</h3></th>
-                <th>
-                    &nbsp
+                <th>:&nbsp
+                    <input style="margin-top:10px;" type="time" ng-model="eventDetails.startsAt"> to
                     <input style="margin-top:10px;" type="time" ng-model="eventDetails.endsAt">
                 </th>
             </tr>
-
-        </thead>
-        <tbody>
 
         </tbody>
     </table>
@@ -41,39 +40,30 @@
 </div>
 
 <div class="modal-body loginpopUp_body">
-    <select class="btn btn-primary" placeholder="select" ng-model="cssSelect" ng-change="getStudListForCS(cssSelect)" ng-options="css as css.class+ '-' + css.section + '-' + css.subject for css in teacherData[0].css">
-        <option value="" disabled selected>Class</option>
-    </select>
-    <select class="btn btn-primary" placeholder="select" ng-model="csSelect" ng-options="cs as cs.name + '-' + cs.studId for cs in studList">
-        <option value="" disabled selected>Student</option>
-    </select>
-    <!-- <label>Event Name</label>
-        <input type="text" class="form-control" ng-model="eventDetails.title"> -->
-    <label>Timing</label>
-    <!-- <p class="input-group">
-        <input type="text" style="margin-bottom: -4px;" class="form-control" readonly uib-datepicker-popup="dd MMMM yyyy" ng-model="eventDetails.startsAt"
-            is-open="event.startOpen" close-text="Close">
-        <span class="input-group-btn">
-            <button type="button" style="margin-top: 0px;height: 33px;" class="btn btn-default" ng-click="vm.toggle($event, 'startOpen', event)">
-                <i class="glyphicon glyphicon-calendar"></i>
-            </button>
-        </span>
-    </p> -->
+    <table>
+        <thead>
+            <tr>
+                <td>
+                    <select class="btn btn-primary" placeholder="select" ng-model="cssSelect" ng-change="getStudListForCS(cssSelect)" ng-options="css as css.class+ '-' + css.section + '-' + css.subject for css in teacherData[0].css">
+                        <option value="" disabled selected>Class</option>
+                    </select>
+                </td>
+                <td>
+                    <select class="btn btn-primary" placeholder="select" ng-model="csSelect" ng-options="cs as cs.name + '-' + cs.studId for cs in studList">
+                        <option value="" disabled selected>Student</option>
+                    </select>
+                </td>
 
-    <!-- <label>Student Name</label>
-        <br>
-        <input type="text" ng-model="eventDetails.studentName"><br>
-        <label>Student Id</label>
-        <br>
-        <input type="text" ng-model="eventDetails.studendtId"><br> -->
-    <!-- <label>Email</label>
-        <br>
-            <input type="email" ng-model="eventDetails.email"><br> -->
-    <label>Message</label>
-    <br>
-    <textarea type="text" ng-model="eventDetails.reason"></textarea>
-    <br>
+            </tr>
+            <tr>
+                <td>Message</td>
+                <td>
+                    <textarea type="text" ng-model="eventDetails.reason"></textarea>
+                </td>
 
+            </tr>
+        </thead>
+    </table>
 
 </div>
 <div class="modal-footer loginpopUp_footer">

@@ -78,10 +78,10 @@
                   <select ng-if="userLoginType=='studParent'" class="btn btn-primary" placeholder="select" ng-model="csSelect" ng-change="getTeacherCalendar(csSelect)"
                     ng-options="cs as cs.name + '-' + cs.teacherId+'-'+cs.subject for cs in teacherList">
                     <option value="" disabled selected>Teacher</option>
-                  </select>------{{csSelect.name}}
+                  </select>
                   <button class="btn btn-primary" ng-if="calendarOwner!='Your'" ng-click="eventGet()">My Calendar</button>
-                  <button class="btn btn-primary" ng-if="calendarOwner=='Your' && userLoginType=='studParent' && csSelect.name != 'undefined'" ng-click="getSelectedTeacherPersonalData(csSelect.id)">{{csSelect.name}} Calendar</button>
-                  <button class="btn btn-primary" ng-if="calendarOwner=='Your' && userLoginType=='teacher' && csSelect.name !='undefined'" ng-click="getSelectedStudentPersonalData(csSelect.id)">{{csSelect.name}} Calendar</button>
+                  <button class="btn btn-primary" ng-if="calendarOwner=='Your' && userLoginType=='studParent'" ng-click="getSelectedTeacherPersonalData(csSelect.id)">{{csSelect.name}} Calendar</button>
+                  <button class="btn btn-primary" ng-if="calendarOwner=='Your' && userLoginType=='teacher'" ng-click="getSelectedStudentPersonalData(csSelect.id)">{{csSelect.name}} Calendar</button>
                 </form>
               </div>
             </div>

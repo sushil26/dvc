@@ -10,7 +10,7 @@ var nodemailer = require('nodemailer');
 // var randomstring = require("randomstring");
 
 var transporter = nodemailer.createTransport({
-    service: 'Gmail',
+    service: 'gmail',
     auth: {
         user: 'logeswari.careator@gmail.com',
         pass: 'iloveindia'

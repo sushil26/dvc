@@ -117,7 +117,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
   }
 
 
-  
+
   $scope.getStudentCalendar = function(css){
     console.log("getStudentCalendar-->");
     console.log("css" + css.id);
@@ -151,9 +151,9 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
             "email": $scope.specificTED[x].email
           }
           console.log(" obj" + JSON.stringify(obj))
-          vm.events =[];
-          //vm.events.push(obj);
-          vm.events = obj;
+           vm.events =[];
+         // vm.events.push(obj);
+           vm.events.push(obj);
         }
       }
       else {

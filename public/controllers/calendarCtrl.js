@@ -116,6 +116,8 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     console.log("<--get Selected Student PersonalData");
   }
 
+
+  
   $scope.getStudentCalendar = function(css){
     console.log("getStudentCalendar-->");
     console.log("css" + css.id);

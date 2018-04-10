@@ -349,7 +349,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
           "end": $scope.endDateRes,
           "startAt": $scope.startFiltered,
           "endAt": $scope.endFiltered, /* ###Note: have work and this is unwanted */
-          "primColor": primColor,
+          "primColor": "red",
           "url": url,
           "date": $scope.date,
           "sd": $scope.sd,

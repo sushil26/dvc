@@ -37,11 +37,11 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
       if (checkStatus) {
         $scope.studentData = data.data.data;
         console.log("studentData: " + JSON.stringify($scope.studentData));
-       
+
         $scope.studClass = $scope.studentData[0].cs[0].class;
         $scope.studSection = $scope.studentData[0].cs[0].section;
         var api = "https://norecruits.com/vc/getTeacherListForCS" + "/" + $scope.studClass + "/" + $scope.studSection;
-      
+
         console.log("api: " + api);
         httpFactory.get(api).then(function (data) {
           var checkStatus = httpFactory.dataValidation(data);
@@ -51,12 +51,12 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
             console.log("teacherListForStudent: " + JSON.stringify($scope.teacherListForStudent));
             for (var x = 0; x < $scope.teacherListForStudent.length; x++) {
 
-              for(var y = 0; y < $scope.teacherListForStudent[x].css.length; y++){
-                if($scope.teacherListForStudent[x].css[y].class ==  $scope.studClass && $scope.teacherListForStudent[x].css[y].section == $scope.studSection)
-                $scope.teacherList.push({ "id": $scope.teacherListForStudent[x]._id, "name": $scope.teacherListForStudent[x].teacherName, "teacherId": $scope.teacherListForStudent[x].teacherId, "subject": $scope.teacherListForStudent[x].css[y].subject });
+              for (var y = 0; y < $scope.teacherListForStudent[x].css.length; y++) {
+                if ($scope.teacherListForStudent[x].css[y].class == $scope.studClass && $scope.teacherListForStudent[x].css[y].section == $scope.studSection)
+                  $scope.teacherList.push({ "id": $scope.teacherListForStudent[x]._id, "name": $scope.teacherListForStudent[x].teacherName, "teacherId": $scope.teacherListForStudent[x].teacherId, "subject": $scope.teacherListForStudent[x].css[y].subject });
               }
-              
-    
+
+
             }
             console.log(" $scope.teacherList: " + $scope.teacherList);
             // console.log(" $scope.studList.length: " + $scope.studList.length);
@@ -70,7 +70,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
         console.log("studClass: " + JSON.stringify($scope.studClass));
         console.log("studSection: " + JSON.stringify($scope.studSection));
         console.log("studentData: " + JSON.stringify($scope.studentData));
-        
+
       }
       else {
       }
@@ -78,60 +78,60 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     console.log("<--getTeacherData");
   }
 
-  $scope.getSelectedTeacherPersonalData = function(id){
+  $scope.getSelectedTeacherPersonalData = function (id) {
     console.log("getSelectedTeacherPersonalData-->");
     var api = "https://norecruits.com/vc/teacherPersonalData" + "/" + id;
-    console.log("api: "+api);
-      httpFactory.get(api).then(function (data) {
-        var checkStatus = httpFactory.dataValidation(data);
-        console.log("data--" + JSON.stringify(data.data));
-        if (checkStatus) {
-          $scope.teacherPersonalData = data.data.data;
-          console.log("$scope.teacherPersonalData: "+JSON.stringify($scope.teacherPersonalData));
-        }
-        else {
-          //alert("Event get Failed");
-        }
-  
-      })
+    console.log("api: " + api);
+    httpFactory.get(api).then(function (data) {
+      var checkStatus = httpFactory.dataValidation(data);
+      console.log("data--" + JSON.stringify(data.data));
+      if (checkStatus) {
+        $scope.teacherPersonalData = data.data.data;
+        console.log("$scope.teacherPersonalData: " + JSON.stringify($scope.teacherPersonalData));
+      }
+      else {
+        //alert("Event get Failed");
+      }
+
+    })
     console.log("<--getSelectedTeacherPersonalData");
   }
 
-  $scope.getSelectedStudentPersonalData = function(id){
+  $scope.getSelectedStudentPersonalData = function (id) {
     console.log("get Selected Student PersonalData-->");
     var api = "https://norecruits.com/vc/studentPersonalData" + "/" + id;
-    console.log("api: "+api);
-      httpFactory.get(api).then(function (data) {
-        var checkStatus = httpFactory.dataValidation(data);
-        console.log("data--" + JSON.stringify(data.data));
-        if (checkStatus) {
-          $scope.studentPersonalData = data.data.data;
-          console.log("$scope.studentPersonalData: "+JSON.stringify($scope.studentPersonalData));
-        }
-        else {
-          //alert("Event get Failed");
-        }
-  
-      })
+    console.log("api: " + api);
+    httpFactory.get(api).then(function (data) {
+      var checkStatus = httpFactory.dataValidation(data);
+      console.log("data--" + JSON.stringify(data.data));
+      if (checkStatus) {
+        $scope.studentPersonalData = data.data.data;
+        console.log("$scope.studentPersonalData: " + JSON.stringify($scope.studentPersonalData));
+      }
+      else {
+        //alert("Event get Failed");
+      }
+
+    })
     console.log("<--get Selected Student PersonalData");
   }
 
 
 
-  $scope.getStudentCalendar = function(css){
+  $scope.getStudentCalendar = function (css) {
     console.log("getStudentCalendar-->");
     console.log("css" + css.id);
     console.log("JSON.css" + JSON.stringify(css));
     $scope.remoteCalendarId = css.id;
-   $scope.getSelectedStudentPersonalData($scope.remoteCalendarId);
+    $scope.getSelectedStudentPersonalData($scope.remoteCalendarId);
     var api = "https://norecruits.com/vc/eventGet" + "/" + css.id;
-  console.log("api: "+api);
+    console.log("api: " + api);
     httpFactory.get(api).then(function (data) {
       var checkStatus = httpFactory.dataValidation(data);
       console.log("data--" + JSON.stringify(data.data));
       if (checkStatus) {
         $scope.specificTED = data.data.data;/* ### Note:Function Name specificTED --> specificTeachEventData(specificTED) ### */
-        console.log("$scope.specificTED.length: "+$scope.specificTED.length);
+        console.log("$scope.specificTED.length: " + $scope.specificTED.length);
         for (var x = 0; x < $scope.specificTED.length; x++) {
           console.log("$scope.specificTED[" + x + "]: " + JSON.stringify($scope.specificTED[x]));
           var obj = {
@@ -151,9 +151,9 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
             "email": $scope.specificTED[x].email
           }
           console.log(" obj" + JSON.stringify(obj))
-           vm.events =[];
-         // vm.events.push(obj);
-           vm.events.push(obj);
+          vm.events = [];
+          // vm.events.push(obj);
+          vm.events.push(obj);
         }
       }
       else {
@@ -161,24 +161,24 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
       }
 
     })
-    
+
     console.log("<--getStudentCalendar");
   }
 
-    $scope.getTeacherCalendar = function(css){
+  $scope.getTeacherCalendar = function (css) {
     console.log("getTeacherCalendar-->");
     console.log("css" + css.id);
     console.log("JSON.css" + JSON.stringify(css));
     $scope.remoteCalendarId = css.id;
-   $scope.getSelectedTeacherPersonalData($scope.remoteCalendarId);
+    $scope.getSelectedTeacherPersonalData($scope.remoteCalendarId);
     var api = "https://norecruits.com/vc/eventGet" + "/" + css.id;
-  console.log("api: "+api);
+    console.log("api: " + api);
     httpFactory.get(api).then(function (data) {
       var checkStatus = httpFactory.dataValidation(data);
       console.log("data--" + JSON.stringify(data.data));
       if (checkStatus) {
         $scope.specificTED = data.data.data;/* ### Note:Function Name specificTED --> specificTeachEventData(specificTED) ### */
-        console.log("$scope.specificTED.length: "+$scope.specificTED.length);
+        console.log("$scope.specificTED.length: " + $scope.specificTED.length);
         for (var x = 0; x < $scope.specificTED.length; x++) {
           console.log("$scope.specificTED[" + x + "]: " + JSON.stringify($scope.specificTED[x]));
           var obj = {
@@ -199,7 +199,10 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
           }
           console.log(" obj" + JSON.stringify(obj));
           // vm.events.push(obj);
-          vm.events = obj;
+          vm.events = [];
+
+          vm.events.push(obj);
+
         }
       }
       else {
@@ -207,7 +210,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
       }
 
     })
-    
+
     console.log("<--getTeacherCalendar");
   }
 
@@ -385,25 +388,25 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     console.log("$scope.urlDate: " + $scope.urlDate);
     console.log("$scope.endDate: " + $scope.endDate);
     console.log("$scope.endDateRes: " + $scope.endDateRes);
-    
-    if($scope.userLoginType=='studParent'){
+
+    if ($scope.userLoginType == 'studParent') {
       var senderName = $scope.studentData[0].studName;
       var studId = $scope.studentData[0].studId;
       var email = $scope.teacherPersonalData[0].teacherEmail;/* ### Note: teacher email Id ### */
-     
+
       $scope.eventSend(reason, senderName, studId, email);
     }
-    if($scope.userLoginType=='teacher'){
+    if ($scope.userLoginType == 'teacher') {
       var teacherName = $scope.teacherData[0].teacherName;
       var teacherId = $scope.teacherData[0].teacherId;
       var email = $scope.studentPersonalData[0].parentEmail;/* ### Note: parentEmail email Id ### */
       $scope.eventSend(reason, teacherName, teacherId, email);
     }
-  
+
 
   }
 
-  $scope.eventSend = function (res, name, id,email) {
+  $scope.eventSend = function (res, name, id, email) {
     console.log("eventSend-->");
     var SIGNALING_SERVER = "https://norecruits.com";
     //var SIGNALING_SERVER = "http://localhost:5000";
@@ -533,7 +536,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
   vm.calendarView = 'day';
   vm.viewDate = moment().startOf('day').toDate();
   var originalFormat = calendarConfig.dateFormats.hour;
-    calendarConfig.dateFormats.hour = 'HH:mm';
+  calendarConfig.dateFormats.hour = 'HH:mm';
 
   var actions = [{
     label: '<i class=\'glyphicon glyphicon-pencil\'></i>',
@@ -679,8 +682,8 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     event[field] = !event[field];
   };
   vm.timespanClicked = function (date) {
-  console.log("timespanClicked-->");
- 
+    console.log("timespanClicked-->");
+
     vm.lastDateClicked = date;
     // alert("date: "+moment(date).startOf('day')+"date*: "+moment().startOf('day'));
     // alert('Edited', args.calendarEvent);

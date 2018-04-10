@@ -322,7 +322,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     if($scope.userLoginType=='studParent'){
       var senderName = $scope.studentData[0].studName;
       var studId = $scope.studentData[0].studId;
-      var email = $scope.specificTED[0].email;/* ### Note: teacher email Id ### */
+      var email = $scope.teacherPersonalData[0].teacherEmail;/* ### Note: teacher email Id ### */
      
       $scope.eventSend(reason,senderName,studId,email);
     }

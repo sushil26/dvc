@@ -102,10 +102,13 @@
       <thead>
         <tr style="background: darkturquoise;">
           <th>Sr.no</th>
-          <th>Student Name</th>
           <th>Student Id</th>
-          <th>Parent Name</th>
-          <th>Parent Email</th>
+          <th>Student Name</th>
+        
+          <th>Father Name</th>
+          <th>Father Email</th>
+          <th>Mother Name</th>
+          <th>Mother Email</th>
           <th>Status</th>
           <th>Activation</th>
           <th>Delete</th>
@@ -115,11 +118,14 @@
       <tbody>
         <tr ng-repeat="sd in studData">
           <td style="background-color:aliceblue;">{{$index+1}}.</td>
+          <td style="background-color:aliceblue;">{{sd.studId}}</td>
           <td style="background-color:aliceblue;">
             <button type="button" class="btn-info " data-toggle="modal" data-target="#myModal">{{sd.studName}}</button>
             <!-- Modal -->
           </td>
-          <td style="background-color:aliceblue;">{{sd.studId}}</td>
+          
+          <td style="background-color:aliceblue;">{{sd.motherName}}</td>
+          <td style="background-color:aliceblue;">{{sd.motherEmail}}</td>
           <td style="background-color:aliceblue;">{{sd.parentName}}</td>
           <td style="background-color:aliceblue;">{{sd.parentEmail}}</td>
           <td ng-if="sd.status=='active'" style="background-color:aliceblue;">{{sd.status}}</td>

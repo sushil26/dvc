@@ -455,7 +455,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
           if (checkStatus) {
             console.log("data" + JSON.stringify(data.data))
             // $window.location.href = $scope.propertyJson.R082;
-            alert("Successfully sent the event " + data.data.message);
+            alert("Successfully sent the event");
             vm.events.splice(0, 1);
             var eventPostedData = data.data.data;
             vm.events.push({

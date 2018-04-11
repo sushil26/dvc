@@ -10,10 +10,10 @@ var nodemailer = require("nodemailer");
 // var randomstring = require("randomstring");
 
 var transporter = nodemailer.createTransport({
-  service: "gmail",
+  service: "godaddy",
   auth: {
-    user: "logeswari.careator@gmail.com",
-    pass: "iloveindia"
+    user: "support@vc4all.in",
+    pass: "ctpl@123"
   },
   tls: {
     rejectUnauthorized: false

@@ -34,11 +34,11 @@ app.controller('studentInsertCtrl', function ($scope, $window, httpFactory) {
   
               console.log("data" + JSON.stringify(data.data))
               // $window.location.href = $scope.propertyJson.R082;
-              alert("Successfully teacher inserted " + data.data.message);
+              alert("Successfully Student inserted " + data.data.message);
              
             }
             else {
-              alert("Teacher Insert Fail");
+              alert("student Insert Fail");
   
             }
   

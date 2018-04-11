@@ -73,7 +73,7 @@
       <tbody>
         <tr ng-repeat="ud in userData">
           <td style="background-color:aliceblue;">{{$index+1}}.</td>
-          <td style="background-color:aliceblue;">
+          <td style="background-color:aliceblue;">---{{$index}}
             <button type="button" class="btn-info " ng-click="timeTable($index)">{{ud.teacherName}}</button>
           </td>
           <td style="background-color:aliceblue;">{{ud.teacherId}}</td>

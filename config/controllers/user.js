@@ -144,7 +144,7 @@ module.exports.login4VC = function(req, res) {
             }
           });
       } else {
-        stud.find({ parentEmail: req.body.email }).toArray(function(err, data) {
+        stud.find({$or :[{ parentEmail: req.body.email },{ MotherEmail: req.body.email }]}).toArray(function(err, data) {
           if (data.length > 0) {
             if (data[0].password == req.body.pswd) {
               if (data[0].status == "active") {
@@ -152,7 +152,7 @@ module.exports.login4VC = function(req, res) {
                 responseData = {
                   status: true,
                   message: "Login Successfully",
-                  loginType: "teacher",
+                  loginType: "Parent",
                   data: data[0]
                 };
                 res.status(200).send(responseData);

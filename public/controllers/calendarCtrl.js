@@ -390,10 +390,15 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     console.log("$scope.endDateRes: " + $scope.endDateRes);
 
     var conflicts = vm.events.some(function (event) {
-      return (event.startsAt <= s && s <= event.endsAt) ||
-      event.startsAt <= e && e <= event.endsAt ||
-      s <= event.startsAt && event.startsAt <= e ||
-      s <= event.endsAt && event.endsAt <= e
+    //   return (event.startsAt <= s && s <= event.endsAt) ||
+    //   event.startsAt <= e && e <= event.endsAt ||
+    //   s <= event.startsAt && event.startsAt <= e ||
+    //   s <= event.endsAt && event.endsAt <= e
+    // });
+      return (event.startsAt < s && s < event.endsAt) ||
+      event.startsAt < e && e < event.endsAt ||
+      s < event.startsAt && event.startsAt < e ||
+      s < event.endsAt && event.endsAt < e
     });
     // if (conflicts) return;
     // vm.events.push(vm.mytime);

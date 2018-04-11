@@ -392,27 +392,9 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     console.log("$scope.endDate: " + $scope.endDate);
     console.log("$scope.endDateRes: " + $scope.endDateRes);
 
-    var conflicts = vm.events.some(function (event) {
-      //   return (event.startsAt <= s && s <= event.endsAt) ||
-      //   event.startsAt <= e && e <= event.endsAt ||
-      //   s <= event.startsAt && event.startsAt <= e ||
-      //   s <= event.endsAt && event.endsAt <= e
-      // });
-      return (event.startsAt <= s && s < event.endsAt) ||
-        event.startsAt < e && e < event.endsAt ||
-        s <= event.startsAt && event.startsAt < e ||
-        s < event.endsAt && event.endsAt < e
-    });
-    // if (conflicts) return;
-    // vm.events.push(vm.mytime);
+ 
     dayEventmodal.close('resetModel');
-    console.log("conflicts: " + conflicts);
-    if (conflicts) {
-      console.log("conflicts is there");
-       alert("This time already booked, try on other time");
-    }
-    else {
-      console.log("No conflicts");
+    
       if ($scope.userLoginType == 'studParent') {
         var senderName = $scope.studentData[0].studName;
         var studId = $scope.studentData[0].studId;
@@ -426,7 +408,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
         var email = $scope.studentPersonalData[0].parentEmail;/* ### Note: parentEmail email Id ### */
         $scope.eventSend(reason, teacherName, teacherId, email);
       }
-    }
+    
 
   }
 
@@ -714,6 +696,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     console.log("rangeSelected-->");
     console.log("startDate: " + startDate);
     console.log("endDate: " + endDate);
+
     var conflicts = vm.events.some(function (event) {
       //   return (event.startsAt <= s && s <= event.endsAt) ||
       //   event.startsAt <= e && e <= event.endsAt ||
@@ -725,9 +708,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
         s <= event.startsAt && event.startsAt < e ||
         s < event.endsAt && event.endsAt < e
     });
-    // if (conflicts) return;
-    // vm.events.push(vm.mytime);
-    // dayEventmodal.close('resetModel');
+    
     console.log("conflicts: " + conflicts);
     if (conflicts) {
       console.log("conflicts is there");
@@ -735,30 +716,31 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     }
     else {
       console.log("No conflicts");
+      dayEventmodal = $uibModal.open({
+        scope: $scope,
+        templateUrl: '/html/templates/dayEventBook.html',
+        windowClass: 'show',
+        backdropClass: 'show',
+        controller: function ($scope, $uibModalInstance) {
+          // moment().startOf('day').toDate()
+          var dt = new Date();
+          $scope.eventDetails = {
+  
+            "startsAt": startDate,
+            "endsAt": endDate
+  
+          }
+  
+          console.log("$scope.eventDetails: " + $scope.eventDetails);
+        }
+      })
     }
     // vm.lastDateClicked = date;
     // alert("date: "+moment(date).startOf('day')+"date*: "+moment().startOf('day'));
     // alert('Edited', args.calendarEvent);
     // console.log("args.calendarEvent: " + args.calendarEvent);
     // console.log("JSON args.calendarEvent: " + JSON.stringify(args.calendarEvent));
-    dayEventmodal = $uibModal.open({
-      scope: $scope,
-      templateUrl: '/html/templates/dayEventBook.html',
-      windowClass: 'show',
-      backdropClass: 'show',
-      controller: function ($scope, $uibModalInstance) {
-        // moment().startOf('day').toDate()
-        var dt = new Date();
-        $scope.eventDetails = {
-
-          "startsAt": startDate,
-          "endsAt": endDate
-
-        }
-
-        console.log("$scope.eventDetails: " + $scope.eventDetails);
-      }
-    })
+    
     // alert.show('Edited', args.calendarEvent);
 
 

@@ -681,7 +681,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     $event.stopPropagation();
     event[field] = !event[field];
   };
-  vm.timespanClicked = function (date) {
+  vm.rangeSelected = function (startDate, endDate) {
     console.log("timespanClicked-->");
 
     vm.lastDateClicked = date;
@@ -699,7 +699,8 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
         var dt = new Date();
         $scope.eventDetails = {
 
-          "startsAt": date.toDate()
+          "startsAt": startDate.toDate(),
+          "endsAt": endDate.toDate()
 
         }
 

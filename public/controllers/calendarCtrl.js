@@ -727,7 +727,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     });
     // if (conflicts) return;
     // vm.events.push(vm.mytime);
-    dayEventmodal.close('resetModel');
+    // dayEventmodal.close('resetModel');
     console.log("conflicts: " + conflicts);
     if (conflicts) {
       console.log("conflicts is there");

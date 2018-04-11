@@ -1,15 +1,15 @@
 app.controller('userAuthCtrl', function ($scope, $window, httpFactory) {
     console.log("userAuthCtrl==>: " + localStorage.getItem("userData"));
 
-    if(localStorage.getItem("loginType")=='admin'){
-        console.log("loginType: "+localStorage.getItem("loginType"));
-        document.getElementById('userAuth').style.display="none";
-         $scope.userLoginType='admin';
+    if (localStorage.getItem("loginType") == 'admin') {
+        console.log("loginType: " + localStorage.getItem("loginType"));
+        document.getElementById('userAuth').style.display = "none";
+        $scope.userLoginType = 'admin';
     }
-    else{
-        window.location.href="https://norecruits.com";
+    else {
+        window.location.href = "https://norecruits.com";
     }
-    
+
 
     $scope.getUser = function () {
         console.log("getUser-->");
@@ -32,7 +32,7 @@ app.controller('userAuthCtrl', function ($scope, $window, httpFactory) {
         })
         console.log("<--getUser");
     }
-  
+
     $scope.getUser();
 
     $scope.getStudentList = function () {
@@ -74,7 +74,7 @@ app.controller('userAuthCtrl', function ($scope, $window, httpFactory) {
             if (checkStatus) {
                 $scope.userData[index].status = status;
                 alert("Updated Status Successfully");
-               
+
             }
             else {
                 alert("Status updated failed, try again ");
@@ -130,7 +130,7 @@ app.controller('userAuthCtrl', function ($scope, $window, httpFactory) {
             if (checkStatus) {
                 $scope.studData[index].status = status;
                 alert("Updated Status Successfully");
-               
+
             }
             else {
                 alert("Status updated failed, try again ");
@@ -170,10 +170,11 @@ app.controller('userAuthCtrl', function ($scope, $window, httpFactory) {
         console.log("<--deleteUser");
     }
 
-    $scope.tableForTimes=function(id){
+    $scope.tableForTimes = function (id) {
         console.log("timeTable-->");
-        $scope.getUserData=$scope.userData[id];;
+        $scope.getUserData = $scope.userData[id];
+        console.log("$scope.getUserData: " + JSON.stringify($scope.getUserData));
         console.log("<--timeTable");
-      }
-      
+    }
+
 })

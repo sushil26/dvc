@@ -12,7 +12,7 @@ var nodemailer = require("nodemailer");
 var transporter = nodemailer.createTransport({
   service: "godaddy",
   auth: {
-    user: "support@vc4all.in",
+    user: "info@vc4all.in",
     pass: "ctpl@123"
   },
   tls: {
@@ -413,7 +413,7 @@ module.exports.emailInvite = function(req, res) {
     html:
       "<html><head><p><b>Dear Parents, </b></p><p>Please note, you have to attend meeting right now, please open the below link.<p>Here your link: " +
       req.body.url +
-      "and password: abc</p><p>Regards</p><p><b>Careator Technologies Pvt. Ltd</b></p></head><body></body></html>"
+      " and password: abc</p><p>Regards</p><p><b>Careator Technologies Pvt. Ltd</b></p></head><body></body></html>"
   };
   console.log("mailOptions: " + JSON.stringify(mailOptions));
 

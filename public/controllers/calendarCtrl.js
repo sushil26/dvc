@@ -649,7 +649,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
       backdropClass: 'show',
       controller: function ($scope, $uibModalInstance) {
         $scope.eventDetails = event;
-        console.log("$scope.eventDetails: " + $scope.eventDetails);
+        console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
       }
     })
     console.log("<--eventClicked");

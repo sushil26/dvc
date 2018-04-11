@@ -684,7 +684,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
   vm.rangeSelected = function (startDate, endDate) {
     console.log("timespanClicked-->");
 
-    vm.lastDateClicked = date;
+    // vm.lastDateClicked = date;
     // alert("date: "+moment(date).startOf('day')+"date*: "+moment().startOf('day'));
     // alert('Edited', args.calendarEvent);
     // console.log("args.calendarEvent: " + args.calendarEvent);

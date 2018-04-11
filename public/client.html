@@ -2,13 +2,13 @@
 <html>
 
 <head>
-  <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <title>Video Conference</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <link href="/home/img/fav.png" rel="icon" size="32x32">
     <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
-     <!-- <script src="/js/socket.io-1.4.5.js"></script> -->
-     <!-- <script src="/socket.io/lib/socket.js"></script>  -->
+    <!-- <script src="/js/socket.io-1.4.5.js"></script> -->
+    <!-- <script src="/socket.io/lib/socket.js"></script>  -->
     <script src="/home/lib/jquery/jquery.min.js"></script>
     <link href="/home/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Libraries CSS Files -->
@@ -17,7 +17,7 @@
     <!-- Main Stylesheet File -->
     <link href="/home/css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/chatZone.css" />
-   
+
     <script src="/js/clientmain.js"></script>
     <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
     <script src="/home/lib/jquery/jquery-migrate.min.js"></script>
@@ -91,7 +91,8 @@
                                     &nbsp
                                     <b>Start Video Conference</b>
                                 </button>
-                            </a><br>
+                            </a>
+                            <br>
                             <a id="scheduleMeeting" href="/mainPage" style="display:none;">
                                 <button id="scheduleStart" class="btn fa fa-calendar">
                                     &nbsp
@@ -220,7 +221,7 @@
                                             border-radius: 5px;
                                             border-color:  white;
                                         ">
-                                  Opera Extension</button>
+                                                Opera Extension</button>
                                         </a> then Screen Sharing from below
                                     </h6>
                                 </div>
@@ -233,7 +234,7 @@
                                             border-radius: 5px;
                                             border-color:  white;
                                         ">
-                                   Screen Sharing</button>
+                                                Screen Sharing</button>
                                         </a>
                                     </h6>
                                     <!-- <button type="button" id="screenShareBtn" class="btn" style="background-color: #29b6bd;color:#f1f1f1;display:none;">Start Screen Sharing</button> -->
@@ -446,6 +447,13 @@
 
     <script src="/js/chat.js"></script>
     <script>
+            $("#message").keyup(function (event) {
+                if (event.keyCode === 13) {
+                    $("#sndmgs").click();
+                }
+            });
+        </script>
+    <script>
         $(document).ready(function () {
             $("#openChat").click(function () {
                 //alert("hui");
@@ -459,11 +467,14 @@
         });
     </script>
     <style>
-#videosAttach{
-    transform: rotateY(180deg);
-    -webkit-transform:rotateY(180deg); /* Safari and Chrome */
-    -moz-transform:rotateY(180deg); /* Firefox */
-}
+        /* mirror Affect */
+        #videosAttach {
+            transform: rotateY(180deg);
+            -webkit-transform: rotateY(180deg);
+            /* Safari and Chrome */
+            -moz-transform: rotateY(180deg);
+            /* Firefox */
+        }
 
 
         #portfolio .portfolio-items {

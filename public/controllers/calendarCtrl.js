@@ -389,19 +389,29 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     console.log("$scope.endDate: " + $scope.endDate);
     console.log("$scope.endDateRes: " + $scope.endDateRes);
 
-    if ($scope.userLoginType == 'studParent') {
-      var senderName = $scope.studentData[0].studName;
-      var studId = $scope.studentData[0].studId;
-      var email = $scope.teacherPersonalData[0].teacherEmail;/* ### Note: teacher email Id ### */
+    var conflicts = vm.events.some(function (event) {
+      return (event.startsAt <= s && s <= event.endsAt) ||
+      event.startsAt <= e && e <= event.endsAt ||
+      s <= event.startsAt && event.startsAt <= e ||
+      s <= event.endsAt && event.endsAt <= e
+    });
+    // if (conflicts) return;
+    // vm.events.push(vm.mytime);
+console.log("conflicts: "+conflicts);
 
-      $scope.eventSend(reason, senderName, studId, email);
-    }
-    if ($scope.userLoginType == 'teacher') {
-      var teacherName = $scope.teacherData[0].teacherName;
-      var teacherId = $scope.teacherData[0].teacherId;
-      var email = $scope.studentPersonalData[0].parentEmail;/* ### Note: parentEmail email Id ### */
-      $scope.eventSend(reason, teacherName, teacherId, email);
-    }
+    // if ($scope.userLoginType == 'studParent') {
+    //   var senderName = $scope.studentData[0].studName;
+    //   var studId = $scope.studentData[0].studId;
+    //   var email = $scope.teacherPersonalData[0].teacherEmail;/* ### Note: teacher email Id ### */
+
+    //   $scope.eventSend(reason, senderName, studId, email);
+    // }
+    // if ($scope.userLoginType == 'teacher') {
+    //   var teacherName = $scope.teacherData[0].teacherName;
+    //   var teacherId = $scope.teacherData[0].teacherId;
+    //   var email = $scope.studentPersonalData[0].parentEmail;/* ### Note: parentEmail email Id ### */
+    //   $scope.eventSend(reason, teacherName, teacherId, email);
+    // }
 
 
   }

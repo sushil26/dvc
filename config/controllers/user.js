@@ -411,7 +411,7 @@ module.exports.emailInvite = function(req, res) {
     to: req.body.email,
     subject: "Regarding School Instance Meeting",
     html:
-      "<html><head><p><b>Dear Parents, </b></p><p>Please note, you have to attend meeting right now, please open the below link.<p>Here your link <a  href="+req.body.url+">xyz</a>and password: abc</p><p>Regards</p><p><b>Careator Technologies Pvt. Ltd</b></p></head><body></body></html>"
+      "<html><head><p><b>Dear Parents, </b></p><p>Please note, you have to attend meeting right now, please open the below link.<p>Here your link <a>"+req.body.url+"</a> and password: abc</p><p>Regards</p><p><b>Careator Technologies Pvt. Ltd</b></p></head><body></body></html>"
   };
   console.log("mailOptions: " + JSON.stringify(mailOptions));
 

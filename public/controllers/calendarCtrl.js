@@ -681,10 +681,11 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     $event.stopPropagation();
     event[field] = !event[field];
   };
-  vm.timespanClicked = function (date) {
-    console.log("timespanClicked-->");
-
-    vm.lastDateClicked = date;
+  vm.rangeSelected = function (startDate, endDate) {
+    console.log("rangeSelected-->");
+console.log("startDate: "+startDate);
+console.log("endDate: "+endDate);
+    // vm.lastDateClicked = date;
     // alert("date: "+moment(date).startOf('day')+"date*: "+moment().startOf('day'));
     // alert('Edited', args.calendarEvent);
     // console.log("args.calendarEvent: " + args.calendarEvent);
@@ -699,7 +700,8 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
         var dt = new Date();
         $scope.eventDetails = {
 
-          "startsAt": date.toDate()
+          "startsAt": startDate,
+          "endsAt": endDate
 
         }
 
@@ -709,7 +711,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     // alert.show('Edited', args.calendarEvent);
 
 
-    console.log("<--timespanClicked");
+    console.log("<--rangeSelected");
   };
 
   // vm.timespanClicked = function (date, cell) {

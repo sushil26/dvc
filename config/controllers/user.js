@@ -519,7 +519,6 @@ module.exports.studentInsert = function(req, res) {
     MotherName: req.body.motherName,
     MotherEmail: req.body.motherEmail,
     MotherNum: req.body.motherNum,
-
     cs: req.body.cs,
     pswd: req.body.pswd,
     status: "inactive",

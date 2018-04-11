@@ -682,7 +682,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     event[field] = !event[field];
   };
   vm.rangeSelected = function (startDate, endDate) {
-    console.log("timespanClicked-->");
+    console.log("rangeSelected-->");
 
     // vm.lastDateClicked = date;
     // alert("date: "+moment(date).startOf('day')+"date*: "+moment().startOf('day'));
@@ -710,7 +710,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     // alert.show('Edited', args.calendarEvent);
 
 
-    console.log("<--timespanClicked");
+    console.log("<--rangeSelected");
   };
 
   // vm.timespanClicked = function (date, cell) {

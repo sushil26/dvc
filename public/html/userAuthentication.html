@@ -1,6 +1,6 @@
 <div style="margin-top: 85px;" ng-controller="userAuthCtrl">
   <div class="container" ng-if="userLoginType=='admin'">
-<div ng-show="false">
+<div ng-if="getUserData.timeTable[0].Monday">
     <h2>Teacher Time Table</h2>
     <!-- ##### Start the Teacher List ##### -->
     <table class="table table-bordered">

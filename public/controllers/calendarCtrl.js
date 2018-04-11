@@ -712,6 +712,27 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     console.log("rangeSelected-->");
     console.log("startDate: " + startDate);
     console.log("endDate: " + endDate);
+    var conflicts = vm.events.some(function (event) {
+      //   return (event.startsAt <= s && s <= event.endsAt) ||
+      //   event.startsAt <= e && e <= event.endsAt ||
+      //   s <= event.startsAt && event.startsAt <= e ||
+      //   s <= event.endsAt && event.endsAt <= e
+      // });
+      return (event.startsAt <= s && s < event.endsAt) ||
+        event.startsAt < e && e < event.endsAt ||
+        s <= event.startsAt && event.startsAt < e ||
+        s < event.endsAt && event.endsAt < e
+    });
+    // if (conflicts) return;
+    // vm.events.push(vm.mytime);
+    dayEventmodal.close('resetModel');
+    console.log("conflicts: " + conflicts);
+    if (conflicts) {
+      console.log("conflicts is there");
+       alert("This time already booked, try on other time");
+    }
+    else {
+      console.log("No conflicts");
     // vm.lastDateClicked = date;
     // alert("date: "+moment(date).startOf('day')+"date*: "+moment().startOf('day'));
     // alert('Edited', args.calendarEvent);

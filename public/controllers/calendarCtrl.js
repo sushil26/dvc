@@ -1,6 +1,6 @@
 app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, httpFactory, moment, calendarConfig, $uibModal) {
   console.log("calendarCtrl==>: " + localStorage.getItem("userData"));
-  
+
   $scope.getTeacherData = function () {
     console.log("getTeacherData-->");
     var id = localStorage.getItem("id");
@@ -128,7 +128,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
       var checkStatus = httpFactory.dataValidation(data);
       console.log("data--" + JSON.stringify(data.data));
       if (checkStatus) {
-        $scope.calendarOwner=css.name;
+        $scope.calendarOwner = css.name;
         $scope.specificTED = data.data.data;/* ### Note:Function Name specificTED --> specificTeachEventData(specificTED) ### */
         console.log("$scope.specificTED.length: " + $scope.specificTED.length);
         for (var x = 0; x < $scope.specificTED.length; x++) {
@@ -176,7 +176,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
       var checkStatus = httpFactory.dataValidation(data);
       console.log("data--" + JSON.stringify(data.data));
       if (checkStatus) {
-        $scope.calendarOwner=css.name;
+        $scope.calendarOwner = css.name;
         $scope.specificTED = data.data.data;/* ### Note:Function Name specificTED --> specificTeachEventData(specificTED) ### */
         console.log("$scope.specificTED.length: " + $scope.specificTED.length);
         for (var x = 0; x < $scope.specificTED.length; x++) {
@@ -390,34 +390,39 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     console.log("$scope.endDateRes: " + $scope.endDateRes);
 
     var conflicts = vm.events.some(function (event) {
-    //   return (event.startsAt <= s && s <= event.endsAt) ||
-    //   event.startsAt <= e && e <= event.endsAt ||
-    //   s <= event.startsAt && event.startsAt <= e ||
-    //   s <= event.endsAt && event.endsAt <= e
-    // });
+      //   return (event.startsAt <= s && s <= event.endsAt) ||
+      //   event.startsAt <= e && e <= event.endsAt ||
+      //   s <= event.startsAt && event.startsAt <= e ||
+      //   s <= event.endsAt && event.endsAt <= e
+      // });
       return (event.startsAt < s && s < event.endsAt) ||
-      event.startsAt < e && e < event.endsAt ||
-      s < event.startsAt && event.startsAt < e ||
-      s < event.endsAt && event.endsAt < e
+        event.startsAt < e && e < event.endsAt ||
+        s < event.startsAt && event.startsAt < e ||
+        s < event.endsAt && event.endsAt < e
     });
     // if (conflicts) return;
     // vm.events.push(vm.mytime);
-console.log("conflicts: "+conflicts);
+    console.log("conflicts: " + conflicts);
+    if (conflicts) {
+      console.log("conflicts is there");
+       alert("This time already booked, try on other time");
+    }
+    else {
+      console.log("No conflicts");
+      if ($scope.userLoginType == 'studParent') {
+        var senderName = $scope.studentData[0].studName;
+        var studId = $scope.studentData[0].studId;
+        var email = $scope.teacherPersonalData[0].teacherEmail;/* ### Note: teacher email Id ### */
 
-    // if ($scope.userLoginType == 'studParent') {
-    //   var senderName = $scope.studentData[0].studName;
-    //   var studId = $scope.studentData[0].studId;
-    //   var email = $scope.teacherPersonalData[0].teacherEmail;/* ### Note: teacher email Id ### */
-
-    //   $scope.eventSend(reason, senderName, studId, email);
-    // }
-    // if ($scope.userLoginType == 'teacher') {
-    //   var teacherName = $scope.teacherData[0].teacherName;
-    //   var teacherId = $scope.teacherData[0].teacherId;
-    //   var email = $scope.studentPersonalData[0].parentEmail;/* ### Note: parentEmail email Id ### */
-    //   $scope.eventSend(reason, teacherName, teacherId, email);
-    // }
-
+        $scope.eventSend(reason, senderName, studId, email);
+      }
+      if ($scope.userLoginType == 'teacher') {
+        var teacherName = $scope.teacherData[0].teacherName;
+        var teacherId = $scope.teacherData[0].teacherId;
+        var email = $scope.studentPersonalData[0].parentEmail;/* ### Note: parentEmail email Id ### */
+        $scope.eventSend(reason, teacherName, teacherId, email);
+      }
+    }
 
   }
 
@@ -505,7 +510,7 @@ console.log("conflicts: "+conflicts);
     var id = localStorage.getItem("id");
     var api = "https://norecruits.com/vc/eventGet" + "/" + id;
     //var api = "http://localhost:5000/vc/eventGet"+ "/" + id;;
-    $scope.calendarOwner="Your";
+    $scope.calendarOwner = "Your";
     httpFactory.get(api).then(function (data) {
       var checkStatus = httpFactory.dataValidation(data);
       console.log("data--" + JSON.stringify(data.data));
@@ -568,7 +573,7 @@ console.log("conflicts: "+conflicts);
       //     console.log("$scope.eventDetails: " + $scope.eventDetails);
       //   }
       // })
-     
+
     }
   }, {
     label: '<i class=\'glyphicon glyphicon-remove\'></i>',
@@ -698,8 +703,8 @@ console.log("conflicts: "+conflicts);
   };
   vm.rangeSelected = function (startDate, endDate) {
     console.log("rangeSelected-->");
-console.log("startDate: "+startDate);
-console.log("endDate: "+endDate);
+    console.log("startDate: " + startDate);
+    console.log("endDate: " + endDate);
     // vm.lastDateClicked = date;
     // alert("date: "+moment(date).startOf('day')+"date*: "+moment().startOf('day'));
     // alert('Edited', args.calendarEvent);

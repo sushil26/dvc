@@ -709,6 +709,8 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     event[field] = !event[field];
   };
   vm.rangeSelected = function (startDate, endDate) {
+    var s =startDate;
+    var e = endDate;
     console.log("rangeSelected-->");
     console.log("startDate: " + startDate);
     console.log("endDate: " + endDate);
@@ -733,6 +735,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     }
     else {
       console.log("No conflicts");
+    }
     // vm.lastDateClicked = date;
     // alert("date: "+moment(date).startOf('day')+"date*: "+moment().startOf('day'));
     // alert('Edited', args.calendarEvent);

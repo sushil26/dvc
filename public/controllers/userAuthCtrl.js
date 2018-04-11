@@ -170,4 +170,10 @@ app.controller('userAuthCtrl', function ($scope, $window, httpFactory) {
         console.log("<--deleteUser");
     }
 
+    $scope.timesTable=function(id){
+        console.log("timeTable-->");
+        $scope.getUserData=$scope.userData[id];
+        console.log("<--timeTable");
+      }
+      
 })

@@ -700,8 +700,8 @@ console.log("endDate: "+endDate);
         var dt = new Date();
         $scope.eventDetails = {
 
-          "startsAt": startDate.toDate(),
-          "endsAt": endDate.toDate()
+          "startsAt": startDate,
+          "endsAt": endDate
 
         }
 

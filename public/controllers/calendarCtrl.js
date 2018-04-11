@@ -1,6 +1,8 @@
 app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, httpFactory, moment, calendarConfig, $uibModal) {
   console.log("calendarCtrl==>: " + localStorage.getItem("userData"));
 
+  var dayEventmodal; /* ### Note: open model for event send ###  */
+
   $scope.getTeacherData = function () {
     console.log("getTeacherData-->");
     var id = localStorage.getItem("id");
@@ -429,6 +431,9 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
 
   $scope.eventSend = function (res, name, id, email) {
     console.log("eventSend-->");
+
+    dayEventmodal.close('resetModel');
+
     var SIGNALING_SERVER = "https://norecruits.com";
     //var SIGNALING_SERVER = "http://localhost:5000";
     var queryLink = null;
@@ -711,7 +716,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     // alert('Edited', args.calendarEvent);
     // console.log("args.calendarEvent: " + args.calendarEvent);
     // console.log("JSON args.calendarEvent: " + JSON.stringify(args.calendarEvent));
-    var eClicked = $uibModal.open({
+    dayEventmodal = $uibModal.open({
       scope: $scope,
       templateUrl: '/html/templates/dayEventBook.html',
       windowClass: 'show',

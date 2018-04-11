@@ -9,20 +9,20 @@ if (localStorage.getItem("userData")) {
     console.log("loginType: " + loginType);
     if (loginType == 'teacher') {
         document.getElementById("appLogin").style.display = 'none';
-        document.getElementById("appReg").style.display = 'none';
+        // document.getElementById("appReg").style.display = 'none';
         document.getElementById("appLogout").style.display = 'block';
         document.getElementById("userAuth").style.display = 'none';
        
     }
     else if(loginType == 'admin'){
         document.getElementById("appLogin").style.display = 'none';
-        document.getElementById("appReg").style.display = 'none';
+        // document.getElementById("appReg").style.display = 'none';
         document.getElementById("appLogout").style.display = 'block';
         document.getElementById("userAuth").style.display = 'block';
     }
     else if (loginType == 'studParent') {
         document.getElementById("appLogin").style.display = 'none';
-        document.getElementById("appReg").style.display = 'none';
+        // document.getElementById("appReg").style.display = 'none';
         document.getElementById("appLogout").style.display = 'block';
         document.getElementById("userAuth").style.display = 'none';
    }
@@ -43,7 +43,7 @@ else {
             userName = localStorage.getItem("userName");
             // startVideoAction();
             document.getElementById("appLogin").style.display = 'none';
-            document.getElementById("appReg").style.display = 'none';
+            // document.getElementById("appReg").style.display = 'none';
             document.getElementById("appLogout").style.display = 'block';
        }
         else {
@@ -75,7 +75,7 @@ function logVC() {
     console.log("obj: " + JSON.stringify(obj));
     console.log("logVC");
     $.ajax({
-        url: "https://norecruits.com/vc/login4VC",
+        url: "https://vc4all.in/vc/login4VC",
         //  url: "http://localhost:5000/vc/login4VC",
         type: "POST",
         data: JSON.stringify(obj),
@@ -90,7 +90,7 @@ function logVC() {
                 alert("Logged in Successfull");
                 sessionSet(data);
                 document.getElementById("appLogin").style.display = 'none';
-                document.getElementById("appReg").style.display = 'none';
+                // document.getElementById("appReg").style.display = 'none';
                 document.getElementById("appLogout").style.display = 'block';
                 userName = data.data.userName;
             }
@@ -105,7 +105,7 @@ function logVC() {
                 sessionSet(data);
                 document.getElementById("userAuth").style.display = 'block';
                 document.getElementById("appLogin").style.display = 'none';
-                document.getElementById("appReg").style.display = 'none';
+                // document.getElementById("appReg").style.display = 'none';
                 document.getElementById("appLogout").style.display = 'block';
             }
             else{
@@ -182,7 +182,7 @@ function regVc() {
         "password": pswd
     };
     $.ajax({
-        url: "https://norecruits.com/vc/register4VC",
+        url: "https://vc4all.in/vc/register4VC",
         //url: "http://localhost:5000/vc/register4VC",
         type: "POST",
         data: JSON.stringify(obj),
@@ -221,6 +221,6 @@ function vcLogout() {
     document.getElementById("userAuth").style.display = 'none';
     document.getElementById("appLogout").style.display = 'none';
     document.getElementById("appLogin").style.display = 'block';
-    document.getElementById("appReg").style.display = 'block';
+    // document.getElementById("appReg").style.display = 'block';
    
 }

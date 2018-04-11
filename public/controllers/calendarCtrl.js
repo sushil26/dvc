@@ -398,13 +398,14 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
       //   s <= event.startsAt && event.startsAt <= e ||
       //   s <= event.endsAt && event.endsAt <= e
       // });
-      return (event.startsAt < s && s < event.endsAt) ||
+      return (event.startsAt <= s && s < event.endsAt) ||
         event.startsAt < e && e < event.endsAt ||
-        s < event.startsAt && event.startsAt < e ||
+        s <= event.startsAt && event.startsAt < e ||
         s < event.endsAt && event.endsAt < e
     });
     // if (conflicts) return;
     // vm.events.push(vm.mytime);
+    dayEventmodal.close('resetModel');
     console.log("conflicts: " + conflicts);
     if (conflicts) {
       console.log("conflicts is there");
@@ -432,7 +433,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
   $scope.eventSend = function (res, name, id, email) {
     console.log("eventSend-->");
 
-    dayEventmodal.close('resetModel');
+    
 
     var SIGNALING_SERVER = "https://norecruits.com";
     //var SIGNALING_SERVER = "http://localhost:5000";

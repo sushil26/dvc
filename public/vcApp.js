@@ -8,7 +8,7 @@ var app = angular.module('vcApp', ['ui.router', 'mwl.calendar', 'ui.bootstrap', 
  app.config(function($stateProvider, $urlRouterProvider) {
 
     // For any unmatched url, send to /route1
-    $urlRouterProvider.otherwise("/calendar")
+    $urlRouterProvider.otherwise("/event")
 
     $stateProvider
       .state('calendar', {

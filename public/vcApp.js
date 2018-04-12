@@ -1,14 +1,10 @@
 
 var app = angular.module('vcApp', ['ui.router', 'mwl.calendar', 'ui.bootstrap', 'ngCookies']);
-// app.config(['$locationProvider', function($locationProvider) {
-//   $locationProvider.hashPrefix('');
-// }]);
-
 
  app.config(function($stateProvider, $urlRouterProvider) {
 
     // For any unmatched url, send to /route1
-    $urlRouterProvider.otherwise("/event")
+    $urlRouterProvider.otherwise("/calendar")
 
     $stateProvider
       .state('calendar', {
@@ -49,6 +45,7 @@ var app = angular.module('vcApp', ['ui.router', 'mwl.calendar', 'ui.bootstrap', 
       })
       .state('dashboard.event', {
         url: '/event',
-        templateUrl: '/html/dashboardEvent.html'
+        templateUrl: '/html/dashboardEvent.html',
+        controller: 'dashboardEventController'
       })
   });

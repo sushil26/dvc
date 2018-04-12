@@ -713,7 +713,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     console.log("endDate: " + endDate);
     var PersonalRemoteCombineCal = ownerEvents.concat(vm.events);
     console.log("PersonalRemoteCombineCal: " + JSON.stringify(PersonalRemoteCombineCal));
-    var conflicts = vm.events.some(function (event) {
+    var conflicts =PersonalRemoteCombineCal.some(function (event) {
       //   return (event.startsAt <= s && s <= event.endsAt) ||
       //   event.startsAt <= e && e <= event.endsAt ||
       //   s <= event.startsAt && event.startsAt <= e ||

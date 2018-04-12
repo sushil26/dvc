@@ -45,7 +45,6 @@ var app = angular.module('vcApp', ['ui.router', 'mwl.calendar', 'ui.bootstrap', 
       })
       .state('dashboard.event', {
         url: '/event',
-        templateUrl: '/html/dashboardEvent.html',
-        controller: 'dashboardEventController'
+        templateUrl: '/html/dashboardEvent.html'
       })
   });

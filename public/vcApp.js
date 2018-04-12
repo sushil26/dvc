@@ -39,7 +39,7 @@ var app = angular.module('vcApp', ['ui.router', 'mwl.calendar', 'ui.bootstrap', 
         controller: 'dashboardPersonalDetailController'
       })
       .state('dashboard.editDetails', {
-        url: '/editDetails',
+        url: newFunction(),
         templateUrl: '/html/dashboardEdit.html',
         controller: 'dashboardEditController'
       })
@@ -49,3 +49,7 @@ var app = angular.module('vcApp', ['ui.router', 'mwl.calendar', 'ui.bootstrap', 
         controller: 'dashboardEventController'
       })
   });
+
+function newFunction() {
+  return '/editDetails';
+}

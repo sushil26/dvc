@@ -728,7 +728,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     console.log("conflicts: " + conflicts);
     if (conflicts) {
       console.log("conflicts is there");
-      alert("This time already booked, try on other time");
+      alert("ON this time you/student not free, try on other time");
     }
     else {
       console.log("No conflicts");

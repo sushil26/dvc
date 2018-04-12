@@ -97,8 +97,9 @@
                     <option value="" disabled selected>Teacher</option>
                   </select>
                   <button class="btn btn-primary" ng-if="calendarOwner!='Your'" ng-click="eventGet()">My Calendar</button>
-                  <button class="btn btn-primary" ng-if="calendarOwner=='Your' && userLoginType=='studParent' && teacherPersonalData.teacherName!='undefined'" ng-click="getSTCalendar()">{{teacherPersonalData.teacherName}} Calendar</button>
-                  <button class="btn btn-primary" ng-if="calendarOwner=='Your' && userLoginType=='teacher' && studentPersonalData.studName!='undefined'" ng-click="getSSCalendar()">{{studentPersonalData.studName}} Calendar</button>
+                  <button class="btn btn-primary" ng-if="calendarOwner=='Your' && userLoginType=='studParent' && teacherPersonalData[0].teacherName != null" ng-click="getSTCalendar()">{{teacherPersonalData[0].teacherName}} Calendar</button>
+                  <button class="btn btn-primary" ng-if="calendarOwner=='Your' && userLoginType=='studParent' && teacherPersonalData[0].teacherName != 'undefined'" ng-click="getSTCalendar()">*{{teacherPersonalData[0].teacherName}} Calendar</button>
+                  <button class="btn btn-primary" ng-if="calendarOwner=='Your' && userLoginType=='teacher'" ng-click="getSSCalendar()">{{studentPersonalData.studName}} Calendar</button>
                 </form>
               </div>
             </div>

@@ -602,10 +602,9 @@ background: darkturquoise;
   padding: 50px 20px;
   margin-bottom: 50px;
   text-align: center;
-  border: 1px solid #e6e6e6;
   height: 200px;
   position: relative;
-  background: #fafafa;
+  background-image: url(/home/img/bc.jpg);
 }
 
 #services .icon {

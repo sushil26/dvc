@@ -108,6 +108,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
       console.log("data--" + JSON.stringify(data.data));
       if (checkStatus) {
         $scope.studentPersonalData = data.data.data;
+        console.log(" data.data.data: " + JSON.stringify( data.data.data));
         console.log("$scope.studentPersonalData: " + JSON.stringify($scope.studentPersonalData));
       }
       else {
@@ -220,10 +221,11 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
 
   $scope.getSSCalendar =function(){
     console.log("getSSCalendar-->");
-    console.log("$scope.csSelect: "+$scope.csSelect.cs);
+    console.log("$scope.csSelect: "+$scope.csSelect);
     //$scope.calendarOwner = $scope.csSelect.name;
     vm.events = [];
     vm.events  = JSON.parse(JSON.stringify(studEvents));
+    console.log("")
     console.log("<--getSSCalendar");
   }
   if (localStorage.getItem("loginType") == 'admin') {

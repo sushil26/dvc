@@ -28,4 +28,24 @@ var app = angular.module('vcApp', ['ui.router', 'mwl.calendar', 'ui.bootstrap', 
         templateUrl: '/html/studentDataInsert.html',
         controller: 'studentInsertCtrl'
       })
+      .state('dashboard', {
+        url: '/dashboard',
+        templateUrl: '/html/dashboard.html',
+        controller: 'dashboardController'
+      })
+      .state('dashboard.personalDetail', {
+        url: '/personaldetails',
+        templateUrl: '/html/dashboardPersonalDetail.html',
+        controller: 'dashboardPersonalDetailController'
+      })
+      .state('dashboard.editDetails', {
+        url: '/editDetails',
+        templateUrl: '/html/dashboardEdit.html',
+        controller: 'dashboardEditController'
+      })
+      .state('dashboard.event', {
+        url: '/event',
+        templateUrl: '/html/dashboardEvent.html',
+        controller: 'dashboardEventController'
+      })
   });

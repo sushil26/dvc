@@ -225,7 +225,9 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     //$scope.calendarOwner = $scope.csSelect.name;
     vm.events = [];
     vm.events  = JSON.parse(JSON.stringify(studEvents));
-    console.log("")
+    $scope.getSelectedStudentPersonalData($scope.remoteCalendarId);
+    $scope.calendarOwner = studentPersonalData.studName;
+    // console.log("")
     console.log("<--getSSCalendar");
   }
   if (localStorage.getItem("loginType") == 'admin') {

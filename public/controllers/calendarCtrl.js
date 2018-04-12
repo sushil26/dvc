@@ -185,6 +185,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
         $scope.specificTED = data.data.data;/* ### Note:Function Name specificTED --> specificTeachEventData(specificTED) ### */
         console.log("$scope.specificTED.length: " + $scope.specificTED.length);
         vm.events = [];
+        teacherEvents = [];
         for (var x = 0; x < $scope.specificTED.length; x++) {
           console.log("$scope.specificTED[" + x + "]: " + JSON.stringify($scope.specificTED[x]));
           var obj = {

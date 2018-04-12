@@ -34,7 +34,8 @@
         }
       </style>
       <b>
-        <h2>{{calendarOwner}} Calendar</h2>
+        <h2 ng-if="calendarOwner!='Your'">{{calendarOwner}} Calendar</h2>
+        <h2 ng-if="calendarOwner=='Your'">{{calendarOwner}} Calendar <h3>Only for Reading</h3></h2>
       </b>
       <!-- <mwl-calendar events="vm.events" view="vm.calendarView" view-title="vm.calendarTitle" view-date="vm.viewDate" on-event-click="vm.eventClicked(calendarEvent)"
       on-event-times-changed="vm.eventTimesChanged(calendarEvent); calendarEvent.startsAt = calendarNewEventStart; calendarEvent.endsAt = calendarNewEventEnd"

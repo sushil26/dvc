@@ -88,7 +88,7 @@
                     ng-options="css as css.class+ '-' + css.section + '-' + css.subject for css in teacherData[0].css">
                     <option value="" disabled selected>Class</option>
                   </select>
-                  <select ng-if="userLoginType=='teacher'" class="btn btn-primary" placeholder="select" ng-model="csSelect" ng-change="getStudentCalendar(csSelect)"
+                  <select ng-if="userLoginType=='teacher'" class="btn btn-primary" placeholder="select" ng-model="csSelect.cs" ng-change="getStudentCalendar(csSelect)"
                     ng-options="cs as cs.name + '-' + cs.studId for cs in studList">
                     <option value="" disabled selected>Student</option>
                   </select>

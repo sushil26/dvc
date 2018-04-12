@@ -220,7 +220,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
 
   $scope.getSSCalendar =function(){
     console.log("getSSCalendar-->");
-    console.log("$scope.csSelect: "+$scope.csSelect);
+    console.log("$scope.csSelect: "+$scope.csSelect.cs);
     //$scope.calendarOwner = $scope.csSelect.name;
     vm.events = [];
     vm.events  = JSON.parse(JSON.stringify(studEvents));

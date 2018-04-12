@@ -408,14 +408,12 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     $scope.endFiltered = eFiltered;
     $scope.startDate = $filter('date')(s, "EEE MMM dd y");
     $scope.endDate = $filter('date')(e, "HH:mm:ss 'GMT'Z (IST)'");
-
     $scope.endDateRes = $scope.startDate + ' ' + $scope.endDate;
     $scope.urlDate = $filter('date')(s, "EEEMMMddyHHmmss");
     console.log("$scope.endDate: " + $scope.endDate);
     console.log("$scope.urlDate: " + $scope.urlDate);
     console.log("$scope.endDate: " + $scope.endDate);
     console.log("$scope.endDateRes: " + $scope.endDateRes);
-
 
     dayEventmodal.close('resetModel');
 
@@ -486,7 +484,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
             console.log("data" + JSON.stringify(data.data))
             // $window.location.href = $scope.propertyJson.R082;
             alert("Successfully sent the event");
-            vm.events.splice(0, 1);
+            // vm.events.splice(0, 1);
             var eventPostedData = data.data.data;
             vm.events.push({
               'id': obj.userId,
@@ -499,6 +497,14 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
               'actions': actions,
               'url': obj.url
             });
+            // if($scope.userLoginType=='studParent')
+            // {
+
+            // }
+            // else if($scope.userLoginType=='teacher')
+            // {
+
+            // }
             // $scope.eventGet();
           }
           else {

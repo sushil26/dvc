@@ -2,7 +2,8 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
   console.log("calendarCtrl==>: " + localStorage.getItem("userData"));
 
   var dayEventmodal; /* ### Note: open model for event send ###  */
-  var studEvents = [];
+  var studEvents = []; /* ### Note: selected student events ### */
+  var teacherEvents = []; /* ### Note: selected teacher events ### */
   var ownerEvents = []; /* ### Note: logged in person all events ### */
 
   $scope.getTeacherData = function () {
@@ -163,9 +164,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
       else {
         //alert("Event get Failed");
       }
-
     })
-
     console.log("<--getStudentCalendar");
   }
 
@@ -184,6 +183,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
         $scope.calendarOwner = css.name;
         $scope.specificTED = data.data.data;/* ### Note:Function Name specificTED --> specificTeachEventData(specificTED) ### */
         console.log("$scope.specificTED.length: " + $scope.specificTED.length);
+        vm.events = [];
         for (var x = 0; x < $scope.specificTED.length; x++) {
           console.log("$scope.specificTED[" + x + "]: " + JSON.stringify($scope.specificTED[x]));
           var obj = {
@@ -204,8 +204,8 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
           }
           console.log(" obj" + JSON.stringify(obj));
           // vm.events.push(obj);
-          vm.events = [];
 
+          teacherEvents.push(obj);
           vm.events.push(obj);
 
         }
@@ -219,18 +219,25 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     console.log("<--getTeacherCalendar");
   }
 
-  $scope.getSSCalendar = function () {
+  $scope.getSSCalendar = function () { /* ### Note: Get selected student calender(getSSCalendar) ###*/
     console.log("getSSCalendar-->");
-    console.log("$scope.csSelect: " + $scope.csSelect);
     // console.log("$scope.studentPersonalData: "+JSON.stringify($scope.studentPersonalData));
     // console.log("$scope.studentPersonalData.studName: "+$scope.studentPersonalData[0].studName);
     $scope.calendarOwner = $scope.studentPersonalData[0].studName;
     vm.events = [];
     vm.events = JSON.parse(JSON.stringify(studEvents));
     $scope.getSelectedStudentPersonalData($scope.remoteCalendarId);
-
-    // console.log("")
     console.log("<--getSSCalendar");
+  }
+  $scope.getSTCalendar = function () { /* ### Note: Get selected Teacher calender(getTSCalendar) ###*/
+    console.log("getSTCalendar-->");
+    // console.log("$scope.studentPersonalData: "+JSON.stringify($scope.studentPersonalData));
+    // console.log("$scope.studentPersonalData.studName: "+$scope.studentPersonalData[0].studName);
+    $scope.calendarOwner = $scope.teacherPersonalData[0].studName;
+    vm.events = [];
+    vm.events = JSON.parse(JSON.stringify(teacherEvents));
+    $scope.getSelectedTeacherPersonalData($scope.remoteCalendarId);
+    console.log("<--getSTCalendar");
   }
 
   if (localStorage.getItem("loginType") == 'admin') {
@@ -713,7 +720,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     console.log("endDate: " + endDate);
     var PersonalRemoteCombineCal = ownerEvents.concat(vm.events);
     console.log("PersonalRemoteCombineCal: " + JSON.stringify(PersonalRemoteCombineCal));
-    var conflicts =PersonalRemoteCombineCal.some(function (event) {
+    var conflicts = PersonalRemoteCombineCal.some(function (event) {
       //   return (event.startsAt <= s && s <= event.endsAt) ||
       //   event.startsAt <= e && e <= event.endsAt ||
       //   s <= event.startsAt && event.startsAt <= e ||
@@ -724,7 +731,6 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
         s <= event.startsAt && event.startsAt < e ||
         s < event.endsAt && event.endsAt < e
     });
-
     console.log("conflicts: " + conflicts);
     if (conflicts) {
       console.log("conflicts is there");
@@ -741,12 +747,9 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
           // moment().startOf('day').toDate()
           var dt = new Date();
           $scope.eventDetails = {
-
             "startsAt": startDate,
             "endsAt": endDate
-
           }
-
           console.log("$scope.eventDetails: " + $scope.eventDetails);
         }
       })
@@ -758,8 +761,6 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     // console.log("JSON args.calendarEvent: " + JSON.stringify(args.calendarEvent));
 
     // alert.show('Edited', args.calendarEvent);
-
-
     console.log("<--rangeSelected");
   };
 

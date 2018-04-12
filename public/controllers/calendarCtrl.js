@@ -223,10 +223,11 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     console.log("getSSCalendar-->");
     console.log("$scope.csSelect: "+$scope.csSelect);
     //$scope.calendarOwner = $scope.csSelect.name;
+    $scope.calendarOwner = $scope.studentPersonalData.studName;
     vm.events = [];
     vm.events  = JSON.parse(JSON.stringify(studEvents));
     $scope.getSelectedStudentPersonalData($scope.remoteCalendarId);
-    $scope.calendarOwner = $scope.studentPersonalData.studName;
+  
     // console.log("")
     console.log("<--getSSCalendar");
   }

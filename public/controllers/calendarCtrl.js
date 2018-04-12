@@ -2,6 +2,8 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
   console.log("calendarCtrl==>: " + localStorage.getItem("userData"));
 
   var dayEventmodal; /* ### Note: open model for event send ###  */
+  var studEvents = [];
+
 
   $scope.getTeacherData = function () {
     console.log("getTeacherData-->");
@@ -153,6 +155,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
           console.log(" obj" + JSON.stringify(obj))
 
           // vm.events.push(obj);
+          studEvents.push(obj);
           vm.events.push(obj);
         }
       }
@@ -215,6 +218,12 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     console.log("<--getTeacherCalendar");
   }
 
+  $scope.getSSCalendar =function(){
+    console.log("getSSCalendar-->");
+    vm.events = [];
+    vm.events  = JSON.parse(JSON.stringify(studEvents));
+    console.log("<--getSSCalendar");
+  }
   if (localStorage.getItem("loginType") == 'admin') {
     console.log("loginType: " + localStorage.getItem("loginType"));
     document.getElementById('userAuth').style.display = "block";

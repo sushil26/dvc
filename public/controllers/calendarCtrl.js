@@ -500,6 +500,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
       console.log("data--" + JSON.stringify(data.data));
       if (checkStatus) {
         $scope.eventData = data.data.data;
+        vm.events = [];
         for (var x = 0; x < $scope.eventData.length; x++) {
           console.log("$scope.eventData[" + x + "]: " + JSON.stringify($scope.eventData[x]));
           var obj = {

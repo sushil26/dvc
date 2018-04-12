@@ -92,7 +92,7 @@
                     ng-options="cs as cs.name + '-' + cs.studId for cs in studList">
                     <option value="" disabled selected>Student</option>
                   </select>------------------{{csSelect.name}}------{{csSelect.id}}
-                  <select ng-if="userLoginType=='studParent'" class="btn btn-primary" placeholder="select" ng-model="csSelect" ng-change="getTeacherCalendar(csSelect)"
+                  <select ng-if="userLoginType=='studParent'" class="btn btn-primary" placeholder="select" ng-model="cssSelect" ng-change="getTeacherCalendar(cssSelect)"
                     ng-options="cs as cs.name + '-' + cs.teacherId+'-'+cs.subject for cs in teacherList">
                     <option value="" disabled selected>Teacher</option>
                   </select>

@@ -136,6 +136,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
         $scope.specificSED = data.data.data;/* ### Note:Function Name specificSED --> specificStudentEventData(specificSED) ### */
         console.log("$scope.specificSED.length: " + $scope.specificSED.length);
         vm.events = [];
+        studEvents = [];
         for (var x = 0; x < $scope.specificSED.length; x++) {
           console.log("$scope.specificSED[" + x + "]: " + JSON.stringify($scope.specificSED[x]));
           var obj = {
@@ -184,6 +185,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
         $scope.specificTED = data.data.data;/* ### Note:Function Name specificTED --> specificTeachEventData(specificTED) ### */
         console.log("$scope.specificTED.length: " + $scope.specificTED.length);
         vm.events = [];
+        teacherEvents = [];
         for (var x = 0; x < $scope.specificTED.length; x++) {
           console.log("$scope.specificTED[" + x + "]: " + JSON.stringify($scope.specificTED[x]));
           var obj = {
@@ -406,14 +408,12 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     $scope.endFiltered = eFiltered;
     $scope.startDate = $filter('date')(s, "EEE MMM dd y");
     $scope.endDate = $filter('date')(e, "HH:mm:ss 'GMT'Z (IST)'");
-
     $scope.endDateRes = $scope.startDate + ' ' + $scope.endDate;
     $scope.urlDate = $filter('date')(s, "EEEMMMddyHHmmss");
     console.log("$scope.endDate: " + $scope.endDate);
     console.log("$scope.urlDate: " + $scope.urlDate);
     console.log("$scope.endDate: " + $scope.endDate);
     console.log("$scope.endDateRes: " + $scope.endDateRes);
-
 
     dayEventmodal.close('resetModel');
 
@@ -484,7 +484,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
             console.log("data" + JSON.stringify(data.data))
             // $window.location.href = $scope.propertyJson.R082;
             alert("Successfully sent the event");
-            vm.events.splice(0, 1);
+            // vm.events.splice(0, 1);
             var eventPostedData = data.data.data;
             vm.events.push({
               'id': obj.userId,
@@ -497,6 +497,14 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
               'actions': actions,
               'url': obj.url
             });
+            // if($scope.userLoginType=='studParent')
+            // {
+
+            // }
+            // else if($scope.userLoginType=='teacher')
+            // {
+
+            // }
             // $scope.eventGet();
           }
           else {

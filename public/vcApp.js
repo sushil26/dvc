@@ -1,5 +1,9 @@
 
 var app = angular.module('vcApp', ['ui.router', 'mwl.calendar', 'ui.bootstrap', 'ngCookies']);
+// app.config(['$locationProvider', function($locationProvider) {
+//   $locationProvider.hashPrefix('');
+// }]);
+
 
  app.config(function($stateProvider, $urlRouterProvider) {
 

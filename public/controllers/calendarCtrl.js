@@ -136,6 +136,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
         $scope.specificSED = data.data.data;/* ### Note:Function Name specificSED --> specificStudentEventData(specificSED) ### */
         console.log("$scope.specificSED.length: " + $scope.specificSED.length);
         vm.events = [];
+        studEvents = [];
         for (var x = 0; x < $scope.specificSED.length; x++) {
           console.log("$scope.specificSED[" + x + "]: " + JSON.stringify($scope.specificSED[x]));
           var obj = {

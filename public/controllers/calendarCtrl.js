@@ -233,7 +233,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     console.log("getSTCalendar-->");
     // console.log("$scope.studentPersonalData: "+JSON.stringify($scope.studentPersonalData));
     // console.log("$scope.studentPersonalData.studName: "+$scope.studentPersonalData[0].studName);
-    $scope.calendarOwner = $scope.teacherPersonalData[0].studName;
+    $scope.calendarOwner = $scope.teacherPersonalData[0].teacherName;
     vm.events = [];
     vm.events = JSON.parse(JSON.stringify(teacherEvents));
     $scope.getSelectedTeacherPersonalData($scope.remoteCalendarId);

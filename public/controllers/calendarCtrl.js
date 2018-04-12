@@ -3,7 +3,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
 
   var dayEventmodal; /* ### Note: open model for event send ###  */
   var studEvents = [];
-
+  var ownerEvents = []; /* ### Note: logged in person all events ### */
 
   $scope.getTeacherData = function () {
     console.log("getTeacherData-->");
@@ -108,7 +108,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
       console.log("data--" + JSON.stringify(data.data));
       if (checkStatus) {
         $scope.studentPersonalData = data.data.data;
-        console.log(" data.data.data: " + JSON.stringify( data.data.data));
+        console.log(" data.data.data: " + JSON.stringify(data.data.data));
         console.log("$scope.studentPersonalData: " + JSON.stringify($scope.studentPersonalData));
       }
       else {
@@ -219,19 +219,20 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     console.log("<--getTeacherCalendar");
   }
 
-  $scope.getSSCalendar =function(){
+  $scope.getSSCalendar = function () {
     console.log("getSSCalendar-->");
-    console.log("$scope.csSelect: "+$scope.csSelect);
+    console.log("$scope.csSelect: " + $scope.csSelect);
     // console.log("$scope.studentPersonalData: "+JSON.stringify($scope.studentPersonalData));
     // console.log("$scope.studentPersonalData.studName: "+$scope.studentPersonalData[0].studName);
     $scope.calendarOwner = $scope.studentPersonalData[0].studName;
     vm.events = [];
-    vm.events  = JSON.parse(JSON.stringify(studEvents));
+    vm.events = JSON.parse(JSON.stringify(studEvents));
     $scope.getSelectedStudentPersonalData($scope.remoteCalendarId);
-  
+
     // console.log("")
     console.log("<--getSSCalendar");
   }
+
   if (localStorage.getItem("loginType") == 'admin') {
     console.log("loginType: " + localStorage.getItem("loginType"));
     document.getElementById('userAuth').style.display = "block";
@@ -493,7 +494,6 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
           }
           else {
             alert("Event Send Failed");
-
           }
 
         })
@@ -511,13 +511,14 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     var api = "https://norecruits.com/vc/eventGet" + "/" + id;
     //var api = "http://localhost:5000/vc/eventGet"+ "/" + id;;
     $scope.calendarOwner = "Your";
-    
+
     httpFactory.get(api).then(function (data) {
       var checkStatus = httpFactory.dataValidation(data);
       console.log("data--" + JSON.stringify(data.data));
       if (checkStatus) {
         $scope.eventData = data.data.data;
         vm.events = [];
+        ownerEvents = [];
         for (var x = 0; x < $scope.eventData.length; x++) {
           console.log("$scope.eventData[" + x + "]: " + JSON.stringify($scope.eventData[x]));
           var obj = {
@@ -537,6 +538,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
             "email": $scope.eventData[x].email
           }
           console.log(" obj" + JSON.stringify(obj))
+          ownerEvents.push(obj);
           vm.events.push(obj);
 
         }
@@ -709,7 +711,8 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     console.log("rangeSelected-->");
     console.log("startDate: " + startDate);
     console.log("endDate: " + endDate);
-
+    var PersonalRemoteCombineCal = ownerEvents.concat(vm.events);
+    console.log("PersonalRemoteCombineCal: " + JSON.stringify(PersonalRemoteCombineCal));
     var conflicts = vm.events.some(function (event) {
       //   return (event.startsAt <= s && s <= event.endsAt) ||
       //   event.startsAt <= e && e <= event.endsAt ||

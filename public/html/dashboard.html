@@ -1,90 +1,39 @@
 <div ng-controller="dashboardController">
-        <div class="row">
-                <div class="col-sm-12 col-md-12 user-details">
-                    <div class="user-image">
-                        <img src="http://www.gravatar.com/avatar/2ab7b2009d27ec37bffee791819a090c?s=100&d=mm&r=g" alt="Sushil Kumar singh" title="Sushil Kumar Singh"
-                            class="img-circle">
-                    </div>
-                    <div class="user-info-block">
-                        <div class="user-heading">
-                            <h3>Sushil Kumar Singh</h3>
-                            <span class="help-block">Bangalore, IN</span>
-                        </div>
-                        <ul class="navigation">
-                            <li class="active">
-                                <a data-toggle="tab" href="#information">
-                                    <span class="glyphicon glyphicon-user"></span>
-                                </a>
-                            </li>
-                            <li>
-                                <a data-toggle="tab" href="#settings">
-                                    <span class="glyphicon glyphicon-cog"></span>
-                                </a>
-                            </li>
-                            <li>
-                                <a data-toggle="tab" href="#email">
-                                    <span class="glyphicon glyphicon-envelope"></span>
-                                </a>
-                            </li>
-                            <li>
-                                <a data-toggle="tab" href="#events">
-                                    <span class="glyphicon glyphicon-calendar"></span>
-                                </a>
-                            </li>
-                        </ul>
-                        <div class="user-body">
-                            <div class="tab-content">
-                                <div id="information " class="tab-pane active col-sm-6">
-                                    <table class="table table-bordered">
-                                        <thead>
-                                            <tr>
-                                                <th>Mother Name</th>
-                                                <th>Gayatri</th>
-        
-                                            </tr>
-                                            <tr>
-                                                <th>Mother Email</th>
-                                                <th>Gayatri</th>
-        
-                                            </tr>
-                                            <tr>
-                                                <th>Mother Phone</th>
-                                                <th>Gayatri</th>
-        
-                                            </tr>
-                                            <tr>
-                                                <th>Father Name</th>
-                                                <th>XAAAA singh</th>
-        
-                                            </tr>
-                                            <tr>
-                                                <th>Father Email</th>
-                                                <th>XAAAA singh</th>
-        
-                                            </tr>
-                                            <tr>
-                                                <th>Father Phone</th>
-                                                <th>Gayatri</th>
-        
-                                            </tr>
-                                        </thead>
-                                    </table>
-        
-                                </div>
-                                <div id="Edit Details" class="tab-pane">
-                                    <h4>Settings</h4>
-                                </div>
-                                <!-- <div id="email" class="tab-pane">
-                                        <h4>Send Message</h4>
-                                    </div> -->
-                                <div id="events" class="tab-pane">
-                                    <h4>Events</h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <ng-view></ng-view>
+    <div class="row">
+        <div class="col-sm-12 col-md-12 user-details">
+            <div class="user-image">
+                <img src="http://www.gravatar.com/avatar/2ab7b2009d27ec37bffee791819a090c?s=100&d=mm&r=g" alt="Sushil Kumar singh" title="Sushil Kumar Singh"
+                    class="img-circle">
             </div>
+            <div class="user-info-block">
+                <div class="user-heading">
+                    <h3>Sushil Kumar Singh</h3>
+                    <span class="help-block">Bangalore, IN</span>
+                </div>
+                <ul class="navigation">
+                    <li class="active">
+                        <a data-toggle="tab" href="#information">
+                            <span class="glyphicon glyphicon-user"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a data-toggle="tab" href="/editDetails">
+                            <span class="glyphicon glyphicon-cog"></span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a data-toggle="tab" href="/mainPage#!/event">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </a>
+                    </li>
+                </ul>
+                <ng-view>
+                    <div class="user-body">
+                        <ng-view></ng-view>
+
+                    </div>
+            </div>
+        </div>
+    </div>
 </div>

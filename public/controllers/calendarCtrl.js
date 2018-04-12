@@ -1,6 +1,8 @@
 app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, httpFactory, moment, calendarConfig, $uibModal) {
   console.log("calendarCtrl==>: " + localStorage.getItem("userData"));
-  
+
+  var dayEventmodal; /* ### Note: open model for event send ###  */
+
   $scope.getTeacherData = function () {
     console.log("getTeacherData-->");
     var id = localStorage.getItem("id");
@@ -55,8 +57,6 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
                 if ($scope.teacherListForStudent[x].css[y].class == $scope.studClass && $scope.teacherListForStudent[x].css[y].section == $scope.studSection)
                   $scope.teacherList.push({ "id": $scope.teacherListForStudent[x]._id, "name": $scope.teacherListForStudent[x].teacherName, "teacherId": $scope.teacherListForStudent[x].teacherId, "subject": $scope.teacherListForStudent[x].css[y].subject });
               }
-
-
             }
             console.log(" $scope.teacherList: " + $scope.teacherList);
             // console.log(" $scope.studList.length: " + $scope.studList.length);
@@ -128,29 +128,30 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
       var checkStatus = httpFactory.dataValidation(data);
       console.log("data--" + JSON.stringify(data.data));
       if (checkStatus) {
-        $scope.calendarOwner=css.name;
-        $scope.specificTED = data.data.data;/* ### Note:Function Name specificTED --> specificTeachEventData(specificTED) ### */
-        console.log("$scope.specificTED.length: " + $scope.specificTED.length);
-        for (var x = 0; x < $scope.specificTED.length; x++) {
-          console.log("$scope.specificTED[" + x + "]: " + JSON.stringify($scope.specificTED[x]));
+        $scope.calendarOwner = css.name;
+        $scope.specificSED = data.data.data;/* ### Note:Function Name specificSED --> specificStudentEventData(specificSED) ### */
+        console.log("$scope.specificSED.length: " + $scope.specificSED.length);
+        vm.events = [];
+        for (var x = 0; x < $scope.specificSED.length; x++) {
+          console.log("$scope.specificSED[" + x + "]: " + JSON.stringify($scope.specificSED[x]));
           var obj = {
-            'id': $scope.specificTED[x]._id,
-            'title': $scope.specificTED[x].title,
-            'color': $scope.specificTED[x].primColor,
-            'startsAt': new Date($scope.specificTED[x].start),
-            'endsAt': new Date($scope.specificTED[x].end),
+            'id': $scope.specificSED[x]._id,
+            'title': $scope.specificSED[x].title,
+            'color': $scope.specificSED[x].primColor,
+            'startsAt': new Date($scope.specificSED[x].start),
+            'endsAt': new Date($scope.specificSED[x].end),
             'draggable': true,
             'resizable': true,
             'actions': actions,
-            'url': $scope.specificTED[x].url,
-            "studentName": $scope.specificTED[x].studName,
-            "studendtId": $scope.specificTED[x].studId,
-            "title": $scope.specificTED[x].title,
-            "reason": $scope.specificTED[x].reason,
-            "email": $scope.specificTED[x].email
+            'url': $scope.specificSED[x].url,
+            "studentName": $scope.specificSED[x].studName,
+            "studendtId": $scope.specificSED[x].studId,
+            "title": $scope.specificSED[x].title,
+            "reason": $scope.specificSED[x].reason,
+            "email": $scope.specificSED[x].email
           }
           console.log(" obj" + JSON.stringify(obj))
-          vm.events = [];
+
           // vm.events.push(obj);
           vm.events.push(obj);
         }
@@ -176,7 +177,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
       var checkStatus = httpFactory.dataValidation(data);
       console.log("data--" + JSON.stringify(data.data));
       if (checkStatus) {
-        $scope.calendarOwner=css.name;
+        $scope.calendarOwner = css.name;
         $scope.specificTED = data.data.data;/* ### Note:Function Name specificTED --> specificTeachEventData(specificTED) ### */
         console.log("$scope.specificTED.length: " + $scope.specificTED.length);
         for (var x = 0; x < $scope.specificTED.length; x++) {
@@ -274,7 +275,6 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     console.log("<--getStudListForCS");
 
   }
-
 
   $scope.eventColors = ['red', 'green', 'blue'];
 
@@ -389,6 +389,9 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     console.log("$scope.endDate: " + $scope.endDate);
     console.log("$scope.endDateRes: " + $scope.endDateRes);
 
+
+    dayEventmodal.close('resetModel');
+
     if ($scope.userLoginType == 'studParent') {
       var senderName = $scope.studentData[0].studName;
       var studId = $scope.studentData[0].studId;
@@ -490,12 +493,14 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     var id = localStorage.getItem("id");
     var api = "https://norecruits.com/vc/eventGet" + "/" + id;
     //var api = "http://localhost:5000/vc/eventGet"+ "/" + id;;
-    $scope.calendarOwner="Your";
+    $scope.calendarOwner = "Your";
+    
     httpFactory.get(api).then(function (data) {
       var checkStatus = httpFactory.dataValidation(data);
       console.log("data--" + JSON.stringify(data.data));
       if (checkStatus) {
         $scope.eventData = data.data.data;
+        vm.events = [];
         for (var x = 0; x < $scope.eventData.length; x++) {
           console.log("$scope.eventData[" + x + "]: " + JSON.stringify($scope.eventData[x]));
           var obj = {
@@ -553,7 +558,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
       //     console.log("$scope.eventDetails: " + $scope.eventDetails);
       //   }
       // })
-     
+
     }
   }, {
     label: '<i class=\'glyphicon glyphicon-remove\'></i>',
@@ -682,32 +687,56 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     event[field] = !event[field];
   };
   vm.rangeSelected = function (startDate, endDate) {
+    var s = startDate;
+    var e = endDate;
     console.log("rangeSelected-->");
-console.log("startDate: "+startDate);
-console.log("endDate: "+endDate);
+    console.log("startDate: " + startDate);
+    console.log("endDate: " + endDate);
+
+    var conflicts = vm.events.some(function (event) {
+      //   return (event.startsAt <= s && s <= event.endsAt) ||
+      //   event.startsAt <= e && e <= event.endsAt ||
+      //   s <= event.startsAt && event.startsAt <= e ||
+      //   s <= event.endsAt && event.endsAt <= e
+      // });
+      return (event.startsAt <= s && s < event.endsAt) ||
+        event.startsAt < e && e < event.endsAt ||
+        s <= event.startsAt && event.startsAt < e ||
+        s < event.endsAt && event.endsAt < e
+    });
+
+    console.log("conflicts: " + conflicts);
+    if (conflicts) {
+      console.log("conflicts is there");
+      alert("This time already booked, try on other time");
+    }
+    else {
+      console.log("No conflicts");
+      dayEventmodal = $uibModal.open({
+        scope: $scope,
+        templateUrl: '/html/templates/dayEventBook.html',
+        windowClass: 'show',
+        backdropClass: 'show',
+        controller: function ($scope, $uibModalInstance) {
+          // moment().startOf('day').toDate()
+          var dt = new Date();
+          $scope.eventDetails = {
+
+            "startsAt": startDate,
+            "endsAt": endDate
+
+          }
+
+          console.log("$scope.eventDetails: " + $scope.eventDetails);
+        }
+      })
+    }
     // vm.lastDateClicked = date;
     // alert("date: "+moment(date).startOf('day')+"date*: "+moment().startOf('day'));
     // alert('Edited', args.calendarEvent);
     // console.log("args.calendarEvent: " + args.calendarEvent);
     // console.log("JSON args.calendarEvent: " + JSON.stringify(args.calendarEvent));
-    var eClicked = $uibModal.open({
-      scope: $scope,
-      templateUrl: '/html/templates/dayEventBook.html',
-      windowClass: 'show',
-      backdropClass: 'show',
-      controller: function ($scope, $uibModalInstance) {
-        // moment().startOf('day').toDate()
-        var dt = new Date();
-        $scope.eventDetails = {
 
-          "startsAt": startDate,
-          "endsAt": endDate
-
-        }
-
-        console.log("$scope.eventDetails: " + $scope.eventDetails);
-      }
-    })
     // alert.show('Edited', args.calendarEvent);
 
 
@@ -734,14 +763,5 @@ console.log("endDate: "+endDate);
 
 
   // };
-  // vm.timeClick = function (event) {
-  //   alert("timeClick-->");
-  //   console.log("cliecked: " + JSON.stringify(event));
-
-  // }
-
-
-
-
 
 })

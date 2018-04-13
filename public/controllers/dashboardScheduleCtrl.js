@@ -251,9 +251,7 @@ app.controller('dashboardScheduleCtrl',function ($scope, $compile, $window, $fil
       //document.getElementById('userAuth').style.display = "none";
       $scope.userLoginType = 'teacher';
       $scope.getTeacherData();
-  
-  
-    }
+      }
     else if (localStorage.getItem("loginType") == 'studParent') {
       //document.getElementById('userAuth').style.display = "none";
       $scope.userLoginType = 'studParent';

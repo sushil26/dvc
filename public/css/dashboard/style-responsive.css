@@ -81,6 +81,7 @@
     /* sidebar */
     #sidebar {
         margin: 0px !important;
+        margin-top: 60px !important;
     }
 
     /* sidebar collabler */

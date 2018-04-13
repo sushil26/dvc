@@ -228,7 +228,9 @@ function startSession(id, date) {
   console.log("startSession-->");
   var url = "https://norecruits.com/client/" + id + "/" + date;
   var obj = {
-    url: url
+    "url": url,
+    "id": id,
+    "time": date
   };
   $.ajax({
     url: "https://norecruits.com/vc/sessionCreate",

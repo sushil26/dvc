@@ -244,18 +244,18 @@ app.controller('dashboardScheduleCtrl',function ($scope, $compile, $window, $fil
 
   if (localStorage.getItem("loginType") == 'admin') {
     console.log("loginType: " + localStorage.getItem("loginType"));
-    document.getElementById('userAuth').style.display = "block";
+   // document.getElementById('userAuth').style.display = "block";
     $scope.userLoginType = 'admin';
   }
   else if (localStorage.getItem("loginType") == 'teacher') {
-    document.getElementById('userAuth').style.display = "none";
+   // document.getElementById('userAuth').style.display = "none";
     $scope.userLoginType = 'teacher';
     $scope.getTeacherData();
 
 
   }
   else if (localStorage.getItem("loginType") == 'studParent') {
-    document.getElementById('userAuth').style.display = "none";
+    //document.getElementById('userAuth').style.display = "none";
     $scope.userLoginType = 'studParent';
     $scope.getStudentData();
   }

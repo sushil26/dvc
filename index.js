@@ -98,7 +98,7 @@ app.post("/vc/sessionCreate", function (req, res) {
     console.log("queryId: " + req.body.id);
     console.log("time: " + req.body.time);
     console.log("req.body.url: " + req.body.url);
-   
+    res.sendFile(__dirname + '/public/html/dashboard/conference.html');
     console.log("<--sessionCreate");
 
 })

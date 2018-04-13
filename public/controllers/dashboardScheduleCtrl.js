@@ -260,7 +260,8 @@ app.controller('dashboardScheduleCtrl',function ($scope, $compile, $window, $fil
     $scope.getStudentData();
   }
   else {
-    window.location.href = "https://norecruits.com";
+      console.log("localStorage.getItem('loginType'): "+localStorage.getItem("loginType"));
+    // window.location.href = "https://norecruits.com";
   }
 
   $scope.getStudListForCS = function (css) {

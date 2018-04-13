@@ -258,7 +258,6 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
     document.getElementById('userAuth').style.display = "none";
     $scope.userLoginType = 'studParent';
     $scope.getStudentData();
-
   }
   else {
     window.location.href = "https://norecruits.com";
@@ -497,6 +496,7 @@ app.controller('calendarCtrl', function ($scope, $compile, $window, $filter, htt
               'actions': actions,
               'url': obj.url
             });
+           
             // if($scope.userLoginType=='studParent')
             // {
 

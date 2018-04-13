@@ -48,6 +48,11 @@ var app = angular.module('vcApp', ['ui.router', 'mwl.calendar', 'ui.bootstrap', 
         templateUrl: '/html/dashboard/dashboardEvent.html',
         controller: 'dashboardEventController'
       })
+      .state('dashboard.conference', {
+        url: dashboardConference(),
+        templateUrl: '/html/dashboard/conference.html',
+        controller: 'dashboardConfCtrl'
+      })
   });
 
 function dashboardEdit() {
@@ -59,4 +64,7 @@ function dashboardEvent() {
 
 function dashboardPersonalDetail() {
   return '/personalDetail';
+}
+function dashboardConference(){
+  return '/dashboardConference'
 }

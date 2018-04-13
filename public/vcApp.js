@@ -72,10 +72,10 @@ function dashboardPersonalDetail() {
   return '/personalDetail';
 }
 function dashboardConference(){
-  return '/dashboardConference'
+  return '/dashboardConference';
 }
 function dashboardScheduler(){
-  return '/dashboardScheduler'
+  return '/dashboardScheduler';
 }
 
 

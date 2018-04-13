@@ -58,11 +58,6 @@ var io = require('socket.io').listen(server);
     // server.timeout = 9999999999;
 mongoConfig.connectToServer(function(err) {
 
-    
-    // require('./config/express')(app);
-    // require('./config/server_socket')(io);
-  
-   
     require('./config/router')(app);
 
 })
@@ -70,9 +65,7 @@ app.use(express.static(__dirname + '/public'));
 //app.use(express.static(__dirname + '/public/bower_components'));
 // app.use(express.static(__dirname + '/node_modules'));
 app.get('/', function (req, res) {
-
     res.sendFile(__dirname + '/public/index.html');
-    
 });
 
 // require('./config/server_socket')(io);
@@ -85,7 +78,6 @@ app.get("/client", function (req, res) {
     res.sendFile(__dirname + '/public/client.html');
 });
 
-
 app.get("/client/:id/:time", function (req, res) {
     queryId = req.params.id;
     time = req.params.id;
@@ -95,11 +87,13 @@ app.get("/client/:id/:time", function (req, res) {
 });
 
 app.get("/mainPage", function (req, res) {
-    // queryId = req.params.id;
- 
     console.log("start to render page");
     res.sendFile(__dirname + '/public/html/mainPage.html');
 });
+app.post("/vc/sessionCreate", function(req,res){
+    console.log("sessionCreate-->");
+
+})
 
 
 /*************************/

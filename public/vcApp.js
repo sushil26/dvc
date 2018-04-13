@@ -18,13 +18,13 @@ var app = angular.module('vcApp', ['ui.router', 'mwl.calendar', 'ui.bootstrap', 
         templateUrl: '/html/dashboard/userAuthentication.html',
         controller: 'userAuthCtrl'
       })
-      .state('teacherInsert', {
-        url: '/teacherI',
+      .state('dashboard.teacherInsert', {
+        url: dashboardTeacherI(),
         templateUrl: '/html/teacherDataInsert.html',
         controller: 'teacherInsertCtrl'
       })
-      .state('studentInsert', {
-        url: '/studentI',
+      .state('dashboard.studentInsert', {
+        url: dashboardstudentI(),
         templateUrl: '/html/studentDataInsert.html',
         controller: 'studentInsertCtrl'
       })
@@ -76,6 +76,15 @@ function dashboardEventShedule(){
 }
 function dashboardUserAuth(){
   return '/userAuth';
+}
+function dashboardstudentI(){
+  return '/studentI';
+}
+function dashboardstudentI(){
+  return '/studentI';
+}
+function dashboardTeacherI(){
+   return '/teacherI';
 }
 
 function dashboardConference(){

@@ -13,7 +13,7 @@ module.exports = function (app) {
     app.post('/vc/deleteUser', user.deleteUser);
     app.post('/vc/deleteStud', user.deleteStud);
     app.post('/vc/emailInvite', user.emailInvite);
-    //app.post('/vc/sessionCreate', user.sessionCreate);
+    app.post('/vc/sessionCreate', user.sessionCreate);
     app.post('/vc/teacherInsert', user.teacherInsert);
     app.post('/vc/studentInsert', user.studentInsert);
     app.get('/vc/teacherDetail/:id', user.teacherDetail);

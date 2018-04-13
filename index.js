@@ -98,23 +98,7 @@ app.post("/vc/sessionCreate", function (req, res) {
     console.log("queryId: " + req.body.id);
     console.log("time: " + req.body.time);
     console.log("req.body.url: " + req.body.url);
-    if (general.emptyCheck(req.body.url)) {
-        var data = {
-            url: req.body.url
-        };
-        responseData = {
-            status: true,
-            message: "get url sucessfully",
-            data: data
-        };
-        res.status(200).send(responseData);
-    } else {
-        responseData = {
-            status: false,
-            message: "empty value found"
-        };
-        res.status(400).send(responseData);
-    }
+   
     console.log("<--sessionCreate");
 
 })

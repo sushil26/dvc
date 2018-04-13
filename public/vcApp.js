@@ -14,7 +14,7 @@ var app = angular.module('vcApp', ['ui.router', 'mwl.calendar', 'ui.bootstrap', 
 
       })
       .state('dashboard.userAuth', {
-        url: '/userAuth',
+        url: dashboardUserAuth(),
         templateUrl: '/html/dashboard/userAuthentication.html',
         controller: 'userAuthCtrl'
       })
@@ -73,6 +73,9 @@ function dashboardPersonalDetail() {
 }
 function dashboardEventShedule(){
   return '/eventShedule';
+}
+function dashboardUserAuth(){
+  return '/userAuth';
 }
 
 function dashboardConference(){

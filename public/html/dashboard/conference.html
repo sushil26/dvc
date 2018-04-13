@@ -1,11 +1,69 @@
 <div ng-controller="dashboardConfCtrl">
-
+        <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
     <section id="main-content">
         <section class="wrapper">
             <h1>DashBoard Conference</h1>
         </section>
     </section>
 
+    <script src="/js/signalingSocket.js"></script>
 
+    <script src="/js/chat.js"></script>
+    <script>
+            $("#message").keyup(function (event) {
+                if (event.keyCode === 13) {
+                    $("#sndmgs").click();
+                }
+            });
+        </script>
+        <script>
+            $(document).ready(function () {
+                $("#openChat").click(function () {
+                    //alert("hui");
+                    $("#portfolio-wrapper").addClass("intro");
+                    $("portfolio-items col-xs-12 col-sm-6 col-md-4 col-lg-3").removeClass("col-lg-3");
+                    //  $("portfolio-items col-xs-12 col-sm-6 col-md-4").toggleClass("portfolio-items col-xs-12 col-sm-6 col-md-4");
+                });
+                $("#removeClass").click(function () {
+                    $("#portfolio-wrapper").removeClass("intro");
+                });
+            });
+        </script>
+        <style>
+            /* mirror Affect */
+    
+            #videosAttach {
+                transform: rotateY(180deg);
+                -webkit-transform: rotateY(180deg);
+                /* Safari and Chrome */
+                -moz-transform: rotateY(180deg);
+                /* Firefox */
+            }
+    
+    
+            #portfolio .portfolio-items {
+    
+                display: inline-block;
+                height: 200px;
+            }
+    
+            #portfolio .intro {
+                width: 75%;
+            }
+        </style>
+    
+        <style>
+            .fullscr {
+                position: fixed;
+                left: 0;
+                bottom: 0;
+                min-width: 100%;
+                min-height: 100%;
+                width: auto;
+                height: auto;
+                object-fit: fill;
+                z-index: 1;
+            }
+        </style>
 
 </div>

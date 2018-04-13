@@ -30,22 +30,22 @@ var app = angular.module('vcApp', ['ui.router', 'mwl.calendar', 'ui.bootstrap', 
       })
       .state('dashboard', {
         url: '/dashboard',
-        templateUrl: '/html/dashboard.html',
+        templateUrl: '/html/dashboard/dashboard.html',
         controller: 'dashboardController'
       })
       .state('dashboard.personalDetail', {
         url: dashboardPersonalDetail(),
-        templateUrl: '/html/dashboardPersonalDetail.html',
+        templateUrl: '/html/dashboard/dashboardPersonalDetail.html',
         controller: 'dashboardPersonalDetailController'
       })
       .state('dashboard.editDetails', {
         url: dashboardEdit(),
-        templateUrl: '/html/dashboardEdit.html',
+        templateUrl: '/html/dashboard/dashboardEdit.html',
         controller: 'dashboardEditController'
       })
       .state('dashboard.event', {
         url: dashboardEvent(),
-        templateUrl: '/html/dashboardEvent.html',
+        templateUrl: '/html/dashboard/dashboardEvent.html',
         controller: 'dashboardEventController'
       })
   });

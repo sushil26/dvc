@@ -95,6 +95,8 @@ app.post("/vc/sessionCreate", function (req, res) {
     queryId = req.params.id;
     time = req.params.time;
     var responseData;
+    console.log("queryId: " + req.params.id);
+    console.log("time: " + req.params.time);
     console.log("req.body.url: " + req.body.url);
     if (general.emptyCheck(req.body.url)) {
         var data = {

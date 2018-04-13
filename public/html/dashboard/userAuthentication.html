@@ -5,12 +5,16 @@
 
 
       <div class="row" ng-if="getUserData.timeTable[0].Monday">
-        <h2>{{getUserData.teacherName}} Time Table</h2>
-        <!-- ##### Start the Teacher List ##### -->
-        <table class="table table-bordered">
+
+          <div class="col-sm-12">
+              <section class="panel">
+                <header class="panel-heading">
+                    <h2>{{getUserData.teacherName}} Time Table</h2>
+                </header>
+                <table class="table">
 
           <thead>
-            <tr style="background: darkturquoise;">
+            <tr>
               <th>Timing</th>
               <th>09:00-09:45</th>
               <th>9:45-10:30</th>
@@ -23,27 +27,27 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
+              <tr class="active">
               <td>Monday</td>
               <td ng-repeat="mtt in getUserData.timeTable[0].Monday">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
             </tr>
-            <tr>
+            <tr class="warning"> 
               <td>Tuesday</td>
               <td ng-repeat="mtt in getUserData.timeTable[1].Tues">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
             </tr>
-            <tr>
+            <tr class="danger">
               <td>Wednesday</td>
               <td ng-repeat="mtt in getUserData.timeTable[2].Wed">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
             </tr>
-            <tr>
+            <tr class="success">
               <td>Thursday</td>
               <td ng-repeat="mtt in getUserData.timeTable[3].Thurs">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
             </tr>
-            <tr>
+            <tr class="active">
               <td>Friday</td>
               <td ng-repeat="mtt in getUserData.timeTable[4].Fri">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
             </tr>
-            <tr>
+            <tr class="warning"> 
               <td>Saturday</td>
               <td ng-repeat="mtt in getUserData.timeTable[5].Sat">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
             </tr>

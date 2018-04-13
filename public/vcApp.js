@@ -75,7 +75,7 @@ function dashboardConference(){
   return '/dashboardConference';
 }
 function dashboardScheduler(){
-  return '/dashboardScheduler';
+  return '/scheduler';
 }
 
 

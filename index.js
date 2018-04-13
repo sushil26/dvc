@@ -92,11 +92,11 @@ app.get("/mainPage", function (req, res) {
 });
 app.post("/vc/sessionCreate", function (req, res) {
     console.log("sessionCreate-->");
-    queryId = req.params.id;
-    time = req.params.time;
+    queryId = req.body.id;
+    time = req.body.time;
     var responseData;
-    console.log("queryId: " + req.params.id);
-    console.log("time: " + req.params.time);
+    console.log("queryId: " + req.body.id);
+    console.log("time: " + req.body.time);
     console.log("req.body.url: " + req.body.url);
     if (general.emptyCheck(req.body.url)) {
         var data = {

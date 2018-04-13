@@ -34,9 +34,9 @@ var app = angular.module('vcApp', ['ui.router', 'mwl.calendar', 'ui.bootstrap', 
         controller: 'dashboardController'
       })
       .state('dashboard.personalDetail', {
-        url: dashboardEventShedule(),
-        templateUrl: '/html/dashboard/scheduler.html',
-        controller: 'dashboardScheduleCtrl'
+        url: dashboardPersonalDetail(),
+        templateUrl: '/html/dashboard/dashboardPersonalDetail.html',
+        controller: 'dashboardPersonalDetailController'
       })
       .state('dashboard.editDetails', {
         url: dashboardEdit(),

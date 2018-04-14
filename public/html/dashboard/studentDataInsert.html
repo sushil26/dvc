@@ -37,8 +37,8 @@
                                 <label for="fullname" class="control-label col-lg-2">Class
                                     <span class="required">*</span>
                                 </label>
-                                <select  ng-model="class" ng-repeat="x in class"  class="form-control m-bot15" >
-                                    <option>{{x}}</option>
+                                <select  ng-model="class"  class="form-control m-bot15" >
+                                    <option ng-repeat="x in class" >{{x}}</option>
 
                                 </select>
                             </div>

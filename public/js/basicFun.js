@@ -138,13 +138,19 @@ function sessionSet(data) {
             localStorage.setItem("id", data.data._id);
             
         }
-        else if(data.data.loginType=='loginType'){
+        else if(data.data.loginType=='studParent'){
             var userData = {
                 "userName": data.data.studName,
                 "status": data.data.status,
                 "email": data.data.parentEmail,
                 "loginType": data.loginType
             }
+            localStorage.setItem("userData", userData);
+            localStorage.setItem("userName", data.data.studName);
+            localStorage.setItem("status", data.data.status);
+            localStorage.setItem("email", data.data.parentEmail);
+            localStorage.setItem("loginType", data.loginType);
+            localStorage.setItem("id", data.data._id);
             
         }
         else{
@@ -161,9 +167,9 @@ function sessionSet(data) {
             localStorage.setItem("loginType", data.data.loginType);
             document.getElementById('userAuth').style.display = "block";
         }
-        if(data.data.loginType=='studParent'){
-            localStorage.setItem("id", data.data._id);
-        }
+        // if(data.data.loginType=='studParent'){
+        //     localStorage.setItem("id", data.data._id);
+        // }
         
 
         

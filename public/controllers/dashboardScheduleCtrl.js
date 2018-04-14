@@ -572,7 +572,7 @@ app.controller('dashboardScheduleCtrl',function ($scope, $compile, $window, $fil
   //These variables MUST be set as a minimum for the calendar to work
   // vm.calendarView = 'month';
   // vm.viewDate = new Date();
-  vm.calendarView = 'day';
+  vm.calendarView = 'month';
   vm.viewDate = moment().startOf('day').toDate();
   var originalFormat = calendarConfig.dateFormats.hour;
   calendarConfig.dateFormats.hour = 'HH:mm';

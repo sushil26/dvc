@@ -13,6 +13,7 @@ app.controller('dashboardController', function ($scope, $window, httpFactory) {
         localStorage.removeItem("id");
         localStorage.removeItem("css");
         window.location.href="https://norecruits.com";
+        
         console.log("<--logOut");
     }
 

@@ -1,5 +1,5 @@
-app.controller('dashboardScheduleCtrl', function ($scope, $compile, $window, $filter, httpFactory, moment, calendarConfig, $uibModal) {
-  console.log("dashboardScheduleCtrl==>");
+app.controller('dashboardScheduleCtrl',function ($scope, $compile, $window, $filter, httpFactory, moment, calendarConfig, $uibModal) {
+    console.log("dashboardScheduleCtrl==>");
 
   var dayEventmodal; /* ### Note: open model for event send ###  */
   var studEvents = []; /* ### Note: selected student events ### */
@@ -142,7 +142,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $compile, $window, $fi
           var obj = {
             'id': $scope.specificSED[x]._id,
             'title': $scope.specificSED[x].title,
-            'color': 'red',
+            'color': '$scope.specificSED[x].primColor',
             'startsAt': new Date($scope.specificSED[x].start),
             'endsAt': new Date($scope.specificSED[x].end),
             'draggable': true,
@@ -244,11 +244,11 @@ app.controller('dashboardScheduleCtrl', function ($scope, $compile, $window, $fi
 
   if (localStorage.getItem("loginType") == 'admin') {
     console.log("loginType: " + localStorage.getItem("loginType"));
-    // document.getElementById('userAuth').style.display = "block";
+   // document.getElementById('userAuth').style.display = "block";
     $scope.userLoginType = 'admin';
   }
   else if (localStorage.getItem("loginType") == 'teacher') {
-    // document.getElementById('userAuth').style.display = "none";
+   // document.getElementById('userAuth').style.display = "none";
     $scope.userLoginType = 'teacher';
     $scope.getTeacherData();
 
@@ -260,7 +260,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $compile, $window, $fi
     $scope.getStudentData();
   }
   else {
-    console.log("localStorage.getItem('loginType'): " + localStorage.getItem("loginType"));
+      console.log("localStorage.getItem('loginType'): "+localStorage.getItem("loginType"));
     // window.location.href = "https://norecruits.com";
   }
 
@@ -497,7 +497,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $compile, $window, $fi
               'actions': actions,
               'url': obj.url
             });
-
+           
             // if($scope.userLoginType=='studParent')
             // {
 
@@ -795,11 +795,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $compile, $window, $fi
   // };
 
 
-  $scope.tableForTimes = function () {
-    console.log("timeTable-->");
-    $('#timeTable_modal').modal('show');
-    console.log("<--timeTable");
-  }
+
 
 
 

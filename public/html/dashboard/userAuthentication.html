@@ -10,61 +10,54 @@
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-              <h4 class="modal-title">Modal Tittle</h4>
+              <h4 class="modal-title">{{getUserData.teacherName}} Time Table</h4>
             </div>
             <div class="modal-body">
               <div class="col-sm-12" ng-if="getUserData.timeTable[0].Monday">
-                <section class="panel">
-                  <header class="panel-heading">
-                    <h2>{{getUserData.teacherName}} Time Table</h2>
-                  </header>
-                  <table class="table">
 
-                    <thead>
-                      <tr>
-                        <th>Timing</th>
-                        <th>09:00-09:45</th>
-                        <th>9:45-10:30</th>
-                        <th>10:30-11:15</th>
-                        <th>11:15-12:00</th>
-                        <th>01:00-01:45</th>
-                        <th>01:45-02:30</th>
-                        <th>02:30-03:15</th>
-                        <th>03:15-04:00</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr class="active">
-                        <td>Monday</td>
-                        <td ng-repeat="mtt in getUserData.timeTable[0].Monday">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
-                      </tr>
-                      <tr class="warning">
-                        <td>Tuesday</td>
-                        <td ng-repeat="mtt in getUserData.timeTable[1].Tues">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
-                      </tr>
-                      <tr class="danger">
-                        <td>Wednesday</td>
-                        <td ng-repeat="mtt in getUserData.timeTable[2].Wed">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
-                      </tr>
-                      <tr class="success">
-                        <td>Thursday</td>
-                        <td ng-repeat="mtt in getUserData.timeTable[3].Thurs">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
-                      </tr>
-                      <tr class="active">
-                        <td>Friday</td>
-                        <td ng-repeat="mtt in getUserData.timeTable[4].Fri">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
-                      </tr>
-                      <tr class="warning">
-                        <td>Saturday</td>
-                        <td ng-repeat="mtt in getUserData.timeTable[5].Sat">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
-                      </tr>
-                    </tbody>
+                <table class="table">
 
-                  </table>
+                  <thead>
+                    <tr>
+                      <th>Timing</th>
+                      <th>09:00-09:45</th>
+                      <th>9:45-10:30</th>
+                      <th>10:30-11:15</th>
+                      <th>11:15-12:00</th>
+                      <th>01:00-01:45</th>
+                      <th>01:45-02:30</th>
+                      <th>02:30-03:15</th>
+                      <th>03:15-04:00</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="active">
+                      <td>Monday</td>
+                      <td ng-repeat="mtt in getUserData.timeTable[0].Monday">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
+                    </tr>
+                    <tr class="warning">
+                      <td>Tuesday</td>
+                      <td ng-repeat="mtt in getUserData.timeTable[1].Tues">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
+                    </tr>
+                    <tr class="danger">
+                      <td>Wednesday</td>
+                      <td ng-repeat="mtt in getUserData.timeTable[2].Wed">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
+                    </tr>
+                    <tr class="success">
+                      <td>Thursday</td>
+                      <td ng-repeat="mtt in getUserData.timeTable[3].Thurs">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
+                    </tr>
+                    <tr class="active">
+                      <td>Friday</td>
+                      <td ng-repeat="mtt in getUserData.timeTable[4].Fri">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
+                    </tr>
+                    <tr class="warning">
+                      <td>Saturday</td>
+                      <td ng-repeat="mtt in getUserData.timeTable[5].Sat">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
+                    </tr>
+                  </tbody>
 
-
-
-                </section>
+                </table>ßßßß
               </div>
             </div>
             <div class="modal-footer">

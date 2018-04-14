@@ -5,13 +5,13 @@ app.controller('dashboardController', function ($scope, $window, httpFactory) {
 
     $scope.logOut = function () {
         console.log("logOut-->");
-        localStorage.removeItem("userData");
-        localStorage.removeItem("userName");
-        localStorage.removeItem("status");
-        localStorage.removeItem("email");
-        localStorage.removeItem("loginType");
-        localStorage.removeItem("id");
-        localStorage.removeItem("css");
+        // localStorage.removeItem("userData");
+        // localStorage.removeItem("userName");
+        // localStorage.removeItem("status");
+        // localStorage.removeItem("email");
+        // localStorage.removeItem("loginType");
+        // localStorage.removeItem("id");
+        // localStorage.removeItem("css");
         // window.location.href="https://norecruits.com";
         
         console.log("<--logOut");

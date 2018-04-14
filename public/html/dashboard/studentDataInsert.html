@@ -43,15 +43,15 @@
 
                                     </select>
                                 </div>
-                                <label for="fullname" class="control-label col-lg-2"><Section></Section>
-                                        <span class="required">*</span>
-                                    </label>
-                                    <div class="col-lg-2">
-                                        <select ng-model="class" class="form-control m-bot15">
-                                            <option ng-repeat="y in sectionS">{{y}}</option>
-    
-                                        </select>
-                                    </div>
+                                <label for="fullname" class="control-label col-lg-2">Section
+                                    <span class="required">*</span>
+                                </label>
+                                <div class="col-lg-2">
+                                    <select ng-model="section" class="form-control m-bot15">
+                                        <option ng-repeat="y in sectionS">{{y}}</option>
+
+                                    </select>
+                                </div>
                             </div>
 
 
@@ -63,20 +63,73 @@
                                     <input class=" form-control" ng-model="studId" id="fullname" name="fullname" type="text" />
                                 </div>
                             </div>
+
+
+
                             <div class="form-group ">
-                                <label for="address" class="control-label col-lg-2">Address
+                                <label for="fullname" class="control-label col-lg-2">Father Name
                                     <span class="required">*</span>
                                 </label>
                                 <div class="col-lg-10">
-                                    <input class=" form-control" id="address" name="address" type="text" />
+                                    <input class=" form-control" ng-model="parentName" id="fullname" name="fullname" type="text" />
                                 </div>
                             </div>
                             <div class="form-group ">
-                                <label for="username" class="control-label col-lg-2">Username
+                                <label for="email" class="control-label col-lg-2">Father Email
                                     <span class="required">*</span>
                                 </label>
                                 <div class="col-lg-10">
-                                    <input class="form-control " id="username" name="username" type="text" />
+                                    <input class="form-control" ng-model="parentEmail" id="email" name="email" type="email" />
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="phone" class="control-label col-lg-2"> Father Phone
+                                    <span class="required">*</span>
+                                </label>
+                                <div class="col-lg-10">
+                                    <input class="form-control" ng-model="mobileNum" id="phone" name="phone" type="phone" />
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="fullname" class="control-label col-lg-2">Occupation
+                                    <span class="required">*</span>
+                                </label>
+                                <div class="col-lg-10">
+                                    <input class=" form-control" ng-model="focc" id="fullname" name="fullname" type="text" />
+                                </div>
+                            </div>
+
+
+                            <div class="form-group ">
+                                <label for="fullname" class="control-label col-lg-2">Mother Name
+                                    <span class="required">*</span>
+                                </label>
+                                <div class="col-lg-10">
+                                    <input class=" form-control" ng-model="mName" id="fullname" name="fullname" type="text" />
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="email" class="control-label col-lg-2">Mother Email
+                                    <span class="required">*</span>
+                                </label>
+                                <div class="col-lg-10">
+                                    <input class="form-control" ng-model="mEmail" id="email" name="email" type="email" />
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="phone" class="control-label col-lg-2">Mother Phone
+                                    <span class="required">*</span>
+                                </label>
+                                <div class="col-lg-10">
+                                    <input class="form-control" ng-model="mothermobileNum" id="phone" name="phone" type="phone" />
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="fullname" class="control-label col-lg-2">Occupation
+                                    <span class="required">*</span>
+                                </label>
+                                <div class="col-lg-10">
+                                    <input class=" form-control" ng-model="mocc" id="fullname" name="fullname" type="text" />
                                 </div>
                             </div>
                             <div class="form-group ">
@@ -84,36 +137,15 @@
                                     <span class="required">*</span>
                                 </label>
                                 <div class="col-lg-10">
-                                    <input class="form-control " id="password" name="password" type="password" />
+                                    <input class="form-control" ng-model="pswd" id="password" name="password" type="text" />
                                 </div>
                             </div>
-                            <div class="form-group ">
-                                <label for="confirm_password" class="control-label col-lg-2">Confirm Password
-                                    <span class="required">*</span>
-                                </label>
-                                <div class="col-lg-10">
-                                    <input class="form-control " id="confirm_password" name="confirm_password" type="password" />
-                                </div>
-                            </div>
-                            <div class="form-group ">
-                                <label for="email" class="control-label col-lg-2">Email
-                                    <span class="required">*</span>
-                                </label>
-                                <div class="col-lg-10">
-                                    <input class="form-control " id="email" name="email" type="email" />
-                                </div>
-                            </div>
-                            <div class="form-group ">
-                                <label for="agree" class="control-label col-lg-2 col-sm-3">Agree to Our Policy
-                                    <span class="required">*</span>
-                                </label>
-                                <div class="col-lg-10 col-sm-9">
-                                    <input type="checkbox" style="width: 20px" class="checkbox form-control" id="agree" name="agree" />
-                                </div>
-                            </div>
+
+
+
                             <div class="form-group">
                                 <div class="col-lg-offset-2 col-lg-10">
-                                    <button class="btn btn-primary" type="submit">Save</button>
+                                    <button class="btn btn-primary" ng-click="saveStudent()" type="submit">Save</button>
                                     <button class="btn btn-default" type="button">Cancel</button>
                                 </div>
                             </div>
@@ -121,59 +153,6 @@
                     </div>
                 </div>
             </section>
-
-
-
-
-
-
-
-            <form>
-                <input type="text" ng-model="schoolName" placeholder="Enter school Name">
-                <hr>
-
-                <input type="text" ng-model="studId" placeholder="Enter Student id">
-                <hr>
-
-                <input type="text" ng-model="studName" placeholder="Enter Student Name">
-                <hr>
-
-                <div>
-                    <input type="text" ng-model="class" placeholder="Enter Class">
-
-                    <input type="text" ng-model="section" placeholder="Enter Section">
-
-                </div>
-                <hr>
-
-                <input type="text" ng-model="parentName" placeholder="Enter Father Name">
-                <hr>
-
-                <input type="email" ng-model="parentEmail" placeholder="Enter father Email">
-                <hr>
-
-                <input type="text" ng-model="mName" placeholder="Enter Mother Name">
-                <hr>
-
-                <input type="email" ng-model="mEmail" placeholder="Enter Mother Email">
-                <hr>
-
-                <input type="text" ng-model="mobileNum" placeholder="Enter Father number">
-                <hr>
-                <input type="text" ng-model="mothermobileNum" placeholder="Enter Mother number">
-                <hr>
-
-
-
-                <input type="password" ng-model="pswd" placeholder="Enter password">
-                <hr>
-
-
-                <button ng-click="saveStudent()">Submit</button>
-            </form>
-
-
-
         </section>
     </section>
 </div>

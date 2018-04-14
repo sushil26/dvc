@@ -162,7 +162,13 @@ app.controller('userAuthCtrl', function ($scope, $window, httpFactory) {
         console.log("<--deleteUser");
     }
 
+      
+
     $scope.tableForTimes = function (id) {
+        $('#myModalt').modal('show');
+
+
+        
         console.log("timeTable-->");
         $scope.getUserData = $scope.userData[id];
         console.log("$scope.getUserData: " + JSON.stringify($scope.getUserData));

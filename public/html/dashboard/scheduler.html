@@ -124,7 +124,7 @@
                         <option value="" disabled selected>Teacher</option>
                       </select>
                       <button class="btn btn-primary" ng-if="calendarOwner!='Your'" ng-click="eventGet()">My Calendar</button>
-                      <button class="btn btn-primary" ng-if="calendarOwner!='Your' && teacherPersonalData[0].teacherName != null"  ng-click="tableForTimes()">Teacher Time Table</button>
+                      <button class="btn btn-primary" ng-if="calendarOwner!='Your' && teacherPersonalData[0].teacherName != null" ng-click="tableForTimes()">Teacher Time Table</button>
                       <button class="btn btn-primary" ng-if="calendarOwner=='Your' && userLoginType=='studParent' && teacherPersonalData[0].teacherName != null"
                         ng-click="getSTCalendar()">{{teacherPersonalData[0].teacherName}} Calendar</button>
                       <button class="btn btn-primary" ng-if="calendarOwner=='Your' && userLoginType=='teacher' && studentPersonalData[0].studName != null"
@@ -159,9 +159,7 @@
           </style>
           <b>
             <h2 ng-if="calendarOwner!='Your'">{{calendarOwner}} Calendar</h2>
-            <h2 ng-if="calendarOwner=='Your'">{{calendarOwner}} Calendar
-              <i>Only for Reading</i>
-            </h2>
+            <h2 ng-if="calendarOwner=='Your'">{{calendarOwner}} Calendar</h2>
           </b>
           <!-- <mwl-calendar events="vm.events" view="vm.calendarView" view-title="vm.calendarTitle" view-date="vm.viewDate" on-event-click="vm.eventClicked(calendarEvent)"
                   on-event-times-changed="vm.eventTimesChanged(calendarEvent); calendarEvent.startsAt = calendarNewEventStart; calendarEvent.endsAt = calendarNewEventEnd"

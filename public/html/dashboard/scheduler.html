@@ -2,7 +2,7 @@
    <link href="https://unpkg.com/bootstrap@3/dist/css/bootstrap.css" rel="stylesheet"> 
   <section id="main-content">
     <section class="wrapper">
-
+      <button class="btn btn-primary" ng-if="calendarOwner!='Your' && teacherPersonalData[0].teacherName != null"  ng-click="tableForTimes()">Teacher Time Table</button>
       <!-- ##### Start Time Table  ##### -->
       <div class="modal fade" id="timeTable_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog" style="width:auto;">
@@ -172,7 +172,7 @@
                         <option value="" disabled selected>Teacher</option>
                       </select>
                       <button class="btn btn-primary" ng-if="calendarOwner!='Your'" ng-click="eventGet()">My Calendar</button>
-                      <button class="btn btn-primary" ng-if="calendarOwner!='Your' && teacherPersonalData[0].teacherName != null"  ng-click="tableForTimes()">Teacher Time Table</button>
+                     
                       <button class="btn btn-primary" ng-if="calendarOwner=='Your' && userLoginType=='studParent' && teacherPersonalData[0].teacherName != null"
                         ng-click="getSTCalendar()">{{teacherPersonalData[0].teacherName}} Calendar</button>
                       <button class="btn btn-primary" ng-if="calendarOwner=='Your' && userLoginType=='teacher' && studentPersonalData[0].studName != null"

@@ -26,66 +26,68 @@
       </div>
 
       <div class="row" ng-if="userLoginType=='admin' || userLoginType=='teacher' || userLoginType=='studParent'">
-        <div class="col-md-6 text-center">
-          <h3 class="text-center">Select Time</h2>
-            <div style="background:#e5caa74d;border-top-left-radius: 30px; border-bottom-right-radius: 30px;padding: 1%;">
-              <div style=" border:1px solid rgb(173, 173, 173); border-top-left-radius: 30px; border-bottom-right-radius: 30px;padding: 5%;">
-                <div class="btn-group">
-                  <button class="btn btn-primary" mwl-date-modifier date="vm.viewDate" decrement="vm.calendarView" ng-click="vm.cellIsOpen = false">
-                    Previous
-                  </button>
-                  <button class="btn btn-default" mwl-date-modifier date="vm.viewDate" set-to-today ng-click="vm.cellIsOpen = false">
-                    Today
-                  </button>
-                  <button class="btn btn-primary" mwl-date-modifier date="vm.viewDate" increment="vm.calendarView" ng-click="vm.cellIsOpen = false">
-                    Next
-                  </button>
-                </div>
-
-                <hr>
-
-                <div class="btn-group ">
-                  <label class="btn btn-primary" ng-model="vm.calendarView" uib-btn-radio="'year'" ng-click="vm.cellIsOpen = false">Year</label>
-                  <label class="btn btn-primary" ng-model="vm.calendarView" uib-btn-radio="'month'" ng-click="vm.cellIsOpen = false">Month</label>
-                  <label class="btn btn-primary" ng-model="vm.calendarView" uib-btn-radio="'week'" ng-click="vm.cellIsOpen = false">Week</label>
-                  <label class="btn btn-primary" ng-model="vm.calendarView" uib-btn-radio="'day'" ng-click="vm.cellIsOpen = false">Day</label>
-                </div>
-              </div>
-            </div>
-            <h3 ng-if="userLoginType=='teacher'" class="text-center">Select and Get Student Calendar</h2>
-              <h3 ng-if="userLoginType=='studParent'" class="text-center">Select and Get Teacher Calendar</h2>
+          <div class="col-md-6 text-center">
+              <h3 class="text-center">Select Time</h2>
                 <div style="background:#e5caa74d;border-top-left-radius: 30px; border-bottom-right-radius: 30px;padding: 1%;">
                   <div style=" border:1px solid rgb(173, 173, 173); border-top-left-radius: 30px; border-bottom-right-radius: 30px;padding: 5%;">
-                    <form name="getStudentCal">
-                      <select ng-if="userLoginType=='teacher'" class="btn btn-primary" placeholder="select" ng-model="cssSelect" ng-change="getStudListForCS(cssSelect)"
-                        ng-options="css as css.class+ '-' + css.section + '-' + css.subject for css in teacherData[0].css">
-                        <option value="" disabled selected>Class</option>
-                      </select>
-                      <select ng-if="userLoginType=='teacher'" class="btn btn-primary" placeholder="select" ng-model="csSelect" ng-change="getStudentCalendar(csSelect)"
-                        ng-options="cs as cs.name + '-' + cs.studId for cs in studList">
-                        <option value="" disabled selected>Student</option>
-                      </select>
-                      <select ng-if="userLoginType=='studParent'" class="btn btn-primary" placeholder="select" ng-model="cssSelect" ng-change="getTeacherCalendar(cssSelect)"
-                        ng-options="cs as cs.name + '-' + cs.teacherId+'-'+cs.subject for cs in teacherList">
-                        <option value="" disabled selected>Teacher</option>
-                      </select>
-                      <button class="btn btn-primary" ng-if="calendarOwner!='Your'" ng-click="eventGet()">My Calendar</button>
-                      <button class="btn btn-primary" ng-if="calendarOwner!='Your' && teacherPersonalData[0].teacherName != null" ng-click="tableForTimes()">Teacher Time Table</button>
-                      <button class="btn btn-primary" ng-if="calendarOwner=='Your' && userLoginType=='studParent' && teacherPersonalData[0].teacherName != null"
-                        ng-click="getSTCalendar()">{{teacherPersonalData[0].teacherName}} Calendar</button>
-                      <button class="btn btn-primary" ng-if="calendarOwner=='Your' && userLoginType=='teacher' && studentPersonalData[0].studName != null"
-                        ng-click="getSSCalendar()">{{studentPersonalData[0].studName}} Calendar</button>
-                    </form>
+                    <div class="btn-group">
+                      <button class="btn btn-primary" mwl-date-modifier date="vm.viewDate" decrement="vm.calendarView" ng-click="vm.cellIsOpen = false">
+                        Previous
+                      </button>
+                      <button class="btn btn-default" mwl-date-modifier date="vm.viewDate" set-to-today ng-click="vm.cellIsOpen = false">
+                        Today
+                      </button>
+                      <button class="btn btn-primary" mwl-date-modifier date="vm.viewDate" increment="vm.calendarView" ng-click="vm.cellIsOpen = false">
+                        Next
+                      </button>
+                    </div>
+    
+                    <hr>
+    
+                    <div class="btn-group ">
+                      <label class="btn btn-primary" ng-model="vm.calendarView" uib-btn-radio="'year'" ng-click="vm.cellIsOpen = false">Year</label>
+                      <label class="btn btn-primary" ng-model="vm.calendarView" uib-btn-radio="'month'" ng-click="vm.cellIsOpen = false">Month</label>
+                      <label class="btn btn-primary" ng-model="vm.calendarView" uib-btn-radio="'week'" ng-click="vm.cellIsOpen = false">Week</label>
+                      <label class="btn btn-primary" ng-model="vm.calendarView" uib-btn-radio="'day'" ng-click="vm.cellIsOpen = false">Day</label>
+                    </div>
                   </div>
                 </div>
-        </div>
+                <h3 ng-if="userLoginType=='teacher'" class="text-center">Select and Get Student Calendar</h2>
+                  <h3 ng-if="userLoginType=='studParent'" class="text-center">Select and Get Teacher Calendar</h2>
+                    <div style="background:#e5caa74d;border-top-left-radius: 30px; border-bottom-right-radius: 30px;padding: 1%;">
+                      <div style=" border:1px solid rgb(173, 173, 173); border-top-left-radius: 30px; border-bottom-right-radius: 30px;padding: 5%;">
+                        <form name="getStudentCal">
+                          <select ng-if="userLoginType=='teacher'" class="btn btn-primary" placeholder="select" ng-model="cssSelect" ng-change="getStudListForCS(cssSelect)"
+                            ng-options="css as css.class+ '-' + css.section + '-' + css.subject for css in teacherData[0].css">
+                            <option value="" disabled selected>Class</option>
+                          </select>
+                          <select ng-if="userLoginType=='teacher'" class="btn btn-primary" placeholder="select" ng-model="csSelect" ng-change="getStudentCalendar(csSelect)"
+                            ng-options="cs as cs.name + '-' + cs.studId for cs in studList">
+                            <option value="" disabled selected>Student</option>
+                          </select>
+                          <select ng-if="userLoginType=='studParent'" class="btn btn-primary" placeholder="select" ng-model="cssSelect" ng-change="getTeacherCalendar(cssSelect)"
+                            ng-options="cs as cs.name + '-' + cs.teacherId+'-'+cs.subject for cs in teacherList">
+                            <option value="" disabled selected>Teacher</option>
+                          </select>
+                          <button class="btn btn-primary" ng-if="calendarOwner!='Your'" ng-click="eventGet()">My Calendar</button>
+                          <button class="btn btn-primary" ng-if="calendarOwner!='Your' && teacherPersonalData[0].teacherName != null" ng-click="tableForTimes()">Teacher Time Table</button>
+                          <button class="btn btn-primary" ng-if="calendarOwner=='Your' && userLoginType=='studParent' && teacherPersonalData[0].teacherName != null"
+                            ng-click="getSTCalendar()">{{teacherPersonalData[0].teacherName}} Calendar</button>
+                          <button class="btn btn-primary" ng-if="calendarOwner=='Your' && userLoginType=='teacher' && studentPersonalData[0].studName != null"
+                            ng-click="getSSCalendar()">{{studentPersonalData[0].studName}} Calendar</button>
+                        </form>
+                      </div>
+                    </div>
+            </div>
         <div class="col-md-6 text-center" style="background:#e5caa74d;">
 
 
-
-          <h2 ng-if="calendarOwner!='Your'">{{calendarOwner}}- {{ vm.calendarTitle }}</h2>
-          <h2 ng-if="calendarOwner=='Your'">{{calendarOwner}- {{ vm.calendarTitle }}</h2>
-
+          <b>
+            <h2 ng-if="calendarOwner!='Your'">{{calendarOwner}}-{{ vm.calendarTitle }}</h2>
+            <h2 ng-if="calendarOwner=='Your'">{{calendarOwner}}-{{ vm.calendarTitle }} 
+             
+            </h2>
+          </b>
           <mwl-calendar ng-if="calendarOwner=='Your'" events="vm.events" view="vm.calendarView" view-title="vm.calendarTitle" view-date="vm.viewDate"
             on-event-click="vm.eventClicked(calendarEvent)" on-event-times-changed="vm.eventTimesChanged(calendarEvent); calendarEvent.startsAt = calendarNewEventStart; calendarEvent.endsAt = calendarNewEventEnd"
             cell-is-open="vm.cellIsOpen" day-view-start="09:00" day-view-end="15:00" day-view-split="15" cell-modifier="vm.modifyCell(calendarCell)"
@@ -98,7 +100,7 @@
           </mwl-calendar>
         </div>
 
-
+        
         <br>
         <br>
         <br>

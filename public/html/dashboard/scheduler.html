@@ -1,8 +1,8 @@
 <div ng-controller="dashboardScheduleCtrl as vm">
-   <link href="https://unpkg.com/bootstrap@3/dist/css/bootstrap.css" rel="stylesheet"> 
+  
   <section id="main-content">
     <section class="wrapper">
-      <button class="btn btn-primary" ng-if="calendarOwner!='Your' && teacherPersonalData[0].teacherName != null"  ng-click="tableForTimes()">Teacher Time Table</button>
+
       <!-- ##### Start Time Table  ##### -->
       <div class="modal fade" id="timeTable_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog" style="width:auto;">
@@ -172,7 +172,7 @@
                         <option value="" disabled selected>Teacher</option>
                       </select>
                       <button class="btn btn-primary" ng-if="calendarOwner!='Your'" ng-click="eventGet()">My Calendar</button>
-                     
+                      <button class="btn btn-primary" ng-if="calendarOwner!='Your' && teacherPersonalData[0].teacherName != null" ng-click="tableForTimes()">Teacher Time Table</button>
                       <button class="btn btn-primary" ng-if="calendarOwner=='Your' && userLoginType=='studParent' && teacherPersonalData[0].teacherName != null"
                         ng-click="getSTCalendar()">{{teacherPersonalData[0].teacherName}} Calendar</button>
                       <button class="btn btn-primary" ng-if="calendarOwner=='Your' && userLoginType=='teacher' && studentPersonalData[0].studName != null"
@@ -259,40 +259,40 @@
 
 
 
-                    <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
-                        <div class="modal-dialog">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-                              <h4 class="modal-title">Form Tittle</h4>
+                  <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                          <h4 class="modal-title">Form Tittle</h4>
+                        </div>
+                        <div class="modal-body">
+
+                          <form role="form">
+                            <div class="form-group">
+                              <label for="exampleInputEmail1">Email address</label>
+                              <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Enter email">
                             </div>
-                            <div class="modal-body">
-      
-                              <form role="form">
-                                <div class="form-group">
-                                  <label for="exampleInputEmail1">Email address</label>
-                                  <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Enter email">
-                                </div>
-                                <div class="form-group">
-                                  <label for="exampleInputPassword1">Password</label>
-                                  <input type="password" class="form-control" id="exampleInputPassword3" placeholder="Password">
-                                </div>
-                                <div class="form-group">
-                                  <label for="exampleInputFile">File input</label>
-                                  <input type="file" id="exampleInputFile3">
-                                  <p class="help-block">Example block-level help text here.</p>
-                                </div>
-                                <div class="checkbox">
-                                  <label>
-                                                                <input type="checkbox"> Check me out
-                                                            </label>
-                                </div>
-                                <button type="submit" class="btn btn-primary">Submit</button>
-                              </form>
+                            <div class="form-group">
+                              <label for="exampleInputPassword1">Password</label>
+                              <input type="password" class="form-control" id="exampleInputPassword3" placeholder="Password">
                             </div>
-                          </div>
+                            <div class="form-group">
+                              <label for="exampleInputFile">File input</label>
+                              <input type="file" id="exampleInputFile3">
+                              <p class="help-block">Example block-level help text here.</p>
+                            </div>
+                            <div class="checkbox">
+                              <label>
+                                <input type="checkbox"> Check me out
+                              </label>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                          </form>
                         </div>
                       </div>
+                    </div>
+                  </div>
 
 
 

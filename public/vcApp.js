@@ -1,6 +1,7 @@
 
 var app = angular.module('vcApp', ['ui.router', 'mwl.calendar', 'ui.bootstrap', 'ngCookies']);
 
+
  app.config(function($stateProvider, $urlRouterProvider) {
 
     // For any unmatched url, send to /route1

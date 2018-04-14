@@ -152,7 +152,7 @@ module.exports.login4VC = function(req, res) {
                 responseData = {
                   status: true,
                   message: "Login Successfully",
-                  loginType: "Parent",
+                  loginType: "studParent",
                   data: data[0]
                 };
                 res.status(200).send(responseData);

@@ -138,6 +138,15 @@ function sessionSet(data) {
             localStorage.setItem("id", data.data._id);
             
         }
+        else if(data.data.loginType=='loginType'){
+            var userData = {
+                "userName": data.data.studName,
+                "status": data.data.status,
+                "email": data.data.parentEmail,
+                "loginType": data.loginType
+            }
+            
+        }
         else{
             var userData = {
                 "userName": data.data.userName,

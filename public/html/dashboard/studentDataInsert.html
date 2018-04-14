@@ -37,10 +37,21 @@
                                 <label for="fullname" class="control-label col-lg-2">Class
                                     <span class="required">*</span>
                                 </label>
-                                <select  ng-model="class"  class="form-control m-bot15" >
-                                    <option ng-repeat="x in class" >{{x}}</option>
+                                <div class="col-lg-2">
+                                    <select ng-model="class" class="form-control m-bot15">
+                                        <option ng-repeat="x in classS">{{x}}</option>
 
-                                </select>
+                                    </select>
+                                </div>
+                                <label for="fullname" class="control-label col-lg-2"><Section></Section>
+                                        <span class="required">*</span>
+                                    </label>
+                                    <div class="col-lg-2">
+                                        <select ng-model="class" class="form-control m-bot15">
+                                            <option ng-repeat="y in sectionS">{{y}}</option>
+    
+                                        </select>
+                                    </div>
                             </div>
 
 

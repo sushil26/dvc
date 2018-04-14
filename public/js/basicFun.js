@@ -233,7 +233,7 @@ function vcLogout() {
     localStorage.removeItem("id");
     localStorage.removeItem("css");
 
-    document.getElementById("userAuth").style.display = 'none';
+    
     document.getElementById("appLogout").style.display = 'none';
     document.getElementById("appLogin").style.display = 'block';
     // document.getElementById("appReg").style.display = 'block';

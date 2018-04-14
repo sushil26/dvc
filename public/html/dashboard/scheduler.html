@@ -85,7 +85,7 @@
                   <label class="btn btn-primary" ng-model="vm.calendarView" uib-btn-radio="'month'" ng-click="vm.cellIsOpen = false">Month</label>
                   <label class="btn btn-primary" ng-model="vm.calendarView" uib-btn-radio="'week'" ng-click="vm.cellIsOpen = false">Week</label>
                   <!-- <label class="btn btn-primary" ng-model="vm.calendarView" uib-btn-radio="'day'" ng-click="vm.cellIsOpen = false">Day</label> -->
-                  <label class="btn btn-primary" ng-model="vm.calendarView" ng-click="vm.cellIsOpen = false">Day</label>
+                  <label class="btn btn-primary" ng-model="vm.calendarView" uib-btn-radio="'day'" ng-click="vm.cellIsOpen = false">Day</label>
                 </div>
               </div>
             </div>
@@ -107,7 +107,8 @@
                         <option value="" disabled selected>Teacher</option>
                       </select>
                       <button class="btn btn-primary" ng-if="calendarOwner!='Your'" ng-click="eventGet()">My Calendar</button>
-                      <button class="btn btn-primary" ng-if="calendarOwner!='Your' && teacherPersonalData[0].teacherName != null">Teacher Time Table</button>
+                      <button class="btn btn-primary" ng-if="calendarOwner!='Your' && teacherPersonalData[0].teacherName != null" data-target="#timeTable_modal"
+                        data-toggle="modal">Teacher Time Table</button>
                       <button class="btn btn-primary" ng-if="calendarOwner=='Your' && userLoginType=='studParent' && teacherPersonalData[0].teacherName != null"
                         ng-click="getSTCalendar()">{{teacherPersonalData[0].teacherName}} Calendar</button>
                       <button class="btn btn-primary" ng-if="calendarOwner=='Your' && userLoginType=='teacher' && studentPersonalData[0].studName != null"
@@ -264,74 +265,72 @@
         </div>
       </div>
 
-    </section>
-  </section>
+      <!-- ##### Start Time Table  ##### -->
 
-<!-- ##### Start Time Table  ##### -->
+      <div class="modal fade" id="timeTable_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="width:auto;">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 class="modal-title">{{getUserData.teacherName}} Time Table</h4>
+            </div>
+            <div class="modal-body">
+              <div class="table-responsive">
 
-<div class="modal fade" id="myModalt" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog" style="width:auto;">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title">{{getUserData.teacherName}} Time Table</h4>
-      </div>
-      <div class="modal-body">
-        <div class="table-responsive">
+                <table class="table">
 
-          <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Timing</th>
+                      <th>09:00-09:45</th>
+                      <th>9:45-10:30</th>
+                      <th>10:30-11:15</th>
+                      <th>11:15-12:00</th>
+                      <th>01:00-01:45</th>
+                      <th>01:45-02:30</th>
+                      <th>02:30-03:15</th>
+                      <th>03:15-04:00</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="active">
+                      <td>Monday</td>
+                      <td ng-repeat="mtt in teacherPersonalData[0].timeTable[0].Monday">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
+                    </tr>
+                    <tr class="warning">
+                      <td>Tuesday</td>
+                      <td ng-repeat="mtt in teacherPersonalData[0].timeTable[1].Tues">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
+                    </tr>
+                    <tr class="danger">
+                      <td>Wednesday</td>
+                      <td ng-repeat="mtt in teacherPersonalData[0].timeTable[2].Wed">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
+                    </tr>
+                    <tr class="success">
+                      <td>Thursday</td>
+                      <td ng-repeat="mtt in teacherPersonalData[0].timeTable[3].Thurs">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
+                    </tr>
+                    <tr class="active">
+                      <td>Friday</td>
+                      <td ng-repeat="mtt in teacherPersonalData[0].timeTable[4].Fri">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
+                    </tr>
+                    <tr class="warning">
+                      <td>Saturday</td>
+                      <td ng-repeat="mtt in teacherPersonalData[0].timeTable[5].Sat">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
+                    </tr>
+                  </tbody>
 
-            <thead>
-              <tr>
-                <th>Timing</th>
-                <th>09:00-09:45</th>
-                <th>9:45-10:30</th>
-                <th>10:30-11:15</th>
-                <th>11:15-12:00</th>
-                <th>01:00-01:45</th>
-                <th>01:45-02:30</th>
-                <th>02:30-03:15</th>
-                <th>03:15-04:00</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="active">
-                <td>Monday</td>
-                <td ng-repeat="mtt in teacherPersonalData[0].timeTable[0].Monday">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
-              </tr>
-              <tr class="warning">
-                <td>Tuesday</td>
-                <td ng-repeat="mtt in teacherPersonalData[0].timeTable[1].Tues">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
-              </tr>
-              <tr class="danger">
-                <td>Wednesday</td>
-                <td ng-repeat="mtt in teacherPersonalData[0].timeTable[2].Wed">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
-              </tr>
-              <tr class="success">
-                <td>Thursday</td>
-                <td ng-repeat="mtt in teacherPersonalData[0].timeTable[3].Thurs">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
-              </tr>
-              <tr class="active">
-                <td>Friday</td>
-                <td ng-repeat="mtt in teacherPersonalData[0].timeTable[4].Fri">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
-              </tr>
-              <tr class="warning">
-                <td>Saturday</td>
-                <td ng-repeat="mtt in teacherPersonalData[0].timeTable[5].Sat">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
-              </tr>
-            </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button data-dismiss="modal" class="btn btn-default" type="button">Close</button>
+            </div>
 
-          </table>
+          </div>
         </div>
       </div>
-      <div class="modal-footer">
-        <button data-dismiss="modal" class="btn btn-default" type="button">Close</button>
-      </div>
+      <!-- #####  End Time Table  ##### -->
 
-    </div>
-  </div>
-</div>
-<!-- #####  End Time Table  ##### -->
-
-
+    </section>
+  </section>
 </div>

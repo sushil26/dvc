@@ -11,17 +11,45 @@
 
             <section class="panel">
                 <header class="panel-heading">
-              Enter Details
+                    Enter Details
                 </header>
                 <div class="panel-body">
                     <div class="form">
                         <form class="form-validate form-horizontal " id="register_form" method="get" action="">
                             <div class="form-group ">
-                                <label for="fullname" class="control-label col-lg-2">Full name
+                                <label for="fullname" class="control-label col-lg-2">School Name
                                     <span class="required">*</span>
                                 </label>
                                 <div class="col-lg-10">
-                                    <input class=" form-control" id="fullname" name="fullname" type="text" />
+                                    <input class=" form-control" ng-model="schoolName" id="fullname" name="fullname" type="text" />
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="fullname" class="control-label col-lg-2">Student Name
+                                    <span class="required">*</span>
+                                </label>
+                                <div class="col-lg-10">
+                                    <input class=" form-control" ng-model="schoolName" id="fullname" name="fullname" type="text" />
+                                </div>
+                            </div>
+
+                            <div class="form-group ">
+                                <label for="fullname" class="control-label col-lg-2">Class
+                                    <span class="required">*</span>
+                                </label>
+                                <select  ng-model="class" ng-repeat="x in class"  class="form-control m-bot15" >
+                                    <option>{{x}}</option>
+
+                                </select>
+                            </div>
+
+
+                            <div class="form-group ">
+                                <label for="fullname" class="control-label col-lg-2">Student ID
+                                    <span class="required">*</span>
+                                </label>
+                                <div class="col-lg-10">
+                                    <input class=" form-control" ng-model="studId" id="fullname" name="fullname" type="text" />
                                 </div>
                             </div>
                             <div class="form-group ">

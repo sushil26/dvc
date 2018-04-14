@@ -2,10 +2,21 @@
 <div ng-controller="dashboardScheduleCtrl as vm">
   <section id="main-content">
     <section class="wrapper">
+        <div class="col-lg-12">
+            <h3 class="page-header">
+                <i class="fa fa-user-md"></i>Schedule</h3>
+            <!-- <ol class="breadcrumb">
+                        <li>
+                            <i class="fa fa-home"></i>
+                            <a href="index.html">Home</a>
+                        </li>
+                        <li>
+                            <i class="icon_documents_alt"></i>Pages</li>
+                        <li>
+                            <i class="fa fa-user-md"></i>Profile</li>
+                    </ol> -->
+        </div>
       <div class="row">
-        <header class="panel-heading">
-          Schedule Meeting
-        </header>
         <h2 class="text-center">{{ vm.calendarTitle }}</h2>
         <div class="row" ng-if="userLoginType=='admin' || userLoginType=='teacher' || userLoginType=='studParent'">
           <div class="col-md-4 col-sm-6 col-lg-4 text-center" style="background:#e5caa74d;">

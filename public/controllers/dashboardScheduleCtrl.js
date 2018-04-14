@@ -143,6 +143,7 @@ app.controller('dashboardScheduleCtrl',function ($scope, $compile, $window, $fil
             'id': $scope.specificSED[x]._id,
             'title': $scope.specificSED[x].title,
             'color': 'red',
+            'background-color':'blue',
             'startsAt': new Date($scope.specificSED[x].start),
             'endsAt': new Date($scope.specificSED[x].end),
             'draggable': true,

@@ -11,20 +11,20 @@ if (localStorage.getItem("userData")) {
         document.getElementById("appLogin").style.display = 'none';
         // document.getElementById("appReg").style.display = 'none';
         document.getElementById("appLogout").style.display = 'block';
-        document.getElementById("userAuth").style.display = 'none';
+        //document.getElementById("userAuth").style.display = 'none';
        
     }
     else if(loginType == 'admin'){
         document.getElementById("appLogin").style.display = 'none';
         // document.getElementById("appReg").style.display = 'none';
         document.getElementById("appLogout").style.display = 'block';
-        document.getElementById("userAuth").style.display = 'block';
+        //document.getElementById("userAuth").style.display = 'block';
     }
     else if (loginType == 'studParent') {
         document.getElementById("appLogin").style.display = 'none';
         // document.getElementById("appReg").style.display = 'none';
         document.getElementById("appLogout").style.display = 'block';
-        document.getElementById("userAuth").style.display = 'none';
+        //document.getElementById("userAuth").style.display = 'none';
    }
 
 }
@@ -103,13 +103,13 @@ function logVC() {
 
             if (data.loginType == 'admin') {
                 sessionSet(data);
-                document.getElementById("userAuth").style.display = 'block';
+               // document.getElementById("userAuth").style.display = 'block';
                 document.getElementById("appLogin").style.display = 'none';
                 // document.getElementById("appReg").style.display = 'none';
                 document.getElementById("appLogout").style.display = 'block';
             }
             else{
-                document.getElementById("userAuth").style.display = 'none';
+               // document.getElementById("userAuth").style.display = 'none';
             }
         }
 
@@ -165,7 +165,7 @@ function sessionSet(data) {
             localStorage.setItem("status", data.data.status);
             localStorage.setItem("email", data.data.email);
             localStorage.setItem("loginType", data.data.loginType);
-            document.getElementById('userAuth').style.display = "block";
+            //document.getElementById('userAuth').style.display = "block";
         }
         // if(data.data.loginType=='studParent'){
         //     localStorage.setItem("id", data.data._id);

@@ -172,8 +172,7 @@
                         <option value="" disabled selected>Teacher</option>
                       </select>
                       <button class="btn btn-primary" ng-if="calendarOwner!='Your'" ng-click="eventGet()">My Calendar</button>
-                      <button class="btn btn-primary" ng-if="calendarOwner!='Your' && teacherPersonalData[0].teacherName != null" data-target="#timeTable_modal"
-                        data-toggle="modal">Teacher Time Table</button>
+                      <button class="btn btn-primary" ng-if="calendarOwner!='Your' && teacherPersonalData[0].teacherName != null"  ng-click="tableForTimes()">Teacher Time Table</button>
                       <button class="btn btn-primary" ng-if="calendarOwner=='Your' && userLoginType=='studParent' && teacherPersonalData[0].teacherName != null"
                         ng-click="getSTCalendar()">{{teacherPersonalData[0].teacherName}} Calendar</button>
                       <button class="btn btn-primary" ng-if="calendarOwner=='Your' && userLoginType=='teacher' && studentPersonalData[0].studName != null"

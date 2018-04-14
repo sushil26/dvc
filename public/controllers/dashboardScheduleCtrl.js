@@ -795,7 +795,13 @@ app.controller('dashboardScheduleCtrl',function ($scope, $compile, $window, $fil
   // };
 
 
-
+  $scope.tableForTimes = function (id) {
+    $('#timeTable_modal').modal('show');
+    console.log("timeTable-->");
+    $scope.getUserData = $scope.userData[id];
+    console.log("$scope.getUserData: " + JSON.stringify($scope.getUserData));
+    console.log("<--timeTable");
+}
 
 
 

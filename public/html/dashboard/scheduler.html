@@ -26,59 +26,6 @@
           <i class="fa fa-user-md"></i>Schedule Meeting</h3>
       </div>
       <div class="row" ng-if="userLoginType=='admin' || userLoginType=='teacher' || userLoginType=='studParent'">
-
-
-        <!-- <div class="col-md-6 text-center" style="background:#e5caa74d;">
-     
-         
-          <b>
-          
-            </h2>
-          </b> -->
-        <div class="col-md-6 portlets">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h2 ng-if="calendarOwner!='Your'">
-                <strong>{{ vm.calendarTitle }}({{calendarOwner}})</strong>
-              </h2>
-              <h2 ng-if="calendarOwner=='Your'">
-                <strong>{{ vm.calendarTitle }} </strong>
-              </h2>
-              <div class="panel-actions">
-                <a href="#" class="wminimize">
-                  <i class="fa fa-chevron-up"></i>
-                </a>
-                <a href="#" class="wclose">
-                  <i class="fa fa-times"></i>
-                </a>
-              </div>
-
-            </div>
-            <br>
-            <br>
-            <br>
-            <div class="panel-body">
-              <!-- Widget content -->
-
-              <!-- Below line produces calendar. I am using FullCalendar plugin. -->
-              <mwl-calendar ng-if="calendarOwner=='Your'" events="vm.events" view="vm.calendarView" view-title="vm.calendarTitle" view-date="vm.viewDate"
-                on-event-click="vm.eventClicked(calendarEvent)" on-event-times-changed="vm.eventTimesChanged(calendarEvent); calendarEvent.startsAt = calendarNewEventStart; calendarEvent.endsAt = calendarNewEventEnd"
-                cell-is-open="vm.cellIsOpen" day-view-start="09:00" day-view-end="15:00" day-view-split="15" cell-modifier="vm.modifyCell(calendarCell)"
-                cell-auto-open-disabled="true" ng-click="vm.timeClick(calendarEvent)">
-              </mwl-calendar>
-              <mwl-calendar ng-if="calendarOwner!='Your'" events="vm.events" view="vm.calendarView" view-title="vm.calendarTitle" view-date="vm.viewDate"
-                on-event-times-changed="vm.eventTimesChanged(calendarEvent); calendarEvent.startsAt = calendarNewEventStart; calendarEvent.endsAt = calendarNewEventEnd"
-                cell-is-open="vm.cellIsOpen" day-view-start="09:00" day-view-end="15:00" day-view-split="15" cell-modifier="vm.modifyCell(calendarCell)"
-                cell-auto-open-disabled="true" on-date-range-select="vm.rangeSelected(calendarRangeStartDate, calendarRangeEndDate)">
-              </mwl-calendar>
-
-            </div>
-          </div>
-
-        </div>
-
-
-
         <div class="col-md-6 text-center">
           <h3 class="text-center">Select Time</h2>
             <div style="background:#e5caa74d;border-top-left-radius: 30px; border-bottom-right-radius: 30px;padding: 1%;">
@@ -134,13 +81,50 @@
                   </div>
                 </div>
         </div>
-        <br>
-        <br>
-        <br>
+        <div class="col-md-6 portlets">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h2 ng-if="calendarOwner!='Your'">
+                <strong>{{ vm.calendarTitle }}({{calendarOwner}})</strong>
+              </h2>
+              <h2 ng-if="calendarOwner=='Your'">
+                <strong>{{ vm.calendarTitle }}</strong>
+              </h2>
+              <div class="panel-actions">
+                <a href="#" class="wminimize">
+                  <i class="fa fa-chevron-up"></i>
+                </a>
+                <a href="#" class="wclose">
+                  <i class="fa fa-times"></i>
+                </a>
+              </div>
+
+            </div>
+            <div class="panel-body">
+              <!-- Widget content -->
+
+              <!-- Below line produces calendar. I am using FullCalendar plugin. -->
+              <mwl-calendar ng-if="calendarOwner=='Your'" events="vm.events" view="vm.calendarView" view-title="vm.calendarTitle" view-date="vm.viewDate"
+                on-event-click="vm.eventClicked(calendarEvent)" on-event-times-changed="vm.eventTimesChanged(calendarEvent); calendarEvent.startsAt = calendarNewEventStart; calendarEvent.endsAt = calendarNewEventEnd"
+                cell-is-open="vm.cellIsOpen" day-view-start="09:00" day-view-end="15:00" day-view-split="15" cell-modifier="vm.modifyCell(calendarCell)"
+                cell-auto-open-disabled="true" ng-click="vm.timeClick(calendarEvent)">
+              </mwl-calendar>
+              <mwl-calendar ng-if="calendarOwner!='Your'" events="vm.events" view="vm.calendarView" view-title="vm.calendarTitle" view-date="vm.viewDate"
+                on-event-times-changed="vm.eventTimesChanged(calendarEvent); calendarEvent.startsAt = calendarNewEventStart; calendarEvent.endsAt = calendarNewEventEnd"
+                cell-is-open="vm.cellIsOpen" day-view-start="09:00" day-view-end="15:00" day-view-split="15" cell-modifier="vm.modifyCell(calendarCell)"
+                cell-auto-open-disabled="true" on-date-range-select="vm.rangeSelected(calendarRangeStartDate, calendarRangeEndDate)">
+              </mwl-calendar>
+
+            </div>
+          </div>
+
+        </div>
+
+
+
+
+
         <div class="col-md-12 col-sm-12 col-lg-12">
-          <br>
-          <br>
-          <br>
           <h3 id="event-editor">
             View events
             <!-- <button class="btn btn-primary pull-right" ng-click="vm.addEvent()">

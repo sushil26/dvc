@@ -91,6 +91,17 @@
                 <strong>{{ vm.calendarTitle }}</strong>
               </h2>
               <div class="panel-actions">
+                <div class="btn-group">
+                  <button class="btn btn-primary" mwl-date-modifier date="vm.viewDate" decrement="vm.calendarView" ng-click="vm.cellIsOpen = false">
+                    Previous
+                  </button>
+                  <button class="btn btn-default" mwl-date-modifier date="vm.viewDate" set-to-today ng-click="vm.cellIsOpen = false">
+                    Today
+                  </button>
+                  <button class="btn btn-primary" mwl-date-modifier date="vm.viewDate" increment="vm.calendarView" ng-click="vm.cellIsOpen = false">
+                    Next
+                  </button>
+                </div>
                 <a href="#" class="wminimize">
                   <i class="fa fa-chevron-up"></i>
                 </a>

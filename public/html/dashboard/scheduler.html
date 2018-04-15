@@ -58,12 +58,7 @@
         <div class="col-md-6 portlets">
           <div class="panel panel-default">
             <div class="panel-heading" style="height: 50px;">
-              <h2 ng-if="calendarOwner!='Your'">
-                <strong>{{ vm.calendarTitle }}({{calendarOwner}})</strong>
-              </h2>
-              <h2 ng-if="calendarOwner=='Your'">
-                <strong>{{ vm.calendarTitle }}</strong>
-              </h2>
+
               <div class="panel-actions">
                 <div class="btn-group">
                   <label class="btn uib-btn-radio" mwl-date-modifier date="vm.viewDate" decrement="vm.calendarView" ng-click="vm.cellIsOpen = false">
@@ -74,7 +69,13 @@
                       <label class="btn uib-btn-radio" mwl-date-modifier date="vm.viewDate" increment="vm.calendarView" ng-click="vm.cellIsOpen = false">
                         >>
                       </label>
-        
+                      <h2 ng-if="calendarOwner!='Your'">
+                        <strong>{{ vm.calendarTitle }}({{calendarOwner}})</strong>
+                      </h2>
+                      <h2 ng-if="calendarOwner=='Your'">
+                        <strong>{{ vm.calendarTitle }}</strong>
+                      </h2>
+
                       <label class="btn btn-primary" ng-model="vm.calendarView" uib-btn-radio="'year'" ng-click="vm.cellIsOpen = false">Year</label>
                       <label class="btn btn-primary" ng-model="vm.calendarView" uib-btn-radio="'month'" ng-click="vm.cellIsOpen = false">Month</label>
                       <label class="btn btn-primary" ng-model="vm.calendarView" uib-btn-radio="'week'" ng-click="vm.cellIsOpen = false">Week</label>

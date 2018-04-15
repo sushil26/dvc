@@ -32,8 +32,8 @@
      
          
           <b>
-            <h2 ng-if="calendarOwner!='Your'">{{calendarOwner}}{{ vm.calendarTitle }}</h2>
-            <h2 ng-if="calendarOwner=='Your'">{{calendarOwner}}{{ vm.calendarTitle }} 
+            <h2 ng-if="calendarOwner!='Your'">{{ vm.calendarTitle }}({{calendarOwner}})</h2>
+            <h2 ng-if="calendarOwner=='Your'">{{ vm.calendarTitle }} 
             </h2>
           </b>
           <!-- <mwl-calendar events="vm.events" view="vm.calendarView" view-title="vm.calendarTitle" view-date="vm.viewDate" on-event-click="vm.eventClicked(calendarEvent)"

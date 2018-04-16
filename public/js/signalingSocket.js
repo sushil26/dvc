@@ -30,7 +30,7 @@ var USE_VIDEO = true;
 var DEFAULT_CHANNEL = "some-global-ch-name";
 var MUTE_AUDIO_BY_DEFAULT = false;
 var x = localStorage.getItem("secrecy");
-var decrypted = CryptoJS.AES.decrypt(encrypted, x);
+var decrypted = CryptoJS.AES.decrypt(x, x);
 console.log("Value##**: "+decrypted);
 if (localStorage.getItem("userData")) {
   console.log("User Name from session: " + localStorage.getItem("userData"));

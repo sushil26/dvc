@@ -69,7 +69,7 @@
 
 
                 <div ng-if="userLoginType=='studParent'" class="form-group ">
-                  
+
                   <div class="col-lg-6">
                     <select class="form-control m-bot15" placeholder="select" ng-model="cssSelect" ng-change="getTeacherCalendar(cssSelect)"
                       ng-options="cs as cs.name + '-' + cs.teacherId+'-'+cs.subject for cs in teacherList">
@@ -96,15 +96,22 @@
         </div>
         <div class="col-md-6 portlets">
           <div class="panel panel-default">
+            <div class="panel-heading">
+              <div class="panel-actions">
+                <h2 ng-if="calendarOwner!='Your'">
+                  <strong>{{ vm.calendarTitle }}({{calendarOwner}})</strong>
+                </h2>
+                <h2 ng-if="calendarOwner=='Your'">
+                  <strong>{{ vm.calendarTitle }}</strong>
+                </h2>
+                <a href="#" class="wminimize">
+                  <i class="fa fa-chevron-up"></i>
+                </a>
+
+              </div>
+
+            </div>
             <div class="panel-heading" style="height: 50px;">
-              <h2 ng-if="calendarOwner!='Your'">
-                <strong>{{ vm.calendarTitle }}({{calendarOwner}})</strong>
-              </h2>
-              <h2 ng-if="calendarOwner=='Your'">
-                <strong>{{ vm.calendarTitle }}</strong>
-              </h2>
-
-
               <div class="panel-actions">
                 <div class="btn-group">
                   <label class="btn uib-btn-radio" mwl-date-modifier date="vm.viewDate" decrement="vm.calendarView" ng-click="vm.cellIsOpen = false">
@@ -122,12 +129,10 @@
                       <label class="btn btn-primary" ng-model="vm.calendarView" uib-btn-radio="'day'" ng-click="vm.cellIsOpen = false">Day</label>
 
                 </div>
-                <a href="#" class="wminimize">
-                  <i class="fa fa-chevron-up"></i>
-                </a>
+
                 <!-- <a href="#" class="wclose">
-                  <i class="fa fa-times"></i>
-                </a> -->
+                    <i class="fa fa-times"></i>
+                  </a> -->
               </div>
 
             </div>

@@ -432,28 +432,30 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
 
     if ($scope.userLoginType == 'studParent') {
       var senderName = $scope.studentData[0].studName;
+      var senderMN = $scope.teacherData[0].mobileNum;
       var studId = $scope.studentData[0].studId;
       var email = $scope.teacherPersonalData[0].teacherEmail;/* ### Note: teacher email Id ### */
       var receiverName = $scope.teacherPersonalData[0].teacherName;
       var receiverId = $scope.teacherPersonalData[0].teacherId;
       var receiverMN = $scope.teacherPersonalData[0].mobileNum;
-      $scope.eventSend(reason, senderName, studId, email, receiverName, receiverId, receiverMN);
+      $scope.eventSend(reason, senderName, studId, email, senderMN, receiverName, receiverId, receiverMN);
     }
     if ($scope.userLoginType == 'teacher') {
 
       var teacherName = $scope.teacherData[0].teacherName;
+      var senderMN = $scope.teacherData[0].mobileNum;
       var teacherId = $scope.teacherData[0].teacherId;
       var email = $scope.studentPersonalData[0].parentEmail;/* ### Note: parentEmail email Id ### */
       var receiverName = $scope.studentPersonalData[0].studName;
       var receiverId = $scope.studentPersonalData[0].studId;
       var receiverMN = $scope.studentPersonalData[0].mobileNum;
-      $scope.eventSend(reason, teacherName, teacherId, email, receiverName, receiverId, receiverMN);
+      $scope.eventSend(reason, teacherName, teacherId, email, senderMN, receiverName, receiverId, receiverMN);
     }
 
 
   }
 
-  $scope.eventSend = function (res, name, id, email, receiverName, receiverId, receiverMN) {
+  $scope.eventSend = function (res, name, id, email, senderMN, receiverName, receiverId, receiverMN) {
     console.log("eventSend-->");
     var SIGNALING_SERVER = "https://norecruits.com";
     //var SIGNALING_SERVER = "http://localhost:5000";
@@ -483,7 +485,8 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
           "reason": res,
           "senderName": name,
           "senderId": id,
-          "senderEmail": email,
+          "senderMN":senderMN,
+          "receiverEmail": email,
           "start": $scope.startD,
           "end": $scope.endDateRes,
           "startAt": $scope.startFiltered,
@@ -518,7 +521,17 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
               'draggable': true,
               'resizable': true,
               'actions': actions,
-              'url': obj.url
+              'url': obj.url,
+              "reason": reason,
+              "senderName": senderName,
+            "senderId": senderId,
+            "senderMN":senderMN,
+            "receiverEmail": email,
+            "receiverName": receiverName, 
+            "receiverId": receiverId, 
+            "receiverMN": receiverMN,
+            
+
             });
           }
           else {
@@ -625,10 +638,11 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
             'url': $scope.eventData[x].url,
             "senderName": $scope.eventData[x].senderName,
             "senderId": $scope.eventData[x].senderId,
+            "senderMN": $scope.eventData[x].senderMN,
             "senderLoginType": $scope.eventData[x].senderLoginType,
             "title": $scope.eventData[x].title,
             "reason": $scope.eventData[x].reason,
-            "senderEmail": $scope.eventData[x].senderEmail,
+            "receiverEmail": $scope.eventData[x].receiverEmail,
             "receiverName": $scope.eventData[x].receiverName, 
             "receiverId": $scope.eventData[x].receiverId, 
             "receiverMN": $scope.eventData[x].receiverMN,

@@ -23,10 +23,10 @@ var transporter = nodemailer.createTransport({
 module.exports.eventSend = function (req, res) {
     console.log("eventSend-->");
     var responseData;
-    console.log("req.body.studName: " + req.body.studName);
-    console.log("req.body.studId: " + req.body.studId);
+    console.log("req.body.senderName: " + req.body.senderName);
+    console.log("req.body.senderId: " + req.body.senderId);
     console.log("req.body.reason: " + req.body.reason);
-    console.log("req.body.email: " + req.body.email);
+    console.log("req.body.senderEmail: " + req.body.senderEmail);
     if (general.emptyCheck(req.body.senderName) && general.emptyCheck(req.body.senderId) && general.emptyCheck(req.body.reason) && general.emptyCheck(req.body.senderEmail)) {
         var password = 'abc';
         var userData = {

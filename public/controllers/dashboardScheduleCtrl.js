@@ -435,6 +435,7 @@ $scope.timeForPeriods = $rootScope.TimeTable_timing;
       $scope.eventSend(reason, senderName, studId, email);
     }
     if ($scope.userLoginType == 'teacher') {
+      console.log(" $scope.teacherData: "+ JSON.stringify($scope.teacherData));
       var teacherName = $scope.teacherData[0].teacherName;
       var teacherId = $scope.teacherData[0].teacherId;
       var email = $scope.studentPersonalData[0].parentEmail;/* ### Note: parentEmail email Id ### */

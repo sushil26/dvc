@@ -26,6 +26,7 @@ $scope.timeForPeriods = $rootScope.TimeTable_timing;
       console.log("data--" + JSON.stringify(data.data));
       if (checkStatus) {
         $scope.teacherData = data.data.data;
+        
         $scope.teacherPersonalData = data.data.data;
 
         console.log("teacherData: " + JSON.stringify($scope.teacherData));
@@ -529,6 +530,17 @@ $scope.timeForPeriods = $rootScope.TimeTable_timing;
     console.log("<--eventSend");
     // var url = document.getElementById('linkToShare').innerHTML;
   }
+  vm.timespanClicked = function (date) {
+    console.log("timespanClicked-->");
+console.log("date: "+date);
+$scope.selectedDateForEvent =  $filter('date')(date, "EEE");
+$scope.selectedDate = date;
+    $scope.getTeacherData();
+    $('#timeTable_modal').modal('show');
+  
+    console.log("<--timespanClicked");
+
+  };
 
   $scope.timeTableForEventBook = function (day, id) {
     console.log("timeTableForEventBook-->");
@@ -540,6 +552,8 @@ $scope.timeForPeriods = $rootScope.TimeTable_timing;
     // $scope.startDate = $filter('date')(s, "EEE MMM dd y");
     // $scope.endDate = $filter('date')(e, "HH:mm:ss 'GMT'Z (IST)'");
     // $scope.endDateRes = $scope.startDate + ' ' + $scope.endDate;
+
+    $scope.startDate = $filter('date')(s, "EEE MMM dd y");
 
     // dayEventmodal = $uibModal.open({
     //   scope: $scope,
@@ -814,31 +828,7 @@ $scope.timeForPeriods = $rootScope.TimeTable_timing;
     console.log("<--rangeSelected");
   };
 
-  vm.timespanClicked = function (date) {
-    console.log("timespanClicked-->");
-console.log("date: "+date);
-$scope.selectedDateForEvent =  $filter('date')(date, "EEE");
-$scope.selectedDate = date;
-    $scope.getTeacherData();
-    $('#timeTable_modal').modal('show');
-    // if (vm.calendarView === 'month') {
-    //   if ((vm.cellIsOpen && moment(date).startOf('day').isSame(moment(vm.viewDate).startOf('day'))) || cell.events.length === 0 || !cell.inMonth) {
-    //     vm.cellIsOpen = false;
-    //   } else {
-    //     vm.cellIsOpen = true;
-    //     vm.viewDate = date;
-    //   }
-    // } else if (vm.calendarView === 'year') {
-    //   if ((vm.cellIsOpen && moment(date).startOf('month').isSame(moment(vm.viewDate).startOf('month'))) || cell.events.length === 0) {
-    //     vm.cellIsOpen = false;
-    //   } else {
-    //     vm.cellIsOpen = true;
-    //     vm.viewDate = date;
-    //   }
-    // }
-    console.log("<--timespanClicked");
-
-  };
+  
 
 
 

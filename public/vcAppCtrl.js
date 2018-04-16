@@ -24,5 +24,13 @@ app.controller("vcAppCtrl", function(
       "none";
   };
 
-  $rootScope.TimeTable_timing = ["09:00-09:45","9:45-10:30","10:30-11:15","11:15-12:00","01:00-01:45","01:45-02:30","02:30-03:15","03:15-04:00"]
+  $rootScope.TimeTable_timing = [
+    {"startsAt":"09:00","endsAt":"09:45"},
+  {"startsAt":"9:45","endsAt":"10:30"},
+  {"startsAt":"10:30", "endsAt":"11:15"},
+  {"startsAt":"11:15","endsAt":"12:00"},
+  {"startsAt":"01:00", "endsAt":"01:45"},
+  {"startsAt":"01:45", "endsAt":"02:30"},
+  {"startsAt":"02:30","endsAt":"03:15"},
+  {"startsAt":"03:15", "endsAt":"04:00"}]
 });

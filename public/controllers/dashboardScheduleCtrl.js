@@ -563,10 +563,10 @@ $scope.timeForPeriods = $rootScope.TimeTable_timing;
       //   s <= event.startsAt && event.startsAt <= e ||
       //   s <= event.endsAt && event.endsAt <= e
       // });
-      return (event.startsAt <= s && s < event.endsAt) ||
-        event.startsAt < e && e < event.endsAt ||
-        s <= event.startsAt && event.startsAt < e ||
-        s < event.endsAt && event.endsAt < e
+      return (event.startsAt <= rsd && rsd < event.endsAt) ||
+        event.startsAt < red && red < event.endsAt ||
+        rsd <= event.startsAt && event.startsAt < red ||
+        rsd < event.endsAt && event.endsAt < red
     });
     console.log("conflicts: " + conflicts);
     if (conflicts) {
@@ -584,8 +584,8 @@ $scope.timeForPeriods = $rootScope.TimeTable_timing;
         // moment().startOf('day').toDate()
         var dt = new Date();
         $scope.eventDetails = {
-          "startsAt": new Date(resultedStartDate),
-          "endsAt":  new Date(resultedStartDate)
+          "startsAt": rsd,
+          "endsAt":  red
         
         }
         console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));

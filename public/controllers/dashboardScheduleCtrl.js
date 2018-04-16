@@ -863,14 +863,14 @@ $scope.timeForPeriods = $rootScope.TimeTable_timing;
 console.log("date: "+date);
 console.log("teacherPersonalData: "+JSON.stringify($scope.teacherPersonalData));
 $scope.selectedDateForEvent =  $filter('date')(date, "EEE");
-console.log("selectedDateForEvent: "+selectedDateForEvent);
+console.log("selectedDateForEvent: "+$scope.selectedDateForEvent);
 $scope.selectedDate = date;
 if(loginType="teacher"){
   $scope.getTeacherData();
 }   
 else
 {
-  
+
 } 
 
     $('#timeTable_modal').modal('show');

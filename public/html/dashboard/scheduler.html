@@ -128,45 +128,36 @@
             <div class="panel-heading" style="height: 50px;">
               <div class="panel-actions">
 
-                <div ng-if="userLoginType=='teacher'" class="form-group ">
-                  <div class="col-lg-3">
-                    <select class="form-control m-bot15" placeholder="select" ng-model="cssSelect" ng-change="getStudListForCS(cssSelect)" ng-options="css as css.class+ '-' + css.section + '-' + css.subject for css in teacherData[0].css">
-                      <option value="" disabled selected>Class</option>
-                    </select>
-                  </div>
-                </div>
 
-                <div ng-if="userLoginType=='teacher'" class="form-group ">
-                  <div class="col-lg-3">
-                    <select class="form-control m-bot15" placeholder="select" ng-model="csSelect" ng-change="getStudentCalendar(csSelect)" ng-options="cs as cs.name + '-' + cs.studId for cs in studList">
-                      <option value="" disabled selected>Student</option>
-                    </select>
-                  </div>
-                </div>
+                <select class="form-control m-bot15" ng-if="userLoginType=='teacher'" placeholder="select" ng-model="cssSelect" ng-change="getStudListForCS(cssSelect)"
+                  ng-options="css as css.class+ '-' + css.section + '-' + css.subject for css in teacherData[0].css">
+                  <option value="" disabled selected>Class</option>
+                </select>
 
 
-                <div ng-if="userLoginType=='studParent'" class="form-group ">
-
-                  <div class="col-lg-6">
-                    <select class="form-control m-bot15" placeholder="select" ng-model="cssSelect" ng-change="getTeacherCalendar(cssSelect)"
-                      ng-options="cs as cs.name + '-' + cs.teacherId+'-'+cs.subject for cs in teacherList">
-                      <option value="" disabled selected>Teacher</option>
-                    </select>
-                  </div>
-                </div>
+                <select class="form-control m-bot15" ng-if="userLoginType=='teacher'" placeholder="select" ng-model="csSelect" ng-change="getStudentCalendar(csSelect)"
+                  ng-options="cs as cs.name + '-' + cs.studId for cs in studList">
+                  <option value="" disabled selected>Student</option>
+                </select>
 
 
-                <div class="form-group ">
+                <select class="form-control m-bot15" ng-if="userLoginType=='studParent'" placeholder="select" ng-model="cssSelect" ng-change="getTeacherCalendar(cssSelect)"
+                  ng-options="cs as cs.name + '-' + cs.teacherId+'-'+cs.subject for cs in teacherList">
+                  <option value="" disabled selected>Teacher</option>
+                </select>
 
-                  <button class="btn btn-primary" ng-if="calendarOwner!='Your'" ng-click="eventGet()">My Calendar</button>
-                  <button class="btn btn-primary" ng-if="calendarOwner!='Your' && teacherPersonalData[0].teacherName != null" data-target="#timeTable_modal"
-                    data-toggle="modal">Teacher Time Table</button>
 
-                  <button class="btn btn-primary" ng-if="calendarOwner=='Your' && userLoginType=='studParent' && teacherPersonalData[0].teacherName != null"
-                    ng-click="getSTCalendar()">{{teacherPersonalData[0].teacherName}} Calendar</button>
-                  <button class="btn btn-primary" ng-if="calendarOwner=='Your' && userLoginType=='teacher' && studentPersonalData[0].studName != null"
-                    ng-click="getSSCalendar()">{{studentPersonalData[0].studName}} Calendar</button>
-                </div>
+
+
+                <button class="btn btn-primary" ng-if="calendarOwner!='Your'" ng-click="eventGet()">My Calendar</button>
+                <button class="btn btn-primary" ng-if="calendarOwner!='Your' && teacherPersonalData[0].teacherName != null" data-target="#timeTable_modal"
+                  data-toggle="modal">Teacher Time Table</button>
+
+                <button class="btn btn-primary" ng-if="calendarOwner=='Your' && userLoginType=='studParent' && teacherPersonalData[0].teacherName != null"
+                  ng-click="getSTCalendar()">{{teacherPersonalData[0].teacherName}} Calendar</button>
+                <button class="btn btn-primary" ng-if="calendarOwner=='Your' && userLoginType=='teacher' && studentPersonalData[0].studName != null"
+                  ng-click="getSSCalendar()">{{studentPersonalData[0].studName}} Calendar</button>
+
               </div>
             </div>
 

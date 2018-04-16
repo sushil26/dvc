@@ -736,12 +736,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
     // alert("clicked: " + event);
     console.log("cliecked: " + JSON.stringify(event));
     $scope.evtData = event;
-    var eventSenderLoginType = evtData.senderLoginType;
-      var receiverId = evtData.remoteCalendarId;
-      console.log("$scope.evtData: " + JSON.stringify($scope.evtData));
-      console.log("eventSenderLoginType: " + eventSenderLoginType);
-      console.log("receiverId: "+receiverId);
-       
+    console.log("$scope.evtData: " + JSON.stringify($scope.evtData));
     // $('#eDetail').trigger('click');
     var eClicked = $uibModal.open({
       scope: $scope,

@@ -38,11 +38,11 @@
                                                         </span>:Admin </p>
                                                 </div>
                                                 <div class="bio-row" ng-if="loginType=='admin'">
-                                                        <p>
-                                                            <span>
-                                                                    <b>School Name</b>
-                                                            </span>: Careator School </p>
-                                                    </div>
+                                                    <p>
+                                                        <span>
+                                                            <b>School Name</b>
+                                                        </span>: Careator School </p>
+                                                </div>
                                                 <div class="bio-row" ng-if="loginType!='admin'">
                                                     <p>
                                                         <span>
@@ -82,11 +82,12 @@
                                                 <div class="bio-row" ng-if="loginType=='teacher'">
                                                     <p>
                                                         <span>
-                                                            <b>Class Handle: </b>
+                                                            <b>Class Handle</b>
 
-                                                        </span>:
-                                                        <div ng-repeat="css in userData[0].css">{{css.class}}-{{css.section}}-{{css.subject}}</div>
-
+                                                      
+                                                       
+                                                            :<div ng-repeat="css in userData[0].css"> {{css.class}}-{{css.section}}-{{css.subject}}</div>
+                                                        </span>
                                                     </p>
                                                 </div>
 

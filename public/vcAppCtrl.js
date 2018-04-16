@@ -1,5 +1,5 @@
 app.controller("vcAppCtrl", function(
-  $scope,$rootscope,
+  $scope,$rootScope,
   httpFactory,
   $window,
   $timeout,
@@ -24,5 +24,5 @@ app.controller("vcAppCtrl", function(
       "none";
   };
 
-  $rootscope.TimeTable_timing = ["09:00-09:45","9:45-10:30","10:30-11:15","11:15-12:00","01:00-01:45","01:45-02:30","02:30-03:15","03:15-04:00"]
+  $rootScope.TimeTable_timing = ["09:00-09:45","9:45-10:30","10:30-11:15","11:15-12:00","01:00-01:45","01:45-02:30","02:30-03:15","03:15-04:00"]
 });

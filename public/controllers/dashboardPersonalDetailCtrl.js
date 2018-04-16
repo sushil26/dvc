@@ -14,10 +14,10 @@ app.controller('dashboardPersonalDetailController', function ($scope, $window, h
         console.log("api: " + api);
         httpFactory.get(api).then(function (data) {
             var checkStatus = httpFactory.dataValidation(data);
-            console.log("data--" + JSON.stringify(data.data));
+            //console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
                 $scope.userData = data.data.data;
-                console.log("teacherData: " + JSON.stringify($scope.teacherData));
+                console.log("teacherData: " + JSON.stringify($scope.userData));
                 //   $scope.css = $scope.teacherData[0].css;
                 //   console.log("$scope.css: " + JSON.stringify($scope.css));
             }
@@ -37,10 +37,10 @@ app.controller('dashboardPersonalDetailController', function ($scope, $window, h
         $scope.teacherList = [];
         httpFactory.get(api).then(function (data) {
             var checkStatus = httpFactory.dataValidation(data);
-            console.log("data--" + JSON.stringify(data.data));
+            //console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
                 $scope.userData = data.data.data;
-                console.log("studentData: " + JSON.stringify($scope.studentData));
+                console.log("studentData: " + JSON.stringify($scope.userData));
             }
             else {
 

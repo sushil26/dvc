@@ -83,11 +83,8 @@
                                                     <p>
                                                         <span>
                                                             <b>Class Handle</b>
-
-                                                      
-                                                       
-                                                            :<div ng-repeat="css in userData[0].css"> {{css.class}}-{{css.section}}-{{css.subject}}</div>
-                                                        </span>
+                                                        </span> :
+                                                        <div ng-repeat="css in userData[0].css"> {{css.class}}-{{css.section}}-{{css.subject}}</div>
                                                     </p>
                                                 </div>
 
@@ -96,13 +93,11 @@
                                                 <div class="bio-row" ng-if="loginType=='studParent'">
                                                     <p>
                                                         <span>
-
-                                                        </span>
-                                                        <p ng-repeat="cs in userData[0].cs">
-                                                            <b>Class: </b>{{cs.class}}
-                                                            <b>Section: </b>{{cs.section}}
-                                                            <p></p>
-                                                        </p>
+                                                            <b>Class</b>
+                                                        </span>:
+                                                        <div ng-repeat="cs in userData[0].cs">{{cs.class}}-{{cs.section}}
+                                                        </div>
+                                                    </p>
                                                 </div>
 
                                                 <div class="bio-row" ng-if="loginType=='studParent'">

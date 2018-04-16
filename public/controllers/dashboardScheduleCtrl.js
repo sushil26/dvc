@@ -512,16 +512,6 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
               'actions': actions,
               'url': obj.url
             });
-
-            // if($scope.userLoginType=='studParent')
-            // {
-
-            // }
-            // else if($scope.userLoginType=='teacher')
-            // {
-
-            // }
-            // $scope.eventGet();
           }
           else {
             alert("Event Send Failed");

@@ -7,8 +7,8 @@ app.controller('dashboardScheduleCtrl', function ($scope, $compile, $window, $fi
   var ownerEvents = []; /* ### Note: logged in person all events ### */
 
   var x = localStorage.getItem("secrecy");
-  var decrypted = CryptoJS.AES.decrypt(encrypted, x);
-  console.log("Value##**: " + decrypted);
+  var decrypted = CryptoJS.AES.decrypt(x, x);
+  console.log("Value##**: "+decrypted);
 
 
   $scope.getTeacherData = function () {

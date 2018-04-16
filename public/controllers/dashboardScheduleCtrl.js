@@ -24,13 +24,14 @@ $scope.timeForPeriods = $rootScope.TimeTable_timing;
     console.log("api: " + api);
     httpFactory.get(api).then(function (data) {
       var checkStatus = httpFactory.dataValidation(data);
-      console.log("data--" + JSON.stringify(data.data));
+     // console.log("data--" + JSON.stringify(data.data));
       if (checkStatus) {
         $scope.teacherData = data.data.data;
         
         $scope.teacherPersonalData = data.data.data;
 
         console.log("teacherData: " + JSON.stringify($scope.teacherData));
+        console.log("teacherPersonalData: " + JSON.stringify($scope.teacherPersonalData));
         //   $scope.css = $scope.teacherData[0].css;
         //   console.log("$scope.css: " + JSON.stringify($scope.css));
       }
@@ -49,7 +50,7 @@ $scope.timeForPeriods = $rootScope.TimeTable_timing;
     $scope.teacherList = [];
     httpFactory.get(api).then(function (data) {
       var checkStatus = httpFactory.dataValidation(data);
-      console.log("data--" + JSON.stringify(data.data));
+      //console.log("data--" + JSON.stringify(data.data));
       if (checkStatus) {
         $scope.studentData = data.data.data;
         console.log("studentData: " + JSON.stringify($scope.studentData));
@@ -61,7 +62,7 @@ $scope.timeForPeriods = $rootScope.TimeTable_timing;
         console.log("api: " + api);
         httpFactory.get(api).then(function (data) {
           var checkStatus = httpFactory.dataValidation(data);
-          console.log("data--" + JSON.stringify(data.data));
+         // console.log("data--" + JSON.stringify(data.data));
           if (checkStatus) {
             $scope.teacherListForStudent = data.data.data;
             console.log("teacherListForStudent: " + JSON.stringify($scope.teacherListForStudent));
@@ -98,7 +99,7 @@ $scope.timeForPeriods = $rootScope.TimeTable_timing;
     console.log("api: " + api);
     httpFactory.get(api).then(function (data) {
       var checkStatus = httpFactory.dataValidation(data);
-      console.log("data--" + JSON.stringify(data.data));
+     // console.log("data--" + JSON.stringify(data.data));
       if (checkStatus) {
         $scope.teacherPersonalData = data.data.data;
 
@@ -118,10 +119,10 @@ $scope.timeForPeriods = $rootScope.TimeTable_timing;
     console.log("api: " + api);
     httpFactory.get(api).then(function (data) {
       var checkStatus = httpFactory.dataValidation(data);
-      console.log("data--" + JSON.stringify(data.data));
+     // console.log("data--" + JSON.stringify(data.data));
       if (checkStatus) {
         $scope.studentPersonalData = data.data.data;
-        console.log(" data.data.data: " + JSON.stringify(data.data.data));
+        //console.log(" data.data.data: " + JSON.stringify(data.data.data));
         console.log("$scope.studentPersonalData: " + JSON.stringify($scope.studentPersonalData));
       }
       else {
@@ -142,7 +143,7 @@ $scope.timeForPeriods = $rootScope.TimeTable_timing;
     console.log("api: " + api);
     httpFactory.get(api).then(function (data) {
       var checkStatus = httpFactory.dataValidation(data);
-      console.log("data--" + JSON.stringify(data.data));
+     // console.log("data--" + JSON.stringify(data.data));
       if (checkStatus) {
         $scope.calendarOwner = css.name;
         $scope.specificSED = data.data.data;/* ### Note:Function Name specificSED --> specificStudentEventData(specificSED) ### */
@@ -193,7 +194,7 @@ $scope.timeForPeriods = $rootScope.TimeTable_timing;
     console.log("api: " + api);
     httpFactory.get(api).then(function (data) {
       var checkStatus = httpFactory.dataValidation(data);
-      console.log("data--" + JSON.stringify(data.data));
+     // console.log("data--" + JSON.stringify(data.data));
       if (checkStatus) {
         $scope.calendarOwner = css.name;
         $scope.specificTED = data.data.data;/* ### Note:Function Name specificTED --> specificTeachEventData(specificTED) ### */
@@ -299,7 +300,7 @@ $scope.timeForPeriods = $rootScope.TimeTable_timing;
     console.log("api: " + api);
     httpFactory.get(api).then(function (data) {
       var checkStatus = httpFactory.dataValidation(data);
-      console.log("data--" + JSON.stringify(data.data));
+      //console.log("data--" + JSON.stringify(data.data));
       if (checkStatus) {
         $scope.studentList = data.data.data;
         console.log("studentList: " + JSON.stringify($scope.studentList));
@@ -331,9 +332,9 @@ $scope.timeForPeriods = $rootScope.TimeTable_timing;
     }
     httpFactory.post(api, obj).then(function (data) {
       var checkStatus = httpFactory.dataValidation(data);
-      console.log("data--" + JSON.stringify(data.data));
+      //console.log("data--" + JSON.stringify(data.data));
       if (checkStatus) {
-        console.log("data" + JSON.stringify(data.data))
+      //  console.log("data" + JSON.stringify(data.data))
         // $window.location.href = $scope.propertyJson.R082;
         alert(data.data.message);
       }
@@ -496,9 +497,9 @@ $scope.timeForPeriods = $rootScope.TimeTable_timing;
 
         httpFactory.post(api, obj).then(function (data) {
           var checkStatus = httpFactory.dataValidation(data);
-          console.log("data--" + JSON.stringify(data.data));
+          //console.log("data--" + JSON.stringify(data.data));
           if (checkStatus) {
-            console.log("data" + JSON.stringify(data.data))
+           // console.log("data" + JSON.stringify(data.data))
             // $window.location.href = $scope.propertyJson.R082;
             alert("Successfully sent the event");
             // vm.events.splice(0, 1);
@@ -541,8 +542,6 @@ $scope.timeForPeriods = $rootScope.TimeTable_timing;
   $scope.timeTableForEventBook = function (day, id) {
     console.log("timeTableForEventBook-->");
     console.log("id: " + id+" day: "+day);
-    
-
     console.log("$scope.timeForPeriods[id].startsAt: "+$scope.timeForPeriods[id].startsAt);
     console.log("$scope.timeForPeriods[id].endsAt: "+$scope.timeForPeriods[id].endsAt);
     
@@ -612,7 +611,7 @@ $scope.timeForPeriods = $rootScope.TimeTable_timing;
 
     httpFactory.get(api).then(function (data) {
       var checkStatus = httpFactory.dataValidation(data);
-      console.log("data--" + JSON.stringify(data.data));
+     // console.log("data--" + JSON.stringify(data.data));
       if (checkStatus) {
         $scope.eventData = data.data.data;
         vm.events = [];
@@ -861,7 +860,7 @@ $scope.timeForPeriods = $rootScope.TimeTable_timing;
   vm.timespanClicked = function (date) {
     console.log("timespanClicked-->");
 console.log("date: "+date);
-console.log("teacherPersonalData: "+JSON.stringify($scope.teacherPersonalData));
+// console.log("teacherPersonalData: "+JSON.stringify($scope.teacherPersonalData));
 $scope.selectedDateForEvent =  $filter('date')(date, "EEE");
 console.log("selectedDateForEvent: "+$scope.selectedDateForEvent);
 $scope.selectedDate = date;

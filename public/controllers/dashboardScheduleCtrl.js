@@ -540,7 +540,7 @@ $scope.timeForPeriods = $rootScope.TimeTable_timing;
   $scope.timeTableForEventBook = function (day, id) {
     console.log("timeTableForEventBook-->");
     console.log("id: " + id+" day: "+day);
-    $('#timeTable_modal').modal('hide');
+    
 
     console.log("$scope.timeForPeriods[id].startsAt: "+$scope.timeForPeriods[id].startsAt);
     console.log("$scope.timeForPeriods[id].endsAt: "+$scope.timeForPeriods[id].endsAt);
@@ -580,7 +580,7 @@ $scope.timeForPeriods = $rootScope.TimeTable_timing;
       alert("ON this time you/student not free, try on other time");
     }
     else {
-   
+      $('#timeTable_modal').modal('hide');
     dayEventmodal = $uibModal.open({
       scope: $scope,
       templateUrl: '/html/templates/dayEventBook.html',

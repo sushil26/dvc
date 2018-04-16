@@ -7,7 +7,11 @@ app.controller('dashboardScheduleCtrl', function ($scope, $compile, $window, $fi
   var ownerEvents = []; /* ### Note: logged in person all events ### */
 
   var x = localStorage.getItem("secrecy");
+  var decrypted = CryptoJS.AES.decrypt(x, "msg");
+  console.log("Value##**: " + decrypted.toString(CryptoJS.enc.Utf8));
   
+
+
   console.log("Value##**: " + x.toString(CryptoJS.enc.Utf8));
 
 

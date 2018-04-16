@@ -37,7 +37,7 @@ module.exports.eventSend = function (req, res) {
             "senderName": req.body.senderName,
             "senderId": req.body.senderId,
             "senderMN": req.body.senderMN,
-            "receiverEmail": req.body.senderEmail,
+            "receiverEmail": req.body.receiverEmail,
             "start": req.body.start,
             "end": req.body.end,
             "startAt": req.body.startAt,

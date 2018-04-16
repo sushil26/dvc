@@ -758,7 +758,6 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
     $scope.evtData = event;
     console.log("$scope.evtData: " + $scope.evtData);
     console.log("$scope.evtData.id: " + $scope.evtData.id);
-
     // $('#eDetail').trigger('click');
     var eClicked = $uibModal.open({
       scope: $scope,

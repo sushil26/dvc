@@ -30,7 +30,7 @@ app.controller("vcAppCtrl", function(
   {"startsAt":"10:30", "endsAt":"11:15", "meridian":'AM'},
   {"startsAt":"11:15","endsAt":"12:00", "meridian":'AM'},
   {"startsAt":"01:00", "endsAt":"01:45", "meridian":'PM'},
-  {"startsAt":"01:45", "endsAt":"02:30", "meridian":'pM'},
-  {"startsAt":"02:30","endsAt":"03:15", "meridian":'pM'},
-  {"startsAt":"03:15", "endsAt":"04:00", "meridian":'pM'}]
+  {"startsAt":"01:45", "endsAt":"02:30", "meridian":'PM'},
+  {"startsAt":"02:30","endsAt":"03:15", "meridian":'PM'},
+  {"startsAt":"03:15", "endsAt":"04:00", "meridian":'PM'}]
 });

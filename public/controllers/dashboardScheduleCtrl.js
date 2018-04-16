@@ -792,10 +792,10 @@ app.controller('dashboardScheduleCtrl', function ($scope, $compile, $window, $fi
     console.log("<--rangeSelected");
   };
 
-  vm.timespanClicked = function (d) {
+  vm.timespanClicked = function (date) {
     console.log("timespanClicked-->");
 console.log("date: "+date);
-$scope.selectedDateForEvent =  $filter('date')(d, "EEE");
+$scope.selectedDateForEvent =  $filter('date')(date, "EEE");
     $scope.getTeacherData();
     $('#timeTable_modal').modal('show');
     if (vm.calendarView === 'month') {

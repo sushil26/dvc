@@ -6,32 +6,28 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
   var teacherEvents = []; /* ### Note: selected teacher events ### */
   var ownerEvents = []; /* ### Note: logged in person all events ### */
   var remoteEvent = []; /* ### Note:receiver all events ### */
-$scope.timeForPeriods = $rootScope.TimeTable_timing;
+  $scope.timeForPeriods = $rootScope.TimeTable_timing;
   var x = localStorage.getItem("secrecy");
   var decrypted = CryptoJS.AES.decrypt(x, "msg");
   console.log("Value##**: " + decrypted.toString(CryptoJS.enc.Utf8));
 
   console.log("Value##**: " + x.toString(CryptoJS.enc.Utf8));
 
-
   $scope.getTeacherData = function () {
     console.log("getTeacherData-->");
     var id = localStorage.getItem("id");
-
     var api = "https://norecruits.com/vc/teacherDetail" + "/" + id;
     //var api = "http://localhost:5000/vc/teacherDetail" + "/" + id;
     //var api = "http://localhost:5000/vc/eventGet";
     console.log("api: " + api);
     httpFactory.get(api).then(function (data) {
       var checkStatus = httpFactory.dataValidation(data);
-     // console.log("data--" + JSON.stringify(data.data));
+      // console.log("data--" + JSON.stringify(data.data));
       if (checkStatus) {
         $scope.teacherData = data.data.data;
-        
-        $scope.teacherPersonalData = data.data.data;
-
+        // $scope.teacherPersonalData = data.data.data;
         console.log("teacherData: " + JSON.stringify($scope.teacherData));
-        console.log("teacherPersonalData: " + JSON.stringify($scope.teacherPersonalData));
+        // console.log("teacherPersonalData: " + JSON.stringify($scope.teacherPersonalData));
         //   $scope.css = $scope.teacherData[0].css;
         //   console.log("$scope.css: " + JSON.stringify($scope.css));
       }
@@ -62,7 +58,7 @@ $scope.timeForPeriods = $rootScope.TimeTable_timing;
         console.log("api: " + api);
         httpFactory.get(api).then(function (data) {
           var checkStatus = httpFactory.dataValidation(data);
-         // console.log("data--" + JSON.stringify(data.data));
+          // console.log("data--" + JSON.stringify(data.data));
           if (checkStatus) {
             $scope.teacherListForStudent = data.data.data;
             console.log("teacherListForStudent: " + JSON.stringify($scope.teacherListForStudent));
@@ -99,7 +95,7 @@ $scope.timeForPeriods = $rootScope.TimeTable_timing;
     console.log("api: " + api);
     httpFactory.get(api).then(function (data) {
       var checkStatus = httpFactory.dataValidation(data);
-     // console.log("data--" + JSON.stringify(data.data));
+      // console.log("data--" + JSON.stringify(data.data));
       if (checkStatus) {
         $scope.teacherPersonalData = data.data.data;
 
@@ -119,7 +115,7 @@ $scope.timeForPeriods = $rootScope.TimeTable_timing;
     console.log("api: " + api);
     httpFactory.get(api).then(function (data) {
       var checkStatus = httpFactory.dataValidation(data);
-     // console.log("data--" + JSON.stringify(data.data));
+      // console.log("data--" + JSON.stringify(data.data));
       if (checkStatus) {
         $scope.studentPersonalData = data.data.data;
         //console.log(" data.data.data: " + JSON.stringify(data.data.data));
@@ -143,12 +139,12 @@ $scope.timeForPeriods = $rootScope.TimeTable_timing;
     console.log("api: " + api);
     httpFactory.get(api).then(function (data) {
       var checkStatus = httpFactory.dataValidation(data);
-     // console.log("data--" + JSON.stringify(data.data));
+      // console.log("data--" + JSON.stringify(data.data));
       if (checkStatus) {
         $scope.calendarOwner = css.name;
         $scope.specificSED = data.data.data;/* ### Note:Function Name specificSED --> specificStudentEventData(specificSED) ### */
         console.log("$scope.specificSED.length: " + $scope.specificSED.length);
-         //vm.events = [];
+        //vm.events = [];
         studEvents = [];
         remoteEvent = [];
         for (var x = 0; x < $scope.specificSED.length; x++) {
@@ -194,7 +190,7 @@ $scope.timeForPeriods = $rootScope.TimeTable_timing;
     console.log("api: " + api);
     httpFactory.get(api).then(function (data) {
       var checkStatus = httpFactory.dataValidation(data);
-     // console.log("data--" + JSON.stringify(data.data));
+      // console.log("data--" + JSON.stringify(data.data));
       if (checkStatus) {
         $scope.calendarOwner = css.name;
         $scope.specificTED = data.data.data;/* ### Note:Function Name specificTED --> specificTeachEventData(specificTED) ### */
@@ -224,7 +220,7 @@ $scope.timeForPeriods = $rootScope.TimeTable_timing;
           // vm.events.push(obj);
 
           teacherEvents.push(obj);
-         // vm.events.push(obj);
+          // vm.events.push(obj);
           remoteEvent.push(obj);
 
         }
@@ -334,7 +330,7 @@ $scope.timeForPeriods = $rootScope.TimeTable_timing;
       var checkStatus = httpFactory.dataValidation(data);
       //console.log("data--" + JSON.stringify(data.data));
       if (checkStatus) {
-      //  console.log("data" + JSON.stringify(data.data))
+        //  console.log("data" + JSON.stringify(data.data))
         // $window.location.href = $scope.propertyJson.R082;
         alert(data.data.message);
       }
@@ -442,7 +438,7 @@ $scope.timeForPeriods = $rootScope.TimeTable_timing;
       $scope.eventSend(reason, senderName, studId, email);
     }
     if ($scope.userLoginType == 'teacher') {
-      
+
       var teacherName = $scope.teacherData[0].teacherName;
       var teacherId = $scope.teacherData[0].teacherId;
       var email = $scope.studentPersonalData[0].parentEmail;/* ### Note: parentEmail email Id ### */
@@ -499,7 +495,7 @@ $scope.timeForPeriods = $rootScope.TimeTable_timing;
           var checkStatus = httpFactory.dataValidation(data);
           //console.log("data--" + JSON.stringify(data.data));
           if (checkStatus) {
-           // console.log("data" + JSON.stringify(data.data))
+            // console.log("data" + JSON.stringify(data.data))
             // $window.location.href = $scope.propertyJson.R082;
             alert("Successfully sent the event");
             // vm.events.splice(0, 1);
@@ -541,24 +537,24 @@ $scope.timeForPeriods = $rootScope.TimeTable_timing;
 
   $scope.timeTableForEventBook = function (day, id) {
     console.log("timeTableForEventBook-->");
-    console.log("id: " + id+" day: "+day);
-    console.log("$scope.timeForPeriods[id].startsAt: "+$scope.timeForPeriods[id].startsAt);
-    console.log("$scope.timeForPeriods[id].endsAt: "+$scope.timeForPeriods[id].endsAt);
-    
+    console.log("id: " + id + " day: " + day);
+    console.log("$scope.timeForPeriods[id].startsAt: " + $scope.timeForPeriods[id].startsAt);
+    console.log("$scope.timeForPeriods[id].endsAt: " + $scope.timeForPeriods[id].endsAt);
+
     // $scope.startDate = $filter('date')(s, "EEE MMM dd y");
     // $scope.endDate = $filter('date')(e, "HH:mm:ss 'GMT'Z (IST)'");
     // $scope.endDateRes = $scope.startDate + ' ' + $scope.endDate;
-    var sd = $scope.timeForPeriods[id].startsAt+' '+$scope.timeForPeriods[id].meridian;
-    var ed = $scope.timeForPeriods[id].endsAt+' '+$scope.timeForPeriods[id].meridian;
-    console.log("sd: "+new Date(sd)+" ed: "+new Date(ed));
+    var sd = $scope.timeForPeriods[id].startsAt + ' ' + $scope.timeForPeriods[id].meridian;
+    var ed = $scope.timeForPeriods[id].endsAt + ' ' + $scope.timeForPeriods[id].meridian;
+    console.log("sd: " + new Date(sd) + " ed: " + new Date(ed));
     $scope.startDate = $filter('date')($scope.selectedDate, "EEE MMM dd y");
     $scope.startTime = $filter('date')(sd, "h:mm:ss a");
     $scope.EndTime = $filter('date')(ed, "h:mm:ss a");
-    console.log("startDate: "+$scope.startDate+" startTime: "+$scope.startTime+ " EndTime: "+$scope.EndTime);
-    var resultedStartDate =  $scope.startDate+' '+ $scope.startTime;
-    var resultedEndDate =  $scope.startDate+' '+ $scope.EndTime;
-    console.log("resultedStartDate: "+resultedStartDate);
-    console.log("resultedEndDate: "+resultedEndDate);
+    console.log("startDate: " + $scope.startDate + " startTime: " + $scope.startTime + " EndTime: " + $scope.EndTime);
+    var resultedStartDate = $scope.startDate + ' ' + $scope.startTime;
+    var resultedEndDate = $scope.startDate + ' ' + $scope.EndTime;
+    console.log("resultedStartDate: " + resultedStartDate);
+    console.log("resultedEndDate: " + resultedEndDate);
     var rsd = new Date(resultedStartDate);
     var red = new Date(resultedEndDate);
     var PersonalRemoteCombineCal = ownerEvents.concat(remoteEvent);
@@ -581,23 +577,23 @@ $scope.timeForPeriods = $rootScope.TimeTable_timing;
     }
     else {
       $('#timeTable_modal').modal('hide');
-    dayEventmodal = $uibModal.open({
-      scope: $scope,
-      templateUrl: '/html/templates/dayEventBook.html',
-      windowClass: 'show',
-      backdropClass: 'show',
-      controller: function ($scope, $uibModalInstance) {
-        // moment().startOf('day').toDate()
-        var dt = new Date();
-        $scope.eventDetails = {
-          "startsAt": rsd,
-          "endsAt":  red
-        
+      dayEventmodal = $uibModal.open({
+        scope: $scope,
+        templateUrl: '/html/templates/dayEventBook.html',
+        windowClass: 'show',
+        backdropClass: 'show',
+        controller: function ($scope, $uibModalInstance) {
+          // moment().startOf('day').toDate()
+          var dt = new Date();
+          $scope.eventDetails = {
+            "startsAt": rsd,
+            "endsAt": red
+
+          }
+          console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
         }
-        console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
-      }
-    })
-  }
+      })
+    }
     console.log("<--timeTableForEventBook");
   }
 
@@ -611,7 +607,7 @@ $scope.timeForPeriods = $rootScope.TimeTable_timing;
 
     httpFactory.get(api).then(function (data) {
       var checkStatus = httpFactory.dataValidation(data);
-     // console.log("data--" + JSON.stringify(data.data));
+      // console.log("data--" + JSON.stringify(data.data));
       if (checkStatus) {
         $scope.eventData = data.data.data;
         vm.events = [];
@@ -859,18 +855,17 @@ $scope.timeForPeriods = $rootScope.TimeTable_timing;
 
   vm.timespanClicked = function (date) {
     console.log("timespanClicked-->");
-console.log("date: "+date);
-console.log("teacherPersonalData: "+JSON.stringify($scope.teacherPersonalData));
-$scope.selectedDateForEvent =  $filter('date')(date, "EEE");
-console.log("selectedDateForEvent: "+$scope.selectedDateForEvent);
-$scope.selectedDate = date;
-if($scope.userLoginType="teacher"){
-  $scope.getTeacherData();
-}   
-else
-{
- 
-} 
+    console.log("date: " + date);
+    console.log("teacherPersonalData: " + JSON.stringify($scope.teacherPersonalData));
+    $scope.selectedDateForEvent = $filter('date')(date, "EEE");
+    console.log("selectedDateForEvent: " + $scope.selectedDateForEvent);
+    $scope.selectedDate = date;
+    // if ($scope.userLoginType = "teacher") {
+    //   $scope.getTeacherData();
+    // }
+    // else {
+
+    // }
 
     $('#timeTable_modal').modal('show');
     // if (vm.calendarView === 'month') {

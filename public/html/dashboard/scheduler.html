@@ -75,7 +75,7 @@
 
                   <button class="btn btn-primary" ng-if="calendarOwner=='Your' && userLoginType=='studParent' && teacherPersonalData[0].teacherName != null"
                     ng-click="getSTCalendar()">{{teacherPersonalData[0].teacherName}} Calendar</button>
-                  <button class="btn btn-primary" style="float:right;" ng-if="calendarOwner=='Your' && userLoginType=='teacher' && studentPersonalData[0].studName != null"
+                  <button class="btn btn-primary"  ng-if="calendarOwner=='Your' && userLoginType=='teacher' && studentPersonalData[0].studName != null"
                     ng-click="getSSCalendar()">{{studentPersonalData[0].studName}} Calendar</button>
 
                 </div>

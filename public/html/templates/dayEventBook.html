@@ -1,6 +1,6 @@
 <div class="modal-header loginpopUp_header">
-
-    <table>
+    <button type="button" class="close" ng-click="$close()">&times;</button>
+    <!-- <table>
         <thead>
             <tr>
                 <th>
@@ -28,18 +28,18 @@
                         Timing &nbsp
                     </h3>
                 </th>
-                <th>
-                    <h3 style="color:coral">:&nbsp
+                <th> -->
+                    <!-- <h3 style="color:coral">:&nbsp -->
                         <!-- <input style="margin-top:10px; border:none;" type="time" ng-model="eventDetails.startsAt" readonly> to
                         <input style="margin-top:10px; border:none;" type="time" ng-model="eventDetails.endsAt"> -->
-                        {{ eventDetails.startsAt | date:'h:mm a' }} To {{ eventDetails.endsAt | date:'h:mm a' }}
+                        <!-- {{ eventDetails.startsAt | date:'h:mm a' }} To {{ eventDetails.endsAt | date:'h:mm a' }}
                     </h3>
                 </th>
             </tr>
 
 
         </tbody>
-    </table>
+    </table> -->
 
 
 
@@ -50,7 +50,7 @@
         <div uib-timepicker ng-model="eventDetails.endsAt" hour-step="1" minute-step="10" show-meridian="true">
         </div> -->
 
-    <button type="button" class="close" ng-click="$close()">&times;</button>
+    
 </div>
 
 <div class="modal-body loginpopUp_body">

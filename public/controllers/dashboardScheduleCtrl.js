@@ -860,10 +860,10 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
     $scope.selectedDateForEvent = $filter('date')(date, "EEE");
     console.log("selectedDateForEvent: " + $scope.selectedDateForEvent);
     $scope.selectedDate = date;
-    if ($scope.userLoginType = "teacher") {
-      console.log("loginType: "+localStorage.getItem("loginType"));
-      $scope.getTeacherData();
-    }
+    // if ($scope.userLoginType = "teacher") {
+    //   console.log("loginType: "+localStorage.getItem("loginType"));
+    //   $scope.getTeacherData();
+    // }
     // else {
 
     // }

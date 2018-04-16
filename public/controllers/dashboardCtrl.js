@@ -1,6 +1,7 @@
 app.controller('dashboardController', function ($scope, $window, httpFactory) {
     console.log("dashboardController==>");
     var id = localStorage.getItem("id");
+    $scope.loginType = localStorage.getItem("loginType");
      $scope.userName = localStorage.getItem("userName");
 
     $scope.logOut = function () {

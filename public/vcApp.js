@@ -35,12 +35,38 @@ var app = angular.module('vcApp', ['ui.router', 'mwl.calendar', 'ui.bootstrap', 
       .state('dashboard.teacherInsert', {
         url: dashboardTeacherI(),
         templateUrl: '/html/dashboard/teacherDataInsert.html',
-        controller: 'teacherInsertCtrl'
+        controller: 'teacherInsertCtrl',
+        resolve: {result : function($window)
+          {
+              // var x =authFact.getLoginType();
+              if(localStorage.getItem("loginType") == 'admin')
+              {
+                 
+              }
+               else{
+                  $window.location.href='https://norecruits.com';
+               }
+             
+             
+          }}
       })
       .state('dashboard.studentInsert', {
         url: dashboardstudentI(),
         templateUrl: '/html/dashboard/studentDataInsert.html',
-        controller: 'studentInsertCtrl'
+        controller: 'studentInsertCtrl',
+        resolve: {result : function($window)
+          {
+              // var x =authFact.getLoginType();
+              if(localStorage.getItem("loginType") == 'admin')
+              {
+                 
+              }
+               else{
+                  $window.location.href='https://norecruits.com';
+               }
+             
+             
+          }}
       })
       .state('dashboard', {
         url: '/dashboard',

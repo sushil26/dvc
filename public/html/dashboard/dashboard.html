@@ -201,13 +201,13 @@
                             <li>
                                 <a class="" href="form_validation.html">CREATE ADMIN</a>
                             </li>
-                            <li>
+                            <li ng-if="loginType=='admin'">
                                 <a class="" href="/mainPage#!/dashboard/teacherI">CREATE TEACHER</a>
                             </li>
-                            <li>
+                            <li ng-if="loginType=='admin'">
                                 <a class="" href="/mainPage#!/dashboard/studentI">CREATE STUDENT</a>
                             </li>
-                            <li>
+                            <li ng-if="loginType=='admin'">
                                 <a class="" href="/mainPage#!/dashboard/userAuth">AUTHENTICATION</a>
                             </li>
                             <li>

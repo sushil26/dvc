@@ -54,38 +54,36 @@
                                                     <p>
                                                         <span>
                                                             <b>Teacher Name</b>
-                                                        </span>:{{userData[0].teacherName}} </p>
+                                                        </span>: {{userData[0].teacherName}} </p>
                                                 </div>
                                                 <div class="bio-row" ng-if="loginType=='teacher'">
                                                     <p>
                                                         <span>
                                                             <b>ID</b>
-                                                        </span>:{{userData[0].teacherId}} </p>
+                                                        </span>: {{userData[0].teacherId}} </p>
                                                 </div>
                                                 <div class="bio-row" ng-if="loginType=='studParent'">
                                                     <p>
                                                         <span>
                                                             <b>ID</b>
-                                                        </span>:{{userData[0].studId}} </p>
+                                                        </span>: {{userData[0].studId}} </p>
                                                 </div>
                                                 <div class="bio-row" ng-if="loginType=='teacher'">
                                                     <p>
                                                         <span>
                                                             <b>Mobile Number</b>
-                                                        </span>:{{userData[0].mobileNum}} </p>
+                                                        </span>: {{userData[0].mobileNum}} </p>
                                                 </div>
                                                 <div class="bio-row" ng-if="loginType=='teacher'">
                                                     <p>
                                                         <span>
                                                             <b>Class Handle: </b>
-                                                            <br>
 
                                                         </span>
                                                         <p ng-repeat="css in userData[0].css">
                                                             <b>Class: </b>{{css.class}}
                                                             <b>Section: </b>{{css.section}}
                                                             <b>Subject: </b>{{css.subject}}
-                                                            <p></p>
                                                         </p>
                                                 </div>
 

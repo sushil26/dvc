@@ -31,7 +31,7 @@
                                         <div class="panel-body bio-graph-info">
                                             <h1>Detail</h1>
                                             <div class="row">
-                                                <div class="bio-row"  ng-if="loginType=='admin'">
+                                                <div class="bio-row" ng-if="loginType=='admin'">
                                                     <p>
                                                         <span>
                                                             <b>Name</b>
@@ -46,7 +46,7 @@
                                                 <div class="bio-row" ng-if="loginType!='admin'">
                                                     <p>
                                                         <span>
-                                                                <b>School Name</b>
+                                                            <b>School Name</b>
                                                         </span>: {{userData[0].schoolName}} </p>
                                                 </div>
                                                 <div class="bio-row" ng-if="loginType=='studParent'">
@@ -84,12 +84,10 @@
                                                         <span>
                                                             <b>Class Handle: </b>
 
-                                                        </span>
-                                                        <p ng-repeat="css in userData[0].css">
-                                                            <b>Class: </b>{{css.class}}
-                                                            <b>Section: </b>{{css.section}}
-                                                            <b>Subject: </b>{{css.subject}}
-                                                        </p>
+                                                        </span>:
+                                                        <div ng-repeat="css in userData[0].css">{{css.class}}-{{css.section}}-{{css.subject}}</div>
+
+                                                    </p>
                                                 </div>
 
 

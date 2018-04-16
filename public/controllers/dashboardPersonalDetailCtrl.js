@@ -3,12 +3,12 @@ app.controller('dashboardPersonalDetailController', function ($scope, $window, h
 
     var id = localStorage.getItem("id");
     if (localStorage.getItem("loginType") == 'teacher') {
-        $scope.getTeacherDetails();
+        $scope.getTeacherDetails(id);
         console.log("teacher login");
        
     }
     else if (localStorage.getItem("loginType") == 'studParent') {
-        $scope.getStudentDetails();
+        $scope.getStudentDetails(id);
         console.log("studParent login");
     }
     else if(localStorage.getItem("loginType") == 'admin'){

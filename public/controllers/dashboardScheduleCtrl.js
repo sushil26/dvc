@@ -563,7 +563,9 @@ $scope.timeForPeriods = $rootScope.TimeTable_timing;
         var dt = new Date();
         $scope.eventDetails = {
           "startsAt": new Date(resultedStartDate),
-          "endsAt":  new Date(resultedStartDate)
+          "endsAt":  new Date(resultedStartDate),
+          "title":"",
+          "reason":""
         }
         console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
       }

@@ -31,11 +31,12 @@ module.exports.eventSend = function (req, res) {
         var password = 'abc';
         var userData = {
             "userId": req.body.userId,
+            "senderLoginType":senderLoginType,
             "title": req.body.title,
             "reason": req.body.reason,
-            "studName": req.body.studName,
-            "studId": req.body.studId,
-            "email": req.body.email,
+            "senderName": req.body.studName,
+            "senderId": req.body.studId,
+            "senderEmail": req.body.email,
             "start": req.body.start,
             "end": req.body.end,
             "startAt": req.body.startAt,

@@ -25,9 +25,9 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
       // console.log("data--" + JSON.stringify(data.data));
       if (checkStatus) {
         $scope.teacherData = data.data.data;
-         $scope.teacherPersonalData = data.data.data;
+        $scope.teacherPersonalData = data.data.data;
         console.log("teacherData: " + JSON.stringify($scope.teacherData));
-         console.log("teacherPersonalData: " + JSON.stringify($scope.teacherPersonalData));
+        console.log("teacherPersonalData: " + JSON.stringify($scope.teacherPersonalData));
         //   $scope.css = $scope.teacherData[0].css;
         //   console.log("$scope.css: " + JSON.stringify($scope.css));
       }
@@ -473,11 +473,12 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
         // var email = document.getElementById('eventEmails').value;
         var obj = {
           "userId": localStorage.getItem("id"),
+          "senderLoginType": localStorage.getItem("loginType"),
           "title": $scope.title,
           "reason": res,
-          "studName": name,
-          "studId": id,
-          "email": email,
+          "senderName": name,
+          "senderId": id,
+          "senderEmail": email,
           "start": $scope.startD,
           "end": $scope.endDateRes,
           "startAt": $scope.startFiltered,
@@ -607,7 +608,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
 
     httpFactory.get(api).then(function (data) {
       var checkStatus = httpFactory.dataValidation(data);
-       console.log("data--" + JSON.stringify(data.data));
+      console.log("data--" + JSON.stringify(data.data));
       if (checkStatus) {
         $scope.eventData = data.data.data;
         vm.events = [];
@@ -624,11 +625,13 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
             'resizable': true,
             'actions': actions,
             'url': $scope.eventData[x].url,
-            "studentName": $scope.eventData[x].studName,
-            "studendtId": $scope.eventData[x].studId,
+            "senderName": $scope.eventData[x].senderName,
+            "senderId": $scope.eventData[x].senderId,
+            "senderLoginType": $scope.eventData[x].senderLoginType,
             "title": $scope.eventData[x].title,
             "reason": $scope.eventData[x].reason,
-            "email": $scope.eventData[x].email
+            "senderEmail": $scope.eventData[x].senderEmail,
+            "remoteCalendarId": $scope.eventData[x].remoteCalendarId
           }
           console.log(" obj" + JSON.stringify(obj))
           ownerEvents.push(obj);
@@ -679,7 +682,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
     label: 'Delete',
     onClick: function (args) {
       alert("Delete Event Comming Soon");
-      console.log("args: "+args);
+      console.log("args: " + args);
       // alert.show('Deleted', args.calendarEvent);
     }
   }];
@@ -694,24 +697,6 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
     //   actions: actions
     // }
 
-    // {
-    //   title: '<i class="glyphicon glyphicon-asterisk"></i> <span class="text-primary">Another event</span>, with a <i>html</i> title',
-    //   color: calendarConfig.colorTypes.info,
-    //   startsAt: moment().subtract(1, 'day').toDate(),
-    //   endsAt: moment().add(5, 'days').toDate(),
-    //   draggable: true,
-    //   resizable: true,
-    //   actions: actions
-    // }, {
-    //   title: 'This is a really long event title that occurs on every year',
-    //   color: calendarConfig.colorTypes.important,
-    //   startsAt: moment().startOf('day').add(7, 'hours').toDate(),
-    //   endsAt: moment().startOf('day').add(19, 'hours').toDate(),
-    //   recursOn: 'year',
-    //   draggable: true,
-    //   resizable: true,
-    //   actions: actions
-    // }
   ];
 
   vm.cellIsOpen = true;
@@ -739,7 +724,11 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
   $scope.eventDetailClick = function (index) {
     console.log("eventDetailClick--> ");
     var evtData = vm.events[index];
-    console.log(" $scope.evtData: " + $scope.evtData);
+    var eventSenderLoginType = evtData.senderLoginType;
+    var receiverId = evtData.remoteCalendarId;
+    console.log("$scope.evtData: " + JSON.stringify($scope.evtData));
+    console.log("eventSenderLoginType: " + eventSenderLoginType);
+    console.log("receiverId: "+receiverId);
     var eClicked = $uibModal.open({
       scope: $scope,
       templateUrl: '/html/templates/eventDetails.html',

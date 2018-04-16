@@ -553,7 +553,11 @@ $scope.selectedDate = date;
     // $scope.endDate = $filter('date')(e, "HH:mm:ss 'GMT'Z (IST)'");
     // $scope.endDateRes = $scope.startDate + ' ' + $scope.endDate;
 
-    $scope.startDate = $filter('date')(s, "EEE MMM dd y");
+    
+    $scope.startDate = $filter('date')($scope.selectedDate, "EEE MMM dd y");
+    $scope.startTime = $filter('date')($scope.timeForPeriods[id].startsAt, "EEE MMM dd y");
+    $scope.EndTime = $filter('date')($scope.timeForPeriods[id].endsAt, "EEE MMM dd y");
+    console.log("startDate: "+$scope.startDate+" startTime: "+$scope.startTime+ " EndTime: "+$scope.EndTime);
 
     // dayEventmodal = $uibModal.open({
     //   scope: $scope,

@@ -88,6 +88,8 @@
           <div class="panel panel-default">
             <div class="panel-heading">
               <div class="panel-actions">
+                  <h2 ng-if="userLoginType=='teacher'" class="text-center">Select Student</h2>
+                  <h2 ng-if="userLoginType=='studParent'" class="text-center">Select Teacher</h2>
                 <h2 ng-if="calendarOwner!='Your'">
                   <strong>{{ vm.calendarTitle }}({{calendarOwner}})</strong>
                 </h2>

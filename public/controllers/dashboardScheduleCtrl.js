@@ -28,7 +28,6 @@ app.controller('dashboardScheduleCtrl', function ($scope, $compile, $window, $fi
         //$scope.teacherData = data.data.data;
         $scope.teacherPersonalData = data.data.data;
 
-
         console.log("teacherData: " + JSON.stringify($scope.teacherData));
         //   $scope.css = $scope.teacherData[0].css;
         //   console.log("$scope.css: " + JSON.stringify($scope.css));
@@ -534,6 +533,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $compile, $window, $fi
   $scope.timeTableForEventBook = function () {
   console.log("timeTableForEventBook-->");
   $scope.getTeacherData();
+  $('#timeTable_modal').modal('show');
   console.log("<--timeTableForEventBook");
   }
   

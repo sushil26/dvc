@@ -18,8 +18,7 @@
                 </th>
                 <th>
                     <h3 style="color:coral">:&nbsp
-                       <!-- <input style="margin-top:10px;" type="text" ng-model="eventDetails.title"> -->
-                       <h3 style="color:coral">:&nbsp{{ eventDetails.endsAt | date:'h:mm a' }}</h3>
+                        <input style="margin-top:10px;" type="text" ng-model="title">
                     </h3>
                 </th>
             </tr>
@@ -31,9 +30,9 @@
                 </th>
                 <th>
                     <h3 style="color:coral">:&nbsp
-                        <input style="margin-top:10px; border:none;" type="
-                        " ng-model="eventDetails.startsAt" readonly> to
-                        <input style="margin-top:10px; border:none;" type="time" ng-model="eventDetails.endsAt">
+                        <!-- <input style="margin-top:10px; border:none;" type="time" ng-model="eventDetails.startsAt" readonly> to
+                        <input style="margin-top:10px; border:none;" type="time" ng-model="eventDetails.endsAt"> -->
+                        {{ eventDetails.startsAt | date:'h:mm a' }} To {{ eventDetails.endsAt | date:'h:mm a' }}
                     </h3>
                 </th>
             </tr>
@@ -60,7 +59,7 @@
             <tr>
                 <div class="form-group">
                     <label for="comment">Message:</label>
-                    <textarea class="form-control" rows="5" id="comment" ng-model="eventDetails.reason"></textarea>
+                    <textarea class="form-control" rows="5" id="comment" ng-model="reason"></textarea>
                 </div>
             </tr>
         </thead>
@@ -69,7 +68,7 @@
 </div>
 <div class="modal-footer loginpopUp_footer">
     <button class="btn btn-default loginpopUp_footerBtn" type="button" ng-click="$close()">Close</button>
-    <button class="btn btn-primary" style="width: 80px;" data-dismiss="modal" ng-click="save(eventDetails.startsAt| date:'M/d/yy',eventDetails.startsAt| date:'h:mm a', eventDetails.endsAt| date:'h:mm a', eventDetails.startsAt, eventDetails.endsAt, eventDetails.startsAt | date:'M/d/yy h:mm a', eventDetails.endsAt | date:'M/d/yy h:mm a', eventDetails.title, eventDetails.reason)">
+    <button class="btn btn-primary" style="width: 80px;" data-dismiss="modal" ng-click="save(eventDetails.startsAt| date:'M/d/yy',eventDetails.startsAt| date:'h:mm a', eventDetails.endsAt| date:'h:mm a', eventDetails.startsAt, eventDetails.endsAt, eventDetails.startsAt | date:'M/d/yy h:mm a', eventDetails.endsAt | date:'M/d/yy h:mm a', title, reason)">
         Save
     </button>
     <!-- <button type="submit" class="btn btn-default loginpopUp_footerBtn" ng-click="specOffSub(speOff_uploadForm, speOffTitle, speOffMsg, file.upload)">Upload</button> -->

@@ -101,6 +101,7 @@ $scope.timeForPeriods = $rootScope.TimeTable_timing;
       console.log("data--" + JSON.stringify(data.data));
       if (checkStatus) {
         $scope.teacherPersonalData = data.data.data;
+
         console.log("$scope.teacherPersonalData: " + JSON.stringify($scope.teacherPersonalData));
       }
       else {
@@ -860,6 +861,7 @@ $scope.timeForPeriods = $rootScope.TimeTable_timing;
   vm.timespanClicked = function (date) {
     console.log("timespanClicked-->");
 console.log("date: "+date);
+console.log("teacherPersonalData: "+JSON.stringify(teacherPersonalData));
 $scope.selectedDateForEvent =  $filter('date')(date, "EEE");
 $scope.selectedDate = date;
     $scope.getTeacherData();

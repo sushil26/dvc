@@ -547,6 +547,8 @@ $scope.timeForPeriods = $rootScope.TimeTable_timing;
     $scope.startTime = $filter('date')($scope.timeForPeriods[id].startsAt, "EEE MMM dd y");
     $scope.EndTime = $filter('date')($scope.timeForPeriods[id].endsAt, "EEE MMM dd y");
     console.log("startDate: "+$scope.startDate+" startTime: "+$scope.startTime+ " EndTime: "+$scope.EndTime);
+    var resultedStartDate =  $scope.startDate+' '+ $scope.startTime;
+    console.log("resultedStartDate: "+resultedStartDate);
 
     // dayEventmodal = $uibModal.open({
     //   scope: $scope,

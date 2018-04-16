@@ -863,8 +863,16 @@ $scope.timeForPeriods = $rootScope.TimeTable_timing;
 console.log("date: "+date);
 console.log("teacherPersonalData: "+JSON.stringify($scope.teacherPersonalData));
 $scope.selectedDateForEvent =  $filter('date')(date, "EEE");
+console.log("selectedDateForEvent: "+selectedDateForEvent);
 $scope.selectedDate = date;
-    $scope.getTeacherData();
+if(loginType="teacher"){
+  $scope.getTeacherData();
+}   
+else
+{
+  
+} 
+
     $('#timeTable_modal').modal('show');
     // if (vm.calendarView === 'month') {
     //   if ((vm.cellIsOpen && moment(date).startOf('day').isSame(moment(vm.viewDate).startOf('day'))) || cell.events.length === 0 || !cell.inMonth) {

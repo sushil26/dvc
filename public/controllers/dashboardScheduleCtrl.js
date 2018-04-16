@@ -222,7 +222,7 @@ $scope.timeForPeriods = $rootScope.TimeTable_timing;
           // vm.events.push(obj);
 
           teacherEvents.push(obj);
-          vm.events.push(obj);
+         // vm.events.push(obj);
           remoteEvent.push(obj);
 
         }
@@ -241,8 +241,8 @@ $scope.timeForPeriods = $rootScope.TimeTable_timing;
     // console.log("$scope.studentPersonalData: "+JSON.stringify($scope.studentPersonalData));
     // console.log("$scope.studentPersonalData.studName: "+$scope.studentPersonalData[0].studName);
     $scope.calendarOwner = $scope.studentPersonalData[0].studName;
-    vm.events = [];
-    vm.events = JSON.parse(JSON.stringify(studEvents));
+    // vm.events = [];
+    // vm.events = JSON.parse(JSON.stringify(studEvents));
     $scope.getSelectedStudentPersonalData($scope.remoteCalendarId);
     console.log("<--getSSCalendar");
   }
@@ -251,8 +251,8 @@ $scope.timeForPeriods = $rootScope.TimeTable_timing;
     // console.log("$scope.studentPersonalData: "+JSON.stringify($scope.studentPersonalData));
     // console.log("$scope.studentPersonalData.studName: "+$scope.studentPersonalData[0].studName);
     $scope.calendarOwner = $scope.teacherPersonalData[0].teacherName;
-    vm.events = [];
-    vm.events = JSON.parse(JSON.stringify(teacherEvents));
+    // vm.events = [];
+    // vm.events = JSON.parse(JSON.stringify(teacherEvents));
     $scope.getSelectedTeacherPersonalData($scope.remoteCalendarId);
     console.log("<--getSTCalendar");
   }

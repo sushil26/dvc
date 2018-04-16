@@ -52,10 +52,7 @@
 
               <div class="form">
                 <div ng-if="userLoginType=='teacher'" class="form-group ">
-                  <label for="fullname" class="control-label col-lg-2">Class
-
-                  </label>
-                  <div class="col-lg-4">
+                  <div class="col-lg-3">
                     <select class="form-control m-bot15" placeholder="select" ng-model="cssSelect" ng-change="getStudListForCS(cssSelect)" ng-options="css as css.class+ '-' + css.section + '-' + css.subject for css in teacherData[0].css">
                       <option value="" disabled selected>Class</option>
                     </select>
@@ -63,10 +60,7 @@
                 </div>
 
                 <div ng-if="userLoginType=='teacher'" class="form-group ">
-                  <label for="fullname" class="control-label col-lg-2">Student
-
-                  </label>
-                  <div class="col-lg-4">
+                  <div class="col-lg-3">
                     <select class="form-control m-bot15" placeholder="select" ng-model="csSelect" ng-change="getStudentCalendar(csSelect)" ng-options="cs as cs.name + '-' + cs.studId for cs in studList">
                       <option value="" disabled selected>Student</option>
                     </select>
@@ -75,10 +69,8 @@
 
 
                 <div ng-if="userLoginType=='studParent'" class="form-group ">
-                  <label for="fullname" class="control-label col-lg-2">Teacher
-                    <span class="required">*</span>
-                  </label>
-                  <div class="col-lg-4">
+                  
+                  <div class="col-lg-6">
                     <select class="form-control m-bot15" placeholder="select" ng-model="cssSelect" ng-change="getTeacherCalendar(cssSelect)"
                       ng-options="cs as cs.name + '-' + cs.teacherId+'-'+cs.subject for cs in teacherList">
                       <option value="" disabled selected>Teacher</option>

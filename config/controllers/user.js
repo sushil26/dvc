@@ -700,7 +700,7 @@ module.exports.getLoginData = function(req, res) {
     var id = {
       _id: ObjectId(req.params.id)
     };
-    stud.find(id).toArray(function(err, data) {
+    user.find(id).toArray(function(err, data) {
       console.log("data: " + JSON.stringify(data));
       if (err) {
         responseData = {

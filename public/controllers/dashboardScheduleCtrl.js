@@ -578,7 +578,8 @@ app.controller('dashboardScheduleCtrl',function ($scope, $compile, $window, $fil
   calendarConfig.dateFormats.hour = 'HH:mm';
 
   var actions = [{
-    label: '<i class=\'glyphicon glyphicon-pencil\'></i>',
+    // label: '<i class=\'glyphicon glyphicon-pencil\'></i>',
+    label: 'Edit',
     onClick: function (args) {
       alert("Edit Event Comming Soon");
       console.log("args.calendarEvent: " + args.calendarEvent);
@@ -596,7 +597,8 @@ app.controller('dashboardScheduleCtrl',function ($scope, $compile, $window, $fil
 
     }
   }, {
-    label: '<i class=\'glyphicon glyphicon-remove\'></i>',
+    // label: '<i class=\'glyphicon glyphicon-remove\'></i>',
+    label: 'Delete',
     onClick: function (args) {
       alert("Delete Event Comming Soon");
       // alert.show('Deleted', args.calendarEvent);

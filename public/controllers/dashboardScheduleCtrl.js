@@ -607,7 +607,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
 
     httpFactory.get(api).then(function (data) {
       var checkStatus = httpFactory.dataValidation(data);
-      // console.log("data--" + JSON.stringify(data.data));
+       console.log("data--" + JSON.stringify(data.data));
       if (checkStatus) {
         $scope.eventData = data.data.data;
         vm.events = [];

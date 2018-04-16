@@ -512,7 +512,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
             alert("Successfully sent the event");
             // vm.events.splice(0, 1);
             var eventPostedData = data.data.data;
-            vm.events.push({
+           var objData = {
               'id': obj.userId,
               'title': obj.title,
               'color': obj.primColor,
@@ -530,9 +530,9 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
             "receiverName": receiverName, 
             "receiverId": receiverId, 
             "receiverMN": receiverMN,
-            
-
-            });
+            /*  */           }
+            ownerEvents.push(objData);
+            vm.events.push(objData);
           }
           else {
             alert("Event Send Failed");

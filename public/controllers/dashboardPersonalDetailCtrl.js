@@ -3,6 +3,7 @@ app.controller('dashboardPersonalDetailController', function ($scope, $window, h
 
     var id = localStorage.getItem("id");
     $scope.loginType = localStorage.getItem("loginType");
+    $scope.userName = localStorage.getItem("userName");
 
     $scope.getTeacherDetails = function (id) {
         console.log("getTeacherData-->");

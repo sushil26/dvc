@@ -107,25 +107,6 @@
             </div>
             <div class="panel-heading" style="height: 50px;">
               <div class="panel-actions">
-                <div class="btn-group">
-                  <label class="btn uib-btn-radio" mwl-date-modifier date="vm.viewDate" decrement="vm.calendarView" ng-click="vm.cellIsOpen = false">
-                    << </label>
-                      <label class="btn btn-default" mwl-date-modifier date="vm.viewDate" set-to-today ng-click="vm.cellIsOpen = false">
-                        Today
-                      </label>
-                      <label class="btn uib-btn-radio" mwl-date-modifier date="vm.viewDate" increment="vm.calendarView" ng-click="vm.cellIsOpen = false">
-                        >>
-                      </label>
-
-                      <label class="btn btn-primary" ng-model="vm.calendarView" uib-btn-radio="'year'" ng-click="vm.cellIsOpen = false">Year</label>
-                      <label class="btn btn-primary" ng-model="vm.calendarView" uib-btn-radio="'month'" ng-click="vm.cellIsOpen = false">Month</label>
-                      <label class="btn btn-primary" ng-model="vm.calendarView" uib-btn-radio="'week'" ng-click="vm.cellIsOpen = false">Week</label>
-                      <label class="btn btn-primary" ng-model="vm.calendarView" uib-btn-radio="'day'" ng-click="vm.cellIsOpen = false">Day</label>
-
-                </div>
-              </div>
-         
-              <div class="panel-actions">
 
 
                 <select class="btn btn-danger" ng-if="userLoginType=='teacher'" placeholder="select" ng-model="cssSelect" ng-change="getStudListForCS(cssSelect)"
@@ -159,6 +140,27 @@
 
               </div>
             </div>
+            <div class="panel-heading" style="height: 50px;">
+              <div class="panel-actions">
+                <div class="btn-group">
+                  <label class="btn uib-btn-radio" mwl-date-modifier date="vm.viewDate" decrement="vm.calendarView" ng-click="vm.cellIsOpen = false">
+                    << </label>
+                      <label class="btn btn-default" mwl-date-modifier date="vm.viewDate" set-to-today ng-click="vm.cellIsOpen = false">
+                        Today
+                      </label>
+                      <label class="btn uib-btn-radio" mwl-date-modifier date="vm.viewDate" increment="vm.calendarView" ng-click="vm.cellIsOpen = false">
+                        >>
+                      </label>
+
+                      <label class="btn btn-primary" ng-model="vm.calendarView" uib-btn-radio="'year'" ng-click="vm.cellIsOpen = false">Year</label>
+                      <label class="btn btn-primary" ng-model="vm.calendarView" uib-btn-radio="'month'" ng-click="vm.cellIsOpen = false">Month</label>
+                      <label class="btn btn-primary" ng-model="vm.calendarView" uib-btn-radio="'week'" ng-click="vm.cellIsOpen = false">Week</label>
+                      <label class="btn btn-primary" ng-model="vm.calendarView" uib-btn-radio="'day'" ng-click="vm.cellIsOpen = false">Day</label>
+
+                </div>
+              </div>
+            </div>
+
 
             <div class="panel-body">
               <!-- Widget content -->

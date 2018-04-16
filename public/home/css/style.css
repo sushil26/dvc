@@ -148,6 +148,9 @@ h1, h2, h3, h4, h5, h6 {
   #header #logo img {
     width: 46px;
   }
+  #header #mm{
+    margin-top: -1px !important;
+  }
 }
 
 #header.header-fixed {

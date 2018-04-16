@@ -53,52 +53,53 @@
               </div>
               <div class="panel-body">
 
+                <div class="form">
+                  <div ng-if="userLoginType=='teacher'" class="form-group ">
+                    <label for="fullname" class="control-label col-lg-2">Class
 
-                <div ng-if="userLoginType=='teacher'" class="form-group ">
-                  <label for="fullname" class="control-label col-lg-2">Class
-                    <span class="required">*</span>
-                  </label>
-                  <div class="col-lg-2">
-                    <select class="form-control m-bot15" placeholder="select" ng-model="cssSelect" ng-change="getStudListForCS(cssSelect)" ng-options="css as css.class+ '-' + css.section + '-' + css.subject for css in teacherData[0].css">
-                      <option value="" disabled selected>Class</option>
-                    </select>
+                    </label>
+                    <div class="col-lg-2">
+                      <select class="form-control m-bot15" placeholder="select" ng-model="cssSelect" ng-change="getStudListForCS(cssSelect)" ng-options="css as css.class+ '-' + css.section + '-' + css.subject for css in teacherData[0].css">
+                        <option value="" disabled selected>Class</option>
+                      </select>
+                    </div>
                   </div>
-                </div>
 
-                <div ng-if="userLoginType=='teacher'" class="form-group ">
-                  <label for="fullname" class="control-label col-lg-2">Student
-                    <span class="required">*</span>
-                  </label>
-                  <div class="col-lg-2">
-                    <select class="form-control m-bot15" placeholder="select" ng-model="csSelect" ng-change="getStudentCalendar(csSelect)" ng-options="cs as cs.name + '-' + cs.studId for cs in studList">
-                      <option value="" disabled selected>Student</option>
-                    </select>
+                  <div ng-if="userLoginType=='teacher'" class="form-group ">
+                    <label for="fullname" class="control-label col-lg-2">Student
+
+                    </label>
+                    <div class="col-lg-2">
+                      <select class="form-control m-bot15" placeholder="select" ng-model="csSelect" ng-change="getStudentCalendar(csSelect)" ng-options="cs as cs.name + '-' + cs.studId for cs in studList">
+                        <option value="" disabled selected>Student</option>
+                      </select>
+                    </div>
                   </div>
-                </div>
 
 
-                <div ng-if="userLoginType=='studParent'" class="form-group ">
-                  <label for="fullname" class="control-label col-lg-2">Teacher
-                    <span class="required">*</span>
-                  </label>
-                  <div class="col-lg-2">
-                    <select class="form-control m-bot15" placeholder="select" ng-model="cssSelect" ng-change="getTeacherCalendar(cssSelect)"
-                      ng-options="cs as cs.name + '-' + cs.teacherId+'-'+cs.subject for cs in teacherList">
-                      <option value="" disabled selected>Teacher</option>
-                    </select>
+                  <div ng-if="userLoginType=='studParent'" class="form-group ">
+                    <label for="fullname" class="control-label col-lg-2">Teacher
+                      <span class="required">*</span>
+                    </label>
+                    <div class="col-lg-2">
+                      <select class="form-control m-bot15" placeholder="select" ng-model="cssSelect" ng-change="getTeacherCalendar(cssSelect)"
+                        ng-options="cs as cs.name + '-' + cs.teacherId+'-'+cs.subject for cs in teacherList">
+                        <option value="" disabled selected>Teacher</option>
+                      </select>
+                    </div>
                   </div>
-                </div>
 
 
-                <div class="form-group ">
+                  <div class="form-group ">
 
-                  <button class="btn btn-primary" ng-if="calendarOwner!='Your'" ng-click="eventGet()">My Calendar</button>
-                  <button class="btn btn-primary" ng-if="calendarOwner!='Your' && teacherPersonalData[0].teacherName != null" data-target="#timeTable_modal"
-                    data-toggle="modal">Teacher Time Table</button>
-                  <button class="btn btn-primary" ng-if="calendarOwner=='Your' && userLoginType=='studParent' && teacherPersonalData[0].teacherName != null"
-                    ng-click="getSTCalendar()">{{teacherPersonalData[0].teacherName}} Calendar</button>
-                  <button class="btn btn-primary" ng-if="calendarOwner=='Your' && userLoginType=='teacher' && studentPersonalData[0].studName != null"
-                    ng-click="getSSCalendar()">{{studentPersonalData[0].studName}} Calendar</button>
+                    <button class="btn btn-primary" ng-if="calendarOwner!='Your'" ng-click="eventGet()">My Calendar</button>
+                    <button class="btn btn-primary" ng-if="calendarOwner!='Your' && teacherPersonalData[0].teacherName != null" data-target="#timeTable_modal"
+                      data-toggle="modal">Teacher Time Table</button>
+                    <button class="btn btn-primary" ng-if="calendarOwner=='Your' && userLoginType=='studParent' && teacherPersonalData[0].teacherName != null"
+                      ng-click="getSTCalendar()">{{teacherPersonalData[0].teacherName}} Calendar</button>
+                    <button class="btn btn-primary" ng-if="calendarOwner=='Your' && userLoginType=='teacher' && studentPersonalData[0].studName != null"
+                      ng-click="getSSCalendar()">{{studentPersonalData[0].studName}} Calendar</button>
+                  </div>
                 </div>
               </div>
             </div>

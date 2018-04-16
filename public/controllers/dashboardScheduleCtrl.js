@@ -555,7 +555,7 @@ $scope.timeForPeriods = $rootScope.TimeTable_timing;
 
     dayEventmodal = $uibModal.open({
       scope: $scope,
-      templateUrl: '/html/templates/dayEventBook.html',
+      templateUrl: '/html/templates/eventDetails_edit.html',
       windowClass: 'show',
       backdropClass: 'show',
       controller: function ($scope, $uibModalInstance) {

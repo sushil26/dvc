@@ -25,9 +25,9 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
       // console.log("data--" + JSON.stringify(data.data));
       if (checkStatus) {
         $scope.teacherData = data.data.data;
-        // $scope.teacherPersonalData = data.data.data;
+         $scope.teacherPersonalData = data.data.data;
         console.log("teacherData: " + JSON.stringify($scope.teacherData));
-        // console.log("teacherPersonalData: " + JSON.stringify($scope.teacherPersonalData));
+         console.log("teacherPersonalData: " + JSON.stringify($scope.teacherPersonalData));
         //   $scope.css = $scope.teacherData[0].css;
         //   console.log("$scope.css: " + JSON.stringify($scope.css));
       }
@@ -860,9 +860,10 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
     $scope.selectedDateForEvent = $filter('date')(date, "EEE");
     console.log("selectedDateForEvent: " + $scope.selectedDateForEvent);
     $scope.selectedDate = date;
-    // if ($scope.userLoginType = "teacher") {
-    //   $scope.getTeacherData();
-    // }
+    if ($scope.userLoginType = "teacher") {
+      console.log("loginType: "+localStorage.getItem("loginType"));
+      $scope.getTeacherData();
+    }
     // else {
 
     // }

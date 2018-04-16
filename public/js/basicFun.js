@@ -122,7 +122,7 @@ function sessionSet(data) {
     console.log("sessionSet-->");
     console.log("data: "+JSON.stringify(data));
     
-    var encrypted = CryptoJS.AES.encrypt("logu", "msg");
+    var encrypted = CryptoJS.AES.encrypt("logu", "secretmsg");
     console.log("encrypted: "+encrypted);
    
     localStorage.setItem("secrecy",encrypted);

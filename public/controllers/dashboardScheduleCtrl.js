@@ -9,8 +9,6 @@ app.controller('dashboardScheduleCtrl', function ($scope, $compile, $window, $fi
   var x = localStorage.getItem("secrecy");
   var decrypted = CryptoJS.AES.decrypt(x, "msg");
   console.log("Value##**: " + decrypted.toString(CryptoJS.enc.Utf8));
-  
-
 
   console.log("Value##**: " + x.toString(CryptoJS.enc.Utf8));
 
@@ -27,7 +25,10 @@ app.controller('dashboardScheduleCtrl', function ($scope, $compile, $window, $fi
       var checkStatus = httpFactory.dataValidation(data);
       console.log("data--" + JSON.stringify(data.data));
       if (checkStatus) {
-        $scope.teacherData = data.data.data;
+        //$scope.teacherData = data.data.data;
+        scope.teacherPersonalData = data.data.data;
+
+
         console.log("teacherData: " + JSON.stringify($scope.teacherData));
         //   $scope.css = $scope.teacherData[0].css;
         //   console.log("$scope.css: " + JSON.stringify($scope.css));
@@ -530,6 +531,12 @@ app.controller('dashboardScheduleCtrl', function ($scope, $compile, $window, $fi
     // var url = document.getElementById('linkToShare').innerHTML;
   }
 
+  $scope.timeTableForEventBook = function () {
+  console.log("timeTableForEventBook-->");
+  $scope.getTeacherData();
+  console.log("<--timeTableForEventBook");
+  }
+  
   $scope.eventGet = function () {
     console.log("eventGet-->");
     var id = localStorage.getItem("id");
@@ -576,6 +583,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $compile, $window, $fi
     })
   }
   $scope.eventGet();
+
 
   var vm = this;
   //These variables MUST be set as a minimum for the calendar to work

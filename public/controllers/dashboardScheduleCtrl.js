@@ -860,16 +860,16 @@ $scope.timeForPeriods = $rootScope.TimeTable_timing;
   vm.timespanClicked = function (date) {
     console.log("timespanClicked-->");
 console.log("date: "+date);
-// console.log("teacherPersonalData: "+JSON.stringify($scope.teacherPersonalData));
+console.log("teacherPersonalData: "+JSON.stringify($scope.teacherPersonalData));
 $scope.selectedDateForEvent =  $filter('date')(date, "EEE");
 console.log("selectedDateForEvent: "+$scope.selectedDateForEvent);
 $scope.selectedDate = date;
-if(loginType="teacher"){
+if($scope.userLoginType="teacher"){
   $scope.getTeacherData();
 }   
 else
 {
-
+ 
 } 
 
     $('#timeTable_modal').modal('show');

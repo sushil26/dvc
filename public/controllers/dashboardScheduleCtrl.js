@@ -531,13 +531,12 @@ app.controller('dashboardScheduleCtrl', function ($scope, $compile, $window, $fi
   }
 
   $scope.timeTableForEventBook = function (dateTime) {
-  console.log("timeTableForEventBook-->");
-  console.log("dateTime: "+dateTime);
-  $scope.getTeacherData();
-  $('#timeTable_modal').modal('show');
-  console.log("<--timeTableForEventBook");
+    console.log("timeTableForEventBook-->");
+    console.log("dateTime: " + dateTime);
+
+    console.log("<--timeTableForEventBook");
   }
-  
+
   $scope.eventGet = function () {
     console.log("eventGet-->");
     var id = localStorage.getItem("id");
@@ -793,26 +792,29 @@ app.controller('dashboardScheduleCtrl', function ($scope, $compile, $window, $fi
     console.log("<--rangeSelected");
   };
 
-  // vm.timespanClicked = function (date, cell) {
+  vm.timespanClicked = function (date) {
+    console.log("timespanClicked-->");
 
-  //   if (vm.calendarView === 'month') {
-  //     if ((vm.cellIsOpen && moment(date).startOf('day').isSame(moment(vm.viewDate).startOf('day'))) || cell.events.length === 0 || !cell.inMonth) {
-  //       vm.cellIsOpen = false;
-  //     } else {
-  //       vm.cellIsOpen = true;
-  //       vm.viewDate = date;
-  //     }
-  //   } else if (vm.calendarView === 'year') {
-  //     if ((vm.cellIsOpen && moment(date).startOf('month').isSame(moment(vm.viewDate).startOf('month'))) || cell.events.length === 0) {
-  //       vm.cellIsOpen = false;
-  //     } else {
-  //       vm.cellIsOpen = true;
-  //       vm.viewDate = date;
-  //     }
-  //   }
+    $scope.getTeacherData();
+    $('#timeTable_modal').modal('show');
+    if (vm.calendarView === 'month') {
+      if ((vm.cellIsOpen && moment(date).startOf('day').isSame(moment(vm.viewDate).startOf('day'))) || cell.events.length === 0 || !cell.inMonth) {
+        vm.cellIsOpen = false;
+      } else {
+        vm.cellIsOpen = true;
+        vm.viewDate = date;
+      }
+    } else if (vm.calendarView === 'year') {
+      if ((vm.cellIsOpen && moment(date).startOf('month').isSame(moment(vm.viewDate).startOf('month'))) || cell.events.length === 0) {
+        vm.cellIsOpen = false;
+      } else {
+        vm.cellIsOpen = true;
+        vm.viewDate = date;
+      }
+    }
+    console.log("<--timespanClicked");
 
-
-  // };
+  };
 
 
 

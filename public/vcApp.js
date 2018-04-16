@@ -64,8 +64,7 @@ var app = angular.module('vcApp', ['ui.router', 'mwl.calendar', 'ui.bootstrap', 
                else{
                   $window.location.href='https://norecruits.com';
                }
-             
-             
+                   
           }}
       })
       .state('dashboard', {
@@ -112,6 +111,11 @@ var app = angular.module('vcApp', ['ui.router', 'mwl.calendar', 'ui.bootstrap', 
         templateUrl: '/html/dashboard/conference.html',
         controller: 'dashboardConfCtrl'
       })
+      .state('dashboard.comingSoon', {
+        url: dashboardComingSoon(),
+        templateUrl: '/html/dashboard/comingSoon.html'
+        
+      })
     
   });
 
@@ -138,6 +142,9 @@ function dashboardstudentI(){
 }
 function dashboardTeacherI(){
    return '/teacherI';
+}
+function dashboardComingSoon(){
+  return '/comingSoon';
 }
 function dashboardConference(){
   return '/dashboardConference';

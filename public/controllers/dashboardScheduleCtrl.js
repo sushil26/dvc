@@ -1,10 +1,15 @@
-app.controller('dashboardScheduleCtrl',function ($scope, $compile, $window, $filter, httpFactory, moment, calendarConfig, $uibModal) {
-    console.log("dashboardScheduleCtrl==>");
+app.controller('dashboardScheduleCtrl', function ($scope, $compile, $window, $filter, httpFactory, moment, calendarConfig, $uibModal) {
+  console.log("dashboardScheduleCtrl==>");
 
   var dayEventmodal; /* ### Note: open model for event send ###  */
   var studEvents = []; /* ### Note: selected student events ### */
   var teacherEvents = []; /* ### Note: selected teacher events ### */
   var ownerEvents = []; /* ### Note: logged in person all events ### */
+
+  var x = localStorage.getItem("secrecy");
+  var decrypted = CryptoJS.AES.decrypt(encrypted, x);
+  console.log("Value##**: " + decrypted);
+
 
   $scope.getTeacherData = function () {
     console.log("getTeacherData-->");
@@ -244,11 +249,11 @@ app.controller('dashboardScheduleCtrl',function ($scope, $compile, $window, $fil
 
   if (localStorage.getItem("loginType") == 'admin') {
     console.log("loginType: " + localStorage.getItem("loginType"));
-   // document.getElementById('userAuth').style.display = "block";
+    // document.getElementById('userAuth').style.display = "block";
     $scope.userLoginType = 'admin';
   }
   else if (localStorage.getItem("loginType") == 'teacher') {
-   // document.getElementById('userAuth').style.display = "none";
+    // document.getElementById('userAuth').style.display = "none";
     $scope.userLoginType = 'teacher';
     $scope.getTeacherData();
 
@@ -260,7 +265,7 @@ app.controller('dashboardScheduleCtrl',function ($scope, $compile, $window, $fil
     $scope.getStudentData();
   }
   else {
-      console.log("localStorage.getItem('loginType'): "+localStorage.getItem("loginType"));
+    console.log("localStorage.getItem('loginType'): " + localStorage.getItem("loginType"));
     // window.location.href = "https://norecruits.com";
   }
 
@@ -497,7 +502,7 @@ app.controller('dashboardScheduleCtrl',function ($scope, $compile, $window, $fil
               'actions': actions,
               'url': obj.url
             });
-           
+
             // if($scope.userLoginType=='studParent')
             // {
 

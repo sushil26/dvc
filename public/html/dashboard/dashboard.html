@@ -146,14 +146,14 @@
                             <span>PROFILE</span>
                         </a>
                     </li>
-                    <li ng-if="localStorage.getItem("loginType") == 'teacher' || localStorage.getItem("loginType") == 'studParent'">
+                    <li ng-if="loginType == 'teacher' || loginType == 'studParent'">
                         <a href="/mainPage#!/dashboard/eventShedule">
                             <i class="fa fa-pencil"></i>
                             <span>SCHEDULER</span>
                         </a>
                     </li>
 
-                    <li class="sub-menu" ng-if="localStorage.getItem("loginType") == 'teacher' || localStorage.getItem("loginType") == 'studParent'">
+                    <li class="sub-menu" ng-if="loginType == 'teacher' || loginType == 'studParent'">
                         <a class="">
                             <i class="fa fa-calendar"></i>
                             <span>EVENTS</span>
@@ -161,14 +161,14 @@
                         </a>
                         <ul class="sub">
                             <li>
-                                <a class="" href="form_component.html">UPCOMING</a>
+                                <a class=""  href="/mainPage#!/dashboard/comingSoon">UPCOMING</a>
                             </li>
                             <li>
-                                <a class="" href="form_validation.html">HISTORY</a>
+                                <a class=""  href="/mainPage#!/dashboard/comingSoon">HISTORY</a>
                             </li>
                         </ul>
                     </li>
-                    <li class="sub-menu" ng-if="localStorage.getItem("loginType") == 'teacher' || localStorage.getItem("loginType") == 'studParent'">
+                    <li class="sub-menu" ng-if="loginType == 'teacher' || loginType == 'studParent'">
                         <a>
                             <i class="fa fa-clipboard"></i>
                             <span>ACADEMIC</span>
@@ -176,13 +176,13 @@
                         </a>
                         <ul class="sub">
                             <li>
-                                <a class="" href="form_component.html">ATTANDENCE</a>
+                                <a class="" href="/mainPage#!/dashboard/comingSoon">ATTANDENCE</a>
                             </li>
                             <li>
-                                <a class="" href="form_validation.html">RESULT</a>
+                                <a class="" href="/mainPage#!/dashboard/comingSoon">RESULT</a>
                             </li>
                             <li>
-                                    <a class="" href="form_validation.html">Fee</a>
+                                    <a class="" href="/mainPage#!/dashboard/comingSoon">Fee</a>
                                 </li>
                         </ul>
                     </li>
@@ -194,13 +194,13 @@
                         </a>
                         <ul class="sub">
                             <li>
-                                <a class="" href="form_component.html">CHANGE PASSWORD</a>
+                                <a class="" href="/mainPage#!/dashboard/comingSoon">CHANGE PASSWORD</a>
                             </li>
                             <li>
-                                <a class="" href="form_validation.html">ACCOUNT SETTINGS</a>
+                                <a class="" href="/mainPage#!/dashboard/comingSoon">ACCOUNT SETTINGS</a>
                             </li>
-                            <li>
-                                <a class="" href="form_validation.html">CREATE ADMIN</a>
+                            <li ng-if="loginType=='vc4allAdmin'">
+                                <a class="" href="/mainPage#!/dashboard/comingSoon">CREATE ADMIN</a>
                             </li>
                             <li ng-if="loginType=='admin'">
                                 <a class="" href="/mainPage#!/dashboard/teacherI">CREATE TEACHER</a>
@@ -212,7 +212,7 @@
                                 <a class="" href="/mainPage#!/dashboard/userAuth">AUTHENTICATION</a>
                             </li>
                             <li>
-                                <a class="" href="/mainPage#!/dashboard/dashboardConference">CONFERENCE</a>
+                                <a class="" href="/mainPage#!/dashboard/comingSoon">CONFERENCE</a>
                             </li>
                         </ul>
                     </li>

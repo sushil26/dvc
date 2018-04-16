@@ -530,17 +530,6 @@ $scope.timeForPeriods = $rootScope.TimeTable_timing;
     console.log("<--eventSend");
     // var url = document.getElementById('linkToShare').innerHTML;
   }
-  vm.timespanClicked = function (date) {
-    console.log("timespanClicked-->");
-console.log("date: "+date);
-$scope.selectedDateForEvent =  $filter('date')(date, "EEE");
-$scope.selectedDate = date;
-    $scope.getTeacherData();
-    $('#timeTable_modal').modal('show');
-  
-    console.log("<--timespanClicked");
-
-  };
 
   $scope.timeTableForEventBook = function (day, id) {
     console.log("timeTableForEventBook-->");
@@ -576,6 +565,7 @@ $scope.selectedDate = date;
     // })
     console.log("<--timeTableForEventBook");
   }
+
 
   $scope.eventGet = function () {
     console.log("eventGet-->");
@@ -832,7 +822,31 @@ $scope.selectedDate = date;
     console.log("<--rangeSelected");
   };
 
-  
+  vm.timespanClicked = function (date) {
+    console.log("timespanClicked-->");
+console.log("date: "+date);
+$scope.selectedDateForEvent =  $filter('date')(date, "EEE");
+$scope.selectedDate = date;
+    $scope.getTeacherData();
+    $('#timeTable_modal').modal('show');
+    // if (vm.calendarView === 'month') {
+    //   if ((vm.cellIsOpen && moment(date).startOf('day').isSame(moment(vm.viewDate).startOf('day'))) || cell.events.length === 0 || !cell.inMonth) {
+    //     vm.cellIsOpen = false;
+    //   } else {
+    //     vm.cellIsOpen = true;
+    //     vm.viewDate = date;
+    //   }
+    // } else if (vm.calendarView === 'year') {
+    //   if ((vm.cellIsOpen && moment(date).startOf('month').isSame(moment(vm.viewDate).startOf('month'))) || cell.events.length === 0) {
+    //     vm.cellIsOpen = false;
+    //   } else {
+    //     vm.cellIsOpen = true;
+    //     vm.viewDate = date;
+    //   }
+    // }
+    console.log("<--timespanClicked");
+
+  };
 
 
 

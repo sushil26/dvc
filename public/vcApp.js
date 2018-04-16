@@ -91,7 +91,20 @@ var app = angular.module('vcApp', ['ui.router', 'mwl.calendar', 'ui.bootstrap', 
       .state('dashboard.eventShedule', {
         url: dashboardEventShedule(),
         templateUrl: '/html/dashboard/scheduler.html',
-        controller: 'dashboardScheduleCtrl'
+        controller: 'dashboardScheduleCtrl',
+        resolve: {result : function($window)
+          {
+              // var x =authFact.getLoginType();
+              if(localStorage.getItem("loginType") == 'teacher' || localStorage.getItem("loginType") == 'studParent')
+              {
+                 
+              }
+               else{
+                  $window.location.href='https://norecruits.com';
+               }
+             
+             
+          }}
       })
     
       .state('dashboard.conference', {

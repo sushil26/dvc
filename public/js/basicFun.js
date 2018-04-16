@@ -126,7 +126,7 @@ function sessionSet(data) {
     console.log("encrypted: "+encrypted);
    
    
-    console.log("decrypted: "+decrypted);
+    
     
 
     if (typeof (Storage) !== "undefined") {

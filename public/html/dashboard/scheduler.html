@@ -88,24 +88,24 @@
           <div class="panel panel-default">
             <div class="panel-heading">
               <div class="panel-actions">
-                <select ng-if="userLoginType=='teacher'" class="form-control m-bot15" placeholder="select" ng-model="cssSelect" ng-change="getStudListForCS(cssSelect)"
+                <select ng-if="userLoginType=='teacher'" class="m-bot15" placeholder="select" ng-model="cssSelect" ng-change="getStudListForCS(cssSelect)"
                   ng-options="css as css.class+ '-' + css.section + '-' + css.subject for css in teacherData[0].css">
                   <option value="" disabled selected>Class</option>
                 </select>
-                <select ng-if="userLoginType=='teacher'" class="form-control m-bot15" placeholder="select" ng-model="csSelect" ng-change="getStudentCalendar(csSelect)"
+                <select ng-if="userLoginType=='teacher'" class="m-bot15" placeholder="select" ng-model="csSelect" ng-change="getStudentCalendar(csSelect)"
                   ng-options="cs as cs.name + '-' + cs.studId for cs in studList">
                   <option value="" disabled selected>Student</option>
                 </select>
-                
+
                 <h2 ng-if="userLoginType=='teacher'" class="text-center">Select Student</h2>
                 <h2 ng-if="userLoginType=='studParent'" class="text-center">Select Teacher</h2>
 
 
 
-                <h2 ng-if="calendarOwner!='Your'">
+                <h2  class="text-center" ng-if="calendarOwner!='Your'">
                   <strong>{{ vm.calendarTitle }}({{calendarOwner}})</strong>
                 </h2>
-                <h2 ng-if="calendarOwner=='Your'">
+                <h2  class="text-center" ng-if="calendarOwner=='Your'">
                   <strong>{{ vm.calendarTitle }}</strong>
                 </h2>
                 <a href="#" class="wminimize">

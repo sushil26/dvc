@@ -73,6 +73,7 @@
                   <button class="btn btn-primary" ng-if="calendarOwner!='Your'" ng-click="eventGet()">My Calendar</button>
                   <button class="btn btn-primary" ng-if="calendarOwner!='Your' && teacherPersonalData[0].teacherName != null" data-target="#timeTable_modal"
                     data-toggle="modal">Teacher Time Table</button>
+
                   <button class="btn btn-primary" ng-if="calendarOwner=='Your' && userLoginType=='studParent' && teacherPersonalData[0].teacherName != null"
                     ng-click="getSTCalendar()">{{teacherPersonalData[0].teacherName}} Calendar</button>
                   <button class="btn btn-primary" ng-if="calendarOwner=='Your' && userLoginType=='teacher' && studentPersonalData[0].studName != null"
@@ -127,9 +128,14 @@
             </div>
             <div class="panel-body">
               <!-- Widget content -->
+              <mwl-calendar  events="vm.events" view="vm.calendarView" view-title="vm.calendarTitle" view-date="vm.viewDate"
+                on-event-times-changed="vm.eventTimesChanged(calendarEvent); calendarEvent.startsAt = calendarNewEventStart; calendarEvent.endsAt = calendarNewEventEnd"
+                cell-is-open="vm.cellIsOpen" day-view-start="09:00" day-view-end="15:00" day-view-split="15" cell-modifier="vm.modifyCell(calendarCell)"
+                cell-auto-open-disabled="true" on-date-range-select="vm.rangeSelected(calendarRangeStartDate, calendarRangeEndDate)" ng-click="timeTableForEventBook(calendarRangeStartDate)">
+              </mwl-calendar>
 
               <!-- Below line produces calendar. I am using FullCalendar plugin. -->
-              <mwl-calendar ng-if="calendarOwner=='Your'" events="vm.events" view="vm.calendarView" view-title="vm.calendarTitle" view-date="vm.viewDate"
+              <!-- <mwl-calendar ng-if="calendarOwner=='Your'" events="vm.events" view="vm.calendarView" view-title="vm.calendarTitle" view-date="vm.viewDate"
                 on-event-click="vm.eventClicked(calendarEvent)" on-event-times-changed="vm.eventTimesChanged(calendarEvent); calendarEvent.startsAt = calendarNewEventStart; calendarEvent.endsAt = calendarNewEventEnd"
                 cell-is-open="vm.cellIsOpen" day-view-start="09:00" day-view-end="15:00" day-view-split="15" cell-modifier="vm.modifyCell(calendarCell)"
                 cell-auto-open-disabled="true" ng-click="vm.timeClick(calendarEvent)">
@@ -138,7 +144,7 @@
                 on-event-times-changed="vm.eventTimesChanged(calendarEvent); calendarEvent.startsAt = calendarNewEventStart; calendarEvent.endsAt = calendarNewEventEnd"
                 cell-is-open="vm.cellIsOpen" day-view-start="09:00" day-view-end="15:00" day-view-split="15" cell-modifier="vm.modifyCell(calendarCell)"
                 cell-auto-open-disabled="true" on-date-range-select="vm.rangeSelected(calendarRangeStartDate, calendarRangeEndDate)">
-              </mwl-calendar>
+              </mwl-calendar> -->
 
             </div>
           </div>

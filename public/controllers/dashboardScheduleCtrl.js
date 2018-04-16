@@ -533,7 +533,22 @@ $scope.timeForPeriods = $rootScope.TimeTable_timing;
   $scope.timeTableForEventBook = function (day, id) {
     console.log("timeTableForEventBook-->");
     console.log("id: " + id+" day: "+day);
-
+    
+    dayEventmodal = $uibModal.open({
+      scope: $scope,
+      templateUrl: '/html/templates/dayEventBook.html',
+      windowClass: 'show',
+      backdropClass: 'show',
+      controller: function ($scope, $uibModalInstance) {
+        // moment().startOf('day').toDate()
+        var dt = new Date();
+        $scope.eventDetails = {
+          "startsAt": startDate,
+          "endsAt": endDate
+        }
+        console.log("$scope.eventDetails: " + $scope.eventDetails);
+      }
+    })
     console.log("<--timeTableForEventBook");
   }
 
@@ -796,6 +811,7 @@ $scope.timeForPeriods = $rootScope.TimeTable_timing;
     console.log("timespanClicked-->");
 console.log("date: "+date);
 $scope.selectedDateForEvent =  $filter('date')(date, "EEE");
+$scope.selectedDate = date;
     $scope.getTeacherData();
     $('#timeTable_modal').modal('show');
     // if (vm.calendarView === 'month') {

@@ -530,9 +530,9 @@ app.controller('dashboardScheduleCtrl', function ($scope, $compile, $window, $fi
     // var url = document.getElementById('linkToShare').innerHTML;
   }
 
-  $scope.timeTableForEventBook = function (id) {
+  $scope.timeTableForEventBook = function (day, id) {
     console.log("timeTableForEventBook-->");
-    console.log("id: " + id);
+    console.log("id: " + id+" day: "+day);
 
     console.log("<--timeTableForEventBook");
   }
@@ -792,9 +792,10 @@ app.controller('dashboardScheduleCtrl', function ($scope, $compile, $window, $fi
     console.log("<--rangeSelected");
   };
 
-  vm.timespanClicked = function (date) {
+  vm.timespanClicked = function (d) {
     console.log("timespanClicked-->");
 console.log("date: "+date);
+$scope.selectedDateForEvent =  $filter('date')(d, "EEE");
     $scope.getTeacherData();
     $('#timeTable_modal').modal('show');
     if (vm.calendarView === 'month') {

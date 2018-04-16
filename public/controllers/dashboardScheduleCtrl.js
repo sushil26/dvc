@@ -1,11 +1,11 @@
-app.controller('dashboardScheduleCtrl', function ($scope, $compile, $window, $filter, httpFactory, moment, calendarConfig, $uibModal) {
+app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, $window, $filter, httpFactory, moment, calendarConfig, $uibModal) {
   console.log("dashboardScheduleCtrl==>");
 
   var dayEventmodal; /* ### Note: open model for event send ###  */
   var studEvents = []; /* ### Note: selected student events ### */
   var teacherEvents = []; /* ### Note: selected teacher events ### */
   var ownerEvents = []; /* ### Note: logged in person all events ### */
-
+$scope.timeForPeriods = $rootScope.TimeTable_timing;
   var x = localStorage.getItem("secrecy");
   var decrypted = CryptoJS.AES.decrypt(x, "msg");
   console.log("Value##**: " + decrypted.toString(CryptoJS.enc.Utf8));
@@ -798,21 +798,21 @@ console.log("date: "+date);
 $scope.selectedDateForEvent =  $filter('date')(date, "EEE");
     $scope.getTeacherData();
     $('#timeTable_modal').modal('show');
-    if (vm.calendarView === 'month') {
-      if ((vm.cellIsOpen && moment(date).startOf('day').isSame(moment(vm.viewDate).startOf('day'))) || cell.events.length === 0 || !cell.inMonth) {
-        vm.cellIsOpen = false;
-      } else {
-        vm.cellIsOpen = true;
-        vm.viewDate = date;
-      }
-    } else if (vm.calendarView === 'year') {
-      if ((vm.cellIsOpen && moment(date).startOf('month').isSame(moment(vm.viewDate).startOf('month'))) || cell.events.length === 0) {
-        vm.cellIsOpen = false;
-      } else {
-        vm.cellIsOpen = true;
-        vm.viewDate = date;
-      }
-    }
+    // if (vm.calendarView === 'month') {
+    //   if ((vm.cellIsOpen && moment(date).startOf('day').isSame(moment(vm.viewDate).startOf('day'))) || cell.events.length === 0 || !cell.inMonth) {
+    //     vm.cellIsOpen = false;
+    //   } else {
+    //     vm.cellIsOpen = true;
+    //     vm.viewDate = date;
+    //   }
+    // } else if (vm.calendarView === 'year') {
+    //   if ((vm.cellIsOpen && moment(date).startOf('month').isSame(moment(vm.viewDate).startOf('month'))) || cell.events.length === 0) {
+    //     vm.cellIsOpen = false;
+    //   } else {
+    //     vm.cellIsOpen = true;
+    //     vm.viewDate = date;
+    //   }
+    // }
     console.log("<--timespanClicked");
 
   };

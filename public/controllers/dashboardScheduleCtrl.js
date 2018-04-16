@@ -565,7 +565,7 @@ $scope.timeForPeriods = $rootScope.TimeTable_timing;
           "startsAt": $scope.startTime,
           "endsAt":  $scope.EndTime
         }
-        console.log("$scope.eventDetails: " + $scope.eventDetails);
+        console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
       }
     })
     console.log("<--timeTableForEventBook");

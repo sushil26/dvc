@@ -554,7 +554,27 @@ $scope.timeForPeriods = $rootScope.TimeTable_timing;
     var resultedEndDate =  $scope.startDate+' '+ $scope.EndTime;
     console.log("resultedStartDate: "+resultedStartDate);
     console.log("resultedEndDate: "+resultedEndDate);
+    var rsd = new Date(resultedStartDate);
+    var red = new Date(resultedEndDate);
 
+    var conflicts = PersonalRemoteCombineCal.some(function (event) {
+      //   return (event.startsAt <= s && s <= event.endsAt) ||
+      //   event.startsAt <= e && e <= event.endsAt ||
+      //   s <= event.startsAt && event.startsAt <= e ||
+      //   s <= event.endsAt && event.endsAt <= e
+      // });
+      return (event.startsAt <= s && s < event.endsAt) ||
+        event.startsAt < e && e < event.endsAt ||
+        s <= event.startsAt && event.startsAt < e ||
+        s < event.endsAt && event.endsAt < e
+    });
+    console.log("conflicts: " + conflicts);
+    if (conflicts) {
+      console.log("conflicts is there");
+      alert("ON this time you/student not free, try on other time");
+    }
+    else {
+   
     dayEventmodal = $uibModal.open({
       scope: $scope,
       templateUrl: '/html/templates/dayEventBook.html',
@@ -571,6 +591,7 @@ $scope.timeForPeriods = $rootScope.TimeTable_timing;
         console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
       }
     })
+  }
     console.log("<--timeTableForEventBook");
   }
 

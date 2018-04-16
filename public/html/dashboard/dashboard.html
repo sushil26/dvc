@@ -145,14 +145,14 @@
                             <span>PROFILE</span>
                         </a>
                     </li>
-                    <li ng-if="localStorage.getItem("loginType") == 'teacher' || localStorage.getItem("loginType") == 'studParent'">
+                    <li ng-if="loginType == 'teacher' || loginType == 'studParent'">
                         <a href="/mainPage#!/dashboard/eventShedule">
                             <i class="fa fa-pencil"></i>
                             <span>SCHEDULER</span>
                         </a>
                     </li>
 
-                    <li class="sub-menu" ng-if="localStorage.getItem("loginType") == 'teacher' || localStorage.getItem("loginType") == 'studParent'">
+                    <li class="sub-menu" ng-if="loginType == 'teacher' || loginType == 'studParent'">
                         <a class="">
                             <i class="fa fa-calendar"></i>
                             <span>EVENTS</span>
@@ -160,14 +160,14 @@
                         </a>
                         <ul class="sub">
                             <li>
-                                <a class="" href="form_component.html">UPCOMING</a>
+                                <a class=""  href="/mainPage#!/dashboard/comingSoon">UPCOMING</a>
                             </li>
                             <li>
-                                <a class="" href="form_validation.html">HISTORY</a>
+                                <a class=""  href="/mainPage#!/dashboard/comingSoon">HISTORY</a>
                             </li>
                         </ul>
                     </li>
-                    <li class="sub-menu" ng-if="localStorage.getItem("loginType") == 'teacher' || localStorage.getItem("loginType") == 'studParent'">
+                    <li class="sub-menu" ng-if="loginType == 'teacher' || loginType == 'studParent'">
                         <a>
                             <i class="fa fa-clipboard"></i>
                             <span>ACADEMIC</span>
@@ -198,7 +198,7 @@
                             <li>
                                 <a class="" href="form_validation.html">ACCOUNT SETTINGS</a>
                             </li>
-                            <li>
+                            <li ng-if="loginType=='vc4allAdmin'">
                                 <a class="" href="form_validation.html">CREATE ADMIN</a>
                             </li>
                             <li ng-if="loginType=='admin'">
@@ -211,7 +211,7 @@
                                 <a class="" href="/mainPage#!/dashboard/userAuth">AUTHENTICATION</a>
                             </li>
                             <li>
-                                <a class="" href="/mainPage#!/dashboard/dashboardConference">CONFERENCE</a>
+                                <a class="" href="/mainPage#!/dashboard/comingSoon">CONFERENCE</a>
                             </li>
                         </ul>
                     </li>

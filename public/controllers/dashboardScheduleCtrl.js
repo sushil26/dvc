@@ -711,33 +711,37 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
     // });
   };
 
-  $scope.eventDetailClick = function (index) {
-    console.log("eventDetailClick--> ");
-    var evtData = vm.events[index];
-    var eventSenderLoginType = evtData.senderLoginType;
-    var receiverId = evtData.remoteCalendarId;
-    console.log("$scope.evtData: " + JSON.stringify($scope.evtData));
-    console.log("eventSenderLoginType: " + eventSenderLoginType);
-    console.log("receiverId: "+receiverId);
-    var eClicked = $uibModal.open({
-      scope: $scope,
-      templateUrl: '/html/templates/eventDetails.html',
-      windowClass: 'show',
-      backdropClass: 'show',
-      controller: function ($scope, $uibModalInstance) {
-        $scope.eventDetails = evtData;
-        console.log("$scope.eventDetails: " + $scope.eventDetails);
-      }
-    })
-    console.log("<--eventDetailClick");
-  }
+  // $scope.eventDetailClick = function (index) {
+  //   console.log("eventDetailClick--> ");
+  //   var evtData = vm.events[index];
+  //   var eventSenderLoginType = evtData.senderLoginType;
+  //   var receiverId = evtData.remoteCalendarId;
+  //   console.log("$scope.evtData: " + JSON.stringify($scope.evtData));
+  //   console.log("eventSenderLoginType: " + eventSenderLoginType);
+  //   console.log("receiverId: "+receiverId);
+  //   var eClicked = $uibModal.open({
+  //     scope: $scope,
+  //     templateUrl: '/html/templates/eventDetails.html',
+  //     windowClass: 'show',
+  //     backdropClass: 'show',
+  //     controller: function ($scope, $uibModalInstance) {
+  //       $scope.eventDetails = evtData;
+  //       console.log("$scope.eventDetails: " + $scope.eventDetails);
+  //     }
+  //   })
+  //   console.log("<--eventDetailClick");
+  // }
   vm.eventClicked = function (event) {
     console.log("eventClicked-->");
     // alert("clicked: " + event);
     console.log("cliecked: " + JSON.stringify(event));
     $scope.evtData = event;
-    console.log("$scope.evtData: " + $scope.evtData);
-    console.log("$scope.evtData.id: " + $scope.evtData.id);
+    var eventSenderLoginType = evtData.senderLoginType;
+      var receiverId = evtData.remoteCalendarId;
+      console.log("$scope.evtData: " + JSON.stringify($scope.evtData));
+      console.log("eventSenderLoginType: " + eventSenderLoginType);
+      console.log("receiverId: "+receiverId);
+       
     // $('#eDetail').trigger('click');
     var eClicked = $uibModal.open({
       scope: $scope,

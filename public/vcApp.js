@@ -17,7 +17,20 @@ var app = angular.module('vcApp', ['ui.router', 'mwl.calendar', 'ui.bootstrap', 
       .state('dashboard.userAuth', {
         url: dashboardUserAuth(),
         templateUrl: '/html/dashboard/userAuthentication.html',
-        controller: 'userAuthCtrl'
+        controller: 'userAuthCtrl',
+        resolve: {result : function($window)
+          {
+              // var x =authFact.getLoginType();
+              if(localStorage.getItem("loginType") == 'admin')
+              {
+                 
+              }
+               else{
+                  $window.location.href='https://norecruits.com';
+               }
+             
+             
+          }}
       })
       .state('dashboard.teacherInsert', {
         url: dashboardTeacherI(),

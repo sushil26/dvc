@@ -718,11 +718,11 @@ app.controller('dashboardScheduleCtrl',function ($scope, $compile, $window, $fil
     alert.show('Dropped or resized', event);
   };
 
-  // vm.toggle = function ($event, field, event) {
-  //   $event.preventDefault();
-  //   $event.stopPropagation();
-  //   event[field] = !event[field];
-  // };
+  vm.toggle = function ($event, field, event) {
+    $event.preventDefault();
+    $event.stopPropagation();
+    event[field] = !event[field];
+  };
   vm.rangeSelected = function (startDate, endDate) {
     var s = startDate;
     var e = endDate;

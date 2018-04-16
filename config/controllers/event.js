@@ -26,8 +26,8 @@ module.exports.eventSend = function (req, res) {
     console.log("req.body.senderName: " + req.body.senderName);
     console.log("req.body.senderId: " + req.body.senderId);
     console.log("req.body.reason: " + req.body.reason);
-    console.log("req.body.senderEmail: " + req.body.senderEmail);
-    if (general.emptyCheck(req.body.senderName) && general.emptyCheck(req.body.senderId) && general.emptyCheck(req.body.reason) && general.emptyCheck(req.body.senderEmail)) {
+    console.log("req.body.receiverEmail: " + req.body.receiverEmail);
+    if (general.emptyCheck(req.body.senderName) && general.emptyCheck(req.body.senderId) && general.emptyCheck(req.body.reason) && general.emptyCheck(req.body.receiverEmail)) {
         var password = 'abc';
         var userData = {
             "userId": req.body.userId,

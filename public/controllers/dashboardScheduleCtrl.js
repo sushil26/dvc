@@ -794,7 +794,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $compile, $window, $fi
 
   vm.timespanClicked = function (date) {
     console.log("timespanClicked-->");
-
+console.log("date: "+date);
     $scope.getTeacherData();
     $('#timeTable_modal').modal('show');
     if (vm.calendarView === 'month') {

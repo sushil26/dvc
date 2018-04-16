@@ -26,7 +26,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $compile, $window, $fi
       console.log("data--" + JSON.stringify(data.data));
       if (checkStatus) {
         //$scope.teacherData = data.data.data;
-        scope.teacherPersonalData = data.data.data;
+        $scope.teacherPersonalData = data.data.data;
 
 
         console.log("teacherData: " + JSON.stringify($scope.teacherData));

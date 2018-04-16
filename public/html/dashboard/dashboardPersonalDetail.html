@@ -25,8 +25,12 @@
                                 <!-- profile -->
                                 <div id="profile" class="tab-pane active">
                                     <section class="panel">
-                                        <div class="bio-graph-heading">
-                                            Hello Sushil,
+
+                                        <div ng-if="userData[0].teacherName" class="bio-graph-heading">
+                                            Hello {{userData[0].teacherName}}
+                                        </div>
+                                        <div ng-if="userData[0].studName"class="bio-graph-heading">
+                                            Hello {{userData[0].studName}}
                                         </div>
                                         <div class="panel-body bio-graph-info">
                                             <h1>Detail</h1>
@@ -68,21 +72,32 @@
                                                         </span>:{{userData[0].mobileNum}} </p>
                                                 </div>
                                                 <div class="bio-row" ng-if="loginType=='teacher'">
-                                                        <p>
-                                                            <span>
-                                                                <b>Class Handle: </b>
-                                                                <br>
-                                                                
-                                                            </span> <p ng-repeat="css in userData[0].css"><b>Class: </b>{{css.class}} <b>Section: </b>{{css.section}} <b>Subject: </b>{{css.subject}} <p></p> </p>
-                                                    </div>
+                                                    <p>
+                                                        <span>
+                                                            <b>Class Handle: </b>
+                                                            <br>
+
+                                                        </span>
+                                                        <p ng-repeat="css in userData[0].css">
+                                                            <b>Class: </b>{{css.class}}
+                                                            <b>Section: </b>{{css.section}}
+                                                            <b>Subject: </b>{{css.subject}}
+                                                            <p></p>
+                                                        </p>
+                                                </div>
 
 
 
                                                 <div class="bio-row" ng-if="loginType=='studParent'">
                                                     <p>
                                                         <span>
-                                                            
-                                                        </span> <p ng-repeat="cs in userData[0].cs"><b>Class: </b>{{cs.class}} <b>Section: </b>{{cs.section}}  <p></p> </p>
+
+                                                        </span>
+                                                        <p ng-repeat="cs in userData[0].cs">
+                                                            <b>Class: </b>{{cs.class}}
+                                                            <b>Section: </b>{{cs.section}}
+                                                            <p></p>
+                                                        </p>
                                                 </div>
 
                                                 <div class="bio-row" ng-if="loginType=='studParent'">
@@ -104,7 +119,7 @@
                                                     <p>
                                                         <span>
                                                             <b>Parent Name</b>
-                                                        </span>:  {{userData[0].parentName}}</p>
+                                                        </span>: {{userData[0].parentName}}</p>
                                                 </div>
 
 

@@ -541,8 +541,8 @@ $scope.timeForPeriods = $rootScope.TimeTable_timing;
     // $scope.startDate = $filter('date')(s, "EEE MMM dd y");
     // $scope.endDate = $filter('date')(e, "HH:mm:ss 'GMT'Z (IST)'");
     // $scope.endDateRes = $scope.startDate + ' ' + $scope.endDate;
-    var sd = $scope.timeForPeriods[id].startsAt+' '+$scope.timeForPeriods[id].meridian;
-    var ed = $scope.timeForPeriods[id].endsAt+' '+$scope.timeForPeriods[id].meridian;
+    var sd = Date.parse($scope.timeForPeriods[id].startsAt+' '+$scope.timeForPeriods[id].meridian);
+    var ed = Date.parse($scope.timeForPeriods[id].endsAt+' '+$scope.timeForPeriods[id].meridian);
     
     $scope.startDate = $filter('date')($scope.selectedDate, "EEE MMM dd y");
     $scope.startTime = $filter('date')(sd, "h:mm:ss");

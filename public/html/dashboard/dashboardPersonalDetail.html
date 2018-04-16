@@ -59,7 +59,7 @@
                                                     <p>
                                                         <span>
                                                             <b>ID</b>
-                                                        </span>:{{userData[0].teacherId}} </p>
+                                                        </span>:{{userData[0].studId}} </p>
                                                 </div>
                                                 <div class="bio-row" ng-if="loginType=='teacher'">
                                                     <p>
@@ -81,8 +81,8 @@
                                                 <div class="bio-row" ng-if="loginType=='studParent'">
                                                     <p>
                                                         <span>
-                                                            <b>Class</b>
-                                                        </span>: </p>
+                                                            
+                                                        </span> <p ng-repeat="cs in userData[0].cs"><b>Class: </b>{{cs.class}} <b>Section: </b>{{cs.section}}  <p></p> </p>
                                                 </div>
 
                                                 <div class="bio-row" ng-if="loginType=='studParent'">
@@ -100,7 +100,12 @@
                                                 </div>
 
 
-
+                                                <div class="bio-row" ng-if="loginType=='studParent'">
+                                                    <p>
+                                                        <span>
+                                                            <b>Parent Name</b>
+                                                        </span>:  {{userData[0].parentName}}</p>
+                                                </div>
 
 
 

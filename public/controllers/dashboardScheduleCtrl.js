@@ -544,8 +544,8 @@ $scope.timeForPeriods = $rootScope.TimeTable_timing;
 
     
     $scope.startDate = $filter('date')($scope.selectedDate, "EEE MMM dd y");
-    $scope.startTime = $filter('date')($scope.timeForPeriods[id].startsAt, "EEE MMM dd y");
-    $scope.EndTime = $filter('date')($scope.timeForPeriods[id].endsAt, "EEE MMM dd y");
+    $scope.startTime = $filter('date')($scope.timeForPeriods[id].startsAt, "h:mm:ss");
+    $scope.EndTime = $filter('date')($scope.timeForPeriods[id].endsAt, "h:mm:ss");
     console.log("startDate: "+$scope.startDate+" startTime: "+$scope.startTime+ " EndTime: "+$scope.EndTime);
     var resultedStartDate =  $scope.startDate+' '+ $scope.startTime;
     console.log("resultedStartDate: "+resultedStartDate);

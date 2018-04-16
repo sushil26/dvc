@@ -556,6 +556,7 @@ $scope.timeForPeriods = $rootScope.TimeTable_timing;
     console.log("resultedEndDate: "+resultedEndDate);
     var rsd = new Date(resultedStartDate);
     var red = new Date(resultedEndDate);
+    var PersonalRemoteCombineCal = ownerEvents.concat(vm.events);
 
     var conflicts = PersonalRemoteCombineCal.some(function (event) {
       //   return (event.startsAt <= s && s <= event.endsAt) ||

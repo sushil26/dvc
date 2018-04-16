@@ -25,12 +25,12 @@ app.controller("vcAppCtrl", function(
   };
 
   $rootScope.TimeTable_timing = [
-    {"startsAt":"09:00","endsAt":"09:45"},
-  {"startsAt":"9:45","endsAt":"10:30"},
-  {"startsAt":"10:30", "endsAt":"11:15"},
-  {"startsAt":"11:15","endsAt":"12:00"},
-  {"startsAt":"01:00", "endsAt":"01:45"},
-  {"startsAt":"01:45", "endsAt":"02:30"},
-  {"startsAt":"02:30","endsAt":"03:15"},
-  {"startsAt":"03:15", "endsAt":"04:00"}]
+    {"startsAt":"09:00:00 AM","endsAt":"09:45:00 AM"},
+  {"startsAt":"9:45:00 AM","endsAt":"10:30:00 AM"},
+  {"startsAt":"10:30:00 AM", "endsAt":"11:15:00 AM"},
+  {"startsAt":"11:15:00 AM","endsAt":"12:00:00 AM"},
+  {"startsAt":"01:00:00 PM", "endsAt":"01:45:00 PM"},
+  {"startsAt":"01:45:00 PM", "endsAt":"02:30:00 PM"},
+  {"startsAt":"02:30:00 PM","endsAt":"03:15:00 PM"},
+  {"startsAt":"03:15:00 PM", "endsAt":"04:00:00 PM"}]
 });

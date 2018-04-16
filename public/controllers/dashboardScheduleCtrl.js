@@ -530,9 +530,9 @@ app.controller('dashboardScheduleCtrl', function ($scope, $compile, $window, $fi
     // var url = document.getElementById('linkToShare').innerHTML;
   }
 
-  $scope.timeTableForEventBook = function (dateTime) {
+  $scope.timeTableForEventBook = function (id) {
     console.log("timeTableForEventBook-->");
-    console.log("dateTime: " + dateTime);
+    console.log("id: " + id);
 
     console.log("<--timeTableForEventBook");
   }

@@ -2,20 +2,6 @@ app.controller('dashboardPersonalDetailController', function ($scope, $window, h
     console.log("dashboardController==>");
 
     var id = localStorage.getItem("id");
-    if (localStorage.getItem("loginType") == 'teacher') {
-        $scope.getTeacherDetails(id);
-        console.log("teacher login");
-       
-    }
-    else if (localStorage.getItem("loginType") == 'studParent') {
-        $scope.getStudentDetails(id);
-        console.log("studParent login");
-    }
-    else if(localStorage.getItem("loginType") == 'admin'){
-console.log("admin Login");
-    }
-
-       
 
 
 $scope.getTeacherDetails = function (id) {
@@ -38,6 +24,7 @@ $scope.getTeacherDetails = function (id) {
         else {
 
         }
+        
     })
     console.log("<--getTeacherData");
 }
@@ -60,6 +47,22 @@ $scope.getStudentDetails = function (id) {
       }
     })
 }
+
+    if (localStorage.getItem("loginType") == 'teacher') {
+        $scope.getTeacherDetails(id);
+        console.log("teacher login");
+       
+    }
+    else if (localStorage.getItem("loginType") == 'studParent') {
+        $scope.getStudentDetails(id);
+        console.log("studParent login");
+    }
+    else if(localStorage.getItem("loginType") == 'admin'){
+console.log("admin Login");
+    }
+
+       
+
 
 
 })

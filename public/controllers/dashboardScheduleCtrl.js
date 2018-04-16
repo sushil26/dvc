@@ -5,6 +5,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
   var studEvents = []; /* ### Note: selected student events ### */
   var teacherEvents = []; /* ### Note: selected teacher events ### */
   var ownerEvents = []; /* ### Note: logged in person all events ### */
+  var remoteEvent = []; /* ### Note:receiver all events ### */
 $scope.timeForPeriods = $rootScope.TimeTable_timing;
   var x = localStorage.getItem("secrecy");
   var decrypted = CryptoJS.AES.decrypt(x, "msg");
@@ -145,8 +146,9 @@ $scope.timeForPeriods = $rootScope.TimeTable_timing;
         $scope.calendarOwner = css.name;
         $scope.specificSED = data.data.data;/* ### Note:Function Name specificSED --> specificStudentEventData(specificSED) ### */
         console.log("$scope.specificSED.length: " + $scope.specificSED.length);
-        vm.events = [];
+         //vm.events = [];
         studEvents = [];
+        remoteEvent = [];
         for (var x = 0; x < $scope.specificSED.length; x++) {
           console.log("$scope.specificSED[" + x + "]: " + JSON.stringify($scope.specificSED[x]));
           var obj = {
@@ -168,8 +170,9 @@ $scope.timeForPeriods = $rootScope.TimeTable_timing;
           console.log(" obj" + JSON.stringify(obj))
 
           // vm.events.push(obj);
+          remoteEvent.push(obj);
           studEvents.push(obj);
-          vm.events.push(obj);
+          // vm.events.push(obj);
         }
       }
       else {
@@ -194,7 +197,8 @@ $scope.timeForPeriods = $rootScope.TimeTable_timing;
         $scope.calendarOwner = css.name;
         $scope.specificTED = data.data.data;/* ### Note:Function Name specificTED --> specificTeachEventData(specificTED) ### */
         console.log("$scope.specificTED.length: " + $scope.specificTED.length);
-        vm.events = [];
+        //vm.events = [];
+        remoteEvent = [];
         teacherEvents = [];
         for (var x = 0; x < $scope.specificTED.length; x++) {
           console.log("$scope.specificTED[" + x + "]: " + JSON.stringify($scope.specificTED[x]));
@@ -219,6 +223,7 @@ $scope.timeForPeriods = $rootScope.TimeTable_timing;
 
           teacherEvents.push(obj);
           vm.events.push(obj);
+          remoteEvent.push(obj);
 
         }
       }
@@ -556,7 +561,7 @@ $scope.timeForPeriods = $rootScope.TimeTable_timing;
     console.log("resultedEndDate: "+resultedEndDate);
     var rsd = new Date(resultedStartDate);
     var red = new Date(resultedEndDate);
-    var PersonalRemoteCombineCal = ownerEvents.concat(vm.events);
+    var PersonalRemoteCombineCal = ownerEvents.concat(remoteEvent);
 
     var conflicts = PersonalRemoteCombineCal.some(function (event) {
       //   return (event.startsAt <= s && s <= event.endsAt) ||

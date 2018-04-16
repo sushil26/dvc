@@ -751,7 +751,6 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
     })
     console.log("<--eventDetailClick");
   }
-
   vm.eventClicked = function (event) {
     console.log("eventClicked-->");
     // alert("clicked: " + event);

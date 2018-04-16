@@ -679,6 +679,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
     label: 'Delete',
     onClick: function (args) {
       alert("Delete Event Comming Soon");
+      alert("args: "+args);
       // alert.show('Deleted', args.calendarEvent);
     }
   }];

@@ -25,7 +25,7 @@ $scope.timeForPeriods = $rootScope.TimeTable_timing;
       var checkStatus = httpFactory.dataValidation(data);
       console.log("data--" + JSON.stringify(data.data));
       if (checkStatus) {
-        //$scope.teacherData = data.data.data;
+        $scope.teacherData = data.data.data;
         $scope.teacherPersonalData = data.data.data;
 
         console.log("teacherData: " + JSON.stringify($scope.teacherData));
@@ -537,21 +537,25 @@ $scope.timeForPeriods = $rootScope.TimeTable_timing;
     console.log("$scope.timeForPeriods[id].startsAt: "+$scope.timeForPeriods[id].startsAt);
     console.log("$scope.timeForPeriods[id].endsAt: "+$scope.timeForPeriods[id].endsAt);
     
-    dayEventmodal = $uibModal.open({
-      scope: $scope,
-      templateUrl: '/html/templates/dayEventBook.html',
-      windowClass: 'show',
-      backdropClass: 'show',
-      controller: function ($scope, $uibModalInstance) {
-        // moment().startOf('day').toDate()
-        var dt = new Date();
-        $scope.eventDetails = {
-          "startsAt": startDate,
-          "endsAt": endDate
-        }
-        console.log("$scope.eventDetails: " + $scope.eventDetails);
-      }
-    })
+    // $scope.startDate = $filter('date')(s, "EEE MMM dd y");
+    // $scope.endDate = $filter('date')(e, "HH:mm:ss 'GMT'Z (IST)'");
+    // $scope.endDateRes = $scope.startDate + ' ' + $scope.endDate;
+
+    // dayEventmodal = $uibModal.open({
+    //   scope: $scope,
+    //   templateUrl: '/html/templates/dayEventBook.html',
+    //   windowClass: 'show',
+    //   backdropClass: 'show',
+    //   controller: function ($scope, $uibModalInstance) {
+    //     // moment().startOf('day').toDate()
+    //     var dt = new Date();
+    //     $scope.eventDetails = {
+    //       "startsAt": startDate,
+    //       "endsAt": endDate
+    //     }
+    //     console.log("$scope.eventDetails: " + $scope.eventDetails);
+    //   }
+    // })
     console.log("<--timeTableForEventBook");
   }
 

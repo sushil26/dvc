@@ -432,7 +432,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
 
     if ($scope.userLoginType == 'studParent') {
       var senderName = $scope.studentData[0].studName;
-      var senderMN = $scope.teacherData[0].mobileNum;
+      var senderMN = $scope.teacherPersonalData[0].mobileNum;
       var studId = $scope.studentData[0].studId;
       var email = $scope.teacherPersonalData[0].teacherEmail;/* ### Note: teacher email Id ### */
       var receiverName = $scope.teacherPersonalData[0].teacherName;

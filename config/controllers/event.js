@@ -31,12 +31,12 @@ module.exports.eventSend = function (req, res) {
         var password = 'abc';
         var userData = {
             "userId": req.body.userId,
-            "senderLoginType":senderLoginType,
+            "senderLoginType":req.body.senderLoginType,
             "title": req.body.title,
             "reason": req.body.reason,
-            "senderName": req.body.studName,
-            "senderId": req.body.studId,
-            "senderEmail": req.body.email,
+            "senderName": req.body.senderName,
+            "senderId": req.body.senderId,
+            "senderEmail": req.body.senderEmail,
             "start": req.body.start,
             "end": req.body.end,
             "startAt": req.body.startAt,
@@ -45,7 +45,6 @@ module.exports.eventSend = function (req, res) {
             "url": req.body.url,
             "remoteCalendarId": req.body.remoteCalendarId,
             "password": password
-
         }
         console.log("userData: " + JSON.stringify(userData));
         event.insertOne(userData, function (err, data) {

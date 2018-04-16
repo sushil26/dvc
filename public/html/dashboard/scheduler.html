@@ -131,7 +131,7 @@
               <mwl-calendar  events="vm.events" view="vm.calendarView" view-title="vm.calendarTitle" view-date="vm.viewDate"
                 on-event-times-changed="vm.eventTimesChanged(calendarEvent); calendarEvent.startsAt = calendarNewEventStart; calendarEvent.endsAt = calendarNewEventEnd"
                 cell-is-open="vm.cellIsOpen" day-view-start="09:00" day-view-end="15:00" day-view-split="15" cell-modifier="vm.modifyCell(calendarCell)"
-                cell-auto-open-disabled="true" on-date-range-select="vm.rangeSelected(calendarRangeStartDate, calendarRangeEndDate)" ng-click="timeTableForEventBook()">
+                cell-auto-open-disabled="true" on-date-range-select="vm.rangeSelected(calendarRangeStartDate, calendarRangeEndDate)" ng-click="timeTableForEventBook(calendarRangeStartDate)">
               </mwl-calendar>
 
               <!-- Below line produces calendar. I am using FullCalendar plugin. -->

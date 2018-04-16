@@ -545,8 +545,8 @@ $scope.timeForPeriods = $rootScope.TimeTable_timing;
     var ed = Date.parse($scope.timeForPeriods[id].endsAt+' '+$scope.timeForPeriods[id].meridian);
     
     $scope.startDate = $filter('date')($scope.selectedDate, "EEE MMM dd y");
-    $scope.startTime = $filter('date')(sd, "h:mm:ss");
-    $scope.EndTime = $filter('date')(ed, "h:mm:ss");
+    $scope.startTime = $filter('date')(sd, "h:mm:ss a");
+    $scope.EndTime = $filter('date')(ed, "h:mm:ss a");
     console.log("startDate: "+$scope.startDate+" startTime: "+$scope.startTime+ " EndTime: "+$scope.EndTime);
     var resultedStartDate =  $scope.startDate+' '+ $scope.startTime;
     var resultedEndDate =  $scope.startDate+' '+ $scope.EndTime;
@@ -562,8 +562,8 @@ $scope.timeForPeriods = $rootScope.TimeTable_timing;
         // moment().startOf('day').toDate()
         var dt = new Date();
         $scope.eventDetails = {
-          "startsAt": sd,
-          "endsAt": ed
+          "startsAt": $scope.startTime,
+          "endsAt":  $scope.EndTime
         }
         console.log("$scope.eventDetails: " + $scope.eventDetails);
       }

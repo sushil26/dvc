@@ -434,21 +434,26 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
       var senderName = $scope.studentData[0].studName;
       var studId = $scope.studentData[0].studId;
       var email = $scope.teacherPersonalData[0].teacherEmail;/* ### Note: teacher email Id ### */
-
-      $scope.eventSend(reason, senderName, studId, email);
+      var receiverName = $scope.teacherPersonalData[0].teacherName;
+      var receiverId = $scope.teacherPersonalData[0].teacherId;
+      var receiverMN = $scope.teacherPersonalData[0].mobileNum;
+      $scope.eventSend(reason, senderName, studId, email, receiverName, receiverId, receiverMN);
     }
     if ($scope.userLoginType == 'teacher') {
 
       var teacherName = $scope.teacherData[0].teacherName;
       var teacherId = $scope.teacherData[0].teacherId;
       var email = $scope.studentPersonalData[0].parentEmail;/* ### Note: parentEmail email Id ### */
-      $scope.eventSend(reason, teacherName, teacherId, email);
+      var receiverName = $scope.studentPersonalData[0].studName;
+      var receiverId = $scope.studentPersonalData[0].studId;
+      var receiverMN = $scope.studentPersonalData[0].mobileNum;
+      $scope.eventSend(reason, teacherName, teacherId, email, receiverName, receiverId, receiverMN);
     }
 
 
   }
 
-  $scope.eventSend = function (res, name, id, email) {
+  $scope.eventSend = function (res, name, id, email, receiverName, receiverId, receiverMN) {
     console.log("eventSend-->");
     var SIGNALING_SERVER = "https://norecruits.com";
     //var SIGNALING_SERVER = "http://localhost:5000";
@@ -488,6 +493,9 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
           "date": $scope.date,
           "sd": $scope.sd,
           "ed": $scope.ed,
+          "receiverName":receiverName, 
+          "receiverId":receiverId, 
+          "receiverMN":receiverMN,
           "remoteCalendarId": $scope.remoteCalendarId
         }
         console.log("obj: " + JSON.stringify(obj));
@@ -621,6 +629,9 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
             "title": $scope.eventData[x].title,
             "reason": $scope.eventData[x].reason,
             "senderEmail": $scope.eventData[x].senderEmail,
+            "receiverName": $scope.eventData[x].receiverName, 
+            "receiverId": $scope.eventData[x].receiverId, 
+            "receiverMN": $scope.eventData[x].receiverMN,
             "remoteCalendarId": $scope.eventData[x].remoteCalendarId
           }
           console.log(" obj" + JSON.stringify(obj))

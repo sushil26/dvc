@@ -332,7 +332,6 @@ module.exports.updateStudStatus = function(req, res) {
 
   console.log("<--updateStudStatus");
 };
-
 module.exports.deleteUser = function(req, res) {
   console.log("deleteUser-->");
   var responseData;
@@ -403,7 +402,6 @@ module.exports.deleteStud = function(req, res) {
   }
   console.log("<--deleteUser");
 };
-
 module.exports.emailInvite = function(req, res) {
   console.log("emailInvite-->");
   var mailOptions = {
@@ -439,7 +437,6 @@ module.exports.emailInvite = function(req, res) {
   });
   console.log("<--emailInvite");
 };
-
 module.exports.sessionCreate = function(req, res) {
   console.log("sessionCreate-->");
   var responseData;
@@ -463,7 +460,6 @@ module.exports.sessionCreate = function(req, res) {
   }
   console.log("<--sessionCreate");
 };
-
 module.exports.teacherInsert = function(req, res) {
   console.log("teacherInsert-->");
   var responseData;

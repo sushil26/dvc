@@ -37,15 +37,11 @@
 
 
       <div class="row" ng-if="userLoginType=='admin' || userLoginType=='teacher' || userLoginType=='studParent'">
-
-
-
-
         <div class="col-md-6 portlets">
           <div class="panel panel-default">
             <div class="panel-heading" style="height: 50px;">
-              <h2 ng-if="userLoginType=='teacher'" class="text-center">Select and Get Student Calendar</h2>
-              <h2 ng-if="userLoginType=='studParent'" class="text-center">Select and Get Teacher Calendar</h2>
+              <h2 ng-if="userLoginType=='teacher'" class="text-center">Select Student</h2>
+              <h2 ng-if="userLoginType=='studParent'" class="text-center">Select Teacher</h2>
               <div class="panel-actions">
                 <a href="#" class="wminimize">
                   <i class="fa fa-chevron-up"></i>

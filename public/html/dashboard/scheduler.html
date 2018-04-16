@@ -327,22 +327,22 @@
                     </tr>
                     <tr class="danger">
                       <td>Wednesday</td>
-                      <td ng-if="selectedDateForEvent!='Wed'" ng-repeat="mtt in teacherPersonalData[0].timeTable[2].Wed" ng-click="timeTableForEventBook('wed',$index)">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
+                      <td ng-if="selectedDateForEvent=='Wed'" ng-repeat="mtt in teacherPersonalData[0].timeTable[2].Wed" ng-click="timeTableForEventBook('wed',$index)">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
                       <td ng-if="selectedDateForEvent!='Wed'" ng-repeat="mtt in teacherPersonalData[0].timeTable[2].Wed" >{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
                     </tr>
                     <tr class="success">
                       <td>Thursday</td>
-                      <td ng-if="selectedDateForEvent!='Thu'" ng-repeat="mtt in teacherPersonalData[0].timeTable[3].Thurs" ng-click="timeTableForEventBook('thu',$index)">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
+                      <td ng-if="selectedDateForEvent=='Thu'" ng-repeat="mtt in teacherPersonalData[0].timeTable[3].Thurs" ng-click="timeTableForEventBook('thu',$index)">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
                       <td ng-if="selectedDateForEvent!='Thu'" ng-repeat="mtt in teacherPersonalData[0].timeTable[3].Thurs" >{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
                     </tr>
                     <tr class="active">
                       <td>Friday</td>
-                      <td ng-if="selectedDateForEvent!='Fri'" ng-repeat="mtt in teacherPersonalData[0].timeTable[4].Fri" ng-click="timeTableForEventBook('fri',$index)">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
+                      <td ng-if="selectedDateForEvent=='Fri'" ng-repeat="mtt in teacherPersonalData[0].timeTable[4].Fri" ng-click="timeTableForEventBook('fri',$index)">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
                       <td ng-if="selectedDateForEvent!='Fri'" ng-repeat="mtt in teacherPersonalData[0].timeTable[4].Fri" >{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
                     </tr>
                     <tr class="warning">
                       <td>Saturday</td>
-                      <td ng-if="selectedDateForEvent!='Sat'" ng-repeat="mtt in teacherPersonalData[0].timeTable[5].Sat" ng-click="timeTableForEventBook('sat',$index)">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
+                      <td ng-if="selectedDateForEvent=='Sat'" ng-repeat="mtt in teacherPersonalData[0].timeTable[5].Sat" ng-click="timeTableForEventBook('sat',$index)">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
                       <td ng-if="selectedDateForEvent!='Sat'" ng-repeat="mtt in teacherPersonalData[0].timeTable[5].Sat" >{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
                     </tr>
                   </tbody>

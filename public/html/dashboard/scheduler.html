@@ -30,22 +30,6 @@
       <div class="row" ng-if="userLoginType=='admin' || userLoginType=='teacher' || userLoginType=='studParent'">
         <div class="col-md-8 portlets">
           <div class="panel panel-default">
-            <div class="panel-heading">
-              <div class="panel-actions">
-                <h2 ng-if="calendarOwner!='Your'">
-                  <strong>{{ vm.calendarTitle }}({{calendarOwner}})</strong>
-                </h2>
-                <h2 ng-if="calendarOwner=='Your'">
-                  <strong>{{ vm.calendarTitle }}</strong>
-                </h2>
-                <a href="#" class="wminimize">
-                  <i class="fa fa-chevron-up"></i>
-                </a>
-
-              </div>
-            </div>
-
-
             <div class="panel-heading" style="height: 50px;">
               <div class="panel-actions">
                 <div style="float:left !important; position: absolute;
@@ -69,6 +53,7 @@
                   </select>
 
                 </div>
+
                 <div style="float:right; position: absolute;
                 right: 0;">
                   <!-- <button class="btn btn-primary" ng-if="calendarOwner!='Your'" ng-click="eventGet()">My Calendar</button>
@@ -97,6 +82,16 @@
                         >>
                       </label>
                 </div>
+                <div style="position: absolute;
+                left: 50;">
+                  <h2 ng-if="calendarOwner!='Your'">
+                    <strong>{{ vm.calendarTitle }}({{calendarOwner}})</strong>
+                  </h2>
+                  <h2 ng-if="calendarOwner=='Your'">
+                    <strong>{{ vm.calendarTitle }}</strong>
+                  </h2>
+             </div>
+
                 <div style="float:right; position: absolute;
                   right: 0;">
                   <label class="btn btn-primary" ng-model="vm.calendarView" uib-btn-radio="'year'" ng-click="vm.cellIsOpen = false">Year</label>

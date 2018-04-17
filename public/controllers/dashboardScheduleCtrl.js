@@ -10,6 +10,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
   var x = localStorage.getItem("secrecy");
   var enc = localStorage.getItem("enc");
   var decrypted = CryptoJS.AES.decrypt(enc, "url");
+  console.log("x.toString(CryptoJS.enc.Utf8): "+decrypted.toString(CryptoJS.enc.Utf8));
 
   console.log("x##**: " + x);
   console.log("Value##**: " + x.toString(CryptoJS.enc.Utf8));

@@ -1,6 +1,6 @@
 app.controller('historyController', function ($scope, $window, httpFactory) {
     console.log("historyController==>");
-    var events = [];
+    $scope.events = [];
     $scope.eventGet = function () {
         console.log("eventGet-->");
         var id = localStorage.getItem("id");
@@ -13,7 +13,7 @@ app.controller('historyController', function ($scope, $window, httpFactory) {
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
                 $scope.eventData = data.data.data;
-                
+
                 // ownerEvents = [];
                 for (var x = 0; x < $scope.eventData.length; x++) {
                     console.log("$scope.eventData[" + x + "]: " + JSON.stringify($scope.eventData[x]));
@@ -25,7 +25,6 @@ app.controller('historyController', function ($scope, $window, httpFactory) {
                         'endsAt': new Date($scope.eventData[x].end),
                         'draggable': true,
                         'resizable': true,
-                       
                         'url': $scope.eventData[x].url,
                         "senderName": $scope.eventData[x].senderName,
                         "senderId": $scope.eventData[x].senderId,
@@ -41,8 +40,8 @@ app.controller('historyController', function ($scope, $window, httpFactory) {
                     }
                     console.log(" obj" + JSON.stringify(obj))
                     // ownerEvents.push(obj);
-                    events.push(obj);
-                    console.log("events.length: "+events.length);
+                    $scope.events.push(obj);
+                    console.log("events.length: " + events.length);
 
                 }
             }

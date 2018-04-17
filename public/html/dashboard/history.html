@@ -23,9 +23,9 @@
                                 <th>
                                     <i class="icon_cogs"></i> Action</th>
                                
-                            </tr>--{{events[0].title}}
+                            </tr>
                             <tr ng-repeat="event in events track by $index">
-                                <td>{{$index}}</td>
+                              
                                 <td>{{event.title}}</td>
                                 <td>{{event.startAt | date:'MMM d, y'}}</td>
                                 <td>{{event.startAt  | date:'h:mm a'}}</td>

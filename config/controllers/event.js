@@ -175,7 +175,7 @@ module.exports.upcomingEventGet= function (req, res) {
     console.log("req.params.id: "+req.params.id);
     console.log("req.params.currentDateTime: "+req.params.currentDateTime);
    // var id ={
-   //     userId = req.params.id
+   //     userId = req.params.id  {"endsAt":{ $gte: queryDate } }, 
    // } 
 
    

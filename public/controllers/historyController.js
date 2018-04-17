@@ -1,6 +1,6 @@
 app.controller('historyController', function ($scope, $window, httpFactory) {
     console.log("historyController==>");
-    vm.events = [];
+    var events = [];
     $scope.eventGet = function () {
         console.log("eventGet-->");
         var id = localStorage.getItem("id");
@@ -41,7 +41,7 @@ app.controller('historyController', function ($scope, $window, httpFactory) {
                     }
                     console.log(" obj" + JSON.stringify(obj))
                     // ownerEvents.push(obj);
-                    vm.events.push(obj);
+                    events.push(obj);
 
                 }
             }

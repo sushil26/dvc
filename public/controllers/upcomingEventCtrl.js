@@ -7,7 +7,7 @@ app.controller('upcomingEventController', function ($scope, $window, httpFactory
         var id = localStorage.getItem("id");
         var currentDateTime = new Date();
         console.log("currentDateTime: "+currentDateTime);
-        var api = "https://norecruits.com/vc/upcomingEventGet" + "/" + id;
+        var api = "https://norecruits.com/vc/upcomingEventGet" + "/" + id+"/"+currentDateTime;
 
         //var api = "http://localhost:5000/vc/eventGet"+ "/" + id;;
         $scope.calendarOwner = "Your";

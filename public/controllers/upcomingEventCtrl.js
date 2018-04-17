@@ -61,7 +61,7 @@ app.controller('upcomingEventController', function ($scope, $window, httpFactory
             windowClass: 'show',
             backdropClass: 'show',
             controller: function ($scope, $uibModalInstance) {
-              $scope.eventDetails = $scope.event[id+1];
+              $scope.eventDetails = $scope.events[id];
               console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
             }
           })

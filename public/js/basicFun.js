@@ -123,13 +123,11 @@ function sessionSet(data) {
     console.log("data: "+JSON.stringify(data));
 
     console.log("data.sessionData.url: "+data.sessionData.url);
-    var encrypted = CryptoJS.AES.encrypt(data.sessionData.url,"url");
-    var decrypted = CryptoJS.AES.decrypt(encrypted, "url");
-    console.log("encrypted: "+encrypted);
-    console.log("decrypted: "+decrypted);
-    console.log("x.toString(CryptoJS.enc.Utf8): "+decrypted.toString(CryptoJS.enc.Utf8));
-    localStorage.setItem("enc",encrypted); 
-    localStorage.setItem("secrecy",decrypted);
+    var encryptedUrl = CryptoJS.AES.encrypt(data.sessionData.url,"url");
+    var encryptedPswd = CryptoJS.AES.encrypt(data.sessionData.pswd,"pswd");
+    
+    localStorage.setItem("encUrl",encryptedUrl); 
+    localStorage.setItem("encPswd",encryptedPswd); 
 
     if (typeof (Storage) !== "undefined") {
       

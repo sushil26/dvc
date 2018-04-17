@@ -31,7 +31,7 @@
                                         <td>{{event.startsAt  | date:'h:mm a'}}</td>
                                         <td>{{event.endsAt | date:'h:mm a'}}</td>
                                         <td>
-                                            <button class="btn btn-primary">View</button>
+                                            <button class="btn btn-primary" ng-click="viewDetail($index)">View</button>
                                         </td>
                                     <td>
                                         <div class="btn-group">

@@ -1,4 +1,4 @@
-app.controller('upcomingEventController', function ($scope, $window, httpFactory) {
+app.controller('upcomingEventController', function ($scope, $window, httpFactory, $uibModal) {
     console.log("upcomingEventController==>");
     $scope.events = [];
     $scope.eventGet = function () {
@@ -52,7 +52,21 @@ app.controller('upcomingEventController', function ($scope, $window, httpFactory
     }
     $scope.eventGet();
 
-
+    $scope.viewDetail = function(id){
+        console.log("viewDetail-->");
+        var eClicked = $uibModal.open({
+            scope: $scope,
+            templateUrl: '/html/templates/eventDetails.html',
+            windowClass: 'show',
+            backdropClass: 'show',
+            controller: function ($scope, $uibModalInstance) {
+              $scope.eventDetails = $scope.event[id];
+              console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
+            }
+          })
+          console.log("<--viewDetail");
+    }
+   
 
 
 

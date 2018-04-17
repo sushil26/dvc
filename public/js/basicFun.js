@@ -122,7 +122,7 @@ function sessionSet(data) {
     console.log("sessionSet-->");
     console.log("data: "+JSON.stringify(data));
 
-    
+    console.log("data.sessionData.url: "+data.sessionData.url);
     var encrypted = CryptoJS.AES.encrypt("url", data.sessionData.url);
     var decrypted = CryptoJS.AES.decrypt(encrypted, "url");
     console.log("encrypted: "+encrypted);

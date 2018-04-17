@@ -58,7 +58,7 @@ if (localStorage.getItem("userData")) {
     //document.getElementById("appLogout").style.display = "block";
     document.getElementById("LoginUrl").style.display = "none";
     document.getElementById("videoConferenceUrl").style.display = "block";
-    document.getElementById("scheduleMeeting").style.display = "block";
+    // document.getElementById("scheduleMeeting").style.display = "block";
     document.getElementById("videoConferenceLinkExtention").style.display =
       "block";
   } else if (loginType == "studParent") {
@@ -68,7 +68,7 @@ if (localStorage.getItem("userData")) {
     //document.getElementById("appLogout").style.display = "none";
     document.getElementById("LoginUrl").style.display = "none";
     document.getElementById("videoConferenceUrl").style.display = "none";
-    document.getElementById("scheduleMeeting").style.display = "block";
+    // document.getElementById("scheduleMeeting").style.display = "block";
     document.getElementById("videoConferenceLinkExtention").style.display =
       "block";
   }
@@ -96,7 +96,7 @@ if (localStorage.getItem("userData")) {
       //document.getElementById("appLogout").style.display = "none";
       document.getElementById("LoginUrl").style.display = "none";
       document.getElementById("videoConferenceUrl").style.display = "none";
-      document.getElementById("scheduleMeeting").style.display = "none";
+      // document.getElementById("scheduleMeeting").style.display = "none";
       document.getElementById("videoConferenceLinkExtention").style.display =
         "block";
     } else {
@@ -142,7 +142,7 @@ function saveName() {
         //document.getElementById("appLogout").style.display = "none";
         document.getElementById("LoginUrl").style.display = "none";
         document.getElementById("videoConferenceUrl").style.display = "none";
-        document.getElementById("scheduleMeeting").style.display = "none";
+        // document.getElementById("scheduleMeeting").style.display = "none";
         document.getElementById("videoConferenceLinkExtention").style.display =
           "block";
       } else {
@@ -156,7 +156,7 @@ function saveName() {
         //document.getElementById("appLogout").style.display = "none";
         document.getElementById("LoginUrl").style.display = "none";
         document.getElementById("videoConferenceUrl").style.display = "none";
-        document.getElementById("scheduleMeeting").style.display = "none";
+        // document.getElementById("scheduleMeeting").style.display = "none";
         document.getElementById("videoConferenceLinkExtention").style.display =
           "block";
         // $('#setName').trigger('click');

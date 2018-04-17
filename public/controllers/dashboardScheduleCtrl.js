@@ -8,8 +8,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
   var remoteEvent = []; /* ### Note:receiver all events ### */
   $scope.timeForPeriods = $rootScope.TimeTable_timing;
   var x = localStorage.getItem("secrecy");
-  var decrypted = CryptoJS.AES.decrypt(x, "url");
-  console.log("Value##**: " + decrypted.toString(CryptoJS.enc.Utf8));
+
 
   console.log("Value##**: " + x.toString(CryptoJS.enc.Utf8));
 

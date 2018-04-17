@@ -124,9 +124,10 @@ function sessionSet(data) {
 
     
     var encrypted = CryptoJS.AES.encrypt("url", data.sessionData.url);
+    var decrypted = CryptoJS.AES.decrypt(encrypted, "url");
     console.log("encrypted: "+encrypted);
    
-    localStorage.setItem("secrecy",encrypted);
+    localStorage.setItem("secrecy",decrypted);
 
     if (typeof (Storage) !== "undefined") {
       

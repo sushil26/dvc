@@ -128,7 +128,7 @@ function sessionSet(data) {
     console.log("encrypted: "+encrypted);
     console.log("decrypted: "+decrypted);
     console.log("x.toString(CryptoJS.enc.Utf8): "+decrypted.toString(CryptoJS.enc.Utf8));
-   
+    localStorage.setItem("enc",encrypted); 
     localStorage.setItem("secrecy",decrypted);
 
     if (typeof (Storage) !== "undefined") {

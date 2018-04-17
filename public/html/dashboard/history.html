@@ -25,12 +25,12 @@
                                
                             </tr>
                             <tr ng-repeat="event in vm.events track by $index">
-                                <td>event.title</td>
-                                <td></td>
-                                <td>9.30</td>
-                                <td>10.00</td>
+                                <td>{{event.title}}</td>
+                                <td>{{event.startAt | date:'MMM d, y'}}</td>
+                                <td>{{event.startAt  | date:'h:mm a'}}</td>
+                                <td>{{event.endAt | date:'h:mm a'}}</td>
                                 <td>
-                                    <button>View</button>
+                                    <button >View</button>
                                 </td>
                                 <td>
                                     <div class="btn-group">

@@ -176,8 +176,8 @@ module.exports.upcomingEventGet= function (req, res) {
    //     userId = req.params.id
    // } 
 
-   var currentDateTime = new Date();
-   console.log("currentDateTime: "+currentDateTime);
+   
+  
 //    if (general.emptyCheck(req.params.id)) {
     
 //        event.find({ $or: [ { "userId": req.params.id }, { "remoteCalendarId": req.params.id } ] }).toArray(function (err, listOfevents) {

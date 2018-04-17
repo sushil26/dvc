@@ -1,4 +1,4 @@
-app.controller('historyController', function ($scope, $window, httpFactory) {
+app.controller('historyController', function ($scope, $window, httpFactory,  $uibModal) {
     console.log("historyController==>");
     $scope.events = [];
     $scope.eventGet = function () {

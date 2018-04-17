@@ -27,9 +27,9 @@
                             <tr ng-repeat="event in events track by $index">
                               
                                 <td>{{event.title}}</td>
-                                <td>{{event.startAt | date:'MMM d, y'}}</td>
-                                <td>{{event.startAt  | date:'h:mm a'}}</td>
-                                <td>{{event.endAt | date:'h:mm a'}}</td>
+                                <td>{{event.startsAt | date:'MMM d, y'}}</td>
+                                <td>{{event.startsAt  | date:'h:mm a'}}</td>
+                                <td>{{event.endsAt | date:'h:mm a'}}</td>
                                 <td>
                                     <button >View</button>
                                 </td>

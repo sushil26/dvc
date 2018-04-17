@@ -121,8 +121,9 @@ function logVC() {
 function sessionSet(data) {
     console.log("sessionSet-->");
     console.log("data: "+JSON.stringify(data));
+
     
-    var encrypted = CryptoJS.AES.encrypt("logu", "secretmsg");
+    var encrypted = CryptoJS.AES.encrypt("url", data.sessionData.url);
     console.log("encrypted: "+encrypted);
    
     localStorage.setItem("secrecy",encrypted);

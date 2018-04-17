@@ -88,7 +88,7 @@ module.exports.login4VC = function(req, res) {
         responseData = {
           status: true,
           message: "Login Successfully",
-          sessionData:{"url":logu,"pswd":tamil},
+        
           data: adminData
         };
         console.log("responseData: " + JSON.stringify(responseData));
@@ -113,6 +113,7 @@ module.exports.login4VC = function(req, res) {
                     status: true,
                     message: "Login Successfully",
                     loginType: "teacher",
+                    sessionData:{"url":logu,"pswd":tamil},
                     data: data[0]
                   };
                   res.status(200).send(responseData);

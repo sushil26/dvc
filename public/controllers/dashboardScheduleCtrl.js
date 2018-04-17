@@ -15,8 +15,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
   console.log("decryptedUrl: "+decryptedUrl.toString(CryptoJS.enc.Utf8));
   console.log("decryptedPswd: "+decryptedPswd.toString(CryptoJS.enc.Utf8));
 
-  console.log("x##**: " + x);
-  console.log("Value##**: " + x.toString(CryptoJS.enc.Utf8));
+ 
 
   $scope.getTeacherData = function () {
     console.log("getTeacherData-->");

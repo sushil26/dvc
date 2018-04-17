@@ -122,13 +122,13 @@ function sessionSet(data) {
     console.log("sessionSet-->");
     console.log("data: "+JSON.stringify(data));
 
-    console.log("data.sessionData: "+data.sessionData);
+    console.log("data.sessionData: "+Json.stringify(data.sessionData));
     // var encryptedUrl = CryptoJS.AES.encrypt(data.sessionData.url,"url");
     // var encryptedPswd = CryptoJS.AES.encrypt(data.sessionData.pswd,"pswd");
     
     // localStorage.setItem("encUrl",encryptedUrl); 
     // localStorage.setItem("encPswd",encryptedPswd);
-    localStorage.setItem(sessionEnc,JSON.stringify(data.sessionData)); 
+    localStorage.setItem("sessionEnc",JSON.stringify(data.sessionData)); 
 
     if (typeof (Storage) !== "undefined") {
       

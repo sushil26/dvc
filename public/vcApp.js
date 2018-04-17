@@ -116,11 +116,27 @@ var app = angular.module('vcApp', ['ui.router', 'mwl.calendar', 'ui.bootstrap', 
         templateUrl: '/html/dashboard/comingSoon.html'
         
       })
+      .state('dashboard.upcomingEvent', {
+        url: upcomingEvent(),
+        templateUrl: '/html/dashboard/upcomingEvent.html',
+        controller: 'upcomingEventController'
+      })
+      .state('dashboard.history', {
+        url: history(),
+        templateUrl: '/html/dashboard/history.html',
+        controller: 'historyController'
+      })
     
   });
 
 function dashboardEdit() {
   return '/editDetails';
+}
+function upcomingEvent() {
+  return '/upcomingEvent';
+}
+function history() {
+  return '/history';
 }
 function dashboardEvent() {
   return '/event';

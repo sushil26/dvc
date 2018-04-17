@@ -13,51 +13,49 @@
         <div class="col-lg-3">
             <p style="color:green">{{eventDetails.senderName}}</p>
         </div>
-        <label class="control-label col-lg-3">Name
+        <label class="control-label col-lg-3">Id
 
         </label>
         <div class="col-lg-3">
-            <p style="color:green">{{eventDetails.senderName}}</p>
+            <p style="color:green">{{eventDetails.senderId}}</p>
         </div>
-        <label class="control-label col-lg-3">Name
+        <label class="control-label col-lg-3">Created On
 
         </label>
         <div class="col-lg-3">
-            <p style="color:green">{{eventDetails.senderName}}</p>
+            <p style="color:green">Apr 17 2018</p>
         </div>
-        <label class="control-label col-lg-3">Name
+        <label class="control-label col-lg-3"></label>Phone
 
         </label>
         <div class="col-lg-3">
-            <p style="color:green">{{eventDetails.senderName}}</p>
+            <p style="color:green">{{eventDetails.senderMN}}</p>
+        </div>
+        <label class="control-label col-lg-3"></label>Title
+
+        </label>
+        <div class="col-lg-3">
+            <p style="color:green">{{eventDetails.title}}</p>
+        </div>
+        <label class="control-label col-lg-3"></label>Message
+
+        </label>
+        <div class="col-lg-3">
+            <p style="color:green">{{eventDetails.reason}}</p>
+        </div>
+        <label class="control-label col-lg-3"></label>Time
+
+        </label>
+        <div class="col-lg-3">
+            <p style="color:green">{{eventDetails.startsAt | date:'M/d/yy'}}-{{eventDetails.endsAt | date:'h:mm a'}}</p>
+        </div>
+        <label class="control-label col-lg-3"></label>Phone
+
+        </label>
+        <div class="col-lg-3">
+            <p style="color:green">{{eventDetails.senderMN}}</p>
         </div>
     </div>
-    <label>Id</label>
-    <br>
-    <p style="color:green">{{eventDetails.senderId}}</p>
-    <label>Created On</label>
-    <br>
-    <p style="color:green">Apr 17 2018</p>
-    <label>Mobile Number</label>
-    <br>
-    <p style="color:green">{{eventDetails.senderMN}}</p>
-    <label>Title</label>
-    <br>
-    <p style="color:green">{{eventDetails.title}}</p>
-    <label>Message</label>
-    <br>
-    <p style="color:green">{{eventDetails.reason}}</p>
-    <label>Date</label>
-    <br>
-    <p style="color:green">{{eventDetails.startsAt | date:'M/d/yy'}}</p>
-    <label>Start Time</label>
-    <br>
-    <p style="color:green">{{eventDetails.startsAt | date:'h:mm a'}}</p>
-    <label>End Time</label>
-    <br>
-    <p style="color:green">{{eventDetails.endsAt | date:'h:mm a'}}</p>
-
-    <hr>
     <h2>Receiver Details</h2>
     <label>Name</label>
     <br>

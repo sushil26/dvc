@@ -1,3 +1,15 @@
+
+// var encUrl = localStorage.getItem("encUrl");
+// var encPswd = localStorage.getItem("encPswd");
+// var decryptedUrl = CryptoJS.AES.decrypt(encUrl, "url");
+// var decryptedPswd = CryptoJS.AES.decrypt(encPswd, "pswd");
+// console.log("decryptedUrl: "+decryptedUrl.toString(CryptoJS.enc.Utf8));
+// console.log("decryptedPswd: "+decryptedPswd.toString(CryptoJS.enc.Utf8));
+
+var sesionEnc = localStorage.getItem("encUrl",sessionEnc)
+console.log("sesionEnc: "+JSON.stringify(sesionEnc));
+
+
 /** CONFIG **/
 console.log("Signaling Socket.js");
 var SIGNALING_SERVER = "https://norecruits.com";
@@ -187,23 +199,61 @@ function emailInvite() {
 
 /** You should probably use a different stun server doing commercial stuff **/
 /** Also see: https://gist.github.com/zziuni/3741933 **/
+// var ICE_SERVERS = [
+//   { url: "stun:stun.l.google.com:19302" },
+//   { url: "stun:s2.xirsys.com" },
+//   {
+//     url: "turn:s2.xirsys.com:80?transport=udp",
+//     credential: "3ed63738-3ca0-11e8-bcf4-9ad4e61d3f22",
+//     username: "3ed635ee-3ca0-11e8-a530-2288b20e5a3b"
+//   },
+//   {
+//     url: "turn:s2.xirsys.com:3478?transport=udp",
+//     credential: "3ed63738-3ca0-11e8-bcf4-9ad4e61d3f22",
+//     username: "3ed635ee-3ca0-11e8-a530-2288b20e5a3b"
+//   }, {
+//     url: "turn:s2.xirsys.com:80?transport=tcp",
+//     credential: "3ed63738-3ca0-11e8-bcf4-9ad4e61d3f22",
+//     username: "3ed635ee-3ca0-11e8-a530-2288b20e5a3b"
+//   }
+
+// ];
+
 var ICE_SERVERS = [
   { url: "stun:stun.l.google.com:19302" },
-  { url: "stun:s2.xirsys.com" },
+  { url: "stun:s3.xirsys.com" },
   {
-    url: "turn:s2.xirsys.com:80?transport=udp",
-    credential: "3ed63738-3ca0-11e8-bcf4-9ad4e61d3f22",
-    username: "3ed635ee-3ca0-11e8-a530-2288b20e5a3b"
-  },
-  {
-    url: "turn:s2.xirsys.com:3478?transport=udp",
-    credential: "3ed63738-3ca0-11e8-bcf4-9ad4e61d3f22",
-    username: "3ed635ee-3ca0-11e8-a530-2288b20e5a3b"
-  }, {
-    url: "turn:s2.xirsys.com:80?transport=tcp",
-    credential: "3ed63738-3ca0-11e8-bcf4-9ad4e61d3f22",
-    username: "3ed635ee-3ca0-11e8-a530-2288b20e5a3b"
+    url: "turn:s3.xirsys.com:80?transport=udp",
+    credential: "79ea520a-3e67-11e8-9679-97fa7aeb8e97",
+    username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5"
+
+  },  {
+    url: "turn:s3.xirsys.com:3478?transport=udp",
+    credential: "79ea520a-3e67-11e8-9679-97fa7aeb8e97",
+    username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5"
+
+  },  {
+    url: "turn:s3.xirsys.com:80?transport=tcp",
+    credential: "79ea520a-3e67-11e8-9679-97fa7aeb8e97",
+    username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5"
+
+  },  {
+    url: "turn:s3.xirsys.com:3478?transport=tcp",
+    credential: "79ea520a-3e67-11e8-9679-97fa7aeb8e97",
+    username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5"
+
+  },  {
+    url: "turns:s3.xirsys.com:443?transport=tcp",
+    credential: "79ea520a-3e67-11e8-9679-97fa7aeb8e97",
+    username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5"
+
+  },  {
+    url: "turns:s3.xirsys.com:5349?transport=tcp",
+    credential: "79ea520a-3e67-11e8-9679-97fa7aeb8e97",
+    username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5"
+
   }
+  
 
 ];
 

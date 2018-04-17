@@ -67,6 +67,20 @@ app.controller('upcomingEventController', function ($scope, $window, httpFactory
           })
           console.log("<--viewDetail");
     }
+
+    $scope.rescheduleEvent = function(id){
+        console.log("reschedule-->");
+        console.log("id: "+id);
+        alert("Coming Soon");
+        console.log("<--reschedule");
+    }
+
+    $scope.deleteEvent = function(id){
+        console.log("deleteEvent-->");
+        console.log("id: "+id);
+        alert("Coming Soon");
+        console.log("<--deleteEvent");
+    }
    
 
 

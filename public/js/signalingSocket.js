@@ -6,7 +6,7 @@
 // console.log("decryptedUrl: "+decryptedUrl.toString(CryptoJS.enc.Utf8));
 // console.log("decryptedPswd: "+decryptedPswd.toString(CryptoJS.enc.Utf8));
 
-var sesionEnc = localStorage.getItem("encUrl",sessionEnc)
+var sesionEnc = localStorage.getItem("sessionEnc");
 console.log("sesionEnc: "+sesionEnc);
 
 

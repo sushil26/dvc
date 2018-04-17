@@ -6,7 +6,7 @@
     <header class="panel-heading">
         Sender Details
     </header>
-    <div class="form-group">
+    <div class="row form-group">
         <label class="control-label col-lg-3">Name
 
         </label>
@@ -29,53 +29,53 @@
 
         <label class="control-label col-lg-3">Phone</label>
 
-        </label>
+
         <div class="col-lg-3">
             <p style="color:green">{{eventDetails.senderMN}}</p>
         </div>
         <label class="control-label col-lg-3">Title</label>
 
-        </label>
+
         <div class="col-lg-3">
             <p style="color:green">{{eventDetails.title}}</p>
         </div>
         <label class="control-label col-lg-3">Message</label>
 
-        </label>
+
         <div class="col-lg-3">
             <p style="color:green">{{eventDetails.reason}}</p>
         </div>
         <label class="control-label col-lg-3">Time</label>
 
-        </label>
+
         <div class="col-lg-3">
             <p style="color:green">{{eventDetails.startsAt | date:'M/d/yy'}}-{{eventDetails.endsAt | date:'h:mm a'}}</p>
         </div>
+    </div>
+    <header class="panel-heading">
+        Receiver Details
+    </header>
+    <div class="form-group">
+        <label class="control-label col-lg-3">Name
+        </label>
+        <div class="col-lg-3">
+            <p style="color:green">{{eventDetails.receiverName}}</p>
+        </div>
+        <label class="control-label col-lg-3">Id
 
-        <header class="panel-heading">
-            Receiver Details
-        </header>
-        <div class="form-group">
-            <label class="control-label col-lg-3">Name
-            </label>
-            <div class="col-lg-3">
-                <p style="color:green">{{eventDetails.receiverName}}</p>
-            </div>
-            <label class="control-label col-lg-3">Id
+        </label>
+        <div class="col-lg-3">
+            <p style="color:green">{{eventDetails.receiverId}}</p>
+        </div>
+        <label class="control-label col-lg-3">Phone
 
-            </label>
-            <div class="col-lg-3">
-                <p style="color:green">{{eventDetails.receiverId}}</p>
-            </div>
-            <label class="control-label col-lg-3">Phone
-
-            </label>
-            <div class="col-lg-3">
-                <p style="color:green">{{eventDetails.receiverMN}}</p>
-            </div>
+        </label>
+        <div class="col-lg-3">
+            <p style="color:green">{{eventDetails.receiverMN}}</p>
         </div>
     </div>
+</div>
 
-    <div class="modal-footer">
-        <button class="btn btn-default loginpopUp_footerBtn" type="button" ng-click="$close()">Close</button>
-    </div>
+<div class="modal-footer">
+    <button class="btn btn-default loginpopUp_footerBtn" type="button" ng-click="$close()">Close</button>
+</div>

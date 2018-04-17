@@ -9,7 +9,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
   $scope.timeForPeriods = $rootScope.TimeTable_timing;
   var x = localStorage.getItem("secrecy");
 
-
+  console.log("x##**: " + x);
   console.log("Value##**: " + x.toString(CryptoJS.enc.Utf8));
 
   $scope.getTeacherData = function () {

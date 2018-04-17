@@ -51,6 +51,20 @@ app.controller('historyController', function ($scope, $window, httpFactory) {
         })
     }
     $scope.eventGet();
-
+    $scope.viewDetail = function(id){
+        console.log("viewDetail-->");
+        console.log("id: "+id);
+        var eClicked = $uibModal.open({
+            scope: $scope,
+            templateUrl: '/html/templates/eventDetails.html',
+            windowClass: 'show',
+            backdropClass: 'show',
+            controller: function ($scope, $uibModalInstance) {
+              $scope.eventDetails = $scope.events[id];
+              console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
+            }
+          })
+          console.log("<--viewDetail");
+    }
 
 })

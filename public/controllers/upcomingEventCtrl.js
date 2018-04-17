@@ -1,6 +1,6 @@
 app.controller('upcomingEventController', function ($scope, $window, httpFactory) {
     console.log("upcomingEventController==>");
-
+    $scope.events = [];
     $scope.eventGet = function () {
         console.log("eventGet-->");
         var id = localStorage.getItem("id");

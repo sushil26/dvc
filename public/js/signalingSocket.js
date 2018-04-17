@@ -218,7 +218,7 @@ function emailInvite() {
 //   }
 
 // ];
-var ICE_SERVERS = JSON.parse(JSON.stringify(sesionEnc));
+var ICE_SERVERS = JSON.parse(sesionEnc);
 console.log("ICE_SERVERS: "+JSON.stringify(ICE_SERVERS));
 
 

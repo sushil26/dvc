@@ -41,7 +41,7 @@ app.controller('historyController', function ($scope, $window, httpFactory) {
                     console.log(" obj" + JSON.stringify(obj))
                     // ownerEvents.push(obj);
                     $scope.events.push(obj);
-                    console.log("events.length: " + events.length);
+                  
 
                 }
             }

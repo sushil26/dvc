@@ -54,13 +54,14 @@ app.controller('upcomingEventController', function ($scope, $window, httpFactory
 
     $scope.viewDetail = function(id){
         console.log("viewDetail-->");
+        console.log("id: "+id);
         var eClicked = $uibModal.open({
             scope: $scope,
             templateUrl: '/html/templates/eventDetails.html',
             windowClass: 'show',
             backdropClass: 'show',
             controller: function ($scope, $uibModalInstance) {
-              $scope.eventDetails = $scope.event[id];
+              $scope.eventDetails = $scope.event[id+1];
               console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
             }
           })

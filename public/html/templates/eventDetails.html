@@ -52,18 +52,30 @@
             <p style="color:green">{{eventDetails.startsAt | date:'M/d/yy'}}-{{eventDetails.endsAt | date:'h:mm a'}}</p>
         </div>
     </div>
-    <h2>Receiver Details</h2>
-    <label>Name</label>
-    <br>
-    <p style="color:green">{{eventDetails.receiverName}}</p>
-    <label>Id</label>
-    <br>
-    <p style="color:green">{{eventDetails.receiverId}}</p>
-    <label>Mobile Number</label>
-    <br>
-    <p style="color:green">{{eventDetails.receiverMN}}</p>
+    <header class="panel-heading">
+        Receiver Details
+    </header>
+    <div class="form-group">
+        <label class="control-label col-lg-3">Name
+        </label>
+        <div class="col-lg-3">
+            <p style="color:green">{{eventDetails.receiverName}}</p>
+        </div>
+        <label class="control-label col-lg-3">Id
 
+        </label>
+        <div class="col-lg-3">
+            <p style="color:green">{{eventDetails.receiverId}}</p>
+        </div>
+        <label class="control-label col-lg-3">Phone
+
+        </label>
+        <div class="col-lg-3">
+            <p style="color:green">{{eventDetails.receiverMN}}</p>
+        </div>
+    </div>
 </div>
+
 <div class="modal-footer">
     <button class="btn btn-default loginpopUp_footerBtn" type="button" ng-click="$close()">Close</button>
 </div>

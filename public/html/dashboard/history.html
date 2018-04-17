@@ -25,24 +25,25 @@
                                
                             </tr>
                             <tr ng-repeat="event in events track by $index">
+                              
                                 <td>{{event.title}}</td>
-                                <td>{{event.startAt | date:'MMM d, y'}}</td>
-                                <td>{{event.startAt  | date:'h:mm a'}}</td>
-                                <td>{{event.endAt | date:'h:mm a'}}</td>
+                                <td>{{event.startsAt | date:'MMM d, y'}}</td>
+                                <td>{{event.startsAt  | date:'h:mm a'}}</td>
+                                <td>{{event.endsAt | date:'h:mm a'}}</td>
                                 <td>
-                                    <button >View</button>
+                                    <button class="btn btn-primary">View</button>
                                 </td>
                                 <td>
                                     <div class="btn-group">
                                         <a class="btn btn-primary" href="#">
-                                            <i class="icon_plus_alt2"></i>
+                                            <i class="icon_plus_alt2"></i>&nbsp;Chat
                                         </a>
                                         <a class="btn btn-success" href="#">
-                                            <i class="icon_check_alt2"></i>
+                                            <i class="icon_check_alt2"></i>&nbsp;Video
                                         </a>
-                                        <a class="btn btn-danger" href="#">
-                                            <i class="icon_close_alt2"></i>
-                                        </a>
+                                        <a class="btn btn-success" href="#">
+                                                <i class="icon_check_alt2"></i>&nbsp;Summery
+                                            </a>
                                     </div>
                                 </td>
                                

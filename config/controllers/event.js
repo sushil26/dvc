@@ -168,6 +168,59 @@ module.exports.eventGet = function (req, res) {
 
 }
 
+module.exports.upcomingEventGet= function (req, res) {
+    console.log("upcomingEventGet-->");
+    var responseData;
+    console.log("req.params.id: "+req.params.id);
+    console.log("req.params.currentDateTime: "+req.params.currentDateTime);
+    var queryDate = req.params.currentDateTime
+   // var id ={
+   //     userId = req.params.id
+   // } 
+
+   
+  
+   if (general.emptyCheck(req.params.id) && general.emptyCheck(req.params.currentDateTime)) {
+    
+       event.find({$and:[{ $or: [ { "userId": req.params.id }, { "remoteCalendarId": req.params.id } ] },{"endsAt":{ $gte: queryDate } }]}).toArray(function (err, listOfevents) {
+           console.log("list Of Upcoming Events: "+JSON.stringify(listOfevents));
+           if (err) {
+
+               responseData = {
+                   "status": false,
+                   "message": "Failed to get Data",
+                   "data": data
+               }
+               res.status(400).send(responseData);
+           }
+           else {
+               responseData = {
+                   "status": true,
+                   "message": "Registeration Successfull",
+                   "data": listOfevents
+               }
+
+
+
+               res.status(200).send(responseData);
+           }
+
+       })
+
+   }
+   else {
+       console.log("Epty value found");
+       responseData = {
+           "status": false,
+           "message": "there is no userId to find",
+
+       }
+       res.status(400).send(responseData);
+   }
+
+    console.log("<--upcomingEventGet");
+}
+
 module.exports.deleteEvent = function (req, res) {
     console.log("deleteEvent-->");
     if (general.emptyCheck(req.body.id)) {

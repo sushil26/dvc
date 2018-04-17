@@ -182,7 +182,7 @@ module.exports.upcomingEventGet= function (req, res) {
   
    if (general.emptyCheck(req.params.id) && general.emptyCheck(req.params.id)) {
     
-       event.find({"endsAt":{ $gte: queryDate } }, { $or: [ { "userId": req.params.id }, { "remoteCalendarId": req.params.id } ] }).toArray(function (err, listOfevents) {
+       event.find({ $or: [ { "userId": req.params.id }, { "remoteCalendarId": req.params.id } ] }).toArray(function (err, listOfevents) {
            console.log("listOfevents: "+JSON.stringify(listOfevents))
            if (err) {
 

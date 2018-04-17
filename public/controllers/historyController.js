@@ -25,7 +25,7 @@ app.controller('historyController', function ($scope, $window, httpFactory) {
                         'endsAt': new Date($scope.eventData[x].end),
                         'draggable': true,
                         'resizable': true,
-                        'actions': actions,
+                       
                         'url': $scope.eventData[x].url,
                         "senderName": $scope.eventData[x].senderName,
                         "senderId": $scope.eventData[x].senderId,

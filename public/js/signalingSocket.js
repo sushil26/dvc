@@ -7,7 +7,7 @@
 // console.log("decryptedPswd: "+decryptedPswd.toString(CryptoJS.enc.Utf8));
 
 var sesionEnc = localStorage.getItem("encUrl",sessionEnc)
-console.log("sesionEnc: "+JSON.stringify(sesionEnc));
+console.log("sesionEnc: "+sesionEnc);
 
 
 /** CONFIG **/

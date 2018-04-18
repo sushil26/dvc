@@ -218,7 +218,7 @@ function emailInvite() {
 //   }
 
 // ];
-var ICE_SERVERS;
+var ICE_SERVERS =[];
 for(var x=0;x<sesionEnc.length;x++){
   ICE_SERVERS.push(sesionEnc[x]);
 }

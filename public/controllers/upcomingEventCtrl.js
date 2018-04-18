@@ -78,7 +78,7 @@ app.controller('upcomingEventController', function ($scope, $window, httpFactory
         var reqYear = $scope.today.getYear();
         var reqTime = $scope.today.getTime();
         console.log("reqDate: "+reqDate+" reqMonth: "+reqMonth+" reqYear: "+reqYear+" reqTime: "+reqTime);
-        var consolidateDate = new Date(reqYear, reqMonth, reqDate, reqTime);
+        var consolidateDate = new Date(reqYear, reqMonth, reqDate);
         console.log("consolidateDate: "+consolidateDate);
 
 

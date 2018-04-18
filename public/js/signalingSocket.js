@@ -218,7 +218,7 @@ function emailInvite() {
 //   }
 
 // ];
-var ICE_SERVERS = sesionEnc.slice();
+var ICE_SERVERS = JSON.stringify(sesionEnc).slice();
 console.log("ICE_SERVERS: "+JSON.stringify(ICE_SERVERS));
 
 // var ICE_SERVERS =[{ url: "stun:stun.l.google.com:19302" },

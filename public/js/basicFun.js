@@ -128,7 +128,7 @@ var x = data.sessionData;
     
     // localStorage.setItem("encUrl",encryptedUrl); 
     // localStorage.setItem("encPswd",encryptedPswd);
-    localStorage.setItem("sessionEnc",x; 
+    localStorage.setItem("sessionEnc",x); 
 
     if (typeof (Storage) !== "undefined") {
       

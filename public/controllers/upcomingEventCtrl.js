@@ -1,6 +1,7 @@
 app.controller('upcomingEventController', function ($scope, $window, httpFactory, $uibModal) {
     console.log("upcomingEventController==>");
     $scope.events = [];
+    $scope.today = new Date();
     $scope.eventGet = function () {
         console.log("eventGet-->");
         var id = localStorage.getItem("id");

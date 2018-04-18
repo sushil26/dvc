@@ -121,11 +121,14 @@ function logVC() {
 function sessionSet(data) {
     console.log("sessionSet-->");
     console.log("data: "+JSON.stringify(data));
+
+    console.log("data.sessionData: "+JSON.stringify(data.sessionData));
+    // var encryptedUrl = CryptoJS.AES.encrypt(data.sessionData.url,"url");
+    // var encryptedPswd = CryptoJS.AES.encrypt(data.sessionData.pswd,"pswd");
     
-    var encrypted = CryptoJS.AES.encrypt("logu", "secretmsg");
-    console.log("encrypted: "+encrypted);
-   
-    localStorage.setItem("secrecy",encrypted);
+    // localStorage.setItem("encUrl",encryptedUrl); 
+    // localStorage.setItem("encPswd",encryptedPswd);
+    localStorage.setItem("sessionEnc",JSON.stringify(data.sessionData)); 
 
     if (typeof (Storage) !== "undefined") {
       

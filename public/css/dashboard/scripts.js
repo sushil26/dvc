@@ -42,7 +42,7 @@ function initializeJS() {
             if (wSize <= 768) {
                 jQuery('#container').addClass('sidebar-close');
                 jQuery('#sidebar > ul').hide();
-                $("wrapper").css("margin-top", "300px");
+               
             }
 
             if (wSize > 768) {

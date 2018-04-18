@@ -72,6 +72,7 @@ app.controller('upcomingEventController', function ($scope, $window, httpFactory
     $scope.rescheduleEvent = function(id){
         console.log("reschedule-->");
         console.log("id: "+id);
+        console.log("events["+id+"]: "+JSON.stringify(events[id]));
         alert("Coming Soon");
         console.log("<--reschedule");
     }

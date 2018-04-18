@@ -73,7 +73,13 @@ app.controller('upcomingEventController', function ($scope, $window, httpFactory
         console.log("reschedule-->");
         console.log("id: "+id);
         console.log("events["+id+"]: "+JSON.stringify($scope.events[id]));
-        $scope.requestDate = $scope.today.getDate()-1;
+        var reqDate = $scope.today.getDate()-1;
+        var reqMonth = $scope.today.getMonth();
+        var reqYear = $scope.today.getYear();
+        var reqTime = $scope.today.getTime();
+        console.log("reqDate: "+reqDate+" reqMonth: "+reqMonth+" reqYear: "+reqYear+" reqTime: "+reqTime);
+
+
         console.log("$scope.requestDate: "+$scope.requestDate);
         console.log("$scope.events[id].startsAt: "+$scope.events[id].startsAt);
         if($scope.requestDate>=$scope.events[id].startsAt){

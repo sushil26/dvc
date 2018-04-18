@@ -128,7 +128,7 @@ function sessionSet(data) {
     
     // localStorage.setItem("encUrl",encryptedUrl); 
     // localStorage.setItem("encPswd",encryptedPswd);
-    localStorage.setItem("sessionEnc",data.sessionData); 
+    localStorage.setItem("sessionEnc",JSON.stringify(data.sessionData)); 
 
     if (typeof (Storage) !== "undefined") {
       

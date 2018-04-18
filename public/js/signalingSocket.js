@@ -6,8 +6,9 @@
 // console.log("decryptedUrl: "+decryptedUrl.toString(CryptoJS.enc.Utf8));
 // console.log("decryptedPswd: "+decryptedPswd.toString(CryptoJS.enc.Utf8));
 
-var sesionEnc = localStorage.getItem("sessionEnc");
-console.log("sesionEnc: "+sesionEnc);
+// ];
+var ICE_SERVERS = localStorage.getItem("sessionEnc");
+console.log("ICE_SERVERS: "+ICE_SERVERS);
 
 
 /** CONFIG **/
@@ -217,12 +218,11 @@ function emailInvite() {
 //     username: "3ed635ee-3ca0-11e8-a530-2288b20e5a3b"
 //   }
 
-// ];
-var ICE_SERVERS = [];
-for(var x=0;x<sesionEnc.length;x++){
-  console.log("")
-  ICE_SERVERS[x]=sesionEnc[x];
-}
+
+// for(var x=0;x<sesionEnc.length;x++){
+//   console.log("")
+//   ICE_SERVERS[x]=sesionEnc[x];
+// }
 // var ICE_SERVERS = JSON.stringify(sesionEnc).slice();
 // var ICE_SERVERS =sesionEnc.slice();
 console.log("ICE_SERVERS: "+JSON.stringify(ICE_SERVERS));

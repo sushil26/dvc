@@ -231,32 +231,32 @@ var ICE_SERVERS =[{ url: "stun:stun.l.google.com:19302" },
 { url: "stun:s3.xirsys.com" },
 {
   url: "turn:s3.xirsys.com:80?transport=udp",
-  credential: sesionEnc[0],
+  credential: sesionEnc[0].credential,
   username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5"
 
 },  {
   url: "turn:s3.xirsys.com:3478?transport=udp",
-  credential: sesionEnc[1],
+  credential: sesionEnc[1].credential,
   username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5"
 
 },  {
   url: "turn:s3.xirsys.com:80?transport=tcp",
-  credential: sesionEnc[2],
+  credential: sesionEnc[2].credential,
   username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5"
 
 },  {
   url: "turn:s3.xirsys.com:3478?transport=tcp",
-  credential: sesionEnc[3],
+  credential: sesionEnc[3].credential,
   username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5"
 
 },  {
   url: "turns:s3.xirsys.com:443?transport=tcp",
-  credential: sesionEnc[4],
+  credential: sesionEnc[4].credential,
   username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5"
 
 },  {
   url: "turns:s3.xirsys.com:5349?transport=tcp",
-  credential: sesionEnc[5],
+  credential: sesionEnc[5].credential,
   username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5"
 
 }];

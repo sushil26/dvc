@@ -15,11 +15,11 @@
 }
 
 @media (max-width: 768px) {
-    .wrapper{
+    /* .wrapper{
 
         margin-top:300px;
     
-    }
+    } */
 
     .header {
         position: absolute;

@@ -83,7 +83,7 @@ app.controller('upcomingEventController', function ($scope, $window, httpFactory
         var consolidateDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
         console.log("consolidateDate: " + consolidateDate);
         console.log("$scope.events[id].startsAt: " + $scope.events[id].startsAt);
-        if ($scope.consolidateDate > $scope.events[id].startsAt) {
+        if ($scope.consolidateDate < $scope.events[id].startsAt) {
             alert("Coming Soon");
         }
         else {

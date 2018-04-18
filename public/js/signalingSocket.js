@@ -8,8 +8,8 @@
 
 // ];
 var sesionEnc = localStorage.getItem("sessionEnc");
-console.log("sesionEnc: "+sesionEnc[1].credential);
-
+console.log("sesionEnc: "+JSON.stringify(sesionEnc));
+console.log("sesionEnc[1]: "+sesionEnc[1].credential);
 
 /** CONFIG **/
 console.log("Signaling Socket.js");

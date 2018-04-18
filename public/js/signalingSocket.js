@@ -8,7 +8,7 @@
 
 // ];
 var sesionEnc = localStorage.getItem("sessionEnc");
-console.log("sesionEnc: "+sesionEnc);
+// console.log("sesionEnc: "+sesionEnc);
 
 
 /** CONFIG **/
@@ -225,13 +225,13 @@ function emailInvite() {
 // }
 // var ICE_SERVERS = JSON.stringify(sesionEnc).slice();
 // var ICE_SERVERS =sesionEnc.slice();
-console.log("ICE_SERVERS: "+JSON.stringify(ICE_SERVERS));
+// console.log("ICE_SERVERS: "+JSON.stringify(ICE_SERVERS));
 
 var ICE_SERVERS =[{ url: "stun:stun.l.google.com:19302" },
 { url: "stun:s3.xirsys.com" },
 {
   url: "turn:s3.xirsys.com:80?transport=udp",
-  credential:sesionEnc,
+  credential: sesionEnc,
   username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5"
 
 },  {
@@ -260,12 +260,6 @@ var ICE_SERVERS =[{ url: "stun:stun.l.google.com:19302" },
   username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5"
 
 }];
-// for(var x=0;x<sesionEnc.length;x++){
-//   ICE_SERVERS.push(sesionEnc[x]);
-// }
-
-console.log("ICE_SERVERS: "+JSON.stringify(ICE_SERVERS));
-
 
 function disconnecSession() {
   console.log("disconnecSession-->");

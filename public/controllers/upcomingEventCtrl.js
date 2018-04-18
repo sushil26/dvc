@@ -81,7 +81,7 @@ app.controller('upcomingEventController', function ($scope, $window, httpFactory
         var reqHr = date.getHours();
         var reqMin = date.getMinutes();
         var reqSec = date.getSeconds();
-        console.log("reqDate: "+reqDate+" reqMonth: "+reqMonth+" reqYear: "+reqYear+" reqTime: "+reqTime);
+        
         var consolidateDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
         console.log("consolidateDate: "+consolidateDate);
 

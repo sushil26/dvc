@@ -8,8 +8,8 @@
 
 // ];
 var sesionEnc = localStorage.getItem("sessionEnc");
-console.log("sesionEnc: "+JSON.stringify(sesionEnc));
-console.log("sesionEnc[1]: "+sesionEnc[1].credential);
+console.log("sesionEnc: "+sesionEnc);
+
 
 /** CONFIG **/
 console.log("Signaling Socket.js");
@@ -231,32 +231,32 @@ var ICE_SERVERS =[{ url: "stun:stun.l.google.com:19302" },
 { url: "stun:s3.xirsys.com" },
 {
   url: "turn:s3.xirsys.com:80?transport=udp",
-  credential: sesionEnc[0].credential,
+  credential:sesionEnc,
   username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5"
 
 },  {
   url: "turn:s3.xirsys.com:3478?transport=udp",
-  credential: sesionEnc[1].credential,
+  credential: sesionEnc,
   username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5"
 
 },  {
   url: "turn:s3.xirsys.com:80?transport=tcp",
-  credential: sesionEnc[2].credential,
+  credential: sesionEnc,
   username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5"
 
 },  {
   url: "turn:s3.xirsys.com:3478?transport=tcp",
-  credential: sesionEnc[3].credential,
+  credential: sesionEnc,
   username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5"
 
 },  {
   url: "turns:s3.xirsys.com:443?transport=tcp",
-  credential: sesionEnc[4].credential,
+  credential: sesionEnc,
   username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5"
 
 },  {
   url: "turns:s3.xirsys.com:5349?transport=tcp",
-  credential: sesionEnc[5].credential,
+  credential: sesionEnc,
   username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5"
 
 }];

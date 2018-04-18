@@ -218,40 +218,46 @@ function emailInvite() {
 //   }
 
 // ];
-//var ICE_SERVERS = JSON.parse(sesionEnc);
-var ICE_SERVERS = [{ url: "stun:stun.l.google.com:19302" },
-{ url: "stun:s3.xirsys.com" },
-{
-  url: "turn:s3.xirsys.com:80?transport=udp",
-  credential: "79ea520a-3e67-11e8-9679-97fa7aeb8e97",
-  username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5"
+var ICE_SERVERS = sesionEnc.slice();
+console.log("ICE_SERVERS: "+JSON.stringify(ICE_SERVERS));
 
-},  {
-  url: "turn:s3.xirsys.com:3478?transport=udp",
-  credential: "79ea520a-3e67-11e8-9679-97fa7aeb8e97",
-  username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5"
+// var ICE_SERVERS =[{ url: "stun:stun.l.google.com:19302" },
+// { url: "stun:s3.xirsys.com" },
+// {
+//   url: "turn:s3.xirsys.com:80?transport=udp",
+//   credential: "79ea520a-3e67-11e8-9679-97fa7aeb8e97",
+//   username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5"
 
-},  {
-  url: "turn:s3.xirsys.com:80?transport=tcp",
-  credential: "79ea520a-3e67-11e8-9679-97fa7aeb8e97",
-  username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5"
+// },  {
+//   url: "turn:s3.xirsys.com:3478?transport=udp",
+//   credential: "79ea520a-3e67-11e8-9679-97fa7aeb8e97",
+//   username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5"
 
-},  {
-  url: "turn:s3.xirsys.com:3478?transport=tcp",
-  credential: "79ea520a-3e67-11e8-9679-97fa7aeb8e97",
-  username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5"
+// },  {
+//   url: "turn:s3.xirsys.com:80?transport=tcp",
+//   credential: "79ea520a-3e67-11e8-9679-97fa7aeb8e97",
+//   username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5"
 
-},  {
-  url: "turns:s3.xirsys.com:443?transport=tcp",
-  credential: "79ea520a-3e67-11e8-9679-97fa7aeb8e97",
-  username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5"
+// },  {
+//   url: "turn:s3.xirsys.com:3478?transport=tcp",
+//   credential: "79ea520a-3e67-11e8-9679-97fa7aeb8e97",
+//   username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5"
 
-},  {
-  url: "turns:s3.xirsys.com:5349?transport=tcp",
-  credential: "79ea520a-3e67-11e8-9679-97fa7aeb8e97",
-  username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5"
+// },  {
+//   url: "turns:s3.xirsys.com:443?transport=tcp",
+//   credential: "79ea520a-3e67-11e8-9679-97fa7aeb8e97",
+//   username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5"
 
-}];
+// },  {
+//   url: "turns:s3.xirsys.com:5349?transport=tcp",
+//   credential: "79ea520a-3e67-11e8-9679-97fa7aeb8e97",
+//   username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5"
+
+// }];
+// for(var x=0;x<sesionEnc.length;x++){
+//   ICE_SERVERS.push(sesionEnc[x]);
+// }
+
 console.log("ICE_SERVERS: "+JSON.stringify(ICE_SERVERS));
 
 

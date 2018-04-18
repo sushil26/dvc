@@ -15,9 +15,9 @@
 }
 
 @media (max-width: 768px) {
-    .sidebar-closed #main-content {
+    .wrapper{
 
-        margin-top:200px;
+        margin-top:300px;
     
     }
 

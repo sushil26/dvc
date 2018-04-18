@@ -218,10 +218,10 @@ function emailInvite() {
 //   }
 
 // ];
-var ICE_SERVERS
+var ICE_SERVERS = [];
 for(var x=0;x<sesionEnc.length;x++){
   console.log("")
-  ICE_SERVERS.push(sesionEnc[x]);
+  ICE_SERVERS[x]=sesionEnc[x]);
 }
 // var ICE_SERVERS = JSON.stringify(sesionEnc).slice();
 // var ICE_SERVERS =sesionEnc.slice();

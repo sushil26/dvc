@@ -113,7 +113,20 @@ module.exports.login4VC = function(req, res) {
                     status: true,
                     message: "Login Successfully",
                     loginType: "teacher",
-                    sessionData:["79ea520a-3e67-11e8-9679-97fa7aeb8e97", "79ea520a-3e67-11e8-9679-97fa7aeb8e97", "79ea520a-3e67-11e8-9679-97fa7aeb8e97", "79ea520a-3e67-11e8-9679-97fa7aeb8e97", "79ea520a-3e67-11e8-9679-97fa7aeb8e97", "79ea520a-3e67-11e8-9679-97fa7aeb8e97"],
+                    sessionData:[
+                     
+                      {"credential": "79ea520a-3e67-11e8-9679-97fa7aeb8e97"},
+                     
+                      {"credential": "79ea520a-3e67-11e8-9679-97fa7aeb8e97"},
+                     
+                      {"credential": "79ea520a-3e67-11e8-9679-97fa7aeb8e97"},
+                     
+                      {"credential": "79ea520a-3e67-11e8-9679-97fa7aeb8e97"},
+                     
+                      {"credential": "79ea520a-3e67-11e8-9679-97fa7aeb8e97"},
+                     
+                      {"credential": "79ea520a-3e67-11e8-9679-97fa7aeb8e97"},
+                      ],
                     data: data[0]
                   };
                   res.status(200).send(responseData);

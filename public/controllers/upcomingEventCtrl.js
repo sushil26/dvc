@@ -73,7 +73,17 @@ app.controller('upcomingEventController', function ($scope, $window, httpFactory
         console.log("reschedule-->");
         console.log("id: "+id);
         console.log("events["+id+"]: "+JSON.stringify($scope.events[id]));
-        alert("Coming Soon");
+        $scope.requestDate = $scope.today.getDate()-1;
+        console.log("$scope.requestDate: "+$scope.requestDate);
+        console.log("$scope.events[id].startsAt: "+$scope.events[id].startsAt);
+        if($scope.requestDate>=$scope.events[id].startsAt){
+            alert("Coming Soon");
+        }
+        else{
+            alert("Sorry you are not allow to edit event");
+        }
+        
+       
         console.log("<--reschedule");
     }
 

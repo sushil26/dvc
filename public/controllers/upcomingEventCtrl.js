@@ -1,7 +1,7 @@
 app.controller('upcomingEventController', function ($scope, $window, httpFactory, $uibModal) {
     console.log("upcomingEventController==>");
     $scope.events = [];
-    $scope.today = new Date();
+    $scope.today = new Date(); /* ###Note: Current Date ### */
     $scope.eventGet = function () {
         console.log("eventGet-->");
         var id = localStorage.getItem("id");
@@ -83,7 +83,7 @@ app.controller('upcomingEventController', function ($scope, $window, httpFactory
         var consolidateDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
         console.log("consolidateDate: " + consolidateDate);
         console.log("$scope.events[id].startsAt: " + $scope.events[id].startsAt);
-        if ($scope.consolidateDate < $scope.events[id].startsAt) {
+        if ($scope.consolidateDate < $scope.today) {
             alert("Coming Soon");
         }
         else {

@@ -49,6 +49,7 @@ function initializeJS() {
                 jQuery('#container').removeClass('sidebar-close');
                 jQuery('#sidebar > ul').show();
             }
+       
         }
         jQuery(window).on('load', responsiveView);
         jQuery(window).on('resize', responsiveView);

@@ -3,6 +3,21 @@ app.controller('upcomingEventController', function ($scope, $window, httpFactory
     $scope.loginType = localStorage.getItem("loginType");
     $scope.events = [];
     $scope.today = new Date(); /* ###Note: Current Date ### */
+    $scope.getToDate = function () {
+        console.log("Get To Date-->");
+        var api = "https://norecruits.com/vc/getToDate";
+        httpFactory.get(api).then(function (data) {
+            var checkStatus = httpFactory.dataValidation(data);
+            console.log("data--" + JSON.stringify(data.data));
+            if (checkStatus) {
+                // $scope.eventData = data.data.data;
+            }
+            else {
+                //alert("Event get Failed");
+            }
+        })
+        console.log("<--Get To Date");
+    }
     $scope.eventGet = function () {
         console.log("eventGet-->");
         var id = localStorage.getItem("id");
@@ -70,6 +85,7 @@ app.controller('upcomingEventController', function ($scope, $window, httpFactory
         console.log("<--viewDetail");
     }
 
+
     $scope.rescheduleEvent = function (id) {
         console.log("reschedule-->");
         var date = $scope.events[id].startsAt;
@@ -80,19 +96,19 @@ app.controller('upcomingEventController', function ($scope, $window, httpFactory
         var reqMin = date.getMinutes();
         var reqSec = date.getSeconds();
         var consolidateDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
-        console.log(" $scope.events[id].id: "+ $scope.events[id].id);
-        // var api = "https://norecruits.com/vc/rescheduleEvent";
+        console.log(" $scope.events[id].id: " + $scope.events[id].id);
+        // var api = "https://norecruits.com/vc/rescheduleEvent/:id";
 
         // httpFactory.post(api, obj).then(function (data) {
         //     var checkStatus = httpFactory.dataValidation(data);
         //     //console.log("data--" + JSON.stringify(data.data));
         //     if (checkStatus) {
-        //       // console.log("data" + JSON.stringify(data.data))
+        //       console.log("data" + JSON.stringify(data.data));
         //       // $window.location.href = $scope.propertyJson.R082;
         //       alert("Successfully sent the event");
         //       // vm.events.splice(0, 1);
         //       var eventPostedData = data.data.data;
-           
+
         //       ownerEvents.push(objData);
         //       vm.events.push(objData);
         //     }

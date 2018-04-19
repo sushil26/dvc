@@ -125,7 +125,9 @@ module.exports.eventGet = function (req, res) {
     console.log("getEvent-->");
     var responseData;
      console.log("req.params.id: "+req.params.id);
-     console.log("DateTime: "+new Date().toISOString());
+     
+     var d = new Date();
+     console.log("DateTime: "+d.getTime() + d.getTimezoneOffset() * 60000);
        if (general.emptyCheck(req.params.id)) {
            event.find({ $or: [ { "userId": req.params.id }, { "remoteCalendarId": req.params.id } ] }).sort({"startAt":1}).toArray(function (err, listOfevents) {
            // console.log("listOfevents: "+JSON.stringify(listOfevents))

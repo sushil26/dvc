@@ -857,10 +857,17 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
     $scope.selectedDateForEvent = $filter('date')(date, "EEE");
     console.log("selectedDateForEvent: " + $scope.selectedDateForEvent);
     $scope.selectedDate = date;
-   
-    console.log("cssSelect: "+JSON.stringify(css));
-
+   if($scope.remoteCalendarId)
+   {
     $('#timeTable_modal').modal('show');
+  
+   }
+   else{
+    alert("Select Student");
+   }
+    
+
+   
     // if (vm.calendarView === 'month') {
     //   if ((vm.cellIsOpen && moment(date).startOf('day').isSame(moment(vm.viewDate).startOf('day'))) || cell.events.length === 0 || !cell.inMonth) {
     //     vm.cellIsOpen = false;

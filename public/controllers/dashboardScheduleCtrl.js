@@ -437,7 +437,6 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
     }
     if ($scope.userLoginType == 'teacher') {
 
-      if($scope.studentPersonalData){
       var teacherName = $scope.teacherData[0].teacherName;
       var senderMN = $scope.teacherData[0].mobileNum;
       var teacherId = $scope.teacherData[0].teacherId;
@@ -446,10 +445,6 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
       var receiverId = $scope.studentPersonalData[0].studId;
       var receiverMN = $scope.studentPersonalData[0].mobileNum;
       $scope.eventSend(reason, teacherName, teacherId, email, senderMN, receiverName, receiverId, receiverMN);
-    }
-    else{
-      alert("Select student");
-    }
     }
 
 
@@ -862,13 +857,8 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
     $scope.selectedDateForEvent = $filter('date')(date, "EEE");
     console.log("selectedDateForEvent: " + $scope.selectedDateForEvent);
     $scope.selectedDate = date;
-    // if ($scope.userLoginType = "teacher") {
-    //   console.log("loginType: "+localStorage.getItem("loginType"));
-    //   $scope.getTeacherData();
-    // }
-    // else {
-
-    // }
+   
+    console.log("cssSelect: "+JSON.stringify(cssSelect));
 
     $('#timeTable_modal').modal('show');
     // if (vm.calendarView === 'month') {

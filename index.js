@@ -91,6 +91,10 @@ app.get("/mainPage", function (req, res) {
     res.sendFile(__dirname + '/public/html/mainPage.html');
 });
 
+app.get("/mainPage#!/dashboard/personalDetail", function (req, res) {
+    console.log("personalDetail");
+    // res.sendFile(__dirname + '/public/html/mainPage.html');
+});
 
 
 /*************************/

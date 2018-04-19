@@ -26,7 +26,7 @@
                                 <th>
                                     <i class="icon_cogs"></i> Action</th>
                                
-                            </tr>----{{ $scope.consolidateDate}}----{{events[0].startsAt}}
+                            </tr>
                             <tr ng-repeat="event in events  | orderBy:'-startsAt'"  ng-if="event.startsAt<todayDate">
                               
                                 <td>{{event.title}}</td>

@@ -11,7 +11,7 @@ app.controller('upcomingEventController', function ($scope, $window, httpFactory
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
                 console.log("data.data.data.date: "+data.data.data.date);
-                $scope.todayDate = data.data.date;
+                $scope.todayDate = data.data.data.date;
                 console.log("data.data.date: "+$filter('date')(todayDate, "HH:mm:ss 'GMT'Z (IST)'"));
                 
             }

@@ -10,8 +10,9 @@ app.controller('upcomingEventController', function ($scope, $window, httpFactory
             var checkStatus = httpFactory.dataValidation(data);
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
-                // $scope.eventData = data.data.data;
-                console.log("data.data.date: "+$filter('date')(data.data.date, "HH:mm:ss 'GMT'Z (IST)'"));
+                console.log("data.data.data.date: "+data.data.data.date);
+                $scope.todayDate = data.data.date;
+                console.log("data.data.date: "+$filter('date')(todayDate, "HH:mm:ss 'GMT'Z (IST)'"));
                 
             }
             else {

@@ -121,7 +121,7 @@
                 on-event-times-changed="vm.eventTimesChanged(calendarEvent); calendarEvent.startsAt = calendarNewEventStart; calendarEvent.endsAt = calendarNewEventEnd"
                 cell-is-open="vm.cellIsOpen" day-view-start="09:00" day-view-end="15:00" day-view-split="15" cell-modifier="vm.modifyCell(calendarCell)"
                 cell-auto-open-disabled="true" on-date-range-select="vm.rangeSelected(calendarRangeStartDate, calendarRangeEndDate)"
-                on-timespan-click="vm.timespanClicked(calendarDate)">
+                on-timespan-click="vm.timespanClicked(calendarDate, cssSelect)">
               </mwl-calendar>
               <!-- Below line produces calendar. I am using FullCalendar plugin. -->
               <!-- <mwl-calendar ng-if="calendarOwner=='Your'" events="vm.events" view="vm.calendarView" view-title="vm.calendarTitle" view-date="vm.viewDate"

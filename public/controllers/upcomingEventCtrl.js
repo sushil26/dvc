@@ -80,7 +80,7 @@ app.controller('upcomingEventController', function ($scope, $window, httpFactory
         var reqMin = date.getMinutes();
         var reqSec = date.getSeconds();
         var consolidateDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
-        console.log(" $scope.events[id]._id: "+ $scope.events[id]._id);
+        console.log(" $scope.events[id].id: "+ $scope.events[id].id);
         // var api = "https://norecruits.com/vc/rescheduleEvent";
 
         // httpFactory.post(api, obj).then(function (data) {

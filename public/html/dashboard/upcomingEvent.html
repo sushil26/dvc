@@ -30,6 +30,7 @@
                                         <i class="icon_cogs"></i> Action</th>
                                 </tr>
                                 <tr ng-repeat="event in events | orderBy:'startsAt'" ng-if="event.startsAt>=today">
+                                 
                                     <td>{{event.title}}</td>
                                     <td>{{event.startsAt | date:'MMM d, y'}}</td>
                                     <td>{{event.startsAt | date:'h:mm a'}}</td>
@@ -42,7 +43,7 @@
                                             <a class="btn btn-primary" target="_blank" href="{{event.url}}">
                                                 <i class="icon_headphones"></i>&nbspStart
                                             </a>
-                                            <a class="btn btn-success" href="" ng-click="rescheduleEvent($index)">
+                                            <a ng-if="loginType=='teacher'" class="btn btn-success" href="" ng-click="rescheduleEvent($index)">
                                                 <i class="fa fa-pencil"></i>&nbsp;Reschedule
                                             </a>
                                             <!-- <a class="btn btn-danger" href="" ng-click="deleteEvent($index)">

@@ -29,6 +29,7 @@ module.exports.getToDate = function (req, res) {
         "message": "date get successfully",
         "data": {"date": date}
     }
+    console.log("responseData: "+JSON.stringify(responseData));
     res.status(200).send(responseData);
     console.log("<--getToDate");
 }

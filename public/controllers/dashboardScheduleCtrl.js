@@ -858,7 +858,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
     console.log("selectedDateForEvent: " + $scope.selectedDateForEvent);
     $scope.selectedDate = date;
    
-    console.log("cssSelect: "+JSON.stringify(cssSelect));
+    console.log("cssSelect: "+cssSelect.class);
 
     $('#timeTable_modal').modal('show');
     // if (vm.calendarView === 'month') {

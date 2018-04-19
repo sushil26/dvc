@@ -117,9 +117,7 @@
             <div class="panel-body">
               <!-- Widget content -->
               <mwl-calendar events="vm.events" view="vm.calendarView" view-title="vm.calendarTitle" view-date="vm.viewDate" on-event-click="vm.eventClicked(calendarEvent)"
-            
-             
-              on-timespan-click="vm.timespanClicked(calendarDate)">
+              on-view-change-click="false" on-timespan-click="vm.timespanClicked(calendarDate)">
             </mwl-calendar>
               <!-- <mwl-calendar events="vm.events" view="vm.calendarView" view-title="vm.calendarTitle" view-date="vm.viewDate" on-event-click="vm.eventClicked(calendarEvent)"
                 on-event-times-changed="vm.eventTimesChanged(calendarEvent); calendarEvent.startsAt = calendarNewEventStart; calendarEvent.endsAt = calendarNewEventEnd"

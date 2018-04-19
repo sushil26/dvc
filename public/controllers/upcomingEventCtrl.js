@@ -2,8 +2,8 @@ app.controller('upcomingEventController', function ($scope, $window, httpFactory
     console.log("upcomingEventController==>");
     $scope.loginType = localStorage.getItem("loginType");
     $scope.events = [];
-    $scope.today = new Date(); /* ###Note: Current Date ### */
-    
+  //  $scope.today = new Date(); /* ###Note: Current Date ### */
+
     $scope.getToDate = function () {
         console.log("Get To Date-->");
         var api = "https://norecruits.com/vc/getToDate";
@@ -11,19 +11,24 @@ app.controller('upcomingEventController', function ($scope, $window, httpFactory
             var checkStatus = httpFactory.dataValidation(data);
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
-                console.log("data.data.data.date: "+data.data.data.date);
+                console.log("data.data.data.date: " + data.data.data.date);
                 $scope.todayDate = data.data.data.date;
-                console.log("data.data.date: "+$filter('date')( $scope.todayDate, "EEE MMM dd yyyy HH:mm:ss a 'GMT'Z (IST)'"));
-                
+                var reqDate = todayDate.getDate() - 1;
+                var reqMonth = todayDate.getMonth();
+                var reqYear = todayDate.getFullYear();
+                var reqHr = todayDate.getHours();
+                var reqMin = todayDate.getMinutes();
+                var reqSec = todayDate.getSeconds();
+                var consolidateDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
+                console.log("consolidateDate: " + consolidateDate);
             }
             else {
-             
             }
         })
         console.log("<--Get To Date");
     }
     $scope.getToDate();
-   
+
     $scope.eventGet = function () {
         console.log("eventGet-->");
         var id = localStorage.getItem("id");
@@ -130,12 +135,6 @@ app.controller('upcomingEventController', function ($scope, $window, httpFactory
         alert("Coming Soon");
         console.log("<--deleteEvent");
     }
-
-
-
-
-
-
 
     // $scope.upcomingEventGet = function () {
     //     console.log("eventGet-->");

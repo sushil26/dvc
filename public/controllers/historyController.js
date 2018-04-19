@@ -19,8 +19,8 @@ app.controller('historyController', function ($scope, $window, httpFactory,  $ui
                 var reqHr = todayDate.getHours();
                 var reqMin = todayDate.getMinutes();
                 var reqSec = todayDate.getSeconds();
-                $scope.consolidateDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
-                console.log("consolidateDate: " + $scope.consolidateDate);
+                $scope.todayDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
+                console.log("todayDate: " + $scope.todayDate);
                 $scope.eventGet();
             }
             else {

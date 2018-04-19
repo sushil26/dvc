@@ -22,7 +22,7 @@ app.controller('upcomingEventController', function ($scope, $window, httpFactory
                 var reqMin = todayDate.getMinutes();
                 var reqSec = todayDate.getSeconds();
                 $scope.consolidateDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
-                console.log("consolidateDate: " + consolidateDate);
+                console.log("consolidateDate: " + $scope.consolidateDate);
                 $scope.eventGet();
             }
             else {

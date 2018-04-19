@@ -51,6 +51,7 @@ module.exports.eventSend = function (req, res) {
             "password": password
         }
         console.log("userData: " + JSON.stringify(userData));
+
         event.insertOne(userData, function (err, data) {
             console.log("data: " + JSON.stringify(data));
             if (err) {
@@ -127,8 +128,7 @@ module.exports.eventGet = function (req, res) {
      console.log("req.params.id: "+req.params.id);
      
      var d = new Date();
-     console.log("DateTime: "+new Date(d.getTime() + d.getTimezoneOffset() * 60000));
-     console.log("DateTime: "+new Date(d.getTime() + d.getTimezoneOffset() * 60000).toISOString());
+     console.log("DateTime: "+d);
        if (general.emptyCheck(req.params.id)) {
            event.find({ $or: [ { "userId": req.params.id }, { "remoteCalendarId": req.params.id } ] }).sort({"startAt":1}).toArray(function (err, listOfevents) {
            // console.log("listOfevents: "+JSON.stringify(listOfevents))

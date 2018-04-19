@@ -80,15 +80,26 @@ app.controller('upcomingEventController', function ($scope, $window, httpFactory
         var reqMin = date.getMinutes();
         var reqSec = date.getSeconds();
         var consolidateDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
-        console.log("consolidateDate: " + consolidateDate);
-        console.log("$scope.events[id].startsAt: " + $scope.events[id].startsAt);
-        console.log("$scope.today: "+$scope.today);
-        if (consolidateDate >= $scope.today) {
-            alert("Coming Soon");
-        }
-        else {
-            alert("Sorry you are not allow to edit event");
-        }
+        console.log(" $scope.events[id]._id: "+ $scope.events[id]._id);
+        // var api = "https://norecruits.com/vc/rescheduleEvent";
+
+        // httpFactory.post(api, obj).then(function (data) {
+        //     var checkStatus = httpFactory.dataValidation(data);
+        //     //console.log("data--" + JSON.stringify(data.data));
+        //     if (checkStatus) {
+        //       // console.log("data" + JSON.stringify(data.data))
+        //       // $window.location.href = $scope.propertyJson.R082;
+        //       alert("Successfully sent the event");
+        //       // vm.events.splice(0, 1);
+        //       var eventPostedData = data.data.data;
+           
+        //       ownerEvents.push(objData);
+        //       vm.events.push(objData);
+        //     }
+        //     else {
+        //       alert("Event Send Failed");
+        //     }
+        // })
         console.log("<--reschedule");
     }
 

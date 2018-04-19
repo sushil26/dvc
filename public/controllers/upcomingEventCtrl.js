@@ -2,7 +2,7 @@ app.controller('upcomingEventController', function ($scope, $window, httpFactory
     console.log("upcomingEventController==>");
     $scope.loginType = localStorage.getItem("loginType");
     $scope.events = [];
-    // $scope.today = new Date(); /* ###Note: Current Date ### */
+    $scope.today = new Date(); /* ###Note: Current Date ### */
     
     $scope.getToDate = function () {
         console.log("Get To Date-->");

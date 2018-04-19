@@ -86,17 +86,20 @@ app.get("/client/:id/:time", function (req, res) {
     res.sendFile(__dirname + '/public/client.html');
 });
 
-// app.get("/mainPage", function (req, res) {
-//     console.log("start to render page");
-//     res.sendFile(__dirname + '/public/html/mainPage.html');
-// });
+app.get("/mainPage", function (req, res) {
+    console.log("start to render page");
+    res.sendFile(__dirname + '/public/html/mainPage.html');
+});
 
-app.get("/mainPage#!/dashboard/personalDetail", function (req, res) {
+app.get("/mainPage#!/:dashboard/:personalDetail", function (req, res) {
     console.log("personalDetail");
     // res.sendFile(__dirname + '/public/html/mainPage.html');
 });
 
-
+app.get("/mainPage/:dashboard/:personalDetail", function (req, res) {
+    console.log("personalDetail without #!");
+    // res.sendFile(__dirname + '/public/html/mainPage.html');
+});
 /*************************/
 /*** INTERESTING STUFF ***/
 /*************************/

@@ -72,8 +72,8 @@ app.controller('upcomingEventController', function ($scope, $window, httpFactory
 
     $scope.rescheduleEvent = function (id) {
         console.log("reschedule-->");
-        console.log("id: " + id);
-        console.log("events[" + id + "]: " + JSON.stringify($scope.events[id]));
+        console.log("id: " + id-1);
+        console.log("events[" + id + "]: " + JSON.stringify($scope.events[id-1]));
         var date = $scope.events[id-1].startsAt;
         var reqDate = date.getDate() - 1;
         var reqMonth = date.getMonth();

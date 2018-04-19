@@ -30,7 +30,7 @@ module.exports = function (app) {
     app.post('/vc/deleteEvent', event.deleteEvent);
     app.post('/vc/parentCredential', event.parentCredential);
     app.post('/vc/eventUpdate/:id', event.eventUpdate);
-    app.get('/vc/getToDate',event.getToDate);
+    app.get('/vc/getToDate/:id',event.getToDate);
    
     
     // app.get('/vc/teacherGet/:id', event.teacherGet);

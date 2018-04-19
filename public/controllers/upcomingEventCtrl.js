@@ -12,7 +12,7 @@ app.controller('upcomingEventController', function ($scope, $window, httpFactory
             if (checkStatus) {
                 console.log("data.data.data.date: "+data.data.data.date);
                 $scope.todayDate = data.data.data.date;
-                console.log("data.data.date: "+$filter('date')(todayDate, "HH:mm:ss 'GMT'Z (IST)'"));
+                console.log("data.data.date: "+$filter('date')( $scope.todayDate, "HH:mm:ss 'GMT'Z (IST)'"));
                 
             }
             else {

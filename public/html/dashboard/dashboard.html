@@ -8,6 +8,9 @@
     <link href="././css/dashboard/style.css" rel="stylesheet">
     <link href="././css/dashboard/style-responsive.css" rel="stylesheet" />
 
+    <!-- Sorting styles -->
+    <link href="././css/dashboard/tablesorter.css" rel="stylesheet">
+
 
 
 
@@ -41,8 +44,10 @@
             </div>
 
             <!--logo start-->
-            <img style="float:left;width: 63px;margin-top: 5px" src="././home/img/fav.png"/>
-            <a href="/" class="logo">VC<span class="lite">4ALL</span></a>
+            <img style="float:left;width: 63px;margin-top: 5px" src="././home/img/fav.png" />
+            <a href="/" class="logo">VC
+                <span class="lite">4ALL</span>
+            </a>
             <!--logo end-->
 
 
@@ -251,9 +256,18 @@
     <!--custome script for all page-->
     <script src="././css/dashboard/scripts.js"></script>
 
+    <!--TableSorter-->
+    <script src="././css/dashboard/jquery.tablesorter.min.js"></script>
+
+
     <script>
         //knob
         $(".knob").knob();
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            $('#keywords').tablesorter();
+        });
     </script>
 
 

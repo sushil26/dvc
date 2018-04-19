@@ -13,7 +13,7 @@ app.controller('upcomingEventController', function ($scope, $window, httpFactory
                 // $scope.eventData = data.data.data;
             }
             else {
-                //alert("Event get Failed");
+             
             }
         })
         console.log("<--Get To Date");

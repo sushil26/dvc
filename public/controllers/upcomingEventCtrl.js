@@ -21,8 +21,9 @@ app.controller('upcomingEventController', function ($scope, $window, httpFactory
                 var reqHr = todayDate.getHours();
                 var reqMin = todayDate.getMinutes();
                 var reqSec = todayDate.getSeconds();
-                var consolidateDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
+                $scope.consolidateDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
                 console.log("consolidateDate: " + consolidateDate);
+                $scope.eventGet();
             }
             else {
             }
@@ -80,7 +81,7 @@ app.controller('upcomingEventController', function ($scope, $window, httpFactory
             }
         })
     }
-    $scope.eventGet();
+   
 
     $scope.viewDetail = function (id) {
         console.log("viewDetail-->");

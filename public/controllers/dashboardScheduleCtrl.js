@@ -850,7 +850,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
     console.log("<--rangeSelected");
   };
 
-  vm.timespanClicked = function (date, cssSelect) {
+  vm.timespanClicked = function (date, css) {
     console.log("timespanClicked-->");
     console.log("date: " + date);
     console.log("teacherPersonalData: " + JSON.stringify($scope.teacherPersonalData));
@@ -858,7 +858,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
     console.log("selectedDateForEvent: " + $scope.selectedDateForEvent);
     $scope.selectedDate = date;
    
-    console.log("cssSelect: "+JSON.stringify(cssSelect));
+    console.log("cssSelect: "+JSON.stringify(css));
 
     $('#timeTable_modal').modal('show');
     // if (vm.calendarView === 'month') {

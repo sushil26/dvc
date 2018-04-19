@@ -1,4 +1,4 @@
-app.controller('upcomingEventController', function ($scope, $window, httpFactory, $uibModal) {
+app.controller('upcomingEventController', function ($scope, $window, httpFactory, $uibModal, $filter) {
     console.log("upcomingEventController==>");
     $scope.loginType = localStorage.getItem("loginType");
     $scope.events = [];

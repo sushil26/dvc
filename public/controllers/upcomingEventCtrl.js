@@ -1,8 +1,9 @@
-app.controller('upcomingEventController', function ($scope, $window, httpFactory, $uibModal) {
+app.controller('upcomingEventController', function ($scope, $window, httpFactory, $uibModal, $filter) {
     console.log("upcomingEventController==>");
     $scope.loginType = localStorage.getItem("loginType");
     $scope.events = [];
-    $scope.today = new Date(); /* ###Note: Current Date ### */
+    // $scope.today = new Date(); /* ###Note: Current Date ### */
+    
     $scope.getToDate = function () {
         console.log("Get To Date-->");
         var api = "https://norecruits.com/vc/getToDate";
@@ -10,7 +11,10 @@ app.controller('upcomingEventController', function ($scope, $window, httpFactory
             var checkStatus = httpFactory.dataValidation(data);
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
-                // $scope.eventData = data.data.data;
+                console.log("data.data.data.date: "+data.data.data.date);
+                $scope.todayDate = data.data.data.date;
+                console.log("data.data.date: "+$filter('date')( $scope.todayDate, "EEE MMM dd yyyy HH:mm:ss a 'GMT'Z (IST)'"));
+                
             }
             else {
              
@@ -19,6 +23,7 @@ app.controller('upcomingEventController', function ($scope, $window, httpFactory
         console.log("<--Get To Date");
     }
     $scope.getToDate();
+   
     $scope.eventGet = function () {
         console.log("eventGet-->");
         var id = localStorage.getItem("id");
@@ -85,7 +90,6 @@ app.controller('upcomingEventController', function ($scope, $window, httpFactory
         })
         console.log("<--viewDetail");
     }
-
 
     $scope.rescheduleEvent = function (id) {
         console.log("reschedule-->");

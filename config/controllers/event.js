@@ -24,6 +24,7 @@ var transporter = nodemailer.createTransport({
 module.exports.getToDate = function (req, res) {
     console.log("getToDate-->");
     var date = new Date();
+    console.log("***date: "+date);
     var responseData = {
         "status": true,
         "message": "date get successfully",

@@ -12,7 +12,7 @@ app.controller('upcomingEventController', function ($scope, $window, httpFactory
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
                 console.log("data.data.data.date: " + data.data.data.date);
-                $scope.todayDate = data.data.data.date;
+                var todayDate = data.data.data.date;
                 var reqDate = todayDate.getDate() - 1;
                 var reqMonth = todayDate.getMonth();
                 var reqYear = todayDate.getFullYear();

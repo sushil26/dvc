@@ -42,7 +42,7 @@
                                     <i class="icon_cogs"></i> Detail</th>
                                 <th>
                                     <i class="icon_cogs"></i> Action</th>
-                            </tr>--------{{events[5].startsAt|date:'EEE MMM dd yyyy HH:mm:ss a'}}#########{{todayDate|date:'EEE MMM dd yyyy HH:mm:ss a'}}====={{events[5].startsAt}}+++{{todayDate}}
+                            </tr>--------{{todayDate}}#########{{today}}====={{events[5].startsAt}}+++{{todayDate}}---{{today}}
                             <tr ng-repeat="event in events" ng-if="event.startsAt>=today">
                                 <td>{{event.title}}</td>
                                 <td>{{event.startsAt | date:'MMM d, y'}}</td>

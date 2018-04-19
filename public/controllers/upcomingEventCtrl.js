@@ -21,8 +21,8 @@ app.controller('upcomingEventController', function ($scope, $window, httpFactory
                 var reqHr = todayDate.getHours();
                 var reqMin = todayDate.getMinutes();
                 var reqSec = todayDate.getSeconds();
-                $scope.consolidateDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
-                console.log("consolidateDate: " + consolidateDate);
+                $scope.todayDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
+                console.log("consolidateDate: " + $scope.consolidateDate);
                 $scope.eventGet();
             }
             else {
@@ -108,7 +108,7 @@ app.controller('upcomingEventController', function ($scope, $window, httpFactory
         var reqHr = date.getHours();
         var reqMin = date.getMinutes();
         var reqSec = date.getSeconds();
-        var consolidateDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
+        $scope.todayDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
         console.log(" $scope.events[id].id: " + $scope.events[id].id);
         // var api = "https://norecruits.com/vc/rescheduleEvent/:id";
 

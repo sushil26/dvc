@@ -5,7 +5,7 @@ app.controller('upcomingEventController', function ($scope, $window, httpFactory
     $scope.today = new Date(); /* ###Note: Current Date ### */
     $scope.getToDate = function () {
         console.log("Get To Date-->");
-        var api = "https://norecruits.com/vc/getToDate/:2";
+        var api = "https://norecruits.com/vc/getToDate";
         httpFactory.get(api).then(function (data) {
             var checkStatus = httpFactory.dataValidation(data);
             console.log("data--" + JSON.stringify(data.data));

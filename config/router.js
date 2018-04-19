@@ -25,7 +25,7 @@ module.exports = function (app) {
     app.get('/vc/getStudListForCS/:clas/:section', event.getStudListForCS);
     app.get('/vc/getTeacherListForCS/:clas/:section', event.getTeacherListForCS);
     app.post('/vc/eventSend', event.eventSend);
-    app.get('/vc/getToDate/:id', event.getToDate);
+    app.get('/vc/getToDate', event.getToDate);
     app.get('/vc/eventGet/:id', event.eventGet);
     app.get('/vc/upcomingEventGet/:id/:currentDateTime', event.upcomingEventGet);
     app.post('/vc/deleteEvent', event.deleteEvent);

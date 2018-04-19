@@ -1,5 +1,6 @@
 app.controller('upcomingEventController', function ($scope, $window, httpFactory, $uibModal) {
     console.log("upcomingEventController==>");
+    $scope.loginType = localStorage.getItem("loginType");
     $scope.events = [];
     $scope.today = new Date(); /* ###Note: Current Date ### */
     $scope.eventGet = function () {

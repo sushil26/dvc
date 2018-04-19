@@ -13,7 +13,7 @@ app.controller('upcomingEventController', function ($scope, $window, httpFactory
             if (checkStatus) {
                 console.log("data.data.data.date: " + data.data.data.date);
                 var todayDate = data.data.data.date;
-                var reqDate = todayDate.getDate() - 1;
+                var reqDate = todayDate.getDate();
                 var reqMonth = todayDate.getMonth();
                 var reqYear = todayDate.getFullYear();
                 var reqHr = todayDate.getHours();

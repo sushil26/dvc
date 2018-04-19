@@ -32,12 +32,14 @@
         <!-- Uncomment below if you prefer to use a text logo -->
         <span>
           <img style="float:left;" src="/home/img/fav.png" />
-          <a href="/"  id="mm" style="font-size: 22px;
+          <a href="/" id="mm" style="font-size: 22px;
           font-weight: 500;
           color: #a8cf44;
           float: left;
           margin-top: 8px;
-          text-transform: uppercase;">VC<span style="color: #5ca5e5;">4ALL</span></a>
+          text-transform: uppercase;">VC
+            <span style="color: #5ca5e5;">4ALL</span>
+          </a>
           <!-- <h1 style="color:azure;float:left;  text-shadow: 2px 2px 4px #000000;">&nbspVC4ALL</h1> -->
 
         </span>
@@ -45,12 +47,16 @@
 
       <nav id="nav-menu-container">
         <ul class="nav-menu">
-          <li>
+          <!-- <li>
             <a href="client" class="btn-get-started" style="text-shadow: 2px 2px 4px #000000;">Go to Conference</a>
-          </li>
+          </li> -->
           <!-- <li id="userAuth" style="display:none;text-shadow: 2px 2px 4px #000000;">
             <a href="https://norecruits.com/mainPage#!/userAuth">Teacher List</a>
           </li> -->
+          <li id="dashboard" style="display:block;">
+            <a href="https://norecruits.com/mainPage#!/dashboard/personalDetail" style="text-shadow: 2px 2px 4px #000000;">Dashboard
+            </a>
+          </li>
           <li>
             <a href="#services" style="text-shadow: 2px 2px 4px #000000;">Features</a>
           </li>
@@ -59,10 +65,7 @@
           </li>
 
 
-          <li id="dashboard" style="display:block;">
-              <a href="https://norecruits.com/mainPage#!/dashboard/personalDetail"style="text-shadow: 2px 2px 4px #000000;">Dashboard
-              </a>
-            </li>
+
 
 
 
@@ -147,8 +150,8 @@
             <div class="box">
               <div class="icon">
                 <a href="">
-                    <i class="fa fa-calendar"></i>
-                 
+                  <i class="fa fa-calendar"></i>
+
                 </a>
               </div>
               <h4 class="title">
@@ -161,7 +164,7 @@
             <div class="box">
               <div class="icon">
                 <a href="">
-                    <i class="fa fa-comments"></i>
+                  <i class="fa fa-comments"></i>
                 </a>
               </div>
               <h4 class="title">
@@ -623,7 +626,7 @@
             /* border: 1px solid white; */
             border-radius: 5px;
             width: 50%;
-            padding: 3px;"> 
+            padding: 3px;">
               <input type="radio" name="loginType" value="teacher" checked="checked"> Teacher &nbsp&nbsp
 
               <input type="radio" name="loginType" value="studParent"> Parent

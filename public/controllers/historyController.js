@@ -28,6 +28,7 @@ app.controller('historyController', function ($scope, $window, httpFactory,  $ui
         })
         console.log("<--Get To Date");
     }
+    $scope.getToDate();
     $scope.eventGet = function () {
         console.log("eventGet-->");
         var id = localStorage.getItem("id");

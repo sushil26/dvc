@@ -850,17 +850,24 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
     console.log("<--rangeSelected");
   };
 
-  vm.timespanClicked = function (date, cssSelect) {
+  vm.timespanClicked = function (date, css) {
     console.log("timespanClicked-->");
     console.log("date: " + date);
     console.log("teacherPersonalData: " + JSON.stringify($scope.teacherPersonalData));
     $scope.selectedDateForEvent = $filter('date')(date, "EEE");
     console.log("selectedDateForEvent: " + $scope.selectedDateForEvent);
     $scope.selectedDate = date;
-   
-    console.log("cssSelect: "+JSON.stringify(cssSelect));
-
+   if($scope.remoteCalendarId)
+   {
     $('#timeTable_modal').modal('show');
+  
+   }
+   else{
+    alert("Select Student");
+   }
+    
+
+   
     // if (vm.calendarView === 'month') {
     //   if ((vm.cellIsOpen && moment(date).startOf('day').isSame(moment(vm.viewDate).startOf('day'))) || cell.events.length === 0 || !cell.inMonth) {
     //     vm.cellIsOpen = false;

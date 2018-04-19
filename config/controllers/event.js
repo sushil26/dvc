@@ -170,6 +170,7 @@ module.exports.upcomingEventGet= function (req, res) {
     var queryDate = req.params.currentDateTime;
     console.log("req.params.id: "+req.params.id);
     console.log("req.params.currentDateTime: "+req.params.currentDateTime);
+    console.log("DateTime: "+new Date());
    // var id ={
    //     userId = req.params.id  {"endsAt":{ $gte: queryDate } }, 
    // } 
@@ -179,7 +180,7 @@ module.exports.upcomingEventGet= function (req, res) {
    if (general.emptyCheck(req.params.id) && general.emptyCheck(req.params.id)) {
     
        event.find({ $or: [ { "userId": req.params.id }, { "remoteCalendarId": req.params.id } ] }).toArray(function (err, listOfevents) {
-           console.log("listOfevents: "+JSON.stringify(listOfevents))
+         //  console.log("listOfevents: "+JSON.stringify(listOfevents))
            if (err) {
 
                responseData = {

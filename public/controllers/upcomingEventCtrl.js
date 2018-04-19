@@ -72,8 +72,6 @@ app.controller('upcomingEventController', function ($scope, $window, httpFactory
 
     $scope.rescheduleEvent = function (id) {
         console.log("reschedule-->");
-        console.log("id: " + id);
-        console.log("events[" + id + "]: " + JSON.stringify($scope.events[id]));
         var date = $scope.events[id].startsAt;
         var reqDate = date.getDate() - 1;
         var reqMonth = date.getMonth();
@@ -91,8 +89,6 @@ app.controller('upcomingEventController', function ($scope, $window, httpFactory
         else {
             alert("Sorry you are not allow to edit event");
         }
-
-
         console.log("<--reschedule");
     }
 

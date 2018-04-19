@@ -23,13 +23,13 @@ var transporter = nodemailer.createTransport({
 
 module.exports.getToDate = function (req, res) {
     console.log("getToDate-->");
-    var date = new Date();
-    var responseData = {
-        "status": true,
-        "message": "date get successfully",
-        "data": {"date": date}
-    }
-    res.status(200).send(responseData);
+    // var date = new Date();
+    // var responseData = {
+    //     "status": true,
+    //     "message": "date get successfully",
+    //     "data": {"date": date}
+    // }
+    // res.status(200).send(responseData);
     console.log("<--getToDate");
 }
 module.exports.eventSend = function (req, res) {

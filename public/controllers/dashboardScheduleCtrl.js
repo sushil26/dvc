@@ -8,6 +8,34 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
   var remoteEvent = []; /* ### Note:receiver all events ### */
   $scope.timeForPeriods = $rootScope.TimeTable_timing;
 
+  $scope.getToDate = function () {
+    console.log("Get To Date-->");
+    var api = "https://norecruits.com/vc/getToDate";
+    httpFactory.get(api).then(function (data) {
+      var checkStatus = httpFactory.dataValidation(data);
+      console.log("data--" + JSON.stringify(data.data));
+      if (checkStatus) {
+        console.log("data.data.data.date: " + data.data.data.date);
+        var todayDate = new Date(data.data.data.date);
+        console.log("todayDate: " + todayDate);
+        var reqDate = todayDate.getDate();
+        console.log("reqDate: " + reqDate);
+        var reqMonth = todayDate.getMonth();
+        var reqYear = todayDate.getFullYear();
+        var reqHr = todayDate.getHours();
+        var reqMin = todayDate.getMinutes();
+        var reqSec = todayDate.getSeconds();
+        $scope.todayDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
+        console.log("consolidateDate: " + $scope.consolidateDate);
+        $scope.eventGet();
+      }
+      else {
+      }
+    })
+    console.log("<--Get To Date");
+  }
+  $scope.getToDate();
+
   $scope.getTeacherData = function () {
     console.log("getTeacherData-->");
     var id = localStorage.getItem("id");
@@ -480,7 +508,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
           "reason": res,
           "senderName": name,
           "senderId": id,
-          "senderMN":senderMN,
+          "senderMN": senderMN,
           "receiverEmail": email,
           "start": $scope.startD,
           "end": $scope.endDateRes,
@@ -491,9 +519,9 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
           "date": $scope.date,
           "sd": $scope.sd,
           "ed": $scope.ed,
-          "receiverName":receiverName, 
-          "receiverId":receiverId, 
-          "receiverMN":receiverMN,
+          "receiverName": receiverName,
+          "receiverId": receiverId,
+          "receiverMN": receiverMN,
           "remoteCalendarId": $scope.remoteCalendarId
         }
         console.log("obj: " + JSON.stringify(obj));
@@ -507,7 +535,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
             alert("Successfully sent the event");
             // vm.events.splice(0, 1);
             var eventPostedData = data.data.data;
-           var objData = {
+            var objData = {
               'id': obj.userId,
               'title': obj.title,
               'color': obj.primColor,
@@ -519,13 +547,14 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
               'url': obj.url,
               "reason": res,
               "senderName": name,
-            "senderId": id,
-            "senderMN":senderMN,
-            "receiverEmail": email,
-            "receiverName": receiverName, 
-            "receiverId": receiverId, 
-            "receiverMN": receiverMN,
-            /*  */           }
+              "senderId": id,
+              "senderMN": senderMN,
+              "receiverEmail": email,
+              "receiverName": receiverName,
+              "receiverId": receiverId,
+              "receiverMN": receiverMN,
+              /*  */
+            }
             ownerEvents.push(objData);
             vm.events.push(objData);
           }
@@ -566,44 +595,52 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
     var red = new Date(resultedEndDate);
     var PersonalRemoteCombineCal = ownerEvents.concat(remoteEvent);
 
-    var conflicts = PersonalRemoteCombineCal.some(function (event) {
-      //   return (event.startsAt <= s && s <= event.endsAt) ||
-      //   event.startsAt <= e && e <= event.endsAt ||
-      //   s <= event.startsAt && event.startsAt <= e ||
-      //   s <= event.endsAt && event.endsAt <= e
-      // });
-      return (event.startsAt <= rsd && rsd < event.endsAt) ||
-        event.startsAt < red && red < event.endsAt ||
-        rsd <= event.startsAt && event.startsAt < red ||
-        rsd < event.endsAt && event.endsAt < red
-    });
-    console.log("conflicts: " + conflicts);
-    if (conflicts) {
-      console.log("conflicts is there");
-      alert("ON this time you/student not free, try on other time");
+    var reqDate = rsd.getDate() - 1;
+    var reqMonth = rsd.getMonth();
+    var reqYear = rsd.getFullYear();
+    var reqHr = rsd.getHours();
+    var reqMin = rsd.getMinutes();
+    var reqSec = rsd.getSeconds();
+    var consolidateDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
+    console.log("consolidateDate: " + consolidateDate + " $scope.todayDate: " + $scope.todayDate);
+    if (consolidateDate > $scope.todayDate) {
+      
+      var conflicts = PersonalRemoteCombineCal.some(function (event) {
+        //   return (event.startsAt <= s && s <= event.endsAt) ||event.startsAt <= e && e <= event.endsAt || s <= event.startsAt && event.startsAt <= e ||s <= event.endsAt && event.endsAt <= e});
+        return (event.startsAt <= rsd && rsd < event.endsAt) ||
+          event.startsAt < red && red < event.endsAt ||
+          rsd <= event.startsAt && event.startsAt < red ||
+          rsd < event.endsAt && event.endsAt < red
+      });
+      console.log("conflicts: " + conflicts);
+      if (conflicts) {
+        console.log("conflicts is there");
+        alert("ON this time you/student not free, try on other time");
+      }
+      else {
+        $('#timeTable_modal').modal('hide');
+        dayEventmodal = $uibModal.open({
+          scope: $scope,
+          templateUrl: '/html/templates/dayEventBook.html',
+          windowClass: 'show',
+          backdropClass: 'show',
+          controller: function ($scope, $uibModalInstance) {
+            var dt = new Date();
+            $scope.eventDetails = {
+              "startsAt": rsd,
+              "endsAt": red
+            }
+            console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
+          }
+        })
+      }
     }
     else {
       $('#timeTable_modal').modal('hide');
-      dayEventmodal = $uibModal.open({
-        scope: $scope,
-        templateUrl: '/html/templates/dayEventBook.html',
-        windowClass: 'show',
-        backdropClass: 'show',
-        controller: function ($scope, $uibModalInstance) {
-          // moment().startOf('day').toDate()
-          var dt = new Date();
-          $scope.eventDetails = {
-            "startsAt": rsd,
-            "endsAt": red
-
-          }
-          console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
-        }
-      })
+      alert("Sorry you have to book the event 24Hrs before of your current date");
     }
     console.log("<--timeTableForEventBook");
   }
-
 
   $scope.eventGet = function () {
     console.log("eventGet-->");
@@ -638,8 +675,8 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
             "title": $scope.eventData[x].title,
             "reason": $scope.eventData[x].reason,
             "receiverEmail": $scope.eventData[x].receiverEmail,
-            "receiverName": $scope.eventData[x].receiverName, 
-            "receiverId": $scope.eventData[x].receiverId, 
+            "receiverName": $scope.eventData[x].receiverName,
+            "receiverId": $scope.eventData[x].receiverId,
             "receiverMN": $scope.eventData[x].receiverMN,
             "remoteCalendarId": $scope.eventData[x].remoteCalendarId
           }
@@ -656,7 +693,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
 
     })
   }
-  $scope.eventGet();
+
 
 
   var vm = this;
@@ -856,18 +893,18 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
     console.log("teacherPersonalData: " + JSON.stringify($scope.teacherPersonalData));
     $scope.selectedDateForEvent = $filter('date')(date, "EEE");
     console.log("selectedDateForEvent: " + $scope.selectedDateForEvent);
-    $scope.selectedDate = date;
-   if($scope.remoteCalendarId)
-   {
-    $('#timeTable_modal').modal('show');
-  
-   }
-   else{
-    alert("Select Student");
-   }
-    
 
-   
+    $scope.selectedDate = date;
+    if ($scope.remoteCalendarId) {
+      $('#timeTable_modal').modal('show');
+
+    }
+    else {
+      alert("Select Student");
+    }
+
+
+
     // if (vm.calendarView === 'month') {
     //   if ((vm.cellIsOpen && moment(date).startOf('day').isSame(moment(vm.viewDate).startOf('day'))) || cell.events.length === 0 || !cell.inMonth) {
     //     vm.cellIsOpen = false;

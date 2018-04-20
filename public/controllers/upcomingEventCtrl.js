@@ -1,6 +1,7 @@
 app.controller('upcomingEventController', function ($scope, $window, httpFactory, $uibModal, $filter) {
     console.log("upcomingEventController==>");
-    $scope.loginType = localStorage.getItem("loginType");
+    $scope.userData = sessionAuthFactory.getAccess("userData");
+    $scope.loginType =  $scope.userData.loginType;
     $scope.events = [];
   //  $scope.today = new Date(); /* ###Note: Current Date ### */
 
@@ -34,7 +35,7 @@ app.controller('upcomingEventController', function ($scope, $window, httpFactory
 
     $scope.eventGet = function () {
         console.log("eventGet-->");
-        var id = localStorage.getItem("id");
+        var id =     $scope.userData.id;
         var api = "https://norecruits.com/vc/eventGet" + "/" + id;
         //var api = "http://localhost:5000/vc/eventGet"+ "/" + id;;
         $scope.calendarOwner = "Your";
@@ -81,8 +82,7 @@ app.controller('upcomingEventController', function ($scope, $window, httpFactory
             }
         })
     }
-   
-
+  
     $scope.viewDetail = function (id) {
         console.log("viewDetail-->");
         console.log("id: " + id);

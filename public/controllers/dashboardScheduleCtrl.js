@@ -581,21 +581,7 @@ $scope.getToDate();
     // $scope.endDateRes = $scope.startDate + ' ' + $scope.endDate;
     var sd = $scope.timeForPeriods[id].startsAt + ' ' + $scope.timeForPeriods[id].meridian;
     var ed = $scope.timeForPeriods[id].endsAt + ' ' + $scope.timeForPeriods[id].meridian;
-    var reqDate = sd.getDate() - 1;
-        var reqMonth = sd.getMonth();
-        var reqYear = sd.getFullYear();
-        var reqHr = sd.getHours();
-        var reqMin = sd.getMinutes();
-        var reqSec = sd.getSeconds();
-        var consolidateDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
-        console.log(" $scope.events[id].id: " + $scope.events[id].id);
-        if(consolidateDate>$scope.todayDate){
-          alert("Coming Soon");
-        }
-        else{
-            alert("Sorry you not allow to edit");
-        }
-
+   
     console.log("sd: " + new Date(sd) + " ed: " + new Date(ed));
     $scope.startDate = $filter('date')($scope.selectedDate, "EEE MMM dd y");
     $scope.startTime = $filter('date')(sd, "h:mm:ss a");
@@ -621,29 +607,29 @@ $scope.getToDate();
         rsd < event.endsAt && event.endsAt < red
     });
     console.log("conflicts: " + conflicts);
-    // if (conflicts) {
-    //   console.log("conflicts is there");
-    //   alert("ON this time you/student not free, try on other time");
-    // }
-    // else {
-    //   $('#timeTable_modal').modal('hide');
-    //   dayEventmodal = $uibModal.open({
-    //     scope: $scope,
-    //     templateUrl: '/html/templates/dayEventBook.html',
-    //     windowClass: 'show',
-    //     backdropClass: 'show',
-    //     controller: function ($scope, $uibModalInstance) {
-    //       // moment().startOf('day').toDate()
-    //       var dt = new Date();
-    //       $scope.eventDetails = {
-    //         "startsAt": rsd,
-    //         "endsAt": red
+    if (conflicts) {
+      console.log("conflicts is there");
+      alert("ON this time you/student not free, try on other time");
+    }
+    else {
+      $('#timeTable_modal').modal('hide');
+      dayEventmodal = $uibModal.open({
+        scope: $scope,
+        templateUrl: '/html/templates/dayEventBook.html',
+        windowClass: 'show',
+        backdropClass: 'show',
+        controller: function ($scope, $uibModalInstance) {
+          // moment().startOf('day').toDate()
+          var dt = new Date();
+          $scope.eventDetails = {
+            "startsAt": rsd,
+            "endsAt": red
 
-    //       }
-    //       console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
-    //     }
-    //   })
-    // }
+          }
+          console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
+        }
+      })
+    }
     console.log("<--timeTableForEventBook");
   }
 
@@ -899,15 +885,30 @@ $scope.getToDate();
     console.log("teacherPersonalData: " + JSON.stringify($scope.teacherPersonalData));
     $scope.selectedDateForEvent = $filter('date')(date, "EEE");
     console.log("selectedDateForEvent: " + $scope.selectedDateForEvent);
+    var reqDate = date.getDate() - 1;
+    var reqMonth = date.getMonth();
+    var reqYear = date.getFullYear();
+    var reqHr = date.getHours();
+    var reqMin = date.getMinutes();
+    var reqSec = date.getSeconds();
+    var consolidateDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
+    console.log(" $scope.events[id].id: " + $scope.events[id].id);
+    if(consolidateDate>$scope.todayDate){
+      alert("Coming Soon");
+    }
+    else{
+        alert("Sorry you not allow to edit");
+    }
+
     $scope.selectedDate = date;
-   if($scope.remoteCalendarId)
-   {
-    $('#timeTable_modal').modal('show');
+  //  if($scope.remoteCalendarId)
+  //  {
+  //   $('#timeTable_modal').modal('show');
   
-   }
-   else{
-    alert("Select Student");
-   }
+  //  }
+  //  else{
+  //   alert("Select Student");
+  //  }
     
 
    

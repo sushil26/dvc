@@ -892,7 +892,7 @@ $scope.getToDate();
     var reqMin = date.getMinutes();
     var reqSec = date.getSeconds();
     var consolidateDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
-    console.log(" $scope.events[id].id: " + $scope.events[id].id);
+    console.log("consolidateDate: " + consolidateDate+ " $scope.todayDate: "+>$scope.todayDate);
     if(consolidateDate>$scope.todayDate){
       alert("Coming Soon");
     }

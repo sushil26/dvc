@@ -133,7 +133,7 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
         // localStorage.setItem("id", data.data._id);
         $scope.userData = sessionAuthFactory.getAccess("userData");
         $scope.loginType = userData.loginType
-        console.log(" $scope.userData: " + $scope.userData);
+        console.log(" $scope.userData: " + $scope.loginType);
       }
       else if (data.data.loginType == 'studParent') {
         var userData = {

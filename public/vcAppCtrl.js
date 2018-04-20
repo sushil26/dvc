@@ -65,10 +65,12 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
       console.log("data--" + JSON.stringify(data.data));
       console.log("checkStatus" + checkStatus);
       if (checkStatus) {
+        console.log("data.message: "+data.message);
         if (data.message == 'Profile Inactive') {
           alert("Your Profile is inactive, inform your system admin to verify it");
         }
         else if (data.message == 'Login Successfully') {
+          console.log("Login Successfully");
           alert("Logged in Successfull");
           sessionSet(data);
           document.getElementById("appLogin").style.display = 'none';

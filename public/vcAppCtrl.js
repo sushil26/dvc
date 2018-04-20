@@ -119,6 +119,10 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
           "id": data.data._id
         }
         sessionAuthFactory.setAccess("userData", userData);
+        console.log("userData: "+userData);
+        console.log("userData: "+JSON.stringify(userData));
+        console.log("sessionAuthFactory.getAccess(userData): "+sessionAuthFactory.getAccess("userData"));
+        console.log("sessionAuthFactory.getAccess(userData): "+JSON.stringify(sessionAuthFactory.getAccess("userData")));
         // localStorage.setItem("userData", userData);
         // localStorage.setItem("userName", data.data.teacherName);
         // localStorage.setItem("status", data.data.status);

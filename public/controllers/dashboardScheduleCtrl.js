@@ -38,7 +38,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
 
   $scope.getTeacherData = function () {
     console.log("getTeacherData-->");
-    var id = localStorage.getItem("id");
+    var id = $scope.userData.id;
     var api = "https://norecruits.com/vc/teacherDetail" + "/" + id;
     //var api = "http://localhost:5000/vc/teacherDetail" + "/" + id;
     //var api = "http://localhost:5000/vc/eventGet";
@@ -55,7 +55,6 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
         //   console.log("$scope.css: " + JSON.stringify($scope.css));
       }
       else {
-
       }
     })
     console.log("<--getTeacherData");
@@ -63,7 +62,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
 
   $scope.getStudentData = function () {
     console.log("getTeacherData-->");
-    var id = localStorage.getItem("id");
+    var id =  $scope.userData.id;
     var api = "https://norecruits.com/vc/studentDetail" + "/" + id;
     console.log("api: " + api);
     $scope.teacherList = [];
@@ -281,18 +280,13 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
   var loginType = $scope.userData.loginType;
   if (loginType == 'admin') {
     console.log("loginType: " + localStorage.getItem("loginType"));
-    // document.getElementById('userAuth').style.display = "block";
-    $scope.userLoginType = 'admin';
+     $scope.userLoginType = 'admin';
   }
   else if (loginType == 'teacher') {
-    // document.getElementById('userAuth').style.display = "none";
-    $scope.userLoginType = 'teacher';
+     $scope.userLoginType = 'teacher';
     $scope.getTeacherData();
-
-
   }
   else if (loginType == 'studParent') {
-    //document.getElementById('userAuth').style.display = "none";
     $scope.userLoginType = 'studParent';
     $scope.getStudentData();
   }
@@ -645,7 +639,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
 
   $scope.eventGet = function () {
     console.log("eventGet-->");
-    var id = localStorage.getItem("id");
+    var id =  $scope.userData.id
     var api = "https://norecruits.com/vc/eventGet" + "/" + id;
     //var api = "http://localhost:5000/vc/eventGet"+ "/" + id;;
     $scope.calendarOwner = "Your";

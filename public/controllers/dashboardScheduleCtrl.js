@@ -554,7 +554,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
               "receiverId": receiverId,
               "receiverMN": receiverMN,
               /*  */
-}
+            }
             ownerEvents.push(objData);
             vm.events.push(objData);
           }
@@ -602,52 +602,44 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
     var reqMin = rsd.getMinutes();
     var reqSec = rsd.getSeconds();
     var consolidateDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
-    console.log("consolidateDate: " + consolidateDate+ " $scope.todayDate: "+$scope.todayDate);
-    if(consolidateDate>$scope.todayDate){
-      alert("Coming Soon");
+    console.log("consolidateDate: " + consolidateDate + " $scope.todayDate: " + $scope.todayDate);
+    if (consolidateDate > $scope.todayDate) {
+      
+      var conflicts = PersonalRemoteCombineCal.some(function (event) {
+        //   return (event.startsAt <= s && s <= event.endsAt) ||event.startsAt <= e && e <= event.endsAt || s <= event.startsAt && event.startsAt <= e ||s <= event.endsAt && event.endsAt <= e});
+        return (event.startsAt <= rsd && rsd < event.endsAt) ||
+          event.startsAt < red && red < event.endsAt ||
+          rsd <= event.startsAt && event.startsAt < red ||
+          rsd < event.endsAt && event.endsAt < red
+      });
+      console.log("conflicts: " + conflicts);
+      if (conflicts) {
+        console.log("conflicts is there");
+        alert("ON this time you/student not free, try on other time");
+      }
+      else {
+        $('#timeTable_modal').modal('hide');
+        dayEventmodal = $uibModal.open({
+          scope: $scope,
+          templateUrl: '/html/templates/dayEventBook.html',
+          windowClass: 'show',
+          backdropClass: 'show',
+          controller: function ($scope, $uibModalInstance) {
+            var dt = new Date();
+            $scope.eventDetails = {
+              "startsAt": rsd,
+              "endsAt": red
+            }
+            console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
+          }
+        })
+      }
     }
-    else{
-        alert("Sorry you not allow to edit");
+    else {
+      alert("Sorry you have to book the event 24Hrs before of your current date");
     }
-
-    var conflicts = PersonalRemoteCombineCal.some(function (event) {
-      //   return (event.startsAt <= s && s <= event.endsAt) ||
-      //   event.startsAt <= e && e <= event.endsAt ||
-      //   s <= event.startsAt && event.startsAt <= e ||
-      //   s <= event.endsAt && event.endsAt <= e
-      // });
-      return (event.startsAt <= rsd && rsd < event.endsAt) ||
-        event.startsAt < red && red < event.endsAt ||
-        rsd <= event.startsAt && event.startsAt < red ||
-        rsd < event.endsAt && event.endsAt < red
-    });
-    console.log("conflicts: " + conflicts);
-    if (conflicts) {
-      console.log("conflicts is there");
-      alert("ON this time you/student not free, try on other time");
-    }
-    // else {
-    //   $('#timeTable_modal').modal('hide');
-    //   dayEventmodal = $uibModal.open({
-    //     scope: $scope,
-    //     templateUrl: '/html/templates/dayEventBook.html',
-    //     windowClass: 'show',
-    //     backdropClass: 'show',
-    //     controller: function ($scope, $uibModalInstance) {
-    //       // moment().startOf('day').toDate()
-    //       var dt = new Date();
-    //       $scope.eventDetails = {
-    //         "startsAt": rsd,
-    //         "endsAt": red
-
-    //       }
-    //       console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
-    //     }
-    //   })
-    // }
     console.log("<--timeTableForEventBook");
   }
-
 
   $scope.eventGet = function () {
     console.log("eventGet-->");

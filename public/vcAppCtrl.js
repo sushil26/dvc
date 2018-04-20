@@ -50,9 +50,9 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
   $scope.logVC = function(loginType, email, Password) {
     console.log("logVC from signalingSocket.js");
        var obj = {
-      "email": $scope.email,
-      "password": $scope.Password,
-      "loginType": $scope.loginType
+      "email": email,
+      "password": Password,
+      "loginType": loginType
     };
     console.log("obj: " + JSON.stringify(obj));
     console.log("logVC");

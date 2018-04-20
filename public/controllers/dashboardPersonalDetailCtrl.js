@@ -6,12 +6,10 @@ app.controller('dashboardPersonalDetailController', function ($scope, $window, h
     $scope.loginType = $scope.userData.loginType;
     $scope.userName = $scope.userData.userName;
 
-var id=$scope.userData.id;
+    var id = $scope.userData.id;
 
     $scope.getTeacherDetails = function (id) {
         console.log("getTeacherData-->");
-       
-
         var api = "https://norecruits.com/vc/teacherDetail" + "/" + id;
         //var api = "http://localhost:5000/vc/teacherDetail" + "/" + id;
         //var api = "http://localhost:5000/vc/eventGet";
@@ -35,7 +33,7 @@ var id=$scope.userData.id;
 
     $scope.getStudentDetails = function (id) {
         console.log("getTeacherData-->");
-      
+
         var api = "https://norecruits.com/vc/studentDetail" + "/" + id;
         console.log("api: " + api);
         $scope.teacherList = [];

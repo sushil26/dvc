@@ -8,6 +8,34 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
   var remoteEvent = []; /* ### Note:receiver all events ### */
   $scope.timeForPeriods = $rootScope.TimeTable_timing;
 
+  $scope.getToDate = function () {
+    console.log("Get To Date-->");
+    var api = "https://norecruits.com/vc/getToDate";
+    httpFactory.get(api).then(function (data) {
+        var checkStatus = httpFactory.dataValidation(data);
+        console.log("data--" + JSON.stringify(data.data));
+        if (checkStatus) {
+            console.log("data.data.data.date: " + data.data.data.date);
+            var todayDate =new Date(data.data.data.date);
+            console.log("todayDate: "+todayDate);
+            var reqDate = todayDate.getDate();
+            console.log("reqDate: "+reqDate);
+            var reqMonth = todayDate.getMonth();
+            var reqYear = todayDate.getFullYear();
+            var reqHr = todayDate.getHours();
+            var reqMin = todayDate.getMinutes();
+            var reqSec = todayDate.getSeconds();
+            $scope.todayDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
+            console.log("consolidateDate: " + $scope.consolidateDate);
+            $scope.eventGet();
+        }
+        else {
+        }
+    })
+    console.log("<--Get To Date");
+}
+$scope.getToDate();
+
   $scope.getTeacherData = function () {
     console.log("getTeacherData-->");
     var id = localStorage.getItem("id");
@@ -553,6 +581,21 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
     // $scope.endDateRes = $scope.startDate + ' ' + $scope.endDate;
     var sd = $scope.timeForPeriods[id].startsAt + ' ' + $scope.timeForPeriods[id].meridian;
     var ed = $scope.timeForPeriods[id].endsAt + ' ' + $scope.timeForPeriods[id].meridian;
+    var reqDate = sd.getDate() - 1;
+        var reqMonth = sd.getMonth();
+        var reqYear = sd.getFullYear();
+        var reqHr = sd.getHours();
+        var reqMin = sd.getMinutes();
+        var reqSec = sd.getSeconds();
+        var consolidateDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
+        console.log(" $scope.events[id].id: " + $scope.events[id].id);
+        if(consolidateDate>$scope.todayDate){
+          alert("Coming Soon");
+        }
+        else{
+            alert("Sorry you not allow to edit");
+        }
+
     console.log("sd: " + new Date(sd) + " ed: " + new Date(ed));
     $scope.startDate = $filter('date')($scope.selectedDate, "EEE MMM dd y");
     $scope.startTime = $filter('date')(sd, "h:mm:ss a");
@@ -578,29 +621,29 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
         rsd < event.endsAt && event.endsAt < red
     });
     console.log("conflicts: " + conflicts);
-    if (conflicts) {
-      console.log("conflicts is there");
-      alert("ON this time you/student not free, try on other time");
-    }
-    else {
-      $('#timeTable_modal').modal('hide');
-      dayEventmodal = $uibModal.open({
-        scope: $scope,
-        templateUrl: '/html/templates/dayEventBook.html',
-        windowClass: 'show',
-        backdropClass: 'show',
-        controller: function ($scope, $uibModalInstance) {
-          // moment().startOf('day').toDate()
-          var dt = new Date();
-          $scope.eventDetails = {
-            "startsAt": rsd,
-            "endsAt": red
+    // if (conflicts) {
+    //   console.log("conflicts is there");
+    //   alert("ON this time you/student not free, try on other time");
+    // }
+    // else {
+    //   $('#timeTable_modal').modal('hide');
+    //   dayEventmodal = $uibModal.open({
+    //     scope: $scope,
+    //     templateUrl: '/html/templates/dayEventBook.html',
+    //     windowClass: 'show',
+    //     backdropClass: 'show',
+    //     controller: function ($scope, $uibModalInstance) {
+    //       // moment().startOf('day').toDate()
+    //       var dt = new Date();
+    //       $scope.eventDetails = {
+    //         "startsAt": rsd,
+    //         "endsAt": red
 
-          }
-          console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
-        }
-      })
-    }
+    //       }
+    //       console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
+    //     }
+    //   })
+    // }
     console.log("<--timeTableForEventBook");
   }
 
@@ -656,7 +699,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
 
     })
   }
-  $scope.eventGet();
+
 
 
   var vm = this;

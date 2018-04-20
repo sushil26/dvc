@@ -120,7 +120,7 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
           "loginType": data.loginType,
           "id": data.data._id
         }
-        sessionAuthFactory.setAccess("userData", userData);
+        sessionAuthFactory.setAccess(userData);
         console.log("userData: "+userData);
         console.log("userData: "+JSON.stringify(userData));
         console.log("sessionAuthFactory.getAccess(userData): "+sessionAuthFactory.getAccess("userData"));

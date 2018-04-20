@@ -12,29 +12,29 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
     console.log("Get To Date-->");
     var api = "https://norecruits.com/vc/getToDate";
     httpFactory.get(api).then(function (data) {
-        var checkStatus = httpFactory.dataValidation(data);
-        console.log("data--" + JSON.stringify(data.data));
-        if (checkStatus) {
-            console.log("data.data.data.date: " + data.data.data.date);
-            var todayDate =new Date(data.data.data.date);
-            console.log("todayDate: "+todayDate);
-            var reqDate = todayDate.getDate();
-            console.log("reqDate: "+reqDate);
-            var reqMonth = todayDate.getMonth();
-            var reqYear = todayDate.getFullYear();
-            var reqHr = todayDate.getHours();
-            var reqMin = todayDate.getMinutes();
-            var reqSec = todayDate.getSeconds();
-            $scope.todayDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
-            console.log("consolidateDate: " + $scope.consolidateDate);
-            $scope.eventGet();
-        }
-        else {
-        }
+      var checkStatus = httpFactory.dataValidation(data);
+      console.log("data--" + JSON.stringify(data.data));
+      if (checkStatus) {
+        console.log("data.data.data.date: " + data.data.data.date);
+        var todayDate = new Date(data.data.data.date);
+        console.log("todayDate: " + todayDate);
+        var reqDate = todayDate.getDate();
+        console.log("reqDate: " + reqDate);
+        var reqMonth = todayDate.getMonth();
+        var reqYear = todayDate.getFullYear();
+        var reqHr = todayDate.getHours();
+        var reqMin = todayDate.getMinutes();
+        var reqSec = todayDate.getSeconds();
+        $scope.todayDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
+        console.log("consolidateDate: " + $scope.consolidateDate);
+        $scope.eventGet();
+      }
+      else {
+      }
     })
     console.log("<--Get To Date");
-}
-$scope.getToDate();
+  }
+  $scope.getToDate();
 
   $scope.getTeacherData = function () {
     console.log("getTeacherData-->");
@@ -508,7 +508,7 @@ $scope.getToDate();
           "reason": res,
           "senderName": name,
           "senderId": id,
-          "senderMN":senderMN,
+          "senderMN": senderMN,
           "receiverEmail": email,
           "start": $scope.startD,
           "end": $scope.endDateRes,
@@ -519,9 +519,9 @@ $scope.getToDate();
           "date": $scope.date,
           "sd": $scope.sd,
           "ed": $scope.ed,
-          "receiverName":receiverName, 
-          "receiverId":receiverId, 
-          "receiverMN":receiverMN,
+          "receiverName": receiverName,
+          "receiverId": receiverId,
+          "receiverMN": receiverMN,
           "remoteCalendarId": $scope.remoteCalendarId
         }
         console.log("obj: " + JSON.stringify(obj));
@@ -535,7 +535,7 @@ $scope.getToDate();
             alert("Successfully sent the event");
             // vm.events.splice(0, 1);
             var eventPostedData = data.data.data;
-           var objData = {
+            var objData = {
               'id': obj.userId,
               'title': obj.title,
               'color': obj.primColor,
@@ -547,13 +547,14 @@ $scope.getToDate();
               'url': obj.url,
               "reason": res,
               "senderName": name,
-            "senderId": id,
-            "senderMN":senderMN,
-            "receiverEmail": email,
-            "receiverName": receiverName, 
-            "receiverId": receiverId, 
-            "receiverMN": receiverMN,
-            /*  */           }
+              "senderId": id,
+              "senderMN": senderMN,
+              "receiverEmail": email,
+              "receiverName": receiverName,
+              "receiverId": receiverId,
+              "receiverMN": receiverMN,
+              /*  */
+}
             ownerEvents.push(objData);
             vm.events.push(objData);
           }
@@ -581,21 +582,6 @@ $scope.getToDate();
     // $scope.endDateRes = $scope.startDate + ' ' + $scope.endDate;
     var sd = $scope.timeForPeriods[id].startsAt + ' ' + $scope.timeForPeriods[id].meridian;
     var ed = $scope.timeForPeriods[id].endsAt + ' ' + $scope.timeForPeriods[id].meridian;
-   console.log("sd: "+sd);
-    var reqDate = sd.getDate() - 1;
-    var reqMonth = sd.getMonth();
-    var reqYear = sd.getFullYear();
-    var reqHr = sd.getHours();
-    var reqMin = sd.getMinutes();
-    var reqSec = sd.getSeconds();
-    var consolidateDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
-    console.log("consolidateDate: " + consolidateDate+ " $scope.todayDate: "+$scope.todayDate);
-    if(consolidateDate>$scope.todayDate){
-      alert("Coming Soon");
-    }
-    else{
-        alert("Sorry you not allow to edit");
-    }
     console.log("sd: " + new Date(sd) + " ed: " + new Date(ed));
     $scope.startDate = $filter('date')($scope.selectedDate, "EEE MMM dd y");
     $scope.startTime = $filter('date')(sd, "h:mm:ss a");
@@ -608,6 +594,21 @@ $scope.getToDate();
     var rsd = new Date(resultedStartDate);
     var red = new Date(resultedEndDate);
     var PersonalRemoteCombineCal = ownerEvents.concat(remoteEvent);
+
+    var reqDate = rsd.getDate() - 1;
+    var reqMonth = rsd.getMonth();
+    var reqYear = rsd.getFullYear();
+    var reqHr = rsd.getHours();
+    var reqMin = rsd.getMinutes();
+    var reqSec = rsd.getSeconds();
+    var consolidateDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
+    console.log("consolidateDate: " + consolidateDate+ " $scope.todayDate: "+$scope.todayDate);
+    if(consolidateDate>$scope.todayDate){
+      alert("Coming Soon");
+    }
+    else{
+        alert("Sorry you not allow to edit");
+    }
 
     var conflicts = PersonalRemoteCombineCal.some(function (event) {
       //   return (event.startsAt <= s && s <= event.endsAt) ||
@@ -681,8 +682,8 @@ $scope.getToDate();
             "title": $scope.eventData[x].title,
             "reason": $scope.eventData[x].reason,
             "receiverEmail": $scope.eventData[x].receiverEmail,
-            "receiverName": $scope.eventData[x].receiverName, 
-            "receiverId": $scope.eventData[x].receiverId, 
+            "receiverName": $scope.eventData[x].receiverName,
+            "receiverId": $scope.eventData[x].receiverId,
             "receiverMN": $scope.eventData[x].receiverMN,
             "remoteCalendarId": $scope.eventData[x].remoteCalendarId
           }
@@ -899,19 +900,18 @@ $scope.getToDate();
     console.log("teacherPersonalData: " + JSON.stringify($scope.teacherPersonalData));
     $scope.selectedDateForEvent = $filter('date')(date, "EEE");
     console.log("selectedDateForEvent: " + $scope.selectedDateForEvent);
-    
-    $scope.selectedDate = date;
-   if($scope.remoteCalendarId)
-   {
-    $('#timeTable_modal').modal('show');
-  
-   }
-   else{
-    alert("Select Student");
-   }
-    
 
-   
+    $scope.selectedDate = date;
+    if ($scope.remoteCalendarId) {
+      $('#timeTable_modal').modal('show');
+
+    }
+    else {
+      alert("Select Student");
+    }
+
+
+
     // if (vm.calendarView === 'month') {
     //   if ((vm.cellIsOpen && moment(date).startOf('day').isSame(moment(vm.viewDate).startOf('day'))) || cell.events.length === 0 || !cell.inMonth) {
     //     vm.cellIsOpen = false;

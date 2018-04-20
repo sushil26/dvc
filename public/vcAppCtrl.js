@@ -197,8 +197,8 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
     localStorage.removeItem("loginType");
     localStorage.removeItem("id");
     localStorage.removeItem("css");
-    document.getElementById("appLogout").style.display = 'none';
-    document.getElementById("appLogin").style.display = 'block';
+    // document.getElementById("appLogout").style.display = 'none';
+    // document.getElementById("appLogin").style.display = 'block';
   }
 
   $scope.loginClick = function () {

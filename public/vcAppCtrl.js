@@ -201,15 +201,15 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
     // document.getElementById("appLogin").style.display = 'block';
   }
 
-  $scope.loginClick = function () {
-    console.log("loginClick-->");
+  $scope.vcLogin = function () {
+    console.log("vcLogin-->");
     dayEventmodal = $uibModal.open({
       scope: $scope,
       templateUrl: '/html/templates/loginPopup.html',
       windowClass: 'show',
       backdropClass: 'show',
       controller: function ($scope, $uibModalInstance) {
-        console.log("<--loginClick");
+        console.log("<--vcLogin");
       }
     })
   }

@@ -48,7 +48,7 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
 
   }
 
-  function logVC() {
+  $scope.logVC = function() {
     console.log("logVC from signalingSocket.js");
     // console.log("email: " + document.getElementById("crdEmail").value);
     // var email = document.getElementById("crdEmail").value;
@@ -159,48 +159,9 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
     }
     console.log("<--sessionSet");
   }
-  function regVc() {
-    console.log("regVc");
-    var un = document.getElementById("regVC_un").value;
-    var emId = document.getElementById("regVC_emailId").value;
-    var pswd = document.getElementById("regVC_pswd").value;
-    var obj = {
-      "userName": un,
-      "email": emId,
-      "password": pswd
-    };
-    $.ajax({
-      url: "https://norecruits.com/vc/register4VC",
-      //url: "http://localhost:5000/vc/register4VC",
-      type: "POST",
-      data: JSON.stringify(obj),
-      contentType: "application/json",
-      dataType: 'json',
-      success: function (data) {
-        console.log("data: " + JSON.stringify(data));
-        if (data.message == 'Failed to Register' || data.message == 'empty value found') {
-          alert("Failed to register try again");
-        }
-        else if (data.message == 'Registeration Successfull') {
-          alert("Registeration Successfull");
-        }
-      }
-    })
-  }
 
-  $scope.vcLogout = function() {
-    console.log("vcLogout");
-    localStorage.removeItem("userData");
-    localStorage.removeItem("userName");
-    localStorage.removeItem("status");
-    localStorage.removeItem("email");
-    localStorage.removeItem("loginType");
-    localStorage.removeItem("id");
-    localStorage.removeItem("css");
-    // document.getElementById("appLogout").style.display = 'none';
-    // document.getElementById("appLogin").style.display = 'block';
-  }
 
+ 
   $scope.vcLogin = function () {
     console.log("vcLogin-->");
     dayEventmodal = $uibModal.open({
@@ -215,19 +176,13 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
   }
 
   $scope.vcLogout = function () {
-    console.log("vcLogout");
-    window.location = "https://norecruits.com/client";
+    console.log("vcLogout-->");
     localStorage.removeItem("userData");
     localStorage.removeItem("userName");
     localStorage.removeItem("status");
     localStorage.removeItem("email");
     localStorage.removeItem("loginType");
-    document.getElementById("appLogin").style.display = "block";
-    document.getElementById("appLogout").style.display = "none";
-    document.getElementById("videoConferenceUrl").style.display = "none";
-    document.getElementById("scheduleMeeting").style.display = "none";
-    document.getElementById("videoConferenceLinkExtention").style.display =
-      "none";
+    console.log("<--vcLogout");
   };
 
   $rootScope.TimeTable_timing = [

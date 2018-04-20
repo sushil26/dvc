@@ -1,30 +1,15 @@
 app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, $timeout, $state, $http, $uibModal, sessionAuthFactory) {
   console.log("controller==>");
   var loginModal; /* ### Note: get login modal instance on this variable ###*/
-var userName;
-  if (sessionAuthFactory.getAccess("userData")) {
-   
-  $scope.userData =sessionAuthFactory.getAccess("userData");
+  var userName;
+  $scope.userData = sessionAuthFactory.getAccess("userData");
+  if ($scope.userData) {
     userName = $scope.userData.userName;
-    $scope.loginType = $scope.userData.loginType;
-    console.log("userData: " +  JSON.stringify($scope.userData));
+    // $scope.loginType = $scope.userData.loginType;
+    console.log("userData: " + JSON.stringify($scope.userData));
     console.log("userName: " + userName);
-    console.log("loginType: " + $scope.loginType);
-    // if (loginType == 'teacher') {
-    //   document.getElementById("appLogin").style.display = 'none';
-    //   document.getElementById("appLogout").style.display = 'block';
-    // }
-    // else if (loginType == 'admin') {
-    //   document.getElementById("appLogin").style.display = 'none';
-    //   document.getElementById("appLogout").style.display = 'block';
-    // }
-    // else if (loginType == 'studParent') {
-    //   document.getElementById("appLogin").style.display = 'none';
-    //   document.getElementById("appLogout").style.display = 'block';
-    // }
-
+    console.log("loginType: " + $scope.userData.loginType);
   }
- 
   $scope.logVC = function (loginType, email, Password) {
     console.log("logVC from signalingSocket.js");
     loginModal.close('resetModel');
@@ -53,7 +38,7 @@ var userName;
         else if (data.data.message == 'Login Successfully') {
           console.log("Login Successfully");
           alert("Logged in Successfull");
-          
+
           $scope.sessionSet(datas);
           // document.getElementById("appLogin").style.display = 'none';
           // document.getElementById("appLogout").style.display = 'block';
@@ -99,12 +84,12 @@ var userName;
           "id": data.data._id
         }
         sessionAuthFactory.setAccess(userData);
-        
+
         $scope.userData = sessionAuthFactory.getAccess("userData");
         userName = $scope.userData.userName;
         $scope.loginType = $scope.userData.loginType;
-       
-      
+
+
       }
       else if (data.data.loginType == 'studParent') {
         var userData = {
@@ -115,7 +100,7 @@ var userName;
           "id": data.data._id
         }
         sessionAuthFactory.setAccess(userData);
-        
+
         $scope.userData = sessionAuthFactory.getAccess("userData");
         userName = $scope.userData.userName;
         $scope.loginType = $scope.userData.loginType;
@@ -128,11 +113,11 @@ var userName;
           "loginType": data.data.loginType
         }
         sessionAuthFactory.setAccess(userData);
-        
+
         $scope.userData = sessionAuthFactory.getAccess("userData");
         userName = $scope.userData.userName;
         $scope.loginType = $scope.userData.loginType;
-      
+
       }
     } else {
       alert("Sorry, your browser does not support Web Storage...");

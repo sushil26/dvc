@@ -157,8 +157,10 @@ var userName;
 
   $scope.vcLogout = function () {
     console.log("vcLogout-->");
-    sessionAuthFactory.clearAccess(userData);
+    sessionAuthFactory.clearAccess();
     $scope.userData = sessionAuthFactory.getAccess("userData");
+    userName = $scope.userData.userName;
+    $scope.loginType = $scope.userData.loginType;
     console.log("<--vcLogout");
   };
 

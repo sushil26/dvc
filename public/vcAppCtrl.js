@@ -125,8 +125,9 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
         // localStorage.setItem("email", data.data.teacherEmail);
         // localStorage.setItem("loginType", data.loginType);
         // localStorage.setItem("id", data.data._id);
-        $scope.loginType = sessionAuthFactory.getAccess("userData").loginType;
-        console.log(" $scope.loginType: " + $scope.loginType);
+        $scope.userData = sessionAuthFactory.getAccess("userData");
+        $scope.loginType = userData.loginType
+        console.log(" $scope.userData: " + $scope.userData);
       }
       else if (data.data.loginType == 'studParent') {
         var userData = {

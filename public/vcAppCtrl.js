@@ -6,22 +6,22 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
     console.log("User Name from session: " + localStorage.getItem("userData"));
     var userData = JSON.stringify(localStorage.getItem("userData"));
     userName = localStorage.getItem("userName");
-    loginType = localStorage.getItem("loginType");
+    $scope.loginType = localStorage.getItem("loginType");
     console.log("userData: " + userData);
     console.log("userName: " + userName);
     console.log("loginType: " + loginType);
-    if (loginType == 'teacher') {
-      document.getElementById("appLogin").style.display = 'none';
-      document.getElementById("appLogout").style.display = 'block';
-    }
-    else if (loginType == 'admin') {
-      document.getElementById("appLogin").style.display = 'none';
-      document.getElementById("appLogout").style.display = 'block';
-    }
-    else if (loginType == 'studParent') {
-      document.getElementById("appLogin").style.display = 'none';
-      document.getElementById("appLogout").style.display = 'block';
-    }
+    // if (loginType == 'teacher') {
+    //   document.getElementById("appLogin").style.display = 'none';
+    //   document.getElementById("appLogout").style.display = 'block';
+    // }
+    // else if (loginType == 'admin') {
+    //   document.getElementById("appLogin").style.display = 'none';
+    //   document.getElementById("appLogout").style.display = 'block';
+    // }
+    // else if (loginType == 'studParent') {
+    //   document.getElementById("appLogin").style.display = 'none';
+    //   document.getElementById("appLogout").style.display = 'block';
+    // }
 
   }
   else {

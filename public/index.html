@@ -195,13 +195,13 @@
           <li>
             <a href="#contact" style="text-shadow: 2px 2px 4px #000000;">About Us</a>
           </li>
-          <li id="appLogin" style="display:block;">
+          <li ng-if="loginType==undefined" style="display:block;">
             <a href="#" ng-click="loginClick()" style="text-shadow: 2px 2px 4px #000000;">Login</a>
           </li>
           <!-- <li id="appReg" style="display:block;">
             <a href="#" data-target="#regVC" data-toggle="modal" style="text-shadow: 2px 2px 4px #000000;">Register</a>
           </li> -->
-          <li id="appLogout" style="display:none;">
+          <li ng-if="loginType == 'teacher'"  style="display:none;">
             <a href="#" onclick="vcLogout()" style="text-shadow: 2px 2px 4px #000000;">Logout</a>
           </li>
           <!-- <li>

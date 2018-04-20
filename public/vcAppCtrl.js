@@ -188,7 +188,7 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
     })
   }
 
-  function vcLogout() {
+  $scope.vcLogout = function() {
     console.log("vcLogout");
     localStorage.removeItem("userData");
     localStorage.removeItem("userName");

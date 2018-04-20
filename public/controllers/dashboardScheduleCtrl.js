@@ -277,26 +277,27 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
     $scope.getSelectedTeacherPersonalData($scope.remoteCalendarId);
     console.log("<--getSTCalendar");
   }
-
-  if (localStorage.getItem("loginType") == 'admin') {
+  $scope.userData = sessionAuthFactory.getAccess("userData");
+  var loginType = $scope.userData.loginType;
+  if (loginType == 'admin') {
     console.log("loginType: " + localStorage.getItem("loginType"));
     // document.getElementById('userAuth').style.display = "block";
     $scope.userLoginType = 'admin';
   }
-  else if (localStorage.getItem("loginType") == 'teacher') {
+  else if (loginType == 'teacher') {
     // document.getElementById('userAuth').style.display = "none";
     $scope.userLoginType = 'teacher';
     $scope.getTeacherData();
 
 
   }
-  else if (localStorage.getItem("loginType") == 'studParent') {
+  else if (loginType == 'studParent') {
     //document.getElementById('userAuth').style.display = "none";
     $scope.userLoginType = 'studParent';
     $scope.getStudentData();
   }
   else {
-    console.log("localStorage.getItem('loginType'): " + localStorage.getItem("loginType"));
+    console.log("loginType" +  loginType);
     // window.location.href = "https://norecruits.com";
   }
 

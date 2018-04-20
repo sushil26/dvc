@@ -126,8 +126,16 @@ var app = angular.module('vcApp', ['ui.router', 'mwl.calendar', 'ui.bootstrap', 
         templateUrl: '/html/dashboard/history.html',
         controller: 'historyController'
       })
+      .state('dashboard.contact', {
+        url: contact(),
+        templateUrl: '/html/dashboard/contact.html',
+        controller: 'contactController'
+      })
     
   });
+  function contact() {
+    return '/contact';
+  }
 
 function dashboardEdit() {
   return '/editDetails';

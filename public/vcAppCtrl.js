@@ -64,8 +64,9 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
       var checkStatus = httpFactory.dataValidation(data);
       console.log("data--" + JSON.stringify(data.data));
       console.log("checkStatus" + checkStatus);
+      console.log("data.message: "+data.data.message);
       if (checkStatus) {
-        console.log("data.message: "+data.message);
+        console.log("data.message: "+data.data.message);
         if (data.message == 'Profile Inactive') {
           alert("Your Profile is inactive, inform your system admin to verify it");
         }

@@ -1,6 +1,6 @@
 app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, $timeout, $state, $http, $uibModal) {
   console.log("controller==>");
-  var dayEventmodal;
+  var loginModal; /* ### Note: get login modal instance on this variable ###*/
 
   if (localStorage.getItem("userData")) {
     console.log("User Name from session: " + localStorage.getItem("userData"));
@@ -47,19 +47,13 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
     }
 
   }
-
-  function logVC() {
+  $scope.logVC = function(loginType, email, Password) {
     console.log("logVC from signalingSocket.js");
-    // console.log("email: " + document.getElementById("crdEmail").value);
-    // var email = document.getElementById("crdEmail").value;
-    // var Password = document.getElementById('crdPswd').value;
-    // alert($("input[name=loginType]:checked").val());
-    // var loginType = $("input[name=loginType]:checked").val();
-    // console.log("email: " + email);
-    var obj = {
-      "email": $scope.email,
-      "password": $scope.Password,
-      "loginType": $scope.loginType
+    loginModal.close('resetModel');
+       var obj = {
+      "email": email,
+      "password": Password,
+      "loginType": loginType
     };
     console.log("obj: " + JSON.stringify(obj));
     console.log("logVC");
@@ -69,38 +63,43 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
     console.log("api: " + api);
     httpFactory.post(api, obj).then(function (data) {
       var checkStatus = httpFactory.dataValidation(data);
-      // console.log("data--" + JSON.stringify(data.data));
+      console.log("data--" + JSON.stringify(data.data));
+      console.log("checkStatus" + checkStatus);
+      console.log("data.message: "+data.data.message);
       if (checkStatus) {
-        if (data.message == 'Profile Inactive') {
+        console.log("data.message: "+data.data.message);
+        if (data.data.message == 'Profile Inactive') {
           alert("Your Profile is inactive, inform your system admin to verify it");
         }
-        else if (data.message == 'Login Successfully') {
+        else if (data.data.message == 'Login Successfully') {
+          console.log("Login Successfully");
           alert("Logged in Successfull");
-          sessionSet(data);
-          document.getElementById("appLogin").style.display = 'none';
-          document.getElementById("appLogout").style.display = 'block';
+          $scope.sessionSet(data);
+          // document.getElementById("appLogin").style.display = 'none';
+          // document.getElementById("appLogout").style.display = 'block';
           userName = data.data.userName;
         }
-        else if (data.message == 'Password is wrong') {
+        else if (data.data.message == 'Password is wrong') {
           alert("Password is wrong");
         }
-        else if (data.errorCode == 'No Match') {
+        else if (data.data.errorCode == 'No Match') {
           alert("There is no match for this EMail id from student database ");
         }
-        if (data.loginType == 'admin') {
-          sessionSet(data);
-          document.getElementById("appLogin").style.display = 'none';
-          document.getElementById("appLogout").style.display = 'block';
+        if (data.data.loginType == 'admin') {
+          $scope.sessionSet(data);
+          // document.getElementById("appLogin").style.display = 'none';
+          // document.getElementById("appLogout").style.display = 'block';
         }
       
       }
       else {
+        console.log("sorry");
       }
     });
 
   }
 
-  function sessionSet(data) {
+  $scope.sessionSet = function(data) {
     console.log("sessionSet-->");
     console.log("data: " + JSON.stringify(data));
     console.log(" data.sessionData: " + data.sessionData);
@@ -109,6 +108,7 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
     // localStorage.setItem("encUrl",encryptedUrl); 
     // localStorage.setItem("encPswd",encryptedPswd);
     localStorage.setItem("sessionEnc", data.sessionData);
+    
     if (typeof (Storage) !== "undefined") {
       if (data.data.loginType == 'teacher') {
         var userData = {
@@ -123,6 +123,7 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
         localStorage.setItem("email", data.data.teacherEmail);
         localStorage.setItem("loginType", data.loginType);
         localStorage.setItem("id", data.data._id);
+        $scope.loginType =  localStorage.getItem("loginType");
       }
       else if (data.data.loginType == 'studParent') {
         var userData = {
@@ -137,6 +138,7 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
         localStorage.setItem("email", data.data.parentEmail);
         localStorage.setItem("loginType", data.loginType);
         localStorage.setItem("id", data.data._id);
+        $scope.loginType =  localStorage.getItem("loginType");
       }
       else {
         var userData = {
@@ -150,6 +152,7 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
         localStorage.setItem("status", data.data.status);
         localStorage.setItem("email", data.data.email);
         localStorage.setItem("loginType", data.data.loginType);
+        $scope.loginType =  localStorage.getItem("loginType");
       }
       var info = localStorage.getItem("userData");
       console.log("info: " + JSON.stringify(info));
@@ -159,51 +162,12 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
     }
     console.log("<--sessionSet");
   }
-  function regVc() {
-    console.log("regVc");
-    var un = document.getElementById("regVC_un").value;
-    var emId = document.getElementById("regVC_emailId").value;
-    var pswd = document.getElementById("regVC_pswd").value;
-    var obj = {
-      "userName": un,
-      "email": emId,
-      "password": pswd
-    };
-    $.ajax({
-      url: "https://norecruits.com/vc/register4VC",
-      //url: "http://localhost:5000/vc/register4VC",
-      type: "POST",
-      data: JSON.stringify(obj),
-      contentType: "application/json",
-      dataType: 'json',
-      success: function (data) {
-        console.log("data: " + JSON.stringify(data));
-        if (data.message == 'Failed to Register' || data.message == 'empty value found') {
-          alert("Failed to register try again");
-        }
-        else if (data.message == 'Registeration Successfull') {
-          alert("Registeration Successfull");
-        }
-      }
-    })
-  }
 
-  $scope.vcLogout = function() {
-    console.log("vcLogout");
-    localStorage.removeItem("userData");
-    localStorage.removeItem("userName");
-    localStorage.removeItem("status");
-    localStorage.removeItem("email");
-    localStorage.removeItem("loginType");
-    localStorage.removeItem("id");
-    localStorage.removeItem("css");
-    // document.getElementById("appLogout").style.display = 'none';
-    // document.getElementById("appLogin").style.display = 'block';
-  }
 
+ 
   $scope.vcLogin = function () {
     console.log("vcLogin-->");
-    dayEventmodal = $uibModal.open({
+    loginModal = $uibModal.open({
       scope: $scope,
       templateUrl: '/html/templates/loginPopup.html',
       windowClass: 'show',
@@ -215,19 +179,14 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
   }
 
   $scope.vcLogout = function () {
-    console.log("vcLogout");
-    window.location = "https://norecruits.com/client";
+    console.log("vcLogout-->");
     localStorage.removeItem("userData");
     localStorage.removeItem("userName");
     localStorage.removeItem("status");
     localStorage.removeItem("email");
     localStorage.removeItem("loginType");
-    document.getElementById("appLogin").style.display = "block";
-    document.getElementById("appLogout").style.display = "none";
-    document.getElementById("videoConferenceUrl").style.display = "none";
-    document.getElementById("scheduleMeeting").style.display = "none";
-    document.getElementById("videoConferenceLinkExtention").style.display =
-      "none";
+    $scope.loginType=localStorage.getItem("loginType");
+    console.log("<--vcLogout");
   };
 
   $rootScope.TimeTable_timing = [

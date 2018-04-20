@@ -194,13 +194,13 @@
           <li>
             <a href="#contact" style="text-shadow: 2px 2px 4px #000000;">About Us</a>
           </li>
-          <li ng-if="loginType=='undefined'" >
+          <li ng-if="!loginType">
             <a href="#" ng-click="vcLogin()" style="text-shadow: 2px 2px 4px #000000;">Login</a>
           </li>
           <!-- <li id="appReg" style="display:block;">
             <a href="#" data-target="#regVC" data-toggle="modal" style="text-shadow: 2px 2px 4px #000000;">Register</a>
           </li> -->
-          <li ng-if="loginType == 'teacher'" || loginType == 'studParent'" || loginType == 'admin'"  >
+          <li ng-if="loginType"  >
             <a href="#" ng-click="vcLogout()" style="text-shadow: 2px 2px 4px #000000;">Logout</a>
           </li>
           <!-- <li>

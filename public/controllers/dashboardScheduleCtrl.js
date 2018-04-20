@@ -618,7 +618,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
         alert("ON this time you/student not free, try on other time");
       }
       else {
-       
+        $('#timeTable_modal').modal('hide');
         dayEventmodal = $uibModal.open({
           scope: $scope,
           templateUrl: '/html/templates/dayEventBook.html',
@@ -636,8 +636,8 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
       }
     }
     else {
+      $('#timeTable_modal').modal('hide');
       alert("Sorry you have to book the event 24Hrs before of your current date");
-     
     }
     console.log("<--timeTableForEventBook");
   }

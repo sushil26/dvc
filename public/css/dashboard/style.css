@@ -6809,23 +6809,12 @@ ul.inbox-pagination li {
 
 
 .bio-graph-heading {
-
     background: #263a4f;
-
     color: #fff;
-
     text-align: center;
-
-    font-style: italic;
-
-    padding: 40px 110px;
-
-
-
+    padding: 10px;
     font-size: 16px;
-
     font-weight: 300;
-
 }
 
 

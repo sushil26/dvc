@@ -63,6 +63,7 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
     httpFactory.post(api, obj).then(function (data) {
       var checkStatus = httpFactory.dataValidation(data);
       console.log("data--" + JSON.stringify(data.data));
+      console.log("checkStatus" + checkStatus);
       if (checkStatus) {
         if (data.message == 'Profile Inactive') {
           alert("Your Profile is inactive, inform your system admin to verify it");
@@ -88,6 +89,7 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
       
       }
       else {
+        console.log("sorry");
       }
     });
 

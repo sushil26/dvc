@@ -9,7 +9,7 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
     $scope.loginType = localStorage.getItem("loginType");
     console.log("userData: " + userData);
     console.log("userName: " + userName);
-    console.log("loginType: " + loginType);
+    console.log("loginType: " + $scope.loginType);
     // if (loginType == 'teacher') {
     //   document.getElementById("appLogin").style.display = 'none';
     //   document.getElementById("appLogout").style.display = 'block';

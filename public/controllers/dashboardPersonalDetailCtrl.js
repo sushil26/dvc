@@ -1,4 +1,4 @@
-app.controller('dashboardPersonalDetailController', function ($scope, $window, httpFactory) {
+app.controller('dashboardPersonalDetailController', function ($scope, $window, httpFactory, sessionAuthFactory ) {
     console.log("dashboardController==>");
 
 

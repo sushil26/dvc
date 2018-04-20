@@ -1,4 +1,4 @@
-app.controller('upcomingEventController', function ($scope, $window, httpFactory, $uibModal, $filter) {
+app.controller('upcomingEventController', function ($scope, $window, httpFactory, $uibModal, $filter, sessionAuthFactory) {
     console.log("upcomingEventController==>");
     $scope.userData = sessionAuthFactory.getAccess("userData");
     $scope.loginType =  $scope.userData.loginType;

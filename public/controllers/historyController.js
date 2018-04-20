@@ -1,4 +1,4 @@
-app.controller('historyController', function ($scope, $window, httpFactory,  $uibModal) {
+app.controller('historyController', function ($scope, $window, httpFactory, sessionAuthFactory, $uibModal) {
     console.log("historyController==>");
     $scope.events = [];
     $scope.userData = sessionAuthFactory.getAccess("userData");

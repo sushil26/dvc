@@ -67,6 +67,7 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
       console.log("checkStatus" + checkStatus);
       console.log("data.message: " + data.data.message);
       if (checkStatus) {
+        var datas = data.data;
         console.log("data.message: " + data.data.message);
         if (data.data.message == 'Profile Inactive') {
           alert("Your Profile is inactive, inform your system admin to verify it");
@@ -74,7 +75,8 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
         else if (data.data.message == 'Login Successfully') {
           console.log("Login Successfully");
           alert("Logged in Successfull");
-          $scope.sessionSet(data);
+          
+          $scope.sessionSet(datas);
           // document.getElementById("appLogin").style.display = 'none';
           // document.getElementById("appLogout").style.display = 'block';
           userName = data.data.userName;
@@ -86,7 +88,7 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
           alert("There is no match for this EMail id from student database ");
         }
         if (data.data.loginType == 'admin') {
-          $scope.sessionSet(data);
+          $scope.sessionSet(datas);
           // document.getElementById("appLogin").style.display = 'none';
           // document.getElementById("appLogout").style.display = 'block';
         }

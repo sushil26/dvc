@@ -67,27 +67,27 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
       console.log("data.message: "+data.data.message);
       if (checkStatus) {
         console.log("data.message: "+data.data.message);
-        if (data.message == 'Profile Inactive') {
+        if (data.data.message == 'Profile Inactive') {
           alert("Your Profile is inactive, inform your system admin to verify it");
         }
-        else if (data.message == 'Login Successfully') {
+        else if (data.data.message == 'Login Successfully') {
           console.log("Login Successfully");
           alert("Logged in Successfull");
           sessionSet(data);
-          document.getElementById("appLogin").style.display = 'none';
-          document.getElementById("appLogout").style.display = 'block';
+          // document.getElementById("appLogin").style.display = 'none';
+          // document.getElementById("appLogout").style.display = 'block';
           userName = data.data.userName;
         }
-        else if (data.message == 'Password is wrong') {
+        else if (data.data.message == 'Password is wrong') {
           alert("Password is wrong");
         }
-        else if (data.errorCode == 'No Match') {
+        else if (data.data.errorCode == 'No Match') {
           alert("There is no match for this EMail id from student database ");
         }
-        if (data.loginType == 'admin') {
+        if (data.data.loginType == 'admin') {
           sessionSet(data);
-          document.getElementById("appLogin").style.display = 'none';
-          document.getElementById("appLogout").style.display = 'block';
+          // document.getElementById("appLogin").style.display = 'none';
+          // document.getElementById("appLogout").style.display = 'block';
         }
       
       }

@@ -6,22 +6,22 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
     console.log("User Name from session: " + localStorage.getItem("userData"));
     var userData = JSON.stringify(localStorage.getItem("userData"));
     userName = localStorage.getItem("userName");
-    loginType = localStorage.getItem("loginType");
+    $scope.loginType = localStorage.getItem("loginType");
     console.log("userData: " + userData);
     console.log("userName: " + userName);
-    console.log("loginType: " + loginType);
-    if (loginType == 'teacher') {
-      document.getElementById("appLogin").style.display = 'none';
-      document.getElementById("appLogout").style.display = 'block';
-    }
-    else if (loginType == 'admin') {
-      document.getElementById("appLogin").style.display = 'none';
-      document.getElementById("appLogout").style.display = 'block';
-    }
-    else if (loginType == 'studParent') {
-      document.getElementById("appLogin").style.display = 'none';
-      document.getElementById("appLogout").style.display = 'block';
-    }
+    console.log("loginType: " + $scope.loginType);
+    // if (loginType == 'teacher') {
+    //   document.getElementById("appLogin").style.display = 'none';
+    //   document.getElementById("appLogout").style.display = 'block';
+    // }
+    // else if (loginType == 'admin') {
+    //   document.getElementById("appLogin").style.display = 'none';
+    //   document.getElementById("appLogout").style.display = 'block';
+    // }
+    // else if (loginType == 'studParent') {
+    //   document.getElementById("appLogin").style.display = 'none';
+    //   document.getElementById("appLogout").style.display = 'block';
+    // }
 
   }
   else {
@@ -50,16 +50,16 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
 
   function logVC() {
     console.log("logVC from signalingSocket.js");
-    console.log("email: " + document.getElementById("crdEmail").value);
-    var email = document.getElementById("crdEmail").value;
-    var Password = document.getElementById('crdPswd').value;
-    alert($("input[name=loginType]:checked").val());
-    var loginType = $("input[name=loginType]:checked").val();
-    console.log("email: " + email);
+    // console.log("email: " + document.getElementById("crdEmail").value);
+    // var email = document.getElementById("crdEmail").value;
+    // var Password = document.getElementById('crdPswd').value;
+    // alert($("input[name=loginType]:checked").val());
+    // var loginType = $("input[name=loginType]:checked").val();
+    // console.log("email: " + email);
     var obj = {
-      "email": email,
-      "password": Password,
-      "loginType": loginType
+      "email": $scope.email,
+      "password": $scope.Password,
+      "loginType": $scope.loginType
     };
     console.log("obj: " + JSON.stringify(obj));
     console.log("logVC");
@@ -188,7 +188,7 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
     })
   }
 
-  function vcLogout() {
+  $scope.vcLogout = function() {
     console.log("vcLogout");
     localStorage.removeItem("userData");
     localStorage.removeItem("userName");
@@ -197,8 +197,8 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
     localStorage.removeItem("loginType");
     localStorage.removeItem("id");
     localStorage.removeItem("css");
-    document.getElementById("appLogout").style.display = 'none';
-    document.getElementById("appLogin").style.display = 'block';
+    // document.getElementById("appLogout").style.display = 'none';
+    // document.getElementById("appLogin").style.display = 'block';
   }
 
   $scope.loginClick = function () {

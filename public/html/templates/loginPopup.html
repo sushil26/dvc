@@ -10,9 +10,9 @@
                 border-radius: 5px;
                 width: 50%;
                 padding: 3px;">
-                  <input type="radio" name="loginType" value="teacher" checked="checked"> Teacher &nbsp&nbsp
+                  <input type="radio" ng-model="loginType" value="teacher" checked="checked"> Teacher &nbsp&nbsp
     
-                  <input type="radio" name="loginType" value="studParent"> Parent
+                  <input type="radio" ng-model="loginType" value="studParent"> Parent
                 </div>
     
                 <hr>
@@ -25,14 +25,14 @@
                           background:  #ddd;
                           border-radius: inherit;
                           height: 50px;
-                          border: #ddd;" type="email" class="form-control" placeholder="Email" id="crdEmail">
+                          border: #ddd;" type="email" class="form-control" placeholder="Email" ng-model="email">
     
                 <br>
                 <input style="
                           background:  #ddd;
                           border-radius: inherit;
                           height: 50px;
-                          border: #ddd;" type="password" id="crdPswd" class="form-control" placeholder="Password">
+                          border: #ddd;" type="password" ng-model="Password" class="form-control" placeholder="Password">
     
               </div>
               <div class="modal-footer" style="border-top:0px; padding: 15px;">

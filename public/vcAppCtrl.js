@@ -47,16 +47,9 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
     }
 
   }
-
   $scope.logVC = function() {
     console.log("logVC from signalingSocket.js");
-    // console.log("email: " + document.getElementById("crdEmail").value);
-    // var email = document.getElementById("crdEmail").value;
-    // var Password = document.getElementById('crdPswd').value;
-    // alert($("input[name=loginType]:checked").val());
-    // var loginType = $("input[name=loginType]:checked").val();
-    // console.log("email: " + email);
-    var obj = {
+       var obj = {
       "email": $scope.email,
       "password": $scope.Password,
       "loginType": $scope.loginType

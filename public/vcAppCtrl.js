@@ -1,4 +1,4 @@
-app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, $timeout, $state, $http, $uibModal) {
+app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, $timeout, $state, $http, $uibModal, sessionAuthFactory) {
   console.log("controller==>");
   var loginModal; /* ### Note: get login modal instance on this variable ###*/
 
@@ -111,19 +111,23 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
     
     if (typeof (Storage) !== "undefined") {
       if (data.data.loginType == 'teacher') {
+       
         var userData = {
           "userName": data.data.teacherName,
           "status": data.data.status,
           "email": data.data.teacherEmail,
-          "loginType": data.loginType
+          "loginType": data.loginType,
+          "id": data.data._id
         }
-        localStorage.setItem("userData", userData);
-        localStorage.setItem("userName", data.data.teacherName);
-        localStorage.setItem("status", data.data.status);
-        localStorage.setItem("email", data.data.teacherEmail);
-        localStorage.setItem("loginType", data.loginType);
-        localStorage.setItem("id", data.data._id);
-        $scope.loginType =  localStorage.getItem("loginType");
+        sessionAuthFactory.setAccess("userData", userData);
+        // localStorage.setItem("userData", userData);
+        // localStorage.setItem("userName", data.data.teacherName);
+        // localStorage.setItem("status", data.data.status);
+        // localStorage.setItem("email", data.data.teacherEmail);
+        // localStorage.setItem("loginType", data.loginType);
+        // localStorage.setItem("id", data.data._id);
+        $scope.loginType =  sessionAuthFactory.getAccess("userData").loginType;
+        console.log(" $scope.loginType: "+ $scope.loginType);
       }
       else if (data.data.loginType == 'studParent') {
         var userData = {

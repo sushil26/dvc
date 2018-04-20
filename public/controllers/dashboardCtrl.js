@@ -1,9 +1,9 @@
-app.controller('dashboardController', function ($scope, $rootScope, $window, httpFactory) {
+app.controller('dashboardController', function ($scope, $window, httpFactory) {
     console.log("dashboardController==>");
-    var id = localStorage.getItem("id");
+  
     $scope.userData = sessionAuthFactory.getAccess("userData");
     $scope.loginType = $scope.userData.loginType;
-    $rootScope.userName = $scope.userData.userName;
+    $scope.userName = $scope.userData.userName;
     
 
     $scope.logOut = function () {

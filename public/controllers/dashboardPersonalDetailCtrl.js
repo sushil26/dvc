@@ -1,13 +1,16 @@
 app.controller('dashboardPersonalDetailController', function ($scope, $window, httpFactory) {
     console.log("dashboardController==>");
 
-    var id = localStorage.getItem("id");
-    $scope.loginType = localStorage.getItem("loginType");
-    $scope.userName = localStorage.getItem("userName");
+
+    $scope.userData = sessionAuthFactory.getAccess("userData");
+    $scope.loginType = $scope.userData.loginType;
+    $scope.userName = $scope.userData.userName;
+
+var id=$scope.userData.id;
 
     $scope.getTeacherDetails = function (id) {
         console.log("getTeacherData-->");
-        var id = localStorage.getItem("id");
+       
 
         var api = "https://norecruits.com/vc/teacherDetail" + "/" + id;
         //var api = "http://localhost:5000/vc/teacherDetail" + "/" + id;
@@ -32,7 +35,7 @@ app.controller('dashboardPersonalDetailController', function ($scope, $window, h
 
     $scope.getStudentDetails = function (id) {
         console.log("getTeacherData-->");
-        var id = localStorage.getItem("id");
+      
         var api = "https://norecruits.com/vc/studentDetail" + "/" + id;
         console.log("api: " + api);
         $scope.teacherList = [];
@@ -49,16 +52,16 @@ app.controller('dashboardPersonalDetailController', function ($scope, $window, h
         })
     }
 
-    if (localStorage.getItem("loginType") == 'teacher') {
+    if ($scope.loginType == 'teacher') {
         $scope.getTeacherDetails(id);
         console.log("teacher login");
 
     }
-    else if (localStorage.getItem("loginType") == 'studParent') {
+    else if ($scope.loginType == 'studParent') {
         $scope.getStudentDetails(id);
         console.log("studParent login");
     }
-    else if (localStorage.getItem("loginType") == 'admin') {
+    else if ($scope.loginType == 'admin') {
         console.log("admin Login");
     }
 

@@ -5,7 +5,7 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
   $scope.userData = sessionAuthFactory.getAccess("userData");
   if ($scope.userData) {
     userName = $scope.userData.userName;
-    $scope.loginType = $scope.userData.loginType;
+    // $scope.loginType = $scope.userData.loginType;
     console.log("userData: " + JSON.stringify($scope.userData));
     console.log("userName: " + userName);
     console.log("loginType: " + $scope.userData.loginType);

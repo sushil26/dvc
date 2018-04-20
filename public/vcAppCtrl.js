@@ -1,6 +1,6 @@
 app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, $timeout, $state, $http, $uibModal) {
   console.log("controller==>");
-  var dayEventmodal;
+  var loginModal; /* ### Note: get login modal instance on this variable ###*/
 
   if (localStorage.getItem("userData")) {
     console.log("User Name from session: " + localStorage.getItem("userData"));
@@ -49,6 +49,7 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
   }
   $scope.logVC = function(loginType, email, Password) {
     console.log("logVC from signalingSocket.js");
+    loginModal.close('resetModel');
        var obj = {
       "email": email,
       "password": Password,
@@ -162,7 +163,7 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
  
   $scope.vcLogin = function () {
     console.log("vcLogin-->");
-    dayEventmodal = $uibModal.open({
+    loginModal = $uibModal.open({
       scope: $scope,
       templateUrl: '/html/templates/loginPopup.html',
       windowClass: 'show',

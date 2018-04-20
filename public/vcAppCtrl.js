@@ -74,6 +74,7 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
         else if (data.data.message == 'Login Successfully') {
           console.log("Login Successfully");
           alert("Logged in Successfull");
+          $scope.loginType = data.data.loginType;
           sessionSet(data);
           // document.getElementById("appLogin").style.display = 'none';
           // document.getElementById("appLogout").style.display = 'block';
@@ -108,6 +109,7 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
     // localStorage.setItem("encUrl",encryptedUrl); 
     // localStorage.setItem("encPswd",encryptedPswd);
     localStorage.setItem("sessionEnc", data.sessionData);
+    
     if (typeof (Storage) !== "undefined") {
       if (data.data.loginType == 'teacher') {
         var userData = {

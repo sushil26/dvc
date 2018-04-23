@@ -406,7 +406,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
       if (checkStatus) {
         //  console.log("data" + JSON.stringify(data.data))
         // $window.location.href = $scope.propertyJson.R082;
-        alert(data.data.message);
+        // alert(data.data.message);
       }
       else {
         alert("Event Delete Failed");

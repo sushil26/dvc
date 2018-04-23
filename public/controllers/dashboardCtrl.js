@@ -1,15 +1,18 @@
-app.controller('dashboardController', function ($scope, $window, httpFactory, sessionAuthFactory) {
+app.controller('dashboardController', function ($scope, $window, httpFactory) {
     console.log("dashboardController==>");
-  
-    $scope.userData = sessionAuthFactory.getAccess("userData");
-    $scope.loginType = $scope.userData.loginType;
-    $scope.userName = $scope.userData.userName;
-    
+    var id = localStorage.getItem("id");
+    $scope.loginType = localStorage.getItem("loginType");
+     $scope.userName = localStorage.getItem("userName");
 
     $scope.logOut = function () {
         console.log("logOut-->");
-        sessionAuthFactory.clearAccess();
-        $scope.userData = sessionAuthFactory.getAccess("userData");
+        localStorage.removeItem("userData");
+        localStorage.removeItem("userName");
+        localStorage.removeItem("status");
+        localStorage.removeItem("email");
+        localStorage.removeItem("loginType");
+        localStorage.removeItem("id");
+        localStorage.removeItem("css");
         window.location.href = "https://norecruits.com";
         console.log("<--logOut");
     }

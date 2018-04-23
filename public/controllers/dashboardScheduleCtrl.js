@@ -38,7 +38,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
 
   $scope.getTeacherData = function () {
     console.log("getTeacherData-->");
-    var id = $scope.userData.id;
+    var id = localStorage.getItem("id");
     var api = "https://norecruits.com/vc/teacherDetail" + "/" + id;
     //var api = "http://localhost:5000/vc/teacherDetail" + "/" + id;
     //var api = "http://localhost:5000/vc/eventGet";
@@ -55,6 +55,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
         //   console.log("$scope.css: " + JSON.stringify($scope.css));
       }
       else {
+
       }
     })
     console.log("<--getTeacherData");
@@ -62,7 +63,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
 
   $scope.getStudentData = function () {
     console.log("getTeacherData-->");
-    var id =  $scope.userData.id;
+    var id = localStorage.getItem("id");
     var api = "https://norecruits.com/vc/studentDetail" + "/" + id;
     console.log("api: " + api);
     $scope.teacherList = [];
@@ -276,22 +277,26 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
     $scope.getSelectedTeacherPersonalData($scope.remoteCalendarId);
     console.log("<--getSTCalendar");
   }
-  $scope.userData = sessionAuthFactory.getAccess("userData");
-  var loginType = $scope.userData.loginType;
-  if (loginType == 'admin') {
+
+  if (localStorage.getItem("loginType") == 'admin') {
     console.log("loginType: " + localStorage.getItem("loginType"));
-     $scope.userLoginType = 'admin';
+    // document.getElementById('userAuth').style.display = "block";
+    $scope.userLoginType = 'admin';
   }
-  else if (loginType == 'teacher') {
-     $scope.userLoginType = 'teacher';
+  else if (localStorage.getItem("loginType") == 'teacher') {
+    // document.getElementById('userAuth').style.display = "none";
+    $scope.userLoginType = 'teacher';
     $scope.getTeacherData();
+
+
   }
-  else if (loginType == 'studParent') {
+  else if (localStorage.getItem("loginType") == 'studParent') {
+    //document.getElementById('userAuth').style.display = "none";
     $scope.userLoginType = 'studParent';
     $scope.getStudentData();
   }
   else {
-    console.log("loginType" +  loginType);
+    console.log("localStorage.getItem('loginType'): " + localStorage.getItem("loginType"));
     // window.location.href = "https://norecruits.com";
   }
 
@@ -639,7 +644,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
 
   $scope.eventGet = function () {
     console.log("eventGet-->");
-    var id =  $scope.userData.id
+    var id = localStorage.getItem("id");
     var api = "https://norecruits.com/vc/eventGet" + "/" + id;
     //var api = "http://localhost:5000/vc/eventGet"+ "/" + id;;
     $scope.calendarOwner = "Your";

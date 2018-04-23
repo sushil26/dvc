@@ -1,7 +1,6 @@
-app.controller('historyController', function ($scope, $window, httpFactory, sessionAuthFactory, $uibModal) {
+app.controller('historyController', function ($scope, $window, httpFactory,  $uibModal) {
     console.log("historyController==>");
     $scope.events = [];
-    $scope.userData = sessionAuthFactory.getAccess("userData");
    // $scope.today = new Date();
     $scope.getToDate = function () {
         console.log("Get To Date-->");
@@ -32,7 +31,7 @@ app.controller('historyController', function ($scope, $window, httpFactory, sess
     $scope.getToDate();
     $scope.eventGet = function () {
         console.log("eventGet-->");
-        var id = $scope.userData.id;
+        var id = localStorage.getItem("id");
         var api = "https://norecruits.com/vc/eventGet" + "/" + id;
         //var api = "http://localhost:5000/vc/eventGet"+ "/" + id;;
         $scope.calendarOwner = "Your";

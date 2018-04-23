@@ -515,7 +515,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
       var receiverName = $scope.teacherPersonalData[0].teacherName;
       var receiverId = $scope.teacherPersonalData[0].teacherId;
       var receiverMN = $scope.teacherPersonalData[0].mobileNum;
-      $scope.eventSend(reason, senderName, studId, email, senderMN, receiverName, receiverId, receiverMN, stud_Id, stud_cs, stud_name);
+      $scope.eventSend(reason, senderName, studId, email, senderMN, receiverName, receiverId, receiverMN, stud_id, stud_cs, stud_name);
     }
     if ($scope.userLoginType == 'teacher') {
 console.log("$scope.studentPersonalData[0]: "+JSON.stringify($scope.studentPersonalData[0]));
@@ -531,7 +531,7 @@ console.log("$scope.studentPersonalData[0]: "+JSON.stringify($scope.studentPerso
       var stud_id = $scope.studentPersonalData[0].studId;
       console.log("$scope.studentPersonalData[0]: "+$scope.studentPersonalData[0].studId);
 console.log("stud_id: "+stud_id);
-      $scope.eventSend(reason, teacherName, teacherId, email, senderMN, receiverName, receiverId, receiverMN, stud_Id, stud_cs, stud_name);
+      $scope.eventSend(reason, teacherName, teacherId, email, senderMN, receiverName, receiverId, receiverMN, stud_id, stud_cs, stud_name);
     }
 
 

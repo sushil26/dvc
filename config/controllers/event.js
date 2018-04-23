@@ -152,16 +152,16 @@ module.exports.eventReSchedule = function (req, res) {
         "endAt": req.body.endAt
     }
     console.log("updating value: " + JSON.stringify(obj));
-    // var id = {
-    //     "_id": ObjectId(req.params.id)
-    // }
+    var id = {
+        "_id": ObjectId(req.params.id)
+    }
    var id = req.params.id;
     console.log("id: " + id);
-    console.log("ObjectId(req.params.id): " +ObjectId(id));
+    // console.log("ObjectId(req.params.id): " +ObjectId(id));
 
     if (general.emptyCheck(req.params.id)) {
       
-        event.find({ "_id": req.params.id}, { $set: obj }, { upsert: true, multi: true }, function (err, data) {
+        event.update(id, { $set: obj }, { upsert: true, multi: true }, function (err, data) {
             console.log("data: " + JSON.stringify(data));
 
             if (err) {

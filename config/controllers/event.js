@@ -147,15 +147,15 @@ module.exports.eventReSchedule = function (req, res) {
         var id = {
             "_id": ObjectId(req.params.id)
         }
-
         var obj = {
             "title": req.body.title,
             "reason": req.body.reason,
             "start": req.body.start,
             "end": req.body.end,
             "startAt": req.body.startAt,
-            "endAt": req.body.endAt,
+            "endAt": req.body.endAt
         }
+        console.log("updating value: " + JSON.stringify(obj));
         event.find(id, { $set: obj }, { upsert: true, multi: true }, function (err, data) {
             console.log("data: " + JSON.stringify(data));
 

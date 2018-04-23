@@ -692,7 +692,7 @@ app.controller('dashboardRescheduleCtrl', function ($scope, $state, $rootScope, 
                     console.log("data--" + JSON.stringify(data.data));
                     if (checkStatus) {
                         var rescheduleData = data.data.data;
-                        console.log("rescheduleData: "+rescheduleData);
+                        console.log("rescheduleData: "+JSON.stringify(rescheduleData));
 
                         dayEventmodal = $uibModal.open({
                             scope: $scope,

@@ -731,18 +731,18 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
         var reqMin = date.getMinutes();
         var reqSec = date.getSeconds();
         var consolidateDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
-        console.log(" $scope.events[id].id: " + $scope.events[id].id);
-        console.log("$scope.events[id]: "+JSON.stringify($scope.events[id]));
+        console.log("args.calendarEvent.id: " + args.calendarEvent.id);
+        console.log("args.calendarEvent: "+JSON.stringify(args.calendarEvent));
         if (consolidateDate > $scope.todayDate) {
             alert("Edit Started-->");
-           var id = $scope.events[id].id;
+           var id = args.calendarEvent.id;
         //   var cs= $scope.events[id].student_cs;
           
         //   var stud_id = $scope.events[id].student_id; 
         //   var name = $scope.events[id].student_Name;
            
             console.log("id: "+id);
-            $state.go('dashboard.eventReschedule', { 'id': args.calendarEvent.id});
+            $state.go('dashboard.eventReschedule', { 'id': id});
         }
         else {
             alert("Sorry you not allow to edit");

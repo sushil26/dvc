@@ -694,20 +694,24 @@ app.controller('dashboardRescheduleCtrl', function ($scope, $state, $rootScope, 
                         var rescheduleData = data.data.data;
                         console.log("rescheduleData: "+JSON.stringify(rescheduleData));
 
-                        // dayEventmodal = $uibModal.open({
-                        //     scope: $scope,
-                        //     templateUrl: '/html/templates/dayEventBook.html',
-                        //     windowClass: 'show',
-                        //     backdropClass: 'show',
-                        //     controller: function ($scope, $uibModalInstance) {
-                        //         var dt = new Date();
-                        //         $scope.eventDetails = {
-                        //             "startsAt": rsd,
-                        //             "endsAt": red
-                        //         }
-                        //         console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
-                        //     }
-                        // })
+                        dayEventmodal = $uibModal.open({
+                            scope: $scope,
+                            templateUrl: '/html/templates/reschedule.html',
+                            windowClass: 'show',
+                            backdropClass: 'show',
+                            controller: function ($scope, $uibModalInstance) {
+                                var dt = new Date();
+                                $scope.eventDetails = {
+                                    "startsAt": rsd,
+                                    "endsAt": red,
+                                    "name" : rescheduleData[0].student_Name,
+                                    "stud_id" : rescheduleData[0].student_id,
+                                    "stud_class": rescheduleData[0].student_cs[0].class,
+                                    "stud_section": rescheduleData[0].student_cs[0].section
+                                }
+                                console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
+                            }
+                        })
                     }
                     else{
         

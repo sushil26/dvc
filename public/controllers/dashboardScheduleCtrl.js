@@ -723,6 +723,30 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
       alert("Edit Event Comming Soon");
       console.log("args.calendarEvent: " + args.calendarEvent);
       console.log("JSON args.calendarEvent: " + JSON.stringify(args.calendarEvent));
+      var date = args.calendarEvent.startsAt;
+        var reqDate = date.getDate() - 1;
+        var reqMonth = date.getMonth();
+        var reqYear = date.getFullYear();
+        var reqHr = date.getHours();
+        var reqMin = date.getMinutes();
+        var reqSec = date.getSeconds();
+        var consolidateDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
+        console.log(" $scope.events[id].id: " + $scope.events[id].id);
+        console.log("$scope.events[id]: "+JSON.stringify($scope.events[id]));
+        if (consolidateDate > $scope.todayDate) {
+            alert("Edit Started-->");
+           var id = $scope.events[id].id;
+        //   var cs= $scope.events[id].student_cs;
+          
+        //   var stud_id = $scope.events[id].student_id; 
+        //   var name = $scope.events[id].student_Name;
+           
+            console.log("id: "+id);
+            $state.go('dashboard.eventReschedule', { 'id': args.calendarEvent.id});
+        }
+        else {
+            alert("Sorry you not allow to edit");
+        }
       // var eClicked = $uibModal.open({
       //   scope: $scope,
       //   templateUrl: '/html/templates/eventDetails_edit.html',

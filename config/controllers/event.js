@@ -194,7 +194,7 @@ module.exports.getEventById = function (req, res) {
         var id = {
             "_id": ObjectId(req.body.id)
         }
-        event.find(id).toArray(function (err, data) {
+        event.find(id,function (err, data) {
             console.log("data: " + JSON.stringify(data));
 
             if (err) {

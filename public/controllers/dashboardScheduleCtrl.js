@@ -10,7 +10,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
 
   $scope.eventGet = function () {
     console.log("eventGet-->");
-    var id =  $scope.userData.id
+    var id = $scope.userData.id
     var api = "https://norecruits.com/vc/eventGet" + "/" + id;
     //var api = "http://localhost:5000/vc/eventGet"+ "/" + id;;
     $scope.calendarOwner = "Your";
@@ -26,6 +26,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
           console.log("$scope.eventData[" + x + "]: " + JSON.stringify($scope.eventData[x]));
           var obj = {
             'id': $scope.eventData[x]._id,
+            'userId': $scope.eventData[x]._userId,
             'title': $scope.eventData[x].title,
             'color': $scope.eventData[x].primColor,
             'startsAt': new Date($scope.eventData[x].start),
@@ -59,7 +60,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
 
     })
   }
-  
+
   $scope.getToDate = function () {
     console.log("Get To Date-->");
     var api = "https://norecruits.com/vc/getToDate";
@@ -114,7 +115,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
 
   $scope.getStudentData = function () {
     console.log("getTeacherData-->");
-    var id =  $scope.userData.id;
+    var id = $scope.userData.id;
     var api = "https://norecruits.com/vc/studentDetail" + "/" + id;
     console.log("api: " + api);
     $scope.teacherList = [];
@@ -332,10 +333,10 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
   var loginType = $scope.userData.loginType;
   if (loginType == 'admin') {
     console.log("loginType: " + localStorage.getItem("loginType"));
-     $scope.userLoginType = 'admin';
+    $scope.userLoginType = 'admin';
   }
   else if (loginType == 'teacher') {
-     $scope.userLoginType = 'teacher';
+    $scope.userLoginType = 'teacher';
     $scope.getTeacherData();
   }
   else if (loginType == 'studParent') {
@@ -343,7 +344,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
     $scope.getStudentData();
   }
   else {
-    console.log("loginType" +  loginType);
+    console.log("loginType" + loginType);
     // window.location.href = "https://norecruits.com";
   }
 
@@ -650,7 +651,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
     var consolidateDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
     console.log("consolidateDate: " + consolidateDate + " $scope.todayDate: " + $scope.todayDate);
     if (consolidateDate > $scope.todayDate) {
-      
+
       var conflicts = PersonalRemoteCombineCal.some(function (event) {
         //   return (event.startsAt <= s && s <= event.endsAt) ||event.startsAt <= e && e <= event.endsAt || s <= event.startsAt && event.startsAt <= e ||s <= event.endsAt && event.endsAt <= e});
         return (event.startsAt <= rsd && rsd < event.endsAt) ||
@@ -688,7 +689,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
     console.log("<--timeTableForEventBook");
   }
 
-  
+
 
 
 

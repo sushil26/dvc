@@ -549,8 +549,8 @@ app.controller('dashboardRescheduleCtrl', function ($scope, $state, $rootScope, 
           console.log("api: " + api);
           // var email = document.getElementById('eventEmails').value;
           var obj = {
-            "userId": localStorage.getItem("id"),
-            "senderLoginType": localStorage.getItem("loginType"),
+            "userId":  $scope.userData.id,
+            "senderLoginType": $scope.userData.loginType,
             "title": $scope.title,
             "reason": res,
             "senderName": name,

@@ -161,7 +161,7 @@ module.exports.eventReSchedule = function (req, res) {
 
     if (general.emptyCheck(req.params.id)) {
       console.log("No Empty");
-        event.update(id, { $set: obj }, function (err, data) {
+        event.update(id, { $set: obj }, {multi: true},function (err, data) {
             console.log("data: " + JSON.stringify(data));
 
             if (err) {

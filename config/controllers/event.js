@@ -143,9 +143,6 @@ module.exports.eventReSchedule = function (req, res) {
     console.log("eventReSchedule-->");
     console.log("requested updated id: " + req.params.id);
     var responseData;
-    var id = {
-        "_id": ObjectId(req.params.id)
-    }
     var obj = {
         "title": req.body.title,
         "reason": req.body.reason,
@@ -155,6 +152,10 @@ module.exports.eventReSchedule = function (req, res) {
         "endAt": req.body.endAt
     }
     console.log("updating value: " + JSON.stringify(obj));
+    var id = {
+        "_id": ObjectId(req.params.id)
+    }
+   
     console.log("id: " + JSON.stringify(id));
 
     if (general.emptyCheck(req.params.id)) {

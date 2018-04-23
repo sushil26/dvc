@@ -29,24 +29,19 @@
     }
   </style>
 
-   <!-- javascripts -->
-   <script src="/dashboard_Lib/js/jquery.js"></script>
-   <script src="/dashboard_Lib/js/bootstrap.min.js"></script>
-   <script src="/dashboard_Lib/js/jquery-ui-1.10.4.min.js"></script>
-   <script src="/dashboard_Lib/js/jquery-1.8.3.min.js"></script>
-   <script src="/dashboard_Lib/js/jquery-ui-1.9.2.custom.min.js"></script>
-   <!-- bootstrap -->
-   <!-- <script src="/dashboard_Lib/js/bootstrap.min.js"></script> -->
+  
+  <!--external css-->
+  <!-- font icon -->
+  <link  rel="stylesheet" href="/dashboard_Lib/css/elegant-icons-style.css" />
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="/dashboard_Lib/css/style.css" />
+  <link rel="stylesheet" href="/dashboard_Lib/css/style-responsive.css"/>
 
-   <!-- nice scroll -->
-   <script src="/dashboard_Lib/js/jquery.scrollTo.min.js"></script>
-   <script src="/dashboard_Lib/js/jquery.nicescroll.js" ></script>
-   <!-- jquery knob -->
-   <script src="/dashboard_Lib/js/jquery.knob.js"></script>
-   <!--custome script for all page-->
-   <script src="/dashboard_Lib/js/scripts.js"></script>
-
-
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/dashboard_Lib/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="/dashboard_Lib/css/bootstrap-theme.css"/>
+  <link rel="stylesheet" href="/dashboard_Lib/css/jquery-ui-1.10.4.min.css"/>
+  <!-- <link href="././dashboard_Lib/widgets.css" rel="stylesheet"> -->
 
 
      <script>
@@ -58,13 +53,13 @@
   <script src="/js/socket.io-1.4.5.js"></script>
   <!-- <script src="/js/calendarSocket.js"></script> -->
   
- 
-  <script  src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+  <!-- <script src="/dashboard_Lib/js/bootstrap.min.js"></script> -->
+  <!-- <script  src="https://code.jquery.com/jquery-1.12.4.min.js"></script> -->
   <script src="/bower_components/angular/angular.min.js"></script>
   <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
   <!-- bootstrap -->
   
-  <script src="cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
+ 
   <script src="vcApp.js"></script>
   <script src="vcAppCtrl.js"></script>
 
@@ -109,19 +104,6 @@
   <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700" rel="stylesheet"> -->
 
 
-  <!--external css-->
-  <!-- font icon -->
-  <link  rel="stylesheet" href="/dashboard_Lib/css/elegant-icons-style.css" />
-  <!-- Custom styles -->
-  <link rel="stylesheet" href="/dashboard_Lib/css/style.css" />
-  <link rel="stylesheet" href="/dashboard_Lib/css/style-responsive.css"/>
-
-  <!-- Bootstrap CSS -->
-  
-  <link rel="stylesheet" href="/dashboard_Lib/css/bootstrap.min.css"/>
-  <link rel="stylesheet" href="/dashboard_Lib/css/bootstrap-theme.css"/>
-  <link rel="stylesheet" href="/dashboard_Lib/css/jquery-ui-1.10.4.min.css"/>
-  <!-- <link href="././dashboard_Lib/widgets.css" rel="stylesheet"> -->
 
   <!-- <style>
 .user-details {position: relative; padding: 0;}
@@ -676,74 +658,93 @@
           });
   </script> -->
       <!-- <script src="/home/js/main.js"></script> -->
-      <script>
-        var TxtType = function (el, toRotate, period) {
-          this.toRotate = toRotate;
-          this.el = el;
-          this.loopNum = 0;
-          this.period = parseInt(period, 5) || 2000;
-          this.txt = '';
-          this.tick();
-          this.isDeleting = false;
-        };
-
-        TxtType.prototype.tick = function () {
-          var i = this.loopNum % this.toRotate.length;
-          var fullTxt = this.toRotate[i];
-
-          if (this.isDeleting) {
-            this.txt = fullTxt.substring(0, this.txt.length - 1);
-          } else {
-            this.txt = fullTxt.substring(0, this.txt.length + 1);
-          }
-
-          this.el.innerHTML = '<span class="wrap">' + this.txt + '</span>';
-
-          var that = this;
-          var delta = 175;
-
-          if (this.isDeleting) {
-            delta /= 10;
-          }
-
-          if (!this.isDeleting && this.txt === fullTxt) {
-            delta = this.period;
-            this.isDeleting = true;
-          } else if (this.isDeleting && this.txt === '') {
-            this.isDeleting = false;
-            this.loopNum++;
-            delta = 500;
-          }
-
-          setTimeout(function () {
-            that.tick();
-          }, delta);
-        };
-
-        window.onload = function () {
-          var elements = document.getElementsByClassName('typewrite');
-          for (var i = 0; i < elements.length; i++) {
-            var toRotate = elements[i].getAttribute('data-type');
-            var period = elements[i].getAttribute('data-period');
-            if (toRotate) {
-              new TxtType(elements[i], JSON.parse(toRotate), period);
-            }
-          }
-          // INJECT CSS
-          var css = document.createElement("style");
-          css.type = "text/css";
-          css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid black}";
-          document.body.appendChild(css);
-        };
-      </script>
-      <!-- <script src="/js/basicFun.js"></script> -->
-
-  
+    
 
 
     </div>
 
   </div>
+
+   <!-- javascripts -->
+   <script src="/dashboard_Lib/js/jquery.js"></script>
+   <script src="/dashboard_Lib/js/jquery-ui-1.10.4.min.js"></script>
+   <script src="/dashboard_Lib/js/jquery-1.8.3.min.js"></script>
+   <script src="/dashboard_Lib/js/jquery-ui-1.9.2.custom.min.js"></script>
+   <!-- bootstrap -->
+   <!-- <script src="/dashboard_Lib/js/bootstrap.min.js"></script> -->
+
+   <!-- nice scroll -->
+   <script src="/dashboard_Lib/js/jquery.scrollTo.min.js"></script>
+   <script src="/dashboard_Lib/js/jquery.nicescroll.js" ></script>
+   <!-- jquery knob -->
+   <script src="/dashboard_Lib/js/jquery.knob.js"></script>
+   <!--custome script for all page-->
+   <script src="/dashboard_Lib/js/scripts.js"></script>
+
+   <script>
+    var TxtType = function (el, toRotate, period) {
+      this.toRotate = toRotate;
+      this.el = el;
+      this.loopNum = 0;
+      this.period = parseInt(period, 5) || 2000;
+      this.txt = '';
+      this.tick();
+      this.isDeleting = false;
+    };
+
+    TxtType.prototype.tick = function () {
+      var i = this.loopNum % this.toRotate.length;
+      var fullTxt = this.toRotate[i];
+
+      if (this.isDeleting) {
+        this.txt = fullTxt.substring(0, this.txt.length - 1);
+      } else {
+        this.txt = fullTxt.substring(0, this.txt.length + 1);
+      }
+
+      this.el.innerHTML = '<span class="wrap">' + this.txt + '</span>';
+
+      var that = this;
+      var delta = 175;
+
+      if (this.isDeleting) {
+        delta /= 10;
+      }
+
+      if (!this.isDeleting && this.txt === fullTxt) {
+        delta = this.period;
+        this.isDeleting = true;
+      } else if (this.isDeleting && this.txt === '') {
+        this.isDeleting = false;
+        this.loopNum++;
+        delta = 500;
+      }
+
+      setTimeout(function () {
+        that.tick();
+      }, delta);
+    };
+
+    window.onload = function () {
+      var elements = document.getElementsByClassName('typewrite');
+      for (var i = 0; i < elements.length; i++) {
+        var toRotate = elements[i].getAttribute('data-type');
+        var period = elements[i].getAttribute('data-period');
+        if (toRotate) {
+          new TxtType(elements[i], JSON.parse(toRotate), period);
+        }
+      }
+      // INJECT CSS
+      var css = document.createElement("style");
+      css.type = "text/css";
+      css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid black}";
+      document.body.appendChild(css);
+    };
+  </script>
+  <!-- <script src="/js/basicFun.js"></script> -->
+
+
+
 
 </body>
 

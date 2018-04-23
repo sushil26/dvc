@@ -192,7 +192,7 @@ module.exports.getEventById = function (req, res) {
 
     if (general.emptyCheck(req.params.id)) {
         var id = {
-            "_id": ObjectId(req.body.id)
+            "_id": ObjectId(req.params.id)
         }
         event.find(id,function (err, data) {
             console.log("data: " + JSON.stringify(data));

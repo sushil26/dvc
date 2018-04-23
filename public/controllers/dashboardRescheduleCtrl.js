@@ -503,23 +503,7 @@ app.controller('dashboardRescheduleCtrl', function ($scope, $state, $rootScope, 
         console.log("$scope.endDate: " + $scope.endDate);
         console.log("$scope.endDateRes: " + $scope.endDateRes);
 
-        var id = $state.params.id;
-        
-
-        var api = "https://norecruits.com/vc/getEventById" + "/" + id;
-        //var api = "http://localhost:5000/vc/eventGet"+ "/" + id;;
-        $scope.calendarOwner = "Your";
-        httpFactory.get(api).then(function (data) {
-            var checkStatus = httpFactory.dataValidation(data);
-            console.log("data--" + JSON.stringify(data.data));
-            if (checkStatus) {
-                var rescheduleData = data.data.data;
-                console.log("rescheduleData: "+rescheduleData);
-            }
-            else{
-
-            }
-        })
+     
 
 
         dayEventmodal.close('resetModel');
@@ -924,14 +908,32 @@ app.controller('dashboardRescheduleCtrl', function ($scope, $state, $rootScope, 
         $scope.selectedDateForEvent = $filter('date')(date, "EEE");
         console.log("selectedDateForEvent: " + $scope.selectedDateForEvent);
 
-        $scope.selectedDate = date;
-        if ($scope.remoteCalendarId) {
-            $('#timeTable_modal').modal('show');
+        var id = $state.params.id;
+        
 
-        }
-        else {
-            alert("Select Student");
-        }
+        var api = "https://norecruits.com/vc/getEventById" + "/" + id;
+        //var api = "http://localhost:5000/vc/eventGet"+ "/" + id;;
+        $scope.calendarOwner = "Your";
+        httpFactory.get(api).then(function (data) {
+            var checkStatus = httpFactory.dataValidation(data);
+            console.log("data--" + JSON.stringify(data.data));
+            if (checkStatus) {
+                var rescheduleData = data.data.data;
+                console.log("rescheduleData: "+rescheduleData);
+            }
+            else{
+
+            }
+        })
+
+        // $scope.selectedDate = date;
+        // if ($scope.remoteCalendarId) {
+        //     $('#timeTable_modal').modal('show');
+
+        // }
+        // else {
+        //     alert("Select Student");
+        // }
 
 
 

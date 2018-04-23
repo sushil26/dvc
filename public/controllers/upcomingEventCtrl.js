@@ -109,6 +109,7 @@ app.controller('upcomingEventController', function ($scope, $state, $window, htt
         var reqSec = date.getSeconds();
         var consolidateDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
         console.log(" $scope.events[id].id: " + $scope.events[id].id);
+        console.log("$scope.events[id]: "+JSON.stringify($scope.events[id]));
         if (consolidateDate > $scope.todayDate) {
             alert("Edit Started-->");
            var id = $scope.events[id].id;

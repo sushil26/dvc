@@ -574,8 +574,9 @@ app.controller('dashboardRescheduleCtrl', function ($scope, $state, $rootScope, 
                 alert("Successfully sent the event");
                 // vm.events.splice(0, 1);
                 var eventPostedData = data.data.data;
-                console.log("eventPostedData: "+ JSON.stringify(eventPostedData));
-               $scope.eventGet();
+                console.log("eventPostedData: " + JSON.stringify(eventPostedData));
+                $state.go('dashboard.upcomingEvent');
+                //$scope.eventGet();
             }
             else {
                 alert("Event Send Failed");

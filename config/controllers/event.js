@@ -136,6 +136,12 @@ module.exports.eventSend = function (req, res) {
     }
 }
 
+module.exports.eventReSchedule= function (req, res) {
+console.log("eventReSchedule-->");
+console.log("requested updated id: "+req.params.id);
+console.log("<--eventReSchedule");
+}
+
 module.exports.eventGet = function (req, res) {
     console.log("getEvent-->");
     var responseData;

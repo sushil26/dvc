@@ -105,6 +105,12 @@ var app = angular.module('vcApp', ['ui.router', 'mwl.calendar', 'ui.bootstrap', 
              
           }}
       })
+      .state('dashboard.eventReschedule', {
+        url: dashboardEventReschedule(),
+        templateUrl: '/html/dashboard/rescheduler.html',
+        controller: 'dashboardRescheduleCtrl'
+      })
+
     
       .state('dashboard.conference', {
         url: dashboardConference(),
@@ -154,6 +160,9 @@ function dashboardPersonalDetail() {
 }
 function dashboardEventShedule(){
   return '/eventShedule';
+}
+function dashboardEventReschedule(){
+  return '/reschedule/:id';
 }
 function dashboardUserAuth(){
   return '/userAuth';

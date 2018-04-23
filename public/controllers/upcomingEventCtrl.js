@@ -1,9 +1,8 @@
-app.controller('upcomingEventController', function ($scope, $window, httpFactory, $uibModal, $filter, sessionAuthFactory) {
+app.controller('upcomingEventController', function ($scope, $state, $window, httpFactory, $uibModal, $filter, sessionAuthFactory) {
     console.log("upcomingEventController==>");
     $scope.userData = sessionAuthFactory.getAccess("userData");
-    $scope.loginType =  $scope.userData.loginType;
+    $scope.loginType = $scope.userData.loginType;
     $scope.events = [];
-  //  $scope.today = new Date(); /* ###Note: Current Date ### */
 
     $scope.getToDate = function () {
         console.log("Get To Date-->");
@@ -13,10 +12,10 @@ app.controller('upcomingEventController', function ($scope, $window, httpFactory
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
                 console.log("data.data.data.date: " + data.data.data.date);
-                var todayDate =new Date(data.data.data.date);
-                console.log("todayDate: "+todayDate);
+                var todayDate = new Date(data.data.data.date);
+                console.log("todayDate: " + todayDate);
                 var reqDate = todayDate.getDate();
-                console.log("reqDate: "+reqDate);
+                console.log("reqDate: " + reqDate);
                 var reqMonth = todayDate.getMonth();
                 var reqYear = todayDate.getFullYear();
                 var reqHr = todayDate.getHours();
@@ -35,7 +34,7 @@ app.controller('upcomingEventController', function ($scope, $window, httpFactory
 
     $scope.eventGet = function () {
         console.log("eventGet-->");
-        var id =     $scope.userData.id;
+        var id = $scope.userData.id;
         var api = "https://norecruits.com/vc/eventGet" + "/" + id;
         //var api = "http://localhost:5000/vc/eventGet"+ "/" + id;;
         $scope.calendarOwner = "Your";
@@ -82,7 +81,7 @@ app.controller('upcomingEventController', function ($scope, $window, httpFactory
             }
         })
     }
-  
+
     $scope.viewDetail = function (id) {
         console.log("viewDetail-->");
         console.log("id: " + id);
@@ -110,10 +109,13 @@ app.controller('upcomingEventController', function ($scope, $window, httpFactory
         var reqSec = date.getSeconds();
         var consolidateDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
         console.log(" $scope.events[id].id: " + $scope.events[id].id);
-        if(consolidateDate>$scope.todayDate){
-          alert("Coming Soon");
+        if (consolidateDate > $scope.todayDate) {
+            alert("Edit Started-->");
+           var id = $scope.events[id].id;
+            console.log("id: "+id);
+            $state.go('dashboard.eventReschedule', { 'id': id });
         }
-        else{
+        else {
             alert("Sorry you not allow to edit");
         }
         // var api = "https://norecruits.com/vc/rescheduleEvent/:id";

@@ -718,7 +718,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
 
   var actions = [{
     // label: '<i class=\'glyphicon glyphicon-pencil\'></i>',
-    label: 'Edit',
+    label: 'Re-Schedule',
     onClick: function (args) {
       alert("Edit Event Comming Soon");
       console.log("args.calendarEvent: " + args.calendarEvent);

@@ -113,8 +113,9 @@ app.controller('upcomingEventController', function ($scope, $state, $window, htt
         if (consolidateDate > $scope.todayDate) {
             alert("Edit Started-->");
            var id = $scope.events[id].id;
+           var userId = $scope.events[id].userId;
             console.log("id: "+id);
-            $state.go('dashboard.eventReschedule', { 'id': id });
+            $state.go('dashboard.eventReschedule', { 'id': id, 'userId':userId});
         }
         else {
             alert("Sorry you not allow to edit");

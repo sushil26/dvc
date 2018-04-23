@@ -543,14 +543,13 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
         peerNew_id = config.peer_id;
 
         url = "https://norecruits.com/client/" + peerNew_id + "/" + $scope.urlDate;
-
         var api = "https://norecruits.com/vc/eventSend";
         //var api = "http://localhost:5000/vc/eventSend";
         console.log("api: " + api);
         // var email = document.getElementById('eventEmails').value;
         var obj = {
-          "userId": localStorage.getItem("id"),
-          "senderLoginType": localStorage.getItem("loginType"),
+          "userId": $scope.userData.id,
+          "senderLoginType": $scope.userData.loginType,
           "title": $scope.title,
           "reason": res,
           "senderName": name,

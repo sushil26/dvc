@@ -144,6 +144,10 @@ module.exports.eventReSchedule = function (req, res) {
     console.log("requested updated id: " + req.params.id);
     var responseData;
     if (general.emptyCheck(req.params.id)) {
+        var id = {
+            "_id": ObjectId(req.params.id)
+        }
+
         var obj = {
             "title": req.body.title,
             "reason": req.body.reason,
@@ -152,7 +156,7 @@ module.exports.eventReSchedule = function (req, res) {
             "startAt": req.body.startAt,
             "endAt": req.body.endAt,
         }
-        event.find(id,{ $set: obj }, { upsert: true, multi: true }, function (err, data) {
+        event.find(id, { $set: obj }, { upsert: true, multi: true }, function (err, data) {
             console.log("data: " + JSON.stringify(data));
 
             if (err) {
@@ -173,7 +177,7 @@ module.exports.eventReSchedule = function (req, res) {
             }
         })
     }
-    else{
+    else {
         console.log("Epty value found");
         responseData = {
             status: false,
@@ -262,7 +266,7 @@ module.exports.getEventById = function (req, res) {
         };
         res.status(400).send(responseData);
     }
- 
+
 
     console.log("<--EventGetById");
 }

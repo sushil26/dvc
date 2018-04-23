@@ -50,6 +50,7 @@ app.controller('upcomingEventController', function ($scope, $state, $window, htt
                     console.log("$scope.eventData[" + x + "]: " + JSON.stringify($scope.eventData[x]));
                     var obj = {
                         'id': $scope.eventData[x]._id,
+                        'userId': $scope.eventData[x]._userId,
                         "student_cs": $scope.eventData[x].student_cs, 
                         "student_id":$scope.eventData[x].student_id, 
                         "student_Name":$scope.eventData[x].student_Name, 
@@ -116,9 +117,9 @@ app.controller('upcomingEventController', function ($scope, $state, $window, htt
         if (consolidateDate > $scope.todayDate) {
             alert("Edit Started-->");
            var id = $scope.events[id].id;
-           var userId = $scope.events[id].userId;
+           
             console.log("id: "+id);
-            $state.go('dashboard.eventReschedule', { 'id': id, 'userId':userId});
+            $state.go('dashboard.eventReschedule', { 'id': id});
         }
         else {
             alert("Sorry you not allow to edit");

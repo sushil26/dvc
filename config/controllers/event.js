@@ -161,7 +161,7 @@ module.exports.eventReSchedule = function (req, res) {
 
     if (general.emptyCheck(req.params.id)) {
       console.log("No Empty");
-        event.find(id,function (err, data) {
+        event.find(id).toArray(function(err, data) {
             console.log("data: " + JSON.stringify(data));
 
             if (err) {

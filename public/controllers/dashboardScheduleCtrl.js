@@ -27,6 +27,9 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
           var obj = {
             'id': $scope.eventData[x]._id,
             'userId': $scope.eventData[x]._userId,
+            "student_cs": $scope.eventData[x].student_cs, 
+            "student_id":$scope.eventData[x].student_id, 
+            "student_Name":$scope.eventData[x].student_Name, 
             'title': $scope.eventData[x].title,
             'color': $scope.eventData[x].primColor,
             'startsAt': new Date($scope.eventData[x].start),
@@ -503,13 +506,16 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
 
     if ($scope.userLoginType == 'studParent') {
       var senderName = $scope.studentData[0].studName;
+      var stud_name = $scope.studentData[0].studName;
+      var stud_cs = $scope.studentData[0].cs;
+      var stud_id = $scope.studentData[0].studId;
       var senderMN = $scope.teacherPersonalData[0].mobileNum;
       var studId = $scope.studentData[0].studId;
       var email = $scope.teacherPersonalData[0].teacherEmail;/* ### Note: teacher email Id ### */
       var receiverName = $scope.teacherPersonalData[0].teacherName;
       var receiverId = $scope.teacherPersonalData[0].teacherId;
       var receiverMN = $scope.teacherPersonalData[0].mobileNum;
-      $scope.eventSend(reason, senderName, studId, email, senderMN, receiverName, receiverId, receiverMN);
+      $scope.eventSend(reason, senderName, studId, email, senderMN, receiverName, receiverId, receiverMN, stud_Id, stud_cs, stud_name);
     }
     if ($scope.userLoginType == 'teacher') {
 
@@ -520,13 +526,16 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
       var receiverName = $scope.studentPersonalData[0].studName;
       var receiverId = $scope.studentPersonalData[0].studId;
       var receiverMN = $scope.studentPersonalData[0].mobileNum;
-      $scope.eventSend(reason, teacherName, teacherId, email, senderMN, receiverName, receiverId, receiverMN);
+      var stud_name = $scope.studentPersonalData[0].studName;
+      var stud_cs = $scope.studentPersonalData[0].cs;
+      var stud_id = $scope.studentPersonalData[0].studId;
+      $scope.eventSend(reason, teacherName, teacherId, email, senderMN, receiverName, receiverId, receiverMN, stud_Id, stud_cs, stud_name);
     }
 
 
   }
 
-  $scope.eventSend = function (res, name, id, email, senderMN, receiverName, receiverId, receiverMN) {
+  $scope.eventSend = function (res, name, id, email, senderMN, receiverName, receiverId, receiverMN, stud_id, stud_cs, stud_name) {
     console.log("eventSend-->");
     var SIGNALING_SERVER = "https://norecruits.com";
     //var SIGNALING_SERVER = "http://localhost:5000";
@@ -569,7 +578,10 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
           "receiverName": receiverName,
           "receiverId": receiverId,
           "receiverMN": receiverMN,
-          "remoteCalendarId": $scope.remoteCalendarId
+          "remoteCalendarId": $scope.remoteCalendarId,
+          "student_cs": stud_cs, 
+          "student_id":stud_id, 
+          "student_Name":stud_name, 
         }
         console.log("obj: " + JSON.stringify(obj));
 

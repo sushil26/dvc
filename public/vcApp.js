@@ -162,7 +162,7 @@ function dashboardEventShedule(){
   return '/eventShedule';
 }
 function dashboardEventReschedule(){
-  return '/reschedule/:id/:userId';
+  return '/reschedule/:id';
 }
 function dashboardUserAuth(){
   return '/userAuth';

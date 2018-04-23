@@ -8,6 +8,8 @@ app.controller('dashboardRescheduleCtrl', function ($scope, $state, $rootScope, 
     var remoteEvent = []; /* ### Note:receiver all events ### */
     $scope.timeForPeriods = $rootScope.TimeTable_timing;
 
+
+
     $scope.eventGet = function () {
         console.log("eventGet-->");
         var id = $scope.userData.id
@@ -26,6 +28,9 @@ app.controller('dashboardRescheduleCtrl', function ($scope, $state, $rootScope, 
                     var obj = {
                         'id': $scope.eventData[x]._id,
                         'userId': $scope.eventData[x]._userId,
+                        "student_cs": $scope.eventData[x].student_cs, 
+                        "student_id":$scope.eventData[x].student_id, 
+                        "student_Name":$scope.eventData[x].student_Name, 
                         'title': $scope.eventData[x].title,
                         'color': $scope.eventData[x].primColor,
                         'startsAt': new Date($scope.eventData[x].start),
@@ -499,19 +504,21 @@ app.controller('dashboardRescheduleCtrl', function ($scope, $state, $rootScope, 
         console.log("$scope.endDateRes: " + $scope.endDateRes);
 
         dayEventmodal.close('resetModel');
-
         if ($scope.userLoginType == 'studParent') {
             var senderName = $scope.studentData[0].studName;
+            var stud_name = $scope.studentData[0].studName;
+            var stud_cs = $scope.studentData[0].cs;
+            var stud_id = $scope.studentData[0].studId;
             var senderMN = $scope.teacherPersonalData[0].mobileNum;
             var studId = $scope.studentData[0].studId;
             var email = $scope.teacherPersonalData[0].teacherEmail;/* ### Note: teacher email Id ### */
             var receiverName = $scope.teacherPersonalData[0].teacherName;
             var receiverId = $scope.teacherPersonalData[0].teacherId;
             var receiverMN = $scope.teacherPersonalData[0].mobileNum;
-            $scope.eventSend(reason, senderName, studId, email, senderMN, receiverName, receiverId, receiverMN);
-        }
-        if ($scope.userLoginType == 'teacher') {
-
+            $scope.eventSend(reason, senderName, studId, email, senderMN, receiverName, receiverId, receiverMN, stud_Id, stud_cs, stud_name);
+          }
+          if ($scope.userLoginType == 'teacher') {
+      
             var teacherName = $scope.teacherData[0].teacherName;
             var senderMN = $scope.teacherData[0].mobileNum;
             var teacherId = $scope.teacherData[0].teacherId;
@@ -519,14 +526,17 @@ app.controller('dashboardRescheduleCtrl', function ($scope, $state, $rootScope, 
             var receiverName = $scope.studentPersonalData[0].studName;
             var receiverId = $scope.studentPersonalData[0].studId;
             var receiverMN = $scope.studentPersonalData[0].mobileNum;
-            $scope.eventSend(reason, teacherName, teacherId, email, senderMN, receiverName, receiverId, receiverMN);
+            var stud_name = $scope.studentPersonalData[0].studName;
+            var stud_cs = $scope.studentPersonalData[0].cs;
+            var stud_id = $scope.studentPersonalData[0].studId;
+            $scope.eventSend(reason, teacherName, teacherId, email, senderMN, receiverName, receiverId, receiverMN, stud_Id, stud_cs, stud_name);
+          }
+      
+      
         }
-
-
-    }
-
-    $scope.eventSend = function (res, name, id, email, senderMN, receiverName, receiverId, receiverMN) {
-        console.log("eventSend-->");
+      
+        $scope.eventSend = function (res, name, id, email, senderMN, receiverName, receiverId, receiverMN, stud_id, stud_cs, stud_name) {
+          console.log("eventSend-->");
         var SIGNALING_SERVER = "https://norecruits.com";
         //var SIGNALING_SERVER = "http://localhost:5000";
         var queryLink = null;
@@ -569,47 +579,51 @@ app.controller('dashboardRescheduleCtrl', function ($scope, $state, $rootScope, 
                     "receiverName": receiverName,
                     "receiverId": receiverId,
                     "receiverMN": receiverMN,
-                    "remoteCalendarId": $scope.remoteCalendarId
+                    "student_cs": stud_cs, 
+                    "student_id":stud_id, 
+                    "student_Name":stud_name, 
+                    "remoteCalendarId": $scope.remoteCalendarId,
+                    
                 }
                 console.log("obj: " + JSON.stringify(obj));
 
-                httpFactory.post(api, obj).then(function (data) {
-                    var checkStatus = httpFactory.dataValidation(data);
-                    //console.log("data--" + JSON.stringify(data.data));
-                    if (checkStatus) {
-                        // console.log("data" + JSON.stringify(data.data))
-                        // $window.location.href = $scope.propertyJson.R082;
-                        alert("Successfully sent the event");
-                        // vm.events.splice(0, 1);
-                        var eventPostedData = data.data.data;
-                        var objData = {
-                            'id': obj.userId,
-                            'title': obj.title,
-                            'color': obj.primColor,
-                            'startsAt': obj.start,
-                            'endsAt': obj.end,
-                            'draggable': true,
-                            'resizable': true,
-                            'actions': actions,
-                            'url': obj.url,
-                            "reason": res,
-                            "senderName": name,
-                            "senderId": id,
-                            "senderMN": senderMN,
-                            "receiverEmail": email,
-                            "receiverName": receiverName,
-                            "receiverId": receiverId,
-                            "receiverMN": receiverMN,
-                            /*  */
-                        }
-                        ownerEvents.push(objData);
-                        vm.events.push(objData);
-                    }
-                    else {
-                        alert("Event Send Failed");
-                    }
+                // httpFactory.post(api, obj).then(function (data) {
+                //     var checkStatus = httpFactory.dataValidation(data);
+                //     //console.log("data--" + JSON.stringify(data.data));
+                //     if (checkStatus) {
+                //         // console.log("data" + JSON.stringify(data.data))
+                //         // $window.location.href = $scope.propertyJson.R082;
+                //         alert("Successfully sent the event");
+                //         // vm.events.splice(0, 1);
+                //         var eventPostedData = data.data.data;
+                //         var objData = {
+                //             'id': obj.userId,
+                //             'title': obj.title,
+                //             'color': obj.primColor,
+                //             'startsAt': obj.start,
+                //             'endsAt': obj.end,
+                //             'draggable': true,
+                //             'resizable': true,
+                //             'actions': actions,
+                //             'url': obj.url,
+                //             "reason": res,
+                //             "senderName": name,
+                //             "senderId": id,
+                //             "senderMN": senderMN,
+                //             "receiverEmail": email,
+                //             "receiverName": receiverName,
+                //             "receiverId": receiverId,
+                //             "receiverMN": receiverMN,
+                //             /*  */
+                //         }
+                //         ownerEvents.push(objData);
+                //         vm.events.push(objData);
+                //     }
+                //     else {
+                //         alert("Event Send Failed");
+                //     }
 
-                })
+                // })
 
             })
         })

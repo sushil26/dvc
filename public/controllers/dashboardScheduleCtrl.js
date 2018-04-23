@@ -531,7 +531,7 @@ console.log("$scope.studentPersonalData[0]: "+JSON.stringify($scope.studentPerso
       var stud_id = $scope.studentPersonalData[0].studId;
       console.log("$scope.studentPersonalData[0]: "+$scope.studentPersonalData[0].studId);
 console.log("stud_id: "+stud_id);
-      // $scope.eventSend(reason, teacherName, teacherId, email, senderMN, receiverName, receiverId, receiverMN, stud_Id, stud_cs, stud_name);
+      $scope.eventSend(reason, teacherName, teacherId, email, senderMN, receiverName, receiverId, receiverMN, stud_Id, stud_cs, stud_name);
     }
 
 

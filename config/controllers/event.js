@@ -155,8 +155,9 @@ module.exports.eventReSchedule = function (req, res) {
     // var id = {
     //     "_id": ObjectId(req.params.id)
     // }
-   
-    console.log("id: " + JSON.stringify(id));
+   var id = req.params.id;
+    console.log("id: " + id);
+    console.log("ObjectId(req.params.id): " +ObjectId(id));
 
     if (general.emptyCheck(req.params.id)) {
       

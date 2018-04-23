@@ -547,8 +547,8 @@ app.controller('dashboardRescheduleCtrl', function ($scope, $state, $rootScope, 
         var url;
 
 
-
-        var api = "https://norecruits.com/vc/eventReSchedule" + "/:" + $state.params.id;
+        var id = $state.params.id
+        var api = "https://norecruits.com/vc/eventReSchedule" + "/:" + id;
         //var api = "http://localhost:5000/vc/eventSend";
         console.log("api: " + api);
         // var email = document.getElementById('eventEmails').value;

@@ -94,13 +94,13 @@ var app = angular.module('vcApp', ['ui.router', 'mwl.calendar', 'ui.bootstrap', 
         resolve: {result : function($window)
           {
               // var x =authFact.getLoginType();
-              if(localStorage.getItem("loginType") == 'teacher' || localStorage.getItem("loginType") == 'studParent')
-              {
+              // if(localStorage.getItem("loginType") == 'teacher' || localStorage.getItem("loginType") == 'studParent')
+              // {
                  
-              }
-               else{
-                  $window.location.href='https://norecruits.com';
-               }
+              // }
+              //  else{
+              //     $window.location.href='https://norecruits.com';
+              //  }
              
              
           }}

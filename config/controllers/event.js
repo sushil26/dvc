@@ -62,9 +62,9 @@ module.exports.eventSend = function (req, res) {
             "receiverId": req.body.receiverId,
             "receiverMN": req.body.receiverMN,
             "remoteCalendarId": req.body.remoteCalendarId,
-            "student_cs": req.body.stud_cs,
-            "student_id": req.body.stud_id,
-            "student_Name": req.body.stud_name,
+            "student_cs": req.body.student_cs,
+            "student_id": req.body.student_id,
+            "student_Name": req.body.student_Name,
             "password": password
         }
         console.log("userData: " + JSON.stringify(userData));

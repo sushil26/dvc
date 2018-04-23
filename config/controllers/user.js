@@ -257,7 +257,7 @@ module.exports.updateUserStatus = function (req, res) {
     var updatedJson = {
       status: req.body.status
     };
-    user.update(obj, { $set: updatedJson }, { upsert: true, multi: true }, function (
+    user.update(obj, { $set: updatedJson }, { multi: true }, function (
       err,
       data
     ) {

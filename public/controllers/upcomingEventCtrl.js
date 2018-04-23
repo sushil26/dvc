@@ -114,7 +114,7 @@ app.controller('upcomingEventController', function ($scope, $state, $window, htt
             alert("Edit Started-->");
            var id = $scope.events[id].id;
             console.log("id: "+id);
-            // $state.go('dashboard.eventReschedule', { 'id': id });
+            $state.go('dashboard.eventReschedule', { 'id': id });
         }
         else {
             alert("Sorry you not allow to edit");

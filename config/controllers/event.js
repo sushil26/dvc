@@ -3,7 +3,7 @@ var user = db.collection('user');/* ### Teacher collection  ### */
 var event = db.collection('event');
 var stud = db.collection('student');/* ### student collection  ### */
 var general = require('../general.js');
-var ObjectId = require("mongodb").ObjectID;
+var ObjectId = require('mongodb').ObjectID;
 
 var bodyParser = require('body-parser');
 
@@ -153,7 +153,7 @@ module.exports.eventReSchedule = function (req, res) {
     }
     console.log("updating value: " + JSON.stringify(obj));
     var id = {
-        "_id": req.params.id
+        "_id": ObjectId(req.params.id)
     }
 //    var id = req.params.id;
 //     console.log("id: " + id);
@@ -161,7 +161,7 @@ module.exports.eventReSchedule = function (req, res) {
 
     if (general.emptyCheck(req.params.id)) {
       console.log("No Empty");
-        event.find(id).toArray(function(err, data) {
+        event.update(id, { $set: obj }, {multi: true},function (err, data) {
             console.log("data: " + JSON.stringify(data));
 
             if (err) {

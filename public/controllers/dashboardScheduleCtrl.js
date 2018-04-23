@@ -518,7 +518,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
       $scope.eventSend(reason, senderName, studId, email, senderMN, receiverName, receiverId, receiverMN, stud_Id, stud_cs, stud_name);
     }
     if ($scope.userLoginType == 'teacher') {
-
+console.log("$scope.studentPersonalData[0]: "+JSON.stringify($scope.studentPersonalData[0]));
       var teacherName = $scope.teacherData[0].teacherName;
       var senderMN = $scope.teacherData[0].mobileNum;
       var teacherId = $scope.teacherData[0].teacherId;
@@ -529,6 +529,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
       var stud_name = $scope.studentPersonalData[0].studName;
       var stud_cs = $scope.studentPersonalData[0].cs;
       var stud_id = $scope.studentPersonalData[0].studId;
+
       $scope.eventSend(reason, teacherName, teacherId, email, senderMN, receiverName, receiverId, receiverMN, stud_Id, stud_cs, stud_name);
     }
 

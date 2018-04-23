@@ -143,19 +143,22 @@ module.exports.eventReSchedule = function (req, res) {
     console.log("eventReSchedule-->");
     console.log("requested updated id: " + req.params.id);
     var responseData;
+    var id = {
+        "_id": ObjectId(req.params.id)
+    }
+    var obj = {
+        "title": req.body.title,
+        "reason": req.body.reason,
+        "start": req.body.start,
+        "end": req.body.end,
+        "startAt": req.body.startAt,
+        "endAt": req.body.endAt
+    }
+    console.log("updating value: " + JSON.stringify(obj));
+    console.log("id: " + JSON.stringify(id));
+
     if (general.emptyCheck(req.params.id)) {
-        var id = {
-            "_id": ObjectId(req.params.id)
-        }
-        var obj = {
-            "title": req.body.title,
-            "reason": req.body.reason,
-            "start": req.body.start,
-            "end": req.body.end,
-            "startAt": req.body.startAt,
-            "endAt": req.body.endAt
-        }
-        console.log("updating value: " + JSON.stringify(obj));
+      
         event.find(id, { $set: obj }, { upsert: true, multi: true }, function (err, data) {
             console.log("data: " + JSON.stringify(data));
 

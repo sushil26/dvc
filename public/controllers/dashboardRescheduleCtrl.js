@@ -923,7 +923,7 @@ app.controller('dashboardRescheduleCtrl', function ($scope, $state, $rootScope, 
         console.log("teacherPersonalData: " + JSON.stringify($scope.teacherPersonalData));
         $scope.selectedDateForEvent = $filter('date')(date, "EEE");
         console.log("selectedDateForEvent: " + $scope.selectedDateForEvent);
-
+        $scope.selectedDate = date;
         $('#timeTable_modal').modal('show');
 
         // $scope.selectedDate = date;

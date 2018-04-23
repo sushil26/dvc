@@ -161,7 +161,7 @@ module.exports.eventReSchedule = function (req, res) {
 
     if (general.emptyCheck(req.params.id)) {
       
-        event.find({ "_id": ObjectId(req.params.id)}, { $set: obj }, { upsert: true, multi: true }, function (err, data) {
+        event.find({ "_id": req.params.id}, { $set: obj }, { upsert: true, multi: true }, function (err, data) {
             console.log("data: " + JSON.stringify(data));
 
             if (err) {

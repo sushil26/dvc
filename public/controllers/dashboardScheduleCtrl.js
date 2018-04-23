@@ -759,15 +759,17 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
       // })
 
     }
-  }, {
-    // label: '<i class=\'glyphicon glyphicon-remove\'></i>',
-    label: 'Delete',
-    onClick: function (args) {
-      alert("Delete Event Comming Soon");
-      console.log("args: " + args);
-      // alert.show('Deleted', args.calendarEvent);
-    }
-  }];
+  }
+  // {
+   
+  //   label: 'Delete',
+  //   onClick: function (args) {
+  //     alert("Delete Event Comming Soon");
+  //     console.log("args: " + args);
+    
+  //   }
+  // }
+];
   vm.events = [
     // {
     //   title: 'An event',

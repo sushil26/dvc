@@ -153,7 +153,7 @@ module.exports.eventReSchedule = function (req, res) {
     }
     console.log("updating value: " + JSON.stringify(obj));
     var id = {
-        "_id": req.params.id
+        "_id": ObjectId(req.params.id)
     }
 //    var id = req.params.id;
 //     console.log("id: " + id);

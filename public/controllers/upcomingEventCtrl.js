@@ -50,7 +50,6 @@ app.controller('upcomingEventController', function ($scope, $state, $window, htt
                     console.log("$scope.eventData[" + x + "]: " + JSON.stringify($scope.eventData[x]));
                     var obj = {
                         'id': $scope.eventData[x]._id,
-                        'userId': $scope.eventData[x]._userId,
                         "student_cs": $scope.eventData[x].student_cs, 
                         "student_id":$scope.eventData[x].student_id, 
                         "student_Name":$scope.eventData[x].student_Name, 
@@ -60,7 +59,6 @@ app.controller('upcomingEventController', function ($scope, $state, $window, htt
                         'endsAt': new Date($scope.eventData[x].end),
                         'draggable': true,
                         'resizable': true,
-                        'actions': actions,
                         'url': $scope.eventData[x].url,
                         "senderName": $scope.eventData[x].senderName,
                         "senderId": $scope.eventData[x].senderId,
@@ -73,7 +71,7 @@ app.controller('upcomingEventController', function ($scope, $state, $window, htt
                         "receiverId": $scope.eventData[x].receiverId,
                         "receiverMN": $scope.eventData[x].receiverMN,
                         "remoteCalendarId": $scope.eventData[x].remoteCalendarId
-                      }
+                    }
                     console.log(" obj" + JSON.stringify(obj))
                     // ownerEvents.push(obj);
                     $scope.events.push(obj);
@@ -120,7 +118,7 @@ app.controller('upcomingEventController', function ($scope, $state, $window, htt
            var id = $scope.events[id].id;
            var userId = $scope.events[id].userId;
             console.log("id: "+id);
-            $state.go('dashboard.eventReschedule', { 'id': id});
+            $state.go('dashboard.eventReschedule', { 'id': id, 'userId':userId});
         }
         else {
             alert("Sorry you not allow to edit");

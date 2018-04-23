@@ -117,6 +117,10 @@ app.controller('upcomingEventController', function ($scope, $state, $window, htt
         if (consolidateDate > $scope.todayDate) {
             alert("Edit Started-->");
            var id = $scope.events[id].id;
+        //   var cs= $scope.events[id].student_cs;
+          
+        //   var stud_id = $scope.events[id].student_id; 
+        //   var name = $scope.events[id].student_Name;
            
             console.log("id: "+id);
             $state.go('dashboard.eventReschedule', { 'id': id});

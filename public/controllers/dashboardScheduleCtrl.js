@@ -27,9 +27,9 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
           var obj = {
             'id': $scope.eventData[x]._id,
             'userId': $scope.eventData[x]._userId,
-            "student_cs": $scope.eventData[x].student_cs, 
-            "student_id":$scope.eventData[x].student_id, 
-            "student_Name":$scope.eventData[x].student_Name, 
+            "student_cs": $scope.eventData[x].student_cs,
+            "student_id": $scope.eventData[x].student_id,
+            "student_Name": $scope.eventData[x].student_Name,
             'title': $scope.eventData[x].title,
             'color': $scope.eventData[x].primColor,
             'startsAt': new Date($scope.eventData[x].start),
@@ -518,7 +518,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $compile, 
       $scope.eventSend(reason, senderName, studId, email, senderMN, receiverName, receiverId, receiverMN, stud_id, stud_cs, stud_name);
     }
     if ($scope.userLoginType == 'teacher') {
-console.log("$scope.studentPersonalData[0]: "+JSON.stringify($scope.studentPersonalData[0]));
+      console.log("$scope.studentPersonalData[0]: " + JSON.stringify($scope.studentPersonalData[0]));
       var teacherName = $scope.teacherData[0].teacherName;
       var senderMN = $scope.teacherData[0].mobileNum;
       var teacherId = $scope.teacherData[0].teacherId;
@@ -529,8 +529,8 @@ console.log("$scope.studentPersonalData[0]: "+JSON.stringify($scope.studentPerso
       var stud_name = $scope.studentPersonalData[0].studName;
       var stud_cs = $scope.studentPersonalData[0].cs;
       var stud_id = $scope.studentPersonalData[0].studId;
-      console.log("$scope.studentPersonalData[0]: "+$scope.studentPersonalData[0].studId);
-console.log("stud_id: "+stud_id);
+      console.log("$scope.studentPersonalData[0]: " + $scope.studentPersonalData[0].studId);
+      console.log("stud_id: " + stud_id);
       $scope.eventSend(reason, teacherName, teacherId, email, senderMN, receiverName, receiverId, receiverMN, stud_id, stud_cs, stud_name);
     }
 
@@ -581,9 +581,9 @@ console.log("stud_id: "+stud_id);
           "receiverId": receiverId,
           "receiverMN": receiverMN,
           "remoteCalendarId": $scope.remoteCalendarId,
-          "student_cs": stud_cs, 
-          "student_id":stud_id, 
-          "student_Name":stud_name, 
+          "student_cs": stud_cs,
+          "student_id": stud_id,
+          "student_Name": stud_name,
         }
         console.log("obj: " + JSON.stringify(obj));
 

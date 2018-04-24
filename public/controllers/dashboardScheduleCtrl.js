@@ -685,46 +685,27 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
         var reqHr_ed = red.getHours();
         var reqMin_ed = red.getMinutes()-5;
         var reqSec_ed = red.getSeconds();
-        var rsa_alt = new Date(reqYear, reqMonth, reqDateWithoutMinus, reqHr, reqBy5min, reqSec);
+        var rsd_alt = new Date(reqYear, reqMonth, reqDateWithoutMinus, reqHr, reqBy5min, reqSec);
         var red_alt = new Date(reqYear, reqMonth, reqDateWithoutMinus, reqHr_ed, reqMin_ed, reqSec_ed);
         console.log("rsd: "+rsd);
-        console.log("rsa_alt: "+rsa_alt);
+        console.log("rsd_alt: "+rsd_alt);
         console.log("red: "+red);
         console.log("red_alt: "+red_alt);
 
-    console.log("$scope.startD: "+$scope.startD);
-    console.log("$scope.endDateRes: "+$scope.endDateRes);
-    console.log("$scope.startFiltered: "+ $scope.startFiltered);
-    console.log("$scope.endFiltered: "+$scope.endFiltered); 
-    
-    // var startD_alt = new Date($scope.startD);
-    // console.log("startD_alt: " + startD_alt);
-    // var startD_alt_reqDate = startD_alt.getDate();
-    // console.log("startD_alt_reqDate: " + startD_alt_reqDate);
-    // var startD_alt_month = startD_alt.getMonth();
-    // var startD_alt_year = startD_alt.getFullYear();
-    // var startD_alt_hr = startD_alt.getHours();
-    // var startD_alt_min = startD_alt.getMinutes()-5;
-    // var startD_alt_sec = startD_alt.getSeconds();
-    // var consol_startD = new Date(startD_alt_year, startD_alt_month, startD_alt_reqDate, startD_alt_hr, startD_alt_min, startD_alt_sec);
-    // console.log("consol_startD: " + consol_startD);
-    
-
-
-        // dayEventmodal = $uibModal.open({
-        //   scope: $scope,
-        //   templateUrl: '/html/templates/dayEventBook.html',
-        //   windowClass: 'show',
-        //   backdropClass: 'show',
-        //   controller: function ($scope, $uibModalInstance) {
-        //     var dt = new Date();
-        //     $scope.eventDetails = {
-        //       "startsAt": rsd,
-        //       "endsAt": red
-        //     }
-        //     console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
-        //   }
-        // })
+        dayEventmodal = $uibModal.open({
+          scope: $scope,
+          templateUrl: '/html/templates/dayEventBook.html',
+          windowClass: 'show',
+          backdropClass: 'show',
+          controller: function ($scope, $uibModalInstance) {
+            var dt = new Date();
+            $scope.eventDetails = {
+              "startsAt": rsd_alt,
+              "endsAt": red_alt
+            }
+            console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
+          }
+        })
       }
     }
     else {

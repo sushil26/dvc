@@ -502,24 +502,6 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
     console.log("$scope.endDate: " + $scope.endDate);
     console.log("$scope.endDateRes: " + $scope.endDateRes);
 
-
-    console.log("$scope.startD: "+$scope.startD);
-    console.log("$scope.endDateRes: "+$scope.endDateRes);
-    console.log("$scope.startFiltered: "+ $scope.startFiltered);
-    console.log("$scope.endFiltered: "+$scope.endFiltered); 
-    
-    var startD_alt = new Date($scope.startD);
-    console.log("startD_alt: " + startD_alt);
-    var startD_alt_reqDate = startD_alt.getDate();
-    console.log("startD_alt_reqDate: " + startD_alt_reqDate);
-    var startD_alt_month = startD_alt.getMonth();
-    var startD_alt_year = startD_alt.getFullYear();
-    var startD_alt_hr = startD_alt.getHours();
-    var startD_alt_min = startD_alt.getMinutes()-5;
-    var startD_alt_sec = startD_alt.getSeconds();
-    var consol_startD = new Date(startD_alt_year, startD_alt_month, startD_alt_reqDate, startD_alt_hr, startD_alt_min, startD_alt_sec);
-    console.log("consol_startD: " + consol_startD);
-    
     dayEventmodal.close('resetModel');
 
     // if ($scope.userLoginType == 'studParent') {
@@ -683,7 +665,6 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
     var consolidateDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
     console.log("consolidateDate: " + consolidateDate + " $scope.todayDate: " + $scope.todayDate);
     if (consolidateDate > $scope.todayDate) {
-
       var conflicts = PersonalRemoteCombineCal.some(function (event) {
         //   return (event.startsAt <= s && s <= event.endsAt) ||event.startsAt <= e && e <= event.endsAt || s <= event.startsAt && event.startsAt <= e ||s <= event.endsAt && event.endsAt <= e});
         return (event.startsAt <= rsd && rsd < event.endsAt) ||
@@ -698,20 +679,44 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
       }
       else {
         $('#timeTable_modal').modal('hide');
-        dayEventmodal = $uibModal.open({
-          scope: $scope,
-          templateUrl: '/html/templates/dayEventBook.html',
-          windowClass: 'show',
-          backdropClass: 'show',
-          controller: function ($scope, $uibModalInstance) {
-            var dt = new Date();
-            $scope.eventDetails = {
-              "startsAt": rsd,
-              "endsAt": red
-            }
-            console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
-          }
-        })
+        console.log("rsd: "+rsd);
+        var reqBy5min = rsd.getMinutes()-5;
+        var rsa_alt = new Date(reqYear, reqMonth, reqDate, reqHr, reqBy5min, reqSec);
+        console.log("rsa_alt: "+rsa_alt);
+
+    console.log("$scope.startD: "+$scope.startD);
+    console.log("$scope.endDateRes: "+$scope.endDateRes);
+    console.log("$scope.startFiltered: "+ $scope.startFiltered);
+    console.log("$scope.endFiltered: "+$scope.endFiltered); 
+    
+    // var startD_alt = new Date($scope.startD);
+    // console.log("startD_alt: " + startD_alt);
+    // var startD_alt_reqDate = startD_alt.getDate();
+    // console.log("startD_alt_reqDate: " + startD_alt_reqDate);
+    // var startD_alt_month = startD_alt.getMonth();
+    // var startD_alt_year = startD_alt.getFullYear();
+    // var startD_alt_hr = startD_alt.getHours();
+    // var startD_alt_min = startD_alt.getMinutes()-5;
+    // var startD_alt_sec = startD_alt.getSeconds();
+    // var consol_startD = new Date(startD_alt_year, startD_alt_month, startD_alt_reqDate, startD_alt_hr, startD_alt_min, startD_alt_sec);
+    // console.log("consol_startD: " + consol_startD);
+    
+
+
+        // dayEventmodal = $uibModal.open({
+        //   scope: $scope,
+        //   templateUrl: '/html/templates/dayEventBook.html',
+        //   windowClass: 'show',
+        //   backdropClass: 'show',
+        //   controller: function ($scope, $uibModalInstance) {
+        //     var dt = new Date();
+        //     $scope.eventDetails = {
+        //       "startsAt": rsd,
+        //       "endsAt": red
+        //     }
+        //     console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
+        //   }
+        // })
       }
     }
     else {

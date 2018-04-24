@@ -940,7 +940,14 @@ if($scope.userData.loginType=='teacher')
 
     }
     else {
-      alert("Select Student");
+      if($scope.userData.loginType=='teacher')
+      {
+        alert("Select Student");
+      }
+      else{
+        alert("Select Teacher");
+      }
+      
     }
 
 

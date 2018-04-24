@@ -570,8 +570,8 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
           "receiverEmail": email,
           "start": $scope.startD,
           "end": $scope.endDateRes,
-          "startAt":$filter('date')($scope.startFiltered, "h:mm a"),
-          "endAt": $filter('date')($scope.endFiltered, "h:mm a"),/* ###Note: have work and this is unwanted */
+          "startAt": $scope.startFiltered,
+          "endAt": $scope.endFiltered, /* ###Note: have work and this is unwanted */
           "primColor": "red",
           "url": url,
           "date": $scope.date,
@@ -600,8 +600,8 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
               'id': obj.userId,
               'title': obj.title,
               'color': obj.primColor,
-              'startsAt': obj.startAt,
-              'endsAt': obj.endAt,
+              'startsAt': $filter('date')($scope.startFiltered, "h:mm a"),
+              'endsAt': $filter('date')($scope.endFiltered, "h:mm a"),
               'draggable': true,
               'resizable': true,
               'actions': actions,
@@ -679,18 +679,18 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
       }
       else {
         $('#timeTable_modal').modal('hide');
-        
+
         var reqDateWithoutMinus = rsd.getDate();
-        var reqBy5min = rsd.getMinutes()-5;
+        var reqBy5min = rsd.getMinutes() - 5;
         var reqHr_ed = red.getHours();
-        var reqMin_ed = red.getMinutes()-5;
+        var reqMin_ed = red.getMinutes() - 5;
         var reqSec_ed = red.getSeconds();
         var rsd_alt = new Date(reqYear, reqMonth, reqDateWithoutMinus, reqHr, reqBy5min, reqSec);
         var red_alt = new Date(reqYear, reqMonth, reqDateWithoutMinus, reqHr_ed, reqMin_ed, reqSec_ed);
-        console.log("rsd: "+rsd);
-        console.log("rsd_alt: "+rsd_alt);
-        console.log("red: "+red);
-        console.log("red_alt: "+red_alt);
+        console.log("rsd: " + rsd);
+        console.log("rsd_alt: " + rsd_alt);
+        console.log("red: " + red);
+        console.log("red_alt: " + red_alt);
 
         dayEventmodal = $uibModal.open({
           scope: $scope,
@@ -727,16 +727,15 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
   vm.viewDate = moment().startOf('day').toDate();
   var originalFormat = calendarConfig.dateFormats.hour;
   calendarConfig.dateFormats.hour = 'HH:mm';
-if($scope.userData.loginType=='teacher')
-{
-  var actions = [{
-    // label: '<i class=\'glyphicon glyphicon-pencil\'></i>',
-    label: 'Re-Schedule',
-    onClick: function (args) {
-      alert("Edit Event Comming Soon");
-      console.log("args.calendarEvent: " + args.calendarEvent);
-      console.log("JSON args.calendarEvent: " + JSON.stringify(args.calendarEvent));
-      var date = args.calendarEvent.startsAt;
+  if ($scope.userData.loginType == 'teacher') {
+    var actions = [{
+      // label: '<i class=\'glyphicon glyphicon-pencil\'></i>',
+      label: 'Re-Schedule',
+      onClick: function (args) {
+        alert("Edit Event Comming Soon");
+        console.log("args.calendarEvent: " + args.calendarEvent);
+        console.log("JSON args.calendarEvent: " + JSON.stringify(args.calendarEvent));
+        var date = args.calendarEvent.startsAt;
         var reqDate = date.getDate() - 1;
         var reqMonth = date.getMonth();
         var reqYear = date.getFullYear();
@@ -745,45 +744,45 @@ if($scope.userData.loginType=='teacher')
         var reqSec = date.getSeconds();
         var consolidateDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
         console.log("args.calendarEvent.id: " + args.calendarEvent.id);
-        console.log("args.calendarEvent: "+JSON.stringify(args.calendarEvent));
+        console.log("args.calendarEvent: " + JSON.stringify(args.calendarEvent));
         if (consolidateDate > $scope.todayDate) {
-            alert("Edit Started-->");
-           var id = args.calendarEvent.id;
-        //   var cs= $scope.events[id].student_cs;
-          
-        //   var stud_id = $scope.events[id].student_id; 
-        //   var name = $scope.events[id].student_Name;
-           
-            console.log("id: "+id);
-            $state.go('dashboard.eventReschedule', { 'id': id});
+          alert("Edit Started-->");
+          var id = args.calendarEvent.id;
+          //   var cs= $scope.events[id].student_cs;
+
+          //   var stud_id = $scope.events[id].student_id; 
+          //   var name = $scope.events[id].student_Name;
+
+          console.log("id: " + id);
+          $state.go('dashboard.eventReschedule', { 'id': id });
         }
         else {
-            alert("Sorry you not allow to edit");
+          alert("Sorry you not allow to edit");
         }
-      // var eClicked = $uibModal.open({
-      //   scope: $scope,
-      //   templateUrl: '/html/templates/eventDetails_edit.html',
-      //   windowClass: 'show',
-      //   backdropClass: 'show',
-      //   controller: function ($scope, $uibModalInstance) {
-      //     $scope.eventDetails = args.calendarEvent;
-      //     console.log("$scope.eventDetails: " + $scope.eventDetails);
-      //   }
-      // })
+        // var eClicked = $uibModal.open({
+        //   scope: $scope,
+        //   templateUrl: '/html/templates/eventDetails_edit.html',
+        //   windowClass: 'show',
+        //   backdropClass: 'show',
+        //   controller: function ($scope, $uibModalInstance) {
+        //     $scope.eventDetails = args.calendarEvent;
+        //     console.log("$scope.eventDetails: " + $scope.eventDetails);
+        //   }
+        // })
 
+      }
     }
+      // {
+
+      //   label: 'Delete',
+      //   onClick: function (args) {
+      //     alert("Delete Event Comming Soon");
+      //     console.log("args: " + args);
+
+      //   }
+      // }
+    ];
   }
-  // {
-   
-  //   label: 'Delete',
-  //   onClick: function (args) {
-  //     alert("Delete Event Comming Soon");
-  //     console.log("args: " + args);
-    
-  //   }
-  // }
-];
-}
 
   vm.events = [
     // {
@@ -952,14 +951,13 @@ if($scope.userData.loginType=='teacher')
 
     }
     else {
-      if($scope.userData.loginType=='teacher')
-      {
+      if ($scope.userData.loginType == 'teacher') {
         alert("Select Student");
       }
-      else{
+      else {
         alert("Select Teacher");
       }
-      
+
     }
 
 

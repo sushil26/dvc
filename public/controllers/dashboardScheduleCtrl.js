@@ -715,7 +715,8 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
   vm.viewDate = moment().startOf('day').toDate();
   var originalFormat = calendarConfig.dateFormats.hour;
   calendarConfig.dateFormats.hour = 'HH:mm';
-
+if($scope.userData.loginType=='teacher')
+{
   var actions = [{
     // label: '<i class=\'glyphicon glyphicon-pencil\'></i>',
     label: 'Re-Schedule',
@@ -770,6 +771,8 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
   //   }
   // }
 ];
+}
+
   vm.events = [
     // {
     //   title: 'An event',

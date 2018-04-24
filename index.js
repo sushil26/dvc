@@ -13,22 +13,13 @@ app.use(bodyParser.json({
 
 module.exports = function (app, config) {
     //app.set('view engine','html');
-
-
     // app.use(session({secret: "Your secret key"}));
     //app.use(multer({ dest: './config'}));
-
-
 }
-
-
-
 var queryId = null;
 var userName = null;
 var time = null;
-
-// var mongoConfig = require('./config/dbConfig.js');
-
+// var mongoConfig = require('./config/dbConfig.js')
 // mongoConfig.connectToServer(function(err) {
 //     var server = app.listen("8080");
 //     var io = require('socket.io').listen(server);
@@ -41,7 +32,6 @@ var time = null;
 
 //     require('./config/router')(app);
 // });
-
 var mongoConfig = require('./config/dbConfig.js');
 //app.set('port', (process.env.PORT || 5000));
 // main.listen(main.get('port'), function() {
@@ -71,9 +61,7 @@ app.get('/', function (req, res) {
 // require('./config/server_socket')(io);
 
 app.get("/client", function (req, res) {
-
     queryId = null;
-
     console.log("start to render page");
     res.sendFile(__dirname + '/public/client.html');
 });

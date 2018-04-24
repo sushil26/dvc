@@ -504,35 +504,35 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
 
     dayEventmodal.close('resetModel');
 
-    // if ($scope.userLoginType == 'studParent') {
-    //   var senderName = $scope.studentData[0].studName;
-    //   var stud_name = $scope.studentData[0].studName;
-    //   var stud_cs = $scope.studentData[0].cs;
-    //   var stud_id = $scope.studentData[0].studId;
-    //   var senderMN = $scope.teacherPersonalData[0].mobileNum;
-    //   var studId = $scope.studentData[0].studId;
-    //   var email = $scope.teacherPersonalData[0].teacherEmail;/* ### Note: teacher email Id ### */
-    //   var receiverName = $scope.teacherPersonalData[0].teacherName;
-    //   var receiverId = $scope.teacherPersonalData[0].teacherId;
-    //   var receiverMN = $scope.teacherPersonalData[0].mobileNum;
-    //   $scope.eventSend(reason, senderName, studId, email, senderMN, receiverName, receiverId, receiverMN, stud_id, stud_cs, stud_name);
-    // }
-    // if ($scope.userLoginType == 'teacher') {
-    //   console.log("$scope.studentPersonalData[0]: " + JSON.stringify($scope.studentPersonalData[0]));
-    //   var teacherName = $scope.teacherData[0].teacherName;
-    //   var senderMN = $scope.teacherData[0].mobileNum;
-    //   var teacherId = $scope.teacherData[0].teacherId;
-    //   var email = $scope.studentPersonalData[0].parentEmail;/* ### Note: parentEmail email Id ### */
-    //   var receiverName = $scope.studentPersonalData[0].studName;
-    //   var receiverId = $scope.studentPersonalData[0].studId;
-    //   var receiverMN = $scope.studentPersonalData[0].mobileNum;
-    //   var stud_name = $scope.studentPersonalData[0].studName;
-    //   var stud_cs = $scope.studentPersonalData[0].cs;
-    //   var stud_id = $scope.studentPersonalData[0].studId;
-    //   console.log("$scope.studentPersonalData[0]: " + $scope.studentPersonalData[0].studId);
-    //   console.log("stud_id: " + stud_id);
-    //   $scope.eventSend(reason, teacherName, teacherId, email, senderMN, receiverName, receiverId, receiverMN, stud_id, stud_cs, stud_name);
-    // }
+    if ($scope.userLoginType == 'studParent') {
+      var senderName = $scope.studentData[0].studName;
+      var stud_name = $scope.studentData[0].studName;
+      var stud_cs = $scope.studentData[0].cs;
+      var stud_id = $scope.studentData[0].studId;
+      var senderMN = $scope.teacherPersonalData[0].mobileNum;
+      var studId = $scope.studentData[0].studId;
+      var email = $scope.teacherPersonalData[0].teacherEmail;/* ### Note: teacher email Id ### */
+      var receiverName = $scope.teacherPersonalData[0].teacherName;
+      var receiverId = $scope.teacherPersonalData[0].teacherId;
+      var receiverMN = $scope.teacherPersonalData[0].mobileNum;
+      $scope.eventSend(reason, senderName, studId, email, senderMN, receiverName, receiverId, receiverMN, stud_id, stud_cs, stud_name);
+    }
+    if ($scope.userLoginType == 'teacher') {
+      console.log("$scope.studentPersonalData[0]: " + JSON.stringify($scope.studentPersonalData[0]));
+      var teacherName = $scope.teacherData[0].teacherName;
+      var senderMN = $scope.teacherData[0].mobileNum;
+      var teacherId = $scope.teacherData[0].teacherId;
+      var email = $scope.studentPersonalData[0].parentEmail;/* ### Note: parentEmail email Id ### */
+      var receiverName = $scope.studentPersonalData[0].studName;
+      var receiverId = $scope.studentPersonalData[0].studId;
+      var receiverMN = $scope.studentPersonalData[0].mobileNum;
+      var stud_name = $scope.studentPersonalData[0].studName;
+      var stud_cs = $scope.studentPersonalData[0].cs;
+      var stud_id = $scope.studentPersonalData[0].studId;
+      console.log("$scope.studentPersonalData[0]: " + $scope.studentPersonalData[0].studId);
+      console.log("stud_id: " + stud_id);
+      $scope.eventSend(reason, teacherName, teacherId, email, senderMN, receiverName, receiverId, receiverMN, stud_id, stud_cs, stud_name);
+    }
 
 
   }

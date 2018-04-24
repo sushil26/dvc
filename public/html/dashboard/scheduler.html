@@ -11,20 +11,24 @@
       max-height: 80px !important;
       min-height: 40px !important;
     }
-    mwl-calendar span[data-cal-date]{
+
+    mwl-calendar span[data-cal-date] {
       font-weight: 400;
-    opacity: .5;
-    margin-top: 5px;
-    margin-right: 5px;
+      opacity: .5;
+      margin-top: 5px;
+      margin-right: 5px;
     }
-mwl-calendar .cal-month-day {
-    max-height: 80px !important;
-    height: 60px !important;
-}
-mwl-calendar .event{
-  width: 8px;
-    height: 8px;
-}
+
+    mwl-calendar .cal-month-day {
+      max-height: 80px !important;
+      height: 60px !important;
+    }
+
+    mwl-calendar .event {
+      width: 8px;
+      height: 8px;
+    }
+
     .cal-day-hour-part-time strong.ng-hide {
       display: block !important;
     }
@@ -33,6 +37,7 @@ mwl-calendar .event{
       background-color: skyblue;
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
+
     .cal-day-open {
       background: #ff7777;
     }
@@ -125,8 +130,8 @@ mwl-calendar .event{
             <div class="panel-body">
               <!-- Widget content -->
               <mwl-calendar events="vm.events" view="vm.calendarView" view-title="vm.calendarTitle" view-date="vm.viewDate" on-event-click="vm.eventClicked(calendarEvent)"
-              on-view-change-click="false" on-timespan-click="vm.timespanClicked(calendarDate)">
-            </mwl-calendar>
+                on-view-change-click="false" on-timespan-click="vm.timespanClicked(calendarDate)">
+              </mwl-calendar>
               <!-- <mwl-calendar events="vm.events" view="vm.calendarView" view-title="vm.calendarTitle" view-date="vm.viewDate" on-event-click="vm.eventClicked(calendarEvent)"
                 on-event-times-changed="vm.eventTimesChanged(calendarEvent); calendarEvent.startsAt = calendarNewEventStart; calendarEvent.endsAt = calendarNewEventEnd"
                 cell-is-open="vm.cellIsOpen" day-view-start="09:00" day-view-end="15:00" day-view-split="15" cell-modifier="vm.modifyCell(calendarCell)"
@@ -176,39 +181,57 @@ mwl-calendar .event{
                   <tbody>
                     <tr class="active">
                       <td>Monday</td>
-       
+
                       <td ng-if="selectedDateForEvent=='Mon'" style="background-color:#558a55!important;cursor: pointer;" ng-repeat="mtt in teacherPersonalData[0].timeTable[0].Monday"
-                        ng-click="timeTableForEventBook('mon',$index)"><button  class="btn" ng-if="mtt.class=='Free'">Schedule</button><span ng-if="mtt.class!='Free'">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</span></td>
+                        ng-click="timeTableForEventBook('mon',$index)">
+                        <button class="btn" ng-if="mtt.class=='Free'">Schedule</button>
+                        <span ng-if="mtt.class!='Free'">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</span>
+                      </td>
                       <td ng-if="selectedDateForEvent!='Mon'" style="background-color:#f5f5f5!important" ng-repeat="mtt in teacherPersonalData[0].timeTable[0].Monday">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
                     </tr>
                     <tr class="warning">
                       <td>Tuesday</td>
                       <td ng-if="selectedDateForEvent=='Tue'" style="background-color:#558a55!important;cursor: pointer;" ng-repeat="mtt in teacherPersonalData[0].timeTable[1].Tues"
-                        ng-click="timeTableForEventBook('tue',$index)"><button class="btn" ng-if="mtt.class=='Free'">Schedule</button><span ng-if="mtt.class!='Free'">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</span></td>
+                        ng-click="timeTableForEventBook('tue',$index)">
+                        <button class="btn" ng-if="mtt.class=='Free'">Schedule</button>
+                        <span ng-if="mtt.class!='Free'">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</span>
+                      </td>
                       <td ng-if="selectedDateForEvent!='Tue'" style="background-color:#f5f5f5!important" ng-repeat="mtt in teacherPersonalData[0].timeTable[1].Tues">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
                     </tr>
                     <tr class="danger">
                       <td>Wednesday</td>
                       <td ng-if="selectedDateForEvent=='Wed'" style="background-color:#558a55!important;cursor: pointer;" ng-repeat="mtt in teacherPersonalData[0].timeTable[2].Wed"
-                        ng-click="timeTableForEventBook('wed',$index)"><button class="btn"  ng-if="mtt.class=='Free'">Schedule</button><span ng-if="mtt.class!='Free'">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</span></td>
+                        ng-click="timeTableForEventBook('wed',$index)">
+                        <button class="btn" ng-if="mtt.class=='Free'">Schedule</button>
+                        <span ng-if="mtt.class!='Free'">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</span>
+                      </td>
                       <td ng-if="selectedDateForEvent!='Wed'" style="background-color:#f5f5f5!important" ng-repeat="mtt in teacherPersonalData[0].timeTable[2].Wed">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
                     </tr>
                     <tr class="success">
                       <td>Thursday</td>
                       <td ng-if="selectedDateForEvent=='Thu'" style="background-color:#558a55!important;cursor: pointer;" ng-repeat="mtt in teacherPersonalData[0].timeTable[3].Thurs"
-                        ng-click="timeTableForEventBook('thu',$index)"><button class="btn"  ng-if="mtt.class=='Free'">Schedule</button><span ng-if="mtt.class!='Free'">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</span></td>
+                        ng-click="timeTableForEventBook('thu',$index)">
+                        <button class="btn" ng-if="mtt.class=='Free'">Schedule</button>
+                        <span ng-if="mtt.class!='Free'">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</span>
+                      </td>
                       <td ng-if="selectedDateForEvent!='Thu'" style="background-color:#f5f5f5!important" ng-repeat="mtt in teacherPersonalData[0].timeTable[3].Thurs">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
                     </tr>
                     <tr class="active">
                       <td>Friday</td>
                       <td ng-if="selectedDateForEvent=='Fri'" style="background-color:#558a55!important;cursor: pointer;" ng-repeat="mtt in teacherPersonalData[0].timeTable[4].Fri"
-                        ng-click="timeTableForEventBook('fri',$index)"><button class="btn" ng-if="mtt.class=='Free'">Schedule</button><span ng-if="mtt.class!='Free'">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</span></td>
+                        ng-click="timeTableForEventBook('fri',$index)">
+                        <button class="btn" ng-if="mtt.class=='Free'">Schedule</button>
+                        <span ng-if="mtt.class!='Free'">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</span>
+                      </td>
                       <td ng-if="selectedDateForEvent!='Fri'" style="background-color:#f5f5f5!important" ng-repeat="mtt in teacherPersonalData[0].timeTable[4].Fri">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
                     </tr>
                     <tr class="warning">
                       <td>Saturday</td>
                       <td ng-if="selectedDateForEvent=='Sat'" style="background-color:#558a55!important;cursor: pointer;" ng-repeat="mtt in teacherPersonalData[0].timeTable[5].Sat"
-                        ng-click="timeTableForEventBook('sat',$index)"><button class="btn" ng-if="mtt.class=='Free'">Schedule</button><span ng-if="mtt.class!='Free'">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</span></td>
+                        ng-click="timeTableForEventBook('sat',$index)">
+                        <button class="btn" ng-if="mtt.class=='Free'">Schedule</button>
+                        <span ng-if="mtt.class!='Free'">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</span>
+                      </td>
                       <td ng-if="selectedDateForEvent!='Sat'" style="background-color:#f5f5f5!important" ng-repeat="mtt in teacherPersonalData[0].timeTable[5].Sat">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
                     </tr>
                   </tbody>
@@ -228,7 +251,7 @@ mwl-calendar .event{
 
       <!-- ##### Start Delete  ##### -->
 
-      <!-- <div class="col-md-12 col-sm-12 col-lg-12">
+      <div class="col-md-12 col-sm-12 col-lg-12">
         <br>
         <br>
         <br>
@@ -318,7 +341,7 @@ mwl-calendar .event{
             </tr>
           </tbody>
         </table>
-      </div> -->
+      </div>
       <!-- ##### End Delete  ##### -->
 
     </section>

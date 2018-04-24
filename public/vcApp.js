@@ -94,17 +94,23 @@ var app = angular.module('vcApp', ['ui.router', 'mwl.calendar', 'ui.bootstrap', 
         resolve: {result : function($window)
           {
               // var x =authFact.getLoginType();
-              if(localStorage.getItem("loginType") == 'teacher' || localStorage.getItem("loginType") == 'studParent')
-              {
+              // if(localStorage.getItem("loginType") == 'teacher' || localStorage.getItem("loginType") == 'studParent')
+              // {
                  
-              }
-               else{
-                  $window.location.href='https://norecruits.com';
-               }
+              // }
+              //  else{
+              //     $window.location.href='https://norecruits.com';
+              //  }
              
              
           }}
       })
+      .state('dashboard.eventReschedule', {
+        url: dashboardEventReschedule(),
+        templateUrl: '/html/dashboard/rescheduler.html',
+        controller: 'dashboardRescheduleCtrl'
+      })
+
     
       .state('dashboard.conference', {
         url: dashboardConference(),
@@ -126,8 +132,16 @@ var app = angular.module('vcApp', ['ui.router', 'mwl.calendar', 'ui.bootstrap', 
         templateUrl: '/html/dashboard/history.html',
         controller: 'historyController'
       })
+      .state('dashboard.contact', {
+        url: contact(),
+        templateUrl: '/html/dashboard/contact.html',
+        controller: 'contactController'
+      })
     
   });
+  function contact() {
+    return '/contact';
+  }
 
 function dashboardEdit() {
   return '/editDetails';
@@ -146,6 +160,9 @@ function dashboardPersonalDetail() {
 }
 function dashboardEventShedule(){
   return '/eventShedule';
+}
+function dashboardEventReschedule(){
+  return '/reschedule/:id';
 }
 function dashboardUserAuth(){
   return '/userAuth';

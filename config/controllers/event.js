@@ -24,13 +24,13 @@ var transporter = nodemailer.createTransport({
 module.exports.getToDate = function (req, res) {
     console.log("getToDate-->");
     var date = new Date();
-    console.log("***date: "+date);
+    console.log("***date: " + date);
     var responseData = {
         "status": true,
         "message": "date get successfully",
-        "data": {"date": date}
+        "data": { "date": date }
     }
-    console.log("responseData: "+JSON.stringify(responseData));
+    console.log("responseData: " + JSON.stringify(responseData));
     res.status(200).send(responseData);
     console.log("<--getToDate");
 }
@@ -62,6 +62,9 @@ module.exports.eventSend = function (req, res) {
             "receiverId": req.body.receiverId,
             "receiverMN": req.body.receiverMN,
             "remoteCalendarId": req.body.remoteCalendarId,
+            "student_cs": req.body.student_cs,
+            "student_id": req.body.student_id,
+            "student_Name": req.body.student_Name,
             "password": password
         }
         console.log("userData: " + JSON.stringify(userData));
@@ -136,6 +139,60 @@ module.exports.eventSend = function (req, res) {
     }
 }
 
+module.exports.eventReSchedule = function (req, res) {
+    console.log("eventReSchedule-->");
+    console.log("requested updated id: " + req.params.id);
+    var responseData;
+    var obj = {
+        "title": req.body.title,
+        "reason": req.body.reason,
+        "start": req.body.start,
+        "end": req.body.end,
+        "startAt": req.body.startAt,
+        "endAt": req.body.endAt
+    }
+    console.log("updating value: " + JSON.stringify(obj));
+    var id = {
+        "_id": ObjectId(req.params.id)
+    }
+//    var id = req.params.id;
+//     console.log("id: " + id);
+    // console.log("ObjectId(req.params.id): " +ObjectId(id));
+
+    if (general.emptyCheck(req.params.id)) {
+      console.log("No Empty");
+        event.update(id, { $set: obj }, {multi: true},function (err, data) {
+            console.log("data: " + JSON.stringify(data));
+
+            if (err) {
+                responseData = {
+                    status: false,
+                    message: "Failed to update",
+                    data: data
+                };
+                res.status(400).send(responseData);
+            } else {
+                responseData = {
+                    status: true,
+                    message: "Rescheduled successfully",
+                    data: data
+                };
+
+                res.status(200).send(responseData);
+            }
+        })
+    }
+    else {
+        console.log("Epty value found");
+        responseData = {
+            status: false,
+            message: "there is no userId to find"
+        };
+        res.status(400).send(responseData);
+    }
+    console.log("<--eventReSchedule");
+}
+
 module.exports.eventGet = function (req, res) {
     console.log("getEvent-->");
     var responseData;
@@ -175,58 +232,48 @@ module.exports.eventGet = function (req, res) {
 
 }
 
-module.exports.upcomingEventGet = function (req, res) {
-    console.log("upcomingEventGet-->");
+module.exports.getEventById = function (req, res) {
+    console.log("EventGetById-->");
     var responseData;
-    var queryDate = req.params.currentDateTime;
+
     console.log("req.params.id: " + req.params.id);
-    console.log("req.params.currentDateTime: " + req.params.currentDateTime);
-    console.log("DateTime: " + new Date());
-    // var id ={
-    //     userId = req.params.id  {"endsAt":{ $gte: queryDate } }, 
-    // } 
 
+    if (general.emptyCheck(req.params.id)) {
+        var id = {
+            "_id": ObjectId(req.params.id)
+        }
+        event.find(id).toArray(function (err, data) {
+            console.log("data: " + JSON.stringify(data));
 
-
-    if (general.emptyCheck(req.params.id) && general.emptyCheck(req.params.id)) {
-
-        event.find({ $or: [{ "userId": req.params.id }, { "remoteCalendarId": req.params.id }] }).toArray(function (err, listOfevents) {
-            //  console.log("listOfevents: "+JSON.stringify(listOfevents))
             if (err) {
-
                 responseData = {
-                    "status": false,
-                    "message": "Failed to get Data",
-                    "data": data
-                }
+                    status: false,
+                    message: "Failed to get Data",
+                    data: data
+                };
                 res.status(400).send(responseData);
-            }
-            else {
+            } else {
                 responseData = {
-                    "status": true,
-                    "message": "Registeration Successfull",
-                    "data": listOfevents
-                }
-
-
+                    status: true,
+                    message: "get data successfully",
+                    data: data
+                };
 
                 res.status(200).send(responseData);
             }
-
         })
-
     }
     else {
         console.log("Epty value found");
         responseData = {
-            "status": false,
-            "message": "there is no userId to find",
-
-        }
+            status: false,
+            message: "there is no userId to find"
+        };
         res.status(400).send(responseData);
     }
 
-    console.log("<--upcomingEventGet");
+
+    console.log("<--EventGetById");
 }
 
 module.exports.deleteEvent = function (req, res) {

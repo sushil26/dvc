@@ -680,8 +680,9 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
       else {
         $('#timeTable_modal').modal('hide');
         console.log("rsd: "+rsd);
+        var reqDateWithoutMinus = rsd.getDate();
         var reqBy5min = rsd.getMinutes()-5;
-        var rsa_alt = new Date(reqYear, reqMonth, reqDate, reqHr, reqBy5min, reqSec);
+        var rsa_alt = new Date(reqYear, reqMonth, reqDateWithoutMinus, reqHr, reqBy5min, reqSec);
         console.log("rsa_alt: "+rsa_alt);
 
     console.log("$scope.startD: "+$scope.startD);

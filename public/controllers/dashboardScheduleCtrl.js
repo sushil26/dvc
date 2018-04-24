@@ -570,8 +570,8 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
           "receiverEmail": email,
           "start": $scope.startD,
           "end": $scope.endDateRes,
-          "startAt": $scope.startFiltered,
-          "endAt": $scope.endFiltered, /* ###Note: have work and this is unwanted */
+          "startAt":$filter('date')($scope.startFiltered, "h:mm a"),
+          "endAt": $filter('date')($scope.endFiltered, "h:mm a"),/* ###Note: have work and this is unwanted */
           "primColor": "red",
           "url": url,
           "date": $scope.date,

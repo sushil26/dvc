@@ -82,10 +82,10 @@
                                             <!-- <label class="emailModel-lab">File
                                                         <span ng-show="uploadForm.myImage.$error.required" class="mandatorySymbol"></span>
                                                     </label> -->
-                                            <!-- <input type="file" style="display: inline-block;width:60%;float:left" class="btnCont btnCont-uploadColor" name="myImage"
+                                            <input type="file" style="display: inline-block;width:60%;float:left" class="btnCont btnCont-uploadColor" name="myImage"
                                                         value="Upload" image-with-preview file-model="file.upload" ng-model="image"
                                                         accept="image/jpeg,image/png" ng-required="true">
-                                                    <img ng-show="image.src" ng-src="{{image.src}}" style="width: 50%;margin-top: 2%;" /> -->
+                                                    <img ng-show="image.src" ng-src="{{image.src}}" style="width: 50%;margin-top: 2%;" />
                                             <!-- <span class="validationNotify" ng-show="uploadForm.myImage.$error.dimensions">
                                                         <br>Image height should be equal to 350px! Image width should be equal
                                                         to 650px!
@@ -99,6 +99,10 @@
                                             <div class="form-group">
                                                 <div class="col-lg-offset-2 col-lg-10">
                                                     <button type="submit" class="btn btn-primary" ng-click="attendanceMark(file.upload)">Save</button>
+                                                    <button type="reset" class="btn btn-danger">Cancel</button>
+                                                </div>
+                                                <div class="col-lg-offset-2 col-lg-10">
+                                                    <button type="submit" class="btn btn-primary" ng-click="festDetailSub(uploadForm, file.upload)">hai</button>
                                                     <button type="reset" class="btn btn-danger">Cancel</button>
                                                 </div>
                                             </div>

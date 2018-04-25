@@ -1,12 +1,11 @@
 app.controller('attendanceCtl', function ($scope, $window, httpFactory, sessionAuthFactory ) {
     console.log("attendanceCtl==>");
     $scope.file = {}; /* ### Note: Upload file declaration ### */
-    $scope.festDetailSub = function (formName, title, message, file) {
+    $scope.festDetailSub = function (formName, file) {
 
         console.log("festDetailSub-->");
         if (formName.$valid) {
-            console.log("title: " + title);
-            console.log("message: " + message);
+           
             console.log("file: " + file);
             console.log("$scope.file: " + $scope.file);
             festDetailSubJson = {
@@ -14,7 +13,7 @@ app.controller('attendanceCtl', function ($scope, $window, httpFactory, sessionA
                 "message": message
             }
             if (file != undefined) {
-                var uploadURL = "http://localhost:8085/travel/uploadFestDetailPic";
+                var uploadURL = "https://norecruits.com/vc/uploadAttendance";
                 console.log("$scope.file from : alumRegCtr.js: " + $scope.file);
                 httpFactory.imageUpload(file, uploadURL).then(function (data) {
                     var checkStatus = httpFactory.dataValidation(data);

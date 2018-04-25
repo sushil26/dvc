@@ -19,6 +19,25 @@
                                         <h1> Attendance Report </h1>
                                         <form role="form" name="uploadForm" novalidate>
                                             <div class="form-group">
+                                                    <div style="float:left !important; position: absolute;
+                                                    left: 0;">
+                                    
+                                                      <select class="btn btn-danger" placeholder="select" ng-model="cssSelect" ng-change="getStudListForCS(cssSelect)"
+                                                        ng-options="css as css.class+ '-' + css.section + '-' + css.subject for css in teacherData[0].css">
+                                                        <option value="" disabled selected>Class</option>
+                                                      </select>
+                                    
+                                    
+                                                      <select class="btn"  placeholder="select" ng-model="csSelect" 
+                                                        ng-options="cs as cs.name + '-' + cs.studId for cs in studList">
+                                                        <option value="" disabled selected>Student</option>
+                                                      </select>
+                                    
+                                    
+                                                    </div>
+                                            </div>
+                                            <div class="form-group">
+
                                                 <label class="col-lg-2 control-label">Upload File</label>
                                                 <div class="col-lg-6">
 
@@ -27,7 +46,7 @@
                                                     </label> -->
                                                     <input type="file" style="display: inline-block;width:60%;float:left" class="btnCont btnCont-uploadColor" name="myImage"
                                                         value="Upload" image-with-preview file-model="file.upload" ng-model="image"
-                                                       accept="image/jpeg,image/png" ng-required="true">
+                                                        accept="image/jpeg,image/png" ng-required="true">
                                                     <img ng-show="image.src" ng-src="{{image.src}}" style="width: 50%;margin-top: 2%;" />
                                                     <!-- <span class="validationNotify" ng-show="uploadForm.myImage.$error.dimensions">
                                                         <br>Image height should be equal to 350px! Image width should be equal

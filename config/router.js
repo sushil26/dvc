@@ -1,6 +1,7 @@
 var user = require('./controllers/user');
 var event = require('./controllers/event');
 var image = require('./controllers/image');
+var adminAction = require('./controllers/adminAction');
 
 
 module.exports = function (app) {
@@ -22,6 +23,7 @@ module.exports = function (app) {
     app.get('/vc/teacherPersonalData/:id', user.teacherPersonalData);
     app.get('/vc/studentPersonalData/:id',user.studentPersonalData);
     app.get('/vc/getLoginData/:id',user.getLoginData);
+    app.get('/vc/getAllClass', adminAction.getAllClass);
 
     app.get('/vc/getStudListForCS/:clas/:section', event.getStudListForCS);
     app.get('/vc/getTeacherListForCS/:clas/:section', event.getTeacherListForCS);

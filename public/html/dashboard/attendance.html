@@ -17,7 +17,7 @@
                                 <div id="profile">
                                     <section class="panel">
                                         <h1> Attendance Report </h1>
-                                        <form role="form" name="uploadForm" novalidate>
+                                        <form role="form" name="uploadForm" encType="multipart/form-data" novalidate>
                                             <div class="form-group row">
                                                 <div class="col-lg-12" style="float:left !important; position: absolute;
                                                     left: 0;">
@@ -65,10 +65,14 @@
                                            </div>
 <br>
 <br>
+
+
+        <input type="file" name="file" accept="*.csv" />
+        <!-- <input type="submit" value="Upload Authors" />
 <input type="file" style="display: inline-block;width:60%;float:left" class="btnCont btnCont-uploadColor" name="myImage"
                                                         value="Upload" image-with-preview file-model="file.upload" ng-model="image"
                                                         accept="image/jpeg,image/png" ng-required="true">
-                                                    <img ng-show="image.src" ng-src="{{image.src}}" style="width: 50%;margin-top: 2%;" /> 
+                                                    <img ng-show="image.src" ng-src="{{image.src}}" style="width: 50%;margin-top: 2%;" />  -->
 
                                             <!--   <div class="form-group">
 

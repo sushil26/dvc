@@ -116,10 +116,10 @@ app.controller('attendanceCtl', function ($scope, $window, httpFactory, sessionA
 
   }
 
-  $scope.festDetailSub = function (formName, file) {
+  $scope.festDetailSub = function (file) {
 
     console.log("festDetailSub-->");
-    if (formName.$valid) {
+    
 
       console.log("file: " + file);
       console.log("$scope.file: " + $scope.file);
@@ -154,7 +154,7 @@ app.controller('attendanceCtl', function ($scope, $window, httpFactory, sessionA
         // $scope.festivalDetailDetails();
         console.log("image is not uploaded");
       }
-    }
+    
     console.log("<--festDetailSub");
   }
 })

@@ -12,7 +12,7 @@ app.controller('attendanceCtl', function ($scope, $window, httpFactory, sessionA
     console.log("<--addSMA");
   };
 
-  $scope.attendanceMark = function (req, res) {
+  $scope.attendanceMark = function () {
     console.log("attendanceMark-->");
     console.log("csSelect: " + $scope.csSelect);
     console.log("csSelect: " + JSON.stringify($scope.csSelect));

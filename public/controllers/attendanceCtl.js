@@ -46,7 +46,7 @@ app.controller('attendanceCtl', function ($scope, $window, httpFactory, sessionA
     //   "ttSelect": $scope.ttSelect,
     //   "sma": $scope.sma
     // }
-    console.log("obj: " + JSON.stringify(obj));
+    // console.log("obj: " + JSON.stringify(obj));
     console.log("<--attendanceMark");
   }
 

@@ -24,6 +24,8 @@ module.exports = function (app) {
     app.get('/vc/studentPersonalData/:id',user.studentPersonalData);
     app.get('/vc/getLoginData/:id',user.getLoginData);
     app.get('/vc/getAllClass', adminAction.getAllClass);
+    app.post('/vc/uploadMark', adminAction.uploadMark);
+    
     // app.post('/vc/atte', adminAction.getAllClass);
 
     app.get('/vc/getStudListForCS/:clas/:section', event.getStudListForCS);
@@ -37,7 +39,7 @@ module.exports = function (app) {
     app.post('/vc/parentCredential', event.parentCredential);
     app.post('/vc/eventUpdate/:id', event.eventUpdate);
 
-    app.post('/vc/uploadMark',  adminAction.uploadMark);
+    
    
    
     

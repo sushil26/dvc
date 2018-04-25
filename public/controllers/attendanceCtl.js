@@ -28,7 +28,7 @@ app.controller('attendanceCtl', function ($scope, $window, httpFactory, sessionA
         console.log("<--getAllClass");
     }
     
-    
+    $scope.getAllClass();
     $scope.getStudListForCS = function (css) {
 
         console.log("getStudListForCS-->");

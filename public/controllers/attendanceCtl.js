@@ -8,10 +8,10 @@ app.controller('attendanceCtl', function ($scope, $window, httpFactory, sessionA
            
             console.log("file: " + file);
             console.log("$scope.file: " + $scope.file);
-            festDetailSubJson = {
-                "title": title,
-                "message": message
-            }
+            // festDetailSubJson = {
+            //     "title": title,
+            //     "message": message
+            // }
             if (file != undefined) {
                 var uploadURL = "https://norecruits.com/vc/uploadAttendance";
                 console.log("$scope.file from : alumRegCtr.js: " + $scope.file);
@@ -26,7 +26,7 @@ app.controller('attendanceCtl', function ($scope, $window, httpFactory, sessionA
                         if ($scope.filePath) {
                             festDetailSubJson.file = $scope.filePath;
                         }
-                        $scope.festivalDetailDetails();
+                        // $scope.festivalDetailDetails();
 
                     } else {
                         $scope.status = data.data.status;
@@ -36,7 +36,7 @@ app.controller('attendanceCtl', function ($scope, $window, httpFactory, sessionA
                 });
             }
             else {
-                $scope.festivalDetailDetails();
+                // $scope.festivalDetailDetails();
                 console.log("image is not uploaded");
             }
         }

@@ -1,5 +1,6 @@
 var user = require('./controllers/user');
 var event = require('./controllers/event');
+var image = require('./controllers/image');
 
 
 module.exports = function (app) {
@@ -32,6 +33,8 @@ module.exports = function (app) {
     app.post('/vc/deleteEvent', event.deleteEvent);
     app.post('/vc/parentCredential', event.parentCredential);
     app.post('/vc/eventUpdate/:id', event.eventUpdate);
+
+    app.post('/vc/uploadAttendance',  image.uploadAttendance);
    
    
     

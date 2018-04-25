@@ -17,6 +17,7 @@ app.controller('attendanceCtl', function ($scope, $window, httpFactory, sessionA
     console.log("csSelect: " + $scope.csSelect);
     console.log("csSelect: " + JSON.stringify($scope.csSelect));
     var api = "https://norecruits.com/vc/uploadMark";
+    console.log("file: "+file);
 
     httpFactory.imageUpload(file, api).then(function (data) {
       var checkStatus = httpFactory.dataValidation(data);

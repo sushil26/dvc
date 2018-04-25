@@ -24,7 +24,7 @@ module.exports.getAllClass = function (req, res) {
                 var cls = studentList[len].cs[0].class;
                 var sec = studentList[len].cs[0].section;
                 console.log("cls: " + cls);
-                allClass.push({ "class": cls, "sec": section });
+                allClass.push({ "class": cls, "sec": sec });
             }
 
             responseData = {

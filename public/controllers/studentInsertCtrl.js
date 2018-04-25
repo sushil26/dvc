@@ -30,7 +30,6 @@ app.controller("studentInsertCtrl", function($scope, $window, httpFactory) {
       motherName: $scope.mName,
       motherEmail: $scope.mEmail,
       motherNum: $scope.mothermobileNum,
-
       cs: $scope.cs,
       pswd: $scope.pswd
     };

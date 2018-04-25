@@ -39,3 +39,44 @@ module.exports.getAllClass = function (req, res) {
 
     console.log("<--getAllClass");
 };
+
+module.exports.attendanceMarkSave = function (req, res) {
+    console.log("attendanceMarkSave-->");
+    var responseData;
+    var reqAtt = {
+        "studId" : "",
+        "studName" : "",
+        "cs" : ""
+    }
+    
+
+    var obj = {
+       "report":[{
+           "testType":"",
+           "sma":""
+        }]
+    }
+
+    stud.update(reqAtt,{$set:obj}, {upsert:false,multi:true,returnNewDocument:true}).toArray(function (err, studentList) {
+        if (err) {
+            responseData = {
+                status: false,
+                message: "Failed to get Data",
+                data: data
+            };
+            res.status(400).send(responseData);
+        } else {
+            
+
+            responseData = {
+                status: true,
+                message: "Successfull retrived data",
+                data: allClass
+            };
+
+            res.status(200).send(responseData);
+        }
+    });
+
+    console.log("<--attendanceMarkSave");
+};

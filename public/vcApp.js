@@ -137,6 +137,11 @@ var app = angular.module('vcApp', ['ui.router', 'mwl.calendar', 'ui.bootstrap', 
         templateUrl: '/html/dashboard/adminCreate.html',
         controller: 'adminCreateCtl'
       })
+      .state('dashboard.attendance', {
+        url: attendance(),
+        templateUrl: '/html/dashboard/attendance.html',
+        controller: 'attendanceCtl'
+      })
       .state('dashboard.contact', {
         url: contact(),
         templateUrl: '/html/dashboard/contact.html',
@@ -189,6 +194,9 @@ function dashboardConference(){
 }
 function adminCreate(){
   return '/adminCreate';
+}
+function attendance(){
+  return '/attendance';
 }
 
 

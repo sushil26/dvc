@@ -18,8 +18,8 @@
                                     <section class="panel">
                                         <h1> Attendance Report </h1>
                                         <form role="form" name="uploadForm" novalidate>
-                                            <div class="form-group">
-                                                    <div style="float:left !important; position: absolute;
+                                            <div class="form-group row">
+                                                    <div class="col-lg-12" style="float:left !important; position: absolute;
                                                     left: 0;">
                                     
                                                       <select class="btn btn-danger" placeholder="select" ng-model="csSelect" ng-change="getStudListForCS(csSelect)"
@@ -28,13 +28,20 @@
                                                       </select>
                                     
                                     
-                                                      <select class="btn"  placeholder="select" ng-model="csSelect" 
+                                                      <select class="btn"  placeholder="select" ng-model="studSelect" 
                                                         ng-options="cs as cs.name + '-' + cs.studId for cs in studList">
                                                         <option value="" disabled selected>Student</option>
                                                       </select>
+
+                                                      <select class="btn"  placeholder="select" ng-model="studSelect" 
+                                                      ng-options="tt as tt for tt in testTypes">
+                                                      <option value="" disabled selected>Type of test</option>
+                                                    </select>
                                     
                                     
                                                     </div>
+                                                    <div class="col-lg-12" >
+                                                        </div>
                                             </div>
                                            <!--   <div class="form-group">
 

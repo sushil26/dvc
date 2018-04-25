@@ -3,6 +3,15 @@ app.controller('attendanceCtl', function ($scope, $window, httpFactory, sessionA
     $scope.file = {}; /* ### Note: Upload file declaration ### */
     $scope.testTypes = ["AT", "UT", "MT", "TT", "AT"];
     
+    $scope.sma = []; /* ### Note:sma-Subject Mark Attendant  */
+    $scope.addSMA = function() {
+      console.log("addSMA-->");
+  
+      $scope.sma.push({ subject: "", mark: "", attendance: "" });
+  
+      console.log("<--addSMA");
+    };
+
     $scope.getAllClass = function(req,res){
         console.log("getAllClass-->");
         

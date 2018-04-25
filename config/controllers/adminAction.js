@@ -4,8 +4,9 @@ var stud = db.collection("student"); /* ### student collection  ### */
 
 var general = require("../general.js");
 var ObjectId = require("mongodb").ObjectID;
-
+var fileUpload = require('express-fileupload');
 var csv = require('fast-csv');
+app.use(fileUpload());
 
 module.exports.getAllClass = function (req, res) {
     console.log("getAllClass-->");
@@ -45,7 +46,7 @@ module.exports.getAllClass = function (req, res) {
 module.exports.uploadMark = function (req, res) {
     console.log("attendanceMarkSave-->");
     var responseData;
-    console.log("req.files: "+req.files);
+    console.log("req.files: "+req.body.file);
     if (!req.files)
         return res.status(400).send('No files were uploaded.');
 

@@ -3,7 +3,7 @@ var http = require('http');
 var bodyParser = require('body-parser')
 var nodemailer = require('nodemailer');
 var fileUpload = require('express-fileupload');
-app.use(fileUpload());
+
 var fs = require('fs'),
     url = require('url'),
     path = require('path');
@@ -12,6 +12,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json({
     limit: '100mb'
 }));
+
+app.use(fileUpload());
 
 module.exports = function (app, config) {
     //app.set('view engine','html');

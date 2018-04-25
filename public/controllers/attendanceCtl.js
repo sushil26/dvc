@@ -14,11 +14,20 @@ app.controller('attendanceCtl', function ($scope, $window, httpFactory, sessionA
 
   $scope.attendanceMark = function (req, res) {
     console.log("attendanceMark-->");
-    console.log("csSelect: "+$scope.csSelect);
-    console.log("csSelect: "+JSON.stringify($scope.csSelect));
-var obj = {
-  
-}
+    console.log("csSelect: " + $scope.csSelect);
+    console.log("csSelect: " + JSON.stringify($scope.csSelect));
+    var cs = [{
+      "class": $scope.csSelect.class,
+      "section": $scope.csSelect.section
+    }]
+    var obj = {
+      "cs": cs,
+      "studName": $scope.studSelect.name,
+      "studId": $scope.studSelect.studId,
+      "ttSelect": $scope.ttSelect,
+      "sma": $scope.sma
+    }
+    console.log("obj: " + JSON.stringify(obj));
     console.log("<--attendanceMark");
   }
 

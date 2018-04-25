@@ -4,15 +4,15 @@ app.controller('attendanceCtl', function ($scope, $window, httpFactory, sessionA
     
     $scope.getAllClass = function(req,res){
         console.log("getAllClass-->");
-        $scope.classList = [];
+        
         var api = "https://norecruits.com/vc/getAllClass";
         console.log("api: " + api);
         httpFactory.get(api).then(function (data) {
           var checkStatus = httpFactory.dataValidation(data);
           console.log("data--" + JSON.stringify(data.data));
           if (checkStatus) {
-            var dateList = data.data.data;
-            console.log("studentList: " + JSON.stringify(dateList));
+            $scope.classList = data.data.data;
+            console.log("studentList: " + JSON.stringify($scope.classList));
             // for (var x = 0; x < $scope.studentList.length; x++) {
             //   $scope.studList.push({ "id": $scope.studentList[x]._id, "name": $scope.studentList[x].studName, "studId": $scope.studentList[x].studId });
     

@@ -23,7 +23,7 @@
                                                     left: 0;">
                                     
                                                       <select class="btn btn-danger" placeholder="select" ng-model="cssSelect" ng-change="getStudListForCS(cssSelect)"
-                                                        ng-options="css as css.class+ '-' + css.section + '-' + css.subject for css in teacherData[0].css">
+                                                        ng-options="c as c for c in classList">
                                                         <option value="" disabled selected>Class</option>
                                                       </select>
                                     

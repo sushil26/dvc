@@ -39,13 +39,13 @@ var app = angular.module('vcApp', ['ui.router', 'mwl.calendar', 'ui.bootstrap', 
         resolve: {result : function($window)
           {
               // var x =authFact.getLoginType();
-              if(localStorage.getItem("loginType") == 'admin')
-              {
+              // if(localStorage.getItem("loginType") == 'admin')
+              // {
                  
-              }
-               else{
-                  $window.location.href='https://norecruits.com';
-               }
+              // }
+              //  else{
+              //     $window.location.href='https://norecruits.com';
+              //  }
              
              
           }}
@@ -57,13 +57,13 @@ var app = angular.module('vcApp', ['ui.router', 'mwl.calendar', 'ui.bootstrap', 
         resolve: {result : function($window)
           {
               // var x =authFact.getLoginType();
-              if(localStorage.getItem("loginType") == 'admin')
-              {
+              // if(localStorage.getItem("loginType") == 'admin')
+              // {
                  
-              }
-               else{
-                  $window.location.href='https://norecruits.com';
-               }
+              // }
+              //  else{
+              //     $window.location.href='https://norecruits.com';
+              //  }
                    
           }}
       })

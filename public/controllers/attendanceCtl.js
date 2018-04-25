@@ -14,8 +14,8 @@ app.controller('attendanceCtl', function ($scope, $window, httpFactory, sessionA
 
   $scope.attendanceMark = function (req, res) {
     console.log("attendanceMark-->");
-    console.log("csSelect: "+csSelect);
-    console.log("csSelect: "+JSON.stringify(csSelect));
+    console.log("csSelect: "+$scope.csSelect);
+    console.log("csSelect: "+JSON.stringify($scope.csSelect));
 var obj = {
   
 }

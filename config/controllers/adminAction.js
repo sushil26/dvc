@@ -20,7 +20,7 @@ module.exports.getAllClass = function (req, res) {
 var allClass=[];
         // console.log("studentList: "+JSON.stringify(studentList));
         console.log("studentList.length: "+studentList.length);
-        for(var len=0;x<studentList.length;len++){
+        for(var len=0;len<studentList.length;len++){
             var cls = studentList[len].cs[0].class;
             console.log("cls: "+cls);
             allClass.push(cls);

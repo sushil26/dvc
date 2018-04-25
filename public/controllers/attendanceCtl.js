@@ -11,8 +11,8 @@ app.controller('attendanceCtl', function ($scope, $window, httpFactory, sessionA
           var checkStatus = httpFactory.dataValidation(data);
           console.log("data--" + JSON.stringify(data.data));
           if (checkStatus) {
-            $scope.classList = data.data.data;
-            console.log("studentList: " + JSON.stringify($scope.classList));
+            $scope.csList = data.data.data;
+            console.log("csList: " + JSON.stringify($scope.csList));
             // for (var x = 0; x < $scope.studentList.length; x++) {
             //   $scope.studList.push({ "id": $scope.studentList[x]._id, "name": $scope.studentList[x].studName, "studId": $scope.studentList[x].studId });
     

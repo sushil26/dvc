@@ -22,8 +22,8 @@
                                                     <div style="float:left !important; position: absolute;
                                                     left: 0;">
                                     
-                                                      <select class="btn btn-danger" placeholder="select" ng-model="cssSelect" ng-change="getStudListForCS(cssSelect)"
-                                                        ng-options="c as c for c in classList">
+                                                      <select class="btn btn-danger" placeholder="select" ng-model="csSelect" ng-change="getStudListForCS(cssSelect)"
+                                                        ng-options="cs as css.class + '-' + cs.section for cs in csList">
                                                         <option value="" disabled selected>Class</option>
                                                       </select>
                                     

@@ -5,6 +5,8 @@ var stud = db.collection("student"); /* ### student collection  ### */
 var general = require("../general.js");
 var ObjectId = require("mongodb").ObjectID;
 
+var csv = require('fast-csv');
+
 module.exports.getAllClass = function (req, res) {
     console.log("getAllClass-->");
     var responseData;
@@ -40,43 +42,70 @@ module.exports.getAllClass = function (req, res) {
     console.log("<--getAllClass");
 };
 
-module.exports.attendanceMarkSave = function (req, res) {
+module.exports.uploadMark = function (req, res) {
     console.log("attendanceMarkSave-->");
     var responseData;
-    var reqAtt = {
-        "studId" : "",
-        "studName" : "",
-        "cs" : ""
-    }
-    
+    if (!req.files)
+        return res.status(400).send('No files were uploaded.');
 
-    var obj = {
-       "report":[{
-           "testType":"",
-           "sma":""
-        }]
-    }
+    var authorFile = req.files.file;
 
-    stud. findOneAndUpdate(reqAtt,{$set:obj}, {upsert:false,multi:true,returnNewDocument:true}).toArray(function (err, studentList) {
-        if (err) {
-            responseData = {
-                status: false,
-                message: "Failed to get Data",
-                data: data
-            };
-            res.status(400).send(responseData);
-        } else {
-            
+    var authors = [];
 
-            responseData = {
-                status: true,
-                message: "Successfull retrived data",
-                data: allClass
-            };
+    csv
+        .fromString(authorFile.data.toString(), {
+            headers: true,
+            ignoreEmpty: true
+        })
+        .on("data", function (data) {
+            console.log("Got");
+            // data['_id'] = new mongoose.Types.ObjectId();
 
-            res.status(200).send(responseData);
-        }
-    });
+            // authors.push(data);
+        })
+        .on("end", function () {
+            Author.create(authors, function (err, documents) {
+                if (err) throw err;
+            });
+
+            res.send(authors.length + ' authors have been successfully uploaded.');
+        });
+
+
+    // var reqAtt = {
+    //     "studId" : "",
+    //     "studName" : "",
+    //     "cs" : ""
+    // }
+
+
+    // var obj = {
+    //    "report":[{
+    //        "testType":"",
+    //        "sma":""
+    //     }]
+    // }
+
+    // stud. findOneAndUpdate(reqAtt,{$set:obj}, {upsert:false,multi:true,returnNewDocument:true}).toArray(function (err, studentList) {
+    //     if (err) {
+    //         responseData = {
+    //             status: false,
+    //             message: "Failed to get Data",
+    //             data: data
+    //         };
+    //         res.status(400).send(responseData);
+    //     } else {
+
+
+    //         responseData = {
+    //             status: true,
+    //             message: "Successfull retrived data",
+    //             data: allClass
+    //         };
+
+    //         res.status(200).send(responseData);
+    //     }
+    // });
 
     console.log("<--attendanceMarkSave");
 };

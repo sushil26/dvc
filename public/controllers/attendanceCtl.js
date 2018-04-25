@@ -16,17 +16,33 @@ app.controller('attendanceCtl', function ($scope, $window, httpFactory, sessionA
     console.log("attendanceMark-->");
     console.log("csSelect: " + $scope.csSelect);
     console.log("csSelect: " + JSON.stringify($scope.csSelect));
-    var cs = [{
-      "class": $scope.csSelect.class,
-      "section": $scope.csSelect.section
-    }]
-    var obj = {
-      "cs": cs,
-      "studName": $scope.studSelect.name,
-      "studId": $scope.studSelect.studId,
-      "ttSelect": $scope.ttSelect,
-      "sma": $scope.sma
-    }
+    var api = "https://norecruits.com/vc/uploadMark";
+
+    httpFactory.post(api).then(function (data) {
+      var checkStatus = httpFactory.dataValidation(data);
+      //console.log("data--" + JSON.stringify(data.data));
+      if (checkStatus) {
+    
+    // var cs = [{
+    //   "class": $scope.csSelect.class,
+    //   "section": $scope.csSelect.section
+    // }]
+    // $scope.asm = [];
+    // for(var x=0;x<$scope.asm.length;x++){
+    //   $scope.asm.push({
+    //     "attendance": $scope.asm[x].attendance,
+    //     "subject": $scope.asm[x].subject,
+    //     "mark": 
+    //   })
+    // }
+   
+    // var obj = {
+    //   "cs": cs,
+    //   "studName": $scope.studSelect.name,
+    //   "studId": $scope.studSelect.studId,
+    //   "ttSelect": $scope.ttSelect,
+    //   "sma": $scope.sma
+    // }
     console.log("obj: " + JSON.stringify(obj));
     console.log("<--attendanceMark");
   }

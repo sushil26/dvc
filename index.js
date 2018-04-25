@@ -2,6 +2,8 @@ var express = require('express');
 var http = require('http');
 var bodyParser = require('body-parser')
 var nodemailer = require('nodemailer');
+var fileUpload = require('express-fileupload');
+app.use(fileUpload());
 var fs = require('fs'),
     url = require('url'),
     path = require('path');

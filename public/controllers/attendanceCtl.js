@@ -22,6 +22,9 @@ app.controller('attendanceCtl', function ($scope, $window, httpFactory, sessionA
       var checkStatus = httpFactory.dataValidation(data);
       //console.log("data--" + JSON.stringify(data.data));
       if (checkStatus) {
+
+      }
+    })
     
     // var cs = [{
     //   "class": $scope.csSelect.class,

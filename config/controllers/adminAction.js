@@ -57,7 +57,7 @@ module.exports.attendanceMarkSave = function (req, res) {
         }]
     }
 
-    stud.update(reqAtt,{$set:obj}, {upsert:false,multi:true,returnNewDocument:true}).toArray(function (err, studentList) {
+    stud. findOneAndUpdate(reqAtt,{$set:obj}, {upsert:false,multi:true,returnNewDocument:true}).toArray(function (err, studentList) {
         if (err) {
             responseData = {
                 status: false,

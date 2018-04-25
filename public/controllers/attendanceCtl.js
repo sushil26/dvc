@@ -9,7 +9,7 @@ app.controller('attendanceCtl', function ($scope, $window, httpFactory, sessionA
         console.log("api: " + api);
         httpFactory.get(api).then(function (data) {
           var checkStatus = httpFactory.dataValidation(data);
-          //console.log("data--" + JSON.stringify(data.data));
+          console.log("data--" + JSON.stringify(data.data));
           if (checkStatus) {
             var dateList = data.data.data;
             console.log("studentList: " + JSON.stringify($scope.dateList));

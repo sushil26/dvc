@@ -27,13 +27,13 @@ var allClass=[];
 
         }
 
-        // responseData = {
-        //   status: true,
-        //   message: "Successfull retrived data",
-        //   data: listOfUser
-        // };
+        responseData = {
+          status: true,
+          message: "Successfull retrived data",
+          data: allClass
+        };
   
-        // res.status(200).send(responseData);
+        res.status(200).send(responseData);
       }
     });
   

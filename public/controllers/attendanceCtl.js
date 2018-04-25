@@ -12,13 +12,13 @@ app.controller('attendanceCtl', function ($scope, $window, httpFactory, sessionA
     console.log("<--addSMA");
   };
 
-  $scope.attendanceMark = function () {
+  $scope.attendanceMark = function (file) {
     console.log("attendanceMark-->");
     console.log("csSelect: " + $scope.csSelect);
     console.log("csSelect: " + JSON.stringify($scope.csSelect));
     var api = "https://norecruits.com/vc/uploadMark";
 
-    httpFactory.post(api).then(function (data) {
+    httpFactory.imageUpload(file, api).then(function (data) {
       var checkStatus = httpFactory.dataValidation(data);
       //console.log("data--" + JSON.stringify(data.data));
       if (checkStatus) {

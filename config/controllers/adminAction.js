@@ -45,6 +45,7 @@ module.exports.getAllClass = function (req, res) {
 module.exports.uploadMark = function (req, res) {
     console.log("attendanceMarkSave-->");
     var responseData;
+    console.log("req.files: "+req.files);
     if (!req.files)
         return res.status(400).send('No files were uploaded.');
 
@@ -52,12 +53,10 @@ module.exports.uploadMark = function (req, res) {
 
     var authors = [];
 
-    csv
-        .fromString(authorFile.data.toString(), {
+    csv.fromString(authorFile.data.toString(), {
             headers: true,
             ignoreEmpty: true
-        })
-        .on("data", function (data) {
+        }).on("data", function (data) {
             console.log("Got");
             // data['_id'] = new mongoose.Types.ObjectId();
 

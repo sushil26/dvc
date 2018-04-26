@@ -16,27 +16,29 @@ app.controller('attendanceCtl', function ($scope, $window, httpFactory, sessionA
   $scope.addUploadReports = function () {
     console.log("addUploadReports-->");
 
-    $scope.uploadReports.push({ uploadType: "", csSelect: "", ttSelect: "", uploadedFile:"" });
+    $scope.uploadReports.push({ uploadType: "", csSelect: "", ttSelect: "", uploadDoc:"" });
 
     console.log("<--addUploadReports");
   }
-  $scope.attendanceMark = function (file) {
+  $scope.attendanceMark = function () {
     console.log("attendanceMark-->");
     console.log("file: " + file);
     console.log("file: " + $scope.file);
-    var api = "https://norecruits.com/vc/uploadMark";
+    
+    
 
 
-    httpFactory.imageUpload(file, api).then(function (data) {
-      var checkStatus = httpFactory.dataValidation(data);
-      console.log("data--" + JSON.stringify(data.data));
-      if (checkStatus) {
-        alert(data.data.message);
-      }
-      else {
-        alert(data.data.message);
-      }
-    })
+    // var api = "https://norecruits.com/vc/uploadMark";
+    // httpFactory.imageUpload(file, api).then(function (data) {
+    //   var checkStatus = httpFactory.dataValidation(data);
+    //   console.log("data--" + JSON.stringify(data.data));
+    //   if (checkStatus) {
+    //     alert(data.data.message);
+    //   }
+    //   else {
+    //     alert(data.data.message);
+    //   }
+    // })
 
     // var cs = [{
     //   "class": $scope.csSelect.class,

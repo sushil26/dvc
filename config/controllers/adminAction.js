@@ -96,7 +96,7 @@ module.exports.uploadMark = function (req, res) {
 
     })
         .on("end", function () {
-            console.log("marker: " + marker);
+            console.log("end marker: " + marker);
             if (marker == false) {
                 responseData = {
                     status: false,

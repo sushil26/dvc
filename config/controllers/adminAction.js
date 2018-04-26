@@ -61,8 +61,7 @@ module.exports.uploadMark = function (req, res) {
     }).on("data", function (data) {
         console.log("data: " + JSON.stringify(data));
         parser.pause();
-        module.exports.updateData(data, function (err) {
-
+        
             var studId = {
                 "studId": data.studId
             }
@@ -92,7 +91,7 @@ module.exports.uploadMark = function (req, res) {
                 parser.resume();
             })
           
-        });
+     
 
 
     })

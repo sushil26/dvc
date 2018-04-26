@@ -70,6 +70,7 @@ module.exports.uploadMark = function (req, res) {
         "Math": data.Math}
             ]
             }]
+            console.log("testType: "+JSON.stringify(testType));
             stud.findOneAndUpdate({"stud-d":data.studId},{$set:{"testType":testType}},{upsert:false,multi:true,returnNewDocument:true},function (err, studentList) {
                 console.log("studentList:"+JSON.stringify(studentList));
             })
@@ -81,7 +82,7 @@ module.exports.uploadMark = function (req, res) {
             Author.create(authors, function (err, documents) {
                 if (err) throw err;
             });
-console.log("authors: "+JSON.stringify(authors));
+// console.log("authors: "+JSON.stringify(authors));
             res.send(authors.length + ' authors have been successfully uploaded.');
         });
 

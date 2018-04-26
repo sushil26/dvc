@@ -100,16 +100,14 @@ module.exports.uploadMark = function (req, res) {
             if (marker == false) {
                 responseData = {
                     status: false,
-                    message: "Failed to get Data",
-                    data: data
+                    message: "Failed to get Data"
                 };
                 res.status(400).send(responseData);
             }
             else if (marker == true) {
                 responseData = {
                     status: true,
-                    message: "Successfull retrived data",
-                    data: allClass
+                    message: "Successfull updated data"
                 };
 
                 res.status(200).send(responseData);

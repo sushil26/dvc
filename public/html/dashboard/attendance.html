@@ -31,15 +31,15 @@
                                                 <!-- <select class="btn col-lg-3" placeholder="select" ng-model="up.studSelect" ng-options="cs as cs.name + '-' + cs.studId for cs in studList">
                                                     <option value="" disabled selected>Student</option>
                                                 </select> -->
-                                                <label class="col-lg-4">Type of Test</label>
+                                                <label class="col-lg-4" ng-if="up.uploadType=='Mark Report'">Type of Test</label>
                                                 <select class="btn col-lg-4" ng-if="up.uploadType=='Mark Report'" placeholder="select" ng-model="up.ttSelect" ng-options="tt as tt for tt in testTypes">
                                                     <option value="" disabled selected>Type of Test</option>
                                                 </select>
-                                                <label class="col-lg-4">Attendance report</label>
+                                                <label class="col-lg-4" ng-if="up.uploadType=='Attendance'">Attendance report</label>
                                                 <select class="btn col-lg-4" ng-if="up.uploadType=='Attendance'" placeholder="select" ng-model="up.ttSelect" ng-options="tt as tt for tt in testTypes">
                                                     <option value="" disabled selected>Attendance report</option>
                                                 </select>
-                                                <label class="col-lg-4">Payment report</label>
+                                                <label class="col-lg-4" ng-if="up.uploadType=='Payment'">Payment report</label>
                                                 <select class="btn col-lg-4" ng-if="up.uploadType=='Payment'" placeholder="select" ng-model="up.ttSelect" ng-options="tt as tt for tt in testTypes">
                                                     <option value="" disabled selected>Payment report</option>
                                                 </select>

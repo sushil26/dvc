@@ -18,106 +18,115 @@
                                         <h1> Attendance Report </h1>
                                         <form role="form" name="uploadForm" encType="multipart/form-data" novalidate>
                                             <div class="form-group row">
-                                                <div class="col-lg-12" style="float:left !important; position: absolute;
+                                                <div class="col-lg-3" style="float:left !important; position: absolute;
                                                     left: 0;">
 
                                                     <select class="btn btn-danger" placeholder="select" ng-model="csSelect" ng-change="getStudListForCS(csSelect)" ng-options="cs as cs.class + '-' + cs.section for cs in csList">
                                                         <option value="" disabled selected>Class</option>
                                                     </select>
+                                                </div>
+                                                <div class="col-lg-3" style="float:left !important; position: absolute;
+                                                    left: 0;">
 
                                                     <select class="btn" placeholder="select" ng-model="studSelect" ng-options="cs as cs.name + '-' + cs.studId for cs in studList">
                                                         <option value="" disabled selected>Student</option>
                                                     </select>
+                                                </div>
+                                                <div class="col-lg-3" style="float:left !important; position: absolute;
+                                                    left: 0;">
 
                                                     <select class="btn" placeholder="select" ng-model="ttSelect" ng-options="tt as tt for tt in testTypes">
                                                         <option value="" disabled selected>Type of test</option>
                                                     </select>
+                                                </div>
+                                                <div class="col-lg-3" style="float:left !important; position: absolute;
+                                                    left: 0;">
 
                                                     <input type="file" style="display: inline-block;width:60%;float:left" class="btnCont btnCont-uploadColor" name="myImage"
                                                         value="Upload" image-with-preview file-model="file.upload" ng-model="image"
                                                         accept="csv" ng-required="true">
                                                     <img ng-show="image.src" ng-src="{{image.src}}" style="width: 50%;margin-top: 2%;" />
-
-                                                </div>
-
-                                            </div>
-                                            <br>
-                                            <br>
-                                            <div class="form-group row" ng-repeat="x in sma">
-                                                <label class="control-label col-lg-2">Subject
-                                                    <span class="required">*</span>
-                                                </label>
-                                                <div class="col-lg-2">
-                                                    <input class=" form-control" ng-model="x.subject" type="text" />
-                                                </div>
-                                                <label class="control-label col-lg-2">Mark
-                                                    <span class="required">*</span>
-                                                </label>
-                                                <div class="col-lg-2">
-                                                    <input class=" form-control" ng-model="x.mark" type="text" />
-                                                </div>
-                                                <label class="control-label col-lg-2">Attendance
-                                                    <span class="required">*</span>
-                                                </label>
-                                                <div class="col-lg-2">
-                                                    <input class=" form-control" ng-model="x.attendance" type="text" />
                                                 </div>
                                             </div>
-                                            <div class="form-group">
-                                                <button class="btn-success" ng-click="addSMA()">Add Subject-Mark-Attendance</button>
-                                            </div>
-                                            <br>
-                                            <br>
+
+                                </div>
+                                <br>
+                                <br>
+                                <div class="form-group row" ng-repeat="x in sma">
+                                    <label class="control-label col-lg-2">Subject
+                                        <span class="required">*</span>
+                                    </label>
+                                    <div class="col-lg-2">
+                                        <input class=" form-control" ng-model="x.subject" type="text" />
+                                    </div>
+                                    <label class="control-label col-lg-2">Mark
+                                        <span class="required">*</span>
+                                    </label>
+                                    <div class="col-lg-2">
+                                        <input class=" form-control" ng-model="x.mark" type="text" />
+                                    </div>
+                                    <label class="control-label col-lg-2">Attendance
+                                        <span class="required">*</span>
+                                    </label>
+                                    <div class="col-lg-2">
+                                        <input class=" form-control" ng-model="x.attendance" type="text" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <button class="btn-success" ng-click="addSMA()">Add Subject-Mark-Attendance</button>
+                                </div>
+                                <br>
+                                <br>
 
 
-                                            <!-- <input type="file" name="file" file-model="file" accept="*.csv" />
+                                <!-- <input type="file" name="file" file-model="file" accept="*.csv" />
          -->
-                                            <!-- <input type="file" style="display: inline-block;width:60%;float:left" class="btnCont btnCont-uploadColor" name="myImage"
+                                <!-- <input type="file" style="display: inline-block;width:60%;float:left" class="btnCont btnCont-uploadColor" name="myImage"
                                                         value="Upload" image-with-preview file-model="file" ng-model="image"
                                                         accept="*.csv" ng-required="true">
                                                     <img ng-show="image.src" ng-src="{{image.src}}" style="width: 50%;margin-top: 2%;" />   -->
 
-                                            <!--   <div class="form-group">
+                                <!--   <div class="form-group">
 
                                                <label class="col-lg-2 control-label">Upload File</label>
                                                 <div class="col-lg-6"> -->
 
-                                            <!-- <label class="emailModel-lab">File
+                                <!-- <label class="emailModel-lab">File
                                                         <span ng-show="uploadForm.myImage.$error.required" class="mandatorySymbol"></span>
                                                     </label> -->
-                                            <!-- <input type="file" style="display: inline-block;width:60%;float:left" class="btnCont btnCont-uploadColor" name="myImage"
+                                <!-- <input type="file" style="display: inline-block;width:60%;float:left" class="btnCont btnCont-uploadColor" name="myImage"
                                                 value="Upload" image-with-preview file-model="file.upload" ng-model="image" accept="image/jpeg,image/png"
                                                 ng-required="true">
                                             <img ng-show="image.src" ng-src="{{image.src}}" style="width: 50%;margin-top: 2%;" /> -->
-                                            <!-- <span class="validationNotify" ng-show="uploadForm.myImage.$error.dimensions">
+                                <!-- <span class="validationNotify" ng-show="uploadForm.myImage.$error.dimensions">
                                                         <br>Image height should be equal to 350px! Image width should be equal
                                                         to 650px!
                                                     </span> 
                                                     <br>
                                                 </div>
                                             </div>-->
-                                            <br>
-                                            <br>
-                                            <br>
-                                            <div class="form-group">
-                                                <div class="col-lg-offset-2 col-lg-10">
-                                                    <button type="submit" class="btn btn-primary" ng-click="attendanceMark(file.upload)">Save</button>
-                                                    <button type="reset" class="btn btn-danger">Cancel</button>
-                                                </div>
-                                                <!-- <div class="col-lg-offset-2 col-lg-10">
+                                <br>
+                                <br>
+                                <br>
+                                <div class="form-group">
+                                    <div class="col-lg-offset-2 col-lg-10">
+                                        <button type="submit" class="btn btn-primary" ng-click="attendanceMark(file.upload)">Save</button>
+                                        <button type="reset" class="btn btn-danger">Cancel</button>
+                                    </div>
+                                    <!-- <div class="col-lg-offset-2 col-lg-10">
                                                     <button type="submit" class="btn btn-primary" ng-click="festDetailSub(uploadForm, file.upload)">hai</button>
                                                     <button type="reset" class="btn btn-danger">Cancel</button>
                                                 </div> -->
-                                            </div>
-
-                                        </form>
-                                    </section>
                                 </div>
+
+                                </form>
+                                </section>
                             </div>
                         </div>
-                    </section>
                 </div>
+                </section>
             </div>
-        </section>
-    </section>
+</div>
+</section>
+</section>
 </div>

@@ -78,8 +78,11 @@ module.exports.uploadMark = function (req, res) {
 
             console.log("studentList:" + JSON.stringify(studentList));
             if (err) {
+                console.log("err");
                 marker = false;
-            } else {
+            } 
+            else {
+                console.log("no err");
                 marker = true;
             }
         })

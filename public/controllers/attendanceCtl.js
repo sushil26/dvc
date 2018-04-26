@@ -19,7 +19,7 @@ app.controller('attendanceCtl', function ($scope, $window, httpFactory, sessionA
     var api = "https://norecruits.com/vc/uploadMark";
     
 
-    httpFactory.imageUpload(file, api).then(function (data) {
+    httpFactory.imageUpload($scope.file, api).then(function (data) {
       var checkStatus = httpFactory.dataValidation(data);
       //console.log("data--" + JSON.stringify(data.data));
       if (checkStatus) {

@@ -67,6 +67,7 @@ module.exports.uploadAttendance = function (req, res) {
         // console.log("date: "+data.date);
         var date = Date.parse(data.date);
         console.log("date: "+date);
+        console.log("date: "+Date(data.date));
         var reqDate = date.getDate();
         var reqMonth = date.getMonth();
         var reqYear = date.getFullYear();

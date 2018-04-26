@@ -77,7 +77,7 @@ module.exports.uploadAttendance = function (req, res) {
         console.log("consolidateDate: " + consolidateDate);
         var testType = [{
             "date": data.date,
-            "Attentance": data.Attendance
+            "Attentance": data.attendance
 
         }]
         // console.log("testType: " + JSON.stringify(testType));

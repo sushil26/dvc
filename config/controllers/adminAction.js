@@ -92,7 +92,7 @@ module.exports.uploadMark = function (req, res) {
 
 
 module.exports.updateData = function(data, callback){
-    console.log('inside saving')
+    console.log('updateData-->');
     
     var studId = {
         "studId": data.studId
@@ -114,13 +114,15 @@ module.exports.updateData = function(data, callback){
         if (err) {
             console.log("err");
             marker = false;
-            process.setImmediate(callback);
+            process.nextTick(callback);
         } 
         else {
             console.log("no err");
             marker = true;
-            process.setImmediate(callback);
+            process.nextTick(callback);
         }
     })
+
+    console.log('<--updateData');
    
 }

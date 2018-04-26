@@ -5,32 +5,39 @@ app.controller('attendanceCtl', function ($scope, $window, httpFactory, sessionA
   $scope.testTypes = ["AT", "UT", "MT", "TT", "AT"];
 
   $scope.sma = []; /* ### Note:sma-Subject Mark Attendant  */
-  $scope.addSMA = function () {
+   $scope.addSMA = function () {
     console.log("addSMA-->");
 
     $scope.sma.push({ subject: "", mark: "", attendance: "" });
 
     console.log("<--addSMA");
   };
+  $scope.uploadReports = []; /* ### Note:uploadReports  */
+  $scope.addUploadReports = function () {
+    console.log("addUploadReports-->");
 
+    $scope.uploadReports.push({ uploadType: "", csSelect: "", studSelect: "", ttSelect: "", uploadedFile:"" });
+
+    console.log("<--addUploadReports");
+  }
   $scope.attendanceMark = function (file) {
     console.log("attendanceMark-->");
-    console.log("file: "+file);
-    console.log("file: "+$scope.file);
+    console.log("file: " + file);
+    console.log("file: " + $scope.file);
     var api = "https://norecruits.com/vc/uploadMark";
-    
+
 
     httpFactory.imageUpload(file, api).then(function (data) {
       var checkStatus = httpFactory.dataValidation(data);
       console.log("data--" + JSON.stringify(data.data));
       if (checkStatus) {
-alert(data.data.message);
+        alert(data.data.message);
       }
       else {
         alert(data.data.message);
-              }
+      }
     })
-    
+
     // var cs = [{
     //   "class": $scope.csSelect.class,
     //   "section": $scope.csSelect.section
@@ -43,7 +50,7 @@ alert(data.data.message);
     //     "mark": 
     //   })
     // }
-   
+
     // var obj = {
     //   "cs": cs,
     //   "studName": $scope.studSelect.name,
@@ -124,42 +131,42 @@ alert(data.data.message);
   $scope.festDetailSub = function (file) {
 
     console.log("festDetailSub-->");
-    
 
-      console.log("file: " + file);
-      console.log("$scope.file: " + $scope.file);
-      // festDetailSubJson = {
-      //     "title": title,
-      //     "message": message
-      // }
-      if (file != undefined) {
-        var uploadURL = "https://norecruits.com/vc/uploadAttendance";
-        console.log("$scope.file from : alumRegCtr.js: " + $scope.file);
-        httpFactory.imageUpload(file, uploadURL).then(function (data) {
-          var checkStatus = httpFactory.dataValidation(data);
-          if (checkStatus) {
-            $scope.getUpdateofImage = data;
-            console.log("$scope.getUpdateofImage" + JSON.stringify($scope.getUpdateofImage));
-            // $scope.message = data.data.message;
-            $scope.filePath = data.data.fileFullPath;
-            $scope.status = data.data.status;
-            if ($scope.filePath) {
-              festDetailSubJson.file = $scope.filePath;
-            }
-            // $scope.festivalDetailDetails();
 
-          } else {
-            $scope.status = data.data.status;
-            // $scope.message = data.data.message;
-            console.log("image is filed to uploaded");
+    console.log("file: " + file);
+    console.log("$scope.file: " + $scope.file);
+    // festDetailSubJson = {
+    //     "title": title,
+    //     "message": message
+    // }
+    if (file != undefined) {
+      var uploadURL = "https://norecruits.com/vc/uploadAttendance";
+      console.log("$scope.file from : alumRegCtr.js: " + $scope.file);
+      httpFactory.imageUpload(file, uploadURL).then(function (data) {
+        var checkStatus = httpFactory.dataValidation(data);
+        if (checkStatus) {
+          $scope.getUpdateofImage = data;
+          console.log("$scope.getUpdateofImage" + JSON.stringify($scope.getUpdateofImage));
+          // $scope.message = data.data.message;
+          $scope.filePath = data.data.fileFullPath;
+          $scope.status = data.data.status;
+          if ($scope.filePath) {
+            festDetailSubJson.file = $scope.filePath;
           }
-        });
-      }
-      else {
-        // $scope.festivalDetailDetails();
-        console.log("image is not uploaded");
-      }
-    
+          // $scope.festivalDetailDetails();
+
+        } else {
+          $scope.status = data.data.status;
+          // $scope.message = data.data.message;
+          console.log("image is filed to uploaded");
+        }
+      });
+    }
+    else {
+      // $scope.festivalDetailDetails();
+      console.log("image is not uploaded");
+    }
+
     console.log("<--festDetailSub");
   }
 })

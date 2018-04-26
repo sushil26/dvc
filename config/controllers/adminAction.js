@@ -61,14 +61,43 @@ module.exports.uploadMark = function (req, res) {
     }).on("data", function (data) {
         console.log("data: " + JSON.stringify(data));
         parser.pause();
-        module.exports.updateData(data, function(err) {
-          // TODO: handle error
-          parser.resume();
+        module.exports.updateData(data, function (err) {
+
+            var studId = {
+                "studId": data.studId
+            }
+            var testType = [{
+                "testType": data.testType,
+                "subjectMarks":
+                    {
+                        "English": data.English,
+                        "Physics": data.Physics,
+                        "Math": data.Math
+                    }
+            }]
+            console.log("testType: " + JSON.stringify(testType));
+            stud.findOneAndUpdate({ "studId": data.studId }, { $set: { "testType": testType } }, { upsert: false, multi: true, returnNewDocument: true }, function (err, studentList) {
+
+                console.log("studentList:" + JSON.stringify(studentList));
+                if (err) {
+                    console.log("err");
+                    marker = false;
+                    // process.nextTick(callback);
+                }
+                else {
+                    console.log("no err");
+                    marker = true;
+                    // process.nextTick(callback);
+                }
+                parser.resume();
+            })
+          
         });
-      
-       
-    }).on("end", function () {
-            console.log("marker: "+marker);
+
+
+    })
+        .on("end", function () {
+            console.log("marker: " + marker);
             if (marker == false) {
                 responseData = {
                     status: false,
@@ -91,38 +120,38 @@ module.exports.uploadMark = function (req, res) {
 };
 
 
-module.exports.updateData = function(data, callback){
-    console.log('updateData-->');
-    
-    var studId = {
-        "studId": data.studId
-    }
-    var testType = [{
-        "testType": data.testType,
-        "subjectMarks": 
-            {
-                "English": data.English,
-                "Physics": data.Physics,
-                "Math": data.Math
-            }
-        
-    }]
-    console.log("testType: " + JSON.stringify(testType));
-    stud.findOneAndUpdate({ "studId": data.studId }, { $set: { "testType": testType } }, { upsert: false, multi: true, returnNewDocument: true }, function (err, studentList) {
+// module.exports.updateData = function (data, callback) {
+//     console.log('updateData-->');
 
-        console.log("studentList:" + JSON.stringify(studentList));
-        if (err) {
-            console.log("err");
-            marker = false;
-            process.nextTick(callback);
-        } 
-        else {
-            console.log("no err");
-            marker = true;
-            process.nextTick(callback);
-        }
-    })
+//     var studId = {
+//         "studId": data.studId
+//     }
+//     var testType = [{
+//         "testType": data.testType,
+//         "subjectMarks":
+//             {
+//                 "English": data.English,
+//                 "Physics": data.Physics,
+//                 "Math": data.Math
+//             }
 
-    console.log('<--updateData');
-   
-}
+//     }]
+//     console.log("testType: " + JSON.stringify(testType));
+//     stud.findOneAndUpdate({ "studId": data.studId }, { $set: { "testType": testType } }, { upsert: false, multi: true, returnNewDocument: true }, function (err, studentList) {
+
+//         console.log("studentList:" + JSON.stringify(studentList));
+//         if (err) {
+//             console.log("err");
+//             marker = false;
+//             process.nextTick(callback);
+//         }
+//         else {
+//             console.log("no err");
+//             marker = true;
+//             process.nextTick(callback);
+//         }
+//     })
+
+//     console.log('<--updateData');
+
+// }

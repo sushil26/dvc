@@ -7,7 +7,7 @@ var ObjectId = require("mongodb").ObjectID;
 var bodyParser = require('body-parser');
 
 var csv = require('fast-csv');
-var dateObj = new Date;
+var Date = new Date();
 
 module.exports.getAllClass = function (req, res) {
     console.log("getAllClass-->");

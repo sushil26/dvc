@@ -61,6 +61,7 @@ module.exports.uploadMark = function (req, res) {
             ignoreEmpty: true
         }).on("data", function (data) {
             console.log("Got");
+            console.log("data: "+JSON.stringify(data));
             // data['_id'] = new mongoose.Types.ObjectId();
 
             authors.push(data);

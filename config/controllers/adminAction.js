@@ -86,11 +86,17 @@ module.exports.uploadAttendance = function (req, res) {
 
         stud.find(studId, { "attendance": { $exists: false } }, function (err, data) {
 
-            stud.findOneAndUpdate(studId, { $set: { "attendance": attendance } }, function (err, updatedData) {
+            if(err){
+console.log("err");
+            }
+            else{
+                stud.findOneAndUpdate(studId, { $set: { "attendance": attendance } }, function (err, updatedData) {
 
-                console.log("updated data: " + JSON.stringify(updatedData));
-
-            })
+                    console.log("updated data: " + JSON.stringify(updatedData));
+    
+                })
+            }
+           
             // console.log("testType: " + JSON.stringify(testType));
             // stud.findOneAndUpdate({ "studId": data.studId }, { $set: { "Attentance": testType } }, { upsert: false, multi: true, returnNewDocument: true }, function (err, studentList) {
 

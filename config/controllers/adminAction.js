@@ -78,7 +78,7 @@ module.exports.uploadAttendance = function (req, res) {
         }]
         // console.log("attendance: " + JSON.stringify(attendance));
 
-        stud.find(studId, { "attendance": { $exists: false } }), function (err, data) {
+        stud.find(studId, { "attendance": { $exists: true } }), function (err, data) {
 console.log("query started: "+JSON.stringify(data));
             if (err) {
                 console.log("err");

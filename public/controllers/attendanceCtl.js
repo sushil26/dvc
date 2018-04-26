@@ -21,10 +21,13 @@ app.controller('attendanceCtl', function ($scope, $window, httpFactory, sessionA
 
     httpFactory.imageUpload(file, api).then(function (data) {
       var checkStatus = httpFactory.dataValidation(data);
-      //console.log("data--" + JSON.stringify(data.data));
+      console.log("data--" + JSON.stringify(data.data));
       if (checkStatus) {
-
+alert(data.data.message);
       }
+      else {
+        alert(data.data.message);
+              }
     })
     
     // var cs = [{

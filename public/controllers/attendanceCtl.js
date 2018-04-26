@@ -12,7 +12,7 @@ app.controller('attendanceCtl', function ($scope, $window, httpFactory, sessionA
 
     console.log("<--addSMA");
   };
-  $scope.uploadReports = []; /* ### Note:uploadReports  */
+  $scope.uploadReports = [{ uploadType: "", csSelect: "", ttSelect: "", uploadDoc: "" }]; /* ### Note:uploadReports  */
   $scope.addUploadReports = function () {
     console.log("addUploadReports-->");
 
@@ -67,19 +67,28 @@ app.controller('attendanceCtl', function ($scope, $window, httpFactory, sessionA
   $scope.uploadFile = function (file, uploadType, reportType) {
     console.log("uploadFile-->");
     console.log("file: " + file);
-    var obj ={
-      "file":file,
-      "uploadType":uploadType,
-      "reportType":reportType
+    var obj = {
+      "file": file,
+      "uploadType": uploadType,
+      "reportType": reportType
     }
     console.log("uploadType: " + uploadType);
     console.log("reportType: " + reportType);
-    var api = "https://norecruits.com/vc/uploadMark";
+    if (reportType == "Mark Report") {
+      var api = "https://norecruits.com/vc/uploadMark";
+    }
+    else if (reportType == "Attendance") {
+      var api = "https://norecruits.com/vc/uploadAttendance";
+    }
+    else {
+      var api = "https://norecruits.com/vc/uploadPayment";
+    }
+    console.log("api: " + api);
     httpFactory.csvUpload(obj, api).then(function (data) {
       var checkStatus = httpFactory.dataValidation(data);
       console.log("data--" + JSON.stringify(data.data));
       if (checkStatus) {
-        
+
         alert(data.data.message);
       }
       else {

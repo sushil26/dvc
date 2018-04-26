@@ -22,7 +22,7 @@ app.controller('attendanceCtl', function ($scope, $window, httpFactory, sessionA
   }
   $scope.attendanceMark = function () {
     console.log("attendanceMark-->");
-    console.log("file: " + file);
+    // console.log("file: " + file);
     console.log("$scope.uploadReports: " + JSON.stringify($scope.uploadReports));
     
     

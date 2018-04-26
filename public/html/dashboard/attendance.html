@@ -19,11 +19,11 @@
                                         <form role="form" name="uploadForm" encType="multipart/form-data" novalidate>
                                             <div class="form-group row" ng-repeat="up in uploadReports">
 
-                                                <select class="btn btn-danger col-lg-3" placeholder="select" ng-model="up.uploadType" ng-options="ut as ut for ut in uploadTypes">
+                                                <select class="btn btn-danger col-lg-4" placeholder="select" ng-model="up.uploadType" ng-options="ut as ut for ut in uploadTypes">
                                                     <option value="" disabled selected>Upload Type</option>
                                                 </select>
 
-                                                <select class="btn btn-danger col-lg-3" placeholder="select" ng-model="up.csSelect" ng-change="getStudListForCS(up.csSelect)" ng-options="cs as cs.class + '-' + cs.section for cs in csList">
+                                                <select class="btn btn-danger col-lg-4" placeholder="select" ng-model="up.csSelect" ng-change="getStudListForCS(up.csSelect)" ng-options="cs as cs.class + '-' + cs.section for cs in csList">
                                                     <option value="" disabled selected>Class</option>
                                                 </select>
 
@@ -31,16 +31,16 @@
                                                     <option value="" disabled selected>Student</option>
                                                 </select> -->
 
-                                                <select class="btn col-lg-3" ng-if="up.uploadType=='Mark Report'" placeholder="select" ng-model="up.ttSelect" ng-options="tt as tt for tt in testTypes">
+                                                <select class="btn col-lg-4" ng-if="up.uploadType=='Mark Report'" placeholder="select" ng-model="up.ttSelect" ng-options="tt as tt for tt in testTypes">
                                                     <option value="" disabled selected>Type of Test</option>
                                                 </select>
-                                                <select class="btn col-lg-3" ng-if="up.uploadType=='Attendance'" placeholder="select" ng-model="up.ttSelect" ng-options="tt as tt for tt in testTypes">
+                                                <select class="btn col-lg-4" ng-if="up.uploadType=='Attendance'" placeholder="select" ng-model="up.ttSelect" ng-options="tt as tt for tt in testTypes">
                                                     <option value="" disabled selected>Attendance Test</option>
                                                 </select>
-                                                <select class="btn col-lg-3" ng-if="up.uploadType=='Payment'" placeholder="select" ng-model="up.ttSelect" ng-options="tt as tt for tt in testTypes">
+                                                <select class="btn col-lg-4" ng-if="up.uploadType=='Payment'" placeholder="select" ng-model="up.ttSelect" ng-options="tt as tt for tt in testTypes">
                                                     <option value="" disabled selected>Payment Test</option>
                                                 </select>
-
+<br>
                                                 <input type="file" style="display: inline-block;width:60%;float:left" class="btnCont btnCont-uploadColor col-lg-3" name="myImage"
                                                     value="Upload" image-with-preview file-model="up.upload" ng-model="up.image"
                                                     accept="csv" ng-required="true">

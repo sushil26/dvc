@@ -97,12 +97,13 @@ console.log("query started: "+JSON.stringify(data));
                 console.log("err");
             }
             else {
-                stud.findOneAndUpdate(studId, { $set: { "attendance": attendance } }), function (err, updatedData) {
+                parser.pause();
+                // stud.findOneAndUpdate(studId, { $set: { "attendance": attendance } }), function (err, updatedData) {
 
-                    console.log("updated data: " + JSON.stringify(updatedData));
-                    parser.pause();
+                //     console.log("updated data: " + JSON.stringify(updatedData));
+                //     parser.pause();
 
-                }
+                // }
             }
 
 

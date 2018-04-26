@@ -5,7 +5,6 @@
             <div class="col-lg-12">
                 <h3 class="page-header">
                     <i class="fa fa-user-md"></i> Attendance Report</h3>
-
             </div>
             <!-- page start-->
             <div class="row">
@@ -26,7 +25,6 @@
                                                         <option value="" disabled selected>Class</option>
                                                     </select>
 
-
                                                     <select class="btn" placeholder="select" ng-model="studSelect" ng-options="cs as cs.name + '-' + cs.studId for cs in studList">
                                                         <option value="" disabled selected>Student</option>
                                                     </select>
@@ -35,11 +33,16 @@
                                                         <option value="" disabled selected>Type of test</option>
                                                     </select>
 
+                                                    <input type="file" style="display: inline-block;width:60%;float:left" class="btnCont btnCont-uploadColor" name="myImage"
+                                                        value="Upload" image-with-preview file-model="file.upload" ng-model="image"
+                                                        accept="csv" ng-required="true">
+                                                    <img ng-show="image.src" ng-src="{{image.src}}" style="width: 50%;margin-top: 2%;" />
+
                                                 </div>
 
                                             </div>
-<br>
-<br>
+                                            <br>
+                                            <br>
                                             <div class="form-group row" ng-repeat="x in sma">
                                                 <label class="control-label col-lg-2">Subject
                                                     <span class="required">*</span>
@@ -62,14 +65,14 @@
                                             </div>
                                             <div class="form-group">
                                                 <button class="btn-success" ng-click="addSMA()">Add Subject-Mark-Attendance</button>
-                                           </div>
-<br>
-<br>
+                                            </div>
+                                            <br>
+                                            <br>
 
 
-        <!-- <input type="file" name="file" file-model="file" accept="*.csv" />
+                                            <!-- <input type="file" name="file" file-model="file" accept="*.csv" />
          -->
-<!-- <input type="file" style="display: inline-block;width:60%;float:left" class="btnCont btnCont-uploadColor" name="myImage"
+                                            <!-- <input type="file" style="display: inline-block;width:60%;float:left" class="btnCont btnCont-uploadColor" name="myImage"
                                                         value="Upload" image-with-preview file-model="file" ng-model="image"
                                                         accept="*.csv" ng-required="true">
                                                     <img ng-show="image.src" ng-src="{{image.src}}" style="width: 50%;margin-top: 2%;" />   -->
@@ -82,10 +85,10 @@
                                             <!-- <label class="emailModel-lab">File
                                                         <span ng-show="uploadForm.myImage.$error.required" class="mandatorySymbol"></span>
                                                     </label> -->
-                                            <input type="file" style="display: inline-block;width:60%;float:left" class="btnCont btnCont-uploadColor" name="myImage"
-                                                        value="Upload" image-with-preview file-model="file.upload" ng-model="image"
-                                                        accept="image/jpeg,image/png" ng-required="true">
-                                                    <img ng-show="image.src" ng-src="{{image.src}}" style="width: 50%;margin-top: 2%;" />
+                                            <!-- <input type="file" style="display: inline-block;width:60%;float:left" class="btnCont btnCont-uploadColor" name="myImage"
+                                                value="Upload" image-with-preview file-model="file.upload" ng-model="image" accept="image/jpeg,image/png"
+                                                ng-required="true">
+                                            <img ng-show="image.src" ng-src="{{image.src}}" style="width: 50%;margin-top: 2%;" /> -->
                                             <!-- <span class="validationNotify" ng-show="uploadForm.myImage.$error.dimensions">
                                                         <br>Image height should be equal to 350px! Image width should be equal
                                                         to 650px!

@@ -82,7 +82,7 @@ module.exports.uploadAttendance = function (req, res) {
         var dt = {};
         
         var dy ={};
-     
+     var dy = {};
         dt[AttDate]=data.attendance;
         var dm = [dt];
         dy[AttMonth]=[dm];

@@ -74,10 +74,10 @@ app.controller('attendanceCtl', function ($scope, $window, httpFactory, sessionA
     }
     console.log("uploadType: " + uploadType);
     console.log("reportType: " + reportType);
-    if (reportType == "Mark Report") {
+    if (uploadType == "Mark Report") {
       var api = "https://norecruits.com/vc/uploadMark";
     }
-    else if (reportType == "Attendance") {
+    else if (uploadType == "Attendance") {
       var api = "https://norecruits.com/vc/uploadAttendance";
     }
     else {

@@ -49,6 +49,7 @@
                                                     value="Upload" image-with-preview file-model="up.uploadDoc" ng-model="image"
                                                     accept="csv" ng-required="true">
                                                 <img ng-show="image.src" ng-src="{{image.src}}" style="width: 50%;margin-top: 2%;" />
+                                                
                                                 <button type="submit" class="btn btn-primary col-lg-3" ng-click="uploadFile(up.uploadDoc,up.uploadType, up.ttSelect)">Upload</button>
                                             </div>
                                             <hr>

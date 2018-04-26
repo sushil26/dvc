@@ -62,9 +62,20 @@ module.exports.uploadMark = function (req, res) {
         }).on("data", function (data) {
             console.log("Got");
             console.log("data: "+JSON.stringify(data));
+            var testType = [{
+                "testType": data.testType,
+            "subjectMarks": [
+                {"English":data.English,
+            "Physics":data.Physics,
+        "Math": data.Math}
+            ]
+            }]
+            stud.findOneAndUpdate({"stud-d":data.studId},{$set:{"testType":testType}},{upsert:false,multi:true,returnNewDocument:true}).toArray(function (err, studentList) {
+                console.log("studentList:"+JSON.stringify(studentList));
+            }
             // data['_id'] = new mongoose.Types.ObjectId();
 
-            authors.push(data);
+            // authors.push(data);
         })
         .on("end", function () {
             Author.create(authors, function (err, documents) {

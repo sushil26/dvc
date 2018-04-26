@@ -51,7 +51,7 @@ module.exports.uploadMark = function (req, res) {
     if (!req.files)
         return res.status(400).send('No files were uploaded.');
 
-    var authorFile = req.files.file;
+    var authorFile = req.files.img;
     console.log("authorFile: "+authorFile);
 
     var authors = [];

@@ -12,7 +12,7 @@ app.directive('fileModel', ['$parse', function ($parse) {
                     // console.log("element[0].files[0] from filemodel cutom drctve: " + JSON.stringify(element));
                     // console.log("element[0].files[0] from filemodel cutom drctve: " + JSON.stringify(element[0].files));
                     // console.log("element[0].files[0] from filemodel cutom drctve: " + JSON.stringify(element[0].files[0]));
-                    // modelSetter(scope, element[0].files[0]);
+                    modelSetter(scope, element[0].files[0]);
                 });
             });
         }

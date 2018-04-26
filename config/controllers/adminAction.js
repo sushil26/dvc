@@ -68,12 +68,6 @@ module.exports.uploadAttendance = function (req, res) {
         var dateString = data.date;
         var parts = dateString.split('/');
         console.log("parts: " + JSON.stringify(parts));
-        console.log("formated date: " + Date(parts[2], parts[1], parts[0]));
-
-        console.log("date: " + new Date(dateString));
-
-        // var consolidateDate = new Date(reqYear, reqMonth, reqDate);
-        // console.log("consolidateDate: " + consolidateDate);
         var AttYear = parts[2];
         var AttMonth = parts[1];
         var AttDate = parts[0];
@@ -84,124 +78,110 @@ module.exports.uploadAttendance = function (req, res) {
         }]
         console.log("attendance: " + JSON.stringify(attendance));
 
-        stud.find(studId, { "attendance": { $exists: false } }, function (err, data) {
+        stud.find(studId, { "attendance": { $exists: false } }), function (err, data) {
 
-            if(err){
-console.log("err");
+            if (err) {
+                console.log("err");
             }
-            else{
-                stud.findOneAndUpdate(studId, { $set: { "attendance": attendance } }, function (err, updatedData) {
+            else {
+                stud.findOneAndUpdate(studId, { $set: { "attendance": attendance } }), function (err, updatedData) {
 
                     console.log("updated data: " + JSON.stringify(updatedData));
-    
-                })
+
+                }
             }
-           
-            // console.log("testType: " + JSON.stringify(testType));
-            // stud.findOneAndUpdate({ "studId": data.studId }, { $set: { "Attentance": testType } }, { upsert: false, multi: true, returnNewDocument: true }, function (err, studentList) {
 
-            //     console.log("studentList:" + JSON.stringify(studentList));
-            //     if (err) {
-            //         console.log("err");
-            //         marker = false;
-            //         // process.nextTick(callback);
-            //     }
-            //     else {
-            //         console.log("no err");
-            //         marker = true;
-            //         // process.nextTick(callback);
-            //     }
-            //     parser.resume();
-            // })
-        })
-            .on("end", function () {
-                console.log("end marker: " + marker);
-                if (marker == false) {
-                    responseData = {
-                        status: false,
-                        message: "Failed to get Data"
-                    };
-                    res.status(400).send(responseData);
-                }
-                else if (marker == true) {
-                    responseData = {
-                        status: true,
-                        message: "Successfull updated data"
-                    };
 
-                    res.status(200).send(responseData);
-                }
-            });
-        console.log("<--uploadAttendance");
-    };
-
-    module.exports.uploadMark = function (req, res) {
-        console.log("attendanceMarkSave-->");
-        var responseData;
-        var marker; /* ### Note: marker is used for identify the status of update query ###*/
-        console.log("req.files: " + req.files.img);
-        if (!req.files)
-            return res.status(400).send('No files were uploaded.');
-
-        var studentDataFile = req.files.img;
-        console.log("studentDataFile: " + studentDataFile);
-
-        var parser = csv.fromString(studentDataFile.data.toString(), {
-            headers: true,
-            ignoreEmpty: true
-        }).on("data", function (data) {
-            console.log("data: " + JSON.stringify(data));
-            parser.pause();
-
-            var studId = {
-                "studId": data.studId
+        }
+    })
+        .on("end", function () {
+            console.log("end marker: " + marker);
+            if (marker == false) {
+                responseData = {
+                    status: false,
+                    message: "Failed to get Data"
+                };
+                res.status(400).send(responseData);
             }
-            var testType = [{
-                "testType": data.testType,
-                "subjectMarks":
-                    {
-                        "English": data.English,
-                        "Physics": data.Physics,
-                        "Math": data.Math
-                    }
-            }]
-            console.log("testType: " + JSON.stringify(testType));
-            stud.findOneAndUpdate({ "studId": data.studId }, { $set: { "testType": testType } }, { upsert: false, multi: true, returnNewDocument: true }, function (err, studentList) {
+            else if (marker == true) {
+                responseData = {
+                    status: true,
+                    message: "Successfull updated data"
+                };
 
-                console.log("studentList:" + JSON.stringify(studentList));
-                if (err) {
-                    console.log("err");
-                    marker = false;
-                    // process.nextTick(callback);
+                res.status(200).send(responseData);
+            }
+        });
+    console.log("<--uploadAttendance");
+};
+
+module.exports.uploadMark = function (req, res) {
+    console.log("attendanceMarkSave-->");
+    var responseData;
+    var marker; /* ### Note: marker is used for identify the status of update query ###*/
+    console.log("req.files: " + req.files.img);
+    if (!req.files)
+        return res.status(400).send('No files were uploaded.');
+
+    var studentDataFile = req.files.img;
+    console.log("studentDataFile: " + studentDataFile);
+
+    var parser = csv.fromString(studentDataFile.data.toString(), {
+        headers: true,
+        ignoreEmpty: true
+    }).on("data", function (data) {
+        console.log("data: " + JSON.stringify(data));
+        parser.pause();
+
+        var studId = {
+            "studId": data.studId
+        }
+        var testType = [{
+            "testType": data.testType,
+            "subjectMarks":
+                {
+                    "English": data.English,
+                    "Physics": data.Physics,
+                    "Math": data.Math
                 }
-                else {
-                    console.log("no err");
-                    marker = true;
-                    // process.nextTick(callback);
-                }
-                parser.resume();
-            })
+        }]
+        console.log("testType: " + JSON.stringify(testType));
+        stud.findOneAndUpdate({ "studId": data.studId }, { $set: { "testType": testType } }, { upsert: false, multi: true, returnNewDocument: true }, function (err, studentList) {
+
+            console.log("studentList:" + JSON.stringify(studentList));
+            if (err) {
+                console.log("err");
+                marker = false;
+                // process.nextTick(callback);
+            }
+            else {
+                console.log("no err");
+                marker = true;
+                // process.nextTick(callback);
+            }
+            parser.resume();
         })
-            .on("end", function () {
-                console.log("end marker: " + marker);
-                if (marker == false) {
-                    responseData = {
-                        status: false,
-                        message: "Failed to get Data"
-                    };
-                    res.status(400).send(responseData);
-                }
-                else if (marker == true) {
-                    responseData = {
-                        status: true,
-                        message: "Successfull updated data"
-                    };
+    })
+        .on("end", function () {
+            console.log("end marker: " + marker);
+            if (marker == false) {
+                responseData = {
+                    status: false,
+                    message: "Failed to get Data"
+                };
+                res.status(400).send(responseData);
+            }
+            else if (marker == true) {
+                responseData = {
+                    status: true,
+                    message: "Successfull updated data"
+                };
 
-                    res.status(200).send(responseData);
-                }
-            });
-        console.log("<--attendanceMarkSave");
-    };
+                res.status(200).send(responseData);
+            }
+        });
+    console.log("<--attendanceMarkSave");
+};
 
 
 // module.exports.updateData = function (data, callback) {

@@ -62,32 +62,28 @@ module.exports.uploadAttendance = function (req, res) {
         console.log("data: " + JSON.stringify(data));
         console.log("today data: " + d);
         //parser.pause();
-        // var studId = {
-        //     "studId": data.studId
-        // }
+        var studId = {
+            "studId": data.studentID
+        }
         var dateString = data.date;
         var parts = dateString.split('/');
         console.log("parts: "+JSON.stringify(parts));
         console.log("formated date: "+ Date(parts[2],parts[1],parts[0]));
-        // console.log("Date.parseDate: "+d("23/04/2018"));
-     
         
-        // var date = dateObj(parts[3],parts[2],parts[1]);
-        // console.log("date: "+date);
         console.log("date: "+new Date(dateString));
-        var reqDate = date.getDate();
-        var reqMonth = date.getMonth();
-        var reqYear = date.getFullYear();
-        // var reqHr = date.getHours();
-        // var reqMin = date.getMinutes();
-        // var reqSec = date.getSeconds();
+        
         var consolidateDate = new Date(reqYear, reqMonth, reqDate);
         console.log("consolidateDate: " + consolidateDate);
+        var Attyear = parts[2];
         var testType = [{
             "date": data.date,
             "Attentance": data.attendance
 
         }]
+
+        stud.findOneAndUpdate(studId, { Attyear: { $exists: false }}).toArray(function (err, data) {
+            console.log("data: "+JSON.stringify(data));
+        }
         // console.log("testType: " + JSON.stringify(testType));
         // stud.findOneAndUpdate({ "studId": data.studId }, { $set: { "Attentance": testType } }, { upsert: false, multi: true, returnNewDocument: true }, function (err, studentList) {
 

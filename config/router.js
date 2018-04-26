@@ -1,7 +1,7 @@
 var user = require('./controllers/user');
 var event = require('./controllers/event');
 var image = require('./controllers/image');
-// var adminAction = require('./controllers/adminAction');
+var adminAction = require('./controllers/adminAction');
 
 
 module.exports = function (app) {

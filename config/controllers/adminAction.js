@@ -72,7 +72,7 @@ module.exports.uploadAttendance = function (req, res) {
         
         console.log("date: "+new Date(dateString));
         
-        var consolidateDate = new Date(reqYear, reqMonth, reqDate);
+        // var consolidateDate = new Date(reqYear, reqMonth, reqDate);
         console.log("consolidateDate: " + consolidateDate);
         var Attyear = parts[2];
         var testType = [{

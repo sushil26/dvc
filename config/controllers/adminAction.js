@@ -70,7 +70,7 @@ module.exports.uploadMark = function (req, res) {
         "Math": data.Math}
             ]
             }]
-            stud.findOneAndUpdate({"stud-d":data.studId},{$set:{"testType":testType}},{upsert:false,multi:true,returnNewDocument:true}).toArray(function (err, studentList) {
+            stud.findOneAndUpdate({"stud-d":data.studId},{$set:{"testType":testType}},{upsert:false,multi:true,returnNewDocument:true},function (err, studentList) {
                 console.log("studentList:"+JSON.stringify(studentList));
             })
             // data['_id'] = new mongoose.Types.ObjectId();

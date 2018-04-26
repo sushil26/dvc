@@ -65,7 +65,7 @@ module.exports.uploadAttendance = function (req, res) {
         //     "studId": data.studId
         // }
         // console.log("date: "+data.date);
-        var date = new Date(data.date);
+        var date = Date.parse(data.date);
         console.log("date: "+date);
         var reqDate = date.getDate();
         var reqMonth = date.getMonth();

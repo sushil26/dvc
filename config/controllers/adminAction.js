@@ -79,12 +79,16 @@ module.exports.uploadAttendance = function (req, res) {
         //         AttMonth: [{ AttDate: data.attendance }]
         //     }]
         // }]
-        var attendance = [{
-            AttYear: {
-               
-            }
-        }]
-        AttYear[0]={ [AttDate]: data.attendance }
+        var dt = {};
+        
+        var dy ={};
+     
+        dt[AttDate]=data.attendance;
+        var dm = [dt];
+        dy[AttMonth]=[dm];
+        var attendance = [dy];
+
+       
         console.log("attendance: " + JSON.stringify(attendance));
 
         stud.find(studId, { "attendance": { $exists: true } }, function (err, data) {

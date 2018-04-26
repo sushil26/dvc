@@ -27,9 +27,9 @@
                                                     <option value="" disabled selected>Class</option>
                                                 </select>
 
-                                                <select class="btn col-lg-3" placeholder="select" ng-model="up.studSelect" ng-options="cs as cs.name + '-' + cs.studId for cs in studList">
+                                                <!-- <select class="btn col-lg-3" placeholder="select" ng-model="up.studSelect" ng-options="cs as cs.name + '-' + cs.studId for cs in studList">
                                                     <option value="" disabled selected>Student</option>
-                                                </select>
+                                                </select> -->
 
                                                 <select class="btn col-lg-3" ng-if="up.uploadType=='Mark Report'" placeholder="select" ng-model="up.ttSelect" ng-options="tt as tt for tt in testTypes">
                                                     <option value="" disabled selected>Type of Test</option>

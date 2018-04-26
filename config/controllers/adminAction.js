@@ -60,14 +60,14 @@ module.exports.uploadAttendance = function (req, res) {
         ignoreEmpty: true
     }).on("data", function (data) {
         console.log("data: " + JSON.stringify(data));
-        console.log("today data: " + d);
+      
         //parser.pause();
         var studId = {
             "studId": data.studentID
         }
         var dateString = data.date;
         var parts = dateString.split('/');
-        console.log("parts: " + JSON.stringify(parts));
+        // console.log("parts: " + JSON.stringify(parts));
         var AttYear = parts[2];
         var AttMonth = parts[1];
         var AttDate = parts[0];
@@ -76,10 +76,10 @@ module.exports.uploadAttendance = function (req, res) {
                 AttMonth: [{ AttDate: data.attendance }]
             }]
         }]
-        console.log("attendance: " + JSON.stringify(attendance));
+        // console.log("attendance: " + JSON.stringify(attendance));
 
         stud.find(studId, { "attendance": { $exists: false } }), function (err, data) {
-
+console.log("query started: "+JSON.stringify(data));
             if (err) {
                 console.log("err");
             }
@@ -87,6 +87,7 @@ module.exports.uploadAttendance = function (req, res) {
                 stud.findOneAndUpdate(studId, { $set: { "attendance": attendance } }), function (err, updatedData) {
 
                     console.log("updated data: " + JSON.stringify(updatedData));
+                    parser.pause();
 
                 }
             }

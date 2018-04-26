@@ -47,7 +47,7 @@ module.exports.getAllClass = function (req, res) {
 module.exports.uploadMark = function (req, res) {
     console.log("attendanceMarkSave-->");
     var responseData;
-    console.log("req.files: "+req.file);
+    console.log("req.files: "+req.files.img);
     if (!req.files)
         return res.status(400).send('No files were uploaded.');
 

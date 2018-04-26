@@ -35,16 +35,17 @@
                                                     <option value="" disabled selected>Type of Test</option>
                                                 </select>
                                                 <select class="btn col-lg-4" ng-if="up.uploadType=='Attendance'" placeholder="select" ng-model="up.ttSelect" ng-options="tt as tt for tt in testTypes">
-                                                    <option value="" disabled selected>Attendance Test</option>
+                                                    <option value="" disabled selected>Attendance report</option>
                                                 </select>
                                                 <select class="btn col-lg-4" ng-if="up.uploadType=='Payment'" placeholder="select" ng-model="up.ttSelect" ng-options="tt as tt for tt in testTypes">
-                                                    <option value="" disabled selected>Payment Test</option>
+                                                    <option value="" disabled selected>Payment report</option>
                                                 </select>
-<br>
-                                                <input type="file" style="display: inline-block;width:60%;float:left" class="btnCont btnCont-uploadColor col-lg-3" name="myImage"
+<br><br>
+<br> <br>                                               <input type="file" style="display: inline-block;width:60%;float:left" class="btnCont btnCont-uploadColor col-lg-3" name="myImage"
                                                     value="Upload" image-with-preview file-model="up.uploadDoc" ng-model="image"
                                                     accept="csv" ng-required="true">
                                                 <img ng-show="image.src" ng-src="{{image.src}}" style="width: 50%;margin-top: 2%;" />
+                                                <button type="submit" class="btn btn-primary" ng-click="uploadFile(up.uploadDoc,up.uploadType, up.ttSelect)">Upload</button>
                                             </div>
 
                                 </div>

@@ -5,7 +5,7 @@ app.controller('attendanceCtl', function ($scope, $window, httpFactory, sessionA
   $scope.testTypes = ["AT", "UT", "MT", "TT", "AT"];
 
   $scope.sma = []; /* ### Note:sma-Subject Mark Attendant  */
-   $scope.addSMA = function () {
+  $scope.addSMA = function () {
     console.log("addSMA-->");
 
     $scope.sma.push({ subject: "", mark: "", attendance: "" });
@@ -16,7 +16,7 @@ app.controller('attendanceCtl', function ($scope, $window, httpFactory, sessionA
   $scope.addUploadReports = function () {
     console.log("addUploadReports-->");
 
-    $scope.uploadReports.push({ uploadType: "", csSelect: "", ttSelect: "", uploadDoc:"" });
+    $scope.uploadReports.push({ uploadType: "", csSelect: "", ttSelect: "", uploadDoc: "" });
 
     console.log("<--addUploadReports");
   }
@@ -24,8 +24,8 @@ app.controller('attendanceCtl', function ($scope, $window, httpFactory, sessionA
     console.log("attendanceMark-->");
     // console.log("file: " + file);
     console.log("$scope.uploadReports: " + JSON.stringify($scope.uploadReports));
-    
-    
+
+
 
 
     // var api = "https://norecruits.com/vc/uploadMark";
@@ -64,7 +64,33 @@ app.controller('attendanceCtl', function ($scope, $window, httpFactory, sessionA
     console.log("<--attendanceMark");
   }
 
-  $scope.getAllClass = function (req, res) {
+  $scope.uploadFile = function (file, uploadType, reportType) {
+    console.log("uploadFile-->");
+    console.log("file: " + file);
+    var obj ={
+      "file":file,
+      "uploadType":uploadType,
+      "reportType":reportType
+    }
+    console.log("uploadType: " + uploadType);
+    console.log("reportType: " + reportType);
+    var api = "https://norecruits.com/vc/uploadMark";
+    httpFactory.csvUpload(obj, api).then(function (data) {
+      var checkStatus = httpFactory.dataValidation(data);
+      console.log("data--" + JSON.stringify(data.data));
+      if (checkStatus) {
+        
+        alert(data.data.message);
+      }
+      else {
+        alert(data.data.message);
+      }
+    })
+
+    console.log("<--uploadFile");
+  }
+
+  $scope.getAllClass = function () {
     console.log("getAllClass-->");
 
     var api = "https://norecruits.com/vc/getAllClass";

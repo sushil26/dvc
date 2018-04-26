@@ -24,18 +24,21 @@
                                                         <option value="" disabled selected>Class</option>
                                                     </select>
                                                 </div>
+                                                <br>
                                                 <div class="col-lg-3" >
 
                                                     <select class="btn" placeholder="select" ng-model="studSelect" ng-options="cs as cs.name + '-' + cs.studId for cs in studList">
                                                         <option value="" disabled selected>Student</option>
                                                     </select>
                                                 </div>
+                                                <br>
                                                 <div class="col-lg-3" >
 
                                                     <select class="btn" placeholder="select" ng-model="ttSelect" ng-options="tt as tt for tt in testTypes">
                                                         <option value="" disabled selected>Type of test</option>
                                                     </select>
                                                 </div>
+                                                <br>
                                                 <div class="col-lg-3" >
 
                                                     <input type="file" style="display: inline-block;width:60%;float:left" class="btnCont btnCont-uploadColor" name="myImage"
@@ -43,6 +46,7 @@
                                                         accept="csv" ng-required="true">
                                                     <img ng-show="image.src" ng-src="{{image.src}}" style="width: 50%;margin-top: 2%;" />
                                                 </div>
+                                                
                                             </div>
 
                                 </div>

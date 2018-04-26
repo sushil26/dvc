@@ -4,6 +4,7 @@ var stud = db.collection("student"); /* ### student collection  ### */
 
 var general = require("../general.js");
 var ObjectId = require("mongodb").ObjectID;
+var bodyParser = require('body-parser');
 
 var csv = require('fast-csv');
 
@@ -51,6 +52,7 @@ module.exports.uploadMark = function (req, res) {
         return res.status(400).send('No files were uploaded.');
 
     var authorFile = req.files.file;
+    console.log("authorFile: "+authorFile);
 
     var authors = [];
 

@@ -60,6 +60,7 @@ module.exports.uploadAttendance = function (req, res) {
         ignoreEmpty: true
     }).on("data", function (data) {
         console.log("data: " + JSON.stringify(data));
+        console.log("today data: " + d);
         //parser.pause();
         // var studId = {
         //     "studId": data.studId

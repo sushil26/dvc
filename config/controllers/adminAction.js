@@ -4,9 +4,9 @@ var stud = db.collection("student"); /* ### student collection  ### */
 
 var general = require("../general.js");
 var ObjectId = require("mongodb").ObjectID;
-var fileUpload = require('express-fileupload');
+
 var csv = require('fast-csv');
-app.use(fileUpload());
+
 
 module.exports.getAllClass = function (req, res) {
     console.log("getAllClass-->");
@@ -46,7 +46,7 @@ module.exports.getAllClass = function (req, res) {
 module.exports.uploadMark = function (req, res) {
     console.log("attendanceMarkSave-->");
     var responseData;
-    console.log("req.files: "+req.body.file);
+    console.log("req.files: "+req.file);
     if (!req.files)
         return res.status(400).send('No files were uploaded.');
 
@@ -71,6 +71,9 @@ module.exports.uploadMark = function (req, res) {
             res.send(authors.length + ' authors have been successfully uploaded.');
         });
 
+        console.log("<--attendanceMarkSave");
+    };
+    
 
     // var reqAtt = {
     //     "studId" : "",
@@ -106,6 +109,3 @@ module.exports.uploadMark = function (req, res) {
     //         res.status(200).send(responseData);
     //     }
     // });
-
-    console.log("<--attendanceMarkSave");
-};

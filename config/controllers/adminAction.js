@@ -65,7 +65,6 @@ module.exports.uploadAttendance = function (req, res) {
         var studId = {
             "studId": data.studentID
         }
-
         console.log("studId: "+JSON.stringify(studId));
         
         var dateString = data.date;
@@ -81,9 +80,7 @@ module.exports.uploadAttendance = function (req, res) {
         }]
         // console.log("attendance: " + JSON.stringify(attendance));
 
-        stud.find({
-            "studId": data.studentID
-        }), function (err, data) {
+        stud.find(studId, { "attendance": { $exists: true } }, function (err, data) {
 console.log("query started: "+JSON.stringify(data));
             if (err) {
                 console.log("err");
@@ -98,7 +95,7 @@ console.log("query started: "+JSON.stringify(data));
             }
 
 
-        }
+        })
     })
         .on("end", function () {
             console.log("end marker: " + marker);

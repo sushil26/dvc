@@ -7,8 +7,8 @@
                     <i class="fa fa-user-md"></i> Attendance Report</h3>
             </div>
             <!-- page start-->
-            <div class="row">
-                <div class="col-lg-12">
+            <div >
+                <div >
                     <section class="panel">
                         <div class="panel-body">
                             <div class="tab-content">
@@ -17,7 +17,7 @@
                                     <section class="panel">
                                         <h1> Attendance Report </h1>
                                         <form role="form" name="uploadForm" encType="multipart/form-data" novalidate>
-                                            <div class="row">
+                                            <div class="form-group row">
                                                 <div class="col-lg-3" >
 
                                                     <select class="btn btn-danger" placeholder="select" ng-model="csSelect" ng-change="getStudListForCS(csSelect)" ng-options="cs as cs.class + '-' + cs.section for cs in csList">

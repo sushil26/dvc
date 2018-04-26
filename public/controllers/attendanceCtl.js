@@ -15,6 +15,7 @@ app.controller('attendanceCtl', function ($scope, $window, httpFactory, sessionA
   $scope.attendanceMark = function (file) {
     console.log("attendanceMark-->");
     console.log("file: "+file);
+    console.log("file: "+$scope.file);
     var api = "https://norecruits.com/vc/uploadMark";
     
 

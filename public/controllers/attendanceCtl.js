@@ -16,7 +16,7 @@ app.controller('attendanceCtl', function ($scope, $window, httpFactory, sessionA
   $scope.addUploadReports = function () {
     console.log("addUploadReports-->");
 
-    $scope.uploadReports.push({ uploadType: "", csSelect: "", studSelect: "", ttSelect: "", uploadedFile:"" });
+    $scope.uploadReports.push({ uploadType: "", csSelect: "", ttSelect: "", uploadedFile:"" });
 
     console.log("<--addUploadReports");
   }

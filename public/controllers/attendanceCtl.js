@@ -1,6 +1,7 @@
 app.controller('attendanceCtl', function ($scope, $window, httpFactory, sessionAuthFactory) {
   console.log("attendanceCtl==>");
   $scope.file = {}; /* ### Note: Upload file declaration ### */
+  $scope.uploadTypes = ["Attendance", "Payment", "Mark Report"];
   $scope.testTypes = ["AT", "UT", "MT", "TT", "AT"];
 
   $scope.sma = []; /* ### Note:sma-Subject Mark Attendant  */

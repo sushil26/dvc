@@ -84,9 +84,9 @@ module.exports.uploadAttendance = function (req, res) {
         var dm ={};
      var dy = {};
         dt[AttDate]=data.attendance;
-        dm[AttMonth]=dt;
-        dy[AttYear]=dm;
-        var attendance = dy;
+        dm[AttMonth]=[dt];
+        dy[AttYear]=[dm];
+        var attendance = [dy];
 
        
         console.log("attendance: " + JSON.stringify(attendance));

@@ -64,7 +64,7 @@ module.exports.uploadAttendance = function (req, res) {
         // var studId = {
         //     "studId": data.studId
         // }
-        var parts = input.split('/');
+        var parts = data.date.split('/');
         // console.log("date: "+data.date);
         var date = new Date(parts[0],parts[1],parts[3]);
         console.log("date: "+date);

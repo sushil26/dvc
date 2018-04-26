@@ -66,12 +66,12 @@ module.exports.uploadAttendance = function (req, res) {
         // }
         var dateString = data.date;
         var parts = dateString.split('/');
-        console.log("Date.parseDate: "+Date.parseDate("dateString", "Y-m-d g:i a"));
+        console.log("Date.parseDate: "+d.parseDate("dateString", "Y-m-d g:i a"));
         console.log("date: "+JSON.stringify(parts));
         
         // var date = dateObj(parts[3],parts[2],parts[1]);
         // console.log("date: "+date);
-        console.log("date: "+new Date(data.date));
+        console.log("date: "+new Date(dateString));
         var reqDate = date.getDate();
         var reqMonth = date.getMonth();
         var reqYear = date.getFullYear();

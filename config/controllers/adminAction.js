@@ -55,40 +55,19 @@ module.exports.uploadMark = function (req, res) {
     var studentDataFile = req.files.img;
     console.log("studentDataFile: " + studentDataFile);
 
-    csv.fromString(studentDataFile.data.toString(), {
+    var parser = csv.fromString(studentDataFile.data.toString(), {
         headers: true,
         ignoreEmpty: true
     }).on("data", function (data) {
         console.log("data: " + JSON.stringify(data));
-        var studId = {
-            "studId": data.studId
-        }
-        var testType = [{
-            "testType": data.testType,
-            "subjectMarks": 
-                {
-                    "English": data.English,
-                    "Physics": data.Physics,
-                    "Math": data.Math
-                }
-            
-        }]
-        console.log("testType: " + JSON.stringify(testType));
-        stud.findOneAndUpdate({ "studId": data.studId }, { $set: { "testType": testType } }, { upsert: false, multi: true, returnNewDocument: true }, function (err, studentList) {
-
-            console.log("studentList:" + JSON.stringify(studentList));
-            if (err) {
-                console.log("err");
-                marker = false;
-            } 
-            else {
-                console.log("no err");
-                marker = true;
-            }
-        })
+        parser.pause();
+        module.exports.updateData(data, function(err) {
+          // TODO: handle error
+          parser.resume();
+        });
+      
        
-    })
-        .on("end", function () {
+    }).on("end", function () {
             console.log("marker: "+marker);
             if (marker == false) {
                 responseData = {
@@ -112,4 +91,36 @@ module.exports.uploadMark = function (req, res) {
 };
 
 
-  
+module.exports.updateData = function(data, callback){
+    console.log('inside saving')
+    
+    var studId = {
+        "studId": data.studId
+    }
+    var testType = [{
+        "testType": data.testType,
+        "subjectMarks": 
+            {
+                "English": data.English,
+                "Physics": data.Physics,
+                "Math": data.Math
+            }
+        
+    }]
+    console.log("testType: " + JSON.stringify(testType));
+    stud.findOneAndUpdate({ "studId": data.studId }, { $set: { "testType": testType } }, { upsert: false, multi: true, returnNewDocument: true }, function (err, studentList) {
+
+        console.log("studentList:" + JSON.stringify(studentList));
+        if (err) {
+            console.log("err");
+            marker = false;
+            process.setImmediate(callback);
+        } 
+        else {
+            console.log("no err");
+            marker = true;
+            process.setImmediate(callback);
+        }
+    })
+   
+}

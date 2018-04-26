@@ -81,7 +81,7 @@ module.exports.uploadAttendance = function (req, res) {
 
         }]
 
-        stud.findOneAndUpdate(studId, { Attyear: { $exists: false }}).toArray(function (err, data) {
+        stud.findOneAndUpdate(studId, { Attyear: { $exists: false }},function (err, data) {
             console.log("data: "+JSON.stringify(data));
         })
         // console.log("testType: " + JSON.stringify(testType));

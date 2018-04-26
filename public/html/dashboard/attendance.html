@@ -43,20 +43,20 @@
                                                 </select>
                                                 <br>
                                                 <br>
-                                                <input type="file" style="display: inline-block;width:60%;float:left" class="btnCont btnCont-uploadColor col-lg-3"
-                                                    name="myImage" value="Upload" image-with-preview file-model="up.uploadDoc"
-                                                    ng-model="image" accept="csv" ng-required="true">
+                                                <input type="file" style="display: inline-block;width:60%;float:left" class="btnCont btnCont-uploadColor col-lg-3" name="myImage"
+                                                    value="Upload" image-with-preview file-model="up.uploadDoc" ng-model="image"
+                                                    accept="csv" ng-required="true">
                                                 <img ng-show="image.src" ng-src="{{image.src}}" style="width: 50%;margin-top: 2%;" />
-                                                <button type="submit" class="btn btn-primary" ng-click="uploadFile(up.uploadDoc,up.uploadType, up.ttSelect)">Upload</button>
+                                                <button type="submit" class="btn btn-primary col-lg-3" ng-click="uploadFile(up.uploadDoc,up.uploadType, up.ttSelect)">Upload</button>
                                             </div>
                                             <hr>
                                             <button type="submit" class="btn btn-primary" ng-click="addUploadReports()">Add</button>
                                 </div>
 
                             </div>
-                           
+
                             <br>
-                           
+
                             <br>
                             <br>
 

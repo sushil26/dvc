@@ -64,27 +64,23 @@ module.exports.uploadAttendance = function (req, res) {
         // var studId = {
         //     "studId": data.studId
         // }
-        // var date = new Date(data.date);
-        // console.log("date: "+date);
-        // var reqDate = date.getDate();
-        // var reqMonth = date.getMonth();
-        // var reqYear = date.getFullYear();
-        // // var reqHr = date.getHours();
-        // // var reqMin = date.getMinutes();
-        // // var reqSec = date.getSeconds();
-        // var consolidateDate = new Date(reqYear, reqMonth, reqDate);
-        // console.log("consolidateDate: " + consolidateDate);
-        // var testType = [{
-        //     "date": data.date,
-        //     "month":
-        //         {
-        //             "English": data.English,
-        //             "Physics": data.Physics,
-        //             "Math": data.Math
-        //         }
-        // }]
+        var date = new Date(data.date);
+        console.log("date: "+date);
+        var reqDate = date.getDate();
+        var reqMonth = date.getMonth();
+        var reqYear = date.getFullYear();
+        // var reqHr = date.getHours();
+        // var reqMin = date.getMinutes();
+        // var reqSec = date.getSeconds();
+        var consolidateDate = new Date(reqYear, reqMonth, reqDate);
+        console.log("consolidateDate: " + consolidateDate);
+        var testType = [{
+            "date": data.date,
+            "Attentance": data.Attendance
+
+        }]
         // console.log("testType: " + JSON.stringify(testType));
-        // stud.findOneAndUpdate({ "studId": data.studId }, { $set: { "testType": testType } }, { upsert: false, multi: true, returnNewDocument: true }, function (err, studentList) {
+        // stud.findOneAndUpdate({ "studId": data.studId }, { $set: { "Attentance": testType } }, { upsert: false, multi: true, returnNewDocument: true }, function (err, studentList) {
 
         //     console.log("studentList:" + JSON.stringify(studentList));
         //     if (err) {

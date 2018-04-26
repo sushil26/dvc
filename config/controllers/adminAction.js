@@ -63,13 +63,13 @@ module.exports.uploadMark = function (req, res) {
             console.log("Got");
             // data['_id'] = new mongoose.Types.ObjectId();
 
-            // authors.push(data);
+            authors.push(data);
         })
         .on("end", function () {
             Author.create(authors, function (err, documents) {
                 if (err) throw err;
             });
-
+console.log("authors: "+JSON.stringify(authors));
             res.send(authors.length + ' authors have been successfully uploaded.');
         });
 

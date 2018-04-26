@@ -65,6 +65,9 @@ module.exports.uploadAttendance = function (req, res) {
         var studId = {
             "studId": data.studentID
         }
+        
+        console.log("studId: "+JSON.stringify(studId));
+        
         var dateString = data.date;
         var parts = dateString.split('/');
         // console.log("parts: " + JSON.stringify(parts));

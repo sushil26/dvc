@@ -7,7 +7,7 @@ var ObjectId = require("mongodb").ObjectID;
 var bodyParser = require('body-parser');
 
 var csv = require('fast-csv');
-
+var dateObj = new Date;
 
 module.exports.getAllClass = function (req, res) {
     console.log("getAllClass-->");
@@ -64,11 +64,11 @@ module.exports.uploadAttendance = function (req, res) {
         // var studId = {
         //     "studId": data.studId
         // }
-        var date = data.date;
-        var parts = date.split('/');
+        var dateString = data.date;
+        var parts = dateString.split('/');
         console.log("date: "+JSON.stringify(parts));
         
-        var date = new Date(parts[3],parts[2],parts[1]);
+        var date = dateObj(parts[3],parts[2],parts[1]);
         console.log("date: "+date);
         console.log("date: "+new Date(data.date));
         var reqDate = date.getDate();

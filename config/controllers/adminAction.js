@@ -67,8 +67,10 @@ module.exports.uploadAttendance = function (req, res) {
         // }
         var dateString = data.date;
         var parts = dateString.split('/');
+        console.log("parts: "+JSON.stringify(parts));
+        console.log("date: "+d(parts[3],parts[2],parts[1]));
         console.log("Date.parseDate: "+d.parseDate(dateString, "Y-m-d g:i a"));
-        console.log("date: "+JSON.stringify(parts));
+     
         
         // var date = dateObj(parts[3],parts[2],parts[1]);
         // console.log("date: "+date);

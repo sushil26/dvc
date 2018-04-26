@@ -74,7 +74,7 @@ module.exports.uploadAttendance = function (req, res) {
         var AttMonth = parts[1];
         var AttDate = parts[0];
         var attendance = [{
-            AttYear: [{
+            "\+AttYear\+": [{
                 AttMonth: [{ AttDate: data.attendance }]
             }]
         }]

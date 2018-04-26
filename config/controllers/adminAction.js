@@ -69,8 +69,8 @@ module.exports.uploadAttendance = function (req, res) {
         console.log("Date.parseDate: "+Date.parseDate("dateString", "Y-m-d g:i a"));
         console.log("date: "+JSON.stringify(parts));
         
-        var date = dateObj(parts[3],parts[2],parts[1]);
-        console.log("date: "+date);
+        // var date = dateObj(parts[3],parts[2],parts[1]);
+        // console.log("date: "+date);
         console.log("date: "+new Date(data.date));
         var reqDate = date.getDate();
         var reqMonth = date.getMonth();

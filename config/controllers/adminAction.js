@@ -78,6 +78,7 @@ module.exports.uploadAttendance = function (req, res) {
         var attndnce = data.attendance;
 
         var obj = { "date": AttDate, "status": attndnce };
+        console.log("obj: "+JSON.stringify(obj));
         // var attendance = [{
         //     AttYear: [{
         //         AttMonth: [{ AttDate: data.attendance }]

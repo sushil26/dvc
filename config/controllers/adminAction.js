@@ -88,7 +88,6 @@ module.exports.uploadAttendance = function (req, res) {
         dm[AttMonth] = [dt];
         dy[AttYear] = [dm];
         var attendance = [dy];
-
         console.log("attendance: " + JSON.stringify(attendance));
         module.exports.updateData = function (data, callback) {
             stud.find({ "studId": data.studentID, "attendance": { $exists: false } }).toArray(function (err, data) {

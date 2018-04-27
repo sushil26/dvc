@@ -89,7 +89,7 @@ module.exports.uploadAttendance = function (req, res) {
         dy[AttYear] = [dm];
         var attendance = [dy];
         console.log("attendance: " + JSON.stringify(attendance));
-        module.exports.updateData = function (data, callback) {
+        // module.exports.updateData = function (data, callback) {
             stud.find({ "studId": data.studentID, "attendance": { $exists: false } }).toArray(function (err, data) {
                 console.log("query started: " + JSON.stringify(data));
                 console.log("query data.length: " + data.length);
@@ -102,34 +102,34 @@ module.exports.uploadAttendance = function (req, res) {
                     };
                     res.status(400).send(responseData);
                 }
-                // else {
-                //     if (data.length == 0) {
-                //         // stud.findOneAndUpdate(studId, { $set: { "attendance": attendance } }), function (err, updatedData) {
+                else {
+                    if (data.length == 0) {
+                        stud.findOneAndUpdate(studId, { $set: { "attendance": attendance } }), function (err, updatedData) {
 
-                //         //     console.log("updated data: " + JSON.stringify(updatedData));
-                //         //     if (err) {
-                //         //         console.log("err");
-                //         //         marker = false;
-                //         //         process.nextTick(callback);
-                //         //     }
-                //         //     else {
-                //         //         marker = true;
-                //         //         process.nextTick(callback);
-                //         //     }
-                //         // }
-                //     }
-                //     else{
-                //         // var att = {};
-                //         // var y = att[AttYear];
-                //         // var x = [y];
-                //         // console.log("x: "+x);
+                            console.log("updated data: " + JSON.stringify(updatedData));
+                            if (err) {
+                                console.log("err");
+                                marker = false;
+                                process.nextTick(callback);
+                            }
+                            else {
+                                marker = true;
+                                process.nextTick(callback);
+                            }
+                        }
+                    }
+                    else{
+                        var att = {};
+                        var y = att[AttYear];
+                        var x = [y];
+                        console.log("x: "+x);
 
-                //         // stud.find({ "studId": data.studentID, attendance[AttYear]:{ $exists: false } }).toArray(function (err, data) {
-                //         // }))
-                //     }
-                // }
+                        // stud.find({ "studId": data.studentID, attendance[AttYear]:{ $exists: false } }).toArray(function (err, data) {
+                        // }))
+                    }
+                }
             })
-        }
+        // }
     })
         .on("end", function () {
             console.log("end marker: " + marker);

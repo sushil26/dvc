@@ -87,20 +87,29 @@ module.exports.uploadAttendance = function (req, res) {
         }
         stud.find(studId).toArray(function (err, data) {
             console.log("data: "+JSON.stringify(data));
+            if (err) {
+                marker == true;
+               
+            }
+            else{
+            if(data.length==0){
+                stud.update(studId,
+                    { $push: { "attendance.$.dateAttendance": { "date": AttDate, "status": attndnce } } }, function (err, data) {
+                        console.log("query started: " + JSON.stringify(data));
+                        console.log("query data.length: " + data.length);
+                        if (err) {
+                            marker == true;
+                           
+                        }
+                        else {
+                            marker == true;
+                           
+                        }
+                    })
+            }
+        }
         })
-        // stud.update(studId,
-        //     { $push: { "attendance.$.dateAttendance": { "date": AttDate, "status": attndnce } } }, function (err, data) {
-        //         console.log("query started: " + JSON.stringify(data));
-        //         console.log("query data.length: " + data.length);
-        //         if (err) {
-        //             marker == true;
-                   
-        //         }
-        //         else {
-        //             marker == true;
-                   
-        //         }
-        //     })
+        
        
     })
         .on("end", function () {

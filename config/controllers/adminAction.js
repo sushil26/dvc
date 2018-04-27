@@ -89,28 +89,33 @@ module.exports.uploadAttendance = function (req, res) {
         var month = {
             "attendance.month": AttMonth
         }
-        stud.find(studIdForFindQry).toArray(function (err, data) {
-            console.log("data: " + JSON.stringify(data));
-            console.log("data.length: " + data.length);
+        stud.find(studIdForFindQry).toArray(function (err, findData) {
+            console.log("1st query findData: " + JSON.stringify(findData));
+            console.log("1st query findData.length: " + findData.length);
             if (err) {
                 marker == true;
-
             }
             else {
                 if (data.length == 0) {
                     stud.update(studIdForUpdateQry,
                         { $push: { "attendance.$.dateAttendance": { "date": AttDate, "status": attndnce } } }, function (err, data) {
-                            console.log("query started: " + JSON.stringify(data));
-                            console.log("query data.length: " + data.length);
+                            console.log("2nd query started: " + JSON.stringify(data));
+                            console.log("2nd query data.length: " + data.length);
                             if (err) {
                                 marker == true;
-
                             }
                             else {
                                 marker == true;
-
                             }
                         })
+                }
+                else{
+                    responseData = {
+                        status: true,
+                        message: "Sorry! You already updated for this date"
+                    };
+    
+                    res.status(200).send(responseData);
                 }
             }
         })

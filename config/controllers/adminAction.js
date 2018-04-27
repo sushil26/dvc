@@ -226,11 +226,13 @@ module.exports.uploadMark = function (req, res) {
 module.exports.uploadStudentMaster = function (req, res) {
     console.log("uploadStudentMaster-->");
     var responseData;
+    var marker;
+    var objJson = [];
     if (!req.files)
-    return res.status(400).send('No files were uploaded.');
+        return res.status(400).send('No files were uploaded.');
 
-var studentDataFile = req.files.img;
-console.log("studentDataFile: " + studentDataFile);
+    var studentDataFile = req.files.img;
+    console.log("studentDataFile: " + studentDataFile);
     var parser = csv.fromString(studentDataFile.data.toString(), {
         headers: true,
         ignoreEmpty: true
@@ -253,45 +255,33 @@ console.log("studentDataFile: " + studentDataFile);
             loginType: "studParent"
         };
 
+        objJson.push(userData);
         console.log("userData: " + JSON.stringify(userData));
-        // stud.insertOne(userData, function (err, data) {
-        //     console.log("data: " + JSON.stringify(data));
-        //     if (err) {
-        //         responseData = {
-        //             status: false,
-        //             message: "Failed to Insert",
-        //             data: data
-        //         };
-        //         res.status(400).send(responseData);
-        //     } else {
-        //         responseData = {
-        //             status: true,
-        //             errorCode: 200,
-        //             message: "Insert Successfull",
-        //             data: userData
-        //         };
-        //         res.status(200).send(responseData);
-        //     }
-        // });
-    
+
+
     })
         .on("end", function () {
             console.log("end marker: " + marker);
-            if (marker == false) {
-                responseData = {
-                    status: false,
-                    message: "Failed to get Data"
-                };
-                res.status(400).send(responseData);
-            }
-            else if (marker == true) {
-                responseData = {
-                    status: true,
-                    message: "Successfull updated data"
-                };
-
-                res.status(200).send(responseData);
-            }
+            console.log("objJson: " + JSON.stringify(objJson));
+            // stud.insertOne(objJson, function (err, data) {
+            //     console.log("data: " + JSON.stringify(data));
+            //     if (err) {
+            //         responseData = {
+            //             status: false,
+            //             message: "Failed to Insert",
+            //             data: data
+            //         };
+            //         res.status(400).send(responseData);
+            //     } else {
+            //         responseData = {
+            //             status: true,
+            //             errorCode: 200,
+            //             message: "Insert Successfull",
+            //             data: userData
+            //         };
+            //         res.status(200).send(responseData);
+            //     }
+            // });
         });
 
     console.log("<--uploadStudentMaster");

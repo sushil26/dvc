@@ -62,7 +62,7 @@ module.exports.uploadAttendance = function (req, res) {
     }).on("data", function (data) {
         console.log("data: " + JSON.stringify(data));
 
-        parser.pause();
+        // parser.pause();
         var studId = {
             "studId": data.studentID
         }

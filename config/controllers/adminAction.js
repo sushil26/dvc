@@ -75,42 +75,47 @@ module.exports.uploadAttendance = function (req, res) {
 
         var obj = { "date": AttDate, "status": attndnce };
         console.log("obj: " + JSON.stringify(obj));
-       
-        var studId = {
+        var studIdForFindQry = {
             "studId": data.StudentID,
             "attendance.month": AttMonth,
-            "attendance.dateAttendance":{ "date": AttDate, "status": attndnce }
+            "attendance.dateAttendance": { "date": AttDate, "status": attndnce }
+        }
+        console.log("studIdForFindQry: " + JSON.stringify(studIdForFindQry));
+        var studIdForUpdateQry = {
+            "studId": data.StudentID,
+            "attendance.month": AttMonth
         }
         console.log("studId: " + JSON.stringify(studId));
         var month = {
             "attendance.month": AttMonth
         }
-        stud.find(studId).toArray(function (err, data) {
-            console.log("data: "+JSON.stringify(data));
+        stud.find(studIdForFindQry).toArray(function (err, data) {
+            console.log("data: " + JSON.stringify(data));
+            console.log("data.length: " + data.length);
             if (err) {
                 marker == true;
-               
+
             }
-            else{
-            if(data.length==0){
-                stud.update(studId,
-                    { $push: { "attendance.$.dateAttendance": { "date": AttDate, "status": attndnce } } }, function (err, data) {
-                        console.log("query started: " + JSON.stringify(data));
-                        console.log("query data.length: " + data.length);
-                        if (err) {
-                            marker == true;
-                           
-                        }
-                        else {
-                            marker == true;
-                           
-                        }
-                    })
+            else {
+                if (data.length == 0) {
+                    stud.update(studIdForUpdateQry,
+                        { $push: { "attendance.$.dateAttendance": { "date": AttDate, "status": attndnce } } }, function (err, data) {
+                            console.log("query started: " + JSON.stringify(data));
+                            console.log("query data.length: " + data.length);
+                            if (err) {
+                                marker == true;
+
+                            }
+                            else {
+                                marker == true;
+
+                            }
+                        })
+                }
             }
-        }
         })
-        
-       
+
+
     })
         .on("end", function () {
             console.log("end marker: " + marker);

@@ -125,8 +125,8 @@ module.exports.uploadAttendance = function (req, res) {
                    
 
                     stud.find({ "studId": data.studentID, [AttYear]:{ $exists: false } }).toArray(function (err, attData) {
-                        console.log("query started: " + JSON.stringify(attData));
-                        console.log("query data.length: " + attData.length);
+                        console.log("2nd query started: " + JSON.stringify(attData));
+                        console.log("2nd query data.length: " + attData.length);
                     })
                 }
             }

@@ -101,7 +101,7 @@ module.exports.uploadAttendance = function (req, res) {
         // console.log("attendance: " + JSON.stringify(attendance));
         // module.exports.updateData = function (data, callback) {
             // var attendance={"month":AttMonth};
-        stud.findOneAndUpdate(studId,{$push:{"attendance.$.dateAttendance":{ "date": AttDate, "status": attndnce }}},function (err, data) {
+        stud.findOneAndUpdate({"studId": data.studentID, "attendance.month":AttMonth},{$push:{"attendance.$.dateAttendance":{ "date": AttDate, "status": attndnce }}},function (err, data) {
             console.log("query started: " + JSON.stringify(data));
             console.log("query data.length: " + data.length);
             if (err) {

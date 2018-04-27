@@ -106,7 +106,7 @@ module.exports.uploadAttendance = function (req, res) {
                 console.log("no err");
                 if (data.length == 0) {
                     console.log("0 length");
-                    stud.findOneAndUpdate(studId, { $set: { "attendance": attendance } }), function (err, updatedData) {
+                    stud.update(studId, { $set: { "attendance": attendance } }), function (err, updatedData) {
 
                         console.log("updated data: " + JSON.stringify(updatedData));
                         if (err) {

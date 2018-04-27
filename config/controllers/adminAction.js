@@ -78,26 +78,29 @@ module.exports.uploadAttendance = function (req, res) {
        
         var studId = {
             "studId": data.StudentID,
-            "attendance.month": AttMonth
+            "attendance.month": AttMonth,
+            "attendance.dateAttendance":{ "date": AttDate, "status": attndnce }
         }
         console.log("studId: " + JSON.stringify(studId));
         var month = {
             "attendance.month": AttMonth
         }
-
-        stud.update(studId,
-            { $push: { "attendance.$.dateAttendance": { "date": AttDate, "status": attndnce } } }, function (err, data) {
-                console.log("query started: " + JSON.stringify(data));
-                console.log("query data.length: " + data.length);
-                if (err) {
-                    marker == true;
+        stud.find(studId,function (err, data) {
+            console.log("data: "+JSON.stringify(data));
+        })
+        // stud.update(studId,
+        //     { $push: { "attendance.$.dateAttendance": { "date": AttDate, "status": attndnce } } }, function (err, data) {
+        //         console.log("query started: " + JSON.stringify(data));
+        //         console.log("query data.length: " + data.length);
+        //         if (err) {
+        //             marker == true;
                    
-                }
-                else {
-                    marker == true;
+        //         }
+        //         else {
+        //             marker == true;
                    
-                }
-            })
+        //         }
+        //     })
        
     })
         .on("end", function () {

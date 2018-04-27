@@ -142,7 +142,7 @@ var app = angular.module('vcApp', ['ui.router', 'mwl.calendar', 'ui.bootstrap', 
         templateUrl: '/html/dashboard/reportsUpload.html',
         controller: 'reportsUploadCtl'
       })
-      .state('dashboard.attendance', {
+      .state('dashboard.attendanceView', {
         url: attendanceView(),
         templateUrl: '/html/dashboard/attendanceView.html',
         controller: 'attendanceViewCtl'

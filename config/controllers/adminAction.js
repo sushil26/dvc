@@ -90,7 +90,7 @@ module.exports.uploadAttendance = function (req, res) {
 
         console.log("attendance: " + JSON.stringify(attendance));
         // module.exports.updateData = function (data, callback) {
-        stud.find({ "studId": data.studentID, "attendance": { $exists: false } }).toArray(function (err, data) {
+        stud.find({ "studId": data.studentID, "attendance": { $exists: true } }).toArray(function (err, data) {
             console.log("query started: " + JSON.stringify(data));
             console.log("query data.length: " + data.length);
             if (err) {

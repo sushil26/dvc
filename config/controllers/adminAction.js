@@ -85,7 +85,7 @@ module.exports.uploadAttendance = function (req, res) {
         var month = {
             "attendance.month": AttMonth
         }
-        stud.find(studId,function (err, data) {
+        stud.find(studId).toArray(function (err, data) {
             console.log("data: "+JSON.stringify(data));
         })
         // stud.update(studId,

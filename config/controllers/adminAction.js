@@ -126,7 +126,7 @@ module.exports.uploadAttendance = function (req, res) {
                     var dt = {};
                     var dm = {};
                     dt[AttDate] = data.attendance;
-                    dm[AttMonth] = dt;
+                    dm[AttMonth] = [dt];
 
                     console.log("dm: " + JSON.stringify(dm));
 

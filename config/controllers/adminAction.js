@@ -104,19 +104,19 @@ module.exports.uploadAttendance = function (req, res) {
                 }
                 else {
                     if (data.length == 0) {
-                        stud.findOneAndUpdate(studId, { $set: { "attendance": attendance } }), function (err, updatedData) {
+                        // stud.findOneAndUpdate(studId, { $set: { "attendance": attendance } }), function (err, updatedData) {
 
-                            console.log("updated data: " + JSON.stringify(updatedData));
-                            if (err) {
-                                console.log("err");
-                                marker = false;
-                                process.nextTick(callback);
-                            }
-                            else {
-                                marker = true;
-                                process.nextTick(callback);
-                            }
-                        }
+                        //     console.log("updated data: " + JSON.stringify(updatedData));
+                        //     if (err) {
+                        //         console.log("err");
+                        //         marker = false;
+                        //         process.nextTick(callback);
+                        //     }
+                        //     else {
+                        //         marker = true;
+                        //         process.nextTick(callback);
+                        //     }
+                        // }
                     }
                     else{
                         // var att = {};

@@ -122,10 +122,15 @@ module.exports.uploadAttendance = function (req, res) {
                 }
                 else {
                     console.log("more than 0 length");
-                    var attribute = {};
-                    console.log("attribute[attYear]: " + attribute[attYear]);
+                    var att = {};
+                    var dt = {};
+                    var dm = {};
+                    dt[AttDate] = data.attendance;
+                    dm[AttMonth] = [dt];
 
-                    stud.find({ "studId": data.studentID, [AttYear]: { $exists: true } }).toArray(function (err, attData) {
+                    console.log("dm: " + JSON.stringify(dm));
+
+                    stud.find({ "studId": data.studentID, "18": { $exists: true } }).toArray(function (err, attData) {
                         console.log("2nd query started: " + JSON.stringify(attData));
                         console.log("2nd query data.length: " + attData.length);
                     })

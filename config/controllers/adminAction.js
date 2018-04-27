@@ -226,6 +226,11 @@ module.exports.uploadMark = function (req, res) {
 module.exports.uploadStudentMaster = function (req, res) {
     console.log("uploadStudentMaster-->");
     var responseData;
+    if (!req.files)
+    return res.status(400).send('No files were uploaded.');
+
+var studentDataFile = req.files.img;
+console.log("studentDataFile: " + studentDataFile);
     var parser = csv.fromString(studentDataFile.data.toString(), {
         headers: true,
         ignoreEmpty: true
@@ -268,6 +273,7 @@ module.exports.uploadStudentMaster = function (req, res) {
         //         res.status(200).send(responseData);
         //     }
         // });
+    
     })
         .on("end", function () {
             console.log("end marker: " + marker);

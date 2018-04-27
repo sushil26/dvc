@@ -89,7 +89,7 @@ module.exports.uploadAttendance = function (req, res) {
         var attendance = [dy];
 
         console.log("attendance: " + JSON.stringify(attendance));
-        module.exports.updateData = function (data, callback) {
+        // module.exports.updateData = function (data, callback) {
             stud.find({ "studId": data.studentID, "attendance": { $exists: false } }).toArray(function (err, data) {
                 console.log("query started: " + JSON.stringify(data));
                 console.log("query data.length: " + data.length);
@@ -129,7 +129,7 @@ module.exports.uploadAttendance = function (req, res) {
                     }
                 }
             })
-        }
+        // }
     })
         .on("end", function () {
             console.log("end marker: " + marker);

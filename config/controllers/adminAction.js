@@ -49,7 +49,7 @@ module.exports.uploadAttendance = function (req, res) {
     console.log("uploadAttendance-->");
     var responseData;
     var marker; /* ### Note: marker is used for identify the status of update query ###*/
-   var month ={ "month":"Jan", "id":1}, {"month":"Feb", "id":1}, "Mar": 3, "Apr": 4, "May": 5, "Jun": 6, "Jul": 7, "Aug": 8, "Sep": 9, "Oct": 10, "Nov": 11, "Dec": 12 }
+//    var month ={ "month":"Jan", "id":1}, {"month":"Feb", "id":1}, "Mar": 3, "Apr": 4, "May": 5, "Jun": 6, "Jul": 7, "Aug": 8, "Sep": 9, "Oct": 10, "Nov": 11, "Dec": 12 }
     console.log("req.files: " + req.files.img);
     if (!req.files)
         return res.status(400).send('No files were uploaded.');

@@ -85,7 +85,7 @@ module.exports.uploadAttendance = function (req, res) {
             "studId": data.StudentID,
             "attendance.month": AttMonth
         }
-        console.log("studId: " + JSON.stringify(studId));
+        console.log("studIdForUpdateQry: " + JSON.stringify(studIdForUpdateQry));
         var month = {
             "attendance.month": AttMonth
         }

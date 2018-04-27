@@ -263,7 +263,7 @@ module.exports.uploadStudentMaster = function (req, res) {
         .on("end", function () {
             console.log("end marker: " + marker);
             console.log("objJson: " + JSON.stringify(objJson));
-            stud.insertOne(objJson, function (err, data) {
+            stud.insert(objJson, function (err, data) {
                 console.log("data: " + JSON.stringify(data));
                 if (err) {
                     responseData = {

@@ -119,10 +119,10 @@ module.exports.uploadAttendance = function (req, res) {
                         }
                     }
                     else{
-                        var att = {};
-                        var y = att[AttYear];
-                        var x = [y];
-                        console.log("x: "+x);
+                        // var att = {};
+                        // var y = att[AttYear];
+                        // var x = [y];
+                        // console.log("x: "+x);
 
                         // stud.find({ "studId": data.studentID, attendance[AttYear]:{ $exists: false } }).toArray(function (err, data) {
                         // }))

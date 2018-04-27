@@ -87,7 +87,7 @@ module.exports.uploadAttendance = function (req, res) {
 
         stud.findOneAndUpdate(
             { "studId": data.StudentID, "attendance.month": AttMonth },
-            { $push: { "attendance.$.dateAttendance": { "date": AttDate, "status": attndnce } } }, function (err, data) {
+            { $push: { "attendance.$.dateAttendance": { "date": AttDate, "status": attndnce } } },{returnOriginal: false}, function (err, data) {
                 console.log("query started: " + JSON.stringify(data));
                 console.log("query data.length: " + data.length);
                 if (err) {

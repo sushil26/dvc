@@ -74,6 +74,7 @@ module.exports.uploadAttendance = function (req, res) {
         var AttYear = parts[2];
         var AttMonth = parts[1];
         var AttDate = parts[0];
+        var attndnce = data.attendance;
 
         // var attendance = [{
         //     AttYear: [{
@@ -123,13 +124,13 @@ module.exports.uploadAttendance = function (req, res) {
                 else {
                     console.log("more than 0 length");
                     var att = {};
-                    var dt = {};
-                    var dm = {};
-                    dt[AttDate] = data.attendance;
-                    dm[AttMonth] = [dt];
+                    var ddt = {};
+                    var ddm = {};
+                    ddt[AttDate] = attndnce;
+                    ddm[AttMonth] = ddt;
 
-                    console.log("dm: " + JSON.stringify(dm));
-
+                    console.log("dm: " + JSON.stringify(ddm));
+                    parser.pause();
                     stud.find({ "studId": data.studentID, "18.+\AttMonth\+": { $exists: true } }).toArray(function (err, attData) {
                         console.log("2nd query started: " + JSON.stringify(attData));
                         console.log("2nd query data.length: " + attData.length);

@@ -277,7 +277,7 @@ module.exports.uploadStudentMaster = function (req, res) {
                         status: true,
                         errorCode: 200,
                         message: "Insert Successfull",
-                        data: userData
+                        data: data
                     };
                     res.status(200).send(responseData);
                 }

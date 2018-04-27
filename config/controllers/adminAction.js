@@ -96,7 +96,7 @@ module.exports.uploadAttendance = function (req, res) {
                 marker == true;
             }
             else {
-                if (data.length == 0) {
+                if (findData.length == 0) {
                     stud.update(studIdForUpdateQry,
                         { $push: { "attendance.$.dateAttendance": { "date": AttDate, "status": attndnce } } }, function (err, data) {
                             console.log("2nd query started: " + JSON.stringify(data));
@@ -110,6 +110,7 @@ module.exports.uploadAttendance = function (req, res) {
                         })
                 }
                 else{
+
                     responseData = {
                         status: true,
                         message: "Sorry! You already updated for this date"

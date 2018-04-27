@@ -15,6 +15,7 @@ module.exports.getAllClass = function (req, res) {
     console.log("getAllClass-->");
     var responseData;
     stud.find().toArray(function (err, studentList) {
+        console.log("studentList: "+JSON.stringify(studentList));
         if (err) {
             responseData = {
                 status: false,

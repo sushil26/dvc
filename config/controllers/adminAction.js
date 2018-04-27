@@ -45,120 +45,120 @@ module.exports.getAllClass = function (req, res) {
     console.log("<--getAllClass");
 };
 
-// module.exports.uploadAttendance = function (req, res) {
-//     console.log("uploadAttendance-->");
-//     var responseData;
-//     var marker; /* ### Note: marker is used for identify the status of update query ###*/
-//     console.log("req.files: " + req.files.img);
-//     if (!req.files)
-//         return res.status(400).send('No files were uploaded.');
+module.exports.uploadAttendance = function (req, res) {
+    console.log("uploadAttendance-->");
+    var responseData;
+    var marker; /* ### Note: marker is used for identify the status of update query ###*/
+    console.log("req.files: " + req.files.img);
+    if (!req.files)
+        return res.status(400).send('No files were uploaded.');
 
-//     var studentDataFile = req.files.img;
-//     console.log("studentDataFile: " + studentDataFile);
+    var studentDataFile = req.files.img;
+    console.log("studentDataFile: " + studentDataFile);
 
-//     var parser = csv.fromString(studentDataFile.data.toString(), {
-//         headers: true,
-//         ignoreEmpty: true
-//     }).on("data", function (data) {
-//         console.log("data: " + JSON.stringify(data));
+    var parser = csv.fromString(studentDataFile.data.toString(), {
+        headers: true,
+        ignoreEmpty: true
+    }).on("data", function (data) {
+        console.log("data: " + JSON.stringify(data));
 
-//         // parser.pause();
-//         var studId = {
-//             "studId": data.studentID
-//         }
-//         console.log("studId: " + JSON.stringify(studId));
+        // parser.pause();
+        var studId = {
+            "studId": data.studentID
+        }
+        console.log("studId: " + JSON.stringify(studId));
 
-//         var dateString = data.date;
-//         var parts = dateString.split(' ');
-//         console.log("parts: " + JSON.stringify(parts));
-//         var AttYear = parts[2];
-//         var AttMonth = parts[1];
-//         var AttDate = parts[0];
+        var dateString = data.date;
+        var parts = dateString.split(' ');
+        console.log("parts: " + JSON.stringify(parts));
+        var AttYear = parts[2];
+        var AttMonth = parts[1];
+        var AttDate = parts[0];
 
-//         // var attendance = [{
-//         //     AttYear: [{
-//         //         AttMonth: [{ AttDate: data.attendance }]
-//         //     }]
-//         // }]
-//         var dt = {};
-//         var dm = {};
-//         var dy = {};
-//         dt[AttDate] = data.attendance;
-//         dm[AttMonth] = [dt];
-//         dy[AttYear] = [dm];
-//         var attendance = [dy];
+        // var attendance = [{
+        //     AttYear: [{
+        //         AttMonth: [{ AttDate: data.attendance }]
+        //     }]
+        // }]
+        var dt = {};
+        var dm = {};
+        var dy = {};
+        dt[AttDate] = data.attendance;
+        dm[AttMonth] = [dt];
+        dy[AttYear] = [dm];
+        var attendance = [dy];
 
-//         console.log("attendance: " + JSON.stringify(attendance));
-//         // module.exports.updateData = function (data, callback) {
-//         stud.find({ "studId": data.studentID, "attendance": { $exists: true } }).toArray(function (err, data) {
-//             console.log("query started: " + JSON.stringify(data));
-//             console.log("query data.length: " + data.length);
-//             if (err) {
-//                 console.log("err");
-//                 responseData = {
-//                     status: false,
-//                     message: "Failed to upload attendance data",
-//                     data: data
-//                 };
-//                 res.status(400).send(responseData);
-//             }
-//             else {
-//                 console.log("no err");
-//                 if (data.length == 0) {
-//                     console.log("0 length");
-//                     stud.update({ "studId": data.studentID }, { $set: { "attendance": attendance } }), function (err, updatedData) {
+        console.log("attendance: " + JSON.stringify(attendance));
+        // module.exports.updateData = function (data, callback) {
+        stud.find({ "studId": data.studentID, "attendance": { $exists: true } }).toArray(function (err, data) {
+            console.log("query started: " + JSON.stringify(data));
+            console.log("query data.length: " + data.length);
+            if (err) {
+                console.log("err");
+                responseData = {
+                    status: false,
+                    message: "Failed to upload attendance data",
+                    data: data
+                };
+                res.status(400).send(responseData);
+            }
+            else {
+                console.log("no err");
+                if (data.length == 0) {
+                    console.log("0 length");
+                    stud.update({ "studId": data.studentID }, { $set: { "attendance": attendance } }), function (err, updatedData) {
 
-//                         console.log("updated data: " + JSON.stringify(updatedData));
-//                         if (err) {
-//                             console.log("err");
-//                             marker = false;
-//                             process.nextTick(callback);
-//                         }
-//                         else {
-//                             marker = true;
-//                             process.nextTick(callback);
-//                         }
-//                     }
-//                 }
-//                 else {
-//                     console.log("more than 0 length");
-//                     var att = {};
-//                     var dt = {};
-//                     var dm = {};
-//                     dt[AttDate] = data.attendance;
-//                     dm[AttMonth] = [dt];
+                        console.log("updated data: " + JSON.stringify(updatedData));
+                        if (err) {
+                            console.log("err");
+                            marker = false;
+                            process.nextTick(callback);
+                        }
+                        else {
+                            marker = true;
+                            process.nextTick(callback);
+                        }
+                    }
+                }
+                else {
+                    console.log("more than 0 length");
+                    var att = {};
+                    var dt = {};
+                    var dm = {};
+                    dt[AttDate] = data.attendance;
+                    dm[AttMonth] = [dt];
 
-//                     console.log("dm: " + JSON.stringify(dm));
+                    console.log("dm: " + JSON.stringify(dm));
 
-//                     stud.find({ "studId": data.studentID, "18": { $exists: true } }).toArray(function (err, attData) {
-//                         console.log("2nd query started: " + JSON.stringify(attData));
-//                         console.log("2nd query data.length: " + attData.length);
-//                     })
-//                 }
-//             }
-//         })
-//         // }
-//     })
-//         .on("end", function () {
-//             console.log("end marker: " + marker);
-//             if (marker == false) {
-//                 responseData = {
-//                     status: false,
-//                     message: "Failed to get Data"
-//                 };
-//                 res.status(400).send(responseData);
-//             }
-//             else if (marker == true) {
-//                 responseData = {
-//                     status: true,
-//                     message: "Successfull updated data"
-//                 };
+                    stud.find({ "studId": data.studentID, "18": { $exists: true } }).toArray(function (err, attData) {
+                        console.log("2nd query started: " + JSON.stringify(attData));
+                        console.log("2nd query data.length: " + attData.length);
+                    })
+                }
+            }
+        })
+        // }
+    })
+        .on("end", function () {
+            console.log("end marker: " + marker);
+            if (marker == false) {
+                responseData = {
+                    status: false,
+                    message: "Failed to get Data"
+                };
+                res.status(400).send(responseData);
+            }
+            else if (marker == true) {
+                responseData = {
+                    status: true,
+                    message: "Successfull updated data"
+                };
 
-//                 res.status(200).send(responseData);
-//             }
-//         });
-//     console.log("<--uploadAttendance");
-// };
+                res.status(200).send(responseData);
+            }
+        });
+    console.log("<--uploadAttendance");
+};
 
 module.exports.uploadMark = function (req, res) {
     console.log("attendanceMarkSave-->");

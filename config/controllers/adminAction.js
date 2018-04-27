@@ -1,3 +1,5 @@
+import { Z_SYNC_FLUSH } from "zlib";
+
 var db = require("../dbConfig.js").getDb();
 var user = db.collection("user"); /* ### Teacher collection  ### */
 var stud = db.collection("student"); /* ### student collection  ### */
@@ -60,54 +62,75 @@ module.exports.uploadAttendance = function (req, res) {
         ignoreEmpty: true
     }).on("data", function (data) {
         console.log("data: " + JSON.stringify(data));
-      
-        //parser.pause();
+
+        parser.pause();
         var studId = {
             "studId": data.studentID
         }
-        console.log("studId: "+JSON.stringify(studId));
-        
+        console.log("studId: " + JSON.stringify(studId));
+
         var dateString = data.date;
         var parts = dateString.split(' ');
         console.log("parts: " + JSON.stringify(parts));
         var AttYear = parts[2];
         var AttMonth = parts[1];
         var AttDate = parts[0];
-        
+
         // var attendance = [{
         //     AttYear: [{
         //         AttMonth: [{ AttDate: data.attendance }]
         //     }]
         // }]
         var dt = {};
-        
-        var dm ={};
-     var dy = {};
-        dt[AttDate]=data.attendance;
-        dm[AttMonth]=[dt];
-        dy[AttYear]=[dm];
+        var dm = {};
+        var dy = {};
+        dt[AttDate] = data.attendance;
+        dm[AttMonth] = [dt];
+        dy[AttYear] = [dm];
         var attendance = [dy];
 
-       
         console.log("attendance: " + JSON.stringify(attendance));
+        module.exports.updateData = function (data, callback) {
+            stud.find({ "studId": data.studentID, "attendance": { $exists: false } }).toArray(function (err, data) {
+                console.log("query started: " + JSON.stringify(data));
+                console.log("query data.length: " + data.length);
+                if (err) {
+                    console.log("err");
+                    responseData = {
+                        status: false,
+                        message: "Failed to upload attendance data",
+                        data: data
+                    };
+                    res.status(400).send(responseData);
+                }
+                else {
+                    if (data.length == 0) {
+                        stud.findOneAndUpdate(studId, { $set: { "attendance": attendance } }), function (err, updatedData) {
 
-        stud.find({"studId": data.studentID,"attendance": { $exists: true } }).toArray(function (err, data) {
-console.log("query started: "+JSON.stringify(data));
-            if (err) {
-                console.log("err");
-            }
-            else {
-                parser.pause();
-                // stud.findOneAndUpdate(studId, { $set: { "attendance": attendance } }), function (err, updatedData) {
+                            console.log("updated data: " + JSON.stringify(updatedData));
+                            if (err) {
+                                console.log("err");
+                                marker = false;
+                                process.nextTick(callback);
+                            }
+                            else {
+                                marker = true;
+                                process.nextTick(callback);
+                            }
+                        }
+                    }
+                    else{
+                        var att = {};
+                        var y = att[AttYear];
+                        var x = [y];
+                        console.log("x: "+x);
 
-                //     console.log("updated data: " + JSON.stringify(updatedData));
-                //     parser.pause();
-
-                // }
-            }
-
-
-        })
+                        // stud.find({ "studId": data.studentID, attendance[AttYear]:{ $exists: false } }).toArray(function (err, data) {
+                        // }))
+                    }
+                }
+            })
+        }
     })
         .on("end", function () {
             console.log("end marker: " + marker);

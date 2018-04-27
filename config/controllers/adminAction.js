@@ -86,8 +86,8 @@ module.exports.uploadAttendance = function (req, res) {
         var dy = {};
         dt[AttDate] = data.attendance;
         dm[AttMonth] = [dt];
-        dy[AttYear] = [dm];
-        var attendance = [dy];
+       
+        var attendance = [dm];
 
         console.log("attendance: " + JSON.stringify(attendance));
         // module.exports.updateData = function (data, callback) {
@@ -130,8 +130,11 @@ module.exports.uploadAttendance = function (req, res) {
                     ddm[AttMonth] = ddt;
 
                     console.log("dm: " + JSON.stringify(ddm));
+                    var x = {
+                        "18":[AttMonth]
+                    }
                     parser.pause();
-                    stud.find({ "studId": data.studentID, "18.+\AttMonth\+": { $exists: true } }).toArray(function (err, attData) {
+                    stud.find({ "studId": data.studentID, "18.[+\AttMonth\+]": { $exists: true } }).toArray(function (err, attData) {
                         console.log("2nd query started: " + JSON.stringify(attData));
                         console.log("2nd query data.length: " + attData.length);
                     })

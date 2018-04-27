@@ -236,7 +236,7 @@ console.log("studentDataFile: " + studentDataFile);
         ignoreEmpty: true
     }).on("data", function (data) {
         console.log("data: " + JSON.stringify(data));
-        var csData = [{ "class": data.Class, "section": Section }];
+        var csData = [{ "class": data.Class, "section": data.Section }];
         var userData = {
             schoolName: "ABC",
             studId: data.StudentID,

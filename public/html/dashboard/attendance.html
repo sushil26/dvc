@@ -23,10 +23,10 @@
                                                     <option value="" disabled selected>Upload Type</option>
                                                 </select>
                                                 <label class="col-lg-4">Class</label>
-                                                <select class="btn btn-danger col-lg-4" placeholder="select" ng-model="up.csSelect" ng-change="getStudListForCS(up.csSelect)"
+                                                <!-- <select class="btn btn-danger col-lg-4" placeholder="select" ng-model="up.csSelect" ng-change="getStudListForCS(up.csSelect)"
                                                     ng-options="cs as cs.class + '-' + cs.section for cs in csList">
                                                     <option value="" disabled selected>Class</option>
-                                                </select>
+                                                </select> -->
 
                                                 <!-- <select class="btn col-lg-3" placeholder="select" ng-model="up.studSelect" ng-options="cs as cs.name + '-' + cs.studId for cs in studList">
                                                     <option value="" disabled selected>Student</option>
@@ -50,7 +50,8 @@
                                                     accept="csv" ng-required="true">
                                                 <img ng-show="image.src" ng-src="{{image.src}}" style="width: 50%;margin-top: 2%;" />
                                                 
-                                                <button type="submit" class="btn btn-primary col-lg-3" ng-click="uploadFile(up.uploadDoc,up.uploadType, up.ttSelect)">Upload</button>
+                                                <button ng-if="up.uploadType!='Student Details'" type="submit" class="btn btn-primary col-lg-3" ng-click="uploadFile(up.uploadDoc,up.uploadType, up.ttSelect)">Upload</button>
+                                                <button  ng-if="up.uploadType=='Student Details'" type="submit" class="btn btn-primary col-lg-3" ng-click="uploadFile(up.uploadDoc,up.uploadType,"zero")">Upload</button>"
                                             </div>
                                             <hr>
                                             <button type="submit" class="btn btn-primary" ng-click="addUploadReports()">Add</button>

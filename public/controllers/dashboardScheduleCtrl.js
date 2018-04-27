@@ -7,7 +7,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
   var ownerEvents = []; /* ### Note: logged in person all events ### */
   var remoteEvent = []; /* ### Note:receiver all events ### */
   $scope.timeForPeriods = $rootScope.TimeTable_timing;
-
+  $scope.userData = sessionAuthFactory.getAccess();
   $scope.eventGet = function () {
     console.log("eventGet-->");
     var id = $scope.userData.id

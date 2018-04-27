@@ -137,10 +137,15 @@ var app = angular.module('vcApp', ['ui.router', 'mwl.calendar', 'ui.bootstrap', 
         templateUrl: '/html/dashboard/adminCreate.html',
         controller: 'adminCreateCtl'
       })
+      .state('dashboard.reportsUpload', {
+        url: reportsUpload(),
+        templateUrl: '/html/dashboard/reportsUpload.html',
+        controller: 'reportsUploadCtl'
+      })
       .state('dashboard.attendance', {
-        url: attendance(),
-        templateUrl: '/html/dashboard/attendance.html',
-        controller: 'attendanceCtl'
+        url: attendanceView(),
+        templateUrl: '/html/dashboard/attendanceView.html',
+        controller: 'attendanceViewCtl'
       })
       .state('dashboard.contact', {
         url: contact(),
@@ -195,8 +200,11 @@ function dashboardConference(){
 function adminCreate(){
   return '/adminCreate';
 }
-function attendance(){
-  return '/attendance';
+function reportsUpload(){
+  return '/reportsUpload';
+}
+function attendanceView(){
+  return '/attendanceView';
 }
 
 

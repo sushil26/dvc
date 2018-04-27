@@ -106,7 +106,7 @@ module.exports.uploadAttendance = function (req, res) {
                 console.log("no err");
                 if (data.length == 0) {
                     console.log("0 length");
-                    stud.update({ "studId": data.studentID}, { $set: { "attendance": attendance } }), function (err, updatedData) {
+                    stud.update({ "studId": data.studentID }, { $set: { "attendance": attendance } }), function (err, updatedData) {
 
                         console.log("updated data: " + JSON.stringify(updatedData));
                         if (err) {
@@ -122,9 +122,10 @@ module.exports.uploadAttendance = function (req, res) {
                 }
                 else {
                     console.log("more than 0 length");
-                   
+                    var attribute = {};
+                    console.log("attribute[attYear]: " + attribute[attYear]);
 
-                    stud.find({ "studId": data.studentID, [AttYear]:{ $exists: true } }).toArray(function (err, attData) {
+                    stud.find({ "studId": data.studentID, [AttYear]: { $exists: true } }).toArray(function (err, attData) {
                         console.log("2nd query started: " + JSON.stringify(attData));
                         console.log("2nd query data.length: " + attData.length);
                     })
@@ -220,6 +221,74 @@ module.exports.uploadMark = function (req, res) {
             }
         });
     console.log("<--attendanceMarkSave");
+};
+
+module.exports.uploadStudentMaster = function (req, res) {
+    console.log("uploadStudentMaster-->");
+    var responseData;
+    var parser = csv.fromString(studentDataFile.data.toString(), {
+        headers: true,
+        ignoreEmpty: true
+    }).on("data", function (data) {
+        console.log("data: " + JSON.stringify(data));
+        var csData = [{ "class": data.Class, "section": Section }];
+        var userData = {
+            schoolName: "ABC",
+            studId: data.StudentID,
+            studName: data.StudentName,
+            parentName: data.FatherName,
+            parentEmail: data.FatherEmailId,
+            mobileNum: data.FatherPhoneNumber,
+            MotherName: data.MotherName,
+            MotherEmail: data.MotherEmailid,
+            MotherNum: data.MotherPhoneNumber,
+            cs: csData,
+            pswd: "abc",
+            status: "inactive",
+            loginType: "studParent"
+        };
+
+        console.log("userData: " + JSON.stringify(userData));
+        // stud.insertOne(userData, function (err, data) {
+        //     console.log("data: " + JSON.stringify(data));
+        //     if (err) {
+        //         responseData = {
+        //             status: false,
+        //             message: "Failed to Insert",
+        //             data: data
+        //         };
+        //         res.status(400).send(responseData);
+        //     } else {
+        //         responseData = {
+        //             status: true,
+        //             errorCode: 200,
+        //             message: "Insert Successfull",
+        //             data: userData
+        //         };
+        //         res.status(200).send(responseData);
+        //     }
+        // });
+    })
+        .on("end", function () {
+            console.log("end marker: " + marker);
+            if (marker == false) {
+                responseData = {
+                    status: false,
+                    message: "Failed to get Data"
+                };
+                res.status(400).send(responseData);
+            }
+            else if (marker == true) {
+                responseData = {
+                    status: true,
+                    message: "Successfull updated data"
+                };
+
+                res.status(200).send(responseData);
+            }
+        });
+
+    console.log("<--uploadStudentMaster");
 };
 
 

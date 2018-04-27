@@ -1,7 +1,7 @@
 app.controller('attendanceCtl', function ($scope, $window, httpFactory, sessionAuthFactory) {
   console.log("attendanceCtl==>");
   $scope.file = {}; /* ### Note: Upload file declaration ### */
-  $scope.uploadTypes = ["Attendance", "Payment", "Mark Report"];
+  $scope.uploadTypes = ["Student Details","Attendance", "Payment", "Mark Report"];
   $scope.testTypes = ["AT", "UT", "MT", "TT", "AT"];
 
   $scope.sma = []; /* ### Note:sma-Subject Mark Attendant  */
@@ -80,8 +80,11 @@ app.controller('attendanceCtl', function ($scope, $window, httpFactory, sessionA
     else if (uploadType == "Attendance") {
       var api = "https://norecruits.com/vc/uploadAttendance";
     }
-    else {
+    else if(uploadType=="Payment"){
       var api = "https://norecruits.com/vc/uploadPayment";
+    }
+    else if(uploadType=="Student Details"){
+      var api = "https://norecruits.com/vc/uploadStudentMaster";
     }
     console.log("api: " + api);
     httpFactory.csvUpload(obj, api).then(function (data) {

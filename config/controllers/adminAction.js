@@ -121,8 +121,10 @@ module.exports.uploadAttendance = function (req, res) {
                     }
                 }
                 else {
+                    console.log("more than 0 length");
                     var att = {};
                     var y = att[AttYear];
+                    console.log("y: " + y);
                     var x = [y];
                     console.log("x: " + x);
 

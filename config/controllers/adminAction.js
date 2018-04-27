@@ -64,10 +64,7 @@ module.exports.uploadAttendance = function (req, res) {
         console.log("data: " + JSON.stringify(data));
 
         // parser.pause();
-        var studId = {
-            "studId": data.studentID
-        }
-        console.log("studId: " + JSON.stringify(studId));
+      
 
         var dateString = data.date;
         var parts = dateString.split(' ');
@@ -84,6 +81,11 @@ module.exports.uploadAttendance = function (req, res) {
         //         AttMonth: [{ AttDate: data.attendance }]
         //     }]
         // }]
+        var studId = {
+            "studId": data.studentID,
+            "attendance":{"month":AttMonth}
+        }
+        console.log("studId: " + JSON.stringify(studId));
         var month = {
             "attendance":{"month":AttMonth}
         }

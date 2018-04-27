@@ -49,7 +49,7 @@ module.exports.uploadAttendance = function (req, res) {
     console.log("uploadAttendance-->");
     var responseData;
     var marker; /* ### Note: marker is used for identify the status of update query ###*/
-//    var month ={ "month":"Jan", "id":1}, {"month":"Feb", "id":1}, "Mar": 3, "Apr": 4, "May": 5, "Jun": 6, "Jul": 7, "Aug": 8, "Sep": 9, "Oct": 10, "Nov": 11, "Dec": 12 }
+    //    var month ={ "month":"Jan", "id":1}, {"month":"Feb", "id":1}, "Mar": 3, "Apr": 4, "May": 5, "Jun": 6, "Jul": 7, "Aug": 8, "Sep": 9, "Oct": 10, "Nov": 11, "Dec": 12 }
     console.log("req.files: " + req.files.img);
     if (!req.files)
         return res.status(400).send('No files were uploaded.');
@@ -64,7 +64,6 @@ module.exports.uploadAttendance = function (req, res) {
         console.log("data: " + JSON.stringify(data));
 
         // parser.pause();
-      
 
         var dateString = data.date;
         var parts = dateString.split(' ');
@@ -75,85 +74,32 @@ module.exports.uploadAttendance = function (req, res) {
         var attndnce = data.attendance;
 
         var obj = { "date": AttDate, "status": attndnce };
-        console.log("obj: "+JSON.stringify(obj));
-        // var attendance = [{
-        //     AttYear: [{
-        //         AttMonth: [{ AttDate: data.attendance }]
-        //     }]
-        // }]
+        console.log("obj: " + JSON.stringify(obj));
+       
         var studId = {
-            "studId": data.studentID,
-            "attendance.month":AttMonth
+            "studId": data.StudentID,
+            "attendance.month": AttMonth
         }
         console.log("studId: " + JSON.stringify(studId));
         var month = {
-            "attendance.month":AttMonth
+            "attendance.month": AttMonth
         }
 
-        // var dt = {};
-        // var dm = {};
-        // var dy = {};
-        // dt[AttDate] = data.attendance;
-        // dm[AttMonth] = [dt];
-
-        // var attendance = [dm];
-
-        // console.log("attendance: " + JSON.stringify(attendance));
-        // module.exports.updateData = function (data, callback) {
-            // var attendance={"month":AttMonth};
-        stud.findOneAndUpdate({"studId": data.studentID, "attendance.month":AttMonth},{$push:{"attendance.$.dateAttendance":{ "date": AttDate, "status": attndnce }}},function (err, data) {
-            console.log("query started: " + JSON.stringify(data));
-            console.log("query data.length: " + data.length);
-            if (err) {
-                marker == true;
-                // console.log("err");
-                // responseData = {
-                //     status: false,
-                //     message: "Failed to upload attendance data",
-                //     data: data
-                // };
-                // res.status(400).send(responseData);
-            }
-            else {
-                marker == true;
-                // if (data.length == 0) {
-                //     console.log("0 length");
-                    // stud.update({ "studId": data.studentID }, { $set: { "attendance": attendance } }), function (err, updatedData) {
-
-                    //     console.log("updated data: " + JSON.stringify(updatedData));
-                    //     if (err) {
-                    //         console.log("err");
-                    //         marker = false;
-                    //         process.nextTick(callback);
-                    //     }
-                    //     else {
-                    //         marker = true;
-                    //         process.nextTick(callback);
-                    //     }
-                    // }
-                // }
-                // else {
-                    
-                    // console.log("more than 0 length");
-                    // var att = {};
-                    // var ddt = {};
-                    // var ddm = {};
-                    // ddt[AttDate] = attndnce;
-                    // ddm[AttMonth] = ddt;
-
-                    // console.log("dm: " + JSON.stringify(ddm));
-                    // var x = {
-                    //     "18": [AttMonth]
-                    // }
-                    // parser.pause();
-                    // stud.find({ "studId": data.studentID, "18.[+\AttMonth\+]": { $exists: true } }).toArray(function (err, attData) {
-                    //     console.log("2nd query started: " + JSON.stringify(attData));
-                    //     console.log("2nd query data.length: " + attData.length);
-                    // })
-                // }
-            }
-        })
-        // }
+        stud.findOneAndUpdate(
+            { "studId": data.StudentID, "attendance.month": AttMonth },
+            { $push: { "attendance.$.dateAttendance": { "date": AttDate, "status": attndnce } } }, function (err, data) {
+                console.log("query started: " + JSON.stringify(data));
+                console.log("query data.length: " + data.length);
+                if (err) {
+                    marker == true;
+                   
+                }
+                else {
+                    marker == true;
+                   
+                }
+            })
+       
     })
         .on("end", function () {
             console.log("end marker: " + marker);
@@ -275,18 +221,18 @@ module.exports.uploadStudentMaster = function (req, res) {
             status: "inactive",
             loginType: "studParent",
             attendance: [
-                { "month":"Jan","dateAttendance" :[] },
-                { "month":"Feb","dateAttendance" : [] },
-                {  "month":"Mar","dateAttendance" : []},
-                {  "month":"Apr","dateAttendance" : []},
-                {  "month":"May","dateAttendance" : []},
-                {  "month":"Jun","dateAttendance" : []},
-                {  "month":"Jul","dateAttendance" : []},
-                {  "month":"Aug","dateAttendance" : []},
-                {  "month":"Sep","dateAttendance" : []},
-                {  "month":"Oct","dateAttendance" : []},
-                {  "month":"Nov","dateAttendance" : []},
-                {  "month":"Dec","dateAttendance" : []}
+                { "month": "Jan", "dateAttendance": [] },
+                { "month": "Feb", "dateAttendance": [] },
+                { "month": "Mar", "dateAttendance": [] },
+                { "month": "Apr", "dateAttendance": [] },
+                { "month": "May", "dateAttendance": [] },
+                { "month": "Jun", "dateAttendance": [] },
+                { "month": "Jul", "dateAttendance": [] },
+                { "month": "Aug", "dateAttendance": [] },
+                { "month": "Sep", "dateAttendance": [] },
+                { "month": "Oct", "dateAttendance": [] },
+                { "month": "Nov", "dateAttendance": [] },
+                { "month": "Dec", "dateAttendance": [] }
             ]
         };
 

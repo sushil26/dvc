@@ -65,7 +65,7 @@ module.exports.uploadAttendance = function (req, res) {
 
         // parser.pause();
 
-        var dateString = data.date;
+        var dateString = data.Date;
         var parts = dateString.split(' ');
         console.log("parts: " + JSON.stringify(parts));
         var AttYear = parts[2];

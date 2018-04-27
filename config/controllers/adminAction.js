@@ -83,11 +83,11 @@ module.exports.uploadAttendance = function (req, res) {
         // }]
         var studId = {
             "studId": data.studentID,
-            "attendance":{"month":AttMonth}
+            "attendance.month":AttMonth
         }
         console.log("studId: " + JSON.stringify(studId));
         var month = {
-            "attendance":{"month":AttMonth}
+            "attendance.month":AttMonth
         }
 
         // var dt = {};

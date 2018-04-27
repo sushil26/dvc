@@ -90,45 +90,47 @@ module.exports.uploadAttendance = function (req, res) {
 
         console.log("attendance: " + JSON.stringify(attendance));
         // module.exports.updateData = function (data, callback) {
-            stud.find({ "studId": data.studentID, "attendance": { $exists: false } }).toArray(function (err, data) {
-                console.log("query started: " + JSON.stringify(data));
-                console.log("query data.length: " + data.length);
-                if (err) {
-                    console.log("err");
-                    responseData = {
-                        status: false,
-                        message: "Failed to upload attendance data",
-                        data: data
-                    };
-                    res.status(400).send(responseData);
-                }
-                else {
-                    if (data.length == 0) {
-                        stud.findOneAndUpdate(studId, { $set: { "attendance": attendance } }), function (err, updatedData) {
+        stud.find({ "studId": data.studentID, "attendance": { $exists: false } }).toArray(function (err, data) {
+            console.log("query started: " + JSON.stringify(data));
+            console.log("query data.length: " + data.length);
+            if (err) {
+                console.log("err");
+                responseData = {
+                    status: false,
+                    message: "Failed to upload attendance data",
+                    data: data
+                };
+                res.status(400).send(responseData);
+            }
+            else {
+                console.log("no err");
+                if (data.length == 0) {
+                    console.log("0 length");
+                    stud.findOneAndUpdate(studId, { $set: { "attendance": attendance } }), function (err, updatedData) {
 
-                            console.log("updated data: " + JSON.stringify(updatedData));
-                            if (err) {
-                                console.log("err");
-                                marker = false;
-                                process.nextTick(callback);
-                            }
-                            else {
-                                marker = true;
-                                process.nextTick(callback);
-                            }
+                        console.log("updated data: " + JSON.stringify(updatedData));
+                        if (err) {
+                            console.log("err");
+                            marker = false;
+                            process.nextTick(callback);
+                        }
+                        else {
+                            marker = true;
+                            process.nextTick(callback);
                         }
                     }
-                    else{
-                        var att = {};
-                        var y = att[AttYear];
-                        var x = [y];
-                        console.log("x: "+x);
-
-                        // stud.find({ "studId": data.studentID, attendance[AttYear]:{ $exists: false } }).toArray(function (err, data) {
-                        // }))
-                    }
                 }
-            })
+                else {
+                    var att = {};
+                    var y = att[AttYear];
+                    var x = [y];
+                    console.log("x: " + x);
+
+                    // stud.find({ "studId": data.studentID, attendance[AttYear]:{ $exists: false } }).toArray(function (err, data) {
+                    // }))
+                }
+            }
+        })
         // }
     })
         .on("end", function () {

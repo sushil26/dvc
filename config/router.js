@@ -25,7 +25,7 @@ module.exports = function (app) {
     app.get('/vc/getLoginData/:id',user.getLoginData);
      app.get('/vc/getAllClass', adminAction.getAllClass);
     // app.post('/vc/uploadStudentMaster', adminAction.uploadStudentMaster);
-     app.post('/vc/uploadMark', adminAction.uploadMark);
+    //  app.post('/vc/uploadMark', adminAction.uploadMark);
     //  app.post('/vc/uploadAttendance', adminAction.uploadAttendance);
      app.post('/vc/uploadPayment', adminAction.uploadPayment);
     

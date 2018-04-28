@@ -93,12 +93,19 @@ app.factory('httpFactory', function($http, $q, $rootScope) {
             console.log("obj.file: "+obj.file);
             
             fd.append('img', obj.file);
-            fd.append('uploadType', obj.uploadType);
-            fd.append('reportType', obj.reportType);
-            if(obj.uploadType=="Attendance"){
-                fd.append('month', obj.month);
+            // fd.append('uploadType', obj.uploadType);
+            // fd.append('reportType', obj.reportType);
+            
+            var objJson = {
+                "fd":fd,
+                "uploadType": obj.uploadType,
+                "reportType": obj.reportType,
+                "month": obj.month
             }
-            console.log("fd: "+JSON.stringify(fd));
+            if(obj.uploadType=="Attendance"){
+                objJson.month= obj.month;
+            }
+            console.log("objJson: "+JSON.stringify(objJson));
             $http.post(uploadUrl, fd, {
                 transformRequest: angular.identity,
                 headers: { 'Content-Type': undefined }

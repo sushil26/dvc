@@ -61,7 +61,13 @@ module.exports.uploadAttendance = function (req, res) {
     }).on("data", function (data) {
         console.log("data: " + JSON.stringify(data));
         // parser.pause();
-        var dateString = data.Date;
+        
+        // var month = {
+        //     "attendance.month": AttMonth
+        // }
+        /* ### Start update daily attendance status  ### */
+        if (req.reportType == "Daily") {
+            var dateString = data.Date;
         var parts = dateString.split(' ');
         console.log("parts: " + JSON.stringify(parts));
         var AttYear = parts[2];
@@ -82,11 +88,6 @@ module.exports.uploadAttendance = function (req, res) {
             "attendance.month": AttMonth
         }
         console.log("studIdForUpdateQry: " + JSON.stringify(studIdForUpdateQry));
-        // var month = {
-        //     "attendance.month": AttMonth
-        // }
-        /* ### Start update daily attendance status  ### */
-        if (req.reportType == "Daily") {
             stud.find(studIdForFindQry).toArray(function (err, findData) {
                 console.log("1st query findData: " + JSON.stringify(findData));
                 console.log("1st query findData.length: " + findData.length);

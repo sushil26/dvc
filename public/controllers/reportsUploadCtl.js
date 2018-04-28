@@ -79,8 +79,8 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
       var api = "https://norecruits.com/vc/uploadMark";
     }
     else if (uploadType == "Attendance") {
-      ;
-      var api = "https://norecruits.com/vc/uploadAttendance/"+reportType+"/"+list;
+      var month = list;
+      var api = "https://norecruits.com/vc/uploadAttendance/"+reportType+"/"+month;
     }
     else if(uploadType=="Payment"){
       var api = "https://norecruits.com/vc/uploadPayment";

@@ -60,7 +60,7 @@ module.exports.uploadAttendance = function (req, res) {
         ignoreEmpty: true
     }).on("data", function (data) {
         console.log("data: " + JSON.stringify(data));
-        console.log("req.reportType: "+req.reportType);
+        console.log("req.reportType: "+req.params.reportType);
         // parser.pause();
         
         // var month = {

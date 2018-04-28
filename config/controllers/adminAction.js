@@ -49,7 +49,7 @@ module.exports.uploadAttendance = function (req, res) {
     console.log("uploadAttendance-->");
     var responseData;
     var marker; /* ### Note: marker is used for identify the status of update query ###*/
-    var monthAtt = [];
+    var monthAtt = []; /* ### Note: get all attendance of the month ###*/
 
     console.log("req.body.files: " + req.files.img);
     if (!req.files)
@@ -136,13 +136,10 @@ module.exports.uploadAttendance = function (req, res) {
 
             if (req.params.month == "Jan") {
                 for (var x = 1; x <= 31; x++) {
-
-                    dateAtt.push({ "date": x, "status": data[x] });
-                    console.log("dateAtt: " + JSON.stringify(dateAtt));
-
-
+                    monthAtt.push({ "date": x, "status": data[x] });
+                  //  console.log("monthAtt: " + JSON.stringify(monthAtt));
                 }
-                stud.update(studIdForFindQry, { $push: { "attendance.$.dateAttendance": dateAtt } }), function (err, findData) {
+                stud.update(studIdForFindQry, { $push: { "attendance.$.dateAttendance": monthAtt } }), function (err, findData) {
                     console.log("update month started: " + JSON.stringify(data));
 
                     if (err) {

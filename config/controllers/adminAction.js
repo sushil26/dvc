@@ -126,7 +126,9 @@ module.exports.uploadAttendance = function (req, res) {
         /* ### Start update monthly attendance status  ### */
         else {
             console.log("monthly started-->");
+            console.log("req.params.month: "+req.params.month);
             var dateAtt = [];
+           
             if(req.params.month=="Jan"){
                 for(var x=1;x<=31;x++){
                     

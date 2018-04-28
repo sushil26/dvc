@@ -67,7 +67,7 @@ module.exports.uploadAttendance = function (req, res) {
         //     "attendance.month": AttMonth
         // }
         /* ### Start update daily attendance status  ### */
-        if (req.reportType == "Daily") {
+        if (req.params.reportType == "Daily") {
             console.log("daily started-->");
             var dateString = data.Date;
         var parts = dateString.split(' ');
@@ -127,7 +127,7 @@ module.exports.uploadAttendance = function (req, res) {
         else {
             console.log("monthly started-->");
             var dateAtt = [];
-            if(req.month=="Jan"){
+            if(req.params.month=="Jan"){
                 for(var x=1;x<=31;x++){
                     
                     dateAtt.push({ "date": x, "status": data[x1] });

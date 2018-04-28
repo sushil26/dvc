@@ -71,8 +71,7 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
     console.log("file: " + file);
     var obj = {
       "file": file,
-      "uploadType": uploadType,
-      "reportType": reportType
+    
     }
     console.log("uploadType: " + uploadType);
     console.log("reportType: " + reportType);
@@ -80,8 +79,8 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
       var api = "https://norecruits.com/vc/uploadMark";
     }
     else if (uploadType == "Attendance") {
-      obj.month = list;
-      var api = "https://norecruits.com/vc/uploadAttendance";
+      ;
+      var api = "https://norecruits.com/vc/uploadAttendance/"+reportType+"/"+list;
     }
     else if(uploadType=="Payment"){
       var api = "https://norecruits.com/vc/uploadPayment";

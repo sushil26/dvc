@@ -137,22 +137,41 @@ module.exports.uploadAttendance = function (req, res) {
             if (req.params.month == "Jan") {
                 for (var x = 1; x <= 31; x++) {
                     monthAtt.push({ "date": x, "status": data[x] });
-                  //  console.log("monthAtt: " + JSON.stringify(monthAtt));
+                    //  console.log("monthAtt: " + JSON.stringify(monthAtt));
                 }
-                stud.update(studIdForFindQry, { $push: { "attendance.$.dateAttendance": monthAtt } }), function (err, findData) {
-                    console.log("update month started: " + JSON.stringify(data));
-
+                stud.find({ "studId": data.StudentID }, { $where: "attendance.$.dateAttendance.length>1" }).toArray(function (err, findData) {
+                    console.log("1st query findData: " + JSON.stringify(findData));
+                    console.log("1st query findData.length: " + findData.length);
                     if (err) {
                         marker == true;
                     }
                     else {
-                        marker == true;
-                    }
-                }
+                        if (findData.length == 0) {
+                            stud.update(studIdForFindQry, { $push: { "attendance.$.dateAttendance": monthAtt } }), function (err, findData) {
+                                console.log("update month started: " + JSON.stringify(data));
 
-            }
+                                if (err) {
+                                    marker == true;
+                                }
+                                else {
+                                    marker == true;
+                                }
+                            }
+                        }
+                        else {
+                            if (marker == false) {
+                                responseData = {
+                                    status: false,
+                                    message: "Sorry! you already updated for this month"
+                                };
+                                res.status(400).send(responseData);
+                            }
+                        }
+                    }
+            })
         }
         /* ### End update monthly attendance status  ### */
+    }
     })
         .on("end", function () {
             console.log("end marker: " + marker);

@@ -36,7 +36,11 @@
                                                     <option value="" disabled selected>Type of Test</option>
                                                 </select>
                                                 <label class="col-lg-4" ng-if="up.uploadType=='Attendance'">Attendance report</label>
-                                                <select class="btn col-lg-4" ng-if="up.uploadType=='Attendance'" placeholder="select" ng-model="up.ttSelect" ng-options="tt as tt for tt in testTypes">
+                                                <select class="btn col-lg-4" ng-if="up.uploadType=='Attendance'" placeholder="select" ng-model="up.ttSelect" ng-options="at as at for at in attendanceTypes">
+                                                    <option value="" disabled selected>Attendance report</option>
+                                                </select>
+                                                <label class="col-lg-4" ng-if="up.uploadType=='Attendance'">Month</label>
+                                                <select class="btn col-lg-4" ng-if="up.uploadType=='Attendance'" placeholder="select" ng-model="up.mSelect" ng-options="ml as ml for ml in monthList">
                                                     <option value="" disabled selected>Attendance report</option>
                                                 </select>
                                                 <label class="col-lg-4" ng-if="up.uploadType=='Payment'">Payment report</label>
@@ -49,7 +53,8 @@
                                                     value="Upload" image-with-preview file-model="up.uploadDoc" ng-model="image"
                                                     accept="csv" ng-required="true">
                                                 <img ng-show="image.src" ng-src="{{image.src}}" style="width: 50%;margin-top: 2%;" />
-                                                
+                                               
+                                                <button ng-if="up.uploadType=='Attendance'" type="submit" class="btn btn-primary col-lg-3" ng-click="uploadFile(up.uploadDoc,up.uploadType,up.ttSelect,up.mSelect)">Upload</button>
                                                 <button ng-if="up.uploadType!='Student Details'" type="submit" class="btn btn-primary col-lg-3" ng-click="uploadFile(up.uploadDoc,up.uploadType, up.ttSelect)">Upload</button>
                                                 <button  ng-if="up.uploadType=='Student Details'" type="submit" class="btn btn-primary col-lg-3" ng-click="uploadFile(up.uploadDoc,up.uploadType)">Upload</button>"
                                             </div>

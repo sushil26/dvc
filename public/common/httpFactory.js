@@ -88,11 +88,17 @@ app.factory('httpFactory', function($http, $q, $rootScope) {
         csvUpload:function(obj, uploadUrl){
             var dfd = $q.defer();
             // var postUrl = $rootScope.propertyJson.BASE_URL+uploadUrl;
+            
             var fd = new FormData();
             console.log("obj.file: "+obj.file);
             
             fd.append('img', obj.file);
-            console.log("fd: "+fd);
+            fd.append('uploadType', obj.uploadType);
+            fd.append('reportType', obj.reportType);
+            if(obj.uploadType=="Attendance"){
+                fd.append('month', obj.month);
+            }
+            console.log("fd: "+JSON.stringify(fd));
             $http.post(uploadUrl, fd, {
                 transformRequest: angular.identity,
                 headers: { 'Content-Type': undefined }

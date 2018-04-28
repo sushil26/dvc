@@ -3,6 +3,8 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
   $scope.file = {}; /* ### Note: Upload file declaration ### */
   $scope.uploadTypes = ["Student Details","Attendance", "Payment", "Mark Report"];
   $scope.testTypes = ["AT", "UT", "MT", "TT", "AT"];
+  $scope.attendanceTypes = ["Monthly", "Daily"];
+  $scope.monthList = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
   $scope.sma = []; /* ### Note:sma-Subject Mark Attendant  */
   $scope.addSMA = function () {
@@ -64,7 +66,7 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
     console.log("<--attendanceMark");
   }
 
-  $scope.uploadFile = function (file, uploadType, reportType) {
+  $scope.uploadFile = function (file, uploadType, reportType, list) {
     console.log("uploadFile-->");
     console.log("file: " + file);
     var obj = {
@@ -78,6 +80,7 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
       var api = "https://norecruits.com/vc/uploadMark";
     }
     else if (uploadType == "Attendance") {
+      obj.month = list;
       var api = "https://norecruits.com/vc/uploadAttendance";
     }
     else if(uploadType=="Payment"){

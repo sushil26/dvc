@@ -53,18 +53,14 @@ module.exports.uploadAttendance = function (req, res) {
     console.log("req.files: " + req.files.img);
     if (!req.files)
         return res.status(400).send('No files were uploaded.');
-
     var studentDataFile = req.files.img;
     console.log("studentDataFile: " + studentDataFile);
-
     var parser = csv.fromString(studentDataFile.data.toString(), {
         headers: true,
         ignoreEmpty: true
     }).on("data", function (data) {
         console.log("data: " + JSON.stringify(data));
-
         // parser.pause();
-
         var dateString = data.Date;
         var parts = dateString.split(' ');
         console.log("parts: " + JSON.stringify(parts));
@@ -86,42 +82,57 @@ module.exports.uploadAttendance = function (req, res) {
             "attendance.month": AttMonth
         }
         console.log("studIdForUpdateQry: " + JSON.stringify(studIdForUpdateQry));
-        var month = {
-            "attendance.month": AttMonth
+        // var month = {
+        //     "attendance.month": AttMonth
+        // }
+        /* ### Start update daily attendance status  ### */
+        if (req.reportType == "Daily") {
+            stud.find(studIdForFindQry).toArray(function (err, findData) {
+                console.log("1st query findData: " + JSON.stringify(findData));
+                console.log("1st query findData.length: " + findData.length);
+                if (err) {
+                    marker == true;
+                }
+                else {
+                    if (findData.length == 0) {
+                        stud.update(studIdForUpdateQry,
+                            { $push: { "attendance.$.dateAttendance": { "date": AttDate, "status": attndnce } } }, function (err, data) {
+                                console.log("2nd query started: " + JSON.stringify(data));
+                                console.log("2nd query data.length: " + data.length);
+                                if (err) {
+                                    marker == true;
+                                }
+                                else {
+                                    marker == true;
+                                }
+                            })
+                    }
+                    else {
+
+                        responseData = {
+                            status: true,
+                            message: "Sorry! You already updated for this date"
+                        };
+
+                        res.status(200).send(responseData);
+                    }
+                }
+            })
         }
-        stud.find(studIdForFindQry).toArray(function (err, findData) {
-            console.log("1st query findData: " + JSON.stringify(findData));
-            console.log("1st query findData.length: " + findData.length);
-            if (err) {
-                marker == true;
-            }
-            else {
-                if (findData.length == 0) {
-                    stud.update(studIdForUpdateQry,
-                        { $push: { "attendance.$.dateAttendance": { "date": AttDate, "status": attndnce } } }, function (err, data) {
-                            console.log("2nd query started: " + JSON.stringify(data));
-                            console.log("2nd query data.length: " + data.length);
-                            if (err) {
-                                marker == true;
-                            }
-                            else {
-                                marker == true;
-                            }
-                        })
-                }
-                else{
-
-                    responseData = {
-                        status: true,
-                        message: "Sorry! You already updated for this date"
-                    };
-    
-                    res.status(200).send(responseData);
+        /* ### End update daily attendance status  ### */
+        /* ### Start update monthly attendance status  ### */
+        else {
+            var dateAtt = [];
+            if(req.month=="Jan"){
+                for(var x=1;x<=31;x++){
+                    
+                    dateAtt.push({ "date": x, "status": data[x1] });
+                    console.log("dateAtt: "+dateAtt);
                 }
             }
-        })
 
-
+        }
+        /* ### End update monthly attendance status  ### */
     })
         .on("end", function () {
             console.log("end marker: " + marker);

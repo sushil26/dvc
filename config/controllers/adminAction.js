@@ -49,7 +49,8 @@ module.exports.uploadAttendance = function (req, res) {
     console.log("uploadAttendance-->");
     var responseData;
     var marker; /* ### Note: marker is used for identify the status of update query ###*/
-    //    var month ={ "month":"Jan", "id":1}, {"month":"Feb", "id":1}, "Mar": 3, "Apr": 4, "May": 5, "Jun": 6, "Jul": 7, "Aug": 8, "Sep": 9, "Oct": 10, "Nov": 11, "Dec": 12 }
+    var monthAtt = [];
+
     console.log("req.body.files: " + req.files.img);
     if (!req.files)
         return res.status(400).send('No files were uploaded.');
@@ -60,9 +61,9 @@ module.exports.uploadAttendance = function (req, res) {
         ignoreEmpty: true
     }).on("data", function (data) {
         console.log("data: " + JSON.stringify(data));
-        console.log("req.reportType: "+req.params.reportType);
+        console.log("req.reportType: " + req.params.reportType);
         // parser.pause();
-        
+
         // var month = {
         //     "attendance.month": AttMonth
         // }
@@ -70,26 +71,26 @@ module.exports.uploadAttendance = function (req, res) {
         if (req.params.reportType == "Daily") {
             console.log("daily started-->");
             var dateString = data.Date;
-        var parts = dateString.split(' ');
-        console.log("parts: " + JSON.stringify(parts));
-        var AttYear = parts[2];
-        var AttMonth = parts[1];
-        var AttDate = parts[0];
-        var attndnce = data.Attendance;
+            var parts = dateString.split(' ');
+            console.log("parts: " + JSON.stringify(parts));
+            var AttYear = parts[2];
+            var AttMonth = parts[1];
+            var AttDate = parts[0];
+            var attndnce = data.Attendance;
 
-        var obj = { "date": AttDate, "status": attndnce };
-        console.log("obj: " + JSON.stringify(obj));
-        var studIdForFindQry = {
-            "studId": data.StudentID,
-            "attendance.month": AttMonth,
-            "attendance.dateAttendance": { "date": AttDate, "status": attndnce }
-        }
-        console.log("studIdForFindQry: " + JSON.stringify(studIdForFindQry));
-        var studIdForUpdateQry = {
-            "studId": data.StudentID,
-            "attendance.month": AttMonth
-        }
-        console.log("studIdForUpdateQry: " + JSON.stringify(studIdForUpdateQry));
+            var obj = { "date": AttDate, "status": attndnce };
+            console.log("obj: " + JSON.stringify(obj));
+            var studIdForFindQry = {
+                "studId": data.StudentID,
+                "attendance.month": AttMonth,
+                "attendance.dateAttendance": { "date": AttDate, "status": attndnce }
+            }
+            console.log("studIdForFindQry: " + JSON.stringify(studIdForFindQry));
+            var studIdForUpdateQry = {
+                "studId": data.StudentID,
+                "attendance.month": AttMonth
+            }
+            console.log("studIdForUpdateQry: " + JSON.stringify(studIdForUpdateQry));
             stud.find(studIdForFindQry).toArray(function (err, findData) {
                 console.log("1st query findData: " + JSON.stringify(findData));
                 console.log("1st query findData.length: " + findData.length);
@@ -126,17 +127,33 @@ module.exports.uploadAttendance = function (req, res) {
         /* ### Start update monthly attendance status  ### */
         else {
             console.log("monthly started-->");
-            console.log("req.params.month: "+req.params.month);
-            var dateAtt = [];
-           
-            if(req.params.month=="Jan"){
-                for(var x=1;x<=31;x++){
-                    
-                    dateAtt.push({ "date": x, "status": data[x] });
-                    console.log("dateAtt: "+JSON.stringify(dateAtt));
-                }
+            console.log("req.params.month: " + req.params.month);
+            var marker;
+            var studIdForFindQry = {
+                "studId": data.StudentID,
+                "attendance.month": req.params.month
             }
 
+            if (req.params.month == "Jan") {
+                for (var x = 1; x <= 31; x++) {
+
+                    dateAtt.push({ "date": x, "status": data[x] });
+                    console.log("dateAtt: " + JSON.stringify(dateAtt));
+
+
+                }
+                stud.update(studIdForFindQry, { $push: { "attendance.$.dateAttendance": dateAtt } }), function (err, findData) {
+                    console.log("update month started: " + JSON.stringify(data));
+
+                    if (err) {
+                        marker == true;
+                    }
+                    else {
+                        marker == true;
+                    }
+                }
+
+            }
         }
         /* ### End update monthly attendance status  ### */
     })
@@ -157,6 +174,8 @@ module.exports.uploadAttendance = function (req, res) {
 
                 res.status(200).send(responseData);
             }
+
+
         });
     console.log("<--uploadAttendance");
 };

@@ -1,3 +1,4 @@
+var jQuery_1_10_2 = $.noConflict(true);
 function initializeJS() {
 
     //tool tips

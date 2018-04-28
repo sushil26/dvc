@@ -60,6 +60,7 @@ module.exports.uploadAttendance = function (req, res) {
         ignoreEmpty: true
     }).on("data", function (data) {
         console.log("data: " + JSON.stringify(data));
+        console.log("req.reportType: "+req.reportType);
         // parser.pause();
         
         // var month = {
@@ -67,6 +68,7 @@ module.exports.uploadAttendance = function (req, res) {
         // }
         /* ### Start update daily attendance status  ### */
         if (req.reportType == "Daily") {
+            console.log("daily started-->");
             var dateString = data.Date;
         var parts = dateString.split(' ');
         console.log("parts: " + JSON.stringify(parts));
@@ -123,6 +125,7 @@ module.exports.uploadAttendance = function (req, res) {
         /* ### End update daily attendance status  ### */
         /* ### Start update monthly attendance status  ### */
         else {
+            console.log("monthly started-->");
             var dateAtt = [];
             if(req.month=="Jan"){
                 for(var x=1;x<=31;x++){

@@ -106,7 +106,7 @@ app.factory('httpFactory', function($http, $q, $rootScope) {
                 objJson.month= obj.month;
             }
             console.log("objJson: "+JSON.stringify(objJson));
-            $http.post(uploadUrl, fd, {
+            $http.post(uploadUrl, objJson, {
                 transformRequest: angular.identity,
                 headers: { 'Content-Type': undefined }
             }).then(function(response) {

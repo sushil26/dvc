@@ -126,7 +126,7 @@ module.exports.uploadAttendance = function (req, res) {
         /* ### End update daily attendance status  ### */
         /* ### Start update monthly attendance status  ### */
         else {
-            var arrayLength
+            var arrayLength;
             console.log("monthly started-->");
             console.log("req.params.month: " + req.params.month);
             var marker;
@@ -140,6 +140,7 @@ module.exports.uploadAttendance = function (req, res) {
                     monthAtt.push({ "date": x, "status": data[x] });
                     //  console.log("monthAtt: " + JSON.stringify(monthAtt));
                 }
+            }
                 stud.find({ "studId": data.StudentID,"attendance.month":"Jan" }).toArray(function (err, findData) {
                     console.log("1st query findData: " + JSON.stringify(findData));
                     arrayLength=findData[0].attendance[0].dateAttendance.length;
@@ -153,7 +154,7 @@ module.exports.uploadAttendance = function (req, res) {
                             console.log("findData.length: "+findData.length);
                             stud.update(studIdForFindQry, { $push: { "attendance.$.dateAttendance": monthAtt } }), function (err, findData) {
                                 console.log("update month started: " + JSON.stringify(data));
-
+ parser.pause();
                                 if (err) {
                                     marker == true;
                                 }
@@ -174,7 +175,7 @@ module.exports.uploadAttendance = function (req, res) {
                         }
                     }
             })
-        }
+        
         /* ### End update monthly attendance status  ### */
     }
     })

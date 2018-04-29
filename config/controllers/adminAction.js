@@ -63,11 +63,24 @@ module.exports.uploadAttendance = function (req, res) {
         console.log("data: " + JSON.stringify(data));
         console.log("req.reportType: " + req.params.reportType);
         parser.pause();
-        module.exports.saveData(data, function (err) {
-            console.log("savedatInitiate");
-            // TODO: handle error
-            parser.resume();
-        });
+        if (req.params.reportType == "Daily") {
+            console.log("daily started-->");
+            module.exports.DailyData(data, function (err) {
+                console.log("savedatInitiate");
+                // TODO: handle error
+
+                parser.resume();
+            });
+        }
+        if (req.params.reportType == "Monthly") {
+            module.exports.saveData(data, function (err) {
+                console.log("savedatInitiate");
+                // TODO: handle error
+
+                parser.resume();
+            });
+        }
+
 
     })
         .on("end", function () {
@@ -93,69 +106,69 @@ module.exports.uploadAttendance = function (req, res) {
     console.log("<--uploadAttendance");
 };
 
-module.exports.saveData = function (data, callback) {
+module.exports.DailyData = function (data, callback) {
     console.log('inside saving')
     // Simulate an asynchronous operation:
+    //  /* ### Start update daily attendance status  ### */
+
+    var dateString = data.Date;
+    var parts = dateString.split(' ');
+    console.log("parts: " + JSON.stringify(parts));
+    var AttYear = parts[2];
+    var AttMonth = parts[1];
+    var AttDate = parts[0];
+    var attndnce = data.Attendance;
+
+    var obj = { "date": AttDate, "status": attndnce };
+    console.log("obj: " + JSON.stringify(obj));
+    var studIdForFindQry = {
+        "studId": data.StudentID,
+        "attendance.month": AttMonth,
+        "attendance.dateAttendance": { "date": AttDate, "status": attndnce }
+    }
+    console.log("studIdForFindQry: " + JSON.stringify(studIdForFindQry));
+    var studIdForUpdateQry = {
+        "studId": data.StudentID,
+        "attendance.month": AttMonth
+    }
+    console.log("studIdForUpdateQry: " + JSON.stringify(studIdForUpdateQry));
+    stud.find(studIdForFindQry).toArray(function (err, findData) {
+        console.log("1st query findData: " + JSON.stringify(findData));
+        console.log("1st query findData.length: " + findData.length);
+        if (err) {
+            marker == true;
+        }
+        else {
+            if (findData.length == 0) {
+                stud.update(studIdForUpdateQry,
+                    { $push: { "attendance.$.dateAttendance": { "date": AttDate, "status": attndnce } } }, function (err, data) {
+                        console.log("2nd query started: " + JSON.stringify(data));
+                        console.log("2nd query data.length: " + data.length);
+                        if (err) {
+                            marker == true;
+                        }
+                        else {
+                            marker == true;
+                        }
+                    })
+            }
+            else {
+
+                responseData = {
+                    status: true,
+                    message: "Sorry! You already updated for this date"
+                };
+
+                res.status(200).send(responseData);
+            }
+        }
+    })
+
+    // /* ### End update daily attendance status  ### */
     if (callback) callback();
 }
 
-//  /* ### Start update daily attendance status  ### */
-//  if (req.params.reportType == "Daily") {
-//     console.log("daily started-->");
-//     var dateString = data.Date;
-//     var parts = dateString.split(' ');
-//     console.log("parts: " + JSON.stringify(parts));
-//     var AttYear = parts[2];
-//     var AttMonth = parts[1];
-//     var AttDate = parts[0];
-//     var attndnce = data.Attendance;
 
-//     var obj = { "date": AttDate, "status": attndnce };
-//     console.log("obj: " + JSON.stringify(obj));
-//     var studIdForFindQry = {
-//         "studId": data.StudentID,
-//         "attendance.month": AttMonth,
-//         "attendance.dateAttendance": { "date": AttDate, "status": attndnce }
-//     }
-//     console.log("studIdForFindQry: " + JSON.stringify(studIdForFindQry));
-//     var studIdForUpdateQry = {
-//         "studId": data.StudentID,
-//         "attendance.month": AttMonth
-//     }
-//     console.log("studIdForUpdateQry: " + JSON.stringify(studIdForUpdateQry));
-//     stud.find(studIdForFindQry).toArray(function (err, findData) {
-//         console.log("1st query findData: " + JSON.stringify(findData));
-//         console.log("1st query findData.length: " + findData.length);
-//         if (err) {
-//             marker == true;
-//         }
-//         else {
-//             if (findData.length == 0) {
-//                 stud.update(studIdForUpdateQry,
-//                     { $push: { "attendance.$.dateAttendance": { "date": AttDate, "status": attndnce } } }, function (err, data) {
-//                         console.log("2nd query started: " + JSON.stringify(data));
-//                         console.log("2nd query data.length: " + data.length);
-//                         if (err) {
-//                             marker == true;
-//                         }
-//                         else {
-//                             marker == true;
-//                         }
-//                     })
-//             }
-//             else {
-
-//                 responseData = {
-//                     status: true,
-//                     message: "Sorry! You already updated for this date"
-//                 };
-
-//                 res.status(200).send(responseData);
-//             }
-//         }
-//     })
-// }
-// /* ### End update daily attendance status  ### */
 // /* ### Start update monthly attendance status  ### */
 // else {
 //     var arrayLength

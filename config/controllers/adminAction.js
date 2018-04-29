@@ -196,7 +196,7 @@ module.exports.monthlyData = function (data, callback) {
                     console.log("1st query findData: " + JSON.stringify(findData));
                     arrayLength = findData[0].attendance[0].dateAttendance.length;
                     if (err) {
-                        console.log("error: "+err;)
+                        console.log("error: "+err);
                         message = err;
                         marker = false;
                     }

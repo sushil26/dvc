@@ -75,7 +75,7 @@ module.exports.uploadAttendance = function (req, res) {
             });
         }
         if (req.params.reportType == "Monthly") {
-            var month = req.params.month;
+            month = req.params.month;
             module.exports.monthlyData(data, function (err) {
                 console.log("savedatInitiate");
                 // TODO: handle error

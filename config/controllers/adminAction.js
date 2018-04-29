@@ -138,7 +138,8 @@ module.exports.uploadAttendance = function (req, res) {
             if (req.params.month == "Jan") {
                 for (var x = 1; x <= 31; x++) {
                     monthAtt.push({ "date": x, "status": data[x] });
-                    //  console.log("monthAtt: " + JSON.stringify(monthAtt));
+                    console.log("monthAtt: " + JSON.stringify(monthAtt));
+                    parser.pause();
                 }
                 console.log("monthAtt: " + JSON.stringify(monthAtt));
 

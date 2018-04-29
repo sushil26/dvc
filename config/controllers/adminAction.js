@@ -63,11 +63,12 @@ module.exports.uploadAttendance = function (req, res) {
         console.log("data: " + JSON.stringify(data));
         console.log("req.reportType: " + req.params.reportType);
         parser.pause();
-  module.exports.saveData(data, function(err) {
-    // TODO: handle error
-    parser.resume();
-  });
-      
+        module.exports.saveData(data, function (err) {
+            console.log("savedatInitiate");
+            // TODO: handle error
+            parser.resume();
+        });
+
     })
         .on("end", function () {
             console.log("end marker: " + marker);
@@ -92,11 +93,11 @@ module.exports.uploadAttendance = function (req, res) {
     console.log("<--uploadAttendance");
 };
 
-module.exports.saveData = function(data, callback) {
+module.exports.saveData = function (data, callback) {
     console.log('inside saving')
     // Simulate an asynchronous operation:
     process.setImmediate(callback);
-  }
+}
 
 //  /* ### Start update daily attendance status  ### */
 //  if (req.params.reportType == "Daily") {

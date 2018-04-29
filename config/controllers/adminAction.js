@@ -140,44 +140,46 @@ module.exports.uploadAttendance = function (req, res) {
                     monthAtt.push({ "date": x, "status": data[x] });
                     //  console.log("monthAtt: " + JSON.stringify(monthAtt));
                 }
+                console.log("monthAtt: " + JSON.stringify(monthAtt));
+
             }
-                stud.find({ "studId": data.StudentID,"attendance.month":"Jan" }).toArray(function (err, findData) {
-                    console.log("1st query findData: " + JSON.stringify(findData));
-                    arrayLength=findData[0].attendance[0].dateAttendance.length;
-                    if (err) {
-                        marker == true;
+            stud.find({ "studId": data.StudentID, "attendance.month": "Jan" }).toArray(function (err, findData) {
+                console.log("1st query findData: " + JSON.stringify(findData));
+                arrayLength = findData[0].attendance[0].dateAttendance.length;
+                if (err) {
+                    marker == true;
+                }
+                else {
+
+                    if (arrayLength == 0) {
+                        console.log("second query started");
+                        console.log("findData.length: " + findData.length);
+                        stud.update(studIdForFindQry, { $push: { "attendance.$.dateAttendance": monthAtt } }), function (err, findData) {
+                            console.log("update month started: " + JSON.stringify(data));
+                            parser.pause();
+                            if (err) {
+                                marker == true;
+                            }
+                            else {
+                                marker == true;
+                            }
+                        }
                     }
                     else {
 
-                        if (arrayLength == 0) {
-                            console.log("second query started");
-                            console.log("findData.length: "+findData.length);
-                            stud.update(studIdForFindQry, { $push: { "attendance.$.dateAttendance": monthAtt } }), function (err, findData) {
-                                console.log("update month started: " + JSON.stringify(data));
- parser.pause();
-                                if (err) {
-                                    marker == true;
-                                }
-                                else {
-                                    marker == true;
-                                }
-                            }
-                        }
-                        else {
-
-                            if (marker == false) {
-                                responseData = {
-                                    status: false,
-                                    message: "Sorry! you already updated for this month"
-                                };
-                                res.status(400).send(responseData);
-                            }
+                        if (marker == false) {
+                            responseData = {
+                                status: false,
+                                message: "Sorry! you already updated for this month"
+                            };
+                            res.status(400).send(responseData);
                         }
                     }
+                }
             })
-        
-        /* ### End update monthly attendance status  ### */
-    }
+
+            /* ### End update monthly attendance status  ### */
+        }
     })
         .on("end", function () {
             console.log("end marker: " + marker);

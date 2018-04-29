@@ -141,7 +141,7 @@ module.exports.uploadAttendance = function (req, res) {
                 }
                 stud.find({ "studId": data.StudentID,"attendance.month":"Jan" }).toArray(function (err, findData) {
                     console.log("1st query findData: " + JSON.stringify(findData));
-                    console.log("1st query findData.length: " + findData.attendance[0]);
+                    console.log("1st query findData.length: " + findData[0].schoolName);
                     if (err) {
                         marker == true;
                     }

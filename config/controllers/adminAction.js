@@ -139,9 +139,9 @@ module.exports.uploadAttendance = function (req, res) {
                     monthAtt.push({ "date": x, "status": data[x] });
                     //  console.log("monthAtt: " + JSON.stringify(monthAtt));
                 }
-                stud.find({ "studId": data.StudentID,"attendance.month":"Jan" }, { $where: "attendance.$.dateAttendance.length<1" }).toArray(function (err, findData) {
+                stud.find({ "studId": data.StudentID,"attendance.month":"Jan" }).toArray(function (err, findData) {
                     console.log("1st query findData: " + JSON.stringify(findData));
-                    console.log("1st query findData.length: " + findData.length);
+                    console.log("1st query findData.length: " + findData.attendance.dateAttendance.length);
                     if (err) {
                         marker == true;
                     }

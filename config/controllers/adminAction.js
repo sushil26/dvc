@@ -141,6 +141,8 @@ module.exports.uploadAttendance = function (req, res) {
                     monthAtt.push({ "date": x, "status": data[x] });
                     console.log("*monthAtt: " + JSON.stringify(monthAtt));
                 }
+                monthAtt=[];
+            
                 stud.find({ "studId": data.StudentID,"attendance.month":"Jan" }).toArray(function (err, findData) {
                     console.log("1st query findData: " + JSON.stringify(findData));
                     arrayLength=findData[0].attendance[0].dateAttendance.length;

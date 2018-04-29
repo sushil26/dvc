@@ -66,7 +66,7 @@ module.exports.uploadAttendance = function (req, res) {
         parser.pause();
         if (req.params.reportType == "Daily") {
             console.log("daily started-->");
-            module.exports.DailyData(data, function (err) {
+            module.exports.dailyData(data, function (err) {
                 console.log("savedatInitiate");
                 // TODO: handle error
 
@@ -74,7 +74,7 @@ module.exports.uploadAttendance = function (req, res) {
             });
         }
         if (req.params.reportType == "Monthly") {
-            module.exports.saveData(data, function (err) {
+            module.exports.monthlyData(data, function (err) {
                 console.log("savedatInitiate");
                 // TODO: handle error
 
@@ -107,7 +107,7 @@ module.exports.uploadAttendance = function (req, res) {
     console.log("<--uploadAttendance");
 };
 
-module.exports.DailyData = function (data, callback) {
+module.exports.dailyData = function (data, callback) {
     console.log('inside saving')
     // Simulate an asynchronous operation:
     //  /* ### Start update daily attendance status  ### */
@@ -158,16 +158,74 @@ module.exports.DailyData = function (data, callback) {
             }
             else {
                 marker = false;
-               
-                    message = "Sorry! You already updated for this date";
-               
+
+                message = "Sorry! You already updated for this date";
+
                 if (callback) callback();
             }
         }
     })
 
     // /* ### End update daily attendance status  ### */
- 
+
+}
+
+module.exports.dailyData = function (data, callback) {
+    console.log('inside saving')
+    var arrayLength
+    console.log("monthly started-->");
+    console.log("req.params.month: " + req.params.month);
+    var marker;
+    var studIdForFindQry = {
+        "studId": data.StudentID,
+        "attendance.month": req.params.month
+    }
+
+    if (req.params.month == "Jan") {
+        console.log("data: " + JSON.stringify(data));
+        for (var x = 1; x <= 31; x++) {
+            console.log("x: " + x);
+            monthAtt.push({ "date": x, "status": data[x] });
+
+            if (x == 31) {
+                console.log("*monthAtt: " + JSON.stringify(monthAtt));
+                stud.find({ "studId": data.StudentID, "attendance.month": "Jan" }).toArray(function (err, findData) {
+                    console.log("1st query findData: " + JSON.stringify(findData));
+                    arrayLength = findData[0].attendance[0].dateAttendance.length;
+                    if (err) {
+                        marker = false;
+                    }
+                    else {
+
+                        if (arrayLength == 0) {
+                            console.log("second query started");
+                            console.log("findData.length: " + findData.length);
+                            stud.update(studIdForFindQry, { $push: { "attendance.$.dateAttendance": monthAtt } }), function (err, findData) {
+                                console.log("update month started: " + JSON.stringify(data));
+
+                                if (err) {
+                                    marker = true;
+                                }
+                                else {
+                                    marker = true;
+
+                                }
+                            }
+                        }
+                        else {
+                            marker = false;
+                           
+                                   message = "Sorry! you already updated for this month";
+                                
+                            }
+                        
+                    }
+                })
+            }
+        }
+
+    }
+
 }
 
 

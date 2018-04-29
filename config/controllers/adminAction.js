@@ -11,6 +11,8 @@ var csv = require('fast-csv');
 var d = new Date();
 var message;
 var month;
+var marker; /* ### Note: marker is used for identify the status of update query ###*/
+var monthAtt = []; /* ### Note: get all attendance of the month ###*/
 
 module.exports.getAllClass = function (req, res) {
     console.log("getAllClass-->");
@@ -50,8 +52,7 @@ module.exports.getAllClass = function (req, res) {
 module.exports.uploadAttendance = function (req, res) {
     console.log("uploadAttendance-->");
     var responseData;
-    var marker; /* ### Note: marker is used for identify the status of update query ###*/
-    var monthAtt = []; /* ### Note: get all attendance of the month ###*/
+   
 
     console.log("req.body.files: " + req.files.img);
     if (!req.files)

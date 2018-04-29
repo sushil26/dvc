@@ -126,6 +126,7 @@ module.exports.uploadAttendance = function (req, res) {
         /* ### End update daily attendance status  ### */
         /* ### Start update monthly attendance status  ### */
         else {
+            var arrayLength
             console.log("monthly started-->");
             console.log("req.params.month: " + req.params.month);
             var marker;
@@ -141,7 +142,7 @@ module.exports.uploadAttendance = function (req, res) {
                 }
                 stud.find({ "studId": data.StudentID,"attendance.month":"Jan" }).toArray(function (err, findData) {
                     console.log("1st query findData: " + JSON.stringify(findData));
-                    var arrayLength=findData[0].attendance[0].dateAttendance.length;
+                    arrayLength=findData[0].attendance[0].dateAttendance.length;
                     if (err) {
                         marker == true;
                     }

@@ -9,6 +9,7 @@ var bodyParser = require('body-parser');
 
 var csv = require('fast-csv');
 var d = new Date();
+var message;
 
 module.exports.getAllClass = function (req, res) {
     console.log("getAllClass-->");
@@ -88,7 +89,7 @@ module.exports.uploadAttendance = function (req, res) {
             if (marker == false) {
                 responseData = {
                     status: false,
-                    message: "Failed to get Data"
+                    message: message
                 };
                 res.status(400).send(responseData);
             }
@@ -156,13 +157,10 @@ module.exports.DailyData = function (data, callback) {
                     })
             }
             else {
-
-                responseData = {
-                    status: true,
-                    message: "Sorry! You already updated for this date"
-                };
-
-                res.status(200).send(responseData);
+                marker = false;
+               
+                    message = "Sorry! You already updated for this date";
+               
                 if (callback) callback();
             }
         }

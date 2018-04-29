@@ -96,7 +96,7 @@ module.exports.uploadAttendance = function (req, res) {
 module.exports.saveData = function (data, callback) {
     console.log('inside saving')
     // Simulate an asynchronous operation:
-    callback;
+    if (callback) callback();
 }
 
 //  /* ### Start update daily attendance status  ### */

@@ -206,6 +206,8 @@ module.exports.monthlyData = function (data, callback) {
                         console.log("arrayLength: "+arrayLength);
                         if (arrayLength == 0) {
                             console.log("second query started");
+                            console.log("studIdForFindQry: "+JSON.stringify(studIdForFindQry));
+                            console.log("monthAtt: "+JSON.stringify(monthAtt));
                             stud.update(studIdForFindQry, { $push: { "attendance.$.dateAttendance": monthAtt } }), function (err, findData) {
                                 console.log("update month started: " + JSON.stringify(data));
 

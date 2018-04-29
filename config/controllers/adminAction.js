@@ -136,7 +136,7 @@ module.exports.DailyData = function (data, callback) {
         console.log("1st query findData: " + JSON.stringify(findData));
         console.log("1st query findData.length: " + findData.length);
         if (err) {
-            marker == true;
+            marker = true;
         }
         else {
             if (findData.length == 0) {
@@ -145,10 +145,10 @@ module.exports.DailyData = function (data, callback) {
                         console.log("2nd query started: " + JSON.stringify(data));
                         console.log("2nd query data.length: " + data.length);
                         if (err) {
-                            marker == true;
+                            marker = true;
                         }
                         else {
-                            marker == true;
+                            marker = true;
                         }
                     })
             }

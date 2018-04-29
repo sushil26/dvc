@@ -137,6 +137,7 @@ module.exports.DailyData = function (data, callback) {
         console.log("1st query findData.length: " + findData.length);
         if (err) {
             marker = true;
+            if (callback) callback();
         }
         else {
             if (findData.length == 0) {
@@ -146,9 +147,11 @@ module.exports.DailyData = function (data, callback) {
                         console.log("2nd query data.length: " + data.length);
                         if (err) {
                             marker = true;
+                            if (callback) callback();
                         }
                         else {
                             marker = true;
+                            if (callback) callback();
                         }
                     })
             }
@@ -160,12 +163,13 @@ module.exports.DailyData = function (data, callback) {
                 };
 
                 res.status(200).send(responseData);
+                if (callback) callback();
             }
         }
     })
 
     // /* ### End update daily attendance status  ### */
-    if (callback) callback();
+ 
 }
 
 

@@ -199,6 +199,7 @@ module.exports.monthlyData = function (data, callback) {
                         console.log("error: "+err);
                         message = err;
                         marker = false;
+                        if (callback) callback();
                     }
                     else {
                         console.log("no erroe");
@@ -209,11 +210,13 @@ module.exports.monthlyData = function (data, callback) {
                                 console.log("update month started: " + JSON.stringify(data));
 
                                 if (err) {
-                                    marker = true;
+                                    marker = false;
+                                    message = err;
+                                    if (callback) callback();
                                 }
                                 else {
                                     marker = true;
-
+                                    if (callback) callback();
                                 }
                             }
                         }
@@ -221,7 +224,7 @@ module.exports.monthlyData = function (data, callback) {
                             marker = false;
 
                             message = "Sorry! you already updated for this month";
-
+                            if (callback) callback();
                         }
 
                     }

@@ -170,7 +170,7 @@ module.exports.dailyData = function (data, callback) {
 
 }
 
-module.exports.dailyData = function (data, callback) {
+module.exports.monthlyData = function (data, callback) {
     console.log('inside saving')
     var arrayLength
     console.log("monthly started-->");
@@ -214,11 +214,11 @@ module.exports.dailyData = function (data, callback) {
                         }
                         else {
                             marker = false;
-                           
-                                   message = "Sorry! you already updated for this month";
-                                
-                            }
-                        
+
+                            message = "Sorry! you already updated for this month";
+
+                        }
+
                     }
                 })
             }

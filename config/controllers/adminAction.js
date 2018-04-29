@@ -10,6 +10,7 @@ var bodyParser = require('body-parser');
 var csv = require('fast-csv');
 var d = new Date();
 var message;
+var month;
 
 module.exports.getAllClass = function (req, res) {
     console.log("getAllClass-->");
@@ -74,6 +75,7 @@ module.exports.uploadAttendance = function (req, res) {
             });
         }
         if (req.params.reportType == "Monthly") {
+            var month = req.params.month;
             module.exports.monthlyData(data, function (err) {
                 console.log("savedatInitiate");
                 // TODO: handle error
@@ -174,14 +176,14 @@ module.exports.monthlyData = function (data, callback) {
     console.log('inside saving')
     var arrayLength
     console.log("monthly started-->");
-    console.log("req.params.month: " + req.params.month);
+    console.log("req.params.month: " + month);
     var marker;
     var studIdForFindQry = {
         "studId": data.StudentID,
-        "attendance.month": req.params.month
+        "attendance.month": month
     }
 
-    if (req.params.month == "Jan") {
+    if (month == "Jan") {
         console.log("data: " + JSON.stringify(data));
         for (var x = 1; x <= 31; x++) {
             console.log("x: " + x);

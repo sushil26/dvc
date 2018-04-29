@@ -146,7 +146,10 @@ module.exports.uploadAttendance = function (req, res) {
                         marker == true;
                     }
                     else {
+
                         if (findData.length == 0) {
+                            console.log("second query started");
+                            console.log("findData.length: "+findData.length);
                             stud.update(studIdForFindQry, { $push: { "attendance.$.dateAttendance": monthAtt } }), function (err, findData) {
                                 console.log("update month started: " + JSON.stringify(data));
 
@@ -159,6 +162,7 @@ module.exports.uploadAttendance = function (req, res) {
                             }
                         }
                         else {
+
                             if (marker == false) {
                                 responseData = {
                                     status: false,

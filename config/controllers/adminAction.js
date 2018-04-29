@@ -52,7 +52,7 @@ module.exports.getAllClass = function (req, res) {
 module.exports.uploadAttendance = function (req, res) {
     console.log("uploadAttendance-->");
     var responseData;
-   
+
 
     console.log("req.body.files: " + req.files.img);
     if (!req.files)
@@ -196,13 +196,14 @@ module.exports.monthlyData = function (data, callback) {
                     console.log("1st query findData: " + JSON.stringify(findData));
                     arrayLength = findData[0].attendance[0].dateAttendance.length;
                     if (err) {
+                        console.log("error: "+err;)
+                        message = err;
                         marker = false;
                     }
                     else {
-
+                        console.log("no erroe");
                         if (arrayLength == 0) {
                             console.log("second query started");
-                          
                             stud.update(studIdForFindQry, { $push: { "attendance.$.dateAttendance": monthAtt } }), function (err, findData) {
                                 console.log("update month started: " + JSON.stringify(data));
 

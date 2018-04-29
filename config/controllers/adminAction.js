@@ -141,13 +141,13 @@ module.exports.uploadAttendance = function (req, res) {
                 }
                 stud.find({ "studId": data.StudentID,"attendance.month":"Jan" }).toArray(function (err, findData) {
                     console.log("1st query findData: " + JSON.stringify(findData));
-                    console.log("1st query findData.length: " + findData[0].attendance[0].dateAttendance.length);
+                    var arrayLength=findData[0].attendance[0].dateAttendance.length;
                     if (err) {
                         marker == true;
                     }
                     else {
 
-                        if (findData.length == 0) {
+                        if (arrayLength == 0) {
                             console.log("second query started");
                             console.log("findData.length: "+findData.length);
                             stud.update(studIdForFindQry, { $push: { "attendance.$.dateAttendance": monthAtt } }), function (err, findData) {

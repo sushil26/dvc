@@ -210,7 +210,7 @@ module.exports.monthlyData = function (data, callback) {
                             console.log("monthAtt: "+JSON.stringify(monthAtt));
                             stud.update(studIdForFindQry, { $push: { "attendance.$.dateAttendance": monthAtt } }), function (err, findData) {
                                 console.log("update month started: " + JSON.stringify(data));
-
+                                monthAtt = [];
                                 if (err) {
                                     marker = false;
                                     message = err;

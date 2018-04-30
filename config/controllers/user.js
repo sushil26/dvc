@@ -1,6 +1,7 @@
 var db = require("../dbConfig.js").getDb();
 var user = db.collection("user"); /* ### Teacher collection  ### */
 var stud = db.collection("student"); /* ### student collection  ### */
+var stud = db.collection("school"); /* ### school collection  ### */
 
 var general = require("../general.js");
 var util = require("util");
@@ -72,8 +73,7 @@ module.exports.register4VC = function (req, res) {
 module.exports.login4VC = function (req, res) {
   console.log("login==>");
   var responseData;
-  if (general.emptyCheck(req.body.email) && general.emptyCheck(req.body.password))
-   {
+  if (general.emptyCheck(req.body.email) && general.emptyCheck(req.body.password)) {
     if (req.body.loginType == "teacher") {
       user.find({ teacherEmail: req.body.email }).toArray(function (err, data) {
         if (data.length > 0) {
@@ -699,24 +699,28 @@ module.exports.getLoginData = function (req, res) {
 
 module.exports.adminCreate = function (req, res) {
   console.log("adminCreate-->");
-  var obj = {
+  var schoolObj = {
     "schoolName": req.body.schoolName,
     "schoolRegNumber": req.body.schoolRegNumber,
-    "firstName": req.body.firstName,
-    "lastName": req.body.lastName,
     "address": req.body.address,
     "city": req.body.city,
     "streetName": req.body.streetName,
     "pinCode": req.body.pinCode,
     "country": req.body.country,
+    "mobNumber": req.body.mobNumber,
+  }
+  var adminObj = {
+    "firstName": req.body.firstName,
+    "lastName": req.body.lastName,
     "dob": req.body.dob,
     "email": req.body.email,
     "mobNumber": req.body.mobNumber,
     "pswd": req.body.pswd,
     "loginType": "admin"
   }
-  console.log("obj: " + JSON.stringify(userData));
-  user.insertOne(obj, function (err, data) {
+  console.log("schoolObj: " + JSON.stringify(schoolObj));
+  console.log("adminObj: " + JSON.stringify(adminObj));
+  school.insertOne(schoolObj, function (err, data) {
     console.log("data: " + JSON.stringify(data));
     if (err) {
       responseData = {
@@ -726,16 +730,32 @@ module.exports.adminCreate = function (req, res) {
       };
       res.status(400).send(responseData);
     } else {
-      responseData = {
-        status: true,
-        errorCode: 200,
-        message: "Insert Successfull",
-        data: userData
-      };
-      res.status(200).send(responseData);
-    }
-  });
+      adminObj.schoolId = data._id;
 
-  console.log("<--adminCreate");
+      user.insertOne(schoolId, function (err, data) {
+        console.log("data: " + JSON.stringify(data));
+        if (err) {
+          responseData = {
+            status: false,
+            message: "Failed to Insert",
+            data: data
+          };
+          res.status(400).send(responseData);
+        } else {
+          responseData = {
+            status: true,
+            errorCode: 200,
+            message: "Insert Successfull",
+            data: userData
+          };
+          res.status(200).send(responseData);
+        }
+      });
+    }
+    
+
+    console.log("<--adminCreate");
+  })
+
 }
 

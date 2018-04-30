@@ -51,6 +51,53 @@ module.exports.getAllClass = function (req, res) {
     console.log("<--getAllClass");
 };
 
+module.exports.classDetail = function (req, res) {
+    console.log("uploadAttendance-->");
+    var responseData;
+var classSection = [];
+
+    console.log("req.body.files: " + req.files.img);
+    if (!req.files)
+        return res.status(400).send('No files were uploaded.');
+    var studentDataFile = req.files.img;
+    console.log("studentDataFile: " + studentDataFile);
+    var parser = csv.fromString(studentDataFile.data.toString(), {
+        headers: true,
+        ignoreEmpty: true
+    }).on("data", function (data) {
+        console.log("data: " + JSON.stringify(data));
+        // classSection.push({"class":data.class, "section":[data]})
+        parser.pause();
+    
+
+
+    })
+        .on("end", function () {
+            console.log("end marker: " + marker);
+            if (marker == false) {
+                responseData = {
+                    status: false,
+                    message: message
+                };
+                res.status(400).send(responseData);
+            }
+            else if (marker == true) {
+                console.log("unknownData: " + JSON.stringify(unknownData));
+                var unknownStud = unknownData;
+                responseData = {
+                    status: true,
+                    message: "Successfull updated data",
+                    data: unknownStud
+                };
+                unknownData =[];
+                res.status(200).send(responseData);
+            }
+
+
+        });
+    console.log("<--uploadAttendance");
+};
+
 module.exports.uploadAttendance = function (req, res) {
     console.log("uploadAttendance-->");
     var responseData;

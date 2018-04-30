@@ -99,13 +99,13 @@ module.exports.uploadAttendance = function (req, res) {
                 res.status(400).send(responseData);
             }
             else if (marker == true) {
-                console.log("unknownData: "+JSON.stringify(unknownData));
+                console.log("unknownData: " + JSON.stringify(unknownData));
                 responseData = {
                     status: true,
                     message: "Successfull updated data",
                     data: unknownData
                 };
-               
+
                 res.status(200).send(responseData);
             }
 
@@ -193,24 +193,24 @@ module.exports.monthlyData = function (data, callback) {
         for (var x = 1; x <= 31; x++) {
             console.log("x: " + x);
             monthAtt.push({ "date": x, "status": data[x] });
-            if(x==31){
+            if (x == 31) {
                 break;
             }
         }
     }
-    else if(month == "Feb") {
+    else if (month == "Feb") {
         console.log("FEB");
         attendanceIndex = 1;
         for (var x = 1; x <= 28; x++) {
             console.log("x: " + x);
             monthAtt.push({ "date": x, "status": data[x] });
-            if(x==28){
+            if (x == 28) {
                 break;
             }
 
         }
     }
-    console.log("*monthAtt: " +monthAtt.length);
+    console.log("*monthAtt: " + monthAtt.length);
     stud.find({ "studId": data.StudentID }).toArray(function (err, isThereData) {
         console.log("Basic query: " + JSON.stringify(isThereData));
         console.log("Basic query: " + isThereData.length);
@@ -222,10 +222,10 @@ module.exports.monthlyData = function (data, callback) {
         }
         else {
             if (isThereData.length > 0) {
-                console.log("month: "+month);               
-                 stud.find({ "studId": data.StudentID, "attendance.month": month }).toArray(function (err, findData) {
+                console.log("month: " + month);
+                stud.find({ "studId": data.StudentID, "attendance.month": month }).toArray(function (err, findData) {
                     console.log("1st query findData: " + JSON.stringify(findData));
-                    console.log("attendanceIndex: "+JSON.stringify(findData[0].attendance[attendanceIndex]));
+                    console.log("attendanceIndex: " + JSON.stringify(findData[0].attendance[attendanceIndex]));
                     console.log("dateAttendance: " + JSON.stringify(findData[0].attendance[attendanceIndex].dateAttendance));
                     arrayLength = findData[0].attendance[attendanceIndex].dateAttendance.length;
                     if (err) {
@@ -265,7 +265,7 @@ module.exports.monthlyData = function (data, callback) {
                 })
             }
             else {
-console.log("unknown started");
+                console.log("unknown started");
                 var obj = {
                     "StudentID": data.StudentID,
                     "StudentName": data.StudentName

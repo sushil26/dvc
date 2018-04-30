@@ -22,6 +22,7 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
 
     console.log("<--addUploadReports");
   }
+
   $scope.attendanceMark = function () {
     console.log("attendanceMark-->");
     // console.log("file: " + file);
@@ -66,6 +67,15 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
     console.log("<--attendanceMark");
   }
 
+  $scope.uploadClassFile = function (file) {
+    console.log("uploadClassFile-->");
+    var obj = {
+      "schoolName": "ABC",
+      "file": file
+    }
+    console.log("<--uploadClassFile");
+  }
+
   $scope.uploadFile = function (file, uploadType, reportType, list) {
     console.log("uploadFile-->");
     console.log("file: " + file);
@@ -94,13 +104,13 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
       console.log("data--" + JSON.stringify(data.data));
       if (checkStatus) {
         if (uploadType == "Attendance") {
-         if(data.data.data.length>0){
-          alert(data.data.message+" But we have found unknown statudent detail "+data.data.data[0].StudentName+"-"+data.data.data[0].StudentID);
-         }
-         else{
-          alert(data.data.message);
-         }
-         
+          if (data.data.data.length > 0) {
+            alert(data.data.message + " But we have found unknown statudent detail " + data.data.data[0].StudentName + "-" + data.data.data[0].StudentID);
+          }
+          else {
+            alert(data.data.message);
+          }
+
         }
         else {
           alert(data.data.message);
@@ -108,9 +118,8 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
       }
       else {
         if (uploadType == "Attendance") {
-          if(data.data.message=="Sorry! you already updated for this month")
-          {
-            alert(data.data.message +" If you want to update, try update reports option");
+          if (data.data.message == "Sorry! you already updated for this month") {
+            alert(data.data.message + " If you want to update, try update reports option");
           }
         }
         else {

@@ -50,11 +50,11 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
         else if (data.data.errorCode == 'No Match') {
           alert("There is no match for this EMail id from student database ");
         }
-        if (data.data.loginType == 'admin') {
-          $scope.sessionSet(datas);
-          // document.getElementById("appLogin").style.display = 'none';
-          // document.getElementById("appLogout").style.display = 'block';
-        }
+        // if (data.data.loginType == 'admin') {
+        //   $scope.sessionSet(datas);
+        //   // document.getElementById("appLogin").style.display = 'none';
+        //   // document.getElementById("appLogout").style.display = 'block';
+        // }
 
       }
       else {
@@ -81,7 +81,8 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
           "status": data.data.status,
           "email": data.data.teacherEmail,
           "loginType": data.loginType,
-          "id": data.data._id
+          "id": data.data._id,
+          "schoolName": data.data.schoolName,
         }
         sessionAuthFactory.setAccess(userData);
 
@@ -97,7 +98,8 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
           "status": data.data.status,
           "email": data.data.parentEmail,
           "loginType": data.loginType,
-          "id": data.data._id
+          "id": data.data._id,
+          "schoolName": data.data.schoolName
         }
         sessionAuthFactory.setAccess(userData);
 
@@ -107,10 +109,12 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
       }
       else {
         var userData = {
-          "userName": data.data.userName,
+          "userName": data.data.firstName,
           "status": data.data.status,
           "email": data.data.email,
-          "loginType": data.data.loginType
+          "loginType": data.data.loginType,
+          "id": data.data._id,
+          "schoolName": data.data.schoolName,
         }
         sessionAuthFactory.setAccess(userData);
 

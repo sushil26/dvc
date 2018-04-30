@@ -105,7 +105,7 @@ module.exports.uploadAttendance = function (req, res) {
                     message: "Successfull updated data",
                     data: unknownData
                 };
-                unknownData=[];
+               
                 res.status(200).send(responseData);
             }
 

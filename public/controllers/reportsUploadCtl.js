@@ -108,7 +108,10 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
       }
       else {
         if (uploadType == "Attendance") {
-          alert(data.data.message);
+          if(data.data.message=="Sorry! you already updated for this month")
+          {
+            alert(data.data.message +" If you want to update, try update reports option");
+          }
         }
         else {
           alert(data.data.message);

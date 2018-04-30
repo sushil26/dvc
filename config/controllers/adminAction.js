@@ -101,7 +101,8 @@ module.exports.uploadAttendance = function (req, res) {
             else if (marker == true) {
                 responseData = {
                     status: true,
-                    message: "Successfull updated data"
+                    message: "Successfull updated data",
+                    data: unknownData
                 };
 
                 res.status(200).send(responseData);

@@ -1,7 +1,7 @@
 app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessionAuthFactory) {
   console.log("attendanceCtl==>");
   $scope.file = {}; /* ### Note: Upload file declaration ### */
-  $scope.uploadTypes = ["Student Details","Attendance", "Payment", "Mark Report"];
+  $scope.uploadTypes = ["Student Details", "Attendance", "Payment", "Mark Report"];
   $scope.testTypes = ["AT", "UT", "MT", "TT", "AT"];
   $scope.attendanceTypes = ["Monthly", "Daily"];
   $scope.monthList = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
@@ -71,7 +71,7 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
     console.log("file: " + file);
     var obj = {
       "file": file,
-    
+
     }
     console.log("uploadType: " + uploadType);
     console.log("reportType: " + reportType);
@@ -80,12 +80,12 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
     }
     else if (uploadType == "Attendance") {
       var month = list;
-      var api = "https://norecruits.com/vc/uploadAttendance/"+reportType+"/"+month;
+      var api = "https://norecruits.com/vc/uploadAttendance/" + reportType + "/" + month;
     }
-    else if(uploadType=="Payment"){
+    else if (uploadType == "Payment") {
       var api = "https://norecruits.com/vc/uploadPayment";
     }
-    else if(uploadType=="Student Details"){
+    else if (uploadType == "Student Details") {
       var api = "https://norecruits.com/vc/uploadStudentMaster";
     }
     console.log("api: " + api);
@@ -93,11 +93,21 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
       var checkStatus = httpFactory.dataValidation(data);
       console.log("data--" + JSON.stringify(data.data));
       if (checkStatus) {
+        if (uploadType == "Attendance") {
 
-        alert(data.data.message);
+        }
+        else {
+          alert(data.data.message);
+        }
       }
       else {
-        alert(data.data.message);
+        if (uploadType == "Attendance") {
+
+        }
+        else {
+          alert(data.data.message);
+        }
+
       }
     })
 

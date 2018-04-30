@@ -14,6 +14,7 @@ var month;
 var marker; /* ### Note: marker is used for identify the status of update query ###*/
 var monthAtt = []; /* ### Note: get all attendance of the month ###*/
 var unknownData = [];
+var attendanceIndex; /* ### Note: dateAttendance index based on month select  ### */
 
 module.exports.getAllClass = function (req, res) {
     console.log("getAllClass-->");
@@ -186,6 +187,7 @@ module.exports.monthlyData = function (data, callback) {
 
     if (month == "Jan") {
         console.log("JAN");
+        attendanceIndex = 0;
         for (var x = 1; x <= 31; x++) {
             console.log("x: " + x);
             monthAtt.push({ "date": x, "status": data[x] });
@@ -196,6 +198,7 @@ module.exports.monthlyData = function (data, callback) {
     }
     else if(month == "Feb") {
         console.log("FEB");
+        attendanceIndex = 1;
         for (var x = 1; x <= 28; x++) {
             console.log("x: " + x);
             monthAtt.push({ "date": x, "status": data[x] });
@@ -216,10 +219,11 @@ module.exports.monthlyData = function (data, callback) {
         }
         else {
             if (isThereData.length > 0) {
-                console.log("month: "+month);                stud.find({ "studId": data.StudentID, "attendance.month": month }).toArray(function (err, findData) {
+                console.log("month: "+month);               
+                 stud.find({ "studId": data.StudentID, "attendance.month": month }).toArray(function (err, findData) {
                     console.log("1st query findData: " + JSON.stringify(findData));
                     console.log("dateAttendance: " + JSON.stringify(findData[0].attendance[0].dateAttendance));
-                    arrayLength = findData[0].attendance[0].dateAttendance.length;
+                    arrayLength = findData[0].attendance[attendanceIndex].dateAttendance.length;
                     if (err) {
                         console.log("error: " + err);
                         message = err;
@@ -249,7 +253,6 @@ module.exports.monthlyData = function (data, callback) {
                         }
                         else {
                             marker = false;
-
                             message = "Sorry! you already updated for this month";
                             if (callback) callback();
                         }

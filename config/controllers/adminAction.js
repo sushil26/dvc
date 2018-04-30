@@ -222,7 +222,8 @@ module.exports.monthlyData = function (data, callback) {
                 console.log("month: "+month);               
                  stud.find({ "studId": data.StudentID, "attendance.month": month }).toArray(function (err, findData) {
                     console.log("1st query findData: " + JSON.stringify(findData));
-                    console.log("dateAttendance: " + JSON.stringify(findData[0].attendance[0].dateAttendance));
+                    console.log("attendanceIndex: "+JSON.stringify(findData[0].attendance[attendanceIndex]));
+                    console.log("dateAttendance: " + JSON.stringify(findData[0].attendance[attendanceIndex].dateAttendance));
                     arrayLength = findData[0].attendance[attendanceIndex].dateAttendance.length;
                     if (err) {
                         console.log("error: " + err);

@@ -205,7 +205,7 @@ module.exports.monthlyData = function (data, callback) {
 
         }
     }
-    console.log("*monthAtt: " + JSON.stringify(monthAtt));
+    console.log("*monthAtt: " +monthAtt.length);
     stud.find({ "studId": data.StudentID }).toArray(function (err, isThereData) {
         console.log("Basic query: " + isThereData.length);
         if (err) {

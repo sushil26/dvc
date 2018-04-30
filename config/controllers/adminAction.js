@@ -145,8 +145,7 @@ module.exports.dailyData = function (data, callback) {
         }
         else {
             if (findData.length == 0) {
-                stud.update(studIdForUpdateQry,
-                    { $push: { "attendance.$.dateAttendance": { "date": AttDate, "status": attndnce } } }, function (err, data) {
+                stud.update(studIdForUpdateQry,{ $push: { "attendance.$.dateAttendance": { "date": AttDate, "status": attndnce } } }, function (err, data) {
                         console.log("2nd query started: " + JSON.stringify(data));
                         console.log("2nd query data.length: " + data.length);
                         if (err) {
@@ -208,7 +207,7 @@ module.exports.monthlyData = function (data, callback) {
                             console.log("second query started");
                             console.log("studIdForFindQry: "+JSON.stringify(studIdForFindQry));
                             console.log("monthAtt: "+JSON.stringify(monthAtt));
-                            stud.update(studIdForFindQry, { $push: { "attendance.$.dateAttendance": monthAtt } }), function (err, findData) {
+                            stud.update(studIdForFindQry, { $push: { "attendance.$.dateAttendance": monthAtt } }, function (err, findData) {
                                 console.log("update month started: " + JSON.stringify(data));
                                 monthAtt = [];
                                 if (err) {
@@ -220,7 +219,7 @@ module.exports.monthlyData = function (data, callback) {
                                     marker = true;
                                     if (callback) callback();
                                 }
-                            }
+                            })
                         }
                         else {
                             marker = false;

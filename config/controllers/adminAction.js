@@ -189,6 +189,9 @@ module.exports.monthlyData = function (data, callback) {
         for (var x = 1; x <= 31; x++) {
             console.log("x: " + x);
             monthAtt.push({ "date": x, "status": data[x] });
+            if(x==31){
+                break;
+            }
         }
     }
     else if(month == "Feb") {
@@ -196,6 +199,7 @@ module.exports.monthlyData = function (data, callback) {
         for (var x = 1; x <= 28; x++) {
             console.log("x: " + x);
             monthAtt.push({ "date": x, "status": data[x] });
+            
         }
     }
     console.log("*monthAtt: " + JSON.stringify(monthAtt));

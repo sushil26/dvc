@@ -199,7 +199,10 @@ module.exports.monthlyData = function (data, callback) {
         for (var x = 1; x <= 28; x++) {
             console.log("x: " + x);
             monthAtt.push({ "date": x, "status": data[x] });
-            
+            if(x==28){
+                break;
+            }
+
         }
     }
     console.log("*monthAtt: " + JSON.stringify(monthAtt));

@@ -97,7 +97,10 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
          if(data.data.data.length>0){
           alert(data.data.message+" But we have found unknown statudent detail "+data.data.data[0].StudentName+"-"+data.data.data[0].StudentID);
          }
-         alert(data.data.message);
+         else{
+          alert(data.data.message);
+         }
+         
         }
         else {
           alert(data.data.message);

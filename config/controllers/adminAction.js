@@ -178,21 +178,21 @@ module.exports.monthlyData = function (data, callback) {
     var arrayLength
     console.log("monthly started-->");
     console.log("req.params.month: " + month);
-    var marker;
+    // var marker;
     var studIdForFindQry = {
         "studId": data.StudentID,
         "attendance.month": month
     }
 
     if (month == "Jan") {
-        console.log("data: " + JSON.stringify(data));
+        console.log("JAN");
         for (var x = 1; x <= 31; x++) {
             console.log("x: " + x);
             monthAtt.push({ "date": x, "status": data[x] });
         }
     }
     else if(month == "Feb") {
-        console.log("data: " + JSON.stringify(data));
+        console.log("FEB");
         for (var x = 1; x <= 28; x++) {
             console.log("x: " + x);
             monthAtt.push({ "date": x, "status": data[x] });

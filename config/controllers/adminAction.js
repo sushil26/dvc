@@ -100,12 +100,13 @@ module.exports.uploadAttendance = function (req, res) {
             }
             else if (marker == true) {
                 console.log("unknownData: " + JSON.stringify(unknownData));
+                var unknownStud = unknownData;
                 responseData = {
                     status: true,
                     message: "Successfull updated data",
-                    data: unknownData
+                    data: unknownStud
                 };
-
+                unknownData =[];
                 res.status(200).send(responseData);
             }
 

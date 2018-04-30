@@ -1,7 +1,7 @@
 app.controller('reportsUpdateCtl', function ($scope, $window, httpFactory, sessionAuthFactory) {
     console.log("attendanceCtl==>");
     $scope.file = {}; /* ### Note: Upload file declaration ### */
-    $scope.uploadTypes = ["Student Details", "Attendance", "Payment", "Mark Report"];
+    $scope.uploadTypes = ["Attendance", "Payment", "Mark Report"];
     $scope.testTypes = ["AT", "UT", "MT", "TT", "AT"];
     $scope.attendanceTypes = ["Monthly", "Daily"];
     $scope.monthList = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];

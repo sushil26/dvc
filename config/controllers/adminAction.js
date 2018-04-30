@@ -218,6 +218,7 @@ module.exports.monthlyData = function (data, callback) {
             if (isThereData.length > 0) {
                 stud.find({ "studId": data.StudentID, "attendance.month": month }).toArray(function (err, findData) {
                     console.log("1st query findData: " + JSON.stringify(findData));
+                    console.log("1st query findData: " + JSON.stringify(findData[0].attendance[0].dateAttendance));
                     arrayLength = findData[0].attendance[0].dateAttendance.length;
                     if (err) {
                         console.log("error: " + err);

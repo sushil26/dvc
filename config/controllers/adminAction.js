@@ -271,6 +271,7 @@ module.exports.monthlyData = function (data, callback) {
                     "StudentName": data.StudentName
                 }
                 unknownData.push(obj);
+                if (callback) callback();
             }
         }
     })

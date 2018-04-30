@@ -212,6 +212,7 @@ module.exports.monthlyData = function (data, callback) {
     }
     console.log("*monthAtt: " +monthAtt.length);
     stud.find({ "studId": data.StudentID }).toArray(function (err, isThereData) {
+        console.log("Basic query: " + JSON.stringify(isThereData));
         console.log("Basic query: " + isThereData.length);
         if (err) {
             console.log("error: " + err);
@@ -264,6 +265,7 @@ module.exports.monthlyData = function (data, callback) {
                 })
             }
             else {
+
                 var obj = {
                     "StudentID": data.StudentID,
                     "StudentName": data.StudentName

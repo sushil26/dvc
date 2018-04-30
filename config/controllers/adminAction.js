@@ -99,6 +99,7 @@ module.exports.uploadAttendance = function (req, res) {
                 res.status(400).send(responseData);
             }
             else if (marker == true) {
+                console.log("unknownData: "+JSON.stringify(unknownData));
                 responseData = {
                     status: true,
                     message: "Successfull updated data",

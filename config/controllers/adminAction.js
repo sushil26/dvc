@@ -81,7 +81,7 @@ module.exports.uploadAttendance = function (req, res) {
             module.exports.monthlyData(data, function (err) {
                 console.log("savedatInitiate");
                 // TODO: handle error
-                console.log("unknownData: "+JSON.stringify(unknownData));
+                console.log("unknownData: " + JSON.stringify(unknownData));
                 parser.resume();
             });
         }
@@ -189,71 +189,71 @@ module.exports.monthlyData = function (data, callback) {
         for (var x = 1; x <= 31; x++) {
             console.log("x: " + x);
             monthAtt.push({ "date": x, "status": data[x] });
+        }
 
-            if (x == 31) {
-                console.log("*monthAtt: " + JSON.stringify(monthAtt));
-                stud.find({ "studId": data.StudentID }).toArray(function (err, isThereData) {
-                    console.log("Basic query: " + isThereData.length);
-                    if (err) {
-                        console.log("error: " + err);
-                        message = err;
-                        marker = false;
-                        if (callback) callback();
-                    }
-                    else {
-                        if (isThereData.length > 0) {
-                            stud.find({ "studId": data.StudentID, "attendance.month": month }).toArray(function (err, findData) {
-                                console.log("1st query findData: " + JSON.stringify(findData));
-                                arrayLength = findData[0].attendance[0].dateAttendance.length;
-                                if (err) {
-                                    console.log("error: " + err);
-                                    message = err;
-                                    marker = false;
-                                    if (callback) callback();
-                                }
-                                else {
-                                    console.log("no erroe");
-                                    console.log("arrayLength: " + arrayLength);
-                                    if (arrayLength == 0) {
-                                        console.log("second query started");
-                                        console.log("studIdForFindQry: " + JSON.stringify(studIdForFindQry));
-                                        console.log("monthAtt: " + JSON.stringify(monthAtt));
-                                        stud.update(studIdForFindQry, { $push: { "attendance.$.dateAttendance": monthAtt } }, function (err, findData) {
-                                            console.log("update month started: " + JSON.stringify(data));
-                                            monthAtt = [];
-                                            if (err) {
-                                                marker = false;
-                                                message = err;
-                                                if (callback) callback();
-                                            }
-                                            else {
-                                                marker = true;
-                                                if (callback) callback();
-                                            }
-                                        })
-                                    }
-                                    else {
+        console.log("*monthAtt: " + JSON.stringify(monthAtt));
+        stud.find({ "studId": data.StudentID }).toArray(function (err, isThereData) {
+            console.log("Basic query: " + isThereData.length);
+            if (err) {
+                console.log("error: " + err);
+                message = err;
+                marker = false;
+                if (callback) callback();
+            }
+            else {
+                if (isThereData.length > 0) {
+                    stud.find({ "studId": data.StudentID, "attendance.month": month }).toArray(function (err, findData) {
+                        console.log("1st query findData: " + JSON.stringify(findData));
+                        arrayLength = findData[0].attendance[0].dateAttendance.length;
+                        if (err) {
+                            console.log("error: " + err);
+                            message = err;
+                            marker = false;
+                            if (callback) callback();
+                        }
+                        else {
+                            console.log("no erroe");
+                            console.log("arrayLength: " + arrayLength);
+                            if (arrayLength == 0) {
+                                console.log("second query started");
+                                console.log("studIdForFindQry: " + JSON.stringify(studIdForFindQry));
+                                console.log("monthAtt: " + JSON.stringify(monthAtt));
+                                stud.update(studIdForFindQry, { $push: { "attendance.$.dateAttendance": monthAtt } }, function (err, findData) {
+                                    console.log("update month started: " + JSON.stringify(data));
+                                    monthAtt = [];
+                                    if (err) {
                                         marker = false;
-            
-                                        message = "Sorry! you already updated for this month";
+                                        message = err;
                                         if (callback) callback();
                                     }
-            
-                                }
-                            })
-                        }
-                        else{
-                            var obj = {
-                                "StudentID":data.StudentID,
-                                "StudentName":data.StudentName
+                                    else {
+                                        marker = true;
+                                        if (callback) callback();
+                                    }
+                                })
                             }
-                            unknownData.push(obj);
+                            else {
+                                marker = false;
+
+                                message = "Sorry! you already updated for this month";
+                                if (callback) callback();
+                            }
+
                         }
+                    })
+                }
+                else {
+                    var obj = {
+                        "StudentID": data.StudentID,
+                        "StudentName": data.StudentName
                     }
-                })
-               
+                    unknownData.push(obj);
+                }
             }
-        }
+        })
+
+
+
 
     }
 

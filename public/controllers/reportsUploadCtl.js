@@ -108,7 +108,7 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
       }
       else {
         if (uploadType == "Attendance") {
-
+          alert(data.data.message);
         }
         else {
           alert(data.data.message);

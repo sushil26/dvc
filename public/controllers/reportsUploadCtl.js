@@ -155,7 +155,7 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
         //   console.log("$scope.css: " + JSON.stringify($scope.css));
       }
       else {
-        console.log("sorry");
+        console.log(data.data.message);
       }
     })
     console.log("<--getAllClass");

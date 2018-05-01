@@ -18,7 +18,10 @@ module.exports.getAllClass = function (req, res) {
             };
             res.status(400).send(responseData);
         } else {
-            var allClass = [];
+            if(data.length>0){
+                
+           
+            allClass=data.cs;
             // console.log("studentList: "+JSON.stringify(studentList));
             console.log("csList.length: " + csList.length);
             // for (var len = 0; len < csList.length; len++) {
@@ -35,6 +38,15 @@ module.exports.getAllClass = function (req, res) {
             };
 
             res.status(200).send(responseData);
+        }
+        else{
+            responseData = {
+                status: false,
+                message: "There is no class"                
+            };
+
+            res.status(200).send(responseData);
+        }
         }
     });
 

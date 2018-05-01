@@ -19,13 +19,13 @@ module.exports.getAllClass = function (req, res) {
         } else {
             var allClass = [];
             // console.log("studentList: "+JSON.stringify(studentList));
-            console.log("studentList.length: " + studentList.length);
-            for (var len = 0; len < csList.length; len++) {
-                var cls = studentList[len].cs[0].class;
-                var sec = studentList[len].cs[0].section;
-                console.log("cls: " + cls);
-                allClass.push({ "class": cls, "section": sec });
-            }
+            console.log("csList.length: " + csList.length);
+            // for (var len = 0; len < csList.length; len++) {
+            //     var cls = studentList[len].cs[0].class;
+            //     var sec = studentList[len].cs[0].section;
+            //     console.log("cls: " + cls);
+            //     allClass.push({ "class": cls, "section": sec });
+            // }
 
             responseData = {
                 status: true,

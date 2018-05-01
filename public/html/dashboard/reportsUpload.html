@@ -36,12 +36,12 @@
                                                 </select>
                                                 <label class="col-lg-4">Class</label>
                                                 <select class="btn btn-danger col-lg-4" placeholder="select" ng-model="up.cSelect" 
-                                                    ng-options="cs.class as cs.class for cs in csList">
+                                                    ng-options="cs as cs.class for cs in csList">
                                                     <option value="" disabled selected>Class</option>
                                                 </select>---{{up.cSelect}}
                                                 <label class="col-lg-4">Section</label>
                                                 <select class="btn btn-danger col-lg-4" placeholder="select" ng-model="up.sSelect" 
-                                                    ng-options="cs as cs.section for cs in up.cSelect">
+                                                    ng-options="cs as cs.section for cs in up.cSelect.section">
                                                     <option value="" disabled selected>Class</option>
                                                 </select>---{{up.sSelect}}
 

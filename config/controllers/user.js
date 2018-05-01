@@ -732,7 +732,7 @@ module.exports.adminCreate = function (req, res) {
     } else {
       adminObj.schoolId = data.ops[0]._id;
 
-      user.insertOne(schoolId, function (err, data) {
+      user.insertOne(adminObj, function (err, data) {
         console.log("data: " + JSON.stringify(data));
         if (err) {
           responseData = {

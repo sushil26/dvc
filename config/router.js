@@ -2,6 +2,7 @@ var user = require('./controllers/user');
 var event = require('./controllers/event');
 var image = require('./controllers/image');
 var adminAction = require('./controllers/adminAction');
+var school = require('./controllers/school');
 
 
 module.exports = function (app) {
@@ -24,7 +25,7 @@ module.exports = function (app) {
     app.get('/vc/studentPersonalData/:id',user.studentPersonalData);
     app.get('/vc/getLoginData/:id',user.getLoginData);
     app.post('/vc/adminCreate', user.adminCreate);
-     app.get('/vc/getAllClass', adminAction.getAllClass);
+     app.get('/vc/getAllClass', school.getAllClass);
     app.post('/vc/uploadStudentMaster', adminAction.uploadStudentMaster);
    // app.post('/vc/uploadMark', adminAction.uploadMark);
      app.post('/vc/uploadAttendance/:reportType/:month', adminAction.uploadAttendance);

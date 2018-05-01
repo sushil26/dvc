@@ -3,6 +3,7 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
   var loginModal; /* ### Note: get login modal instance on this variable ###*/
   var userName;
   $scope.userData = sessionAuthFactory.getAccess("userData");
+  console.log(" $scope.userData : "+JSON.stringify( $scope.userData ));
   if ($scope.userData) {
     userName = $scope.userData.userName;
     // $scope.loginType = $scope.userData.loginType;

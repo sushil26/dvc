@@ -10,6 +10,8 @@ module.exports.getAllClass = function (req, res) {
     var responseData;
     school.find({"schoolName":req.params.schoolName}).toArray(function (err, data) {
         console.log("data: "+JSON.stringify(data));
+
+        allClass=data.cs;
         if (err) {
             responseData = {
                 status: false,
@@ -21,7 +23,6 @@ module.exports.getAllClass = function (req, res) {
             if(data[0].cs.length>0){
                 
            
-            allClass=data.cs;
             // console.log("studentList: "+JSON.stringify(studentList));
             console.log("allClass.length: " + allClass.length);
             // for (var len = 0; len < csList.length; len++) {
@@ -41,8 +42,9 @@ module.exports.getAllClass = function (req, res) {
         }
         else{
             responseData = {
-                status: false,
-                message: "There is no class"                
+                status: true,
+                message: "There is no class",
+                data: allClass                
             };
 
             res.status(200).send(responseData);

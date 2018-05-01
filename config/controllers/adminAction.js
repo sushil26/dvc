@@ -20,6 +20,7 @@ var attendanceIndex; /* ### Note: dateAttendance index based on month select  ##
 module.exports.uploadClassFile = function (req, res) {
     console.log("uploadClassFile-->");
     var responseData;
+    var section = [];
     var classSection = [];
 
     console.log("req.body.files: " + req.files.img);
@@ -33,6 +34,12 @@ module.exports.uploadClassFile = function (req, res) {
     }).on("data", function (data) {
         console.log("data: " + JSON.stringify(data));
         var parts = data.Section.split(',');
+        for (var x = 0; x <= parts.length; x++) {
+            if (parts[x] != " ") {
+                section.push(parts[x])
+            }
+        }
+        console.log("section: " + JSON.stringify(parts));
         console.log("parts: " + JSON.stringify(parts));
         // classSection.push({"class":data.class, "section":[data]})
         parser.pause();

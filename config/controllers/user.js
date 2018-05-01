@@ -720,7 +720,7 @@ module.exports.adminCreate = function (req, res) {
   }
   console.log("schoolObj: " + JSON.stringify(schoolObj));
   console.log("adminObj: " + JSON.stringify(adminObj));
-  school.insertOne(schoolObj, function (err, data) {
+  school.save(schoolObj, function (err, data) {
     console.log("data: " + JSON.stringify(data));
     if (err) {
       responseData = {

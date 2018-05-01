@@ -35,8 +35,9 @@ module.exports.uploadClassFile = function (req, res) {
         console.log("data: " + JSON.stringify(data));
         var parts = data.Section.split(',');
         for (var x = 0; x <= parts.length; x++) {
-            if (parts[x] != "") {
-                section.push(parts[x])
+
+            if (general.emptyCheck(parts[x])) {
+                section.push(parts[x]);
             }
         }
         console.log("section: " + JSON.stringify(parts));

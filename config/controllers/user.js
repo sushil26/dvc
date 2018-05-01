@@ -716,6 +716,7 @@ module.exports.adminCreate = function (req, res) {
     "lastName": req.body.lastName,
     "dob": req.body.dob,
     "email": req.body.email,
+    "schoolName": req.body.schoolName,
     "mobNumber": req.body.mobNumber,
     "pswd": req.body.pswd,
     "status": "active",

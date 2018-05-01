@@ -2,6 +2,7 @@
 var db = require("../dbConfig.js").getDb();
 var user = db.collection("user"); /* ### Teacher collection  ### */
 var stud = db.collection("student"); /* ### student collection  ### */
+var school = db.collection("school"); /* ### school collection  ### */
 
 
 var general = require("../general.js");
@@ -22,6 +23,8 @@ module.exports.uploadClassFile = function (req, res) {
     var responseData;
     var section = [];
     var classSection = [];
+    var consolidateCS = [];
+    var schoolName = req.body.schoolName;
 
     console.log("req.body.files: " + req.files.img);
     if (!req.files)
@@ -41,32 +44,35 @@ module.exports.uploadClassFile = function (req, res) {
             }
         }
         console.log("section: " + JSON.stringify(section));
+        consolidateCS.push({"class":data.Class, "section":section});
+        
         console.log("parts: " + JSON.stringify(parts));
         // classSection.push({"class":data.class, "section":[data]})
-        parser.pause();
+        // parser.pause();
     })
         .on("end", function () {
-            console.log("end marker: " + marker);
-            if (marker == false) {
-                responseData = {
-                    status: false,
-                    message: message
-                };
-                res.status(400).send(responseData);
-            }
-            else if (marker == true) {
-                console.log("unknownData: " + JSON.stringify(unknownData));
-                var unknownStud = unknownData;
-                responseData = {
-                    status: true,
-                    message: "Successfull updated data",
-                    data: unknownStud
-                };
-                unknownData = [];
-                res.status(200).send(responseData);
-            }
-
-
+            console.log("end ");
+            console.log("consolidateCS: " + JSON.stringify(consolidateCS));
+            school.findOneAndUpdate({"schoolName":schoolName},{ $push: { "cs": { $each: consolidateCS } } }, {returnNewDocument: true }, function (err, data) {
+                console.log("data: " + JSON.stringify(data));
+                if (err) {
+                    responseData = {
+                        status: false,
+                        message: err
+                        
+                    };
+                    res.status(400).send(responseData);
+                } else {
+                    responseData = {
+                        status: true,
+                        errorCode: 200,
+                        message: "Insert Successfull",
+                        data: data
+                    };
+                    res.status(200).send(responseData);
+                }
+            });
+           
         });
     console.log("<--uploadClassFile");
 };

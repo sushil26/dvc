@@ -40,7 +40,7 @@ module.exports.uploadClassFile = function (req, res) {
                 section.push(parts[x]);
             }
         }
-        console.log("section: " + JSON.stringify(parts));
+        console.log("section: " + JSON.stringify(section));
         console.log("parts: " + JSON.stringify(parts));
         // classSection.push({"class":data.class, "section":[data]})
         parser.pause();

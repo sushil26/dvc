@@ -48,7 +48,7 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
   $scope.getAllClass();
   $scope.getSection = function (clas) {
     console.log("getSection-->");
-    console.log("clas: " + clas);
+    console.log("clas: " + JSON.stringify(clas));
     console.log("getSection-->");
   }
   $scope.addSMA = function () {

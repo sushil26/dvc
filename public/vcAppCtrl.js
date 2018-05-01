@@ -118,6 +118,7 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
           "id": data.data._id,
           "schoolName": data.data.schoolName,
         }
+        console.log("userData: "+JSON.stringify(userData));
         sessionAuthFactory.setAccess(userData);
 
         $scope.userData = sessionAuthFactory.getAccess("userData");

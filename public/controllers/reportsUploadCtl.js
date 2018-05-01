@@ -148,6 +148,9 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
       if (checkStatus) {
         $scope.csList = data.data.data;
         console.log("csList: " + JSON.stringify($scope.csList));
+        if($scope.csList.length==0){
+          alert(data.data.message);
+        }
         // for (var x = 0; x < $scope.studentList.length; x++) {
         //   $scope.studList.push({ "id": $scope.studentList[x]._id, "name": $scope.studentList[x].studName, "studId": $scope.studentList[x].studId });
 

@@ -746,7 +746,7 @@ module.exports.adminCreate = function (req, res) {
             status: true,
             errorCode: 200,
             message: "Insert Successfull",
-            data: userData
+           
           };
           res.status(200).send(responseData);
         }

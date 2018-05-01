@@ -730,7 +730,7 @@ module.exports.adminCreate = function (req, res) {
       };
       res.status(400).send(responseData);
     } else {
-      adminObj.schoolId = data._id;
+      adminObj.schoolId = data.ops[0]._id;
 
       user.insertOne(schoolId, function (err, data) {
         console.log("data: " + JSON.stringify(data));

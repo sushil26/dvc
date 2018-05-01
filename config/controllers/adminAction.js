@@ -24,7 +24,7 @@ module.exports.uploadClassFile = function (req, res) {
     var section = [];
     var classSection = [];
     var consolidateCS = [];
-    var schoolName = req.body.schoolName;
+    var schoolName = req.params.schoolName;
 
     console.log("req.body.files: " + req.files.img);
     if (!req.files)

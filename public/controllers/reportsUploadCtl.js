@@ -1,5 +1,7 @@
 app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessionAuthFactory) {
   console.log("attendanceCtl==>");
+  $scope.userData = sessionAuthFactory.getAccess("userData");
+  console.log(" $scope.userData : "+JSON.stringify( $scope.userData ));
   $scope.file = {}; /* ### Note: Upload file declaration ### */
   $scope.uploadTypes = ["Student Details", "Attendance", "Payment", "Mark Report"];
   $scope.testTypes = ["AT", "UT", "MT", "TT", "AT"];

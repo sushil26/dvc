@@ -18,7 +18,7 @@ module.exports.getAllClass = function (req, res) {
             };
             res.status(400).send(responseData);
         } else {
-            if(data.cs.length>0){
+            if(data[0].cs.length>0){
                 
            
             allClass=data.cs;

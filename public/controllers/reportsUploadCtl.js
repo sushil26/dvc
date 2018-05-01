@@ -166,7 +166,7 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
     console.log("<--getAllClass");
   }
 
-  $scope.getAllClass();
+ 
   $scope.getStudListForCS = function (css) {
 
     console.log("getStudListForCS-->");

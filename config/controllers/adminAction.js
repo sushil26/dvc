@@ -32,11 +32,10 @@ module.exports.uploadClassFile = function (req, res) {
         ignoreEmpty: true
     }).on("data", function (data) {
         console.log("data: " + JSON.stringify(data));
+        var parts = data.Section.split(',');
+        console.log("parts: " + JSON.stringify(parts));
         // classSection.push({"class":data.class, "section":[data]})
         parser.pause();
-
-
-
     })
         .on("end", function () {
             console.log("end marker: " + marker);

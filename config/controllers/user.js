@@ -718,6 +718,7 @@ module.exports.adminCreate = function (req, res) {
     "email": req.body.email,
     "mobNumber": req.body.mobNumber,
     "pswd": req.body.pswd,
+    "status": "active",
     "loginType": "admin"
   }
   console.log("schoolObj: " + JSON.stringify(schoolObj));

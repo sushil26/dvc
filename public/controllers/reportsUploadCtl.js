@@ -9,6 +9,38 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
   $scope.monthList = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
   $scope.sma = []; /* ### Note:sma-Subject Mark Attendant  */
+
+  $scope.getAllClass = function () {
+    console.log("getAllClass-->");
+    var schoolName = $scope.userData.schoolName;
+    var api = "https://norecruits.com/vc/getAllClass/"+schoolName;
+    console.log("api: " + api);
+    httpFactory.get(api).then(function (data) {
+      console.log("data--" + JSON.stringify(data.data));
+      var checkStatus = httpFactory.dataValidation(data);
+      // console.log("checkStatus: "+checkStatus);
+      // console.log("data--" + JSON.stringify(data.data));
+      if (checkStatus) {
+        $scope.csList = data.data.data;
+        console.log("csList: " + JSON.stringify($scope.csList));
+        if($scope.csList.length==0){
+          console.log(data.data.message);
+        }
+        // for (var x = 0; x < $scope.studentList.length; x++) {
+        //   $scope.studList.push({ "id": $scope.studentList[x]._id, "name": $scope.studentList[x].studName, "studId": $scope.studentList[x].studId });
+
+        // }
+        //  console.log(" $scope.studList.length: " + $scope.studList.length);
+        //   $scope.css = $scope.teacherData[0].css;
+        //   console.log("$scope.css: " + JSON.stringify($scope.css));
+      }
+      else {
+        console.log(data.data.message);
+      }
+    })
+    console.log("<--getAllClass");
+  }
+
   $scope.getAllClass();
   $scope.addSMA = function () {
     console.log("addSMA-->");
@@ -135,37 +167,7 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
     console.log("<--uploadFile");
   }
 
-  $scope.getAllClass = function () {
-    console.log("getAllClass-->");
-    var schoolName = $scope.userData.schoolName;
-    var api = "https://norecruits.com/vc/getAllClass/"+schoolName;
-    console.log("api: " + api);
-    httpFactory.get(api).then(function (data) {
-      console.log("data--" + JSON.stringify(data.data));
-      var checkStatus = httpFactory.dataValidation(data);
-      // console.log("checkStatus: "+checkStatus);
-      // console.log("data--" + JSON.stringify(data.data));
-      if (checkStatus) {
-        $scope.csList = data.data.data;
-        console.log("csList: " + JSON.stringify($scope.csList));
-        if($scope.csList.length==0){
-          alert(data.data.message);
-        }
-        // for (var x = 0; x < $scope.studentList.length; x++) {
-        //   $scope.studList.push({ "id": $scope.studentList[x]._id, "name": $scope.studentList[x].studName, "studId": $scope.studentList[x].studId });
-
-        // }
-        //  console.log(" $scope.studList.length: " + $scope.studList.length);
-        //   $scope.css = $scope.teacherData[0].css;
-        //   console.log("$scope.css: " + JSON.stringify($scope.css));
-      }
-      else {
-        console.log(data.data.message);
-      }
-    })
-    console.log("<--getAllClass");
-  }
-
+ 
  
   $scope.getStudListForCS = function (css) {
 

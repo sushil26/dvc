@@ -17,9 +17,9 @@
                                     <section class="panel">
                                         <h1> Attendance Report </h1>
 
-                                        <div class="form-group row" ng-repeat="up in uploadReports">
+                                        <div ng-if="csList.length==0" class="form-group row">
                                             <label class="col-lg-4">Class Details</label>
-                                           
+
                                             <input type="file" style="display: inline-block;width:60%;float:left" class="btnCont btnCont-uploadColor col-lg-3" name="myImage"
                                                 value="Upload" image-with-preview file-model="up.uploadDoc" ng-model="image"
                                                 accept="csv" ng-required="true">
@@ -28,7 +28,7 @@
                                             <!-- <button ng-if="up.uploadType=='Attendance'" type="submit" class="btn btn-primary col-lg-3" ng-click="uploadFile(up.uploadDoc,up.uploadType,up.ttSelect,up.mSelect)">Upload</button> -->
                                             <button type="submit" class="btn btn-primary col-lg-3" ng-click="uploadClassFile(up.uploadDoc)">Upload</button>
                                         </div>
-                                        <form role="form" name="uploadForm" encType="multipart/form-data" novalidate>
+                                        <form ng-if="csList.length!=0" role="form" name="uploadForm" encType="multipart/form-data" novalidate>
                                             <div class="form-group row" ng-repeat="up in uploadReports">
                                                 <label class="col-lg-4">Upload Type</label>
                                                 <select class="btn btn-danger col-lg-4" placeholder="select" ng-model="up.uploadType" ng-options="ut as ut for ut in uploadTypes">

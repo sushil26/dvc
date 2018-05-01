@@ -27,10 +27,13 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
         if ($scope.csList.length == 0) {
           console.log(data.data.message);
         }
-        // for (var x = 0; x < $scope.studentList.length; x++) {
-        //   $scope.studList.push({ "id": $scope.studentList[x]._id, "name": $scope.studentList[x].studName, "studId": $scope.studentList[x].studId });
+        else {
+          for (var x = 0; x < $scope.csList.length; x++) {
+            $scope.class.push({ "id": $scope.studentList[x]._id, "name": $scope.studentList[x].studName, "studId": $scope.studentList[x].studId });
 
-        // }
+          }
+        }
+
         //  console.log(" $scope.studList.length: " + $scope.studList.length);
         //   $scope.css = $scope.teacherData[0].css;
         //   console.log("$scope.css: " + JSON.stringify($scope.css));
@@ -43,6 +46,11 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
   }
 
   $scope.getAllClass();
+  $scope.getSection = function (clas) {
+    console.log("getSection-->");
+    console.log("clas: " + clas);
+    console.log("getSection-->");
+  }
   $scope.addSMA = function () {
     console.log("addSMA-->");
 
@@ -110,7 +118,7 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
       "file": file
     }
     var api = "https://norecruits.com/vc/uploadClassFile/" + schoolName;
-    console.log("api: "+api);
+    console.log("api: " + api);
     httpFactory.csvUpload(obj, api).then(function (data) {
       var checkStatus = httpFactory.dataValidation(data);
       console.log("data--" + JSON.stringify(data.data));

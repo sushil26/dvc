@@ -9,7 +9,7 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
   $scope.monthList = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
   $scope.sma = []; /* ### Note:sma-Subject Mark Attendant  */
-
+  $scope.getAllClass();
   $scope.addSMA = function () {
     console.log("addSMA-->");
 
@@ -143,8 +143,8 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
     httpFactory.get(api).then(function (data) {
       console.log("data--" + JSON.stringify(data.data));
       var checkStatus = httpFactory.dataValidation(data);
-      console.log("checkStatus: "+checkStatus);
-      console.log("data--" + JSON.stringify(data.data));
+      // console.log("checkStatus: "+checkStatus);
+      // console.log("data--" + JSON.stringify(data.data));
       if (checkStatus) {
         $scope.csList = data.data.data;
         console.log("csList: " + JSON.stringify($scope.csList));

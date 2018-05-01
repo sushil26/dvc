@@ -37,7 +37,7 @@ module.exports.getAllClass = function (req, res) {
                 responseData = {
                     status: true,
                     message: "Successfull retrived data",
-                    data: data.css
+                    data: allClass
                 };
 
                 res.status(200).send(responseData);

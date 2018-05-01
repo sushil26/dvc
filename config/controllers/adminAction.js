@@ -17,12 +17,10 @@ var monthAtt = []; /* ### Note: get all attendance of the month ###*/
 var unknownData = [];
 var attendanceIndex; /* ### Note: dateAttendance index based on month select  ### */
 
-
-
-module.exports.classDetail = function (req, res) {
-    console.log("uploadAttendance-->");
+module.exports.uploadClassFile = function (req, res) {
+    console.log("uploadClassFile-->");
     var responseData;
-var classSection = [];
+    var classSection = [];
 
     console.log("req.body.files: " + req.files.img);
     if (!req.files)
@@ -36,7 +34,7 @@ var classSection = [];
         console.log("data: " + JSON.stringify(data));
         // classSection.push({"class":data.class, "section":[data]})
         parser.pause();
-    
+
 
 
     })
@@ -57,13 +55,13 @@ var classSection = [];
                     message: "Successfull updated data",
                     data: unknownStud
                 };
-                unknownData =[];
+                unknownData = [];
                 res.status(200).send(responseData);
             }
 
 
         });
-    console.log("<--uploadAttendance");
+    console.log("<--uploadClassFile");
 };
 
 module.exports.uploadAttendance = function (req, res) {
@@ -121,7 +119,7 @@ module.exports.uploadAttendance = function (req, res) {
                     message: "Successfull updated data",
                     data: unknownStud
                 };
-                unknownData =[];
+                unknownData = [];
                 res.status(200).send(responseData);
             }
 
@@ -257,7 +255,7 @@ module.exports.monthlyData = function (data, callback) {
                             console.log("second query started");
                             console.log("studIdForFindQry: " + JSON.stringify(studIdForFindQry));
                             console.log("monthAtt: " + JSON.stringify(monthAtt));
-                            stud.update(studIdForFindQry, { $push: { "attendance.$.dateAttendance":  {$each:monthAtt } }}, function (err, findData) {
+                            stud.update(studIdForFindQry, { $push: { "attendance.$.dateAttendance": { $each: monthAtt } } }, function (err, findData) {
                                 console.log("update month started: " + JSON.stringify(data));
                                 monthAtt = [];
                                 if (err) {

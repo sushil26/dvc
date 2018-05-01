@@ -1,6 +1,7 @@
 app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessionAuthFactory) {
   console.log("attendanceCtl==>");
   $scope.userData = sessionAuthFactory.getAccess("userData");
+  var schoolName = $scope.userData.schoolName;
   console.log(" $scope.userData : " + JSON.stringify($scope.userData));
   $scope.file = {}; /* ### Note: Upload file declaration ### */
   $scope.uploadTypes = ["Student Details", "Attendance", "Payment", "Mark Report"];
@@ -12,8 +13,8 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
 
   $scope.getAllClass = function () {
     console.log("getAllClass-->");
-    var schoolName = $scope.userData.schoolName;
-    var api = "https://norecruits.com/vc/getAllClass/"+schoolName;
+
+    var api = "https://norecruits.com/vc/getAllClass/" + schoolName;
     console.log("api: " + api);
     httpFactory.get(api).then(function (data) {
       console.log("data--" + JSON.stringify(data.data));
@@ -23,7 +24,7 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
       if (checkStatus) {
         $scope.csList = data.data.data;
         console.log("csList: " + JSON.stringify($scope.csList));
-        if($scope.csList.length==0){
+        if ($scope.csList.length == 0) {
           console.log(data.data.message);
         }
         // for (var x = 0; x < $scope.studentList.length; x++) {
@@ -104,10 +105,22 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
 
   $scope.uploadClassFile = function (file) {
     console.log("uploadClassFile-->");
+
     var obj = {
-      "schoolName": "ABC",
       "file": file
     }
+    var api = "https://norecruits.com/vc/uploadClassFile/" + schoolName;
+    console.log("api: "+api);
+    httpFactory.csvUpload(obj, api).then(function (data) {
+      var checkStatus = httpFactory.dataValidation(data);
+      console.log("data--" + JSON.stringify(data.data));
+      if (checkStatus) {
+        // $window.location.href = $scope.propertyJson.R082;
+        alert("Successfully Student inserted " + data.data.message);
+      } else {
+        alert("student Insert Fail");
+      }
+    });
     console.log("<--uploadClassFile");
   }
 
@@ -167,8 +180,8 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
     console.log("<--uploadFile");
   }
 
- 
- 
+
+
   $scope.getStudListForCS = function (css) {
 
     console.log("getStudListForCS-->");

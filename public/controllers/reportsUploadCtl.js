@@ -142,6 +142,7 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
     console.log("api: " + api);
     httpFactory.get(api).then(function (data) {
       var checkStatus = httpFactory.dataValidation(data);
+      console.log("checkStatus: "+checkStatus);
       console.log("data--" + JSON.stringify(data.data));
       if (checkStatus) {
         $scope.csList = data.data.data;

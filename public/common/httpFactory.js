@@ -77,7 +77,7 @@ app.factory('httpFactory', function($http, $q, $rootScope) {
         },
        
         dataValidation: function(responceData) {
-            //console.log("responceData status"+responceData.status);
+            console.log("responceData status"+responceData.status);
             if (responceData.status == 200) {
                 return true;
             }  

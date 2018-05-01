@@ -12,7 +12,7 @@ module.exports.getAllClass = function (req, res) {
     var allClass = [];
     school.find({ "schoolName": req.params.schoolName }).toArray(function (err, data) {
         console.log("data: " + JSON.stringify(data));
-        allClass = data.cs;
+       
         console.log("allClass: " + JSON.stringify(allClass));
         if (err) {
             responseData = {
@@ -26,7 +26,7 @@ module.exports.getAllClass = function (req, res) {
 
 
                 // console.log("studentList: "+JSON.stringify(studentList));
-                console.log("allClass.length: " + allClass.length);
+               // console.log("allClass.length: " + allClass.length);
                 // for (var len = 0; len < csList.length; len++) {
                 //     var cls = studentList[len].cs[0].class;
                 //     var sec = studentList[len].cs[0].section;
@@ -37,7 +37,7 @@ module.exports.getAllClass = function (req, res) {
                 responseData = {
                     status: true,
                     message: "Successfull retrived data",
-                    data: allClass
+                    data: data.css
                 };
 
                 res.status(200).send(responseData);

@@ -18,12 +18,12 @@ module.exports.getAllClass = function (req, res) {
             };
             res.status(400).send(responseData);
         } else {
-            if(data.length>0){
+            if(data.cs.length>0){
                 
            
             allClass=data.cs;
             // console.log("studentList: "+JSON.stringify(studentList));
-            console.log("csList.length: " + csList.length);
+            console.log("allClass.length: " + allClass.length);
             // for (var len = 0; len < csList.length; len++) {
             //     var cls = studentList[len].cs[0].class;
             //     var sec = studentList[len].cs[0].section;

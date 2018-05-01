@@ -8,7 +8,7 @@ var bodyParser = require('body-parser');
 module.exports.getAllClass = function (req, res) {
     console.log("getAllClass-->");
     var responseData;
-    school.find().toArray(function (err, csList) {
+    school.find({"schoolName":req.params.schoolName}).toArray(function (err, csList) {
         if (err) {
             responseData = {
                 status: false,

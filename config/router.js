@@ -25,7 +25,7 @@ module.exports = function (app) {
     app.get('/vc/studentPersonalData/:id',user.studentPersonalData);
     app.get('/vc/getLoginData/:id',user.getLoginData);
     app.post('/vc/adminCreate', user.adminCreate);
-     app.get('/vc/getAllClass', school.getAllClass);
+     app.get('/vc/getAllClass/:schoolName', school.getAllClass);
     app.post('/vc/uploadStudentMaster', adminAction.uploadStudentMaster);
    // app.post('/vc/uploadMark', adminAction.uploadMark);
      app.post('/vc/uploadAttendance/:reportType/:month', adminAction.uploadAttendance);

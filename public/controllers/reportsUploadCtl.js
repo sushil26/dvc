@@ -1,7 +1,7 @@
 app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessionAuthFactory) {
   console.log("attendanceCtl==>");
   $scope.userData = sessionAuthFactory.getAccess("userData");
-  console.log(" $scope.userData : "+JSON.stringify( $scope.userData ));
+  console.log(" $scope.userData : " + JSON.stringify($scope.userData));
   $scope.file = {}; /* ### Note: Upload file declaration ### */
   $scope.uploadTypes = ["Student Details", "Attendance", "Payment", "Mark Report"];
   $scope.testTypes = ["AT", "UT", "MT", "TT", "AT"];
@@ -9,7 +9,7 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
   $scope.monthList = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
   $scope.sma = []; /* ### Note:sma-Subject Mark Attendant  */
- 
+
   $scope.addSMA = function () {
     console.log("addSMA-->");
 
@@ -137,8 +137,8 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
 
   $scope.getAllClass = function () {
     console.log("getAllClass-->");
-
-    var api = "https://norecruits.com/vc/getAllClass";
+    var schoolName = $scope.userData.schoolName;
+    var api = "https://norecruits.com/vc/getAllClass/"+schoolName;
     console.log("api: " + api);
     httpFactory.get(api).then(function (data) {
       var checkStatus = httpFactory.dataValidation(data);

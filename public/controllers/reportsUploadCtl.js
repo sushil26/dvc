@@ -116,9 +116,9 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
       console.log("data--" + JSON.stringify(data.data));
       if (checkStatus) {
         // $window.location.href = $scope.propertyJson.R082;
-        alert("Successfully Student inserted " + data.data.message);
+        alert(data.data.message);
       } else {
-        alert("student Insert Fail");
+        alert("Class Update Fail");
       }
     });
     console.log("<--uploadClassFile");

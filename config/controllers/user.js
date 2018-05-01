@@ -75,7 +75,7 @@ module.exports.login4VC = function (req, res) {
   var responseData;
   if (general.emptyCheck(req.body.email) && general.emptyCheck(req.body.password)) {
     if (req.body.loginType == "teacher") {
-      user.find({ teacherEmail: req.body.email }).toArray(function (err, data) {
+      user.find({ $or: [ { teacherEmail: req.body.email },{email:req.body.email}]}).toArray(function (err, data) {
         if (data.length > 0) {
           if (data[0].password == req.body.pswd) {
             if (data[0].status == "active") {
@@ -104,39 +104,7 @@ module.exports.login4VC = function (req, res) {
             };
             res.status(200).send(responseData);
           }
-        } 
-        else if(data.length==0){
-        user.find({ email: req.body.email }).toArray(function (err, data) {
-          if (data.length > 0) {
-            if (data[0].password == req.body.pswd) {
-              if (data[0].status == "active") {
-                console.log("Successfully Logged in");
-                responseData = {
-                  status: true,
-                  message: "Login Successfully",
-                  sessionData: "79ea520a-3e67-11e8-9679-97fa7aeb8e97",
-                  data: data[0]
-                };
-                res.status(200).send(responseData);
-              } else {
-                console.log("Profile Inactive");
-                responseData = {
-                  status: false,
-                  message: "Profile Inactive",
-                  data: data[0]
-                };
-                res.status(200).send(responseData);
-              }
-            } else {
-              responseData = {
-                status: false,
-                errorCode: "E005",
-                message: "Password is wrong"
-              };
-              res.status(200).send(responseData);
-            }
-          }
-          else {
+        } else {
           responseData = {
             status: false,
             errorCode: "No Match",
@@ -147,7 +115,6 @@ module.exports.login4VC = function (req, res) {
         }
       });
     } 
-    
     else {
       stud.find({ $or: [{ parentEmail: req.body.email }, { MotherEmail: req.body.email }] }).toArray(function (err, data) {
         if (data.length > 0) {
@@ -157,6 +124,7 @@ module.exports.login4VC = function (req, res) {
               responseData = {
                 status: true,
                 message: "Login Successfully",
+                loginType: "studParent",
                 data: data[0]
               };
               res.status(200).send(responseData);
@@ -181,7 +149,8 @@ module.exports.login4VC = function (req, res) {
           responseData = {
             status: false,
             errorCode: "No Match",
-            message: "There is no match for this EMail id from student database"
+            message:
+              "There is no match for this EMail id from student database"
           };
           res.status(200).send(responseData);
         }

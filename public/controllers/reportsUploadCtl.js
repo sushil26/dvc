@@ -141,6 +141,7 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
     var api = "https://norecruits.com/vc/getAllClass/"+schoolName;
     console.log("api: " + api);
     httpFactory.get(api).then(function (data) {
+      console.log("data--" + JSON.stringify(data));
       var checkStatus = httpFactory.dataValidation(data);
       console.log("checkStatus: "+checkStatus);
       console.log("data--" + JSON.stringify(data.data));

@@ -20,7 +20,7 @@ app.controller('adminCreateCtl', function ($scope, $window, httpFactory, session
         }
         console.log("objJson: "+JSON.stringify(objJson));
         var api = "https://norecruits.com/vc/adminCreate";
-        httpFactory.post(api, obj).then(function (data) {
+        httpFactory.post(api, objJson).then(function (data) {
             var checkStatus = httpFactory.dataValidation(data);
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {

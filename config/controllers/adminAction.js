@@ -53,7 +53,8 @@ module.exports.uploadClassFile = function (req, res) {
         .on("end", function () {
             console.log("end ");
             console.log("consolidateCS: " + JSON.stringify(consolidateCS));
-            school.findOneAndUpdate({"schoolName":schoolName},{ $push: { "cs": { $each: consolidateCS } } }, {returnNewDocument: true }, function (err, data) {
+            console.log("schoolName:"+schoolName);
+            school.findOneAndUpdate({"schoolName":schoolName},{ $push: { "cs": { $each: consolidateCS } } }, {new: true }, function (err, data) {
                 console.log("data: " + JSON.stringify(data));
                 if (err) {
                     responseData = {

@@ -81,7 +81,7 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
           "userName": data.data.teacherName,
           "status": data.data.status,
           "email": data.data.teacherEmail,
-          "loginType": data.loginType,
+          "loginType": data.data.loginType,
           "id": data.data._id,
           "schoolName": data.data.schoolName,
         }
@@ -99,7 +99,7 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
           "userName": data.data.studName,
           "status": data.data.status,
           "email": data.data.parentEmail,
-          "loginType": data.loginType,
+          "loginType": data.data.loginType,
           "id": data.data._id,
           "schoolName": data.data.schoolName
         }

@@ -12,7 +12,7 @@ module.exports.getAllClass = function (req, res) {
     var allClass = [];
     school.find({ "schoolName": req.params.schoolName }).toArray(function (err, data) {
         console.log("data: " + JSON.stringify(data));
-        allClass=data.cs;
+        allClass=data[0].cs;
         console.log("allClass: " + JSON.stringify(allClass));
         if (err) {
             responseData = {

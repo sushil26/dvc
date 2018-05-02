@@ -50,4 +50,32 @@ app.controller('allUserCtl', function ($scope, $window, httpFactory, sessionAuth
         })
         console.log("<--schoolUserData");
     }
+
+    $scope.updateAdminStatus = function (id, status) {
+        console.log("updateUserStatus-->");
+        var api = "https://norecruits.com/vc/updateUserStatus";
+        //var api = "http://localhost:5000/vc/updateUserStatus";
+
+        var obj = {
+            "id": id,
+            "status": status
+        }
+
+        httpFactory.post(api, obj).then(function (data) {
+            var checkStatus = httpFactory.dataValidation(data);
+            console.log("data--" + JSON.stringify(data.data));
+            if (checkStatus) {
+                $scope.userData[index].status = status;
+                alert("Updated Status Successfully");
+
+            }
+            else {
+                alert("Status updated failed, try again ");
+
+            }
+
+        })
+
+        console.log("<--updateUserStatus");
+    }
 })

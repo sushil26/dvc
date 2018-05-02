@@ -57,8 +57,8 @@
                                                             <td style="background-color:aliceblue;">{{ad.mobNumber}}</td>
                                                             <td style="background-color:tomato;">{{ad.status}}</td>
                                                             <td style="background-color:aliceblue;">
-                                                                <button class="btn" ng-if="ad.status=='active'" ng-click="updateStudStatus(ad._id,'inactive',$index)" style="width: 70px;">Dectivate</button>
-                                                                <button class="btn" ng-if="ad.status=='inactive'" ng-click="updateStudStatus(ad._id,'active',$index)" style="width: 70px;">Activate</button>
+                                                                <button class="btn" ng-if="ad.status=='active'" ng-click="updateAdminStatus(ad._id,'inactive')" style="width: 70px;">Dectivate</button>
+                                                                <button class="btn" ng-if="ad.status=='inactive'" ng-click="updateAdminStatus(ad._id,'active')" style="width: 70px;">Activate</button>
                                                             </td>
                                                             <td style="background-color:aliceblue;">
                                                                 <button class="btn" ng-click="deleteStud(ad._id, $index)">Delete</button>
@@ -79,9 +79,11 @@
                                                     <thead>
                                                         <tr>
                                                             <th>#</th>
+                                                            <th>Teacher Id</th>
+                                                            
                                                             <th>Teacher First Name</th>
                                                             <th>Teacher Last Name</th>
-                                                            <th>Teacher Id</th>
+                                                           
                                                             <th>Email</th>
                                                             <th>Mobile Number</th>
                                                             <th>Status</th>
@@ -91,13 +93,14 @@
                                                     <tbody>
                                                         <tr ng-repeat="td in teacherData" ng-if="td.loginType!='admin'">
                                                             <td style="background-color:aliceblue;">{{$index+1}}.</td>
+                                                            <td style="background-color:aliceblue;">{{td.schoolId}}</td>
                                                             <td style="background-color:aliceblue;">
                                                                 <a class="btn-info" ng-click="tableForTimes($index)">{{td.firstName}}</a>
                                                             </td>
                                                             <td style="background-color:aliceblue;">
                                                                 <a class="btn-info" ng-click="tableForTimes($index)">{{td.lastName}}</a>
                                                             </td>
-                                                            <td style="background-color:aliceblue;">{{td.schoolId}}</td>
+                                                         
                                                             <td style="background-color:aliceblue;">{{td.email}}</td>
                                                             <td style="background-color:aliceblue;">{{td.mobileNum}}</td>
                                                             <td ng-if="td.status=='active'" style="background-color:aliceblue;">{{td.status}}</td>

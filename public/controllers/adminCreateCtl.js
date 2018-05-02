@@ -4,7 +4,7 @@ app.controller('adminCreateCtl', function ($scope, $window, httpFactory, session
     $scope.adminCreate = function () {
         console.log("adminCreate-->");
         var objJson = {
-            "schoolName":"ABC",
+            "schoolName":"DPS",
             "schoolRegNumber":"12345",
             "firstName":"raja",
             "lastName":"rani",

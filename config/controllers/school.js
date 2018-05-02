@@ -12,7 +12,7 @@ module.exports.getSchoolList = function (req, res) {
     var schoolList = [];
     school.find().toArray(function (err, data) {
         console.log("schoolList: " + JSON.stringify(data));
-       
+
         if (err) {
             responseData = {
                 status: false,
@@ -22,15 +22,15 @@ module.exports.getSchoolList = function (req, res) {
             res.status(400).send(responseData);
         } else {
             schoolList.push(data[0]);
-        console.log("schoolList: " + JSON.stringify(schoolList));
-                responseData = {
-                    status: true,
-                    message: "There is no class",
-                    data: schoolList
-                };
+            console.log("schoolList: " + JSON.stringify(schoolList));
+            responseData = {
+                status: true,
+                message: "There is no class",
+                data: schoolList
+            };
 
-                res.status(200).send(responseData);
-            
+            res.status(200).send(responseData);
+
         }
     });
     console.log("<--getSchoolList");
@@ -42,8 +42,7 @@ module.exports.getAllClass = function (req, res) {
     var allClass = [];
     school.find({ "schoolName": req.params.schoolName }).toArray(function (err, data) {
         console.log("data: " + JSON.stringify(data));
-        allClass=data[0].cs;
-        console.log("allClass: " + JSON.stringify(allClass));
+
         if (err) {
             responseData = {
                 status: false,
@@ -52,11 +51,13 @@ module.exports.getAllClass = function (req, res) {
             };
             res.status(400).send(responseData);
         } else {
+            allClass = data[0].cs;
+            console.log("allClass: " + JSON.stringify(allClass));
             if (data[0].cs.length > 0) {
 
 
                 // console.log("studentList: "+JSON.stringify(studentList));
-               // console.log("allClass.length: " + allClass.length);
+                // console.log("allClass.length: " + allClass.length);
                 // for (var len = 0; len < csList.length; len++) {
                 //     var cls = studentList[len].cs[0].class;
                 //     var sec = studentList[len].cs[0].section;

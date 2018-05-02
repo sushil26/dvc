@@ -132,7 +132,7 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
     console.log("<--uploadClassFile");
   }
 
-  $scope.uploadFile = function (clas, section, file, uploadType, reportType, list) {
+  $scope.uploadFile = function (file, uploadType, clas, section, reportType, list) {
     console.log("uploadFile-->");
     console.log("file: " + file);
     

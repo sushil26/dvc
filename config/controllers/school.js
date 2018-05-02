@@ -12,8 +12,7 @@ module.exports.getSchoolList = function (req, res) {
     var schoolList = [];
     school.find().toArray(function (err, data) {
         console.log("schoolList: " + JSON.stringify(data));
-        schoolList.push(data[0].schoolName);
-        console.log("schoolList: " + JSON.stringify(schoolList));
+       
         if (err) {
             responseData = {
                 status: false,
@@ -22,7 +21,8 @@ module.exports.getSchoolList = function (req, res) {
             };
             res.status(400).send(responseData);
         } else {
-           
+            schoolList.push(data[0]);
+        console.log("schoolList: " + JSON.stringify(schoolList));
                 responseData = {
                     status: true,
                     message: "There is no class",

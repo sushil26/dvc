@@ -85,11 +85,11 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr ng-repeat="ud in userData">
+                  <tr ng-repeat="ud in userData" ng-if="ud.loginType!='admin'">
                     <td style="background-color:aliceblue;">{{$index+1}}.</td>
                     <td style="background-color:aliceblue;">{{ud.schoolId}}</td>
                     <td style="background-color:aliceblue;">
-                      <a class="btn-info" ng-click="tableForTimes($index)">{{ud.firstName}} {{ud.lastName}}</a>
+                      <a class="btn-info" ng-click="tableForTimes($index)">{{ud.firstName + " " + ud.lastName}}</a>
                     </td>
                     <td style="background-color:aliceblue;">{{ud.teacherEmail}}</td>
                     <td style="background-color:aliceblue;">{{ud.mobileNum}}</td>
@@ -132,9 +132,9 @@
               <tbody>
                 <tr ng-repeat="sd in studData">
                   <td style="background-color:aliceblue;">{{$index+1}}.</td>
-                  <td style="background-color:aliceblue;">{{sd.studId}}</td>
+                  <td style="background-color:aliceblue;">{{sd.schoolId}}</td>
                   <td style="background-color:aliceblue;">
-                    <button type="button" class="btn-info " data-toggle="modal" data-target="#myModal">{{sd.firstName}}{{ sd.lastName}}</button>
+                    <button type="button" class="btn-info " data-toggle="modal" data-target="#myModal">{{sd.firstName + " " + sd.lastName}}</button>
                     <!-- Modal -->
                   </td>
                   <td style="background-color:aliceblue;">{{sd.cs[0].class}}</td>

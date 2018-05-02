@@ -37,8 +37,7 @@
                                                         <tr>
                                                             <th>#</th>
 
-                                                            <th>First Name</th>
-                                                            <th>Last Name</th>
+                                                            <th>Admin Name</th>
                                                             <th>Email</th>
                                                             <th>Phone Number</th>
 
@@ -50,9 +49,7 @@
                                                     <tbody>
                                                         <tr ng-repeat="ad in teacherData" ng-if="ad.loginType=='admin'">
                                                             <td style="background-color:aliceblue;">{{$index+1}}.</td>
-                                                            <td style="background-color:aliceblue;">{{ad.firstName}}</td>
-                                                            <td style="background-color:aliceblue;">{{ad.lastName}}</td>
-
+                                                            <td style="background-color:aliceblue;">{{ad.firstName + " " + ad.lastName}}</td>
                                                             <td style="background-color:aliceblue;">{{ad.email}}</td>
                                                             <td style="background-color:aliceblue;">{{ad.mobNumber}}</td>
                                                             <td style="background-color:tomato;">{{ad.status}}</td>
@@ -91,7 +88,7 @@
                                                             <td style="background-color:aliceblue;">{{$index+1}}.</td>
                                                             <td style="background-color:aliceblue;">{{td.schoolId}}</td>
                                                             <td style="background-color:aliceblue;">
-                                                                <a class="btn-info" ng-click="tableForTimes($index)">{{td.firstName}} {{td.lastName}}</a>
+                                                                <a class="btn-info" ng-click="tableForTimes($index)">{{td.firstName + " " + td.lastName}}</a>
                                                             </td>
                                                             <td style="background-color:aliceblue;">{{td.email}}</td>
                                                             <td style="background-color:aliceblue;">{{td.mobileNum}}</td>
@@ -127,7 +124,7 @@
                                                             <td style="background-color:aliceblue;">{{$index+1}}.</td>
                                                             <td style="background-color:aliceblue;">{{sd.schoolId}}</td>
                                                             <td style="background-color:aliceblue;">
-                                                                <button type="button" class="btn-info " data-toggle="modal" data-target="#myModal">{{sd.firstName}} {{sd.lastName}}</button>
+                                                                <button type="button" class="btn-info " data-toggle="modal" data-target="#myModal">{{sd.firstName + " " + sd.lastName}}</button>
                                                                 <!-- Modal -->
                                                             </td>
                                                             <td style="background-color:aliceblue;">{{sd.cs[0].class}}</td>

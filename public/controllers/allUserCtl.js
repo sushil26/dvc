@@ -40,7 +40,7 @@ app.controller('allUserCtl', function ($scope, $window, httpFactory, sessionAuth
                 $scope.teacherData = schoolUser.schoolTeacherList;
                 $scope.studentData = schoolUser.schoolStudentList;
                 console.log(" $scope.teacherData: " + JSON.stringify( $scope.teacherData));
-                // console.log("$scope.studentData: " + JSON.stringify($scope.studentData));
+                console.log("$scope.studentData: " + JSON.stringify($scope.studentData));
                 console.log(data.data.message);
             }
             else {

@@ -84,7 +84,7 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr ng-repeat="td in teacherData" ng-if="td.loginType!='admin'">
+                                                        <tr ng-repeat="td in teacherData" ng-if="td.loginType=='teacher'">
                                                             <td style="background-color:aliceblue;">{{$index+1}}.</td>
                                                             <td style="background-color:aliceblue;">{{td.schoolId}}</td>
                                                             <td style="background-color:aliceblue;">

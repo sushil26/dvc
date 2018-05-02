@@ -38,7 +38,7 @@ module.exports.getSchoolUser = function (req, res) {
             res.status(400).send(responseData);
         } else {
             schoolUserList.schoolTeacherList.push(data[0]);
-            console.log("schoolUserList: " + JSON.stringify(schoolUserList));
+           // console.log("schoolUserList: " + JSON.stringify(schoolUserList));
 
             stud.find({ "schoolName": req.params.schoolName }).toArray(function (err, studentData) {
                 console.log("studentData: " + JSON.stringify(studentData));
@@ -51,8 +51,8 @@ module.exports.getSchoolUser = function (req, res) {
                     };
                     res.status(400).send(responseData);
                 } else {
-                    schoolUserList.schoolStudentList.push(data[0]);
-                    console.log("schoolUserList: " + JSON.stringify(schoolUserList));
+                    schoolUserList.schoolStudentList.push(studentData[0]);
+                  //  console.log("schoolUserList: " + JSON.stringify(schoolUserList));
                     responseData = {
                         status: true,
                         message: "All user collected successfully",

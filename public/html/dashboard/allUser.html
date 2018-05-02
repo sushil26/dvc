@@ -1,0 +1,140 @@
+<div ng-controller="allUserCtl">
+    <!--main content start-->
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="col-lg-12">
+                <h3 class="page-header">
+                    <i class="fa fa-user-md"></i> Attendance Report</h3>
+            </div>
+            <!-- page start-->
+            <div>
+                <div>
+                    <section class="panel">
+                        <div class="panel-body">
+                            <div class="tab-content">
+                                <!-- profile -->
+                                <div id="profile">
+                                    <section class="panel">
+                                        <h1> Attendance Report </h1>
+
+                                        <div ng-if="csList.length==0" class="form-group row">
+                                            <label class="col-lg-4">Upload Class Detail</label>
+
+                                            <input type="file" style="display: inline-block;width:60%;float:left" class="btnCont btnCont-uploadColor col-lg-3" name="myImage"
+                                                value="Upload" image-with-preview file-model="up.uploadDoc" ng-model="image"
+                                                accept="csv" ng-required="true">
+                                            <img ng-show="image.src" ng-src="{{image.src}}" style="width: 50%;margin-top: 2%;" />
+
+                                            <!-- <button ng-if="up.uploadType=='Attendance'" type="submit" class="btn btn-primary col-lg-3" ng-click="uploadFile(up.uploadDoc,up.uploadType,up.ttSelect,up.mSelect)">Upload</button> -->
+                                            <button type="submit" class="btn btn-primary col-lg-3" ng-click="uploadClassFile(up.uploadDoc)">Upload</button>
+                                        </div>
+                                        <form ng-if="csList.length!=0" role="form" name="uploadForm" encType="multipart/form-data" novalidate>
+                                            <div class="form-group row" ng-repeat="up in uploadReports">
+                                                <label class="col-lg-4">Upload Type</label>
+                                                <select class="btn btn-danger col-lg-4" placeholder="select" ng-model="up.uploadType" ng-options="ut as ut for ut in uploadTypes">
+                                                    <option value="" disabled selected>Upload Type</option>
+                                                </select>
+                                                <label class="col-lg-4">Class</label>
+                                                <select class="btn btn-danger col-lg-4" placeholder="select" ng-model="up.cSelect" 
+                                                    ng-options="cs as cs.class for cs in csList">
+                                                    <option value="" disabled selected>Class</option>
+                                                </select>
+                                                <label class="col-lg-4">Section</label>
+                                                <select class="btn btn-danger col-lg-4" placeholder="select" ng-model="up.sSelect" 
+                                                    ng-options="s as s for s in up.cSelect.section">
+                                                    <option value="" disabled selected>Section</option>
+                                                </select>
+
+                                                <!-- <select class="btn col-lg-3" placeholder="select" ng-model="up.studSelect" ng-options="cs as cs.name + '-' + cs.studId for cs in studList">
+                                                    <option value="" disabled selected>Student</option>
+                                                </select> -->
+                                                <label class="col-lg-4" ng-if="up.uploadType=='Mark Report'">Type of Test</label>
+                                                <select class="btn col-lg-4" ng-if="up.uploadType=='Mark Report'" placeholder="select" ng-model="up.ttSelect" ng-options="tt as tt for tt in testTypes">
+                                                    <option value="" disabled selected>Type of Test</option>
+                                                </select>
+                                                <label class="col-lg-4" ng-if="up.uploadType=='Attendance'">Attendance report</label>
+                                                <select class="btn col-lg-4" ng-if="up.uploadType=='Attendance'" placeholder="select" ng-model="up.ttSelect" ng-options="at as at for at in attendanceTypes">
+                                                    <option value="" disabled selected>Attendance report</option>
+                                                </select>
+                                                <label class="col-lg-4" ng-if="up.uploadType=='Attendance'">Month</label>
+                                                <select class="btn col-lg-4" ng-if="up.uploadType=='Attendance'" placeholder="select" ng-model="up.mSelect" ng-options="ml as ml for ml in monthList">
+                                                    <option value="" disabled selected>Attendance report</option>
+                                                </select>
+                                                <label class="col-lg-4" ng-if="up.uploadType=='Payment'">Payment report</label>
+                                                <select class="btn col-lg-4" ng-if="up.uploadType=='Payment'" placeholder="select" ng-model="up.ttSelect" ng-options="tt as tt for tt in testTypes">
+                                                    <option value="" disabled selected>Payment report</option>
+                                                </select>
+                                                <br>
+                                                <br>
+                                                <input type="file" style="display: inline-block;width:60%;float:left" class="btnCont btnCont-uploadColor col-lg-3" name="myImage"
+                                                    value="Upload" image-with-preview file-model="up.uploadDoc" ng-model="image"
+                                                    accept="csv" ng-required="true">
+                                                <img ng-show="image.src" ng-src="{{image.src}}" style="width: 50%;margin-top: 2%;" />
+
+                                                <!-- <button ng-if="up.uploadType=='Attendance'" type="submit" class="btn btn-primary col-lg-3" ng-click="uploadFile(up.uploadDoc,up.uploadType,up.ttSelect,up.mSelect)">Upload</button> -->
+                                                <button ng-if="up.uploadType!='Student Details'" type="submit" class="btn btn-primary col-lg-3" ng-click="uploadFile(up.cSelect.class,up.sSelect,up.uploadDoc,up.uploadType, up.ttSelect, up.mSelect)">Upload</button>
+                                                <button ng-if="up.uploadType=='Student Details'" type="submit" class="btn btn-primary col-lg-3" ng-click="uploadFile(up.cSelect.class,up.sSelect,up.uploadDoc,up.uploadType)">Upload</button>"
+                                            </div>
+                                            <hr>
+                                            <button type="submit" class="btn btn-primary" ng-click="addUploadReports()">Add</button>
+                                </div>
+
+                            </div>
+
+                            <br>
+
+                            <br>
+                            <br>
+
+
+                            <!-- <input type="file" name="file" file-model="file" accept="*.csv" />
+         -->
+                            <!-- <input type="file" style="display: inline-block;width:60%;float:left" class="btnCont btnCont-uploadColor" name="myImage"
+                                                        value="Upload" image-with-preview file-model="file" ng-model="image"
+                                                        accept="*.csv" ng-required="true">
+                                                    <img ng-show="image.src" ng-src="{{image.src}}" style="width: 50%;margin-top: 2%;" />   -->
+
+                            <!--   <div class="form-group">
+
+                                               <label class="col-lg-2 control-label">Upload File</label>
+                                                <div class="col-lg-6"> -->
+
+                            <!-- <label class="emailModel-lab">File
+                                                        <span ng-show="uploadForm.myImage.$error.required" class="mandatorySymbol"></span>
+                                                    </label> -->
+                            <!-- <input type="file" style="display: inline-block;width:60%;float:left" class="btnCont btnCont-uploadColor" name="myImage"
+                                                value="Upload" image-with-preview file-model="file.upload" ng-model="image" accept="image/jpeg,image/png"
+                                                ng-required="true">
+                                            <img ng-show="image.src" ng-src="{{image.src}}" style="width: 50%;margin-top: 2%;" /> -->
+                            <!-- <span class="validationNotify" ng-show="uploadForm.myImage.$error.dimensions">
+                                                        <br>Image height should be equal to 350px! Image width should be equal
+                                                        to 650px!
+                                                    </span> 
+                                                    <br>
+                                                </div>
+                                            </div>-->
+                            <br>
+                            <br>
+                            <br>
+                            <div class="form-group">
+                                <div class="col-lg-offset-2 col-lg-10">
+                                    <button type="submit" class="btn btn-primary" ng-click="attendanceMark()">Save</button>
+                                    <button type="reset" class="btn btn-danger">Cancel</button>
+                                </div>
+                                <!-- <div class="col-lg-offset-2 col-lg-10">
+                                                    <button type="submit" class="btn btn-primary" ng-click="festDetailSub(uploadForm, file.upload)">hai</button>
+                                                    <button type="reset" class="btn btn-danger">Cancel</button>
+                                                </div> -->
+                            </div>
+
+                            </form>
+                            </section>
+                        </div>
+                </div>
+            </div>
+            </section>
+</div>
+</div>
+</section>
+</section>
+</div>

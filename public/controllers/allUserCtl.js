@@ -36,11 +36,11 @@ app.controller('allUserCtl', function ($scope, $window, httpFactory, sessionAuth
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
                 var schoolUser = data.data.data;
-                console.log("schoolList: " + JSON.stringify(schoolUser));
-                $scope.teacherData = schoolUser.schoolTeacherList[0];
-                $scope.studentData = schoolUser.schoolStudentList[0];
+                // console.log("schoolList: " + JSON.stringify(schoolUser));
+                $scope.teacherData = schoolUser.schoolTeacherList;
+                $scope.studentData = schoolUser.schoolStudentList;
                 console.log(" $scope.teacherData: " + JSON.stringify( $scope.teacherData));
-                console.log("$scope.studentData: " + JSON.stringify($scope.studentData));
+                // console.log("$scope.studentData: " + JSON.stringify($scope.studentData));
                 console.log(data.data.message);
             }
             else {

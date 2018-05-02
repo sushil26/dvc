@@ -9,11 +9,11 @@ var bodyParser = require('body-parser');
 module.exports.getSchoolList = function (req, res) {
     console.log("getSchoolList-->");
     var responseData;
-    var allClass = [];
-    school.find({},"schoolName").toArray(function (err, data) {
+    var schoolList = [];
+    school.find().toArray(function (err, data) {
         console.log("schoolList: " + JSON.stringify(data));
-        // allClass=data[0].cs;
-        // console.log("allClass: " + JSON.stringify(allClass));
+        schoolList.push(data.schoolName);
+        console.log("schoolList: " + JSON.stringify(schoolList));
         if (err) {
             responseData = {
                 status: false,
@@ -26,7 +26,7 @@ module.exports.getSchoolList = function (req, res) {
                 responseData = {
                     status: true,
                     message: "There is no class",
-                    data: data
+                    data: schoolList
                 };
 
                 res.status(200).send(responseData);

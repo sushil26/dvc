@@ -26,20 +26,19 @@ module.exports.getSchoolUser = function (req, res) {
         "schoolTeacherList": [],
         "schoolStudentList": []
     };
-    user.find({ "schoolName": req.params.schoolName }).toArray(function (err, data) {
-        console.log("data: " + JSON.stringify(data));
+    user.find({ "schoolName": req.params.schoolName }).toArray(function (err, teacherData) {
+        console.log("teacherData: " + JSON.stringify(teacherData));
 
         if (err) {
             responseData = {
                 status: false,
                 message: "Failed to get Data",
-                data: data
+                data: teacherData
             };
             res.status(400).send(responseData);
         } else {
-            schoolUserList.schoolTeacherList.push(data[0]);
+            schoolUserList.schoolTeacherList.push(teacherData);
            // console.log("schoolUserList: " + JSON.stringify(schoolUserList));
-
             stud.find({ "schoolName": req.params.schoolName }).toArray(function (err, studentData) {
                 console.log("studentData: " + JSON.stringify(studentData));
 
@@ -51,7 +50,7 @@ module.exports.getSchoolUser = function (req, res) {
                     };
                     res.status(400).send(responseData);
                 } else {
-                    schoolUserList.schoolStudentList.push(studentData[0]);
+                    schoolUserList.schoolStudentList.push(studentData);
                   //  console.log("schoolUserList: " + JSON.stringify(schoolUserList));
                     responseData = {
                         status: true,

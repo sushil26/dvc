@@ -28,6 +28,7 @@ module.exports = function (app) {
     app.get('/vc/getAllClass/:schoolName', school.getAllClass);
     app.get('/vc/getSchoolList', school.getSchoolList);
     app.get('/vc/getSchoolUser/:schoolName', adminAction.getSchoolUser);
+    app.get('/vc/getAllAdmin', adminAction.getAllAdmin);
     app.post('/vc/uploadClassFile/:schoolName', adminAction.uploadClassFile);
     app.post('/vc/uploadStudentMaster/:schoolName/:clas/:section', adminAction.uploadStudentMaster);
     app.post('/vc/uploadTeacherMaster/:schoolName', adminAction.uploadTeacherMaster);

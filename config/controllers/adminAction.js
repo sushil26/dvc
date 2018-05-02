@@ -19,11 +19,36 @@ var unknownData = [];
 var attendanceIndex; /* ### Note: dateAttendance index based on month select  ### */
 var schoolName; /* ### Note: Get School Name of API  ### */
 
+module.exports.getAllAdmin = function (req, res) {
+    console.log("getAllAdmin-->");
+    var responseData;
+    user.find({ "loginType": "admin" }).toArray(function (err, adminDataList) {
+        if (err) {
+            responseData = {
+                status: false,
+                message: "Failed to get Data",
+                data: teacherData
+            };
+            res.status(400).send(responseData);
+        } else {
+            responseData = {
+                status: true,
+                message: "All admin collected successfully",
+                data: adminDataList
+            };
+
+            res.status(200).send(responseData);
+        }
+
+    })
+    console.log("<--getAllAdmin");
+}
+
 module.exports.getSchoolUser = function (req, res) {
     console.log("getSchoolUser-->");
     var responseData;
     var schoolUserList = {
-       
+
     };
     user.find({ "schoolName": req.params.schoolName }).toArray(function (err, teacherData) {
         //console.log("teacherData: " + JSON.stringify(teacherData));
@@ -37,9 +62,9 @@ module.exports.getSchoolUser = function (req, res) {
             res.status(400).send(responseData);
         } else {
             schoolUserList.schoolTeacherList = teacherData;
-           // console.log("schoolUserList: " + JSON.stringify(schoolUserList));
+            // console.log("schoolUserList: " + JSON.stringify(schoolUserList));
             stud.find({ "schoolName": req.params.schoolName }).toArray(function (err, studentData) {
-               // console.log("studentData: " + JSON.stringify(studentData));
+                // console.log("studentData: " + JSON.stringify(studentData));
 
                 if (err) {
                     responseData = {
@@ -50,7 +75,7 @@ module.exports.getSchoolUser = function (req, res) {
                     res.status(400).send(responseData);
                 } else {
                     schoolUserList.schoolStudentList = studentData;
-                  console.log("schoolUserList: " + JSON.stringify(schoolUserList));
+                    console.log("schoolUserList: " + JSON.stringify(schoolUserList));
                     responseData = {
                         status: true,
                         message: "All user collected successfully",
@@ -491,6 +516,8 @@ module.exports.monthlyData = function (data, callback) {
 //         });
 //     console.log("<--attendanceMarkSave");
 // };
+
+
 
 module.exports.uploadStudentMaster = function (req, res) {
     console.log("uploadStudentMaster-->");

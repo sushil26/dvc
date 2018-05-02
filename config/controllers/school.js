@@ -11,7 +11,7 @@ module.exports.getSchoolList = function (req, res) {
     var responseData;
     var allClass = [];
     school.find({},"schoolName").toArray(function (err, data) {
-        console.log("data: " + JSON.stringify(data));
+        console.log("schoolList: " + JSON.stringify(data));
         // allClass=data[0].cs;
         // console.log("allClass: " + JSON.stringify(allClass));
         if (err) {

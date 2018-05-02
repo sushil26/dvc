@@ -37,8 +37,8 @@
                                                         <tr>
                                                             <th>#</th>
 
-                                                            <th>Admin Name</th>
-
+                                                            <th>First Name</th>
+                                                            <th>Last Name</th>
                                                             <th>Email</th>
                                                             <th>Phone Number</th>
 
@@ -48,21 +48,19 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr ng-repeat="td in teacherData">
+                                                        <tr ng-repeat="ad in teacherData" ng-if="td.loginType=='admin'">
                                                             <td style="background-color:aliceblue;">{{$index+1}}.</td>
-                                                            <td style="background-color:aliceblue;">{{}}</td>
+                                                            <td style="background-color:aliceblue;">{{ad.firstName}}</td>
+                                                            <td style="background-color:aliceblue;">{{ad.lastName}}</td>
+                                                            
+                                                            <td style="background-color:aliceblue;">{{ad.email}}</td>
+                                                            <td  style="background-color:tomato;">{{ad.mobNumber}}</td>
                                                             <td style="background-color:aliceblue;">
-                                                                <button type="button" class="btn-info " data-toggle="modal" data-target="#myModal">{{sd.studName}}</button>
-                                                                <!-- Modal -->
-                                                            </td>
-                                                            <td ng-if="sd.status=='active'" style="background-color:aliceblue;">{{sd.status}}</td>
-                                                            <td ng-if="sd.status=='inactive'" style="background-color:tomato;">{{sd.status}}</td>
-                                                            <td style="background-color:aliceblue;">
-                                                                <button class="btn" ng-if="sd.status=='active'" ng-click="updateStudStatus(sd._id,'inactive',$index)" style="width: 70px;">Dectivate</button>
-                                                                <button class="btn" ng-if="sd.status=='inactive'" ng-click="updateStudStatus(sd._id,'active',$index)" style="width: 70px;">Activate</button>
+                                                                <button class="btn" ng-if="ad.status=='active'" ng-click="updateStudStatus(ad._id,'inactive',$index)" style="width: 70px;">Dectivate</button>
+                                                                <button class="btn" ng-if="ad.status=='inactive'" ng-click="updateStudStatus(ad._id,'active',$index)" style="width: 70px;">Activate</button>
                                                             </td>
                                                             <td style="background-color:aliceblue;">
-                                                                <button class="btn" ng-click="deleteStud(sd._id, $index)">Delete</button>
+                                                                <button class="btn" ng-click="deleteStud(ad._id, $index)">Delete</button>
                                                             </td>
                                                         </tr>
                                                     </tbody>

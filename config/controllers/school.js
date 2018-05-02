@@ -7,7 +7,7 @@ var ObjectId = require("mongodb").ObjectID;
 var bodyParser = require('body-parser');
 
 module.exports.getSchoolList = function (req, res) {
-    console.log("getAllClass-->");
+    console.log("getSchoolList-->");
     var responseData;
     var allClass = [];
     school.find({},{"schoolName":1, "_id":0}).toArray(function (err, data) {
@@ -45,7 +45,7 @@ module.exports.getSchoolList = function (req, res) {
         }
     });
 
-    console.log("<--getAllClass");
+    console.log("<--getSchoolList");
 };
 
 module.exports.getAllClass = function (req, res) {

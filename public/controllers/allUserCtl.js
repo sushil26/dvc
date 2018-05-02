@@ -25,4 +25,5 @@ app.controller('allUserCtl', function ($scope, $window, httpFactory, sessionAuth
 
         console.log("<--getSchoolList");
     }
+    $scope.getSchoolList();
 })

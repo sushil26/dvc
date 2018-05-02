@@ -26,7 +26,7 @@ module.exports.getSchoolUser = function (req, res) {
         "schoolTeacherList": [],
         "schoolStudentList": []
     };
-    user.find({ "schoolName": req.params.schoolName }).toArray(function (err, teacherData) {
+    user.find({ "schoolName": req.params.schoolName }),function (err, teacherData) {
         console.log("teacherData: " + JSON.stringify(teacherData));
 
         if (err) {
@@ -39,7 +39,7 @@ module.exports.getSchoolUser = function (req, res) {
         } else {
             schoolUserList.schoolTeacherList.push(teacherData);
            // console.log("schoolUserList: " + JSON.stringify(schoolUserList));
-            stud.find({ "schoolName": req.params.schoolName }).toArray(function (err, studentData) {
+            stud.find({ "schoolName": req.params.schoolName }), function (err, studentData) {
                 console.log("studentData: " + JSON.stringify(studentData));
 
                 if (err) {
@@ -62,10 +62,10 @@ module.exports.getSchoolUser = function (req, res) {
 
                 }
 
-            })
+            }
 
         }
-    })
+    }
     console.log("<--getSchoolUser");
 }
 

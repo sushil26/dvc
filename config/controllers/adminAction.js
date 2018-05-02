@@ -547,7 +547,7 @@ module.exports.uploadTeacherMaster = function (req, res) {
             dob: data.DOB,
             doj: data.DOJ,
             pswd: "abc",
-            css:[],
+            css: [],
             timeTable: [],
             status: "inactive",
             loginType: "teacher"
@@ -563,9 +563,6 @@ module.exports.uploadTeacherMaster = function (req, res) {
         }
         console.log("userData: " + JSON.stringify(userData));
         objJson.push(userData);
-        
-
-
     })
         .on("end", function () {
             console.log("end marker: " + marker);

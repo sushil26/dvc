@@ -12,7 +12,7 @@ module.exports.getSchoolList = function (req, res) {
     var schoolList = [];
     school.find().toArray(function (err, data) {
         console.log("schoolList: " + JSON.stringify(data));
-        schoolList.push(data.schoolName);
+        schoolList.push(data[0].schoolName);
         console.log("schoolList: " + JSON.stringify(schoolList));
         if (err) {
             responseData = {

@@ -33,9 +33,9 @@ module.exports.getSchoolList = function (req, res) {
             
         }
     });
-
     console.log("<--getSchoolList");
 };
+
 
 module.exports.getAllClass = function (req, res) {
     console.log("getAllClass-->");

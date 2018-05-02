@@ -19,6 +19,41 @@ var unknownData = [];
 var attendanceIndex; /* ### Note: dateAttendance index based on month select  ### */
 var schoolName; /* ### Note: Get School Name of API  ### */
 
+module.exports.getSchoolUser= function (req, res) {
+    console.log("getSchoolUser-->");
+    var responseData;
+    var schoolUserList = {
+        "schoolTeacherList":[],
+        "schoolStudentList":[]
+    };
+    user.find({"schoolName":req.params.schoolName}).toArray(function (err, data) {
+        console.log("data: " + JSON.stringify(data));
+        
+        if (err) {
+            responseData = {
+                status: false,
+                message: "Failed to get Data",
+                data: data
+            };
+            res.status(400).send(responseData);
+        } else {
+            schoolUserList.schoolTeacherList.push(data[0].schoolName);
+            console.log("schoolList: " + JSON.stringify(schoolList));
+                responseData = {
+                    status: true,
+                    message: "There is no class",
+                    data: schoolList
+                };
+
+                res.status(200).send(responseData);
+            
+        }
+
+    })
+    console.log("<--getSchoolUser");
+}
+
+
 module.exports.uploadClassFile = function (req, res) {
     console.log("uploadClassFile-->");
     var responseData;

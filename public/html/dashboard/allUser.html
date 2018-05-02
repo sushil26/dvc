@@ -19,7 +19,7 @@
                                         <form ng-if="csList.length!=0" role="form" name="uploadForm" encType="multipart/form-data" novalidate>
                                             <div class="form-group row" ng-repeat="up in uploadReports">
                                                 <label class="col-lg-4">Select School</label>
-                                                <select class="btn btn-danger col-lg-4" placeholder="select" ng-model="up.uploadType" ng-options="ut as ut for ut in uploadTypes">
+                                                <select class="btn btn-danger col-lg-4" placeholder="select" ng-model="selectedSchool" ng-options="sl as sl for sl in schoolList" ng-change="schoolUserData(selectedSchool)">
                                                     <option value="" disabled selected>Select School</option>
                                                 </select>
                                             </div>

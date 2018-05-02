@@ -10,10 +10,10 @@ module.exports.getSchoolList = function (req, res) {
     console.log("getSchoolList-->");
     var responseData;
     var allClass = [];
-    school.find({},{"schoolName":1}).toArray(function (err, data) {
+    school.find({},{"schoolName":1}.toArray(function (err, data) {
         console.log("data: " + JSON.stringify(data));
-        allClass=data[0].cs;
-        console.log("allClass: " + JSON.stringify(allClass));
+        // allClass=data[0].cs;
+        // console.log("allClass: " + JSON.stringify(allClass));
         if (err) {
             responseData = {
                 status: false,
@@ -22,28 +22,17 @@ module.exports.getSchoolList = function (req, res) {
             };
             res.status(400).send(responseData);
         } else {
-            if (data[0].cs.length > 0) {
-
-
-                responseData = {
-                    status: true,
-                    message: "Successfull retrived data",
-                    data: allClass
-                };
-
-                res.status(200).send(responseData);
-            }
-            else {
+           
                 responseData = {
                     status: true,
                     message: "There is no class",
-                    data: allClass
+                    data: data
                 };
 
                 res.status(200).send(responseData);
-            }
+            
         }
-    });
+    }));
 
     console.log("<--getSchoolList");
 };

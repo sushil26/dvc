@@ -14,7 +14,7 @@ app.controller('adminCreateCtl', function ($scope, $window, httpFactory, session
             "pinCode":"23954",
             "country":"India",
             "dob":"14/06/1992",
-            "email":"abcAdmin@gmail.com",
+            "email":"dpsAdmin@gmail.com",
             "mobNumber":"9878767876",
             "pswd":"admin"
         }

@@ -25,6 +25,17 @@
                                             </div>
                                         
                                     </section>
+                                    <section class="panel">
+                                            <h1>All User </h1>
+                                            
+                                                <div class="form-group row" >
+                                                    <label class="col-lg-4">Select School</label>
+                                                    <select class="btn btn-danger col-lg-4" placeholder="select" ng-model="selectedSchool" ng-options="sl as sl for sl in schoolList" ng-change="schoolUserData(selectedSchool)">
+                                                        <option value="" disabled selected>Select School</option>
+                                                    </select>
+                                                </div>
+                                            
+                                        </section>
                                 </div>
                             </div>
                         </div>

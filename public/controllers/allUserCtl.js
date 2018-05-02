@@ -27,18 +27,16 @@ app.controller('allUserCtl', function ($scope, $window, httpFactory, sessionAuth
     }
     $scope.getSchoolList();
 
-    $scope.schoolUserData = function(schoolName){
+    $scope.schoolUserData = function (schoolName) {
         console.log("schoolUserData-->");
-        var api = "https://norecruits.com/vc/getSchoolUser/"+schoolName;
+        var api = "https://norecruits.com/vc/getSchoolUser/" + schoolName;
         console.log("api: " + api);
         httpFactory.get(api).then(function (data) {
-            console.log("data--" + JSON.stringify(data.data));
             var checkStatus = httpFactory.dataValidation(data);
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
                 $scope.schoolUser = data.data.data;
                 console.log("schoolList: " + JSON.stringify($scope.schoolUser));
-
                 console.log(data.data.message);
             }
             else {

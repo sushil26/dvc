@@ -27,7 +27,7 @@ app.controller('allUserCtl', function ($scope, $window, httpFactory, sessionAuth
     }
     $scope.getSchoolList();
 
-    $school.schoolUserData = function(schoolName){
+    $scope.schoolUserData = function(schoolName){
         console.log("schoolUserData-->");
         var api = "https://norecruits.com/vc/getSchoolUser/"+schoolName;
         console.log("api: " + api);

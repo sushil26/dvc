@@ -4,7 +4,7 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
   var schoolName = $scope.userData.schoolName;
   console.log(" $scope.userData : " + JSON.stringify($scope.userData));
   $scope.file = {}; /* ### Note: Upload file declaration ### */
-  $scope.uploadTypes = ["Student Details", "Attendance", "Payment", "Mark Report"];
+  $scope.uploadTypes = ["Teacher Details", "Student Details", "Attendance", "Payment", "Mark Report"];
   $scope.testTypes = ["AT", "UT", "MT", "TT", "AT"];
   $scope.attendanceTypes = ["Monthly", "Daily"];
   $scope.monthList = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
@@ -138,7 +138,6 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
     
     var obj = {
       "file": file,
-
     }
     console.log("uploadType: " + uploadType);
     console.log("reportType: " + reportType);
@@ -154,6 +153,9 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
     }
     else if (uploadType == "Student Details") {
       var api = "https://norecruits.com/vc/uploadStudentMaster/"+schoolName+"/"+clas+"/"+section;
+    }
+    else if (uploadType == "Teacher Details") {
+      var api = "https://norecruits.com/vc/uploadTeacherMaster/"+schoolName;
     }
     console.log("api: " + api);
     httpFactory.csvUpload(obj, api).then(function (data) {

@@ -45,8 +45,8 @@ module.exports.uploadClassFile = function (req, res) {
             }
         }
         console.log("section: " + JSON.stringify(section));
-        consolidateCS.push({"class":data.Class, "section":section});
-        section=[];
+        consolidateCS.push({ "class": data.Class, "section": section });
+        section = [];
         console.log("parts: " + JSON.stringify(parts));
         // classSection.push({"class":data.class, "section":[data]})
         // parser.pause();
@@ -54,14 +54,14 @@ module.exports.uploadClassFile = function (req, res) {
         .on("end", function () {
             console.log("end ");
             console.log("consolidateCS: " + JSON.stringify(consolidateCS));
-            console.log("schoolName:"+schoolName);
-            school.findOneAndUpdate({"schoolName":schoolName},{ $push: { "cs": { $each: consolidateCS } } }, {returnNewDocument: true }, function (err, data) {
+            console.log("schoolName:" + schoolName);
+            school.findOneAndUpdate({ "schoolName": schoolName }, { $push: { "cs": { $each: consolidateCS } } }, { returnNewDocument: true }, function (err, data) {
                 console.log("data: " + JSON.stringify(data));
                 if (err) {
                     responseData = {
                         status: false,
                         message: err
-                        
+
                     };
                     res.status(400).send(responseData);
                 } else {
@@ -74,7 +74,7 @@ module.exports.uploadClassFile = function (req, res) {
                     res.status(200).send(responseData);
                 }
             });
-           
+
         });
     console.log("<--uploadClassFile");
 };
@@ -243,7 +243,7 @@ module.exports.monthlyData = function (data, callback) {
         }
     }
     console.log("*monthAtt: " + monthAtt.length);
-    stud.find({ "schoolName":schoolName, "studId": data.StudentID}).toArray(function (err, isThereData) {
+    stud.find({ "schoolName": schoolName, "studId": data.StudentID }).toArray(function (err, isThereData) {
         console.log("Basic query: " + JSON.stringify(isThereData));
         console.log("Basic query: " + isThereData.length);
         if (err) {
@@ -255,7 +255,7 @@ module.exports.monthlyData = function (data, callback) {
         else {
             if (isThereData.length > 0) {
                 console.log("month: " + month);
-                stud.find({ "schoolName":schoolName, "studId": data.StudentID, "attendance.month": month }).toArray(function (err, findData) {
+                stud.find({ "schoolName": schoolName, "studId": data.StudentID, "attendance.month": month }).toArray(function (err, findData) {
                     console.log("1st query findData: " + JSON.stringify(findData));
                     console.log("attendanceIndex: " + JSON.stringify(findData[0].attendance[attendanceIndex]));
                     console.log("dateAttendance: " + JSON.stringify(findData[0].attendance[attendanceIndex].dateAttendance));
@@ -458,7 +458,7 @@ module.exports.uploadStudentMaster = function (req, res) {
         ignoreEmpty: true
     }).on("data", function (data) {
         console.log("data: " + JSON.stringify(data));
-        var csData = [{ "class": req.params.class, "section": req.params.section}];
+        var csData = [{ "class": req.params.class, "section": req.params.section }];
         var userData = {
             schoolName: req.params.schoolName,
             studId: data.StudentID,
@@ -491,13 +491,86 @@ module.exports.uploadStudentMaster = function (req, res) {
 
         objJson.push(userData);
         console.log("userData: " + JSON.stringify(userData));
+    })
+        .on("end", function () {
+            console.log("end marker: " + marker);
+            console.log("objJson: " + JSON.stringify(objJson));
+            stud.insert(objJson, function (err, data) {
+                console.log("data: " + JSON.stringify(data));
+                if (err) {
+                    responseData = {
+                        status: false,
+                        message: "Failed to Insert",
+                        data: data
+                    };
+                    res.status(400).send(responseData);
+                } else {
+                    responseData = {
+                        status: true,
+                        errorCode: 200,
+                        message: "Insert Successfull",
+                        data: data
+                    };
+                    res.status(200).send(responseData);
+                }
+            });
+        });
+
+    console.log("<--uploadStudentMaster");
+};
+
+module.exports.uploadTeacherMaster = function (req, res) {
+    console.log("uploadStudentMaster-->");
+    var responseData;
+    var marker;
+    var css = [];
+    var objJson = [];
+    // var cs = [{"class":req.params.class,"section":req.params.section}];
+    if (!req.files)
+        return res.status(400).send('No files were uploaded.');
+
+    var studentDataFile = req.files.img;
+    console.log("studentDataFile: " + studentDataFile);
+    var parser = csv.fromString(studentDataFile.data.toString(), {
+        headers: true,
+        ignoreEmpty: true
+    }).on("data", function (data) {
+        console.log("data: " + JSON.stringify(data));
+        // var csData = [{ "class": req.params.class, "section": req.params.section }];
+        var userData = {
+            schoolName: req.params.schoolName,
+            schoolId: data.TeacherID,
+            firstName: data.FirstName,
+            lastName: data.LastName,
+            email: data.Email,
+            mobileNum: data.PhoneNumber,
+            dob: data.DOB,
+            doj: data.DOJ,
+            pswd: "abc",
+            css:[],
+            timeTable: [],
+            status: "inactive",
+            loginType: "teacher"
+        }
+        var cssParts = data.ClassSectionSubject.split(',');
+        console.log("cssParts: " + JSON.stringify(cssParts));
+        for (var x = 0; x < cssParts.length; x++) {
+            if (cssParts[x] != "") {
+                var cssSeparate = cssParts[x].split('-');
+                console.log("cssSeparate: " + JSON.stringify(cssSeparate));
+                userData.css.push({ "class": cssSeparate[0], "section": cssSeparate[1], "subject": cssSeparate[2] });
+            }
+        }
+        console.log("userData: " + JSON.stringify(userData));
+        objJson.push(userData);
+        
 
 
     })
         .on("end", function () {
             console.log("end marker: " + marker);
             console.log("objJson: " + JSON.stringify(objJson));
-            stud.insert(objJson, function (err, data) {
+            user.insert(objJson, function (err, data) {
                 console.log("data: " + JSON.stringify(data));
                 if (err) {
                     responseData = {

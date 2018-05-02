@@ -6,6 +6,48 @@ var general = require("../general.js");
 var ObjectId = require("mongodb").ObjectID;
 var bodyParser = require('body-parser');
 
+module.exports.getSchoolList = function (req, res) {
+    console.log("getAllClass-->");
+    var responseData;
+    var allClass = [];
+    school.find({},{"schoolName":1}).toArray(function (err, data) {
+        console.log("data: " + JSON.stringify(data));
+        allClass=data[0].cs;
+        console.log("allClass: " + JSON.stringify(allClass));
+        if (err) {
+            responseData = {
+                status: false,
+                message: "Failed to get Data",
+                data: data
+            };
+            res.status(400).send(responseData);
+        } else {
+            if (data[0].cs.length > 0) {
+
+
+                responseData = {
+                    status: true,
+                    message: "Successfull retrived data",
+                    data: allClass
+                };
+
+                res.status(200).send(responseData);
+            }
+            else {
+                responseData = {
+                    status: true,
+                    message: "There is no class",
+                    data: allClass
+                };
+
+                res.status(200).send(responseData);
+            }
+        }
+    });
+
+    console.log("<--getAllClass");
+};
+
 module.exports.getAllClass = function (req, res) {
     console.log("getAllClass-->");
     var responseData;

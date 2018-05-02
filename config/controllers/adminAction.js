@@ -511,8 +511,9 @@ module.exports.uploadStudentMaster = function (req, res) {
         var csData = [{ "class": req.params.class, "section": req.params.section }];
         var userData = {
             schoolName: req.params.schoolName,
-            studId: data.StudentID,
-            studName: data.StudentName,
+            schoolId: data.StudentID,
+            firstName: data.firstName,
+            lastName: data.lastName,
             parentName: data.FatherName,
             parentEmail: data.FatherEmailId,
             mobileNum: data.FatherPhoneNumber,

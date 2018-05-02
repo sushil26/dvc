@@ -19,6 +19,50 @@ var unknownData = [];
 var attendanceIndex; /* ### Note: dateAttendance index based on month select  ### */
 var schoolName; /* ### Note: Get School Name of API  ### */
 
+module.exports.updateSchoolStatus = function (req, res) {
+    console.log("updateSchoolStatus-->");
+    var responseData;
+    if (general.emptyCheck(req.body.id)) {
+      var obj = {
+        _id: ObjectId(req.body.id)
+      };
+      var updatedJson = {
+        status: req.body.status
+      };
+      school.update(obj, { $set: updatedJson }, { multi: true }, function (
+        err,
+        data
+      ) {
+        if (err) {
+          responseData = {
+            status: false,
+            message: "Failed to get Data",
+            data: data
+          };
+          res.status(400).send(responseData);
+        } else {
+          responseData = {
+            status: true,
+            message: "Successfull updated status",
+            data: data
+          };
+  
+          res.status(200).send(responseData);
+        }
+      });
+    } else {
+      console.log("Epty value found");
+      responseData = {
+        status: false,
+        message: "empty value found",
+        data: userData
+      };
+      res.status(400).send(responseData);
+    }
+  
+    console.log("<--updateSchoolStatus");
+  };
+
 module.exports.getAllSchool = function (req, res) {
     console.log("getAllAdmin-->");
     var responseData;

@@ -25,7 +25,7 @@ app.controller('allSchoolCtl', function ($scope, $window, httpFactory, sessionAu
     $scope.getAllSchool();
     $scope.updateSchoolStatus = function (id, status, index) {
         console.log("updateUserStatus-->");
-        var api = "https://norecruits.com/vc/updateUserStatus";
+        var api = "https://norecruits.com/vc/updateSchoolStatus";
         //var api = "http://localhost:5000/vc/updateUserStatus";
         var obj = {
             "id": id,

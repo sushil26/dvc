@@ -85,8 +85,7 @@
                                                             <th>Email</th>
                                                             <th>Mobile Number</th>
                                                             <th>Status</th>
-                                                            <th>Activation</th>
-                                                            <th>Delete</th>
+                                                           
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -103,13 +102,7 @@
                                                             <td style="background-color:aliceblue;">{{td.mobileNum}}</td>
                                                             <td ng-if="td.status=='active'" style="background-color:aliceblue;">{{td.status}}</td>
                                                             <td ng-if="td.status=='inactive'" style="background-color:tomato;">{{td.status}}</td>
-                                                            <td style="background-color:aliceblue;">
-                                                                <button class="btn" ng-if="td.status=='active'" ng-click="updateUserStatus(td._id,'inactive',$index)" style="width: 70px;">Dectivate</button>
-                                                                <button class="btn" ng-if="td.status=='inactive'" ng-click="updateUserStatus(td._id,'active',$index)" style="width: 70px;">Activate</button>
-                                                            </td>
-                                                            <td style="background-color:aliceblue;">
-                                                                <button class="btn" ng-click="deleteUser(td._id, $index)">Delete</button>
-                                                            </td>
+                                                           
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -132,8 +125,7 @@
                                                             <th>Class</th>
                                                             <th>Section</th>
                                                             <th>Status</th>
-                                                            <th>Activation</th>
-                                                            <th>Delete</th>
+                                                           
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -155,13 +147,7 @@
                                                             
                                                             <td ng-if="sd.status=='active'" style="background-color:aliceblue;">{{sd.status}}</td>
                                                             <td ng-if="sd.status=='inactive'" style="background-color:tomato;">{{sd.status}}</td>
-                                                            <td style="background-color:aliceblue;">
-                                                                <button class="btn" ng-if="sd.status=='active'" ng-click="updateStudStatus(sd._id,'inactive',$index)" style="width: 70px;">Dectivate</button>
-                                                                <button class="btn" ng-if="sd.status=='inactive'" ng-click="updateStudStatus(sd._id,'active',$index)" style="width: 70px;">Activate</button>
-                                                            </td>
-                                                            <td style="background-color:aliceblue;">
-                                                                <button class="btn" ng-click="deleteStud(sd._id, $index)">Delete</button>
-                                                            </td>
+                                                            
                                                         </tr>
                                                     </tbody>
                                                 </table>

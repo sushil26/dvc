@@ -80,14 +80,10 @@
                                                         <tr>
                                                             <th>#</th>
                                                             <th>Teacher Id</th>
-                                                            
-                                                            <th>Teacher First Name</th>
-                                                            <th>Teacher Last Name</th>
-                                                           
+                                                            <th>Teacher Name</th>
                                                             <th>Email</th>
                                                             <th>Mobile Number</th>
                                                             <th>Status</th>
-                                                           
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -95,17 +91,13 @@
                                                             <td style="background-color:aliceblue;">{{$index+1}}.</td>
                                                             <td style="background-color:aliceblue;">{{td.schoolId}}</td>
                                                             <td style="background-color:aliceblue;">
-                                                                <a class="btn-info" ng-click="tableForTimes($index)">{{td.firstName}}</a>
+                                                                <a class="btn-info" ng-click="tableForTimes($index)">{{td.firstName}} {{td.lastName}}</a>
                                                             </td>
-                                                            <td style="background-color:aliceblue;">
-                                                                <a class="btn-info" ng-click="tableForTimes($index)">{{td.lastName}}</a>
-                                                            </td>
-                                                         
                                                             <td style="background-color:aliceblue;">{{td.email}}</td>
                                                             <td style="background-color:aliceblue;">{{td.mobileNum}}</td>
                                                             <td ng-if="td.status=='active'" style="background-color:aliceblue;">{{td.status}}</td>
                                                             <td ng-if="td.status=='inactive'" style="background-color:tomato;">{{td.status}}</td>
-                                                           
+
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -123,12 +115,11 @@
                                                         <tr>
                                                             <th>#</th>
                                                             <th>Student Id</th>
-                                                            <th>Student First Name</th>
-                                                            <th>Student Last Name</th>
+                                                            <th>Student Name</th>
+
                                                             <th>Class</th>
                                                             <th>Section</th>
                                                             <th>Status</th>
-                                                           
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -136,21 +127,13 @@
                                                             <td style="background-color:aliceblue;">{{$index+1}}.</td>
                                                             <td style="background-color:aliceblue;">{{sd.schoolId}}</td>
                                                             <td style="background-color:aliceblue;">
-                                                                <button type="button" class="btn-info " data-toggle="modal" data-target="#myModal">{{sd.firstName}}</button>
+                                                                <button type="button" class="btn-info " data-toggle="modal" data-target="#myModal">{{sd.firstName}} {{sd.lastName}}</button>
                                                                 <!-- Modal -->
                                                             </td>
-                                                            <td style="background-color:aliceblue;">
-                                                                <button type="button" class="btn-info " data-toggle="modal" data-target="#myModal">{{sd.lastName}}</button>
-                                                                <!-- Modal -->
-                                                            </td>
-
-
                                                             <td style="background-color:aliceblue;">{{sd.cs[0].class}}</td>
                                                             <td style="background-color:aliceblue;">{{sd.cs[0].section}}</td>
-                                                            
                                                             <td ng-if="sd.status=='active'" style="background-color:aliceblue;">{{sd.status}}</td>
                                                             <td ng-if="sd.status=='inactive'" style="background-color:tomato;">{{sd.status}}</td>
-                                                            
                                                         </tr>
                                                     </tbody>
                                                 </table>

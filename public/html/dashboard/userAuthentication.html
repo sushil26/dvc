@@ -75,8 +75,8 @@
                 <thead>
                   <tr>
                     <th>#</th>
-                    <th>Teacher Name</th>
                     <th>Teacher Id</th>
+                    <th>Teacher Name</th>
                     <th>Email</th>
                     <th>Mobile Number</th>
                     <th>Status</th>
@@ -87,10 +87,10 @@
                 <tbody>
                   <tr ng-repeat="ud in userData">
                     <td style="background-color:aliceblue;">{{$index+1}}.</td>
+                    <td style="background-color:aliceblue;">{{ud.schoolId}}</td>
                     <td style="background-color:aliceblue;">
-                      <a class="btn-info" ng-click="tableForTimes($index)">{{ud.teacherName}}</a>
+                      <a class="btn-info" ng-click="tableForTimes($index)">{{ud.firstName}} {{ud.lastName}}</a>
                     </td>
-                    <td style="background-color:aliceblue;">{{ud.teacherId}}</td>
                     <td style="background-color:aliceblue;">{{ud.teacherEmail}}</td>
                     <td style="background-color:aliceblue;">{{ud.mobileNum}}</td>
                     <td ng-if="ud.status=='active'" style="background-color:aliceblue;">{{ud.status}}</td>
@@ -134,7 +134,7 @@
                   <td style="background-color:aliceblue;">{{$index+1}}.</td>
                   <td style="background-color:aliceblue;">{{sd.studId}}</td>
                   <td style="background-color:aliceblue;">
-                    <button type="button" class="btn-info " data-toggle="modal" data-target="#myModal">{{sd.studName}}</button>
+                    <button type="button" class="btn-info " data-toggle="modal" data-target="#myModal">{{sd.firstName}}{{ sd.lastName}}</button>
                     <!-- Modal -->
                   </td>
                   <td style="background-color:aliceblue;">{{sd.cs[0].class}}</td>

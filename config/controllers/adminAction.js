@@ -19,6 +19,30 @@ var unknownData = [];
 var attendanceIndex; /* ### Note: dateAttendance index based on month select  ### */
 var schoolName; /* ### Note: Get School Name of API  ### */
 
+module.exports.getAllSchool = function (req, res) {
+    console.log("getAllAdmin-->");
+    var responseData;
+    school.find().toArray(function (err, schoolList) {
+        if (err) {
+            responseData = {
+                status: false,
+                message: "Failed to get Data",
+                data: schoolList
+            };
+            res.status(400).send(responseData);
+        } else {
+            responseData = {
+                status: true,
+                message: "All school collected successfully",
+                data: schoolList
+            };
+
+            res.status(200).send(responseData);
+        }
+
+    })
+    console.log("<--getAllAdmin");
+}
 module.exports.getAllAdmin = function (req, res) {
     console.log("getAllAdmin-->");
     var responseData;

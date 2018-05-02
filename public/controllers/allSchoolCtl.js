@@ -3,27 +3,24 @@ app.controller('allSchoolCtl', function ($scope, $window, httpFactory, sessionAu
     $scope.userData = sessionAuthFactory.getAccess("userData");
     console.log(" $scope.userData : " + JSON.stringify($scope.userData));
 
-    $scope.getAllAdmin = function () {
-        console.log("getAllAdmin-->");
-        var api = "https://norecruits.com/vc/getAllAdmin";
+    $scope.getAllSchool = function () {
+        console.log("getAllSchool-->");
+        var api = "https://norecruits.com/vc/getAllSchool";
         console.log("api: " + api);
         httpFactory.get(api).then(function (data) {
             console.log("data--" + JSON.stringify(data.data));
             var checkStatus = httpFactory.dataValidation(data);
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
-                $scope.adminList = data.data.data;
-                console.log("adminList: " + JSON.stringify($scope.adminList));
-
+                $scope.getAllSchool = data.data.data;
+                console.log("getAllSchool: " + JSON.stringify($scope.getAllSchool));
                 console.log(data.data.message);
             }
             else {
                 console.log("Sorry");
             }
-
         })
-
-        console.log("<--getAllAdmin");
+        console.log("<--getAllSchool");
     }
     $scope.getAllAdmin();
     $scope.updateAdminStatus = function (id, status, index) {

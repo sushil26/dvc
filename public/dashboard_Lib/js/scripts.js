@@ -1,89 +1,88 @@
-var jQuery_1_10_2 = $.noConflict(true);
 function initializeJS() {
 
     //tool tips
-    jQuery_1_10_2('.tooltips').tooltip();
+    jQuery('.tooltips').tooltip();
 
     //popovers
-    jQuery_1_10_2('.popovers').popover();
+    jQuery('.popovers').popover();
 
     //custom scrollbar
         //for html
-    jQuery_1_10_2("html").niceScroll({styler:"fb",cursorcolor:"#007AFF", cursorwidth: '6', cursorborderradius: '10px', background: '#F7F7F7', cursorborder: '', zindex: '1000'});
+    jQuery("html").niceScroll({styler:"fb",cursorcolor:"#007AFF", cursorwidth: '6', cursorborderradius: '10px', background: '#F7F7F7', cursorborder: '', zindex: '1000'});
         //for sidebar
-    jQuery_1_10_2("#sidebar").niceScroll({styler:"fb",cursorcolor:"#007AFF", cursorwidth: '3', cursorborderradius: '10px', background: '#F7F7F7', cursorborder: ''});
+    jQuery("#sidebar").niceScroll({styler:"fb",cursorcolor:"#007AFF", cursorwidth: '3', cursorborderradius: '10px', background: '#F7F7F7', cursorborder: ''});
         // for scroll panel
-    jQuery_1_10_2(".scroll-panel").niceScroll({styler:"fb",cursorcolor:"#007AFF", cursorwidth: '3', cursorborderradius: '10px', background: '#F7F7F7', cursorborder: ''});
+    jQuery(".scroll-panel").niceScroll({styler:"fb",cursorcolor:"#007AFF", cursorwidth: '3', cursorborderradius: '10px', background: '#F7F7F7', cursorborder: ''});
     
     //sidebar dropdown menu
-    jQuery_1_10_2('#sidebar .sub-menu > a').click(function () {
-        var last = jQuery_1_10_2('.sub-menu.open', jQuery_1_10_2('#sidebar'));        
-        jQuery_1_10_2('.menu-arrow').removeClass('arrow_carrot-right');
-        jQuery_1_10_2('.sub', last).slideUp(200);
-        var sub = jQuery_1_10_2(this).next();
+    jQuery('#sidebar .sub-menu > a').click(function () {
+        var last = jQuery('.sub-menu.open', jQuery('#sidebar'));        
+        jQuery('.menu-arrow').removeClass('arrow_carrot-right');
+        jQuery('.sub', last).slideUp(200);
+        var sub = jQuery(this).next();
         if (sub.is(":visible")) {
-            jQuery_1_10_2('.menu-arrow').addClass('arrow_carrot-right');            
+            jQuery('.menu-arrow').addClass('arrow_carrot-right');            
             sub.slideUp(200);
         } else {
-            jQuery_1_10_2('.menu-arrow').addClass('arrow_carrot-down');            
+            jQuery('.menu-arrow').addClass('arrow_carrot-down');            
             sub.slideDown(200);
         }
-        var o = (jQuery_1_10_2(this).offset());
+        var o = (jQuery(this).offset());
         diff = 200 - o.top;
         if(diff>0)
-            jQuery_1_10_2("#sidebar").scrollTo("-="+Math.abs(diff),500);
+            jQuery("#sidebar").scrollTo("-="+Math.abs(diff),500);
         else
-            jQuery_1_10_2("#sidebar").scrollTo("+="+Math.abs(diff),500);
+            jQuery("#sidebar").scrollTo("+="+Math.abs(diff),500);
     });
 
     // sidebar menu toggle
-    jQuery_1_10_2(function() {
+    jQuery(function() {
         function responsiveView() {
-            var wSize = jQuery_1_10_2(window).width();
+            var wSize = jQuery(window).width();
             if (wSize <= 768) {
-                jQuery_1_10_2('#container').addClass('sidebar-close');
-                jQuery_1_10_2('#sidebar > ul').hide();
+                jQuery('#container').addClass('sidebar-close');
+                jQuery('#sidebar > ul').hide();
                
             }
 
             if (wSize > 768) {
-                jQuery_1_10_2('#container').removeClass('sidebar-close');
-                jQuery_1_10_2('#sidebar > ul').show();
+                jQuery('#container').removeClass('sidebar-close');
+                jQuery('#sidebar > ul').show();
             }
        
         }
-        jQuery_1_10_2(window).on('load', responsiveView);
-        jQuery_1_10_2(window).on('resize', responsiveView);
+        jQuery(window).on('load', responsiveView);
+        jQuery(window).on('resize', responsiveView);
     });
 
-    jQuery_1_10_2('.toggle-nav').click(function () {
-        if (jQuery_1_10_2('#sidebar > ul').is(":visible") === true) {
-            jQuery_1_10_2('#main-content').css({
+    jQuery('.toggle-nav').click(function () {
+        if (jQuery('#sidebar > ul').is(":visible") === true) {
+            jQuery('#main-content').css({
                 'margin-left': '0px'
             });
-            jQuery_1_10_2('#sidebar').css({
+            jQuery('#sidebar').css({
                 'margin-left': '-180px'
             });
-            jQuery_1_10_2('#sidebar > ul').hide();
-            jQuery_1_10_2("#container").addClass("sidebar-closed");
+            jQuery('#sidebar > ul').hide();
+            jQuery("#container").addClass("sidebar-closed");
         } else {
-            jQuery_1_10_2('#main-content').css({
+            jQuery('#main-content').css({
                 'margin-left': '180px'
             });
-            jQuery_1_10_2('#sidebar > ul').show();
-            jQuery_1_10_2('#sidebar').css({
+            jQuery('#sidebar > ul').show();
+            jQuery('#sidebar').css({
                 'margin-left': '0'
             });
-            jQuery_1_10_2("#container").removeClass("sidebar-closed");
+            jQuery("#container").removeClass("sidebar-closed");
         }
     });
 
     //bar chart
-    if (jQuery_1_10_2(".custom-custom-bar-chart")) {
-        jQuery_1_10_2(".bar").each(function () {
-            var i = jQuery_1_10_2(this).find(".value").html();
-            jQuery_1_10_2(this).find(".value").html("");
-            jQuery_1_10_2(this).find(".value").animate({
+    if (jQuery(".custom-custom-bar-chart")) {
+        jQuery(".bar").each(function () {
+            var i = jQuery(this).find(".value").html();
+            jQuery(this).find(".value").html("");
+            jQuery(this).find(".value").animate({
                 height: i
             }, 2000)
         })
@@ -91,6 +90,6 @@ function initializeJS() {
 
 }
 
-jQuery_1_10_2(document).ready(function(){
+jQuery(document).ready(function(){
     initializeJS();
 });

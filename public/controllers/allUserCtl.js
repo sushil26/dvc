@@ -51,7 +51,7 @@ app.controller('allUserCtl', function ($scope, $window, httpFactory, sessionAuth
         console.log("<--schoolUserData");
     }
 
-    $scope.updateAdminStatus = function (id, status) {
+    $scope.updateAdminStatus = function (id, status, index) {
         console.log("updateUserStatus-->");
         var api = "https://norecruits.com/vc/updateUserStatus";
         //var api = "http://localhost:5000/vc/updateUserStatus";

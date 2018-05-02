@@ -710,6 +710,7 @@ module.exports.adminCreate = function (req, res) {
     "streetName": req.body.streetName,
     "pinCode": req.body.pinCode,
     "country": req.body.country,
+    "status": "active",
     "cs": []
   }
   var adminObj = {

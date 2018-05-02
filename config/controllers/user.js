@@ -75,7 +75,7 @@ module.exports.login4VC = function (req, res) {
   var responseData;
   if (general.emptyCheck(req.body.email) && general.emptyCheck(req.body.password)) {
     if (req.body.loginType == "teacher") {
-      user.find({ $or: [ { teacherEmail: req.body.email },{email:req.body.email}]}).toArray(function (err, data) {
+      user.find({ $or: [{ teacherEmail: req.body.email }, { email: req.body.email }] }).toArray(function (err, data) {
         if (data.length > 0) {
           if (data[0].password == req.body.pswd) {
             if (data[0].status == "active") {
@@ -114,7 +114,7 @@ module.exports.login4VC = function (req, res) {
           res.status(200).send(responseData);
         }
       });
-    } 
+    }
     else {
       stud.find({ $or: [{ parentEmail: req.body.email }, { MotherEmail: req.body.email }] }).toArray(function (err, data) {
         if (data.length > 0) {
@@ -704,12 +704,13 @@ module.exports.adminCreate = function (req, res) {
     "schoolName": req.body.schoolName,
     "schoolRegNumber": req.body.schoolRegNumber,
     "address": req.body.address,
+    "email": req.body.email,
+    "mobNumber": req.body.mobNumber,
     "city": req.body.city,
     "streetName": req.body.streetName,
     "pinCode": req.body.pinCode,
     "country": req.body.country,
-    "mobNumber": req.body.mobNumber,
-    "cs":[]
+    "cs": []
   }
   var adminObj = {
     "firstName": req.body.firstName,
@@ -725,7 +726,7 @@ module.exports.adminCreate = function (req, res) {
   console.log("schoolObj: " + JSON.stringify(schoolObj));
   console.log("adminObj: " + JSON.stringify(adminObj));
   school.insertOne(schoolObj, function (err, data) {
-    console.log("data: " + JSON.stringify( data.ops[0]));
+    console.log("data: " + JSON.stringify(data.ops[0]));
     if (err) {
       responseData = {
         status: false,
@@ -750,13 +751,13 @@ module.exports.adminCreate = function (req, res) {
             status: true,
             errorCode: 200,
             message: "Insert Successfull",
-           
+
           };
           res.status(200).send(responseData);
         }
       });
     }
-    
+
 
     console.log("<--adminCreate");
   })

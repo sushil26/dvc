@@ -23,8 +23,7 @@ module.exports.getSchoolUser = function (req, res) {
     console.log("getSchoolUser-->");
     var responseData;
     var schoolUserList = {
-        "schoolTeacherList": [],
-        "schoolStudentList": []
+       
     };
     user.find({ "schoolName": req.params.schoolName }).toArray(function (err, teacherData) {
         //console.log("teacherData: " + JSON.stringify(teacherData));
@@ -37,7 +36,7 @@ module.exports.getSchoolUser = function (req, res) {
             };
             res.status(400).send(responseData);
         } else {
-            schoolUserList.schoolTeacherList.splice(0,0,teacherData);
+            schoolUserList.schoolTeacherList = teacherData;
            // console.log("schoolUserList: " + JSON.stringify(schoolUserList));
             stud.find({ "schoolName": req.params.schoolName }).toArray(function (err, studentData) {
                // console.log("studentData: " + JSON.stringify(studentData));
@@ -50,7 +49,7 @@ module.exports.getSchoolUser = function (req, res) {
                     };
                     res.status(400).send(responseData);
                 } else {
-                    schoolUserList.schoolStudentList.splice(0,0,studentData);
+                    schoolUserList.schoolStudentList = studentData;
                   console.log("schoolUserList: " + JSON.stringify(schoolUserList));
                     responseData = {
                         status: true,

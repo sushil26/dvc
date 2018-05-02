@@ -38,7 +38,7 @@ module.exports.getSchoolUser= function (req, res) {
             res.status(400).send(responseData);
         } else {
             schoolUserList.schoolTeacherList.push(data[0].schoolName);
-            console.log("schoolList: " + JSON.stringify(schoolList));
+            console.log("schoolList: " + JSON.stringify(schoolUserList));
                 responseData = {
                     status: true,
                     message: "There is no class",

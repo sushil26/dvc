@@ -40,14 +40,14 @@ module.exports.getSchoolUser = function (req, res) {
             schoolUserList.schoolTeacherList.push(data[0]);
             console.log("schoolUserList: " + JSON.stringify(schoolUserList));
 
-            stud.find({ "schoolName": req.params.schoolName }).toArray(function (err, data) {
-                console.log("data: " + JSON.stringify(data));
+            stud.find({ "schoolName": req.params.schoolName }).toArray(function (err, studentData) {
+                console.log("studentData: " + JSON.stringify(studentData));
 
                 if (err) {
                     responseData = {
                         status: false,
                         message: "Failed to get Data",
-                        data: data
+                        data: studentData
                     };
                     res.status(400).send(responseData);
                 } else {

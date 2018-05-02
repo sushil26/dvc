@@ -35,8 +35,12 @@ app.controller('allUserCtl', function ($scope, $window, httpFactory, sessionAuth
             var checkStatus = httpFactory.dataValidation(data);
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
-                $scope.schoolUser = data.data.data;
-                console.log("schoolList: " + JSON.stringify($scope.schoolUser));
+                var schoolUser = data.data.data;
+                console.log("schoolList: " + JSON.stringify(schoolUser));
+                $scope.teacherData = schoolUser.schoolTeacherList[0];
+                $scope.studentData = schoolUser.schoolStudentList[0];
+                console.log(" $scope.teacherData: " + JSON.stringify( $scope.teacherData));
+                console.log("$scope.studentData: " + JSON.stringify($scope.studentData));
                 console.log(data.data.message);
             }
             else {

@@ -16,26 +16,60 @@
                                 <div id="profile">
                                     <section class="panel">
                                         <h1>All User </h1>
-                                        
-                                            <div class="form-group row" >
-                                                <label class="col-lg-4">Select School</label>
-                                                <select class="btn btn-danger col-lg-4" placeholder="select" ng-model="selectedSchool" ng-options="sl as sl for sl in schoolList" ng-change="schoolUserData(selectedSchool)">
-                                                    <option value="" disabled selected>Select School</option>
-                                                </select>
-                                            </div>
-                                        
+
+                                        <div class="form-group row">
+                                            <label class="col-lg-4">Select School</label>
+                                            <select class="btn btn-danger col-lg-4" placeholder="select" ng-model="selectedSchool" ng-options="sl as sl for sl in schoolList"
+                                                ng-change="schoolUserData(selectedSchool)">
+                                                <option value="" disabled selected>Select School</option>
+                                            </select>
+                                        </div>
+
                                     </section>
-                                    <section class="panel">
-                                            <h1>All User </h1>
-                                            
-                                                <div class="form-group row" >
-                                                    <label class="col-lg-4">Select School</label>
-                                                    <select class="btn btn-danger col-lg-4" placeholder="select" ng-model="selectedSchool" ng-options="sl as sl for sl in schoolList" ng-change="schoolUserData(selectedSchool)">
-                                                        <option value="" disabled selected>Select School</option>
-                                                    </select>
-                                                </div>
-                                            
-                                        </section>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <section class="panel">
+                                                <header class="panel-heading">
+                                                    <h2>Admin </h2>
+                                                </header>
+                                                <table class="table table-condensed">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>#</th>
+
+                                                            <th>Admin Name</th>
+
+                                                            <th>Email</th>
+                                                            <th>Phone Number</th>
+
+                                                            <th>Status</th>
+                                                            <th>Activation</th>
+                                                            <th>Delete</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr ng-repeat="sd in schoolUser">
+                                                            <td style="background-color:aliceblue;">{{$index+1}}.</td>
+                                                            <td style="background-color:aliceblue;">{{sd.studId}}</td>
+                                                            <td style="background-color:aliceblue;">
+                                                                <button type="button" class="btn-info " data-toggle="modal" data-target="#myModal">{{sd.studName}}</button>
+                                                                <!-- Modal -->
+                                                            </td>
+                                                            <td ng-if="sd.status=='active'" style="background-color:aliceblue;">{{sd.status}}</td>
+                                                            <td ng-if="sd.status=='inactive'" style="background-color:tomato;">{{sd.status}}</td>
+                                                            <td style="background-color:aliceblue;">
+                                                                <button class="btn" ng-if="sd.status=='active'" ng-click="updateStudStatus(sd._id,'inactive',$index)" style="width: 70px;">Dectivate</button>
+                                                                <button class="btn" ng-if="sd.status=='inactive'" ng-click="updateStudStatus(sd._id,'active',$index)" style="width: 70px;">Activate</button>
+                                                            </td>
+                                                            <td style="background-color:aliceblue;">
+                                                                <button class="btn" ng-click="deleteStud(sd._id, $index)">Delete</button>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </section>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

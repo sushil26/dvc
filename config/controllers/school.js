@@ -21,7 +21,10 @@ module.exports.getSchoolList = function (req, res) {
             };
             res.status(400).send(responseData);
         } else {
-            schoolList.push(data[0]);
+            for(var x=0;x<data.length;x++){
+                schoolList.push(data[x].schoolName);
+            }
+           
             console.log("schoolList: " + JSON.stringify(schoolList));
             responseData = {
                 status: true,

@@ -27,9 +27,9 @@ module.exports = function (app) {
     app.post('/vc/adminCreate', user.adminCreate);
      app.get('/vc/getAllClass/:schoolName', school.getAllClass);
      app.post('/vc/uploadClassFile/:schoolName', adminAction.uploadClassFile);
-    app.post('/vc/uploadStudentMaster', adminAction.uploadStudentMaster);
+    app.post('/vc/uploadStudentMaster/:schoolName/:clas/:section', adminAction.uploadStudentMaster);
    // app.post('/vc/uploadMark', adminAction.uploadMark);
-     app.post('/vc/uploadAttendance/:reportType/:month', adminAction.uploadAttendance);
+     app.post('/vc/uploadAttendance/:schoolName/:clas/:section/:reportType/:month', adminAction.uploadAttendance);
 
     //  app.post('/vc/uploadPayment', adminAction.uploadPayment);
     

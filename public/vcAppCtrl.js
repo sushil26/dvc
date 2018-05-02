@@ -109,7 +109,7 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
         userName = $scope.userData.userName;
         $scope.loginType = $scope.userData.loginType;
       }
-      else {
+      else if(data.data.loginType == 'admin'){
         var userData = {
           "userName": data.data.firstName,
           "status": data.data.status,
@@ -125,6 +125,22 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
         userName = $scope.userData.userName;
         $scope.loginType = $scope.userData.loginType;
 
+      }
+      else{
+        var userData = {
+          "userName": data.data.firstName,
+          "status": data.data.status,
+          "email": data.data.email,
+          "loginType": data.data.loginType,
+          "id": data.data._id
+         
+        }
+        console.log("userData: "+JSON.stringify(userData));
+        sessionAuthFactory.setAccess(userData);
+
+        $scope.userData = sessionAuthFactory.getAccess("userData");
+        userName = $scope.userData.userName;
+        $scope.loginType = $scope.userData.loginType;
       }
     } else {
       alert("Sorry, your browser does not support Web Storage...");

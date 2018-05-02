@@ -17,6 +17,7 @@ var marker; /* ### Note: marker is used for identify the status of update query 
 var monthAtt = []; /* ### Note: get all attendance of the month ###*/
 var unknownData = [];
 var attendanceIndex; /* ### Note: dateAttendance index based on month select  ### */
+var schoolName; /* ### Note: Get School Name of API  ### */
 
 module.exports.uploadClassFile = function (req, res) {
     console.log("uploadClassFile-->");
@@ -24,7 +25,7 @@ module.exports.uploadClassFile = function (req, res) {
     var section = [];
     var classSection = [];
     var consolidateCS = [];
-    var schoolName = req.params.schoolName;
+    schoolName = req.params.schoolName;
 
     console.log("req.body.files: " + req.files.img);
     if (!req.files)
@@ -81,7 +82,7 @@ module.exports.uploadClassFile = function (req, res) {
 module.exports.uploadAttendance = function (req, res) {
     console.log("uploadAttendance-->");
     var responseData;
-
+    schoolName = req.params.schoolName;
 
     console.log("req.body.files: " + req.files.img);
     if (!req.files)
@@ -159,13 +160,15 @@ module.exports.dailyData = function (data, callback) {
     console.log("obj: " + JSON.stringify(obj));
     var studIdForFindQry = {
         "studId": data.StudentID,
+        "schoolName": schoolName,
         "attendance.month": AttMonth,
         "attendance.dateAttendance": { "date": AttDate, "status": attndnce }
     }
     console.log("studIdForFindQry: " + JSON.stringify(studIdForFindQry));
     var studIdForUpdateQry = {
         "studId": data.StudentID,
-        "attendance.month": AttMonth
+        "attendance.month": AttMonth,
+        "schoolName": schoolName
     }
     console.log("studIdForUpdateQry: " + JSON.stringify(studIdForUpdateQry));
     stud.find(studIdForFindQry).toArray(function (err, findData) {
@@ -212,7 +215,8 @@ module.exports.monthlyData = function (data, callback) {
     // var marker;
     var studIdForFindQry = {
         "studId": data.StudentID,
-        "attendance.month": month
+        "attendance.month": month,
+        "schoolName": schoolName
     }
 
     if (month == "Jan") {
@@ -239,7 +243,7 @@ module.exports.monthlyData = function (data, callback) {
         }
     }
     console.log("*monthAtt: " + monthAtt.length);
-    stud.find({ "studId": data.StudentID }).toArray(function (err, isThereData) {
+    stud.find({ "schoolName":schoolName, "studId": data.StudentID}).toArray(function (err, isThereData) {
         console.log("Basic query: " + JSON.stringify(isThereData));
         console.log("Basic query: " + isThereData.length);
         if (err) {
@@ -251,7 +255,7 @@ module.exports.monthlyData = function (data, callback) {
         else {
             if (isThereData.length > 0) {
                 console.log("month: " + month);
-                stud.find({ "studId": data.StudentID, "attendance.month": month }).toArray(function (err, findData) {
+                stud.find({ "schoolName":schoolName, "studId": data.StudentID, "attendance.month": month }).toArray(function (err, findData) {
                     console.log("1st query findData: " + JSON.stringify(findData));
                     console.log("attendanceIndex: " + JSON.stringify(findData[0].attendance[attendanceIndex]));
                     console.log("dateAttendance: " + JSON.stringify(findData[0].attendance[attendanceIndex].dateAttendance));
@@ -443,6 +447,7 @@ module.exports.uploadStudentMaster = function (req, res) {
     var responseData;
     var marker;
     var objJson = [];
+    // var cs = [{"class":req.params.class,"section":req.params.section}];
     if (!req.files)
         return res.status(400).send('No files were uploaded.');
 
@@ -453,9 +458,9 @@ module.exports.uploadStudentMaster = function (req, res) {
         ignoreEmpty: true
     }).on("data", function (data) {
         console.log("data: " + JSON.stringify(data));
-        var csData = [{ "class": data.Class, "section": data.Section }];
+        var csData = [{ "class": req.params.class, "section": req.params.section}];
         var userData = {
-            schoolName: "ABC",
+            schoolName: req.params.schoolName,
             studId: data.StudentID,
             studName: data.StudentName,
             parentName: data.FatherName,

@@ -65,9 +65,8 @@ app.controller('allUserCtl', function ($scope, $window, httpFactory, sessionAuth
             var checkStatus = httpFactory.dataValidation(data);
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
-                $scope.userData[index].status = status;
+                $scope.teacherData[index].status = status;
                 alert("Updated Status Successfully");
-
             }
             else {
                 alert("Status updated failed, try again ");

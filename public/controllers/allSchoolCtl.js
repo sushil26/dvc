@@ -12,8 +12,8 @@ app.controller('allSchoolCtl', function ($scope, $window, httpFactory, sessionAu
             var checkStatus = httpFactory.dataValidation(data);
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
-                $scope.getAllSchool = data.data.data;
-                console.log("getAllSchool: " + JSON.stringify($scope.getAllSchool));
+                $scope.allSchool = data.data.data;
+                console.log("getAllSchool: " + JSON.stringify($scope.allSchool));
                 console.log(data.data.message);
             }
             else {
@@ -22,31 +22,26 @@ app.controller('allSchoolCtl', function ($scope, $window, httpFactory, sessionAu
         })
         console.log("<--getAllSchool");
     }
-    $scope.getAllAdmin();
-    $scope.updateAdminStatus = function (id, status, index) {
+    $scope.getAllSchool();
+    $scope.updateSchoolStatus = function (id, status, index) {
         console.log("updateUserStatus-->");
         var api = "https://norecruits.com/vc/updateUserStatus";
         //var api = "http://localhost:5000/vc/updateUserStatus";
-
         var obj = {
             "id": id,
             "status": status
         }
-
         httpFactory.post(api, obj).then(function (data) {
             var checkStatus = httpFactory.dataValidation(data);
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
-                $scope.teacherData[index].status = status;
+                $scope.allSchool[index].status = status;
                 alert("Updated Status Successfully");
             }
             else {
                 alert("Status updated failed, try again ");
-
             }
-
         })
-
         console.log("<--updateUserStatus");
     }
 })

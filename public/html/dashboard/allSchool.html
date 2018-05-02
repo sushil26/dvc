@@ -1,63 +1,62 @@
 <div ng-controller="allSchoolCtl">
-        <section id="main-content">
-            <section class="wrapper">
-                <div class="col-lg-12">
-                    <h3 class="page-header">
-                        <i class="fa fa-user-md"></i>ALL School</h3>
-                </div>
-               
-                <section class="panel">
-                    <div class="panel-body">
-                        <div class="tab-content">
-                            <!-- profile -->
-                            <div id="profile">
-                                <section class="panel">
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <section class="panel">
-                                                <header class="panel-heading">
-                                                    <h2>School List </h2>
-                                                </header>
-                                                <table class="table table-condensed">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>#</th>
-                                                            <th>Registration Number</th>
-                                                            <th>School Name</th>
-                                                            
-                                                            <th>Email</th>
-                                                            <th>Phone Number</th>
-    
-                                                            <th>Status</th>
-                                                            <th>Activation</th>
-                                                            <th>Delete</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr ng-repeat="ad in adminList">
-                                                            <td style="background-color:aliceblue;">{{$index+1}}.</td>
-                                                            <td style="background-color:aliceblue;">{{ad.firstName + " " + ad.lastName}}</td>
-                                                            <td style="background-color:aliceblue;">{{ad.email}}</td>
-                                                            <td style="background-color:aliceblue;">{{ad.mobNumber}}</td>
-                                                            <td style="background-color:tomato;">{{ad.status}}</td>
-                                                            <td style="background-color:aliceblue;">
-                                                                <button class="btn" ng-if="ad.status=='active'" ng-click="updateAdminStatus(ad._id,'inactive',$index)" style="width: 70px;">Dectivate</button>
-                                                                <button class="btn" ng-if="ad.status=='inactive'" ng-click="updateAdminStatus(ad._id,'active',$index)" style="width: 70px;">Activate</button>
-                                                            </td>
-                                                            <td style="background-color:aliceblue;">
-                                                                <button class="btn" ng-click="deleteStud(ad._id, $index)">Delete</button>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </section>
-                                        </div>
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="col-lg-12">
+                <h3 class="page-header">
+                    <i class="fa fa-user-md"></i>ALL School</h3>
+            </div>
+            <section class="panel">
+                <div class="panel-body">
+                    <div class="tab-content">
+                        <!-- profile -->
+                        <div id="profile">
+                            <section class="panel">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <section class="panel">
+                                            <header class="panel-heading">
+                                                <h2>School List </h2>
+                                            </header>
+                                            <table class="table table-condensed">
+                                                <thead>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>Registration Number</th>
+                                                        <th>School Name</th>
+
+                                                        <th>Email</th>
+                                                        <th>Phone Number</th>
+
+                                                        <th>Status</th>
+                                                        <th>Activation</th>
+                                                        <th>Delete</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="sd in allSchool">
+                                                        <td style="background-color:aliceblue;">{{$index+1}}.</td>
+                                                        <td style="background-color:aliceblue;">{{sd.}}</td>
+                                                        <td style="background-color:aliceblue;">{{sd.email}}</td>
+                                                        <td style="background-color:aliceblue;">{{sd.mobNumber}}</td>
+                                                        <td style="background-color:tomato;">{{sd.status}}</td>
+                                                        <td style="background-color:aliceblue;">
+                                                            <button class="btn" ng-if="sd.status=='active'" ng-click="updateSchoolStatus(sd._id,'inactive',$index)" style="width: 70px;">Dectivate</button>
+                                                            <button class="btn" ng-if="sd.status=='inactive'" ng-click="updateSchoolStatus(sd._id,'active',$index)" style="width: 70px;">Activate</button>
+                                                        </td>
+                                                        <td style="background-color:aliceblue;">
+                                                            <button class="btn" ng-click="deleteStud(sd._id, $index)">Delete</button>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </section>
                                     </div>
-                                </section>
-                            </div>
+                                </div>
+                            </section>
                         </div>
                     </div>
-                </section>
+                </div>
             </section>
         </section>
-    </div>
+    </section>
+</div>

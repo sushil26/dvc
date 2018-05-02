@@ -508,7 +508,7 @@ module.exports.uploadStudentMaster = function (req, res) {
         ignoreEmpty: true
     }).on("data", function (data) {
         console.log("data: " + JSON.stringify(data));
-        var csData = [{ "class": req.params.class, "section": req.params.section }];
+        var csData = [{ "class": req.params.clas, "section": req.params.section }];
         var userData = {
             schoolName: req.params.schoolName,
             schoolId: data.StudentID,

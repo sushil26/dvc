@@ -51,6 +51,10 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
         else if (data.data.errorCode == 'No Match') {
           alert(data.data.message);
         }
+        else if(data.data.message == 'Your not allow to login')
+        {
+          alert(data.data.message);
+        }
         // if (data.data.loginType == 'admin') {
         //   $scope.sessionSet(datas);
         //   // document.getElementById("appLogin").style.display = 'none';

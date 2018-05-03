@@ -37,7 +37,7 @@ function initializeJS() {
         jQuery('.sub', last).slideUp(200);
         var sub = jQuery(this).next();
         console.log("*sub: "+sub.is(":visible"));
-        if (sub.is(":visible")) {
+        if (!sub.is(":visible")) {
             jQuery('.menu-arrow').addClass('arrow_carrot-right');            
             sub.slideUp(200);
         } else {

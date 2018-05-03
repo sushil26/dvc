@@ -13,19 +13,19 @@
   <link rel="stylesheet" href="/home/css/style.css" />
   <link href="/home/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
   -->
-   <!-- Favicons -->
-   <link href="/home/img/fav.png" rel="icon" size="32x32">
-   <!-- Google Fonts -->
-   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700" rel="stylesheet">
-   <!-- Bootstrap CSS File -->
-   <link href="/home/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-   <!-- Libraries CSS Files -->
-   <link href="/home/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-   <link href="/home/lib/animate/animate.min.css" rel="stylesheet">
-   <!-- Main Stylesheet File -->
-   <link href="/home/css/style.css" rel="stylesheet">
-   <link rel="stylesheet" href="/css/chatZone.css" />
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+  <!-- Favicons -->
+  <link href="/home/img/fav.png" rel="icon" size="32x32">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700" rel="stylesheet">
+  <!-- Bootstrap CSS File -->
+  <link href="/home/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Libraries CSS Files -->
+  <link href="/home/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="/home/lib/animate/animate.min.css" rel="stylesheet">
+  <!-- Main Stylesheet File -->
+  <link href="/home/css/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/chatZone.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
 
 
   <style>
@@ -173,7 +173,7 @@
 
 
     <!-- <div ui-view> -->
-      <div>
+    <div>
 
 
       <!--==========================
@@ -216,12 +216,12 @@
               <li>
                 <a href="#contact" style="text-shadow: 2px 2px 4px #000000;">About Us</a>
               </li>
-              <li ng-if="!userData.loginType">
+              <!-- <li ng-if="!userData.loginType">
                 <a href="#" ng-click="vcLogin()" style="text-shadow: 2px 2px 4px #000000;">Login</a>
+              </li> -->
+              <li id="appReg" style="display:block;">
+                <a href="#" data-target="#regVC" data-toggle="modal" style="text-shadow: 2px 2px 4px #000000;">Register</a>
               </li>
-              <!-- <li id="appReg" style="display:block;">
-            <a href="#" data-target="#regVC" data-toggle="modal" style="text-shadow: 2px 2px 4px #000000;">Register</a>
-          </li> -->
               <li ng-if="userData.loginType">
                 <a href="#" ng-click="vcLogout()" style="text-shadow: 2px 2px 4px #000000;">Logout</a>
               </li>
@@ -501,57 +501,57 @@
       </main>
 
       <!-- ##### Start login popup  ##### -->
-      <!-- <div class="modal fade" id="crdntl" role="dialog">
-    <div class="modal-dialog">
-      <center>
-     
-        <div class="modal-content" style="
+      <div class="modal fade" id="crdntl" role="dialog">
+        <div class="modal-dialog">
+          <center>
+
+            <div class="modal-content" style="
                 max-width: 350px;
                 background: #00000075; color:#777; border: 0px;">
-          <div class="modal-header" style="background-color: darkturquoise;     border-bottom: 0px;">
-            <h4 class="modal-title" style="margin-left: 2px;">Login</h4>
-            <button class="btn-default fa fa-close" style="margin-top: 2px;    border-color: white;
+              <div class="modal-header" style="background-color: darkturquoise;     border-bottom: 0px;">
+                <h4 class="modal-title" style="margin-left: 2px;">Login</h4>
+                <button class="btn-default fa fa-close" style="margin-top: 2px;    border-color: white;
               border-radius: 25%;" aria-hidden="true" type="reset" data-dismiss="modal"></button>
-          </div>
-          <div class="modal-body">
-            <div style="background:darkturquoise;
+              </div>
+              <div class="modal-body">
+                <div style="background:darkturquoise;
             /* border: 1px solid white; */
             border-radius: 5px;
             width: 50%;
             padding: 3px;">
-              <input type="radio" name="loginType" value="teacher" checked="checked"> Teacher &nbsp&nbsp
+                  <input type="radio" ng-model="loginType"  value="teacher" checked="checked"> Teacher &nbsp&nbsp
 
-              <input type="radio" name="loginType" value="studParent"> Parent
+                  <input type="radio" ng-model="loginType" value="studParent"> Parent
+                </div>
+
+                <hr>
+
+
+                <input style="
+                      background:  #ddd;
+                      border-radius: inherit;
+                      height: 50px;
+                      border: #ddd;" type="email" class="form-control" placeholder="Email" ng-model="email" id="crdEmail">
+
+                <br>
+                <input style="
+                      background:  #ddd;
+                      border-radius: inherit;
+                      height: 50px;
+                      border: #ddd;" type="password" id="crdPswd" class="form-control" placeholder="Password" ng-model="Password" >
+
+              </div>
+              <div class="modal-footer" style="border-top:0px; padding: 15px;">
+
+                <button id="crdsubmit" type="button" style="background-color: #29b6bd;color:#f1f1f1; width: 100%; height:50px;" class="btn"
+                ng-click="logVC(loginType, email, Password)" data-dismiss="modal">Submit</button>
+
+              </div>
+
             </div>
-
-            <hr>
-
-          
-            <input style="
-                      background:  #ddd;
-                      border-radius: inherit;
-                      height: 50px;
-                      border: #ddd;" type="email" class="form-control" placeholder="Email" id="crdEmail">
-
-            <br>
-            <input style="
-                      background:  #ddd;
-                      border-radius: inherit;
-                      height: 50px;
-                      border: #ddd;" type="password" id="crdPswd" class="form-control" placeholder="Password">
-
-          </div>
-          <div class="modal-footer" style="border-top:0px; padding: 15px;">
-
-            <button id="crdsubmit" type="button" style="background-color: #29b6bd;color:#f1f1f1; width: 100%; height:50px;" class="btn"
-              onclick="logVC()" data-dismiss="modal">Submit</button>
-
-          </div>
-        
+          </center>
         </div>
-      </center>
-    </div>
-  </div> -->
+      </div>
       <!-- ##### End login popup  ##### -->
 
       <div class="modal fade" id="regVC" role="dialog">
@@ -668,7 +668,7 @@
             }
           });
   </script> -->
-      
+
 
 
     </div>

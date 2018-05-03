@@ -88,7 +88,11 @@ module.exports.login4VC = function (req, res) {
           else{
             if (data.length > 0) {
               console.log("data.length: "+data.length);
-              school.find({ "schoolName": data[0].schoolName }), function (err, schoolStatus) {
+              console.log("data[0].schoolName: "+ data[0].schoolName);
+              var sn = {
+                "schoolName": data[0].schoolName 
+              }
+              school.find(sn), function (err, schoolStatus) {
                 console.log("second query");
                 if (err) {
                   responseData = {

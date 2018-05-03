@@ -122,8 +122,9 @@
                   <th>#</th>
                   <th>Student Id</th>
                   <th>Student Name</th>
-                  <th>Class</th>
-                  <th>Section</th>
+                  <th>Class-Section</th>
+                  <th>Father Email</th>
+                  <th>Mother Email</th>
                   <th>Status</th>
                   <th>Activation</th>
                   <th>Delete</th>
@@ -137,8 +138,9 @@
                     <button type="button" class="btn-info " data-toggle="modal" data-target="#myModal">{{sd.firstName + " " + sd.lastName}}</button>
                     <!-- Modal -->
                   </td>
-                  <td style="background-color:aliceblue;">{{sd.cs[0].class}}</td>
-                  <td style="background-color:aliceblue;">{{sd.cs[0].section}}</td>
+                  <td style="background-color:aliceblue;">{{sd.cs[0].class +" "+ sd.cs[0].section}}</td>
+                  <td style="background-color:aliceblue;">{{sd.parentEmail}}</td>
+                  <td style="background-color:aliceblue;">{{sd.motherEmail}}</td>
                   <td ng-if="sd.status=='active'" style="background-color:aliceblue;">{{sd.status}}</td>
                   <td ng-if="sd.status=='inactive'" style="background-color:tomato;">{{sd.status}}</td>
                   <td style="background-color:aliceblue;">

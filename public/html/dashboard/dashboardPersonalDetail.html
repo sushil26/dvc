@@ -54,7 +54,7 @@
                                                     <p>
                                                         <span>
                                                             <b> Student Name</b>
-                                                        </span>: {{userData[0].studName}}</p>
+                                                        </span>: {{userData[0].firstName +" "+ userData[0].lastName}}</p>
                                                 </div>
                                                 <div class="bio-row" ng-if="loginType=='teacher'">
                                                     <p>
@@ -66,13 +66,13 @@
                                                     <p>
                                                         <span>
                                                             <b>ID</b>
-                                                        </span>: {{userData[0].teacherId}} </p>
+                                                        </span>: {{userData[0].schoolId}} </p>
                                                 </div>
                                                 <div class="bio-row" ng-if="loginType=='studParent'">
                                                     <p>
                                                         <span>
                                                             <b>ID</b>
-                                                        </span>: {{userData[0].studId}} </p>
+                                                        </span>: {{userData[0].schoolId}} </p>
                                                 </div>
                                                 <div class="bio-row" ng-if="loginType=='teacher'">
                                                     <p>
@@ -113,14 +113,14 @@
                                                     <p>
                                                         <span>
                                                             <b>E-Mail</b>
-                                                        </span>: {{userData[0].teacherEmail}}</p>
+                                                        </span>: {{userData[0].email}}</p>
                                                 </div>
 
 
                                                 <div class="bio-row" ng-if="loginType=='studParent'">
                                                     <p>
                                                         <span>
-                                                            <b>Parent Name</b>
+                                                            <b>Father Name</b>
                                                         </span>: {{userData[0].parentName}}</p>
                                                 </div>
 
@@ -130,21 +130,33 @@
                                                     <p>
                                                         <span>
                                                             <b>Father Email</b>
-                                                        </span>: sushil.careator@gmail.com</p>
+                                                        </span>: {{userData[0].parentEmail}}</p>
                                                 </div>
                                                 <div class="bio-row" ng-if="loginType=='studParent'">
                                                     <p>
                                                         <span>
                                                             <b>Father Phone</b>
-                                                        </span>: 9066367679</p>
+                                                        </span>: {{userData[0].mobileNum}}</p>
+                                                </div>
+                                                 <div class="bio-row" ng-if="loginType=='studParent'">
+                                                    <p>
+                                                        <span>
+                                                            <b>Mother Name</b>
+                                                        </span>: {{userData[0].motherName}}</p>
                                                 </div>
                                                 <div class="bio-row" ng-if="loginType=='studParent'">
                                                     <p>
                                                         <span>
                                                             <b> Mother Email</b>
-                                                        </span>: sushil.careator@gmail.com</p>
+                                                        </span>:  {{userData[0].motherEmail}}</p>
                                                 </div>
                                                 <div class="bio-row" ng-if="loginType=='studParent'">
+                                                    <p>
+                                                        <span>
+                                                            <b>Mother Phone</b>
+                                                        </span>: {{userData[0].mobileNum}}</p>
+                                                </div>
+                                                <!-- <div class="bio-row" ng-if="loginType=='studParent'">
                                                     <p>
                                                         <span>
                                                             <b>Father Occupation</b>
@@ -161,10 +173,7 @@
                                                         <span>
                                                             <b>Mother Occupation</b>
                                                         </span>: Housewive</p>
-                                                </div>
-
-
-
+                                                </div> -->
 
                                             </div>
                                         </div>

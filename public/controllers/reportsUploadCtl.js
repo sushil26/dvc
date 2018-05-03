@@ -22,10 +22,10 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
       // console.log("checkStatus: "+checkStatus);
       // console.log("data--" + JSON.stringify(data.data));
       if (checkStatus) {
-        $scope.csList = data.data.data;
-        console.log("csList: " + JSON.stringify($scope.csList));
-        if ($scope.csList.length == 0) {
-          console.log(data.data.message);
+        $scope.cssList = data.data.data;
+        console.log("cssList: " + JSON.stringify($scope.cssList));
+        if ($scope.cssList.length == 0) {
+          console.log("message: "+data.data.message);
         }
         else {
           for (var x = 0; x < $scope.csList.length; x++) {
@@ -113,7 +113,6 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
 
   $scope.uploadClassFile = function (file) {
     console.log("uploadClassFile-->");
-
     var obj = {
       "file": file
     }

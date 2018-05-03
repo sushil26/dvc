@@ -161,11 +161,11 @@ module.exports.getSchoolUser = function (req, res) {
     console.log("<--getSchoolUser");
 }
 
-
 module.exports.uploadClassFile = function (req, res) {
     console.log("uploadClassFile-->");
     var responseData;
     var section = [];
+    var subject = [];
     var classSection = [];
     var consolidateCS = [];
     schoolName = req.params.schoolName;
@@ -181,16 +181,27 @@ module.exports.uploadClassFile = function (req, res) {
     }).on("data", function (data) {
         console.log("data: " + JSON.stringify(data));
         var parts = data.Section.split(',');
-        for (var x = 0; x <= parts.length; x++) {
-
+        console.log("parts: " + JSON.stringify(parts));
+        for (var x = 0; x <= parts.length; x++) 
+        {
             if (general.emptyCheck(parts[x])) {
                 section.push(parts[x]);
             }
         }
         console.log("section: " + JSON.stringify(section));
-        consolidateCS.push({ "class": data.Class, "section": section });
+        var subjectParts = data.Subject.split(',');
+        console.log("subjectParts: " + JSON.stringify(subjectParts));
+        for (var x = 0; x <= subjectParts.length; x++) 
+        {
+            if (general.emptyCheck(subjectParts[x])) {
+                subject.push(subjectParts[x]);
+            }
+        }
+        console.log("subject: " + JSON.stringify(subject));
+        consolidateCS.push({ "class": data.Class, "section": section, "subject":subject });
         section = [];
-        console.log("parts: " + JSON.stringify(parts));
+        subject = [];
+       
         // classSection.push({"class":data.class, "section":[data]})
         // parser.pause();
     })
@@ -198,7 +209,7 @@ module.exports.uploadClassFile = function (req, res) {
             console.log("end ");
             console.log("consolidateCS: " + JSON.stringify(consolidateCS));
             console.log("schoolName:" + schoolName);
-            school.findOneAndUpdate({ "schoolName": schoolName }, { $push: { "cs": { $each: consolidateCS } } }, { returnNewDocument: true }, function (err, data) {
+            school.findOneAndUpdate({ "schoolName": schoolName }, { $push: { "css": { $each: consolidateCS } } }, { new: true }, function (err, data) {
                 console.log("data: " + JSON.stringify(data));
                 if (err) {
                     responseData = {
@@ -517,75 +528,72 @@ module.exports.monthlyData = function (data, callback) {
 // }
 // /* ### End update monthly attendance status  ### */
 
-// module.exports.uploadMark = function (req, res) {
-//     console.log("attendanceMarkSave-->");
-//     var responseData;
-//     var marker; /* ### Note: marker is used for identify the status of update query ###*/
-//     console.log("req.files: " + req.files.img);
-//     if (!req.files)
-//         return res.status(400).send('No files were uploaded.');
+module.exports.uploadMark = function (req, res) {
+    console.log("MarkSave-->");
+    var responseData;
+    var marker; /* ### Note: marker is used for identify the status of update query ###*/
+    console.log("req.files: " + req.files.img);
+    if (!req.files)
+        return res.status(400).send('No files were uploaded.');
+    var studentDataFile = req.files.img;
+    console.log("studentDataFile: " + studentDataFile);
 
-//     var studentDataFile = req.files.img;
-//     console.log("studentDataFile: " + studentDataFile);
+    var parser = csv.fromString(studentDataFile.data.toString(), {
+        headers: true,
+        ignoreEmpty: true
+    }).on("data", function (data) {
+        console.log("data: " + JSON.stringify(data));
+        parser.pause();
 
-//     var parser = csv.fromString(studentDataFile.data.toString(), {
-//         headers: true,
-//         ignoreEmpty: true
-//     }).on("data", function (data) {
-//         console.log("data: " + JSON.stringify(data));
-//         parser.pause();
+        var studId = {
+            "studId": data.studId
+        }
+        var testType = [{
+            "testType": data.testType,
+            "subjectMarks":
+                {
+                    "English": data.English,
+                    "Physics": data.Physics,
+                    "Math": data.Math
+                }
+        }]
+        console.log("testType: " + JSON.stringify(testType));
+        stud.findOneAndUpdate({ "studId": data.studId }, { $set: { "testType": testType } }, { upsert: false, multi: true, returnNewDocument: true }, function (err, studentList) {
 
-//         var studId = {
-//             "studId": data.studId
-//         }
-//         var testType = [{
-//             "testType": data.testType,
-//             "subjectMarks":
-//                 {
-//                     "English": data.English,
-//                     "Physics": data.Physics,
-//                     "Math": data.Math
-//                 }
-//         }]
-//         console.log("testType: " + JSON.stringify(testType));
-//         stud.findOneAndUpdate({ "studId": data.studId }, { $set: { "testType": testType } }, { upsert: false, multi: true, returnNewDocument: true }, function (err, studentList) {
+            console.log("studentList:" + JSON.stringify(studentList));
+            if (err) {
+                console.log("err");
+                marker = false;
+                // process.nextTick(callback);
+            }
+            else {
+                console.log("no err");
+                marker = true;
+                // process.nextTick(callback);
+            }
+            parser.resume();
+        })
+    })
+        .on("end", function () {
+            console.log("end marker: " + marker);
+            if (marker == false) {
+                responseData = {
+                    status: false,
+                    message: "Failed to get Data"
+                };
+                res.status(400).send(responseData);
+            }
+            else if (marker == true) {
+                responseData = {
+                    status: true,
+                    message: "Successfull updated data"
+                };
 
-//             console.log("studentList:" + JSON.stringify(studentList));
-//             if (err) {
-//                 console.log("err");
-//                 marker = false;
-//                 // process.nextTick(callback);
-//             }
-//             else {
-//                 console.log("no err");
-//                 marker = true;
-//                 // process.nextTick(callback);
-//             }
-//             parser.resume();
-//         })
-//     })
-//         .on("end", function () {
-//             console.log("end marker: " + marker);
-//             if (marker == false) {
-//                 responseData = {
-//                     status: false,
-//                     message: "Failed to get Data"
-//                 };
-//                 res.status(400).send(responseData);
-//             }
-//             else if (marker == true) {
-//                 responseData = {
-//                     status: true,
-//                     message: "Successfull updated data"
-//                 };
-
-//                 res.status(200).send(responseData);
-//             }
-//         });
-//     console.log("<--attendanceMarkSave");
-// };
-
-
+                res.status(200).send(responseData);
+            }
+        });
+    console.log("<--MarkSave");
+};
 
 module.exports.uploadStudentMaster = function (req, res) {
     console.log("uploadStudentMaster-->");

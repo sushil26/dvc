@@ -15,7 +15,7 @@ function initializeJS() {
     jQuery(".scroll-panel").niceScroll({ styler: "fb", cursorcolor: "#007AFF", cursorwidth: '3', cursorborderradius: '10px', background: '#F7F7F7', cursorborder: '' });
 
     var header = jQuery('#sidebarId');
-    var btns = header. jQuery('.sub-menu');
+    var btns =jQuery('#sidebarId .sub-menu');
     for (var i = 0; i < btns.length; i++) {
         btns[i].addEventListener("click", function () {
             var current = jQuery('.active');
@@ -37,8 +37,8 @@ function initializeJS() {
             jQuery('.menu-arrow').addClass('arrow_carrot-right');
             sub.slideUp(200);
         } else {
-
-            jQuery('.menu-arrow').addClass('arrow_carrot-down');
+            
+            jQuery('#sidebarId .active .menu-arrow').addClass('arrow_carrot-down');
             sub.slideDown(200);
         }
         var o = (jQuery(this).offset());

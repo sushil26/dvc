@@ -7,63 +7,49 @@ function initializeJS() {
     jQuery('.popovers').popover();
 
     //custom scrollbar
-    //for html
-    jQuery("html").niceScroll({ styler: "fb", cursorcolor: "#007AFF", cursorwidth: '6', cursorborderradius: '10px', background: '#F7F7F7', cursorborder: '', zindex: '1000' });
-    //for sidebar
-    jQuery("#sidebar").niceScroll({ styler: "fb", cursorcolor: "#007AFF", cursorwidth: '3', cursorborderradius: '10px', background: '#F7F7F7', cursorborder: '' });
-    // for scroll panel
-    jQuery(".scroll-panel").niceScroll({ styler: "fb", cursorcolor: "#007AFF", cursorwidth: '3', cursorborderradius: '10px', background: '#F7F7F7', cursorborder: '' });
-
-    var header = jQuery('#sidebarId');
-    var btns =jQuery('#sidebarId .sub-menu');
-    for (var i = 0; i < btns.length; i++) {
-        btns[i].addEventListener("click", function () {
-            var current = jQuery('.active');
-            current[0].className = current[0].className.replace(" active", "");
-            this.className += " active";
-        });
-    }
-
+        //for html
+    jQuery("html").niceScroll({styler:"fb",cursorcolor:"#007AFF", cursorwidth: '6', cursorborderradius: '10px', background: '#F7F7F7', cursorborder: '', zindex: '1000'});
+        //for sidebar
+    jQuery("#sidebar").niceScroll({styler:"fb",cursorcolor:"#007AFF", cursorwidth: '3', cursorborderradius: '10px', background: '#F7F7F7', cursorborder: ''});
+        // for scroll panel
+    jQuery(".scroll-panel").niceScroll({styler:"fb",cursorcolor:"#007AFF", cursorwidth: '3', cursorborderradius: '10px', background: '#F7F7F7', cursorborder: ''});
+    
     //sidebar dropdown menu
     jQuery('#sidebar .sub-menu > a').click(function () {
-        var last = jQuery('.sub-menu.open', jQuery('#sidebar'));
+        var last = jQuery('.sub-menu.open', jQuery('#sidebar'));        
         jQuery('.menu-arrow').removeClass('arrow_carrot-right');
         jQuery('.sub', last).slideUp(200);
         var sub = jQuery(this).next();
-        console.log("sub: " + sub.is(":visible"));
         if (sub.is(":visible")) {
-            console.log("****: " + $(this).parent().parent().find('active'));
-            // jQuery('.menu-arrow').addClass('arrow_carrot-right');
-            jQuery('#sidebarId .active .menu-arrow').addClass('arrow_carrot-down');
+            jQuery('.menu-arrow').addClass('arrow_carrot-right');            
             sub.slideUp(200);
         } else {
-           jQuery('.menu-arrow').addClass('arrow_carrot-down');
-            //jQuery('#sidebarId .active .menu-arrow').addClass('arrow_carrot-down');
+            jQuery('.menu-arrow').addClass('arrow_carrot-down');            
             sub.slideDown(200);
         }
         var o = (jQuery(this).offset());
         diff = 200 - o.top;
-        if (diff > 0)
-            jQuery("#sidebar").scrollTo("-=" + Math.abs(diff), 500);
+        if(diff>0)
+            jQuery("#sidebar").scrollTo("-="+Math.abs(diff),500);
         else
-            jQuery("#sidebar").scrollTo("+=" + Math.abs(diff), 500);
+            jQuery("#sidebar").scrollTo("+="+Math.abs(diff),500);
     });
 
     // sidebar menu toggle
-    jQuery(function () {
+    jQuery(function() {
         function responsiveView() {
             var wSize = jQuery(window).width();
             if (wSize <= 768) {
                 jQuery('#container').addClass('sidebar-close');
                 jQuery('#sidebar > ul').hide();
-
+               
             }
 
             if (wSize > 768) {
                 jQuery('#container').removeClass('sidebar-close');
                 jQuery('#sidebar > ul').show();
             }
-
+       
         }
         jQuery(window).on('load', responsiveView);
         jQuery(window).on('resize', responsiveView);
@@ -104,6 +90,6 @@ function initializeJS() {
 
 }
 
-jQuery(document).ready(function () {
+jQuery(document).ready(function(){
     initializeJS();
 });

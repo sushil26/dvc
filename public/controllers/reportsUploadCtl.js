@@ -28,7 +28,7 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
           console.log("message: "+data.data.message);
         }
         else {
-          for (var x = 0; x < $scope.csList.length; x++) {
+          for (var x = 0; x < $scope.cssList.length; x++) {
             $scope.class.push({ "id": $scope.studentList[x]._id, "name": $scope.studentList[x].studName, "studId": $scope.studentList[x].studId });
 
           }

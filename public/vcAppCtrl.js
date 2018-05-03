@@ -12,8 +12,8 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
     console.log("loginType: " + $scope.userData.loginType);
   }
   $scope.logVC = function (loginType, email, Password) {
-    console.log("logVC from signalingSocket.js");
-    loginModal.close('resetModel');
+    console.log("logVC from ");
+    // loginModal.close('resetModel');
     var obj = {
       "email": email,
       "password": Password,

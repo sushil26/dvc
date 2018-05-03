@@ -35,11 +35,11 @@ function initializeJS() {
         if (sub.is(":visible")) {
             console.log("****: " + $(this).parent().parent().find('active'));
             // jQuery('.menu-arrow').addClass('arrow_carrot-right');
-            jQuery('#sidebarId .active .menu-arrow').addClass('arrow_carrot-down');
+            jQuery('#sidebarId>.active>.menu-arrow').addClass('arrow_carrot-down');
             sub.slideUp(200);
         } else {
-            jQuery('.menu-arrow').addClass('arrow_carrot-down');
-            //jQuery('#sidebarId .active .menu-arrow').addClass('arrow_carrot-down');
+           // jQuery('.menu-arrow').addClass('arrow_carrot-down');
+            jQuery('#sidebarId>.active>.menu-arrow').addClass('arrow_carrot-down');
             sub.slideDown(200);
         }
         var o = (jQuery(this).offset());

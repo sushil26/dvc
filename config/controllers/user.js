@@ -86,8 +86,9 @@ module.exports.login4VC = function (req, res) {
           };
         }
           else{
+            console.log("data.length: "+data.length);
             if (data.length > 0) {
-              console.log("data.length: "+data.length);
+             
               console.log("data[0].schoolName: "+ data[0].schoolName);
               var sn = {
                 "schoolName": data[0].schoolName 
@@ -145,6 +146,7 @@ module.exports.login4VC = function (req, res) {
               })
             }
             else {
+              console.log("There is no match for this EMail id from Teacher database");
               responseData = {
                 status: false,
                 errorCode: "No Match",

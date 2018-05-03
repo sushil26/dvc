@@ -116,7 +116,7 @@
         <aside>
             <div id="sidebar" class="nav-collapse" style="margin-top: 60px;">
                 <!-- sidebar menu start-->
-                <ul class="sidebar-menu">
+                <ul class="sidebar-menu" id="sidebarId">
                     <li>
                         <a ng-click="homeClick()">
                             <i class="fa fa-home"></i>
@@ -138,7 +138,7 @@
                     </li>
 
                     <li class="sub-menu" ng-if="loginType == 'teacher' || loginType == 'studParent'">
-                        <a class="">
+                        <a >
                             <i class="fa fa-calendar"></i>
                             <span>EVENTS</span>
                             <span class="menu-arrow arrow_carrot-right"></span>
@@ -152,8 +152,8 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="sub-menu">
-                        <a>
+                    <li class="sub-menu active">
+                        <a >
                             <i class="fa fa-clipboard"></i>
                             <span>ACADEMIC</span>
                             <span class="menu-arrow arrow_carrot-right"></span>

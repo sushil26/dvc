@@ -14,11 +14,11 @@ function initializeJS() {
     // for scroll panel
     jQuery(".scroll-panel").niceScroll({ styler: "fb", cursorcolor: "#007AFF", cursorwidth: '3', cursorborderradius: '10px', background: '#F7F7F7', cursorborder: '' });
 
-    var header = document.getElementBy("sidebarId");
-    var btns = header.getElementsByClassName("sub-menu");
+    var header = jQuery('#sidebarId');
+    var btns = header. jQuery('.sub-menu');
     for (var i = 0; i < btns.length; i++) {
         btns[i].addEventListener("click", function () {
-            var current = document.getElementsByClassName("active");
+            var current = jQuery('.active');
             current[0].className = current[0].className.replace(" active", "");
             this.className += " active";
         });

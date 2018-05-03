@@ -75,67 +75,80 @@ module.exports.login4VC = function (req, res) {
   var responseData;
   if (general.emptyCheck(req.body.email) && general.emptyCheck(req.body.password)) {
     if (req.body.loginType == "teacher") {
-      user.find({ $or: [{ teacherEmail: req.body.email }, { email: req.body.email }] }).toArray(function (err, data) {
-        if (data.length > 0) {
-          school.find({ "schoolName": data[0].schoolName }, { "status": "active" }), function (err, schoolStatus) {
-            if (err) {
-              responseData = {
-                status: false,
-                message: "Failed to get Data",
-                data: schoolStatus
-              };
-              res.status(400).send(responseData);
-            } else {
-              if (schoolStatus.length > 0) {
-                if (data[0].password == req.body.pswd) {
-                  if (data[0].status == "active") {
-                    console.log("Successfully Logged in");
-                    responseData = {
-                      status: true,
-                      message: "Login Successfully",
-                      sessionData: "79ea520a-3e67-11e8-9679-97fa7aeb8e97",
-                      data: data[0]
-                    };
-                    res.status(200).send(responseData);
-                  } else {
-                    console.log("Profile Inactive");
+      console.log("logintype: "+req.body.loginType);
+      user.find({ email: req.body.email } ).toArray(function (err, data) {
+        if (err) {
+          responseData = {
+            status: false,
+            message: "Failed to get Data",
+            data: schoolStatus
+          };
+        }
+          else{
+            if (data.length > 0) {
+              console.log("data.length: "+data.length);
+              school.find({ "schoolName": data[0].schoolName }), function (err, schoolStatus) {
+                console.log("second query");
+                if (err) {
+                  responseData = {
+                    status: false,
+                    message: "Failed to get Data",
+                    data: schoolStatus
+                  };
+                  res.status(400).send(responseData);
+                } else {
+                  if (schoolStatus.status == "active") {
+                    if (data[0].password == req.body.pswd) {
+                      if (data[0].status == "active") {
+                        console.log("Successfully Logged in");
+                        responseData = {
+                          status: true,
+                          message: "Login Successfully",
+                          sessionData: "79ea520a-3e67-11e8-9679-97fa7aeb8e97",
+                          data: data[0]
+                        };
+                        res.status(200).send(responseData);
+                      } else {
+                        console.log("Profile Inactive");
+                        responseData = {
+                          status: false,
+                          message: "Profile Inactive",
+                          data: data[0]
+                        };
+                        res.status(200).send(responseData);
+                      }
+                    } else {
+                      responseData = {
+                        status: false,
+                        errorCode: "E005",
+                        message: "Password is wrong"
+                      };
+                      res.status(200).send(responseData);
+                    }
+                  }
+                  else {
                     responseData = {
                       status: false,
-                      message: "Profile Inactive",
+                      message: "Your not allow to login",
                       data: data[0]
                     };
                     res.status(200).send(responseData);
                   }
-                } else {
-                  responseData = {
-                    status: false,
-                    errorCode: "E005",
-                    message: "Password is wrong"
-                  };
-                  res.status(200).send(responseData);
+    
                 }
               }
-              else {
-                responseData = {
-                  status: false,
-                  message: "Your not allow to login",
-                  data: data[0]
-                };
-                res.status(200).send(responseData);
-              }
-
+            }
+            else {
+              responseData = {
+                status: false,
+                errorCode: "No Match",
+                message:
+                  "There is no match for this EMail id from Teacher database"
+              };
+              res.status(200).send(responseData);
             }
           }
-        }
-        else {
-          responseData = {
-            status: false,
-            errorCode: "No Match",
-            message:
-              "There is no match for this EMail id from Teacher database"
-          };
-          res.status(200).send(responseData);
-        }
+       
       });
 
     }

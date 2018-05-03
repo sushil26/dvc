@@ -7,7 +7,7 @@
  <script src="././dashboard_Lib/js/bootstrap.min.js"></script>
 <script src="././dashboard_Lib/js/jquery.nicescroll.js"></script>
 <script src="././dashboard_Lib/js/jquery.scrollTo.min.js"></script>
-<script src="././dashboard_Lib/js/scripts.js"></script>
+
 
 
 <div ng-controller="dashboardController">
@@ -23,8 +23,8 @@
             </div>
 
             <!--logo start-->
-            <img ng-click="homeClick()" style="float:left;width: 63px;margin-top: 5px" src="././home/img/fav.png" />
-            <a ng-click="homeClick()" class="logo">VC<span class="lite">4ALL</span></a>
+            <img style="float:left;width: 63px;margin-top: 5px" src="././home/img/fav.png" />
+            <a href="/!" class="logo">VC<span class="lite">4ALL</span></a>
             <!--logo end-->
 
 
@@ -135,7 +135,7 @@
                     </li>
 
                     <li class="sub-menu" ng-if="loginType == 'teacher' || loginType == 'studParent'">
-                        <a >
+                        <a class="">
                             <i class="fa fa-calendar"></i>
                             <span>EVENTS</span>
                             <span class="menu-arrow arrow_carrot-right"></span>
@@ -149,8 +149,8 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="sub-menu active">
-                        <a >
+                    <li class="sub-menu">
+                        <a>
                             <i class="fa fa-clipboard"></i>
                             <span>ACADEMIC</span>
                             <span class="menu-arrow arrow_carrot-right"></span>

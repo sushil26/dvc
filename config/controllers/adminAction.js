@@ -17,6 +17,150 @@ var marker; /* ### Note: marker is used for identify the status of update query 
 var monthAtt = []; /* ### Note: get all attendance of the month ###*/
 var unknownData = [];
 var attendanceIndex; /* ### Note: dateAttendance index based on month select  ### */
+var schoolName; /* ### Note: Get School Name of API  ### */
+
+module.exports.updateSchoolStatus = function (req, res) {
+    console.log("updateSchoolStatus-->");
+    var responseData;
+    if (general.emptyCheck(req.body.id)) {
+      var obj = {
+        _id: ObjectId(req.body.id)
+      };
+      var updatedJson = {
+        status: req.body.status
+      };
+      school.update(obj, { $set: updatedJson }, { multi: true }, function (
+        err,
+        data
+      ) {
+        if (err) {
+          responseData = {
+            status: false,
+            message: "Failed to get Data",
+            data: data
+          };
+          res.status(400).send(responseData);
+        } else {
+          responseData = {
+            status: true,
+            message: "Successfull updated status",
+            data: data
+          };
+  
+          res.status(200).send(responseData);
+        }
+      });
+    } else {
+      console.log("Epty value found");
+      responseData = {
+        status: false,
+        message: "empty value found",
+        data: userData
+      };
+      res.status(400).send(responseData);
+    }
+  
+    console.log("<--updateSchoolStatus");
+  };
+
+module.exports.getAllSchool = function (req, res) {
+    console.log("getAllAdmin-->");
+    var responseData;
+    school.find().toArray(function (err, schoolList) {
+        if (err) {
+            responseData = {
+                status: false,
+                message: "Failed to get Data",
+                data: schoolList
+            };
+            res.status(400).send(responseData);
+        } else {
+            responseData = {
+                status: true,
+                message: "All school collected successfully",
+                data: schoolList
+            };
+
+            res.status(200).send(responseData);
+        }
+
+    })
+    console.log("<--getAllAdmin");
+}
+module.exports.getAllAdmin = function (req, res) {
+    console.log("getAllAdmin-->");
+    var responseData;
+    user.find({ "loginType": "admin" }).toArray(function (err, adminDataList) {
+        if (err) {
+            responseData = {
+                status: false,
+                message: "Failed to get Data",
+                data: teacherData
+            };
+            res.status(400).send(responseData);
+        } else {
+            responseData = {
+                status: true,
+                message: "All admin collected successfully",
+                data: adminDataList
+            };
+
+            res.status(200).send(responseData);
+        }
+
+    })
+    console.log("<--getAllAdmin");
+}
+
+module.exports.getSchoolUser = function (req, res) {
+    console.log("getSchoolUser-->");
+    var responseData;
+    var schoolUserList = {
+
+    };
+    user.find({ "schoolName": req.params.schoolName }).toArray(function (err, teacherData) {
+        //console.log("teacherData: " + JSON.stringify(teacherData));
+
+        if (err) {
+            responseData = {
+                status: false,
+                message: "Failed to get Data",
+                data: teacherData
+            };
+            res.status(400).send(responseData);
+        } else {
+            schoolUserList.schoolTeacherList = teacherData;
+            // console.log("schoolUserList: " + JSON.stringify(schoolUserList));
+            stud.find({ "schoolName": req.params.schoolName }).toArray(function (err, studentData) {
+                // console.log("studentData: " + JSON.stringify(studentData));
+
+                if (err) {
+                    responseData = {
+                        status: false,
+                        message: "Failed to get Data",
+                        data: studentData
+                    };
+                    res.status(400).send(responseData);
+                } else {
+                    schoolUserList.schoolStudentList = studentData;
+                    console.log("schoolUserList: " + JSON.stringify(schoolUserList));
+                    responseData = {
+                        status: true,
+                        message: "All user collected successfully",
+                        data: schoolUserList
+                    };
+
+                    res.status(200).send(responseData);
+
+                }
+
+            })
+
+        }
+    })
+    console.log("<--getSchoolUser");
+}
+
 
 module.exports.uploadClassFile = function (req, res) {
     console.log("uploadClassFile-->");
@@ -24,7 +168,7 @@ module.exports.uploadClassFile = function (req, res) {
     var section = [];
     var classSection = [];
     var consolidateCS = [];
-    var schoolName = req.params.schoolName;
+    schoolName = req.params.schoolName;
 
     console.log("req.body.files: " + req.files.img);
     if (!req.files)
@@ -44,8 +188,8 @@ module.exports.uploadClassFile = function (req, res) {
             }
         }
         console.log("section: " + JSON.stringify(section));
-        consolidateCS.push({"class":data.Class, "section":section});
-        section=[];
+        consolidateCS.push({ "class": data.Class, "section": section });
+        section = [];
         console.log("parts: " + JSON.stringify(parts));
         // classSection.push({"class":data.class, "section":[data]})
         // parser.pause();
@@ -53,14 +197,14 @@ module.exports.uploadClassFile = function (req, res) {
         .on("end", function () {
             console.log("end ");
             console.log("consolidateCS: " + JSON.stringify(consolidateCS));
-            console.log("schoolName:"+schoolName);
-            school.findOneAndUpdate({"schoolName":schoolName},{ $push: { "cs": { $each: consolidateCS } } }, {returnNewDocument: true }, function (err, data) {
+            console.log("schoolName:" + schoolName);
+            school.findOneAndUpdate({ "schoolName": schoolName }, { $push: { "cs": { $each: consolidateCS } } }, { returnNewDocument: true }, function (err, data) {
                 console.log("data: " + JSON.stringify(data));
                 if (err) {
                     responseData = {
                         status: false,
                         message: err
-                        
+
                     };
                     res.status(400).send(responseData);
                 } else {
@@ -73,7 +217,7 @@ module.exports.uploadClassFile = function (req, res) {
                     res.status(200).send(responseData);
                 }
             });
-           
+
         });
     console.log("<--uploadClassFile");
 };
@@ -81,7 +225,7 @@ module.exports.uploadClassFile = function (req, res) {
 module.exports.uploadAttendance = function (req, res) {
     console.log("uploadAttendance-->");
     var responseData;
-
+    schoolName = req.params.schoolName;
 
     console.log("req.body.files: " + req.files.img);
     if (!req.files)
@@ -159,13 +303,15 @@ module.exports.dailyData = function (data, callback) {
     console.log("obj: " + JSON.stringify(obj));
     var studIdForFindQry = {
         "studId": data.StudentID,
+        "schoolName": schoolName,
         "attendance.month": AttMonth,
         "attendance.dateAttendance": { "date": AttDate, "status": attndnce }
     }
     console.log("studIdForFindQry: " + JSON.stringify(studIdForFindQry));
     var studIdForUpdateQry = {
         "studId": data.StudentID,
-        "attendance.month": AttMonth
+        "attendance.month": AttMonth,
+        "schoolName": schoolName
     }
     console.log("studIdForUpdateQry: " + JSON.stringify(studIdForUpdateQry));
     stud.find(studIdForFindQry).toArray(function (err, findData) {
@@ -212,7 +358,8 @@ module.exports.monthlyData = function (data, callback) {
     // var marker;
     var studIdForFindQry = {
         "studId": data.StudentID,
-        "attendance.month": month
+        "attendance.month": month,
+        "schoolName": schoolName
     }
 
     if (month == "Jan") {
@@ -239,7 +386,7 @@ module.exports.monthlyData = function (data, callback) {
         }
     }
     console.log("*monthAtt: " + monthAtt.length);
-    stud.find({ "studId": data.StudentID }).toArray(function (err, isThereData) {
+    stud.find({ "schoolName": schoolName, "studId": data.StudentID }).toArray(function (err, isThereData) {
         console.log("Basic query: " + JSON.stringify(isThereData));
         console.log("Basic query: " + isThereData.length);
         if (err) {
@@ -251,7 +398,7 @@ module.exports.monthlyData = function (data, callback) {
         else {
             if (isThereData.length > 0) {
                 console.log("month: " + month);
-                stud.find({ "studId": data.StudentID, "attendance.month": month }).toArray(function (err, findData) {
+                stud.find({ "schoolName": schoolName, "studId": data.StudentID, "attendance.month": month }).toArray(function (err, findData) {
                     console.log("1st query findData: " + JSON.stringify(findData));
                     console.log("attendanceIndex: " + JSON.stringify(findData[0].attendance[attendanceIndex]));
                     console.log("dateAttendance: " + JSON.stringify(findData[0].attendance[attendanceIndex].dateAttendance));
@@ -438,11 +585,14 @@ module.exports.monthlyData = function (data, callback) {
 //     console.log("<--attendanceMarkSave");
 // };
 
+
+
 module.exports.uploadStudentMaster = function (req, res) {
     console.log("uploadStudentMaster-->");
     var responseData;
     var marker;
     var objJson = [];
+    // var cs = [{"class":req.params.class,"section":req.params.section}];
     if (!req.files)
         return res.status(400).send('No files were uploaded.');
 
@@ -453,11 +603,12 @@ module.exports.uploadStudentMaster = function (req, res) {
         ignoreEmpty: true
     }).on("data", function (data) {
         console.log("data: " + JSON.stringify(data));
-        var csData = [{ "class": data.Class, "section": data.Section }];
+        var csData = [{ "class": req.params.clas, "section": req.params.section }];
         var userData = {
-            schoolName: "ABC",
-            studId: data.StudentID,
-            studName: data.StudentName,
+            schoolName: req.params.schoolName,
+            schoolId: data.StudentID,
+            firstName: data.FirstName,
+            lastName: data.LastName,
             parentName: data.FatherName,
             parentEmail: data.FatherEmailId,
             mobileNum: data.FatherPhoneNumber,
@@ -486,13 +637,83 @@ module.exports.uploadStudentMaster = function (req, res) {
 
         objJson.push(userData);
         console.log("userData: " + JSON.stringify(userData));
-
-
     })
         .on("end", function () {
             console.log("end marker: " + marker);
             console.log("objJson: " + JSON.stringify(objJson));
             stud.insert(objJson, function (err, data) {
+                console.log("data: " + JSON.stringify(data));
+                if (err) {
+                    responseData = {
+                        status: false,
+                        message: "Failed to Insert",
+                        data: data
+                    };
+                    res.status(400).send(responseData);
+                } else {
+                    responseData = {
+                        status: true,
+                        errorCode: 200,
+                        message: "Insert Successfull",
+                        data: data
+                    };
+                    res.status(200).send(responseData);
+                }
+            });
+        });
+
+    console.log("<--uploadStudentMaster");
+};
+
+module.exports.uploadTeacherMaster = function (req, res) {
+    console.log("uploadStudentMaster-->");
+    var responseData;
+    var marker;
+    var css = [];
+    var objJson = [];
+    // var cs = [{"class":req.params.class,"section":req.params.section}];
+    if (!req.files)
+        return res.status(400).send('No files were uploaded.');
+
+    var studentDataFile = req.files.img;
+    console.log("studentDataFile: " + studentDataFile);
+    var parser = csv.fromString(studentDataFile.data.toString(), {
+        headers: true,
+        ignoreEmpty: true
+    }).on("data", function (data) {
+        console.log("data: " + JSON.stringify(data));
+        // var csData = [{ "class": req.params.class, "section": req.params.section }];
+        var userData = {
+            schoolName: req.params.schoolName,
+            schoolId: data.TeacherID,
+            firstName: data.FirstName,
+            lastName: data.LastName,
+            email: data.Email,
+            mobileNum: data.PhoneNumber,
+            dob: data.DOB,
+            doj: data.DOJ,
+            pswd: "abc",
+            css: [],
+            timeTable: [],
+            status: "inactive",
+            loginType: "teacher"
+        }
+        var cssParts = data.ClassSectionSubject.split(',');
+        console.log("cssParts: " + JSON.stringify(cssParts));
+        for (var x = 0; x < cssParts.length; x++) {
+            if (cssParts[x] != "") {
+                var cssSeparate = cssParts[x].split('-');
+                console.log("cssSeparate: " + JSON.stringify(cssSeparate));
+                userData.css.push({ "class": cssSeparate[0], "section": cssSeparate[1], "subject": cssSeparate[2] });
+            }
+        }
+        console.log("userData: " + JSON.stringify(userData));
+        objJson.push(userData);
+    })
+        .on("end", function () {
+            console.log("end marker: " + marker);
+            console.log("objJson: " + JSON.stringify(objJson));
+            user.insert(objJson, function (err, data) {
                 console.log("data: " + JSON.stringify(data));
                 if (err) {
                     responseData = {

@@ -153,6 +153,21 @@ var app = angular.module('vcApp', ['ui.router', 'mwl.calendar', 'ui.bootstrap', 
         templateUrl: '/html/dashboard/adminCreate.html',
         controller: 'adminCreateCtl'
       })
+      .state('dashboard.allUser', {
+        url: allUser(),
+        templateUrl: '/html/dashboard/allUser.html',
+        controller: 'allUserCtl'
+      })
+      .state('dashboard.allAdmin', {
+        url: allAdmin(),
+        templateUrl: '/html/dashboard/allAdmin.html',
+        controller: 'allAdminCtl'
+      })
+      .state('dashboard.allSchool', {
+        url: allSchool(),
+        templateUrl: '/html/dashboard/allSchool.html',
+        controller: 'allSchoolCtl'
+      })
       .state('dashboard.contact', {
         url: contact(),
         templateUrl: '/html/dashboard/contact.html',
@@ -214,6 +229,15 @@ function reportsUpdate(){
 }
 function adminCreate(){
   return '/adminCreate';
+}
+function allUser(){
+  return '/allUser';
+}
+function allAdmin(){
+  return '/allAdmin';
+}
+function allSchool(){
+  return '/allSchool';
 }
 function attendanceView(){
   return '/attendanceView';

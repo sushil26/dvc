@@ -166,6 +166,7 @@ module.exports.uploadClassFile = function (req, res) {
     console.log("uploadClassFile-->");
     var responseData;
     var section = [];
+    var subject = [];
     var classSection = [];
     var consolidateCS = [];
     schoolName = req.params.schoolName;
@@ -181,16 +182,27 @@ module.exports.uploadClassFile = function (req, res) {
     }).on("data", function (data) {
         console.log("data: " + JSON.stringify(data));
         var parts = data.Section.split(',');
-        for (var x = 0; x <= parts.length; x++) {
-
+        console.log("parts: " + JSON.stringify(parts));
+        for (var x = 0; x <= parts.length; x++) 
+        {
             if (general.emptyCheck(parts[x])) {
                 section.push(parts[x]);
             }
         }
         console.log("section: " + JSON.stringify(section));
-        consolidateCS.push({ "class": data.Class, "section": section });
+        var subjectParts = data.Subject.split(',');
+        console.log("subjectParts: " + JSON.stringify(subjectParts));
+        for (var x = 0; x <= subjectParts.length; x++) 
+        {
+            if (general.emptyCheck(subjectParts[x])) {
+                subject.push(subjectParts[x]);
+            }
+        }
+        console.log("subject: " + JSON.stringify(subject));
+        consolidateCS.push({ "class": data.Class, "section": section, "subject":subject });
         section = [];
-        console.log("parts: " + JSON.stringify(parts));
+        subject = [];
+       
         // classSection.push({"class":data.class, "section":[data]})
         // parser.pause();
     })

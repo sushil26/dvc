@@ -137,7 +137,7 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
     console.log("file: " + file);
     
     var obj = {
-      "file": file,
+      "file": file
     }
     console.log("uploadType: " + uploadType);
     console.log("reportType: " + reportType);

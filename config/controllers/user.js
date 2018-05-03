@@ -92,8 +92,9 @@ module.exports.login4VC = function (req, res) {
               var sn = {
                 "schoolName": data[0].schoolName 
               }
-              school.find(sn), function (err, schoolStatus) {
-                console.log("second query");
+              school.find(sn).toArray(function (err, schoolStatus) {
+                console.log("second query status: "+schoolStatus[0].status);
+
                 if (err) {
                   responseData = {
                     status: false,
@@ -102,7 +103,7 @@ module.exports.login4VC = function (req, res) {
                   };
                   res.status(400).send(responseData);
                 } else {
-                  if (schoolStatus.status == "active") {
+                  if (schoolStatus[0].status == "active") {
                     if (data[0].password == req.body.pswd) {
                       if (data[0].status == "active") {
                         console.log("Successfully Logged in");
@@ -141,7 +142,7 @@ module.exports.login4VC = function (req, res) {
                   }
     
                 }
-              }
+              })
             }
             else {
               responseData = {

@@ -55,8 +55,8 @@ module.exports.getAllClass = function (req, res) {
             res.status(400).send(responseData);
         } else {
            
-            if (data[0].cs.length > 0) {
-                allClass = data[0].cs;
+            if (data[0].css.length > 0) {
+                allClass = data[0].css;
                 console.log("allClass: " + JSON.stringify(allClass));
 
                 // console.log("studentList: "+JSON.stringify(studentList));

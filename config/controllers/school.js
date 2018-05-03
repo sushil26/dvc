@@ -54,10 +54,10 @@ module.exports.getAllClass = function (req, res) {
             };
             res.status(400).send(responseData);
         } else {
-            allClass = data[0].cs;
-            console.log("allClass: " + JSON.stringify(allClass));
+           
             if (data[0].cs.length > 0) {
-
+                allClass = data[0].cs;
+                console.log("allClass: " + JSON.stringify(allClass));
 
                 // console.log("studentList: "+JSON.stringify(studentList));
                 // console.log("allClass.length: " + allClass.length);
@@ -80,7 +80,7 @@ module.exports.getAllClass = function (req, res) {
                 responseData = {
                     status: true,
                     message: "There is no class",
-                    data: allClass
+                    data: data[0].css
                 };
 
                 res.status(200).send(responseData);

@@ -14,6 +14,11 @@ app.controller('dashboardController', function ($scope, $window, httpFactory, se
         console.log("<--logOut");
     }
 
+    $scope.homeClick = function(){
+        console.log("homeClick-->");
+        window.location.href = "https://norecruits.com";
+        console.log("<--homeClick");
+    }
 
 
 

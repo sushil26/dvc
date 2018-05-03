@@ -219,7 +219,7 @@
               <!-- <li ng-if="!userData.loginType">
                 <a href="#" ng-click="vcLogin()" style="text-shadow: 2px 2px 4px #000000;">Login</a>
               </li> -->
-              <li id="appReg" style="display:block;">
+              <li ng-if="!userData.loginType">
                 <a href="#" data-target="#regVC" data-toggle="modal" style="text-shadow: 2px 2px 4px #000000;">Register</a>
               </li>
               <li ng-if="userData.loginType">

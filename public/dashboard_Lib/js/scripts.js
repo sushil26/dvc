@@ -27,7 +27,6 @@ function initializeJS() {
     //sidebar dropdown menu
     jQuery('#sidebar .sub-menu > a').click(function () {
         var last = jQuery('.sub-menu.open', jQuery('#sidebar'));
-
         jQuery('.menu-arrow').removeClass('arrow_carrot-right');
         jQuery('.sub', last).slideUp(200);
         var sub = jQuery(this).next();
@@ -35,11 +34,11 @@ function initializeJS() {
         if (sub.is(":visible")) {
             console.log("****: " + $(this).parent().parent().find('active'));
             // jQuery('.menu-arrow').addClass('arrow_carrot-right');
-            jQuery('#sidebarId>.active>.menu-arrow').addClass('arrow_carrot-down');
+            jQuery('#sidebarId .active .menu-arrow').addClass('arrow_carrot-down');
             sub.slideUp(200);
         } else {
-           // jQuery('.menu-arrow').addClass('arrow_carrot-down');
-            jQuery('#sidebarId>.active>.menu-arrow').addClass('arrow_carrot-down');
+           jQuery('.menu-arrow').addClass('arrow_carrot-down');
+            //jQuery('#sidebarId .active .menu-arrow').addClass('arrow_carrot-down');
             sub.slideDown(200);
         }
         var o = (jQuery(this).offset());

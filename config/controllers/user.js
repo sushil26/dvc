@@ -77,6 +77,7 @@ module.exports.login4VC = function (req, res) {
     if (req.body.loginType == "teacher") {
       console.log("logintype: "+req.body.loginType);
       user.find({ email: req.body.email } ).toArray(function (err, data) {
+        console.log("data: "+JSON.stringify(data));
         if (err) {
           responseData = {
             status: false,

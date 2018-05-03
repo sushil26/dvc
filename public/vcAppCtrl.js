@@ -49,7 +49,7 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
           alert("Password is wrong");
         }
         else if (data.data.errorCode == 'No Match') {
-          alert("There is no match for this EMail id from student database ");
+          alert(data.data.message);
         }
         // if (data.data.loginType == 'admin') {
         //   $scope.sessionSet(datas);

@@ -632,7 +632,14 @@ module.exports.uploadStudentMaster = function (req, res) {
                 { "month": "Oct", "dateAttendance": [] },
                 { "month": "Nov", "dateAttendance": [] },
                 { "month": "Dec", "dateAttendance": [] }
-            ]
+            ],
+            mark: [
+                {"testType":"AT", "subjectWithMark":[]},
+                {"testType":"UT", "subjectWithMark":[]},
+                {"testType":"MT", "subjectWithMark":[]},
+                {"testType":"TT", "subjectWithMark":[]},
+                {"testType":"AT", "subjectWithMark":[]},
+        ]
         };
 
         objJson.push(userData);

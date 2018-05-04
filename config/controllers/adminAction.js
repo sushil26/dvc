@@ -253,6 +253,7 @@ module.exports.uploadPeriodsFile = function (req, res) {
         // for (var x = 0; x < count; x++) {
         for (var key in data) {
             console.log(data[key]);
+            console.log("key: "+key);
             console.log("data[key]: " + data[key]);
             var parts = data[key].split('-');
             console.log("parts: " + JSON.stringify(parts));

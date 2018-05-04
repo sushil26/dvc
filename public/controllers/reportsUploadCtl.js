@@ -77,6 +77,7 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
         })
     console.log("<--getTeacherList");
   }
+  $scope.getTeacherList();
   
   $scope.getSection = function (clas) {
     console.log("getSection-->");

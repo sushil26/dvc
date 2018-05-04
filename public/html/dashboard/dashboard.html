@@ -135,7 +135,8 @@
                         <a ng-click="eventClick('academic_subMenu')">
                             <i class="fa fa-clipboard"></i>
                             <span>ACADEMIC</span>
-                            <span class="menu-arrow arrow_carrot-right"></span>
+                            <span ng-if="academic_subMenu==true" class="menu-arrow arrow_carrot-right"></span>
+                            <span ng-if="academic_subMenu==false" class="menu-arrow arrow_carrot-down"></span>
                         </a>
                         <ul  ng-hide="academic_subMenu">
                             <li>

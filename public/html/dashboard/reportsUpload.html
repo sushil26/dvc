@@ -52,11 +52,11 @@
                                                     <option value="" disabled selected>Teacher</option>
                                                 </select>
                                                 <label ng-if="up.uploadType!='Teacher Details' && up.uploadType!='Time Table' && up.uploadType!=undefined" class="col-lg-4">Class</label>
-                                                <select ng-if="up.uploadType!='Teacher Details' && up.uploadType!='Time Table' && up.uploadType!=null " class="btn btn-danger col-lg-4" placeholder="select" ng-model="up.cSelect"
+                                                <select ng-if="up.uploadType!='Teacher Details' && up.uploadType!='Time Table' && up.uploadType!=null" class="btn btn-danger col-lg-4" placeholder="select" ng-model="up.cSelect"
                                                     ng-options="c as c.class for c in cssList">
                                                     <option value="" disabled selected>Class</option>
                                                 </select>
-                                                <label ng-if="up.uploadType!='Teacher Details' && up.uploadType!='Time Table'" class="col-lg-4">Section</label>
+                                                <label ng-if="up.uploadType!='Teacher Details' && up.uploadType!='Time Table' && up.uploadType!='null'" class="col-lg-4">Section</label>
                                                 <select ng-if="up.uploadType!='Teacher Details' && up.uploadType!='Time Table'" class="btn btn-danger col-lg-4" placeholder="select" ng-model="up.sSelect"
                                                     ng-options="s as s for s in up.cSelect.section">
                                                     <option value="" disabled selected>Section</option>

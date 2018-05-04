@@ -151,9 +151,6 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
     }
     console.log("<--sessionSet");
   }
-
-
-
   $scope.vcLogin = function () {
     console.log("vcLogin-->");
     loginModal = $uibModal.open({
@@ -166,7 +163,6 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
       }
     })
   }
-
   $scope.vcLogout = function () {
     console.log("vcLogout-->");
     sessionAuthFactory.clearAccess();
@@ -175,7 +171,6 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
     // $scope.loginType = $scope.userData.loginType;
     console.log("<--vcLogout");
   };
-
   $rootScope.TimeTable_timing = [
     { "startsAt": "09:00", "endsAt": "09:45", "meridian": 'AM' },
     { "startsAt": "9:45", "endsAt": "10:30", "meridian": 'AM' },
@@ -185,4 +180,5 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
     { "startsAt": "01:45", "endsAt": "02:30", "meridian": 'PM' },
     { "startsAt": "02:30", "endsAt": "03:15", "meridian": 'PM' },
     { "startsAt": "03:15", "endsAt": "04:00", "meridian": 'PM' }]
+    
 });

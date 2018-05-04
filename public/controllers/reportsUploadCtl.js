@@ -115,7 +115,7 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
   }
 
   $scope.upload_classPeriodsFile = function(file,fileType){
-    console.log("uploadPeriodsFile-->");
+    console.log("upload_classPeriodsFile-->");
     var obj = {
       "file": file
     }
@@ -137,7 +137,7 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
         alert("Update Fail");
       }
     });
-    console.log("<--uploadPeriodsFile");
+    console.log("<--upload_classPeriodsFile");
   }
 
  

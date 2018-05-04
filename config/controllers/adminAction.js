@@ -23,45 +23,45 @@ module.exports.updateSchoolStatus = function (req, res) {
     console.log("updateSchoolStatus-->");
     var responseData;
     if (general.emptyCheck(req.body.id)) {
-      var obj = {
-        _id: ObjectId(req.body.id)
-      };
-      var updatedJson = {
-        status: req.body.status
-      };
-      school.update(obj, { $set: updatedJson }, { multi: true }, function (
-        err,
-        data
-      ) {
-        if (err) {
-          responseData = {
-            status: false,
-            message: "Failed to get Data",
-            data: data
-          };
-          res.status(400).send(responseData);
-        } else {
-          responseData = {
-            status: true,
-            message: "Successfull updated status",
-            data: data
-          };
-  
-          res.status(200).send(responseData);
-        }
-      });
+        var obj = {
+            _id: ObjectId(req.body.id)
+        };
+        var updatedJson = {
+            status: req.body.status
+        };
+        school.update(obj, { $set: updatedJson }, { multi: true }, function (
+            err,
+            data
+        ) {
+            if (err) {
+                responseData = {
+                    status: false,
+                    message: "Failed to get Data",
+                    data: data
+                };
+                res.status(400).send(responseData);
+            } else {
+                responseData = {
+                    status: true,
+                    message: "Successfull updated status",
+                    data: data
+                };
+
+                res.status(200).send(responseData);
+            }
+        });
     } else {
-      console.log("Epty value found");
-      responseData = {
-        status: false,
-        message: "empty value found",
-        data: userData
-      };
-      res.status(400).send(responseData);
+        console.log("Epty value found");
+        responseData = {
+            status: false,
+            message: "empty value found",
+            data: userData
+        };
+        res.status(400).send(responseData);
     }
-  
+
     console.log("<--updateSchoolStatus");
-  };
+};
 
 module.exports.getAllSchool = function (req, res) {
     console.log("getAllAdmin-->");
@@ -182,8 +182,7 @@ module.exports.uploadClassFile = function (req, res) {
         console.log("data: " + JSON.stringify(data));
         var parts = data.Section.split(',');
         console.log("parts: " + JSON.stringify(parts));
-        for (var x = 0; x <= parts.length; x++) 
-        {
+        for (var x = 0; x <= parts.length; x++) {
             if (general.emptyCheck(parts[x])) {
                 section.push(parts[x]);
             }
@@ -191,17 +190,16 @@ module.exports.uploadClassFile = function (req, res) {
         console.log("section: " + JSON.stringify(section));
         var subjectParts = data.Subject.split(',');
         console.log("subjectParts: " + JSON.stringify(subjectParts));
-        for (var x = 0; x <= subjectParts.length; x++) 
-        {
+        for (var x = 0; x <= subjectParts.length; x++) {
             if (general.emptyCheck(subjectParts[x])) {
                 subject.push(subjectParts[x]);
             }
         }
         console.log("subject: " + JSON.stringify(subject));
-        consolidateCS.push({ "class": data.Class, "section": section, "subject":subject });
+        consolidateCS.push({ "class": data.Class, "section": section, "subject": subject });
         section = [];
         subject = [];
-       
+
         // classSection.push({"class":data.class, "section":[data]})
         // parser.pause();
     })
@@ -236,9 +234,9 @@ module.exports.uploadClassFile = function (req, res) {
 module.exports.uploadPeriodsFile = function (req, res) {
     console.log("uploadClassFile-->");
     var responseData;
-   
-   
-    var consolidateCS = [];
+
+
+    var consolidateResult = [];
     schoolName = req.params.schoolName;
 
     console.log("req.body.files: " + req.files.img);
@@ -251,34 +249,37 @@ module.exports.uploadPeriodsFile = function (req, res) {
         ignoreEmpty: true
     }).on("data", function (data) {
         console.log("data: " + JSON.stringify(data));
-        console.log("data.length: " + data.length);
         var count = Object.keys(data).length;
-        console.log(count);
-      
+        for (var x = 0; x < count; x++) {
+            var parts = data[x].split('-');
+            console.log("parts: " + JSON.stringify(parts));
+            consolidateResult.push({ "periods": data[x], "startsAt": parts[1], "endsAt": parts[2] });
+        }
+        
     })
         .on("end", function () {
             console.log("end ");
-           
-            // console.log("schoolName:" + schoolName);
-            // school.findOneAndUpdate({ "schoolName": schoolName }, { $push: { "css": { $each: consolidateCS } } }, { new: true }, function (err, data) {
-            //     console.log("data: " + JSON.stringify(data));
-            //     if (err) {
-            //         responseData = {
-            //             status: false,
-            //             message: err
+            console.log("consolidateResult: "+JSON.stringify(consolidateResult));
+          
+            school.findOneAndUpdate({ "schoolName": schoolName }, { $push: { "timeTable_timing": { $each: consolidateResult } } }, { new: true }, function (err, data) {
+                console.log("data: " + JSON.stringify(data));
+                if (err) {
+                    responseData = {
+                        status: false,
+                        message: err
 
-            //         };
-            //         res.status(400).send(responseData);
-            //     } else {
-            //         responseData = {
-            //             status: true,
-            //             errorCode: 200,
-            //             message: "Insert Successfull",
-            //             data: data
-            //         };
-            //         res.status(200).send(responseData);
-            //     }
-            // });
+                    };
+                    res.status(400).send(responseData);
+                } else {
+                    responseData = {
+                        status: true,
+                        errorCode: 200,
+                        message: "Insert Successfull",
+                        data: data
+                    };
+                    res.status(200).send(responseData);
+                }
+            });
 
         });
     console.log("<--uploadClassFile");
@@ -692,12 +693,12 @@ module.exports.uploadStudentMaster = function (req, res) {
                 { "month": "Dec", "dateAttendance": [] }
             ],
             mark: [
-                {"testType":"AT", "subjectWithMark":[]},
-                {"testType":"UT", "subjectWithMark":[]},
-                {"testType":"MT", "subjectWithMark":[]},
-                {"testType":"TT", "subjectWithMark":[]},
-                {"testType":"AT", "subjectWithMark":[]},
-        ]
+                { "testType": "AT", "subjectWithMark": [] },
+                { "testType": "UT", "subjectWithMark": [] },
+                { "testType": "MT", "subjectWithMark": [] },
+                { "testType": "TT", "subjectWithMark": [] },
+                { "testType": "AT", "subjectWithMark": [] },
+            ]
         };
 
         objJson.push(userData);

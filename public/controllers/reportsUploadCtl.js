@@ -133,6 +133,7 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
       if (checkStatus) {
         // $window.location.href = $scope.propertyJson.R082;
         alert(data.data.message);
+        $scope.getSchoolData();
       } else {
         alert("Update Fail");
       }

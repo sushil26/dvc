@@ -4,7 +4,7 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
   var schoolName = $scope.userData.schoolName;
   console.log(" $scope.userData : " + JSON.stringify($scope.userData));
   $scope.file = {}; /* ### Note: Upload file declaration ### */
-  $scope.uploadTypes = ["Teacher Details", "Student Details", "TimeTable", "Attendance", "Payment", "Mark Report"];
+  $scope.uploadTypes = ["Teacher Details", "Student Details", "Time Table", "Attendance", "Payment", "Mark Report"];
   $scope.testTypes = ["AT", "UT", "MT", "TT", "AT"];
   $scope.attendanceTypes = ["Monthly", "Daily"];
   $scope.monthList = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
@@ -52,25 +52,29 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
   $scope.getTeacherList = function () {
     console.log("getTeacherList-->");
     $scope.teacherList = [];
-    var api = "https://norecruits.com/vc/getTeacherList/" + schoolName;
-    console.log("api: " + api);
-    httpFactory.get(api).then(function (data) {
-      console.log("data--" + JSON.stringify(data.data));
-      var checkStatus = httpFactory.dataValidation(data);
-      console.log("data--" + JSON.stringify(data.data));
-      if (checkStatus) {
-        var teacherData = data.data.data;
-             
-        console.log("schoolData: " + JSON.stringify(teacherData));
-        
-        if ($scope.cssList.length == 0) {
-          console.log("message: " + data.data.message);
-        }
-        else {
-          console.log("sorry");
-        }
-      }
-    })
+    var api = "https://norecruits.com/vc/getSchoolUser/" + schoolName;
+        console.log("api: " + api);
+        httpFactory.get(api).then(function (data) {
+            var checkStatus = httpFactory.dataValidation(data);
+            console.log("data--" + JSON.stringify(data.data));
+            if (checkStatus) {
+                var schoolUser = data.data.data;
+                // console.log("schoolList: " + JSON.stringify(schoolUser));
+                var teacherData = schoolUser.schoolTeacherList;
+              
+                console.log("teacherData: " + JSON.stringify( teacherData));
+                for(var x=0;x<teacherData.length;x++){
+                  var name = teacherData[x].firstName+teacherData[x].lastName;
+                  teacherList.push({"_id":teacherData[x]._id,"name":name, "schoolId":teacherData[x].schoolId}); 
+                }
+               
+                console.log(data.data.message);
+            }
+            else {
+                console.log("Sorry");
+            }
+
+        })
     console.log("<--getTeacherList");
   }
   

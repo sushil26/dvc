@@ -120,7 +120,8 @@
                         <a ng-click="eventClick('events_subMenu')">
                             <i class="fa fa-calendar"></i>
                             <span>EVENTS</span>
-                            <span class="menu-arrow arrow_carrot-right"></span>
+                            <span ng-if="events_subMenu==true"  class="menu-arrow arrow_carrot-right"></span>
+                            <span ng-if="events_subMenu==false"  class="menu-arrow arrow_carrot-down"></span>
                         </a>
                         <ul ng-hide="events_subMenu">
                             <li>
@@ -172,7 +173,8 @@
                         <a ng-click="eventClick('setting_subMenu')">
                             <i class="fa fa-cog"></i>
                             <span>SETTINGS</span>
-                            <span class="menu-arrow arrow_carrot-right"></span>
+                            <span ng-if="academic_subMenu==true" class="menu-arrow arrow_carrot-right"></span>
+                            <span ng-if="academic_subMenu==false" class="menu-arrow arrow_carrot-down"></span>
                         </a>
                         <ul ng-hide="setting_subMenu">
                             <li>

@@ -94,6 +94,7 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
 
     console.log("<--addSMA");
   };
+
   $scope.uploadReports = [{ uploadType: "", csSelect: "", ttSelect: "", uploadDoc: "" }]; /* ### Note:uploadReports  */
   $scope.addUploadReports = function () {
     console.log("addUploadReports-->");
@@ -173,10 +174,27 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
     });
     console.log("<--upload_classPeriodsFile");
   }
+
   $scope.uploadTimeTableFile = function (file, data) {
     console.log("uploadTimeTableFile-->");
     console.log("data: " + JSON.stringify(data));
-    console.log("up.tSelec: " + JSON.stringify(up.tSelec));
+    var obj = {
+      "file": file
+    }
+    var api = "https://norecruits.com/vc/uploadTeacher_timeTable/" + schoolName+"/"+data._id;
+    console.log("api: " + api);
+    httpFactory.csvUpload(obj, api).then(function (data) {
+      var checkStatus = httpFactory.dataValidation(data);
+      console.log("data--" + JSON.stringify(data.data));
+      if (checkStatus) {
+        // $window.location.href = $scope.propertyJson.R082;
+        alert(data.data.message);
+        $scope.getSchoolData();
+      } else {
+        alert("Update Fail");
+      }
+    });
+
     console.log("<--uploadTimeTableFile");
   }
 

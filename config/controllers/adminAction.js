@@ -230,6 +230,60 @@ module.exports.uploadClassFile = function (req, res) {
         });
     console.log("<--uploadClassFile");
 };
+module.exports.uploadTeacher_timeTable = function (req, res) {
+    console.log("uploadTeacher_timeTable-->");
+    var responseData;
+    var consolidateResult = [];
+    schoolName = req.params.schoolName;
+
+    console.log("req.body.files: " + req.files.img);
+    if (!req.files)
+        return res.status(400).send('No files were uploaded.');
+    var studentDataFile = req.files.img;
+    console.log("studentDataFile: " + studentDataFile);
+    var parser = csv.fromString(studentDataFile.data.toString(), {
+        headers: true,
+        ignoreEmpty: true
+    }).on("data", function (data) {
+        console.log("data: " + JSON.stringify(data));
+        var count = Object.keys(data).length;
+        // for (var x = 0; x < count; x++) {
+        // for (var key in data) {
+        //     console.log(data[key]);
+        //     console.log("key: "+key);
+        //     console.log("data[key]: " + data[key]);
+        //     var parts = data[key].split('-');
+        //     console.log("parts: " + JSON.stringify(parts));
+        //     consolidateResult.push({ "periods": key, "startsAt": parts[0], "endsAt": parts[1] });
+        // }
+    })
+        .on("end", function () {
+            console.log("end ");
+            console.log("consolidateResult: " + JSON.stringify(consolidateResult));
+
+            // school.findOneAndUpdate({ "schoolName": schoolName }, { $push: { "timeTable_timing": { $each: consolidateResult } } }, { new: true }, function (err, data) {
+            //     console.log("data: " + JSON.stringify(data));
+            //     if (err) {
+            //         responseData = {
+            //             status: false,
+            //             message: err
+
+            //         };
+            //         res.status(400).send(responseData);
+            //     } else {
+            //         responseData = {
+            //             status: true,
+            //             errorCode: 200,
+            //             message: "Insert Successfull",
+            //             data: data
+            //         };
+            //         res.status(200).send(responseData);
+            //     }
+            // });
+
+        });
+    console.log("<--uploadTeacher_timeTable");
+};
 
 module.exports.uploadPeriodsFile = function (req, res) {
     console.log("uploadClassFile-->");

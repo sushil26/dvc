@@ -13,12 +13,12 @@ app.controller('dashboardController', function ($scope, $window, httpFactory, se
 
     $scope.iconMenuClick = function () {
         console.log("iconMenuClick--> ");
-        var elementVisibility = document.getElementById('sidebar-menu').display;
+        var elementVisibility = document.getElementsByClassName('sidebar-menu').display;
         if(elementVisibility=='none'){
-            document.getElementById('sidebar-menu').display='block';
+            document.getElementsByClassName('sidebar-menu').display='block';
         }
         else{
-            document.getElementById('sidebar-menu').display='none';
+            document.getElementsByClassName('sidebar-menu').display='none';
         }
       
         // if ($scope.sideBar == true) {

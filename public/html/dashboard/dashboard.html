@@ -15,7 +15,95 @@
     <!-- container section start -->
     <section id="container" class="">
         <!--header start-->
-      
+        <header class="header dark-bg">
+            <div class="toggle-nav">
+                <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom">
+                    <i class="icon_menu"></i>
+                </div>
+            </div>
+
+            <!--logo start-->
+            <img ng-click="homeClick()" style="float:left;width: 63px;margin-top: 5px" src="././home/img/fav.png" />
+            <a ng-click="homeClick()" class="logo">VC
+                <span class="lite">4ALL</span>
+            </a>
+            <!--logo end-->
+
+
+            <div class="top-nav notification-row">
+                <ul class="nav pull-right top-menu">
+
+
+
+
+                    <!-- alert notification start-->
+                    <li id="alert_notificatoin_bar" class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle">
+
+                            <i class="icon-bell-l"></i>
+                            <span class="badge bg-important">2</span>
+                        </a>
+                        <ul class="dropdown-menu extended notification">
+                            <div class="notify-arrow notify-arrow-blue"></div>
+                            <li>
+                                <p class="blue">You have 2 new notifications</p>
+                            </li>
+                            <li>
+                                <a href="#" style="word-wrap: break-word; text-overflow: hidden;">
+
+                                    <span class="label label-primary">
+                                        <i class="icon_profile"></i>
+                                    </span>
+                                    Math teacher scheduled meeting on 12/12/12 at 12:00pm
+
+                                    <span class="small italic pull-right">5 mins</span>
+
+                            </li>
+                            <li>
+                                <a href="#" style="word-wrap: break-word; text-overflow: hidden;">
+                                    <span class="label label-warning">
+                                        <i class="icon_pin"></i>
+                                    </span>
+                                    Sushil's father Request for meeting on 12/12/12 at 13:00
+                                    <span class="small italic pull-right">50 mins</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">See all notifications</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- alert notification end-->
+                    <!-- user login dropdown start-->
+                    <li class="dropdown">
+
+                        <a data-toggle="dropdown" class="dropdown-toggle">
+                            <span class="profile-ava">
+                                <img alt="" src="/dashboard_Lib/img/img.jpg">
+                            </span>
+                            <span class="username">{{userName}}</span>
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu extended logout">
+                            <div class="log-arrow-up"></div>
+                            <li class="eborder-top">
+                                <a href="/#!/dashboard/personalDetail">
+                                    <i class="icon_profile"></i> My Profile</a>
+                            </li>
+                            <li>
+                                <a href="documentation.html">
+                                    <i class="icon_key_alt"></i> Account Setting</a>
+                            </li>
+                            <li ng-click="logOut()">
+                                <a>
+                                    <i class="icon_key_alt"></i> Log Out</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- user login dropdown end -->
+                </ul>
+            </div>
+        </header>
         <!--header end-->
 
         <!--sidebar start-->

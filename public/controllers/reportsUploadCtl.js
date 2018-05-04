@@ -23,8 +23,8 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
       // console.log("data--" + JSON.stringify(data.data));
       if (checkStatus) {
         var schoolData = data.data.data;
-        $scope.cssList.push(schoolData.css);
-        console.log("$scope.cssList: " + JSON.stringify($scope.cssList));
+        $scope.cssList=schoolData.css;
+        console.log("$scope.cssList: " + JSON.stringify(schoolData));
         console.log("cssList: " + JSON.stringify($scope.cssList));
         if ($scope.cssList.length == 0) {
           console.log("message: "+data.data.message);

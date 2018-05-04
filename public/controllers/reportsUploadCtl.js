@@ -11,10 +11,10 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
 
   $scope.sma = []; /* ### Note:sma-Subject Mark Attendant  */
 
-  $scope.getAllClass = function () {
-    console.log("getAllClass-->");
-
-    var api = "https://norecruits.com/vc/getAllClass/" + schoolName;
+  $scope.getSchoolData = function () {
+    console.log("getSchoolData-->");
+    $scope.cssList = [];
+    var api = "https://norecruits.com/vc/getSchoolData/" + schoolName;
     console.log("api: " + api);
     httpFactory.get(api).then(function (data) {
       console.log("data--" + JSON.stringify(data.data));
@@ -22,7 +22,9 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
       // console.log("checkStatus: "+checkStatus);
       // console.log("data--" + JSON.stringify(data.data));
       if (checkStatus) {
-        $scope.cssList = data.data.data;
+        var schoolData = data.data.data;
+        $scope.cssList.push(schoolData.css);
+        console.log("$scope.cssList: " + JSON.stringify($scope.cssList));
         console.log("cssList: " + JSON.stringify($scope.cssList));
         if ($scope.cssList.length == 0) {
           console.log("message: "+data.data.message);
@@ -44,7 +46,7 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
         console.log(data.data.message);
       }
     })
-    console.log("<--getAllClass");
+    console.log("<--getSchoolData");
   }
 
   $scope.getAllClass();

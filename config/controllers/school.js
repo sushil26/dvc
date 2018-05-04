@@ -39,7 +39,7 @@ module.exports.getSchoolList = function (req, res) {
     console.log("<--getSchoolList");
 };
 
-module.exports.getAllClass = function (req, res) {
+module.exports.getSchoolData = function (req, res) {
     console.log("getAllClass-->");
     var responseData;
     var allClass = [];
@@ -56,8 +56,7 @@ module.exports.getAllClass = function (req, res) {
         } else {
            
             if (data[0].css.length > 0) {
-                allClass = data[0].css;
-                console.log("allClass: " + JSON.stringify(allClass));
+              
 
                 // console.log("studentList: "+JSON.stringify(studentList));
                 // console.log("allClass.length: " + allClass.length);
@@ -71,7 +70,7 @@ module.exports.getAllClass = function (req, res) {
                 responseData = {
                     status: true,
                     message: "Successfull retrived data",
-                    data: allClass
+                    data: data[0]
                 };
 
                 res.status(200).send(responseData);
@@ -80,7 +79,7 @@ module.exports.getAllClass = function (req, res) {
                 responseData = {
                     status: true,
                     message: "There is no class",
-                    data: data[0].css
+                    data: data[0]
                 };
 
                 res.status(200).send(responseData);

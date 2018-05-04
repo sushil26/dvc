@@ -251,6 +251,7 @@ module.exports.uploadPeriodsFile = function (req, res) {
         console.log("data: " + JSON.stringify(data));
         var count = Object.keys(data).length;
         for (var x = 0; x < count; x++) {
+            console.log("data[x]: "+data[x]);
             var parts = data[x].split('-');
             console.log("parts: " + JSON.stringify(parts));
             consolidateResult.push({ "periods": data[x], "startsAt": parts[1], "endsAt": parts[2] });

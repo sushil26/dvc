@@ -17,9 +17,13 @@ app.controller('dashboardController', function ($scope, $window, httpFactory, se
         if(element.classList.contains("sidebar-closed"))
         {
             element.classList.remove("sidebar-closed");
+            $scope.events_subMenu = true;
+            $scope.academic_subMenu = true;
+            $scope.setting_subMenu = true;
         }
         else{
-            element.classList.add("sidebar-closed");   
+            element.classList.add("sidebar-closed");  
+
         }
        
         // var elementVisibility = document.getElementsByClassName('sidebar-menu')[0].style.display;

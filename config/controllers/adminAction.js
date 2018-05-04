@@ -252,6 +252,8 @@ module.exports.uploadPeriodsFile = function (req, res) {
     }).on("data", function (data) {
         console.log("data: " + JSON.stringify(data));
         console.log("data.length: " + data.length);
+        var count = Object.keys(data).length;
+        console.log(count);
       
     })
         .on("end", function () {

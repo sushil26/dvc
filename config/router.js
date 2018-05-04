@@ -32,6 +32,7 @@ module.exports = function (app) {
     app.get('/vc/getAllSchool', adminAction.getAllSchool);
     app.post('/vc/updateSchoolStatus', adminAction.updateSchoolStatus);
     app.post('/vc/uploadClassFile/:schoolName', adminAction.uploadClassFile);
+    app.post('/vc/uploadPeriodsFile/:schoolName', adminAction.uploadPeriodsFile);
     app.post('/vc/uploadStudentMaster/:schoolName/:clas/:section', adminAction.uploadStudentMaster);
     app.post('/vc/uploadTeacherMaster/:schoolName', adminAction.uploadTeacherMaster);
     // app.post('/vc/uploadMark', adminAction.uploadMark);

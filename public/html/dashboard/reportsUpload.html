@@ -4,7 +4,7 @@
         <section class="wrapper">
             <div class="col-lg-12">
                 <h3 class="page-header">
-                    <i class="fa fa-user-md"></i> Attendance Report</h3>
+                    <i class="fa fa-user-md"></i> Report</h3>
             </div>
             <!-- page start-->
             <div>
@@ -15,32 +15,43 @@
                                 <!-- profile -->
                                 <div id="profile">
                                     <section class="panel">
-                                        <h1> Attendance Report </h1>
+                                        <h1> Report </h1>
 
                                         <div ng-if="cssList.length==0" class="form-group row">
                                             <label class="col-lg-4">Upload Class Detail</label>
 
                                             <input type="file" style="display: inline-block;width:60%;float:left" class="btnCont btnCont-uploadColor col-lg-3" name="myImage"
-                                                value="Upload" image-with-preview file-model="up.uploadDoc" ng-model="image"
+                                                value="Upload" image-with-preview file-model="classUploadDoc" ng-model="image"
                                                 accept="csv" ng-required="true">
                                             <img ng-show="image.src" ng-src="{{image.src}}" style="width: 50%;margin-top: 2%;" />
 
                                             <!-- <button ng-if="up.uploadType=='Attendance'" type="submit" class="btn btn-primary col-lg-3" ng-click="uploadFile(up.uploadDoc,up.uploadType,up.ttSelect,up.mSelect)">Upload</button> -->
-                                            <button type="submit" class="btn btn-primary col-lg-3" ng-click="uploadClassFile(up.uploadDoc)">Upload</button>
+                                            <button type="submit" class="btn btn-primary col-lg-3" ng-click="upload_classPeriodsFile(classUploadDoc,'css')">Upload</button>
                                         </div>
-                                        <form ng-if="cssList.length!=0" role="form" name="uploadForm" encType="multipart/form-data" novalidate>
+                                        <div ng-if="TimeTable_timing.length==0" class="form-group row">
+                                            <label class="col-lg-4">Upload Periods Detail</label>
+
+                                            <input type="file" style="display: inline-block;width:60%;float:left" class="btnCont btnCont-uploadColor col-lg-3" name="myImage"
+                                                value="Upload" image-with-preview file-model="periodsUploadDoc" ng-model="image"
+                                                accept="csv" ng-required="true">
+                                            <img ng-show="image.src" ng-src="{{image.src}}" style="width: 50%;margin-top: 2%;" />
+
+                                            <!-- <button ng-if="up.uploadType=='Attendance'" type="submit" class="btn btn-primary col-lg-3" ng-click="uploadFile(up.uploadDoc,up.uploadType,up.ttSelect,up.mSelect)">Upload</button> -->
+                                            <button type="submit" class="btn btn-primary col-lg-3" ng-click="upload_classPeriodsFile(periodsUploadDoc,'periods')">Upload</button>
+                                        </div>
+                                        <form ng-if="cssList.length!=0 || TimeTable_timing.length!=0" role="form" name="uploadForm" encType="multipart/form-data" novalidate>
                                             <div class="form-group row" ng-repeat="up in uploadReports">
                                                 <label class="col-lg-4">Upload Type</label>
                                                 <select class="btn btn-danger col-lg-4" placeholder="select" ng-model="up.uploadType" ng-options="ut as ut for ut in uploadTypes">
                                                     <option value="" disabled selected>Upload Type</option>
                                                 </select>
                                                 <label ng-if="up.uploadType!='Teacher Details'" class="col-lg-4">Class</label>
-                                                <select ng-if="up.uploadType!='Teacher Details'" class="btn btn-danger col-lg-4" placeholder="select" ng-model="up.cSelect" 
+                                                <select ng-if="up.uploadType!='Teacher Details'" class="btn btn-danger col-lg-4" placeholder="select" ng-model="up.cSelect"
                                                     ng-options="c as c.class for c in cssList">
                                                     <option value="" disabled selected>Class</option>
                                                 </select>
                                                 <label ng-if="up.uploadType!='Teacher Details'" class="col-lg-4">Section</label>
-                                                <select ng-if="up.uploadType!='Teacher Details'" class="btn btn-danger col-lg-4" placeholder="select" ng-model="up.sSelect" 
+                                                <select ng-if="up.uploadType!='Teacher Details'" class="btn btn-danger col-lg-4" placeholder="select" ng-model="up.sSelect"
                                                     ng-options="s as s for s in up.cSelect.section">
                                                     <option value="" disabled selected>Section</option>
                                                 </select>

@@ -233,6 +233,54 @@ module.exports.uploadClassFile = function (req, res) {
     console.log("<--uploadClassFile");
 };
 
+module.exports.uploadPeriodsFile = function (req, res) {
+    console.log("uploadClassFile-->");
+    var responseData;
+   
+   
+    var consolidateCS = [];
+    schoolName = req.params.schoolName;
+
+    console.log("req.body.files: " + req.files.img);
+    if (!req.files)
+        return res.status(400).send('No files were uploaded.');
+    var studentDataFile = req.files.img;
+    console.log("studentDataFile: " + studentDataFile);
+    var parser = csv.fromString(studentDataFile.data.toString(), {
+        headers: true,
+        ignoreEmpty: true
+    }).on("data", function (data) {
+        console.log("data: " + JSON.stringify(data));
+       
+      
+    })
+        .on("end", function () {
+            console.log("end ");
+           
+            // console.log("schoolName:" + schoolName);
+            // school.findOneAndUpdate({ "schoolName": schoolName }, { $push: { "css": { $each: consolidateCS } } }, { new: true }, function (err, data) {
+            //     console.log("data: " + JSON.stringify(data));
+            //     if (err) {
+            //         responseData = {
+            //             status: false,
+            //             message: err
+
+            //         };
+            //         res.status(400).send(responseData);
+            //     } else {
+            //         responseData = {
+            //             status: true,
+            //             errorCode: 200,
+            //             message: "Insert Successfull",
+            //             data: data
+            //         };
+            //         res.status(200).send(responseData);
+            //     }
+            // });
+
+        });
+    console.log("<--uploadClassFile");
+};
 module.exports.uploadAttendance = function (req, res) {
     console.log("uploadAttendance-->");
     var responseData;

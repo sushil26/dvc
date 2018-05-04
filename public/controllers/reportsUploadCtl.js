@@ -29,6 +29,10 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
         if ($scope.cssList.length == 0) {
           console.log("message: "+data.data.message);
         }
+        if(schoolData.timeTable_timing.length>0)
+        {
+          $scope.TimeTable_timing =schoolData.timeTable_timing; 
+        }
         else {
           console.log("sorry");
         
@@ -37,11 +41,7 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
 
           // }
         }
-
-        //  console.log(" $scope.studList.length: " + $scope.studList.length);
-        //   $scope.css = $scope.teacherData[0].css;
-        //   console.log("$scope.css: " + JSON.stringify($scope.css));
-      }
+     }
       else {
         console.log(data.data.message);
       }
@@ -115,12 +115,18 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
     console.log("<--attendanceMark");
   }
 
-  $scope.uploadClassFile = function (file) {
-    console.log("uploadClassFile-->");
+  $scope.upload_classPeriodsFile = function(file,fileType){
+    console.log("uploadPeriodsFile-->");
     var obj = {
       "file": file
     }
-    var api = "https://norecruits.com/vc/uploadClassFile/" + schoolName;
+    if(fileType=='css'){
+      var api = "https://norecruits.com/vc/uploadClassFile/" + schoolName;
+    }
+    if(fileType=='periods'){
+      var api = "https://norecruits.com/vc/uploadPeriodsFile/" + schoolName;
+    }
+    
     console.log("api: " + api);
     httpFactory.csvUpload(obj, api).then(function (data) {
       var checkStatus = httpFactory.dataValidation(data);
@@ -129,12 +135,13 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
         // $window.location.href = $scope.propertyJson.R082;
         alert(data.data.message);
       } else {
-        alert("Class Update Fail");
+        alert("Update Fail");
       }
     });
-    console.log("<--uploadClassFile");
+    console.log("<--uploadPeriodsFile");
   }
 
+ 
   $scope.uploadFile = function (file, uploadType, clas, section, reportType, list) {
     console.log("uploadFile-->");
     console.log("file: " + file);

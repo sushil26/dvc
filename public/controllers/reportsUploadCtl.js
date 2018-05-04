@@ -49,7 +49,7 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
     console.log("<--getSchoolData");
   }
 
-  $scope.getAllClass();
+  $scope.getSchoolData();
   $scope.getSection = function (clas) {
     console.log("getSection-->");
     console.log("clas: " + JSON.stringify(clas));

@@ -6,19 +6,27 @@ app.controller('dashboardController', function ($scope, $window, httpFactory, se
     $scope.userName = $scope.userData.userName;
 
     /* ##### Start dashboard submenu hide declaration ##### */
-    $scope.sideBar = false;
+    // $scope.sideBar = false;
     $scope.events_subMenu = true;
     $scope.academic_subMenu = true;
     $scope.setting_subMenu = true;
 
     $scope.iconMenuClick = function () {
         console.log("iconMenuClick--> ");
-        if ($scope.sideBar == true) {
-            $scope.sideBar = false;
+        var elementVisibility = document.getElementById('sidebar-menu').display;
+        if(elementVisibility=='none'){
+            document.getElementById('sidebar-menu').display='block';
         }
-        else {
-            $scope.sideBar = true;
+        else{
+            document.getElementById('sidebar-menu').display='none';
         }
+      
+        // if ($scope.sideBar == true) {
+        //     $scope.sideBar = false;
+        // }
+        // else {
+        //     $scope.sideBar = true;
+        // }
         console.log("<--iconMenuClick");
     }
 

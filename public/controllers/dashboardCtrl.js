@@ -13,13 +13,22 @@ app.controller('dashboardController', function ($scope, $window, httpFactory, se
 
     $scope.iconMenuClick = function () {
         console.log("iconMenuClick--> ");
-        var elementVisibility = document.getElementsByClassName('sidebar-menu')[0].style.display;
-        if(elementVisibility=='none'){
-            document.getElementsByClassName('sidebar-menu')[0].style.display='block';
+        var element = document.getElementById("container");
+        if(element.classList.contains("sidebar-closed"))
+        {
+            element.classList.remove("sidebar-closed");
         }
         else{
-            document.getElementsByClassName('sidebar-menu')[0].style.display='none';
+            element.classList.add("sidebar-closed");   
         }
+       
+        // var elementVisibility = document.getElementsByClassName('sidebar-menu')[0].style.display;
+        // if(elementVisibility=='none'){
+        //     document.getElementsByClassName('sidebar-menu')[0].style.display='block';
+        // }
+        // else{
+        //     document.getElementsByClassName('sidebar-menu')[0].style.display='none';
+        // }
       
         // if ($scope.sideBar == true) {
         //     $scope.sideBar = false;

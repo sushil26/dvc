@@ -235,6 +235,7 @@ module.exports.uploadTeacher_timeTable = function (req, res) {
     var responseData;
     var consolidateTT = [];
     var timing = [];
+    var css = [];
     schoolName = req.params.schoolName;
     var id = req.params.id;
 
@@ -249,43 +250,47 @@ module.exports.uploadTeacher_timeTable = function (req, res) {
     }).on("data", function (data) {
         console.log("upload data: " + JSON.stringify(data));
         var count = Object.keys(data).length;
-     
         for (var key in data) {
             console.log(data[key]);
-            console.log("key: "+key);
+            console.log("key: " + key);
             console.log("data[key]: " + data[key]);
             var parts = data[key].split('-');
-            console.log("parts: " + JSON.stringify(parts));
-            timing.push({ "periods": key, "startsAt": parts[0], "endsAt": parts[1] });
-            // var parts = data[key].split('-');
-            // console.log("parts: " + JSON.stringify(parts));
-            // consolidateResult.push({ "periods": key, "startsAt": parts[0], "endsAt": parts[1] });
+            if (parts.length == 2) {
+                console.log("parts: " + JSON.stringify(parts));
+                timing.push({ "periods": key, "startsAt": parts[0], "endsAt": parts[1] });
+            }
+            else {
+                css.push({ "class": parts[0], "section": parts[1], "subject": parts[2] });
+            }
+
         }
-        console.log("timing: "+JSON.stringify(timing));
+
+        console.log("timing: " + JSON.stringify(timing));
     })
         .on("end", function () {
             console.log("end ");
-            console.log("consolidateResult: " + JSON.stringify(consolidateResult));
+            consolidateTT.push({ "timing": timing, "css": css });
+            console.log("consolidateTT: " + JSON.stringify(consolidateTT));
 
-            // school.findOneAndUpdate({ "schoolName": schoolName }, { $push: { "timeTable_timing": { $each: consolidateResult } } }, { new: true }, function (err, data) {
-            //     console.log("data: " + JSON.stringify(data));
-            //     if (err) {
-            //         responseData = {
-            //             status: false,
-            //             message: err
+            user.findOneAndUpdate({"_id":id},{ "schoolName": schoolName }, { $push: { "timeTable_timing": { $each: consolidateTT } } }, { new: true }, function (err, data) {
+                console.log("data: " + JSON.stringify(data));
+                if (err) {
+                    responseData = {
+                        status: false,
+                        message: err
 
-            //         };
-            //         res.status(400).send(responseData);
-            //     } else {
-            //         responseData = {
-            //             status: true,
-            //             errorCode: 200,
-            //             message: "Insert Successfull",
-            //             data: data
-            //         };
-            //         res.status(200).send(responseData);
-            //     }
-            // });
+                    };
+                    res.status(400).send(responseData);
+                } else {
+                    responseData = {
+                        status: true,
+                        errorCode: 200,
+                        message: "Updated  Successfull",
+                        data: data
+                    };
+                    res.status(200).send(responseData);
+                }
+            });
 
         });
     console.log("<--uploadTeacher_timeTable");
@@ -313,7 +318,7 @@ module.exports.uploadPeriodsFile = function (req, res) {
         // for (var x = 0; x < count; x++) {
         for (var key in data) {
             console.log(data[key]);
-            console.log("key: "+key);
+            console.log("key: " + key);
             console.log("data[key]: " + data[key]);
             var parts = data[key].split('-');
             console.log("parts: " + JSON.stringify(parts));

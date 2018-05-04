@@ -117,7 +117,7 @@
                         </a>
                     </li>
                     <li class="sub-menu" ng-if="loginType == 'teacher' || loginType == 'studParent'">
-                        <a ng-click="eventClick(events_subMenu)">
+                        <a ng-click="eventClick('events_subMenu')">
                             <i class="fa fa-calendar"></i>
                             <span>EVENTS</span>
                             <span class="menu-arrow arrow_carrot-right"></span>
@@ -132,7 +132,7 @@
                         </ul>
                     </li>
                     <li class="sub-menu">
-                        <a ng-click="eventClick(academic_subMenu)">
+                        <a ng-click="eventClick('academic_subMenu')">
                             <i class="fa fa-clipboard"></i>
                             <span>ACADEMIC</span>
                             <span class="menu-arrow arrow_carrot-right"></span>
@@ -168,7 +168,7 @@
                         </ul>
                     </li>
                     <li class="sub-menu">
-                        <a ng-click="eventClick(setting_subMenu)">
+                        <a ng-click="eventClick('setting_subMenu')">
                             <i class="fa fa-cog"></i>
                             <span>SETTINGS</span>
                             <span class="menu-arrow arrow_carrot-right"></span>

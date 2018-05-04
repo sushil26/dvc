@@ -6,9 +6,21 @@ app.controller('dashboardController', function ($scope, $window, httpFactory, se
     $scope.userName = $scope.userData.userName;
 
     /* ##### Start dashboard submenu hide declaration ##### */
+    $scope.sideBar = false;
     $scope.events_subMenu = true;
     $scope.academic_subMenu = true;
     $scope.setting_subMenu = true;
+
+    $scope.iconMenuClick = function () {
+        console.log("iconMenuClick--> ");
+        if ($scope.sideBar == true) {
+            $scope.sideBar = false;
+        }
+        else {
+            $scope.sideBar = true;
+        }
+        console.log("<--iconMenuClick");
+    }
 
     $scope.eventClick = function (submenu) {
         console.log("eventClick-->: " + submenu);
@@ -23,7 +35,7 @@ app.controller('dashboardController', function ($scope, $window, httpFactory, se
             $scope.setting_subMenu = true;
         }
         else if (submenu == "academic_subMenu") {
-            console.log(" $scope.academic_subMenu : "+ $scope.academic_subMenu );
+            console.log(" $scope.academic_subMenu : " + $scope.academic_subMenu);
             if ($scope.academic_subMenu == true) {
                 $scope.academic_subMenu = false;
             }

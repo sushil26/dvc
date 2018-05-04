@@ -48,7 +48,7 @@
                                                 
                                                 <label ng-if="up.uploadType=='Time Table'" class="col-lg-4">Teacher</label>
                                                 <select ng-if="up.uploadType=='Time Table'" class="btn btn-danger col-lg-4" placeholder="select" ng-model="up.tSelect"
-                                                    ng-options="t as t.name +'('+t.schoolId+')'+ for t in teacherList">
+                                                    ng-options="t as t.name +'('+ t.schoolId +')'+ for t in teacherList">
                                                     <option value="" disabled selected>Teacher</option>
                                                 </select>
                                                 <label ng-if="up.uploadType!='Teacher Details' && up.uploadType!='Time Table' && up.uploadType!=''" class="col-lg-4">Class</label>

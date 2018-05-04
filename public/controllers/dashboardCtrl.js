@@ -6,7 +6,7 @@ app.controller('dashboardController', function ($scope, $window, httpFactory, se
     $scope.userName = $scope.userData.userName;
 
     /* ##### Start dashboard submenu hide declaration ##### */
-    // $scope.sideBar = false;
+    $scope.sideBarMenu = false;
     $scope.events_subMenu = true;
     $scope.academic_subMenu = true;
     $scope.setting_subMenu = true;
@@ -18,12 +18,14 @@ app.controller('dashboardController', function ($scope, $window, httpFactory, se
         if (element.classList.contains("sidebar-closed")) {
             console.log("if is true");
             element.classList.remove("sidebar-closed");
+            $scope.sideBarMenu = true;
             $scope.events_subMenu = true;
             $scope.academic_subMenu = true;
             $scope.setting_subMenu = true;
         }
         else {
             console.log("if is false");
+            $scope.sideBarMenu = false;
             element.classList.add("sidebar-closed");
         }
         console.log("<--iconMenuClick");

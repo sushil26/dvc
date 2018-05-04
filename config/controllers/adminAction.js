@@ -233,8 +233,10 @@ module.exports.uploadClassFile = function (req, res) {
 module.exports.uploadTeacher_timeTable = function (req, res) {
     console.log("uploadTeacher_timeTable-->");
     var responseData;
-    var consolidateResult = [];
+    var consolidateTT = [];
+    var timing = [];
     schoolName = req.params.schoolName;
+    var id = req.params.id;
 
     console.log("req.body.files: " + req.files.img);
     if (!req.files)
@@ -245,17 +247,21 @@ module.exports.uploadTeacher_timeTable = function (req, res) {
         headers: true,
         ignoreEmpty: true
     }).on("data", function (data) {
-        console.log("data: " + JSON.stringify(data));
+        console.log("upload data: " + JSON.stringify(data));
         var count = Object.keys(data).length;
-        // for (var x = 0; x < count; x++) {
-        // for (var key in data) {
-        //     console.log(data[key]);
-        //     console.log("key: "+key);
-        //     console.log("data[key]: " + data[key]);
-        //     var parts = data[key].split('-');
-        //     console.log("parts: " + JSON.stringify(parts));
-        //     consolidateResult.push({ "periods": key, "startsAt": parts[0], "endsAt": parts[1] });
-        // }
+     
+        for (var key in data) {
+            console.log(data[key]);
+            console.log("key: "+key);
+            console.log("data[key]: " + data[key]);
+            var parts = data[key].split('-');
+            console.log("parts: " + JSON.stringify(parts));
+            timing.push({ "periods": key, "startsAt": parts[0], "endsAt": parts[1] });
+            // var parts = data[key].split('-');
+            // console.log("parts: " + JSON.stringify(parts));
+            // consolidateResult.push({ "periods": key, "startsAt": parts[0], "endsAt": parts[1] });
+        }
+        console.log("timing: "+JSON.stringify(timing));
     })
         .on("end", function () {
             console.log("end ");

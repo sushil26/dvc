@@ -235,7 +235,15 @@ module.exports.uploadTeacher_timeTable = function (req, res) {
     var responseData;
     var consolidateTT = [];
     var timing = [];
-    var css = [];
+    var css = {
+        "Mon": [],
+        "Tue": [],
+        "Wed": [],
+        "Thu": [],
+        "Fri": [],
+        "Sat": []
+    };
+    var count = 0;
     schoolName = req.params.schoolName;
     var id = req.params.id;
 
@@ -250,20 +258,35 @@ module.exports.uploadTeacher_timeTable = function (req, res) {
     }).on("data", function (data) {
         console.log("upload data: " + JSON.stringify(data));
         //var count = Object.keys(data).length;
-        var count = 0;
+        count = count + 1;
         for (var key in data) {
             console.log(data[key]);
             console.log("key: " + key);
             console.log("data[key]: " + data[key]);
             var parts = key.split('-');
-            console.log("parts.length: "+parts.length);
-            if (parts.length == 2) {
-                count = count+1;
+            console.log("parts.length: " + parts.length);
+            if (count == 1) {
                 console.log("parts: " + JSON.stringify(parts));
                 timing.push({ "periods": count, "startsAt": parts[0], "endsAt": parts[1] });
             }
-            else {
-                css.push({ "class": parts[0], "section": parts[1], "subject": parts[2] });
+            var cssParts = data[key].split('-');
+            if (count == 1) {
+                css.Mon.push({ "class": cssParts[0], "section": cssParts[1], "subject": cssParts[2] });
+            }
+            else if (count == 2) {
+                css.Tue.push({ "class": cssParts[0], "section": cssParts[1], "subject": cssParts[2] });
+            }
+            else if (count == 3) {
+                css.Wed.push({ "class": cssParts[0], "section": cssParts[1], "subject": cssParts[2] });
+            }
+            else if (count == 4) {
+                css.Thu.push({ "class": cssParts[0], "section": cssParts[1], "subject": cssParts[2] });
+            }
+            else if (count == 5) {
+                css.Fri.push({ "class": cssParts[0], "section": cssParts[1], "subject": cssParts[2] });
+            }
+            else if (count == 6) {
+                css.Sat.push({ "class": cssParts[0], "section": cssParts[1], "subject": cssParts[2] });
             }
 
         }
@@ -275,7 +298,7 @@ module.exports.uploadTeacher_timeTable = function (req, res) {
             consolidateTT.push({ "timing": timing, "css": css });
             console.log("consolidateTT: " + JSON.stringify(consolidateTT));
 
-            user.findOneAndUpdate({"_id":id},{ "schoolName": schoolName }, { $push: { "timeTable_timing": { $each: consolidateTT } } }, { new: true }, function (err, data) {
+            user.findOneAndUpdate({ "_id": id }, { "schoolName": schoolName }, { $push: { "timeTable_timing": { $each: consolidateTT } } }, { new: true }, function (err, data) {
                 console.log("data: " + JSON.stringify(data));
                 if (err) {
                     responseData = {

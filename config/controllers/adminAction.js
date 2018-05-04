@@ -250,18 +250,22 @@ module.exports.uploadPeriodsFile = function (req, res) {
     }).on("data", function (data) {
         console.log("data: " + JSON.stringify(data));
         var count = Object.keys(data).length;
-        for (var x = 0; x < count; x++) {
-            console.log("data[x]: "+data[x]);
-            var parts = data[x].split('-');
+        // for (var x = 0; x < count; x++) {
+        for (var key in data) {
+            console.log(data[key]);
+            console.log("data[key]: " + data[key]);
+            var parts = data[key].split('-');
             console.log("parts: " + JSON.stringify(parts));
             consolidateResult.push({ "periods": data[x], "startsAt": parts[1], "endsAt": parts[2] });
         }
-        
+
+        // }
+
     })
         .on("end", function () {
             console.log("end ");
-            console.log("consolidateResult: "+JSON.stringify(consolidateResult));
-          
+            console.log("consolidateResult: " + JSON.stringify(consolidateResult));
+
             school.findOneAndUpdate({ "schoolName": schoolName }, { $push: { "timeTable_timing": { $each: consolidateResult } } }, { new: true }, function (err, data) {
                 console.log("data: " + JSON.stringify(data));
                 if (err) {

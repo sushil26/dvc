@@ -263,7 +263,7 @@ module.exports.uploadTeacher_timeTable = function (req, res) {
             console.log(data[key]);
             console.log("key: " + key);
             console.log("data[key]: " + data[key]);
-            var parts = data[key].split('-');
+            var parts = key.split('-');
             console.log("parts.length: " + parts.length);
             console.log("parts: " + JSON.stringify(parts));
             if (count == 1) {

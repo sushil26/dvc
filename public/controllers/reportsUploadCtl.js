@@ -53,31 +53,31 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
     console.log("getTeacherList-->");
     $scope.teacherList = [];
     var api = "https://norecruits.com/vc/getSchoolUser/" + schoolName;
-        console.log("api: " + api);
-        httpFactory.get(api).then(function (data) {
-            var checkStatus = httpFactory.dataValidation(data);
-            console.log("data--" + JSON.stringify(data.data));
-            if (checkStatus) {
-                var schoolUser = data.data.data;
-                // console.log("schoolList: " + JSON.stringify(schoolUser));
-                var teacherData = schoolUser.schoolTeacherList;
-              
-                console.log("teacherData: " + JSON.stringify( teacherData));
-                for(var x=0;x<teacherData.length;x++){
-                  if(teacherData[x].loginType=='teacher'){
-                    var name = teacherData[x].firstName+teacherData[x].lastName;
-                    $scope.teacherList.push({"_id":teacherData[x]._id,"name":name, "schoolId":teacherData[x].schoolId}); 
-                  }
-                 
-                }
-               
-                console.log(data.data.message);
-            }
-            else {
-                console.log("Sorry");
-            }
+    console.log("api: " + api);
+    httpFactory.get(api).then(function (data) {
+      var checkStatus = httpFactory.dataValidation(data);
+      console.log("data--" + JSON.stringify(data.data));
+      if (checkStatus) {
+        var schoolUser = data.data.data;
+        // console.log("schoolList: " + JSON.stringify(schoolUser));
+        var teacherData = schoolUser.schoolTeacherList;
 
-        })
+        console.log("teacherData: " + JSON.stringify(teacherData));
+        for (var x = 0; x < teacherData.length; x++) {
+          if (teacherData[x].loginType == 'teacher') {
+            var name = teacherData[x].firstName + teacherData[x].lastName;
+            $scope.teacherList.push({ "_id": teacherData[x]._id, "name": name, "schoolId": teacherData[x].schoolId });
+          }
+
+        }
+
+        console.log(data.data.message);
+      }
+      else {
+        console.log("Sorry");
+      }
+
+    })
     console.log("<--getTeacherList");
   }
   $scope.getTeacherList();
@@ -173,7 +173,12 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
     });
     console.log("<--upload_classPeriodsFile");
   }
-
+  $scope.uploadTimeTableFile = function (file, data) {
+    console.log("uploadTimeTableFile-->");
+    console.log("data: " + JSON.stringify(data));
+    console.log("up.tSelec: " + JSON.stringify(up.tSelec));
+    console.log("<--uploadTimeTableFile");
+  }
 
   $scope.uploadFile = function (file, uploadType, clas, section, reportType, list) {
     console.log("uploadFile-->");

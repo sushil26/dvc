@@ -48,7 +48,7 @@
                                                 
                                                 <label ng-if="up.uploadType=='Time Table'" class="col-lg-4">Teacher</label>
                                                 <select ng-if="up.uploadType=='Time Table'" class="btn btn-danger col-lg-4" placeholder="select" ng-model="up.tSelect"
-                                                    ng-options="t as t.name +'-'+ t.schoolId for t in teacherList">
+                                                    ng-options="t as t.name +'('+t.schoolId+')'+ for t in teacherList">
                                                     <option value="" disabled selected>Teacher</option>
                                                 </select>
                                                 <label ng-if="up.uploadType!='Teacher Details' && up.uploadType!='Time Table' && up.uploadType!=''" class="col-lg-4">Class</label>
@@ -92,6 +92,7 @@
                                                 <button ng-if="up.uploadType=='Attendance'" type="submit" class="btn btn-primary col-lg-3" ng-click="uploadFile(up.uploadDoc,up.uploadType, up.cSelect.class,up.sSelect, up.ttSelect, up.mSelect)">Upload</button>
                                                 <button ng-if="up.uploadType=='Student Details'" type="submit" class="btn btn-primary col-lg-3" ng-click="uploadFile(up.uploadDoc,up.uploadType, up.cSelect.class,up.sSelect)">Upload</button>
                                                 <button ng-if="up.uploadType=='Teacher Details'" type="submit" class="btn btn-primary col-lg-3" ng-click="uploadFile(up.uploadDoc,up.uploadType)">Upload</button>
+                                                <button ng-if="up.uploadType=='Time Table'" type="submit" class="btn btn-primary col-lg-3" ng-click="uploadTimeTableFile(up.uploadDoc,up.tSelect)">Upload</button>
                                             </div>
                                             <hr>
                                             <button type="submit" class="btn btn-primary" ng-click="addUploadReports()">Add</button>

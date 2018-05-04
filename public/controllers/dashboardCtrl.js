@@ -13,36 +13,37 @@ app.controller('dashboardController', function ($scope, $window, httpFactory, se
     $scope.eventClick = function (submenu) {
         console.log("eventClick-->: " + submenu);
         if (submenu == "events_subMenu") {
-            if($scope.events_subMenu==true){
+            if ($scope.events_subMenu == true) {
                 $scope.events_subMenu = false;
             }
-            else{
+            else {
                 $scope.events_subMenu = true;
             }
-                       $scope.academic_subMenu = true;
+            $scope.academic_subMenu = true;
             $scope.setting_subMenu = true;
         }
         else if (submenu == "academic_subMenu") {
-            if($scope.academic_subMenu==true){
+            console.log(" $scope.academic_subMenu : "+ $scope.academic_subMenu );
+            if ($scope.academic_subMenu == true) {
                 $scope.academic_subMenu = false;
             }
-            else{
+            else {
                 $scope.academic_subMenu = true;
             }
             $scope.events_subMenu = true;
-           
+
             $scope.setting_subMenu = true;
         }
         else {
-            if($scope.setting_subMenu==true){
+            if ($scope.setting_subMenu == true) {
                 $scope.setting_subMenu = false;
             }
-            else{
+            else {
                 $scope.setting_subMenu = true;
             }
             $scope.events_subMenu = true;
             $scope.academic_subMenu = true;
-           
+
         }
         console.log("<--eventClick: " + submenu);
     }

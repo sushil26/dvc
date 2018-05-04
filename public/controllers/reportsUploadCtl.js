@@ -25,8 +25,9 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
         var schoolData = data.data.data;
         $scope.cssList=schoolData.css;
         $scope.timeTable_timing =schoolData.timeTable_timing; 
-        console.log("$scope.cssList: " + JSON.stringify(schoolData));
+        console.log("schoolData: " + JSON.stringify(schoolData));
         console.log("cssList: " + JSON.stringify($scope.cssList));
+        console.log("timeTable_timing: " + JSON.stringify($scope.timeTable_timing));
         if ($scope.cssList.length == 0) {
           console.log("message: "+data.data.message);
         }

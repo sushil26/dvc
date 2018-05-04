@@ -64,8 +64,11 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
               
                 console.log("teacherData: " + JSON.stringify( teacherData));
                 for(var x=0;x<teacherData.length;x++){
-                  var name = teacherData[x].firstName+teacherData[x].lastName;
-                  $scope.teacherList.push({"_id":teacherData[x]._id,"name":name, "schoolId":teacherData[x].schoolId}); 
+                  if(teacherData[x].loginType=='teacher'){
+                    var name = teacherData[x].firstName+teacherData[x].lastName;
+                    $scope.teacherList.push({"_id":teacherData[x]._id,"name":name, "schoolId":teacherData[x].schoolId}); 
+                  }
+                 
                 }
                
                 console.log(data.data.message);

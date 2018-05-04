@@ -255,6 +255,7 @@ module.exports.uploadTeacher_timeTable = function (req, res) {
             console.log("key: " + key);
             console.log("data[key]: " + data[key]);
             var parts = data[key].split('-');
+            console.log("parts.length: "+parts.length);
             if (parts.length == 2) {
                 console.log("parts: " + JSON.stringify(parts));
                 timing.push({ "periods": key, "startsAt": parts[0], "endsAt": parts[1] });

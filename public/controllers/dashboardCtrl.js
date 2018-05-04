@@ -14,32 +14,18 @@ app.controller('dashboardController', function ($scope, $window, httpFactory, se
     $scope.iconMenuClick = function () {
         console.log("iconMenuClick--> ");
         var element = document.getElementById("container");
-        if(element.classList.contains("sidebar-closed"))
-        {
+        
+        if (element.classList.contains("sidebar-closed")) {
+            console.log("if is true");
             element.classList.remove("sidebar-closed");
             $scope.events_subMenu = true;
             $scope.academic_subMenu = true;
             $scope.setting_subMenu = true;
         }
-        else{
-            element.classList.add("sidebar-closed");  
-
+        else {
+            console.log("if is false");
+            element.classList.add("sidebar-closed");
         }
-       
-        // var elementVisibility = document.getElementsByClassName('sidebar-menu')[0].style.display;
-        // if(elementVisibility=='none'){
-        //     document.getElementsByClassName('sidebar-menu')[0].style.display='block';
-        // }
-        // else{
-        //     document.getElementsByClassName('sidebar-menu')[0].style.display='none';
-        // }
-      
-        // if ($scope.sideBar == true) {
-        //     $scope.sideBar = false;
-        // }
-        // else {
-        //     $scope.sideBar = true;
-        // }
         console.log("<--iconMenuClick");
     }
 

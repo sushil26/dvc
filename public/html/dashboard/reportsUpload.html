@@ -36,7 +36,7 @@
                                                 </select>
                                                 <label ng-if="up.uploadType!='Teacher Details'" class="col-lg-4">Class</label>
                                                 <select ng-if="up.uploadType!='Teacher Details'" class="btn btn-danger col-lg-4" placeholder="select" ng-model="up.cSelect" 
-                                                    ng-options="cs as cs.class for cs in csList">
+                                                    ng-options="c as c.class for c in cssList">
                                                     <option value="" disabled selected>Class</option>
                                                 </select>
                                                 <label ng-if="up.uploadType!='Teacher Details'" class="col-lg-4">Section</label>

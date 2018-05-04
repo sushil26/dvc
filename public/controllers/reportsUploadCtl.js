@@ -30,10 +30,7 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
         if ($scope.cssList.length == 0) {
           console.log("message: "+data.data.message);
         }
-        if(schoolData.timeTable_timing.length>0)
-        {
-          $scope.TimeTable_timing =schoolData.timeTable_timing; 
-        }
+        
         else {
           console.log("sorry");
         

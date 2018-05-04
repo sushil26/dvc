@@ -249,7 +249,8 @@ module.exports.uploadTeacher_timeTable = function (req, res) {
         ignoreEmpty: true
     }).on("data", function (data) {
         console.log("upload data: " + JSON.stringify(data));
-        var count = Object.keys(data).length;
+        //var count = Object.keys(data).length;
+        var count = 0;
         for (var key in data) {
             console.log(data[key]);
             console.log("key: " + key);
@@ -257,8 +258,9 @@ module.exports.uploadTeacher_timeTable = function (req, res) {
             var parts = key.split('-');
             console.log("parts.length: "+parts.length);
             if (parts.length == 2) {
+                count = count+1;
                 console.log("parts: " + JSON.stringify(parts));
-                timing.push({ "periods": key, "startsAt": parts[0], "endsAt": parts[1] });
+                timing.push({ "periods": count, "startsAt": parts[0], "endsAt": parts[1] });
             }
             else {
                 css.push({ "class": parts[0], "section": parts[1], "subject": parts[2] });

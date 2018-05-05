@@ -439,15 +439,19 @@ module.exports.uploadMarkFile = function (req, res) {
             console.log("class section query findData: " + JSON.stringify(findData));
             console.log("class section query findData.length: " + findData.length);
             if (err) {
-                marker = true;
-                parser.resume();
+                marker = false;
+                responseData = {
+                    status: false,
+                    message: err
+                };
+                res.status(400).send(responseData);
+               
             }
             else {
                 if (findData.length > 0) {
                     module.exports.uploadMarkSheet(data, function (err) {
                         console.log("savedatInitiate");
                         parser.resume();
-
                     });
                 }
                 else {
@@ -456,7 +460,6 @@ module.exports.uploadMarkFile = function (req, res) {
                         message: "There is no record for this class and section"
                     };
                     res.status(400).send(responseData);
-
                 }
             }
         })
@@ -485,9 +488,6 @@ module.exports.uploadMarkFile = function (req, res) {
                 unknownData = [];
                 res.status(200).send(responseData);
             }
-
-
-
         })
     console.log("<--uploadMarkFile");
 }
@@ -514,7 +514,6 @@ module.exports.uploadMarkSheet = function (data, callback) {
     var studIdForFindQry = {
         "schoolId": data.StudentID,
         "schoolName": schoolName
-
     }
     var studIdForUpdateQry = {
         "schoolId": data.StudentID,
@@ -550,7 +549,7 @@ module.exports.uploadMarkSheet = function (data, callback) {
             }
             else {
                 console.log("NO Detail found for this id");
-                marker = false;
+                marker = true;
                 var obj = {
                     "StudentID": data.StudentID,
                     "StudentName": data.StudentName
@@ -877,72 +876,72 @@ module.exports.monthlyData = function (data, callback) {
 // }
 // /* ### End update monthly attendance status  ### */
 
-module.exports.uploadMark = function (req, res) {
-    console.log("MarkSave-->");
-    var responseData;
-    var marker; /* ### Note: marker is used for identify the status of update query ###*/
-    console.log("req.files: " + req.files.img);
-    if (!req.files)
-        return res.status(400).send('No files were uploaded.');
-    var studentDataFile = req.files.img;
-    console.log("studentDataFile: " + studentDataFile);
+// module.exports.uploadMark = function (req, res) {
+//     console.log("MarkSave-->");
+//     var responseData;
+//     var marker; /* ### Note: marker is used for identify the status of update query ###*/
+//     console.log("req.files: " + req.files.img);
+//     if (!req.files)
+//         return res.status(400).send('No files were uploaded.');
+//     var studentDataFile = req.files.img;
+//     console.log("studentDataFile: " + studentDataFile);
 
-    var parser = csv.fromString(studentDataFile.data.toString(), {
-        headers: true,
-        ignoreEmpty: true
-    }).on("data", function (data) {
-        console.log("data: " + JSON.stringify(data));
-        parser.pause();
+//     var parser = csv.fromString(studentDataFile.data.toString(), {
+//         headers: true,
+//         ignoreEmpty: true
+//     }).on("data", function (data) {
+//         console.log("data: " + JSON.stringify(data));
+//         parser.pause();
 
-        var studId = {
-            "studId": data.studId
-        }
-        var testType = [{
-            "testType": data.testType,
-            "subjectMarks":
-                {
-                    "English": data.English,
-                    "Physics": data.Physics,
-                    "Math": data.Math
-                }
-        }]
-        console.log("testType: " + JSON.stringify(testType));
-        stud.findOneAndUpdate({ "studId": data.studId }, { $set: { "testType": testType } }, { upsert: false, multi: true, returnNewDocument: true }, function (err, studentList) {
+//         var studId = {
+//             "studId": data.studId
+//         }
+//         var testType = [{
+//             "testType": data.testType,
+//             "subjectMarks":
+//                 {
+//                     "English": data.English,
+//                     "Physics": data.Physics,
+//                     "Math": data.Math
+//                 }
+//         }]
+//         console.log("testType: " + JSON.stringify(testType));
+//         stud.findOneAndUpdate({ "studId": data.studId }, { $set: { "testType": testType } }, { upsert: false, multi: true, returnNewDocument: true }, function (err, studentList) {
 
-            console.log("studentList:" + JSON.stringify(studentList));
-            if (err) {
-                console.log("err");
-                marker = false;
-                // process.nextTick(callback);
-            }
-            else {
-                console.log("no err");
-                marker = true;
-                // process.nextTick(callback);
-            }
-            parser.resume();
-        })
-    })
-        .on("end", function () {
-            console.log("end marker: " + marker);
-            if (marker == false) {
-                responseData = {
-                    status: false,
-                    message: "Failed to get Data"
-                };
-                res.status(400).send(responseData);
-            }
-            else if (marker == true) {
-                responseData = {
-                    status: true,
-                    message: "Successfull updated data"
-                };
+//             console.log("studentList:" + JSON.stringify(studentList));
+//             if (err) {
+//                 console.log("err");
+//                 marker = false;
+//                 // process.nextTick(callback);
+//             }
+//             else {
+//                 console.log("no err");
+//                 marker = true;
+//                 // process.nextTick(callback);
+//             }
+//             parser.resume();
+//         })
+//     })
+//         .on("end", function () {
+//             console.log("end marker: " + marker);
+//             if (marker == false) {
+//                 responseData = {
+//                     status: false,
+//                     message: "Failed to get Data"
+//                 };
+//                 res.status(400).send(responseData);
+//             }
+//             else if (marker == true) {
+//                 responseData = {
+//                     status: true,
+//                     message: "Successfull updated data"
+//                 };
 
-                res.status(200).send(responseData);
-            }
-        });
-    console.log("<--MarkSave");
-};
+//                 res.status(200).send(responseData);
+//             }
+//         });
+//     console.log("<--MarkSave");
+// };
 
 module.exports.uploadStudentMaster = function (req, res) {
     console.log("uploadStudentMaster-->");

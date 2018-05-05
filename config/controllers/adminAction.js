@@ -755,7 +755,9 @@ module.exports.monthlyData = function (data, callback) {
     }
   
     console.log("*monthAtt: " + monthAtt.length);
-    stud.find({ "schoolName": schoolName, "schoolId": data.StudentID }).toArray(function (err, isThereData) {
+    var idCheck = { "schoolName": schoolName, "schoolId": data.StudentID };
+    console.log("idCheck: " + JSON.stringify(idCheck));
+    stud.find(idCheck).toArray(function (err, isThereData) {
         console.log("Basic query: " + JSON.stringify(isThereData));
         console.log("Basic query: " + isThereData.length);
         if (err) {
@@ -767,6 +769,7 @@ module.exports.monthlyData = function (data, callback) {
         else {
             if (isThereData.length > 0) {
                 console.log("month: " + month);
+               
                 stud.find({ "schoolName": schoolName, "schoolId": data.StudentID, "attendance.month": month }).toArray(function (err, findData) {
                     console.log("1st query findData: " + JSON.stringify(findData));
                     console.log("attendanceIndex: " + JSON.stringify(findData[0].attendance[attendanceIndex]));

@@ -20,7 +20,7 @@ var attendanceIndex; /* ### Note: dateAttendance index based on month select  ##
 var schoolName; /* ### Note: Get School Name of API  ### */
 var testType; /* ### Note: Get testType while uploading marksheet  ### */
 var testStartDate; /* ### Note: Get test start date while uploading marksheet  ### */
-var clas,section;  /* ### Note: Used while uploading marksheet  ### */
+var clas, section;  /* ### Note: Used while uploading marksheet  ### */
 var counter = 0; /* ### Note: Used while uploading marksheet  ### */
 
 module.exports.updateSchoolStatus = function (req, res) {
@@ -449,6 +449,7 @@ module.exports.uploadMarkFile = function (req, res) {
 module.exports.uploadMarkSheet = function (data, callback) {
     console.log('inside saving -->uploadMarkSheet')
     // Simulate an asynchronous operation:
+  
     var date = testStartDate;
     var mark = {};
     counter = counter + 1;
@@ -461,48 +462,57 @@ module.exports.uploadMarkSheet = function (data, callback) {
             mark[key] = data[key];
         }
     }
-    console.log("mark: "+JSON.stringify(mark));
+    console.log("mark: " + JSON.stringify(mark));
+    var consolidateMS = {
+        "date":date, 
+        "mark":mark
+    }
     var studIdForFindQry = {
         "studId": data.StudentID,
         "schoolName": schoolName,
-        "cs":[{"class":clas, "section":section}]
+        "cs": [{ "class": clas, "section": section }]
     }
-  
-     console.log("studIdForFindQry: " + JSON.stringify(studIdForFindQry));
-     if (callback) callback();
-    // stud.find(studIdForFindQry).toArray(function (err, findData) {
-    //     console.log("1st query findData: " + JSON.stringify(findData));
-    //     console.log("1st query findData.length: " + findData.length);
-    //     if (err) {
-    //         marker = true;
-    //         if (callback) callback();
-    //     }
-    //     else {
-    //         if (findData.length == 0) {
-    //             stud.update(studIdForUpdateQry, { $push: { "attendance.$.dateAttendance": { "date": AttDate, "status": attndnce } } }, function (err, data) {
-    //                 console.log("2nd query started: " + JSON.stringify(data));
-    //                 console.log("2nd query data.length: " + data.length);
-    //                 if (err) {
-    //                     marker = true;
-    //                     if (callback) callback();
-    //                 }
-    //                 else {
-    //                     marker = true;
-    //                     if (callback) callback();
-    //                 }
-    //             })
-    //         }
-    //         else {
-    //             marker = false;
+    var studIdForUpdateQry = {
+        "studId": data.StudentID,
+        "schoolName": schoolName,
+        "mark.testType": testType,
+        "cs": [{ "class": clas, "section": section }]
+    }
+    console.log("studIdForFindQry: " + JSON.stringify(studIdForFindQry));
 
-    //             message = "Sorry! You already updated for this date";
+    stud.find(studIdForFindQry).toArray(function (err, findData) {
+        console.log("1st query findData: " + JSON.stringify(findData));
+        console.log("1st query findData.length: " + findData.length);
+        if (err) {
+            marker = true;
+            if (callback) callback();
+        }
+        else {
+            if (findData.length > 0) {
+                stud.update(studIdForUpdateQry, { $push: { "mark.$.subjectWithMark": { $each: consolidateMS } } }, function (err, data) {
+                    console.log("2nd query started: " + JSON.stringify(data));
+                    console.log("2nd query data.length: " + data.length);
+                    if (err) {
+                        marker = true;
+                        if (callback) callback();
+                    }
+                    else {
+                        marker = true;
+                        if (callback) callback();
+                    }
+                })
+            }
+            else {
+                marker = false;
 
-    //             if (callback) callback();
-    //         }
-    //     }
-    // })
+                message = "Sorry! For this Id,Class and Section there is no student data";
 
-    // /* ### End update daily attendance status  ### */
+                if (callback) callback();
+            }
+        }
+    })
+
+    /* ### End update daily attendance status  ### */
 
 }
 module.exports.uploadAttendance = function (req, res) {

@@ -445,8 +445,8 @@ module.exports.uploadMarkFile = function (req, res) {
                 "cs": [{ "class": clas, "section": section }]
             }
             stud.find(studIdForFindQry).toArray(function (err, findData) {
-                console.log("1st query findData: " + JSON.stringify(findData));
-                console.log("1st query findData.length: " + findData.length);
+                console.log("end query findData: " + JSON.stringify(findData));
+                console.log("end query findData.length: " + findData.length);
                 if (err) {
                     marker = true;
                     if (callback) callback();
@@ -549,7 +549,7 @@ module.exports.uploadMarkSheet = function (data, callback) {
                     "StudentName": data.StudentName
                 }
                 unknownData.push(obj);
-                message = "Sorry! For this Id,Class and Section there is no student data";
+                message = "Sorry! For this Id there is no student data";
 
                 if (callback) callback();
             }

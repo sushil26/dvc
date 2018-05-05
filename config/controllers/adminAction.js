@@ -509,10 +509,10 @@ module.exports.uploadMarkSheet = function (data, callback) {
         }
     }
     console.log("mark: " + JSON.stringify(mark));
-    var consolidateMS = {
+    var consolidateMS = [{
         "date": date,
         "mark": mark
-    }
+    }]
     var studIdForFindQry = {
         "schoolId": data.StudentID,
         "schoolName": schoolName

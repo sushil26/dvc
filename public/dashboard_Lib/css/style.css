@@ -11,16 +11,35 @@
 @import url(line-icons.css);
 
 span{
-    font-family: monospace;
+    font-family: Oswald;
+    
 }
 i{
     color:white;
 }
-#sidebar>ul>li>a>i.fa-home:hover{
+#sidebar>ul>li #alink:hover {
+    color: rgb(253, 158, 158) !important;
+}
+#sidebar>ul>li>a>i.fa-home:hover {
     color: rgb(253, 158, 158) !important;
 }
 #sidebar>ul>li>a>i.fa-user-circle:hover{
     color: palegoldenrod!important;
+}
+#sidebar>ul>li>a>i.fa-pencil:hover{
+    color: palevioletred!important;
+}
+#sidebar>ul>li>a>i.fa-calendar:hover{
+    color: aquamarine !important;
+}
+#sidebar>ul>li>a>i.fa-clipboard:hover{
+    color: #00A8B3!important;
+}
+#sidebar>ul>li>a>i.fa-cog:hover{
+    color: darkkhaki !important;
+}
+#sidebar>ul>li>a>i.fa-sign-out:hover{
+    color: sandybrown !important;
 }
 
 body {

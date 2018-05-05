@@ -202,7 +202,6 @@ module.exports.uploadClassFile = function (req, res) {
         consolidateCS.push({ "class": data.Class, "section": section, "subject": subject });
         section = [];
         subject = [];
-
         // classSection.push({"class":data.class, "section":[data]})
         // parser.pause();
     })

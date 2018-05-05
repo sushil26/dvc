@@ -415,7 +415,6 @@ module.exports.uploadPeriodsFile = function (req, res) {
 
 module.exports.uploadMarkFile = function (req, res) {
     console.log("uploadMarkFile-->");
-
     schoolName = req.params.schoolName;
     testType = req.params.testType;
     testStartDate = req.params.date;
@@ -448,48 +447,47 @@ module.exports.uploadMarkFile = function (req, res) {
                     module.exports.uploadMarkSheet(data, function (err) {
                         console.log("savedatInitiate");
                         parser.resume();
-            
+
                     });
                 }
-                else{
+                else {
                     responseData = {
                         status: false,
                         message: "There is no record for this class and section"
                     };
                     res.status(400).send(responseData);
-                   
+
                 }
             }
         })
-     
+
 
     })
         .on("end", function () {
             console.log("end ");
-            
-           
-                        console.log("end marker: " + marker);
-                        if (marker == false) {
-                            responseData = {
-                                status: false,
-                                message: message
-                            };
-                            res.status(400).send(responseData);
-                        }
-                        else if (marker == true) {
-                            console.log("unknownData: " + JSON.stringify(unknownData));
-                            var unknownStud = unknownData;
-                            responseData = {
-                                status: true,
-                                message: "Successfull updated data",
-                                data: unknownStud
-                            };
-                            unknownData = [];
-                            res.status(200).send(responseData);
-                        }
-            
-                    
-          
+
+            console.log("end marker: " + marker);
+            if (marker == false) {
+                responseData = {
+                    status: false,
+                    message: message
+                };
+                res.status(400).send(responseData);
+            }
+            else if (marker == true) {
+                console.log("unknownData: " + JSON.stringify(unknownData));
+                var unknownStud = unknownData;
+                responseData = {
+                    status: true,
+                    message: "Successfull updated data",
+                    data: unknownStud
+                };
+                unknownData = [];
+                res.status(200).send(responseData);
+            }
+
+
+
         })
     console.log("<--uploadMarkFile");
 }
@@ -516,7 +514,7 @@ module.exports.uploadMarkSheet = function (data, callback) {
     var studIdForFindQry = {
         "schoolId": data.StudentID,
         "schoolName": schoolName
-       
+
     }
     var studIdForUpdateQry = {
         "schoolId": data.StudentID,
@@ -536,7 +534,7 @@ module.exports.uploadMarkSheet = function (data, callback) {
         }
         else {
             if (findData.length > 0) {
-                console.log("consolidateMS: "+JSON.stringify(consolidateMS));
+                console.log("consolidateMS: " + JSON.stringify(consolidateMS));
                 stud.findOneAndUpdate(studIdForUpdateQry, { $push: { "mark.$.subjectWithMark": { $each: consolidateMS } } }, function (err, data) {
                     console.log("2nd query started: " + JSON.stringify(data));
                     console.log("2nd query data.length: " + data.length);
@@ -636,7 +634,6 @@ module.exports.dailyData = function (data, callback) {
     console.log('inside saving')
     // Simulate an asynchronous operation:
     //  /* ### Start update daily attendance status  ### */
-
     var dateString = data.Date;
     var parts = dateString.split(' ');
     console.log("parts: " + JSON.stringify(parts));
@@ -660,34 +657,51 @@ module.exports.dailyData = function (data, callback) {
         "schoolName": schoolName
     }
     console.log("studIdForUpdateQry: " + JSON.stringify(studIdForUpdateQry));
-    stud.find(studIdForFindQry).toArray(function (err, findData) {
-        console.log("1st query findData: " + JSON.stringify(findData));
-        console.log("1st query findData.length: " + findData.length);
+    stud.find({ "schoolName": schoolName, "schoolId": data.StudentID }).toArray(function (err, isThereData) {
+        console.log("Basic query: " + JSON.stringify(isThereData));
+        console.log("Basic query: " + isThereData.length);
         if (err) {
-            marker = true;
+            console.log("error: " + err);
+            message = err;
+            marker = false;
             if (callback) callback();
         }
         else {
-            if (findData.length == 0) {
-                stud.update(studIdForUpdateQry, { $push: { "attendance.$.dateAttendance": { "date": AttDate, "status": attndnce } } }, function (err, data) {
-                    console.log("2nd query started: " + JSON.stringify(data));
-                    console.log("2nd query data.length: " + data.length);
+            if (isThereData.length > 0) {
+                stud.find(studIdForFindQry).toArray(function (err, findData) {
+                    console.log("1st query findData: " + JSON.stringify(findData));
+                    console.log("1st query findData.length: " + findData.length);
                     if (err) {
                         marker = true;
                         if (callback) callback();
                     }
                     else {
-                        marker = true;
-                        if (callback) callback();
+                        if (findData.length == 0) {
+                            stud.update(studIdForUpdateQry, { $push: { "attendance.$.dateAttendance": { "date": AttDate, "status": attndnce } } }, function (err, data) {
+                                console.log("2nd query started: " + JSON.stringify(data));
+                                console.log("2nd query data.length: " + data.length);
+                                if (err) {
+                                    marker = true;
+                                    if (callback) callback();
+                                }
+                                else {
+                                    marker = true;
+                                    if (callback) callback();
+                                }
+                            })
+                        }
+                        else {
+                            marker = false;
+
+                            message = "Sorry! You already updated for this date";
+
+                            if (callback) callback();
+                        }
                     }
                 })
             }
             else {
-                marker = false;
 
-                message = "Sorry! You already updated for this date";
-
-                if (callback) callback();
             }
         }
     })
@@ -732,7 +746,7 @@ module.exports.monthlyData = function (data, callback) {
         }
     }
     console.log("*monthAtt: " + monthAtt.length);
-    stud.find({ "schoolName": schoolName, "studId": data.StudentID }).toArray(function (err, isThereData) {
+    stud.find({ "schoolName": schoolName, "schoolId": data.StudentID }).toArray(function (err, isThereData) {
         console.log("Basic query: " + JSON.stringify(isThereData));
         console.log("Basic query: " + isThereData.length);
         if (err) {

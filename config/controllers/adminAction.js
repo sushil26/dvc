@@ -259,7 +259,7 @@ module.exports.uploadTeacher_timeTable = function (req, res) {
         console.log("upload data: " + JSON.stringify(data));
         //var count = Object.keys(data).length;
         count = count + 1;
-        var p = count;
+        var p = 0;
         for (var key in data) {
             p = p+1;
             console.log(data[key]);

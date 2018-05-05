@@ -522,7 +522,7 @@ module.exports.uploadMarkSheet = function (data, callback) {
     console.log("studIdForUpdateQry: " + JSON.stringify(studIdForUpdateQry));
 
     stud.find(studIdForFindQry).toArray(function (err, findData) {
-        console.log("1st query findData: " + JSON.stringify(findData));
+        // console.log("1st query findData: " + JSON.stringify(findData));
         console.log("1st query findData.length: " + findData.length);
         if (err) {
             marker = true;
@@ -532,7 +532,7 @@ module.exports.uploadMarkSheet = function (data, callback) {
             if (findData.length > 0) {
                 console.log("consolidateMS: " + JSON.stringify(consolidateMS));
                 stud.findOneAndUpdate(studIdForUpdateQry, { $push: { "mark.$.subjectWithMark": { $each: consolidateMS } } }, function (err, data) {
-                    console.log("2nd query started: " + JSON.stringify(data));
+                    // console.log("2nd query started: " + JSON.stringify(data));
                     console.log("2nd query data.length: " + data.length);
                     if (err) {
                         marker = true;

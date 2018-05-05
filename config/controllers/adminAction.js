@@ -447,7 +447,7 @@ module.exports.uploadMarkFile = function (req, res) {
                 if (findData.length > 0) {
                     module.exports.uploadMarkSheet(data, function (err) {
                         console.log("savedatInitiate");
-                        //parser.resume();
+                        parser.resume();
             
                     });
                 }

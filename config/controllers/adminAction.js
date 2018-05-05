@@ -445,10 +445,10 @@ module.exports.uploadMarkFile = function (req, res) {
                     message: err
                 };
                 res.status(400).send(responseData);
-               
             }
             else {
                 if (findData.length > 0) {
+                    parser.pause();
                     module.exports.uploadMarkSheet(data, function (err) {
                         console.log("savedatInitiate");
                         parser.resume();
@@ -463,12 +463,9 @@ module.exports.uploadMarkFile = function (req, res) {
                 }
             }
         })
-
-
     })
         .on("end", function () {
             console.log("end ");
-
             console.log("end marker: " + marker);
             if (marker == false) {
                 responseData = {

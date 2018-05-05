@@ -69,6 +69,8 @@
                                                 <select class="btn col-lg-4" ng-if="up.uploadType=='Mark Report'" placeholder="select" ng-model="up.ttSelect" ng-options="tt as tt for tt in testTypes">
                                                     <option value="" disabled selected>Type of Test</option>
                                                 </select>
+                                                <label class="col-lg-4" ng-if="up.uploadType=='Mark Report'">Test Start Date</label>
+                                                <input ng-if="up.uploadType=='Mark Report'" type="date" ng-model="up.testDate" placeholder="Select date of test start" value="date">
                                                 <label class="col-lg-4" ng-if="up.uploadType=='Attendance'">Attendance report</label>
                                                 <select class="btn col-lg-4" ng-if="up.uploadType=='Attendance'" placeholder="select" ng-model="up.ttSelect" ng-options="at as at for at in attendanceTypes">
                                                     <option value="" disabled selected>Attendance report</option>
@@ -93,6 +95,7 @@
                                                 <button ng-if="up.uploadType=='Student Details'" type="submit" class="btn btn-primary col-lg-3" ng-click="uploadFile(up.uploadDoc,up.uploadType, up.cSelect.class,up.sSelect)">Upload</button>
                                                 <button ng-if="up.uploadType=='Teacher Details'" type="submit" class="btn btn-primary col-lg-3" ng-click="uploadFile(up.uploadDoc,up.uploadType)">Upload</button>
                                                 <button ng-if="up.uploadType=='Time Table'" type="submit" class="btn btn-primary col-lg-3" ng-click="uploadTimeTableFile(up.uploadDoc,up.tSelect)">Upload</button>
+                                                <button ng-if="up.uploadType=='Mark Report'" type="submit" class="btn btn-primary col-lg-3" ng-click="uploadMarkFile(up.uploadDoc,up.ttSelect,up.testDate)">Upload</button>
                                             </div>
                                             <hr>
                                             <button type="submit" class="btn btn-primary" ng-click="addUploadReports()">Add</button>
@@ -137,7 +140,7 @@
                             <br>
                             <div class="form-group">
                                 <div class="col-lg-offset-2 col-lg-10">
-                                    <button type="submit" class="btn btn-primary" ng-click="attendanceMark()">Save</button>
+                                    <button type="submit" class="btn btn-primary" >Save</button>
                                     <button type="reset" class="btn btn-danger">Cancel</button>
                                 </div>
                                 <!-- <div class="col-lg-offset-2 col-lg-10">

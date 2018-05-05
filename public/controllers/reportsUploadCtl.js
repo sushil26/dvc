@@ -68,7 +68,7 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
           if (teacherData[x].loginType == 'teacher') {
             var name = teacherData[x].firstName + teacherData[x].lastName;
             $scope.teacherList.push({ "_id": teacherData[x]._id, "name": name, "schoolId": teacherData[x].schoolId });
-            if(teacherData[x].timeTable.length==0){
+            if (teacherData[x].timeTable.length == 0) {
               $scope.teacherList_noTT.push({ "_id": teacherData[x]._id, "name": name, "schoolId": teacherData[x].schoolId });
             }
           }
@@ -108,48 +108,25 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
     console.log("<--addUploadReports");
   }
 
-  $scope.attendanceMark = function () {
-    console.log("attendanceMark-->");
-    // console.log("file: " + file);
-    console.log("$scope.uploadReports: " + JSON.stringify($scope.uploadReports));
-
-
-
-
-    // var api = "https://norecruits.com/vc/uploadMark";
-    // httpFactory.imageUpload(file, api).then(function (data) {
-    //   var checkStatus = httpFactory.dataValidation(data);
-    //   console.log("data--" + JSON.stringify(data.data));
-    //   if (checkStatus) {
-    //     alert(data.data.message);
-    //   }
-    //   else {
-    //     alert(data.data.message);
-    //   }
-    // })
-
-    // var cs = [{
-    //   "class": $scope.csSelect.class,
-    //   "section": $scope.csSelect.section
-    // }]
-    // $scope.asm = [];
-    // for(var x=0;x<$scope.asm.length;x++){
-    //   $scope.asm.push({
-    //     "attendance": $scope.asm[x].attendance,
-    //     "subject": $scope.asm[x].subject,
-    //     "mark": 
-    //   })
-    // }
-
-    // var obj = {
-    //   "cs": cs,
-    //   "studName": $scope.studSelect.name,
-    //   "studId": $scope.studSelect.studId,
-    //   "ttSelect": $scope.ttSelect,
-    //   "sma": $scope.sma
-    // }
-    // console.log("obj: " + JSON.stringify(obj));
-    console.log("<--attendanceMark");
+  $scope.uploadMarkFile = function (file, testType, date) {
+    console.log("uploadMarkFile-->");
+   console.log("testTYpe: "+testType+"date: "+date);
+    var obj = {
+      "file": file
+    }
+    var api = "https://norecruits.com/vc/uploadMarkFile/" + schoolName + "/" + testType + "/" + date;
+    console.log("api: " + api);
+    httpFactory.imageUpload(file, api).then(function (data) {
+      var checkStatus = httpFactory.dataValidation(data);
+      console.log("data--" + JSON.stringify(data.data));
+      if (checkStatus) {
+        alert(data.data.message);
+      }
+      else {
+        alert(data.data.message);
+      }
+    })
+    console.log("<--uploadMarkFile");
   }
 
   $scope.upload_classPeriodsFile = function (file, fileType) {
@@ -185,7 +162,7 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
     var obj = {
       "file": file
     }
-    var api = "https://norecruits.com/vc/uploadTeacher_timeTable/" + schoolName+"/"+data._id;
+    var api = "https://norecruits.com/vc/uploadTeacher_timeTable/" + schoolName + "/" + data._id;
     console.log("api: " + api);
     httpFactory.csvUpload(obj, api).then(function (data) {
       var checkStatus = httpFactory.dataValidation(data);

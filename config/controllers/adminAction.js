@@ -509,10 +509,10 @@ module.exports.uploadMarkSheet = function (data, callback) {
         }
     }
     console.log("mark: " + JSON.stringify(mark));
-    var consolidateMS = {
+    var consolidateMS = [{
         "date": date,
         "mark": mark
-    }
+    }]
     var studIdForFindQry = {
         "schoolId": data.StudentID,
         "schoolName": schoolName
@@ -536,7 +536,8 @@ module.exports.uploadMarkSheet = function (data, callback) {
         }
         else {
             if (findData.length > 0) {
-                stud.find(studIdForUpdateQry, function (err, data) {
+                console.log("consolidateMS: "+JSON.stringify(consolidateMS));
+                stud.findOneAndUpdate(studIdForUpdateQry, { $push: { "mark.$.subjectWithMark": { $each: consolidateMS } } }, function (err, data) {
                     console.log("2nd query started: " + JSON.stringify(data));
                     console.log("2nd query data.length: " + data.length);
                     if (err) {

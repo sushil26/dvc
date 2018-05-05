@@ -10,7 +10,9 @@
 
 @import url(line-icons.css);
 
-
+span{
+    font-family: monospace;
+}
 
 body {
 

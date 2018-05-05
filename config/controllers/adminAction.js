@@ -536,7 +536,7 @@ module.exports.uploadMarkSheet = function (data, callback) {
         }
         else {
             if (findData.length > 0) {
-                stud.findOneAndUpdate(studIdForUpdateQry, { $push: { "mark.$.subjectWithMark": { $each: consolidateMS } } }, function (err, data) {
+                stud.find(studIdForUpdateQry, function (err, data) {
                     console.log("2nd query started: " + JSON.stringify(data));
                     console.log("2nd query data.length: " + data.length);
                     if (err) {

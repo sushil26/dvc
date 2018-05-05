@@ -740,6 +740,7 @@ ul.sidebar-menu li.active a, ul.sidebar-menu li a:hover, ul.sidebar-menu li a:fo
 }
 
 ul.sidebar-menu li a:hover, ul.sidebar-menu li a:focus {
+    color:black;
 
     border-bottom: 1px solid #d0d8df;
 

@@ -10,7 +10,9 @@
 
 @import url(line-icons.css);
 
-
+span{
+    font-family: monospace;
+}
 
 body {
 
@@ -840,7 +842,7 @@ ul.sidebar-menu li.active a i {
     color: black !important;
 } */
 
-#sidebar>ul>li>a>i.fa-home span:hover{
+#sidebar>ul>li>a:hover{
     color: black !important;
 }
 
@@ -6828,7 +6830,7 @@ ul.inbox-pagination li {
 
     text-align: center;
 
-    font-style: italic;
+  
 
     padding: 10px 110px;
 

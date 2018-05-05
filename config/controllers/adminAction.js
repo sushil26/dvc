@@ -442,6 +442,25 @@ module.exports.uploadMarkFile = function (req, res) {
     })
         .on("end", function () {
             console.log("end ");
+            console.log("end marker: " + marker);
+            if (marker == false) {
+                responseData = {
+                    status: false,
+                    message: message
+                };
+                res.status(400).send(responseData);
+            }
+            else if (marker == true) {
+                console.log("unknownData: " + JSON.stringify(unknownData));
+                var unknownStud = unknownData;
+                responseData = {
+                    status: true,
+                    message: "Successfull updated data",
+                    data: unknownStud
+                };
+                unknownData = [];
+                res.status(200).send(responseData);
+            }
 
         })
     console.log("<--uploadMarkFile");

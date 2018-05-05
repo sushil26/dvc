@@ -738,6 +738,9 @@ ul.sidebar-menu li.active a, ul.sidebar-menu li a:hover, ul.sidebar-menu li a:fo
     transition: all 0.3s ease;
 
 }
+fa-clipboard:hover{
+    color:red;
+}
 
 ul.sidebar-menu li a:hover, ul.sidebar-menu li a:focus {
     color:black;

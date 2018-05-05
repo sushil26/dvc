@@ -457,10 +457,6 @@ module.exports.uploadMarkSheet = function (data, callback) {
         console.log(data[key]);
         console.log("key: " + key);
         console.log("data[key]: " + data[key]);
-        var parts = key.split('-');
-        console.log("parts.length: " + parts.length);
-
-        console.log("parts: " + JSON.stringify(parts));
         if (key != "StudentID" && key != "StudentName") {
             mark[key] = data[key];
         }
@@ -473,6 +469,7 @@ module.exports.uploadMarkSheet = function (data, callback) {
     }
   
      console.log("studIdForUpdateQry: " + JSON.stringify(studIdForUpdateQry));
+     if (callback) callback();
     // stud.find(studIdForFindQry).toArray(function (err, findData) {
     //     console.log("1st query findData: " + JSON.stringify(findData));
     //     console.log("1st query findData.length: " + findData.length);

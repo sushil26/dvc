@@ -24,13 +24,13 @@ i{
     color: palegoldenrod!important;
 }
 #sidebar>ul>li>a>i.fa-pencil:hover{
-    color: blanchedalmond!important;
+    color: palevioletred!important;
 }
 #sidebar>ul>li>a>i.fa-calendar:hover{
     color: aquamarine !important;
 }
 #sidebar>ul>li>a>i.fa-clipboard:hover{
-    color: floralwhite!important;
+    color: #00A8B3!important;
 }
 #sidebar>ul>li>a>i.fa-cog:hover{
     color: darkkhaki !important;

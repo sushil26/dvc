@@ -18,6 +18,10 @@ var monthAtt = []; /* ### Note: get all attendance of the month ###*/
 var unknownData = [];
 var attendanceIndex; /* ### Note: dateAttendance index based on month select  ### */
 var schoolName; /* ### Note: Get School Name of API  ### */
+var testType; /* ### Note: Get testType while uploading marksheet  ### */
+var testStartDate; /* ### Note: Get test start date while uploading marksheet  ### */
+var clas,section;  /* ### Note: Used while uploading marksheet  ### */
+var counter = 0; /* ### Note: Used while uploading marksheet  ### */
 
 module.exports.updateSchoolStatus = function (req, res) {
     console.log("updateSchoolStatus-->");
@@ -199,7 +203,6 @@ module.exports.uploadClassFile = function (req, res) {
         consolidateCS.push({ "class": data.Class, "section": section, "subject": subject });
         section = [];
         subject = [];
-
         // classSection.push({"class":data.class, "section":[data]})
         // parser.pause();
     })
@@ -303,7 +306,7 @@ module.exports.uploadTeacher_timeTable = function (req, res) {
             console.log("consolidateTT: " + JSON.stringify(consolidateTT));
             user.find({ "_id": ObjectId(id), "schoolName": schoolName }).toArray(function (err, userData) {
                 console.log("userData: " + JSON.stringify(userData));
-                console.log("userData[0].timeTable.length: "+userData[0].timeTable.length);
+                console.log("userData[0].timeTable.length: " + userData[0].timeTable.length);
                 if (err) {
                     responseData = {
                         status: false,
@@ -409,6 +412,102 @@ module.exports.uploadPeriodsFile = function (req, res) {
         });
     console.log("<--uploadClassFile");
 };
+
+module.exports.uploadMarkFile = function (req, res) {
+    console.log("uploadMarkFile-->");
+
+    schoolName = req.params.schoolName;
+    testType = req.params.testType;
+    testStartDate = req.params.date;
+    clas = req.params.clas;
+    section = req.params.section;
+    console.log("req.body.files: " + req.files.img);
+    if (!req.files)
+        return res.status(400).send('No files were uploaded.');
+    var studentDataFile = req.files.img;
+    console.log("studentDataFile: " + studentDataFile);
+    var parser = csv.fromString(studentDataFile.data.toString(), {
+        headers: true,
+        ignoreEmpty: true
+    }).on("data", function (data) {
+        console.log("upload data: " + JSON.stringify(data));
+        //var count = Object.keys(data).length;
+
+        module.exports.uploadMarkSheet(data, function (err) {
+            console.log("savedatInitiate");
+
+            parser.resume();
+        });
+
+    })
+        .on("end", function () {
+            console.log("end ");
+
+        })
+    console.log("<--uploadMarkFile");
+}
+module.exports.uploadMarkSheet = function (data, callback) {
+    console.log('inside saving -->uploadMarkSheet')
+    // Simulate an asynchronous operation:
+    var date = testStartDate;
+    var mark = {};
+    counter = counter + 1;
+
+    for (var key in data) {
+        console.log(data[key]);
+        console.log("key: " + key);
+        console.log("data[key]: " + data[key]);
+        var parts = key.split('-');
+        console.log("parts.length: " + parts.length);
+
+        console.log("parts: " + JSON.stringify(parts));
+        if (key != "StudentID" && key != "StudentName") {
+            mark[key] = data[key];
+        }
+    }
+    console.log("mark: "+JSON.stringify(mark));
+    var studIdForFindQry = {
+        "studId": data.StudentID,
+        "schoolName": schoolName,
+        "cs":[{"class":clas, "section":section}]
+    }
+  
+     console.log("studIdForUpdateQry: " + JSON.stringify(studIdForUpdateQry));
+    // stud.find(studIdForFindQry).toArray(function (err, findData) {
+    //     console.log("1st query findData: " + JSON.stringify(findData));
+    //     console.log("1st query findData.length: " + findData.length);
+    //     if (err) {
+    //         marker = true;
+    //         if (callback) callback();
+    //     }
+    //     else {
+    //         if (findData.length == 0) {
+    //             stud.update(studIdForUpdateQry, { $push: { "attendance.$.dateAttendance": { "date": AttDate, "status": attndnce } } }, function (err, data) {
+    //                 console.log("2nd query started: " + JSON.stringify(data));
+    //                 console.log("2nd query data.length: " + data.length);
+    //                 if (err) {
+    //                     marker = true;
+    //                     if (callback) callback();
+    //                 }
+    //                 else {
+    //                     marker = true;
+    //                     if (callback) callback();
+    //                 }
+    //             })
+    //         }
+    //         else {
+    //             marker = false;
+
+    //             message = "Sorry! You already updated for this date";
+
+    //             if (callback) callback();
+    //         }
+    //     }
+    // })
+
+    // /* ### End update daily attendance status  ### */
+
+}
 module.exports.uploadAttendance = function (req, res) {
     console.log("uploadAttendance-->");
     var responseData;

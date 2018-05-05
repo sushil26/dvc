@@ -22,6 +22,21 @@ i{
 #sidebar>ul>li>a>i.fa-user-circle:hover{
     color: palegoldenrod!important;
 }
+#sidebar>ul>li>a>i.fa-pencil:hover{
+    color: blanchedalmond!important;
+}
+#sidebar>ul>li>a>i.fa-calendar:hover{
+    color: aquamarine !important;
+}
+#sidebar>ul>li>a>i.fa-clipboard:hover{
+    color: floralwhite!important;
+}
+#sidebar>ul>li>a>i.fa-cog:hover{
+    color: darkkhaki !important;
+}
+#sidebar>ul>li>a>i.fa-sign-out:hover{
+    color: sandybrown !important;
+}
 
 body {
 

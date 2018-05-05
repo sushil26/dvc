@@ -107,13 +107,13 @@
                     </li>
                     <li ng-if="loginType == 'teacher' || loginType == 'studParent'">
                         <a href="#!/dashboard/eventShedule">
-                            <i class="fa fa-pencil" style="color: blanchedalmond"><span>&nbspSCHEDULER</span></i>
+                            <i class="fa fa-pencil"><span>&nbspSCHEDULER</span></i>
                            
                         </a>
                     </li>
                     <li class="sub-menu" ng-if="loginType == 'teacher' || loginType == 'studParent'" style="color:aquamarine;">
                         <a ng-click="eventClick('events_subMenu')">
-                            <i class="fa fa-calendar" style="color:aquamarine;"><span>&nbspEVENTS</span></i>
+                            <i class="fa fa-calendar" ><span>&nbspEVENTS</span></i>
                            
                             <span ng-if="events_subMenu==true" class="menu-arrow arrow_carrot-right"></span>
                             <span ng-if="events_subMenu==false" class="menu-arrow arrow_carrot-down"></span>
@@ -127,9 +127,9 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="sub-menu" style="color: floralwhite;">
+                    <li class="sub-menu">
                         <a ng-click="eventClick('academic_subMenu')">
-                            <i class="fa fa-clipboard" style="color: floralwhite;"><span>&nbspACADEMIC</span></i>
+                            <i class="fa fa-clipboard"><span>&nbspACADEMIC</span></i>
                          
                             <span ng-if="academic_subMenu==true" class="menu-arrow arrow_carrot-right"></span>
                             <span ng-if="academic_subMenu==false" class="menu-arrow arrow_carrot-down"></span>
@@ -164,7 +164,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="sub-menu" style="color: darkkhaki;">
+                    <li class="sub-menu">
                         <a ng-click="eventClick('setting_subMenu')">
                             <i class="fa fa-cog" style="color: darkkhaki"><span>&nbspSETTINGS</span></i>
                             
@@ -197,7 +197,7 @@
                     </li>
                     <li>
                         <a href="#" ng-click="logOut()">
-                            <i class="fa fa-sign-out" style="color: sandybrown"><span>&nbspLOGOUT</span></i>
+                            <i class="fa fa-sign-out"><span>&nbspLOGOUT</span></i>
                         </a>
                     </li>
                 </ul>

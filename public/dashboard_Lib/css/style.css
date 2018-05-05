@@ -840,7 +840,7 @@ ul.sidebar-menu li.active a i {
     color: black !important;
 } */
 
-#sidebar>ul>li>a:hover{
+#sidebar>ul>li>a>i.fa-home:hover, #sidebar>ul>li>a:hover{
     color: black !important;
 }
 

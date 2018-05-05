@@ -17,7 +17,7 @@ span{
 i{
     color:white;
 }
-#sidebar>ul>li>a #alink:hover {
+#sidebar>ul>li #alink:hover {
     color: rgb(253, 158, 158) !important;
 }
 #sidebar>ul>li>a>i.fa-home:hover {

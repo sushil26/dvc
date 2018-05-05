@@ -836,7 +836,9 @@ ul.sidebar-menu li.active a i {
     width: 0;
 
 }
-
+#sidebar ul > li > .fa-home:hover{
+    color: black;
+}
 
 
 #sidebar ul > li.active > a .arrow, #sidebar ul > li > a:hover .arrow, #sidebar ul > li > a:focus .arrow {

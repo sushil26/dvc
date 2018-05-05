@@ -303,6 +303,7 @@ module.exports.uploadTeacher_timeTable = function (req, res) {
             console.log("consolidateTT: " + JSON.stringify(consolidateTT));
             user.find({ "_id": ObjectId(id), "schoolName": schoolName }).toArray(function (err, userData) {
                 console.log("userData: " + JSON.stringify(userData));
+                console.log("userData[0].timeTable.length: "+userData[0].timeTable.length);
                 if (err) {
                     responseData = {
                         status: false,

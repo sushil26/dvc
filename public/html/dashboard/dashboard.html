@@ -1,4 +1,3 @@
-
 <link rel="stylesheet" href="././dashboard_Lib/css/style.css" />
 <link rel="stylesheet" href="././dashboard_Lib/css/style-responsive.css" />
 <link rel="stylesheet" href="././dashboard_Lib/css/bootstrap.min.css" />
@@ -7,7 +6,7 @@
 
 
 <div ng-controller="dashboardController">
-   <!-- container section start -->
+    <!-- container section start -->
     <section id="container" class="">
         <!--header start-->
         <header class="header dark-bg">
@@ -19,7 +18,9 @@
 
             <!--logo start-->
             <img ng-click="homeClick()" style="float:left;width: 63px;margin-top: 5px" src="././home/img/fav.png" />
-            <a ng-click="homeClick()" class="logo">VC<span class="lite">4ALL</span></a>
+            <a ng-click="homeClick()" class="logo">VC
+                <span class="lite">4ALL</span>
+            </a>
             <!--logo end-->
 
             <div class="top-nav notification-row">
@@ -60,7 +61,7 @@
                     <!-- alert notification end-->
                     <!-- user login dropdown start-->
                     <li class="dropdown">
-                      <a data-toggle="dropdown" class="dropdown-toggle">
+                        <a data-toggle="dropdown" class="dropdown-toggle">
                             <span class="profile-ava">
                                 <img alt="" src="/dashboard_Lib/img/img.jpg">
                             </span>
@@ -91,13 +92,12 @@
 
         <!--sidebar start-->
         <aside>
-            <div id="sidebar" class="nav-collapse" style="margin-top: 60px;" >
+            <div id="sidebar" class="nav-collapse" style="margin-top: 60px;">
                 <!-- sidebar menu start-->
                 <ul class="sidebar-menu" ng-hide="sideBarMenu">
-                    <li     style="color: #d0d8e0;">
+                    <li style="color: #d0d8e0;">
                         <a ng-click="homeClick()">
-                            <i class="fa fa-home"></i>
-                            <span>HOME</span>
+                            <i class="fa fa-home" style="color: rosybrown;"></i><span>HOME</span>
                         </a>
                     </li>
                     <li>
@@ -116,8 +116,8 @@
                         <a ng-click="eventClick('events_subMenu')">
                             <i class="fa fa-calendar"></i>
                             <span>EVENTS</span>
-                            <span ng-if="events_subMenu==true"  class="menu-arrow arrow_carrot-right"></span>
-                            <span ng-if="events_subMenu==false"  class="menu-arrow arrow_carrot-down"></span>
+                            <span ng-if="events_subMenu==true" class="menu-arrow arrow_carrot-right"></span>
+                            <span ng-if="events_subMenu==false" class="menu-arrow arrow_carrot-down"></span>
                         </a>
                         <ul ng-hide="events_subMenu">
                             <li>
@@ -128,14 +128,14 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="sub-menu"  style="color: #d0d8e0;">
+                    <li class="sub-menu" style="color: #d0d8e0;">
                         <a ng-click="eventClick('academic_subMenu')">
                             <i class="fa fa-clipboard"></i>
                             <span>ACADEMIC</span>
                             <span ng-if="academic_subMenu==true" class="menu-arrow arrow_carrot-right"></span>
                             <span ng-if="academic_subMenu==false" class="menu-arrow arrow_carrot-down"></span>
                         </a>
-                        <ul  ng-hide="academic_subMenu">
+                        <ul ng-hide="academic_subMenu">
                             <li>
                                 <a class="" href="#!/dashboard/allUser">ALL USER</a>
                             </li>
@@ -165,7 +165,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="sub-menu"  style="color: #d0d8e0;">
+                    <li class="sub-menu" style="color: #d0d8e0;">
                         <a ng-click="eventClick('setting_subMenu')">
                             <i class="fa fa-cog"></i>
                             <span>SETTINGS</span>
@@ -212,7 +212,7 @@
         </div>
         <!--main content end-->
     </section>
-    
+
 </div>
 
 <script src="././dashboard_Lib/js/jquery.js"></script>

@@ -16,6 +16,12 @@ span{
 i{
     color:white;
 }
+#sidebar>ul>li>a>i.fa-home:hover{
+    color: rgb(253, 158, 158) !important;
+}
+#sidebar>ul>li>a>i.fa-user-circle:hover{
+    color: palegoldenrod!important;
+}
 
 body {
 
@@ -845,9 +851,7 @@ ul.sidebar-menu li.active a i {
     color: black !important;
 } */
 
-#sidebar>ul>li>a>i.fa-home:hover{
-    color: rgb(253, 158, 158) !important;
-}
+
 
 
 

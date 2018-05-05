@@ -68,7 +68,7 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
           if (teacherData[x].loginType == 'teacher') {
             var name = teacherData[x].firstName + teacherData[x].lastName;
             $scope.teacherList.push({ "_id": teacherData[x]._id, "name": name, "schoolId": teacherData[x].schoolId });
-            if(teacherData[x].timeTable.length>0){
+            if(teacherData[x].timeTable.length==0){
               $scope.teacherList_noTT.push({ "_id": teacherData[x]._id, "name": name, "schoolId": teacherData[x].schoolId });
             }
           }

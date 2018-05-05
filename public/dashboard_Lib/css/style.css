@@ -836,9 +836,14 @@ ul.sidebar-menu li.active a i {
     width: 0;
 
 }
-#sidebar>ul>li>a>.fa-home span:hover{
+/* #sidebar>ul>li>a>i.fa-home:hover{
+    color: black !important;
+} */
+
+#sidebar>ul>li>a>i.fa-home,span:hover{
     color: black !important;
 }
+
 
 
 #sidebar ul > li.active > a .arrow, #sidebar ul > li > a:hover .arrow, #sidebar ul > li > a:focus .arrow {

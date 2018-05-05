@@ -441,7 +441,6 @@ module.exports.uploadMarkFile = function (req, res) {
             console.log("class section query findData.length: " + findData.length);
             if (err) {
                 marker = true;
-
                 parser.resume();
             }
             else {

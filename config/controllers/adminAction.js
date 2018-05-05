@@ -20,6 +20,7 @@ var attendanceIndex; /* ### Note: dateAttendance index based on month select  ##
 var schoolName; /* ### Note: Get School Name of API  ### */
 var testType; /* ### Note: Get testType while uploading marksheet  ### */
 var testStartDate; /* ### Note: Get test start date while uploading marksheet  ### */
+var clas,section;  /* ### Note: Used while uploading marksheet  ### */
 var counter = 0; /* ### Note: Used while uploading marksheet  ### */
 
 module.exports.updateSchoolStatus = function (req, res) {
@@ -418,6 +419,8 @@ module.exports.uploadMarkFile = function (req, res) {
     schoolName = req.params.schoolName;
     testType = req.params.testType;
     testStartDate = req.params.date;
+    clas = req.params.clas;
+    section = req.params.section;
     console.log("req.body.files: " + req.files.img);
     if (!req.files)
         return res.status(400).send('No files were uploaded.');
@@ -465,14 +468,11 @@ module.exports.uploadMarkSheet = function (data, callback) {
     console.log("mark: "+JSON.stringify(mark));
     var studIdForFindQry = {
         "studId": data.StudentID,
-        "schoolName": schoolName
+        "schoolName": schoolName,
+        "cs":[{"class":clas, "section":section}]
     }
-   var marksheet = {
-        "testType": testType,
-        "testStartDate": testStartDate,
-        "subjectWithMark": mark
-    }
-    // console.log("studIdForUpdateQry: " + JSON.stringify(studIdForUpdateQry));
+  
+     console.log("studIdForUpdateQry: " + JSON.stringify(studIdForUpdateQry));
     // stud.find(studIdForFindQry).toArray(function (err, findData) {
     //     console.log("1st query findData: " + JSON.stringify(findData));
     //     console.log("1st query findData.length: " + findData.length);

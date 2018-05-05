@@ -108,13 +108,13 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
     console.log("<--addUploadReports");
   }
 
-  $scope.uploadMarkFile = function (file, testType, date) {
+  $scope.uploadMarkFile = function (file, testType, date, clas, section) {
     console.log("uploadMarkFile-->");
    console.log("testTYpe: "+testType+"date: "+date);
     var obj = {
       "file": file
     }
-    var api = "https://norecruits.com/vc/uploadMarkFile/" + schoolName + "/" + testType + "/" + date;
+    var api = "https://norecruits.com/vc/uploadMarkFile/" + schoolName + "/" + testType + "/" + date + "/" + clas +"/"+ section;
     console.log("api: " + api);
     httpFactory.imageUpload(file, api).then(function (data) {
       var checkStatus = httpFactory.dataValidation(data);

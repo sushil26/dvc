@@ -261,14 +261,14 @@ module.exports.uploadTeacher_timeTable = function (req, res) {
         count = count + 1;
         var p = 0;
         for (var key in data) {
-            p = p+1;
+            p = p + 1;
             console.log(data[key]);
             console.log("key: " + key);
             console.log("data[key]: " + data[key]);
             var parts = key.split('-');
             console.log("parts.length: " + parts.length);
             console.log("parts: " + JSON.stringify(parts));
-            
+
             if (count == 1) {
                 console.log("parts: " + JSON.stringify(parts));
                 timing.push({ "periods": p, "startsAt": parts[0], "endsAt": parts[1] });
@@ -301,9 +301,8 @@ module.exports.uploadTeacher_timeTable = function (req, res) {
             console.log("end ");
             consolidateTT.push({ "timing": timing, "css": css });
             console.log("consolidateTT: " + JSON.stringify(consolidateTT));
-
-            user.findOneAndUpdate({ "_id": ObjectId(id), "schoolName": schoolName }, { $push: { "timeTable": { $each: consolidateTT } } }, { new: true }, function (err, data) {
-                console.log("data: " + JSON.stringify(data));
+            user.findOneAndUpdate({ "_id": ObjectId(id), "schoolName": schoolName }).toArray(function (err, userData) {
+                console.log("userData: " + JSON.stringify(userData));
                 if (err) {
                     responseData = {
                         status: false,
@@ -312,15 +311,39 @@ module.exports.uploadTeacher_timeTable = function (req, res) {
                     };
                     res.status(400).send(responseData);
                 } else {
-                    responseData = {
-                        status: true,
-                        errorCode: 200,
-                        message: "Updated  Successfull",
-                        data: data
-                    };
-                    res.status(200).send(responseData);
+                    if (userData[0].timeTable.length > 1) {
+                        responseData = {
+                            status: true,
+                            errorCode: 200,
+                            message: "Sorry! You Already updated value",
+                            data: data
+                        };
+                        res.status(200).send(responseData);
+                    }
+                    else {
+                        user.findOneAndUpdate({ "_id": ObjectId(id), "schoolName": schoolName }, { $push: { "timeTable": { $each: consolidateTT } } }, { new: true }, function (err, data) {
+                            console.log("data: " + JSON.stringify(data));
+                            if (err) {
+                                responseData = {
+                                    status: false,
+                                    message: err
+
+                                };
+                                res.status(400).send(responseData);
+                            } else {
+                                responseData = {
+                                    status: true,
+                                    errorCode: 200,
+                                    message: "Updated  Successfull",
+                                    data: data
+                                };
+                                res.status(200).send(responseData);
+                            }
+                        });
+                    }
                 }
-            });
+            })
+
 
         });
     console.log("<--uploadTeacher_timeTable");

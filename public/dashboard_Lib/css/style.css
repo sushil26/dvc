@@ -836,7 +836,7 @@ ul.sidebar-menu li.active a i {
     width: 0;
 
 }
-#sidebar>ul>li>a>i.fa-home:hover{
+#sidebar>ul>li>a>.home:hover{
     color: black !important;
 }
 

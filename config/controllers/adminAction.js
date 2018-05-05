@@ -435,40 +435,61 @@ module.exports.uploadMarkFile = function (req, res) {
 
         module.exports.uploadMarkSheet(data, function (err) {
             console.log("savedatInitiate");
-
             parser.resume();
         });
 
     })
         .on("end", function () {
             console.log("end ");
-            console.log("end marker: " + marker);
-            if (marker == false) {
-                responseData = {
-                    status: false,
-                    message: message
-                };
-                res.status(400).send(responseData);
+            var studIdForFindQry = {
+                "cs": [{ "class": clas, "section": section }]
             }
-            else if (marker == true) {
-                console.log("unknownData: " + JSON.stringify(unknownData));
-                var unknownStud = unknownData;
-                responseData = {
-                    status: true,
-                    message: "Successfull updated data",
-                    data: unknownStud
-                };
-                unknownData = [];
-                res.status(200).send(responseData);
-            }
-
+            stud.find(studIdForFindQry).toArray(function (err, findData) {
+                console.log("1st query findData: " + JSON.stringify(findData));
+                console.log("1st query findData.length: " + findData.length);
+                if (err) {
+                    marker = true;
+                    if (callback) callback();
+                }
+                else {
+                    if (findData.length > 0) {
+                        console.log("end marker: " + marker);
+                        if (marker == false) {
+                            responseData = {
+                                status: false,
+                                message: message
+                            };
+                            res.status(400).send(responseData);
+                        }
+                        else if (marker == true) {
+                            console.log("unknownData: " + JSON.stringify(unknownData));
+                            var unknownStud = unknownData;
+                            responseData = {
+                                status: true,
+                                message: "Successfull updated data",
+                                data: unknownStud
+                            };
+                            unknownData = [];
+                            res.status(200).send(responseData);
+                        }
+            
+                    }
+                    else{
+                        responseData = {
+                            status: false,
+                            message: "There is no record for this class and section"
+                        };
+                        res.status(400).send(responseData);
+                    }
+                }
+            })
+          
         })
     console.log("<--uploadMarkFile");
 }
 module.exports.uploadMarkSheet = function (data, callback) {
     console.log('inside saving -->uploadMarkSheet')
     // Simulate an asynchronous operation:
-  
     var date = testStartDate;
     var mark = {};
     counter = counter + 1;
@@ -483,8 +504,8 @@ module.exports.uploadMarkSheet = function (data, callback) {
     }
     console.log("mark: " + JSON.stringify(mark));
     var consolidateMS = {
-        "date":date, 
-        "mark":mark
+        "date": date,
+        "mark": mark
     }
     var studIdForFindQry = {
         "studId": data.StudentID,
@@ -523,7 +544,11 @@ module.exports.uploadMarkSheet = function (data, callback) {
             }
             else {
                 marker = false;
-
+                var obj = {
+                    "StudentID": data.StudentID,
+                    "StudentName": data.StudentName
+                }
+                unknownData.push(obj);
                 message = "Sorry! For this Id,Class and Section there is no student data";
 
                 if (callback) callback();

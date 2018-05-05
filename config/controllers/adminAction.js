@@ -431,28 +431,44 @@ module.exports.uploadMarkFile = function (req, res) {
         ignoreEmpty: true
     }).on("data", function (data) {
         console.log("upload data: " + JSON.stringify(data));
+        parser.pause();
         //var count = Object.keys(data).length;
+        var studIdForFindQry = {
+            "cs": [{ "class": clas, "section": section }]
+        }
+        stud.find(studIdForFindQry).toArray(function (err, findData) {
+            console.log("class section query findData: " + JSON.stringify(findData));
+            console.log("class section query findData.length: " + findData.length);
+            if (err) {
+                marker = true;
 
-        module.exports.uploadMarkSheet(data, function (err) {
-            console.log("savedatInitiate");
-            parser.resume();
-        });
+                parser.resume();
+            }
+            else {
+                if (findData.length > 0) {
+                    module.exports.uploadMarkSheet(data, function (err) {
+                        console.log("savedatInitiate");
+                        parser.resume();
+            
+                    });
+                }
+                else{
+                    responseData = {
+                        status: false,
+                        message: "There is no record for this class and section"
+                    };
+                    res.status(400).send(responseData);
+                   
+                }
+            }
+        })
+     
 
     })
         .on("end", function () {
             console.log("end ");
-            var studIdForFindQry = {
-                "cs": [{ "class": clas, "section": section }]
-            }
-            stud.find(studIdForFindQry).toArray(function (err, findData) {
-                console.log("end query findData: " + JSON.stringify(findData));
-                console.log("end query findData.length: " + findData.length);
-                if (err) {
-                    marker = true;
-                    if (callback) callback();
-                }
-                else {
-                    if (findData.length > 0) {
+            
+           
                         console.log("end marker: " + marker);
                         if (marker == false) {
                             responseData = {
@@ -473,16 +489,7 @@ module.exports.uploadMarkFile = function (req, res) {
                             res.status(200).send(responseData);
                         }
             
-                    }
-                    else{
-                        responseData = {
-                            status: false,
-                            message: "There is no record for this class and section"
-                        };
-                        res.status(400).send(responseData);
-                    }
-                }
-            })
+                    
           
         })
     console.log("<--uploadMarkFile");

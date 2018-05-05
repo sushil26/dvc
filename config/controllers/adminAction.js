@@ -301,7 +301,7 @@ module.exports.uploadTeacher_timeTable = function (req, res) {
             console.log("end ");
             consolidateTT.push({ "timing": timing, "css": css });
             console.log("consolidateTT: " + JSON.stringify(consolidateTT));
-            user.findOneAndUpdate({ "_id": ObjectId(id), "schoolName": schoolName }).toArray(function (err, userData) {
+            user.find({ "_id": ObjectId(id), "schoolName": schoolName }).toArray(function (err, userData) {
                 console.log("userData: " + JSON.stringify(userData));
                 if (err) {
                     responseData = {

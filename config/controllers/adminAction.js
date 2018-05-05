@@ -312,17 +312,17 @@ module.exports.uploadTeacher_timeTable = function (req, res) {
                     };
                     res.status(400).send(responseData);
                 } else {
-                    if (userData[0].timeTable.length > 1) {
+                    if (userData[0].timeTable.length > 0) {
                         responseData = {
                             status: true,
                             errorCode: 200,
                             message: "Sorry! You Already updated value",
-                            data: data
+                            data: userData
                         };
                         res.status(200).send(responseData);
                     }
                     else {
-                        user.findOneAndUpdate({ "_id": ObjectId(id), "schoolName": schoolName }, { $push: { "timeTable": { $each: consolidateTT } } }, { new: true }, function (err, data) {
+                        user.findOneAndUpdate({ "_id": ObjectId(id), "schoolName": schoolName }, { $push: { "timeTable": { $each: consolidateTT } } }, { new: true }, function (err, updatedData) {
                             console.log("data: " + JSON.stringify(data));
                             if (err) {
                                 responseData = {
@@ -336,7 +336,7 @@ module.exports.uploadTeacher_timeTable = function (req, res) {
                                     status: true,
                                     errorCode: 200,
                                     message: "Updated  Successfull",
-                                    data: data
+                                    data: updatedData
                                 };
                                 res.status(200).send(responseData);
                             }

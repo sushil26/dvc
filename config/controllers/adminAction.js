@@ -514,17 +514,18 @@ module.exports.uploadMarkSheet = function (data, callback) {
         "mark": mark
     }
     var studIdForFindQry = {
-        "studId": data.StudentID,
+        "schoolId": data.StudentID,
         "schoolName": schoolName
        
     }
     var studIdForUpdateQry = {
-        "studId": data.StudentID,
+        "schoolId": data.StudentID,
         "schoolName": schoolName,
         "mark.testType": testType,
         "cs": [{ "class": clas, "section": section }]
     }
     console.log("studIdForFindQry: " + JSON.stringify(studIdForFindQry));
+    console.log("studIdForUpdateQry: " + JSON.stringify(studIdForUpdateQry));
 
     stud.find(studIdForFindQry).toArray(function (err, findData) {
         console.log("1st query findData: " + JSON.stringify(findData));
@@ -535,7 +536,7 @@ module.exports.uploadMarkSheet = function (data, callback) {
         }
         else {
             if (findData.length > 0) {
-                stud.update(studIdForUpdateQry, { $push: { "mark.$.subjectWithMark": { $each: consolidateMS } } }, function (err, data) {
+                stud.findOneAndUpdate(studIdForUpdateQry, { $push: { "mark.$.subjectWithMark": { $each: consolidateMS } } }, function (err, data) {
                     console.log("2nd query started: " + JSON.stringify(data));
                     console.log("2nd query data.length: " + data.length);
                     if (err) {
@@ -646,14 +647,14 @@ module.exports.dailyData = function (data, callback) {
     var obj = { "date": AttDate, "status": attndnce };
     console.log("obj: " + JSON.stringify(obj));
     var studIdForFindQry = {
-        "studId": data.StudentID,
+        "schoolId": data.StudentID,
         "schoolName": schoolName,
         "attendance.month": AttMonth,
         "attendance.dateAttendance": { "date": AttDate, "status": attndnce }
     }
     console.log("studIdForFindQry: " + JSON.stringify(studIdForFindQry));
     var studIdForUpdateQry = {
-        "studId": data.StudentID,
+        "schoolId": data.StudentID,
         "attendance.month": AttMonth,
         "schoolName": schoolName
     }
@@ -701,7 +702,7 @@ module.exports.monthlyData = function (data, callback) {
     console.log("req.params.month: " + month);
     // var marker;
     var studIdForFindQry = {
-        "studId": data.StudentID,
+        "schoolId": data.StudentID,
         "attendance.month": month,
         "schoolName": schoolName
     }
@@ -742,7 +743,7 @@ module.exports.monthlyData = function (data, callback) {
         else {
             if (isThereData.length > 0) {
                 console.log("month: " + month);
-                stud.find({ "schoolName": schoolName, "studId": data.StudentID, "attendance.month": month }).toArray(function (err, findData) {
+                stud.find({ "schoolName": schoolName, "schoolId": data.StudentID, "attendance.month": month }).toArray(function (err, findData) {
                     console.log("1st query findData: " + JSON.stringify(findData));
                     console.log("attendanceIndex: " + JSON.stringify(findData[0].attendance[attendanceIndex]));
                     console.log("dateAttendance: " + JSON.stringify(findData[0].attendance[attendanceIndex].dateAttendance));

@@ -720,7 +720,28 @@ module.exports.monthlyData = function (data, callback) {
 
     if (month == "Jan" || month == "Mar" || month == "May" || month == "Jul" || month == "Aug" || month == "Oct" || month == "Dec") {
         console.log("JAN");
-        attendanceIndex = 0;
+        if(month == "Jan"){
+            attendanceIndex = 0;
+        }
+        else if(month == "Mar"){
+            attendanceIndex = 2;
+        }
+        else if(month == "May"){
+            attendanceIndex = 4;
+        }
+        else if(month == "Jul"){
+            attendanceIndex = 6;
+        }
+        else if(month == "Aug"){
+            attendanceIndex = 7;
+        }
+        else if(month == "Oct"){
+            attendanceIndex = 9;
+        }
+        else if(month == "Dec"){
+            attendanceIndex = 11;
+        }
+       
         for (var x = 1; x <= 31; x++) {
             console.log("x: " + x);
             monthAtt.push({ "date": x, "status": data[x] });
@@ -742,8 +763,19 @@ module.exports.monthlyData = function (data, callback) {
         }
     }
     else if (month == "Apr" || month == "Jun" || month == "Sep" || month == "Nov") {
-        
-        attendanceIndex = 1;
+        if(month == "Apr"){
+            attendanceIndex = 3;
+        }
+        else if(month == "Jun"){
+            attendanceIndex = 5;
+        }
+        else if(month == "Sep"){
+            attendanceIndex = 8;
+        }
+        else if(month == "Nov"){
+            attendanceIndex = 10;
+        }
+     
         for (var x = 1; x <= 30; x++) {
             console.log("x: " + x);
             monthAtt.push({ "date": x, "status": data[x] });

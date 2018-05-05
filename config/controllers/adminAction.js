@@ -525,6 +525,7 @@ module.exports.uploadMarkSheet = function (data, callback) {
         "cs": [{ "class": clas, "section": section }]
     }
     console.log("studIdForFindQry: " + JSON.stringify(studIdForFindQry));
+    console.log("studIdForUpdateQry: " + JSON.stringify(studIdForUpdateQry));
 
     stud.find(studIdForFindQry).toArray(function (err, findData) {
         console.log("1st query findData: " + JSON.stringify(findData));

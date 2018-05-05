@@ -744,7 +744,7 @@ module.exports.monthlyData = function (data, callback) {
     else if (month == "Apr" || month == "Jun" || month == "Sep" || month == "Nov") {
         
         attendanceIndex = 1;
-        for (var x = 1; x <= 28; x++) {
+        for (var x = 1; x <= 30; x++) {
             console.log("x: " + x);
             monthAtt.push({ "date": x, "status": data[x] });
             if (x == 28) {

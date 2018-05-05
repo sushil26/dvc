@@ -108,8 +108,8 @@
                     </li>
                     <li ng-if="loginType == 'teacher' || loginType == 'studParent'">
                         <a href="#!/dashboard/eventShedule">
-                            <i class="fa fa-pencil"></i>
-                            <span>SCHEDULER</span>
+                            <i class="fa fa-pencil" style="color: blanchedalmond"></i>
+                            <span style="color: blanchedalmond">SCHEDULER</span>
                         </a>
                     </li>
                     <li class="sub-menu" ng-if="loginType == 'teacher' || loginType == 'studParent'">
@@ -128,9 +128,9 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="sub-menu" style="color: #d0d8e0;">
+                    <li class="sub-menu" style="color: floralwhite;">
                         <a ng-click="eventClick('academic_subMenu')">
-                            <i class="fa fa-clipboard"></i>
+                            <i class="fa fa-clipboard" style="color: floralwhite;"></i>
                             <span>ACADEMIC</span>
                             <span ng-if="academic_subMenu==true" class="menu-arrow arrow_carrot-right"></span>
                             <span ng-if="academic_subMenu==false" class="menu-arrow arrow_carrot-down"></span>
@@ -165,9 +165,9 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="sub-menu" style="color: #d0d8e0;">
+                    <li class="sub-menu" style="color: darkkhaki;">
                         <a ng-click="eventClick('setting_subMenu')">
-                            <i class="fa fa-cog"></i>
+                            <i class="fa fa-cog" style="color: darkkhaki"></i>
                             <span>SETTINGS</span>
                             <span ng-if="setting_subMenu==true" class="menu-arrow arrow_carrot-right"></span>
                             <span ng-if="setting_subMenu==false" class="menu-arrow arrow_carrot-down"></span>

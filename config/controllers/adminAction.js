@@ -509,8 +509,8 @@ module.exports.uploadMarkSheet = function (data, callback) {
     }
     var studIdForFindQry = {
         "studId": data.StudentID,
-        "schoolName": schoolName,
-        "cs": [{ "class": clas, "section": section }]
+        "schoolName": schoolName
+       
     }
     var studIdForUpdateQry = {
         "studId": data.StudentID,
@@ -543,6 +543,7 @@ module.exports.uploadMarkSheet = function (data, callback) {
                 })
             }
             else {
+                console.log("NO Detail found for this id");
                 marker = false;
                 var obj = {
                     "StudentID": data.StudentID,

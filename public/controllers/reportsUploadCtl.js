@@ -52,6 +52,7 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
   $scope.getTeacherList = function () {
     console.log("getTeacherList-->");
     $scope.teacherList = [];
+    $scope.teacherList_noTT = []; /* ### Note: teacher list without time table(teacherList_noTT-teacher list no timetable) ###*/
     var api = "https://norecruits.com/vc/getSchoolUser/" + schoolName;
     console.log("api: " + api);
     httpFactory.get(api).then(function (data) {
@@ -67,6 +68,9 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
           if (teacherData[x].loginType == 'teacher') {
             var name = teacherData[x].firstName + teacherData[x].lastName;
             $scope.teacherList.push({ "_id": teacherData[x]._id, "name": name, "schoolId": teacherData[x].schoolId });
+            if(teacherData[x].timeTable>0){
+              $scope.teacherList_noTT.push({ "_id": teacherData[x]._id, "name": name, "schoolId": teacherData[x].schoolId });
+            }
           }
 
         }

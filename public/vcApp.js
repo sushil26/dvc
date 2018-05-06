@@ -12,7 +12,6 @@ var app = angular.module('vcApp', ['ui.router', 'mwl.calendar', 'ui.bootstrap', 
         url: '/calendar',
         templateUrl: '/html/calendar.html',
         controller: 'calendarCtrl'
-
       })
       .state('dashboard.userAuth', {
         url: dashboardUserAuth(),
@@ -168,11 +167,18 @@ var app = angular.module('vcApp', ['ui.router', 'mwl.calendar', 'ui.bootstrap', 
         templateUrl: '/html/dashboard/allSchool.html',
         controller: 'allSchoolCtl'
       })
+      .state('logout', {
+        url: logout(),
+        templateUrl: '/html/logout.html',
+        controller: 'logoutCtl'
+
+      })
       .state('dashboard.contact', {
         url: contact(),
         templateUrl: '/html/dashboard/contact.html',
         controller: 'contactController'
       })
+    
     
   });
   function contact() {
@@ -241,6 +247,9 @@ function allSchool(){
 }
 function attendanceView(){
   return '/attendanceView';
+}
+function logout(){
+  return '/logout';
 }
 
 

@@ -20,7 +20,7 @@
                                 <input type="file" class="btnCont btnCont-uploadColor col-lg-3" name="myImage"
                                     value="Upload" image-with-preview file-model="classUploadDoc" ng-model="image" accept="csv"
                                     ng-required="true">
-                                <img ng-show="image.src" ng-src="{{image.src}}" style="width: 50%;margin-top: 2%;" />
+                                <img ng-show="image.src" ng-src="{{image.src}}" style="margin-top: 2%;" />
 
                                 <!-- <button ng-if="up.uploadType=='Attendance'" type="submit" class="btn btn-primary col-lg-3" ng-click="uploadFile(up.uploadDoc,up.uploadType,up.ttSelect,up.mSelect)">Upload</button> -->
                                 <button type="submit" class="btn btn-primary col-lg-3" ng-click="upload_classPeriodsFile(classUploadDoc,'css')">Upload</button>
@@ -31,7 +31,7 @@
                                 <input type="file"  class="btnCont btnCont-uploadColor col-lg-3" name="myImage"
                                     value="Upload" image-with-preview file-model="periodsUploadDoc" ng-model="image" accept="csv"
                                     ng-required="true">
-                                <img ng-show="image.src" ng-src="{{image.src}}" style="width: 50%;margin-top: 2%;" />
+                                <img ng-show="image.src" ng-src="{{image.src}}" style="margin-top: 2%;" />
 
                                 <!-- <button ng-if="up.uploadType=='Attendance'" type="submit" class="btn btn-primary col-lg-3" ng-click="uploadFile(up.uploadDoc,up.uploadType,up.ttSelect,up.mSelect)">Upload</button> -->
                                 <button type="submit" class="btn btn-primary col-lg-3" ng-click="upload_classPeriodsFile(periodsUploadDoc,'periods')">Upload</button>
@@ -82,10 +82,10 @@
                                     </select>
                                     <br>
                                     <br>
-                                    <input type="file" style="display: inline-block;width:60%;float:left" class="btnCont btnCont-uploadColor col-lg-3" name="myImage"
+                                    <input type="file" class="btnCont btnCont-uploadColor col-lg-3" name="myImage"
                                         value="Upload" image-with-preview file-model="up.uploadDoc" ng-model="image" accept="csv"
                                         ng-required="true">
-                                    <img ng-show="image.src" ng-src="{{image.src}}" style="width: 50%;margin-top: 2%;" />
+                                    <img ng-show="image.src" ng-src="{{image.src}}" style="margin-top: 2%;" />
 
                                     <!-- <button ng-if="up.uploadType=='Attendance'" type="submit" class="btn btn-primary col-lg-3" ng-click="uploadFile(up.uploadDoc,up.uploadType,up.ttSelect,up.mSelect)">Upload</button> -->
                                     <button ng-if="up.uploadType=='Attendance'" type="submit" class="btn btn-primary col-lg-3" ng-click="uploadFile(up.uploadDoc,up.uploadType, up.cSelect.class,up.sSelect, up.ttSelect, up.mSelect)">Upload</button>

@@ -102,11 +102,19 @@ app.controller('attendanceViewCtl', function ($scope, $window, httpFactory, $com
                         var resultDate = new Date(year+" "+mon+" "+day);
                         console.log("resultDate: " + resultDate);
                         console.log("moment().subtract(1, 'day').toDate(): " + moment().subtract(1, 'day').toDate());
+                       
                         var obj = {
                             'startsAt': resultDate,
                             'endsAt': resultDate,
                             'draggable': true,
                             'resizable': true
+                        }
+                        if($scope.attendance[x].dateAttendance[y].status=="P")
+                        {
+                            obj.color = calendarConfig.colorTypes.info; 
+                        }
+                        else{
+                            obj.color = calendarConfig.colorTypes.important; 
                         }
                         console.log("obj: "+JSON.stringify(obj));
                         $scope.events.push(obj);

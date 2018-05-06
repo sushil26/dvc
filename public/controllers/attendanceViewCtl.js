@@ -77,6 +77,7 @@ app.controller('attendanceViewCtl', function ($scope, $window, httpFactory, $com
         $scope.cellIsOpen = true;
     $scope.getStudentAttendance = function (cs) {
         console.log("getStudentAttendance-->");
+        $scope.events = [];
         console.log("cs: " + JSON.stringify(cs));
         var id = cs.id;
         var api = "https://norecruits.com/vc/getStudentAttendance" + "/" + id;

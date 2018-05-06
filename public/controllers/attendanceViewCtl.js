@@ -76,6 +76,12 @@ app.controller('attendanceViewCtl', function ($scope, $window, httpFactory, sess
                 console.log("$scope.attendance.length: "+$scope.attendance.length);
                 for(var x=0;x<$scope.attendance.length;x++){
                     console.log("$scope.attendance[x]: "+JSON.stringify($scope.attendance[x]));
+                    var year = "2018";
+                    var mon = $scope.attendance[x].month;
+                    console.log("$scope.attendance[x].dateAttendance.length: "+$scope.attendance[x].dateAttendance.length);
+                    for(var y=0;y<$scope.attendance[x].dateAttendance.length;y++){
+                        console.log("$scope.attendance[x].dateAttendance[y]: "+JSON.stringify($scope.attendance[x].dateAttendance[y]));
+                    }
                 }
 
             }

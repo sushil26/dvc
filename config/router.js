@@ -43,7 +43,7 @@ module.exports = function (app) {
 
     // app.post('/vc/atte', adminAction.getAllClass);
 
-    app.get('/vc/getStudListForCS/:clas/:section', event.getStudListForCS);
+    app.get('/vc/getStudListForCS/:schoolName/:clas/:section', event.getStudListForCS);
     app.get('/vc/getTeacherListForCS/:clas/:section', event.getTeacherListForCS);
     app.post('/vc/eventSend', event.eventSend);
     app.post('/vc/eventReSchedule/:id', event.eventReSchedule);

@@ -8,6 +8,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
   var remoteEvent = []; /* ### Note:receiver all events ### */
   $scope.timeForPeriods = $rootScope.TimeTable_timing;
   $scope.userData = sessionAuthFactory.getAccess();
+  var schoolName = $scope.userData.schoolName;
   $scope.eventGet = function () {
     console.log("eventGet-->");
     var id = $scope.userData.id
@@ -363,7 +364,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
     // var cssRef = [{"clas":css.class, "section": css.section}];
     // console.log("cssRef: "+JSON.stringify(cssRef));
 
-    var api = "https://norecruits.com/vc/getStudListForCS" + "/" + clas + "/" + section;
+    var api = "https://norecruits.com/vc/getStudListForCS" + "/"+ schoolName +"/"+ clas + "/" + section;
     //var api = "http://localhost:5000/vc/getStudListForCS" + "/" + clas + "/" + section;
     //var api = "https://norecruits.com/vc/getStudListForCS";
 
@@ -375,7 +376,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
         $scope.studentList = data.data.data;
         console.log("studentList: " + JSON.stringify($scope.studentList));
         for (var x = 0; x < $scope.studentList.length; x++) {
-          $scope.studList.push({ "id": $scope.studentList[x]._id, "name": $scope.studentList[x].studName, "studId": $scope.studentList[x].studId });
+          $scope.studList.push({ "id": $scope.studentList[x]._id, "name": $scope.studentList[x].firstName, "studId": $scope.studentList[x].schoolId });
 
         }
         console.log(" $scope.studList.length: " + $scope.studList.length);

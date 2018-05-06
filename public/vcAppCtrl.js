@@ -142,7 +142,6 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
         }
         console.log("userData: "+JSON.stringify(userData));
         sessionAuthFactory.setAccess(userData);
-
         $scope.userData = sessionAuthFactory.getAccess("userData");
         userName = $scope.userData.userName;
         $scope.loginType = $scope.userData.loginType;

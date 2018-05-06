@@ -373,10 +373,11 @@ module.exports.getStudListForCS = function (req, res) {
                 "section": req.params.section
             }]
         };
+
         // var id = {
         //     "userId": req.params.id
         // }
-        stud.find({ "cs": obj }).toArray(function (err, data) {
+        stud.find(obj).toArray(function (err, data) {
             console.log("data: " + JSON.stringify(data));
             if (err) {
 

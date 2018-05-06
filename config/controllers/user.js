@@ -75,9 +75,9 @@ module.exports.login4VC = function (req, res) {
   var responseData;
   if (general.emptyCheck(req.body.email) && general.emptyCheck(req.body.password)) {
     if (req.body.loginType == "teacher") {
-      console.log("logintype: "+req.body.loginType);
-      user.find({ email: req.body.email } ).toArray(function (err, data) {
-        console.log("data: "+JSON.stringify(data));
+      console.log("logintype: " + req.body.loginType);
+      user.find({ email: req.body.email }).toArray(function (err, data) {
+        console.log("data: " + JSON.stringify(data));
         if (err) {
           responseData = {
             status: false,
@@ -85,16 +85,35 @@ module.exports.login4VC = function (req, res) {
             data: schoolStatus
           };
         }
-          else{
-            console.log("data.length: "+data.length);
-            if (data.length > 0) {
-             
-              console.log("data[0].schoolName: "+ data[0].schoolName);
+        else {
+          console.log("data.length: " + data.length);
+          if (data.length > 0) {
+            if (data[0].loginType == 'vc4allAdmin') {
+              if (data[0].password == req.body.pswd) {
+                responseData = {
+                  status: true,
+                  message: "Login Successfully",
+                  sessionData: "79ea520a-3e67-11e8-9679-97fa7aeb8e97",
+                  data: data[0]
+                };
+                res.status(200).send(responseData);
+              }
+              else {
+                responseData = {
+                  status: false,
+                  errorCode: "E005",
+                  message: "Password is wrong"
+                };
+                res.status(200).send(responseData);
+              }
+            }
+            else {
+              console.log("data[0].schoolName: " + data[0].schoolName);
               var sn = {
-                "schoolName": data[0].schoolName 
+                "schoolName": data[0].schoolName
               }
               school.find(sn).toArray(function (err, schoolStatus) {
-                console.log("second query status: "+schoolStatus[0].status);
+                console.log("second query status: " + schoolStatus[0].status);
 
                 if (err) {
                   responseData = {
@@ -141,22 +160,24 @@ module.exports.login4VC = function (req, res) {
                     };
                     res.status(200).send(responseData);
                   }
-    
+
                 }
               })
             }
-            else {
-              console.log("There is no match for this EMail id from Teacher database");
-              responseData = {
-                status: false,
-                errorCode: "No Match",
-                message:
-                  "There is no match for this EMail id from Teacher database"
-              };
-              res.status(200).send(responseData);
-            }
+
           }
-       
+          else {
+            console.log("There is no match for this EMail id from Teacher database");
+            responseData = {
+              status: false,
+              errorCode: "No Match",
+              message:
+                "There is no match for this EMail id from Teacher database"
+            };
+            res.status(200).send(responseData);
+          }
+        }
+
       });
 
     }
@@ -757,7 +778,7 @@ module.exports.adminCreate = function (req, res) {
     "country": req.body.country,
     "status": "active",
     "css": [],
-    "timeTable_timing":[]
+    "timeTable_timing": []
   }
   var adminObj = {
     "firstName": req.body.firstName,

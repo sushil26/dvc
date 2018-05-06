@@ -638,13 +638,18 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
     console.log("$scope.teacherPersonalData[0].timeTable[0].timing[id].startsAt: " + $scope.teacherPersonalData[0].timeTable[0].timing[id].startsAt);
     console.log("$scope.teacherPersonalData[0].timeTable[0].timing[id].endsAt: " +$scope.teacherPersonalData[0].timeTable[0].timing[id].endsAt);
 
-    // $scope.startDate = $filter('date')(s, "EEE MMM dd y");
-    // $scope.endDate = $filter('date')(e, "HH:mm:ss 'GMT'Z (IST)'");
-    // $scope.endDateRes = $scope.startDate + ' ' + $scope.endDate;
     var sd = $scope.teacherPersonalData[0].timeTable[0].timing[id].startsAt;
     var ed = $scope.teacherPersonalData[0].timeTable[0].timing[id].endsAt;
-    console,log("sd: "+sd+" ed: "+ed);
-    console.log("sd: " + new Date(sd) + " ed: " + new Date(ed));
+    console.log("sd: "+sd+" ed: "+ed);
+    // console.log("$scope.timeForPeriods[id].startsAt: " + $scope.timeForPeriods[id].startsAt);
+    // console.log("$scope.timeForPeriods[id].endsAt: " + $scope.timeForPeriods[id].endsAt);
+
+    // // $scope.startDate = $filter('date')(s, "EEE MMM dd y");
+    // // $scope.endDate = $filter('date')(e, "HH:mm:ss 'GMT'Z (IST)'");
+    // // $scope.endDateRes = $scope.startDate + ' ' + $scope.endDate;
+    // var sd = $scope.timeForPeriods[id].startsAt + ' ' + $scope.timeForPeriods[id].meridian;
+    // var ed = $scope.timeForPeriods[id].endsAt + ' ' + $scope.timeForPeriods[id].meridian;
+    // console.log("sd: " + new Date(sd) + " ed: " + new Date(ed));
     $scope.startDate = $filter('date')($scope.selectedDate, "EEE MMM dd y");
     $scope.startTime = $filter('date')(sd, "h:mm:ss a");
     $scope.EndTime = $filter('date')(ed, "h:mm:ss a");

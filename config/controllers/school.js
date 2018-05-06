@@ -11,7 +11,7 @@ module.exports.getSchoolList = function (req, res) {
     var responseData;
     var schoolList = [];
     school.find().toArray(function (err, data) {
-        console.log("schoolList: " + JSON.stringify(data));
+      //  console.log("schoolList: " + JSON.stringify(data));
 
         if (err) {
             responseData = {
@@ -44,7 +44,7 @@ module.exports.getSchoolData = function (req, res) {
     var responseData;
     var allClass = [];
     school.find({ "schoolName": req.params.schoolName }).toArray(function (err, data) {
-        console.log("data: " + JSON.stringify(data));
+       // console.log("data: " + JSON.stringify(data));
 
         if (err) {
             responseData = {

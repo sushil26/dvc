@@ -588,7 +588,7 @@ module.exports.teacherDetail = function (req, res) {
       _id: ObjectId(req.params.id)
     };
     user.find(id).toArray(function (err, data) {
-      console.log("data: " + JSON.stringify(data));
+      //console.log("data: " + JSON.stringify(data));
       if (err) {
         responseData = {
           status: false,
@@ -624,7 +624,7 @@ module.exports.studentDetail = function (req, res) {
       _id: ObjectId(req.params.id)
     };
     stud.find(id).toArray(function (err, data) {
-      console.log("data: " + JSON.stringify(data));
+      //console.log("data: " + JSON.stringify(data));
       if (err) {
         responseData = {
           status: false,
@@ -661,7 +661,7 @@ module.exports.teacherPersonalData = function (req, res) {
       _id: ObjectId(req.params.id)
     };
     user.find(id).toArray(function (err, data) {
-      console.log("data: " + JSON.stringify(data));
+     // console.log("data: " + JSON.stringify(data));
       if (err) {
         responseData = {
           status: false,
@@ -698,7 +698,7 @@ module.exports.studentPersonalData = function (req, res) {
       _id: ObjectId(req.params.id)
     };
     stud.find(id).toArray(function (err, data) {
-      console.log("data: " + JSON.stringify(data));
+     // console.log("data: " + JSON.stringify(data));
       if (err) {
         responseData = {
           status: false,

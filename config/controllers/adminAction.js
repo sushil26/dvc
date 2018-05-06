@@ -147,7 +147,7 @@ module.exports.getSchoolUser = function (req, res) {
                     res.status(400).send(responseData);
                 } else {
                     schoolUserList.schoolStudentList = studentData;
-                    console.log("schoolUserList: " + JSON.stringify(schoolUserList));
+                    //console.log("schoolUserList: " + JSON.stringify(schoolUserList));
                     responseData = {
                         status: true,
                         message: "All user collected successfully",

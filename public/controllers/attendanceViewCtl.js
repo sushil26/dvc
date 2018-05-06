@@ -58,7 +58,13 @@ app.controller('attendanceViewCtl', function ($scope, $window, httpFactory, sess
         console.log("<--getStudListForCS");
 
     }
+
+  var vm = this;
     vm.events = [];
+    vm.calendarView = 'month';
+    vm.viewDate = moment().startOf('day').toDate();
+    var originalFormat = calendarConfig.dateFormats.hour;
+    calendarConfig.dateFormats.hour = 'HH:mm';
     $scope.getStudentAttendance = function (cs) {
         console.log("getStudentAttendance-->");
         console.log("cs: " + JSON.stringify(cs));

@@ -131,7 +131,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
 
         $scope.studClass = $scope.studentData[0].cs[0].class;
         $scope.studSection = $scope.studentData[0].cs[0].section;
-        var api = "https://norecruits.com/vc/getTeacherListForCS" + "/" + $scope.studClass + "/" + $scope.studSection;
+        var api = "https://norecruits.com/vc/getTeacherListForCS" + "/" + schoolName + "/" + $scope.studClass + "/" + $scope.studSection;
 
         console.log("api: " + api);
         httpFactory.get(api).then(function (data) {

@@ -102,8 +102,8 @@ app.controller('attendanceViewCtl', function ($scope, $window, httpFactory, $com
                         var resultDate = new Date(year+" "+mon+" "+day);
                         console.log("resultDate: " + resultDate);
                         var obj = {
-                            'startsAt':  moment().subtract(1, 'day').toDate(),
-                            'endsAt':  moment().subtract(1, 'day').toDate(),
+                            'startsAt': resultDate,
+                            'endsAt': resultDate,
                             'draggable': true,
                             'resizable': true
                         }

@@ -466,3 +466,9 @@ module.exports.getTeacherListForCS = function (req, res) {
     console.log("<--getTeacherListForCS");
 
 }
+
+module.exports.getStudentAttendance= function (req, res) {
+console.log("getStudentAttendance-->");
+
+console.log("<--getStudentAttendance");
+}

@@ -23,6 +23,45 @@
                                 <option value="" disabled selected>Student</option>
                             </select>
                         </div>
+                        <div class="panel-heading" style="height: 50px;">
+                            <div class="panel-actions">
+
+                                <div style="float:left !important; position: absolute;
+                                      left: 0;">
+                                    <label class="btn uib-btn-radio" mwl-date-modifier date="vm.viewDate" decrement="vm.calendarView" ng-click="vm.cellIsOpen = false">
+                                        << </label>
+                                            <label class="btn btn-default" mwl-date-modifier date="vm.viewDate" set-to-today ng-click="vm.cellIsOpen = false">
+                                                Today
+                                            </label>
+                                            <label class="btn uib-btn-radio" mwl-date-modifier date="vm.viewDate" increment="vm.calendarView" ng-click="vm.cellIsOpen = false">
+                                                >>
+                                            </label>
+                                </div>
+                                <div style="position: absolute !important;
+                                  right: 43%;">
+                                    <h2 ng-if="calendarOwner!='Your'">
+                                        <strong>{{ vm.calendarTitle }}({{calendarOwner}})</strong>
+                                    </h2>
+                                    <h2 ng-if="calendarOwner=='Your'">
+                                        <strong>{{ vm.calendarTitle }}</strong>
+                                    </h2>
+                                </div>
+
+                                <div style="float:right; position: absolute;
+                                    right: 0;">
+                                    <label class="btn btn-primary" ng-model="vm.calendarView" uib-btn-radio="'year'" ng-click="vm.cellIsOpen = false">Year</label>
+                                    <label class="btn btn-primary" ng-model="vm.calendarView" uib-btn-radio="'month'" ng-click="vm.cellIsOpen = false">Month</label>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="panel-body">
+                            <!-- Widget content -->
+                            <mwl-calendar events="vm.events" view="vm.calendarView" view-title="vm.calendarTitle" view-date="vm.viewDate" on-event-click="vm.eventClicked(calendarEvent)"
+                                on-view-change-click="false" on-timespan-click="vm.timespanClicked(calendarDate)">
+                            </mwl-calendar>
+                        </div>
                     </div>
                 </section>
             </div>

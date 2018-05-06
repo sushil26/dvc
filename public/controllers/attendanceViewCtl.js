@@ -103,6 +103,7 @@ app.controller('attendanceViewCtl', function ($scope, $window, httpFactory, $com
                         console.log("resultDate: " + resultDate);
                         var obj = {
                             'startsAt': resultDate,
+                            'endsAt': resultDate,
                             'draggable': true,
                             'resizable': true
                         }

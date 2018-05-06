@@ -169,7 +169,7 @@ var app = angular.module('vcApp', ['ui.router', 'mwl.calendar', 'ui.bootstrap', 
       })
       .state('dashboard.logout', {
         url: logout(),
-        templateUrl: '/html/logout.html',
+        templateUrl: '/html/dashboard/logout.html',
         controller: 'logoutCtl'
 
       })
@@ -245,11 +245,12 @@ function allAdmin(){
 function allSchool(){
   return '/allSchool';
 }
-function attendanceView(){
-  return '/attendanceView';
-}
 function logout(){
   return '/logout';
 }
+function attendanceView(){
+  return '/attendanceView';
+}
+
 
 

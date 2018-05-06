@@ -64,12 +64,10 @@
                     <option value="" disabled selected>Class</option>
                   </select>
 
-
                   <select class="btn" ng-if="userLoginType=='teacher'" placeholder="select" ng-model="csSelect" ng-change="getStudentCalendar(csSelect)"
                     ng-options="cs as cs.name + '-' + cs.studId for cs in studList">
                     <option value="" disabled selected>Student</option>
                   </select>
-
 
                   <select class=" btn btn-danger" ng-if="userLoginType=='studParent'" placeholder="select" ng-model="cssSelect" ng-change="getTeacherCalendar(cssSelect)"
                     ng-options="cs as cs.name + '-' + cs.teacherId+'-'+cs.subject for cs in teacherList">

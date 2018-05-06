@@ -7,18 +7,21 @@
             <div id="profile">
                 <section class="panel">
                     <h1> Attendance Report </h1>
-                    <div style="float:left !important; position: absolute;
+                    <div class="panel-body bio-graph-info">
+                        <div style="margin-left: 20px !important;margin-right: 20px !important;">
+                            <div style="float:left !important; position: absolute;
                 left: 0;">
-                        <select class="btn btn-danger" ng-if="userLoginType=='teacher'" placeholder="select" ng-model="cssSelect" ng-change="getStudListForCS(cssSelect)"
-                            ng-options="css as css.class+ '-' + css.section + '-' + css.subject for css in teacherData[0].css">
-                            <option value="" disabled selected>Class</option>
-                        </select>
+                                <select class="btn btn-danger" ng-if="userLoginType=='teacher'" placeholder="select" ng-model="cssSelect" ng-change="getStudListForCS(cssSelect)"
+                                    ng-options="css as css.class+ '-' + css.section + '-' + css.subject for css in teacherData[0].css">
+                                    <option value="" disabled selected>Class</option>
+                                </select>
 
-                        <select class="btn" ng-if="userLoginType=='teacher'" placeholder="select" ng-model="csSelect" ng-change="getStudentAttendance(csSelect)"
-                            ng-options="cs as cs.name + '-' + cs.studId for cs in studList">
-                            <option value="" disabled selected>Student</option>
-                        </select>
-
+                                <select class="btn" ng-if="userLoginType=='teacher'" placeholder="select" ng-model="csSelect" ng-change="getStudentAttendance(csSelect)"
+                                    ng-options="cs as cs.name + '-' + cs.studId for cs in studList">
+                                    <option value="" disabled selected>Student</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
                 </section>
             </div>

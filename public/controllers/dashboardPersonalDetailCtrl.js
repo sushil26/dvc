@@ -50,7 +50,6 @@ app.controller('dashboardPersonalDetailController', function ($scope, $window, h
             }
         })
     }
-
     if ($scope.loginType == 'teacher') {
         $scope.getTeacherDetails(id);
         console.log("teacher login");

@@ -92,7 +92,7 @@ app.controller('attendanceViewCtl', function ($scope, $window, httpFactory, sess
                         var resultDate = new Date(year+" "+mon+" "+day);
                         console.log("resultDate: " + resultDate);
                         var obj = {
-                            'startsAt': new Date($scope.specificSED[x].start),
+                            'startsAt': resultDate,
                             'draggable': true,
                             'resizable': true
                         }

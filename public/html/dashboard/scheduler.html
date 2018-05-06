@@ -164,7 +164,7 @@
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-              <h4 class="modal-title">{{getUserData.teacherName}} Time Table</h4>
+              <h4 class="modal-title">{{userData.userName}} Time Table</h4>
             </div>
             <div class="modal-body">
               <div class="table-responsive">
@@ -174,8 +174,7 @@
                   <thead>
                     <tr>
                       <th>Timing</th>
-                      <th ng-repeat="tt in timeForPeriods">{{tt.startsAt}}-{{tt.endsAt}}</th>
-
+                      <th ng-repeat="tt in teacherData[0].timeTable">{{tt.startsAt}}-{{tt.endsAt}}</th>
                     </tr>
                   </thead>
                   <tbody>

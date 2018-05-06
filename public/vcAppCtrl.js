@@ -81,9 +81,9 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
 
     if (typeof (Storage) !== "undefined") {
       if (data.data.loginType == 'teacher') {
-        var userName = data.data.firstName +" "+ data.data.lastName
+        var un = data.data.firstName +" "+ data.data.lastName
         var userData = {
-          "userName": data.data.teacherName,
+          "userName": un,
           "status": data.data.status,
           "email": data.data.teacherEmail,
           "loginType": data.data.loginType,

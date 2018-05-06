@@ -163,8 +163,8 @@
         <div class="modal-dialog" style="width:auto;">
           <div class="modal-content">
             <div class="modal-header">
+              <h4 class="modal-title">{{userData.userName}} Time Table</h4>
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-              <h4 class="modal-title">{{getUserData.teacherName}} Time Table</h4>
             </div>
             <div class="modal-body">
               <div class="table-responsive">
@@ -174,15 +174,14 @@
                   <thead>
                     <tr>
                       <th>Timing</th>
-                      <th ng-repeat="tt in timeForPeriods">{{tt.startsAt}}-{{tt.endsAt}}</th>
-
+                      <th ng-repeat="tt in teacherPersonalData[0].timeTable[0].timing">{{tt.startsAt}}-{{tt.endsAt}}</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr class="active">
                       <td>Monday</td>
 
-                      <td ng-if="selectedDateForEvent=='Mon'" style="background-color:#558a55!important;cursor: pointer;" ng-repeat="mtt in teacherPersonalData[0].timeTable[0].Monday"
+                      <td ng-if="selectedDateForEvent=='Mon'" style="background-color:#558a55!important;cursor: pointer;" ng-repeat="mtt in teacherPersonalData[0].timeTable[0].css.Mon[0]"
                         ng-click="timeTableForEventBook('mon',$index)">
                         <button class="btn" ng-if="mtt.class=='Free'">Schedule</button>
                         <span ng-if="mtt.class!='Free'">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</span>

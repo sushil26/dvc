@@ -420,15 +420,15 @@ module.exports.getTeacherListForCS = function (req, res) {
     console.log("getTeacherListForCS-->");
     //console.log("req.params.css: "+JSON.stringify(req.params.cssRef));
     console.log("class: " + req.params.clas + "section: " + req.params.section);
-    if (general.emptyCheck(req.params.clas) && general.emptyCheck(req.params.section)) {
+    if (general.emptyCheck(req.params.schoolName) && general.emptyCheck(req.params.clas) && general.emptyCheck(req.params.section)) {
         console.log("value not empty");
         var clas = req.params.clas;
         var section = req.params.section;
-
+        var schoolName = req.params.schoolName;
         // var id = {
         //     "userId": req.params.id
         // }
-        user.find({ "css": { $elemMatch: { "class": clas, "section": section } } }).toArray(function (err, data) {
+        user.find({ "css": { $elemMatch: { "class": clas, "section": section } } },{"schoolName":schoolName}).toArray(function (err, data) {
             console.log("getTeacherListForCS data: " + JSON.stringify(data));
             if (err) {
 

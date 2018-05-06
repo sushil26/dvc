@@ -3,6 +3,7 @@ app.controller('dashboardPersonalDetailController', function ($scope, $window, h
 
 
     $scope.userData = sessionAuthFactory.getAccess("userData");
+    console.log(" $scope.userData: "+JSON.stringify( $scope.userData));
     $scope.loginType = $scope.userData.loginType;
     $scope.userName = $scope.userData.userName;
 
@@ -49,7 +50,6 @@ app.controller('dashboardPersonalDetailController', function ($scope, $window, h
             }
         })
     }
-
     if ($scope.loginType == 'teacher') {
         $scope.getTeacherDetails(id);
         console.log("teacher login");

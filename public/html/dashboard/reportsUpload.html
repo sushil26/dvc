@@ -13,8 +13,8 @@
                         </h3>
                     </div>
                     <div class="panel-body bio-graph-info">
-                        <div class="form">
-                            <div class="row" style="margin-left: 20px !important;margin-right: 20px !important;">
+                    
+                            <div style="margin-left: 20px !important;margin-right: 20px !important;">
                                 <div ng-if="cssList.length==0" class="form-group row">
                                     <label class="col-lg-3">Upload Class Detail</label>
 
@@ -38,32 +38,6 @@
                                 <form ng-if="cssList.length!=0 && timeTable_timing.length!=0" role="form" name="uploadForm" encType="multipart/form-data"
                                     novalidate>
                                     <div ng-repeat="up in uploadReports">
-
-
-
-                                        <!-- <div class="form-group ">
-                                            <label for="fullname" class="control-label col-lg-2">Class
-                                                <span class="required">*</span>
-                                            </label>
-                                            <div class="col-lg-2">
-                                                <select ng-model="class" class="form-control m-bot15">
-                                                    <option ng-repeat="x in classS">{{x}}</option>
-
-                                                </select>
-                                            </div>
-                                            <label for="fullname" class="control-label col-lg-2">Section
-                                                <span class="required">*</span>
-                                            </label>
-                                            <div class="col-lg-2">
-                                                <select ng-model="section" class="form-control m-bot15">
-                                                    <option ng-repeat="y in sectionS">{{y}}</option>
-
-                                                </select>
-                                            </div>
-                                        </div> -->
-
-
-
                                         <div class="form-group ">
                                             <label class="control-label col-lg-3">Upload Type
                                                 <span class="required">*</span>
@@ -135,7 +109,7 @@
 
                                 </form>
                             </div>
-                        </div>
+                       
                     </div>
                 </section>
             </div>

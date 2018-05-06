@@ -155,13 +155,13 @@ module.exports.eventReSchedule = function (req, res) {
     var id = {
         "_id": ObjectId(req.params.id)
     }
-//    var id = req.params.id;
-//     console.log("id: " + id);
+    //    var id = req.params.id;
+    //     console.log("id: " + id);
     // console.log("ObjectId(req.params.id): " +ObjectId(id));
 
     if (general.emptyCheck(req.params.id)) {
-      console.log("No Empty");
-        event.update(id, { $set: obj }, {multi: true},function (err, data) {
+        console.log("No Empty");
+        event.update(id, { $set: obj }, { multi: true }, function (err, data) {
             console.log("data: " + JSON.stringify(data));
 
             if (err) {
@@ -367,14 +367,17 @@ module.exports.getStudListForCS = function (req, res) {
     console.log("class: " + req.params.clas + "section: " + req.params.section);
     if (general.emptyCheck(req.params.schoolName) && general.emptyCheck(req.params.clas) && general.emptyCheck(req.params.section)) {
         var obj = {
-            "schoolName": schoolName,
-            "class": req.params.clas,
-            "section": req.params.section
+            "schoolName": req.params.schoolName,
+            "cs": [{
+                "class": req.params.clas,
+                "section": req.params.section
+            }]
         };
+
         // var id = {
         //     "userId": req.params.id
         // }
-        stud.find({ "cs": obj }).toArray(function (err, data) {
+        stud.find(obj).toArray(function (err, data) {
             console.log("data: " + JSON.stringify(data));
             if (err) {
 

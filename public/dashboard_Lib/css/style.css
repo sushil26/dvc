@@ -9,6 +9,10 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic);
 
 @import url(line-icons.css);
+p {
+  padding: 0;
+  margin: 10px 0px 10px 10px;
+}
 
 span {
   font-family: Oswald;
@@ -847,9 +851,9 @@ ul.sidebar-menu li.active a i {
 .wrapper {
   display: inline-block;
 
-  margin-top: 20px;
+  margin-top: 60px;
 
-  padding: 15px;
+  padding: 10px;
 
   width: 100%;
 }

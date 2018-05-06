@@ -100,8 +100,9 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
 
       }
       else if (data.data.loginType == 'studParent') {
+        var un = data.data.firstName +" "+ data.data.lastName
         var userData = {
-          "userName": data.data.studName,
+          "userName": un,
           "status": data.data.status,
           "email": data.data.parentEmail,
           "loginType": data.data.loginType,
@@ -116,8 +117,9 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
         $window.location.reload();
       }
       else if(data.data.loginType == 'admin'){
+        var un = data.data.firstName +" "+ data.data.lastName
         var userData = {
-          "userName": data.data.firstName,
+          "userName": un,
           "status": data.data.status,
           "email": data.data.email,
           "loginType": data.data.loginType,
@@ -133,8 +135,9 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
         $window.location.reload();
       }
       else{
+        var un = data.data.firstName +" "+ data.data.lastName
         var userData = {
-          "userName": data.data.firstName,
+          "userName": un,
           "status": data.data.status,
           "email": data.data.email,
           "loginType": data.data.loginType,

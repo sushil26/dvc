@@ -15,51 +15,10 @@
                     </div>
                     <div class="panel-body bio-graph-info">
                         <div class="row">
-                                <div class="bio-row" ng-if="loginType=='teacher'">
-                                    <table >
-                                        <tr style="text-align: center">
-                                            <td class="col-sm-3">
-                                                    Name &nbsp :
-                                            </td>
-                                            <td class="col-sm-3">
-                                                sushil
-                                            </td>
-                                        </tr>
-                                    </table>
-
-            
-                                    </div>
-                                    <div class="bio-row" ng-if="loginType=='teacher'">
-                                            <table>
-                                                <tr>
-                                                    <td class="col-sm-3">
-                                                            <b>Name</b>:
-                                                    </td>
-                                                    <td class="col-sm-3">
-        sushil
-                                                    </td>
-                                                </tr>
-                                            </table>
-        
-                    
-                                            </div>
-                                            <div class="bio-row" ng-if="loginType=='teacher'">
-                                                    <table>
-                                                        <tr>
-                                                            <td class="col-sm-3">
-                                                                    <b>Name</b>:
-                                                            </td>
-                                                            <td class="col-sm-3">
-                sushil
-                                                            </td>
-                                                        </tr>
-                                                    </table>
-                
-                            
-                                                    </div>
+                                
                                   
 
-                            <!-- <div class="bio-row" ng-if="loginType=='admin'">
+                        <div class="bio-row" ng-if="loginType=='admin'">
 
                                 <p>
                                     <span>
@@ -71,7 +30,7 @@
                                     <span>
                                         <b>School Name</b>
                                     </span>: Careator School </p>
-                            </div> -->
+                            </div>
                             <div class="bio-row" ng-if="loginType!='admin'">
                                 <p>
                                     <span>
@@ -113,7 +72,7 @@
                                     <span>
                                         <b>Class Handle</b>
                                     </span> :
-                                    <span ng-repeat="css in userData[0].css">{{css.class}}-{{css.section}}-{{css.subject}}</span>
+                                    <span class="col-sm-3" ng-repeat="css in userData[0].css">{{css.class}}-{{css.section}}-{{css.subject}}</span>
                                 </p>
                             </div>
 

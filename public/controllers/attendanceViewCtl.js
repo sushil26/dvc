@@ -15,10 +15,9 @@ app.controller('attendanceViewCtl', function ($scope, $window, httpFactory, sess
             var checkStatus = httpFactory.dataValidation(data);
             // console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
-
+                $scope.teacherData = data.data.data;
                 $scope.teacherPersonalData = data.data.data;
                 console.log("teacherPersonalData: " + JSON.stringify($scope.teacherPersonalData));
-
             }
             else {
             }
@@ -38,13 +37,8 @@ app.controller('attendanceViewCtl', function ($scope, $window, httpFactory, sess
         var clas = css.class;
         var section = css.section;
         $scope.studList = [];
-        // var cssRef = [{"clas":css.class, "section": css.section}];
-        // console.log("cssRef: "+JSON.stringify(cssRef));
 
         var api = "https://norecruits.com/vc/getStudListForCS" + "/" + schoolName + "/" + clas + "/" + section;
-        //var api = "http://localhost:5000/vc/getStudListForCS" + "/" + clas + "/" + section;
-        //var api = "https://norecruits.com/vc/getStudListForCS";
-
         console.log("api: " + api);
         httpFactory.get(api).then(function (data) {
             var checkStatus = httpFactory.dataValidation(data);
@@ -54,11 +48,8 @@ app.controller('attendanceViewCtl', function ($scope, $window, httpFactory, sess
                 console.log("studentList: " + JSON.stringify($scope.studentList));
                 for (var x = 0; x < $scope.studentList.length; x++) {
                     $scope.studList.push({ "id": $scope.studentList[x]._id, "name": $scope.studentList[x].firstName, "studId": $scope.studentList[x].schoolId });
-
                 }
                 console.log(" $scope.studList.length: " + $scope.studList.length);
-                //   $scope.css = $scope.teacherData[0].css;
-                //   console.log("$scope.css: " + JSON.stringify($scope.css));
             }
             else {
                 console.log("sorry");
@@ -68,7 +59,9 @@ app.controller('attendanceViewCtl', function ($scope, $window, httpFactory, sess
 
     }
 
-    // $scope.userData = sessionAuthFactory.getAccess("userData");
-    // $scope.loginType = $scope.userData.loginType;
-    // $scope.userName = $scope.userData.userName;
+    $scope.getStudentAttendance = function (cs) {
+        console.log("getStudentAttendance-->");
+        console.log("cs: " + JSON.stringify(cs));
+        console.log("<--getStudentAttendance");
+    }
 })

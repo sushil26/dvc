@@ -428,7 +428,7 @@ module.exports.getTeacherListForCS = function (req, res) {
         // var id = {
         //     "userId": req.params.id
         // }
-        user.find({ "css": { $elemMatch: { "class": clas, "section": section } } },{"schoolName":schoolName}).toArray(function (err, data) {
+        user.find({ "css": { $elemMatch: { "class": clas, "section": section } } }, { "schoolName": schoolName }).toArray(function (err, data) {
             //console.log("getTeacherListForCS data: " + JSON.stringify(data));
             if (err) {
 
@@ -467,8 +467,43 @@ module.exports.getTeacherListForCS = function (req, res) {
 
 }
 
-module.exports.getStudentAttendance= function (req, res) {
-console.log("getStudentAttendance-->");
+module.exports.getStudentAttendance = function (req, res) {
+    console.log("getStudentAttendance-->");
+    if (general.emptyCheck(req.params.id)) {
+        stud.find({"_id":req.params.id}).toArray(function (err, data) {
+            console.log("data: " + JSON.stringify(data));
+            if (err) {
 
-console.log("<--getStudentAttendance");
+                responseData = {
+                    "status": false,
+                    "message": "Failed to get Data",
+                    "data": data
+                }
+                res.status(400).send(responseData);
+            }
+            else {
+                responseData = {
+                    "status": true,
+                    "message": "Registeration Successfull",
+                    "data": data
+                }
+
+                console.log("data:" + JSON.stringify(data));
+
+                res.status(200).send(responseData);
+            }
+
+        })
+
+    }
+    else {
+        console.log("Epty value found");
+        responseData = {
+            "status": false,
+            "message": "there is no userId to find",
+
+        }
+        res.status(400).send(responseData);
+    }
+    console.log("<--getStudentAttendance");
 }

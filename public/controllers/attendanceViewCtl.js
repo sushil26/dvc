@@ -62,23 +62,23 @@ app.controller('attendanceViewCtl', function ($scope, $window, httpFactory, sess
     $scope.getStudentAttendance = function (cs) {
         console.log("getStudentAttendance-->");
         console.log("cs: " + JSON.stringify(cs));
-        // var api = "https://norecruits.com/vc/getStudentAttendance" + "/" + id;
-        // console.log("api: " + api);
-        // httpFactory.get(api).then(function (data) {
-        //     var checkStatus = httpFactory.dataValidation(data);
-        //     //console.log("data--" + JSON.stringify(data.data));
-        //     if (checkStatus) {
-        //         $scope.studentList = data.data.data;
-        //         console.log("studentList: " + JSON.stringify($scope.studentList));
-        //         for (var x = 0; x < $scope.studentList.length; x++) {
-        //             $scope.studList.push({ "id": $scope.studentList[x]._id, "name": $scope.studentList[x].firstName, "studId": $scope.studentList[x].schoolId });
-        //         }
-        //         console.log(" $scope.studList.length: " + $scope.studList.length);
-        //     }
-        //     else {
-        //         console.log("sorry");
-        //     }
-        // })
+        var id = cs.id;
+        var api = "https://norecruits.com/vc/getStudentAttendance" + "/" + id;
+        console.log("api: " + api);
+        httpFactory.get(api).then(function (data) {
+            var checkStatus = httpFactory.dataValidation(data);
+            console.log("data--" + JSON.stringify(data.data));
+            if (checkStatus) {
+                $scope.stud_attendance = data.data.data;
+                console.log("studentList: " + JSON.stringify($scope.stud_attendance));
+               
+                
+            }
+            else {
+                console.log("sorry");
+            }
+        })
         console.log("<--getStudentAttendance");
     }
+
 })

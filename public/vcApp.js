@@ -187,8 +187,8 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     })
     .state('dashboard.attendanceView', {
       url: attendanceView(),
-      templateUrl: '/html/dashboard/comingSoon.html',
-      // controller: 'attendanceViewCtl',
+      templateUrl: '/html/dashboard/attendanceView.html',
+      controller: 'attendanceViewCtl',
       resolve: {
         result: function (sessionAuthFactory, $window) {
           var userData = sessionAuthFactory.getAccess("userData");

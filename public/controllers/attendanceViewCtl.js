@@ -107,7 +107,7 @@ app.controller('attendanceViewCtl', function ($scope, $window, httpFactory, $com
                             'resizable': true
                         }
                         console.log("obj: "+JSON.stringify(obj));
-                        vm.events.push(obj);
+                        $scope.events.push(obj);
 
                     }
                 }

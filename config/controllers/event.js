@@ -365,8 +365,9 @@ module.exports.getStudListForCS = function (req, res) {
     console.log("getStudListForCS-->");
     //console.log("req.params.: "+JSON.stringify(req.params.cssRef));
     console.log("class: " + req.params.clas + "section: " + req.params.section);
-    if (general.emptyCheck(req.params.clas) && general.emptyCheck(req.params.section)) {
+    if (general.emptyCheck(req.params.schoolName) && general.emptyCheck(req.params.clas) && general.emptyCheck(req.params.section)) {
         var obj = {
+            "schoolName": schoolName,
             "class": req.params.clas,
             "section": req.params.section
         };

@@ -144,6 +144,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
             for (var x = 0; x < $scope.teacherListForStudent.length; x++) {
 
               for (var y = 0; y < $scope.teacherListForStudent[x].css.length; y++) {
+                console.log("$scope.teacherListForStudent[x]: "+JSON.stringify($scope.teacherListForStudent[x].css));
                 if ($scope.teacherListForStudent[x].css[y].class == $scope.studClass && $scope.teacherListForStudent[x].css[y].section == $scope.studSection)
                 var un = $scope.teacherListForStudent[x].firstName +" "+ $scope.teacherListForStudent[x].lastName;
                   $scope.teacherList.push({ "id": $scope.teacherListForStudent[x]._id, "name": un, "teacherId": $scope.teacherListForStudent[x].schoolId, "subject": $scope.teacherListForStudent[x].css[y].subject });

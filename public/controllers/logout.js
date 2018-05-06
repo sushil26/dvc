@@ -6,4 +6,4 @@ app.controller('logoutCtl', function ($scope, $window, httpFactory, sessionAuthF
     // userName = $scope.userData.userName;
     // $scope.loginType = $scope.userData.loginType;
     console.log("<--vcLogout");
-}
+})

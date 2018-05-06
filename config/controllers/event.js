@@ -470,7 +470,7 @@ module.exports.getTeacherListForCS = function (req, res) {
 module.exports.getStudentAttendance = function (req, res) {
     console.log("getStudentAttendance-->");
     if (general.emptyCheck(req.params.id)) {
-        stud.find({"_id":req.params.id}).toArray(function (err, data) {
+        stud.find({"_id":ObjectId(req.params.id)}).toArray(function (err, data) {
             console.log("data: " + JSON.stringify(data));
             if (err) {
 

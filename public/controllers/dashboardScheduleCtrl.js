@@ -649,7 +649,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
     // // $scope.endDateRes = $scope.startDate + ' ' + $scope.endDate;
     // var sd = $scope.timeForPeriods[id].startsAt + ' ' + $scope.timeForPeriods[id].meridian;
     // var ed = $scope.timeForPeriods[id].endsAt + ' ' + $scope.timeForPeriods[id].meridian;
-    // console.log("sd: " + new Date(sd) + " ed: " + new Date(ed));
+   console.log("sd: " + new Date(sd) + " ed: " + new Date(ed));
     $scope.startDate = $filter('date')($scope.selectedDate, "EEE MMM dd y");
     $scope.startTime = $filter('date')(sd, "h:mm:ss a");
     $scope.EndTime = $filter('date')(ed, "h:mm:ss a");
@@ -687,7 +687,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
         $('#timeTable_modal').modal('hide');
 
         var reqDateWithoutMinus = rsd.getDate();
-        var reqBy5min = rsd.getMinutes() - 5;
+        var reqBy5min = rsd.getMinutes() + 5;
         var reqHr_ed = red.getHours();
         var reqMin_ed = red.getMinutes() - 5;
         var reqSec_ed = red.getSeconds();

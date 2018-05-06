@@ -42,8 +42,8 @@
 
 
                                     <label class="col-lg-3">Upload Type</label>
-                                    <select class="btn btn-danger col-lg-3" placeholder="select" ng-model="up.uploadType" >
-                                        <option value="" disabled selected ng-options="ut as ut for ut in uploadTypes"></option>
+                                    <select class="btn btn-danger col-lg-3" placeholder="select" ng-model="up.uploadType" ng-options="ut as ut for ut in uploadTypes">
+                                        <option value="" disabled selected ></option>
                                     </select>
 
                                     <label ng-if="up.uploadType=='Time Table'" class="col-lg-3">Teacher</label>

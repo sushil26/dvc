@@ -40,10 +40,39 @@
                                     <div class="form-group" ng-repeat="up in uploadReports">
 
 
-                                        <label class="col-lg-3">Upload Type</label>
-                                        <select class="btn btn-danger col-lg-3" placeholder="select" ng-model="up.uploadType" ng-options="ut as ut for ut in uploadTypes">
-                                            <option value="" disabled selected></option>
-                                        </select>
+
+                                        <!-- <div class="form-group ">
+                                            <label for="fullname" class="control-label col-lg-2">Class
+                                                <span class="required">*</span>
+                                            </label>
+                                            <div class="col-lg-2">
+                                                <select ng-model="class" class="form-control m-bot15">
+                                                    <option ng-repeat="x in classS">{{x}}</option>
+
+                                                </select>
+                                            </div>
+                                            <label for="fullname" class="control-label col-lg-2">Section
+                                                <span class="required">*</span>
+                                            </label>
+                                            <div class="col-lg-2">
+                                                <select ng-model="section" class="form-control m-bot15">
+                                                    <option ng-repeat="y in sectionS">{{y}}</option>
+
+                                                </select>
+                                            </div>
+                                        </div> -->
+
+
+
+
+                                        <label class="control-label col-lg-3">Upload Type
+                                            <span class="required">*</span>
+                                        </label>
+                                        <div class="col-lg-2">
+                                            <select class="form-control m-bot15" placeholder="select" ng-model="up.uploadType" ng-options="ut as ut for ut in uploadTypes">
+                                                <option value="" disabled selected></option>
+                                            </select>
+                                        </div>
 
                                         <label ng-if="up.uploadType=='Time Table'" class="col-lg-3">Teacher</label>
                                         <select ng-if="up.uploadType=='Time Table'" class="btn btn-danger col-lg-4" placeholder="select" ng-model="up.tSelect" ng-options="t as t.name +'-'+ t.schoolId for t in teacherList_noTT">

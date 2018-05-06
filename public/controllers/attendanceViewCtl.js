@@ -1,4 +1,4 @@
-app.controller('attendanceViewCtl', function ($scope, $window, httpFactory, sessionAuthFactory) {
+app.controller('attendanceViewCtl', function ($scope, $window, httpFactory, sessionAuthFactory, moment, calendarConfig) {
     console.log("attendanceViewCtl==>");
 
     $scope.userData = sessionAuthFactory.getAccess();
@@ -58,7 +58,7 @@ app.controller('attendanceViewCtl', function ($scope, $window, httpFactory, sess
         console.log("<--getStudListForCS");
 
     }
-
+    vm.events = [];
     $scope.getStudentAttendance = function (cs) {
         console.log("getStudentAttendance-->");
         console.log("cs: " + JSON.stringify(cs));
@@ -72,21 +72,30 @@ app.controller('attendanceViewCtl', function ($scope, $window, httpFactory, sess
                 var studData = data.data.data;
                 $scope.attendance = studData[0].attendance;
                 console.log("studData: " + JSON.stringify(studData));
-                console.log("$scope.attendance: "+ JSON.stringify($scope.attendance));
-                console.log("$scope.attendance.length: "+$scope.attendance.length);
-                for(var x=0;x<$scope.attendance.length;x++){
-                    console.log("$scope.attendance[x]: "+JSON.stringify($scope.attendance[x]));
+                console.log("$scope.attendance: " + JSON.stringify($scope.attendance));
+                console.log("$scope.attendance.length: " + $scope.attendance.length);
+                for (var x = 0; x < $scope.attendance.length; x++) {
+                    console.log("$scope.attendance[x]: " + JSON.stringify($scope.attendance[x]));
                     var year = "2018";
                     var mon = $scope.attendance[x].month;
-                    console.log("$scope.attendance[x].dateAttendance.length: "+$scope.attendance[x].dateAttendance.length);
-                    for(var y=0;y<$scope.attendance[x].dateAttendance.length;y++){
-                        console.log("$scope.attendance[x].dateAttendance[y]: "+JSON.stringify($scope.attendance[x].dateAttendance[y]));
-                       var day =  $scope.attendance[x].dateAttendance[y].date;
-                       console.log("day: "+day+"month: "+mon+"year: "+year);
-                       console.log("new Date: "+Date.parse(year, mon, day));
+                    console.log("$scope.attendance[x].dateAttendance.length: " + $scope.attendance[x].dateAttendance.length);
+                    for (var y = 0; y < $scope.attendance[x].dateAttendance.length; y++) {
+                        console.log("$scope.attendance[x].dateAttendance[y]: " + JSON.stringify($scope.attendance[x].dateAttendance[y]));
+                        var day = $scope.attendance[x].dateAttendance[y].date;
+                        console.log("day: " + day + "month: " + mon + "year: " + year);
+                        var resultDate = new Date(year mon day);
+                        console.log("resultDate: " + resultDate);
+                        var obj = {
+                            'startsAt': new Date($scope.specificSED[x].start),
+                            'draggable': true,
+                            'resizable': true
+                        }
+                        console.log("obj: "+JSON.stringify(obj));
+                        vm.events.push(obj);
 
                     }
                 }
+                console.log("vm.events: " + JSON.stringify(vm.events));
 
             }
             else {

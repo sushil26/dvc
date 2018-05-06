@@ -111,9 +111,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
         console.log("mon: " + JSON.stringify($scope.teacherPersonalData[0].timeTable[0]));
         console.log("mon: " + JSON.stringify($scope.teacherPersonalData[0].timeTable[0].css));
         console.log("mon: " + JSON.stringify($scope.teacherPersonalData[0].timeTable[0].css.Mon));
-        //   $scope.css = $scope.teacherData[0].css;
-        //   console.log("$scope.css: " + JSON.stringify($scope.css));
-      }
+             }
       else {
       }
     })

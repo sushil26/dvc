@@ -69,10 +69,10 @@ app.controller('attendanceViewCtl', function ($scope, $window, httpFactory, sess
             var checkStatus = httpFactory.dataValidation(data);
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
-                $scope.stud_attendance = data.data.data;
-                console.log("studentList: " + JSON.stringify($scope.stud_attendance));
-               
-                
+                var studData = data.data.data;
+                $scope.attendance = studData[0].attendance;
+                console.log("studData: " + JSON.stringify(studData));
+                console.log("$scope.attendance: "+ JSON.stringify($scope.attendance));
             }
             else {
                 console.log("sorry");

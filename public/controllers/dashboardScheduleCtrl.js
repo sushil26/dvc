@@ -108,6 +108,9 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
         $scope.teacherPersonalData = data.data.data;
         console.log("teacherData: " + JSON.stringify($scope.teacherData));
         console.log("teacherPersonalData: " + JSON.stringify($scope.teacherPersonalData));
+        console.log("mon: " + JSON.stringify($scope.teacherPersonalData[0].timeTable[0]));
+        console.log("mon: " + JSON.stringify($scope.teacherPersonalData[0].timeTable[0].css));
+        console.log("mon: " + JSON.stringify($scope.teacherPersonalData[0].timeTable[0].css.mon[0]));
         //   $scope.css = $scope.teacherData[0].css;
         //   console.log("$scope.css: " + JSON.stringify($scope.css));
       }

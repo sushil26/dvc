@@ -429,7 +429,7 @@ module.exports.getTeacherListForCS = function (req, res) {
         //     "userId": req.params.id
         // }
         user.find({ "css": { $elemMatch: { "class": clas, "section": section } } },{"schoolName":schoolName}).toArray(function (err, data) {
-            console.log("getTeacherListForCS data: " + JSON.stringify(data));
+            //console.log("getTeacherListForCS data: " + JSON.stringify(data));
             if (err) {
 
                 responseData = {

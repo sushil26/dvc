@@ -140,6 +140,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
           if (checkStatus) {
             $scope.teacherListForStudent = data.data.data;
             console.log("teacherListForStudent: " + JSON.stringify($scope.teacherListForStudent));
+            console.log("teacherListForStudent.length: " + $scope.teacherListForStudent.length);
             for (var x = 0; x < $scope.teacherListForStudent.length; x++) {
 
               for (var y = 0; y < $scope.teacherListForStudent[x].css.length; y++) {

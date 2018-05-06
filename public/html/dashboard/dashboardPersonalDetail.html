@@ -2,7 +2,7 @@
     <!--main content start-->
     <section id="main-content">
         <section class="wrapper">
-       
+
 
             <div id="profile">
                 <section class="panel">
@@ -14,11 +14,11 @@
                         </h3>
                     </div>
                     <div class="panel-body bio-graph-info">
-                        <div class="row">
-                                
-                                  
+                            <div class="row" style="margin-left: 20px !important;margin-right: 20px !important;">
 
-                        <div class="bio-row" ng-if="loginType=='admin'">
+
+
+                            <div class="bio-row" ng-if="loginType=='admin'">
 
                                 <p>
                                     <span>
@@ -67,7 +67,7 @@
                                         <b>Mobile Number</b>
                                     </span>: {{userData[0].mobileNum}} </p>
                             </div>
-                          
+
 
 
 
@@ -136,13 +136,13 @@
                                     </span>: {{userData[0].mobileNum}}</p>
                             </div>
                             <div class="bio-row" ng-if="loginType=='teacher'">
-                                    <p>
-                                        <span>
-                                            <b>Class Handle</b>
-                                        </span> :
-                                        <span class="col-sm-3" ng-repeat="css in userData[0].css">{{css.class}}-{{css.section}}-{{css.subject}}</span>
-                                    </p>
-                                </div>
+                                <p>
+                                    <span>
+                                        <b>Class Handle</b>
+                                    </span> :
+                                    <span class="col-sm-3" ng-repeat="css in userData[0].css">{{css.class}}-{{css.section}}-{{css.subject}}</span>
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </section>

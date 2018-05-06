@@ -103,6 +103,7 @@
   <script src="/controllers/allAdminCtl.js"></script>
   <script src="/controllers/allSchoolCtl.js"></script>
   <script src="/controllers/attendanceViewCtl.js"></script>
+  <script src="/controllers/logoutCtl.js"></script>
 
 
   <!-- <link href="/home/lib/animate/animate.min.css" rel="stylesheet"> -->
@@ -223,7 +224,7 @@
                 <a href="#" data-target="#crdntl" data-toggle="modal" style="text-shadow: 2px 2px 4px #000000;">login</a>
               </li>
               <li ng-if="userData.loginType">
-                <a ng-click="vcLogout()" href="#" style="text-shadow: 2px 2px 4px #000000;">Logout</a>
+                <a href="#!dashboard/logout" style="text-shadow: 2px 2px 4px #000000;">Logout</a>
               </li>
               <!-- <li>
             <a href="#portfolio">Portfolio</a>
@@ -601,7 +602,7 @@
 
       <script src="/home/lib/jquery/jquery.min.js"></script>
       <script src="/home/lib/jquery/jquery-migrate.min.js"></script>
-      <!-- <script src="/home/lib/bootstrap/js/bootstrap.bundle.min.js"></script> -->
+      <script src="/home/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
       <script src="/home/lib/easing/easing.min.js"></script>
       <script src="/home/lib/wow/wow.min.js"></script>
       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2wHGDEY64tSb7obGNcDa9EQ3DtwVd7hc"></script>

@@ -61,8 +61,8 @@ app.controller('attendanceViewCtl', function ($scope, $window, httpFactory, $com
 
   var vm = this;
     
-    vm.calendarView = 'month';
-    vm.viewDate = moment().startOf('day').toDate();
+    $scope.calendarView = 'month';
+    $scope.viewDate = moment().startOf('day').toDate();
     var originalFormat = calendarConfig.dateFormats.hour;
     calendarConfig.dateFormats.hour = 'HH:mm';
    
@@ -73,8 +73,8 @@ app.controller('attendanceViewCtl', function ($scope, $window, httpFactory, $com
           alert("Edit Event Comming Soon");
         }
         }]
-        vm.events = [];
-        vm.cellIsOpen = true;
+        $scope.events = [];
+        $scope.cellIsOpen = true;
     $scope.getStudentAttendance = function (cs) {
         console.log("getStudentAttendance-->");
         console.log("cs: " + JSON.stringify(cs));

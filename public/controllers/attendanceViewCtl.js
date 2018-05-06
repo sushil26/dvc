@@ -111,7 +111,7 @@ app.controller('attendanceViewCtl', function ($scope, $window, httpFactory, $com
 
                     }
                 }
-                console.log("vm.events: " + JSON.stringify(vm.events));
+                console.log("$scope.events.events: " + JSON.stringify($scope.events.events));
 
             }
             else {

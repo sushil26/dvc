@@ -83,7 +83,7 @@ app.controller('attendanceViewCtl', function ($scope, $window, httpFactory, sess
                         console.log("$scope.attendance[x].dateAttendance[y]: "+JSON.stringify($scope.attendance[x].dateAttendance[y]));
                        var day =  $scope.attendance[x].dateAttendance[y].date;
                        console.log("day: "+day+"month: "+mon+"year: "+year);
-                       console.log("new Date: "+new Date(year, mon, day));
+                       console.log("new Date: "+Date.parse(year, mon, day));
 
                     }
                 }

@@ -38,7 +38,7 @@
                             </div>
                             <form ng-if="cssList.length!=0 && timeTable_timing.length!=0" role="form" name="uploadForm" encType="multipart/form-data"
                                 novalidate>
-                                <div class="btn-group row" ng-repeat="up in uploadReports">
+                                <div class="form-group" ng-repeat="up in uploadReports">
 
 
                                     <label class="col-lg-3">Upload Type</label>
@@ -46,16 +46,16 @@
                                         <option value="" disabled selected>Upload Type</option>
                                     </select>
 
-                                    <label ng-if="up.uploadType=='Time Table'" class="col-lg-4">Teacher</label>
+                                    <label ng-if="up.uploadType=='Time Table'" class="col-lg-3">Teacher</label>
                                     <select ng-if="up.uploadType=='Time Table'" class="btn btn-danger col-lg-4" placeholder="select" ng-model="up.tSelect" ng-options="t as t.name +'-'+ t.schoolId for t in teacherList_noTT">
                                         <option value="" disabled selected>Teacher</option>
                                     </select>
-                                    <label ng-if="up.uploadType!='Teacher Details' && up.uploadType!='Time Table' && up.uploadType!=''" class="col-lg-4">Class</label>
+                                    <label ng-if="up.uploadType!='Teacher Details' && up.uploadType!='Time Table' && up.uploadType!=''" class="col-lg-3">Class</label>
                                     <select ng-if="up.uploadType!='Teacher Details' && up.uploadType!='Time Table' && up.uploadType!=''" class="btn btn-danger col-lg-4"
                                         placeholder="select" ng-model="up.cSelect" ng-options="c as c.class for c in cssList">
                                         <option value="" disabled selected>Class</option>
                                     </select>
-                                    <label ng-if="up.uploadType!='Teacher Details' && up.uploadType!='Time Table' && up.uploadType!=''" class="col-lg-4">Section</label>
+                                    <label ng-if="up.uploadType!='Teacher Details' && up.uploadType!='Time Table' && up.uploadType!=''" class="col-lg-3">Section</label>
                                     <select ng-if="up.uploadType!='Teacher Details' && up.uploadType!='Time Table' && up.uploadType!='' " class="btn btn-danger col-lg-4"
                                         placeholder="select" ng-model="up.sSelect" ng-options="s as s for s in up.cSelect.section">
                                         <option value="" disabled selected>Section</option>
@@ -64,22 +64,22 @@
                                     <!-- <select class="btn col-lg-3" placeholder="select" ng-model="up.studSelect" ng-options="cs as cs.name + '-' + cs.studId for cs in studList">
                                                     <option value="" disabled selected>Student</option>
                                                 </select> -->
-                                    <label class="col-lg-4" ng-if="up.uploadType=='Mark Report'">Type of Test</label>
-                                    <select class="btn col-lg-4" ng-if="up.uploadType=='Mark Report'" placeholder="select" ng-model="up.ttSelect" ng-options="tt as tt for tt in testTypes">
+                                    <label class="col-lg-3" ng-if="up.uploadType=='Mark Report'">Type of Test</label>
+                                    <select class="btn col-lg-3" ng-if="up.uploadType=='Mark Report'" placeholder="select" ng-model="up.ttSelect" ng-options="tt as tt for tt in testTypes">
                                         <option value="" disabled selected>Type of Test</option>
                                     </select>
-                                    <label class="col-lg-4" ng-if="up.uploadType=='Mark Report'">Test Start Date</label>
+                                    <label class="col-lg-3" ng-if="up.uploadType=='Mark Report'">Test Start Date</label>
                                     <input ng-if="up.uploadType=='Mark Report'" type="date" ng-model="up.testDate" placeholder="Select date of test start" value="date">
-                                    <label class="col-lg-4" ng-if="up.uploadType=='Attendance'">Attendance report</label>
-                                    <select class="btn col-lg-4" ng-if="up.uploadType=='Attendance'" placeholder="select" ng-model="up.ttSelect" ng-options="at as at for at in attendanceTypes">
+                                    <label class="col-lg-3" ng-if="up.uploadType=='Attendance'">Attendance report</label>
+                                    <select class="btn col-lg-3" ng-if="up.uploadType=='Attendance'" placeholder="select" ng-model="up.ttSelect" ng-options="at as at for at in attendanceTypes">
                                         <option value="" disabled selected>Attendance report</option>
                                     </select>
-                                    <label class="col-lg-4" ng-if="up.uploadType=='Attendance'">Month</label>
-                                    <select class="btn col-lg-4" ng-if="up.uploadType=='Attendance'" placeholder="select" ng-model="up.mSelect" ng-options="ml as ml for ml in monthList">
+                                    <label class="col-lg-3" ng-if="up.uploadType=='Attendance'">Month</label>
+                                    <select class="btn col-lg-3" ng-if="up.uploadType=='Attendance'" placeholder="select" ng-model="up.mSelect" ng-options="ml as ml for ml in monthList">
                                         <option value="" disabled selected>Attendance report</option>
                                     </select>
-                                    <label class="col-lg-4" ng-if="up.uploadType=='Payment'">Payment report</label>
-                                    <select class="btn col-lg-4" ng-if="up.uploadType=='Payment'" placeholder="select" ng-model="up.ttSelect" ng-options="tt as tt for tt in testTypes">
+                                    <label class="col-lg-3" ng-if="up.uploadType=='Payment'">Payment report</label>
+                                    <select class="btn col-lg-3" ng-if="up.uploadType=='Payment'" placeholder="select" ng-model="up.ttSelect" ng-options="tt as tt for tt in testTypes">
                                         <option value="" disabled selected>Payment report</option>
                                     </select>
                                     <br>

@@ -104,10 +104,12 @@ app.controller('attendanceViewCtl', function ($scope, $window, httpFactory, $com
                         console.log("moment().subtract(1, 'day').toDate(): " + moment().subtract(1, 'day').toDate());
                        
                         var obj = {
+                            'title': $scope.attendance[x].dateAttendance[y].status,
                             'startsAt': resultDate,
                             'endsAt': resultDate,
                             'draggable': true,
-                            'resizable': true
+                            'resizable': true,
+                            'incrementsBadgeTotal': false
                         }
                         if($scope.attendance[x].dateAttendance[y].status=="P")
                         {

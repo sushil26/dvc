@@ -108,10 +108,8 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
         $scope.teacherPersonalData = data.data.data;
         console.log("teacherData: " + JSON.stringify($scope.teacherData));
         console.log("teacherPersonalData: " + JSON.stringify($scope.teacherPersonalData));
-        console.log("mon: " + JSON.stringify($scope.teacherPersonalData[0].timeTable[0]));
-        console.log("mon: " + JSON.stringify($scope.teacherPersonalData[0].timeTable[0].css));
-        console.log("mon: " + JSON.stringify($scope.teacherPersonalData[0].timeTable[0].css.Mon));
-             }
+       
+      }
       else {
       }
     })
@@ -365,7 +363,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
     // var cssRef = [{"clas":css.class, "section": css.section}];
     // console.log("cssRef: "+JSON.stringify(cssRef));
 
-    var api = "https://norecruits.com/vc/getStudListForCS" + "/"+ schoolName +"/"+ clas + "/" + section;
+    var api = "https://norecruits.com/vc/getStudListForCS" + "/" + schoolName + "/" + clas + "/" + section;
     //var api = "http://localhost:5000/vc/getStudListForCS" + "/" + clas + "/" + section;
     //var api = "https://norecruits.com/vc/getStudListForCS";
 
@@ -637,14 +635,14 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
   $scope.timeTableForEventBook = function (day, id) {
     console.log("timeTableForEventBook-->");
     console.log("id: " + id + " day: " + day);
-    console.log("$scope.timeForPeriods[id].startsAt: " + $scope.timeForPeriods[id].startsAt);
-    console.log("$scope.timeForPeriods[id].endsAt: " + $scope.timeForPeriods[id].endsAt);
+    console.log("$scope.teacherPersonalData[0].timeTable[0].timing[id].startsAt: " + $scope.teacherPersonalData[0].timeTable[0].timing[id].startsAt);
+    console.log("$scope.teacherPersonalData[0].timeTable[0].timing[id].endsAt: " +$scope.teacherPersonalData[0].timeTable[0].timing[id].endsAt);
 
     // $scope.startDate = $filter('date')(s, "EEE MMM dd y");
     // $scope.endDate = $filter('date')(e, "HH:mm:ss 'GMT'Z (IST)'");
     // $scope.endDateRes = $scope.startDate + ' ' + $scope.endDate;
-    var sd = $scope.timeForPeriods[id].startsAt + ' ' + $scope.timeForPeriods[id].meridian;
-    var ed = $scope.timeForPeriods[id].endsAt + ' ' + $scope.timeForPeriods[id].meridian;
+    var sd = $scope.teacherPersonalData[0].timeTable[0].timing[id].startsAt;
+    var ed = $scope.teacherPersonalData[0].timeTable[0].timing[id].endsAt;
     console.log("sd: " + new Date(sd) + " ed: " + new Date(ed));
     $scope.startDate = $filter('date')($scope.selectedDate, "EEE MMM dd y");
     $scope.startTime = $filter('date')(sd, "h:mm:ss a");

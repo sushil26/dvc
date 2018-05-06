@@ -25,7 +25,7 @@ app.controller('attendanceViewCtl', function ($scope, $window, httpFactory, sess
         })
         console.log("<--getTeacherData");
     }
-    if (loginType == 'teacher') {
+    if ($scope.userData.loginType == 'teacher') {
         $scope.userLoginType = 'teacher';
         $scope.getTeacherData();
     }

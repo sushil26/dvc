@@ -56,16 +56,25 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="form-group ">
+                                    <div class="form-group">
 
-                                        <input type="file" style="display: inline-block;width:60%; float:left" class="btnCont btnCont-uploadColor col-lg-3" name="myImage"
-                                            value="Upload" image-with-preview file-model="up.uploadDoc" ng-model="image" accept="csv"
-                                            ng-required="true">
-                                        <img ng-show="image.src" ng-src="{{image.src}}" style="width: 50%;margin-top: 2%;" />
+                                        <p class="col-lg-offset-2 col-lg-10">
+                                            <span>
 
-                                        <!-- <button ng-if="up.uploadType=='Attendance'" type="submit" class="btn btn-primary col-lg-3" ng-click="uploadFile(up.uploadDoc,up.uploadType,up.ttSelect,up.mSelect)">Upload</button> -->
-                                        <button ng-if="up.uploadType!='Student Details'" type="submit" class="btn btn-primary col-lg-3" ng-click="uploadFile(up.uploadDoc,up.uploadType, up.ttSelect, up.mSelect)">Upload</button>
-                                        <button ng-if="up.uploadType=='Student Details'" type="submit" class="btn btn-primary col-lg-3" ng-click="uploadFile(up.uploadDoc,up.uploadType)">Upload</button>"
+
+                                                <input type="file" style="display: inline-block;width:60%; float:left" class="btnCont btnCont-uploadColor col-lg-3" name="myImage"
+                                                    value="Upload" image-with-preview file-model="up.uploadDoc" ng-model="image"
+                                                    accept="csv" ng-required="true">
+                                                <img ng-show="image.src" ng-src="{{image.src}}" style="width: 50%;margin-top: 2%;" />
+                                            </span>
+                                        </p>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-lg-offset-2 col-lg-10">
+                                            <!-- <button ng-if="up.uploadType=='Attendance'" type="submit" class="btn btn-primary col-lg-3" ng-click="uploadFile(up.uploadDoc,up.uploadType,up.ttSelect,up.mSelect)">Upload</button> -->
+                                            <button ng-if="up.uploadType!='Student Details'" type="submit" class="bcontrol-label  btn btn-success" ng-click="uploadFile(up.uploadDoc,up.uploadType, up.ttSelect, up.mSelect)">Upload</button>
+                                            <button ng-if="up.uploadType=='Student Details'" type="submit" class="bcontrol-label  btn btn-success" ng-click="uploadFile(up.uploadDoc,up.uploadType)">Upload</button>"
+                                        </div>
                                     </div>
                                 </div>
                             </form>

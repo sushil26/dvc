@@ -83,8 +83,8 @@ app.controller('attendanceViewCtl', function ($scope, $window, httpFactory, sess
                         console.log("$scope.attendance[x].dateAttendance[y]: " + JSON.stringify($scope.attendance[x].dateAttendance[y]));
                         var day = $scope.attendance[x].dateAttendance[y].date;
                         console.log("day: " + day + "month: " + mon + "year: " + year);
-                        var resultDate = new Date(year mon day);
-                        console.log("resultDate: " + resultDate);
+                        // var resultDate = new Date(year mon day);
+                        // console.log("resultDate: " + resultDate);
                         var obj = {
                             'startsAt': new Date($scope.specificSED[x].start),
                             'draggable': true,

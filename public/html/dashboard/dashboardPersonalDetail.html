@@ -77,7 +77,7 @@
                                         <b>Class</b>
 
                                     </span> :
-                                    <div ng-repeat="cs in userData[0].cs">{{cs.class}}-{{cs.section}}</div>
+                                    <span ng-repeat="cs in userData[0].cs">{{cs.class}}-{{cs.section}}</span>
                                 </p>
                             </div>
 
@@ -135,7 +135,7 @@
                                         <b>Mother Phone</b>
                                     </span>: {{userData[0].mobileNum}}</p>
                             </div>
-                            <div class="bio-row" ng-if="loginType=='teacher'">
+                            <div class="form-group" ng-if="loginType=='teacher'">
                                 <p>
                                     <span>
                                         <b>Class Handle</b>

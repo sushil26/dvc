@@ -17,7 +17,7 @@
                             <div ng-if="cssList.length==0" class="form-group row">
                                 <label class="col-lg-4">Upload Class Detail</label>
 
-                                <input type="file" style="display: inline-block;width:60%;float:left" class="btnCont btnCont-uploadColor col-lg-3" name="myImage"
+                                <input type="file" class="btnCont btnCont-uploadColor col-lg-3" name="myImage"
                                     value="Upload" image-with-preview file-model="classUploadDoc" ng-model="image" accept="csv"
                                     ng-required="true">
                                 <img ng-show="image.src" ng-src="{{image.src}}" style="width: 50%;margin-top: 2%;" />
@@ -28,7 +28,7 @@
                             <div ng-if="timeTable_timing.length==0" class="form-group row">
                                 <label class="col-lg-4">Upload Periods Detail</label>
 
-                                <input type="file" style="display: inline-block;width:60%;float:left" class="btnCont btnCont-uploadColor col-lg-3" name="myImage"
+                                <input type="file"  class="btnCont btnCont-uploadColor col-lg-3" name="myImage"
                                     value="Upload" image-with-preview file-model="periodsUploadDoc" ng-model="image" accept="csv"
                                     ng-required="true">
                                 <img ng-show="image.src" ng-src="{{image.src}}" style="width: 50%;margin-top: 2%;" />

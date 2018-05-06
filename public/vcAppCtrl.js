@@ -95,7 +95,7 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
         $scope.userData = sessionAuthFactory.getAccess("userData");
         userName = $scope.userData.userName;
         $scope.loginType = $scope.userData.loginType;
-
+        $window.location.reload();
 
       }
       else if (data.data.loginType == 'studParent') {
@@ -112,6 +112,7 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
         $scope.userData = sessionAuthFactory.getAccess("userData");
         userName = $scope.userData.userName;
         $scope.loginType = $scope.userData.loginType;
+        $window.location.reload();
       }
       else if(data.data.loginType == 'admin'){
         var userData = {
@@ -128,7 +129,7 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
         $scope.userData = sessionAuthFactory.getAccess("userData");
         userName = $scope.userData.userName;
         $scope.loginType = $scope.userData.loginType;
-
+        $window.location.reload();
       }
       else{
         var userData = {
@@ -141,10 +142,10 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
         }
         console.log("userData: "+JSON.stringify(userData));
         sessionAuthFactory.setAccess(userData);
-
         $scope.userData = sessionAuthFactory.getAccess("userData");
         userName = $scope.userData.userName;
         $scope.loginType = $scope.userData.loginType;
+        $window.location.reload();
       }
     } else {
       alert("Sorry, your browser does not support Web Storage...");
@@ -163,14 +164,13 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
       }
     })
   }
-  $scope.vcLogout = function () {
-    console.log("vcLogout-->");
-    sessionAuthFactory.clearAccess();
-    $scope.userData = sessionAuthFactory.getAccess("userData");
-    // userName = $scope.userData.userName;
-    // $scope.loginType = $scope.userData.loginType;
-    console.log("<--vcLogout");
-  };
+  // $scope.vcLogout = function () {
+  //   console.log("vcLogout-->");
+  //   sessionAuthFactory.clearAccess();
+  //   $scope.userData = sessionAuthFactory.getAccess("userData");
+   
+  //   console.log("<--vcLogout");
+  // };
   $rootScope.TimeTable_timing = [
     { "startsAt": "09:00", "endsAt": "09:45", "meridian": 'AM' },
     { "startsAt": "9:45", "endsAt": "10:30", "meridian": 'AM' },

@@ -106,20 +106,20 @@
 
 
                                     </div>
-                                </div>
 
-                                <div class="form-group">
-                                    <div class="col-lg-offset-2 col-lg-10">
-                                        <button ng-if="up.uploadType=='Attendance'" type="submit" class=" bcontrol-label  btn btn-warning" ng-click="uploadFile(up.uploadDoc,up.uploadType, up.cSelect.class,up.sSelect, up.ttSelect, up.mSelect)">Upload</button>
-                                        <button ng-if="up.uploadType=='Student Details'" type="submit" class=" bcontrol-label btn btn-warning" ng-click="uploadFile(up.uploadDoc,up.uploadType, up.cSelect.class,up.sSelect)">Upload</button>
-                                        <button ng-if="up.uploadType=='Teacher Details'" type="submit" class="  bcontrol-label btn btn-warning" ng-click="uploadFile(up.uploadDoc,up.uploadType)">Upload</button>
-                                        <button ng-if="up.uploadType=='Time Table'" type="submit" class=" bcontrol-label  btn btn-warning" ng-click="uploadTimeTableFile(up.uploadDoc,up.tSelect)">Upload</button>
-                                        <button ng-if="up.uploadType=='Mark Report'" type="submit" class="bcontrol-label btn btn-warning" ng-click="uploadMarkFile(up.uploadDoc,up.ttSelect,up.testDate,up.cSelect.class,up.sSelect)">Upload</button>
-                                        <button type="reset" class="btn btn-danger">Cancel</button>
+
+                                    <div class="form-group">
+                                        <div class="col-lg-offset-2 col-lg-10">
+                                            <button ng-if="up.uploadType=='Attendance'" type="submit" class=" bcontrol-label  btn btn-warning" ng-click="uploadFile(up.uploadDoc,up.uploadType, up.cSelect.class,up.sSelect, up.ttSelect, up.mSelect)">Upload</button>
+                                            <button ng-if="up.uploadType=='Student Details'" type="submit" class=" bcontrol-label btn btn-warning" ng-click="uploadFile(up.uploadDoc,up.uploadType, up.cSelect.class,up.sSelect)">Upload</button>
+                                            <button ng-if="up.uploadType=='Teacher Details'" type="submit" class="  bcontrol-label btn btn-warning" ng-click="uploadFile(up.uploadDoc,up.uploadType)">Upload</button>
+                                            <button ng-if="up.uploadType=='Time Table'" type="submit" class=" bcontrol-label  btn btn-warning" ng-click="uploadTimeTableFile(up.uploadDoc,up.tSelect)">Upload</button>
+                                            <button ng-if="up.uploadType=='Mark Report'" type="submit" class="bcontrol-label btn btn-warning" ng-click="uploadMarkFile(up.uploadDoc,up.ttSelect,up.testDate,up.cSelect.class,up.sSelect)">Upload</button>
+                                            <button type="reset" class="btn btn-danger">Cancel</button>
+                                        </div>
+
                                     </div>
-
                                 </div>
-
                             </form>
                         </div>
 

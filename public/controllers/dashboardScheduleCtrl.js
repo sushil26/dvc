@@ -144,7 +144,8 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
 
               for (var y = 0; y < $scope.teacherListForStudent[x].css.length; y++) {
                 if ($scope.teacherListForStudent[x].css[y].class == $scope.studClass && $scope.teacherListForStudent[x].css[y].section == $scope.studSection)
-                  $scope.teacherList.push({ "id": $scope.teacherListForStudent[x]._id, "name": $scope.teacherListForStudent[x].teacherName, "teacherId": $scope.teacherListForStudent[x].teacherId, "subject": $scope.teacherListForStudent[x].css[y].subject });
+                var un = $scope.teacherListForStudent[x].firstName +" "+ $scope.teacherListForStudent[x].lastName;
+                  $scope.teacherList.push({ "id": $scope.teacherListForStudent[x]._id, "name": un, "teacherId": $scope.teacherListForStudent[x].schoolId, "subject": $scope.teacherListForStudent[x].css[y].subject });
               }
             }
             console.log(" $scope.teacherList: " + $scope.teacherList);

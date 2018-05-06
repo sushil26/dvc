@@ -74,6 +74,9 @@ app.controller('attendanceViewCtl', function ($scope, $window, httpFactory, sess
                 console.log("studData: " + JSON.stringify(studData));
                 console.log("$scope.attendance: "+ JSON.stringify($scope.attendance));
                 console.log("$scope.attendance.length: "+$scope.attendance.length);
+                for(var x=0;x<$scope.attendance.length;x++){
+                    console.log("$scope.attendance[x]: "+JSON.stringify($scope.attendance[x]));
+                }
 
             }
             else {

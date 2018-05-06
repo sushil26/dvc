@@ -38,7 +38,9 @@
                             </div>
                             <form ng-if="cssList.length!=0 && timeTable_timing.length!=0" role="form" name="uploadForm" encType="multipart/form-data"
                                 novalidate>
-                                <div class="form-group row" ng-repeat="up in uploadReports">
+                                <div class="btn-group row" ng-repeat="up in uploadReports">
+
+
                                     <label class="col-lg-3">Upload Type</label>
                                     <select class="btn btn-danger col-lg-3" placeholder="select" ng-model="up.uploadType" ng-options="ut as ut for ut in uploadTypes">
                                         <option value="" disabled selected>Upload Type</option>

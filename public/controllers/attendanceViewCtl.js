@@ -1,4 +1,4 @@
-app.controller('attendanceViewCtl', function ($scope, $window, httpFactory, sessionAuthFactory, moment, calendarConfig) {
+app.controller('attendanceViewCtl', function ($scope, $window, httpFactory, $compile, sessionAuthFactory, moment, calendarConfig) {
     console.log("attendanceViewCtl==>");
 
     $scope.userData = sessionAuthFactory.getAccess();
@@ -65,7 +65,16 @@ app.controller('attendanceViewCtl', function ($scope, $window, httpFactory, sess
     vm.viewDate = moment().startOf('day').toDate();
     var originalFormat = calendarConfig.dateFormats.hour;
     calendarConfig.dateFormats.hour = 'HH:mm';
-    vm.events = [];
+   
+    var actions = [{
+        // label: '<i class=\'glyphicon glyphicon-pencil\'></i>',
+        label: 'Re-Schedule',
+        onClick: function (args) {
+          alert("Edit Event Comming Soon");
+        }
+        }]
+        vm.events = [];
+        vm.cellIsOpen = true;
     $scope.getStudentAttendance = function (cs) {
         console.log("getStudentAttendance-->");
         console.log("cs: " + JSON.stringify(cs));

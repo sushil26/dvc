@@ -140,12 +140,15 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
           if (checkStatus) {
             $scope.teacherListForStudent = data.data.data;
             console.log("teacherListForStudent: " + JSON.stringify($scope.teacherListForStudent));
+            console.log("teacherListForStudent.length: " + $scope.teacherListForStudent.length);
             for (var x = 0; x < $scope.teacherListForStudent.length; x++) {
 
               for (var y = 0; y < $scope.teacherListForStudent[x].css.length; y++) {
+                console.log("$scope.teacherListForStudent[x]: "+JSON.stringify($scope.teacherListForStudent[x].css));
                 if ($scope.teacherListForStudent[x].css[y].class == $scope.studClass && $scope.teacherListForStudent[x].css[y].section == $scope.studSection)
                 var un = $scope.teacherListForStudent[x].firstName +" "+ $scope.teacherListForStudent[x].lastName;
                   $scope.teacherList.push({ "id": $scope.teacherListForStudent[x]._id, "name": un, "teacherId": $scope.teacherListForStudent[x].schoolId, "subject": $scope.teacherListForStudent[x].css[y].subject });
+                  break;
               }
             }
             console.log(" $scope.teacherList: " + JSON.stringify($scope.teacherList));

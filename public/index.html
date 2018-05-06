@@ -222,8 +222,8 @@
               <li ng-if="!userData.loginType">
                 <a href="#" data-target="#crdntl" data-toggle="modal" style="text-shadow: 2px 2px 4px #000000;">login</a>
               </li>
-              <li ng-if="userData.loginType" ng-click="vcLogout()">
-                <a href="#"  style="text-shadow: 2px 2px 4px #000000;">Logout</a>
+              <li ng-if="userData.loginType">
+                <a href="#"  ng-click="vcLogout()" data-toggle="collapse" style="text-shadow: 2px 2px 4px #000000;">Logout</a>
               </li>
               <!-- <li>
             <a href="#portfolio">Portfolio</a>

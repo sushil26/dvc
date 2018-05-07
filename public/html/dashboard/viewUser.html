@@ -220,21 +220,20 @@
                                 <p>
                                     <span>
                                         <b>Section</b>
-                                    </span ng-repeat="section in css.section">{{section}}</p>
-                                    <p>
-                                            <span>
-                                                <b>Subject</b>
-                                            </span ng-repeat="subject in css.subject">{{subject}}</p>
+                                    </span>
+                                    <span ng-repeat="sec in css.section[0]">{{sec}}</span>
+                                </p>
+                                <p>
+                                    <span>
+                                        <b>Subject</b>
+                                    </span>
+                                    <span ng-repeat="sub in css.subject[0]">{{sub}}</span>
+                                </p>
                             </div>
-
                         </div>
-
                     </div>
                 </section>
-
             </div>
-
-
         </section>
     </section>
 

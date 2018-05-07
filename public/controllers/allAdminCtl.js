@@ -1,4 +1,4 @@
-app.controller('allAdminCtl', function ($scope, $window, httpFactory, sessionAuthFactory) {
+app.controller('allAdminCtl', function ($scope, $state, $window, httpFactory, sessionAuthFactory) {
     console.log("allAdminCtl==>");
     $scope.userData = sessionAuthFactory.getAccess("userData");
     console.log(" $scope.userData : " + JSON.stringify($scope.userData));
@@ -51,5 +51,11 @@ app.controller('allAdminCtl', function ($scope, $window, httpFactory, sessionAut
         })
 
         console.log("<--updateUserStatus");
+    }
+
+    $scope.viewUser = function(id){
+        console.log("viewUser-->");
+        $state.go('dashboard.viewUser', { 'id': id});
+        console.log("<--viewUser");
     }
 })

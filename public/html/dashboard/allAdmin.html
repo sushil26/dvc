@@ -40,7 +40,7 @@
                                                         <td style="background-color:aliceblue;">{{ad.email}}</td>
                                                         <td style="background-color:aliceblue;">{{ad.mobNumber}}</td>
                                                         <td style="background-color:tomato;">{{ad.status}}</td>
-                                                        <td style="background-color:tomato;"><button>View</button></td>
+                                                        <td style="background-color:tomato;"><button ng-click="viewUser(ad._id)">View</button></td>
                                                         
                                                         <td style="background-color:aliceblue;">
                                                             <button class="btn" ng-if="ad.status=='active'" ng-click="updateAdminStatus(ad._id,'inactive',$index)" style="width: 70px;">Dectivate</button>

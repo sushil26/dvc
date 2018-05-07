@@ -1017,6 +1017,8 @@ module.exports.uploadStudentMaster = function (req, res) {
             motherEmail: data.MotherEmailid,
             motherNum: data.MotherPhoneNumber,
             cs: csData,
+            dob:data.DOB,
+            doj:data.DOJ,
             pswd: "abc",
             status: "inactive",
             loginType: "studParent",

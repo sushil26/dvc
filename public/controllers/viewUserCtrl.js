@@ -1,7 +1,7 @@
 app.controller('viewUserController', function ($scope, $state, $window, httpFactory) {
     console.log("viewUserController==>");
     var id = $state.params.id;
-    var loginT = $state.params.loginT;
+    var loginT = $state.params.loginType;
     $scope.getTeacherDetails = function (id) {
         console.log("getTeacherData-->");
         if (loginT == 'teacher') {

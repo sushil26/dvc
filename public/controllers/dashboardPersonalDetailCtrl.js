@@ -12,16 +12,14 @@ app.controller('dashboardPersonalDetailController', function ($scope, $window, h
     $scope.getUserDetails = function (id) {
         console.log("getTeacherData-->");
 
-        if ($scope.loginType == 'teacher' && $scope.loginType == 'admin') {
+        if ($scope.loginType == 'teacher' || $scope.loginType == 'admin' || $scope.loginType == 'vc4allAdmin') {
             var api = "https://norecruits.com/vc/teacherDetail" + "/" + id;
         }
         else if ($scope.loginType == 'studParent') {
             var api = "https://norecruits.com/vc/studentDetail" + "/" + id;
         }
 
-        else if ($scope.loginType == 'vc4allAdmin') {
-            var api = "https://norecruits.com/vc/getSchoolDataById" + "/" + id;
-        }
+        
         //var api = "http://localhost:5000/vc/teacherDetail" + "/" + id;
         //var api = "http://localhost:5000/vc/eventGet";
         console.log("api: " + api);

@@ -12,6 +12,7 @@ app.controller('viewUserController',function ($scope, $state, $window, httpFacto
             //console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
                 $scope.userDetail = data.data.data;
+                $scope.loginType = $scope.userDetail[0].loginType;
                 console.log("userDetail: " + JSON.stringify($scope.userDetail));
                 //   $scope.css = $scope.teacherData[0].css;
                 //   console.log("$scope.css: " + JSON.stringify($scope.css));

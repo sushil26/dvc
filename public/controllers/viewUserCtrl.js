@@ -23,6 +23,7 @@ app.controller('viewUserController',function ($scope, $state, $window, httpFacto
         })
         console.log("<--getTeacherData");
     }
+    $scope.getTeacherDetails(id);
 
 
 

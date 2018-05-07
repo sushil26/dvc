@@ -34,11 +34,11 @@
                                 <table class="table table-bordered" ng-repeat="sm in mSelect.subjectWithMark">
                                     <thead>
                                         <tr>
-                                            <th style="color: black">Test Start Date</th>
-                                            <th style="color: black">{{sm.date}}</th>
+                                            <th style="color: darkgrey">Test Start Date</th>
+                                            <th style="color: darkgrey">{{sm.date}}</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody style="background-color: #ccc;">
                                         <tr>
                                             <th ng-repeat="(key, value) in sm.mark">{{key}}</th>
                                         </tr>

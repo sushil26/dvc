@@ -40,7 +40,7 @@
                                                         <td style="background-color:aliceblue;">{{sd.schoolName}}</td>
                                                         <td style="background-color:aliceblue;">{{sd.email}}</td>
                                                         <td style="background-color:aliceblue;">{{sd.mobNumber}}</td>
-                                                        <td style="background-color:tomato;">{{sd.status}}</td>
+                                                        <td style="color:tomato;background-color:aliceblue;">{{sd.status}}</td>
                                                         <td style="background-color:aliceblue;">
                                                             <button class="btn" ng-if="sd.status=='active'" ng-click="updateSchoolStatus(sd._id,'inactive',$index)" style="width: 70px;">Dectivate</button>
                                                             <button class="btn" ng-if="sd.status=='inactive'" ng-click="updateSchoolStatus(sd._id,'active',$index)" style="width: 70px;">Activate</button>

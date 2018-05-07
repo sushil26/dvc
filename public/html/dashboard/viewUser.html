@@ -207,8 +207,8 @@
                                     <tbody ng-repeat="css in userDetail[0].css">
                                         <tr>
                                             <td>{{css.class}}</td>
-                                            <td>{{sec}}</td>
-                                            <td>{{sub}}</td>
+                                            <td ng-repeat="sec in css.section">{{sec}},</td>
+                                            <td ng-repeat="sub in css.subject">{{sub}},</td>
                                         </tr>
                                     </tbody>
 

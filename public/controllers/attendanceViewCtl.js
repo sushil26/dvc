@@ -3,6 +3,7 @@ app.controller('attendanceViewCtl', function ($scope, $window, httpFactory, $com
 
     $scope.userData = sessionAuthFactory.getAccess();
     var schoolName = $scope.userData.schoolName;
+    console.log("$scope.userData: "+    JSON.stringify($scope.userData));
 
     $scope.getTeacherData = function () {
         console.log("getTeacherData-->");
@@ -27,6 +28,10 @@ app.controller('attendanceViewCtl', function ($scope, $window, httpFactory, $com
     if ($scope.userData.loginType == 'teacher') {
         $scope.userLoginType = 'teacher';
         $scope.getTeacherData();
+    }
+    if ($scope.userData.loginType == 'studParent') {
+        $scope.userLoginType = 'teacher';
+        $scope.getStudentAttendance();
     }
     $scope.getStudListForCS = function (css) {
 

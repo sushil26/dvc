@@ -1,9 +1,15 @@
-app.controller('viewUserController',function ($scope, $state, $window, httpFactory) {
+app.controller('viewUserController', function ($scope, $state, $window, httpFactory) {
     console.log("viewUserController==>");
-    var id = $state.params.id
+    var id = $state.params.id;
+    var loginT = $state.params.loginT;
     $scope.getTeacherDetails = function (id) {
         console.log("getTeacherData-->");
-        var api = "https://norecruits.com/vc/teacherDetail" + "/" + id;
+        if (loginT == 'teacher') {
+            var api = "https://norecruits.com/vc/teacherDetail" + "/" + id;
+        }
+        else {
+            var api = "https://norecruits.com/vc/studentDetail" + "/" + id;
+        }
         //var api = "http://localhost:5000/vc/teacherDetail" + "/" + id;
         //var api = "http://localhost:5000/vc/eventGet";
         console.log("api: " + api);

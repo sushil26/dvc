@@ -73,6 +73,7 @@ module.exports.register4VC = function (req, res) {
 module.exports.login4VC = function (req, res) {
   console.log("login==>");
   var responseData;
+  
   if (general.emptyCheck(req.body.email) && general.emptyCheck(req.body.password)) {
     if (req.body.loginType == "teacher") {
       console.log("logintype: " + req.body.loginType);
@@ -90,7 +91,7 @@ module.exports.login4VC = function (req, res) {
           if (data.length > 0) {
             if (data[0].loginType == 'vc4allAdmin') {
               console.log("login-->:vc4allAdmin");
-              if (data[0].password == req.body.pswd) {
+              if (data[0].pswd == req.body.password) {
                 responseData = {
                   status: true,
                   message: "Login Successfully",
@@ -109,8 +110,8 @@ module.exports.login4VC = function (req, res) {
               }
             }
             else if(data[0].loginType == 'teacher') {
-              console.log("login-->: teacher: "+data[0].password+"req.body.pswd: "+req.body.pswd);
-              if (data[0].password == req.body.pswd) {
+              console.log("login-->: teacher: "+data[0].pswd+"req.body.password: "+req.body.password);
+              if (data[0].pswd == req.body.password) {
                 responseData = {
                   status: true,
                   message: "Login Successfully",
@@ -145,7 +146,7 @@ module.exports.login4VC = function (req, res) {
                   res.status(400).send(responseData);
                 } else {
                   if (schoolStatus[0].status == "active") {
-                    if (data[0].password == req.body.pswd) {
+                    if (data[0].pswd == req.body.password) {
                       if (data[0].status == "active") {
                         console.log("Successfully Logged in");
                         responseData = {
@@ -205,7 +206,7 @@ module.exports.login4VC = function (req, res) {
     else {
       stud.find({ $or: [{ parentEmail: req.body.email }, { MotherEmail: req.body.email }] }).toArray(function (err, data) {
         if (data.length > 0) {
-          if (data[0].password == req.body.pswd) {
+          if (data[0].pswd == req.body.password) {
             if (data[0].status == "active") {
               console.log("Successfully Logged in");
               responseData = {

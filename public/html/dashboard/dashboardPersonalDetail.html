@@ -135,19 +135,20 @@
                                         <b>Mother Phone</b>
                                     </span>: {{userData[0].mobileNum}}</p>
                             </div>
-                        </div>
-                        <div class="form-group" ng-if="loginType=='teacher'" style=" float: left !important;
+
+                            <div class="form-group" ng-if="loginType=='teacher'" style=" float: left !important;
 
                         margin-bottom: 10px !important;
                       
                         padding: 0 15px !important;">
-                            <p>
-                                <span>
-                                    <b>Class Handle</b>
-                                </span> :
-                                <span class="col-sm-3" ng-repeat="css in userData[0].css">{{css.class}}-{{css.section}}-{{css.subject}}</span>
-                            </p>
+                                <p>
+                                    <span>
+                                        <b>Class Handle</b>
+                                    </span> :
+                                    <span class="col-sm-3" ng-repeat="css in userData[0].css">{{css.class}}-{{css.section}}-{{css.subject}}</span>
+                                </p>
 
+                            </div>
                         </div>
                     </div>
                 </section>

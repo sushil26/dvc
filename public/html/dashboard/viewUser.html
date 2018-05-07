@@ -194,7 +194,28 @@
                                         <b>Status</b>
                                     </span>: {{userDetail[0].status}}</p>
                             </div>
-                            <div class="bio-row" ng-repeat="css in userDetail[0].css">
+                            <div class="form-group">
+
+                                <table class="table-responshive">
+                                    <thead>
+                                        <tr>
+                                            <th>Class</th>
+                                            <th>Section</th>
+                                            <th>Subject</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody ng-repeat="css in userDetail[0].css">
+                                        <tr>
+                                            <td>{{css.class}}</td>
+                                            <td>{{sec}}</td>
+                                            <td>{{sub}}</td>
+                                        </tr>
+                                    </tbody>
+
+                                </table>
+                            </div>
+
+                            <!-- <div class="bio-row" ng-repeat="css in userDetail[0].css">
                                 <p>
                                     <span>
                                         <b>Class</b>
@@ -211,7 +232,7 @@
                                     </span>:
                                     <span ng-repeat="sub in css.subject">{{sub}}</span>
                                 </p>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </section>

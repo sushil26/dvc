@@ -10,6 +10,7 @@ app.controller('viewUserController', function ($scope, $state, $window, httpFact
         else if(loginT == 'school')
         {
             var api = "https://norecruits.com/vc/getSchoolDataById" + "/" + id;
+           
         }
         else {
             var api = "https://norecruits.com/vc/studentDetail" + "/" + id;
@@ -23,7 +24,8 @@ app.controller('viewUserController', function ($scope, $state, $window, httpFact
             if (checkStatus) {
                 $scope.userDetail = data.data.data;
                 console.log("userDetail: " + JSON.stringify($scope.userDetail));
-                if($scope.userDetail.schoolRegNumber!=''){
+                console.log("$scope.userDetail.schoolRegNumber: "+$scope.userDetail.schoolRegNumber);
+                if($scope.userDetail.schoolRegNumber!=undefined){
                     $scope.loginType = "school";
                 }
                 else

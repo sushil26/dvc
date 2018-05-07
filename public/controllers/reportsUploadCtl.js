@@ -108,10 +108,9 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
     console.log("<--addUploadReports");
   }
 
-  $scope.uploadMarkFile = function (file, testType, dt, clas, section) {
+  $scope.uploadMarkFile = function (file, testType, date, clas, section) {
     console.log("uploadMarkFile-->");
    console.log("testTYpe: "+testType+"date: "+date);
-   var date = new Date(dt);
     var obj = {
       "file": file
     }

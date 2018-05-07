@@ -44,7 +44,7 @@ app.controller('markViewCtl', function ($scope, $window, httpFactory, $compile, 
                 console.log("studData: " + JSON.stringify(studData));
                 console.log("$scope.mark: " + JSON.stringify($scope.mark));
                 console.log("$scope.mark.length: " + $scope.mark.length);
-                //                 for (var x = 0; x < $scope.mark.length; x++) {
+                // for (var x = 0; x < $scope.mark.length; x++) {
                 // $scope.test
                 //                 }
                 // for (var x = 0; x < $scope.mark.length; x++) {

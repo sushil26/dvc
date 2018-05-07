@@ -22,8 +22,16 @@ app.controller('viewUserController', function ($scope, $state, $window, httpFact
             //console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
                 $scope.userDetail = data.data.data;
-                $scope.loginType = $scope.userDetail[0].loginType;
                 console.log("userDetail: " + JSON.stringify($scope.userDetail));
+                if($scope.userDetail.schoolRegNumber!=''){
+                    $scope.loginType = "vc4allAdmin";
+                }
+                else
+                {
+                    $scope.loginType = $scope.userDetail[0].loginType;
+                }
+                
+               
                 //   $scope.css = $scope.teacherData[0].css;
                 //   console.log("$scope.css: " + JSON.stringify($scope.css));
             }

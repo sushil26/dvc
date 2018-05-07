@@ -1,7 +1,7 @@
 <div ng-controller="userAuthCtrl">
   <section id="main-content">
     <section class="wrapper">
-      <div class="modal fade" id="myModalt" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <!-- <div class="modal fade" id="myModalt" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog" style="width:auto;">
           <div class="modal-content">
             <div class="modal-header">
@@ -62,7 +62,7 @@
 
           </div>
         </div>
-      </div>
+      </div> -->
 
       <div class="row">
         <div class="col-lg-12">
@@ -90,7 +90,7 @@
                     <td style="background-color:aliceblue;">{{$index+1}}.</td>
                     <td style="background-color:aliceblue;">{{ud.schoolId}}</td>
                     <td style="background-color:aliceblue;">
-                      <a class="btn-info" ng-click="tableForTimes($index)">{{ud.firstName + " " + ud.lastName}}</a>
+                      <a ng-click="tableForTimes($index)">{{ud.firstName + " " + ud.lastName}}</a>
                     </td>
                     <td style="background-color:aliceblue;">{{ud.email}}</td>
                     <td style="background-color:aliceblue;">{{ud.mobileNum}}</td>
@@ -140,7 +140,7 @@
                   <td style="background-color:aliceblue;">{{$index+1}}.</td>
                   <td style="background-color:aliceblue;">{{sd.schoolId}}</td>
                   <td style="background-color:aliceblue;">
-                    <button type="button" class="btn-info " data-toggle="modal" data-target="#myModal">{{sd.firstName + " " + sd.lastName}}</button>
+               {{sd.firstName + " " + sd.lastName}}
                     <!-- Modal -->
                   </td>
                   <td style="background-color:aliceblue;">{{sd.cs[0].class +" "+ sd.cs[0].section}}</td>

@@ -81,6 +81,11 @@ app.config(function ($stateProvider, $urlRouterProvider) {
       templateUrl: '/html/dashboard/dashboardEvent.html',
       controller: 'dashboardEventController'
     })
+    .state('dashboard.viewUser', {
+      url: viewUser(),
+      templateUrl: '/html/dashboard/viewUser.html',
+      controller: 'viewUserController'
+    })
     .state('dashboard.eventShedule', {
       url: dashboardEventShedule(),
       templateUrl: '/html/dashboard/scheduler.html',
@@ -290,6 +295,11 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 
 
 });
+
+
+function viewUser() {
+  return '/viewUser/:id';
+}
 function contact() {
   return '/contact';
 }

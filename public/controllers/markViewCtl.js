@@ -39,39 +39,39 @@ app.controller('markViewCtl', function ($scope, $window, httpFactory, $compile, 
                 console.log("studData: " + JSON.stringify(studData));
                 console.log("$scope.attendance: " + JSON.stringify($scope.attendance));
                 console.log("$scope.attendance.length: " + $scope.attendance.length);
-                for (var x = 0; x < $scope.attendance.length; x++) {
-                    console.log("$scope.attendance[x]: " + JSON.stringify($scope.attendance[x]));
-                    var year = "2018";
-                    var mon = $scope.attendance[x].month;
-                    console.log("$scope.attendance[x].dateAttendance.length: " + $scope.attendance[x].dateAttendance.length);
-                    for (var y = 0; y < $scope.attendance[x].dateAttendance.length; y++) {
-                        console.log("$scope.attendance[x].dateAttendance[y]: " + JSON.stringify($scope.attendance[x].dateAttendance[y]));
-                        var day = $scope.attendance[x].dateAttendance[y].date;
-                        console.log("day: " + day + "month: " + mon + "year: " + year);
-                        var resultDate = new Date(year + " " + mon + " " + day);
-                        console.log("resultDate: " + resultDate);
-                        console.log("moment().subtract(1, 'day').toDate(): " + moment().subtract(1, 'day').toDate());
+                // for (var x = 0; x < $scope.attendance.length; x++) {
+                //     console.log("$scope.attendance[x]: " + JSON.stringify($scope.attendance[x]));
+                //     var year = "2018";
+                //     var mon = $scope.attendance[x].month;
+                //     console.log("$scope.attendance[x].dateAttendance.length: " + $scope.attendance[x].dateAttendance.length);
+                //     for (var y = 0; y < $scope.attendance[x].dateAttendance.length; y++) {
+                //         console.log("$scope.attendance[x].dateAttendance[y]: " + JSON.stringify($scope.attendance[x].dateAttendance[y]));
+                //         var day = $scope.attendance[x].dateAttendance[y].date;
+                //         console.log("day: " + day + "month: " + mon + "year: " + year);
+                //         var resultDate = new Date(year + " " + mon + " " + day);
+                //         console.log("resultDate: " + resultDate);
+                //         console.log("moment().subtract(1, 'day').toDate(): " + moment().subtract(1, 'day').toDate());
 
-                        var obj = {
-                            'title': $scope.attendance[x].dateAttendance[y].status,
-                            'startsAt': resultDate,
-                            'endsAt': resultDate,
-                            'draggable': true,
-                            'resizable': true,
-                            'incrementsBadgeTotal': false
-                        }
-                        if ($scope.attendance[x].dateAttendance[y].status == "P") {
-                            obj.color = calendarConfig.colorTypes.info;
-                        }
-                        else {
-                            obj.color = calendarConfig.colorTypes.important;
-                        }
-                        console.log("obj: " + JSON.stringify(obj));
-                        $scope.events.push(obj);
+                //         var obj = {
+                //             'title': $scope.attendance[x].dateAttendance[y].status,
+                //             'startsAt': resultDate,
+                //             'endsAt': resultDate,
+                //             'draggable': true,
+                //             'resizable': true,
+                //             'incrementsBadgeTotal': false
+                //         }
+                //         if ($scope.attendance[x].dateAttendance[y].status == "P") {
+                //             obj.color = calendarConfig.colorTypes.info;
+                //         }
+                //         else {
+                //             obj.color = calendarConfig.colorTypes.important;
+                //         }
+                //         console.log("obj: " + JSON.stringify(obj));
+                //         $scope.events.push(obj);
 
-                    }
-                }
-                console.log("$scope.events: " + JSON.stringify($scope.events));
+                //     }
+                // }
+                // console.log("$scope.events: " + JSON.stringify($scope.events));
 
             }
             else {
@@ -117,5 +117,13 @@ app.controller('markViewCtl', function ($scope, $window, httpFactory, $compile, 
         })
         console.log("<--getStudListForCS");
 
+    }
+    $scope.getStudentMarks = function (cs) {
+        console.log("getStudentMarks-->");
+        $scope.events = [];
+        console.log("cs: " + JSON.stringify(cs));
+        var id = cs.id;
+        $scope.getMarks(id);
+        
     }
 })

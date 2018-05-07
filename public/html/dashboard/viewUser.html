@@ -14,9 +14,7 @@
                         </h3>
                     </div>
                     <div class="panel-body bio-graph-info">
-                        <div class="row" style="margin-left: 20px !important;margin-right: 20px !important;">
-
-
+                        <div ng-if="loginType!='school'" class="row" style="margin-left: 20px !important;margin-right: 20px !important;">
 
                             <div class="bio-row">
 
@@ -153,6 +151,84 @@
 
                             </div>
                         </div>
+                        <div ng-if="loginType=='school'" class="row" style="margin-left: 20px !important;margin-right: 20px !important;">
+                            <div class="bio-row">
+                                <p>
+                                    <span>
+                                        <b>School Name</b>
+                                    </span>{{userDetail[0].schoolName}}</p>
+                            </div>
+                            <div class="bio-row">
+                                <p>
+                                    <span>
+                                        <b>School RegNumber</b>
+                                    </span>{{userDetail[0].schoolRegNumber}}</p>
+                            </div>
+                            <div class="bio-row">
+                                <p>
+                                    <span>
+                                        <b>Address</b>
+                                    </span>{{userDetail[0].address}}</p>
+                            </div>
+                            <div class="bio-row">
+                                <p>
+                                    <span>
+                                        <b>Email</b>
+                                    </span>{{userDetail[0].email}}</p>
+                            </div>
+                            <div class="bio-row">
+                                <p>
+                                    <span>
+                                        <b>Mobile Number</b>
+                                    </span>{{userDetail[0].mobNumber}}</p>
+                            </div>
+                            <div class="bio-row">
+                                <p>
+                                    <span>
+                                        <b>City</b>
+                                    </span>{{userDetail[0].city}}</p>
+                            </div>
+                            <div class="bio-row">
+                                <p>
+                                    <span>
+                                        <b>Street Name</b>
+                                    </span>{{userDetail[0].streetName}}</p>
+                            </div>
+                            <div class="bio-row">
+                                <p>
+                                    <span>
+                                        <b>PinCode</b>
+                                    </span>{{userDetail[0].pinCode}}</p>
+                            </div>
+                            <div class="bio-row">
+                                <p>
+                                    <span>
+                                        <b>Country</b>
+                                    </span>{{userDetail[0].country}}</p>
+                            </div>
+                            <div class="bio-row">
+                                <p>
+                                    <span>
+                                        <b>Status</b>
+                                    </span>{{userDetail[0].status}}</p>
+                            </div>
+                            <div class="bio-row" ng-repeat="css in userDetail[0].css">
+                                <p>
+                                    <span>
+                                        <b>Class</b>
+                                    </span>{{css.class}}</p>
+                                <p>
+                                    <span>
+                                        <b>Section</b>
+                                    </span ng-repeat="section in css.section">{{section}}</p>
+                                    <p>
+                                            <span>
+                                                <b>Subject</b>
+                                            </span ng-repeat="subject in css.subject">{{subject}}</p>
+                            </div>
+
+                        </div>
+
                     </div>
                 </section>
 

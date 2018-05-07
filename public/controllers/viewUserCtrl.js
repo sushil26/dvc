@@ -24,7 +24,7 @@ app.controller('viewUserController', function ($scope, $state, $window, httpFact
                 $scope.userDetail = data.data.data;
                 console.log("userDetail: " + JSON.stringify($scope.userDetail));
                 if($scope.userDetail.schoolRegNumber!=''){
-                    $scope.loginType = "vc4allAdmin";
+                    $scope.loginType = "school";
                 }
                 else
                 {

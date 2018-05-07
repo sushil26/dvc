@@ -24,8 +24,9 @@ app.controller('viewUserController', function ($scope, $state, $window, httpFact
             if (checkStatus) {
                 $scope.userDetail = data.data.data;
                 console.log("userDetail: " + JSON.stringify($scope.userDetail));
+                console.log("$scope.userDetail.schoolRegNumber: "+$scope.userDetail.schoolRegNumber);
                 if($scope.userDetail.schoolRegNumber!=''){
-                   
+                    $scope.loginType = "school";
                 }
                 else
                 {

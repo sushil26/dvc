@@ -118,7 +118,7 @@ module.exports.getSchoolDataById = function (req, res) {
                 responseData = {
                     status: true,
                     message: "Successfull retrived data",
-                    data: data[0]
+                    data: data
                 };
 
                 res.status(200).send(responseData);

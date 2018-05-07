@@ -56,7 +56,7 @@
                                             <b>ID</b>
                                         </span>: {{userDetail[0].schoolId}} </p>
                                 </div> -->
-                                <div class="bio-row" ng-if="loginType!='vc4allAdmin'">
+                                <div class="bio-row" ng-if="loginType!='vc4allAdmin' && loginType!='studParent'">
                                     <p>
                                         <span>
                                             <b>Mobile Number</b>
@@ -82,8 +82,14 @@
                                             <b>Date of birth</b>
                                         </span>: {{userDetail[0].dob}}</p>
                                 </div>
-    
                                 <div class="bio-row" >
+                                        <p>
+                                            <span>
+                                                <b>Date of Join</b>
+                                            </span>: {{userDetail[0].doj}}</p>
+                                    </div>
+    
+                                <div class="bio-row"  ng-if="loginType!='studParent'">
                                     <p>
                                         <span>
                                             <b>E-Mail</b>

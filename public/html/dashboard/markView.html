@@ -31,17 +31,20 @@
                                 </select>
                             </div>
                             <div class="form-group ">
-                                <table ng-repeat="sm in mSelect.subjectWithMark">
-                                    <tr>
-                                        <th>Test Start Date</th>
-                                        <td>{{sm.date}}</td>
-                                    </tr>
-                                    <tr>
-                                        <th ng-repeat="(key, value) in sm.mark">{{key}}</th>
-                                    </tr>
-                                    <tr>
-                                        <td ng-repeat="(key, value) in sm.mark">{{value}}</td>
-                                    </tr>
+                                <table class="table table-striped table-advance table-hover" ng-repeat="sm in mSelect.subjectWithMark">
+                                    <tbody>
+                                        <tr>
+                                            <th>Test Start Date</th>
+                                            <th>{{sm.date}}</th>
+                                        </tr>
+                                        <tr>
+                                            <th ng-repeat="(key, value) in sm.mark">{{key}}</th>
+                                        </tr>
+                                        <tr>
+                                            <td ng-repeat="(key, value) in sm.mark">{{value}}</td>
+                                        </tr>
+
+                                    </tbody>
                                 </table>
                             </div>
                         </div>

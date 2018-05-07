@@ -1,0 +1,77 @@
+<div ng-controller="markViewCtl">
+    <style type="text/css">
+        /* mwl-calendar .cal-month-day {
+              max-height: 80px !important;
+              height: 80px !important;
+            } */
+
+        mwl-calendar .cal-month-box [class*=cal-cell],
+        mwl-calendar .cal-year-box [class*=span] {
+            max-height: 80px !important;
+            min-height: 40px !important;
+        }
+
+        mwl-calendar span[data-cal-date] {
+            font-weight: 400;
+            opacity: .5;
+            margin-top: 5px;
+            margin-right: 5px;
+        }
+
+        mwl-calendar .cal-month-day {
+            max-height: 80px !important;
+            height: 60px !important;
+        }
+
+        mwl-calendar .event {
+            width: 8px;
+            height: 8px;
+        }
+
+        .cal-day-hour-part-time strong.ng-hide {
+            display: block !important;
+        }
+
+        .cal-day-hour-part-time {
+            background-color: skyblue;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        .cal-day-open {
+            background: #ff7777;
+        }
+    </style>
+    <!--main content start-->
+    <section id="main-content">
+        <section class="wrapper">
+            <div id="profile">
+                <section class="panel">
+                    <div class="bio-graph-heading">
+                        <h3>
+                            <i class="fa fa-clipboard">
+                                <span>&nbspAttendance Report</span>
+                            </i>
+                        </h3>
+                    </div>
+                    <div class="panel-body bio-graph-info">
+                        <div ng-option="userData.loginType=='teacher'" style="height: 40px; margin-left: 20px !important;margin-right: 20px !important;">
+                            <select class="btn btn-danger" ng-if="userLoginType=='teacher'" placeholder="select" ng-model="cssSelect" ng-change="getStudListForCS(cssSelect)"
+                                ng-options="css as css.class+ '-' + css.section + '-' + css.subject for css in teacherData[0].css">
+                                <option value="" disabled selected>Class</option>
+                            </select>
+
+                            <select class="btn" ng-if="userLoginType=='teacher'" placeholder="select" ng-model="csSelect" ng-change="getStudentAttendance(csSelect)"
+                                ng-options="cs as cs.name + '-' + cs.studId for cs in studList">
+                                <option value="" disabled selected>Student</option>
+                            </select>
+                            <div style="float: right;">
+                                <span style="color:#1b7fe3;font-size:20px;">&#8226 &nbsp</span>Present
+                                <span style="color:red;font-size:20px;">&#8226 &nbsp </span>Absent
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </section>
+    </section>
+</div>

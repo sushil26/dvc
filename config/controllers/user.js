@@ -89,6 +89,7 @@ module.exports.login4VC = function (req, res) {
           console.log("data.length: " + data.length);
           if (data.length > 0) {
             if (data[0].loginType == 'vc4allAdmin') {
+              console.log("login-->:vc4allAdmin");
               if (data[0].password == req.body.pswd) {
                 responseData = {
                   status: true,
@@ -108,6 +109,7 @@ module.exports.login4VC = function (req, res) {
               }
             }
             else if(data[0].loginType == 'teacher') {
+              console.log("login-->: teacher");
               if (data[0].password == req.body.pswd) {
                 responseData = {
                   status: true,

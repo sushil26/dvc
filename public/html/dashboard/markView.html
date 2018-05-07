@@ -70,9 +70,9 @@
                                 <option value="" disabled selected>testType</option>
                             </select>
 
-                            <table>
+                            <table ng-repeat="sm in mSelect.subjectWithMark">
                                 <tr>
-                                    <th ng-repeat="(key, value) in mSelect.subjectWithMark">{{key}}</th>
+                                    <th ng-repeat="(key, value) in sm.mark">{{key}}</th>
                                 </tr>
                             </table>
 

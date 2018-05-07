@@ -107,6 +107,25 @@ module.exports.login4VC = function (req, res) {
                 res.status(200).send(responseData);
               }
             }
+            else if(data[0].loginType == 'teacher') {
+              if (data[0].password == req.body.pswd) {
+                responseData = {
+                  status: true,
+                  message: "Login Successfully",
+                  sessionData: "79ea520a-3e67-11e8-9679-97fa7aeb8e97",
+                  data: data[0]
+                };
+                res.status(200).send(responseData);
+              }
+              else {
+                responseData = {
+                  status: false,
+                  errorCode: "E005",
+                  message: "Password is wrong"
+                };
+                res.status(200).send(responseData);
+              }
+            }
             else {
               console.log("data[0].schoolName: " + data[0].schoolName);
               var sn = {

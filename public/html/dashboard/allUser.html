@@ -40,8 +40,8 @@
                                                             <th>Admin Name</th>
                                                             <th>Email</th>
                                                             <th>Phone Number</th>
-
                                                             <th>Status</th>
+                                                            <th>View</th>
                                                             <th>Activation</th>
                                                             <th>Delete</th>
                                                         </tr>
@@ -53,6 +53,9 @@
                                                             <td style="background-color:aliceblue;">{{ad.email}}</td>
                                                             <td style="background-color:aliceblue;">{{ad.mobNumber}}</td>
                                                             <td style="background-color:tomato;">{{ad.status}}</td>
+                                                            <td style="background-color:aliceblue;">
+                                                                <button>View</button>
+                                                            </td>
                                                             <td style="background-color:aliceblue;">
                                                                 <button class="btn" ng-if="ad.status=='active'" ng-click="updateAdminStatus(ad._id,'inactive',$index)" style="width: 70px;">Dectivate</button>
                                                                 <button class="btn" ng-if="ad.status=='inactive'" ng-click="updateAdminStatus(ad._id,'active',$index)" style="width: 70px;">Activate</button>
@@ -80,6 +83,7 @@
                                                             <th>Teacher Name</th>
                                                             <th>Email</th>
                                                             <th>Mobile Number</th>
+                                                            <th>View</th>
                                                             <th>Status</th>
                                                         </tr>
                                                     </thead>
@@ -91,7 +95,11 @@
                                                                 <a class="btn-info" ng-click="tableForTimes($index)">{{td.firstName + " " + td.lastName}}</a>
                                                             </td>
                                                             <td style="background-color:aliceblue;">{{td.email}}</td>
+
                                                             <td style="background-color:aliceblue;">{{td.mobileNum}}</td>
+                                                            <td style="background-color:aliceblue;">
+                                                                <button>View</button>
+                                                            </td>
                                                             <td ng-if="td.status=='active'" style="background-color:aliceblue;">{{td.status}}</td>
                                                             <td ng-if="td.status=='inactive'" style="background-color:tomato;">{{td.status}}</td>
 
@@ -113,6 +121,7 @@
                                                             <th>#</th>
                                                             <th>Student Id</th>
                                                             <th>Student Name</th>
+                                                            <th>View</th>
 
                                                             <th>Class</th>
                                                             <th>Section</th>
@@ -126,6 +135,9 @@
                                                             <td style="background-color:aliceblue;">
                                                                 <button type="button" class="btn-info " data-toggle="modal" data-target="#myModal">{{sd.firstName + " " + sd.lastName}}</button>
                                                                 <!-- Modal -->
+                                                            </td>
+                                                            <td style="background-color:aliceblue;">
+                                                                <button>View</button>
                                                             </td>
                                                             <td style="background-color:aliceblue;">{{sd.cs[0].class}}</td>
                                                             <td style="background-color:aliceblue;">{{sd.cs[0].section}}</td>

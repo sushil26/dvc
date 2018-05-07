@@ -89,6 +89,27 @@ module.exports.login4VC = function (req, res) {
           console.log("data.length: " + data.length);
           if (data.length > 0) {
             if (data[0].loginType == 'vc4allAdmin') {
+              console.log("login-->:vc4allAdmin");
+              if (data[0].password == req.body.pswd) {
+                responseData = {
+                  status: true,
+                  message: "Login Successfully",
+                  sessionData: "79ea520a-3e67-11e8-9679-97fa7aeb8e97",
+                  data: data[0]
+                };
+                res.status(200).send(responseData);
+              }
+              else {
+                responseData = {
+                  status: false,
+                  errorCode: "E005",
+                  message: "Password is wrong"
+                };
+                res.status(200).send(responseData);
+              }
+            }
+            else if(data[0].loginType == 'teacher') {
+              console.log("login-->: teacher");
               if (data[0].password == req.body.pswd) {
                 responseData = {
                   status: true,

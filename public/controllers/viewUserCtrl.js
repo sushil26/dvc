@@ -10,7 +10,7 @@ app.controller('viewUserController', function ($scope, $state, $window, httpFact
         else if(loginT == 'school')
         {
             var api = "https://norecruits.com/vc/getSchoolDataById" + "/" + id;
-            $scope.loginType = "school";
+           
         }
         else {
             var api = "https://norecruits.com/vc/studentDetail" + "/" + id;

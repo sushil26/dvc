@@ -109,7 +109,7 @@ module.exports.login4VC = function (req, res) {
               }
             }
             else if(data[0].loginType == 'teacher') {
-              console.log("login-->: teacher");
+              console.log("login-->: teacher: "+data[0].password+"req.body.pswd: "+req.body.pswd);
               if (data[0].password == req.body.pswd) {
                 responseData = {
                   status: true,

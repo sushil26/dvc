@@ -15,141 +15,141 @@
                     </div>
 
                     <div class="panel-body bio-graph-info">
-                        <div class="form-group">
-                       
-                            <select class="btn btn-warning col-lg-4" placeholder="select" ng-model="selectedSchool" ng-options="sl as sl for sl in schoolList"
-                                ng-change="schoolUserData(selectedSchool)">
-                                <option value="" disabled selected>Select School</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-12">
-                                <section class="panel">
-                                    <header class="panel-heading">
-                                        <h2>Admin </h2>
-                                    </header>
-                                    <table class="table table-condensed">
-                                        <thead>
-                                            <tr>
-                                                <th>#</th>
+                        <div>
+                            <div class="form-group">
 
-                                                <th>Admin Name</th>
-                                                <th>Email</th>
-                                                <th>Phone Number</th>
-                                                <th>Status</th>
-                                                <th>Activation</th>
-                                                <th>View</th>
-                                                <th>Delete</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr ng-repeat="ad in teacherData" ng-if="ad.loginType=='admin'">
-                                                <td style="background-color:aliceblue;">{{$index+1}}.</td>
-                                                <td style="background-color:aliceblue;">{{ad.firstName + " " + ad.lastName}}</td>
-                                                <td style="background-color:aliceblue;">{{ad.email}}</td>
-                                                <td style="background-color:aliceblue;">{{ad.mobNumber}}</td>
-                                                <td style="background-color:tomato;">{{ad.status}}</td>
-                                                <td style="background-color:aliceblue;">
-                                                    <button class="btn" ng-if="ad.status=='active'" ng-click="updateAdminStatus(ad._id,'inactive',$index)" style="width: 70px;">Dectivate</button>
-                                                    <button class="btn" ng-if="ad.status=='inactive'" ng-click="updateAdminStatus(ad._id,'active',$index)" style="width: 70px;">Activate</button>
-                                                </td>
-                                                <td style="background-color:aliceblue;">
-                                                    <button ng-click="viewUser(ad._id, 'teacher')">View</button>
-                                                </td>
-                                                <td style="background-color:aliceblue;">
-                                                    <button class="btn" ng-click="deleteStud(ad._id, $index)">Delete</button>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </section>
+                                <select class="btn btn-warning col-lg-4" placeholder="select" ng-model="selectedSchool" ng-options="sl as sl for sl in schoolList"
+                                    ng-change="schoolUserData(selectedSchool)">
+                                    <option value="" disabled selected>Select School</option>
+                                </select>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-12">
-                                <section class="panel">
-                                    <header class="panel-heading">
-                                        <h2>Teacher List </h2>
-                                    </header>
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>Teacher Id</th>
-                                                <th>Teacher Name</th>
-                                                <th>Email</th>
-                                                <th>Mobile Number</th>
-                                                <th>View</th>
-                                                <th>Status</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr ng-repeat="td in teacherData" ng-if="td.loginType=='teacher'">
-                                                <td style="background-color:aliceblue;">{{$index+1}}.</td>
-                                                <td style="background-color:aliceblue;">{{td.schoolId}}</td>
-                                                <td style="background-color:aliceblue;">
-                                                    <a class="btn-info" ng-click="tableForTimes($index)">{{td.firstName + " " + td.lastName}}</a>
-                                                </td>
-                                                <td style="background-color:aliceblue;">{{td.email}}</td>
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <section class="panel">
+                                        <header class="panel-heading">
+                                            <h2>Admin </h2>
+                                        </header>
+                                        <table class="table table-condensed">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
 
-                                                <td style="background-color:aliceblue;">{{td.mobileNum}}</td>
-
-                                                <td ng-if="td.status=='active'" style="background-color:aliceblue;">{{td.status}}</td>
-                                                <td ng-if="td.status=='inactive'" style="background-color:tomato;">{{td.status}}</td>
-                                                <td style="background-color:aliceblue;">
-                                                    <button ng-click="viewUser(td._id, 'teacher')">View</button>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </section>
+                                                    <th>Admin Name</th>
+                                                    <th>Email</th>
+                                                    <th>Phone Number</th>
+                                                    <th>Status</th>
+                                                    <th>Activation</th>
+                                                    <th>View</th>
+                                                    <th>Delete</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="ad in teacherData" ng-if="ad.loginType=='admin'">
+                                                    <td style="background-color:aliceblue;">{{$index+1}}.</td>
+                                                    <td style="background-color:aliceblue;">{{ad.firstName + " " + ad.lastName}}</td>
+                                                    <td style="background-color:aliceblue;">{{ad.email}}</td>
+                                                    <td style="background-color:aliceblue;">{{ad.mobNumber}}</td>
+                                                    <td style="background-color:tomato;">{{ad.status}}</td>
+                                                    <td style="background-color:aliceblue;">
+                                                        <button class="btn" ng-if="ad.status=='active'" ng-click="updateAdminStatus(ad._id,'inactive',$index)" style="width: 70px;">Dectivate</button>
+                                                        <button class="btn" ng-if="ad.status=='inactive'" ng-click="updateAdminStatus(ad._id,'active',$index)" style="width: 70px;">Activate</button>
+                                                    </td>
+                                                    <td style="background-color:aliceblue;">
+                                                        <button ng-click="viewUser(ad._id, 'teacher')">View</button>
+                                                    </td>
+                                                    <td style="background-color:aliceblue;">
+                                                        <button class="btn" ng-click="deleteStud(ad._id, $index)">Delete</button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </section>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-12">
-                                <section class="panel">
-                                    <header class="panel-heading">
-                                        <h2>Student List</h2>
-                                    </header>
-                                    <table class="table table-condensed">
-                                        <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>Student Id</th>
-                                                <th>Student Name</th>
-                                                <th>View</th>
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <section class="panel">
+                                        <header class="panel-heading">
+                                            <h2>Teacher List </h2>
+                                        </header>
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Teacher Id</th>
+                                                    <th>Teacher Name</th>
+                                                    <th>Email</th>
+                                                    <th>Mobile Number</th>
+                                                    <th>View</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="td in teacherData" ng-if="td.loginType=='teacher'">
+                                                    <td style="background-color:aliceblue;">{{$index+1}}.</td>
+                                                    <td style="background-color:aliceblue;">{{td.schoolId}}</td>
+                                                    <td style="background-color:aliceblue;">
+                                                        <a class="btn-info" ng-click="tableForTimes($index)">{{td.firstName + " " + td.lastName}}</a>
+                                                    </td>
+                                                    <td style="background-color:aliceblue;">{{td.email}}</td>
 
-                                                <th>Class</th>
-                                                <th>Section</th>
-                                                <th>Status</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr ng-repeat="sd in studentData">
-                                                <td style="background-color:aliceblue;">{{$index+1}}.</td>
-                                                <td style="background-color:aliceblue;">{{sd.schoolId}}</td>
-                                                <td style="background-color:aliceblue;">
-                                                    <button type="button" class="btn-info " data-toggle="modal" data-target="#myModal">{{sd.firstName + " " + sd.lastName}}</button>
-                                                    <!-- Modal -->
-                                                </td>
-                                                <td style="background-color:aliceblue;">{{sd.cs[0].class}}</td>
-                                                <td style="background-color:aliceblue;">{{sd.cs[0].section}}</td>
-                                                <td ng-if="sd.status=='active'" style="background-color:aliceblue;">{{sd.status}}</td>
-                                                <td ng-if="sd.status=='inactive'" style="background-color:tomato;">{{sd.status}}</td>
-                                                <td style="background-color:aliceblue;">
-                                                    <button ng-click="viewUser(sd._id,'studParent')">View</button>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                                    <td style="background-color:aliceblue;">{{td.mobileNum}}</td>
 
+                                                    <td ng-if="td.status=='active'" style="background-color:aliceblue;">{{td.status}}</td>
+                                                    <td ng-if="td.status=='inactive'" style="background-color:tomato;">{{td.status}}</td>
+                                                    <td style="background-color:aliceblue;">
+                                                        <button ng-click="viewUser(td._id, 'teacher')">View</button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </section>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <section class="panel">
+                                        <header class="panel-heading">
+                                            <h2>Student List</h2>
+                                        </header>
+                                        <table class="table table-condensed">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Student Id</th>
+                                                    <th>Student Name</th>
+                                                    <th>View</th>
+
+                                                    <th>Class</th>
+                                                    <th>Section</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="sd in studentData">
+                                                    <td style="background-color:aliceblue;">{{$index+1}}.</td>
+                                                    <td style="background-color:aliceblue;">{{sd.schoolId}}</td>
+                                                    <td style="background-color:aliceblue;">
+                                                        <button type="button" class="btn-info " data-toggle="modal" data-target="#myModal">{{sd.firstName + " " + sd.lastName}}</button>
+                                                        <!-- Modal -->
+                                                    </td>
+                                                    <td style="background-color:aliceblue;">{{sd.cs[0].class}}</td>
+                                                    <td style="background-color:aliceblue;">{{sd.cs[0].section}}</td>
+                                                    <td ng-if="sd.status=='active'" style="background-color:aliceblue;">{{sd.status}}</td>
+                                                    <td ng-if="sd.status=='inactive'" style="background-color:tomato;">{{sd.status}}</td>
+                                                    <td style="background-color:aliceblue;">
+                                                        <button ng-click="viewUser(sd._id,'studParent')">View</button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                </div>
                             </div>
                         </div>
                     </div>
-                </section>
-
-
+                    </section>
             </div>
+            </section>
         </section>
-    </section>
 </div>

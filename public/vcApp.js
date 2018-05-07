@@ -200,6 +200,21 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         }
       }
     })
+    .state('dashboard.markView', {
+      url: markView(),
+      templateUrl: '/html/dashboard/markView.html',
+      controller: 'markViewCtl',
+      resolve: {
+        result: function (sessionAuthFactory, $window) {
+          var userData = sessionAuthFactory.getAccess("userData");
+          if (userData.loginType == 'teacher' || userData.loginType == 'studParent') {
+          }
+          else {
+            $window.location.href = 'https://norecruits.com';
+          }
+        }
+      }
+    })
     .state('dashboard.adminCreate', {
       url: adminCreate(),
       templateUrl: '/html/dashboard/adminCreate.html',
@@ -344,6 +359,10 @@ function logout() {
 }
 function attendanceView() {
   return '/attendanceView';
+}
+function markView()
+{
+  return '/markView';
 }
 
 

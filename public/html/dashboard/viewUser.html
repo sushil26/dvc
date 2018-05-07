@@ -18,50 +18,45 @@
     
     
     
-                                <div class="bio-row" ng-if="loginType=='admin'">
+                                <div class="bio-row" >
     
                                     <p>
                                         <span>
                                             <b>Name</b>
-                                        </span>:Admin </p>
+                                        </span>{{userDetail[0].firstName +" "+ userDetail[0].lastName}}</p>
                                 </div>
-                                <div class="bio-row" ng-if="loginType=='admin'">
-                                    <p>
-                                        <span>
-                                            <b>School Name</b>
-                                        </span>: {{Careator School}} </p>
-                                </div>
-                                <div class="bio-row" ng-if="loginType!='admin'">
+                                
+                                <div class="bio-row" ng-if="loginType!='vc4allAdmin'">
                                     <p>
                                         <span>
                                             <b>School Name</b>
                                         </span>: {{userDetail[0].schoolName}} </p>
                                 </div>
-                                <div class="bio-row" ng-if="loginType=='studParent'">
+                                <!-- <div class="bio-row" ng-if="loginType=='studParent'">
                                     <p>
                                         <span>
                                             <b> Student Name</b>
                                         </span>: {{userDetail[0].firstName +" "+ userDetail[0].lastName}}</p>
-                                </div>
-                                <div class="bio-row" ng-if="loginType=='teacher'">
+                                </div> -->
+                                <!-- <div class="bio-row" ng-if="loginType=='teacher'">
                                     <p>
                                         <span>
                                             <b>Teacher Name</b>
                                         </span>: {{userDetail[0].firstName +" "+ userDetail[0].lastName}}</p>
-                                </div>
-                                <div class="bio-row" ng-if="loginType=='teacher'">
+                                </div> -->
+                                <div class="bio-row" ng-if="loginType!='admin' loginType!='vc4allAdmin'">
                                     <p>
                                         <span>
                                             <b>ID</b>
                                         </span>: {{userDetail[0].schoolId}} </p>
                                 </div>
-                                <div class="bio-row" ng-if="loginType=='studParent'">
+                                <!-- <div class="bio-row" ng-if="loginType=='studParent'">
                                     <p>
                                         <span>
                                             <b>ID</b>
                                         </span>: {{userDetail[0].schoolId}} </p>
-                                </div>
-                                <div class="bio-row" ng-if="loginType=='teacher'">
+                                </div> -->
+                                <div class="bio-row" ng-if="loginType!='vc4allAdmin'">
                                     <p>
                                         <span>
                                             <b>Mobile Number</b>
@@ -81,14 +76,14 @@
                                     </p>
                                 </div>
     
-                                <div class="bio-row" ng-if="loginType=='studParent'">
+                                <div class="bio-row" >
                                     <p>
                                         <span>
                                             <b>Date of birth</b>
-                                        </span>: 27 August 1987</p>
+                                        </span>: {{userDetail[0].dob}}</p>
                                 </div>
     
-                                <div class="bio-row" ng-if="loginType=='teacher'">
+                                <div class="bio-row" >
                                     <p>
                                         <span>
                                             <b>E-Mail</b>
@@ -145,7 +140,7 @@
                                         <span>
                                             <b>Class Handles</b>
                                         </span>:
-                                        <span class="col-sm-3" ng-repeat="css in userData[0].css"> {{css.class}}-{{css.section}}-{{css.subject}}</span>
+                                        <span class="col-sm-3" ng-repeat="css in userDetail[0].css"> {{css.class}}-{{css.section}}-{{css.subject}}</span>
                                     </p>
     
                                 </div>

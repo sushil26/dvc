@@ -7,48 +7,56 @@
                     <div class="bio-graph-heading">
                         <h3>
                             <i class="fa fa-user-circle">
-                                <span>&nbspALL Admin</span>
+                                <span>&nbspSchool List</span>
                             </i>
                         </h3>
                     </div>
                     <div class="panel-body bio-graph-info">
                         <div style="margin-left: 20px !important;margin-right: 20px !important;">
                             <section class="panel">
-                                <table class="table table-condensed">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Registration Number</th>
-                                            <th>School Name</th>
-                                            <th>Email</th>
-                                            <th>Phone Number</th>
-                                            <th>Status</th>
-                                            <th>Activation</th>
-                                            <th>View</th>
-                                            <th>Delete</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr ng-repeat="sd in allSchool">
-                                            <td style="background-color:aliceblue;">{{$index+1}}</td>
-                                            <td style="background-color:aliceblue;">{{sd.schoolRegNumber}}</td>
-                                            <td style="background-color:aliceblue;">{{sd.schoolName}}</td>
-                                            <td style="background-color:aliceblue;">{{sd.email}}</td>
-                                            <td style="background-color:aliceblue;">{{sd.mobNumber}}</td>
-                                            <td style="background-color:tomato;">{{sd.status}}</td>
-                                            <td style="background-color:aliceblue;">
-                                                <button class="btn" ng-if="sd.status=='active'" ng-click="updateSchoolStatus(sd._id,'inactive',$index)" style="width: 70px;">Dectivate</button>
-                                                <button class="btn" ng-if="sd.status=='inactive'" ng-click="updateSchoolStatus(sd._id,'active',$index)" style="width: 70px;">Activate</button>
-                                            </td>
-                                            <td style="background-color:aliceblue;">
-                                                <button class="btn" ng-click="viewUser(sd._id, 'teacher')">View</button>
-                                            </td>
-                                            <td style="background-color:aliceblue;">
-                                                <button class="btn" ng-click="deleteStud(sd._id, $index)">Delete</button>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <section class="panel">
+
+                                            <table class="table table-condensed">
+                                                <thead>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>Registration Number</th>
+                                                        <th>School Name</th>
+                                                        <th>Email</th>
+                                                        <th>Phone Number</th>
+                                                        <th>Status</th>
+
+                                                        <th>Activation</th>
+                                                        <th>View</th>
+                                                        <th>Delete</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="sd in allSchool">
+                                                        <td style="background-color:aliceblue;">{{$index+1}}</td>
+                                                        <td style="background-color:aliceblue;">{{sd.schoolRegNumber}}</td>
+                                                        <td style="background-color:aliceblue;">{{sd.schoolName}}</td>
+                                                        <td style="background-color:aliceblue;">{{sd.email}}</td>
+                                                        <td style="background-color:aliceblue;">{{sd.mobNumber}}</td>
+                                                        <td style="background-color:tomato;">{{sd.status}}</td>
+                                                        <td style="background-color:aliceblue;">
+                                                            <button class="btn" ng-if="sd.status=='active'" ng-click="updateSchoolStatus(sd._id,'inactive',$index)" style="width: 70px;">Dectivate</button>
+                                                            <button class="btn" ng-if="sd.status=='inactive'" ng-click="updateSchoolStatus(sd._id,'active',$index)" style="width: 70px;">Activate</button>
+                                                        </td>
+                                                        <td style="background-color:aliceblue;">
+                                                            <button class="btn" ng-click="viewUser(sd._id, 'school')">View</button>
+                                                        </td>
+                                                        <td style="background-color:aliceblue;">
+                                                            <button class="btn" ng-click="deleteStud(sd._id, $index)">Delete</button>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </section>
+                                    </div>
+                                </div>
                             </section>
                         </div>
                     </div>

@@ -39,7 +39,7 @@ app.controller('allUserCtl', function ($scope, $state, $window, httpFactory, ses
                 // console.log("schoolList: " + JSON.stringify(schoolUser));
                 $scope.teacherData = schoolUser.schoolTeacherList;
                 $scope.studentData = schoolUser.schoolStudentList;
-                console.log(" $scope.teacherData: " + JSON.stringify( $scope.teacherData));
+                console.log(" $scope.teacherData: " + JSON.stringify($scope.teacherData));
                 console.log("$scope.studentData: " + JSON.stringify($scope.studentData));
                 console.log(data.data.message);
             }
@@ -78,16 +78,10 @@ app.controller('allUserCtl', function ($scope, $state, $window, httpFactory, ses
         console.log("<--updateUserStatus");
     }
 
-    $scope.viewUser = function(id,loginT){
+    $scope.viewUser = function (id, loginT) {
         console.log("viewUser-->");
-        if(loginT=='teacher')
-        {
-            $state.go('dashboard.viewUser', { 'id': id, 'loginType':loginT});
-        }
-        else{
-            $state.go('dashboard.viewUser', { 'id': id, 'loginType':loginT});
-        }
-       
-        console.log("<--viewUser");
+        $state.go('dashboard.viewUser', { 'id': id, 'loginType': loginT });
     }
+
+    console.log("<--viewUser");
 })

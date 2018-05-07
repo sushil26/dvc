@@ -25,14 +25,16 @@
                                     <option value="" disabled selected>Student</option>
                                 </select>
                             </div>
-                            <select class="btn" placeholder="select" ng-model="mSelect" ng-options="m as m.testType for m in mark">
-                                <option value="" disabled selected>testType</option>
-                            </select>
+                            <div class="form-group ">
+                                <select class="btn" placeholder="select" ng-model="mSelect" ng-options="m as m.testType for m in mark">
+                                    <option value="" disabled selected>testType</option>
+                                </select>
+                            </div>
                             <div class="form-group ">
                                 <table ng-repeat="sm in mSelect.subjectWithMark">
                                     <tr>
                                         <th>Test Start Date</th>
-                                        <td>{{sm.date | date}}</td>
+                                        <td>{{sm.date}}</td>
                                     </tr>
                                     <tr>
                                         <th ng-repeat="(key, value) in sm.mark">{{key}}</th>
@@ -42,7 +44,6 @@
                                     </tr>
                                 </table>
                             </div>
-
                         </div>
                     </div>
                 </section>

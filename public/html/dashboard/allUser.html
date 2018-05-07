@@ -58,7 +58,7 @@
                                                                 <button class="btn" ng-if="ad.status=='inactive'" ng-click="updateAdminStatus(ad._id,'active',$index)" style="width: 70px;">Activate</button>
                                                             </td>
                                                             <td style="background-color:aliceblue;">
-                                                                <button ng-click="viewUser(ad._id)">View</button>
+                                                                <button ng-click="viewUser(ad._id, 'teacher')">View</button>
                                                             </td>
                                                             <td style="background-color:aliceblue;">
                                                                 <button class="btn" ng-click="deleteStud(ad._id, $index)">Delete</button>
@@ -97,12 +97,12 @@
                                                             <td style="background-color:aliceblue;">{{td.email}}</td>
 
                                                             <td style="background-color:aliceblue;">{{td.mobileNum}}</td>
-                                                            <td style="background-color:aliceblue;">
-                                                                <button>View</button>
-                                                            </td>
+
                                                             <td ng-if="td.status=='active'" style="background-color:aliceblue;">{{td.status}}</td>
                                                             <td ng-if="td.status=='inactive'" style="background-color:tomato;">{{td.status}}</td>
-
+                                                            <td style="background-color:aliceblue;">
+                                                                <button ng-click="viewUser(ad._id, 'teacher')">View</button>
+                                                            </td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -136,13 +136,13 @@
                                                                 <button type="button" class="btn-info " data-toggle="modal" data-target="#myModal">{{sd.firstName + " " + sd.lastName}}</button>
                                                                 <!-- Modal -->
                                                             </td>
-                                                            <td style="background-color:aliceblue;">
-                                                                <button>View</button>
-                                                            </td>
                                                             <td style="background-color:aliceblue;">{{sd.cs[0].class}}</td>
                                                             <td style="background-color:aliceblue;">{{sd.cs[0].section}}</td>
                                                             <td ng-if="sd.status=='active'" style="background-color:aliceblue;">{{sd.status}}</td>
                                                             <td ng-if="sd.status=='inactive'" style="background-color:tomato;">{{sd.status}}</td>
+                                                            <td style="background-color:aliceblue;">
+                                                                <button ng-click="viewUser(sd._id,'studParent')">View</button>
+                                                            </td>
                                                         </tr>
                                                     </tbody>
                                                 </table>

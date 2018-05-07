@@ -7,6 +7,10 @@ app.controller('viewUserController', function ($scope, $state, $window, httpFact
         if (loginT == 'teacher') {
             var api = "https://norecruits.com/vc/teacherDetail" + "/" + id;
         }
+        else if(loginT == 'school')
+        {
+            var api = "https://norecruits.com/vc/getSchoolDataById" + "/" + id;
+        }
         else {
             var api = "https://norecruits.com/vc/studentDetail" + "/" + id;
         }

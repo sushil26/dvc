@@ -24,17 +24,9 @@ app.controller('allSchoolCtl', function ($scope, $state, $window, httpFactory, s
     }
     $scope.getAllSchool();
 
-    $scope.viewUser = function(id,loginT){
+    $scope.viewUser = function (id, loginT) {
         console.log("viewUser-->");
-        if(loginT=='teacher')
-        {
-            $state.go('dashboard.viewUser', { 'id': id, 'loginType':loginT});
-        }
-       
-        else{
-            $state.go('dashboard.viewUser', { 'id': id, 'loginType':loginT});
-        }
-       
+        $state.go('dashboard.viewUser', { 'id': id, 'loginType': loginT });
         console.log("<--viewUser");
     }
 

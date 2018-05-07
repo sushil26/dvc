@@ -25,7 +25,11 @@ app.controller('markViewCtl', function ($scope, $window, httpFactory, $compile, 
         })
         console.log("<--getTeacherData");
     }
-
+    $scope.getStudentMarks_forThisType = function (m) {
+        console.log("getStudentMarks_forThisType-->");
+console.log("marks: "+JSON.stringify(m));
+        console.log("<--getStudentMarks_forThisType");
+    }
     $scope.getMarks = function (id) {
         console.log("getMarks-->");
         var api = "https://norecruits.com/vc/getStudentAttendance" + "/" + id;
@@ -39,6 +43,9 @@ app.controller('markViewCtl', function ($scope, $window, httpFactory, $compile, 
                 console.log("studData: " + JSON.stringify(studData));
                 console.log("$scope.mark: " + JSON.stringify($scope.mark));
                 console.log("$scope.mark.length: " + $scope.mark.length);
+                //                 for (var x = 0; x < $scope.mark.length; x++) {
+                // $scope.test
+                //                 }
                 // for (var x = 0; x < $scope.mark.length; x++) {
                 //     console.log("$scope.mark[x]: " + JSON.stringify($scope.mark[x]));
                 //     var year = "2018";
@@ -124,6 +131,6 @@ app.controller('markViewCtl', function ($scope, $window, httpFactory, $compile, 
         console.log("cs: " + JSON.stringify(cs));
         var id = cs.id;
         $scope.getMarks(id);
-        
+
     }
 })

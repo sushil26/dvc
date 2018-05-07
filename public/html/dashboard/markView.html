@@ -65,6 +65,11 @@
                                 <option value="" disabled selected>Student</option>
                             </select>
 
+                            <select class="btn"  placeholder="select" ng-model="mSelect" ng-change="getStudentMarks_forThisType(mSelect)"
+                                ng-options="m as m.testType for m in mark">
+                                <option value="" disabled selected>testType</option>
+                            </select>
+
                         </div>
                     </div>
                 </section>

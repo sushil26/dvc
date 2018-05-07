@@ -26,7 +26,9 @@
                                                         <th>Email</th>
                                                         <th>Phone Number</th>
                                                         <th>Status</th>
+                                                     
                                                         <th>Activation</th>
+                                                        <th>View</th>
                                                         <th>Delete</th>
                                                     </tr>
                                                 </thead>
@@ -42,6 +44,9 @@
                                                             <button class="btn" ng-if="sd.status=='active'" ng-click="updateSchoolStatus(sd._id,'inactive',$index)" style="width: 70px;">Dectivate</button>
                                                             <button class="btn" ng-if="sd.status=='inactive'" ng-click="updateSchoolStatus(sd._id,'active',$index)" style="width: 70px;">Activate</button>
                                                         </td>
+                                                        <td style="background-color:aliceblue;">
+                                                                <button class="btn">View</button>
+                                                            </td>
                                                         <td style="background-color:aliceblue;">
                                                             <button class="btn" ng-click="deleteStud(sd._id, $index)">Delete</button>
                                                         </td>

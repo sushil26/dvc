@@ -11,6 +11,13 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
     console.log("userName: " + userName);
     console.log("loginType: " + $scope.userData.loginType);
   }
+  $scope.keypressHandler = function(event, nextIdx){
+    if(event.keyCode == 13){
+        angular.element(
+            document.querySelector('#f_'+nextIdx))[0].focus();
+
+    }
+}
   $scope.logVC = function (loginType, email, Password) {
     console.log("logVC from ");
     // loginModal.close('resetModel');

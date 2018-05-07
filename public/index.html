@@ -169,7 +169,7 @@
 
 
     <div ui-view>
-    <!-- <div> -->
+      <!-- <div> -->
 
 
       <!--==========================
@@ -515,7 +515,7 @@
             border-radius: 5px;
             width: 50%;
             padding: 3px;">
-                  <input type="radio" ng-model="loginType"  value="teacher" checked="checked"> Teacher &nbsp&nbsp
+                  <input type="radio" ng-model="loginType" value="teacher" checked="checked"> Teacher &nbsp&nbsp
 
                   <input type="radio" ng-model="loginType" value="studParent"> Parent
                 </div>
@@ -534,13 +534,13 @@
                       background:  #ddd;
                       border-radius: inherit;
                       height: 50px;
-                      border: #ddd;" type="password" id="crdPswd" class="form-control" placeholder="Password" ng-model="Password" >
+                      border: #ddd;" type="password" id="crdPswd" class="form-control" placeholder="Password" ng-model="Password">
 
               </div>
               <div class="modal-footer" style="border-top:0px; padding: 15px;">
 
                 <button id="crdsubmit" type="button" style="background-color: #29b6bd;color:#f1f1f1; width: 100%; height:50px;" class="btn"
-                ng-click="logVC(loginType, email, Password)" data-dismiss="modal">Submit</button>
+                  ng-click="logVC(loginType, email, Password)" data-dismiss="modal">Submit</button>
 
               </div>
 
@@ -550,7 +550,7 @@
       </div>
       <!-- ##### End login popup  ##### -->
 
-     
+
 
       <!--==========================
     Footer
@@ -625,6 +625,13 @@
     </div>
 
   </div>
+  <script>
+    $("#crdPswd").keyup(function (event) {
+      if (event.keyCode === 13) {
+        $("#crdsubmit").click();
+      }
+    });
+  </script>
 
 
   <script>

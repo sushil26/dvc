@@ -71,8 +71,8 @@
 <br>
                             <table ng-repeat="sm in mSelect.subjectWithMark">
                                 <tr>
-                                    <th>Date</th>
-                                    <td>{{sm.date}}</td>
+                                    <th>Test Start Date</th>
+                                    <td>{{sm.date | date:'M/d/yy' }}</td>
                                 </tr>
                                 <tr>
                                     <th ng-repeat="(key, value) in sm.mark">{{key}}</th>

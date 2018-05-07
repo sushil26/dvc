@@ -630,13 +630,7 @@
     </div>
 
   </div>
-  <script>
-    $("#crdPswd").keyup(function (event) {
-      if (event.keyCode === 13) {
-        $("#crdsubmit").click();
-      }
-    });
-  </script>
+
 
 
   <script>
@@ -698,6 +692,13 @@
       css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid black}";
       document.body.appendChild(css);
     };
+  </script>
+  <script>
+    $("#crdPswd").keyup(function (event) {
+      if (event.keyCode === 13) {
+        $("#crdsubmit").click();
+      }
+    });
   </script>
   <!-- <script src="/js/basicFun.js"></script> -->
 

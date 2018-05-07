@@ -9,7 +9,7 @@
                     <div class="bio-graph-heading">
                         <h3>
                             <i class="fa fa-user-circle">
-                                <span>&nbspPROFILE</span>----{{loginType}}
+                                <span>&nbspUser Details</span>
                             </i>
                         </h3>
                     </div>
@@ -21,7 +21,7 @@
                                 <p>
                                     <span>
                                         <b>Name</b>
-                                    </span>{{userDetail[0].firstName +" "+ userDetail[0].lastName}}</p>
+                                    </span>: {{userDetail[0].firstName +" "+ userDetail[0].lastName}}</p>
                             </div>
 
                             <div class="bio-row" ng-if="loginType!='vc4allAdmin'">
@@ -71,8 +71,8 @@
                                     <span>
                                         <b>Class</b>
 
-                                    </span> :
-                                    <span ng-repeat="cs in userDetail[0].cs">{{cs.class}}-{{cs.section}}</span>
+                                    </span>:
+                                    <span ng-repeat="cs in userDetail[0].cs"> {{cs.class}}/{{cs.section}}</span>
                                 </p>
                             </div>
 

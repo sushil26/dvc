@@ -10,6 +10,7 @@ app.controller('viewUserController', function ($scope, $state, $window, httpFact
         else if(loginT == 'school')
         {
             var api = "https://norecruits.com/vc/getSchoolDataById" + "/" + id;
+            $scope.loginType = "school";
         }
         else {
             var api = "https://norecruits.com/vc/studentDetail" + "/" + id;
@@ -24,7 +25,7 @@ app.controller('viewUserController', function ($scope, $state, $window, httpFact
                 $scope.userDetail = data.data.data;
                 console.log("userDetail: " + JSON.stringify($scope.userDetail));
                 if($scope.userDetail.schoolRegNumber!=''){
-                    $scope.loginType = "school";
+                   
                 }
                 else
                 {

@@ -31,12 +31,14 @@
                                 </select>
                             </div>
                             <div class="form-group ">
-                                <table class="table table-border table-advance table-hover" ng-repeat="sm in mSelect.subjectWithMark">
-                                    <tbody>
+                                <table class="table table-bordered" ng-repeat="sm in mSelect.subjectWithMark">
+                                    <thead>
                                         <tr>
                                             <th color>Test Start Date</th>
                                             <th>{{sm.date}}</th>
                                         </tr>
+                                    </thead>
+                                    <tbody>
                                         <tr>
                                             <th ng-repeat="(key, value) in sm.mark">{{key}}</th>
                                         </tr>

@@ -23,6 +23,21 @@ app.controller('allSchoolCtl', function ($scope, $window, httpFactory, sessionAu
         console.log("<--getAllSchool");
     }
     $scope.getAllSchool();
+
+    $scope.viewUser = function(id,loginT){
+        console.log("viewUser-->");
+        if(loginT=='teacher')
+        {
+            $state.go('dashboard.viewUser', { 'id': id, 'loginType':loginT});
+        }
+       
+        else{
+            $state.go('dashboard.viewUser', { 'id': id, 'loginType':loginT});
+        }
+       
+        console.log("<--viewUser");
+    }
+
     $scope.updateSchoolStatus = function (id, status, index) {
         console.log("updateUserStatus-->");
         var api = "https://norecruits.com/vc/updateSchoolStatus";

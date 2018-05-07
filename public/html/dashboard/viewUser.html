@@ -206,7 +206,7 @@
                                     <tbody  style="background: #ddd;" ng-repeat="css in userDetail[0].css">
                                         <tr>
                                             <td>{{css.class}}</td>
-                                            <td><span ng-repeat="sec in css.section">{{sec}}&nbsp</span></td>
+                                            <td><span ng-repeat="sec in css.section track by $index">{{sec}}<span ng-show="!$last">,</span></span></td>
                                             <td><span ng-repeat="sub in css.subject">{{sub}}&nbsp</span></td>
                                         </tr>
                                     </tbody>

@@ -1,46 +1,46 @@
 <div ng-controller="attendanceViewCtl">
-        <style type="text/css">
-            /* mwl-calendar .cal-month-day {
+    <style type="text/css">
+        /* mwl-calendar .cal-month-day {
               max-height: 80px !important;
               height: 80px !important;
             } */
-        
-            mwl-calendar .cal-month-box [class*=cal-cell],
-            mwl-calendar .cal-year-box [class*=span] {
-              max-height: 80px !important;
-              min-height: 40px !important;
-            }
-        
-            mwl-calendar span[data-cal-date] {
-              font-weight: 400;
-              opacity: .5;
-              margin-top: 5px;
-              margin-right: 5px;
-            }
-        
-            mwl-calendar .cal-month-day {
-              max-height: 80px !important;
-              height: 60px !important;
-            }
-        
-            mwl-calendar .event {
-              width: 8px;
-              height: 8px;
-            }
-        
-            .cal-day-hour-part-time strong.ng-hide {
-              display: block !important;
-            }
-        
-            .cal-day-hour-part-time {
-              background-color: skyblue;
-              box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-            }
-        
-            .cal-day-open {
-              background: #ff7777;
-            }
-          </style>
+
+        mwl-calendar .cal-month-box [class*=cal-cell],
+        mwl-calendar .cal-year-box [class*=span] {
+            max-height: 80px !important;
+            min-height: 40px !important;
+        }
+
+        mwl-calendar span[data-cal-date] {
+            font-weight: 400;
+            opacity: .5;
+            margin-top: 5px;
+            margin-right: 5px;
+        }
+
+        mwl-calendar .cal-month-day {
+            max-height: 80px !important;
+            height: 60px !important;
+        }
+
+        mwl-calendar .event {
+            width: 8px;
+            height: 8px;
+        }
+
+        .cal-day-hour-part-time strong.ng-hide {
+            display: block !important;
+        }
+
+        .cal-day-hour-part-time {
+            background-color: skyblue;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        .cal-day-open {
+            background: #ff7777;
+        }
+    </style>
     <!--main content start-->
     <section id="main-content">
         <section class="wrapper">
@@ -64,6 +64,11 @@
                                 ng-options="cs as cs.name + '-' + cs.studId for cs in studList">
                                 <option value="" disabled selected>Student</option>
                             </select>
+                            <div style="float: right;">
+                                <div>&#8226 - Absent</div>
+
+                                <div>&#8226 - Present</div>
+                            </div>
                         </div>
                         <div class="panel-heading" style="height: 50px;">
                             <div class="panel-actions">
@@ -84,7 +89,7 @@
                                     <!-- <h2 >
                                         <strong>{{ calendarTitle }}({{calendarOwner}})</strong>
                                     </h2> -->
-                                    <h2 >
+                                    <h2>
                                         <strong>{{ calendarTitle }}</strong>
                                     </h2>
                                 </div>
@@ -100,9 +105,9 @@
 
                         <div class="panel-body">
                             <!-- Widget content -->
-                            <mwl-calendar events="events" view-title="calendarTitle" view="calendarView" view-date="viewDate" >
+                            <mwl-calendar events="events" view-title="calendarTitle" view="calendarView" view-date="viewDate">
                             </mwl-calendar>
-                          
+
                         </div>
                     </div>
                 </section>

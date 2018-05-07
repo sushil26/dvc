@@ -32,6 +32,4 @@ app.controller('viewUserController', function ($scope, $state, $window, httpFact
     }
     $scope.getTeacherDetails(id);
 
-
-
 })

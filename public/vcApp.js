@@ -298,7 +298,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 
 
 function viewUser() {
-  return '/viewUser/:id/:loginT';
+  return '/viewUser/:id/:loginType';
 }
 function contact() {
   return '/contact';

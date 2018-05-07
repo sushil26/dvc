@@ -82,10 +82,10 @@ app.controller('allUserCtl', function ($scope, $state, $window, httpFactory, ses
         console.log("viewUser-->");
         if(loginT=='teacher')
         {
-            $state.go('dashboard.viewUser', { 'id': id, 'loginT':loginT});
+            $state.go('dashboard.viewUser', { 'id': id, 'loginType':loginT});
         }
         else{
-            $state.go('dashboard.viewUser', { 'id': id, 'loginT':loginT});
+            $state.go('dashboard.viewUser', { 'id': id, 'loginType':loginT});
         }
        
         console.log("<--viewUser");

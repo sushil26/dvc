@@ -53,9 +53,16 @@ app.controller('allAdminCtl', function ($scope, $state, $window, httpFactory, se
         console.log("<--updateUserStatus");
     }
 
-    $scope.viewUser = function(id){
+    $scope.viewUser = function(id,loginT){
         console.log("viewUser-->");
-        $state.go('dashboard.viewUser', { 'id': id});
+        if(loginT=='teacher')
+        {
+            $state.go('dashboard.viewUser', { 'id': id, 'loginType':loginT});
+        }
+        else{
+            $state.go('dashboard.viewUser', { 'id': id, 'loginType':loginT});
+        }
+       
         console.log("<--viewUser");
     }
 })

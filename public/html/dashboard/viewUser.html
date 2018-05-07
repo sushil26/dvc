@@ -196,14 +196,14 @@
                             </div>
                             <div class="form-group">
                                 <table class="table table-bordered">
-                                    <thead>
+                                    <thead style="background: white;">
                                         <tr>
                                             <th>Class</th>
                                             <th>Section</th>
                                             <th>Subject</th>
                                         </tr>
                                     </thead>
-                                    <tbody ng-repeat="css in userDetail[0].css">
+                                    <tbody  style="background: #ddd;" ng-repeat="css in userDetail[0].css">
                                         <tr>
                                             <td>{{css.class}}</td>
                                             <td><span ng-repeat="sec in css.section">{{sec}},</span></td>

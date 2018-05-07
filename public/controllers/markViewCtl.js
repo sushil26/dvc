@@ -25,11 +25,12 @@ app.controller('markViewCtl', function ($scope, $window, httpFactory, $compile, 
         })
         console.log("<--getTeacherData");
     }
-    $scope.getStudentMarks_forThisType = function (m) {
-        console.log("getStudentMarks_forThisType-->");
-console.log("marks: "+JSON.stringify(m));
-        console.log("<--getStudentMarks_forThisType");
-    }
+//     $scope.getStudentMarks_forThisType = function (m) {
+//         console.log("getStudentMarks_forThisType-->");
+// console.log("marks: "+JSON.stringify(m));
+// $scope.mark
+//         console.log("<--getStudentMarks_forThisType");
+//     }
     $scope.getMarks = function (id) {
         console.log("getMarks-->");
         var api = "https://norecruits.com/vc/getStudentAttendance" + "/" + id;

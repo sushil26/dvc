@@ -35,12 +35,12 @@ app.controller('markViewCtl', function ($scope, $window, httpFactory, $compile, 
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
                 var studData = data.data.data;
-                $scope.attendance = studData[0].attendance;
+                $scope.mark = studData[0].mark;
                 console.log("studData: " + JSON.stringify(studData));
-                console.log("$scope.attendance: " + JSON.stringify($scope.attendance));
-                console.log("$scope.attendance.length: " + $scope.attendance.length);
-                // for (var x = 0; x < $scope.attendance.length; x++) {
-                //     console.log("$scope.attendance[x]: " + JSON.stringify($scope.attendance[x]));
+                console.log("$scope.mark: " + JSON.stringify($scope.mark));
+                console.log("$scope.mark.length: " + $scope.mark.length);
+                // for (var x = 0; x < $scope.mark.length; x++) {
+                //     console.log("$scope.mark[x]: " + JSON.stringify($scope.mark[x]));
                 //     var year = "2018";
                 //     var mon = $scope.attendance[x].month;
                 //     console.log("$scope.attendance[x].dateAttendance.length: " + $scope.attendance[x].dateAttendance.length);

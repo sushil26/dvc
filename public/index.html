@@ -525,6 +525,7 @@
                       background:  #ddd;
                       border-radius: inherit;
                       height: 50px;
+<<<<<<< HEAD
                       border: #ddd;" type="email" class="form-control" placeholder="Email" ng-model="email" id="crdEmail"
                     my-enter="doSomthing()">
                   <br>
@@ -540,6 +541,23 @@
                     ng-click="logVC(loginType, email, Password)" data-dismiss="modal">Submit</button>
                 </div>
               </form>
+=======
+                      border: #ddd;" type="email" class="form-control" placeholder="Email" ng-model="email" id="f_1"
+                      ng-keypress="keypressHandler($event, 2)">
+                <br>
+                <input style="
+                      background:  #ddd;
+                      border-radius: inherit;
+                      height: 50px;
+                      border: #ddd;" type="password" id="crdPswd" class="form-control" placeholder="Password" ng-model="Password" id="f_2" 
+                      ng-keypress="keypressHandler($event, 3)"> 
+              </div>
+              <div class="modal-footer" style="border-top:0px; padding: 15px;">
+                <button id="crdsubmit" type="button" style="background-color: #29b6bd;color:#f1f1f1; width: 100%; height:50px;" class="btn" 
+                  ng-click="logVC(loginType, email, Password)" data-dismiss="modal">Submit</button>
+              </div>
+
+>>>>>>> f685bfa2d953a5b9081034e671d8c5dacbf7cc82
             </div>
           </center>
         </div>

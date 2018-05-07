@@ -27,7 +27,7 @@ app.controller('markViewCtl', function ($scope, $window, httpFactory, $compile, 
     }
 
     $scope.getMarks = function (id) {
-        console.log("getAttendance-->");
+        console.log("getMarks-->");
         var api = "https://norecruits.com/vc/getStudentAttendance" + "/" + id;
         console.log("api: " + api);
         httpFactory.get(api).then(function (data) {
@@ -78,7 +78,7 @@ app.controller('markViewCtl', function ($scope, $window, httpFactory, $compile, 
                 console.log("sorry");
             }
         })
-        console.log("<--getStudentAttendance");
+        console.log("<--getMarks");
     }
     if ($scope.userData.loginType == 'teacher') {
         $scope.userLoginType = 'teacher';

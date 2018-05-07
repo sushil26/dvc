@@ -521,14 +521,14 @@
                     <input type="radio" ng-model="loginType" value="studParent"> Parent
                   </div>
                   <hr>
-                  <input ng-keypress="$event.keyCode == 13 && logVC(loginType, email, Password)" style="
+                  <input ng-keyup="$event.keyCode == 13 && logVC(loginType, email, Password)" style="
                       background:  #ddd;
                       border-radius: inherit;
                       height: 50px;
                       border: #ddd;" type="email" class="form-control" placeholder="Email" ng-model="email" id="crdEmail"
                     my-enter="doSomthing()">
                   <br>
-                  <input  ng-keypress="$event.keyCode == 13 && logVC(loginType, email, Password)"style="
+                  <input  ng-keyup="$event.keyCode == 13 && logVC(loginType, email, Password)"style="
                       background:  #ddd;
                       border-radius: inherit;
                       height: 50px;

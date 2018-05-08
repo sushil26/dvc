@@ -1057,7 +1057,7 @@ module.exports.uploadStudentMaster = function (req, res) {
                     responseData = {
                         status: false,
                         message: "Failed to get Data",
-                        data: schoolList
+                        
                     };
                     res.status(400).send(responseData);
                 } else {
@@ -1086,7 +1086,7 @@ module.exports.uploadStudentMaster = function (req, res) {
                         responseData = {
                             status: false,
                             message:"Sorry! you already inserted data for this class, further insertion you have to use reports update option",
-                            data: schoolList
+                           
                         };
                         res.status(400).send(responseData);
                     }

@@ -1020,39 +1020,7 @@ function setup_local_media(callback, errorback) {
       if (errorback) errorback();
     }
   );
-  document.getElementById("screenRecordBtn").addEventListener("click", function () {
-    console.log("screenRecordBtn-->");
-    var recordRTC;
-     function successCallback(stream) {
-       console.log("stream: "+stream);
-        // RecordRTC usage goes here
-        var options = {
-          recorderType: MediaStreamRecorder,
-          mimeType: 'video/webm', // or video/webm\;codecs=h264 or video/webm\;codecs=vp9
-          audioBitsPerSecond: 128000,
-          videoBitsPerSecond: 128000,
-          bitsPerSecond: 128000 // if this line is provided, skip above two
-        };
-        recordRTC = RecordRTC(stream, options);
-        recordRTC.startRecording();
-    }
-     function errorCallback(error) {
-       console.log("error:"+error);
-        // maybe another application is using the device
-    }
-     var mediaConstraints = { video: true, audio: true };
-    navigator.mediaDevices.getUserMedia(mediaConstraints).then(successCallback).catch(errorCallback);
-    screenRecordStop.onclick = function () {
-        recordRTC.stopRecording(function (audioVideoWebMURL) {
-          var local_media = document.getElementById("videoElem");
-          local_media.src = audioVideoWebMURL;
-     
-            var recordedBlob = recordRTC.getBlob();
-            recordRTC.getDataURL(function(dataURL) { });
-        });
-    };
-    console.log("<--screenRecordBtn");
-  })
+ 
 
 
   document.getElementById("screenShareBtn").addEventListener("click", function () {

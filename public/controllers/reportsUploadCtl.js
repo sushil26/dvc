@@ -121,7 +121,7 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
       console.log("data--" + JSON.stringify(data.data));
       if (checkStatus) {
         alert(data.data.message);
-        up[0].ttSelect = [];
+        up[0].ttSelect = null;
       }
       else {
         alert(data.data.message);

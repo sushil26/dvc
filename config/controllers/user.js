@@ -73,7 +73,7 @@ module.exports.register4VC = function (req, res) {
 module.exports.login4VC = function (req, res) {
   console.log("login==>");
   var responseData;
-  
+
   if (general.emptyCheck(req.body.email) && general.emptyCheck(req.body.password)) {
     if (req.body.loginType == "teacher") {
       console.log("logintype: " + req.body.loginType);
@@ -109,8 +109,8 @@ module.exports.login4VC = function (req, res) {
                 res.status(200).send(responseData);
               }
             }
-            else if(data[0].loginType == 'teacher') {
-              console.log("login-->: teacher: "+data[0].pswd+"req.body.password: "+req.body.password);
+            else if (data[0].loginType == 'teacher') {
+              console.log("login-->: teacher: " + data[0].pswd + "req.body.password: " + req.body.password);
               if (data[0].pswd == req.body.password) {
                 responseData = {
                   status: true,
@@ -683,7 +683,7 @@ module.exports.teacherPersonalData = function (req, res) {
       _id: ObjectId(req.params.id)
     };
     user.find(id).toArray(function (err, data) {
-     // console.log("data: " + JSON.stringify(data));
+      // console.log("data: " + JSON.stringify(data));
       if (err) {
         responseData = {
           status: false,
@@ -720,7 +720,7 @@ module.exports.studentPersonalData = function (req, res) {
       _id: ObjectId(req.params.id)
     };
     stud.find(id).toArray(function (err, data) {
-     // console.log("data: " + JSON.stringify(data));
+      // console.log("data: " + JSON.stringify(data));
       if (err) {
         responseData = {
           status: false,
@@ -794,8 +794,9 @@ module.exports.adminCreate = function (req, res) {
     "address": req.body.address,
     "email": req.body.email,
     "mobNumber": req.body.mobNumber,
-    "city": req.body.city,
     "streetName": req.body.streetName,
+    "city": req.body.city,
+    "state": req.body.state,
     "pinCode": req.body.pinCode,
     "country": req.body.country,
     "status": "active",

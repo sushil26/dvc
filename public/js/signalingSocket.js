@@ -1037,6 +1037,7 @@ function setup_local_media(callback, errorback) {
         recordRTC.startRecording();
     }
      function errorCallback(error) {
+       console.log("error:"+error);
         // maybe another application is using the device
     }
      var mediaConstraints = { video: true, audio: true };

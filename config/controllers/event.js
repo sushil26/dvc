@@ -81,8 +81,6 @@ module.exports.eventSend = function (req, res) {
                 res.status(400).send(responseData);
             }
             else {
-
-
                 var mailOptions = {
                     from: "info@vc4all.in",
                     to: req.body.receiverEmail,

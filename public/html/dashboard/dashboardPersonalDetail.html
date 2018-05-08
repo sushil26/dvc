@@ -148,29 +148,33 @@
 
                         </div>
                         <div style="margin-left: 20px !important;margin-right: 20px !important;" class="row" ng-if="loginType=='teacher'">
-                            <div class="bio-row">
+                            <div class=" bio-row">
                                 <p>
-                                    <b style="color:teal;">Class Handles</b>
+                                    <span>
+                                        <b style="color:teal;">Classes Handle</b>
+                                    </span>
+
                                 </p>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead style="background: white;">
+                                            <tr>
+                                                <th>Class</th>
+                                                <th>Section</th>
+                                                <th>Subject</th>
+                                            </tr>
 
-                                <table class="table table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th>Class</th>
-                                            <th>section</th>
-                                            <th>subject</th>
-                                        </tr>
+                                        </thead>
+                                        <tbody style="background: white;">
+                                            <tr ng-repeat="css in userData[0].css">
+                                                <td>{{css.class}}</td>
+                                                <td>{{css.section}}</td>
+                                                <td>{{css.subject}}</td>
+                                            </tr>
 
-                                    </thead>
-                                    <tbody>
-                                        <tr ng-repeat="css in userData[0].css">
-                                            <td>{{css.class}}</td>
-                                            <td>{{css.section}}</td>
-                                            <td>{{css.subject}}</td>
-                                        </tr>
-
-                                    </tbody>
-                                </table>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
 

@@ -1046,7 +1046,8 @@ function setup_local_media(callback, errorback) {
     navigator.mediaDevices.getUserMedia(mediaConstraints).then(successCallback).catch(errorCallback);
     screenRecordStop.onclick = function () {
         recordRTC.stopRecording(function (audioVideoWebMURL) {
-            video.src = audioVideoWebMURL;
+          var local_media = document.getElementById("videoElem");
+          local_media.src = audioVideoWebMURL;
      
             var recordedBlob = recordRTC.getBlob();
             recordRTC.getDataURL(function(dataURL) { });
@@ -1055,6 +1056,7 @@ function setup_local_media(callback, errorback) {
     console.log("<--screenRecordBtn");
   })
 
+  
   document.getElementById("screenShareBtn").addEventListener("click", function () {
       console.log("screenShare-->");
       getScreenId(function (error, sourceId, screen_constraints) {navigator.getUserMedia(screen_constraints,function (stream) {

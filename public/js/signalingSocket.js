@@ -1026,6 +1026,7 @@ function setup_local_media(callback, errorback) {
     console.log("screenRecordBtn-->");
     var recordRTC;
      function successCallback(stream) {
+       console.log("stream: "+stream);
         // RecordRTC usage goes here
         var options = {
           mimeType: 'video/webm', // or video/webm\;codecs=h264 or video/webm\;codecs=vp9

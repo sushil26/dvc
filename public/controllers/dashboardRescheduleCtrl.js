@@ -545,8 +545,6 @@ app.controller('dashboardRescheduleCtrl', function ($scope, $state, $rootScope, 
         var queryLink = null;
         var peerNew_id = null;
         var url;
-
-
         var id = $state.params.id
         var api = "https://norecruits.com/vc/eventReSchedule" + "/" + id;
         //var api = "http://localhost:5000/vc/eventSend";
@@ -632,7 +630,17 @@ app.controller('dashboardRescheduleCtrl', function ($scope, $state, $rootScope, 
                 $('#timeTable_modal').modal('hide');
 
                 var id = $state.params.id;
-
+                var reqDateWithoutMinus = rsd.getDate();
+                var reqBy5min = rsd.getMinutes() + 5;
+                var reqHr_ed = red.getHours();
+                var reqMin_ed = red.getMinutes() - 5;
+                var reqSec_ed = red.getSeconds();
+                var rsd_alt = new Date(reqYear, reqMonth, reqDateWithoutMinus, reqHr, reqBy5min, reqSec);
+                var red_alt = new Date(reqYear, reqMonth, reqDateWithoutMinus, reqHr_ed, reqMin_ed, reqSec_ed);
+                console.log("rsd: " + rsd);
+                console.log("rsd_alt: " + rsd_alt);
+                console.log("red: " + red);
+                console.log("red_alt: " + red_alt);
 
                 var api = "https://norecruits.com/vc/getEventById" + "/" + id;
                 //var api = "http://localhost:5000/vc/eventGet"+ "/" + id;;
@@ -652,8 +660,8 @@ app.controller('dashboardRescheduleCtrl', function ($scope, $state, $rootScope, 
                             controller: function ($scope, $uibModalInstance) {
                                 var dt = new Date();
                                 $scope.eventDetails = {
-                                    "startsAt": rsd,
-                                    "endsAt": red,
+                                    "startsAt": rsd_alt,
+                                    "endsAt": red_alt,
                                     "name": rescheduleData[0].student_Name,
                                     "stud_id": rescheduleData[0].student_id,
                                     "stud_class": rescheduleData[0].student_cs[0].class,

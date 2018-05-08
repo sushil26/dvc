@@ -145,17 +145,18 @@
                                 </p>  <span class="col-sm-3" ng-repeat="css in userData[0].css"> {{css.class}}-{{css.section}}-{{css.subject}}</span>
 
                             </div> -->
-                            <div class="row" ng-if="loginType=='teacher'">
+                           
+                        </div>
+                        <div class="row" ng-if="loginType=='teacher'">
                                 <p>
                                     <span>
                                         <b style="color:teal;">Class Handles</b>
                                     </span>:
 
                                 </p>
-                                <span class="col-sm-3" ng-repeat="css in userData[0].css"> {{css.class}}-{{css.section}}-{{css.subject}}</span>
+                                <span ng-repeat="css in userData[0].css"> {{css.class}}-{{css.section}}-{{css.subject}}</span>
 
                             </div>
-                        </div>
                         
                         <div ng-if="loginType=='vc4allAdmin'" class="row" style="margin-left: 20px !important;margin-right: 20px !important;">
                             <div class="bio-row">

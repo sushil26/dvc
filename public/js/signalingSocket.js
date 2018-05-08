@@ -1056,6 +1056,7 @@ function setup_local_media(callback, errorback) {
     console.log("<--screenRecordBtn");
   })
 
+  
   document.getElementById("screenShareBtn").addEventListener("click", function () {
       console.log("screenShare-->");
       getScreenId(function (error, sourceId, screen_constraints) {navigator.getUserMedia(screen_constraints,function (stream) {

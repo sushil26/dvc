@@ -5,6 +5,14 @@
               height: 80px !important;
             } */
 
+        mwl-calendar span[data-cal-date] {
+            color: black;
+        }
+
+        .cal-row-head {
+            background: wheat;
+        }
+
         mwl-calendar .cal-month-box [class*=cal-cell],
         mwl-calendar .cal-year-box [class*=span] {
             max-height: 80px !important;
@@ -65,8 +73,10 @@
                                 <option value="" disabled selected>Student</option>
                             </select>
                             <div style="float: right;">
-                                <span style="color:#1b7fe3;font-size:20px;">&#8226 &nbsp</span><i style="color:black">Present</i>&nbsp&nbsp&nbsp
-                                <span style="color:red;font-size:20px;">&#8226 &nbsp</span><i style="color:black">Absent</i>
+                                <span style="color:#1b7fe3;font-size:20px;">&#8226 &nbsp</span>
+                                <i style="color:black">Present</i>&nbsp&nbsp&nbsp
+                                <span style="color:red;font-size:20px;">&#8226 &nbsp</span>
+                                <i style="color:black">Absent</i>
                             </div>
                         </div>
                         <div class="panel-heading" style="height: 50px;">

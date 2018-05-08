@@ -51,7 +51,6 @@ app.controller('attendanceViewCtl', function ($scope, $window, httpFactory, $com
                         var resultDate = new Date(year + " " + mon + " " + day);
                         console.log("resultDate: " + resultDate);
                         console.log("moment().subtract(1, 'day').toDate(): " + moment().subtract(1, 'day').toDate());
-
                         var obj = {
                             'title': $scope.attendance[x].dateAttendance[y].status,
                             'startsAt': resultDate,
@@ -62,6 +61,9 @@ app.controller('attendanceViewCtl', function ($scope, $window, httpFactory, $com
                         }
                         if ($scope.attendance[x].dateAttendance[y].status == "P") {
                             obj.color = calendarConfig.colorTypes.info;
+                        }
+                       else if ($scope.attendance[x].dateAttendance[y].status == "L") {
+                            obj.color = calendarConfig.colorTypes.warning;
                         }
                         else {
                             obj.color = calendarConfig.colorTypes.important;

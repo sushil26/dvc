@@ -1029,6 +1029,7 @@ function setup_local_media(callback, errorback) {
        console.log("stream: "+stream);
         // RecordRTC usage goes here
         var options = {
+          recorderType: MediaStreamRecorder,
           mimeType: 'video/webm', // or video/webm\;codecs=h264 or video/webm\;codecs=vp9
           audioBitsPerSecond: 128000,
           videoBitsPerSecond: 128000,

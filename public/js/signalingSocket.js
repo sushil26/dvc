@@ -353,7 +353,7 @@ signaling_socket.on("connect", function () {
 
       document.getElementById("linkToShare").setAttribute("href", "https://norecruits.com/client/" + queryLink + "/" + date);
       document.getElementById("linkToShare").innerHTML = "https://norecruits.com/client/" + queryLink + "/" + date;
-      document.getElementById("screenBtns").style.display = "inline";
+      document.getElementsByClassName("screenBtns").style.display = "inline";
       document.getElementById("videoConfStart").style.display = "none";
       document.getElementById("openChat").style.display = "inline";
 

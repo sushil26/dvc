@@ -20,17 +20,17 @@ app.controller('adminCreateCtl', function ($scope, $window, httpFactory, session
             "pswd": $scope.pswd
         }
         console.log("objJson: " + JSON.stringify(objJson));
-        // var api = "https://norecruits.com/vc/adminCreate";
-        // httpFactory.post(api, objJson).then(function (data) {
-        //     var checkStatus = httpFactory.dataValidation(data);
-        //     console.log("data--" + JSON.stringify(data.data));
-        //     if (checkStatus) {
-        //         alert(data.data.message);
-        //     }
-        //     else{
-        //         alert("Failed to create");
-        //     }
-        // })
+        var api = "https://norecruits.com/vc/adminCreate";
+        httpFactory.post(api, objJson).then(function (data) {
+            var checkStatus = httpFactory.dataValidation(data);
+            console.log("data--" + JSON.stringify(data.data));
+            if (checkStatus) {
+                alert(data.data.message);
+            }
+            else{
+                alert("Failed to create");
+            }
+        })
         console.log("<--adminCreate");
     }
 

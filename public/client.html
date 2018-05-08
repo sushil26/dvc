@@ -19,9 +19,124 @@
     <link rel="stylesheet" href="/css/chatZone.css" />
 
     <script src="/js/clientmain.js"></script>
+    <script src="https://cdn.webrtc-experiment.com/MediaStreamRecorder.js"></script>
     <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
     <script src="/home/lib/jquery/jquery-migrate.min.js"></script>
     <script src="https://cdn.WebRTC-Experiment.com/RecordRTC.js"></script>
+    <link rel="stylesheet" href="https://cdn.webrtc-experiment.com/style.css">
+
+    <style>
+        input {
+            border: 1px solid rgb(46, 189, 235);
+            border-radius: 3px;
+            font-size: 1em;
+            outline: none;
+            padding: .2em .4em;
+            width: 60px;
+            text-align: center;
+        }
+    </style>
+    <script>
+        function captureUserMedia(mediaConstraints, successCallback, errorCallback) {
+            navigator.mediaDevices.getUserMedia(mediaConstraints).then(successCallback).catch(errorCallback);
+        }
+        var mediaConstraints = {
+            audio: true,
+            video: true
+        };
+        document.querySelector('#start-recording').onclick = function () {
+            this.disabled = true;
+            captureUserMedia(mediaConstraints, onMediaSuccess, onMediaError);
+        };
+        document.querySelector('#stop-recording').onclick = function () {
+            this.disabled = true;
+            multiStreamRecorder.stop();
+            multiStreamRecorder.stream.stop();
+            document.querySelector('#pause-recording').disabled = true;
+            document.querySelector('#start-recording').disabled = false;
+            document.querySelector('#add-stream').disabled = true;
+        };
+        document.querySelector('#pause-recording').onclick = function () {
+            this.disabled = true;
+            multiStreamRecorder.pause();
+            document.querySelector('#resume-recording').disabled = false;
+        };
+        document.querySelector('#resume-recording').onclick = function () {
+            this.disabled = true;
+            multiStreamRecorder.resume();
+            document.querySelector('#pause-recording').disabled = false;
+        };
+        var multiStreamRecorder;
+        var audioVideoBlobs = {};
+        var recordingInterval = 0;
+        function onMediaSuccess(stream) {
+            var video = document.createElement('video');
+            video = mergeProps(video, {
+                controls: true,
+                muted: true
+            });
+            video.srcObject = stream;
+            video.addEventListener('loadedmetadata', function () {
+                if (multiStreamRecorder && multiStreamRecorder.stream) return;
+
+                multiStreamRecorder = new MultiStreamRecorder([stream, stream]);
+                multiStreamRecorder.stream = stream;
+
+                multiStreamRecorder.previewStream = function (stream) {
+                    video.src = URL.createObjectURL(stream);
+                    video.play();
+                };
+                multiStreamRecorder.ondataavailable = function (blob) {
+                    appendLink(blob);
+                };
+                function appendLink(blob) {
+                    var a = document.createElement('a');
+                    a.target = '_blank';
+                    a.innerHTML = 'Open Recorded ' + (blob.type == 'audio/ogg' ? 'Audio' : 'Video') + ' No. ' + (index++) + ' (Size: ' + bytesToSize(blob.size) + ') Time Length: ' + getTimeLength(timeInterval);
+                    a.href = URL.createObjectURL(blob);
+                    container.appendChild(a);
+                    container.appendChild(document.createElement('hr'));
+                }
+                var timeInterval = document.querySelector('#time-interval').value;
+                if (timeInterval) timeInterval = parseInt(timeInterval);
+                else timeInterval = 5 * 1000;
+                // get blob after specific time interval
+                multiStreamRecorder.start(timeInterval);
+
+                document.querySelector('#add-stream').disabled = false;
+                document.querySelector('#add-stream').onclick = function () {
+                    if (!multiStreamRecorder || !multiStreamRecorder.stream) return;
+                    multiStreamRecorder.addStream(multiStreamRecorder.stream);
+                };
+                document.querySelector('#stop-recording').disabled = false;
+                document.querySelector('#pause-recording').disabled = false;
+            }, false);
+            video.play();
+            container.appendChild(video);
+            container.appendChild(document.createElement('hr'));
+        }
+        function onMediaError(e) {
+            console.error('media error', e);
+        }
+        var container = document.getElementById('container');
+        var index = 1;
+        // below function via: http://goo.gl/B3ae8c
+        function bytesToSize(bytes) {
+            var k = 1000;
+            var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+            if (bytes === 0) return '0 Bytes';
+            var i = parseInt(Math.floor(Math.log(bytes) / Math.log(k)), 10);
+            return (bytes / Math.pow(k, i)).toPrecision(3) + ' ' + sizes[i];
+        }
+        // below function via: http://goo.gl/6QNDcI
+        function getTimeLength(milliseconds) {
+            var data = new Date(milliseconds);
+            return data.getUTCHours() + " hours, " + data.getUTCMinutes() + " minutes and " + data.getUTCSeconds() + " second(s)";
+        }
+        window.onbeforeunload = function () {
+            document.querySelector('#start-recording').disabled = false;
+        };
+    </script>
     <!-- <script src="/controllers/clientCtrl.js"></script>-->
 </head>
 
@@ -47,8 +162,8 @@
                         <a href="/" style="text-shadow: 2px 2px 4px #000000;">Home</a>
                     </li>
                     <li id="dashboard" style="display:block;">
-                            <a href="https://norecruits.com/mainPage#!/dashboard/personalDetail"style="text-shadow: 2px 2px 4px #000000;">Dashboard
-                            </a>
+                        <a href="https://norecruits.com/mainPage#!/dashboard/personalDetail" style="text-shadow: 2px 2px 4px #000000;">Dashboard
+                        </a>
                     </li>
 
                     <!-- <li>
@@ -105,6 +220,23 @@
                             </a> -->
 
                             <!-- <li id="videoConfStart">  <a id="videoConferenceUrl">Start Video Conference </a></li> -->
+                            <a id="start-recording" class="">
+                                    <button id="screenBtns" style="display:none;color:black;" class="btn fa fa-window-restore">&nbspstart-recording</button>
+                                </a>
+                                <a id="stop-recording" style="display:none;">
+                                    <button id="screenBtns" class="btn fa fa-stop" style="color:red">&nbsp
+                                        <b style="color:black">stop-recording</b>
+                                    </button>
+                                </a>
+                                <a id="pause-recording" class="">
+                                        <button id="screenBtns" style="display:none;color:black;" class="btn fa fa-window-restore">&nbsppause-recording</button>
+                                    </a>
+                                    <a id="add-stream" style="display:none;">
+                                        <button id="screenBtns" class="btn fa fa-stop" style="color:red">&nbsp
+                                            <b style="color:black">add-stream</b>
+                                        </button>
+                                    </a>
+                                    
 
                             <a id="screenShareBtn" class="">
                                 <button id="screenBtns" style="display:none;color:black;" class="btn fa fa-window-restore">&nbspScreenShare</button>
@@ -114,10 +246,11 @@
                                     <b style="color:black">Stop Sharing</b>
                                 </button>
                             </a>
+                            
                             <a id="screenRecordBtn" class="">
-                                <button  class="btn fa fa-window-restore">&nbspRecordStart</button>
+                                <button class="btn fa fa-window-restore">&nbspRecordStart</button>
                             </a>
-                            <a id="screenRecordStop" >
+                            <a id="screenRecordStop">
                                 <button class="btn fa fa-stop" style="color:red">&nbsp
                                     <b style="color:black">Stop Recording</b>
                                 </button>
@@ -252,19 +385,18 @@
                                     <!-- <button type="button" id="screenShareBtn" class="btn" style="background-color: #29b6bd;color:#f1f1f1;display:none;">Start Screen Sharing</button> -->
                                 </div>
                                 <div class="col-sm-12">
-                                        <h6>
-                                            <b>Chrome</b> user need to install Only this extension for Screen Recording
-                                            <a href="https://chrome.google.com/webstore/detail/screencastify-screen-vide/mmeijimgabbpbgpdklnllpncmdofkcpn"
-                                                target="_blank">
-                                                <button class="btnn fa fa-download" style="
+                                    <h6>
+                                        <b>Chrome</b> user need to install Only this extension for Screen Recording
+                                        <a href="https://chrome.google.com/webstore/detail/screencastify-screen-vide/mmeijimgabbpbgpdklnllpncmdofkcpn" target="_blank">
+                                            <button class="btnn fa fa-download" style="
                                                 border-radius: 5px;
                                                 border-color:  white;
                                             ">
-                                                    Screen Recording</button>
-                                            </a>
-                                        </h6>
-                                        <!-- <button type="button" id="screenShareBtn" class="btn" style="background-color: #29b6bd;color:#f1f1f1;display:none;">Start Screen Sharing</button> -->
-                                    </div>
+                                                Screen Recording</button>
+                                        </a>
+                                    </h6>
+                                    <!-- <button type="button" id="screenShareBtn" class="btn" style="background-color: #29b6bd;color:#f1f1f1;display:none;">Start Screen Sharing</button> -->
+                                </div>
                             </div>
                         </div>
                     </center>

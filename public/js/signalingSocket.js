@@ -227,34 +227,34 @@ function emailInvite() {
 // var ICE_SERVERS =sesionEnc.slice();
 // console.log("ICE_SERVERS: "+JSON.stringify(ICE_SERVERS));
 
-var ICE_SERVERS =[{ url: "stun:stun.l.google.com:19302" },
+var ICE_SERVERS = [{ url: "stun:stun.l.google.com:19302" },
 { url: "stun:s3.xirsys.com" },
 {
   url: "turn:s3.xirsys.com:80?transport=udp",
   credential: sesionEnc,
   username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5"
 
-},  {
+}, {
   url: "turn:s3.xirsys.com:3478?transport=udp",
   credential: sesionEnc,
   username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5"
 
-},  {
+}, {
   url: "turn:s3.xirsys.com:80?transport=tcp",
   credential: sesionEnc,
   username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5"
 
-},  {
+}, {
   url: "turn:s3.xirsys.com:3478?transport=tcp",
   credential: sesionEnc,
   username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5"
 
-},  {
+}, {
   url: "turns:s3.xirsys.com:443?transport=tcp",
   credential: sesionEnc,
   username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5"
 
-},  {
+}, {
   url: "turns:s3.xirsys.com:5349?transport=tcp",
   credential: sesionEnc,
   username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5"
@@ -343,39 +343,23 @@ signaling_socket.on("connect", function () {
       console.log("message: config.peer_id: " + config.peer_id);
 
       //document.getElementById('videoConferenceUrl').setAttribute('href', "https://norecruits.com/client/" + peerNew_id + "/" + date);
-      document
-        .getElementById("videoConferenceUrl")
-        .setAttribute(
-          "onclick",
-          "startSession('" + peerNew_id + "' , '" + date + "')"
-        );
-      document
-        .getElementById("linkToShare")
-        .setAttribute(
-          "href",
-          "https://norecruits.com/client/" + peerNew_id + "/" + date
-        );
-      document.getElementById("linkToShare").innerHTML =
-        "https://norecruits.com/client/" + peerNew_id + "/" + date;
+      document.getElementById("videoConferenceUrl").setAttribute("onclick", "startSession('" + peerNew_id + "' , '" + date + "')"
+      );
+      document.getElementById("linkToShare").setAttribute("href", "https://norecruits.com/client/" + peerNew_id + "/" + date
+      );
+      document.getElementById("linkToShare").innerHTML = "https://norecruits.com/client/" + peerNew_id + "/" + date;
     } else {
       console.log("query id nt null");
 
-      document
-        .getElementById("linkToShare")
-        .setAttribute(
-          "href",
-          "https://norecruits.com/client/" + queryLink + "/" + date
-        );
-      document.getElementById("linkToShare").innerHTML =
-        "https://norecruits.com/client/" + queryLink + "/" + date;
+      document.getElementById("linkToShare").setAttribute("href", "https://norecruits.com/client/" + queryLink + "/" + date);
+      document.getElementById("linkToShare").innerHTML = "https://norecruits.com/client/" + queryLink + "/" + date;
       document.getElementById("screenBtns").style.display = "inline";
       document.getElementById("videoConfStart").style.display = "none";
       document.getElementById("openChat").style.display = "inline";
 
       document.getElementById("audio_btn").style.display = "inline";
       document.getElementById("diconnect_btn").style.display = "inline";
-      document.getElementById("videoConferenceLinkExtention").style.display =
-        "inline";
+      document.getElementById("videoConferenceLinkExtention").style.display = "inline";
       var loginType = localStorage.getItem("loginType");
       var userName = localStorage.getItem("userName");
       if (loginType == "teacher" || loginType == "admin") {
@@ -390,18 +374,14 @@ signaling_socket.on("connect", function () {
         });
       }
 
-      document
-        .getElementById("setNameId")
-        .addEventListener("click", function () {
+      document.getElementById("setNameId").addEventListener("click", function () {
           console.log("setup_local_media calling**");
           setup_local_media(function () {
             join__channel(DEFAULT_CHANNEL, { "whatever-you--here": "stuff" });
           });
         });
 
-      document
-        .getElementById("crdsubmit")
-        .addEventListener("click", function () {
+      document.getElementById("crdsubmit").addEventListener("click", function () {
           console.log("setup_local_media calling**");
           setup_local_media(function () {
             join__channel(DEFAULT_CHANNEL, { "whatever-you--here": "stuff" });
@@ -573,16 +553,11 @@ signaling_socket.on("addPeer", function (config) {
       document.getElementById("closeThisConn" + peer_id).style.display =
         "inline";
 
-      document
-        .getElementById("closeThisConn" + peer_id)
-        .addEventListener("click", function () {
+      document.getElementById("closeThisConn" + peer_id).addEventListener("click", function () {
           var removableId = document
             .getElementById("closeThisConn" + peer_id)
             .getAttribute("owner");
-          var removableName = document
-            .getElementById("closeThisConn" + peer_id)
-            .getAttribute("name");
-
+          var removableName = document.getElementById("closeThisConn" + peer_id).getAttribute("name");
           signaling_socket.emit("closeThisConn", {
             removableId: removableId,
             removableName: removableName,
@@ -719,6 +694,8 @@ signaling_socket.on("addPeer", function (config) {
   if (local_media_stream) {
     document.getElementById("screenShareBtn").style.display = "inline";
     document.getElementById("screenShareStop").style.display = "none";
+    document.getElementById("screenRecordBtn").style.display = "inline";
+    document.getElementById("screenRecordStop").style.display = "none";
     console.log("peer_connection.addStream(local_media_stream)-->");
     console.log("local_media_stream: " + local_media_stream);
     peer_connection.addStream(local_media_stream);
@@ -728,6 +705,8 @@ signaling_socket.on("addPeer", function (config) {
     console.log("peer_connection.addStream(local_media_shareStream);-->");
     document.getElementById("screenShareBtn").style.display = "none";
     document.getElementById("screenShareStop").style.display = "inline";
+    document.getElementById("screenRecordBtn").style.display = "none";
+    document.getElementById("screenRecordStop").style.display = "inline";
     peer_connection.addStream(local_media_shareStream);
   }
 
@@ -803,13 +782,10 @@ signaling_socket.on("sessionDescription", function (config) {
           console.log("++++config.queryId: " + config.queryId);
           // console.log("++++config.peerIdForAuth: "+config.peerIdForAuth);
 
-          peer.createAnswer(
-            function (local_description) {
+          peer.createAnswer(function (local_description) {
               console.log("Answer description is: ", local_description);
               console.log("local_description: " + local_description);
-              peer.setLocalDescription(
-                local_description,
-                function () {
+              peer.setLocalDescription(local_description,function () {
                   signaling_socket.emit("relaySessionDescription", {
                     peer_id: peer_id,
                     session_description: local_description,
@@ -981,9 +957,7 @@ function setup_local_media(callback, errorback) {
       );
       $("#videosAttach").append(local_media);
 
-      document
-        .getElementById("videoElem")
-        .addEventListener("click", function () {
+      document.getElementById("videoElem").addEventListener("click", function () {
           console.log("screem size change request-->");
           var videoElem = document.getElementById("videoElem");
           var isFullScreen =
@@ -1010,9 +984,7 @@ function setup_local_media(callback, errorback) {
             else if (videoElem.msExitFullscreen) videoElem.msExitFullscreen();
           }
         });
-      document
-        .getElementById("audio_btn")
-        .addEventListener("click", function () {
+      document.getElementById("audio_btn").addEventListener("click", function () {
           console.log("audio_btn-->");
           console.log(
             "stream.getAudioTracks()[0].enabled: " +
@@ -1050,18 +1022,40 @@ function setup_local_media(callback, errorback) {
       if (errorback) errorback();
     }
   );
+  document.getElementById("screenRecordBtn").addEventListener("click", function () {
+    console.log("screenRecordBtn-->");
+    var recordRTC;
+     function successCallback(stream) {
+        // RecordRTC usage goes here
+        var options = {
+          mimeType: 'video/webm', // or video/webm\;codecs=h264 or video/webm\;codecs=vp9
+          audioBitsPerSecond: 128000,
+          videoBitsPerSecond: 128000,
+          bitsPerSecond: 128000 // if this line is provided, skip above two
+        };
+        recordRTC = RecordRTC(stream, options);
+        recordRTC.startRecording();
+    }
+     function errorCallback(error) {
+        // maybe another application is using the device
+    }
+     var mediaConstraints = { video: true, audio: true };
+    navigator.mediaDevices.getUserMedia(mediaConstraints).then(successCallback).catch(errorCallback);
+     btnStopRecording.onclick = function () {
+        recordRTC.stopRecording(function (audioVideoWebMURL) {
+            video.src = audioVideoWebMURL;
+     
+            var recordedBlob = recordRTC.getBlob();
+            recordRTC.getDataURL(function(dataURL) { });
+        });
+    };
+    console.log("<--screenRecordBtn");
+  })
 
-  document
-    .getElementById("screenShareBtn")
-    .addEventListener("click", function () {
+  document.getElementById("screenShareBtn").addEventListener("click", function () {
       console.log("screenShare-->");
-      getScreenId(function (error, sourceId, screen_constraints) {
-        navigator.getUserMedia(
-          screen_constraints,
-          function (stream) {
-            navigator.getUserMedia(
-              { audio: true },
-              function (audioStream) {
+      getScreenId(function (error, sourceId, screen_constraints) {navigator.getUserMedia(screen_constraints,function (stream) {
+            navigator.getUserMedia({ audio: true },function (audioStream) {
                 stream.addTrack(audioStream.getAudioTracks()[0]);
                 // shareScreen = peerNew_id;
                 var local_media = document.getElementById("videoElem");

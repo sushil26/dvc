@@ -1146,25 +1146,25 @@ module.exports.uploadStudentMaster = function (req, res) {
             .on("end", function () {
                 console.log("end marker: " + marker);
                 console.log("objJson: " + JSON.stringify(objJson));
-                // user.insert(objJson, function (err, data) {
-                //     console.log("data: " + JSON.stringify(data));
-                //     if (err) {
-                //         responseData = {
-                //             status: false,
-                //             message: "Failed to Insert",
-                //             data: data
-                //         };
-                //         res.status(400).send(responseData);
-                //     } else {
-                //         responseData = {
-                //             status: true,
-                //             errorCode: 200,
-                //             message: "Insert Successfull",
-                //             data: data
-                //         };
-                //         res.status(200).send(responseData);
-                //     }
-                // });
+                user.insert(objJson, function (err, data) {
+                    console.log("data: " + JSON.stringify(data));
+                    if (err) {
+                        responseData = {
+                            status: false,
+                            message: "Failed to Insert",
+                            data: data
+                        };
+                        res.status(400).send(responseData);
+                    } else {
+                        responseData = {
+                            status: true,
+                            errorCode: 200,
+                            message: "Insert Successfull",
+                            data: data
+                        };
+                        res.status(200).send(responseData);
+                    }
+                });
             });
 
         console.log("<--uploadStudentMaster");

@@ -47,7 +47,7 @@
                           <button class="btn" ng-if="ud.status=='inactive'" ng-click="updateUserStatus(ud._id,'active',$index)"  >Activate</button>
                         </td>
                         <td style="background-color:aliceblue;">
-                          <button class="btn">View</button>
+                          <button class="btn" class="btn" ng-click="viewUser(ud._id, 'teacher')">View</button>
                         </td>
                         <td style="background-color:aliceblue;">
                           <button class="btn" ng-click="deleteUser(ud._id, $index)">Delete</button>
@@ -99,7 +99,7 @@
                         <button class="btn" ng-if="sd.status=='inactive'" ng-click="updateStudStatus(sd._id,'active',$index)"  >Activate</button>
                       </td>
                       <td style="background-color:aliceblue;">
-                        <button class="btn">View</button>
+                        <button class="btn" ng-click="viewUser(sd._id,'studParent')">View</button>
                       </td>
                       <td style="background-color:aliceblue;">
                         <button class="btn" ng-click="deleteStud(sd._id, $index)">Delete</button>

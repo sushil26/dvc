@@ -375,18 +375,18 @@ signaling_socket.on("connect", function () {
       }
 
       document.getElementById("setNameId").addEventListener("click", function () {
-          console.log("setup_local_media calling**");
-          setup_local_media(function () {
-            join__channel(DEFAULT_CHANNEL, { "whatever-you--here": "stuff" });
-          });
+        console.log("setup_local_media calling**");
+        setup_local_media(function () {
+          join__channel(DEFAULT_CHANNEL, { "whatever-you--here": "stuff" });
         });
+      });
 
       document.getElementById("crdsubmit").addEventListener("click", function () {
-          console.log("setup_local_media calling**");
-          setup_local_media(function () {
-            join__channel(DEFAULT_CHANNEL, { "whatever-you--here": "stuff" });
-          });
+        console.log("setup_local_media calling**");
+        setup_local_media(function () {
+          join__channel(DEFAULT_CHANNEL, { "whatever-you--here": "stuff" });
         });
+      });
     }
     console.log("<--signaling_socket message");
   });
@@ -554,18 +554,18 @@ signaling_socket.on("addPeer", function (config) {
         "inline";
 
       document.getElementById("closeThisConn" + peer_id).addEventListener("click", function () {
-          var removableId = document
-            .getElementById("closeThisConn" + peer_id)
-            .getAttribute("owner");
-          var removableName = document.getElementById("closeThisConn" + peer_id).getAttribute("name");
-          signaling_socket.emit("closeThisConn", {
-            removableId: removableId,
-            removableName: removableName,
-            controllerId: peerNew_id,
-            queryLink: queryLink,
-            timeLink: timeLink
-          });
+        var removableId = document
+          .getElementById("closeThisConn" + peer_id)
+          .getAttribute("owner");
+        var removableName = document.getElementById("closeThisConn" + peer_id).getAttribute("name");
+        signaling_socket.emit("closeThisConn", {
+          removableId: removableId,
+          removableName: removableName,
+          controllerId: peerNew_id,
+          queryLink: queryLink,
+          timeLink: timeLink
         });
+      });
     }
 
     var fullscreenbtn;
@@ -694,7 +694,7 @@ signaling_socket.on("addPeer", function (config) {
   if (local_media_stream) {
     document.getElementById("screenShareBtn").style.display = "inline";
     document.getElementById("screenShareStop").style.display = "none";
-  
+
     console.log("peer_connection.addStream(local_media_stream)-->");
     console.log("local_media_stream: " + local_media_stream);
     peer_connection.addStream(local_media_stream);
@@ -704,7 +704,7 @@ signaling_socket.on("addPeer", function (config) {
     console.log("peer_connection.addStream(local_media_shareStream);-->");
     document.getElementById("screenShareBtn").style.display = "none";
     document.getElementById("screenShareStop").style.display = "inline";
-   
+
     peer_connection.addStream(local_media_shareStream);
   }
 
@@ -781,24 +781,24 @@ signaling_socket.on("sessionDescription", function (config) {
           // console.log("++++config.peerIdForAuth: "+config.peerIdForAuth);
 
           peer.createAnswer(function (local_description) {
-              console.log("Answer description is: ", local_description);
-              console.log("local_description: " + local_description);
-              peer.setLocalDescription(local_description,function () {
-                  signaling_socket.emit("relaySessionDescription", {
-                    peer_id: peer_id,
-                    session_description: local_description,
-                    from: "sessionDescription",
-                    owner: config.owner,
-                    queryLink: queryLink,
-                    timeLink: timeLink
-                  });
-                  console.log("Answer setLocalDescription succeeded");
-                },
-                function () {
-                  console.log("Answer setLocalDescription failed!");
-                }
-              );
+            console.log("Answer description is: ", local_description);
+            console.log("local_description: " + local_description);
+            peer.setLocalDescription(local_description, function () {
+              signaling_socket.emit("relaySessionDescription", {
+                peer_id: peer_id,
+                session_description: local_description,
+                from: "sessionDescription",
+                owner: config.owner,
+                queryLink: queryLink,
+                timeLink: timeLink
+              });
+              console.log("Answer setLocalDescription succeeded");
             },
+              function () {
+                console.log("Answer setLocalDescription failed!");
+              }
+            );
+          },
             function (error) {
               console.log("Error creating answer: ", error);
               console.log(peer);
@@ -935,10 +935,7 @@ function setup_local_media(callback, errorback) {
       console.log("stream: " + JSON.stringify(stream));
 
       local_media_stream = stream;
-      // local_media_shareStream = stream;
       var local_media = USE_VIDEO ? $("<video>") : $();
-      // local_media.attr("autoplay", "true");
-      //local_media.attr("autoplay", "autoplay");
       local_media.attr("muted", "muted"); /* always mute ourselves by default */
       local_media.attr("id", "videoElem");
       local_media.attr(
@@ -956,56 +953,56 @@ function setup_local_media(callback, errorback) {
       $("#videosAttach").append(local_media);
 
       document.getElementById("videoElem").addEventListener("click", function () {
-          console.log("screem size change request-->");
-          var videoElem = document.getElementById("videoElem");
-          var isFullScreen =
-            videoElem.requestFullscreen ||
-            videoElem.mozRequestFullScreen ||
-            videoElem.webkitRequestFullscreen;
-          console.log("isFullScreen: " + isFullScreen);
-          if (isFullScreen) {
-            console.log("SMall Screen");
-            if (videoElem.requestFullscreen) {
-              videoElem.requestFullscreen();
-            } else if (videoElem.mozRequestFullScreen) {
-              videoElem.mozRequestFullScreen();
-            } else if (videoElem.webkitRequestFullscreen) {
-              videoElem.webkitRequestFullscreen();
-            }
-          } else {
-            console.log("Big Screen");
-            if (videoElem.exitFullscreen) document.exitFullscreen();
-            else if (videoElem.webkitExitFullscreen)
-              videoElem.webkitExitFullscreen();
-            else if (videoElem.mozCancelFullScreen)
-              videoElem.mozCancelFullScreen();
-            else if (videoElem.msExitFullscreen) videoElem.msExitFullscreen();
+        console.log("screem size change request-->");
+        var videoElem = document.getElementById("videoElem");
+        var isFullScreen =
+          videoElem.requestFullscreen ||
+          videoElem.mozRequestFullScreen ||
+          videoElem.webkitRequestFullscreen;
+        console.log("isFullScreen: " + isFullScreen);
+        if (isFullScreen) {
+          console.log("SMall Screen");
+          if (videoElem.requestFullscreen) {
+            videoElem.requestFullscreen();
+          } else if (videoElem.mozRequestFullScreen) {
+            videoElem.mozRequestFullScreen();
+          } else if (videoElem.webkitRequestFullscreen) {
+            videoElem.webkitRequestFullscreen();
           }
-        });
+        } else {
+          console.log("Big Screen");
+          if (videoElem.exitFullscreen) document.exitFullscreen();
+          else if (videoElem.webkitExitFullscreen)
+            videoElem.webkitExitFullscreen();
+          else if (videoElem.mozCancelFullScreen)
+            videoElem.mozCancelFullScreen();
+          else if (videoElem.msExitFullscreen) videoElem.msExitFullscreen();
+        }
+      });
       document.getElementById("audio_btn").addEventListener("click", function () {
-          console.log("audio_btn-->");
-          console.log(
-            "stream.getAudioTracks()[0].enabled: " +
-            stream.getAudioTracks()[0].enabled
-          );
-          stream.getAudioTracks()[0].enabled = !stream.getAudioTracks()[0]
-            .enabled;
-          var michrophoneVal = stream.getAudioTracks()[0].enabled;
+        console.log("audio_btn-->");
+        console.log(
+          "stream.getAudioTracks()[0].enabled: " +
+          stream.getAudioTracks()[0].enabled
+        );
+        stream.getAudioTracks()[0].enabled = !stream.getAudioTracks()[0]
+          .enabled;
+        var michrophoneVal = stream.getAudioTracks()[0].enabled;
 
-          if (michrophoneVal) {
-            document.getElementById("audioMute_btn").style.display = "inline";
-            document.getElementById("audioUnmute_btn").style.display = "none";
-          } else {
-            document.getElementById("audioMute_btn").style.display = "none";
-            document.getElementById("audioUnmute_btn").style.display = "inline";
-          }
+        if (michrophoneVal) {
+          document.getElementById("audioMute_btn").style.display = "inline";
+          document.getElementById("audioUnmute_btn").style.display = "none";
+        } else {
+          document.getElementById("audioMute_btn").style.display = "none";
+          document.getElementById("audioUnmute_btn").style.display = "inline";
+        }
 
-          console.log(
-            "stream.getAudioTracks()[0].enabled: " +
-            stream.getAudioTracks()[0].enabled
-          );
-          console.log("<--audio_btn");
-        });
+        console.log(
+          "stream.getAudioTracks()[0].enabled: " +
+          stream.getAudioTracks()[0].enabled
+        );
+        console.log("<--audio_btn");
+      });
 
       attachMediaStream(local_media[0], stream);
 
@@ -1020,144 +1017,145 @@ function setup_local_media(callback, errorback) {
       if (errorback) errorback();
     }
   );
- 
+
 
 
   document.getElementById("screenShareBtn").addEventListener("click", function () {
-      console.log("screenShare-->");
-      getScreenId(function (error, sourceId, screen_constraints) {navigator.getUserMedia(screen_constraints,function (stream) {
-            navigator.getUserMedia({ audio: true },function (audioStream) {
-                stream.addTrack(audioStream.getAudioTracks()[0]);
-                // shareScreen = peerNew_id;
-                var local_media = document.getElementById("videoElem");
-                stopVideo(local_media);
-                function stopVideo(local_media) {
-                  let stream = videoElem.srcObject;
-                  let tracks = stream.getTracks();
+    console.log("screenShare-->");
+    getScreenId(function (error, sourceId, screen_constraints) {
+      navigator.getUserMedia(screen_constraints, function (stream) {
+        navigator.getUserMedia({ audio: true }, function (audioStream) {
+          stream.addTrack(audioStream.getAudioTracks()[0]);
+          // shareScreen = peerNew_id;
+          var local_media = document.getElementById("videoElem");
+          stopVideo(local_media);
+          function stopVideo(local_media) {
+            let stream = videoElem.srcObject;
+            let tracks = stream.getTracks();
 
-                  tracks.forEach(function (track) {
-                    track.stop();
-                  });
+            tracks.forEach(function (track) {
+              track.stop();
+            });
 
-                  videoElem.srcObject = null;
-                  delete this;
-                  $(this).remove();
+            videoElem.srcObject = null;
+            delete this;
+            $(this).remove();
 
-                  local_media_stream = null;
-                }
+            local_media_stream = null;
+          }
 
-                $("#videosAttach").empty();
+          $("#videosAttach").empty();
 
-                //local_media_stream = stream;
-                local_media_shareStream = stream;
-                var local_mediaScreenShare = USE_VIDEO
-                  ? $("<video>")
-                  : $("<audio>");
-                //local_mediaScreenShare.attr("autoplay", "autoplay");
-                local_mediaScreenShare.attr(
+          //local_media_stream = stream;
+          local_media_shareStream = stream;
+          var local_mediaScreenShare = USE_VIDEO
+            ? $("<video>")
+            : $("<audio>");
+          //local_mediaScreenShare.attr("autoplay", "autoplay");
+          local_mediaScreenShare.attr(
+            "muted",
+            "muted"
+          ); /* always mute ourselves by default */
+          // local_mediaScreenShare.attr("controls", "");
+          local_mediaScreenShare.attr("id", "screenShareElem");
+          local_mediaScreenShare.attr(
+            "style",
+            "border:1px solid skyblue"
+          );
+
+          //$('#portfolio-wrapper').append('<div id="'+id+'remoteContainer" class="col-lg-3 col-md-6 portfolio-items"><div id="'+id+'remoteVideoElement"></div><div class="details"><h4>'+config.userName+'</h4><span>All is well</span></div></div>');
+          $("#videosAttach").append(local_mediaScreenShare);
+
+          attachMediaStream(local_mediaScreenShare[0], stream);
+
+          /* ##### Start Stop Sharing ##### */
+          // var btn = document.createElement("input");
+          var btn = document.getElementById("screenShareStop");
+
+          btn.onclick = function stopVideo(local_mediaScreenShare) {
+            let stream = screenShareElem.srcObject;
+            let tracks = stream.getTracks();
+
+            tracks.forEach(function (track) {
+              track.stop();
+            });
+
+            screenShareElem.srcObject = null;
+            var existing = document.getElementById("screenShareElem");
+            if (existing) {
+              existing.parentNode.removeChild(existing);
+            }
+            $("#videosAttach").empty();
+            /* ######   ###### */
+            navigator.getUserMedia(
+              { audio: USE_AUDIO, video: USE_VIDEO },
+              function (stream) {
+                /* user accepted access to a/v */
+                console.log("Access granted to audio/video");
+                console.log("stream: " + stream);
+                console.log("stream: " + JSON.stringify(stream));
+                local_media_shareStream = null;
+                local_media_stream = stream;
+                // local_media_shareStream = stream;
+                var local_media = USE_VIDEO ? $("<video>") : $();
+                //local_media.attr("autoplay", "autoplay");
+                local_media.attr(
                   "muted",
                   "muted"
                 ); /* always mute ourselves by default */
-                // local_mediaScreenShare.attr("controls", "");
-                local_mediaScreenShare.attr("id", "screenShareElem");
-                local_mediaScreenShare.attr(
-                  "style",
-                  "border:1px solid skyblue"
-                );
+                // local_media.attr("controls", "");
+                local_media.attr("id", "videoElem");
+                local_media.attr("style", "border:1px solid skyblue");
+                $("#videosAttach").append(local_media);
 
-                //$('#portfolio-wrapper').append('<div id="'+id+'remoteContainer" class="col-lg-3 col-md-6 portfolio-items"><div id="'+id+'remoteVideoElement"></div><div class="details"><h4>'+config.userName+'</h4><span>All is well</span></div></div>');
-                $("#videosAttach").append(local_mediaScreenShare);
-
-                attachMediaStream(local_mediaScreenShare[0], stream);
-
-                /* ##### Start Stop Sharing ##### */
-                // var btn = document.createElement("input");
-                var btn = document.getElementById("screenShareStop");
-
-                btn.onclick = function stopVideo(local_mediaScreenShare) {
-                  let stream = screenShareElem.srcObject;
-                  let tracks = stream.getTracks();
-
-                  tracks.forEach(function (track) {
-                    track.stop();
-                  });
-
-                  screenShareElem.srcObject = null;
-                  var existing = document.getElementById("screenShareElem");
-                  if (existing) {
-                    existing.parentNode.removeChild(existing);
-                  }
-                  $("#videosAttach").empty();
-                  /* ######   ###### */
-                  navigator.getUserMedia(
-                    { audio: USE_AUDIO, video: USE_VIDEO },
-                    function (stream) {
-                      /* user accepted access to a/v */
-                      console.log("Access granted to audio/video");
-                      console.log("stream: " + stream);
-                      console.log("stream: " + JSON.stringify(stream));
-                      local_media_shareStream = null;
-                      local_media_stream = stream;
-                      // local_media_shareStream = stream;
-                      var local_media = USE_VIDEO ? $("<video>") : $();
-                      //local_media.attr("autoplay", "autoplay");
-                      local_media.attr(
-                        "muted",
-                        "muted"
-                      ); /* always mute ourselves by default */
-                      // local_media.attr("controls", "");
-                      local_media.attr("id", "videoElem");
-                      local_media.attr("style", "border:1px solid skyblue");
-                      $("#videosAttach").append(local_media);
-
-                      attachMediaStream(local_media[0], stream);
-
-                      if (callback) callback();
-                    },
-                    function () {
-                      /* user denied access to a/v */
-                      console.log("Access denied for audio/video");
-                      alert(
-                        "You chose not to provide access to the camera/microphone, Video will not work."
-                      );
-                      if (errorback) errorback();
-                    }
-                  );
-                  /* ######   ###### */
-                };
-
-                /* ##### End Stop Sharing ##### */
+                attachMediaStream(local_media[0], stream);
 
                 if (callback) callback();
-                // document.querySelector('video').src = URL.createObjectURL(stream);
-
-                // share this "MediaStream" object using RTCPeerConnection API
               },
-              function (error) {
-                console.error(error);
+              function () {
+                /* user denied access to a/v */
+                console.log("Access denied for audio/video");
+                alert(
+                  "You chose not to provide access to the camera/microphone, Video will not work."
+                );
                 if (errorback) errorback();
               }
             );
-          },
+            /* ######   ###### */
+          };
+
+          /* ##### End Stop Sharing ##### */
+
+          if (callback) callback();
+          // document.querySelector('video').src = URL.createObjectURL(stream);
+
+          // share this "MediaStream" object using RTCPeerConnection API
+        },
           function (error) {
-            var msg =
-              "You Must Need to Install  Screen Share Extention, Click ok to install";
-            var newLine = "\r\n";
-            msg += newLine;
-            msg +=
-              "Note:Please Refresh the browser After Installing Extention ";
-            if (window.confirm(msg)) {
-              window.open(
-                "https://chrome.google.com/webstore/detail/screen-capturing/ajhifddimkapgcifgcodmmfdlknahffk?utm_source=chrome-app-launcher-info-dialog"
-              );
-            }
-            //    alert("You Must Need to Install This Screen Share Extention https://chrome.google.com/webstore/detail/screen-capturing/ajhifddimkapgcifgcodmmfdlknahffk?utm_source=chrome-app-launcher-info-dialog ");
             console.error(error);
             if (errorback) errorback();
           }
         );
-      });
+      },
+        function (error) {
+          var msg =
+            "You Must Need to Install  Screen Share Extention, Click ok to install";
+          var newLine = "\r\n";
+          msg += newLine;
+          msg +=
+            "Note:Please Refresh the browser After Installing Extention ";
+          if (window.confirm(msg)) {
+            window.open(
+              "https://chrome.google.com/webstore/detail/screen-capturing/ajhifddimkapgcifgcodmmfdlknahffk?utm_source=chrome-app-launcher-info-dialog"
+            );
+          }
+          //    alert("You Must Need to Install This Screen Share Extention https://chrome.google.com/webstore/detail/screen-capturing/ajhifddimkapgcifgcodmmfdlknahffk?utm_source=chrome-app-launcher-info-dialog ");
+          console.error(error);
+          if (errorback) errorback();
+        }
+      );
     });
+  });
 
   console.log("<--setup_local_media");
 }

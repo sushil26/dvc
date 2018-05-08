@@ -1020,7 +1020,7 @@ module.exports.uploadStudentMaster = function (req, res) {
             dob: data.DOB,
             doj: data.DOJ,
             pswd: "abc",
-            status: "inactive",
+            status: "active",
             loginType: "studParent",
             attendance: [
                 { "month": "Jan", "dateAttendance": [] },
@@ -1126,7 +1126,7 @@ module.exports.uploadStudentMaster = function (req, res) {
                 pswd: "abc",
                 css: [],
                 timeTable: [],
-                status: "inactive",
+                status: "active",
                 loginType: "teacher"
             }
             var cssParts = data.ClassSectionSubject.split(',');

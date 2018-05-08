@@ -8,7 +8,7 @@
 
 // ];
 var sesionEnc = localStorage.getItem("sessionEnc");
-// console.log("sesionEnc: "+sesionEnc);
+console.log("sesionEnc: "+sesionEnc);
 
 
 /** CONFIG **/

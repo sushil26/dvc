@@ -85,7 +85,7 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
     // localStorage.setItem("encUrl",encryptedUrl); 
     // localStorage.setItem("encPswd",encryptedPswd);
     localStorage.setItem("sessionEnc", data.sessionData);
-
+console.log("localStorage.getItem(sessionEnc): "+localStorage.getItem("sessionEnc"));
     if (typeof (Storage) !== "undefined") {
       if (data.data.loginType == 'teacher') {
         var un = data.data.firstName +" "+ data.data.lastName

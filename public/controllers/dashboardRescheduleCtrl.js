@@ -6,7 +6,7 @@ app.controller('dashboardRescheduleCtrl', function ($scope, $state, $rootScope, 
     var teacherEvents = []; /* ### Note: selected teacher events ### */
     var ownerEvents = []; /* ### Note: logged in person all events ### */
     var remoteEvent = []; /* ### Note:receiver all events ### */
-    $scope.timeForPeriods = $rootScope.TimeTable_timing;
+    // $scope.timeForPeriods = $rootScope.TimeTable_timing;
 
 
 
@@ -586,12 +586,12 @@ app.controller('dashboardRescheduleCtrl', function ($scope, $state, $rootScope, 
     $scope.timeTableForEventBook = function (day, id) {
         console.log("timeTableForEventBook-->");
         console.log("id: " + id + " day: " + day);
-        console.log("$scope.timeForPeriods[id].startsAt: " + $scope.timeForPeriods[id].startsAt);
-        console.log("$scope.timeForPeriods[id].endsAt: " + $scope.timeForPeriods[id].endsAt);
+        console.log("$scope.teacherPersonalData[0].timeTable[0].timing[id].startsAt: " + $scope.teacherPersonalData[0].timeTable[0].timing[id].startsAt);
+        console.log("$scope.teacherPersonalData[0].timeTable[0].timing[id].endsAt: " + $scope.teacherPersonalData[0].timeTable[0].timing[id].endsAt);
 
-        var sd = $scope.timeForPeriods[id].startsAt + ' ' + $scope.timeForPeriods[id].meridian;
-        var ed = $scope.timeForPeriods[id].endsAt + ' ' + $scope.timeForPeriods[id].meridian;
-        console.log("sd: " + new Date(sd) + " ed: " + new Date(ed));
+        var sd = $scope.teacherPersonalData[0].timeTable[0].timing[id].startsAt;
+        var ed = $scope.teacherPersonalData[0].timeTable[0].timing[id].endsAt;
+        console.log("sd: " + sd + " ed: " + ed);
         $scope.startDate = $filter('date')($scope.selectedDate, "EEE MMM dd y");
         $scope.startTime = $filter('date')(sd, "h:mm:ss a");
         $scope.EndTime = $filter('date')(ed, "h:mm:ss a");

@@ -1809,7 +1809,7 @@ div[data-role="editor-toolbar"] {
   margin: 10px;
 }
 
-.panel .panel-body {
+/* .panel .panel-body {
   border-width: 1px 1px 2px;
 
   border-style: solid;
@@ -1821,7 +1821,7 @@ div[data-role="editor-toolbar"] {
   border-bottom-color: #ccc !important;
 
   border-left-color: #ccc !important;
-}
+} */
 
 .panel .panel-body-map {
   border-width: 1px 1px 2px;

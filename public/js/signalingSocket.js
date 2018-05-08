@@ -694,6 +694,8 @@ signaling_socket.on("addPeer", function (config) {
   if (local_media_stream) {
     document.getElementById("screenShareBtn").style.display = "inline";
     document.getElementById("screenShareStop").style.display = "none";
+    document.getElementById("screenRecordBtn").style.display = "inline";
+    document.getElementById("screenRecordStop").style.display = "none";
     console.log("peer_connection.addStream(local_media_stream)-->");
     console.log("local_media_stream: " + local_media_stream);
     peer_connection.addStream(local_media_stream);
@@ -703,6 +705,8 @@ signaling_socket.on("addPeer", function (config) {
     console.log("peer_connection.addStream(local_media_shareStream);-->");
     document.getElementById("screenShareBtn").style.display = "none";
     document.getElementById("screenShareStop").style.display = "inline";
+    document.getElementById("screenRecordBtn").style.display = "none";
+    document.getElementById("screenRecordStop").style.display = "inline";
     peer_connection.addStream(local_media_shareStream);
   }
 

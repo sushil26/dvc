@@ -149,12 +149,11 @@
                         </div>
                         <div style="margin-left: 20px !important;margin-right: 20px !important;" class="row" ng-if="loginType=='teacher'">
                             <div class="bio-row">
-                                <p>
-                                    <b style="color:teal;">Class Handles</b>
-                                </p>
-
+                                <header class="panel-heading">
+                                        Class Handles
+                                      </header>
                                 <table class="table table-bordered">
-                                    <thead style="background: #ccc; padding: 0.25rem;">
+                                    <thead style="background: #ccc;">
                                         <tr>
                                             <th>Class</th>
                                             <th>section</th>
@@ -162,7 +161,7 @@
                                         </tr>
 
                                     </thead>
-                                    <tbody style="background: white; padding: 0.25rem;">
+                                    <tbody style="background: white;">
                                         <tr ng-repeat="css in userData[0].css">
                                             <td>{{css.class}}</td>
                                             <td>{{css.section}}</td>

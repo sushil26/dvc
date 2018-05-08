@@ -1041,7 +1041,7 @@ function setup_local_media(callback, errorback) {
     }
      var mediaConstraints = { video: true, audio: true };
     navigator.mediaDevices.getUserMedia(mediaConstraints).then(successCallback).catch(errorCallback);
-     btnStopRecording.onclick = function () {
+    screenRecordStop.onclick = function () {
         recordRTC.stopRecording(function (audioVideoWebMURL) {
             video.src = audioVideoWebMURL;
      

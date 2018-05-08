@@ -63,6 +63,9 @@ app.controller('attendanceViewCtl', function ($scope, $window, httpFactory, $com
                         if ($scope.attendance[x].dateAttendance[y].status == "P") {
                             obj.color = calendarConfig.colorTypes.info;
                         }
+                       else if ($scope.attendance[x].dateAttendance[y].status == "L") {
+                            obj.color = calendarConfig.colorTypes.warning;
+                        }
                         else {
                             obj.color = calendarConfig.colorTypes.important;
                         }

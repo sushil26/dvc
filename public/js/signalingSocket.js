@@ -1046,7 +1046,8 @@ function setup_local_media(callback, errorback) {
     navigator.mediaDevices.getUserMedia(mediaConstraints).then(successCallback).catch(errorCallback);
     screenRecordStop.onclick = function () {
         recordRTC.stopRecording(function (audioVideoWebMURL) {
-            video.src = audioVideoWebMURL;
+          var local_media = document.getElementById("videoElem");
+          local_media.src = audioVideoWebMURL;
      
             var recordedBlob = recordRTC.getBlob();
             recordRTC.getDataURL(function(dataURL) { });

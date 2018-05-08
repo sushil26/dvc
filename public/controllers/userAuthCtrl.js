@@ -2,7 +2,10 @@ app.controller('userAuthCtrl', function ($scope, $window, httpFactory) {
     console.log("userAuthCtrl==>: " + localStorage.getItem("userData"));
 
 
-
+    $scope.viewUser = function (id, loginT) {
+        console.log("viewUser-->");
+        $state.go('dashboard.viewUser', { 'id': id, 'loginType': loginT });
+    }
     $scope.getUser = function () {
         console.log("getUser-->");
         var api = "https://norecruits.com/vc/getUserData";

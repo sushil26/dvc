@@ -1133,14 +1133,11 @@ module.exports.uploadStudentMaster = function (req, res) {
             console.log("cssParts: " + JSON.stringify(cssParts));
             for (var x = 0; x < cssParts.length; x++) {
                 if (cssParts[x] != "") {
-                    var cssSeparate = cssParts[x].split('-');
+                    var trimed = cssParts[x].trim();
+                    console.log("cssSeparate: " + trimed);
+                    var cssSeparate = trimed.split('-');
                     console.log("cssSeparate: " + JSON.stringify(cssSeparate));
-                    var clas = cssSeparate[0];
-                    var section = cssSeparate[1];
-                    var subject = cssSeparate[2];
-
-                    console.log("cssSeparate: " + clas.trim());
-                    userData.css.push({ "class": clas.trim(), "section": section.trim(), "subject": subject.trim() });
+                    userData.css.push({ "class": cssSeparate[0], "section": cssSeparate[1], "subject": cssSeparate[2] });
                 }
             }
             console.log("userData: " + JSON.stringify(userData));

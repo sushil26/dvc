@@ -90,7 +90,7 @@
                             <option value="" disabled selected>Student</option>
                           </select>
 
-                          <select class=" btn btn-danger" ng-if="userLoginType=='studParent'" placeholder="select" ng-model="cssSelect" ng-change="getTeacherCalendar(cssSelect)"
+                          <select class=" btn btn-warning" ng-if="userLoginType=='studParent'" placeholder="select" ng-model="cssSelect" ng-change="getTeacherCalendar(cssSelect)"
                             ng-options="cs as cs.name + '-' + cs.teacherId+'-'+cs.subject for cs in teacherList">
                             <option value="" disabled selected>Teacher</option>
                           </select>
@@ -323,7 +323,7 @@
                           Save
                         </button>
 
-                        <button ng-if="event.url" class="btn btn-danger" style="width: 80px;" ng-click="deleteEvent(event.id, $index)">
+                        <button ng-if="event.url" class="btn btn-warning" style="width: 80px;" ng-click="deleteEvent(event.id, $index)">
                           Delete
                         </button>
                         <button data-target="#event" id="crdbuttn" style="display:none" data-backdrop="static" data-keyboard="false" data-toggle="modal"

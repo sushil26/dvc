@@ -1,4 +1,4 @@
-app.controller('adminCreateCtl', function ($scope, $window, httpFactory, sessionAuthFactory) {
+app.controller('adminCreateCtl', function ($scope, $filter, $window, httpFactory, sessionAuthFactory) {
     console.log("adminCreateCtl==>");
 
     $scope.adminCreate = function () {

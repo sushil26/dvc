@@ -77,7 +77,13 @@
                                 <p>
                                     <span>
                                         <b style="color:teal;">Date of birth</b>
-                                    </span>: 27 August 1987</p>
+                                    </span>: {{userData[0].dob}}</p>
+                            </div>
+                            <div class="bio-row" ng-if="loginType=='teacher'">
+                                <p>
+                                    <span>
+                                        <b style="color:teal;">Mobile Number</b>
+                                    </span>: {{userData[0].mobNumber}}</p>
                             </div>
 
                             <div class="bio-row" ng-if="loginType=='teacher' || loginType=='admin'">

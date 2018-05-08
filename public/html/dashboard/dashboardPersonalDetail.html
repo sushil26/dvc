@@ -30,13 +30,13 @@
                             <div class="bio-row" ng-if="loginType!='admin'">
                                 <p>
                                     <span>
-                                        <b>School Name</b>
+                                        <b style="color:teal;">School Name</b>
                                     </span>: {{userData[0].schoolName}} </p>
                             </div>
                             <div class="bio-row" ng-if="loginType=='studParent'">
                                 <p>
-                                    <span>
-                                        <b> Student Name</b>
+                                    <span >
+                                        <b style="color:teal;"> Student Name</b>
                                     </span>: {{userData[0].firstName +" "+ userData[0].lastName}}</p>
                             </div>
                             <div class="bio-row" ng-if="loginType=='teacher'">

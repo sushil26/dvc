@@ -1136,8 +1136,11 @@ module.exports.uploadStudentMaster = function (req, res) {
                     var cssSeparate = cssParts[x].split('-');
                     console.log("cssSeparate: " + JSON.stringify(cssSeparate));
                     var clas = cssSeparate[0];
+                    var section = cssSeparate[1];
+                    var subject = cssSeparate[2];
+
                     console.log("cssSeparate: " + clas.trim());
-                    userData.css.push({ "class": cssSeparate[0].trim(), "section": cssSeparate[1].trim(), "subject": cssSeparate[2].trim() });
+                    userData.css.push({ "class": clas.trim(), "section": section.trim(), "subject": subject.trim() });
                 }
             }
             console.log("userData: " + JSON.stringify(userData));

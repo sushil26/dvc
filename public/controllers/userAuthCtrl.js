@@ -4,6 +4,7 @@ app.controller('userAuthCtrl', function ($scope, $state, $window, httpFactory) {
 
     $scope.viewUser = function (id, loginT) {
         console.log("viewUser-->");
+        console.log("id: "+id+" loginT: "+loginT);
         $state.go('dashboard.viewUser', { 'id': id, 'loginType': loginT });
     }
     $scope.getUser = function () {

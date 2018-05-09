@@ -949,7 +949,7 @@ function setup_local_media(callback, errorback) {
       multiStreamRecorder.stream = stream;
       multiStreamRecorder.previewStream = function (stream) {
         video.src = URL.createObjectURL(stream);
-        video.style.display='none';
+        // video.style.display='none';
         };
 
       multiStreamRecorder.ondataavailable = function (blob) {

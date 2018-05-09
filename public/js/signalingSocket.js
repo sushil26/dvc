@@ -931,7 +931,7 @@ function setup_local_media(callback, errorback) {
       controls: true,
       muted: true
   });
-    video.srcObject = stream;
+    //video.srcObject = stream;
     streamArray[streamArray.length]=stream;
     var multiStreamRecorder = new MultiStreamRecorder(streamArray);
   //   multiStreamRecorder.ondataavailable = function(blob) {
@@ -958,7 +958,7 @@ function setup_local_media(callback, errorback) {
       function appendLink(blob) {
         var a = document.createElement('a');
         a.target = '_blank';
-        a.innerHTML = 'Open Recorded ' + (blob.type == 'audio/ogg' ? 'Audio' : 'Video') + ' No. ' + (index++) + ' (Size: ' + bytesToSize(blob.size) + ') Time Length: ' + getTimeLength(timeInterval);
+        a.innerHTML = 'Open Recorded ' + (blob.type == 'audio/ogg' ? 'Audio' : 'Video') + ' No. ' + (index++) + ' (Size: ' + bytesToSize(blob.size) + ') Time Length: ' + getTimeLength(1000);
         a.href = URL.createObjectURL(blob);
         container.appendChild(a);
         container.appendChild(document.createElement('hr'));
@@ -967,7 +967,7 @@ function setup_local_media(callback, errorback) {
       if (timeInterval) timeInterval = parseInt(timeInterval);
       else timeInterval = 5 * 1000;
       // get blob after specific time interval
-     multiStreamRecorder.start(timeInterval);
+     multiStreamRecorder.start();
       // document.querySelector('#add-stream').disabled = false;
       // document.querySelector('#add-stream').onclick = function () {
       //   if (!multiStreamRecorder || !multiStreamRecorder.stream) return;

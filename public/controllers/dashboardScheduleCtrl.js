@@ -726,6 +726,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
     }
     else {
       $('#timeTable_modal').modal('hide');
+      
       alert("Sorry you have to book the event 24Hrs before of your current date");
     }
     console.log("<--timeTableForEventBook");

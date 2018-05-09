@@ -1133,6 +1133,7 @@ module.exports.uploadStudentMaster = function (req, res) {
             console.log("cssParts: " + JSON.stringify(cssParts));
             for (var x = 0; x < cssParts.length; x++) {
                 if (cssParts[x] != "") {
+                    console.log("cssParts[x]: " + cssParts[x]);
                     var trimed = cssParts[x].trim();
                     console.log("cssSeparate: " + trimed);
                     var cssSeparate = trimed.split('-');

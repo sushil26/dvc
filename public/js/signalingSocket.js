@@ -935,8 +935,7 @@ function setup_local_media(callback, errorback) {
     streamArray[streamArray.length]=stream;
     
     var multiStreamRecorder = new MultiStreamRecorder(streamArray);
-    mediaRecorder.mimeType = 'video/webm';
-mediaRecorder.start(60 * 60 * 1000); // 1 hour recording
+   
   //   multiStreamRecorder.ondataavailable = function(blob) {
      
   //     var blobURL = URL.createObjectURL(blob);
@@ -965,6 +964,8 @@ mediaRecorder.start(60 * 60 * 1000); // 1 hour recording
         container.appendChild(a);
         container.appendChild(document.createElement('hr'));
       }
+      mediaRecorder.mimeType = 'video/webm';
+      mediaRecorder.start(60 * 60 * 1000); // 1 hour recording
       // var timeInterval = 5000;
       // if (timeInterval) timeInterval = parseInt(timeInterval);
       // else timeInterval = 5 * 1000;
@@ -981,6 +982,7 @@ mediaRecorder.start(60 * 60 * 1000); // 1 hour recording
     // video.play();
     // container.appendChild(video);
     // container.appendChild(document.createElement('hr'));
+
     console.log("<--attachMediaStream");
   };
   navigator.getUserMedia({ audio: USE_AUDIO, video: USE_VIDEO },

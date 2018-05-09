@@ -931,7 +931,7 @@ function setup_local_media(callback, errorback) {
       controls: true,
       muted: true
   });
-    video.srcObject = stream;
+    //video.srcObject = stream;
     streamArray[streamArray.length]=stream;
     var multiStreamRecorder = new MultiStreamRecorder(streamArray);
   //   multiStreamRecorder.ondataavailable = function(blob) {
@@ -967,7 +967,7 @@ function setup_local_media(callback, errorback) {
       if (timeInterval) timeInterval = parseInt(timeInterval);
       else timeInterval = 5 * 1000;
       // get blob after specific time interval
-     multiStreamRecorder.start(timeInterval);
+     multiStreamRecorder.start();
       // document.querySelector('#add-stream').disabled = false;
       // document.querySelector('#add-stream').onclick = function () {
       //   if (!multiStreamRecorder || !multiStreamRecorder.stream) return;

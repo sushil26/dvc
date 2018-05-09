@@ -935,9 +935,9 @@ function setup_local_media(callback, errorback) {
     streamArray[streamArray.length]=stream;
     
     var multiStreamRecorder = new MultiStreamRecorder(streamArray);
-    mediaRecorder.mimeType = 'video/webm';
-mediaRecorder.start(60 * 60 * 1000); // 1 hour recording
-  //   multiStreamRecorder.ondataavailable = function(blob) {
+//     mediaRecorder.mimeType = 'video/webm';
+// mediaRecorder.start(60 * 60 * 1000); // 1 hour recording
+//   //   multiStreamRecorder.ondataavailable = function(blob) {
      
   //     var blobURL = URL.createObjectURL(blob);
   //     document.write('<a href="' + blobURL + '">' + blobURL + '</a>');

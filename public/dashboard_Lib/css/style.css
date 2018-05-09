@@ -571,10 +571,11 @@ ul.sidebar-menu li a {
   -ms-transition: all 0.3s ease;
 
   transition: all 0.3s ease;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0), 0 6px 20px 0 rgba(0, 0, 0, 0.16);
 
-  border-right: 0.5px solid #d7d7d7;
+  /* border-right: 0.5px solid #d7d7d7; */
 
-  border-bottom: 0.5px solid #518f9d;
+  /* border-bottom: 0.5px solid #518f9d; */
 }
 
 /*ul.sidebar-menu li a i{
@@ -5047,7 +5048,7 @@ ul.inbox-pagination li {
 
   text-align: center;
 
-  padding: 10px 110px;
+  /* padding: 10px 110px; */
 
   font-size: 16px;
 

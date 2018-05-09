@@ -951,7 +951,6 @@ function setup_local_media(callback, errorback) {
         video.src = URL.createObjectURL(stream);
         // video.style.display='none';
         };
-
       multiStreamRecorder.ondataavailable = function (blob) {
         appendLink(blob);
       };
@@ -967,7 +966,7 @@ function setup_local_media(callback, errorback) {
       if (timeInterval) timeInterval = parseInt(timeInterval);
       else timeInterval = 5 * 1000;
       // get blob after specific time interval
-     multiStreamRecorder.start();
+     multiStreamRecorder.start(1000);
       // document.querySelector('#add-stream').disabled = false;
       // document.querySelector('#add-stream').onclick = function () {
       //   if (!multiStreamRecorder || !multiStreamRecorder.stream) return;

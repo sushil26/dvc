@@ -49,7 +49,8 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
             scope: $scope,
             templateUrl: '/html/templates/loginAlert.html',
             windowClass: 'show',
-            backdropClass: 'show',
+            backdropClass: 'static',
+            keyboard: false,
             controller: function ($scope, $uibModalInstance) {
               $scope.message = "Login Successfully";
               console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));

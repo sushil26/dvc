@@ -931,7 +931,7 @@ function setup_local_media(callback, errorback) {
       controls: true,
       muted: true
   });
-    video.srcObject = stream;
+    
     streamArray[streamArray.length]=stream;
     var multiStreamRecorder = new MultiStreamRecorder(streamArray);
   //   multiStreamRecorder.ondataavailable = function(blob) {
@@ -948,7 +948,8 @@ function setup_local_media(callback, errorback) {
      
       multiStreamRecorder.stream = stream;
       multiStreamRecorder.previewStream = function (stream) {
-        video.src = URL.createObjectURL(stream);
+        video.srcObject = stream;
+        //video.src = URL.createObjectURL(stream);
         // video.play();
       };
 

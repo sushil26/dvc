@@ -33,7 +33,7 @@
                                     <tr>
                                         <th>#</th>
 
-                                        <th>SAdmin Name</th>
+                                        <th>Admin Name</th>
                                         <th>Email</th>
                                         <th>Phone Number</th>
                                         <th>Status</th>
@@ -51,7 +51,7 @@
                                         <td style=" background-color:white; color:red;" ng-if="ad.status=='inactive'">Inactive</td>
                                         <td style=" background-color:white; color:green;" ng-if="ad.status=='active'">Active</td>
                                         <td style="background-color:white;">
-                                            <button class="btn btn-danger" ng-if="ad.status=='active'" ng-click="updateAdminStatus(ad._id,'inactive',$index)">Dectivate</button>
+                                            <button class="btn btn-danger" ng-if="ad.status=='active'" ng-click="updateAdminStatus(ad._id,'inactive',$index)">Deactivate</button>
                                             <button class="btn btn-info" ng-if="ad.status=='inactive'" ng-click="updateAdminStatus(ad._id,'active',$index)">Activate</button>
 
                                             <button class="btn btn-warning" ng-click="viewUser(ad._id, 'teacher')">View</button>
@@ -75,12 +75,12 @@
                                 <thead class="panel-heading">
                                     <tr>
                                         <th>#</th>
-                                        <th>STeacher Id</th>
+                                        <th>Teacher Id</th>
                                         <th>Teacher Name</th>
                                         <th>Email</th>
                                         <th>Mobile Number</th>
                                         <th>Status</th>
-                                        <th>View</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -108,7 +108,7 @@
                     <section class="panel">
 
                         <div class="panel-heading" style="background: #3a4a58;">
-                            <!-- <i class="fa fa-user-circle"></i> -->
+                            <i class="fa fa-user-circle"></i>
                             <span style="color:white;">&nbsp;STUDENT</span>
                         </div>
                         <table class="table">
@@ -120,7 +120,7 @@
                                     <th>Class</th>
                                     <th>Section</th>
                                     <th>Status</th>
-                                    <th>View</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>

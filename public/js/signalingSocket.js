@@ -958,7 +958,7 @@ function setup_local_media(callback, errorback) {
       function appendLink(blob) {
         var a = document.createElement('a');
         a.target = '_blank';
-        a.innerHTML = 'Open Recorded ' + (blob.type == 'audio/ogg' ? 'Audio' : 'Video') + ' No. ' + (index++) + ' (Size: ' + bytesToSize(blob.size) + ') Time Length: ' + getTimeLength(10000);
+        a.innerHTML = 'Open Recorded ' + (blob.type == 'audio/ogg' ? 'Audio' : 'Video') + ' No. ' + (index++) + ' (Size: ' + bytesToSize(blob.size) + ') Time Length: ' + getTimeLength(1000);
         a.href = URL.createObjectURL(blob);
         container.appendChild(a);
         container.appendChild(document.createElement('hr'));

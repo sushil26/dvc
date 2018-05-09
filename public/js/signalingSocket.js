@@ -973,7 +973,7 @@ function setup_local_media(callback, errorback) {
       //   if (!multiStreamRecorder || !multiStreamRecorder.stream) return;
       //   multiStreamRecorder.addStream(multiStreamRecorder.stream);
       // };
-      document.querySelector('#stop-recording').disabled = false;
+      //document.querySelector('#stop-recording').disabled = false;
       // document.querySelector('#pause-recording').disabled = false;
     }, false);
     // video.play();

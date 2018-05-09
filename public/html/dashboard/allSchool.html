@@ -33,7 +33,7 @@
                                     <td style="color:green;background-color:white;" ng-if="sd.status=='active'" >Active</td>
                                     <td style="color:red;background-color:white;" ng-if="sd.status=='inactive'" >Inactive</td>
                                    <td style="background-color:white;">
-                                        <button class="btn btn-danger" ng-if="sd.status=='active'" ng-click="updateSchoolStatus(sd._id,'inactive',$index)">Dectivate</button>
+                                        <button class="btn btn-danger" ng-if="sd.status=='active'" ng-click="updateSchoolStatus(sd._id,'inactive',$index)">Deactivate</button>
                                         <button class="btn btn-info" ng-if="sd.status=='inactive'" ng-click="updateSchoolStatus(sd._id,'active',$index)">Activate</button>
                                     </td>
                                    <td style="background-color:white;">

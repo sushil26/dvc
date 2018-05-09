@@ -18,9 +18,8 @@
                                     <th>Phone Number</th>
                                     <th>Status</th>
 
-                                    <th>Activation</th>
-                                    <th>View</th>
-                                    <th>Delete</th>
+                                    <th>Action</th>
+                                   
                                 </tr>
                             </thead>
                             <tbody>
@@ -35,11 +34,9 @@
                                    <td style="background-color:white;">
                                         <button class="btn btn-danger" ng-if="sd.status=='active'" ng-click="updateSchoolStatus(sd._id,'inactive',$index)">Deactivate</button>
                                         <button class="btn btn-info" ng-if="sd.status=='inactive'" ng-click="updateSchoolStatus(sd._id,'active',$index)">Activate</button>
-                                    </td>
-                                   <td style="background-color:white;">
+                                
                                         <button class="btn btn-warning" ng-click="viewUser(sd._id, 'school')">View</button>
-                                    </td>
-                                   <td style="background-color:white;">
+                               
                                         <button class="btn btn-danger" ng-click="deleteStud(sd._id, $index)">Delete</button>
                                     </td>
                                 </tr>

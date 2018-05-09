@@ -932,12 +932,13 @@ function setup_local_media(callback, errorback) {
       muted: true
   });
     video.srcObject = stream;
+    streamArray[streamArray.length]=stream;
     video.addEventListener('loadedmetadata', function () {
-      streamArray[streamArray.length]=stream;
+     
       console.log("streamArray: "+JSON.stringify(streamArray));
       if (multiStreamRecorder && multiStreamRecorder.stream) return;
 
-      multiStreamRecorder = new MultiStreamRecorder(streamArray);
+      multiStreamRecorder = new MultiStreamRecorder(stream,stream);
       multiStreamRecorder.stream = stream;
       multiStreamRecorder.previewStream = function (stream) {
         video.src = URL.createObjectURL(stream);

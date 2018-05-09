@@ -154,7 +154,7 @@ console.log("localStorage.getItem(sessionEnc): "+localStorage.getItem("sessionEn
         $scope.userData = sessionAuthFactory.getAccess("userData");
         userName = $scope.userData.userName;
         $scope.loginType = $scope.userData.loginType;
-        //$window.location.reload();
+        $window.location.reload();
       }
       else{
         var un = data.data.firstName +" "+ data.data.lastName

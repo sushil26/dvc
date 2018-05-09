@@ -40,7 +40,7 @@ app.controller('allAdminCtl', function ($scope, $state, $window, httpFactory, se
             var checkStatus = httpFactory.dataValidation(data);
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
-                $scope.teacherData[index].status = status;
+                $scope.adminList[index].status = status;
                 alert("Updated Status Successfully");
             }
             else {

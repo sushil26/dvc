@@ -572,7 +572,7 @@ ul.sidebar-menu li a {
 
   transition: all 0.3s ease;
 
-  border-right: 0.5px solid #d7d7d7;
+  /* border-right: 0.5px solid #d7d7d7; */
 
   border-bottom: 0.5px solid #518f9d;
 }

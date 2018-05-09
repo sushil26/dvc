@@ -1,4 +1,4 @@
-app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, $timeout, $state, $http, $uibModal, sessionAuthFactory) {
+app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, $timeout, $state, $http, $uibModal, sessionAuthFactory,  $uibModal) {
   console.log("controller==>");
   var loginModal; /* ### Note: get login modal instance on this variable ###*/
   var userName;
@@ -45,6 +45,16 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
         }
         else if (data.data.message == 'Login Successfully') {
           console.log("Login Successfully");
+           $uibModal.open({
+            scope: $scope,
+            templateUrl: '/html/templates/loginAlert.html',
+            windowClass: 'show',
+            backdropClass: 'show',
+            controller: function ($scope, $uibModalInstance) {
+              $scope.message = "Login Successfully";
+              console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
+            }
+          })
           alert("Logged in Successfull");
 
           $scope.sessionSet(datas);

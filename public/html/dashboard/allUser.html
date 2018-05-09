@@ -116,32 +116,32 @@
                         <table class="table">
                                 <thead class="panel-heading">
                                     <tr>
-                                        <th>#</th>
-                                        <th>Teacher Id</th>
-                                        <th>Teacher Name</th>
-                                        <th>Email</th>
-                                        <th>Mobile Number</th>
-                                        <th>Status</th>
-                                        <th>View</th>
+                                            <th>#</th>
+                                            <th>Student Id</th>
+                                            <th>Student Name</th>
+                                            <th>Class</th>
+                                            <th>Section</th>
+                                            <th>Status</th>
+                                            <th>View</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr ng-repeat="td in teacherData" ng-if="td.loginType=='teacher'">
-                                        <td style="background-color:white;">{{$index+1}}.</td>
-                                        <td style="background-color:white;">{{td.schoolId}}</td>
-                                        <td style="background-color:white;">{{td.firstName + " " + td.lastName}}
-                                            <!-- <a class="btn-info" ng-click="tableForTimes($index)">{{td.firstName + " " + td.lastName}}</a> -->
-                                        </td>
-                                        <td style="background-color:white;">{{td.email}}</td>
-                                        <td style="background-color:white;">{{td.mobileNum}}</td>
-                                        <td style=" background-color:white; color:red;" ng-if="td.status=='inactive'">Inactive</td>
-                                        <td style=" background-color:white; color:green;" ng-if="td.status=='active'">Active</td>
-                                        <td style="background-color:white;">
-                                            <button class="btn btn-warning" ng-click="viewUser(td._id, 'teacher')">View</button>
-                                        </td>
-                                    </tr>
+                                        <tr ng-repeat="sd in studentData">
+                                                <td style="background-color:white;">{{$index+1}}</td>
+                                                <td style="background-color:white;">{{sd.schoolId}}</td>
+                                                <td style="background-color:white;">{{sd.firstName + " " + sd.lastName}}</td>
+                                                <td style="background-color:white;">{{sd.cs[0].class}}</td>
+                                                <td style="background-color:white;">{{sd.cs[0].section}}</td>
+                                                <td ng-if="sd.status=='active'" style="background-color:white;">{{sd.status}}</td>
+                                                <td style=" background-color:white; color:red;" ng-if="sd.status=='inactive'">Inactive</td>
+                                                <td style=" background-color:white; color:green;" ng-if="sd.status=='active'">Active</td>>
+                                                <td style="background-color:white;">
+                                                    <button class="btn btn-warning" ng-click="viewUser(sd._id,'studParent')">View</button>
+                                                </td>
+                                            </tr>
                                 </tbody>
                             </table>
+                      
                     </section>
 
                 </div>

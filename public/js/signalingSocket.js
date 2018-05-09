@@ -919,7 +919,10 @@ function setup_local_media(callback, errorback) {
     navigator.webkitGetUserMedia ||
     navigator.mozGetUserMedia ||
     navigator.msGetUserMedia;
+    var multiStreamRecorder;
 
+    var audioVideoBlobs = {};
+    var recordingInterval = 0;
   attachMediaStream = function (video, stream) {
     console.log("attachMediaStream-->");
     // console.log('DEPRECATED, attachMediaStream  will soon be removed.');

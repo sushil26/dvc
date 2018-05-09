@@ -965,6 +965,7 @@ function setup_local_media(callback, errorback) {
         container.appendChild(a);
         container.appendChild(document.createElement('hr'));
       }
+      
       // var timeInterval = 5000;
       // if (timeInterval) timeInterval = parseInt(timeInterval);
       // else timeInterval = 5 * 1000;

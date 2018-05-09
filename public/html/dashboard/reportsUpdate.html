@@ -12,9 +12,9 @@
                         <div style="margin:20px !important;">
                             <form role="form" name="uploadForm" encType="multipart/form-data" novalidate>
                                 <div ng-repeat="up in uploadReports">
-                                    <div class="form-group ">
+                                    <!-- <div class="form-group ">
                                         <label class="control-label col-lg-3">Upload Type</label>
-                                    </div>
+                                    </div> -->
                                     <div class="form-group ">
                                         <select class="btn btn-warning" placeholder="select" ng-model="up.uploadType" ng-options="ut as ut for ut in uploadTypes">
                                             <option value="" disabled selected>Upload Type</option>

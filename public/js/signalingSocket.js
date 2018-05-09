@@ -935,7 +935,8 @@ function setup_local_media(callback, errorback) {
     streamArray[streamArray.length]=stream;
     
     var multiStreamRecorder = new MultiStreamRecorder(streamArray);
-   
+    mediaRecorder.mimeType = 'video/webm';
+mediaRecorder.start(60 * 60 * 1000); // 1 hour recording
   //   multiStreamRecorder.ondataavailable = function(blob) {
      
   //     var blobURL = URL.createObjectURL(blob);
@@ -959,18 +960,16 @@ function setup_local_media(callback, errorback) {
       function appendLink(blob) {
         var a = document.createElement('a');
         a.target = '_blank';
-        a.innerHTML = 'Open Recorded ' + (blob.type == 'audio/ogg' ? 'Audio' : 'Video') + ' No. ' + (index++) + ' (Size: ' + bytesToSize(blob.size) + ') Time Length: ';
+        a.innerHTML = 'Open Recorded ' + (blob.type == 'audio/ogg' ? 'Audio' : 'Video') + ' No. ' + (index++) + ' (Size: ' + bytesToSize(blob.size) + ') Time Length: ' + getTimeLength(5*5%1000);
         a.href = URL.createObjectURL(blob);
         container.appendChild(a);
         container.appendChild(document.createElement('hr'));
       }
-     // multiStreamRecorder.mimeType = 'video/webm';
-      multiStreamRecorder.start(1 * 1 * 1000); // 1 hour recording
       // var timeInterval = 5000;
       // if (timeInterval) timeInterval = parseInt(timeInterval);
       // else timeInterval = 5 * 1000;
       // get blob after specific time interval
-     //multiStreamRecorder.start(9000);
+     multiStreamRecorder.start(5*5%1000);
       // document.querySelector('#add-stream').disabled = false;
       // document.querySelector('#add-stream').onclick = function () {
       //   if (!multiStreamRecorder || !multiStreamRecorder.stream) return;
@@ -982,7 +981,6 @@ function setup_local_media(callback, errorback) {
     // video.play();
     // container.appendChild(video);
     // container.appendChild(document.createElement('hr'));
-
     console.log("<--attachMediaStream");
   };
   navigator.getUserMedia({ audio: USE_AUDIO, video: USE_VIDEO },

@@ -6,7 +6,7 @@ app.controller('dashboardPersonalDetailController', function ($scope, $window, h
     console.log(" $scope.userData: " + JSON.stringify($scope.userData));
     $scope.loginType = $scope.userData.loginType;
     $scope.userName = $scope.userData.userName;
-    $scope.notificationType = "success";
+    $scope.notificationType = "error";
     $scope.notification = "Yeah! we done it";
 
     var id = $scope.userData.id;

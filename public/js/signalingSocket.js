@@ -940,7 +940,7 @@ function setup_local_media(callback, errorback) {
   //     document.write('<a href="' + blobURL + '">' + blobURL + '</a>');
   // };
   // multiStreamRecorder.start(3000);
-    video.addEventListener('loadedmetadata', function () {
+    // video.addEventListener('loadedmetadata', function () {
      
       console.log("streamArray: "+JSON.stringify(streamArray));
       if (multiStreamRecorder && multiStreamRecorder.stream) return;
@@ -975,7 +975,7 @@ function setup_local_media(callback, errorback) {
       // };
       //document.querySelector('#stop-recording').disabled = false;
       // document.querySelector('#pause-recording').disabled = false;
-    }, false);
+    // }, false);
     // video.play();
     // container.appendChild(video);
     // container.appendChild(document.createElement('hr'));

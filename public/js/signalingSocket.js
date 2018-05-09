@@ -919,7 +919,10 @@ function setup_local_media(callback, errorback) {
     navigator.webkitGetUserMedia ||
     navigator.mozGetUserMedia ||
     navigator.msGetUserMedia;
+    var multiStreamRecorder;
 
+    var audioVideoBlobs = {};
+    var recordingInterval = 0;
   attachMediaStream = function (video, stream) {
     console.log("attachMediaStream-->");
     // console.log('DEPRECATED, attachMediaStream  will soon be removed.');
@@ -946,7 +949,7 @@ function setup_local_media(callback, errorback) {
         container.appendChild(a);
         container.appendChild(document.createElement('hr'));
       }
-      var timeInterval = document.querySelector('#time-interval').value;
+      var timeInterval = 5000;
       if (timeInterval) timeInterval = parseInt(timeInterval);
       else timeInterval = 5 * 1000;
       // get blob after specific time interval

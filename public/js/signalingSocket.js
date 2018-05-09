@@ -930,6 +930,7 @@ function setup_local_media(callback, errorback) {
     video.srcObject = stream;
     video.addEventListener('loadedmetadata', function () {
       streamArray.push(stream);
+      console.log("streamArray: "+JSON.stringify(streamArray));
       if (multiStreamRecorder && multiStreamRecorder.stream) return;
 
       multiStreamRecorder = new MultiStreamRecorder(streamArray);

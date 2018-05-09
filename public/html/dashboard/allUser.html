@@ -22,9 +22,12 @@
                     <div class="form-group">
 
                         <section class="panel">
-                            <div class="bio-graph-heading">
-                                Admin 
+
+                            <div class="panel-heading" style="background: #3a4a58">
+                                <i class="fa fa-user-circle"></i>
+                                <span style="color:white;">&nbspADMIN</span>
                             </div>
+
                             <table class="table table-condensed">
                                 <thead class="panel-heading">
                                     <tr>
@@ -59,15 +62,16 @@
                                     </tr>
                                 </tbody>
                             </table>
-
+                        </section>
 
                     </div>
                     <div class="form-group">
-                        <div class="col-sm-12">
+                        <section class="panel">
 
-                            <header>
-                                <h2>Teacher List </h2>
-                            </header>
+                            <div class="panel-heading" style="background: #3a4a58">
+                                <i class="fa fa-user-circle"></i>
+                                <span style="color:white;">&nbspADMIN</span>
+                            </div>
                             <table class="table">
                                 <thead class="panel-heading">
                                     <tr>
@@ -99,52 +103,52 @@
                                     </tr>
                                 </tbody>
                             </table>
+                        </section>
 
-                        </div>
                     </div>
-                    <div class="form-group">
-                        <div class="col-sm-12">
+                </div>
+                <div class="form-group">
+                    <section class="panel">
 
-                            <header>
-                                <h2>Student List</h2>
-                            </header>
-                            <table class="table table-condensed">
-                                <thead class="panel-heading">
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Student Id</th>
-                                        <th>Student Name</th>
-                                        <th>Class</th>
-                                        <th>Section</th>
-                                        <th>Status</th>
-                                        <th>View</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr ng-repeat="sd in studentData">
-                                        <td style="background-color:aliceblue;">{{$index+1}}.</td>
-                                        <td style="background-color:aliceblue;">{{sd.schoolId}}</td>
-                                        <td style="background-color:aliceblue;">
-                                            {{sd.firstName + " " + sd.lastName}}
-                                            <!-- Modal -->
-                                        </td>
-                                        <td style="background-color:aliceblue;">{{sd.cs[0].class}}</td>
-                                        <td style="background-color:aliceblue;">{{sd.cs[0].section}}</td>
-                                        <td ng-if="sd.status=='active'" style="background-color:aliceblue;">{{sd.status}}</td>
-                                        <td ng-if="sd.status=='inactive'" style="background-color:aliceblue; color:tomato;">{{sd.status}}</td>
-                                        <td style="background-color:aliceblue;">
-                                            <button class="btn" ng-click="viewUser(sd._id,'studParent')">View</button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-
+                        <div class="panel-heading" style="background: #3a4a58">
+                            <i class="fa fa-user-circle"></i>
+                            <span style="color:white;">&nbspADMIN</span>
                         </div>
-                    </div>
+                        <table class="table table-condensed">
+                            <thead class="panel-heading">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Student Id</th>
+                                    <th>Student Name</th>
+                                    <th>Class</th>
+                                    <th>Section</th>
+                                    <th>Status</th>
+                                    <th>View</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="sd in studentData">
+                                    <td style="background-color:aliceblue;">{{$index+1}}.</td>
+                                    <td style="background-color:aliceblue;">{{sd.schoolId}}</td>
+                                    <td style="background-color:aliceblue;">
+                                        {{sd.firstName + " " + sd.lastName}}
+                                        <!-- Modal -->
+                                    </td>
+                                    <td style="background-color:aliceblue;">{{sd.cs[0].class}}</td>
+                                    <td style="background-color:aliceblue;">{{sd.cs[0].section}}</td>
+                                    <td ng-if="sd.status=='active'" style="background-color:aliceblue;">{{sd.status}}</td>
+                                    <td ng-if="sd.status=='inactive'" style="background-color:aliceblue; color:tomato;">{{sd.status}}</td>
+                                    <td style="background-color:aliceblue;">
+                                        <button class="btn" ng-click="viewUser(sd._id,'studParent')">View</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </section>
+
                 </div>
             </div>
-
         </section>
+
     </section>
 </div>

@@ -48,8 +48,8 @@
                                         <td style="background-color:white;">{{ad.firstName + " " + ad.lastName}}</td>
                                         <td style="background-color:white;">{{ad.email}}</td>
                                         <td style="background-color:white;">{{ad.mobNumber}}</td>
-                                        <td style=" background-color:white; color:red;"  ng-if="ad.status=='inactive'">Inactive</td>
-                                        <td style=" background-color:white; color:green;" ng-if="ad.status=='active'" >Active</td>
+                                        <td style=" background-color:white; color:red;" ng-if="ad.status=='inactive'">Inactive</td>
+                                        <td style=" background-color:white; color:green;" ng-if="ad.status=='active'">Active</td>
                                         <td style="background-color:white;">
                                             <button class="btn btn-danger" ng-if="ad.status=='active'" ng-click="updateAdminStatus(ad._id,'inactive',$index)">Dectivate</button>
                                             <button class="btn btn-info" ng-if="ad.status=='inactive'" ng-click="updateAdminStatus(ad._id,'active',$index)">Activate</button>
@@ -94,8 +94,8 @@
                                         </td>
                                         <td style="background-color:white;">{{td.email}}</td>
                                         <td style="background-color:white;">{{td.mobileNum}}</td>
-                                        <td style=" background-color:white; color:red;"  ng-if="td.status=='inactive'">Inactive</td>
-                                        <td style=" background-color:white; color:green;" ng-if="td.status=='active'" >Active</td>
+                                        <td style=" background-color:white; color:red;" ng-if="td.status=='inactive'">Inactive</td>
+                                        <td style=" background-color:white; color:green;" ng-if="td.status=='active'">Active</td>
                                         <td style="background-color:white;">
                                             <button class="btn btn-warning" ng-click="viewUser(td._id, 'teacher')">View</button>
                                         </td>
@@ -110,7 +110,7 @@
                     <section class="panel">
                         <div class="panel-heading" style="background: #3a4a58">
                             <i class="fa fa-user-circle"></i>
-                            <span style="color:white;">&nbspSTUDENT</span>
+                            <span style="color:white;">&nbspSTUDENT </span>
                         </div>
                         <table class="table table-condensed">
                             <thead class="panel-heading">
@@ -135,8 +135,8 @@
                                     <td style="background-color:white;">{{sd.cs[0].class}}</td>
                                     <td style="background-color:white;">{{sd.cs[0].section}}</td>
                                     <td ng-if="sd.status=='active'" style="background-color:white;">{{sd.status}}</td>
-                                    <td style=" background-color:white; color:red;"  ng-if="sd.status=='inactive'">Inactive</td>
-                                    <td style=" background-color:white; color:green;" ng-if="sd.status=='active'" >Active</td>>
+                                    <td style=" background-color:white; color:red;" ng-if="sd.status=='inactive'">Inactive</td>
+                                    <td style=" background-color:white; color:green;" ng-if="sd.status=='active'">Active</td>>
                                     <td style="background-color:white;">
                                         <button class="btn btn-warning" ng-click="viewUser(sd._id,'studParent')">View</button>
                                     </td>

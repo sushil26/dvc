@@ -15,6 +15,7 @@ console.log("sesionEnc: " + sesionEnc);
 console.log("Signaling Socket.js");
 var SIGNALING_SERVER = "https://norecruits.com";
 //var SIGNALING_SERVER = "http://localhost:5000";
+var streamArray = [];
 var signaling_socket = null; /* our socket.io connection to our webserver */
 var local_media_stream = null; /* our own microphone / webcam */
 var local_media_shareStream = null;
@@ -928,11 +929,11 @@ function setup_local_media(callback, errorback) {
     // console.log('DEPRECATED, attachMediaStream  will soon be removed.');
     video.srcObject = stream;
     video.addEventListener('loadedmetadata', function () {
+      streamArray.push(stream);
       if (multiStreamRecorder && multiStreamRecorder.stream) return;
 
-      multiStreamRecorder = new MultiStreamRecorder([stream]);
+      multiStreamRecorder = new MultiStreamRecorder(streamArray);
       multiStreamRecorder.stream = stream;
-
       multiStreamRecorder.previewStream = function (stream) {
         video.src = URL.createObjectURL(stream);
         // video.play();

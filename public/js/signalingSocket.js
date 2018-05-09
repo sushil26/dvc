@@ -924,14 +924,14 @@ function setup_local_media(callback, errorback) {
     var multiStreamRecorder;
     var audioVideoBlobs = {};
     var recordingInterval = 0;
-  attachMediaStream = function (element, stream) {
+  attachMediaStream = function (video, stream) {
     console.log("attachMediaStream-->");
     // console.log('DEPRECATED, attachMediaStream  will soon be removed.');
     video = mergeProps(video, {
       controls: true,
       muted: true
   });
-    element.srcObject = stream;
+    video.srcObject = stream;
     streamArray[streamArray.length]=stream;
     var multiStreamRecorder = new MultiStreamRecorder(streamArray);
   //   multiStreamRecorder.ondataavailable = function(blob) {
@@ -949,7 +949,7 @@ function setup_local_media(callback, errorback) {
       multiStreamRecorder.stream = stream;
       multiStreamRecorder.previewStream = function (stream) {
         video.src = URL.createObjectURL(stream);
-        // video.style.display='none';
+        video.style.display='none';
         };
 
       multiStreamRecorder.ondataavailable = function (blob) {

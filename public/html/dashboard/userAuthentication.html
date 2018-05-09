@@ -3,114 +3,94 @@
     <section class="wrapper">
       <div id="profile">
         <section class="panel">
-          <div class="bio-graph-heading">
-            <h3>
-              <i class="fa fa-clipboard">
-                <span>&nbspAuthentication</span>
-              </i>
-            </h3>
-          </div>
-          <div class="panel-body bio-graph-info">
-            <div style="margin-left: 20px !important;margin-right: 20px !important;">
-              <section class="panel">
-                <header class="panel-heading">
-                  Teacher List
-                </header>
-                <div class="table-responsive">
-                  <table class="table">
-                    <thead>
-                      <tr>
-                        <th>#</th>
-                        <th>Teacher Id</th>
-                        <th>Teacher Name</th>
-                        <th>Email</th>
-                        <th>Mobile Number</th>
-                        <th>Status</th>
-                        <th>Activation</th>
-                        <th>View</th>
-                        <th>Delete</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr ng-repeat="ud in userData" ng-if="ud.loginType=='teacher'">
-                        <td style="background-color:aliceblue;">{{$index+1}}.</td>
-                        <td style="background-color:aliceblue;">{{ud.schoolId}}</td>
-                        <td style="background-color:aliceblue;">
-                          <a ng-click="tableForTimes($index)">{{ud.firstName + " " + ud.lastName}}</a>
-                        </td>
-                        <td style="background-color:aliceblue;">{{ud.email}}</td>
-                        <td style="background-color:aliceblue;">{{ud.mobileNum}}</td>
-                        <td ng-if="ud.status=='active'" style="background-color:aliceblue;">{{ud.status}}</td>
-                        <td ng-if="ud.status=='inactive'" style="color:tomato;background-color:aliceblue;">{{ud.status}}</td>
-                        <td style="background-color:aliceblue;">
-                          <button class="btn" ng-if="ud.status=='active'" ng-click="updateUserStatus(ud._id,'inactive',$index)"  >Dectivate</button>
-                          <button class="btn" ng-if="ud.status=='inactive'" ng-click="updateUserStatus(ud._id,'active',$index)"  >Activate</button>
-                        </td>
-                        <td style="background-color:aliceblue;">
-                          <button class="btn" class="btn" ng-click="viewUser(ud._id, 'teacher')">View</button>
-                        </td>
-                        <td style="background-color:aliceblue;">
-                          <button class="btn" ng-click="deleteUser(ud._id, $index)">Delete</button>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
+          <div class="form-group">
+            <div class="panel-heading" style="background: #3a4a58">
+              <i class="fa fa-user-circle"></i>
+              <span style="color:white;">&nbspTEACHER</span>
+            </div>
 
-              </section>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-12">
-              <section class="panel">
-                <header class="panel-heading">
-                  <h2>Student List</h2>
-                </header>
-                <table class="table table-condensed">
-                  <thead>
-                    <tr>
-                      <th>#</th>
-                      <th>Student Id</th>
-                      <th>Student Name</th>
-                      <th>Class-Section</th>
-                      <th>Father Email</th>
-                      <th>Mother Email</th>
-                      <th>Status</th>
-                      <th>Activation</th>
-                      <th>View</th>
-                      <th>Delete</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr ng-repeat="sd in studData">
-                      <td style="background-color:aliceblue;">{{$index+1}}.</td>
-                      <td style="background-color:aliceblue;">{{sd.schoolId}}</td>
-                      <td style="background-color:aliceblue;">
-                        {{sd.firstName + " " + sd.lastName}}
-                        <!-- Modal -->
-                      </td>
-                      <td style="background-color:aliceblue;">{{sd.cs[0].class +" "+ sd.cs[0].section}}</td>
-                      <td style="background-color:aliceblue;">{{sd.parentEmail}}</td>
-                      <td style="background-color:aliceblue;">{{sd.motherEmail}}</td>
-                      <td ng-if="sd.status=='active'" style="background-color:aliceblue;">{{sd.status}}</td>
-                      <td ng-if="sd.status=='inactive'" style="color:tomato;background-color:aliceblue;">{{sd.status}}</td>
-                      <td style="background-color:aliceblue;">
-                        <button class="btn" ng-if="sd.status=='active'" ng-click="updateStudStatus(sd._id,'inactive',$index)"  >Dectivate</button>
-                        <button class="btn" ng-if="sd.status=='inactive'" ng-click="updateStudStatus(sd._id,'active',$index)"  >Activate</button>
-                      </td>
-                      <td style="background-color:aliceblue;">
-                        <button class="btn" ng-click="viewUser(sd._id,'studParent')">View</button>
-                      </td>
-                      <td style="background-color:aliceblue;">
-                        <button class="btn" ng-click="deleteStud(sd._id, $index)">Delete</button>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </section>
-            </div>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Teacher Id</th>
+                  <th>Teacher Name</th>
+                  <th>Email</th>
+                  <th>Mobile Number</th>
+                  <th>Status</th>
+                  <th>Action</th>
+
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="ud in userData" ng-if="ud.loginType=='teacher'">
+                  <td style="background-color:white;">{{$index+1}}.</td>
+                  <td style="background-color:white;">{{ud.schoolId}}</td>
+                  <td style="background-color:white;">
+                    {{ud.firstName + " " + ud.lastName}}
+                  </td>
+                  <td style="background-color:white;">{{ud.email}}</td>
+                  <td style="background-color:white;">{{ud.mobileNum}}</td>
+                  <td style=" background-color:white; color:red;" ng-if="ud.status=='inactive'">Inactive</td>
+                  <td style=" background-color:white; color:green;" ng-if="ud.status=='active'">Active</td>
+                  <td style="background-color:white;">
+                    <button class="btn btn-danger" ng-if="ud.status=='active'" ng-click="updateUserStatus(ud._id,'inactive',$index)">Dectivate</button>
+                    <button class="btn btn-info" ng-if="ud.status=='inactive'" ng-click="updateUserStatus(ud._id,'active',$index)">Activate</button>
+                    <button class="btn btn-warning" class="btn" ng-click="viewUser(ud._id, 'teacher')">View</button>
+                    <button class="btn btn-danger" ng-click="deleteUser(ud._id, $index)">Delete</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </section>
+        <section class="panel">
+          <div class="form-group">
+            <div class="panel-heading" style="background: #3a4a58">
+              <i class="fa fa-user-circle"></i>
+              <span style="color:white;">&nbspSTUDENT</span>
+            </div>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Student Id</th>
+                  <th>Student Name</th>
+                  <th>Class-Section</th>
+                  <th>Father Email</th>
+                  <th>Mother Email</th>
+                  <th>Status</th>
+                  <th>Action</th>
+
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="sd in studData">
+                  <td style="background-color:white;">{{$index+1}}.</td>
+                  <td style="background-color:white;">{{sd.schoolId}}</td>
+                  <td style="background-color:white;">
+                    {{sd.firstName + " " + sd.lastName}}
+                    <!-- Modal -->
+                  </td>
+                  <td style="background-color:white;">{{sd.cs[0].class +" "+ sd.cs[0].section}}</td>
+                  <td style="background-color:white;">{{sd.parentEmail}}</td>
+                  <td style="background-color:white;">{{sd.motherEmail}}</td>
+                  <td style=" background-color:white; color:red;" ng-if="sd.status=='inactive'">Inactive</td>
+                  <td style=" background-color:white; color:green;" ng-if="sd.status=='active'">Active</td>
+                  <td style="background-color:white;">
+                    <button class="btn btn-danger" ng-if="sd.status=='active'" ng-click="updateStudStatus(sd._id,'inactive',$index)">Dectivate</button>
+                    <button class="btn btn-info" ng-if="sd.status=='inactive'" ng-click="updateStudStatus(sd._id,'active',$index)">Activate</button>
+
+                    <button class="btn btn-warning" ng-click="viewUser(sd._id,'studParent')">View</button>
+
+                    <button class="btn btn-danger" ng-click="deleteStud(sd._id, $index)">Delete</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
       </div>
     </section>
   </section>

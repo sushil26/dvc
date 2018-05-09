@@ -4,15 +4,12 @@
         <section class="wrapper">
             <div id="profile">
                 <section class="panel">
-                    <div class="bio-graph-heading">
-                        <h3>
-                            <i class="fa fa-user-circle">
-                                <span>&nbspUser Details</span>
-                            </i>
-                        </h3>
+                    <div class="panel-heading" style="background: #3a4a58">
+                        <i class="fa fa-user-circle"></i>
+                        <span style="color:white;">&nbspUSER DETAILS</span>
                     </div>
-                    <div class="panel-body bio-graph-info">
-                        <div ng-if="loginType!='school'" class="row" style="margin-left: 20px !important;margin-right: 20px !important;">
+                    <div class="panel-body bio-graph-info" style="padding: 1px;">
+                        <div ng-if="loginType!='school'" class="row" style="margin: 20px !important;">
 
                             <div class="bio-row">
 
@@ -119,21 +116,40 @@
                                     </span>: {{userDetail[0].mobileNum}}</p>
                             </div>
 
-                            <div class="form-group" ng-if="loginType=='teacher'" style=" float: left !important;
-    
-                            margin-bottom: 10px !important;
-                          
-                            padding: 0 15px !important;">
+
+
+                        </div>
+                        <div style="margin: 20px !important;" class="row" ng-if="loginType=='teacher'">
+                            <div class=" bio-row">
                                 <p>
                                     <span>
-                                        <b style="color:teal;">Class Handles</b>
-                                    </span>:
-                                    <span class="col-sm-3" ng-repeat="css in userDetail[0].css"> {{css.class}}-{{css.section}}-{{css.subject}}</span>
-                                </p>
+                                        <b style="color:teal;">Classes Handle</b>
+                                    </span>
 
+                                </p>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead style="background: white;">
+                                            <tr>
+                                                <th>Class</th>
+                                                <th>Section</th>
+                                                <th>Subject</th>
+                                            </tr>
+
+                                        </thead>
+                                        <tbody style="background: white;">
+                                            <tr ng-repeat="css in userDetail[0].css">
+                                                <td>{{css.class}}</td>
+                                                <td>{{css.section}}</td>
+                                                <td>{{css.subject}}</td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
-                        <div ng-if="loginType=='school'" class="row" style="margin-left: 20px !important;margin-right: 20px !important;">
+                        <div ng-if="loginType=='school'" class="row" style="margin: 20px !important;">
                             <div class="bio-row">
                                 <p>
                                     <span>
@@ -203,11 +219,17 @@
                                             <th>Subject</th>
                                         </tr>
                                     </thead>
-                                    <tbody  style="background: #ddd;" ng-repeat="css in userDetail[0].css">
+                                    <tbody style="background: #ddd;" ng-repeat="css in userDetail[0].css">
                                         <tr>
                                             <td>{{css.class}}</td>
-                                            <td><span ng-repeat="sec in css.section track by $index">{{sec}}<span ng-show="!$last">,</span>&nbsp;</span></td>
-                                            <td><span ng-repeat="sub in css.subject  track by $index">{{sub}}<span ng-show="!$last">,</span>&nbsp;</span></td>
+                                            <td>
+                                                <span ng-repeat="sec in css.section track by $index">{{sec}}
+                                                    <span ng-show="!$last">,</span>&nbsp;</span>
+                                            </td>
+                                            <td>
+                                                <span ng-repeat="sub in css.subject  track by $index">{{sub}}
+                                                    <span ng-show="!$last">,</span>&nbsp;</span>
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>

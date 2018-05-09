@@ -963,11 +963,11 @@ function setup_local_media(callback, errorback) {
         container.appendChild(a);
         container.appendChild(document.createElement('hr'));
       }
-      var timeInterval = 5000;
-      if (timeInterval) timeInterval = parseInt(timeInterval);
-      else timeInterval = 5 * 1000;
+      // var timeInterval = 5000;
+      // if (timeInterval) timeInterval = parseInt(timeInterval);
+      // else timeInterval = 5 * 1000;
       // get blob after specific time interval
-      multiStreamRecorder.start(timeInterval);
+     // multiStreamRecorder.start(timeInterval);
       // document.querySelector('#add-stream').disabled = false;
       // document.querySelector('#add-stream').onclick = function () {
       //   if (!multiStreamRecorder || !multiStreamRecorder.stream) return;
@@ -977,8 +977,8 @@ function setup_local_media(callback, errorback) {
       // document.querySelector('#pause-recording').disabled = false;
     // }, false);
     // video.play();
-    container.appendChild(video);
-    container.appendChild(document.createElement('hr'));
+    // container.appendChild(video);
+    // container.appendChild(document.createElement('hr'));
     console.log("<--attachMediaStream");
   };
   navigator.getUserMedia({ audio: USE_AUDIO, video: USE_VIDEO },

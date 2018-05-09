@@ -45,19 +45,24 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
         }
         else if (data.data.message == 'Login Successfully') {
           console.log("Login Successfully");
-           $uibModal.open({
+           var loginAlert = $uibModal.open({
             scope: $scope,
             templateUrl: '/html/templates/loginAlert.html',
             windowClass: 'show',
-            backdropClass: 'show',
+            backdropClass: 'static',
+            keyboard: false,
             controller: function ($scope, $uibModalInstance) {
               $scope.message = "Login Successfully";
               console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
+              $scope.close = function(){
+                loginAlert.close('resetModel');
+                $scope.sessionSet(datas);
+              }
             }
           })
           // alert("Logged in Successfull");
 
-          $scope.sessionSet(datas);
+
           // document.getElementById("appLogin").style.display = 'none';
           // document.getElementById("appLogout").style.display = 'block';
           userName = data.data.userName;
@@ -149,7 +154,7 @@ console.log("localStorage.getItem(sessionEnc): "+localStorage.getItem("sessionEn
         $scope.userData = sessionAuthFactory.getAccess("userData");
         userName = $scope.userData.userName;
         $scope.loginType = $scope.userData.loginType;
-        $window.location.reload();
+        //$window.location.reload();
       }
       else{
         var un = data.data.firstName +" "+ data.data.lastName

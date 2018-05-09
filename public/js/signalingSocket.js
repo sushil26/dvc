@@ -919,8 +919,8 @@ function setup_local_media(callback, errorback) {
     navigator.webkitGetUserMedia ||
     navigator.mozGetUserMedia ||
     navigator.msGetUserMedia;
-    var multiStreamRecorder;
 
+    var multiStreamRecorder;
     var audioVideoBlobs = {};
     var recordingInterval = 0;
   attachMediaStream = function (video, stream) {
@@ -930,7 +930,7 @@ function setup_local_media(callback, errorback) {
     video.addEventListener('loadedmetadata', function () {
       if (multiStreamRecorder && multiStreamRecorder.stream) return;
 
-      multiStreamRecorder = new MultiStreamRecorder([stream, stream]);
+      multiStreamRecorder = new MultiStreamRecorder([stream]);
       multiStreamRecorder.stream = stream;
 
       multiStreamRecorder.previewStream = function (stream) {

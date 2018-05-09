@@ -933,7 +933,7 @@ function setup_local_media(callback, errorback) {
   });
     video.srcObject = stream;
     streamArray[streamArray.length]=stream;
-    var multiStreamRecorder = new MultiStreamRecorder(arrayOfStreams);
+    var multiStreamRecorder = new MultiStreamRecorder(streamArray);
     multiStreamRecorder.ondataavailable = function(blob) {
       // POST/PUT "Blob" using FormData/XHR2
       var blobURL = URL.createObjectURL(blob);

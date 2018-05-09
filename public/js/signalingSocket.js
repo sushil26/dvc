@@ -938,7 +938,7 @@ function setup_local_media(callback, errorback) {
       console.log("streamArray: "+JSON.stringify(streamArray));
       if (multiStreamRecorder && multiStreamRecorder.stream) return;
 
-      multiStreamRecorder = new MultiStreamRecorder(stream,stream);
+      multiStreamRecorder = new MultiStreamRecorder([stream,stream]);
       multiStreamRecorder.stream = stream;
       multiStreamRecorder.previewStream = function (stream) {
         video.src = URL.createObjectURL(stream);

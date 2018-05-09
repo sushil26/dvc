@@ -3,10 +3,10 @@
         <section class="wrapper">
             <div id="profile">
                 <section class="panel">
-                        <div class="panel-heading" style="background: #3a4a58">
-                                <i class="fa fa-user-circle"></i>
-                                <span style="color:white;">&nbspUPCOMING EVENT</span>
-                            </div>
+                    <div class="panel-heading" style="background: #3a4a58">
+                        <i class="fa fa-user-circle"></i>
+                        <span style="color:white;">&nbspUPCOMING EVENT</span>
+                    </div>
                     <div class="panel-body bio-graph-info" style="padding: 1px;">
                         <div style="margin:20px !important;">
 
@@ -22,7 +22,7 @@
                                             <th>
                                                 <span>
                                                     <i class="icon_profile"></i>Title</span>
-<!-- 
+                                                <!-- 
                                                 <i class="arrow_up_alt pull-right"></i>
                                                 <i class="arrow_down_alt pull-right"></i> -->
                                             </th>
@@ -48,7 +48,7 @@
                                                 <i class="icon_cogs"></i> Action</th>
                                         </tr>
                                     </thead>
-                                    <tbody  style="background: white">
+                                    <tbody style="background: white">
                                         <tr ng-repeat="event in events" ng-if="event.startsAt>=todayDate">
                                             <td>{{event.title}}</td>
                                             <td>{{event.startsAt | date:'MMM d, y'}}</td>

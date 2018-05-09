@@ -55,7 +55,7 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
               console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
             }
           })
-          alert("Logged in Successfull");
+          // alert("Logged in Successfull");
 
           $scope.sessionSet(datas);
           // document.getElementById("appLogin").style.display = 'none';

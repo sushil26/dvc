@@ -111,8 +111,8 @@
                             <!-- <i class="fa fa-user-circle"></i> -->
                             <span style="color:white;">&nbsp;STUDENT</span>
                         </div>
-                        <table class="table">
-                            <thead>
+                        table class="table table-condensed">
+                            <thead class="panel-heading">
                                 <tr>
                                     <th>#</th>
                                     <th>Student Id</th>
@@ -125,21 +125,21 @@
                             </thead>
                             <tbody>
                                 <tr ng-repeat="sd in studentData">
-                                    <td style="background-color:white;">{{$index+1}}</td>
+                                    <td style="background-color:white;">{{$index+1}}.</td>
                                     <td style="background-color:white;">{{sd.schoolId}}</td>
-                                    <td style="background-color:white;">{{sd.firstName + " " + sd.lastName}}</td>
+                                    <td style="background-color:white;">
+                                        {{sd.firstName + " " + sd.lastName}}
+                                   </td>
                                     <td style="background-color:white;">{{sd.cs[0].class}}</td>
                                     <td style="background-color:white;">{{sd.cs[0].section}}</td>
-                                    <td ng-if="sd.status=='active'" style="background-color:white;">{{sd.status}}</td>
                                     <td style=" background-color:white; color:red;" ng-if="sd.status=='inactive'">Inactive</td>
-                                    <td style=" background-color:white; color:green;" ng-if="sd.status=='active'">Active</td>>
+                                    <td style=" background-color:white; color:green;" ng-if="sd.status=='active'">Active</td>
                                     <td style="background-color:white;">
-                                        <button class="btn btn-warning" ng-click="viewUser(sd._id,'studParent')">View</button>
+                                        <button class="btn" ng-click="viewUser(sd._id,'studParent')">View</button>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
-
                     </section>
 
                 </div>

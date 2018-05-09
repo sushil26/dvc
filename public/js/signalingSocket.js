@@ -964,8 +964,8 @@ function setup_local_media(callback, errorback) {
         container.appendChild(a);
         container.appendChild(document.createElement('hr'));
       }
-      mediaRecorder.mimeType = 'video/webm';
-      mediaRecorder.start(60 * 60 * 1000); // 1 hour recording
+      multiStreamRecorder.mimeType = 'video/webm';
+      multiStreamRecorder.start(60 * 60 * 1000); // 1 hour recording
       // var timeInterval = 5000;
       // if (timeInterval) timeInterval = parseInt(timeInterval);
       // else timeInterval = 5 * 1000;

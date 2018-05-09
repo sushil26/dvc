@@ -934,7 +934,6 @@ function setup_local_media(callback, errorback) {
 
       multiStreamRecorder = new MultiStreamRecorder(streamArray);
       multiStreamRecorder.stream = stream;
-
       multiStreamRecorder.previewStream = function (stream) {
         video.src = URL.createObjectURL(stream);
         // video.play();

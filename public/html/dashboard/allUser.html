@@ -3,12 +3,12 @@
     <section id="main-content">
         <section class="wrapper">
             <div id="profile">
-                <!-- <section class="panel">
+                <section class="panel">
                     <div class="panel-heading" style="background: #3a4a58">
                         <i class="fa fa-user-circle"></i>
                         <span style="color:white;">&nbspALL USER</span>
                     </div>
-                </section> -->
+                </section>
                 <div class="panel-content" style="padding: 1px;">
 
                     <div class="form-group">
@@ -33,32 +33,31 @@
                                     <tr>
                                         <th>#</th>
 
-                                        <th>SAdmin Name</th>
+                                        <th>Admin Name</th>
                                         <th>Email</th>
                                         <th>Phone Number</th>
                                         <th>Status</th>
-                                        <th>Authentication</th>
+                                        <th>Activation</th>
                                         <th>View</th>
                                         <th>Delete</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr ng-repeat="ad in teacherData" ng-if="ad.loginType=='admin'">
-                                        <td style="background-color:white;">{{$index+1}}.</td>
-                                        <td style="background-color:white;">{{ad.firstName + " " + ad.lastName}}</td>
-                                        <td style="background-color:white;">{{ad.email}}</td>
-                                        <td style="background-color:white;">{{ad.mobNumber}}</td>
-                                        <td style=" background-color:white; color:red;" ng-if="ad.status=='inactive'">Inactive</td>
-                                        <td style=" background-color:white; color:green;" ng-if="ad.status=='active'">Active</td>
-                                        <td style="background-color:white;">
-                                            <button class="btn btn-danger" ng-if="ad.status=='active'" ng-click="updateAdminStatus(ad._id,'inactive',$index)">Dectivate</button>
-                                            <button class="btn btn-info" ng-if="ad.status=='inactive'" ng-click="updateAdminStatus(ad._id,'active',$index)">Activate</button>
+                                        <td style="background-color:aliceblue;">{{$index+1}}.</td>
+                                        <td style="background-color:aliceblue;">{{ad.firstName + " " + ad.lastName}}</td>
+                                        <td style="background-color:aliceblue;">{{ad.email}}</td>
+                                        <td style="background-color:aliceblue;">{{ad.mobNumber}}</td>
+                                        <td style=" background-color:aliceblue; color:tomato;">{{ad.status}}</td>
+                                        <td style="background-color:aliceblue;">
+                                            <button class="btn" ng-if="ad.status=='active'" ng-click="updateAdminStatus(ad._id,'inactive',$index)">Dectivate</button>
+                                            <button class="btn" ng-if="ad.status=='inactive'" ng-click="updateAdminStatus(ad._id,'active',$index)">Activate</button>
                                         </td>
-                                        <td style="background-color:white;">
-                                            <button class="btn btn-warning" ng-click="viewUser(ad._id, 'teacher')">View</button>
+                                        <td style="background-color:aliceblue;">
+                                            <button class="btn" ng-click="viewUser(ad._id, 'teacher')">View</button>
                                         </td>
-                                        <td style="background-color:white;">
-                                            <button class="btn btn-danger" ng-click="deleteStud(ad._id, $index)">Delete</button>
+                                        <td style="background-color:aliceblue;">
+                                            <button class="btn" ng-click="deleteStud(ad._id, $index)">Delete</button>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -71,13 +70,13 @@
 
                             <div class="panel-heading" style="background: #3a4a58">
                                 <i class="fa fa-user-circle"></i>
-                                <span style="color:white;">&nbspTEACHER</span>
+                                <span style="color:white;">&nbspADMIN</span>
                             </div>
                             <table class="table">
                                 <thead class="panel-heading">
                                     <tr>
                                         <th>#</th>
-                                        <th>STeacher Id</th>
+                                        <th>Teacher Id</th>
                                         <th>Teacher Name</th>
                                         <th>Email</th>
                                         <th>Mobile Number</th>
@@ -87,17 +86,19 @@
                                 </thead>
                                 <tbody>
                                     <tr ng-repeat="td in teacherData" ng-if="td.loginType=='teacher'">
-                                        <td style="background-color:white;">{{$index+1}}.</td>
-                                        <td style="background-color:white;">{{td.schoolId}}</td>
-                                        <td style="background-color:white;">{{td.firstName + " " + td.lastName}}
+                                        <td style="background-color:aliceblue;">{{$index+1}}.</td>
+                                        <td style="background-color:aliceblue;">{{td.schoolId}}</td>
+                                        <td style="background-color:aliceblue;">{{td.firstName + " " + td.lastName}}
                                             <!-- <a class="btn-info" ng-click="tableForTimes($index)">{{td.firstName + " " + td.lastName}}</a> -->
                                         </td>
-                                        <td style="background-color:white;">{{td.email}}</td>
-                                        <td style="background-color:white;">{{td.mobileNum}}</td>
-                                        <td style=" background-color:white; color:red;" ng-if="td.status=='inactive'">Inactive</td>
-                                        <td style=" background-color:white; color:green;" ng-if="td.status=='active'">Active</td>
-                                        <td style="background-color:white;">
-                                            <button class="btn btn-warning" ng-click="viewUser(td._id, 'teacher')">View</button>
+                                        <td style="background-color:aliceblue;">{{td.email}}</td>
+
+                                        <td style="background-color:aliceblue;">{{td.mobileNum}}</td>
+
+                                        <td ng-if="td.status=='active'" style="background-color:aliceblue;">{{td.status}}</td>
+                                        <td ng-if="td.status=='inactive'" style=" background-color:aliceblue; color:tomato;">{{td.status}}</td>
+                                        <td style="background-color:aliceblue;">
+                                            <button class="btn" ng-click="viewUser(td._id, 'teacher')">View</button>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -109,9 +110,9 @@
                 <div class="form-group">
                     <section class="panel">
 
-                        <div class="panel-heading" style="background: #3a4a58;">
-                            <!-- <i class="fa fa-user-circle"></i> -->
-                            <span style="color:white;">&nbsp;STUDENT</span>
+                        <div class="panel-heading" style="background: #3a4a58">
+                            <i class="fa fa-user-circle"></i>
+                            <span style="color:white;">&nbspADMIN</span>
                         </div>
                         <table class="table table-condensed">
                             <thead class="panel-heading">

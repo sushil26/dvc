@@ -114,9 +114,8 @@
                             <span style="color:white;">&nbsp;STUDENT</span>
                         </div>
                         <table class="table">
-                                <thead >
-                                    <tr>
-                                            <th>#</th>
+                                <thead>
+                                    <tr><th>#</th>
                                             <th>Student Id</th>
                                             <th>Student Name</th>
                                             <th>Class</th>
@@ -125,8 +124,7 @@
                                             <th>View</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                        <tr ng-repeat="sd in studentData">
+                                <tbody><tr ng-repeat="sd in studentData">
                                                 <td style="background-color:white;">{{$index+1}}</td>
                                                 <td style="background-color:white;">{{sd.schoolId}}</td>
                                                 <td style="background-color:white;">{{sd.firstName + " " + sd.lastName}}</td>

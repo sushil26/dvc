@@ -45,7 +45,7 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
         }
         else if (data.data.message == 'Login Successfully') {
           console.log("Login Successfully");
-           $uibModal.open({
+           var loginAlert = $uibModal.open({
             scope: $scope,
             templateUrl: '/html/templates/loginAlert.html',
             windowClass: 'show',
@@ -54,11 +54,15 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
             controller: function ($scope, $uibModalInstance) {
               $scope.message = "Login Successfully";
               console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
+              $scope.close = function(){
+                loginAlert.close('resetModel');
+                $scope.sessionSet(datas);
+              }
             }
           })
           // alert("Logged in Successfull");
 
-          $scope.sessionSet(datas);
+
           // document.getElementById("appLogin").style.display = 'none';
           // document.getElementById("appLogout").style.display = 'block';
           userName = data.data.userName;

@@ -19,7 +19,6 @@
                                     <th>Email</th>
                                     <th>Phone Number</th>
                                     <th>Status</th>
-
                                     <th>Activation</th>
                                     <th>View</th>
                                     <th>Delete</th>
@@ -33,8 +32,8 @@
                                     <td style="background-color:aliceblue;">{{ad.mobNumber}}</td>
                                     <td style="background-color:aliceblue; color: tomato">{{ad.status}}</td>
                                     <td style="background-color:aliceblue;">
-                                        <button class="btn" ng-if="ad.status=='active'" ng-click="updateAdminStatus(ad._id,'inactive',$index)">Dectivate</button>
-                                        <button class="btn" ng-if="ad.status=='inactive'" ng-click="updateAdminStatus(ad._id,'active',$index)">Activate</button>
+                                        <button class="btn btn-danger" ng-if="ad.status=='active'" ng-click="updateAdminStatus(ad._id,'inactive',$index)">Dectivate</button>
+                                        <button class="btn btn-info" ng-if="ad.status=='inactive'" ng-click="updateAdminStatus(ad._id,'active',$index)">Activate</button>
                                     </td>
                                     <td style="background-color:aliceblue;">
                                         <button class="btn btn-warning" ng-click="viewUser(ad._id, 'teacher')">View</button>

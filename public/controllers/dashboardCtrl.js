@@ -34,6 +34,7 @@ app.controller('dashboardController', function ($scope, $window, httpFactory, $u
 
                 $scope.tickInterval = 1000;
                 var tick = function () {
+                    console.log("tick")
                     $scope.todayDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
                     $scope.hour = $filter('date')($scope.todayDate, 'HH');
                     $scope.min = $filter('date')($scope.todayDate, 'mm');

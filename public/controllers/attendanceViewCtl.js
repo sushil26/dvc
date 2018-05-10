@@ -1,4 +1,4 @@
-app.controller('attendanceViewCtl', function ($scope, $window, httpFactory, $compile, sessionAuthFactory, moment, calendarConfig) {
+app.controller('attendanceViewCtl', function ($scope, $window, httpFactory, $compile, $uibModal,sessionAuthFactory, moment, calendarConfig) {
     console.log("attendanceViewCtl==>");
 
     $scope.userData = sessionAuthFactory.getAccess();

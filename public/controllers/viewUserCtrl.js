@@ -1,4 +1,4 @@
-app.controller('viewUserController', function ($scope, $state, $window, httpFactory) {
+app.controller('viewUserController', function ($scope, $state, $window, httpFactory,$uibModal) {
     console.log("viewUserController==>");
     var id = $state.params.id;
     var loginT = $state.params.loginType;

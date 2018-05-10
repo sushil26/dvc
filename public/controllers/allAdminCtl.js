@@ -1,4 +1,4 @@
-app.controller('allAdminCtl', function ($scope, $state, $window, httpFactory, sessionAuthFactory) {
+app.controller('allAdminCtl', function ($scope, $state, $uibModal,$window, httpFactory, sessionAuthFactory) {
     console.log("allAdminCtl==>");
     $scope.userData = sessionAuthFactory.getAccess("userData");
     console.log(" $scope.userData : " + JSON.stringify($scope.userData));

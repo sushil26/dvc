@@ -563,7 +563,7 @@ module.exports.uploadMarkSheet = function (data, callback) {
 }
 
 module.exports.uploadAttendance = function (req, res) {
-    expectedMessage ='';
+    expectedMessage = '';
     console.log("uploadAttendance-->");
     var responseData;
     schoolName = req.params.schoolName;
@@ -585,13 +585,7 @@ module.exports.uploadAttendance = function (req, res) {
             module.exports.dailyData(data, function (err) {
                 console.log("savedatInitiate");
                 // TODO: handle error
-if(expectedMessage!=''){
-    responseData = {
-        status: false,
-        message: expectedMessage
-    };
-    res.status(400).send(responseData);
-}
+             
                 parser.resume();
             });
         }
@@ -601,7 +595,18 @@ if(expectedMessage!=''){
                 console.log("savedatInitiate");
                 // TODO: handle error
                 console.log("unknownData: " + JSON.stringify(unknownData));
-                parser.resume();
+                console.log("expectedMessage: "+expectedMessage);
+                if (expectedMessage) {
+                   var responseData = {
+                        status: false,
+                        message: expectedMessage
+                    };
+                    res.status(400).send(responseData);
+                }
+                else{
+                    parser.resume();
+                }
+               
             });
         }
 
@@ -721,10 +726,10 @@ module.exports.monthlyData = function (data, callback) {
         "schoolName": schoolName
     }
     var columnLength = Object.keys(data).length; /* ##### Note: Number of column from uploaded files ##### */
-console.log("columnLength: "+columnLength);
+    console.log("columnLength: " + columnLength);
     if (month == "Jan" || month == "Mar" || month == "May" || month == "Jul" || month == "Aug" || month == "Oct" || month == "Dec") {
         console.log("JAN");
-        if (columnLength == 31+2) {
+        if (columnLength == 31 + 2) {
 
             if (month == "Jan") {
                 attendanceIndex = 0;
@@ -757,15 +762,15 @@ console.log("columnLength: "+columnLength);
 
         }
         else {
-          
-                expectedMessage: "Failled to upload! Expecting 31 days attendance status for " + month;
-                if (callback) callback();
+
+            expectedMessage: "Failled to upload! Expecting 31 days attendance status for " + month;
+            if (callback) callback();
         }
     }
     else if (month == "Feb") {
         console.log("FEB");
         attendanceIndex = 1;
-        if (columnLength == 28+2) {
+        if (columnLength == 28 + 2) {
             for (var x = 1; x <= 28; x++) {
                 console.log("x: " + x);
                 monthAtt.push({ "date": x, "status": data[x] });
@@ -775,38 +780,38 @@ console.log("columnLength: "+columnLength);
             }
         }
         else {
-          
+
             expectedMessage: "Failled to upload! Expecting 28 days attendance status for " + month;
-                if (callback) callback();
+            if (callback) callback();
         }
     }
     else if (month == "Apr" || month == "Jun" || month == "Sep" || month == "Nov") {
-        if (columnLength == 30+2) {
-        if (month == "Apr") {
-            attendanceIndex = 3;
-        }
-        else if (month == "Jun") {
-            attendanceIndex = 5;
-        }
-        else if (month == "Sep") {
-            attendanceIndex = 8;
-        }
-        else if (month == "Nov") {
-            attendanceIndex = 10;
-        }
-        for (var x = 1; x <= 30; x++) {
-            console.log("x: " + x);
-            monthAtt.push({ "date": x, "status": data[x] });
-            if (x == 28) {
-                break;
+        if (columnLength == 30 + 2) {
+            if (month == "Apr") {
+                attendanceIndex = 3;
+            }
+            else if (month == "Jun") {
+                attendanceIndex = 5;
+            }
+            else if (month == "Sep") {
+                attendanceIndex = 8;
+            }
+            else if (month == "Nov") {
+                attendanceIndex = 10;
+            }
+            for (var x = 1; x <= 30; x++) {
+                console.log("x: " + x);
+                monthAtt.push({ "date": x, "status": data[x] });
+                if (x == 28) {
+                    break;
+                }
             }
         }
-    }
-    else {
-       
-        expectedMessage: "Failled to upload! Expecting 30 days attendance status for " + month;
+        else {
+
+            expectedMessage: "Failled to upload! Expecting 30 days attendance status for " + month;
             if (callback) callback();
-    }
+        }
     }
 
     console.log("*monthAtt: " + monthAtt.length);

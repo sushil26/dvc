@@ -1,4 +1,4 @@
-app.controller('allSchoolCtl', function ($scope, $state, $window, httpFactory, sessionAuthFactory) {
+app.controller('allSchoolCtl', function ($scope, $state, $window, $uibModal, httpFactory, sessionAuthFactory) {
     console.log("allSchoolCtl==>");
     $scope.userData = sessionAuthFactory.getAccess("userData");
     console.log(" $scope.userData : " + JSON.stringify($scope.userData));

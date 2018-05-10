@@ -986,7 +986,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
       if ($scope.userData.loginType == 'teacher') {
         var loginAlert = $uibModal.open({
           scope: $scope,
-          templateUrl: '/html/templates/loginAlert.html',
+          templateUrl: '/html/templates/dashboardwarning.html',
           windowClass: 'show',
           backdropClass: 'static',
           keyboard: false,

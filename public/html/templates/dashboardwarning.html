@@ -1,32 +1,29 @@
-<div class="modal-header" style="
- background: orange; width:400px;"> {{message}}
-    <button type="button" class="close" ng-click="$close()">&times;</button>
+<div class="modal-header">
+ <i class="fa fa-warning">&nbsp&nbspPlease&nbsp{{message}}</i>
+
 </div>
-<!-- <div class="modal-body loginpopUp_body" style="color:#2dc997">
 
-    {{message}}
-</div> -->
-<!-- <div class="modal-footer loginpopUp_footer">
-    <button class="btn btn-info loginpopUp_footerBtn" type="button" ng-click="$close()">Ok</button>
-    </button>
-</div> -->
-
-
-
-<!-- 
-<div class="alert alert-warning fade in">
-    <button data-dismiss="alert" class="close close-sm" ng-click="close()" type="button">
-        <i class="icon-remove"></i>
-    </button>
-    <strong>Warning!</strong>{{message}}
-</div> -->
 <style>
-    .modal-dialog {
-        border-radius: 20px;
+    .modal-header {
+        border-radius: 5px !important;
+        background: rgb(150, 40, 40) !important;
+        text-shadow: 0 0 0 0 !important;
 
-        background: red;
-        -webkit-animation: fadeinout 5s linear forwards;
-        animation: fadeinout 5s linear forwards;
+    }
+
+    .modal-content {
+        background: rgba(255, 255, 255, 0) !important;
+        border: none !important;
+
+
+
+    }
+
+    .modal-dialog {
+        border-radius: 10px !important;
+
+        /* -webkit-animation: fadeinout 5s linear forwards;
+        animation: fadeinout 5s linear forwards; */
     }
 
     @-webkit-keyframes fadeinout {

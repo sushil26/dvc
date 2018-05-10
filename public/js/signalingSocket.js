@@ -953,12 +953,12 @@ function setup_local_media(callback, errorback) {
       if (multiStreamRecorder && multiStreamRecorder.stream) return;
       var multiStreamRecorder = new MultiStreamRecorder(streamArray);
       multiStreamRecorder.stream = stream;
-      // multiStreamRecorder.previewStream = function (stream) {
-      //   // video.src = URL.createObjectURL(stream);
-      //   //video.srcObject = stream;
+      multiStreamRecorder.previewStream = function (stream) {
+        // video.src = URL.createObjectURL(stream);
+        video.srcObject = stream;
 
-      //   // video.style.display='none';
-      // };
+        // video.style.display='none';
+      };
       multiStreamRecorder.ondataavailable = function (blob) {
         appendLink(blob);
       };

@@ -335,17 +335,17 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
             console.log("data: " + data.data.message);
             var msg = data.data.message;
             console.log("msg: " + msg);
-            alert(data.data.message);
-            // var loginAlert = $uibModal.open({
-            //   scope: $scope,
-            //   templateUrl: '/html/templates/dashboardsuccess.html',
-            //   windowClass: 'show',
-            //   backdropClass: 'static',
-            //   keyboard: false,
-            //   controller: function ($scope, $uibModalInstance) {
-            //     $scope.message = data.data.note
-            //   }
-            // })
+           // alert(data.data.message);
+            var loginAlert = $uibModal.open({
+              scope: $scope,
+              templateUrl: '/html/templates/dashboardsuccess.html',
+              windowClass: 'show',
+              backdropClass: 'static',
+              keyboard: false,
+              controller: function ($scope, $uibModalInstance) {
+                $scope.message = msg;
+              }
+            })
           }
         }
         else {
@@ -356,7 +356,7 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
             backdropClass: 'static',
             keyboard: false,
             controller: function ($scope, $uibModalInstance) {
-              $scope.message = data.data.message
+              $scope.message = data.data.message;
             }
           })
           //alert(data.data.message);

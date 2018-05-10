@@ -1,4 +1,4 @@
-app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessionAuthFactory) {
+app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessionAuthFactory,$uibModal) {
   console.log("attendanceCtl==>");
   $scope.userData = sessionAuthFactory.getAccess("userData");
   var schoolName = $scope.userData.schoolName;

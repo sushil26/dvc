@@ -1016,12 +1016,12 @@ function setup_local_media(callback, errorback) {
         "border:1px solid skyblue;display:inline !important"
       );
 
-      // $("#portfolio-wrapper").append(
-      //   '<div id="videoElem111" class="portfolio-items col-xs-12 col-sm-6 col-md-4 col-lg-3"><div id="videosAttach"></div><div class="details"><button id="fullscreenbtn" class="btn fa fa-expand" style="float:left; margin-top: 10px; margin-left: 10px;"></button><h4>' +
-      //   userName +
-      //   "</h4><span>All is well</span></div></div>"
-      // );
-      // $("#videosAttach").append(local_media);
+      $("#portfolio-wrapper").append(
+        '<div id="videoElem111" class="portfolio-items col-xs-12 col-sm-6 col-md-4 col-lg-3"><div id="videosAttach"></div><div class="details"><button id="fullscreenbtn" class="btn fa fa-expand" style="float:left; margin-top: 10px; margin-left: 10px;"></button><h4>' +
+        userName +
+        "</h4><span>All is well</span></div></div>"
+      );
+      $("#videosAttach").append(local_media);
 
       document.getElementById("videoElem").addEventListener("click", function () {
         console.log("screem size change request-->");

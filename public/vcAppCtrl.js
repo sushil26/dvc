@@ -1,22 +1,7 @@
-app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, $timeout, $state, $http, $uibModal, sessionAuthFactory, $uibModal,growl) {
+app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, $timeout, $state, $http, $uibModal, sessionAuthFactory, $uibModal) {
   console.log("controller==>");
-
-$scope.showWarning = function(){
-		growl.warning('This is a warning mesage.',{title: 'Warning!'});
-	}
-	$scope.showError = function(){
-		growl.error('This is a error mesage.',{title: 'Error!'});
-	}
-	$scope.showSuccess = function(){
-		growl.success('This is a success mesage.',{title: 'Success!'});
-	}
-	$scope.showInfo = function(){
-		growl.info('This is an info mesage.',{title: 'Info!'});
-	}
-
   var loginModal; /* ### Note: get login modal instance on this variable ###*/
   var userName;
-
   $scope.userData = sessionAuthFactory.getAccess("userData");
   console.log(" $scope.userData : "+JSON.stringify( $scope.userData ));
   if ($scope.userData) {
@@ -60,23 +45,21 @@ $scope.showWarning = function(){
         }
         else if (data.data.message == 'Login Successfully') {
           console.log("Login Successfully");
-          $scope.sessionSet(datas);
-          showWarning();
-          //  var loginAlert = $uibModal.open({
-          //   scope: $scope,
-          //   templateUrl: '/html/templates/loginAlert.html',
-          //   windowClass: 'show',
-          //   backdropClass: 'static',
-          //   keyboard: false,
-          //   controller: function ($scope, $uibModalInstance) {
-          //     $scope.message = "Login Successfully";
-          //     console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
-          //     $scope.close = function(){
-          //       loginAlert.close('resetModel');
-          //       $scope.sessionSet(datas);
-          //     }
-          //   }
-          // })
+           var loginAlert = $uibModal.open({
+            scope: $scope,
+            templateUrl: '/html/templates/loginAlert.html',
+            windowClass: 'show',
+            backdropClass: 'static',
+            keyboard: false,
+            controller: function ($scope, $uibModalInstance) {
+              $scope.message = "Login Successfully";
+              console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
+              $scope.close = function(){
+                loginAlert.close('resetModel');
+                $scope.sessionSet(datas);
+              }
+            }
+          })
           // alert("Logged in Successfull");
 
 

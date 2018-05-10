@@ -343,7 +343,7 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
               backdropClass: 'static',
               keyboard: false,
               controller: function ($scope, $uibModalInstance) {
-                $scope.message = msg
+                $scope.message = +"Hai!"+msg;
               }
             })
           }

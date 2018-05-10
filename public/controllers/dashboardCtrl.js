@@ -11,6 +11,38 @@ app.controller('dashboardController', function ($scope, $window, httpFactory,$ui
     $scope.academic_subMenu = true;
     $scope.setting_subMenu = true;
 
+
+    $scope.getToDate = function () {
+        console.log("Get To Date-->");
+        var api = "https://norecruits.com/vc/getToDate";
+        httpFactory.get(api).then(function (data) {
+          var checkStatus = httpFactory.dataValidation(data);
+          console.log("data--" + JSON.stringify(data.data));
+          if (checkStatus) {
+            console.log("data.data.data.date: " + data.data.data.date);
+            var todayDate = new Date(data.data.data.date);
+            console.log("todayDate: " + todayDate);
+            var reqDate = todayDate.getDate();
+            console.log("reqDate: " + reqDate);
+            var reqMonth = todayDate.getMonth();
+            var reqYear = todayDate.getFullYear();
+            var reqHr = todayDate.getHours();
+            var reqMin = todayDate.getMinutes();
+            var reqSec = todayDate.getSeconds();
+            $scope.todayDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
+            console.log("consolidateDate: " + $scope.consolidateDate);
+            // $scope.eventGet();
+          }
+          else {
+          }
+        })
+        console.log("<--Get To Date");
+      }
+      $scope.getToDate();
+
+
+
+
     $scope.iconMenuClick = function () {
         console.log("iconMenuClick--> ");
         var element = document.getElementById("container");

@@ -3,11 +3,12 @@ app.controller('dashboardController', function ($scope, $window, httpFactory, $u
     console.log("dashboardController==>");
     $scope.clock = "loading clock..."; // initialise the time variable
     $scope.tickInterval = 1000 //ms
-    $scope.clock = new Date()
-    $scope.hour = $filter('date')($scope.clock, 'HH');
-    $scope.min = $filter('date')($scope.clock, 'mm');
-    $scope.sec = $filter('date')($scope.clock, 'ss');
+
     var tick = function () {
+        $scope.clock = new Date()
+        $scope.hour = $filter('date')($scope.clock, 'HH');
+        $scope.min = $filter('date')($scope.clock, 'mm');
+        $scope.sec = $filter('date')($scope.clock, 'ss');
 
         $timeout(tick, $scope.tickInterval); // reset the timer
     }

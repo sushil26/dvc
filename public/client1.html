@@ -20,70 +20,35 @@
 <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
 <script src="https://cdn.WebRTC-Experiment.com/getScreenId.js"></script>
 <script>
-function captureScreen(cb) {
-    getScreenId(function (error, sourceId, screen_constraints) {
-        navigator.mediaDevices.getUserMedia(screen_constraints).then(cb).catch(function(error) {
-          console.error('getScreenId error', error);
-
-          alert('Failed to capture your screen. Please check Chrome console logs for further information.');
-        });
-    });
-}
-
-function captureCamera(cb) {
-    navigator.mediaDevices.getUserMedia({audio: true, video: true}).then(cb);
-}
-
-function keepStreamActive(stream) {
-    var video = document.createElement('video');
-    video.muted = true;
-    setSrcObject(stream, video);
-    video.style.display = 'none';
-    (document.body || document.documentElement).appendChild(video);
-}
-
-captureScreen(function(screen) {
-    keepStreamActive(screen);
-    captureCamera(function(camera) {
-        keepStreamActive(camera);
-
-        screen.width = window.screen.width;
-        screen.height = window.screen.height;
-        screen.fullcanvas = true;
-        
-        camera.width = 320;
-        camera.height = 240;
-        camera.top = screen.height - camera.height;
-        camera.left = screen.width - camera.width;
-        
-        var recorder = RecordRTC([screen, camera], {
-            type: 'video',
-            mimeType: 'video/webm',
-            previewStream: function(s) {
-                document.querySelector('video').muted = true;
-                setSrcObject(s, document.querySelector('video'));
-            }
-        });
-
-        recorder.startRecording();
-
-        setTimeout(function() {
-            recorder.stopRecording(function() {
-                var blob = recorder.getBlob();
-                document.querySelector('video').src = URL.createObjectURL(blob);
-                document.querySelector('video').muted = false;
-
-                [screen, camera].forEach(function(stream) {
-                    stream.getVideoTracks().forEach(function(track) {
-                        track.stop();
-                    });
-
-                    stream.getAudioTracks().forEach(function(track) {
-                        track.stop();
-                    });
-                })
-            });
-        }, 5 * 1000);
-    });
-});
+    var recordRTC;
+ 
+ function successCallback(stream) {
+     // RecordRTC usage goes here
+  
+     var options = {
+       mimeType: 'video/webm', // or video/webm\;codecs=h264 or video/webm\;codecs=vp9
+       audioBitsPerSecond: 128000,
+       videoBitsPerSecond: 128000,
+       bitsPerSecond: 128000 // if this line is provided, skip above two
+     };
+     recordRTC = RecordRTC(stream, options);
+     recordRTC.startRecording();
+ }
+  
+ function errorCallback(error) {
+     // maybe another application is using the device
+ }
+  
+ var mediaConstraints = { video: true, audio: true };
+  
+ navigator.mediaDevices.getUserMedia(mediaConstraints).then(successCallback).catch(errorCallback);
+  
+ btnStopRecording.onclick = function () {
+     recordRTC.stopRecording(function (audioVideoWebMURL) {
+         video.src = audioVideoWebMURL;
+  
+         var recordedBlob = recordRTC.getBlob();
+         recordRTC.getDataURL(function(dataURL) { });
+     });
+ };
 </script>

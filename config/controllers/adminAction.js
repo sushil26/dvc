@@ -595,7 +595,8 @@ module.exports.uploadAttendance = function (req, res) {
                 console.log("savedatInitiate");
                 // TODO: handle error
                 console.log("unknownData: " + JSON.stringify(unknownData));
-                if (expectedMessage != '') {
+                console.log("expectedMessage: "+expectedMessage);
+                if (expectedMessage) {
                    var responseData = {
                         status: false,
                         message: expectedMessage

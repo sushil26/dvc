@@ -343,7 +343,7 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
               backdropClass: 'static',
               keyboard: false,
               controller: function ($scope, $uibModalInstance) {
-                $scope.message = data.data.message;
+                $scope.message = msg;
               }
             })
           }
@@ -356,7 +356,7 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
             backdropClass: 'static',
             keyboard: false,
             controller: function ($scope, $uibModalInstance) {
-              $scope.message = data.data.message
+              $scope.message = data.data.message;
             }
           })
           //alert(data.data.message);

@@ -712,8 +712,8 @@ module.exports.monthlyData = function (data, callback) {
         "attendance.month": month,
         "schoolName": schoolName
     }
-    var columnLength = Object.keys(columnResults).length; /* ##### Note: Number of column from uploaded files ##### */
-
+    var columnLength = Object.keys(data).length; /* ##### Note: Number of column from uploaded files ##### */
+console.log("columnLength: "+columnLength);
     if (month == "Jan" || month == "Mar" || month == "May" || month == "Jul" || month == "Aug" || month == "Oct" || month == "Dec") {
         console.log("JAN");
         if (columnLength == 31+2) {

@@ -36,7 +36,7 @@ app.controller('dashboardController', function ($scope, $window, httpFactory, $u
                 var tick = function () {
                     $scope.hour = $filter('date')($scope.todayDate, 'HH');
                     $scope.min = $filter('date')($scope.todayDate, 'mm');
-                    $scope.sec = $filter('date')($scope.todayDate, '');
+                    $scope.sec = $filter('date')($scope.todayDate, 'ss');
                     $timeout(tick, $scope.tickInterval);
                 }
                 $timeout(tick, $scope.tickInterval);

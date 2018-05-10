@@ -596,7 +596,7 @@ module.exports.uploadAttendance = function (req, res) {
                 // TODO: handle error
                 console.log("unknownData: " + JSON.stringify(unknownData));
                 if (expectedMessage != '') {
-                    responseData = {
+                   var responseData = {
                         status: false,
                         message: expectedMessage
                     };

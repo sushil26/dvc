@@ -1,4 +1,4 @@
-app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, $timeout, $state, $http, $uibModal, sessionAuthFactory,  $uibModal) {
+app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, $timeout, $state, $http, $uibModal, sessionAuthFactory, $uibModal) {
   console.log("controller==>");
   var loginModal; /* ### Note: get login modal instance on this variable ###*/
   var userName;

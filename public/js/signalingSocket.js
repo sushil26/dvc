@@ -934,7 +934,14 @@ function setup_local_media(callback, errorback) {
     //video.srcObject = stream;
     streamArray.push(stream);
     
-    var multiStreamRecorder = new MultiStreamRecorder(streamArray);
+    document.querySelector('#stop-recording').onclick = function() {
+      this.disabled = true;
+      multiStreamRecorder.stop();
+      multiStreamRecorder.stream.stop();
+      document.querySelector('#pause-recording').disabled = true;
+      document.querySelector('#start-recording').disabled = false;
+document.querySelector('#add-stream').disabled = true;
+  };
 //     mediaRecorder.mimeType = 'video/webm';
 // mediaRecorder.start(60 * 60 * 1000); // 1 hour recording
 //   //   multiStreamRecorder.ondataavailable = function(blob) {
@@ -943,11 +950,11 @@ function setup_local_media(callback, errorback) {
   //     document.write('<a href="' + blobURL + '">' + blobURL + '</a>');
   // };
   // multiStreamRecorder.start(3000);
-    // video.addEventListener('loadedmetadata', function () {
+     video.addEventListener('loadedmetadata', function () {
      
       console.log("streamArray: "+JSON.stringify(streamArray));
       if (multiStreamRecorder && multiStreamRecorder.stream) return;
-
+      var multiStreamRecorder = new MultiStreamRecorder(streamArray);
      
       multiStreamRecorder.stream = stream;
       multiStreamRecorder.previewStream = function (stream) {

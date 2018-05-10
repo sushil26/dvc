@@ -22,6 +22,7 @@ var testType; /* ### Note: Get testType while uploading marksheet  ### */
 var testStartDate; /* ### Note: Get test start date while uploading marksheet  ### */
 var clas, section;  /* ### Note: Used while uploading marksheet  ### */
 var counter = 0; /* ### Note: Used while uploading marksheet  ### */
+var expectedMessage; /* ### Note:Attendance month validation  ### */
 
 module.exports.updateSchoolStatus = function (req, res) {
     console.log("updateSchoolStatus-->");
@@ -559,10 +560,10 @@ module.exports.uploadMarkSheet = function (data, callback) {
         }
     })
 
-    /* ### End update daily attendance status  ### */
-
 }
+
 module.exports.uploadAttendance = function (req, res) {
+    expectedMessage ='';
     console.log("uploadAttendance-->");
     var responseData;
     schoolName = req.params.schoolName;
@@ -584,7 +585,13 @@ module.exports.uploadAttendance = function (req, res) {
             module.exports.dailyData(data, function (err) {
                 console.log("savedatInitiate");
                 // TODO: handle error
-
+if(expectedMessage!=''){
+    responseData = {
+        status: false,
+        message: expectedMessage
+    };
+    res.status(400).send(responseData);
+}
                 parser.resume();
             });
         }
@@ -625,11 +632,10 @@ module.exports.uploadAttendance = function (req, res) {
         });
     console.log("<--uploadAttendance");
 };
-
+/* ### Start update daily attendance status  ### */
 module.exports.dailyData = function (data, callback) {
     console.log('inside saving')
-    // Simulate an asynchronous operation:
-    //  /* ### Start update daily attendance status  ### */
+
     var dateString = data.Date;
     var parts = dateString.split(' ');
     console.log("parts: " + JSON.stringify(parts));
@@ -701,11 +707,8 @@ module.exports.dailyData = function (data, callback) {
             }
         }
     })
-
-    // /* ### End update daily attendance status  ### */
-
 }
-
+/* ### End update daily attendance status  ### */
 module.exports.monthlyData = function (data, callback) {
     console.log('inside saving')
     var arrayLength
@@ -717,52 +720,68 @@ module.exports.monthlyData = function (data, callback) {
         "attendance.month": month,
         "schoolName": schoolName
     }
-
+    var columnLength = Object.keys(data).length; /* ##### Note: Number of column from uploaded files ##### */
+console.log("columnLength: "+columnLength);
     if (month == "Jan" || month == "Mar" || month == "May" || month == "Jul" || month == "Aug" || month == "Oct" || month == "Dec") {
         console.log("JAN");
-        if (month == "Jan") {
-            attendanceIndex = 0;
-        }
-        else if (month == "Mar") {
-            attendanceIndex = 2;
-        }
-        else if (month == "May") {
-            attendanceIndex = 4;
-        }
-        else if (month == "Jul") {
-            attendanceIndex = 6;
-        }
-        else if (month == "Aug") {
-            attendanceIndex = 7;
-        }
-        else if (month == "Oct") {
-            attendanceIndex = 9;
-        }
-        else if (month == "Dec") {
-            attendanceIndex = 11;
-        }
+        if (columnLength == 31+2) {
 
-        for (var x = 1; x <= 31; x++) {
-            console.log("x: " + x);
-            monthAtt.push({ "date": x, "status": data[x] });
-            if (x == 31) {
-                break;
+            if (month == "Jan") {
+                attendanceIndex = 0;
             }
+            else if (month == "Mar") {
+                attendanceIndex = 2;
+            }
+            else if (month == "May") {
+                attendanceIndex = 4;
+            }
+            else if (month == "Jul") {
+                attendanceIndex = 6;
+            }
+            else if (month == "Aug") {
+                attendanceIndex = 7;
+            }
+            else if (month == "Oct") {
+                attendanceIndex = 9;
+            }
+            else if (month == "Dec") {
+                attendanceIndex = 11;
+            }
+            for (var x = 1; x <= 31; x++) {
+                console.log("x: " + x);
+                monthAtt.push({ "date": x, "status": data[x] });
+                if (x == 31) {
+                    break;
+                }
+            }
+
+        }
+        else {
+          
+                expectedMessage: "Failled to upload! Expecting 31 days attendance status for " + month;
+                if (callback) callback();
         }
     }
     else if (month == "Feb") {
         console.log("FEB");
         attendanceIndex = 1;
-        for (var x = 1; x <= 28; x++) {
-            console.log("x: " + x);
-            monthAtt.push({ "date": x, "status": data[x] });
-            if (x == 28) {
-                break;
+        if (columnLength == 28+2) {
+            for (var x = 1; x <= 28; x++) {
+                console.log("x: " + x);
+                monthAtt.push({ "date": x, "status": data[x] });
+                if (x == 28) {
+                    break;
+                }
             }
-
+        }
+        else {
+          
+            expectedMessage: "Failled to upload! Expecting 28 days attendance status for " + month;
+                if (callback) callback();
         }
     }
     else if (month == "Apr" || month == "Jun" || month == "Sep" || month == "Nov") {
+        if (columnLength == 30+2) {
         if (month == "Apr") {
             attendanceIndex = 3;
         }
@@ -775,15 +794,19 @@ module.exports.monthlyData = function (data, callback) {
         else if (month == "Nov") {
             attendanceIndex = 10;
         }
-
         for (var x = 1; x <= 30; x++) {
             console.log("x: " + x);
             monthAtt.push({ "date": x, "status": data[x] });
             if (x == 28) {
                 break;
             }
-
         }
+    }
+    else {
+       
+        expectedMessage: "Failled to upload! Expecting 30 days attendance status for " + month;
+            if (callback) callback();
+    }
     }
 
     console.log("*monthAtt: " + monthAtt.length);
@@ -1052,12 +1075,12 @@ module.exports.uploadStudentMaster = function (req, res) {
             console.log("end marker: " + marker);
             console.log("objJson: " + JSON.stringify(objJson));
             stud.find({ "cs": { "class": req.params.clas, "section": req.params.section } }).toArray(function (err, studentClassList) {
-                console.log("studentClassList.length: "+studentClassList.length);
+                console.log("studentClassList.length: " + studentClassList.length);
                 if (err) {
                     responseData = {
                         status: false,
                         message: "Failed to get Data",
-                        
+
                     };
                     res.status(400).send(responseData);
                 } else {
@@ -1082,94 +1105,94 @@ module.exports.uploadStudentMaster = function (req, res) {
                             }
                         });
                     }
-                    else{
+                    else {
                         responseData = {
                             status: false,
-                            message:"Sorry! you already inserted data for this class, further insertion you have to use reports update option",
-                           
+                            message: "Sorry! you already inserted data for this class, further insertion you have to use reports update option",
+
                         };
                         res.status(400).send(responseData);
                     }
                 }
             });
-       });
-       console.log("<--uploadStudentMaster");
-    }
+        });
+    console.log("<--uploadStudentMaster");
+}
 
-    module.exports.uploadTeacherMaster = function (req, res) {
-        console.log("uploadStudentMaster-->");
-        var responseData;
-        var marker;
-        var css = [];
-        var objJson = [];
-        // var cs = [{"class":req.params.class,"section":req.params.section}];
-        if (!req.files)
-            return res.status(400).send('No files were uploaded.');
+module.exports.uploadTeacherMaster = function (req, res) {
+    console.log("uploadStudentMaster-->");
+    var responseData;
+    var marker;
+    var css = [];
+    var objJson = [];
+    // var cs = [{"class":req.params.class,"section":req.params.section}];
+    if (!req.files)
+        return res.status(400).send('No files were uploaded.');
 
-        var studentDataFile = req.files.img;
-        console.log("studentDataFile: " + studentDataFile);
-        var parser = csv.fromString(studentDataFile.data.toString(), {
-            headers: true,
-            ignoreEmpty: true
-        }).on("data", function (data) {
-            console.log("data: " + JSON.stringify(data));
-            // var csData = [{ "class": req.params.class, "section": req.params.section }];
-            var userData = {
-                schoolName: req.params.schoolName,
-                schoolId: data.TeacherID,
-                firstName: data.FirstName,
-                lastName: data.LastName,
-                email: data.Email,
-                mobileNum: data.PhoneNumber,
-                dob: data.DOB,
-                doj: data.DOJ,
-                pswd: "abc",
-                css: [],
-                timeTable: [],
-                status: "active",
-                loginType: "teacher"
+    var studentDataFile = req.files.img;
+    console.log("studentDataFile: " + studentDataFile);
+    var parser = csv.fromString(studentDataFile.data.toString(), {
+        headers: true,
+        ignoreEmpty: true
+    }).on("data", function (data) {
+        console.log("data: " + JSON.stringify(data));
+        // var csData = [{ "class": req.params.class, "section": req.params.section }];
+        var userData = {
+            schoolName: req.params.schoolName,
+            schoolId: data.TeacherID,
+            firstName: data.FirstName,
+            lastName: data.LastName,
+            email: data.Email,
+            mobileNum: data.PhoneNumber,
+            dob: data.DOB,
+            doj: data.DOJ,
+            pswd: "abc",
+            css: [],
+            timeTable: [],
+            status: "active",
+            loginType: "teacher"
+        }
+        var cssParts = data.ClassSectionSubject.split(',');
+        console.log("cssParts: " + JSON.stringify(cssParts));
+        for (var x = 0; x < cssParts.length; x++) {
+            if (cssParts[x] != "") {
+                console.log("cssParts[x]: " + cssParts[x]);
+                var trimed = cssParts[x].trim();
+                console.log("cssSeparate: " + trimed);
+                var cssSeparate = trimed.split('-');
+                console.log("cssSeparate: " + JSON.stringify(cssSeparate));
+                userData.css.push({ "class": cssSeparate[0], "section": cssSeparate[1], "subject": cssSeparate[2] });
             }
-            var cssParts = data.ClassSectionSubject.split(',');
-            console.log("cssParts: " + JSON.stringify(cssParts));
-            for (var x = 0; x < cssParts.length; x++) {
-                if (cssParts[x] != "") {
-                    console.log("cssParts[x]: " + cssParts[x]);
-                    var trimed = cssParts[x].trim();
-                    console.log("cssSeparate: " + trimed);
-                    var cssSeparate = trimed.split('-');
-                    console.log("cssSeparate: " + JSON.stringify(cssSeparate));
-                    userData.css.push({ "class": cssSeparate[0], "section": cssSeparate[1], "subject": cssSeparate[2] });
+        }
+        console.log("userData: " + JSON.stringify(userData));
+        objJson.push(userData);
+    })
+        .on("end", function () {
+            console.log("end marker: " + marker);
+            console.log("objJson: " + JSON.stringify(objJson));
+            user.insert(objJson, function (err, data) {
+                console.log("data: " + JSON.stringify(data));
+                if (err) {
+                    responseData = {
+                        status: false,
+                        message: "Failed to Insert",
+                        data: data
+                    };
+                    res.status(400).send(responseData);
+                } else {
+                    responseData = {
+                        status: true,
+                        errorCode: 200,
+                        message: "Insert Successfull",
+                        data: data
+                    };
+                    res.status(200).send(responseData);
                 }
-            }
-            console.log("userData: " + JSON.stringify(userData));
-            objJson.push(userData);
-        })
-            .on("end", function () {
-                console.log("end marker: " + marker);
-                console.log("objJson: " + JSON.stringify(objJson));
-                user.insert(objJson, function (err, data) {
-                    console.log("data: " + JSON.stringify(data));
-                    if (err) {
-                        responseData = {
-                            status: false,
-                            message: "Failed to Insert",
-                            data: data
-                        };
-                        res.status(400).send(responseData);
-                    } else {
-                        responseData = {
-                            status: true,
-                            errorCode: 200,
-                            message: "Insert Successfull",
-                            data: data
-                        };
-                        res.status(200).send(responseData);
-                    }
-                });
             });
+        });
 
-        console.log("<--uploadStudentMaster");
-    };
+    console.log("<--uploadStudentMaster");
+};
 
 
 // module.exports.updateData = function (data, callback) {

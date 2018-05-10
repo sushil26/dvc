@@ -2436,11 +2436,11 @@ div[data-role="editor-toolbar"] {
 
   border-top-left-radius: 3px;
 
-  text-shadow: 0px 1px #fff;
+  /* text-shadow: 0px 1px #fff;
 
   border-bottom: 1px solid #ccc;
 
-  border-top: 1px solid #fff;
+  border-top: 1px solid #fff; */
 
   color: #666;
 
@@ -2471,12 +2471,12 @@ div[data-role="editor-toolbar"] {
   background: -o-linear-gradient(top, #e8ece9, #111);
 
   background: linear-gradient(top, #e8ece9, #111);
-/* 
+
   text-shadow: 0px 1px #000;
 
   border-bottom: 1px solid #555;
 
-  border-top: 1px solid #666; */
+  border-top: 1px solid #666;
 
   box-shadow: inset 0px 1px 1px #444;
 

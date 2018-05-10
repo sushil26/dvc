@@ -763,7 +763,7 @@ module.exports.monthlyData = function (data, callback) {
         }
         else {
 
-            expectedMessage: "Failled to upload! Expecting 31 days attendance status for " + month;
+            expectedMessage= "Failled to upload! Expecting 31 days attendance status for " + month;
             if (callback) callback();
         }
     }
@@ -781,7 +781,7 @@ module.exports.monthlyData = function (data, callback) {
         }
         else {
 
-            expectedMessage: "Failled to upload! Expecting 28 days attendance status for " + month;
+            expectedMessage= "Failled to upload! Expecting 28 days attendance status for " + month;
             if (callback) callback();
         }
     }
@@ -809,7 +809,7 @@ module.exports.monthlyData = function (data, callback) {
         }
         else {
 
-            expectedMessage: "Failled to upload! Expecting 30 days attendance status for " + month;
+            expectedMessage= "Failled to upload! Expecting 30 days attendance status for " + month;
             if (callback) callback();
         }
     }

@@ -335,6 +335,7 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
             console.log("data: "+data.message);
             console.log("data: "+data.data.message);
             var msg = data.data.message;
+          console.log("msg: "+msg);
             var loginAlert = $uibModal.open({
               scope: $scope,
               templateUrl: '/html/templates/dashboardwarning.html',

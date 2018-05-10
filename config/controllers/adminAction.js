@@ -599,6 +599,7 @@ module.exports.uploadAttendance = function (req, res) {
                 if (expectedMessage) {
                    var responseData = {
                         status: false,
+                        note: "upload not satisfied",
                         message: expectedMessage
                     };
                     res.status(400).send(responseData);

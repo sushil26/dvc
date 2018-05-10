@@ -989,11 +989,11 @@ function setup_local_media(callback, errorback) {
       //       var recordedBlob = recordRTC.getBlob();
       //       recordRTC.getDataURL(function(dataURL) { });
       //   });
-    });
+    // });
 
     //document.querySelector('#stop-recording').disabled = false;
     // document.querySelector('#pause-recording').disabled = false;
-    // }, false);
+    }, false);
     // video.play();
     // container.appendChild(video);
     // container.appendChild(document.createElement('hr'));

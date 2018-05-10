@@ -41,25 +41,27 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
         var datas = data.data;
         console.log("data.message: " + data.data.message);
         if (data.data.message == 'Profile Inactive') {
-          alert("Your Profile is inactive, inform your system admin to verify it");
-        }
-        else if (data.data.message == 'Login Successfully') {
-          console.log("Login Successfully");
-           var loginAlert = $uibModal.open({
+          var loginAlert = $uibModal.open({
             scope: $scope,
             templateUrl: '/html/templates/loginAlert.html',
             windowClass: 'show',
             backdropClass: 'static',
             keyboard: false,
             controller: function ($scope, $uibModalInstance) {
-              $scope.message = "Login Successfully";
+              $scope.message = "Your Profile is inactive, inform your system admin to verify it";
               console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
               $scope.close = function(){
                 loginAlert.close('resetModel');
-                $scope.sessionSet(datas);
+               
               }
             }
           })
+          //alert("Your Profile is inactive, inform your system admin to verify it");
+        }
+        else if (data.data.message == 'Login Successfully') {
+          console.log("Login Successfully");
+         
+          $scope.sessionSet(datas);
           // alert("Logged in Successfull");
 
 
@@ -68,15 +70,45 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
           userName = data.data.userName;
         }
         else if (data.data.message == 'Password is wrong') {
-          alert("Password is wrong");
+            var loginAlert = $uibModal.open({
+            scope: $scope,
+            templateUrl: '/html/templates/loginAlert.html',
+            windowClass: 'show',
+            backdropClass: 'static',
+            keyboard: false,
+            controller: function ($scope, $uibModalInstance) {
+              $scope.message = data.data.message;
+              console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
+              $scope.close = function(){
+                loginAlert.close('resetModel');
+               
+              }
+            }
+          })
+          //alert("Password is wrong");
         }
-        else if (data.data.errorCode == 'No Match') {
-          alert(data.data.message);
-        }
-        else if(data.data.message == 'Your not allow to login')
-        {
-          alert(data.data.message);
-        }
+        // else if (data.data.errorCode == 'No Match') {
+        //   var loginAlert = $uibModal.open({
+        //     scope: $scope,
+        //     templateUrl: '/html/templates/loginAlert.html',
+        //     windowClass: 'show',
+        //     backdropClass: 'static',
+        //     keyboard: false,
+        //     controller: function ($scope, $uibModalInstance) {
+        //       $scope.message = data.data.message;
+        //       console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
+        //       $scope.close = function(){
+        //         loginAlert.close('resetModel');
+               
+        //       }
+        //     }
+        //   })
+        //   alert(data.data.message);
+        // }
+        // else if(data.data.message == 'Your not allow to login')
+        // {
+        //   alert(data.data.message);
+        // }
         // if (data.data.loginType == 'admin') {
         //   $scope.sessionSet(datas);
         //   // document.getElementById("appLogin").style.display = 'none';

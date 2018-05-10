@@ -69,7 +69,7 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
           // document.getElementById("appLogout").style.display = 'block';
           userName = data.data.userName;
         }
-        else if (data.data.message == 'Password is wrong') {
+        else  {
             var loginAlert = $uibModal.open({
             scope: $scope,
             templateUrl: '/html/templates/loginAlert.html',

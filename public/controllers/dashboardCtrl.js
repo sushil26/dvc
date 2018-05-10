@@ -20,7 +20,7 @@ app.controller('dashboardController', function ($scope, $window, httpFactory, $u
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
                 console.log("data.data.data.date: " + data.data.data.date);
-              
+                var todayDate = new Date(data.data.data.date);
                 console.log("todayDate: " + todayDate);
                 var reqDate = todayDate.getDate();
                 console.log("reqDate: " + reqDate);
@@ -35,7 +35,7 @@ app.controller('dashboardController', function ($scope, $window, httpFactory, $u
                 $scope.tickInterval = 1000;
                 var tick = function () {
                     console.log("tick")
-                    var todayDate = new Date(data.data.data.date);
+                 
                   
 
                     $scope.hour = $filter('date')($scope.todayDate, 'HH');
@@ -51,9 +51,11 @@ app.controller('dashboardController', function ($scope, $window, httpFactory, $u
             } else {}
         })
         console.log("<--Get To Date");
+        $timeout(tick, $scope.tickInterval);
     }
     $scope.getToDate();
 
+    $timeout(tick, $scope.tickInterval);
 
 
 

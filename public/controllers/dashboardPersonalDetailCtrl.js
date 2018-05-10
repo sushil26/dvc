@@ -1,26 +1,18 @@
 app.controller('dashboardPersonalDetailController', function ($scope, $window,$uibModal, httpFactory, sessionAuthFactory) {
     console.log("dashboardController==>");
-
-
     $scope.userData = sessionAuthFactory.getAccess("userData");
     console.log(" $scope.userData: " + JSON.stringify($scope.userData));
     $scope.loginType = $scope.userData.loginType;
     $scope.userName = $scope.userData.userName;
-   
-
     var id = $scope.userData.id;
-
     $scope.getUserDetails = function (id) {
         console.log("getTeacherData-->");
-
         if ($scope.loginType == 'teacher' || $scope.loginType == 'admin' || $scope.loginType == 'vc4allAdmin') {
             var api = "https://norecruits.com/vc/teacherDetail" + "/" + id;
         }
         else if ($scope.loginType == 'studParent') {
             var api = "https://norecruits.com/vc/studentDetail" + "/" + id;
         }
-
-        
         //var api = "http://localhost:5000/vc/teacherDetail" + "/" + id;
         //var api = "http://localhost:5000/vc/eventGet";
         console.log("api: " + api);

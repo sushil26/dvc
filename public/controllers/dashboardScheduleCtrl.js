@@ -739,6 +739,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
       console.log("conflicts: " + conflicts);
       if (conflicts) {
         console.log("conflicts is there");
+        $('#timeTable_modal').modal('hide');
         // alert("ON this time you/student not free, try on other time");
 
         var loginAlert = $uibModal.open({

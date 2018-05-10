@@ -1,4 +1,4 @@
-app.controller('dashboardController', function ($scope, $window, httpFactory, sessionAuthFactory) {
+app.controller('dashboardController', function ($scope, $window, httpFactory,$uibModal, sessionAuthFactory) {
     console.log("dashboardController==>");
 
     $scope.userData = sessionAuthFactory.getAccess("userData");

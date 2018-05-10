@@ -993,10 +993,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
           controller: function ($scope, $uibModalInstance) {
             $scope.message = "Select Student";
             console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
-            $scope.close = function(){
-              loginAlert.close('resetModel');
-             
-            }
+         
           }
         })
         //alert("Select Student");
@@ -1011,10 +1008,10 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
           controller: function ($scope, $uibModalInstance) {
             $scope.message = "Select Teacher";
             console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
-            $scope.close = function(){
-              loginAlert.close('resetModel');
+            // $scope.close = function(){
+            //   loginAlert.close('resetModel');
              
-            }
+            // }
           }
         })
         //alert("Select Teacher");

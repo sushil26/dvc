@@ -729,7 +729,7 @@ module.exports.monthlyData = function (data, callback) {
     console.log("columnLength: " + columnLength);
     if (month == "Jan" || month == "Mar" || month == "May" || month == "Jul" || month == "Aug" || month == "Oct" || month == "Dec") {
         console.log("JAN");
-        if (columnLength == 31 + 2) {
+        if (columnLength == 33) {
 
             if (month == "Jan") {
                 attendanceIndex = 0;
@@ -770,7 +770,7 @@ module.exports.monthlyData = function (data, callback) {
     else if (month == "Feb") {
         console.log("FEB");
         attendanceIndex = 1;
-        if (columnLength == 28 + 2) {
+        if (columnLength == 30) {
             for (var x = 1; x <= 28; x++) {
                 console.log("x: " + x);
                 monthAtt.push({ "date": x, "status": data[x] });

@@ -926,6 +926,8 @@ function setup_local_media(callback, errorback) {
   var recordingInterval = 0;
   attachMediaStream = function (video, stream) {
     console.log("attachMediaStream-->");
+    console.log("stream: "+stream);
+    console.log("stream: "+JSON.stringify(stream));
     // console.log('DEPRECATED, attachMediaStream  will soon be removed.');
     // video = mergeProps(video, {
     //   controls: true,

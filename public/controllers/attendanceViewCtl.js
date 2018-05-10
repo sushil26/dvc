@@ -132,7 +132,7 @@ app.controller('attendanceViewCtl', function ($scope, $window, httpFactory, $com
         // label: '<i class=\'glyphicon glyphicon-pencil\'></i>',
         label: 'Re-Schedule',
         onClick: function (args) {
-            alert("Edit Event Comming Soon");
+            //alert("Edit Event Comming Soon");
         }
     }]
     $scope.events = [];

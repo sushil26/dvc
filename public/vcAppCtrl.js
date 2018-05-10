@@ -202,7 +202,17 @@ console.log("localStorage.getItem(sessionEnc): "+localStorage.getItem("sessionEn
         $window.location.reload();
       }
     } else {
-      alert("Sorry, your browser does not support Web Storage...");
+      var loginAlert = $uibModal.open({
+        scope: $scope,
+        templateUrl: '/html/templates/dashboardwarning.html',
+        windowClass: 'show',
+        backdropClass: 'static',
+        keyboard: false,
+        controller: function ($scope, $uibModalInstance) {
+          $scope.message = "Sorry, your browser does not support Web Storage...";
+        }
+      })
+      //alert("Sorry, your browser does not support Web Storage...");
     }
     console.log("<--sessionSet");
   }

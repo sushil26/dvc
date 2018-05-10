@@ -14,8 +14,7 @@
 
 @import url(https://fonts.googleapis.com/css?family=Oswald:400,300);
 .elementToFadeInAndOut {
-  width:200px;
-  height: 200px;
+
   background: red;
   -webkit-animation: fadeinout 4s linear forwards;
   animation: fadeinout 4s linear forwards;

@@ -22,6 +22,7 @@ var testType; /* ### Note: Get testType while uploading marksheet  ### */
 var testStartDate; /* ### Note: Get test start date while uploading marksheet  ### */
 var clas, section;  /* ### Note: Used while uploading marksheet  ### */
 var counter = 0; /* ### Note: Used while uploading marksheet  ### */
+var expectedMessage; /* ### Note:Attendance month validation  ### */
 
 module.exports.updateSchoolStatus = function (req, res) {
     console.log("updateSchoolStatus-->");
@@ -562,6 +563,7 @@ module.exports.uploadMarkSheet = function (data, callback) {
 }
 
 module.exports.uploadAttendance = function (req, res) {
+    expectedMessage ='';
     console.log("uploadAttendance-->");
     var responseData;
     schoolName = req.params.schoolName;
@@ -583,7 +585,13 @@ module.exports.uploadAttendance = function (req, res) {
             module.exports.dailyData(data, function (err) {
                 console.log("savedatInitiate");
                 // TODO: handle error
-
+if(expectedMessage!=''){
+    responseData = {
+        status: false,
+        message: expectedMessage
+    };
+    res.status(400).send(responseData);
+}
                 parser.resume();
             });
         }
@@ -749,11 +757,9 @@ console.log("columnLength: "+columnLength);
 
         }
         else {
-            responseData = {
-                status: false,
-                message: "Failled to upload! Expecting 31 days attendance status for " + month,
-            };
-            res.status(400).send(responseData);
+          
+                expectedMessage: "Failled to upload! Expecting 31 days attendance status for " + month;
+                if (callback) callback();
         }
     }
     else if (month == "Feb") {
@@ -769,11 +775,9 @@ console.log("columnLength: "+columnLength);
             }
         }
         else {
-            responseData = {
-                status: false,
-                message: "Failled to upload! Expecting 28 days attendance status for " + month,
-            };
-            res.status(400).send(responseData);
+          
+            expectedMessage: "Failled to upload! Expecting 28 days attendance status for " + month;
+                if (callback) callback();
         }
     }
     else if (month == "Apr" || month == "Jun" || month == "Sep" || month == "Nov") {
@@ -799,11 +803,9 @@ console.log("columnLength: "+columnLength);
         }
     }
     else {
-        responseData = {
-            status: false,
-            message: "Failled to upload! Expecting 30 days attendance status for " + month,
-        };
-        res.status(400).send(responseData);
+       
+        expectedMessage: "Failled to upload! Expecting 30 days attendance status for " + month;
+            if (callback) callback();
     }
     }
 

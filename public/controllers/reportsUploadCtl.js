@@ -288,7 +288,7 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
           else {
             var loginAlert = $uibModal.open({
               scope: $scope,
-              templateUrl: '/html/templates/dashboardwarning.html',
+              templateUrl: '/html/templates/dashboardsuccess.html',
               windowClass: 'show',
               backdropClass: 'static',
               keyboard: false,

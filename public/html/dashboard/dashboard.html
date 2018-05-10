@@ -65,10 +65,10 @@
                             <!-- <span class="profile-ava">
                                 <img alt="" src="/dashboard_Lib/img/img.jpg">
                             </span> -->
-                           {{hour}} {{todayDate | date: 'HH:mm:ss'}}
-                            <span ng-if="todayDate | date: 'HH<'12'" class="username">Good Morning&nbsp{{userName}}</span>
-                            <span ng-if="todayDate | date: 'HH>='12'" class="username">Good Afternoon&nbsp{{userName}}</span>
-                            <span ng-if="todayDate | date: 'HH>='17'" class="username">Good Evening&nbsp{{userName}}</span>
+                           {{hour}} 
+                            <span ng-if="hour <'12'" class="username">Good Morning&nbsp{{userName}}</span>
+                            <span ng-if="hour >='12'" class="username">Good Afternoon&nbsp{{userName}}</span>
+                            <span ng-if="hour >='17'" class="username">Good Evening&nbsp{{userName}}</span>
                             <!-- <b class="caret"></b> -->
                         <!-- </a> -->
                         <!-- <ul class="dropdown-menu extended logout">

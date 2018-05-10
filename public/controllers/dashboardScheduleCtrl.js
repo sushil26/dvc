@@ -984,10 +984,40 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
     }
     else {
       if ($scope.userData.loginType == 'teacher') {
-        alert("Select Student");
+        var loginAlert = $uibModal.open({
+          scope: $scope,
+          templateUrl: '/html/templates/loginAlert.html',
+          windowClass: 'show',
+          backdropClass: 'static',
+          keyboard: false,
+          controller: function ($scope, $uibModalInstance) {
+            $scope.message = "Select Student";
+            console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
+            $scope.close = function(){
+              loginAlert.close('resetModel');
+             
+            }
+          }
+        })
+        //alert("Select Student");
       }
       else {
-        alert("Select Teacher");
+        var loginAlert = $uibModal.open({
+          scope: $scope,
+          templateUrl: '/html/templates/loginAlert.html',
+          windowClass: 'show',
+          backdropClass: 'static',
+          keyboard: false,
+          controller: function ($scope, $uibModalInstance) {
+            $scope.message = "Select Teacher";
+            console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
+            $scope.close = function(){
+              loginAlert.close('resetModel');
+             
+            }
+          }
+        })
+        //alert("Select Teacher");
       }
 
     }

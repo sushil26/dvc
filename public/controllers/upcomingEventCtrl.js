@@ -160,7 +160,7 @@ app.controller('upcomingEventController', function ($scope, $state, $window, htt
         console.log("<--reschedule");
     }
 
-    $scop.waitForTime = function(time){
+    $scope.waitForTime = function(time){
         console.log("waitForTime-->");
         var loginAlert = $uibModal.open({
             scope: $scope,

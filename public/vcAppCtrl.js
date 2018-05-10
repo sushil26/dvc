@@ -68,7 +68,7 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
         else  {
             var loginAlert = $uibModal.open({
             scope: $scope,
-            templateUrl: '/html/templates/dashboardwarning.html',
+            templateUrl: '/html/templates/loginAlert.html',
             windowClass: 'show',
             backdropClass: 'static',
             keyboard: false,

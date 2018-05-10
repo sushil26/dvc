@@ -316,7 +316,7 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
       }
       else {
         if (uploadType == "Attendance") {
-          // if (data.data.message == "Sorry! you already updated for this month") {
+           if (data.data.message == "Sorry! you already updated for this month") {
             console.log("data: "+JSON.stringify(data));
             var loginAlert = $uibModal.open({
               scope: $scope,
@@ -329,7 +329,20 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
               }
             })
             //alert(data.data.message + " If you want to update, try update reports option");
-          //}
+          }
+          else if(data.data.note == "upload not satisfied")
+          {
+            var loginAlert = $uibModal.open({
+              scope: $scope,
+              templateUrl: '/html/templates/dashboardwarning.html',
+              windowClass: 'show',
+              backdropClass: 'static',
+              keyboard: false,
+              controller: function ($scope, $uibModalInstance) {
+                $scope.message = "upload data is invalied"
+              }
+            })
+          }
         }
         else {
           var loginAlert = $uibModal.open({

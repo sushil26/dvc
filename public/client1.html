@@ -1,3 +1,5 @@
+<html>
+    <head>
 <style>
     html, body, video, canvas {
         margin: 0!important;
@@ -11,12 +13,16 @@
 <title>Video+Screen recording using RecordRTC</title>
 
 
-<video controls autoplay></video>
-<butt id="btnStopRecording">btnStopRecording</butt>
+
 
 <script src="https://cdn.webrtc-experiment.com/RecordRTC.js"></script>
 <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
 <script src="https://cdn.WebRTC-Experiment.com/getScreenId.js"></script>
+</head>
+<body>
+        <video controls autoplay></video>
+        <butt id="btnStopRecording">btnStopRecording</butt>
+
 <script>
     var recordRTC;
  
@@ -50,3 +56,5 @@
      });
  };
 </script>
+</body>
+</html>

@@ -1,4 +1,4 @@
-app.controller('markViewCtl', function ($scope, $window, httpFactory, $compile, sessionAuthFactory) {
+app.controller('markViewCtl', function ($scope, $window, $uibModal, httpFactory, $compile, sessionAuthFactory) {
     console.log("markViewCtl==>");
 
     $scope.userData = sessionAuthFactory.getAccess();

@@ -1,4 +1,4 @@
-app.controller('userAuthCtrl', function ($scope, $state, $window, httpFactory) {
+app.controller('userAuthCtrl', function ($scope, $state, $window, httpFactory,$uibModal) {
     console.log("userAuthCtrl==>: " + localStorage.getItem("userData"));
 
 

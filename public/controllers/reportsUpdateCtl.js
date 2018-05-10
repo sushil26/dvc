@@ -1,4 +1,4 @@
-app.controller('reportsUpdateCtl', function ($scope, $window, httpFactory, sessionAuthFactory) {
+app.controller('reportsUpdateCtl', function ($scope, $window, httpFactory, $uibModal, sessionAuthFactory) {
     console.log("attendanceCtl==>");
     $scope.file = {}; /* ### Note: Upload file declaration ### */
     $scope.uploadTypes = ["Attendance", "Payment", "Mark Report"];

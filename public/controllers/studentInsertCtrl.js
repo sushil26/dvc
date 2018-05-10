@@ -1,4 +1,4 @@
-app.controller("studentInsertCtrl", function($scope, $window, httpFactory) {
+app.controller("studentInsertCtrl", function($scope, $window, $uibModal, httpFactory) {
   console.log("studInsertCtrl==>");
   console.log("$scope.parentName: " + $scope.parentName);
 

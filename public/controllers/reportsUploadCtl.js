@@ -120,11 +120,32 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
       var checkStatus = httpFactory.dataValidation(data);
       console.log("data--" + JSON.stringify(data.data));
       if (checkStatus) {
-        alert(data.data.message);
+        //alert(data.data.message);
+        var loginAlert = $uibModal.open({
+          scope: $scope,
+          templateUrl: '/html/templates/dashboardsuccess.html',
+          windowClass: 'show',
+          backdropClass: 'static',
+          keyboard: false,
+          controller: function ($scope, $uibModalInstance) {
+            $scope.message = data.data.message;
+          }
+        })
+
         up[0].ttSelect = null;
       }
       else {
-        alert(data.data.message);
+        var loginAlert = $uibModal.open({
+          scope: $scope,
+          templateUrl: '/html/templates/dashboardwarning.html',
+          windowClass: 'show',
+          backdropClass: 'static',
+          keyboard: false,
+          controller: function ($scope, $uibModalInstance) {
+            $scope.message = data.data.message;
+          }
+        })
+        //alert(data.data.message);
       }
     })
     console.log("<--uploadMarkFile");
@@ -148,10 +169,30 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
       console.log("data--" + JSON.stringify(data.data));
       if (checkStatus) {
         // $window.location.href = $scope.propertyJson.R082;
-        alert(data.data.message);
+        var loginAlert = $uibModal.open({
+          scope: $scope,
+          templateUrl: '/html/templates/dashboardsuccess.html',
+          windowClass: 'show',
+          backdropClass: 'static',
+          keyboard: false,
+          controller: function ($scope, $uibModalInstance) {
+            $scope.message = data.data.message;
+          }
+        })
+        //alert(data.data.message);
         $scope.getSchoolData();
       } else {
-        alert("Update Fail");
+        var loginAlert = $uibModal.open({
+          scope: $scope,
+          templateUrl: '/html/templates/dashboardwarning.html',
+          windowClass: 'show',
+          backdropClass: 'static',
+          keyboard: false,
+          controller: function ($scope, $uibModalInstance) {
+            $scope.message = "Update Fail";
+          }
+        })
+        //alert("Update Fail");
       }
     });
     console.log("<--upload_classPeriodsFile");
@@ -170,10 +211,30 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
       console.log("data--" + JSON.stringify(data.data));
       if (checkStatus) {
         // $window.location.href = $scope.propertyJson.R082;
-        alert(data.data.message);
+        var loginAlert = $uibModal.open({
+          scope: $scope,
+          templateUrl: '/html/templates/dashboardsuccess.html',
+          windowClass: 'show',
+          backdropClass: 'static',
+          keyboard: false,
+          controller: function ($scope, $uibModalInstance) {
+            $scope.message = data.data.message;
+          }
+        })
+        //alert(data.data.message);
         $scope.getSchoolData();
       } else {
-        alert("Update Fail");
+        var loginAlert = $uibModal.open({
+          scope: $scope,
+          templateUrl: '/html/templates/dashboardwarning.html',
+          windowClass: 'show',
+          backdropClass: 'static',
+          keyboard: false,
+          controller: function ($scope, $uibModalInstance) {
+            $scope.message = "Update Fail";
+          }
+        })
+        //alert("Update Fail");
       }
     });
 
@@ -212,25 +273,75 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
       if (checkStatus) {
         if (uploadType == "Attendance") {
           if (data.data.data.length > 0) {
-            alert(data.data.message + " But we have found unknown statudent detail " + data.data.data[0].StudentName + "-" + data.data.data[0].StudentID);
+            var loginAlert = $uibModal.open({
+              scope: $scope,
+              templateUrl: '/html/templates/dashboardsuccess.html',
+              windowClass: 'show',
+              backdropClass: 'static',
+              keyboard: false,
+              controller: function ($scope, $uibModalInstance) {
+                $scope.message = data.data.message + " But we have found unknown statudent detail " + data.data.data[0].StudentName + "-" + data.data.data[0].StudentID
+              }
+            })
+            //alert(data.data.message + " But we have found unknown statudent detail " + data.data.data[0].StudentName + "-" + data.data.data[0].StudentID);
           }
           else {
-            alert(data.data.message);
+            var loginAlert = $uibModal.open({
+              scope: $scope,
+              templateUrl: '/html/templates/dashboardwarning.html',
+              windowClass: 'show',
+              backdropClass: 'static',
+              keyboard: false,
+              controller: function ($scope, $uibModalInstance) {
+                $scope.message = data.data.message
+              }
+            })
+            //alert(data.data.message);
           }
 
         }
         else {
-          alert(data.data.message);
+          var loginAlert = $uibModal.open({
+            scope: $scope,
+            templateUrl: '/html/templates/dashboardsuccess.html',
+            windowClass: 'show',
+            backdropClass: 'static',
+            keyboard: false,
+            controller: function ($scope, $uibModalInstance) {
+              $scope.message = data.data.message
+            }
+          })
+          //alert(data.data.message);
         }
       }
       else {
         if (uploadType == "Attendance") {
           if (data.data.message == "Sorry! you already updated for this month") {
-            alert(data.data.message + " If you want to update, try update reports option");
+            var loginAlert = $uibModal.open({
+              scope: $scope,
+              templateUrl: '/html/templates/dashboardwarning.html',
+              windowClass: 'show',
+              backdropClass: 'static',
+              keyboard: false,
+              controller: function ($scope, $uibModalInstance) {
+                $scope.message = data.data.message
+              }
+            })
+            //alert(data.data.message + " If you want to update, try update reports option");
           }
         }
         else {
-          alert(data.data.message);
+          var loginAlert = $uibModal.open({
+            scope: $scope,
+            templateUrl: '/html/templates/dashboardsuccess.html',
+            windowClass: 'show',
+            backdropClass: 'static',
+            keyboard: false,
+            controller: function ($scope, $uibModalInstance) {
+              $scope.message = data.data.message
+            }
+          })
+          //alert(data.data.message);
         }
 
       }

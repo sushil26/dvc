@@ -335,16 +335,17 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
             console.log("data: " + data.data.message);
             var msg = data.data.message;
             console.log("msg: " + msg);
-            var loginAlert = $uibModal.open({
-              scope: $scope,
-              templateUrl: '/html/templates/dashboardsuccess.html',
-              windowClass: 'show',
-              backdropClass: 'static',
-              keyboard: false,
-              controller: function ($scope, $uibModalInstance) {
-                $scope.message = data.data.note
-              }
-            })
+            alert(data.data.message);
+            // var loginAlert = $uibModal.open({
+            //   scope: $scope,
+            //   templateUrl: '/html/templates/dashboardsuccess.html',
+            //   windowClass: 'show',
+            //   backdropClass: 'static',
+            //   keyboard: false,
+            //   controller: function ($scope, $uibModalInstance) {
+            //     $scope.message = data.data.note
+            //   }
+            // })
           }
         }
         else {

@@ -69,6 +69,8 @@
                             <span ng-if="hour <'12' && min<='59' && sec<='59' && hour >='0'" class="username">Good Morning&nbsp{{userName}}</span>
                             <span ng-if="hour >'12' && hour < '17'" class="username">Good Afternoon&nbsp{{userName}}</span>
                             <span ng-if="hour >='17' && min<='59' && sec<='59' && hour <='23'" class="username">Good Evening&nbsp{{userName}}</span>
+                            <br>
+                            {{hour}}:{{mm}}:{{ss}}
                             <!-- <b class="caret"></b> -->
                         <!-- </a> -->
                         <!-- <ul class="dropdown-menu extended logout">

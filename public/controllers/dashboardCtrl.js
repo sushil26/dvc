@@ -1,4 +1,4 @@
-app.controller('dashboardController', function ($scope, $window, httpFactory,$uibModal, sessionAuthFactory,$filter) {
+app.controller('dashboardController', function ($scope, $window, httpFactory, $uibModal, sessionAuthFactory, $filter, $interval) {
     console.log("dashboardController==>");
 
     $scope.userData = sessionAuthFactory.getAccess("userData");
@@ -16,35 +16,36 @@ app.controller('dashboardController', function ($scope, $window, httpFactory,$ui
         console.log("Get To Date-->");
         var api = "https://norecruits.com/vc/getToDate";
         httpFactory.get(api).then(function (data) {
-          var checkStatus = httpFactory.dataValidation(data);
-          console.log("data--" + JSON.stringify(data.data));
-          if (checkStatus) {
-            console.log("data.data.data.date: " + data.data.data.date);
-            var todayDate = new Date(data.data.data.date);
-            console.log("todayDate: " + todayDate);
-            var reqDate = todayDate.getDate();
-            console.log("reqDate: " + reqDate);
-            var reqMonth = todayDate.getMonth();
-            var reqYear = todayDate.getFullYear();
-            var reqHr = todayDate.getHours();
-            var reqMin = todayDate.getMinutes();
-            var reqSec = todayDate.getSeconds();
+            var checkStatus = httpFactory.dataValidation(data);
+            console.log("data--" + JSON.stringify(data.data));
+            if (checkStatus) {
+                console.log("data.data.data.date: " + data.data.data.date);
+                var todayDate = new Date(data.data.data.date);
+                console.log("todayDate: " + todayDate);
+                var reqDate = todayDate.getDate();
+                console.log("reqDate: " + reqDate);
+                var reqMonth = todayDate.getMonth();
+                var reqYear = todayDate.getFullYear();
+                var reqHr = todayDate.getHours();
+                var reqMin = todayDate.getMinutes();
+                var reqSec = todayDate.getSeconds();
 
-            $scope.todayDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
-           $scope.hour= $filter('date')($scope.todayDate, 'HH');
-           $scope.min= $filter('date')($scope.todayDate, 'mm');
-           $scope.sec= $filter('date')($scope.todayDate, 'ss');
+                $scope.todayDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
+                var tick = function () {
+                    $scope.hour = $filter('date')($scope.todayDate, 'HH');
+                    $scope.min = $filter('date')($scope.todayDate, 'mm');
+                    $scope.sec = $filter('date')($scope.todayDate, 'ss');
 
-
-            console.log("consolidateDate: " + $scope.consolidateDate);
-            // $scope.eventGet();
-          }
-          else {
-          }
+                }
+                tick();
+                $interval(tick, 1000);
+                console.log("consolidateDate: " + $scope.consolidateDate);
+                // $scope.eventGet();
+            } else {}
         })
         console.log("<--Get To Date");
-      }
-      $scope.getToDate();
+    }
+    $scope.getToDate();
 
 
 
@@ -52,7 +53,7 @@ app.controller('dashboardController', function ($scope, $window, httpFactory,$ui
     $scope.iconMenuClick = function () {
         console.log("iconMenuClick--> ");
         var element = document.getElementById("container");
-        
+
         if (element.classList.contains("sidebar-closed")) {
             console.log("if is true");
             element.classList.remove("sidebar-closed");
@@ -60,8 +61,7 @@ app.controller('dashboardController', function ($scope, $window, httpFactory,$ui
             $scope.events_subMenu = true;
             $scope.academic_subMenu = true;
             $scope.setting_subMenu = true;
-        }
-        else {
+        } else {
             console.log("if is false");
             $scope.sideBarMenu = true;
             element.classList.add("sidebar-closed");
@@ -74,30 +74,25 @@ app.controller('dashboardController', function ($scope, $window, httpFactory,$ui
         if (submenu == "events_subMenu") {
             if ($scope.events_subMenu == true) {
                 $scope.events_subMenu = false;
-            }
-            else {
+            } else {
                 $scope.events_subMenu = true;
             }
             $scope.academic_subMenu = true;
             $scope.setting_subMenu = true;
-        }
-        else if (submenu == "academic_subMenu") {
+        } else if (submenu == "academic_subMenu") {
             console.log(" $scope.academic_subMenu : " + $scope.academic_subMenu);
             if ($scope.academic_subMenu == true) {
                 $scope.academic_subMenu = false;
-            }
-            else {
+            } else {
                 $scope.academic_subMenu = true;
             }
             $scope.events_subMenu = true;
 
             $scope.setting_subMenu = true;
-        }
-        else {
+        } else {
             if ($scope.setting_subMenu == true) {
                 $scope.setting_subMenu = false;
-            }
-            else {
+            } else {
                 $scope.setting_subMenu = true;
             }
             $scope.events_subMenu = true;

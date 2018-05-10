@@ -931,7 +931,7 @@ function setup_local_media(callback, errorback) {
       controls: true,
       muted: true
     });
-    //video.srcObject = stream;
+    video.srcObject = stream;
     streamArray.push(stream);
 
     document.querySelector('#stop-recording').onclick = function () {
@@ -947,19 +947,18 @@ function setup_local_media(callback, errorback) {
     //     document.write('<a href="' + blobURL + '">' + blobURL + '</a>');
     // };
     // multiStreamRecorder.start(3000);
-    video.addEventListener('loadedmetadata', function () {
+    // video.addEventListener('loadedmetadata', function () {
 
       console.log("streamArray: " + JSON.stringify(streamArray));
       if (multiStreamRecorder && multiStreamRecorder.stream) return;
       var multiStreamRecorder = new MultiStreamRecorder(streamArray);
-
       multiStreamRecorder.stream = stream;
-      multiStreamRecorder.previewStream = function (stream) {
-        // video.src = URL.createObjectURL(stream);
-        video.srcObject = stream;
+      // multiStreamRecorder.previewStream = function (stream) {
+      //   // video.src = URL.createObjectURL(stream);
+      //   //video.srcObject = stream;
 
-        // video.style.display='none';
-      };
+      //   // video.style.display='none';
+      // };
       multiStreamRecorder.ondataavailable = function (blob) {
         appendLink(blob);
       };
@@ -993,10 +992,10 @@ function setup_local_media(callback, errorback) {
 
     //document.querySelector('#stop-recording').disabled = false;
     // document.querySelector('#pause-recording').disabled = false;
-    }, false);
-    video.play();
-    container.appendChild(video);
-    container.appendChild(document.createElement('hr'));
+    // }, false);
+    // video.play();
+    // container.appendChild(video);
+    // container.appendChild(document.createElement('hr'));
     console.log("<--attachMediaStream");
   };
   navigator.getUserMedia({ audio: USE_AUDIO, video: USE_VIDEO },

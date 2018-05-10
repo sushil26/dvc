@@ -59,7 +59,7 @@
                                             </td>
                                             <td>
                                                 <div class="btn-group">
-                                                    <a ng-if="event.startsAt!=todayDate" class="btn btn-primary" target="_blank" ng-disabled="true">
+                                                    <a ng-if="event.startsAt==todayDate" class="btn btn-primary" target="_blank" ng-disabled="true">
                                                         <i class="icon_headphones"></i>&nbspStart
                                                     </a>
                                                     <a ng-if="event.startsAt==todayDate" class="btn btn-primary" target="_blank" ng-disabled="true" href="{{event.url}}">

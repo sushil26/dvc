@@ -20,7 +20,7 @@ app.controller('dashboardController', function ($scope, $window, httpFactory, $u
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
                 console.log("data.data.data.date: " + data.data.data.date);
-                var todayDate = new Date(data.data.data.date);
+              
                 console.log("todayDate: " + todayDate);
                 var reqDate = todayDate.getDate();
                 console.log("reqDate: " + reqDate);
@@ -30,16 +30,19 @@ app.controller('dashboardController', function ($scope, $window, httpFactory, $u
                 var reqMin = todayDate.getMinutes();
                 var reqSec = todayDate.getSeconds();
 
-           
+                $scope.todayDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
 
                 $scope.tickInterval = 1000;
                 var tick = function () {
                     console.log("tick")
-                    $scope.todayDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
+                    var todayDate = new Date(data.data.data.date);
+                  
+
                     $scope.hour = $filter('date')($scope.todayDate, 'HH');
                     $scope.min = $filter('date')($scope.todayDate, 'mm');
                     $scope.sec = $filter('date')($scope.todayDate, 'ss');
                     $timeout(tick, $scope.tickInterval);
+                    console.log("tick")
                 }
                 $timeout(tick, $scope.tickInterval);
 

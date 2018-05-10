@@ -50,10 +50,6 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
             controller: function ($scope, $uibModalInstance) {
               $scope.message = "Your Profile is inactive, inform your system admin to verify it";
               console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
-              $scope.close = function(){
-                loginAlert.close('resetModel');
-               
-              }
             }
           })
           //alert("Your Profile is inactive, inform your system admin to verify it");

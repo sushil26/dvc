@@ -413,7 +413,22 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
         // alert(data.data.message);
       }
       else {
-        alert("Event Delete Failed");
+        var loginAlert = $uibModal.open({
+          scope: $scope,
+          templateUrl: '/html/templates/loginAlert.html',
+          windowClass: 'show',
+          backdropClass: 'static',
+          keyboard: false,
+          controller: function ($scope, $uibModalInstance) {
+            $scope.message = "Event Delete Failed";
+            console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
+            $scope.close = function(){
+              loginAlert.close('resetModel');
+             
+            }
+          }
+        })
+        //alert("Event Delete Failed");
 
       }
     })

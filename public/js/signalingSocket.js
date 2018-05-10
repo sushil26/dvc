@@ -978,6 +978,15 @@ function setup_local_media(callback, errorback) {
       //   if (!multiStreamRecorder || !multiStreamRecorder.stream) return;
       //   multiStreamRecorder.addStream(multiStreamRecorder.stream);
       // };
+      // btnStopRecording.onclick = function () {
+      //   recordRTC.stopRecording(function (audioVideoWebMURL) {
+      //       video.src = audioVideoWebMURL;
+     
+      //       var recordedBlob = recordRTC.getBlob();
+      //       recordRTC.getDataURL(function(dataURL) { });
+      //   });
+    };
+
       //document.querySelector('#stop-recording').disabled = false;
       // document.querySelector('#pause-recording').disabled = false;
     // }, false);
@@ -1070,9 +1079,7 @@ function setup_local_media(callback, errorback) {
     function () {
       /* user denied access to a/v */
       console.log("Access denied for audio/video");
-      alert(
-        "You chose not to provide access to the camera/microphone, demo will not work."
-      );
+      alert("You chose not to provide access to the camera/microphone, demo will not work.");
       if (errorback) errorback();
     }
   );

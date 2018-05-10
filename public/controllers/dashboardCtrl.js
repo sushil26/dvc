@@ -1,4 +1,4 @@
-app.controller('dashboardController', function ($scope, $window, httpFactory, $uibModal, sessionAuthFactory, $filter, $interval) {
+app.controller('dashboardController', function ($scope, $window, httpFactory, $uibModal, sessionAuthFactory, $filter, $timeout) {
     console.log("dashboardController==>");
 
     $scope.userData = sessionAuthFactory.getAccess("userData");
@@ -31,14 +31,16 @@ app.controller('dashboardController', function ($scope, $window, httpFactory, $u
                 var reqSec = todayDate.getSeconds();
 
                 $scope.todayDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
+
+                $scope.tickInterval = 1000;
                 var tick = function () {
                     $scope.hour = $filter('date')($scope.todayDate, 'HH');
                     $scope.min = $filter('date')($scope.todayDate, 'mm');
-                    $scope.sec = $filter('date')($scope.todayDate, 'ss');
-
+                    $scope.sec = $filter('date')($scope.todayDate, '');
+                    $timeout(tick, $scope.tickInterval);
                 }
-                tick();
-                $interval(tick, 1000);
+                $timeout(tick, $scope.tickInterval);
+
                 console.log("consolidateDate: " + $scope.consolidateDate);
                 // $scope.eventGet();
             } else {}

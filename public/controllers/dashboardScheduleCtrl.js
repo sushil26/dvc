@@ -413,21 +413,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
         // alert(data.data.message);
       }
       else {
-        var loginAlert = $uibModal.open({
-          scope: $scope,
-          templateUrl: '/html/templates/loginAlert.html',
-          windowClass: 'show',
-          backdropClass: 'static',
-          keyboard: false,
-          controller: function ($scope, $uibModalInstance) {
-            $scope.message = "Event Delete Failed";
-            console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
-            $scope.close = function(){
-              loginAlert.close('resetModel');
-             
-            }
-          }
-        })
+      
         //alert("Event Delete Failed");
 
       }
@@ -480,13 +466,33 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
       var checkStatus = httpFactory.dataValidation(data);
       console.log("data--" + JSON.stringify(data.data));
       if (checkStatus) {
+        var loginAlert = $uibModal.open({
+          scope: $scope,
+          templateUrl: '/html/templates/dashboardsuccess.html',
+          windowClass: 'show',
+          backdropClass: 'static',
+          keyboard: false,
+          controller: function ($scope, $uibModalInstance) {
+            $scope.message = "Successfully event updated";
+          }
+        })
 
         console.log("data" + JSON.stringify(data.data))
         // $window.location.href = $scope.propertyJson.R082;
-        alert("Successfully event updated" + data.data.message);
+        // alert("Successfully event updated" + data.data.message);
       }
       else {
-        alert("Event Send Failed");
+        var loginAlert = $uibModal.open({
+          scope: $scope,
+          templateUrl: '/html/templates/dashboardwarning.html',
+          windowClass: 'show',
+          backdropClass: 'static',
+          keyboard: false,
+          controller: function ($scope, $uibModalInstance) {
+            $scope.message = "Event Send Failed";
+          }
+        })
+        // alert("Event Send Failed");
 
       }
 
@@ -618,7 +624,21 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
           if (checkStatus) {
             // console.log("data" + JSON.stringify(data.data))
             // $window.location.href = $scope.propertyJson.R082;
-            alert("Successfully sent the event");
+            
+            var loginAlert = $uibModal.open({
+              scope: $scope,
+              templateUrl: '/html/templates/dashboardsuccess.html',
+              windowClass: 'show',
+              backdropClass: 'static',
+              keyboard: false,
+              controller: function ($scope, $uibModalInstance) {
+                $scope.message = "Successfully sent the event";
+              }
+            })
+
+
+
+            // alert("Successfully sent the event");
             // vm.events.splice(0, 1);
             var eventPostedData = data.data.data;
             var objData = {
@@ -645,7 +665,20 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
             vm.events.push(objData);
           }
           else {
-            alert("Event Send Failed");
+
+
+            var loginAlert = $uibModal.open({
+              scope: $scope,
+              templateUrl: '/html/templates/dashboardwarning.html',
+              windowClass: 'show',
+              backdropClass: 'static',
+              keyboard: false,
+              controller: function ($scope, $uibModalInstance) {
+                $scope.message = "Event Send Failed";
+              }
+            })
+
+            // alert("Event Send Failed");
           }
 
         })
@@ -706,7 +739,18 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
       console.log("conflicts: " + conflicts);
       if (conflicts) {
         console.log("conflicts is there");
-        alert("ON this time you/student not free, try on other time");
+        // alert("ON this time you/student not free, try on other time");
+
+        var loginAlert = $uibModal.open({
+          scope: $scope,
+          templateUrl: '/html/templates/dashboardwarning.html',
+          windowClass: 'show',
+          backdropClass: 'static',
+          keyboard: false,
+          controller: function ($scope, $uibModalInstance) {
+            $scope.message = "ON this time any one of you not free, try on other time";
+          }
+        })
       }
       else {
         $('#timeTable_modal').modal('hide');
@@ -741,8 +785,18 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
     }
     else {
       $('#timeTable_modal').modal('hide');
+      var loginAlert = $uibModal.open({
+        scope: $scope,
+        templateUrl: '/html/templates/dashboardwarning.html',
+        windowClass: 'show',
+        backdropClass: 'static',
+        keyboard: false,
+        controller: function ($scope, $uibModalInstance) {
+          $scope.message = "Sorry you have to book the event 24Hrs before of your current date";
+        }
+      })
       
-      alert("Sorry you have to book the event 24Hrs before of your current date");
+      // alert("Sorry you have to book the event 24Hrs before of your current date");
     }
     console.log("<--timeTableForEventBook");
   }
@@ -764,7 +818,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
       // label: '<i class=\'glyphicon glyphicon-pencil\'></i>',
       label: 'Re-Schedule',
       onClick: function (args) {
-        alert("Edit Event Comming Soon");
+        // alert("Edit Event Comming Soon");
         console.log("args.calendarEvent: " + args.calendarEvent);
         console.log("JSON args.calendarEvent: " + JSON.stringify(args.calendarEvent));
         var date = args.calendarEvent.startsAt;
@@ -778,7 +832,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
         console.log("args.calendarEvent.id: " + args.calendarEvent.id);
         console.log("args.calendarEvent: " + JSON.stringify(args.calendarEvent));
         if (consolidateDate > $scope.todayDate) {
-          alert("Edit Started-->");
+          // alert("Edit Started-->");
           var id = args.calendarEvent.id;
           //   var cs= $scope.events[id].student_cs;
 
@@ -789,7 +843,17 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
           $state.go('dashboard.eventReschedule', { 'id': id });
         }
         else {
-          alert("Sorry you not allow to edit");
+          var loginAlert = $uibModal.open({
+            scope: $scope,
+            templateUrl: '/html/templates/dashboardwarning.html',
+            windowClass: 'show',
+            backdropClass: 'static',
+            keyboard: false,
+            controller: function ($scope, $uibModalInstance) {
+              $scope.message = "Sorry you not allow to edit";
+            }
+          })
+          // alert("Sorry you not allow to edit");
         }
         // var eClicked = $uibModal.open({
         //   scope: $scope,
@@ -892,25 +956,25 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
   };
 
   $scope.eventClicked = function (event) {
-    alert("clicked: " + event);
+    // alert("clicked: " + event);
     console.log("cliecked: " + event);
     //  alert.show('Clicked', event);
   };
 
   vm.eventEdited = function (event) {
-    alert("eventEdited");
+    // alert("eventEdited");
     console.log("cliecked: " + event);
     // alert.show('Edited', event);
   };
 
   vm.eventDeleted = function (event) {
-    alert("eventDeleted");
+    // alert("eventDeleted");
     console.log("deleted");
     // alert.show('Deleted', event);
   };
 
   vm.eventTimesChanged = function (event) {
-    alert.show('Dropped or resized', event);
+    // alert.show('Dropped or resized', event);
   };
 
   vm.toggle = function ($event, field, event) {
@@ -940,7 +1004,18 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
     console.log("conflicts: " + conflicts);
     if (conflicts) {
       console.log("conflicts is there");
-      alert("ON this time you/student not free, try on other time");
+
+      var loginAlert = $uibModal.open({
+        scope: $scope,
+        templateUrl: '/html/templates/dashboardwarning.html',
+        windowClass: 'show',
+        backdropClass: 'static',
+        keyboard: false,
+        controller: function ($scope, $uibModalInstance) {
+          $scope.message = "ON this time any one of you not free,try other time";
+        }
+      })
+      // alert("ON this time any one of you not free,try on other time");
     }
     else {
       console.log("No conflicts");
@@ -992,16 +1067,17 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
           keyboard: false,
           controller: function ($scope, $uibModalInstance) {
             $scope.message = "Select Student";
-            console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
+           
          
           }
         })
+        console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
         //alert("Select Student");
       }
       else {
         var loginAlert = $uibModal.open({
           scope: $scope,
-          templateUrl: '/html/templates/loginAlert.html',
+          templateUrl: '/html/templates/dashboardwarning.html',
           windowClass: 'show',
           backdropClass: 'static',
           keyboard: false,

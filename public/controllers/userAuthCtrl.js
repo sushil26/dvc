@@ -4,8 +4,11 @@ app.controller('userAuthCtrl', function ($scope, $state, $window, httpFactory) {
 
     $scope.viewUser = function (id, loginT) {
         console.log("viewUser-->");
-        console.log("id: "+id+" loginT: "+loginT);
-        $state.go('dashboard.viewUser', { 'id': id, 'loginType': loginT });
+        console.log("id: " + id + " loginT: " + loginT);
+        $state.go('dashboard.viewUser', {
+            'id': id,
+            'loginType': loginT
+        });
     }
     $scope.getUser = function () {
         console.log("getUser-->");
@@ -19,8 +22,7 @@ app.controller('userAuthCtrl', function ($scope, $state, $window, httpFactory) {
                 $scope.userData = data.data.data;
                 console.log(" obj" + JSON.stringify($scope.userData))
 
-            }
-            else {
+            } else {
                 //alert("Event get Failed");
 
             }
@@ -43,8 +45,7 @@ app.controller('userAuthCtrl', function ($scope, $state, $window, httpFactory) {
                 $scope.studData = data.data.data;
                 console.log("studData" + JSON.stringify($scope.studData))
 
-            }
-            else {
+            } else {
                 //alert("Event get Failed");
 
             }
@@ -69,11 +70,30 @@ app.controller('userAuthCtrl', function ($scope, $state, $window, httpFactory) {
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
                 $scope.userData[index].status = status;
-                alert("Updated Status Successfully");
+                var loginAlert = $uibModal.open({
+                    scope: $scope,
+                    templateUrl: '/html/templates/dashboardsuccess.html',
+                    windowClass: 'show',
+                    backdropClass: 'static',
+                    keyboard: false,
+                    controller: function ($scope, $uibModalInstance) {
+                        $scope.message = "Updated Status Successfully";
+                    }
+                })
+                //  alert("Updated Status Successfully");
 
-            }
-            else {
-                alert("Status updated failed, try again ");
+            } else {
+                var loginAlert = $uibModal.open({
+                    scope: $scope,
+                    templateUrl: '/html/templates/dashboardwarning.html',
+                    windowClass: 'show',
+                    backdropClass: 'static',
+                    keyboard: false,
+                    controller: function ($scope, $uibModalInstance) {
+                        $scope.message = "Status updated failed, try again ";
+                    }
+                })
+                // alert("Status updated failed, try again ");
 
             }
 
@@ -97,10 +117,29 @@ app.controller('userAuthCtrl', function ($scope, $state, $window, httpFactory) {
                 // $scope.userData = data.data.data;
                 console.log(" obj" + JSON.stringify($scope.userData))
                 $scope.userData.splice(index, 1);
-                alert("Deleted User Successfully, This User can't login now");
-            }
-            else {
-                alert("Status updated failed, try again ");
+                var loginAlert = $uibModal.open({
+                    scope: $scope,
+                    templateUrl: '/html/templates/dashboardsuccess.html',
+                    windowClass: 'show',
+                    backdropClass: 'static',
+                    keyboard: false,
+                    controller: function ($scope, $uibModalInstance) {
+                        $scope.message = "Deleted User Successfully, This User can't login now";
+                    }
+                })
+               // alert("Deleted User Successfully, This User can't login now");
+            } else {
+                var loginAlert = $uibModal.open({
+                    scope: $scope,
+                    templateUrl: '/html/templates/dashboardwarning.html',
+                    windowClass: 'show',
+                    backdropClass: 'static',
+                    keyboard: false,
+                    controller: function ($scope, $uibModalInstance) {
+                      $scope.message = "Status updated failed, try again ";
+                    }
+                  })
+                // alert("Status updated failed, try again ");
 
             }
 
@@ -125,11 +164,30 @@ app.controller('userAuthCtrl', function ($scope, $state, $window, httpFactory) {
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
                 $scope.studData[index].status = status;
-                alert("Updated Status Successfully");
+                var loginAlert = $uibModal.open({
+                    scope: $scope,
+                    templateUrl: '/html/templates/dashboardsuccess.html',
+                    windowClass: 'show',
+                    backdropClass: 'static',
+                    keyboard: false,
+                    controller: function ($scope, $uibModalInstance) {
+                      $scope.message = "Updated Status Successfully";
+                    }
+                  })
+                //alert("Updated Status Successfully");
 
-            }
-            else {
-                alert("Status updated failed, try again ");
+            } else {
+                var loginAlert = $uibModal.open({
+                    scope: $scope,
+                    templateUrl: '/html/templates/dashboardwarning.html',
+                    windowClass: 'show',
+                    backdropClass: 'static',
+                    keyboard: false,
+                    controller: function ($scope, $uibModalInstance) {
+                      $scope.message = "Status updated failed, try again ";
+                    }
+                  })
+               // alert("Status updated failed, try again ");
 
             }
 
@@ -153,10 +211,29 @@ app.controller('userAuthCtrl', function ($scope, $state, $window, httpFactory) {
                 // $scope.userData = data.data.data;
                 console.log(" obj" + JSON.stringify($scope.userData))
                 $scope.studData.splice(index, 1);
-                alert("Deleted User Successfully, This User can't login now");
-            }
-            else {
-                alert("Status updated failed, try again ");
+                var loginAlert = $uibModal.open({
+                    scope: $scope,
+                    templateUrl: '/html/templates/dashboardsuccess.html',
+                    windowClass: 'show',
+                    backdropClass: 'static',
+                    keyboard: false,
+                    controller: function ($scope, $uibModalInstance) {
+                        $scope.message = "Deleted User Successfully, This User can't login now";
+                    }
+                })
+               // alert("Deleted User Successfully, This User can't login now");
+            } else {
+                var loginAlert = $uibModal.open({
+                    scope: $scope,
+                    templateUrl: '/html/templates/dashboardwarning.html',
+                    windowClass: 'show',
+                    backdropClass: 'static',
+                    keyboard: false,
+                    controller: function ($scope, $uibModalInstance) {
+                      $scope.message = "Status updated failed, try again ";
+                    }
+                  })
+               // alert("Status updated failed, try again ");
 
             }
 

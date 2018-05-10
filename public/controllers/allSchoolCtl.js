@@ -43,10 +43,32 @@ app.controller('allSchoolCtl', function ($scope, $state, $window, httpFactory, s
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
                 $scope.allSchool[index].status = status;
-                alert("Updated Status Successfully");
+
+                var loginAlert = $uibModal.open({
+                    scope: $scope,
+                    templateUrl: '/html/templates/dashboardsuccess.html',
+                    windowClass: 'show',
+                    backdropClass: 'static',
+                    keyboard: false,
+                    controller: function ($scope, $uibModalInstance) {
+                      $scope.message = "Updated Status Successfully";
+                    }
+                  })
+          
+               // alert("Updated Status Successfully");
             }
             else {
-                alert("Status updated failed, try again ");
+                var loginAlert = $uibModal.open({
+                    scope: $scope,
+                    templateUrl: '/html/templates/dashboardwarning.html',
+                    windowClass: 'show',
+                    backdropClass: 'static',
+                    keyboard: false,
+                    controller: function ($scope, $uibModalInstance) {
+                      $scope.message = "Status updated failed, try again ";
+                    }
+                  })
+               // alert("Status updated failed, try again ");
             }
         })
         console.log("<--updateUserStatus");

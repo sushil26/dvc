@@ -25,10 +25,30 @@ app.controller('adminCreateCtl', function ($scope, $filter, $window, httpFactory
             var checkStatus = httpFactory.dataValidation(data);
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
-                alert(data.data.message);
+                var loginAlert = $uibModal.open({
+                    scope: $scope,
+                    templateUrl: '/html/templates/dashboardsuccess.html',
+                    windowClass: 'show',
+                    backdropClass: 'static',
+                    keyboard: false,
+                    controller: function ($scope, $uibModalInstance) {
+                      $scope.message = data.data.message;
+                    }
+                  })
+                // alert(data.data.message);
             }
             else{
-                alert("Failed to create");
+                var loginAlert = $uibModal.open({
+                    scope: $scope,
+                    templateUrl: '/html/templates/dashboardwarning.html',
+                    windowClass: 'show',
+                    backdropClass: 'static',
+                    keyboard: false,
+                    controller: function ($scope, $uibModalInstance) {
+                      $scope.message = "Failed to create";
+                    }
+                  })
+             //   alert("Failed to create");
             }
         })
         console.log("<--adminCreate");

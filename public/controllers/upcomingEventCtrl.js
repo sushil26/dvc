@@ -115,7 +115,7 @@ app.controller('upcomingEventController', function ($scope, $state, $window, htt
         console.log(" $scope.events[id].id: " + $scope.events[id].id);
         console.log("$scope.events[id]: "+JSON.stringify($scope.events[id]));
         if (consolidateDate > $scope.todayDate) {
-            alert("Edit Started-->");
+           // alert("Edit Started-->");
            var id = $scope.events[id].id;
         //   var cs= $scope.events[id].student_cs;
           
@@ -126,7 +126,17 @@ app.controller('upcomingEventController', function ($scope, $state, $window, htt
             $state.go('dashboard.eventReschedule', { 'id': id});
         }
         else {
-            alert("Sorry you not allow to edit");
+            var loginAlert = $uibModal.open({
+                scope: $scope,
+                templateUrl: '/html/templates/dashboardwarning.html',
+                windowClass: 'show',
+                backdropClass: 'static',
+                keyboard: false,
+                controller: function ($scope, $uibModalInstance) {
+                  $scope.message = "Sorry you not allow to edit";
+                }
+              })
+            //alert("Sorry you not allow to edit");
         }
         // var api = "https://norecruits.com/vc/rescheduleEvent/:id";
 
@@ -153,7 +163,7 @@ app.controller('upcomingEventController', function ($scope, $state, $window, htt
     $scope.deleteEvent = function (id) {
         console.log("deleteEvent-->");
         console.log("id: " + id);
-        alert("Coming Soon");
+      //  alert("Coming Soon");
         console.log("<--deleteEvent");
     }
 

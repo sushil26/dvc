@@ -405,12 +405,32 @@ app.controller('dashboardRescheduleCtrl', function ($scope, $state, $rootScope, 
             var checkStatus = httpFactory.dataValidation(data);
             //console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
+                var loginAlert = $uibModal.open({
+                    scope: $scope,
+                    templateUrl: '/html/templates/dashboardsuccess.html',
+                    windowClass: 'show',
+                    backdropClass: 'static',
+                    keyboard: false,
+                    controller: function ($scope, $uibModalInstance) {
+                      $scope.message = data.data.message;
+                    }
+                  })
                 //  console.log("data" + JSON.stringify(data.data))
                 // $window.location.href = $scope.propertyJson.R082;
-                alert(data.data.message);
+                //alert(data.data.message);
             }
             else {
-                alert("Event Delete Failed");
+                var loginAlert = $uibModal.open({
+                    scope: $scope,
+                    templateUrl: '/html/templates/dashboardwarning.html',
+                    windowClass: 'show',
+                    backdropClass: 'static',
+                    keyboard: false,
+                    controller: function ($scope, $uibModalInstance) {
+                      $scope.message = "Event Delete Failed";
+                    }
+                  })
+               // alert("Event Delete Failed");
 
             }
         })
@@ -465,10 +485,30 @@ app.controller('dashboardRescheduleCtrl', function ($scope, $state, $rootScope, 
 
                 console.log("data" + JSON.stringify(data.data))
                 // $window.location.href = $scope.propertyJson.R082;
-                alert("Successfully event updated" + data.data.message);
+                var loginAlert = $uibModal.open({
+                    scope: $scope,
+                    templateUrl: '/html/templates/dashboardsuccess.html',
+                    windowClass: 'show',
+                    backdropClass: 'static',
+                    keyboard: false,
+                    controller: function ($scope, $uibModalInstance) {
+                      $scope.message = "Updated Successfully"+data.data.message;
+                    }
+                  })
+               // alert("Successfully event updated" + data.data.message);
             }
             else {
-                alert("Event Send Failed");
+                var loginAlert = $uibModal.open({
+                    scope: $scope,
+                    templateUrl: '/html/templates/dashboardwarning.html',
+                    windowClass: 'show',
+                    backdropClass: 'static',
+                    keyboard: false,
+                    controller: function ($scope, $uibModalInstance) {
+                      $scope.message = "Event Send Failed";
+                    }
+                  })
+              //  alert("Event Send Failed");
 
             }
 
@@ -569,7 +609,17 @@ app.controller('dashboardRescheduleCtrl', function ($scope, $state, $rootScope, 
             if (checkStatus) {
                 // console.log("data" + JSON.stringify(data.data))
                 // $window.location.href = $scope.propertyJson.R082;
-                alert("Successfully sent the event");
+                var loginAlert = $uibModal.open({
+                    scope: $scope,
+                    templateUrl: '/html/templates/dashboardsuccess.html',
+                    windowClass: 'show',
+                    backdropClass: 'static',
+                    keyboard: false,
+                    controller: function ($scope, $uibModalInstance) {
+                      $scope.message = "Successfully sent the event";
+                    }
+                  })
+               // alert("Successfully sent the event");
                 // vm.events.splice(0, 1);
                 var eventPostedData = data.data.data;
                 console.log("eventPostedData: " + JSON.stringify(eventPostedData));
@@ -577,7 +627,17 @@ app.controller('dashboardRescheduleCtrl', function ($scope, $state, $rootScope, 
                 //$scope.eventGet();
             }
             else {
-                alert("Event Send Failed");
+                var loginAlert = $uibModal.open({
+                    scope: $scope,
+                    templateUrl: '/html/templates/dashboardwarning.html',
+                    windowClass: 'show',
+                    backdropClass: 'static',
+                    keyboard: false,
+                    controller: function ($scope, $uibModalInstance) {
+                      $scope.message = "Event Send Failed, try again ";
+                    }
+                  })
+               // alert("Event Send Failed");
             }
         })
         console.log("<--eventSend");
@@ -624,7 +684,18 @@ app.controller('dashboardRescheduleCtrl', function ($scope, $state, $rootScope, 
             console.log("conflicts: " + conflicts);
             if (conflicts) {
                 console.log("conflicts is there");
-                alert("ON this time you/student not free, try on other time");
+                var loginAlert = $uibModal.open({
+                    scope: $scope,
+                    templateUrl: '/html/templates/dashboardwarning.html',
+                    windowClass: 'show',
+                    backdropClass: 'static',
+                    keyboard: false,
+                    controller: function ($scope, $uibModalInstance) {
+                      $scope.message = "On this time one of you is not free, try other time";
+                    }
+                  })
+                
+              //  alert("On this time one of you is not free, try other time");
             }
             else {
                 $('#timeTable_modal').modal('hide');
@@ -684,7 +755,17 @@ app.controller('dashboardRescheduleCtrl', function ($scope, $state, $rootScope, 
         }
         else {
             $('#timeTable_modal').modal('hide');
-            alert("Sorry you have to book the event 24Hrs before of your current date");
+            var loginAlert = $uibModal.open({
+                scope: $scope,
+                templateUrl: '/html/templates/dashboardwarning.html',
+                windowClass: 'show',
+                backdropClass: 'static',
+                keyboard: false,
+                controller: function ($scope, $uibModalInstance) {
+                  $scope.message = "Sorry you have to book the event 24Hrs before of your current date";
+                }
+              })
+           // alert("Sorry you have to book the event 24Hrs before of your current date");
         }
         console.log("<--timeTableForEventBook");
     }
@@ -706,7 +787,7 @@ app.controller('dashboardRescheduleCtrl', function ($scope, $state, $rootScope, 
         // label: '<i class=\'glyphicon glyphicon-pencil\'></i>',
         label: 'Edit',
         onClick: function (args) {
-            alert("Edit Event Comming Soon");
+          //  alert("Edit Event Comming Soon");
             console.log("args.calendarEvent: " + args.calendarEvent);
             console.log("JSON args.calendarEvent: " + JSON.stringify(args.calendarEvent));
             // var eClicked = $uibModal.open({
@@ -725,7 +806,7 @@ app.controller('dashboardRescheduleCtrl', function ($scope, $state, $rootScope, 
         // label: '<i class=\'glyphicon glyphicon-remove\'></i>',
         label: 'Delete',
         onClick: function (args) {
-            alert("Delete Event Comming Soon");
+          //  alert("Delete Event Comming Soon");
             console.log("args: " + args);
             // alert.show('Deleted', args.calendarEvent);
         }
@@ -806,25 +887,25 @@ app.controller('dashboardRescheduleCtrl', function ($scope, $state, $rootScope, 
     };
 
     $scope.eventClicked = function (event) {
-        alert("clicked: " + event);
+        //alert("clicked: " + event);
         console.log("cliecked: " + event);
         //  alert.show('Clicked', event);
     };
 
     vm.eventEdited = function (event) {
-        alert("eventEdited");
+       // alert("eventEdited");
         console.log("cliecked: " + event);
         // alert.show('Edited', event);
     };
 
     vm.eventDeleted = function (event) {
-        alert("eventDeleted");
+       // alert("eventDeleted");
         console.log("deleted");
         // alert.show('Deleted', event);
     };
 
     vm.eventTimesChanged = function (event) {
-        alert.show('Dropped or resized', event);
+        //alert.show('Dropped or resized', event);
     };
 
     vm.toggle = function ($event, field, event) {
@@ -854,7 +935,17 @@ app.controller('dashboardRescheduleCtrl', function ($scope, $state, $rootScope, 
         console.log("conflicts: " + conflicts);
         if (conflicts) {
             console.log("conflicts is there");
-            alert("ON this time you/student not free, try on other time");
+            var loginAlert = $uibModal.open({
+                scope: $scope,
+                templateUrl: '/html/templates/dashboardwarning.html',
+                windowClass: 'show',
+                backdropClass: 'static',
+                keyboard: false,
+                controller: function ($scope, $uibModalInstance) {
+                  $scope.message = "ON this time one of you is not free, try on other time";
+                }
+              })
+            //alert("ON this time one of you is not free, try on other time");
         }
         else {
             console.log("No conflicts");

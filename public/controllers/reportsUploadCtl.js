@@ -1,4 +1,4 @@
-app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessionAuthFactory,$uibModal) {
+app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessionAuthFactory, $uibModal) {
   console.log("attendanceCtl==>");
   $scope.userData = sessionAuthFactory.getAccess("userData");
   var schoolName = $scope.userData.schoolName;
@@ -110,11 +110,11 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
 
   $scope.uploadMarkFile = function (file, testType, date, clas, section) {
     console.log("uploadMarkFile-->");
-   console.log("testTYpe: "+testType+"date: "+date);
+    console.log("testTYpe: " + testType + "date: " + date);
     var obj = {
       "file": file
     }
-    var api = "https://norecruits.com/vc/uploadMarkFile/" + schoolName + "/" + testType + "/" + date + "/" + clas +"/"+ section;
+    var api = "https://norecruits.com/vc/uploadMarkFile/" + schoolName + "/" + testType + "/" + date + "/" + clas + "/" + section;
     console.log("api: " + api);
     httpFactory.imageUpload(file, api).then(function (data) {
       var checkStatus = httpFactory.dataValidation(data);
@@ -316,8 +316,8 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
       }
       else {
         if (uploadType == "Attendance") {
-           if (data.data.message == "Sorry! you already updated for this month") {
-          
+          if (data.data.message == "Sorry! you already updated for this month") {
+
             var loginAlert = $uibModal.open({
               scope: $scope,
               templateUrl: '/html/templates/dashboardwarning.html',
@@ -330,15 +330,14 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
             })
             //alert(data.data.message + " If you want to update, try update reports option");
           }
-          else if(data.data.note == "upload not satisfied")
-          {
-            console.log("data: "+data.message);
-            console.log("data: "+data.data.message);
+          else if (data.data.note == "upload not satisfied") {
+            console.log("data: " + data.message);
+            console.log("data: " + data.data.message);
             var msg = data.data.message;
-          console.log("msg: "+msg);
+            console.log("msg: " + msg);
             var loginAlert = $uibModal.open({
               scope: $scope,
-              templateUrl: '/html/templates/dashboardwarning.html',
+              templateUrl: '/html/templates/dashboardsuccess.html',
               windowClass: 'show',
               backdropClass: 'static',
               keyboard: false,

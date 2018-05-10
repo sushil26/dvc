@@ -59,10 +59,10 @@
                                             </td>
                                             <td>
                                                 <div class="btn-group">
-                                                    <a ng-if="event.startsAt==todayDate" class="btn btn-primary" target="_blank" ng-disabled="true">
+                                                    <a ng-if="event.startsAt!=todayDate" class="btn btn-primary" target="_blank" ng-click="waitForTime(event.startsAt| date:'MMM d, y h:mm a')">
                                                         <i class="icon_headphones"></i>&nbspStart
                                                     </a>
-                                                    <a ng-if="event.startsAt!=todayDate" class="btn btn-primary" target="_blank" ng-disabled="true" href="{{event.url}}">
+                                                    <a ng-if="(event.startsAt==todayDate || event.endsAt==todayDate) || (event.startsAt>=todayDate && event.endsAt<=todayDate)" class="btn btn-primary" target="_blank"  href="{{event.url}}">
                                                         <i class="icon_headphones"></i>&nbspStart
                                                     </a>
                                                     <a ng-if="loginType=='teacher'" class="btn btn-success" href="" ng-click="rescheduleEvent($index)">

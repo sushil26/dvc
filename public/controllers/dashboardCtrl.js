@@ -1,4 +1,4 @@
-app.controller('dashboardController', function ($scope, $window, httpFactory,$uibModal, sessionAuthFactory) {
+app.controller('dashboardController', function ($scope, $window, httpFactory,$uibModal, sessionAuthFactory,$filter) {
     console.log("dashboardController==>");
 
     $scope.userData = sessionAuthFactory.getAccess("userData");
@@ -29,7 +29,11 @@ app.controller('dashboardController', function ($scope, $window, httpFactory,$ui
             var reqHr = todayDate.getHours();
             var reqMin = todayDate.getMinutes();
             var reqSec = todayDate.getSeconds();
+
             $scope.todayDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
+           $scope.hour= $filter('date')($scope.todayDate, 'HH');
+
+
             console.log("consolidateDate: " + $scope.consolidateDate);
             // $scope.eventGet();
           }

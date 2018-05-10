@@ -51,11 +51,11 @@ app.controller('dashboardController', function ($scope, $window, httpFactory, $u
             } else {}
         })
         console.log("<--Get To Date");
-        $timeout(tick, $scope.tickInterval);
+      
     }
     $scope.getToDate();
 
-    $timeout(tick, $scope.tickInterval);
+ 
 
 
 

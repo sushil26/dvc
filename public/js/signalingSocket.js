@@ -932,7 +932,7 @@ function setup_local_media(callback, errorback) {
       muted: true
   });
     //video.srcObject = stream;
-    streamArray[streamArray.length]=stream;
+    streamArray.push(stream);
     
     var multiStreamRecorder = new MultiStreamRecorder(streamArray);
 //     mediaRecorder.mimeType = 'video/webm';
@@ -965,7 +965,7 @@ function setup_local_media(callback, errorback) {
         container.appendChild(a);
         container.appendChild(document.createElement('hr'));
       }
-      
+
       // var timeInterval = 5000;
       // if (timeInterval) timeInterval = parseInt(timeInterval);
       // else timeInterval = 5 * 1000;

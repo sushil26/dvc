@@ -110,10 +110,10 @@
                                                                     </td>
                                                                     <td style="background-color:white;">{{up.teacherSelect.email}}</td>
                                                                     <td style="background-color:white;">{{up.teacherSelect.mobileNum}}</td>
-                                                                    <td style=" background-color:white; color:red;" ng-if="td.status=='inactive'">Inactive</td>
-                                                                    <td style=" background-color:white; color:green;" ng-if="td.status=='active'">Active</td>
+                                                                    <td style=" background-color:white; color:red;" ng-if="up.teacherSelect=='inactive'">Inactive</td>
+                                                                    <td style=" background-color:white; color:green;" ng-if="up.teacherSelect=='active'">Active</td>
                                                                     <td style="background-color:white;">
-                                                                        <button class="btn btn-warning" ng-click="viewUser(td._id, 'teacher')">View</button>
+                                                                        <button class="btn btn-warning" ng-click="viewUser(up.teacherSelect._id, 'teacher')">View</button>
                                                                     </td>
                                                                 </tr>
                                                             </tbody>

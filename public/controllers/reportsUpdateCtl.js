@@ -133,6 +133,7 @@ app.controller('reportsUpdateCtl', function ($scope, $window, $state, httpFactor
   $scope.teacherUpdate = function (file, uploadType, id) {
     console.log("updateTeacher to Master-->");
     console.log("file: " + file);
+    console.log("id: " + id);
     var obj = {
       "file": file,
     }

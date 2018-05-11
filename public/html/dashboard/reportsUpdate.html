@@ -187,16 +187,16 @@
                                                 <tbody>
                                                     <tr>
                                                         <td style="background-color:white;">{{$index+1}}.</td>
-                                                        <td style="background-color:white;">{{sSelect.schoolId}}</td>
+                                                        <td style="background-color:white;">{{studList.schoolId}}</td>
                                                         <td style="background-color:white;">
-                                                            {{sSelect.firstName + " " + sSelect.lastName}}
+                                                            {{studList.firstName + " " + studList.lastName}}
                                                         </td>
-                                                        <td style="background-color:white;">{{sSelect.cs[0].class}}</td>
-                                                        <td style="background-color:white;">{{sSelect.cs[0].section}}</td>
-                                                        <td style=" background-color:white; color:red;">{{sSelect.cs[0].status}}</td>
+                                                        <td style="background-color:white;">{{studList.cs[0].class}}</td>
+                                                        <td style="background-color:white;">{{studList.cs[0].section}}</td>
+                                                        <td style=" background-color:white; color:red;">{{studList.cs[0].status}}</td>
 
                                                         <td style="background-color:white;">
-                                                            <button class="btn btn-warning" ng-click="viewUser(sSelect._id,'studParent')">View</button>
+                                                            <button class="btn btn-warning" ng-click="viewUser(studList._id,'studParent')">View</button>
                                                         </td>
                                                     </tr>
                                                 </tbody>

@@ -150,7 +150,7 @@
                                             <span class="required">*</span>
                                         </label>
                                         <div class="col-lg-3">
-                                            <select class="btn" ng-if="up.uploadType=='Student Details'" placeholder="select" ng-model="csSelect" ng-options="cs as cs.name + '-' + cs.studId for cs in studList">
+                                            <select class="btn" ng-if="up.uploadType=='Student Details'" placeholder="select" ng-model="sSelect" ng-options="cs as cs.name + '-' + cs.studId for cs in studList">
                                                 <option value="" disabled selected>Student</option>
                                             </select>
                                         </div>
@@ -174,18 +174,18 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr ng-repeat="sd in studentData">
+                                                    <tr>
                                                         <td style="background-color:white;">{{$index+1}}.</td>
-                                                        <td style="background-color:white;">{{sd.schoolId}}</td>
+                                                        <td style="background-color:white;">{{sSelect.schoolId}}</td>
                                                         <td style="background-color:white;">
-                                                            {{sd.firstName + " " + sd.lastName}}
+                                                            {{sSelect.firstName + " " + sSelect.lastName}}
                                                         </td>
-                                                        <td style="background-color:white;">{{sd.cs[0].class}}</td>
-                                                        <td style="background-color:white;">{{sd.cs[0].section}}</td>
-                                                        <td style=" background-color:white; color:red;" ng-if="sd.status=='inactive'">Inactive</td>
-                                                        <td style=" background-color:white; color:green;" ng-if="sd.status=='active'">Active</td>
+                                                        <td style="background-color:white;">{{sSelect.cs[0].class}}</td>
+                                                        <td style="background-color:white;">{{sSelect.cs[0].section}}</td>
+                                                        <td style=" background-color:white; color:red;" >{{sSelect.cs[0].status}}</td>
+                                                        
                                                         <td style="background-color:white;">
-                                                            <button class="btn btn-warning" ng-click="viewUser(sd._id,'studParent')">View</button>
+                                                            <button class="btn btn-warning" ng-click="viewUser(sSelect._id,'studParent')">View</button>
                                                         </td>
                                                     </tr>
                                                 </tbody>

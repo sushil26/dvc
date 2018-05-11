@@ -203,6 +203,11 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         }
       }
     })
+    .state('dashboard.automationAttendanceView', {
+      url: automationAttendanceView(),
+      templateUrl: '/html/dashboard/attendanceViewWithConfId.html',
+      controller: 'attendanceViewWithConfId_Ctl'
+    })
     .state('dashboard.markView', {
       url: markView(),
       templateUrl: '/html/dashboard/markView.html',
@@ -378,6 +383,9 @@ function markView() {
 }
 function automationResultView() {
   return '/automationResultView/:id';
+}
+function automationAttendanceView(){
+  return '/automationAttendanceView/:id';
 }
 
 

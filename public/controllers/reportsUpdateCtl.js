@@ -18,7 +18,7 @@ app.controller('reportsUpdateCtl', function ($scope, $window, $state, httpFactor
       if (checkStatus) {
         $scope.teacherList = data.data.data;
         console.log("teacherList: " + JSON.stringify($scope.teacherList));
-        console.log(" $scope.studList.length: " + $scope.studList.length);
+        
       }
       else {
         console.log("sorry");

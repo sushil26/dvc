@@ -108,7 +108,7 @@ app.controller('reportsUpdateCtl', function ($scope, $window, $state, httpFactor
       if (checkStatus) {
         alert(data.data.message);
         //$scope.getAllTeacherList();
-        up[0].uploadType= '';
+        $scope.up[0].uploadType= '';
       }
       else{
         alert(data.data.message);

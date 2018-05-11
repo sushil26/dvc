@@ -157,7 +157,7 @@ app.controller('reportsUpdateCtl', function ($scope, $window, $state, httpFactor
     console.log("<--updateTeacher to Master");
   }
 
-  $scope.getStudListForCS = function (css) {
+  $scope.getStudListForCS = function (clas, section) {
 
     console.log("getStudListForCS-->");
     // console.log("$scope.cssSelect: "+JSON.stringify($scope.cssSelect));

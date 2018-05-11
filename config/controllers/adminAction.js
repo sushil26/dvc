@@ -1064,9 +1064,10 @@ module.exports.updateStudentMaster = function (req, res) {
             dob: data.DOB,
             doj: data.DOJ
         }
+        console.log("userData: " + JSON.stringify(userData));
         objJson.push(userData);
 
-        console.log("userData: " + JSON.stringify(userData));
+       
     })
         .on("end", function () {
             console.log("end marker: ");

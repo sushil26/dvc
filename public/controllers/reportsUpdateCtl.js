@@ -92,12 +92,33 @@ app.controller('reportsUpdateCtl', function ($scope, $window, $state, httpFactor
     console.log("<--attendanceMark");
   }
 
+  $scope.teacherUpdate = function(file, uploadType, id){
+    console.log("uploadFile-->");
+    console.log("file: " + file);
+    var obj = {
+      "file": file,
+    }
+    if (uploadType == "Teacher Details") {
+      var api = "https://norecruits.com/vc/updateStudentMaster/"+schoolName+"/"+id;
+    }
+    httpFactory.csvUpload(obj, api).then(function (data) {
+      var checkStatus = httpFactory.dataValidation(data);
+      console.log("data--" + JSON.stringify(data.data));
+      if (checkStatus) {
+        alert(data.data.message);
+      }
+      else{
+        alert(data.data.message);
+      }
+    })
+
+  }
+
   $scope.uploadFile = function (file, uploadType, reportType, list) {
     console.log("uploadFile-->");
     console.log("file: " + file);
     var obj = {
       "file": file,
-
     }
     console.log("uploadType: " + uploadType);
     console.log("reportType: " + reportType);

@@ -160,7 +160,7 @@ app.controller('reportsUpdateCtl', function ($scope, $window, $state, httpFactor
   $scope.getStudListForCS = function (clas, section) {
 
     console.log("getStudListForCS-->");
-    // console.log("$scope.cssSelect: "+JSON.stringify($scope.cssSelect));
+   console.log("clas: "+JSON.stringify(clas));
     console.log("class" + clas+" section: "+section);
     // console.log("JSON.css" + JSON.stringify(css));
     var clas = css.class;

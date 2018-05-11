@@ -18,7 +18,7 @@ app.controller('reportsUpdateCtl', function ($scope, $window, $state, httpFactor
       if (checkStatus) {
         $scope.teacherList = data.data.data;
         console.log("teacherList: " + JSON.stringify($scope.teacherList));
-        
+
       }
       else {
         console.log("sorry");
@@ -67,7 +67,7 @@ app.controller('reportsUpdateCtl', function ($scope, $window, $state, httpFactor
     console.log("viewUser-->");
     $state.go('dashboard.viewUser', { 'id': id, 'loginType': loginT });
     console.log("<--viewUser");
-}
+  }
 
   $scope.sma = []; /* ### Note:sma-Subject Mark Attendant  */
   $scope.addSMA = function () {
@@ -129,19 +129,20 @@ app.controller('reportsUpdateCtl', function ($scope, $window, $state, httpFactor
     console.log("<--attendanceMark");
   }
 
-  $scope.teacherUpdate = function(file, uploadType, id){
+  /* ### Note: Teacher and student both are uploading through teacherUpdate ###*/
+  $scope.teacherUpdate = function (file, uploadType, id) {
     console.log("updateTeacher to Master-->");
     console.log("file: " + file);
     var obj = {
       "file": file,
     }
     if (uploadType == "Teacher Details") {
-      var api = "https://norecruits.com/vc/updateTeacherMaster/"+schoolName+"/"+id;
+      var api = "https://norecruits.com/vc/updateTeacherMaster/" + schoolName + "/" + id;
     }
-    else if(uploadType == "Student Details") {
-      var api = "https://norecruits.com/vc/updateStudentMaster/"+schoolName+"/"+id;
+    else if (uploadType == "Student Details") {
+      var api = "https://norecruits.com/vc/updateStudentMaster/" + schoolName + "/" + id;
     }
-    console.log("api: "+api);
+    console.log("api: " + api);
     httpFactory.csvUpload(obj, api).then(function (data) {
       var checkStatus = httpFactory.dataValidation(data);
       console.log("data--" + JSON.stringify(data.data));
@@ -150,36 +151,36 @@ app.controller('reportsUpdateCtl', function ($scope, $window, $state, httpFactor
         //$scope.getAllTeacherList();
         // $scope.up.uploadType= '';
       }
-      else{
+      else {
         alert(data.data.message);
       }
     })
     console.log("<--updateTeacher to Master");
   }
-$scope.studentDetail = function(s){
-console.log("studentSelect-->");
-console.log("s: "+JSON.stringify(s));
-var id = s.id;
-var api = "https://norecruits.com//vc/studentDetail/"+id;
-console.log("api: " + api);
-httpFactory.get(api).then(function (data) {
-    var checkStatus = httpFactory.dataValidation(data);
-    //console.log("data--" + JSON.stringify(data.data));
-    if (checkStatus) {
+  $scope.studentDetail = function (s) {
+    console.log("studentSelect-->");
+    console.log("s: " + JSON.stringify(s));
+    var id = s.id;
+    var api = "https://norecruits.com//vc/studentDetail/" + id;
+    console.log("api: " + api);
+    httpFactory.get(api).then(function (data) {
+      var checkStatus = httpFactory.dataValidation(data);
+      //console.log("data--" + JSON.stringify(data.data));
+      if (checkStatus) {
         $scope.studentDetail = data.data.data;
-        console.log(" $scope.studentDetail: "+  JSON.stringify($scope.studentDetail));
-    }
-    else{
+        console.log(" $scope.studentDetail: " + JSON.stringify($scope.studentDetail));
+      }
+      else {
 
-    }
-})
-console.log("<--studentSelect");
-}
+      }
+    })
+    console.log("<--studentSelect");
+  }
   $scope.getStudListForCS = function (clas, section) {
 
     console.log("getStudListForCS-->");
-  
-    console.log("class" + clas.class+" section: "+section);
+
+    console.log("class" + clas.class + " section: " + section);
     // console.log("JSON.css" + JSON.stringify(css));
     var clas = clas.class;
     var section = section;
@@ -188,23 +189,23 @@ console.log("<--studentSelect");
     var api = "https://norecruits.com/vc/getStudListForCS" + "/" + schoolName + "/" + clas + "/" + section;
     console.log("api: " + api);
     httpFactory.get(api).then(function (data) {
-        var checkStatus = httpFactory.dataValidation(data);
-        //console.log("data--" + JSON.stringify(data.data));
-        if (checkStatus) {
-            $scope.studentList = data.data.data;
-            console.log("studentList: " + JSON.stringify($scope.studentList));
-            for (var x = 0; x < $scope.studentList.length; x++) {
-                $scope.studList.push({ "id": $scope.studentList[x]._id, "name": $scope.studentList[x].firstName, "studId": $scope.studentList[x].schoolId });
-            }
-            console.log(" $scope.studList.length: " + $scope.studList.length);
+      var checkStatus = httpFactory.dataValidation(data);
+      //console.log("data--" + JSON.stringify(data.data));
+      if (checkStatus) {
+        $scope.studentList = data.data.data;
+        console.log("studentList: " + JSON.stringify($scope.studentList));
+        for (var x = 0; x < $scope.studentList.length; x++) {
+          $scope.studList.push({ "id": $scope.studentList[x]._id, "name": $scope.studentList[x].firstName, "studId": $scope.studentList[x].schoolId });
         }
-        else {
-            console.log("sorry");
-        }
+        console.log(" $scope.studList.length: " + $scope.studList.length);
+      }
+      else {
+        console.log("sorry");
+      }
     })
     console.log("<--getStudListForCS");
 
-}
+  }
 
 
   $scope.uploadFile = function (file, uploadType, reportType, list) {

@@ -193,7 +193,7 @@
                                                         </td>
                                                         <td style="background-color:white;">{{studentDetail[0].cs[0].class}}</td>
                                                         <td style="background-color:white;">{{studentDetail[0].cs[0].section}}</td>
-                                                        <td style=" background-color:white; color:red;">{{studentDetail[0].cs[0].status}}</td>
+                                                        <td style=" background-color:white; color:red;">{{studentDetail[0].status}}</td>
 
                                                         <td style="background-color:white;">
                                                             <button class="btn btn-warning" ng-click="viewUser(studentDetail[0]._id,'studParent')">View</button>
@@ -268,7 +268,7 @@
                                     <div class="form-group">
                                         <div class="col-lg-offset-2 col-lg-10">
                                             <button ng-if="up.uploadType=='Attendance'" type="reset" class=" bcontrol-label  btn btn-success" ng-click="uploadFile(up.uploadDoc,up.uploadType, up.cSelect.class,up.sSelect, up.ttSelect, up.mSelect)">Save</button>
-                                            <button ng-if="up.uploadType=='Student Details'" type="reset" class=" bcontrol-label btn btn-success" ng-click="uploadFile(up.uploadDoc,up.uploadType, up.cSelect.class,up.sSelect)">Save</button>
+                                            <button ng-if="up.uploadType=='Student Details'" type="reset" class=" bcontrol-label btn btn-success" ng-click="teacherUpdate(up.uploadDoc,up.uploadType, studentDetail[0]._id)">Save</button>
                                             <button ng-if="up.uploadType=='Teacher Details'" type="reset" class="  bcontrol-label btn btn-success" ng-click="teacherUpdate(up.uploadDoc,up.uploadType, up.teacherSelect._id)">Save</button>
                                             <button ng-if="up.uploadType=='Time Table'" type="reset" class=" bcontrol-label  btn btn-success" ng-click="uploadTimeTableFile(up.uploadDoc,up.tSelect)">Save</button>
                                             <button ng-if="up.uploadType=='Mark Report'" type="reset" class="bcontrol-label btn btn-success" ng-click="uploadMarkFile(up.uploadDoc,up.ttSelect,up.testDate| date:'dd-MM-yy',up.cSelect.class,up.sSelect)">Save</button>

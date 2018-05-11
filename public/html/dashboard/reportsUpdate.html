@@ -77,7 +77,7 @@
                                             <span class="required">*</span>
                                         </label>
                                         <div class="col-lg-3">
-                                            <select ng-if="up.uploadType=='Teacher Details' && up.teacherSelect!=''" class="form-control m-bot15" placeholder="select" ng-model="up.teacherSelect" ng-options="t as t.name +'-'+ t.schoolId for t in teacherList" >
+                                            <select ng-if="up.uploadType=='Teacher Details' && up.teacherSelect!=''" class="form-control m-bot15" placeholder="select" ng-model="up.teacherSelect" ng-options="t as t.firstName +'-'+ t.schoolId for t in teacherList" >
                                                 <option value="" disabled selected>Teacher</option>
                                             </select>
                                         </div>

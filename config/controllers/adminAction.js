@@ -92,7 +92,7 @@ module.exports.getAllTeacherList = function (req, res) {
                     "status": true,
                     "errorCode": 200,
                     "message": "Data collected successfully",
-                    "data": teacherData[0]
+                    "data": teacherData
                 }
                 res.status(200).send(responseData);
             }

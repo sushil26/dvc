@@ -106,6 +106,7 @@ app.controller('reportsUpdateCtl', function ($scope, $window, $state, httpFactor
       console.log("data--" + JSON.stringify(data.data));
       if (checkStatus) {
         alert(data.data.message);
+        $scope.getAllTeacherList();
       }
       else{
         alert(data.data.message);

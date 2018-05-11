@@ -1072,7 +1072,7 @@ module.exports.updateStudentMaster = function (req, res) {
             console.log("end marker: ");
             console.log("objJson: " + JSON.stringify(objJson));
             var queryData = {
-                "_id": req.params.id,
+                "_id": ObjectId(req.params.id),
                 "schoolName": req.params.schoolName,
             }
             console.log("queryData: " + JSON.stringify(queryData));

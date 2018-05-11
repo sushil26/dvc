@@ -78,7 +78,7 @@ module.exports.getAllTeacherList = function (req, res) {
         }
         console.log("queryData: " + JSON.stringify(queryData));
         user.find(queryData).toArray(function (err, teacherData) {
-            console.log("teacherData: " + JSON.stringify(teacherData));
+           // console.log("teacherData: " + JSON.stringify(teacherData));
             if (err) {
                 responseData = {
                     "status": false,
@@ -1122,7 +1122,7 @@ module.exports.updateTeacherMaster = function (req, res) {
         return res.status(400).send('No files were uploaded.');
 
     var teacherDataFile = req.files.img;
-    console.log("studentDataFile: " + studentDataFile);
+    console.log("teacherDataFile: " + teacherDataFile);
     var parser = csv.fromString(teacherDataFile.data.toString(), {
         headers: true,
         ignoreEmpty: true
@@ -1130,7 +1130,6 @@ module.exports.updateTeacherMaster = function (req, res) {
         console.log("data: " + JSON.stringify(data));
         // var csData = [{ "class": req.params.class, "section": req.params.section }];
         var userData = {
-            schoolId: data.TeacherID,
             firstName: data.FirstName,
             lastName: data.LastName,
             email: data.Email,
@@ -1157,13 +1156,14 @@ module.exports.updateTeacherMaster = function (req, res) {
         objJson.push(userData);
     })
         .on("end", function () {
-            console.log("end marker: " );
+            console.log("end marker: ");
             console.log("objJson: " + JSON.stringify(objJson));
             var queryData = {
                 "_id": req.params.id,
                 "schoolName": req.params.schoolName,
             }
-            user.update(queryData, { $set: {objJson} }, function (err, data) {
+            console.log("queryData: " + JSON.stringify(queryData));
+            user.update(queryData, { $set: {$each:objJson} }, function (err, data) {
                 console.log("data: " + JSON.stringify(data));
                 if (err) {
                     responseData = {

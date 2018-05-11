@@ -26,6 +26,43 @@ app.controller('reportsUpdateCtl', function ($scope, $window, $state, httpFactor
     })
   }
   $scope.getAllTeacherList();
+  $scope.getSchoolData = function () {
+    console.log("getSchoolData-->");
+    $scope.cssList = [];
+    var api = "https://norecruits.com/vc/getSchoolData/" + schoolName;
+    console.log("api: " + api);
+    httpFactory.get(api).then(function (data) {
+      console.log("data--" + JSON.stringify(data.data));
+      var checkStatus = httpFactory.dataValidation(data);
+      // console.log("checkStatus: "+checkStatus);
+      // console.log("data--" + JSON.stringify(data.data));
+      if (checkStatus) {
+        var schoolData = data.data.data;
+        $scope.cssList = schoolData.css;
+        $scope.timeTable_timing = schoolData.timeTable_timing;
+        console.log("schoolData: " + JSON.stringify(schoolData));
+        console.log("cssList: " + JSON.stringify($scope.cssList));
+        console.log("timeTable_timing: " + JSON.stringify($scope.timeTable_timing));
+        if ($scope.cssList.length == 0) {
+          console.log("message: " + data.data.message);
+        }
+
+        else {
+          console.log("sorry");
+
+          // for (var x = 0; x < $scope.cssList.length; x++) {
+          //   $scope.class.push({ "id": $scope.studentList[x]._id, "name": $scope.studentList[x].studName, "studId": $scope.studentList[x].studId });
+
+          // }
+        }
+      }
+      else {
+        console.log(data.data.message);
+      }
+    })
+    console.log("<--getSchoolData");
+  }
+  $scope.getSchoolData();
   $scope.viewUser = function (id, loginT) {
     console.log("viewUser-->");
     $state.go('dashboard.viewUser', { 'id': id, 'loginType': loginT });
@@ -108,6 +145,7 @@ app.controller('reportsUpdateCtl', function ($scope, $window, $state, httpFactor
       if (checkStatus) {
         alert(data.data.message);
         //$scope.getAllTeacherList();
+        // $scope.up.uploadType= '';
       }
       else{
         alert(data.data.message);

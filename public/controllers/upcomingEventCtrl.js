@@ -51,6 +51,7 @@ app.controller('upcomingEventController', function ($scope, $state, $window, htt
                     var obj = {
                         'id': $scope.eventData[x]._id,
                         'userId': $scope.eventData[x]._userId,
+                        'studUserId': $scope.eventData[x].studUserId,
                         "student_cs": $scope.eventData[x].student_cs, 
                         "student_id":$scope.eventData[x].student_id, 
                         "student_Name":$scope.eventData[x].student_Name, 
@@ -177,8 +178,10 @@ app.controller('upcomingEventController', function ($scope, $state, $window, htt
 
     $scope.conferenceStart = function(url, id){
         console.log("conferenceStart-->");
+        console.log("id: "+id+"url: "+url);
         localStorage.setItem("id", id);
         localStorage.setItem("schoolName", $scope.userData.schoolName);
+       
         $window.open(url, '_blank');
         console.log("<--conferenceStart");
     }

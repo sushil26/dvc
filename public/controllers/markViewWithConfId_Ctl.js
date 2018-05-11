@@ -2,7 +2,7 @@ app.controller('markViewWithConfId_Ctl', function ($scope, $state, $window, $uib
     console.log("markViewCtl==>");
     var id = $state.params.id;
     var schoolName = $state.params.schoolName;
-    console.log("studSchoolId: "+studSchoolId+" schoolName: "+schoolName);
+    console.log("studSchoolId: "+id+" schoolName: "+schoolName);
 
     $scope.getMarks = function (id) {
         console.log("getMarks-->");

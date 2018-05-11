@@ -43,7 +43,7 @@ var USE_AUDIO = true;
 var USE_VIDEO = true;
 var DEFAULT_CHANNEL = "some-global-ch-name";
 var MUTE_AUDIO_BY_DEFAULT = false;
-
+var loginType= "admin";
 if (localStorage.getItem("userData")) {
   console.log("User Name from session: " + localStorage.getItem("userData"));
   var userData = JSON.stringify(localStorage.getItem("userData"));

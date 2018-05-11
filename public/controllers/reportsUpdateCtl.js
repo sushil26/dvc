@@ -138,6 +138,9 @@ app.controller('reportsUpdateCtl', function ($scope, $window, $state, httpFactor
     if (uploadType == "Teacher Details") {
       var api = "https://norecruits.com/vc/updateTeacherMaster/"+schoolName+"/"+id;
     }
+    else if(uploadType == "Student Details") {
+      var api = "https://norecruits.com/vc/updateStudentMaster/"+schoolName+"/"+id;
+    }
     console.log("api: "+api);
     httpFactory.csvUpload(obj, api).then(function (data) {
       var checkStatus = httpFactory.dataValidation(data);

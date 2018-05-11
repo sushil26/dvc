@@ -1,4 +1,4 @@
-var id = localStorage.getItem("studSchoolId");
+var id = localStorage.getItem("id");
 var schoolName = localStorage.getItem("schoolName");
 console.log("studSchoolId: "+id+" schoolName: "+schoolName);
 

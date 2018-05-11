@@ -187,16 +187,16 @@
                                                 <tbody>
                                                     <tr>
                                                         <td style="background-color:white;">{{$index+1}}.</td>
-                                                        <td style="background-color:white;">{{studentDetail.schoolId}}</td>
+                                                        <td style="background-color:white;">{{studentDetail[0].schoolId}}</td>
                                                         <td style="background-color:white;">
-                                                            {{studentDetail.firstName + " " + studentDetail.lastName}}
+                                                            {{studentDetail[0].firstName + " " + studentDetail[0].lastName}}
                                                         </td>
-                                                        <td style="background-color:white;">{{studentDetail.cs[0].class}}</td>
-                                                        <td style="background-color:white;">{{studentDetail.cs[0].section}}</td>
-                                                        <td style=" background-color:white; color:red;">{{studentDetail.cs[0].status}}</td>
+                                                        <td style="background-color:white;">{{studentDetail[0].cs[0].class}}</td>
+                                                        <td style="background-color:white;">{{studentDetail[0].cs[0].section}}</td>
+                                                        <td style=" background-color:white; color:red;">{{studentDetail[0].cs[0].status}}</td>
 
                                                         <td style="background-color:white;">
-                                                            <button class="btn btn-warning" ng-click="viewUser(studentDetail._id,'studParent')">View</button>
+                                                            <button class="btn btn-warning" ng-click="viewUser(studentDetail[0]._id,'studParent')">View</button>
                                                         </td>
                                                     </tr>
                                                 </tbody>

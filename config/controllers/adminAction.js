@@ -1162,7 +1162,8 @@ module.exports.updateTeacherMaster = function (req, res) {
                 "_id": req.params.id,
                 "schoolName": req.params.schoolName,
             }
-            user.update(queryData, { $set: { objJson } }, function (err, data) {
+            console.log("queryData: " + JSON.stringify(queryData));
+            user.update(queryData, { $set: objJson }, function (err, data) {
                 console.log("data: " + JSON.stringify(data));
                 if (err) {
                     responseData = {

@@ -145,8 +145,19 @@
                                             </select>
                                         </div>
                                     </div>
+                                    <div class="form-group ">
+                                        <label ng-if="up.uploadType=='Student Details' && up.uploadType!=''" class=" control-label col-lg-3">Section
+                                            <span class="required">*</span>
+                                        </label>
+                                        <div class="col-lg-3">
+                                            <select ng-if="up.uploadType=='Student Details' && up.uploadType!='' " class="form-control m-bot15" placeholder="select"
+                                                ng-model="up.sSelect" ng-options="s as s for s in up.cSelect.section">
+                                                <option value="" disabled selected>Section</option>
+                                            </select>
+                                        </div>
+                                    </div>
                                     <div class="form-group">
-                                        <label ng-if="up.uploadType=='Student Details' && up.uploadType=='Student Details' && up.uploadType!=''" class="control-label col-lg-3">Select Student
+                                        <label ng-if="up.uploadType=='Student Details' && up.uploadType!=''" class="control-label col-lg-3">Select Student
                                             <span class="required">*</span>
                                         </label>
                                         <div class="col-lg-3">
@@ -182,8 +193,8 @@
                                                         </td>
                                                         <td style="background-color:white;">{{sSelect.cs[0].class}}</td>
                                                         <td style="background-color:white;">{{sSelect.cs[0].section}}</td>
-                                                        <td style=" background-color:white; color:red;" >{{sSelect.cs[0].status}}</td>
-                                                        
+                                                        <td style=" background-color:white; color:red;">{{sSelect.cs[0].status}}</td>
+
                                                         <td style="background-color:white;">
                                                             <button class="btn btn-warning" ng-click="viewUser(sSelect._id,'studParent')">View</button>
                                                         </td>
@@ -192,17 +203,7 @@
                                             </table>
                                         </div>
                                     </section>
-                                    <div class="form-group ">
-                                        <label ng-if="up.uploadType!='Teacher Details' && up.uploadType!='Time Table' && up.uploadType!=''" class=" control-label col-lg-3">Section
-                                            <span class="required">*</span>
-                                        </label>
-                                        <div class="col-lg-3">
-                                            <select ng-if="up.uploadType!='Teacher Details' && up.uploadType!='Time Table' && up.uploadType!='' " class="form-control m-bot15"
-                                                placeholder="select" ng-model="up.sSelect" ng-options="s as s for s in up.cSelect.section">
-                                                <option value="" disabled selected>Section</option>
-                                            </select>
-                                        </div>
-                                    </div>
+
 
                                     <!-- <select class="btn col-lg-3" placeholder="select" ng-model="up.studSelect" ng-options="cs as cs.name + '-' + cs.studId for cs in studList">
                                                     <option value="" disabled selected>Student</option>

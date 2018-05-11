@@ -177,9 +177,10 @@ app.controller('upcomingEventController', function ($scope, $state, $window, htt
 
     $scope.conferenceStart = function(url, id){
         console.log("conferenceStart-->");
+        console.log("id: "+id+"url: "+url);
         localStorage.setItem("id", id);
         localStorage.setItem("schoolName", $scope.userData.schoolName);
-        console.log("id: "+id+"url: "+url);
+       
         $window.open(url, '_blank');
         console.log("<--conferenceStart");
     }

@@ -18,7 +18,8 @@
 
             <!--logo start-->
             <img ng-click="homeClick()" style="float:left;width: 63px;margin-top: 5px" src="././home/img/fav.png" />
-            <a ng-click="homeClick()" class="logo" style="text-shadow: 2px 2px 4px #000000;">VC<span class="lite">4ALL</span>
+            <a ng-click="homeClick()" class="logo" style="text-shadow: 2px 2px 4px #000000;">VC
+                <span class="lite">4ALL</span>
             </a>
             <!--logo end-->
 
@@ -61,17 +62,19 @@
                     <!-- user login dropdown start-->
                     <li class="dropdown">
                         <!-- <a data-toggle="dropdown" class="dropdown-toggle"> -->
-                            <!-- <span class="profile-ava">
+                        <!-- <span class="profile-ava">
                                 <img alt="" src="/dashboard_Lib/img/img.jpg">
                             </span> -->
-                      
-                            <span ng-if="hour <'12' && min<='59' && sec<='59' && hour >='0'" class="username">Good Morning&nbsp{{userName}}</span>
-                            <span ng-if="hour >='12' && hour < '17'" class="username">Good Afternoon&nbsp{{userName}}</span>
-                            <span ng-if="hour >='17' && min<='59' && sec<='59' && hour <='23'" class="username">Good Evening&nbsp{{userName}}</span>
-                            <br>
-                            <span class="username" style="color: white;">{{clock | date:' d , MMM yyyy h:mm a'}}</span>
 
-                            <!-- <b class="caret"></b> -->
+                        <span ng-if="hour <'12' && min<='59' && sec<='59' && hour >='0'" class="username">Good Morning&nbsp{{userName}}</span>
+                        <span ng-if="hour >='12' && hour < '17'" class="username">Good Afternoon&nbsp{{userName}}</span>
+                        <span ng-if="hour >='17' && min<='59' && sec<='59' && hour <='23'" class="username">Good Evening&nbsp{{userName}}</span>
+                        <br>
+                        
+                        <span class="username" style="color: white;">
+                            <i class="fa fa-sun"></i> {{clock | date:' d , MMM yyyy h:mm a'}}</span>
+
+                        <!-- <b class="caret"></b> -->
                         <!-- </a> -->
                         <!-- <ul class="dropdown-menu extended logout">
                             <div class="log-arrow-up"></div>
@@ -142,7 +145,7 @@
                         </ul>
                     </li>
                     <!-- ##### Start teacher/student Event  ##### -->
-                    
+
                     <!-- ##### Start teacher/student Acdemic  ##### -->
                     <li class="sub-menu" ng-if="loginType=='teacher' || loginType=='studParent'">
                         <a ng-click="eventClick('academic_subMenu')">

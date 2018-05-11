@@ -77,50 +77,53 @@
                                             <span class="required">*</span>
                                         </label>
                                         <div class="col-lg-3">
-                                            <select ng-if="up.uploadType=='Teacher Details' && up.teacherSelect!=''" class="form-control m-bot15" placeholder="select" ng-model="up.teacherSelect" ng-options="t as t.firstName +'-'+ t.schoolId for t in teacherList" >
+                                            <select ng-if="up.uploadType=='Teacher Details' && up.teacherSelect!=''" class="form-control m-bot15" placeholder="select"
+                                                ng-model="up.teacherSelect" ng-options="t as t.firstName +'-'+ t.schoolId for t in teacherList">
                                                 <option value="" disabled selected>Teacher</option>
                                             </select>
                                         </div>
                                     </div>
-                                    <div ng-if="up.uploadType=='Teacher Details'"  class="form-group ">
-                                            <section class="panel">
-                                                    <div class="form-group">
-                                                        <div class="panel-heading" style="background: #3a4a58">
-                                                            <i class="fa fa-user-circle"></i>
-                                                            <span style="color:white;">&nbspTEACHER</span>
-                                                        </div>
-                                                        <table class="table">
-                                                            <thead class="panel-heading">
-                                                                <tr>
-                                                                    <th>#</th>
-                                                                    <th>Teacher Id</th>
-                                                                    <th>Teacher Name</th>
-                                                                    <th>Email</th>
-                                                                    <th>Mobile Number</th>
-                                                                    <th>Status</th>
-                                                                    <th>Action</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td style="background-color:white;">1</td>
-                                                                    <td style="background-color:white;">{{up.teacherSelect.schoolId}}</td>
-                                                                    <td style="background-color:white;">{{up.teacherSelect.firstName + " " + up.teacherSelect.lastName}}
-                                                                        <!-- <a class="btn-info" ng-click="tableForTimes($index)">{{td.firstName + " " + td.lastName}}</a> -->
-                                                                    </td>
-                                                                    <td style="background-color:white;">{{up.teacherSelect.email}}</td>
-                                                                    <td style="background-color:white;">{{up.teacherSelect.mobileNum}}</td>
-                                                                    <td style=" background-color:white;" >{{up.teacherSelect.status}}</td>
-                                                                    
-                                                                    <td style="background-color:white;">
-                                                                        <button class="btn btn-warning" ng-click="viewUser(up.teacherSelect._id, 'teacher')">View</button>
-                                                                    </td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                </section>
-                                        </div>
+                                    <!--##### Start teacher data #####-->
+                                    <div ng-if="up.uploadType=='Teacher Details'" class="form-group ">
+                                        <section class="panel">
+                                            <div class="form-group">
+                                                <div class="panel-heading" style="background: #3a4a58">
+                                                    <i class="fa fa-user-circle"></i>
+                                                    <span style="color:white;">&nbspTEACHER</span>
+                                                </div>
+                                                <table class="table">
+                                                    <thead class="panel-heading">
+                                                        <tr>
+                                                            <th>#</th>
+                                                            <th>Teacher Id</th>
+                                                            <th>Teacher Name</th>
+                                                            <th>Email</th>
+                                                            <th>Mobile Number</th>
+                                                            <th>Status</th>
+                                                            <th>Action</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td style="background-color:white;">1</td>
+                                                            <td style="background-color:white;">{{up.teacherSelect.schoolId}}</td>
+                                                            <td style="background-color:white;">{{up.teacherSelect.firstName + " " + up.teacherSelect.lastName}}
+                                                                <!-- <a class="btn-info" ng-click="tableForTimes($index)">{{td.firstName + " " + td.lastName}}</a> -->
+                                                            </td>
+                                                            <td style="background-color:white;">{{up.teacherSelect.email}}</td>
+                                                            <td style="background-color:white;">{{up.teacherSelect.mobileNum}}</td>
+                                                            <td style=" background-color:white;">{{up.teacherSelect.status}}</td>
+
+                                                            <td style="background-color:white;">
+                                                                <button class="btn btn-warning" ng-click="viewUser(up.teacherSelect._id, 'teacher')">View</button>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </section>
+                                    </div>
+                                    <!--##### End teacher data #####-->
                                     <div class="form-group ">
                                         <label ng-if="up.uploadType=='Time Table'" class="control-label col-lg-3">Teacher
                                             <span class="required">*</span>
@@ -143,16 +146,64 @@
                                         </div>
                                     </div>
                                     <div class="form-group ">
-                                        <label ng-if="up.uploadType!='Teacher Details' && up.uploadType!='Time Table' && up.uploadType!=''" class=" control-label col-lg-3">Section
+                                        <label ng-if="up.uploadType=='Student Details' && up.uploadType!=''" class=" control-label col-lg-3">Section
                                             <span class="required">*</span>
                                         </label>
                                         <div class="col-lg-3">
-                                            <select ng-if="up.uploadType!='Teacher Details' && up.uploadType!='Time Table' && up.uploadType!='' " class="form-control m-bot15"
-                                                placeholder="select" ng-model="up.sSelect" ng-options="s as s for s in up.cSelect.section">
+                                            <select ng-if="up.uploadType=='Student Details' && up.uploadType!='' " class="form-control m-bot15" placeholder="select"
+                                                ng-model="up.subSelect" ng-options="s as s for s in up.cSelect.section" ng-change="getStudListForCS(up.cSelect, up.subSelect)">
                                                 <option value="" disabled selected>Section</option>
                                             </select>
                                         </div>
                                     </div>
+                                    <div class="form-group">
+                                        <label ng-if="up.uploadType=='Student Details' && up.uploadType!=''" class="control-label col-lg-3">Select Student
+                                            <span class="required">*</span>
+                                        </label>
+                                        <div class="col-lg-3">
+                                            <select class="btn" ng-if="up.uploadType=='Student Details'" placeholder="select" ng-model="sSelect" ng-options="cs as cs.name + '-' + cs.studId for cs in studList">
+                                                <option value="" disabled selected>Student</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <section ng-if="up.uploadType=='Student Details'" class="panel">
+                                        <div class="form-group">
+                                            <div class="panel-heading" style="background: #3a4a58;">
+                                                <i class="fa fa-user-circle"></i>
+                                                <span style="color:white;">&nbsp;STUDENT</span>
+                                            </div>
+                                            <table class="table">
+                                                <thead class="panel-heading">
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>Student Id</th>
+                                                        <th>Student Name</th>
+                                                        <th>Class</th>
+                                                        <th>Section</th>
+                                                        <th>Status</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="background-color:white;">{{$index+1}}.</td>
+                                                        <td style="background-color:white;">{{sSelect.schoolId}}</td>
+                                                        <td style="background-color:white;">
+                                                            {{sSelect.firstName + " " + sSelect.lastName}}
+                                                        </td>
+                                                        <td style="background-color:white;">{{sSelect.cs[0].class}}</td>
+                                                        <td style="background-color:white;">{{sSelect.cs[0].section}}</td>
+                                                        <td style=" background-color:white; color:red;">{{sSelect.cs[0].status}}</td>
+
+                                                        <td style="background-color:white;">
+                                                            <button class="btn btn-warning" ng-click="viewUser(sSelect._id,'studParent')">View</button>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </section>
+
 
                                     <!-- <select class="btn col-lg-3" placeholder="select" ng-model="up.studSelect" ng-options="cs as cs.name + '-' + cs.studId for cs in studList">
                                                     <option value="" disabled selected>Student</option>

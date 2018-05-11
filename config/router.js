@@ -36,7 +36,7 @@ module.exports = function (app) {
     app.post('/vc/uploadClassFile/:schoolName', adminAction.uploadClassFile);
     app.post('/vc/uploadPeriodsFile/:schoolName', adminAction.uploadPeriodsFile);
     app.post('/vc/uploadStudentMaster/:schoolName/:clas/:section', adminAction.uploadStudentMaster);
-    
+    app.post('/vc/updateStudentMaster/:schoolName/:id', adminAction.updateStudentMaster);
     app.post('/vc/uploadTeacherMaster/:schoolName', adminAction.uploadTeacherMaster);
     app.post('/vc/updateTeacherMaster/:schoolName/:id', adminAction.updateTeacherMaster);
     app.post('/vc/uploadTeacher_timeTable/:schoolName/:id', adminAction.uploadTeacher_timeTable);

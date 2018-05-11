@@ -78,7 +78,7 @@ module.exports.getAllTeacherList = function (req, res) {
         }
         console.log("queryData: " + JSON.stringify(queryData));
         user.find(queryData).toArray(function (err, teacherData) {
-           // console.log("teacherData: " + JSON.stringify(teacherData));
+            // console.log("teacherData: " + JSON.stringify(teacherData));
             if (err) {
                 responseData = {
                     "status": false,
@@ -400,11 +400,8 @@ module.exports.uploadTeacher_timeTable = function (req, res) {
 module.exports.uploadPeriodsFile = function (req, res) {
     console.log("uploadClassFile-->");
     var responseData;
-
-
     var consolidateResult = [];
     schoolName = req.params.schoolName;
-
     console.log("req.body.files: " + req.files.img);
     if (!req.files)
         return res.status(400).send('No files were uploaded.');
@@ -1035,7 +1032,74 @@ module.exports.uploadStudentMaster = function (req, res) {
         });
     console.log("<--uploadStudentMaster");
 }
+module.exports.updateStudentMaster = function (req, res) {
+    console.log("updateStudentMaster-->");
+    console.log("uploadStudentMaster-->");
+    var responseData;
+    var marker;
+    var objJson = [];
+    // var cs = [{"class":req.params.class,"section":req.params.section}];
+    if (!req.files)
+        return res.status(400).send('No files were uploaded.');
 
+    var studentDataFile = req.files.img;
+    console.log("studentDataFile: " + studentDataFile);
+    var parser = csv.fromString(studentDataFile.data.toString(), {
+        headers: true,
+        ignoreEmpty: true
+    }).on("data", function (data) {
+        console.log("data: " + JSON.stringify(data));
+        var csData = [{ "class": req.params.clas, "section": req.params.section }];
+
+        var userData = {
+            schoolName: req.params.schoolName,
+            schoolId: data.StudentID,
+            firstName: data.FirstName,
+            lastName: data.LastName,
+            parentName: data.FatherName,
+            parentEmail: data.FatherEmailId,
+            mobileNum: data.FatherPhoneNumber,
+            motherName: data.MotherName,
+            motherEmail: data.MotherEmailid,
+            motherNum: data.MotherPhoneNumber,
+            cs: csData,
+            dob: data.DOB,
+            doj: data.DOJ
+        }
+        objJson.push(userData);
+
+        console.log("userData: " + JSON.stringify(userData));
+    })
+        .on("end", function () {
+            console.log("end marker: " + marker);
+            console.log("objJson: " + JSON.stringify(objJson));
+            var queryData = {
+                "_id": req.params.id,
+                "schoolName": req.params.schoolName,
+            }
+            console.log("queryData: " + JSON.stringify(queryData));
+            stud.update(queryData, { $set: { $each: objJson } }, function (err, data) {
+                console.log("data: " + JSON.stringify(data));
+                if (err) {
+                    responseData = {
+                        status: false,
+                        message: "Failed to Insert",
+                        data: data
+                    };
+                    res.status(400).send(responseData);
+                } else {
+                    responseData = {
+                        status: true,
+                        errorCode: 200,
+                        message: "Updated Successfull",
+                        data: data
+                    };
+                    res.status(200).send(responseData);
+                }
+            });
+        });
+    console.log("<--updateStudentMaster");
+}
 module.exports.uploadTeacherMaster = function (req, res) {
     console.log("uploadStudentMaster-->");
     var responseData;
@@ -1163,7 +1227,7 @@ module.exports.updateTeacherMaster = function (req, res) {
                 "schoolName": req.params.schoolName,
             }
             console.log("queryData: " + JSON.stringify(queryData));
-            user.update(queryData, { $set: {$each:objJson} }, function (err, data) {
+            user.update(queryData, { $set: { $each: objJson } }, function (err, data) {
                 console.log("data: " + JSON.stringify(data));
                 if (err) {
                     responseData = {

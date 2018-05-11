@@ -1,4 +1,4 @@
-app.controller('attendanceViewWithConfId_Ctl', function ($scope, $window, httpFactory, $compile, $uibModal,sessionAuthFactory, moment, calendarConfig) {
+app.controller('attendanceViewWithConfId_Ctl', function ($scope, $state $window, httpFactory, $compile, $uibModal,sessionAuthFactory, moment, calendarConfig) {
     console.log("markViewCtl==>");
     var id = $state.params.id;
     var schoolName = $state.params.schoolName;

@@ -377,7 +377,7 @@ function markView() {
   return '/markView';
 }
 function automationResultView() {
-  return '/automationResultView/:schoolName/:id';
+  return '/automationResultView/:id';
 }
 
 

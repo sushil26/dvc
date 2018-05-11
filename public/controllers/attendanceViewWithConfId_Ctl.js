@@ -1,4 +1,4 @@
-app.controller('attendanceViewWithConfId_Ctl', function ($scope, $state, $window, $uibModal, httpFactory, $compile, sessionAuthFactory) {
+app.controller('attendanceViewWithConfId_Ctl', function ($scope, $state, $window, httpFactory, $compile, $uibModal,sessionAuthFactory, moment, calendarConfig) {
     console.log("markViewCtl==>");
     var id = $state.params.id;
     var schoolName = $state.params.schoolName;
@@ -61,5 +61,22 @@ app.controller('attendanceViewWithConfId_Ctl', function ($scope, $state, $window
     }
 
     $scope.getAttendance(id);
+
+    var vm = this;
+
+    $scope.calendarView = 'month';
+    $scope.viewDate = moment().startOf('day').toDate();
+    var originalFormat = calendarConfig.dateFormats.hour;
+    calendarConfig.dateFormats.hour = 'HH:mm';
+
+    var actions = [{
+        // label: '<i class=\'glyphicon glyphicon-pencil\'></i>',
+        label: 'Re-Schedule',
+        onClick: function (args) {
+            //alert("Edit Event Comming Soon");
+        }
+    }]
+    $scope.events = [];
+    $scope.cellIsOpen = true;
 
 })

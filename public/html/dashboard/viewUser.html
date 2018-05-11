@@ -234,7 +234,12 @@
                                     </tbody>
                                 </table>
                             </div>
-
+                            <div class="bio-row" ng-if="loginType!='vc4allAdmin'">
+                                    <p>
+                                        <span>
+                                            <b style="color:teal;">Status</b>
+                                        </span>: {{userDetail[0].status}} </p>
+                                </div>
                             <!-- <div class="bio-row" ng-repeat="css in userDetail[0].css">
                                 <p>
                                     <span>

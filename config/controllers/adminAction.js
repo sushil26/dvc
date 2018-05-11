@@ -1034,7 +1034,7 @@ module.exports.uploadStudentMaster = function (req, res) {
 }
 module.exports.updateStudentMaster = function (req, res) {
     console.log("updateStudentMaster-->");
-    console.log("uploadStudentMaster-->");
+
     var responseData;
     var marker;
     var objJson = [];
@@ -1049,11 +1049,10 @@ module.exports.updateStudentMaster = function (req, res) {
         ignoreEmpty: true
     }).on("data", function (data) {
         console.log("data: " + JSON.stringify(data));
-        var csData = [{ "class": req.params.clas, "section": req.params.section }];
+        //var csData = [{ "class": req.params.clas, "section": req.params.section }];
 
         var userData = {
             schoolName: req.params.schoolName,
-            schoolId: data.StudentID,
             firstName: data.FirstName,
             lastName: data.LastName,
             parentName: data.FatherName,
@@ -1062,7 +1061,6 @@ module.exports.updateStudentMaster = function (req, res) {
             motherName: data.MotherName,
             motherEmail: data.MotherEmailid,
             motherNum: data.MotherPhoneNumber,
-            cs: csData,
             dob: data.DOB,
             doj: data.DOJ
         }
@@ -1071,7 +1069,7 @@ module.exports.updateStudentMaster = function (req, res) {
         console.log("userData: " + JSON.stringify(userData));
     })
         .on("end", function () {
-            console.log("end marker: " + marker);
+            console.log("end marker: ");
             console.log("objJson: " + JSON.stringify(objJson));
             var queryData = {
                 "_id": req.params.id,

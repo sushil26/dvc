@@ -1079,7 +1079,7 @@ module.exports.updateStudentMaster = function (req, res) {
             var id ={ _id: ObjectId(req.params.id)}
             console.log("id: "+JSON.stringify(id));
             console.log("queryData: " + JSON.stringify(queryData));
-            stud.update(queryData, { $set: { $each: objJson } }, function (err, data) {
+            stud.update({_id: ObjectId(req.params.id)}, { $set: { $each: objJson } }, function (err, data) {
                 console.log("data: " + JSON.stringify(data));
                 if (err) {
                     responseData = {

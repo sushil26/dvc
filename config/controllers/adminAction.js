@@ -74,7 +74,7 @@ module.exports.getAllTeacherList = function (req, res) {
     if (general.emptyCheck(req.params.schoolName)) {
         var queryData = {
             "schoolName": req.params.schoolName,
-            "loginType": teacher
+            "loginType": "teacher"
         }
         user.find(queryData).toArray(function (err, teacherData) {
             //console.log("teacherData: " + JSON.stringify(teacherData));

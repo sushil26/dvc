@@ -148,33 +148,33 @@ app.controller('reportsUpdateCtl', function ($scope, $window, $state, httpFactor
     console.log("<--uploadFile");
   }
 
-  $scope.getAllClass = function () {
-    console.log("getAllClass-->");
+  // $scope.getAllClass = function () {
+  //   console.log("getAllClass-->");
 
-    var api = "https://norecruits.com/vc/getAllClass";
-    console.log("api: " + api);
-    httpFactory.get(api).then(function (data) {
-      var checkStatus = httpFactory.dataValidation(data);
-      console.log("data--" + JSON.stringify(data.data));
-      if (checkStatus) {
-        $scope.csList = data.data.data;
-        console.log("csList: " + JSON.stringify($scope.csList));
-        // for (var x = 0; x < $scope.studentList.length; x++) {
-        //   $scope.studList.push({ "id": $scope.studentList[x]._id, "name": $scope.studentList[x].studName, "studId": $scope.studentList[x].studId });
+  //   var api = "https://norecruits.com/vc/getAllClass";
+  //   console.log("api: " + api);
+  //   httpFactory.get(api).then(function (data) {
+  //     var checkStatus = httpFactory.dataValidation(data);
+  //     console.log("data--" + JSON.stringify(data.data));
+  //     if (checkStatus) {
+  //       $scope.csList = data.data.data;
+  //       console.log("csList: " + JSON.stringify($scope.csList));
+  //       // for (var x = 0; x < $scope.studentList.length; x++) {
+  //       //   $scope.studList.push({ "id": $scope.studentList[x]._id, "name": $scope.studentList[x].studName, "studId": $scope.studentList[x].studId });
 
-        // }
-        //  console.log(" $scope.studList.length: " + $scope.studList.length);
-        //   $scope.css = $scope.teacherData[0].css;
-        //   console.log("$scope.css: " + JSON.stringify($scope.css));
-      }
-      else {
-        console.log("sorry");
-      }
-    })
-    console.log("<--getAllClass");
-  }
+  //       // }
+  //       //  console.log(" $scope.studList.length: " + $scope.studList.length);
+  //       //   $scope.css = $scope.teacherData[0].css;
+  //       //   console.log("$scope.css: " + JSON.stringify($scope.css));
+  //     }
+  //     else {
+  //       console.log("sorry");
+  //     }
+  //   })
+  //   console.log("<--getAllClass");
+  // }
 
-  $scope.getAllClass();
+  // $scope.getAllClass();
   $scope.getStudListForCS = function (css) {
 
     console.log("getStudListForCS-->");

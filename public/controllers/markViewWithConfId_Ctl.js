@@ -1,8 +1,9 @@
-app.controller('markViewWithConfId_Ctl', function ($scope, $window, $uibModal, httpFactory, $compile, sessionAuthFactory) {
+app.controller('markViewWithConfId_Ctl', function ($scope, $state, $window, $uibModal, httpFactory, $compile, sessionAuthFactory) {
     console.log("markViewCtl==>");
-    
-    console.log("");
-   
+    var id = $state.params.id;
+    var schoolName = $state.params.schoolName;
+    console.log("studSchoolId: "+studSchoolId+" schoolName: "+schoolName);
+
     $scope.getMarks = function (id) {
         console.log("getMarks-->");
         var api = "https://norecruits.com/vc/getStudentAttendance" + "/" + id;
@@ -23,7 +24,7 @@ app.controller('markViewWithConfId_Ctl', function ($scope, $window, $uibModal, h
         })
         console.log("<--getMarks");
     }
-       
+
     $scope.getMarks(id);
-   
+
 })

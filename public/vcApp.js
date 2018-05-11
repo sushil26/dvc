@@ -100,7 +100,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
           }
         }
       }
-     
+
     })
     .state('dashboard.eventReschedule', {
       url: dashboardEventReschedule(),
@@ -117,8 +117,6 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         }
       }
     })
-
-
     .state('dashboard.conference', {
       url: dashboardConference(),
       templateUrl: '/html/dashboard/conference.html',
@@ -219,6 +217,11 @@ app.config(function ($stateProvider, $urlRouterProvider) {
           }
         }
       }
+    })
+    .state('dashboard.automationResultView', {
+      url: automationResultView(),
+      templateUrl: '/html/dashboard/markViewWithConfId.html',
+      controller: 'markViewWithConfId_Ctl'
     })
     .state('dashboard.adminCreate', {
       url: adminCreate(),
@@ -370,9 +373,11 @@ function logout() {
 function attendanceView() {
   return '/attendanceView';
 }
-function markView()
-{
+function markView() {
   return '/markView';
+}
+function automationResultView() {
+  return '/automationResultView/:schoolName/:id';
 }
 
 

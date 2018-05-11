@@ -542,7 +542,8 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
       var receiverName = teacherName;
       var receiverId = $scope.teacherPersonalData[0].schoolId;
       var receiverMN = $scope.teacherPersonalData[0].mobileNum;
-      $scope.eventSend(reason, senderName, studId, email, senderMN, receiverName, receiverId, receiverMN, stud_id, stud_cs, stud_name);
+      var studUserId = $scope.userData.id;
+      $scope.eventSend(reason, senderName, studId, studUserId, email, senderMN, receiverName, receiverId, receiverMN, stud_id, stud_cs, stud_name);
     }
     if ($scope.userLoginType == 'teacher') {
       console.log("$scope.studentPersonalData[0]: " + JSON.stringify($scope.studentPersonalData[0]));
@@ -559,15 +560,16 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
       var stud_name = studName;
       var stud_cs = $scope.studentPersonalData[0].cs;
       var stud_id = $scope.studentPersonalData[0].schoolId;
+      var studUserId = $scope.studentPersonalData[0]._id;
       console.log("$scope.studentPersonalData[0]: " + $scope.studentPersonalData[0].schoolId);
       console.log("stud_id: " + stud_id);
-      $scope.eventSend(reason, teacherName, teacherId, email, senderMN, receiverName, receiverId, receiverMN, stud_id, stud_cs, stud_name);
+      $scope.eventSend(reason, teacherName, teacherId, studUserId, email, senderMN, receiverName, receiverId, receiverMN, stud_id, stud_cs, stud_name);
     }
 
 
   }
 
-  $scope.eventSend = function (res, name, id, email, senderMN, receiverName, receiverId, receiverMN, stud_id, stud_cs, stud_name) {
+  $scope.eventSend = function (res, name, id, studUserId, email, senderMN, receiverName, receiverId, receiverMN, stud_id, stud_cs, stud_name) {
     console.log("eventSend-->");
     var SIGNALING_SERVER = "https://norecruits.com";
     //var SIGNALING_SERVER = "http://localhost:5000";
@@ -594,6 +596,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
           "senderLoginType": $scope.userData.loginType,
           "title": $scope.title,
           "reason": res,
+          "studUserId": studUserId
           "senderName": name,
           "senderId": id,
           "senderMN": senderMN,

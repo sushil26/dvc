@@ -596,7 +596,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
           "senderLoginType": $scope.userData.loginType,
           "title": $scope.title,
           "reason": res,
-          "studUserId": studUserId
+          "studUserId": studUserId,
           "senderName": name,
           "senderId": id,
           "senderMN": senderMN,

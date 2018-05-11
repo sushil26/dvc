@@ -160,11 +160,11 @@ app.controller('reportsUpdateCtl', function ($scope, $window, $state, httpFactor
   $scope.getStudListForCS = function (clas, section) {
 
     console.log("getStudListForCS-->");
-   console.log("clas: "+JSON.stringify(clas));
-    console.log("class" + clas+" section: "+section);
+  
+    console.log("class" + clas.class+" section: "+section);
     // console.log("JSON.css" + JSON.stringify(css));
-    var clas = css.class;
-    var section = css.section;
+    var clas = clas.class;
+    var section = section;
     $scope.studList = [];
 
     var api = "https://norecruits.com/vc/getStudListForCS" + "/" + schoolName + "/" + clas + "/" + section;

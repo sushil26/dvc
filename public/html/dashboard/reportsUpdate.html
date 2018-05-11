@@ -151,7 +151,7 @@
                                         </label>
                                         <div class="col-lg-3">
                                             <select ng-if="up.uploadType=='Student Details' && up.uploadType!='' " class="form-control m-bot15" placeholder="select"
-                                                ng-model="up.sSelect" ng-options="s as s for s in up.cSelect.section" ng-change="getStudListForCS(up.cSelect, up.sSelect)">
+                                                ng-model="up.subSelect" ng-options="s as s for s in up.cSelect.section" ng-change="getStudListForCS(up.cSelect, up.subSelect)">
                                                 <option value="" disabled selected>Section</option>
                                             </select>
                                         </div>

@@ -167,7 +167,7 @@ httpFactory.get(api).then(function (data) {
     //console.log("data--" + JSON.stringify(data.data));
     if (checkStatus) {
         $scope.studentDetail = data.data.data;
-        console.log(" $scope.studentDetail: "+ $scope.studentDetail);
+        console.log(" $scope.studentDetail: "+  JSON.stringify($scope.studentDetail));
     }
     else{
 

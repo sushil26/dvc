@@ -133,7 +133,7 @@ h1, h2, h3, h4, h5, h6 {
 
 #header #logo {
   float: left;
-  margin-top: -15px;
+  margin-top: -25px;
   
 }
 
@@ -142,7 +142,7 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0;
 
   line-height: 1;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: 3px;
   text-transform: uppercase;
 }

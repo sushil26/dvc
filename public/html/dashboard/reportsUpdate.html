@@ -161,7 +161,7 @@
                                             <span class="required">*</span>
                                         </label>
                                         <div class="col-lg-3">
-                                            <select class="btn" ng-if="up.uploadType=='Student Details'" placeholder="select" ng-model="sSelect" ng-options="cs as cs.name + '-' + cs.studId for cs in studList" ng-change="studentSelect(sSelect)">
+                                            <select class="btn" ng-if="up.uploadType=='Student Details'" placeholder="select" ng-model="sSelect" ng-options="cs as cs.name + '-' + cs.studId for cs in studList" ng-change="studentDetail(sSelect)">
                                                 <option value="" disabled selected >Student</option>
                                             </select>
                                         </div>
@@ -187,16 +187,16 @@
                                                 <tbody>
                                                     <tr>
                                                         <td style="background-color:white;">{{$index+1}}.</td>
-                                                        <td style="background-color:white;">{{studList.schoolId}}</td>
+                                                        <td style="background-color:white;">{{studentDetail.schoolId}}</td>
                                                         <td style="background-color:white;">
-                                                            {{studList.firstName + " " + studList.lastName}}
+                                                            {{studentDetail.firstName + " " + studentDetail.lastName}}
                                                         </td>
-                                                        <td style="background-color:white;">{{studList.cs[0].class}}</td>
-                                                        <td style="background-color:white;">{{studList.cs[0].section}}</td>
-                                                        <td style=" background-color:white; color:red;">{{studList.cs[0].status}}</td>
+                                                        <td style="background-color:white;">{{studentDetail.cs[0].class}}</td>
+                                                        <td style="background-color:white;">{{studentDetail.cs[0].section}}</td>
+                                                        <td style=" background-color:white; color:red;">{{studentDetail.cs[0].status}}</td>
 
                                                         <td style="background-color:white;">
-                                                            <button class="btn btn-warning" ng-click="viewUser(studList._id,'studParent')">View</button>
+                                                            <button class="btn btn-warning" ng-click="viewUser(studentDetail._id,'studParent')">View</button>
                                                         </td>
                                                     </tr>
                                                 </tbody>

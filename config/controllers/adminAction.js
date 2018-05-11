@@ -1163,7 +1163,7 @@ module.exports.updateTeacherMaster = function (req, res) {
                 "schoolName": req.params.schoolName,
             }
             console.log("queryData: " + JSON.stringify(queryData));
-            user.update(queryData, { $set: objJson }, function (err, data) {
+            user.update(queryData, { $set: {$each:objJson} }, function (err, data) {
                 console.log("data: " + JSON.stringify(data));
                 if (err) {
                     responseData = {

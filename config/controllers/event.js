@@ -48,6 +48,7 @@ module.exports.eventSend = function (req, res) {
             "senderLoginType": req.body.senderLoginType,
             "title": req.body.title,
             "reason": req.body.reason,
+            "studUserId": req.body.studUserId,
             "senderName": req.body.senderName,
             "senderId": req.body.senderId,
             "senderMN": req.body.senderMN,

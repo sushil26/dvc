@@ -157,7 +157,7 @@ app.controller('reportsUpdateCtl', function ($scope, $window, $state, httpFactor
     })
     console.log("<--updateTeacher to Master");
   }
-  $scope.studentDetail = function (s) {
+  $scope.studentDetailById = function (s) {
     console.log("studentSelect-->");
     console.log("s: " + JSON.stringify(s));
     var id = s.id;

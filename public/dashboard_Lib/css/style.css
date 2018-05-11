@@ -860,6 +860,7 @@ ul.sidebar-menu li.active a i {
 }
 
 a.logo {
+  letter-spacing: 1px;
   font-size: 22px;
 
   font-weight: 500;

@@ -1111,8 +1111,8 @@ module.exports.uploadTeacherMaster = function (req, res) {
     console.log("<--uploadStudentMaster");
 };
 
-module.exports.updateStudentMaster = function (req, res) {
-    console.log("updateStudentMaster-->");
+module.exports.updateTeacherMaster = function (req, res) {
+    console.log("updateTeacherMaster-->");
     var responseData;
     var marker;
     var css = [];
@@ -1185,5 +1185,5 @@ module.exports.updateStudentMaster = function (req, res) {
             });
         });
 
-    console.log("<--updateStudentMaster");
+    console.log("<--updateTeacherMaster");
 }

@@ -99,7 +99,7 @@ app.controller('reportsUpdateCtl', function ($scope, $window, $state, httpFactor
       "file": file,
     }
     if (uploadType == "Teacher Details") {
-      var api = "https://norecruits.com/vc/updateStudentMaster/"+schoolName+"/"+id;
+      var api = "https://norecruits.com/vc/teacherUpdateMaster/"+schoolName+"/"+id;
     }
     console.log("api: "+api);
     httpFactory.csvUpload(obj, api).then(function (data) {

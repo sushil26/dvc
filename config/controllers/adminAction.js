@@ -68,6 +68,49 @@ module.exports.updateSchoolStatus = function (req, res) {
     console.log("<--updateSchoolStatus");
 };
 
+module.exports.getAllTeacherList = function (req, res) {
+    console.log("getAllTeacherList-->");
+    var responseData;
+    if (general.emptyCheck(req.params.schoolName)) {
+        var queryData = {
+            "schoolName": req.params.schoolName,
+            "loginType": "teacher"
+        }
+        console.log("queryData: " + JSON.stringify(queryData));
+        user.find(queryData).toArray(function (err, teacherData) {
+            console.log("teacherData: " + JSON.stringify(teacherData));
+            if (err) {
+                responseData = {
+                    "status": false,
+                    "message": "Failed to Register",
+                    "data": teacherData
+                }
+                res.status(400).send(responseData);
+            }
+            else {
+                responseData = {
+                    "status": true,
+                    "errorCode": 200,
+                    "message": "Data collected successfully",
+                    "data": teacherData
+                }
+                res.status(200).send(responseData);
+            }
+        })
+
+    }
+    else {
+        console.log("Epty value found");
+        responseData = {
+            "status": false,
+            "message": "empty value found",
+            "data": userData
+        }
+        res.status(400).send(responseData);
+    }
+    console.log("<--getAllTeacherList");
+}
+
 module.exports.getAllSchool = function (req, res) {
     console.log("getAllAdmin-->");
     var responseData;
@@ -585,7 +628,7 @@ module.exports.uploadAttendance = function (req, res) {
             module.exports.dailyData(data, function (err) {
                 console.log("savedatInitiate");
                 // TODO: handle error
-             
+
                 parser.resume();
             });
         }
@@ -595,19 +638,19 @@ module.exports.uploadAttendance = function (req, res) {
                 console.log("savedatInitiate");
                 // TODO: handle error
                 console.log("unknownData: " + JSON.stringify(unknownData));
-                console.log("expectedMessage: "+expectedMessage);
+                console.log("expectedMessage: " + expectedMessage);
                 if (expectedMessage) {
-                   var responseData = {
+                    var responseData = {
                         status: false,
                         note: "upload not satisfied",
                         message: expectedMessage
                     };
                     res.status(400).send(responseData);
                 }
-                else{
+                else {
                     parser.resume();
                 }
-               
+
             });
         }
 
@@ -764,7 +807,7 @@ module.exports.monthlyData = function (data, callback) {
         }
         else {
 
-            expectedMessage= "Failled to upload! Expecting 31 days attendance status for " + month;
+            expectedMessage = "Failled to upload! Expecting 31 days attendance status for " + month;
             if (callback) callback();
         }
     }
@@ -782,7 +825,7 @@ module.exports.monthlyData = function (data, callback) {
         }
         else {
 
-            expectedMessage= "Failled to upload! Expecting 28 days attendance status for " + month;
+            expectedMessage = "Failled to upload! Expecting 28 days attendance status for " + month;
             if (callback) callback();
         }
     }
@@ -810,7 +853,7 @@ module.exports.monthlyData = function (data, callback) {
         }
         else {
 
-            expectedMessage= "Failled to upload! Expecting 30 days attendance status for " + month;
+            expectedMessage = "Failled to upload! Expecting 30 days attendance status for " + month;
             if (callback) callback();
         }
     }
@@ -884,138 +927,6 @@ module.exports.monthlyData = function (data, callback) {
         }
     })
 }
-
-
-// /* ### Start update monthly attendance status  ### */
-// else {
-//     var arrayLength
-//     console.log("monthly started-->");
-//     console.log("req.params.month: " + req.params.month);
-//     var marker;
-//     var studIdForFindQry = {
-//         "studId": data.StudentID,
-//         "attendance.month": req.params.month
-//     }
-
-//     if (req.params.month == "Jan") {
-//         console.log("data: " + JSON.stringify(data));
-//         for (var x = 1; x <= 31; x++) {
-//             console.log("x: " + x);
-//             monthAtt.push({ "date": x, "status": data[x] });
-
-//             if (x == 31) {
-//                 console.log("*monthAtt: " + JSON.stringify(monthAtt));
-//                 stud.find({ "studId": data.StudentID, "attendance.month": "Jan" }).toArray(function (err, findData) {
-//                     console.log("1st query findData: " + JSON.stringify(findData));
-//                     arrayLength = findData[0].attendance[0].dateAttendance.length;
-//                     if (err) {
-//                         marker == true;
-//                     }
-//                     else {
-
-//                         if (arrayLength == 0) {
-//                             console.log("second query started");
-//                             console.log("findData.length: " + findData.length);
-//                             stud.update(studIdForFindQry, { $push: { "attendance.$.dateAttendance": monthAtt } }), function (err, findData) {
-//                                 console.log("update month started: " + JSON.stringify(data));
-
-//                                 if (err) {
-//                                     marker == true;
-//                                 }
-//                                 else {
-//                                     marker == true;
-
-//                                 }
-//                             }
-//                         }
-//                         else {
-
-//                             if (marker == false) {
-//                                 responseData = {
-//                                     status: false,
-//                                     message: "Sorry! you already updated for this month"
-//                                 };
-//                                 res.status(400).send(responseData);
-//                             }
-//                         }
-//                     }
-//                 })
-//             }
-//         }
-
-
-
-//     }
-
-// }
-// /* ### End update monthly attendance status  ### */
-
-// module.exports.uploadMark = function (req, res) {
-//     console.log("MarkSave-->");
-//     var responseData;
-//     var marker; /* ### Note: marker is used for identify the status of update query ###*/
-//     console.log("req.files: " + req.files.img);
-//     if (!req.files)
-//         return res.status(400).send('No files were uploaded.');
-//     var studentDataFile = req.files.img;
-//     console.log("studentDataFile: " + studentDataFile);
-
-//     var parser = csv.fromString(studentDataFile.data.toString(), {
-//         headers: true,
-//         ignoreEmpty: true
-//     }).on("data", function (data) {
-//         console.log("data: " + JSON.stringify(data));
-//         parser.pause();
-
-//         var studId = {
-//             "studId": data.studId
-//         }
-//         var testType = [{
-//             "testType": data.testType,
-//             "subjectMarks":
-//                 {
-//                     "English": data.English,
-//                     "Physics": data.Physics,
-//                     "Math": data.Math
-//                 }
-//         }]
-//         console.log("testType: " + JSON.stringify(testType));
-//         stud.findOneAndUpdate({ "studId": data.studId }, { $set: { "testType": testType } }, { upsert: false, multi: true, returnNewDocument: true }, function (err, studentList) {
-
-//             console.log("studentList:" + JSON.stringify(studentList));
-//             if (err) {
-//                 console.log("err");
-//                 marker = false;
-//                 // process.nextTick(callback);
-//             }
-//             else {
-//                 console.log("no err");
-//                 marker = true;
-//                 // process.nextTick(callback);
-//             }
-//             parser.resume();
-//         })
-//     })
-//         .on("end", function () {
-//             console.log("end marker: " + marker);
-//             if (marker == false) {
-//                 responseData = {
-//                     status: false,
-//                     message: "Failed to get Data"
-//                 };
-//                 res.status(400).send(responseData);
-//             }
-//             else if (marker == true) {
-//                 responseData = {
-//                     status: true,
-//                     message: "Successfull updated data"
-//                 };
-
-//                 res.status(200).send(responseData);
-//             }
-//         });
-//     console.log("<--MarkSave");
-// };
 
 module.exports.uploadStudentMaster = function (req, res) {
     console.log("uploadStudentMaster-->");
@@ -1200,39 +1111,79 @@ module.exports.uploadTeacherMaster = function (req, res) {
     console.log("<--uploadStudentMaster");
 };
 
+module.exports.updateStudentMaster = function (req, res) {
+    console.log("updateStudentMaster-->");
+    var responseData;
+    var marker;
+    var css = [];
+    var objJson = [];
+    // var cs = [{"class":req.params.class,"section":req.params.section}];
+    if (!req.files)
+        return res.status(400).send('No files were uploaded.');
 
-// module.exports.updateData = function (data, callback) {
-//     console.log('updateData-->');
+    var studentDataFile = req.files.img;
+    console.log("studentDataFile: " + studentDataFile);
+    var parser = csv.fromString(studentDataFile.data.toString(), {
+        headers: true,
+        ignoreEmpty: true
+    }).on("data", function (data) {
+        console.log("data: " + JSON.stringify(data));
+        // var csData = [{ "class": req.params.class, "section": req.params.section }];
 
-//     var studId = {
-//         "studId": data.studId
-//     }
-//     var testType = [{
-//         "testType": data.testType,
-//         "subjectMarks":
-//             {
-//                 "English": data.English,
-//                 "Physics": data.Physics,
-//                 "Math": data.Math
-//             }
+        var userData = {
+            schoolId: data.TeacherID,
+            firstName: data.FirstName,
+            lastName: data.LastName,
+            email: data.Email,
+            mobileNum: data.PhoneNumber,
+            dob: data.DOB,
+            doj: data.DOJ,
+            pswd: "abc",
+            css: [],
+            timeTable: []
+        }
+        var cssParts = data.ClassSectionSubject.split(',');
+        console.log("cssParts: " + JSON.stringify(cssParts));
+        for (var x = 0; x < cssParts.length; x++) {
+            if (cssParts[x] != "") {
+                console.log("cssParts[x]: " + cssParts[x]);
+                var trimed = cssParts[x].trim();
+                console.log("cssSeparate: " + trimed);
+                var cssSeparate = trimed.split('-');
+                console.log("cssSeparate: " + JSON.stringify(cssSeparate));
+                userData.css.push({ "class": cssSeparate[0], "section": cssSeparate[1], "subject": cssSeparate[2] });
+            }
+        }
+        console.log("userData: " + JSON.stringify(userData));
+        objJson.push(userData);
+    })
+        .on("end", function () {
+            console.log("end marker: " + marker);
+            console.log("objJson: " + JSON.stringify(objJson));
+            var queryData = {
+                "_id": req.params.id,
+                "schoolName": req.params.schoolName,
+            }
+            user.update(queryData, { $set: {objJson} }, function (err, data) {
+                console.log("data: " + JSON.stringify(data));
+                if (err) {
+                    responseData = {
+                        status: false,
+                        message: "Failed to Insert",
+                        data: data
+                    };
+                    res.status(400).send(responseData);
+                } else {
+                    responseData = {
+                        status: true,
+                        errorCode: 200,
+                        message: "Updated Successfull",
+                        data: data
+                    };
+                    res.status(200).send(responseData);
+                }
+            });
+        });
 
-//     }]
-//     console.log("testType: " + JSON.stringify(testType));
-//     stud.findOneAndUpdate({ "studId": data.studId }, { $set: { "testType": testType } }, { upsert: false, multi: true, returnNewDocument: true }, function (err, studentList) {
-
-//         console.log("studentList:" + JSON.stringify(studentList));
-//         if (err) {
-//             console.log("err");
-//             marker = false;
-//             process.nextTick(callback);
-//         }
-//         else {
-//             console.log("no err");
-//             marker = true;
-//             process.nextTick(callback);
-//         }
-//     })
-
-//     console.log('<--updateData');
-
-// }
+    console.log("<--updateStudentMaster");
+}

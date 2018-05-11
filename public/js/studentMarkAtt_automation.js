@@ -3,7 +3,11 @@ var schoolName = localStorage.getItem("schoolName");
 console.log("studSchoolId: "+id+" schoolName: "+schoolName);
 
 function attendance(){
-    window.location.href = "https://norecruits.com/#!dashboard/attendanceView/"+id;    
+    window.open(
+        "https://norecruits.com/#!dashboard/attendanceView/"+id,
+        '_blank' // <- This is what makes it open in a new window.
+      );
+    
 }
 function result(){
     window.open(

@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="/css/chatZone.css" />
 
     <script src="/js/clientmain.js"></script>
-    <script src="https://cdn.webrtc-experiment.com/MediaStreamRecorder.js"></script>
+    <!-- <script src="https://cdn.webrtc-experiment.com/MediaStreamRecorder.js"></script> -->
     <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
     <script src="/home/lib/jquery/jquery-migrate.min.js"></script>
     <script src="/js/studentMarkAtt_automation.js"></script>
@@ -587,28 +587,7 @@
             z-index: 1;
         }
     </style>
-    <script> var container = document.getElementById('container');
-        var index = 1;
-
-        // below function via: http://goo.gl/B3ae8c
-        function bytesToSize(bytes) {
-            var k = 1000;
-            var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
-            if (bytes === 0) return '0 Bytes';
-            var i = parseInt(Math.floor(Math.log(bytes) / Math.log(k)), 10);
-            return (bytes / Math.pow(k, i)).toPrecision(3) + ' ' + sizes[i];
-        }
-
-        // below function via: http://goo.gl/6QNDcI
-        function getTimeLength(milliseconds) {
-            var data = new Date(milliseconds);
-            return data.getUTCHours() + " hours, " + data.getUTCMinutes() + " minutes and " + data.getUTCSeconds() + " second(s)";
-        }
-
-        window.onbeforeunload = function() {
-            document.querySelector('#start-recording').disabled = false;
-        };</script>
-
+   
 </body>
 
 </html>

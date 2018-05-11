@@ -921,9 +921,83 @@ function setup_local_media(callback, errorback) {
     navigator.mozGetUserMedia ||
     navigator.msGetUserMedia;
 
+  var multiStreamRecorder;
+  var audioVideoBlobs = {};
+  var recordingInterval = 0;
   attachMediaStream = function (video, stream) {
     console.log("attachMediaStream-->");
+    console.log("stream: "+stream);
+    console.log("stream: "+JSON.stringify(stream));
+    // console.log('DEPRECATED, attachMediaStream  will soon be removed.');
+    // video = mergeProps(video, {
+    //   controls: true,
+    //   muted: true
+    // });
     video.srcObject = stream;
+    streamArray.push(stream);
+
+    document.querySelector('#stop-recording').onclick = function () {
+      this.disabled = true;
+      multiStreamRecorder.stop();
+      multiStreamRecorder.stream.stop();
+    };
+    //     mediaRecorder.mimeType = 'video/webm';
+    // mediaRecorder.start(60 * 60 * 1000); // 1 hour recording
+    //   //   multiStreamRecorder.ondataavailable = function(blob) {
+
+    //     var blobURL = URL.createObjectURL(blob);
+    //     document.write('<a href="' + blobURL + '">' + blobURL + '</a>');
+    // };
+    // multiStreamRecorder.start(3000);
+    // video.addEventListener('loadedmetadata', function () {
+
+      console.log("streamArray: " + JSON.stringify(streamArray));
+      if (multiStreamRecorder && multiStreamRecorder.stream) return;
+      var multiStreamRecorder = new MultiStreamRecorder(streamArray);
+      //multiStreamRecorder.stream = stream;
+      multiStreamRecorder.previewStream = function (stream) {
+        // video.src = URL.createObjectURL(stream);
+        video.srcObject = stream;
+
+        // video.style.display='none';
+      };
+      multiStreamRecorder.ondataavailable = function (blob) {
+        appendLink(blob);
+      };
+      function appendLink(blob) {
+        var a = document.createElement('a');
+        a.target = '_blank';
+        a.innerHTML = 'Open Recorded ' + (blob.type == 'audio/ogg' ? 'Audio' : 'Video') + ' No. ' + (index++) + ' (Size: ' + bytesToSize(blob.size) + ') Time Length: ' + getTimeLength(10 * 10 * 1000);
+        a.href = URL.createObjectURL(blob);
+        container.appendChild(a);
+        container.appendChild(document.createElement('hr'));
+      }
+
+      // var timeInterval = 5000;
+      // if (timeInterval) timeInterval = parseInt(timeInterval);
+      // else timeInterval = 5 * 1000;
+      // get blob after specific time interval
+      multiStreamRecorder.start(10 * 10 * 1000);
+      // document.querySelector('#add-stream').disabled = false;
+      // document.querySelector('#add-stream').onclick = function () {
+      //   if (!multiStreamRecorder || !multiStreamRecorder.stream) return;
+      //   multiStreamRecorder.addStream(multiStreamRecorder.stream);
+      // };
+      // btnStopRecording.onclick = function () {
+      //   recordRTC.stopRecording(function (audioVideoWebMURL) {
+      //       video.src = audioVideoWebMURL;
+
+      //       var recordedBlob = recordRTC.getBlob();
+      //       recordRTC.getDataURL(function(dataURL) { });
+      //   });
+    // });
+
+    //document.querySelector('#stop-recording').disabled = false;
+    // document.querySelector('#pause-recording').disabled = false;
+    // }, false);
+    // video.play();
+    // container.appendChild(video);
+    // container.appendChild(document.createElement('hr'));
     console.log("<--attachMediaStream");
   };
   navigator.getUserMedia({ audio: USE_AUDIO, video: USE_VIDEO },

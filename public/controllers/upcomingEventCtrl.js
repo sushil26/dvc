@@ -51,6 +51,7 @@ app.controller('upcomingEventController', function ($scope, $state, $window, htt
                     var obj = {
                         'id': $scope.eventData[x]._id,
                         'userId': $scope.eventData[x]._userId,
+                        'studUserId': $scope.studUserId,
                         "student_cs": $scope.eventData[x].student_cs, 
                         "student_id":$scope.eventData[x].student_id, 
                         "student_Name":$scope.eventData[x].student_Name, 

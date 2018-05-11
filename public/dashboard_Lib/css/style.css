@@ -865,7 +865,7 @@ a.logo {
 
   font-weight: 500;
 
-  color: #a8cf44;
+  color: #a8cf44 !important;
 
   float: left;
 

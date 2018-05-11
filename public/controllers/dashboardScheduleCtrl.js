@@ -559,9 +559,10 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
       var stud_name = studName;
       var stud_cs = $scope.studentPersonalData[0].cs;
       var stud_id = $scope.studentPersonalData[0].schoolId;
+      $scope.studUserId = $scope.studentPersonalData[0]._id;
       console.log("$scope.studentPersonalData[0]: " + $scope.studentPersonalData[0].schoolId);
       console.log("stud_id: " + stud_id);
-      $scope.eventSend(reason, teacherName, teacherId, email, senderMN, receiverName, receiverId, receiverMN, stud_id, stud_cs, stud_name);
+      $scope.eventSend(reason, teacherName, teacherId, email, senderMN, receiverName, receiverId, receiverMN, stud_id, stud_cs, stud_name, );
     }
 
 
@@ -594,6 +595,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
           "senderLoginType": $scope.userData.loginType,
           "title": $scope.title,
           "reason": res,
+          "studUserId":studUserId,
           "senderName": name,
           "senderId": id,
           "senderMN": senderMN,

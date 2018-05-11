@@ -1121,15 +1121,14 @@ module.exports.updateTeacherMaster = function (req, res) {
     if (!req.files)
         return res.status(400).send('No files were uploaded.');
 
-    var studentDataFile = req.files.img;
+    var teacherDataFile = req.files.img;
     console.log("studentDataFile: " + studentDataFile);
-    var parser = csv.fromString(studentDataFile.data.toString(), {
+    var parser = csv.fromString(teacherDataFile.data.toString(), {
         headers: true,
         ignoreEmpty: true
     }).on("data", function (data) {
         console.log("data: " + JSON.stringify(data));
         // var csData = [{ "class": req.params.class, "section": req.params.section }];
-
         var userData = {
             schoolId: data.TeacherID,
             firstName: data.FirstName,
@@ -1158,7 +1157,7 @@ module.exports.updateTeacherMaster = function (req, res) {
         objJson.push(userData);
     })
         .on("end", function () {
-            console.log("end marker: " + marker);
+            console.log("end marker: " );
             console.log("objJson: " + JSON.stringify(objJson));
             var queryData = {
                 "_id": req.params.id,

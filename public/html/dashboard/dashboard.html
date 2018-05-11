@@ -3,9 +3,30 @@
 <!-- <link rel="stylesheet" href="././dashboard_Lib/css/bootstrap.min.css" /> -->
 <!-- <link rel="stylesheet" href="././dashboard_Lib/css/bootstrap-theme.css" /> -->
 <link rel="stylesheet" href="././dashboard_Lib/css/elegant-icons-style.css" />
+<script>
+        function onReady(callback) {
+          var intervalID = window.setInterval(checkReady, 1000);
+      
+          function checkReady() {
+            if (document.getElementsByTagName('body')[0] !== undefined) {
+              window.clearInterval(intervalID);
+              callback.call(this);
+            }
+          }
+        }
+      
+        function show(id, value) {
+          document.getElementById(id).style.display = value ? 'block' : 'none';
+        }
+      
+        onReady(function () {
+          show('page', true);
+          show('loading', false);
+        });
+      </script>
 
-<div id="loading"></div>
-<div ng-controller="dashboardController">
+<!-- <div id="loading"></div> -->
+<div id="page" ng-controller="dashboardController">
     <!-- container section start -->
     <section id="container" class="">
         <!--header start-->

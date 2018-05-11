@@ -156,7 +156,11 @@ app.controller('reportsUpdateCtl', function ($scope, $window, $state, httpFactor
     })
     console.log("<--updateTeacher to Master");
   }
-
+$scope.studentSelect = function(s){
+console.log("studentSelect-->");
+console.log("s: "+JSON.stringify(s));
+console.log("<--studentSelect");
+}
   $scope.getStudListForCS = function (clas, section) {
 
     console.log("getStudListForCS-->");

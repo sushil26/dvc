@@ -76,8 +76,9 @@ module.exports.getAllTeacherList = function (req, res) {
             "schoolName": req.params.schoolName,
             "loginType": "teacher"
         }
+        console.log("queryData: "+JSON.stringify(queryData));
         user.find(queryData).toArray(function (err, teacherData) {
-            //console.log("teacherData: " + JSON.stringify(teacherData));
+            console.log("teacherData: " + JSON.stringify(teacherData));
             if (err) {
                 responseData = {
                     "status": false,

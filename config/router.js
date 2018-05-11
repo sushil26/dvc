@@ -38,7 +38,7 @@ module.exports = function (app) {
     app.post('/vc/uploadStudentMaster/:schoolName/:clas/:section', adminAction.uploadStudentMaster);
     
     app.post('/vc/uploadTeacherMaster/:schoolName', adminAction.uploadTeacherMaster);
-    app.post('/vc/updateStudentMaster/:schoolName/:id', adminAction.updateStudentMaster);
+    app.post('/vc/updateTeacherMaster/:schoolName/:id', adminAction.updateTeacherMaster);
     app.post('/vc/uploadTeacher_timeTable/:schoolName/:id', adminAction.uploadTeacher_timeTable);
     app.post('/vc/uploadMarkFile/:schoolName/:testType/:date/:clas/:section', adminAction.uploadMarkFile);
     app.post('/vc/uploadAttendance/:schoolName/:clas/:section/:reportType/:month', adminAction.uploadAttendance);

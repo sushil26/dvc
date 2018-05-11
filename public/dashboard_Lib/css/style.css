@@ -860,11 +860,12 @@ ul.sidebar-menu li.active a i {
 }
 
 a.logo {
+  letter-spacing: 1px;
   font-size: 22px;
 
   font-weight: 500;
 
-  color: #a8cf44;
+  color: #a8cf44 !important;
 
   float: left;
 

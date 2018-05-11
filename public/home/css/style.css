@@ -132,9 +132,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #header #logo {
-  float: left;
+  /* float: left; */
   margin-top: -25px;
-  margin-left: -60px;
+  margin-left: 5px;
   
 }
 

@@ -73,6 +73,55 @@
                                         </div>
                                     </div>
                                     <div class="form-group ">
+                                        <label ng-if="up.uploadType=='Teacher Details'" class="control-label col-lg-3">Teacher
+                                            <span class="required">*</span>
+                                        </label>
+                                        <div class="col-lg-3">
+                                            <select ng-if="up.uploadType=='Teacher Details' && up.teacherSelect!=''" class="form-control m-bot15" placeholder="select" ng-model="up.teacherSelect" ng-options="t as t.name +'-'+ t.schoolId for t in teacherList" >
+                                                <option value="" disabled selected>Teacher</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div ng-if="up.uploadType=='Teacher Details'"  class="form-group ">
+                                            <section class="panel">
+                                                    <div class="form-group">
+                                                        <div class="panel-heading" style="background: #3a4a58">
+                                                            <i class="fa fa-user-circle"></i>
+                                                            <span style="color:white;">&nbspTEACHER</span>
+                                                        </div>
+                                                        <table class="table">
+                                                            <thead class="panel-heading">
+                                                                <tr>
+                                                                    <th>#</th>
+                                                                    <th>Teacher Id</th>
+                                                                    <th>Teacher Name</th>
+                                                                    <th>Email</th>
+                                                                    <th>Mobile Number</th>
+                                                                    <th>Status</th>
+                                                                    <th>Action</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr ng-repeat="td in teacherData" ng-if="td.loginType=='teacher'">
+                                                                    <td style="background-color:white;">1</td>
+                                                                    <td style="background-color:white;">{{up.teacherSelect.schoolId}}</td>
+                                                                    <td style="background-color:white;">{{up.teacherSelect.firstName + " " + up.teacherSelect.lastName}}
+                                                                        <!-- <a class="btn-info" ng-click="tableForTimes($index)">{{td.firstName + " " + td.lastName}}</a> -->
+                                                                    </td>
+                                                                    <td style="background-color:white;">{{up.teacherSelect.email}}</td>
+                                                                    <td style="background-color:white;">{{up.teacherSelect.mobileNum}}</td>
+                                                                    <td style=" background-color:white; color:red;" ng-if="td.status=='inactive'">Inactive</td>
+                                                                    <td style=" background-color:white; color:green;" ng-if="td.status=='active'">Active</td>
+                                                                    <td style="background-color:white;">
+                                                                        <button class="btn btn-warning" ng-click="viewUser(td._id, 'teacher')">View</button>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </section>
+                                        </div>
+                                    <div class="form-group ">
                                         <label ng-if="up.uploadType=='Time Table'" class="control-label col-lg-3">Teacher
                                             <span class="required">*</span>
                                         </label>

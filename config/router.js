@@ -31,6 +31,7 @@ module.exports = function (app) {
     app.get('/vc/getSchoolUser/:schoolName', adminAction.getSchoolUser);
     app.get('/vc/getAllAdmin', adminAction.getAllAdmin);
     app.get('/vc/getAllSchool', adminAction.getAllSchool);
+    app.get('/vc/getAllTeacherList/:schoolName/', adminAction.getAllTeacherList);
     app.post('/vc/updateSchoolStatus', adminAction.updateSchoolStatus);
     app.post('/vc/uploadClassFile/:schoolName', adminAction.uploadClassFile);
     app.post('/vc/uploadPeriodsFile/:schoolName', adminAction.uploadPeriodsFile);
@@ -55,7 +56,7 @@ module.exports = function (app) {
     app.post('/vc/deleteEvent', event.deleteEvent);
     app.post('/vc/parentCredential', event.parentCredential);
     app.post('/vc/eventUpdate/:id', event.eventUpdate);
-    
+
 
 
 

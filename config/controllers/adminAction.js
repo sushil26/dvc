@@ -68,6 +68,48 @@ module.exports.updateSchoolStatus = function (req, res) {
     console.log("<--updateSchoolStatus");
 };
 
+module.exports.getAllTeacherList = function (req, res) {
+    console.log("getAllTeacherList-->");
+    var responseData;
+    if (general.emptyCheck(req.params.schoolName)) {
+        var queryData = {
+            "schoolName": req.params.schoolName,
+            "loginType": teacher
+        }
+        user.find(queryData).toArray(function (err, teacherData) {
+            //console.log("teacherData: " + JSON.stringify(teacherData));
+            if (err) {
+                responseData = {
+                    "status": false,
+                    "message": "Failed to Register",
+                    "data": teacherData
+                }
+                res.status(400).send(responseData);
+            }
+            else {
+                responseData = {
+                    "status": true,
+                    "errorCode": 200,
+                    "message": "Data collected successfully",
+                    "data": teacherData[0]
+                }
+                res.status(200).send(responseData);
+            }
+        })
+
+    }
+    else {
+        console.log("Epty value found");
+        responseData = {
+            "status": false,
+            "message": "empty value found",
+            "data": userData
+        }
+        res.status(400).send(responseData);
+    }
+    console.log("<--getAllTeacherList");
+}
+
 module.exports.getAllSchool = function (req, res) {
     console.log("getAllAdmin-->");
     var responseData;
@@ -585,7 +627,7 @@ module.exports.uploadAttendance = function (req, res) {
             module.exports.dailyData(data, function (err) {
                 console.log("savedatInitiate");
                 // TODO: handle error
-             
+
                 parser.resume();
             });
         }
@@ -595,19 +637,19 @@ module.exports.uploadAttendance = function (req, res) {
                 console.log("savedatInitiate");
                 // TODO: handle error
                 console.log("unknownData: " + JSON.stringify(unknownData));
-                console.log("expectedMessage: "+expectedMessage);
+                console.log("expectedMessage: " + expectedMessage);
                 if (expectedMessage) {
-                   var responseData = {
+                    var responseData = {
                         status: false,
                         note: "upload not satisfied",
                         message: expectedMessage
                     };
                     res.status(400).send(responseData);
                 }
-                else{
+                else {
                     parser.resume();
                 }
-               
+
             });
         }
 
@@ -764,7 +806,7 @@ module.exports.monthlyData = function (data, callback) {
         }
         else {
 
-            expectedMessage= "Failled to upload! Expecting 31 days attendance status for " + month;
+            expectedMessage = "Failled to upload! Expecting 31 days attendance status for " + month;
             if (callback) callback();
         }
     }
@@ -782,7 +824,7 @@ module.exports.monthlyData = function (data, callback) {
         }
         else {
 
-            expectedMessage= "Failled to upload! Expecting 28 days attendance status for " + month;
+            expectedMessage = "Failled to upload! Expecting 28 days attendance status for " + month;
             if (callback) callback();
         }
     }
@@ -810,7 +852,7 @@ module.exports.monthlyData = function (data, callback) {
         }
         else {
 
-            expectedMessage= "Failled to upload! Expecting 30 days attendance status for " + month;
+            expectedMessage = "Failled to upload! Expecting 30 days attendance status for " + month;
             if (callback) callback();
         }
     }

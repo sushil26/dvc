@@ -70,7 +70,7 @@
                             <span ng-if="hour >'12' && hour < '17'" class="username">Good Afternoon&nbsp{{userName}}</span>
                             <span ng-if="hour >='17' && min<='59' && sec<='59' && hour <='23'" class="username">Good Evening&nbsp{{userName}}</span>
                             <br>
-                            <span class="username" style="color: white;">{{clock}}:&nbsp {{hour}}:{{min}}:{{sec}}</span>
+                            <span class="username" style="color: white;">{{"clock | date:'MMM/d/yy h:mm a'"}}</span>
 
                             <!-- <b class="caret"></b> -->
                         <!-- </a> -->

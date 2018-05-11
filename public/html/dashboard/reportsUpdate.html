@@ -162,7 +162,7 @@
                                         </label>
                                         <div class="col-lg-3">
                                             <select class="btn" ng-if="up.uploadType=='Student Details'" placeholder="select" ng-model="sSelect" ng-options="cs as cs.name + '-' + cs.studId for cs in studList">
-                                                <option value="" disabled selected>Student</option>
+                                                <option value="" disabled selected ng-change="studentSelect(sSelect)">Student</option>
                                             </select>
                                         </div>
                                     </div>

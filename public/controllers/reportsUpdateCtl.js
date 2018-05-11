@@ -157,6 +157,37 @@ app.controller('reportsUpdateCtl', function ($scope, $window, $state, httpFactor
     console.log("<--updateTeacher to Master");
   }
 
+  $scope.getStudListForCS = function (css) {
+
+    console.log("getStudListForCS-->");
+    // console.log("$scope.cssSelect: "+JSON.stringify($scope.cssSelect));
+    console.log("css" + css);
+    console.log("JSON.css" + JSON.stringify(css));
+    var clas = css.class;
+    var section = css.section;
+    $scope.studList = [];
+
+    var api = "https://norecruits.com/vc/getStudListForCS" + "/" + schoolName + "/" + clas + "/" + section;
+    console.log("api: " + api);
+    httpFactory.get(api).then(function (data) {
+        var checkStatus = httpFactory.dataValidation(data);
+        //console.log("data--" + JSON.stringify(data.data));
+        if (checkStatus) {
+            $scope.studentList = data.data.data;
+            console.log("studentList: " + JSON.stringify($scope.studentList));
+            for (var x = 0; x < $scope.studentList.length; x++) {
+                $scope.studList.push({ "id": $scope.studentList[x]._id, "name": $scope.studentList[x].firstName, "studId": $scope.studentList[x].schoolId });
+            }
+            console.log(" $scope.studList.length: " + $scope.studList.length);
+        }
+        else {
+            console.log("sorry");
+        }
+    })
+    console.log("<--getStudListForCS");
+
+}
+
   $scope.uploadFile = function (file, uploadType, reportType, list) {
     console.log("uploadFile-->");
     console.log("file: " + file);

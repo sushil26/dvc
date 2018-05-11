@@ -174,6 +174,13 @@ app.controller('upcomingEventController', function ($scope, $state, $window, htt
           })
         console.log("<--waitForTime");
     }
+
+    $scope.conferenceStart = function(url, studId){
+        localStorage.setItem("studSchoolId", studId);
+        localStorage.setItem("schoolName", $scope.userData.schoolName);
+        $window.open(url, '_blank');
+    }
+
     $scope.deleteEvent = function (id) {
         console.log("deleteEvent-->");
         console.log("id: " + id);

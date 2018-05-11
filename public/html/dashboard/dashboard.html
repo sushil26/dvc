@@ -66,13 +66,13 @@
                                 <img alt="" src="/dashboard_Lib/img/img.jpg">
                             </span> -->
 
-                        <span ng-if="hour <'12' && min<='59' && sec<='59' && hour >='0'" class="username">Good Morning&nbsp{{userName}}</span>
+                        <span ng-if="hour <'12' && min<='59' && sec<='59' && hour >='0'" class="username"><i class="fa fa-sun-o"></i> &nbspGood Morning&nbsp{{userName}}</span>
                         <span ng-if="hour >='12' && hour < '17'" class="username">Good Afternoon&nbsp{{userName}}</span>
                         <span ng-if="hour >='17' && min<='59' && sec<='59' && hour <='23'" class="username">Good Evening&nbsp{{userName}}</span>
                         <br>
                         
                         <span class="username" style="color: white;">
-                            <i class="fa fa-sun-o"></i> {{clock | date:' d , MMM yyyy h:mm a'}}</span>
+                             {{clock | date:' d , MMM yyyy h:mm a'}}</span>
 
                         <!-- <b class="caret"></b> -->
                         <!-- </a> -->

@@ -1175,6 +1175,97 @@ module.exports.uploadTeacherMaster = function (req, res) {
 
     console.log("<--uploadStudentMaster");
 };
+module.exports.updateTeacher_timeTable = function (req, res) {
+    console.log("uploadStudentMaster-->");
+    var responseData;
+    var consolidateTT = [];
+    var timing = [];
+    var css = {
+        "Mon": [],
+        "Tue": [],
+        "Wed": [],
+        "Thu": [],
+        "Fri": [],
+        "Sat": []
+    };
+    var count = 0;
+    schoolName = req.params.schoolName;
+    var id = req.params.id;
+    if (!req.files)
+        return res.status(400).send('No files were uploaded.');
+    var studentDataFile = req.files.img;
+    console.log("studentDataFile: " + studentDataFile);
+    var parser = csv.fromString(studentDataFile.data.toString(), {
+        headers: true,
+        ignoreEmpty: true
+    }).on("data", function (data) {
+        console.log("upload data: " + JSON.stringify(data));
+        //var count = Object.keys(data).length;
+        count = count + 1;
+        var p = 0;
+        for (var key in data) {
+            p = p + 1;
+            console.log(data[key]);
+            console.log("key: " + key);
+            console.log("data[key]: " + data[key]);
+            var parts = key.split('-');
+            console.log("parts.length: " + parts.length);
+            console.log("parts: " + JSON.stringify(parts));
+
+            if (count == 1) {
+                console.log("parts: " + JSON.stringify(parts));
+                timing.push({ "periods": p, "startsAt": parts[0], "endsAt": parts[1] });
+            }
+            var cssParts = data[key].split('-');
+            if (count == 1) {
+                css.Mon.push({ "class": cssParts[0], "section": cssParts[1], "subject": cssParts[2] });
+            }
+            else if (count == 2) {
+                css.Tue.push({ "class": cssParts[0], "section": cssParts[1], "subject": cssParts[2] });
+            }
+            else if (count == 3) {
+                css.Wed.push({ "class": cssParts[0], "section": cssParts[1], "subject": cssParts[2] });
+            }
+            else if (count == 4) {
+                css.Thu.push({ "class": cssParts[0], "section": cssParts[1], "subject": cssParts[2] });
+            }
+            else if (count == 5) {
+                css.Fri.push({ "class": cssParts[0], "section": cssParts[1], "subject": cssParts[2] });
+            }
+            else if (count == 6) {
+                css.Sat.push({ "class": cssParts[0], "section": cssParts[1], "subject": cssParts[2] });
+            }
+
+        }
+        console.log("timing: " + JSON.stringify(timing));
+    })
+        .on("end", function () {
+            console.log("end ");
+            consolidateTT.push({ "timing": timing, "css": css });
+            console.log("consolidateTT: " + JSON.stringify(consolidateTT));
+            var id = { "_id": ObjectId(req.params.id) }
+            user.findOneAndUpdate(id, { $set: { "timeTable": { $each: consolidateTT } } }, { new: true }, function (err, updatedData) {
+                console.log("data: " + JSON.stringify(updatedData));
+                if (err) {
+                    responseData = {
+                        status: false,
+                        message: err
+
+                    };
+                    res.status(400).send(responseData);
+                } else {
+                    responseData = {
+                        status: true,
+                        errorCode: 200,
+                        message: "Updated  Successfull",
+                        data: updatedData
+                    };
+                    res.status(200).send(responseData);
+                }
+            });
+        })
+    console.log("<--uploadStudentMaster");
+}
 
 module.exports.updateTeacherMaster = function (req, res) {
     console.log("updateTeacherMaster-->");

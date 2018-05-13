@@ -207,7 +207,49 @@ app.controller('reportsUpdateCtl', function ($scope, $window, $state, httpFactor
     console.log("<--getStudListForCS");
 
   }
+  
+  $scope.updateTimeTableFile = function (file, id) {
+    console.log("updateTimeTableFile-->");
+    console.log("id: "+id);
+    var obj = {
+      "file": file
+    }
+    var api = "https://norecruits.com/vc/updateTeacher_timeTable/"+ id;
+    console.log("api: " + api);
+    httpFactory.csvUpload(obj, api).then(function (data) {
+      var checkStatus = httpFactory.dataValidation(data);
+      console.log("data--" + JSON.stringify(data.data));
+      if (checkStatus) {
+        // $window.location.href = $scope.propertyJson.R082;
+        var loginAlert = $uibModal.open({
+          scope: $scope,
+          templateUrl: '/html/templates/dashboardsuccess.html',
+          windowClass: 'show',
+          backdropClass: 'static',
+          keyboard: false,
+          controller: function ($scope, $uibModalInstance) {
+            $scope.message = data.data.message;
+          }
+        })
+        //alert(data.data.message);
+        $scope.getSchoolData();
+      } else {
+        var loginAlert = $uibModal.open({
+          scope: $scope,
+          templateUrl: '/html/templates/dashboardwarning.html',
+          windowClass: 'show',
+          backdropClass: 'static',
+          keyboard: false,
+          controller: function ($scope, $uibModalInstance) {
+            $scope.message = "Update Fail";
+          }
+        })
+        //alert("Update Fail");
+      }
+    });
 
+    console.log("<--updateTimeTableFile");
+  }
 
   $scope.uploadFile = function (file, uploadType, reportType, list) {
     console.log("uploadFile-->");
@@ -263,6 +305,7 @@ app.controller('reportsUpdateCtl', function ($scope, $window, $state, httpFactor
 
     console.log("<--uploadFile");
   }
+
 
 
 })

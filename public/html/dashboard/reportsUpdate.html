@@ -301,7 +301,7 @@
                                     <div class="form-group">
                                         <label class="control-label col-lg-3" ng-if="up.uploadType=='Attendance'">Month</label>
                                         <div class="col-lg-3">
-                                            <select class="form-control m-bot15" ng-if="up.uploadType=='Attendance'" placeholder="select" ng-model="up.mSelect" ng-options="ml as ml for ml in monthList">
+                                            <select class="form-control m-bot15" ng-if="up.uploadType=='Attendance'" placeholder="select" ng-model="up.mSelect" ng-options="ml as ml for ml in monthList" ng-click="att_monthSelected(up.mSelect)">
                                                 <option value="" disabled selected>Month</option>
                                             </select>
                                         </div>

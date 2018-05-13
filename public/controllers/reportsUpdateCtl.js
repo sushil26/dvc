@@ -176,38 +176,38 @@ app.controller('reportsUpdateCtl', function ($scope, $window, $state, httpFactor
         console.log("$scope.attendance: " + JSON.stringify($scope.attendance));
         console.log("$scope.attendance.length: " + $scope.attendance.length);
         for (var x = 0; x < $scope.attendance.length; x++) {
-            console.log("$scope.attendance[x]: " + JSON.stringify($scope.attendance[x]));
-            var year = "2018";
-            var mon = $scope.attendance[x].month;
-            console.log("$scope.attendance[x].dateAttendance.length: " + $scope.attendance[x].dateAttendance.length);
-            for (var y = 0; y < $scope.attendance[x].dateAttendance.length; y++) {
-                console.log("$scope.attendance[x].dateAttendance[y]: " + JSON.stringify($scope.attendance[x].dateAttendance[y]));
-                var day = $scope.attendance[x].dateAttendance[y].date;
-                console.log("day: " + day + "month: " + mon + "year: " + year);
-                var resultDate = new Date(year + " " + mon + " " + day);
-                console.log("resultDate: " + resultDate);
-                console.log("moment().subtract(1, 'day').toDate(): " + moment().subtract(1, 'day').toDate());
-                var obj = {
-                    'title': $scope.attendance[x].dateAttendance[y].status,
-                    'startsAt': resultDate,
-                    'endsAt': resultDate,
-                    'draggable': true,
-                    'resizable': true,
-                    'incrementsBadgeTotal': false
-                }
-                if ($scope.attendance[x].dateAttendance[y].status == "P") {
-                    obj.color = calendarConfig.colorTypes.info;
-                }
-               else if ($scope.attendance[x].dateAttendance[y].status == "L") {
-                    obj.color = calendarConfig.colorTypes.warning;
-                }
-                else {
-                    obj.color = calendarConfig.colorTypes.important;
-                }
-                console.log("obj: " + JSON.stringify(obj));
-                $scope.events.push(obj);
-
+          console.log("$scope.attendance[x]: " + JSON.stringify($scope.attendance[x]));
+          var year = "2018";
+          var mon = $scope.attendance[x].month;
+          console.log("$scope.attendance[x].dateAttendance.length: " + $scope.attendance[x].dateAttendance.length);
+          for (var y = 0; y < $scope.attendance[x].dateAttendance.length; y++) {
+            console.log("$scope.attendance[x].dateAttendance[y]: " + JSON.stringify($scope.attendance[x].dateAttendance[y]));
+            var day = $scope.attendance[x].dateAttendance[y].date;
+            console.log("day: " + day + "month: " + mon + "year: " + year);
+            var resultDate = new Date(year + " " + mon + " " + day);
+            console.log("resultDate: " + resultDate);
+            console.log("moment().subtract(1, 'day').toDate(): " + moment().subtract(1, 'day').toDate());
+            var obj = {
+              'title': $scope.attendance[x].dateAttendance[y].status,
+              'startsAt': resultDate,
+              'endsAt': resultDate,
+              'draggable': true,
+              'resizable': true,
+              'incrementsBadgeTotal': false
             }
+            if ($scope.attendance[x].dateAttendance[y].status == "P") {
+              obj.color = calendarConfig.colorTypes.info;
+            }
+            else if ($scope.attendance[x].dateAttendance[y].status == "L") {
+              obj.color = calendarConfig.colorTypes.warning;
+            }
+            else {
+              obj.color = calendarConfig.colorTypes.important;
+            }
+            console.log("obj: " + JSON.stringify(obj));
+            $scope.events.push(obj);
+
+          }
         }
         console.log("$scope.events: " + JSON.stringify($scope.events));
 
@@ -248,14 +248,14 @@ app.controller('reportsUpdateCtl', function ($scope, $window, $state, httpFactor
     console.log("<--getStudListForCS");
 
   }
-  
+
   $scope.updateTimeTableFile = function (file, id) {
     console.log("updateTimeTableFile-->");
-    console.log("id: "+id);
+    console.log("id: " + id);
     var obj = {
       "file": file
     }
-    var api = "https://norecruits.com/vc/updateTeacher_timeTable/"+ id;
+    var api = "https://norecruits.com/vc/updateTeacher_timeTable/" + id;
     console.log("api: " + api);
     httpFactory.csvUpload(obj, api).then(function (data) {
       var checkStatus = httpFactory.dataValidation(data);
@@ -347,15 +347,18 @@ app.controller('reportsUpdateCtl', function ($scope, $window, $state, httpFactor
     console.log("<--uploadFile");
   }
 
-  var vm = this;
-
-  $scope.calendarView = 'month';
-  $scope.viewDate = moment().startOf('day').toDate();
-  var originalFormat = calendarConfig.dateFormats.hour;
-  calendarConfig.dateFormats.hour = 'HH:mm';
-
-  $scope.events = [];
-  $scope.cellIsOpen = true;
+  $scop.att_monthSelected = function (mon) {
+    console.log("att_monthSelected-->");
+    var vm = this;
+    $scope.calendarView = 'month';
+    //$scope.viewDate = moment().startOf('day').toDate();
+    $scope.viewDate = new Date('2018 -' +mon);
+    var originalFormat = calendarConfig.dateFormats.hour;
+    calendarConfig.dateFormats.hour = 'HH:mm';
+      $scope.events = [];
+    $scope.cellIsOpen = true;
+      console.log("<--att_monthSelected");
+  }
 
 
 })

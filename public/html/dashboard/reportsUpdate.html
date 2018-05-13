@@ -228,7 +228,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                     <!--##### Start Student data #####-->
+                                    <!--##### Start Student data #####-->
                                     <section ng-if="up.uploadType=='Student Details'" class="panel">
                                         <div class="form-group">
                                             <div class="panel-heading" style="background: #3a4a58;">
@@ -290,30 +290,36 @@
                                                 value="date">
                                         </div>
                                     </div>
-                                    <div class="form-group ">
+                                    <!-- <div class="form-group ">
                                         <label class="control-label col-lg-3" ng-if="up.uploadType=='Attendance'">Attendance report</label>
                                         <div class="col-lg-3">
                                             <select class="form-control m-bot15" ng-if="up.uploadType=='Attendance'" placeholder="select" ng-model="up.ttSelect" ng-options="at as at for at in attendanceTypes">
                                                 <option value="" disabled selected>Attendance report</option>
                                             </select>
                                         </div>
-                                    </div>
-                                    <div class="form-group ">
+                                    </div> -->
+                                    <div class="form-group">
                                         <label class="control-label col-lg-3" ng-if="up.uploadType=='Attendance'">Month</label>
                                         <div class="col-lg-3">
                                             <select class="form-control m-bot15" ng-if="up.uploadType=='Attendance'" placeholder="select" ng-model="up.mSelect" ng-options="ml as ml for ml in monthList">
-                                                <option value="" disabled selected>Attendance report</option>
+                                                <option value="" disabled selected>Month</option>
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="form-group ">
+                                    <div class="form-group" ng-if="up.uploadType=='Attendance'">
+                                        <!-- Widget content -->
+                                        <mwl-calendar events="vm.events" view="vm.calendarView" view-title="vm.calendarTitle" view-date="vm.viewDate" on-event-click="vm.eventClicked(calendarEvent)"
+                                            on-view-change-click="false" on-timespan-click="vm.timespanClicked(calendarDate)">
+                                        </mwl-calendar>
+                                    </div>
+                                    <!-- <div class="form-group ">
                                         <label class="control-label col-lg-3" ng-if="up.uploadType=='Payment'">Payment report</label>
                                         <div class="col-lg-3">
                                             <select class="form-control m-bot15" ng-if="up.uploadType=='Payment'" placeholder="select" ng-model="up.ttSelect" ng-options="tt as tt for tt in testTypes">
                                                 <option value="" disabled selected>Payment report</option>
                                             </select>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="form-group">
 
                                         <p class="col-lg-offset-2 col-lg-10">

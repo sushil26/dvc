@@ -1194,7 +1194,7 @@ module.exports.updateTeacherMaster = function (req, res) {
     }).on("data", function (data) {
         console.log("data: " + JSON.stringify(data));
         // var csData = [{ "class": req.params.class, "section": req.params.section }];
-        var userData = {
+        objJson = {
             firstName: data.FirstName,
             lastName: data.LastName,
             email: data.Email,
@@ -1214,26 +1214,26 @@ module.exports.updateTeacherMaster = function (req, res) {
                 console.log("cssSeparate: " + trimed);
                 var cssSeparate = trimed.split('-');
                 console.log("cssSeparate: " + JSON.stringify(cssSeparate));
-                userData.css.push({ "class": cssSeparate[0], "section": cssSeparate[1], "subject": cssSeparate[2] });
+                objJson.css.push({ "class": cssSeparate[0], "section": cssSeparate[1], "subject": cssSeparate[2] });
             }
         }
-        console.log("userData: " + JSON.stringify(userData));
-        objJson.push(userData);
+        console.log("objJson: " + JSON.stringify(objJson));
+        //objJson.push(userData);
     })
         .on("end", function () {
-            console.log("end marker: ");
+            console.log("end marker ");
             console.log("objJson: " + JSON.stringify(objJson));
             var queryData = {
-                "_id": req.params.id,
-                "schoolName": req.params.schoolName,
+                "_id": req.params.id
+                // "schoolName": req.params.schoolName,
             }
             console.log("queryData: " + JSON.stringify(queryData));
-            user.update(queryData, { $set: { $each: objJson } }, function (err, data) {
+            user.update(queryData, { $set: objJson  }, function (err, data) {
                 console.log("data: " + JSON.stringify(data));
                 if (err) {
                     responseData = {
                         status: false,
-                        message: "Failed to Insert",
+                        message: "Failed to Update",
                         data: data
                     };
                     res.status(400).send(responseData);

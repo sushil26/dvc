@@ -349,6 +349,7 @@ app.controller('reportsUpdateCtl', function ($scope, $window, $state, httpFactor
 
   $scope.att_monthSelected = function (mon) {
     console.log("att_monthSelected-->");
+    $scope.openCalendarTemplate = true; /* ### Note: Front End visibility of calendar based on openCalendarTemplate variable ### */
     var vm = this;
     $scope.calendarView = 'month';
     //$scope.viewDate = moment().startOf('day').toDate();

@@ -207,11 +207,11 @@
                                         </div>
                                     </div>
                                     <div class="form-group ">
-                                        <label ng-if="up.uploadType=='Student Details' && up.uploadType!=''" class=" control-label col-lg-3">Section
+                                        <label ng-if="up.uploadType!='Teacher Details' && up.uploadType!=''" class=" control-label col-lg-3">Section
                                             <span class="required">*</span>
                                         </label>
                                         <div class="col-lg-3">
-                                            <select ng-if="up.uploadType=='Student Details' && up.uploadType!='' " class="form-control m-bot15" placeholder="select"
+                                            <select ng-if="up.uploadType!='Teacher Details' && up.uploadType!='' " class="form-control m-bot15" placeholder="select"
                                                 ng-model="up.subSelect" ng-options="s as s for s in up.cSelect.section" ng-change="getStudListForCS(up.cSelect, up.subSelect)">
                                                 <option value="" disabled selected>Section</option>
                                             </select>

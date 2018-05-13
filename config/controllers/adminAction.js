@@ -1018,7 +1018,7 @@ module.exports.monthlyData = function (data, callback) {
     })
 }
 /* ### End upload Monthly attendance status  ### */
-module.exports.attendanceUpdate = function (data, callback) {
+module.exports.attendanceUpdate = function (req, res) {
     console.log("attendanceUpdate-->");
     expectedMessage = '';
     console.log("uploadAttendance-->");

@@ -1228,22 +1228,21 @@ module.exports.updateTeacherMaster = function (req, res) {
             //     // "schoolName": req.params.schoolName,
             // }
             var id ={ "_id": ObjectId(req.params.id)}
-            console.log("queryData: " + JSON.stringify(queryData));
+            //console.log("queryData: " + JSON.stringify(queryData));
             user.update(id, { $set: objJson  }, function (err, data) {
                 console.log("data: " + JSON.stringify(data));
                 if (err) {
                     responseData = {
                         status: false,
-                        message: "Failed to Update",
-                        data: data
+                        message: "Failed to Update"
+                       
                     };
                     res.status(400).send(responseData);
                 } else {
                     responseData = {
                         status: true,
                         errorCode: 200,
-                        message: "Updated Successfull",
-                        data: data
+                        message: "Updated Successfull"
                     };
                     res.status(200).send(responseData);
                 }

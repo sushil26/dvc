@@ -347,12 +347,12 @@ app.controller('reportsUpdateCtl', function ($scope, $window, $state, httpFactor
     console.log("<--uploadFile");
   }
 
-  $scop.att_monthSelected = function (mon) {
+  $scope.att_monthSelected = function (mon) {
     console.log("att_monthSelected-->");
     var vm = this;
     $scope.calendarView = 'month';
     //$scope.viewDate = moment().startOf('day').toDate();
-    $scope.viewDate = new Date('2018 -' +mon);
+    $scope.viewDate = new Date('2018 -'+mon);
     var originalFormat = calendarConfig.dateFormats.hour;
     calendarConfig.dateFormats.hour = 'HH:mm';
       $scope.events = [];

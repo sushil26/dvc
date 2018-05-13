@@ -73,7 +73,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group ">
-                                        <label ng-if="up.uploadType=='Teacher Details'" class="control-label col-lg-3">Teacher
+                                        <label ng-if="up.uploadType=='Teacher Details' || up.uploadType=='Time Table'" class="control-label col-lg-3">Teacher
                                             <span class="required">*</span>
                                         </label>
                                         <div class="col-lg-3">
@@ -125,16 +125,6 @@
                                     </div>
                                     <!--##### End teacher data #####-->
                                     <div class="form-group ">
-                                        <label ng-if="up.uploadType=='Time Table'" class="control-label col-lg-3">Teacher
-                                            <span class="required">*</span>
-                                        </label>
-                                        <div class="col-lg-3">
-                                            <select ng-if="up.uploadType=='Time Table'" class="form-control m-bot15" placeholder="select" ng-model="up.tSelect" ng-options="t as t.name +'-'+ t.schoolId for t in teacherList_noTT">
-                                                <option value="" disabled selected>Teacher</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group ">
                                         <label ng-if="up.uploadType!='Teacher Details' && up.uploadType!='Time Table' && up.uploadType!=''" class="control-label col-lg-3">Class
                                             <span class="required">*</span>
                                         </label>
@@ -161,8 +151,9 @@
                                             <span class="required">*</span>
                                         </label>
                                         <div class="col-lg-3">
-                                            <select class="btn" ng-if="up.uploadType=='Student Details'" placeholder="select" ng-model="sSelect" ng-options="cs as cs.name + '-' + cs.studId for cs in studList" ng-change="studentDetailById(sSelect)">
-                                                <option value="" disabled selected >Student</option>
+                                            <select class="btn" ng-if="up.uploadType=='Student Details'" placeholder="select" ng-model="sSelect" ng-options="cs as cs.name + '-' + cs.studId for cs in studList"
+                                                ng-change="studentDetailById(sSelect)">
+                                                <option value="" disabled selected>Student</option>
                                             </select>
                                         </div>
                                     </div>

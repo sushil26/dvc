@@ -8,7 +8,7 @@ app.controller('reportsUpdateCtl', function ($scope, $window, $state, httpFactor
   $scope.testTypes = ["AT", "UT", "MT", "TT", "AT"];
   $scope.attendanceTypes = ["Monthly", "Daily"];
   $scope.monthList = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-
+  $scope.events = [];
   $scope.getAllTeacherList = function () {
     var api = "https://norecruits.com/vc/getAllTeacherList" + "/" + schoolName;
     console.log("api: " + api);
@@ -355,7 +355,7 @@ app.controller('reportsUpdateCtl', function ($scope, $window, $state, httpFactor
     $scope.viewDate = new Date('2018-'+mon);
     var originalFormat = calendarConfig.dateFormats.hour;
     calendarConfig.dateFormats.hour = 'HH:mm';
-      $scope.events = [];
+      
     $scope.cellIsOpen = true;
       console.log("<--att_monthSelected");
   }

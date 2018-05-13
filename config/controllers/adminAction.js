@@ -1241,7 +1241,7 @@ module.exports.updateTeacher_timeTable = function (req, res) {
     })
         .on("end", function () {
             console.log("end ");
-            var consolidateTT = { "timing": timing, "css": css };
+            var consolidateTT = [{ "timing": timing, "css": css }];
             console.log("consolidateTT: " + JSON.stringify(consolidateTT));
             var id = { "_id": ObjectId(req.params.id) }
             user.findOneAndUpdate(id, { $set: { "timeTable": consolidateTT } }, { new: true }, function (err, updatedData) {

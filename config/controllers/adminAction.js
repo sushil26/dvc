@@ -1223,12 +1223,13 @@ module.exports.updateTeacherMaster = function (req, res) {
         .on("end", function () {
             console.log("end marker ");
             console.log("objJson: " + JSON.stringify(objJson));
-            var queryData = {
-                "_id": req.params.id
-                // "schoolName": req.params.schoolName,
-            }
+            // var queryData = {
+            //     "_id": req.params.id
+            //     // "schoolName": req.params.schoolName,
+            // }
+            var id ={ "_id": ObjectId(req.params.id)}
             console.log("queryData: " + JSON.stringify(queryData));
-            user.update(queryData, { $set: objJson  }, function (err, data) {
+            user.update(id, { $set: objJson  }, function (err, data) {
                 console.log("data: " + JSON.stringify(data));
                 if (err) {
                     responseData = {

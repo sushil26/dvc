@@ -1051,7 +1051,7 @@ module.exports.updateStudentMaster = function (req, res) {
         console.log("data: " + JSON.stringify(data));
         //var csData = [{ "class": req.params.clas, "section": req.params.section }];
 
-         objJson = {
+        objJson = {
             schoolName: req.params.schoolName,
             firstName: data.FirstName,
             lastName: data.LastName,
@@ -1065,8 +1065,8 @@ module.exports.updateStudentMaster = function (req, res) {
             doj: data.DOJ
         }
         console.log("objJson: " + JSON.stringify(objJson));
-        
-       
+
+
     })
         .on("end", function () {
             console.log("end marker: ");
@@ -1075,11 +1075,11 @@ module.exports.updateStudentMaster = function (req, res) {
             //     "_id": ObjectId(req.params.id),
             //     "schoolName": req.params.schoolName,
             // }
-            var id ={ "_id": ObjectId(req.params.id)}
-            console.log("id: "+JSON.stringify(id));
+            var id = { "_id": ObjectId(req.params.id) }
+            console.log("id: " + JSON.stringify(id));
             // console.log("queryData: " + JSON.stringify(queryData));
             // stud.update(queryData, { $set: { $each: objJson } }, function (err, data) {
-                stud.update(id, { $set:  objJson }, function (err, data) {
+            stud.update(id, { $set: objJson }, function (err, data) {
                 console.log("data: " + JSON.stringify(data));
                 if (err) {
                     responseData = {
@@ -1227,15 +1227,14 @@ module.exports.updateTeacherMaster = function (req, res) {
             //     "_id": req.params.id
             //     // "schoolName": req.params.schoolName,
             // }
-            var id ={ "_id": ObjectId(req.params.id)}
+            var id = { "_id": ObjectId(req.params.id) }
             //console.log("queryData: " + JSON.stringify(queryData));
-            user.update(id, { $set: objJson  }, function (err, data) {
+            user.update(id, { $set: objJson }, function (err, data) {
                 console.log("data: " + JSON.stringify(data));
                 if (err) {
                     responseData = {
                         status: false,
                         message: "Failed to Update"
-                       
                     };
                     res.status(400).send(responseData);
                 } else {

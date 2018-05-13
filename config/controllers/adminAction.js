@@ -23,6 +23,7 @@ var testStartDate; /* ### Note: Get test start date while uploading marksheet  #
 var clas, section;  /* ### Note: Used while uploading marksheet  ### */
 var counter = 0; /* ### Note: Used while uploading marksheet  ### */
 var expectedMessage; /* ### Note:Attendance month validation  ### */
+var id; /* ### Note:Attendance Update based on id  ### */
 
 module.exports.updateSchoolStatus = function (req, res) {
     console.log("updateSchoolStatus-->");
@@ -396,6 +397,97 @@ module.exports.uploadTeacher_timeTable = function (req, res) {
         });
     console.log("<--uploadTeacher_timeTable");
 };
+module.exports.updateTeacher_timeTable = function (req, res) {
+    console.log("uploadStudentMaster-->");
+    var responseData;
+
+    var timing = [];
+    var css = {
+        "Mon": [],
+        "Tue": [],
+        "Wed": [],
+        "Thu": [],
+        "Fri": [],
+        "Sat": []
+    };
+    var count = 0;
+    schoolName = req.params.schoolName;
+    var id = req.params.id;
+    if (!req.files)
+        return res.status(400).send('No files were uploaded.');
+    var studentDataFile = req.files.img;
+    console.log("studentDataFile: " + studentDataFile);
+    var parser = csv.fromString(studentDataFile.data.toString(), {
+        headers: true,
+        ignoreEmpty: true
+    }).on("data", function (data) {
+        console.log("upload data: " + JSON.stringify(data));
+        //var count = Object.keys(data).length;
+        count = count + 1;
+        var p = 0;
+        for (var key in data) {
+            p = p + 1;
+            console.log(data[key]);
+            console.log("key: " + key);
+            console.log("data[key]: " + data[key]);
+            var parts = key.split('-');
+            console.log("parts.length: " + parts.length);
+            console.log("parts: " + JSON.stringify(parts));
+
+            if (count == 1) {
+                console.log("parts: " + JSON.stringify(parts));
+                timing.push({ "periods": p, "startsAt": parts[0], "endsAt": parts[1] });
+            }
+            var cssParts = data[key].split('-');
+            if (count == 1) {
+                css.Mon.push({ "class": cssParts[0], "section": cssParts[1], "subject": cssParts[2] });
+            }
+            else if (count == 2) {
+                css.Tue.push({ "class": cssParts[0], "section": cssParts[1], "subject": cssParts[2] });
+            }
+            else if (count == 3) {
+                css.Wed.push({ "class": cssParts[0], "section": cssParts[1], "subject": cssParts[2] });
+            }
+            else if (count == 4) {
+                css.Thu.push({ "class": cssParts[0], "section": cssParts[1], "subject": cssParts[2] });
+            }
+            else if (count == 5) {
+                css.Fri.push({ "class": cssParts[0], "section": cssParts[1], "subject": cssParts[2] });
+            }
+            else if (count == 6) {
+                css.Sat.push({ "class": cssParts[0], "section": cssParts[1], "subject": cssParts[2] });
+            }
+
+        }
+        console.log("timing: " + JSON.stringify(timing));
+    })
+        .on("end", function () {
+            console.log("end ");
+            var consolidateTT = [{ "timing": timing, "css": css }];
+            console.log("consolidateTT: " + JSON.stringify(consolidateTT));
+            var id = { "_id": ObjectId(req.params.id) }
+            user.findOneAndUpdate(id, { $set: { "timeTable": consolidateTT } }, { new: true }, function (err, updatedData) {
+                console.log("data: " + JSON.stringify(updatedData));
+                if (err) {
+                    responseData = {
+                        status: false,
+                        message: err
+
+                    };
+                    res.status(400).send(responseData);
+                } else {
+                    responseData = {
+                        status: true,
+                        errorCode: 200,
+                        message: "Updated  Successfull",
+                        data: updatedData
+                    };
+                    res.status(200).send(responseData);
+                }
+            });
+        })
+    console.log("<--uploadStudentMaster");
+}
 
 module.exports.uploadPeriodsFile = function (req, res) {
     console.log("uploadClassFile-->");
@@ -678,7 +770,7 @@ module.exports.uploadAttendance = function (req, res) {
         });
     console.log("<--uploadAttendance");
 };
-/* ### Start update daily attendance status  ### */
+/* ### Start upload daily attendance status  ### */
 module.exports.dailyData = function (data, callback) {
     console.log('inside saving')
 
@@ -754,7 +846,8 @@ module.exports.dailyData = function (data, callback) {
         }
     })
 }
-/* ### End update daily attendance status  ### */
+/* ### End upload daily attendance status  ### */
+/* ### Start upload Monthly attendance status  ### */
 module.exports.monthlyData = function (data, callback) {
     console.log('inside saving')
     var arrayLength
@@ -924,7 +1017,219 @@ module.exports.monthlyData = function (data, callback) {
         }
     })
 }
+/* ### End upload Monthly attendance status  ### */
+module.exports.attendanceUpdate = function (data, callback) {
+    console.log("attendanceUpdate-->");
+    expectedMessage = '';
+    console.log("uploadAttendance-->");
+    var responseData;
+    id = req.params.id;
+    console.log("req.body.files: " + req.files.img);
+    if (!req.files)
+        return res.status(400).send('No files were uploaded.');
+    var studentDataFile = req.files.img;
+    console.log("studentDataFile: " + studentDataFile);
+    var parser = csv.fromString(studentDataFile.data.toString(), {
+        headers: true,
+        ignoreEmpty: true
+    }).on("data", function (data) {
+        console.log("data: " + JSON.stringify(data));
+        console.log("req.reportType: " + req.params.reportType);
+        parser.pause();
+        if (req.params.reportType == "Daily") {
+            console.log("daily started-->");
+            module.exports.dailyDataUpdate(data, function (err) {
+                console.log("savedatInitiate");
+                // TODO: handle error
+                parser.resume();
+            });
+        }
+        if (req.params.reportType == "Monthly") {
+            month = req.params.month;
+            module.exports.monthlyDataUpdate(data, function (err) {
+                console.log("savedatInitiate");
+                // TODO: handle error
+                console.log("unknownData: " + JSON.stringify(unknownData));
+                console.log("expectedMessage: " + expectedMessage);
+                if (expectedMessage) {
+                    var responseData = {
+                        status: false,
+                        note: "upload not satisfied",
+                        message: expectedMessage
+                    };
+                    res.status(400).send(responseData);
+                }
+                else {
+                    parser.resume();
+                }
+            });
+        }
+    })
+        .on("end", function () {
+            console.log("end marker: " + marker);
+            if (marker == false) {
+                responseData = {
+                    status: false,
+                    message: message
+                };
+                res.status(400).send(responseData);
+            }
+            else if (marker == true) {
+                console.log("unknownData: " + JSON.stringify(unknownData));
+                var unknownStud = unknownData;
+                responseData = {
+                    status: true,
+                    message: "Successfull updated data",
+                    data: unknownStud
+                };
+                unknownData = [];
+                res.status(200).send(responseData);
+            }
+        });
+    console.log("<--attendanceUpdate");
+}
+/* ### Start update daily attendance status  ### */
+module.exports.dailyDataUpdate = function (data, callback) {
+    console.log('dailyDataUpdate: inside saving')
+    var dateString = data.Date;
+    var parts = dateString.split(' ');
+    console.log("parts: " + JSON.stringify(parts));
+    var AttYear = parts[2];
+    var AttMonth = parts[1];
+    var AttDate = parts[0];
+    var attndnce = data.Attendance;
 
+    var obj = { "date": AttDate, "status": attndnce };
+    console.log("obj: " + JSON.stringify(obj));
+
+    stud.update({ "_id": ObjectId(id) }, { $set: { "attendance.$.dateAttendance": { "date": AttDate, "status": attndnce } } }, function (err, data) {
+        console.log("2nd query started: " + JSON.stringify(data));
+        console.log("2nd query data.length: " + data.length);
+        if (err) {
+            marker = true;
+            if (callback) callback();
+        }
+        else {
+            marker = true;
+            if (callback) callback();
+        }
+    })
+}
+/* ### End update daily attendance status  ### */
+/* ### Start update monthly attendance status  ### */
+module.exports.monthlyDataUpdate = function (data, callback) {
+    console.log('inside saving')
+    var arrayLength
+    console.log("monthly started-->");
+    console.log("req.params.month: " + month);
+
+    var columnLength = Object.keys(data).length; /* ##### Note: Number of column from uploaded files ##### */
+    console.log("columnLength: " + columnLength);
+    if (month == "Jan" || month == "Mar" || month == "May" || month == "Jul" || month == "Aug" || month == "Oct" || month == "Dec") {
+        console.log("JAN");
+        if (columnLength == 33) {
+
+            if (month == "Jan") {
+                attendanceIndex = 0;
+            }
+            else if (month == "Mar") {
+                attendanceIndex = 2;
+            }
+            else if (month == "May") {
+                attendanceIndex = 4;
+            }
+            else if (month == "Jul") {
+                attendanceIndex = 6;
+            }
+            else if (month == "Aug") {
+                attendanceIndex = 7;
+            }
+            else if (month == "Oct") {
+                attendanceIndex = 9;
+            }
+            else if (month == "Dec") {
+                attendanceIndex = 11;
+            }
+            for (var x = 1; x <= 31; x++) {
+                console.log("x: " + x);
+                monthAtt.push({ "date": x, "status": data[x] });
+                if (x == 31) {
+                    break;
+                }
+            }
+
+        }
+        else {
+
+            expectedMessage = "Failled to upload! Expecting 31 days attendance status for " + month;
+            if (callback) callback();
+        }
+    }
+    else if (month == "Feb") {
+        console.log("FEB");
+        attendanceIndex = 1;
+        if (columnLength == 30) {
+            for (var x = 1; x <= 28; x++) {
+                console.log("x: " + x);
+                monthAtt.push({ "date": x, "status": data[x] });
+                if (x == 28) {
+                    break;
+                }
+            }
+        }
+        else {
+
+            expectedMessage = "Failled to upload! Expecting 28 days attendance status for " + month;
+            if (callback) callback();
+        }
+    }
+    else if (month == "Apr" || month == "Jun" || month == "Sep" || month == "Nov") {
+        if (columnLength == 30 + 2) {
+            if (month == "Apr") {
+                attendanceIndex = 3;
+            }
+            else if (month == "Jun") {
+                attendanceIndex = 5;
+            }
+            else if (month == "Sep") {
+                attendanceIndex = 8;
+            }
+            else if (month == "Nov") {
+                attendanceIndex = 10;
+            }
+            for (var x = 1; x <= 30; x++) {
+                console.log("x: " + x);
+                monthAtt.push({ "date": x, "status": data[x] });
+                if (x == 28) {
+                    break;
+                }
+            }
+        }
+        else {
+
+            expectedMessage = "Failled to upload! Expecting 30 days attendance status for " + month;
+            if (callback) callback();
+        }
+    }
+
+    console.log("*monthAtt: " + monthAtt.length);
+
+    stud.update({"_id":ObjectId(id),"attendance.month": month}, { $set: { "attendance.$.dateAttendance": [] } }, function (err, findData) {
+        console.log("update month started: " + JSON.stringify(data));
+        monthAtt = [];
+        if (err) {
+            marker = false;
+            message = err;
+            if (callback) callback();
+        }
+        else {
+            marker = true;
+            if (callback) callback();
+        }
+    })
+
+}
+/* ### End update monthly attendance status  ### */
 module.exports.uploadStudentMaster = function (req, res) {
     console.log("uploadStudentMaster-->");
     var responseData;
@@ -1175,98 +1480,6 @@ module.exports.uploadTeacherMaster = function (req, res) {
 
     console.log("<--uploadStudentMaster");
 };
-module.exports.updateTeacher_timeTable = function (req, res) {
-    console.log("uploadStudentMaster-->");
-    var responseData;
-
-    var timing = [];
-    var css = {
-        "Mon": [],
-        "Tue": [],
-        "Wed": [],
-        "Thu": [],
-        "Fri": [],
-        "Sat": []
-    };
-    var count = 0;
-    schoolName = req.params.schoolName;
-    var id = req.params.id;
-    if (!req.files)
-        return res.status(400).send('No files were uploaded.');
-    var studentDataFile = req.files.img;
-    console.log("studentDataFile: " + studentDataFile);
-    var parser = csv.fromString(studentDataFile.data.toString(), {
-        headers: true,
-        ignoreEmpty: true
-    }).on("data", function (data) {
-        console.log("upload data: " + JSON.stringify(data));
-        //var count = Object.keys(data).length;
-        count = count + 1;
-        var p = 0;
-        for (var key in data) {
-            p = p + 1;
-            console.log(data[key]);
-            console.log("key: " + key);
-            console.log("data[key]: " + data[key]);
-            var parts = key.split('-');
-            console.log("parts.length: " + parts.length);
-            console.log("parts: " + JSON.stringify(parts));
-
-            if (count == 1) {
-                console.log("parts: " + JSON.stringify(parts));
-                timing.push({ "periods": p, "startsAt": parts[0], "endsAt": parts[1] });
-            }
-            var cssParts = data[key].split('-');
-            if (count == 1) {
-                css.Mon.push({ "class": cssParts[0], "section": cssParts[1], "subject": cssParts[2] });
-            }
-            else if (count == 2) {
-                css.Tue.push({ "class": cssParts[0], "section": cssParts[1], "subject": cssParts[2] });
-            }
-            else if (count == 3) {
-                css.Wed.push({ "class": cssParts[0], "section": cssParts[1], "subject": cssParts[2] });
-            }
-            else if (count == 4) {
-                css.Thu.push({ "class": cssParts[0], "section": cssParts[1], "subject": cssParts[2] });
-            }
-            else if (count == 5) {
-                css.Fri.push({ "class": cssParts[0], "section": cssParts[1], "subject": cssParts[2] });
-            }
-            else if (count == 6) {
-                css.Sat.push({ "class": cssParts[0], "section": cssParts[1], "subject": cssParts[2] });
-            }
-
-        }
-        console.log("timing: " + JSON.stringify(timing));
-    })
-        .on("end", function () {
-            console.log("end ");
-            var consolidateTT = [{ "timing": timing, "css": css }];
-            console.log("consolidateTT: " + JSON.stringify(consolidateTT));
-            var id = { "_id": ObjectId(req.params.id) }
-            user.findOneAndUpdate(id, { $set: { "timeTable": consolidateTT } }, { new: true }, function (err, updatedData) {
-                console.log("data: " + JSON.stringify(updatedData));
-                if (err) {
-                    responseData = {
-                        status: false,
-                        message: err
-
-                    };
-                    res.status(400).send(responseData);
-                } else {
-                    responseData = {
-                        status: true,
-                        errorCode: 200,
-                        message: "Updated  Successfull",
-                        data: updatedData
-                    };
-                    res.status(200).send(responseData);
-                }
-            });
-        })
-    console.log("<--uploadStudentMaster");
-}
-
 module.exports.updateTeacherMaster = function (req, res) {
     console.log("updateTeacherMaster-->");
     var responseData;
@@ -1341,3 +1554,4 @@ module.exports.updateTeacherMaster = function (req, res) {
 
     console.log("<--updateTeacherMaster");
 }
+

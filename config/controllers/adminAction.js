@@ -1051,7 +1051,7 @@ module.exports.updateStudentMaster = function (req, res) {
         console.log("data: " + JSON.stringify(data));
         //var csData = [{ "class": req.params.clas, "section": req.params.section }];
 
-        var userData = {
+         objJson = {
             schoolName: req.params.schoolName,
             firstName: data.FirstName,
             lastName: data.LastName,
@@ -1064,23 +1064,22 @@ module.exports.updateStudentMaster = function (req, res) {
             dob: data.DOB,
             doj: data.DOJ
         }
-        console.log("userData: " + JSON.stringify(userData));
-        objJson.push(userData);
-
+        console.log("objJson: " + JSON.stringify(objJson));
+        
        
     })
         .on("end", function () {
             console.log("end marker: ");
             console.log("objJson: " + JSON.stringify(objJson));
-            var queryData = {
-                "_id": ObjectId(req.params.id),
-                "schoolName": req.params.schoolName,
-            }
-            var id ={ _id: ObjectId(req.params.id)}
+            // var queryData = {
+            //     "_id": ObjectId(req.params.id),
+            //     "schoolName": req.params.schoolName,
+            // }
+            var id ={ "_id": ObjectId(req.params.id)}
             console.log("id: "+JSON.stringify(id));
-            console.log("queryData: " + JSON.stringify(queryData));
+            // console.log("queryData: " + JSON.stringify(queryData));
             // stud.update(queryData, { $set: { $each: objJson } }, function (err, data) {
-                stud.update({ "_id": ObjectId(req.params.id)}, { $set: { $each: objJson }  }, function (err, data) {
+                stud.update(id, { $set:  objJson }, function (err, data) {
                 console.log("data: " + JSON.stringify(data));
                 if (err) {
                     responseData = {

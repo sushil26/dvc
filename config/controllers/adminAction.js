@@ -776,17 +776,15 @@ module.exports.dailyData = function (data, callback) {
     var day;
     var attndnce;
     //var dateString = data.Date;
-    var columnLength = Object.keys(data).length; /* ##### Note: Number of column from uploaded files ##### */
-    console.log("Object.keys(data)[length]: "+columnLength);
-   
+
     var parts = month.split('-');
     console.log("parts: " + JSON.stringify(parts));
 
     day = parts[1];
     month = parts[0];
-    attndnce = {'date': day, 'status' : data.Status};
+    attndnce = { 'date': day, 'status': data.Status };
 
-console.log("attndnce: " + JSON.stringify(attndnce));
+    console.log("attndnce: " + JSON.stringify(attndnce));
 
     console.log("attndnce: " + JSON.stringify(attndnce));
     var studIdForFindQry = {
@@ -1103,27 +1101,81 @@ module.exports.attendanceUpdate = function (req, res) {
 /* ### Start update daily attendance status  ### */
 module.exports.dailyDataUpdate = function (data, callback) {
     console.log('dailyDataUpdate: inside saving')
-    var dateString = data.Date;
-    var parts = dateString.split(' ');
-    console.log("parts: " + JSON.stringify(parts));
-    var AttYear = parts[2];
-    var AttMonth = parts[1];
-    var AttDate = parts[0];
-    var attndnce = data.Attendance;
+    var day;
+    var attndnce;
+    //var dateString = data.Date;
 
-    var obj = { "date": AttDate, "status": attndnce };
-    console.log("obj: " + JSON.stringify(obj));
-    stud.update({ "_id": ObjectId(id), "attendance.$.dateAttendance": AttDate }, { $set: { "attendance.$.dateAttendance": { "date": AttDate, "status": attndnce } } }, function (err, data) {
-        //stud.update({ "_id": ObjectId(id) }, { $set: { "attendance.$.dateAttendance": { "date": AttDate, "status": attndnce } } }, function (err, data) {
-        console.log("2nd query started: " + JSON.stringify(data));
-        console.log("2nd query data.length: " + data.length);
+    var parts = month.split('-');
+    console.log("parts: " + JSON.stringify(parts));
+
+    day = parts[1];
+    month = parts[0];
+    attndnce = { 'date': day, 'status': data.Status };
+
+    console.log("attndnce: " + JSON.stringify(attndnce));
+
+    console.log("attndnce: " + JSON.stringify(attndnce));
+    var studIdForFindQry = {
+        "schoolId": data.StudentID,
+        "schoolName": schoolName,
+        "attendance.month": month,
+        "attendance.dateAttendance": attndnce
+    }
+    console.log("studIdForFindQry: " + JSON.stringify(studIdForFindQry));
+    var studIdForUpdateQry = {
+        "schoolId": data.StudentID,
+        "attendance.month": month,
+        "schoolName": schoolName
+    }
+    console.log("studIdForUpdateQry: " + JSON.stringify(studIdForUpdateQry));
+    stud.find({ "schoolName": schoolName, "schoolId": data.StudentID }).toArray(function (err, isThereData) {
+        console.log("Basic query: " + JSON.stringify(isThereData));
+        console.log("Basic query: " + isThereData.length);
         if (err) {
-            marker = true;
+            console.log("error: " + err);
+            message = err;
+            marker = false;
             if (callback) callback();
         }
         else {
-            marker = true;
-            if (callback) callback();
+            if (isThereData.length > 0) {
+                stud.find(studIdForFindQry).toArray(function (err, findData) {
+                    console.log("1st query findData: " + JSON.stringify(findData));
+                    console.log("1st query findData.length: " + findData.length);
+                    if (err) {
+                        marker = true;
+                        if (callback) callback();
+                    }
+                    else {
+
+                        //stud.update(studIdForUpdateQry, { $push: { "attendance.$.dateAttendance": attndnce } }, function (err, data) {
+                        stud.update(studIdForUpdateQry, { $set: { "attendance.$.dateAttendance": [] } }, function (err, data) {
+                            console.log("2nd query started: " + JSON.stringify(data));
+                            console.log("2nd query data.length: " + data.length);
+                            if (err) {
+                                marker = true;
+                                if (callback) callback();
+                            }
+                            else {
+                                stud.update(studIdForUpdateQry, { $push: { "attendance.$.dateAttendance": attndnce } }, function (err, data) {
+                                    if (err) {
+                                        marker = false;
+                                        if (callback) callback();
+                                    }
+                                    else {
+                                        marker = true;
+                                        if (callback) callback();
+                                    }
+                                })
+                            }
+                        })
+
+                    }
+                })
+            }
+            else {
+
+            }
         }
     })
 }

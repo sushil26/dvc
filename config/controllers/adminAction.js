@@ -779,7 +779,13 @@ module.exports.dailyData = function (data, callback) {
     var columnLength = Object.keys(data).length; /* ##### Note: Number of column from uploaded files ##### */
     for (var key in data) {
         console.log("key: "+key);
-        console.log("data[columnLength]: "+data[columnLength]);
+        console.log("data[columnLength]: "+data[columnLength-1]);
+        if(data[key]==data[columnLength-1])
+        {
+            attndnce = {
+                key : key, "status": data[key]
+            }
+        }
            }
     console.log("attndnce: " + JSON.stringify(attndnce));
     // var parts = dateString.split(' ');

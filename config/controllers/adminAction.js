@@ -1255,20 +1255,20 @@ module.exports.monthlyDataUpdate = function (data, callback) {
                         console.log("monthAtt: " + JSON.stringify(monthAtt));
                         console.log("arrayLength: " + arrayLength);
                         console.log("second query started");
-                        // stud.update(studIdForFindQry, { $set: { "attendance.$.dateAttendance": [] } }, function (err, findData) {
-                        //     //stud.update(studIdForFindQry, { $push: { "attendance.$.dateAttendance": { $each: monthAtt } } }, function (err, findData) {
-                        //     console.log("set findData: " + JSON.stringify(findData));
-                        //     monthAtt = [];
-                        //     if (err) {
-                        //         marker = false;
-                        //         message = err;
-                        //         if (callback) callback();
-                        //     }
-                        //     else {
-                        //         marker = true;
-                        //         if (callback) callback();
-                        //     }
-                        // })
+                        stud.update(studIdForFindQry, { $set: { "attendance.$.dateAttendance": [] } }, function (err, findData) {
+                            //stud.update(studIdForFindQry, { $push: { "attendance.$.dateAttendance": { $each: monthAtt } } }, function (err, findData) {
+                            console.log("set findData: " + JSON.stringify(findData));
+                            monthAtt = [];
+                            if (err) {
+                                marker = false;
+                                message = err;
+                                if (callback) callback();
+                            }
+                            else {
+                                marker = true;
+                                if (callback) callback();
+                            }
+                        })
 
 
                     }

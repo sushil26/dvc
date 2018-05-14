@@ -1252,7 +1252,7 @@ module.exports.monthlyDataUpdate = function (data, callback) {
                         if (callback) callback();
                     }
                     else {
-                        console.log("no erroe");
+                        console.log("no error--");
                         console.log("studIdForFindQry: " + JSON.stringify(studIdForFindQry));
                         console.log("monthAtt: " + JSON.stringify(monthAtt));
                         console.log("arrayLength: " + arrayLength);

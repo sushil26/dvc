@@ -319,9 +319,9 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
       else {
         console.log("checkStatus: "+checkStatus);
         if (uploadType == "Attendance") {
-          console.log("Sorry! you already updated for this month");
+          console.log("data.data.message: "+ data.data.message);
           if (data.data.message == "Sorry! you already updated for this month") {
-
+            console.log("Sorry! you already updated for this month");
             var loginAlert = $uibModal.open({
               scope: $scope,
               templateUrl: '/html/templates/dashboardwarning.html',

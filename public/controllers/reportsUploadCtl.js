@@ -320,7 +320,7 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
         console.log("checkStatus: "+checkStatus);
         if (uploadType == "Attendance") {
           console.log("data.data.message: "+ data.data.message);
-          if (data.data.message == "Sorry! you already updated for this month") {
+          if (data.data.message == "Sorry! you already updated for this month" || data.data.message == "Sorry! you already updated for this date") {
             console.log("Sorry! you already updated for this month");
             var loginAlert = $uibModal.open({
               scope: $scope,

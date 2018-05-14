@@ -272,6 +272,7 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
       var checkStatus = httpFactory.dataValidation(data);
       console.log("data--" + JSON.stringify(data.data));
       if (checkStatus) {
+        console.log("checkStatus: "+checkStatus);
         if (uploadType == "Attendance") {
           if (data.data.data.length > 0) {
             var loginAlert = $uibModal.open({
@@ -316,6 +317,7 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
         }
       }
       else {
+        console.log("checkStatus: "+checkStatus);
         if (uploadType == "Attendance") {
           console.log("Sorry! you already updated for this month");
           if (data.data.message == "Sorry! you already updated for this month") {

@@ -792,7 +792,6 @@ module.exports.adminCreate = function (req, res) {
     "schoolName": req.body.schoolName,
     "schoolRegNumber": req.body.schoolRegNumber,
     "dor": req.body.dor,
-
     "address": req.body.address,
     "email": req.body.email,
     "mobNumber": req.body.mobNumber,

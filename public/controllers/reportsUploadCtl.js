@@ -316,6 +316,7 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
       }
       else {
         if (uploadType == "Attendance") {
+          console.log("Sorry! you already updated for this month");
           if (data.data.message == "Sorry! you already updated for this month") {
 
             var loginAlert = $uibModal.open({

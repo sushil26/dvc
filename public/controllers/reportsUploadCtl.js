@@ -320,7 +320,7 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
         console.log("checkStatus: "+checkStatus);
         if (uploadType == "Attendance") {
           console.log("data.data.message: "+ data.data.message);
-          if (data.data.message == "Sorry! you already updated for this month" || data.data.message == "Sorry! you already updated for this date") {
+          if (data.data.message == "Sorry! you already updated for this month" ) {
             console.log("Sorry! you already updated for this month");
             var loginAlert = $uibModal.open({
               scope: $scope,
@@ -348,6 +348,19 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
               keyboard: false,
               controller: function ($scope, $uibModalInstance) {
                 $scope.message = msg;
+              }
+            })
+          }
+          else 
+          {
+            var loginAlert = $uibModal.open({
+              scope: $scope,
+              templateUrl: '/html/templates/dashboardsuccess.html',
+              windowClass: 'show',
+              backdropClass: 'static',
+              keyboard: false,
+              controller: function ($scope, $uibModalInstance) {
+                $scope.message = data.data.message;
               }
             })
           }

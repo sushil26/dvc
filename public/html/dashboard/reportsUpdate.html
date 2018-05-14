@@ -305,9 +305,9 @@
                                             </div>
                                         </div>
                                     <div class="form-group">
-                                        <label class="control-label col-lg-3" ng-if="up.atSelect=='Attendance'">Month</label>
+                                        <label class="control-label col-lg-3" ng-if="up.atSelect=='Monthly'">Month</label>
                                         <div class="col-lg-3">
-                                            <select class="form-control m-bot15" ng-if="up.atSelect=='Attendance'" placeholder="select" ng-model="up.mSelect" ng-options="ml as ml for ml in monthList" ng-click="att_monthSelected(up.mSelect)">
+                                            <select class="form-control m-bot15" ng-if="up.atSelect=='Monthly'" placeholder="select" ng-model="up.mSelect" ng-options="ml as ml for ml in monthList" ng-click="att_monthSelected(up.mSelect)">
                                                 <option value="" disabled selected>Month</option>
                                             </select>
                                         </div>
@@ -341,7 +341,7 @@
 
                                     <div class="form-group">
                                         <div class="col-lg-offset-2 col-lg-10">
-                                                <button ng-if="up.uploadType=='Attendance' && up.uploadType=='Monthly'" type="reset" class=" bcontrol-label  btn btn-success"
+                                                <button ng-if="up.uploadType=='Attendance' && up.ttSelect=='Monthly'" type="reset" class=" bcontrol-label  btn btn-success"
                                                 ng-click="attendanceUpdate(up.uploadDoc,up.cSelect.class,up.subSelect, up.atSelect, up.mSelect)">Save</button>
                                             <button ng-if="up.uploadType=='Attendance' && up.ttSelect=='Daily'" type="reset" class=" bcontrol-label  btn btn-success"
                                                 ng-click="attendanceUpdate(up.uploadDoc,up.cSelect.class,up.subSelect, up.atSelect, up.attDate | date:'MMM-d')">Save</button>

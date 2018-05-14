@@ -779,7 +779,7 @@ module.exports.dailyData = function (data, callback) {
     var columnLength = Object.keys(data).length; /* ##### Note: Number of column from uploaded files ##### */
     console.log("Object.keys(data)[length]: "+columnLength);
    
-    var parts = dateString.split('-');
+    var parts = month.split('-');
     console.log("parts: " + JSON.stringify(parts));
 
     day = parts[1];

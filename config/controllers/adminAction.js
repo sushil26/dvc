@@ -724,7 +724,7 @@ module.exports.uploadAttendance = function (req, res) {
             });
         }
         if (req.params.reportType == "Monthly") {
-           
+
             module.exports.monthlyData(data, function (err) {
                 console.log("savedatInitiate");
                 // TODO: handle error
@@ -744,8 +744,6 @@ module.exports.uploadAttendance = function (req, res) {
 
             });
         }
-
-
     })
         .on("end", function () {
             console.log("end marker: " + marker);
@@ -775,26 +773,23 @@ module.exports.uploadAttendance = function (req, res) {
 /* ### Start upload daily attendance status  ### */
 module.exports.dailyData = function (data, callback) {
     console.log('inside dailyData saving')
-var day;
-var attndnce;
+    var day;
+    var attndnce;
     //var dateString = data.Date;
     var columnLength = Object.keys(data).length; /* ##### Note: Number of column from uploaded files ##### */
     for (var key in data) {
-        console.log("key: "+key);
-       if(key==5){
-           day = key;
-            attndnce ={key:key, "status":data[key]}
-       }
+        
+       
     }
-    console.log("attndnce: "+JSON.stringify(attndnce));
+    console.log("attndnce: " + JSON.stringify(attndnce));
     // var parts = dateString.split(' ');
     // console.log("parts: " + JSON.stringify(parts));
     // var AttYear = parts[2];
     // var AttMonth = parts[1];
     // var AttDate = parts[0];
-   
 
-   
+
+
     console.log("attndnce: " + JSON.stringify(attndnce));
     var studIdForFindQry = {
         "schoolId": data.StudentID,
@@ -1120,8 +1115,8 @@ module.exports.dailyDataUpdate = function (data, callback) {
 
     var obj = { "date": AttDate, "status": attndnce };
     console.log("obj: " + JSON.stringify(obj));
-    stud.update({ "_id": ObjectId(id), "attendance.$.dateAttendance": AttDate}, { $set: { "attendance.$.dateAttendance": { "date": AttDate, "status": attndnce } } }, function (err, data) {
-    //stud.update({ "_id": ObjectId(id) }, { $set: { "attendance.$.dateAttendance": { "date": AttDate, "status": attndnce } } }, function (err, data) {
+    stud.update({ "_id": ObjectId(id), "attendance.$.dateAttendance": AttDate }, { $set: { "attendance.$.dateAttendance": { "date": AttDate, "status": attndnce } } }, function (err, data) {
+        //stud.update({ "_id": ObjectId(id) }, { $set: { "attendance.$.dateAttendance": { "date": AttDate, "status": attndnce } } }, function (err, data) {
         console.log("2nd query started: " + JSON.stringify(data));
         console.log("2nd query data.length: " + data.length);
         if (err) {

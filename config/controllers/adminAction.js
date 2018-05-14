@@ -1246,7 +1246,7 @@ module.exports.monthlyDataUpdate = function (data, callback) {
                     else {
                         console.log("no erroe");
                         console.log("arrayLength: " + arrayLength);
-                        if (arrayLength == 0) {
+                        
                             console.log("second query started");
                             console.log("studIdForFindQry: " + JSON.stringify(studIdForFindQry));
                             console.log("monthAtt: " + JSON.stringify(monthAtt));
@@ -1264,12 +1264,7 @@ module.exports.monthlyDataUpdate = function (data, callback) {
                                     if (callback) callback();
                                 }
                             })
-                        }
-                        else {
-                            marker = false;
-                            message = "Sorry! you already updated for this month";
-                            if (callback) callback();
-                        }
+                       
 
                     }
                 })

@@ -777,6 +777,7 @@ module.exports.dailyData = function (data, callback) {
     var attndnce;
     //var dateString = data.Date;
     var columnLength = Object.keys(data).length; /* ##### Note: Number of column from uploaded files ##### */
+    console.log("columnLength: "+columnLength);
     for (var key in data) {
         console.log("key: "+key);
         console.log("data[columnLength]: "+data[columnLength-1]);

@@ -1125,7 +1125,7 @@ module.exports.dailyDataUpdate = function (data, callback) {
         "schoolId": data.StudentID,
         "attendance.month": month,
         "schoolName": schoolName,
-        "attendance.dateAttendance": attndnce
+        "attendance.dateAttendance.date": day
     }
     console.log("studIdForUpdateQry: " + JSON.stringify(studIdForUpdateQry));
     stud.find({ "schoolName": schoolName, "schoolId": data.StudentID }).toArray(function (err, isThereData) {
@@ -1149,8 +1149,8 @@ module.exports.dailyDataUpdate = function (data, callback) {
                     else {
 
                         //stud.update(studIdForUpdateQry, { $push: { "attendance.$.dateAttendance": attndnce } }, function (err, data) {
-                        //stud.update(studIdForUpdateQry, { $set: { "attendance.$.dateAttendance": attndnce } }, function (err, data) {
-                            stud.remove(studIdForUpdateQry, function (err, data) {
+                        stud.update(studIdForUpdateQry, { $set: { "attendance.$.dateAttendance.$.status": data.Status } }, function (err, data) {
+                           // stud.remove(studIdForUpdateQry, function (err, data) {
                             console.log("2nd query started: " + JSON.stringify(data));
                             // console.log("2nd query data.length: " + data.length);
                             if (err) {

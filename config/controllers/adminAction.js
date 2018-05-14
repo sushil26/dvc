@@ -1021,7 +1021,7 @@ module.exports.monthlyData = function (data, callback) {
 module.exports.attendanceUpdate = function (req, res) {
     console.log("attendanceUpdate-->");
     expectedMessage = '';
- 
+
     var responseData;
     schoolName = req.params.schoolName;
 
@@ -1093,7 +1093,7 @@ module.exports.attendanceUpdate = function (req, res) {
 
 
         });
-    
+
     console.log("<--attendanceUpdate");
 }
 /* ### Start update daily attendance status  ### */
@@ -1253,10 +1253,10 @@ module.exports.monthlyDataUpdate = function (data, callback) {
                     }
                     else {
                         console.log("no erroe");
-                        console.log("arrayLength: " + arrayLength);
-                        console.log("second query started");
                         console.log("studIdForFindQry: " + JSON.stringify(studIdForFindQry));
                         console.log("monthAtt: " + JSON.stringify(monthAtt));
+                        console.log("arrayLength: " + arrayLength);
+                        console.log("second query started");
                         // stud.update(studIdForFindQry, { $set: { "attendance.$.dateAttendance": [] } }, function (err, findData) {
                         //     //stud.update(studIdForFindQry, { $push: { "attendance.$.dateAttendance": { $each: monthAtt } } }, function (err, findData) {
                         //     console.log("set findData: " + JSON.stringify(findData));

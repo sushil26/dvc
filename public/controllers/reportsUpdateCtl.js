@@ -296,6 +296,7 @@ app.controller('reportsUpdateCtl', function ($scope, $window, $state, httpFactor
     var obj = {
       "file": file
     }
+    console.log("clas: "+clas+"section: "+section+"reportType: "+reportType+"month: "+month)
     var api = "https://norecruits.com/vc/attendanceUpdate/" + clas + "/" + section + "/" + reportType + "/" + month;
     console.log("api: " + api);
     httpFactory.csvUpload(obj, api).then(function (data) {

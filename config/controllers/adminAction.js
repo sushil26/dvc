@@ -1118,14 +1118,14 @@ module.exports.dailyDataUpdate = function (data, callback) {
     var studIdForFindQry = {
         "schoolId": data.StudentID,
         "schoolName": schoolName,
-        "attendance.month": month,
-        "attendance.dateAttendance": attndnce
+        "attendance.month": month
     }
     console.log("studIdForFindQry: " + JSON.stringify(studIdForFindQry));
     var studIdForUpdateQry = {
         "schoolId": data.StudentID,
         "attendance.month": month,
-        "schoolName": schoolName
+        "schoolName": schoolName,
+        "attendance.dateAttendance.date": day
     }
     console.log("studIdForUpdateQry: " + JSON.stringify(studIdForUpdateQry));
     stud.find({ "schoolName": schoolName, "schoolId": data.StudentID }).toArray(function (err, isThereData) {

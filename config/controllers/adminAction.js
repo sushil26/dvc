@@ -784,7 +784,7 @@ module.exports.dailyData = function (data, callback) {
 
     day = parts[1];
     month = parts[0];
-    attndnce = {'date': day, status = data.Status};
+    attndnce = {'date': day, 'status' : data.Status};
 
 console.log("attndnce: " + JSON.stringify(attndnce));
 

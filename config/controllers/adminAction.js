@@ -774,12 +774,13 @@ module.exports.uploadAttendance = function (req, res) {
 };
 /* ### Start upload daily attendance status  ### */
 module.exports.dailyData = function (data, callback) {
-    console.log('inside saving')
+    console.log('inside dailyData saving')
 var day;
 var attndnce;
     //var dateString = data.Date;
     var columnLength = Object.keys(data).length; /* ##### Note: Number of column from uploaded files ##### */
     for (var key in data) {
+        console.log("key: "+key);
        if(key==5){
            day = key;
             attndnce ={key:key, "status":data[key]}

@@ -1040,6 +1040,7 @@ module.exports.attendanceUpdate = function (req, res) {
         console.log("data: " + JSON.stringify(data));
         console.log("req.reportType: " + req.params.reportType);
         parser.pause();
+        month = req.params.month;
         if (req.params.reportType == "Daily") {
             console.log("daily started-->");
             module.exports.dailyDataUpdate(data, function (err) {
@@ -1049,7 +1050,7 @@ module.exports.attendanceUpdate = function (req, res) {
             });
         }
         if (req.params.reportType == "Monthly") {
-            month = req.params.month;
+          
             module.exports.monthlyDataUpdate(data, function (err) {
                 console.log("savedatInitiate");
                 // TODO: handle error
@@ -1114,7 +1115,6 @@ module.exports.dailyDataUpdate = function (data, callback) {
 
     console.log("attndnce: " + JSON.stringify(attndnce));
 
-    console.log("attndnce: " + JSON.stringify(attndnce));
     var studIdForFindQry = {
         "schoolId": data.StudentID,
         "schoolName": schoolName,

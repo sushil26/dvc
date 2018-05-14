@@ -1022,7 +1022,7 @@ module.exports.attendanceUpdate = function (req, res) {
     console.log("attendanceUpdate-->");
     expectedMessage = '';
     var responseData;
-    id = req.params.id;
+   console.log("class: "+clas+" section: "+section+"reportType: "+reportType+" month: " +month);
     console.log("req.body.files: " + req.files.img);
     if (!req.files)
         return res.status(400).send('No files were uploaded.');

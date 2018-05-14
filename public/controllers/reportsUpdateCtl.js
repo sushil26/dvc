@@ -292,7 +292,7 @@ app.controller('reportsUpdateCtl', function ($scope, $window, $state, httpFactor
   }
   $scope.attendanceUpdate = function(file, clas, section, reportType, month){
     console.log("attendanceUpdate-->");
-    console.log("id: " + id);
+   
     var obj = {
       "file": file
     }

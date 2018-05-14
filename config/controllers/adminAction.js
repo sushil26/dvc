@@ -1149,7 +1149,7 @@ module.exports.dailyDataUpdate = function (data, callback) {
                     else {
 
                         //stud.update(studIdForUpdateQry, { $push: { "attendance.$.dateAttendance": attndnce } }, function (err, data) {
-                        stud.update(studIdForUpdateQry, { $set: { "attendance.$.dateAttendance": [] } }, function (err, data) {
+                        stud.update(studIdForUpdateQry, { $set: { "attendance.$.dateAttendance.status": data.Status } }, function (err, data) {
                             console.log("2nd query started: " + JSON.stringify(data));
                             console.log("2nd query data.length: " + data.length);
                             if (err) {
@@ -1157,16 +1157,16 @@ module.exports.dailyDataUpdate = function (data, callback) {
                                 if (callback) callback();
                             }
                             else {
-                                stud.update(studIdForUpdateQry, { $push: { "attendance.$.dateAttendance": attndnce } }, function (err, data) {
-                                    if (err) {
-                                        marker = false;
-                                        if (callback) callback();
-                                    }
-                                    else {
+                                // stud.update(studIdForUpdateQry, { $push: { "attendance.$.dateAttendance": attndnce } }, function (err, data) {
+                                //     if (err) {
+                                //         marker = false;
+                                //         if (callback) callback();
+                                //     }
+                                    // else {
                                         marker = true;
                                         if (callback) callback();
-                                    }
-                                })
+                                    //}
+                                // })
                             }
                         })
 

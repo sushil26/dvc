@@ -777,25 +777,19 @@ module.exports.dailyData = function (data, callback) {
     var attndnce;
     //var dateString = data.Date;
     var columnLength = Object.keys(data).length; /* ##### Note: Number of column from uploaded files ##### */
-    console.log("columnLength: "+columnLength);
-    for (var key in data) {
-        console.log("key: "+key);
-        console.log("data[columnLength]: "+data[columnLength-1]);
-        if(data[key]==data[columnLength-1])
-        {
-            attndnce = {
-                key : key, "status": data[key]
-            }
-        }
-           }
-    console.log("attndnce: " + JSON.stringify(attndnce));
-    // var parts = dateString.split(' ');
-    // console.log("parts: " + JSON.stringify(parts));
-    // var AttYear = parts[2];
-    // var AttMonth = parts[1];
-    // var AttDate = parts[0];
+    console.log("Object.keys(data)[length]: "+columnLength);
+   
+    var parts = dateString.split('-');
+    console.log("parts: " + JSON.stringify(parts));
 
+    day = parts[1];
+    month = parts[0];
+    attndnce[day] = day
 
+    attndnce.status = data.Status;
+    
+
+console.log("attndnce: " + JSON.stringify(attndnce));
 
     console.log("attndnce: " + JSON.stringify(attndnce));
     var studIdForFindQry = {

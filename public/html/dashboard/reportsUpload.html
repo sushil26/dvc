@@ -140,7 +140,7 @@
                                         <div class="col-lg-3" ng-if="up.ttSelect=='Daily'">
                                             <input type="date" ng-model="attendanceDate">
                                         </div>
-                                    </div>
+                                    </div>---{{attendanceDate}}
                                     <div class="form-group ">
                                         <label class="control-label col-lg-3" ng-if="up.uploadType=='Monthly'">Month</label>
                                         <div class="col-lg-3">
@@ -173,7 +173,7 @@
 
                                     <div class="form-group">
                                         <div class="col-lg-offset-2 col-lg-10">
-                                            <button ng-if="up.uploadType=='Attendance'" type="reset" class=" bcontrol-label  btn btn-success" ng-click="uploadFile(up.uploadDoc,up.uploadType, up.cSelect.class,up.sSelect, up.ttSelect, up.mSelect)">Save</button>
+                                            <button ng-if="up.uploadType=='Attendance' && up.uploadType=='Monthly'" type="reset" class=" bcontrol-label  btn btn-success" ng-click="uploadFile(up.uploadDoc,up.uploadType, up.cSelect.class,up.sSelect, up.ttSelect, up.mSelect)">Save</button>
                                             <button ng-if="up.uploadType=='Attendance' && up.ttSelect=='Daily'" type="reset" class=" bcontrol-label  btn btn-success" ng-click="uploadFile(up.uploadDoc,up.uploadType, up.cSelect.class, up.sSelect, up.ttSelect, attendanceDate | date:'MMM-dd')">Save</button>
                                             <button ng-if="up.uploadType=='Student Details'" type="reset" class=" bcontrol-label btn btn-success" ng-click="uploadFile(up.uploadDoc,up.uploadType, up.cSelect.class,up.sSelect)">Save</button>
                                             <button ng-if="up.uploadType=='Teacher Details'" type="reset" class="  bcontrol-label btn btn-success" ng-click="uploadFile(up.uploadDoc,up.uploadType)">Save</button>

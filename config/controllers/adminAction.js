@@ -1151,7 +1151,7 @@ module.exports.dailyDataUpdate = function (data, callback) {
                         //stud.update(studIdForUpdateQry, { $push: { "attendance.$.dateAttendance": attndnce } }, function (err, data) {
                         stud.update(studIdForUpdateQry, { $set: { "attendance.$.dateAttendance.status": data.Status } }, function (err, data) {
                             console.log("2nd query started: " + JSON.stringify(data));
-                            console.log("2nd query data.length: " + data.length);
+                            // console.log("2nd query data.length: " + data.length);
                             if (err) {
                                 marker = true;
                                 if (callback) callback();

@@ -1254,7 +1254,6 @@ module.exports.monthlyDataUpdate = function (data, callback) {
                     else {
                         console.log("no erroe");
                         console.log("arrayLength: " + arrayLength);
-
                         console.log("second query started");
                         console.log("studIdForFindQry: " + JSON.stringify(studIdForFindQry));
                         console.log("monthAtt: " + JSON.stringify(monthAtt));

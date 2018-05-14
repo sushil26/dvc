@@ -1108,8 +1108,8 @@ module.exports.dailyDataUpdate = function (data, callback) {
 
     var obj = { "date": AttDate, "status": attndnce };
     console.log("obj: " + JSON.stringify(obj));
-
-    stud.update({ "_id": ObjectId(id) }, { $set: { "attendance.$.dateAttendance": { "date": AttDate, "status": attndnce } } }, function (err, data) {
+    stud.update({ "_id": ObjectId(id), "attendance.$.dateAttendance": AttDate}, { $set: { "attendance.$.dateAttendance": { "date": AttDate, "status": attndnce } } }, function (err, data) {
+    //stud.update({ "_id": ObjectId(id) }, { $set: { "attendance.$.dateAttendance": { "date": AttDate, "status": attndnce } } }, function (err, data) {
         console.log("2nd query started: " + JSON.stringify(data));
         console.log("2nd query data.length: " + data.length);
         if (err) {
@@ -1258,15 +1258,26 @@ module.exports.monthlyDataUpdate = function (data, callback) {
                         stud.update(studIdForFindQry, { $set: { "attendance.$.dateAttendance": [] } }, function (err, findData) {
                             //stud.update(studIdForFindQry, { $push: { "attendance.$.dateAttendance": { $each: monthAtt } } }, function (err, findData) {
                             console.log("set findData: " + JSON.stringify(findData));
-                            monthAtt = [];
+
                             if (err) {
                                 marker = false;
                                 message = err;
                                 if (callback) callback();
                             }
                             else {
-                                marker = true;
-                                if (callback) callback();
+                                stud.update(studIdForFindQry, { $push: { "attendance.$.dateAttendance": { $each: monthAtt } } }, function (err, findData) {
+                                    console.log("set findData: " + JSON.stringify(findData));
+                                    monthAtt = [];
+                                    if (err) {
+                                        marker = false;
+                                        message = err;
+                                        if (callback) callback();
+                                    }
+                                    else {
+                                        marker = true;
+                                        if (callback) callback();
+                                    }
+                                })
                             }
                         })
 

@@ -255,6 +255,7 @@ app.controller('reportsUploadCtl', function ($scope, $window, httpFactory, sessi
     }
     else if (uploadType == "Attendance") {
       var month = list;
+      console.log("month: "+month);
       var api = "https://norecruits.com/vc/uploadAttendance/" + schoolName + "/" + clas + "/" + section + "/" + reportType + "/" + month;
     }
     else if (uploadType == "Payment") {

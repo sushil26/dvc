@@ -290,13 +290,13 @@ app.controller('reportsUpdateCtl', function ($scope, $window, $state, httpFactor
     });
     console.log("<--timeTableFileupdate");
   }
-  $scope.attendanceUpdate = function(file, id, month){
+  $scope.attendanceUpdate = function(file, clas, section, reportType, month){
     console.log("attendanceUpdate-->");
     console.log("id: " + id);
     var obj = {
       "file": file
     }
-    var api = "https://norecruits.com/vc/attendanceUpdate/" +id+"/"+month;
+    var api = "https://norecruits.com/vc/attendanceUpdate/" + clas + "/" + section + "/" + reportType + "/" + month;
     console.log("api: " + api);
     httpFactory.csvUpload(obj, api).then(function (data) {
       var checkStatus = httpFactory.dataValidation(data);
@@ -329,7 +329,6 @@ app.controller('reportsUpdateCtl', function ($scope, $window, $state, httpFactor
         //alert("Update Fail");
       }
     });
-
     console.log("<--attendanceUpdate");
   }
   $scope.uploadFile = function (file, uploadType, reportType, list) {

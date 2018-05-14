@@ -218,11 +218,11 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label ng-if="up.uploadType!='Teacher Details' && up.uploadType!='Time Table' && up.uploadType!=''" class="control-label col-lg-3">Select Student
+                                        <label ng-if="up.uploadType!='Teacher Details' && up.uploadType!='Attendance'" && up.uploadType!='Time Table' && up.uploadType!=''" class="control-label col-lg-3">Select Student
                                             <span class="required">*</span>
                                         </label>
                                         <div class="col-lg-3">
-                                            <select class="btn" ng-if="up.uploadType!='Teacher Details' && up.uploadType!='Time Table' && up.uploadType!=''" placeholder="select" ng-model="sSelect" ng-options="cs as cs.name + '-' + cs.studId for cs in studList"
+                                            <select class="btn" ng-if="up.uploadType!='Teacher Details' && up.uploadType!='Attendance'" && up.uploadType!='Time Table' && up.uploadType!=''" placeholder="select" ng-model="sSelect" ng-options="cs as cs.name + '-' + cs.studId for cs in studList"
                                                 ng-change="studentDetailById(sSelect)">
                                                 <option value="" disabled selected>Student</option>
                                             </select>
@@ -290,14 +290,14 @@
                                                 value="date">
                                         </div>
                                     </div>
-                                    <!-- <div class="form-group ">
+                                    <div class="form-group ">
                                         <label class="control-label col-lg-3" ng-if="up.uploadType=='Attendance'">Attendance report</label>
                                         <div class="col-lg-3">
                                             <select class="form-control m-bot15" ng-if="up.uploadType=='Attendance'" placeholder="select" ng-model="up.ttSelect" ng-options="at as at for at in attendanceTypes">
                                                 <option value="" disabled selected>Attendance report</option>
                                             </select>
                                         </div>
-                                    </div> -->
+                                    </div>
                                     <div class="form-group">
                                         <label class="control-label col-lg-3" ng-if="up.uploadType=='Attendance'">Month</label>
                                         <div class="col-lg-3">
@@ -307,10 +307,10 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group" ng-if="up.uploadType=='Attendance' && openCalendarTemplate==true">
+                                    <!-- <div class="form-group" ng-if="up.uploadType=='Attendance' && openCalendarTemplate==true">
                                         <mwl-calendar events="events" view-title="calendarTitle" view="calendarView" view-date="viewDate">
                                         </mwl-calendar>
-                                    </div>
+                                    </div> -->
                                     <!-- <div class="form-group ">
                                         <label class="control-label col-lg-3" ng-if="up.uploadType=='Payment'">Payment report</label>
                                         <div class="col-lg-3">
@@ -335,14 +335,13 @@
 
                                     <div class="form-group">
                                         <div class="col-lg-offset-2 col-lg-10">
-                                            <button ng-if="up.uploadType=='Attendance'" type="reset" class=" bcontrol-label  btn btn-success" ng-click="attendanceUpdate(up.uploadDoc,up.uploadType, studentDetail[0]._id, up.mSelect)">Save</button>
+                                            <button ng-if="up.uploadType=='Attendance'" type="reset" class=" bcontrol-label  btn btn-success" ng-click="attendanceUpdate(up.uploadDoc,up.uploadType, up.cSelect.class,up.sSelect, up.ttSelect, up.mSelect)">Save</button>
                                             <button ng-if="up.uploadType=='Student Details'" type="reset" class=" bcontrol-label btn btn-success" ng-click="teacherUpdate(up.uploadDoc,up.uploadType, studentDetail[0]._id)">Save</button>
                                             <button ng-if="up.uploadType=='Teacher Details'" type="reset" class="  bcontrol-label btn btn-success" ng-click="teacherUpdate(up.uploadDoc,up.uploadType, up.teacherSelect._id)">Save</button>
                                             <button ng-if="up.uploadType=='Time Table'" type="reset" class=" bcontrol-label  btn btn-success" ng-click="timeTableFileupdate(up.uploadDoc,up.teacherSelect._id)">Save</button>
                                             <button ng-if="up.uploadType=='Mark Report'" type="reset" class="bcontrol-label btn btn-success" ng-click="uploadMarkFile(up.uploadDoc,up.ttSelect,up.testDate| date:'dd-MM-yy',up.cSelect.class,up.sSelect)">Save</button>
                                             <button type="reset" class="bcontrol-label btn btn-danger">Cancel</button>
                                         </div>
-
                                     </div>
                                 </div>
                             </form>

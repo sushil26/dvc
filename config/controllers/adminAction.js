@@ -1021,8 +1021,10 @@ module.exports.monthlyData = function (data, callback) {
 module.exports.attendanceUpdate = function (req, res) {
     console.log("attendanceUpdate-->");
     expectedMessage = '';
+ 
     var responseData;
-   console.log("class: "+req.params.clas+" section: "+req.params.section+"reportType: "+req.params.reportType+" month: " +req.params.month);
+    schoolName = req.params.schoolName;
+
     console.log("req.body.files: " + req.files.img);
     if (!req.files)
         return res.status(400).send('No files were uploaded.');
@@ -1037,15 +1039,16 @@ module.exports.attendanceUpdate = function (req, res) {
         parser.pause();
         if (req.params.reportType == "Daily") {
             console.log("daily started-->");
-            module.exports.dailyDataUpdate(data, function (err) {
+            module.exports.dailyData(data, function (err) {
                 console.log("savedatInitiate");
                 // TODO: handle error
+
                 parser.resume();
             });
         }
         if (req.params.reportType == "Monthly") {
             month = req.params.month;
-            module.exports.monthlyDataUpdate(data, function (err) {
+            module.exports.monthlyData(data, function (err) {
                 console.log("savedatInitiate");
                 // TODO: handle error
                 console.log("unknownData: " + JSON.stringify(unknownData));
@@ -1061,8 +1064,11 @@ module.exports.attendanceUpdate = function (req, res) {
                 else {
                     parser.resume();
                 }
+
             });
         }
+
+
     })
         .on("end", function () {
             console.log("end marker: " + marker);
@@ -1084,7 +1090,10 @@ module.exports.attendanceUpdate = function (req, res) {
                 unknownData = [];
                 res.status(200).send(responseData);
             }
+
+
         });
+    
     console.log("<--attendanceUpdate");
 }
 /* ### Start update daily attendance status  ### */

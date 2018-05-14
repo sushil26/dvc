@@ -1039,16 +1039,15 @@ module.exports.attendanceUpdate = function (req, res) {
         parser.pause();
         if (req.params.reportType == "Daily") {
             console.log("daily started-->");
-            module.exports.dailyData(data, function (err) {
+            module.exports.dailyDataUpdate(data, function (err) {
                 console.log("savedatInitiate");
                 // TODO: handle error
-
                 parser.resume();
             });
         }
         if (req.params.reportType == "Monthly") {
             month = req.params.month;
-            module.exports.monthlyData(data, function (err) {
+            module.exports.monthlyDataUpdate(data, function (err) {
                 console.log("savedatInitiate");
                 // TODO: handle error
                 console.log("unknownData: " + JSON.stringify(unknownData));
@@ -1127,7 +1126,7 @@ module.exports.dailyDataUpdate = function (data, callback) {
 /* ### Start update monthly attendance status  ### */
 module.exports.monthlyDataUpdate = function (data, callback) {
     var arrayLength
-    console.log("monthly started-->");
+    console.log("monthly DataUpdate started-->");
     console.log("req.params.month: " + month);
     // var marker;
     var studIdForFindQry = {
@@ -1239,7 +1238,6 @@ module.exports.monthlyDataUpdate = function (data, callback) {
         else {
             if (isThereData.length > 0) {
                 console.log("month: " + month);
-
                 stud.find({ "schoolName": schoolName, "schoolId": data.StudentID, "attendance.month": month }).toArray(function (err, findData) {
                     console.log("1st query findData: " + JSON.stringify(findData));
                     console.log("attendanceIndex: " + JSON.stringify(findData[0].attendance[attendanceIndex]));

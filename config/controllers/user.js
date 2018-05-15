@@ -272,7 +272,8 @@ module.exports.checkPassword = function (req, res) {
           "id": id
         }
         user.find(findQuery).toArray(function (err, userData) {
-          console.log("second query status: " + userData);
+          console.log("find query status: " + JSON.stringify(userData));
+          console.log("find query status length: " + userData.length);
 
           if (err) {
             responseData = {

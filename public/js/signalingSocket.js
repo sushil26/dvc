@@ -592,12 +592,6 @@ signaling_socket.on("addPeer", function (config) {
       );
       $("#" + peer_id + "Remote").css({ height: "100vh" });
       $("#videoElem").css({
-        position: "absolute",
-        top: "5%",
-        left: "5%",
-        "z-index": "2",
-        background: "none",
-        border: "none",
         height: "auto",
         width: "20%"
       });
@@ -615,12 +609,7 @@ signaling_socket.on("addPeer", function (config) {
       );
       $("#" + peer_id + "Remote").css({ height: "200px" });
       $("#videoElem").css({
-        position: "",
-        top: "",
-        left: "",
-        "z-index": "",
-        background: "",
-        border: "",
+     
         height: "",
         width: ""
       });

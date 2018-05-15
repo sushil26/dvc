@@ -364,8 +364,11 @@
                                                         <th>#</th>
                                                         <th>Student Id</th>
                                                         <th>Student Name</th>
-                                                        <th>Date with status</th>
-
+                                                        <td ng-repeat="attendance in studentList[0]">
+                                                            <div ng-if="attendance.month==up.mSelect" ng-repeat="(key,value) in attendance.dateAttendance">
+                                                                {{key}}
+                                                            </div>
+                                                        </td>>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -377,9 +380,8 @@
                                                         </td>
                                                         <!-- <th style="background-color:white;" ng-repeat=" (key, value) in up.testDate.mark">{{value}}</th> -->
                                                         <td style="background-color:white;" ng-repeat="attendance in sd.attendance">
-                                                            <div ng-if="attendance.month==up.mSelect" ng-repeat="(key, value) in attendance.dateAttendance">
-                                                                {{key}}:{{value}}
-                                                                <br>
+                                                            <div ng-if="attendance.month==up.mSelect" ng-repeat="dateAtt in attendance.dateAttendance">
+                                                                {{dateAtt.status}}
                                                             </div>
                                                         </td>
                                                     </tr>

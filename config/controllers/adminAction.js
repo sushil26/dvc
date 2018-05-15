@@ -1148,7 +1148,7 @@ module.exports.dailyDataUpdate = function (data, callback) {
                     }
                     else {
                         var pulledQueryVal = {
-                            "date": day
+                            "date": typeof parseInt(day)
                         }
                         console.log("pulledQueryVal: " + JSON.stringify(pulledQueryVal));
                         stud.update(studIdForUpdateQry, { $pull: { "attendance.$.dateAttendance": pulledQueryVal } }, function (err, pulledData) {

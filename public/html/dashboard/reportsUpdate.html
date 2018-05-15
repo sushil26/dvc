@@ -7,7 +7,7 @@
                 <section class="panel">
                     <div class="panel-heading" style="background: #3a4a58">
                         <i class="fa fa-user-circle"></i>
-                        <span style="color:white;">&nbspREPORTS UPLOAD</span>
+                        <span style="color:white;">&nbspREPORTS UPDATE</span>
                     </div>
                     <div class="panel-body bio-graph-info" style="padding: 1px;">
                         <div style="margin:20px !important;">
@@ -222,14 +222,14 @@
                                             <span class="required">*</span>
                                         </label>
                                         <div class="col-lg-3">
-                                            <select class="btn" placeholder="select" ng-model="sSelect" ng-options="cs as cs.name + '-' + cs.studId for cs in studList"
-                                                ng-change="studentDetailById(sSelect)">
+                                            <select class="btn" placeholder="select" ng-model="up.sSelect" ng-options="cs as cs.name + '-' + cs.studId for cs in studList"
+                                                ng-change="studentDetailById(up.sSelect)">
                                                 <option value="" disabled selected>Student</option>
                                             </select>
                                         </div>
-                                    </div>
+                                    </div>--------{{}}
                                     <!--##### Start Student data #####-->
-                                    <section ng-if="sSelect.studId && up.uploadType=='Student Details'" class="panel">
+                                    <section ng-if="up.uploadType=='Student Details' && up.sSelect" class="panel">
                                         <div class="form-group">
                                             <div class="panel-heading" style="background: #3a4a58;">
                                                 <i class="fa fa-user-circle"></i>

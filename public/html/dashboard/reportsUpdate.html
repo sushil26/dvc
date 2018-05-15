@@ -229,7 +229,7 @@
                                         </div>
                                     </div>
                                     <!--##### Start Student data #####-->
-                                    <section ng-if="up.uploadType=='Student Details'" class="panel">
+                                    <section ng-if="up.uploadType=='Student Details' && sSelect" class="panel">
                                         <div class="form-group">
                                             <div class="panel-heading" style="background: #3a4a58;">
                                                 <i class="fa fa-user-circle"></i>
@@ -294,7 +294,7 @@
                                         </div>
                                     </div>
                                          <!--##### Start Mark data #####-->
-                                         <section ng-if="up.testDate.date!='' && up.uploadType=='Mark Report'" class="panel">
+                                         <section ng-if="up.testDate && up.uploadType=='Mark Report'" class="panel">
                                                 <div class="form-group">
                                                     <div class="panel-heading" style="background: #3a4a58;">
                                                         <i class="fa fa-user-circle"></i>

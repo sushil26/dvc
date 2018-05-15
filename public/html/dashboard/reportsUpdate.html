@@ -218,11 +218,11 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label ng-if="up.uploadType!='Teacher Details' && up.uploadType!='Attendance' && up.uploadType!='Time Table' && up.uploadType!=''" class="control-label col-lg-3">Select Student
+                                        <label ng-if="up.uploadType!='Teacher Details' && up.uploadType!='Attendance' && up.uploadType!='Time Table' && up.uploadType!='Mark Report' && up.uploadType!=''" class="control-label col-lg-3">Select Student
                                             <span class="required">*</span>
                                         </label>
                                         <div class="col-lg-3">
-                                            <select class="btn" ng-if="up.uploadType!='Teacher Details' && up.uploadType!='Attendance' && up.uploadType!='Time Table' && up.uploadType!=''" placeholder="select" ng-model="sSelect" ng-options="cs as cs.name + '-' + cs.studId for cs in studList"
+                                            <select class="btn" ng-if="up.uploadType!='Teacher Details' && up.uploadType!='Attendance' && up.uploadType!='Time Table' && up.uploadType!='Mark Report' && up.uploadType!=''" placeholder="select" ng-model="sSelect" ng-options="cs as cs.name + '-' + cs.studId for cs in studList"
                                                 ng-change="studentDetailById(sSelect)">
                                                 <option value="" disabled selected>Student</option>
                                             </select>

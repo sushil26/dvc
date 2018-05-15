@@ -364,11 +364,11 @@
                                                         <th>#</th>
                                                         <th>Student Id</th>
                                                         <th>Student Name</th>
-                                                        <td ng-repeat="attendance in studentList[0].attendance">
-                                                            <div ng-if="attendance.month==up.mSelect" ng-repeat="(key,value) in attendance.dateAttendance">
+                                                        <div ng-repeat="attendance in studentList[0].attendance">
+                                                            <td ng-if="attendance.month==up.mSelect" ng-repeat="(key,value) in attendance.dateAttendance">
                                                                 {{key}}
-                                                            </div>
-                                                        </td>>
+                                                            </td>
+                                                        </div>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -379,13 +379,11 @@
                                                             {{sd.firstName + " " + sd.lastName}}
                                                         </td>
                                                         <!-- <th style="background-color:white;" ng-repeat=" (key, value) in up.testDate.mark">{{value}}</th> -->
-                                                        <div ng-repeat="attendance in sd.attendance" >
-                                                        <td style="background-color:white;" ng-if="attendance.month==up.mSelect" ng-repeat="dateAtt in attendance.dateAttendance">
-                                                           
+                                                        <td style="background-color:white;" ng-repeat="attendance in sd.attendance">
+                                                            <div ng-if="attendance.month==up.mSelect" ng-repeat="dateAtt in attendance.dateAttendance">
                                                                 {{dateAtt.status}}
-                                                            
+                                                            </div>
                                                         </td>
-                                                    </div>
                                                     </tr>
                                                 </tbody>
                                             </table>

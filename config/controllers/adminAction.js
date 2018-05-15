@@ -814,10 +814,10 @@ console.log('inside saving -->updateMarkSheet')
         else {
             if (findData.length > 0) {
                 console.log("consolidateMS: " + JSON.stringify(consolidateMS));
-                stud.findOneAndUpdate(studIdForUpdateQry, { $pull: { "mark.$.subjectWithMark": { "date":date } } }, function (err, data) {
+                stud.findOneAndUpdate(studIdForUpdateQry, { $pull: { "mark.$.subjectWithMark": { "date":date } } }, function (err, pulledData) {
                 //stud.findOneAndUpdate(studIdForUpdateQry, { $push: { "mark.$.subjectWithMark": { $each: consolidateMS } } }, function (err, data) {
                 
-                    console.log("2nd query data.length: " + data);
+                    console.log("2nd query data.length: " + pulledData);
                     if (err) {
                         marker = true;
                         if (callback) callback();

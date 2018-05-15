@@ -694,7 +694,7 @@ module.exports.uploadMarkSheet = function (data, callback) {
 
 }
 
-module.exports.markUpdate = function (data, callback) {
+module.exports.markUpdate = function (req, res) {
 console.log("markUpdate-->");
 schoolName = req.params.schoolName;
 testType = req.params.testType;

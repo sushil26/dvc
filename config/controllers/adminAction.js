@@ -695,85 +695,85 @@ module.exports.uploadMarkSheet = function (data, callback) {
 }
 
 module.exports.markUpdate = function (req, res) {
-console.log("markUpdate-->");
-schoolName = req.params.schoolName;
-testType = req.params.testType;
-testStartDate = req.params.date;
-clas = req.params.clas;
-section = req.params.section;
-console.log("schoolName: "+schoolName+" testType: "+testType+" testStartDate: "+testStartDate+" clas: "+clas+" section: "+section);
-console.log("req.body.files: " + req.files.img);
-if (!req.files)
-    return res.status(400).send('No files were uploaded.');
-var studentDataFile = req.files.img;
-console.log("studentDataFile: " + studentDataFile);
-var parser = csv.fromString(studentDataFile.data.toString(), {
-    headers: true,
-    ignoreEmpty: true
-}).on("data", function (data) {
-    console.log("upload data: " + JSON.stringify(data));
-    parser.pause();
-    //var count = Object.keys(data).length;
-    var studIdForFindQry = {
-        "cs": [{ "class": clas, "section": section }]
-    }
-    stud.find(studIdForFindQry).toArray(function (err, findData) {
-        console.log("class section query findData: " + JSON.stringify(findData));
-        console.log("class section query findData.length: " + findData.length);
-        if (err) {
-            marker = false;
-            responseData = {
-                status: false,
-                message: err
-            };
-            res.status(400).send(responseData);
+    console.log("markUpdate-->");
+    schoolName = req.params.schoolName;
+    testType = req.params.testType;
+    testStartDate = req.params.date;
+    clas = req.params.clas;
+    section = req.params.section;
+    console.log("schoolName: " + schoolName + " testType: " + testType + " testStartDate: " + testStartDate + " clas: " + clas + " section: " + section);
+    console.log("req.body.files: " + req.files.img);
+    if (!req.files)
+        return res.status(400).send('No files were uploaded.');
+    var studentDataFile = req.files.img;
+    console.log("studentDataFile: " + studentDataFile);
+    var parser = csv.fromString(studentDataFile.data.toString(), {
+        headers: true,
+        ignoreEmpty: true
+    }).on("data", function (data) {
+        console.log("upload data: " + JSON.stringify(data));
+        parser.pause();
+        //var count = Object.keys(data).length;
+        var studIdForFindQry = {
+            "cs": [{ "class": clas, "section": section }]
         }
-        else {
-            if (findData.length > 0) {
-                parser.pause();
-                module.exports.updateMarkSheet(data, function (err) {
-                    console.log("savedatInitiate");
-                    parser.resume();
-                });
-            }
-            else {
+        stud.find(studIdForFindQry).toArray(function (err, findData) {
+            console.log("class section query findData: " + JSON.stringify(findData));
+            console.log("class section query findData.length: " + findData.length);
+            if (err) {
+                marker = false;
                 responseData = {
                     status: false,
-                    message: "There is no record for this class and section"
+                    message: err
                 };
                 res.status(400).send(responseData);
             }
-        }
+            else {
+                if (findData.length > 0) {
+                    parser.pause();
+                    module.exports.updateMarkSheet(data, function (err) {
+                        console.log("savedatInitiate");
+                        parser.resume();
+                    });
+                }
+                else {
+                    responseData = {
+                        status: false,
+                        message: "There is no record for this class and section"
+                    };
+                    res.status(400).send(responseData);
+                }
+            }
+        })
     })
-})
-    .on("end", function () {
-        console.log("end ");
-        console.log("end marker: " + marker);
-        if (marker == false) {
-            responseData = {
-                status: false,
-                message: message
-            };
-            res.status(400).send(responseData);
-        }
-        else if (marker == true) {
-            console.log("unknownData: " + JSON.stringify(unknownData));
-            var unknownStud = unknownData;
-            responseData = {
-                status: true,
-                message: "Successfull updated data",
-                data: unknownStud
-            };
-            unknownData = [];
-            res.status(200).send(responseData);
-        }
-    })
+        .on("end", function () {
+            console.log("end ");
+            console.log("end marker: " + marker);
+            if (marker == false) {
+                responseData = {
+                    status: false,
+                    message: message
+                };
+                res.status(400).send(responseData);
+            }
+            else if (marker == true) {
+                console.log("unknownData: " + JSON.stringify(unknownData));
+                var unknownStud = unknownData;
+                responseData = {
+                    status: true,
+                    message: "Successfull updated data",
+                    data: unknownStud
+                };
+                unknownData = [];
+                res.status(200).send(responseData);
+            }
+        })
 
-console.log("<--markUpdate");
+    console.log("<--markUpdate");
 }
-module.exports.updateMarkSheet= function (data, callback) {
+module.exports.updateMarkSheet = function (data, callback) {
 
-console.log('inside saving -->updateMarkSheet')
+    console.log('inside saving -->updateMarkSheet')
     // Simulate an asynchronous operation:
     var date = testStartDate;
     var mark = {};
@@ -815,17 +815,25 @@ console.log('inside saving -->updateMarkSheet')
         else {
             if (findData.length > 0) {
                 console.log("consolidateMS: " + JSON.stringify(consolidateMS));
-                stud.update(studIdForUpdateQry, { $pull: { "mark.$.subjectWithMark": { "date":date } } }, function (err, pulledData) {
-                //stud.findOneAndUpdate(studIdForUpdateQry, { $push: { "mark.$.subjectWithMark": { $each: consolidateMS } } }, function (err, data) {
-                
+                stud.update(studIdForUpdateQry, { $pull: { "mark.$.subjectWithMark": { "date": date } } }, function (err, pulledData) {
+                    //stud.findOneAndUpdate(studIdForUpdateQry, { $push: { "mark.$.subjectWithMark": { $each: consolidateMS } } }, function (err, data) {
+
                     console.log("2nd query data.length: " + JSON.stringify(pulledData));
                     if (err) {
-                        marker = true;
+                        marker = false;
                         if (callback) callback();
                     }
                     else {
-                        marker = true;
-                        if (callback) callback();
+                        stud.update(studIdForUpdateQry, { $push: { "mark.$.subjectWithMark": { $each: consolidateMS } } }, function (err, pulledData) {
+                            if (err) {
+                                marker = fasle;
+                                if (callback) callback();
+                            }
+                            else {
+                                marker = true;
+                                if (callback) callback();
+                            }
+                        })
                     }
                 })
             }
@@ -844,7 +852,7 @@ console.log('inside saving -->updateMarkSheet')
         }
     })
 
-console.log("<--updateMarkSheet");
+    console.log("<--updateMarkSheet");
 }
 module.exports.uploadAttendance = function (req, res) {
     expectedMessage = '';
@@ -1323,7 +1331,7 @@ module.exports.dailyDataUpdate = function (data, callback) {
                                         marker = true;
                                         if (callback) callback();
                                     }
-                               })
+                                })
                             }
                         })
 

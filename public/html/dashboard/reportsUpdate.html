@@ -388,11 +388,9 @@
                                                             {{sd.firstName + " " + sd.lastName}}
                                                         </td>
                                                         <!-- <th style="background-color:white;" ng-repeat=" (key, value) in up.testDate.mark">{{value}}</th> -->
-                                                        <div >
-                                                            <td style="background-color:white;" ng-repeat="attendance in sd.attendance">
-                                                                <span  ng-if="attendance.month==up.mSelect" ng-repeat="dateAtt in sd.attendance.dateAttendance">{{dateAtt.status}}</span>
-                                                            </td>
-                                                        </div>
+                                                        <td style="background-color:white;" ng-repeat="attendance in sd.attendance">
+                                                            <span ng-if="attendance.month==up.mSelect" ng-repeat="dateAtt in sd.attendance.dateAttendance">{{dateAtt.status}}</span>
+                                                        </td>
                                                     </tr>
                                                 </tbody>
                                             </table>

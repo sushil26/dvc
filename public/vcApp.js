@@ -289,6 +289,12 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         }
       }
     })
+    .state('dashboard.passwordChange', {
+      url: passwordChange(),
+      templateUrl: '/html/dashboard/changePassword.html',
+      controller: 'passwordChangeCtl'
+
+    })
     .state('dashboard.logout', {
       url: logout(),
       templateUrl: '/html/dashboard/logout.html',
@@ -387,6 +393,8 @@ function automationResultView() {
 function automationAttendanceView(){
   return '/automationAttendanceView/:id';
 }
-
+function passwordChange(){
+  return '/passwordChange/:id';
+}
 
 

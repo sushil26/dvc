@@ -514,7 +514,7 @@ signaling_socket.on("addPeer", function (config) {
     if (MUTE_AUDIO_BY_DEFAULT) {
       remote_media.attr("muted", "true");
     }
-    remote_media.attr("controls", "");
+    // remote_media.attr("controls", "");
 
     remote_media.attr("name", config.userName);
     console.log("onaddstream: peer_id: " + peer_id);

@@ -82,9 +82,9 @@
                                                 <option value="" disabled selected>Teacher</option>
                                             </select>
                                         </div>
-                                    </div>
+                                    </div>----{{ up.teacherSelect}}-------{{ up.teacherSelect.firstName}}
                                     <!--##### Start teacher data #####-->
-                                    <div ng-if="up.uploadType=='Teacher Details' && up.teacherSelect.firstName!=''" class="form-group">
+                                    <div ng-if="up.uploadType=='Teacher Details' && up.teacherSelect" class="form-group">
                                         <section class="panel">
                                             <div class="form-group">
                                                 <div class="panel-heading" style="background: #3a4a58">

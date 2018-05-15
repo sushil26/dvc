@@ -1171,7 +1171,7 @@ module.exports.dailyDataUpdate = function (data, callback) {
                                         marker = true;
                                         if (callback) callback();
                                     // }
-                                })
+                               // })
                             }
                         })
 

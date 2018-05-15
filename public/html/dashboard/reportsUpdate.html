@@ -364,11 +364,11 @@
                                                         <th>#</th>
                                                         <th>Student Id</th>
                                                         <th>Student Name</th>
-                                                        <div ng-repeat="attendance in studentList[0].attendance">
-                                                            <td ng-if="attendance.month==up.mSelect" ng-repeat="(key,value) in attendance.dateAttendance">
-                                                                {{key}}
-                                                            </td>
-                                                        </div>
+
+                                                        <td ng-if="attendance.month==up.mSelect" ng-repeat="">
+                                                            {{key}}
+                                                        </td>
+
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -379,10 +379,14 @@
                                                             {{sd.firstName + " " + sd.lastName}}
                                                         </td>
                                                         <!-- <th style="background-color:white;" ng-repeat=" (key, value) in up.testDate.mark">{{value}}</th> -->
-                                                        <td style="background-color:white;" ng-repeat="attendance in sd.attendance">
-                                                            <div ng-if="attendance.month==up.mSelect" ng-repeat="dateAtt in attendance.dateAttendance">
-                                                                {{dateAtt.status}}
-                                                            </div>
+                                                        <td style="background-color:white;" ng-if="up.mSelect=='Jan'||up.mSelect=='Mar'||up.mSelect=='May'||up.mSelect=='Jul'||up.mSelect=='Aug'||up.mSelect=='Oct'||up.mSelect=='Dec'" ng-repeat="day in thirtyOne">
+                                                            {{day}}
+                                                        </td>
+                                                        <td style="background-color:white;" ng-if="up.mSelect=='Apr'||up.mSelect=='Jun'||up.mSelect=='Sep'||up.mSelect=='Nov'" ng-repeat="day in thirty">
+                                                            {{day}}
+                                                        </td>
+                                                        <td style="background-color:white;" ng-if="up.mSelect=='Feb'" ng-repeat="day in twentyEight">
+                                                            {{day}}
                                                         </td>
                                                     </tr>
                                                 </tbody>

@@ -7,6 +7,9 @@ app.controller('reportsUpdateCtl', function ($scope, $window, $state, httpFactor
   $scope.uploadTypes = ["Teacher Details", "Student Details", "Time Table", "Attendance", "Mark Report"];
   $scope.testTypes = ["AT", "UT", "MT", "TT", "AT"];
   $scope.attendanceTypes = ["Monthly", "Daily"];
+  $scope.thirtyOne = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31];
+  $scope.thirty = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30];
+  $scope.twentyEight = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28];
   //$scope.attendanceTypes = ["Monthly"];
   $scope.monthList = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
   $scope.events = [];

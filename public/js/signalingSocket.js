@@ -93,10 +93,8 @@ if (localStorage.getItem("userData")) {
       userName = localStorage.getItem("userName");
       // startVideoAction();
       document.getElementById("userAuth").style.display = "none";
-      // document.getElementById("appLogin").style.display = "none";
-      // document.getElementById("appReg").style.display = "none";
-      //document.getElementById("appLogout").style.display = "none";
-      document.getElementById("LoginUrl").style.display = "none";
+     
+     // document.getElementById("LoginUrl").style.display = "none";
       document.getElementById("videoConferenceUrl").style.display = "none";
       // document.getElementById("scheduleMeeting").style.display = "none";
       document.getElementById("videoConferenceLinkExtention").style.display =

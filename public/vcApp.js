@@ -292,7 +292,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     .state('dashboard.passwordChange', {
       url: passwordChange(),
       templateUrl: '/html/dashboard/changePassword.html',
-      controller: 'passwordChangeCtl'
+      controller: 'changePasswordCtrl'
 
     })
     .state('dashboard.logout', {

@@ -1148,17 +1148,18 @@ module.exports.dailyDataUpdate = function (data, callback) {
                     }
                     else {
 
-                        stud.update(studIdForUpdateQry, { $pull: { "attendance.$.dateAttendance": {"date":day} } }, function (err, data) {
+                        stud.update(studIdForUpdateQry, { $pull: { "attendance.$.dateAttendance": {"date":day} } }, function (err, pulledData) {
                         //stud.find(studIdForUpdateQry, function (err, data) {
                            // stud.remove(studIdForUpdateQry, function (err, data) {
-                            console.log("2nd query started: " + JSON.stringify(data));
+                            console.log("2nd query started: " + JSON.stringify(pulledData));
                             // console.log("2nd query data.length: " + data.length);
                             if (err) {
                                 marker = true;
                                 if (callback) callback();
                             }
                             else {
-                                 stud.update(studIdForUpdateQry, { $push: { "attendance.$.dateAttendance": attndnce } }, function (err, data) {
+                                 stud.update(studIdForUpdateQry, { $push: { "attendance.$.dateAttendance": attndnce } }, function (err, pushedData) {
+                                    console.log("3nd query started: " + JSON.stringify(pushedData));
                                     if (err) {
                                         marker = false;
                                         if (callback) callback();

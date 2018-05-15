@@ -701,6 +701,7 @@ testType = req.params.testType;
 testStartDate = req.params.date;
 clas = req.params.clas;
 section = req.params.section;
+console.log("schoolName: "+schoolName+" testType: "+testType+" testStartDate: "+testStartDate+" clas: "+clas+" section: "+section);
 console.log("req.body.files: " + req.files.img);
 if (!req.files)
     return res.status(400).send('No files were uploaded.');

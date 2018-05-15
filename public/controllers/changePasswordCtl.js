@@ -32,10 +32,11 @@ app.controller('changePasswordCtl', function ($scope, $filter, $window, httpFact
     $scope.passwordChange = function () {
         console.log("passwordChange-->");
         var objJson = {
-           
+            "currentPswd":$scope.currentPswd,
+            "newPswd":$scope.newPswd
         }
         console.log("objJson: " + JSON.stringify(objJson));
-        //var api = "https://norecruits.com/vc/adminCreate";
+        var api = "https://norecruits.com/vc/passwordUpdate/"+id+"/"+loginType;
         console.log("api: "+api);
         httpFactory.post(api, objJson).then(function (data) {
             var checkStatus = httpFactory.dataValidation(data);

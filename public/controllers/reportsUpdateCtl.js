@@ -13,7 +13,7 @@ app.controller('reportsUpdateCtl', function ($scope, $window, $state, httpFactor
   //$scope.attendanceTypes = ["Monthly"];
   $scope.monthList = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
   $scope.events = [];
-  $scope.getToDate();
+  
   $scope.getAllTeacherList = function () {
     var api = "https://norecruits.com/vc/getAllTeacherList" + "/" + schoolName;
     console.log("api: " + api);

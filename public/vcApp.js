@@ -394,7 +394,7 @@ function automationAttendanceView(){
   return '/automationAttendanceView/:id';
 }
 function passwordChange(){
-  return '/passwordChange/:id';
+  return '/passwordChange';
 }
 
 

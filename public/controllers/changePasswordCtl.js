@@ -65,7 +65,7 @@ app.controller('changePasswordCtl', function ($scope, $filter, $window, httpFact
                 //       $scope.message = "Failed to create";
                 //     }
                 //   })
-              alert("data.data.message");
+              alert(data.data.message);
             }
         })
         console.log("<--passwordChange");

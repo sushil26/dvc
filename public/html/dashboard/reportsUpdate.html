@@ -82,7 +82,7 @@
                                                 <option value="" disabled selected>Teacher</option>
                                             </select>
                                         </div>
-                                    </div>----{{ up.teacherSelect}}-------{{ up.teacherSelect.firstName}}
+                                    </div>
                                     <!--##### Start teacher data #####-->
                                     <div ng-if="up.uploadType=='Teacher Details' && up.teacherSelect" class="form-group">
                                         <section class="panel">
@@ -125,7 +125,7 @@
                                     </div>
                                     <!--##### End teacher data #####-->
                                     <!-- ##### Start Time Table  ##### -->
-                                    <div ng-if="up.uploadType=='Time Table'" class="form-group">
+                                    <div ng-if="up.uploadType=='Time Table' && up.teacherSelect" class="form-group">
                                         <table class="table table-responsive">
                                             <thead>
                                                 <tr>

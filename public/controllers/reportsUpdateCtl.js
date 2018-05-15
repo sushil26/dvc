@@ -252,8 +252,16 @@ app.controller('reportsUpdateCtl', function ($scope, $window, $state, httpFactor
   }
   $scope.testDateFetch = function (testType) {
     console.log("testDateFetch-->");
-    console.log("$scope.studentList[0].mark[testType].length: "+$scope.studentList[0].mark[testType].length);
-      
+    $scope.testStartDate = [];
+    //console.log("$scope.studentList[0].mark[testType].length: "+$scope.studentList[0].mark[testType].length);
+    for(var x=0;x<$scope.studentList[0].mark.length;x++)
+    {
+      if($scope.studentList[0].mark[x].testType==testType){
+       for(var y=0;y<$scope.studentList[0].mark[x].subjectWithMark.length;y++){
+        $scope.testStartDate.push($scope.studentList[0].mark[x].subjectWithMark[y].date)
+       }
+      }
+    }
    
     console.log("<--testDateFetch");
   }

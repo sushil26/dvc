@@ -375,7 +375,7 @@ var responseData;
   console.log("loginType: " + loginType + " id" + id);
   if (general.emptyCheck(id) && general.emptyCheck(loginType)) {
 
-    if (general.emptyCheck(req.body.pswd)) {
+    if (general.emptyCheck(req.body.currentPswd) && general.emptyCheck(req.body.newPswd)) {
       if (loginType == 'admin' || loginType == 'teacher' || loginType == 'vc4allAdmin') {
         var findQuery = {
           "_id": ObjectId(id),

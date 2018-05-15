@@ -86,48 +86,27 @@ app.controller('reportsUpdateCtl', function ($scope, $window, $state, httpFactor
 
     console.log("<--addUploadReports");
   }
-  $scope.attendanceMark = function () {
-    console.log("attendanceMark-->");
-    // console.log("file: " + file);
-    console.log("$scope.uploadReports: " + JSON.stringify($scope.uploadReports));
-
-
-
-
-    // var api = "https://norecruits.com/vc/uploadMark";
-    // httpFactory.imageUpload(file, api).then(function (data) {
-    //   var checkStatus = httpFactory.dataValidation(data);
-    //   console.log("data--" + JSON.stringify(data.data));
-    //   if (checkStatus) {
-    //     alert(data.data.message);
-    //   }
-    //   else {
-    //     alert(data.data.message);
-    //   }
-    // })
-
-    // var cs = [{
-    //   "class": $scope.csSelect.class,
-    //   "section": $scope.csSelect.section
-    // }]
-    // $scope.asm = [];
-    // for(var x=0;x<$scope.asm.length;x++){
-    //   $scope.asm.push({
-    //     "attendance": $scope.asm[x].attendance,
-    //     "subject": $scope.asm[x].subject,
-    //     "mark": 
-    //   })
-    // }
-
-    // var obj = {
-    //   "cs": cs,
-    //   "studName": $scope.studSelect.name,
-    //   "studId": $scope.studSelect.studId,
-    //   "ttSelect": $scope.ttSelect,
-    //   "sma": $scope.sma
-    // }
-    // console.log("obj: " + JSON.stringify(obj));
-    console.log("<--attendanceMark");
+  $scope.markFileUpdate = function (file, date, testType, clas, section) {
+    console.log("markFileUpdate-->");
+    console.log("date: " + date + " testType: " + testType + " clas" + clas + " section: " + section);
+    var obj = {
+      "file": file,
+    }
+    var api = "https://norecruits.com/vc/markUpdate/" + schoolName + "/" + clas+"/"+section+"/"+testType+"/"+date;
+    console.log("api: " + api);
+    httpFactory.csvUpload(obj, api).then(function (data) {
+      var checkStatus = httpFactory.dataValidation(data);
+      console.log("data--" + JSON.stringify(data.data));
+      if (checkStatus) {
+        alert(data.data.message);
+        //$scope.getAllTeacherList();
+        // $scope.up.uploadType= '';
+      }
+      else {
+        alert(data.data.message);
+      }
+    })
+    console.log("<--markFileUpdate");
   }
 
   /* ### Note: Teacher and student both are uploading through teacherUpdate ###*/
@@ -254,15 +233,14 @@ app.controller('reportsUpdateCtl', function ($scope, $window, $state, httpFactor
     console.log("testDateFetch-->");
     $scope.testStartDate = [];
     //console.log("$scope.studentList[0].mark[testType].length: "+$scope.studentList[0].mark[testType].length);
-    for(var x=0;x<$scope.studentList[0].mark.length;x++)
-    {
-      if($scope.studentList[0].mark[x].testType==testType){
-       for(var y=0;y<$scope.studentList[0].mark[x].subjectWithMark.length;y++){
-        $scope.testStartDate.push({"date":$scope.studentList[0].mark[x].subjectWithMark[y].date,"mark":$scope.studentList[0].mark[x].subjectWithMark[y].mark})
-       }
+    for (var x = 0; x < $scope.studentList[0].mark.length; x++) {
+      if ($scope.studentList[0].mark[x].testType == testType) {
+        for (var y = 0; y < $scope.studentList[0].mark[x].subjectWithMark.length; y++) {
+          $scope.testStartDate.push({ "date": $scope.studentList[0].mark[x].subjectWithMark[y].date, "mark": $scope.studentList[0].mark[x].subjectWithMark[y].mark })
+        }
       }
     }
-   
+
     console.log("<--testDateFetch");
   }
   $scope.timeTableFileupdate = function (file, id) {

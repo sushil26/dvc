@@ -44,6 +44,7 @@ module.exports = function (app) {
     app.post('/vc/uploadAttendance/:schoolName/:clas/:section/:reportType/:month', adminAction.uploadAttendance);
     app.post('/vc/updateTeacher_timeTable/:id', adminAction.updateTeacher_timeTable);
     app.post('/vc/attendanceUpdate/:schoolName/:clas/:section/:reportType/:month', adminAction.attendanceUpdate);
+    app.post('/vc/markUpdate/:schoolName/:clas/:section/:testType/:date', adminAction.markUpdate);
     //  app.post('/vc/uploadPayment', adminAction.uploadPayment);
 
     // app.post('/vc/atte', adminAction.getAllClass);

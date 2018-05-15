@@ -694,6 +694,157 @@ module.exports.uploadMarkSheet = function (data, callback) {
 
 }
 
+module.exports.markUpdate = function (data, callback) {
+console.log("markUpdate-->");
+schoolName = req.params.schoolName;
+testType = req.params.testType;
+testStartDate = req.params.date;
+clas = req.params.clas;
+section = req.params.section;
+console.log("req.body.files: " + req.files.img);
+if (!req.files)
+    return res.status(400).send('No files were uploaded.');
+var studentDataFile = req.files.img;
+console.log("studentDataFile: " + studentDataFile);
+var parser = csv.fromString(studentDataFile.data.toString(), {
+    headers: true,
+    ignoreEmpty: true
+}).on("data", function (data) {
+    console.log("upload data: " + JSON.stringify(data));
+    parser.pause();
+    //var count = Object.keys(data).length;
+    var studIdForFindQry = {
+        "cs": [{ "class": clas, "section": section }]
+    }
+    stud.find(studIdForFindQry).toArray(function (err, findData) {
+        console.log("class section query findData: " + JSON.stringify(findData));
+        console.log("class section query findData.length: " + findData.length);
+        if (err) {
+            marker = false;
+            responseData = {
+                status: false,
+                message: err
+            };
+            res.status(400).send(responseData);
+        }
+        else {
+            if (findData.length > 0) {
+                parser.pause();
+                module.exports.updateMarkSheet(data, function (err) {
+                    console.log("savedatInitiate");
+                    parser.resume();
+                });
+            }
+            else {
+                responseData = {
+                    status: false,
+                    message: "There is no record for this class and section"
+                };
+                res.status(400).send(responseData);
+            }
+        }
+    })
+})
+    .on("end", function () {
+        console.log("end ");
+        console.log("end marker: " + marker);
+        if (marker == false) {
+            responseData = {
+                status: false,
+                message: message
+            };
+            res.status(400).send(responseData);
+        }
+        else if (marker == true) {
+            console.log("unknownData: " + JSON.stringify(unknownData));
+            var unknownStud = unknownData;
+            responseData = {
+                status: true,
+                message: "Successfull updated data",
+                data: unknownStud
+            };
+            unknownData = [];
+            res.status(200).send(responseData);
+        }
+    })
+
+console.log("<--markUpdate");
+}
+module.exports.updateMarkSheet= function (req, res) {
+
+console.log('inside saving -->updateMarkSheet')
+    // Simulate an asynchronous operation:
+    var date = testStartDate;
+    var mark = {};
+    counter = counter + 1;
+
+    for (var key in data) {
+        console.log(data[key]);
+        console.log("key: " + key);
+        console.log("data[key]: " + data[key]);
+        if (key != "StudentID" && key != "StudentName") {
+            mark[key] = data[key];
+        }
+    }
+    console.log("mark: " + JSON.stringify(mark));
+    var consolidateMS = [{
+        "date": date,
+        "mark": mark
+    }]
+    var studIdForFindQry = {
+        "schoolId": data.StudentID,
+        "schoolName": schoolName
+    }
+    var studIdForUpdateQry = {
+        "schoolId": data.StudentID,
+        "schoolName": schoolName,
+        "mark.testType": testType,
+        "cs": [{ "class": clas, "section": section }]
+    }
+    console.log("studIdForFindQry: " + JSON.stringify(studIdForFindQry));
+    console.log("studIdForUpdateQry: " + JSON.stringify(studIdForUpdateQry));
+
+    stud.find(studIdForFindQry).toArray(function (err, findData) {
+        // console.log("1st query findData: " + JSON.stringify(findData));
+        console.log("1st query findData.length: " + findData.length);
+        if (err) {
+            marker = true;
+            if (callback) callback();
+        }
+        else {
+            if (findData.length > 0) {
+                console.log("consolidateMS: " + JSON.stringify(consolidateMS));
+                stud.findOneAndUpdate(studIdForUpdateQry, { $pull: { "mark.$.subjectWithMark": { "date":date } } }, function (err, data) {
+                //stud.findOneAndUpdate(studIdForUpdateQry, { $push: { "mark.$.subjectWithMark": { $each: consolidateMS } } }, function (err, data) {
+                
+                    console.log("2nd query data.length: " + data.length);
+                    if (err) {
+                        marker = true;
+                        if (callback) callback();
+                    }
+                    else {
+                        marker = true;
+                        if (callback) callback();
+                    }
+                })
+            }
+            else {
+                console.log("NO Detail found for this id");
+                marker = true;
+                var obj = {
+                    "StudentID": data.StudentID,
+                    "StudentName": data.StudentName
+                }
+                unknownData.push(obj);
+                message = "Sorry! For this Id there is no student data";
+
+                if (callback) callback();
+            }
+        }
+    })
+
+console.log("<--updateMarkSheet");
+}
 module.exports.uploadAttendance = function (req, res) {
     expectedMessage = '';
     console.log("uploadAttendance-->");

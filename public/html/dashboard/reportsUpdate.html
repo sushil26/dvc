@@ -320,7 +320,7 @@
                                                                     {{sd.firstName + " " + sd.lastName}}
                                                                 </td>
                                                                 <!-- <th style="background-color:white;" ng-repeat=" (key, value) in up.testDate.mark">{{value}}</th> -->
-                                                                <th style="background-color:white;" ng-repeat="mark in sd.mark"><span ng-if="mark.testType==up.ttSelect" ng-repeat="swm in mark.subjectWithMark"><span ng-if="swm.date==up.testDate.date" ng-repeat="rm in swm.mark">{{rm}}</span></span></th>
+                                                                <th style="background-color:white;" ng-repeat="mark in sd.mark"><span ng-if="mark.testType==up.ttSelect" ng-repeat="swm in mark.subjectWithMark"><span ng-if="swm.date==up.testDate.date" ng-repeat="(key, value) in swm.mark">{{key}}:{{value}}</span></span></th>
                                                             </tr>
                                                         </tbody>
                                                     </table>

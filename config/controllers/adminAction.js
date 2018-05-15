@@ -1161,16 +1161,16 @@ module.exports.dailyDataUpdate = function (data, callback) {
                                 if (callback) callback();
                             }
                             else {
-                                stud.update(studIdForUpdateQry, { $push: { "attendance.$.dateAttendance": attndnce } }, function (err, pushedData) {
-                                    console.log("3nd query started: " + JSON.stringify(pushedData));
-                                    if (err) {
-                                        marker = false;
-                                        if (callback) callback();
-                                    }
-                                    else {
+                                // stud.update(studIdForUpdateQry, { $push: { "attendance.$.dateAttendance": attndnce } }, function (err, pushedData) {
+                                //     console.log("3nd query started: " + JSON.stringify(pushedData));
+                                //     if (err) {
+                                //         marker = false;
+                                //         if (callback) callback();
+                                //     }
+                                //     else {
                                         marker = true;
                                         if (callback) callback();
-                                    }
+                                    // }
                                 })
                             }
                         })

@@ -1,4 +1,4 @@
-app.controller('passwordChangeCtl', function ($scope, $filter, $window, httpFactory, sessionAuthFactory,$uibModal) {
+app.controller('changePasswordCtl', function ($scope, $filter, $window, httpFactory, sessionAuthFactory,$uibModal) {
     console.log("passwordChangeCtl==>");
     $scope.userData = sessionAuthFactory.getAccess();
     var schoolName = $scope.userData.schoolName;

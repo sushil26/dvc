@@ -17,11 +17,13 @@ app.controller('changePasswordCtl', function ($scope, $filter, $window, httpFact
             var checkStatus = httpFactory.dataValidation(data);
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
-               data.data.message
+                $scope.validationMsg = data.data.message;
+                $scope,validationStatus = true;
                 // alert(data.data.message);
             }
             else{
-               
+               $scope.validationMsg = data.data.message;
+               $scope,validationStatus = false;
              //   alert("Failed to create");
             }
         })

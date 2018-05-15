@@ -278,25 +278,22 @@ module.exports.checkPassword = function (req, res) {
           if (err) {
             responseData = {
               status: false,
-              message: "Failed to get Data",
-              data: userData
-            };
+              message: "Failed to get Data"
+                         };
             res.status(400).send(responseData);
           } else {
             if (userData.length > 0) {
               if (userData[0].pswd == req.body.pswd) {
                 responseData = {
                   status: true,
-                  message: "Password Matched",
-                  data: userData[0]
-                };
+                  message: "Password Matched"
+                                };
                 res.status(200).send(responseData);
               }
               else{
                 responseData = {
                   status: false,
-                  message: "Password Not Matched",
-                  data: userData[0]
+                  message: "Password Not Matched"
                 };
                 res.status(400).send(responseData);
               }
@@ -304,8 +301,7 @@ module.exports.checkPassword = function (req, res) {
             else {
               responseData = {
                 status: false,
-                message: "There is no data for this Id",
-                data: userData[0]
+                message: "There is no data for this Id"
               };
               res.status(400).send(responseData);
             }
@@ -322,8 +318,7 @@ module.exports.checkPassword = function (req, res) {
           if (err) {
             responseData = {
               status: false,
-              message: "Failed to get Data",
-              data: userData
+              message: "Failed to get Data"
             };
             res.status(400).send(responseData);
           } else {
@@ -331,16 +326,14 @@ module.exports.checkPassword = function (req, res) {
               if (userData[0].pswd == req.body.pswd) {
                 responseData = {
                   status: true,
-                  message: "Password Matched",
-                  data: userData[0]
+                  message: "Password Matched"
                 };
                 res.status(200).send(responseData);
               }
               else{
                 responseData = {
                   status: false,
-                  message: "Password Not Matched",
-                  data: userData[0]
+                  message: "Password Not Matched"
                 };
                 res.status(400).send(responseData);
               }
@@ -348,8 +341,7 @@ module.exports.checkPassword = function (req, res) {
             else {
               responseData = {
                 status: false,
-                message: "There is no data for this Id",
-                data: userData[0]
+                message: "There is no data for this Id"
               };
               res.status(400).send(responseData);
             }
@@ -360,8 +352,7 @@ module.exports.checkPassword = function (req, res) {
     else {
       responseData = {
         status: false,
-        message: "There is no password to check",
-        data: userData
+        message: "There is no password to check"
       };
       res.status(400).send(responseData);
     }
@@ -370,8 +361,7 @@ module.exports.checkPassword = function (req, res) {
   else {
     responseData = {
       status: false,
-      message: "There is no Id and LoginType to check",
-      data: userData
+      message: "There is no Id and LoginType to check"
     };
     res.status(400).send(responseData);
   }

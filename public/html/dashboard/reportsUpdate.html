@@ -339,7 +339,7 @@
                                     <div class="form-group" ng-if="up.atSelect=='Daily'">
                                         <label class="control-label col-lg-3">Date</label>
                                         <div class="col-lg-3">
-                                            <input type="date" ng-model="up.attDate" />
+                                            <input type="date" ng-model="up.attDate" ng-change="attDailyDate(up.attDate)"/>
                                         </div>
                                     </div>
                                     <div class="form-group" ng-if="up.atSelect=='Monthly'">
@@ -378,8 +378,7 @@
                                                             {{sd.firstName + " " + sd.lastName}}
                                                         </td>
                                                         <td style="background-color:white;" ng-repeat="attendance in sd.attendance" ng-init="mn=up.attDate|date:'MMM'">
-                                                            <span style="background-color: green;color: white;margin-right:1%;" ng-if="attendance.month==mn" ng-repeat="dateAtt in attendance.dateAttendance">---{{dateAtt.date}}-----{{up.attDate | date:'d'}}
-                                                                <!-- <span ng-if="dateAtt.date==up.attDate | date:'d'">{{dateAtt.status}}</span> -->
+                                                            <span style="background-color: green;color: white;margin-right:1%;" ng-if="attendance.month==dailyMonth" ng-repeat="dateAtt in attendance.dateAttendance"><span ng-if="dateAtt.date==dailyDate">{{dateAtt.status}}</span>
                                                             </span>
                                                         </td>
                                                     </tr>

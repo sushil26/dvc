@@ -13,32 +13,6 @@ app.controller('reportsUpdateCtl', function ($scope, $window, $state, httpFactor
   //$scope.attendanceTypes = ["Monthly"];
   $scope.monthList = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
   $scope.events = [];
-  $scope.getToDate = function () {
-    console.log("Get To Date-->");
-    var api = "https://norecruits.com/vc/getToDate";
-    httpFactory.get(api).then(function (data) {
-      var checkStatus = httpFactory.dataValidation(data);
-      console.log("data--" + JSON.stringify(data.data));
-      if (checkStatus) {
-        console.log("data.data.data.date: " + data.data.data.date);
-        var todayDate = new Date(data.data.data.date);
-        console.log("todayDate: " + todayDate);
-        var reqDate = todayDate.getDate();
-        console.log("reqDate: " + reqDate);
-        var reqMonth = todayDate.getMonth();
-        $scope.reqMonth = reqMonth;
-        var reqYear = todayDate.getFullYear();
-        var reqHr = todayDate.getHours();
-        var reqMin = todayDate.getMinutes();
-        var reqSec = todayDate.getSeconds();
-        $scope.todayDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
-        console.log("consolidateDate: " + $scope.consolidateDate);
-      }
-      else {
-      }
-    })
-    console.log("<--Get To Date");
-  }
   $scope.getToDate();
   $scope.getAllTeacherList = function () {
     var api = "https://norecruits.com/vc/getAllTeacherList" + "/" + schoolName;
@@ -99,7 +73,12 @@ app.controller('reportsUpdateCtl', function ($scope, $window, $state, httpFactor
     $state.go('dashboard.viewUser', { 'id': id, 'loginType': loginT });
     console.log("<--viewUser");
   }
-
+  $scope.attDailyDate = function (d) {
+    console.log("attDailyDate-->");
+    $scope.dailyMonth = $filter('date')(d, "MMM");
+    $scope.dailyDate = $filter('date')(d, "d");
+      console.log("<--attDailyDate");
+  }
   $scope.sma = []; /* ### Note:sma-Subject Mark Attendant  */
   $scope.addSMA = function () {
     console.log("addSMA-->");

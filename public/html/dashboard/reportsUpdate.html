@@ -276,7 +276,7 @@
                                             <span class="required">*</span>
                                         </label>
                                         <div class="col-lg-3">
-                                            <select class="form-control m-bot15" ng-if="up.uploadType=='Mark Report'" placeholder="select" ng-model="up.ttSelect" ng-options="tt as tt for tt in testTypes">
+                                            <select class="form-control m-bot15" ng-if="up.uploadType=='Mark Report'" placeholder="select" ng-model="up.ttSelect" ng-options="tt as tt for tt in testTypes" ng-change="testDateFetch(up.ttSelect)">
                                                 <option value="" disabled selected>Type of Test</option>
                                             </select>
                                         </div>

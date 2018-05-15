@@ -237,6 +237,7 @@ app.controller('reportsUpdateCtl', function ($scope, $window, $state, httpFactor
       if (checkStatus) {
         $scope.studentList = data.data.data;
         console.log("studentList: " + JSON.stringify($scope.studentList));
+
         for (var x = 0; x < $scope.studentList.length; x++) {
           $scope.studList.push({ "id": $scope.studentList[x]._id, "name": $scope.studentList[x].firstName, "studId": $scope.studentList[x].schoolId });
         }
@@ -249,7 +250,13 @@ app.controller('reportsUpdateCtl', function ($scope, $window, $state, httpFactor
     console.log("<--getStudListForCS");
 
   }
-
+  $scope.testDateFetch = function (testType) {
+    console.log("testDateFetch-->");
+    console.log("$scope.studentList[0].mark[testType].length: "+$scope.studentList[0].mark[testType].length);
+      
+   
+    console.log("<--testDateFetch");
+  }
   $scope.timeTableFileupdate = function (file, id) {
     console.log("timeTableFileupdate-->");
     console.log("id: " + id);
@@ -291,14 +298,14 @@ app.controller('reportsUpdateCtl', function ($scope, $window, $state, httpFactor
     });
     console.log("<--timeTableFileupdate");
   }
-  $scope.attendanceUpdate = function(file, clas, section, reportType, month){
+  $scope.attendanceUpdate = function (file, clas, section, reportType, month) {
     console.log("attendanceUpdate-->");
-   
+
     var obj = {
       "file": file
     }
-    console.log("clas: "+clas+"section: "+section+"reportType: "+reportType+"month: "+month)
-    var api = "https://norecruits.com/vc/attendanceUpdate/"+schoolName+"/"+ clas + "/" + section + "/" + reportType + "/" + month;
+    console.log("clas: " + clas + "section: " + section + "reportType: " + reportType + "month: " + month)
+    var api = "https://norecruits.com/vc/attendanceUpdate/" + schoolName + "/" + clas + "/" + section + "/" + reportType + "/" + month;
     console.log("api: " + api);
     httpFactory.csvUpload(obj, api).then(function (data) {
       var checkStatus = httpFactory.dataValidation(data);
@@ -394,12 +401,12 @@ app.controller('reportsUpdateCtl', function ($scope, $window, $state, httpFactor
     var vm = this;
     $scope.calendarView = 'month';
     //$scope.viewDate = moment().startOf('day').toDate();
-    $scope.viewDate = new Date('2018-'+mon);
+    $scope.viewDate = new Date('2018-' + mon);
     var originalFormat = calendarConfig.dateFormats.hour;
     calendarConfig.dateFormats.hour = 'HH:mm';
-      
+
     $scope.cellIsOpen = true;
-      console.log("<--att_monthSelected");
+    console.log("<--att_monthSelected");
   }
 
 

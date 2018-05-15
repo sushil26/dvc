@@ -4,7 +4,7 @@ app.controller('reportsUpdateCtl', function ($scope, $window, $state, httpFactor
   var schoolName = $scope.userData.schoolName;
   console.log(" $scope.userData : " + JSON.stringify($scope.userData));
   $scope.file = {}; /* ### Note: Upload file declaration ### */
-  $scope.uploadTypes = ["Teacher Details", "Student Details", "Time Table", "Attendance", "Payment", "Mark Report"];
+  $scope.uploadTypes = ["Teacher Details", "Student Details", "Time Table", "Attendance", "Mark Report"];
   $scope.testTypes = ["AT", "UT", "MT", "TT", "AT"];
   $scope.attendanceTypes = ["Monthly", "Daily"];
   //$scope.attendanceTypes = ["Monthly"];

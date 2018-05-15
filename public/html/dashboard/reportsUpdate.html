@@ -84,7 +84,7 @@
                                         </div>
                                     </div>
                                     <!--##### Start teacher data #####-->
-                                    <div ng-if="up.uploadType=='Teacher Details'" class="form-group">
+                                    <div ng-if="up.uploadType=='Teacher Details' && up.teacherSelect" class="form-group">
                                         <section class="panel">
                                             <div class="form-group">
                                                 <div class="panel-heading" style="background: #3a4a58">
@@ -125,7 +125,7 @@
                                     </div>
                                     <!--##### End teacher data #####-->
                                     <!-- ##### Start Time Table  ##### -->
-                                    <div ng-if="up.uploadType=='Time Table'" class="form-group">
+                                    <div ng-if="up.uploadType=='Time Table' && up.teacherSelect" class="form-group">
                                         <table class="table table-responsive">
                                             <thead>
                                                 <tr>
@@ -206,7 +206,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="form-group" ng-if="up.uploadType!='Teacher Details' && up.uploadType!=''">
+                                    <div class="form-group" ng-if="up.cSelect && up.uploadType!='Teacher Details' && up.uploadType!='Time Table' && up.uploadType!=''">
                                         <label class=" control-label col-lg-3">Section
                                             <span class="required">*</span>
                                         </label>
@@ -217,7 +217,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="form-group" ng-if="up.uploadType!='Teacher Details' && up.uploadType!='Attendance' && up.uploadType!='Time Table' && up.uploadType!='Mark Report' && up.uploadType!=''">
+                                    <div class="form-group" ng-if="up.subSelect && up.uploadType!='Teacher Details' && up.uploadType!='Attendance' && up.uploadType!='Time Table' && up.uploadType!='Mark Report' && up.uploadType!=''">
                                         <label class="control-label col-lg-3">Select Student
                                             <span class="required">*</span>
                                         </label>
@@ -229,7 +229,7 @@
                                         </div>
                                     </div>
                                     <!--##### Start Student data #####-->
-                                    <section ng-if="up.uploadType=='Student Details'" class="panel">
+                                    <section ng-if="up.uploadType=='Student Details' && sSelect" class="panel">
                                         <div class="form-group">
                                             <div class="panel-heading" style="background: #3a4a58;">
                                                 <i class="fa fa-user-circle"></i>
@@ -294,7 +294,7 @@
                                         </div>
                                     </div>
                                          <!--##### Start Mark data #####-->
-                                         <section ng-if="up.testDate.date!='' && up.uploadType=='Mark Report'" class="panel">
+                                         <section ng-if="up.testDate && up.uploadType=='Mark Report'" class="panel">
                                                 <div class="form-group">
                                                     <div class="panel-heading" style="background: #3a4a58;">
                                                         <i class="fa fa-user-circle"></i>

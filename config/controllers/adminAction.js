@@ -770,7 +770,7 @@ var parser = csv.fromString(studentDataFile.data.toString(), {
 
 console.log("<--markUpdate");
 }
-module.exports.updateMarkSheet= function (req, res) {
+module.exports.updateMarkSheet= function (data, callback) {
 
 console.log('inside saving -->updateMarkSheet')
     // Simulate an asynchronous operation:

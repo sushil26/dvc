@@ -364,7 +364,8 @@
                                                         <th>#</th>
                                                         <th>Student Id</th>
                                                         <th>Student Name</th>
-                                                        <td style="background-color:white;" ng-if="up.mSelect=='Jan'||up.mSelect=='Mar'||up.mSelect=='May'||up.mSelect=='Jul'||up.mSelect=='Aug'||up.mSelect=='Oct'||up.mSelect=='Dec'" ng-repeat="day in thirtyOne">
+                                                        <td style="background-color:white;" ng-if="up.mSelect=='Jan'||up.mSelect=='Mar'||up.mSelect=='May'||up.mSelect=='Jul'||up.mSelect=='Aug'||up.mSelect=='Oct'||up.mSelect=='Dec'"
+                                                            ng-repeat="day in thirtyOne">
                                                             {{day}}
                                                         </td>
                                                         <td style="background-color:white;" ng-if="up.mSelect=='Apr'||up.mSelect=='Jun'||up.mSelect=='Sep'||up.mSelect=='Nov'" ng-repeat="day in thirty">
@@ -387,11 +388,11 @@
                                                             {{sd.firstName + " " + sd.lastName}}
                                                         </td>
                                                         <!-- <th style="background-color:white;" ng-repeat=" (key, value) in up.testDate.mark">{{value}}</th> -->
-                                                        <td style="background-color:white;" ng-if="attendance.month==up.mSelect"  ng-repeat="attendance in sd.attendance">
-                                                            <div ng-repeat="dateAtt in attendance.dateAttendance">
+                                                        <div ng-repeat="attendance in sd.attendance" >
+                                                            <td style="background-color:white;" ng-if="attendance.month==up.mSelect" ng-repeat="dateAtt in attendance.dateAttendance">
                                                                 {{dateAtt.status}}
-                                                            </div>
-                                                        </td>
+                                                            </td>
+                                                        </div>
                                                     </tr>
                                                 </tbody>
                                             </table>

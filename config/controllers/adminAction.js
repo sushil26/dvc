@@ -1050,7 +1050,7 @@ module.exports.attendanceUpdate = function (req, res) {
             });
         }
         if (req.params.reportType == "Monthly") {
-          
+
             module.exports.monthlyDataUpdate(data, function (err) {
                 console.log("savedatInitiate");
                 // TODO: handle error
@@ -1147,10 +1147,13 @@ module.exports.dailyDataUpdate = function (data, callback) {
                         if (callback) callback();
                     }
                     else {
-
-                        stud.update(studIdForUpdateQry, { $pull: { "attendance.$.dateAttendance": {"date":day} } }, function (err, pulledData) {
-                        //stud.find(studIdForUpdateQry, function (err, data) {
-                           // stud.remove(studIdForUpdateQry, function (err, data) {
+                        var pulledQueryVal = {
+                            "date": day
+                        }
+                        console.log("pulledQueryVal: " + JSON.stringify(pulledQueryVal));
+                        stud.update(studIdForUpdateQry, { $pull: { "attendance.$.dateAttendance": pulledQueryVal } }, function (err, pulledData) {
+                            //stud.find(studIdForUpdateQry, function (err, data) {
+                            // stud.remove(studIdForUpdateQry, function (err, data) {
                             console.log("2nd query started: " + JSON.stringify(pulledData));
                             // console.log("2nd query data.length: " + data.length);
                             if (err) {
@@ -1158,7 +1161,7 @@ module.exports.dailyDataUpdate = function (data, callback) {
                                 if (callback) callback();
                             }
                             else {
-                                 stud.update(studIdForUpdateQry, { $push: { "attendance.$.dateAttendance": attndnce } }, function (err, pushedData) {
+                                stud.update(studIdForUpdateQry, { $push: { "attendance.$.dateAttendance": attndnce } }, function (err, pushedData) {
                                     console.log("3nd query started: " + JSON.stringify(pushedData));
                                     if (err) {
                                         marker = false;

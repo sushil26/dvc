@@ -8,7 +8,7 @@ app.controller('changePasswordCtl', function ($scope, $filter, $window, httpFact
     $scope.currentPswdCheck = function(){
         console.log("currentPswdCheck-->");
         var objJson = {
-            "pswd":currentPswd
+            "pswd":$scope.currentPswd
         }
         console.log("objJson: "+JSON.stringify(objJson));
         var api = "https://norecruits.com/vc/checkPassword/"+id+"/"+loginType;
@@ -17,29 +17,11 @@ app.controller('changePasswordCtl', function ($scope, $filter, $window, httpFact
             var checkStatus = httpFactory.dataValidation(data);
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
-                var loginAlert = $uibModal.open({
-                    scope: $scope,
-                    templateUrl: '/html/templates/dashboardsuccess.html',
-                    windowClass: 'show',
-                    backdropClass: 'static',
-                    keyboard: false,
-                    controller: function ($scope, $uibModalInstance) {
-                      $scope.message = data.data.message;
-                    }
-                  })
+               data.data.message
                 // alert(data.data.message);
             }
             else{
-                var loginAlert = $uibModal.open({
-                    scope: $scope,
-                    templateUrl: '/html/templates/dashboardwarning.html',
-                    windowClass: 'show',
-                    backdropClass: 'static',
-                    keyboard: false,
-                    controller: function ($scope, $uibModalInstance) {
-                      $scope.message = "Failed to create";
-                    }
-                  })
+               
              //   alert("Failed to create");
             }
         })

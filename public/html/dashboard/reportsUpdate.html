@@ -312,14 +312,14 @@
                                                                 
                                                             </tr>
                                                         </thead>
-                                                        <tbody>
+                                                        <tbody>----{{studentList[0].schoolId}}
                                                             <tr ng-repeate="sd in studentList">
                                                                 <td style="background-color:white;">{{$index+1}}.</td>
                                                                 <td style="background-color:white;">{{sd.schoolId}}</td>
                                                                 <td style="background-color:white;">
                                                                     {{sd.firstName + " " + sd.lastName}}
                                                                 </td>
-                                                                <th style="background-color:white;" ng-repeat=" (key, value) in up.testDate.mark">{{value}}</th>
+                                                                <!-- <th style="background-color:white;" ng-repeat=" (key, value) in up.testDate.mark">{{value}}</th> -->
                                                             </tr>
                                                         </tbody>
                                                     </table>

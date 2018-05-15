@@ -364,19 +364,19 @@
                                                         <th>#</th>
                                                         <th>Student Id</th>
                                                         <th>Student Name</th>
-                                                        <td ng-if="up.mSelect=='Jan'||up.mSelect=='Mar'||up.mSelect=='May'||up.mSelect=='Jul'||up.mSelect=='Aug'||up.mSelect=='Oct'||up.mSelect=='Dec'"
-                                                            ng-repeat="day in thirtyOne">
-                                                            {{day}}
+                                                        <!-- <td ng-if="up.mSelect=='Jan'||up.mSelect=='Mar'||up.mSelect=='May'||up.mSelect=='Jul'||up.mSelect=='Aug'||up.mSelect=='Oct'||up.mSelect=='Dec'">
+                                                            <span ng-repeat="day in thirtyOne">{{day}}</span>
                                                         </td>
-                                                        <td ng-if="up.mSelect=='Apr'||up.mSelect=='Jun'||up.mSelect=='Sep'||up.mSelect=='Nov'" ng-repeat="day in thirty">
-                                                            {{day}}
+                                                        <td ng-if="up.mSelect=='Apr'||up.mSelect=='Jun'||up.mSelect=='Sep'||up.mSelect=='Nov'" >
+                                                            <span ng-repeat="day in thirty">{{day}}</span>
                                                         </td>
                                                         <td ng-if="up.mSelect=='Feb'" ng-repeat="day in twentyEight">
+                                                            <span></span>
                                                             {{day}}
-                                                        </td>
-                                                        <!-- <td ng-if="attendance.month==up.mSelect" ng-repeat="">
-                                                            {{key}}
                                                         </td> -->
+                                                        <td>
+                                                            Days with attendance
+                                                        </td>
 
                                                     </tr>
                                                 </thead>
@@ -389,7 +389,7 @@
                                                         </td>
                                                         <!-- <th style="background-color:white;" ng-repeat=" (key, value) in up.testDate.mark">{{value}}</th> -->
                                                         <td style="background-color:white;" ng-repeat="attendance in sd.attendance">
-                                                            <span ng-if="attendance.month==up.mSelect" ng-repeat="dateAtt in attendance.dateAttendance">{{dateAtt.status}}</span>
+                                                            <span ng-if="attendance.month==up.mSelect" ng-repeat="dateAtt in attendance.dateAttendance">{{dateAtt.date}}:{{dateAtt.status}}</span>
                                                         </td>
                                                     </tr>
                                                 </tbody>

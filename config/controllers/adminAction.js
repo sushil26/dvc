@@ -817,7 +817,7 @@ console.log('inside saving -->updateMarkSheet')
                 stud.findOneAndUpdate(studIdForUpdateQry, { $pull: { "mark.$.subjectWithMark": { "date":date } } }, function (err, data) {
                 //stud.findOneAndUpdate(studIdForUpdateQry, { $push: { "mark.$.subjectWithMark": { $each: consolidateMS } } }, function (err, data) {
                 
-                    console.log("2nd query data.length: " + data.length);
+                    console.log("2nd query data.length: " + data);
                     if (err) {
                         marker = true;
                         if (callback) callback();

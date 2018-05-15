@@ -351,7 +351,42 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <!--##### Start Attendance data #####-->
+                                    <!--##### Start Daily Attendance data #####-->
+                                    <section ng-if="up.uploadType=='Attendance' && up.atSelect=='Daily' && up.attDate" class="panel">
+                                        <div class="form-group">
+                                            <div class="panel-heading" style="background: #3a4a58;">
+                                                <i class="fa fa-user-circle"></i>
+                                                <span style="color:white;">&nbsp;Attendance </span>
+                                            </div>
+                                            <table class="table">
+                                                <thead class="panel-heading">
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>Student Id</th>
+                                                        <th>Student Name</th>
+                                                        <td>
+                                                            {{up.attDate}}
+                                                        </td>
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="sd in studentList">
+                                                        <td style="background-color:white;">{{$index+1}}.</td>
+                                                        <td style="background-color:white;">{{sd.schoolId}}</td>
+                                                        <td style="background-color:white;">
+                                                            {{sd.firstName + " " + sd.lastName}}
+                                                        </td>
+                                                        <td style="background-color:white;" ng-repeat="attendance in sd.attendance">
+                                                            <span style="background-color: green;color: white;margin-right:1%;" ng-if="attendance.month==up.attDate | date:'MMM'" ng-repeat="dateAtt in attendance.dateAttendance"><span ng-if="dateAtt.date==up.attDate | date:'d'"></span>{{dateAtt.status}}</span>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </section>
+                                    <!--##### End Daily Attendance data #####-->
+                                    <!--##### Start Monthly Attendance data #####-->
                                     <section ng-if="up.uploadType=='Attendance' && up.atSelect=='Monthly' && up.mSelect" class="panel">
                                         <div class="form-group">
                                             <div class="panel-heading" style="background: #3a4a58;">
@@ -387,7 +422,6 @@
                                                         <td style="background-color:white;">
                                                             {{sd.firstName + " " + sd.lastName}}
                                                         </td>
-                                                        <!-- <th style="background-color:white;" ng-repeat=" (key, value) in up.testDate.mark">{{value}}</th> -->
                                                         <td style="background-color:white;" ng-repeat="attendance in sd.attendance">
                                                             <span style="background-color: green;color: white;margin-right:1%;" ng-if="attendance.month==up.mSelect" ng-repeat="dateAtt in attendance.dateAttendance">{{dateAtt.date}}:{{dateAtt.status}}</span>
                                                         </td>
@@ -396,7 +430,7 @@
                                             </table>
                                         </div>
                                     </section>
-                                    <!--##### End Attendance data #####-->
+                                    <!--##### End Monthly Attendance data #####-->
                                     <!-- <div class="form-group" ng-if="up.uploadType=='Attendance' && openCalendarTemplate==true">
                                         <mwl-calendar events="events" view-title="calendarTitle" view="calendarView" view-date="viewDate">
                                         </mwl-calendar>

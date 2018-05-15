@@ -269,7 +269,7 @@ module.exports.checkPassword = function (req, res) {
     if (general.emptyCheck(req.body.pswd)) {
       if (loginType == 'admin' || loginType == 'teacher' || loginType == 'vc4allAdmin') {
         var findQuery = {
-          "id": id
+          "id": ObjectId(id)
         }
         user.find(findQuery).toArray(function (err, userData) {
           console.log("find query status: " + JSON.stringify(userData));
@@ -314,11 +314,11 @@ module.exports.checkPassword = function (req, res) {
       }
       else if (loginType == 'studParent') {
         var findQuery = {
-          "id": id
+          "id": ObjectId(id)
         }
         stud.find(findQuery).toArray(function (err, userData) {
-          console.log("second query status: " + userData);
-
+          console.log("find query status: " + JSON.stringify(userData));
+          console.log("find query status length: " + userData.length);
           if (err) {
             responseData = {
               status: false,

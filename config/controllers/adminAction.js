@@ -1111,7 +1111,7 @@ module.exports.dailyDataUpdate = function (data, callback) {
 
     day = parts[1];
     month = parts[0];
-    attndnce = { 'date': day, 'status': data.Status };
+    attndnce = { 'date': Number(day), 'status': data.Status };
 
     console.log("attndnce: " + JSON.stringify(attndnce));
 
@@ -1161,17 +1161,17 @@ module.exports.dailyDataUpdate = function (data, callback) {
                                 if (callback) callback();
                             }
                             else {
-                                // stud.update(studIdForUpdateQry, { $push: { "attendance.$.dateAttendance": attndnce } }, function (err, pushedData) {
-                                //     console.log("3nd query started: " + JSON.stringify(pushedData));
-                                //     if (err) {
-                                //         marker = false;
-                                //         if (callback) callback();
-                                //     }
-                                //     else {
+                                stud.update(studIdForUpdateQry, { $push: { "attendance.$.dateAttendance": attndnce } }, function (err, pushedData) {
+                                    console.log("3nd query started: " + JSON.stringify(pushedData));
+                                    if (err) {
+                                        marker = false;
+                                        if (callback) callback();
+                                    }
+                                    else {
                                         marker = true;
                                         if (callback) callback();
-                                    // }
-                               // })
+                                    }
+                               })
                             }
                         })
 

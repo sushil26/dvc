@@ -289,12 +289,12 @@
                                             <span class="required">*</span>
                                         </label>
                                         <div class="col-lg-3">
-                                            <select class="form-control m-bot15" placeholder="select" ng-model="up.testDate.date" ng-options="tsd as tsd.date for tsd in testStartDate"
+                                            <select class="form-control m-bot15" placeholder="select" ng-model="up.testDate" ng-options="tsd as tsd.date for tsd in testStartDate"
                                                >
                                                 <option value="" disabled selected>Select date of test start</option>
                                             </select>
                                         </div>
-                                    </div>----------{{up.testDate.date}}
+                                    </div>----------{{up.testDate}}
                                     <div class="form-group ">
                                         <label class="control-label col-lg-3" ng-if="up.uploadType=='Attendance'">Attendance report</label>
                                         <div class="col-lg-3">

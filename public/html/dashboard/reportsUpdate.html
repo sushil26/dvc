@@ -206,7 +206,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="form-group" ng-if="up.uploadType!='Teacher Details' && up.uploadType!='Time Table' && up.uploadType!=''">
+                                    <div class="form-group" ng-if="up.cSelect && up.uploadType!='Teacher Details' && up.uploadType!='Time Table' && up.uploadType!=''">
                                         <label class=" control-label col-lg-3">Section
                                             <span class="required">*</span>
                                         </label>
@@ -217,7 +217,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="form-group" ng-if="up.uploadType!='Teacher Details' && up.uploadType!='Attendance' && up.uploadType!='Time Table' && up.uploadType!='Mark Report' && up.uploadType!=''">
+                                    <div class="form-group" ng-if="up.subSelect && up.uploadType!='Teacher Details' && up.uploadType!='Attendance' && up.uploadType!='Time Table' && up.uploadType!='Mark Report' && up.uploadType!=''">
                                         <label class="control-label col-lg-3">Select Student
                                             <span class="required">*</span>
                                         </label>

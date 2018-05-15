@@ -17,7 +17,6 @@
     <!-- Main Stylesheet File -->
     <link href="/home/css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/chatZone.css" />
-
     <script src="/js/clientmain.js"></script>
     <!-- <script src="https://cdn.webrtc-experiment.com/MediaStreamRecorder.js"></script> -->
     <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
@@ -25,7 +24,6 @@
     <script src="/js/studentMarkAtt_automation.js"></script>
     <!-- <script src="https://cdn.WebRTC-Experiment.com/RecordRTC.js"></script>-->
     <!-- <link rel="stylesheet" href="https://cdn.webrtc-experiment.com/style.css"> -->
-
     <!-- <style>
         input {
             border: 1px solid rgb(46, 189, 235);
@@ -37,8 +35,6 @@
             text-align: center;
         }
     </style> -->
-
-
 </head>
 
 <body>
@@ -561,14 +557,27 @@
     <style>
         /* mirror Affect */
 
+
+
         #videosAttach {
             transform: rotateY(180deg);
             -webkit-transform: rotateY(180deg);
-            /* Safari and Chrome */
             -moz-transform: rotateY(180deg);
-            /* Firefox */
+            z-index: 2;
+            position: fixed;
+          
         }
-
+        .fullscr {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: fill;
+            z-index: 1;
+        }
 
         #portfolio .portfolio-items {
 
@@ -581,19 +590,7 @@
         }
     </style>
 
-    <style>
-        .fullscr {
-            position: fixed;
-            left: 0;
-            bottom: 0;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            object-fit: fill;
-            z-index: 1;
-        }
-    </style>
+    
    
 </body>
 

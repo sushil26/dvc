@@ -377,7 +377,7 @@
                                                         <td style="background-color:white;">
                                                             {{sd.firstName + " " + sd.lastName}}
                                                         </td>
-                                                        <td style="background-color:white;" ng-repeat="attendance in sd.attendance">
+                                                        <td style="background-color:white;" ng-repeat="attendance in sd.attendance">---{{"attendance.month}}-----{{up.attDate | date:'MMM'}}
                                                             <span style="background-color: green;color: white;margin-right:1%;" ng-if="attendance.month==up.attDate | date:'MMM'" ng-repeat="dateAtt in attendance.dateAttendance">---{{dateAtt.date}}-----{{up.attDate | date:'d'}}<span ng-if="dateAtt.date==up.attDate | date:'d'"></span>{{dateAtt.status}}</span>
                                                         </td>
                                                     </tr>

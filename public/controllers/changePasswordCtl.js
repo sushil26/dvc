@@ -18,12 +18,12 @@ app.controller('changePasswordCtl', function ($scope, $filter, $window, httpFact
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
                 $scope.validationMsg = data.data.message;
-                $scope,validationStatus = true;
+                $scope.validationStatus = true;
                 // alert(data.data.message);
             }
             else{
                $scope.validationMsg = data.data.message;
-               $scope,validationStatus = false;
+               $scope.validationStatus = false;
              //   alert("Failed to create");
             }
         })

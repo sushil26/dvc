@@ -394,9 +394,9 @@ var responseData;
           } else {
             if (userData.length > 0) {
            
-                user.update(findQuery,{$set:{"pswd":req.body.newPswd}}).toArray(function (err, userData) {
+                user.update(findQuery,{$set:{"pswd":req.body.newPswd}},function (err, userData) {
                   console.log("find query status: " + JSON.stringify(userData));
-                  console.log("find query status length: " + userData.length);
+                  // console.log("find query status length: " + userData.length);
         
                   if (err) {
                     responseData = {
@@ -445,9 +445,9 @@ var responseData;
           } else {
             if (userData.length > 0) {
            
-                stud.update(findQuery,{$set:{"pswd":req.body.newPswd}}).toArray(function (err, userData) {
+                stud.update(findQuery,{$set:{"pswd":req.body.newPswd}}, function (err, userData) {
                   console.log("find query status: " + JSON.stringify(userData));
-                  console.log("find query status length: " + userData.length);
+                  //console.log("find query status length: " + userData.length);
         
                   if (err) {
                     responseData = {

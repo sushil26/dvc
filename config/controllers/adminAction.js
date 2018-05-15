@@ -1148,8 +1148,8 @@ module.exports.dailyDataUpdate = function (data, callback) {
                     }
                     else {
 
-                        //stud.update(studIdForUpdateQry, { $push: { "attendance.$.dateAttendance": attndnce } }, function (err, data) {
-                        stud.update(studIdForUpdateQry, { $set: { "attendance.$.dateAttendance.$.status": data.Status } }, function (err, data) {
+                        stud.update(studIdForUpdateQry, { $pull: { "attendance.$.dateAttendance": {"date":day} } }, function (err, data) {
+                        //stud.find(studIdForUpdateQry, function (err, data) {
                            // stud.remove(studIdForUpdateQry, function (err, data) {
                             console.log("2nd query started: " + JSON.stringify(data));
                             // console.log("2nd query data.length: " + data.length);
@@ -1158,16 +1158,16 @@ module.exports.dailyDataUpdate = function (data, callback) {
                                 if (callback) callback();
                             }
                             else {
-                                // stud.update(studIdForUpdateQry, { $push: { "attendance.$.dateAttendance": attndnce } }, function (err, data) {
-                                //     if (err) {
-                                //         marker = false;
-                                //         if (callback) callback();
-                                //     }
-                                    // else {
+                                 stud.update(studIdForUpdateQry, { $push: { "attendance.$.dateAttendance": attndnce } }, function (err, data) {
+                                    if (err) {
+                                        marker = false;
+                                        if (callback) callback();
+                                    }
+                                    else {
                                         marker = true;
                                         if (callback) callback();
-                                    //}
-                                // })
+                                    }
+                                })
                             }
                         })
 

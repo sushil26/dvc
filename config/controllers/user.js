@@ -258,6 +258,124 @@ module.exports.login4VC = function (req, res) {
   console.log("<==login");
 };
 
+module.exports.checkPassword = function (req, res) {
+  console.log("checkPassword-->");
+  var responseData;
+  var loginType = req.params.loginType;
+  var id = req.params.id;
+  console.log("loginType: " + loginType + " id" + id);
+  if (general.emptyCheck(id) && general.emptyCheck(loginType)) {
+
+    if (general.emptyCheck(req.body.pswd)) {
+      if (loginType == 'admin' || loginType == 'teacher' || loginType == 'vc4allAdmin') {
+        var findQuery = {
+          "id": id
+        }
+        user.find(findQuery).toArray(function (err, userData) {
+          console.log("second query status: " + userData);
+
+          if (err) {
+            responseData = {
+              status: false,
+              message: "Failed to get Data",
+              data: userData
+            };
+            res.status(400).send(responseData);
+          } else {
+            if (userData.length > 0) {
+              if (userData[0].pswd == req.body.pswd) {
+                responseData = {
+                  status: true,
+                  message: "Password Matched",
+                  data: userData[0]
+                };
+                res.status(200).send(responseData);
+              }
+              else{
+                responseData = {
+                  status: false,
+                  message: "Password Not Matched",
+                  data: userData[0]
+                };
+                res.status(400).send(responseData);
+              }
+            }
+            else {
+              responseData = {
+                status: false,
+                message: "There is no data for this Id",
+                data: userData[0]
+              };
+              res.status(400).send(responseData);
+            }
+          }
+        })
+      }
+      else if (loginType == 'studParent') {
+        var findQuery = {
+          "id": id
+        }
+        stud.find(findQuery).toArray(function (err, userData) {
+          console.log("second query status: " + userData);
+
+          if (err) {
+            responseData = {
+              status: false,
+              message: "Failed to get Data",
+              data: userData
+            };
+            res.status(400).send(responseData);
+          } else {
+            if (userData.length > 0) {
+              if (userData[0].pswd == req.body.pswd) {
+                responseData = {
+                  status: true,
+                  message: "Password Matched",
+                  data: userData[0]
+                };
+                res.status(200).send(responseData);
+              }
+              else{
+                responseData = {
+                  status: false,
+                  message: "Password Not Matched",
+                  data: userData[0]
+                };
+                res.status(400).send(responseData);
+              }
+            }
+            else {
+              responseData = {
+                status: false,
+                message: "There is no data for this Id",
+                data: userData[0]
+              };
+              res.status(400).send(responseData);
+            }
+          }
+        })
+      }
+    }
+    else {
+      responseData = {
+        status: false,
+        message: "There is no password to check",
+        data: userData
+      };
+      res.status(400).send(responseData);
+    }
+
+  }
+  else {
+    responseData = {
+      status: false,
+      message: "There is no Id and LoginType to check",
+      data: userData
+    };
+    res.status(400).send(responseData);
+  }
+  console.log("<--checkPassword");
+}
 module.exports.getUserData = function (req, res) {
   console.log("getUserData-->");
   var responseData;

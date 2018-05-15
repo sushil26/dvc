@@ -9,6 +9,7 @@ module.exports = function (app) {
 
     app.post('/vc/register4VC', user.register4VC);
     app.post('/vc/login4VC', user.login4VC);
+    app.post('/vc/checkPassword/:id/:loginType', user.checkPassword);
     app.get('/vc/getUserData', user.getUserData);
     app.get('/vc/getStudData', user.getStudData);
     app.post('/vc/updateUserStatus', user.updateUserStatus);

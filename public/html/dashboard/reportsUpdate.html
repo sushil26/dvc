@@ -364,7 +364,7 @@
                                                         <th>#</th>
                                                         <th>Student Id</th>
                                                         <th>Student Name</th>
-                                                        <td ng-repeat="attendance in studentList[0]">
+                                                        <td ng-repeat="attendance in studentList[0].attendance">
                                                             <div ng-if="attendance.month==up.mSelect" ng-repeat="(key,value) in attendance.dateAttendance">
                                                                 {{key}}
                                                             </div>

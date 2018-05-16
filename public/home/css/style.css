@@ -30,8 +30,7 @@
 50% { opacity: 1; }
 } */
 .bouncy:hover{
-  animation: bouncy 5s infinite linear;
-
+  animation: bouncy 1s infinite linear;
 }
 .bouncy {
  

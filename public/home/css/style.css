@@ -29,9 +29,12 @@
 0%,100% { opacity: 0; }
 50% { opacity: 1; }
 } */
-
-.bouncy {
+.bouncy:hover{
   animation: bouncy 5s infinite linear;
+
+}
+.bouncy {
+ 
   position: relative;
 }
 

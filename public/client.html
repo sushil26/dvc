@@ -119,8 +119,8 @@
                                 <h2 style="margin-top: 45vh;">Please use Your credential/Login to Start</h2>
                             </a> -->
 
-                            <a id="videoConferenceUrl" style="display:none;" class="progress progress-striped active progress-sm">
-                                <button id="videoConfStart" class="btn fa fa-play-circle progress-bar progress-bar-success">
+                            <a id="videoConferenceUrl" style="display:none;">
+                                <button id="videoConfStart" class="btn fa fa-play-circle">
                                     &nbsp
                                     <b>Start Video Conference</b>
                                 </button>
@@ -152,11 +152,11 @@
                                     </a> -->
 
 
-                            <a id="screenShareBtn" class="progress progress-striped active progress-sm">
-                                <button id="screenBtns" style="display:none;color:black;" class="btn fa fa-window-restore progress-bar progress-bar-success">&nbspScreenShare</button>
+                            <a id="screenShareBtn" class="">
+                                <button id="screenBtns" style="display:none;color:black;" class="btn fa fa-window-restore">&nbspScreenShare</button>
                             </a>
-                            <a id="screenShareStop" style="display:none;" class="progress progress-striped active progress-sm">
-                                <button id="screenBtns" class="btn fa fa-stop progress-bar progress-bar-success" style="color:red">&nbsp
+                            <a id="screenShareStop" style="display:none;">
+                                <button id="screenBtns" class="btn fa fa-stop" style="color:red">&nbsp
                                     <b style="color:black">Stop Sharing</b>
                                 </button>
                             </a>
@@ -169,17 +169,11 @@
                                     <b style="color:black">Stop Recording</b>
                                 </button>
                             </a> -->
-                            <!-- 
-                            <div class="progress progress-striped active progress-sm">
-                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"
-                                    style="width: 45%">
-                                    <span class="sr-only">45% Complete</span>
-                                </div>
-                            </div> -->
 
-                            <a id="addChatWindow" class="progress progress-striped active progress-sm">
 
-                                <button style="display:none;;color:black;" id="openChat" class="btn fa fa-comments progress-bar progress-bar-success">&nbsp
+
+                            <a id="addChatWindow" class="">
+                                <button style="display:none;;color:black;" id="openChat" class="btn fa fa-comments">&nbsp
                                     <b>Chat
                                         <span id="chatNotification" style="display:none;color:rgb(226, 101, 73);"></span>
                                     </b>
@@ -188,20 +182,20 @@
 
 
 
-                            <a id="audio_btn" style="display:none" class="progress progress-striped active progress-sm">
+                            <a id="audio_btn" style="display:none">
 
-                                <button id="audioMute_btn" class="btn fa fa-microphone-slash progress-bar progress-bar-success" style="color:black">&nbsp
+                                <button id="audioMute_btn" class="btn fa fa-microphone-slash" style="color:black">&nbsp
                                     <b>Mute</b>
                                 </button>
-                                <button id="audioUnmute_btn" style="display:none;color:black" class="btn fa fa-microphone progress-bar progress-bar-success">
+                                <button id="audioUnmute_btn" style="display:none;color:black" class="btn fa fa-microphone">
                                     &nbsp
                                     <b>Unmute</b>
                                 </button>
                             </a>
 
                             <!-- <a class="" style="display:none;" href="/client" id="diconnect_btn" > -->
-                            <a class="progress progress-striped active progress-sm" style="display:none;" id="diconnect_btn" href="/client" onclick="disconnecSession()">
-                                <button class="btn fa fa-power-off progress-bar progress-bar-success" style="color:red;">
+                            <a class="" style="display:none;" id="diconnect_btn" href="/client" onclick="disconnecSession()">
+                                <button class="btn fa fa-power-off" style="color:red;">
 
                                     <b style="color:black;">Disconnect</b>
                                 </button>
@@ -223,11 +217,11 @@
                                 <div id="container"></div>
                             </section>
                             <hr style="border-top:0;"> -->
-                            <br>
+
 
                             <div id="portfolio-wrapper" style="margin-right:auto;">
                             </div>
-                            <button id="btnrestore" class="fa fa-window-restore btn progress-bar progress-bar-success" style="z-index: 2; position: absolute; display:none;"></button>
+                            <button id="btnrestore" class="fa fa-window-restore btn" style="z-index: 2; position: absolute; display:none;"></button>
 
 
 
@@ -570,7 +564,7 @@
             -webkit-transform: rotateY(180deg);
             -moz-transform: rotateY(180deg);
             z-index: 2;
-
+            position: fixed;
 
         }
 

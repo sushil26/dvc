@@ -64,13 +64,23 @@ function initializeJS() {
             if (wSize <= 768) {
                 jQuery('#container').addClass('sidebar-close');
                 jQuery('#sidebar > ul').hide();
-                document.getElementById("profile").style.marginTop= "195px";
+               console.log("mobile view");
+                jQuery('#profile').css({
+                    'margin-top ': '195px'
+                    
+                });
+               
             }
 
             if (wSize > 768) {
                 jQuery('#container').removeClass('sidebar-close');
                 jQuery('#sidebar > ul').show();
-                document.getElementById("profile").style.marginTop= "0px";
+                console.log("Desktop view");
+                jQuery('#profile').css({
+                    'margin-top ': '195px'
+                });
+               
+               
             }
 
         }

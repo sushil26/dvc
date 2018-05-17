@@ -41,8 +41,6 @@ app.controller('dashboardController', function ($scope, $window, httpFactory, $u
         if (element.classList.contains("sidebar-closed")) {
             if (x.matches) { 
                 document.getElementById("profile").style.marginTop= "195px";
-            } else {
-                document.getElementById("profile").style.marginTop= "0px";
             }
             console.log("if is true");
             element.classList.remove("sidebar-closed");
@@ -52,7 +50,7 @@ app.controller('dashboardController', function ($scope, $window, httpFactory, $u
             $scope.setting_subMenu = true;
         } else {
 
-           
+            document.getElementById("profile").style.marginTop= "0px";
 
             console.log("if is false");
             $scope.sideBarMenu = true;

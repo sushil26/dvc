@@ -79,12 +79,12 @@ function initializeJS() {
 
     jQuery('.toggle-nav').click(function () {
 
-        if (window.matchMedia('(max-width: 767px)').matches) {
-            $("#videosAttach").css({
-                    'margin-top': '195px'
-                }
+        if ($(window).width() <= 769){	
+            jQuery('#profile').css({
+                'margin-top ': '195px'
+            });
 
-            );
+            
         }
         if (jQuery('#sidebar > ul').is(":visible") === true) {
             jQuery('#main-content').css({
@@ -107,16 +107,16 @@ function initializeJS() {
         }
     });
 
-    //bar chart
-    if (jQuery(".custom-custom-bar-chart")) {
-        jQuery(".bar").each(function () {
-            var i = jQuery(this).find(".value").html();
-            jQuery(this).find(".value").html("");
-            jQuery(this).find(".value").animate({
-                height: i
-            }, 2000)
-        })
-    }
+//bar chart
+if (jQuery(".custom-custom-bar-chart")) {
+    jQuery(".bar").each(function () {
+        var i = jQuery(this).find(".value").html();
+        jQuery(this).find(".value").html("");
+        jQuery(this).find(".value").animate({
+            height: i
+        }, 2000)
+    })
+}
 
 }
 

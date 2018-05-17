@@ -27,9 +27,16 @@ app.controller('dashboardController', function ($scope, $window, httpFactory, $u
     $scope.academic_subMenu = true;
     $scope.setting_subMenu = true;
 
-    var element = document.getElementById("container");
-    element.classList.add("sidebar-closed");
-    $scope.sideBarMenu = true;
+    
+    var x = window.matchMedia("(min-width: 768px)")
+    if (x.matches) { 
+        //document.getElementById("profile").style.marginTop= "195px";
+    }
+    else{
+        var element = document.getElementById("container");
+        element.classList.add("sidebar-closed");
+        $scope.sideBarMenu = true;
+    }
 
     $scope.iconMenuClick = function () {
         console.log("iconMenuClick--> ");

@@ -1,7 +1,8 @@
 
 var db = require("../dbConfig.js").getDb();
+var student = require("/schemas/student.js");
 var user = db.collection("user"); /* ### Teacher collection  ### */
-var stud = db.collection("student"); /* ### student collection  ### */
+//var stud = db.collection("student"); /* ### student collection  ### */
 var school = db.collection("school"); /* ### school collection  ### */
 
 
@@ -24,6 +25,7 @@ var clas, section;  /* ### Note: Used while uploading marksheet  ### */
 var counter = 0; /* ### Note: Used while uploading marksheet  ### */
 var expectedMessage; /* ### Note:Attendance month validation  ### */
 var id; /* ### Note:Attendance Update based on id  ### */
+var createdDate = new Date();
 
 module.exports.updateSchoolStatus = function (req, res) {
     console.log("updateSchoolStatus-->");
@@ -997,9 +999,9 @@ module.exports.dailyData = function (data, callback) {
                         console.log("monthStrategy[" + month + "]: " + monthStrategy[month]);
                         var attendanceQueryIndex = monthStrategy[month]; /* ##### Note: requested attendance index find from document  ##### */
                         var dateAllreadyExists;
-                        console.log("findData[0].attendance["+attendanceQueryIndex+"]: "+JSON.stringify(findData[0].attendance[attendanceQueryIndex-1]));
-                        console.log("findData[0].attendance["+attendanceQueryIndex+"].dateAttendance: "+JSON.stringify(findData[0].attendance[attendanceQueryIndex-1].dateAttendance));
-                        var findDataAttendance = findData[0].attendance[attendanceQueryIndex-1].dateAttendance;
+                        console.log("findData[0].attendance[" + attendanceQueryIndex + "]: " + JSON.stringify(findData[0].attendance[attendanceQueryIndex - 1]));
+                        console.log("findData[0].attendance[" + attendanceQueryIndex + "].dateAttendance: " + JSON.stringify(findData[0].attendance[attendanceQueryIndex - 1].dateAttendance));
+                        var findDataAttendance = findData[0].attendance[attendanceQueryIndex - 1].dateAttendance;
                         console.log("findDataAttendance: " + JSON.stringify(findDataAttendance));
                         for (var x = 0; x < findDataAttendance.length; x++) {
                             if (findDataAttendance[x].date == 1) {
@@ -1009,7 +1011,7 @@ module.exports.dailyData = function (data, callback) {
                                 dateAllreadyExists = false;
                             }
                         }
-                        if (dateAllreadyExists==false || findDataAttendance.length==0) {
+                        if (dateAllreadyExists == false || findDataAttendance.length == 0) {
                             stud.update(studIdForUpdateQry, { $push: { "attendance.$.dateAttendance": attndnce } }, function (err, data) {
                                 console.log("2nd query started: " + JSON.stringify(data));
                                 console.log("2nd query data.length: " + data.length);
@@ -1611,7 +1613,8 @@ module.exports.uploadStudentMaster = function (req, res) {
                 { "testType": "MT", "subjectWithMark": [] },
                 { "testType": "TT", "subjectWithMark": [] },
                 { "testType": "AT", "subjectWithMark": [] },
-            ]
+            ],
+            created_at: createdDate,
         };
 
         objJson.push(userData);
@@ -1620,47 +1623,58 @@ module.exports.uploadStudentMaster = function (req, res) {
         .on("end", function () {
             console.log("end marker: " + marker);
             console.log("objJson: " + JSON.stringify(objJson));
-            stud.find({ "cs": { "class": req.params.clas, "section": req.params.section } }).toArray(function (err, studentClassList) {
-                console.log("studentClassList.length: " + studentClassList.length);
-                if (err) {
-                    responseData = {
-                        status: false,
-                        message: "Failed to get Data",
+            // stud.find({ "cs": { "class": req.params.clas, "section": req.params.section } }).toArray(function (err, studentClassList) {
+            //     console.log("studentClassList.length: " + studentClassList.length);
+            //     if (err) {
+            //         responseData = {
+            //             status: false,
+            //             message: "Failed to get Data",
 
-                    };
-                    res.status(400).send(responseData);
-                } else {
-                    if (studentClassList.length == 0) {
-                        stud.insert(objJson, function (err, data) {
-                            console.log("data: " + JSON.stringify(data));
-                            if (err) {
-                                responseData = {
-                                    status: false,
-                                    message: "Failed to Insert",
-                                    data: data
-                                };
-                                res.status(400).send(responseData);
-                            } else {
-                                responseData = {
-                                    status: true,
-                                    errorCode: 200,
-                                    message: "Insert Successfull",
-                                    data: data
-                                };
-                                res.status(200).send(responseData);
-                            }
-                        });
+            //         };
+            //         res.status(400).send(responseData);
+            //     } else {
+            //         if (studentClassList.length == 0) {
+            student.insert(objJson, function (err, data) {
+                console.log("data: " + JSON.stringify(data));
+                if (err) {
+                    if (err.code == 1100) {
+                        responseData = {
+                            status: false,
+                            message: err.errmsg[61],
+                            data: data
+                        };
+                        res.status(400).send(responseData);
                     }
                     else {
                         responseData = {
                             status: false,
-                            message: "Sorry! you already inserted data for this class, further insertion you have to use reports update option",
-
+                            message: err,
+                            data: data
                         };
                         res.status(400).send(responseData);
                     }
+
+                } else {
+                    responseData = {
+                        status: true,
+                        errorCode: 200,
+                        message: "Insert Successfull",
+                        data: data
+                    };
+                    res.status(200).send(responseData);
                 }
             });
+            // }
+            // else {
+            //     responseData = {
+            //         status: false,
+            //         message: "Sorry! you already inserted data for this class, further insertion you have to use reports update option",
+
+            //     };
+            //     res.status(400).send(responseData);
+            // }
+            // }
+            // });
         });
     console.log("<--uploadStudentMaster");
 }

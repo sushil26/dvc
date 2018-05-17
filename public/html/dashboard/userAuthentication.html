@@ -15,7 +15,7 @@
                   <th>#</th>
                   <th>Teacher Id</th>
                   <th>Teacher Name</th>
-                  <th>Email</th>
+                  <!-- <th>Email</th> -->
                   <th>Mobile Number</th>
                   <th>Status</th>
                   <th>Action</th>
@@ -31,9 +31,9 @@
                       {{ud.firstName + " " + ud.lastName}}
                     </div>
                   </td>
-                  <td style="background-color:white;">
+                  <!-- <td style="background-color:white;">
                     <div style="word-wrap: break-word;">{{ud.email}}</div>
-                  </td>
+                  </td> -->
                   <td style="background-color:white;">{{ud.mobileNum}}</td>
                   <td style=" background-color:white; color:red;" ng-if="ud.status=='inactive'">Inactive</td>
                   <td style=" background-color:white; color:green;" ng-if="ud.status=='active'">Active</td>
@@ -61,8 +61,8 @@
                   <th>Student Id</th>
                   <th>Student Name</th>
                   <th>Class-Section</th>
-                  <th>Father Email</th>
-                  <th>Mother Email</th>
+                  <!-- <th>Father Email</th>
+                  <th>Mother Email</th> -->
                   <th>Status</th>
                   <th>Action</th>
 
@@ -80,10 +80,10 @@
                   <td style="background-color:white;">
                     <div style="word-wrap: break-word;">{{sd.cs[0].class +" "+ sd.cs[0].section}}</div>
                   </td>
-                  <td style="background-color:white;">
+                  <!-- <td style="background-color:white;">
                     <div style="word-wrap: break-word;">{{sd.parentEmail}}</div>
                   </td>
-                  <td style="background-color:white;"><div style="word-wrap: break-word;">{{sd.motherEmail}}</div></td>
+                  <td style="background-color:white;"><div style="word-wrap: break-word;">{{sd.motherEmail}}</div></td> -->
                   <td style=" background-color:white; color:red;" ng-if="sd.status=='inactive'">Inactive</td>
                   <td style=" background-color:white; color:green;" ng-if="sd.status=='active'">Active</td>
                   <td style="background-color:white;">

@@ -48,11 +48,11 @@ app.controller('dashboardController', function ($scope, $window, httpFactory, $u
         } else {
 
             if (x.matches) { 
-                document.getElementById("porfile").style.marginTop= "195px";
+                document.getElementById("profile").style.marginTop= "195px";
             } else {
-                document.getElementById("porfile").style.marginTop= "0px";
+                document.getElementById("profile").style.marginTop= "0px";
             }
-            
+
             console.log("if is false");
             $scope.sideBarMenu = true;
             element.classList.add("sidebar-closed");

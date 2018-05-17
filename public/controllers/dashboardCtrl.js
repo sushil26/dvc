@@ -28,8 +28,8 @@ app.controller('dashboardController', function ($scope, $window, httpFactory, $u
     $scope.setting_subMenu = true;
 
     
-    var x = window.matchMedia("(min-width: 768px)")
-    if (x.matches) { 
+    var y = window.matchMedia("(max-width: 768px)")
+    if (y.matches) { 
         //document.getElementById("profile").style.marginTop= "195px";
     }
     else{

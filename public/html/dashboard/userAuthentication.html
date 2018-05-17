@@ -27,9 +27,13 @@
                   <td style="background-color:white;">{{$index+1}}.</td>
                   <td style="background-color:white;">{{ud.schoolId}}</td>
                   <td style="background-color:white;">
-                    {{ud.firstName + " " + ud.lastName}}
+                    <div style="word-wrap: break-word;">
+                      {{ud.firstName + " " + ud.lastName}}
+                    </div>
                   </td>
-                  <td style="background-color:white;">{{ud.email}}</td>
+                  <td style="background-color:white;">
+                    <div style="word-wrap: break-word;">{{ud.email}}</div>
+                  </td>
                   <td style="background-color:white;">{{ud.mobileNum}}</td>
                   <td style=" background-color:white; color:red;" ng-if="ud.status=='inactive'">Inactive</td>
                   <td style=" background-color:white; color:green;" ng-if="ud.status=='active'">Active</td>
@@ -69,12 +73,17 @@
                   <td style="background-color:white;">{{$index+1}}.</td>
                   <td style="background-color:white;">{{sd.schoolId}}</td>
                   <td style="background-color:white;">
-                    {{sd.firstName + " " + sd.lastName}}
-                    <!-- Modal -->
+                    <div style="word-wrap: break-word;">
+                      {{sd.firstName + " " + sd.lastName}}
+                    </div>
                   </td>
-                  <td style="background-color:white;">{{sd.cs[0].class +" "+ sd.cs[0].section}}</td>
-                  <td style="background-color:white;">{{sd.parentEmail}}</td>
-                  <td style="background-color:white;">{{sd.motherEmail}}</td>
+                  <td style="background-color:white;">
+                    <div style="word-wrap: break-word;">{{sd.cs[0].class +" "+ sd.cs[0].section}}</div>
+                  </td>
+                  <td style="background-color:white;">
+                    <div style="word-wrap: break-word;">{{sd.parentEmail}}</div>
+                  </td>
+                  <td style="background-color:white;"><div style="word-wrap: break-word;">{{sd.motherEmail}}</div></td>
                   <td style=" background-color:white; color:red;" ng-if="sd.status=='inactive'">Inactive</td>
                   <td style=" background-color:white; color:green;" ng-if="sd.status=='active'">Active</td>
                   <td style="background-color:white;">

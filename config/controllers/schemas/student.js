@@ -22,7 +22,7 @@ var studentSchema = new Schema({
   }],
   dob: {type: Date, required: true},
   doj: {type: Date, required: true},
-  password: { type: String, required: true },
+  pswd: { type: String, required: true },
   status: { type: String, required: true },
   loginType: { type: String, required: true },
   attendance: [

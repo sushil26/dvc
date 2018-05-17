@@ -79,18 +79,18 @@ function initializeJS() {
     });
 
     jQuery('.toggle-nav').click(function () {
-        if (wSize <= 768) {
-            jQuery('#profile').css({
-                'margin-top ': '195px'
-            });
+        // if (wSize <= 768) {
+        //     jQuery('#profile').css({
+        //         'margin-top ': '195px'
+        //     });
 
-        }
-        if (wSize > 768) {
-            jQuery('#profile').css({
-                'margin-top ': ''
-            });
+        // }
+        // if (wSize > 768) {
+        //     jQuery('#profile').css({
+        //         'margin-top ': ''
+        //     });
 
-        }
+        // }
 
         // if ($(window).width() <= 768){	
         //     jQuery('#profile').css({

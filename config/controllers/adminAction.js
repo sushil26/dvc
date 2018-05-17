@@ -1638,6 +1638,7 @@ module.exports.uploadStudentMaster = function (req, res) {
                 console.log("data: " + JSON.stringify(data));
                 if (err) {
                     if (err.code == 1100) {
+                        console.log("err");
                         responseData = {
                             status: false,
                             message: err.errmsg[61],
@@ -1646,6 +1647,7 @@ module.exports.uploadStudentMaster = function (req, res) {
                         res.status(400).send(responseData);
                     }
                     else {
+                        console.log("err");
                         responseData = {
                             status: false,
                             message: err,

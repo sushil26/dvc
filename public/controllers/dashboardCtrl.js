@@ -28,15 +28,8 @@ app.controller('dashboardController', function ($scope, $window, httpFactory, $u
     $scope.setting_subMenu = true;
 
     
-    var y = window.matchMedia("(max-width: 768px)")
-    if (y.matches) { 
-        //document.getElementById("profile").style.marginTop= "195px";
-    }
-    else{
-        var element = document.getElementById("container");
-        element.classList.add("sidebar-closed");
-        $scope.sideBarMenu = true;
-    }
+    var screenWidth = $window.innerWidth;
+console.log("screenWidth: "+screenWidth);
 
     $scope.iconMenuClick = function () {
         console.log("iconMenuClick--> ");

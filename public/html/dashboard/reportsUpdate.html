@@ -409,9 +409,9 @@
                                                         <td style="background-color:white;">
                                                             <div ng-repeat="attendance in sd.attendance" style="word-wrap: break-word;">
                                                                 <span ng-if="attendance.month==up.mSelect" style="border-radius:3px; background: peachpuff; margin: 1px;" ng-repeat="dateAtt in attendance.dateAttendance">{{dateAtt.date}}
-                                                                    <div ng-if="dateAtt.status=='A'" style="color: red">{{dateAtt.status}}</div>
-                                                                    <div ng-if="dateAtt.status=='L'" style="color: blue">{{dateAtt.status}}</div>
-                                                                    <div ng-if="dateAtt.status=='P'" style="color: green">{{dateAtt.status}}</div>
+                                                                    <span ng-if="dateAtt.status=='A'" style="color: red">{{dateAtt.status}}</span>
+                                                                    <span ng-if="dateAtt.status=='L'" style="color: blue">{{dateAtt.status}}</span>
+                                                                    <span ng-if="dateAtt.status=='P'" style="color: green">{{dateAtt.status}}</span>
                                                                 </span>
                                                             </div>
                                                         </td>

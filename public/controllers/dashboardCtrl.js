@@ -51,7 +51,7 @@ app.controller('dashboardController', function ($scope, $window, httpFactory, $u
         }
         console.log("<--iconMenuClick");
     }
-    $scope.iconMenuClick();
+    //$scope.iconMenuClick();
     $scope.eventClick = function (submenu) {
         console.log("eventClick-->: " + submenu);
         if (submenu == "events_subMenu") {

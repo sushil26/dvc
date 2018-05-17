@@ -64,6 +64,7 @@ function initializeJS() {
             if (wSize <= 768) {
                 jQuery('#container').addClass('sidebar-close');
                 jQuery('#sidebar > ul').hide();
+               
 
             }
 
@@ -78,14 +79,26 @@ function initializeJS() {
     });
 
     jQuery('.toggle-nav').click(function () {
-
-        if ($(window).width() <= 768){	
+        if (wSize <= 768) {
             jQuery('#profile').css({
                 'margin-top ': '195px'
             });
 
-            
         }
+        if (wSize > 768) {
+            jQuery('#profile').css({
+                'margin-top ': ''
+            });
+
+        }
+
+        // if ($(window).width() <= 768){	
+        //     jQuery('#profile').css({
+        //         'margin-top ': '195px'
+        //     });
+
+
+        // }
         if (jQuery('#sidebar > ul').is(":visible") === true) {
             jQuery('#main-content').css({
                 'margin-left': '0px'
@@ -107,16 +120,16 @@ function initializeJS() {
         }
     });
 
-//bar chart
-if (jQuery(".custom-custom-bar-chart")) {
-    jQuery(".bar").each(function () {
-        var i = jQuery(this).find(".value").html();
-        jQuery(this).find(".value").html("");
-        jQuery(this).find(".value").animate({
-            height: i
-        }, 2000)
-    })
-}
+    //bar chart
+    if (jQuery(".custom-custom-bar-chart")) {
+        jQuery(".bar").each(function () {
+            var i = jQuery(this).find(".value").html();
+            jQuery(this).find(".value").html("");
+            jQuery(this).find(".value").animate({
+                height: i
+            }, 2000)
+        })
+    }
 
 }
 

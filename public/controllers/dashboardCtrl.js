@@ -30,6 +30,14 @@ app.controller('dashboardController', function ($scope, $window, httpFactory, $u
     
     var screenWidth = $window.innerWidth;
 console.log("screenWidth: "+screenWidth);
+if(screenWidth>=769){
+
+}
+else{
+    var element = document.getElementById("container");
+    element.classList.add("sidebar-closed");
+    $scope.sideBarMenu = true;
+}
 
     $scope.iconMenuClick = function () {
         console.log("iconMenuClick--> ");

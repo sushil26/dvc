@@ -1634,7 +1634,7 @@ module.exports.uploadStudentMaster = function (req, res) {
             //         res.status(400).send(responseData);
             //     } else {
             //         if (studentClassList.length == 0) {
-            student.save(objJson, function (err, data) {
+            student.insert(objJson, function (err, data) {
                 console.log("data: " + JSON.stringify(data));
                 if (err) {
                     if (err.code == 1100) {

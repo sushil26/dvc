@@ -396,20 +396,7 @@
                                                         <th>#</th>
                                                         <th>Student Id</th>
                                                         <th>Student Name</th>
-                                                        <!-- <td ng-if="up.mSelect=='Jan'||up.mSelect=='Mar'||up.mSelect=='May'||up.mSelect=='Jul'||up.mSelect=='Aug'||up.mSelect=='Oct'||up.mSelect=='Dec'">
-                                                            <span ng-repeat="day in thirtyOne">{{day}}</span>
-                                                        </td>
-                                                        <td ng-if="up.mSelect=='Apr'||up.mSelect=='Jun'||up.mSelect=='Sep'||up.mSelect=='Nov'" >
-                                                            <span ng-repeat="day in thirty">{{day}}</span>
-                                                        </td>
-                                                        <td ng-if="up.mSelect=='Feb'" ng-repeat="day in twentyEight">
-                                                            <span></span>
-                                                            {{day}}
-                                                        </td> -->
-                                                        <td>
-                                                            Days with attendance
-                                                        </td>
-
+                                                        <th>Days with attendance</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -421,10 +408,11 @@
                                                         </td>
                                                         <td style="background-color:white;">
                                                             <div ng-repeat="attendance in sd.attendance" style="word-wrap: break-word;">
-                                                                <span ng-if="attendance.month==up.mSelect"   style="border-radius:3px; background: peachpuff; margin: 1px;" ng-repeat="dateAtt in attendance.dateAttendance">{{dateAtt.date}}
-                                                                    <b ng-if="dateAtt.status=='A'" style="color: red">{{dateAtt.status}}</b>
-                                                                    <b ng-if="dateAtt.status=='L'" style="color: blue">{{dateAtt.status}}</b>
-                                                                    <b ng-if="dateAtt.status=='P'" style="color: green">{{dateAtt.status}}</b>&nbsp;</span>
+                                                                <span ng-if="attendance.month==up.mSelect" style="border-radius:3px; background: peachpuff; margin: 1px;" ng-repeat="dateAtt in attendance.dateAttendance">{{dateAtt.date}}
+                                                                    <div ng-if="dateAtt.status=='A'" style="color: red">{{dateAtt.status}}</div>
+                                                                    <div ng-if="dateAtt.status=='L'" style="color: blue">{{dateAtt.status}}</div>
+                                                                    <div ng-if="dateAtt.status=='P'" style="color: green">{{dateAtt.status}}</div>
+                                                                </span>
                                                             </div>
                                                         </td>
                                                     </tr>

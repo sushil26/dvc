@@ -43,7 +43,7 @@ app.controller('dashboardController', function ($scope, $window, httpFactory, $u
             $scope.setting_subMenu = true;
         } else {
 
-            document.getElementById("profile").style.marginTop= "0px";
+            // document.getElementById("profile").style.marginTop= "0px";
             console.log("if is false");
             $scope.sideBarMenu = true;
             element.classList.add("sidebar-closed");

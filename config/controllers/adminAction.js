@@ -979,7 +979,7 @@ module.exports.dailyData = function (data, callback) {
                         if (callback) callback();
                     }
                     else {
-                       
+
                         var monthStrategy = {
                             "Jan": 1,
                             "Feb": 2,
@@ -996,13 +996,18 @@ module.exports.dailyData = function (data, callback) {
                         };
                         console.log("monthStrategy[" + month + "]: " + monthStrategy[month]);
                         var attendanceQueryIndex = monthStrategy[month]; /* ##### Note: requested attendance index find from document  ##### */
-
+                        var dateAllreadyExists;
                         var findDataAttendance = findData[0].attendance[attendanceQueryIndex].dateAttendance;
-                        //console.log("findDataAttendance: "+JSON.stringify(findDataAttendance));
-                        findDataAttendance.forEach(element => {
-                            console.log("element: "+JSON.stringify(element));
-                        });
-                        if (findData.length == 0) {
+                        console.log("findDataAttendance: " + JSON.stringify(findDataAttendance));
+                        for (var x = 0; x < findDataAttendance.length; x++) {
+                            if (findDataAttendance[x].date == 1) {
+                                dateAllreadyExists = true;
+                            }
+                            else {
+                                dateAllreadyExists = false;
+                            }
+                        }
+                        if (dateAllreadyExists==false || findDataAttendance.length==0) {
                             stud.update(studIdForUpdateQry, { $push: { "attendance.$.dateAttendance": attndnce } }, function (err, data) {
                                 console.log("2nd query started: " + JSON.stringify(data));
                                 console.log("2nd query data.length: " + data.length);

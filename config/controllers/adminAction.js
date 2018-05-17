@@ -997,7 +997,7 @@ module.exports.dailyData = function (data, callback) {
                         console.log("monthStrategy[" + month + "]: " + monthStrategy[month]);
                         var attendanceQueryIndex = monthStrategy[month]; /* ##### Note: requested attendance index find from document  ##### */
                         var dateAllreadyExists;
-                        console.log("findData[0].attendance["+attendanceQueryIndex+"]: "+findData[0].attendance[attendanceQueryIndex]);
+                        console.log("findData[0].attendance["+attendanceQueryIndex+"]: "+JSON.stringify(findData[0].attendance[attendanceQueryIndex]));
                         console.log("findData[0].attendance["+attendanceQueryIndex+"].dateAttendance: "+JSON.stringify(findData[0].attendance[attendanceQueryIndex].dateAttendance));
                         var findDataAttendance = findData[0].attendance[attendanceQueryIndex].dateAttendance;
                         console.log("findDataAttendance: " + JSON.stringify(findDataAttendance));

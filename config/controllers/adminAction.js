@@ -989,7 +989,7 @@ module.exports.dailyData = function (data, callback) {
                         "Nov": 11,
                         "Dec": 12
                     };
-                    console.log("monthStrategy[+"month"+]: " +monthStrategy[month]);
+                    console.log("monthStrategy["+month+"]: " +monthStrategy[month]);
                     if (err) {
                         marker = true;
                         if (callback) callback();

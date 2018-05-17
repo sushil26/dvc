@@ -35,9 +35,7 @@ app.controller('dashboardController', function ($scope, $window, httpFactory, $u
             if (x.matches) { 
                 document.getElementById("profile").style.marginTop= "195px";
             }
-            else{
-                document.getElementById("profile").style.marginTop= "0px";
-            }
+       
             console.log("if is true");
             element.classList.remove("sidebar-closed");
             $scope.sideBarMenu = false;
@@ -50,6 +48,8 @@ app.controller('dashboardController', function ($scope, $window, httpFactory, $u
             console.log("if is false");
             $scope.sideBarMenu = true;
             element.classList.add("sidebar-closed");
+            document.getElementById("profile").style.marginTop= "0px";
+            
         }
         console.log("<--iconMenuClick");
     }

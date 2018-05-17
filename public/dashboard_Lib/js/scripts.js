@@ -79,7 +79,7 @@ function initializeJS() {
 
     jQuery('.toggle-nav').click(function () {
 
-        if ($(window).width() <= 769){	
+        if ($(window).width() <= 768){	
             jQuery('#profile').css({
                 'margin-top ': '195px'
             });

@@ -27,18 +27,6 @@ app.controller('dashboardController', function ($scope, $window, httpFactory, $u
     $scope.academic_subMenu = true;
     $scope.setting_subMenu = true;
 
-    
-    var screenWidth = $window.innerWidth;
-console.log("screenWidth: "+screenWidth);
-if(screenWidth>=769){
-
-}
-else{
-    var element = document.getElementById("container");
-    element.classList.add("sidebar-closed");
-    $scope.sideBarMenu = true;
-}
-
     $scope.iconMenuClick = function () {
         console.log("iconMenuClick--> ");
         var element = document.getElementById("container");
@@ -56,7 +44,6 @@ else{
         } else {
 
             document.getElementById("profile").style.marginTop= "0px";
-
             console.log("if is false");
             $scope.sideBarMenu = true;
             element.classList.add("sidebar-closed");

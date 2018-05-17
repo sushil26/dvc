@@ -38,20 +38,6 @@ app.controller('dashboardController', function ($scope, $window, httpFactory, $u
         console.log("iconMenuClick--> ");
         var element = document.getElementById("container");
         var x = window.matchMedia("(max-width: 768px)")
-        function myFunction(x) {
-            if (x.matches) { 
-                document.getElementById("porfile").style.marginTop= "195px";
-            } else {
-                document.getElementById("porfile").style.marginTop= "0px";
-            }
-        }
-        
-       
-        myFunction(x)
-        x.addListener(myFunction) 
-
-
-
         if (element.classList.contains("sidebar-closed")) {
             console.log("if is true");
             element.classList.remove("sidebar-closed");
@@ -60,6 +46,13 @@ app.controller('dashboardController', function ($scope, $window, httpFactory, $u
             $scope.academic_subMenu = true;
             $scope.setting_subMenu = true;
         } else {
+
+            if (x.matches) { 
+                document.getElementById("porfile").style.marginTop= "195px";
+            } else {
+                document.getElementById("porfile").style.marginTop= "0px";
+            }
+            
             console.log("if is false");
             $scope.sideBarMenu = true;
             element.classList.add("sidebar-closed");

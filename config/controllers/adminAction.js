@@ -1652,7 +1652,7 @@ module.exports.uploadStudentMaster = function (req, res) {
                         console.log("err: "+JSON.stringify(err));
                         responseData = {
                             status: false,
-                            message: err,
+                            message: err.errmsg[61],
                             data: data
                         };
                         res.status(400).send(responseData);

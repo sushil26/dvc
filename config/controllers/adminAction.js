@@ -879,7 +879,7 @@ module.exports.uploadAttendance = function (req, res) {
             module.exports.dailyData(data, function (err) {
                 console.log("savedatInitiate");
                 // TODO: handle error
-
+                console.log("unknownData: " + JSON.stringify(unknownData));
                 parser.resume();
             });
         }
@@ -932,7 +932,7 @@ module.exports.uploadAttendance = function (req, res) {
 };
 /* ### Start upload daily attendance status  ### */
 module.exports.dailyData = function (data, callback) {
-    console.log('inside dailyData saving')
+    console.log('inside dailyData insert saving')
     var day;
     var attndnce;
     //var dateString = data.Date;
@@ -950,8 +950,7 @@ module.exports.dailyData = function (data, callback) {
     var studIdForFindQry = {
         "schoolId": data.StudentID,
         "schoolName": schoolName,
-        "attendance.month": month,
-        "attendance.dateAttendance": attndnce
+        "attendance.month": month
     }
     console.log("studIdForFindQry: " + JSON.stringify(studIdForFindQry));
     var studIdForUpdateQry = {
@@ -971,14 +970,15 @@ module.exports.dailyData = function (data, callback) {
         }
         else {
             if (isThereData.length > 0) {
-                stud.find(studIdForFindQry).toArray(function (err, findData) {
-                    console.log("1st query findData: " + JSON.stringify(findData));
-                    console.log("1st query findData.length: " + findData.length);
+                stud.find(studIdForFindQry,{"attendance.dateAttendance.date": attndnce.date}).toArray(function (err, findData) {
+                    console.log("*1st query findData: " + JSON.stringify(findData));
+                    // console.log("1st query findData.length: " + findData.attendance);
                     if (err) {
                         marker = true;
                         if (callback) callback();
                     }
                     else {
+                       
                         if (findData.length == 0) {
                             stud.update(studIdForUpdateQry, { $push: { "attendance.$.dateAttendance": attndnce } }, function (err, data) {
                                 console.log("2nd query started: " + JSON.stringify(data));
@@ -1004,7 +1004,13 @@ module.exports.dailyData = function (data, callback) {
                 })
             }
             else {
-
+                console.log("unknown started");
+                var obj = {
+                    "StudentID": data.StudentID,
+                    "StudentName": data.StudentName
+                }
+                unknownData.push(obj);
+                if (callback) callback();
             }
         }
     })

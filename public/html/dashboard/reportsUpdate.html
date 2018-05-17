@@ -419,8 +419,10 @@
                                                         <td style="background-color:white;">
                                                             {{sd.firstName + " " + sd.lastName}}
                                                         </td>
-                                                        <td style="background-color:white;" ng-repeat="attendance in sd.attendance">
-                                                            <span style="background-color: green;color: white;margin-right:1%;" ng-if="attendance.month==up.mSelect" ng-repeat="dateAtt in attendance.dateAttendance">{{dateAtt.date}}:{{dateAtt.status}}</span>
+                                                        <td style="background-color:white;">
+                                                            <div ng-repeat="attendance in sd.attendance" style="word-wrap: break-word">
+                                                                <span ng-if="attendance.month==up.mSelect" ng-repeat="dateAtt in attendance.dateAttendance">{{dateAtt.date}}:{{dateAtt.status}}&nbsp;</span>
+                                                            </div>
                                                         </td>
                                                     </tr>
                                                 </tbody>

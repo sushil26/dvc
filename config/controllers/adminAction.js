@@ -969,16 +969,33 @@ module.exports.dailyData = function (data, callback) {
             if (callback) callback();
         }
         else {
+
             if (isThereData.length > 0) {
-                stud.find(studIdForFindQry,{"attendance.dateAttendance.date": attndnce.date}).toArray(function (err, findData) {
+                stud.find(studIdForFindQry).toArray(function (err, findData) {
                     console.log("*1st query findData: " + JSON.stringify(findData));
                     // console.log("1st query findData.length: " + findData.attendance);
+                    var findDataAttendance = findData[0].attendance;
+                    var monthStrategy = {
+                        "Jan": 1,
+                        "Feb": 2,
+                        "Mar": 3,
+                        "Apr": 4,
+                        "May": 5,
+                        "Jun": 6,
+                        "Jul": 7,
+                        "Aug": 8,
+                        "Sep": 9,
+                        "Oct": 10,
+                        "Nov": 11,
+                        "Dec": 12
+                    };
+                    console.log("monthStrategy["+month+"]: " +monthStrategy[month]);
                     if (err) {
                         marker = true;
                         if (callback) callback();
                     }
                     else {
-                       
+
                         if (findData.length == 0) {
                             stud.update(studIdForUpdateQry, { $push: { "attendance.$.dateAttendance": attndnce } }, function (err, data) {
                                 console.log("2nd query started: " + JSON.stringify(data));

@@ -974,28 +974,34 @@ module.exports.dailyData = function (data, callback) {
                 stud.find(studIdForFindQry).toArray(function (err, findData) {
                     console.log("*1st query findData: " + JSON.stringify(findData));
                     // console.log("1st query findData.length: " + findData.attendance);
-                    var findDataAttendance = findData[0].attendance;
-                    var monthStrategy = {
-                        "Jan": 1,
-                        "Feb": 2,
-                        "Mar": 3,
-                        "Apr": 4,
-                        "May": 5,
-                        "Jun": 6,
-                        "Jul": 7,
-                        "Aug": 8,
-                        "Sep": 9,
-                        "Oct": 10,
-                        "Nov": 11,
-                        "Dec": 12
-                    };
-                    console.log("monthStrategy["+month+"]: " +monthStrategy[month]);
                     if (err) {
                         marker = true;
                         if (callback) callback();
                     }
                     else {
+                       
+                        var monthStrategy = {
+                            "Jan": 1,
+                            "Feb": 2,
+                            "Mar": 3,
+                            "Apr": 4,
+                            "May": 5,
+                            "Jun": 6,
+                            "Jul": 7,
+                            "Aug": 8,
+                            "Sep": 9,
+                            "Oct": 10,
+                            "Nov": 11,
+                            "Dec": 12
+                        };
+                        console.log("monthStrategy[" + month + "]: " + monthStrategy[month]);
+                        var attendanceQueryIndex = monthStrategy[month]; /* ##### Note: requested attendance index find from document  ##### */
 
+                        var findDataAttendance = findData[0].attendance[attendanceQueryIndex].dateAttendance;
+                        //console.log("findDataAttendance: "+JSON.stringify(findDataAttendance));
+                        findDataAttendance.forEach(element => {
+                            console.log("element: "+JSON.stringify(element));
+                        });
                         if (findData.length == 0) {
                             stud.update(studIdForUpdateQry, { $push: { "attendance.$.dateAttendance": attndnce } }, function (err, data) {
                                 console.log("2nd query started: " + JSON.stringify(data));

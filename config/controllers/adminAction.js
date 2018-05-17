@@ -1007,7 +1007,7 @@ module.exports.dailyData = function (data, callback) {
                                 dateAllreadyExists = false;
                             }
                         }
-                        if (dateAllreadyExists==false) {
+                        if (dateAllreadyExists==false || findDataAttendance.length==0) {
                             stud.update(studIdForUpdateQry, { $push: { "attendance.$.dateAttendance": attndnce } }, function (err, data) {
                                 console.log("2nd query started: " + JSON.stringify(data));
                                 console.log("2nd query data.length: " + data.length);

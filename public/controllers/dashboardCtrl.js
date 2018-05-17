@@ -26,7 +26,8 @@ app.controller('dashboardController', function ($scope, $window, httpFactory, $u
     $scope.events_subMenu = true;
     $scope.academic_subMenu = true;
     $scope.setting_subMenu = true;
-
+    var element = document.getElementById("container");
+    element.classList.contains("sidebar-closed");
     $scope.iconMenuClick = function () {
         console.log("iconMenuClick--> ");
         var element = document.getElementById("container");

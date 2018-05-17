@@ -3,7 +3,6 @@ var Schema = mongoose.Schema;
 titlize = require('mongoose-title-case');
 var validate = require('mongoose-validator');
 
-
 // create a schema
 var studentSchema = new Schema({
  

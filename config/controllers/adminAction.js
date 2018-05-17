@@ -1,6 +1,6 @@
 
 var db = require("../dbConfig.js").getDb();
- var student = require("./schemas/student.js");
+ var student = require("/schemas/student.js");
 var user = db.collection("user"); /* ### Teacher collection  ### */
 var stud = db.collection("student"); /* ### student collection  ### */
 var school = db.collection("school"); /* ### school collection  ### */
@@ -1634,7 +1634,7 @@ module.exports.uploadStudentMaster = function (req, res) {
             //         res.status(400).send(responseData);
             //     } else {
             //         if (studentClassList.length == 0) {
-            student.save(objJson, function (err, data) {
+            student.create(objJson, function (err, data) {
                 console.log("data: " + JSON.stringify(data));
                 if (err) {
                     if (err.code == 1100) {

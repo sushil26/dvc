@@ -39,6 +39,11 @@ app.controller('dashboardController', function ($scope, $window, httpFactory, $u
         var element = document.getElementById("container");
         var x = window.matchMedia("(max-width: 768px)")
         if (element.classList.contains("sidebar-closed")) {
+            if (x.matches) { 
+                document.getElementById("profile").style.marginTop= "195px";
+            } else {
+                document.getElementById("profile").style.marginTop= "0px";
+            }
             console.log("if is true");
             element.classList.remove("sidebar-closed");
             $scope.sideBarMenu = false;
@@ -47,11 +52,7 @@ app.controller('dashboardController', function ($scope, $window, httpFactory, $u
             $scope.setting_subMenu = true;
         } else {
 
-            if (x.matches) { 
-                document.getElementById("profile").style.marginTop= "195px";
-            } else {
-                document.getElementById("profile").style.marginTop= "0px";
-            }
+           
 
             console.log("if is false");
             $scope.sideBarMenu = true;

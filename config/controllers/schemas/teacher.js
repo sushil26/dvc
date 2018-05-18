@@ -15,7 +15,7 @@ var teacherSchema = new Schema({
     doj: { type: Date, required: false },
     cs: [{
         "_id": false,
-        "class": { type: String, required: true },
+        "class": { type: Number, required: true },
         "section": { type: String, required: true },
         "subject": {type: String, required: true }
     }

@@ -294,9 +294,11 @@
                         </thead>
                         <tbody>
                           <tr ng-repeat="tt in teacherPersonalData[0].timeTable[0].timing">
-                         
-                              <td>{{tt.startsAt}}-{{tt.endsAt}}</td>
-                         
+
+                            <td>
+                              <div>{{tt.startsAt}}-{{tt.endsAt}}</div>
+                            </td>
+
 
                           </tr>
 
@@ -307,7 +309,7 @@
                               <span ng-if="mtt.class!='Free'">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</span>
                             </td>
                           </tr>
-                        
+
                         </tbody>
                       </table>
                     </div>

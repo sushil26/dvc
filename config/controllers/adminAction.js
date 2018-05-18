@@ -1638,8 +1638,8 @@ module.exports.uploadStudentMaster = function (req, res) {
                 console.log("err: " + JSON.stringify(err));
                 if (err) {
                     if (err.code == 11000) {
-                        console.log("err: " + err.op.schoolId);
-                        console.log("err: " + JSON.stringify(err));
+                    
+                        console.log("err: " + JSON.stringify(err.op));
                         responseData = {
                             status: false,
                             message: err.op.schoolId

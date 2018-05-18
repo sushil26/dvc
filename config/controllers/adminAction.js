@@ -6,7 +6,6 @@ var user = db.collection("user"); /* ### Teacher collection  ### */
 var stud = db.collection("student"); /* ### student collection  ### */
 var school = db.collection("school"); /* ### school collection  ### */
 
-
 var general = require("../general.js");
 var ObjectId = require("mongodb").ObjectID;
 var bodyParser = require('body-parser');

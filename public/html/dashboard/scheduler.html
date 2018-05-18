@@ -294,7 +294,7 @@
                         </thead>
                         <tbody>
                           <tr ng-repeat="tt in teacherPersonalData[0].timeTable[0]">
-                            <td>{{tt.timing.startsAt}}-{{tt.timing.endsAt}}</td>
+                            <td>{{tt.timing[$index].startsAt}}-{{tt.timing[$index].endsAt}}</td>
                             <td ng-if="selectedDateForEvent=='Mon'" style="background-color:#ccc!important;cursor: pointer;" ng-click="timeTableForEventBook('mon',$index)">
                               <button class="btn" ng-if="tt.css.Mon.class=='Free'">Schedule</button>
                               <span ng-if="tt.css.Mon.class!='Free'">{{tt.css.Mon.class}}&nbsp{{tt.css.Mon.section}}&nbsp{{tt.css.Mon.subject}}</span>

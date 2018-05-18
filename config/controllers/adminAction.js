@@ -1793,7 +1793,7 @@ module.exports.uploadTeacherMaster = function (req, res) {
             timeTable: [],
             status: "active",
             loginType: "teacher",
-            created_at: createdDate,
+            created_at: createdDate
         }
         var cssParts = data.ClassSectionSubject.split(',');
         console.log("cssParts: " + JSON.stringify(cssParts));

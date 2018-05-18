@@ -1,8 +1,8 @@
 var db = require('../dbConfig.js').getDb();
 var user = db.collection('user');/* ### Teacher collection  ### */
 var event = db.collection('event');
-var stud = require("./schemas/student.js");
-//var stud = db.collection('student');/* ### student collection  ### */
+//var student = require("./schemas/student.js");
+var stud = db.collection('student');/* ### student collection  ### */
 var general = require('../general.js');
 var ObjectId = require('mongodb').ObjectID;
 

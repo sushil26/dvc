@@ -372,7 +372,7 @@ module.exports.getStudListForCS = function (req, res) {
                 "section": req.params.section
             }]
         };
-
+console.log("obj: "+JSON.stringify(obj));
         // var id = {
         //     "userId": req.params.id
         // }

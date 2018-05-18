@@ -128,13 +128,13 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="form-group" ng-if="up.ttSelect=='Daily'">
+                                    <div class="form-group" ng-if="up.uploadType=='Attendance' && up.ttSelect=='Daily'">
                                         <label class="control-label col-lg-3">Date</label>
                                         <div class="col-lg-3">
                                             <input type="date" ng-model="up.attDate" />
                                         </div>
                                     </div>
-                                    <div class="form-group" ng-if="up.ttSelect=='Monthly'">
+                                    <div class="form-group" ng-if="up.uploadType=='Attendance' && up.ttSelect=='Monthly'">
                                         <label class="control-label col-lg-3">Month</label>
                                         <div class="col-lg-3">
                                             <select class="form-control m-bot15" placeholder="select" ng-model="up.mSelect" ng-options="ml as ml for ml in monthList">

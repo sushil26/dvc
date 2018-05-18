@@ -13,7 +13,12 @@ var teacherSchema = new Schema({
     mobNumber: { type: Number, required: true, unique: true },
     dob: { type: Date, required: false },
     doj: { type: Date, required: false },
-    cs: [{type: String, required: true}],
+    cs: [{
+        "_id": false,
+        "class": { type: String, required: true },
+        "section": { type: String, required: true }
+    }
+    ],
     timeTable: [],
     pswd: { type: String, required: true },
     status: { type: String, required: true },

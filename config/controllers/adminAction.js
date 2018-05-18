@@ -1614,7 +1614,7 @@ module.exports.uploadStudentMaster = function (req, res) {
                 { "testType": "TT", "subjectWithMark": [] },
                 { "testType": "AT", "subjectWithMark": [] },
             ],
-            created_at: createdDate,
+            created_at: createdDate
         };
 
         objJson.push(userData);
@@ -1792,7 +1792,8 @@ module.exports.uploadTeacherMaster = function (req, res) {
             css: [],
             timeTable: [],
             status: "active",
-            loginType: "teacher"
+            loginType: "teacher",
+            created_at: createdDate,
         }
         var cssParts = data.ClassSectionSubject.split(',');
         console.log("cssParts: " + JSON.stringify(cssParts));

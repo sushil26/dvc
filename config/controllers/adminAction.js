@@ -1813,7 +1813,7 @@ module.exports.uploadTeacherMaster = function (req, res) {
         .on("end", function () {
             console.log("end marker: " + marker);
             console.log("objJson: " + JSON.stringify(objJson));
-            teacher.create(objJson, function (err, data) {
+            user.create(objJson, function (err, data) {
                 console.log("data: " + JSON.stringify(data));
                 if (err) {
                     responseData = {

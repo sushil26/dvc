@@ -1,6 +1,6 @@
 
 var db = require("../dbConfig.js").getDb();
- var student = require("./schemas/student.js");
+var student = require("./schemas/student.js");
 var user = db.collection("user"); /* ### Teacher collection  ### */
 var stud = db.collection("student"); /* ### student collection  ### */
 var school = db.collection("school"); /* ### school collection  ### */
@@ -1637,19 +1637,18 @@ module.exports.uploadStudentMaster = function (req, res) {
                 console.log("data: " + JSON.stringify(data));
                 console.log("err: " + JSON.stringify(err));
                 if (err) {
-                    if (err.code == 1100) {
-                        console.log("err: "+err.errmsg[61]);
-                        console.log("err: "+JSON.stringify(err));
+                    if (err.code == 11000) {
+                        console.log("err: " + err.errmsg[61]);
+                        console.log("err: " + JSON.stringify(err));
                         responseData = {
                             status: false,
                             message: err.errmsg[61]
-                         
                         };
                         res.status(400).send(responseData);
                     }
                     else {
-                        console.log("err: "+err.errmsg);
-                        console.log("err: "+JSON.stringify(err));
+                        console.log("err: " + err.errmsg);
+                        console.log("err: " + JSON.stringify(err));
                         responseData = {
                             status: false,
                             message: err.errmsg,

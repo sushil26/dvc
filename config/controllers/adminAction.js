@@ -1655,6 +1655,7 @@ module.exports.uploadStudentMaster = function (req, res) {
                     }
                     else {
                         console.log("err.errors.name: " + err.name);
+                        console.log("err.errors.name: " + err.errors[0]);
                         console.log("err: " + JSON.stringify(err));
                         responseData = {
                             status: false,

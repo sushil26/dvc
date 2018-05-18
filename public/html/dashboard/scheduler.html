@@ -291,20 +291,24 @@
                             <th>Timing</th>
                             <th>Subject</th>
                           </tr>
+
                         </thead>
                         <tbody>
-                          <tr ng-repeat="tt in teacherPersonalData[0].timeTable[0].timing">
+                          <tr>
 
-                            <td>{{tt.startsAt}}-{{tt.endsAt}}</td>
+                            <td ng-repeat="tt in teacherPersonalData[0].timeTable[0].timing">
+                              <div>{{tt.startsAt}}-{{tt.endsAt}}</div>
+                            </td>
 
 
-                          </tr>
 
-                          <tr ng-if="selectedDateForEvent=='Mon'" style="background-color:#ccc!important;cursor: pointer;" ng-repeat="mtt in teacherPersonalData[0].timeTable[0].css.Mon"
-                            ng-click="timeTableForEventBook('mon',$index)">
-                            <td>
-                              <button class="btn" ng-if="mtt.class=='Free'">Schedule</button>
-                              <span ng-if="mtt.class!='Free'">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</span>
+
+                            <td ng-if="selectedDateForEvent=='Mon'" style="background-color:#ccc!important;cursor: pointer;" ng-repeat="mtt in teacherPersonalData[0].timeTable[0].css.Mon"
+                              ng-click="timeTableForEventBook('mon',$index)">
+                              <div>
+                                <button class="btn" ng-if="mtt.class=='Free'">Schedule</button>
+                                <span ng-if="mtt.class!='Free'">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</span>
+                              </div>
                             </td>
                           </tr>
 

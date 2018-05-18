@@ -9,14 +9,16 @@
     mwl-calendar span[data-cal-date] {
       color: black;
     }
+
     .cal-row-head {
       background: wheat;
     }
+
     mwl-calendar .badge-important {
       background-color: #2dc99787;
     }
 
-   
+
 
     mwl-calendar .cal-month-box [class*=cal-cell],
     mwl-calendar .cal-year-box [class*=span] {
@@ -58,12 +60,12 @@
     <section class="wrapper">
       <div id="profile">
         <section class="panel">
-            <div class="panel-heading" style="background: #3a4a58">
-                <i class="fa fa-user-circle"></i>
-                <span style="color:white;">&nbspSCHEDULE MEETING</span>
-            </div>
+          <div class="panel-heading" style="background: #3a4a58">
+            <i class="fa fa-user-circle"></i>
+            <span style="color:white;">&nbspSCHEDULE MEETING</span>
+          </div>
           <div class="panel-body bio-graph-info" style="padding: 1px;">
-              <div style="margin:20px !important;">
+            <div style="margin:20px !important;">
 
 
               <!-- <h2 ng-if="userLoginType=='teacher'" class="text-center">Select Student</h2>
@@ -124,10 +126,10 @@
                         <div style="word-wrap: break-word; position: absolute !important;
                 right: 43%;">
                           <h2 ng-if="calendarOwner!='Your'">
-                            <strong >{{ vm.calendarTitle }}({{calendarOwner}})</strong>
+                            <strong>{{ vm.calendarTitle }}({{calendarOwner}})</strong>
                           </h2>
                           <h2 ng-if="calendarOwner=='Your'">
-                            <strong >{{ vm.calendarTitle }}</strong>
+                            <strong>{{ vm.calendarTitle }}</strong>
                           </h2>
                         </div>
 
@@ -189,7 +191,9 @@
                         <thead>
                           <tr>
                             <th>Timing</th>
-                            <th ng-repeat="tt in teacherPersonalData[0].timeTable[0].timing">{{tt.startsAt}}-{{tt.endsAt}}</th>
+                            <div   style="word-wrap: break-word;" ng-repeat="tt in teacherPersonalData[0].timeTable[0].timing">
+                              <th>{{tt.startsAt}}-{{tt.endsAt}}</th>
+                            </div>
                           </tr>
                         </thead>
                         <tbody>
@@ -264,7 +268,7 @@
 
 
               <!-- ##### Start Delete  ##### -->
-<!-- 
+              <!-- 
               <div class="col-md-12 col-sm-12 col-lg-12">
                 <br>
                 <br>

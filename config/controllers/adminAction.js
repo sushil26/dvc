@@ -1661,62 +1661,123 @@ module.exports.uploadStudentMaster = function (req, res) {
                             if (err.errors.mobileNum) {
                                 console.log("mobile Number has to be Number");
                                 message: "Mobile Number is required as a Number";
+                                responseData = {
+                                    status: false,
+                                    message: message
+                                };
+                                res.status(400).send(responseData);
                             }
                             else if(err.errors.schoolName)
                             {
                                 message: "SchoolName is required as a string";
+                                responseData = {
+                                    status: false,
+                                    message: message
+                                };
+                                res.status(400).send(responseData);
                             }
                             else if(err.errors.schoolId)
                             {
                                 message: "schoolId is required";
+                                responseData = {
+                                    status: false,
+                                    message: message
+                                };
+                                res.status(400).send(responseData);
                             }
                             else if(err.errors.firstName)
                             {
                                 message: "firstName is required as a string";
+                                responseData = {
+                                    status: false,
+                                    message: message
+                                };
+                                res.status(400).send(responseData);
                             }
                             else if(err.errors.lastName)
                             {
                                 message: "lastName is required as a string";
+                                responseData = {
+                                    status: false,
+                                    message: message
+                                };
+                                res.status(400).send(responseData);
                             }
                             else if(err.errors.parentName)
                             {
                                 message: "parentName is required as a string";
+                                responseData = {
+                                    status: false,
+                                    message: message
+                                };
+                                res.status(400).send(responseData);
                             }
                             else if(err.errors.parentEmail)
                             {
                                 message: "parentEmail is required as a string";
+                                responseData = {
+                                    status: false,
+                                    message: message
+                                };
+                                res.status(400).send(responseData);
                             }
                             else if(err.errors.mobileNum)
                             {
                                 message: "Father mobile number is required";
+                                responseData = {
+                                    status: false,
+                                    message: message
+                                };
+                                res.status(400).send(responseData);
                             }
                             else if(err.errors.motherName)
                             {
                                 message: "motherName is required as a string";
+                                responseData = {
+                                    status: false,
+                                    message: message
+                                };
+                                res.status(400).send(responseData);
                             }
                             else if(err.errors.motherEmail)
                             {
                                 message: "motherEmail is required";
+                                responseData = {
+                                    status: false,
+                                    message: message
+                                };
+                                res.status(400).send(responseData);
                             }
                             else if(err.errors.motherNum)
                             {
                                 message: "Mother mobile number is required";
+                                responseData = {
+                                    status: false,
+                                    message: message
+                                };
+                                res.status(400).send(responseData);
                             }
 
                             else if(err.errors.dob)
                             {
                                 message: "dob is required";
+                                responseData = {
+                                    status: false,
+                                    message: message
+                                };
+                                res.status(400).send(responseData);
                             }
                             else if(err.errors.doj)
                             {
                                 message: "doj is required";
+                                responseData = {
+                                    status: false,
+                                    message: message
+                                };
+                                res.status(400).send(responseData);
                             }
-                            console.log("message: "+message);
-                            responseData = {
-                                status: false,
-                                message: message
-                            };
-                            res.status(400).send(responseData);
+                           
+                            
                         }
                     }
                 } else {

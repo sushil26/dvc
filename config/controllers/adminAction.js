@@ -1657,15 +1657,66 @@ module.exports.uploadStudentMaster = function (req, res) {
                         console.log("err.errors.name: " + err.name);
                         console.log("err.errors: " + err.errors);
                         if (err.name == 'ValidationError') {
+                            var message;
                             if (err.errors.mobileNum) {
                                 console.log("mobile Number has to be Number");
-                                responseData = {
-                                    status: false,
-                                    message: "Mobile Number has to be Number",
-
-                                };
-                                res.status(400).send(responseData);
+                                message: "Mobile Number is required as a Number";
                             }
+                            else if(err.errors.schoolName)
+                            {
+                                message: "SchoolName is required as a string";
+                            }
+                            else if(err.errors.schoolId)
+                            {
+                                message: "schoolId is required";
+                            }
+                            else if(err.errors.firstName)
+                            {
+                                message: "firstName is required as a string";
+                            }
+                            else if(err.errors.lastName)
+                            {
+                                message: "lastName is required as a string";
+                            }
+                            else if(err.errors.parentName)
+                            {
+                                message: "parentName is required as a string";
+                            }
+                            else if(err.errors.parentEmail)
+                            {
+                                message: "parentEmail is required as a string";
+                            }
+                            else if(err.errors.mobileNum)
+                            {
+                                message: "Father mobile number is required";
+                            }
+                            else if(err.errors.motherName)
+                            {
+                                message: "motherName is required as a string";
+                            }
+                            else if(err.errors.motherEmail)
+                            {
+                                message: "motherEmail is required";
+                            }
+                            else if(err.errors.motherNum)
+                            {
+                                message: "Mother mobile number is required";
+                            }
+
+                            else if(err.errors.dob)
+                            {
+                                message: "dob is required";
+                            }
+                            else if(err.errors.doj)
+                            {
+                                message: "doj is required";
+                            }
+                            
+                            responseData = {
+                                status: false,
+                                message: message
+                            };
+                            res.status(400).send(responseData);
                         }
                     }
                 } else {

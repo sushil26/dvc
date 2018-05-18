@@ -1644,7 +1644,7 @@ module.exports.uploadStudentMaster = function (req, res) {
                     
                         console.log("err: " + JSON.stringify(err.errmsg));
                         var errmsg = err.errmsg;
-                        var splitErrMsg = errmsg.split(':')
+                        var splitErrMsg = errmsg.split('{ :')
                         console.log("split: "+errmsg.split(':'));
                         responseData = {
                             status: false,

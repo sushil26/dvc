@@ -1,6 +1,6 @@
 var db = require("../dbConfig.js").getDb();
 var teacher = require("./schemas/teacher.js");
-var schoolModel = require("./schemas/schoolSchema.js");
+var schoolModel = require("./schemas/school.js");
 var user = db.collection("user"); /* ### Teacher collection  ### */
 var stud = db.collection("student"); /* ### student collection  ### */
 var school = db.collection("school"); /* ### school collection  ### */

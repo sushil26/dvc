@@ -1638,17 +1638,18 @@ module.exports.uploadStudentMaster = function (req, res) {
                 // console.log("err: " + JSON.stringify(err));
                 if (err) {
                     console.log("err: " + JSON.stringify(err));
-                    console.log("err.code: " + err.code+" err.index: "+err.index+" err.errmsg: "+err.errmsg+" err.op: "+err.op);
+                    // console.log("err.code: " + err.code+" err.index: "+err.index+" err.errmsg: "+err.errmsg+" err.op: "+err.op);
                     console.log("err.op: " + JSON.stringify(err.op));
                     if (err.code == 11000) {
                     
                         console.log("err: " + JSON.stringify(err.errmsg));
                         var errmsg = err.errmsg;
-                        var splitErrMsg = errmsg.split('{ :')
-                        console.log("split: "+splitErrMsg);
+                        var splitErrMsg = errmsg.split(':');
+                        var nextSplit = splitErrMsg.split('}');
+                        console.log("splitErrMsg: "+splitErrMsg+" nextSplit: "+nextSplit);
                         responseData = {
                             status: false,
-                            message: splitErrMsg[4]+" Already exist"
+                            message: nextSplit[0]+" Already exist"
                         };
                         res.status(400).send(responseData);
                     }

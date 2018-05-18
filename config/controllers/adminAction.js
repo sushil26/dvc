@@ -1644,10 +1644,11 @@ module.exports.uploadStudentMaster = function (req, res) {
                     
                         console.log("err: " + JSON.stringify(err.errmsg));
                         var errmsg = err.errmsg;
+                        var splitErrMsg = errmsg.split(':')
                         console.log("split: "+errmsg.split(':'));
                         responseData = {
                             status: false,
-                            message: err.op
+                            message: splitErrMsg[5]+" Already exist"
                         };
                         res.status(400).send(responseData);
                     }

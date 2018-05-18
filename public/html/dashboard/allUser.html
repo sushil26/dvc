@@ -23,7 +23,7 @@
                                     <th>#</th>
 
                                     <th>Admin Name</th>
-                                    <th>Email</th>
+                                    <!-- <th>Email</th> -->
                                     <th>Phone Number</th>
                                     <th>Status</th>
                                     <th>Action</th>
@@ -35,7 +35,7 @@
                                 <tr ng-repeat="ad in teacherData" ng-if="ad.loginType=='admin'">
                                     <td style="background-color:white;">{{$index+1}}.</td>
                                     <td style="background-color:white;">{{ad.firstName + " " + ad.lastName}}</td>
-                                    <td style="background-color:white;">{{ad.email}}</td>
+                                    <!-- <td style="background-color:white;">{{ad.email}}</td> -->
                                     <td style="background-color:white;">{{ad.mobNumber}}</td>
                                     <td style=" background-color:white; color:red;" ng-if="ad.status=='inactive'">Inactive</td>
                                     <td style=" background-color:white; color:green;" ng-if="ad.status=='active'">Active</td>

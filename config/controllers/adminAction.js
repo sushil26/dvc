@@ -1656,6 +1656,12 @@ module.exports.uploadStudentMaster = function (req, res) {
                     else {
                         console.log("err.errors.name: " + err.name);
                         console.log("err.errors: " + err.errors);
+                        for(var x=0;x<err.errors.length;x++){
+                            console.log("err.errors[x]: "+err.errors);
+                            if(err.errors.mobileNum){
+                                console.log("mobile Number has to be Number");
+                            }
+                        }
                         console.log("err: " + JSON.stringify(err));
                         responseData = {
                             status: false,

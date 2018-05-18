@@ -1711,7 +1711,7 @@ module.exports.uploadStudentMaster = function (req, res) {
                             {
                                 message: "doj is required";
                             }
-                            
+                            console.log("message: "+message);
                             responseData = {
                                 status: false,
                                 message: message

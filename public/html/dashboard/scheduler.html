@@ -191,9 +191,11 @@
                         <thead>
                           <tr>
                             <th>Timing</th>
-                            <div   style="word-wrap: break-word;" ng-repeat="tt in teacherPersonalData[0].timeTable[0].timing">
-                              <th>{{tt.startsAt}}-{{tt.endsAt}}</th>
-                            </div>
+
+                            <th ng-repeat="tt in teacherPersonalData[0].timeTable[0].timing">
+                              <div style="word-wrap: break-word;">{{tt.startsAt}}-{{tt.endsAt}}</div>
+                            </th>
+
                           </tr>
                         </thead>
                         <tbody>

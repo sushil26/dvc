@@ -1556,7 +1556,6 @@ module.exports.monthlyDataUpdate = function (data, callback) {
             }
         }
     })
-
 }
 /* ### End update monthly attendance status  ### */
 module.exports.uploadStudentMaster = function (req, res) {
@@ -1636,23 +1635,24 @@ module.exports.uploadStudentMaster = function (req, res) {
             //         if (studentClassList.length == 0) {
             student.create(objJson, function (err, data) {
                 console.log("data: " + JSON.stringify(data));
+                console.log("err: " + JSON.stringify(err));
                 if (err) {
                     if (err.code == 1100) {
                         console.log("err: "+err.errmsg[61]);
                         console.log("err: "+JSON.stringify(err));
                         responseData = {
                             status: false,
-                            message: err.errmsg[61],
-                            data: data
+                            message: err.errmsg[61]
+                         
                         };
                         res.status(400).send(responseData);
                     }
                     else {
-                        console.log("err: "+err.errmsg[61]);
+                        console.log("err: "+err.errmsg);
                         console.log("err: "+JSON.stringify(err));
                         responseData = {
                             status: false,
-                            message: err.errmsg[61],
+                            message: err.errmsg,
                             data: data
                         };
                         res.status(400).send(responseData);

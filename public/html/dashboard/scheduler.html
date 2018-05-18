@@ -293,11 +293,11 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr >
+                          <tr  ng-repeat="tt in teacherPersonalData[0].timeTable[0].timing">
 
-                            <td ng-repeat="tt in teacherPersonalData[0].timeTable[0].timing">
-                              <div>{{tt.startsAt}}-{{tt.endsAt}}</div>
-                            </td>
+                           
+                              <td>{{tt.startsAt}}-{{tt.endsAt}}</td>
+                         
 
 
                           </tr>

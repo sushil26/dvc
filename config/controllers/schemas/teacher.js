@@ -13,13 +13,12 @@ var teacherSchema = new Schema({
     mobNumber: { type: Number, required: true, unique: true },
     dob: { type: Date, required: false },
     doj: { type: Date, required: false },
-    cs: [{
+    css: [{
         "_id": false,
-        "class": { type: Number, required: true },
+        "class": { type: String, required: true },
         "section": { type: String, required: true },
         "subject": {type: String, required: true }
-    }
-    ],
+    }],
     timeTable: [],
     pswd: { type: String, required: true },
     status: { type: String, required: true },
@@ -29,7 +28,7 @@ var teacherSchema = new Schema({
 
 
 teacherSchema.plugin(titlize, {
-    paths: ['schoolName', 'firstName', 'lastName']
+    paths: ['schoolName', 'firstName', 'lastName','css.class','css.section', 'css.subject']
 });
 
 module.exports = mongoose.model('user', teacherSchema, 'user');

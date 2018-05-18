@@ -1635,14 +1635,17 @@ module.exports.uploadStudentMaster = function (req, res) {
             //         if (studentClassList.length == 0) {
             student.create(objJson, function (err, data) {
                 console.log("data: " + JSON.stringify(data));
-                console.log("err: " + JSON.stringify(err));
+                // console.log("err: " + JSON.stringify(err));
                 if (err) {
+                    console.log("err: " + JSON.stringify(err));
+                    console.log("err.code: " + err.code);
+                    console.log("err.op: " + err.op);
                     if (err.code == 11000) {
                     
                         console.log("err: " + JSON.stringify(err.op));
                         responseData = {
                             status: false,
-                            message: err.op.schoolId
+                            message: err.op
                         };
                         res.status(400).send(responseData);
                     }

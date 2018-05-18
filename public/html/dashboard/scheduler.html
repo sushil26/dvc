@@ -283,7 +283,7 @@
                         </tbody>
 
                       </table> -->
-                      <div class="row">
+                      <span>
                         <table class="table table-sm">
 
                           <thead>
@@ -298,21 +298,22 @@
                             </tr>
                           </tbody>
                         </table>
-                        <table class="table table-sm">
-                          <thead>
-                            <th>Subject</th>
-                          </thead>
-                          <tbody>
-                            <tr ng-if="selectedDateForEvent=='Mon'" style="background-color:#ccc!important;cursor: pointer;" ng-repeat="mtt in teacherPersonalData[0].timeTable[0].css.Mon"
-                              ng-click="timeTableForEventBook('mon',$index)">
-                              <td>
-                                <button class="btn" ng-if="mtt.class=='Free'">Schedule</button>
-                                <span ng-if="mtt.class!='Free'">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</span>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
+                      </span>
+                      <table class="table table-sm">
+                        <thead>
+                          <th>Subject</th>
+                        </thead>
+                        <tbody>
+                          <tr ng-if="selectedDateForEvent=='Mon'" style="background-color:#ccc!important;cursor: pointer;" ng-repeat="mtt in teacherPersonalData[0].timeTable[0].css.Mon"
+                            ng-click="timeTableForEventBook('mon',$index)">
+                            <td>
+                              <button class="btn" ng-if="mtt.class=='Free'">Schedule</button>
+                              <span ng-if="mtt.class!='Free'">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</span>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+
 
                     </div>
                     <div class="modal-footer">

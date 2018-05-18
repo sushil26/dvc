@@ -23,7 +23,7 @@ var teacherSchema = new Schema({
 
 
 teacherSchema.plugin(titlize, {
-    paths: ['schoolName', 'firstName', 'lastName', 'parentName', 'motherName']
+    paths: ['schoolName', 'firstName', 'lastName']
 });
 
 module.exports = mongoose.model('user', teacherSchema, 'user');

@@ -18,7 +18,7 @@ var studentSchema = new Schema({
   motherNum: {type: Number, required: true, unique: true},
   cs: [{
     "_id":false,
-    "class": {type: Number, required: true},
+    "class": {type: String, required: true},
     "section": {type: String, required: true}
   }],
   dob: {type: Date, required: true},

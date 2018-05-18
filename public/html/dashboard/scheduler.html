@@ -296,21 +296,24 @@
                           <tr>
                             <td>
                               <table class="table table-sm">
-                                <tr ng-repeat="tt in teacherPersonalData[0].timeTable[0]">
-                                  <td>{{tt.timing[$index].startsAt}}-{{tt.timing[$index].endsAt}}</td>
-                                </tr>
+                                <tbody>
+                                  <tr ng-repeat="tt in teacherPersonalData[0].timeTable[0]">
+                                    <td>{{tt.timing[$index].startsAt}}-{{tt.timing[$index].endsAt}}</td>
+                                  </tr>
+                                </tbody>
                               </table>
                             </td>
                             <td>
                               <table class="table table-sm">
-
-                                <tr ng-if="selectedDateForEvent=='Mon'" style="background-color:#ccc!important;cursor: pointer;" ng-repeat="mtt in teacherPersonalData[0].timeTable[0].css.Mon"
-                                  ng-click="timeTableForEventBook('mon',$index)">
-                                  <td>
-                                    <button class="btn" ng-if="mtt.class=='Free'">Schedule</button>
-                                    <span ng-if="mtt.class!='Free'">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</span>
-                                  </td>
-                                </tr>
+                                <tbody>
+                                  <tr ng-if="selectedDateForEvent=='Mon'" style="background-color:#ccc!important;cursor: pointer;" ng-repeat="mtt in teacherPersonalData[0].timeTable[0].css.Mon"
+                                    ng-click="timeTableForEventBook('mon',$index)">
+                                    <td>
+                                      <button class="btn" ng-if="mtt.class=='Free'">Schedule</button>
+                                      <span ng-if="mtt.class!='Free'">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</span>
+                                    </td>
+                                  </tr>
+                                </tbody>
                               </table>
                             </td>
 

@@ -9,11 +9,17 @@ var teacherSchema = new Schema({
     schoolId: { type: String, required: true, unique: true },
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },
-    email: { type: String, required: true },
-    mobileNum: { type: Number, required: true, unique: true },
-    dob: { type: Date, required: true },
-    doj: { type: Date, required: true },
-    cs: [],
+    email: { type: String, required: true, unique: true },
+    mobNumber: { type: Number, required: true, unique: true },
+    dob: { type: Date, required: false },
+    doj: { type: Date, required: false },
+    cs: [{
+        "_id": false,
+        "class": { type: String, required: true },
+        "section": { type: String, required: true },
+        "subject": {type: String, required: true }
+    }
+    ],
     timeTable: [],
     pswd: { type: String, required: true },
     status: { type: String, required: true },

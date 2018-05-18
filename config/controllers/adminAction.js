@@ -1614,7 +1614,7 @@ module.exports.uploadStudentMaster = function (req, res) {
                 { "testType": "TT", "subjectWithMark": [] },
                 { "testType": "AT", "subjectWithMark": [] },
             ],
-            created_at: createdDate,
+            created_at: createdDate
         };
 
         objJson.push(userData);
@@ -1785,14 +1785,15 @@ module.exports.uploadTeacherMaster = function (req, res) {
             firstName: data.FirstName,
             lastName: data.LastName,
             email: data.Email,
-            mobileNum: data.PhoneNumber,
+            mobNumber: data.PhoneNumber,
             dob: data.DOB,
             doj: data.DOJ,
             pswd: "abc",
             css: [],
             timeTable: [],
             status: "active",
-            loginType: "teacher"
+            loginType: "teacher",
+            created_at: createdDate
         }
         var cssParts = data.ClassSectionSubject.split(',');
         console.log("cssParts: " + JSON.stringify(cssParts));
@@ -1815,33 +1816,12 @@ module.exports.uploadTeacherMaster = function (req, res) {
             teacher.create(objJson, function (err, data) {
                 console.log("data: " + JSON.stringify(data));
                 if (err) {
-                    if (err.code == 11000) {
-                        console.log("err: " + JSON.stringify(err.errmsg));
-                        var errmsg = err.errmsg;
-                        var splitErrMsg = errmsg.split(':');
-                        var nextSplit = splitErrMsg[4].split('}');
-                        console.log("splitErrMsg: " + splitErrMsg + " nextSplit: " + nextSplit);
-                        responseData = {
-                            status: false,
-                            message: nextSplit[0] + " Already exist"
-                        };
-                        res.status(400).send(responseData);
-                    }
-                    else {
-                        console.log("err.errors.name: " + err.name);
-                        console.log("err.errors: " + err.errors);
-                        if (err.name == 'ValidationError') {
-                            if (err.errors.mobileNum) {
-                                console.log("mobile Number has to be Number");
-                                responseData = {
-                                    status: false,
-                                    message: "Mobile Number has to be Number",
-
-                                };
-                                res.status(400).send(responseData);
-                            }
-                        }
-                    }
+                    responseData = {
+                        status: false,
+                        message: "Failed to Insert",
+                        data: data
+                    };
+                    res.status(400).send(responseData);
                 } else {
                     responseData = {
                         status: true,

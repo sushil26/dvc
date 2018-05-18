@@ -1645,7 +1645,7 @@ module.exports.uploadStudentMaster = function (req, res) {
                         console.log("err: " + JSON.stringify(err.errmsg));
                         var errmsg = err.errmsg;
                         var splitErrMsg = errmsg.split('{ :')
-                        console.log("split: "+errmsg.split(':'));
+                        console.log("split: "+splitErrMsg);
                         responseData = {
                             status: false,
                             message: splitErrMsg[4]+" Already exist"

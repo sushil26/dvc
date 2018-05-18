@@ -1,4 +1,6 @@
 var db = require("../dbConfig.js").getDb();
+var teacher = require("./schemas/teacher.js");
+var schoolModel = require("./schemas/school.js");
 var user = db.collection("user"); /* ### Teacher collection  ### */
 var stud = db.collection("student"); /* ### student collection  ### */
 var school = db.collection("school"); /* ### school collection  ### */
@@ -8,6 +10,7 @@ var util = require("util");
 var bodyParser = require("body-parser");
 var ObjectId = require("mongodb").ObjectID;
 var nodemailer = require("nodemailer");
+var createdDate = new Date();
 // var randomstring = require("randomstring");
 
 var transporter = nodemailer.createTransport({
@@ -279,7 +282,7 @@ module.exports.checkPassword = function (req, res) {
             responseData = {
               status: false,
               message: "Failed to get Data"
-                         };
+            };
             res.status(400).send(responseData);
           } else {
             if (userData.length > 0) {
@@ -287,10 +290,10 @@ module.exports.checkPassword = function (req, res) {
                 responseData = {
                   status: true,
                   message: "Password Matched"
-                                };
+                };
                 res.status(200).send(responseData);
               }
-              else{
+              else {
                 responseData = {
                   status: false,
                   message: "Password Not Matched"
@@ -330,7 +333,7 @@ module.exports.checkPassword = function (req, res) {
                 };
                 res.status(200).send(responseData);
               }
-              else{
+              else {
                 responseData = {
                   status: false,
                   message: "Password Not Matched"
@@ -367,9 +370,9 @@ module.exports.checkPassword = function (req, res) {
   }
   console.log("<--checkPassword");
 }
-module.exports.passwordUpdate= function (req, res) {
-console.log("passwordUpdate-->");
-var responseData;
+module.exports.passwordUpdate = function (req, res) {
+  console.log("passwordUpdate-->");
+  var responseData;
   var loginType = req.params.loginType;
   var id = req.params.id;
   console.log("loginType: " + loginType + " id" + id);
@@ -379,7 +382,7 @@ var responseData;
       if (loginType == 'admin' || loginType == 'teacher' || loginType == 'vc4allAdmin') {
         var findQuery = {
           "_id": ObjectId(id),
-          "pswd":req.body.currentPswd
+          "pswd": req.body.currentPswd
         }
         user.find(findQuery).toArray(function (err, userData) {
           console.log("find query status: " + JSON.stringify(userData));
@@ -389,48 +392,48 @@ var responseData;
             responseData = {
               status: false,
               message: "Failed to get Data"
-                         };
+            };
             res.status(400).send(responseData);
           } else {
             if (userData.length > 0) {
-           
-                user.update(findQuery,{$set:{"pswd":req.body.newPswd}},function (err, userData) {
-                  console.log("find query status: " + JSON.stringify(userData));
-                  // console.log("find query status length: " + userData.length);
-        
-                  if (err) {
-                    responseData = {
-                      status: false,
-                      message: "Failed to get Data"
-                                 };
-                    res.status(400).send(responseData);
-                  } else {
-                    
-                        responseData = {
-                          status: true,
-                          message: "Password Updated"
-                                        };
-                        res.status(200).send(responseData);
-                      }
-                    })
-               
-                  }
-              else{
-                responseData = {
-                  status: false,
-                  message: "Password Not Matched"
-                };
-                res.status(400).send(responseData);
-              }
-            
-           
+
+              user.update(findQuery, { $set: { "pswd": req.body.newPswd } }, function (err, userData) {
+                console.log("find query status: " + JSON.stringify(userData));
+                // console.log("find query status length: " + userData.length);
+
+                if (err) {
+                  responseData = {
+                    status: false,
+                    message: "Failed to get Data"
+                  };
+                  res.status(400).send(responseData);
+                } else {
+
+                  responseData = {
+                    status: true,
+                    message: "Password Updated"
+                  };
+                  res.status(200).send(responseData);
+                }
+              })
+
+            }
+            else {
+              responseData = {
+                status: false,
+                message: "Password Not Matched"
+              };
+              res.status(400).send(responseData);
+            }
+
+
           }
         })
       }
       else if (loginType == 'studParent') {
         var findQuery = {
           "_id": ObjectId(id),
-          "pswd":req.body.currentPswd
+          "pswd": req.body.currentPswd
         }
         user.find(findQuery).toArray(function (err, userData) {
           console.log("find query status: " + JSON.stringify(userData));
@@ -440,41 +443,41 @@ var responseData;
             responseData = {
               status: false,
               message: "Failed to get Data"
-                         };
+            };
             res.status(400).send(responseData);
           } else {
             if (userData.length > 0) {
-           
-                stud.update(findQuery,{$set:{"pswd":req.body.newPswd}}, function (err, userData) {
-                  console.log("find query status: " + JSON.stringify(userData));
-                  //console.log("find query status length: " + userData.length);
-        
-                  if (err) {
-                    responseData = {
-                      status: false,
-                      message: "Failed to get Data"
-                                 };
-                    res.status(400).send(responseData);
-                  } else {
-                    
-                        responseData = {
-                          status: true,
-                          message: "Password Updated"
-                                        };
-                        res.status(200).send(responseData);
-                      }
-                    })
-                  }
-              
-              else{
-                responseData = {
-                  status: false,
-                  message: "Password Not Matched"
-                };
-                res.status(400).send(responseData);
-              }
-            
-           
+
+              stud.update(findQuery, { $set: { "pswd": req.body.newPswd } }, function (err, userData) {
+                console.log("find query status: " + JSON.stringify(userData));
+                //console.log("find query status length: " + userData.length);
+
+                if (err) {
+                  responseData = {
+                    status: false,
+                    message: "Failed to get Data"
+                  };
+                  res.status(400).send(responseData);
+                } else {
+
+                  responseData = {
+                    status: true,
+                    message: "Password Updated"
+                  };
+                  res.status(200).send(responseData);
+                }
+              })
+            }
+
+            else {
+              responseData = {
+                status: false,
+                message: "Password Not Matched"
+              };
+              res.status(400).send(responseData);
+            }
+
+
           }
         })
       }
@@ -495,7 +498,7 @@ var responseData;
     };
     res.status(400).send(responseData);
   }
-console.log("<--passwordUpdate");
+  console.log("<--passwordUpdate");
 }
 module.exports.getUserData = function (req, res) {
   console.log("getUserData-->");
@@ -1041,7 +1044,7 @@ module.exports.adminCreate = function (req, res) {
     "country": req.body.country,
     "status": "active",
     "css": [],
-    "timeTable_timing": []
+    "created_at": createdDate
   }
   var adminObj = {
     "firstName": req.body.firstName,
@@ -1051,31 +1054,200 @@ module.exports.adminCreate = function (req, res) {
     "mobNumber": req.body.mobNumber,
     "pswd": req.body.pswd,
     "status": "active",
-    "loginType": "admin"
+    "loginType": "admin",
+    "created_at": createdDate
   }
   console.log("schoolObj: " + JSON.stringify(schoolObj));
   console.log("adminObj: " + JSON.stringify(adminObj));
-  school.insertOne(schoolObj, function (err, data) {
+  schoolModel.create(schoolObj, function (err, data) {
     console.log("data: " + JSON.stringify(data.ops[0]));
     if (err) {
-      responseData = {
-        status: false,
-        message: "Failed to Insert",
-        data: data
-      };
-      res.status(400).send(responseData);
+      if (err.code == 11000) {
+        console.log("err: " + JSON.stringify(err.errmsg));
+        var errmsg = err.errmsg;
+        var splitErrMsg = errmsg.split(':');
+        var nextSplit = splitErrMsg[4].split('}');
+        console.log("splitErrMsg: " + splitErrMsg + " nextSplit: " + nextSplit);
+        responseData = {
+          status: false,
+          message: nextSplit[0] + " Already exist"
+        };
+        res.status(400).send(responseData);
+      }
+      else {
+        console.log("err.errors.name: " + err.name);
+        console.log("err.errors: " + err.errors);
+        if (err.name == 'ValidationError') {
+          var message;
+          if (err.errors.schoolName) {
+            responseData = {
+              status: false,
+              message: "SchoolName is required"
+            };
+            res.status(400).send(responseData);
+          }
+          else if (err.errors.schoolRegNumber) {
+            responseData = {
+              status: false,
+              message: "SchoolRegNumber is required"
+            };
+            res.status(400).send(responseData);
+          }
+          else if (err.errors.address) {
+            responseData = {
+              status: false,
+              message: "Address is required"
+            };
+            res.status(400).send(responseData);
+          }
+          else if (err.errors.email) {
+            responseData = {
+              status: false,
+              message: "Email is required"
+            };
+            res.status(400).send(responseData);
+          }
+          else if (err.errors.mobNumber) {
+            responseData = {
+              status: false,
+              message: "Mobile number is required as a Number"
+            };
+            res.status(400).send(responseData);
+          }
+          else if (err.errors.dor) {
+            responseData = {
+              status: false,
+              message: "Date of registration is required"
+            };
+            res.status(400).send(responseData);
+          }
+          else if (err.errors.streetName) {
+            responseData = {
+              status: false,
+              message: "Street name number is required as a Number"
+            };
+            res.status(400).send(responseData);
+          }
+          else if (err.errors.city) {
+            responseData = {
+              status: false,
+              message: "City of registration is required"
+            };
+            res.status(400).send(responseData);
+          }
+          else if (err.errors.state) {
+            responseData = {
+              status: false,
+              message: "State name number is required"
+            };
+            res.status(400).send(responseData);
+          }
+          else if (err.errors.pinCode) {
+            responseData = {
+              status: false,
+              message: "PinCode of registration is required"
+            };
+            res.status(400).send(responseData);
+          }
+          else if (err.errors.country) {
+            responseData = {
+              status: false,
+              message: "Country name number is required"
+            };
+            res.status(400).send(responseData);
+          }
+
+        }
+      }
+
     } else {
       adminObj.schoolId = data.ops[0]._id;
 
-      user.insertOne(adminObj, function (err, data) {
+      teacher.create(adminObj, function (err, data) {
         console.log("data: " + JSON.stringify(data));
         if (err) {
-          responseData = {
-            status: false,
-            message: "Failed to Insert",
-            data: data
-          };
-          res.status(400).send(responseData);
+          if (err.code == 11000) {
+            console.log("err: " + JSON.stringify(err.errmsg));
+            var errmsg = err.errmsg;
+            var splitErrMsg = errmsg.split(':');
+            var nextSplit = splitErrMsg[4].split('}');
+            console.log("splitErrMsg: " + splitErrMsg + " nextSplit: " + nextSplit);
+            responseData = {
+                status: false,
+                message: nextSplit[0] + " Already exist"
+            };
+            res.status(400).send(responseData);
+        }
+        else {
+            console.log("err.errors.name: " + err.name);
+            console.log("err.errors: " + err.errors);
+            if (err.name == 'ValidationError') {
+                if (err.errors.mobileNum) {
+                    console.log("mobile Number has to be Number");
+                    responseData = {
+                        status: false,
+                        message: "Mobile Number is required as a Number"
+                    };
+                    res.status(400).send(responseData);
+                }
+                else if (err.errors.schoolName) {
+                    responseData = {
+                        status: false,
+                        message: "SchoolName is required as a string"
+                    };
+                    res.status(400).send(responseData);
+                }
+                else if (err.errors.schoolId) {
+                    responseData = {
+                        status: false,
+                        message: "SchoolId is required"
+                    };
+                    res.status(400).send(responseData);
+                }
+                else if (err.errors.firstName) {
+                    responseData = {
+                        status: false,
+                        message: "FirstName is required as a string"
+                    };
+                    res.status(400).send(responseData);
+                }
+                else if (err.errors.lastName) {
+                    responseData = {
+                        status: false,
+                        message: "LastName is required as a string"
+                    };
+                    res.status(400).send(responseData);
+                }
+                else if (err.errors.email) {
+                    responseData = {
+                        status: false,
+                        message: "Email is required as a string"
+                    };
+                    res.status(400).send(responseData);
+                }
+                else if (err.errors.mobNumber) {
+                    responseData = {
+                        status: false,
+                        message: "Mobile number is required as a string"
+                    };
+                    res.status(400).send(responseData);
+                }
+                else if (err.errors.email) {
+                    responseData = {
+                        status: false,
+                        message: "Email is required as a string"
+                    };
+                    res.status(400).send(responseData);
+                }
+                else if (err.errors.mobNumber) {
+                    responseData = {
+                        status: false,
+                        message: "Mobile number is required as a string"
+                    };
+                    res.status(400).send(responseData);
+                }
+            }
+        }
         } else {
           responseData = {
             status: true,

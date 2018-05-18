@@ -1,7 +1,7 @@
 
 var db = require("../dbConfig.js").getDb();
 var student = require("./schemas/student.js");
-//var teacher = require("./schemas/teacher.js");
+var teacher = require("./schemas/teacher.js");
 var user = db.collection("user"); /* ### Teacher collection  ### */
 var stud = db.collection("student"); /* ### student collection  ### */
 var school = db.collection("school"); /* ### school collection  ### */

@@ -1813,15 +1813,36 @@ module.exports.uploadTeacherMaster = function (req, res) {
         .on("end", function () {
             console.log("end marker: " + marker);
             console.log("objJson: " + JSON.stringify(objJson));
-            user.insert(objJson, function (err, data) {
+            teacher.create(objJson, function (err, data) {
                 console.log("data: " + JSON.stringify(data));
                 if (err) {
-                    responseData = {
-                        status: false,
-                        message: "Failed to Insert",
-                        data: data
-                    };
-                    res.status(400).send(responseData);
+                    if (err.code == 11000) {
+                        console.log("err: " + JSON.stringify(err.errmsg));
+                        var errmsg = err.errmsg;
+                        var splitErrMsg = errmsg.split(':');
+                        var nextSplit = splitErrMsg[4].split('}');
+                        console.log("splitErrMsg: " + splitErrMsg + " nextSplit: " + nextSplit);
+                        responseData = {
+                            status: false,
+                            message: nextSplit[0] + " Already exist"
+                        };
+                        res.status(400).send(responseData);
+                    }
+                    else {
+                        console.log("err.errors.name: " + err.name);
+                        console.log("err.errors: " + err.errors);
+                        if (err.name == 'ValidationError') {
+                            if (err.errors.mobileNum) {
+                                console.log("mobile Number has to be Number");
+                                responseData = {
+                                    status: false,
+                                    message: "Mobile Number has to be Number",
+
+                                };
+                                res.status(400).send(responseData);
+                            }
+                        }
+                    }
                 } else {
                     responseData = {
                         status: true,

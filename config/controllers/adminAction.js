@@ -1676,7 +1676,7 @@ module.exports.uploadStudentMaster = function (req, res) {
                             else if (err.errors.schoolId) {
                                 responseData = {
                                     status: false,
-                                    message: "schoolId is required"
+                                    message: "SchoolId is required"
                                 };
                                 res.status(400).send(responseData);
                             }
@@ -1923,8 +1923,63 @@ module.exports.uploadTeacherMaster = function (req, res) {
                                 console.log("mobile Number has to be Number");
                                 responseData = {
                                     status: false,
-                                    message: "Mobile Number has to be Number",
-
+                                    message: "Mobile Number is required as a Number"
+                                };
+                                res.status(400).send(responseData);
+                            }
+                            else if (err.errors.schoolName) {
+                                responseData = {
+                                    status: false,
+                                    message: "SchoolName is required as a string"
+                                };
+                                res.status(400).send(responseData);
+                            }
+                            else if (err.errors.schoolId) {
+                                responseData = {
+                                    status: false,
+                                    message: "SchoolId is required"
+                                };
+                                res.status(400).send(responseData);
+                            }
+                            else if (err.errors.firstName) {
+                                responseData = {
+                                    status: false,
+                                    message: "FirstName is required as a string"
+                                };
+                                res.status(400).send(responseData);
+                            }
+                            else if (err.errors.lastName) {
+                                responseData = {
+                                    status: false,
+                                    message: "LastName is required as a string"
+                                };
+                                res.status(400).send(responseData);
+                            }
+                            else if (err.errors.email) {
+                                responseData = {
+                                    status: false,
+                                    message: "Email is required as a string"
+                                };
+                                res.status(400).send(responseData);
+                            }
+                            else if (err.errors.mobNumber) {
+                                responseData = {
+                                    status: false,
+                                    message: "Mobile number is required as a string"
+                                };
+                                res.status(400).send(responseData);
+                            }
+                            else if (err.errors.email) {
+                                responseData = {
+                                    status: false,
+                                    message: "Email is required as a string"
+                                };
+                                res.status(400).send(responseData);
+                            }
+                            else if (err.errors.mobNumber) {
+                                responseData = {
+                                    status: false,
+                                    message: "Mobile number is required as a string"
                                 };
                                 res.status(400).send(responseData);
                             }

@@ -1656,19 +1656,22 @@ module.exports.uploadStudentMaster = function (req, res) {
                     else {
                         console.log("err.errors.name: " + err.name);
                         console.log("err.errors: " + err.errors);
-                        for(var x=0;x<err.errors.length;x++){
-                            console.log("err.errors[x]: "+err.errors);
-                            if(err.errors.mobileNum){
-                                console.log("mobile Number has to be Number");
-                            }
+                      if( err.name == 'ValidationError')
+                      {
+                        if(err.errors.mobileNum){
+                            console.log("mobile Number has to be Number");
+                            responseData = {
+                                status: false,
+                                message: "Mobile Number has to be Number",
+                               
+                            };
+                            res.status(400).send(responseData);
                         }
-                        console.log("err: " + JSON.stringify(err));
-                        responseData = {
-                            status: false,
-                            message: err.errmsg,
-                            data: data
-                        };
-                        res.status(400).send(responseData);
+                      }
+                           
+                        
+                       
+                        
                     }
 
                 } else {

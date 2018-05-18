@@ -16,7 +16,8 @@ var teacherSchema = new Schema({
     cs: [{
         "_id": false,
         "class": { type: String, required: true },
-        "section": { type: String, required: true }
+        "section": { type: String, required: true },
+        "subject": {type: String, required: true }
     }
     ],
     timeTable: [],

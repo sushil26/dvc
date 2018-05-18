@@ -1683,7 +1683,7 @@ module.exports.uploadStudentMaster = function (req, res) {
                             else if (err.errors.firstName) {
                                 responseData = {
                                     status: false,
-                                    message: F"irstName is required as a string"
+                                    message: "FirstName is required as a string"
                                 };
                                 res.status(400).send(responseData);
                             }

@@ -1785,7 +1785,7 @@ module.exports.uploadTeacherMaster = function (req, res) {
             firstName: data.FirstName,
             lastName: data.LastName,
             email: data.Email,
-            mobileNum: data.PhoneNumber,
+            mobNumber: data.PhoneNumber,
             dob: data.DOB,
             doj: data.DOJ,
             pswd: "abc",

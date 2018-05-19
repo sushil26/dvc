@@ -20,7 +20,7 @@ log4js.configure({
   appenders: { cheese: { type: 'file', filename: './debug.log' } },
   categories: { default: { appenders: ['cheese'], level: 'all' } }
 });
-const logger = log4js.getLogger('cheese');
+const logger = log4js.getLogger('debug');
 logger.trace('Entering cheese testing');
 logger.debug('Got cheese.');
 logger.info('Cheese is Gouda.');

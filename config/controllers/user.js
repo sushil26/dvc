@@ -79,6 +79,12 @@ module.exports.register4VC = function (req, res) {
 module.exports.login4VC = function (req, res) {
   console.log("login==>");
   log.info("log is working");
+  log.trace('Entering cheese testing');
+  log.debug('Got cheese.');
+  log.info('Cheese is Gouda.');
+  log.warn('Cheese is quite smelly.');
+  log.error('Cheese is too ripe!');
+  log.fatal('Cheese was breeding ground for listeria.');
   var responseData;
 
   if (general.emptyCheck(req.body.email) && general.emptyCheck(req.body.password)) {

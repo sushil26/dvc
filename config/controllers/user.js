@@ -5,6 +5,9 @@ var user = db.collection("user"); /* ### Teacher collection  ### */
 var stud = db.collection("student"); /* ### student collection  ### */
 var school = db.collection("school"); /* ### school collection  ### */
 
+var logger = require('../config/log.js');
+var log = logger.LOG;
+
 var general = require("../general.js");
 var util = require("util");
 var bodyParser = require("body-parser");
@@ -95,6 +98,8 @@ module.exports.login4VC = function (req, res) {
             if (data[0].loginType == 'vc4allAdmin') {
               console.log("login-->:vc4allAdmin");
               if (data[0].pswd == req.body.password) {
+                log.info("req.originalUrl: " + req.originalUrl + " fresh: " + req.fresh + " protocol: " + req.protocol);
+
                 responseData = {
                   status: true,
                   message: "Login Successfully",
@@ -115,6 +120,7 @@ module.exports.login4VC = function (req, res) {
             else if (data[0].loginType == 'teacher') {
               console.log("login-->: teacher: " + data[0].pswd + "req.body.password: " + req.body.password);
               if (data[0].pswd == req.body.password) {
+                log.info("req.originalUrl: " + req.originalUrl + " fresh: " + req.fresh + " protocol: " + req.protocol);
                 responseData = {
                   status: true,
                   message: "Login Successfully",
@@ -150,6 +156,8 @@ module.exports.login4VC = function (req, res) {
                 } else {
                   if (schoolStatus[0].status == "active") {
                     if (data[0].pswd == req.body.password) {
+                      log.info("req.originalUrl: "+req.originalUrl+" fresh: "+req.fresh+" protocol: "+req.protocol);
+                      log.error(err.message);
                       if (data[0].status == "active") {
                         console.log("Successfully Logged in");
                         responseData = {
@@ -1173,81 +1181,81 @@ module.exports.adminCreate = function (req, res) {
             var nextSplit = splitErrMsg[4].split('}');
             console.log("splitErrMsg: " + splitErrMsg + " nextSplit: " + nextSplit);
             responseData = {
-                status: false,
-                message: nextSplit[0] + " Already exist"
+              status: false,
+              message: nextSplit[0] + " Already exist"
             };
             res.status(400).send(responseData);
-        }
-        else {
+          }
+          else {
             console.log("err.errors.name: " + err.name);
             console.log("err.errors: " + err.errors);
             if (err.name == 'ValidationError') {
-                if (err.errors.mobileNum) {
-                    console.log("mobile Number has to be Number");
-                    responseData = {
-                        status: false,
-                        message: "Mobile Number is required as a Number"
-                    };
-                    res.status(400).send(responseData);
-                }
-                else if (err.errors.schoolName) {
-                    responseData = {
-                        status: false,
-                        message: "SchoolName is required as a string"
-                    };
-                    res.status(400).send(responseData);
-                }
-                else if (err.errors.schoolId) {
-                    responseData = {
-                        status: false,
-                        message: "SchoolId is required"
-                    };
-                    res.status(400).send(responseData);
-                }
-                else if (err.errors.firstName) {
-                    responseData = {
-                        status: false,
-                        message: "FirstName is required as a string"
-                    };
-                    res.status(400).send(responseData);
-                }
-                else if (err.errors.lastName) {
-                    responseData = {
-                        status: false,
-                        message: "LastName is required as a string"
-                    };
-                    res.status(400).send(responseData);
-                }
-                else if (err.errors.email) {
-                    responseData = {
-                        status: false,
-                        message: "Email is required as a string"
-                    };
-                    res.status(400).send(responseData);
-                }
-                else if (err.errors.mobNumber) {
-                    responseData = {
-                        status: false,
-                        message: "Mobile number is required as a string"
-                    };
-                    res.status(400).send(responseData);
-                }
-                else if (err.errors.email) {
-                    responseData = {
-                        status: false,
-                        message: "Email is required as a string"
-                    };
-                    res.status(400).send(responseData);
-                }
-                else if (err.errors.mobNumber) {
-                    responseData = {
-                        status: false,
-                        message: "Mobile number is required as a string"
-                    };
-                    res.status(400).send(responseData);
-                }
+              if (err.errors.mobileNum) {
+                console.log("mobile Number has to be Number");
+                responseData = {
+                  status: false,
+                  message: "Mobile Number is required as a Number"
+                };
+                res.status(400).send(responseData);
+              }
+              else if (err.errors.schoolName) {
+                responseData = {
+                  status: false,
+                  message: "SchoolName is required as a string"
+                };
+                res.status(400).send(responseData);
+              }
+              else if (err.errors.schoolId) {
+                responseData = {
+                  status: false,
+                  message: "SchoolId is required"
+                };
+                res.status(400).send(responseData);
+              }
+              else if (err.errors.firstName) {
+                responseData = {
+                  status: false,
+                  message: "FirstName is required as a string"
+                };
+                res.status(400).send(responseData);
+              }
+              else if (err.errors.lastName) {
+                responseData = {
+                  status: false,
+                  message: "LastName is required as a string"
+                };
+                res.status(400).send(responseData);
+              }
+              else if (err.errors.email) {
+                responseData = {
+                  status: false,
+                  message: "Email is required as a string"
+                };
+                res.status(400).send(responseData);
+              }
+              else if (err.errors.mobNumber) {
+                responseData = {
+                  status: false,
+                  message: "Mobile number is required as a string"
+                };
+                res.status(400).send(responseData);
+              }
+              else if (err.errors.email) {
+                responseData = {
+                  status: false,
+                  message: "Email is required as a string"
+                };
+                res.status(400).send(responseData);
+              }
+              else if (err.errors.mobNumber) {
+                responseData = {
+                  status: false,
+                  message: "Mobile number is required as a string"
+                };
+                res.status(400).send(responseData);
+              }
             }
-        }
+          }
         } else {
           responseData = {
             status: true,

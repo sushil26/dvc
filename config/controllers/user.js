@@ -120,7 +120,7 @@ module.exports.login4VC = function (req, res) {
             else if (data[0].loginType == 'teacher') {
               console.log("login-->: teacher: " + data[0].pswd + "req.body.password: " + req.body.password);
               if (data[0].pswd == req.body.password) {
-console.log("log started--->");
+                console.log("log started--->");
                 log.info("req.originalUrl: " + req.originalUrl + " fresh: " + req.fresh + " protocol: " + req.protocol);
                 responseData = {
                   status: true,
@@ -157,10 +157,9 @@ console.log("log started--->");
                 } else {
                   if (schoolStatus[0].status == "active") {
                     if (data[0].pswd == req.body.password) {
-                      log.info("req.originalUrl: "+req.originalUrl+" fresh: "+req.fresh+" protocol: "+req.protocol);
-                     
                       if (data[0].status == "active") {
-                        console.log("Successfully Logged in");
+                        console.log("Successfully Logged in as "+(data[0].loginType));
+                        log.info("req.originalUrl: " + req.originalUrl + " fresh: " + req.fresh + " protocol: " + req.protocol);
                         responseData = {
                           status: true,
                           message: "Login Successfully",

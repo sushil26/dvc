@@ -75,7 +75,6 @@ module.exports.register4VC = function (req, res) {
   }
   console.log("<<==Register");
 };
-
 module.exports.login4VC = function (req, res) {
   console.log("login==*>");
   var responseData;

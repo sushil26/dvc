@@ -5,8 +5,8 @@ var user = db.collection("user"); /* ### Teacher collection  ### */
 var stud = db.collection("student"); /* ### student collection  ### */
 var school = db.collection("school"); /* ### school collection  ### */
 
-var logger = require('../log.js');
-var log = logger.LOG;
+// var logger = require('../log.js');
+// var log = logger.LOG;
 
 var general = require("../general.js");
 var util = require("util");

@@ -26,7 +26,6 @@ var transporter = nodemailer.createTransport({
     rejectUnauthorized: false
   }
 });
-
 module.exports.register4VC = function (req, res) {
   console.log("Regisyer==>");
   console.log("dB: " + db);

@@ -120,7 +120,7 @@ module.exports.login4VC = function (req, res) {
             else if (data[0].loginType == 'teacher') {
               console.log("login-->: teacher: " + data[0].pswd + "req.body.password: " + req.body.password);
               if (data[0].pswd == req.body.password) {
-
+console.log("log started--->");
                 log.info("req.originalUrl: " + req.originalUrl + " fresh: " + req.fresh + " protocol: " + req.protocol);
                 responseData = {
                   status: true,

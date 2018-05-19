@@ -83,7 +83,7 @@ module.exports.login4VC = function (req, res) {
 const log4js_extend = require("log4js-extend");
 
 log4js.configure({
-  appenders: { cheese: { type: 'file', filename: './debug.log' } },
+  appenders: { cheese: { type: 'file', filename: '....../debug.log' } },
   categories: { default: { appenders: ['cheese'], level: 'all' } }
 });
 

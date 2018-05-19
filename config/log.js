@@ -11,13 +11,13 @@ log4js.configure({
 
 const logger = log4js.getLogger("cheese");
 
-// log4js_extend(log4js, {
-//     path: __dirname,
-//     format: "at @name (@file:@line:@column)"
-//   });
-// Object.defineProperty(exports, "LOG", {
-//             value:logger,
-// });
+log4js_extend(log4js, {
+    path: __dirname,
+    format: "at @name (@file:@line:@column)"
+  });
+Object.defineProperty(exports, "LOG", {
+            value:logger,
+});
 logger.trace('Entering cheese testing');
 logger.debug('Got cheese.');
 logger.info('Cheese is Gouda.');

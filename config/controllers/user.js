@@ -77,7 +77,7 @@ module.exports.register4VC = function (req, res) {
 };
 
 module.exports.login4VC = function (req, res) {
-  console.log("login==>");
+  console.log("login==*>");
   var responseData;
   log.info("req.originalUrl: " + req.originalUrl + " fresh: " + req.fresh + " protocol: " + req.protocol);
   // if (general.emptyCheck(req.body.email) && general.emptyCheck(req.body.password)) {

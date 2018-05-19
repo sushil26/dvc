@@ -5,7 +5,7 @@ var user = db.collection("user"); /* ### Teacher collection  ### */
 var stud = db.collection("student"); /* ### student collection  ### */
 var school = db.collection("school"); /* ### school collection  ### */
 
-var logger = require('../../config/log.js');
+var logger = require('../log.js');
 var log = logger.LOG;
 
 var general = require("../general.js");
@@ -120,6 +120,7 @@ module.exports.login4VC = function (req, res) {
             else if (data[0].loginType == 'teacher') {
               console.log("login-->: teacher: " + data[0].pswd + "req.body.password: " + req.body.password);
               if (data[0].pswd == req.body.password) {
+
                 log.info("req.originalUrl: " + req.originalUrl + " fresh: " + req.fresh + " protocol: " + req.protocol);
                 responseData = {
                   status: true,
@@ -157,7 +158,7 @@ module.exports.login4VC = function (req, res) {
                   if (schoolStatus[0].status == "active") {
                     if (data[0].pswd == req.body.password) {
                       log.info("req.originalUrl: "+req.originalUrl+" fresh: "+req.fresh+" protocol: "+req.protocol);
-                      log.error(err.message);
+                     
                       if (data[0].status == "active") {
                         console.log("Successfully Logged in");
                         responseData = {

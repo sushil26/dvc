@@ -16,7 +16,6 @@ const log4js = require('log4js');
 
 
 const log4js_extend = require("log4js-extend");
-
 log4js.configure({
   appenders: { cheese: { type: 'file', filename: 'debug.log' } },
   categories: { default: { appenders: ['cheese'], level: 'all' } }

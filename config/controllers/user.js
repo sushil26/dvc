@@ -78,6 +78,7 @@ module.exports.register4VC = function (req, res) {
 
 module.exports.login4VC = function (req, res) {
   console.log("login==>");
+  log.info("log is working");
   var responseData;
 
   if (general.emptyCheck(req.body.email) && general.emptyCheck(req.body.password)) {

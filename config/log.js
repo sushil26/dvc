@@ -20,13 +20,13 @@ log4js.configure({
   appenders: { cheese: { type: 'file', filename: './debug.log' } },
   categories: { default: { appenders: ['cheese'], level: 'all' } }
 });
-const logger = log4js.getLogger('debug');
-logger.trace('Entering cheese testing');
-logger.debug('Got cheese.');
-logger.info('Cheese is Gouda.');
-logger.warn('Cheese is quite smelly.');
-logger.error('Cheese is too ripe!');
-logger.fatal('Cheese was breeding ground for listeria.');
+// const logger = log4js.getLogger('debug');
+// logger.trace('Entering cheese testing');
+// logger.debug('Got cheese.');
+// logger.info('Cheese is Gouda.');
+// logger.warn('Cheese is quite smelly.');
+// logger.error('Cheese is too ripe!');
+// logger.fatal('Cheese was breeding ground for listeria.');
 log4js_extend(log4js, {
     path: __dirname,
     format: "at @name (@file:@line:@column)"

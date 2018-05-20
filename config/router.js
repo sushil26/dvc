@@ -60,9 +60,10 @@ module.exports = function (app) {
     app.get('/vc/getEventById/:id', event.getEventById);
     app.get('/vc/getStudentAttendance/:id', event.getStudentAttendance);
     app.post('/vc/deleteEvent', event.deleteEvent);
+    app.post('/vc/updateEventMOM/:eventId', event.updateEventMOM);
     app.post('/vc/parentCredential', event.parentCredential);
     app.post('/vc/eventUpdate/:id', event.eventUpdate);
-    app.post('/vc/updateEventMOM/:eventId', event.updateEventMOM);
+    
 
 
 

@@ -406,11 +406,12 @@
                     </div>
 
                     <div class="modal-body">
-                        <input ng-keyup="$event.keyCode == 13 && momVC()" style="
+                        <textarea ng-keyup="$event.keyCode == 13 && momVC()" style="
                       background:  #ddd;
                       border-radius: inherit;
                       height: 50px;
-                      border: #ddd;" type="textarea" id="crdPswd" class="form-control" placeholder="enter text here" ng-model="mom">
+                      border: #ddd;" id="crdPswd" class="form-control" placeholder="enter text here" ng-model="mom">
+                        </textarea>
                     </div>
                     <div class="modal-footer" style="border-top:0px; padding: 15px;">
                         <button id="crdsubmit" type="button" style="background-color: #29b6bd;color:#f1f1f1; width: 100%; height:50px;" class="btn"

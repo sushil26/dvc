@@ -26,7 +26,6 @@ var transporter = nodemailer.createTransport({
     rejectUnauthorized: false
   }
 });
-
 module.exports.register4VC = function (req, res) {
   console.log("Regisyer==>");
   console.log("dB: " + db);
@@ -79,191 +78,191 @@ module.exports.login4VC = function (req, res) {
   console.log("login==*>");
   var responseData;
   log.info("req.originalUrl: " + req.originalUrl + " fresh: " + req.fresh + " protocol: " + req.protocol);
-  // if (general.emptyCheck(req.body.email) && general.emptyCheck(req.body.password)) {
-  //   if (req.body.loginType == "teacher") {
-  //     console.log("logintype: " + req.body.loginType);
-  //     user.find({ email: req.body.email }).toArray(function (err, data) {
-  //       console.log("data: " + JSON.stringify(data));
-  //       if (err) {
-  //         responseData = {
-  //           status: false,
-  //           message: "Failed to get Data",
-  //           data: schoolStatus
-  //         };
-  //       }
-  //       else {
-  //         console.log("data.length: " + data.length);
-  //         if (data.length > 0) {
-  //           if (data[0].loginType == 'vc4allAdmin') {
-  //             console.log("login-->:vc4allAdmin");
-  //             if (data[0].pswd == req.body.password) {
-  //               log.info("req.originalUrl: " + req.originalUrl + " fresh: " + req.fresh + " protocol: " + req.protocol);
+  if (general.emptyCheck(req.body.email) && general.emptyCheck(req.body.password)) {
+    if (req.body.loginType == "teacher") {
+      console.log("logintype: " + req.body.loginType);
+      user.find({ email: req.body.email }).toArray(function (err, data) {
+        console.log("data: " + JSON.stringify(data));
+        if (err) {
+          responseData = {
+            status: false,
+            message: "Failed to get Data",
+            data: schoolStatus
+          };
+        }
+        else {
+          console.log("data.length: " + data.length);
+          if (data.length > 0) {
+            if (data[0].loginType == 'vc4allAdmin') {
+              console.log("login-->:vc4allAdmin");
+              if (data[0].pswd == req.body.password) {
+                log.info("req.originalUrl: " + req.originalUrl + " fresh: " + req.fresh + " protocol: " + req.protocol);
 
-  //               responseData = {
-  //                 status: true,
-  //                 message: "Login Successfully",
-  //                 sessionData: "79ea520a-3e67-11e8-9679-97fa7aeb8e97",
-  //                 data: data[0]
-  //               };
-  //               res.status(200).send(responseData);
-  //             }
-  //             else {
-  //               responseData = {
-  //                 status: false,
-  //                 errorCode: "E005",
-  //                 message: "Password is wrong"
-  //               };
-  //               res.status(200).send(responseData);
-  //             }
-  //           }
-  //           else if (data[0].loginType == 'teacher') {
-  //             console.log("login-->: teacher: " + data[0].pswd + "req.body.password: " + req.body.password);
-  //             if (data[0].pswd == req.body.password) {
-  //               console.log("log started--->");
-  //               log.info("req.originalUrl: " + req.originalUrl + " fresh: " + req.fresh + " protocol: " + req.protocol);
-  //               responseData = {
-  //                 status: true,
-  //                 message: "Login Successfully",
-  //                 sessionData: "79ea520a-3e67-11e8-9679-97fa7aeb8e97",
-  //                 data: data[0]
-  //               };
-  //               res.status(200).send(responseData);
-  //             }
-  //             else {
-  //               responseData = {
-  //                 status: false,
-  //                 errorCode: "E005",
-  //                 message: "Password is wrong"
-  //               };
-  //               res.status(200).send(responseData);
-  //             }
-  //           }
-  //           else {
-  //             console.log("data[0].schoolName: " + data[0].schoolName);
-  //             var sn = {
-  //               "schoolName": data[0].schoolName
-  //             }
-  //             school.find(sn).toArray(function (err, schoolStatus) {
-  //               console.log("second query status: " + schoolStatus[0].status);
+                responseData = {
+                  status: true,
+                  message: "Login Successfully",
+                  sessionData: "79ea520a-3e67-11e8-9679-97fa7aeb8e97",
+                  data: data[0]
+                };
+                res.status(200).send(responseData);
+              }
+              else {
+                responseData = {
+                  status: false,
+                  errorCode: "E005",
+                  message: "Password is wrong"
+                };
+                res.status(200).send(responseData);
+              }
+            }
+            else if (data[0].loginType == 'teacher') {
+              console.log("login-->: teacher: " + data[0].pswd + "req.body.password: " + req.body.password);
+              if (data[0].pswd == req.body.password) {
+                console.log("log started--->");
+                log.info("req.originalUrl: " + req.originalUrl + " fresh: " + req.fresh + " protocol: " + req.protocol);
+                responseData = {
+                  status: true,
+                  message: "Login Successfully",
+                  sessionData: "79ea520a-3e67-11e8-9679-97fa7aeb8e97",
+                  data: data[0]
+                };
+                res.status(200).send(responseData);
+              }
+              else {
+                responseData = {
+                  status: false,
+                  errorCode: "E005",
+                  message: "Password is wrong"
+                };
+                res.status(200).send(responseData);
+              }
+            }
+            else {
+              console.log("data[0].schoolName: " + data[0].schoolName);
+              var sn = {
+                "schoolName": data[0].schoolName
+              }
+              school.find(sn).toArray(function (err, schoolStatus) {
+                console.log("second query status: " + schoolStatus[0].status);
 
-  //               if (err) {
-  //                 responseData = {
-  //                   status: false,
-  //                   message: "Failed to get Data",
-  //                   data: schoolStatus
-  //                 };
-  //                 res.status(400).send(responseData);
-  //               } else {
-  //                 if (schoolStatus[0].status == "active") {
-  //                   if (data[0].pswd == req.body.password) {
-  //                     if (data[0].status == "active") {
-  //                       console.log("Successfully Logged in as "+(data[0].loginType));
-  //                       log.info("req.originalUrl: " + req.originalUrl + " fresh: " + req.fresh + " protocol: " + req.protocol);
-  //                       responseData = {
-  //                         status: true,
-  //                         message: "Login Successfully",
-  //                         sessionData: "79ea520a-3e67-11e8-9679-97fa7aeb8e97",
-  //                         data: data[0]
-  //                       };
-  //                       res.status(200).send(responseData);
-  //                     } else {
-  //                       console.log("Profile Inactive");
-  //                       responseData = {
-  //                         status: false,
-  //                         message: "Profile Inactive",
-  //                         data: data[0]
-  //                       };
-  //                       res.status(200).send(responseData);
-  //                     }
-  //                   } else {
-  //                     responseData = {
-  //                       status: false,
-  //                       errorCode: "E005",
-  //                       message: "Password is wrong"
-  //                     };
-  //                     res.status(200).send(responseData);
-  //                   }
-  //                 }
-  //                 else {
-  //                   responseData = {
-  //                     status: false,
-  //                     message: "Your not allow to login",
-  //                     data: data[0]
-  //                   };
-  //                   res.status(200).send(responseData);
-  //                 }
+                if (err) {
+                  responseData = {
+                    status: false,
+                    message: "Failed to get Data",
+                    data: schoolStatus
+                  };
+                  res.status(400).send(responseData);
+                } else {
+                  if (schoolStatus[0].status == "active") {
+                    if (data[0].pswd == req.body.password) {
+                      if (data[0].status == "active") {
+                        console.log("Successfully Logged in as "+(data[0].loginType));
+                        log.info("req.originalUrl: " + req.originalUrl + " fresh: " + req.fresh + " protocol: " + req.protocol);
+                        responseData = {
+                          status: true,
+                          message: "Login Successfully",
+                          sessionData: "79ea520a-3e67-11e8-9679-97fa7aeb8e97",
+                          data: data[0]
+                        };
+                        res.status(200).send(responseData);
+                      } else {
+                        console.log("Profile Inactive");
+                        responseData = {
+                          status: false,
+                          message: "Profile Inactive",
+                          data: data[0]
+                        };
+                        res.status(200).send(responseData);
+                      }
+                    } else {
+                      responseData = {
+                        status: false,
+                        errorCode: "E005",
+                        message: "Password is wrong"
+                      };
+                      res.status(200).send(responseData);
+                    }
+                  }
+                  else {
+                    responseData = {
+                      status: false,
+                      message: "Your not allow to login",
+                      data: data[0]
+                    };
+                    res.status(200).send(responseData);
+                  }
 
-  //               }
-  //             })
-  //           }
+                }
+              })
+            }
 
-  //         }
-  //         else {
-  //           console.log("There is no match for this EMail id from Teacher database");
-  //           responseData = {
-  //             status: false,
-  //             errorCode: "No Match",
-  //             message:
-  //               "There is no match for this EMail id from Teacher database"
-  //           };
-  //           res.status(200).send(responseData);
-  //         }
-  //       }
+          }
+          else {
+            console.log("There is no match for this EMail id from Teacher database");
+            responseData = {
+              status: false,
+              errorCode: "No Match",
+              message:
+                "There is no match for this EMail id from Teacher database"
+            };
+            res.status(200).send(responseData);
+          }
+        }
 
-  //     });
+      });
 
-  //   }
-  //   else {
-  //     stud.find({ $or: [{ parentEmail: req.body.email }, { MotherEmail: req.body.email }] }).toArray(function (err, data) {
-  //       if (data.length > 0) {
-  //         if (data[0].pswd == req.body.password) {
-  //           if (data[0].status == "active") {
-  //             console.log("Successfully Logged in");
-  //             responseData = {
-  //               status: true,
-  //               message: "Login Successfully",
-  //               loginType: "studParent",
-  //               data: data[0]
-  //             };
-  //             res.status(200).send(responseData);
-  //           } else {
-  //             console.log("Profile Inactive");
-  //             responseData = {
-  //               status: false,
-  //               message: "Profile Inactive",
-  //               data: data[0]
-  //             };
-  //             res.status(200).send(responseData);
-  //           }
-  //         } else {
-  //           responseData = {
-  //             status: false,
-  //             errorCode: "E005",
-  //             message: "Password is wrong"
-  //           };
-  //           res.status(200).send(responseData);
-  //         }
-  //       } else {
-  //         responseData = {
-  //           status: false,
-  //           errorCode: "No Match",
-  //           message:
-  //             "There is no match for this EMail id from student database"
-  //         };
-  //         res.status(200).send(responseData);
-  //       }
-  //     });
-  //   }
+    }
+    else {
+      stud.find({ $or: [{ parentEmail: req.body.email }, { MotherEmail: req.body.email }] }).toArray(function (err, data) {
+        if (data.length > 0) {
+          if (data[0].pswd == req.body.password) {
+            if (data[0].status == "active") {
+              console.log("Successfully Logged in");
+              responseData = {
+                status: true,
+                message: "Login Successfully",
+                loginType: "studParent",
+                data: data[0]
+              };
+              res.status(200).send(responseData);
+            } else {
+              console.log("Profile Inactive");
+              responseData = {
+                status: false,
+                message: "Profile Inactive",
+                data: data[0]
+              };
+              res.status(200).send(responseData);
+            }
+          } else {
+            responseData = {
+              status: false,
+              errorCode: "E005",
+              message: "Password is wrong"
+            };
+            res.status(200).send(responseData);
+          }
+        } else {
+          responseData = {
+            status: false,
+            errorCode: "No Match",
+            message:
+              "There is no match for this EMail id from student database"
+          };
+          res.status(200).send(responseData);
+        }
+      });
+    }
 
-  // } else {
-  //   console.log("Epty value found");
-  //   responseData = {
-  //     status: false,
-  //     message: "empty value found",
-  //     data: userData
-  //   };
-  //   res.status(400).send(responseData);
-  // }
+  } else {
+    console.log("Epty value found");
+    responseData = {
+      status: false,
+      message: "empty value found",
+      data: userData
+    };
+    res.status(400).send(responseData);
+  }
 
   console.log("<==login");
 };

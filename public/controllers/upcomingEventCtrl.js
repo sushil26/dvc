@@ -181,7 +181,12 @@ app.controller('upcomingEventController', function ($scope, $state, $window, htt
         console.log("id: "+id+"url: "+url);
         localStorage.setItem("id", id);
         localStorage.setItem("schoolName", $scope.userData.schoolName);
-       
+       if($scope.loginType=='teacher'){
+        localStorage.setItem("teacherLoginId", $scope.userData.id);
+       }
+       else if($scope.loginType=='studParent'){
+        localStorage.setItem("studLoginId", $scope.userData.id);
+       }
         $window.open(url, '_blank');
         console.log("<--conferenceStart");
     }

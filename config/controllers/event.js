@@ -307,7 +307,7 @@ module.exports.updateEventMOM = function (req, res) {
                 };
                 res.status(200).send(responseData);
             }
-        })
+        }
     }
     else {
         console.log("Epty value found");

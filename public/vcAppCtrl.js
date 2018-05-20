@@ -4,6 +4,7 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
   var userName;
   httpFactory.getFile('property.json');
   $scope.propertyJson = $rootScope.propertyJson;
+  console.log("$scope.propertyJson: "+JSON.stringify($scope.propertyJson));
   $scope.userData = sessionAuthFactory.getAccess("userData");
   console.log(" $scope.userData : "+JSON.stringify( $scope.userData ));
   if ($scope.userData) {

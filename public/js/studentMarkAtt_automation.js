@@ -4,7 +4,7 @@ console.log("studSchoolId: " + id + " schoolName: " + schoolName);
 
 function momVC() {
     console.log("momVC-->");
-    var mom = document.getElementById("momtext").innerHTML;
+    var mom = document.getElementById("momtext").value;
     console.log("mom:" + mom);
     if (localStorage.getItem("teacherLoginId")) {
         var teacherLoginId = localStorage.getItem("teacherLoginId");

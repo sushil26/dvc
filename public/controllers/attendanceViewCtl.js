@@ -9,7 +9,7 @@ app.controller('attendanceViewCtl', function ($scope, $rootScope, $window, httpF
     $scope.getTeacherData = function () {
         console.log("getTeacherData-->");
         var id = $scope.userData.id;
-        var api = "https://norecruits.com/vc/teacherDetail" + "/" + id;
+        var api = $scope.propertyJson.VC_teacherDetail + "/" + id;
         //var api = "http://localhost:5000/vc/teacherDetail" + "/" + id;
         //var api = "http://localhost:5000/vc/eventGet";
         console.log("api: " + api);

@@ -79,6 +79,18 @@ module.exports.login4VC = function (req, res) {
   var responseData;
   console.log("logger: "+JSON.stringify(logger));
   console.log("log: "+JSON.stringify(log));
+  logger.trace('Entering cheese testing');
+logger.debug('Got cheese.');
+logger.info('Cheese is Gouda.');
+logger.warn('Cheese is quite smelly.');
+logger.error('Cheese is too ripe!');
+logger.fatal('Cheese was breeding ground for listeria.');
+logger.trace('Entering cheese testing');
+log.debug('Got cheese.');
+log.info('Cheese is Gouda.');
+log.warn('Cheese is quite smelly.');
+log.error('Cheese is too ripe!');
+log.fatal('Cheese was breeding ground for listeria.');
   log.info("req.originalUrl: " + req.originalUrl + " fresh: " + req.fresh + " protocol: " + req.protocol);
   if (general.emptyCheck(req.body.email) && general.emptyCheck(req.body.password)) {
     if (req.body.loginType == "teacher") {

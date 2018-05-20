@@ -288,7 +288,7 @@ module.exports.updateEventMOM = function (req, res) {
         }
         var updateData = {
             "mom": req.body.mom,
-            "momCreatedBy": momCreatedBy
+            "momCreatedBy": req.body.momCreatedBy
         }
         event.update(id, { $push: { "mom": updateData } }).toArray(function (err, data) {
             console.log("data: " + JSON.stringify(data));

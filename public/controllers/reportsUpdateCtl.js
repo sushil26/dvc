@@ -1,7 +1,8 @@
-app.controller('reportsUpdateCtl', function ($scope, $window, $filter, $state, httpFactory, $uibModal, sessionAuthFactory, moment, calendarConfig) {
+app.controller('reportsUpdateCtl', function ($scope, $rootScope, $window, $filter, $state, httpFactory, $uibModal, sessionAuthFactory, moment, calendarConfig) {
   console.log("attendanceCtl==>");
   $scope.userData = sessionAuthFactory.getAccess("userData");
   var schoolName = $scope.userData.schoolName;
+  $scope.propertyJson = $rootScope.propertyJson;
   console.log(" $scope.userData : " + JSON.stringify($scope.userData));
   $scope.file = {}; /* ### Note: Upload file declaration ### */
   $scope.uploadTypes = ["Teacher Details", "Student Details", "Time Table", "Attendance", "Mark Report"];
@@ -15,7 +16,7 @@ app.controller('reportsUpdateCtl', function ($scope, $window, $filter, $state, h
   $scope.events = [];
   
   $scope.getAllTeacherList = function () {
-    var api = "https://norecruits.com/vc/getAllTeacherList" + "/" + schoolName;
+    var api = $scope.propertyJson.VC_getAllTeacherList+ "/" + schoolName;
     console.log("api: " + api);
     httpFactory.get(api).then(function (data) {
       var checkStatus = httpFactory.dataValidation(data);
@@ -34,7 +35,7 @@ app.controller('reportsUpdateCtl', function ($scope, $window, $filter, $state, h
   $scope.getSchoolData = function () {
     console.log("getSchoolData-->");
     $scope.cssList = [];
-    var api = "https://norecruits.com/vc/getSchoolData/" + schoolName;
+    var api = $scope.propertyJson.VC_getSchoolData+"/" + schoolName;
     console.log("api: " + api);
     httpFactory.get(api).then(function (data) {
       console.log("data--" + JSON.stringify(data.data));
@@ -82,17 +83,13 @@ app.controller('reportsUpdateCtl', function ($scope, $window, $filter, $state, h
   $scope.sma = []; /* ### Note:sma-Subject Mark Attendant  */
   $scope.addSMA = function () {
     console.log("addSMA-->");
-
     $scope.sma.push({ subject: "", mark: "", attendance: "" });
-
     console.log("<--addSMA");
   };
   $scope.uploadReports = [{ uploadType: "", csSelect: "", ttSelect: "", uploadDoc: "" }]; /* ### Note:uploadReports  */
   $scope.addUploadReports = function () {
     console.log("addUploadReports-->");
-
     $scope.uploadReports.push({ uploadType: "", csSelect: "", ttSelect: "", uploadDoc: "" });
-
     console.log("<--addUploadReports");
   }
   $scope.markFileUpdate = function (file, date, testType, clas, section) {
@@ -101,7 +98,7 @@ app.controller('reportsUpdateCtl', function ($scope, $window, $filter, $state, h
     var obj = {
       "file": file,
     }
-    var api = "https://norecruits.com/vc/markUpdate/" + schoolName + "/" + clas + "/" + section + "/" + testType + "/" + date;
+    var api = $scope.propertyJson.VC_markUpdate+"/" + schoolName + "/" + clas + "/" + section + "/" + testType + "/" + date;
     console.log("api: " + api);
     httpFactory.csvUpload(obj, api).then(function (data) {
       var checkStatus = httpFactory.dataValidation(data);
@@ -127,10 +124,10 @@ app.controller('reportsUpdateCtl', function ($scope, $window, $filter, $state, h
       "file": file,
     }
     if (uploadType == "Teacher Details") {
-      var api = "https://norecruits.com/vc/updateTeacherMaster/" + schoolName + "/" + id;
+      var api = $scope.propertyJson.VC_updateTeacherMaster+"/" + schoolName + "/" + id;
     }
     else if (uploadType == "Student Details") {
-      var api = "https://norecruits.com/vc/updateStudentMaster/" + schoolName + "/" + id;
+      var api = $scope.propertyJson.VC_updateStudentMaster+"/" + schoolName + "/" + id;
     }
     console.log("api: " + api);
     httpFactory.csvUpload(obj, api).then(function (data) {
@@ -151,7 +148,7 @@ app.controller('reportsUpdateCtl', function ($scope, $window, $filter, $state, h
     console.log("studentSelect-->");
     console.log("s: " + JSON.stringify(s));
     var id = s.id;
-    var api = "https://norecruits.com//vc/studentDetail/" + id;
+    var api = $scope.propertyJson.VC_studentDetail+"/" + id;
     console.log("api: " + api);
     httpFactory.get(api).then(function (data) {
       var checkStatus = httpFactory.dataValidation(data);
@@ -217,7 +214,7 @@ app.controller('reportsUpdateCtl', function ($scope, $window, $filter, $state, h
     var section = section;
     $scope.studList = [];
 
-    var api = "https://norecruits.com/vc/getStudListForCS" + "/" + schoolName + "/" + clas + "/" + section;
+    var api = $scope.propertyJson.VC_getStudListForCS + "/" + schoolName + "/" + clas + "/" + section;
     console.log("api: " + api);
     httpFactory.get(api).then(function (data) {
       var checkStatus = httpFactory.dataValidation(data);
@@ -249,7 +246,6 @@ app.controller('reportsUpdateCtl', function ($scope, $window, $filter, $state, h
         }
       }
     }
-
     console.log("<--testDateFetch");
   }
   $scope.timeTableFileupdate = function (file, id) {
@@ -258,7 +254,7 @@ app.controller('reportsUpdateCtl', function ($scope, $window, $filter, $state, h
     var obj = {
       "file": file
     }
-    var api = "https://norecruits.com/vc/updateTeacher_timeTable/" + id;
+    var api = $scope.propertyJson.VC_updateTeacher_timeTable+"/" + id;
     console.log("api: " + api);
     httpFactory.csvUpload(obj, api).then(function (data) {
       var checkStatus = httpFactory.dataValidation(data);
@@ -300,7 +296,7 @@ app.controller('reportsUpdateCtl', function ($scope, $window, $filter, $state, h
       "file": file
     }
     console.log("clas: " + clas + "section: " + section + "reportType: " + reportType + "month: " + month)
-    var api = "https://norecruits.com/vc/attendanceUpdate/" + schoolName + "/" + clas + "/" + section + "/" + reportType + "/" + month;
+    var api = $scope.propertyJson.VC_attendanceUpdate+"/" + schoolName + "/" + clas + "/" + section + "/" + reportType + "/" + month;
     console.log("api: " + api);
     httpFactory.csvUpload(obj, api).then(function (data) {
       var checkStatus = httpFactory.dataValidation(data);
@@ -344,17 +340,17 @@ app.controller('reportsUpdateCtl', function ($scope, $window, $filter, $state, h
     console.log("uploadType: " + uploadType);
     console.log("reportType: " + reportType);
     if (uploadType == "Mark Report") {
-      var api = "https://norecruits.com/vc/uploadMark";
+      var api = $scope.propertyJson.VC_uploadMark;
     }
     else if (uploadType == "Attendance") {
       var month = list;
-      var api = "https://norecruits.com/vc/uploadAttendance/" + reportType + "/" + month;
+      var api = $scope.propertyJson.VC_uploadAttendance+"/" + reportType + "/" + month;
     }
     else if (uploadType == "Payment") {
-      var api = "https://norecruits.com/vc/uploadPayment";
+      var api = $scope.propertyJson.VC_uploadPayment;
     }
     else if (uploadType == "Student Details") {
-      var api = "https://norecruits.com/vc/uploadStudentMaster";
+      var api = $scope.propertyJson.VC_uploadStudentMaster;
     }
     console.log("api: " + api);
     httpFactory.csvUpload(obj, api).then(function (data) {

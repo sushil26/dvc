@@ -1,8 +1,10 @@
-app.controller('dashboardController', function ($scope, $window, httpFactory, $uibModal, sessionAuthFactory, $filter, $timeout) {
+app.controller('dashboardController', function ($scope, $rootScope, $window, httpFactory, $uibModal, sessionAuthFactory, $filter, $timeout) {
 
     console.log("dashboardController==>");
     $scope.clock = "loading clock..."; // initialise the time variable
     $scope.tickInterval = 1000 //ms
+    $scope.propertyJson = $rootScope.propertyJson;
+    
     var tick = function () {
         $scope.clock = new Date()
         $scope.hour = $filter('date')($scope.clock, 'HH');

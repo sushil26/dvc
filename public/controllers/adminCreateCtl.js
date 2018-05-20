@@ -1,5 +1,6 @@
-app.controller('adminCreateCtl', function ($scope, $filter, $window, httpFactory, sessionAuthFactory,$uibModal) {
+app.controller('adminCreateCtl', function ($scope, $rootScope, $filter, $window, httpFactory, sessionAuthFactory,$uibModal) {
     console.log("adminCreateCtl==>");
+    $scope.propertyJson = $rootScope.propertyJson;
 
     $scope.adminCreate = function () {
         console.log("adminCreate-->");
@@ -20,7 +21,7 @@ app.controller('adminCreateCtl', function ($scope, $filter, $window, httpFactory
             "pswd": $scope.pswd
         }
         console.log("objJson: " + JSON.stringify(objJson));
-        var api = "https://norecruits.com/vc/adminCreate";
+        var api = $scope.propertyJson.VC_adminCreate;
         httpFactory.post(api, objJson).then(function (data) {
             var checkStatus = httpFactory.dataValidation(data);
             console.log("data--" + JSON.stringify(data.data));

@@ -1,4 +1,4 @@
-app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $compile, $window, $filter, httpFactory, sessionAuthFactory, moment, calendarConfig, $uibModal) {
+app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $state, $rootScope, $compile, $window, $filter, httpFactory, sessionAuthFactory, moment, calendarConfig, $uibModal) {
   console.log("dashboardScheduleCtrl==>");
 
   var dayEventmodal; /* ### Note: open model for event send ###  */
@@ -9,10 +9,12 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
   $scope.timeForPeriods = $rootScope.TimeTable_timing;
   $scope.userData = sessionAuthFactory.getAccess();
   var schoolName = $scope.userData.schoolName;
+  $scope.propertyJson = $rootScope.propertyJson;
+  
   $scope.eventGet = function () {
     console.log("eventGet-->");
     var id = $scope.userData.id
-    var api = "https://norecruits.com/vc/eventGet" + "/" + id;
+    var api = $scope.propertyJson.VC_eventGet + "/" + id;
     //var api = "http://localhost:5000/vc/eventGet"+ "/" + id;;
     $scope.calendarOwner = "Your";
 
@@ -96,7 +98,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
   $scope.getTeacherData = function () {
     console.log("getTeacherData-->");
     var id = $scope.userData.id;
-    var api = "https://norecruits.com/vc/teacherDetail" + "/" + id;
+    var api = $scope.propertyJson.VC_teacherDetail + "/" + id;
     //var api = "http://localhost:5000/vc/teacherDetail" + "/" + id;
     //var api = "http://localhost:5000/vc/eventGet";
     console.log("api: " + api);
@@ -119,7 +121,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
   $scope.getStudentData = function () {
     console.log("getTeacherData-->");
     var id = $scope.userData.id;
-    var api = "https://norecruits.com/vc/studentDetail" + "/" + id;
+    var api = $scope.propertyJson.VC_studentDetail + "/" + id;
     console.log("api: " + api);
     $scope.teacherList = [];
     httpFactory.get(api).then(function (data) {
@@ -131,7 +133,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
 
         $scope.studClass = $scope.studentData[0].cs[0].class;
         $scope.studSection = $scope.studentData[0].cs[0].section;
-        var api = "https://norecruits.com/vc/getTeacherListForCS" + "/" + schoolName + "/" + $scope.studClass + "/" + $scope.studSection;
+        var api = $scope.propertyJson.VC_getTeacherListForCS + "/" + schoolName + "/" + $scope.studClass + "/" + $scope.studSection;
 
         console.log("api: " + api);
         httpFactory.get(api).then(function (data) {
@@ -173,7 +175,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
 
   $scope.getSelectedTeacherPersonalData = function (id) {
     console.log("getSelectedTeacherPersonalData-->");
-    var api = "https://norecruits.com/vc/teacherPersonalData" + "/" + id;
+    var api = $scope.propertyJson.VC_teacherPersonalData + "/" + id;
     console.log("api: " + api);
     httpFactory.get(api).then(function (data) {
       var checkStatus = httpFactory.dataValidation(data);
@@ -193,7 +195,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
 
   $scope.getSelectedStudentPersonalData = function (id) {
     console.log("get Selected Student PersonalData-->");
-    var api = "https://norecruits.com/vc/studentPersonalData" + "/" + id;
+    var api = $scope.propertyJson.VC_studentPersonalData + "/" + id;
     console.log("api: " + api);
     httpFactory.get(api).then(function (data) {
       var checkStatus = httpFactory.dataValidation(data);
@@ -217,7 +219,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
     console.log("JSON.css" + JSON.stringify(css));
     $scope.remoteCalendarId = css.id;
     $scope.getSelectedStudentPersonalData($scope.remoteCalendarId);
-    var api = "https://norecruits.com/vc/eventGet" + "/" + css.id;
+    var api = $scope.propertyJson.VC_eventGet + "/" + css.id;
     console.log("api: " + api);
     httpFactory.get(api).then(function (data) {
       var checkStatus = httpFactory.dataValidation(data);
@@ -268,7 +270,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
     console.log("JSON.css" + JSON.stringify(css));
     $scope.remoteCalendarId = css.id;
     $scope.getSelectedTeacherPersonalData($scope.remoteCalendarId);
-    var api = "https://norecruits.com/vc/eventGet" + "/" + css.id;
+    var api = $scope.propertyJson.VC_eventGet + "/" + css.id;
     console.log("api: " + api);
     httpFactory.get(api).then(function (data) {
       var checkStatus = httpFactory.dataValidation(data);
@@ -367,7 +369,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
     // var cssRef = [{"clas":css.class, "section": css.section}];
     // console.log("cssRef: "+JSON.stringify(cssRef));
 
-    var api = "https://norecruits.com/vc/getStudListForCS" + "/" + schoolName + "/" + clas + "/" + section;
+    var api = $scope.propertyJson.VC_getStudListForCS + "/" + schoolName + "/" + clas + "/" + section;
     //var api = "http://localhost:5000/vc/getStudListForCS" + "/" + clas + "/" + section;
     //var api = "https://norecruits.com/vc/getStudListForCS";
 
@@ -398,7 +400,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
 
   $scope.deleteEvent = function (id, index) {
     console.log("deleteEvent-->");
-    var api = "https://norecruits.com/vc/deleteEvent";
+    var api = $scope.propertyJson.VC_deleteEvent;
     //var api = "http://localhost:5000/vc/deleteEvent";
     vm.events.splice(index, 1);
     var obj = {
@@ -459,7 +461,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
     }
     console.log("obj: " + JSON.stringify(obj));
 
-    var api = "https://norecruits.com/vc/eventUpdate" + "/" + id;
+    var api = $scope.propertyJson.VC_eventUpdate + "/" + id;
     //var api = "http://localhost:5000/vc/eventUpdate" + "/" + id;
 
     httpFactory.post(api, obj).then(function (data) {
@@ -587,7 +589,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $state, $rootScope, $c
         peerNew_id = config.peer_id;
 
         url = "https://norecruits.com/client/" + peerNew_id + "/" + $scope.urlDate;
-        var api = "https://norecruits.com/vc/eventSend";
+        var api = $scope.propertyJson.VC_eventSend;
         //var api = "http://localhost:5000/vc/eventSend";
         console.log("api: " + api);
         // var email = document.getElementById('eventEmails').value;

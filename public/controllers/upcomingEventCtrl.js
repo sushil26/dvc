@@ -1,8 +1,9 @@
-app.controller('upcomingEventController', function ($scope, $state, $window, httpFactory, $uibModal, $filter, sessionAuthFactory) {
+app.controller('upcomingEventController', function ($scope, $rootScope, $state, $window, httpFactory, $uibModal, $filter, sessionAuthFactory) {
     console.log("upcomingEventController==>");
     $scope.userData = sessionAuthFactory.getAccess("userData");
     $scope.loginType = $scope.userData.loginType;
     $scope.events = [];
+    $scope.propertyJson = $rootScope.propertyJson;
 
     $scope.getToDate = function () {
         console.log("Get To Date-->");
@@ -35,7 +36,7 @@ app.controller('upcomingEventController', function ($scope, $state, $window, htt
     $scope.eventGet = function () {
         console.log("eventGet-->");
         var id = $scope.userData.id;
-        var api = "https://norecruits.com/vc/eventGet" + "/" + id;
+        var api = $scope.propertyJson.VC_eventGet + "/" + id;
         //var api = "http://localhost:5000/vc/eventGet"+ "/" + id;;
         $scope.calendarOwner = "Your";
 

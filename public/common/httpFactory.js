@@ -4,12 +4,12 @@ app.factory('httpFactory', function($http, $q, $rootScope) {
             console.log("legoHttpFactory: data: "+JSON.stringify(data));
              
             var dfd = $q.defer();
-            // var postUrl = $rootScope.propertyJson.BASE_URL+api;
+            var postUrl = $rootScope.propertyJson.BASE_URL+api;
            // console.log(postUrl);
             //var postUrl=api;
             $http({
                 method: 'POST',
-                url: api,
+                url: postUrl,
                 data: data
             }).
             then(function(data) {

@@ -2,9 +2,7 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
   console.log("controller==>");
   var loginModal; /* ### Note: get login modal instance on this variable ###*/
   var userName;
-  console.log("*: "+httpFactory.getFile('property.json'));
-  $scope.propertyJson = $rootScope.propertyJson;
-  console.log("$scope.propertyJson: "+JSON.stringify($scope.propertyJson));
+  httpFactory.getFile('property.json');
   $scope.userData = sessionAuthFactory.getAccess("userData");
   console.log(" $scope.userData : "+JSON.stringify( $scope.userData ));
   if ($scope.userData) {
@@ -31,7 +29,7 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
     };
     console.log("obj: " + JSON.stringify(obj));
     console.log("logVC");
-    var api =  $scope.propertyJson.VC_login4VC;
+    var api = "https://norecruits.com/vc/login4VC";
     //var api = "http://localhost:5000/vc/teacherDetail" + "/" + id;
     //var api = "http://localhost:5000/vc/eventGet";
     console.log("api: " + api);

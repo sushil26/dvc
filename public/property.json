@@ -1,6 +1,7 @@
 {
 "BASE_URL": "https://norecruits.com/",
 
-"VC_login4VC": "vc/login4VC"
+"VC_teacherDetail": "vc/teacherDetail",
+"VC_studentDetail": "vc/studentDetail"
 
 }

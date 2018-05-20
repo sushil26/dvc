@@ -27,12 +27,12 @@ app.factory('httpFactory', function($http, $q, $rootScope) {
         get: function(api) {
             
             var dfd = $q.defer();
-            // var getUrl = $rootScope.propertyJson.BASE_URL+api;
+            var getUrl = $rootScope.propertyJson.BASE_URL+api;
             //console.log("getUrl"+getUrl);
             //var getUrl=api;
             $http({
                 method: 'GET',
-                url: api
+                url: getUrl
             }).
             then(function(data, status, headers, config) {
                 dfd.resolve(data);
@@ -55,7 +55,7 @@ app.factory('httpFactory', function($http, $q, $rootScope) {
             
            // console.log("headers"+headers);
             var dfd = $q.defer();
-            // var puttUrl = $rootScope.propertyJson.BASE_URL+api;
+            var puttUrl = $rootScope.propertyJson.BASE_URL+api;
             //console.log("puttUrl"+puttUrl);
             $http({
             method: 'PUT',
@@ -87,14 +87,14 @@ app.factory('httpFactory', function($http, $q, $rootScope) {
         },
         csvUpload:function(obj, uploadUrl){
             var dfd = $q.defer();
-            // var postUrl = $rootScope.propertyJson.BASE_URL+uploadUrl;
+            var postUrl = $rootScope.propertyJson.BASE_URL+uploadUrl;
             
             var fd = new FormData();
             console.log("obj.file: "+obj.file);
             
             fd.append('img', obj.file);
            
-            $http.post(uploadUrl, fd, {
+            $http.post(postUrl, fd, {
                 transformRequest: angular.identity,
                 headers: { 'Content-Type': undefined }
             }).then(function(response) {
@@ -108,13 +108,13 @@ app.factory('httpFactory', function($http, $q, $rootScope) {
         },
         imageUpload:function(file, uploadUrl){
             var dfd = $q.defer();
-            // var postUrl = $rootScope.propertyJson.BASE_URL+uploadUrl;
+            var postUrl = $rootScope.propertyJson.BASE_URL+uploadUrl;
             var fd = new FormData();
             console.log("file: "+file);
             
             fd.append('img', file);
             console.log("fd: "+fd);
-            $http.post(uploadUrl, fd, {
+            $http.post(postUrl, fd, {
                 transformRequest: angular.identity,
                 headers: { 'Content-Type': undefined }
             }).then(function(response) {

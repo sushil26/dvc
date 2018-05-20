@@ -7,7 +7,7 @@ app.controller('upcomingEventController', function ($scope, $rootScope, $state, 
 
     $scope.getToDate = function () {
         console.log("Get To Date-->");
-        var api = "https://norecruits.com/vc/getToDate";
+        var api = $scope.propertyJson.VC_getToDate;
         httpFactory.get(api).then(function (data) {
             var checkStatus = httpFactory.dataValidation(data);
             console.log("data--" + JSON.stringify(data.data));

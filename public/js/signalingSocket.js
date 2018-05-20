@@ -272,7 +272,7 @@ function momVC() {
   if (localStorage.getItem("teacherLoginId")) {
     var teacherLoginId = localStorage.getItem("teacherLoginId");
     console.log("teacherLoginId: " + teacherLoginId);
-    var url = "https://norecruits.com/updateEventMOM/" + eventId;
+    var url = "https://norecruits.com/vc/updateEventMOM/" + eventId;
     var obj = {
       "mom": mom,
       "momCreatedBy": "teacher"

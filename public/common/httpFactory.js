@@ -132,8 +132,8 @@ app.factory('httpFactory', function($http, $q, $rootScope) {
                 method: 'GET',
                 url: fileAddress
             }).then(function(data) {
-                //    $rootScope.propertyJson = data.data;
-                //      return $rootScope.propertyJson;
+                   $rootScope.propertyJson = data.data;
+                     return $rootScope.propertyJson;
             });
           // 
         }

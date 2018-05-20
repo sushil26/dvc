@@ -2,6 +2,7 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
   console.log("controller==>");
   var loginModal; /* ### Note: get login modal instance on this variable ###*/
   var userName;
+  httpFactory.getFile('property.json');
   $scope.userData = sessionAuthFactory.getAccess("userData");
   console.log(" $scope.userData : "+JSON.stringify( $scope.userData ));
   if ($scope.userData) {

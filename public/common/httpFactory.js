@@ -133,6 +133,7 @@ app.factory('httpFactory', function($http, $q, $rootScope) {
                 url: fileAddress
             }).then(function(data) {
                    $rootScope.propertyJson = data.data;
+                   console.log(" $rootScope.propertyJson : "+JSON.stringify( $rootScope.propertyJson ));
                      return $rootScope.propertyJson;
             });
           // 

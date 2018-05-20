@@ -79,7 +79,7 @@ module.exports.login4VC = function (req, res) {
   var responseData;
   console.log("logger: "+JSON.stringify(logger));
   console.log("log: "+JSON.stringify(log));
-  console.log("log.info('Cheese is Gouda.');: "+log.info('Cheese is Gouda.'));
+  console.log("log.error('Cheese is Gouda.');: "+log.error('Cheese is Gouda.'));
 //   logger.trace('Entering cheese testing');
 // logger.debug('Got cheese.');
 // logger.info('Cheese is Gouda.');

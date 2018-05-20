@@ -6,7 +6,7 @@ const log4js_extend = require("log4js-extend");
 
 log4js.configure({
   appenders: { cheese: { type: 'file', filename: './loginDetails.log' } },
-  categories: { default: { appenders: ['cheese'], level: 'all' } }
+  categories: { default: { appenders: ['cheese'], level: 'error' } }
 });
 
 const logger = log4js.getLogger("cheese");
@@ -18,9 +18,9 @@ log4js_extend(log4js, {
 Object.defineProperty(exports, "LOG", {
             value:logger,
 });
-logger.trace('Entering cheese testing');
-logger.debug('Got cheese.');
-logger.info('Cheese is Gouda.');
-logger.warn('Cheese is quite smelly.');
-logger.error('Cheese is too ripe!');
-logger.fatal('Cheese was breeding ground for listeria.');
+// logger.trace('Entering cheese testing');
+// logger.debug('Got cheese.');
+// logger.info('Cheese is Gouda.');
+// logger.warn('Cheese is quite smelly.');
+// logger.error('Cheese is too ripe!');
+// logger.fatal('Cheese was breeding ground for listeria.');

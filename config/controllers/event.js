@@ -286,11 +286,19 @@ module.exports.updateEventMOM = function (req, res) {
         var id = {
             "_id": ObjectId(req.params.eventId)
         }
-        var updateData = {
-            "mom": req.body.mom,
-            "momCreatedBy": req.body.momCreatedBy
+        var updateData;
+        if (req.body.momCreatedBy == 'teacher') {
+            console.log("req.body.momCreatedBy: " + req.body.momCreatedBy);
+            updateData = {
+                "teacher_mom": req.body.mom,
+            }
         }
-        event.update(id, { $push: { "mom": updateData } }),function (err, data) {
+        else if (req.body.momCreatedBy == 'parent') {
+            updateData = {
+                "parent_mom": req.body.mom,
+            }
+        }
+        event.update(id, { $set: updateData }), function (err, data) {
             console.log("data: " + JSON.stringify(data));
             if (err) {
                 responseData = {

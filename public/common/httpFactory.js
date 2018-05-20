@@ -127,6 +127,7 @@ app.factory('httpFactory', function($http, $q, $rootScope) {
             return dfd.promise;
         },
         getFile: function(fileAddress) {
+            console.log("getFile");
            // var dfd = $q.defer();
             $http({
                 method: 'GET',

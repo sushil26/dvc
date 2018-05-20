@@ -77,8 +77,8 @@ module.exports.register4VC = function (req, res) {
 module.exports.login4VC = function (req, res) {
   console.log("login==*>");
   var responseData;
-  console.log("logger: "+logger);
-  console.log("log: "+log);
+  console.log("logger: "+JSON.stringify(logger));
+  console.log("log: "+JSON.stringify(log));
   log.info("req.originalUrl: " + req.originalUrl + " fresh: " + req.fresh + " protocol: " + req.protocol);
   if (general.emptyCheck(req.body.email) && general.emptyCheck(req.body.password)) {
     if (req.body.loginType == "teacher") {

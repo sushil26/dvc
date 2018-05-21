@@ -90,6 +90,7 @@ function triggerInvite() {
 function sendEmail() {
   console.log("sendEmail-->");
   var careatorEmail = document.getElementById("careatorEmail").value;
+  console.log("careatorEmail: "+careatorEmail);
   var obj = {
     "careatorEmail": careatorEmail
   };
@@ -120,6 +121,7 @@ function sendEmail() {
     });
   }
   else {
+    console.log("careatorEmail: "+careatorEmail);
     $("#enterEmail").trigger("click");
   }
 

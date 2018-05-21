@@ -18,6 +18,63 @@ var transporter = nodemailer.createTransport({
         rejectUnauthorized: false
     }
 });
+
+module.exports.pswdCheck = function (req, res) {
+    console.log("pswdCheck-->");
+    console.log("req.body.password: " + req.body.password);
+    var password = req.body.password;
+    var careatorEmail = req.body.careatorEmail;
+    if (general.emptyCheck(password) && general.emptyCheck(careatorEmail)) {
+        var obj = {
+            "email": careatorEmail
+
+        }
+        careatorEmp.find(obj).toArray(function (err, findData) {
+            if (err) {
+                responseData = {
+                    status: false,
+                    message: "Process failed"
+                };
+                res.status(400).send(responseData);
+            }
+            else {
+                if (findData.length > 0) {
+                    if (findData[0].password == password) {
+                        responseData = {
+                            status: true,
+                            message: "Login Successfully"
+                        };
+                        res.status(200).send(responseData);
+                    }
+                    else {
+                        responseData = {
+                            status: false,
+                            message: "Password is wrong"
+                        };
+                        res.status(400).send(responseData);
+                    }
+                }
+                else {
+                    responseData = {
+                        status: false,
+                        message: "Email ID is not valid"
+                    };
+                    res.status(400).send(responseData);
+                }
+            }
+        })
+    }
+    else {
+        responseData = {
+            status: false,
+            message: "Empty value found"
+        };
+        res.status(400).send(responseData);
+    }
+    console.log("<--pswdCheck");
+}
+
+
 module.exports.pswdGenerate = function (req, res) {
     console.log("pswdGenerate-->");
     console.log("req.body.careatorEmail: " + req.body.careatorEmail);
@@ -32,9 +89,9 @@ module.exports.pswdGenerate = function (req, res) {
                 "email": email,
                 "password": password
             }
-            careatorEmp.find({"email": email}).toArray(function (err, findData) {
-                if(findData.length>0){
-                    careatorEmp.update({"email": email},{$set:{"password": password}}, function (err, data) {
+            careatorEmp.find({ "email": email }).toArray(function (err, findData) {
+                if (findData.length > 0) {
+                    careatorEmp.update({ "email": email }, { $set: { "password": password } }, function (err, data) {
                         if (err) {
                             responseData = {
                                 status: true,
@@ -75,7 +132,7 @@ module.exports.pswdGenerate = function (req, res) {
                     })
 
                 }
-                else{
+                else {
                     careatorEmp.insert(obj, function (err, data) {
                         if (err) {
                             responseData = {
@@ -116,8 +173,8 @@ module.exports.pswdGenerate = function (req, res) {
                         }
                     })
                 }
-           
-        })
+
+            })
 
         }
         else {
@@ -129,7 +186,11 @@ module.exports.pswdGenerate = function (req, res) {
         }
     }
     else {
-        msg = "empty value found";
+        responseData = {
+            status: false,
+            message: "Empty value found"
+        };
+        res.status(400).send(responseData);
     }
     console.log("<--pswdGenerate");
 }

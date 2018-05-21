@@ -14,14 +14,14 @@ app.controller('reportsUploadCtl', function ($scope, $rootScope, $window, httpFa
   $scope.reset = function () {
     console.log("reset-->");
     $scope.uploadReports = {
-      "uploadType": "",
-      "tSelect": "",
-      "cSelect": "",
-      "sSelect": "",
-      "testDate": "",
-      "ttSelect": "",
-      "attDate": "",
-      "mSelect": ""
+      // "uploadType": "",
+      // "tSelect": "",
+      // "cSelect": "",
+      // "sSelect": "",
+      // "testDate": "",
+      // "ttSelect": "",
+      // "attDate": "",
+      // "mSelect": ""
       
     };
   }

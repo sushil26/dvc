@@ -12,7 +12,7 @@ app.controller('reportsUploadCtl', function ($scope, $rootScope, $window, httpFa
 
   $scope.sma = []; /* ### Note:sma-Subject Mark Attendant  */
   $scope.reset = function () {
-$scope.up={};
+    $scope.up = {};
   }
   $scope.getSchoolData = function () {
     console.log("getSchoolData-->");

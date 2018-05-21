@@ -43,82 +43,46 @@ var USE_VIDEO = true;
 var DEFAULT_CHANNEL = "some-global-ch-name";
 var MUTE_AUDIO_BY_DEFAULT = false;
 
-if (localStorage.getItem("authorizedEmail")) {
-  if (localStorage.getItem("userName")) {
-    console.log("User Name from session: " + localStorage.getItem("userData"));
-    var userData = JSON.stringify(localStorage.getItem("userData"));
-    userName = localStorage.getItem("userName");
-    loginType = localStorage.getItem("loginType");
-
-    console.log("userData: " + userData);
-    console.log("userName: " + userName);
-    console.log("loginType: " + loginType);
-    if (loginType == "teacher" || loginType == "admin") {
-      //document.getElementById("userAuth").style.display = "none";
-      // document.getElementById("appLogin").style.display = 'none';
-      // document.getElementById("appReg").style.display = 'none';
-      //document.getElementById("appLogout").style.display = "block";
-      document.getElementById("LoginUrl").style.display = "none";
-      document.getElementById("videoConferenceUrl").style.display = "block";
-      // document.getElementById("scheduleMeeting").style.display = "block";
-      document.getElementById("videoConferenceLinkExtention").style.display =
-        "block";
-    } else if (loginType == "studParent") {
-      //document.getElementById("userAuth").style.display = "none";
-      // document.getElementById("appLogin").style.display = 'none';
-      // document.getElementById("appReg").style.display = 'none';
-      //document.getElementById("appLogout").style.display = "none";
-      document.getElementById("LoginUrl").style.display = "none";
-      document.getElementById("videoConferenceUrl").style.display = "none";
-      // document.getElementById("scheduleMeeting").style.display = "block";
-      document.getElementById("videoConferenceLinkExtention").style.display =
-        "block";
-    }
-    if (loginType == "admin") {
-      //document.getElementById("userAuth").style.display = "block";
-    }
-  } else {
-
-    var url = window.location.href;
-    var stuff = url.split("/");
-    var id1 = stuff[stuff.length - 2];
-    var id2 = stuff[stuff.length - 3];
-    console.log("stuff.length: " + stuff.length);
-    console.log("id1**: " + id1);
-    console.log("id2**: " + id2);
-    if (stuff.length > 5) {
-      if (localStorage.getItem("userName")) {
-        console.log(
-          "User Name from session: " + localStorage.getItem("userName")
-        );
-        userName = localStorage.getItem("userName");
-        // startVideoAction();
-        // document.getElementById("userAuth").style.display = "none";
-        // document.getElementById("appLogin").style.display = "none";
-        // document.getElementById("appReg").style.display = "none";
-        //document.getElementById("appLogout").style.display = "none";
-        document.getElementById("LoginUrl").style.display = "none";
-        document.getElementById("videoConferenceUrl").style.display = "none";
-        // document.getElementById("scheduleMeeting").style.display = "none";
-        document.getElementById("videoConferenceLinkExtention").style.display =
-          "block";
-      } else {
-        console.log("No user data from session");
-        $("#setName").trigger("click");
-        //    userName="logu";
-        //     init();
-      }
-    }
-    else {
-      document.getElementById("LoginUrl").style.display = "none";
-      document.getElementById("videoConferenceUrl").style.display = "none";
-    }
+var url = window.location.href;
+var stuff = url.split("/");
+var id1 = stuff[stuff.length - 2];
+var id2 = stuff[stuff.length - 3];
+console.log("stuff.length: " + stuff.length);
+console.log("id1**: " + id1);
+console.log("id2**: " + id2);
+if (stuff.length > 5) {
+  if (localStorage.getItem("careatorEmail")) {
+    var userNameEmail = localStorage.getItem("careatorEmail");
+    var emailIdSplit = userNameEmail.split('@');
+    userName = emailIdSplit[0];
+    document.getElementById("videoConferenceUrl").style.display = "block";
+    document.getElementById("videoConferenceLinkExtention").style.display = "block";
+  }
+  else if(localStorage.getItem("careatorFriendName"))
+  {
+    userName = localStorage.getItem("careatorFriendName");
+  }
+  else {
+    console.log("No user data from session");
+    $("#setName").trigger("click");
+    //    userName="logu";
+    //     init();
   }
 }
 else {
-  console.log("enterEmail: -->");
-  $("#enterEmail").trigger("click");
+  if (localStorage.getItem("careatorEmail")) {
+    var userNameEmail = localStorage.getItem("careatorEmail");
+    var emailIdSplit = userNameEmail.split('@');
+    userName = emailIdSplit[0];
+    document.getElementById("videoConferenceUrl").style.display = "block";
+    document.getElementById("videoConferenceLinkExtention").style.display = "block";
+  }
+  else {
+    console.log("enterEmail: -->");
+    $("#enterEmail").trigger("click");
+  }
 }
+
 function triggerInvite() {
   console.log("triggerInvite-->");
   $("#enterPswd").trigger("click");
@@ -130,121 +94,84 @@ function sendEmail() {
   var obj = {
     "careatorEmail": careatorEmail
   };
-  console.log("obj: " + JSON.stringify(obj));
-  $.ajax({
-    url: "https://norecruits.com/careator/pswdGenerate",
-    type: "POST",
-    data: JSON.stringify(obj),
-    contentType: "application/json",
-    dataType: "json",
-    success: function (data) {
-      console.log("data: " + JSON.stringify(data));
-      //alert(data.message);
-      if (data.message == 'Successfully mail sent') {
-        console.log("Successfully mail sent");
-        localStorage.setItem("careatorEmail",careatorEmail);
-        triggerInvite();
+  if (careatorEmail) {
+    console.log("obj: " + JSON.stringify(obj));
+    $.ajax({
+      url: "https://norecruits.com/careator/pswdGenerate",
+      type: "POST",
+      data: JSON.stringify(obj),
+      contentType: "application/json",
+      dataType: "json",
+      success: function (data) {
+        console.log("data: " + JSON.stringify(data));
+        //alert(data.message);
+        if (data.message == 'Successfully mail sent') {
+          console.log("Successfully mail sent");
+          localStorage.setItem("careatorEmail", careatorEmail);
+          triggerInvite();
+        }
+      },
+      error: function (err) {
+        console.log("err: " + JSON.stringify(err));
+        console.log("err.responseText: " + JSON.stringify(err.responseText));
+        console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
+        alert(err.responseJSON.message);
       }
-    },
-    error: function (err) {
-      console.log("err: " + JSON.stringify(err));
-      console.log("err.responseText: " + JSON.stringify(err.responseText));
-      console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
-      alert(err.responseJSON.message);
-    }
 
-  });
+    });
+  }
+  else {
+    $("#enterEmail").trigger("click");
+  }
+
   console.log("<--sendEmail");
 }
 
 function checkPassword() {
   console.log("checkPassword-->");
   var password = document.getElementById("P_pswd").value;
+  var careatorEmail = localStorage.getItem("careatorEmail");
   var obj = {
     "password": password,
-    "careatorEmail":localStorage.getItem("careatorEmail")
+    "careatorEmail": careatorEmail
   };
-  console.log("obj: " + JSON.stringify(obj));
-  $.ajax({
-    url: "https://norecruits.com/careator/pswdCheck",
-    type: "POST",
-    data: JSON.stringify(obj),
-    contentType: "application/json",
-    dataType: "json",
-    success: function (data) {
-      console.log("data: " + JSON.stringify(data));
-      //alert(data.message);
-      if (data.message == 'Successfully mail sent') {
-        console.log("Successfully mail sent");
-        triggerInvite();
+  if (password && careatorEmail) {
+    console.log("obj: " + JSON.stringify(obj));
+    $.ajax({
+      url: "https://norecruits.com/careator/pswdCheck",
+      type: "POST",
+      data: JSON.stringify(obj),
+      contentType: "application/json",
+      dataType: "json",
+      success: function (data) {
+        console.log("data: " + JSON.stringify(data));
+        //alert(data.message);
+        if (data.message == 'Successfully mail sent') {
+          console.log("Successfully mail sent");
+          triggerInvite();
+        }
+      },
+      error: function (err) {
+        console.log("err: " + JSON.stringify(err));
+        console.log("err.responseText: " + JSON.stringify(err.responseText));
+        console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
+        alert(err.responseJSON.message);
       }
-    },
-    error: function (err) {
-      console.log("err: " + JSON.stringify(err));
-      console.log("err.responseText: " + JSON.stringify(err.responseText));
-      console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
-      alert(err.responseJSON.message);
-    }
 
-  });
+    });
+  }
+  else {
+    $("#enterPswd").trigger("click");
+  }
   console.log("<--checkPassword");
 }
 function saveName() {
   console.log("setName-->");
 
-  userName = document.getElementById("userName").value;
-  pswd = document.getElementById("P_pswd").value;
-  var obj = {
-    pswd: pswd,
-    url: window.location.href
-  };
+  var careatorFriendName = document.getElementById("userName").value;
+  localStorage.setItem("careatorFriendName",careatorFriendName);
 
-  $.ajax({
-    url: "https://norecruits.com/vc/parentCredential",
-    //  url: "http://localhost:5000/vc/login4VC",
-    type: "POST",
-    data: JSON.stringify(obj),
-    contentType: "application/json",
-    dataType: "json",
-    success: function (data) {
-      var userData = {
-        userName: userName,
-        status: "instantActive",
-        loginType: "parent"
-      };
-      console.log("data: " + JSON.stringify(data));
-      if (data.message == "Login Successfully") {
-        localStorage.setItem("userName", userName);
-        localStorage.setItem("status", "instantActive");
-        localStorage.setItem("loginType", "parent");
-        //document.getElementById("userAuth").style.display = "none";
-        // document.getElementById("appLogin").style.display = "none";
-        // document.getElementById("appReg").style.display = "none";
-        //document.getElementById("appLogout").style.display = "none";
-        document.getElementById("LoginUrl").style.display = "none";
-        document.getElementById("videoConferenceUrl").style.display = "none";
-        // document.getElementById("scheduleMeeting").style.display = "none";
-        document.getElementById("videoConferenceLinkExtention").style.display =
-          "block";
-      } else {
-        console.log("Wrong credential");
-        localStorage.setItem("userName", userName);
-        localStorage.setItem("status", "instantActive");
-        localStorage.setItem("loginType", "parent");
-        // document.getElementById("userAuth").style.display = "none";
-        // document.getElementById("appLogin").style.display = "none";
-        // document.getElementById("appReg").style.display = "none";
-        //document.getElementById("appLogout").style.display = "none";
-        document.getElementById("LoginUrl").style.display = "none";
-        document.getElementById("videoConferenceUrl").style.display = "none";
-        // document.getElementById("scheduleMeeting").style.display = "none";
-        document.getElementById("videoConferenceLinkExtention").style.display =
-          "block";
-        // $('#setName').trigger('click');
-      }
-    }
-  });
-  console.log("<--setName");
+
 }
 
 function emailInvite() {

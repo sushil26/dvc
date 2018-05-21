@@ -21,8 +21,8 @@ app.controller('reportsUploadCtl', function ($scope, $rootScope, $window, httpFa
       "testDate": "",
       "ttSelect": "",
       "attDate": "",
-      "mSelect": "",
-      "ttSelect": ""
+      "mSelect": ""
+      
     };
   }
   $scope.getSchoolData = function () {

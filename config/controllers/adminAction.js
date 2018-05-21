@@ -864,6 +864,9 @@ module.exports.uploadAttendance = function (req, res) {
 
     console.log("req.body.files: " + JSON.stringify(req.files.img));
     // console.log("req.body.files: " + req.files.fullName);
+    var fileName = req.files.img.name;
+    var fileNameSeparate = fileName.split('_');
+    if(fileNameSeparate[0]=='Attendance'){
     if (!req.files)
         return res.status(400).send('No files were uploaded.');
     var studentDataFile = req.files.img;
@@ -931,6 +934,14 @@ module.exports.uploadAttendance = function (req, res) {
 
 
         });
+    }
+    else{
+        responseData = {
+            status: false,
+            message: "Upload File Is Mismatched"
+        };
+        res.status(400).send(responseData);
+    }
     console.log("<--uploadAttendance");
 };
 /* ### Start upload daily attendance status  ### */

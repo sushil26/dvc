@@ -15,7 +15,7 @@ app.controller('adminCreateCtl', function ($scope, $rootScope, $filter, $window,
             "address": $scope.address,
             "streetName": $scope.streetName,
             "city": $scope.city,
-            "state": $scope.State,
+            "state": $scope.state,
             "pinCode": $scope.pinCode,
             "country": $scope.country,
             "pswd": $scope.pswd

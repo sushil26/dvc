@@ -51,7 +51,9 @@ console.log("stuff.length: " + stuff.length);
 console.log("id1**: " + id1);
 console.log("id2**: " + id2);
 if (stuff.length > 5) {
+
   if (localStorage.getItem("careatorEmail")) {
+
     var userNameEmail = localStorage.getItem("careatorEmail");
     var emailIdSplit = userNameEmail.split('@');
     userName = emailIdSplit[0];
@@ -64,14 +66,17 @@ if (stuff.length > 5) {
   else {
     console.log("No user data from session");
     $("#setName").trigger("click");
-    //    userName="logu";
-    //     init();
   }
+  console.log("userName: "+userName);
 }
 else {
+ 
   if (localStorage.getItem("careatorEmail")) {
+    console.log("2 cond");
     var userNameEmail = localStorage.getItem("careatorEmail");
+    console.log("2 cond: userNameEmail: "+userNameEmail);
     var emailIdSplit = userNameEmail.split('@');
+    console.log("2 cond: emailIdSplit: "+JSON.stringify(emailIdSplit));
     userName = emailIdSplit[0];
     document.getElementById("videoConferenceUrl").style.display = "block";
     document.getElementById("videoConferenceLinkExtention").style.display = "block";
@@ -80,6 +85,7 @@ else {
     console.log("enterEmail: -->");
     $("#enterEmail").trigger("click");
   }
+  console.log("userName: "+userName);
 }
 
 function triggerInvite() {
@@ -170,6 +176,7 @@ function saveName() {
 
   var careatorFriendName = document.getElementById("userName").value;
   localStorage.setItem("careatorFriendName", careatorFriendName);
+  userName = localStorage.getItem("careatorFriendName");
 
 
 }
@@ -383,13 +390,10 @@ signaling_socket.on("connect", function () {
       document.getElementById("diconnect_btn").style.display = "inline";
       document.getElementById("videoConferenceLinkExtention").style.display =
         "inline";
-      var loginType = localStorage.getItem("loginType");
-      var userName = localStorage.getItem("userName");
-      if (loginType == "teacher" || loginType == "admin") {
+     
         document.getElementById("linkToShare").style.display = "block";
         document.getElementById("emailInvitation").style.display = "inline";
-      }
-
+      console.log("userName: "+userName);
       if (userName != undefined) {
         console.log("userName with localmedia setup call: " + userName);
         setup_local_media(function () {
@@ -397,23 +401,23 @@ signaling_socket.on("connect", function () {
         });
       }
 
-      document
-        .getElementById("setNameId")
-        .addEventListener("click", function () {
-          console.log("setup_local_media calling**");
-          setup_local_media(function () {
-            join__channel(DEFAULT_CHANNEL, { "whatever-you--here": "stuff" });
-          });
-        });
+      // document
+      //   .getElementById("setNameId")
+      //   .addEventListener("click", function () {
+      //     console.log("setup_local_media calling**");
+      //     setup_local_media(function () {
+      //       join__channel(DEFAULT_CHANNEL, { "whatever-you--here": "stuff" });
+      //     });
+      //   });
 
-      document
-        .getElementById("crdsubmit")
-        .addEventListener("click", function () {
-          console.log("setup_local_media calling**");
-          setup_local_media(function () {
-            join__channel(DEFAULT_CHANNEL, { "whatever-you--here": "stuff" });
-          });
-        });
+      // document
+      //   .getElementById("crdsubmit")
+      //   .addEventListener("click", function () {
+      //     console.log("setup_local_media calling**");
+      //     setup_local_media(function () {
+      //       join__channel(DEFAULT_CHANNEL, { "whatever-you--here": "stuff" });
+      //     });
+      //   });
     }
     console.log("<--signaling_socket message");
   });

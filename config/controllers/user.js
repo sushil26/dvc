@@ -1098,8 +1098,8 @@ module.exports.adminCreate = function (req, res) {
       }
       else {
         console.log("err" + JSON.stringify(err));
-        console.log("err.errors.name: " + err.errors.name);
-        if (err.errors.name == 'ValidationError') {
+        console.log("errors.name: " + errors.name);
+        if (errors.name == 'ValidationError') {
           var message;
           if (err.errors.schoolName) {
             responseData = {

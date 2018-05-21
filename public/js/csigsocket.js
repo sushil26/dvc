@@ -134,7 +134,10 @@ function sendEmail() {
     dataType: "json",
     success: function (data) {
       console.log("data: " + JSON.stringify(data));
-      alert(err.message);
+      //alert(data.message);
+      if(data.message=='Successfully mail sent'){
+        $("#myPasswordModal").trigger("click");
+      }
     },
     error: function (err) {
       console.log("err: " + JSON.stringify(err));

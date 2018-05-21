@@ -46,7 +46,7 @@ app.controller('adminCreateCtl', function ($scope, $rootScope, $filter, $window,
                     backdropClass: 'static',
                     keyboard: false,
                     controller: function ($scope, $uibModalInstance) {
-                      $scope.message = "Failed to create";
+                      $scope.message = data.data.message;
                     }
                   })
              //   alert("Failed to create");

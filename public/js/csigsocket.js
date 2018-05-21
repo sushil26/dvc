@@ -393,7 +393,7 @@ signaling_socket.on("connect", function () {
      
         document.getElementById("linkToShare").style.display = "block";
         document.getElementById("emailInvitation").style.display = "inline";
-      
+      console.log("userName: "+userName);
       if (userName != undefined) {
         console.log("userName with localmedia setup call: " + userName);
         setup_local_media(function () {

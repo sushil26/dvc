@@ -389,13 +389,10 @@ signaling_socket.on("connect", function () {
       document.getElementById("diconnect_btn").style.display = "inline";
       document.getElementById("videoConferenceLinkExtention").style.display =
         "inline";
-      var loginType = localStorage.getItem("loginType");
-      var userName = localStorage.getItem("userName");
-      if (loginType == "teacher" || loginType == "admin") {
+     
         document.getElementById("linkToShare").style.display = "block";
         document.getElementById("emailInvitation").style.display = "inline";
-      }
-
+      
       if (userName != undefined) {
         console.log("userName with localmedia setup call: " + userName);
         setup_local_media(function () {
@@ -403,16 +400,16 @@ signaling_socket.on("connect", function () {
         });
       }
 
-      document
-        .getElementById("setNameId")
-        .addEventListener("click", function () {
-          console.log("setup_local_media calling**");
-          setup_local_media(function () {
-            join__channel(DEFAULT_CHANNEL, { "whatever-you--here": "stuff" });
-          });
-        });
+      // document
+      //   .getElementById("setNameId")
+      //   .addEventListener("click", function () {
+      //     console.log("setup_local_media calling**");
+      //     setup_local_media(function () {
+      //       join__channel(DEFAULT_CHANNEL, { "whatever-you--here": "stuff" });
+      //     });
+      //   });
 
-      document
+      // document
         .getElementById("crdsubmit")
         .addEventListener("click", function () {
           console.log("setup_local_media calling**");

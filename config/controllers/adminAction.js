@@ -223,7 +223,7 @@ module.exports.uploadClassFile = function (req, res) {
     console.log("req.body.files: " + req.files.img);
     var fileName = req.files.img.name;
     var fileNameSeparate = fileName.split('_');
-    if (fileNameSeparate[0] == 'ClassSectionSubject') {
+    if (fileNameSeparate[0] == 'ClassSubjectSection') {
         if (!req.files)
             return res.status(400).send('No files were uploaded.');
         var studentDataFile = req.files.img;

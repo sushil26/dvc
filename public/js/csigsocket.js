@@ -90,36 +90,36 @@ function triggerInvite() {
 function sendEmail() {
   console.log("sendEmail-->");
   var careatorEmail = document.getElementById("careatorEmail").value;
-  console.log("careatorEmail: "+careatorEmail);
+  console.log("careatorEmail: " + careatorEmail);
   var obj = {
     "careatorEmail": careatorEmail
   };
   console.log("obj: " + JSON.stringify(obj));
-  
-    $.ajax({
-      url: "https://norecruits.com/careator/pswdGenerate",
-      type: "POST",
-      data: JSON.stringify(obj),
-      contentType: "application/json",
-      dataType: "json",
-      success: function (data) {
-        console.log("data: " + JSON.stringify(data));
-        //alert(data.message);
-        if (data.message == 'Successfully mail sent') {
-          console.log("Successfully mail sent");
-          localStorage.setItem("careatorEmail", careatorEmail);
-          triggerInvite();
-        }
-      },
-      error: function (err) {
-        console.log("err: " + JSON.stringify(err));
-        console.log("err.responseText: " + JSON.stringify(err.responseText));
-        console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
-        alert(err.responseJSON.message);
-      }
 
-    });
-  
+  $.ajax({
+    url: "https://norecruits.com/careator/pswdGenerate",
+    type: "POST",
+    data: JSON.stringify(obj),
+    contentType: "application/json",
+    dataType: "json",
+    success: function (data) {
+      console.log("data: " + JSON.stringify(data));
+      //alert(data.message);
+      if (data.message == 'Successfully mail sent') {
+        console.log("Successfully mail sent");
+        localStorage.setItem("careatorEmail", careatorEmail);
+        triggerInvite();
+      }
+    },
+    error: function (err) {
+      console.log("err: " + JSON.stringify(err));
+      console.log("err.responseText: " + JSON.stringify(err.responseText));
+      console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
+      alert(err.responseJSON.message);
+    }
+
+  });
+
 
   console.log("<--sendEmail");
 }
@@ -132,7 +132,7 @@ function checkPassword() {
     "password": password,
     "careatorEmail": careatorEmail
   };
-  if (password!="" && careatorEmail!="") {
+  if (password != "" && careatorEmail != "") {
     console.log("obj: " + JSON.stringify(obj));
     $.ajax({
       url: "https://norecruits.com/careator/pswdCheck",
@@ -145,7 +145,10 @@ function checkPassword() {
         //alert(data.message);
         if (data.message == 'Successfully mail sent') {
           console.log("Successfully mail sent");
-          triggerInvite();
+          var userNameEmail = localStorage.getItem("careatorEmail");
+          var emailIdSplit = userNameEmail.split('@');
+          userName = emailIdSplit[0];
+
         }
       },
       error: function (err) {

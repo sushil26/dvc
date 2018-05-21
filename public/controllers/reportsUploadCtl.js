@@ -13,8 +13,8 @@ app.controller('reportsUploadCtl', function ($scope, $rootScope, $window, httpFa
   $scope.sma = []; /* ### Note:sma-Subject Mark Attendant  */
   $scope.reset = function () {
     console.log("reset-->");
-    $scope.uploadReports = {};
-    $scope.uploadReports.uploadType ="";
+    $scope.uploadReports = [{ uploadType: "", csSelect: "", ttSelect: "", uploadDoc: "" }];
+    //$scope.uploadReports.uploadType ="";
       // "tSelect": "",
        //"cSelect": ""
       // "sSelect": "",

@@ -94,8 +94,8 @@ function sendEmail() {
   var obj = {
     "careatorEmail": careatorEmail
   };
-  console.log("obj*: " + JSON.stringify(obj));
-  if (obj.careatorEmail!=null && obj.careatorEmail!=undefined && obj.careatorEmail!="") {
+  console.log("obj: " + JSON.stringify(obj));
+  
     $.ajax({
       url: "https://norecruits.com/careator/pswdGenerate",
       type: "POST",
@@ -119,11 +119,7 @@ function sendEmail() {
       }
 
     });
-  }
-  else {
-    console.log("careatorEmail: "+careatorEmail);
-    $("#enterEmail").trigger("click");
-  }
+  
 
   console.log("<--sendEmail");
 }

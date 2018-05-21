@@ -162,6 +162,7 @@ app.controller('reportsUploadCtl', function ($scope, $rootScope, $window, httpFa
         //alert(data.data.message);
       }
     })
+    $scope.reset();
     console.log("<--uploadMarkFile");
   }
 
@@ -252,6 +253,7 @@ app.controller('reportsUploadCtl', function ($scope, $rootScope, $window, httpFa
       }
     });
 
+    $scope.reset();
     console.log("<--uploadTimeTableFile");
   }
 
@@ -394,6 +396,7 @@ app.controller('reportsUploadCtl', function ($scope, $rootScope, $window, httpFa
 
       }
     })
+    $scope.reset();
 
     console.log("<--uploadFile");
   }

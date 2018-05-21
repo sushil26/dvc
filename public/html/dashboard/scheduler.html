@@ -296,14 +296,14 @@
 
                         <tbody>
                           <tr>
-                            <td style="height: 20px;">
+                            <td >
                               <table>
                                 <tr style="background-color:#ccc!important;cursor: pointer;" ng-repeat="tt in teacherPersonalData[0].timeTable[0].timing">
                                   <td>{{tt.startsAt}}-{{tt.endsAt}}</td>
                                 </tr>
                               </table>
                             </td>
-                            <td style="height: 20px;">
+                            <td>
                               <table>
                                 <tr ng-if="selectedDateForEvent=='Mon'" style="background-color:#ccc!important;cursor: pointer;" ng-repeat="mtt in teacherPersonalData[0].timeTable[0].css.Mon"
                                   ng-click="timeTableForEventBook('mon',$index)">

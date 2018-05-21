@@ -538,7 +538,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $state, $r
       var stud_name = un;
       var stud_cs = $scope.studentData[0].cs;
       var stud_id = $scope.studentData[0].schoolId;
-      var senderMN = $scope.teacherPersonalData[0].mobileNum;
+      var senderMN = $scope.teacherPersonalData[0].mobNumber;
       var studId = $scope.studentData[0].schoolId;
       var email = $scope.teacherPersonalData[0].email;/* ### Note: teacher email Id ### */
       var receiverName = teacherName;
@@ -553,7 +553,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $state, $r
       var studName = $scope.studentPersonalData[0].firstName +" "+ $scope.studentPersonalData[0].lastName;
       
       var teacherName = un;
-      var senderMN = $scope.teacherData[0].mobileNum;
+      var senderMN = $scope.teacherData[0].mobNumber;
       var teacherId = $scope.teacherData[0].schoolId;
       var email = $scope.studentPersonalData[0].parentEmail;/* ### Note: parentEmail email Id ### */
       var receiverName = studName;

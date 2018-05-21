@@ -72,8 +72,11 @@ if (stuff.length > 5) {
 else {
  
   if (localStorage.getItem("careatorEmail")) {
+    console.log("2 cond");
     var userNameEmail = localStorage.getItem("careatorEmail");
+    console.log("2 cond: userNameEmail: "+userNameEmail);
     var emailIdSplit = userNameEmail.split('@');
+    console.log("2 cond: emailIdSplit: "+JSON.stringify(emailIdSplit));
     userName = emailIdSplit[0];
     document.getElementById("videoConferenceUrl").style.display = "block";
     document.getElementById("videoConferenceLinkExtention").style.display = "block";

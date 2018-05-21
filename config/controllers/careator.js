@@ -28,9 +28,9 @@ module.exports.pswdCheck = function (req, res) {
         var obj = {
             "email": careatorEmail
         }
-        console.log("obj: "+JSON.stringify(obj));
+        console.log("obj: " + JSON.stringify(obj));
         careatorEmp.find(obj).toArray(function (err, findData) {
-            console.log("findData: "+JSON.stringify(findData));
+            console.log("findData: " + JSON.stringify(findData));
             if (err) {
                 responseData = {
                     status: false,
@@ -197,37 +197,32 @@ module.exports.pswdGenerate = function (req, res) {
 }
 
 module.exports.emailInvite = function (req, res) {
-console.log("emailInvite-->");
-var mailOptions = {
-    from: "info@vc4all.in",
-    to: req.body.email,
-    subject: "Regarding Instance Meeting",
-    html:
-      "<html><head><p><b>Dear Parents, </b></p><p>Please note, you have to attend meeting right now, please open the below link.<p>Here your link <a href=" + req.body.url + ">" + req.body.url + "</a> </p><p>Regards</p><p><b>Careator Technologies Pvt. Ltd</b></p></head><body></body></html>"
-  };
-  console.log("mailOptions: " + JSON.stringify(mailOptions));
+    console.log("emailInvite-->");
+    var mailOptions = {
+        from: "info@vc4all.in",
+        to: req.body.email,
+        subject: "Regarding Instance Meeting",
+        html:
+            "<html><head><p><b>Dear Parents, </b></p><p>Please note, you have to attend meeting right now, please open the below link.<p>Here your link <a href=" + req.body.url + ">" + req.body.url + "</a> </p><p>Regards</p><p><b>Careator Technologies Pvt. Ltd</b></p></head><body></body></html>"
+    };
+    console.log("mailOptions: " + JSON.stringify(mailOptions));
 
-  transporter.sendMail(mailOptions, function (error, info) {
-    if (error) {
-      console.log(error);
-      responseData = {
-        status: true,
-        errorCode: 200,
-        message: "Registeration Successfull and Failed to send mail",
-        data: data
-      };
-      res.status(200).send(responseData);
-    } else {
-      console.log("Email sent: " + info.response);
-      responseData = {
-        status: true,
-        errorCode: 200,
-        message: "Registeration Successfull and sent mail",
-
-        data: data
-      };
-      res.status(200).send(responseData);
-    }
-  });
+    transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+            console.log(error);
+            responseData = {
+                status: false,
+                message: "Failed to send mail",
+            };
+            res.status(400).send(responseData);
+        } else {
+            console.log("Email sent: " + info.response);
+            responseData = {
+                status: true,
+                message: "Successfull and sent mail",
+            };
+            res.status(200).send(responseData);
+        }
+    });
 
 }

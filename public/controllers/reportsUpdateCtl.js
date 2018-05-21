@@ -14,9 +14,14 @@ app.controller('reportsUpdateCtl', function ($scope, $rootScope, $window, $filte
   //$scope.attendanceTypes = ["Monthly"];
   $scope.monthList = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
   $scope.events = [];
-  
+
+  $scope.reset = function () {
+    console.log("reset-->");
+    $scope.uploadReports = [{ uploadType: "", csSelect: "", ttSelect: "", uploadDoc: "" }];
+  }
+
   $scope.getAllTeacherList = function () {
-    var api = $scope.propertyJson.VC_getAllTeacherList+ "/" + schoolName;
+    var api = $scope.propertyJson.VC_getAllTeacherList + "/" + schoolName;
     console.log("api: " + api);
     httpFactory.get(api).then(function (data) {
       var checkStatus = httpFactory.dataValidation(data);
@@ -35,7 +40,7 @@ app.controller('reportsUpdateCtl', function ($scope, $rootScope, $window, $filte
   $scope.getSchoolData = function () {
     console.log("getSchoolData-->");
     $scope.cssList = [];
-    var api = $scope.propertyJson.VC_getSchoolData+"/" + schoolName;
+    var api = $scope.propertyJson.VC_getSchoolData + "/" + schoolName;
     console.log("api: " + api);
     httpFactory.get(api).then(function (data) {
       console.log("data--" + JSON.stringify(data.data));
@@ -78,7 +83,7 @@ app.controller('reportsUpdateCtl', function ($scope, $rootScope, $window, $filte
     console.log("attDailyDate-->");
     $scope.dailyMonth = $filter('date')(d, "MMM");
     $scope.dailyDate = $filter('date')(d, "d");
-      console.log("<--attDailyDate");
+    console.log("<--attDailyDate");
   }
   $scope.sma = []; /* ### Note:sma-Subject Mark Attendant  */
   $scope.addSMA = function () {
@@ -98,8 +103,23 @@ app.controller('reportsUpdateCtl', function ($scope, $rootScope, $window, $filte
     var obj = {
       "file": file,
     }
-    var api = $scope.propertyJson.VC_markUpdate+"/" + schoolName + "/" + clas + "/" + section + "/" + testType + "/" + date;
+    if (clas && section && testType && date) {
+      var api = $scope.propertyJson.VC_markUpdate + "/" + schoolName + "/" + clas + "/" + section + "/" + testType + "/" + date;
+    }
+    else {
+      $uibModal.open({
+        scope: $scope,
+        templateUrl: '/html/templates/dashboardwarning.html',
+        windowClass: 'show',
+        backdropClass: 'static',
+        keyboard: false,
+        controller: function ($scope, $uibModalInstance) {
+          $scope.message = "Class, Section, Test Type and Date are required"
+        }
+      })
+    }
     console.log("api: " + api);
+    if(api){
     httpFactory.csvUpload(obj, api).then(function (data) {
       var checkStatus = httpFactory.dataValidation(data);
       console.log("data--" + JSON.stringify(data.data));
@@ -112,6 +132,8 @@ app.controller('reportsUpdateCtl', function ($scope, $rootScope, $window, $filte
         alert(data.data.message);
       }
     })
+    $scope.reset();
+  }
     console.log("<--markFileUpdate");
   }
 
@@ -124,31 +146,62 @@ app.controller('reportsUpdateCtl', function ($scope, $rootScope, $window, $filte
       "file": file,
     }
     if (uploadType == "Teacher Details") {
-      var api = $scope.propertyJson.VC_updateTeacherMaster+"/" + schoolName + "/" + id;
-    }
-    else if (uploadType == "Student Details") {
-      var api = $scope.propertyJson.VC_updateStudentMaster+"/" + schoolName + "/" + id;
-    }
-    console.log("api: " + api);
-    httpFactory.csvUpload(obj, api).then(function (data) {
-      var checkStatus = httpFactory.dataValidation(data);
-      console.log("data--" + JSON.stringify(data.data));
-      if (checkStatus) {
-        alert(data.data.message);
-        //$scope.getAllTeacherList();
-        // $scope.up.uploadType= '';
+      if (id) {
+        var api = $scope.propertyJson.VC_updateTeacherMaster + "/" + schoolName + "/" + id;
       }
       else {
-        alert(data.data.message);
+        $uibModal.open({
+          scope: $scope,
+          templateUrl: '/html/templates/dashboardwarning.html',
+          windowClass: 'show',
+          backdropClass: 'static',
+          keyboard: false,
+          controller: function ($scope, $uibModalInstance) {
+            $scope.message = "Teacher is required"
+          }
+        })
       }
-    })
+    }
+    else if (uploadType == "Student Details") {
+      if (id) {
+        var api = $scope.propertyJson.VC_updateStudentMaster + "/" + schoolName + "/" + id;
+      }
+      else {
+        $uibModal.open({
+          scope: $scope,
+          templateUrl: '/html/templates/dashboardwarning.html',
+          windowClass: 'show',
+          backdropClass: 'static',
+          keyboard: false,
+          controller: function ($scope, $uibModalInstance) {
+            $scope.message = "Student is required"
+          }
+        })
+      }
+    }
+    console.log("api: " + api);
+    if (api) {
+      httpFactory.csvUpload(obj, api).then(function (data) {
+        var checkStatus = httpFactory.dataValidation(data);
+        console.log("data--" + JSON.stringify(data.data));
+        if (checkStatus) {
+          alert(data.data.message);
+          //$scope.getAllTeacherList();
+          // $scope.up.uploadType= '';
+        }
+        else {
+          alert(data.data.message);
+        }
+        $scope.reset();
+      })
+    }
     console.log("<--updateTeacher to Master");
   }
   $scope.studentDetailById = function (s) {
     console.log("studentSelect-->");
     console.log("s: " + JSON.stringify(s));
     var id = s.id;
-    var api = $scope.propertyJson.VC_studentDetail+"/" + id;
+    var api = $scope.propertyJson.VC_studentDetail + "/" + id;
     console.log("api: " + api);
     httpFactory.get(api).then(function (data) {
       var checkStatus = httpFactory.dataValidation(data);
@@ -254,39 +307,58 @@ app.controller('reportsUpdateCtl', function ($scope, $rootScope, $window, $filte
     var obj = {
       "file": file
     }
-    var api = $scope.propertyJson.VC_updateTeacher_timeTable+"/" + id;
+    if (id) {
+      var api = $scope.propertyJson.VC_updateTeacher_timeTable + "/" + id;
+    }
+    else {
+      $uibModal.open({
+        scope: $scope,
+        templateUrl: '/html/templates/dashboardwarning.html',
+        windowClass: 'show',
+        backdropClass: 'static',
+        keyboard: false,
+        controller: function ($scope, $uibModalInstance) {
+          $scope.message = "Teacher is required"
+        }
+      })
+    }
+
     console.log("api: " + api);
-    httpFactory.csvUpload(obj, api).then(function (data) {
-      var checkStatus = httpFactory.dataValidation(data);
-      console.log("data--" + JSON.stringify(data.data));
-      if (checkStatus) {
-        // $window.location.href = $scope.propertyJson.R082;
-        var loginAlert = $uibModal.open({
-          scope: $scope,
-          templateUrl: '/html/templates/dashboardsuccess.html',
-          windowClass: 'show',
-          backdropClass: 'static',
-          keyboard: false,
-          controller: function ($scope, $uibModalInstance) {
-            $scope.message = data.data.message;
-          }
-        })
-        //alert(data.data.message);
-        $scope.getSchoolData();
-      } else {
-        var loginAlert = $uibModal.open({
-          scope: $scope,
-          templateUrl: '/html/templates/dashboardwarning.html',
-          windowClass: 'show',
-          backdropClass: 'static',
-          keyboard: false,
-          controller: function ($scope, $uibModalInstance) {
-            $scope.message = "Update Fail";
-          }
-        })
-        //alert("Update Fail");
-      }
-    });
+    if (api) {
+      httpFactory.csvUpload(obj, api).then(function (data) {
+        var checkStatus = httpFactory.dataValidation(data);
+        console.log("data--" + JSON.stringify(data.data));
+        if (checkStatus) {
+          // $window.location.href = $scope.propertyJson.R082;
+          var loginAlert = $uibModal.open({
+            scope: $scope,
+            templateUrl: '/html/templates/dashboardsuccess.html',
+            windowClass: 'show',
+            backdropClass: 'static',
+            keyboard: false,
+            controller: function ($scope, $uibModalInstance) {
+              $scope.message = data.data.message;
+            }
+          })
+          //alert(data.data.message);
+          $scope.getSchoolData();
+        } else {
+          var loginAlert = $uibModal.open({
+            scope: $scope,
+            templateUrl: '/html/templates/dashboardwarning.html',
+            windowClass: 'show',
+            backdropClass: 'static',
+            keyboard: false,
+            controller: function ($scope, $uibModalInstance) {
+              $scope.message = "Update Fail";
+            }
+          })
+          //alert("Update Fail");
+        }
+      });
+      $scope.reset();
+    }
+
     console.log("<--timeTableFileupdate");
   }
   $scope.attendanceUpdate = function (file, clas, section, reportType, month) {
@@ -296,39 +368,56 @@ app.controller('reportsUpdateCtl', function ($scope, $rootScope, $window, $filte
       "file": file
     }
     console.log("clas: " + clas + "section: " + section + "reportType: " + reportType + "month: " + month)
-    var api = $scope.propertyJson.VC_attendanceUpdate+"/" + schoolName + "/" + clas + "/" + section + "/" + reportType + "/" + month;
+    if (clas && section && reportType && month) {
+      var api = $scope.propertyJson.VC_attendanceUpdate + "/" + schoolName + "/" + clas + "/" + section + "/" + reportType + "/" + month;
+      $scope.reset();
+    }
+    else {
+      $uibModal.open({
+        scope: $scope,
+        templateUrl: '/html/templates/dashboardwarning.html',
+        windowClass: 'show',
+        backdropClass: 'static',
+        keyboard: false,
+        controller: function ($scope, $uibModalInstance) {
+          $scope.message = "Class, Section, Report Type, Date are required"
+        }
+      })
+    }
     console.log("api: " + api);
-    httpFactory.csvUpload(obj, api).then(function (data) {
-      var checkStatus = httpFactory.dataValidation(data);
-      console.log("data--" + JSON.stringify(data.data));
-      if (checkStatus) {
-        // $window.location.href = $scope.propertyJson.R082;
-        var loginAlert = $uibModal.open({
-          scope: $scope,
-          templateUrl: '/html/templates/dashboardsuccess.html',
-          windowClass: 'show',
-          backdropClass: 'static',
-          keyboard: false,
-          controller: function ($scope, $uibModalInstance) {
-            $scope.message = data.data.message;
-          }
-        })
-        //alert(data.data.message);
-        $scope.getSchoolData();
-      } else {
-        var loginAlert = $uibModal.open({
-          scope: $scope,
-          templateUrl: '/html/templates/dashboardwarning.html',
-          windowClass: 'show',
-          backdropClass: 'static',
-          keyboard: false,
-          controller: function ($scope, $uibModalInstance) {
-            $scope.message = "Update Fail";
-          }
-        })
-        //alert("Update Fail");
-      }
-    });
+    if (api) {
+      httpFactory.csvUpload(obj, api).then(function (data) {
+        var checkStatus = httpFactory.dataValidation(data);
+        console.log("data--" + JSON.stringify(data.data));
+        if (checkStatus) {
+          // $window.location.href = $scope.propertyJson.R082;
+          var loginAlert = $uibModal.open({
+            scope: $scope,
+            templateUrl: '/html/templates/dashboardsuccess.html',
+            windowClass: 'show',
+            backdropClass: 'static',
+            keyboard: false,
+            controller: function ($scope, $uibModalInstance) {
+              $scope.message = data.data.message;
+            }
+          })
+          //alert(data.data.message);
+          $scope.getSchoolData();
+        } else {
+          var loginAlert = $uibModal.open({
+            scope: $scope,
+            templateUrl: '/html/templates/dashboardwarning.html',
+            windowClass: 'show',
+            backdropClass: 'static',
+            keyboard: false,
+            controller: function ($scope, $uibModalInstance) {
+              $scope.message = "Update Fail";
+            }
+          })
+          //alert("Update Fail");
+        }
+      });
+    }
     console.log("<--attendanceUpdate");
   }
   $scope.uploadFile = function (file, uploadType, reportType, list) {
@@ -344,7 +433,7 @@ app.controller('reportsUpdateCtl', function ($scope, $rootScope, $window, $filte
     }
     else if (uploadType == "Attendance") {
       var month = list;
-      var api = $scope.propertyJson.VC_uploadAttendance+"/" + reportType + "/" + month;
+      var api = $scope.propertyJson.VC_uploadAttendance + "/" + reportType + "/" + month;
     }
     else if (uploadType == "Payment") {
       var api = $scope.propertyJson.VC_uploadPayment;

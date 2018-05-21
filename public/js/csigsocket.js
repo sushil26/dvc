@@ -139,6 +139,7 @@ function sendEmail() {
     error: function (err) {
       console.log("err: " + JSON.stringify(err));
       console.log("err.responseText: " + JSON.stringify(err.responseText));
+      console.log("err.responseText: " + JSON.stringify(err.responseText.message));
       alert(err.responseText.message);
     }
 

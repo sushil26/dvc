@@ -176,6 +176,7 @@ function saveName() {
 
   var careatorFriendName = document.getElementById("userName").value;
   localStorage.setItem("careatorFriendName", careatorFriendName);
+  userName = localStorage.getItem("careatorFriendName");
 
 
 }

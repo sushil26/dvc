@@ -125,7 +125,7 @@ module.exports.pswdGenerate = function (req, res) {
                 status: false,
                 message: "Email id is not valid"
             };
-            res.status(400).send(responseData);
+            res.status(400).send(JSON.stringify(responseData));
         }
     }
     else {

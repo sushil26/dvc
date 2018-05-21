@@ -1082,7 +1082,7 @@ module.exports.adminCreate = function (req, res) {
   console.log("schoolObj: " + JSON.stringify(schoolObj));
   console.log("adminObj: " + JSON.stringify(adminObj));
   schoolModel.create(schoolObj, function (err, data) {
-    console.log("data: " + JSON.stringify(data.ops));
+    console.log("data: " + JSON.stringify(data));
     if (err) {
       if (err.code == 11000) {
         console.log("err: " + JSON.stringify(err.errmsg));
@@ -1098,8 +1098,8 @@ module.exports.adminCreate = function (req, res) {
       }
       else {
         console.log("err" + JSON.stringify(err));
-        console.log("errors.name: " + errors.name);
-        if (errors.name == 'ValidationError') {
+        console.log("err.name: " + err.name);
+        if (err.name == 'ValidationError') {
           var message;
           if (err.errors.schoolName) {
             responseData = {

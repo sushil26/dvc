@@ -157,7 +157,9 @@ function checkPassword() {
           var userNameEmail = localStorage.getItem("careatorEmail");
           var emailIdSplit = userNameEmail.split('@');
           userName = emailIdSplit[0];
+          console.log("document.getElementById(videoConferenceUrl).style.display: "+document.getElementById("videoConferenceUrl").style.display);
           document.getElementById("videoConferenceUrl").style.display = "block";
+          console.log("document.getElementById(videoConferenceUrl).style.display: "+document.getElementById("videoConferenceUrl").style.display);
           window.location.href = "https://norecruits.com/careator";
         }
       },

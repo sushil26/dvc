@@ -4,11 +4,9 @@
 </div>
 <div class="modal-body">
 
-    <table class="table-sm">
+    <table class="table table-bordered table-sm">
         <tr>
             <td>
-
-
                 <div class="panel-heading">
                     Sender Details
                 </div>
@@ -19,13 +17,13 @@
                 Name
             </td>
             <td>
-                <p style="color:green">{{eventDetails.senderName}}</p>
+                <div style="color:green">{{eventDetails.senderName}} </div>
             </td>
             <td>
                 Id
             </td>
             <td>
-                <p style="color:green">{{eventDetails.senderId}}</p>
+                <div style="color:green">{{eventDetails.senderId}} </div>
             </td>
 
         </tr>
@@ -34,13 +32,13 @@
                 Phone
             </td>
             <td>
-                <p style="color:green">{{eventDetails.senderMN}}</p>
+                <div style="color:green">{{eventDetails.senderMN}} </div>
             </td>
             <td>
                 Title
             </td>
             <td>
-                <p style="color:green">{{eventDetails.title}}</p>
+                <div style="color:green">{{eventDetails.title}} </div>
             </td>
         </tr>
         <tr>
@@ -48,28 +46,14 @@
                 Message
             </td>
             <td>
-                <p style="color:green">{{eventDetails.reason}}</p>
-            </td>
-            <td>
-                Date
-            </td>
-            <td>
-                <p style="color:green">{{eventDetails.startsAt | date:'M/d/yy'}}</p>
-            </td>
-        </tr>
-
-        <tr>
-            <td>
-                Message
-            </td>
-            <td>
-                <p style="color:green">{{eventDetails.reason}}</p>
+                <div style="color:green">{{eventDetails.reason}} </div>
             </td>
             <td>
                 Timing
             </td>
             <td>
-                <p style="color:green">{{eventDetails.startsAt | date:'h:mm a'}}-{{eventDetails.endsAt | date:'h:mm a'}}</p>
+                <div style="color:green">{{eventDetails.startsAt | date:'M/d/yy'}} </div>
+                <div style="color:green">{{eventDetails.startsAt | date:'h:mm a'}}-{{eventDetails.endsAt | date:'h:mm a'}} </div>
             </td>
         </tr>
 
@@ -88,13 +72,13 @@
                 Name
             </td>
             <td>
-                <p style="color:green">{{eventDetails.receiverName}}</p>
+                <div style="color:green">{{eventDetails.receiverName}} </div>
             </td>
             <td>
                 Id
             </td>
             <td>
-                <p style="color:green">{{eventDetails.receiverId}}</p>
+                <div style="color:green">{{eventDetails.receiverId}} </div>
             </td>
         </tr>
         <tr>
@@ -102,7 +86,7 @@
                 Phone
             </td>
             <td>
-                <p style="color:green">{{eventDetails.receiverMN}}</p>
+                <div style="color:green">{{eventDetails.receiverMN}} </div>
             </td>
             <td>
 
@@ -110,6 +94,23 @@
             <td>
 
             </td>
+        </tr>
+          <!-- ng-if only for history -->
+        <tr>
+            <td ng-if="loginType='teacher'">
+                Minutes of Meeting
+            </td>
+            <td>
+                <div style="color:green">{{eventDetails.teacher_mom}} </div>
+            </td>
+
+            <td ng-if="loginType='studParent'">
+                Minutes of Meeting
+            </td>
+            <td>
+                <div style="color:green">{{eventDetails.parent_mom}} </div>
+            </td>
+
         </tr>
     </table>
 </div>

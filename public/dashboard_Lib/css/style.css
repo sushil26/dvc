@@ -10,14 +10,14 @@
 
 
 
-
+/* 
 table th {
 
   word-break: break-all;
 }
 table td {
   word-break: break-all;
-}
+} */
 
 @import url(line-icons.css);
 p {

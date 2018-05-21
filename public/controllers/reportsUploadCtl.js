@@ -271,7 +271,23 @@ app.controller('reportsUploadCtl', function ($scope, $rootScope, $window, httpFa
     else if (uploadType == "Attendance") {
       var month = list;
       console.log("month: " + month);
-      var api = $scope.propertyJson.VC_uploadAttendance + "/" + schoolName + "/" + clas + "/" + section + "/" + reportType + "/" + month;
+      if(clas && section && reportType && month){
+        var api = $scope.propertyJson.VC_uploadAttendance + "/" + schoolName + "/" + clas + "/" + section + "/" + reportType + "/" + month;
+        $scope.reset();
+      }
+      else{
+        var loginAlert = $uibModal.open({
+          scope: $scope,
+          templateUrl: '/html/templates/dashboardwarning.html',
+          windowClass: 'show',
+          backdropClass: 'static',
+          keyboard: false,
+          controller: function ($scope, $uibModalInstance) {
+            $scope.message = "Class, Section, report Type and Date are required"
+          }
+        })
+      }
+      
     }
     else if (uploadType == "Payment") {
       var api = $scope.propertyJson.VC_uploadPayment;
@@ -395,7 +411,7 @@ app.controller('reportsUploadCtl', function ($scope, $rootScope, $window, httpFa
 
       }
     })
-    $scope.reset();
+   
 
     console.log("<--uploadFile");
   }

@@ -308,42 +308,42 @@
                                 <tr ng-if="selectedDateForEvent=='Mon'" style="background-color:#ccc!important;cursor: pointer;" ng-repeat="mtt in teacherPersonalData[0].timeTable[0].css.Mon"
                                   ng-click="timeTableForEventBook('mon',$index)">
                                   <td>
-                                   <button class="btn btn-success" ng-if="mtt.class=='Free'">Schedule</button>
+                                    <button ng-if="mtt.class=='Free'">Schedule</button>
                                     <span ng-if="mtt.class!='Free'">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</span>
                                   </td>
                                 </tr>
                                 <tr ng-if="selectedDateForEvent=='Tue'" style="background-color:#ccc!important;cursor: pointer;" ng-repeat="mtt in teacherPersonalData[0].timeTable[0].css.Tue"
                                   ng-click="timeTableForEventBook('tue',$index)">
                                   <td>
-                                   <button class="btn btn-success"ng-if="mtt.class=='Free'">Schedule</button>
+                                    <button ng-if="mtt.class=='Free'">Schedule</button>
                                     <span ng-if="mtt.class!='Free'">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</span>
                                   </td>
                                 </tr>
                                 <tr ng-if="selectedDateForEvent=='Wed'" style="background-color:#ccc!important;cursor: pointer;" ng-repeat="mtt in teacherPersonalData[0].timeTable[0].css.Wed"
                                   ng-click="timeTableForEventBook('wed',$index)">
                                   <td>
-                                   <button class="btn btn-success"ng-if="mtt.class=='Free'">Schedule</button>
+                                    <button ng-if="mtt.class=='Free'">Schedule</button>
                                     <span ng-if="mtt.class!='Free'">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</span>
                                   </td>
                                 </tr>
                                 <tr ng-if="selectedDateForEvent=='Thu'" style="background-color:#ccc!important;cursor: pointer;" ng-repeat="mtt in teacherPersonalData[0].timeTable[0].css.Thu"
                                   ng-click="timeTableForEventBook('thu',$index)">
                                   <td>
-                                   <button class="btn btn-success"ng-if="mtt.class=='Free'">Schedule</button>
+                                    <button ng-if="mtt.class=='Free'">Schedule</button>
                                     <span ng-if="mtt.class!='Free'">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</span>
                                   </td>
                                 </tr>
                                 <tr ng-if="selectedDateForEvent=='Fri'" style="background-color:#ccc!important;cursor: pointer;" ng-repeat="mtt in teacherPersonalData[0].timeTable[0].css.Fri"
                                   ng-click="timeTableForEventBook('fri',$index)">
                                   <td>
-                                   <button class="btn btn-success"ng-if="mtt.class=='Free'">Schedule</button>
+                                    <button ng-if="mtt.class=='Free'">Schedule</button>
                                     <span ng-if="mtt.class!='Free'">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</span>
                                   </td>
                                 </tr>
                                 <tr ng-if="selectedDateForEvent=='Sat'" style="background-color:#ccc!important;cursor: pointer;" ng-repeat="mtt in teacherPersonalData[0].timeTable[0].css.Sat"
                                 ng-click="timeTableForEventBook('sat',$index)">
                                 <td>
-                                 <button class="btn btn-success"ng-if="mtt.class=='Free'">Schedule</button>
+                                  <button ng-if="mtt.class=='Free'">Schedule</button>
                                   <span ng-if="mtt.class!='Free'">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</span>
                                 </td>
                               </tr>
@@ -361,7 +361,7 @@
                           <tr ng-if="selectedDateForEvent=='Mon'" style="background-color:#ccc!important;cursor: pointer;" ng-repeat="mtt in teacherPersonalData[0].timeTable[0].css.Mon"
                             ng-click="timeTableForEventBook('mon',$index)">
                             <td>
-                             <button class="btn btn-success"class="btn" ng-if="mtt.class=='Free'">Schedule</button>
+                              <button class="btn" ng-if="mtt.class=='Free'">Schedule</button>
                               <span ng-if="mtt.class!='Free'">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</span>
                             </td>
                           </tr>

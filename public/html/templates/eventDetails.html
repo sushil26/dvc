@@ -3,10 +3,13 @@
     <button type="button" class="close" data-dismiss="modal" ng-click="$close()" aria-hidden="true">&times;</button>
 </div>
 <div class="modal-body">
-    <header class="panel-heading">
-        Sender Details
-    </header>
+
     <table class="table-sm">
+        <tr>
+            <header class="panel-heading">
+                Sender Details
+            </header>
+        </tr>
         <tr>
             <td>
                 Name
@@ -22,71 +25,85 @@
             </td>
 
         </tr>
+        <tr>
+            <td>
+                Phone
+            </td>
+            <td>
+                <p style="color:green">{{eventDetails.senderMN}}</p>
+            </td>
+            <td>
+                Title
+            </td>
+            <td>
+                <p style="color:green">{{eventDetails.title}}</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Message
+            </td>
+            <td>
+                <p style="color:green">{{eventDetails.reason}}</p>
+            </td>
+            <td>
+                Date
+            </td>
+            <td>
+                <p style="color:green">{{eventDetails.startsAt | date:'M/d/yy'}}</p>
+            </td>
+        </tr>
 
+        <tr>
+            <td>
+                Message
+            </td>
+            <td>
+                <p style="color:green">{{eventDetails.reason}}</p>
+            </td>
+            <td>
+                Timing
+            </td>
+            <td>
+                <p style="color:green">{{eventDetails.startsAt | date:'h:mm a'}}-{{eventDetails.endsAt | date:'h:mm a'}}</p>
+            </td>
+        </tr>
+
+
+        <tr>
+            <header class="panel-heading">
+                Receiver Details
+            </header>
+        </tr>
+        <tr>
+            <td>
+                Name
+            </td>
+            <td>
+                <p style="color:green">{{eventDetails.receiverName}}</p>
+            </td>
+            <td>
+                Id
+            </td>
+            <td>
+                <p style="color:green">{{eventDetails.receiverId}}</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Phone
+            </td>
+            <td>
+                <p style="color:green">{{eventDetails.receiverMN}}</p>
+            </td>
+            <td>
+
+            </td>
+            <td>
+
+            </td>
+        </tr>
     </table>
-
-
-
-
-
-    <label class="control-label col-xs-3 col-sm-3 col-md-3">Created On
-    </label>
-    <div class="col-xs-3 col-sm-3 col-md-3">
-        <p style="color:green">Apr 17 2018</p>
-    </div>
-
-    <label class="control-label col-xs-3 col-sm-3 col-md-3">Phone</label>
-
-
-    <div class="col-xs-3 col-sm-3 col-md-3">
-        <p style="color:green">{{eventDetails.senderMN}}</p>
-    </div>
-    <label class="control-label col-xs-3 col-sm-3 col-md-3">Title</label>
-
-
-    <div class="col-xs-3 col-sm-3 col-md-3">
-        <p style="color:green">{{eventDetails.title}}</p>
-    </div>
-    <label class="control-label col-xs-3 col-sm-3 col-md-3">Message</label>
-
-
-    <div class="col-xs-3 col-sm-3 col-md-3">
-        <p style="color:green">{{eventDetails.reason}}</p>
-    </div>
-    <label class="control-label col-xs-3 col-sm-3 col-md-3">Date</label>
-
-
-    <div class="col-xs-3 col-sm-3 col-md-3">
-        <p style="color:green">{{eventDetails.startsAt | date:'M/d/yy'}}</p>
-    </div>
-    <label class="control-label col-xs-3 col-sm-3 col-md-3">Time</label>
-
-
-    <div class="col-xs-3 col-sm-3 col-md-3">
-        <p style="color:green">{{eventDetails.startsAt | date:'h:mm a'}}-{{eventDetails.endsAt | date:'h:mm a'}}</p>
-    </div>
-
-    <header class="panel-heading">
-        Receiver Details
-    </header>
-
-    <label class="control-label col-xs-3 col-sm-3 col-md-3">Name
-    </label>
-    <div class="col-xs-3 col-sm-3 col-md-3">
-        <p style="color:green">{{eventDetails.receiverName}}</p>
-    </div>
-    <label class="control-label col-xs-3 col-sm-3 col-md-3">Id
-
-    </label>
-    <div class="col-xs-3 col-sm-3 col-md-3">
-        <p style="color:green">{{eventDetails.receiverId}}</p>
-    </div>
-    <label class="control-label col-xs-3 col-sm-3 col-md-3">Phone
-
-    </label>
-    <div class="col-xs-3 col-sm-3 col-md-3">
-        <p style="color:green">{{eventDetails.receiverMN}}</p>
-    </div>
 </div>
 <div class="modal-footer">
     <button class="btn btn-default loginpopUp_footerBtn" type="button" ng-click="$close()">Close</button>

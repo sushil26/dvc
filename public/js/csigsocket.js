@@ -119,6 +119,11 @@ else {
   console.log("enterEmail: -->");
   $("#enterEmail").trigger("click");
 }
+function triggerInvite(){
+  console.log("triggerInvite-->");
+  $("#enterEmail").trigger("click");
+          
+}
 function sendEmail() {
   console.log("sendEmail-->");
   var careatorEmail = document.getElementById("careatorEmail").value;
@@ -134,13 +139,19 @@ function sendEmail() {
     dataType: "json",
     success: function (data) {
       console.log("data: " + JSON.stringify(data));
-      alert(err.message);
+      //alert(data.message);
+      if(data.message=='Successfully mail sent'){
+        console.log("Successfully mail sent");
+        triggerInvite();      
+      }
     },
-    error: function(err){
-      console.log("err: "+JSON.stringify(err));
-    alert(err.message);
+    error: function (err) {
+      console.log("err: " + JSON.stringify(err));
+      console.log("err.responseText: " + JSON.stringify(err.responseText));
+      console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
+      alert(err.responseJSON.message);
     }
-      
+
   });
   console.log("<--sendEmail");
 }

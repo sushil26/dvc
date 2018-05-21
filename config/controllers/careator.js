@@ -27,9 +27,10 @@ module.exports.pswdCheck = function (req, res) {
     if (general.emptyCheck(password) && general.emptyCheck(careatorEmail)) {
         var obj = {
             "email": careatorEmail
-
         }
+        console.log("obj: "+JSON.stringify(findData));
         careatorEmp.find(obj).toArray(function (err, findData) {
+            console.log("findData: "+JSON.stringify(findData));
             if (err) {
                 responseData = {
                     status: false,

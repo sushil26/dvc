@@ -121,7 +121,7 @@ else {
 }
 function triggerInvite() {
   console.log("triggerInvite-->");
-  $("#myPasswordModal").trigger("click");
+  $("#enterPswd").trigger("click");
 
 }
 function sendEmail() {

@@ -286,7 +286,8 @@ function disconnecSession() {
 
 function startSession(id, date) {
   console.log("startSession-->");
-  var url = "https://norecruits.com/client/" + id + "/" + date;
+  window.location.href = "https://norecruits.com/careator/" + id + "/" + date;
+  var url = "https://norecruits.com/careator/" + id + "/" + date;
   var obj = {
     "url": url
   };
@@ -339,19 +340,19 @@ signaling_socket.on("connect", function () {
     if (config.queryId == null) {
       console.log("query id is null");
       document
-      .getElementById("videoConferenceUrl")
-      .setAttribute(
-        "onclick",
-        "startSession('" + peerNew_id + "' , '" + date + "')"
-      );
-    document
-      .getElementById("linkToShare")
-      .setAttribute(
-        "href",
-        "https://norecruits.com/careator/" + peerNew_id + "/" + date
-      );
-    document.getElementById("linkToShare").innerHTML =
-      "https://norecruits.com/careator/" + peerNew_id + "/" + date;
+        .getElementById("videoConferenceUrl")
+        .setAttribute(
+          "onclick",
+          "startSession('" + peerNew_id + "' , '" + date + "')"
+        );
+      document
+        .getElementById("linkToShare")
+        .setAttribute(
+          "href",
+          "https://norecruits.com/careator/" + peerNew_id + "/" + date
+        );
+      document.getElementById("linkToShare").innerHTML =
+        "https://norecruits.com/careator/" + peerNew_id + "/" + date;
   }
    else {
     console.log("query id nt null");

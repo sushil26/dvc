@@ -136,11 +136,12 @@ function sendEmail() {
       console.log("data: " + JSON.stringify(data));
       alert(err.message);
     },
-    error: function(err){
-      console.log("err: "+JSON.stringify(err));
-    alert(err.responseText.message);
+    error: function (err) {
+      console.log("err: " + JSON.stringify(err));
+      console.log("err.responseText: " + JSON.stringify(err.responseText));
+      alert(err.responseText.message);
     }
-      
+
   });
   console.log("<--sendEmail");
 }

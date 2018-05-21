@@ -219,7 +219,7 @@ module.exports.emailInvite = function (req, res) {
             console.log("Email sent: " + info.response);
             responseData = {
                 status: true,
-                message: "Successfull and sent mail",
+                message: "Successfull sent mail",
             };
             res.status(200).send(responseData);
         }

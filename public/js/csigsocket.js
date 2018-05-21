@@ -157,6 +157,7 @@ function checkPassword() {
           var userNameEmail = localStorage.getItem("careatorEmail");
           var emailIdSplit = userNameEmail.split('@');
           userName = emailIdSplit[0];
+          document.getElementById("videoConferenceUrl").style.display = "block";
 
         }
       },
@@ -165,6 +166,7 @@ function checkPassword() {
         console.log("err.responseText: " + JSON.stringify(err.responseText));
         console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
         alert(err.responseJSON.message);
+        document.getElementById("videoConferenceUrl").style.display = "none";
       }
 
     });

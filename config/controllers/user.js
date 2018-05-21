@@ -1146,7 +1146,7 @@ module.exports.adminCreate = function (req, res) {
           else if (err.errors.streetName) {
             responseData = {
               status: false,
-              message: "Street name number is required as a Number"
+              message: "Street name is required"
             };
             res.status(400).send(responseData);
           }
@@ -1160,7 +1160,7 @@ module.exports.adminCreate = function (req, res) {
           else if (err.errors.state) {
             responseData = {
               status: false,
-              message: "State name number is required"
+              message: "State name is required"
             };
             res.status(400).send(responseData);
           }

@@ -73,13 +73,13 @@
                                 <p>
                                     <span>
                                         <b style="color:teal;">Date of birth</b>
-                                    </span>: {{userData[0].dob}}</p>
+                                    </span>: {{userData[0].dob | date:' d MMM yyyy'}}</p>
                             </div>
                             <div class="bio-row" ng-if="loginType=='studParent'">
                                 <p>
                                     <span>
                                         <b style="color:teal;">Date of Joining</b>
-                                    </span>: {{userData[0].doj}}</p>
+                                    </span>: {{userData[0].doj | date:' d MMM yyyy'}}</p>
                             </div>
                             <div class="bio-row" ng-if="loginType=='teacher' || loginType=='admin'">
                                 <p>

@@ -1,6 +1,5 @@
 app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $state, $rootScope, $compile, $window, $filter, httpFactory, sessionAuthFactory, moment, calendarConfig, $uibModal) {
   console.log("dashboardScheduleCtrl==>");
-
   var dayEventmodal; /* ### Note: open model for event send ###  */
   var studEvents = []; /* ### Note: selected student events ### */
   var teacherEvents = []; /* ### Note: selected teacher events ### */

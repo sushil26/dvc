@@ -58,8 +58,7 @@ if (stuff.length > 5) {
     document.getElementById("videoConferenceUrl").style.display = "block";
     document.getElementById("videoConferenceLinkExtention").style.display = "block";
   }
-  else if(localStorage.getItem("careatorFriendName"))
-  {
+  else if (localStorage.getItem("careatorFriendName")) {
     userName = localStorage.getItem("careatorFriendName");
   }
   else {
@@ -95,8 +94,8 @@ function sendEmail() {
     "careatorEmail": careatorEmail
   };
   console.log("obj: " + JSON.stringify(obj));
-  if (careatorEmail) {
-        $.ajax({
+  if (careatorEmail!="") {
+    $.ajax({
       url: "https://norecruits.com/careator/pswdGenerate",
       type: "POST",
       data: JSON.stringify(obj),
@@ -135,7 +134,7 @@ function checkPassword() {
     "password": password,
     "careatorEmail": careatorEmail
   };
-  if (password && careatorEmail) {
+  if (password!="" && careatorEmail!="") {
     console.log("obj: " + JSON.stringify(obj));
     $.ajax({
       url: "https://norecruits.com/careator/pswdCheck",
@@ -169,7 +168,7 @@ function saveName() {
   console.log("setName-->");
 
   var careatorFriendName = document.getElementById("userName").value;
-  localStorage.setItem("careatorFriendName",careatorFriendName);
+  localStorage.setItem("careatorFriendName", careatorFriendName);
 
 
 }

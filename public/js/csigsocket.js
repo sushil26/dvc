@@ -43,84 +43,101 @@ var USE_VIDEO = true;
 var DEFAULT_CHANNEL = "some-global-ch-name";
 var MUTE_AUDIO_BY_DEFAULT = false;
 
-if(localStorage.getItem("authorizedEmail"))
-{
+if (localStorage.getItem("authorizedEmail")) {
   if (localStorage.getItem("userName")) {
-  console.log("User Name from session: " + localStorage.getItem("userData"));
-  var userData = JSON.stringify(localStorage.getItem("userData"));
-  userName = localStorage.getItem("userName");
-  loginType = localStorage.getItem("loginType");
+    console.log("User Name from session: " + localStorage.getItem("userData"));
+    var userData = JSON.stringify(localStorage.getItem("userData"));
+    userName = localStorage.getItem("userName");
+    loginType = localStorage.getItem("loginType");
 
-  console.log("userData: " + userData);
-  console.log("userName: " + userName);
-  console.log("loginType: " + loginType);
-  if (loginType == "teacher" || loginType == "admin") {
-    //document.getElementById("userAuth").style.display = "none";
-    // document.getElementById("appLogin").style.display = 'none';
-    // document.getElementById("appReg").style.display = 'none';
-    //document.getElementById("appLogout").style.display = "block";
-    document.getElementById("LoginUrl").style.display = "none";
-    document.getElementById("videoConferenceUrl").style.display = "block";
-    // document.getElementById("scheduleMeeting").style.display = "block";
-    document.getElementById("videoConferenceLinkExtention").style.display =
-      "block";
-  } else if (loginType == "studParent") {
-    //document.getElementById("userAuth").style.display = "none";
-    // document.getElementById("appLogin").style.display = 'none';
-    // document.getElementById("appReg").style.display = 'none';
-    //document.getElementById("appLogout").style.display = "none";
-    document.getElementById("LoginUrl").style.display = "none";
-    document.getElementById("videoConferenceUrl").style.display = "none";
-    // document.getElementById("scheduleMeeting").style.display = "block";
-    document.getElementById("videoConferenceLinkExtention").style.display =
-      "block";
-  }
-  if (loginType == "admin") {
-    //document.getElementById("userAuth").style.display = "block";
-  }
-} else {
-
-  var url = window.location.href;
-  var stuff = url.split("/");
-  var id1 = stuff[stuff.length - 2];
-  var id2 = stuff[stuff.length - 3];
-  console.log("stuff.length: " + stuff.length);
-  console.log("id1**: " + id1);
-  console.log("id2**: " + id2);
-  if (stuff.length > 5) {
-    if (localStorage.getItem("userName")) {
-      console.log(
-        "User Name from session: " + localStorage.getItem("userName")
-      );
-      userName = localStorage.getItem("userName");
-      // startVideoAction();
-     // document.getElementById("userAuth").style.display = "none";
-      // document.getElementById("appLogin").style.display = "none";
-      // document.getElementById("appReg").style.display = "none";
+    console.log("userData: " + userData);
+    console.log("userName: " + userName);
+    console.log("loginType: " + loginType);
+    if (loginType == "teacher" || loginType == "admin") {
+      //document.getElementById("userAuth").style.display = "none";
+      // document.getElementById("appLogin").style.display = 'none';
+      // document.getElementById("appReg").style.display = 'none';
+      //document.getElementById("appLogout").style.display = "block";
+      document.getElementById("LoginUrl").style.display = "none";
+      document.getElementById("videoConferenceUrl").style.display = "block";
+      // document.getElementById("scheduleMeeting").style.display = "block";
+      document.getElementById("videoConferenceLinkExtention").style.display =
+        "block";
+    } else if (loginType == "studParent") {
+      //document.getElementById("userAuth").style.display = "none";
+      // document.getElementById("appLogin").style.display = 'none';
+      // document.getElementById("appReg").style.display = 'none';
       //document.getElementById("appLogout").style.display = "none";
       document.getElementById("LoginUrl").style.display = "none";
       document.getElementById("videoConferenceUrl").style.display = "none";
-      // document.getElementById("scheduleMeeting").style.display = "none";
+      // document.getElementById("scheduleMeeting").style.display = "block";
       document.getElementById("videoConferenceLinkExtention").style.display =
         "block";
-    } else {
-      console.log("No user data from session");
-      $("#setName").trigger("click");
-      //    userName="logu";
-      //     init();
+    }
+    if (loginType == "admin") {
+      //document.getElementById("userAuth").style.display = "block";
+    }
+  } else {
+
+    var url = window.location.href;
+    var stuff = url.split("/");
+    var id1 = stuff[stuff.length - 2];
+    var id2 = stuff[stuff.length - 3];
+    console.log("stuff.length: " + stuff.length);
+    console.log("id1**: " + id1);
+    console.log("id2**: " + id2);
+    if (stuff.length > 5) {
+      if (localStorage.getItem("userName")) {
+        console.log(
+          "User Name from session: " + localStorage.getItem("userName")
+        );
+        userName = localStorage.getItem("userName");
+        // startVideoAction();
+        // document.getElementById("userAuth").style.display = "none";
+        // document.getElementById("appLogin").style.display = "none";
+        // document.getElementById("appReg").style.display = "none";
+        //document.getElementById("appLogout").style.display = "none";
+        document.getElementById("LoginUrl").style.display = "none";
+        document.getElementById("videoConferenceUrl").style.display = "none";
+        // document.getElementById("scheduleMeeting").style.display = "none";
+        document.getElementById("videoConferenceLinkExtention").style.display =
+          "block";
+      } else {
+        console.log("No user data from session");
+        $("#setName").trigger("click");
+        //    userName="logu";
+        //     init();
+      }
+    }
+    else {
+      document.getElementById("LoginUrl").style.display = "none";
+      document.getElementById("videoConferenceUrl").style.display = "none";
     }
   }
-  else{
-    document.getElementById("LoginUrl").style.display = "none";
-    document.getElementById("videoConferenceUrl").style.display = "none";
-  }
 }
-}
-else{
+else {
   console.log("enterEmail: -->");
   $("#enterEmail").trigger("click");
 }
-
+function sendEmail() {
+  console.log("sendEmail-->");
+  var careatorEmail = document.getElementById("careatorEmail").value;
+  var obj = {
+    "careatorEmail": careatorEmail
+  };
+  console.log("obj: " + JSON.stringify(obj));
+  $.ajax({
+    url: "https://norecruits.com/careator/pswdGenerate",
+    type: "POST",
+    data: JSON.stringify(obj),
+    contentType: "application/json",
+    dataType: "json",
+    success: function (data) {
+      console.log("data: " + JSON.stringify(data));
+    }
+  });
+  console.log("<--sendEmail");
+}
 function saveName() {
   console.log("setName-->");
 
@@ -163,7 +180,7 @@ function saveName() {
         localStorage.setItem("userName", userName);
         localStorage.setItem("status", "instantActive");
         localStorage.setItem("loginType", "parent");
-       // document.getElementById("userAuth").style.display = "none";
+        // document.getElementById("userAuth").style.display = "none";
         // document.getElementById("appLogin").style.display = "none";
         // document.getElementById("appReg").style.display = "none";
         //document.getElementById("appLogout").style.display = "none";
@@ -239,34 +256,34 @@ function emailInvite() {
 // var ICE_SERVERS =sesionEnc.slice();
 // console.log("ICE_SERVERS: "+JSON.stringify(ICE_SERVERS));
 
-var ICE_SERVERS =[{ url: "stun:stun.l.google.com:19302" },
+var ICE_SERVERS = [{ url: "stun:stun.l.google.com:19302" },
 { url: "stun:s3.xirsys.com" },
 {
   url: "turn:s3.xirsys.com:80?transport=udp",
   credential: sesionEnc,
   username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5"
 
-},  {
+}, {
   url: "turn:s3.xirsys.com:3478?transport=udp",
   credential: sesionEnc,
   username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5"
 
-},  {
+}, {
   url: "turn:s3.xirsys.com:80?transport=tcp",
   credential: sesionEnc,
   username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5"
 
-},  {
+}, {
   url: "turn:s3.xirsys.com:3478?transport=tcp",
   credential: sesionEnc,
   username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5"
 
-},  {
+}, {
   url: "turns:s3.xirsys.com:443?transport=tcp",
   credential: sesionEnc,
   username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5"
 
-},  {
+}, {
   url: "turns:s3.xirsys.com:5349?transport=tcp",
   credential: sesionEnc,
   username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5"
@@ -291,7 +308,7 @@ function disconnecSession() {
 }
 function startSession(id, date) {
   console.log("startSession-->");
-  window.location.href =  "https://norecruits.com/careator/" + id + "/" + date; 
+  window.location.href = "https://norecruits.com/careator/" + id + "/" + date;
   var url = "https://norecruits.com/careator/" + id + "/" + date;
   var obj = {
     "url": url

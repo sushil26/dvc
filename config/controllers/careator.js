@@ -28,7 +28,7 @@ module.exports.pswdCheck = function (req, res) {
         var obj = {
             "email": careatorEmail
         }
-        console.log("obj: "+JSON.stringify(findData));
+        console.log("obj: "+JSON.stringify(obj));
         careatorEmp.find(obj).toArray(function (err, findData) {
             console.log("findData: "+JSON.stringify(findData));
             if (err) {

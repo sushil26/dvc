@@ -11,11 +11,13 @@ app.controller('reportsUploadCtl', function ($scope, $rootScope, $window, httpFa
   $scope.monthList = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
   $scope.sma = []; /* ### Note:sma-Subject Mark Attendant  */
-
+  $scope.reset = function () {
+$scope.up={};
+  }
   $scope.getSchoolData = function () {
     console.log("getSchoolData-->");
     $scope.cssList = [];
-    var api = $scope.propertyJson.VC_getSchoolData+"/" + schoolName;
+    var api = $scope.propertyJson.VC_getSchoolData + "/" + schoolName;
     console.log("api: " + api);
     httpFactory.get(api).then(function (data) {
       console.log("data--" + JSON.stringify(data.data));
@@ -54,7 +56,7 @@ app.controller('reportsUploadCtl', function ($scope, $rootScope, $window, httpFa
     console.log("getTeacherList-->");
     $scope.teacherList = [];
     $scope.teacherList_noTT = []; /* ### Note: teacher list without time table(teacherList_noTT-teacher list no timetable) ###*/
-    var api = $scope.propertyJson.VC_getSchoolUser+"/" + schoolName;
+    var api = $scope.propertyJson.VC_getSchoolUser + "/" + schoolName;
     console.log("api: " + api);
     httpFactory.get(api).then(function (data) {
       var checkStatus = httpFactory.dataValidation(data);
@@ -115,7 +117,7 @@ app.controller('reportsUploadCtl', function ($scope, $rootScope, $window, httpFa
     var obj = {
       "file": file
     }
-    var api = $scope.propertyJson.VC_uploadMarkFile+"/" + schoolName + "/" + testType + "/" + date + "/" + clas + "/" + section;
+    var api = $scope.propertyJson.VC_uploadMarkFile + "/" + schoolName + "/" + testType + "/" + date + "/" + clas + "/" + section;
     console.log("api: " + api);
     httpFactory.imageUpload(file, api).then(function (data) {
       var checkStatus = httpFactory.dataValidation(data);
@@ -158,10 +160,10 @@ app.controller('reportsUploadCtl', function ($scope, $rootScope, $window, httpFa
       "file": file
     }
     if (fileType == 'css') {
-      var api = $scope.propertyJson.VC_uploadClassFile+"/" + schoolName;
+      var api = $scope.propertyJson.VC_uploadClassFile + "/" + schoolName;
     }
     if (fileType == 'periods') {
-      var api = $scope.propertyJson.VC_uploadPeriodsFile+"/" + schoolName;
+      var api = $scope.propertyJson.VC_uploadPeriodsFile + "/" + schoolName;
     }
 
     console.log("api: " + api);
@@ -205,7 +207,7 @@ app.controller('reportsUploadCtl', function ($scope, $rootScope, $window, httpFa
     var obj = {
       "file": file
     }
-    var api = $scope.propertyJson.VC_uploadTeacher_timeTable+"/" + schoolName + "/" + data._id;
+    var api = $scope.propertyJson.VC_uploadTeacher_timeTable + "/" + schoolName + "/" + data._id;
     console.log("api: " + api);
     httpFactory.csvUpload(obj, api).then(function (data) {
       var checkStatus = httpFactory.dataValidation(data);
@@ -256,24 +258,24 @@ app.controller('reportsUploadCtl', function ($scope, $rootScope, $window, httpFa
     }
     else if (uploadType == "Attendance") {
       var month = list;
-      console.log("month: "+month);
-      var api = $scope.propertyJson.VC_uploadAttendance+"/" + schoolName + "/" + clas + "/" + section + "/" + reportType + "/" + month;
+      console.log("month: " + month);
+      var api = $scope.propertyJson.VC_uploadAttendance + "/" + schoolName + "/" + clas + "/" + section + "/" + reportType + "/" + month;
     }
     else if (uploadType == "Payment") {
       var api = $scope.propertyJson.VC_uploadPayment;
     }
     else if (uploadType == "Student Details") {
-      var api = $scope.propertyJson.VC_uploadStudentMaster+"/" + schoolName + "/" + clas + "/" + section;
+      var api = $scope.propertyJson.VC_uploadStudentMaster + "/" + schoolName + "/" + clas + "/" + section;
     }
     else if (uploadType == "Teacher Details") {
-      var api = $scope.propertyJson.VC_uploadTeacherMaster+"/" + schoolName;
+      var api = $scope.propertyJson.VC_uploadTeacherMaster + "/" + schoolName;
     }
     console.log("api: " + api);
     httpFactory.csvUpload(obj, api).then(function (data) {
       var checkStatus = httpFactory.dataValidation(data);
       console.log("data--" + JSON.stringify(data.data));
       if (checkStatus) {
-        console.log("checkStatus: "+checkStatus);
+        console.log("checkStatus: " + checkStatus);
         if (uploadType == "Attendance") {
           if (data.data.data.length > 0) {
             var loginAlert = $uibModal.open({
@@ -318,10 +320,10 @@ app.controller('reportsUploadCtl', function ($scope, $rootScope, $window, httpFa
         }
       }
       else {
-        console.log("checkStatus: "+checkStatus);
+        console.log("checkStatus: " + checkStatus);
         if (uploadType == "Attendance") {
-          console.log("data.data.message: "+ data.data.message);
-          if (data.data.message == "Sorry! you already updated for this month" ) {
+          console.log("data.data.message: " + data.data.message);
+          if (data.data.message == "Sorry! you already updated for this month") {
             console.log("Sorry! you already updated for this month");
             var loginAlert = $uibModal.open({
               scope: $scope,
@@ -340,7 +342,7 @@ app.controller('reportsUploadCtl', function ($scope, $rootScope, $window, httpFa
             console.log("data: " + data.data.message);
             var msg = data.data.message;
             console.log("msg: " + msg);
-           // alert(data.data.message);
+            // alert(data.data.message);
             var loginAlert = $uibModal.open({
               scope: $scope,
               templateUrl: '/html/templates/dashboardsuccess.html',
@@ -352,8 +354,7 @@ app.controller('reportsUploadCtl', function ($scope, $rootScope, $window, httpFa
               }
             })
           }
-          else 
-          {
+          else {
             var loginAlert = $uibModal.open({
               scope: $scope,
               templateUrl: '/html/templates/dashboardwarning.html',

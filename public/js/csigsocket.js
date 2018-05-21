@@ -158,7 +158,7 @@ function checkPassword() {
           var emailIdSplit = userNameEmail.split('@');
           userName = emailIdSplit[0];
           document.getElementById("videoConferenceUrl").style.display = "block";
-
+          window.location.href = "https://norecruits.com/careator";
         }
       },
       error: function (err) {
@@ -168,7 +168,7 @@ function checkPassword() {
         alert(err.responseJSON.message);
         document.getElementById("videoConferenceUrl").style.display = "none";
         localStorage.removeItem("careatorEmail");
-        userName="";
+        userName = "";
 
 
       }
@@ -203,7 +203,7 @@ function emailInvite() {
     email: email,
     url: URL
   };
-  console.log("obj: "+JSON.stringify("obj"));
+  console.log("obj: " + JSON.stringify("obj"));
   $.ajax({
     url: "https://norecruits.com/careator/emailInvite",
     //  url: "http://localhost:5000/vc/login4VC",
@@ -319,7 +319,7 @@ function startSession(id, date) {
 
 signaling_socket.on("connect", function () {
   console.log("signaling_socket connect-->");
- 
+
   if (disconnPeerId != null) {
     location.reload();
     disconnPeerId = null;
@@ -359,45 +359,45 @@ signaling_socket.on("connect", function () {
         );
       document.getElementById("linkToShare").innerHTML =
         "https://norecruits.com/careator/" + peerNew_id + "/" + date;
-  }
-   else {
-    console.log("query id nt null");
-
-    document
-      .getElementById("linkToShare")
-      .setAttribute(
-        "href",
-        "https://norecruits.com/careator/" + queryLink + "/" + date
-      );
-    document.getElementById("linkToShare").innerHTML =
-      "https://norecruits.com/careator/" + queryLink + "/" + date;
-    document.getElementById("screenBtns").style.display = "inline";
-    document.getElementById("videoConfStart").style.display = "none";
-    document.getElementById("openChat").style.display = "inline";
-
-    document.getElementById("audio_btn").style.display = "inline";
-    document.getElementById("diconnect_btn").style.display = "inline";
-    document.getElementById("videoConferenceLinkExtention").style.display =
-      "inline";
-
-    document.getElementById("linkToShare").style.display = "block";
-    document.getElementById("emailInvitation").style.display = "inline";
-    console.log("userName: " + userName);
-    if (userName != undefined) {
-      console.log("userName with localmedia setup call: " + userName);
-      setup_local_media(function () {
-        join__channel(DEFAULT_CHANNEL, { "whatever-you--here": "stuff" });
-      });
     }
+    else {
+      console.log("query id nt null");
 
-    document
-      .getElementById("setNameId")
-      .addEventListener("click", function () {
-        console.log("setup_local_media calling**");
+      document
+        .getElementById("linkToShare")
+        .setAttribute(
+          "href",
+          "https://norecruits.com/careator/" + queryLink + "/" + date
+        );
+      document.getElementById("linkToShare").innerHTML =
+        "https://norecruits.com/careator/" + queryLink + "/" + date;
+      document.getElementById("screenBtns").style.display = "inline";
+      document.getElementById("videoConfStart").style.display = "none";
+      document.getElementById("openChat").style.display = "inline";
+
+      document.getElementById("audio_btn").style.display = "inline";
+      document.getElementById("diconnect_btn").style.display = "inline";
+      document.getElementById("videoConferenceLinkExtention").style.display =
+        "inline";
+
+      document.getElementById("linkToShare").style.display = "block";
+      document.getElementById("emailInvitation").style.display = "inline";
+      console.log("userName: " + userName);
+      if (userName != undefined) {
+        console.log("userName with localmedia setup call: " + userName);
         setup_local_media(function () {
           join__channel(DEFAULT_CHANNEL, { "whatever-you--here": "stuff" });
         });
-      });
+      }
+
+      document
+        .getElementById("setNameId")
+        .addEventListener("click", function () {
+          console.log("setup_local_media calling**");
+          setup_local_media(function () {
+            join__channel(DEFAULT_CHANNEL, { "whatever-you--here": "stuff" });
+          });
+        });
     }
     console.log("<--signaling_socket message");
   });

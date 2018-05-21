@@ -119,6 +119,11 @@ else {
   console.log("enterEmail: -->");
   $("#enterEmail").trigger("click");
 }
+function triggerInvite(){
+  console.log("triggerInvite-->");
+  $("#enterEmail").trigger("click");
+          
+}
 function sendEmail() {
   console.log("sendEmail-->");
   var careatorEmail = document.getElementById("careatorEmail").value;
@@ -137,7 +142,7 @@ function sendEmail() {
       //alert(data.message);
       if(data.message=='Successfully mail sent'){
         console.log("Successfully mail sent");
-        $("#myEmailModal").trigger("click");
+        function triggerInvite();      
       }
     },
     error: function (err) {

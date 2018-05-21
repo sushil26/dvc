@@ -1183,7 +1183,7 @@ module.exports.adminCreate = function (req, res) {
       }
 
     } else {
-      adminObj.schoolId = data.ops[0]._id;
+      adminObj.schoolId = data._id;
 
       teacher.create(adminObj, function (err, data) {
         console.log("data: " + JSON.stringify(data));

@@ -1,4 +1,4 @@
-app.controller('adminCreateCtl', function ($scope, $rootScope, $filter, $window, httpFactory, sessionAuthFactory,$uibModal) {
+app.controller('adminCreateCtl', function ($scope, $rootScope, $filter, $window, httpFactory, sessionAuthFactory, $uibModal) {
     console.log("adminCreateCtl==>");
     $scope.propertyJson = $rootScope.propertyJson;
 
@@ -9,7 +9,7 @@ app.controller('adminCreateCtl', function ($scope, $rootScope, $filter, $window,
             "schoolRegNumber": $scope.schoolRegNumber,
             "firstName": $scope.firstName,
             "lastName": $scope.lastName,
-            "dor": $filter('date')($scope.dor , "d MMM  y"),
+            "dor": $filter('date')($scope.dor, "d MMM  y"),
             "email": $scope.email,
             "mobNumber": $scope.mobNumber,
             "address": $scope.address,
@@ -33,12 +33,27 @@ app.controller('adminCreateCtl', function ($scope, $rootScope, $filter, $window,
                     backdropClass: 'static',
                     keyboard: false,
                     controller: function ($scope, $uibModalInstance) {
-                      $scope.message = data.data.message;
+                        $scope.message = data.data.message;
                     }
-                  })
+                })
+
+                $scope.schoolName = "";
+                $scope.schoolRegNumber = "";
+                $scope.firstName = "";
+                $scope.lastName = "";
+                $scope.dor = "";
+                $scope.email = "";
+                $scope.mobNumber = "";
+                $scope.address = "";
+                $scope.streetName = "";
+                $scope.city = "";
+                $scope.state = "";
+                $scope.pinCode = "";
+                $scope.country = "";
+                $scope.pswd = ""
                 // alert(data.data.message);
             }
-            else{
+            else {
                 var loginAlert = $uibModal.open({
                     scope: $scope,
                     templateUrl: '/html/templates/dashboardwarning.html',
@@ -46,10 +61,10 @@ app.controller('adminCreateCtl', function ($scope, $rootScope, $filter, $window,
                     backdropClass: 'static',
                     keyboard: false,
                     controller: function ($scope, $uibModalInstance) {
-                      $scope.message = data.data.message;
+                        $scope.message = data.data.message;
                     }
-                  })
-             //   alert("Failed to create");
+                })
+                //   alert("Failed to create");
             }
         })
         console.log("<--adminCreate");

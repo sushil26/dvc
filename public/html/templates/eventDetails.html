@@ -105,22 +105,32 @@
         </tbody>
 
         <!-- ng-if only for history -->
-        <tr>
-            <td ng-if="loginType='teacher'">
-                Minutes of Meeting
-            </td>
-            <td>
-                <div style="color:green">{{eventDetails.teacher_mom}} </div>
-            </td>
+        <thead>
+            <tr>
+                <td>
+                    Minutes of Meeting
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td ng-if="loginType='teacher'">
+                    Minutes of Meeting
+                </td>
+                <td>
+                    <div style="color:green">{{eventDetails.teacher_mom}} </div>
+                </td>
 
-            <td ng-if="loginType='studParent'">
-                Minutes of Meeting
-            </td>
-            <td>
-                <div style="color:green">{{eventDetails.parent_mom}} </div>
-            </td>
+                <td ng-if="loginType='studParent'">
+                    Minutes of Meeting
+                </td>
+                <td>
+                    <div style="color:green">{{eventDetails.parent_mom}} </div>
+                </td>
 
-        </tr>
+            </tr>
+        </tbody>
+
     </table>
 </div>
 <div class="modal-footer">

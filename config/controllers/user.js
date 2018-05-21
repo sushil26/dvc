@@ -1097,7 +1097,7 @@ module.exports.adminCreate = function (req, res) {
         res.status(400).send(responseData);
       }
       else {
-        console.log("err.errors.name: " + err.name);
+        console.log("err" + JSON.stringify(err));
         console.log("err.errors: " + err.errors);
         if (err.name == 'ValidationError') {
           var message;

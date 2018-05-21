@@ -94,9 +94,9 @@ function sendEmail() {
   var obj = {
     "careatorEmail": careatorEmail
   };
+  console.log("obj: " + JSON.stringify(obj));
   if (careatorEmail) {
-    console.log("obj: " + JSON.stringify(obj));
-    $.ajax({
+        $.ajax({
       url: "https://norecruits.com/careator/pswdGenerate",
       type: "POST",
       data: JSON.stringify(obj),

@@ -1082,7 +1082,7 @@ module.exports.adminCreate = function (req, res) {
   console.log("schoolObj: " + JSON.stringify(schoolObj));
   console.log("adminObj: " + JSON.stringify(adminObj));
   schoolModel.create(schoolObj, function (err, data) {
-    console.log("data: " + JSON.stringify(data.ops[0]));
+    console.log("data: " + JSON.stringify(data.ops));
     if (err) {
       if (err.code == 11000) {
         console.log("err: " + JSON.stringify(err.errmsg));

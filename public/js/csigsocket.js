@@ -127,7 +127,7 @@ function sendEmail() {
   };
   console.log("obj: " + JSON.stringify(obj));
   $.ajax({
-    url: "https://norecruits.com/vc/register4VC",
+    url: "https://norecruits.com/careator/pswdGenerate",
     type: "POST",
     data: JSON.stringify(obj),
     contentType: "application/json",

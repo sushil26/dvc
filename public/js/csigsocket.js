@@ -67,7 +67,7 @@ if (stuff.length > 5) {
     console.log("No user data from session");
     $("#setName").trigger("click");
   }
-  console.log("userName: "+userNane);
+  console.log("userName: "+userName);
 }
 else {
  
@@ -85,7 +85,7 @@ else {
     console.log("enterEmail: -->");
     $("#enterEmail").trigger("click");
   }
-  console.log("userName: "+userNane);
+  console.log("userName: "+userName);
 }
 
 function triggerInvite() {

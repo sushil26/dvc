@@ -16,13 +16,13 @@ app.controller('reportsUploadCtl', function ($scope, $rootScope, $window, httpFa
     $scope.uploadReports = {};
     $scope.uploadType ="";
       // "tSelect": "",
-       "cSelect": ""
+       //"cSelect": ""
       // "sSelect": "",
       // "testDate": "",
       // "ttSelect": "",
       // "attDate": "",
       // "mSelect": ""
-    };
+    //};
   }
   $scope.getSchoolData = function () {
     console.log("getSchoolData-->");

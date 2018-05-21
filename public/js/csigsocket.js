@@ -136,6 +136,7 @@ function sendEmail() {
       console.log("data: " + JSON.stringify(data));
       //alert(data.message);
       if(data.message=='Successfully mail sent'){
+        console.log("Successfully mail sent");
         $("#myPasswordModal").trigger("click");
       }
     },

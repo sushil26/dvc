@@ -117,6 +117,7 @@ if(localStorage.getItem("authorizedEmail"))
 }
 }
 else{
+  console.log("enterEmail: -->");
   $("#enterEmail").trigger("click");
 }
 

@@ -142,7 +142,7 @@ function sendEmail() {
       //alert(data.message);
       if(data.message=='Successfully mail sent'){
         console.log("Successfully mail sent");
-        function triggerInvite();      
+        triggerInvite();      
       }
     },
     error: function (err) {

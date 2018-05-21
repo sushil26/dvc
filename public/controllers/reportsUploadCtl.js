@@ -14,7 +14,7 @@ app.controller('reportsUploadCtl', function ($scope, $rootScope, $window, httpFa
   $scope.reset = function () {
     console.log("reset-->");
     $scope.uploadReports = {};
-    $scope.uploadType ="";
+    $scope.uploadReports.uploadType ="";
       // "tSelect": "",
        //"cSelect": ""
       // "sSelect": "",

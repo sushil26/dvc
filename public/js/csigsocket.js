@@ -51,7 +51,9 @@ console.log("stuff.length: " + stuff.length);
 console.log("id1**: " + id1);
 console.log("id2**: " + id2);
 if (stuff.length > 5) {
+
   if (localStorage.getItem("careatorEmail")) {
+
     var userNameEmail = localStorage.getItem("careatorEmail");
     var emailIdSplit = userNameEmail.split('@');
     userName = emailIdSplit[0];
@@ -64,11 +66,11 @@ if (stuff.length > 5) {
   else {
     console.log("No user data from session");
     $("#setName").trigger("click");
-    //    userName="logu";
-    //     init();
   }
+  console.log("userName: "+userNane);
 }
 else {
+ 
   if (localStorage.getItem("careatorEmail")) {
     var userNameEmail = localStorage.getItem("careatorEmail");
     var emailIdSplit = userNameEmail.split('@');
@@ -80,6 +82,7 @@ else {
     console.log("enterEmail: -->");
     $("#enterEmail").trigger("click");
   }
+  console.log("userName: "+userNane);
 }
 
 function triggerInvite() {

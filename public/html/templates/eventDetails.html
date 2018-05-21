@@ -5,97 +5,106 @@
 <div class="modal-body">
 
     <table class="table table-sm">
-        <tr>
-            <td>
-                <div class="panel-heading">
-                    Sender Details
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Name
-            </td>
-            <td>
-                <div style="color:green">{{eventDetails.senderName}} </div>
-            </td>
-            <td>
-                Id
-            </td>
-            <td>
-                <div style="color:green">{{eventDetails.senderId}} </div>
-            </td>
+        <thead>
+            <tr>
+                <th>
+                    <div class="panel-heading">
+                        Sender Details
+                    </div>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    Name
+                </td>
+                <td>
+                    <div style="color:green">{{eventDetails.senderName}} </div>
+                </td>
+                <td>
+                    Id
+                </td>
+                <td>
+                    <div style="color:green">{{eventDetails.senderId}} </div>
+                </td>
 
-        </tr>
-        <tr>
-            <td>
-                Phone
-            </td>
-            <td>
-                <div style="color:green">{{eventDetails.senderMN}} </div>
-            </td>
-            <td>
-                Title
-            </td>
-            <td>
-                <div style="color:green">{{eventDetails.title}} </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Message
-            </td>
-            <td>
-                <div style="color:green">{{eventDetails.reason}} </div>
-            </td>
-            <td>
-                Timing
-            </td>
-            <td>
-                <div style="color:green">{{eventDetails.startsAt | date:'M/d/yy'}} </div>
-                <div style="color:green">{{eventDetails.startsAt | date:'h:mm a'}}-{{eventDetails.endsAt | date:'h:mm a'}} </div>
-            </td>
-        </tr>
+            </tr>
+            <tr>
+                <td>
+                    Phone
+                </td>
+                <td>
+                    <div style="color:green">{{eventDetails.senderMN}} </div>
+                </td>
+                <td>
+                    Title
+                </td>
+                <td>
+                    <div style="color:green">{{eventDetails.title}} </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Message
+                </td>
+                <td>
+                    <div style="color:green">{{eventDetails.reason}} </div>
+                </td>
+                <td>
+                    Timing
+                </td>
+                <td>
+                    <div style="color:green">{{eventDetails.startsAt | date:'M/d/yy'}} </div>
+                    <div style="color:green">{{eventDetails.startsAt | date:'h:mm a'}}-{{eventDetails.endsAt | date:'h:mm a'}} </div>
+                </td>
+            </tr>
+        </tbody>
 
+        <thead>
+            <tr>
 
-        <tr>
-            <td>
-                <div class="panel-heading">
-                    Receiver Details
-                </div>
+                <th>
+                    <div class="panel-heading">
+                        Receiver Details
+                    </div>
 
-            </td>
+                </th>
 
-        </tr>
-        <tr>
-            <td>
-                Name
-            </td>
-            <td>
-                <div style="color:green">{{eventDetails.receiverName}} </div>
-            </td>
-            <td>
-                Id
-            </td>
-            <td>
-                <div style="color:green">{{eventDetails.receiverId}} </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Phone
-            </td>
-            <td>
-                <div style="color:green">{{eventDetails.receiverMN}} </div>
-            </td>
-            <td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    Name
+                </td>
+                <td>
+                    <div style="color:green">{{eventDetails.receiverName}} </div>
+                </td>
+                <td>
+                    Id
+                </td>
+                <td>
+                    <div style="color:green">{{eventDetails.receiverId}} </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Phone
+                </td>
+                <td>
+                    <div style="color:green">{{eventDetails.receiverMN}} </div>
+                </td>
+                <td>
 
-            </td>
-            <td>
+                </td>
+                <td>
 
-            </td>
-        </tr>
-          <!-- ng-if only for history -->
+                </td>
+            </tr>
+        </tbody>
+
+        <!-- ng-if only for history -->
         <tr>
             <td ng-if="loginType='teacher'">
                 Minutes of Meeting

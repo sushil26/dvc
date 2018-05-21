@@ -67,7 +67,7 @@ module.exports = function (app) {
     app.post('/vc/eventUpdate/:id', event.eventUpdate);
 
 
-   
+
 
 
 

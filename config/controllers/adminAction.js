@@ -1912,7 +1912,7 @@ module.exports.updateStudentMaster = function (req, res) {
                 console.log("id: " + JSON.stringify(id));
                 // console.log("queryData: " + JSON.stringify(queryData));
                 // stud.update(queryData, { $set: { $each: objJson } }, function (err, data) {
-                stud.update(id, { $set: objJson }, function (err, data) {
+                    student.update(id, { $set: objJson }, function (err, data) {
                     console.log("data: " + JSON.stringify(data));
                     if (err) {
                         responseData = {
@@ -2160,7 +2160,7 @@ module.exports.updateTeacherMaster = function (req, res) {
                 // }
                 var id = { "_id": ObjectId(req.params.id) }
                 //console.log("queryData: " + JSON.stringify(queryData));
-                user.update(id, { $set: objJson }, function (err, data) {
+                teacher.update(id, { $set: objJson }, function (err, data) {
                     console.log("data: " + JSON.stringify(data));
                     if (err) {
                         responseData = {

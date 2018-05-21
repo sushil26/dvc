@@ -6,9 +6,13 @@
 
     <table class="table-sm">
         <tr>
-            <div>
-                Sender Details
-            </div>
+            <td>
+
+
+                <div class="panel-heading">
+                    Sender Details
+                </div>
+            </td>
         </tr>
         <tr>
             <td>
@@ -46,7 +50,21 @@
             <td>
                 <p style="color:green">{{eventDetails.reason}}</p>
             </td>
-     
+            <td>
+                Date
+            </td>
+            <td>
+                <p style="color:green">{{eventDetails.startsAt | date:'M/d/yy'}}</p>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                Message
+            </td>
+            <td>
+                <p style="color:green">{{eventDetails.reason}}</p>
+            </td>
             <td>
                 Timing
             </td>
@@ -57,9 +75,13 @@
 
 
         <tr>
-            <div>
-                Receiver Details
-            </div>
+            <td>
+                <div class="panel-heading">
+                    Receiver Details
+                </div>
+
+            </td>
+
         </tr>
         <tr>
             <td>

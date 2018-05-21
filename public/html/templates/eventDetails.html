@@ -7,8 +7,6 @@
     <table class="table-sm">
         <tr>
             <td>
-
-
                 <div class="panel-heading">
                     Sender Details
                 </div>
@@ -51,24 +49,10 @@
                 <p style="color:green">{{eventDetails.reason}}</p>
             </td>
             <td>
-                Date
-            </td>
-            <td>
-                <p style="color:green">{{eventDetails.startsAt | date:'M/d/yy'}}</p>
-            </td>
-        </tr>
-
-        <tr>
-            <td>
-                Message
-            </td>
-            <td>
-                <p style="color:green">{{eventDetails.reason}}</p>
-            </td>
-            <td>
                 Timing
             </td>
             <td>
+                <p style="color:green">{{eventDetails.startsAt | date:'M/d/yy'}}</p>
                 <p style="color:green">{{eventDetails.startsAt | date:'h:mm a'}}-{{eventDetails.endsAt | date:'h:mm a'}}</p>
             </td>
         </tr>
@@ -110,6 +94,22 @@
             <td>
 
             </td>
+        </tr>
+        <tr>// ng-if only for history
+            <td ng-if="loginType='teacher'">
+                Minutes of Meeting
+            </td>
+            <td>
+                <p style="color:green">{{eventDetails.teacher_mom}}</p>
+            </td>
+
+            <td ng-if="loginType='studParent'">
+                Minutes of Meeting
+            </td>
+            <td>
+                <p style="color:green">{{eventDetails.parent_mom}}</p>
+            </td>
+
         </tr>
     </table>
 </div>

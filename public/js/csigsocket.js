@@ -134,7 +134,11 @@ function sendEmail() {
     dataType: "json",
     success: function (data) {
       console.log("data: " + JSON.stringify(data));
+    },
+    error: function(err){
+      console.log("err: "+JSON.stringify(err));
     }
+  
   });
   console.log("<--sendEmail");
 }

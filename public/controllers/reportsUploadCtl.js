@@ -14,16 +14,7 @@ app.controller('reportsUploadCtl', function ($scope, $rootScope, $window, httpFa
   $scope.reset = function () {
     console.log("reset-->");
     $scope.uploadReports = [{ uploadType: "", csSelect: "", ttSelect: "", uploadDoc: "" }];
-    //$scope.uploadReports.uploadType ="";
-    // "tSelect": "",
-    //"cSelect": ""
-    // "sSelect": "",
-    // "testDate": "",
-    // "ttSelect": "",
-    // "attDate": "",
-    // "mSelect": ""
-    //};
-  }
+   }
   $scope.getSchoolData = function () {
     console.log("getSchoolData-->");
     $scope.cssList = [];

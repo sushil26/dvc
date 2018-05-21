@@ -199,8 +199,9 @@ function emailInvite() {
     email: email,
     url: URL
   };
+  console.log("obj: "+JSON.stringify("obj"));
   $.ajax({
-    url: "https://norecruits.com/vc/emailInvite",
+    url: "https://norecruits.com/careator/emailInvite",
     //  url: "http://localhost:5000/vc/login4VC",
     type: "POST",
     data: JSON.stringify(obj),
@@ -214,7 +215,15 @@ function emailInvite() {
       console.log("data: " + JSON.stringify(data));
 
       document.getElementById("info").innerHTML = data.message;
+    },
+    error: function (err) {
+      console.log("err: " + JSON.stringify(err));
+      console.log("err.responseText: " + JSON.stringify(err.responseText));
+      console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
+      alert(err.responseJSON.message);
     }
+
+
   });
 
   console.log("<--emailInvite");

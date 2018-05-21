@@ -124,12 +124,32 @@ app.controller('reportsUpdateCtl', function ($scope, $rootScope, $window, $filte
       var checkStatus = httpFactory.dataValidation(data);
       console.log("data--" + JSON.stringify(data.data));
       if (checkStatus) {
-        alert(data.data.message);
+        $uibModal.open({
+          scope: $scope,
+          templateUrl: '/html/templates/dashboardsuccess.html',
+          windowClass: 'show',
+          backdropClass: 'static',
+          keyboard: false,
+          controller: function ($scope, $uibModalInstance) {
+            $scope.message = data.data.message
+          }
+        })
+       // alert(data.data.message);
         //$scope.getAllTeacherList();
         // $scope.up.uploadType= '';
       }
       else {
-        alert(data.data.message);
+        $uibModal.open({
+          scope: $scope,
+          templateUrl: '/html/templates/dashboardsuccess.html',
+          windowClass: 'show',
+          backdropClass: 'static',
+          keyboard: false,
+          controller: function ($scope, $uibModalInstance) {
+            $scope.message = data.data.message
+          }
+        })
+        //alert(data.data.message);
       }
     })
     $scope.reset();
@@ -185,12 +205,32 @@ app.controller('reportsUpdateCtl', function ($scope, $rootScope, $window, $filte
         var checkStatus = httpFactory.dataValidation(data);
         console.log("data--" + JSON.stringify(data.data));
         if (checkStatus) {
-          alert(data.data.message);
+          $uibModal.open({
+            scope: $scope,
+            templateUrl: '/html/templates/dashboardsuccess.html',
+            windowClass: 'show',
+            backdropClass: 'static',
+            keyboard: false,
+            controller: function ($scope, $uibModalInstance) {
+              $scope.message = data.data.message
+            }
+          })
+          //alert(data.data.message);
           //$scope.getAllTeacherList();
           // $scope.up.uploadType= '';
         }
         else {
-          alert(data.data.message);
+          $uibModal.open({
+            scope: $scope,
+            templateUrl: '/html/templates/dashboardwarning.html',
+            windowClass: 'show',
+            backdropClass: 'static',
+            keyboard: false,
+            controller: function ($scope, $uibModalInstance) {
+              $scope.message = data.data.message
+            }
+          })
+         // alert(data.data.message);
         }
         $scope.reset();
       })
@@ -448,25 +488,75 @@ app.controller('reportsUpdateCtl', function ($scope, $rootScope, $window, $filte
       if (checkStatus) {
         if (uploadType == "Attendance") {
           if (data.data.data.length > 0) {
-            alert(data.data.message + " But we have found unknown statudent detail " + data.data.data[0].StudentName + "-" + data.data.data[0].StudentID);
+            $uibModal.open({
+              scope: $scope,
+              templateUrl: '/html/templates/dashboardsuccess.html',
+              windowClass: 'show',
+              backdropClass: 'static',
+              keyboard: false,
+              controller: function ($scope, $uibModalInstance) {
+                $scope.message = data.data.message + " But we have found unknown statudent detail " + data.data.data[0].StudentName + "-" + data.data.data[0].StudentID
+              }
+            })
+            // alert(data.data.message + " But we have found unknown statudent detail " + data.data.data[0].StudentName + "-" + data.data.data[0].StudentID);
           }
           else {
-            alert(data.data.message);
+            $uibModal.open({
+              scope: $scope,
+              templateUrl: '/html/templates/dashboardsuccess.html',
+              windowClass: 'show',
+              backdropClass: 'static',
+              keyboard: false,
+              controller: function ($scope, $uibModalInstance) {
+                $scope.message = data.data.message
+              }
+            })
+            //alert(data.data.message);
           }
 
         }
         else {
-          alert(data.data.message);
+          $uibModal.open({
+            scope: $scope,
+            templateUrl: '/html/templates/dashboardsuccess.html',
+            windowClass: 'show',
+            backdropClass: 'static',
+            keyboard: false,
+            controller: function ($scope, $uibModalInstance) {
+              $scope.message = data.data.message
+            }
+          })
+          //alert(data.data.message);
         }
       }
       else {
         if (uploadType == "Attendance") {
           if (data.data.message == "Sorry! you already updated for this month") {
-            alert(data.data.message + " If you want to update, try update reports option");
+            $uibModal.open({
+              scope: $scope,
+              templateUrl: '/html/templates/dashboardsuccess.html',
+              windowClass: 'show',
+              backdropClass: 'static',
+              keyboard: false,
+              controller: function ($scope, $uibModalInstance) {
+                $scope.message = data.data.message + " If you want to update, try update reports option"
+              }
+            })
+            //alert(data.data.message + " If you want to update, try update reports option");
           }
         }
         else {
-          alert(data.data.message);
+          $uibModal.open({
+            scope: $scope,
+            templateUrl: '/html/templates/dashboardsuccess.html',
+            windowClass: 'show',
+            backdropClass: 'static',
+            keyboard: false,
+            controller: function ($scope, $uibModalInstance) {
+              $scope.message = data.data.message
+            }
+          })
+          //alert(data.data.message);
         }
 
       }

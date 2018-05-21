@@ -138,7 +138,7 @@ function sendEmail() {
     },
     error: function(err){
       console.log("err: "+JSON.stringify(err));
-    alert(err.message);
+    alert(err.responseText.message);
     }
       
   });

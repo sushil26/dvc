@@ -862,7 +862,8 @@ module.exports.uploadAttendance = function (req, res) {
     var responseData;
     schoolName = req.params.schoolName;
 
-    console.log("req.body.files: " + req.files.img);
+    console.log("req.body.files: " + JSON.stringify(req.files.img));
+    // console.log("req.body.files: " + req.files.fullName);
     if (!req.files)
         return res.status(400).send('No files were uploaded.');
     var studentDataFile = req.files.img;
@@ -1050,8 +1051,8 @@ module.exports.dailyData = function (data, callback) {
 /* ### End upload daily attendance status  ### */
 /* ### Start upload Monthly attendance status  ### */
 module.exports.monthlyData = function (data, callback) {
-    console.log('inside saving')
-    var arrayLength
+    console.log('inside saving');
+    var arrayLength;
     console.log("monthly started-->");
     console.log("req.params.month: " + month);
     // var marker;

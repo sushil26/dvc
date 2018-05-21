@@ -8,6 +8,7 @@
 
 // ];
 var sesionEnc = localStorage.getItem("sessionEnc");
+
 // console.log("sesionEnc: "+sesionEnc);
 
 
@@ -38,6 +39,7 @@ var peerStream = null;
 signaling_socket = io(SIGNALING_SERVER);
 
 var userName;
+var careatorFriendName;
 var USE_AUDIO = true;
 var USE_VIDEO = true;
 var DEFAULT_CHANNEL = "some-global-ch-name";
@@ -58,25 +60,28 @@ if (stuff.length > 5) {
     var emailIdSplit = userNameEmail.split('@');
     userName = emailIdSplit[0];
     document.getElementById("videoConferenceUrl").style.display = "block";
-    document.getElementById("videoConferenceLinkExtention").style.display = "block";
+    document.getElementById("invitePeople_container").style.display = "block";
   }
   else if (localStorage.getItem("careatorFriendName")) {
     userName = localStorage.getItem("careatorFriendName");
+    careatorFriendName = true;
+    document.getElementById("videoConferenceUrl").style.display = "none";
+    document.getElementById("invitePeople_container").style.display = "none";
   }
   else {
     console.log("No user data from session");
     $("#setName").trigger("click");
   }
-  console.log("userName: "+userName);
+  console.log("userName: " + userName);
 }
 else {
- 
+
   if (localStorage.getItem("careatorEmail")) {
     console.log("2 cond");
     var userNameEmail = localStorage.getItem("careatorEmail");
-    console.log("2 cond: userNameEmail: "+userNameEmail);
+    console.log("2 cond: userNameEmail: " + userNameEmail);
     var emailIdSplit = userNameEmail.split('@');
-    console.log("2 cond: emailIdSplit: "+JSON.stringify(emailIdSplit));
+    console.log("2 cond: emailIdSplit: " + JSON.stringify(emailIdSplit));
     userName = emailIdSplit[0];
     document.getElementById("videoConferenceUrl").style.display = "block";
     document.getElementById("videoConferenceLinkExtention").style.display = "block";
@@ -85,7 +90,7 @@ else {
     console.log("enterEmail: -->");
     $("#enterEmail").trigger("click");
   }
-  console.log("userName: "+userName);
+  console.log("userName: " + userName);
 }
 
 function triggerInvite() {
@@ -177,6 +182,9 @@ function saveName() {
   var careatorFriendName = document.getElementById("userName").value;
   localStorage.setItem("careatorFriendName", careatorFriendName);
   userName = localStorage.getItem("careatorFriendName");
+  careatorFriendName = true;
+  document.getElementById("videoConferenceUrl").style.display = "none";
+  document.getElementById("invitePeople_container").style.display = "none";
 
 
 }
@@ -390,10 +398,10 @@ signaling_socket.on("connect", function () {
       document.getElementById("diconnect_btn").style.display = "inline";
       document.getElementById("videoConferenceLinkExtention").style.display =
         "inline";
-     
-        document.getElementById("linkToShare").style.display = "block";
-        document.getElementById("emailInvitation").style.display = "inline";
-      console.log("userName: "+userName);
+
+      document.getElementById("linkToShare").style.display = "block";
+      document.getElementById("emailInvitation").style.display = "inline";
+      console.log("userName: " + userName);
       if (userName != undefined) {
         console.log("userName with localmedia setup call: " + userName);
         setup_local_media(function () {

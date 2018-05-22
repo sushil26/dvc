@@ -106,34 +106,34 @@ function sendEmail() {
   console.log("obj: " + JSON.stringify(obj));
 if(careatorEmail.trim()==''){
   console.log("find empty");
-  //$("#enterEmail").trigger("click");
+
 }
 else{
-  $.ajax({
-    url: "https://norecruits.com/careator/pswdGenerate",
-    type: "POST",
-    data: JSON.stringify(obj),
-    contentType: "application/json",
-    dataType: "json",
-    success: function (data) {
-      console.log("data: " + JSON.stringify(data));
-      //alert(data.message);
+  // $.ajax({
+  //   url: "https://norecruits.com/careator/pswdGenerate",
+  //   type: "POST",
+  //   data: JSON.stringify(obj),
+  //   contentType: "application/json",
+  //   dataType: "json",
+  //   success: function (data) {
+  //     console.log("data: " + JSON.stringify(data));
+  //     //alert(data.message);
   
-      if (data.message == 'Successfully mail sent') {
-        console.log("Successfully mail sent");
-        localStorage.setItem("careatorEmail", careatorEmail);
-        //$('#myEmailModal').modal('hide');
-        //triggerInvite();
-      }
-    },
-    error: function (err) {
-      console.log("err: " + JSON.stringify(err));
-      console.log("err.responseText: " + JSON.stringify(err.responseText));
-      console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
-      alert(err.responseJSON.message);
-    }
+  //     if (data.message == 'Successfully mail sent') {
+  //       console.log("Successfully mail sent");
+  //       localStorage.setItem("careatorEmail", careatorEmail);
+  //       //$('#myEmailModal').modal('hide');
+  //       //triggerInvite();
+  //     }
+  //   },
+  //   error: function (err) {
+  //     console.log("err: " + JSON.stringify(err));
+  //     console.log("err.responseText: " + JSON.stringify(err.responseText));
+  //     console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
+  //     alert(err.responseJSON.message);
+  //   }
 
-  });
+  // });
 }
 
   console.log("<--sendEmail");

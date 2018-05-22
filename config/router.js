@@ -68,12 +68,6 @@ module.exports = function (app) {
     app.post('/vc/parentCredential', event.parentCredential);
     app.post('/vc/eventUpdate/:id', event.eventUpdate);
 
-
-
-
-
-
-
     // app.get('/vc/teacherGet/:id', event.teacherGet);
 
 }

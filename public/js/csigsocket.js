@@ -123,7 +123,7 @@ else{
         console.log("Successfully mail sent");
         localStorage.setItem("careatorEmail", careatorEmail);
         $('#myEmailModal').modal('hide');
-        triggerInvite();
+        //triggerInvite();
       }
     },
     error: function (err) {

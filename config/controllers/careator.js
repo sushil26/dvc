@@ -203,7 +203,7 @@ module.exports.emailInvite = function (req, res) {
         to: req.body.email,
         subject: "Regarding Instance Meeting",
         html:
-            "<html><head><p><b>Dear Parents, </b></p><p>Please note, you have to attend meeting right now, please open the below link.<p>Here your link <a href=" + req.body.url + ">" + req.body.url + "</a> </p><p>Regards</p><p><b>Careator Technologies Pvt. Ltd</b></p></head><body></body></html>"
+            "<html><head><p><b>Dear Team, </b></p><p>Please note, you have to attend meeting right now, please open the below link.<p>Here your link <a href=" + req.body.url + ">" + req.body.url + "</a> </p><p>Regards</p><p><b>Careator Technologies Pvt. Ltd</b></p></head><body></body></html>"
     };
     console.log("mailOptions: " + JSON.stringify(mailOptions));
 
@@ -226,3 +226,4 @@ module.exports.emailInvite = function (req, res) {
     });
 
 }
+

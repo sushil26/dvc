@@ -227,7 +227,7 @@ function emailInvite() {
       document.getElementById("info").innerHTML = data.message;
       setTimeout(function() {
         $('#info').fadeOut('fast');
-    }, 2000);
+    }, 3000);
      // document.getElementById("info").innerHTML = data.message;
     },
     error: function (err) {

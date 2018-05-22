@@ -118,7 +118,7 @@ else{
     success: function (data) {
       console.log("data: " + JSON.stringify(data));
       //alert(data.message);
-      $('#myEmailModal').modal('hide');
+      //$('#myEmailModal').modal('hide');
       if (data.message == 'Successfully mail sent') {
         console.log("Successfully mail sent");
         localStorage.setItem("careatorEmail", careatorEmail);

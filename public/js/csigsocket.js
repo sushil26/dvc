@@ -167,6 +167,7 @@ function checkPassword() {
         userName = emailIdSplit[0];
         console.log("userName: "+userName);
         document.getElementById("videoConferenceUrl").style.display = "block";
+        $('#myPasswordModal').modal('hide');
       },
       error: function (err) {
         console.log("err: " + JSON.stringify(err));
@@ -176,7 +177,7 @@ function checkPassword() {
         document.getElementById("videoConferenceUrl").style.display = "none";
         localStorage.removeItem("careatorEmail");
         userName = "";
-        $("#enterPswd").trigger("click");
+        //$("#enterPswd").trigger("click");
       }
 
     });

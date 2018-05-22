@@ -152,16 +152,20 @@ function checkPassword() {
       success: function (data) {
         console.log("data: " + JSON.stringify(data));
         //alert(data.message);
-        if (data.message == 'Successfully mail sent') {
-          console.log("Successfully mail sent");
-          var userNameEmail = localStorage.getItem("careatorEmail");
-          var emailIdSplit = userNameEmail.split('@');
-          userName = emailIdSplit[0];
-          console.log("document.getElementById(videoConferenceUrl).style.display: "+document.getElementById("videoConferenceUrl").style.display);
-          document.getElementById("videoConferenceUrl").style.display = "block";
-          console.log("document.getElementById(videoConferenceUrl).style.display: "+document.getElementById("videoConferenceUrl").style.display);
-          window.location.href = "https://norecruits.com/careator";
-        }
+        // if (data.message == 'Successfully mail sent') {
+        //   console.log("Successfully mail sent");
+        //   var userNameEmail = localStorage.getItem("careatorEmail");
+        //   var emailIdSplit = userNameEmail.split('@');
+        //   userName = emailIdSplit[0];
+        //   console.log("document.getElementById(videoConferenceUrl).style.display: " + document.getElementById("videoConferenceUrl").style.display);
+        //   document.getElementById("videoConferenceUrl").style.display = "block";
+        //   console.log("document.getElementById(videoConferenceUrl).style.display: " + document.getElementById("videoConferenceUrl").style.display);
+        //   window.location.href = "https://norecruits.com/careator";
+        // }
+        var userNameEmail = localStorage.getItem("careatorEmail");
+        var emailIdSplit = userNameEmail.split('@');
+        userName = emailIdSplit[0];
+        document.getElementById("videoConferenceUrl").style.display = "block";
       },
       error: function (err) {
         console.log("err: " + JSON.stringify(err));

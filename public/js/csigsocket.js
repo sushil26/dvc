@@ -148,7 +148,11 @@ function checkPassword() {
     "careatorEmail": careatorEmail
   };
   console.log("obj: "+JSON(obj));
-  if (password != "" && careatorEmail != "") {
+  if(careatorEmail.trim()==''){
+    console.log("find empty");
+    //$("#enterEmail").trigger("click");
+  }
+  else{
    
     $.ajax({
       url: "https://norecruits.com/careator/pswdCheck",
@@ -178,10 +182,11 @@ function checkPassword() {
       }
 
     });
-  }
-  else {
-    $("#enterPswd").trigger("click");
-  }
+  
+  // else {
+  //   $("#enterPswd").trigger("click");
+  // }
+}
   console.log("<--checkPassword");
 }
 function saveName() {

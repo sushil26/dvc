@@ -122,7 +122,7 @@ else{
       if (data.message == 'Successfully mail sent') {
         console.log("Successfully mail sent");
         localStorage.setItem("careatorEmail", careatorEmail);
-        $('#myEmailModal').modal('hide');
+        //$('#myEmailModal').modal('hide');
         //triggerInvite();
       }
     },

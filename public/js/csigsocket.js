@@ -224,8 +224,11 @@ function emailInvite() {
         url: URL
       };
       console.log("data: " + JSON.stringify(data));
-
       document.getElementById("info").innerHTML = data.message;
+      setTimeout(function() {
+        $('#info').fadeOut('fast');
+    }, 3000);
+     // document.getElementById("info").innerHTML = data.message;
     },
     error: function (err) {
       console.log("err: " + JSON.stringify(err));

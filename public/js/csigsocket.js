@@ -53,7 +53,6 @@ console.log("id2**: " + id2);
 if (stuff.length > 5) {
 
   if (localStorage.getItem("careatorEmail")) {
-
     var userNameEmail = localStorage.getItem("careatorEmail");
     var emailIdSplit = userNameEmail.split('@');
     userName = emailIdSplit[0];
@@ -82,7 +81,7 @@ else {
     console.log("2 cond: emailIdSplit: " + JSON.stringify(emailIdSplit));
     userName = emailIdSplit[0];
     document.getElementById("videoConferenceUrl").style.display = "block";
-    document.getElementById("videoConferenceLinkExtention").style.display = "block";
+    
   }
   else {
     console.log("enterEmail: -->");
@@ -197,7 +196,7 @@ function saveName() {
   careatorFriendName = true;
   document.getElementById("videoConferenceUrl").style.display = "none";
   document.getElementById("invitePeople_container").style.display = "none";
-  document.getElementById("videoConferenceLinkExtention").style.display = "block";
+  
 
 }
 
@@ -386,9 +385,7 @@ signaling_socket.on("connect", function () {
 
       document.getElementById("audio_btn").style.display = "inline";
       document.getElementById("diconnect_btn").style.display = "inline";
-      document.getElementById("videoConferenceLinkExtention").style.display =
-        "inline";
-
+      
       document.getElementById("linkToShare").style.display = "block";
       document.getElementById("emailInvitation").style.display = "inline";
       console.log("userName: " + userName);

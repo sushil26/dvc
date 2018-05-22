@@ -197,7 +197,7 @@ module.exports.pswdGenerate = function (req, res) {
 }
 
 module.exports.emailInvite = function (req, res) {
-    console.log("emailInvite-->");
+    console.log("careator email Invite-->");
     var mailOptions = {
         from: "info@vc4all.in",
         to: req.body.email,

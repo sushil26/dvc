@@ -106,6 +106,7 @@ function sendEmail() {
   console.log("obj: " + JSON.stringify(obj));
 if(careatorEmail.trim()==''){
   console.log("find empty");
+  $("#enterEmail").trigger("click");
 }
 else{
   $.ajax({

@@ -197,7 +197,7 @@ function saveName() {
   careatorFriendName = true;
   document.getElementById("videoConferenceUrl").style.display = "none";
   document.getElementById("invitePeople_container").style.display = "none";
-
+  document.getElementById("videoConferenceLinkExtention").style.display = "block";
 
 }
 

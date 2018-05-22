@@ -177,8 +177,6 @@ function checkPassword() {
         localStorage.removeItem("careatorEmail");
         userName = "";
         triggerInvite();
-
-
       }
 
     });

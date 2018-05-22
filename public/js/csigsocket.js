@@ -165,6 +165,7 @@ function checkPassword() {
         var userNameEmail = localStorage.getItem("careatorEmail");
         var emailIdSplit = userNameEmail.split('@');
         userName = emailIdSplit[0];
+        console.log("userName: "+userName);
         document.getElementById("videoConferenceUrl").style.display = "block";
       },
       error: function (err) {

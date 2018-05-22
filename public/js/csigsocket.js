@@ -104,7 +104,9 @@ function sendEmail() {
     "careatorEmail": careatorEmail
   };
   console.log("obj: " + JSON.stringify(obj));
-
+if(careatorEmail.trim()==''){
+  console.log("find empty");
+}
   $.ajax({
     url: "https://norecruits.com/careator/pswdGenerate",
     type: "POST",
@@ -141,8 +143,9 @@ function checkPassword() {
     "password": password,
     "careatorEmail": careatorEmail
   };
+  console.log("obj: "+JSON(obj));
   if (password != "" && careatorEmail != "") {
-    console.log("obj: " + JSON.stringify(obj));
+   
     $.ajax({
       url: "https://norecruits.com/careator/pswdCheck",
       type: "POST",

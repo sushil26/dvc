@@ -176,6 +176,7 @@ function checkPassword() {
         document.getElementById("videoConferenceUrl").style.display = "none";
         localStorage.removeItem("careatorEmail");
         userName = "";
+        triggerInvite();
 
 
       }

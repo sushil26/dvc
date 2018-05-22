@@ -104,7 +104,7 @@ function sendEmail() {
     "careatorEmail": careatorEmail
   };
   console.log("obj: " + JSON.stringify(obj));
-if(careatorEmail.trim()==''){
+if(true){
   console.log("find empty");
 
 }

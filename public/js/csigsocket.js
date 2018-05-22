@@ -224,6 +224,7 @@ function emailInvite() {
         url: URL
       };
       console.log("data: " + JSON.stringify(data));
+      document.getElementById("info").innerHTML = data.message;
       setTimeout(function() {
         $('#info').fadeOut('fast');
     }, 2000);

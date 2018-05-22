@@ -141,9 +141,9 @@ function checkPassword() {
     "password": password,
     "careatorEmail": careatorEmail
   };
-  console.log("obj: "+JSON(obj));
+  console.log("obj: " + JSON.stringify(obj));
   if (password != "" && careatorEmail != "") {
-    console.log("obj: " + JSON.stringify(obj));
+   
     $.ajax({
       url: "https://norecruits.com/careator/pswdCheck",
       type: "POST",

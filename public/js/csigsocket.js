@@ -86,7 +86,7 @@ else {
   }
   else {
     console.log("enterEmail: -->");
-    $("#enterEmail").trigger("click");
+   // $("#enterEmail").trigger("click");
   }
   console.log("userName: " + userName);
 }

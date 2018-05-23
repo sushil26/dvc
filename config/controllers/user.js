@@ -211,7 +211,7 @@ module.exports.login4VC = function (req, res) {
 
     }
     else {
-      stud.find({ $or: [{ parentEmail: req.body.email }, { MotherEmail: req.body.email }] }).toArray(function (err, data) {
+      stud.find({ $or: [{ parentEmail: req.body.email }, { motherEmail: req.body.email }] }).toArray(function (err, data) {
         if (data.length > 0) {
           if (data[0].pswd == req.body.password) {
             if (data[0].status == "active") {

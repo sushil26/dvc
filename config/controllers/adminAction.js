@@ -1820,15 +1820,16 @@ module.exports.uploadStudentMaster = function (req, res) {
                             }
                         }
                     } else {
+                        ids=[];
+                        studentFileValidationMessage=null;
+                        objJson = [];
                         responseData = {
                             status: true,
                             message: "Insert Successfull",
                             data: data
                         };
                         res.status(200).send(responseData);
-                        ids=[];
-                        studentFileValidationMessage=null;
-                        objJson = [];
+                       
                     }
                 });
                 // }
@@ -1855,8 +1856,9 @@ module.exports.uploadStudentMaster = function (req, res) {
 }
 module.exports.studentMasterValidation = function (data, callback) {
     console.log("studentMasterValidation-->");
-
-    stud.find({ "schoolName": schoolName, "schoolId": data.StudentID }).toArray(function (err, idLength) {
+var findId = {"schoolName": schoolName, "schoolId": data.StudentID};
+console.log("findId: "+JSON.stringify(findId));
+    stud.find(findId).toArray(function (err, idLength) {
         console.log("idLength.length: " + idLength.length);
         if (err) {
             responseData = {

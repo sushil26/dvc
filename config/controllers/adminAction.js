@@ -1669,7 +1669,9 @@ module.exports.uploadStudentMaster = function (req, res) {
                 });
             }
             else{
-                parser.end();
+                // parser.end();
+                parser.resume();
+
             }
            
         })

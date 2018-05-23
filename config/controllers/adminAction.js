@@ -1663,13 +1663,13 @@ module.exports.uploadStudentMaster = function (req, res) {
                 module.exports.studentMasterValidation(data, function (err) {
                     console.log("savedatInitiate");
                     // TODO: handle error
-                    console.log("studentFileValidationMessage: " + studentFileValidationMessage);
+                    console.log("studentFileValidationFunction start-->: " + studentFileValidationMessage);
                     parser.resume();
                     
                 });
             }
             else{
-                parser.resume();
+                parser.end();
             }
            
         })

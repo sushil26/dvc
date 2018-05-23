@@ -2027,7 +2027,47 @@ module.exports.uploadTeacherMaster = function (req, res) {
         }).on("data", function (data) {
             console.log("data: " + JSON.stringify(data));
             // var csData = [{ "class": req.params.class, "section": req.params.section }];
-          
+            var userData = {
+                schoolName: schoolName,
+                schoolId: data.StudentID,
+                firstName: data.FirstName,
+                lastName: data.LastName,
+                parentName: data.FatherName,
+                parentEmail: data.FatherEmailId,
+                mobileNum: data.FatherPhoneNumber,
+                motherName: data.MotherName,
+                motherEmail: data.MotherEmailid,
+                motherNum: data.MotherPhoneNumber,
+                cs: csData,
+                dob: data.DOB,
+                doj: data.DOJ,
+                pswd: "abc",
+                status: "active",
+                loginType: "studParent",
+                attendance: [
+                    { "month": "Jan", "dateAttendance": [] },
+                    { "month": "Feb", "dateAttendance": [] },
+                    { "month": "Mar", "dateAttendance": [] },
+                    { "month": "Apr", "dateAttendance": [] },
+                    { "month": "May", "dateAttendance": [] },
+                    { "month": "Jun", "dateAttendance": [] },
+                    { "month": "Jul", "dateAttendance": [] },
+                    { "month": "Aug", "dateAttendance": [] },
+                    { "month": "Sep", "dateAttendance": [] },
+                    { "month": "Oct", "dateAttendance": [] },
+                    { "month": "Nov", "dateAttendance": [] },
+                    { "month": "Dec", "dateAttendance": [] }
+                ],
+                mark: [
+                    { "testType": "AT", "subjectWithMark": [] },
+                    { "testType": "UT", "subjectWithMark": [] },
+                    { "testType": "MT", "subjectWithMark": [] },
+                    { "testType": "TT", "subjectWithMark": [] },
+                    { "testType": "AT", "subjectWithMark": [] },
+                ],
+                created_at: createdDate
+            };
+            objJson.push(userData);
             if (teacherFileValidationMessage == null) {
                 module.exports.teacherMasterValidation(data, function (err) {
                     console.log("savedatInitiate");

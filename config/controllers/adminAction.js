@@ -2011,7 +2011,7 @@ module.exports.uploadTeacherMaster = function (req, res) {
     var marker;
     var css = [];
     var objJson = [];
-    schoolName = req.body.schoolName;
+    schoolName = req.params.schoolName;
     // var cs = [{"class":req.params.class,"section":req.params.section}];
     var fileName = req.files.img.name;
     var fileNameSeparate = fileName.split('_');

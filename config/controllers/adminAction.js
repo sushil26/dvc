@@ -26,6 +26,7 @@ var counter = 0; /* ### Note: Used while uploading marksheet  ### */
 var expectedMessage; /* ### Note:Attendance month validation  ### */
 var id; /* ### Note:Attendance Update based on id  ### */
 var createdDate = new Date();
+var ids = []; /* ### All valid ids storage for studentMaster  ### */
 
 module.exports.updateSchoolStatus = function (req, res) {
     console.log("updateSchoolStatus-->");
@@ -1640,7 +1641,7 @@ module.exports.uploadStudentMaster = function (req, res) {
     // var cs = [{"class":req.params.class,"section":req.params.section}];
     var fileName = req.files.img.name;
     var fileNameSeparate = fileName.split('_');
-    var ids = [];
+   
     if (fileNameSeparate[0] == 'Student') {
         if (!req.files)
             return res.status(400).send('No files were uploaded.');

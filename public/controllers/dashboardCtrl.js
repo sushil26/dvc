@@ -1,7 +1,7 @@
 app.controller('dashboardController', function ($scope, $rootScope, $window, httpFactory, $uibModal, sessionAuthFactory, $filter, $timeout) {
 
     console.log("dashboardController==>");
-    document.getElementById('mobile-nav').style.display='none';
+    //document.getElementById('mobile-nav').style.display='none';
     //$("#mobile-nav").css("display", "none");
 
     $scope.clock = "loading clock..."; // initialise the time variable

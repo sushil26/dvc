@@ -2241,7 +2241,7 @@ module.exports.uploadTeacherMaster = function (req, res) {
 module.exports.teacherMasterValidation = function (data, callback) {
     console.log("teacherFileValidation-->");
     if (teacherFileValidationMessage == null) {
-        var findId = { "schoolName": schoolName, "schoolId": data.TeacherID };
+        var findId = { "_id" : ObjectId("5b0272d74a46530e1493371a") };
         console.log("findId: " + JSON.stringify(findId));
         user.find(findId).toArray(function (err, idLength) {
             console.log("idLength.length: " + idLength.length);

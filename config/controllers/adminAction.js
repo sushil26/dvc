@@ -2211,7 +2211,7 @@ module.exports.teacherMasterValidation = function (data, callback) {
     if (teacherFileValidationMessage == null) {
         var findId = { "schoolName": schoolName, "schoolId": data.TeacherID };
         console.log("findId: " + JSON.stringify(findId));
-        teacher.find(findId).toArray(function (err, idLength) {
+        user.find(findId).toArray(function (err, idLength) {
             console.log("idLength.length: " + idLength.length);
             if (err) {
                 responseData = {

@@ -977,7 +977,8 @@ function setup_local_media(callback, errorback) {
       local_media.attr("id", "videoElem");
       local_media.attr(
         "style",
-        "border:1px solid skyblue;display:inline !important"
+        "border:display:inline !important"
+        // "border:1px solid skyblue;display:inline !important"
       );
 
       $("#portfolio-wrapper").append(

@@ -136,8 +136,10 @@ bouncy:active:before {
 
 video {
   width: 100%;
-  height: 200px;
-  background: #004085;
+  height: -webkit-fill-available;
+  /* width: 100%;
+  height: 200px; */
+  /* background: #004085; */
 }
 
 body {

@@ -29,6 +29,7 @@ var createdDate = new Date();
 var ids = []; /* ### All valid ids storage for studentMaster  ### */
 var csData = []; /* ### Class and Section for studentMaster### */
 var objJson = []; /* ### Storage for student master valid data ### */
+var studentFileValidationMessage = null; /* ### Notification for student master invalid data ### */
 
 module.exports.updateSchoolStatus = function (req, res) {
     console.log("updateSchoolStatus-->");
@@ -1660,7 +1661,18 @@ module.exports.uploadStudentMaster = function (req, res) {
             module.exports.studentMasterValidation(data, function (err) {
                 console.log("savedatInitiate");
                 // TODO: handle error
-                parser.resume();
+                if (studentFileValidationMessage != null) {
+                    parser.resume();
+                }
+                else {
+                    responseData = {
+                        status: false,
+                        message: studentFileValidationMessage
+
+                    };
+                    res.status(400).send(responseData);
+                }
+
             });
         })
             .on("end", function () {
@@ -1897,19 +1909,13 @@ module.exports.studentMasterValidation = function (data, callback) {
                     if (callback) callback();
                 }
                 else {
-                    responseData = {
-                        status: false,
-                        message: data.StudentID + " You Used More Than One Time"
-                    };
-                    res.status(400).send(responseData);
+                    studentFileValidationMessage = data.StudentID + " You Used More Than One Time";
+                    if (callback) callback();
                 }
             }
             else {
-                responseData = {
-                    status: false,
-                    message: "Sorry! " + data.StudentID + " Already exist"
-                };
-                res.status(400).send(responseData);
+                studentFileValidationMessage = "Sorry! " + data.StudentID + " Already exist"
+                if (callback) callback();
             }
         }
     })

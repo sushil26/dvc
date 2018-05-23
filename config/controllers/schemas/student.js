@@ -12,10 +12,10 @@ var studentSchema = new Schema({
   lastName: {type: String, required: true},
   parentName: {type: String, required: true},
   parentEmail: {type: String, required: true, unique: true},
-  mobileNum: {type: String, required: true, unique: true},
+  mobileNum: {type: Number, required: true, unique: true},
   motherName: {type: String, required: true},
   motherEmail: {type: String, required: true, unique: true},
-  motherNum: {type: String, required: true, unique: true},
+  motherNum: {type: Number, required: true, unique: true},
   cs: [{
     "_id":false,
     "class": {type: String, required: true},

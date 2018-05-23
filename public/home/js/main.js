@@ -1,20 +1,5 @@
 jQuery(document).ready(function ($) {
-  $("#dashboard").click(function () {
-
-    $("#mobile-body-overly").css("display", "none");
-
-    $(" #mobile-nav").css("display", "none");
-
-
-  });
-  $("#mobile-nav-toggle").click(function () {
-
-    $("#mobile-body-overly").css("display", "block");
-
-    $(" #mobile-nav").css("display", "block");
-
-
-  });
+ 
 
   // Header fixed and Back to top button
   $(window).scroll(function () {

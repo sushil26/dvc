@@ -31,6 +31,7 @@ var ids = []; /* ### All valid ids storage for studentMaster  ### */
 var csData = []; /* ### Class and Section for studentMaster### */
 var objJson = []; /* ### Storage for student master valid data ### */
 var studentFileValidationMessage = null; /* ### Notification for student master invalid data ### */
+var teacherFileValidationMessage = null; /* ### Notification for student master invalid data ### */
 
 module.exports.updateSchoolStatus = function (req, res) {
     console.log("updateSchoolStatus-->");
@@ -1659,40 +1660,35 @@ module.exports.uploadStudentMaster = function (req, res) {
             console.log("data: " + JSON.stringify(data));
             csData = [{ "class": req.params.clas, "section": req.params.section }];
             parser.pause();
-            if(studentFileValidationMessage==null){
+            if (studentFileValidationMessage == null) {
                 module.exports.studentMasterValidation(data, function (err) {
                     console.log("savedatInitiate");
                     // TODO: handle error
                     console.log("studentFileValidationFunction start-->: " + studentFileValidationMessage);
                     parser.resume();
-                    
                 });
             }
-            else{
+            else {
                 // parser.end();
                 parser.resume();
-
             }
-           
         })
             .on("end", function () {
                 console.log("end marker: " + marker);
                 console.log("objJson: " + JSON.stringify(objJson));
-                console.log("studentFileValidationMessage: "+studentFileValidationMessage);
+                console.log("studentFileValidationMessage: " + studentFileValidationMessage);
                 if (studentFileValidationMessage != null) {
-                   
                     responseData = {
                         status: false,
                         message: studentFileValidationMessage
                     };
                     res.status(400).send(responseData);
-                    console.log("responseData: "+JSON.stringify(responseData));
-                    console.log("ids: "+ids+" studentFileValidationMessage: "+studentFileValidationMessage+" objJson: "+JSON.stringify(objJson));
+                    console.log("responseData: " + JSON.stringify(responseData));
+                    console.log("ids: " + ids + " studentFileValidationMessage: " + studentFileValidationMessage + " objJson: " + JSON.stringify(objJson));
                     ids = [];
                     studentFileValidationMessage = null;
                     objJson = [];
-                    console.log("ids: "+ids+" studentFileValidationMessage: "+studentFileValidationMessage+" objJson: "+JSON.stringify(objJson));
-                   
+                    console.log("ids: " + ids + " studentFileValidationMessage: " + studentFileValidationMessage + " objJson: " + JSON.stringify(objJson));
                 }
                 else {
                     student.create(objJson, function (err, data) {
@@ -1826,13 +1822,13 @@ module.exports.uploadStudentMaster = function (req, res) {
                                 data: data
                             };
                             res.status(200).send(responseData);
-                            console.log("responseData: "+JSON.stringify(responseData));
-                            console.log("ids: "+ids+" studentFileValidationMessage: "+studentFileValidationMessage+" objJson: "+JSON.stringify(objJson));
+                            console.log("responseData: " + JSON.stringify(responseData));
+                            console.log("ids: " + ids + " studentFileValidationMessage: " + studentFileValidationMessage + " objJson: " + JSON.stringify(objJson));
 
                         }
                     });
                 }
-              
+
             });
     }
     else {
@@ -1922,7 +1918,7 @@ module.exports.studentMasterValidation = function (data, callback) {
         })
     }
     else {
-        console.log("studentFileValidationMessage-->: "+studentFileValidationMessage);
+        console.log("studentFileValidationMessage-->: " + studentFileValidationMessage);
         if (callback) callback();
 
     }
@@ -2030,134 +2026,173 @@ module.exports.uploadTeacherMaster = function (req, res) {
         }).on("data", function (data) {
             console.log("data: " + JSON.stringify(data));
             // var csData = [{ "class": req.params.class, "section": req.params.section }];
-            var userData = {
-                schoolName: req.params.schoolName,
-                schoolId: data.TeacherID,
-                firstName: data.FirstName,
-                lastName: data.LastName,
-                email: data.Email,
-                mobNumber: data.PhoneNumber,
-                dob: data.DOB,
-                doj: data.DOJ,
-                pswd: "abc",
-                css: [],
-                timeTable: [],
-                status: "active",
-                loginType: "teacher",
-                created_at: createdDate
+          
+            if (teacherFileValidationMessage == null) {
+                module.exports.teacherMasterValidation(data, function (err) {
+                    console.log("savedatInitiate");
+                    // TODO: handle error
+                    console.log("teacherFileValidation function start-->: " + teacherFileValidationMessage);
+                    parser.resume();
+                });
             }
-            var cssParts = data.ClassSectionSubject.split(',');
-            console.log("cssParts: " + JSON.stringify(cssParts));
-            for (var x = 0; x < cssParts.length; x++) {
-                if (cssParts[x] != "") {
-                    console.log("cssParts[x]: " + cssParts[x]);
-                    var trimed = cssParts[x].trim();
-                    console.log("cssSeparate: " + trimed);
-                    var cssSeparate = trimed.split('-');
-                    console.log("cssSeparate: " + JSON.stringify(cssSeparate));
-                    userData.css.push({ "class": cssSeparate[0], "section": cssSeparate[1], "subject": cssSeparate[2] });
-                }
+            else {
+                // parser.end();
+                parser.resume();
             }
-            console.log("userData: " + JSON.stringify(userData));
-            objJson.push(userData);
         })
             .on("end", function () {
                 console.log("end marker: " + marker);
                 console.log("objJson: " + JSON.stringify(objJson));
-                teacher.create(objJson, function (err, data) {
-                    console.log("data: " + JSON.stringify(data));
-                    if (err) {
-                        if (err.code == 11000) {
-                            console.log("err: " + JSON.stringify(err.errmsg));
-                            var errmsg = err.errmsg;
-                            var splitErrMsg = errmsg.split(':');
-                            var nextSplit = splitErrMsg[4].split('}');
-                            console.log("splitErrMsg: " + splitErrMsg + " nextSplit: " + nextSplit);
-                            responseData = {
-                                status: false,
-                                message: nextSplit[0] + " Already exist"
-                            };
-                            res.status(400).send(responseData);
-                        }
-                        else {
-                            console.log("err.errors.name: " + err.name);
-                            console.log("err.errors: " + err.errors);
-                            if (err.name == 'ValidationError') {
-                                if (err.errors.mobileNum) {
-                                    console.log("mobile Number has to be Number");
-                                    responseData = {
-                                        status: false,
-                                        message: "Mobile Number is required as a Number"
-                                    };
-                                    res.status(400).send(responseData);
-                                }
-                                else if (err.errors.schoolName) {
-                                    responseData = {
-                                        status: false,
-                                        message: "SchoolName is required as a string"
-                                    };
-                                    res.status(400).send(responseData);
-                                }
-                                else if (err.errors.schoolId) {
-                                    responseData = {
-                                        status: false,
-                                        message: "SchoolId is required"
-                                    };
-                                    res.status(400).send(responseData);
-                                }
-                                else if (err.errors.firstName) {
-                                    responseData = {
-                                        status: false,
-                                        message: "FirstName is required as a string"
-                                    };
-                                    res.status(400).send(responseData);
-                                }
-                                else if (err.errors.lastName) {
-                                    responseData = {
-                                        status: false,
-                                        message: "LastName is required as a string"
-                                    };
-                                    res.status(400).send(responseData);
-                                }
-                                else if (err.errors.email) {
-                                    responseData = {
-                                        status: false,
-                                        message: "Email is required as a string"
-                                    };
-                                    res.status(400).send(responseData);
-                                }
-                                else if (err.errors.mobNumber) {
-                                    responseData = {
-                                        status: false,
-                                        message: "Mobile number is required as a string"
-                                    };
-                                    res.status(400).send(responseData);
-                                }
-                                else if (err.errors.email) {
-                                    responseData = {
-                                        status: false,
-                                        message: "Email is required as a string"
-                                    };
-                                    res.status(400).send(responseData);
-                                }
-                                else if (err.errors.mobNumber) {
-                                    responseData = {
-                                        status: false,
-                                        message: "Mobile number is required as a string"
-                                    };
-                                    res.status(400).send(responseData);
+                console.log("teacherFileValidationMessage: " + teacherFileValidationMessage);
+                if (teacherFileValidationMessage != null) {
+                    responseData = {
+                        status: false,
+                        message: teacherFileValidationMessage
+                    };
+                    res.status(400).send(responseData);
+                    console.log("responseData: " + JSON.stringify(responseData));
+                    console.log("ids: " + ids + " teacherFileValidationMessage: " + teacherFileValidationMessage + " objJson: " + JSON.stringify(objJson));
+                    ids = [];
+                    teacherFileValidationMessage = null;
+                    objJson = [];
+                    console.log("ids: " + ids + " teacherFileValidationMessage: " + teacherFileValidationMessage + " objJson: " + JSON.stringify(objJson));
+                }
+                else {
+                    teacher.create(objJson, function (err, data) {
+                        console.log("data: " + JSON.stringify(data));
+                        // console.log("err: " + JSON.stringify(err));
+                        if (err) {
+                            console.log("err: " + JSON.stringify(err));
+                            // console.log("err.code: " + err.code+" err.index: "+err.index+" err.errmsg: "+err.errmsg+" err.op: "+err.op);
+                            console.log("err.op: " + JSON.stringify(err.op));
+                            if (err.code == 11000) {
+                                console.log("err: " + JSON.stringify(err.errmsg));
+                                var errmsg = err.errmsg;
+                                var splitErrMsg = errmsg.split(':');
+                                var nextSplit = splitErrMsg[4].split('}');
+                                console.log("splitErrMsg: " + splitErrMsg + " nextSplit: " + nextSplit);
+                                responseData = {
+                                    status: false,
+                                    message: nextSplit[0] + " Already exist"
+                                };
+                                res.status(400).send(responseData);
+                            }
+                            else {
+                                console.log("err.errors.name: " + err.name);
+                                console.log("err.errors: " + err.errors);
+                                if (err.name == 'ValidationError') {
+                                    var message;
+                                    if (err.errors.mobileNum) {
+                                        console.log("mobile Number has to be Number");
+                                        responseData = {
+                                            status: false,
+                                            message: "Mobile Number is required as a Number"
+                                        };
+                                        res.status(400).send(responseData);
+                                    }
+                                    else if (err.errors.schoolName) {
+                                        responseData = {
+                                            status: false,
+                                            message: "SchoolName is required as a string"
+                                        };
+                                        res.status(400).send(responseData);
+                                    }
+                                    else if (err.errors.schoolId) {
+                                        responseData = {
+                                            status: false,
+                                            message: "SchoolId is required"
+                                        };
+                                        res.status(400).send(responseData);
+                                    }
+                                    else if (err.errors.firstName) {
+                                        responseData = {
+                                            status: false,
+                                            message: "FirstName is required as a string"
+                                        };
+                                        res.status(400).send(responseData);
+                                    }
+                                    else if (err.errors.lastName) {
+                                        responseData = {
+                                            status: false,
+                                            message: "LastName is required as a string"
+                                        };
+                                        res.status(400).send(responseData);
+                                    }
+                                    else if (err.errors.parentName) {
+                                        responseData = {
+                                            status: false,
+                                            message: "parentName is required as a string"
+                                        };
+                                        res.status(400).send(responseData);
+                                    }
+                                    else if (err.errors.parentEmail) {
+                                        responseData = {
+                                            status: false,
+                                            message: "parentEmail is required as a string"
+                                        };
+                                        res.status(400).send(responseData);
+                                    }
+                                    else if (err.errors.mobileNum) {
+                                        responseData = {
+                                            status: false,
+                                            message: "Father mobile number is required"
+                                        };
+                                        res.status(400).send(responseData);
+                                    }
+                                    else if (err.errors.motherName) {
+                                        responseData = {
+                                            status: false,
+                                            message: "motherName is required as a string"
+                                        };
+                                        res.status(400).send(responseData);
+                                    }
+                                    else if (err.errors.motherEmail) {
+                                        responseData = {
+                                            status: false,
+                                            message: "MotherEmail is required"
+                                        };
+                                        res.status(400).send(responseData);
+                                    }
+                                    else if (err.errors.motherNum) {
+                                        responseData = {
+                                            status: false,
+                                            message: "Mother mobile number is required"
+                                        };
+                                        res.status(400).send(responseData);
+                                    }
+
+                                    else if (err.errors.dob) {
+                                        responseData = {
+                                            status: false,
+                                            message: "dob is required"
+                                        };
+                                        res.status(400).send(responseData);
+                                    }
+                                    else if (err.errors.doj) {
+                                        responseData = {
+                                            status: false,
+                                            message: "doj is required"
+                                        };
+                                        res.status(400).send(responseData);
+                                    }
                                 }
                             }
+                        } else {
+                            ids = [];
+                            teacherFileValidationMessage = null;
+                            objJson = [];
+                            responseData = {
+                                status: true,
+                                message: "Insert Successfull",
+                                data: data
+                            };
+                            res.status(200).send(responseData);
+                            console.log("responseData: " + JSON.stringify(responseData));
+                            console.log("ids: " + ids + " teacherFileValidationMessage: " + teacherFileValidationMessage + " objJson: " + JSON.stringify(objJson));
+
                         }
-                    } else {
-                        responseData = {
-                            status: true,
-                            message: "Insert Successfull",
-                            data: data
-                        };
-                        res.status(200).send(responseData);
-                    }
-                });
+                    });
+                }
             });
     }
     else {
@@ -2170,6 +2205,80 @@ module.exports.uploadTeacherMaster = function (req, res) {
 
     console.log("<--uploadStudentMaster");
 };
+module.exports.teacherMasterValidation = function (data, callback) {
+    console.log("teacherFileValidation-->");
+    if (teacherFileValidationMessage == null) {
+        var findId = { "schoolName": schoolName, "schoolId": data.TeacherID };
+        console.log("findId: " + JSON.stringify(findId));
+        stud.find(findId).toArray(function (err, idLength) {
+            console.log("idLength.length: " + idLength.length);
+            if (err) {
+                responseData = {
+                    status: fasle,
+                    message: err
+                };
+                res.status(400).send(responseData);
+                if (callback) callback();
+            }
+            else {
+                if (idLength.length == 0) {
+                    console.log("ids.indexOf(data.TeacherID): " + ids.indexOf(data.TeacherID));
+                    if (ids.indexOf(data.TeacherID) == -1) {
+                        ids.push(data.TeacherID);
+                       var userData = {
+                            schoolName: schoolName,
+                            schoolId: data.TeacherID,
+                            firstName: data.FirstName,
+                            lastName: data.LastName,
+                            email: data.Email,
+                            mobNumber: data.PhoneNumber,
+                            dob: data.DOB,
+                            doj: data.DOJ,
+                            pswd: "abc",
+                            css: [],
+                            timeTable: [],
+                            status: "active",
+                            loginType: "teacher",
+                            created_at: createdDate
+                        }
+                        var cssParts = data.ClassSectionSubject.split(',');
+                        console.log("cssParts: " + JSON.stringify(cssParts));
+                        for (var x = 0; x < cssParts.length; x++) {
+                            if (cssParts[x] != "") {
+                                console.log("cssParts[x]: " + cssParts[x]);
+                                var trimed = cssParts[x].trim();
+                                console.log("cssSeparate: " + trimed);
+                                var cssSeparate = trimed.split('-');
+                                console.log("cssSeparate: " + JSON.stringify(cssSeparate));
+                                userData.css.push({ "class": cssSeparate[0], "section": cssSeparate[1], "subject": cssSeparate[2] });
+                            }
+                        }
+                        console.log("userData: " + JSON.stringify(userData));
+                        objJson.push(userData);
+
+                        console.log("userData: " + JSON.stringify(userData));
+                        if (callback) callback();
+                    }
+                    else {
+                        teacherFileValidationMessage = data.TeacherID + " You Used More Than One Time";
+                        if (callback) callback();
+                    }
+                }
+                else {
+                    teacherFileValidationMessage = "Sorry! " + data.TeacherID + " Already exist kindly check and update your csv file"
+                    if (callback) callback();
+                }
+            }
+        })
+    }
+    else {
+        console.log("teacherFileValidationMessage-->: " + teacherFileValidationMessage);
+        if (callback) callback();
+
+    }
+    console.log("<--teacherFileValidation");
+
+}
 module.exports.updateTeacherMaster = function (req, res) {
     console.log("updateTeacherMaster-->");
     var responseData;

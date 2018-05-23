@@ -1892,7 +1892,7 @@ module.exports.studentMasterValidation = function (data, callback) {
                         created_at: createdDate
                     };
                     objJson.push(userData);
-                    parser.resume();
+                    
                     console.log("userData: " + JSON.stringify(userData));
                     if (callback) callback();
                 }

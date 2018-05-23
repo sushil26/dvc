@@ -1662,7 +1662,7 @@ module.exports.uploadStudentMaster = function (req, res) {
                 console.log("savedatInitiate");
                 // TODO: handle error
                 console.log("studentFileValidationMessage: "+studentFileValidationMessage);
-                if (studentFileValidationMessage != null) {
+                if (studentFileValidationMessage == null) {
                     parser.resume();
                 }
                 else {

@@ -1826,6 +1826,9 @@ module.exports.uploadStudentMaster = function (req, res) {
                             data: data
                         };
                         res.status(200).send(responseData);
+                        ids=[];
+                        studentFileValidationMessage=null;
+                        objJson = [];
                     }
                 });
                 // }

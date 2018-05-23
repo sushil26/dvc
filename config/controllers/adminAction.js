@@ -1833,7 +1833,6 @@ module.exports.uploadStudentMaster = function (req, res) {
                     } else {
                         responseData = {
                             status: true,
-                            errorCode: 200,
                             message: "Insert Successfull",
                             data: data
                         };
@@ -1912,7 +1911,7 @@ module.exports.updateStudentMaster = function (req, res) {
                 console.log("id: " + JSON.stringify(id));
                 // console.log("queryData: " + JSON.stringify(queryData));
                 // stud.update(queryData, { $set: { $each: objJson } }, function (err, data) {
-                    student.update(id, { $set: objJson }, function (err, data) {
+                student.update(id, { $set: objJson }, function (err, data) {
                     console.log("data: " + JSON.stringify(data));
                     if (err) {
                         responseData = {

@@ -2215,6 +2215,7 @@ module.exports.teacherMasterValidation = function (data, callback) {
         user.find(findId).toArray(function (err, idLength) {
             console.log("idLength.length: " + idLength.length);
             if (err) {
+                console.log("err: "+JSON.stringify(err));
                 responseData = {
                     status: fasle,
                     message: err

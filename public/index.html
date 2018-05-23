@@ -762,7 +762,7 @@
         $("#mobile-body-overly").css("display", "none");
 
      
-        $("body.mobile-nav-active #mobile-nav").css("display", "none");
+        $("#mobile-nav",window.parent.document).css("display", "none");
       });
       $("#mobile-nav-toggle").click(function () {
 

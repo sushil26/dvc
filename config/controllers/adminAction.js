@@ -1658,28 +1658,34 @@ module.exports.uploadStudentMaster = function (req, res) {
             console.log("data: " + JSON.stringify(data));
             csData = [{ "class": req.params.clas, "section": req.params.section }];
             parser.pause();
-            module.exports.studentMasterValidation(data, function (err) {
-                console.log("savedatInitiate");
-                // TODO: handle error
-                console.log("studentFileValidationMessage: " + studentFileValidationMessage);
+            if(studentFileValidationMessage==null){
+                module.exports.studentMasterValidation(data, function (err) {
+                    console.log("savedatInitiate");
+                    // TODO: handle error
+                    console.log("studentFileValidationMessage: " + studentFileValidationMessage);
+                    parser.resume();
+                    
+                });
+            }
+            else{
                 parser.resume();
-                
-            });
+            }
+           
         })
             .on("end", function () {
                 console.log("end marker: " + marker);
                 console.log("objJson: " + JSON.stringify(objJson));
                 if (studentFileValidationMessage != null) {
-                    responseData = {
-                        status: false,
-                        message: studentFileValidationMessage
-
-                    };
-                    res.status(400).send(responseData);
                     ids = [];
                     studentFileValidationMessage = null;
                     objJson = [];
-                    parser.pause();
+                    responseData = {
+                        status: false,
+                        message: studentFileValidationMessage
+                    };
+                    res.status(400).send(responseData);
+                    
+                   
                 }
                 else {
                     student.create(objJson, function (err, data) {

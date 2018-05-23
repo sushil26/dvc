@@ -27,6 +27,7 @@ var expectedMessage; /* ### Note:Attendance month validation  ### */
 var id; /* ### Note:Attendance Update based on id  ### */
 var createdDate = new Date();
 var ids = []; /* ### All valid ids storage for studentMaster  ### */
+var csData = {};/* ### Class and Section for studentMaster### */
 
 module.exports.updateSchoolStatus = function (req, res) {
     console.log("updateSchoolStatus-->");
@@ -1653,7 +1654,7 @@ module.exports.uploadStudentMaster = function (req, res) {
             ignoreEmpty: true
         }).on("data", function (data) {
             console.log("data: " + JSON.stringify(data));
-            var csData = [{ "class": req.params.clas, "section": req.params.section }];
+             csData = [{ "class": req.params.clas, "section": req.params.section }];
             parser.pause();
             module.exports.studentMasterValidation(data, function (err) {
                 console.log("savedatInitiate");

@@ -1853,7 +1853,7 @@ module.exports.studentMasterValidation = function (data, callback) {
                 if (ids.indexOf(data.StudentID) == -1) {
                     ids.push(data.StudentID);
                     var userData = {
-                        schoolName: req.params.schoolName,
+                        schoolName: schoolName,
                         schoolId: data.StudentID,
                         firstName: data.FirstName,
                         lastName: data.LastName,

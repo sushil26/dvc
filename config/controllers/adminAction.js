@@ -1709,12 +1709,14 @@ module.exports.uploadStudentMaster = function (req, res) {
                 //         res.status(400).send(responseData);
                 //     } else {
                 //         if (studentClassList.length == 0) {
-                    var finalresult = new student(objJson);
-                    console.log("finalresult: "+JSON.stringify(finalresult));
+                    // var finalresult = new student(objJson);
+                    // console.log("finalresult: "+JSON.stringify(finalresult));
 
-                    finalresult.save(function (err) {
-                    //console.log("data: " + JSON.stringify(data));
-                     console.log("err: " + JSON.stringify(err));
+                    // finalresult.save(function (err) {
+                    
+                student.create(objJson, function (err, data) {
+                    console.log("data: " + JSON.stringify(data));
+                    // console.log("err: " + JSON.stringify(err));
                     if (err) {
                         console.log("err: " + JSON.stringify(err));
                         // console.log("err.code: " + err.code+" err.index: "+err.index+" err.errmsg: "+err.errmsg+" err.op: "+err.op);
@@ -1836,7 +1838,8 @@ module.exports.uploadStudentMaster = function (req, res) {
                     } else {
                         responseData = {
                             status: true,
-                            message: "Insert Successfull"
+                            message: "Insert Successfull",
+                            data: data
                         };
                         res.status(200).send(responseData);
                     }

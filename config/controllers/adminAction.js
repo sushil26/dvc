@@ -1676,15 +1676,15 @@ module.exports.uploadStudentMaster = function (req, res) {
                 console.log("end marker: " + marker);
                 console.log("objJson: " + JSON.stringify(objJson));
                 if (studentFileValidationMessage != null) {
-                    ids = [];
-                    studentFileValidationMessage = null;
-                    objJson = [];
+                   
                     responseData = {
                         status: false,
                         message: studentFileValidationMessage
                     };
                     res.status(400).send(responseData);
-                    
+                    ids = [];
+                    studentFileValidationMessage = null;
+                    objJson = [];
                    
                 }
                 else {

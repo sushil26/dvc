@@ -1636,6 +1636,7 @@ module.exports.uploadStudentMaster = function (req, res) {
     var responseData;
     var marker;
     var objJson = [];
+    schoolName = req.params.schoolName;
     // var cs = [{"class":req.params.class,"section":req.params.section}];
     var fileName = req.files.img.name;
     var fileNameSeparate = fileName.split('_');
@@ -1836,7 +1837,7 @@ module.exports.uploadStudentMaster = function (req, res) {
 module.exports.studentMasterValidation = function (data, callback) {
     console.log("studentMasterValidation-->");
    
-    stud.find({ "schoolName": req.params.schoolName, "schoolId": data.StudentID }).toArray(function (err, idLength) {
+    stud.find({ "schoolName": schoolName, "schoolId": data.StudentID }).toArray(function (err, idLength) {
         console.log("idLength.length: "+idLength.length);
         if (err) {
             responseData = {

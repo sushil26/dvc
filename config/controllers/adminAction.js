@@ -2059,6 +2059,7 @@ module.exports.uploadTeacherMaster = function (req, res) {
                     console.log("ids: " + ids + " teacherFileValidationMessage: " + teacherFileValidationMessage + " objJson: " + JSON.stringify(objJson));
                 }
                 else {
+                    console.log("ready for insert");
                     teacher.create(objJson, function (err, data) {
                         console.log("data: " + JSON.stringify(data));
                         // console.log("err: " + JSON.stringify(err));
@@ -2204,7 +2205,7 @@ module.exports.uploadTeacherMaster = function (req, res) {
         res.status(400).send(responseData);
     }
 
-    console.log("<--uploadStudentMaster");
+    console.log("<--uploadteacherMaster");
 };
 module.exports.teacherMasterValidation = function (data, callback) {
     console.log("teacherFileValidation-->");

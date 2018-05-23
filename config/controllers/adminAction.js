@@ -1638,7 +1638,7 @@ module.exports.uploadStudentMaster = function (req, res) {
     console.log("uploadStudentMaster-->");
     var responseData;
     var marker;
-   
+
     schoolName = req.params.schoolName;
     // var cs = [{"class":req.params.class,"section":req.params.section}];
     var fileName = req.files.img.name;
@@ -1892,13 +1892,13 @@ module.exports.studentMasterValidation = function (data, callback) {
                         created_at: createdDate
                     };
                     objJson.push(userData);
-                    
+
                     console.log("userData: " + JSON.stringify(userData));
                     if (callback) callback();
                 }
                 else {
                     responseData = {
-                        status: fasle,
+                        status: false,
                         message: data.StudentID + " You Used More Than One Time"
                     };
                     res.status(400).send(responseData);
@@ -1906,7 +1906,7 @@ module.exports.studentMasterValidation = function (data, callback) {
             }
             else {
                 responseData = {
-                    status: fasle,
+                    status: false,
                     message: "Sorry! " + data.StudentID + " Already exist"
                 };
                 res.status(400).send(responseData);
@@ -2139,7 +2139,6 @@ module.exports.uploadTeacherMaster = function (req, res) {
                     } else {
                         responseData = {
                             status: true,
-                            errorCode: 200,
                             message: "Insert Successfull",
                             data: data
                         };

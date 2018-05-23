@@ -1639,6 +1639,7 @@ module.exports.uploadStudentMaster = function (req, res) {
     // var cs = [{"class":req.params.class,"section":req.params.section}];
     var fileName = req.files.img.name;
     var fileNameSeparate = fileName.split('_');
+    var ids = [];
     if (fileNameSeparate[0] == 'Student') {
         if (!req.files)
             return res.status(400).send('No files were uploaded.');
@@ -1651,49 +1652,15 @@ module.exports.uploadStudentMaster = function (req, res) {
         }).on("data", function (data) {
             console.log("data: " + JSON.stringify(data));
             var csData = [{ "class": req.params.clas, "section": req.params.section }];
-            var userData = {
-                schoolName: req.params.schoolName,
-                schoolId: data.StudentID,
-                firstName: data.FirstName,
-                lastName: data.LastName,
-                parentName: data.FatherName,
-                parentEmail: data.FatherEmailId,
-                mobileNum: data.FatherPhoneNumber,
-                motherName: data.MotherName,
-                motherEmail: data.MotherEmailid,
-                motherNum: data.MotherPhoneNumber,
-                cs: csData,
-                dob: data.DOB,
-                doj: data.DOJ,
-                pswd: "abc",
-                status: "active",
-                loginType: "studParent",
-                attendance: [
-                    { "month": "Jan", "dateAttendance": [] },
-                    { "month": "Feb", "dateAttendance": [] },
-                    { "month": "Mar", "dateAttendance": [] },
-                    { "month": "Apr", "dateAttendance": [] },
-                    { "month": "May", "dateAttendance": [] },
-                    { "month": "Jun", "dateAttendance": [] },
-                    { "month": "Jul", "dateAttendance": [] },
-                    { "month": "Aug", "dateAttendance": [] },
-                    { "month": "Sep", "dateAttendance": [] },
-                    { "month": "Oct", "dateAttendance": [] },
-                    { "month": "Nov", "dateAttendance": [] },
-                    { "month": "Dec", "dateAttendance": [] }
-                ],
-                mark: [
-                    { "testType": "AT", "subjectWithMark": [] },
-                    { "testType": "UT", "subjectWithMark": [] },
-                    { "testType": "MT", "subjectWithMark": [] },
-                    { "testType": "TT", "subjectWithMark": [] },
-                    { "testType": "AT", "subjectWithMark": [] },
-                ],
-                created_at: createdDate
-            };
+            parser.pause();
+            module.exports.studentMasterValidation(data, function (err) {
+                console.log("savedatInitiate");
+                // TODO: handle error
+                parser.resume();
+            });
+           
 
-            objJson.push(userData);
-            console.log("userData: " + JSON.stringify(userData));
+            
         })
             .on("end", function () {
                 console.log("end marker: " + marker);
@@ -1709,11 +1676,11 @@ module.exports.uploadStudentMaster = function (req, res) {
                 //         res.status(400).send(responseData);
                 //     } else {
                 //         if (studentClassList.length == 0) {
-                    // var finalresult = new student(objJson);
-                    // console.log("finalresult: "+JSON.stringify(finalresult));
+                // var finalresult = new student(objJson);
+                // console.log("finalresult: "+JSON.stringify(finalresult));
 
-                    // finalresult.save(function (err) {
-                    
+                // finalresult.save(function (err) {
+
                 student.create(objJson, function (err, data) {
                     console.log("data: " + JSON.stringify(data));
                     // console.log("err: " + JSON.stringify(err));
@@ -1865,6 +1832,88 @@ module.exports.uploadStudentMaster = function (req, res) {
         res.status(400).send(responseData);
     }
     console.log("<--uploadStudentMaster");
+}
+module.exports.studentMasterValidation = function (data, callback) {
+    console.log("studentMasterValidation-->");
+   
+    stud.find({ "schoolName": req.params.schoolName, "schoolId": data.StudentID }).toArray(function (err, idLength) {
+        console.log("idLength.length: "+idLength.length);
+        if (err) {
+            responseData = {
+                status: fasle,
+                message: err
+            };
+            res.status(400).send(responseData);
+        }
+        else {
+            if (idLength.length == 0) {
+                console.log("ids.indexOf(data.StudentID): "+ids.indexOf(data.StudentID));
+                if (ids.indexOf(data.StudentID) == -1) {
+                    ids.push(data.StudentID);
+                    var userData = {
+                        schoolName: req.params.schoolName,
+                        schoolId: data.StudentID,
+                        firstName: data.FirstName,
+                        lastName: data.LastName,
+                        parentName: data.FatherName,
+                        parentEmail: data.FatherEmailId,
+                        mobileNum: data.FatherPhoneNumber,
+                        motherName: data.MotherName,
+                        motherEmail: data.MotherEmailid,
+                        motherNum: data.MotherPhoneNumber,
+                        cs: csData,
+                        dob: data.DOB,
+                        doj: data.DOJ,
+                        pswd: "abc",
+                        status: "active",
+                        loginType: "studParent",
+                        attendance: [
+                            { "month": "Jan", "dateAttendance": [] },
+                            { "month": "Feb", "dateAttendance": [] },
+                            { "month": "Mar", "dateAttendance": [] },
+                            { "month": "Apr", "dateAttendance": [] },
+                            { "month": "May", "dateAttendance": [] },
+                            { "month": "Jun", "dateAttendance": [] },
+                            { "month": "Jul", "dateAttendance": [] },
+                            { "month": "Aug", "dateAttendance": [] },
+                            { "month": "Sep", "dateAttendance": [] },
+                            { "month": "Oct", "dateAttendance": [] },
+                            { "month": "Nov", "dateAttendance": [] },
+                            { "month": "Dec", "dateAttendance": [] }
+                        ],
+                        mark: [
+                            { "testType": "AT", "subjectWithMark": [] },
+                            { "testType": "UT", "subjectWithMark": [] },
+                            { "testType": "MT", "subjectWithMark": [] },
+                            { "testType": "TT", "subjectWithMark": [] },
+                            { "testType": "AT", "subjectWithMark": [] },
+                        ],
+                        created_at: createdDate
+                    };
+                    objJson.push(userData);
+                    parser.resume();
+                    console.log("userData: " + JSON.stringify(userData));
+                    if (callback) callback();
+                }
+                else {
+                    responseData = {
+                        status: fasle,
+                        message: data.StudentID + " You Used More Than One Time"
+                    };
+                    res.status(400).send(responseData);
+                }
+            }
+            else {
+                responseData = {
+                    status: fasle,
+                    message: "Sorry! "+data.StudentID + " Already exist"
+                };
+                res.status(400).send(responseData);
+            }
+        }
+    })
+    console.log("<--studentMasterValidation");
+
 }
 module.exports.updateStudentMaster = function (req, res) {
     console.log("updateStudentMaster-->");

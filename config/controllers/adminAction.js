@@ -4,7 +4,7 @@ var student = require("./schemas/student.js");
 var teacher = require("./schemas/teacher.js");
 var user = db.collection("user"); /* ### Teacher collection  ### */
 var stud = db.collection("student"); /* ### student collection  ### */
-var stud = db.collection("students"); /* ### student collection  ### */
+var studCheck = db.collection("students"); /* ### student collection  ### */
 var school = db.collection("school"); /* ### school collection  ### */
 
 var general = require("../general.js");
@@ -1847,7 +1847,7 @@ module.exports.studentMasterValidation = function (data, callback) {
     if (studentFileValidationMessage == null) {
         var findId = { "schoolName": schoolName, "schoolId": data.StudentID };
         console.log("findId: " + JSON.stringify(findId));
-        stud.find(findId).toArray(function (err, idLength) {
+        studCheck.find(findId).toArray(function (err, idLength) {
             console.log("idLength.length: " + idLength.length);
             if (err) {
                 responseData = {

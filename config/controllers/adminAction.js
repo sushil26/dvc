@@ -6,11 +6,9 @@ var user = db.collection("user"); /* ### Teacher collection  ### */
 var stud = db.collection("students"); /* ### student collection  ### */
 //var studCheck = db.collection("students"); /* ### student collection  ### */
 var school = db.collection("school"); /* ### school collection  ### */
-
 var general = require("../general.js");
 var ObjectId = require("mongodb").ObjectID;
 var bodyParser = require('body-parser');
-
 var csv = require('fast-csv');
 var d = new Date();
 var message;

@@ -2210,7 +2210,7 @@ module.exports.teacherMasterValidation = function (data, callback) {
     if (teacherFileValidationMessage == null) {
         var findId = { "schoolName": schoolName, "schoolId": data.TeacherID };
         console.log("findId: " + JSON.stringify(findId));
-        stud.find(findId).toArray(function (err, idLength) {
+        teacher.find(findId).toArray(function (err, idLength) {
             console.log("idLength.length: " + idLength.length);
             if (err) {
                 responseData = {
@@ -2225,7 +2225,8 @@ module.exports.teacherMasterValidation = function (data, callback) {
                     console.log("ids.indexOf(data.TeacherID): " + ids.indexOf(data.TeacherID));
                     if (ids.indexOf(data.TeacherID) == -1) {
                         ids.push(data.TeacherID);
-                       var userData = {
+                       var userData =
+                        {
                             schoolName: schoolName,
                             schoolId: data.TeacherID,
                             firstName: data.FirstName,

@@ -1661,188 +1661,163 @@ module.exports.uploadStudentMaster = function (req, res) {
             module.exports.studentMasterValidation(data, function (err) {
                 console.log("savedatInitiate");
                 // TODO: handle error
-                console.log("studentFileValidationMessage: "+studentFileValidationMessage);
-                if (studentFileValidationMessage == null) {
-                    parser.resume();
-                }
-                else {
+                console.log("studentFileValidationMessage: " + studentFileValidationMessage);
+                parser.resume();
+                
+            });
+        })
+            .on("end", function () {
+                console.log("end marker: " + marker);
+                console.log("objJson: " + JSON.stringify(objJson));
+                if (studentFileValidationMessage != null) {
                     responseData = {
                         status: false,
                         message: studentFileValidationMessage
 
                     };
                     res.status(400).send(responseData);
-                    ids=[];
-                    studentFileValidationMessage=null;
+                    ids = [];
+                    studentFileValidationMessage = null;
                     objJson = [];
+                    parser.pause();
                 }
-
-            });
-        })
-            .on("end", function () {
-                console.log("end marker: " + marker);
-                console.log("objJson: " + JSON.stringify(objJson));
-                // stud.find({ "cs": { "class": req.params.clas, "section": req.params.section } }).toArray(function (err, studentClassList) {
-                //     console.log("studentClassList.length: " + studentClassList.length);
-                //     if (err) {
-                //         responseData = {
-                //             status: false,
-                //             message: "Failed to get Data",
-
-                //         };
-                //         res.status(400).send(responseData);
-                //     } else {
-                //         if (studentClassList.length == 0) {
-                // var finalresult = new student(objJson);
-                // console.log("finalresult: "+JSON.stringify(finalresult));
-
-                // finalresult.save(function (err) {
-
-                student.create(objJson, function (err, data) {
-                    console.log("data: " + JSON.stringify(data));
-                    // console.log("err: " + JSON.stringify(err));
-                    if (err) {
-                        console.log("err: " + JSON.stringify(err));
-                        // console.log("err.code: " + err.code+" err.index: "+err.index+" err.errmsg: "+err.errmsg+" err.op: "+err.op);
-                        console.log("err.op: " + JSON.stringify(err.op));
-                        if (err.code == 11000) {
-                            console.log("err: " + JSON.stringify(err.errmsg));
-                            var errmsg = err.errmsg;
-                            var splitErrMsg = errmsg.split(':');
-                            var nextSplit = splitErrMsg[4].split('}');
-                            console.log("splitErrMsg: " + splitErrMsg + " nextSplit: " + nextSplit);
-                            responseData = {
-                                status: false,
-                                message: nextSplit[0] + " Already exist"
-                            };
-                            res.status(400).send(responseData);
-                        }
-                        else {
-                            console.log("err.errors.name: " + err.name);
-                            console.log("err.errors: " + err.errors);
-                            if (err.name == 'ValidationError') {
-                                var message;
-                                if (err.errors.mobileNum) {
-                                    console.log("mobile Number has to be Number");
-                                    responseData = {
-                                        status: false,
-                                        message: "Mobile Number is required as a Number"
-                                    };
-                                    res.status(400).send(responseData);
-                                }
-                                else if (err.errors.schoolName) {
-                                    responseData = {
-                                        status: false,
-                                        message: "SchoolName is required as a string"
-                                    };
-                                    res.status(400).send(responseData);
-                                }
-                                else if (err.errors.schoolId) {
-                                    responseData = {
-                                        status: false,
-                                        message: "SchoolId is required"
-                                    };
-                                    res.status(400).send(responseData);
-                                }
-                                else if (err.errors.firstName) {
-                                    responseData = {
-                                        status: false,
-                                        message: "FirstName is required as a string"
-                                    };
-                                    res.status(400).send(responseData);
-                                }
-                                else if (err.errors.lastName) {
-                                    responseData = {
-                                        status: false,
-                                        message: "LastName is required as a string"
-                                    };
-                                    res.status(400).send(responseData);
-                                }
-                                else if (err.errors.parentName) {
-                                    responseData = {
-                                        status: false,
-                                        message: "parentName is required as a string"
-                                    };
-                                    res.status(400).send(responseData);
-                                }
-                                else if (err.errors.parentEmail) {
-                                    responseData = {
-                                        status: false,
-                                        message: "parentEmail is required as a string"
-                                    };
-                                    res.status(400).send(responseData);
-                                }
-                                else if (err.errors.mobileNum) {
-                                    responseData = {
-                                        status: false,
-                                        message: "Father mobile number is required"
-                                    };
-                                    res.status(400).send(responseData);
-                                }
-                                else if (err.errors.motherName) {
-                                    responseData = {
-                                        status: false,
-                                        message: "motherName is required as a string"
-                                    };
-                                    res.status(400).send(responseData);
-                                }
-                                else if (err.errors.motherEmail) {
-                                    responseData = {
-                                        status: false,
-                                        message: "MotherEmail is required"
-                                    };
-                                    res.status(400).send(responseData);
-                                }
-                                else if (err.errors.motherNum) {
-                                    responseData = {
-                                        status: false,
-                                        message: "Mother mobile number is required"
-                                    };
-                                    res.status(400).send(responseData);
-                                }
-
-                                else if (err.errors.dob) {
-                                    responseData = {
-                                        status: false,
-                                        message: "dob is required"
-                                    };
-                                    res.status(400).send(responseData);
-                                }
-                                else if (err.errors.doj) {
-                                    responseData = {
-                                        status: false,
-                                        message: "doj is required"
-                                    };
-                                    res.status(400).send(responseData);
-                                }
-
-
+                else {
+                    student.create(objJson, function (err, data) {
+                        console.log("data: " + JSON.stringify(data));
+                        // console.log("err: " + JSON.stringify(err));
+                        if (err) {
+                            console.log("err: " + JSON.stringify(err));
+                            // console.log("err.code: " + err.code+" err.index: "+err.index+" err.errmsg: "+err.errmsg+" err.op: "+err.op);
+                            console.log("err.op: " + JSON.stringify(err.op));
+                            if (err.code == 11000) {
+                                console.log("err: " + JSON.stringify(err.errmsg));
+                                var errmsg = err.errmsg;
+                                var splitErrMsg = errmsg.split(':');
+                                var nextSplit = splitErrMsg[4].split('}');
+                                console.log("splitErrMsg: " + splitErrMsg + " nextSplit: " + nextSplit);
+                                responseData = {
+                                    status: false,
+                                    message: nextSplit[0] + " Already exist"
+                                };
+                                res.status(400).send(responseData);
                             }
-                        }
-                    } else {
-                        ids=[];
-                        studentFileValidationMessage=null;
-                        objJson = [];
-                        responseData = {
-                            status: true,
-                            message: "Insert Successfull",
-                            data: data
-                        };
-                        res.status(200).send(responseData);
-                       
-                    }
-                });
-                // }
-                // else {
-                //     responseData = {
-                //         status: false,
-                //         message: "Sorry! you already inserted data for this class, further insertion you have to use reports update option",
+                            else {
+                                console.log("err.errors.name: " + err.name);
+                                console.log("err.errors: " + err.errors);
+                                if (err.name == 'ValidationError') {
+                                    var message;
+                                    if (err.errors.mobileNum) {
+                                        console.log("mobile Number has to be Number");
+                                        responseData = {
+                                            status: false,
+                                            message: "Mobile Number is required as a Number"
+                                        };
+                                        res.status(400).send(responseData);
+                                    }
+                                    else if (err.errors.schoolName) {
+                                        responseData = {
+                                            status: false,
+                                            message: "SchoolName is required as a string"
+                                        };
+                                        res.status(400).send(responseData);
+                                    }
+                                    else if (err.errors.schoolId) {
+                                        responseData = {
+                                            status: false,
+                                            message: "SchoolId is required"
+                                        };
+                                        res.status(400).send(responseData);
+                                    }
+                                    else if (err.errors.firstName) {
+                                        responseData = {
+                                            status: false,
+                                            message: "FirstName is required as a string"
+                                        };
+                                        res.status(400).send(responseData);
+                                    }
+                                    else if (err.errors.lastName) {
+                                        responseData = {
+                                            status: false,
+                                            message: "LastName is required as a string"
+                                        };
+                                        res.status(400).send(responseData);
+                                    }
+                                    else if (err.errors.parentName) {
+                                        responseData = {
+                                            status: false,
+                                            message: "parentName is required as a string"
+                                        };
+                                        res.status(400).send(responseData);
+                                    }
+                                    else if (err.errors.parentEmail) {
+                                        responseData = {
+                                            status: false,
+                                            message: "parentEmail is required as a string"
+                                        };
+                                        res.status(400).send(responseData);
+                                    }
+                                    else if (err.errors.mobileNum) {
+                                        responseData = {
+                                            status: false,
+                                            message: "Father mobile number is required"
+                                        };
+                                        res.status(400).send(responseData);
+                                    }
+                                    else if (err.errors.motherName) {
+                                        responseData = {
+                                            status: false,
+                                            message: "motherName is required as a string"
+                                        };
+                                        res.status(400).send(responseData);
+                                    }
+                                    else if (err.errors.motherEmail) {
+                                        responseData = {
+                                            status: false,
+                                            message: "MotherEmail is required"
+                                        };
+                                        res.status(400).send(responseData);
+                                    }
+                                    else if (err.errors.motherNum) {
+                                        responseData = {
+                                            status: false,
+                                            message: "Mother mobile number is required"
+                                        };
+                                        res.status(400).send(responseData);
+                                    }
 
-                //     };
-                //     res.status(400).send(responseData);
-                // }
-                // }
-                // });
+                                    else if (err.errors.dob) {
+                                        responseData = {
+                                            status: false,
+                                            message: "dob is required"
+                                        };
+                                        res.status(400).send(responseData);
+                                    }
+                                    else if (err.errors.doj) {
+                                        responseData = {
+                                            status: false,
+                                            message: "doj is required"
+                                        };
+                                        res.status(400).send(responseData);
+                                    }
+
+
+                                }
+                            }
+                        } else {
+                            ids = [];
+                            studentFileValidationMessage = null;
+                            objJson = [];
+                            responseData = {
+                                status: true,
+                                message: "Insert Successfull",
+                                data: data
+                            };
+                            res.status(200).send(responseData);
+
+                        }
+                    });
+                }
+              
             });
     }
     else {
@@ -1856,78 +1831,85 @@ module.exports.uploadStudentMaster = function (req, res) {
 }
 module.exports.studentMasterValidation = function (data, callback) {
     console.log("studentMasterValidation-->");
-var findId = {"schoolName": schoolName, "schoolId": data.StudentID};
-console.log("findId: "+JSON.stringify(findId));
-    stud.find(findId).toArray(function (err, idLength) {
-        console.log("idLength.length: " + idLength.length);
-        if (err) {
-            responseData = {
-                status: fasle,
-                message: err
-            };
-            res.status(400).send(responseData);
-        }
-        else {
-            if (idLength.length == 0) {
-                console.log("ids.indexOf(data.StudentID): " + ids.indexOf(data.StudentID));
-                if (ids.indexOf(data.StudentID) == -1) {
-                    ids.push(data.StudentID);
-                    var userData = {
-                        schoolName: schoolName,
-                        schoolId: data.StudentID,
-                        firstName: data.FirstName,
-                        lastName: data.LastName,
-                        parentName: data.FatherName,
-                        parentEmail: data.FatherEmailId,
-                        mobileNum: data.FatherPhoneNumber,
-                        motherName: data.MotherName,
-                        motherEmail: data.MotherEmailid,
-                        motherNum: data.MotherPhoneNumber,
-                        cs: csData,
-                        dob: data.DOB,
-                        doj: data.DOJ,
-                        pswd: "abc",
-                        status: "active",
-                        loginType: "studParent",
-                        attendance: [
-                            { "month": "Jan", "dateAttendance": [] },
-                            { "month": "Feb", "dateAttendance": [] },
-                            { "month": "Mar", "dateAttendance": [] },
-                            { "month": "Apr", "dateAttendance": [] },
-                            { "month": "May", "dateAttendance": [] },
-                            { "month": "Jun", "dateAttendance": [] },
-                            { "month": "Jul", "dateAttendance": [] },
-                            { "month": "Aug", "dateAttendance": [] },
-                            { "month": "Sep", "dateAttendance": [] },
-                            { "month": "Oct", "dateAttendance": [] },
-                            { "month": "Nov", "dateAttendance": [] },
-                            { "month": "Dec", "dateAttendance": [] }
-                        ],
-                        mark: [
-                            { "testType": "AT", "subjectWithMark": [] },
-                            { "testType": "UT", "subjectWithMark": [] },
-                            { "testType": "MT", "subjectWithMark": [] },
-                            { "testType": "TT", "subjectWithMark": [] },
-                            { "testType": "AT", "subjectWithMark": [] },
-                        ],
-                        created_at: createdDate
-                    };
-                    objJson.push(userData);
-
-                    console.log("userData: " + JSON.stringify(userData));
-                    if (callback) callback();
-                }
-                else {
-                    studentFileValidationMessage = data.StudentID + " You Used More Than One Time";
-                    if (callback) callback();
-                }
-            }
-            else {
-                studentFileValidationMessage = "Sorry! " + data.StudentID + " Already exist"
+    if (studentFileValidationMessage == null) {
+        var findId = { "schoolName": schoolName, "schoolId": data.StudentID };
+        console.log("findId: " + JSON.stringify(findId));
+        stud.find(findId).toArray(function (err, idLength) {
+            console.log("idLength.length: " + idLength.length);
+            if (err) {
+                responseData = {
+                    status: fasle,
+                    message: err
+                };
+                res.status(400).send(responseData);
                 if (callback) callback();
             }
-        }
-    })
+            else {
+                if (idLength.length == 0) {
+                    console.log("ids.indexOf(data.StudentID): " + ids.indexOf(data.StudentID));
+                    if (ids.indexOf(data.StudentID) == -1) {
+                        ids.push(data.StudentID);
+                        var userData = {
+                            schoolName: schoolName,
+                            schoolId: data.StudentID,
+                            firstName: data.FirstName,
+                            lastName: data.LastName,
+                            parentName: data.FatherName,
+                            parentEmail: data.FatherEmailId,
+                            mobileNum: data.FatherPhoneNumber,
+                            motherName: data.MotherName,
+                            motherEmail: data.MotherEmailid,
+                            motherNum: data.MotherPhoneNumber,
+                            cs: csData,
+                            dob: data.DOB,
+                            doj: data.DOJ,
+                            pswd: "abc",
+                            status: "active",
+                            loginType: "studParent",
+                            attendance: [
+                                { "month": "Jan", "dateAttendance": [] },
+                                { "month": "Feb", "dateAttendance": [] },
+                                { "month": "Mar", "dateAttendance": [] },
+                                { "month": "Apr", "dateAttendance": [] },
+                                { "month": "May", "dateAttendance": [] },
+                                { "month": "Jun", "dateAttendance": [] },
+                                { "month": "Jul", "dateAttendance": [] },
+                                { "month": "Aug", "dateAttendance": [] },
+                                { "month": "Sep", "dateAttendance": [] },
+                                { "month": "Oct", "dateAttendance": [] },
+                                { "month": "Nov", "dateAttendance": [] },
+                                { "month": "Dec", "dateAttendance": [] }
+                            ],
+                            mark: [
+                                { "testType": "AT", "subjectWithMark": [] },
+                                { "testType": "UT", "subjectWithMark": [] },
+                                { "testType": "MT", "subjectWithMark": [] },
+                                { "testType": "TT", "subjectWithMark": [] },
+                                { "testType": "AT", "subjectWithMark": [] },
+                            ],
+                            created_at: createdDate
+                        };
+                        objJson.push(userData);
+
+                        console.log("userData: " + JSON.stringify(userData));
+                        if (callback) callback();
+                    }
+                    else {
+                        studentFileValidationMessage = data.StudentID + " You Used More Than One Time";
+                        if (callback) callback();
+                    }
+                }
+                else {
+                    studentFileValidationMessage = "Sorry! " + data.StudentID + " Already exist"
+                    if (callback) callback();
+                }
+            }
+        })
+    }
+    else {
+        if (callback) callback();
+
+    }
     console.log("<--studentMasterValidation");
 
 }

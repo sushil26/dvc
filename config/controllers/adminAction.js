@@ -1710,6 +1710,7 @@ module.exports.uploadStudentMaster = function (req, res) {
                 //     } else {
                 //         if (studentClassList.length == 0) {
                     var finalresult = new student(objJson);
+                    console.log("finalresult: "+JSON.stringify(finalresult));
 
                     finalresult.save(function (err) {
                     //console.log("data: " + JSON.stringify(data));

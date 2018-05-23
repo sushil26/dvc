@@ -2027,47 +2027,38 @@ module.exports.uploadTeacherMaster = function (req, res) {
         }).on("data", function (data) {
             console.log("data: " + JSON.stringify(data));
             // var csData = [{ "class": req.params.class, "section": req.params.section }];
-            var userData = {
+            var userData =
+            {
                 schoolName: schoolName,
-                schoolId: data.StudentID,
+                schoolId: data.TeacherID,
                 firstName: data.FirstName,
                 lastName: data.LastName,
-                parentName: data.FatherName,
-                parentEmail: data.FatherEmailId,
-                mobileNum: data.FatherPhoneNumber,
-                motherName: data.MotherName,
-                motherEmail: data.MotherEmailid,
-                motherNum: data.MotherPhoneNumber,
-                cs: csData,
+                email: data.Email,
+                mobNumber: data.PhoneNumber,
                 dob: data.DOB,
                 doj: data.DOJ,
                 pswd: "abc",
+                css: [],
+                timeTable: [],
                 status: "active",
-                loginType: "studParent",
-                attendance: [
-                    { "month": "Jan", "dateAttendance": [] },
-                    { "month": "Feb", "dateAttendance": [] },
-                    { "month": "Mar", "dateAttendance": [] },
-                    { "month": "Apr", "dateAttendance": [] },
-                    { "month": "May", "dateAttendance": [] },
-                    { "month": "Jun", "dateAttendance": [] },
-                    { "month": "Jul", "dateAttendance": [] },
-                    { "month": "Aug", "dateAttendance": [] },
-                    { "month": "Sep", "dateAttendance": [] },
-                    { "month": "Oct", "dateAttendance": [] },
-                    { "month": "Nov", "dateAttendance": [] },
-                    { "month": "Dec", "dateAttendance": [] }
-                ],
-                mark: [
-                    { "testType": "AT", "subjectWithMark": [] },
-                    { "testType": "UT", "subjectWithMark": [] },
-                    { "testType": "MT", "subjectWithMark": [] },
-                    { "testType": "TT", "subjectWithMark": [] },
-                    { "testType": "AT", "subjectWithMark": [] },
-                ],
+                loginType: "teacher",
                 created_at: createdDate
-            };
+            }
+            var cssParts = data.ClassSectionSubject.split(',');
+            console.log("cssParts: " + JSON.stringify(cssParts));
+            for (var x = 0; x < cssParts.length; x++) {
+                if (cssParts[x] != "") {
+                    console.log("cssParts[x]: " + cssParts[x]);
+                    var trimed = cssParts[x].trim();
+                    console.log("cssSeparate: " + trimed);
+                    var cssSeparate = trimed.split('-');
+                    console.log("cssSeparate: " + JSON.stringify(cssSeparate));
+                    userData.css.push({ "class": cssSeparate[0], "section": cssSeparate[1], "subject": cssSeparate[2] });
+                }
+            }
+            console.log("userData: " + JSON.stringify(userData));
             objJson.push(userData);
+
             if (teacherFileValidationMessage == null) {
                 module.exports.teacherMasterValidation(data, function (err) {
                     console.log("savedatInitiate");

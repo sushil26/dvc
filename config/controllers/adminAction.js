@@ -2009,6 +2009,7 @@ module.exports.uploadTeacherMaster = function (req, res) {
     var marker;
     var css = [];
     var objJson = [];
+    schoolName = req.params.schoolName;
     // var cs = [{"class":req.params.class,"section":req.params.section}];
     var fileName = req.files.img.name;
     var fileNameSeparate = fileName.split('_');
@@ -2024,7 +2025,38 @@ module.exports.uploadTeacherMaster = function (req, res) {
         }).on("data", function (data) {
             console.log("data: " + JSON.stringify(data));
             // var csData = [{ "class": req.params.class, "section": req.params.section }];
-          
+            var userData =
+            {
+                schoolName: schoolName,
+                schoolId: data.TeacherID,
+                firstName: data.FirstName,
+                lastName: data.LastName,
+                email: data.Email,
+                mobNumber: data.PhoneNumber,
+                dob: data.DOB,
+                doj: data.DOJ,
+                pswd: "abc",
+                css: [],
+                timeTable: [],
+                status: "active",
+                loginType: "teacher",
+                created_at: createdDate
+            }
+            var cssParts = data.ClassSectionSubject.split(',');
+            console.log("cssParts: " + JSON.stringify(cssParts));
+            for (var x = 0; x < cssParts.length; x++) {
+                if (cssParts[x] != "") {
+                    console.log("cssParts[x]: " + cssParts[x]);
+                    var trimed = cssParts[x].trim();
+                    console.log("cssSeparate: " + trimed);
+                    var cssSeparate = trimed.split('-');
+                    console.log("cssSeparate: " + JSON.stringify(cssSeparate));
+                    userData.css.push({ "class": cssSeparate[0], "section": cssSeparate[1], "subject": cssSeparate[2] });
+                }
+            }
+            console.log("userData: " + JSON.stringify(userData));
+            objJson.push(userData);
+
             if (teacherFileValidationMessage == null) {
                 module.exports.teacherMasterValidation(data, function (err) {
                     console.log("savedatInitiate");
@@ -2056,6 +2088,7 @@ module.exports.uploadTeacherMaster = function (req, res) {
                     console.log("ids: " + ids + " teacherFileValidationMessage: " + teacherFileValidationMessage + " objJson: " + JSON.stringify(objJson));
                 }
                 else {
+                    console.log("ready for insert");
                     teacher.create(objJson, function (err, data) {
                         console.log("data: " + JSON.stringify(data));
                         // console.log("err: " + JSON.stringify(err));
@@ -2201,16 +2234,17 @@ module.exports.uploadTeacherMaster = function (req, res) {
         res.status(400).send(responseData);
     }
 
-    console.log("<--uploadStudentMaster");
+    console.log("<--uploadteacherMaster");
 };
 module.exports.teacherMasterValidation = function (data, callback) {
     console.log("teacherFileValidation-->");
     if (teacherFileValidationMessage == null) {
-        var findId = { "schoolName": schoolName, "schoolId": data.TeacherID };
+        var findId = { "_id" : ObjectId("5b0272d74a46530e1493371a") };
         console.log("findId: " + JSON.stringify(findId));
-        stud.find(findId).toArray(function (err, idLength) {
+        user.find(findId).toArray(function (err, idLength) {
             console.log("idLength.length: " + idLength.length);
             if (err) {
+                console.log("err: "+JSON.stringify(err));
                 responseData = {
                     status: fasle,
                     message: err
@@ -2223,7 +2257,8 @@ module.exports.teacherMasterValidation = function (data, callback) {
                     console.log("ids.indexOf(data.TeacherID): " + ids.indexOf(data.TeacherID));
                     if (ids.indexOf(data.TeacherID) == -1) {
                         ids.push(data.TeacherID);
-                       var userData = {
+                       var userData =
+                        {
                             schoolName: schoolName,
                             schoolId: data.TeacherID,
                             firstName: data.FirstName,

@@ -1915,7 +1915,7 @@ module.exports.studentMasterValidation = function (data, callback) {
                     }
                 }
                 else {
-                    studentFileValidationMessage = "Sorry! " + data.StudentID + " Already exist"
+                    studentFileValidationMessage = "Sorry! " + data.StudentID + " Already exist kindly check and update your csv file"
                     if (callback) callback();
                 }
             }

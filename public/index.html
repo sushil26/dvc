@@ -52,6 +52,7 @@
   <script src="/bower_components/angular/angular.min.js"></script>
   <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
   <script src="/bower_components/ng-image-input-with-preview/dist/ng-image-input-with-preview.js"></script>
+  <script src="/bower_components/angular-spinners/dist/src/spinner.service.js"></script>
   <!-- bootstrap -->
 
 
@@ -205,7 +206,17 @@
     show('loading', false);
   });
 </script>
-
+<style type="text/css" media="screen">
+  #veil {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    cursor: not-allowed;
+    background: url(../../assest/image/buterfly.gif) no-repeat center;
+  }
+</style>
 
 
 
@@ -213,9 +224,10 @@
 
 
   <div id="loading"></div>
+  
 
   <div ng-app="vcApp" ng-controller="vcAppCtrl">
-
+    <spinner name="spinner" id="veil"></spinner>
 
     <div id="page" ui-view>
 

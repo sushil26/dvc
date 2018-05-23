@@ -1675,6 +1675,7 @@ module.exports.uploadStudentMaster = function (req, res) {
             .on("end", function () {
                 console.log("end marker: " + marker);
                 console.log("objJson: " + JSON.stringify(objJson));
+                console.log("studentFileValidationMessage: "+studentFileValidationMessage);
                 if (studentFileValidationMessage != null) {
                    
                     responseData = {
@@ -1683,9 +1684,11 @@ module.exports.uploadStudentMaster = function (req, res) {
                     };
                     res.status(400).send(responseData);
                     console.log("responseData: "+JSON.stringify(responseData));
+                    console.log("ids: "+ids+" studentFileValidationMessage: "+studentFileValidationMessage+" objJson: "+JSON.stringify(objJson));
                     ids = [];
                     studentFileValidationMessage = null;
                     objJson = [];
+                    console.log("ids: "+ids+" studentFileValidationMessage: "+studentFileValidationMessage+" objJson: "+JSON.stringify(objJson));
                    
                 }
                 else {

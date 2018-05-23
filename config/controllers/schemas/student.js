@@ -56,4 +56,4 @@ studentSchema.plugin(titlize, {
   paths: ['schoolName','firstName','lastName','parentName', 'motherName', 'cs.class', 'cs.section' ]
 });
 
-module.exports = mongoose.model('student',studentSchema, 'student');
+module.exports = mongoose.model('student',studentSchema);

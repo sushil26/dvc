@@ -1907,6 +1907,7 @@ module.exports.studentMasterValidation = function (data, callback) {
         })
     }
     else {
+        console.log("studentFileValidationMessage-->: "+studentFileValidationMessage);
         if (callback) callback();
 
     }

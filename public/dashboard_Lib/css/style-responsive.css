@@ -15,18 +15,14 @@
 }
 
 @media (max-width: 768px) {
-    /* .wrapper{
-
-        margin-top:300px;
-    
-    } */
+  
+    .wrapper {
+ 
+        margin-top: 0px;}
 
     .header {
         position: relative;
     }
-
-    /*sidebar*/
-
     #sidebar {
         height: auto;
         overflow: hidden;
@@ -34,8 +30,6 @@
         width: 100%;
         z-index: 1001;
     }
-
-
     /* body container */
     #main-content {
         margin: 0px!important;
@@ -55,10 +49,6 @@
         padding: 0 10px;
         text-align: left;
     }
-    #sidebar > ul > li > a i{
-        /*display: none !important;*/
-    }
-
     .mail-info, .mail-info:hover {
         display: none !important;
     }

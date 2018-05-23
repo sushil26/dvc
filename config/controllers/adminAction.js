@@ -27,7 +27,8 @@ var expectedMessage; /* ### Note:Attendance month validation  ### */
 var id; /* ### Note:Attendance Update based on id  ### */
 var createdDate = new Date();
 var ids = []; /* ### All valid ids storage for studentMaster  ### */
-var csData = {};/* ### Class and Section for studentMaster### */
+var csData = []; /* ### Class and Section for studentMaster### */
+var objJson = []; /* ### Storage for student master valid data ### */
 
 module.exports.updateSchoolStatus = function (req, res) {
     console.log("updateSchoolStatus-->");
@@ -1637,12 +1638,12 @@ module.exports.uploadStudentMaster = function (req, res) {
     console.log("uploadStudentMaster-->");
     var responseData;
     var marker;
-    var objJson = [];
+   
     schoolName = req.params.schoolName;
     // var cs = [{"class":req.params.class,"section":req.params.section}];
     var fileName = req.files.img.name;
     var fileNameSeparate = fileName.split('_');
-   
+
     if (fileNameSeparate[0] == 'Student') {
         if (!req.files)
             return res.status(400).send('No files were uploaded.');
@@ -1654,16 +1655,13 @@ module.exports.uploadStudentMaster = function (req, res) {
             ignoreEmpty: true
         }).on("data", function (data) {
             console.log("data: " + JSON.stringify(data));
-             csData = [{ "class": req.params.clas, "section": req.params.section }];
+            csData = [{ "class": req.params.clas, "section": req.params.section }];
             parser.pause();
             module.exports.studentMasterValidation(data, function (err) {
                 console.log("savedatInitiate");
                 // TODO: handle error
                 parser.resume();
             });
-           
-
-            
         })
             .on("end", function () {
                 console.log("end marker: " + marker);
@@ -1838,9 +1836,9 @@ module.exports.uploadStudentMaster = function (req, res) {
 }
 module.exports.studentMasterValidation = function (data, callback) {
     console.log("studentMasterValidation-->");
-   
+
     stud.find({ "schoolName": schoolName, "schoolId": data.StudentID }).toArray(function (err, idLength) {
-        console.log("idLength.length: "+idLength.length);
+        console.log("idLength.length: " + idLength.length);
         if (err) {
             responseData = {
                 status: fasle,
@@ -1850,7 +1848,7 @@ module.exports.studentMasterValidation = function (data, callback) {
         }
         else {
             if (idLength.length == 0) {
-                console.log("ids.indexOf(data.StudentID): "+ids.indexOf(data.StudentID));
+                console.log("ids.indexOf(data.StudentID): " + ids.indexOf(data.StudentID));
                 if (ids.indexOf(data.StudentID) == -1) {
                     ids.push(data.StudentID);
                     var userData = {
@@ -1909,7 +1907,7 @@ module.exports.studentMasterValidation = function (data, callback) {
             else {
                 responseData = {
                     status: fasle,
-                    message: "Sorry! "+data.StudentID + " Already exist"
+                    message: "Sorry! " + data.StudentID + " Already exist"
                 };
                 res.status(400).send(responseData);
             }

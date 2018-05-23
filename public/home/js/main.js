@@ -43,6 +43,17 @@ jQuery(document).ready(function ($) {
     $('body').append('<div id="mobile-body-overly"></div>');
     $('#mobile-nav').find('.menu-has-children').prepend('<i class="fa fa-chevron-down"></i>');
 
+    $(document).on('click', '#dashboard', function (e) {
+      console.log("dashboard clicked");
+      var x = document.getElementById('mobile-nav').style.display;
+      if(x=='none'){
+        document.getElementById('mobile-nav').style.display='block';
+      }
+      else{
+        document.getElementById('mobile-nav').style.display='none';
+      }
+    });
+
     $(document).on('click', '.menu-has-children i', function (e) {
       $(this).next().toggleClass('menu-item-active');
       $(this).nextAll('ul').eq(0).slideToggle();

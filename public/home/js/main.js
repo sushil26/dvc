@@ -48,9 +48,11 @@ jQuery(document).ready(function ($) {
       var x = document.getElementById('mobile-nav').style.display;
       if(x=='none'){
         document.getElementById('mobile-nav').style.display='block';
+        document.getElementById('mobile-body-overly').style.display='block';
       }
       else{
         document.getElementById('mobile-nav').style.display='none';
+        document.getElementById('mobile-body-overly').style.display='none';
       }
     });
 

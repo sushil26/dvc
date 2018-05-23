@@ -2226,7 +2226,7 @@ module.exports.teacherMasterValidation = function (data, callback) {
                     if (ids.indexOf(data.TeacherID) == -1) {
                         ids.push(data.TeacherID);
                        var userData = {
-                            schoolName: req.params.schoolName,
+                            schoolName: schoolName,
                             schoolId: data.TeacherID,
                             firstName: data.FirstName,
                             lastName: data.LastName,

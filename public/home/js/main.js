@@ -3,7 +3,7 @@ jQuery(document).ready(function ($) {
 
     $("#mobile-body-overly").css("display", "none");
 
-    $(" #mobile-nav").css("display", "none");
+    $("#mobile-nav").css("display", "none");
 
 
   });
@@ -11,7 +11,7 @@ jQuery(document).ready(function ($) {
 
     $("#mobile-body-overly").css("display", "block");
 
-    $(" #mobile-nav").css("display", "block");
+    $("#mobile-nav").css("display", "block");
 
 
   });

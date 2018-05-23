@@ -26,11 +26,11 @@ app.controller('dashboardController', function ($scope, $rootScope, $window, htt
     $scope.iconMenuClick = function () {
         console.log("iconMenuClick--> ");
         var element = document.getElementById("container");
-        var x = window.matchMedia("(max-width: 768px)")
+        // var x = window.matchMedia("(max-width: 768px)")
         if (element.classList.contains("sidebar-closed")) {
-            if (x.matches) {
-                document.getElementById("profile").style.marginTop = "195px";
-            }
+            // if (x.matches) {
+            //     document.getElementById("profile").style.marginTop = "195px";
+            // }
             console.log("if is true");
             element.classList.remove("sidebar-closed");
             $scope.sideBarMenu = false;
@@ -41,7 +41,7 @@ app.controller('dashboardController', function ($scope, $rootScope, $window, htt
             console.log("if is false");
             $scope.sideBarMenu = true;
             element.classList.add("sidebar-closed");
-            document.getElementById("profile").style.marginTop = "0px";
+            // document.getElementById("profile").style.marginTop = "0px";
         }
         console.log("<--iconMenuClick");
     }

@@ -49,7 +49,7 @@ mark: [
 ],  
   created_at: Date,
  
-},{strict: true});
+});
 
 
 studentSchema.plugin(titlize, {

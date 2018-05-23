@@ -1,14 +1,6 @@
-app.controller('adminCreateCtl', function ($scope, $rootScope, $filter, $window, httpFactory, sessionAuthFactory, $uibModal, fileReader) {
+app.controller('adminCreateCtl', function ($scope, $rootScope, $filter, $window, httpFactory, sessionAuthFactory, $uibModal) {
     console.log("adminCreateCtl==>");
     $scope.propertyJson = $rootScope.propertyJson;
-
-
-    $scope.imageSrc = "";
-    $scope.$on("fileProgress", function (e, progress) {
-        $scope.progress = progress.loaded / progress.total;
-    });
-
-
 
     $scope.adminCreate = function () {
         console.log("adminCreate-->");
@@ -60,7 +52,8 @@ app.controller('adminCreateCtl', function ($scope, $rootScope, $filter, $window,
                 $scope.country = "";
                 $scope.pswd = ""
                 // alert(data.data.message);
-            } else {
+            }
+            else {
                 var loginAlert = $uibModal.open({
                     scope: $scope,
                     templateUrl: '/html/templates/dashboardwarning.html',

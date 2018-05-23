@@ -434,17 +434,17 @@ app.controller('reportsUploadCtl', function ($scope, $rootScope, $window, httpFa
             }
           }
           else {
-            // var loginAlert = $uibModal.open({
-            //   scope: $scope,
-            //   templateUrl: '/html/templates/dashboardwarning.html',
-            //   windowClass: 'show',
-            //   backdropClass: 'static',
-            //   keyboard: false,
-            //   controller: function ($scope, $uibModalInstance) {
-            //     $scope.message = data.data.message;
-            //   }
-            // })
-            alert(data.data.message);
+            var loginAlert = $uibModal.open({
+              scope: $scope,
+              templateUrl: '/html/templates/dashboardwarning.html',
+              windowClass: 'show',
+              backdropClass: 'static',
+              keyboard: false,
+              controller: function ($scope, $uibModalInstance) {
+                $scope.message = data.data.message;
+              }
+            })
+            //alert(data.data.message);
           }
 
         }

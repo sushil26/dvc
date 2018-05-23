@@ -16,41 +16,41 @@
                                 <p>
                                     <span>
                                         <b style="color:teal;">Name</b>
-                                    </span>: {{userDetail[0].firstName +" "+ userDetail[0].lastName}}</p>
+                                    </span> {{userDetail[0].firstName +" "+ userDetail[0].lastName}}</p>
                             </div>
 
                             <div class="bio-row" ng-if="loginType!='vc4allAdmin'">
                                 <p>
                                     <span>
                                         <b style="color:teal;">School Name</b>
-                                    </span>: {{userDetail[0].schoolName}} </p>
+                                    </span> {{userDetail[0].schoolName}} </p>
                             </div>
 
                             <div class="bio-row" ng-if="loginType!='admin' && loginType!='vc4allAdmin'">
                                 <p>
                                     <span>
                                         <b style="color:teal;">ID</b>
-                                    </span>: {{userDetail[0].schoolId}} </p>
+                                    </span> {{userDetail[0].schoolId}} </p>
                             </div>
 
                             <div class="bio-row" ng-if="loginType!='vc4allAdmin' && loginType!='studParent'">
                                 <p>
                                     <span>
                                         <b style="color:teal;">Mobile Number</b>
-                                    </span>: {{userDetail[0].mobNumber}} </p>
+                                    </span> {{userDetail[0].mobNumber}} </p>
                             </div>
                             <!-- <div class="bio-row" ng-if="loginType=='teacher'">
                                 <p>
                                     <span>
                                         <b style="color:teal;">Mobile Number</b>
-                                    </span>: {{userDetail[0].mobNumber}} </p>
+                                    </span> {{userDetail[0].mobNumber}} </p>
                             </div> -->
                             <div class="bio-row" ng-if="loginType=='studParent'">
                                 <p>
                                     <span>
                                         <b style="color:teal;">Class</b>
 
-                                    </span>:
+                                    </span>
                                     <span ng-repeat="cs in userDetail[0].cs"> {{cs.class}}/{{cs.section}}</span>
                                 </p>
                             </div>
@@ -59,20 +59,20 @@
                                 <p>
                                     <span>
                                         <b style="color:teal;">Date of birth</b>
-                                    </span>: {{userDetail[0].dob |date:"MMM-d-yyyy"}}</p>
+                                    </span> {{userDetail[0].dob |date:"MMM-d-yyyy"}}</p>
                             </div>
                             <div class="bio-row" ng-if="loginType=='studParent'">
                                 <p>
                                     <span>
                                         <b style="color:teal;">Date of Join</b>
-                                    </span>: {{userDetail[0].doj |date:"MMM-d-yyyy"}}</p>
+                                    </span> {{userDetail[0].doj |date:"MMM-d-yyyy"}}</p>
                             </div>
 
                             <div class="bio-row" ng-if="loginType!='studParent'">
                                 <p>
                                     <span>
                                         <b style="color:teal;">E-Mail</b>
-                                    </span>: {{userDetail[0].email}}</p>
+                                    </span> {{userDetail[0].email}}</p>
                             </div>
 
 
@@ -80,7 +80,7 @@
                                 <p>
                                     <span>
                                         <b style="color:teal;">Father Name</b>
-                                    </span>: {{userDetail[0].parentName}}</p>
+                                    </span> {{userDetail[0].parentName}}</p>
                             </div>
 
 
@@ -89,31 +89,31 @@
                                 <p>
                                     <span>
                                         <b style="color:teal;">Father Email</b>
-                                    </span>: {{userDetail[0].parentEmail}}</p>
+                                    </span> {{userDetail[0].parentEmail}}</p>
                             </div>
                             <div class="bio-row" ng-if="loginType=='studParent'">
                                 <p>
                                     <span>
                                         <b style="color:teal;">Father Phone</b>
-                                    </span>: {{userDetail[0].mobileNum}}</p>
+                                    </span> {{userDetail[0].mobileNum}}</p>
                             </div>
                             <div class="bio-row" ng-if="loginType=='studParent'">
                                 <p>
                                     <span>
                                         <b style="color:teal;">Mother Name</b>
-                                    </span>: {{userDetail[0].motherName}}</p>
+                                    </span> {{userDetail[0].motherName}}</p>
                             </div>
                             <div class="bio-row" ng-if="loginType=='studParent'">
                                 <p>
                                     <span>
                                         <b style="color:teal;"> Mother Email</b>
-                                    </span>: {{userDetail[0].motherEmail}}</p>
+                                    </span> {{userDetail[0].motherEmail}}</p>
                             </div>
                             <div class="bio-row" ng-if="loginType=='studParent'">
                                 <p>
                                     <span>
                                         <b style="color:teal;">Mother Phone</b>
-                                    </span>: {{userDetail[0].mobileNum}}</p>
+                                    </span> {{userDetail[0].mobileNum}}</p>
                             </div>
 
 
@@ -154,61 +154,61 @@
                                 <p>
                                     <span>
                                         <b style="color:teal;">School Name</b>
-                                    </span>: {{userDetail[0].schoolName}}</p>
+                                    </span> {{userDetail[0].schoolName}}</p>
                             </div>
                             <div class="bio-row">
                                 <p>
                                     <span>
                                         <b style="color:teal;">School RegNumber</b>
-                                    </span>: {{userDetail[0].schoolRegNumber}}</p>
+                                    </span> {{userDetail[0].schoolRegNumber}}</p>
                             </div>
                             <div class="bio-row">
                                 <p>
                                     <span>
                                         <b style="color:teal;">Address</b>
-                                    </span>: {{userDetail[0].address}}</p>
+                                    </span> {{userDetail[0].address}}</p>
                             </div>
                             <div class="bio-row">
                                 <p>
                                     <span>
                                         <b style="color:teal;">Email</b>
-                                    </span>: {{userDetail[0].email}}</p>
+                                    </span> {{userDetail[0].email}}</p>
                             </div>
                             <div class="bio-row">
                                 <p>
                                     <span>
                                         <b style="color:teal;">Mobile Number</b>
-                                    </span>: {{userDetail[0].mobNumber}}</p>
+                                    </span> {{userDetail[0].mobNumber}}</p>
                             </div>
                             <div class="bio-row">
                                 <p>
                                     <span>
                                         <b style="color:teal;">City</b>
-                                    </span>: {{userDetail[0].city}}</p>
+                                    </span> {{userDetail[0].city}}</p>
                             </div>
                             <div class="bio-row">
                                 <p>
                                     <span>
                                         <b style="color:teal;">Street Name</b>
-                                    </span>: {{userDetail[0].streetName}}</p>
+                                    </span> {{userDetail[0].streetName}}</p>
                             </div>
                             <div class="bio-row">
                                 <p>
                                     <span>
                                         <b style="color:teal;">PinCode</b>
-                                    </span>: {{userDetail[0].pinCode}}</p>
+                                    </span> {{userDetail[0].pinCode}}</p>
                             </div>
                             <div class="bio-row">
                                 <p>
                                     <span>
                                         <b style="color:teal;">Country</b>
-                                    </span>: {{userDetail[0].country}}</p>
+                                    </span> {{userDetail[0].country}}</p>
                             </div>
                             <div class="bio-row">
                                 <p>
                                     <span>
                                         <b style="color:teal;">Status</b>
-                                    </span>: {{userDetail[0].status}}</p>
+                                    </span> {{userDetail[0].status}}</p>
                             </div>
                             <div class="form-group">
                                 <table class="table table-bordered">
@@ -239,17 +239,17 @@
                                 <p>
                                     <span>
                                         <b style="color:teal;">Class</b>
-                                    </span>: {{css.class}}</p>
+                                    </span> {{css.class}}</p>
                                 <p>
                                     <span>
                                         <b style="color:teal;">Section</b>
-                                    </span>:
+                                    </span>
                                     <span ng-repeat="sec in css.section">{{sec}}</span>
                                 </p>
                                 <p>
                                     <span>
                                         <b style="color:teal;">Subject</b>
-                                    </span>:
+                                    </span>
                                     <span ng-repeat="sub in css.subject">{{sub}}</span>
                                 </p>
                             </div> -->

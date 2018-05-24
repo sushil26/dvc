@@ -2244,9 +2244,10 @@ module.exports.uploadTeacherMaster = function (req, res) {
 module.exports.teacherMasterValidation = function (data, callback) {
     console.log("teacherFileValidation-->");
     if (teacherFileValidationMessage == null) {
-        var findId = { "_id": ObjectId("5b0272d74a46530e1493371a") };
+       // var findId = { "_id": ObjectId("5b0272d74a46530e1493371a") };
+        var findId = { "schoolName": schoolName, "schoolId": data.TeacherID };
         console.log("findId: " + JSON.stringify(findId));
-        user.find({ "_id": ObjectId("5b0272d74a46530e1493371a") }).toArray(function (err, idLength) {
+        user.find(findId).toArray(function (err, idLength) {
             console.log("idLength.length: " + idLength.length);
             if (err) {
                 console.log("err: " + JSON.stringify(err));

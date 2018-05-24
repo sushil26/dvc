@@ -2245,7 +2245,7 @@ module.exports.teacherMasterValidation = function (data, callback) {
     if (teacherFileValidationMessage == null) {
         var findId = { "_id": ObjectId("5b0272d74a46530e1493371a") };
         console.log("findId: " + JSON.stringify(findId));
-        user.find(findId).toArray(function (err, idLength) {
+        stud.find(findId).toArray(function (err, idLength) {
             console.log("idLength.length: " + idLength.length);
             if (err) {
                 console.log("err: " + JSON.stringify(err));
@@ -2405,21 +2405,9 @@ module.exports.updateTeacherMaster = function (req, res) {
 module.exports.csvTest = function (req, res) {
     console.log("csvTest-->");
 
-    //var stream = fs.createReadStream(req.files.img);
+    
     var studentDataFile = req.files.img;
-    // .validate(function (data, next) { 
-    //     console.log("CSV validate-->");
-    //     monkey.findOne({id: data.id}, function (err, model) {
-    //         if (err) {
-    //             console.log("CSV validate: mongoose err: "+err);
-    //             next(err);
-    //         } else {
-    //             console.log("CSV validate: mongoose model: "+JSON.stringify(model));
-    //             next(null, !model); //valid if the model does not exist
-    //         }
-    //     });
-    // })
-    //csv.fromStream(studentDataFile.data.toString(),{headers : true})
+   
     var parser = csv.fromString(studentDataFile.data.toString(), {
         headers: true
         // ignoreEmpty: true,

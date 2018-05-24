@@ -2407,7 +2407,7 @@ module.exports.updateTeacherMaster = function (req, res) {
 module.exports.csvTest = function (req, res) {
     console.log("csvTest-->");
 
-    
+    var obj = [];
     var studentDataFile = req.files.img;
    
     var parser = csv.fromString(studentDataFile.data.toString(), {
@@ -2421,10 +2421,12 @@ module.exports.csvTest = function (req, res) {
         monkey.find({id: data.id}, function (err, model) {
             if (err) {
                 console.log("CSV validate: mongoose err: "+err);
-                next(err);
+                // next(err);
             } else {
                 console.log("CSV validate: mongoose model: "+JSON.stringify(model));
-                next(null, !model); //valid if the model does not exist
+                // next(null, !model); //valid if the model does not exist
+                
+
             }
         });
     })

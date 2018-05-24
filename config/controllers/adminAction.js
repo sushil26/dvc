@@ -1913,7 +1913,7 @@ module.exports.studentMasterValidation = function (data, callback) {
                     }
                 }
                 else {
-                    studentFileValidationMessage = "OOPS! " + data.StudentID + "already Exist Or Not a Appropriate Class or Section"
+                    studentFileValidationMessage = "OOPS! "+"'" + data.StudentID +"'"+ " already Exist Or Not a Appropriate Class or Section"
                     if (callback) callback();
                 }
             }

@@ -40,7 +40,7 @@ app.controller('markViewCtl', function ($scope, $rootScope, $window, $uibModal, 
                 console.log("studData: " + JSON.stringify(studData));
                 console.log("$scope.mark: " + JSON.stringify($scope.mark));
                 console.log("$scope.mark.length: " + $scope.mark.length);
-                $scope.mark.push({"subjectWithMark":[{"date":"","mark":"","testType":"ALL"}]});
+                $scope.mark.push({"testType":"ALL"});
             }
             else {
                 console.log("sorry");

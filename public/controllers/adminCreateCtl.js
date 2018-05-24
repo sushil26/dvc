@@ -52,8 +52,7 @@ app.controller('adminCreateCtl', function ($scope, $rootScope, $filter, $window,
                 $scope.country = "";
                 $scope.pswd = ""
                 // alert(data.data.message);
-            }
-            else {
+            } else {
                 var loginAlert = $uibModal.open({
                     scope: $scope,
                     templateUrl: '/html/templates/dashboardwarning.html',
@@ -69,6 +68,26 @@ app.controller('adminCreateCtl', function ($scope, $rootScope, $filter, $window,
         })
         console.log("<--adminCreate");
     }
+
+
+    function readURL(input) {
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#blah').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#imgInp").change(function () {
+        readURL(this);
+    });
+
+
 
     // $scope.userData = sessionAuthFactory.getAccess("userData");
     // $scope.loginType = $scope.userData.loginType;

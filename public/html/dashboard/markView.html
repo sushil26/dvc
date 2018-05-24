@@ -56,15 +56,15 @@
                                         <thead>
                                             <tr>
                                                 <th style="color: black">Test Date</th>
-                                                <th style="color: black">{{allm.subjectWithMark.date | date:'DD/MM/YY'}}</th>
+                                                <th style="color: black">{{allm.date | date:'DD/MM/YY'}}</th>
                                             </tr>
                                         </thead>
                                         <tbody style="background-color: #ccc;">
                                             <tr>
-                                                <th ng-repeat="(key, value) in allm.subjectWithMark.mark">{{key}}</th>
+                                                <th ng-repeat="(key, value) in allm.mark">{{key}}</th>
                                             </tr>
                                             <tr>
-                                                <td ng-repeat="(key, value) in allm.subjectWithMark.mark">{{value}}</td>
+                                                <td ng-repeat="(key, value) in allm.mark">{{value}}</td>
                                             </tr>
     
                                         </tbody>

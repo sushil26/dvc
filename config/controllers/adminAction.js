@@ -13,7 +13,6 @@ var bodyParser = require('body-parser');
 var csv = require('fast-csv');
 var d = new Date();
 
-var fs = require("fs");
 var message;
 var month;
 var marker; /* ### Note: marker is used for identify the status of update query ###*/
@@ -2407,7 +2406,12 @@ module.exports.csvTest = function (req, res) {
 
     //var stream = fs.createReadStream(req.files.img);
     var studentDataFile = req.files.img;
-    csv.fromStream(studentDataFile.data.toString(),{headers : true})
+    var parser = csv.fromString(studentDataFile.data.toString(), {
+        headers: true,
+        ignoreEmpty: true,
+        trim: true
+    })
+        // csv.fromStream(studentDataFile.data.toString(),{headers : true})
        
         .on("data", function (data) {
             console.log("CSV data--> "+JSON.stringify(data));

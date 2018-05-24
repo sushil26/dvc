@@ -2427,7 +2427,8 @@ module.exports.csvTest = function (req, res) {
     }) 
     .validate(function (data, next) { 
         console.log("CSV validate-->");
-        monkey.findOne({id: data.id}, function (err, model) {
+        console.log("data: "+JSON.stringify(data));
+        monkey.find({id: data.id}, function (err, model) {
             if (err) {
                 console.log("CSV validate: mongoose err: "+err);
                 next(err);

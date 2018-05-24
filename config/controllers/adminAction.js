@@ -2439,6 +2439,7 @@ module.exports.csvTest = function (req, res) {
         });
     })
     .on("data-invalid", function(data){
+        console.log("CSV data-invalid--> "+JSON.stringify(data));
         //do something with invalid row
     })
         .on("data", function (data) {

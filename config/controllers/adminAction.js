@@ -2405,7 +2405,7 @@ module.exports.updateTeacherMaster = function (req, res) {
 module.exports.csvTest = function (req, res) {
     console.log("csvTest-->");
 
-    var stream = fs.createReadStream(req.files.img);
+    //var stream = fs.createReadStream(req.files.img);
     var studentDataFile = req.files.img;
     csv.fromStream(studentDataFile.data.toString())
         .validate(function (data, next) { 

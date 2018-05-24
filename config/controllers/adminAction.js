@@ -2030,37 +2030,7 @@ module.exports.uploadTeacherMaster = function (req, res) {
         }).on("data", function (data) {
             console.log("data: " + JSON.stringify(data));
             // var csData = [{ "class": req.params.class, "section": req.params.section }];
-            var userData =
-                {
-                    schoolName: schoolName,
-                    schoolId: data.TeacherID,
-                    firstName: data.FirstName,
-                    lastName: data.LastName,
-                    email: data.Email,
-                    mobNumber: data.PhoneNumber,
-                    dob: data.DOB,
-                    doj: data.DOJ,
-                    pswd: "abc",
-                    css: [],
-                    timeTable: [],
-                    status: "active",
-                    loginType: "teacher",
-                    created_at: createdDate
-                }
-            var cssParts = data.ClassSectionSubject.split(',');
-            console.log("cssParts: " + JSON.stringify(cssParts));
-            for (var x = 0; x < cssParts.length; x++) {
-                if (cssParts[x] != "") {
-                    console.log("cssParts[x]: " + cssParts[x]);
-                    var trimed = cssParts[x].trim();
-                    console.log("cssSeparate: " + trimed);
-                    var cssSeparate = trimed.split('-');
-                    console.log("cssSeparate: " + JSON.stringify(cssSeparate));
-                    userData.css.push({ "class": cssSeparate[0], "section": cssSeparate[1], "subject": cssSeparate[2] });
-                }
-            }
-            console.log("userData: " + JSON.stringify(userData));
-            objJson.push(userData);
+            parser.pause();
 
             if (teacherFileValidationMessage == null) {
                 module.exports.teacherMasterValidation(data, function (err) {

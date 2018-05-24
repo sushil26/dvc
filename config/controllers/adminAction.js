@@ -2246,7 +2246,7 @@ module.exports.teacherMasterValidation = function (data, callback) {
     if (teacherFileValidationMessage == null) {
         var findId = { "_id": ObjectId("5b0272d74a46530e1493371a") };
         console.log("findId: " + JSON.stringify(findId));
-        user.find(findId).toArray(function (err, idLength) {
+        user.find({ "_id": ObjectId("5b0272d74a46530e1493371a") }).toArray(function (err, idLength) {
             console.log("idLength.length: " + idLength.length);
             if (err) {
                 console.log("err: " + JSON.stringify(err));

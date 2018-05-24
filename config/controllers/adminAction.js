@@ -2393,6 +2393,7 @@ module.exports.csvTest = function (req, res) {
                 console.log("CSV validate: mongoose err: "+err);
                  next(err);
             } else {
+                parser.end();
                 console.log("CSV validate: mongoose model: "+JSON.stringify(model));
                 // next(null, !model); //valid if the model does not exist
                 next(null);

@@ -2012,7 +2012,7 @@ module.exports.uploadTeacherMaster = function (req, res) {
     var responseData;
     var marker;
     var css = [];
-    var objJson = [];
+  
     schoolName = req.params.schoolName;
     // var cs = [{"class":req.params.class,"section":req.params.section}];
     var fileName = req.files.img.name;

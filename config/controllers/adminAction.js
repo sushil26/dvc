@@ -2,6 +2,7 @@
 var db = require("../dbConfig.js").getDb();
 var student = require("./schemas/student.js");
 var teacher = require("./schemas/teacher.js");
+var monkey = require("./schemas/monkey.js");
 var user = db.collection("user"); /* ### Teacher collection  ### */
 var stud = db.collection("students"); /* ### student collection  ### */
 //var studCheck = db.collection("students"); /* ### student collection  ### */
@@ -2021,27 +2022,28 @@ module.exports.uploadTeacherMaster = function (req, res) {
         console.log("studentDataFile: " + studentDataFile);
         var parser = csv.fromString(studentDataFile.data.toString(), {
             headers: true,
-            ignoreEmpty: true
+            ignoreEmpty: true,
+            trim: true
         }).on("data", function (data) {
             console.log("data: " + JSON.stringify(data));
             // var csData = [{ "class": req.params.class, "section": req.params.section }];
             var userData =
-            {
-                schoolName: schoolName,
-                schoolId: data.TeacherID,
-                firstName: data.FirstName,
-                lastName: data.LastName,
-                email: data.Email,
-                mobNumber: data.PhoneNumber,
-                dob: data.DOB,
-                doj: data.DOJ,
-                pswd: "abc",
-                css: [],
-                timeTable: [],
-                status: "active",
-                loginType: "teacher",
-                created_at: createdDate
-            }
+                {
+                    schoolName: schoolName,
+                    schoolId: data.TeacherID,
+                    firstName: data.FirstName,
+                    lastName: data.LastName,
+                    email: data.Email,
+                    mobNumber: data.PhoneNumber,
+                    dob: data.DOB,
+                    doj: data.DOJ,
+                    pswd: "abc",
+                    css: [],
+                    timeTable: [],
+                    status: "active",
+                    loginType: "teacher",
+                    created_at: createdDate
+                }
             var cssParts = data.ClassSectionSubject.split(',');
             console.log("cssParts: " + JSON.stringify(cssParts));
             for (var x = 0; x < cssParts.length; x++) {
@@ -2239,12 +2241,12 @@ module.exports.uploadTeacherMaster = function (req, res) {
 module.exports.teacherMasterValidation = function (data, callback) {
     console.log("teacherFileValidation-->");
     if (teacherFileValidationMessage == null) {
-        var findId = { "_id" : ObjectId("5b0272d74a46530e1493371a") };
+        var findId = { "_id": ObjectId("5b0272d74a46530e1493371a") };
         console.log("findId: " + JSON.stringify(findId));
         user.find(findId).toArray(function (err, idLength) {
             console.log("idLength.length: " + idLength.length);
             if (err) {
-                console.log("err: "+JSON.stringify(err));
+                console.log("err: " + JSON.stringify(err));
                 responseData = {
                     status: fasle,
                     message: err
@@ -2257,23 +2259,23 @@ module.exports.teacherMasterValidation = function (data, callback) {
                     console.log("ids.indexOf(data.TeacherID): " + ids.indexOf(data.TeacherID));
                     if (ids.indexOf(data.TeacherID) == -1) {
                         ids.push(data.TeacherID);
-                       var userData =
-                        {
-                            schoolName: schoolName,
-                            schoolId: data.TeacherID,
-                            firstName: data.FirstName,
-                            lastName: data.LastName,
-                            email: data.Email,
-                            mobNumber: data.PhoneNumber,
-                            dob: data.DOB,
-                            doj: data.DOJ,
-                            pswd: "abc",
-                            css: [],
-                            timeTable: [],
-                            status: "active",
-                            loginType: "teacher",
-                            created_at: createdDate
-                        }
+                        var userData =
+                            {
+                                schoolName: schoolName,
+                                schoolId: data.TeacherID,
+                                firstName: data.FirstName,
+                                lastName: data.LastName,
+                                email: data.Email,
+                                mobNumber: data.PhoneNumber,
+                                dob: data.DOB,
+                                doj: data.DOJ,
+                                pswd: "abc",
+                                css: [],
+                                timeTable: [],
+                                status: "active",
+                                loginType: "teacher",
+                                created_at: createdDate
+                            }
                         var cssParts = data.ClassSectionSubject.split(',');
                         console.log("cssParts: " + JSON.stringify(cssParts));
                         for (var x = 0; x < cssParts.length; x++) {
@@ -2396,5 +2398,34 @@ module.exports.updateTeacherMaster = function (req, res) {
     }
 
     console.log("<--updateTeacherMaster");
+}
+
+module.exports.csvTest = function (req, res) {
+    console.log("csvTest-->");
+
+    var stream = fs.createReadStream(req.files.img);
+    csv.fromStream(stream)
+        .validate(function (data, next) { 
+            console.log("CSV validate-->");
+            monkey.findOne({id: data.id}, function (err, model) {
+                if (err) {
+                    console.log("CSV validate: mongoose err: "+err);
+                    next(err);
+                } else {
+                    console.log("CSV validate: mongoose model: "+JSON.stringify(model));
+                    next(null, !model); //valid if the model does not exist
+                }
+            });
+        })
+        .on("data", function (data) {
+            console.log("CSV data--> "+JSON.stringify(data));
+            console.log(data);
+        })
+        .on("end", function () {
+            console.log("CSV end-->");
+            console.log("done");
+        });
+
+    console.log("<--csvTest");
 }
 

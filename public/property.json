@@ -47,6 +47,8 @@
 "VC_deleteUser": "vc/deleteUser",
 "VC_updateStudStatus": "vc/updateStudStatus",
 "VC_deleteStud": "vc/deleteStud",
-"VC_getSchoolDataById": "vc/getSchoolDataById"
+"VC_getSchoolDataById": "vc/getSchoolDataById",
+"VC_csvTest": "vc/csvTest"
+
 
 }

@@ -655,23 +655,60 @@ signaling_socket.on("addPeer", function (config) {
     }
 
 
-    // var fullscreenbtn2;
-    // vid2 = document.getElementById(peer_id + "Remote");
-    // fullscreenbtn2 = document.getElementById("fullscreenbtn2");
-    // fullscreenbtn2.addEventListener("click", toggleFullScreen2, false);
-    // function toggleFullScreen2() {
-    //     if (vid2.requestFullScreen) {
-    //         vid2.requestFullScreen();
-    //     }
-    //     else if (vid2.webkitRequestFullScreen) {
-    //         vid2.webkitRequestFullScreen();
-    //     }
+    $("#" + peer_id + "fullscreenbtn2").click(function () {
+      console.log("sushil screen test");
+      console.log("remove id videoElem111");
+      $("#" + peer_id + "remoteVideoElement").addClass("fullscr");
+      $("#" + peer_id + "remoteContainer").removeClass(
+        "portfolio-items col-xs-6 col-sm-6 col-md-4 col-lg-3"
+      );
+      $("#" + peer_id + "Remote").css({
+        height: "100vh"
+      });
+      $
+      $("#videoElem").css({
+        height: "auto",
+        width: "20%"
+      });
+      $("#videoElem111").removeClass(
+        "portfolio-items col-xs-6 col-sm-6 col-md-4 col-lg-3"
+      );
+      $("#videosAttach").css({
+          "z-index": "2",
+          "position": "fixed"
+        }
 
-    //     else if (vid2.mozRequestFullScreen) {
-    //         vid2.mozRequestFullScreen();
-    //     }
+      );
+      document.getElementById("header").style.display = "none";
+      document.getElementById("btnrestore").style.display = "inline";
+    });
 
-    // }
+    $("#btnrestore").click(function () {
+      console.log("add id videoElem111");
+      $("#" + peer_id + "remoteVideoElement").removeClass("fullscr");
+      $("#" + peer_id + "remoteContainer").addClass(
+        "portfolio-items col-xs-6 col-sm-6 col-md-4 col-lg-3"
+      );
+      $("#" + peer_id + "Remote").css({
+        height: "200px"
+      });
+      $("#videosAttach").css({
+          "z-index": "",
+          "position": ""
+        }
+
+      );
+      $("#videoElem").css({
+
+        height: "",
+        width: ""
+      });
+      $("#videoElem111").addClass(
+        "portfolio-items col-xs-6 col-sm-6 col-md-4 col-lg-3"
+      );
+      document.getElementById("header").style.display = "inline";
+      document.getElementById("btnrestore").style.display = "none";
+    });
     var fullscreenbtn;
     vid3 = document.getElementById("screenShareElem");
 

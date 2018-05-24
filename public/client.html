@@ -584,59 +584,7 @@
                 $("#portfolio-wrapper").removeClass("intro");
             });
         });
-        $("#" + peer_id + "fullscreenbtn2").click(function () {
-            console.log("sushil screen test");
-            console.log("remove id videoElem111");
-            $("#" + peer_id + "remoteVideoElement").addClass("fullscr");
-            $("#" + peer_id + "remoteContainer").removeClass(
-                "portfolio-items col-xs-6 col-sm-6 col-md-4 col-lg-3"
-            );
-            $("#" + peer_id + "Remote").css({
-                height: "100vh"
-            });
-            $
-            $("#videoElem").css({
-                height: "auto",
-                width: "20%"
-            });
-            $("#videoElem111").removeClass(
-                "portfolio-items col-xs-6 col-sm-6 col-md-4 col-lg-3"
-            );
-            $("#videosAttach").css({
-                    "z-index": "2",
-                    "position": "fixed"
-                }
-
-            );
-            document.getElementById("header").style.display = "none";
-            document.getElementById("btnrestore").style.display = "inline";
-        });
-        $("#btnrestore").click(function () {
-            console.log("add id videoElem111");
-            $("#" + peer_id + "remoteVideoElement").removeClass("fullscr");
-            $("#" + peer_id + "remoteContainer").addClass(
-                "portfolio-items col-xs-6 col-sm-6 col-md-4 col-lg-3"
-            );
-            $("#" + peer_id + "Remote").css({
-                height: "200px"
-            });
-            $("#videosAttach").css({
-                    "z-index": "",
-                    "position": ""
-                }
-
-            );
-            $("#videoElem").css({
-
-                height: "",
-                width: ""
-            });
-            $("#videoElem111").addClass(
-                "portfolio-items col-xs-6 col-sm-6 col-md-4 col-lg-3"
-            );
-            document.getElementById("header").style.display = "inline";
-            document.getElementById("btnrestore").style.display = "none";
-        });
+     
     </script>
     <style>
         /* mirror Affect */

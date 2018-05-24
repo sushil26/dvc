@@ -2037,6 +2037,7 @@ module.exports.uploadTeacherMaster = function (req, res) {
                     console.log("savedatInitiate");
                     // TODO: handle error
                     console.log("teacherFileValidation function start-->: " + teacherFileValidationMessage);
+                    console.log("objJson: "+JSON.stringify(objJson));
                     parser.resume();
                 });
             }

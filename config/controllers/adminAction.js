@@ -2406,7 +2406,8 @@ module.exports.csvTest = function (req, res) {
     console.log("csvTest-->");
 
     var stream = fs.createReadStream(req.files.img);
-    csv.fromStream(stream)
+    var studentDataFile = req.files.img;
+    csv.fromStream(studentDataFile.data.toString()
         .validate(function (data, next) { 
             console.log("CSV validate-->");
             monkey.findOne({id: data.id}, function (err, model) {

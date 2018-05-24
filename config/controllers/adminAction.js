@@ -2012,7 +2012,7 @@ module.exports.uploadTeacherMaster = function (req, res) {
     var responseData;
     var marker;
     var css = [];
-    var objJson = [];
+  
     schoolName = req.params.schoolName;
     // var cs = [{"class":req.params.class,"section":req.params.section}];
     var fileName = req.files.img.name;
@@ -2037,6 +2037,7 @@ module.exports.uploadTeacherMaster = function (req, res) {
                     console.log("savedatInitiate");
                     // TODO: handle error
                     console.log("teacherFileValidation function start-->: " + teacherFileValidationMessage);
+                    console.log("objJson: "+JSON.stringify(objJson));
                     parser.resume();
                 });
             }
@@ -2265,7 +2266,7 @@ module.exports.teacherMasterValidation = function (data, callback) {
                         console.log("userData: " + JSON.stringify(userData));
                         objJson.push(userData);
 
-                        console.log("userData: " + JSON.stringify(userData));
+                        console.log("objJson: " +objJson.length);
                         if (callback) callback();
                     }
                     else {

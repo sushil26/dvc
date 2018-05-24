@@ -975,10 +975,10 @@ function setup_local_media(callback, errorback) {
       var local_media = USE_VIDEO ? $("<video>") : $();
       local_media.attr("muted", "muted"); /* always mute ourselves by default */
       local_media.attr("id", "videoElem");
-      local_media.attr(
-        "style",
-        "border:1px solid skyblue;display:inline !important"
-      );
+      // local_media.attr(
+      //   "style",
+      //   "border:1px solid skyblue;display:inline !important"
+      // );
 
       $("#portfolio-wrapper").append(
         '<div id="videoElem111" class="portfolio-items col-xs-6 col-sm-6 col-md-4 col-lg-3"><div id="videosAttach"></div><div class="details"><button id="fullscreenbtn" class="btn fa fa-expand" style="float:left; margin-top: 10px; margin-left: 10px;"></button><h4>' +

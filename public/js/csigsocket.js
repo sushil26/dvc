@@ -644,7 +644,7 @@ signaling_socket.on("addPeer", function (config) {
         "portfolio-items col-xs-6 col-sm-6 col-md-4 col-lg-3"
       );
       $("#" + peer_id + "Remote").css({
-        height: "200px"
+        height: "auto"
       });
       $("#videosAttach").css({
         "z-index": "",

@@ -2265,7 +2265,7 @@ module.exports.teacherMasterValidation = function (data, callback) {
                         console.log("userData: " + JSON.stringify(userData));
                         objJson.push(userData);
 
-                        console.log("userData: " + JSON.stringify(userData));
+                        console.log("objJson: " +objJson.length);
                         if (callback) callback();
                     }
                     else {

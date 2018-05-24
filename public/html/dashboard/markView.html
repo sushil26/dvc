@@ -32,7 +32,7 @@
                                  View All Results
                              </button>
                             </div>
-                            <div class="form-group ">
+                            <div class="form-group" if="mSelect.testType!='ALL'">
                                 <table class="table table-bordered table-sm" ng-repeat="sm in mSelect.subjectWithMark">
                                     <thead>
                                         <tr>
@@ -51,6 +51,25 @@
                                     </tbody>
                                 </table>
                             </div>
+                            <div class="form-group" if="mSelect.testType=='ALL'">
+                                    <table class="table table-bordered table-sm" ng-repeat="allmark in mark">
+                                        <thead>
+                                            <tr>
+                                                <th style="color: black">Test Date</th>
+                                                <th style="color: black">{{allmark.subjectWithMark.date | date:'DD/MM/YY'}}</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody style="background-color: #ccc;">
+                                            <tr>
+                                                <th ng-repeat="(key, value) in allmark.subjectWithMark.mark">{{key}}</th>
+                                            </tr>
+                                            <tr>
+                                                <td ng-repeat="(key, value) in allmark.subjectWithMark.mark">{{value}}</td>
+                                            </tr>
+    
+                                        </tbody>
+                                    </table>
+                                </div>
                         </div>
                     </div>
                 </section>

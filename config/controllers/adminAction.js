@@ -2421,9 +2421,9 @@ module.exports.csvTest = function (req, res) {
     // })
     //csv.fromStream(studentDataFile.data.toString(),{headers : true})
     var parser = csv.fromString(studentDataFile.data.toString(), {
-        headers: true,
-        ignoreEmpty: true,
-        trim: true
+        headers: true
+        // ignoreEmpty: true,
+        // trim: true
     }) 
     .validate(function (data, next) { 
         console.log("CSV validate-->");

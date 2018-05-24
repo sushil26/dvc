@@ -2388,16 +2388,17 @@ module.exports.csvTest = function (req, res) {
     .validate(function (data, next) { 
         console.log("CSV validate-->");
         //console.log("data: "+JSON.stringify(data));
+        parser.end();
         monkey.find({id: data.id}, function (err, model) {
             if (err) {
                 console.log("CSV validate: mongoose err: "+err);
                  next(err);
             } else {
-                parser.end();
+               
                 console.log("CSV validate: mongoose model: "+JSON.stringify(model));
                 // next(null, !model); //valid if the model does not exist
                 next(null);
-                parser.end();
+               
 
             }
         });

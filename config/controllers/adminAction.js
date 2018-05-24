@@ -12,6 +12,8 @@ var ObjectId = require("mongodb").ObjectID;
 var bodyParser = require('body-parser');
 var csv = require('fast-csv');
 var d = new Date();
+
+var fs = require("fs");
 var message;
 var month;
 var marker; /* ### Note: marker is used for identify the status of update query ###*/

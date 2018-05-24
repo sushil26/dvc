@@ -56,7 +56,7 @@
                                     <thead>
                                         <tr>
                                                 <th style="color: black">Test Type</th>
-                                                <th style="color: black">AT</th>
+                                                <th style="color: black">{{allmark.testType}}</th>
                                             <th style="color: black">Test Date</th>
                                             <th style="color: black">{{al.date | date:'DD/MM/YY'}}</th>
                                         </tr>
@@ -71,16 +71,37 @@
 
                                     </tbody>
                                 </table>
-                                <table class="table table-bordered table-sm" ng-if="allmark.testType=='AT'">
+                                <table class="table table-bordered table-sm" ng-if="allmark.testType=='UT'" ng-repeat="al in allmark.subjectWithMark">
                                     <thead>
                                         <tr>
+                                                <th style="color: black">Test Type</th>
+                                                <th style="color: black">{{allmark.testType}}</th>
                                             <th style="color: black">Test Date</th>
-                                            <th style="color: black">{{allm.date | date:'DD/MM/YY'}}</th>
+                                            <th style="color: black">{{al.date | date:'DD/MM/YY'}}</th>
                                         </tr>
                                     </thead>
                                     <tbody style="background-color: #ccc;">
                                         <tr>
-                                            <th ng-repeat="(key, value) in allm.mark">{{key}}</th>
+                                            <th ng-repeat="(key, value) in al.mark">{{key}}</th>
+                                        </tr>
+                                        <tr>
+                                            <td ng-repeat="(key, value) in al.mark">{{value}}</td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                                <!-- <table class="table table-bordered table-sm" ng-if="allmark.testType=='AT'" ng-repeat="al in allmark.subjectWithMark">
+                                    <thead>
+                                        <tr>
+                                                <th style="color: black">Test Type</th>
+                                                <th style="color: black">{{allmark.testType}}</th>
+                                            <th style="color: black">Test Date</th>
+                                            <th style="color: black">{{al.date | date:'DD/MM/YY'}}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody style="background-color: #ccc;">
+                                        <tr>
+                                            <th ng-repeat="(key, value) in al.mark">{{key}}</th>
                                         </tr>
                                         <tr>
                                             <td ng-repeat="(key, value) in allm.mark">{{value}}</td>
@@ -121,24 +142,7 @@
                                         </tr>
 
                                     </tbody>
-                                </table>
-                                <table class="table table-bordered table-sm" ng-if="allmark.testType=='AT'">
-                                    <thead>
-                                        <tr>
-                                            <th style="color: black">Test Date</th>
-                                            <th style="color: black">{{allm.date | date:'DD/MM/YY'}}</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody style="background-color: #ccc;">
-                                        <tr>
-                                            <th ng-repeat="(key, value) in allm.mark">{{key}}</th>
-                                        </tr>
-                                        <tr>
-                                            <td ng-repeat="(key, value) in allm.mark">{{value}}</td>
-                                        </tr>
-
-                                    </tbody>
-                                </table>
+                                </table> -->
                             </div>
                         </div>
                     </div>

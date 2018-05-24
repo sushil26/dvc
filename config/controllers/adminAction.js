@@ -3,6 +3,7 @@ var db = require("../dbConfig.js").getDb();
 var student = require("./schemas/student.js");
 var teacher = require("./schemas/teacher.js");
 var monkey = require("./schemas/monkey.js");
+
 var user = db.collection("user"); /* ### Teacher collection  ### */
 var stud = db.collection("students"); /* ### student collection  ### */
 //var studCheck = db.collection("students"); /* ### student collection  ### */
@@ -2245,7 +2246,7 @@ module.exports.teacherMasterValidation = function (data, callback) {
     if (teacherFileValidationMessage == null) {
         var findId = { "_id": ObjectId("5b0272d74a46530e1493371a") };
         console.log("findId: " + JSON.stringify(findId));
-        stud.find(findId).toArray(function (err, idLength) {
+        user.find(findId).toArray(function (err, idLength) {
             console.log("idLength.length: " + idLength.length);
             if (err) {
                 console.log("err: " + JSON.stringify(err));

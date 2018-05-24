@@ -647,9 +647,8 @@ signaling_socket.on("addPeer", function (config) {
         height: "200px"
       });
       $("#videosAttach").css({
-        position: "",
-        left: "",
-        top: ""
+        "z-index": "",
+        "position": ""
       }
 
       );

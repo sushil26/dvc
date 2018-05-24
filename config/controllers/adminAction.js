@@ -13,6 +13,7 @@ var bodyParser = require('body-parser');
 var csv = require('fast-csv');
 var d = new Date();
 
+var fs = require("fs");
 var message;
 var month;
 var marker; /* ### Note: marker is used for identify the status of update query ###*/
@@ -2406,13 +2407,24 @@ module.exports.csvTest = function (req, res) {
 
     //var stream = fs.createReadStream(req.files.img);
     var studentDataFile = req.files.img;
+    // .validate(function (data, next) { 
+    //     console.log("CSV validate-->");
+    //     monkey.findOne({id: data.id}, function (err, model) {
+    //         if (err) {
+    //             console.log("CSV validate: mongoose err: "+err);
+    //             next(err);
+    //         } else {
+    //             console.log("CSV validate: mongoose model: "+JSON.stringify(model));
+    //             next(null, !model); //valid if the model does not exist
+    //         }
+    //     });
+    // })
+    //csv.fromStream(studentDataFile.data.toString(),{headers : true})
     var parser = csv.fromString(studentDataFile.data.toString(), {
         headers: true,
         ignoreEmpty: true,
         trim: true
-    })
-        // csv.fromStream(studentDataFile.data.toString(),{headers : true})
-       
+    }) 
         .on("data", function (data) {
             console.log("CSV data--> "+JSON.stringify(data));
             console.log(data);

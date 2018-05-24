@@ -32,7 +32,7 @@
                                     View All Results
                                 </button>
                             </div>
-                            <div class="form-group" if="mSelect.testType!='ALL'">
+                            <div class="form-group" ng-if="mSelect.testType!='ALL'">
                                 <table class="table table-bordered table-sm" ng-repeat="sm in mSelect.subjectWithMark">
                                     <thead>
                                         <tr>
@@ -51,7 +51,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="form-group" if="mSelect.testType=='ALL'" ng-repeat="allmark in mark">
+                            <div class="form-group" ng-if="mSelect.testType=='ALL'" ng-repeat="allmark in mark">
                                 <table class="table table-bordered table-sm" ng-if="allm in allmark.testType=='AT'" ng-repeat="al in allmark.subjectWithMark">
                                     <thead>
                                         <tr>

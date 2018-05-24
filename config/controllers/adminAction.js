@@ -2427,7 +2427,8 @@ module.exports.csvTest = function (req, res) {
     }) 
     .validate(function (data, next) { 
         console.log("CSV validate-->");
-        monkey.findOne({id: data.id}, function (err, model) {
+        //console.log("data: "+JSON.stringify(data));
+        monkey.find({id: data.id}, function (err, model) {
             if (err) {
                 console.log("CSV validate: mongoose err: "+err);
                 next(err);
@@ -2436,6 +2437,10 @@ module.exports.csvTest = function (req, res) {
                 next(null, !model); //valid if the model does not exist
             }
         });
+    })
+    .on("data-invalid", function(data){
+        console.log("CSV data-invalid--> "+JSON.stringify(data));
+        //do something with invalid row
     })
         .on("data", function (data) {
             console.log("CSV data--> "+JSON.stringify(data));

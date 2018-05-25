@@ -682,7 +682,8 @@ app.controller('quickMsgCtl', function ($scope, $rootScope, $state, $rootScope, 
     var originalFormat = calendarConfig.dateFormats.hour;
     calendarConfig.dateFormats.hour = 'HH:mm';
     if ($scope.userData.loginType == 'teacher') {
-        // var actions = [{
+        var actions = [
+        //     {
         //     label: 'Re-Schedule',
         //     onClick: function (args) {
         //         console.log("args.calendarEvent: " + args.calendarEvent);

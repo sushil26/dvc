@@ -147,6 +147,63 @@
                                 </table>
                             </div>
 
+                            <div class="col-md-6 col-lg-4 col-sm-6" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                                <table class="table table-sm" ng-if="loginType=='teacher'">
+
+                                    <tr>
+                                        <th style="color:  lightcoral;font-size: 20px;font-family: -webkit-pictograph;">
+                                            TEACHER
+                                        </th>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <img style="max-height:150px;" src="child.jpg">
+                                        </td>
+                                    </tr>
+                                    <tr style="background: sandybrown;">
+                                        <td>
+                                            <b style="color:teal;">Name</b>
+                                        </td>
+                                        <td>{{userData[0].firstName +" "+ userData[0].lastName}}</td>
+                                    </tr>
+                                    <tr style="background: sandybrown;">
+                                        <td>
+                                            <b style="color:teal;">ID</b>
+                                        </td>
+                                        <td> {{userData[0].schoolId}}</td>
+                                    </tr>
+
+                                    <tr style="background: sandybrown;">
+                                        <td>
+                                            <b style="color:teal;">Mobile Number</b>
+
+                                        </td>
+                                        <td>
+                                            <span ng-repeat="cs in userData[0].cs">{{userData[0].mobNumber}}</span>
+                                        </td>
+                                    </tr>
+                                    <tr style="background: sandybrown;">
+                                        <td>
+                                            <b style="color:teal;">D.O.B</b>
+                                        </td>
+                                        <td>
+                                            {{userData[0].dob | date:' d MMM yyyy'}}
+                                        </td>
+                                    </tr>
+                                    <tr style="background: sandybrown;">
+                                        <td>
+                                            <b style="color:teal;">D.O.Joining</b>
+                                        </td>
+                                        <td>
+                                            {{userData[0].doj | date:' d MMM yyyy'}}
+                                        </td>
+                                    </tr>
+
+
+                                </table>
+                            </div>
+
                             <div class="bio-row" ng-if="loginType=='admin'">
                                 <p>
                                     <span>

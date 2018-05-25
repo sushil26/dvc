@@ -10,7 +10,7 @@
                         <notification displayType="{{notificationType}}" message="{{notification}}"></notification>
                     </div>
                     <div class="panel-body bio-graph-info" style="padding: 1px;">
-                        <div class="row" style="margin:20px!important;">
+                        <div class="row" style="margin:20px!important;" ng-if="loginType!='vc4allAdmin'">
                             <div class="col-lg-12">
                                 <h2>{{userData[0].schoolName}} </h2>
                             </div>
@@ -148,7 +148,6 @@
 
                                 </table>
                             </div>
-
                             <div class="col-md-6 col-lg-4 col-sm-6" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"
                                 ng-if="loginType=='teacher'">
                                 <table class="table table-sm">
@@ -239,7 +238,6 @@
                                 </table>
 
                             </div>
-
                             <div class="col-md-6 col-lg-4 col-sm-6" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"
                                 ng-if="loginType=='admin'">
                                 <table class="table table-sm">
@@ -292,9 +290,7 @@
                                 </table>
                             </div>
                         </div>
-                        <div style="margin: 20px !important;" class="row" ng-if="loginType=='teacher'">
-
-                        </div>
+                   
                         <div style="margin: 20px !important;" class="row">
                             <div class="fa fa-pencil-square btn btn-warning">
                                 &nbsp Edit Details

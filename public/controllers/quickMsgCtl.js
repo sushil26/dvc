@@ -1,6 +1,6 @@
 app.controller('quickMsgCtl', function ($scope, $rootScope, $state, $rootScope, $compile, $window, $filter, httpFactory, sessionAuthFactory, moment, calendarConfig, $uibModal) {
     console.log("quickMsgCtl==>");
-    console.log("dashboardScheduleCtrl==>");
+    
     var dayEventmodal; /* ### Note: open model for event send ###  */
     var studEvents = []; /* ### Note: selected student events ### */
     var teacherEvents = []; /* ### Note: selected teacher events ### */
@@ -392,34 +392,9 @@ app.controller('quickMsgCtl', function ($scope, $rootScope, $state, $rootScope, 
     $scope.eventColors = ['red', 'green', 'blue'];
 
 
-    $scope.save = function (title, reason) {
-         console.log("save-->");
-        // console.log("e: " + e);
-        // console.log("sd: " + sd);
-        // console.log("ed: " + ed);
-        // var res = $filter('limitTo')(s, 2);
-        // console.log("res: " + res);
-        // console.log("$scope.startDate with filter : " + $filter('date')(s, "EEE MMM dd y"));
-        // console.log("$scope.endDate with filter: " + $filter('date')(e, "HH:mm:ss 'GMT'Z (IST)'"));
-
+    $scope.saveQuickMsg = function (title, reason) {
+        console.log("saveQuickMsg-->");
         $scope.title = title;
-        // $scope.date = date;
-            //     $scope.sd = sd,
-            //     $scope.ed = ed,
-            //     $scope.startD = s;
-            // $scope.startFiltered = sFiltered;
-            // $scope.endFiltered = eFiltered;
-            // $scope.startDate = $filter('date')(s, "EEE MMM dd y");
-            // $scope.endDate = $filter('date')(e, "HH:mm:ss 'GMT'Z (IST)'");
-            //$scope.endDateRes = $scope.startDate + ' ' + $scope.endDate;
-            // $scope.urlDate = $filter('date')(s, "EEEMMMddyHHmmss");
-            // console.log("$scope.endDate: " + $scope.endDate);
-            // console.log("$scope.urlDate: " + $scope.urlDate);
-            // console.log("$scope.endDate: " + $scope.endDate);
-            // console.log("$scope.endDateRes: " + $scope.endDateRes);
-
-            dayEventmodal.close('resetModel');
-
         if ($scope.userLoginType == 'studParent') {
             var un = $scope.studentData[0].firstName + " " + $scope.studentData[0].lastName;
             var teacherName = $scope.teacherPersonalData[0].firstName + " " + $scope.teacherPersonalData[0].lastName;
@@ -503,7 +478,7 @@ app.controller('quickMsgCtl', function ($scope, $rootScope, $state, $rootScope, 
                         $scope.message = "Successfully sent the event";
                     }
                 })
-               // var quickMsgPostedData = data.data.data;
+                // var quickMsgPostedData = data.data.data;
                 var objData = {
                     'id': obj.userId,
                     'title': obj.title,

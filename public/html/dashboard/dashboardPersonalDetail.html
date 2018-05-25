@@ -13,43 +13,46 @@
                     <div class="panel-body bio-graph-info" style="padding: 1px;">
 
 
-                     
+
 
 
                         <div ng-if="loginType!='vc4allAdmin'" class="row" style="margin:20px!important;">
+                            <div class="col-md-4">
 
-                            <table class="table table-bordered table-sm"   ng-if="loginType=='studParent'">
-                                <tr>
-                                    <td>
-                                        <img style="max-height:150px;" src="father.jpg">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <b style="color:teal;">Father Name</b>
-                                    </td>
-                                    <td> {{userData[0].parentName}}</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <b style="color:teal;">Father Email</b>
-                                    </td>
-                                    <td> {{userData[0].parentEmail}}</td>
-                                </tr>
-
-                                <tr>
-                                    <td>
-                                        <b style="color:teal;">Father Phone</b>
-                                    </td>
-                                    <td> {{userData[0].mobileNum}}</td>
-                                </tr>
-
-
-                            </table>
-                            <table class="table table-bordered table-sm"   ng-if="loginType=='studParent'">
+                                <table class="table table-bordered table-sm" ng-if="loginType=='studParent'">
                                     <tr>
                                         <td>
-                                                <img style="max-height:150px;" src="mother.jpg">
+                                            <img style="max-height:150px;" src="father.jpg">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <b style="color:teal;">Father Name</b>
+                                        </td>
+                                        <td> {{userData[0].parentName}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <b style="color:teal;">Father Email</b>
+                                        </td>
+                                        <td> {{userData[0].parentEmail}}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <b style="color:teal;">Father Phone</b>
+                                        </td>
+                                        <td> {{userData[0].mobileNum}}</td>
+                                    </tr>
+
+
+                                </table>
+                            </div>
+                            <div class="col-md-4">
+                                <table class="table table-bordered table-sm" ng-if="loginType=='studParent'">
+                                    <tr>
+                                        <td>
+                                            <img style="max-height:150px;" src="mother.jpg">
 
                                         </td>
                                     </tr>
@@ -65,17 +68,17 @@
                                         </td>
                                         <td> {{userData[0].motherEmail}}</td>
                                     </tr>
-    
+
                                     <tr>
                                         <td>
                                             <b style="color:teal;">Mother Phone</b>
                                         </td>
                                         <td> {{userData[0].mobileNum}}</td>
                                     </tr>
-    
-    
-                                </table>
 
+
+                                </table>
+                            </div>
 
                             <div class="bio-row" ng-if="loginType=='admin'">
                                 <p>

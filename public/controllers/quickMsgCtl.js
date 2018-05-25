@@ -212,6 +212,7 @@ app.controller('quickMsgCtl', function ($scope, $rootScope, $state, $rootScope, 
     $scope.getStudentCalendar = function (css) {
         console.log("getStudentCalendar-->");
         console.log("css" + css.id);
+        $scope.remoteCalendarId = css.id;
         if (css.id != 'all') {
             console.log("JSON.css" + JSON.stringify(css));
             $scope.remoteCalendarId = css.id;

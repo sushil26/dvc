@@ -7,7 +7,7 @@ var nodemailer = require("nodemailer");
 var createdDate = new Date();
 var randomstring = require("randomstring");
 
-var email = require("../careatoremployee.js");
+var email = require("../careatoremployee.html");
 
 
 

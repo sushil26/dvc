@@ -212,51 +212,51 @@ app.controller('quickMsgCtl', function ($scope, $rootScope, $state, $rootScope, 
     $scope.getStudentCalendar = function (css) {
         console.log("getStudentCalendar-->");
         console.log("css" + css.id);
-        console.log("JSON.css" + JSON.stringify(css));
-        $scope.remoteCalendarId = css.id;
-        $scope.getSelectedStudentPersonalData($scope.remoteCalendarId);
-        var api = $scope.propertyJson.VC_quickMsgGet + "/" + css.id;
-        console.log("api: " + api);
-        httpFactory.get(api).then(function (data) {
-            var checkStatus = httpFactory.dataValidation(data);
-            // console.log("data--" + JSON.stringify(data.data));
-            if (checkStatus) {
-                $scope.calendarOwner = css.name;
-                $scope.specificSED = data.data.data;/* ### Note:Function Name specificSED --> specificStudentEventData(specificSED) ### */
-                console.log("$scope.specificSED.length: " + $scope.specificSED.length);
-                //vm.events = [];
-                studEvents = [];
-                remoteEvent = [];
-                for (var x = 0; x < $scope.specificSED.length; x++) {
-                    console.log("$scope.specificSED[" + x + "]: " + JSON.stringify($scope.specificSED[x]));
-                    var obj = {
-                        'id': $scope.specificSED[x]._id,
-                        'title': $scope.specificSED[x].title,
-                        'color': '$scope.specificSED[x].primColor',
-                        'startsAt': new Date($scope.specificSED[x].start),
-                        'endsAt': new Date($scope.specificSED[x].end),
-                        'draggable': true,
-                        'resizable': true,
-                        'actions': actions,
-                        'url': $scope.specificSED[x].url,
-                        "studentName": $scope.specificSED[x].studName,
-                        "studendtId": $scope.specificSED[x].studId,
-                        "title": $scope.specificSED[x].title,
-                        "reason": $scope.specificSED[x].reason,
-                        "email": $scope.specificSED[x].email
-                    }
-                    console.log(" obj" + JSON.stringify(obj))
+        if (css.id != 'all') {
+            console.log("JSON.css" + JSON.stringify(css));
+            $scope.remoteCalendarId = css.id;
+            $scope.getSelectedStudentPersonalData($scope.remoteCalendarId);
+            var api = $scope.propertyJson.VC_quickMsgGet + "/" + css.id;
+            console.log("api: " + api);
+            httpFactory.get(api).then(function (data) {
+                var checkStatus = httpFactory.dataValidation(data);
+                // console.log("data--" + JSON.stringify(data.data));
+                if (checkStatus) {
+                    $scope.calendarOwner = css.name;
+                    $scope.specificSED = data.data.data;/* ### Note:Function Name specificSED --> specificStudentEventData(specificSED) ### */
+                    console.log("$scope.specificSED.length: " + $scope.specificSED.length);
+                    //vm.events = [];
+                    studEvents = [];
+                    remoteEvent = [];
+                    for (var x = 0; x < $scope.specificSED.length; x++) {
+                        console.log("$scope.specificSED[" + x + "]: " + JSON.stringify($scope.specificSED[x]));
+                        var obj = {
+                            'id': $scope.specificSED[x]._id,
+                            'title': $scope.specificSED[x].title,
+                            'color': '$scope.specificSED[x].primColor',
+                            'startsAt': new Date($scope.specificSED[x].date),
+                            'draggable': true,
+                            'resizable': true,
+                            'actions': actions,
+                            "studentName": $scope.specificSED[x].studName,
+                            "studendtId": $scope.specificSED[x].studId,
+                            "title": $scope.specificSED[x].title,
+                            "reason": $scope.specificSED[x].reason,
+                            "email": $scope.specificSED[x].email
+                        }
+                        console.log(" obj" + JSON.stringify(obj))
 
-                    // vm.events.push(obj);
-                    remoteEvent.push(obj);
-                    studEvents.push(obj);
-                    // vm.events.push(obj);
+                        // vm.events.push(obj);
+                        remoteEvent.push(obj);
+                        studEvents.push(obj);
+                        // vm.events.push(obj);
+                    }
                 }
-            }
-            else {
-                //alert("Event get Failed");
-            }
-        })
+                else {
+                    //alert("Event get Failed");
+                }
+            })
+        }
         console.log("<--getStudentCalendar");
     }
 
@@ -362,6 +362,7 @@ app.controller('quickMsgCtl', function ($scope, $rootScope, $state, $rootScope, 
         var clas = css.class;
         var section = css.section;
         $scope.studList = [];
+        $scope.allStudentEmailIds = [];
         var api = $scope.propertyJson.VC_getStudListForCS + "/" + schoolName + "/" + clas + "/" + section;
         console.log("api: " + api);
         httpFactory.get(api).then(function (data) {
@@ -371,12 +372,14 @@ app.controller('quickMsgCtl', function ($scope, $rootScope, $state, $rootScope, 
                 console.log("studentList: " + JSON.stringify($scope.studentList));
                 for (var x = 0; x < $scope.studentList.length; x++) {
                     $scope.studList.push({ "id": $scope.studentList[x]._id, "name": $scope.studentList[x].firstName, "studId": $scope.studentList[x].schoolId });
-
+                    $scope.allStudentEmailIds.push($scope.studentList[x].parentEmail);
+                    if ($scope.studentList[x].motherEmail) {
+                        $scope.allStudentEmailIds.push($scope.studentList[x].motherEmail);
+                    }
                 }
-
                 console.log(" $scope.studList.length: " + $scope.studList.length);
                 if ($scope.studList.length > 0) {
-                    $scope.studList.push({ "name": "All", "studId": "Students" });
+                    $scope.studList.push({ "id": "all", "name": "All", "studId": "Students" });
                 }
                 //   $scope.css = $scope.teacherData[0].css;
                 //   console.log("$scope.css: " + JSON.stringify($scope.css));
@@ -419,6 +422,9 @@ app.controller('quickMsgCtl', function ($scope, $rootScope, $state, $rootScope, 
             var teacherName = un;
             var senderMN = $scope.teacherData[0].mobNumber;
             var teacherId = $scope.teacherData[0].schoolId;
+            if ($scope.studentPersonalData[0].motherEmail) {
+                var email = $scope.studentPersonalData[0].parentEmail + "," + $scope.studentPersonalData[0].motherEmail;
+            }
             var email = $scope.studentPersonalData[0].parentEmail;/* ### Note: parentEmail email Id ### */
             var receiverName = studName;
             var receiverId = $scope.studentPersonalData[0].schoolId;
@@ -431,8 +437,6 @@ app.controller('quickMsgCtl', function ($scope, $rootScope, $state, $rootScope, 
             console.log("stud_id: " + stud_id);
             $scope.quickMsgSend(reason, teacherName, teacherId, studUserId, email, senderMN, receiverName, receiverId, receiverMN, stud_id, stud_cs, stud_name);
         }
-
-
     }
 
     $scope.quickMsgSend = function (res, name, id, studUserId, email, senderMN, receiverName, receiverId, receiverMN, stud_id, stud_cs, stud_name) {

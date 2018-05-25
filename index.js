@@ -2,7 +2,7 @@ var express = require('express');
 var http = require('http');
 var bodyParser = require('body-parser')
 var nodemailer = require('nodemailer');
-//var fileUpload = require('express-fileupload');
+var fileUpload = require('express-fileupload');
 
 var multer = require('multer');
 
@@ -16,12 +16,12 @@ app.use(bodyParser.json({
 }));
 
 //app.use(multer());
-//app.use(fileUpload());
+app.use(fileUpload());
 
 // module.exports = function (app, config) {
     //app.set('view engine','html');
     // app.use(session({secret: "Your secret key"}));
-    app.use(multer({ dest: './public/schoolLogo'}));
+    //app.use(multer({ dest: './public/schoolLogo'}));
 // }
 var queryId = null;
 var userName = null;

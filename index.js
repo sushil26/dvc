@@ -13,7 +13,7 @@ app.use(bodyParser.json({
     limit: '100mb'
 }));
 
-app.use(fileUpload());
+//app.use(fileUpload());
 
 // module.exports = function (app, config) {
     //app.set('view engine','html');

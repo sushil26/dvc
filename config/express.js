@@ -13,7 +13,7 @@ module.exports = function(app, config) {
 
 	// app.use(session({secret: "Your secret key"}));
 	//app.use(multer({ dest: './config'}));
-	app.use(multer({dest:'./public/schoolLogo/'}).single('file'));
+	// app.use(multer({dest:'./public/schoolLogo/'}).single('file'));
 	app.use(bodyParser.json({
 		limit: '100mb'
 	}));

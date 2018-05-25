@@ -393,7 +393,7 @@ app.controller('quickMsgCtl', function ($scope, $rootScope, $state, $rootScope, 
 
 
     $scope.save = function (title, reason) {
-        // console.log("s: " + s);
+         console.log("save-->");
         // console.log("e: " + e);
         // console.log("sd: " + sd);
         // console.log("ed: " + ed);
@@ -403,7 +403,7 @@ app.controller('quickMsgCtl', function ($scope, $rootScope, $state, $rootScope, 
         // console.log("$scope.endDate with filter: " + $filter('date')(e, "HH:mm:ss 'GMT'Z (IST)'"));
 
         $scope.title = title;
-        $scope.date = date,
+        // $scope.date = date;
             //     $scope.sd = sd,
             //     $scope.ed = ed,
             //     $scope.startD = s;

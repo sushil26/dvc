@@ -277,7 +277,7 @@
                                             {{userData[0].email}}
                                         </td>
                                     </tr>
-                                   
+
                                     <tr style="background: sandybrown;">
                                         <td>
                                             <b style="color:teal;">D.O.Joining</b>
@@ -290,27 +290,52 @@
                                 </table>
                             </div>
                         </div>
-                   
+                        <div class="row" style="margin:20px!important;" ng-if="loginType=='vc4allAdmin'"></div>
+                        <div class="col-md-6 col-lg-4 col-sm-6" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                            <table class="table table-sm">
+
+                                <tr>
+                                    <th style="color:  lightcoral;font-size: 20px;font-family: -webkit-pictograph;">
+                                        VC4ALL ADMINISTRATOR
+                                    </th>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <img style="max-height:150px;" src="child.jpg">
+                                    </td>
+                                </tr>
+                                <tr style="background: sandybrown;">
+                                    <td>
+                                        <b style="color:teal;">Name</b>
+                                    </td>
+                                    <td>{{userData[0].firstName +" "+ userData[0].lastName}}</td>
+                                </tr>
+                                <tr style="background: sandybrown;">
+                                    <td>
+                                        <b style="color:teal;">Mobile Number</b>
+
+                                    </td>
+                                    <td>
+                                        {{userData[0].mobNumber}}
+                                    </td>
+                                </tr>
+                                <tr style="background: sandybrown;">
+                                    <td>
+                                        <b style="color:teal;">E-Mail</b>
+
+                                    </td>
+                                    <td>
+                                        {{userData[0].email}}
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+
                         <div style="margin: 20px !important;" class="row">
                             <div class="fa fa-pencil-square btn btn-warning">
                                 &nbsp Edit Details
                             </div>
-                        </div>
-
-                        <div ng-if="loginType=='vc4allAdmin'" class="row">
-                            <div class="bio-row">
-                                <p>
-                                    <span>
-                                        <b style="color:teal;">Name</b>
-                                    </span> {{userData[0].firstName +" "+ userData[0].lastName}} </p>
-                            </div>
-                            <div class="bio-row">
-                                <p>
-                                    <span>
-                                        <b style="color:teal;">Email</b>
-                                    </span> {{userData[0].email}} </p>
-                            </div>
-
                         </div>
                     </div>
                 </section>

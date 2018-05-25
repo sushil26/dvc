@@ -70,7 +70,8 @@ module.exports.upload = function (req, res) {
 if (!req.files)
     return res.status(400).send('No files were uploaded.');
  
-    console.log("req.files: "+JSON.stringify(req.files));
+    console.log("req.files.sampleFile: "+req.files.sampleFile);
+    //var fileFullPath = file.originalname
   // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
   let sampleFile = req.files.sampleFile;
  
@@ -78,7 +79,7 @@ if (!req.files)
   sampleFile.mv('./public/schoolLogo/', function(err) {
     if (err)
       return res.status(500).send(err);
- 
+      //res.json({ success: true, message: 'File was uploaded', fileFullPath: uploadProfPicPath });
     res.send('File uploaded!');
   });
   console.log("uploadProfile Image--> ");

@@ -592,7 +592,7 @@ app.controller('quickMsgCtl', function ($scope, $rootScope, $state, $rootScope, 
         // $('#eDetail').trigger('click');
         var eClicked = $uibModal.open({
             scope: $scope,
-            templateUrl: '/html/templates/eventDetails.html',
+            templateUrl: '/html/templates/quickMsg.html',
             windowClass: 'show',
             backdropClass: 'show',
             controller: function ($scope, $uibModalInstance) {

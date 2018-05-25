@@ -395,7 +395,6 @@ app.controller('quickMsgCtl', function ($scope, $rootScope, $state, $rootScope, 
 
     $scope.eventColors = ['red', 'green', 'blue'];
 
-
     $scope.saveQuickMsg = function (title, reason) {
         console.log("saveQuickMsg-->");
         $scope.title = title;
@@ -417,26 +416,101 @@ app.controller('quickMsgCtl', function ($scope, $rootScope, $state, $rootScope, 
         }
         if ($scope.userLoginType == 'teacher') {
             console.log("$scope.studentPersonalData[0]: " + JSON.stringify($scope.studentPersonalData[0]));
-            var un = $scope.teacherData[0].firstName + " " + $scope.teacherData[0].lastName;
-            var studName = $scope.studentPersonalData[0].firstName + " " + $scope.studentPersonalData[0].lastName;
-
-            var teacherName = un;
-            var senderMN = $scope.teacherData[0].mobNumber;
-            var teacherId = $scope.teacherData[0].schoolId;
-            if ($scope.studentPersonalData[0].motherEmail) {
-                var email = $scope.studentPersonalData[0].parentEmail + "," + $scope.studentPersonalData[0].motherEmail;
+            if ($scope.remoteCalendarId != 'all') {
+                var un = $scope.teacherData[0].firstName + " " + $scope.teacherData[0].lastName;
+                var studName = $scope.studentPersonalData[0].firstName + " " + $scope.studentPersonalData[0].lastName;
+                var teacherName = un;
+                var senderMN = $scope.teacherData[0].mobNumber;
+                var teacherId = $scope.teacherData[0].schoolId;
+                if ($scope.studentPersonalData[0].motherEmail) {
+                    var email = $scope.studentPersonalData[0].parentEmail + "," + $scope.studentPersonalData[0].motherEmail;
+                }
+                var email = $scope.studentPersonalData[0].parentEmail;/* ### Note: parentEmail email Id ### */
+                var receiverName = studName;
+                var receiverId = $scope.studentPersonalData[0].schoolId;
+                var receiverMN = $scope.studentPersonalData[0].mobileNum;
+                var stud_name = studName;
+                var stud_cs = $scope.studentPersonalData[0].cs;
+                var stud_id = $scope.studentPersonalData[0].schoolId;
+                var studUserId = $scope.studentPersonalData[0]._id;
+                console.log("$scope.studentPersonalData[0]: " + $scope.studentPersonalData[0].schoolId);
+                console.log("stud_id: " + stud_id);
+                $scope.quickMsgSend(reason, teacherName, teacherId, studUserId, email, senderMN, receiverName, receiverId, receiverMN, stud_id, stud_cs, stud_name);
             }
-            var email = $scope.studentPersonalData[0].parentEmail;/* ### Note: parentEmail email Id ### */
-            var receiverName = studName;
-            var receiverId = $scope.studentPersonalData[0].schoolId;
-            var receiverMN = $scope.studentPersonalData[0].mobileNum;
-            var stud_name = studName;
-            var stud_cs = $scope.studentPersonalData[0].cs;
-            var stud_id = $scope.studentPersonalData[0].schoolId;
-            var studUserId = $scope.studentPersonalData[0]._id;
-            console.log("$scope.studentPersonalData[0]: " + $scope.studentPersonalData[0].schoolId);
-            console.log("stud_id: " + stud_id);
-            $scope.quickMsgSend(reason, teacherName, teacherId, studUserId, email, senderMN, receiverName, receiverId, receiverMN, stud_id, stud_cs, stud_name);
+            else {
+
+                console.log("eventSend to all parents-->");
+                $('#quickMsg_modal').modal('hide');
+                var api = $scope.propertyJson.VC_bulkEmail_quickMsg;
+                //var api = "http://localhost:5000/vc/eventSend";
+                console.log("api: " + api);
+                // var email = document.getElementById('eventEmails').value;
+                var obj = {
+                    "userId": $scope.userData.id,
+                    "senderLoginType": $scope.userData.loginType,
+                    "title": $scope.title,
+                    "reason": res,
+                    "senderName": name,
+                    "senderId": id,
+                    "senderMN": senderMN,
+                    "receiverEmail": $scope.allStudentEmailIds,
+                    "date": $scope.selectedDate_quickMsg,
+                    "primColor": "red",
+                    "messageType": "wholeClass",
+                    "schoolName": schoolName
+                }
+                httpFactory.post(api, obj).then(function (data) {
+                    var checkStatus = httpFactory.dataValidation(data);
+                    if (checkStatus) {
+                        var loginAlert = $uibModal.open({
+                            scope: $scope,
+                            templateUrl: '/html/templates/dashboardsuccess.html',
+                            windowClass: 'show',
+                            backdropClass: 'static',
+                            keyboard: false,
+                            controller: function ($scope, $uibModalInstance) {
+                                $scope.message = "Successfully sent the event";
+                            }
+                        })
+                        // var quickMsgPostedData = data.data.data;
+                        var objData = {
+                            'id': obj.userId,
+                            'title': obj.title,
+                            'color': obj.primColor,
+                            'startsAt': $filter('date')($scope.selectedDate_quickMsg, "h:mm a"),
+                            'endsAt': $filter('date')($scope.selectedDate_quickMsg, "h:mm a"),
+                            'draggable': true,
+                            'resizable': true,
+                            'actions': actions,
+                            'url': obj.url,
+                            "reason": res,
+                            "senderName": name,
+                            "senderId": id,
+                            "senderMN": senderMN,
+                            "receiverEmail": email,
+                            "receiverName": receiverName,
+                            "receiverId": receiverId,
+                            "receiverMN": receiverMN,
+                            /*  */
+                        }
+                        ownerEvents.push(objData);
+                        vm.events.push(objData);
+                    }
+                    else {
+                        var loginAlert = $uibModal.open({
+                            scope: $scope,
+                            templateUrl: '/html/templates/dashboardwarning.html',
+                            windowClass: 'show',
+                            backdropClass: 'static',
+                            keyboard: false,
+                            controller: function ($scope, $uibModalInstance) {
+                                $scope.message = "Event Send Failed";
+                            }
+                        })
+                    }
+                })
+
+            }
         }
     }
 
@@ -530,42 +604,7 @@ app.controller('quickMsgCtl', function ($scope, $rootScope, $state, $rootScope, 
     var originalFormat = calendarConfig.dateFormats.hour;
     calendarConfig.dateFormats.hour = 'HH:mm';
     if ($scope.userData.loginType == 'teacher') {
-        var actions = [
-            //     {
-            //     label: 'Re-Schedule',
-            //     onClick: function (args) {
-            //         console.log("args.calendarEvent: " + args.calendarEvent);
-            //         console.log("JSON args.calendarEvent: " + JSON.stringify(args.calendarEvent));
-            //         var date = args.calendarEvent.startsAt;
-            //         var reqDate = date.getDate() - 1;
-            //         var reqMonth = date.getMonth();
-            //         var reqYear = date.getFullYear();
-            //         var reqHr = date.getHours();
-            //         var reqMin = date.getMinutes();
-            //         var reqSec = date.getSeconds();
-            //         var consolidateDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
-            //         console.log("args.calendarEvent.id: " + args.calendarEvent.id);
-            //         console.log("args.calendarEvent: " + JSON.stringify(args.calendarEvent));
-            //         if (consolidateDate > $scope.todayDate) {
-            //             var id = args.calendarEvent.id;
-            //             console.log("id: " + id);
-            //             $state.go('dashboard.eventReschedule', { 'id': id });
-            //         }
-            //         else {
-            //             var loginAlert = $uibModal.open({
-            //                 scope: $scope,
-            //                 templateUrl: '/html/templates/dashboardwarning.html',
-            //                 windowClass: 'show',
-            //                 backdropClass: 'static',
-            //                 keyboard: false,
-            //                 controller: function ($scope, $uibModalInstance) {
-            //                     $scope.message = "Sorry you not allow to edit";
-            //                 }
-            //             })
-            //         }
-            //     }
-            // }
-        ];
+        var actions = [];
     }
     vm.events = [];
     vm.cellIsOpen = true;

@@ -113,12 +113,11 @@ app.factory('httpFactory', function ($http, $q, $rootScope) {
             console.log("file: " + file);
             console.log("file: " + file.upload);
 
-            fd.append('img', file.upload);
+            fd.append('myProfPic', file.upload);
             console.log("fd: " + fd);
-
             $http.post(postUrl, fd, {
-                transformRequest: angular.identity,
-                headers: { 'Content-Type': undefined }
+                transformRequest: angular.identity
+                // headers: { 'Content-Type': 'multipart/form-data' }
             }).then(function (response) {
                 console.log("lego--" + response)
                 dfd.resolve(response);

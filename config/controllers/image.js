@@ -19,15 +19,15 @@ var fileStorage = multer.diskStorage({
         }
     }
 });
-var schoolLogos = multer({ storage: fileStorage, limits: { fileSize: 1000000 } }).single('img');
+var upload = multer({ storage: fileStorage, limits: { fileSize: 1000000 } }).single('myProfPic');
 
 /* ##### End upload file  ##### */
 module.exports.schoolLogo = function (req, res) {
     console.log("schoolLogo-->");
     var responseData;
-    schoolLogos(req, res, function (err) {
+    upload(req, res, function (err) {
         console.log("req.img: " + req.img);
-        console.log("req.files: " + req.files);
+       // console.log("req.files: " + JSON.stringify(req.files));
         console.log("req.file: " + req.file);
         //console.log("req.file.originalname: "+req.file.originalname);
         if (err) {
@@ -44,7 +44,7 @@ module.exports.schoolLogo = function (req, res) {
             }
         }
         else {
-            console.log("req.file: " + req.file);
+            console.log("req.file*: " + req.file);
             if (!req.file) {
                 res.json({ success: true, message: 'No file was selected' });
             }

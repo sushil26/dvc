@@ -4,6 +4,8 @@ var bodyParser = require('body-parser')
 var nodemailer = require('nodemailer');
 //var fileUpload = require('express-fileupload');
 
+var multer = require('multer');
+
 var fs = require('fs'),
     url = require('url'),
     path = require('path');
@@ -13,6 +15,7 @@ app.use(bodyParser.json({
     limit: '100mb'
 }));
 
+app.use(multer());
 //app.use(fileUpload());
 
 // module.exports = function (app, config) {

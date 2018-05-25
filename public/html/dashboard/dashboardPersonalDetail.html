@@ -11,11 +11,9 @@
                     </div>
                     <div class="panel-body bio-graph-info" style="padding: 1px;">
                         <div ng-if="loginType!='vc4allAdmin'" class="row" style="margin:20px!important;">
-                            <div class="bio-row" ng-if="loginType!='vc4allAdmin'">
-                                <p>
-                                    <span>
-                                        <b style="color:teal;">School Name</b>
-                                    </span> {{userData[0].schoolName}} </p>
+                            <div class="row" ng-if="loginType!='vc4allAdmin'">
+
+                                <h2>{{userData[0].schoolName}} </h2>
                             </div>
                             <div class="col-md-6 col-lg-4 col-sm-6" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
                                 <table class="table table-sm" ng-if="loginType=='studParent'">

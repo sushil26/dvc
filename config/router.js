@@ -64,9 +64,9 @@ module.exports = function (app) {
 
     app.get('/vc/getStudListForCS/:schoolName/:clas/:section', event.getStudListForCS);
     app.get('/vc/getTeacherListForCS/:schoolName/:clas/:section', event.getTeacherListForCS);
+    app.get('/vc/getToDate', event.getToDate);
     app.post('/vc/eventSend', event.eventSend);
     app.post('/vc/eventReSchedule/:id', event.eventReSchedule);
-    app.get('/vc/getToDate', event.getToDate);
     app.get('/vc/eventGet/:id', event.eventGet);
     app.get('/vc/getEventById/:id', event.getEventById);
     app.get('/vc/getStudentAttendance/:id', event.getStudentAttendance);

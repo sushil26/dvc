@@ -83,7 +83,7 @@ app.controller('quickMsgCtl', function ($scope, $rootScope, $state, $rootScope, 
                 var reqSec = todayDate.getSeconds();
                 $scope.todayDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
                 console.log("consolidateDate: " + $scope.consolidateDate);
-                $scope.eventGet();
+                $scope.quickMsgGet();
             }
             else {
             }

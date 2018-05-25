@@ -112,7 +112,7 @@ app.factory('httpFactory', function ($http, $q, $rootScope) {
             var fd = new FormData();
             console.log("file: " + file);
 
-            fd.append('img', file);
+            fd.append('img', file.upload);
             console.log("fd: " + fd);
 
             $http.post(postUrl, fd, {

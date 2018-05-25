@@ -107,7 +107,7 @@ module.exports.pswdGenerate = function (req, res) {
                                 to: email,
                                 subject: 'VC4ALL Credential',
                                 html:
-                                "<html><head><p><b>Dear Careator Employee, </b></p><p>Please note, Your email Id is verified successfully,  you can access the below link by using given password.<p>Password: "+password+"</p></p><p>Regards</p><p><b>Careator Technologies Pvt. Ltd</b></p></head><body></body></html>"
+                                "<html><body><p><b>Dear Careator Employee, </b></p><p>Please note, Your email Id is verified successfully,  you can access the below link by using given password.<p>Password: "+password+"</p></p><p>Regards</p><p><b>Careator Technologies Pvt. Ltd</b></p></body></html>"
                                
                             };
                             transporter.sendMail(mailOptions, function (error, info) {

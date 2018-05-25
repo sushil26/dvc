@@ -66,7 +66,7 @@ app.controller('quickMsgCtl', function ($scope, $rootScope, $state, $rootScope, 
     $scope.getToDate = function () {
         console.log("Get To Date-->");
         var api = $scope.propertyJson.VC_getToDate;
-        console.log("api: "+api);
+        console.log("api: " + api);
         httpFactory.get(api).then(function (data) {
             var checkStatus = httpFactory.dataValidation(data);
             console.log("data--" + JSON.stringify(data.data));
@@ -437,7 +437,7 @@ app.controller('quickMsgCtl', function ($scope, $rootScope, $state, $rootScope, 
 
     $scope.quickMsgSend = function (res, name, id, studUserId, email, senderMN, receiverName, receiverId, receiverMN, stud_id, stud_cs, stud_name) {
         console.log("eventSend-->");
-
+        $('#quickMsg_modal').modal('hide');
         var api = $scope.propertyJson.VC_quickMsgSend;
         //var api = "http://localhost:5000/vc/eventSend";
         console.log("api: " + api);

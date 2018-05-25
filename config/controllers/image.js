@@ -70,7 +70,8 @@ module.exports.upload = function (req, res) {
 if (!req.files)
     return res.status(400).send('No files were uploaded.');
  
-    console.log("req.files.sampleFile: "+req.files.sampleFile);
+    console.log("req.files.sampleFile: "+req.files.logo);
+    console.log("req.files.originalname: "+req.files.originalname);
     //var fileFullPath = file.originalname
   // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
   let sampleFile = req.files.sampleFile;

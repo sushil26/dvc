@@ -63,7 +63,7 @@ app.controller('adminCreateCtl', function ($scope, $rootScope, $filter, $window,
             "pinCode": $scope.pinCode,
             "country": $scope.country,
             "pswd": $scope.pswd,
-            "LogoPath": $scope.filePath
+            "logoPath": $scope.filePath
         }
         console.log("objJson: " + JSON.stringify(objJson));
         var api = $scope.propertyJson.VC_adminCreate;

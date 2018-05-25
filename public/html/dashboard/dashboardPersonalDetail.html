@@ -21,6 +21,55 @@
                                     </tr>
                                     <tr>
                                         <td>
+                                            <b style="color:teal;">Student Name</b>
+                                        </td>
+                                        <td>{{userData[0].firstName +" "+ userData[0].lastName}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <b style="color:teal;">ID</b>
+                                        </td>
+                                        <td> {{userData[0].schoolId}}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <b style="color:teal;">Class</b>
+                                        </td>
+                                        <td>
+                                            <span ng-repeat="cs in userData[0].cs">{{cs.class}}-{{cs.section}}</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                                <b style="color:teal;">D.O.B</b>
+                                        </td>
+                                        <td>
+                                                {{userData[0].dob | date:' d MMM yyyy'}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                                <b style="color:teal;">D.O.Joining</b>
+                                        </td>
+                                        <td>
+                                                {{userData[0].doj | date:' d MMM yyyy'}}
+                                        </td>
+                                    </tr>
+
+
+                                </table>
+                            </div>
+                            <div class="col-md-4">
+
+                                <table class="table table-sm" ng-if="loginType=='studParent'">
+                                    <tr>
+                                        <td>
+                                            <img style="max-height:150px;" src="father.jpg">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
                                             <b style="color:teal;">Father Name</b>
                                         </td>
                                         <td> {{userData[0].parentName}}</td>

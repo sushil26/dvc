@@ -33,8 +33,8 @@ app.controller('adminCreateCtl', function ($scope, $rootScope, $filter, $window,
                 $scope.status = data.data.status;
                 $scope.message = data.data.message;
                 console.log("image is not uploaded");
-                console.log("JSON.stringify($scope.postJson): " + JSON.stringify(postJson));
-                $scope.savePost();
+                // console.log("JSON.stringify($scope.postJson): " + JSON.stringify(postJson));
+                // $scope.savePost();
 
             }
         });

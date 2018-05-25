@@ -19,17 +19,17 @@ var fileStorage = multer.diskStorage({
         }
     }
 });
-var schoolLogo = multer({ storage: fileStorage, limits: { fileSize: 1000000 } }).single('img');
+var schoolLogos = multer({ storage: fileStorage, limits: { fileSize: 1000000 } }).single('img');
 
 /* ##### End upload file  ##### */
 module.exports.schoolLogo = function (req, res) {
     console.log("schoolLogo-->");
     var responseData;
-    schoolLogo(req, res, function (err) {
-        console.log("req.myProfPic: " + req.img);
-        console.log("req.file: " + req.file);
+    schoolLogos(req, res, function (err) {
+        console.log("req.img: " + req.img);
+        console.log("req.files: " + req.files);
         // console.log("req.files: " + req.files);
-        // console.log("req.file.originalname: "+req.file.originalname);
+        console.log("req.file.originalname: "+req.file.originalname);
         if (err) {
             console.log("errrr: imageUpload.js " + err);
             if (err.code === 'LIMIT_FILE_SIZE') {

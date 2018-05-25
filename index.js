@@ -15,11 +15,11 @@ app.use(bodyParser.json({
 
 app.use(fileUpload());
 
-module.exports = function (app, config) {
+// module.exports = function (app, config) {
     //app.set('view engine','html');
     // app.use(session({secret: "Your secret key"}));
     //app.use(multer({ dest: './config'}));
-}
+// }
 var queryId = null;
 var userName = null;
 var time = null;

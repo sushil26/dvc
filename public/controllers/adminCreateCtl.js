@@ -5,30 +5,39 @@ app.controller('adminCreateCtl', function ($scope, $rootScope, $filter, $window,
 
     $scope.schoolLogoStorage = function () {
         console.log("schoolLogoStorage-->");
-        if (file.upload) {
-            console.log("file: " + file);
-            var uploadURL = $scope.propertyJson.BackendURI_postImgUpload;
-            httpFactory.uploadFile(uploadURL, file).then(function (data) {
-                var checkStatus = httpFactory.dataValidation(data);
-                if (checkStatus) {
-                    $scope.getUpdateofImage = data;
-                    $scope.message = data.data.message;
-                    $scope.filePath = data.data.fileFullPath;
-                    $scope.status = data.data.success;
-                    if ($scope.filePath) {
-                        editPostJson.postUploadPic = $scope.filePath
-                    }
-                    /* ### Start Default value to edit models ### */
-                    $scope.file.upload = [];
-                    /* ### End Default value to edit models ### */
-                    // $scope.updatePost(id, index);
-                } else {
-                    $scope.status = data.data.status;
-                    $scope.message = data.data.message;
-                    // $scope.updatePost(id, index);
+       /* #####  Start Upload File ###### */
+       if ($scope.file.upload) {
+        var uploadURL = $scope.propertyJson.VC_schoolLogo;
+        console.log("$scope.file from : alumRegCtr.js: " + $scope.file);
+        console.log("$scope.file.upload from : alumRegCtr.js: " + $scope.file.upload);
+        httpFactory.uploadFile(uploadURL, $scope.file).then(function (data) {
+            console.log("hello " + JSON.stringify(data));
+            var checkStatus = httpFactory.dataValidation(data);
+            console.log("checkStatus: " + checkStatus);
+            console.log("data.data.success: " + data.data.success);
+            if (checkStatus) {
+                console.log("$scope.photo" + JSON.stringify(data));
+                $scope.getUpdateofImage = data;
+                console.log("$scope.getUpdateofImage" + JSON.stringify($scope.getUpdateofImage));
+                $scope.message = data.data.message;
+                $scope.filePath = data.data.fileFullPath;
+                $scope.status = data.data.success;
+                if ($scope.filePath) {
+                    postJson.postUploadPic = $scope.filePath
                 }
-            });
-        }
+                // // console.log("JSON.stringify($scope.postJson): " + JSON.stringify(postJson));
+                // $scope.savePost();
+           } else {
+                $scope.status = data.data.status;
+                $scope.message = data.data.message;
+                console.log("image is not uploaded");
+                console.log("JSON.stringify($scope.postJson): " + JSON.stringify(postJson));
+                $scope.savePost();
+
+            }
+        });
+    }
+    /* #####  End Upload File ###### */
         else{
             alert("logo is required");
         }

@@ -113,7 +113,7 @@ app.factory('httpFactory', function ($http, $q, $rootScope) {
             console.log("file: " + file);
             console.log("file: " + file.upload);
 
-            fd.append('img', file.upload);
+            fd.append('myProfPic', file.upload);
             console.log("fd: " + fd);
 
             $http.post(postUrl, fd, {

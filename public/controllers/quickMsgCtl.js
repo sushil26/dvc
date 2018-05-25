@@ -459,6 +459,7 @@ app.controller('quickMsgCtl', function ($scope, $rootScope, $state, $rootScope, 
                     "messageType": "wholeClass",
                     "schoolName": schoolName
                 }
+                console.log("obj: "+JSON.stringify(obj));
                 httpFactory.post(api, obj).then(function (data) {
                     var checkStatus = httpFactory.dataValidation(data);
                     if (checkStatus) {

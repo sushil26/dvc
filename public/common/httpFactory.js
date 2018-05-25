@@ -117,7 +117,7 @@ app.factory('httpFactory', function ($http, $q, $rootScope) {
             console.log("fd: " + fd);
             $http.post(postUrl, fd, {
                 transformRequest: angular.identity,
-                headers: { 'Content-Type': undefined}
+                headers: { 'Content-Type': false}
             }).then(function (response) {
                 console.log("lego--" + response)
                 dfd.resolve(response);

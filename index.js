@@ -15,13 +15,13 @@ app.use(bodyParser.json({
     limit: '100mb'
 }));
 
-app.use(multer());
+//app.use(multer());
 //app.use(fileUpload());
 
 // module.exports = function (app, config) {
     //app.set('view engine','html');
     // app.use(session({secret: "Your secret key"}));
-    //app.use(multer({ dest: './config'}));
+    app.use(multer({ dest: './public/schoolLogo'}));
 // }
 var queryId = null;
 var userName = null;

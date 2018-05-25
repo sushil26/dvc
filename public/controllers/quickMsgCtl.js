@@ -366,15 +366,19 @@ app.controller('quickMsgCtl', function ($scope, $rootScope, $state, $rootScope, 
         console.log("api: " + api);
         httpFactory.get(api).then(function (data) {
             var checkStatus = httpFactory.dataValidation(data);
-                       if (checkStatus) {
+            if (checkStatus) {
                 $scope.studentList = data.data.data;
                 console.log("studentList: " + JSON.stringify($scope.studentList));
                 for (var x = 0; x < $scope.studentList.length; x++) {
                     $scope.studList.push({ "id": $scope.studentList[x]._id, "name": $scope.studentList[x].firstName, "studId": $scope.studentList[x].schoolId });
 
                 }
-                $scope.studList.push({"name": "ALL", "studId": "ALL"});
+               
                 console.log(" $scope.studList.length: " + $scope.studList.length);
+                if($scope.studList.length>0)
+                {
+                    $scope.studList.push({ "name": "ALL", "studId": "ALL" });
+                }
                 //   $scope.css = $scope.teacherData[0].css;
                 //   console.log("$scope.css: " + JSON.stringify($scope.css));
             }

@@ -25,6 +25,7 @@ app.controller('dashboardController', function ($scope, $rootScope, $window, htt
     $scope.events_subMenu = true;
     $scope.academic_subMenu = true;
     $scope.setting_subMenu = true;
+      $scope.comm_subMenu = true;
 
     $scope.iconMenuClick = function () {
         console.log("iconMenuClick--> ");
@@ -40,6 +41,7 @@ app.controller('dashboardController', function ($scope, $rootScope, $window, htt
             $scope.events_subMenu = true;
             $scope.academic_subMenu = true;
             $scope.setting_subMenu = true;
+            $scope.comm_subMenu = true;
         } else {
             console.log("if is false");
             $scope.sideBarMenu = true;

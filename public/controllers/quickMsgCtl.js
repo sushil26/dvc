@@ -415,13 +415,13 @@ app.controller('quickMsgCtl', function ($scope, $rootScope, $state, $rootScope, 
             $scope.quickMsgSend(reason, senderName, studId, studUserId, email, senderMN, receiverName, receiverId, receiverMN, stud_id, stud_cs, stud_name);
         }
         if ($scope.userLoginType == 'teacher') {
+            var un = $scope.teacherData[0].firstName + " " + $scope.teacherData[0].lastName;
+            var senderMN = $scope.teacherData[0].mobNumber;
+            var teacherId = $scope.teacherData[0].schoolId;
             if ($scope.remoteCalendarId != 'all') {
                 console.log("$scope.studentPersonalData[0]: " + JSON.stringify($scope.studentPersonalData[0]));
-                var un = $scope.teacherData[0].firstName + " " + $scope.teacherData[0].lastName;
                 var studName = $scope.studentPersonalData[0].firstName + " " + $scope.studentPersonalData[0].lastName;
                 var teacherName = un;
-                var senderMN = $scope.teacherData[0].mobNumber;
-                var teacherId = $scope.teacherData[0].schoolId;
                 if ($scope.studentPersonalData[0].motherEmail) {
                     var email = $scope.studentPersonalData[0].parentEmail + "," + $scope.studentPersonalData[0].motherEmail;
                 }
@@ -440,6 +440,7 @@ app.controller('quickMsgCtl', function ($scope, $rootScope, $state, $rootScope, 
             else {
 
                 console.log("eventSend to all parents-->");
+                var un = $scope.teacherData[0].firstName + " " + $scope.teacherData[0].lastName;
                 $('#quickMsg_modal').modal('hide');
                 var api = $scope.propertyJson.VC_bulkEmail_quickMsg;
                 //var api = "http://localhost:5000/vc/eventSend";
@@ -448,16 +449,16 @@ app.controller('quickMsgCtl', function ($scope, $rootScope, $state, $rootScope, 
                 var obj = {
                     "userId": $scope.userData.id,
                     "senderLoginType": $scope.userData.loginType,
-                    "title": $scope.title,
-                    "reason": res,
+                    "title": title,
+                    "reason": reason,
                     "senderName": name,
-                    "senderId": id,
+                    "senderId": teacherId,
                     "senderMN": senderMN,
                     "receiverEmail": $scope.allStudentEmailIds,
                     "date": $scope.selectedDate_quickMsg,
                     "primColor": "red",
                     "messageType": "wholeClass",
-                    "cs": [{"class":$scope.cssSelect.class, "section":$scope.cssSelect.section}],
+                    "cs": [{ "class": $scope.cssSelect.class, "section": $scope.cssSelect.section }],
                     "schoolName": schoolName
                 }
                 console.log("obj: " + JSON.stringify(obj));

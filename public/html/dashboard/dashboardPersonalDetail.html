@@ -11,6 +11,12 @@
 
                     </div>
                     <div class="panel-body bio-graph-info" style="padding: 1px;">
+                        <div ng-if="loginType=='studParent'" class="row" style="margin: 20px !important;">
+
+                            <img style="max-height:150px;margin-left: 20px;"   src="father.jpg">
+                            <img style="max-height:150px;margin-left: 20px;"  src="mother.jpg">
+
+                        </div>
                         <div ng-if="loginType!='vc4allAdmin'" class="row" style="margin:20px!important;">
                             <div class="bio-row" ng-if="loginType=='admin'">
                                 <p>
@@ -64,7 +70,7 @@
                                     <span>
                                         <b style="color:teal;">Class</b>
 
-                                    </span> 
+                                    </span>
                                     <span ng-repeat="cs in userData[0].cs">{{cs.class}}-{{cs.section}}</span>
                                 </p>
                             </div>

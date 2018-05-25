@@ -11,10 +11,10 @@ app.controller('quickMsgCtl', function ($scope, $rootScope, $state, $rootScope, 
     var schoolName = $scope.userData.schoolName;
     $scope.propertyJson = $rootScope.propertyJson;
 
-    $scope.eventGet = function () {
+    $scope.quickMsgGet = function () {
         console.log("eventGet-->");
         var id = $scope.userData.id
-        var api = $scope.propertyJson.VC_eventGet + "/" + id;
+        var api = $scope.propertyJson.VC_quickMsgGet + "/" + id;
         //var api = "http://localhost:5000/vc/eventGet"+ "/" + id;;
         $scope.calendarOwner = "Your";
 

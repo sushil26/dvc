@@ -1,6 +1,6 @@
 app.controller('quickMsgCtl', function ($scope, $rootScope, $state, $rootScope, $compile, $window, $filter, httpFactory, sessionAuthFactory, moment, calendarConfig, $uibModal) {
     console.log("quickMsgCtl==>");
-    
+
     var dayEventmodal; /* ### Note: open model for event send ###  */
     var studEvents = []; /* ### Note: selected student events ### */
     var teacherEvents = []; /* ### Note: selected teacher events ### */
@@ -35,8 +35,7 @@ app.controller('quickMsgCtl', function ($scope, $rootScope, $state, $rootScope, 
                         "student_Name": $scope.eventData[x].student_Name,
                         'title': $scope.eventData[x].title,
                         'color': $scope.eventData[x].primColor,
-                        'startsAt': new Date($scope.eventData[x].start),
-                        'endsAt': new Date($scope.eventData[x].end),
+                        'startsAt': new Date($scope.eventData[x].date),
                         'draggable': true,
                         'resizable': true,
                         'actions': actions,

@@ -24,9 +24,7 @@ app.controller('adminCreateCtl', function ($scope, $rootScope, $filter, $window,
                 $scope.message = data.data.message;
                 $scope.filePath = data.data.fileFullPath;
                 $scope.status = data.data.success;
-                if ($scope.filePath) {
-                    postJson.postUploadPic = $scope.filePath
-                }
+               
                 // // console.log("JSON.stringify($scope.postJson): " + JSON.stringify(postJson));
                  $scope.adminCreate();
            } else {

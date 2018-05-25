@@ -217,49 +217,12 @@
                                         <b style="color:teal;">Name</b>
                                     </span> {{userData[0].firstName +" "+ userData[0].lastName}} </p>
                             </div>
-
-                            <div class="bio-row" ng-if="loginType=='teacher'">
-                                <p>
-                                    <span>
-                                        <b style="color:teal;">Teacher Name</b>
-                                    </span> {{userData[0].firstName +" "+ userData[0].lastName}}</p>
-                            </div>
-                            <div class="bio-row" ng-if="loginType=='teacher'">
-                                <p>
-                                    <span>
-                                        <b style="color:teal;">ID</b>
-                                    </span> {{userData[0].schoolId}} </p>
-                            </div>
-
-                            <div class="bio-row" ng-if="loginType=='teacher'">
-                                <p>
-                                    <span>
-                                        <b style="color:teal;">Mobile Number</b>
-                                    </span> {{userData[0].mobNumber}} </p>
-                            </div>
-
-
-
-
-
-                            <div class="bio-row" ng-if=" loginType=='teacher'">
-                                <p>
-                                    <span>
-                                        <b style="color:teal;">Date of birth</b>
-                                    </span> {{userData[0].dob | date:' d MMM yyyy'}}</p>
-                            </div>
-
-                            <div class="bio-row" ng-if="loginType=='teacher' || loginType=='admin'">
+                            <div class="bio-row" ng-if="loginType=='admin'">
                                 <p>
                                     <span>
                                         <b style="color:teal;">E-Mail</b>
                                     </span> {{userData[0].email}}</p>
                             </div>
-
-
-
-
-
 
                         </div>
                         <div style="margin: 20px !important;" class="row" ng-if="loginType=='teacher'">

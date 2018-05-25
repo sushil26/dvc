@@ -19,6 +19,8 @@
 "VC_deleteEvent": "vc/deleteEvent",
 "VC_eventUpdate": "vc/eventUpdate",
 "VC_eventSend": "vc/eventSend",
+"VC_quickMsgSend": "vc/quickMsgSend",
+"VC_quickMsgGet": "vc/quickMsgGet",
 "VC_checkPassword": "vc/checkPassword",
 "VC_passwordUpdate": "vc/passwordUpdate",
 "VC_getToDate": "vc/getToDate",

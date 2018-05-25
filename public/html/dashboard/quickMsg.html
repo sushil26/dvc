@@ -70,7 +70,7 @@
                                             <div class="panel-actions">
                                                 <div style="float:left !important; position: absolute;
                               left: 0;">
-                                                   <select class="btn btn-warning" ng-if="userLoginType=='teacher'" placeholder="select" ng-model="cssSelect" ng-change="getStudListForCS(cssSelect)"
+                                                    <select class="btn btn-warning" ng-if="userLoginType=='teacher'" placeholder="select" ng-model="cssSelect" ng-change="getStudListForCS(cssSelect)"
                                                         ng-options="css as css.class+ '-' + css.section + '-' + css.subject for css in teacherData[0].css">
                                                         <option value="" disabled selected>Class</option>
                                                     </select>
@@ -146,12 +146,12 @@
                                         <div class="modal-body">
                                             <div style="margin:20px !important;">
                                                 <form class="form-horizontal" role="form">
-                                                        <div class="form-group">
-                                                                <label class="col-lg-2 control-label">Date</label>
-                                                                <div class="col-lg-6">
-                                                                    {{selectedDateForEvent}}
-                                                                </div>
-                                                            </div>
+                                                    <div class="form-group">
+                                                        <label class="col-lg-2 control-label">Date</label>
+                                                        <div class="col-lg-6">
+                                                            {{selectedDate_quickMsg}}
+                                                        </div>
+                                                    </div>
                                                     <div class="form-group">
                                                         <label class="col-lg-2 control-label">Subject</label>
                                                         <div class="col-lg-6">
@@ -167,12 +167,13 @@
                                                 </form>
                                             </div>
                                         </div>
+                                        <div class="modal-footer">
+                                            <!-- <button data-dismiss="modal" class="btn btn-default" type="button">Close</button> -->
+                                            <button type="submit" class="btn btn-primary" ng-click="saveQuickMsg(subject, quickmsg)">Send</button>
+                                            <button type="reset" class="btn btn-danger">Cancel</button>
+                                        </div>
                                     </div>
-                                    <div class="modal-footer">
-                                        <!-- <button data-dismiss="modal" class="btn btn-default" type="button">Close</button> -->
-                                        <button type="submit" class="btn btn-primary" ng-click="hghghghgh()">Send</button>
-                                        <button type="reset" class="btn btn-danger">Cancel</button>
-                                    </div>
+
                                 </div>
                             </div>
                             <!-- #####  End Quick Message   ##### -->

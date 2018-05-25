@@ -1,5 +1,6 @@
 var user = require('./controllers/user');
 var event = require('./controllers/event');
+var quickMsg = require('./controllers/quickMsg');
 var image = require('./controllers/image');
 var adminAction = require('./controllers/adminAction');
 var school = require('./controllers/school');
@@ -56,6 +57,10 @@ module.exports = function (app) {
     // app.post('/vc/atte', adminAction.getAllClass);
 
     app.post('/vc/schoolLogo', image.upload);
+
+    app.post('/vc/quickMsgSend', quickMsg.quickMsgSend);
+    app.get('/vc/quickMsgGet/:id', quickMsg.quickMsgGet);
+    app.get('/vc/getQuickMsgById/:id', quickMsg.getQuickMsgById);
 
     app.get('/vc/getStudListForCS/:schoolName/:clas/:section', event.getStudListForCS);
     app.get('/vc/getTeacherListForCS/:schoolName/:clas/:section', event.getTeacherListForCS);

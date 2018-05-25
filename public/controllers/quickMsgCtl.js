@@ -1,6 +1,6 @@
 app.controller('quickMsgCtl', function ($scope, $rootScope, $state, $rootScope, $compile, $window, $filter, httpFactory, sessionAuthFactory, moment, calendarConfig, $uibModal) {
     console.log("quickMsgCtl==>");
-    console.log("dashboardScheduleCtrl==>");
+
     var dayEventmodal; /* ### Note: open model for event send ###  */
     var studEvents = []; /* ### Note: selected student events ### */
     var teacherEvents = []; /* ### Note: selected teacher events ### */
@@ -11,10 +11,10 @@ app.controller('quickMsgCtl', function ($scope, $rootScope, $state, $rootScope, 
     var schoolName = $scope.userData.schoolName;
     $scope.propertyJson = $rootScope.propertyJson;
 
-    $scope.eventGet = function () {
+    $scope.quickMsgGet = function () {
         console.log("eventGet-->");
         var id = $scope.userData.id
-        var api = $scope.propertyJson.VC_eventGet + "/" + id;
+        var api = $scope.propertyJson.VC_quickMsgGet + "/" + id;
         //var api = "http://localhost:5000/vc/eventGet"+ "/" + id;;
         $scope.calendarOwner = "Your";
 
@@ -35,8 +35,7 @@ app.controller('quickMsgCtl', function ($scope, $rootScope, $state, $rootScope, 
                         "student_Name": $scope.eventData[x].student_Name,
                         'title': $scope.eventData[x].title,
                         'color': $scope.eventData[x].primColor,
-                        'startsAt': new Date($scope.eventData[x].start),
-                        'endsAt': new Date($scope.eventData[x].end),
+                        'startsAt': new Date($scope.eventData[x].date),
                         'draggable': true,
                         'resizable': true,
                         'actions': actions,
@@ -67,6 +66,7 @@ app.controller('quickMsgCtl', function ($scope, $rootScope, $state, $rootScope, 
     $scope.getToDate = function () {
         console.log("Get To Date-->");
         var api = $scope.propertyJson.VC_getToDate;
+        console.log("api: "+api);
         httpFactory.get(api).then(function (data) {
             var checkStatus = httpFactory.dataValidation(data);
             console.log("data--" + JSON.stringify(data.data));
@@ -373,10 +373,9 @@ app.controller('quickMsgCtl', function ($scope, $rootScope, $state, $rootScope, 
                     $scope.studList.push({ "id": $scope.studentList[x]._id, "name": $scope.studentList[x].firstName, "studId": $scope.studentList[x].schoolId });
 
                 }
-               
+
                 console.log(" $scope.studList.length: " + $scope.studList.length);
-                if($scope.studList.length>0)
-                {
+                if ($scope.studList.length > 0) {
                     $scope.studList.push({ "name": "All", "studId": "Students" });
                 }
                 //   $scope.css = $scope.teacherData[0].css;
@@ -393,34 +392,9 @@ app.controller('quickMsgCtl', function ($scope, $rootScope, $state, $rootScope, 
     $scope.eventColors = ['red', 'green', 'blue'];
 
 
-    $scope.save = function (date, sd, ed, s, e, sFiltered, eFiltered, title, reason) {
-        console.log("s: " + s);
-        console.log("e: " + e);
-        console.log("sd: " + sd);
-        console.log("ed: " + ed);
-        var res = $filter('limitTo')(s, 2);
-        console.log("res: " + res);
-        console.log("$scope.startDate with filter : " + $filter('date')(s, "EEE MMM dd y"));
-        console.log("$scope.endDate with filter: " + $filter('date')(e, "HH:mm:ss 'GMT'Z (IST)'"));
-
+    $scope.saveQuickMsg = function (title, reason) {
+        console.log("saveQuickMsg-->");
         $scope.title = title;
-        $scope.date = date,
-            $scope.sd = sd,
-            $scope.ed = ed,
-            $scope.startD = s;
-        $scope.startFiltered = sFiltered;
-        $scope.endFiltered = eFiltered;
-        $scope.startDate = $filter('date')(s, "EEE MMM dd y");
-        $scope.endDate = $filter('date')(e, "HH:mm:ss 'GMT'Z (IST)'");
-        $scope.endDateRes = $scope.startDate + ' ' + $scope.endDate;
-        $scope.urlDate = $filter('date')(s, "EEEMMMddyHHmmss");
-        console.log("$scope.endDate: " + $scope.endDate);
-        console.log("$scope.urlDate: " + $scope.urlDate);
-        console.log("$scope.endDate: " + $scope.endDate);
-        console.log("$scope.endDateRes: " + $scope.endDateRes);
-
-        dayEventmodal.close('resetModel');
-
         if ($scope.userLoginType == 'studParent') {
             var un = $scope.studentData[0].firstName + " " + $scope.studentData[0].lastName;
             var teacherName = $scope.teacherPersonalData[0].firstName + " " + $scope.teacherPersonalData[0].lastName;
@@ -435,7 +409,7 @@ app.controller('quickMsgCtl', function ($scope, $rootScope, $state, $rootScope, 
             var receiverId = $scope.teacherPersonalData[0].schoolId;
             var receiverMN = $scope.teacherPersonalData[0].mobNumber;
             var studUserId = $scope.userData.id;
-            $scope.eventSend(reason, senderName, studId, studUserId, email, senderMN, receiverName, receiverId, receiverMN, stud_id, stud_cs, stud_name);
+            $scope.quickMsgSend(reason, senderName, studId, studUserId, email, senderMN, receiverName, receiverId, receiverMN, stud_id, stud_cs, stud_name);
         }
         if ($scope.userLoginType == 'teacher') {
             console.log("$scope.studentPersonalData[0]: " + JSON.stringify($scope.studentPersonalData[0]));
@@ -455,168 +429,80 @@ app.controller('quickMsgCtl', function ($scope, $rootScope, $state, $rootScope, 
             var studUserId = $scope.studentPersonalData[0]._id;
             console.log("$scope.studentPersonalData[0]: " + $scope.studentPersonalData[0].schoolId);
             console.log("stud_id: " + stud_id);
-            $scope.eventSend(reason, teacherName, teacherId, studUserId, email, senderMN, receiverName, receiverId, receiverMN, stud_id, stud_cs, stud_name);
+            $scope.quickMsgSend(reason, teacherName, teacherId, studUserId, email, senderMN, receiverName, receiverId, receiverMN, stud_id, stud_cs, stud_name);
         }
 
 
     }
 
-    $scope.eventSend = function (res, name, id, studUserId, email, senderMN, receiverName, receiverId, receiverMN, stud_id, stud_cs, stud_name) {
+    $scope.quickMsgSend = function (res, name, id, studUserId, email, senderMN, receiverName, receiverId, receiverMN, stud_id, stud_cs, stud_name) {
         console.log("eventSend-->");
-        var SIGNALING_SERVER = "https://norecruits.com";
-        //var SIGNALING_SERVER = "http://localhost:5000";
-        var queryLink = null;
-        var peerNew_id = null;
-        var url;
-        signaling_socket = io(SIGNALING_SERVER);
-        signaling_socket.on('connect', function () {
-            console.log("signaling_socket connect-->");
 
-            signaling_socket.on('message', function (config) {
-                console.log("signaling_socket message-->");
+        var api = $scope.propertyJson.VC_quickMsgSend;
+        //var api = "http://localhost:5000/vc/eventSend";
+        console.log("api: " + api);
+        // var email = document.getElementById('eventEmails').value;
+        var obj = {
+            "userId": $scope.userData.id,
+            "senderLoginType": $scope.userData.loginType,
+            "title": $scope.title,
+            "reason": res,
+            "studUserId": studUserId,
+            "senderName": name,
+            "senderId": id,
+            "senderMN": senderMN,
+            "receiverEmail": email,
+            "date": $scope.selectedDate_quickMsg,
+            "primColor": "red",
+            "receiverName": receiverName,
+            "receiverId": receiverId,
+            "receiverMN": receiverMN,
+            "remoteCalendarId": $scope.remoteCalendarId,
+            "student_cs": stud_cs,
+            "student_id": stud_id,
+            "student_Name": stud_name,
+            "schoolName": schoolName
+        }
+        console.log("obj: " + JSON.stringify(obj));
 
-                queryLink = config.queryId;
-                peerNew_id = config.peer_id;
-
-                url = "https://norecruits.com/client/" + peerNew_id + "/" + $scope.urlDate;
-                var api = $scope.propertyJson.VC_eventSend;
-                //var api = "http://localhost:5000/vc/eventSend";
-                console.log("api: " + api);
-                // var email = document.getElementById('eventEmails').value;
-                var obj = {
-                    "userId": $scope.userData.id,
-                    "senderLoginType": $scope.userData.loginType,
-                    "title": $scope.title,
+        httpFactory.post(api, obj).then(function (data) {
+            var checkStatus = httpFactory.dataValidation(data);
+            if (checkStatus) {
+                var loginAlert = $uibModal.open({
+                    scope: $scope,
+                    templateUrl: '/html/templates/dashboardsuccess.html',
+                    windowClass: 'show',
+                    backdropClass: 'static',
+                    keyboard: false,
+                    controller: function ($scope, $uibModalInstance) {
+                        $scope.message = "Successfully sent the event";
+                    }
+                })
+                // var quickMsgPostedData = data.data.data;
+                var objData = {
+                    'id': obj.userId,
+                    'title': obj.title,
+                    'color': obj.primColor,
+                    'startsAt': $filter('date')($scope.selectedDate_quickMsg, "h:mm a"),
+                    'endsAt': $filter('date')($scope.selectedDate_quickMsg, "h:mm a"),
+                    'draggable': true,
+                    'resizable': true,
+                    'actions': actions,
+                    'url': obj.url,
                     "reason": res,
-                    "studUserId": studUserId,
                     "senderName": name,
                     "senderId": id,
                     "senderMN": senderMN,
                     "receiverEmail": email,
-                    "start": $scope.startD,
-                    "end": $scope.endDateRes,
-                    "startAt": $scope.startFiltered,
-                    "endAt": $scope.endFiltered, /* ###Note: have work and this is unwanted */
-                    "primColor": "red",
-                    "url": url,
-                    "date": $scope.date,
-                    "sd": $scope.sd,
-                    "ed": $scope.ed,
                     "receiverName": receiverName,
                     "receiverId": receiverId,
                     "receiverMN": receiverMN,
-                    "remoteCalendarId": $scope.remoteCalendarId,
-                    "student_cs": stud_cs,
-                    "student_id": stud_id,
-                    "student_Name": stud_name,
-                    "schoolName": schoolName
+                    /*  */
                 }
-                console.log("obj: " + JSON.stringify(obj));
-
-                httpFactory.post(api, obj).then(function (data) {
-                    var checkStatus = httpFactory.dataValidation(data);
-                    if (checkStatus) {
-
-                        var loginAlert = $uibModal.open({
-                            scope: $scope,
-                            templateUrl: '/html/templates/dashboardsuccess.html',
-                            windowClass: 'show',
-                            backdropClass: 'static',
-                            keyboard: false,
-                            controller: function ($scope, $uibModalInstance) {
-                                $scope.message = "Successfully sent the event";
-                            }
-                        })
-                        var eventPostedData = data.data.data;
-                        var objData = {
-                            'id': obj.userId,
-                            'title': obj.title,
-                            'color': obj.primColor,
-                            'startsAt': $filter('date')($scope.startFiltered, "h:mm a"),
-                            'endsAt': $filter('date')($scope.endFiltered, "h:mm a"),
-                            'draggable': true,
-                            'resizable': true,
-                            'actions': actions,
-                            'url': obj.url,
-                            "reason": res,
-                            "senderName": name,
-                            "senderId": id,
-                            "senderMN": senderMN,
-                            "receiverEmail": email,
-                            "receiverName": receiverName,
-                            "receiverId": receiverId,
-                            "receiverMN": receiverMN,
-                            /*  */
-                        }
-                        ownerEvents.push(objData);
-                        vm.events.push(objData);
-                    }
-                    else {
-                        var loginAlert = $uibModal.open({
-                            scope: $scope,
-                            templateUrl: '/html/templates/dashboardwarning.html',
-                            windowClass: 'show',
-                            backdropClass: 'static',
-                            keyboard: false,
-                            controller: function ($scope, $uibModalInstance) {
-                                $scope.message = "Event Send Failed";
-                            }
-                        })
-
-                    }
-
-                })
-
-            })
-        })
-        console.log("<--eventSend");
-
-    }
-
-    $scope.timeTableForEventBook = function (day, id) {
-        console.log("timeTableForEventBook-->");
-        console.log("id: " + id + " day: " + day);
-        console.log("$scope.teacherPersonalData[0].timeTable[0].timing[id].startsAt: " + $scope.teacherPersonalData[0].timeTable[0].timing[id].startsAt);
-        console.log("$scope.teacherPersonalData[0].timeTable[0].timing[id].endsAt: " + $scope.teacherPersonalData[0].timeTable[0].timing[id].endsAt);
-
-        var sd = $scope.teacherPersonalData[0].timeTable[0].timing[id].startsAt;
-        var ed = $scope.teacherPersonalData[0].timeTable[0].timing[id].endsAt;
-        console.log("sd: " + sd + " ed: " + ed);
-        console.log("sd: " + new Date(sd) + " ed: " + new Date(ed));
-        $scope.startDate = $filter('date')($scope.selectedDate, "EEE MMM dd y");
-        $scope.startTime = $filter('date')(sd, "h:mm:ss a");
-        $scope.EndTime = $filter('date')(ed, "h:mm:ss a");
-        console.log("startDate: " + $scope.startDate + " startTime: " + $scope.startTime + " EndTime: " + $scope.EndTime);
-        var resultedStartDate = $scope.startDate + ' ' + $scope.startTime;
-        var resultedEndDate = $scope.startDate + ' ' + $scope.EndTime;
-        console.log("resultedStartDate: " + resultedStartDate);
-        console.log("resultedEndDate: " + resultedEndDate);
-        var rsd = new Date(resultedStartDate);
-        var red = new Date(resultedEndDate);
-        var PersonalRemoteCombineCal = ownerEvents.concat(remoteEvent);
-
-        var reqDate = rsd.getDate() - 1;
-        var reqMonth = rsd.getMonth();
-        var reqYear = rsd.getFullYear();
-        var reqHr = rsd.getHours();
-        var reqMin = rsd.getMinutes();
-        var reqSec = rsd.getSeconds();
-        var consolidateDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
-        console.log("consolidateDate: " + consolidateDate + " $scope.todayDate: " + $scope.todayDate);
-        if (consolidateDate > $scope.todayDate) {
-            var conflicts = PersonalRemoteCombineCal.some(function (event) {
-                //   return (event.startsAt <= s && s <= event.endsAt) ||event.startsAt <= e && e <= event.endsAt || s <= event.startsAt && event.startsAt <= e ||s <= event.endsAt && event.endsAt <= e});
-                return (event.startsAt <= rsd && rsd < event.endsAt) ||
-                    event.startsAt < red && red < event.endsAt ||
-                    rsd <= event.startsAt && event.startsAt < red ||
-                    rsd < event.endsAt && event.endsAt < red
-            });
-            console.log("conflicts: " + conflicts);
-            if (conflicts) {
-                console.log("conflicts is there");
-                $('#timeTable_modal').modal('hide');
-                // alert("ON this time you/student not free, try on other time");
-
+                ownerEvents.push(objData);
+                vm.events.push(objData);
+            }
+            else {
                 var loginAlert = $uibModal.open({
                     scope: $scope,
                     templateUrl: '/html/templates/dashboardwarning.html',
@@ -624,56 +510,15 @@ app.controller('quickMsgCtl', function ($scope, $rootScope, $state, $rootScope, 
                     backdropClass: 'static',
                     keyboard: false,
                     controller: function ($scope, $uibModalInstance) {
-                        $scope.message = "ON this time any one of you not free, try on other time";
+                        $scope.message = "Event Send Failed";
                     }
                 })
             }
-            else {
-                $('#timeTable_modal').modal('hide');
-
-                var reqDateWithoutMinus = rsd.getDate();
-                var reqBy5min = rsd.getMinutes() + 5;
-                var reqHr_ed = red.getHours();
-                var reqMin_ed = red.getMinutes() - 5;
-                var reqSec_ed = red.getSeconds();
-                var rsd_alt = new Date(reqYear, reqMonth, reqDateWithoutMinus, reqHr, reqBy5min, reqSec);
-                var red_alt = new Date(reqYear, reqMonth, reqDateWithoutMinus, reqHr_ed, reqMin_ed, reqSec_ed);
-                console.log("rsd: " + rsd);
-                console.log("rsd_alt: " + rsd_alt);
-                console.log("red: " + red);
-                console.log("red_alt: " + red_alt);
-
-                dayEventmodal = $uibModal.open({
-                    scope: $scope,
-                    templateUrl: '/html/templates/dayEventBook.html',
-                    windowClass: 'show',
-                    backdropClass: 'show',
-                    controller: function ($scope, $uibModalInstance) {
-                        var dt = new Date();
-                        $scope.eventDetails = {
-                            "startsAt": rsd_alt,
-                            "endsAt": red_alt
-                        }
-                        console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
-                    }
-                })
-            }
-        }
-        else {
-            $('#timeTable_modal').modal('hide');
-            var loginAlert = $uibModal.open({
-                scope: $scope,
-                templateUrl: '/html/templates/dashboardwarning.html',
-                windowClass: 'show',
-                backdropClass: 'static',
-                keyboard: false,
-                controller: function ($scope, $uibModalInstance) {
-                    $scope.message = "Sorry you have to book the event 24Hrs before of your current date";
-                }
-            })
-        }
-        console.log("<--timeTableForEventBook");
+        })
+        console.log("<--eventSend");
     }
+
+
     var vm = this;
     vm.calendarView = 'month';
     vm.viewDate = moment().startOf('day').toDate();
@@ -835,6 +680,7 @@ app.controller('quickMsgCtl', function ($scope, $rootScope, $state, $rootScope, 
         console.log("timespanClicked-->");
         console.log("date: " + date);
         console.log("teacherPersonalData: " + JSON.stringify($scope.teacherPersonalData));
+        $scope.selectedDate_quickMsg = $filter('date')(date, "MMM d, y")
         $scope.selectedDateForEvent = $filter('date')(date, "EEE");
         console.log("selectedDateForEvent: " + $scope.selectedDateForEvent);
         $scope.selectedDate = date;

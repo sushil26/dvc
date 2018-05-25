@@ -106,7 +106,7 @@ app.factory('httpFactory', function ($http, $q, $rootScope) {
             });
             return dfd.promise;
         },
-        imageUpload: function (file, uploadUrl) {
+        imageUpload: function (uploadUrl, file) {
             var dfd = $q.defer();
             var postUrl = $rootScope.propertyJson.BASE_URL + uploadUrl;
             var fd = new FormData();
@@ -114,6 +114,7 @@ app.factory('httpFactory', function ($http, $q, $rootScope) {
 
             fd.append('img', file);
             console.log("fd: " + fd);
+
             $http.post(postUrl, fd, {
                 transformRequest: angular.identity,
                 headers: { 'Content-Type': undefined }

@@ -55,7 +55,7 @@ module.exports = function (app) {
     app.post('/vc/csvTest', adminAction.csvTest);
     // app.post('/vc/atte', adminAction.getAllClass);
 
-    app.post('/vc/schoolLogo', image.schoolLogo);
+    app.post('/vc/schoolLogo', image.upload);
 
     app.get('/vc/getStudListForCS/:schoolName/:clas/:section', event.getStudListForCS);
     app.get('/vc/getTeacherListForCS/:schoolName/:clas/:section', event.getTeacherListForCS);

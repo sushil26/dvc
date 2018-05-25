@@ -208,31 +208,23 @@
                                             {{userData[0].doj | date:' d MMM yyyy'}}
                                         </td>
                                     </tr>
+                                    <tr>
+                                        <th>Class</th>
+                                        <th>Section</th>
+                                        <th>Subject</th>
+                                    </tr>
+
+
+
+                                    <tr ng-repeat="css in userData[0].css">
+                                        <td>{{css.class}}</td>
+                                        <td>{{css.section}}</td>
+                                        <td>{{css.subject}}</td>
+                                    </tr>
+
                                 </table>
                             </div>
-                            <div class="col-md-6 col-lg-4 col-sm-6" ng-if="loginType=='teacher'">
-                              
-
-                                <table class="table table-sm">
-                               
-                                        <tr>
-                                            <th>Class</th>
-                                            <th>Section</th>
-                                            <th>Subject</th>
-                                        </tr>
-
-                                   
-                                  
-                                        <tr ng-repeat="css in userData[0].css">
-                                            <td>{{css.class}}</td>
-                                            <td>{{css.section}}</td>
-                                            <td>{{css.subject}}</td>
-                                        </tr>
-
-                                    
-                                </table>
-
-                            </div>
+                           
 
                             <div class="bio-row" ng-if="loginType=='admin'">
                                 <p>

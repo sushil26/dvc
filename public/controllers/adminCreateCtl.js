@@ -24,11 +24,9 @@ app.controller('adminCreateCtl', function ($scope, $rootScope, $filter, $window,
                 $scope.message = data.data.message;
                 $scope.filePath = data.data.fileFullPath;
                 $scope.status = data.data.success;
-                if ($scope.filePath) {
-                    postJson.postUploadPic = $scope.filePath
-                }
+               
                 // // console.log("JSON.stringify($scope.postJson): " + JSON.stringify(postJson));
-                // $scope.savePost();
+                 $scope.adminCreate();
            } else {
                 $scope.status = data.data.status;
                 $scope.message = data.data.message;
@@ -62,7 +60,8 @@ app.controller('adminCreateCtl', function ($scope, $rootScope, $filter, $window,
             "state": $scope.state,
             "pinCode": $scope.pinCode,
             "country": $scope.country,
-            "pswd": $scope.pswd
+            "pswd": $scope.pswd,
+            "logoPath": $scope.filePath
         }
         console.log("objJson: " + JSON.stringify(objJson));
         var api = $scope.propertyJson.VC_adminCreate;

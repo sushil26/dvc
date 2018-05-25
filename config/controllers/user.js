@@ -1048,6 +1048,7 @@ module.exports.adminCreate = function (req, res) {
     "country": req.body.country,
     "status": "active",
     "css": [],
+    "logoPath": req.body.logoPath,
     "created_at": createdDate
   }
   var adminObj = {
@@ -1059,6 +1060,7 @@ module.exports.adminCreate = function (req, res) {
     "pswd": req.body.pswd,
     "status": "active",
     "loginType": "admin",
+    "logoPath": req.body.logoPath,
     "created_at": createdDate
   }
   console.log("schoolObj: " + JSON.stringify(schoolObj));

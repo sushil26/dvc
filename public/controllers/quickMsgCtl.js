@@ -215,7 +215,7 @@ app.controller('quickMsgCtl', function ($scope, $rootScope, $state, $rootScope, 
         console.log("JSON.css" + JSON.stringify(css));
         $scope.remoteCalendarId = css.id;
         $scope.getSelectedStudentPersonalData($scope.remoteCalendarId);
-        var api = $scope.propertyJson.VC_eventGet + "/" + css.id;
+        var api = $scope.propertyJson.VC_quickMsgGet + "/" + css.id;
         console.log("api: " + api);
         httpFactory.get(api).then(function (data) {
             var checkStatus = httpFactory.dataValidation(data);
@@ -266,7 +266,7 @@ app.controller('quickMsgCtl', function ($scope, $rootScope, $state, $rootScope, 
         console.log("JSON.css" + JSON.stringify(css));
         $scope.remoteCalendarId = css.id;
         $scope.getSelectedTeacherPersonalData($scope.remoteCalendarId);
-        var api = $scope.propertyJson.VC_eventGet + "/" + css.id;
+        var api = $scope.propertyJson.VC_quickMsgGet + "/" + css.id;
         console.log("api: " + api);
         httpFactory.get(api).then(function (data) {
             var checkStatus = httpFactory.dataValidation(data);

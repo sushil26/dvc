@@ -8,9 +8,9 @@ app.controller('adminCreateCtl', function ($scope, $rootScope, $filter, $window,
        /* #####  Start Upload File ###### */
        if ($scope.file.upload) {
         var uploadURL = $scope.propertyJson.VC_schoolLogo;
-        console.log("$scope.file from : alumRegCtr.js: " + $scope.file);
+        console.log("uploadURL: " + uploadURL);
         console.log("$scope.file.upload from : alumRegCtr.js: " + $scope.file.upload);
-        httpFactory.uploadFile(uploadURL, $scope.file).then(function (data) {
+        httpFactory.imageUpload(uploadURL, $scope.file).then(function (data) {
             console.log("hello " + JSON.stringify(data));
             var checkStatus = httpFactory.dataValidation(data);
             console.log("checkStatus: " + checkStatus);

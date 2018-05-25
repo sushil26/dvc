@@ -362,17 +362,10 @@ app.controller('quickMsgCtl', function ($scope, $rootScope, $state, $rootScope, 
         var clas = css.class;
         var section = css.section;
         $scope.studList = [];
-        // var cssRef = [{"clas":css.class, "section": css.section}];
-        // console.log("cssRef: "+JSON.stringify(cssRef));
-
         var api = $scope.propertyJson.VC_getStudListForCS + "/" + schoolName + "/" + clas + "/" + section;
-        //var api = "http://localhost:5000/vc/getStudListForCS" + "/" + clas + "/" + section;
-        //var api = "https://norecruits.com/vc/getStudListForCS";
-
         console.log("api: " + api);
         httpFactory.get(api).then(function (data) {
             var checkStatus = httpFactory.dataValidation(data);
-            //console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
                 $scope.studentList = data.data.data;
                 console.log("studentList: " + JSON.stringify($scope.studentList));
@@ -380,7 +373,12 @@ app.controller('quickMsgCtl', function ($scope, $rootScope, $state, $rootScope, 
                     $scope.studList.push({ "id": $scope.studentList[x]._id, "name": $scope.studentList[x].firstName, "studId": $scope.studentList[x].schoolId });
 
                 }
+               
                 console.log(" $scope.studList.length: " + $scope.studList.length);
+                if($scope.studList.length>0)
+                {
+                    $scope.studList.push({ "name": "All", "studId": "Student" });
+                }
                 //   $scope.css = $scope.teacherData[0].css;
                 //   console.log("$scope.css: " + JSON.stringify($scope.css));
             }
@@ -683,40 +681,40 @@ app.controller('quickMsgCtl', function ($scope, $rootScope, $state, $rootScope, 
     calendarConfig.dateFormats.hour = 'HH:mm';
     if ($scope.userData.loginType == 'teacher') {
         var actions = [
-        //     {
-        //     label: 'Re-Schedule',
-        //     onClick: function (args) {
-        //         console.log("args.calendarEvent: " + args.calendarEvent);
-        //         console.log("JSON args.calendarEvent: " + JSON.stringify(args.calendarEvent));
-        //         var date = args.calendarEvent.startsAt;
-        //         var reqDate = date.getDate() - 1;
-        //         var reqMonth = date.getMonth();
-        //         var reqYear = date.getFullYear();
-        //         var reqHr = date.getHours();
-        //         var reqMin = date.getMinutes();
-        //         var reqSec = date.getSeconds();
-        //         var consolidateDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
-        //         console.log("args.calendarEvent.id: " + args.calendarEvent.id);
-        //         console.log("args.calendarEvent: " + JSON.stringify(args.calendarEvent));
-        //         if (consolidateDate > $scope.todayDate) {
-        //             var id = args.calendarEvent.id;
-        //             console.log("id: " + id);
-        //             $state.go('dashboard.eventReschedule', { 'id': id });
-        //         }
-        //         else {
-        //             var loginAlert = $uibModal.open({
-        //                 scope: $scope,
-        //                 templateUrl: '/html/templates/dashboardwarning.html',
-        //                 windowClass: 'show',
-        //                 backdropClass: 'static',
-        //                 keyboard: false,
-        //                 controller: function ($scope, $uibModalInstance) {
-        //                     $scope.message = "Sorry you not allow to edit";
-        //                 }
-        //             })
-        //         }
-        //     }
-        // }
+            //     {
+            //     label: 'Re-Schedule',
+            //     onClick: function (args) {
+            //         console.log("args.calendarEvent: " + args.calendarEvent);
+            //         console.log("JSON args.calendarEvent: " + JSON.stringify(args.calendarEvent));
+            //         var date = args.calendarEvent.startsAt;
+            //         var reqDate = date.getDate() - 1;
+            //         var reqMonth = date.getMonth();
+            //         var reqYear = date.getFullYear();
+            //         var reqHr = date.getHours();
+            //         var reqMin = date.getMinutes();
+            //         var reqSec = date.getSeconds();
+            //         var consolidateDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
+            //         console.log("args.calendarEvent.id: " + args.calendarEvent.id);
+            //         console.log("args.calendarEvent: " + JSON.stringify(args.calendarEvent));
+            //         if (consolidateDate > $scope.todayDate) {
+            //             var id = args.calendarEvent.id;
+            //             console.log("id: " + id);
+            //             $state.go('dashboard.eventReschedule', { 'id': id });
+            //         }
+            //         else {
+            //             var loginAlert = $uibModal.open({
+            //                 scope: $scope,
+            //                 templateUrl: '/html/templates/dashboardwarning.html',
+            //                 windowClass: 'show',
+            //                 backdropClass: 'static',
+            //                 keyboard: false,
+            //                 controller: function ($scope, $uibModalInstance) {
+            //                     $scope.message = "Sorry you not allow to edit";
+            //                 }
+            //             })
+            //         }
+            //     }
+            // }
         ];
     }
     vm.events = [];
@@ -872,6 +870,6 @@ app.controller('quickMsgCtl', function ($scope, $rootScope, $state, $rootScope, 
             }
         }
     }
-        
-        console.log("<--timespanClicked");
+
+    console.log("<--timespanClicked");
 })

@@ -1,6 +1,39 @@
 app.controller('adminCreateCtl', function ($scope, $rootScope, $filter, $window, httpFactory, sessionAuthFactory, $uibModal) {
     console.log("adminCreateCtl==>");
     $scope.propertyJson = $rootScope.propertyJson;
+    $scope.file = {};/* ### Note Upload file declaration ### */
+
+    $scope.schoolLogoStorage = function () {
+        console.log("schoolLogoStorage-->");
+        if (file.upload) {
+            console.log("file: " + file);
+            var uploadURL = $scope.propertyJson.BackendURI_postImgUpload;
+            httpFactory.uploadFile(uploadURL, file).then(function (data) {
+                var checkStatus = httpFactory.dataValidation(data);
+                if (checkStatus) {
+                    $scope.getUpdateofImage = data;
+                    $scope.message = data.data.message;
+                    $scope.filePath = data.data.fileFullPath;
+                    $scope.status = data.data.success;
+                    if ($scope.filePath) {
+                        editPostJson.postUploadPic = $scope.filePath
+                    }
+                    /* ### Start Default value to edit models ### */
+                    $scope.file.upload = [];
+                    /* ### End Default value to edit models ### */
+                    // $scope.updatePost(id, index);
+                } else {
+                    $scope.status = data.data.status;
+                    $scope.message = data.data.message;
+                    // $scope.updatePost(id, index);
+                }
+            });
+        }
+        else{
+            alert("logo is required");
+        }
+        console.log("<--schoolLogoStorage");
+    }
 
     $scope.adminCreate = function () {
         console.log("adminCreate-->");
@@ -71,14 +104,11 @@ app.controller('adminCreateCtl', function ($scope, $rootScope, $filter, $window,
 
 
     function readURL(input) {
-
         if (input.files && input.files[0]) {
             var reader = new FileReader();
-
             reader.onload = function (e) {
                 $('#blah').attr('src', e.target.result);
             }
-
             reader.readAsDataURL(input.files[0]);
         }
     }

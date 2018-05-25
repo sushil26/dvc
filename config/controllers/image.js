@@ -3,7 +3,7 @@ var storage = multer.diskStorage({
     
     destination: function (req, file, cb) {
         console.log("storage");
-        cb(null, './public/uploadProfPic')
+        cb(null, './public/')
     },
     filename: function (req, file, cb) {
         if (!file.originalname.match(/\.(png|jpeg|jpg)$/)) 
@@ -21,7 +21,7 @@ var storage = multer.diskStorage({
         }
     }
 });
-var upload = multer({ storage: storage, limits: {fileSize:1000000} }).single('myProfPic');
+var upload = multer({ storage: storage, limits: {fileSize:1000000} }).single('logo');
 
 /* ##### End upload file  ##### */
 
@@ -29,7 +29,7 @@ var upload = multer({ storage: storage, limits: {fileSize:1000000} }).single('my
 module.exports.upload = function (req, res) {
     console.log("uploadProfile Image--> ");
     console.log("req.file: "+ req.file);
-    console.log("req.myProfPic: "+req.myProfPic);
+    console.log("req.myProfPic: "+req.logo);
     upload(req, res, function (err) {
         // console.log("req.myProfPic: " + req.myProfPic);
         // console.log("req.file: " + req.file);

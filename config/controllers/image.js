@@ -1,6 +1,6 @@
 var multer = require('multer');
 
-var fileStorage = multer.diskStorage({
+var storage = multer.diskStorage({
 
     destination: function (req, file, cb) {
         console.log("storage");
@@ -19,7 +19,7 @@ var fileStorage = multer.diskStorage({
         }
     }
 });
-var upload = multer({ storage: fileStorage, limits: { fileSize: 1000000 } }).single('myProfPic');
+var upload = multer({ storage: storage});
 
 /* ##### End upload file  ##### */
 module.exports.schoolLogo = function (req, res) {

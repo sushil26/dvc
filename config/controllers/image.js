@@ -25,6 +25,7 @@ var upload = multer({ storage: storage, limits: { fileSize: 1000000 } }).single(
 module.exports.schoolLogo = function (req, res) {
     console.log("schoolLogo-->");
     var responseData;
+    console.log("req.file: " + req.file);
     upload(req, res, function (err) {
         console.log("req.img: " + req.img);
        // console.log("req.files: " + JSON.stringify(req.files));

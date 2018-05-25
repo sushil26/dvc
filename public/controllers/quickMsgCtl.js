@@ -360,6 +360,8 @@ app.controller('quickMsgCtl', function ($scope, $rootScope, $state, $rootScope, 
         // console.log("$scope.cssSelect: "+JSON.stringify($scope.cssSelect));
         console.log("css" + css);
         console.log("JSON.css" + JSON.stringify(css));
+        $scope.class = css.class;
+        $scope.section = css.section;;
         var clas = css.class;
         var section = css.section;
         $scope.studList = [];
@@ -458,7 +460,7 @@ app.controller('quickMsgCtl', function ($scope, $rootScope, $state, $rootScope, 
                     "date": $scope.selectedDate_quickMsg,
                     "primColor": "red",
                     "messageType": "wholeClass",
-                    "cs": [{ "class": $scope.cssSelect.class, "section": $scope.cssSelect.section }],
+                    "cs": [{ "class": $scope.class, "section": $scope.section }],
                     "schoolName": schoolName
                 }
                 console.log("obj: " + JSON.stringify(obj));

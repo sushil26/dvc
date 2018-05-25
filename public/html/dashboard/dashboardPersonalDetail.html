@@ -11,15 +11,19 @@
                     </div>
                     <div class="panel-body bio-graph-info" style="padding: 1px;">
                         <div ng-if="loginType!='vc4allAdmin'" class="row" style="margin:20px!important;">
+                            <div class="col-lg-12">
+
+                                <h2>{{userData[0].schoolName}} </h2>
+                            </div>
                             <div class="col-md-6 col-lg-4 col-sm-6" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
                                 <table class="table table-sm" ng-if="loginType=='studParent'">
-                                 
-                                        <tr>
-                                                <th style="color:  lightcoral;font-size: 20px;font-family: -webkit-pictograph;">
-                                                STUDENT
-                                            </th>
-                                        </tr>
-                              
+
+                                    <tr>
+                                        <th style="color:  lightcoral;font-size: 20px;font-family: -webkit-pictograph;">
+                                            STUDENT
+                                        </th>
+                                    </tr>
+
                                     <tr>
                                         <td>
                                             <img style="max-height:150px;" src="child.jpg">
@@ -69,13 +73,13 @@
                             <div class="col-md-6 col-lg-4 col-sm-6" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
 
                                 <table class="table table-sm" ng-if="loginType=='studParent'">
-                                  
-                                        <tr>
-                                                <th style="color:  lightcoral;font-size: 20px;font-family: -webkit-pictograph;">
-                                                FATHER
-                                            </th>
-                                        </tr>
-                                  
+
+                                    <tr>
+                                        <th style="color:  lightcoral;font-size: 20px;font-family: -webkit-pictograph;">
+                                            FATHER
+                                        </th>
+                                    </tr>
+
                                     <tr>
                                         <td>
                                             <img style="max-height:150px;" src="father.jpg">
@@ -143,143 +147,112 @@
                                 </table>
                             </div>
 
+                            <div class="col-md-6 col-lg-4 col-sm-6" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                                <table class="table table-sm" ng-if="loginType=='teacher'">
+
+                                    <tr>
+                                        <th style="color:  lightcoral;font-size: 20px;font-family: -webkit-pictograph;">
+                                            TEACHER
+                                        </th>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <img style="max-height:150px;" src="child.jpg">
+                                        </td>
+                                    </tr>
+                                    <tr style="background: sandybrown;">
+                                        <td>
+                                            <b style="color:teal;">Name</b>
+                                        </td>
+                                        <td>{{userData[0].firstName +" "+ userData[0].lastName}}</td>
+                                    </tr>
+                                    <tr style="background: sandybrown;">
+                                        <td>
+                                            <b style="color:teal;">ID</b>
+                                        </td>
+                                        <td> {{userData[0].schoolId}}</td>
+                                    </tr>
+
+                                    <tr style="background: sandybrown;">
+                                        <td>
+                                            <b style="color:teal;">Mobile Number</b>
+
+                                        </td>
+                                        <td>
+                                            {{userData[0].mobNumber}}
+                                        </td>
+                                    </tr>
+                                    <tr style="background: sandybrown;">
+                                        <td>
+                                            <b style="color:teal;">E-Mail</b>
+
+                                        </td>
+                                        <td>
+                                            {{userData[0].email}}
+                                        </td>
+                                    </tr>
+                                    <tr style="background: sandybrown;">
+                                        <td>
+                                            <b style="color:teal;">D.O.B</b>
+                                        </td>
+                                        <td>
+                                            {{userData[0].dob | date:' d MMM yyyy'}}
+                                        </td>
+                                    </tr>
+                                    <tr style="background: sandybrown;">
+                                        <td>
+                                            <b style="color:teal;">D.O.Joining</b>
+                                        </td>
+                                        <td>
+                                            {{userData[0].doj | date:' d MMM yyyy'}}
+                                        </td>
+                                    </tr>
+
+                                </table>
+                            </div>
+                            <div class="col-md-6 col-lg-4 col-sm-6" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                                <table class="table table-sm" ng-if="loginType=='teacher'">
+
+                                    <tr>
+                                        <th style="color:  lightcoral;font-size: 20px;font-family: -webkit-pictograph;">
+                                            ClASSES
+                                        </th>
+                                    </tr>
+                                    <tr style="background: sandybrown;">
+                                        <td>Class</td>
+                                        <td>Section</td>
+                                        <td>Subject</td>
+                                    </tr>
+
+
+
+                                    <tr style="background: sandybrown;" ng-repeat="css in userData[0].css">
+                                        <td>{{css.class}}</td>
+                                        <td>{{css.section}}</td>
+                                        <td>{{css.subject}}</td>
+                                    </tr>
+                                </table>
+
+                            </div>
+
+
                             <div class="bio-row" ng-if="loginType=='admin'">
                                 <p>
                                     <span>
                                         <b style="color:teal;">Name</b>
                                     </span> {{userData[0].firstName +" "+ userData[0].lastName}} </p>
                             </div>
-
-                            <div class="bio-row" ng-if="loginType!='vc4allAdmin'">
-                                <p>
-                                    <span>
-                                        <b style="color:teal;">School Name</b>
-                                    </span> {{userData[0].schoolName}} </p>
-                            </div>
-
-                            <div class="bio-row" ng-if="loginType=='teacher'">
-                                <p>
-                                    <span>
-                                        <b style="color:teal;">Teacher Name</b>
-                                    </span> {{userData[0].firstName +" "+ userData[0].lastName}}</p>
-                            </div>
-                            <div class="bio-row" ng-if="loginType=='teacher'">
-                                <p>
-                                    <span>
-                                        <b style="color:teal;">ID</b>
-                                    </span> {{userData[0].schoolId}} </p>
-                            </div>
-
-                            <div class="bio-row" ng-if="loginType=='teacher'">
-                                <p>
-                                    <span>
-                                        <b style="color:teal;">Mobile Number</b>
-                                    </span> {{userData[0].mobNumber}} </p>
-                            </div>
-
-
-
-
-
-                            <div class="bio-row" ng-if=" loginType=='teacher'">
-                                <p>
-                                    <span>
-                                        <b style="color:teal;">Date of birth</b>
-                                    </span> {{userData[0].dob | date:' d MMM yyyy'}}</p>
-                            </div>
-
-                            <div class="bio-row" ng-if="loginType=='teacher' || loginType=='admin'">
+                            <div class="bio-row" ng-if="loginType=='admin'">
                                 <p>
                                     <span>
                                         <b style="color:teal;">E-Mail</b>
                                     </span> {{userData[0].email}}</p>
                             </div>
 
-
-                            <!-- <div class="bio-row" ng-if="loginType=='studParent'">
-                                <p>
-                                    <span>
-                                        <b style="color:teal;">Father Name</b>
-                                    </span> {{userData[0].parentName}}</p>
-                            </div>
-
-
-
-                            <div class="bio-row" ng-if="loginType=='studParent'">
-                                <p>
-                                    <span>
-                                        <b style="color:teal;">Father Email</b>
-                                    </span> {{userData[0].parentEmail}}</p>
-                            </div>
-                            <div class="bio-row" ng-if="loginType=='studParent'">
-                                <p>
-                                    <span>
-                                        <b style="color:teal;">Father Phone</b>
-                                    </span> {{userData[0].mobileNum}}</p>
-                            </div>
-                            <div class="bio-row" ng-if="loginType=='studParent'">
-                                <p>
-                                    <span>
-                                        <b style="color:teal;">Mother Name</b>
-                                    </span> {{userData[0].motherName}}</p>
-                            </div>
-                            <div class="bio-row" ng-if="loginType=='studParent'">
-                                <p>
-                                    <span>
-                                        <b style="color:teal;"> Mother Email</b>
-                                    </span> {{userData[0].motherEmail}}</p>
-                            </div>
-                            <div class="bio-row" ng-if="loginType=='studParent'">
-                                <p>
-                                    <span>
-                                        <b style="color:teal;">Mother Phone</b>
-                                    </span> {{userData[0].mobileNum}}</p>
-                            </div> -->
-
-                            <!-- <div class="form-group row" ng-if="loginType=='teacher'" style=" float: left !important;
-
-                        margin-bottom: 10px !important;
-                      
-                        padding: 0 15px !important;">
-                                <p>
-                                    <span>
-                                          <b style="color:teal;">Class Handles</b>
-                                    </span>
-                                  
-                                </p>  <span class="col-sm-3" ng-repeat="css in userData[0].css"> {{css.class}}-{{css.section}}-{{css.subject}}</span>
-
-                            </div> -->
-
                         </div>
                         <div style="margin: 20px !important;" class="row" ng-if="loginType=='teacher'">
-                            <div class=" bio-row">
-                                <p>
-                                    <span>
-                                        <b style="color:teal;">Classes Handle</b>
-                                    </span>
 
-                                </p>
-
-                                <table class="table table-sm">
-                                    <thead style="background: white;">
-                                        <tr>
-                                            <th>Class</th>
-                                            <th>Section</th>
-                                            <th>Subject</th>
-                                        </tr>
-
-                                    </thead>
-                                    <tbody style="background: white;">
-                                        <tr ng-repeat="css in userData[0].css">
-                                            <td>{{css.class}}</td>
-                                            <td>{{css.section}}</td>
-                                            <td>{{css.subject}}</td>
-                                        </tr>
-
-                                    </tbody>
-                                </table>
-
-                            </div>
                         </div>
                         <div style="margin: 20px !important;" class="row">
                             <div class="fa fa-pencil-square btn btn-warning">

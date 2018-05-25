@@ -180,7 +180,16 @@
 
                                         </td>
                                         <td>
-                                            <span ng-repeat="cs in userData[0].cs">{{userData[0].mobNumber}}</span>
+                                            {{userData[0].mobNumber}}
+                                        </td>
+                                    </tr>
+                                    <tr style="background: sandybrown;">
+                                        <td>
+                                            <b style="color:teal;">E-Mail</b>
+
+                                        </td>
+                                        <td>
+                                            {{userData[0].email}}
                                         </td>
                                     </tr>
                                     <tr style="background: sandybrown;">
@@ -199,8 +208,6 @@
                                             {{userData[0].doj | date:' d MMM yyyy'}}
                                         </td>
                                     </tr>
-
-
                                 </table>
                             </div>
 

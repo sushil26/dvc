@@ -69,9 +69,20 @@ app.controller('dashboardController', function ($scope, $rootScope, $window, htt
                 $scope.academic_subMenu = true;
             }
             $scope.events_subMenu = true;
-
+            $scope.comm_subMenu = true;
             $scope.setting_subMenu = true;
-        } else {
+        }else if (submenu == "comm_subMenu") {
+            console.log(" $scope.comm_subMenu : " + $scope.comm_subMenu);
+            if ($scope.comm_subMenu == true) {
+                $scope.comm_subMenu = false;
+            } else {
+                $scope.comm_subMenu = true;
+            }
+            $scope.events_subMenu = true;
+            $scope.academic_subMenu = true;
+            $scope.setting_subMenu = true;
+        }  
+        else {
             if ($scope.setting_subMenu == true) {
                 $scope.setting_subMenu = false;
             } else {
@@ -79,6 +90,7 @@ app.controller('dashboardController', function ($scope, $rootScope, $window, htt
             }
             $scope.events_subMenu = true;
             $scope.academic_subMenu = true;
+            $scope.comm_subMenu = true;
         }
         console.log("<--eventClick: " + submenu);
     }

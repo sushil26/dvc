@@ -415,8 +415,8 @@ app.controller('quickMsgCtl', function ($scope, $rootScope, $state, $rootScope, 
             $scope.quickMsgSend(reason, senderName, studId, studUserId, email, senderMN, receiverName, receiverId, receiverMN, stud_id, stud_cs, stud_name);
         }
         if ($scope.userLoginType == 'teacher') {
-            console.log("$scope.studentPersonalData[0]: " + JSON.stringify($scope.studentPersonalData[0]));
             if ($scope.remoteCalendarId != 'all') {
+                console.log("$scope.studentPersonalData[0]: " + JSON.stringify($scope.studentPersonalData[0]));
                 var un = $scope.teacherData[0].firstName + " " + $scope.teacherData[0].lastName;
                 var studName = $scope.studentPersonalData[0].firstName + " " + $scope.studentPersonalData[0].lastName;
                 var teacherName = un;
@@ -457,9 +457,10 @@ app.controller('quickMsgCtl', function ($scope, $rootScope, $state, $rootScope, 
                     "date": $scope.selectedDate_quickMsg,
                     "primColor": "red",
                     "messageType": "wholeClass",
+                    "cs": [{"class":$scope.cssSelect.class, "section":$scope.cssSelect.section}],
                     "schoolName": schoolName
                 }
-                console.log("obj: "+JSON.stringify(obj));
+                console.log("obj: " + JSON.stringify(obj));
                 httpFactory.post(api, obj).then(function (data) {
                     var checkStatus = httpFactory.dataValidation(data);
                     if (checkStatus) {

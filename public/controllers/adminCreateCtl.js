@@ -6,6 +6,8 @@ app.controller('adminCreateCtl', function ($scope, $rootScope, $filter, $window,
     $scope.schoolLogoStorage = function () {
         console.log("schoolLogoStorage-->");
        /* #####  Start Upload File ###### */
+       console.log("$scope.file: "+$scope.file);
+       console.log("$scope.file: "+$scope.file.upload);
     //    if ($scope.file.upload) {
         var uploadURL = $scope.propertyJson.VC_schoolLogo;
         console.log("uploadURL: " + uploadURL);

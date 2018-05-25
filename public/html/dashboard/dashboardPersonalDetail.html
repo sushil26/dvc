@@ -13,13 +13,7 @@
                     <div class="panel-body bio-graph-info" style="padding: 1px;">
 
 
-                        <div ng-if="loginType=='studParent'" class="row" style="margin: 20px !important;">
-
-
-                            <img style="max-height:150px;margin-left: 20px;" src="mother.jpg">
-
-                        </div>
-
+                     
 
 
                         <div ng-if="loginType!='vc4allAdmin'" class="row" style="margin:20px!important;">
@@ -52,6 +46,35 @@
 
 
                             </table>
+                            <table class="table table-bordered table-sm"   ng-if="loginType=='studParent'">
+                                    <tr>
+                                        <td>
+                                                <img style="max-height:150px;" src="mother.jpg">
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <b style="color:teal;">Mother Name</b>
+                                        </td>
+                                        <td> {{userData[0].motherName}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <b style="color:teal;">Mother Email</b>
+                                        </td>
+                                        <td> {{userData[0].motherEmail}}</td>
+                                    </tr>
+    
+                                    <tr>
+                                        <td>
+                                            <b style="color:teal;">Mother Phone</b>
+                                        </td>
+                                        <td> {{userData[0].mobileNum}}</td>
+                                    </tr>
+    
+    
+                                </table>
 
 
                             <div class="bio-row" ng-if="loginType=='admin'">

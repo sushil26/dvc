@@ -29,7 +29,7 @@ module.exports.schoolLogo = function (req, res) {
         console.log("req.img: " + req.img);
         console.log("req.files: " + req.files);
         // console.log("req.files: " + req.files);
-        console.log("req.file.originalname: "+req.file.originalname);
+        //console.log("req.file.originalname: "+req.file.originalname);
         if (err) {
             console.log("errrr: imageUpload.js " + err);
             if (err.code === 'LIMIT_FILE_SIZE') {

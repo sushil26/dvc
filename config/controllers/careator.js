@@ -7,9 +7,6 @@ var nodemailer = require("nodemailer");
 var createdDate = new Date();
 var randomstring = require("randomstring");
 
-var email = require("../careatoremployee.html");
-
-
 
 var transporter = nodemailer.createTransport({
     service: "godaddy",
@@ -109,8 +106,8 @@ module.exports.pswdGenerate = function (req, res) {
                                 from: "info@vc4all.in",
                                 to: email,
                                 subject: 'VC4ALL Credential',
-                                html: email
-                                // "<html><head><p><b>Dear Careator Employee, </b></p><p>Please note, Your email Id is verified successfully,  you can access the below link by using given password.<p>Password: "+password+"</p></p><p>Regards</p><p><b>Careator Technologies Pvt. Ltd</b></p></head><body></body></html>"
+                                html:
+                                "<html><head><p><b>Dear Careator Employee, </b></p><p>Please note, Your email Id is verified successfully,  you can access the below link by using given password.<p>Password: "+password+"</p></p><p>Regards</p><p><b>Careator Technologies Pvt. Ltd</b></p></head><body></body></html>"
                                
                             };
                             transporter.sendMail(mailOptions, function (error, info) {

@@ -377,7 +377,7 @@ app.controller('quickMsgCtl', function ($scope, $rootScope, $state, $rootScope, 
                 console.log(" $scope.studList.length: " + $scope.studList.length);
                 if($scope.studList.length>0)
                 {
-                    $scope.studList.push({ "name": "All", "studId": "Student" });
+                    $scope.studList.push({ "name": "All", "studId": "Students" });
                 }
                 //   $scope.css = $scope.teacherData[0].css;
                 //   console.log("$scope.css: " + JSON.stringify($scope.css));

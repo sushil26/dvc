@@ -66,6 +66,7 @@ app.controller('quickMsgCtl', function ($scope, $rootScope, $state, $rootScope, 
     $scope.getToDate = function () {
         console.log("Get To Date-->");
         var api = $scope.propertyJson.VC_getToDate;
+        console.log("api: "+api);
         httpFactory.get(api).then(function (data) {
             var checkStatus = httpFactory.dataValidation(data);
             console.log("data--" + JSON.stringify(data.data));

@@ -11,15 +11,21 @@
                     </div>
                     <div class="panel-body bio-graph-info" style="padding: 1px;">
                         <div ng-if="loginType!='vc4allAdmin'" class="row" style="margin:20px!important;">
+                            <div class="bio-row" ng-if="loginType!='vc4allAdmin'">
+                                <p>
+                                    <span>
+                                        <b style="color:teal;">School Name</b>
+                                    </span> {{userData[0].schoolName}} </p>
+                            </div>
                             <div class="col-md-6 col-lg-4 col-sm-6" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
                                 <table class="table table-sm" ng-if="loginType=='studParent'">
-                                 
-                                        <tr>
-                                                <th style="color:  lightcoral;font-size: 20px;font-family: -webkit-pictograph;">
-                                                STUDENT
-                                            </th>
-                                        </tr>
-                              
+
+                                    <tr>
+                                        <th style="color:  lightcoral;font-size: 20px;font-family: -webkit-pictograph;">
+                                            STUDENT
+                                        </th>
+                                    </tr>
+
                                     <tr>
                                         <td>
                                             <img style="max-height:150px;" src="child.jpg">
@@ -69,13 +75,13 @@
                             <div class="col-md-6 col-lg-4 col-sm-6" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
 
                                 <table class="table table-sm" ng-if="loginType=='studParent'">
-                                  
-                                        <tr>
-                                                <th style="color:  lightcoral;font-size: 20px;font-family: -webkit-pictograph;">
-                                                FATHER
-                                            </th>
-                                        </tr>
-                                  
+
+                                    <tr>
+                                        <th style="color:  lightcoral;font-size: 20px;font-family: -webkit-pictograph;">
+                                            FATHER
+                                        </th>
+                                    </tr>
+
                                     <tr>
                                         <td>
                                             <img style="max-height:150px;" src="father.jpg">
@@ -196,59 +202,9 @@
                             </div>
 
 
-                            <!-- <div class="bio-row" ng-if="loginType=='studParent'">
-                                <p>
-                                    <span>
-                                        <b style="color:teal;">Father Name</b>
-                                    </span> {{userData[0].parentName}}</p>
-                            </div>
 
 
 
-                            <div class="bio-row" ng-if="loginType=='studParent'">
-                                <p>
-                                    <span>
-                                        <b style="color:teal;">Father Email</b>
-                                    </span> {{userData[0].parentEmail}}</p>
-                            </div>
-                            <div class="bio-row" ng-if="loginType=='studParent'">
-                                <p>
-                                    <span>
-                                        <b style="color:teal;">Father Phone</b>
-                                    </span> {{userData[0].mobileNum}}</p>
-                            </div>
-                            <div class="bio-row" ng-if="loginType=='studParent'">
-                                <p>
-                                    <span>
-                                        <b style="color:teal;">Mother Name</b>
-                                    </span> {{userData[0].motherName}}</p>
-                            </div>
-                            <div class="bio-row" ng-if="loginType=='studParent'">
-                                <p>
-                                    <span>
-                                        <b style="color:teal;"> Mother Email</b>
-                                    </span> {{userData[0].motherEmail}}</p>
-                            </div>
-                            <div class="bio-row" ng-if="loginType=='studParent'">
-                                <p>
-                                    <span>
-                                        <b style="color:teal;">Mother Phone</b>
-                                    </span> {{userData[0].mobileNum}}</p>
-                            </div> -->
-
-                            <!-- <div class="form-group row" ng-if="loginType=='teacher'" style=" float: left !important;
-
-                        margin-bottom: 10px !important;
-                      
-                        padding: 0 15px !important;">
-                                <p>
-                                    <span>
-                                          <b style="color:teal;">Class Handles</b>
-                                    </span>
-                                  
-                                </p>  <span class="col-sm-3" ng-repeat="css in userData[0].css"> {{css.class}}-{{css.section}}-{{css.subject}}</span>
-
-                            </div> -->
 
                         </div>
                         <div style="margin: 20px !important;" class="row" ng-if="loginType=='teacher'">

@@ -210,23 +210,7 @@
                                     </tr>
                                 </table>
                             </div>
-
-                            <div class="bio-row" ng-if="loginType=='admin'">
-                                <p>
-                                    <span>
-                                        <b style="color:teal;">Name</b>
-                                    </span> {{userData[0].firstName +" "+ userData[0].lastName}} </p>
-                            </div>
-                            <div class="bio-row" ng-if="loginType=='admin'">
-                                <p>
-                                    <span>
-                                        <b style="color:teal;">E-Mail</b>
-                                    </span> {{userData[0].email}}</p>
-                            </div>
-
-                        </div>
-                        <div style="margin: 20px !important;" class="row" ng-if="loginType=='teacher'">
-                            <div class=" bio-row">
+                            <div class="col-md-6 col-lg-4 col-sm-6" ng-if="loginType=='teacher'">
                                 <p>
                                     <span>
                                         <b style="color:teal;">Classes Handle</b>
@@ -254,6 +238,23 @@
                                 </table>
 
                             </div>
+
+                            <div class="bio-row" ng-if="loginType=='admin'">
+                                <p>
+                                    <span>
+                                        <b style="color:teal;">Name</b>
+                                    </span> {{userData[0].firstName +" "+ userData[0].lastName}} </p>
+                            </div>
+                            <div class="bio-row" ng-if="loginType=='admin'">
+                                <p>
+                                    <span>
+                                        <b style="color:teal;">E-Mail</b>
+                                    </span> {{userData[0].email}}</p>
+                            </div>
+
+                        </div>
+                        <div style="margin: 20px !important;" class="row" ng-if="loginType=='teacher'">
+
                         </div>
                         <div style="margin: 20px !important;" class="row">
                             <div class="fa fa-pencil-square btn btn-warning">

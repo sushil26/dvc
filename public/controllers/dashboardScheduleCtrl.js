@@ -800,11 +800,6 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $state, $r
     }
     console.log("<--timeTableForEventBook");
   }
-
-
-
-
-
   var vm = this;
   //These variables MUST be set as a minimum for the calendar to work
   // vm.calendarView = 'month';
@@ -853,19 +848,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $state, $r
               $scope.message = "Sorry you not allow to edit";
             }
           })
-          // alert("Sorry you not allow to edit");
         }
-        // var eClicked = $uibModal.open({
-        //   scope: $scope,
-        //   templateUrl: '/html/templates/eventDetails_edit.html',
-        //   windowClass: 'show',
-        //   backdropClass: 'show',
-        //   controller: function ($scope, $uibModalInstance) {
-        //     $scope.eventDetails = args.calendarEvent;
-        //     console.log("$scope.eventDetails: " + $scope.eventDetails);
-        //   }
-        // })
-
       }
     }
       // {

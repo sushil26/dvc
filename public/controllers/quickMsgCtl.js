@@ -870,8 +870,7 @@ app.controller('quickMsgCtl', function ($scope, $rootScope, $state, $rootScope, 
                 })
             }
         }
-        console.log("<--timespanClicked");
-
     }
-
+        
+        console.log("<--timespanClicked");
 })

@@ -102,6 +102,27 @@ app.config(function ($stateProvider, $urlRouterProvider) {
       }
 
     })
+
+    .state('dashboard.quickMsg', {
+      url: quickMsg(),
+      templateUrl: '/html/dashboard/quickMsg.html',
+      controller: 'quickMsgCtl',
+      resolve: {
+        result: function (sessionAuthFactory, $window) {
+          var userData = sessionAuthFactory.getAccess("userData");
+          if (userData.loginType == 'teacher' || userData.loginType == 'studParent') {
+          }
+          else {
+            $window.location.href = 'https://norecruits.com';
+          }
+        }
+      }
+
+    })
+
+
+
+
     .state('dashboard.eventReschedule', {
       url: dashboardEventReschedule(),
       templateUrl: '/html/dashboard/rescheduler.html',
@@ -310,6 +331,11 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 
 });
 
+
+
+function quickMsg() {
+  return '/quickMsg';
+}
 
 function viewUser() {
   return '/viewUser/:id/:loginType';

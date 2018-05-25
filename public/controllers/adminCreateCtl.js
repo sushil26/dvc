@@ -6,7 +6,7 @@ app.controller('adminCreateCtl', function ($scope, $rootScope, $filter, $window,
     $scope.schoolLogoStorage = function () {
         console.log("schoolLogoStorage-->");
        /* #####  Start Upload File ###### */
-       if ($scope.file.upload) {
+    //    if ($scope.file.upload) {
         var uploadURL = $scope.propertyJson.VC_schoolLogo;
         console.log("uploadURL: " + uploadURL);
         console.log("$scope.file.upload from : alumRegCtr.js: " + $scope.file.upload);
@@ -36,11 +36,11 @@ app.controller('adminCreateCtl', function ($scope, $rootScope, $filter, $window,
 
             }
         });
-    }
+    //}
     /* #####  End Upload File ###### */
-        else{
-            alert("logo is required");
-        }
+        // else{
+        //     alert("logo is required");
+        // }
         console.log("<--schoolLogoStorage");
     }
 

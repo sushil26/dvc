@@ -94,10 +94,8 @@ app.factory('httpFactory', function ($http, $q, $rootScope) {
 
             fd.append('img', obj.file);
 
-            $http.post(postUrl, fd, {
-                transformRequest: angular.identity,
-                headers: { 'Content-Type': undefined }
-            }).then(function (response) {
+            $http.post(postUrl, fd
+            ).then(function (response) {
                 console.log("lego--" + response)
                 dfd.resolve(response);
             }, function (error) {

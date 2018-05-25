@@ -53,14 +53,29 @@
                             </i>
                         </a>
                     </li>
-                    <li ng-if="loginType == 'teacher' || loginType == 'studParent'">
-                        <a href="#!/dashboard/eventShedule">
+                    <li  class="sub-menu" ng-if="loginType == 'teacher' || loginType == 'studParent'">
+                        <a ng-click="eventClick('comm_subMenu')">
                             <i style="font-size:15px;" class="fa fa-pencil">
-                                <span>&nbspSCHEDULER</span>
+                                <span>&nbspCOMMUNICATION</span>
                             </i>
-
+                            <span ng-if="comm_subMenu==true" class="menu-arrow arrow_carrot-right"></span>
+                            <span ng-if="comm_subMenu==false" class="menu-arrow arrow_carrot-down"></span>
                         </a>
+                        <ul ng-hide="comm_subMenu">
+                            <li>
+                                <a class="" href="#!/dashboard/eventShedule">SCHEDULE MEETING</a>
+                            </li>
+                            <li>
+                                <a class="" href="#!/dashboard/markView">QUICK MESSAGE</a>
+                            </li>
+                        </ul>
                     </li>
+
+
+              
+
+
+
                     <!-- ##### Start teacher/student Event  ##### -->
                     <li class="sub-menu" ng-if="loginType == 'teacher' || loginType == 'studParent'">
                         <a ng-click="eventClick('events_subMenu')">

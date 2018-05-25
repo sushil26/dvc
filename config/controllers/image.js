@@ -27,7 +27,7 @@ module.exports.schoolLogo = function (req, res) {
     var responseData;
     upload(req, res, function (err) {
         console.log("req.img: " + req.img);
-        console.log("req.files: " + JSON.stringify(req.files));
+       // console.log("req.files: " + JSON.stringify(req.files));
         console.log("req.file: " + req.file);
         //console.log("req.file.originalname: "+req.file.originalname);
         if (err) {

@@ -12,26 +12,26 @@
                     <div class="panel-body bio-graph-info" style="padding: 1px;">
                         <div ng-if="loginType!='vc4allAdmin'" class="row" style="margin:20px!important;">
                             <div class="col-md-6 col-lg-4 col-sm-6">
-                                <table class="table table-sm" ng-if="loginType=='studParent'" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"> 
+                                <table class="table table-sm" ng-if="loginType=='studParent'" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
                                     <tr>
                                         <td>
                                             <img style="max-height:150px;" src="child.jpg">
                                         </td>
                                     </tr>
-                                    <tr>
+                                    <tr style="background: sandybrown;">
                                         <td>
                                             <b style="color:teal;">Student Name</b>
                                         </td>
                                         <td>{{userData[0].firstName +" "+ userData[0].lastName}}</td>
                                     </tr>
-                                    <tr>
+                                    <tr style="background: sandybrown;">
                                         <td>
                                             <b style="color:teal;">ID</b>
                                         </td>
                                         <td> {{userData[0].schoolId}}</td>
                                     </tr>
 
-                                    <tr>
+                                    <tr style="background: sandybrown;">
                                         <td>
                                             <b style="color:teal;">Class</b>
                                         </td>
@@ -39,20 +39,20 @@
                                             <span ng-repeat="cs in userData[0].cs">{{cs.class}}-{{cs.section}}</span>
                                         </td>
                                     </tr>
-                                    <tr>
+                                    <tr style="background: sandybrown;">
                                         <td>
-                                                <b style="color:teal;">D.O.B</b>
+                                            <b style="color:teal;">D.O.B</b>
                                         </td>
                                         <td>
-                                                {{userData[0].dob | date:' d MMM yyyy'}}
+                                            {{userData[0].dob | date:' d MMM yyyy'}}
                                         </td>
                                     </tr>
-                                    <tr>
+                                    <tr style="background: sandybrown;">
                                         <td>
-                                                <b style="color:teal;">D.O.Joining</b>
+                                            <b style="color:teal;">D.O.Joining</b>
                                         </td>
                                         <td>
-                                                {{userData[0].doj | date:' d MMM yyyy'}}
+                                            {{userData[0].doj | date:' d MMM yyyy'}}
                                         </td>
                                     </tr>
 
@@ -67,20 +67,20 @@
                                             <img style="max-height:150px;" src="father.jpg">
                                         </td>
                                     </tr>
-                                    <tr>
+                                    <tr style="background: sandybrown;">
                                         <td>
                                             <b style="color:teal;">Father Name</b>
                                         </td>
                                         <td> {{userData[0].parentName}}</td>
                                     </tr>
-                                    <tr>
+                                    <tr style="background: sandybrown;">
                                         <td>
                                             <b style="color:teal;">Father Email</b>
                                         </td>
                                         <td> {{userData[0].parentEmail}}</td>
                                     </tr>
 
-                                    <tr>
+                                    <tr style="background: sandybrown;">
                                         <td>
                                             <b style="color:teal;">Father Phone</b>
                                         </td>
@@ -98,20 +98,20 @@
 
                                         </td>
                                     </tr>
-                                    <tr>
+                                    <tr style="background: sandybrown;">
                                         <td>
                                             <b style="color:teal;">Mother Name</b>
                                         </td>
                                         <td> {{userData[0].motherName}}</td>
                                     </tr>
-                                    <tr>
+                                    <tr style="background: sandybrown;">
                                         <td>
                                             <b style="color:teal;">Mother Email</b>
                                         </td>
                                         <td> {{userData[0].motherEmail}}</td>
                                     </tr>
 
-                                    <tr>
+                                    <tr style="background: sandybrown;">
                                         <td>
                                             <b style="color:teal;">Mother Phone</b>
                                         </td>
@@ -135,7 +135,7 @@
                                         <b style="color:teal;">School Name</b>
                                     </span> {{userData[0].schoolName}} </p>
                             </div>
-                  
+
                             <div class="bio-row" ng-if="loginType=='teacher'">
                                 <p>
                                     <span>
@@ -148,7 +148,7 @@
                                         <b style="color:teal;">ID</b>
                                     </span> {{userData[0].schoolId}} </p>
                             </div>
-                    
+
                             <div class="bio-row" ng-if="loginType=='teacher'">
                                 <p>
                                     <span>
@@ -166,7 +166,7 @@
                                         <b style="color:teal;">Date of birth</b>
                                     </span> {{userData[0].dob | date:' d MMM yyyy'}}</p>
                             </div>
-                    
+
                             <div class="bio-row" ng-if="loginType=='teacher' || loginType=='admin'">
                                 <p>
                                     <span>

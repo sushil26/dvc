@@ -7,6 +7,7 @@ app.controller('incomingMsgCtl', function ($scope, $rootScope, $state, $window, 
 
     $scope.getSelectedStudentPersonalData = function (id) {
         console.log("get Selected Student PersonalData-->");
+        var id = $scope.userData.id;
         var api = $scope.propertyJson.VC_studentPersonalData + "/" + id;
         console.log("api: " + api);
         httpFactory.get(api).then(function (data) {

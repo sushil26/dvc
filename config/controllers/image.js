@@ -77,7 +77,7 @@ if (!req.files)
   let sampleFile = req.files.logo;
  
   fs.readFile(file.path, function(err, data) {
-    var path = __dirname + '/' + file.name;
+    var path = __dirname + '/public/schoolLogo' + file.name;
     fs.writeFile(path, data, function(err) {
     });
   });

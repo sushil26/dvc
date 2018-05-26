@@ -5,10 +5,10 @@ app.controller('adminCreateCtl', function ($scope, $rootScope, $filter, $window,
 
     $scope.schoolLogoStorage = function () {
         console.log("schoolLogoStorage-->");
-       /* #####  Start Upload File ###### */
-       console.log("$scope.file: "+$scope.file);
-       console.log("$scope.file: "+$scope.file.upload);
-    //    if ($scope.file.upload) {
+        /* #####  Start Upload File ###### */
+        console.log("$scope.file: " + $scope.file);
+        console.log("$scope.file: " + $scope.file.upload);
+        //    if ($scope.file.upload) {
         var uploadURL = $scope.propertyJson.VC_schoolLogo;
         console.log("uploadURL: " + uploadURL);
         console.log("$scope.file.upload from : alumRegCtr.js: " + $scope.file.upload);
@@ -24,10 +24,10 @@ app.controller('adminCreateCtl', function ($scope, $rootScope, $filter, $window,
                 $scope.message = data.data.message;
                 $scope.filePath = data.data.fileFullPath;
                 $scope.status = data.data.success;
-               
+
                 // // console.log("JSON.stringify($scope.postJson): " + JSON.stringify(postJson));
-                 $scope.adminCreate();
-           } else {
+                $scope.adminCreate();
+            } else {
                 $scope.status = data.data.status;
                 $scope.message = data.data.message;
                 console.log("image is not uploaded");
@@ -36,8 +36,8 @@ app.controller('adminCreateCtl', function ($scope, $rootScope, $filter, $window,
 
             }
         });
-    //}
-    /* #####  End Upload File ###### */
+        //}
+        /* #####  End Upload File ###### */
         // else{
         //     alert("logo is required");
         // }
@@ -61,7 +61,9 @@ app.controller('adminCreateCtl', function ($scope, $rootScope, $filter, $window,
             "pinCode": $scope.pinCode,
             "country": $scope.country,
             "pswd": $scope.pswd,
-            "logoPath": $scope.filePath
+        }
+        if ($scope.filePath) {
+            objJson.logoPath = $scope.filePath;
         }
         console.log("objJson: " + JSON.stringify(objJson));
         var api = $scope.propertyJson.VC_adminCreate;

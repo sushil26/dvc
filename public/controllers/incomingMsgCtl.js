@@ -59,9 +59,15 @@ app.controller('incomingMsgCtl', function ($scope, $rootScope, $state, $window, 
         console.log("quickMsgGet-->");
         var id = $scope.userData.id;
         console.log("$scope.studCS: "+JSON.stringify($scope.studCS));
-        var clas =  $scope.studCS[0].class;
-        var section =  $scope.studCS[0].section;
-        var api = $scope.propertyJson.VC_quickMsgGetForStud + "/" + id + "/" +clas + "/"+section;
+        if($scope.loginType == 'studParent'){
+            var clas =  $scope.studCS[0].class;
+            var section =  $scope.studCS[0].section;
+            var api = $scope.propertyJson.VC_quickMsgGetForStud + "/" + id + "/" +clas + "/"+section;
+        }
+        else if($scope.loginType == 'teacher'){
+            var api = $scope.propertyJson.VC_quickMsgGetForStud + "/" + id;
+        }
+       
         //var api = "http://localhost:5000/vc/eventGet"+ "/" + id;;
         $scope.calendarOwner = "Your";
 

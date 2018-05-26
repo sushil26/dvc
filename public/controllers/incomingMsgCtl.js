@@ -15,7 +15,7 @@ app.controller('incomingMsgCtl', function ($scope, $rootScope, $state, $window, 
             // console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
                 $scope.studentPersonalData = data.data.data;
-                $scope.studCS = $scope.studentPersonalData.cs;
+                $scope.studCS = $scope.studentPersonalData[0].cs;
                 console.log("  $scope.studCS: " + JSON.stringify( $scope.studCS));
                 console.log("$scope.studentPersonalData: " + JSON.stringify($scope.studentPersonalData));
             }

@@ -5,7 +5,7 @@ app.controller('incomingMsgCtl', function ($scope, $rootScope, $state, $window, 
     $scope.events = [];
     $scope.propertyJson = $rootScope.propertyJson;
 
-    $scope.getSelectedStudentPersonalData = function (id) {
+    $scope.getSelectedStudentPersonalData = function () {
         console.log("get Selected Student PersonalData-->");
         var id = $scope.userData.id;
         var api = $scope.propertyJson.VC_studentPersonalData + "/" + id;
@@ -26,9 +26,7 @@ app.controller('incomingMsgCtl', function ($scope, $rootScope, $state, $window, 
         })
         console.log("<--get Selected Student PersonalData");
     }
-    if ($scope.loginType == 'studParent') {
-        $scope.getSelectedStudentPersonalData();
-    }
+    
     $scope.getToDate = function () {
         console.log("Get To Date-->");
         var api = $scope.propertyJson.VC_getToDate;
@@ -48,7 +46,7 @@ app.controller('incomingMsgCtl', function ($scope, $rootScope, $state, $window, 
                 var reqSec = todayDate.getSeconds();
                 $scope.todayDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
                 console.log("consolidateDate: " + $scope.consolidateDate);
-                $scope.quickMsgGet();
+               
             }
             else {
             }
@@ -60,6 +58,7 @@ app.controller('incomingMsgCtl', function ($scope, $rootScope, $state, $window, 
     $scope.quickMsgGet = function () {
         console.log("quickMsgGet-->");
         var id = $scope.userData.id;
+        console.log("$scope.studCS: "+JSON.stringify($scope.studCS));
         var clas =  $scope.studCS[0].class;
         var section =  $scope.studCS[0].section;
         var api = $scope.propertyJson.VC_quickMsgGetForStud + "/" + id + "/" +clas + "/"+section;
@@ -113,6 +112,15 @@ app.controller('incomingMsgCtl', function ($scope, $rootScope, $state, $window, 
                 //alert("Event get Failed");
             }
         })
+    }
+
+    if ($scope.loginType == 'studParent') {
+        $scope.getSelectedStudentPersonalData();
+        $scope.quickMsgGet();
+    }
+    else{
+        
+        $scope.quickMsgGet();
     }
 
     $scope.viewDetail = function (id) {

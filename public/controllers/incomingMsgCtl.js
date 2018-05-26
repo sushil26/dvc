@@ -18,6 +18,7 @@ app.controller('incomingMsgCtl', function ($scope, $rootScope, $state, $window, 
                 $scope.studCS = $scope.studentPersonalData[0].cs;
                 console.log("  $scope.studCS: " + JSON.stringify( $scope.studCS));
                 console.log("$scope.studentPersonalData: " + JSON.stringify($scope.studentPersonalData));
+                $scope.quickMsgGet();
             }
             else {
                 //alert("Event get Failed");
@@ -122,7 +123,7 @@ app.controller('incomingMsgCtl', function ($scope, $rootScope, $state, $window, 
 
     if ($scope.loginType == 'studParent') {
         $scope.getSelectedStudentPersonalData();
-        $scope.quickMsgGet();
+       
     }
     else{
         

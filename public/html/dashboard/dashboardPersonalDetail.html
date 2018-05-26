@@ -9,18 +9,18 @@
                         <span style="color:white;">&nbspPROFILE</span>
                         <notification displayType="{{notificationType}}" message="{{notification}}"></notification>
                     </div>
-                   <div class="row" style-="margin:20px!important;background: #ffc107;padding: 10px;" ng-if="loginType!='vc4allAdmin'">
-                            <div class="col-lg-3">
-                                <center>
+                    <div class="row" style="margin:20px!important; background: #ffc107; padding: 10px;" ng-if="loginType!='vc4allAdmin'">
+                        <div class="col-lg-3">
+                            <center>
 
-                                    <img style="max-height:150px;margin-left: 20px;" ng-src={{userData[0].logoPath}}>
-                                </center>
+                                <img style="max-height:150px; margin-left: 20px;" ng-src={{userData[0].logoPath}}>
+                            </center>
 
-                            </div>
-                            <div class="col-lg-9">
-                                <center style="font-size: 60px;"> {{userData[0].schoolName}}</center>
-                            </div>
                         </div>
+                        <div class="col-lg-9">
+                            <center style="font-size: 60px;"> {{userData[0].schoolName}}</center>
+                        </div>
+                    </div>
                     <div class="panel-body bio-graph-info" style="padding: 1px;">
                         <div class="row" style="margin:20px!important;" ng-if="loginType!='vc4allAdmin'">
 

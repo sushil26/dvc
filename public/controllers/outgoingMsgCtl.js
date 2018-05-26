@@ -75,6 +75,9 @@ app.controller('outgoingMsgCtl', function ($scope, $rootScope, $state, $window, 
                         obj.receiverMN = $scope.eventData[x].receiverMN;
                         obj.remoteCalendarId = $scope.eventData[x].remoteCalendarId;
                     }
+                    else if($scope.eventData[x].messageType == 'wholeClass'){
+                        obj.messageType = $scope.eventData[x].messageType;
+                    }
                     console.log(" obj" + JSON.stringify(obj))
                     // ownerEvents.push(obj);
                     $scope.events.push(obj);

@@ -74,7 +74,7 @@ if (!req.files)
     console.log("req.files.originalname: "+req.files.originalname);
     //var fileFullPath = file.originalname
   // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
-  let sampleFile = req.files.sampleFile;
+  let sampleFile = req.files.logo;
  
   // Use the mv() method to place the file somewhere on your server
   sampleFile.mv('./public/schoolLogo/', function(err) {

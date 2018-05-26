@@ -26,14 +26,7 @@ app.controller('incomingMsgCtl', function ($scope, $rootScope, $state, $window, 
         })
         console.log("<--get Selected Student PersonalData");
     }
-    if ($scope.loginType == 'studParent') {
-        $scope.getSelectedStudentPersonalData();
-        $scope.quickMsgGet();
-    }
-    else{
-        
-        $scope.quickMsgGet();
-    }
+    
     $scope.getToDate = function () {
         console.log("Get To Date-->");
         var api = $scope.propertyJson.VC_getToDate;
@@ -120,6 +113,15 @@ app.controller('incomingMsgCtl', function ($scope, $rootScope, $state, $window, 
         })
     }
 
+    if ($scope.loginType == 'studParent') {
+        $scope.getSelectedStudentPersonalData();
+        $scope.quickMsgGet();
+    }
+    else{
+        
+        $scope.quickMsgGet();
+    }
+    
     $scope.viewDetail = function (id) {
         console.log("viewDetail-->");
         console.log("id: " + id);

@@ -13,7 +13,7 @@
 
                                     <div class="col-lg-12">
                                         <img style="max-height:150px;margin-left: 20px;" ng-src={{userDetail[0].logoPath}}>
-                                        <h2>{{userData[0].schoolName}} </h2>
+                                        <h2>{{userDetail[0].schoolName}} </h2>
                                     </div>
                                     <div class="col-md-6 col-lg-4 col-sm-6" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"
                                         ng-if="loginType=='studParent'">
@@ -34,13 +34,13 @@
                                                 <td>
                                                     <b style="color:teal;">Student Name</b>
                                                 </td>
-                                                <td>{{userData[0].firstName +" "+ userData[0].lastName}}</td>
+                                                <td>{{userDetail[0].firstName +" "+ userDetail[0].lastName}}</td>
                                             </tr>
                                             <tr style="background: sandybrown;">
                                                 <td>
                                                     <b style="color:teal;">ID</b>
                                                 </td>
-                                                <td> {{userData[0].schoolId}}</td>
+                                                <td> {{userDetail[0].schoolId}}</td>
                                             </tr>
         
                                             <tr style="background: sandybrown;">
@@ -48,7 +48,7 @@
                                                     <b style="color:teal;">Class</b>
                                                 </td>
                                                 <td>
-                                                    <span ng-repeat="cs in userData[0].cs">{{cs.class}}-{{cs.section}}</span>
+                                                    <span ng-repeat="cs in userDetail[0].cs">{{cs.class}}-{{cs.section}}</span>
                                                 </td>
                                             </tr>
                                             <tr style="background: sandybrown;">
@@ -56,7 +56,7 @@
                                                     <b style="color:teal;">D.O.B</b>
                                                 </td>
                                                 <td>
-                                                    {{userData[0].dob | date:' d MMM yyyy'}}
+                                                    {{userDetail[0].dob | date:' d MMM yyyy'}}
                                                 </td>
                                             </tr>
                                             <tr style="background: sandybrown;">
@@ -64,7 +64,7 @@
                                                     <b style="color:teal;">D.O.Joining</b>
                                                 </td>
                                                 <td>
-                                                    {{userData[0].doj | date:' d MMM yyyy'}}
+                                                    {{userDetail[0].doj | date:' d MMM yyyy'}}
                                                 </td>
                                             </tr>
         
@@ -91,20 +91,20 @@
                                                 <td>
                                                     <b style="color:teal;">Father Name</b>
                                                 </td>
-                                                <td> {{userData[0].parentName}}</td>
+                                                <td> {{userDetail[0].parentName}}</td>
                                             </tr>
                                             <tr style="background: sandybrown;">
                                                 <td>
                                                     <b style="color:teal;">Father Email</b>
                                                 </td>
-                                                <td> {{userData[0].parentEmail}}</td>
+                                                <td> {{userDetail[0].parentEmail}}</td>
                                             </tr>
         
                                             <tr style="background: sandybrown;">
                                                 <td>
                                                     <b style="color:teal;">Father Phone</b>
                                                 </td>
-                                                <td> {{userData[0].mobileNum}}</td>
+                                                <td> {{userDetail[0].mobileNum}}</td>
                                             </tr>
         
         
@@ -130,20 +130,20 @@
                                                 <td>
                                                     <b style="color:teal;">Mother Name</b>
                                                 </td>
-                                                <td> {{userData[0].motherName}}</td>
+                                                <td> {{userDetail[0].motherName}}</td>
                                             </tr>
                                             <tr style="background: sandybrown;">
                                                 <td>
                                                     <b style="color:teal;">Mother Email</b>
                                                 </td>
-                                                <td> {{userData[0].motherEmail}}</td>
+                                                <td> {{userDetail[0].motherEmail}}</td>
                                             </tr>
         
                                             <tr style="background: sandybrown;">
                                                 <td>
                                                     <b style="color:teal;">Mother Phone</b>
                                                 </td>
-                                                <td> {{userData[0].mobileNum}}</td>
+                                                <td> {{userDetail[0].mobileNum}}</td>
                                             </tr>
         
         
@@ -168,13 +168,13 @@
                                                 <td>
                                                     <b style="color:teal;">Name</b>
                                                 </td>
-                                                <td>{{userData[0].firstName +" "+ userData[0].lastName}}</td>
+                                                <td>{{userDetail[0].firstName +" "+ userDetail[0].lastName}}</td>
                                             </tr>
                                             <tr style="background: sandybrown;">
                                                 <td>
                                                     <b style="color:teal;">ID</b>
                                                 </td>
-                                                <td> {{userData[0].schoolId}}</td>
+                                                <td> {{userDetail[0].schoolId}}</td>
                                             </tr>
         
                                             <tr style="background: sandybrown;">
@@ -183,7 +183,7 @@
         
                                                 </td>
                                                 <td>
-                                                    {{userData[0].mobNumber}}
+                                                    {{userDetail[0].mobNumber}}
                                                 </td>
                                             </tr>
                                             <tr style="background: sandybrown;">
@@ -192,7 +192,7 @@
         
                                                 </td>
                                                 <td>
-                                                    {{userData[0].email}}
+                                                    {{userDetail[0].email}}
                                                 </td>
                                             </tr>
                                             <tr style="background: sandybrown;">
@@ -200,7 +200,7 @@
                                                     <b style="color:teal;">D.O.B</b>
                                                 </td>
                                                 <td>
-                                                    {{userData[0].dob | date:' d MMM yyyy'}}
+                                                    {{userDetail[0].dob | date:' d MMM yyyy'}}
                                                 </td>
                                             </tr>
                                             <tr style="background: sandybrown;">
@@ -208,7 +208,7 @@
                                                     <b style="color:teal;">D.O.Joining</b>
                                                 </td>
                                                 <td>
-                                                    {{userData[0].doj | date:' d MMM yyyy'}}
+                                                    {{userDetail[0].doj | date:' d MMM yyyy'}}
                                                 </td>
                                             </tr>
         
@@ -231,7 +231,7 @@
         
         
         
-                                            <tr style="background: sandybrown;" ng-repeat="css in userData[0].css">
+                                            <tr style="background: sandybrown;" ng-repeat="css in userDetail[0].css">
                                                 <td>{{css.class}}</td>
                                                 <td>{{css.section}}</td>
                                                 <td>{{css.subject}}</td>
@@ -258,7 +258,7 @@
                                                 <td>
                                                     <b style="color:teal;">Name</b>
                                                 </td>
-                                                <td>{{userData[0].firstName +" "+ userData[0].lastName}}</td>
+                                                <td>{{userDetail[0].firstName +" "+ userDetail[0].lastName}}</td>
                                             </tr>
                                             <tr style="background: sandybrown;">
                                                 <td>
@@ -266,7 +266,7 @@
         
                                                 </td>
                                                 <td>
-                                                    {{userData[0].mobNumber}}
+                                                    {{userDetail[0].mobNumber}}
                                                 </td>
                                             </tr>
                                             <tr style="background: sandybrown;">
@@ -275,7 +275,7 @@
         
                                                 </td>
                                                 <td>
-                                                    {{userData[0].email}}
+                                                    {{userDetail[0].email}}
                                                 </td>
                                             </tr>
         
@@ -284,7 +284,7 @@
                                                     <b style="color:teal;">D.O.Joining</b>
                                                 </td>
                                                 <td>
-                                                    {{userData[0].doj | date:' d MMM yyyy'}}
+                                                    {{userDetail[0].doj | date:' d MMM yyyy'}}
                                                 </td>
                                             </tr>
         
@@ -310,7 +310,7 @@
                                                 <td>
                                                     <b style="color:teal;">Name</b>
                                                 </td>
-                                                <td>{{userData[0].firstName +" "+ userData[0].lastName}}</td>
+                                                <td>{{userDetail[0].firstName +" "+ userDetail[0].lastName}}</td>
                                             </tr>
                                             <tr style="background: sandybrown;">
                                                 <td>
@@ -318,7 +318,7 @@
         
                                                 </td>
                                                 <td>
-                                                    {{userData[0].mobNumber}}
+                                                    {{userDetail[0].mobNumber}}
                                                 </td>
                                             </tr>
                                             <tr style="background: sandybrown;">
@@ -327,7 +327,7 @@
         
                                                 </td>
                                                 <td>
-                                                    {{userData[0].email}}
+                                                    {{userDetail[0].email}}
                                                 </td>
                                             </tr>
                                         </table>

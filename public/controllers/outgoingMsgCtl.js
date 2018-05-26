@@ -69,13 +69,12 @@ app.controller('outgoingMsgCtl', function ($scope, $rootScope, $state, $window, 
                         obj.objdraggable = true;
                         obj.resizable = true;
                         obj.url = $scope.eventData[x].url;
-                        obj.receiverEmail = $scope.eventData[x].receiverEmail;
                         obj.receiverName = $scope.eventData[x].receiverName;
                         obj.receiverId = $scope.eventData[x].receiverId;
                         obj.receiverMN = $scope.eventData[x].receiverMN;
                         obj.remoteCalendarId = $scope.eventData[x].remoteCalendarId;
                     }
-                    else if($scope.eventData[x].messageType == 'wholeClass'){
+                    else if ($scope.eventData[x].messageType == 'wholeClass') {
                         obj.messageType = $scope.eventData[x].messageType;
                     }
                     console.log(" obj" + JSON.stringify(obj))

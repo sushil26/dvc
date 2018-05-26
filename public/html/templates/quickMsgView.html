@@ -60,20 +60,36 @@
                 </td>
             </tr>
         </tbody>
-
-        <thead>
+        <thead if="eventDetails.messageType">
             <tr>
+                <th>
+                    <div class="panel-heading">
+                        Receiver Email Ids
+                    </div>
+                </th>
+            </tr>
+        </thead>
+        <tbody if="eventDetails.messageType">
+            <tr>
+                <td>
+                    Email Ids
+                </td>
+                <td>
+                    <div style="color:green" ng-repeat="emails in eventDetails.receiverEmail">{{emails}} </div>
+                </td>
+            </tr>
+        </tbody>
 
+        <thead if="!eventDetails.messageType">
+            <tr>
                 <th>
                     <div class="panel-heading">
                         Receiver Details
                     </div>
-
                 </th>
-
             </tr>
         </thead>
-        <tbody>
+        <tbody if="!eventDetails.messageType">
             <tr>
                 <td>
                     Name

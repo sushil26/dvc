@@ -68,13 +68,12 @@ app.controller('incomingMsgCtl', function ($scope, $rootScope, $state, $window, 
                         obj.student_id = $scope.eventData[x].student_id;
                         obj.objdraggable = true;
                         obj.resizable = true;
-                        obj.actions = actions;
                         obj.url = $scope.eventData[x].url;
                         obj.receiverEmail = $scope.eventData[x].receiverEmail;
                         obj.receiverName = $scope.eventData[x].receiverName;
                         obj.receiverId = $scope.eventData[x].receiverId;
                         obj.receiverMN = $scope.eventData[x].receiverMN;
-                        obj.remoteCalendarId= $scope.eventData[x].remoteCalendarId;
+                        obj.remoteCalendarId = $scope.eventData[x].remoteCalendarId;
                     }
                     console.log(" obj" + JSON.stringify(obj))
                     // ownerEvents.push(obj);
@@ -102,5 +101,5 @@ app.controller('incomingMsgCtl', function ($scope, $rootScope, $state, $window, 
         })
         console.log("<--viewDetail");
     }
-   
+
 })

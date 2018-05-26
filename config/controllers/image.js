@@ -76,7 +76,7 @@ if (!req.files)
   // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
   let sampleFile = req.files.logo;
  
-  fs.readFile(file.path, function(err, data) {
+  fs.readFile(req.file.path, function(err, data) {
     var path = __dirname + '/public/schoolLogo' + file.name;
     fs.writeFile(path, data, function(err) {
     });

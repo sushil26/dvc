@@ -1911,11 +1911,11 @@ div[data-role="editor-toolbar"] {
 .modal-footer {
   background-color: #f8f8f8;
   background: -webkit-gradient( linear, left top, left bottom, from(#f8f8f8), to(#f2f2f2));
-  background: -webkit-linear-gradient(top, #f8f8f8, #f2f2f2);
-  background: -moz-linear-gradient(top, #f8f8f8, #f2f2f2);
-  background: -ms-linear-gradient(top, #f8f8f8, #f2f2f2);
-  background: -o-linear-gradient(top, #f8f8f8, #f2f2f2);
-  background: linear-gradient(top, #f8f8f8, #f2f2f2);
+  background: -webkit-linear-gradient(top, #f8f8f8, #212529);
+  background: -moz-linear-gradient(top, #f8f8f8, #212529);
+  background: -ms-linear-gradient(top, #f8f8f8, #212529);
+  background: -o-linear-gradient(top, #f8f8f8, #212529);
+  background: linear-gradient(top, #f8f8f8, #212529);
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px;
   text-shadow: 0px 1px #fff;
@@ -4201,7 +4201,7 @@ ul.amounts li {
 
 .panel-heading,
 .modal-header {
-  background: #f7f7f7;
+  background: #393939;
   color: #688a7e;
 }
 

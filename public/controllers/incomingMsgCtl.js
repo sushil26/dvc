@@ -100,7 +100,7 @@ app.controller('incomingMsgCtl', function ($scope, $rootScope, $state, $window, 
                     }
                     else if ($scope.eventData[x].messageType == 'wholeClass') {
                         obj.messageType = $scope.eventData[x].messageType;
-                        obj.cs = $scope.eventData[x].cs
+                        obj.student_cs = $scope.eventData[x].cs
                     }
                     console.log(" obj" + JSON.stringify(obj))
                     // ownerEvents.push(obj);

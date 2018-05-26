@@ -65,7 +65,7 @@ app.controller('incomingMsgCtl', function ($scope, $rootScope, $state, $window, 
             var api = $scope.propertyJson.VC_quickMsgGetForStud + "/" + id + "/" +clas + "/"+section;
         }
         else if($scope.loginType == 'teacher'){
-            var api = $scope.propertyJson.VC_quickMsgGetForStud + "/" + id;
+            var api = $scope.propertyJson.VC_quickMsgGet + "/" + id;
         }
        
         //var api = "http://localhost:5000/vc/eventGet"+ "/" + id;;

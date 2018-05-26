@@ -35,22 +35,24 @@
 
 
         </tr>
-        <tr >
-            <td if="eventDetails.messageType=='wholeClass'">
+        <tr ng-if="eventDetails.messageType=='wholeClass'">
+            <td>
                 Receiver Detail
 
                 <div style="color:green" ng-repeat="emails in eventDetails.receiverEmail">{{emails}} </div>
             </td>
         </tr>
-        <tr >
-            <td if="eventDetails.messageType!='wholeClass'">
-                Receiver Detail
-                <br>
-                <i style="color:green">{{eventDetails.receiverName}} </i>
-                <br>
-                <i style="color:green">{{eventDetails.receiverMN}} </i>
+        <tr ng-if="eventDetails.messageType!='wholeClass'">
+            
+                <td>
+                    Receiver Detail
+                    <br>
+                    <i style="color:green">{{eventDetails.receiverName}} </i>
+                    <br>
+                    <i style="color:green">{{eventDetails.receiverMN}} </i>
 
-            </td>
+                </td>
+          
         </tr>
 
     </table>

@@ -51,7 +51,7 @@ app.controller('outgoingMsgCtl', function ($scope, $rootScope, $state, $window, 
                     console.log("$scope.eventData[" + x + "]: " + JSON.stringify($scope.eventData[x]));
                     var obj = {
                         'id': $scope.eventData[x]._id,
-                        'userId': $scope.eventData[x]._userId,
+                        'userId': $scope.eventData[x].userId,
                         "senderLoginType": $scope.eventData[x].senderLoginType,
                         'title': $scope.eventData[x].title,
                         "reason": $scope.eventData[x].reason,

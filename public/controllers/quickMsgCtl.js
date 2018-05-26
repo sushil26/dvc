@@ -29,7 +29,7 @@ app.controller('quickMsgCtl', function ($scope, $rootScope, $state, $rootScope, 
                     console.log("$scope.eventData[" + x + "]: " + JSON.stringify($scope.eventData[x]));
                     var obj = {
                         'id': $scope.eventData[x]._id,
-                        'userId': $scope.eventData[x]._userId,
+                        'userId': $scope.eventData[x].userId,
                         "student_cs": $scope.eventData[x].student_cs,
                         "student_id": $scope.eventData[x].student_id,
                         "student_Name": $scope.eventData[x].student_Name,
@@ -486,14 +486,12 @@ app.controller('quickMsgCtl', function ($scope, $rootScope, $state, $rootScope, 
                             'endsAt': $filter('date')($scope.selectedDate_quickMsg, "h:mm a"),
                             'draggable': true,
                             'resizable': true,
-                            "reason": reason,
+                            "reason": obj.reason,
                             "senderName": name,
-                            "senderId": id,
+                            "senderId": $scope.userData.id,
                             "senderMN": senderMN,
-                            "receiverEmail": email,
-                            "receiverName": receiverName,
-                            "receiverId": receiverId,
-                            "receiverMN": receiverMN,
+                            "receiverEmail": $scope.allStudentEmailIds,
+                            
                             /*  */
                         }
                         ownerEvents.push(objData);

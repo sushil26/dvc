@@ -217,7 +217,7 @@ module.exports.bulkEmail_quickMsg = function (req, res) {
             "schoolName": req.body.schoolName
         }
         console.log("userData: " + JSON.stringify(userData));
-
+        var receiverEmail = req.body.receiverEmail;
         quickMessage.insertOne(userData, function (err, data) {
             console.log("data: " + JSON.stringify(data));
             if (err) {

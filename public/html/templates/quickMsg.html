@@ -11,29 +11,19 @@
                 Time
                 <div style="color:green">{{eventDetails.startsAt | date:'M/d/yy'}} </div>
             </td>
-
-
-
-
         </tr>
-
         <tr>
             <td>
                 Subject
                 <div style="color:green">{{eventDetails.title}}</div>
             </td>
         </tr>
-
         <tr>
             <td>
                 Message
                 <br>
                 <p style="color:green">{{eventDetails.reason}} </p>
             </td>
-
-
-
-
         </tr>
         <tr ng-if="eventDetails.messageType=='wholeClass'">
             <td>
@@ -43,16 +33,14 @@
             </td>
         </tr>
         <tr ng-if="eventDetails.messageType!='wholeClass'">
-            
-                <td>
-                    Receiver Detail
-                    <br>
-                    <i style="color:green">{{eventDetails.receiverName}} </i>
-                    <br>
-                    <i style="color:green">{{eventDetails.receiverMN}} </i>
+            <td>
+                Receiver Detail
+                <br>
+                <i style="color:green">{{eventDetails.receiverName}} </i>
+                <br>
+                <i style="color:green">{{eventDetails.receiverMN}} </i>
 
-                </td>
-          
+            </td>
         </tr>
 
     </table>

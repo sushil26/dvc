@@ -48,6 +48,7 @@ module.exports.quickMsgSend = function (req, res) {
             "student_cs": req.body.student_cs,
             "student_id": req.body.student_id,
             "student_Name": req.body.student_Name,
+            "messageType": "single",
             "password": password
         }
         console.log("userData: " + JSON.stringify(userData));
@@ -147,6 +148,48 @@ module.exports.quickMsgGet = function (req, res) {
 
 }
 
+module.exports.quickMsgGetForStud = function (req, res) {
+    console.log("quickMsgGetForStud-->");
+    var responseData;
+    console.log("req.params.id: " + req.params.id);
+    console.log("req.params.clas: " + req.params.clas);
+    console.log("req.params.section: " + req.params.section);
+var cs = [{"class":req.params.clas,"section":req.params.section}];
+    if (general.emptyCheck(req.params.id) && general.emptyCheck(req.params.clas)&&general.emptyCheck(req.params.section)) {
+        quickMessage.find({ $or: [{ "userId": req.params.id }, { "remoteCalendarId": req.params.id }, {"student_cs": cs}] }).sort({ "startAt": 1 }).toArray(function (err, listOfevents) {
+            console.log("listOfevents: " + JSON.stringify(listOfevents))
+            if (err) {
+
+                responseData = {
+                    "status": false,
+                    "message": "Failed to get Data",
+                    "data": data
+                }
+                res.status(400).send(responseData);
+            }
+            else {
+                responseData = {
+                    "status": true,
+                    "message": "Registeration Successfull",
+                    "data": listOfevents
+                }
+                res.status(200).send(responseData);
+            }
+        })
+    }
+    else {
+        console.log("Epty value found");
+        responseData = {
+            "status": false,
+            "message": "there is no userId to find",
+
+        }
+        res.status(400).send(responseData);
+    }
+
+
+}
+
 module.exports.getQuickMsgById = function (req, res) {
     console.log("EventGetById-->");
     var responseData;
@@ -213,7 +256,7 @@ module.exports.bulkEmail_quickMsg = function (req, res) {
             "date": req.body.date,
             "primColor": req.body.primColor,
             "messageType": req.body.messageType,
-            "cs": req.body.cs,
+            "student_cs": req.body.cs,
             "schoolName": req.body.schoolName
         }
         console.log("userData: " + JSON.stringify(userData));

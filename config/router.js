@@ -60,6 +60,7 @@ module.exports = function (app) {
 
     app.post('/vc/quickMsgSend', quickMsg.quickMsgSend);
     app.get('/vc/quickMsgGet/:id', quickMsg.quickMsgGet);
+    app.get('/vc/quickMsgGetForStud/:id/:clas/:section', quickMsg.quickMsgGetForStud);
     app.get('/vc/getQuickMsgById/:id', quickMsg.getQuickMsgById);
     app.post('/vc/bulkEmail_quickMsg', quickMsg.bulkEmail_quickMsg);
     app.get('/vc/getStudListForCS/:schoolName/:clas/:section', event.getStudListForCS);
@@ -74,7 +75,7 @@ module.exports = function (app) {
     app.post('/vc/updateEventMOM/:eventId', event.updateEventMOM);
     app.post('/vc/parentCredential', event.parentCredential);
     app.post('/vc/eventUpdate/:id', event.eventUpdate);
-    
+
 
     // app.get('/vc/teacherGet/:id', event.teacherGet);
 

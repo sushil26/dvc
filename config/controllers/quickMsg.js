@@ -191,4 +191,91 @@ module.exports.getQuickMsgById = function (req, res) {
     console.log("<--EventGetById");
 }
 
+module.exports.bulkEmail_quickMsg = function (req, res) {
+    console.log("bulkEmail_quickMsg-->");
+    var responseData;
+
+    console.log("quickMsgSend-->");
+    var responseData;
+
+    if (general.emptyCheck(req.body.senderName) && general.emptyCheck(req.body.senderId) && general.emptyCheck(req.body.reason)) {
+        var password = 'abc';
+        var userData = {
+            "userId": req.body.userId,
+            "senderLoginType": req.body.senderLoginType,
+            "title": req.body.title,
+            "reason": req.body.reason,
+            "senderName": req.body.senderName,
+            "senderId": req.body.senderId,
+            "senderMN": req.body.senderMN,
+            "receiverEmail": req.body.receiverEmail,
+            "date": req.body.date,
+            "primColor": req.body.primColor,
+            "messageType": req.body.messageType,
+            "cs": req.body.cs,
+            "schoolName": req.body.schoolName
+        }
+        console.log("userData: " + JSON.stringify(userData));
+
+        quickMessage.insertOne(userData, function (err, data) {
+            console.log("data: " + JSON.stringify(data));
+            if (err) {
+                responseData = {
+                    "status": false,
+                    "message": "Failed to Register",
+                    "data": data
+                }
+                res.status(400).send(responseData);
+            }
+            else {
+
+                receiverEmail.forEach(function (to, i, array) {
+                    var mailOptions = {
+                        from: "info@vc4all.in",
+                        to: to,
+                        subject: "Regarding School Meeting",
+                        html: "<table style='border:10px solid gainsboro;'><thead style=background:cornflowerblue;><tr><th><h2>Greetings from VC4ALL</h2></th></tr></thead><tfoot style=background:#396fc9;color:white;><tr><td style=padding:15px;><p><p>Regards</p><b>Careator Technologies Pvt. Ltd</b></p></td></tr></tfoot><tbody><tr><td><b>Dear Parents,</b></td></tr><tr><td><p>Please note, this is a quick message regarding <b>" + req.body.reason + " </b></p><p style=background:gainsboro;></p></td></tr></tbody></table>"
+                        // html: "<html><head><p><b>Dear Parents, </b></p><p>Please note, you have to attend meeting regarding <b>" + req.body.reason + " </b>please open the below link at sharp " + req.body.startAt + " to " + req.body.endAt + "</p><p style=background:gainsboro;>Here your link and password for meeting <a href=" + req.body.url + ">" + req.body.url + "</a> and Password: " + password + "</p><p>Regards</p><p><b>Careator Technologies Pvt. Ltd</b></p></head><body></body></html>"
+                    };
+                    console.log("mailOptions: " + JSON.stringify(mailOptions));
+                    transporter.sendMail(mailOptions, function (error, info) {
+                        if (error) {
+                            console.log(error);
+                            responseData = {
+                                "status": true,
+                                "errorCode": 200,
+                                "message": "Registeration Successfull and Failed to send mail",
+                                "data": userData
+                            }
+                            res.status(200).send(responseData);
+                        } else {
+                            console.log('Email sent: ' + info.response);
+                            responseData = {
+                                "status": true,
+                                "errorCode": 200,
+                                "message": "Registeration Successfull and sent mail",
+
+                                "data": userData
+                            }
+                            res.status(200).send(responseData);
+                        }
+
+                    });
+                })
+            }
+        })
+    }
+    else {
+        console.log("Epty value found");
+        responseData = {
+            "status": false,
+            "message": "empty value found",
+            "data": userData
+        }
+        res.status(400).send(responseData);
+    }
+
+}
+
+
 

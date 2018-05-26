@@ -64,7 +64,7 @@
 //     })
 //     console.log("uploadProfile Image--> ");
 // }
-
+var fs = require('fs');
 module.exports.upload = function (req, res) {
     console.log("uploadProfile Image--> ");
 if (!req.files)
@@ -76,12 +76,21 @@ if (!req.files)
   // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
   let sampleFile = req.files.logo;
  
-  // Use the mv() method to place the file somewhere on your server
-  sampleFile.mv('./public/schoolLogo/', function(err) {
-    if (err)
-      return res.status(500).send(err);
-      //res.json({ success: true, message: 'File was uploaded', fileFullPath: uploadProfPicPath });
-    res.send('File uploaded!');
+  fs.readFile(file.path, function(err, data) {
+    var path = __dirname + '/' + file.name;
+    fs.writeFile(path, data, function(err) {
+    });
   });
+
+  // Use the mv() method to place the file somewhere on your server
+  // sampleFile.mv('./public/schoolLogo/', function(err) {
+  //   if (err){
+  //     return res.status(500).send(err);
+  //     console.log("err: "+JSON.stringify(err));
+  //   }
+  //   res.send('File uploaded!'); 
+  //     //res.json({ success: true, message: 'File was uploaded', fileFullPath: uploadProfPicPath });
+    
+  // });
   console.log("uploadProfile Image--> ");
 }

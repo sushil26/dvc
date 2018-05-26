@@ -15,6 +15,19 @@ var csv = require('fast-csv');
 var d = new Date();
 var fileUpload = require('express-fileupload');
 
+var nodemailer = require('nodemailer');
+
+var transporter = nodemailer.createTransport({
+    service: "godaddy",
+    auth: {
+        user: "info@vc4all.in",
+        pass: "ctpl@123"
+    },
+    tls: {
+        rejectUnauthorized: false
+    }
+});
+
 var fs = require("fs");
 var message;
 var month;

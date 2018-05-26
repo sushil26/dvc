@@ -31,7 +31,7 @@
                                     </thead>
                                     <tbody style="background: white">
                                         <tr ng-repeat="event in events" ng-if="(event.student_cs[0].class == studCS[0].class && event.student_cs[0].section == studCS[0].section)">
-                                                <tr ng-repeat="event in events" ng-if="(loginType=='teacher' && event.remoteCalendarId==userData.id) ">
+                                                <!-- <tr ng-repeat="event in events" ng-if="(loginType=='teacher' && event.remoteCalendarId==userData.id) "> -->
                                             <td>{{event.title}}</td>
                                             <td>{{event.startsAt | date:'MMM d, y'}}</td>
                                             <td>

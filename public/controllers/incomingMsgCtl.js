@@ -10,24 +10,24 @@ app.controller('incomingMsgCtl', function ($scope, $rootScope, $state, $window, 
         var api = $scope.propertyJson.VC_studentPersonalData + "/" + id;
         console.log("api: " + api);
         httpFactory.get(api).then(function (data) {
-          var checkStatus = httpFactory.dataValidation(data);
-          // console.log("data--" + JSON.stringify(data.data));
-          if (checkStatus) {
-            $scope.studentPersonalData = data.data.data;
-            $scope.studCS = $scope.studentPersonalData.cs;
-            //console.log(" data.data.data: " + JSON.stringify(data.data.data));
-            console.log("$scope.studentPersonalData: " + JSON.stringify($scope.studentPersonalData));
-          }
-          else {
-            //alert("Event get Failed");
-          }
-    
+            var checkStatus = httpFactory.dataValidation(data);
+            // console.log("data--" + JSON.stringify(data.data));
+            if (checkStatus) {
+                $scope.studentPersonalData = data.data.data;
+                $scope.studCS = $scope.studentPersonalData.cs;
+                //console.log(" data.data.data: " + JSON.stringify(data.data.data));
+                console.log("$scope.studentPersonalData: " + JSON.stringify($scope.studentPersonalData));
+            }
+            else {
+                //alert("Event get Failed");
+            }
+
         })
         console.log("<--get Selected Student PersonalData");
     }
-    if($scope.loginType=='studParent'){
+    if ($scope.loginType == 'studParent') {
         $scope.getSelectedStudentPersonalData();
-    }    
+    }
     $scope.getToDate = function () {
         console.log("Get To Date-->");
         var api = $scope.propertyJson.VC_getToDate;
@@ -91,12 +91,15 @@ app.controller('incomingMsgCtl', function ($scope, $rootScope, $state, $window, 
                         obj.student_id = $scope.eventData[x].student_id;
                         obj.objdraggable = true;
                         obj.resizable = true;
-                        obj.url = $scope.eventData[x].url;
                         obj.receiverEmail = $scope.eventData[x].receiverEmail;
                         obj.receiverName = $scope.eventData[x].receiverName;
                         obj.receiverId = $scope.eventData[x].receiverId;
                         obj.receiverMN = $scope.eventData[x].receiverMN;
                         obj.remoteCalendarId = $scope.eventData[x].remoteCalendarId;
+                    }
+                    else if ($scope.eventData[x].messageType == 'wholeClass') {
+                        obj.messageType = $scope.eventData[x].messageType;
+                        obj.cs = $scope.eventData[x].cs
                     }
                     console.log(" obj" + JSON.stringify(obj))
                     // ownerEvents.push(obj);

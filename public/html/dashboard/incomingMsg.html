@@ -38,8 +38,9 @@
                                         </tr>
                                     </thead>
                                     <tbody style="background: white">
-                                        <tr ng-repeat="event in events" ng-if="event.receiverId==userData.id">
-                                            <td>{{event.title}}</td>
+                                        <tr ng-repeat="event in events">
+                                        
+                                            <td>----{{event.receiverId}}---------{{userData.id}}==={{event.title}}</td>
                                             <td>{{event.startsAt | date:'MMM d, y'}}</td>
                                             <td>
                                                 <div class="btn-group">

@@ -15,8 +15,12 @@
 
 
                         <div class="row" style="margin:20px!important;" ng-if="loginType!='vc4allAdmin'">
-                            <img style="max-height:150px;margin-left: 20px;" ng-src={{userDetail[0].logoPath}}>
-                            <h1>{{userDetail[0].schoolName}} </h1>
+                            <div class="col-lg-3">
+                                <img style="max-height:150px;margin-left: 20px;" ng-src={{userDetail[0].logoPath}}>
+                            </div>
+                            <div class="col-lg-9">
+                                <h1>{{userDetail[0].schoolName}} </h1>
+                            </div>
                         </div>
                         <div class="row" style="margin:20px!important;" ng-if="loginType!='vc4allAdmin'">
 

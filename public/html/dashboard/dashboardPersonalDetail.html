@@ -10,13 +10,17 @@
                         <notification displayType="{{notificationType}}" message="{{notification}}"></notification>
                     </div>
                     <div class="row" style="margin:20px!important;" ng-if="loginType!='vc4allAdmin'">
+                        <div  class="col-lg-3">
                             <img style="max-height:150px;margin-left: 20px;" ng-src={{userData[0].logoPath}}>
+                        </div>
+                        <div class="col-lg-9">
                             <h1>{{userData[0].schoolName}} </h1>
                         </div>
+                    </div>
                     <div class="panel-body bio-graph-info" style="padding: 1px;">
                         <div class="row" style="margin:20px!important;" ng-if="loginType!='vc4allAdmin'">
 
-                          
+
                             <div class="col-md-6 col-lg-4 col-sm-6" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"
                                 ng-if="loginType=='studParent'">
                                 <table class="table table-sm">

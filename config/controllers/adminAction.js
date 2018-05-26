@@ -1822,24 +1822,24 @@ module.exports.uploadStudentMaster = function (req, res) {
                                 console.log("i: "+i);
                                 console.log("to: "+to);
                                 console.log("array: "+JSON.stringify(array));
-                                // var mailOptions = {
-                                //     from: "info@vc4all.in",
-                                //     to: to,
-                                //     subject: "Regarding School Meeting",
-                                //     html: "<table style='border:10px solid gainsboro;'><thead style=background:cornflowerblue;><tr><th><h2>Greetings from VC4ALL</h2></th></tr></thead><tfoot style=background:#396fc9;color:white;><tr><td style=padding:15px;><p><p>Regards</p><b>Careator Technologies Pvt. Ltd</b></p></td></tr></tfoot><tbody><tr><td><b>Dear Parents,</b></td></tr><tr><td><p>Please note, this is a quick message regarding <b>" + req.body.reason + " </b></p><p style=background:gainsboro;></p></td></tr></tbody></table>"
-                                //     // html: "<html><head><p><b>Dear Parents, </b></p><p>Please note, you have to attend meeting regarding <b>" + req.body.reason + " </b>please open the below link at sharp " + req.body.startAt + " to " + req.body.endAt + "</p><p style=background:gainsboro;>Here your link and password for meeting <a href=" + req.body.url + ">" + req.body.url + "</a> and Password: " + password + "</p><p>Regards</p><p><b>Careator Technologies Pvt. Ltd</b></p></head><body></body></html>"
-                                // };
-                                // console.log("mailOptions: " + JSON.stringify(mailOptions));
-                                // transporter.sendMail(mailOptions, function (error, info) {
-                                //     if (error) {
-                                //         console.log(error);
-                                //        console.log("err");
-                                //     } else {
-                                //         console.log('Email sent: ' + info.response);
-                                //         console.log("info");
-                                //     }
+                                var mailOptions = {
+                                    from: "info@vc4all.in",
+                                    to: to.email,
+                                    subject: "Regarding School Meeting",
+                                    html: "<table style='border:10px solid gainsboro;'><thead style=background:cornflowerblue;><tr><th><h2>Greetings from VC4ALL</h2></th></tr></thead><tfoot style=background:#396fc9;color:white;><tr><td style=padding:15px;><p><p>Regards</p><b>Careator Technologies Pvt. Ltd</b></p></td></tr></tfoot><tbody><tr><td><b>Dear Parents,</b></td></tr><tr><td><p>Please note, this is regarding credential email: <b>" + to.email + "password: "+to.pswd+" </b> </p><p style=background:gainsboro;></p></td></tr></tbody></table>"
+                                    // html: "<html><head><p><b>Dear Parents, </b></p><p>Please note, you have to attend meeting regarding <b>" + req.body.reason + " </b>please open the below link at sharp " + req.body.startAt + " to " + req.body.endAt + "</p><p style=background:gainsboro;>Here your link and password for meeting <a href=" + req.body.url + ">" + req.body.url + "</a> and Password: " + password + "</p><p>Regards</p><p><b>Careator Technologies Pvt. Ltd</b></p></head><body></body></html>"
+                                };
+                                console.log("mailOptions: " + JSON.stringify(mailOptions));
+                                transporter.sendMail(mailOptions, function (error, info) {
+                                    if (error) {
+                                        console.log(error);
+                                       console.log("err");
+                                    } else {
+                                        console.log('Email sent: ' + info.response);
+                                        console.log("info");
+                                    }
             
-                                // });
+                                });
                             })
                             ids = [];
                             studentFileValidationMessage = null;

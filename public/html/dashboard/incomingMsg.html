@@ -19,28 +19,19 @@
                                             <th>
                                                 <span>
                                                     <i class="icon_profile"></i>Title</span>
-                                                <!-- 
-                                                <i class="arrow_up_alt pull-right"></i>
-                                                <i class="arrow_down_alt pull-right"></i> -->
                                             </th>
                                             <th>
                                                 <span>
                                                     <i class="icon_calendar"></i> Date</span>
-                                                <!-- <i class="arrow_up_alt pull-right"></i>
-                                                <i class="arrow_down_alt pull-right"></i> -->
                                             </th>
-                                            <!-- <th>
-                                                <i class="icon_mail_alt"></i>Timing
-                                            </th> -->
                                             <th>
                                                 <i class="icon_cogs"></i> Action
                                             </th>
                                         </tr>
                                     </thead>
                                     <tbody style="background: white">
-                                        <tr ng-repeat="event in events" ng-if="event.remoteCalendarId==userData.id">
-                                        
-                                            <td>{{event.title}}</td>
+                                        <tr ng-repeat="event in events" ng-if="event.remoteCalendarId==userData.id || (event.cs.class == studCSS.class && event.cs.section == studCSS.section)">
+                                            <td>{{event.title}}</td>--------{{event.cs.class}}+++{{studCSS.class}}
                                             <td>{{event.startsAt | date:'MMM d, y'}}</td>
                                             <td>
                                                 <div class="btn-group">

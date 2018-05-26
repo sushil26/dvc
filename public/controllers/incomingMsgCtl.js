@@ -16,7 +16,7 @@ app.controller('incomingMsgCtl', function ($scope, $rootScope, $state, $window, 
             if (checkStatus) {
                 $scope.studentPersonalData = data.data.data;
                 $scope.studCS = $scope.studentPersonalData.cs;
-                //console.log(" data.data.data: " + JSON.stringify(data.data.data));
+                console.log("  $scope.studCS: " + JSON.stringify( $scope.studCS));
                 console.log("$scope.studentPersonalData: " + JSON.stringify($scope.studentPersonalData));
             }
             else {
@@ -102,7 +102,7 @@ app.controller('incomingMsgCtl', function ($scope, $rootScope, $state, $window, 
                         obj.messageType = $scope.eventData[x].messageType;
                         obj.student_cs = $scope.eventData[x].cs
                     }
-                    console.log(" obj" + JSON.stringify(obj))
+                    console.log("obj*" + JSON.stringify(obj))
                     // ownerEvents.push(obj);
                     $scope.events.push(obj);
                 }

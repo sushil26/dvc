@@ -1,13 +1,13 @@
 app.controller('dashboardController', function ($scope, $rootScope, $window, httpFactory, $uibModal, sessionAuthFactory, $filter, $timeout) {
 
     console.log("dashboardController==>");
-    
+
     //$("#mobile-nav").css("display", "none");
 
     $scope.clock = "loading clock..."; // initialise the time variable
     $scope.tickInterval = 1000 //ms
     $scope.propertyJson = $rootScope.propertyJson;
-    
+
     var tick = function () {
         $scope.clock = new Date()
         $scope.hour = $filter('date')($scope.clock, 'HH');
@@ -25,7 +25,8 @@ app.controller('dashboardController', function ($scope, $rootScope, $window, htt
     $scope.events_subMenu = true;
     $scope.academic_subMenu = true;
     $scope.setting_subMenu = true;
-      $scope.comm_subMenu = true;
+    $scope.comm_subMenu = true;
+    $scope.quickMsg_subMenu = true;
 
     $scope.iconMenuClick = function () {
         console.log("iconMenuClick--> ");
@@ -75,7 +76,7 @@ app.controller('dashboardController', function ($scope, $rootScope, $window, htt
             $scope.comm_subMenu = true;
             $scope.setting_subMenu = true;
             $scope.quickMsg_subMenu = true;
-        }else if (submenu == "comm_subMenu") {
+        } else if (submenu == "comm_subMenu") {
             console.log(" $scope.comm_subMenu : " + $scope.comm_subMenu);
             if ($scope.comm_subMenu == true) {
                 $scope.comm_subMenu = false;
@@ -86,7 +87,7 @@ app.controller('dashboardController', function ($scope, $rootScope, $window, htt
             $scope.academic_subMenu = true;
             $scope.setting_subMenu = true;
             $scope.quickMsg_subMenu = true;
-        }  
+        }
         else if (submenu == "quickMsg_subMenu") {
             console.log(" $scope.quickMsg_subMenu : " + $scope.quickMsg_subMenu);
             if ($scope.quickMsg_subMenu == true) {
@@ -98,7 +99,7 @@ app.controller('dashboardController', function ($scope, $rootScope, $window, htt
             $scope.academic_subMenu = true;
             $scope.setting_subMenu = true;
             $scope.comm_subMenu = true;
-        } 
+        }
         else {
             if ($scope.setting_subMenu == true) {
                 $scope.setting_subMenu = false;

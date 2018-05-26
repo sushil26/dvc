@@ -1928,9 +1928,9 @@ module.exports.studentMasterValidation = function (data, callback) {
                             ],
                             created_at: createdDate
                         };
-                        allStudentEmailIds.push(data.FatherEmailId);
+                        allStudentEmailIds.push({"email":data.FatherEmailId, "pswd":"abc"});
                         if (data.MotherEmailid) {
-                           allStudentEmailIds.push(data.MotherEmailid);
+                           allStudentEmailIds.push({"email":data.MotherEmailid, "pswd":"abc"});
                         }
                         objJson.push(userData);
 

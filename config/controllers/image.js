@@ -75,6 +75,7 @@ if (!req.files)
     //var fileFullPath = file.originalname
   // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
   let sampleFile = req.files.logo;
+  console.log(" req.files.logo.name: "+ req.files.logo.name);
  
   fs.readFile(req.files.path, function(err, data) {
     var path = __dirname + '/public/schoolLogo' + file.name;

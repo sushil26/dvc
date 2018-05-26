@@ -77,10 +77,17 @@ if (!req.files)
   let sampleFile = req.files.logo;
   console.log(" req.files.logo.name: "+ req.files.logo.name);
  
-  fs.readFile(req.files.path, function(err, data) {
-    var path = __dirname + '/public/schoolLogo' + file.name;
-    fs.writeFile(path, data, function(err) {
-    });
+  // fs.readFile(req.files.path, function(err, data) {
+  //   var path = __dirname + '/public/schoolLogo' + file.name;
+  //   fs.writeFile(path, data, function(err) {
+  //   });
+  // });
+
+  sampleFile.mv(__dirname+'/public/schoolLogo/', function(err) {
+    if (err)
+      return res.status(500).send(err);
+
+    res.send('File uploaded!');
   });
 
   // Use the mv() method to place the file somewhere on your server

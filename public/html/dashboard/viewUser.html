@@ -16,10 +16,14 @@
 
                         <div class="row" style="margin:20px!important;" ng-if="loginType!='vc4allAdmin'">
                             <div class="col-lg-3">
-                                <img style="max-height:150px;margin-left: 20px;" ng-src={{userDetail[0].logoPath}}>
+                                <center>
+
+                                    <img style="max-height:150px;margin-left: 20px;" ng-src={{userDetail[0].logoPath}}>
+                                </center>
+
                             </div>
                             <div class="col-lg-9">
-                           {{userDetail[0].schoolName}}
+                                <center> {{userDetail[0].schoolName}}</center>
                             </div>
                         </div>
                         <div class="row" style="margin:20px!important;" ng-if="loginType!='vc4allAdmin'">

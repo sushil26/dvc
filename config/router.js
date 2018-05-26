@@ -53,7 +53,7 @@ module.exports = function (app) {
     app.post('/vc/attendanceUpdate/:schoolName/:clas/:section/:reportType/:month', adminAction.attendanceUpdate);
     app.post('/vc/markUpdate/:schoolName/:clas/:section/:testType/:date', adminAction.markUpdate);
     //  app.post('/vc/uploadPayment', adminAction.uploadPayment);
-    app.post('/vc/csvTest', adminAction.csvTest);
+    //app.post('/vc/csvTest', adminAction.csvTest);
     // app.post('/vc/atte', adminAction.getAllClass);
 
     app.post('/vc/schoolLogo', image.upload);
@@ -67,8 +67,9 @@ module.exports = function (app) {
     app.get('/vc/getTeacherListForCS/:schoolName/:clas/:section', event.getTeacherListForCS);
     app.get('/vc/getToDate', event.getToDate);
     app.post('/vc/eventSend', event.eventSend);
+    app.get('/vc/eventGet/:id',  event.eventGet);
     app.post('/vc/eventReSchedule/:id', event.eventReSchedule);
-    app.get('/vc/eventGet/:id', event.eventGet);
+    // app.get('/vc/eventGet/:id', event.eventGet);
     app.get('/vc/getEventById/:id', event.getEventById);
     app.get('/vc/getStudentAttendance/:id', event.getStudentAttendance);
     app.post('/vc/deleteEvent', event.deleteEvent);

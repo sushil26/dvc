@@ -73,7 +73,7 @@
                                             {{userDetail[0].dob | date:' d MMM yyyy'}}
                                         </td>
                                     </tr>
-                                    <tr style="background: sandybrown;">
+                                    <tr style="background: sandybrown;" ng-if="loginType=='school'">
                                         <td>
                                             <b style="color:teal;">D.O.Joining</b>
                                         </td>
@@ -217,7 +217,7 @@
                                             {{userDetail[0].dob | date:' d MMM yyyy'}}
                                         </td>
                                     </tr>
-                                    <tr style="background: sandybrown;">
+                                    <tr style="background: sandybrown;" ng-if="loginType=='school'">
                                         <td>
                                             <b style="color:teal;">D.O.Joining</b>
                                         </td>
@@ -293,7 +293,7 @@
                                         </td>
                                     </tr>
 
-                                    <tr style="background: sandybrown;">
+                                    <tr style="background: sandybrown;" ng-if="loginType=='school'">
                                         <td>
                                             <b style="color:teal;">D.O.Joining</b>
                                         </td>

@@ -60,7 +60,7 @@ module.exports = function (app) {
 
     app.post('/vc/quickMsgSend', quickMsg.quickMsgSend);
     app.get('/vc/quickMsgGet/:id', quickMsg.quickMsgGet);
-    app.get('vc/quickMsgGetForStud/:id/:cs', quickMsg.quickMsgGetForStud);
+    app.get('vc/quickMsgGetForStud/:id/:clas/:section', quickMsg.quickMsgGetForStud);
     app.get('/vc/getQuickMsgById/:id', quickMsg.getQuickMsgById);
     app.post('/vc/bulkEmail_quickMsg', quickMsg.bulkEmail_quickMsg);
     app.get('/vc/getStudListForCS/:schoolName/:clas/:section', event.getStudListForCS);

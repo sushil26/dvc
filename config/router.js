@@ -1,7 +1,7 @@
 var user = require('./controllers/user');
 var event = require('./controllers/event');
 var quickMsg = require('./controllers/quickMsg');
-var image = require('./controllers/image');
+//var image = require('./controllers/image');
 var adminAction = require('./controllers/adminAction');
 var school = require('./controllers/school');
 var careator = require('./controllers/careator');
@@ -52,11 +52,7 @@ module.exports = function (app) {
     app.post('/vc/updateTeacher_timeTable/:id', adminAction.updateTeacher_timeTable);
     app.post('/vc/attendanceUpdate/:schoolName/:clas/:section/:reportType/:month', adminAction.attendanceUpdate);
     app.post('/vc/markUpdate/:schoolName/:clas/:section/:testType/:date', adminAction.markUpdate);
-    //  app.post('/vc/uploadPayment', adminAction.uploadPayment);
-    //app.post('/vc/csvTest', adminAction.csvTest);
-    // app.post('/vc/atte', adminAction.getAllClass);
 
-    app.post('/vc/schoolLogo', image.upload);
 
     app.post('/vc/quickMsgSend', quickMsg.quickMsgSend);
     app.get('/vc/quickMsgGet/:id', quickMsg.quickMsgGet);
@@ -69,15 +65,22 @@ module.exports = function (app) {
     app.post('/vc/eventSend', event.eventSend);
     app.get('/vc/eventGet/:id',  event.eventGet);
     app.post('/vc/eventReSchedule/:id', event.eventReSchedule);
-    // app.get('/vc/eventGet/:id', event.eventGet);
     app.get('/vc/getEventById/:id', event.getEventById);
     app.get('/vc/getStudentAttendance/:id', event.getStudentAttendance);
     app.post('/vc/deleteEvent', event.deleteEvent);
     app.post('/vc/updateEventMOM/:eventId', event.updateEventMOM);
     app.post('/vc/parentCredential', event.parentCredential);
-    app.post('/vc/eventUpdate/:id', event.eventUpdate);
+
+}
+
+    //  app.post('/vc/uploadPayment', adminAction.uploadPayment);
+    //app.post('/vc/csvTest', adminAction.csvTest);
+    // app.post('/vc/atte', adminAction.getAllClass);
+
+    //app.post('/vc/schoolLogo', image.upload);
+        //app.post('/vc/eventReSchedule/:id', event.eventReSchedule);
+    // app.get('/vc/eventGet/:id', event.eventGet);
+        //app.post('/vc/eventUpdate/:id', event.eventUpdate);
 
 
     // app.get('/vc/teacherGet/:id', event.teacherGet);
-
-}

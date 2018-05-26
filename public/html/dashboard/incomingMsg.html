@@ -31,24 +31,24 @@
                                     </thead>
                                     <tbody style="background: white">
                                         <tr ng-repeat="event in events" ng-if="(loginType=='teacher' && event.remoteCalendarId==userData.id && event.messageType != 'wholeClass') ">
-                                            <td>{{event.title}}</td>
+                                            <td>{{event.title}}</td>---{{loginType}}--{{event.remoteCalendarId}}---{{userData.id}}--{{event.messageType}}
                                             <td>{{event.startsAt | date:'MMM d, y'}}</td>
                                             <td>
                                                 <div class="btn-group">
                                                     <button class="btn btn-primary" ng-click="viewDetail($index)">View</button>
                                                 </div>
                                             </td>
-                                            </tr>
-                                            <tr ng-repeat="event in events" ng-if="(loginType=='studParent' && event.remoteCalendarId==userData.id) || (event.messageType == 'wholeClass' && event.student_cs[0].class == studCS[0].class && event.student_cs[0].section == studCS[0].section)">
+                                        </tr>
+                                        <tr ng-repeat="event in events" ng-if="(loginType=='studParent' && event.remoteCalendarId==userData.id) || (event.messageType == 'wholeClass' && event.student_cs[0].class == studCS[0].class && event.student_cs[0].section == studCS[0].section)">
 
-                                                <td>{{event.title}}*</td>
-                                                <td>{{event.startsAt | date:'MMM d, y'}}</td>
-                                                <td>
-                                                    <div class="btn-group">
-                                                        <button class="btn btn-primary" ng-click="viewDetail($index)">View</button>
-                                                    </div>
-                                                </td>
-                                            </tr>
+                                            <td>{{event.title}}*</td>
+                                            <td>{{event.startsAt | date:'MMM d, y'}}</td>
+                                            <td>
+                                                <div class="btn-group">
+                                                    <button class="btn btn-primary" ng-click="viewDetail($index)">View</button>
+                                                </div>
+                                            </td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>

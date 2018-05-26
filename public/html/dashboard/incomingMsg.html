@@ -30,8 +30,8 @@
                                         </tr>
                                     </thead>
                                     <tbody style="background: white">
-                                        <tr ng-repeat="event in events" ng-if="(loginType=='teacher' && event.remoteCalendarId && event.remoteCalendarId==userData.id && event.messageType &&event.messageType != 'wholeClass') ">
-                                            <td>{{event.title}}</td>---{{loginType}}--{{event.remoteCalendarId}}---{{userData.id}}--{{event.messageType}}
+                                        <tr ng-repeat="event in events" ng-if="(loginType=='teacher' && event.remoteCalendarId && event.remoteCalendarId==userData.id) ">
+                                            <td>{{event.title}}</td>
                                             <td>{{event.startsAt | date:'MMM d, y'}}</td>
                                             <td>
                                                 <div class="btn-group">

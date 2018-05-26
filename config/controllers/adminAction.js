@@ -48,7 +48,8 @@ var csData = []; /* ### Class and Section for studentMaster### */
 var objJson = []; /* ### Storage for student master valid data ### */
 var studentFileValidationMessage = null; /* ### Notification for student master invalid data ### */
 var teacherFileValidationMessage = null; /* ### Notification for student master invalid data ### */
-var allStudentEmailIds = []; 
+var allStudentEmailIds = [];  /* ### storage for all parents email ids ### */
+var allTeacherEmailIds = [];  /* ### storage for all teacher email ids ### */
 
 module.exports.updateSchoolStatus = function (req, res) {
     console.log("updateSchoolStatus-->");
@@ -2228,6 +2229,29 @@ module.exports.uploadTeacherMaster = function (req, res) {
                                 }
                             }
                         } else {
+                            allTeacherEmailIds.forEach(function (to, i, array) {
+                                console.log("i: "+i);
+                                console.log("to: "+to);
+                                console.log("array: "+JSON.stringify(array));
+                                var mailOptions = {
+                                    from: "info@vc4all.in",
+                                    to: to.email,
+                                    subject: "Regarding School Meeting",
+                                    html: "<table style='border:10px solid gainsboro;'><thead style=background:cornflowerblue;><tr><th><h2>Greetings from VC4ALL</h2></th></tr></thead><tfoot style=background:#396fc9;color:white;><tr><td style=padding:15px;><p><p>Regards</p><b>Careator Technologies Pvt. Ltd</b></p></td></tr></tfoot><tbody><tr><td><b>Dear Teachers,</b></td></tr><tr><td><p>Please note, this is regarding credential email: <b>" + to.email + "password: "+to.pswd+" </b> </p><p style=background:gainsboro;></p></td></tr></tbody></table>"
+                                    // html: "<html><head><p><b>Dear Parents, </b></p><p>Please note, you have to attend meeting regarding <b>" + req.body.reason + " </b>please open the below link at sharp " + req.body.startAt + " to " + req.body.endAt + "</p><p style=background:gainsboro;>Here your link and password for meeting <a href=" + req.body.url + ">" + req.body.url + "</a> and Password: " + password + "</p><p>Regards</p><p><b>Careator Technologies Pvt. Ltd</b></p></head><body></body></html>"
+                                };
+                                console.log("mailOptions: " + JSON.stringify(mailOptions));
+                                transporter.sendMail(mailOptions, function (error, info) {
+                                    if (error) {
+                                        console.log(error);
+                                       console.log("err");
+                                    } else {
+                                        console.log('Email sent: ' + info.response);
+                                        console.log("info");
+                                    }
+            
+                                });
+                            })
                             ids = [];
                             teacherFileValidationMessage = null;
                             objJson = [];
@@ -2307,6 +2331,7 @@ module.exports.teacherMasterValidation = function (data, callback) {
                             }
                         }
                         console.log("userData: " + JSON.stringify(userData));
+                        allTeacherEmailIds.push({"email":data.Email, "pswd":"abc"});
                         objJson.push(userData);
 
                         console.log("objJson: " +objJson.length);

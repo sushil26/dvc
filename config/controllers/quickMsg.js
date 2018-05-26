@@ -197,7 +197,9 @@ module.exports.bulkEmail_quickMsg = function (req, res) {
 
     console.log("quickMsgSend-->");
     var responseData;
-
+    console.log("req.body.senderName: " + req.body.senderName);
+    console.log("req.body.senderId: " + req.body.senderId);
+    console.log("req.body.reason: " + req.body.reason);
     if (general.emptyCheck(req.body.senderName) && general.emptyCheck(req.body.senderId) && general.emptyCheck(req.body.reason)) {
         var password = 'abc';
         var userData = {

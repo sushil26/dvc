@@ -66,6 +66,7 @@ app.controller('adminCreateCtl', function ($scope, $rootScope, $filter, $window,
         if ($scope.filePath) {
             objJson.logoPath = $scope.filePath;
         }
+       
         console.log("objJson: " + JSON.stringify(objJson));
         var api = $scope.propertyJson.VC_adminCreate;
         httpFactory.post(api, objJson).then(function (data) {

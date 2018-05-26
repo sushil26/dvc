@@ -29,7 +29,7 @@ app.controller('quickMsgCtl', function ($scope, $rootScope, $state, $rootScope, 
                     console.log("$scope.eventData[" + x + "]: " + JSON.stringify($scope.eventData[x]));
                     var obj = {
                         'id': $scope.eventData[x]._id,
-                        'userId': $scope.eventData[x]._userId,
+                        'userId': $scope.eventData[x].userId,
                         "student_cs": $scope.eventData[x].student_cs,
                         "student_id": $scope.eventData[x].student_id,
                         "student_Name": $scope.eventData[x].student_Name,

@@ -163,6 +163,21 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         }
       }
     })
+    .state('dashboard.incomingMsg', {
+      url: incomingMsg(),
+      templateUrl: '/html/dashboard/incomingMsg.html',
+      controller: 'incomingMsgCtl',
+      resolve: {
+        result: function (sessionAuthFactory, $window) {
+          var userData = sessionAuthFactory.getAccess("userData");
+          if (userData.loginType == 'teacher' || userData.loginType == 'studParent') {
+          }
+          else {
+            $window.location.href = 'https://norecruits.com';
+          }
+        }
+      }
+    })
     .state('dashboard.history', {
       url: history(),
       templateUrl: '/html/dashboard/history.html',
@@ -349,6 +364,9 @@ function dashboardEdit() {
 }
 function upcomingEvent() {
   return '/upcomingEvent';
+}
+function incomingMsg(){
+  return '/incomingMsg';
 }
 function history() {
   return '/history';

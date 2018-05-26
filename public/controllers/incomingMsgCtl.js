@@ -5,7 +5,7 @@ app.controller('incomingMsgCtl', function ($scope, $rootScope, $state, $window, 
     $scope.events = [];
     $scope.propertyJson = $rootScope.propertyJson;
 
-    $scope.getSelectedStudentPersonalData = function (id) {
+    $scope.getSelectedStudentPersonalData = function () {
         console.log("get Selected Student PersonalData-->");
         var id = $scope.userData.id;
         var api = $scope.propertyJson.VC_studentPersonalData + "/" + id;
@@ -28,6 +28,11 @@ app.controller('incomingMsgCtl', function ($scope, $rootScope, $state, $window, 
     }
     if ($scope.loginType == 'studParent') {
         $scope.getSelectedStudentPersonalData();
+        $scope.quickMsgGet();
+    }
+    else{
+        
+        $scope.quickMsgGet();
     }
     $scope.getToDate = function () {
         console.log("Get To Date-->");
@@ -48,7 +53,7 @@ app.controller('incomingMsgCtl', function ($scope, $rootScope, $state, $window, 
                 var reqSec = todayDate.getSeconds();
                 $scope.todayDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
                 console.log("consolidateDate: " + $scope.consolidateDate);
-                $scope.quickMsgGet();
+               
             }
             else {
             }

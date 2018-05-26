@@ -65,7 +65,7 @@
 //     console.log("uploadProfile Image--> ");
 // }
 var fs = require('fs');
-var path = require('path'),
+var path = require('path');
 
 module.exports.upload = function (req, res) {
     console.log("uploadProfile Image--> ");

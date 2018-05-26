@@ -1,5 +1,5 @@
 <div div class="modal-header loginpopUp_header">
-    <h4 class="modal-title">Message Details*</h4>
+    <h4 class="modal-title">Message Details</h4>
     <button type="button" class="close" data-dismiss="modal" ng-click="$close()" aria-hidden="true">&times;</button>
 </div>
 <div class="modal-body">
@@ -59,7 +59,7 @@
                     <div style="color:green">{{eventDetails.startsAt | date:'h:mm a'}}-{{eventDetails.endsAt | date:'h:mm a'}} </div>
                 </td>
             </tr>
-        </tbody>----------------------{{eventDetails.messageType}}
+        </tbody>
         <thead ng-if="eventDetails.messageType=='wholeClass'">
             <tr>
                 <th>

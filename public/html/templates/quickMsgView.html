@@ -60,7 +60,7 @@
                 </td>
             </tr>
         </tbody>
-        <thead if="eventDetails.messageType">
+        <thead if="eventDetails.messageType=='wholeClass'">
             <tr>
                 <th>
                     <div class="panel-heading">
@@ -69,7 +69,7 @@
                 </th>
             </tr>
         </thead>
-        <tbody if="eventDetails.messageType">
+        <tbody if="eventDetails.messageType=='wholeClass'">
             <tr>
                 <td>
                     Email Ids
@@ -80,7 +80,7 @@
             </tr>
         </tbody>
 
-        <thead if="!eventDetails.messageType">
+        <thead if="eventDetails.messageType!='wholeClass'">
             <tr>
                 <th>
                     <div class="panel-heading">
@@ -89,7 +89,7 @@
                 </th>
             </tr>
         </thead>
-        <tbody if="!eventDetails.messageType">
+        <tbody if="eventDetails.messageType!='wholeClass'"">
             <tr>
                 <td>
                     Name

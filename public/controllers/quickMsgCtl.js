@@ -486,14 +486,12 @@ app.controller('quickMsgCtl', function ($scope, $rootScope, $state, $rootScope, 
                             'endsAt': $filter('date')($scope.selectedDate_quickMsg, "h:mm a"),
                             'draggable': true,
                             'resizable': true,
-                            "reason": reason,
+                            "reason": obj.reason,
                             "senderName": name,
-                            "senderId": id,
+                            "senderId": $scope.userData.id,
                             "senderMN": senderMN,
-                            "receiverEmail": email,
-                            "receiverName": receiverName,
-                            "receiverId": receiverId,
-                            "receiverMN": receiverMN,
+                            "receiverEmail": $scope.allStudentEmailIds,
+                            
                             /*  */
                         }
                         ownerEvents.push(objData);

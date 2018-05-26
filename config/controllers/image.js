@@ -64,6 +64,8 @@
 //     })
 //     console.log("uploadProfile Image--> ");
 // }
+var fs = require('fs');
+var path = require('path');
 
 module.exports.upload = function (req, res) {
     console.log("uploadProfile Image--> ");
@@ -71,17 +73,52 @@ if (!req.files)
     return res.status(400).send('No files were uploaded.');
  
     console.log("req.files.sampleFile: "+req.files.logo);
-    console.log("req.files.originalname: "+req.files.originalname);
+    //console.log("req.files.originalname: "+req.files.originalname);
     //var fileFullPath = file.originalname
   // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
-  let sampleFile = req.files.sampleFile;
- 
+  // let sampleFile = req.files.logo;
+  // console.log(" req.files.logo.name: "+ req.files.logo.name);
+  let myFile = req.files.myFile;
+  //console.log(__dirname+myFile.name, require.main.filename, process.cwd());
+  console.log("path--"+fileUploadDirectory)
+  var fileArr = myFile.name.split(".");
+  var fileName="";
+  for(var i=0;i<fileArr.length-1;i++)
+  {
+   fileName=fileName+fileArr[i]
+  }
+  fileName=fileName+"_"+common.sysTime()+"."+fileArr[fileArr.length-1];
+  console.log("fileName--"+fileName)
+  //res.json(fileName)
+  myFile.mv(fileUploadDirectory+fileName, function(err) {
+       if (err){
+           console.log(require('util').inspect(err));
+           return res.status(500).send(err);
+       }
+       res.status(200).send("/assest/uploadImages/common/"+fileName);
+   });
+  // fs.readFile(req.files.path, function(err, data) {
+  //   var path = __dirname + '/public/schoolLogo' + file.name;
+  //   fs.writeFile(path, data, function(err) {
+  //   });
+  // });
+
+  // sampleFile.mv(__dirname+'/public/schoolLogo/', function(err) {
+  //   if (err)
+  //     return res.status(500).send(err);
+
+  //   res.send('File uploaded!');
+  // });
+
   // Use the mv() method to place the file somewhere on your server
-  sampleFile.mv('./public/schoolLogo/', function(err) {
-    if (err)
-      return res.status(500).send(err);
-      //res.json({ success: true, message: 'File was uploaded', fileFullPath: uploadProfPicPath });
-    res.send('File uploaded!');
-  });
+  // sampleFile.mv('./public/schoolLogo/', function(err) {
+  //   if (err){
+  //     return res.status(500).send(err);
+  //     console.log("err: "+JSON.stringify(err));
+  //   }
+  //   res.send('File uploaded!'); 
+  //     //res.json({ success: true, message: 'File was uploaded', fileFullPath: uploadProfPicPath });
+    
+  // });
   console.log("uploadProfile Image--> ");
 }

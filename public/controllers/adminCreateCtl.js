@@ -24,17 +24,15 @@ app.controller('adminCreateCtl', function ($scope, $rootScope, $filter, $window,
                 $scope.message = data.data.message;
                 $scope.filePath = data.data.fileFullPath;
                 $scope.status = data.data.success;
-
                 // // console.log("JSON.stringify($scope.postJson): " + JSON.stringify(postJson));
-                $scope.adminCreate();
+                // $scope.adminCreate();
             } else {
                 $scope.status = data.data.status;
                 $scope.message = data.data.message;
                 console.log("image is not uploaded");
-                $scope.adminCreate();
+                // $scope.adminCreate();
                 // console.log("JSON.stringify($scope.postJson): " + JSON.stringify(postJson));
                 // $scope.savePost();
-
             }
         });
         //}
@@ -66,7 +64,7 @@ app.controller('adminCreateCtl', function ($scope, $rootScope, $filter, $window,
         if ($scope.filePath) {
             objJson.logoPath = $scope.filePath;
         }
-       
+
         console.log("objJson: " + JSON.stringify(objJson));
         var api = $scope.propertyJson.VC_adminCreate;
         httpFactory.post(api, objJson).then(function (data) {

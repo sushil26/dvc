@@ -35,14 +35,16 @@
                                         <input type="text" class="form-control" id="l-name" placeholder=" " ng-model="lastName">
                                     </div>
                                 </div>
-                                <!-- <div class="form-group">
+                                <div class="form-group">
                                     <label class="col-lg-2 control-label">School Logo</label>
                                     <div class="col-lg-6">
-                                        <input type="file" id="imgInp" class="btnCont btnCont-uploadColor post_uploadFile" name="myImage" value="Upload" file-model="file.upload"
+                                        <input type="file" id="imgInp" class="btnCont btnCont-uploadColor post_uploadFile" name="logo" value="Upload" file-model="file.upload"
                                             ng-model="image" accept="image/jpeg,image/png">
                                         <img id="blah" src="#" style="width:  inherit;">
+                                        <button ng-click="schoolLogoStorage(file)">Upload</button>
                                     </div>
-                                </div> -->
+
+                                </div>
                                 <div class="form-group">
                                     <label class="col-lg-2 control-label">Date of Registration</label>
                                     <div class="col-lg-6">

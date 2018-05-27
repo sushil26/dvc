@@ -983,7 +983,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 --------------------------------*/
 
 #contact {
-  background: #2577be;
+  background: #1a3b56;
   /* padding: 80px 0 40px 0; */
 }
 
@@ -993,12 +993,12 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 #contact .info {
-  color: #333333;
+  color: white;
 }
 
 #contact .info i {
   font-size: 32px;
-  color: #333333;
+  color: green;
   float: left;
 }
 

@@ -707,7 +707,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 #facts .counters span {
   font-size: 48px;
   display: block;
-  color: #2dc997;
+  color:#2577be;
 }
 
 #facts .counters p {
@@ -720,7 +720,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 --------------------------------*/
 
 #services {
-  background: darkturquoise;
+  background: #2577be;
   background-size: cover;
   padding: 80px 0 60px 0;
 }
@@ -748,8 +748,8 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 #services .icon a {
   display: inline-block;
-  background: #2dc997;
-  border: 2px solid #2dc997;
+  background: #2676bf;
+  border: 2px solid #2676bf;
   padding: 16px;
   border-radius: 50%;
   transition: 0.3s;
@@ -983,7 +983,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 --------------------------------*/
 
 #contact {
-  background: darkturquoise;
+  background: #2577be;
   /* padding: 80px 0 40px 0; */
 }
 

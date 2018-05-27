@@ -171,6 +171,9 @@ jQuery(document).ready(function ($) {
         .delay(2000)
         .fadeOut(1000, showNextQuote);
         $("#quotes").css({"font-size":"70px"});
+        $("#quotes2").css({"font-size":"70px"});
+        $("#quotes3").css({"font-size":"70px"});
+        $("#quotes4").css({"font-size":"70px"});
     }
 
     showNextQuote();

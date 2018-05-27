@@ -221,6 +221,44 @@
   }
 </style>
 
+<style>
+  .quotes {
+    display: none;
+  }
+
+
+  @media only screen and (max-width: 770px) {
+   
+    .quotes {
+      color: white !important;
+      background: none !important;
+      top: 30% !important;
+      left: 50% !important;
+      margin-right: -50% !important;
+      transform: translate(-50%, -50%) !important;
+      line-height: 1.2 !important;
+    }
+
+  }
+
+  @media only screen and (max-width: 600px) {
+
+
+    .quotes {
+      color: white !important;
+      background: none !important;
+      top: 50% !important;
+      left: 50% !important;
+      margin-right: -50% !important;
+      transform: translate(-50%, -50%) !important;
+      line-height: 1.1 !important;
+    }
+
+   
+
+  }
+</style>
+
 
 
 <body>
@@ -251,7 +289,8 @@
           float: left;
           margin-top: 8px;
           text-transform: uppercase;
-          text-shadow: 2px 2px 4px #000000;">VC<span style="color: #2577be;">4ALL</span>
+          text-shadow: 2px 2px 4px #000000;">VC
+                <span style="color: #2577be;">4ALL</span>
               </a>
               <!-- <h1 style="color:azure;float:left;  text-shadow: 2px 2px 4px #000000;">&nbspVC4ALL</h1> -->
 
@@ -308,9 +347,10 @@
       <section id="hero">
         <div class="hero-container">
           <center>
-            <div class="element" style="color:white;width:100%;">
+
+
+            <!-- <div class="element" style="color:white;width:100%;">
               &nbsp
-              <!-- <marquee>The ultimate platform for instant messaging and video conferencing !</marquee> -->
               <h1 style="position: absolute;
         padding:2%;
         border-radius: 2px;
@@ -326,9 +366,69 @@
 				z-index: 1;" class="typewrite" data-period="2000" data-type='["Welcome to VC4ALL","The ultimate platform for Video Conferencing", " and Instant messaging"]'>
                 <span class="wrap"> </span>
               </h1>
-            </div>
+            </div> -->
           </center>
+          <div>
+            <h2 class="quotes" style="position: absolute;
+					font-family:Oswald;
+					text-align:center;
+					width:30%;
+					height:auto;
+					color: #e8e8b3;
+					font-weight:700;
+					font-size:30px;
+					top: 20%;
+					left: 4%;
+					z-index: 1;
+					border-radius:20px;background-color:#ddd3;
+					">Welcome to VC4ALL</h2>
 
+            <h2 class="quotes" style="position: absolute;
+					font-family:Oswald;
+					text-align:center;
+					width:23%;
+					height:auto;
+					color: #e8e8b3;
+					font-weight:700;
+					font-size:30px;
+					top: 25%;
+					right:4%;
+					z-index: 1;
+					border-radius:20px;background-color:#ddd3;
+					">The ultimate platform for</h2>
+
+            <h2 class="quotes" style="position: absolute;
+					font-family:Oswald;
+					text-align:center;
+					width:22%;
+					height:auto;
+					color: #e8e8b3;
+					font-weight:700;
+					font-size:30px;
+					top: 30%;
+					left: 4%;
+					z-index: 1;
+					border-radius:20px;background-color:#ddd3;
+					">Video Conferencing</h2>
+
+
+
+            <h2 class="quotes" style="position: absolute;
+					font-family:Oswald;
+					text-align:center;
+					width:23%;
+					height:auto;
+					color: #e8e8b3;
+					font-weight:700;
+					font-size:30px;
+					top: 35%;
+					right: 4%;
+					z-index: 1;
+					border-radius:20px;background-color:#ddd3;
+					">and Instant messaging</h2>
+
+
+          </div>
           <!-- <a href="#about" class="btn-get-started">Start Journey</a> -->
 
 
@@ -449,15 +549,17 @@
               <h3 class="section-title" style="color:#3f3f3f;">About us</h3>
               <h3 class="section-title"></h3>
               <p class="section-description" style="color:#3f3f3f;text-align: justify; font-family: -webkit-body; font-size:15px;">
-                VC4ALL is a holistic new age technology platform for schools integrated with messaging and video conferencing. <br><br>
-                The genesis of VC4All is to ease the communication between Parent and Teacher, and get connected anywhere. VC4ALL helps
-                the parents to have a dedicated one-to-one discussion with the teachers without having to travel down to
-                the respective school. Not only this, but VC4ALL also lets teachers and parents have a group conversations
-                to have a better perspective about the children’s overall growth. 
-                <br><br>
-                This uninterrupted connectivity allows the schools to let the children get education over live chats and video calls.
-                <br><br>
-                 To know more about vc4all please call us at +91 924 653 1986.
+                VC4ALL is a holistic new age technology platform for schools integrated with messaging and video conferencing.
+                <br>
+                <br> The genesis of VC4All is to ease the communication between Parent and Teacher, and get connected anywhere.
+                VC4ALL helps the parents to have a dedicated one-to-one discussion with the teachers without having to travel
+                down to the respective school. Not only this, but VC4ALL also lets teachers and parents have a group conversations
+                to have a better perspective about the children’s overall growth.
+                <br>
+                <br> This uninterrupted connectivity allows the schools to let the children get education over live chats and
+                video calls.
+                <br>
+                <br> To know more about vc4all please call us at +91 924 653 1986.
               </p>
             </div>
           </div>
@@ -698,7 +800,7 @@
   </div>
 
 
-
+  <!-- 
   <script>
     var TxtType = function (el, toRotate, period) {
       this.toRotate = toRotate;
@@ -743,21 +845,21 @@
       }, delta);
     };
 
-    window.onload = function () {
-      var elements = document.getElementsByClassName('typewrite');
-      for (var i = 0; i < elements.length; i++) {
-        var toRotate = elements[i].getAttribute('data-type');
-        var period = elements[i].getAttribute('data-period');
-        if (toRotate) {
-          new TxtType(elements[i], JSON.parse(toRotate), period);
-        }
-      }
-      // INJECT CSS
-      var css = document.createElement("style");
-      css.type = "text/css";
-      css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid black}";
-      document.body.appendChild(css);
-    };
+    // window.onload = function () {
+    //   var elements = document.getElementsByClassName('typewrite');
+    //   for (var i = 0; i < elements.length; i++) {
+    //     var toRotate = elements[i].getAttribute('data-type');
+    //     var period = elements[i].getAttribute('data-period');
+    //     if (toRotate) {
+    //       new TxtType(elements[i], JSON.parse(toRotate), period);
+    //     }
+    //   }
+    //   // INJECT CSS
+    //   var css = document.createElement("style");
+    //   css.type = "text/css";
+    //   css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid black}";
+    //   document.body.appendChild(css);
+    // };
 
 
     // $(document).ready(function () {
@@ -774,6 +876,24 @@
     //     // $("#mobile-nav").css("display", "block");
     //   });
     // });
+  </script> -->
+  <script>
+    (function () {
+
+      var quotes = $(".quotes");
+      var quoteIndex = -1;
+
+      function showNextQuote() {
+        ++quoteIndex;
+        quotes.eq(quoteIndex % quotes.length)
+          .fadeIn(1000)
+          .delay(2000)
+          .fadeOut(1000, showNextQuote);
+      }
+
+      showNextQuote();
+
+    })();
   </script>
 
 

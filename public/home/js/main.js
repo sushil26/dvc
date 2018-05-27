@@ -170,7 +170,7 @@ jQuery(document).ready(function ($) {
         .fadeIn(1000)
         .delay(2000)
         .fadeOut(1000, showNextQuote);
-        $("#quotes").css({"font-size":"70px","background":"blue"});
+        $("#quotes").css({"font-size":"70px"});
     }
 
     showNextQuote();

@@ -13,11 +13,13 @@ module.exports = function (app) {
     app.post('/careator/emailInvite', careator.emailInvite);
 
     app.post('/vc/schoolLogo', image.upload);
+    app.post('/vc/profilePicupload', image.profilePicupload);
 
     app.post('/vc/register4VC', user.register4VC);
     app.post('/vc/login4VC', user.login4VC);
     app.post('/vc/checkPassword/:id/:loginType', user.checkPassword);
     app.post('/vc/passwordUpdate/:id/:loginType', user.passwordUpdate);
+    app.post('/vc/updateProfilePic/:id', user.profilePicUpdate);
     app.get('/vc/getUserData', user.getUserData);
     app.get('/vc/getStudData', user.getStudData);
     app.post('/vc/updateUserStatus', user.updateUserStatus);
@@ -54,8 +56,7 @@ module.exports = function (app) {
     app.post('/vc/updateTeacher_timeTable/:id', adminAction.updateTeacher_timeTable);
     app.post('/vc/attendanceUpdate/:schoolName/:clas/:section/:reportType/:month', adminAction.attendanceUpdate);
     app.post('/vc/markUpdate/:schoolName/:clas/:section/:testType/:date', adminAction.markUpdate);
-
-
+    
     app.post('/vc/quickMsgSend', quickMsg.quickMsgSend);
     app.get('/vc/quickMsgGet/:id', quickMsg.quickMsgGet);
     app.get('/vc/quickMsgGetForStud/:id/:clas/:section', quickMsg.quickMsgGetForStud);

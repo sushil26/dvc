@@ -504,6 +504,25 @@ module.exports.passwordUpdate = function (req, res) {
   }
   console.log("<--passwordUpdate");
 }
+module.exports.profilePicUpdate= function (req, res) {
+console.log("profilePicUpdate-->");
+
+if(general.emptyCheck(req.params.id))
+{
+  
+
+}
+else{
+  console.log("Empty value find");
+  responseData = {
+    status: false,
+    message: "empty id find"
+  };
+  res.status(400).send(responseData);
+}
+
+console.log("<--profilePicUpdate");
+}
 module.exports.getUserData = function (req, res) {
   console.log("getUserData-->");
   var responseData;

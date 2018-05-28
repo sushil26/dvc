@@ -12,6 +12,8 @@ module.exports = function (app) {
     app.post('/careator/pswdCheck', careator.pswdCheck);
     app.post('/careator/emailInvite', careator.emailInvite);
 
+    app.post('/vc/schoolLogo', image.upload);
+
     app.post('/vc/register4VC', user.register4VC);
     app.post('/vc/login4VC', user.login4VC);
     app.post('/vc/checkPassword/:id/:loginType', user.checkPassword);

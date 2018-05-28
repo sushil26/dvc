@@ -47,6 +47,7 @@ app.controller('dashboardEditController', function ($scope, $rootScope, $window,
 
     $scope.profilePicUpdated = function () {
         console.log("profilePicUpdated-->");
+        console.log("$scope.picType: "+$scope.picType);
         var obj;
         if ($scope.loginType == 'studParent') {
             if($scope.picType=='student')

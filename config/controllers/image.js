@@ -80,7 +80,7 @@ if (!req.files)
   // console.log(" req.files.logo.name: "+ req.files.logo.name);
   let myFile = req.files.logo;
   //console.log(__dirname+myFile.name, require.main.filename, process.cwd());
-  console.log("myFile--"+myFile)
+ // console.log("myFile--"+myFile)
   var fileArr = myFile.name.split(".");
   var fileName="";
   for(var i=0;i<fileArr.length-1;i++)

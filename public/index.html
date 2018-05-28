@@ -181,18 +181,7 @@
 </script>
 <style>
   .quotes {
-    /* display: none; */
-    padding: 15px;
-    font-family: unset;
-    text-align: center;
-    width: fit-content;
-    color: #e9ecef;
-    font-weight: 600;
-    font-size: 60px;
-    line-height: 1;
-    right: 35%;
-    z-index: 1;
-    border-radius: 5px;
+    display: none;
   }
   #veil {
 			position: absolute;
@@ -204,12 +193,13 @@
 			background: url(../../assest/image/buterfly.gif) no-repeat center;
 		}
 </style>
+
 <body>
   <div id="loading"></div>
   <div ng-app="vcApp" ng-controller="vcAppCtrl">
       <spinner name="spinner" id="veil"></spinner>
     <div id="page" ui-view>
-<!--==========================
+      <!--==========================
     Header
 ============================-->
       <header id="header">
@@ -291,12 +281,58 @@
                 <span class="wrap"> </span>
               </h1>
             </div> -->
-            <div>
-              <h2 class="quotes">Welcome to VC4ALL</h2>
-              <h2 class="quotes">The ultimate platform for</h2>
-              <h2 class="quotes">Video Conferencing</h2>
-              <h2 class="quotes" >and Instant messaging</h2>
-            </div>
+            <h2 class="quotes" style="position: absolute;
+              font-family:Oswald;
+              text-align:center;
+              width:23%;
+              height:auto;
+              color: #e8e8b3;
+              font-weight:700;
+              font-size:30px;
+              top: 25%;
+              right:4%;
+              z-index: 1;
+              border-radius:20px;background-color:#ddd3;
+              ">Welcome to VC4ALL</h2>
+            <h2 style="position: absolute;
+            font-family:Oswald;
+            text-align:center;
+            width:23%;
+            height:auto;
+            color: #e8e8b3;
+            font-weight:700;
+            font-size:30px;
+            top: 25%;
+            right:4%;
+            z-index: 1;
+            border-radius:20px;background-color:#ddd3;
+            " class="quotes">The ultimate platform for</h2>
+            <h2 style="position: absolute;
+            font-family:Oswald;
+            text-align:center;
+            width:23%;
+            height:auto;
+            color: #e8e8b3;
+            font-weight:700;
+            font-size:30px;
+            top: 25%;
+            right:4%;
+            z-index: 1;
+            border-radius:20px;background-color:#ddd3;
+            " class="quotes">Video Conferencing</h2>
+            <h2 style="position: absolute;
+            font-family:Oswald;
+            text-align:center;
+            width:23%;
+            height:auto;
+            color: #e8e8b3;
+            font-weight:700;
+            font-size:30px;
+            top: 25%;
+            right:4%;
+            z-index: 1;
+            border-radius:20px;background-color:#ddd3;
+            " class="quotes">and Instant messaging</h2>
             <!-- <a href="#about" class="btn-get-started">Start Journey</a> -->
           </center>
 
@@ -564,9 +600,7 @@
                 <button class="btn-default fa fa-close" style="margin-top: 2px;    border-color: white;
               border-radius: 25%;" aria-hidden="true" type="reset" data-dismiss="modal"></button>
               </div>
-
               <div class="modal-body">
-
                 <div style="background:darkturquoise;
             /* border: 1px solid white; */
             border-radius: 5px;
@@ -592,8 +626,6 @@
                 <button id="crdsubmit" type="button" style="background-color: #29b6bd;color:#f1f1f1; width: 100%; height:50px;" class="btn"
                   ng-click="logVC(loginType, email, Password)" data-dismiss="modal">Submit</button>
               </div>
-
-
             </div>
           </center>
         </div>
@@ -633,8 +665,6 @@
             </span>
           </div>
         </div>
-
-
       </footer>
       <!-- #footer -->
       <a href="#" class="back-to-top">
@@ -654,22 +684,6 @@
     </div>
 
   </div>
-  <script>
-    (function () {
-
-      var quotes = $(".quotes");
-      var quoteIndex = -1;
-
-      function showNextQuote() {
-        ++quoteIndex;
-        quotes.eq(quoteIndex % quotes.length)
-          .fadeIn(1000)
-          .delay(2000)
-          .fadeOut(1000, showNextQuote);
-      }
-      showNextQuote();
-    })();
-  </script>
 </body>
 
 </html>

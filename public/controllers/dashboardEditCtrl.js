@@ -7,7 +7,7 @@ app.controller('dashboardEditController', function ($scope, $rootScope, $window,
     var id = $scope.userData.id;
     $scope.loginType = $scope.userData.loginType;
     $scope.propertyJson = $rootScope.propertyJson;
-    $scope.whosPic = ["student", "father", "mother"];
+    // $scope.whosPic = ["student", "father", "mother"];
 
     $scope.schoolLogoStorage = function () {
         console.log("schoolLogoStorage-->");

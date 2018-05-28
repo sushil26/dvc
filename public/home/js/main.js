@@ -161,7 +161,7 @@ jQuery(document).ready(function ($) {
   // custom code
   (function () {
     var quotes = $(".quotes");
-    var quoteIndex =-1;
+    var quoteIndex = -1;
     function showNextQuote() {
       ++quoteIndex;
       quotes.eq(quoteIndex % quotes.length)

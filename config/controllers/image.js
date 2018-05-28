@@ -78,7 +78,7 @@ if (!req.files)
   // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
   // let sampleFile = req.files.logo;
   // console.log(" req.files.logo.name: "+ req.files.logo.name);
-  let myFile = req.files.myFile;
+  let myFile = req.files.logo;
   //console.log(__dirname+myFile.name, require.main.filename, process.cwd());
   console.log("myFile--"+myFile)
   var fileArr = myFile.name.split(".");

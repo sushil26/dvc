@@ -80,7 +80,7 @@ if (!req.files)
   // console.log(" req.files.logo.name: "+ req.files.logo.name);
   let myFile = req.files.myFile;
   //console.log(__dirname+myFile.name, require.main.filename, process.cwd());
-  console.log("path--"+fileUploadDirectory)
+  console.log("path--"+schoolLogo)
   var fileArr = myFile.name.split(".");
   var fileName="";
   for(var i=0;i<fileArr.length-1;i++)
@@ -90,12 +90,12 @@ if (!req.files)
   fileName=fileName+"_"+common.sysTime()+"."+fileArr[fileArr.length-1];
   console.log("fileName--"+fileName)
   //res.json(fileName)
-  myFile.mv(fileUploadDirectory+fileName, function(err) {
+  myFile.mv(schoolLogo+fileName, function(err) {
        if (err){
            console.log(require('util').inspect(err));
            return res.status(500).send(err);
        }
-       res.status(200).send("/assest/uploadImages/common/"+fileName);
+       res.status(200).send("/public/schoolLogo/"+fileName);
    });
   // fs.readFile(req.files.path, function(err, data) {
   //   var path = __dirname + '/public/schoolLogo' + file.name;

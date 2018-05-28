@@ -12,7 +12,7 @@ app.controller('dashboardEditController', function ($scope, $rootScope, $window,
     $scope.getUserDetails = function (id) {
         console.log("getTeacherData-->");
         if ($scope.loginType == 'teacher' || $scope.loginType == 'admin' || $scope.loginType == 'vc4allAdmin') {
-            var api =  $scope.propertyJson.VC_teacherDetail + "/" + id;
+            var api = $scope.propertyJson.VC_teacherDetail + "/" + id;
         }
         else if ($scope.loginType == 'studParent') {
             var api = $scope.propertyJson.VC_studentDetail + "/" + id;
@@ -37,7 +37,7 @@ app.controller('dashboardEditController', function ($scope, $rootScope, $window,
         console.log("<--getTeacherData");
     }
     $scope.getUserDetails(id);
-    
+
     $scope.schoolLogoStorage = function () {
         console.log("schoolLogoStorage-->");
         /* #####  Start Upload File ###### */
@@ -148,7 +148,19 @@ app.controller('dashboardEditController', function ($scope, $rootScope, $window,
         $scope.picType = type;
         console.log("<--fileUploadClick");
     }
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#blah').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
 
+    $("#imgInp").change(function () {
+        readURL(this);
+    });
 
 
 })

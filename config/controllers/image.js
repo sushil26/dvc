@@ -66,6 +66,7 @@
 // }
 var fs = require('fs');
 var path = require('path');
+var general = require("../general.js");
 
 module.exports.upload = function (req, res) {
     console.log("uploadProfile Image--> ");
@@ -87,10 +88,10 @@ if (!req.files)
   {
    fileName=fileName+fileArr[i]
   }
-  fileName=fileName+"_"+Date()+"."+fileArr[fileArr.length-1];
+  fileName=fileName+"_"+general.date()+"."+fileArr[fileArr.length-1];
   console.log("fileName--"+fileName)
   //res.json(fileName)
-  myFile.mv("/public/schoolLogo"+fileName, function(err) {
+  myFile.mv("/public/schoolLogo/", function(err) {
        if (err){
            console.log(require('util').inspect(err));
            return res.status(500).send(err);

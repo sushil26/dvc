@@ -67,6 +67,7 @@
 var fs = require('fs');
 var path = require('path');
 var general = require("../general.js");
+const fileUploadDirectory = process.cwd() + '/public/schoolLogo/';
 
 module.exports.upload = function (req, res) {
     console.log("uploadProfile Image--> ");
@@ -81,7 +82,7 @@ if (!req.files)
   // console.log(" req.files.logo.name: "+ req.files.logo.name);
   let myFile = req.files.logo;
   //console.log(__dirname+myFile.name, require.main.filename, process.cwd());
- // console.log("myFile--"+myFile)
+ console.log("path--"+fileUploadDirectory);
   var fileArr = myFile.name.split(".");
   var fileName="";
   for(var i=0;i<fileArr.length-1;i++)
@@ -96,7 +97,7 @@ if (!req.files)
            console.log(require('util').inspect(err));
            return res.status(500).send(err);
        }
-       res.status(200).send("/public/schoolLogo/"+fileName);
+       res.status(200).send("./public/schoolLogo/"+fileName);
    });
   // fs.readFile(req.files.path, function(err, data) {
   //   var path = __dirname + '/public/schoolLogo' + file.name;

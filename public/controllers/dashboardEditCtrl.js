@@ -1,4 +1,4 @@
-app.controller('dashboardEditController', function ($scope, $rootScope, $window, httpFactory) {
+app.controller('dashboardEditController', function ($scope, $rootScope, $window, httpFactory, sessionAuthFactory) {
     console.log("dashboardEditController==>");
     $scope.propertyJson = $rootScope.propertyJson;
     $scope.file = {};/* ### Note Upload file declaration ### */
@@ -7,7 +7,7 @@ app.controller('dashboardEditController', function ($scope, $rootScope, $window,
     var id = $scope.userData.id;
     var loginType = $scope.userData.loginType;
     $scope.propertyJson = $rootScope.propertyJson;
-    
+
     $scope.schoolLogoStorage = function () {
         console.log("schoolLogoStorage-->");
         /* #####  Start Upload File ###### */

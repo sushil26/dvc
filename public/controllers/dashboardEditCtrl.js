@@ -31,7 +31,7 @@ app.controller('dashboardEditController', function ($scope, $rootScope, $window,
                 //$scope.message = data.data.message;
                 $scope.filePath = data.data.data.filePath;
                 if (data.data.message == 'date stored successfully') {
-
+                    $scope.profilePicUpdated();
 
                 }
                 alert(data.data.message);

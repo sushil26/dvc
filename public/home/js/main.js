@@ -162,7 +162,7 @@ jQuery(document).ready(function ($) {
   (function () {
 
     var quotes = $(".quotes");
-    var quoteIndex = -1;
+    var quoteIndex = +1;
 
     function showNextQuote() {
       ++quoteIndex;
@@ -171,7 +171,6 @@ jQuery(document).ready(function ($) {
         .delay(2000)
         .fadeOut(1000, showNextQuote);
     }
-
     showNextQuote();
 
   })();

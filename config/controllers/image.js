@@ -91,7 +91,7 @@ if (!req.files)
   fileName=fileName+"_"+general.date()+"."+fileArr[fileArr.length-1];
   console.log("fileName--"+fileName)
   //res.json(fileName)
-  myFile.mv("/public/schoolLogo/", function(err) {
+  myFile.mv("./public/schoolLogo/", function(err) {
        if (err){
            console.log(require('util').inspect(err));
            return res.status(500).send(err);

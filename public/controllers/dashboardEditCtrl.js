@@ -47,29 +47,28 @@ app.controller('dashboardEditController', function ($scope, $rootScope, $window,
 
     $scope.profilePicUpdated = function () {
         console.log("profilePicUpdated-->");
-        console.log("$scope.picType: "+$scope.picType);
+        console.log("$scope.picType: " + $scope.picType);
         var obj;
         if ($scope.loginType == 'studParent') {
-            if($scope.picType=='student')
-            {
+            if ($scope.picType == 'student') {
                 obj = {
                     "profilePic_path": pic_owner,
                     "loginType": 'studParent'
                 }
             }
-            else if($scope.picType=='father'){
+            else if ($scope.picType == 'father') {
                 obj = {
                     "father_profilePic_path": pic_owner,
                     "loginType": 'studParent'
                 }
             }
-            else if($scope.picType=='mother'){
+            else if ($scope.picType == 'mother') {
                 obj = {
                     "mother_profilePic_path": pic_owner,
                     "loginType": 'studParent'
                 }
             }
-            
+
         }
         else {
             obj = {
@@ -77,52 +76,52 @@ app.controller('dashboardEditController', function ($scope, $rootScope, $window,
                 "loginType": 'user'
             }
         }
-
-            console.log("obj: " + obj);
-            var api = $scope.propertyJson.VC_updateProfilePic + "/" + id;
-            console.log("api: " + api);
-            httpFactory.post(api, obj).then(function (data) {
-                var checkStatus = httpFactory.dataValidation(data);
-                //console.log("data--" + JSON.stringify(data.data));
-                if (checkStatus) {
-                    console.log("data" + JSON.stringify(data.data))
-                    var loginAlert = $uibModal.open({
-                        scope: $scope,
-                        templateUrl: '/html/templates/dashboardsuccess.html',
-                        windowClass: 'show',
-                        backdropClass: 'static',
-                        keyboard: false,
-                        controller: function ($scope, $uibModalInstance) {
-                            $scope.message = "Successfully update";
-                        }
-                    })
-
-
-                    $state.go('dashboard.personalDetail');
-                    //$scope.eventGet();
-                }
-                else {
-                    var loginAlert = $uibModal.open({
-                        scope: $scope,
-                        templateUrl: '/html/templates/dashboardwarning.html',
-                        windowClass: 'show',
-                        backdropClass: 'static',
-                        keyboard: false,
-                        controller: function ($scope, $uibModalInstance) {
-                            $scope.message = "Event Send Failed, try again ";
-                        }
-                    })
-                    // alert("Event Send Failed");
-                }
-            })
-            console.log("<--profilePicUpdated");
-        }
-        $scope.fileUploadClick = function (type) {
-            console.log("fileUploadClick-->");
-            $scope.picType = type;
-            console.log("<--fileUploadClick");
-        }
+        console.log("obj: " + obj);
+        var api = $scope.propertyJson.VC_updateProfilePic + "/" + id;
+        console.log("api: " + api);
+        httpFactory.post(api, obj).then(function (data) {
+            var checkStatus = httpFactory.dataValidation(data);
+            //console.log("data--" + JSON.stringify(data.data));
+            if (checkStatus) {
+                console.log("data" + JSON.stringify(data.data))
+                var loginAlert = $uibModal.open({
+                    scope: $scope,
+                    templateUrl: '/html/templates/dashboardsuccess.html',
+                    windowClass: 'show',
+                    backdropClass: 'static',
+                    keyboard: false,
+                    controller: function ($scope, $uibModalInstance) {
+                        $scope.message = "Successfully update";
+                    }
+                })
 
 
+                $state.go('dashboard.personalDetail');
+                //$scope.eventGet();
+            }
+            else {
+                var loginAlert = $uibModal.open({
+                    scope: $scope,
+                    templateUrl: '/html/templates/dashboardwarning.html',
+                    windowClass: 'show',
+                    backdropClass: 'static',
+                    keyboard: false,
+                    controller: function ($scope, $uibModalInstance) {
+                        $scope.message = "Event Send Failed, try again ";
+                    }
+                })
+                // alert("Event Send Failed");
+            }
+        })
+        console.log("<--profilePicUpdated");
+    }
 
-    })
+    $scope.fileUploadClick = function (type) {
+        console.log("fileUploadClick-->");
+        $scope.picType = type;
+        console.log("<--fileUploadClick");
+    }
+
+
+
+})

@@ -139,7 +139,7 @@ module.exports.profilePicupload = function (req, res) {
             var responseData = {
                 "status": true,
                 "message": "date stored successfully",
-                "data": { "filePath": "/public/profilePic/" + fileName }
+                "data": { "filePath": "/profilePic/" + fileName }
             }
             res.status(200).send(responseData);
         }

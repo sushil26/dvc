@@ -21,19 +21,21 @@ app.controller('dashboardEditController', function ($scope, $rootScope, $window,
             console.log("hello " + JSON.stringify(data));
             var checkStatus = httpFactory.dataValidation(data);
             console.log("checkStatus: " + checkStatus);
-            console.log("data.data.success: " + data.data.success);
+            //console.log("data.data.success: " + data.data.success);
             if (checkStatus) {
                 console.log("$scope.photo" + JSON.stringify(data));
                 $scope.getUpdateofImage = data;
                 console.log("$scope.getUpdateofImage" + JSON.stringify($scope.getUpdateofImage));
                 $scope.message = data.data.message;
-                $scope.filePath = data.data.fileFullPath;
-                $scope.status = data.data.success;
+                $scope.filePath = data.data.data.filePath;
+                // $scope.status = data.data.success;
+                alert(data.data.message);
                 // // console.log("JSON.stringify($scope.postJson): " + JSON.stringify(postJson));
                 // $scope.adminCreate();
             } else {
                 $scope.status = data.data.status;
                 $scope.message = data.data.message;
+                alert(data.data.message);
                 console.log("image is not uploaded");
                 // $scope.adminCreate();
                 // console.log("JSON.stringify($scope.postJson): " + JSON.stringify(postJson));

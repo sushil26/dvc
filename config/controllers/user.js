@@ -530,6 +530,9 @@ module.exports.profilePicUpdate = function (req, res) {
     }
     else {
       var updateJson;
+      console.log("req.body.profilePic_path: "+req.body.profilePic_path);
+      console.log("req.body.father_profilePic_path: "+req.body.father_profilePic_path);
+      console.log("req.body.mother_profilePic_path: "+req.body.mother_profilePic_path);
       if (req.body.profilePic_path) {
         console.log("req.body.profilePic_path: "+req.body.profilePic_path);
         updateJson = {

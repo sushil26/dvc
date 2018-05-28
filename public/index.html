@@ -47,20 +47,15 @@
   <!-- <link rel="stylesheet" href="/dashboard_Lib/css/bootstrap.min.css" />
   <link rel="stylesheet" href="/dashboard_Lib/css/bootstrap-theme.css" /> -->
   <!-- <link rel="stylesheet" href="/css/font-awesome.min.css"  /> -->
-
   <script src="/js/socket.io-1.4.5.js"></script>
   <script src="/bower_components/angular/angular.min.js"></script>
   <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
   <!-- <script src="/bower_components/ng-image-input-with-preview/dist/ng-image-input-with-preview.js"></script> -->
   <!-- <script src="/bower_components/angular-spinners/dist/src/spinner.service.js"></script> -->
   <!-- bootstrap -->
-
-
   <script src="vcApp.js"></script>
   <script src="vcAppCtrl.js"></script>
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
-
   <link rel="stylesheet" href="https://unpkg.com/angular-bootstrap-colorpicker@3/css/colorpicker.min.css" />
   <!-- <link rel="stylesheet" href="https://unpkg.com/angular-bootstrap-calendar/dist/css/angular-bootstrap-calendar.min.css" /> -->
   <script src="/common/httpFactory.js"></script>
@@ -68,8 +63,6 @@
   <script src="/common/sessionAuthFactory.js"></script>
   <script src="/common/fileModel.js"></script>
   <script src="/common/notification.js"></script>
-
-
   <script src="/bower_components/moment/min/moment.min.js"></script>
   <link rel="stylesheet" href="/bower_components/angular-bootstrap-calendar/dist/css/angular-bootstrap-calendar.min.css">
   <script src="/bower_components/angular-bootstrap-calendar/dist/js/angular-bootstrap-calendar-tpls.js"></script>
@@ -81,7 +74,6 @@
   <script src="/controllers/userAuthCtrl.js"></script>
   <script src="/controllers/teacherInsertCtrl.js"></script>
   <script src="/controllers/studentInsertCtrl.js"></script>
-
   <script src="/controllers/dashboardCtrl.js"></script>
   <script src="/controllers/dashboardEventCtrl.js"></script>
   <script src="/controllers/dashboardEditCtrl.js"></script>
@@ -107,34 +99,12 @@
   <script src="/controllers/attendanceViewWithConfId_Ctl.js"></script>
   <script src="/controllers/changePasswordCtl.js"></script>
   <script src="/controllers/logoutCtl.js"></script>
-
-
   <!-- <link href="/home/lib/animate/animate.min.css" rel="stylesheet"> -->
   <!-- <link href="/home/css/style.css" rel="stylesheet"> -->
-
   <!-- <link href="/home/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
   <!-- <link href="https://unpkg.com/bootstrap@3/dist/css/bootstrap.css" rel="stylesheet"> -->
   <!-- <link href="/home/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet"> -->
-
   <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700" rel="stylesheet"> -->
-
-
-
-  <!-- <style>
-.user-details {position: relative; padding: 0;}
-.user-details .user-image {position: relative;  z-index: 1; width: 100%; text-align: center;}
-.user-image img { clear: both; margin: auto; position: relative;}
-
-.user-details .user-info-block {width: 100%; position: absolute; top: 55px; background: rgb(255, 255, 255); z-index: 0; padding-top: 35px;}
-.user-info-block .user-heading {width: 100%; text-align: center; margin: 10px 0 0;}
-.user-info-block .navigation {float: left; width: 100%; margin: 0; padding: 0; list-style: none; border-bottom: 1px solid #428BCA; border-top: 1px solid #428BCA;}
-.navigation li {float: left; margin: 0; padding: 0;}
-.navigation li a {padding: 20px 30px; float: left;}
-.navigation li.active a {background: #428BCA; color: #fff;}
-.user-info-block .user-body {float: left; padding: 5%; width: 90%;}
-.user-body .tab-content > div {float: left; width: 100%;}
-.user-body .tab-content h4 {width: 100%; margin: 10px 0; color: #333;}
-</style> -->
   <style>
     .red {
       background-color: red;
@@ -209,78 +179,32 @@
     show('loading', false);
   });
 </script>
-<style type="text/css" media="screen">
-  #veil {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    cursor: not-allowed;
-    background: url(../../assest/image/buterfly.gif) no-repeat center;
-  }
-</style>
-
-<!-- <style>
+<style>
   .quotes {
     display: none;
+    padding: 15px;
+    font-family: unset;
+    text-align: center;
+    width: fit-content;
+    color: #e9ecef;
+    font-weight: 600;
+    font-size: 60px;
+    line-height: 1;
+    right: 35%;
+    z-index: 1;
+    border-radius: 5px;
   }
-
-
-  @media only screen and (max-width: 770px) {
-   
-    .quotes {
-      color: white !important;
-      background: none !important;
-      top: 30% !important;
-      left: 50% !important;
-      margin-right: -50% !important;
-      transform: translate(-50%, -50%) !important;
-      line-height: 1.2 !important;
-    }
-
-  }
-
-  @media only screen and (max-width: 600px) {
-
-
-    .quotes {
-      color: white !important;
-      background: none !important;
-      top: 50% !important;
-      left: 50% !important;
-      margin-right: -50% !important;
-      transform: translate(-50%, -50%) !important;
-      line-height: 1.1 !important;
-    }
-
-   
-
-  }
-</style> -->
-
-
-
+</style>
 <body>
-
-
   <div id="loading"></div>
-
-
   <div ng-app="vcApp" ng-controller="vcAppCtrl">
-    <!-- <spinner name="spinner" id="veil"></spinner> -->
-
     <div id="page" ui-view>
-
-
-
-      <!--==========================
+<!--==========================
     Header
 ============================-->
       <header id="header">
         <div class="container ">
           <div id="logo" class="pull-left">
-            <!-- Uncomment below if you prefer to use a text logo -->
             <span>
               <img style="float:left;" src="/home/img/fav.png" />
               <a href="/" id="mm" style="font-size: 22px;
@@ -290,21 +214,13 @@
           float: left;
           margin-top: 8px;
           text-transform: uppercase;
-          text-shadow: 2px 2px 4px #000000;">VC<span style="color: #2577be;">4ALL</span>
+          text-shadow: 2px 2px 4px #000000;">VC
+                <span style="color: #2577be;">4ALL</span>
               </a>
-              <!-- <h1 style="color:azure;float:left;  text-shadow: 2px 2px 4px #000000;">&nbspVC4ALL</h1> -->
-
             </span>
           </div>
-
           <nav id="nav-menu-container">
             <ul class="nav-menu">
-              <!-- <li>
-            <a href="client" class="btn-get-started" style="text-shadow: 2px 2px 4px #000000;">Go to Conference</a>
-          </li> -->
-              <!-- <li id="userAuth" style="display:none;text-shadow: 2px 2px 4px #000000;">
-            <a href="https://norecruits.com/mainPage#!/userAuth">Teacher List</a>
-          </li> -->
               <li ng-if="userData.loginType" id="dashboard" style="display:block;">
                 <a href="#!dashboard/personalDetail" style="text-shadow: 2px 2px 4px #000000;">Dashboard
                 </a>
@@ -347,8 +263,6 @@
       <section id="hero">
         <div class="hero-container">
           <center>
-
-
             <!-- <div class="element" style="color:white;width:100%;">
               &nbsp
               <h1 style="position: absolute;
@@ -367,19 +281,14 @@
                 <span class="wrap"> </span>
               </h1>
             </div> -->
-            
-
             <div>
-              <h2 class="quotes"  id="quotes" style="padding: 15px;
-           
+              <h2 class="quotes" id="quotes" style="padding: 15px;
               font-family: unset;
               text-align: center;
               width: fit-content;
-            
               color: #e9ecef;;
               font-weight: 600;
               font-size: 60px;
-            
               line-height: 1;
               right: 35%;
               z-index: 1;
@@ -387,7 +296,7 @@
               
 					">Welcome to VC4ALL</h2>
 
-              <h2 class="quotes"  id="quotes2" style="padding: 15px;
+              <h2 class="quotes" id="quotes2" style="padding: 15px;
            
               font-family: unset;
               text-align: center;
@@ -404,7 +313,7 @@
               
               ">The ultimate platform for</h2>
 
-              <h2 class="quotes"  id="quotes3" style="padding: 15px;
+              <h2 class="quotes" id="quotes3" style="padding: 15px;
            
               font-family: unset;
               text-align: center;
@@ -631,7 +540,8 @@
                             color: #a8cf44;
                             margin-top: 8px;
                             text-transform: uppercase;
-                            ">VC<span style="color: #2577be;">4ALL</span>
+                            ">VC
+                              <span style="color: #2577be;">4ALL</span>
                             </a>
                           </span>
 
@@ -656,7 +566,7 @@
                     <tr>
                       <td>
                         <div>
-                            <i   style="text-shadow: 2px 2px 2px #00000061;" class="fa fa-map-marker"></i>
+                          <i style="text-shadow: 2px 2px 2px #00000061;" class="fa fa-map-marker"></i>
                           <p style="
                           font-family:  sans-serif;
                           font-size: 11px;font-weight: 100;
@@ -677,7 +587,7 @@
                     <tr>
                       <td>
                         <div>
-                          <i   style="text-shadow: 2px 2px 2px #00000061;" class="fa fa-map-marker"></i>
+                          <i style="text-shadow: 2px 2px 2px #00000061;" class="fa fa-map-marker"></i>
                           <p style="
                           font-family:  sans-serif;
                           font-size: 11px;font-weight: 100;
@@ -783,9 +693,6 @@
       <a href="#" class="back-to-top">
         <i class="fa fa-chevron-up"></i>
       </a>
-
-
-
       <script src="/home/lib/jquery/jquery.min.js"></script>
       <script src="/home/lib/jquery/jquery-migrate.min.js"></script>
       <script src="/home/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -797,104 +704,9 @@
       <script src="/home/lib/superfish/superfish.min.js"></script>
       <script src="/home/lib/counterup/counterup.min.js"></script>
       <script src="/home/js/main.js"></script>
-
-      <!-- Template Main Javascript File -->
-      <!-- <script>
-    $(function () {
-          $("modal-content").keypress(function (e) {
-            if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
-              $('button[type=submit] .default').click();
-              return false;
-            } else {
-              return true;
-            }
-          });
-  </script> -->
-
-
-
     </div>
 
   </div>
-
-
-  <!-- 
-  <script>
-    var TxtType = function (el, toRotate, period) {
-      this.toRotate = toRotate;
-      this.el = el;
-      this.loopNum = 0;
-      this.period = parseInt(period, 5) || 2000;
-      this.txt = '';
-      this.tick();
-      this.isDeleting = false;
-    };
-
-    TxtType.prototype.tick = function () {
-      var i = this.loopNum % this.toRotate.length;
-      var fullTxt = this.toRotate[i];
-
-      if (this.isDeleting) {
-        this.txt = fullTxt.substring(0, this.txt.length - 1);
-      } else {
-        this.txt = fullTxt.substring(0, this.txt.length + 1);
-      }
-
-      this.el.innerHTML = '<span class="wrap">' + this.txt + '</span>';
-
-      var that = this;
-      var delta = 175;
-
-      if (this.isDeleting) {
-        delta /= 10;
-      }
-
-      if (!this.isDeleting && this.txt === fullTxt) {
-        delta = this.period;
-        this.isDeleting = true;
-      } else if (this.isDeleting && this.txt === '') {
-        this.isDeleting = false;
-        this.loopNum++;
-        delta = 500;
-      }
-
-      setTimeout(function () {
-        that.tick();
-      }, delta);
-    };
-
-    // window.onload = function () {
-    //   var elements = document.getElementsByClassName('typewrite');
-    //   for (var i = 0; i < elements.length; i++) {
-    //     var toRotate = elements[i].getAttribute('data-type');
-    //     var period = elements[i].getAttribute('data-period');
-    //     if (toRotate) {
-    //       new TxtType(elements[i], JSON.parse(toRotate), period);
-    //     }
-    //   }
-    //   // INJECT CSS
-    //   var css = document.createElement("style");
-    //   css.type = "text/css";
-    //   css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid black}";
-    //   document.body.appendChild(css);
-    // };
-
-
-    // $(document).ready(function () {
-    //   $("#dashboard").click(function () {
-    //     console.log(" hide the extra");
-
-    //     // $("#mobile-body-overly").css("display", "none");
-    //     $("#mobile-nav").css("display", "none");
-
-    //   });
-    //   $("#mobile-nav-toggle").click(function () {
-    //     $("#mobile-body-overly").css("display", "block");
-
-    //     // $("#mobile-nav").css("display", "block");
-    //   });
-    // });
-  </script> -->
   <script>
     (function () {
 
@@ -913,14 +725,6 @@
 
     })();
   </script>
-
-
-
-  <!-- <script src="/js/basicFun.js"></script> -->
-
-
-
-
 </body>
 
 </html>

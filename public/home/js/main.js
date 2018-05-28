@@ -160,10 +160,8 @@ jQuery(document).ready(function ($) {
 
   // custom code
   (function () {
-
     var quotes = $(".quotes");
     var quoteIndex =0;
-
     function showNextQuote() {
       ++quoteIndex;
       quotes.eq(quoteIndex % quotes.length)

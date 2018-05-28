@@ -104,7 +104,6 @@ if (!req.files)
   //   fs.writeFile(path, data, function(err) {
   //   });
   // });
-
   // sampleFile.mv(__dirname+'/public/schoolLogo/', function(err) {
   //   if (err)
   //     return res.status(500).send(err);

@@ -52,19 +52,19 @@ app.controller('dashboardEditController', function ($scope, $rootScope, $window,
         if ($scope.loginType == 'studParent') {
             if ($scope.picType == 'student') {
                 obj = {
-                    "profilePic_path": filePath,
+                    "profilePic_path": $scope.filePath,
                     "loginType": 'studParent'
                 }
             }
             else if ($scope.picType == 'father') {
                 obj = {
-                    "father_profilePic_path": filePath,
+                    "father_profilePic_path": $scope.filePath,
                     "loginType": 'studParent'
                 }
             }
             else if ($scope.picType == 'mother') {
                 obj = {
-                    "mother_profilePic_path": filePath,
+                    "mother_profilePic_path": $scope.filePath,
                     "loginType": 'studParent'
                 }
             }
@@ -72,7 +72,7 @@ app.controller('dashboardEditController', function ($scope, $rootScope, $window,
         }
         else {
             obj = {
-                "profilePic_path": filePath,
+                "profilePic_path": $scope.filePath,
                 "loginType": 'user'
             }
         }

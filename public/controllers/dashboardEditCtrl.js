@@ -148,6 +148,7 @@ app.controller('dashboardEditController', function ($scope, $rootScope, $window,
         $scope.picType = type;
         console.log("<--fileUploadClick");
     }
+    
     function readURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
@@ -160,7 +161,7 @@ app.controller('dashboardEditController', function ($scope, $rootScope, $window,
 
     $("#imgInp").change(function () {
         readURL(this);
-    });
+    })
 
 
 })

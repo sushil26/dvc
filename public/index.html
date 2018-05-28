@@ -100,6 +100,96 @@
       background-size: 175px;
     }
   </style>
+  <style>
+    /* The outermost element*/
+
+    .header-wrapper {
+      overflow: hidden;
+    }
+    .zoominheader {
+      background: url("/home/img/op.jpg");
+      background-size: auto;
+      background-attachment: fixed;
+      background-repeat: repeat;
+      position: relative;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      -webkit-animation: zoomin 10s ease-in infinite;
+      animation: zoomin 10s ease-in infinite;
+      transition: all .5s ease-in-out;
+      overflow: hidden;
+    }
+
+    /* The innermost element*/
+
+    .zoomoutheader {
+      text-align: center;
+      background: none;
+      -webkit-animation: zoomout 10s ease-in infinite;
+      animation: zoomout 10s ease-in infinite;
+      transition: all .5s ease-in-out;
+      overflow: hidden;
+    }
+
+
+
+    /* Zoom in Keyframes */
+
+    @-webkit-keyframes zoomin {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.5);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    @keyframes zoomin {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.5);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    /*End of Zoom in Keyframes */
+
+    /* Zoom out Keyframes */
+
+    @-webkit-keyframes zoomout {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(0.67);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    @keyframes zoomout {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(0.67);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    /*End of Zoom out Keyframes */
+  </style>
 
   <!-- Dropdown with search -->
   <script>
@@ -167,7 +257,8 @@
           float: left;
           margin-top: 8px;
           text-transform: uppercase;
-          text-shadow: 2px 2px 4px #000000;">VC<span style="color: #2577be;">4ALL</span>
+          text-shadow: 2px 2px 4px #000000;">VC
+                <span style="color: #2577be;">4ALL</span>
               </a>
             </span>
           </div>
@@ -200,10 +291,11 @@
       <!--==========================
     Hero Section
   ============================-->
-      <section id="hero">
-        <div class="hero-container">
-          <center>
-            <h1 class="quotes" style="width: fit-content;
+      <section id="hero" class="header-wrapper">
+        <div class="hero-container zoominheader">
+          <div class="zoomoutheader">
+            <center>
+              <h1 class="quotes" style="width: fit-content;
             font-family: 'Allerta Stencil';
             height: auto;
             color: floralwhite;
@@ -212,7 +304,7 @@
             line-height: 1;
             text-shadow: 2px 2px 4px #000000;
               ">Welcome to VC4ALL</h1>
-            <h1 class="quotes" style="width: fit-content;
+              <h1 class="quotes" style="width: fit-content;
             font-family: 'Allerta Stencil';
               height: auto;
               color: floralwhite;
@@ -221,7 +313,7 @@
               line-height: 1;
               text-shadow: 2px 2px 4px #000000;
                 ">The Ultimate Platform for</h1>
-            <h1 class="quotes" style="width: fit-content;
+              <h1 class="quotes" style="width: fit-content;
             font-family: 'Allerta Stencil';
                 height: auto;
                 color: floralwhite;
@@ -230,7 +322,7 @@
                 line-height: 1;
                 text-shadow: 2px 2px 4px #000000;
                   ">Video Conferencing</h1>
-            <h1 class="quotes" style="width: fit-content;
+              <h1 class="quotes" style="width: fit-content;
             font-family: 'Allerta Stencil';
                   height: auto;
                   color: floralwhite;
@@ -239,9 +331,9 @@
                   line-height: 1;
                   text-shadow: 2px 2px 4px #000000;
                     ">and Instant messaging</h1>
-            <!-- <a href="#about" class="btn-get-started">Start Journey</a> -->
-          </center>
-
+              <!-- <a href="#about" class="btn-get-started">Start Journey</a> -->
+            </center>
+          </div>
         </div>
       </section>
       <!--==========================
@@ -429,7 +521,8 @@
                             color: #a8cf44;
                             margin-top: 8px;
                             text-transform: uppercase;
-                            ">VC<span style="color: #2577be;">4ALL</span>
+                            ">VC
+                              <span style="color: #2577be;">4ALL</span>
                             </a>
                           </span>
 

@@ -52,7 +52,9 @@
 "VC_deleteStud": "vc/deleteStud",
 "VC_getSchoolDataById": "vc/getSchoolDataById",
 "VC_schoolLogo": "vc/schoolLogo",
+"VC_profilePicupload": "vc/profilePicupload",
 "VC_bulkEmail_quickMsg": "vc/bulkEmail_quickMsg",
+"VC_updateProfilePic": "vc/updateProfilePic",
 "VC_csvTest": "vc/csvTest"
 
 

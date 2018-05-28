@@ -1,4 +1,4 @@
-app.controller('dashboardEditController', function ($scope, $rootScope, $window, httpFactory, sessionAuthFactory) {
+app.controller('dashboardEditController', function ($scope, $rootScope, $window, httpFactory, sessionAuthFactory, $uibModal) {
     console.log("dashboardEditController==>");
     $scope.propertyJson = $rootScope.propertyJson;
     $scope.file = {};/* ### Note Upload file declaration ### */
@@ -94,8 +94,6 @@ app.controller('dashboardEditController', function ($scope, $rootScope, $window,
                         $scope.message = "Successfully update";
                     }
                 })
-
-
                 $state.go('dashboard.personalDetail');
                 //$scope.eventGet();
             }

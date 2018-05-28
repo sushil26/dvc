@@ -524,7 +524,7 @@ module.exports.profilePicUpdate = function (req, res) {
             status: false,
             message: "update successful"
           };
-          res.status(400).send(responseData);
+          res.status(200).send(responseData);
         }
       })
     }
@@ -562,7 +562,7 @@ module.exports.profilePicUpdate = function (req, res) {
             status: false,
             message: "update successful"
           };
-          res.status(400).send(responseData);
+          res.status(200).send(responseData);
         }
       })
     }

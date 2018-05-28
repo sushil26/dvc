@@ -87,7 +87,7 @@ if (!req.files)
   {
    fileName=fileName+fileArr[i]
   }
-  fileName=fileName+"_"+common.sysTime()+"."+fileArr[fileArr.length-1];
+  fileName=fileName+"_"+Date()+"."+fileArr[fileArr.length-1];
   console.log("fileName--"+fileName)
   //res.json(fileName)
   myFile.mv("/public/schoolLogo"+fileName, function(err) {

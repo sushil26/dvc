@@ -139,60 +139,52 @@
       }
     }
   </script>
+  <style>
+    .quotes {
+      display: none;
+    }
 
-</head>
-<style>
-  #loading {
-    display: block;
-    position: absolute !important;
-    top: 0;
-    left: 0;
-    z-index: 100;
-    width: 100vw;
-    height: 100vh;
-    background-color: green;
-    background-image: url("gears-animation.gif");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-color: #0a425f;
-    background-size: 175px;
-  }
-</style>
-<script>
-  function onReady(callback) {
-    var intervalID = window.setInterval(checkReady, 1000);
+    #loading {
+      display: block;
+      position: absolute !important;
+      top: 0;
+      left: 0;
+      z-index: 100;
+      width: 100vw;
+      height: 100vh;
+      background-color: green;
+      background-image: url("gears-animation.gif");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-color: #0a425f;
+      background-size: 175px;
+    }
+  </style>
+  <script>
+    function onReady(callback) {
+      var intervalID = window.setInterval(checkReady, 1000);
 
-    function checkReady() {
-      if (document.getElementsByTagName('body')[0] !== undefined) {
-        window.clearInterval(intervalID);
-        callback.call(this);
+      function checkReady() {
+        if (document.getElementsByTagName('body')[0] !== undefined) {
+          window.clearInterval(intervalID);
+          callback.call(this);
+        }
       }
     }
-  }
 
-  function show(id, value) {
-    document.getElementById(id).style.display = value ? 'block' : 'none';
-  }
+    function show(id, value) {
+      document.getElementById(id).style.display = value ? 'block' : 'none';
+    }
 
-  onReady(function () {
-    show('page', true);
-    show('loading', false);
-  });
-</script>
-<style>
-  .quotes {
-    display: none;
-  }
-  #veil {
-			position: absolute;
-			top: 0;
-			left: 0;
-			height: 100%;
-			width: 100%;
-			cursor: not-allowed;
-			background: url(../../assest/image/buterfly.gif) no-repeat center;
-		}
-</style>
+    onReady(function () {
+      show('page', true);
+      show('loading', false);
+    });
+  </script>
+
+</head>
+
+
 
 <body>
   <div id="loading"></div>
@@ -214,8 +206,7 @@
           float: left;
           margin-top: 8px;
           text-transform: uppercase;
-          text-shadow: 2px 2px 4px #000000;">VC
-                <span style="color: #2577be;">4ALL</span>
+          text-shadow: 2px 2px 4px #000000;">VC<span style="color: #2577be;">4ALL</span>
               </a>
             </span>
           </div>
@@ -231,28 +222,16 @@
               <li>
                 <a href="#contact" style="text-shadow: 2px 2px 4px #000000;">About Us</a>
               </li>
-              <!-- <li ng-if="!userData.loginType">
-                <a href="#" ng-click="vcLogin()" style="text-shadow: 2px 2px 4px #000000;">Login</a>
-              </li> -->
               <li ng-if="!userData.loginType">
                 <a href="#" data-target="#crdntl" data-toggle="modal" style="text-shadow: 2px 2px 4px #000000;">login</a>
               </li>
               <li ng-if="userData.loginType">
                 <a href="#!dashboard/logout" style="text-shadow: 2px 2px 4px #000000;">Logout</a>
               </li>
-              <!-- <li>
-            <a href="#portfolio">Portfolio</a>
-          </li>
-          <li>
-            <a href="#team">Team</a>
-          </li> -->
 
-              <!-- <li>
-            <a href="#contact">Contact Us</a>
-          </li> -->
             </ul>
           </nav>
-          <!-- #nav-menu-container -->
+
         </div>
       </header>
 
@@ -263,24 +242,6 @@
       <section id="hero">
         <div class="hero-container">
           <center>
-            <!-- <div class="element" style="color:white;width:100%;">
-              &nbsp
-              <h1 style="position: absolute;
-        padding:2%;
-        border-radius: 2px;
-        background: #00ced166;
-        color:black;
-				font-weight:700;
-				font-size:50px;
-				top: 50%;
-				left: 50%;
-				margin-right: -50%;
-        transform: translate(-50%, -50%);
-        line-height: normal;
-				z-index: 1;" class="typewrite" data-period="2000" data-type='["Welcome to VC4ALL","The ultimate platform for Video Conferencing", " and Instant messaging"]'>
-                <span class="wrap"> </span>
-              </h1>
-            </div> -->
             <h2 class="quotes" style="position: absolute;
               font-family:Oswald;
               text-align:center;

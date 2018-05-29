@@ -164,7 +164,7 @@ app.controller('dashboardEditController', function ($scope, $rootScope, $window,
             var imageReader = new FileReader();
             imageReader.onload = function (image) {
                 $scope.$apply(function ($scope) {
-                    $scope.myImage = image.target.result;
+                    $scope.myImage.originalImage = image.target.result;
                 });
             };
             imageReader.readAsDataURL(file);

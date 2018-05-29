@@ -38,18 +38,18 @@ app.controller('dashboardEditController', function ($scope, $rootScope, $window,
     }
     $scope.getUserDetails(id);
 
-    $scope.schoolLogoStorage = function () {
+    $scope.schoolLogoStorage = function (f) {
         console.log("schoolLogoStorage-->");
         /* #####  Start Upload File ###### */
         // console.log("$scope.file: " + $scope.file);
         // console.log("$scope.file: " + $scope.file.upload);
         // $scope.file.upload = $scope.myCroppedImage;
-       
+       console.log("f: "+f)
         //    if ($scope.file.upload) {
         var uploadURL = $scope.propertyJson.VC_profilePicupload;
         console.log("uploadURL: " + uploadURL);
         console.log("$scope.file.upload from : alumRegCtr.js: " + $scope.file.upload);
-        httpFactory.imageUpload(uploadURL, $scope.resBlob).then(function (data) {
+        httpFactory.imageUpload(uploadURL, f).then(function (data) {
             console.log("hello " + JSON.stringify(data));
             var checkStatus = httpFactory.dataValidation(data);
             console.log("checkStatus: " + checkStatus);

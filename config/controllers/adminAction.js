@@ -787,8 +787,8 @@ module.exports.uploadFeeFile = function (req, res) {
                 "cs": [{ "class": clas, "section": section }]
             }
             stud.find(studIdForFindQry).toArray(function (err, findData) {
-                console.log("class section query findData: " + JSON.stringify(findData));
-                console.log("class section query findData.length: " + findData.length);
+               // console.log("class section query findData: " + JSON.stringify(findData));
+                //console.log("class section query findData.length: " + findData.length);
                 if (err) {
                     marker = false;
                     responseData = {
@@ -870,7 +870,7 @@ module.exports.uploadFeeSheet = function (data, callback) {
     var studIdForUpdateQry = {
         "schoolId": data.StudentID,
         "schoolName": schoolName,
-        "fee.testType": feeType,
+        "fee.feeType": feeType,
         "cs": [{ "class": clas, "section": section }]
     }
     console.log("studIdForFindQry: " + JSON.stringify(studIdForFindQry));

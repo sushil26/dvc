@@ -1128,7 +1128,7 @@ module.exports.updateFeeSheet = function (data, callback) {
         }
         else {
             if (findData.length > 0) {
-                console.log("consolidateMS: " + JSON.stringify(consolidateMS));
+                //console.log("consolidateMS: " + JSON.stringify(consolidateMS));
                 stud.update(studIdForUpdateQry, { $set: { "fee.$.details": [] } }, function (err, pulledData) {
                     console.log("2nd query data.length: " + JSON.stringify(pulledData));
                     if (err) {

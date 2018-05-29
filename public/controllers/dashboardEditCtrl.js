@@ -43,7 +43,7 @@ app.controller('dashboardEditController', function ($scope, $rootScope, $window,
         /* #####  Start Upload File ###### */
         console.log("$scope.file: " + $scope.file);
         console.log("$scope.file: " + $scope.file.upload);
-        $scope.file.upload =  $scope.myImage;
+        $scope.file.upload = $scope.myCroppedImage;
         //    if ($scope.file.upload) {
         var uploadURL = $scope.propertyJson.VC_profilePicupload;
         console.log("uploadURL: " + uploadURL);
@@ -150,7 +150,7 @@ app.controller('dashboardEditController', function ($scope, $rootScope, $window,
     }
 
     // $scope.myImage = '';
-     $scope.myCroppedImage = '';
+    $scope.myCroppedImage = '';
 
     $scope.uploadFile = function (file) {
         if (file) {

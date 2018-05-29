@@ -1015,6 +1015,7 @@ module.exports.feeUpdate = function (req, res) {
     console.log("req.body.files: " + req.files.img);
     var fileName = req.files.img.name;
     var fileNameSeparate = fileName.split('_');
+    console.log("fileNameSeparate[0]: "+fileNameSeparate[0]);
     if (fileNameSeparate[0] == 'FeeUpdate_') {
         if (!req.files)
             return res.status(400).send('No files were uploaded.');

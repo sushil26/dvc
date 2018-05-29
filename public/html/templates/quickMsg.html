@@ -7,17 +7,17 @@
     <table class="table table-sm">
         <tr style="font-size: 12px;color: black;font-family: sans-serif;">
             <td>
-                <div>{{eventDetails.startsAt | date:'dd MMM yyyy'}} </div>
+                <div><b>{{eventDetails.startsAt | date:'dd MMM yyyy'}}</b> </div>
             </td>
             <td> Subject:
-                <span style="font-family: sans-serif;">{{eventDetails.title}}</span>
+                <span style="font-family: sans-serif;"><b>{{eventDetails.title}}</b></span>
             </td>
         </tr>
     </table>
     <table class="table table-sm">
         <tr>
             <td>
-                <p style="color:black; font-family:sans-serif;">{{eventDetails.reason}}</p>
+                <p style="color:black; font-family:sans-serif;"><b><i>{{eventDetails.reason}}</i></b></p>
             </td>
         </tr>
     </table>

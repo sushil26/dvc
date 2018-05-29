@@ -885,7 +885,7 @@ module.exports.uploadFeeSheet = function (data, callback) {
         }
         else {
             if (findData.length > 0) {
-                console.log("consolidateMS: " + JSON.stringify(consolidateMS));
+                console.log("fee: " + JSON.stringify(fee));
                 stud.findOneAndUpdate(studIdForUpdateQry, { $push: { "fee.$.details": { $each: fee } } }, function (err, data) {
                     // console.log("2nd query started: " + JSON.stringify(data));
                     console.log("2nd query data.length: " + data.length);

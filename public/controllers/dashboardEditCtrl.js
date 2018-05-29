@@ -38,13 +38,14 @@ app.controller('dashboardEditController', function ($scope, $rootScope, $window,
     }
     $scope.getUserDetails(id);
 
-    $scope.schoolLogoStorage = function (f) {
+    $scope.schoolLogoStorage = function (f, r) {
         console.log("schoolLogoStorage-->");
         /* #####  Start Upload File ###### */
         // console.log("$scope.file: " + $scope.file);
         // console.log("$scope.file: " + $scope.file.upload);
         // $scope.file.upload = $scope.myCroppedImage;
-       console.log("f: "+f)
+        console.log("myCroppedImage: "+$scope.myCroppedImage+"resBlob: "+$scope.resBlob);
+       console.log("f: "+f+"r: "+r);
         //    if ($scope.file.upload) {
         var uploadURL = $scope.propertyJson.VC_profilePicupload;
         console.log("uploadURL: " + uploadURL);

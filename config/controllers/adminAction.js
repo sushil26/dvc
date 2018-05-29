@@ -765,7 +765,7 @@ module.exports.uploadMarkSheet = function (data, callback) {
 module.exports.uploadFeeFile = function (req, res) {
     console.log("uploadFeeFile-->");
     schoolName = req.params.schoolName;
-    feeType = req.params.feeType;
+    feeType = req.params.reportType;
     clas = req.params.clas;
     section = req.params.section;
     console.log("req.body.files: " + req.files.img);

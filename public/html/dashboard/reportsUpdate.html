@@ -259,8 +259,8 @@
                                                             {{sd.firstName + " " + sd.lastName}}
                                                         </td>
                                                         <!-- <th style="background-color:white;" ng-repeat=" (key, value) in up.testDate.mark">{{value}}</th> -->
-                                                        <td style="background-color:white;" ng-repeat="mark in sd.fee">
-                                                            <div ng-if="fee.feeType==up.ftSelect" ng-repeat="(key, value) in fee.details">
+                                                        <td style="background-color:white;" ng-repeat="f in sd.fee">
+                                                            <div ng-if="f.feeType==up.ftSelect" ng-repeat="(key, value) in f.details">
                                                                 <div>{{key}}:{{value}}
                                                                     <br>
                                                                 </div>

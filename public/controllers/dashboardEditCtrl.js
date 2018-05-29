@@ -44,8 +44,8 @@ app.controller('dashboardEditController', function ($scope, $rootScope, $window,
         // console.log("$scope.file: " + $scope.file);
         // console.log("$scope.file: " + $scope.file.upload);
         // $scope.file.upload = $scope.myCroppedImage;
-        console.log("myCroppedImage: "+$scope.myCroppedImage+"resBlob: "+$scope.resBlob);
-       console.log("f: "+f+"r: "+r);
+        console.log("myImage.croppedImage: " + $scope.myImage.croppedImage + "resBlob: " + $scope.resBlob);
+        console.log("f: " + f + "r: " + r);
         //    if ($scope.file.upload) {
         var uploadURL = $scope.propertyJson.VC_profilePicupload;
         console.log("uploadURL: " + uploadURL);
@@ -153,6 +153,10 @@ app.controller('dashboardEditController', function ($scope, $rootScope, $window,
 
     // $scope.myImage = '';
     //$scope.myCroppedImage = '';
+    $scope.myImage = {
+        originalImage: '',
+        croppedImage: ''
+    }
 
     $scope.uploadFile = function (file) {
         if (file) {

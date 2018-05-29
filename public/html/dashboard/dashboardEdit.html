@@ -79,11 +79,11 @@
                                                         <!-- <image-crop			 
                                                         image="myImage" result-image="myCroppedImage"
                                                        ></image-crop>	 -->
-                                                    <img-crop image="myImage" result-image="myCroppedImage" result-blob="resBlob" change-on-fly="true"></img-crop>
+                                                    <img-crop image="myImage.originalImage" result-image="myImage.croppedImage" result-blob="resBlob" change-on-fly="true"></img-crop>
                                                 </div>
                                                 <div>Cropped Image:</div>
                                                 <div>
-                                                    <img ng-src="{{myCroppedImage}}" />
+                                                    <img ng-src="{{myImage.croppedImage}}" />
                                                 </div>
                                             </td>
                                         </tr>
@@ -92,7 +92,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-lg-offset-2 col-lg-10">
-                                    <button type="submit" class="btn btn-primary" ng-click="schoolLogoStorage(myCroppedImage,result)">Save</button>
+                                    <button type="submit" class="btn btn-primary" ng-click="schoolLogoStorage(myImage.croppedImage,result)">Save</button>
                                     <button type="reset" class="btn btn-danger">Cancel</button>
                                 </div>
                             </div>

@@ -41,15 +41,28 @@ app.controller('dashboardEditController', function ($scope, $rootScope, $window,
     $scope.schoolLogoStorage = function () {
         console.log("schoolLogoStorage-->");
         /* #####  Start Upload File ###### */
-        console.log("$scope.file: " + $scope.file);
-        console.log("$scope.file: " + $scope.file.upload);
-        $scope.file.upload = $scope.myCroppedImage;
-     
+        // console.log("$scope.file: " + $scope.file);
+        // console.log("$scope.file: " + $scope.file.upload);
+        // $scope.file.upload = $scope.myCroppedImage;
+        // Assuming we have the crop result in myCroppedImage
+        // Get the mime part of it
+        console.log("$scope.myCroppedImage: "+$scope.myCroppedImage);
+        var mimeString = $scope.myCroppedImage.split(',')[0].split(':')[1].split(';')[0];
+        // Get the data part and decode it
+        var dataString = window.atob($scope.myCroppedImage.split(',')[1]);
+        var dataArray = [];
+
+        for (var i = 0; i < dataString.length; i++) {
+            dataArray.push(dataString.charCodeAt(i));
+        }
+
+        var imageData = new Blob([new Uint8Array(dataArray)], { type: mimeString });
+
         //    if ($scope.file.upload) {
         var uploadURL = $scope.propertyJson.VC_profilePicupload;
         console.log("uploadURL: " + uploadURL);
         console.log("$scope.file.upload from : alumRegCtr.js: " + $scope.file.upload);
-        httpFactory.imageUpload(uploadURL, $scope.file).then(function (data) {
+        httpFactory.imageUpload(uploadURL, imageData).then(function (data) {
             console.log("hello " + JSON.stringify(data));
             var checkStatus = httpFactory.dataValidation(data);
             console.log("checkStatus: " + checkStatus);

@@ -28,7 +28,7 @@ app.controller('feeViewCtl', function ($scope, $rootScope, $window, $uibModal, h
     }
 
     $scope.getFee = function (id) {
-        console.log("getMarks-->");
+        console.log("getFee-->");
         var api =  $scope.propertyJson.VC_getStudentAttendance+ "/" + id;
         console.log("api: " + api);
         httpFactory.get(api).then(function (data) {
@@ -46,7 +46,7 @@ app.controller('feeViewCtl', function ($scope, $rootScope, $window, $uibModal, h
                 console.log("sorry");
             }
         })
-        console.log("<--getMarks");
+        console.log("<--getFee");
     }
     if ($scope.userData.loginType == 'teacher') {
         $scope.userLoginType = 'teacher';
@@ -90,7 +90,7 @@ app.controller('feeViewCtl', function ($scope, $rootScope, $window, $uibModal, h
         $scope.events = [];
         console.log("cs: " + JSON.stringify(cs));
         var id = cs.id;
-        $scope.getMarks(id);
+        $scope.getFee(id);
 
     }
 })

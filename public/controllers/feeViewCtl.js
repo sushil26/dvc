@@ -54,7 +54,7 @@ app.controller('feeViewCtl', function ($scope, $rootScope, $window, $uibModal, h
     }
     if ($scope.userData.loginType == 'studParent') {
         $scope.userLoginType = 'studParent';
-        $scope.getMarks($scope.userData.id);
+        $scope.getFee($scope.userData.id);
     }
     $scope.getStudListForCS = function (css) {
 

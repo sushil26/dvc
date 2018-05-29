@@ -47,7 +47,7 @@ app.controller('dashboardEditController', function ($scope, $rootScope, $window,
         //    if ($scope.file.upload) {
         var uploadURL = $scope.propertyJson.VC_profilePicupload;
         console.log("uploadURL: " + uploadURL);
-        console.log("$scope.file.upload from : alumRegCtr.js: " + $scope.file.upload);
+        //console.log("$scope.file.upload from : alumRegCtr.js: " + $scope.file.upload);
         httpFactory.imageUpload(uploadURL, $scope.myCroppedImage).then(function (data) {
             console.log("hello " + JSON.stringify(data));
             var checkStatus = httpFactory.dataValidation(data);

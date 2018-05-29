@@ -1909,7 +1909,7 @@ div[data-role="editor-toolbar"] {
 
 .widget .widget-foot,
 .modal-footer {
-  background-color:#153147;
+  background-color:#1a3b56;
   /* background: -webkit-gradient( linear, left top, left bottom, from(#f8f8f8), to(#f2f2f2));
   background: -webkit-linear-gradient(top, #00a0df8f, #072748);
   background: -moz-linear-gradient(top, #00a0df8f, #072748);
@@ -4201,7 +4201,7 @@ ul.amounts li {
 
 .panel-heading,
 .modal-header {
- background: hsl(207, 55%, 18%);
+ background: #1a3b56;
   color: white;
 }
 

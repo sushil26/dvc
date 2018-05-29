@@ -274,6 +274,21 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         }
       }
     })
+    .state('dashboard.feeView', {
+      url: feeView(),
+      templateUrl: '/html/dashboard/feeView.html',
+      controller: 'feeViewCtl',
+      resolve: {
+        result: function (sessionAuthFactory, $window) {
+          var userData = sessionAuthFactory.getAccess("userData");
+          if (userData.loginType == 'teacher' || userData.loginType == 'studParent') {
+          }
+          else {
+            $window.location.href = 'https://norecruits.com';
+          }
+        }
+      }
+    })
     .state('dashboard.automationResultView', {
       url: automationResultView(),
       templateUrl: '/html/dashboard/markViewWithConfId.html',
@@ -448,6 +463,9 @@ function attendanceView() {
 }
 function markView() {
   return '/markView';
+}
+function feeView() {
+  return '/feeView';
 }
 function automationResultView() {
   return '/automationResultView/:id';

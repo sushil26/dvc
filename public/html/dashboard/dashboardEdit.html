@@ -73,7 +73,7 @@
                                             <td>
                                                 <!-- <input type="file" id="fileInput" class="btnCont btnCont-uploadColor post_uploadFile" name="logo" value="Upload" file-model="file.upload"
                                                     ng-click="fileUploadClick('profile_picPath')" ng-model="image" accept="image/jpeg,image/png"> -->
-                                                <input type="file" id="fileInput" />
+                                                <input type="file" id="fileInput" onchange="angular.element(this).scope().uploadFile(this.files[0])"/>
                                                 <div class="cropArea">
                                                     <img-crop image="myImage" result-image="myCroppedImage"></img-crop>
                                                 </div>

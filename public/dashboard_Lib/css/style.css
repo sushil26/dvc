@@ -30,7 +30,11 @@
 table td {
   word-break: break-all;
 } */
-table th td{
+table td {
+
+  word-wrap:break-word;
+}
+table th {
 
   word-wrap:break-word;
 }

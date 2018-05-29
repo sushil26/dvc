@@ -71,7 +71,7 @@
                                                 <div style="float:left !important; position: absolute;
                               left: 0;">
                                                     <select class="btn btn-warning" ng-if="userLoginType=='teacher'" placeholder="select" ng-model="cssSelect" ng-change="getStudListForCS(cssSelect)"
-                                                        ng-options="css as css.class+ '-' + css.section + '-' + css.subject for css in teacherData[0].css">
+                                                        ng-options="css as css.class+ '-' + css.section for css in teacherData[0].css">
                                                         <option value="" disabled selected>Class</option>
                                                     </select>
 
@@ -169,7 +169,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <!-- <button data-dismiss="modal" class="btn btn-default" type="button">Close</button> -->
-                                        <button type="submit" class="btn btn-primary" ng-click="saveQuickMsg(subject, quickmsg)">Send</button>
+                                        <button type="submit" class="btn btn-warning" ng-click="saveQuickMsg(subject, quickmsg)">Send</button>
                                         <button type="reset" class="btn btn-danger">Cancel</button>
                                     </div>
                                 </div>

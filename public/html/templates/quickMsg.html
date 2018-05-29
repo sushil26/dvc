@@ -6,11 +6,16 @@
 
     <table class="table table-sm">
         <tr style="font-size: 12px;color: black;font-family: sans-serif;">
-            <td>
-                <div><b>{{eventDetails.startsAt | date:'dd MMM yyyy'}}</b> </div>
-            </td>
+
             <td> Subject:
-                <span style="font-family: sans-serif;"><b>{{eventDetails.title}}</b></span>
+                <span style="font-family: sans-serif;">
+                    <b>{{eventDetails.title}}</b>
+                </span>
+            </td>
+            <td>
+                <div>
+                    <b>{{eventDetails.startsAt | date:'dd MMM yyyy'}}</b>
+                </div>
             </td>
         </tr>
     </table>
@@ -35,8 +40,9 @@
             <td>
                 Receiver Detail
                 <br>
-                <div style="color:black"> <b>{{eventDetails.receiverName}}
-                    <br> {{eventDetails.receiverMN}}</b>
+                <div style="color:black">
+                    <b>{{eventDetails.receiverName}}
+                        <br> {{eventDetails.receiverMN}}</b>
                 </div>
             </td>
         </tr>

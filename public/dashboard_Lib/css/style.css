@@ -158,7 +158,7 @@ table tr th {
 /*login page*/
  
 table, th, td {
-  word-wrap:break-word;
+  word-wrap:break-word !important;
 }
 
 .login-body {

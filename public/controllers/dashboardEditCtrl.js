@@ -44,8 +44,8 @@ app.controller('dashboardEditController', function ($scope, $rootScope, $window,
         // console.log("$scope.file: " + $scope.file);
         // console.log("$scope.file: " + $scope.file.upload);
         // $scope.file.upload = $scope.myCroppedImage;
-        console.log( "$scope.myImage.resBlob: " + $scope.myImage.resBlob);
-        console.log( "r: " + r);
+        console.log("$scope.myImage.resBlob: " + $scope.myImage.resBlob);
+        console.log("r: " + r);
         //    if ($scope.file.upload) {
         var uploadURL = $scope.propertyJson.VC_profilePicupload;
         console.log("uploadURL: " + uploadURL);
@@ -125,6 +125,7 @@ app.controller('dashboardEditController', function ($scope, $rootScope, $window,
                         $scope.message = "Successfully update";
                     }
                 })
+                $scope.userData[0].profilePic_path = $scope.filePath;
                 $state.go('dashboard.personalDetail');
                 //$scope.eventGet();
             }

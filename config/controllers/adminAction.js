@@ -1016,7 +1016,7 @@ module.exports.feeUpdate = function (req, res) {
     var fileName = req.files.img.name;
     var fileNameSeparate = fileName.split('_');
     console.log("fileNameSeparate[0]: "+fileNameSeparate[0]);
-    if (fileNameSeparate[0] == 'FeeUpdate_') {
+    if (fileNameSeparate[0] == 'FeeUpdate') {
         if (!req.files)
             return res.status(400).send('No files were uploaded.');
         var studentDataFile = req.files.img;

@@ -25,7 +25,16 @@
   -ms-transform: none;
 } */
 
-/*
+/* 
+
+table td {
+  word-break: break-all;
+} */
+table th td{
+
+  word-wrap:break-word;
+}
+
 .prv {
   width: 200px;
   height: 200px;
@@ -156,10 +165,6 @@ table tr th {
 }
 
 /*login page*/
- 
-table, th, td {
-  word-wrap:break-word !important;
-}
 
 .login-body {
   background-color: #f1f2f7;

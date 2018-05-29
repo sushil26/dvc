@@ -487,7 +487,7 @@ app.controller('reportsUploadCtl', function ($scope, $rootScope, $window, httpFa
     var obj = {
       "file": file
     }
-    if (reportType && date && clas && section) {
+    if (reportType && clas && section) {
       console.log("api creating");
       var api = $scope.propertyJson.VC_uploadFeeFile + "/" + schoolName + "/" + reportType + "/" + clas + "/" + section;
       // $scope.reset("api: "+api);

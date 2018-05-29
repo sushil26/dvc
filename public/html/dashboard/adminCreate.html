@@ -38,10 +38,15 @@
                                 <div class="form-group">
                                     <label class="col-lg-2 control-label">School Logo</label>
                                     <div class="col-lg-6">
-                                        <input type="file" id="imgInp" class="btnCont btnCont-uploadColor post_uploadFile" name="logo" value="Upload" file-model="file.upload"
-                                            ng-model="image" accept="image/jpeg,image/png">
-                                        <img id="blah" src="#" style="width:  inherit;">
-                                        <button ng-click="schoolLogoStorage(file)">Upload</button>
+                                            <input type="file" id="fileInput" class="btnCont btnCont-uploadColor post_uploadFile" name="logo" value="Upload" 
+                                            onchange="angular.element(this).scope().uploadFile(this.files[0])" ng-click="fileUploadClick('profile_picPath')"
+                                            accept="image/jpeg,image/png">
+                                            <img-crop image="myImage.originalImage" result-image="myImage.croppedImage" result-blob="myImage.resBlob" area-type="rectangle"
+                                            area-min-size="100" area-init-size="100" result-image-format="png" result-image-size="100"
+                                            aspect-ratio="0.75" init-max-area="false" allow-crop-resize-on-corners="false">
+                                        </img-crop>
+                                     
+                                        <button ng-click="schoolLogoStorage()">Upload</button>
                                     </div>
 
                                 </div>

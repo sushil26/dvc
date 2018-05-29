@@ -12,7 +12,7 @@ app.controller('adminCreateCtl', function ($scope, $rootScope, $filter, $window,
         var uploadURL = $scope.propertyJson.VC_schoolLogo;
         console.log("uploadURL: " + uploadURL);
         console.log("$scope.file.upload from : alumRegCtr.js: " + $scope.file.upload);
-        httpFactory.imageUpload(uploadURL, $scope.file).then(function (data) {
+        httpFactory.imageUpload(uploadURL, $scope.myImage.resBlob).then(function (data) {
             console.log("hello " + JSON.stringify(data));
             var checkStatus = httpFactory.dataValidation(data);
             console.log("checkStatus: " + checkStatus);
@@ -45,6 +45,7 @@ app.controller('adminCreateCtl', function ($scope, $rootScope, $filter, $window,
 
     $scope.adminCreate = function () {
         console.log("adminCreate-->");
+        if ($scope.filePath) {
         var objJson = {
             "schoolName": $scope.schoolName,
             "schoolRegNumber": $scope.schoolRegNumber,
@@ -60,9 +61,12 @@ app.controller('adminCreateCtl', function ($scope, $rootScope, $filter, $window,
             "pinCode": $scope.pinCode,
             "country": $scope.country,
             "pswd": $scope.pswd,
+            "logoPath" : $scope.filePath
         }
-        if ($scope.filePath) {
-            objJson.logoPath = $scope.filePath;
+                 
+        }
+        else{
+            alert("upload file then click on save");
         }
 
         console.log("objJson: " + JSON.stringify(objJson));
@@ -114,16 +118,21 @@ app.controller('adminCreateCtl', function ($scope, $rootScope, $filter, $window,
         console.log("<--adminCreate");
     }
 
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                $('#blah').attr('src', e.target.result);
-            }
-            reader.readAsDataURL(input.files[0]);
-        }
+    $scope.myImage = {
+        originalImage: '',
+        croppedImage: ''
     }
-    $("#imgInp").change(function () {
-        readURL(this);
-    });
+
+    $scope.uploadFile = function (file) {
+        if (file) {
+            // ng-img-crop
+            var imageReader = new FileReader();
+            imageReader.onload = function (image) {
+                $scope.$apply(function ($scope) {
+                    $scope.myImage.originalImage = image.target.result;
+                });
+            };
+            imageReader.readAsDataURL(file);
+        }
+    };
 })

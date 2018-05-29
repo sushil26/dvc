@@ -297,29 +297,40 @@
                                                             </div>
                                                         </div>
                                                     </td>
-                                                    <td style="background-color:white;" ng-repeat="f in sd.fee">
-                                                        <div ng-if="f.feeType==up.ftSelect" ng-repeat="fd in f.details">
-                                                            <div>{{fd.totalAmount}}</div>
+                                                    <td style="background-color:white;">
+                                                        <div ng-repeat="f in sd.fee">
+                                                            <div ng-if="f.feeType==up.ftSelect" ng-repeat="fd in f.details">
+                                                                {{fd.totalAmount}}
+                                                            </div>
                                                         </div>
                                                     </td>
-                                                    <td style="background-color:white;" ng-repeat="f in sd.fee">
-                                                        <div ng-if="f.feeType==up.ftSelect" ng-repeat="fd in f.details">
-                                                            <div>{{fd.amountPaid}}</div>
+                                                    <td style="background-color:white;">
+                                                        <div ng-repeat="f in sd.fee">
+                                                            <div ng-if="f.feeType==up.ftSelect" ng-repeat="fd in f.details">
+                                                                {{fd.amountPaid}}
+                                                            </div>
                                                         </div>
                                                     </td>
-                                                    <td style="background-color:white;" ng-repeat="f in sd.fee">
-                                                        <div ng-if="f.feeType==up.ftSelect" ng-repeat="fd in f.details">
-                                                            <div>{{fd.PaidDate}}</div>
+                                                    <td style="background-color:white;">
+                                                        <div ng-repeat="f in sd.fee">
+                                                            <div ng-if="f.feeType==up.ftSelect" ng-repeat="fd in f.details">
+                                                                {{fd.PaidDate}}
+                                                            </div>
+                                                        </div>
+
+                                                    </td>
+                                                    <td style="background-color:white;">
+                                                        <div ng-repeat="f in sd.fee">
+                                                            <div ng-if="f.feeType==up.ftSelect" ng-repeat="fd in f.details">
+                                                                {{fd.dueAmout}}
+                                                            </div>
                                                         </div>
                                                     </td>
-                                                    <td style="background-color:white;" ng-repeat="f in sd.fee">
-                                                        <div ng-if="f.feeType==up.ftSelect" ng-repeat="fd in f.details">
-                                                            <div>{{fd.dueAmout}}</div>
-                                                        </div>
-                                                    </td>
-                                                    <td style="background-color:white;" ng-repeat="f in sd.fee">
-                                                        <div ng-if="f.feeType==up.ftSelect" ng-repeat="fd in f.details">
-                                                            <div>{{fd.lastDateToPaid}}</div>
+                                                    <td style="background-color:white;">
+                                                        <div ng-repeat="f in sd.fee">
+                                                            <div ng-if="f.feeType==up.ftSelect" ng-repeat="fd in f.details">
+                                                                <div>{{fd.lastDateToPaid}}</div>
+                                                            </div>
                                                         </div>
                                                     </td>
                                                 </tr>

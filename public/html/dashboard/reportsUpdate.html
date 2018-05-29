@@ -230,6 +230,48 @@
                                             </select>
                                         </div>
                                     </div>
+                                    <!--##### Start Mark data #####-->
+                                    <section ng-if="up.ftSelect && up.uploadType=='Fee Report'" class="panel">
+                                        <div class="form-group">
+                                            <div class="panel-heading" style="background: #3a4a58;">
+                                                <i class="fa fa-user-circle"></i>
+                                                <span style="color:white;">&nbsp;Fee List</span>
+                                            </div>
+                                            <table class="table table-sm">
+                                                <thead class="panel-heading">
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>Student Id</th>
+                                                        <th>Student Name</th>
+                                                        <th>Payment Option</th>
+                                                        <th>Total Amount</th>
+                                                        <th>Amount Paid</th>
+                                                        <th>Paid Date</th>
+                                                        <th>Due Amout</th>
+                                                        <th>Last Date to Paid</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="sd in studentList">
+                                                        <td style="background-color:white;">{{$index+1}}.</td>
+                                                        <td style="background-color:white;">{{sd.schoolId}}</td>
+                                                        <td style="background-color:white;">
+                                                            {{sd.firstName + " " + sd.lastName}}
+                                                        </td>
+                                                        <!-- <th style="background-color:white;" ng-repeat=" (key, value) in up.testDate.mark">{{value}}</th> -->
+                                                        <td style="background-color:white;" ng-repeat="mark in sd.fee">
+                                                            <div ng-if="fee.feeType==up.ftSelect" ng-repeat="(key, value) in fee.details">
+                                                                <div>{{key}}:{{value}}
+                                                                    <br>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </section>
+                                    <!--##### End Mark data #####-->
                                     <div class="form-group " ng-if="up.uploadType=='Mark Report' && testStartDate.length>0">
                                         <label class="control-label col-lg-3">Test Start Date
                                             <span class="required">*</span>

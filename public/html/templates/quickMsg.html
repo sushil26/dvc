@@ -10,33 +10,50 @@
             <td>
                 <div style="color:black">{{eventDetails.startsAt | date:'dd MMM yyyy'}} </div>
             </td>
-        </tr>
-        <tr>
             <td>
                 Subject:
-                <span style="color:green">{{eventDetails.title}}</span>
+                <span style="color:black">{{eventDetails.title}}</span>
             </td>
         </tr>
         <tr>
             <td>
-                Message
-                <br>
-                <p style="color:green">{{eventDetails.reason}} </p>
+                <hr>
+            </td>
+            <td>
+                <hr>
             </td>
         </tr>
+
+        <tr>
+            <td>
+                <p style="color:black; font-family:sans-serif;">{{eventDetails.reason}} </p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <hr>
+            </td>
+            <td>
+                <hr>
+            </td>
+
+
+        </tr>
+
+
         <tr ng-if="eventDetails.messageType=='wholeClass'">
             <td>
                 Receiver Detail
-                <div style="color:green" ng-repeat="emailId in eventDetails.receiverEmail">{{emailId}} </div>
+                <div style="color:black" ng-repeat="emailId in eventDetails.receiverEmail">{{emailId}} </div>
             </td>
         </tr>
         <tr ng-if="eventDetails.messageType!='wholeClass'">
             <td>
                 Receiver Detail
                 <br>
-                <i style="color:green">{{eventDetails.receiverName}} </i>
+                <i style="color:black">{{eventDetails.receiverName}} </i>
                 <br>
-                <i style="color:green">{{eventDetails.receiverMN}} </i>
+                <i style="color:black">{{eventDetails.receiverMN}} </i>
 
             </td>
         </tr>

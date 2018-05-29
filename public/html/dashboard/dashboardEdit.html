@@ -71,11 +71,11 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <input type="file" id="fileInput" class="btnCont btnCont-uploadColor post_uploadFile" name="logo" value="Upload" file-model="myCroppedImage"
+                                                <input type="file" id="fileInput" class="btnCont btnCont-uploadColor post_uploadFile" name="logo" value="Upload" 
                                                 onchange="angular.element(this).scope().uploadFile(this.files[0])"  ng-click="fileUploadClick('profile_picPath')" ng-model="image" accept="image/jpeg,image/png">
                                                 <!-- <input type="file" id="fileInput" onchange="angular.element(this).scope().uploadFile(this.files[0])"/> -->
                                                 <div class="cropArea">
-                                                    <img-crop image="myImage" result-image="myCroppedImage"></img-crop>
+                                                    <img-crop image="myImage" result-image="myCroppedImage" file-model="myCroppedImage.upload"></img-crop>
                                                 </div>
                                                 <div>Cropped Image:</div>
                                                 <div>

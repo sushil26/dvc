@@ -76,7 +76,19 @@
                                                     accept="image/jpeg,image/png">
                                                 <!-- <input type="file" id="fileInput" onchange="angular.element(this).scope().uploadFile(this.files[0])"/> -->
                                                 <div class="cropArea">
-                                                    <img-crop image="myImage" result-image="myCroppedImage" result-blob="resBlob"></img-crop>
+                                                        <image-crop			 
+                                                        data-height="200"
+                                                        data-width="150"
+                                                        data-shape="square"
+                                                        data-step="imageCropStep"
+                                                        src="myImage"
+                                                        data-result="myCroppedImage"
+                                                        data-result-blob="resultBlob"
+                                                        crop="initCrop"
+                                                        padding="250"
+                                                        max-size="1024"
+                                                       ></image-crop>	
+                                                    <!-- <img-crop image="myImage" result-image="myCroppedImage" result-blob="resBlob"></img-crop> -->
                                                 </div>
                                                 <div>Cropped Image:</div>
                                                 <div>

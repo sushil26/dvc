@@ -153,6 +153,7 @@ app.controller('dashboardEditController', function ($scope, $rootScope, $window,
     $scope.myCroppedImage = '';
 
    var handleFileSelect = function (evt) {
+       console.log("handleFileSelect-->");
         var file = evt.currentTarget.files[0];
         var reader = new FileReader();
         reader.onload = function (evt) {

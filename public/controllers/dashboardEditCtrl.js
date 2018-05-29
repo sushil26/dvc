@@ -164,7 +164,7 @@ app.controller('dashboardEditController', function ($scope, $rootScope, $window,
     }
 
     // $scope.myImage = '';
-    $scope.myCroppedImage = '';
+    //$scope.myCroppedImage = '';
 
     $scope.uploadFile = function (file) {
         if (file) {

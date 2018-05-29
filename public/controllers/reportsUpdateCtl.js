@@ -120,44 +120,102 @@ app.controller('reportsUpdateCtl', function ($scope, $rootScope, $window, $filte
       })
     }
     console.log("api: " + api);
-    if(api){
-    httpFactory.csvUpload(obj, api).then(function (data) {
-      var checkStatus = httpFactory.dataValidation(data);
-      console.log("data--" + JSON.stringify(data.data));
-      if (checkStatus) {
-        $uibModal.open({
-          scope: $scope,
-          templateUrl: '/html/templates/dashboardsuccess.html',
-          windowClass: 'show',
-          backdropClass: 'static',
-          keyboard: false,
-          controller: function ($scope, $uibModalInstance) {
-            $scope.message = data.data.message
-          }
-        })
-       // alert(data.data.message);
-        //$scope.getAllTeacherList();
-        // $scope.up.uploadType= '';
-      }
-      else {
-        $uibModal.open({
-          scope: $scope,
-          templateUrl: '/html/templates/dashboardsuccess.html',
-          windowClass: 'show',
-          backdropClass: 'static',
-          keyboard: false,
-          controller: function ($scope, $uibModalInstance) {
-            $scope.message = data.data.message
-          }
-        })
-        //alert(data.data.message);
-      }
-    })
-    $scope.reset();
-  }
+    if (api) {
+      httpFactory.csvUpload(obj, api).then(function (data) {
+        var checkStatus = httpFactory.dataValidation(data);
+        console.log("data--" + JSON.stringify(data.data));
+        if (checkStatus) {
+          $uibModal.open({
+            scope: $scope,
+            templateUrl: '/html/templates/dashboardsuccess.html',
+            windowClass: 'show',
+            backdropClass: 'static',
+            keyboard: false,
+            controller: function ($scope, $uibModalInstance) {
+              $scope.message = data.data.message
+            }
+          })
+          // alert(data.data.message);
+          //$scope.getAllTeacherList();
+          // $scope.up.uploadType= '';
+        }
+        else {
+          $uibModal.open({
+            scope: $scope,
+            templateUrl: '/html/templates/dashboardsuccess.html',
+            windowClass: 'show',
+            backdropClass: 'static',
+            keyboard: false,
+            controller: function ($scope, $uibModalInstance) {
+              $scope.message = data.data.message
+            }
+          })
+          //alert(data.data.message);
+        }
+      })
+      $scope.reset();
+    }
     console.log("<--markFileUpdate");
   }
-
+  $scope.updateFeeFile = function (file, feeType, clas, section) {
+    console.log("updateFeeFile-->");
+    console.log( " feeType: " + feeType + " clas" + clas + " section: " + section);
+    var obj = {
+      "file": file,
+    }
+    if (clas && section && feeType) {
+      var api = $scope.propertyJson.VC_feeUpdate + "/" + schoolName + "/" + clas + "/" + section + "/" + feeType;
+    }
+    else {
+      $uibModal.open({
+        scope: $scope,
+        templateUrl: '/html/templates/dashboardwarning.html',
+        windowClass: 'show',
+        backdropClass: 'static',
+        keyboard: false,
+        controller: function ($scope, $uibModalInstance) {
+          $scope.message = "Class, Section, Test Type and Date are required"
+        }
+      })
+    }
+    console.log("api: " + api);
+    if (api) {
+      httpFactory.csvUpload(obj, api).then(function (data) {
+        var checkStatus = httpFactory.dataValidation(data);
+        console.log("data--" + JSON.stringify(data.data));
+        if (checkStatus) {
+          $uibModal.open({
+            scope: $scope,
+            templateUrl: '/html/templates/dashboardsuccess.html',
+            windowClass: 'show',
+            backdropClass: 'static',
+            keyboard: false,
+            controller: function ($scope, $uibModalInstance) {
+              $scope.message = data.data.message
+            }
+          })
+          // alert(data.data.message);
+          //$scope.getAllTeacherList();
+          // $scope.up.uploadType= '';
+        }
+        else {
+          $uibModal.open({
+            scope: $scope,
+            templateUrl: '/html/templates/dashboardsuccess.html',
+            windowClass: 'show',
+            backdropClass: 'static',
+            keyboard: false,
+            controller: function ($scope, $uibModalInstance) {
+              $scope.message = data.data.message
+            }
+          })
+          //alert(data.data.message);
+        }
+      })
+      $scope.reset();
+    }
+    console.log("<--updateFeeFile");
+  }
   /* ### Note: Teacher and student both are uploading through teacherUpdate ###*/
   $scope.teacherUpdate = function (file, uploadType, id) {
     console.log("updateTeacher to Master-->");
@@ -231,7 +289,7 @@ app.controller('reportsUpdateCtl', function ($scope, $rootScope, $window, $filte
               $scope.message = data.data.message
             }
           })
-         // alert(data.data.message);
+          // alert(data.data.message);
         }
         $scope.reset();
       })

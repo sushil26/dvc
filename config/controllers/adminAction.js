@@ -1092,12 +1092,9 @@ module.exports.feeUpdate = function (req, res) {
 
     console.log("<--feeUpdate");
 }
-module.exports.updateFileSheet = function (data, callback) {
+module.exports.updateFeeSheet = function (data, callback) {
 
     console.log('inside saving -->updateFileSheet')
-    // Simulate an asynchronous operation:
-   
-    // var fee = {};
     counter = counter + 1;
     var fee = [{
         "paymentOption": data.PaymentOption,
@@ -1108,10 +1105,6 @@ module.exports.updateFileSheet = function (data, callback) {
         "lastDateToPaid": data.LastDateToPaid
     }];
     console.log("fee: " + JSON.stringify(fee));
-    // var consolidateMS = [{
-    //     "date": date,
-    //     "mark": mark
-    // }]
     var studIdForFindQry = {
         "schoolId": data.StudentID,
         "schoolName": schoolName
@@ -1136,8 +1129,6 @@ module.exports.updateFileSheet = function (data, callback) {
             if (findData.length > 0) {
                 console.log("consolidateMS: " + JSON.stringify(consolidateMS));
                 stud.update(studIdForUpdateQry, { $set: { "fee.$.details": [] } }, function (err, pulledData) {
-                    //stud.findOneAndUpdate(studIdForUpdateQry, { $push: { "mark.$.subjectWithMark": { $each: consolidateMS } } }, function (err, data) {
-
                     console.log("2nd query data.length: " + JSON.stringify(pulledData));
                     if (err) {
                         marker = false;

@@ -110,57 +110,26 @@
                                             <tbody>
                                                 <tr class="active">
                                                     <td>Monday</td>
-
-                                                    <!-- <td ng-if="selectedDateForEvent=='Mon'" style="background-color:#ccc!important;cursor: pointer;" ng-repeat="mtt in teacherPersonalData[0].timeTable[0].css.Mon"
-                                                                    ng-click="timeTableForEventBook('mon',$index)">
-                                                                    <button class="btn" ng-if="mtt.class=='Free'">Schedule</button>
-                                                                    <span ng-if="mtt.class!='Free'">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</span>
-                                                                </td> -->
                                                     <td style="background-color:#f5f5f5!important" ng-repeat="mtt in up.teacherSelect.timeTable[0].css.Mon">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
                                                 </tr>
                                                 <tr class="warning">
                                                     <td>Tuesday</td>
-                                                    <!-- <td ng-if="selectedDateForEvent=='Tue'" style="background-color:#ccc!important;cursor: pointer;" ng-repeat="mtt in teacherPersonalData[0].timeTable[0].css.Tue"
-                                                                    ng-click="timeTableForEventBook('tue',$index)">
-                                                                    <button class="btn" ng-if="mtt.class=='Free'">Schedule</button>
-                                                                    <span ng-if="mtt.class!='Free'">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</span>
-                                                                </td> -->
                                                     <td style="background-color:#f5f5f5!important" ng-repeat="mtt in up.teacherSelect.timeTable[0].css.Tue">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
                                                 </tr>
                                                 <tr class="danger">
                                                     <td>Wednesday</td>
-                                                    <!-- <td ng-if="selectedDateForEvent=='Wed'" style="background-color:#ccc!important;cursor: pointer;" ng-repeat="mtt in teacherPersonalData[0].timeTable[0].css.Wed"
-                                                                    ng-click="timeTableForEventBook('wed',$index)">
-                                                                    <button class="btn" ng-if="mtt.class=='Free'">Schedule</button>
-                                                                    <span ng-if="mtt.class!='Free'">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</span>
-                                                                </td> -->
                                                     <td style="background-color:#f5f5f5!important" ng-repeat="mtt in up.teacherSelect.timeTable[0].css.Wed">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
                                                 </tr>
                                                 <tr class="success">
                                                     <td>Thursday</td>
-                                                    <!-- <td ng-if="selectedDateForEvent=='Thu'" style="background-color:#ccc!important;cursor: pointer;" ng-repeat="mtt in teacherPersonalData[0].timeTable[0].css.Thu"
-                                                                    ng-click="timeTableForEventBook('thu',$index)">
-                                                                    <button class="btn" ng-if="mtt.class=='Free'">Schedule</button>
-                                                                    <span ng-if="mtt.class!='Free'">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</span>
-                                                                </td> -->
                                                     <td style="background-color:#f5f5f5!important" ng-repeat="mtt in up.teacherSelect.timeTable[0].css.Thu">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
                                                 </tr>
                                                 <tr class="active">
                                                     <td>Friday</td>
-                                                    <!-- <td ng-if="selectedDateForEvent=='Fri'" style="background-color:#ccc!important;cursor: pointer;" ng-repeat="mtt in teacherPersonalData[0].timeTable[0].css.Fri"
-                                                                    ng-click="timeTableForEventBook('fri',$index)">
-                                                                    <button class="btn" ng-if="mtt.class=='Free'">Schedule</button>
-                                                                    <span ng-if="mtt.class!='Free'">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</span>
-                                                                </td> -->
                                                     <td style="background-color:#f5f5f5!important" ng-repeat="mtt in up.teacherSelect.timeTable[0].css.Fri">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
                                                 </tr>
                                                 <tr class="warning">
                                                     <td>Saturday</td>
-                                                    <!-- <td ng-if="selectedDateForEvent=='Sat'" style="background-color:#ccc!important;cursor: pointer;" ng-repeat="mtt in teacherPersonalData[0].timeTable[0].css.Sat"
-                                                                    ng-click="timeTableForEventBook('sat',$index)">
-                                                                    <button class="btn" ng-if="mtt.class=='Free'">Schedule</button>
-                                                                    <span ng-if="mtt.class!='Free'">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</span>
-                                                                </td> -->
                                                     <td style="background-color:#f5f5f5!important" ng-repeat="mtt in up.teacherSelect.timeTable[0].css.Sat">{{mtt.class}}&nbsp{{mtt.section}}&nbsp{{mtt.subject}}</td>
                                                 </tr>
                                             </tbody>
@@ -190,7 +159,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="form-group" ng-if="up.subSelect && up.uploadType!='Teacher Details' && up.uploadType!='Attendance' && up.uploadType!='Time Table' && up.uploadType!='Mark Report' && up.uploadType!=''">
+                                    <div class="form-group" ng-if="up.subSelect && up.uploadType!='Teacher Details' && up.uploadType!='Attendance' && up.uploadType!='Time Table' && up.uploadType!='Mark Report' &&up.uploadType!='Fee Report' && up.uploadType!=''">
                                         <label class="control-label col-lg-3">Select Student
                                             <span class="required">*</span>
                                         </label>
@@ -240,10 +209,6 @@
                                         </div>
                                     </section>
                                     <!--##### End Student data #####-->
-
-                                    <!-- <select class="btn col-lg-3" placeholder="select" ng-model="up.studSelect" ng-options="cs as cs.name + '-' + cs.studId for cs in studList">
-                                                    <option value="" disabled selected>Student</option>
-                                                </select> -->
                                     <div class="form-group " ng-if="up.uploadType=='Mark Report'">
                                         <label class="control-label col-lg-3">Type of Test
                                             <span class="required">*</span>
@@ -252,6 +217,17 @@
                                             <select class="form-control m-bot15" placeholder="select" ng-model="up.ttSelect" ng-options="tt as tt for tt in testTypes"
                                                 ng-change="testDateFetch(up.ttSelect)">
                                                 <option value="" disabled selected>Type of Test</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group " ng-if="up.uploadType=='Fee Report'">
+                                        <label class="control-label col-lg-3">Fee Type
+                                            <span class="required">*</span>
+                                        </label>
+                                        <div class="col-lg-3">
+                                            <select class="form-control m-bot15" placeholder="select" ng-model="up.ftSelect" ng-options="ft as tt for ft in feeTypes"
+                                                ng-change="testDateFetch(up.ttSelect)">
+                                                <option value="" disabled selected>Fee Type</option>
                                             </select>
                                         </div>
                                     </div>
@@ -401,18 +377,6 @@
                                         </div>
                                     </section>
                                     <!--##### End Monthly Attendance data #####-->
-                                    <!-- <div class="form-group" ng-if="up.uploadType=='Attendance' && openCalendarTemplate==true">
-                                        <mwl-calendar events="events" view-title="calendarTitle" view="calendarView" view-date="viewDate">
-                                        </mwl-calendar>
-                                    </div> -->
-                                    <!-- <div class="form-group ">
-                                        <label class="control-label col-lg-3" ng-if="up.uploadType=='Payment'">Payment report</label>
-                                        <div class="col-lg-3">
-                                            <select class="form-control m-bot15" ng-if="up.uploadType=='Payment'" placeholder="select" ng-model="up.ttSelect" ng-options="tt as tt for tt in testTypes">
-                                                <option value="" disabled selected>Payment report</option>
-                                            </select>
-                                        </div>
-                                    </div> -->
                                     <div class="form-group">
                                         <p class="col-lg-offset-2 col-lg-10">
                                             <span>
@@ -436,6 +400,7 @@
                                             <button ng-if="up.uploadType=='Teacher Details'" type="reset" class="  bcontrol-label btn btn-success" ng-click="teacherUpdate(up.uploadDoc,up.uploadType, up.teacherSelect._id)">Save</button>
                                             <button ng-if="up.uploadType=='Time Table'" type="reset" class=" bcontrol-label  btn btn-success" ng-click="timeTableFileupdate(up.uploadDoc,up.teacherSelect._id)">Save</button>
                                             <button ng-if="up.uploadType=='Mark Report'" type="reset" class="bcontrol-label btn btn-success" ng-click="markFileUpdate(up.uploadDoc, up.testDate.date, up.ttSelect, up.cSelect.class,up.subSelect)">Save</button>
+                                            <button ng-if="up.uploadType=='Fee Report'" type="reset" class=" bcontrol-label  btn btn-success" ng-click="updateFeeFile(up.uploadDoc, up.ftSelect, up.cSelect.class,up.subSelect)">Save</button>
                                             <button type="reset" class="bcontrol-label btn btn-danger">Cancel</button>
                                         </div>
                                     </div>

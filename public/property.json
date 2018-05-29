@@ -30,6 +30,7 @@
 "VC_getAllTeacherList": "vc/getAllTeacherList",
 "VC_getSchoolData": "vc/getSchoolData",
 "VC_markUpdate": "vc/markUpdate",
+"VC_feeUpdate": "vc/feeUpdate",
 "VC_updateTeacherMaster": "vc/updateTeacherMaster",
 "VC_updateStudentMaster": "vc/updateStudentMaster",
 "VC_updateTeacher_timeTable": "vc/updateTeacher_timeTable",

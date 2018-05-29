@@ -854,14 +854,14 @@ module.exports.uploadFeeSheet = function (data, callback) {
   
     counter = counter + 1;
 
-    var fee = {
+    var fee = [{
         "paymentOption":data.PaymentOption,
         "totalAmount": data.TotalAmount,
         "amountPaid": data.AmountPaid,
         "PaidDate": data.PaidDate,
         "dueAmout": data.DueAmount,
         "lastDateToPaid": data.LastDateToPaid
-    }
+    }];
    
     var studIdForFindQry = {
         "schoolId": data.StudentID,

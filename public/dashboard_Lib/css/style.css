@@ -4201,8 +4201,8 @@ ul.amounts li {
 
 .panel-heading,
 .modal-header {
-  background: #2dc997;
-  color: black;
+ background: hsl(207, 55%, 18%);
+  color: white;
 }
 
 .panel-heading h3 {

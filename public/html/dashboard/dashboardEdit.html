@@ -72,16 +72,19 @@
                                         <tr>
                                             <td>
                                                 <input type="file" id="fileInput" class="btnCont btnCont-uploadColor post_uploadFile" name="logo" value="Upload" file-model="file.upload"
-                                                onchange="angular.element(this).scope().uploadFile(this.files[0])"  ng-click="fileUploadClick('profile_picPath')" accept="image/jpeg,image/png">
+                                                    onchange="angular.element(this).scope().uploadFile(this.files[0])" ng-click="fileUploadClick('profile_picPath')"
+                                                    accept="image/jpeg,image/png">
                                                 <!-- <input type="file" id="fileInput" onchange="angular.element(this).scope().uploadFile(this.files[0])"/> -->
                                                 <div class="cropArea">
-                                                    <img-crop image="myImage" result-image="myCroppedImage"></img-crop>
+                                                        <!-- <image-crop			 
+                                                        image="myImage" result-image="myCroppedImage"
+                                                       ></image-crop>	 -->
+                                                    <img-crop image="myImage.originalImage" result-image="myImage.croppedImage" result-blob="resBlob" change-on-fly="true"></img-crop>
                                                 </div>
                                                 <div>Cropped Image:</div>
                                                 <div>
-                                                    <img ng-src="{{myCroppedImage}}" />
+                                                    <img ng-src="{{myImage.croppedImage}}" />
                                                 </div>
-                                                <!-- <img-crop image="myImage" result-image="myCroppedImage"></img-crop> -->
                                             </td>
                                         </tr>
                                     </tbody>
@@ -89,7 +92,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-lg-offset-2 col-lg-10">
-                                    <button type="submit" class="btn btn-primary" ng-click="schoolLogoStorage()">Save</button>
+                                    <button type="submit" class="btn btn-primary" ng-click="schoolLogoStorage(myImage.croppedImage,result)">Save</button>
                                     <button type="reset" class="btn btn-danger">Cancel</button>
                                 </div>
                             </div>

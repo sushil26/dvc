@@ -46,6 +46,7 @@ app.controller('dashboardEditController', function ($scope, $rootScope, $window,
         // $scope.file.upload = $scope.myCroppedImage;
         // Assuming we have the crop result in myCroppedImage
         // Get the mime part of it
+        console.log("$scope.myCroppedImage: "+$scope.myCroppedImage);
         var mimeString = $scope.myCroppedImage.split(',')[0].split(':')[1].split(';')[0];
         // Get the data part and decode it
         var dataString = window.atob($scope.myCroppedImage.split(',')[1]);

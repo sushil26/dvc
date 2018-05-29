@@ -43,12 +43,12 @@ app.controller('dashboardEditController', function ($scope, $rootScope, $window,
         /* #####  Start Upload File ###### */
         console.log("$scope.file: " + $scope.file);
         console.log("$scope.file: " + $scope.file.upload);
-        $scope.file.upload = $scope.myCroppedImage;
+        $scope.file.upload =  $scope.myImage;
         //    if ($scope.file.upload) {
         var uploadURL = $scope.propertyJson.VC_profilePicupload;
         console.log("uploadURL: " + uploadURL);
         console.log("$scope.file.upload from : alumRegCtr.js: " + $scope.file.upload);
-        httpFactory.imageUpload(uploadURL, $scope.myImage).then(function (data) {
+        httpFactory.imageUpload(uploadURL, $scope.file).then(function (data) {
             console.log("hello " + JSON.stringify(data));
             var checkStatus = httpFactory.dataValidation(data);
             console.log("checkStatus: " + checkStatus);

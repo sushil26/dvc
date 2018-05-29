@@ -56,7 +56,7 @@ module.exports = function (app) {
     app.post('/vc/updateTeacher_timeTable/:id', adminAction.updateTeacher_timeTable);
     app.post('/vc/attendanceUpdate/:schoolName/:clas/:section/:reportType/:month', adminAction.attendanceUpdate);
     app.post('/vc/markUpdate/:schoolName/:clas/:section/:testType/:date', adminAction.markUpdate);
-    app.post('/vc/uploadFeeFile/:id', adminAction.uploadFeeFile);
+    app.post('/vc/uploadFeeFile/:schoolName/:clas/:section/:reportType', adminAction.uploadFeeFile);
     app.post('/vc/quickMsgSend', quickMsg.quickMsgSend);
     app.get('/vc/quickMsgGet/:id', quickMsg.quickMsgGet);
     app.get('/vc/quickMsgGetForStud/:id/:clas/:section', quickMsg.quickMsgGetForStud);

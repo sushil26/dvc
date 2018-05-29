@@ -489,7 +489,7 @@ app.controller('reportsUploadCtl', function ($scope, $rootScope, $window, httpFa
     }
     if (reportType && clas && section) {
       console.log("api creating");
-      var api = $scope.propertyJson.VC_uploadFeeFile + "/" + schoolName + "/" + reportType + "/" + clas + "/" + section;
+      var api = $scope.propertyJson.VC_uploadFeeFile + "/" + schoolName + "/"+ clas + "/" + section + "/" + reportType ;
       // $scope.reset("api: "+api);
       console.log("api: " + api);
     }

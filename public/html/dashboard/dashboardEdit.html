@@ -72,7 +72,8 @@
                                         <tr>
                                             <td>
                                                 <input type="file" id="fileInput" class="btnCont btnCont-uploadColor post_uploadFile" name="logo" value="Upload" file-model="file.upload"
-                                                onchange="angular.element(this).scope().uploadFile(this.files[0])"  ng-click="fileUploadClick('profile_picPath')" accept="image/jpeg,image/png">
+                                                    onchange="angular.element(this).scope().uploadFile(this.files[0])" ng-click="fileUploadClick('profile_picPath')"
+                                                    accept="image/jpeg,image/png">
                                                 <!-- <input type="file" id="fileInput" onchange="angular.element(this).scope().uploadFile(this.files[0])"/> -->
                                                 <div class="cropArea">
                                                     <img-crop image="myImage" result-image="myCroppedImage"></img-crop>
@@ -81,7 +82,6 @@
                                                 <div>
                                                     <img ng-src="{{myCroppedImage}}" />
                                                 </div>
-                                                <!-- <img-crop image="myImage" result-image="myCroppedImage"></img-crop> -->
                                             </td>
                                         </tr>
                                     </tbody>

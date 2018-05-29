@@ -22,7 +22,7 @@ app.controller('adminCreateCtl', function ($scope, $rootScope, $filter, $window,
                 $scope.getUpdateofImage = data;
                 console.log("$scope.getUpdateofImage" + JSON.stringify($scope.getUpdateofImage));
                 $scope.message = data.data.message;
-                $scope.filePath = data.data.filePath;
+                $scope.filePath = data.data.data.filePath;
                 console.log("$scope.filePath: " + $scope.filePath);
                 // // console.log("JSON.stringify($scope.postJson): " + JSON.stringify(postJson));
                 // $scope.adminCreate();

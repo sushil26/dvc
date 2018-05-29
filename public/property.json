@@ -43,6 +43,7 @@
 "VC_uploadPeriodsFile": "vc/uploadPeriodsFile",
 "VC_uploadTeacher_timeTable": "vc/uploadTeacher_timeTable",
 "VC_uploadTeacherMaster": "vc/uploadTeacherMaster",
+"VC_uploadFeeFile": "vc/uploadFeeFile",
 "VC_studentInsert": "vc/studentInsert",
 "VC_teacherInsert": "vc/teacherInsert",
 "VC_getUserData": "vc/getUserData",

@@ -886,9 +886,9 @@ module.exports.uploadFeeSheet = function (data, callback) {
         else {
             if (findData.length > 0) {
                 console.log("fee: " + JSON.stringify(fee));
-                stud.update(studIdForUpdateQry, { $push: { "fee.$.details": { $each: fee } } }).toArray(function (err, updatedQryData) {
-                    // console.log("2nd query started: " + JSON.stringify(data));
-                    console.log("2nd query data.length: " + updatedQryData.length);
+                stud.update(studIdForUpdateQry, { $push: { "fee.$.details": { $each: fee } } },function (err, updatedQryData) {
+                     console.log("2nd query started: " + JSON.stringify(updatedQryData));
+                    //console.log("2nd query data.length: " + updatedQryData.length);
                     if (err) {
                         marker = true;
                         if (callback) callback();

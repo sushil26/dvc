@@ -1016,7 +1016,7 @@ module.exports.feeUpdate = function (req, res) {
     var fileName = req.files.img.name;
     var fileNameSeparate = fileName.split('_');
     console.log("fileNameSeparate[0]: "+fileNameSeparate[0]);
-    if (fileNameSeparate[0] == 'FeeUpdate_') {
+    if (fileNameSeparate[0] == 'FeeUpdate') {
         if (!req.files)
             return res.status(400).send('No files were uploaded.');
         var studentDataFile = req.files.img;
@@ -1128,7 +1128,7 @@ module.exports.updateFeeSheet = function (data, callback) {
         }
         else {
             if (findData.length > 0) {
-                console.log("consolidateMS: " + JSON.stringify(consolidateMS));
+                //console.log("consolidateMS: " + JSON.stringify(consolidateMS));
                 stud.update(studIdForUpdateQry, { $set: { "fee.$.details": [] } }, function (err, pulledData) {
                     console.log("2nd query data.length: " + JSON.stringify(pulledData));
                     if (err) {

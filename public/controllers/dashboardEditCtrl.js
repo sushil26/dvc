@@ -47,8 +47,8 @@ app.controller('dashboardEditController', function ($scope, $rootScope, $window,
         //    if ($scope.file.upload) {
         var uploadURL = $scope.propertyJson.VC_profilePicupload;
         console.log("uploadURL: " + uploadURL);
-        //console.log("$scope.file.upload from : alumRegCtr.js: " + $scope.file.upload);
-        httpFactory.imageUpload(uploadURL, $scope.myCroppedImage).then(function (data) {
+        console.log("$scope.file.upload from : alumRegCtr.js: " + $scope.file.upload);
+        httpFactory.imageUpload(uploadURL, $scope.file).then(function (data) {
             console.log("hello " + JSON.stringify(data));
             var checkStatus = httpFactory.dataValidation(data);
             console.log("checkStatus: " + checkStatus);
@@ -150,7 +150,7 @@ app.controller('dashboardEditController', function ($scope, $rootScope, $window,
     }
 
     // $scope.myImage = '';
-    // $scope.myCroppedImage = '';
+     $scope.myCroppedImage = '';
 
     $scope.uploadFile = function (file) {
         if (file) {

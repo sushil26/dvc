@@ -143,11 +143,17 @@ app.controller('dashboardEditController', function ($scope, $rootScope, $window,
         console.log("<--profilePicUpdated");
     }
 
+    $scope.fileUploadClick = function (type) {
+        console.log("fileUploadClick-->");
+        $scope.picType = type;
+        console.log("<--fileUploadClick");
+    }
+
     $scope.myImage = '';
     $scope.myCroppedImage = '';
-    $scope.handleFileSelect = function (evt) {
-        var file = $scope.file.upload;
-        console.log("file: "+JSON.stringify(file));
+
+   var handleFileSelect = function (evt) {
+        var file = evt.currentTarget.files[0];
         var reader = new FileReader();
         reader.onload = function (evt) {
             $scope.$apply(function ($scope) {
@@ -156,11 +162,5 @@ app.controller('dashboardEditController', function ($scope, $rootScope, $window,
         };
         reader.readAsDataURL(file);
     };
-    $scope.fileUploadClick = function (type) {
-        console.log("fileUploadClick-->");
-        $scope.picType = type;
-        $scope.handleFileSelect();
-        console.log("<--fileUploadClick");
-    }
-    // angular.element(document.querySelector('#fileInput')).on('change',handleFileSelect);
+    angular.element(document.querySelector('#fileInput')).on('change',handleFileSelect);
 })

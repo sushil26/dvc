@@ -127,6 +127,8 @@ app.controller('dashboardController', function ($scope, $rootScope, $window, htt
         window.location.href = "https://norecruits.com";
         console.log("<--homeClick");
     }
+   
+
 
 
 

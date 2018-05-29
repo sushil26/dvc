@@ -367,6 +367,12 @@ app.config(function ($stateProvider, $urlRouterProvider) {
       controller: 'logoutCtl'
 
     })
+    .state('dashboard.analytics', {
+      url: analytics(),
+      templateUrl: '/html/dashboard/analytics.html',
+      controller: 'analyticsCtl'
+
+    })
     .state('dashboard.contact', {
       url: contact(),
       templateUrl: '/html/dashboard/contact.html',
@@ -377,7 +383,9 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 });
 
 
-
+function analytics(){
+  return '/analytics';
+}
 function quickMsg() {
   return '/quickMsg';
 }

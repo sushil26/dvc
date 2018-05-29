@@ -366,7 +366,7 @@
                                                         <!-- <th style="background-color:white;" ng-repeat=" (key, value) in up.testDate.mark">{{value}}</th> -->
                                                         <td style="background-color:white;">
                                                             <div  ng-repeat="mark in sd.mark"> 
-                                                                <div ng-if="mark.testType==up.ttSelect" ng-repeat="swm in mark.subjectWithMark">
+                                                                <div ng-if="mark.testType==up.ttSelect" ng-repeat="swm in mark.subjectWithMark" style="background: lightgray;"> 
                                                                     <div ng-if="swm.date==up.testDate.date" ng-repeat="(key, value) in swm.mark">{{key}}:{{value}}
                                                                         <br>
                                                                     </div>

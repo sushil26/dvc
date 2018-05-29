@@ -2099,7 +2099,8 @@ module.exports.studentMasterValidation = function (data, callback) {
                                 { "feeType": "AF", "details": [] },
                                 { "feeType": "BF", "details": [] },
                                 { "feeType": "MF", "details": [] },
-                                { "feeType": "OF", "details": [] }
+                                { "feeType": "OF", "details": [] },
+                                { "feeType": "Other", "details": [] }
                             ],
                             created_at: createdDate
                         };

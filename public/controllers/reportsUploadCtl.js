@@ -7,7 +7,7 @@ app.controller('reportsUploadCtl', function ($scope, $rootScope, $window, httpFa
   $scope.file = {}; /* ### Note: Upload file declaration ### */
   $scope.uploadTypes = ["Teacher Details", "Student Details", "Time Table", "Attendance", "Mark Report", "Fee"];
   $scope.testTypes = ["AT", "UT", "MT", "TT", "AT"];
-  $scope.feeTypes = ["Academic Fee", "Bus Fee", "Mess Fee", "Other Fee"];
+  $scope.feeTypes = ["AF", "BF", "MF", "Other"];
   $scope.attendanceTypes = ["Monthly", "Daily"];
   $scope.monthList = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 

@@ -53,6 +53,7 @@ fee: [
   { "_id":false, "feeType": {type: String, required: true}, "details": [] },
   { "_id":false, "feeType": {type: String, required: true}, "details": [] },
   { "_id":false, "feeType": {type: String, required: true}, "details": [] },
+  { "_id":false, "feeType": {type: String, required: true}, "details": [] }
 ], 
   created_at: Date,
  

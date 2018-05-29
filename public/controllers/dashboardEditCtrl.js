@@ -44,13 +44,13 @@ app.controller('dashboardEditController', function ($scope, $rootScope, $window,
         // console.log("$scope.file: " + $scope.file);
         // console.log("$scope.file: " + $scope.file.upload);
         // $scope.file.upload = $scope.myCroppedImage;
-        console.log( "resBlob: " + $scope.resBlob);
+        console.log( "$scope.myImage.resBlob: " + $scope.myImage.resBlob);
         console.log( "r: " + r);
         //    if ($scope.file.upload) {
         var uploadURL = $scope.propertyJson.VC_profilePicupload;
         console.log("uploadURL: " + uploadURL);
         console.log("$scope.file.upload from : alumRegCtr.js: " + $scope.file.upload);
-        httpFactory.imageUpload(uploadURL, f).then(function (data) {
+        httpFactory.imageUpload(uploadURL, $scope.myImage.resBlob).then(function (data) {
             console.log("hello " + JSON.stringify(data));
             var checkStatus = httpFactory.dataValidation(data);
             console.log("checkStatus: " + checkStatus);

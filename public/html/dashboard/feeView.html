@@ -5,7 +5,7 @@
                 <section class="panel">
                     <div class="panel-heading" style="background: #3a4a58">
                         <i class="fa fa-clipboard fa-2x"></i>
-                        <span style="color:white;">&nbspSEE RESULT</span>
+                        <span style="color:white;">&nbspFee Details</span>
                     </div>
                     <div class="panel-body bio-graph-info" style="padding: 1px;">
                         <div ng-option="userData.loginType=='teacher'" style="margin:20px !important;">
@@ -30,17 +30,17 @@
                                 <table class="table table-bordered table-sm" ng-if="allfee.details.length>0" ng-repeat="al in allfee.details">
                                     <thead>
                                         <tr>
-                                            <th style="color: black">Test Type: {{allfee.feeType}}</th>
+                                            <th style="color: black">Fee Type: {{allfee.feeType}}</th>
                                         </tr>
                                     </thead>
-                                    <tbody style="background-color: #ccc;">
+                                    <tbody style="background:lightgray">
                                         <tr>
-                                            <th>paymentOption</th>
-                                            <th>totalAmount</th>
-                                            <th>amountPaid</th>
-                                            <th>PaidDate</th>
-                                            <th>dueAmout</th>
-                                            <th>lastDateToPaid</th>
+                                            <th>PAY TYPE</th>
+                                            <th>TOTAL FEE</th>
+                                            <th>FEE PAID</th>
+                                            <th>PAID ON</th>
+                                            <th>DUE AMOUNT</th>
+                                            <th>DUE DATE</th>
                                         </tr>
                                         <tr>
                                             <td>{{al.paymentOption}}</td>

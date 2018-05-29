@@ -32,10 +32,10 @@
                                                 <img id="blah" src="#" style="max-width:100px;" src="{{userData[0].profilePic_path}}">
                                             </td>
                                             <td>
-                                                <img id="blah" src="#" style="max-width:100px;"  src="{{userData[0].father_profilePic_path}}">
+                                                <img id="blah" src="#" style="max-width:100px;" src="{{userData[0].father_profilePic_path}}">
                                             </td>
                                             <td>
-                                                <img id="blah" src="#" style="max-width:100px;"  src="{{userData[0].mother_profilePic_path}}">
+                                                <img id="blah" src="#" style="max-width:100px;" src="{{userData[0].mother_profilePic_path}}">
                                             </td>
                                         </tr>
                                         <tr>
@@ -70,14 +70,16 @@
                                     <tbody>
                                         <tr>
                                             <td>
-                                                <img id="blah" style="max-width:100px;"  src="{{userData[0].profilePic_path}}">
+                                                <img style="max-width:100px;" src="{{userData[0].profilePic_path}}">
                                             </td>
-
+                                            
                                         </tr>
+
+
                                         <tr>
                                             <td>
-                                                <input type="file" id="imgInp" class="" name="myImage" value="Upload" file-model="file.upload" ng-model="image" accept="image/jpeg,image/png"
-                                                    ng-change="fileUploadClick('profile_picPath')">
+                                                <input type="file" id="imgInp" class="btnCont btnCont-uploadColor post_uploadFile" name="logo" value="Upload" file-model="file.upload"
+                                                ng-change="fileUploadClick('profile_picPath')" ng-model="image" accept="image/jpeg,image/png">
                                             </td>
                                         </tr>
 

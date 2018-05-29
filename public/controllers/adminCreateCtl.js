@@ -1,7 +1,7 @@
 app.controller('adminCreateCtl', function ($scope, $rootScope, $filter, $window, httpFactory, sessionAuthFactory, $uibModal) {
     console.log("adminCreateCtl==>");
     $scope.propertyJson = $rootScope.propertyJson;
-    $scope.file = {};/* ### Note Upload file declaration ### */
+    $scope.file = {}; /* ### Note Upload file declaration ### */
 
     $scope.schoolLogoStorage = function () {
         console.log("schoolLogoStorage-->");
@@ -23,7 +23,7 @@ app.controller('adminCreateCtl', function ($scope, $rootScope, $filter, $window,
                 console.log("$scope.getUpdateofImage" + JSON.stringify($scope.getUpdateofImage));
                 $scope.message = data.data.message;
                 $scope.filePath = data.data.filePath;
-                console.log("$scope.filePath: "+$scope.filePath);
+                console.log("$scope.filePath: " + $scope.filePath);
                 // // console.log("JSON.stringify($scope.postJson): " + JSON.stringify(postJson));
                 // $scope.adminCreate();
             } else {
@@ -114,7 +114,6 @@ app.controller('adminCreateCtl', function ($scope, $rootScope, $filter, $window,
         console.log("<--adminCreate");
     }
 
-
     function readURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
@@ -124,14 +123,7 @@ app.controller('adminCreateCtl', function ($scope, $rootScope, $filter, $window,
             reader.readAsDataURL(input.files[0]);
         }
     }
-
     $("#imgInp").change(function () {
         readURL(this);
     });
-
-
-
-    // $scope.userData = sessionAuthFactory.getAccess("userData");
-    // $scope.loginType = $scope.userData.loginType;
-    // $scope.userName = $scope.userData.userName;
 })

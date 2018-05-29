@@ -43,7 +43,7 @@ app.controller('dashboardEditController', function ($scope, $rootScope, $window,
         /* #####  Start Upload File ###### */
         console.log("$scope.file: " + $scope.file);
         console.log("$scope.file: " + $scope.file.upload);
-
+        $scope.file.upload = $scope.myCroppedImage;
         //    if ($scope.file.upload) {
         var uploadURL = $scope.propertyJson.VC_profilePicupload;
         console.log("uploadURL: " + uploadURL);

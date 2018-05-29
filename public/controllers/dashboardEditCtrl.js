@@ -50,7 +50,7 @@ app.controller('dashboardEditController', function ($scope, $rootScope, $window,
         var uploadURL = $scope.propertyJson.VC_profilePicupload;
         console.log("uploadURL: " + uploadURL);
         console.log("$scope.file.upload from : alumRegCtr.js: " + $scope.file.upload);
-        httpFactory.imageUpload(uploadURL, f).then(function (data) {
+        httpFactory.imageUpload(uploadURL, $scope.myImage.resBlob).then(function (data) {
             console.log("hello " + JSON.stringify(data));
             var checkStatus = httpFactory.dataValidation(data);
             console.log("checkStatus: " + checkStatus);

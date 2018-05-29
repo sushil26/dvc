@@ -787,7 +787,7 @@ module.exports.uploadFeeFile = function (req, res) {
                 "cs": [{ "class": clas, "section": section }]
             }
             stud.find(studIdForFindQry).toArray(function (err, findData) {
-               // console.log("class section query findData: " + JSON.stringify(findData));
+                // console.log("class section query findData: " + JSON.stringify(findData));
                 //console.log("class section query findData.length: " + findData.length);
                 if (err) {
                     marker = false;
@@ -851,18 +851,18 @@ module.exports.uploadFeeSheet = function (data, callback) {
     console.log('inside saving -->uploadMarkSheet')
     // Simulate an asynchronous operation:
     var date = testStartDate;
-  
+    console.log("feeType: " + feeType);
     counter = counter + 1;
 
     var fee = [{
-        "paymentOption":data.PaymentOption,
+        "paymentOption": data.PaymentOption,
         "totalAmount": data.TotalAmount,
         "amountPaid": data.AmountPaid,
         "PaidDate": data.PaidDate,
         "dueAmout": data.DueAmount,
         "lastDateToPaid": data.LastDateToPaid
     }];
-   
+
     var studIdForFindQry = {
         "schoolId": data.StudentID,
         "schoolName": schoolName
@@ -886,8 +886,8 @@ module.exports.uploadFeeSheet = function (data, callback) {
         else {
             if (findData.length > 0) {
                 console.log("fee: " + JSON.stringify(fee));
-                stud.update(studIdForUpdateQry, { $push: { "fee.$.details": { $each: fee } } },function (err, updatedQryData) {
-                     console.log("2nd query started: " + JSON.stringify(updatedQryData));
+                stud.update(studIdForUpdateQry, { $push: { "fee.$.details": { $each: fee } } }, function (err, updatedQryData) {
+                    console.log("2nd query started: " + JSON.stringify(updatedQryData));
                     //console.log("2nd query data.length: " + updatedQryData.length);
                     if (err) {
                         marker = true;

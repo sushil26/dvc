@@ -43,10 +43,10 @@ table td {
 
 @-webkit-keyframes example {
   from {
-    color: red !important;
+    border: 2px solid red !important;
   }
   to {
-   color: yellow !important;
+    border: 2px solid green !important;
   }
 }
 

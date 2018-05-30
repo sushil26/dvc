@@ -31,7 +31,7 @@ table td {
   word-break: break-all;
 } */
 
-.newevt {
+#newevt {
   -webkit-animation-name: example;
   /* Safari 4.0 - 8.0 */
   -webkit-animation-duration: 4s;

@@ -81,7 +81,7 @@
                             <i style="font-size:15px;" class="fa fa-calendar">
                                 <span>&nbspEVENTS</span>
                             </i>
-                            <i class="fa fa-spinner fa-spin" style="font-size:24px"></i>
+                            <i class="fa fa-spinner fa-spin" style="font-size:15px"></i>
                             <span ng-if="events_subMenu==true" class="menu-arrow arrow_carrot-right"></span>
                             <span ng-if="events_subMenu==false" class="menu-arrow arrow_carrot-down"></span>
                         </a>
@@ -104,14 +104,14 @@
                             <i style="font-size:15px;" class="fa fa-envelope">
                                 <span>&nbspMESSAGE</span>
                             </i>
-                            <i class="fa fa-spinner fa-spin" style="font-size:24px"></i>
+                            <i class="fa fa-spinner fa-spin" style="font-size:15px"></i>
                             <span ng-if="quickMsg_subMenu==true" class="menu-arrow arrow_carrot-right"></span>
                             <span ng-if="quickMsg_subMenu==false" class="menu-arrow arrow_carrot-down"></span>
                         </a>
                         <ul ng-hide="quickMsg_subMenu">
                             <li>
                                 <a class="" href="#!/dashboard/incomingMsg">INBOX &nbsp
-                                    <i  style="color:red" class="fa fa-bolt ">(2)</i>
+                                    <i style="color:red" class="fa fa-bolt ">(2)</i>
                                 </a>
                             </li>
                             <li>
@@ -145,10 +145,11 @@
                     <!-- ##### Start teacher/student  Setting  ##### -->
                     <li class="sub-menu" ng-if="loginType=='teacher' || loginType=='studParent'">
                         <a ng-click="eventClick('setting_subMenu')">
-                            <i style="font-size:15px;" class="fa fa-cog fa-spin">
-                                
+                            <i style="font-size:15px;" class="fa fa-cog">
+                                <span>&nbspSETTINGS</span>
+
                             </i>
-                            <span>&nbspSETTINGS</span>
+
                             <span ng-if="setting_subMenu==true" class="menu-arrow arrow_carrot-right"></span>
                             <span ng-if="setting_subMenu==false" class="menu-arrow arrow_carrot-down"></span>
                         </a>

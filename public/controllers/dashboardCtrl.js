@@ -27,6 +27,64 @@ app.controller('dashboardController', function ($scope, $rootScope, $window, htt
     $scope.setting_subMenu = true;
     $scope.comm_subMenu = true;
     $scope.quickMsg_subMenu = true;
+    $scope.numberOfNotif = 0;
+
+    $scope.eventGet = function () {
+        console.log("eventGet-->");
+        var id = $scope.userData.id;
+        var api = $scope.propertyJson.VC_eventGet + "/" + id;
+        //var api = "http://localhost:5000/vc/eventGet"+ "/" + id;;
+        $scope.calendarOwner = "Your";
+        httpFactory.get(api).then(function (data) {
+            var checkStatus = httpFactory.dataValidation(data);
+            console.log("data--" + JSON.stringify(data.data));
+            if (checkStatus) {
+                $scope.eventData = data.data.data;
+                // ownerEvents = [];
+                for (var x = 0; x < $scope.eventData.length; x++) {
+                    console.log("$scope.eventData[" + x + "]: " + JSON.stringify($scope.eventData[x]));
+                    var obj = {
+                        'id': $scope.eventData[x]._id,
+                        'userId': $scope.eventData[x]._userId,
+                        'studUserId': $scope.eventData[x].studUserId,
+                        "student_cs": $scope.eventData[x].student_cs,
+                        "student_id": $scope.eventData[x].student_id,
+                        "student_Name": $scope.eventData[x].student_Name,
+                        'title': $scope.eventData[x].title,
+                        'color': $scope.eventData[x].primColor,
+                        'startsAt': new Date($scope.eventData[x].start),
+                        'endsAt': new Date($scope.eventData[x].end),
+                        'draggable': true,
+                        'resizable': true,
+                        'url': $scope.eventData[x].url,
+                        "senderName": $scope.eventData[x].senderName,
+                        "senderId": $scope.eventData[x].senderId,
+                        "senderMN": $scope.eventData[x].senderMN,
+                        "senderLoginType": $scope.eventData[x].senderLoginType,
+                        "title": $scope.eventData[x].title,
+                        "reason": $scope.eventData[x].reason,
+                        "receiverEmail": $scope.eventData[x].receiverEmail,
+                        "receiverName": $scope.eventData[x].receiverName,
+                        "receiverId": $scope.eventData[x].receiverId,
+                        "receiverMN": $scope.eventData[x].receiverMN,
+                        "remoteCalendarId": $scope.eventData[x].remoteCalendarId,
+                        "notificationNeed": $scope.eventData[x].notificationNeed
+                    }
+                    if ($scope.eventData[x].notificationNeed == 'yes') {
+                        numberOfNotif = $scope.numberOfNotif + 1;
+                    }
+                    console.log(" obj" + JSON.stringify(obj))
+                    // ownerEvents.push(obj);
+                    $scope.events.push(obj);
+                }
+            }
+            else {
+                //alert("Event get Failed");
+            }
+        })
+    }
+
+    $scope.eventGet();
 
     $scope.iconMenuClick = function () {
         console.log("iconMenuClick--> ");

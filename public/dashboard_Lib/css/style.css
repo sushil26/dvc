@@ -38,14 +38,15 @@ table td {
   /* Safari 4.0 - 8.0 */
   animation-name: example;
   animation-duration: 4s;
+  animation-iteration-count: infinite;
 }
 
 @-webkit-keyframes example {
   from {
-    background-color: red;
+    color: red;
   }
   to {
-    background-color: yellow;
+   color: yellow;
   }
 }
 

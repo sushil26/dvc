@@ -48,17 +48,16 @@ table td {
   to {
     display: none;
   }
-  
 }
 
 /* Standard syntax */
 
 @keyframes example {
   from {
-    color:  red !important;
+    display: inline;
   }
   to {
-    color:  green !important;
+    display: none;
   }
 }
 

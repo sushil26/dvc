@@ -43,22 +43,22 @@ table td {
 
 @-webkit-keyframes mymove {
   from {
-    font-size: 15px;
+    font-size: 10px;
     color: indianred;
   }
   to {
-    font-size: 17px;
+    font-size: 15px;
     color: red;
   }
 }
 
 @keyframes mymove {
   from {
-  font-size: 15px;
+  font-size: 10px;
     color: indianred;
   }
   to {
-    font-size: 17px;
+    font-size: 15px;
     color: red;
   }
 }

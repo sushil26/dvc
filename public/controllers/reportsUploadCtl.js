@@ -481,8 +481,9 @@ app.controller('reportsUploadCtl', function ($scope, $rootScope, $window, httpFa
     console.log("<--uploadFile");
   }
 
-  $scope.uploadFeeFile = function (file, clas, section, reportType) {
+  $scope.uploadFeeFile = function (file, clas, section, reportType, fee_otherName) {
     console.log("uploadFeeFile-->");
+    console.log("fee_otherName: "+fee_otherName +"$scope.fee_otherName: "+$scope.fee_otherName);
     console.log("testTYpe: " + reportType +" fee_otherName: "+$scope.fee_otherName+ "clas: " + clas + "section: " + section);
     var obj = {
       "file": file

@@ -32,8 +32,6 @@ table td {
 } */
 
 .llkk {
-
-  background: red;
   position: relative;
   -webkit-animation: mymove 5s infinite; /* Safari 4.0 - 8.0 */
   animation: mymove 5s infinite;

@@ -51,6 +51,7 @@ var teacherFileValidationMessage = null; /* ### Notification for student master 
 var allStudentEmailIds = [];  /* ### storage for all parents email ids ### */
 var allTeacherEmailIds = [];  /* ### storage for all teacher email ids ### */
 var feeType;/* ### Note: Get reportType while uploading fee  ### */
+var fee_otherName; /* ### Note: Get fee_otherName while uploading fee  ### */
 
 module.exports.updateSchoolStatus = function (req, res) {
     console.log("updateSchoolStatus-->");
@@ -768,6 +769,13 @@ module.exports.uploadFeeFile = function (req, res) {
     feeType = req.params.reportType;
     clas = req.params.clas;
     section = req.params.section;
+  
+    if(feeType=='Other'){
+        fee_otherName = req.params.fee_otherName;
+    }
+    else{
+
+    }
     console.log("req.body.files: " + req.files.img);
     var fileName = req.files.img.name;
     var fileNameSeparate = fileName.split('_');
@@ -862,6 +870,10 @@ module.exports.uploadFeeSheet = function (data, callback) {
         "dueAmout": data.DueAmount,
         "lastDateToPaid": data.LastDateToPaid
     }];
+    if(feeType=='Other')
+    {
+        fee[0].fee_otherName = fee_otherName; 
+    }
 
     var studIdForFindQry = {
         "schoolId": data.StudentID,

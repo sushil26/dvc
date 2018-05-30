@@ -62,6 +62,9 @@
                                             <td>
                                                 Profile Image
                                             </td>
+                                            <td>
+                                                Cropped Image
+                                            </td>
                                         </tr>
 
                                         <tr>
@@ -69,10 +72,7 @@
                                                 <img style="max-width:100px;" src="{{userData[0].profilePic_path}}">
                                             </td>
                                             <td>
-                                                <div>Cropped Image:</div>
-                                                <div>
-                                                    <img style="max-width:100px;" ng-src="{{myImage.croppedImage}}" />
-                                                </div>
+                                                <img style="max-width:100px;" ng-src="{{myImage.croppedImage}}" />
                                             </td>
                                         </tr>
                                         <tr>
@@ -83,7 +83,6 @@
                                                         aspect-ratio="0.75" init-max-area="false" allow-crop-resize-on-corners="false">
                                                     </img-crop>
                                                 </div>
-
                                             </td>
                                         </tr>
                                         <tr>

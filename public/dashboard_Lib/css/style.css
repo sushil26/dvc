@@ -34,22 +34,34 @@ table td {
 .llkk {
   color: #00a8b3;
   position: relative;
-  -webkit-animation: mymove 5s infinite; /* Safari 4.0 - 8.0 */
+  -webkit-animation: mymove 5s infinite;
+  /* Safari 4.0 - 8.0 */
   animation: mymove 5s infinite;
 }
 
 /* Safari 4.0 - 8.0 */
+
 @-webkit-keyframes mymove {
-  from {left: 0px;}
-  to {left: 20px;}
+  from {
+    left: 0px;
+    color: #00a8b3;
+  }
+  to {
+    left: 20px;
+    color: red;
+  }
 }
 
 @keyframes mymove {
-  from {left: 0px;}
-  to {left: 20px;}
+  from {
+    left: 0px;
+    color: #00a8b3;
+  }
+  to {
+    left: 20px;
+    color: red;
+  }
 }
-
-
 
 table td {
   word-wrap: break-word;

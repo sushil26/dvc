@@ -481,15 +481,22 @@ app.controller('reportsUploadCtl', function ($scope, $rootScope, $window, httpFa
     console.log("<--uploadFile");
   }
 
-  $scope.uploadFeeFile = function (file, clas, section, reportType) {
+  $scope.uploadFeeFile = function (file, clas, section, reportType, fee_otherName) {
     console.log("uploadFeeFile-->");
-    console.log("testTYpe: " + reportType + "clas: " + clas + "section: " + section);
+    console.log("testTYpe: " + reportType +" fee_otherName: "+fee_otherName+ "clas: " + clas + "section: " + section);
     var obj = {
       "file": file
     }
+    
     if (reportType && clas && section) {
       console.log("api creating");
-      var api = $scope.propertyJson.VC_uploadFeeFile + "/" + schoolName + "/"+ clas + "/" + section + "/" + reportType ;
+      if(fee_otherName){
+
+      }
+      else{
+        fee_otherName = null;
+      }
+      var api = $scope.propertyJson.VC_uploadFeeFile + "/" + schoolName + "/"+ clas + "/" + section + "/" + reportType +"/"+ fee_otherName ;
       // $scope.reset("api: "+api);
       console.log("api: " + api);
     }

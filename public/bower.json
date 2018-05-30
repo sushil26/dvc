@@ -21,7 +21,6 @@
     "angular-bootstrap": "^2.5.0",
     "angular-cookies": "^1.6.9",
     "angular-spinners": "^5.1.2",
-    "ng-img-crop-full-extended": "ngImgCropFullExtended#^0.6.2",
-    "font-awesome-animation": "^0.2.1"
+    "ng-img-crop-full-extended": "ngImgCropFullExtended#^0.6.2"
   }
 }

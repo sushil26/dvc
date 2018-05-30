@@ -129,8 +129,8 @@ module.exports.eventSend = function (req, res) {
     }
 }
 
-module.exports.eventSend = function (req, res) {
-    console.log("eventSend-->");
+module.exports.eventNotificationOff = function (req, res) {
+    console.log("eventNotificationOff-->");
     var responseData;
     console.log("req.params.eventId: " + req.params.eventId);
     if (general.emptyCheck(req.params.eventId)) {

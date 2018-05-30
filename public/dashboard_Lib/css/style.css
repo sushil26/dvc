@@ -36,7 +36,7 @@ table td {
   position: relative;
   -webkit-animation: mymove 5s infinite;
   /* Safari 4.0 - 8.0 */
-  animation: mymove 5s infinite;
+  animation: mymove 6s infinite;
 }
 
 /* Safari 4.0 - 8.0 */
@@ -44,7 +44,7 @@ table td {
 @-webkit-keyframes mymove {
   from {
     font-size: 15px;
-    color: yellow;
+    color: indianred;
   }
   to {
     font-size: 17px;
@@ -55,7 +55,7 @@ table td {
 @keyframes mymove {
   from {
   font-size: 15px;
-    color: yellow;
+    color: indianred;
   }
   to {
     font-size: 17px;

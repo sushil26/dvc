@@ -159,7 +159,7 @@ app.controller('reportsUpdateCtl', function ($scope, $rootScope, $window, $filte
   }
   $scope.updateFeeFile = function (file, feeType, clas, section) {
     console.log("updateFeeFile-->");
-    console.log( " feeType: " + feeType + " clas" + clas + " section: " + section);
+    console.log(" feeType: " + feeType + " clas" + clas + " section: " + section);
     var obj = {
       "file": file,
     }
@@ -374,10 +374,14 @@ app.controller('reportsUpdateCtl', function ($scope, $rootScope, $window, $filte
       if (checkStatus) {
         $scope.studentList = data.data.data;
         console.log("studentList: " + JSON.stringify($scope.studentList));
-
+        var otherName = [];
         for (var x = 0; x < $scope.studentList.length; x++) {
           $scope.studList.push({ "id": $scope.studentList[x]._id, "name": $scope.studentList[x].firstName, "studId": $scope.studentList[x].schoolId });
         }
+        // var feeOtherTypeLen = $scope.studentList[0].fee[5].length;
+        //   for (var y = 0; y < feeOtherTypeLen; y++) {
+        //     otherName.push($scope.studentList[x].fee.other[y].fee_otherName);
+        //   }
         console.log(" $scope.studList.length: " + $scope.studList.length);
       }
       else {

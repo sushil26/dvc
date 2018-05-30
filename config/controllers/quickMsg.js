@@ -49,6 +49,7 @@ module.exports.quickMsgSend = function (req, res) {
             "student_id": req.body.student_id,
             "student_Name": req.body.student_Name,
             "messageType": "single",
+            "notificationNeed": yes,
             "password": password
         }
         console.log("userData: " + JSON.stringify(userData));

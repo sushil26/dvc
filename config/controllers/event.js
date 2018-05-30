@@ -137,7 +137,7 @@ module.exports.eventNotificationOff = function (req, res) {
         var obj = {
             "notificationNeed": "no"
         }
-        event.update({ "_id": ObjectId(req.params.eventId) }, { $set: obj }), function (err, data) {
+        event.update({ "_id": ObjectId(req.body.eventId) }, { $set: obj }), function (err, data) {
             console.log("data: "+JSON.stringify(data));
             if (err) {
                 responseData = {

@@ -29,11 +29,16 @@
                             <div class="form-group" ng-repeat="allfee in fee">
                                 <table class="table table-bordered table-sm" ng-if="allfee.details.length>0" ng-repeat="al in allfee.details">
                                     <thead>
-                                        <tr>  <th ng-if="allfee.feeType=='BF'"  style="color: black">Bus Fee</th>
-                                            <th ng-if="allfee.feeType=='MF'"  style="color: black">Mess Fee</th>
-                                            <th ng-if="allfee.feeType=='AF'"  style="color: black">Aducation Fee</th>
-                                            <th ng-if="allfee.feeType=='Other'"  style="color: black">Other Fee</th>
-                                          
+                                        <tr>
+                                            <th ng-if="allfee.feeType=='BF'" style="color: black">
+                                                <i class="fa fa-cab"></i>&nbsp;Bus Fee</th>
+                                            <th ng-if="allfee.feeType=='MF'" style="color: black">
+                                                <i class="fa fa-cutlery"></i>&nbsp;Mess Fee</th>
+                                            <th ng-if="allfee.feeType=='AF'" style="color: black">
+                                                <i class="fa fa-graduation-cap"></i>&nbsp; Aducation Fee</th>
+                                            <th ng-if="allfee.feeType=='Other'" style="color: black">
+                                                <i class="fa fa-archive"></i>&nbsp;Other Fee</th>
+
                                         </tr>
                                     </thead>
                                     <tbody style="background:lightgray">

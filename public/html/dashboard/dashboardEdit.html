@@ -68,41 +68,30 @@
                                             <td>
                                                 <img style="max-width:100px;" src="{{userData[0].profilePic_path}}">
                                             </td>
-                                        </tr>
-                                        <tr>
                                             <td>
-                                                <input type="file" id="fileInput" class="btnCont btnCont-uploadColor post_uploadFile" name="logo" value="Upload" file-model="file.upload"
-                                                    onchange="angular.element(this).scope().uploadFile(this.files[0])" ng-click="fileUploadClick('profile_picPath')"
-                                                    accept="image/jpeg,image/png">
-                                                <!-- <input type="file" id="fileInput" onchange="angular.element(this).scope().uploadFile(this.files[0])"/> -->
-                                                <div class="cropArea">
-                                                        <!-- <image-crop			 
-                                                        image="myImage" result-image="myCroppedImage"
-                                                       ></image-crop>	 -->
-                                                    <img-crop 
-                                                    image="myImage.originalImage" 
-                                                    result-image="myImage.croppedImage"
-                                                    result-blob="myImage.resBlob"   
-                                                    area-type="rectangle"
-                                                    area-min-size="50"
-                                                    area-init-size="100"
-                                                    result-image-format="png"
-                                                    
-                                                    result-image-size="100"
-                                                    aspect-ratio="5"  
-                                                    init-max-area="false" 
-                                                   
-                                                    allow-crop-resize-on-corners="false" >
+
+                                                <img-crop image="myImage.originalImage" result-image="myImage.croppedImage" result-blob="myImage.resBlob" area-type="rectangle"
+                                                    area-min-size="50" area-init-size="100" result-image-format="png" result-image-size="100"
+                                                    aspect-ratio="5" init-max-area="false" allow-crop-resize-on-corners="false">
                                                 </img-crop>
-                                                </div>
-                                                <div>Cropped Image:</div>
-                                                <div>
-                                                    <img ng-src="{{myImage.croppedImage}}" />
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                            </div>
+                            <div>Cropped Image:</div>
+                            <div>
+                                <img ng-src="{{myImage.croppedImage}}" />
+                            </div>
+                            </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="file" id="fileInput" class="btnCont btnCont-uploadColor post_uploadFile" name="logo" value="Upload" file-model="file.upload"
+                                        onchange="angular.element(this).scope().uploadFile(this.files[0])" ng-click="fileUploadClick('profile_picPath')"
+                                        accept="image/jpeg,image/png">
+                                    <div class="cropArea">
+                                </td>
+                            </tr>
+
+                            </tbody>
+                            </table>
                             </div>
                             <div class="form-group">
                                 <div class="col-lg-offset-2 col-lg-10">

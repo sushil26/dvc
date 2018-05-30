@@ -31,6 +31,27 @@ table td {
   word-break: break-all;
 } */
 
+.llkk {
+
+  background: red;
+  position: relative;
+  -webkit-animation: mymove 5s infinite; /* Safari 4.0 - 8.0 */
+  animation: mymove 5s infinite;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes mymove {
+  from {left: 0px;}
+  to {left: 20px;}
+}
+
+@keyframes mymove {
+  from {left: 0px;}
+  to {left: 20px;}
+}
+
+
+
 table td {
   word-wrap: break-word;
 }

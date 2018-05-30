@@ -26,6 +26,7 @@
 "VC_getToDate": "vc/getToDate",
 "VC_eventReSchedule": "vc/eventReSchedule",
 "VC_getEventById": "vc/getEventById",
+"VC_eventNotificationOff": "vc/eventNotificationOff",
 "VC_getAllTeacherList": "vc/getAllTeacherList",
 "VC_getSchoolData": "vc/getSchoolData",
 "VC_markUpdate": "vc/markUpdate",

@@ -67,6 +67,7 @@ module.exports.eventSend = function (req, res) {
             "student_cs": req.body.student_cs,
             "student_id": req.body.student_id,
             "student_Name": req.body.student_Name,
+            "notificationNeed": 'yes',
             "password": password
         }
         console.log("userData: " + JSON.stringify(userData));
@@ -128,6 +129,43 @@ module.exports.eventSend = function (req, res) {
     }
 }
 
+module.exports.eventSend = function (req, res) {
+    console.log("eventSend-->");
+    var responseData;
+    console.log("req.params.eventId: " + req.params.eventId);
+    if (general.emptyCheck(req.params.eventId)) {
+        var obj = {
+            "notificationNeed": "no"
+        }
+        event.update({ "_id": req.params.eventId }, { $set: obj }), function (err, data) {
+            if (err) {
+                responseData = {
+                    status: false,
+                    message: "Failed to get Data",
+                    data: data
+                };
+                res.status(400).send(responseData);
+            } else {
+                responseData = {
+                    status: true,
+                    message: "Successfully Updated",
+                    data: data
+                };
+                res.status(200).send(responseData);
+            }
+        }
+    }
+    else {
+        console.log("Epty value found");
+        responseData = {
+            "status": false,
+            "message": "empty value found",
+            "data": userData
+        }
+        res.status(400).send(responseData);
+    }
+}
+
 module.exports.eventGet = function (req, res) {
     console.log("getEvent-->");
     var responseData;
@@ -137,7 +175,6 @@ module.exports.eventGet = function (req, res) {
         event.find({ $or: [{ "userId": req.params.id }, { "remoteCalendarId": req.params.id }] }).sort({ "startAt": 1 }).toArray(function (err, listOfevents) {
             console.log("listOfevents: " + JSON.stringify(listOfevents))
             if (err) {
-
                 responseData = {
                     "status": false,
                     "message": "Failed to get Data",

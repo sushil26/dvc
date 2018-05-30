@@ -92,7 +92,7 @@ app.controller('upcomingEventController', function ($scope, $rootScope, $state, 
     $scope.viewDetail = function (id, eventId) {
         console.log("viewDetail-->");
         console.log("id: " + id);
-        var api = "https://norecruits.com/vc/VC_eventNotificationOff/:eventId";
+        var api = $scope.propertyJson.VC_eventNotificationOff+"/"+eventId;
         console.log("api: " + api);
         httpFactory.post(api).then(function (data) {
             var checkStatus = httpFactory.dataValidation(data);

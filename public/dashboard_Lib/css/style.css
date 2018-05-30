@@ -30,13 +30,42 @@
 table td {
   word-break: break-all;
 } */
-table td {
 
-  word-wrap:break-word;
+.newevt {
+  -webkit-animation-name: example;
+  /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration: 4s;
+  /* Safari 4.0 - 8.0 */
+  animation-name: example;
+  animation-duration: 4s;
 }
-table th {
 
-  word-wrap:break-word;
+@-webkit-keyframes example {
+  from {
+    background-color: red;
+  }
+  to {
+    background-color: yellow;
+  }
+}
+
+/* Standard syntax */
+
+@keyframes example {
+  from {
+    background-color: red;
+  }
+  to {
+    background-color: yellow;
+  }
+}
+
+table td {
+  word-wrap: break-word;
+}
+
+table th {
+  word-wrap: break-word;
 }
 
 .prv {
@@ -1914,7 +1943,7 @@ div[data-role="editor-toolbar"] {
 
 .widget .widget-foot,
 .modal-footer {
-  background-color:#1a3b56;
+  background-color: #1a3b56;
   /* background: -webkit-gradient( linear, left top, left bottom, from(#f8f8f8), to(#f2f2f2));
   background: -webkit-linear-gradient(top, #00a0df8f, #072748);
   background: -moz-linear-gradient(top, #00a0df8f, #072748);
@@ -4206,7 +4235,7 @@ ul.amounts li {
 
 .panel-heading,
 .modal-header {
- background: #1a3b56;
+  background: #1a3b56;
   color: white;
 }
 

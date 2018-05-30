@@ -137,8 +137,13 @@ module.exports.eventNotificationOff = function (req, res) {
         var obj = {
             "notificationNeed": "no"
         }
-        event.update({ "_id": ObjectId(req.body.eventId) }, { $set: obj }), function (err, data) {
-            console.log("data: "+JSON.stringify(data));
+        var queryId = {
+            "_id": ObjectId(req.body.id)
+        }
+        console.log("queryId: " + JSON.stringify(queryId));
+        console.log("obj: " + JSON.stringify(obj));
+        event.update(queryId, { $set: obj },function (err, data) {
+            console.log("data: " + JSON.stringify(data));
             if (err) {
                 responseData = {
                     status: false,
@@ -154,7 +159,7 @@ module.exports.eventNotificationOff = function (req, res) {
                 };
                 res.status(200).send(responseData);
             }
-        }
+        })
     }
     else {
         console.log("Epty value found");

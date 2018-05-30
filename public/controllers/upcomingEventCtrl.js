@@ -76,7 +76,7 @@ app.controller('upcomingEventController', function ($scope, $rootScope, $state, 
                         "notificationNeed": $scope.eventData[x].notificationNeed
                     }
                     if ($scope.eventData[x].notificationNeed == 'yes') {
-                        numberOfNotif = $scope.numberOfNotif + 1;
+                        $scope.numberOfNotif = $scope.numberOfNotif + 1;
                     }
                     console.log(" obj" + JSON.stringify(obj))
                     // ownerEvents.push(obj);

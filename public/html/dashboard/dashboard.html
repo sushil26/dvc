@@ -90,7 +90,7 @@
                         <ul ng-hide="events_subMenu">
                             <li>
                                 <a class="" href="#!/dashboard/upcomingEvent">UPCOMING &nbsp
-                                    <i style="color:red" ng-if="numberOfNotif>0">({{numberOfNotif}})</i>
+                                    <span style="color:red" ng-if="numberOfNotif>0">({{numberOfNotif}})</span>
                                 </a>
                             </li>
                             <li>
@@ -112,7 +112,7 @@
                         <ul ng-hide="quickMsg_subMenu">
                             <li>
                                 <a class="" href="#!/dashboard/incomingMsg">INBOX &nbsp
-                                    <i style="color:red">(2)</i>
+                                    <span style="color:red">(2)</span>
                                 </a>
                             </li>
                             <li>

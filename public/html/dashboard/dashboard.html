@@ -82,7 +82,7 @@
                                 <span>&nbspEVENTS</span>
                             </i>
 
-                            <i id="newevt"  ng-hide="numberOfNotif==0" class="fa fa-circle" style="font-size:15px"></i>
+                            <i id="newevt" ng-if="numberOfNotif>0" class="fa fa-circle" style="font-size:15px"></i>
 
                             <span ng-if="events_subMenu==true" class="menu-arrow arrow_carrot-right"></span>
                             <span ng-if="events_subMenu==false" class="menu-arrow arrow_carrot-down"></span>
@@ -91,7 +91,6 @@
                             <li>
                                 <a class="" href="#!/dashboard/upcomingEvent">UPCOMING &nbsp
                                     <i style="color:red" class="fa fa-bolt" ng-if="numberOfNotif>0">({{numberOfNotif}})</i>
-                                    <i style="color:red" class="fa fa-bolt" ng-if="numberOfNotif==0">({{numberOfNotif}})</i>
                                 </a>
                             </li>
                             <li>

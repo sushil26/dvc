@@ -92,9 +92,12 @@ app.controller('upcomingEventController', function ($scope, $rootScope, $state, 
     $scope.viewDetail = function (id, eventId) {
         console.log("viewDetail-->");
         console.log("id: " + id);
-        var api = $scope.propertyJson.VC_eventNotificationOff+"/"+eventId;
+        var obj = {
+            "id":eventId
+        }
+        var api = $scope.propertyJson.VC_eventNotificationOff;
         console.log("api: " + api);
-        httpFactory.post(api).then(function (data) {
+        httpFactory.post(api, obj).then(function (data) {
             var checkStatus = httpFactory.dataValidation(data);
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {

@@ -132,8 +132,8 @@ module.exports.eventSend = function (req, res) {
 module.exports.eventNotificationOff = function (req, res) {
     console.log("eventNotificationOff-->");
     var responseData;
-    console.log("req.params.eventId: " + req.params.eventId);
-    if (general.emptyCheck(req.params.eventId)) {
+    console.log("req.body.id: " + req.body.id);
+    if (general.emptyCheck(req.body.id)) {
         var obj = {
             "notificationNeed": "no"
         }

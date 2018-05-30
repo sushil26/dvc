@@ -15,7 +15,8 @@
             <span>
                 <img ng-click="homeClick()" style="float:left;width: 63px;margin-top: 5px" src="././home/img/fav.png" />
                 <a ng-click="homeClick()" class="logo" style="text-shadow: 2px 2px 4px #000000;font-weight: 500; 
-            font-family: 'Allerta Stencil';">VC<span style="color: #2577be;font-family: 'Allerta Stencil';">4ALL</span>
+            font-family: 'Allerta Stencil';">VC
+                    <span style="color: #2577be;font-family: 'Allerta Stencil';">4ALL</span>
                 </a>
             </span>
 
@@ -80,12 +81,16 @@
                             <i style="font-size:15px;" class="fa fa-calendar">
                                 <span>&nbspEVENTS</span>
                             </i>
+                            <i style="color:red" class="fa fa-circle"></i>
                             <span ng-if="events_subMenu==true" class="menu-arrow arrow_carrot-right"></span>
                             <span ng-if="events_subMenu==false" class="menu-arrow arrow_carrot-down"></span>
                         </a>
                         <ul ng-hide="events_subMenu">
                             <li>
-                                <a class="" href="#!/dashboard/upcomingEvent">UPCOMING</a>
+                                <a class="" href="#!/dashboard/upcomingEvent">UPCOMING &nbsp
+
+                                    <i style="color:red" class="fa fa-bolt">(1)</i>
+                                </a>
                             </li>
                             <li>
                                 <a class="" href="#!/dashboard/history">HISTORY</a>
@@ -99,12 +104,15 @@
                             <i style="font-size:15px;" class="fa fa-envelope">
                                 <span>&nbspMESSAGE</span>
                             </i>
+                            <i style="color:red" class="fa fa-circle"></i>
                             <span ng-if="quickMsg_subMenu==true" class="menu-arrow arrow_carrot-right"></span>
                             <span ng-if="quickMsg_subMenu==false" class="menu-arrow arrow_carrot-down"></span>
                         </a>
                         <ul ng-hide="quickMsg_subMenu">
                             <li>
-                                <a class="" href="#!/dashboard/incomingMsg">INBOX</a>
+                                <a class="" href="#!/dashboard/incomingMsg">INBOX &nbsp
+                                    <i  style="color:red" class="fa fa-bolt">(2)</i>
+                                </a>
                             </li>
                             <li>
                                 <a class="" href="#!/dashboard/outgoingMsg">OUTBOX</a>

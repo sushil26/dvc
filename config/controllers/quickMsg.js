@@ -49,7 +49,6 @@ module.exports.quickMsgSend = function (req, res) {
             "student_id": req.body.student_id,
             "student_Name": req.body.student_Name,
             "messageType": "single",
-            "notificationNeed": yes,
             "password": password
         }
         console.log("userData: " + JSON.stringify(userData));
@@ -155,9 +154,9 @@ module.exports.quickMsgGetForStud = function (req, res) {
     console.log("req.params.id: " + req.params.id);
     console.log("req.params.clas: " + req.params.clas);
     console.log("req.params.section: " + req.params.section);
-var cs = [{"class":req.params.clas,"section":req.params.section}];
-    if (general.emptyCheck(req.params.id) && general.emptyCheck(req.params.clas)&&general.emptyCheck(req.params.section)) {
-        quickMessage.find({ $or: [{ "userId": req.params.id }, { "remoteCalendarId": req.params.id }, {"student_cs": cs}] }).sort({ "$natural": -1 }).toArray(function (err, listOfevents) {
+    var cs = [{ "class": req.params.clas, "section": req.params.section }];
+    if (general.emptyCheck(req.params.id) && general.emptyCheck(req.params.clas) && general.emptyCheck(req.params.section)) {
+        quickMessage.find({ $or: [{ "userId": req.params.id }, { "remoteCalendarId": req.params.id }, { "student_cs": cs }] }).sort({ "$natural": -1 }).toArray(function (err, listOfevents) {
             console.log("listOfevents: " + JSON.stringify(listOfevents))
             if (err) {
 

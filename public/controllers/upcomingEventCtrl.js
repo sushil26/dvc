@@ -4,6 +4,7 @@ app.controller('upcomingEventController', function ($scope, $rootScope, $state, 
     $scope.loginType = $scope.userData.loginType;
     $scope.events = [];
     $scope.propertyJson = $rootScope.propertyJson;
+    $scope.numberOfNotif = 0;
 
     $scope.getToDate = function () {
         console.log("Get To Date-->");
@@ -39,13 +40,11 @@ app.controller('upcomingEventController', function ($scope, $rootScope, $state, 
         var api = $scope.propertyJson.VC_eventGet + "/" + id;
         //var api = "http://localhost:5000/vc/eventGet"+ "/" + id;;
         $scope.calendarOwner = "Your";
-
         httpFactory.get(api).then(function (data) {
             var checkStatus = httpFactory.dataValidation(data);
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
                 $scope.eventData = data.data.data;
-
                 // ownerEvents = [];
                 for (var x = 0; x < $scope.eventData.length; x++) {
                     console.log("$scope.eventData[" + x + "]: " + JSON.stringify($scope.eventData[x]));
@@ -53,9 +52,9 @@ app.controller('upcomingEventController', function ($scope, $rootScope, $state, 
                         'id': $scope.eventData[x]._id,
                         'userId': $scope.eventData[x]._userId,
                         'studUserId': $scope.eventData[x].studUserId,
-                        "student_cs": $scope.eventData[x].student_cs, 
-                        "student_id":$scope.eventData[x].student_id, 
-                        "student_Name":$scope.eventData[x].student_Name, 
+                        "student_cs": $scope.eventData[x].student_cs,
+                        "student_id": $scope.eventData[x].student_id,
+                        "student_Name": $scope.eventData[x].student_Name,
                         'title': $scope.eventData[x].title,
                         'color': $scope.eventData[x].primColor,
                         'startsAt': new Date($scope.eventData[x].start),
@@ -73,13 +72,15 @@ app.controller('upcomingEventController', function ($scope, $rootScope, $state, 
                         "receiverName": $scope.eventData[x].receiverName,
                         "receiverId": $scope.eventData[x].receiverId,
                         "receiverMN": $scope.eventData[x].receiverMN,
-                        "remoteCalendarId": $scope.eventData[x].remoteCalendarId
+                        "remoteCalendarId": $scope.eventData[x].remoteCalendarId,
+                        "notificationNeed": $scope.eventData[x].notificationNeed
+                    }
+                    if ($scope.eventData[x].notificationNeed == 'yes') {
+                        numberOfNotif = numberOfNotif + 1;
                     }
                     console.log(" obj" + JSON.stringify(obj))
                     // ownerEvents.push(obj);
                     $scope.events.push(obj);
-
-
                 }
             }
             else {
@@ -88,9 +89,28 @@ app.controller('upcomingEventController', function ($scope, $rootScope, $state, 
         })
     }
 
-    $scope.viewDetail = function (id) {
+    $scope.viewDetail = function (id, eventId) {
         console.log("viewDetail-->");
         console.log("id: " + id);
+        var api = "https://norecruits.com/vc/VC_eventNotificationOff/:eventId";
+        console.log("api: " + api);
+        httpFactory.post(api).then(function (data) {
+            var checkStatus = httpFactory.dataValidation(data);
+            console.log("data--" + JSON.stringify(data.data));
+            if (checkStatus) {
+                console.log("data" + JSON.stringify(data.data));
+                // $window.location.href = $scope.propertyJson.R082;
+                alert("Successfully updated the event");
+                // vm.events.splice(0, 1);
+                var eventPostedData = data.data.data;
+
+                ownerEvents.push(objData);
+                vm.events.push(objData);
+            }
+            else {
+                alert("UnSuccessfully Event Updated");
+            }
+        })
         var eClicked = $uibModal.open({
             scope: $scope,
             templateUrl: '/html/templates/eventDetails.html',
@@ -115,17 +135,17 @@ app.controller('upcomingEventController', function ($scope, $rootScope, $state, 
         var reqSec = date.getSeconds();
         var consolidateDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
         console.log(" $scope.events[id].id: " + $scope.events[id].id);
-        console.log("$scope.events[id]: "+JSON.stringify($scope.events[id]));
+        console.log("$scope.events[id]: " + JSON.stringify($scope.events[id]));
         if (consolidateDate > $scope.todayDate) {
-           // alert("Edit Started-->");
-           var id = $scope.events[id].id;
-        //   var cs= $scope.events[id].student_cs;
-          
-        //   var stud_id = $scope.events[id].student_id; 
-        //   var name = $scope.events[id].student_Name;
-           
-            console.log("id: "+id);
-            $state.go('dashboard.eventReschedule', { 'id': id});
+            // alert("Edit Started-->");
+            var id = $scope.events[id].id;
+            //   var cs= $scope.events[id].student_cs;
+
+            //   var stud_id = $scope.events[id].student_id; 
+            //   var name = $scope.events[id].student_Name;
+
+            console.log("id: " + id);
+            $state.go('dashboard.eventReschedule', { 'id': id });
         }
         else {
             var loginAlert = $uibModal.open({
@@ -135,9 +155,9 @@ app.controller('upcomingEventController', function ($scope, $rootScope, $state, 
                 backdropClass: 'static',
                 keyboard: false,
                 controller: function ($scope, $uibModalInstance) {
-                  $scope.message = "Sorry you not allow to edit";
+                    $scope.message = "Sorry you not allow to edit";
                 }
-              })
+            })
             //alert("Sorry you not allow to edit");
         }
         // var api = "https://norecruits.com/vc/rescheduleEvent/:id";
@@ -162,7 +182,7 @@ app.controller('upcomingEventController', function ($scope, $rootScope, $state, 
         console.log("<--reschedule");
     }
 
-    $scope.waitForTime = function(time){
+    $scope.waitForTime = function (time) {
         console.log("waitForTime-->");
         var loginAlert = $uibModal.open({
             scope: $scope,
@@ -171,25 +191,25 @@ app.controller('upcomingEventController', function ($scope, $rootScope, $state, 
             backdropClass: 'static',
             keyboard: false,
             controller: function ($scope, $uibModalInstance) {
-              $scope.message = "Wait till "+time;
+                $scope.message = "Wait till " + time;
             }
-          })
+        })
         console.log("<--waitForTime");
     }
 
-    $scope.conferenceStart = function(event_id, url, id){
+    $scope.conferenceStart = function (event_id, url, id) {
         console.log("conferenceStart-->");
-        console.log(" event_id: "+event_id+" id: "+id+"url: "+url);
+        console.log(" event_id: " + event_id + " id: " + id + "url: " + url);
 
         localStorage.setItem("id", id);
         localStorage.setItem("schoolName", $scope.userData.schoolName);
         localStorage.setItem("eventId", event_id);
-       if($scope.loginType=='teacher'){
-        localStorage.setItem("teacherLoginId", $scope.userData.id);
-       }
-       else if($scope.loginType=='studParent'){
-        localStorage.setItem("studLoginId", $scope.userData.id);
-       }
+        if ($scope.loginType == 'teacher') {
+            localStorage.setItem("teacherLoginId", $scope.userData.id);
+        }
+        else if ($scope.loginType == 'studParent') {
+            localStorage.setItem("studLoginId", $scope.userData.id);
+        }
         $window.open(url, '_blank');
         console.log("<--conferenceStart");
     }
@@ -197,7 +217,7 @@ app.controller('upcomingEventController', function ($scope, $rootScope, $state, 
     $scope.deleteEvent = function (id) {
         console.log("deleteEvent-->");
         console.log("id: " + id);
-      //  alert("Coming Soon");
+        //  alert("Coming Soon");
         console.log("<--deleteEvent");
     }
 

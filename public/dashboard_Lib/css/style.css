@@ -44,7 +44,7 @@ table td {
 @-webkit-keyframes mymove {
   from {
     left: 0px;
-    color: #00a8b3;
+    color: yellow;
   }
   to {
     left: 20px;
@@ -54,11 +54,11 @@ table td {
 
 @keyframes mymove {
   from {
-    left: 0px;
-    color: #00a8b3;
+  
+    color: yellow;
   }
   to {
-    left: 20px;
+  
     color: red;
   }
 }

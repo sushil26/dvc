@@ -90,8 +90,8 @@
                         <ul ng-hide="events_subMenu">
                             <li>
                                 <a class="" href="#!/dashboard/upcomingEvent">UPCOMING &nbsp
-
-                                    <i style="color:red" class="fa fa-bolt" ng-if="numberOfNotif!=0">({{numberOfNotif}})</i>
+                                    <i style="color:red" class="fa fa-bolt" ng-if="numberOfNotif>0">({{numberOfNotif}})</i>
+                                    <i style="color:red" class="fa fa-bolt" ng-if="numberOfNotif==0">({{numberOfNotif}})</i>
                                 </a>
                             </li>
                             <li>

@@ -70,9 +70,11 @@
                                             </td>
                                             <td>
                                                 <div>Cropped Image:</div>
+                                                <div>
+                                                    <img ng-src="{{myImage.croppedImage}}" />
+                                                </div>
                                             </td>
                                             <td>
-
                                                 <div class="cropArea">
                                                     <img-crop image="myImage.originalImage" result-image="myImage.croppedImage" result-blob="myImage.resBlob" area-type="rectangle"
                                                         area-min-size="100" area-init-size="100" result-image-format="png" result-image-size="100"
@@ -80,14 +82,12 @@
                                                     </img-crop>
                                                 </div>
 
-                                                <div>
-                                                    <img ng-src="{{myImage.croppedImage}}" />
-                                                </div>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <input type="file" id="fileInput" class="btnCont btnCont-uploadColor post_uploadFile" name="logo" value="Upload" onchange="angular.element(this).scope().uploadFile(this.files[0])"
+                                                <input type="file" id="fileInput" class="btnCont btnCont-uploadColor post_uploadFile"
+                                                    name="logo" value="Upload" onchange="angular.element(this).scope().uploadFile(this.files[0])"
                                                     ng-click="fileUploadClick('profile_picPath')" accept="image/jpeg,image/png">
                                             </td>
                                         </tr>

@@ -54,10 +54,10 @@ table td {
 
 @keyframes example {
   from {
-    background-color: red;
+    border: 2px solid red !important;
   }
   to {
-    background-color: yellow;
+    border: 2px solid green !important;
   }
 }
 

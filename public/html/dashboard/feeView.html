@@ -29,8 +29,9 @@
                             <div class="form-group" ng-repeat="allfee in fee">
                                 <table class="table table-bordered table-sm" ng-if="allfee.details.length>0" ng-repeat="al in allfee.details">
                                     <thead>
-                                        <tr>
-                                            <th style="color: black">Fee Type: {{allfee.feeType}}</th>
+                                        <tr>  <th ng-if="allfee.feeType=='BF'"  style="color: black">Bus Fee</th>
+                                            <th ng-if="allfee.feeType=='MF'"  style="color: black">Mess Fee</th>
+                                          
                                         </tr>
                                     </thead>
                                     <tbody style="background:lightgray">

@@ -6,7 +6,7 @@
             <div id="profile">
                 <section class="panel">
                     <div class="panel-heading" style="background: #3a4a58">
-                     <i class="fa fa-upload"></i>
+                        <i class="fa fa-upload"></i>
                         <span style="color:white;">&nbspREPORTS UPDATE</span>
                     </div>
                     <div class="panel-body bio-graph-info" style="padding: 1px;">
@@ -107,7 +107,6 @@
                                             </select>
                                         </div>
                                     </div>
-
                                     <div class="form-group " ng-if="up.uploadType=='Mark Report' && testStartDate.length>0">
                                         <label class="control-label col-lg-3">Test Start Date
                                             <span class="required">*</span>
@@ -361,9 +360,9 @@
                                                         </td>
                                                         <!-- <th style="background-color:white;" ng-repeat=" (key, value) in up.testDate.mark">{{value}}</th> -->
                                                         <td style="background-color:white;">
-                                                            <div  ng-repeat="mark in sd.mark"> 
-                                                                <div ng-if="mark.testType==up.ttSelect" ng-repeat="swm in mark.subjectWithMark" > 
-                                                                    <div ng-if="swm.date==up.testDate.date"  style="background: lightgray;" ng-repeat="(key, value) in swm.mark">{{key}}:{{value}}
+                                                            <div ng-repeat="mark in sd.mark">
+                                                                <div ng-if="mark.testType==up.ttSelect" ng-repeat="swm in mark.subjectWithMark">
+                                                                    <div ng-if="swm.date==up.testDate.date" style="background: lightgray;" ng-repeat="(key, value) in swm.mark">{{key}}:{{value}}
                                                                         <br>
                                                                     </div>
                                                                 </div>

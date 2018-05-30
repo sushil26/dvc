@@ -486,6 +486,7 @@ ul.sidebar-menu li ul.sub li.active a {
 
 ul.sidebar-menu li {
   line-height: 20px !important;
+  background: linear-gradient(#868e9673, #868e9630);
   /*margin-bottom: 5px;
 
     margin-left:10px;

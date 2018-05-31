@@ -45,7 +45,10 @@ app.controller('dashboardController', function ($scope, $rootScope, $window, htt
                 for (var x = 0; x < $scope.eventData.length; x++) {
                     console.log("$scope.eventData[" + x + "]: " + JSON.stringify($scope.eventData[x]));
                     if ($scope.eventData[x].notificationNeed == 'yes') {
-                        $scope.numberOfNotif = $scope.numberOfNotif + 1;
+                        if ($scope.eventData[x].userId != $scope.userData.id) {
+                            console.log("not equal");
+                            $scope.numberOfNotif = $scope.numberOfNotif + 1;
+                        }
                     }
                 }
             }

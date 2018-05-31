@@ -82,6 +82,7 @@ app.controller('upcomingEventController', function ($scope, $rootScope, $state, 
                             $scope.numberOfNotif = $scope.numberOfNotif + 1;
                         }
                     }
+                    console.log("$scope.numberOfNotif: "+$scope.numberOfNotif);
                     console.log(" obj" + JSON.stringify(obj))
                     // ownerEvents.push(obj);
                     $scope.events.push(obj);

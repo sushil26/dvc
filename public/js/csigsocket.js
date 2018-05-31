@@ -301,6 +301,36 @@ function disconnecSession() {
   console.log("-->disconnecSession");
 }
 
+function getSession(id, date) {
+  console.log("startSession-->");
+ // window.location.href = "https://norecruits.com/careator/" + id + "/" + date;
+  var url = "https://norecruits.com/careator/";
+  var obj = {
+    "url": url
+  };
+  $.ajax({
+    url: url,
+    //  url: "http://localhost:5000/vc/login4VC",
+    type: "GET",
+    // data: JSON.stringify(obj),
+    contentType: "application/json",
+    dataType: "json",
+    success: function (data) {
+      console.log("data: " + JSON.stringify(data));
+      console.log("data.status: " + data.status);
+      if (data.status) {
+        url = data.message;
+        //window.location.href = data.data.url;
+      } else {
+        alert("refresh your page and try again");
+      }
+    }
+  });
+  console.log(",--startSession");
+}
+
+
+
 function startSession(id, date) {
   console.log("startSession-->");
  // window.location.href = "https://norecruits.com/careator/" + id + "/" + date;
@@ -319,6 +349,7 @@ function startSession(id, date) {
       console.log("data: " + JSON.stringify(data));
       console.log("data.status: " + data.status);
       if (data.status) {
+        url = data.message;
         //window.location.href = data.data.url;
       } else {
         alert("refresh your page and try again");

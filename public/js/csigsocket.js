@@ -42,7 +42,6 @@ var USE_AUDIO = true;
 var USE_VIDEO = true;
 var DEFAULT_CHANNEL = "some-global-ch-name";
 var MUTE_AUDIO_BY_DEFAULT = false;
-
 getSession();
 var url = window.location.href;
 var stuff = url.split("/");

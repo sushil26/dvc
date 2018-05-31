@@ -102,18 +102,12 @@ app.controller('dashboardController', function ($scope, $rootScope, $window, htt
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
                 $scope.eventData = data.data.data;
-
-                // ownerEvents = [];
                 for (var x = 0; x < $scope.eventData.length; x++) {
                     console.log("$scope.eventData[" + x + "]: " + JSON.stringify($scope.eventData[x]));
 
                     if ($scope.eventData[x].notificationNeed == 'yes') {
                         $scope.numberOfNotif_quickMsg = $scope.numberOfNotif_quickMsg + 1;
                     }
-
-                    console.log("obj*" + JSON.stringify(obj))
-
-
                 }
             }
             else {

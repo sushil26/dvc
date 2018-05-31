@@ -30,11 +30,43 @@
 table td {
   word-break: break-all;
 } */
+.quotes {
+  color: white;
+
+  -webkit-animation: mymove s infinite;
+  /* Safari 4.0 - 8.0 */
+  animation: mymove 1s infinite;
+}
+
+@-webkit-keyframes mymove {
+  from {
+    
+    color: white;
+  }
+  to {
+   
+    color: red;
+  }
+}
+
+@keyframes mymove {
+  from {
+ 
+    color: white;
+  }
+  to {
+    
+    color: red;
+  }
+}
+
+
+
 
 .llkk {
   color: #00a8b3;
   position: relative;
-  -webkit-animation: mymove 5s infinite;
+  -webkit-animation: mymove 1s infinite;
   /* Safari 4.0 - 8.0 */
   animation: mymove 1s infinite;
 }

@@ -75,9 +75,10 @@ app.controller('upcomingEventController', function ($scope, $rootScope, $state, 
                         "remoteCalendarId": $scope.eventData[x].remoteCalendarId,
                         "notificationNeed": $scope.eventData[x].notificationNeed
                     }
-                    console.log("$scope.eventData[x].userId: "+$scope.eventData[x].userId+" $scope.userData.id: "+$scope.userData.id);
-                    if ($scope.eventData[x].userId != $scope.userData.id) {
-                        if ($scope.eventData[x].notificationNeed == 'yes') {
+                    console.log("$scope.eventData[x].userId: " + $scope.eventData[x].userId + " $scope.userData.id: " + $scope.userData.id);
+                    if ($scope.eventData[x].notificationNeed == 'yes') {
+                        if ($scope.eventData[x].userId != $scope.userData.id) {
+                            console.log("not equal");
                             $scope.numberOfNotif = $scope.numberOfNotif + 1;
                         }
                     }

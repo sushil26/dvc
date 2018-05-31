@@ -145,7 +145,8 @@ app.controller('incomingMsgCtl', function ($scope, $rootScope, $state, $window, 
         httpFactory.post(api, obj).then(function (data) {
             var checkStatus = httpFactory.dataValidation(data);
             console.log("data--" + JSON.stringify(data.data));
-            $scope.$parent.quickMsgGet();
+            $rootScope.$emit("CallParentMethod", {});
+           // $scope.$parent.quickMsgGet();
             if (checkStatus) {
                 console.log("data" + JSON.stringify(data.data));
                 var eventPostedData = data.data.data;
@@ -154,6 +155,7 @@ app.controller('incomingMsgCtl', function ($scope, $rootScope, $state, $window, 
                 // alert("UnSuccessfully Event Updated");
             }
         })
+
         var eClicked = $uibModal.open({
             scope: $scope,
             templateUrl: '/html/templates/quickMsgView.html',
@@ -164,6 +166,7 @@ app.controller('incomingMsgCtl', function ($scope, $rootScope, $state, $window, 
                 console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
             }
         })
+        $scope.events[id].notificationNeed='No';
         console.log("<--viewDetail");
     }
 

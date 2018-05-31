@@ -92,13 +92,18 @@ app.get("/clientNew/:id/:time", function (req, res) {
 app.get("/careator", function (req, res) {
     //queryId = null;
     console.log("start to render page");
+   
     res.sendFile(__dirname + '/public/careator.html');
-    var responseData = {
-        status: true,
-        message: "https://norecruits.com/careator/"+queryId+"/"+time
-    }
-    res.status(200).send(responseData);
+    
 });
+app.get("/careatorGet", function (req, res) {
+    console.log("careatorGet-->");
+var responseData = {
+    status: true,
+    message: "https://norecruits.com/careator/"+queryId+"/"+time
+}
+res.status(200).send(responseData);
+})
 
 app.post("/careator/:id/:date", function (req, res) {
     console.log("careator started-->");

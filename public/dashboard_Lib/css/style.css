@@ -31,7 +31,7 @@ table td {
   word-break: break-all;
 } */
 .quotes {
-  color: white;
+  color: floralwhite;
 
   -webkit-animation: mymo 1s infinite;
   /* Safari 4.0 - 8.0 */
@@ -41,7 +41,7 @@ table td {
 @-webkit-keyframes mymo {
   from {
     
-    color: white;
+    color: floralwhite;
   }
   to {
    
@@ -52,7 +52,7 @@ table td {
 @keyframes mymo {
   from {
  
-    color: white;
+    color: floralwhite;
   }
   to {
     

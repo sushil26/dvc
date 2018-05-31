@@ -99,10 +99,14 @@ app.post("/careator/:id/:date", function (req, res) {
     console.log("careator started-->");
     queryId = req.params.id;
     time = req.params.date;
-
+    var responseData = {
+        status: false,
+        message: "get this"
+    }
+    res.status(200).send(responseData);
     console.log("queryId: " + req.params.id);
     console.log("start to render page");
-    res.sendFile(__dirname + '/public/careator.html');
+    //res.sendFile(__dirname + '/public/careator.html');
 });
 // app.get("/mainPage", function (req, res) {
 //     console.log("start to render page");

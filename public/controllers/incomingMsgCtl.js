@@ -145,10 +145,11 @@ app.controller('incomingMsgCtl', function ($scope, $rootScope, $state, $window, 
         httpFactory.post(api, obj).then(function (data) {
             var checkStatus = httpFactory.dataValidation(data);
             console.log("data--" + JSON.stringify(data.data));
+            $scope.$parent.quickMsgGet();
             if (checkStatus) {
                 console.log("data" + JSON.stringify(data.data));
                 var eventPostedData = data.data.data;
-                $scope.$parent.quickMsgGet();
+               
             }
             else {
                 // alert("UnSuccessfully Event Updated");

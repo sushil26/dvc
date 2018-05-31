@@ -44,10 +44,11 @@
                                     </thead>
                                     <tbody style="background: white">
                                         <tr ng-repeat="event in events" ng-if="event.startsAt>=todayDate">
-                                            <td ng-if="event.notificationNeed == 'yes'" style="color:yellow">
-                                                <i class="fa fa-envelope">{{event.title}}</i></td>
-                                            <td ng-if="event.notificationNeed != 'yes'" style="color:yellow">
-                                                <i class="fa fa-envelope-open-o" >{{event.title}}</i></td>
+                                            <td ng-if="event.notificationNeed == 'yes'">
+                                                <a class="fa fa-envelope"></a>&nbsp;{{event.title}}
+                                            </td>
+                                            <td ng-if="event.notificationNeed != 'yes'">
+                                                <a class="fa fa-envelope-open-o"></a>&nbsp;{{event.title}}</td>
                                             <td>{{event.startsAt | date:'MMM d, y'}}</td>
                                             <td>{{event.startsAt | date:'h:mm a'}}-{{event.endsAt | date:'h:mm a'}}</td>
 

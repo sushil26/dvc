@@ -110,8 +110,8 @@ app.controller('upcomingEventController', function ($scope, $rootScope, $state, 
                 // vm.events.splice(0, 1);
                 var eventPostedData = data.data.data;
 
-                ownerEvents.push(objData);
-                vm.events.push(objData);
+                // ownerEvents.push(objData);
+                // vm.events.push(objData);
             }
             else {
                 // alert("UnSuccessfully Event Updated");

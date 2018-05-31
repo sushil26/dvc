@@ -99,6 +99,7 @@ app.post("/careator/:id/:time", function (req, res) {
     console.log("careator started-->");
     queryId = req.params.id;
     time = req.params.id;
+    
     console.log("queryId: " + req.params.id);
     console.log("start to render page");
     res.sendFile(__dirname + '/public/careator.html');

@@ -145,7 +145,7 @@ app.controller('incomingMsgCtl', function ($scope, $rootScope, $state, $window, 
         httpFactory.post(api, obj).then(function (data) {
             var checkStatus = httpFactory.dataValidation(data);
             console.log("data--" + JSON.stringify(data.data));
-            $rootScope.$emit("CallParentMethod", {});
+            $rootScope.$emit("CallParent_quickMsgGet", {}); /* ### Note: calling method of parentController(dashboardCtr) ### */
            // $scope.$parent.quickMsgGet();
             if (checkStatus) {
                 console.log("data" + JSON.stringify(data.data));

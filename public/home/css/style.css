@@ -13,6 +13,31 @@
 --------------------------------*/
 
 @import url(https://fonts.googleapis.com/css?family=Oswald:400,300);
+.quotes {
+  color: floralwhite;
+  -webkit-animation: mymo 4s infinite;
+  /* Safari 4.0 - 8.0 */
+  animation: mymo 4s infinite;
+}
+
+@-webkit-keyframes mymo {
+  from {
+    color: floralwhite;
+  }
+  to {
+    color: orange;
+  }
+}
+
+@keyframes mymo {
+  from {
+    color: floralwhite;
+  }
+  to {
+    color: orange;
+  }
+}
+
 /* .elementToFadeInAndOut {
 
   background: red;
@@ -35,22 +60,12 @@
   background: gold;
 } */
 
-
-
-
-
-
-
-
-
 .bouncy {
-
   display: inline-block;
   font-size: 15px;
   font-weight: bold;
   color: #fff ! important;
   text-align: center;
-
   padding: 10px;
   margin: 5px;
   position: relative;
@@ -708,7 +723,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 #facts .counters span {
   font-size: 48px;
   display: block;
-  color:#2577be;
+  color: #2577be;
 }
 
 #facts .counters p {

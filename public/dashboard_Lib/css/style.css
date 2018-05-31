@@ -31,10 +31,14 @@ table td {
   word-break: break-all;
 } */
 
+
+
+
+
 .llkk {
   color: #00a8b3;
   position: relative;
-  -webkit-animation: mymove 5s infinite;
+  -webkit-animation: mymove 1s infinite;
   /* Safari 4.0 - 8.0 */
   animation: mymove 1s infinite;
 }

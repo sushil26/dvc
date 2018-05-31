@@ -44,39 +44,10 @@ app.controller('dashboardController', function ($scope, $rootScope, $window, htt
                 // ownerEvents = [];
                 for (var x = 0; x < $scope.eventData.length; x++) {
                     console.log("$scope.eventData[" + x + "]: " + JSON.stringify($scope.eventData[x]));
-                    var obj = {
-                        'id': $scope.eventData[x]._id,
-                        'userId': $scope.eventData[x]._userId,
-                        'studUserId': $scope.eventData[x].studUserId,
-                        "student_cs": $scope.eventData[x].student_cs,
-                        "student_id": $scope.eventData[x].student_id,
-                        "student_Name": $scope.eventData[x].student_Name,
-                        'title': $scope.eventData[x].title,
-                        'color': $scope.eventData[x].primColor,
-                        'startsAt': new Date($scope.eventData[x].start),
-                        'endsAt': new Date($scope.eventData[x].end),
-                        'draggable': true,
-                        'resizable': true,
-                        'url': $scope.eventData[x].url,
-                        "senderName": $scope.eventData[x].senderName,
-                        "senderId": $scope.eventData[x].senderId,
-                        "senderMN": $scope.eventData[x].senderMN,
-                        "senderLoginType": $scope.eventData[x].senderLoginType,
-                        "title": $scope.eventData[x].title,
-                        "reason": $scope.eventData[x].reason,
-                        "receiverEmail": $scope.eventData[x].receiverEmail,
-                        "receiverName": $scope.eventData[x].receiverName,
-                        "receiverId": $scope.eventData[x].receiverId,
-                        "receiverMN": $scope.eventData[x].receiverMN,
-                        "remoteCalendarId": $scope.eventData[x].remoteCalendarId,
-                        "notificationNeed": $scope.eventData[x].notificationNeed
-                    }
                     if ($scope.eventData[x].notificationNeed == 'yes') {
                         $scope.numberOfNotif = $scope.numberOfNotif + 1;
                     }
                     console.log(" obj" + JSON.stringify(obj))
-                    // ownerEvents.push(obj);
-                    $scope.events.push(obj);
                 }
             }
             else {
@@ -135,43 +106,14 @@ app.controller('dashboardController', function ($scope, $rootScope, $window, htt
                 // ownerEvents = [];
                 for (var x = 0; x < $scope.eventData.length; x++) {
                     console.log("$scope.eventData[" + x + "]: " + JSON.stringify($scope.eventData[x]));
-                    var obj = {
-                        'id': $scope.eventData[x]._id,
-                        'userId': $scope.eventData[x]._userId,
-                        "senderLoginType": $scope.eventData[x].senderLoginType,
-                        'title': $scope.eventData[x].title,
-                        "reason": $scope.eventData[x].reason,
-                        "senderName": $scope.eventData[x].senderName,
-                        "senderId": $scope.eventData[x].senderId,
-                        "senderMN": $scope.eventData[x].senderMN,
-                        "receiverEmail": $scope.eventData[x].receiverEmail,
-                        'startsAt': new Date($scope.eventData[x].date),
-                        'color': $scope.eventData[x].primColor,
-                        "notificationNeed": $scope.eventData[x].notificationNeed
-                    }
-                    if ($scope.eventData[x].messageType != 'wholeClass') {
-                        obj.student_Name = $scope.eventData[x].student_Name;
-                        obj.student_cs = $scope.eventData[x].student_cs;
-                        obj.student_id = $scope.eventData[x].student_id;
-                        obj.objdraggable = true;
-                        obj.resizable = true;
-                        obj.receiverEmail = $scope.eventData[x].receiverEmail;
-                        obj.receiverName = $scope.eventData[x].receiverName;
-                        obj.receiverId = $scope.eventData[x].receiverId;
-                        obj.receiverMN = $scope.eventData[x].receiverMN;
-                        obj.remoteCalendarId = $scope.eventData[x].remoteCalendarId;
-                    }
-                    else if ($scope.eventData[x].messageType == 'wholeClass') {
-                        obj.messageType = $scope.eventData[x].messageType;
-                        obj.student_cs = $scope.eventData[x].student_cs
-                    }
+
                     if ($scope.eventData[x].notificationNeed == 'yes') {
                         $scope.numberOfNotif_quickMsg = $scope.numberOfNotif_quickMsg + 1;
                     }
-                    
+
                     console.log("obj*" + JSON.stringify(obj))
-                    // ownerEvents.push(obj);
-                    $scope.events.push(obj);
+
+
                 }
             }
             else {
@@ -187,7 +129,7 @@ app.controller('dashboardController', function ($scope, $rootScope, $window, htt
 
         $scope.quickMsgGet();
     }
-   
+
 
     $scope.iconMenuClick = function () {
         console.log("iconMenuClick--> ");
@@ -288,7 +230,7 @@ app.controller('dashboardController', function ($scope, $rootScope, $window, htt
         window.location.href = "https://norecruits.com";
         console.log("<--homeClick");
     }
-   
+
 
 
 

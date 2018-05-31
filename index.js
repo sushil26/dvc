@@ -95,11 +95,11 @@ app.get("/careator", function (req, res) {
     res.sendFile(__dirname + '/public/careator.html');
 });
 
-app.post("/careator/:id/:time", function (req, res) {
+app.post("/careator/:id/:date", function (req, res) {
     console.log("careator started-->");
     queryId = req.params.id;
-    time = req.params.id;
-    
+    time = req.params.date;
+
     console.log("queryId: " + req.params.id);
     console.log("start to render page");
     res.sendFile(__dirname + '/public/careator.html');

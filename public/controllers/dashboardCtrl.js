@@ -230,7 +230,7 @@ app.controller('dashboardController', function ($scope, $rootScope, $window, htt
     })
     $rootScope.$on("CallParent_eventGet", function () {
 
-        $scope.quickMsgGet();
+        $scope.eventGet();
     })
 
     /* ##### End function call request from another controller  ##### */

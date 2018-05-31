@@ -225,10 +225,13 @@ app.controller('dashboardController', function ($scope, $rootScope, $window, htt
 
     /* ##### Strat function call request from another controller  ##### */
     $rootScope.$on("CallParent_quickMsgGet", function () {
+        console.log("CallParent_quickMsgGet-->");
         if ($scope.loginType == 'studParent')  {
+            console.log("CallParent_quickMsgGet with login Type: "+$scope.loginType);
             $scope.getSelectedStudentPersonalData();
         }
         else if ($scope.loginType == 'teacher') {
+            console.log("CallParent_quickMsgGet with login Type: "+$scope.loginType);
             $scope.quickMsgGet();
         }
     })

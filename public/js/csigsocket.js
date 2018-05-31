@@ -303,13 +303,13 @@ function disconnecSession() {
 
 function startSession(id, date) {
   console.log("startSession-->");
-  window.location.href = "https://norecruits.com/careator/" + id + "/" + date;
+ // window.location.href = "https://norecruits.com/careator/" + id + "/" + date;
   var url = "https://norecruits.com/careator/" + id + "/" + date;
   var obj = {
     "url": url
   };
   $.ajax({
-    url: "https://norecruits.com/vc/sessionCreate",
+    url: url,
     //  url: "http://localhost:5000/vc/login4VC",
     type: "POST",
     data: JSON.stringify(obj),

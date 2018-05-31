@@ -43,52 +43,6 @@ var USE_VIDEO = true;
 var DEFAULT_CHANNEL = "some-global-ch-name";
 var MUTE_AUDIO_BY_DEFAULT = false;
 getSession();
-var url = window.location.href;
-var stuff = url.split("/");
-var id1 = stuff[stuff.length - 2];
-var id2 = stuff[stuff.length - 3];
-console.log("stuff.length: " + stuff.length);
-console.log("id1**: " + id1);
-console.log("id2**: " + id2);
-if (stuff.length > 5) {
-
-  if (localStorage.getItem("careatorEmail")) {
-    var userNameEmail = localStorage.getItem("careatorEmail");
-    var emailIdSplit = userNameEmail.split('@');
-    userName = emailIdSplit[0];
-    document.getElementById("videoConferenceUrl").style.display = "block";
-    document.getElementById("emailInvitation").style.display = "block";
-  }
-  else if (localStorage.getItem("careatorFriendName")) {
-    userName = localStorage.getItem("careatorFriendName");
-    careatorFriendName = true;
-    document.getElementById("videoConferenceUrl").style.display = "none";
-    document.getElementById("emailInvitation").style.display = "none";
-  }
-  else {
-    console.log("No user data from session");
-    $("#setName").trigger("click");
-  }
-  console.log("userName: " + userName);
-}
-else {
-
-  if (localStorage.getItem("careatorEmail")) {
-    console.log("2 cond");
-    var userNameEmail = localStorage.getItem("careatorEmail");
-    console.log("2 cond: userNameEmail: " + userNameEmail);
-    var emailIdSplit = userNameEmail.split('@');
-    console.log("2 cond: emailIdSplit: " + JSON.stringify(emailIdSplit));
-    userName = emailIdSplit[0];
-    document.getElementById("videoConferenceUrl").style.display = "block";
-
-  }
-  else {
-    console.log("enterEmail: -->");
-    $("#enterEmail").trigger("click");
-  }
-  console.log("userName: " + userName);
-}
 
 function triggerInvite() {
   console.log("triggerInvite-->");
@@ -224,10 +178,10 @@ function emailInvite() {
       };
       console.log("data: " + JSON.stringify(data));
       document.getElementById("info").innerHTML = data.message;
-      setTimeout(function() {
+      setTimeout(function () {
         $('#info').fadeOut('fast');
-    }, 3000);
-     // document.getElementById("info").innerHTML = data.message;
+      }, 3000);
+      // document.getElementById("info").innerHTML = data.message;
     },
     error: function (err) {
       console.log("err: " + JSON.stringify(err));
@@ -302,7 +256,7 @@ function disconnecSession() {
 
 function getSession() {
   console.log("startSession-->");
- // window.location.href = "https://norecruits.com/careator/" + id + "/" + date;
+  // window.location.href = "https://norecruits.com/careator/" + id + "/" + date;
   var url = "https://norecruits.com/careatorGet/";
   var obj = {
     "url": url
@@ -318,7 +272,54 @@ function getSession() {
       console.log("data: " + JSON.stringify(data));
       console.log("data.status: " + data.status);
       if (data.status) {
-        url = data.message;
+        var url = data.message;
+        //var url = window.location.href;
+        var stuff = url.split("/");
+        var id1 = stuff[stuff.length - 2];
+        var id2 = stuff[stuff.length - 3];
+        console.log("stuff.length: " + stuff.length);
+        console.log("id1**: " + id1);
+        console.log("id2**: " + id2);
+        if (stuff.length > 5) {
+
+          if (localStorage.getItem("careatorEmail")) {
+            var userNameEmail = localStorage.getItem("careatorEmail");
+            var emailIdSplit = userNameEmail.split('@');
+            userName = emailIdSplit[0];
+            document.getElementById("videoConferenceUrl").style.display = "block";
+            document.getElementById("emailInvitation").style.display = "block";
+          }
+          else if (localStorage.getItem("careatorFriendName")) {
+            userName = localStorage.getItem("careatorFriendName");
+            careatorFriendName = true;
+            document.getElementById("videoConferenceUrl").style.display = "none";
+            document.getElementById("emailInvitation").style.display = "none";
+          }
+          else {
+            console.log("No user data from session");
+            $("#setName").trigger("click");
+          }
+          console.log("userName: " + userName);
+        }
+        else {
+
+          if (localStorage.getItem("careatorEmail")) {
+            console.log("2 cond");
+            var userNameEmail = localStorage.getItem("careatorEmail");
+            console.log("2 cond: userNameEmail: " + userNameEmail);
+            var emailIdSplit = userNameEmail.split('@');
+            console.log("2 cond: emailIdSplit: " + JSON.stringify(emailIdSplit));
+            userName = emailIdSplit[0];
+            document.getElementById("videoConferenceUrl").style.display = "block";
+
+          }
+          else {
+            console.log("enterEmail: -->");
+            $("#enterEmail").trigger("click");
+          }
+          console.log("userName: " + userName);
+        }
+
         //window.location.href = data.data.url;
       } else {
         alert("refresh your page and try again");
@@ -332,7 +333,7 @@ function getSession() {
 
 function startSession(id, date) {
   console.log("startSession-->");
- // window.location.href = "https://norecruits.com/careator/" + id + "/" + date;
+  // window.location.href = "https://norecruits.com/careator/" + id + "/" + date;
   var url = "https://norecruits.com/careator/" + id + "/" + date;
   var obj = {
     "url": url

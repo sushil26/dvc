@@ -31,6 +31,38 @@ table td {
   word-break: break-all;
 } */
 
+.llkk {
+  color: #00a8b3;
+  position: relative;
+  -webkit-animation: mymove 5s infinite;
+  /* Safari 4.0 - 8.0 */
+  animation: mymove 1s infinite;
+}
+
+/* Safari 4.0 - 8.0 */
+
+@-webkit-keyframes mymove {
+  from {
+    font-size: 10px;
+    color: indianred;
+  }
+  to {
+    font-size: 15px;
+    color: red;
+  }
+}
+
+@keyframes mymove {
+  from {
+  font-size: 10px;
+    color: indianred;
+  }
+  to {
+    font-size: 15px;
+    color: red;
+  }
+}
+
 table td {
   word-wrap: break-word;
 }
@@ -387,7 +419,7 @@ table tr th {
   width: 180px;
   height: 100%;
   position: fixed;
-  background: #394a59;
+  background: #1b2833;
 }
 
 .nav-collapse.collapse {
@@ -454,6 +486,7 @@ ul.sidebar-menu li ul.sub li.active a {
 
 ul.sidebar-menu li {
   line-height: 20px !important;
+  background: linear-gradient(#868e9673, #868e9630);
   /*margin-bottom: 5px;
 
     margin-left:10px;
@@ -489,7 +522,7 @@ ul.sidebar-menu li a {
   -o-transition: all 0.3s ease;
   -ms-transition: all 0.3s ease;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0), 0 6px 20px 0 rgba(0, 0, 0, 0.16);
+  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0), 0 6px 20px 0 rgba(0, 0, 0, 0.16); */
   /* border-right: 0.5px solid #d7d7d7; */
   /* border-bottom: 0.5px solid #518f9d; */
 }

@@ -103,7 +103,7 @@ app.controller('upcomingEventController', function ($scope, $rootScope, $state, 
             if (checkStatus) {
                 console.log("data" + JSON.stringify(data.data));
                 // $window.location.href = $scope.propertyJson.R082;
-                alert("Successfully updated the event");
+                // alert("Successfully updated the event");
                 // vm.events.splice(0, 1);
                 var eventPostedData = data.data.data;
 
@@ -111,7 +111,7 @@ app.controller('upcomingEventController', function ($scope, $rootScope, $state, 
                 vm.events.push(objData);
             }
             else {
-                alert("UnSuccessfully Event Updated");
+                // alert("UnSuccessfully Event Updated");
             }
         })
         var eClicked = $uibModal.open({

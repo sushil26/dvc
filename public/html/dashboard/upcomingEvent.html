@@ -44,7 +44,7 @@
                                     </thead>
                                     <tbody style="background: white">
                                         <tr ng-repeat="event in events" ng-if="event.startsAt>=todayDate">
-                                            <td ng-if="event.notificationNeed == 'yes'" style="color:red;">New{{event.title}}</td>
+                                            <td ng-if="event.notificationNeed == 'yes'" style="color:red;">(New){{event.title}}</td>
                                             <td ng-if="event.notificationNeed != 'yes'">{{event.title}}</td>
                                             <td>{{event.startsAt | date:'MMM d, y'}}</td>
                                             <td>{{event.startsAt | date:'h:mm a'}}-{{event.endsAt | date:'h:mm a'}}</td>

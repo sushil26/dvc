@@ -59,6 +59,7 @@ module.exports = function (app) {
     app.post('/vc/feeUpdate/:schoolName/:clas/:section/:reportType', adminAction.feeUpdate);
     app.post('/vc/uploadFeeFile/:schoolName/:clas/:section/:reportType/:fee_otherName', adminAction.uploadFeeFile);
     app.post('/vc/quickMsgSend', quickMsg.quickMsgSend);
+    app.post('/vc/quickMsgNotificationOff', quickMsg.quickMsgNotificationOff);
     app.get('/vc/quickMsgGet/:id', quickMsg.quickMsgGet);
     app.get('/vc/quickMsgGetForStud/:id/:clas/:section', quickMsg.quickMsgGetForStud);
     app.get('/vc/getQuickMsgById/:id', quickMsg.getQuickMsgById);
@@ -68,6 +69,7 @@ module.exports = function (app) {
     app.get('/vc/getToDate', event.getToDate);
     app.post('/vc/eventSend', event.eventSend);
     app.post('/vc/eventNotificationOff', event.eventNotificationOff);
+    
     app.get('/vc/eventGet/:id', event.eventGet);
     app.post('/vc/eventReSchedule/:id', event.eventReSchedule);
     app.get('/vc/getEventById/:id', event.getEventById);

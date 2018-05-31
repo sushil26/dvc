@@ -16,7 +16,7 @@ app.controller('incomingMsgCtl', function ($scope, $rootScope, $state, $window, 
             if (checkStatus) {
                 $scope.studentPersonalData = data.data.data;
                 $scope.studCS = $scope.studentPersonalData[0].cs;
-                console.log("  $scope.studCS: " + JSON.stringify( $scope.studCS));
+                console.log("  $scope.studCS: " + JSON.stringify($scope.studCS));
                 console.log("$scope.studentPersonalData: " + JSON.stringify($scope.studentPersonalData));
                 $scope.quickMsgGet();
             }
@@ -27,7 +27,7 @@ app.controller('incomingMsgCtl', function ($scope, $rootScope, $state, $window, 
         })
         console.log("<--get Selected Student PersonalData");
     }
-    
+
     $scope.getToDate = function () {
         console.log("Get To Date-->");
         var api = $scope.propertyJson.VC_getToDate;
@@ -47,7 +47,7 @@ app.controller('incomingMsgCtl', function ($scope, $rootScope, $state, $window, 
                 var reqSec = todayDate.getSeconds();
                 $scope.todayDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
                 console.log("consolidateDate: " + $scope.consolidateDate);
-               
+
             }
             else {
             }
@@ -59,16 +59,16 @@ app.controller('incomingMsgCtl', function ($scope, $rootScope, $state, $window, 
     $scope.quickMsgGet = function () {
         console.log("quickMsgGet-->");
         var id = $scope.userData.id;
-        console.log("$scope.studCS: "+JSON.stringify($scope.studCS));
-        if($scope.loginType == 'studParent'){
-            var clas =  $scope.studCS[0].class;
-            var section =  $scope.studCS[0].section;
-            var api = $scope.propertyJson.VC_quickMsgGetForStud + "/" + id + "/" +clas + "/"+section;
+        console.log("$scope.studCS: " + JSON.stringify($scope.studCS));
+        if ($scope.loginType == 'studParent') {
+            var clas = $scope.studCS[0].class;
+            var section = $scope.studCS[0].section;
+            var api = $scope.propertyJson.VC_quickMsgGetForStud + "/" + id + "/" + clas + "/" + section;
         }
-        else if($scope.loginType == 'teacher'){
+        else if ($scope.loginType == 'teacher') {
             var api = $scope.propertyJson.VC_quickMsgGet + "/" + id;
         }
-       
+
         //var api = "http://localhost:5000/vc/eventGet"+ "/" + id;;
         $scope.calendarOwner = "Your";
 
@@ -92,7 +92,8 @@ app.controller('incomingMsgCtl', function ($scope, $rootScope, $state, $window, 
                         "senderMN": $scope.eventData[x].senderMN,
                         "receiverEmail": $scope.eventData[x].receiverEmail,
                         'startsAt': new Date($scope.eventData[x].date),
-                        'color': $scope.eventData[x].primColor
+                        'color': $scope.eventData[x].primColor,
+                        "notificationNeed": $scope.eventData[x].notificationNeed
                     }
                     if ($scope.eventData[x].messageType != 'wholeClass') {
                         obj.student_Name = $scope.eventData[x].student_Name;
@@ -110,6 +111,9 @@ app.controller('incomingMsgCtl', function ($scope, $rootScope, $state, $window, 
                         obj.messageType = $scope.eventData[x].messageType;
                         obj.student_cs = $scope.eventData[x].student_cs
                     }
+                    if ($scope.eventData[x].notificationNeed == 'yes') {
+                        $scope.numberOfNotif = $scope.numberOfNotif + 1;
+                    }
                     console.log("obj*" + JSON.stringify(obj))
                     // ownerEvents.push(obj);
                     $scope.events.push(obj);
@@ -123,16 +127,38 @@ app.controller('incomingMsgCtl', function ($scope, $rootScope, $state, $window, 
 
     if ($scope.loginType == 'studParent') {
         $scope.getSelectedStudentPersonalData();
-       
+
     }
-    else{
-        
+    else {
+
         $scope.quickMsgGet();
     }
 
     $scope.viewDetail = function (id) {
         console.log("viewDetail-->");
         console.log("id: " + id);
+        var obj = {
+            "id": eventId
+        }
+        var api = $scope.propertyJson.VC_quickMsgNotificationOff;
+        console.log("api: " + api);
+        httpFactory.post(api, obj).then(function (data) {
+            var checkStatus = httpFactory.dataValidation(data);
+            console.log("data--" + JSON.stringify(data.data));
+            if (checkStatus) {
+                console.log("data" + JSON.stringify(data.data));
+                // $window.location.href = $scope.propertyJson.R082;
+                // alert("Successfully updated the event");
+                // vm.events.splice(0, 1);
+                var eventPostedData = data.data.data;
+
+                ownerEvents.push(objData);
+                vm.events.push(objData);
+            }
+            else {
+                // alert("UnSuccessfully Event Updated");
+            }
+        })
         var eClicked = $uibModal.open({
             scope: $scope,
             templateUrl: '/html/templates/quickMsgView.html',

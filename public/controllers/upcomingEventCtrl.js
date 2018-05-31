@@ -75,8 +75,10 @@ app.controller('upcomingEventController', function ($scope, $rootScope, $state, 
                         "remoteCalendarId": $scope.eventData[x].remoteCalendarId,
                         "notificationNeed": $scope.eventData[x].notificationNeed
                     }
-                    if ($scope.eventData[x].notificationNeed == 'yes') {
-                        $scope.numberOfNotif = $scope.numberOfNotif + 1;
+                    if ($scope.eventData[x].userId != $scope.userData.id) {
+                        if ($scope.eventData[x].notificationNeed == 'yes') {
+                            $scope.numberOfNotif = $scope.numberOfNotif + 1;
+                        }
                     }
                     console.log(" obj" + JSON.stringify(obj))
                     // ownerEvents.push(obj);
@@ -93,7 +95,7 @@ app.controller('upcomingEventController', function ($scope, $rootScope, $state, 
         console.log("viewDetail-->");
         console.log("id: " + id);
         var obj = {
-            "id":eventId
+            "id": eventId
         }
         var api = $scope.propertyJson.VC_eventNotificationOff;
         console.log("api: " + api);

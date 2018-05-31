@@ -34,7 +34,8 @@
 
 
                                             <td ng-if="event.notificationNeed == 'yes'">
-                                                <a class="fa fa-envelope"></a>&nbsp;{{event.title}}
+                                                <a class="fa fa-envelope"></a>&nbsp;
+                                                <b>{{event.title}}</b>
                                             </td>
                                             <td ng-if="event.notificationNeed != 'yes'">
                                                 <a class="fa fa-envelope-open-o"></a>&nbsp;{{event.title}}</td>
@@ -52,7 +53,8 @@
                                         <tr ng-repeat="event in events">
 
                                             <td ng-if="event.notificationNeed == 'yes'">
-                                                <a class="fa fa-envelope"></a>&nbsp;{{event.title}}
+                                                <a class="fa fa-envelope"></a>&nbsp;
+                                                <b>{{event.title}}</b>
                                             </td>
                                             <td ng-if="event.notificationNeed != 'yes'">
                                                 <a class="fa fa-envelope-open-o"></a>&nbsp;{{event.title}}</td>

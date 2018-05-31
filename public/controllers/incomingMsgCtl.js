@@ -149,7 +149,6 @@ app.controller('incomingMsgCtl', function ($scope, $rootScope, $state, $window, 
             if (checkStatus) {
                 console.log("data" + JSON.stringify(data.data));
                 var eventPostedData = data.data.data;
-               
             }
             else {
                 // alert("UnSuccessfully Event Updated");

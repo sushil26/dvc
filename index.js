@@ -3,6 +3,8 @@ var http = require('http');
 var bodyParser = require('body-parser')
 var nodemailer = require('nodemailer');
 var fileUpload = require('express-fileupload');
+var location = require('location-href')
+location()
 
 var multer = require('multer');
 
@@ -107,7 +109,7 @@ app.get("/careatorGet", function (req, res) {
 app.get("/careator/:id/:date", function (req, res) {
     queryId = req.params.id;
     time = req.params.date;
-    window.location.href = "https://norecruits.com/careator";
+    location.set('http://new/location');
 
 })
 

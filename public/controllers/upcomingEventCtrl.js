@@ -75,6 +75,7 @@ app.controller('upcomingEventController', function ($scope, $rootScope, $state, 
                         "remoteCalendarId": $scope.eventData[x].remoteCalendarId,
                         "notificationNeed": $scope.eventData[x].notificationNeed
                     }
+                    console.log("$scope.eventData[x].userId: "+$scope.eventData[x].userId+" $scope.userData.id: "+$scope.userData.id);
                     if ($scope.eventData[x].userId != $scope.userData.id) {
                         if ($scope.eventData[x].notificationNeed == 'yes') {
                             $scope.numberOfNotif = $scope.numberOfNotif + 1;
@@ -109,8 +110,8 @@ app.controller('upcomingEventController', function ($scope, $rootScope, $state, 
                 // vm.events.splice(0, 1);
                 var eventPostedData = data.data.data;
 
-                ownerEvents.push(objData);
-                vm.events.push(objData);
+                // ownerEvents.push(objData);
+                // vm.events.push(objData);
             }
             else {
                 // alert("UnSuccessfully Event Updated");

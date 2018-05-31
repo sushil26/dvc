@@ -1,4 +1,4 @@
-app.controller('incomingMsgCtl', function ($scope, $rootScope, $state, $window, httpFactory, $uibModal, $filter, sessionAuthFactory) {
+app.controller('incomingMsgCtl', function ($scope,$parent, $rootScope, $state, $window, httpFactory, $uibModal, $filter, sessionAuthFactory) {
     console.log("incomingMsgCtl==>");
     $scope.userData = sessionAuthFactory.getAccess("userData");
     $scope.loginType = $scope.userData.loginType;

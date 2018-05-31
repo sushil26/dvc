@@ -30,35 +30,7 @@
 table td {
   word-break: break-all;
 } */
-.quotes {
-  color: floralwhite;
 
-  -webkit-animation: mymo 1s infinite;
-  /* Safari 4.0 - 8.0 */
-  animation: mymo 1s infinite;
-}
-
-@-webkit-keyframes mymo {
-  from {
-    
-    color: floralwhite;
-  }
-  to {
-   
-    color: red;
-  }
-}
-
-@keyframes mymo {
-  from {
- 
-    color: floralwhite;
-  }
-  to {
-    
-    color: red;
-  }
-}
 
 
 

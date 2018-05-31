@@ -79,12 +79,11 @@ app.controller('incomingMsgCtl', function ($scope, $rootScope, $state, $window, 
             if (checkStatus) {
                 $scope.eventData = data.data.data;
 
-                // ownerEvents = [];
                 for (var x = 0; x < $scope.eventData.length; x++) {
                     console.log("$scope.eventData[" + x + "]: " + JSON.stringify($scope.eventData[x]));
                     var obj = {
                         'id': $scope.eventData[x]._id,
-                        'userId': $scope.eventData[x]._userId,
+                        'userId': $scope.eventData[x].userId,
                         "senderLoginType": $scope.eventData[x].senderLoginType,
                         'title': $scope.eventData[x].title,
                         "reason": $scope.eventData[x].reason,
@@ -148,13 +147,8 @@ app.controller('incomingMsgCtl', function ($scope, $rootScope, $state, $window, 
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
                 console.log("data" + JSON.stringify(data.data));
-                // $window.location.href = $scope.propertyJson.R082;
-                // alert("Successfully updated the event");
-                // vm.events.splice(0, 1);
                 var eventPostedData = data.data.data;
-
-               // ownerEvents.push(objData);
-                //vm.events.push(objData);
+                $scope.$parent.quickMsgGet();
             }
             else {
                 // alert("UnSuccessfully Event Updated");

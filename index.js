@@ -95,7 +95,7 @@ app.get("/careator", function (req, res) {
     res.sendFile(__dirname + '/public/careator.html');
 });
 
-app.get("/careator/:id/:time", function (req, res) {
+app.post("/careator/:id/:time", function (req, res) {
     console.log("careator started-->");
     queryId = req.params.id;
     time = req.params.id;

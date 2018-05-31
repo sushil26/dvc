@@ -19,9 +19,9 @@ app.use(bodyParser.json({
 app.use(fileUpload());
 
 // module.exports = function (app, config) {
-    //app.set('view engine','html');
-    // app.use(session({secret: "Your secret key"}));
-    //app.use(multer({ dest: './public/schoolLogo'}));
+//app.set('view engine','html');
+// app.use(session({secret: "Your secret key"}));
+//app.use(multer({ dest: './public/schoolLogo'}));
 // }
 var queryId = null;
 var userName = null;
@@ -92,17 +92,23 @@ app.get("/clientNew/:id/:time", function (req, res) {
 app.get("/careator", function (req, res) {
     //queryId = null;
     console.log("start to render page");
-   
+
     res.sendFile(__dirname + '/public/careator.html');
-    
+
 });
 app.get("/careatorGet", function (req, res) {
     console.log("careatorGet-->");
-var responseData = {
-    status: true,
-    message: "https://norecruits.com/careator/"+queryId+"/"+time
-}
-res.status(200).send(responseData);
+    var responseData = {
+        status: true,
+        message: "https://norecruits.com/careator/" + queryId + "/" + time
+    }
+    res.status(200).send(responseData);
+})
+app.get("/careator/:id/:date", function (req, res) {
+    queryId = req.params.id;
+    time = req.params.date;
+    window.location.href = "https://norecruits.com/careator";
+
 })
 
 app.post("/careator/:id/:date", function (req, res) {
@@ -111,7 +117,7 @@ app.post("/careator/:id/:date", function (req, res) {
     time = req.params.date;
     var responseData = {
         status: true,
-        message: "https://norecruits.com/careator/"+queryId+"/"+time
+        message: "https://norecruits.com/careator/" + queryId + "/" + time
     }
     res.status(200).send(responseData);
     console.log("queryId: " + req.params.id);

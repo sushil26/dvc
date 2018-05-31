@@ -3,6 +3,7 @@ app.controller('incomingMsgCtl', function ($scope, $rootScope, $state, $window, 
     $scope.userData = sessionAuthFactory.getAccess("userData");
     $scope.loginType = $scope.userData.loginType;
     $scope.events = [];
+    var ownerEvents = [];
     $scope.propertyJson = $rootScope.propertyJson;
 
     $scope.getSelectedStudentPersonalData = function () {
@@ -134,7 +135,7 @@ app.controller('incomingMsgCtl', function ($scope, $rootScope, $state, $window, 
         $scope.quickMsgGet();
     }
 
-    $scope.viewDetail = function (id) {
+    $scope.viewDetail = function (id, eventId) {
         console.log("viewDetail-->");
         console.log("id: " + id);
         var obj = {
@@ -152,8 +153,8 @@ app.controller('incomingMsgCtl', function ($scope, $rootScope, $state, $window, 
                 // vm.events.splice(0, 1);
                 var eventPostedData = data.data.data;
 
-                ownerEvents.push(objData);
-                vm.events.push(objData);
+               // ownerEvents.push(objData);
+                //vm.events.push(objData);
             }
             else {
                 // alert("UnSuccessfully Event Updated");

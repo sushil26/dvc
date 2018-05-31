@@ -225,22 +225,6 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
     }
   ];
 
-  var areYouReallySure = false;
-
-  function areYouSure() {
-    if (allowPrompt) {
-      if (!areYouReallySure && true) {
-        areYouReallySure = true;
-        var confMessage = "***************************************\n\n W A I T !!! \n\nBefore leaving our site, follow CodexWorld for getting regular updates on Programming and Web Development.\n\n\nCLICK THE *CANCEL* BUTTON RIGHT NOW\n\n***************************************";
-        return confMessage;
-      }
-    } else {
-      allowPrompt = true;
-    }
-  }
-
-  var allowPrompt = true;
-  window.onbeforeunload = areYouSure;
 
 
 });

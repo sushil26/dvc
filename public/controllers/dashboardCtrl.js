@@ -100,6 +100,7 @@ app.controller('dashboardController', function ($scope, $rootScope, $window, htt
         $scope.calendarOwner = "Your";
 
         httpFactory.get(api).then(function (data) {
+            $scope.numberOfNotif_quickMsg = 0;
             var checkStatus = httpFactory.dataValidation(data);
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {

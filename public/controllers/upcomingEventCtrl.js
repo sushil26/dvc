@@ -50,7 +50,7 @@ app.controller('upcomingEventController', function ($scope, $rootScope, $state, 
                     console.log("$scope.eventData[" + x + "]: " + JSON.stringify($scope.eventData[x]));
                     var obj = {
                         'id': $scope.eventData[x]._id,
-                        'userId': $scope.eventData[x]._userId,
+                        'userId': $scope.eventData[x].userId,
                         'studUserId': $scope.eventData[x].studUserId,
                         "student_cs": $scope.eventData[x].student_cs,
                         "student_id": $scope.eventData[x].student_id,

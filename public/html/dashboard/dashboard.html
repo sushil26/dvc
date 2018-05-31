@@ -112,7 +112,7 @@
                         <ul ng-hide="quickMsg_subMenu">
                             <li>
                                 <a class="" href="#!/dashboard/incomingMsg">INBOX &nbsp
-                                    <i style="color:red" class="fa fa-bolt ">(2)</i>
+                                    <i style="color:red" class="fa fa-bolt" ng-if="numberOfNotif_quickMsg>0">({{numberOfNotif_quickMsg}})</i>
                                 </a>
                             </li>
                             <li>

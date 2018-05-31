@@ -28,6 +28,7 @@ app.controller('dashboardController', function ($scope, $rootScope, $window, htt
     $scope.comm_subMenu = true;
     $scope.quickMsg_subMenu = true;
     $scope.numberOfNotif = 0;
+    $scope.numberOfNotif_quickMsg = 0;
 
     $scope.eventGet = function () {
         console.log("eventGet-->");
@@ -85,6 +86,78 @@ app.controller('dashboardController', function ($scope, $rootScope, $window, htt
     }
 
     $scope.eventGet();
+
+    $scope.quickMsgGet = function () {
+        console.log("quickMsgGet-->");
+        var id = $scope.userData.id;
+        console.log("$scope.studCS: " + JSON.stringify($scope.studCS));
+        if ($scope.loginType == 'studParent') {
+            var clas = $scope.studCS[0].class;
+            var section = $scope.studCS[0].section;
+            var api = $scope.propertyJson.VC_quickMsgGetForStud + "/" + id + "/" + clas + "/" + section;
+        }
+        else if ($scope.loginType == 'teacher') {
+            var api = $scope.propertyJson.VC_quickMsgGet + "/" + id;
+        }
+
+        //var api = "http://localhost:5000/vc/eventGet"+ "/" + id;;
+        $scope.calendarOwner = "Your";
+
+        httpFactory.get(api).then(function (data) {
+            var checkStatus = httpFactory.dataValidation(data);
+            console.log("data--" + JSON.stringify(data.data));
+            if (checkStatus) {
+                $scope.eventData = data.data.data;
+
+                // ownerEvents = [];
+                for (var x = 0; x < $scope.eventData.length; x++) {
+                    console.log("$scope.eventData[" + x + "]: " + JSON.stringify($scope.eventData[x]));
+                    var obj = {
+                        'id': $scope.eventData[x]._id,
+                        'userId': $scope.eventData[x]._userId,
+                        "senderLoginType": $scope.eventData[x].senderLoginType,
+                        'title': $scope.eventData[x].title,
+                        "reason": $scope.eventData[x].reason,
+                        "senderName": $scope.eventData[x].senderName,
+                        "senderId": $scope.eventData[x].senderId,
+                        "senderMN": $scope.eventData[x].senderMN,
+                        "receiverEmail": $scope.eventData[x].receiverEmail,
+                        'startsAt': new Date($scope.eventData[x].date),
+                        'color': $scope.eventData[x].primColor,
+                        "notificationNeed": $scope.eventData[x].notificationNeed
+                    }
+                    if ($scope.eventData[x].messageType != 'wholeClass') {
+                        obj.student_Name = $scope.eventData[x].student_Name;
+                        obj.student_cs = $scope.eventData[x].student_cs;
+                        obj.student_id = $scope.eventData[x].student_id;
+                        obj.objdraggable = true;
+                        obj.resizable = true;
+                        obj.receiverEmail = $scope.eventData[x].receiverEmail;
+                        obj.receiverName = $scope.eventData[x].receiverName;
+                        obj.receiverId = $scope.eventData[x].receiverId;
+                        obj.receiverMN = $scope.eventData[x].receiverMN;
+                        obj.remoteCalendarId = $scope.eventData[x].remoteCalendarId;
+                    }
+                    else if ($scope.eventData[x].messageType == 'wholeClass') {
+                        obj.messageType = $scope.eventData[x].messageType;
+                        obj.student_cs = $scope.eventData[x].student_cs
+                    }
+                    if ($scope.eventData[x].notificationNeed == 'yes') {
+                        $scope.numberOfNotif_quickMsg = $scope.numberOfNotif_quickMsg + 1;
+                    }
+                    
+                    console.log("obj*" + JSON.stringify(obj))
+                    // ownerEvents.push(obj);
+                    $scope.events.push(obj);
+                }
+            }
+            else {
+                //alert("Event get Failed");
+            }
+        })
+    }
+
+    $scope.quickMsgGet();
 
     $scope.iconMenuClick = function () {
         console.log("iconMenuClick--> ");

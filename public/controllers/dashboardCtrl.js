@@ -27,7 +27,7 @@ app.controller('dashboardController', function ($scope, $rootScope, $window, htt
     $scope.setting_subMenu = true;
     $scope.comm_subMenu = true;
     $scope.quickMsg_subMenu = true;
-    $scope.numberOfNotif = 0;
+    $scope.numberOfNotif_event = 0;
     $scope.numberOfNotif_quickMsg = 0;
 
     $scope.eventGet = function () {
@@ -37,6 +37,7 @@ app.controller('dashboardController', function ($scope, $rootScope, $window, htt
         //var api = "http://localhost:5000/vc/eventGet"+ "/" + id;;
         $scope.calendarOwner = "Your";
         httpFactory.get(api).then(function (data) {
+            $scope.numberOfNotif_event = 0;
             var checkStatus = httpFactory.dataValidation(data);
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
@@ -47,7 +48,7 @@ app.controller('dashboardController', function ($scope, $rootScope, $window, htt
                     if ($scope.eventData[x].notificationNeed == 'yes') {
                         if ($scope.eventData[x].userId != $scope.userData.id) {
                             console.log("not equal");
-                            $scope.numberOfNotif = $scope.numberOfNotif + 1;
+                            $scope.numberOfNotif_event = $scope.numberOfNotif_event + 1;
                         }
                     }
                 }

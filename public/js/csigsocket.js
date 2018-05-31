@@ -43,6 +43,7 @@ var USE_VIDEO = true;
 var DEFAULT_CHANNEL = "some-global-ch-name";
 var MUTE_AUDIO_BY_DEFAULT = false;
 
+getSession();
 var url = window.location.href;
 var stuff = url.split("/");
 var id1 = stuff[stuff.length - 2];
@@ -93,7 +94,6 @@ else {
 function triggerInvite() {
   console.log("triggerInvite-->");
   $("#enterPswd").trigger("click");
-
 }
 function sendEmail() {
   console.log("sendEmail-->");
@@ -301,7 +301,7 @@ function disconnecSession() {
   console.log("-->disconnecSession");
 }
 
-function getSession(id, date) {
+function getSession() {
   console.log("startSession-->");
  // window.location.href = "https://norecruits.com/careator/" + id + "/" + date;
   var url = "https://norecruits.com/careator/";

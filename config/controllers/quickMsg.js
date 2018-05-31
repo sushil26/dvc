@@ -158,7 +158,7 @@ module.exports.quickMsgGet = function (req, res) {
     console.log("req.params.id: " + req.params.id);
 
     if (general.emptyCheck(req.params.id)) {
-        quickMessage.find({ $or: [{ "userId": req.params.id }, { "remoteCalendarId": req.params.id }] }).sort({ "startAt": 1 }).toArray(function (err, listOfevents) {
+        quickMessage.find({ $or: [{ "userId": req.params.id }, { "remoteCalendarId": req.params.id }] }).sort({ "$natural": -1 }).toArray(function (err, listOfevents) {
             console.log("listOfevents: " + JSON.stringify(listOfevents))
             if (err) {
 

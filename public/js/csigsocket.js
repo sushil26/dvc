@@ -43,6 +43,7 @@ var USE_VIDEO = true;
 var DEFAULT_CHANNEL = "some-global-ch-name";
 var MUTE_AUDIO_BY_DEFAULT = false;
 
+getSession();
 var url = window.location.href;
 var stuff = url.split("/");
 var id1 = stuff[stuff.length - 2];
@@ -93,7 +94,6 @@ else {
 function triggerInvite() {
   console.log("triggerInvite-->");
   $("#enterPswd").trigger("click");
-
 }
 function sendEmail() {
   console.log("sendEmail-->");
@@ -301,6 +301,36 @@ function disconnecSession() {
   console.log("-->disconnecSession");
 }
 
+function getSession() {
+  console.log("startSession-->");
+ // window.location.href = "https://norecruits.com/careator/" + id + "/" + date;
+  var url = "https://norecruits.com/careator/";
+  var obj = {
+    "url": url
+  };
+  $.ajax({
+    url: url,
+    //  url: "http://localhost:5000/vc/login4VC",
+    type: "GET",
+    // data: JSON.stringify(obj),
+    contentType: "application/json",
+    dataType: "json",
+    success: function (data) {
+      console.log("data: " + JSON.stringify(data));
+      console.log("data.status: " + data.status);
+      if (data.status) {
+        url = data.message;
+        //window.location.href = data.data.url;
+      } else {
+        alert("refresh your page and try again");
+      }
+    }
+  });
+  console.log(",--startSession");
+}
+
+
+
 function startSession(id, date) {
   console.log("startSession-->");
  // window.location.href = "https://norecruits.com/careator/" + id + "/" + date;
@@ -319,6 +349,7 @@ function startSession(id, date) {
       console.log("data: " + JSON.stringify(data));
       console.log("data.status: " + data.status);
       if (data.status) {
+        url = data.message;
         //window.location.href = data.data.url;
       } else {
         alert("refresh your page and try again");

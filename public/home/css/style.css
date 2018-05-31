@@ -15,9 +15,9 @@
 @import url(https://fonts.googleapis.com/css?family=Oswald:400,300);
 .quotes {
   color: floralwhite;
-  -webkit-animation: mymo 4s infinite;
+  -webkit-animation: mymo 3s infinite;
   /* Safari 4.0 - 8.0 */
-  animation: mymo 4s infinite;
+  animation: mymo 3s infinite;
 }
 
 @-webkit-keyframes mymo {

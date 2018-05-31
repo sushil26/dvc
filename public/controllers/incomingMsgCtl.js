@@ -1,4 +1,4 @@
-app.controller('incomingMsgCtl', function ($scope,$parent, $rootScope, $state, $window, httpFactory, $uibModal, $filter, sessionAuthFactory) {
+app.controller('incomingMsgCtl', function ($scope, $rootScope, $state, $window, httpFactory, $uibModal, $filter, sessionAuthFactory) {
     console.log("incomingMsgCtl==>");
     $scope.userData = sessionAuthFactory.getAccess("userData");
     $scope.loginType = $scope.userData.loginType;
@@ -145,7 +145,8 @@ app.controller('incomingMsgCtl', function ($scope,$parent, $rootScope, $state, $
         httpFactory.post(api, obj).then(function (data) {
             var checkStatus = httpFactory.dataValidation(data);
             console.log("data--" + JSON.stringify(data.data));
-            $scope.$parent.quickMsgGet();
+            $rootScope.$emit("CallParentMethod", {});
+           // $scope.$parent.quickMsgGet();
             if (checkStatus) {
                 console.log("data" + JSON.stringify(data.data));
                 var eventPostedData = data.data.data;

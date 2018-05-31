@@ -90,7 +90,7 @@ app.get("/clientNew/:id/:time", function (req, res) {
 });
 
 app.get("/careator", function (req, res) {
-    queryId = null;
+    //queryId = null;
     console.log("start to render page");
     res.sendFile(__dirname + '/public/careator.html');
     var responseData = {

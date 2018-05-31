@@ -134,7 +134,7 @@ app.controller('incomingMsgCtl', function ($scope, $rootScope, $state, $window, 
         $scope.quickMsgGet();
     }
 
-    $scope.viewDetail = function (id) {
+    $scope.viewDetail = function (id, eventId) {
         console.log("viewDetail-->");
         console.log("id: " + id);
         var obj = {

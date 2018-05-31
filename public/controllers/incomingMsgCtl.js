@@ -3,6 +3,7 @@ app.controller('incomingMsgCtl', function ($scope, $rootScope, $state, $window, 
     $scope.userData = sessionAuthFactory.getAccess("userData");
     $scope.loginType = $scope.userData.loginType;
     $scope.events = [];
+    var ownerEvents = [];
     $scope.propertyJson = $rootScope.propertyJson;
 
     $scope.getSelectedStudentPersonalData = function () {

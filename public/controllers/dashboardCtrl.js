@@ -47,7 +47,6 @@ app.controller('dashboardController', function ($scope, $rootScope, $window, htt
                     if ($scope.eventData[x].notificationNeed == 'yes') {
                         $scope.numberOfNotif = $scope.numberOfNotif + 1;
                     }
-                    console.log(" obj" + JSON.stringify(obj))
                 }
             }
             else {

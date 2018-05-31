@@ -3,8 +3,6 @@ var http = require('http');
 var bodyParser = require('body-parser')
 var nodemailer = require('nodemailer');
 var fileUpload = require('express-fileupload');
-var location = require('location-href')
-location()
 
 var multer = require('multer');
 
@@ -21,9 +19,9 @@ app.use(bodyParser.json({
 app.use(fileUpload());
 
 // module.exports = function (app, config) {
-//app.set('view engine','html');
-// app.use(session({secret: "Your secret key"}));
-//app.use(multer({ dest: './public/schoolLogo'}));
+    //app.set('view engine','html');
+    // app.use(session({secret: "Your secret key"}));
+    //app.use(multer({ dest: './public/schoolLogo'}));
 // }
 var queryId = null;
 var userName = null;
@@ -92,39 +90,19 @@ app.get("/clientNew/:id/:time", function (req, res) {
 });
 
 app.get("/careator", function (req, res) {
-    //queryId = null;
+
+    queryId = null;
+
     console.log("start to render page");
-
     res.sendFile(__dirname + '/public/careator.html');
-
 });
-app.get("/careatorGet", function (req, res) {
-    console.log("careatorGet-->");
-    var responseData = {
-        status: true,
-        message: "https://norecruits.com/careator/" + queryId + "/" + time
-    }
-    res.status(200).send(responseData);
-})
-app.get("/careator/:id/:date", function (req, res) {
-    queryId = req.params.id;
-    time = req.params.date;
-    location.set('http://new/location');
 
-})
-
-app.post("/careator/:id/:date", function (req, res) {
-    console.log("careator started-->");
+app.get("/careator/:id/:time", function (req, res) {
     queryId = req.params.id;
-    time = req.params.date;
-    var responseData = {
-        status: true,
-        message: "https://norecruits.com/careator/" + queryId + "/" + time
-    }
-    res.status(200).send(responseData);
+    time = req.params.id;
     console.log("queryId: " + req.params.id);
     console.log("start to render page");
-    //res.sendFile(__dirname + '/public/careator.html');
+    res.sendFile(__dirname + '/public/careator.html');
 });
 // app.get("/mainPage", function (req, res) {
 //     console.log("start to render page");

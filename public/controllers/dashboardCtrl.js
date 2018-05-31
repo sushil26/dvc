@@ -87,6 +87,29 @@ app.controller('dashboardController', function ($scope, $rootScope, $window, htt
 
     $scope.eventGet();
 
+    $scope.getSelectedStudentPersonalData = function () {
+        console.log("get Selected Student PersonalData-->");
+        var id = $scope.userData.id;
+        var api = $scope.propertyJson.VC_studentPersonalData + "/" + id;
+        console.log("api: " + api);
+        httpFactory.get(api).then(function (data) {
+            var checkStatus = httpFactory.dataValidation(data);
+            // console.log("data--" + JSON.stringify(data.data));
+            if (checkStatus) {
+                $scope.studentPersonalData = data.data.data;
+                $scope.studCS = $scope.studentPersonalData[0].cs;
+                console.log("  $scope.studCS: " + JSON.stringify($scope.studCS));
+                console.log("$scope.studentPersonalData: " + JSON.stringify($scope.studentPersonalData));
+                $scope.quickMsgGet();
+            }
+            else {
+                //alert("Event get Failed");
+            }
+
+        })
+        console.log("<--get Selected Student PersonalData");
+    }
+
     $scope.quickMsgGet = function () {
         console.log("quickMsgGet-->");
         var id = $scope.userData.id;
@@ -156,8 +179,15 @@ app.controller('dashboardController', function ($scope, $rootScope, $window, htt
             }
         })
     }
+    if ($scope.loginType == 'studParent') {
+        $scope.getSelectedStudentPersonalData();
 
-    $scope.quickMsgGet();
+    }
+    else {
+
+        $scope.quickMsgGet();
+    }
+   
 
     $scope.iconMenuClick = function () {
         console.log("iconMenuClick--> ");

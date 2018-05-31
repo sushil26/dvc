@@ -33,7 +33,7 @@ table td {
 .quotes {
   color: white;
 
-  -webkit-animation: mymo s infinite;
+  -webkit-animation: mymo 1s infinite;
   /* Safari 4.0 - 8.0 */
   animation: mymo 1s infinite;
 }

@@ -11,7 +11,7 @@ app.controller('dashboardPersonalDetailController', function ($scope, $rootScope
         console.log("getschoollogoPath----------->");
         var schoolName = $scope.userData.schoolName;
         console.log("schoolName: "+schoolName);
-        var api = $scope.propertyJson.VC_getSchoolDataById + "/" + schoolName;
+        var api = $scope.propertyJson.VC_getSchoolData + "/" + schoolName;
         console.log("api: " + api);
         httpFactory.get(api).then(function (data) {
             var checkStatus = httpFactory.dataValidation(data);

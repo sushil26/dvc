@@ -72,6 +72,7 @@ jQuery(document).ready(function ($) {
       var container = $("#mobile-nav, #mobile-nav-toggle");
       if (!container.is(e.target) && container.has(e.target).length === 0) {
         if ($('body').hasClass('mobile-nav-active')) {
+          $('#mobile-nav').css({"width":"260px"});
           $('body').removeClass('mobile-nav-active');
           $('#mobile-nav-toggle i').toggleClass('fa-times fa-bars');
           $('#mobile-body-overly').fadeOut();

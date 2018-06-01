@@ -608,7 +608,7 @@ h6 {
   top: 0;
   left: 0;
   position: fixed;
-  background: rgba(52, 59, 64, 0.9);
+  /* background: rgba(52, 59, 64, 0.9); */
   display: none;
 }
 

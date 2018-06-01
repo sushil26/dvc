@@ -757,10 +757,10 @@ app.controller('quickMsgCtl', function ($scope, $rootScope, $state, $rootScope, 
         $scope.selectedDate_quickMsg = $filter('date')(date, "MMM d, y")
         $scope.selectedDateForEvent = $filter('date')(date, "EEE");
         console.log("selectedDateForEvent: " + $scope.selectedDateForEvent);
-        $scope.selectedDate = date;
+        console.log(" $scope.todayDate: " +  $scope.todayDate+" date: "+date);
+                $scope.selectedDate = date;
         if ($scope.remoteCalendarId) {
             $('#quickMsg_modal').modal('show');
-            
         }
         else {
             if ($scope.userData.loginType == 'teacher') {

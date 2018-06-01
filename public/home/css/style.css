@@ -21,22 +21,22 @@
 }
 
 @-webkit-keyframes mymo {
-  from {font-size: 6vw;
+  from {
     color: floralwhite;
   }
   to {
-    font-size: 7vw;
+   
     color: orange;
   }
 }
 
 @keyframes mymo {
   from {
-    font-size: 6vw;
+    
     color: floralwhite;
   }
   to {
-    font-size: 7vw;
+    
     color: orange;
   }
 }

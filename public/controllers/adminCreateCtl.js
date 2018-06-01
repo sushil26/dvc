@@ -8,7 +8,7 @@ app.controller('adminCreateCtl', function ($scope, $rootScope, $filter, $window,
         /* #####  Start Upload File ###### */
         console.log("$scope.file: " + $scope.file);
         console.log("$scope.file: " + $scope.file.upload);
-        if ($scope.file.upload) {
+        if ($scope.myImage.resBlob) {
             var uploadURL = $scope.propertyJson.VC_schoolLogo;
             console.log("uploadURL: " + uploadURL);
             console.log("$scope.file.upload from : alumRegCtr.js: " + $scope.file.upload);

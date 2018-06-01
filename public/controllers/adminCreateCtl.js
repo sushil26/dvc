@@ -24,12 +24,32 @@ app.controller('adminCreateCtl', function ($scope, $rootScope, $filter, $window,
                     $scope.message = data.data.message;
                     $scope.filePath = data.data.data.filePath;
                     console.log("$scope.filePath: " + $scope.filePath);
+                    var loginAlert = $uibModal.open({
+                        scope: $scope,
+                        templateUrl: '/html/templates/dashboardsuccess.html',
+                        windowClass: 'show',
+                        backdropClass: 'static',
+                        keyboard: false,
+                        controller: function ($scope, $uibModalInstance) {
+                            $scope.message = $scope.message 
+                        }
+                    })
                     // // console.log("JSON.stringify($scope.postJson): " + JSON.stringify(postJson));
                     // $scope.adminCreate();
                 } else {
                     $scope.status = data.data.status;
                     $scope.message = data.data.message;
                     console.log("image is not uploaded");
+                    var loginAlert = $uibModal.open({
+                        scope: $scope,
+                        templateUrl: '/html/templates/dashboardwarning.html',
+                        windowClass: 'show',
+                        backdropClass: 'static',
+                        keyboard: false,
+                        controller: function ($scope, $uibModalInstance) {
+                            $scope.message = $scope.message 
+                        }
+                    })
                     // $scope.adminCreate();
                     // console.log("JSON.stringify($scope.postJson): " + JSON.stringify(postJson));
                     // $scope.savePost();

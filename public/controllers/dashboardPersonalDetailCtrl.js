@@ -9,7 +9,7 @@ app.controller('dashboardPersonalDetailController', function ($scope, $rootScope
 
     $scope.getschoollogoPath = function () {
         console.log("getschoollogoPath----------->");
-        var schoolName = $scope.userName.schoolName;
+        var schoolName = $scope.userData.schoolName;
         console.log("schoolName: "+schoolName);
         var api = $scope.propertyJson.VC_getschoollogoPath + "/" + schoolName;
         console.log("api: " + api);

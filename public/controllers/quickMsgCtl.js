@@ -754,10 +754,10 @@ app.controller('quickMsgCtl', function ($scope, $rootScope, $state, $rootScope, 
         console.log("timespanClicked-->");
         console.log("date: " + date);
         console.log("teacherPersonalData: " + JSON.stringify($scope.teacherPersonalData));
-        $scope.selectedDate_quickMsg = $filter('date')(date, "MMM d, y")
+        $scope.selectedDate_quickMsg = $filter('date')(date, "MMM d, y");
         $scope.selectedDateForEvent = $filter('date')(date, "EEE");
         console.log("selectedDateForEvent: " + $scope.selectedDateForEvent);
-        console.log(" $scope.todayDate: " +  $scope.todayDate+" date: "+date);
+        console.log(" $scope.todayDate: " +  $filter('date')($scope.todayDate, "MMM d, y")+" date: "+$filter('date')(date, "MMM d, y"));
                 $scope.selectedDate = date;
         if ($scope.remoteCalendarId) {
             $('#quickMsg_modal').modal('show');

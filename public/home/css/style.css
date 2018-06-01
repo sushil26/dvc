@@ -514,13 +514,13 @@ h6 {
 
 #mobile-nav-toggle {
   position: fixed;
-  right: 0;
+  left: 20px;
   top:0;
   z-index: 999;
   margin: 20px 20px 0 0;
   border: 0;
   background: none;
-  font-size: 25px;
+  font-size: 15px;
   display: none;
   transition: all 0.4s;
   outline: none;

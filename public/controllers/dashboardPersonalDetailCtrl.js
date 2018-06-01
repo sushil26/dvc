@@ -10,6 +10,7 @@ app.controller('dashboardPersonalDetailController', function ($scope, $rootScope
     $scope.getschoollogoPath = function () {
         console.log("getschoollogoPath----------->");
         var schoolName = $scope.userName.schoolName;
+        console.log("schoolName: "+schoolName);
         var api = $scope.propertyJson.VC_getschoollogoPath + "/" + schoolName;
         console.log("api: " + api);
         httpFactory.get(api).then(function (data) {

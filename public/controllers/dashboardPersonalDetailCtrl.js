@@ -17,7 +17,7 @@ app.controller('dashboardPersonalDetailController', function ($scope, $rootScope
             var checkStatus = httpFactory.dataValidation(data);
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
-                $scope.schoolLogoPath = data.data.logoPath;
+                $scope.schoolLogoPath = data.data.data.logoPath;
                 console.log("$scope.schoolLogoPath: " + $scope.schoolLogoPath);
                 //   $scope.css = $scope.teacherData[0].css;
                 //   console.log("$scope.css: " + JSON.stringify($scope.css));

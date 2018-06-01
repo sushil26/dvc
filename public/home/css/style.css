@@ -547,8 +547,8 @@ h6 {
   bottom: 0;
   z-index: 998;
   background: rgba(52, 59, 64, 0.9);
-  left: -260px;
-  width: 260px;
+  top: -260px;
+  width: 100%;
   overflow-y: auto;
   transition: 0.4s;
 }

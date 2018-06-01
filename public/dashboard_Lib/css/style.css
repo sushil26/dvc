@@ -542,7 +542,7 @@ ul.sidebar-menu li a {
 ul.sidebar-menu li.active a,
 ul.sidebar-menu li a:hover,
 ul.sidebar-menu li a:focus {
-  background: #2e3b46;
+  background: #ffc107;
   color: teal;
   display: block;
   /*border-radius: 4px;

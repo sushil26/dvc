@@ -11,7 +11,7 @@ app.controller('dashboardPersonalDetailController', function ($scope, $rootScope
         console.log("getschoollogoPath----------->");
         var schoolName = $scope.userData.schoolName;
         console.log("schoolName: "+schoolName);
-        var api = $scope.propertyJson.VC_getschoollogoPath + "/" + schoolName;
+        var api = $scope.propertyJson.VC_getSchoolDataById + "/" + schoolName;
         console.log("api: " + api);
         httpFactory.get(api).then(function (data) {
             var checkStatus = httpFactory.dataValidation(data);
@@ -25,8 +25,6 @@ app.controller('dashboardPersonalDetailController', function ($scope, $rootScope
                 console.log("data.status: " + data.status);
             }
         })
-
-
     }
 
     if ($scope.loginType == 'teacher' || $scope.loginType == 'studParent') {

@@ -129,36 +129,3 @@ module.exports.getSchoolDataById = function (req, res) {
     console.log("<--getAllClass");
 };
 
-module.exports.getschoollogoPath = function(req, res){
-    console.log("getschoollogoPath-->");
-    var response;
-    if(general.emptyCheck(req.params.schoolName)){ 
-        school.find({"schoolName":req.params.schoolName}, function(err, data){
-            if(err){
-                responseData = {
-                    status: false,
-                    message: "Failed to get Data",
-                };
-                res.status(400).send(responseData);
-            }
-            else{
-                responseData = {
-                    status: true,
-                    message: "Successfull retrived data",
-                    data: data
-                };
-
-                res.status(200).send(responseData);
-            }
-        })
-
-    }
-    else{
-        responseData = {
-            status: false,
-            message: "Find empty value"
-        };
-        res.status(400).send(responseData);
-
-    }
-}

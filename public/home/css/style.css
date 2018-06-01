@@ -543,12 +543,12 @@ h6 {
 #mobile-nav-toggle {
   position: fixed;
   right: 0;
-  top: -6px;
+  top:0;
   z-index: 999;
   margin: 20px 20px 0 0;
   border: 0;
   background: none;
-  font-size: 16px;
+  font-size: 25px;
   display: none;
   transition: all 0.4s;
   outline: none;

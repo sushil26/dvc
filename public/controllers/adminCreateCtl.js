@@ -63,13 +63,7 @@ app.controller('adminCreateCtl', function ($scope, $rootScope, $filter, $window,
                 "pswd": $scope.pswd,
                 "logoPath": $scope.filePath
             }
-
-        }
-        else {
-            alert("upload file then click on save");
-        }
-
-        console.log("objJson: " + JSON.stringify(objJson));
+            console.log("objJson: " + JSON.stringify(objJson));
         var api = $scope.propertyJson.VC_adminCreate;
         httpFactory.post(api, objJson).then(function (data) {
             var checkStatus = httpFactory.dataValidation(data);
@@ -115,6 +109,13 @@ app.controller('adminCreateCtl', function ($scope, $rootScope, $filter, $window,
                 //   alert("Failed to create");
             }
         })
+
+        }
+        else {
+            alert("upload file then click on save");
+        }
+
+        
         console.log("<--adminCreate");
     }
 

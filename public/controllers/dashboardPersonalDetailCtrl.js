@@ -18,7 +18,7 @@ app.controller('dashboardPersonalDetailController', function ($scope, $rootScope
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
                 $scope.schoolLogoPath = data.data.schoolLogo;
-                console.log("teacherData: " + JSON.stringify($scope.userData));
+                console.log("$scope.schoolLogoPath: " + $scope.schoolLogoPath);
                 //   $scope.css = $scope.teacherData[0].css;
                 //   console.log("$scope.css: " + JSON.stringify($scope.css));
             } else {

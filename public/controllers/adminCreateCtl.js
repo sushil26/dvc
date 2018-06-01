@@ -8,64 +8,64 @@ app.controller('adminCreateCtl', function ($scope, $rootScope, $filter, $window,
         /* #####  Start Upload File ###### */
         console.log("$scope.file: " + $scope.file);
         console.log("$scope.file: " + $scope.file.upload);
-        //    if ($scope.file.upload) {
-        var uploadURL = $scope.propertyJson.VC_schoolLogo;
-        console.log("uploadURL: " + uploadURL);
-        console.log("$scope.file.upload from : alumRegCtr.js: " + $scope.file.upload);
-        httpFactory.imageUpload(uploadURL, $scope.myImage.resBlob).then(function (data) {
-            console.log("hello " + JSON.stringify(data));
-            var checkStatus = httpFactory.dataValidation(data);
-            console.log("checkStatus: " + checkStatus);
-            console.log("data.data.success: " + data.data.success);
-            if (checkStatus) {
-                console.log("$scope.photo" + JSON.stringify(data));
-                $scope.getUpdateofImage = data;
-                console.log("$scope.getUpdateofImage" + JSON.stringify($scope.getUpdateofImage));
-                $scope.message = data.data.message;
-                $scope.filePath = data.data.data.filePath;
-                console.log("$scope.filePath: " + $scope.filePath);
-                // // console.log("JSON.stringify($scope.postJson): " + JSON.stringify(postJson));
-                // $scope.adminCreate();
-            } else {
-                $scope.status = data.data.status;
-                $scope.message = data.data.message;
-                console.log("image is not uploaded");
-                // $scope.adminCreate();
-                // console.log("JSON.stringify($scope.postJson): " + JSON.stringify(postJson));
-                // $scope.savePost();
-            }
-        });
-        //}
+        if ($scope.file.upload) {
+            var uploadURL = $scope.propertyJson.VC_schoolLogo;
+            console.log("uploadURL: " + uploadURL);
+            console.log("$scope.file.upload from : alumRegCtr.js: " + $scope.file.upload);
+            httpFactory.imageUpload(uploadURL, $scope.myImage.resBlob).then(function (data) {
+                console.log("hello " + JSON.stringify(data));
+                var checkStatus = httpFactory.dataValidation(data);
+                console.log("checkStatus: " + checkStatus);
+                console.log("data.data.success: " + data.data.success);
+                if (checkStatus) {
+                    console.log("$scope.photo" + JSON.stringify(data));
+                    $scope.getUpdateofImage = data;
+                    console.log("$scope.getUpdateofImage" + JSON.stringify($scope.getUpdateofImage));
+                    $scope.message = data.data.message;
+                    $scope.filePath = data.data.data.filePath;
+                    console.log("$scope.filePath: " + $scope.filePath);
+                    // // console.log("JSON.stringify($scope.postJson): " + JSON.stringify(postJson));
+                    // $scope.adminCreate();
+                } else {
+                    $scope.status = data.data.status;
+                    $scope.message = data.data.message;
+                    console.log("image is not uploaded");
+                    // $scope.adminCreate();
+                    // console.log("JSON.stringify($scope.postJson): " + JSON.stringify(postJson));
+                    // $scope.savePost();
+                }
+            });
+        }
         /* #####  End Upload File ###### */
-        // else{
-        //     alert("logo is required");
-        // }
+        else {
+            alert("logo is required");
+        }
         console.log("<--schoolLogoStorage");
     }
 
     $scope.adminCreate = function () {
         console.log("adminCreate-->");
         if ($scope.filePath) {
-        var objJson = {
-            "schoolName": $scope.schoolName,
-            "schoolRegNumber": $scope.schoolRegNumber,
-            "firstName": $scope.firstName,
-            "lastName": $scope.lastName,
-            "dor": $filter('date')($scope.dor, "d MMM  y"),
-            "email": $scope.email,
-            "mobNumber": $scope.mobNumber,
-            "address": $scope.address,
-            "streetName": $scope.streetName,
-            "city": $scope.city,
-            "state": $scope.state,
-            "pinCode": $scope.pinCode,
-            "country": $scope.country,
-            "pswd": $scope.pswd,
-            "logoPath" : $scope.filePath
+            var objJson = {
+                "schoolName": $scope.schoolName,
+                "schoolRegNumber": $scope.schoolRegNumber,
+                "firstName": $scope.firstName,
+                "lastName": $scope.lastName,
+                "dor": $filter('date')($scope.dor, "d MMM  y"),
+                "email": $scope.email,
+                "mobNumber": $scope.mobNumber,
+                "address": $scope.address,
+                "streetName": $scope.streetName,
+                "city": $scope.city,
+                "state": $scope.state,
+                "pinCode": $scope.pinCode,
+                "country": $scope.country,
+                "pswd": $scope.pswd,
+                "logoPath": $scope.filePath
+            }
+
         }
-                 
-        }
-        else{
+        else {
             alert("upload file then click on save");
         }
 

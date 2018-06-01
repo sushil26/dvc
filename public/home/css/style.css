@@ -49,7 +49,7 @@
 
 @-webkit-keyframes my{
   from {
-    transform: rotate(0deg);
+    transform: rotate(20deg);
     color: floralwhite;
   }
   to {
@@ -60,7 +60,7 @@
 
 @keyframes my {
   from {
-    transform: rotate(0deg);
+    transform: rotate(20deg);
     color: floralwhite;
   }
   to {

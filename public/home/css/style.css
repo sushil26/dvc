@@ -49,21 +49,22 @@
 
 @-webkit-keyframes my{
   from {
+    transform: rotate(0deg);
     color: floralwhite;
   }
   to {
-   
+    transform: rotate(360deg);
     color: orange;
   }
 }
 
 @keyframes my {
   from {
-    
+    transform: rotate(0deg);
     color: floralwhite;
   }
   to {
-    
+    transform: rotate(360deg);
     color: orange;
   }
 }

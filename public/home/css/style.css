@@ -620,6 +620,7 @@ body.mobile-nav-active {
 
 body.mobile-nav-active #mobile-nav {
   left: 0;
+  width: 100%;
 }
 
 body.mobile-nav-active #mobile-nav-toggle {

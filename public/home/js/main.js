@@ -62,7 +62,7 @@ jQuery(document).ready(function ($) {
     });
 
     $(document).on('click', '#mobile-nav-toggle', function (e) {
-      $('#mobile-nav').css({"width":"100%"});
+      
       $('body').toggleClass('mobile-nav-active');
       $('#mobile-nav-toggle i').toggleClass('fa-times fa-bars');
       $('#mobile-body-overly').toggle();
@@ -72,7 +72,7 @@ jQuery(document).ready(function ($) {
       var container = $("#mobile-nav, #mobile-nav-toggle");
       if (!container.is(e.target) && container.has(e.target).length === 0) {
         if ($('body').hasClass('mobile-nav-active')) {
-          $('#mobile-nav').css({"display":"none !important"});
+        
           $('body').removeClass('mobile-nav-active');
           $('#mobile-nav-toggle i').toggleClass('fa-times fa-bars');
           $('#mobile-body-overly').fadeOut();

@@ -40,34 +40,6 @@
     color: orange;
   }
 }
-#vc{
-  color: floralwhite;
-  -webkit-animation: my 4s infinite;
-  /* Safari 4.0 - 8.0 */
-  animation: my 4s infinite;
-}
-
-@-webkit-keyframes my{
-  from {
-    transform: rotate(20deg);
-    color: floralwhite;
-  }
-  to {
-    transform: rotate(360deg);
-    color: orange;
-  }
-}
-
-@keyframes my {
-  from {
-    transform: rotate(20deg);
-    color: floralwhite;
-  }
-  to {
-    transform: rotate(360deg);
-    color: orange;
-  }
-}
 /* .elementToFadeInAndOut {
 
   background: red;

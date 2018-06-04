@@ -7,10 +7,7 @@ app.controller('dashboardController', function ($scope, $rootScope, $timeout, $w
     $scope.clock = "loading clock..."; // initialise the time variable
     $scope.tickInterval = 1000 //ms
     $scope.propertyJson = $rootScope.propertyJson;
-    $timeout(function() {
-        console.log("start to broadcast");
-    $rootScope.$broadcast("CallParent_personalDetails");
-    })
+   
     var tick = function () {
         $scope.clock = new Date()
         $scope.hour = $filter('date')($scope.clock, 'HH');
@@ -244,7 +241,8 @@ app.controller('dashboardController', function ($scope, $rootScope, $timeout, $w
     })
     $rootScope.$on("CallParent_newEventAdded", function () {
         console.log("getting from child and passing into child-->");
-        $rootScope.$emit("CallParent_newEventAddedToChild", {});
+        $rootScope.$broadcast("CallParent_newEventAddedToChild");
+        // $rootScope.$emit("CallParent_newEventAddedToChild", {});
         //$scope.eventGet();
     })
     

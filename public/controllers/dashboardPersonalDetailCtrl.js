@@ -8,10 +8,6 @@ app.controller('dashboardPersonalDetailController', function ($scope, $rootScope
     $scope.propertyJson = $rootScope.propertyJson;
     console.log("dashboardPersonalDetailController-->");
 
-    $rootScope.$on("CallParent_personalDetails", function (event, data) {
-        console.log("*get from parent");
-    })
-
     $scope.getschoollogoPath = function () {
         console.log("getschoollogoPath----------->");
         var schoolName = $scope.userData.schoolName;

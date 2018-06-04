@@ -2005,7 +2005,7 @@ module.exports.uploadStudentMaster = function (req, res) {
             csData = [{ "class": req.params.clas, "section": req.params.section }];
             parser.pause();
             console.log("data.StudentID: " + data.StudentID);
-            if (data.StudentID != 'end') {
+            if (data.StudentID != '#end#') {
                 if (studentFileValidationMessage == null) {
                     module.exports.studentMasterValidation(data, function (err) {
                         console.log("savedatInitiate");

@@ -1420,7 +1420,7 @@ document.querySelector('#resume-recording').onclick = function () {
   document.querySelector('#pause-recording').disabled = false;
 };
 
-var multiStreamRecorder =local_media_stream;
+var multiStreamRecorder =streamArray;
 var audioVideoBlobs = {};
 var recordingInterval = 0;
 

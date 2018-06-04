@@ -1,19 +1,6 @@
-// var encUrl = localStorage.getItem("encUrl");
-// var encPswd = localStorage.getItem("encPswd");
-// var decryptedUrl = CryptoJS.AES.decrypt(encUrl, "url");
-// var decryptedPswd = CryptoJS.AES.decrypt(encPswd, "pswd");
-// console.log("decryptedUrl: "+decryptedUrl.toString(CryptoJS.enc.Utf8));
-// console.log("decryptedPswd: "+decryptedPswd.toString(CryptoJS.enc.Utf8));
 
-// ];
 var sesionEnc = localStorage.getItem("sessionEnc");
-console.log("sesionEnc: " + sesionEnc);
-
-
-/** CONFIG **/
-console.log("Signaling Socket.js");
 var SIGNALING_SERVER = "https://norecruits.com";
-//var SIGNALING_SERVER = "http://localhost:5000";
 var streamArray = [];
 var signaling_socket = null; /* our socket.io connection to our webserver */
 var local_media_stream = null; /* our own microphone / webcam */
@@ -22,27 +9,21 @@ var peers = {}; /* keep track of our peer connections, indexed by peer_id (aka s
 var peer_media_elements = {};
 peer_userName_elements = {};
 var peer_media_sselements = {}; /* keep track of our <video>/<audio> tags, indexed by peer_id */
-/* #### Logu Defined  ##### */
 var peerNew_id = null;
 var queryLink = null;
 var timeLink = null;
 var txtQueryLink = null;
-
-// signaling_socket = io(SIGNALING_SERVER);
 var file;
 var disconnPeerId = null;
 var shareScreen = null;
 var sessionHeader = null;
 var peerStream = null;
-
 signaling_socket = io(SIGNALING_SERVER);
-
 var userName;
 var USE_AUDIO = true;
 var USE_VIDEO = true;
 var DEFAULT_CHANNEL = "some-global-ch-name";
 var MUTE_AUDIO_BY_DEFAULT = false;
-
 var url = window.location.href;
 var stuff = url.split("/");
 var id1 = stuff[stuff.length - 2];
@@ -1398,3 +1379,136 @@ $(".back-to-top").click(function () {
   }, 1500, "easeInOutExpo");
   return false;
 });
+
+// Record>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+function captureUserMedia(mediaConstraints, successCallback, errorCallback) {
+  navigator.mediaDevices.getUserMedia(mediaConstraints).then(successCallback).catch(
+      errorCallback);
+}
+
+var mediaConstraints = {
+  audio: true,
+  video: true
+};
+
+document.querySelector('#start-recording').onclick = function () {
+  this.disabled = true;
+  captureUserMedia(mediaConstraints, onMediaSuccess, onMediaError);
+};
+
+document.querySelector('#stop-recording').onclick = function () {
+  this.disabled = true;
+  multiStreamRecorder.stop();
+  multiStreamRecorder.stream.stop();
+
+  document.querySelector('#pause-recording').disabled = true;
+  document.querySelector('#start-recording').disabled = false;
+  document.querySelector('#add-stream').disabled = true;
+};
+
+document.querySelector('#pause-recording').onclick = function () {
+  this.disabled = true;
+  multiStreamRecorder.pause();
+
+  document.querySelector('#resume-recording').disabled = false;
+};
+
+document.querySelector('#resume-recording').onclick = function () {
+  this.disabled = true;
+  multiStreamRecorder.resume();
+
+  document.querySelector('#pause-recording').disabled = false;
+};
+
+var multiStreamRecorder =local_media_stream;
+var audioVideoBlobs = {};
+var recordingInterval = 0;
+
+function onMediaSuccess(stream) {
+  var video = document.createElement('video');
+
+  video = mergeProps(video, {
+      controls: true,
+      muted: true
+  });
+  video.srcObject = stream;
+
+  video.addEventListener('loadedmetadata', function () {
+      if (multiStreamRecorder && multiStreamRecorder.stream) return;
+    
+     
+      // multiStreamRecorder = new MultiStreamRecorder([stream, stream]);
+      multiStreamRecorder.stream = stream;
+
+      multiStreamRecorder.previewStream = function (stream) {
+          video.src = URL.createObjectURL(stream);
+          video.play();
+      };
+
+      multiStreamRecorder.ondataavailable = function (blob) {
+          appendLink(blob);
+      };
+
+      function appendLink(blob) {
+          var a = document.createElement('a');
+          a.target = '_blank';
+          a.innerHTML = 'Open Recorded ' + (blob.type == 'audio/ogg' ?
+                  'Audio' : 'Video') + ' No. ' + (index++) + ' (Size: ' +
+              bytesToSize(blob.size) + ') Time Length: ' + getTimeLength(
+                  timeInterval);
+
+          a.href = URL.createObjectURL(blob);
+
+          container.appendChild(a);
+          container.appendChild(document.createElement('hr'));
+      }
+
+      var timeInterval = document.querySelector('#time-interval').value;
+      if (timeInterval) timeInterval = parseInt(timeInterval);
+      else timeInterval = 5 * 1000;
+
+      // get blob after specific time interval
+      multiStreamRecorder.start(timeInterval);
+
+      document.querySelector('#add-stream').disabled = false;
+      document.querySelector('#add-stream').onclick = function () {
+          if (!multiStreamRecorder || !multiStreamRecorder.stream) return;
+          multiStreamRecorder.addStream(multiStreamRecorder.stream);
+      };
+
+      document.querySelector('#stop-recording').disabled = false;
+      document.querySelector('#pause-recording').disabled = false;
+  }, false);
+
+  video.play();
+
+  container.appendChild(video);
+  container.appendChild(document.createElement('hr'));
+}
+
+function onMediaError(e) {
+  console.error('media error', e);
+}
+
+var container = document.getElementById('container');
+var index = 1;
+
+// below function via: http://goo.gl/B3ae8c
+function bytesToSize(bytes) {
+  var k = 1000;
+  var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+  if (bytes === 0) return '0 Bytes';
+  var i = parseInt(Math.floor(Math.log(bytes) / Math.log(k)), 10);
+  return (bytes / Math.pow(k, i)).toPrecision(3) + ' ' + sizes[i];
+}
+
+// below function via: http://goo.gl/6QNDcI
+function getTimeLength(milliseconds) {
+  var data = new Date(milliseconds);
+  return data.getUTCHours() + " hours, " + data.getUTCMinutes() + " minutes and " +
+      data.getUTCSeconds() + " second(s)";
+}
+
+window.onbeforeunload = function () {
+  document.querySelector('#start-recording').disabled = false;
+};

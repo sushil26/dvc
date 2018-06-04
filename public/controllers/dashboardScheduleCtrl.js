@@ -616,7 +616,6 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $state, $r
           "schoolName": schoolName
         }
         console.log("obj: " + JSON.stringify(obj));
-
         httpFactory.post(api, obj).then(function (data) {
           var checkStatus = httpFactory.dataValidation(data);
           //console.log("data--" + JSON.stringify(data.data));

@@ -105,7 +105,7 @@ function sendEmail() {
   console.log("obj: " + JSON.stringify(obj));
 
   $.ajax({
-    url: "https://norecruits.com/record/pswdGenerate",
+    url: "https://norecruits.com/careator/pswdGenerate",
     type: "POST",
     data: JSON.stringify(obj),
     contentType: "application/json",
@@ -144,7 +144,7 @@ function checkPassword() {
   if (password != "" && careatorEmail != "") {
 
     $.ajax({
-      url: "https://norecruits.com/record/pswdCheck",
+      url: "https://norecruits.com/careator/pswdCheck",
       type: "POST",
       data: JSON.stringify(obj),
       contentType: "application/json",
@@ -160,7 +160,7 @@ function checkPassword() {
         //   console.log("document.getElementById(videoConferenceUrl).style.display: " + document.getElementById("videoConferenceUrl").style.display);
         //   document.getElementById("videoConferenceUrl").style.display = "block";
         //   console.log("document.getElementById(videoConferenceUrl).style.display: " + document.getElementById("videoConferenceUrl").style.display);
-        //   window.location.href = "https://norecruits.com/record";
+        //   window.location.href = "https://norecruits.com/careator";
         // }
         var userNameEmail = localStorage.getItem("careatorEmail");
         var emailIdSplit = userNameEmail.split('@');
@@ -212,7 +212,7 @@ function emailInvite() {
   };
   console.log("obj: " + JSON.stringify("obj"));
   $.ajax({
-    url: "https://norecruits.com/record/emailInvite",
+    url: "https://norecruits.com/careator/emailInvite",
     //  url: "http://localhost:5000/vc/login4VC",
     type: "POST",
     data: JSON.stringify(obj),
@@ -303,8 +303,8 @@ function disconnecSession() {
 
 function startSession(id, date) {
   console.log("startSession-->");
-  window.location.href = "https://norecruits.com/record/" + id + "/" + date;
-  var url = "https://norecruits.com/record/" + id + "/" + date;
+  window.location.href = "https://norecruits.com/careator/" + id + "/" + date;
+  var url = "https://norecruits.com/careator/" + id + "/" + date;
   var obj = {
     "url": url
   };
@@ -366,10 +366,10 @@ signaling_socket.on("connect", function () {
         .getElementById("linkToShare")
         .setAttribute(
           "href",
-          "https://norecruits.com/record/" + peerNew_id + "/" + date
+          "https://norecruits.com/careator/" + peerNew_id + "/" + date
         );
       document.getElementById("linkToShare").innerHTML =
-        "https://norecruits.com/record/" + peerNew_id + "/" + date;
+        "https://norecruits.com/careator/" + peerNew_id + "/" + date;
     }
     else {
       console.log("query id nt null");
@@ -378,10 +378,10 @@ signaling_socket.on("connect", function () {
         .getElementById("linkToShare")
         .setAttribute(
           "href",
-          "https://norecruits.com/record/" + queryLink + "/" + date
+          "https://norecruits.com/careator/" + queryLink + "/" + date
         );
       document.getElementById("linkToShare").innerHTML =
-        "https://norecruits.com/record/" + queryLink + "/" + date;
+        "https://norecruits.com/careator/" + queryLink + "/" + date;
       document.getElementById("screenBtns").style.display = "inline";
       document.getElementById("videoConfStart").style.display = "none";
       document.getElementById("openChat").style.display = "inline";

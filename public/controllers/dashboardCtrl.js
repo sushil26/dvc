@@ -1,4 +1,4 @@
-app.controller('dashboardController', function ($scope, $rootScope, $window, httpFactory, $uibModal, sessionAuthFactory, $filter, $timeout) {
+app.controller('dashboardController', function ($scope, $rootScope, $timeout, $window, httpFactory, $uibModal, sessionAuthFactory, $filter, $timeout) {
 
     console.log("dashboardController==>");
 
@@ -7,7 +7,7 @@ app.controller('dashboardController', function ($scope, $rootScope, $window, htt
     $scope.clock = "loading clock..."; // initialise the time variable
     $scope.tickInterval = 1000 //ms
     $scope.propertyJson = $rootScope.propertyJson;
-
+   
     var tick = function () {
         $scope.clock = new Date()
         $scope.hour = $filter('date')($scope.clock, 'HH');
@@ -241,11 +241,12 @@ app.controller('dashboardController', function ($scope, $rootScope, $window, htt
     })
     $rootScope.$on("CallParent_newEventAdded", function () {
         console.log("getting from child and passing into child-->");
-        $rootScope.$emit("CallParent_newEventAddedToChild", {});
+        $rootScope.$broadcast("CallParent_newEventAddedToChild");
+        // $rootScope.$emit("CallParent_newEventAddedToChild", {});
         //$scope.eventGet();
     })
-    console.log("start to emit");
-    $rootScope.$broadcast("CallParent_personalDetails");
+    
+   
     /* ##### End function call request from another controller  ##### */
 
 })

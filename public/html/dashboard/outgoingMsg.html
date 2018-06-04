@@ -39,7 +39,7 @@
                                     </thead>
                                     <tbody style="background: white">
                                         <tr ng-repeat="event in events" ng-if="event.userId==userData.id">
-                                            ---{{event.notificationNeed}}<td ng-if="event.notificationNeed == 'yes'">
+                                           <td ng-if="event.notificationNeed == 'yes'">
                                                 <a class="fa fa-envelope"></a>&nbsp;
                                                 <b>{{event.title}}</b>
                                             </td>

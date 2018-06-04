@@ -623,7 +623,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $state, $r
           if (checkStatus) {
             // console.log("data" + JSON.stringify(data.data))
             // $window.location.href = $scope.propertyJson.R082;
-            $rootScope.$broadcast()("CallParent_newEventAdded", {}); /* ### Note: calling method ofupcoming event list(upcomingEventCrl) ### */
+            $rootScope.$broadcast("CallParent_newEventAdded", {}); /* ### Note: calling method ofupcoming event list(upcomingEventCrl) ### */
             var loginAlert = $uibModal.open({
               scope: $scope,
               templateUrl: '/html/templates/dashboardsuccess.html',

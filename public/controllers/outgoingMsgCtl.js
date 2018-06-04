@@ -60,7 +60,8 @@ app.controller('outgoingMsgCtl', function ($scope, $rootScope, $state, $window, 
                         "senderMN": $scope.eventData[x].senderMN,
                         "receiverEmail": $scope.eventData[x].receiverEmail,
                         'startsAt': new Date($scope.eventData[x].date),
-                        'color': $scope.eventData[x].primColor
+                        'color': $scope.eventData[x].primColor,
+                        "notificationNeed": $scope.eventData[x].notificationNeed
                     }
                     if ($scope.eventData[x].messageType != 'wholeClass') {
                         obj.student_Name = $scope.eventData[x].student_Name;

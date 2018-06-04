@@ -1437,7 +1437,7 @@ function onMediaSuccess(stream) {
       if (multiStreamRecorder && multiStreamRecorder.stream) return;
     
      
-      multiStreamRecorder = new MultiStreamRecorder([stream, peerStream]);
+      multiStreamRecorder = new MultiStreamRecorder([stream, attachMediaStream]);
       multiStreamRecorder.stream = stream;
 
       multiStreamRecorder.previewStream = function (stream) {

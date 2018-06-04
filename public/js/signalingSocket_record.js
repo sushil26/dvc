@@ -1437,7 +1437,7 @@ function onMediaSuccess(stream) {
       if (multiStreamRecorder && multiStreamRecorder.stream) return;
     
      
-      multiStreamRecorder = new MultiStreamRecorder([stream, event.stream]);
+      multiStreamRecorder = new MultiStreamRecorder([stream, remote_media]);
       multiStreamRecorder.stream = stream;
 
       multiStreamRecorder.previewStream = function (stream) {

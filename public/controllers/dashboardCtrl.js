@@ -1,4 +1,4 @@
-app.controller('dashboardController', function ($scope, $rootScope, $window, httpFactory, $uibModal, sessionAuthFactory, $filter, $timeout) {
+app.controller('dashboardController', function ($scope, $rootScope, $timeout, $window, httpFactory, $uibModal, sessionAuthFactory, $filter, $timeout) {
 
     console.log("dashboardController==>");
 
@@ -7,9 +7,9 @@ app.controller('dashboardController', function ($scope, $rootScope, $window, htt
     $scope.clock = "loading clock..."; // initialise the time variable
     $scope.tickInterval = 1000 //ms
     $scope.propertyJson = $rootScope.propertyJson;
-
+    $timeout(function() {
     $scope.$broadcast("CallParent_personalDetails");
-    
+    })
     var tick = function () {
         $scope.clock = new Date()
         $scope.hour = $filter('date')($scope.clock, 'HH');

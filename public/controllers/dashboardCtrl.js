@@ -8,7 +8,8 @@ app.controller('dashboardController', function ($scope, $rootScope, $timeout, $w
     $scope.tickInterval = 1000 //ms
     $scope.propertyJson = $rootScope.propertyJson;
     $timeout(function() {
-    $scope.$broadcast("CallParent_personalDetails");
+        console.log("start to broadcast");
+    $rootScope.$broadcast("CallParent_personalDetails");
     })
     var tick = function () {
         $scope.clock = new Date()
@@ -246,7 +247,7 @@ app.controller('dashboardController', function ($scope, $rootScope, $timeout, $w
         $rootScope.$emit("CallParent_newEventAddedToChild", {});
         //$scope.eventGet();
     })
-    console.log("start to emit");
+    
    
     /* ##### End function call request from another controller  ##### */
 

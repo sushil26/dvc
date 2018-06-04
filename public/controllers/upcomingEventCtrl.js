@@ -228,10 +228,12 @@ app.controller('upcomingEventController', function ($scope, $rootScope, $state, 
         console.log("<--deleteEvent");
     }
 
-   
+    //update the client with new data;
     socket.on('eventUpdated', function (data) {
-        console.log("data: "+JSON.stringify(data));
-        //update the client with new data;
+        console.log("data: " + JSON.stringify(data));
+        if (data.id == $scope.userData.id){
+            $scope.eventGet();
+        }
     });
 
 

@@ -2411,16 +2411,19 @@ module.exports.uploadTeacherMaster = function (req, res) {
             console.log("data: " + JSON.stringify(data));
             // var csData = [{ "class": req.params.class, "section": req.params.section }];
             parser.pause();
-
-            if (teacherFileValidationMessage == null) {
-                module.exports.teacherMasterValidation(data, function (err) {
-                    console.log("savedatInitiate");
-                    // TODO: handle error
-                    console.log("teacherFileValidation function start-->: " + teacherFileValidationMessage);
-                    console.log("objJson: " + JSON.stringify(objJson));
-                    parser.resume();
-                });
+            console.log("data.TeacherID: "+data.TeacherID);
+            if (data.TeacherID != '#end#') {
+                if (teacherFileValidationMessage == null) {
+                    module.exports.teacherMasterValidation(data, function (err) {
+                        console.log("savedatInitiate");
+                        // TODO: handle error
+                        console.log("teacherFileValidation function start-->: " + teacherFileValidationMessage);
+                        console.log("objJson: " + JSON.stringify(objJson));
+                        parser.resume();
+                    });
+                }
             }
+
             else {
                 // parser.end();
                 parser.resume();

@@ -137,6 +137,7 @@ app.controller('incomingMsgCtl', function ($scope, $rootScope, $state, $window, 
     $scope.viewDetail = function (id, eventId) {
         console.log("viewDetail-->");
         console.log("id: " + id);
+        if($scope.events[id].userId!=$scope.userData.id){
         var obj = {
             "id": eventId
         }
@@ -155,6 +156,8 @@ app.controller('incomingMsgCtl', function ($scope, $rootScope, $state, $window, 
                 // alert("UnSuccessfully Event Updated");
             }
         })
+        $scope.events[id].notificationNeed='No';
+    }
 
         var eClicked = $uibModal.open({
             scope: $scope,
@@ -167,7 +170,7 @@ app.controller('incomingMsgCtl', function ($scope, $rootScope, $state, $window, 
                 console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
             }
         })
-        $scope.events[id].notificationNeed='No';
+       
         console.log("<--viewDetail");
     }
 

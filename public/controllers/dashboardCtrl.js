@@ -244,7 +244,7 @@ app.controller('dashboardController', function ($scope, $rootScope, $window, htt
         $rootScope.$emit("CallParent_newEventAddedToChild", {});
         //$scope.eventGet();
     })
-    $rootScope.$broadcast("CallParent_personalDetails", {});
+    $rootScope.$broadcast("CallParent_personalDetails");
     /* ##### End function call request from another controller  ##### */
 
 })

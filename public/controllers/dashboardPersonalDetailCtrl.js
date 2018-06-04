@@ -57,4 +57,9 @@ app.controller('dashboardPersonalDetailController', function ($scope, $rootScope
         console.log("<--getTeacherData");
     }
     $scope.getUserDetails(id);
+
+
+    $rootScope.$on("CallParent_personalDetails", function () {
+        console.log("*get from parent");
+    })
 })

@@ -1420,7 +1420,7 @@ document.querySelector('#resume-recording').onclick = function () {
   document.querySelector('#pause-recording').disabled = false;
 };
 
-var multiStreamRecorder =streamArray;
+var multiStreamRecorder;
 var audioVideoBlobs = {};
 var recordingInterval = 0;
 
@@ -1437,7 +1437,7 @@ function onMediaSuccess(stream) {
       if (multiStreamRecorder && multiStreamRecorder.stream) return;
     
      
-      // multiStreamRecorder = new MultiStreamRecorder([stream, stream]);
+      multiStreamRecorder = new MultiStreamRecorder([stream, peerStream]);
       multiStreamRecorder.stream = stream;
 
       multiStreamRecorder.previewStream = function (stream) {

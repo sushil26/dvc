@@ -6,11 +6,17 @@ var adminAction = require('./controllers/adminAction');
 var school = require('./controllers/school');
 var careator = require('./controllers/careator');
 
+var record = require('./controllers/record');
+
 module.exports = function (app) {
 
     app.post('/careator/pswdGenerate', careator.pswdGenerate);
     app.post('/careator/pswdCheck', careator.pswdCheck);
     app.post('/careator/emailInvite', careator.emailInvite);
+
+    app.post('/record/pswdGenerate', record.pswdGenerate);
+    app.post('/record/pswdCheck', record.pswdCheck);
+    app.post('/record/emailInvite', record.emailInvite);
 
     app.post('/vc/schoolLogo', image.upload);
     app.post('/vc/profilePicupload', image.profilePicupload);

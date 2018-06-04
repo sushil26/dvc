@@ -1437,9 +1437,9 @@ function onMediaSuccess(stream) {
       if (multiStreamRecorder && multiStreamRecorder.stream) return;
     
      
-      multiStreamRecorder = new MultiStreamRecorder([stream], peerStream[0], peerStream[1]);
+      multiStreamRecorder = new MultiStreamRecorder([stream,peer_media_elements]);
       multiStreamRecorder.stream = stream;
-
+      
       multiStreamRecorder.previewStream = function (stream) {
           video.src = URL.createObjectURL(stream);
           video.play();

@@ -198,6 +198,7 @@ function emailInvite() {
 
   console.log("<--emailInvite");
 }
+userName="logu";
 
 /** You should probably use a different stun server doing commercial stuff **/
 /** Also see: https://gist.github.com/zziuni/3741933 **/

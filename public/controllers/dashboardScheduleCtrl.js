@@ -798,10 +798,6 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $state, $r
     console.log("<--timeTableForEventBook");
   }
 
-
-
-
-
   var vm = this;
   //These variables MUST be set as a minimum for the calendar to work
   // vm.calendarView = 'month';

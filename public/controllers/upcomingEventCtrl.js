@@ -97,23 +97,26 @@ app.controller('upcomingEventController', function ($scope, $rootScope, $state, 
     $scope.viewDetail = function (id, eventId) {
         console.log("viewDetail-->");
         console.log("id: " + id);
-        var obj = {
-            "id": eventId
+        if ($scope.events[id].userId != $scope.userData.id) {
+            var obj = {
+                "id": eventId
+            }
+            var api = $scope.propertyJson.VC_eventNotificationOff;
+            console.log("api: " + api);
+            httpFactory.post(api, obj).then(function (data) {
+                var checkStatus = httpFactory.dataValidation(data);
+                console.log("data--" + JSON.stringify(data.data));
+                $rootScope.$emit("CallParent_eventGet", {}); /* ### Note: calling method of parentController(dashboardCtr) ### */
+                if (checkStatus) {
+                    console.log("data" + JSON.stringify(data.data));
+                    var eventPostedData = data.data.data;
+                }
+                else {
+                    // alert("UnSuccessfully Event Updated");
+                }
+            })
+            $scope.events[id].notificationNeed = 'No';
         }
-        var api = $scope.propertyJson.VC_eventNotificationOff;
-        console.log("api: " + api);
-        httpFactory.post(api, obj).then(function (data) {
-            var checkStatus = httpFactory.dataValidation(data);
-            console.log("data--" + JSON.stringify(data.data));
-            $rootScope.$emit("CallParent_eventGet", {}); /* ### Note: calling method of parentController(dashboardCtr) ### */
-            if (checkStatus) {
-                console.log("data" + JSON.stringify(data.data));
-                var eventPostedData = data.data.data;
-            }
-            else {
-                // alert("UnSuccessfully Event Updated");
-            }
-        })
         var eClicked = $uibModal.open({
             scope: $scope,
             templateUrl: '/html/templates/eventDetails.html',
@@ -124,7 +127,7 @@ app.controller('upcomingEventController', function ($scope, $rootScope, $state, 
                 console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
             }
         })
-        $scope.events[id].notificationNeed = 'No';
+      
         console.log("<--viewDetail");
     }
 
@@ -226,12 +229,12 @@ app.controller('upcomingEventController', function ($scope, $rootScope, $state, 
     }
 
 
-     /* ##### Strat function call request from another controller  ##### */
+    /* ##### Strat function call request from another controller  ##### */
     $rootScope.$on("CallParent_newEventAddedToChild", function () {
         console.log("calling eventGet through emiter from dashboardsched-->");
         $scope.eventGet();
     })
-     /* ##### End function call request from another controller  ##### */
+    /* ##### End function call request from another controller  ##### */
 
-   
+
 })

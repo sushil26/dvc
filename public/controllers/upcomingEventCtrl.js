@@ -225,5 +225,13 @@ app.controller('upcomingEventController', function ($scope, $rootScope, $state, 
         console.log("<--deleteEvent");
     }
 
+
+     /* ##### Strat function call request from another controller  ##### */
+    $rootScope.$on("CallParent_newEventAdded", function () {
+        console.log("calling eventGet through emiter from dashboardsched-->");
+        $scope.eventGet();
+    })
+     /* ##### End function call request from another controller  ##### */
+
    
 })

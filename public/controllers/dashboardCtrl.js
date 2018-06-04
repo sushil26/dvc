@@ -239,6 +239,11 @@ app.controller('dashboardController', function ($scope, $rootScope, $window, htt
     $rootScope.$on("CallParent_eventGet", function () {
         $scope.eventGet();
     })
+    $rootScope.$on("CallParent_newEventAdded", function () {
+        console.log("getting from child and passing into child-->");
+        $rootScope.$broadcast("CallParent_newEventAdded", {});
+        //$scope.eventGet();
+    })
     /* ##### End function call request from another controller  ##### */
 
 })

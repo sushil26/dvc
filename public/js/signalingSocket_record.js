@@ -1473,7 +1473,7 @@ function onMediaSuccess(stream) {
       document.querySelector('#add-stream').disabled = false;
       document.querySelector('#add-stream').onclick = function () {
           if (!multiStreamRecorder || !multiStreamRecorder.stream) return;
-          multiStreamRecorder.addStream(multiStreamRecorder.peerStream);
+          multiStreamRecorder.addStream(multiStreamRecorder.stream);
       };
 
       document.querySelector('#stop-recording').disabled = false;

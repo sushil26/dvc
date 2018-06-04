@@ -59,7 +59,7 @@ app.controller('dashboardPersonalDetailController', function ($scope, $rootScope
     $scope.getUserDetails(id);
 
 
-    $rootScope.$on("CallParent_personalDetails", function () {
+    $rootScope.$on("CallParent_personalDetails", function (event, data) {
         console.log("*get from parent");
     })
 })

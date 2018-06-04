@@ -245,7 +245,7 @@ app.controller('dashboardController', function ($scope, $rootScope, $window, htt
         //$scope.eventGet();
     })
     console.log("start to emit");
-    $rootScope.$emit("CallParent_personalDetails");
+    $rootScope.$broadcast("CallParent_personalDetails");
     /* ##### End function call request from another controller  ##### */
 
 })

@@ -227,7 +227,7 @@ app.controller('upcomingEventController', function ($scope, $rootScope, $state, 
 
 
      /* ##### Strat function call request from another controller  ##### */
-    $rootScope.$on("CallParent_newEventAdded", function () {
+    $rootScope.$on("CallParent_newEventAddedToChild", function () {
         console.log("calling eventGet through emiter from dashboardsched-->");
         $scope.eventGet();
     })

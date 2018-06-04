@@ -228,9 +228,7 @@ app.controller('upcomingEventController', function ($scope, $rootScope, $state, 
         console.log("<--deleteEvent");
     }
 
-    var SIGNALING_SERVER = "https://norecruits.com";
-    socket = io(SIGNALING_SERVER);
-
+   
     socket.on('eventUpdated', function (data) {
         console.log("data: "+JSON.stringify(data));
         //update the client with new data;

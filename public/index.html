@@ -73,7 +73,10 @@
   <script src="/controllers/attendanceViewWithConfId_Ctl.js"></script>
   <script src="/controllers/changePasswordCtl.js"></script>
   <script src="/controllers/logoutCtl.js"></script>
-  
+  <script>
+   var SIGNALING_SERVER = "https://norecruits.com";
+    socket = io(SIGNALING_SERVER);
+</script>
   <style>
     .red {
       background-color: red;

@@ -127,7 +127,7 @@ app.controller('upcomingEventController', function ($scope, $rootScope, $state, 
                 console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
             }
         })
-      
+
         console.log("<--viewDetail");
     }
 
@@ -228,13 +228,16 @@ app.controller('upcomingEventController', function ($scope, $rootScope, $state, 
         console.log("<--deleteEvent");
     }
 
+    var SIGNALING_SERVER = "https://norecruits.com";
+    socket = io(SIGNALING_SERVER);
 
-    /* ##### Strat function call request from another controller  ##### */
-    $rootScope.$on("CallParent_newEventAddedToChild", function () {
-        console.log("calling eventGet through emiter from dashboardsched-->");
-        $scope.eventGet();
-    })
-    /* ##### End function call request from another controller  ##### */
+    socket.on('eventUpdated', function (data) {
+        console.log("data: "+JSON.stringify(data));
+        //update the client with new data;
+    });
+
+
+
 
 
 })

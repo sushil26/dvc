@@ -51,6 +51,7 @@ var server = app.listen('5000', function () {
 // var server = app.listen("8080");
 
 var io = require('socket.io').listen(server);
+app.set('socketio', io);
 
 // server.timeout = 9999999999;
 mongoConfig.connectToServer(function (err) {

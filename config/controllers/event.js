@@ -22,6 +22,8 @@ var transporter = nodemailer.createTransport({
     }
 });
 
+var io = require('socket.io');
+
 module.exports.getToDate = function (req, res) {
     console.log("getToDate-->");
     var date = new Date();
@@ -84,6 +86,9 @@ module.exports.eventSend = function (req, res) {
                 res.status(400).send(responseData);
             }
             else {
+                var io = req.app.get('socketio');
+                console.log("io: "+io);
+                io.emit('eventUpdated',{"id":req.body.remoteCalendarId});
                 var mailOptions = {
                     from: "info@vc4all.in",
                     to: req.body.receiverEmail,
@@ -102,6 +107,7 @@ module.exports.eventSend = function (req, res) {
                             "data": userData
                         }
                         res.status(200).send(responseData);
+
                     } else {
                         console.log('Email sent: ' + info.response);
                         responseData = {

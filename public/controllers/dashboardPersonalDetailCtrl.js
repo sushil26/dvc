@@ -7,7 +7,7 @@ app.controller('dashboardPersonalDetailController', function ($scope, $rootScope
     var id = $scope.userData.id;
     $scope.propertyJson = $rootScope.propertyJson;
     console.log("dashboardPersonalDetailController-->");
-    $rootScope.$on("CallParent_personalDetails", function (event, data) {
+    $scope.$on("CallParent_personalDetails", function (event, data) {
         console.log("*get from parent");
     })
 

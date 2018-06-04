@@ -8,7 +8,7 @@ app.controller('dashboardController', function ($scope, $rootScope, $window, htt
     $scope.tickInterval = 1000 //ms
     $scope.propertyJson = $rootScope.propertyJson;
 
-    $rootScope.$broadcast("CallParent_personalDetails");
+    $scope.$broadcast("CallParent_personalDetails");
     
     var tick = function () {
         $scope.clock = new Date()

@@ -110,7 +110,7 @@ app.controller('captureImgCtl', function ($scope, $rootScope, $window, httpFacto
         //     }
         // })
         var obj = {
-            "data": snap
+            "data": "logu"
         }
         httpFactory.post(api, obj).then(function (data) {
             var checkStatus = httpFactory.dataValidation(data);

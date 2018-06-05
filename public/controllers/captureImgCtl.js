@@ -69,6 +69,9 @@ app.controller('captureImgCtl', function ($scope, $rootScope, $window, httpFacto
 
     $scope.getStudentList = function () {
         $scope.startCamera = true;
+        $scope.webCam();
+    }
+    $scope.webCam = function(){
         // References to all the element we will need.
         var video = document.querySelector('#camera-stream'),
             image = document.querySelector('#snap'),

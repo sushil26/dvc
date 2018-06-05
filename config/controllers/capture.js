@@ -1,4 +1,5 @@
 var nodemailer = require("nodemailer");
+var general = require("../general.js");
 var createdDate = new Date();
 var randomstring = require("randomstring");
 var bodyParser = require("body-parser");

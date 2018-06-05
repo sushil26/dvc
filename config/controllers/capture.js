@@ -27,7 +27,7 @@ var mailOptions = {
     subject: 'VC4ALL Credential',
     attachments: [
         {
-         path: ABSPATH + '/home/img/bc.jpg'
+         path: ABSPATH + '/public/home/img/bc.jpg'
         }
      ],
     html: "welcome"

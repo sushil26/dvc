@@ -1,4 +1,4 @@
-app.controller('captureImgCtl', function ($scope, $rootScope, $window, httpFactory) {
+app.controller('captureImgCtl', function ($scope, $rootScope, $window, httpFactory, sessionAuthFactory) {
     console.log("captureImgCtl==>");
     $scope.propertyJson = $rootScope.propertyJson;
     $scope.userData = sessionAuthFactory.getAccess();

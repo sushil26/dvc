@@ -56,11 +56,11 @@ module.exports.captureImgSend = function (req, res) {
                 subject: 'VC4ALL Credential',
 
                 html: '<div>This is the confirmation that your child has been successfull reached the school</div><br><img src="cid:' + fileName + '"/>',
-                attachments: [{
-                    filename: 'selfi.jpg',
-                    path: ABSPATH + '/public/dailyPic/' + fileName,
-                    cid: fileName //same cid value as in the html img src
-                }]
+                // attachments: [{
+                //     filename: 'selfi.jpg',
+                //     path: ABSPATH + '/public/dailyPic/' + fileName,
+                //     cid: fileName //same cid value as in the html img src
+                // }]
             };
             transporter.sendMail(mailOptions, function (error, info) {
                 if (error) {

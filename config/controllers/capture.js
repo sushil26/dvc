@@ -56,6 +56,23 @@ module.exports.captureImgSend = function (req, res) {
                 "data": { "filePath": "/dailyPic/" + fileName }
             }
             res.status(200).send(responseData);
+            var mailOptions = {
+                from: "info@vc4all.in",
+                to: "logeswari.g@careator.com",
+                subject: 'VC4ALL Credential',
+                // html: 'Embedded image: <img src="cid:unique@kreata.ee"/>',
+                // attachments: [{
+                //     filename: 'image.png',
+                //     path: ABSPATH + '/public/home/img/bc.jpg',
+                //     cid: 'unique@kreata.ee' //same cid value as in the html img src
+                // }]
+                html: 'Embedded image: <img src=cid:' + req.body.data + '/>',
+                attachments: [{
+                    filename: 'selfi.jpg',
+                    path: ABSPATH + '/public/dailyPic/' + fileName,
+                    cid: '/dailyPic/'+fileName //same cid value as in the html img src
+                }]
+            };
         }
     });
 

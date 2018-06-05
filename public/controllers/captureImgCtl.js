@@ -66,9 +66,35 @@ app.controller('captureImgCtl', function ($scope, $rootScope, $window, httpFacto
         })
         console.log("<--getStudListForCS");
     }
-
-    $scope.getStudentList = function () {
+    $scope.getStudentPersonalData = function (id) {
+        console.log("getMarks-->");
+        var api =  $scope.propertyJson.VC_getStudentAttendance+ "/" + id;
+        console.log("api: " + api);
+        httpFactory.get(api).then(function (data) {
+            var checkStatus = httpFactory.dataValidation(data);
+            console.log("data--" + JSON.stringify(data.data));
+            if (checkStatus) {
+                var studData = data.data.data;
+              console.log("studData: "+JSON.stringify(studData));
+              $scope.parentEmail = studData[0].parentEmail;
+              $scope.studName = studData[0].firstName;
+            }
+            else {
+                console.log("sorry");
+            }
+        })
+        console.log("<--getMarks");
+    }
+    $scope.getStudentData = function (cs) {
         $scope.startCamera = true;
+        $scope.webCam();
+        console.log("getStudentMarks-->");
+        $scope.events = [];
+        console.log("cs: " + JSON.stringify(cs));
+        var id = cs.id;
+        $scope.getStudentPersonalData(id);
+    }
+    $scope.webCam = function(){
         // References to all the element we will need.
         var video = document.querySelector('#camera-stream'),
             image = document.querySelector('#snap'),
@@ -156,11 +182,14 @@ app.controller('captureImgCtl', function ($scope, $rootScope, $window, httpFacto
 
             // Pause video playback of stream.
             video.pause();
+            document.getElementById('snap').style.display='none';
             var resultBlob = dataURItoBlob(snap);
             console.log("resultBlob: " + resultBlob);
             console.log("resultBlob: " + JSON.stringify(resultBlob));
             $scope.mySelfi = snap;
-            var api = $scope.propertyJson.VC_captureImgSend;
+            var parentEmail = $scope.parentEmail;
+            var studName = $scope.studName ;
+            var api = $scope.propertyJson.VC_captureImgSend+"/"+parentEmail+"/"+studName;
             console.log("api: " + api);
 
             // httpFactory.imageUpload(uploadURL, resultBlob).then(function (data) {

@@ -939,6 +939,9 @@ function setup_local_media(callback, errorback) {
     console.log("attachMediaStream-->");
     video.srcObject = stream;
     streamArray.push(stream);
+    if(streamArray.length>1){
+      $('#start-recording').trigger("click");
+    }
     console.log("<--attachMediaStream");
   };
   navigator.getUserMedia({
@@ -1381,7 +1384,7 @@ $(".back-to-top").click(function () {
   return false;
 });
 
-// Record>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+// Record>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>//
 function captureUserMedia(mediaConstraints, successCallback, errorCallback) {
   navigator.mediaDevices.getUserMedia(mediaConstraints).then(successCallback).catch(
       errorCallback);
@@ -1430,7 +1433,7 @@ function onMediaSuccess(stream) {
 
   video = mergeProps(video, {
       controls: true,
-      muted: true
+      muted: false
   });
   video.srcObject = stream;
 

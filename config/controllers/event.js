@@ -8,7 +8,7 @@ var general = require('../general.js');
 var ObjectId = require('mongodb').ObjectID;
 
 var bodyParser = require('body-parser');
-//var io = req.app.get('socketio');
+
 
 var nodemailer = require('nodemailer');
 
@@ -87,8 +87,8 @@ module.exports.eventSend = function (req, res) {
                 res.status(400).send(responseData);
             }
             else {
-
-                //io.emit('eventUpdated', { "id": req.body.remoteCalendarId, "remoteId": req.body.remoteCalendarId });
+                var io = req.app.get('socketio');
+                io.emit('eventUpdated', { "id": req.body.remoteCalendarId, "remoteId": req.body.remoteCalendarId });
                 var mailOptions = {
                     from: "info@vc4all.in",
                     to: req.body.receiverEmail,

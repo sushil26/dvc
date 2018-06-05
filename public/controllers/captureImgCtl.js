@@ -76,6 +76,8 @@ app.controller('captureImgCtl', function ($scope, $rootScope, $window, httpFacto
             if (checkStatus) {
                 var studData = data.data.data;
               console.log("studData: "+JSON.stringify(studData));
+              $scope.parentEmail = studData[0].parentEmail;
+              $scope.studName = studData[0].firstName;
             }
             else {
                 console.log("sorry");
@@ -184,7 +186,9 @@ app.controller('captureImgCtl', function ($scope, $rootScope, $window, httpFacto
             console.log("resultBlob: " + resultBlob);
             console.log("resultBlob: " + JSON.stringify(resultBlob));
             $scope.mySelfi = snap;
-            var api = $scope.propertyJson.VC_captureImgSend;
+            var parentEmail = $scope.parentEmail;
+            var studName = $scope.studName ;
+            var api = $scope.propertyJson.VC_captureImgSend+"/"+parentEmail+"/"+studName;
             console.log("api: " + api);
 
             // httpFactory.imageUpload(uploadURL, resultBlob).then(function (data) {

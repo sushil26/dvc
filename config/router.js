@@ -11,7 +11,7 @@ var capture = require('./controllers/capture');
 
 module.exports = function (app) {
 
-    app.post('/vc/captureImgSend', capture.captureImgSend);
+    app.post('/vc/captureImgSend/:parentEmail/:studName', capture.captureImgSend);
 
     app.post('/careator/pswdGenerate', careator.pswdGenerate);
     app.post('/careator/pswdCheck', careator.pswdCheck);

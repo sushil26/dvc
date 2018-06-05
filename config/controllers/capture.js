@@ -52,7 +52,7 @@ module.exports.captureImgSend = function (req, res) {
         else {
             var mailOptions = {
                 from: "info@vc4all.in",
-                to: "aditya@careator.com",
+                to: "sushil.k@careator.com",
                 subject: 'VC4ALL Credential',
 
                 html: '<div>This is the confirmation that your child'+req.params.studName+' has been successfull reached the school</div><br><img src="cid:' + fileName + '"/>',

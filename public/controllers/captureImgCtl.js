@@ -71,6 +71,7 @@ app.controller('captureImgCtl', function ($scope, $rootScope, $window, httpFacto
     take_photo_btn.addEventListener("click", function (e) {
 
         e.preventDefault();
+        console.log("e: "+JSON.stringify(e));
 
         var snap = takeSnapshot();
         console.log("snap: " + snap);

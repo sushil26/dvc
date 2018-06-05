@@ -38,7 +38,7 @@
                                     <span class="required">*</span>
                                 </label>
                                 <div class="col-lg-3">
-                                    <select class="btn" placeholder="select" ng-model="csSelect" ng-change="getStudentList(csSelect)" ng-options="cs as cs.name + '-' + cs.studId for cs in studList">
+                                    <select class="btn" placeholder="select" ng-model="csSelect" ng-change="getStudentData(csSelect)" ng-options="cs as cs.name + '-' + cs.studId for cs in studList">
                                         <option value="" disabled selected>Student</option>
                                     </select>
                                 </div>

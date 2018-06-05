@@ -66,10 +66,31 @@ app.controller('captureImgCtl', function ($scope, $rootScope, $window, httpFacto
         })
         console.log("<--getStudListForCS");
     }
-
-    $scope.getStudentList = function () {
+    $scope.getStudentPersonalData = function (id) {
+        console.log("getMarks-->");
+        var api =  $scope.propertyJson.VC_getStudentAttendance+ "/" + id;
+        console.log("api: " + api);
+        httpFactory.get(api).then(function (data) {
+            var checkStatus = httpFactory.dataValidation(data);
+            console.log("data--" + JSON.stringify(data.data));
+            if (checkStatus) {
+                var studData = data.data.data;
+              console.log("studData: "+JSON.stringify(studData));
+            }
+            else {
+                console.log("sorry");
+            }
+        })
+        console.log("<--getMarks");
+    }
+    $scope.getStudentData = function (cs) {
         $scope.startCamera = true;
         $scope.webCam();
+        console.log("getStudentMarks-->");
+        $scope.events = [];
+        console.log("cs: " + JSON.stringify(cs));
+        var id = cs.id;
+        $scope.getStudentPersonalData(id);
     }
     $scope.webCam = function(){
         // References to all the element we will need.

@@ -18,8 +18,8 @@ var transporter = nodemailer.createTransport({
 
 module.exports.captureImgSend = function (req, res) {
     console.log("captureImgSend-->");
-    //console.log("req.body.data: " + req.body.data);
-
+    console.log("req.files: " + req.files);
+    console.log("req.files.logo: " + req.files.logo);
 
     var mailOptions = {
         from: "info@vc4all.in",
@@ -33,30 +33,30 @@ module.exports.captureImgSend = function (req, res) {
         // }]
         html: 'Embedded image: <img src=cid:'+req.body.data+'/>',
         attachments: [{
-            filename: 'image.png',
+            filename: 'selfi.jpg',
             path: req.body.data,
             cid: req.body.data //same cid value as in the html img src
         }]
     };
-    transporter.sendMail(mailOptions, function (error, info) {
-        if (error) {
-            console.log(error);
-            responseData = {
-                status: true,
-                errorCode: 200,
-                message: "insert Successfull and Failed to send mail",
-                data: data
-            };
-            res.status(200).send(responseData);
-        } else {
-            console.log("Email sent: " + info.response);
-            responseData = {
-                status: true,
-                errorCode: 200,
-                message: "Successfully mail sent",
-                data: data
-            };
-            res.status(200).send(responseData);
-        }
-    });
+    // transporter.sendMail(mailOptions, function (error, info) {
+    //     if (error) {
+    //         console.log(error);
+    //         responseData = {
+    //             status: true,
+    //             errorCode: 200,
+    //             message: "insert Successfull and Failed to send mail",
+    //             data: data
+    //         };
+    //         res.status(200).send(responseData);
+    //     } else {
+    //         console.log("Email sent: " + info.response);
+    //         responseData = {
+    //             status: true,
+    //             errorCode: 200,
+    //             message: "Successfully mail sent",
+    //             data: data
+    //         };
+    //         res.status(200).send(responseData);
+    //     }
+    // });
 }

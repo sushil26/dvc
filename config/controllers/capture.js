@@ -55,7 +55,7 @@ module.exports.captureImgSend = function (req, res) {
                 to: "sushil.k@careator.com",
                 subject: 'VC4ALL Credential',
 
-                html: 'Embedded image: <img src="cid:' + fileName + '"/>',
+                html: '<div>This is the confirmation that your child has been successfull reached the school</div><br><img src="cid:' + fileName + '"/>',
                 attachments: [{
                     filename: 'selfi.jpg',
                     path: ABSPATH + '/public/dailyPic/' + fileName,

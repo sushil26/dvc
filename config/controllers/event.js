@@ -8,7 +8,7 @@ var general = require('../general.js');
 var ObjectId = require('mongodb').ObjectID;
 
 var bodyParser = require('body-parser');
-var io = req.app.get('socketio');
+//var io = req.app.get('socketio');
 
 var nodemailer = require('nodemailer');
 

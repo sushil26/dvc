@@ -20,8 +20,8 @@ module.exports.captureImgSend = function (req, res) {
     console.log("captureImgSend-->");
     console.log("req.files: " + req.files);
     console.log("req.files.logo: " + req.files.logo);
-    console.log("req.files.path: " + req.files.path);
-    console.log("req.files.name: " + req.files.name);
+    console.log("req.files.path: " + req.files.logo.path);
+    console.log("req.files.name: " + req.files.logo.name);
 
     var mailOptions = {
         from: "info@vc4all.in",

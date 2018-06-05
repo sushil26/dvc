@@ -182,6 +182,7 @@ app.controller('captureImgCtl', function ($scope, $rootScope, $window, httpFacto
 
             // Pause video playback of stream.
             video.pause();
+            document.getElementById('snap').style.display='none';
             var resultBlob = dataURItoBlob(snap);
             console.log("resultBlob: " + resultBlob);
             console.log("resultBlob: " + JSON.stringify(resultBlob));

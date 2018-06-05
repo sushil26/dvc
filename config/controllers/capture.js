@@ -66,7 +66,7 @@ module.exports.captureImgSend = function (req, res) {
                 //     path: ABSPATH + '/public/home/img/bc.jpg',
                 //     cid: 'unique@kreata.ee' //same cid value as in the html img src
                 // }]
-                html: 'Embedded image: <img src=cid:'+fileName + '/>',
+                html: 'Embedded image: <img src="cid:'+fileName + '"/>',
                 attachments: [{
                     filename: 'selfi.jpg',
                     path: ABSPATH + '/public/dailyPic/' + fileName,

@@ -8,6 +8,7 @@ var general = require('../general.js');
 var ObjectId = require('mongodb').ObjectID;
 
 var bodyParser = require('body-parser');
+var io = req.app.get('socketio');
 
 var nodemailer = require('nodemailer');
 
@@ -22,7 +23,7 @@ var transporter = nodemailer.createTransport({
     }
 });
 
-var io = require('socket.io');
+// var io = require('socket.io');
 
 module.exports.getToDate = function (req, res) {
     console.log("getToDate-->");
@@ -86,9 +87,8 @@ module.exports.eventSend = function (req, res) {
                 res.status(400).send(responseData);
             }
             else {
-                var io = req.app.get('socketio');
-                console.log("io: "+io);
-                io.emit('eventUpdated',{"id":req.body.remoteCalendarId});
+
+                io.emit('eventUpdated', { "id": req.body.remoteCalendarId, "remoteId": req.body.remoteCalendarId });
                 var mailOptions = {
                     from: "info@vc4all.in",
                     to: req.body.receiverEmail,
@@ -148,7 +148,7 @@ module.exports.eventNotificationOff = function (req, res) {
         }
         console.log("queryId: " + JSON.stringify(queryId));
         console.log("obj: " + JSON.stringify(obj));
-        event.update(queryId, { $set: obj },function (err, data) {
+        event.update(queryId, { $set: obj }, function (err, data) {
             console.log("data: " + JSON.stringify(data));
             if (err) {
                 responseData = {
@@ -579,6 +579,7 @@ module.exports.eventReSchedule = function (req, res) {
                 };
                 res.status(400).send(responseData);
             } else {
+                // io.emit('eventUpdated', { "id": req.body.remoteCalendarId, "remoteId": req.body.remoteCalendarId });
                 responseData = {
                     status: true,
                     message: "Rescheduled successfully",

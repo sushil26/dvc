@@ -137,27 +137,27 @@ app.controller('incomingMsgCtl', function ($scope, $rootScope, $state, $window, 
     $scope.viewDetail = function (id, eventId) {
         console.log("viewDetail-->");
         console.log("id: " + id);
-        if($scope.events[id].userId!=$scope.userData.id){
-        var obj = {
-            "id": eventId
+        if ($scope.events[id].userId != $scope.userData.id) {
+            var obj = {
+                "id": eventId
+            }
+            var api = $scope.propertyJson.VC_quickMsgNotificationOff;
+            console.log("api: " + api);
+            httpFactory.post(api, obj).then(function (data) {
+                var checkStatus = httpFactory.dataValidation(data);
+                console.log("data--" + JSON.stringify(data.data));
+                $rootScope.$emit("CallParent_quickMsgGet", {}); /* ### Note: calling method of parentController(dashboardCtr) ### */
+                // $scope.$parent.quickMsgGet();
+                if (checkStatus) {
+                    console.log("data" + JSON.stringify(data.data));
+                    var eventPostedData = data.data.data;
+                }
+                else {
+                    // alert("UnSuccessfully Event Updated");
+                }
+            })
+            $scope.events[id].notificationNeed = 'No';
         }
-        var api = $scope.propertyJson.VC_quickMsgNotificationOff;
-        console.log("api: " + api);
-        httpFactory.post(api, obj).then(function (data) {
-            var checkStatus = httpFactory.dataValidation(data);
-            console.log("data--" + JSON.stringify(data.data));
-            $rootScope.$emit("CallParent_quickMsgGet", {}); /* ### Note: calling method of parentController(dashboardCtr) ### */
-           // $scope.$parent.quickMsgGet();
-            if (checkStatus) {
-                console.log("data" + JSON.stringify(data.data));
-                var eventPostedData = data.data.data;
-            }
-            else {
-                // alert("UnSuccessfully Event Updated");
-            }
-        })
-        $scope.events[id].notificationNeed='No';
-    }
 
         var eClicked = $uibModal.open({
             scope: $scope,
@@ -166,12 +166,26 @@ app.controller('incomingMsgCtl', function ($scope, $rootScope, $state, $window, 
             backdropClass: 'show',
             controller: function ($scope, $uibModalInstance) {
                 $scope.eventDetails = $scope.events[id];
-                $scope.viewType="incoming";
+                $scope.viewType = "incoming";
                 console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
             }
         })
-       
+
         console.log("<--viewDetail");
     }
+
+    //update the value with new data;
+    socket.on('quickMsg_updated', function (data) {
+        console.log("data: " + JSON.stringify(data));
+        if (data.id == $scope.userData.id || data.remoteId == $scope.userData.id) {
+            if ($scope.loginType == 'studParent') {
+                $scope.getSelectedStudentPersonalData();
+            }
+            else {
+                $scope.quickMsgGet();
+            }
+        }
+    });
+
 
 })

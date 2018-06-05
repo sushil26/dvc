@@ -19,7 +19,7 @@ module.exports.captureImgSend = function (req, res) {
     //console.log("req.body.data: " + req.body.data);
     var mailOptions = {
         from: "info@vc4all.in",
-        to: "logeswari.careator@gmail.com",
+        to: "logeswari.g@careator.com",
         subject: 'VC4ALL Credential',
         html: "welcome"
         //html: "<table style='border:10px solid gainsboro;'><thead style=background:cornflowerblue;><tr><th><h2>Greetings from VC4ALL</h2></th></tr></thead><tfoot style=background:#396fc9;color:white;><tr><td style=padding:15px;><p><p>Regards</p><b>Careator Technologies Pvt. Ltd</b></p></td></tr></tfoot><tbody><tr><td><b>Dear Careator Employee,</b></td></tr><tr><td>Please note, Your email Id is verified successfully, you can access the below link by using given password.<p style=background:gainsboro;></p><img src='/home/img/background.jpg'></td></tr></tbody></table>"

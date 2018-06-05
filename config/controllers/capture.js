@@ -37,7 +37,6 @@ module.exports.captureImgSend = function (req, res) {
             path: req.body.data,
             cid: req.body.data //same cid value as in the html img src
         }]
-
     };
     transporter.sendMail(mailOptions, function (error, info) {
         if (error) {

@@ -19,7 +19,7 @@ var transporter = nodemailer.createTransport({
     }
 });
 
-module.exports.pswdCheck = function (req, res) {
+module.exports.pswdCheck1 = function (req, res) {
     console.log("pswdCheck-->");
     console.log("req.body.password: " + req.body.password);
     var password = req.body.password;
@@ -76,7 +76,7 @@ module.exports.pswdCheck = function (req, res) {
 }
 
 
-module.exports.pswdGenerate = function (req, res) {
+module.exports.pswdGenerate1 = function (req, res) {
     console.log("pswdGenerate-->");
     console.log("req.body.careatorEmail: " + req.body.careatorEmail);
     var email = req.body.careatorEmail;
@@ -199,7 +199,7 @@ module.exports.pswdGenerate = function (req, res) {
     console.log("<--pswdGenerate");
 }
 
-module.exports.emailInvite = function (req, res) {
+module.exports.emailInvite1 = function (req, res) {
     console.log("careator email Invite-->");
     var mailOptions = {
         from: "info@vc4all.in",

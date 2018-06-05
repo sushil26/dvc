@@ -99,15 +99,19 @@ app.controller('outgoingMsgCtl', function ($scope, $rootScope, $state, $window, 
             backdropClass: 'show',
             controller: function ($scope, $uibModalInstance) {
                 $scope.eventDetails = $scope.events[id];
-                $scope.viewType="outgoing";
+                $scope.viewType = "outgoing";
                 console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
             }
         })
         console.log("<--viewDetail");
     }
 
-    // $rootScope.$on("SiblingMethod_quickMsgGet", function () {
-    //     $scope.quickMsgGet();
-    // })
+    //update the value with new data;
+    socket.on('quickMsg_updated', function (data) {
+        console.log("data: " + JSON.stringify(data));
+        if (data.id == $scope.userData.id || data.remoteId == $scope.userData.id) {
+            $scope.quickMsgGet();
+        }
+    });
 
 })

@@ -622,7 +622,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $state, $r
           if (checkStatus) {
             // console.log("data" + JSON.stringify(data.data))
             // $window.location.href = $scope.propertyJson.R082;
-         
+
             var loginAlert = $uibModal.open({
               scope: $scope,
               templateUrl: '/html/templates/dashboardsuccess.html',
@@ -660,8 +660,6 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $state, $r
             vm.events.push(objData);
           }
           else {
-
-
             var loginAlert = $uibModal.open({
               scope: $scope,
               templateUrl: '/html/templates/dashboardwarning.html',
@@ -1073,13 +1071,8 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $state, $r
           controller: function ($scope, $uibModalInstance) {
             $scope.message = "Select Teacher";
             console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
-            // $scope.close = function(){
-            //   loginAlert.close('resetModel');
-
-            // }
           }
         })
-        //alert("Select Teacher");
       }
 
     }

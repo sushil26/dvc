@@ -231,7 +231,7 @@ app.controller('upcomingEventController', function ($scope, $rootScope, $state, 
     //update the client with new data;
     socket.on('eventUpdated', function (data) {
         console.log("data: " + JSON.stringify(data));
-        if (data.id == $scope.userData.id){
+        if (data.id == $scope.userData.id || data.remoteId==$scope.userData.id){
             $scope.eventGet();
         }
     });

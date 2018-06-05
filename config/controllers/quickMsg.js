@@ -65,6 +65,7 @@ module.exports.quickMsgSend = function (req, res) {
                 res.status(400).send(responseData);
             }
             else {
+                io.emit('quickMsg_updated',{"id":req.body.userId, "remoteId":req.body.studUserId});
                 var mailOptions = {
                     from: "info@vc4all.in",
                     to: req.body.receiverEmail,

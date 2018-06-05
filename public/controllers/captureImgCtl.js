@@ -1,6 +1,11 @@
 app.controller('captureImgCtl', function ($scope, $rootScope, $window, httpFactory) {
     console.log("captureImgCtl==>");
-
+    $scope.propertyJson = $rootScope.propertyJson;
+    $scope.userData = sessionAuthFactory.getAccess();
+    var schoolName = $scope.userData.schoolName;
+    var id = $scope.userData.id;
+    $scope.loginType = $scope.userData.loginType;
+    $scope.propertyJson = $rootScope.propertyJson;
 
 
     $scope.getSchoolData = function () {
@@ -243,9 +248,9 @@ app.controller('captureImgCtl', function ($scope, $rootScope, $window, httpFacto
 
         var hidden_canvas = document.querySelector('canvas'),
             context = hidden_canvas.getContext('2d');
-            context.webkitImageSmoothingEnabled = false;
-            context.mozImageSmoothingEnabled = false;
-            context.imageSmoothingEnabled = false;
+        context.webkitImageSmoothingEnabled = false;
+        context.mozImageSmoothingEnabled = false;
+        context.imageSmoothingEnabled = false;
 
         var width = video.videoWidth,
             height = video.videoHeight;

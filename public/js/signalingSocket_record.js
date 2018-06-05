@@ -938,6 +938,7 @@ function setup_local_media(callback, errorback) {
   attachMediaStream = function (video, stream) {
     console.log("attachMediaStream-->");
     video.srcObject = stream;
+    streamArray.push(stream);
     console.log("<--attachMediaStream");
   };
   navigator.getUserMedia({
@@ -1437,7 +1438,7 @@ function onMediaSuccess(stream) {
       if (multiStreamRecorder && multiStreamRecorder.stream) return;
     
      
-      multiStreamRecorder = new MultiStreamRecorder([stream,peer_media_elements]);
+      multiStreamRecorder = new MultiStreamRecorder(streamArray);
       multiStreamRecorder.stream = stream;
       
       multiStreamRecorder.previewStream = function (stream) {

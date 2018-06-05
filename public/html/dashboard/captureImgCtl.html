@@ -12,7 +12,7 @@
                     <div class="container">
 
                         <div class="app">
-                            <div class="form-group" >
+                            <div class="form-group">
                                 <label class="control-label col-lg-3">Class*
                                     <span class="required">*</span>
                                 </label>
@@ -22,48 +22,50 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="form-group" >
+                            <div class="form-group">
                                 <label class=" control-label col-lg-3">Section*
                                     <span class="required">*</span>
                                 </label>
                                 <div class="col-lg-3">
-                                    <select class="form-control m-bot15" placeholder="select" ng-model="up.sSelect" ng-options="s as s for s in up.cSelect.section" ng-change="getStudentMarks(up.cSelect)">
+                                    <select class="form-control m-bot15" placeholder="select" ng-model="up.sSelect" ng-options="s as s for s in up.cSelect.section"
+                                        ng-change="getStudListForCS(up.cSelect.class, up.sSelect)">
                                         <option value="" disabled selected>Section</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group ">
-                                <label class=" control-label col-lg-3">Section*
+                                <label class=" control-label col-lg-3">Student
                                     <span class="required">*</span>
                                 </label>
                                 <div class="col-lg-3">
-                                    <select class="btn" ng-if="userLoginType=='teacher'" placeholder="select" ng-model="csSelect" ng-change="getStudentMarks(csSelect)"
+                                    <select class="btn" placeholder="select" ng-model="csSelect" ng-change="getStudentList(csSelect)"
                                         ng-options="cs as cs.name + '-' + cs.studId for cs in studList">
                                         <option value="" disabled selected>Student</option>
                                     </select>
                                 </div>
                             </div>
-                            <!-- <a href="#" id="start-camera" class="visible">Touch here to start the app.</a>
-                            <video id="camera-stream"></video>
-                            <img id="snap">
+                            <div ng-if="startCamera=='true'">
+                                <a href="#" id="start-camera" class="visible">Touch here to start the app.</a>
+                                <video id="camera-stream"></video>
+                                <img id="snap">
 
-                            <p id="error-message"></p>
+                                <p id="error-message"></p>
 
-                            <div class="controls">
-                                <a href="#" id="delete-photo" title="Delete Photo" class="disabled">
-                                    <i class="material-icons">delete</i>
-                                </a>
-                                <a href="#" id="take-photo" title="Take Photo">
-                                    <i class="material-icons">camera_alt</i>
-                                </a>
-                                <a href="#" id="download-photo" download="selfie.png" title="Save Photo" class="disabled">
-                                    <i class="material-icons">file_download</i>
-                                </a>
-                            </div> -->
+                                <div class="controls">
+                                    <a href="#" id="delete-photo" title="Delete Photo" class="disabled">
+                                        <i class="material-icons">delete</i>
+                                    </a>
+                                    <a href="#" id="take-photo" title="Take Photo">
+                                        <i class="material-icons">camera_alt</i>
+                                    </a>
+                                    <a href="#" id="download-photo" download="selfie.png" title="Save Photo" class="disabled">
+                                        <i class="material-icons">file_download</i>
+                                    </a>
+                                </div>
 
-                            <!-- Hidden canvas element. Used for taking snapshot of video. -->
-                            <canvas></canvas>
-
+                                <!-- Hidden canvas element. Used for taking snapshot of video. -->
+                                <canvas></canvas>
+                            </div>
                         </div>
 
                     </div>

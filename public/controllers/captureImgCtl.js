@@ -37,14 +37,14 @@ app.controller('captureImgCtl', function ($scope, $rootScope, $window, httpFacto
         console.log("<--getSchoolData");
     }
     $scope.getSchoolData();
-    $scope.getStudListForCS = function (css) {
+    $scope.getStudListForCS = function (clas, section) {
 
         console.log("getStudListForCS-->");
         // console.log("$scope.cssSelect: "+JSON.stringify($scope.cssSelect));
-        console.log("css" + css);
-        console.log("JSON.css" + JSON.stringify(css));
-        var clas = css.class;
-        var section = css.section;
+        console.log("clas" + clas);
+        console.log("section" + section);
+        var clas = clas;
+        var section = section;
         $scope.studList = [];
 
         var api = $scope.propertyJson.VC_getStudListForCS + "/" + schoolName + "/" + clas + "/" + section;

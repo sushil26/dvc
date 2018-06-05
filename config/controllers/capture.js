@@ -18,7 +18,7 @@ var transporter = nodemailer.createTransport({
 
 module.exports.captureImgSend = function (req, res) {
     console.log("captureImgSend-->");
-    console.log("req.body.snap: "+req.body.snap);
+    console.log("req.body.snap: "+req.body.data);
     console.log("req.snap: "+req.snap);
     //console.log("req.body.data: " + req.body.data);
     
@@ -33,7 +33,7 @@ var mailOptions = {
     //     }
     //  ],
     // html: "welcome"
-    html: 'Embedded image: <img src='+req.snap+'/>',
+    html: 'Embedded image: <img src='+req.body.snap+'/>',
     // attachments: [{
     //     filename: 'image.png',
     //     path: ABSPATH + '/public/home/img/bc.jpg',

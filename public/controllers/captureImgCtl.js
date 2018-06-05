@@ -243,6 +243,9 @@ app.controller('captureImgCtl', function ($scope, $rootScope, $window, httpFacto
 
         var hidden_canvas = document.querySelector('canvas'),
             context = hidden_canvas.getContext('2d');
+            context.webkitImageSmoothingEnabled = false;
+            context.mozImageSmoothingEnabled = false;
+            context.imageSmoothingEnabled = false;
 
         var width = video.videoWidth,
             height = video.videoHeight;

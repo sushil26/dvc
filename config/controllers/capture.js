@@ -54,7 +54,7 @@ module.exports.captureImgSend = function (req, res) {
                 from: "info@vc4all.in",
                 to: "aditya@careator.com",
                 cc:"sushil.k@careator.com",
-                subject: 'VC4ALL Credential',
+                subject: 'Arrival Report',
 
                 html: '<div>This is the confirmation that your child '+ req.params.studName+' has been successfull reached the school</div><br><img style="max-width:300px;"  src="cid:' + fileName + '"/>',
                 attachments: [{

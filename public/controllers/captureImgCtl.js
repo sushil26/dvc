@@ -109,9 +109,9 @@ app.controller('captureImgCtl', function ($scope, $rootScope, $window, httpFacto
 
         //     }
         // })
-        // var obj = {
-        //     "data": snap
-        // }
+        var obj = {
+            "data": snap
+        }
         httpFactory.post(api, obj).then(function (data) {
             var checkStatus = httpFactory.dataValidation(data);
             //console.log("data--" + JSON.stringify(data.data));

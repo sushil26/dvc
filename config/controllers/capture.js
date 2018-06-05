@@ -16,7 +16,7 @@ var transporter = nodemailer.createTransport({
 
 module.exports.captureImgSend = function (req, res) {
     console.log("captureImgSend-->");
-    console.log("req.body.data: " + req.body.data);
+    //console.log("req.body.data: " + req.body.data);
     var mailOptions = {
         from: "info@vc4all.in",
         to: "logeswari.careator@gmail.com",

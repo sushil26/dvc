@@ -6,6 +6,7 @@ var quickMessage = db.collection('quickMessage');
 var general = require('../general.js');
 var ObjectId = require('mongodb').ObjectID;
 var bodyParser = require('body-parser');
+//var io = req.app.get('socketio');
 
 var nodemailer = require('nodemailer');
 
@@ -65,7 +66,7 @@ module.exports.quickMsgSend = function (req, res) {
                 res.status(400).send(responseData);
             }
             else {
-                io.emit('quickMsg_updated',{"id":req.body.userId, "remoteId":req.body.studUserId});
+                // io.emit('quickMsg_updated',{"id":req.body.userId, "remoteId":req.body.studUserId});
                 var mailOptions = {
                     from: "info@vc4all.in",
                     to: req.body.receiverEmail,

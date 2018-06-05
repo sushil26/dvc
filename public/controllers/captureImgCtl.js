@@ -73,6 +73,8 @@ app.controller('captureImgCtl', function ($scope, $rootScope, $window, httpFacto
         e.preventDefault();
 
         var snap = takeSnapshot();
+        console.log("snap: "+snap);
+        console.log("snap: "+JSON.stringify(snap));
 
         // Show image. 
         image.setAttribute('src', snap);

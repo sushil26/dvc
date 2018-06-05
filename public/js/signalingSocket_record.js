@@ -1455,22 +1455,23 @@ function onMediaSuccess(stream) {
       };
 
       multiStreamRecorder.ondataavailable = function (blob) {
-          appendLink(blob);
+          // appendLink(blob);
+          function appendLink(blob) {
+            var a = document.createElement('a');
+            a.target = '_blank';
+            a.innerHTML = 'Open Recorded ' + (blob.type == 'audio/ogg' ?
+                    'Audio' : 'Video') + ' No. ' + (index++) + ' (Size: ' +
+                bytesToSize(blob.size) + ') Time Length: ' + getTimeLength(
+                    timeInterval);
+  
+            a.href = URL.createObjectURL(blob);
+  
+            container.appendChild(a);
+            container.appendChild(document.createElement('hr'));
+        }
       };
 
-      function appendLink(blob) {
-          var a = document.createElement('a');
-          a.target = '_blank';
-          a.innerHTML = 'Open Recorded ' + (blob.type == 'audio/ogg' ?
-                  'Audio' : 'Video') + ' No. ' + (index++) + ' (Size: ' +
-              bytesToSize(blob.size) + ') Time Length: ' + getTimeLength(
-                  timeInterval);
-
-          a.href = URL.createObjectURL(blob);
-
-          container.appendChild(a);
-          container.appendChild(document.createElement('hr'));
-      }
+      
 
       var timeInterval = document.querySelector('#time-interval').value;
       if (timeInterval) timeInterval = parseInt(timeInterval);

@@ -7,8 +7,11 @@ var school = require('./controllers/school');
 var careator = require('./controllers/careator');
 
 var record = require('./controllers/record');
+var capture = require('./controllers/capture');
 
 module.exports = function (app) {
+
+    app.post('/vc/captureImgSend', capture.captureImgSend);
 
     app.post('/careator/pswdGenerate', careator.pswdGenerate);
     app.post('/careator/pswdCheck', careator.pswdCheck);

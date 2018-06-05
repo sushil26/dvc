@@ -29,8 +29,8 @@ app.controller('captureImgCtl', function ($scope, $rootScope, $window, httpFacto
 
         // Request the camera.
         navigator.getMedia({
-                video: true
-            },
+            video: true
+        },
             // Success Callback
             function (stream) {
 
@@ -73,8 +73,9 @@ app.controller('captureImgCtl', function ($scope, $rootScope, $window, httpFacto
         e.preventDefault();
 
         var snap = takeSnapshot();
-        console.log("snap: "+snap);
-        console.log("snap: "+JSON.stringify(snap));
+        console.log("snap: " + snap);
+        console.log("snap: " + JSON.stringify(snap));
+
 
         // Show image. 
         image.setAttribute('src', snap);
@@ -89,8 +90,24 @@ app.controller('captureImgCtl', function ($scope, $rootScope, $window, httpFacto
 
         // Pause video playback of stream.
         video.pause();
+        var api = $scope.propertyJson.VC_captureImgSend;
+        console.log("api: " + api);
+        var obj = {
+            "data": snap
+        }
+        httpFactory.post(api, obj).then(function (data) {
+            var checkStatus = httpFactory.dataValidation(data);
+            //console.log("data--" + JSON.stringify(data.data));
+            if (checkStatus) {
+                console.log("data" + JSON.stringify(data.data));
+                alert("success");;
+            }
+            else {
+                alert("fail");;
+            }
 
-    });
+        });
+    })
 
 
     delete_photo_btn.addEventListener("click", function (e) {
@@ -141,6 +158,7 @@ app.controller('captureImgCtl', function ($scope, $rootScope, $window, httpFacto
 
             // Turn the canvas image into a dataURL that can be used as a src for our photo.
             return hidden_canvas.toDataURL('image/png');
+
         }
     }
 

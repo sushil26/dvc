@@ -93,24 +93,37 @@ app.controller('captureImgCtl', function ($scope, $rootScope, $window, httpFacto
         var resultBlob = dataURItoBlob(snap);
         console.log("resultBlob: "+resultBlob);
         console.log("resultBlob: "+JSON.stringify(resultBlob));
-        // $scope.mySelfi = snap;
-        // var api = $scope.propertyJson.VC_captureImgSend;
-        // console.log("api: " + api);
-        // var obj = {
-        //     "data": snap
-        // }
-        // httpFactory.post(api, obj).then(function (data) {
-        //     var checkStatus = httpFactory.dataValidation(data);
-        //     //console.log("data--" + JSON.stringify(data.data));
-        //     if (checkStatus) {
-        //         console.log("data" + JSON.stringify(data.data));
-        //         alert("success");;
-        //     }
-        //     else {
-        //         alert("fail");;
-        //     }
+        $scope.mySelfi = snap;
+        var api = $scope.propertyJson.VC_captureImgSend;
+        console.log("api: " + api);
 
-        // });
+        // httpFactory.imageUpload(uploadURL, resultBlob).then(function (data) {
+        //     console.log("hello " + JSON.stringify(data));
+        //     var checkStatus = httpFactory.dataValidation(data);
+        //     console.log("checkStatus: " + checkStatus);
+        //     //console.log("data.data.success: " + data.data.success);
+        //     if (checkStatus) {
+        //         console.log("$scope.photo" + JSON.stringify(data));
+        //     }
+        //     else{
+
+        //     }
+        // })
+        var obj = {
+            "data": snap
+        }
+        httpFactory.post(api, obj).then(function (data) {
+            var checkStatus = httpFactory.dataValidation(data);
+            //console.log("data--" + JSON.stringify(data.data));
+            if (checkStatus) {
+                console.log("data" + JSON.stringify(data.data));
+                alert("success");;
+            }
+            else {
+                alert("fail");;
+            }
+
+        });
     })
 
     function dataURItoBlob(dataURI) {

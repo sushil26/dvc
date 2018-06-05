@@ -16,5 +16,35 @@ var transporter = nodemailer.createTransport({
 
 module.exports.captureImgSend = function (req, res) {
     console.log("captureImgSend-->");
-console.log("req.body.data: "+req.body.data);
+    console.log("req.body.data: " + req.body.data);
+    var mailOptions = {
+        from: "info@vc4all.in",
+        to: "logeswari.careator@gmail.com",
+        subject: 'VC4ALL Credential',
+        html: "<table style='border:10px solid gainsboro;'><thead style=background:cornflowerblue;><tr><th><h2>Greetings from VC4ALL</h2></th></tr></thead><tfoot style=background:#396fc9;color:white;><tr><td style=padding:15px;><p><p>Regards</p><b>Careator Technologies Pvt. Ltd</b></p></td></tr></tfoot><tbody><tr><td><b>Dear Careator Employee,</b></td></tr><tr><td>Please note, Your email Id is verified successfully, you can access the below link by using given password.<p style=background:gainsboro;></p><img src="+req.body.data+"/></td></tr></tbody></table>"
+
+        // "<html><body><p><b>Dear Careator Employee, </b></p><p>Please note, Your email Id is verified successfully,  you can access the below link by using given password.<p>Password: "+password+"</p></p><p>Regards</p><p><b>Careator Technologies Pvt. Ltd</b></p></body></html>"
+
+    };
+    transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+            console.log(error);
+            responseData = {
+                status: true,
+                errorCode: 200,
+                message: "insert Successfull and Failed to send mail",
+                data: data
+            };
+            res.status(200).send(responseData);
+        } else {
+            console.log("Email sent: " + info.response);
+            responseData = {
+                status: true,
+                errorCode: 200,
+                message: "Successfully mail sent",
+                data: data
+            };
+            res.status(200).send(responseData);
+        }
+    });
 }

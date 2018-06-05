@@ -23,6 +23,7 @@ module.exports = function (app) {
 
     app.post('/vc/schoolLogo', image.upload);
     app.post('/vc/profilePicupload', image.profilePicupload);
+    
 
     app.post('/vc/register4VC', user.register4VC);
     app.post('/vc/login4VC', user.login4VC);

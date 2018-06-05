@@ -1,6 +1,7 @@
 var nodemailer = require("nodemailer");
 var createdDate = new Date();
 var randomstring = require("randomstring");
+var bodyParser = require("body-parser");
 
 
 var transporter = nodemailer.createTransport({

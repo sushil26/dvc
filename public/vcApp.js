@@ -373,6 +373,12 @@ app.config(function ($stateProvider, $urlRouterProvider) {
       controller: 'analyticsCtl'
 
     })
+    .state('dashboard.captureImg', {
+      url: captureImg(),
+      templateUrl: '/html/dashboard/captureImgCtl.html',
+      controller: 'captureImgCtl'
+
+    })
     .state('dashboard.contact', {
       url: contact(),
       templateUrl: '/html/dashboard/contact.html',
@@ -383,6 +389,9 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 });
 
 
+function captureImg(){
+  return '/captureImg';
+}
 function analytics(){
   return '/analytics';
 }

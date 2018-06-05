@@ -14,9 +14,9 @@ module.exports = function (app) {
     app.post('/careator/pswdCheck', careator.pswdCheck);
     app.post('/careator/emailInvite', careator.emailInvite);
 
-    app.post('/record/pswdGenerate', record.pswdGenerate1);
-    app.post('/record/pswdCheck', record.pswdCheck1);
-    app.post('/record/emailInvite', record.emailInvite1);
+    app.post('/record/pswdGenerate', record.pswdGenerate);
+    app.post('/record/pswdCheck', record.pswdCheck);
+    app.post('/record/emailInvite', record.emailInvite);
 
     app.post('/vc/schoolLogo', image.upload);
     app.post('/vc/profilePicupload', image.profilePicupload);

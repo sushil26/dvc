@@ -67,7 +67,7 @@ app.controller('captureImgCtl', function ($scope, $rootScope, $window, httpFacto
         console.log("<--getStudListForCS");
     }
 
-    $scope.getStudentMarks = function () {
+    $scope.getStudentList = function () {
         $scope.startCamera = true;
         // References to all the element we will need.
         var video = document.querySelector('#camera-stream'),

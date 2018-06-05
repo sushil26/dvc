@@ -28,7 +28,7 @@
                                 </label>
                                 <div class="col-lg-3">
                                     <select class="form-control m-bot15" placeholder="select" ng-model="up.sSelect" ng-options="s as s for s in up.cSelect.section"
-                                        ng-change="getStudentMarks(up.cSelect)">
+                                        ng-change="getStudListForCS(up.cSelect)">
                                         <option value="" disabled selected>Section</option>
                                     </select>
                                 </div>
@@ -38,7 +38,7 @@
                                     <span class="required">*</span>
                                 </label>
                                 <div class="col-lg-3">
-                                    <select class="btn" ng-if="userLoginType=='teacher'" placeholder="select" ng-model="csSelect" ng-change="getStudentMarks(csSelect)"
+                                    <select class="btn" ng-if="userLoginType=='teacher'" placeholder="select" ng-model="csSelect" ng-change="getStudentList(csSelect)"
                                         ng-options="cs as cs.name + '-' + cs.studId for cs in studList">
                                         <option value="" disabled selected>Student</option>
                                     </select>

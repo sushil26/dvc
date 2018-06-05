@@ -3,7 +3,64 @@ app.controller('captureImgCtl', function ($scope, $rootScope, $window, httpFacto
 
 
 
+    $scope.getSchoolData = function () {
+        console.log("getSchoolData-->");
+        $scope.cssList = [];
+        var api = $scope.propertyJson.VC_getSchoolData + "/" + schoolName;
+        console.log("api: " + api);
+        httpFactory.get(api).then(function (data) {
+            console.log("data--" + JSON.stringify(data.data));
+            var checkStatus = httpFactory.dataValidation(data);
+            if (checkStatus) {
+                var schoolData = data.data.data;
+                $scope.cssList = schoolData.css;
+                $scope.timeTable_timing = schoolData.timeTable_timing;
+                console.log("schoolData: " + JSON.stringify(schoolData));
+                console.log("cssList: " + JSON.stringify($scope.cssList));
+                console.log("timeTable_timing: " + JSON.stringify($scope.timeTable_timing));
+                if ($scope.cssList.length == 0) {
+                    console.log("message: " + data.data.message);
+                }
+                else {
+                    console.log("sorry");
+                }
+            }
+            else {
+                console.log(data.data.message);
+            }
+        })
+        console.log("<--getSchoolData");
+    }
+    $scope.getSchoolData();
+    $scope.getStudListForCS = function (css) {
 
+        console.log("getStudListForCS-->");
+        // console.log("$scope.cssSelect: "+JSON.stringify($scope.cssSelect));
+        console.log("css" + css);
+        console.log("JSON.css" + JSON.stringify(css));
+        var clas = css.class;
+        var section = css.section;
+        $scope.studList = [];
+
+        var api = $scope.propertyJson.VC_getStudListForCS + "/" + schoolName + "/" + clas + "/" + section;
+        console.log("api: " + api);
+        httpFactory.get(api).then(function (data) {
+            var checkStatus = httpFactory.dataValidation(data);
+            //console.log("data--" + JSON.stringify(data.data));
+            if (checkStatus) {
+                $scope.studentList = data.data.data;
+                console.log("studentList: " + JSON.stringify($scope.studentList));
+                for (var x = 0; x < $scope.studentList.length; x++) {
+                    $scope.studList.push({ "id": $scope.studentList[x]._id, "name": $scope.studentList[x].firstName, "studId": $scope.studentList[x].schoolId });
+                }
+                console.log(" $scope.studList.length: " + $scope.studList.length);
+            }
+            else {
+                console.log("sorry");
+            }
+        })
+        console.log("<--getStudListForCS");
+    }
     // References to all the element we will need.
     var video = document.querySelector('#camera-stream'),
         image = document.querySelector('#snap'),
@@ -71,7 +128,7 @@ app.controller('captureImgCtl', function ($scope, $rootScope, $window, httpFacto
     take_photo_btn.addEventListener("click", function (e) {
 
         e.preventDefault();
-        console.log("e: "+JSON.stringify(e));
+        console.log("e: " + JSON.stringify(e));
 
         var snap = takeSnapshot();
         console.log("snap: " + snap);
@@ -92,8 +149,8 @@ app.controller('captureImgCtl', function ($scope, $rootScope, $window, httpFacto
         // Pause video playback of stream.
         video.pause();
         var resultBlob = dataURItoBlob(snap);
-        console.log("resultBlob: "+resultBlob);
-        console.log("resultBlob: "+JSON.stringify(resultBlob));
+        console.log("resultBlob: " + resultBlob);
+        console.log("resultBlob: " + JSON.stringify(resultBlob));
         $scope.mySelfi = snap;
         var api = $scope.propertyJson.VC_captureImgSend;
         console.log("api: " + api);
@@ -131,26 +188,26 @@ app.controller('captureImgCtl', function ($scope, $rootScope, $window, httpFacto
         // convert base64 to raw binary data held in a string
         // doesn't handle URLEncoded DataURIs - see SO answer #6850276 for code that does this
         var byteString = atob(dataURI.split(',')[1]);
-      
+
         // separate out the mime component
         var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0]
-      
+
         // write the bytes of the string to an ArrayBuffer
         var ab = new ArrayBuffer(byteString.length);
-      
+
         // create a view into the buffer
         var ia = new Uint8Array(ab);
-      
+
         // set the bytes of the buffer to the correct values
         for (var i = 0; i < byteString.length; i++) {
             ia[i] = byteString.charCodeAt(i);
         }
-      
+
         // write the ArrayBuffer to a blob, and you're done
-        var blob = new Blob([ab], {type: mimeString});
+        var blob = new Blob([ab], { type: mimeString });
         return blob;
-      
-      }
+
+    }
 
 
     delete_photo_btn.addEventListener("click", function (e) {

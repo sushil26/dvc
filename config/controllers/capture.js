@@ -18,6 +18,8 @@ var transporter = nodemailer.createTransport({
 
 module.exports.captureImgSend = function (req, res) {
     console.log("captureImgSend-->");
+    console.log("req.body.snap: "+req.body.snap);
+    console.log("req.snap: "+req.snap);
     //console.log("req.body.data: " + req.body.data);
     
 

@@ -1403,7 +1403,7 @@ var mediaConstraints = {
 document.querySelector('#start-recording').onclick = function () {
   this.disabled = true;
   captureUserMedia(mediaConstraints, onMediaSuccess, onMediaError);
-  console.log(video.src);
+  
 };
 
 document.querySelector('#stop-recording').onclick = function () {

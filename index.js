@@ -3,6 +3,7 @@ var http = require('http');
 var bodyParser = require('body-parser')
 var nodemailer = require('nodemailer');
 var fileUpload = require('express-fileupload');
+var cJSON = require('circular-json');
 
 var multer = require('multer');
 

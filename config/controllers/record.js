@@ -260,7 +260,7 @@ module.exports.getRecordVideo = function (req, res) {
     var fileWriteDir = fs.createReadStream(ABSPATH + '/public/writeRecord/')
     var stream = Attachment.readById({ "_id" : ObjectId("5b17bdfd3e02e67162378f12") });
     stream.on('error', function () {
-        console.log("error: "+stream);
+        console.log("error: "+JSONS.stringify(stream));
     });
 
     stream.on('data', function () {

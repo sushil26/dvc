@@ -12,7 +12,7 @@ var capture = require('./controllers/capture');
 module.exports = function (app) {
 
     app.post('/vc/captureImgSend/:parentEmail/:studName', capture.captureImgSend);
-
+    
     app.post('/careator/pswdGenerate', careator.pswdGenerate);
     app.post('/careator/pswdCheck', careator.pswdCheck);
     app.post('/careator/emailInvite', careator.emailInvite);
@@ -20,6 +20,7 @@ module.exports = function (app) {
     app.post('/record/pswdGenerate', record.pswdGenerate);
     app.post('/record/pswdCheck', record.pswdCheck);
     app.post('/record/emailInvite', record.emailInvite);
+    app.post('/record/recordVideo', record.recordVideo);
 
     app.post('/vc/schoolLogo', image.upload);
     app.post('/vc/profilePicupload', image.profilePicupload);

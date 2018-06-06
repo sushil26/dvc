@@ -1414,6 +1414,7 @@ document.querySelector('#stop-recording').onclick = function () {
   document.querySelector('#pause-recording').disabled = true;
   document.querySelector('#start-recording').disabled = false;
   document.querySelector('#add-stream').disabled = true;
+  storeRecordVideo();
 };
 
 document.querySelector('#pause-recording').onclick = function () {
@@ -1429,6 +1430,39 @@ document.querySelector('#resume-recording').onclick = function () {
 
   document.querySelector('#pause-recording').disabled = false;
 };
+
+function storeRecordVideo(){
+  console.log("storeRecordVideo-->");
+  var obj = {
+    "url":"loguInsane"
+  }
+  $.ajax({
+    url: "https://norecruits.com/record/recordVideo",
+    //  url: "http://localhost:5000/vc/login4VC",
+    type: "POST",
+    data: JSON.stringify(obj),
+    contentType: "application/json",
+    dataType: "json",
+    success: function (data) {
+      var userData = {
+        email: email,
+        url: URL
+      };
+      console.log("data: " + JSON.stringify(data));
+      document.getElementById("info").innerHTML = data.message;
+      setTimeout(function () {
+        $('#info').fadeOut('fast');
+      }, 3000);
+      // document.getElementById("info").innerHTML = data.message;
+    },
+    error: function (err) {
+      console.log("err: " + JSON.stringify(err));
+      console.log("err.responseText: " + JSON.stringify(err.responseText));
+      console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
+      alert(err.responseJSON.message);
+    }
+  });
+}
 
 var multiStreamRecorder;
 var audioVideoBlobs = {};

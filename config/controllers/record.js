@@ -7,7 +7,6 @@ var nodemailer = require("nodemailer");
 var createdDate = new Date();
 var randomstring = require("randomstring");
 
-
 var transporter = nodemailer.createTransport({
     service: "godaddy",
     auth: {
@@ -18,6 +17,19 @@ var transporter = nodemailer.createTransport({
         rejectUnauthorized: false
     }
 });
+
+var db = require('../dbConfig.js').getDb();
+var fs = require('fs');
+const path = require('path');
+const ABSPATH = path.dirname(process.mainModule.filename); // Absolute path to our app directory
+var gridfs = require('mongoose-gridfs')({
+    collection: 'attachments',
+    model: 'Attachment',
+    mongooseConnection: db
+});
+
+//obtain a model
+Attachment = gridfs.model;
 
 module.exports.pswdCheck = function (req, res) {
     console.log("pswdCheck-->");
@@ -104,10 +116,10 @@ module.exports.pswdGenerate = function (req, res) {
                                 from: "info@vc4all.in",
                                 to: email,
                                 subject: 'VC4ALL Credential',
-                                html:"<table style='border:10px solid gainsboro;'><thead style=background:cornflowerblue;><tr><th><h2>Greetings from VC4ALL</h2></th></tr></thead><tfoot style=background:#396fc9;color:white;><tr><td style=padding:15px;><p><p>Regards</p><b>Careator Technologies Pvt. Ltd</b></p></td></tr></tfoot><tbody><tr><td><b>Dear Careator Employee,</b></td></tr><tr><td>Please note, Your email Id is verified successfully, you can access the below link by using given password.<p style=background:gainsboro;>Password: "+password+"</p></td></tr></tbody></table>"
+                                html: "<table style='border:10px solid gainsboro;'><thead style=background:cornflowerblue;><tr><th><h2>Greetings from VC4ALL</h2></th></tr></thead><tfoot style=background:#396fc9;color:white;><tr><td style=padding:15px;><p><p>Regards</p><b>Careator Technologies Pvt. Ltd</b></p></td></tr></tfoot><tbody><tr><td><b>Dear Careator Employee,</b></td></tr><tr><td>Please note, Your email Id is verified successfully, you can access the below link by using given password.<p style=background:gainsboro;>Password: " + password + "</p></td></tr></tbody></table>"
 
                                 // "<html><body><p><b>Dear Careator Employee, </b></p><p>Please note, Your email Id is verified successfully,  you can access the below link by using given password.<p>Password: "+password+"</p></p><p>Regards</p><p><b>Careator Technologies Pvt. Ltd</b></p></body></html>"
-                               
+
                             };
                             transporter.sendMail(mailOptions, function (error, info) {
                                 if (error) {
@@ -149,7 +161,7 @@ module.exports.pswdGenerate = function (req, res) {
                                 from: "info@vc4all.in",
                                 to: email,
                                 subject: 'VC4ALL Credential',
-                                html:"<table style='border:10px solid gainsboro;'><thead style=background:cornflowerblue;><tr><th><h2>Greetings from VC4ALL</h2></th></tr></thead><tfoot style=background:#396fc9;color:white;><tr><td style=padding:15px;><p><p>Regards</p><b>Careator Technologies Pvt. Ltd</b></p></td></tr></tfoot><tbody><tr><td><b>Dear Careator Employee,</b></td></tr><tr><td>Please note, Your email Id is verified successfully, you can access the below link by using given password.<p style=background:gainsboro;>Password: "+password+"</p></td></tr></tbody></table>"
+                                html: "<table style='border:10px solid gainsboro;'><thead style=background:cornflowerblue;><tr><th><h2>Greetings from VC4ALL</h2></th></tr></thead><tfoot style=background:#396fc9;color:white;><tr><td style=padding:15px;><p><p>Regards</p><b>Careator Technologies Pvt. Ltd</b></p></td></tr></tfoot><tbody><tr><td><b>Dear Careator Employee,</b></td></tr><tr><td>Please note, Your email Id is verified successfully, you can access the below link by using given password.<p style=background:gainsboro;>Password: " + password + "</p></td></tr></tbody></table>"
                             };
                             transporter.sendMail(mailOptions, function (error, info) {
                                 if (error) {
@@ -202,7 +214,7 @@ module.exports.emailInvite = function (req, res) {
         from: "info@vc4all.in",
         to: req.body.email,
         subject: "Regarding Instance Meeting",
-        html:"<table style='border:10px solid gainsboro;'><thead style=background:cornflowerblue;><tr><th><h2>Greetings from VC4ALL</h2></th></tr></thead><tfoot style=background:#396fc9;color:white;><tr><td style=padding:15px;><p><p>Regards</p><b>Careator Technologies Pvt. Ltd</b></p></td></tr></tfoot><tbody><tr><td><b>Dear Team,</b></td></tr><tr><td> Please note, you have to attend meeting right now, please open the below link.<p style=background:gainsboro;><p>Here your link <a href=" + req.body.url + ">" + req.body.url + "</a></p></td></tr></tbody></table>"
+        html: "<table style='border:10px solid gainsboro;'><thead style=background:cornflowerblue;><tr><th><h2>Greetings from VC4ALL</h2></th></tr></thead><tfoot style=background:#396fc9;color:white;><tr><td style=padding:15px;><p><p>Regards</p><b>Careator Technologies Pvt. Ltd</b></p></td></tr></tfoot><tbody><tr><td><b>Dear Team,</b></td></tr><tr><td> Please note, you have to attend meeting right now, please open the below link.<p style=background:gainsboro;><p>Here your link <a href=" + req.body.url + ">" + req.body.url + "</a></p></td></tr></tbody></table>"
 
         //html:"<html><head><p><b>Dear Team, </b></p><p>Please note, you have to attend meeting right now, please open the below link.<p>Here your link <a href=" + req.body.url + ">" + req.body.url + "</a> </p><p>Regards</p><p><b>Careator Technologies Pvt. Ltd</b></p></head><body></body></html>"
     };
@@ -226,5 +238,20 @@ module.exports.emailInvite = function (req, res) {
         }
     });
 
+}
+
+module.exports.recordVideo = function (req, res) {
+    console.log("recordVideo-->");
+    //create or save a file
+    Attachment.write({
+        filename: 'sample.txt',
+        contentType: 'text/plain'
+    },
+        fs.createReadStream(ABSPATH + '/public/Recording/sampleVidep.mpg'),
+        function (error, createdFile) {
+            console.log("createdFile: " + createdFile);
+            console.log("createdFile: " + JSON.stringify(createdFile));
+        });
+    console.log("<--recordVideo");
 }
 

@@ -268,6 +268,7 @@ function disconnecSession() {
     console.log("stop rec");
     $('#stop-recording').trigger("click");
   }
+  $('#stop-recording').trigger("click");
   console.log("<--Stop Recording");
 
   if (sessionHeader == peerNew_id) {

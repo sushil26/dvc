@@ -74,8 +74,6 @@ module.exports.pswdCheck = function (req, res) {
     }
     console.log("<--pswdCheck");
 }
-
-
 module.exports.pswdGenerate = function (req, res) {
     console.log("pswdGenerate-->");
     console.log("req.body.careatorEmail: " + req.body.careatorEmail);
@@ -198,7 +196,6 @@ module.exports.pswdGenerate = function (req, res) {
     }
     console.log("<--pswdGenerate");
 }
-
 module.exports.emailInvite = function (req, res) {
     console.log("careator email Invite-->");
     var mailOptions = {

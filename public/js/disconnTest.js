@@ -288,17 +288,21 @@ function disconnecSession() {
   localStorage.removeItem("careatorFriendName");
   userName = null;
 
-  if (sessionHeader == peerNew_id) {
-    console.log("start to disconnect the session");
-    console.log("queryLink: "+queryLink);
-    signaling_socket.emit("disconnectSession", {
-      deleteSessionId: queryLink,
-      owner: peerNew_id
-    });
-  } else {
-    console.log("You are not session creater so you cant delete session");
-  }
+//   if (sessionHeader == peerNew_id) {
+//     console.log("start to disconnect the session");
+//     console.log("queryLink: "+queryLink);
+//     signaling_socket.emit("disconnectSession", {
+//       deleteSessionId: queryLink,
+//       owner: peerNew_id
+//     });
+//   } else {
+//     console.log("You are not session creater so you cant delete session");
+//   }
 
+  signaling_socket.emit("disconnectSession", {
+    deleteSessionId: queryLink,
+    owner: peerNew_id
+  });
   console.log("-->disconnecSession");
 }
 

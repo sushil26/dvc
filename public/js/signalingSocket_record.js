@@ -1403,6 +1403,7 @@ var mediaConstraints = {
 document.querySelector('#start-recording').onclick = function () {
   this.disabled = true;
   captureUserMedia(mediaConstraints, onMediaSuccess, onMediaError);
+  console.log(video.src);
 };
 
 document.querySelector('#stop-recording').onclick = function () {
@@ -1448,6 +1449,8 @@ function onMediaSuccess(stream) {
 
     multiStreamRecorder = new MultiStreamRecorder(streamArray);
     multiStreamRecorder.stream = stream;
+
+
 
     multiStreamRecorder.previewStream = function (stream) {
       video.src = URL.createObjectURL(stream);

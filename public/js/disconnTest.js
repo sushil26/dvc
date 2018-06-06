@@ -303,8 +303,8 @@ function disconnecSession() {
 
 function startSession(id, date) {
   console.log("startSession-->");
-  window.location.href = "https://norecruits.com/careator/" + id + "/" + date;
-  var url = "https://norecruits.com/careator/" + id + "/" + date;
+  window.location.href = "https://norecruits.com/disconnTest/" + id + "/" + date;
+  var url = "https://norecruits.com/disconnTest/" + id + "/" + date;
   var obj = {
     "url": url
   };

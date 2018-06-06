@@ -215,7 +215,8 @@ io.sockets.on('connection', function (socket) {
                 part(channel);
             }
             console.log("started to delete session");
-            console.log("cJSON: "+cJSON.stringify(sockets));
+            //console.log("cJSON: "+cJSON.stringify(sockets));
+            console.log("cJSON: "+cJSON.stringify(sockets[0]));
             console.log("sockets: "+sockets+" sockets.length"+sockets.length);
             console.log("sockets: "+sockets+" sockets[1]"+sockets[1]);
             console.log("sockets.indexOf(data.deleteSessionId): "+sockets.indexOf(data.deleteSessionId));

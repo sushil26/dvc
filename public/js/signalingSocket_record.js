@@ -269,6 +269,7 @@ function disconnecSession() {
   localStorage.removeItem("careatorFriendName");
   userName = null;
   if(streamArray.length<=1){
+    console.log("stop rec");
     $('#stop-recording').trigger("click");
   }
   console.log("<--Stop Recording");

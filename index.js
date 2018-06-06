@@ -20,9 +20,9 @@ app.use(bodyParser.json({
 app.use(fileUpload());
 
 // module.exports = function (app, config) {
-    //app.set('view engine','html');
-    // app.use(session({secret: "Your secret key"}));
-    //app.use(multer({ dest: './public/schoolLogo'}));
+//app.set('view engine','html');
+// app.use(session({secret: "Your secret key"}));
+//app.use(multer({ dest: './public/schoolLogo'}));
 // }
 var queryId = null;
 var userName = null;
@@ -215,12 +215,12 @@ io.sockets.on('connection', function (socket) {
                 part(channel);
             }
             console.log("started to delete session");
-            //console.log("cJSON: "+cJSON.stringify(sockets));
-            console.log("cJSON: "+cJSON.stringify(sockets[0]));
-            console.log("sockets: "+sockets+" sockets.length"+sockets.length);
-            console.log("sockets: "+sockets+" sockets[1]"+sockets[1]);
-            console.log("sockets.indexOf(data.deleteSessionId): "+sockets.indexOf(data.deleteSessionId));
-            console.log("sockets[data.deleteSessionId]: " + sockets[data.deleteSessionId]);
+            console.log("data.deleteSessionId: " + data.deleteSessionId);
+            // console.log("cJSON: "+cJSON.stringify(sockets[0]));
+            // console.log("sockets: "+sockets+" sockets.length"+sockets.length);
+            // console.log("sockets: "+sockets+" sockets[1]"+sockets[1]);
+            //console.log("sockets.indexOf(data.deleteSessionId): "+sockets.indexOf(data.deleteSessionId));
+            console.log("sockets[data.deleteSessionId]: " + sockets.valueOf(data.deleteSessionId));
             delete sockets[data.deleteSessionId];
             delete channels[channel][data.deleteSessionId];
 

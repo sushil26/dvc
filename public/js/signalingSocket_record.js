@@ -1415,7 +1415,7 @@ document.querySelector('#stop-recording').onclick = function () {
   document.querySelector('#start-recording').disabled = false;
   document.querySelector('#add-stream').disabled = true;
 
-console.log("file path url ::"+ URL);
+console.log("file path url ::"+ a.href);
 };
 
 document.querySelector('#pause-recording').onclick = function () {

@@ -214,6 +214,8 @@ io.sockets.on('connection', function (socket) {
                 part(channel);
             }
             console.log("started to delete session");
+            console.log("sockets: "+sockets);
+            console.log("sockets: "+JSON.stringify(sockets));
             console.log("sockets[data.deleteSessionId]: " + sockets[data.deleteSessionId]);
             delete sockets[data.deleteSessionId];
             delete channels[channel][data.deleteSessionId];

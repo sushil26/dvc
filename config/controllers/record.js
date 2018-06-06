@@ -258,9 +258,22 @@ module.exports.getRecordVideo = function (req, res) {
     console.log("getRecordVideo-->");
     //create or save a file
     var fileWriteDir = fs.createReadStream(ABSPATH + '/public/writeRecord/writeSame.mpg')
-    var stream  = Attachment.readById({filename: 'sample.txt'});
-    stream.pipe()
-      
+    var stream = Attachment.readById({ filename: 'sample.txt' });
+    stream.on('error', function () {
+        console.log("error");
+    });
+
+    stream.on('data', function () {
+        stream.pipe(fileWriteDir);
+        console.log("data");
+    });
+
+    stream.on('close', function () {
+        stream.pipe(fileWriteDir);
+        console.log("close");
+    });
+
+
     console.log("<--recordVideo");
 }
 

@@ -246,15 +246,15 @@ module.exports.emailInvite = function (req, res) {
 module.exports.recordVideo = function (req, res) {
     console.log("recordVideo-->");
    
-    var readPath = ABSPATH + '/public/Recording/sampleVidep.mpg';
-    var gfs = Grid(db);
-    var writeStram = gfs.createWriteStream({
-        filename: 'sample.mps'
-    });
-    fs.createReadStream(readPath).pipe(writestream);
-    writeStram.on('close', function(file){
-        console.log(file.filename+"written to db");
-    })
+    // var readPath = ABSPATH + '/public/Recording/sampleVideo.mpg';
+    // var gfs = Grid(db);
+    // var writeStram = gfs.createWriteStream({
+    //     filename: 'sample.mps'
+    // });
+    // fs.createReadStream(readPath).pipe(writestream);
+    // writeStram.on('close', function(file){
+    //     console.log(file.filename+"written to db");
+    // })
     
     console.log("<--recordVideo");
 }

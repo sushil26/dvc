@@ -17,19 +17,19 @@ var transporter = nodemailer.createTransport({
         rejectUnauthorized: false
     }
 });
-
-var db = require('../dbConfig.js').getDb();
-var fs = require('fs');
+var mongo = require('mongodb');
+var Grid = require('gridfs-stream');
 const path = require('path');
 const ABSPATH = path.dirname(process.mainModule.filename); // Absolute path to our app directory
-var gridfs = require('mongoose-gridfs')({
-    collection: 'attachments',
-    model: 'Attachment',
-    mongooseConnection: db
-});
+var gfs = Grid(db,mongo);
+// var gridfs = require('mongoose-gridfs')({
+//     collection: 'attachments',
+//     model: 'Attachment',
+//     mongooseConnection: db
+// });
 
 //obtain a model
-Attachment = gridfs.model;
+//Attachment = gridfs.model;
 
 module.exports.pswdCheck = function (req, res) {
     console.log("pswdCheck-->");
@@ -243,35 +243,41 @@ module.exports.emailInvite = function (req, res) {
 module.exports.recordVideo = function (req, res) {
     console.log("recordVideo-->");
     //create or save a file
-    Attachment.write({
-        filename: 'sample.mpg',
-        contentType: 'text/plain'
-    },
-        fs.createReadStream(ABSPATH + '/public/Recording/sampleVidep.mpg'),
-        function (error, createdFile) {
-            console.log("createdFile: " + createdFile);
-            console.log("createdFile: " + JSON.stringify(createdFile));
-        });
+    // streaming to gridfs
+    var writestream = gfs.createWriteStream({
+        filename: 'sample.mpg'
+    });
+    var path = ABSPATH + '/public/Recording/sampleVidep.mpg';
+    fs.createReadStream(path).pipe(writestream);
+    // Attachment.write({
+    //     filename: 'sample.mpg',
+    //     contentType: 'text/plain'
+    // },
+    //     fs.createReadStream(ABSPATH + '/public/Recording/sampleVidep.mpg'),
+    //     function (error, createdFile) {
+    //         console.log("createdFile: " + createdFile);
+    //         console.log("createdFile: " + JSON.stringify(createdFile));
+    //     });
     console.log("<--recordVideo");
 }
 module.exports.getRecordVideo = function (req, res) {
     console.log("getRecordVideo-->");
     //create or save a file
-    var fileWriteDir = fs.createReadStream(ABSPATH + '/public/writeRecord/')
-    var stream = Attachment.readById({ "_id" : ObjectId("5b17bdfd3e02e67162378f12") });
-    stream.on('error', function () {
-        console.log("error: "+JSON.stringify(stream));
-    });
+    // var fileWriteDir = fs.createReadStream(ABSPATH + '/public/writeRecord/')
+    // var stream = Attachment.readById({ "_id": ObjectId("5b17bdfd3e02e67162378f12") });
+    // stream.on('error', function () {
+    //     console.log("error: " + JSON.stringify(stream));
+    // });
 
-    stream.on('data', function () {
-        stream.pipe(fileWriteDir);
-        console.log("data");
-    });
+    // stream.on('data', function () {
+    //     stream.pipe(fileWriteDir);
+    //     console.log("data");
+    // });
 
-    stream.on('close', function () {
-        stream.pipe(fileWriteDir);
-        console.log("close");
-    });
+    // stream.on('close', function () {
+    //     stream.pipe(fileWriteDir);
+    //     console.log("close");
+    // });
 
 
     console.log("<--recordVideo");

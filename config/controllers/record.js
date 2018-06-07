@@ -249,7 +249,7 @@ module.exports.recordVideo = function (req, res) {
     console.log("recordVideo-->");
 var url = req.body.url;
     //var readPath = ABSPATH + '/public/Recording/sampleVideo.mpg';
-    var readPath = url;
+    var readPath = new URL('req.body.url');
     var gfs = Grid(conn.db);
     var writeStream = gfs.createWriteStream({
         filename: 'sample.mpg'

@@ -285,6 +285,10 @@ module.exports.getRecordVideo = function (req, res) {
     stream.pipe(fs.createWriteStream(ABSPATH + '/public/writeRecord/sample.mpg'));
     stream.on('error', function (error) {
         console.log("error*: " + JSON.stringify(error.message));
+        var x = error.message;
+        var y = x.split(' ');
+        console.log("y[3]: "+y[3]);
+        console.log("y[3]: "+JSON.stringify(y[3]));
     });
 
     stream.on('data', function (data) {

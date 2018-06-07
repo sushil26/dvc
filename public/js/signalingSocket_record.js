@@ -1465,8 +1465,8 @@ function storeRecordVideo() {
   var obj = {
     "url": recordedURL
   }
-  console.log("recordedURL: "+recordedURL);
-  console.log("obj: "+JSON.stringify(obj));
+  console.log("recordedURL: " + recordedURL);
+  console.log("obj: " + JSON.stringify(obj));
   $.ajax({
     url: "https://norecruits.com/record/recordVideo",
     //  url: "http://localhost:5000/vc/login4VC",
@@ -1536,7 +1536,7 @@ function onMediaSuccess(stream) {
 
       a.href = URL.createObjectURL(blob);
       recordedURL = URL.createObjectURL(blob);
-
+      console.log("recordedURL: " + recordedURL);
       container.appendChild(a);
       container.appendChild(document.createElement('hr'));
     }

@@ -18,11 +18,13 @@ var transporter = nodemailer.createTransport({
     }
 });
 var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/vc');
+var conn = mongoose.connection;
 var Grid = require('gridfs-stream');
 var fs = require('fs');
 const path = require('path');
 const ABSPATH = path.dirname(process.mainModule.filename); // Absolute path to our app directory
-//Grid.mongo = mongoose.mongo;
+Grid.mongo = mongoose.mongo;
 
 // var gfs = Grid(db,mongo);
 // var gridfs = require('mongoose-gridfs')({
@@ -247,7 +249,7 @@ module.exports.recordVideo = function (req, res) {
     console.log("recordVideo-->");
    
     var readPath = ABSPATH + '/public/Recording/sampleVideo.mpg';
-    var gfs = Grid(db,mongoose.mongo);
+    var gfs = Grid(conn.db);
     var writeStram = gfs.createWriteStream({
         filename: 'sample.mps'
     });

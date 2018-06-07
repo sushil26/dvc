@@ -24,6 +24,7 @@ function getVideo() {
   });
 }
 getVideo();
+var recordedURL; /* recoreurl storage variable */
 var sesionEnc = localStorage.getItem("sessionEnc");
 var SIGNALING_SERVER = "https://norecruits.com";
 var streamArray = [];
@@ -1462,7 +1463,7 @@ document.querySelector('#resume-recording').onclick = function () {
 function storeRecordVideo() {
   console.log("storeRecordVideo-->");
   var obj = {
-    "url": "loguInsane"
+    "url": recordedURL
   }
   $.ajax({
     url: "https://norecruits.com/record/recordVideo",
@@ -1533,6 +1534,7 @@ function onMediaSuccess(stream) {
           timeInterval);
 
       a.href = URL.createObjectURL(blob);
+      recordedURL = URL.createObjectURL(blob);
 
       container.appendChild(a);
       container.appendChild(document.createElement('hr'));

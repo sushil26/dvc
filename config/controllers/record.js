@@ -17,12 +17,12 @@ var transporter = nodemailer.createTransport({
         rejectUnauthorized: false
     }
 });
-// var mongoose = require('mongoose');
-// var Grid = require('gridfs-stream');
-// var fs = require('fs');
-// const path = require('path');
-// const ABSPATH = path.dirname(process.mainModule.filename); // Absolute path to our app directory
-//Grid.mongo = mongoose.mongo;
+var mongoose = require('mongoose');
+var Grid = require('gridfs-stream');
+var fs = require('fs');
+const path = require('path');
+const ABSPATH = path.dirname(process.mainModule.filename); // Absolute path to our app directory
+Grid.mongo = mongoose.mongo;
 
 // var gfs = Grid(db,mongo);
 // var gridfs = require('mongoose-gridfs')({
@@ -246,15 +246,15 @@ module.exports.emailInvite = function (req, res) {
 module.exports.recordVideo = function (req, res) {
     console.log("recordVideo-->");
    
-    // var readPath = ABSPATH + '/public/Recording/sampleVideo.mpg';
-    // var gfs = Grid(db);
-    // var writeStram = gfs.createWriteStream({
-    //     filename: 'sample.mps'
-    // });
-    // fs.createReadStream(readPath).pipe(writestream);
-    // writeStram.on('close', function(file){
-    //     console.log(file.filename+"written to db");
-    // })
+    var readPath = ABSPATH + '/public/Recording/sampleVideo.mpg';
+    var gfs = Grid(db);
+    var writeStram = gfs.createWriteStream({
+        filename: 'sample.mps'
+    });
+    fs.createReadStream(readPath).pipe(writestream);
+    writeStram.on('close', function(file){
+        console.log(file.filename+"written to db");
+    })
     
     console.log("<--recordVideo");
 }

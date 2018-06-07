@@ -281,16 +281,16 @@ module.exports.getRecordVideo = function (req, res) {
     // Attachment.readById({ filename: 'sample.mpg' }, function(error, content){
     //     console.log("content-->");
     //   })
-    stream.on('error', function (error) {
-        console.log("error: " + error);
-    });
+    // stream.on('error', function (error) {
+    //     console.log("error*: " + error);
+    // });
 
     stream.on('data', function (data) {
-        console.log("data: " + data);
+        console.log("data*: " + data);
     });
 
     stream.on('close', function (close) {
-        console.log("close: " + close);
+        console.log("close*: " + close);
     });
 
     // var stream = Attachment.readById({ "_id": ObjectId("5b17bdfd3e02e67162378f12") });

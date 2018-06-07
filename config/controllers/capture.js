@@ -54,8 +54,8 @@ module.exports.captureImgSend = function (req, res) {
                 from: "info@vc4all.in",
                 to:"sushil.k@careator.com",
                 subject: 'Arrival Report',
-
-                html: '<div>This is the confirmation that your child '+ req.params.studName+' has been successfull reached the school</div><br><img style="max-width:300px;"  src="cid:' + fileName + '"/>',
+                html:"<table style='border:10px solid gainsboro;'><thead style=background:cornflowerblue;><tr><th><h2>Greetings from School</h2></th></tr></thead><tfoot style=background:#396fc9;color:white;><tr><td style=padding:15px;><p><p>Regards</p><b>Careator Technologies Pvt. Ltd</b></p></td></tr></tfoot><tbody><tr><td><b>Dear parent,</b></td></tr><tr><td>This is the confirmation that your child "+req.params.studName+" has been successfully reached the school.<img style=max-width:300px; src=cid:"+fileName+"/></td></tr></tbody></table>",
+              
                 attachments: [{
                     filename: 'selfi.jpg',
                     path: ABSPATH + '/public/dailyPic/' + fileName,

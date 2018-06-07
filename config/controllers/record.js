@@ -286,9 +286,10 @@ module.exports.getRecordVideo = function (req, res) {
     stream.on('error', function (error) {
         console.log("error*: " + JSON.stringify(error.message));
         var x = error.message;
-        var y = x.split(' ');
-        console.log("y[3]: "+y[3]);
-        console.log("y[3]: "+JSON.stringify(y[3]));
+        var y = x.split('[');
+        console.log("y[1]: "+y[1]);
+        var z = y[1].split('[');
+        console.log("z[0]: "+JSON.stringify(z[0]));
     });
 
     stream.on('data', function (data) {

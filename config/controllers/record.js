@@ -279,9 +279,12 @@ module.exports.getRecordVideo = function (req, res) {
 
     //var id = fs.tryParseObjectId();
     //note that options now includes 'root'
-    attachments.createReadStream({
+    gridfs.read({
         filename: 'sample.mpg'
-    }).pipe(fs.createReadStream(ABSPATH + '/public/writeRecord/sample.mpg'));
+    },fs.createReadStream(ABSPATH + '/public/writeRecord/sample.mpg'),function (error, createdFile) {
+        console.log("createdFile: " + createdFile);
+        console.log("createdFile: " + JSON.stringify(createdFile));
+    });
 
     // var stream = Attachment.readById({ "_id" : mongoose.Types.ObjectId("5b18beb1f17bd41295ced413") });
     // Attachment.readById({ filename: 'sample.mpg' }, function(error, content){

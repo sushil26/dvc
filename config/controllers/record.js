@@ -281,9 +281,9 @@ module.exports.getRecordVideo = function (req, res) {
     // Attachment.readById({ filename: 'sample.mpg' }, function(error, content){
     //     console.log("content-->");
     //   })
-    // stream.on('error', function (error) {
-    //     console.log("error*: " + error);
-    // });
+    stream.on('error', function (error) {
+        console.log("error*: " + error);
+    });
 
     stream.on('data', function (data) {
         console.log("data*: " + data);

@@ -251,7 +251,7 @@ module.exports.recordVideo = function (req, res) {
     var readPath = ABSPATH + '/public/Recording/sampleVideo.mpg';
     var gfs = Grid(conn.db);
     var writeStream = gfs.createWriteStream({
-        filename: 'sample.mps'
+        filename: 'sample.mpg'
     });
     fs.createReadStream(readPath).pipe(writeStream);
     writeStream.on('close', function(file){

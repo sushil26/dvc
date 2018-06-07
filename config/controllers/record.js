@@ -260,6 +260,7 @@ module.exports.recordVideo = function (req, res) {
             console.log("createdFile: " + createdFile);
             console.log("createdFile: " + JSON.stringify(createdFile));
         });
+        
     console.log("<--recordVideo");
 }
 module.exports.getRecordVideo = function (req, res) {
@@ -278,27 +279,31 @@ module.exports.getRecordVideo = function (req, res) {
 
     //var id = fs.tryParseObjectId();
     //note that options now includes 'root'
-    var stream = Attachment.readById({ "_id" : mongoose.Types.ObjectId("5b18beb1f17bd41295ced413") });
+    gridfs.createReadStream({
+        filename: 'sample.mpg'
+    }).pipe(fs.createReadStream(ABSPATH + '/public/writeRecord/sample.mpg'));
+
+    // var stream = Attachment.readById({ "_id" : mongoose.Types.ObjectId("5b18beb1f17bd41295ced413") });
     // Attachment.readById({ filename: 'sample.mpg' }, function(error, content){
     //     console.log("content-->");
     //   })
-    stream.pipe(fs.createWriteStream(ABSPATH + '/public/writeRecord/sample.mpg'));
-    stream.on('error', function (error) {
-        console.log("error*: " + JSON.stringify(error.message));
-        var x = error.message;
-        var y = x.split('[');
-        console.log("y[1]: "+y[1]);
-        var z = y[1].split(']');
-        console.log("z[0]: "+JSON.stringify(z[0]));
-    });
+    // stream.pipe(fs.createWriteStream(ABSPATH + '/public/writeRecord/sample.mpg'));
+    // stream.on('error', function (error) {
+    //     console.log("error*: " + JSON.stringify(error.message));
+    //     var x = error.message;
+    //     var y = x.split('[');
+    //     console.log("y[1]: "+y[1]);
+    //     var z = y[1].split(']');
+    //     console.log("z[0]: "+JSON.stringify(z[0]));
+    // });
 
-    stream.on('data', function (data) {
-        console.log("data*: " + data);
-    });
+    // stream.on('data', function (data) {
+    //     console.log("data*: " + data);
+    // });
 
-    stream.on('close', function (close) {
-        console.log("close*: " + close);
-    });
+    // stream.on('close', function (close) {
+    //     console.log("close*: " + close);
+    // });
 
     // var stream = Attachment.readById({ "_id": ObjectId("5b17bdfd3e02e67162378f12") });
     // stream.on('error', function () {

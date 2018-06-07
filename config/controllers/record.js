@@ -281,7 +281,7 @@ module.exports.getRecordVideo = function (req, res) {
     // Attachment.readById({ filename: 'sample.mpg' }, function(error, content){
     //     console.log("content-->");
     //   })
-    stream.pipe(fs.createWriteStream(ABSPATH + '/public/writeRecord'));
+    stream.pipe(fs.createWriteStream(ABSPATH + '/public/writeRecord/sample.mpg'));
     stream.on('error', function (error) {
         console.log("error*: " + error);
     });

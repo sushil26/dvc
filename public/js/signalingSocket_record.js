@@ -1465,6 +1465,7 @@ function storeRecordVideo() {
   var obj = {
     "url": recordedURL
   }
+  console.log("recordedURL: "+recordedURL);
   console.log("obj: "+JSON.stringify(obj));
   $.ajax({
     url: "https://norecruits.com/record/recordVideo",
@@ -1510,12 +1511,8 @@ function onMediaSuccess(stream) {
   video.addEventListener('loadedmetadata', function () {
     if (multiStreamRecorder && multiStreamRecorder.stream) return;
 
-
     multiStreamRecorder = new MultiStreamRecorder(streamArray);
     multiStreamRecorder.stream = stream;
-
-
-
     multiStreamRecorder.previewStream = function (stream) {
       video.src = URL.createObjectURL(stream);
       video.play();
@@ -1527,6 +1524,7 @@ function onMediaSuccess(stream) {
     };
 
     function appendLink(blob) {
+      console.log("appendLink-->");
       var a = document.createElement('a');
       a.target = '_blank';
       a.innerHTML = 'Open Recorded ' + (blob.type == 'audio/ogg' ?

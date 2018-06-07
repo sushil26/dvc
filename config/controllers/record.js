@@ -264,21 +264,21 @@ module.exports.recordVideo = function (req, res) {
 module.exports.getRecordVideo = function (req, res) {
     console.log("getRecordVideo-->");
     //create or save a file
-    var fileWriteDir = fs.createReadStream(ABSPATH + '/public/writeRecord/')
-    var stream = Attachment.readById({ "_id": ObjectId("5b17bdfd3e02e67162378f12") });
-    stream.on('error', function () {
-        console.log("error: " + JSON.stringify(stream));
-    });
+    // var fileWriteDir = fs.createReadStream(ABSPATH + '/public/writeRecord/')
+    // var stream = Attachment.readById({ "_id": ObjectId("5b17bdfd3e02e67162378f12") });
+    // stream.on('error', function () {
+    //     console.log("error: " + JSON.stringify(stream));
+    // });
 
-    stream.on('data', function () {
-        stream.pipe(fileWriteDir);
-        console.log("data");
-    });
+    // stream.on('data', function () {
+    //     stream.pipe(fileWriteDir);
+    //     console.log("data");
+    // });
 
-    stream.on('close', function () {
-        stream.pipe(fileWriteDir);
-        console.log("close");
-    });
+    // stream.on('close', function () {
+    //     stream.pipe(fileWriteDir);
+    //     console.log("close");
+    // });
 
 
     console.log("<--recordVideo");

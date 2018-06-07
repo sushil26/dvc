@@ -17,11 +17,11 @@ var transporter = nodemailer.createTransport({
         rejectUnauthorized: false
     }
 });
-
+var mongo = require('mongodb');
 var Grid = require('gridfs-stream');
 const path = require('path');
 const ABSPATH = path.dirname(process.mainModule.filename); // Absolute path to our app directory
-var gfs = Grid(db);
+var gfs = Grid(db,mongo);
 // var gridfs = require('mongoose-gridfs')({
 //     collection: 'attachments',
 //     model: 'Attachment',

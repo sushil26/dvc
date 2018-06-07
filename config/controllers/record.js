@@ -264,7 +264,7 @@ module.exports.recordVideo = function (req, res) {
 module.exports.getRecordVideo = function (req, res) {
     console.log("getRecordVideo-->");
     //create or save a file
-    var fileWriteDir = fs.createReadStream(ABSPATH + '/public/writeRecord/')
+   // var fileWriteDir = fs.createReadStream(ABSPATH + '/public/writeRecord/')
     // Attachment.readById({
     //     filename: 'sample.mpg',
     //     contentType: 'text/plain'

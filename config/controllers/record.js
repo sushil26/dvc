@@ -247,7 +247,7 @@ module.exports.recordVideo = function (req, res) {
     console.log("recordVideo-->");
    
     var readPath = ABSPATH + '/public/Recording/sampleVideo.mpg';
-    var gfs = Grid(db);
+    var gfs = Grid(db,mongoose.mongo);
     var writeStram = gfs.createWriteStream({
         filename: 'sample.mps'
     });

@@ -253,7 +253,7 @@ module.exports.recordVideo = function (req, res) {
     var writeStream = gfs.createWriteStream({
         filename: 'sample.mps'
     });
-    fs.createReadStream(readPath).pipe(writestream);
+    fs.createReadStream(readPath).pipe(writeStream);
     writeStream.on('close', function(file){
         console.log(file.filename+"written to db");
     })

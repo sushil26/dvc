@@ -18,6 +18,7 @@ var transporter = nodemailer.createTransport({
     }
 });
 var mongo = require('mongodb');
+var fs = require('fs');
 //var Grid = require('gridfs-stream');
 const path = require('path');
 const ABSPATH = path.dirname(process.mainModule.filename); // Absolute path to our app directory

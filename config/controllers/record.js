@@ -17,11 +17,11 @@ var transporter = nodemailer.createTransport({
         rejectUnauthorized: false
     }
 });
-var mongoose = require('mongoose');
-var Grid = require('gridfs-stream');
-var fs = require('fs');
-const path = require('path');
-const ABSPATH = path.dirname(process.mainModule.filename); // Absolute path to our app directory
+// var mongoose = require('mongoose');
+// var Grid = require('gridfs-stream');
+// var fs = require('fs');
+// const path = require('path');
+// const ABSPATH = path.dirname(process.mainModule.filename); // Absolute path to our app directory
 //Grid.mongo = mongoose.mongo;
 
 // var gfs = Grid(db,mongo);

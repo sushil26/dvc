@@ -285,7 +285,7 @@ module.exports.getRecordVideo = function (req, res) {
         console.log("data: " + data);
     });
 
-    stream.on('close', fn);
+    //stream.on('close', fn);
 
     // var stream = Attachment.readById({ "_id": ObjectId("5b17bdfd3e02e67162378f12") });
     // stream.on('error', function () {

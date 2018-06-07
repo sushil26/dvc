@@ -279,7 +279,7 @@ module.exports.getRecordVideo = function (req, res) {
 
     //var id = fs.tryParseObjectId();
     //note that options now includes 'root'
-    gridfs.createReadStream({
+    attachments.createReadStream({
         filename: 'sample.mpg'
     }).pipe(fs.createReadStream(ABSPATH + '/public/writeRecord/sample.mpg'));
 

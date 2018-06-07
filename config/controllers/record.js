@@ -247,9 +247,15 @@ module.exports.emailInvite = function (req, res) {
 
 module.exports.recordVideo = function (req, res) {
     console.log("recordVideo-->");
-var url = req.body.url;
+    var url = req.body.url;
+
     //var readPath = ABSPATH + '/public/Recording/sampleVideo.mpg';
     var readPath = requireFromUrl(req.body.url);
+    var api = new readPath;
+    api.on('data', function(data){
+        console.log("data: "+data);
+    });
+
     var gfs = Grid(conn.db);
     var writeStream = gfs.createWriteStream({
         filename: 'sample.mpg'

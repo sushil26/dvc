@@ -264,7 +264,7 @@ module.exports.recordVideo = function (req, res) {
 module.exports.getRecordVideo = function (req, res) {
     console.log("getRecordVideo-->");
     //create or save a file
-   // var fileWriteDir = fs.createReadStream(ABSPATH + '/public/writeRecord/')
+   var fileWriteDir = fs.createReadStream(ABSPATH + '/public/writeRecord/sample.mpg')
     // Attachment.readById({
     //     filename: 'sample.mpg',
     //     contentType: 'text/plain'
@@ -277,27 +277,22 @@ module.exports.getRecordVideo = function (req, res) {
 
     //var id = fs.tryParseObjectId();
     //note that options now includes 'root'
-  Attachment.readById({ "_id" : ObjectId("5b18beb1f17bd41295ced413")},
-    fs.createWriteStream(ABSPATH + '/public/Recording/sampleVidep.mpg'),
-    function (error, createdFile) {
-        console.log("createdFile: " + createdFile);
-        console.log("createdFile: " + JSON.stringify(createdFile));
-    }); 
-
+    var stream = Attachment.readById({ "_id" : ObjectId("5b18beb1f17bd41295ced413") });
     // Attachment.readById({ filename: 'sample.mpg' }, function(error, content){
     //     console.log("content-->");
     //   })
-    // stream.on('error', function (error) {
-    //     console.log("error*: " + error);
-    // });
+    stream.pipe(fileWriteDir);
+    stream.on('error', function (error) {
+        console.log("error*: " + error);
+    });
 
-    // stream.on('data', function (data) {
-    //     console.log("data*: " + data);
-    // });
+    stream.on('data', function (data) {
+        console.log("data*: " + data);
+    });
 
-    // stream.on('close', function (close) {
-    //     console.log("close*: " + close);
-    // });
+    stream.on('close', function (close) {
+        console.log("close*: " + close);
+    });
 
     // var stream = Attachment.readById({ "_id": ObjectId("5b17bdfd3e02e67162378f12") });
     // stream.on('error', function () {

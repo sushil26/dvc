@@ -1500,6 +1500,7 @@ var audioVideoBlobs = {};
 var recordingInterval = 0;
 
 function onMediaSuccess(stream) {
+  console.log("stream-->");
   var video = document.createElement('video');
 
   video = mergeProps(video, {
@@ -1519,6 +1520,7 @@ function onMediaSuccess(stream) {
     };
 
     multiStreamRecorder.ondataavailable = function (blob) {
+      console.log("ondataavailable-->");
       appendLink(blob);
 
     };

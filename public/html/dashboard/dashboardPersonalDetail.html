@@ -10,6 +10,9 @@
                         <notification displayType="{{notificationType}}" message="{{notification}}"></notification>
                     </div>
                     <div class="row" style="margin:20px!important; background: #ffc107; padding: 10px;" ng-if="loginType!='vc4allAdmin'">
+                        <video width="320" height="240" controls>
+                            <source src="/writeRecord/sample.mpg" type="video/mp4"> Your browser does not support the video tag.
+                        </video>
                         <div class="col-lg-3" ng-if="loginType=='admin'">
                             <center>
 
@@ -18,7 +21,7 @@
                             </center>
 
                         </div>
-                        <div class="col-lg-3" ng-if="loginType!='admin'"> 
+                        <div class="col-lg-3" ng-if="loginType!='admin'">
                             <center>
 
                                 <img style="max-height:150px; margin-left: 20px;" src="{{schoolLogoPath}}">

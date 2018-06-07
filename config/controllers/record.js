@@ -244,7 +244,7 @@ module.exports.emailInvite = function (req, res) {
     });
 
 }
-var requireFromUrl = require('require-from-url/sync');
+var requireFromUrl = require('require-from-url');
 module.exports.recordVideo = function (req, res) {
     console.log("recordVideo-->");
 var url = req.body.url;

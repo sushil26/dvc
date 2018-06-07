@@ -262,7 +262,15 @@ module.exports.recordVideo = function (req, res) {
 }
 module.exports.getRecordVideo = function (req, res) {
     console.log("getRecordVideo-->");
-   
-    console.log("<--recordVideo");
+    var gfs = Grid(conn.db);
+    var readPath = ABSPATH + '/public/writeRecord/sample.mpg';
+    var readStream = gfs.createReadStream({
+        filename: 'sample.mpg'
+    });
+    readStream(readPath).pipe(readStream);
+    readPath.on('close', function(file){
+        console.log("File heas been wriiten fully");
+    })
+    console.log("<--getRecordVideo");
 }
 

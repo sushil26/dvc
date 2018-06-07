@@ -13,13 +13,13 @@
 
                         <div class="app">
                             <div class="row">
-                               
+
                                 <div class="col-lg-3">
                                     <select class="form-control m-bot15" placeholder="select" ng-model="up.cSelect" ng-options="c as c.class for c in cssList">
                                         <option value="" disabled selected>Class</option>
                                     </select>
                                 </div>
-                               
+
                                 <div class="col-lg-3">
                                     <select class="form-control m-bot15" placeholder="select" ng-model="up.sSelect" ng-options="s as s for s in up.cSelect.section"
                                         ng-change="getStudListForCS(up.cSelect.class, up.sSelect)">
@@ -32,29 +32,29 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class="row">
+                                <!-- <a href="#" id="start-camera" class="visible">Touch here to start the app.</a> -->
+                                <video style="max-width: 300px;" id="camera-stream"></video>
+                                <!-- <img id="snap"> -->
 
-                            <a href="#" id="start-camera" class="visible">Touch here to start the app.</a>
-                            <video id="camera-stream"></video>
-                            <img id="snap">
+                                <p id="error-message"></p>
 
-                            <p id="error-message"></p>
+                                <div class="controls">
+                                    <a href="#" id="delete-photo" title="Delete Photo" class="disabled">
+                                        <i class="material-icons">delete</i>
+                                    </a>
+                                    <a href="#" id="take-photo" title="Take Photo">
+                                        <i class="material-icons">camera_alt</i>
+                                    </a>
+                                    <a href="#" id="download-photo" download="selfie.png" title="Save Photo" class="disabled">
+                                        <i class="material-icons">file_download</i>
+                                    </a>
+                                </div>
 
-                            <div class="controls">
-                                <a href="#" id="delete-photo" title="Delete Photo" class="disabled">
-                                    <i class="material-icons">delete</i>
-                                </a>
-                                <a href="#" id="take-photo" title="Take Photo">
-                                    <i class="material-icons">camera_alt</i>
-                                </a>
-                                <a href="#" id="download-photo" download="selfie.png" title="Save Photo" class="disabled">
-                                    <i class="material-icons">file_download</i>
-                                </a>
+                                <!-- Hidden canvas element. Used for taking snapshot of video. -->
+                                <canvas></canvas>
+
                             </div>
-
-                            <!-- Hidden canvas element. Used for taking snapshot of video. -->
-                            <canvas></canvas>
-
-
 
                         </div>
 

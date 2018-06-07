@@ -17,21 +17,22 @@ var transporter = nodemailer.createTransport({
         rejectUnauthorized: false
     }
 });
-var mongo = require('mongodb');
+var mongoose = require('mongoose');
+var Grid = require('gridfs-stream');
 var fs = require('fs');
-//var Grid = require('gridfs-stream');
 const path = require('path');
 const ABSPATH = path.dirname(process.mainModule.filename); // Absolute path to our app directory
-const mongoose = require('mongoose');
+Grid.mongo = mongoose.mongo;
+
 // var gfs = Grid(db,mongo);
-var gridfs = require('mongoose-gridfs')({
-    collection: 'attachments',
-    model: 'Attachment',
-    mongooseConnection: db
-});
+// var gridfs = require('mongoose-gridfs')({
+//     collection: 'attachments',
+//     model: 'Attachment',
+//     mongooseConnection: db
+// });
 
 //obtain a model
-Attachment = gridfs.model;
+//Attachment = gridfs.model;
 
 module.exports.pswdCheck = function (req, res) {
     console.log("pswdCheck-->");
@@ -244,86 +245,22 @@ module.exports.emailInvite = function (req, res) {
 
 module.exports.recordVideo = function (req, res) {
     console.log("recordVideo-->");
-    //create or save a file
-    // streaming to gridfs
-    // var writestream = gfs.createWriteStream({
-    //     filename: 'sample.mpg'
-    // });
-    // var path = ABSPATH + '/public/Recording/sampleVidep.mpg';
-    // fs.createReadStream(path).pipe(writestream);
-    Attachment.write({
-        filename: 'sample.mpg',
-        contentType: 'text/plain'
-    },
-        fs.createReadStream(ABSPATH + '/public/Recording/sampleVidep.mpg'),
-        function (error, createdFile) {
-            console.log("createdFile: " + createdFile);
-            console.log("createdFile: " + JSON.stringify(createdFile));
-        });
-        
+   
+    var readPath = ABSPATH + '/public/Recording/sampleVidep.mpg';
+    var gfs = Grid(db);
+    var writeStram = gfs.createWriteStream({
+        filename: 'sample.mps'
+    });
+    fs.createReadStream(readPath).pipe(writestream);
+    writeStram.on('close', function(file){
+        console.log(file.filename+"written to db");
+    })
+    
     console.log("<--recordVideo");
 }
 module.exports.getRecordVideo = function (req, res) {
     console.log("getRecordVideo-->");
-    //create or save a file
-   var fileWriteDir = fs.createReadStream(ABSPATH + '/public/writeRecord/sample.mpg')
-    // Attachment.readById({
-    //     filename: 'sample.mpg',
-    //     contentType: 'text/plain'
-    // },
-    //     fs.createReadStream(ABSPATH + '/public/writeRecord/sampleVidep.mpg'),
-    //     function (error, createdFile) {
-    //         console.log("createdFile: " + createdFile);
-    //         console.log("createdFile: " + JSON.stringify(createdFile));
-    //     });
-
-    //var id = fs.tryParseObjectId();
-    //note that options now includes 'root'
-    gridfs.read({
-        filename: 'sample.mpg'
-    },fs.createReadStream(ABSPATH + '/public/writeRecord/sample.mpg'),function (error, createdFile) {
-        console.log("createdFile: " + createdFile);
-        console.log("createdFile: " + JSON.stringify(createdFile));
-    });
-
-    // var stream = Attachment.readById({ "_id" : mongoose.Types.ObjectId("5b18beb1f17bd41295ced413") });
-    // Attachment.readById({ filename: 'sample.mpg' }, function(error, content){
-    //     console.log("content-->");
-    //   })
-    // stream.pipe(fs.createWriteStream(ABSPATH + '/public/writeRecord/sample.mpg'));
-    // stream.on('error', function (error) {
-    //     console.log("error*: " + JSON.stringify(error.message));
-    //     var x = error.message;
-    //     var y = x.split('[');
-    //     console.log("y[1]: "+y[1]);
-    //     var z = y[1].split(']');
-    //     console.log("z[0]: "+JSON.stringify(z[0]));
-    // });
-
-    // stream.on('data', function (data) {
-    //     console.log("data*: " + data);
-    // });
-
-    // stream.on('close', function (close) {
-    //     console.log("close*: " + close);
-    // });
-
-    // var stream = Attachment.readById({ "_id": ObjectId("5b17bdfd3e02e67162378f12") });
-    // stream.on('error', function () {
-    //     console.log("error: " + JSON.stringify(stream));
-    // });
-
-    // stream.on('data', function () {
-    //     stream.pipe(fileWriteDir);
-    //     console.log("data");
-    // });
-
-    // stream.on('close', function () {
-    //     stream.pipe(fileWriteDir);
-    //     console.log("close");
-    // });
-
-
+   
     console.log("<--recordVideo");
 }
 

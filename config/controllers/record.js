@@ -277,7 +277,7 @@ module.exports.getRecordVideo = function (req, res) {
 
     //var id = fs.tryParseObjectId();
     //note that options now includes 'root'
-    var stream = Attachment.readById({ filename: 'sample.mpg' });
+    var stream = Attachment.readById({ "_id" : ObjectId("5b18beb1f17bd41295ced413") });
     // Attachment.readById({ filename: 'sample.mpg' }, function(error, content){
     //     console.log("content-->");
     //   })

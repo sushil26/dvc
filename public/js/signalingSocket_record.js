@@ -23,7 +23,7 @@ function getVideo() {
 
   });
 }
-getVideo();
+storeRecordVideo();
 var sesionEnc = localStorage.getItem("sessionEnc");
 var SIGNALING_SERVER = "https://norecruits.com";
 var streamArray = [];

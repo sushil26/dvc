@@ -288,7 +288,7 @@ module.exports.getRecordVideo = function (req, res) {
         var x = error.message;
         var y = x.split('[');
         console.log("y[1]: "+y[1]);
-        var z = y[1].split('[');
+        var z = y[1].split(']');
         console.log("z[0]: "+JSON.stringify(z[0]));
     });
 

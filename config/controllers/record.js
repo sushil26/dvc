@@ -251,7 +251,7 @@ module.exports.recordVideo = function (req, res) {
 
     //var readPath = ABSPATH + '/public/Recording/sampleVideo.mpg';
     console.log("ABSPATH: "+ABSPATH);
-    console.log("path: "+path);
+    console.log("path: "+JSON.stringify(path));
      var readPath = req.body.url
     // var api = new readPath;
     // api.on('data', function(data){

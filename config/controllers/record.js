@@ -247,17 +247,16 @@ module.exports.emailInvite = function (req, res) {
 
 module.exports.recordVideo = function (req, res) {
     console.log("recordVideo-->");
-   
+
     var readPath = ABSPATH + '/public/Recording/sampleVideo.mpg';
     var gfs = Grid(conn.db);
     var writeStream = gfs.createWriteStream({
         filename: 'sample.mpg'
     });
     fs.createReadStream(readPath).pipe(writeStream);
-    writeStream.on('close', function(file){
-        console.log(file.filename+"written to db");
+    writeStream.on('close', function (file) {
+        console.log(file.filename + "written to db");
     })
-    
     console.log("<--recordVideo");
 }
 module.exports.getRecordVideo = function (req, res) {
@@ -268,7 +267,7 @@ module.exports.getRecordVideo = function (req, res) {
         filename: 'sample.mpg'
     });
     readStream.pipe(readPath);
-    readPath.on('close', function(file){
+    readPath.on('close', function (file) {
         console.log("File heas been wriiten fully");
     })
     console.log("<--getRecordVideo");

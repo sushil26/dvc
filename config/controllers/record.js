@@ -6,7 +6,7 @@ var ObjectId = require("mongodb").ObjectID;
 var nodemailer = require("nodemailer");
 var createdDate = new Date();
 var randomstring = require("randomstring");
-
+var requireFromUrl = require('require-from-url');
 var transporter = nodemailer.createTransport({
     service: "godaddy",
     auth: {
@@ -244,7 +244,7 @@ module.exports.emailInvite = function (req, res) {
     });
 
 }
-var requireFromUrl = require('require-from-url');
+
 module.exports.recordVideo = function (req, res) {
     console.log("recordVideo-->");
 var url = req.body.url;

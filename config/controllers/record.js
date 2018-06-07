@@ -22,7 +22,7 @@ var Grid = require('gridfs-stream');
 var fs = require('fs');
 const path = require('path');
 const ABSPATH = path.dirname(process.mainModule.filename); // Absolute path to our app directory
-Grid.mongo = mongoose.mongo;
+//Grid.mongo = mongoose.mongo;
 
 // var gfs = Grid(db,mongo);
 // var gridfs = require('mongoose-gridfs')({

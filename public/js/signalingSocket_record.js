@@ -293,9 +293,25 @@ function disconnecSession() {
   userName = null;
   if (streamArray.length <= 1) {
     console.log("stop rec");
-    $('#stop-recording').trigger("click");
+    // $('#stop-recording').trigger("click");
+    this.disabled = true;
+    multiStreamRecorder.stop();
+    multiStreamRecorder.stream.stop();
+  
+    document.querySelector('#pause-recording').disabled = true;
+    document.querySelector('#start-recording').disabled = false;
+    document.querySelector('#add-stream').disabled = true;
+    storeRecordVideo();
   }
-  $('#stop-recording').trigger("click");
+  //$('#stop-recording').trigger("click");
+  this.disabled = true;
+  multiStreamRecorder.stop();
+  multiStreamRecorder.stream.stop();
+
+  document.querySelector('#pause-recording').disabled = true;
+  document.querySelector('#start-recording').disabled = false;
+  document.querySelector('#add-stream').disabled = true;
+  storeRecordVideo();
   console.log("<--Stop Recording");
 
   if (sessionHeader == peerNew_id) {

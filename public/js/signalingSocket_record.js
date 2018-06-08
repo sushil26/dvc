@@ -1479,8 +1479,8 @@ function storeRecordVideo() {
       //  url: "http://localhost:5000/vc/login4VC",
       type: "POST",
       data: fd,
-      contentType: undefined,
-      dataType: "json",
+      contentType: undefined
+      
       success: function (data) {
         // var userData = {
         //   email: email,

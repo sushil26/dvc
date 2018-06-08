@@ -1469,18 +1469,18 @@ function storeRecordVideo() {
   //var resultBlob = dataURItoBlob(recordedURL);
   //console.log("recordedURL: " + recordedURL);
   console.log("obj: " + JSON.stringify(obj));
-  var fd = new FormData();
-  console.log("recordedURL: " + recordedURL);
-  fd.append('logo', recordedURL);
-  console.log("fd: " + fd);
+  // var fd = new FormData();
+  // console.log("recordedURL: " + recordedURL);
+  // fd.append('logo', recordedURL);
+  // console.log("fd: " + fd);
  
     $.ajax({
       url: "https://norecruits.com/record/recordVideo",
       //  url: "http://localhost:5000/vc/login4VC",
       type: "POST",
-      data: fd,
-      contentType: undefined,
-      
+      data: obj,
+      contentType: "application/json",
+      dataType: "json",
       success: function (data) {
         // var userData = {
         //   email: email,

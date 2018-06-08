@@ -290,7 +290,7 @@ module.exports.getRecordVideo = function (req, res) {
     console.log("getRecordVideo-->");
     var gfs = Grid(conn.db);
     //var readPath = fs.createWriteStream(ABSPATH + '/public/writeRecord/sample.mpg');
-    var readPath = fs.createWriteStream(path('../public/writeRecord'));
+    var readPath = fs.createWriteStream(path.join('../public/writeRecord'));
     var readStream = gfs.createReadStream({
         filename: 'sample.mpg'
     });

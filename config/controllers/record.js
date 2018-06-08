@@ -246,7 +246,7 @@ module.exports.emailInvite = function (req, res) {
     });
 
 }
-
+var DataUri = require('datauri-stream')
 module.exports.recordVideo = function (req, res) {
     console.log("recordVideo-->");
     var url = req.body.url;
@@ -285,7 +285,10 @@ module.exports.recordVideo = function (req, res) {
     var writeStream = gfs.createWriteStream({
         filename: 'sample.mpg'
     });
-    fs.createReadStream(url).pipe(writeStream);
+    fs.createReadStream(url)
+    .pipe(DataUri())
+    .pipe(writeStream)
+    //fs.createReadStream(url).pipe(writeStream);
     writeStream.on('close', function (file) {
         console.log(file.filename + "written to db");
     })

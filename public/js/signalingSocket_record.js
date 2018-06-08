@@ -23,7 +23,7 @@ function getVideo() {
 
   });
 }
-getVideo();
+//getVideo();
 var recordedURL; /* recoreurl storage variable */
 var sesionEnc = localStorage.getItem("sessionEnc");
 var SIGNALING_SERVER = "https://norecruits.com";
@@ -1468,24 +1468,7 @@ function storeRecordVideo() {
   }
   var resultedBlob = dataURItoBlob(recordedURL);
   console.log("obj: " + JSON.stringify(obj));
-
-  // $.ajax({
-  //   url: "https://norecruits.com/record/recordVideo",
-  //   type: "POST",
-  //   data: JSON.stringify(obj),
-  //   contentType: "application/json",
-  //   dataType: "json",
-  //   success: function (data) {
-  //     console.log("data: " + JSON.stringify(data));
-  //   },
-  //   error: function (err) {
-  //     console.log("err: " + JSON.stringify(err));
-  //     // console.log("err.responseText: " + JSON.stringify(err.responseText));
-  //     // console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
-  //     // alert(err.responseJSON.message);
-  //   }
-  // });
-
+// 
   var fd = new FormData();
   fd.append('fname', 'test.wav');
   fd.append('data', resultedBlob);

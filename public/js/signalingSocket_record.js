@@ -1474,32 +1474,7 @@ function storeRecordVideo() {
   // fd.append('logo', recordedURL);
   // console.log("fd: " + fd);
  
-    $.ajax({
-      url: "https://norecruits.com/record/recordVideo",
-      //  url: "http://localhost:5000/vc/login4VC",
-      type: "POST",
-      data: obj,
-      contentType: "application/json",
-      dataType: "json",
-      success: function (data) {
-        // var userData = {
-        //   email: email,
-        //   url: URL
-        // };
-        console.log("data: " + JSON.stringify(data));
-        // document.getElementById("info").innerHTML = data.message;
-        // setTimeout(function () {
-        //   $('#info').fadeOut('fast');
-        // }, 3000);
-        // document.getElementById("info").innerHTML = data.message;
-      },
-      error: function (err) {
-        console.log("err: " + JSON.stringify(err));
-        console.log("err.responseText: " + JSON.stringify(err.responseText));
-        console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
-        alert(err.responseJSON.message);
-      }
-    });
+  
 }
 
 // function dataURItoBlob(dataURI) {

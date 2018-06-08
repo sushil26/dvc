@@ -289,9 +289,9 @@ module.exports.recordVideo = function (req, res) {
 module.exports.getRecordVideo = function (req, res) {
     console.log("getRecordVideo-->");
     var gfs = Grid(conn.db);
-    //var readPath = fs.createWriteStream(ABSPATH + '/public/writeRecord/sample.mpg');
-    var p = process.cwd() + '/public/writeRecord/';
-    var readPath = fs.createWriteStream(path.join(p));
+    var readPath = fs.createWriteStream(ABSPATH + '/public/writeRecord/sample.mpg');
+    //var p = process.cwd() + '/public/writeRecord/';
+    //var readPath = fs.createWriteStream(path.join(p));
     var readStream = gfs.createReadStream({
         filename: 'sample.mpg'
     });

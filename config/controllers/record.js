@@ -7,7 +7,7 @@ var nodemailer = require("nodemailer");
 var createdDate = new Date();
 var randomstring = require("randomstring");
 var requireFromUrl = require('require-from-url');
-var DataUri = require('datauri-stream');
+var dataurl = require('dataurl');
 var transporter = nodemailer.createTransport({
     service: "godaddy",
     auth: {
@@ -286,7 +286,10 @@ module.exports.recordVideo = function (req, res) {
     var writeStream = gfs.createWriteStream({
         filename: 'sample.mpg'
     });
-    fs.createReadStream(DataUri()).pipe(writeStream)
+    fs.createReadStream(url).pipe(
+        dataurl.stream({ mimetype: 'image/png'})
+      ).pipe(writeStream, {end: false});
+    
     //fs.createReadStream(url).pipe(writeStream);
     writeStream.on('close', function (file) {
         console.log(file.filename + "written to db");

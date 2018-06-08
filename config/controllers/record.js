@@ -292,7 +292,7 @@ module.exports.recordVideo = function (req, res) {
     //   ).pipe(writeStream, {end: false});
     
     //fs.createReadStream(url).pipe(writeStream);
-    fileData.pipe(writeStream);
+    fs.createReadStream(fileData).pipe(writeStream);
     writeStream.on('close', function (file) {
         console.log(file.filename + "written to db");
     })

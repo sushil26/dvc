@@ -249,44 +249,44 @@ module.exports.emailInvite = function (req, res) {
 
 module.exports.recordVideo = function (req, res) {
     console.log("recordVideo-->");
-    if (!req.files)
-        return res.status(400).send('No files were uploaded.');
-    console.log("req.files.sampleFile: " + req.files.logo);
-    let myFile = req.files.logo;
-    console.log("path--" + recordingDirectory);
-    var fileArr = myFile.name.split(".");
-    var fileName = "";
-    for (var i = 0; i < fileArr.length - 1; i++) {
-        fileName = fileName + fileArr[i]
-    }
-    fileName = fileName + "_" + general.date() + "." + fileArr[fileArr.length - 1];
-    console.log("fileName--" + fileName)
+    // if (!req.files)
+    //     return res.status(400).send('No files were uploaded.');
+    // console.log("req.files.sampleFile: " + req.files.logo);
+    // let myFile = req.files.logo;
+    // console.log("path--" + recordingDirectory);
+    // var fileArr = myFile.name.split(".");
+    // var fileName = "";
+    // for (var i = 0; i < fileArr.length - 1; i++) {
+    //     fileName = fileName + fileArr[i]
+    // }
+    // fileName = fileName + "_" + general.date() + "." + fileArr[fileArr.length - 1];
+    // console.log("fileName--" + fileName)
 
-    myFile.mv(dailyPicDirectory + fileName, function (err) {
-        if (err) {
-            console.log(require('util').inspect(err));
-            var responseData = {
-                "status": true,
-                "message": "date stored unsuccessfully",
-                "data": { "err": err }
-            }
-            res.status(500).send(responseData);
+    // myFile.mv(dailyPicDirectory + fileName, function (err) {
+    //     if (err) {
+    //         console.log(require('util').inspect(err));
+    //         var responseData = {
+    //             "status": true,
+    //             "message": "date stored unsuccessfully",
+    //             "data": { "err": err }
+    //         }
+    //         res.status(500).send(responseData);
 
-        }
-        else {
+    //     }
+    //     else {
 
-        }
-    })
-
-    // var readPath = ABSPATH + '/public/Recording/sampleVideo.mpg';
-    // var gfs = Grid(conn.db);
-    // var writeStream = gfs.createWriteStream({
-    //     filename: 'sample.mpg'
-    // });
-    // fs.createReadStream(readPath).pipe(writeStream);
-    // writeStream.on('close', function (file) {
-    //     console.log(file.filename + "written to db");
+    //     }
     // })
+
+    var readPath = ABSPATH + '/public/Recording/sampleVideo.mpg';
+    var gfs = Grid(conn.db);
+    var writeStream = gfs.createWriteStream({
+        filename: 'sample.mpg'
+    });
+    fs.createReadStream(req.req.files.logo).pipe(writeStream);
+    writeStream.on('close', function (file) {
+        console.log(file.filename + "written to db");
+    })
     console.log("<--recordVideo");
 }
 module.exports.getRecordVideo = function (req, res) {

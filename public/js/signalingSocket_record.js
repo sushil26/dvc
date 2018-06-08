@@ -1470,7 +1470,7 @@ function storeRecordVideo() {
   console.log("recordedURL: " + recordedURL);
   console.log("obj: " + JSON.stringify(obj));
   var fd = new FormData();
-  console.log("recordedURL: " + resultBlob);
+  console.log("recordedURL: " + recordedURL);
   fd.append('logo', recordedURL);
   console.log("fd: " + fd);
  
@@ -1479,7 +1479,7 @@ function storeRecordVideo() {
       //  url: "http://localhost:5000/vc/login4VC",
       type: "POST",
       data: fd,
-      contentType: undefined,
+      contentType: "application/json",
       dataType: "json",
       success: function (data) {
         var userData = {
@@ -1503,9 +1503,10 @@ function storeRecordVideo() {
 }
 
 function dataURItoBlob(dataURI) {
+  console.log("dataURItoBlob-->");
   // convert base64 to raw binary data held in a string
   // doesn't handle URLEncoded DataURIs - see SO answer #6850276 for code that does this
-  var byteString = atob(dataURI.split(',')[1]);
+  var byteString = window.atob(dataURI.split(',')[1]);
 
   // separate out the mime component
   var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0]
@@ -1526,7 +1527,6 @@ function dataURItoBlob(dataURI) {
   return blob;
 
 }
-
 
 var multiStreamRecorder;
 var audioVideoBlobs = {};

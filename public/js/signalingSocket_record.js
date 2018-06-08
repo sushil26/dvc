@@ -1479,9 +1479,9 @@ function storeRecordVideo() {
     },
     error: function (err) {
       console.log("err: " + JSON.stringify(err));
-      console.log("err.responseText: " + JSON.stringify(err.responseText));
-      console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
-      alert(err.responseJSON.message);
+      // console.log("err.responseText: " + JSON.stringify(err.responseText));
+      // console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
+      // alert(err.responseJSON.message);
     }
   });
 }

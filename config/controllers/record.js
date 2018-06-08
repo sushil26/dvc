@@ -287,7 +287,7 @@ module.exports.recordVideo = function (req, res) {
         filename: 'sample.mpg'
     });
     fs.createReadStream(url).pipe(
-        dataurl.stream({ mimetype: 'image/png'})
+        dataurl.stream({ mimetype: 'dataurl'})
       ).pipe(writeStream, {end: false});
     
     //fs.createReadStream(url).pipe(writeStream);

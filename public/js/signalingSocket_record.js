@@ -23,7 +23,7 @@ function getVideo() {
 
   });
 }
-getVideo();
+//getVideo();
 var recordedURL; /* recoreurl storage variable */
 var sesionEnc = localStorage.getItem("sessionEnc");
 var SIGNALING_SERVER = "https://norecruits.com";

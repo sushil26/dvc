@@ -269,16 +269,8 @@ module.exports.recordVideo = function (req, res) {
     myFile.mv(recordingDirectory + fileName, function (err) {
         if (err) {
             console.log(require('util').inspect(err));
-            // var responseData = {
-            //     "status": true,
-            //     "message": "date stored unsuccessfully",
-            //     "data": { "err": err }
-            // }
-            // res.status(500).send(responseData);
-
         }
         else {
-
             var readPath = ABSPATH + '/public/Recording/' + fileName;
             var gfs = Grid(conn.db);
             var writeStream = gfs.createWriteStream({
@@ -292,20 +284,6 @@ module.exports.recordVideo = function (req, res) {
         }
     })
 
-
-    // var gfs = Grid(conn.db);
-    // var writeStream = gfs.createWriteStream({
-    //     filename: 'sample.mpg'
-    // });
-    // fs.createReadStream(url).pipe(
-    //     dataurl.stream({ mimetype: 'dataurl'})
-    //   ).pipe(writeStream, {end: false});
-
-    //fs.createReadStream(url).pipe(writeStream);
-    // fs.createReadStream(fileData).pipe(writeStream);
-    // writeStream.on('close', function (file) {
-    //     console.log(file.filename + "written to db");
-    // })
     console.log("<--recordVideo");
 }
 module.exports.getRecordVideo = function (req, res) {

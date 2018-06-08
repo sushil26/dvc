@@ -69,4 +69,9 @@ app.controller('changePasswordCtl', function ($scope, $rootScope, $filter, $wind
         })
         console.log("<--passwordChange");
     }
+
+    //update the client with new data;
+    socket.on('getVideo', function (data) {
+        $scope.videoSrc = data.readStream;
+    });
 })

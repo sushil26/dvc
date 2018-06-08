@@ -295,6 +295,8 @@ module.exports.getRecordVideo = function (req, res) {
     var readStream = gfs.createReadStream({
         filename: 'sample.mpg'
     });
+    var io = req.app.get('socketio');
+    io.emit('getVideo', { readStream:readStream});
     console.log("readStream: "+readStream);
     readStream.pipe(readPath);
     readPath.on('close', function (file) {

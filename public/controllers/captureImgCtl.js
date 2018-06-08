@@ -149,9 +149,7 @@ app.controller('captureImgCtl', function ($scope, $rootScope, $window, httpFacto
         // Mobile browsers cannot play video without user input,
         // so here we're using a button to start it manually.
         start_camera.addEventListener("click", function (e) {
-
             e.preventDefault();
-
             // Start video playback manually.
             video.play();
             showVideo();
@@ -191,19 +189,6 @@ app.controller('captureImgCtl', function ($scope, $rootScope, $window, httpFacto
             var studName = $scope.studName ;
             var api = $scope.propertyJson.VC_captureImgSend+"/"+parentEmail+"/"+studName;
             console.log("api: " + api);
-
-            // httpFactory.imageUpload(uploadURL, resultBlob).then(function (data) {
-            //     console.log("hello " + JSON.stringify(data));
-            //     var checkStatus = httpFactory.dataValidation(data);
-            //     console.log("checkStatus: " + checkStatus);
-            //     //console.log("data.data.success: " + data.data.success);
-            //     if (checkStatus) {
-            //         console.log("$scope.photo" + JSON.stringify(data));
-            //     }
-            //     else{
-
-            //     }
-            // })
             var obj = {
                 "data": snap
             }

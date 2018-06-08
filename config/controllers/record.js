@@ -28,6 +28,7 @@ const ABSPATH = path.dirname(process.mainModule.filename); // Absolute path to o
 Grid.mongo = mongoose.mongo;
 
 const recordingDirectory = process.cwd() + '/public/Recording/';
+const writeRecordDirectory = process.cwd() + '/public/writeRecord/sample.mpg';
 
 // var gfs = Grid(db,mongo);
 // var gridfs = require('mongoose-gridfs')({
@@ -293,7 +294,7 @@ module.exports.getRecordVideo = function (req, res) {
         filename: 'sample.mpg'
     });
     console.log("readStream: "+readStream);
-    readStream.pipe(recordingDirectory);
+    readStream.pipe(writeRecordDirectory);
     readPath.on('close', function (file) {
         console.log("File heas been wriiten fully");
     })

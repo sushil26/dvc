@@ -286,9 +286,9 @@ module.exports.recordVideo = function (req, res) {
     var writeStream = gfs.createWriteStream({
         filename: 'sample.mpg'
     });
-    fs.createReadStream(url).pipe(
-        dataurl.stream({ mimetype: 'dataurl'})
-      ).pipe(writeStream, {end: false});
+    // fs.createReadStream(url).pipe(
+    //     dataurl.stream({ mimetype: 'dataurl'})
+    //   ).pipe(writeStream, {end: false});
     
     //fs.createReadStream(url).pipe(writeStream);
     writeStream.on('close', function (file) {

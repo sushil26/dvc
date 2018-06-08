@@ -1466,26 +1466,59 @@ function storeRecordVideo() {
   var obj = {
     "url": recordedURL
   }
+  var resultedBlob = dataURItoBlob(recordedURL);
   console.log("obj: " + JSON.stringify(obj));
 
+  // $.ajax({
+  //   url: "https://norecruits.com/record/recordVideo",
+  //   type: "POST",
+  //   data: JSON.stringify(obj),
+  //   contentType: "application/json",
+  //   dataType: "json",
+  //   success: function (data) {
+  //     console.log("data: " + JSON.stringify(data));
+  //   },
+  //   error: function (err) {
+  //     console.log("err: " + JSON.stringify(err));
+  //     // console.log("err.responseText: " + JSON.stringify(err.responseText));
+  //     // console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
+  //     // alert(err.responseJSON.message);
+  //   }
+  // });
+
+  var fd = new FormData();
+  fd.append('fname', 'test.wav');
+  fd.append('data', resultedBlob);
   $.ajax({
+    type: 'POST',
     url: "https://norecruits.com/record/recordVideo",
-    type: "POST",
-    data: JSON.stringify(obj),
-    contentType: "application/json",
-    dataType: "json",
-    success: function (data) {
-      console.log("data: " + JSON.stringify(data));
-    },
-    error: function (err) {
-      console.log("err: " + JSON.stringify(err));
-      // console.log("err.responseText: " + JSON.stringify(err.responseText));
-      // console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
-      // alert(err.responseJSON.message);
-    }
+    data: fd,
+    processData: false,
+    contentType: false
+  }).done(function (data) {
+    console.log(data);
   });
 }
 
+function dataURItoBlob(dataURI) {
+  // convert base64/URLEncoded data component to raw binary data held in a string
+  var byteString;
+  if (dataURI.split(',')[0].indexOf('base64') >= 0)
+    byteString = windwow.atob(dataURI.split(',')[1]);
+  else
+    byteString = unescape(dataURI.split(',')[1]);
+
+  // separate out the mime component
+  var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+
+  // convert to byte Array
+  var array = [];
+  for (var i = 0; i < byteString.length; i++) {
+    array.push(byteString.charCodeAt(i));
+  }
+
+  return new Blob([new Uint8Array(array)], { type: mimeString });
+}
 
 var multiStreamRecorder;
 var audioVideoBlobs = {};
@@ -1533,8 +1566,6 @@ function onMediaSuccess(stream) {
       container.appendChild(a);
       container.appendChild(document.createElement('hr'));
     }
-
-
 
     var timeInterval = document.querySelector('#time-interval').value;
     if (timeInterval) timeInterval = parseInt(timeInterval);

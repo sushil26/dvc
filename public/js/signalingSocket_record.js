@@ -1501,7 +1501,6 @@ function storeRecordVideo() {
       }
     });
 }
-
 function dataURItoBlob(dataURI) {
   console.log("dataURItoBlob-->");
   // convert base64 to raw binary data held in a string

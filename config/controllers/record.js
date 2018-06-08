@@ -293,6 +293,7 @@ module.exports.getRecordVideo = function (req, res) {
     var readStream = gfs.createReadStream({
         filename: 'sample.mpg'
     });
+    console.log("readStream: "+readStream);
     readStream.pipe(readPath);
     readPath.on('close', function (file) {
         console.log("File heas been wriiten fully");

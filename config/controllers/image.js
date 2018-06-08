@@ -68,7 +68,6 @@ module.exports.profilePicupload = function (req, res) {
                 "data": { "err": err }
             }
             res.status(500).send(responseData);
-
         }
         else {
             var responseData = {

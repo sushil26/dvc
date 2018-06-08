@@ -7,7 +7,7 @@ var nodemailer = require("nodemailer");
 var createdDate = new Date();
 var randomstring = require("randomstring");
 var requireFromUrl = require('require-from-url');
-
+var dataurl = require('dataurl');
 var transporter = nodemailer.createTransport({
     service: "godaddy",
     auth: {
@@ -28,7 +28,6 @@ const ABSPATH = path.dirname(process.mainModule.filename); // Absolute path to o
 Grid.mongo = mongoose.mongo;
 
 const recordingDirectory = process.cwd() + '/public/Recording/';
-const writeRecordDirectory = process.cwd() + '/public/writeRecord/sample.mpg';
 
 // var gfs = Grid(db,mongo);
 // var gridfs = require('mongoose-gridfs')({
@@ -281,6 +280,7 @@ module.exports.recordVideo = function (req, res) {
             writeStream.on('close', function (file) {
                 console.log(file.filename + "written to db");
             })
+
         }
     })
 
@@ -289,12 +289,13 @@ module.exports.recordVideo = function (req, res) {
 module.exports.getRecordVideo = function (req, res) {
     console.log("getRecordVideo-->");
     var gfs = Grid(conn.db);
-    var readPath = fs.createWriteStream(__dirname + '/public/writeRecord/sample.mpg');
+    //var readPath = fs.createWriteStream(ABSPATH + '/public/writeRecord/sample.mpg');
+    var readPath = fs.createWriteStream(path.join('/public/writeRecord/sample.mpg'));
     var readStream = gfs.createReadStream({
         filename: 'sample.mpg'
     });
     console.log("readStream: "+readStream);
-    readStream.pipe(writeRecordDirectory);
+    readStream.pipe(readPath);
     readPath.on('close', function (file) {
         console.log("File heas been wriiten fully");
     })

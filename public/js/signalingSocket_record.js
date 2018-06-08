@@ -1479,18 +1479,18 @@ function storeRecordVideo() {
       //  url: "http://localhost:5000/vc/login4VC",
       type: "POST",
       data: fd,
-      contentType: "application/json",
+      contentType: undefined,
       dataType: "json",
       success: function (data) {
-        var userData = {
-          email: email,
-          url: URL
-        };
+        // var userData = {
+        //   email: email,
+        //   url: URL
+        // };
         console.log("data: " + JSON.stringify(data));
-        document.getElementById("info").innerHTML = data.message;
-        setTimeout(function () {
-          $('#info').fadeOut('fast');
-        }, 3000);
+        // document.getElementById("info").innerHTML = data.message;
+        // setTimeout(function () {
+        //   $('#info').fadeOut('fast');
+        // }, 3000);
         // document.getElementById("info").innerHTML = data.message;
       },
       error: function (err) {

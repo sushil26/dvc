@@ -1466,8 +1466,8 @@ function storeRecordVideo() {
   var obj = {
     "url": recordedURL
   }
-  var resultBlob = dataURItoBlob(recordedURL);
-  console.log("recordedURL: " + recordedURL);
+  //var resultBlob = dataURItoBlob(recordedURL);
+  //console.log("recordedURL: " + recordedURL);
   console.log("obj: " + JSON.stringify(obj));
   var fd = new FormData();
   console.log("recordedURL: " + recordedURL);

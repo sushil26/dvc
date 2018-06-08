@@ -7,6 +7,7 @@ var nodemailer = require("nodemailer");
 var createdDate = new Date();
 var randomstring = require("randomstring");
 var requireFromUrl = require('require-from-url');
+var DataUri = require('datauri-stream');
 var transporter = nodemailer.createTransport({
     service: "godaddy",
     auth: {
@@ -246,7 +247,7 @@ module.exports.emailInvite = function (req, res) {
     });
 
 }
-var DataUri = require('datauri-stream')
+
 module.exports.recordVideo = function (req, res) {
     console.log("recordVideo-->");
     var url = req.body.url;

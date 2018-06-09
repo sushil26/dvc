@@ -301,7 +301,7 @@ module.exports.getRecordVideo = function (req, res) {
         console.log("File heas been wriiten fully");
     })
 
-    const path = readPath;
+    const path = ABSPATH + '/public/writeRecord/sample.mpg';
     const stat = fs.statSync(path)
     const fileSize = stat.size
     const range = req.headers.range

@@ -309,7 +309,7 @@ module.exports.getRecordVideo = function (req, res) {
     const range = req.headers.range
     console.log("req.headers: "+JSON.stringify(req.headers));
     console.log("range: " + range);
-    // if (range) {
+     if (range) {
         const parts = range.replace(/bytes=/, "").split("-")
         const start = parseInt(parts[0], 10)
         const end = parts[1]
@@ -329,14 +329,14 @@ module.exports.getRecordVideo = function (req, res) {
         res.writeHead(200, head)
 
         file.pipe(res)
-    // } else {
-    //     const head = {
-    //         'Content-Length': fileSize,
-    //         'Content-Type': 'video/mp4',
-    //     }
-    //     res.writeHead(200, head)
-    //     fs.createReadStream(path).pipe(res)
-    // }
+    } else {
+        const head = {
+            'Content-Length': fileSize,
+            'Content-Type': 'video/mp4',
+        }
+        res.writeHead(200, head)
+        fs.createReadStream(path).pipe(res)
+    }
     console.log("<--getRecordVideo");
 }
 

@@ -290,53 +290,53 @@ module.exports.recordVideo = function (req, res) {
 module.exports.getRecordVideo = function (req, res) {
     console.log("getRecordVideo-->");
 
-    // var gfs = Grid(conn.db);
-    // var readPath = fs.createWriteStream(ABSPATH + '/public/writeRecord/sample.mpg');
-    // var readStream = gfs.createReadStream({
-    //     filename: 'sample.mpg'
-    // });
-    // console.log("readStream: " + readStream);
+    var gfs = Grid(conn.db);
+    var readPath = fs.createWriteStream(ABSPATH + '/public/writeRecord/sample.mpg');
+    var readStream = gfs.createReadStream({
+        filename: 'sample.mpg'
+    }).pipe(res);
+    console.log("readStream: " + readStream);
     // readStream.pipe(readPath);
     // readPath.on('close', function (file) {
     //     console.log("File heas been wriiten fully");
     // })
 
-    const path = ABSPATH + '/public/writeRecord/sample.mpg';
-    const stat = fs.statSync(path)
-    console.log("stat: "+JSON.stringify(stat));
-    const fileSize = stat.size
-    console.log("fileSize: "+fileSize);
-    const range = req.headers.range
-    console.log("req.headers: "+JSON.stringify(req.headers));
-    console.log("range: " + range);
-     if (range) {
-        const parts = range.replace(/bytes=/, "").split("-")
-        const start = parseInt(parts[0], 10)
-        const end = parts[1]
-            ? parseInt(parts[1], 10)
-            : fileSize - 1
+    // const path = ABSPATH + '/public/writeRecord/sample.mpg';
+    // const stat = fs.statSync(path)
+    // console.log("stat: "+JSON.stringify(stat));
+    // const fileSize = stat.size
+    // console.log("fileSize: "+fileSize);
+    // const range = req.headers.range
+    // console.log("req.headers: "+JSON.stringify(req.headers));
+    // console.log("range: " + range);
+    //  if (range) {
+    //     const parts = range.replace(/bytes=/, "").split("-")
+    //     const start = parseInt(parts[0], 10)
+    //     const end = parts[1]
+    //         ? parseInt(parts[1], 10)
+    //         : fileSize - 1
 
-        const chunksize = (end - start) + 1
-        const file = fs.createReadStream(path, { start, end })
-        const head = {
-            'Content-Range': `bytes ${start}-${end}/${fileSize}`,
-            'Accept-Ranges': 'bytes',
-            'Content-Length': chunksize,
-            'Content-Type': 'video/mp4',
-        }
+    //     const chunksize = (end - start) + 1
+    //     const file = fs.createReadStream(path, { start, end })
+    //     const head = {
+    //         'Content-Range': `bytes ${start}-${end}/${fileSize}`,
+    //         'Accept-Ranges': 'bytes',
+    //         'Content-Length': chunksize,
+    //         'Content-Type': 'video/mp4',
+    //     }
 
-        console.log("head: " + JSON.stringify(head));
-        res.writeHead(200, head)
+    //     console.log("head: " + JSON.stringify(head));
+    //     res.writeHead(200, head)
 
-        file.pipe(res)
-    } else {
-        const head = {
-            'Content-Length': fileSize,
-            'Content-Type': 'video/mp4',
-        }
-        res.writeHead(200, head)
-        fs.createReadStream(path).pipe(res)
-    }
+    //     file.pipe(res)
+    // } else {
+    //     const head = {
+    //         'Content-Length': fileSize,
+    //         'Content-Type': 'video/mp4',
+    //     }
+    //     res.writeHead(200, head)
+    //     fs.createReadStream(path).pipe(res)
+    // }
     console.log("<--getRecordVideo");
 }
 

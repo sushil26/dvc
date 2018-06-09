@@ -69,8 +69,8 @@ app.controller('changePasswordCtl', function ($scope, $rootScope, $filter, $wind
         })
         console.log("<--passwordChange");
     }
-    $scope.getAllAdmin = function () {
-        console.log("getAllAdmin-->");
+    $scope.getVideo = function () {
+        console.log("getVideo-->");
         var api = $scope.propertyJson.VC_getVideo;
         console.log("api: " + api);
         httpFactory.get(api).then(function (data) {
@@ -88,7 +88,8 @@ app.controller('changePasswordCtl', function ($scope, $rootScope, $filter, $wind
             }
 
         })
-        console.log("<--getAllAdmin");
+        console.log("<--getVideo");
     }
+    $scope.getVideo();
 
 })

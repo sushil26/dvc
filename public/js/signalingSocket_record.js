@@ -1461,7 +1461,7 @@ function storeRecordVideo() {
   console.log("obj: " + JSON.stringify(obj));
   // 
   var fd = new FormData();
-  fd.append('fname', 'test.wav');
+  //fd.append('fname', 'test.wav');
   fd.append('data', resultedBlob);
   $.ajax({
     type: 'POST',

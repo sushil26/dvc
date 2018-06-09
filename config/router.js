@@ -20,7 +20,7 @@ module.exports = function (app) {
     app.post('/record/pswdGenerate', record.pswdGenerate);
     app.post('/record/pswdCheck', record.pswdCheck);
     app.post('/record/emailInvite', record.emailInvite);
-    app.post('/record/recordVideo', record.recordVideo);
+    app.get('/record/recordVideo', record.recordVideo);
     app.get('/record/getRecordVideo', record.getRecordVideo);
     app.get('/record/getVideo', record.getRecordVideo);
 

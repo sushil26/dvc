@@ -322,7 +322,7 @@ module.exports.getRecordVideo = function (req, res) {
             'Content-Range': `bytes ${start}-${end}/${fileSize}`,
             'Accept-Ranges': 'bytes',
             'Content-Length': chunksize,
-            'Content-Type': 'video/mp4',
+            'Content-Type': 'video/mp4, video/ogg, video/webm',
         }
 
         console.log("head: " + JSON.stringify(head));

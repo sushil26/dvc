@@ -69,27 +69,14 @@ app.controller('changePasswordCtl', function ($scope, $rootScope, $filter, $wind
         })
         console.log("<--passwordChange");
     }
-    $scope.getVideo = function () {
-        console.log("getVideo-->");
-        var api = $scope.propertyJson.VC_getVideo;
-        console.log("api: " + api);
-        httpFactory.get(api).then(function (data) {
-            console.log("data--" + JSON.stringify(data.data));
-            var checkStatus = httpFactory.dataValidation(data);
-            console.log("data--" + JSON.stringify(data.data));
-            $scope.videoSrc = data;
-            if (checkStatus) {
-                $scope.adminList = data.data.data;
-                console.log("adminList: " + JSON.stringify($scope.adminList));
-                console.log(data.data.message);
-            }
-            else {
-                console.log("Sorry");
-            }
+   
 
-        })
-        console.log("<--getVideo");
-    }
-   // $scope.getVideo();
+    const VP = document.getElementById('videoPlayer')
+    const VPToggle = document.getElementById('toggleButton')
+
+    VPToggle.addEventListener('click', function () {
+        if (VP.paused) VP.play()
+        else VP.pause()
+    })
 
 })

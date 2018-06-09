@@ -69,9 +69,26 @@ app.controller('changePasswordCtl', function ($scope, $rootScope, $filter, $wind
         })
         console.log("<--passwordChange");
     }
+    $scope.getAllAdmin = function () {
+        console.log("getAllAdmin-->");
+        var api = $scope.propertyJson.VC_getVideo;
+        console.log("api: " + api);
+        httpFactory.get(api).then(function (data) {
+            console.log("data--" + JSON.stringify(data.data));
+            var checkStatus = httpFactory.dataValidation(data);
+            console.log("data--" + JSON.stringify(data.data));
+            if (checkStatus) {
+                $scope.adminList = data.data.data;
+                console.log("adminList: " + JSON.stringify($scope.adminList));
 
-    //update the client with new data;
-    socket.on('getVideo', function (data) {
-        $scope.videoSrc = data.readStream;
-    });
+                console.log(data.data.message);
+            }
+            else {
+                console.log("Sorry");
+            }
+
+        })
+        console.log("<--getAllAdmin");
+    }
+
 })

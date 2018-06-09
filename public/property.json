@@ -59,5 +59,6 @@
 "VC_bulkEmail_quickMsg": "vc/bulkEmail_quickMsg",
 "VC_updateProfilePic": "vc/updateProfilePic",
 "VC_captureImgSend": "vc/captureImgSend",
+"VC_getVideo": "record/getVideo",
 "VC_csvTest": "vc/csvTest"
 }

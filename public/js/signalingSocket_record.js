@@ -1,29 +1,20 @@
-function getVideo() {
-  console.log("getVideo-->");
-  $.ajax({
-    url: "https://norecruits.com/record/getRecordVideo",
-    type: "GET",
-    contentType: "application/json",
-    dataType: "json",
-    success: function (data) {
-      console.log("data: " + JSON.stringify(data));
-      //alert(data.message);
-      if (data.message == 'Successfully mail sent') {
-        console.log("Successfully mail sent");
-        localStorage.setItem("careatorEmail", careatorEmail);
-        triggerInvite();
-      }
-    },
-    error: function (err) {
-      console.log("err: " + JSON.stringify(err));
-      console.log("err.responseText: " + JSON.stringify(err.responseText));
-      console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
-      alert(err.responseJSON.message);
-    }
+// function getVideo() {
+//   console.log("getVideo-->");
+//   $.ajax({
+//     url: "https://norecruits.com/record/getRecordVideo",
+//     type: "GET",
+//     contentType: "application/json",
+//     dataType: "json",
+//     success: function (data) {
+//       console.log(" getVideo data: " + JSON.stringify(data));
+//     },
+//     error: function (err) {
+//       console.log("err: " + JSON.stringify(err));
+//     }
 
-  });
-}
-getVideo();
+//   });
+// }
+// getVideo();
 var recordedURL; /* recoreurl storage variable */
 var sesionEnc = localStorage.getItem("sessionEnc");
 var SIGNALING_SERVER = "https://norecruits.com";
@@ -1468,7 +1459,7 @@ function storeRecordVideo() {
   }
   var resultedBlob = dataURItoBlob(recordedURL);
   console.log("obj: " + JSON.stringify(obj));
-// 
+  // 
   var fd = new FormData();
   fd.append('fname', 'test.wav');
   fd.append('data', resultedBlob);

@@ -7,7 +7,8 @@ var nodemailer = require("nodemailer");
 var createdDate = new Date();
 var randomstring = require("randomstring");
 var requireFromUrl = require('require-from-url');
-var dataurl = require('dataurl');
+var GridStore = require('mongodb').GridStore;
+
 var transporter = nodemailer.createTransport({
     service: "godaddy",
     auth: {
@@ -288,20 +289,78 @@ module.exports.recordVideo = function (req, res) {
 }
 module.exports.getRecordVideo = function (req, res) {
     console.log("getRecordVideo-->");
-    var gfs = Grid(conn.db);
-    var readPath = fs.createWriteStream(ABSPATH + '/public/writeRecord/sample.mpg');
-    //var p = process.cwd() + '/public/writeRecord/';
-    //var readPath = fs.createWriteStream(path.join(p));
-    var readStream = gfs.createReadStream({
-        filename: 'sample.mpg'
-    });
-    var io = req.app.get('socketio');
-    io.emit('getVideo', { readStream:readStream});
-    console.log("readStream: "+readStream);
-    readStream.pipe(readPath);
-    readPath.on('close', function (file) {
-        console.log("File heas been wriiten fully");
+    new GridStore(db, ObjectId("5b1a513eb454ec0c46e3a833"), null, 'r').open(function (err, GridFile) {
+        if (!GridFile) {
+            res.send(404, 'Not Found');
+            return;
+        }
     })
+
+    module.exports.streamGridFile(req, res, GridFile);
+    // var gfs = Grid(conn.db);
+    // var readPath = fs.createWriteStream(ABSPATH + '/public/writeRecord/sample.mpg');
+    // var readStream = gfs.createReadStream({
+    //     filename: 'sample.mpg'
+    // });
+    // var io = req.app.get('socketio');
+    // io.emit('getVideo', { readStream: readStream });
+    // console.log("readStream: " + readStream);
+    // readStream.pipe(readPath);
+    // readPath.on('close', function (file) {
+    //     console.log("File heas been wriiten fully");
+    // })
     console.log("<--getRecordVideo");
+}
+
+module.exports.streamGridFile = function (req, res, GridFile) {
+    if (req.headers['range']) {
+
+        // Range request, partialle stream the file
+        console.log('Range Reuqest');
+        var parts = req.headers['range'].replace(/bytes=/, "").split("-");
+        var partialstart = parts[0];
+        var partialend = parts[1];
+
+        var start = parseInt(partialstart, 10);
+        var end = partialend ? parseInt(partialend, 10) : GridFile.length - 1;
+        var chunksize = (end - start) + 1;
+
+        console.log('Range ', start, '-', end);
+
+        res.writeHead(206, {
+            'Content-Range': 'bytes ' + start + '-' + end + '/' + GridFile.length,
+            'Accept-Ranges': 'bytes',
+            'Content-Length': chunksize,
+            'Content-Type': GridFile.contentType
+        });
+        // Set filepointer
+        GridFile.seek(start, function () {
+            // get GridFile stream
+            var stream = GridFile.stream(true);
+
+            // write to response
+            stream.on('data', function (buff) {
+                // count data to abort streaming if range-end is reached
+                // perhaps theres a better way?
+                start += buff.length;
+                if (start >= end) {
+                    // enough data send, abort
+                    GridFile.close();
+                    res.end();
+                } else {
+                    res.write(buff);
+                }
+            });
+        });
+    } else {
+
+        // stream back whole file
+        console.log('No Range Request');
+        res.header('Content-Type', GridFile.contentType);
+        res.header('Content-Length', GridFile.length);
+        var stream = GridFile.stream(true);
+        stream.pipe(res);
+    }
+
 }
 

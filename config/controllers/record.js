@@ -293,7 +293,7 @@ module.exports.getRecordVideo = function (req, res) {
     res.header("X-Content-Type-Options", "nosniff");
     res.header("Accept-Ranges", "bytes");
     res.header("Content-Length",903746);
-    readStream.pipe(res);
+    // readStream.pipe(res);
     var gfs = Grid(conn.db);
     var readPath = fs.createWriteStream(ABSPATH + '/public/writeRecord/sample.mpg');
     var readStream = gfs.createReadStream({

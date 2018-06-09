@@ -289,78 +289,101 @@ module.exports.recordVideo = function (req, res) {
 }
 module.exports.getRecordVideo = function (req, res) {
     console.log("getRecordVideo-->");
-    new GridStore(db, ObjectId("5b1a513eb454ec0c46e3a833"), null, 'r').open(function (err, GridFile) {
-        if (!GridFile) {
-            res.send(404, 'Not Found');
-            return;
-        }
+
+    var gfs = Grid(conn.db);
+    var readPath = fs.createWriteStream(ABSPATH + '/public/writeRecord/sample.mpg');
+    var readStream = gfs.createReadStream({
+        filename: 'sample.mpg'
+    });
+    console.log("readStream: " + readStream);
+    readStream.pipe(readPath);
+    readPath.on('close', function (file) {
+        console.log("File heas been wriiten fully");
     })
 
-    module.exports.streamGridFile(req, res, GridFile);
-    // var gfs = Grid(conn.db);
-    // var readPath = fs.createWriteStream(ABSPATH + '/public/writeRecord/sample.mpg');
-    // var readStream = gfs.createReadStream({
-    //     filename: 'sample.mpg'
-    // });
-    // var io = req.app.get('socketio');
-    // io.emit('getVideo', { readStream: readStream });
-    // console.log("readStream: " + readStream);
-    // readStream.pipe(readPath);
-    // readPath.on('close', function (file) {
-    //     console.log("File heas been wriiten fully");
-    // })
+    const path = readPath;
+    const stat = fs.statSync(path)
+    const fileSize = stat.size
+    const range = req.headers.range
+
+    if (range) {
+        const parts = range.replace(/bytes=/, "").split("-")
+        const start = parseInt(parts[0], 10)
+        const end = parts[1]
+            ? parseInt(parts[1], 10)
+            : fileSize - 1
+
+        const chunksize = (end - start) + 1
+        const file = fs.createReadStream(path, { start, end })
+        const head = {
+            'Content-Range': `bytes ${start}-${end}/${fileSize}`,
+            'Accept-Ranges': 'bytes',
+            'Content-Length': chunksize,
+            'Content-Type': 'video/mp4',
+        }
+
+        res.writeHead(206, head)
+        file.pipe(res)
+    } else {
+        const head = {
+            'Content-Length': fileSize,
+            'Content-Type': 'video/mp4',
+        }
+        res.writeHead(200, head)
+        fs.createReadStream(path).pipe(res)
+    }
     console.log("<--getRecordVideo");
 }
 
-module.exports.streamGridFile = function (req, res, GridFile) {
-    if (req.headers['range']) {
+// module.exports.streamGridFile = function (req, res, GridFile) {
+//     if (req.headers['range']) {
 
-        // Range request, partialle stream the file
-        console.log('Range Reuqest');
-        var parts = req.headers['range'].replace(/bytes=/, "").split("-");
-        var partialstart = parts[0];
-        var partialend = parts[1];
+//         // Range request, partialle stream the file
+//         console.log('Range Reuqest');
+//         var parts = req.headers['range'].replace(/bytes=/, "").split("-");
+//         var partialstart = parts[0];
+//         var partialend = parts[1];
 
-        var start = parseInt(partialstart, 10);
-        var end = partialend ? parseInt(partialend, 10) : GridFile.length - 1;
-        var chunksize = (end - start) + 1;
+//         var start = parseInt(partialstart, 10);
+//         var end = partialend ? parseInt(partialend, 10) : GridFile.length - 1;
+//         var chunksize = (end - start) + 1;
 
-        console.log('Range ', start, '-', end);
+//         console.log('Range ', start, '-', end);
 
-        res.writeHead(206, {
-            'Content-Range': 'bytes ' + start + '-' + end + '/' + GridFile.length,
-            'Accept-Ranges': 'bytes',
-            'Content-Length': chunksize,
-            'Content-Type': GridFile.contentType
-        });
-        // Set filepointer
-        GridFile.seek(start, function () {
-            // get GridFile stream
-            var stream = GridFile.stream(true);
+//         res.writeHead(206, {
+//             'Content-Range': 'bytes ' + start + '-' + end + '/' + GridFile.length,
+//             'Accept-Ranges': 'bytes',
+//             'Content-Length': chunksize,
+//             'Content-Type': GridFile.contentType
+//         });
+//         // Set filepointer
+//         GridFile.seek(start, function () {
+//             // get GridFile stream
+//             var stream = GridFile.stream(true);
 
-            // write to response
-            stream.on('data', function (buff) {
-                // count data to abort streaming if range-end is reached
-                // perhaps theres a better way?
-                start += buff.length;
-                if (start >= end) {
-                    // enough data send, abort
-                    GridFile.close();
-                    res.end();
-                } else {
-                    res.write(buff);
-                }
-            });
-        });
-    } else {
+//             // write to response
+//             stream.on('data', function (buff) {
+//                 // count data to abort streaming if range-end is reached
+//                 // perhaps theres a better way?
+//                 start += buff.length;
+//                 if (start >= end) {
+//                     // enough data send, abort
+//                     GridFile.close();
+//                     res.end();
+//                 } else {
+//                     res.write(buff);
+//                 }
+//             });
+//         });
+//     } else {
 
-        // stream back whole file
-        console.log('No Range Request');
-        res.header('Content-Type', GridFile.contentType);
-        res.header('Content-Length', GridFile.length);
-        var stream = GridFile.stream(true);
-        stream.pipe(res);
-    }
+//         // stream back whole file
+//         console.log('No Range Request');
+//         res.header('Content-Type', GridFile.contentType);
+//         res.header('Content-Length', GridFile.length);
+//         var stream = GridFile.stream(true);
+//         stream.pipe(res);
+//     }
 
-}
+// }
 

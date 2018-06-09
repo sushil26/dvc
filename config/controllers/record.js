@@ -303,9 +303,11 @@ module.exports.getRecordVideo = function (req, res) {
 
     const path = ABSPATH + '/public/writeRecord/sample.mpg';
     const stat = fs.statSync(path)
-    console.log("stat: "+stat);
+    console.log("stat: "+JSON.stringify(stat));
     const fileSize = stat.size
+    console.log("fileSize: "+fileSize);
     const range = req.headers.range
+    console.log("req.headers: "+JSON.stringify(req.headers));
     console.log("range: " + range);
     if (range) {
         const parts = range.replace(/bytes=/, "").split("-")

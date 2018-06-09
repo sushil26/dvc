@@ -90,6 +90,6 @@ app.controller('changePasswordCtl', function ($scope, $rootScope, $filter, $wind
         })
         console.log("<--getVideo");
     }
-    $scope.getVideo();
+   // $scope.getVideo();
 
 })

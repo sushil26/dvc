@@ -92,12 +92,12 @@ app.controller('changePasswordCtl', function ($scope, $rootScope, $filter, $wind
     }
     $scope.sendVideo();
 
-    const VP = document.getElementById('videoPlayer')
-    const VPToggle = document.getElementById('toggleButton')
+    // const VP = document.getElementById('videoPlayer')
+    // const VPToggle = document.getElementById('toggleButton')
 
-    VPToggle.addEventListener('click', function () {
-        if (VP.paused) VP.play()
-        else VP.pause()
-    })
+    // VPToggle.addEventListener('click', function () {
+    //     if (VP.paused) VP.play()
+    //     else VP.pause()
+    // })
 
 })

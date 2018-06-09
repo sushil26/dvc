@@ -71,7 +71,7 @@ app.controller('changePasswordCtl', function ($scope, $rootScope, $filter, $wind
     }
     $scope.sendVideo = function () {
         console.log("getVideo-->");
-        var api = $scope.propertyJson.VC_recordVideo;
+        var api = 'record/recordVideo';
         console.log("api: " + api);
         httpFactory.get(api).then(function (data) {
             console.log("data--" + JSON.stringify(data.data));

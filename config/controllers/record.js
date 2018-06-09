@@ -322,7 +322,9 @@ module.exports.getRecordVideo = function (req, res) {
             'Content-Type': 'video/mp4',
         }
 
+        console.log("head: "+JSON.stringify(head));
         res.writeHead(206, head)
+
         file.pipe(res)
     } else {
         const head = {

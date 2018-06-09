@@ -71,12 +71,4 @@ app.controller('changePasswordCtl', function ($scope, $rootScope, $filter, $wind
     }
    
 
-    const VP = document.getElementById('videoPlayer')
-    const VPToggle = document.getElementById('toggleButton')
-
-    VPToggle.addEventListener('click', function () {
-        if (VP.paused) VP.play()
-        else VP.pause()
-    })
-
 })

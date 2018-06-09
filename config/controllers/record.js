@@ -251,39 +251,40 @@ module.exports.emailInvite = function (req, res) {
 
 module.exports.recordVideo = function (req, res) {
     console.log("recordVideo-->");
-    var url = req.body.url;
-    console.log("url: " + req.files.data);
-    var fileData = req.files.data;
-    if (!req.files)
-        return res.status(400).send('No files were uploaded.');
-    console.log("req.files.sampleFile: " + req.files.data);
-    let myFile = req.files.data;
-    console.log("path--" + recordingDirectory);
-    var fileArr = myFile.name.split(".");
-    var fileName = "";
-    for (var i = 0; i < fileArr.length - 1; i++) {
-        fileName = fileName + fileArr[i]
-    }
-    fileName = fileName + "_" + general.date() + "." + fileArr[fileArr.length - 1];
-    console.log("fileName--" + fileName)
+    // var url = req.body.url;
+    // console.log("url: " + req.files.data);
+    // var fileData = req.files.data;
+    // if (!req.files)
+    //     return res.status(400).send('No files were uploaded.');
+    // console.log("req.files.sampleFile: " + req.files.data);
+    // let myFile = req.files.data;
+    // console.log("path--" + recordingDirectory);
+    // var fileArr = myFile.name.split(".");
+    // var fileName = "";
+    // for (var i = 0; i < fileArr.length - 1; i++) {
+    //     fileName = fileName + fileArr[i]
+    // }
+    // fileName = fileName + "_" + general.date() + "." + fileArr[fileArr.length - 1];
+    // console.log("fileName--" + fileName)
 
-    myFile.mv(recordingDirectory + fileName, function (err) {
-        if (err) {
-            console.log(require('util').inspect(err));
-        }
-        else {
-            var readPath = ABSPATH + '/public/Recording/' + fileName;
+    // myFile.mv(recordingDirectory + fileName, function (err) {
+    //     if (err) {
+    //         console.log(require('util').inspect(err));
+    //     }
+    //     else {
+            //var readPath = ABSPATH + '/public/Recording/' + fileName;
             var gfs = Grid(conn.db);
             var writeStream = gfs.createWriteStream({
                 filename: 'sample.mpg'
             });
-            fs.createReadStream(readPath).pipe(writeStream);
+            fs.createReadStream('/public/Recording/1.mp4').pipe(writeStream);
+            //fs.createReadStream(readPath).pipe(writeStream);
             writeStream.on('close', function (file) {
                 console.log(file.filename + "written to db");
             })
 
-        }
-    })
+    //     }
+    // })
 
     console.log("<--recordVideo");
 }

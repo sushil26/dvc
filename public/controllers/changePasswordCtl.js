@@ -81,7 +81,6 @@ app.controller('changePasswordCtl', function ($scope, $rootScope, $filter, $wind
             if (checkStatus) {
                 $scope.adminList = data.data.data;
                 console.log("adminList: " + JSON.stringify($scope.adminList));
-
                 console.log(data.data.message);
             }
             else {

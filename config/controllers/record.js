@@ -305,7 +305,7 @@ module.exports.getRecordVideo = function (req, res) {
     const stat = fs.statSync(path)
     const fileSize = stat.size
     const range = req.headers.range
-
+    console.log("range: " + range);
     if (range) {
         const parts = range.replace(/bytes=/, "").split("-")
         const start = parseInt(parts[0], 10)
@@ -322,8 +322,8 @@ module.exports.getRecordVideo = function (req, res) {
             'Content-Type': 'video/mp4',
         }
 
-        console.log("head: "+JSON.stringify(head));
-        res.writeHead(206, head)
+        console.log("head: " + JSON.stringify(head));
+        res.writeHead(200, head)
 
         file.pipe(res)
     } else {

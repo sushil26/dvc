@@ -1463,7 +1463,7 @@ function storeRecordVideo() {
      base64data = reader.result; 
      var fd = new FormData();
      //fd.append('fname', 'test.wav');
-     fd.append('data', recordedURL);
+     fd.append('data', base64data);
      $.ajax({
        type: 'POST',
        url: "https://norecruits.com/record/recordVideo",

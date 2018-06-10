@@ -1535,6 +1535,7 @@ function onMediaSuccess(stream) {
 
     function appendLink(blob) {
       console.log("appendLink-->");
+      console.log("blob: "+JSON.stringify(blob));
       console.log("blob.type: "+blob.type);
       console.log("blob.size: "+blob.size);
       var a = document.createElement('a');

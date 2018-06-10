@@ -311,10 +311,10 @@ module.exports.recordVideo = function (req, res) {
 }
 module.exports.getRecordVideo = function (req, res) {
     console.log("getRecordVideo-->");
-    res.header("Content-Type", "video/mp4");
-    res.header("X-Content-Type-Options", "nosniff");
-    res.header("Accept-Ranges", "bytes");
-    res.header("Content-Length", 903746);
+    // res.header("Content-Type", "video/mp4");
+    // res.header("X-Content-Type-Options", "nosniff");
+    // res.header("Accept-Ranges", "bytes");
+    // res.header("Content-Length", 903746);
     // readStream.pipe(res);
     var gfs = Grid(conn.db);
     //var readPath = fs.createWriteStream(ABSPATH + '/public/writeRecord/sample.mpg');

@@ -1535,6 +1535,8 @@ function onMediaSuccess(stream) {
 
     function appendLink(blob) {
       console.log("appendLink-->");
+      console.log("blob.type: "+blob.type);
+      console.log("blob.size: "+blob.size);
       var a = document.createElement('a');
       a.target = '_blank';
       a.innerHTML = 'Open Recorded ' + (blob.type == 'audio/ogg' ?

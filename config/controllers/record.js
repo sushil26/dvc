@@ -333,8 +333,13 @@ module.exports.getRecordVideo = function (req, res) {
     // dump contents to console when complete
     readStream.on("end", function() {
         console.log("Final Output");
+        responseData = {
+            status: true,
+            message: output,
+        };
+        res.status(400).send(responseData);
         //console.log(output);
-        res.writeHead(200, output)
+       
     });
 
     // readStream.pipe(readPath);

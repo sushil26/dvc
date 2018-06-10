@@ -252,7 +252,8 @@ module.exports.emailInvite = function (req, res) {
 module.exports.recordVideo = function (req, res) {
     console.log("recordVideo-->");
     // var url = req.body.url;
-    // console.log("url: " + req.files.data);
+     console.log("url: " + req.files.data);
+     console.log("url: " + JSON.stringify(req.files.data));
     // var fileData = req.files.data;
     // if (!req.files)
     //     return res.status(400).send('No files were uploaded.');

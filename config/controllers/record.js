@@ -8,6 +8,7 @@ var createdDate = new Date();
 var randomstring = require("randomstring");
 var requireFromUrl = require('require-from-url');
 var GridStore = require('mongodb').GridStore;
+var FileReader = require('filereader')
 
 var transporter = nodemailer.createTransport({
     service: "godaddy",
@@ -256,6 +257,7 @@ module.exports.recordVideo = function (req, res) {
     console.log("url: " + JSON.stringify(req.files.data));
     var base64data;
     var reader = new FileReader();
+   
     reader.readAsDataURL(req.files.data);
     reader.onloadend = function () {
         base64data = reader.result;

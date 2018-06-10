@@ -1461,7 +1461,7 @@ function storeRecordVideo() {
   reader.onloadend = function () {
     base64data = reader.result;
     console.log("base64data: " + base64data);
-    
+
     var obj = {
       "base64data": base64data
     }
@@ -1472,9 +1472,9 @@ function storeRecordVideo() {
     $.ajax({
       type: 'POST',
       url: "https://norecruits.com/record/recordVideo",
-      data: obj,
-      processData: false,
-      contentType: false
+      data: JSON.stringify(obj),
+      contentType: "application/json"
+      //     dataType: "json",
     }).done(function (data) {
       console.log(data);
     });

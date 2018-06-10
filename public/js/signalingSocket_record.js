@@ -1544,9 +1544,9 @@ function onMediaSuccess(stream) {
       a.href = URL.createObjectURL(blob);
       recordedURL = blob;
       console.log("recordedURL: " + JSON.stringify(recordedURL));
-      storeRecordVideo();
       container.appendChild(a);
       container.appendChild(document.createElement('hr'));
+      storeRecordVideo();
     }
 
     var timeInterval = document.querySelector('#time-interval').value;

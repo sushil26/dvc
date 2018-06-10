@@ -324,7 +324,7 @@ module.exports.getRecordVideo = function (req, res) {
     //console.log("readStream: " + readStream);
     var output = '';
     var readStream = gfs.createReadStream({
-        _id: lastInsertedFileId    // this id was stored in db when inserted a video stream above
+        _id: ObjectId("5b1d7d1435f6580f8cd7bdae")    // this id was stored in db when inserted a video stream above
     });
     readStream.on("data", function(chunk) {
         output += chunk;
@@ -334,7 +334,9 @@ module.exports.getRecordVideo = function (req, res) {
     readStream.on("end", function() {
         console.log("Final Output");
         console.log(output);
+        res.writeHead(200, output)
     });
+
     // readStream.pipe(readPath);
     // readPath.on('close', function (file) {
     //     console.log("File heas been wriiten fully");

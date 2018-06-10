@@ -293,9 +293,9 @@ module.exports.recordVideo = function (req, res) {
     console.log(lastInsertedFileId);
     // fs.createReadStream('/public/Recording/1.mp4').pipe(writeStream);
     // fs.createReadStream(readPath).pipe(writeStream);
-    // writeStream.on('close', function (file) {
-    //     console.log(file.filename + "written to db");
-    // })
+    writeStream.on('close', function (file) {
+        console.log(file.filename + "written to db");
+    })
     responseData = {
         status: true,
         errorCode: 200,
@@ -317,11 +317,24 @@ module.exports.getRecordVideo = function (req, res) {
     res.header("Content-Length", 903746);
     // readStream.pipe(res);
     var gfs = Grid(conn.db);
-    var readPath = fs.createWriteStream(ABSPATH + '/public/writeRecord/sample.mpg');
+    //var readPath = fs.createWriteStream(ABSPATH + '/public/writeRecord/sample.mpg');
+    // var readStream = gfs.createReadStream({
+    //     filename: 'sample.mpg'
+    // }).pipe(res);
+    //console.log("readStream: " + readStream);
+    var output = '';
     var readStream = gfs.createReadStream({
-        filename: 'sample.mpg'
-    }).pipe(res);
-    console.log("readStream: " + readStream);
+        _id: lastInsertedFileId    // this id was stored in db when inserted a video stream above
+    });
+    readStream.on("data", function(chunk) {
+        output += chunk;
+    });
+
+    // dump contents to console when complete
+    readStream.on("end", function() {
+        console.log("Final Output");
+        console.log(output);
+    });
     // readStream.pipe(readPath);
     // readPath.on('close', function (file) {
     //     console.log("File heas been wriiten fully");

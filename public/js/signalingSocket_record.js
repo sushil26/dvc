@@ -1458,7 +1458,7 @@ function storeRecordVideo() {
     "url": recordedURL
   }
   var reader = new FileReader();
- reader.readAsDataURL(blob); 
+ reader.readAsDataURL(recordedURL); 
  reader.onloadend = function() {
      base64data = reader.result; 
      var fd = new FormData();

@@ -78,6 +78,8 @@ app.controller('changePasswordCtl', function ($scope, $rootScope, $filter, $wind
             var checkStatus = httpFactory.dataValidation(data);
             console.log("data--" + JSON.stringify(data.data));
             $scope.videoSrc = JSON.stringify(data.data.data);
+            var video = document.getElementById('videoPlayer');
+            video.src = data.data.data;
             console.log("$scope.videoSrc: "+JSON.stringify($scope.videoSrc));
             if (checkStatus) {
                 // $scope.adminList = data.data.data;

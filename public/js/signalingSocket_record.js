@@ -1455,7 +1455,7 @@ document.querySelector('#resume-recording').onclick = function () {
 function storeRecordVideo() {
   console.log("storeRecordVideo-->");
 
-  var fileReader = new FileReader();
+  var reader = new FileReader();
 
   reader.readAsDataURL(recordedURL);
   reader.onloadend = function () {

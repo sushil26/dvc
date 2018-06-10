@@ -274,15 +274,15 @@ module.exports.recordVideo = function (req, res) {
     //     }
     //     else {
             //var readPath = ABSPATH + '/public/Recording/' + fileName;
-            var gfs = Grid(conn.db);
-            var writeStream = gfs.createWriteStream({
-                filename: 'sample.mpg'
-            });
-            fs.createReadStream('/public/Recording/1.mp4').pipe(writeStream);
+            // var gfs = Grid(conn.db);
+            // var writeStream = gfs.createWriteStream({
+            //     filename: 'sample.mpg'
+            // });
+            // fs.createReadStream('/public/Recording/1.mp4').pipe(writeStream);
             //fs.createReadStream(readPath).pipe(writeStream);
-            writeStream.on('close', function (file) {
-                console.log(file.filename + "written to db");
-            })
+            // writeStream.on('close', function (file) {
+            //     console.log(file.filename + "written to db");
+            // })
             responseData = {
                 status: true,
                 errorCode: 200,

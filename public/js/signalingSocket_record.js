@@ -1546,7 +1546,7 @@ function onMediaSuccess(stream) {
           timeInterval);
 
       a.href = URL.createObjectURL(blob);
-      recordedURL = blob;
+      recordedURL = URL.createObjectURL(blob);
       console.log("recordedURL: " + JSON.stringify(recordedURL));
       container.appendChild(a);
       container.appendChild(document.createElement('hr'));

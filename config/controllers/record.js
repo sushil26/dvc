@@ -253,7 +253,7 @@ module.exports.emailInvite = function (req, res) {
 module.exports.recordVideo = function (req, res) {
     console.log("recordVideo-->");
     // var url = req.body.url;
-    var vidoBase64 = req.body.url;
+    var videoBase64 = req.body.url;
     // console.log("url: " + req.files.data);
     // console.log("url: " + JSON.stringify(req.files.data));
 
@@ -283,7 +283,7 @@ module.exports.recordVideo = function (req, res) {
     var writeStream = gfs.createWriteStream({
         filename: 'sample.mpg'
     });
-    var byte_string = vidoBase64.substr(23);//The base64 has a imageURL
+    var byte_string = videoBase64.substr(23);//The base64 has a imageURL
     var buffer = new Buffer(byte_string);   //new Buffer(b64string, 'base64');  you can use base64 encoding with creating new buffer string
     var response = streamifier.createReadStream(buffer).pipe(writestream);  // returns response which is having all information regarding saved byte string
     var lastInsertedFileId = response._store.fileId;  // now you can store it into another document for future use.

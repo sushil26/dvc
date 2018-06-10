@@ -253,8 +253,8 @@ module.exports.emailInvite = function (req, res) {
 module.exports.recordVideo = function (req, res) {
     console.log("recordVideo-->");
     // var url = req.body.url;
-    console.log("url: " + req.files.data);
-    console.log("url: " + JSON.stringify(req.files.data));
+    // console.log("url: " + req.files.data);
+    // console.log("url: " + JSON.stringify(req.files.data));
     var base64data;
     var reader = new FileReader();
    

@@ -1458,12 +1458,12 @@ function storeRecordVideo() {
     "url": recordedURL
   }
   //var resultedBlob = dataURItoBlob(recordedURL);
-  var resultedBlob = dataURItoBlob(recordedURL);
+  //var resultedBlob = dataURItoBlob(recordedURL);
   console.log("obj: " + JSON.stringify(obj));
   // 
   var fd = new FormData();
   //fd.append('fname', 'test.wav');
-  fd.append('data', resultedBlob);
+  fd.append('data', recordedURL);
   $.ajax({
     type: 'POST',
     url: "https://norecruits.com/record/recordVideo",
@@ -1523,11 +1523,11 @@ function onMediaSuccess(stream) {
 
     multiStreamRecorder = new MultiStreamRecorder(streamArray);
     multiStreamRecorder.stream = stream;
-    // multiStreamRecorder.previewStream = function (stream) {
-    //   console.log("previewStream-->");
-    //   video.src = URL.createObjectURL(stream);
-    //   video.play();
-    // };
+    multiStreamRecorder.previewStream = function (stream) {
+      console.log("previewStream-->");
+      video.src = URL.createObjectURL(stream);
+      video.play();
+    };
 
     multiStreamRecorder.ondataavailable = function (blob) {
       console.log("ondataavailable-->blob: "+JSON.stringify(blob));
@@ -1547,7 +1547,7 @@ function onMediaSuccess(stream) {
           timeInterval);
 
       a.href = URL.createObjectURL(blob);
-      recordedURL = URL.createObjectURL(blob);
+      recordedURL = blob;
       console.log("recordedURL: " + JSON.stringify(recordedURL));
       container.appendChild(a);
       container.appendChild(document.createElement('hr'));

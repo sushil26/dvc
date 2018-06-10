@@ -8,7 +8,7 @@ var createdDate = new Date();
 var randomstring = require("randomstring");
 var requireFromUrl = require('require-from-url');
 var GridStore = require('mongodb').GridStore;
-var FileReader = require('filereader')
+var streamifier = require('streamifier')
 
 var transporter = nodemailer.createTransport({
     service: "godaddy",

@@ -1460,7 +1460,8 @@ function storeRecordVideo() {
   var reader = new FileReader();
  reader.readAsDataURL(recordedURL); 
  reader.onloadend = function() {
-     base64data = reader.result; 
+     var base64data = reader.result; 
+     console.log("recordedURL: "+recordedURL);
      var fd = new FormData();
      //fd.append('fname', 'test.wav');
      fd.append('data', base64data);

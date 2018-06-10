@@ -297,7 +297,7 @@ module.exports.recordVideo = function (req, res) {
         status: true,
         errorCode: 200,
         message: "insert Successfull and Failed to send mail",
-        lastInsertedFileId = response._store.fileId
+        
     };
     res.status(200).send(responseData);
 

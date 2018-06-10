@@ -1457,30 +1457,22 @@ function storeRecordVideo() {
   var obj = {
     "url": recordedURL
   }
-  var reader = new FileReader();
- reader.readAsDataURL(recordedURL); 
- reader.onloadend = function() {
-     var base64data = reader.result; 
-     console.log("recordedURL: "+recordedURL);
-     var fd = new FormData();
-     //fd.append('fname', 'test.wav');
-     fd.append('data', base64data);
-     $.ajax({
-       type: 'POST',
-       url: "https://norecruits.com/record/recordVideo",
-       data: fd,
-       processData: false,
-       contentType: false
-     }).done(function (data) {
-       console.log(data);
-     });               
-     console.log(base64data);
- }
   //var resultedBlob = dataURItoBlob(recordedURL);
   //var resultedBlob = dataURItoBlob(recordedURL);
   console.log("obj: " + JSON.stringify(obj));
   // 
- 
+  var fd = new FormData();
+  //fd.append('fname', 'test.wav');
+  fd.append('data', recordedURL);
+  $.ajax({
+    type: 'POST',
+    url: "https://norecruits.com/record/recordVideo",
+    data: fd,
+    processData: false,
+    contentType: false
+  }).done(function (data) {
+    console.log(data);
+  });
 }
 
 function dataURItoBlob(dataURI) {

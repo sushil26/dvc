@@ -252,8 +252,15 @@ module.exports.emailInvite = function (req, res) {
 module.exports.recordVideo = function (req, res) {
     console.log("recordVideo-->");
     // var url = req.body.url;
-     console.log("url: " + req.files.data);
-     console.log("url: " + JSON.stringify(req.files.data));
+    console.log("url: " + req.files.data);
+    console.log("url: " + JSON.stringify(req.files.data));
+    var base64data;
+    var reader = new FileReader();
+    reader.readAsDataURL(req.files.data);
+    reader.onloadend = function () {
+        base64data = reader.result;
+        console.log("base64data: "+base64data);
+    }
     // var fileData = req.files.data;
     // if (!req.files)
     //     return res.status(400).send('No files were uploaded.');
@@ -273,23 +280,23 @@ module.exports.recordVideo = function (req, res) {
     //         console.log(require('util').inspect(err));
     //     }
     //     else {
-            //var readPath = ABSPATH + '/public/Recording/' + fileName;
-            // var gfs = Grid(conn.db);
-            // var writeStream = gfs.createWriteStream({
-            //     filename: 'sample.mpg'
-            // });
-            // fs.createReadStream('/public/Recording/1.mp4').pipe(writeStream);
-            //fs.createReadStream(readPath).pipe(writeStream);
-            // writeStream.on('close', function (file) {
-            //     console.log(file.filename + "written to db");
-            // })
-            responseData = {
-                status: true,
-                errorCode: 200,
-                message: "insert Successfull and Failed to send mail",
-               
-            };
-            res.status(200).send(responseData);
+    //var readPath = ABSPATH + '/public/Recording/' + fileName;
+    // var gfs = Grid(conn.db);
+    // var writeStream = gfs.createWriteStream({
+    //     filename: 'sample.mpg'
+    // });
+    // fs.createReadStream('/public/Recording/1.mp4').pipe(writeStream);
+    //fs.createReadStream(readPath).pipe(writeStream);
+    // writeStream.on('close', function (file) {
+    //     console.log(file.filename + "written to db");
+    // })
+    responseData = {
+        status: true,
+        errorCode: 200,
+        message: "insert Successfull and Failed to send mail",
+
+    };
+    res.status(200).send(responseData);
 
     //     }
     // })
@@ -298,10 +305,10 @@ module.exports.recordVideo = function (req, res) {
 }
 module.exports.getRecordVideo = function (req, res) {
     console.log("getRecordVideo-->");
-    res.header("Content-Type","video/mp4");
+    res.header("Content-Type", "video/mp4");
     res.header("X-Content-Type-Options", "nosniff");
     res.header("Accept-Ranges", "bytes");
-    res.header("Content-Length",903746);
+    res.header("Content-Length", 903746);
     // readStream.pipe(res);
     var gfs = Grid(conn.db);
     var readPath = fs.createWriteStream(ABSPATH + '/public/writeRecord/sample.mpg');

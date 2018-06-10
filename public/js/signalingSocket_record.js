@@ -1457,13 +1457,12 @@ function storeRecordVideo() {
   var obj = {
     "url": recordedURL
   }
- // var resultedBlob = dataURItoBlob(recordedURL);
-  
+  var resultedBlob = dataURItoBlob(recordedURL);
   console.log("obj: " + JSON.stringify(obj));
   // 
   var fd = new FormData();
   //fd.append('fname', 'test.wav');
-  fd.append('data', recordedURL);
+  fd.append('data', resultedBlob);
   $.ajax({
     type: 'POST',
     url: "https://norecruits.com/record/recordVideo",
@@ -1477,6 +1476,8 @@ function storeRecordVideo() {
 
 function dataURItoBlob(dataURI) {
   // convert base64/URLEncoded data component to raw binary data held in a string
+  console.log("dataURI: "+dataURI);
+  console.log("dataURI: "+JSON.stringify(dataURI));
   var byteString;
   if (dataURI.split(',')[0].indexOf('base64') >= 0)
     byteString = windwow.atob(dataURI.split(',')[1]);
@@ -1527,8 +1528,6 @@ function onMediaSuccess(stream) {
 
     function appendLink(blob) {
       console.log("appendLink-->");
-      console.log("Blob: "+blob);
-      console.log("Blob: "+JSON.stringify(blob));
       var a = document.createElement('a');
       a.target = '_blank';
       a.innerHTML = 'Open Recorded ' + (blob.type == 'audio/ogg' ?

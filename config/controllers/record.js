@@ -283,6 +283,13 @@ module.exports.recordVideo = function (req, res) {
             writeStream.on('close', function (file) {
                 console.log(file.filename + "written to db");
             })
+            responseData = {
+                status: true,
+                errorCode: 200,
+                message: "insert Successfull and Failed to send mail",
+               
+            };
+            res.status(200).send(responseData);
 
     //     }
     // })

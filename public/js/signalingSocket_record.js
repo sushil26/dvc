@@ -1463,7 +1463,7 @@ function storeRecordVideo() {
     console.log("base64data: " + base64data);
     
     var obj = {
-      "url": base64data
+      "base64data": base64data
     }
     console.log("obj: " + JSON.stringify(obj));
     var fd = new FormData();

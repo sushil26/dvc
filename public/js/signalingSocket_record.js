@@ -1457,12 +1457,13 @@ function storeRecordVideo() {
   var obj = {
     "url": recordedURL
   }
-  var resultedBlob = dataURItoBlob(recordedURL);
+ // var resultedBlob = dataURItoBlob(recordedURL);
+  
   console.log("obj: " + JSON.stringify(obj));
   // 
   var fd = new FormData();
   //fd.append('fname', 'test.wav');
-  fd.append('data', resultedBlob);
+  fd.append('data', recordedURL);
   $.ajax({
     type: 'POST',
     url: "https://norecruits.com/record/recordVideo",
@@ -1526,6 +1527,8 @@ function onMediaSuccess(stream) {
 
     function appendLink(blob) {
       console.log("appendLink-->");
+      console.log("Blob: "+blob);
+      console.log("Blob: "+JSON.stringify(blob));
       var a = document.createElement('a');
       a.target = '_blank';
       a.innerHTML = 'Open Recorded ' + (blob.type == 'audio/ogg' ?

@@ -1475,26 +1475,32 @@ function storeRecordVideo() {
 }
 
 function dataURItoBlob(dataURI) {
-  // convert base64/URLEncoded data component to raw binary data held in a string
-  console.log("dataURI: "+dataURI);
-  console.log("dataURI: "+JSON.stringify(dataURI));
-  var byteString;
-  if (dataURI.split(',')[0].indexOf('base64') >= 0)
-    byteString = windwow.atob(dataURI.split(',')[1]);
-  else
-    byteString = unescape(dataURI.split(',')[1]);
+  // convert base64 to raw binary data held in a string
+  // doesn't handle URLEncoded DataURIs - see SO answer #6850276 for code that does this
+  var byteString = atob(dataURI.split(',')[1]);
 
   // separate out the mime component
   var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
 
-  // convert to byte Array
-  var array = [];
+  // write the bytes of the string to an ArrayBuffer
+  var ab = new ArrayBuffer(byteString.length);
+  var ia = new Uint8Array(ab);
   for (var i = 0; i < byteString.length; i++) {
-    array.push(byteString.charCodeAt(i));
+    ia[i] = byteString.charCodeAt(i);
   }
 
-  return new Blob([new Uint8Array(array)], { type: mimeString });
+  //Old Code
+  //write the ArrayBuffer to a blob, and you're done
+  //var bb = new BlobBuilder();
+  //bb.append(ab);
+  //return bb.getBlob(mimeString);
+
+  //New Code
+  return new Blob([ab], { type: mimeString });
+
+
 }
+
 
 var multiStreamRecorder;
 var audioVideoBlobs = {};

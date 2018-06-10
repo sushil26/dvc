@@ -256,71 +256,58 @@ module.exports.recordVideo = function (req, res) {
     // console.log("url: " + req.files.data);
     // console.log("url: " + JSON.stringify(req.files.data));
     var base64data;
-    var fileReader = new FileReader();
+    var file = process.argv[2];
+    var data = fs.readFileSync(file);
+
+    console.log(data.toString('base64'));
 
     // reader.readAsDataURL(req.files.data);
     // reader.onloadend = function () {
     //     base64data = reader.result;
     //     console.log("base64data: "+base64data);
     // }
-    fileReader.setNodeChunkedEncoding(true);
-    fileReader.readAsDataURL(new File('./files/my-file.txt'));
 
-    // non-standard alias of `addEventListener` listening to non-standard `data` event
-    fileReader.on('data', function (data) {
-        console.log("chunkSize:", data.length);
-    });
+    // var fileData = req.files.data;
+    // if (!req.files)
+    //     return res.status(400).send('No files were uploaded.');
+    // console.log("req.files.sampleFile: " + req.files.data);
+    // let myFile = req.files.data;
+    // console.log("path--" + recordingDirectory);
+    // var fileArr = myFile.name.split(".");
+    // var fileName = "";
+    // for (var i = 0; i < fileArr.length - 1; i++) {
+    //     fileName = fileName + fileArr[i]
+    // }
+    // fileName = fileName + "_" + general.date() + "." + fileArr[fileArr.length - 1];
+    // console.log("fileName--" + fileName)
 
-    // `onload` as listener
-    fileReader.addEventListener('load', function (ev) {
-        console.log("dataUrlSize:", ev.target.result.length);
-    });
+    // myFile.mv(recordingDirectory + fileName, function (err) {
+    //     if (err) {
+    //         console.log(require('util').inspect(err));
+    //     }
+    //     else {
+    //var readPath = ABSPATH + '/public/Recording/' + fileName;
+    // var gfs = Grid(conn.db);
+    // var writeStream = gfs.createWriteStream({
+    //     filename: 'sample.mpg'
+    // });
+    // fs.createReadStream('/public/Recording/1.mp4').pipe(writeStream);
+    //fs.createReadStream(readPath).pipe(writeStream);
+    // writeStream.on('close', function (file) {
+    //     console.log(file.filename + "written to db");
+    // })
+    responseData = {
+        status: true,
+        errorCode: 200,
+        message: "insert Successfull and Failed to send mail",
 
-    // `onloadend` as property
-    fileReader.onloadend', function () {
-    console.log("Success");
-});
-// var fileData = req.files.data;
-// if (!req.files)
-//     return res.status(400).send('No files were uploaded.');
-// console.log("req.files.sampleFile: " + req.files.data);
-// let myFile = req.files.data;
-// console.log("path--" + recordingDirectory);
-// var fileArr = myFile.name.split(".");
-// var fileName = "";
-// for (var i = 0; i < fileArr.length - 1; i++) {
-//     fileName = fileName + fileArr[i]
-// }
-// fileName = fileName + "_" + general.date() + "." + fileArr[fileArr.length - 1];
-// console.log("fileName--" + fileName)
+    };
+    res.status(200).send(responseData);
 
-// myFile.mv(recordingDirectory + fileName, function (err) {
-//     if (err) {
-//         console.log(require('util').inspect(err));
-//     }
-//     else {
-//var readPath = ABSPATH + '/public/Recording/' + fileName;
-// var gfs = Grid(conn.db);
-// var writeStream = gfs.createWriteStream({
-//     filename: 'sample.mpg'
-// });
-// fs.createReadStream('/public/Recording/1.mp4').pipe(writeStream);
-//fs.createReadStream(readPath).pipe(writeStream);
-// writeStream.on('close', function (file) {
-//     console.log(file.filename + "written to db");
-// })
-responseData = {
-    status: true,
-    errorCode: 200,
-    message: "insert Successfull and Failed to send mail",
+    //     }
+    // })
 
-};
-res.status(200).send(responseData);
-
-//     }
-// })
-
-console.log("<--recordVideo");
+    console.log("<--recordVideo");
 }
 module.exports.getRecordVideo = function (req, res) {
     console.log("getRecordVideo-->");

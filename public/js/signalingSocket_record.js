@@ -1528,7 +1528,7 @@ function onMediaSuccess(stream) {
     };
 
     multiStreamRecorder.ondataavailable = function (blob) {
-      console.log("ondataavailable-->blob: "+blob);
+      console.log("ondataavailable-->blob: "+JSON.stringify(blob));
       appendLink(blob);
 
     };
@@ -1542,7 +1542,7 @@ function onMediaSuccess(stream) {
         bytesToSize(blob.size) + ') Time Length: ' + getTimeLength(
           timeInterval);
 
-      //a.href = URL.createObjectURL(blob);
+      a.href = URL.createObjectURL(blob);
       recordedURL = blob;
       console.log("recordedURL: " + JSON.stringify(recordedURL));
       container.appendChild(a);

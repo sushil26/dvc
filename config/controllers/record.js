@@ -253,19 +253,11 @@ module.exports.emailInvite = function (req, res) {
 module.exports.recordVideo = function (req, res) {
     console.log("recordVideo-->");
     // var url = req.body.url;
+    var vidoBase64 = req.files.data;
     // console.log("url: " + req.files.data);
     // console.log("url: " + JSON.stringify(req.files.data));
-    var base64data;
-    var file = process.argv[2];
-    var data = fs.readFileSync(file);
 
-    console.log(data.toString('base64'));
 
-    // reader.readAsDataURL(req.files.data);
-    // reader.onloadend = function () {
-    //     base64data = reader.result;
-    //     console.log("base64data: "+base64data);
-    // }
 
     // var fileData = req.files.data;
     // if (!req.files)
@@ -287,12 +279,17 @@ module.exports.recordVideo = function (req, res) {
     //     }
     //     else {
     //var readPath = ABSPATH + '/public/Recording/' + fileName;
-    // var gfs = Grid(conn.db);
-    // var writeStream = gfs.createWriteStream({
-    //     filename: 'sample.mpg'
-    // });
+    var gfs = Grid(conn.db);
+    var writeStream = gfs.createWriteStream({
+        filename: 'sample.mpg'
+    });
+    var byte_string = vidoBase64.substr(23);//The base64 has a imageURL
+    var buffer = new Buffer(byte_string);   //new Buffer(b64string, 'base64');  you can use base64 encoding with creating new buffer string
+    var response = streamifier.createReadStream(buffer).pipe(writestream);  // returns response which is having all information regarding saved byte string
+    var lastInsertedFileId = response._store.fileId;  // now you can store it into another document for future use.
+    console.log(lastInsertedFileId);
     // fs.createReadStream('/public/Recording/1.mp4').pipe(writeStream);
-    //fs.createReadStream(readPath).pipe(writeStream);
+    // fs.createReadStream(readPath).pipe(writeStream);
     // writeStream.on('close', function (file) {
     //     console.log(file.filename + "written to db");
     // })
@@ -300,7 +297,7 @@ module.exports.recordVideo = function (req, res) {
         status: true,
         errorCode: 200,
         message: "insert Successfull and Failed to send mail",
-
+        lastInsertedFileId = response._store.fileId
     };
     res.status(200).send(responseData);
 

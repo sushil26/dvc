@@ -1454,25 +1454,33 @@ document.querySelector('#resume-recording').onclick = function () {
 
 function storeRecordVideo() {
   console.log("storeRecordVideo-->");
-  var obj = {
-    "url": recordedURL
+
+  var fileReader = new FileReader();
+
+  reader.readAsDataURL(recordedURL);
+  reader.onloadend = function () {
+    base64data = reader.result;
+    console.log("base64data: " + base64data);
+    console.log("obj: " + JSON.stringify(obj));
+    var obj = {
+      "url": base64data
+    }
+    var fd = new FormData();
+    //fd.append('fname', 'test.wav');
+    fd.append('data', recordedURL);
+    $.ajax({
+      type: 'POST',
+      url: "https://norecruits.com/record/recordVideo",
+      data: fd,
+      processData: false,
+      contentType: false
+    }).done(function (data) {
+      console.log(data);
+    });
   }
   //var resultedBlob = dataURItoBlob(recordedURL);
   //var resultedBlob = dataURItoBlob(recordedURL);
-  console.log("obj: " + JSON.stringify(obj));
-  // 
-  var fd = new FormData();
-  //fd.append('fname', 'test.wav');
-  fd.append('data', recordedURL);
-  $.ajax({
-    type: 'POST',
-    url: "https://norecruits.com/record/recordVideo",
-    data: fd,
-    processData: false,
-    contentType: false
-  }).done(function (data) {
-    console.log(data);
-  });
+
 }
 
 function dataURItoBlob(dataURI) {
@@ -1530,15 +1538,15 @@ function onMediaSuccess(stream) {
     };
 
     multiStreamRecorder.ondataavailable = function (blob) {
-      console.log("ondataavailable-->blob: "+JSON.stringify(blob));
+      console.log("ondataavailable-->blob: " + JSON.stringify(blob));
       appendLink(blob);
     };
 
     function appendLink(blob) {
       console.log("appendLink-->");
-      console.log("blob.data: "+blob.data);
-      console.log("blob.type: "+blob.type);
-      console.log("blob.size: "+blob.size);
+      console.log("blob.data: " + blob.data);
+      console.log("blob.type: " + blob.type);
+      console.log("blob.size: " + blob.size);
       var a = document.createElement('a');
       a.target = '_blank';
       a.innerHTML = 'Open Recorded ' + (blob.type == 'audio/ogg' ?

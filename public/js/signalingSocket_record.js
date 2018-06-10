@@ -1476,9 +1476,10 @@ function storeRecordVideo() {
 }
 
 function dataURItoBlob(dataURI) {
+  var stringDataURL = dataURL.toString();
   // convert base64 to raw binary data held in a string
   // doesn't handle URLEncoded DataURIs - see SO answer #6850276 for code that does this
-  var byteString = atob(dataURI.split(',')[1]);
+  var byteString = atob(stringDataURL.split(',')[1]);
 
   // separate out the mime component
   var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];

@@ -273,6 +273,7 @@ function disconnecSession() {
   localStorage.removeItem("careatorEmail");
   localStorage.removeItem("careatorFriendName");
   userName = null;
+  console.log("streamArray.length: "+streamArray.length);
   if (streamArray.length <= 1) {
     console.log("stop rec");
     $('#stop-recording').trigger("click");

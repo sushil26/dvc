@@ -1517,13 +1517,13 @@ var recordingInterval = 0;
 
 function onMediaSuccess(stream) {
   console.log("stream-->");
-  var video = document.createElement('video');
+  // var video = document.createElement('video');
 
-  video = mergeProps(video, {
-    controls: true,
-    muted: false
-  });
-  video.srcObject = stream;
+  // video = mergeProps(video, {
+  //   controls: true,
+  //   muted: false
+  // });
+  // video.srcObject = stream;
 
   video.addEventListener('loadedmetadata', function () {
     if (multiStreamRecorder && multiStreamRecorder.stream) return;

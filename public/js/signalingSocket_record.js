@@ -1556,8 +1556,8 @@ function onMediaSuccess(stream) {
 
   video.play();
 
-  container.appendChild(video);
-  container.appendChild(document.createElement('hr'));
+  // container.appendChild(video);
+  // container.appendChild(document.createElement('hr'));
 }
 
 function onMediaError(e) {

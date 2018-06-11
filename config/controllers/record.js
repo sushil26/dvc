@@ -9,7 +9,7 @@ var randomstring = require("randomstring");
 var requireFromUrl = require('require-from-url');
 var GridStore = require('mongodb').GridStore;
 var streamifier = require('streamifier')
-
+var event = db.collection('event');
 var transporter = nodemailer.createTransport({
     service: "godaddy",
     auth: {
@@ -253,9 +253,9 @@ module.exports.emailInvite = function (req, res) {
 module.exports.recordVideo = function (req, res) {
     console.log("recordVideo-->");
     // var url = req.body.url;
-    console.log("req.body.base64data: "+req.body.base64data);
+    console.log("req.body.base64data: " + req.body.base64data);
     var videoBase64 = req.body.base64data;
-    console.log("videoBase64: "+videoBase64);
+    console.log("videoBase64: " + videoBase64);
 
     // console.log("url: " + req.files.data);
     // console.log("url: " + JSON.stringify(req.files.data));
@@ -282,7 +282,7 @@ module.exports.recordVideo = function (req, res) {
     //     }
     //     else {
     //var readPath = ABSPATH + '/public/Recording/' + fileName;
-    console.log("req.body.eventId: "+req.body.eventId)
+    console.log("req.body.eventId: " + req.body.eventId)
     var gfs = Grid(conn.db);
     var writeStream = gfs.createWriteStream({
         filename: 'vcRecord.mpg',
@@ -297,12 +297,26 @@ module.exports.recordVideo = function (req, res) {
     // fs.createReadStream(readPath).pipe(writeStream);
     writeStream.on('close', function (file) {
         console.log(file.filename + "written to db");
+        var responseData;
+        console.log("req.body.id: " + req.body.id);
+        // if (general.emptyCheck(req.body.id)) {
+        var queryId = {
+            "_id": ObjectId(req.body.eventId)
+        }
+        console.log("queryId: " + JSON.stringify(queryId));
+        var setData = {
+            "vcRecordId":lastInsertedFileId 
+        }
+            event.update(queryId, { $set: setData }, function (err, data) {
+                console.log("data: " + JSON.stringify(data));
+
+            })
     })
     responseData = {
         status: true,
         errorCode: 200,
         message: "insert Successfull and Failed to send mail",
-        
+
     };
     res.status(200).send(responseData);
 
@@ -326,15 +340,15 @@ module.exports.getRecordVideo = function (req, res) {
     //console.log("readStream: " + readStream);
     var output = '';
     var readStream = gfs.createReadStream({
-        "_id" : ObjectId("5b1e21f89211846655bae63d"),    // this id was stored in db when inserted a video stream above
+        "_id": ObjectId("5b1e21f89211846655bae63d"),    // this id was stored in db when inserted a video stream above
         "eventId": req.params.id
     });
-    readStream.on("data", function(chunk) {
+    readStream.on("data", function (chunk) {
         output += chunk;
     });
 
     // dump contents to console when complete
-    readStream.on("end", function() {
+    readStream.on("end", function () {
         console.log("Final Output");
         responseData = {
             status: true,
@@ -343,7 +357,7 @@ module.exports.getRecordVideo = function (req, res) {
         };
         res.status(400).send(responseData);
         //console.log(output);
-       
+
     });
 
     // readStream.pipe(readPath);

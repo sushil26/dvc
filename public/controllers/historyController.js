@@ -86,6 +86,7 @@ app.controller('historyController', function ($scope, $rootScope, $window, httpF
             backdropClass: 'show',
             controller: function ($scope, $uibModalInstance) {
                 $scope.eventDetails = $scope.events[id];
+                var id = $scope.events[id].vcRecordId;
                 var api = 'record/getRecordVideo/' + id;
                 console.log("api: " + api);
                 httpFactory.get(api).then(function (data) {

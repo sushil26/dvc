@@ -293,6 +293,7 @@ function momVC() {
         } else {
           alert("refresh your page and try again");
         }
+        disconnecSession();
       }
     });
   } else if (localStorage.getItem("studLoginId")) {
@@ -317,9 +318,11 @@ function momVC() {
         } else {
           alert("refresh your page and try again");
         }
+        disconnecSession();
       }
     });
   }
+
   console.log("<--momVC");
 }
 

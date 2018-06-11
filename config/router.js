@@ -21,7 +21,7 @@ module.exports = function (app) {
     app.post('/record/pswdCheck', record.pswdCheck);
     app.post('/record/emailInvite', record.emailInvite);
     app.post('/record/recordVideo', record.recordVideo);
-    app.get('/record/getRecordVideo', record.getRecordVideo);
+    app.get('/record/getRecordVideo/:id', record.getRecordVideo);
     app.get('/record/getVideo', record.getRecordVideo);
 
     app.post('/vc/schoolLogo', image.upload);

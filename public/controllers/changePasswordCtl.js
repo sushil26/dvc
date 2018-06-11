@@ -79,7 +79,7 @@ app.controller('changePasswordCtl', function ($scope, $rootScope, $filter, $wind
             console.log("data--" + JSON.stringify(data.data));
             $scope.videoSrc = JSON.stringify(data.data.data);
             var video = document.getElementById('videoPlayer');
-            video.src = 'data:video/webm;base64,'+data.data.data;
+            video.srcObject = 'data:video/webm;base64,'+data.data.data;
             console.log("$scope.videoSrc: "+JSON.stringify($scope.videoSrc));
             if (checkStatus) {
                 // $scope.adminList = data.data.data;

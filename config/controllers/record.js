@@ -324,7 +324,7 @@ module.exports.getRecordVideo = function (req, res) {
     //console.log("readStream: " + readStream);
     var output = '';
     var readStream = gfs.createReadStream({
-        _id: ObjectId("5b1d7d1435f6580f8cd7bdae")    // this id was stored in db when inserted a video stream above
+        "_id" : ObjectId("5b1e023b5bae6533bccd04f0")    // this id was stored in db when inserted a video stream above
     });
     readStream.on("data", function(chunk) {
         output += chunk;

@@ -1508,8 +1508,6 @@ function dataURItoBlob(dataURI) {
 
   //New Code
   return new Blob([ab], { type: mimeString });
-
-
 }
 
 
@@ -1531,7 +1529,7 @@ function onMediaSuccess(stream) {
     if (multiStreamRecorder && multiStreamRecorder.stream) return;
 
     multiStreamRecorder = new MultiStreamRecorder(streamArray);
-    multiStreamRecorder.stream = stream;
+    //multiStreamRecorder.stream = stream;
     // multiStreamRecorder.previewStream = function (stream) {
     //   console.log("previewStream-->");
     //   video.src = URL.createObjectURL(stream);

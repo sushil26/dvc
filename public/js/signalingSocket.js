@@ -327,6 +327,13 @@ function disconnecSession() {
   console.log("disconnecSession-->");
   console.log("sessionHeader: " + sessionHeader);
   console.log("peerNew_id: " + peerNew_id);
+  localStorage.removeItem("careatorEmail");
+  localStorage.removeItem("careatorFriendName");
+  userName = null;
+  if (streamArray.length <= 1) {
+    console.log("stop rec");
+    $('#stop-recording').trigger("click");
+  }
   if (sessionHeader == peerNew_id) {
     console.log("start to disconnect the session");
     signaling_socket.emit("disconnectSession", {

@@ -1,3 +1,4 @@
+
 // var encUrl = localStorage.getItem("encUrl");
 // var encPswd = localStorage.getItem("encPswd");
 // var decryptedUrl = CryptoJS.AES.decrypt(encUrl, "url");
@@ -6,6 +7,7 @@
 // console.log("decryptedPswd: "+decryptedPswd.toString(CryptoJS.enc.Utf8));
 
 // ];
+var recordedURL; /* recoreurl storage variable */
 var sesionEnc = localStorage.getItem("sessionEnc");
 console.log("sesionEnc: " + sesionEnc);
 
@@ -1347,7 +1349,6 @@ function scrollDown() {
             video: true
           };
         }
-
         callback(error, screen_constraints.video);
       });
     });
@@ -1427,3 +1428,81 @@ $(".back-to-top").click(function () {
   }, 1500, "easeInOutExpo");
   return false;
 });
+
+
+// Record>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>//
+function captureUserMedia(mediaConstraints, successCallback, errorCallback) {
+  navigator.mediaDevices.getUserMedia(mediaConstraints).then(successCallback).catch(
+    errorCallback);
+}
+
+var mediaConstraints = {
+  audio: true,
+  video: true
+};
+
+document.querySelector('#start-recording').onclick = function () {
+  this.disabled = true;
+  captureUserMedia(mediaConstraints, onMediaSuccess, onMediaError);
+
+};
+
+document.querySelector('#stop-recording').onclick = function () {
+  console.log("stop-recording-->");
+  this.disabled = true;
+  multiStreamRecorder.stop();
+  multiStreamRecorder.stream.stop();
+
+  document.querySelector('#pause-recording').disabled = true;
+  document.querySelector('#start-recording').disabled = false;
+  document.querySelector('#add-stream').disabled = true;
+
+};
+
+document.querySelector('#pause-recording').onclick = function () {
+  this.disabled = true;
+  multiStreamRecorder.pause();
+
+  document.querySelector('#resume-recording').disabled = false;
+};
+
+document.querySelector('#resume-recording').onclick = function () {
+  this.disabled = true;
+  multiStreamRecorder.resume();
+
+  document.querySelector('#pause-recording').disabled = false;
+};
+
+function storeRecordVideo() {
+  console.log("storeRecordVideo-->");
+
+  var reader = new FileReader();
+
+  reader.readAsDataURL(recordedURL);
+  reader.onloadend = function () {
+    base64data = reader.result;
+    console.log("base64data: " + base64data);
+    var eventId = localStorage.getItem("id");
+
+    var obj = {
+      "base64data": base64data,
+      "eventId": eventId
+    }
+    console.log("obj: " + JSON.stringify(obj));
+    var fd = new FormData();
+    //fd.append('fname', 'test.wav');
+    fd.append('data', recordedURL);
+    $.ajax({
+      type: 'POST',
+      url: "https://norecruits.com/record/recordVideo",
+      data: JSON.stringify(obj),
+      contentType: "application/json"
+      //     dataType: "json",
+    }).done(function (data) {
+      console.log(data);
+    });
+  }
+  //var resultedBlob = dataURItoBlob(recordedURL);
+  //var resultedBlob = dataURItoBlob(recordedURL);
+
+}

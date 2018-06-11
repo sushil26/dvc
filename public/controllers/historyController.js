@@ -42,7 +42,6 @@ app.controller('historyController', function ($scope, $rootScope, $window, httpF
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
                 $scope.eventData = data.data.data;
-
                 // ownerEvents = [];
                 for (var x = 0; x < $scope.eventData.length; x++) {
                     console.log("$scope.eventData[" + x + "]: " + JSON.stringify($scope.eventData[x]));
@@ -87,7 +86,20 @@ app.controller('historyController', function ($scope, $rootScope, $window, httpF
             backdropClass: 'show',
             controller: function ($scope, $uibModalInstance) {
                 $scope.eventDetails = $scope.events[id];
-                console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
+                var api = $scope.propertyJson.VC_eventGet + "/" + id;
+                console.log("api: " + api);
+                httpFactory.get(api).then(function (data) {
+                    var checkStatus = httpFactory.dataValidation(data);
+                    console.log("data--" + JSON.stringify(data.data));
+                    $scope.videoSrc = JSON.stringify(data.data.data);
+                    var video = document.getElementById('videoPlayer');
+                    video.src = 'data:video/webm;base64,' + data.data.data;
+                    if (checkStatus) {
+                    }
+                    else {
+                    }
+                    console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
+                })
             }
         })
         console.log("<--viewDetail");

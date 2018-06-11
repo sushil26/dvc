@@ -184,15 +184,12 @@ function checkPassword() {
 
 function saveName() {
   console.log("setName-->");
-
   var careatorFriendName = document.getElementById("userName").value;
   localStorage.setItem("careatorFriendName", careatorFriendName);
   userName = localStorage.getItem("careatorFriendName");
   careatorFriendName = true;
   document.getElementById("videoConferenceUrl").style.display = "none";
   document.getElementById("emailInvitation").style.display = "none";
-
-
 }
 
 function emailInvite() {

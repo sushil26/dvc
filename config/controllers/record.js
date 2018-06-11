@@ -284,7 +284,7 @@ module.exports.recordVideo = function (req, res) {
     //var readPath = ABSPATH + '/public/Recording/' + fileName;
     var gfs = Grid(conn.db);
     var writeStream = gfs.createWriteStream({
-        filename: 'sample.mpg'
+        filename: 'sample1.mpg'
     });
     var byte_string = videoBase64.substr(23);//The base64 has a imageURL
     var buffer = new Buffer(byte_string);   //new Buffer(b64string, 'base64');  you can use base64 encoding with creating new buffer string

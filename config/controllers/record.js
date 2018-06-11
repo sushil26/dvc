@@ -253,9 +253,9 @@ module.exports.emailInvite = function (req, res) {
 module.exports.recordVideo = function (req, res) {
     console.log("recordVideo-->");
     // var url = req.body.url;
-    console.log("req.body.base64data: " + req.body.base64data);
+    //console.log("req.body.base64data: " + req.body.base64data);
     var videoBase64 = req.body.base64data;
-    console.log("videoBase64: " + videoBase64);
+    //console.log("videoBase64: " + videoBase64);
 
     // console.log("url: " + req.files.data);
     // console.log("url: " + JSON.stringify(req.files.data));

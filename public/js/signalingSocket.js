@@ -1523,3 +1523,103 @@ function storeRecordVideo() {
   //var resultedBlob = dataURItoBlob(recordedURL);
 
 }
+
+var multiStreamRecorder;
+var audioVideoBlobs = {};
+var recordingInterval = 0;
+
+function onMediaSuccess(stream) {
+  console.log("stream-->");
+  var video = document.createElement('video');
+
+  video = mergeProps(video, {
+    controls: true,
+    muted: false
+  });
+  video.srcObject = stream;
+
+  video.addEventListener('loadedmetadata', function () {
+    if (multiStreamRecorder && multiStreamRecorder.stream) return;
+
+    multiStreamRecorder = new MultiStreamRecorder(streamArray);
+    multiStreamRecorder.stream = stream;
+    multiStreamRecorder.previewStream = function (stream) {
+      console.log("previewStream-->");
+      video.src = URL.createObjectURL(stream);
+      video.play();
+    };
+
+    multiStreamRecorder.ondataavailable = function (blob) {
+      console.log("ondataavailable-->blob: " + JSON.stringify(blob));
+      appendLink(blob);
+    };
+
+    function appendLink(blob) {
+      console.log("appendLink-->");
+      console.log("blob.data: " + blob.data);
+      console.log("blob.type: " + blob.type);
+      console.log("blob.size: " + blob.size);
+      var a = document.createElement('a');
+      a.target = '_blank';
+      a.innerHTML = 'Open Recorded ' + (blob.type == 'audio/ogg' ?
+        'Audio' : 'Video') + ' No. ' + (index++) + ' (Size: ' +
+        bytesToSize(blob.size) + ') Time Length: ' + getTimeLength(
+          timeInterval);
+
+      a.href = URL.createObjectURL(blob);
+      recordedURL = blob;
+      console.log("recordedURL: " + JSON.stringify(recordedURL));
+      container.appendChild(a);
+      container.appendChild(document.createElement('hr'));
+      storeRecordVideo();
+    }
+
+    var timeInterval = document.querySelector('#time-interval').value;
+    if (timeInterval) timeInterval = parseInt(timeInterval);
+    else timeInterval = 5 * 1000;
+
+    // get blob after specific time interval
+    multiStreamRecorder.start();
+
+    document.querySelector('#add-stream').disabled = false;
+    document.querySelector('#add-stream').onclick = function () {
+      if (!multiStreamRecorder || !multiStreamRecorder.stream) return;
+      multiStreamRecorder.addStream(multiStreamRecorder.stream);
+    };
+
+    document.querySelector('#stop-recording').disabled = false;
+    document.querySelector('#pause-recording').disabled = false;
+  }, false);
+
+  video.play();
+
+  // container.appendChild(video);
+  // container.appendChild(document.createElement('hr'));
+}
+
+function onMediaError(e) {
+  console.error('media error', e);
+}
+
+var container = document.getElementById('container');
+var index = 1;
+
+// below function via: http://goo.gl/B3ae8c
+function bytesToSize(bytes) {
+  var k = 1000;
+  var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+  if (bytes === 0) return '0 Bytes';
+  var i = parseInt(Math.floor(Math.log(bytes) / Math.log(k)), 10);
+  return (bytes / Math.pow(k, i)).toPrecision(3) + ' ' + sizes[i];
+}
+
+// below function via: http://goo.gl/6QNDcI
+function getTimeLength(milliseconds) {
+  var data = new Date(milliseconds);
+  return data.getUTCHours() + " hours, " + data.getUTCMinutes() + " minutes and " +
+    data.getUTCSeconds() + " second(s)";
+}
+
+window.onbeforeunload = function () {
+  document.querySelector('#start-recording').disabled = false;
+};

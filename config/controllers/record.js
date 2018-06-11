@@ -286,7 +286,7 @@ module.exports.recordVideo = function (req, res) {
     var gfs = Grid(conn.db);
     var writeStream = gfs.createWriteStream({
         filename: 'vcRecord.mpg',
-        eventId: req.body.eventId
+
     });
     var byte_string = videoBase64.substr(23);//The base64 has a imageURL
     var buffer = new Buffer(byte_string);   //new Buffer(b64string, 'base64');  you can use base64 encoding with creating new buffer string
@@ -305,12 +305,12 @@ module.exports.recordVideo = function (req, res) {
         }
         console.log("queryId: " + JSON.stringify(queryId));
         var setData = {
-            "vcRecordId":lastInsertedFileId 
+            "vcRecordId": lastInsertedFileId
         }
-            event.update(queryId, { $set: setData }, function (err, data) {
-                console.log("data: " + JSON.stringify(data));
-
-            })
+        console.log("setData: " + JSON.stringify(setData));
+        event.update(queryId, { $set: setData }, function (err, data) {
+            console.log("data: " + JSON.stringify(data));
+        })
     })
     responseData = {
         status: true,
@@ -341,7 +341,7 @@ module.exports.getRecordVideo = function (req, res) {
     var output = '';
     var readStream = gfs.createReadStream({
         "_id": ObjectId(req.params.id)    // this id was stored in db when inserted a video stream above
-       
+
     });
     readStream.on("data", function (chunk) {
         output += chunk;

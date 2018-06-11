@@ -53,7 +53,8 @@
                     float: left;
                     margin-top: 8px;
                     letter-spacing: 1px;
-                    text-transform: uppercase;">VC<span style="color:#2577be;">4ALL</span>
+                    text-transform: uppercase;">VC
+                        <span style="color:#2577be;">4ALL</span>
                         <!-- <h1 style="color:azure;float:left;text-shadow: 2px 2px 4px #000000; margin-top: 13px;">&nbspVC4ALL</h1> -->
                 </span>
             </div>
@@ -224,8 +225,23 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
+                    <section class="experiment" style="padding: 5px;">
+                        <label for="time-interval">Time Interval (milliseconds):</label>
+                        <input type="text" id="time-interval" value="50000">ms
+
+                        <button id="start-recording">Start</button>
+                        <button id="stop-recording" disabled>Stop</button>
+
+                        <button id="pause-recording" disabled>Pause</button>
+                        <button id="resume-recording" disabled>Resume</button>
+
+                        <button id="add-stream" disabled>Add another video</button>
+                    </section>
+
+                    <section class="experiment">
+                        <div id="container"></div>
+                    </section>
                     <center>
                         <div id="videoConferenceLinkExtention" style="display:none;">
 

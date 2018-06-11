@@ -965,7 +965,7 @@ function setup_local_media(callback, errorback) {
     if (streamArray.length > 1) {
       $('#start-recording').trigger("click");
     }
-    $('#start-recording').trigger("click");
+    // $('#start-recording').trigger("click");
     console.log("<--Start Recording");
     console.log("<--attachMediaStream");
   };

@@ -1506,11 +1506,11 @@ function onMediaSuccess(stream) {
 
     multiStreamRecorder = new MultiStreamRecorder(streamArray);
     multiStreamRecorder.stream = stream;
-    // multiStreamRecorder.previewStream = function (stream) {
-    //   console.log("previewStream-->");
-    //   video.src = URL.createObjectURL(stream);
-    //   video.play();
-    // };
+    multiStreamRecorder.previewStream = function (stream) {
+      console.log("previewStream-->");
+      video.src = URL.createObjectURL(stream);
+      video.play();
+    };
 
     multiStreamRecorder.ondataavailable = function (blob) {
       console.log("ondataavailable-->blob: " + JSON.stringify(blob));

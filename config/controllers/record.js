@@ -282,6 +282,7 @@ module.exports.recordVideo = function (req, res) {
     //     }
     //     else {
     //var readPath = ABSPATH + '/public/Recording/' + fileName;
+    console.log("req.body.eventId: "+req.body.eventId)
     var gfs = Grid(conn.db);
     var writeStream = gfs.createWriteStream({
         filename: 'vcRecord.mpg',

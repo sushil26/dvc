@@ -266,6 +266,30 @@ var ICE_SERVERS = [{
   }
 ];
 
+function disconnecSession() {
+  console.log("disconnecSession-->");
+  console.log("sessionHeader: " + sessionHeader);
+  console.log("peerNew_id: " + peerNew_id);
+  localStorage.removeItem("careatorEmail");
+  localStorage.removeItem("careatorFriendName");
+  userName = null;
+  if (streamArray.length <= 1) {
+    console.log("stop rec");
+    $('#stop-recording').trigger("click");
+  }
+  if (sessionHeader == peerNew_id) {
+    console.log("start to disconnect the session");
+    signaling_socket.emit("disconnectSession", {
+      deleteSessionId: queryLink,
+      owner: peerNew_id
+    });
+  } else {
+    console.log("You are not session creater so you cant delete session");
+  }
+
+  console.log("-->disconnecSession");
+}
+
 function momVC() {
   console.log("momVC-->");
   var mom = document.getElementById("momtext").value;
@@ -279,6 +303,7 @@ function momVC() {
       "mom": mom,
       "momCreatedBy": "teacher"
     };
+
     $.ajax({
       url: url,
       type: "POST",
@@ -293,7 +318,7 @@ function momVC() {
         } else {
           alert("refresh your page and try again");
         }
-        disconnecSession();
+        
       }
     });
   } else if (localStorage.getItem("studLoginId")) {
@@ -318,37 +343,16 @@ function momVC() {
         } else {
           alert("refresh your page and try again");
         }
-        disconnecSession();
+       
       }
     });
   }
+  disconnecSession();
 
   console.log("<--momVC");
 }
 
-function disconnecSession() {
-  console.log("disconnecSession-->");
-  console.log("sessionHeader: " + sessionHeader);
-  console.log("peerNew_id: " + peerNew_id);
-  localStorage.removeItem("careatorEmail");
-  localStorage.removeItem("careatorFriendName");
-  userName = null;
-  if (streamArray.length <= 1) {
-    console.log("stop rec");
-    $('#stop-recording').trigger("click");
-  }
-  if (sessionHeader == peerNew_id) {
-    console.log("start to disconnect the session");
-    signaling_socket.emit("disconnectSession", {
-      deleteSessionId: queryLink,
-      owner: peerNew_id
-    });
-  } else {
-    console.log("You are not session creater so you cant delete session");
-  }
 
-  console.log("-->disconnecSession");
-}
 
 function startSession(id, date) {
   console.log("startSession-->");

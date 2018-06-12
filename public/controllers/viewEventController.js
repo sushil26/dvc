@@ -15,9 +15,10 @@ app.controller('viewEventController', function ($scope, $rootScope, $state, $win
                 console.log("status true");
                 $scope.videoSrc = data.data.data;
                 var video = document.getElementById('videoPlayer');
+                video.src = 'data:video/webm;base64,' + $scope.videoSrc;
                 // $scope.videoSrc = 'data:video/webm;base64,' + $scope.videoSrc;
                 console.log("$scope.videoSrc: " + $scope.videoSrc);
-                $scope.videoSrc = $scope.videoSrc;
+                //$scope.videoSrc = $scope.videoSrc;
                 //console.log(" $scope.videoSrc: "+ $scope.videoSrc);
             }
             else {

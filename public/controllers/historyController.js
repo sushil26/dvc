@@ -105,4 +105,10 @@ app.controller('historyController', function ($scope, $rootScope, $window, httpF
         })
         console.log("<--viewDetail");
     }
+
+    //update the client with new data;
+    socket.on('eventUpdatedForHistory', function (data) {
+        console.log("data: " + JSON.stringify(data));
+        $scope.eventGet();
+    });
 })

@@ -11,9 +11,9 @@
                     <div class="panel-body bio-graph-info" style="padding: 1px;">
                         <table class="table table-sm">
                             <thead>
-                                <div class="panel-heading">
+                                <tr>
                                     Sender Details
-                                </div>
+                                </tr>
                             </thead>
                             <tbody>
                                 <tr>
@@ -61,10 +61,18 @@
                                     </td>
                                 </tr>
                             </tbody>
+
                             <thead>
-                                <div class="panel-heading">
-                                    Receiver Details
-                                </div>
+                                <tr>
+
+                                    <th>
+                                        <div class="panel-heading">
+                                            Receiver Details
+                                        </div>
+
+                                    </th>
+
+                                </tr>
                             </thead>
                             <tbody>
                                 <tr>
@@ -99,9 +107,13 @@
 
                             <!-- ng-if only for history -->
                             <thead ng-if="eventDetails.teacher_mom && eventDetails.parent_mom">
-                                <div class="panel-heading">
-                                    Minutes of Meeting
-                                </div>
+                                <tr>
+                                    <td>
+                                        <div class="panel-heading">
+                                            Minutes of Meeting
+                                        </div>
+                                    </td>
+                                </tr>
                             </thead>
                             <tbody>
                                 <tr>
@@ -115,9 +127,13 @@
                                 </tr>
                             </tbody>
                             <thead>
-                                <div class="panel-heading">
-                                    VC Record
-                                </div>
+                                <tr>
+                                    <th>
+                                        <div class="panel-heading">
+                                            VC Record
+                                        </div>
+                                    </th>
+                                </tr>
                             </thead>
                             <tbody>
                                 <tr>
@@ -125,7 +141,7 @@
                                         Video Conference
                                     </td>
                                     <td>
-                                        <video id="videoPlayer" controls>
+                                        <video id="videoPlayer" autoplay='true' controls>
                                             <source type="video/mp4"> Your browser does not support the video tag.
                                         </video>
                                     </td>

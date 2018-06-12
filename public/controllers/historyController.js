@@ -105,8 +105,8 @@ app.controller('historyController', function ($scope, $rootScope, $window, httpF
             backdropClass: 'show',
             controller: function ($scope, $uibModalInstance) {
                 $scope.eventDetails = $scope.events[indexId];
-                var video = document.getElementById('videoPlayer');
-                video.src = 'data:video/webm;base64,' + $scope.videoSrc;
+               // var video = document.getElementById('videoPlayer');
+               $scope.videoSrc = 'data:video/webm;base64,' + $scope.videoSrc;
                 // $scope.videoSrc =  $scope.videoSrc;
                 //console.log("$scope.events["+indexId+"]: "+JSON.stringify($scope.events[indexId]));
 

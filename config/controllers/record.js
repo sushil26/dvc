@@ -308,10 +308,7 @@ module.exports.recordVideo = function (req, res) {
             "vcRecordId": lastInsertedFileId
         }
         console.log("setData: " + JSON.stringify(setData));
-        event.find(queryId).toArray( function (err, data) {
-            console.log("find data: " + JSON.stringify(data));
-        })
-        event.update(queryId, { $set: setData }, function (err, data) {
+              event.update(queryId, { $set: {"vcRecordId": lastInsertedFileId} }, function (err, data) {
             console.log("data: " + JSON.stringify(data));
         })
     })

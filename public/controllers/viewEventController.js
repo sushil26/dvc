@@ -2,24 +2,6 @@ app.controller('viewEventController', function ($scope, $rootScope, $state, $win
     console.log("viewUserController==>");
     var id = $state.params.id;
 
-    $scope.getEventDetails = function (id) {
-        console.log("getTeacherData-->");
-        var api = $scope.propertyJson.VC_getEventById + "/" + id;
-        //var api = "http://localhost:5000/vc/eventGet"+ "/" + id;;
-        httpFactory.get(api).then(function (data) {
-            var checkStatus = httpFactory.dataValidation(data);
-            console.log("data--" + JSON.stringify(data.data));
-            if (checkStatus) {
-                $scope.eventDetails = data.data.data[0];
-                console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
-            }
-            else {
-                //alert("Event get Failed");
-            }
-        })
-        console.log("<--getTeacherData");
-    }
-    $scope.getEventDetails(id);
 
     $scope.getVideo = function () {
         console.log("getVideo-->");
@@ -46,4 +28,26 @@ app.controller('viewEventController', function ($scope, $rootScope, $state, $win
         })
     }
 
+
+    $scope.getEventDetails = function (id) {
+        console.log("getTeacherData-->");
+        var api = $scope.propertyJson.VC_getEventById + "/" + id;
+        //var api = "http://localhost:5000/vc/eventGet"+ "/" + id;;
+        httpFactory.get(api).then(function (data) {
+            var checkStatus = httpFactory.dataValidation(data);
+            console.log("data--" + JSON.stringify(data.data));
+            if (checkStatus) {
+                $scope.eventDetails = data.data.data[0];
+                console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
+                $scope.getVideo();
+            }
+            else {
+                //alert("Event get Failed");
+            }
+        })
+        console.log("<--getTeacherData");
+    }
+    $scope.getEventDetails(id);
+
+  
 })

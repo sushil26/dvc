@@ -22,7 +22,7 @@ module.exports = function (app) {
     app.post('/record/emailInvite', record.emailInvite);
     app.post('/record/recordVideo', record.recordVideo);
     app.get('/record/getRecordVideo/:id', record.getRecordVideo);
-    app.get('/record/getVideo', record.getRecordVideo);
+    app.get('/record/getVideo/:id', record.getRecordVideo);
 
     app.post('/vc/schoolLogo', image.upload);
     app.post('/vc/profilePicupload', image.profilePicupload);

@@ -78,22 +78,22 @@ app.controller('historyController', function ($scope, $rootScope, $window, httpF
             }
         })
     }
+
     // $scope.eventGet();
     $scope.viewDetail = function (id) {
         console.log("viewDetail-->");
         console.log("id: " + id);
         var indexId = id;
         var id = $scope.events[indexId].vcRecordId;
-        var api = $scope.propertyJson.VC_getRecordVideo +"/"+ id;
+        var api = $scope.propertyJson.VC_getVideo + "/" + id;
         console.log("api: " + api);
         httpFactory.get(api).then(function (data) {
             var checkStatus = httpFactory.dataValidation(data);
-             console.log("data--" + JSON.stringify(data));
-            // $scope.videoSrc = JSON.stringify(data.data.data);
-            // var video = document.getElementById('videoPlayer');
-            // video.src = 'data:video/webm;base64,' + data.data.data;
+            console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
-               
+                // $scope.videoSrc = JSON.stringify(data.data.data);
+                // var video = document.getElementById('videoPlayer');
+                // video.src = 'data:video/webm;base64,' + data.data.data;
             }
             else {
             }

@@ -82,6 +82,7 @@ app.controller('historyController', function ($scope, $rootScope, $window, httpF
     $scope.viewDetail = function (id) {
         console.log("viewDetail-->");
         console.log("id: " + id);
+        var indexId = id;
         var eClicked = $uibModal.open({
             scope: $scope,
             templateUrl: '/html/templates/eventDetails.html',

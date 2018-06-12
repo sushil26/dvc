@@ -82,6 +82,7 @@ app.controller('historyController', function ($scope, $rootScope, $state, $windo
     // $scope.eventGet();
     $scope.viewDetail = function (id) {
         console.log("viewDetail-->");
+        console.log("id: "+id);
         $state.go('dashboard.viewEvent', { 'id': id});
         // console.log("id: " + id);
         // var indexId = id;

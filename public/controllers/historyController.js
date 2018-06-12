@@ -90,12 +90,11 @@ app.controller('historyController', function ($scope, $rootScope, $window, httpF
         httpFactory.get(api).then(function (data) {
             var checkStatus = httpFactory.dataValidation(data);
             console.log("data--" + JSON.stringify(data.data));
-            $scope.videoSrc = JSON.stringify(data.data);
             if (checkStatus) {
-                
-              
+                $scope.videoSrc = JSON.stringify(data.data);
             }
             else {
+                console.log("data: "+JSON.stringify(data));
             }
             // console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
         })
@@ -106,9 +105,9 @@ app.controller('historyController', function ($scope, $rootScope, $window, httpF
             backdropClass: 'show',
             controller: function ($scope, $uibModalInstance) {
                 $scope.eventDetails = $scope.events[indexId];
-               // var video = document.getElementById('videoPlayer');
-               $scope.videoSrc = 'data:video/webm;base64,' + $scope.videoSrc;
-               console.log("$scope.videoSrc: "+$scope.videoSrc);
+                // var video = document.getElementById('videoPlayer');
+                $scope.videoSrc = 'data:video/webm;base64,' + $scope.videoSrc;
+                console.log("$scope.videoSrc: " + $scope.videoSrc);
                 // $scope.videoSrc =  $scope.videoSrc;
                 //console.log("$scope.events["+indexId+"]: "+JSON.stringify($scope.events[indexId]));
 

@@ -356,7 +356,7 @@ module.exports.getRecordVideo = function (req, res) {
             message: "get successful",
             data: output
         };
-        res.status(400).send(responseData);
+        res.status(200).send(responseData);
         //console.log(output);
 
     });

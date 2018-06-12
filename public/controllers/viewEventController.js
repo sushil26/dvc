@@ -11,7 +11,8 @@ app.controller('viewEventController', function ($scope, $rootScope, $state, $win
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
                 $scope.eventDetails = data.data.data[0];
-                console.log("$scope.eventDetails: "+ JSON.stringify($scope.eventDetails));            }
+                console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
+            }
             else {
                 //alert("Event get Failed");
             }
@@ -19,4 +20,30 @@ app.controller('viewEventController', function ($scope, $rootScope, $state, $win
         console.log("<--getTeacherData");
     }
     $scope.getEventDetails(id);
+
+    $scope.getVideo = function () {
+        console.log("getVideo-->");
+        var id = $scope.eventDetails.vcRecordId;
+        var api = $scope.propertyJson.VC_getRecordVideo + "/" + id;
+        console.log("api: " + api);
+        httpFactory.get(api).then(function (data) {
+            var checkStatus = httpFactory.dataValidation(data);
+            console.log("data--" + JSON.stringify(data.data));
+            if (checkStatus) {
+                console.log("status true");
+                $scope.videoSrc = data.data.data;
+                var video = document.getElementById('videoPlayer');
+                // $scope.videoSrc = 'data:video/webm;base64,' + $scope.videoSrc;
+                console.log("$scope.videoSrc: " + $scope.videoSrc);
+                $scope.videoSrc = $scope.videoSrc;
+                //console.log(" $scope.videoSrc: "+ $scope.videoSrc);
+            }
+            else {
+                console.log("Sorry: status false");
+                console.log("data: " + JSON.stringify(data));
+            }
+            // console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
+        })
+    }
+
 })

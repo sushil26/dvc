@@ -66,6 +66,9 @@ app.controller('historyController', function ($scope, $rootScope, $window, httpF
                         "receiverMN": $scope.eventData[x].receiverMN,
                         "remoteCalendarId": $scope.eventData[x].remoteCalendarId
                     }
+                    if($scope.eventData[x].vcRecordId){
+                        obj.vcRecordId = $scope.eventData[x].vcRecordId;
+                    }
                     console.log(" obj" + JSON.stringify(obj))
                     $scope.events.push(obj);
                 }
@@ -87,6 +90,7 @@ app.controller('historyController', function ($scope, $rootScope, $window, httpF
             controller: function ($scope, $uibModalInstance) {
                 $scope.eventDetails = $scope.events[id];
                 var id = $scope.events[id].vcRecordId;
+                // console.log("$scope.eventDetails: "+$scope.eventDetails);
                 var api = 'record/getRecordVideo/' + id;
                 console.log("api: " + api);
                 httpFactory.get(api).then(function (data) {

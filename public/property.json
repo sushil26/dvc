@@ -60,5 +60,6 @@
 "VC_updateProfilePic": "vc/updateProfilePic",
 "VC_captureImgSend": "vc/captureImgSend",
 "VC_getVideo": "record/getVideo",
+"VC_getRecordVideo": "record/getRecordVideo",
 "VC_csvTest": "vc/csvTest"
 }

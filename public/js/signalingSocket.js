@@ -1501,7 +1501,7 @@ function storeRecordVideo() {
   reader.onloadend = function () {
     base64data = reader.result;
     console.log("base64data: " + base64data);
-    var eventId = localStorage.getItem("id");
+    var eventId = localStorage.getItem("eventId");
     console.log("eventId: " + eventId);
     var obj = {
       "eventId": eventId,

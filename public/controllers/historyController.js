@@ -85,7 +85,7 @@ app.controller('historyController', function ($scope, $rootScope, $window, httpF
         console.log("id: " + id);
         var indexId = id;
         var id = $scope.events[indexId].vcRecordId;
-        var api = $scope.propertyJson.VC_getVideo + "/" + id;
+        var api = $scope.propertyJson.VC_getRecordVideo + "/" + id;
         console.log("api: " + api);
         httpFactory.get(api).then(function (data) {
             var checkStatus = httpFactory.dataValidation(data);

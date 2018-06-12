@@ -85,20 +85,20 @@ app.controller('historyController', function ($scope, $rootScope, $window, httpF
         var indexId = id;
         var id = $scope.events[indexId].vcRecordId;
         var api = $scope.propertyJson.VC_getRecordVideo +"/"+ id;
-        console.log("api: " + api);
-        httpFactory.get(api).then(function (data) {
-            var checkStatus = httpFactory.dataValidation(data);
-             console.log("data--" + JSON.stringify(data));
-            // $scope.videoSrc = JSON.stringify(data.data.data);
-            // var video = document.getElementById('videoPlayer');
-            // video.src = 'data:video/webm;base64,' + data.data.data;
-            if (checkStatus) {
+        // console.log("api: " + api);
+        // httpFactory.get(api).then(function (data) {
+        //     var checkStatus = httpFactory.dataValidation(data);
+        //      console.log("data--" + JSON.stringify(data));
+        //     // $scope.videoSrc = JSON.stringify(data.data.data);
+        //     // var video = document.getElementById('videoPlayer');
+        //     // video.src = 'data:video/webm;base64,' + data.data.data;
+        //     if (checkStatus) {
                 
-            }
-            else {
-            }
-            console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
-        })
+        //     }
+        //     else {
+        //     }
+        //     console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
+        // })
         // var eClicked = $uibModal.open({
         //     scope: $scope,
         //     templateUrl: '/html/templates/eventDetails.html',

@@ -10,7 +10,7 @@ app.controller('viewEventController', function ($scope, $rootScope, $state, $win
             var checkStatus = httpFactory.dataValidation(data);
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
-                $scope.eventData = data.data.data;
+                $scope.eventDetails = data.data.data;
                 console.log("$scope.eventData");
             }
             else {

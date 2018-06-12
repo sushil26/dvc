@@ -93,6 +93,7 @@ app.controller('historyController', function ($scope, $rootScope, $window, httpF
             if (checkStatus) {
                 console.log("status true");
                 $scope.videoSrc = JSON.stringify(data.data);
+                console.log(" $scope.videoSrc: "+ $scope.videoSrc);
             }
             else {
                 console.log("Sorry: status false");

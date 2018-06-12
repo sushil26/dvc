@@ -91,9 +91,11 @@ app.controller('historyController', function ($scope, $rootScope, $window, httpF
             var checkStatus = httpFactory.dataValidation(data);
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
+                console.log("status true");
                 $scope.videoSrc = JSON.stringify(data.data);
             }
             else {
+                console.log("Sorry: status false");
                 console.log("data: "+JSON.stringify(data));
             }
             // console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));

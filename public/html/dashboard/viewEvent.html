@@ -11,13 +11,9 @@
                     <div class="panel-body bio-graph-info" style="padding: 1px;">
                         <table class="table table-sm">
                             <thead>
-                                <tr>
-                                    <th>
-                                        <div class="panel-heading">
-                                            Sender Details
-                                        </div>
-                                    </th>
-                                </tr>
+                                <div class="panel-heading">
+                                    Sender Details
+                                </div>
                             </thead>
                             <tbody>
                                 <tr>
@@ -61,22 +57,14 @@
                                     </td>
                                     <td>
                                         <div style="color:green">{{eventDetails.startAt | date:'h:mm a'}}-{{eventDetails.endAt | date:'h:mm a'}}
-                                            </div>
+                                        </div>
                                     </td>
                                 </tr>
                             </tbody>
-
                             <thead>
-                                <tr>
-
-                                    <th>
-                                        <div class="panel-heading">
-                                            Receiver Details
-                                        </div>
-
-                                    </th>
-
-                                </tr>
+                                <div class="panel-heading">
+                                    Receiver Details
+                                </div>
                             </thead>
                             <tbody>
                                 <tr>
@@ -111,13 +99,9 @@
 
                             <!-- ng-if only for history -->
                             <thead ng-if="eventDetails.teacher_mom && eventDetails.parent_mom">
-                                <tr>
-                                    <td>
-                                        <div class="panel-heading">
-                                            Minutes of Meeting
-                                        </div>
-                                    </td>
-                                </tr>
+                                <div class="panel-heading">
+                                    Minutes of Meeting
+                                </div>
                             </thead>
                             <tbody>
                                 <tr>
@@ -131,13 +115,9 @@
                                 </tr>
                             </tbody>
                             <thead>
-                                <tr>
-                                    <th>
-                                        <div class="panel-heading">
-                                            VC Record
-                                        </div>
-                                    </th>
-                                </tr>
+                                <div class="panel-heading">
+                                    VC Record
+                                </div>
                             </thead>
                             <tbody>
                                 <tr>
@@ -146,7 +126,7 @@
                                     </td>
                                     <td>
                                         <video id="videoPlayer" autoplay='true' controls>
-                                            <source  type="video/mp4"> Your browser does not support the video tag.
+                                            <source type="video/mp4"> Your browser does not support the video tag.
                                         </video>
                                     </td>
                                 </tr>

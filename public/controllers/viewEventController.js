@@ -11,8 +11,7 @@ app.controller('viewEventController', function ($scope, $rootScope, $state, $win
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
                 $scope.eventDetails = data.data.data;
-                console.log("$scope.eventData");
-            }
+                console.log("$scope.eventDetails: "+ JSON.stringify($scope.eventDetails));            }
             else {
                 //alert("Event get Failed");
             }

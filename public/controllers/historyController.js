@@ -80,42 +80,43 @@ app.controller('historyController', function ($scope, $rootScope, $window, httpF
     }
 
     // $scope.eventGet();
-    $scope.viewDetail = function (id) {
+    $scope.viewDetail = function (Id) {
         console.log("viewDetail-->");
-        console.log("id: " + id);
-        var indexId = id;
-        var id = $scope.events[indexId].vcRecordId;
-        var api = $scope.propertyJson.VC_getRecordVideo + "/" + id;
-        console.log("api: " + api);
-        httpFactory.get(api).then(function (data) {
-            var checkStatus = httpFactory.dataValidation(data);
-            console.log("data--" + JSON.stringify(data.data));
-            if (checkStatus) {
-                console.log("status true");
-                $scope.videoSrc = data.data.data;
-                console.log(" $scope.videoSrc: "+ $scope.videoSrc);
-            }
-            else {
-                console.log("Sorry: status false");
-                console.log("data: "+JSON.stringify(data));
-            }
-            // console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
-        })
-        var eClicked = $uibModal.open({
-            scope: $scope,
-            templateUrl: '/html/templates/eventDetails.html',
-            windowClass: 'show',
-            backdropClass: 'show',
-            controller: function ($scope, $uibModalInstance) {
-                $scope.eventDetails = $scope.events[indexId];
-                // var video = document.getElementById('videoPlayer');
-                $scope.videoSrc = 'data:video/webm;base64,' + $scope.videoSrc;
-                console.log("$scope.videoSrc: " + $scope.videoSrc);
-                // $scope.videoSrc =  $scope.videoSrc;
-                //console.log("$scope.events["+indexId+"]: "+JSON.stringify($scope.events[indexId]));
+        $state.go('dashboard.viewEvent', { 'id': id});
+        // console.log("id: " + id);
+        // var indexId = id;
+        // var id = $scope.events[indexId].vcRecordId;
+        // var api = $scope.propertyJson.VC_getRecordVideo + "/" + id;
+        // console.log("api: " + api);
+        // httpFactory.get(api).then(function (data) {
+        //     var checkStatus = httpFactory.dataValidation(data);
+        //     console.log("data--" + JSON.stringify(data.data));
+        //     if (checkStatus) {
+        //         console.log("status true");
+        //         $scope.videoSrc = data.data.data;
+        //         //console.log(" $scope.videoSrc: "+ $scope.videoSrc);
+        //     }
+        //     else {
+        //         console.log("Sorry: status false");
+        //         console.log("data: "+JSON.stringify(data));
+        //     }
+        //     // console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
+        // })
+        // var eClicked = $uibModal.open({
+        //     scope: $scope,
+        //     templateUrl: '/html/templates/eventDetails.html',
+        //     windowClass: 'show',
+        //     backdropClass: 'show',
+        //     controller: function ($scope, $uibModalInstance) {
+        //         $scope.eventDetails = $scope.events[indexId];
+        //         // var video = document.getElementById('videoPlayer');
+        //         $scope.videoSrc = 'data:video/webm;base64,' + $scope.videoSrc;
+        //         console.log("$scope.videoSrc: " + $scope.videoSrc);
+        //         // $scope.videoSrc =  $scope.videoSrc;
+        //         //console.log("$scope.events["+indexId+"]: "+JSON.stringify($scope.events[indexId]));
 
-            }
-        })
+        //     }
+        // })
         console.log("<--viewDetail");
     }
 

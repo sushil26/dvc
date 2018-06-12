@@ -91,7 +91,7 @@ app.controller('historyController', function ($scope, $rootScope, $window, httpF
             var checkStatus = httpFactory.dataValidation(data);
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
-                $scope.videoSrc = JSON.stringify(data.data.data);
+                $scope.videoSrc = JSON.stringify(data.data);
                
             }
             else {
@@ -106,7 +106,7 @@ app.controller('historyController', function ($scope, $rootScope, $window, httpF
             controller: function ($scope, $uibModalInstance) {
                 $scope.eventDetails = $scope.events[indexId];
                 var video = document.getElementById('videoPlayer');
-                video.src = 'data:video/webm;base64,' + data.data.data;
+                video.src = 'data:video/webm;base64,' + $scope.videoSrc;
                 // $scope.videoSrc =  $scope.videoSrc;
                 //console.log("$scope.events["+indexId+"]: "+JSON.stringify($scope.events[indexId]));
 

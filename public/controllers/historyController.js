@@ -92,7 +92,7 @@ app.controller('historyController', function ($scope, $rootScope, $window, httpF
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
                 $scope.videoSrc = JSON.stringify(data.data);
-               console.log("$scope.videoSrc: "+$scope.videoSrc);
+              
             }
             else {
             }
@@ -107,6 +107,7 @@ app.controller('historyController', function ($scope, $rootScope, $window, httpF
                 $scope.eventDetails = $scope.events[indexId];
                // var video = document.getElementById('videoPlayer');
                $scope.videoSrc = 'data:video/webm;base64,' + $scope.videoSrc;
+               console.log("$scope.videoSrc: "+$scope.videoSrc);
                 // $scope.videoSrc =  $scope.videoSrc;
                 //console.log("$scope.events["+indexId+"]: "+JSON.stringify($scope.events[indexId]));
 

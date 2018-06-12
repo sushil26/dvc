@@ -88,12 +88,12 @@ app.controller('historyController', function ($scope, $rootScope, $window, httpF
         console.log("api: " + api);
         httpFactory.get(api).then(function (data) {
             var checkStatus = httpFactory.dataValidation(data);
-            //  console.log("data--" + JSON.stringify(data));
+             console.log("data--" + JSON.stringify(data));
             // $scope.videoSrc = JSON.stringify(data.data.data);
             // var video = document.getElementById('videoPlayer');
             // video.src = 'data:video/webm;base64,' + data.data.data;
             if (checkStatus) {
-                
+               
             }
             else {
             }

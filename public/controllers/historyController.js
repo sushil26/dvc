@@ -66,7 +66,7 @@ app.controller('historyController', function ($scope, $rootScope, $window, httpF
                         "receiverMN": $scope.eventData[x].receiverMN,
                         "remoteCalendarId": $scope.eventData[x].remoteCalendarId
                     }
-                    if($scope.eventData[x].vcRecordId){
+                    if ($scope.eventData[x].vcRecordId) {
                         obj.vcRecordId = $scope.eventData[x].vcRecordId;
                     }
                     console.log(" obj" + JSON.stringify(obj))
@@ -83,6 +83,21 @@ app.controller('historyController', function ($scope, $rootScope, $window, httpF
         console.log("viewDetail-->");
         console.log("id: " + id);
         var indexId = id;
+        var id = $scope.events[indexId].vcRecordId;
+        var api = 'record/getRecordVideo/' + id;
+        console.log("api: " + api);
+        httpFactory.get(api).then(function (data) {
+            var checkStatus = httpFactory.dataValidation(data);
+            console.log("data--" + JSON.stringify(data.data));
+            $scope.videoSrc = JSON.stringify(data.data.data);
+            var video = document.getElementById('videoPlayer');
+            video.src = 'data:video/webm;base64,' + data.data.data;
+            if (checkStatus) {
+            }
+            else {
+            }
+            console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
+        })
         var eClicked = $uibModal.open({
             scope: $scope,
             templateUrl: '/html/templates/eventDetails.html',
@@ -90,23 +105,9 @@ app.controller('historyController', function ($scope, $rootScope, $window, httpF
             backdropClass: 'show',
             controller: function ($scope, $uibModalInstance) {
                 $scope.eventDetails = $scope.events[indexId];
+                // $scope.videoSrc =  $scope.videoSrc;
                 //console.log("$scope.events["+indexId+"]: "+JSON.stringify($scope.events[indexId]));
-                var id = $scope.events[indexId].vcRecordId;
-               
-                var api = 'record/getRecordVideo/' + id;
-                console.log("api: " + api);
-                httpFactory.get(api).then(function (data) {
-                    var checkStatus = httpFactory.dataValidation(data);
-                    console.log("data--" + JSON.stringify(data.data));
-                    $scope.videoSrc = JSON.stringify(data.data.data);
-                    var video = document.getElementById('videoPlayer');
-                    video.src = 'data:video/webm;base64,' + data.data.data;
-                    if (checkStatus) {
-                    }
-                    else {
-                    }
-                    console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
-                })
+
             }
         })
         console.log("<--viewDetail");

@@ -90,8 +90,9 @@ app.controller('historyController', function ($scope, $rootScope, $window, httpF
         httpFactory.get(api).then(function (data) {
             var checkStatus = httpFactory.dataValidation(data);
             console.log("data--" + JSON.stringify(data.data));
+            $scope.videoSrc = JSON.stringify(data.data);
             if (checkStatus) {
-                $scope.videoSrc = JSON.stringify(data.data);
+                
               
             }
             else {

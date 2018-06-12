@@ -88,28 +88,29 @@ app.controller('historyController', function ($scope, $rootScope, $window, httpF
         console.log("api: " + api);
         httpFactory.get(api).then(function (data) {
             var checkStatus = httpFactory.dataValidation(data);
-            console.log("data--" + JSON.stringify(data.data));
-            $scope.videoSrc = JSON.stringify(data.data.data);
-            var video = document.getElementById('videoPlayer');
-            video.src = 'data:video/webm;base64,' + data.data.data;
+             console.log("data--" + JSON.stringify(data));
+            // $scope.videoSrc = JSON.stringify(data.data.data);
+            // var video = document.getElementById('videoPlayer');
+            // video.src = 'data:video/webm;base64,' + data.data.data;
             if (checkStatus) {
+                
             }
             else {
             }
             console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
         })
-        var eClicked = $uibModal.open({
-            scope: $scope,
-            templateUrl: '/html/templates/eventDetails.html',
-            windowClass: 'show',
-            backdropClass: 'show',
-            controller: function ($scope, $uibModalInstance) {
-                $scope.eventDetails = $scope.events[indexId];
-                // $scope.videoSrc =  $scope.videoSrc;
-                //console.log("$scope.events["+indexId+"]: "+JSON.stringify($scope.events[indexId]));
+        // var eClicked = $uibModal.open({
+        //     scope: $scope,
+        //     templateUrl: '/html/templates/eventDetails.html',
+        //     windowClass: 'show',
+        //     backdropClass: 'show',
+        //     controller: function ($scope, $uibModalInstance) {
+        //         $scope.eventDetails = $scope.events[indexId];
+        //         // $scope.videoSrc =  $scope.videoSrc;
+        //         //console.log("$scope.events["+indexId+"]: "+JSON.stringify($scope.events[indexId]));
 
-            }
-        })
+        //     }
+        // })
         console.log("<--viewDetail");
     }
 

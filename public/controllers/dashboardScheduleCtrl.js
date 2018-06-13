@@ -619,11 +619,12 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $state, $r
           console.log("obj: " + JSON.stringify(obj));
           httpFactory.post(api, obj).then(function (data) {
             var checkStatus = httpFactory.dataValidation(data);
+            $scope.isEventSend_funCalled = false;
             //console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
               // console.log("data" + JSON.stringify(data.data))
               // $window.location.href = $scope.propertyJson.R082;
-
+              
               var loginAlert = $uibModal.open({
                 scope: $scope,
                 templateUrl: '/html/templates/dashboardsuccess.html',

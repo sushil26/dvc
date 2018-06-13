@@ -568,8 +568,9 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $state, $r
     console.log("eventSend-->");
     var SIGNALING_SERVER = "https://norecruits.com";
     //var SIGNALING_SERVER = "http://localhost:5000";
-    var queryLink = null;
+    
     var peerNew_id = null;
+    // var queryLink = null;
     var url;
     signaling_socket = io(SIGNALING_SERVER);
     signaling_socket.on('connect', function () {
@@ -578,7 +579,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $state, $r
       signaling_socket.on('message', function (config) {
         console.log("signaling_socket message-->");
 
-        queryLink = config.queryId;
+        // queryLink = config.queryId;
         peerNew_id = config.peer_id;
 
         url = "https://norecruits.com/client/" + peerNew_id + "/" + $scope.urlDate;

@@ -1428,8 +1428,8 @@ document.querySelector('#start-recording').onclick = function () {
 document.querySelector('#stop-recording').onclick = function () {
   console.log("stop-recording-->");
   this.disabled = true;
-  // multiStreamRecorder.stop();
-  // multiStreamRecorder.stream.stop();
+  multiStreamRecorder.stop();
+  multiStreamRecorder.stream.stop();
 
   document.querySelector('#pause-recording').disabled = true;
   document.querySelector('#start-recording').disabled = false;
@@ -1482,9 +1482,6 @@ function storeRecordVideo() {
   //var resultedBlob = dataURItoBlob(recordedURL);
 
 }
-
-
-
 
 var multiStreamRecorder;
 var audioVideoBlobs = {};

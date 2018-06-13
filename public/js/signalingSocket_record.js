@@ -1429,12 +1429,11 @@ document.querySelector('#stop-recording').onclick = function () {
   console.log("stop-recording-->");
   this.disabled = true;
   multiStreamRecorder.stop();
-  multiStreamRecorder.stream.stop();
+  // multiStreamRecorder.stream.stop();
 
   document.querySelector('#pause-recording').disabled = true;
   document.querySelector('#start-recording').disabled = false;
   document.querySelector('#add-stream').disabled = true;
-  appendLink();
 
 };
 
@@ -1484,25 +1483,6 @@ function storeRecordVideo() {
 
 }
 
-function appendLink(blob) {
-  console.log("appendLink-->");
-  console.log("blob.data: " + blob.data);
-  console.log("blob.type: " + blob.type);
-  console.log("blob.size: " + blob.size);
-  var a = document.createElement('a');
-  a.target = '_blank';
-  a.innerHTML = 'Open Recorded ' + (blob.type == 'audio/ogg' ?
-    'Audio' : 'Video') + ' No. ' + (index++) + ' (Size: ' +
-    bytesToSize(blob.size) + ') Time Length: ' + getTimeLength(
-      timeInterval);
-
-  a.href = URL.createObjectURL(blob);
-  recordedURL = blob;
-  console.log("recordedURL: " + JSON.stringify(recordedURL));
-  container.appendChild(a);
-  container.appendChild(document.createElement('hr'));
-  storeRecordVideo();
-}
 
 
 
@@ -1513,7 +1493,7 @@ var recordingInterval = 0;
 function onMediaSuccess(stream) {
   console.log("stream-->");
   var video = document.createElement('video');
-  var chunks = [];
+
   video = mergeProps(video, {
     controls: true,
     muted: false
@@ -1533,16 +1513,33 @@ function onMediaSuccess(stream) {
 
     multiStreamRecorder.ondataavailable = function (blob) {
       console.log("ondataavailable-->blob: " + JSON.stringify(blob));
-      chunks.push(blob);
-      //appendLink(blob);
+      appendLink(blob);
     };
 
-   
+    function appendLink(blob) {
+      console.log("appendLink-->");
+      console.log("blob.data: " + blob.data);
+      console.log("blob.type: " + blob.type);
+      console.log("blob.size: " + blob.size);
+      var a = document.createElement('a');
+      a.target = '_blank';
+      a.innerHTML = 'Open Recorded ' + (blob.type == 'audio/ogg' ?
+        'Audio' : 'Video') + ' No. ' + (index++) + ' (Size: ' +
+        bytesToSize(blob.size) + ') Time Length: ' + getTimeLength(
+          timeInterval);
+
+      a.href = URL.createObjectURL(blob);
+      recordedURL = blob;
+      console.log("recordedURL: " + JSON.stringify(recordedURL));
+      container.appendChild(a);
+      container.appendChild(document.createElement('hr'));
+      storeRecordVideo();
+    }
 
     // var timeInterval = document.querySelector('#time-interval').value;
     // if (timeInterval) timeInterval = parseInt(timeInterval);
     //else timeInterval = 5 * 1000;
-    timeInterval = 40 * 60 * 1000; /* ### Note: 40 is event duration it can vary dependa on school  ### */
+    timeInterval = 40 *60*1000; /* ### Note: 40 is event duration it can vary dependa on school  ### */
 
     // get blob after specific time interval
     multiStreamRecorder.start();

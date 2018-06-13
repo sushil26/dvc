@@ -571,7 +571,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $state, $r
     var queryLink = null;
     var peerNew_id = null;
     var url;
-    // signaling_socket = io(SIGNALING_SERVER);
+    signaling_socket = io(SIGNALING_SERVER);
     socket.on('connect', function () {
       console.log("signaling_socket connect-->");
 

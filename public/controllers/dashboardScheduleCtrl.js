@@ -571,7 +571,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $state, $r
     var queryLink = null;
     var peerNew_id = null;
     var url;
-
+    $scope.getSocketUrlFromServer();
     if ($scope.url) {
       var api = $scope.propertyJson.VC_eventSend;
       //var api = "http://localhost:5000/vc/eventSend";

@@ -564,20 +564,20 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $state, $r
 
   }
 
-  
-    // signaling_socket = io(SIGNALING_SERVER);
-    socket.on('connect', function () {
-      console.log("signaling_socket connect-->");
 
-      socket.on('message', function (config) {
-        console.log("signaling_socket message-->");
-        $scope.eventSend = function (res, name, id, studUserId, email, senderMN, receiverName, receiverId, receiverMN, stud_id, stud_cs, stud_name) {
-          console.log("eventSend-->");
-          var SIGNALING_SERVER = "https://norecruits.com";
-          //var SIGNALING_SERVER = "http://localhost:5000";
-          var queryLink = null;
-          var peerNew_id = null;
-          var url;
+  // signaling_socket = io(SIGNALING_SERVER);
+  socket.on('connect', function () {
+    console.log("signaling_socket connect-->");
+
+    socket.on('message', function (config) {
+      console.log("signaling_socket message-->");
+      $scope.eventSend = function (res, name, id, studUserId, email, senderMN, receiverName, receiverId, receiverMN, stud_id, stud_cs, stud_name) {
+        console.log("eventSend-->");
+        var SIGNALING_SERVER = "https://norecruits.com";
+        //var SIGNALING_SERVER = "http://localhost:5000";
+        var queryLink = null;
+        var peerNew_id = null;
+        var url;
 
         queryLink = config.queryId;
         peerNew_id = config.peer_id;
@@ -679,8 +679,8 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $state, $r
         console.log("<--eventSend");
         // var url = document.getElementById('linkToShare').innerHTML;
       }
-      })
-     })
+    })
+  })
 
 
   $scope.timeTableForEventBook = function (day, id) {

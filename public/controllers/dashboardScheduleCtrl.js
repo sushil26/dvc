@@ -572,10 +572,9 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $state, $r
     var peerNew_id = null;
     var url;
     getSocketUrlFromServer(function () {
+      console.log("Back to function call-->");
       var api = $scope.propertyJson.VC_eventSend;
-      //var api = "http://localhost:5000/vc/eventSend";
       console.log("api: " + api);
-      // var email = document.getElementById('eventEmails').value;
       var obj = {
         "userId": $scope.userData.id,
         "senderLoginType": $scope.userData.loginType,

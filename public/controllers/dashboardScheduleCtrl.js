@@ -575,7 +575,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $state, $r
     // signaling_socket.on('connect', function () {
       console.log("signaling_socket connect-->");
 
-      signaling_socket.on('message', function (config) {
+      socket.on('message', function (config) {
         console.log("signaling_socket message-->");
 
         queryLink = config.queryId;

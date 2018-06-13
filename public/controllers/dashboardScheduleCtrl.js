@@ -668,8 +668,9 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $state, $r
     // var url = document.getElementById('linkToShare').innerHTML;
   }
 
-  function getSocketUrlFromServer(callback) {
+  function getSocketUrlFromServer() {
     console.log("getSocketUrlFromServer-->");
+    var dfd = $q.defer();
     var SIGNALING_SERVER = "https://norecruits.com";
     signaling_socket = io(SIGNALING_SERVER);
     signaling_socket.on('connect', function () {
@@ -682,9 +683,11 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $state, $r
         peerNew_id = config.peer_id;
 
         $scope.url = "https://norecruits.com/client/" + peerNew_id + "/" + $scope.urlDate;
+        dfd.resolve($scope.url);
       })
     })
-    callback();
+    return dfd.promise;
+    // callback();
   }
   $scope.timeTableForEventBook = function (day, id) {
     console.log("timeTableForEventBook-->");

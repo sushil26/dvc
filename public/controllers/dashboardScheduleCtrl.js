@@ -563,121 +563,118 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $state, $r
 
 
   }
-  $scope.isEventSend_funCalled = false;
+
   $scope.eventSend = function (res, name, id, studUserId, email, senderMN, receiverName, receiverId, receiverMN, stud_id, stud_cs, stud_name) {
     console.log("eventSend-->");
-    $scope.isEventSend_funCalled = true;
     var SIGNALING_SERVER = "https://norecruits.com";
     //var SIGNALING_SERVER = "http://localhost:5000";
-
+    var queryLink = null;
     var peerNew_id = null;
-    // var queryLink = null;
     var url;
     signaling_socket = io(SIGNALING_SERVER);
     signaling_socket.on('connect', function () {
       console.log("signaling_socket connect-->");
-      console.log("$scope.isEventSend_funCalled: " + $scope.isEventSend_funCalled);
+
       signaling_socket.on('message', function (config) {
         console.log("signaling_socket message-->");
-        if ($scope.isEventSend_funCalled == true) {
-          // queryLink = config.queryId;
-          peerNew_id = config.peer_id;
 
-          url = "https://norecruits.com/client/" + peerNew_id + "/" + $scope.urlDate;
-          var api = $scope.propertyJson.VC_eventSend;
-          //var api = "http://localhost:5000/vc/eventSend";
-          console.log("api: " + api);
-          // var email = document.getElementById('eventEmails').value;
-          var obj = {
-            "userId": $scope.userData.id,
-            "senderLoginType": $scope.userData.loginType,
-            "title": $scope.title,
-            "reason": res,
-            "studUserId": studUserId,
-            "senderName": name,
-            "senderId": id,
-            "senderMN": senderMN,
-            "receiverEmail": email,
-            "start": $scope.startD,
-            "end": $scope.endDateRes,
-            "startAt": $scope.startFiltered,
-            "endAt": $scope.endFiltered, /* ###Note: have work and this is unwanted */
-            "primColor": "red",
-            "url": url,
-            "date": $scope.date,
-            "sd": $scope.sd,
-            "ed": $scope.ed,
-            "receiverName": receiverName,
-            "receiverId": receiverId,
-            "receiverMN": receiverMN,
-            "remoteCalendarId": $scope.remoteCalendarId,
-            "student_cs": stud_cs,
-            "student_id": stud_id,
-            "student_Name": stud_name,
-            "schoolName": schoolName
-          }
-          console.log("obj: " + JSON.stringify(obj));
-          httpFactory.post(api, obj).then(function (data) {
-            var checkStatus = httpFactory.dataValidation(data);
-            $scope.isEventSend_funCalled = false;
-            //console.log("data--" + JSON.stringify(data.data));
-            if (checkStatus) {
-              // console.log("data" + JSON.stringify(data.data))
-              // $window.location.href = $scope.propertyJson.R082;
-              
-              var loginAlert = $uibModal.open({
-                scope: $scope,
-                templateUrl: '/html/templates/dashboardsuccess.html',
-                windowClass: 'show',
-                backdropClass: 'static',
-                keyboard: false,
-                controller: function ($scope, $uibModalInstance) {
-                  $scope.message = "Successfully sent the event";
-                }
-              })
-              // alert("Successfully sent the event");
-              // vm.events.splice(0, 1);
-              var eventPostedData = data.data.data;
-              var objData = {
-                'id': obj.userId,
-                'title': obj.title,
-                'color': obj.primColor,
-                'startsAt': $filter('date')($scope.startFiltered, "h:mm a"),
-                'endsAt': $filter('date')($scope.endFiltered, "h:mm a"),
-                'draggable': true,
-                'resizable': true,
-                'actions': actions,
-                'url': obj.url,
-                "reason": res,
-                "senderName": name,
-                "senderId": id,
-                "senderMN": senderMN,
-                "receiverEmail": email,
-                "receiverName": receiverName,
-                "receiverId": receiverId,
-                "receiverMN": receiverMN,
-                /*  */
-              }
-              ownerEvents.push(objData);
-              vm.events.push(objData);
-            }
-            else {
-              var loginAlert = $uibModal.open({
-                scope: $scope,
-                templateUrl: '/html/templates/dashboardwarning.html',
-                windowClass: 'show',
-                backdropClass: 'static',
-                keyboard: false,
-                controller: function ($scope, $uibModalInstance) {
-                  $scope.message = "Event Send Failed";
-                }
-              })
+        queryLink = config.queryId;
+        peerNew_id = config.peer_id;
 
-              // alert("Event Send Failed");
-            }
-
-          })
+        url = "https://norecruits.com/client/" + peerNew_id + "/" + $scope.urlDate;
+        var api = $scope.propertyJson.VC_eventSend;
+        //var api = "http://localhost:5000/vc/eventSend";
+        console.log("api: " + api);
+        // var email = document.getElementById('eventEmails').value;
+        var obj = {
+          "userId": $scope.userData.id,
+          "senderLoginType": $scope.userData.loginType,
+          "title": $scope.title,
+          "reason": res,
+          "studUserId": studUserId,
+          "senderName": name,
+          "senderId": id,
+          "senderMN": senderMN,
+          "receiverEmail": email,
+          "start": $scope.startD,
+          "end": $scope.endDateRes,
+          "startAt": $scope.startFiltered,
+          "endAt": $scope.endFiltered, /* ###Note: have work and this is unwanted */
+          "primColor": "red",
+          "url": url,
+          "date": $scope.date,
+          "sd": $scope.sd,
+          "ed": $scope.ed,
+          "receiverName": receiverName,
+          "receiverId": receiverId,
+          "receiverMN": receiverMN,
+          "remoteCalendarId": $scope.remoteCalendarId,
+          "student_cs": stud_cs,
+          "student_id": stud_id,
+          "student_Name": stud_name,
+          "schoolName": schoolName
         }
+        console.log("obj: " + JSON.stringify(obj));
+        httpFactory.post(api, obj).then(function (data) {
+          var checkStatus = httpFactory.dataValidation(data);
+          //console.log("data--" + JSON.stringify(data.data));
+          if (checkStatus) {
+            // console.log("data" + JSON.stringify(data.data))
+            // $window.location.href = $scope.propertyJson.R082;
+
+            var loginAlert = $uibModal.open({
+              scope: $scope,
+              templateUrl: '/html/templates/dashboardsuccess.html',
+              windowClass: 'show',
+              backdropClass: 'static',
+              keyboard: false,
+              controller: function ($scope, $uibModalInstance) {
+                $scope.message = "Successfully sent the event";
+              }
+            })
+            // alert("Successfully sent the event");
+            // vm.events.splice(0, 1);
+            var eventPostedData = data.data.data;
+            var objData = {
+              'id': obj.userId,
+              'title': obj.title,
+              'color': obj.primColor,
+              'startsAt': $filter('date')($scope.startFiltered, "h:mm a"),
+              'endsAt': $filter('date')($scope.endFiltered, "h:mm a"),
+              'draggable': true,
+              'resizable': true,
+              'actions': actions,
+              'url': obj.url,
+              "reason": res,
+              "senderName": name,
+              "senderId": id,
+              "senderMN": senderMN,
+              "receiverEmail": email,
+              "receiverName": receiverName,
+              "receiverId": receiverId,
+              "receiverMN": receiverMN,
+              /*  */
+            }
+            ownerEvents.push(objData);
+            vm.events.push(objData);
+          }
+          else {
+            var loginAlert = $uibModal.open({
+              scope: $scope,
+              templateUrl: '/html/templates/dashboardwarning.html',
+              windowClass: 'show',
+              backdropClass: 'static',
+              keyboard: false,
+              controller: function ($scope, $uibModalInstance) {
+                $scope.message = "Event Send Failed";
+              }
+            })
+
+            // alert("Event Send Failed");
+          }
+
+        })
+
       })
     })
 

@@ -571,8 +571,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $state, $r
     var queryLink = null;
     var peerNew_id = null;
     var url;
-    $scope.getSocketUrlFromServer();
-    if ($scope.url) {
+    getSocketUrlFromServer(function () {
       var api = $scope.propertyJson.VC_eventSend;
       //var api = "http://localhost:5000/vc/eventSend";
       console.log("api: " + api);
@@ -644,7 +643,6 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $state, $r
             "receiverName": receiverName,
             "receiverId": receiverId,
             "receiverMN": receiverMN,
-            /*  */
           }
           ownerEvents.push(objData);
           vm.events.push(objData);
@@ -664,12 +662,13 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $state, $r
           // alert("Event Send Failed");
         }
       })
-    }
+    });
+
     console.log("<--eventSend");
     // var url = document.getElementById('linkToShare').innerHTML;
   }
 
-  $scope.getSocketUrlFromServer = function () {
+  function getSocketUrlFromServer() {
     console.log("getSocketUrlFromServer-->");
     var SIGNALING_SERVER = "https://norecruits.com";
     signaling_socket = io(SIGNALING_SERVER);
@@ -685,6 +684,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $state, $r
         $scope.url = "https://norecruits.com/client/" + peerNew_id + "/" + $scope.urlDate;
       })
     })
+    callback();
   }
   $scope.timeTableForEventBook = function (day, id) {
     console.log("timeTableForEventBook-->");

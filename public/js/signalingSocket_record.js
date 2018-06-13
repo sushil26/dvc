@@ -323,7 +323,7 @@ function startSession(id, date) {
       }
     }
   });
-  console.log(",--startSession");
+  console.log("<--startSession");
 }
 
 signaling_socket.on("connect", function () {

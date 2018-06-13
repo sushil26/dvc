@@ -1513,7 +1513,10 @@ function onMediaSuccess(stream) {
 
     multiStreamRecorder.ondataavailable = function (blob) {
       console.log("ondataavailable-->blob: " + JSON.stringify(blob));
-      // appendLink(blob);
+      appendLink(blob);
+    };
+
+    function appendLink(blob) {
       console.log("appendLink-->");
       console.log("blob.data: " + blob.data);
       console.log("blob.type: " + blob.type);
@@ -1531,8 +1534,7 @@ function onMediaSuccess(stream) {
       container.appendChild(a);
       container.appendChild(document.createElement('hr'));
       storeRecordVideo();
-    };
-
+    }
 
     var timeInterval = document.querySelector('#time-interval').value;
     if (timeInterval) timeInterval = parseInt(timeInterval);

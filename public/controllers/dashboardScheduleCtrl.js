@@ -576,7 +576,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $state, $r
     signaling_socket = io(SIGNALING_SERVER);
     signaling_socket.on('connect', function () {
       console.log("signaling_socket connect-->");
-
+      console.log("$scope.isEventSend_funCalled: " + $scope.isEventSend_funCalled);
       signaling_socket.on('message', function (config) {
         console.log("signaling_socket message-->");
         if ($scope.isEventSend_funCalled == true) {

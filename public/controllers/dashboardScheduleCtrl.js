@@ -573,6 +573,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $state, $r
     var url;
     getSocketUrlFromServer(function () {
       console.log("Back to function call-->");
+      console.log("$scope.url: "+$scope.url);
       var api = $scope.propertyJson.VC_eventSend;
       console.log("api: " + api);
       var obj = {

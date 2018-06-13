@@ -1,4 +1,4 @@
-app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $state, $rootScope, $q, $filter, httpFactory, sessionAuthFactory, moment, calendarConfig, $uibModal) {
+app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $state, $rootScope, $compile, $window, $filter, httpFactory, sessionAuthFactory, moment, calendarConfig, $uibModal) {
   console.log("dashboardScheduleCtrl==>");
   var dayEventmodal; /* ### Note: open model for event send ###  */
   var studEvents = []; /* ### Note: selected student events ### */
@@ -573,7 +573,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $state, $r
     var url;
     getSocketUrlFromServer(function () {
       console.log("Back to function call-->");
-      console.log("$scope.url: "+$scope.url);
+      console.log("$scope.url: " + $scope.url);
       var api = $scope.propertyJson.VC_eventSend;
       console.log("api: " + api);
       var obj = {
@@ -668,9 +668,8 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $state, $r
     // var url = document.getElementById('linkToShare').innerHTML;
   }
 
-  function getSocketUrlFromServer() {
+  function getSocketUrlFromServer(callback) {
     console.log("getSocketUrlFromServer-->");
-    var dfd = $q.defer();
     var SIGNALING_SERVER = "https://norecruits.com";
     signaling_socket = io(SIGNALING_SERVER);
     signaling_socket.on('connect', function () {
@@ -678,16 +677,13 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $state, $r
 
       signaling_socket.on('message', function (config) {
         console.log("signaling_socket message-->");
-
         queryLink = config.queryId;
         peerNew_id = config.peer_id;
-
         $scope.url = "https://norecruits.com/client/" + peerNew_id + "/" + $scope.urlDate;
-        dfd.resolve($scope.url);
+        callback();
       })
     })
-    return dfd.promise;
-    // callback();
+
   }
   $scope.timeTableForEventBook = function (day, id) {
     console.log("timeTableForEventBook-->");

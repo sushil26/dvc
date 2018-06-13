@@ -545,7 +545,6 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $state, $r
       console.log("$scope.studentPersonalData[0]: " + JSON.stringify($scope.studentPersonalData[0]));
       var un = $scope.teacherData[0].firstName + " " + $scope.teacherData[0].lastName;
       var studName = $scope.studentPersonalData[0].firstName + " " + $scope.studentPersonalData[0].lastName;
-
       var teacherName = un;
       var senderMN = $scope.teacherData[0].mobNumber;
       var teacherId = $scope.teacherData[0].schoolId;
@@ -572,8 +571,8 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $state, $r
     var queryLink = null;
     var peerNew_id = null;
     var url;
-    signaling_socket = io(SIGNALING_SERVER);
-    signaling_socket.on('connect', function () {
+    // signaling_socket = io(SIGNALING_SERVER);
+    // signaling_socket.on('connect', function () {
       console.log("signaling_socket connect-->");
 
       signaling_socket.on('message', function (config) {
@@ -677,7 +676,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $state, $r
         })
 
       })
-    })
+    // })
 
     console.log("<--eventSend");
     // var url = document.getElementById('linkToShare').innerHTML;

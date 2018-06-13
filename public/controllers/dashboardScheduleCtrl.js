@@ -592,7 +592,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $q, $timeout, $rootSco
           "startAt": $scope.startFiltered,
           "endAt": $scope.endFiltered, /* ###Note: have work and this is unwanted */
           "primColor": "red",
-          "url": $scope.url,
+          "url": url,
           "date": $scope.date,
           "sd": $scope.sd,
           "ed": $scope.ed,
@@ -685,7 +685,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $q, $timeout, $rootSco
         queryLink = config.queryId;
         peerNew_id = config.peer_id;
 
-        $scope.url = "https://norecruits.com/client/" + peerNew_id + "/" + $scope.urlDate;
+        var url = "https://norecruits.com/client/" + peerNew_id + "/" + $scope.urlDate;
         dfd.resolve(url);
       })
     })

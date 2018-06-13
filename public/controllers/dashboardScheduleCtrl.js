@@ -572,10 +572,10 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $state, $r
     var peerNew_id = null;
     var url;
     signaling_socket = io(SIGNALING_SERVER);
-    socket.on('connect', function () {
+    signaling_socket.on('connect', function () {
       console.log("signaling_socket connect-->");
 
-      socket.on('message', function (config) {
+      signaling_socket.on('message', function (config) {
         console.log("signaling_socket message-->");
 
         queryLink = config.queryId;
@@ -676,7 +676,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $state, $r
         })
 
       })
-     })
+    })
 
     console.log("<--eventSend");
     // var url = document.getElementById('linkToShare').innerHTML;

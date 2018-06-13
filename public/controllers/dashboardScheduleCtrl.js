@@ -667,7 +667,7 @@ app.controller('dashboardScheduleCtrl', function ($scope, $rootScope, $state, $r
     // var url = document.getElementById('linkToShare').innerHTML;
   }
 
-  function getSocketUrlFromServer() {
+  function getSocketUrlFromServer(callback) {
     console.log("getSocketUrlFromServer-->");
     var SIGNALING_SERVER = "https://norecruits.com";
     signaling_socket = io(SIGNALING_SERVER);

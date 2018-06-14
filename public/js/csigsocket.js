@@ -345,6 +345,7 @@ signaling_socket.on("connect", function () {
     peerNew_id = config.peer_id;
     urlDate = config.time;
     timeLink = config.time;
+    console.log("urlDate: "+urlDate+" timeLink: "+timeLink);
     var dt = new Date();
     var dy = dt.getDay().toString();
     var fy = dt.getFullYear().toString();

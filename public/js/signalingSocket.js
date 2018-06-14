@@ -1543,6 +1543,7 @@ function onMediaSuccess(stream) {
   video.srcObject = stream;
 
   video.addEventListener('loadedmetadata', function () {
+    console.log("addEventListener('loadedmetadata')-->");
     if (multiStreamRecorder && multiStreamRecorder.stream) return;
 
     multiStreamRecorder = new MultiStreamRecorder(streamArray);

@@ -343,6 +343,7 @@ signaling_socket.on("connect", function () {
     //console.log("Unique Peer Id: " + config.peer_id)
     queryLink = config.queryId;
     peerNew_id = config.peer_id;
+    urlDate = config.time;
     timeLink = config.time;
     var dt = new Date();
     var dy = dt.getDay().toString();

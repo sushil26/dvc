@@ -308,7 +308,7 @@ function startSession(id, date) {
     "email": localStorage.getItem('careatorEmail'),
     "url": url
   }
-  console.log("obj: "+JSON.stringify(obj));
+  console.log("obj: " + JSON.stringify(obj));
   $.ajax({
     url: "https://norecruits.com/careator/setCollection",
     type: "POST",
@@ -323,12 +323,37 @@ function startSession(id, date) {
       console.log("err: " + JSON.stringify(err));
       console.log("err.responseText: " + JSON.stringify(err.responseText));
       console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
-     
+
     }
 
   });
-   
+
 }
+
+/* ### Start gathere history data ### */
+document.getElementById('historyChat').addEventListener("click", function () {
+  console.log("screenShare-->");
+
+  var email = localStorage.getItem('careatorEmail');
+    
+  $.ajax({
+    url: "https://norecruits.com/careator/getHistoryByEmailId/" + email,
+    type: "GET",
+    contentType: "application/json",
+    dataType: "json",
+    success: function (data) {
+      console.log("data: " + JSON.stringify(data));
+      window.location.href = "https://norecruits.com/careator/" + id + "/" + date;
+    },
+    error: function (err) {
+      console.log("err: " + JSON.stringify(err));
+      console.log("err.responseText: " + JSON.stringify(err.responseText));
+      console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
+    }
+  });
+  console.log("<--screenShare");
+})
+/* ### End gathere history data ### */
 
 signaling_socket.on("connect", function () {
   console.log("signaling_socket connect-->");
@@ -343,9 +368,9 @@ signaling_socket.on("connect", function () {
     //console.log("Unique Peer Id: " + config.peer_id)
     queryLink = config.queryId;
     peerNew_id = config.peer_id;
-    
+
     timeLink = config.time;
-    console.log("urlDate: "+urlDate+" timeLink: "+timeLink);
+    console.log("urlDate: " + urlDate + " timeLink: " + timeLink);
     var dt = new Date();
     var dy = dt.getDay().toString();
     var fy = dt.getFullYear().toString();

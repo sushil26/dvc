@@ -265,6 +265,40 @@ module.exports.setCollection = function (req, res) {
 
 }
 
+module.exports.getHistoryByEmailId = function (req, res) {
+    console.log("setCollection-->");
+    var email = "logeswari.g@careator.com";
+
+
+    var obj = {
+        "email": email
+    }
+    console.log("obj: " + JSON.stringify(obj));
+    chatHistory.find(obj).toArray(function (err, data) {
+        console.log("data: "+JSON.stringify(data));
+        console.log("data.length: "+data.length);
+        if (err) {
+            console.log("err: " + JSON.stringify(err));
+            responseData = {
+                status: false,
+                message: "UnSuccessfully"
+            };
+            res.status(400).send(responseData);
+        }
+        else {
+            console.log("data: " + JSON.stringify(data));
+            responseData = {
+                status: true,
+                message: "Successfully",
+                data: data
+            };
+            res.status(200).send(responseData);
+        }
+    })
+
+
+}
+
 
 
 

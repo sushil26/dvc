@@ -26,6 +26,7 @@ var peer_media_sselements = {}; /* keep track of our <video>/<audio> tags, index
 var peerNew_id = null;
 var queryLink = null;
 var timeLink = null;
+var urlDate = null;
 var txtQueryLink = null;
 
 // signaling_socket = io(SIGNALING_SERVER);
@@ -300,6 +301,7 @@ function disconnecSession() {
 
 function startSession(id, date) {
   console.log("startSession-->");
+  urlDate = date;
   var url = "https://norecruits.com/careator/" + id + "/" + date;
 
   var obj = {
@@ -325,30 +327,7 @@ function startSession(id, date) {
     }
 
   });
-  
-
-
-  // var obj = {
-  //   "url": url
-  // };
-  // $.ajax({
-  //   url: "https://norecruits.com/vc/sessionCreate",
-  //   //  url: "http://localhost:5000/vc/login4VC",
-  //   type: "POST",
-  //   data: JSON.stringify(obj),
-  //   contentType: "application/json",
-  //   dataType: "json",
-  //   success: function (data) {
-  //     console.log("data: " + JSON.stringify(data));
-  //     console.log("data.status: " + data.status);
-  //     if (data.status) {
-  //       //window.location.href = data.data.url;
-  //     } else {
-  //       alert("refresh your page and try again");
-  //     }
-  //   }
-  // });
-  // console.log(",--startSession");
+   
 }
 
 signaling_socket.on("connect", function () {

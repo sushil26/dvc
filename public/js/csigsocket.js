@@ -189,15 +189,12 @@ function checkPassword() {
 }
 function saveName() {
   console.log("setName-->");
-
   var careatorFriendName = document.getElementById("userName").value;
   localStorage.setItem("careatorFriendName", careatorFriendName);
   userName = localStorage.getItem("careatorFriendName");
   careatorFriendName = true;
   document.getElementById("videoConferenceUrl").style.display = "none";
   document.getElementById("emailInvitation").style.display = "none";
-
-
 }
 
 function emailInvite() {
@@ -309,6 +306,7 @@ function startSession(id, date) {
     "email": localStorage.getItem('careatorEmail'),
     "url": url
   }
+  console.log("obj: "+JSON.stringify(obj));
   $.ajax({
     url: "https://norecruits.com/careator/setCollection",
     type: "POST",

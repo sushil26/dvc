@@ -36,7 +36,7 @@ var server = app.listen('5000', function () {
     console.log("Listening on port 5000");
 });
 
-var db = require("./config/dbConfig.js").getDb();
+var db = mongoConfig.getDb();
 console.log("db: "+db);
 var chatHistory = db.collection("chatHistory");
 

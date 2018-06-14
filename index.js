@@ -27,24 +27,11 @@ app.use(fileUpload());
 var queryId = null;
 var userName = null;
 var time = null;
-// var mongoConfig = require('./config/dbConfig.js')
-// mongoConfig.connectToServer(function(err) {
-//     var server = app.listen("8080");
-//     var io = require('socket.io').listen(server);
-//     server.timeout = 9999999999;
-//     console.log("Listening on port 8080");
-//     // require('./config/express')(app, config);
-//     require('./config/express')(app);
-//     // require('./config/server_socket')(io);
-//     require('./config/server_socket')(io);
 
-//     require('./config/router')(app);
-// });
 var mongoConfig = require('./config/dbConfig.js');
-//app.set('port', (process.env.PORT || 5000));
-// main.listen(main.get('port'), function() {
-//     console.log('Node app is running on port', main.get('port'));
-//   });
+var db = require("./config/dbConfig.js").getDb();
+var chatHistory = db.collection("chatHistory");
+
 var server = app.listen('5000', function () {
     console.log("Listening on port 5000");
 });

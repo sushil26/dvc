@@ -271,13 +271,13 @@ function disconnecSession() {
   console.log("sessionHeader: " + sessionHeader);
   console.log("peerNew_id: " + peerNew_id);
   /* ### Start: Stop Local media stream ### */
-  var videoElem = document.getElementById('videoElem');
-  let stream = videoElem.srcObject;
-  let tracks = stream.getTracks();
-  tracks.forEach(function (track) {
-    track.stop();
-  });
-  videoElem.srcObject = null;
+  // var videoElem = document.getElementById('videoElem');
+  // let stream = videoElem.srcObject;
+  // let tracks = stream.getTracks();
+  // tracks.forEach(function (track) {
+  //   track.stop();
+  // });
+  // videoElem.srcObject = null;
   /* ### End: Stop Local media stream ### */
   localStorage.removeItem("careatorEmail");
   localStorage.removeItem("careatorFriendName");
@@ -1480,11 +1480,11 @@ document.querySelector('#start-recording').onclick = function () {
 document.querySelector('#stop-recording').onclick = function () {
   console.log("stop-recording-->");
   this.disabled = true;
-   multiStreamRecorder.stop();
-  //multiStreamRecorder.stream.stop();
+  multiStreamRecorder.stop();
+  multiStreamRecorder.stream.stop();
 
   // document.querySelector('#pause-recording').disabled = true;
-   document.querySelector('#start-recording').disabled = false;
+  document.querySelector('#start-recording').disabled = false;
   // document.querySelector('#add-stream').disabled = true;
 
 };

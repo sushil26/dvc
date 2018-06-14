@@ -1477,17 +1477,17 @@ document.querySelector('#start-recording').onclick = function () {
   captureUserMedia(mediaConstraints, onMediaSuccess, onMediaError);
 };
 
-document.querySelector('#stop-recording').onclick = function () {
-  console.log("stop-recording-->");
-  this.disabled = true;
-  multiStreamRecorder.stop();
-  multiStreamRecorder.stream.stop();
+// document.querySelector('#stop-recording').onclick = function () {
+//   console.log("stop-recording-->");
+//   this.disabled = true;
+//   multiStreamRecorder.stop();
+//   multiStreamRecorder.stream.stop();
 
-  document.querySelector('#pause-recording').disabled = true;
-  document.querySelector('#start-recording').disabled = false;
-  document.querySelector('#add-stream').disabled = true;
+//   document.querySelector('#pause-recording').disabled = true;
+//   document.querySelector('#start-recording').disabled = false;
+//   document.querySelector('#add-stream').disabled = true;
 
-};
+// };
 
 document.querySelector('#pause-recording').onclick = function () {
   this.disabled = true;

@@ -74,7 +74,6 @@ module.exports.pswdCheck = function (req, res) {
             else {
                 if (findData.length > 0) {
                     if (findData[0].password == password) {
-
                         responseData = {
                             status: true,
                             message: "Login Successfully"
@@ -264,10 +263,35 @@ module.exports.emailInvite = function (req, res) {
 
 }
 
-module.exports.setCollection = function(req, res){
-console.log("setCollection-->");
-console.log("req.body.url: "+req.body.url);
-console.log("req.body.email: "+req.body.url);
+module.exports.setCollection = function (req, res) {
+    console.log("setCollection-->");
+    console.log("req.body.url: " + req.body.url);
+    console.log("req.body.email: " + req.body.email);
+
+    var obj = {
+        "email": req.body.email,
+        "url": req.body.url,
+        "chat": []
+    }
+    console.log("obj: " + JSON.stringify(obj));
+    chatHistory.insertOne(obj, function (err, data) {
+        if (err) {
+            console.log("err: " + JSON.stringify(err));
+            responseData = {
+                status: false,
+                message: "UnSuccessfully"
+            };
+            res.status(400).send(responseData);
+        }
+        else {
+            console.log("data: " + JSON.stringify(data));
+            responseData = {
+                status: true,
+                message: "Successfully"
+            };
+            res.status(200).send(responseData);
+        }
+    })
 
 
 }

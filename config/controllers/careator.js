@@ -6,8 +6,6 @@ var ObjectId = require("mongodb").ObjectID;
 var nodemailer = require("nodemailer");
 var createdDate = new Date();
 var randomstring = require("randomstring");
-
-
 var transporter = nodemailer.createTransport({
     service: "godaddy",
     auth: {
@@ -18,6 +16,41 @@ var transporter = nodemailer.createTransport({
         rejectUnauthorized: false
     }
 });
+
+var chatHistory = db.collection("chatHistory");
+
+var io = req.app.get('socketio');
+
+/* ##### Start Gether text message  #### */
+socket.on('textMsg', function (data) {
+    console.log("textMsg-->");
+    var date = new Date();
+    // //Send message to everyone
+    console.log("peerWithQueryId[data.userId]: " + peerWithQueryId[data.userId]);
+    if (peerWithQueryId[data.userId] == data.queryLink && peerWithTimeId[data.userId] == data.timeLink) {
+        var obj = {
+            'message': data.message,
+            'url': peerWithQueryId[data.userId] + "/" + peerWithTimeId[data.userId],
+            'userName': data.userName,
+            'textTime': date
+        }
+        chatHistory.insertOne(obj, function(err, data){
+            if(!err){
+                console.log("data: "+JSON.stringify(data));
+            }
+        })
+
+        io.sockets.emit('newTextMsg', { 'message': data.message, 'userId': data.userId, 'queryId': peerWithQueryId[data.userId], 'time': peerWithTimeId[data.userId], 'userName': data.userName, 'textTime': date });
+    }
+    else {
+        console.log("textMsg: sorry ");
+        console.log("queryId: " + queryId);
+        console.log("data.queryLink: " + data.queryLink);
+    }
+    console.log("<--textMsg");
+
+})
+/* ##### End Gether text message  #### */
 
 module.exports.pswdCheck = function (req, res) {
     console.log("pswdCheck-->");
@@ -75,7 +108,6 @@ module.exports.pswdCheck = function (req, res) {
     console.log("<--pswdCheck");
 }
 
-
 module.exports.pswdGenerate = function (req, res) {
     console.log("pswdGenerate-->");
     console.log("req.body.careatorEmail: " + req.body.careatorEmail);
@@ -106,10 +138,10 @@ module.exports.pswdGenerate = function (req, res) {
                                 from: "info@vc4all.in",
                                 to: email,
                                 subject: 'VC4ALL Credential',
-                                html:"<table style='border:10px solid gainsboro;'><thead style=background:cornflowerblue;><tr><th><h2>Greetings from VC4ALL</h2></th></tr></thead><tfoot style=background:#396fc9;color:white;><tr><td style=padding:15px;><p><p>Regards</p><b>Careator Technologies Pvt. Ltd</b></p></td></tr></tfoot><tbody><tr><td><b>Dear Careator Employee,</b></td></tr><tr><td>Please note, Your email Id is verified successfully, you can access the below link by using given password.<p style=background:gainsboro;>Password: "+password+"</p></td></tr></tbody></table>"
+                                html: "<table style='border:10px solid gainsboro;'><thead style=background:cornflowerblue;><tr><th><h2>Greetings from VC4ALL</h2></th></tr></thead><tfoot style=background:#396fc9;color:white;><tr><td style=padding:15px;><p><p>Regards</p><b>Careator Technologies Pvt. Ltd</b></p></td></tr></tfoot><tbody><tr><td><b>Dear Careator Employee,</b></td></tr><tr><td>Please note, Your email Id is verified successfully, you can access the below link by using given password.<p style=background:gainsboro;>Password: " + password + "</p></td></tr></tbody></table>"
 
                                 // "<html><body><p><b>Dear Careator Employee, </b></p><p>Please note, Your email Id is verified successfully,  you can access the below link by using given password.<p>Password: "+password+"</p></p><p>Regards</p><p><b>Careator Technologies Pvt. Ltd</b></p></body></html>"
-                               
+
                             };
                             transporter.sendMail(mailOptions, function (error, info) {
                                 if (error) {
@@ -151,7 +183,7 @@ module.exports.pswdGenerate = function (req, res) {
                                 from: "info@vc4all.in",
                                 to: email,
                                 subject: 'VC4ALL Credential',
-                                html:"<table style='border:10px solid gainsboro;'><thead style=background:cornflowerblue;><tr><th><h2>Greetings from VC4ALL</h2></th></tr></thead><tfoot style=background:#396fc9;color:white;><tr><td style=padding:15px;><p><p>Regards</p><b>Careator Technologies Pvt. Ltd</b></p></td></tr></tfoot><tbody><tr><td><b>Dear Careator Employee,</b></td></tr><tr><td>Please note, Your email Id is verified successfully, you can access the below link by using given password.<p style=background:gainsboro;>Password: "+password+"</p></td></tr></tbody></table>"
+                                html: "<table style='border:10px solid gainsboro;'><thead style=background:cornflowerblue;><tr><th><h2>Greetings from VC4ALL</h2></th></tr></thead><tfoot style=background:#396fc9;color:white;><tr><td style=padding:15px;><p><p>Regards</p><b>Careator Technologies Pvt. Ltd</b></p></td></tr></tfoot><tbody><tr><td><b>Dear Careator Employee,</b></td></tr><tr><td>Please note, Your email Id is verified successfully, you can access the below link by using given password.<p style=background:gainsboro;>Password: " + password + "</p></td></tr></tbody></table>"
                             };
                             transporter.sendMail(mailOptions, function (error, info) {
                                 if (error) {
@@ -205,7 +237,7 @@ module.exports.emailInvite = function (req, res) {
         from: "info@vc4all.in",
         to: req.body.email,
         subject: "Regarding Instance Meeting",
-        html:"<table style='border:10px solid gainsboro;'><thead style=background:cornflowerblue;><tr><th><h2>Greetings from VC4ALL</h2></th></tr></thead><tfoot style=background:#396fc9;color:white;><tr><td style=padding:15px;><p><p>Regards</p><b>Careator Technologies Pvt. Ltd</b></p></td></tr></tfoot><tbody><tr><td><b>Dear Team,</b></td></tr><tr><td> Please note, you have to attend meeting right now, please open the below link.<p style=background:gainsboro;><p>Here your link <a href=" + req.body.url + ">" + req.body.url + "</a></p></td></tr></tbody></table>"
+        html: "<table style='border:10px solid gainsboro;'><thead style=background:cornflowerblue;><tr><th><h2>Greetings from VC4ALL</h2></th></tr></thead><tfoot style=background:#396fc9;color:white;><tr><td style=padding:15px;><p><p>Regards</p><b>Careator Technologies Pvt. Ltd</b></p></td></tr></tfoot><tbody><tr><td><b>Dear Team,</b></td></tr><tr><td> Please note, you have to attend meeting right now, please open the below link.<p style=background:gainsboro;><p>Here your link <a href=" + req.body.url + ">" + req.body.url + "</a></p></td></tr></tbody></table>"
 
         //html:"<html><head><p><b>Dear Team, </b></p><p>Please note, you have to attend meeting right now, please open the below link.<p>Here your link <a href=" + req.body.url + ">" + req.body.url + "</a> </p><p>Regards</p><p><b>Careator Technologies Pvt. Ltd</b></p></head><body></body></html>"
     };
@@ -230,4 +262,8 @@ module.exports.emailInvite = function (req, res) {
     });
 
 }
+
+
+
+
 

@@ -350,22 +350,23 @@ io.sockets.on('connection', function (socket) {
     /* ##### End remove PerticularId  ##### */
 
     /* ##### Start Gether text message  #### */
-    socket.on('textMsg', function (data) {
-        console.log("textMsg-->");
-        // //Send message to everyone
-        console.log("peerWithQueryId[data.userId]: " + peerWithQueryId[data.userId]);
-        if (peerWithQueryId[data.userId] == data.queryLink && peerWithTimeId[data.userId] == data.timeLink) {
-            io.sockets.emit('newTextMsg', { 'message': data.message, 'userId': data.userId, 'queryId': peerWithQueryId[data.userId], 'time': peerWithTimeId[data.userId], 'userName': data.userName });
-            // io.sockets.emit('userDetail', {'userId': data.userId,'userName': data.userName });
-        }
-        else {
-            console.log("textMsg: sorry ");
-            console.log("queryId: " + queryId);
-            console.log("data.queryLink: " + data.queryLink);
-        }
-        console.log("<--textMsg");
+    // socket.on('textMsg', function (data) {
+    //     console.log("textMsg-->");
+    //     // //Send message to everyone
+    //     console.log("peerWithQueryId[data.userId]: " + peerWithQueryId[data.userId]);
+    //     if (peerWithQueryId[data.userId] == data.queryLink && peerWithTimeId[data.userId] == data.timeLink) {
+    //         io.sockets.emit('newTextMsg', { 'message': data.message, 'userId': data.userId, 'queryId': peerWithQueryId[data.userId], 'time': peerWithTimeId[data.userId], 'userName': data.userName });
+         
+    //         // io.sockets.emit('userDetail', {'userId': data.userId,'userName': data.userName });
+    //     }
+    //     else {
+    //         console.log("textMsg: sorry ");
+    //         console.log("queryId: " + queryId);
+    //         console.log("data.queryLink: " + data.queryLink);
+    //     }
+    //     console.log("<--textMsg");
 
-    })
+    // })
     /* ##### End Gether text message  #### */
     var information = null;
 

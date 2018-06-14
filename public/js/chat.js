@@ -112,7 +112,7 @@ function sendMessage() {
             if (msg) {
                 console.log("Start to emit message  ");
                 console.log("peerNew_id: " + peerNew_id);
-                signaling_socket.emit('textMsg', { 'message': msg, 'userId': peerNew_id, 'queryLink': queryLink, 'timeLink': timeLink, 'userName': userName });
+                signaling_socket.emit('textMsg', { 'message': msg, 'userId': peerNew_id, 'queryLink': queryLink, 'timeLink': timeLink, 'userName': userName, 'textTime': });
                 document.getElementById('message').value = "";
             }
         }
@@ -178,6 +178,7 @@ signaling_socket.on('newTextMsg', function (data) {
 
         /* ##### Start Calling Get Time  ##### */
         var time = DisplayCurrentTime();
+
         /* ##### End Calling Get Time  ##### */
 
         document.getElementById('message-container').innerHTML += '<div class="direct-chat-info clearfix"><span class="direct-chat-name pull-left">'

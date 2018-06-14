@@ -38,6 +38,7 @@ var server = app.listen('5000', function () {
 
 var db = require("./config/dbConfig.js").getDb();
 console.log("db: "+db);
+var chatHistory = db.collection("chatHistory");
 
 // var server = app.listen("8080");
 

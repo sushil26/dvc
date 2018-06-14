@@ -19,37 +19,38 @@ var transporter = nodemailer.createTransport({
 
 var chatHistory = db.collection("chatHistory");
 
-//var io = req.app.get('socketio');
+
 
 /* ##### Start Gether text message  #### */
-// socket.on('textMsg', function (data) {
-//     console.log("textMsg-->");
-//     var date = new Date();
-//     // //Send message to everyone
-//     console.log("peerWithQueryId[data.userId]: " + peerWithQueryId[data.userId]);
-//     if (peerWithQueryId[data.userId] == data.queryLink && peerWithTimeId[data.userId] == data.timeLink) {
-//         var obj = {
-//             'message': data.message,
-//             'url': peerWithQueryId[data.userId] + "/" + peerWithTimeId[data.userId],
-//             'userName': data.userName,
-//             'textTime': date
-//         }
-//         chatHistory.insertOne(obj, function(err, data){
-//             if(!err){
-//                 console.log("data: "+JSON.stringify(data));
-//             }
-//         })
+var io = req.app.get('socketio');
+socket.on('textMsg', function (data) {
+    console.log("textMsg-->");
+    var date = new Date();
+    // //Send message to everyone
+    console.log("peerWithQueryId[data.userId]: " + peerWithQueryId[data.userId]);
+    if (peerWithQueryId[data.userId] == data.queryLink && peerWithTimeId[data.userId] == data.timeLink) {
+        var obj = {
+            'message': data.message,
+            'url': peerWithQueryId[data.userId] + "/" + peerWithTimeId[data.userId],
+            'userName': data.userName,
+            'textTime': date
+        }
+        chatHistory.insertOne(obj, function(err, data){
+            if(!err){
+                console.log("data: "+JSON.stringify(data));
+            }
+        })
 
-//         io.sockets.emit('newTextMsg', { 'message': data.message, 'userId': data.userId, 'queryId': peerWithQueryId[data.userId], 'time': peerWithTimeId[data.userId], 'userName': data.userName, 'textTime': date });
-//     }
-//     else {
-//         console.log("textMsg: sorry ");
-//         console.log("queryId: " + queryId);
-//         console.log("data.queryLink: " + data.queryLink);
-//     }
-//     console.log("<--textMsg");
+        io.sockets.emit('newTextMsg', { 'message': data.message, 'userId': data.userId, 'queryId': peerWithQueryId[data.userId], 'time': peerWithTimeId[data.userId], 'userName': data.userName, 'textTime': date });
+    }
+    else {
+        console.log("textMsg: sorry ");
+        console.log("queryId: " + queryId);
+        console.log("data.queryLink: " + data.queryLink);
+    }
+    console.log("<--textMsg");
 
-// })
+})
 /* ##### End Gether text message  #### */
 
 module.exports.pswdCheck = function (req, res) {

@@ -1497,19 +1497,19 @@ document.querySelector('#resume-recording').onclick = function () {
 function storeRecordVideo() {
   console.log("storeRecordVideo-->");
 
-  var reader = new FileReader();
+  // var reader = new FileReader();
 
-  reader.readAsDataURL(recordedURL);
-  reader.onloadend = function () {
-    base64data = reader.result;
-    console.log("base64data: " + base64data);
+  // reader.readAsDataURL(recordedURL);
+  // reader.onloadend = function () {
+  //   base64data = reader.result;
+  //   console.log("base64data: " + base64data);
     var eventId = localStorage.getItem("eventId");
-    console.log("eventId: " + eventId);
-    var obj = {
-      "eventId": eventId,
-      "base64data": base64data
-    }
-    console.log("obj: " + JSON.stringify(obj));
+    // console.log("eventId: " + eventId);
+    // var obj = {
+    //   "eventId": eventId,
+    //   "base64data": base64data
+    // }
+    // console.log("obj: " + JSON.stringify(obj));
     var fd = new FormData();
     //fd.append('fname', 'test.wav');
     fd.append('data', recordedURL);
@@ -1522,7 +1522,7 @@ function storeRecordVideo() {
     }).done(function (data) {
       console.log(data);
     });
-  }
+  // }
   //var resultedBlob = dataURItoBlob(recordedURL);
   //var resultedBlob = dataURItoBlob(recordedURL);
 

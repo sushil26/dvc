@@ -286,7 +286,7 @@ module.exports.recordVideo = function (req, res) {
             "vcRecordId": lastInsertedFileId
         }
         console.log("setData: " + JSON.stringify(setData));
-        event.update(queryId, {'vcRecordId': {$exists : false}},{ $set: { "vcRecordId": lastInsertedFileId } }, function (err, data) {
+        event.update({"_id": ObjectId(req.body.eventId), 'vcRecordId': {$exists : false}},{ $set: { "vcRecordId": lastInsertedFileId } }, function (err, data) {
             var io = req.app.get('socketio');
             io.emit('eventUpdatedForHistory', {});
             console.log("data: " + JSON.stringify(data));

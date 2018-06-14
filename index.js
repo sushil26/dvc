@@ -348,10 +348,11 @@ io.sockets.on('connection', function (socket) {
             var date = new Date();
             var queryObj = {
                 "url": "https://norecruits.com/careator/" + data.userId + "/" + data.userId,
-                "email": data.email
+               
             }
             console.log("queryObj: " + JSON.stringify(queryObj));
             var obj = {
+                "email": data.email,
                 'message': data.message,
                 'url': data.userId + "/" + data.userId,
                 'userName': data.userName,

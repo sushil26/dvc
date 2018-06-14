@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "angular": "^1.6.9",
+    "blob-to-base64": "^1.0.0",
     "body-parser": "^1.18.3",
     "circular-json": "^0.5.4",
     "datauri-stream": "^1.0.3",

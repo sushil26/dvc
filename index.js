@@ -28,17 +28,19 @@ var queryId = null;
 var userName = null;
 var time = null;
 
-var mongoConfig = require('./config/dbConfig.js');
+
 
 // var chatHistory = db.collection("chatHistory");
 
 var server = app.listen('5000', function () {
     console.log("Listening on port 5000");
-});
-
-var db = mongoConfig.getDb();
+    var mongoConfig = require('./config/dbConfig.js');
+    var db = mongoConfig.getDb();
 console.log("db: "+db);
 var chatHistory = db.collection("chatHistory");
+});
+
+
 
 // var server = app.listen("8080");
 

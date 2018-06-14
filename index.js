@@ -348,7 +348,7 @@ io.sockets.on('connection', function (socket) {
             var date = new Date();
             
             var queryObj = {
-                "url": "https://norecruits.com/careator/" + peerWithQueryId[data.userId] + "/" + data.timeLink,
+                "url": "https://norecruits.com/careator/" + peerWithQueryId[data.userId] + "/" + peerWithTimeId[data.timeLink],
             }
             console.log("queryObj: " + JSON.stringify(queryObj));
             var obj = {

@@ -19,7 +19,7 @@ var transporter = nodemailer.createTransport({
 
 var chatHistory = db.collection("chatHistory");
 
-var io = req.app.get('socketio');
+//var io = req.app.get('socketio');
 
 /* ##### Start Gether text message  #### */
 // socket.on('textMsg', function (data) {

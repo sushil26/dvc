@@ -270,16 +270,15 @@ function disconnecSession() {
   console.log("disconnecSession-->");
   console.log("sessionHeader: " + sessionHeader);
   console.log("peerNew_id: " + peerNew_id);
+  /* ### Start: Stop Local media stream ### */
   var videoElem = document.getElementById('videoElem');
   let stream = videoElem.srcObject;
   let tracks = stream.getTracks();
-
-  tracks.forEach(function(track) {
+  tracks.forEach(function (track) {
     track.stop();
   });
-
   videoElem.srcObject = null;
-
+  /* ### End: Stop Local media stream ### */
   localStorage.removeItem("careatorEmail");
   localStorage.removeItem("careatorFriendName");
   userName = null;

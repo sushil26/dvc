@@ -29,13 +29,15 @@ var userName = null;
 var time = null;
 
 var mongoConfig = require('./config/dbConfig.js');
-var db = require("./config/dbConfig.js").getDb();
-console.log("db: "+db);
+
 // var chatHistory = db.collection("chatHistory");
 
 var server = app.listen('5000', function () {
     console.log("Listening on port 5000");
 });
+
+var db = require("./config/dbConfig.js").getDb();
+console.log("db: "+db);
 
 // var server = app.listen("8080");
 
@@ -44,18 +46,14 @@ app.set('socketio', io);
 
 // server.timeout = 9999999999;
 mongoConfig.connectToServer(function (err) {
-
     require('./config/router')(app);
-
 })
 app.use(express.static(__dirname + '/public'));
-//app.use(express.static(__dirname + '/public/bower_components'));
-// app.use(express.static(__dirname + '/node_modules'));
+
 app.get('/', function (req, res) {
     res.sendFile(__dirname + '/public/index.html');
 });
 
-// require('./config/server_socket')(io);
 
 app.get("/client", function (req, res) {
     queryId = null;

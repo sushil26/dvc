@@ -346,7 +346,9 @@ io.sockets.on('connection', function (socket) {
 
         if (peerWithQueryId[data.userId] == data.queryLink && peerWithTimeId[data.userId] == data.timeLink) {
             var date = new Date();
-            
+            console.log("timeLink: "+timeLink);
+            console.log("peerWithQueryId: "+peerWithQueryId[data.userId]);
+            console.log("peerWithQueryId: "+peerWithQueryId[data.userId]);
             var queryObj = {
                 "url": "https://norecruits.com/careator/" + peerWithQueryId[data.userId] + "/" + peerWithTimeId[data.userId],
             }

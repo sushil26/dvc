@@ -41,13 +41,13 @@ var server = app.listen('5000', function () {
 
 var io = require('socket.io').listen(server);
 app.set('socketio', io);
-
+var chatHistory;
 // server.timeout = 9999999999;
 mongoConfig.connectToServer(function (err) {
     require('./config/router')(app);
     var db = mongoConfig.getDb();
-console.log("db: "+db);
-var chatHistory = db.collection("chatHistory");
+    console.log("db: " + db);
+    chatHistory = db.collection("chatHistory");
 
 })
 app.use(express.static(__dirname + '/public'));

@@ -386,7 +386,7 @@ signaling_socket.on("connect", function () {
     if (config.queryId == null) {
       console.log("query id is null");
       document
-        .getElementById("videoConferenceUrl")
+        .getElementById("videoConfStart")
         .setAttribute(
           "onclick",
           "startSession('" + peerNew_id + "' , '" + date + "')"

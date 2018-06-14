@@ -255,7 +255,7 @@ module.exports.emailInvite = function (req, res) {
 module.exports.recordVideo = function (req, res) {
     console.log("recordVideo-->");
     //var videoBase64 = req.body.base64data;
-    console.log("req.files.data: "+req.files.data);
+    console.log("req.files.data: "+JSON.stringify(req.files.data));
 
     console.log("req.body.eventId: " + req.body.eventId)
     var gfs = Grid(conn.db);

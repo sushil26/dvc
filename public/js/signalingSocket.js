@@ -270,6 +270,16 @@ function disconnecSession() {
   console.log("disconnecSession-->");
   console.log("sessionHeader: " + sessionHeader);
   console.log("peerNew_id: " + peerNew_id);
+  var videoElem = document.getElementById('videoElem');
+  let stream = videoElem.srcObject;
+  let tracks = stream.getTracks();
+
+  tracks.forEach(function(track) {
+    track.stop();
+  });
+
+  videoElem.srcObject = null;
+
   localStorage.removeItem("careatorEmail");
   localStorage.removeItem("careatorFriendName");
   userName = null;

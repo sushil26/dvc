@@ -352,10 +352,12 @@ io.sockets.on('connection', function (socket) {
     /* ##### Start Gether text message  #### */
     socket.on('textMsg', function (data) {
         console.log("textMsg-->");
+
         // //Send message to everyone
         console.log("peerWithQueryId[data.userId]: " + peerWithQueryId[data.userId]);
 
         if (peerWithQueryId[data.userId] == data.queryLink && peerWithTimeId[data.userId] == data.timeLink) {
+            var date = new Date();
             var queryObj = {
                 "url": "https://norecruits.com/careator/" + data.userId + "/" + data.userId,
                 "email": data.email

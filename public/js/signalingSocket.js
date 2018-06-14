@@ -1516,7 +1516,7 @@ function storeRecordVideo() {
     $.ajax({
       type: 'POST',
       url: "https://norecruits.com/record/recordVideo",
-      data: fd,
+      data: JSON.stringify(obj),
       contentType: "application/json"
       //     dataType: "json",
     }).done(function (data) {

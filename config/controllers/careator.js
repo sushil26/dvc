@@ -74,6 +74,7 @@ module.exports.pswdCheck = function (req, res) {
             else {
                 if (findData.length > 0) {
                     if (findData[0].password == password) {
+
                         responseData = {
                             status: true,
                             message: "Login Successfully"
@@ -260,6 +261,14 @@ module.exports.emailInvite = function (req, res) {
             res.status(200).send(responseData);
         }
     });
+
+}
+
+module.exports.setCollection = function(req, res){
+console.log("setCollection-->");
+console.log("req.body.url: "+req.body.url);
+console.log("req.body.email: "+req.body.url);
+
 
 }
 

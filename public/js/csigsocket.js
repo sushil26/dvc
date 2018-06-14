@@ -225,10 +225,10 @@ function emailInvite() {
       };
       console.log("data: " + JSON.stringify(data));
       document.getElementById("info").innerHTML = data.message;
-      setTimeout(function() {
+      setTimeout(function () {
         $('#info').fadeOut('fast');
-    }, 3000);
-     // document.getElementById("info").innerHTML = data.message;
+      }, 3000);
+      // document.getElementById("info").innerHTML = data.message;
     },
     error: function (err) {
       console.log("err: " + JSON.stringify(err));
@@ -303,29 +303,54 @@ function disconnecSession() {
 
 function startSession(id, date) {
   console.log("startSession-->");
-  window.location.href = "https://norecruits.com/careator/" + id + "/" + date;
   var url = "https://norecruits.com/careator/" + id + "/" + date;
+
   var obj = {
+    "email": localStorage.getItem('careatorEmail'),
     "url": url
-  };
+  }
   $.ajax({
-    url: "https://norecruits.com/vc/sessionCreate",
-    //  url: "http://localhost:5000/vc/login4VC",
+    url: "https://norecruits.com/careator/setCollection",
     type: "POST",
     data: JSON.stringify(obj),
     contentType: "application/json",
     dataType: "json",
     success: function (data) {
       console.log("data: " + JSON.stringify(data));
-      console.log("data.status: " + data.status);
-      if (data.status) {
-        //window.location.href = data.data.url;
-      } else {
-        alert("refresh your page and try again");
-      }
+      window.location.href = "https://norecruits.com/careator/" + id + "/" + date;
+    },
+    error: function (err) {
+      console.log("err: " + JSON.stringify(err));
+      console.log("err.responseText: " + JSON.stringify(err.responseText));
+      console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
+     
     }
+
   });
-  console.log(",--startSession");
+  
+
+
+  // var obj = {
+  //   "url": url
+  // };
+  // $.ajax({
+  //   url: "https://norecruits.com/vc/sessionCreate",
+  //   //  url: "http://localhost:5000/vc/login4VC",
+  //   type: "POST",
+  //   data: JSON.stringify(obj),
+  //   contentType: "application/json",
+  //   dataType: "json",
+  //   success: function (data) {
+  //     console.log("data: " + JSON.stringify(data));
+  //     console.log("data.status: " + data.status);
+  //     if (data.status) {
+  //       //window.location.href = data.data.url;
+  //     } else {
+  //       alert("refresh your page and try again");
+  //     }
+  //   }
+  // });
+  // console.log(",--startSession");
 }
 
 signaling_socket.on("connect", function () {

@@ -354,40 +354,40 @@ io.sockets.on('connection', function (socket) {
         console.log("textMsg-->");
         // //Send message to everyone
         console.log("peerWithQueryId[data.userId]: " + peerWithQueryId[data.userId]);
+
         if (peerWithQueryId[data.userId] == data.queryLink && peerWithTimeId[data.userId] == data.timeLink) {
-            if (peerWithQueryId[data.userId] == data.queryLink && peerWithTimeId[data.userId] == data.timeLink) {
-                var queryObj = {
-                    "url": "https://norecruits.com/careator/" + data.userId + "/" + data.userId,
-                    "email": data.email
-                }
-                console.log("queryObj: " + JSON.stringify(queryObj));
-                var obj = {
-                    'message': data.message,
-                    'url': data.userId + "/" + data.userId,
-                    'userName': data.userName,
-                    'textTime': date
-                }
-                console.log("obj: " + JSON.stringify(obj));
-                chatHistory.insertOne(queryObj,{$push:{"chat":obj}}, function (err, data) {
-                    if (err) {
-                        console.log("errr: " + JSON.stringify(err));
-                    }
-                    else {
-                        console.log("data: " + JSON.stringify(data));
-                    }
-                })
-                io.sockets.emit('newTextMsg', { 'message': data.message, 'userId': data.userId, 'queryId': peerWithQueryId[data.userId], 'time': peerWithTimeId[data.userId], 'userName': data.userName });
-
-                // io.sockets.emit('userDetail', {'userId': data.userId,'userName': data.userName });
+            var queryObj = {
+                "url": "https://norecruits.com/careator/" + data.userId + "/" + data.userId,
+                "email": data.email
             }
-            else {
-                console.log("textMsg: sorry ");
-                console.log("queryId: " + queryId);
-                console.log("data.queryLink: " + data.queryLink);
+            console.log("queryObj: " + JSON.stringify(queryObj));
+            var obj = {
+                'message': data.message,
+                'url': data.userId + "/" + data.userId,
+                'userName': data.userName,
+                'textTime': date
             }
-            console.log("<--textMsg");
+            console.log("obj: " + JSON.stringify(obj));
+            chatHistory.insertOne(queryObj, { $push: { "chat": obj } }, function (err, data) {
+                if (err) {
+                    console.log("errr: " + JSON.stringify(err));
+                }
+                else {
+                    console.log("data: " + JSON.stringify(data));
+                }
+            })
+            io.sockets.emit('newTextMsg', { 'message': data.message, 'userId': data.userId, 'queryId': peerWithQueryId[data.userId], 'time': peerWithTimeId[data.userId], 'userName': data.userName });
 
-        })
+            // io.sockets.emit('userDetail', {'userId': data.userId,'userName': data.userName });
+        }
+        else {
+            console.log("textMsg: sorry ");
+            console.log("queryId: " + queryId);
+            console.log("data.queryLink: " + data.queryLink);
+        }
+        console.log("<--textMsg");
+
+    })
     /* ##### End Gether text message  #### */
     var information = null;
 

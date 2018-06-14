@@ -30,7 +30,8 @@ var time = null;
 
 var mongoConfig = require('./config/dbConfig.js');
 var db = require("./config/dbConfig.js").getDb();
-var chatHistory = db.collection("chatHistory");
+console.log("db: "+db);
+//var chatHistory = db.collection("chatHistory");
 
 var server = app.listen('5000', function () {
     console.log("Listening on port 5000");

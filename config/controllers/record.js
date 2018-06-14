@@ -9,7 +9,6 @@ var randomstring = require("randomstring");
 var requireFromUrl = require('require-from-url');
 var GridStore = require('mongodb').GridStore;
 var streamifier = require('streamifier');
-const blobToBase64 = require('blob-to-base64');
 var base64 = require('file-base64');
 var event = db.collection('event');
 var transporter = nodemailer.createTransport({
@@ -254,8 +253,7 @@ module.exports.emailInvite = function (req, res) {
 
 module.exports.recordVideo = function (req, res) {
     console.log("recordVideo-->");
-    //var videoBase64 = req.body.base64data;
-    console.log("req.files.data: "+JSON.stringify(req.files.data));
+    var videoBase64 = req.body.base64data;
 
     console.log("req.body.eventId: " + req.body.eventId)
     var gfs = Grid(conn.db);
@@ -263,17 +261,17 @@ module.exports.recordVideo = function (req, res) {
         filename: 'vcRecord.mpg',
 
     });
-    blobToBase64(req.files.data, function (error, base64) {
-        if (!error) {
-          console.log("base64: "+base64);
-          console.log("base64: "+JSON.stringify(base64));
-        }
-      })
-    // var byte_string = videoBase64.substr(23);//The base64 has a imageURL
-    // var buffer = new Buffer(byte_string);   //new Buffer(b64string, 'base64');  you can use base64 encoding with creating new buffer string
-    // var response = streamifier.createReadStream(buffer).pipe(writeStream);  // returns response which is having all information regarding saved byte string
-    // var lastInsertedFileId = response._store.fileId;  // now you can store it into another document for future use.
-    // console.log(lastInsertedFileId);
+    // base64.encode(req.files.data, function (err, base64String) {
+    //     console.log(base64String);
+    //     var response = fs.createReadStream(base64String).pipe(writeStream);  // returns response which is having all information regarding saved byte string
+    //     var lastInsertedFileId = response._store.fileId;  // now you can store it into another document for future use.
+    //     console.log(lastInsertedFileId);
+    // });
+    var byte_string = videoBase64.substr(23);//The base64 has a imageURL
+    var buffer = new Buffer(byte_string);   //new Buffer(b64string, 'base64');  you can use base64 encoding with creating new buffer string
+    var response = streamifier.createReadStream(buffer).pipe(writeStream);  // returns response which is having all information regarding saved byte string
+    var lastInsertedFileId = response._store.fileId;  // now you can store it into another document for future use.
+    console.log(lastInsertedFileId);
 
     writeStream.on('close', function (file) {
         console.log(file.filename + "written to db");
@@ -316,20 +314,21 @@ module.exports.getRecordVideo = function (req, res) {
         output += chunk;
     });
 
-    base64.decode(output, function (err, output) {
-        console.log('output');
-        // dump contents to console when complete
-        readStream.on("end", function () {
-            console.log("Final Output");
-            responseData = {
-                status: true,
-                message: "get successful",
-                data: output
-            };
-            res.status(200).send(responseData);
-            //console.log(output);
+    // base64.decode(output, function (err, output) {
+    //     console.log('output');
+    //     // dump contents to console when complete
+        
+    // });
+    readStream.on("end", function () {
+        console.log("Final Output");
+        responseData = {
+            status: true,
+            message: "get successful",
+            data: output
+        };
+        res.status(200).send(responseData);
+        //console.log(output);
 
-        });
     });
 
 

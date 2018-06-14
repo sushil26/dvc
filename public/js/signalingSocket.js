@@ -1497,34 +1497,32 @@ document.querySelector('#resume-recording').onclick = function () {
 function storeRecordVideo() {
   console.log("storeRecordVideo-->");
 
-  // var reader = new FileReader();
+  var reader = new FileReader();
 
-  // reader.readAsDataURL(recordedURL);
-  // reader.onloadend = function () {
-  //   base64data = reader.result;
-  //   console.log("base64data: " + base64data);
-  var eventId = localStorage.getItem("eventId");
-  // console.log("eventId: " + eventId);
-  // var obj = {
-  //   "eventId": eventId,
-  //   "base64data": base64data
-  // }
-  // console.log("obj: " + JSON.stringify(obj));
-  var fd = new FormData();
-  //fd.append('fname', 'test.wav');
-  fd.append('data', recordedURL);
-  $.ajax({
-    type: 'POST',
-    url: "https://norecruits.com/record/recordVideo",
-    data: fd,
-    // contentType: "application/json"
-    processData: false,  // tell jQuery not to process the data
-    contentType: false,  // tell jQuery not to set contentType
-    //     dataType: "json",
-  }).done(function (data) {
-    console.log(data);
-  });
-  // }
+  reader.readAsDataURL(recordedURL);
+  reader.onloadend = function () {
+    base64data = reader.result;
+    console.log("base64data: " + base64data);
+    var eventId = localStorage.getItem("eventId");
+    console.log("eventId: " + eventId);
+    var obj = {
+      "eventId": eventId,
+      "base64data": base64data
+    }
+    console.log("obj: " + JSON.stringify(obj));
+    var fd = new FormData();
+    //fd.append('fname', 'test.wav');
+    fd.append('data', recordedURL);
+    $.ajax({
+      type: 'POST',
+      url: "https://norecruits.com/record/recordVideo",
+      data: fd,
+      contentType: "application/json"
+      //     dataType: "json",
+    }).done(function (data) {
+      console.log(data);
+    });
+  }
   //var resultedBlob = dataURItoBlob(recordedURL);
   //var resultedBlob = dataURItoBlob(recordedURL);
 

@@ -343,7 +343,7 @@ signaling_socket.on("connect", function () {
     //console.log("Unique Peer Id: " + config.peer_id)
     queryLink = config.queryId;
     peerNew_id = config.peer_id;
-    urlDate = config.time;
+    
     timeLink = config.time;
     console.log("urlDate: "+urlDate+" timeLink: "+timeLink);
     var dt = new Date();
@@ -353,7 +353,7 @@ signaling_socket.on("connect", function () {
     var hr = dt.getHours().toString();
 
     var date = dy.concat(fy, m, hr);
-
+    urlDate = date;
     console.log("queryLink: " + queryLink);
     console.log("peerNew_id: " + peerNew_id);
     console.log("date: " + date);

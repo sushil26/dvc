@@ -14,7 +14,8 @@ app.controller("vcChatAppCtrl", function ($scope, $rootScope, httpFactory, $http
             url: api
           }).then(function successCallback(response) {
               console.log("response: "+JSON.stringify(response));
-              $scope.chatHistory = data.data;
+              $scope.chatHistory = response.data.data;
+              console.log("$scope.chatHistory: "+$scope.chatHistory.length);
             }, function errorCallback(response) {
                 console.log("response: "+JSON.stringify(response));
               // called asynchronously if an error occurs

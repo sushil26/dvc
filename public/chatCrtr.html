@@ -106,46 +106,68 @@
                 <!--message_section-->
             </div>
         </div>
-       
+
 
 
     </div>
     <a href="#" data-target="#crdntl" data-toggle="modal" id="loginClick"></a>
     <div class="modal fade" id="crdntl" role="dialog">
-            <div class="modal-dialog">
-              <center>
+        <div class="modal-dialog">
+            <center>
                 <div class="modal-content" style="
                     max-width: 350px;
                     background: #00000075; color:#777; border: 0px;">
-                  <div class="modal-header" style="background-color: darkturquoise;     border-bottom: 0px;">
-                    <h4 class="modal-title" style="margin-left: 2px;">Login</h4>
-                    <button class="btn-default fa fa-close" style="margin-top: 2px;    border-color: white;
-                  border-radius: 25%;" aria-hidden="true" type="reset" data-dismiss="modal"></button>
-                  </div>
-                  <div class="modal-body">
-                   
-                    <hr>
-                    <input  style="
+                    <div class="modal-header" style="background-color: darkturquoise;     border-bottom: 0px;">
+                        <h4 class="modal-title" style="margin-left: 2px;">Login</h4>
+                        <span id="info_email" style="color:red;"></span>
+                    </div>
+                    <div class="modal-body">
+
+                        <hr>
+                        <input style="
                           background:  #ddd;
                           border-radius: inherit;
                           height: 50px;
-                          border: #ddd;" type="email" class="form-control" placeholder="Email"  id="crdEmail">
-                    <br>
-                    <input  style="
+                          border: #ddd;" type="email" class="form-control" placeholder="Email" id="crdEmail">
+                        <br>
+                        <input style="
                           background:  #ddd;
                           border-radius: inherit;
                           height: 50px;
-                          border: #ddd;" type="password" id="crdPswd" class="form-control" placeholder="Password" >
-                  </div>
-                  <div class="modal-footer" style="border-top:0px; padding: 15px;">
-                    <button id="crdsubmit" type="button" style="background-color: #29b6bd;color:#f1f1f1; width: 100%; height:50px;" class="btn"
-                      onclick="logCareatorAdmin()" >Submit</button>
-                  </div>
+                          border: #ddd;" type="password" id="crdPswd" class="form-control" placeholder="Password">
+                    </div>
+                    <div class="modal-footer" style="border-top:0px; padding: 15px;">
+                        <button id="crdsubmit" type="button" style="background-color: #29b6bd;color:#f1f1f1; width: 100%; height:50px;" class="btn"
+                            onclick="logCareatorAdmin()">Submit</button>
+                    </div>
                 </div>
-              </center>
-            </div>
-          </div>
+            </center>
+        </div>
+    </div>
 </body>
+<script>
+    function logCareatorAdmin() {
+        var id = document.getElementById('crdEmail').value;
+        var pswd = document.getElementById('crdPswd').value;
+        if (id == 'vc4allAdmin@gmail.com') {
+            if (pswd == 'vc4all') {
+
+            }
+            else {
+                document.getElementById("info_email").innerHTML = "Password is Not Valid"
+                setTimeout(function () {
+                    $('#info_email').fadeOut('fast');
+                }, 3000);
+            }
+        }
+        else {
+            document.getElementById("info_email").innerHTML = "Email is Not Valid"
+            setTimeout(function () {
+                $('#info_email').fadeOut('fast');
+            }, 3000);
+        }
+    }
+</script>
 <style>
     #custom-search-input {
         background: #e8e6e7 none repeat scroll 0 0;

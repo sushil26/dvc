@@ -3,13 +3,13 @@ app.controller("vcChatAppCtrl", function ($scope, $http) {
 
     //    httpFactory.getFile('property.json');
     //    console.log("$rootScope.propertyJson: "+JSON.stringify($rootScope.propertyJson));
+    $("#setName").trigger("click");
+    // if(careatorAdmin){
 
-    if(careatorAdmin){
-
-    }
-    else{
-        $("#setName").trigger("click");
-    }
+    // }
+    // else{
+       
+    // }
 
     var email = localStorage.getItem('careatorEmail');
 

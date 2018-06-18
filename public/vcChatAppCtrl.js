@@ -1,7 +1,8 @@
 app.controller("vcChatAppCtrl", function ($scope, $rootScope, httpFactory) {
     console.log("Chat controller==>");
 
-    httpFactory.getFile('property.json');
+   var getPropFile = httpFactory.getFile('property.json');
+   console.log("getPropFile: "+getPropFile);
 
     var email = localStorage.getItem('careatorEmail');
 

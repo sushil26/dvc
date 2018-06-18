@@ -337,7 +337,7 @@ document.getElementById('historyChat').addEventListener("click", function () {
   var email = localStorage.getItem('careatorEmail');
     
   $.ajax({
-    url: "https://norecruits.com/careator/getHistoryByEmailId/" + email,
+    url: "https://norecruits.com/chatHistory/getHistoryByEmailId/" + email,
     type: "GET",
     contentType: "application/json",
     dataType: "json",

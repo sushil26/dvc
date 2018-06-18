@@ -91,7 +91,7 @@
                         </div>
                         <!--new_message_head-->
                         <div class="chat_area">
-                            <ul class="list-unstyled" ng-repeat="chat in chats">
+                            <ul class="list-unstyled" ng-repeat="chat in chats | orderBy:'session_dateTime'">
                                 <li class="left clearfix" ng-if="!chat.email">
                                     <span class="chat-img1 pull-left">
                                         <i class="fa fa-user" style="font-size:40px; color:aquamarine"></i>

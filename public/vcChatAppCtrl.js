@@ -2,7 +2,7 @@ app.controller("vcChatAppCtrl", function ($scope, $rootScope, httpFactory) {
     console.log("Chat controller==>");
 
     httpFactory.getFile('property.json');
-    
+
     var email = localStorage.getItem('careatorEmail');
 
     $scope.getChatHistoryById = function () {
@@ -23,6 +23,6 @@ app.controller("vcChatAppCtrl", function ($scope, $rootScope, httpFactory) {
         })
     }
 
-    $scope.getChatHistoryById();
+    //$scope.getChatHistoryById();
 
 })

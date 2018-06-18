@@ -269,8 +269,6 @@ module.exports.setCollection = function (req, res) {
 module.exports.getHistoryByEmailId = function (req, res) {
     console.log("setCollection-->");
     var email = req.params.email;
-
-
     var obj = {
         "email": email,
     }
@@ -300,6 +298,33 @@ module.exports.getHistoryByEmailId = function (req, res) {
 
 }
 
+module.exports.getHistory = function (req, res) {
+    console.log("getHistory-->");
+    
+    chatHistory.find().toArray(function (err, data) {
+        console.log("data: "+JSON.stringify(data));
+        console.log("data.length: "+data.length);
+        if (err) {
+            console.log("err: " + JSON.stringify(err));
+            responseData = {
+                status: false,
+                message: "UnSuccessfully"
+            };
+            res.status(400).send(responseData);
+        }
+        else {
+            console.log("data: " + JSON.stringify(data));
+            responseData = {
+                status: true,
+                message: "Successfully",
+                data: data
+            };
+            res.status(200).send(responseData);
+        }
+    })
+
+
+}
 
 
 

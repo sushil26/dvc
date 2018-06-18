@@ -41,7 +41,7 @@
                             <ul class="list-unstyled" id="parentUl_listOfChat" ng-repeat="chatHistory in chatHistory" ng-if="chatHistory.chat.length>0">
                                 <li class="left clearfix" ng-click="chatShow($index)">
                                     <span class="chat-img pull-left">
-                                        <i class="fa fa-user"></i>
+                                        <i class="fa fa-user" style="font-size:30px; color:rgb(20, 128, 92)"></i>
                                     </span>
                                     <div class="chat-body clearfix">
                                         <div class="header_sec">
@@ -94,7 +94,7 @@
                             <ul class="list-unstyled" ng-repeat="chat in chats">
                                 <li class="left clearfix" ng-if="!chat.email">
                                     <span class="chat-img1 pull-left">
-                                        <i class="fa fa-user "></i>
+                                        <i class="fa fa-user" style="font-size:40px; color:aquamarine"></i>
                                         <!-- <label>{{chat.userName}}</label> -->
                                     </span>
                                     <div class="chat-body1 clearfix">
@@ -105,7 +105,7 @@
 
                                 <li class="left clearfix admin_chat" ng-if="!!chat.email">
                                     <span class="chat-img1 pull-right">
-                                        <i class="fa fa-user "></i>
+                                        <i class="fa fa-user" style="font-size:40px; color:orange"></i>
                                         <!-- <label>{{chat.userName}}</label> -->
                                     </span>
                                     <div class="chat-body1 clearfix">

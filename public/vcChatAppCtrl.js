@@ -1,8 +1,8 @@
 app.controller("vcChatAppCtrl", function ($scope, $rootScope, httpFactory, $http) {
     console.log("Chat controller==>");
 
-//    httpFactory.getFile('property.json');
-//    console.log("$rootScope.propertyJson: "+JSON.stringify($rootScope.propertyJson));
+    //    httpFactory.getFile('property.json');
+    //    console.log("$rootScope.propertyJson: "+JSON.stringify($rootScope.propertyJson));
 
     var email = localStorage.getItem('careatorEmail');
 
@@ -12,31 +12,23 @@ app.controller("vcChatAppCtrl", function ($scope, $rootScope, httpFactory, $http
         $http({
             method: 'GET',
             url: api
-          }).then(function successCallback(response) {
-              console.log("response: "+JSON.stringify(response));
-              $scope.chatHistory = response.data.data;
-              console.log("$scope.chatHistory: "+$scope.chatHistory[0].chat.length);
-            }, function errorCallback(response) {
-                console.log("response: "+JSON.stringify(response));
-              // called asynchronously if an error occurs
-              // or server returns response with an error status.
-            });
-
-        // httpFactory.get(api).then(function (data) {
-        //     console.log("data--" + JSON.stringify(data.data));
-        //     var checkStatus = httpFactory.dataValidation(data);
-        //     if (checkStatus) {
-        //         $scope.chatHistory = data.data;
-        //         // $scope.adminList = data.data.data;
-        //         // console.log("adminList: " + JSON.stringify($scope.adminList));
-        //         // console.log(data.data.message);
-        //     }
-        //     else {
-        //         console.log("Sorry");
-        //     }
-        // })
+        }).then(function successCallback(response) {
+            console.log("response: " + JSON.stringify(response));
+            $scope.chatHistory = response.data.data;
+            console.log("$scope.chatHistory: " + $scope.chatHistory[0].chat.length);
+        }, function errorCallback(response) {
+            console.log("response: " + JSON.stringify(response));
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+        });
     }
 
     $scope.getChatHistoryById();
+
+    $scope.chatShow = function (index) {
+        console.log("chatShow-->");
+        console.log("$scope.chatHistory[index]: "+JSON.stringify($scope.chatHistory));
+
+    }
 
 })

@@ -119,30 +119,23 @@
                       border-radius: 25%;" aria-hidden="true" type="reset" data-dismiss="modal"></button>
                       </div>
                       <div class="modal-body">
-                        <div style="background:darkturquoise;
-                    /* border: 1px solid white; */
-                    border-radius: 5px;
-                    width: 50%;
-                    padding: 3px;">
-                          <input type="radio" ng-model="loginType" value="teacher" checked="checked"> School &nbsp&nbsp
-                          <input type="radio" ng-model="loginType" value="studParent"> Parent
-                        </div>
+                       
                         <hr>
-                        <input ng-keyup="$event.keyCode == 13 && logVC(loginType, email, Password)" style="
+                        <input ng-keyup="$event.keyCode == 13 && logCareatorAdmin(loginType, email, Password)" style="
                               background:  #ddd;
                               border-radius: inherit;
                               height: 50px;
-                              border: #ddd;" type="email" class="form-control" placeholder="Email" ng-model="email" id="crdEmail">
+                              border: #ddd;" type="email" class="form-control" placeholder="Email"  id="crdEmail">
                         <br>
-                        <input ng-keyup="$event.keyCode == 13 && logVC(loginType, email, Password)" style="
+                        <input ng-keyup="$event.keyCode == 13 && logCareatorAdmin(loginType, email, Password)" style="
                               background:  #ddd;
                               border-radius: inherit;
                               height: 50px;
-                              border: #ddd;" type="password" id="crdPswd" class="form-control" placeholder="Password" ng-model="Password">
+                              border: #ddd;" type="password" id="crdPswd" class="form-control" placeholder="Password" >
                       </div>
                       <div class="modal-footer" style="border-top:0px; padding: 15px;">
                         <button id="crdsubmit" type="button" style="background-color: #29b6bd;color:#f1f1f1; width: 100%; height:50px;" class="btn"
-                          ng-click="logVC(loginType, email, Password)" data-dismiss="modal">Submit</button>
+                          onclick="logCareatorAdmin()" >Submit</button>
                       </div>
                     </div>
                   </center>

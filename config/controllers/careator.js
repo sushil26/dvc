@@ -267,7 +267,7 @@ module.exports.setCollection = function (req, res) {
 
 module.exports.getHistoryByEmailId = function (req, res) {
     console.log("setCollection-->");
-    var email = "logeswari.g@careator.com";
+    var email = req.params.email;
 
 
     var obj = {

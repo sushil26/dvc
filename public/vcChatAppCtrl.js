@@ -3,7 +3,7 @@ app.controller("vcChatAppCtrl", function ($scope, $http) {
 
     //    httpFactory.getFile('property.json');
     //    console.log("$rootScope.propertyJson: "+JSON.stringify($rootScope.propertyJson));
-    $("#crdntl").trigger("click");
+    $("#loginClick").trigger("click");
     // if(careatorAdmin){
 
     // }

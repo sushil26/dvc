@@ -17,7 +17,7 @@ module.exports = function (app) {
     app.post('/careator/pswdCheck', careator.pswdCheck);
     app.post('/careator/emailInvite', careator.emailInvite);
     app.post('/careator/setCollection', careator.setCollection);
-    app.get('/careator/getHistoryByEmailId', careator.getHistoryByEmailId);
+    app.get('/careator/getHistoryByEmailId/:email', careator.getHistoryByEmailId);
 
     app.post('/record/pswdGenerate', record.pswdGenerate);
     app.post('/record/pswdCheck', record.pswdCheck);

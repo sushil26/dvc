@@ -332,7 +332,7 @@ function startSession(id, date) {
 
 /* ### Start gathere history data ### */
 document.getElementById('historyChat').addEventListener("click", function () {
-  console.log("screenShare-->");
+  console.log("historyChat-->");
 
   var email = localStorage.getItem('careatorEmail');
     
@@ -351,7 +351,7 @@ document.getElementById('historyChat').addEventListener("click", function () {
       console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
     }
   });
-  console.log("<--screenShare");
+  console.log("<--historyChat");
 })
 /* ### End gathere history data ### */
 

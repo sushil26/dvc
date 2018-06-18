@@ -5,39 +5,70 @@ app.controller("vcChatAppCtrl", function ($scope, $http, $timeout) {
     //    console.log("$rootScope.propertyJson: "+JSON.stringify($rootScope.propertyJson));
    
     $("#loginClick").trigger("click");
-  
-    $scope.logCareatorAdmin = function ( email, Password) {
-        $scope.notification = false;
-        console.log("logCareatorAdmin");
-        // loginModal.close('resetModel');
-      
-        if (email == 'vc4allAdmin@gmail.com') {
-          
-            if (Password == 'vc4all') {
 
+    function logCareatorAdmin() {
+        var id = document.getElementById('crdEmail').value;
+        console.log("id: " + id);
+        var pswd = document.getElementById('crdPswd').value;
+        if (id == 'vc4allAdmin@gmail.com') {
+            if (pswd == 'vc4all') {
+                $('#crdntl').modal('hide');
             }
             else {
-                
-                // $scope.doGreeting = function () {
-                    $scope.msg = 'Password is not valied'
-                    $scope.notification = true;
-                  
-                // };
-               
-            }
+                document.getElementById("info_email").innerHTML = "Password is Not Valid"
+                setTimeout(function () {
+                    $('#info_email').fadeOut('fast');
+                    $('#info_email').fadeIn('fast');
+                    document.getElementById("info_email").innerHTML = '';
+                    document.getElementById("info_email").style.display = 'inline';
+                }, 3000);
 
+            }
         }
         else {
-            // $scope.notification = false;
-            // $scope.doGreeting = function () {
-                $scope.msg = 'Email is not valied';
-                $scope.notification = true;
-               
-            // };
-           
-        }
+            document.getElementById("info_email").innerHTML = "Email is Not Valid"
+            setTimeout(function () {
+                $('#info_email').fadeOut('fast');
+                $('#info_email').fadeIn('fast');
+                document.getElementById("info_email").innerHTML = '';
+                document.getElementById("info_email").style.display = 'inline';
+            }, 3000);
 
+        }
     }
+  
+    // $scope.logCareatorAdmin = function ( email, Password) {
+    //     $scope.notification = false;
+    //     console.log("logCareatorAdmin");
+    //     // loginModal.close('resetModel');
+      
+    //     if (email == 'vc4allAdmin@gmail.com') {
+          
+    //         if (Password == 'vc4all') {
+
+    //         }
+    //         else {
+                
+    //             // $scope.doGreeting = function () {
+    //                 $scope.msg = 'Password is not valied'
+    //                 $scope.notification = true;
+                  
+    //             // };
+               
+    //         }
+
+    //     }
+    //     else {
+    //         // $scope.notification = false;
+    //         // $scope.doGreeting = function () {
+    //             $scope.msg = 'Email is not valied';
+    //             $scope.notification = true;
+               
+    //         // };
+           
+    //     }
+
+    // }
     // if(careatorAdmin){
 
     // }

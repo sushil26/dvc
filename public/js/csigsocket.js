@@ -70,6 +70,7 @@ if (stuff.length > 5) {
     console.log("No user data from session");
     $("#setName").trigger("click");
   }
+  document.getElementById("historyChat").style.display = "none";
   console.log("userName: " + userName);
 }
 else {
@@ -82,6 +83,7 @@ else {
     console.log("2 cond: emailIdSplit: " + JSON.stringify(emailIdSplit));
     userName = emailIdSplit[0];
     document.getElementById("videoConferenceUrl").style.display = "block";
+    document.getElementById("historyChat").style.display = "block";
 
   }
   else {

@@ -240,7 +240,8 @@ module.exports.setCollection = function (req, res) {
     var obj = {
         "email": req.body.email,
         "url": req.body.url,
-        "chat": []
+        "chat": [],
+        "session_dateTime": new Date()
     }
     console.log("obj: " + JSON.stringify(obj));
     chatHistory.insertOne(obj, function (err, data) {

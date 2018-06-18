@@ -4,10 +4,11 @@ app.controller("vcChatAppCtrl", function ($scope, $http, $timeout) {
     //    httpFactory.getFile('property.json');
     //    console.log("$rootScope.propertyJson: "+JSON.stringify($rootScope.propertyJson));
     $("#loginClick").trigger("click");
+    $scope.notification = false;
     $scope.logCareatorAdmin = function (loginType, email, Password) {
         console.log("logCareatorAdmin");
         // loginModal.close('resetModel');
-        $scope.notification = false;
+      
         if (email == 'vc4allAdmin@gmail.com') {
           
             if (Password == 'vc4all') {

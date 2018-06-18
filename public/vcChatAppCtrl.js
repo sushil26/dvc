@@ -74,7 +74,7 @@ app.controller("vcChatAppCtrl", function ($scope, $http, $timeout) {
     $scope.careator_chatHistoryLogOut = function(){
         console.log("careator_chatHistoryLogOut-->");
         localStorage.removeItem("admin");
-        window.location.href = "http://www.careator.com/";
+        window.location = "http://www.careator.com/";
     }
 
 

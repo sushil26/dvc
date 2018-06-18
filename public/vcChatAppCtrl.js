@@ -47,7 +47,7 @@ app.controller("vcChatAppCtrl", function ($scope, $http, $timeout) {
     }
 
 
-    // var email = localStorage.getItem('careatorEmail');
+    var email = localStorage.getItem('careatorEmail');
 
     $scope.getChatHistoryById = function () {
         var api = "https://norecruits.com/chatHistory/getHistoryByEmailId/" + email;

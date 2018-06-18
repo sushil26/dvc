@@ -27,7 +27,8 @@ app.controller("vcChatAppCtrl", function ($scope, $rootScope, httpFactory, $http
 
     $scope.chatShow = function (index) {
         console.log("chatShow-->");
-        console.log("$scope.chatHistory[index]: "+JSON.stringify($scope.chatHistory));
+        console.log("$scope.chatHistory[index]: "+JSON.stringify($scope.chatHistory[index]));
+        $scope.chats = $scope.chatHistory[$index];
 
     }
 

@@ -90,12 +90,13 @@
                             </div>
                         </div>
                         <!--new_message_head-->
-                        <div class="chat_area" >
+                        <div class="chat_area">
                             <ul class="list-unstyled" ng-repeat="chat in chats">
                                 <li class="left clearfix" ng-if="!chat.email">
                                     <span class="chat-img1 pull-left">
                                         <i class="fa fa-user" style="font-size:40px; color:aquamarine"></i>
-                                        <!-- <label>{{chat.userName}}</label> -->
+                                        <br>
+                                        <label>{{chat.userName}}</label>
                                     </span>
                                     <div class="chat-body1 clearfix">
                                         <p>{{chat.message}}</p>
@@ -106,7 +107,8 @@
                                 <li class="left clearfix admin_chat" ng-if="!!chat.email">
                                     <span class="chat-img1 pull-right">
                                         <i class="fa fa-user" style="font-size:40px; color:orange"></i>
-                                        <!-- <label>{{chat.userName}}</label> -->
+                                        <br>
+                                        <label>{{chat.userName}}</label>
                                     </span>
                                     <div class="chat-body1 clearfix">
                                         <p>{{chat.message}}</p>

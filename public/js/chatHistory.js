@@ -7,7 +7,7 @@ $.ajax({
   dataType: "json",
   success: function (data) {
     console.log("data: " + JSON.stringify(data));
-    console.log("data.data.length: "+data.data[0].length);
+    console.log("data.data.length: "+data.data.length);
     //window.location.href = "https://norecruits.com/careator/" + id + "/" + date;
   },
   error: function (err) {

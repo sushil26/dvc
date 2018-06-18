@@ -3,7 +3,7 @@ app.controller("vcChatAppCtrl", function ($scope, $http, $timeout) {
 
     //    httpFactory.getFile('property.json');
     //    console.log("$rootScope.propertyJson: "+JSON.stringify($rootScope.propertyJson));
-    // $scope.notification = false;
+    $scope.notification = false;
     $("#loginClick").trigger("click");
   
     $scope.logCareatorAdmin = function (loginType, email, Password) {
@@ -20,9 +20,7 @@ app.controller("vcChatAppCtrl", function ($scope, $http, $timeout) {
                 // $scope.doGreeting = function () {
                     $scope.msg = 'Password is not valied'
                     $scope.notification = true;
-                    $timeout(function () {
-                        $scope.notification = false;
-                    }, 10000);
+                  
                 // };
                
             }
@@ -33,9 +31,7 @@ app.controller("vcChatAppCtrl", function ($scope, $http, $timeout) {
             // $scope.doGreeting = function () {
                 $scope.msg = 'Email is not valied';
                 $scope.notification = true;
-                $timeout(function () {
-                    $scope.notification = false;
-                }, 10000);
+               
             // };
            
         }

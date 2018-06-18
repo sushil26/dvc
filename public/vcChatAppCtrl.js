@@ -32,7 +32,7 @@ app.controller("vcChatAppCtrl", function ($scope, $http) {
         });
     }
 
-    $scope.getChatHistoryById();
+    // $scope.getChatHistoryById();
 
     $scope.chatShow = function (index) {
         console.log("chatShow-->");

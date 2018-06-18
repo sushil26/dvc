@@ -272,10 +272,10 @@ module.exports.getHistoryByEmailId = function (req, res) {
 
 
     var obj = {
-        "email": email
+        "email": email,
     }
     console.log("obj: " + JSON.stringify(obj));
-    chatHistory.find(obj).toArray(function (err, data) {
+    chatHistory.find(obj).sort({"created_at": -1}).toArray(function (err, data) {
         console.log("data: "+JSON.stringify(data));
         console.log("data.length: "+data.length);
         if (err) {

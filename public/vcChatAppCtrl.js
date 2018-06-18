@@ -1,29 +1,41 @@
-app.controller("vcChatAppCtrl", function ($scope, $rootScope, httpFactory) {
+app.controller("vcChatAppCtrl", function ($scope, $rootScope, httpFactory, $http) {
     console.log("Chat controller==>");
 
-   var getPropFile = httpFactory.getFile('property.json');
-   console.log("getPropFile: "+JSON.stringify(getPropFile));
+//    httpFactory.getFile('property.json');
+//    console.log("$rootScope.propertyJson: "+JSON.stringify($rootScope.propertyJson));
 
     var email = localStorage.getItem('careatorEmail');
 
     $scope.getChatHistoryById = function () {
-        var api = "chatHistory/getHistoryByEmailId/" + email;
+        var api = "https://norecruits.com/chatHistory/getHistoryByEmailId/" + email;
         console.log("api: " + api);
-        httpFactory.get(api).then(function (data) {
-            console.log("data--" + JSON.stringify(data.data));
-            var checkStatus = httpFactory.dataValidation(data);
-            if (checkStatus) {
-                $scope.chatHistory = data.data;
-                // $scope.adminList = data.data.data;
-                // console.log("adminList: " + JSON.stringify($scope.adminList));
-                // console.log(data.data.message);
-            }
-            else {
-                console.log("Sorry");
-            }
-        })
+        $http({
+            method: 'GET',
+            url: api
+          }).then(function successCallback(response) {
+              console.log("response: "+JSON.stringify(response));
+              $scope.chatHistory = data.data;
+            }, function errorCallback(response) {
+                console.log("response: "+JSON.stringify(response));
+              // called asynchronously if an error occurs
+              // or server returns response with an error status.
+            });
+
+        // httpFactory.get(api).then(function (data) {
+        //     console.log("data--" + JSON.stringify(data.data));
+        //     var checkStatus = httpFactory.dataValidation(data);
+        //     if (checkStatus) {
+        //         $scope.chatHistory = data.data;
+        //         // $scope.adminList = data.data.data;
+        //         // console.log("adminList: " + JSON.stringify($scope.adminList));
+        //         // console.log(data.data.message);
+        //     }
+        //     else {
+        //         console.log("Sorry");
+        //     }
+        // })
     }
 
-    //$scope.getChatHistoryById();
+    $scope.getChatHistoryById();
 
 })

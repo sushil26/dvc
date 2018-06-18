@@ -137,7 +137,7 @@ app.factory('httpFactory', function ($http, $q, $rootScope) {
             }).then(function (data) {
               
                 $rootScope.propertyJson = data.data;
-                console.log("data: "+JSON.stringify($rootScope.propertyJson));
+                //console.log("data: "+JSON.stringify($rootScope.propertyJson));
                 return $rootScope.propertyJson;
             });
             // 

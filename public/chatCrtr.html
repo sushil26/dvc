@@ -63,8 +63,6 @@
                     </div>
                 </div>
                 <!--chat_sidebar-->
-
-
                 <div class="col-sm-9 message_section">
                     <div class="row">
                         <div class="new_message_head">
@@ -73,24 +71,9 @@
                                     <i class="fa fa-plus-square-o" aria-hidden="true"></i> Message</button>
                             </div>
                             <div class="pull-right">
-                                <button class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fa fa-cogs" aria-hidden="true"></i> Setting
-                                    <span class="caret"></span>
-
-                                    <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
-                                            <!-- <li>
-                                                 <a href="#">Action</a>
-                                             </li>
-                                             <li>
-                                                 <a href="#">Profile</a>
-                                             </li> -->
-                                             <li>
-                                                 <a href="#" ng-click="careator_chatHistoryLogOut()">Logout</a>
-                                             </li>
-                                         </ul>
+                                <button class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ng-click="careator_chatHistoryLogOut()">
+                                    <i class="fa fa-cogs" aria-hidden="true"></i> Logout
                                 </button>
-                          
-
                             </div>
                         </div>
                     </div>
@@ -128,9 +111,6 @@
         </div>
     </div>
 
-
-
-    </div>
     <a href="#" data-target="#crdntl" data-toggle="modal" id="loginClick"></a>
     <div class="modal fade" id="crdntl" role="dialog">
         <div class="modal-dialog">

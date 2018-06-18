@@ -148,7 +148,7 @@
 <script>
     function logCareatorAdmin() {
         var id = document.getElementById('crdEmail').value;
-        console.log("id: "+id);
+        console.log("id: " + id);
         var pswd = document.getElementById('crdPswd').value;
         if (id == 'vc4allAdmin@gmail.com') {
             if (pswd == 'vc4all') {
@@ -159,6 +159,8 @@
                 setTimeout(function () {
                     $('#info_email').fadeOut('fast');
                 }, 3000);
+                document.getElementById("info_email").innerHTML = '';
+                document.getElementById("info_email").style.display = 'inline';
             }
         }
         else {
@@ -166,6 +168,8 @@
             setTimeout(function () {
                 $('#info_email').fadeOut('fast');
             }, 3000);
+            document.getElementById("info_email").innerHTML = '';
+            document.getElementById("info_email").style.display = 'inline';
         }
     }
 </script>

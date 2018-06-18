@@ -95,6 +95,11 @@ app.get("/careator/:id/:time", function (req, res) {
     res.sendFile(__dirname + '/public/careator.html');
 });
 
+app.get("/chatCrtr", function(req, res){
+    console.log("chatCrtr started to render-->");
+    res.sendFile(__dirname + '/public/chatCrtr.html');
+});
+
 // app.get("/record", function (req, res) {
 
 //     queryId = null;

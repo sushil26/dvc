@@ -348,7 +348,7 @@
                                         </div>
                                         <div class="popup-head-right pull-right">
                                             <div class="btn-group">
-                                                <button class="chat-header-button" data-toggle="dropdown" type="button" aria-expanded="false">
+                                                <button class="chat-header-button" data-toggle="dropdown"   onclick="chatExpand()" type="button" aria-expanded="false">
                                                     <i class="fa fa-expand" style="color:white"></i>
                                                 </button>
                                             </div>
@@ -565,6 +565,12 @@
 
     <script src="/js/chat.js"></script>
     <script>
+function chatExpand(){
+    window.location.href="https://norecruits.com/chatCrtr";
+
+}
+
+
         $("#message").keyup(function (event) {
             if (event.keyCode === 13) {
                 $("#sndmgs").click();

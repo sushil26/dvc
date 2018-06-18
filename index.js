@@ -80,9 +80,7 @@ app.get("/clientNew/:id/:time", function (req, res) {
 });
 
 app.get("/careator", function (req, res) {
-
     queryId = null;
-
     console.log("start to render page");
     res.sendFile(__dirname + '/public/careator.html');
 });
@@ -95,7 +93,7 @@ app.get("/careator/:id/:time", function (req, res) {
     res.sendFile(__dirname + '/public/careator.html');
 });
 
-app.get("/chatCrtr", function(req, res){
+app.get("/careatorChatHistory", function(req, res){
     console.log("chatCrtr started to render-->");
     res.sendFile(__dirname + '/public/chatCrtr.html');
 });

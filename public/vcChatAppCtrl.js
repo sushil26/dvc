@@ -1,8 +1,15 @@
-app.controller("vcChatAppCtrl", function ($scope, $rootScope, httpFactory, $http) {
+app.controller("vcChatAppCtrl", function ($scope, $http) {
     console.log("Chat controller==>");
 
     //    httpFactory.getFile('property.json');
     //    console.log("$rootScope.propertyJson: "+JSON.stringify($rootScope.propertyJson));
+
+    if(careatorAdmin){
+
+    }
+    else{
+        $("#setName").trigger("click");
+    }
 
     var email = localStorage.getItem('careatorEmail');
 

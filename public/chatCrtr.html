@@ -100,7 +100,7 @@
                                     </span>
                                     <div class="chat-body1 clearfix">
                                         <p>{{chat.message}}</p>
-                                        <div class="chat_time pull-right">09:40PM</div>
+                                        <div class="chat_time pull-right">{{chat.textTime || date:'M/d/yy h:mm a'}}</div>
                                     </div>
                                 </li>
 
@@ -112,7 +112,7 @@
                                     </span>
                                     <div class="chat-body1 clearfix">
                                         <p>{{chat.message}}</p>
-                                        <div class="chat_time pull-left">09:40PM</div>
+                                        <div class="chat_time pull-left">{{chat.textTime | date:'M/d/yy h:mm a'}}</div>
                                     </div>
                                 </li>
                             </ul>

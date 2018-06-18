@@ -6,8 +6,8 @@ app.controller("vcChatAppCtrl", function ($scope, $http, $timeout) {
    
     $("#loginClick").trigger("click");
 
-    function logCareatorAdmin() 
-    document.querySelector('#start-recording').onclick = function () { 
+    
+    document.querySelector('#crdsubmit').onclick = function () { 
         var id = document.getElementById('crdEmail').value;
         console.log("id: " + id);
         var pswd = document.getElementById('crdPswd').value;

@@ -39,9 +39,6 @@ app.controller("vcChatAppCtrl", function ($scope, $http, $timeout) {
         $("#loginClick").trigger("click");
     }
 
-
-
-
     document.querySelector('#crdsubmit').onclick = function () {
         var id = document.getElementById('crdEmail').value;
         console.log("id: " + id);
@@ -72,6 +69,11 @@ app.controller("vcChatAppCtrl", function ($scope, $http, $timeout) {
             }, 3000);
 
         }
+    }
+
+    $scope.careator_chatHistoryLogOut = function(){
+        console.log("careator_chatHistoryLogOut-->");
+        localStorage.removeItem("admin");
     }
 
 

@@ -15,6 +15,7 @@ app.controller("vcChatAppCtrl", function ($scope, $rootScope, httpFactory, $http
         }).then(function successCallback(response) {
             console.log("response: " + JSON.stringify(response));
             $scope.chatHistory = response.data.data;
+            console.log("$scope.chatHistory[0].chat: "+JSON.stringify($scope.chatHistory[0].chat));
             $scope.chats = $scope.chatHistory[0].chat;
             console.log("$scope.chatHistory: " + $scope.chatHistory[0].chat.length);
         }, function errorCallback(response) {

@@ -39,7 +39,7 @@
                         </div>
                         <div class="member_list">
                             <ul class="list-unstyled" id="parentUl_listOfChat" ng-repeat="chatHistory in chatHistory">
-                                <li class="left clearfix">
+                                <li class="left clearfix" ng-if="chatHistory.chat.length>0">
                                     <span class="chat-img pull-left">
                                         <img src="https://lh6.googleusercontent.com/-y-MY2satK-E/AAAAAAAAAAI/AAAAAAAAAJU/ER_hFddBheQ/photo.jpg" alt="User Avatar"
                                             class="img-circle">
@@ -51,7 +51,7 @@
                                                 09:45AM</strong>
                                         </div>
                                         <div class="contact_sec">
-                                            <strong class="primary-font">(123) 123-456</strong>---{{chatHistory.chat.length}}
+                                            <strong class="primary-font">(123) 123-456</strong>
                                             <span class="badge pull-right">{{chatHistory.chat.length}}</span>
                                         </div>
                                     </div>

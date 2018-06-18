@@ -184,15 +184,12 @@ function checkPassword() {
 
 function saveName() {
   console.log("setName-->");
-
   var careatorFriendName = document.getElementById("userName").value;
   localStorage.setItem("careatorFriendName", careatorFriendName);
   userName = localStorage.getItem("careatorFriendName");
   careatorFriendName = true;
   document.getElementById("videoConferenceUrl").style.display = "none";
   document.getElementById("emailInvitation").style.display = "none";
-
-
 }
 
 function emailInvite() {
@@ -286,7 +283,7 @@ function disconnecSession() {
     console.log("stop rec");
     $('#stop-recording').trigger("click");
   }
-  $('#stop-recording').trigger("click");
+  // $('#stop-recording').trigger("click");
   console.log("<--Stop Recording");
 
   if (sessionHeader == peerNew_id) {
@@ -326,7 +323,7 @@ function startSession(id, date) {
       }
     }
   });
-  console.log(",--startSession");
+  console.log("<--startSession");
 }
 
 signaling_socket.on("connect", function () {
@@ -962,10 +959,10 @@ function setup_local_media(callback, errorback) {
     console.log("attachMediaStream-->");
     video.srcObject = stream;
     streamArray.push(stream);
-    if (streamArray.length > 1) {
-      $('#start-recording').trigger("click");
-    }
-    // $('#start-recording').trigger("click");
+    // if (streamArray.length > 1) {
+    //   $('#start-recording').trigger("click");
+    // }
+    $('#start-recording').trigger("click");
     console.log("<--Start Recording");
     console.log("<--attachMediaStream");
   };
@@ -983,6 +980,7 @@ function setup_local_media(callback, errorback) {
       var local_media = USE_VIDEO ? $("<video>") : $();
       local_media.attr("muted", "muted"); /* always mute ourselves by default */
       local_media.attr("id", "videoElem");
+      local_media.attr("autoplay", "true");
       // local_media.attr(
       //   "style",
       //   "border:1px solid skyblue;display:inline !important"
@@ -1102,6 +1100,7 @@ function setup_local_media(callback, errorback) {
           ); /* always mute ourselves by default */
           // local_mediaScreenShare.attr("controls", "");
           local_mediaScreenShare.attr("id", "screenShareElem");
+          local_mediaScreenShare.attr("autoplay", "true");
           local_mediaScreenShare.attr(
             "style",
             "border:1px solid skyblue"
@@ -1484,9 +1483,6 @@ function storeRecordVideo() {
 
 }
 
-
-
-
 var multiStreamRecorder;
 var audioVideoBlobs = {};
 var recordingInterval = 0;
@@ -1537,9 +1533,10 @@ function onMediaSuccess(stream) {
       storeRecordVideo();
     }
 
-    var timeInterval = document.querySelector('#time-interval').value;
-    if (timeInterval) timeInterval = parseInt(timeInterval);
-    else timeInterval = 5 * 1000;
+    // var timeInterval = document.querySelector('#time-interval').value;
+    // if (timeInterval) timeInterval = parseInt(timeInterval);
+    //else timeInterval = 5 * 1000;
+    timeInterval = 40 *60*1000; /* ### Note: 40 is event duration it can vary dependa on school  ### */
 
     // get blob after specific time interval
     multiStreamRecorder.start();

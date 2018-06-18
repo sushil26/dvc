@@ -36,6 +36,7 @@ app.controller('upcomingEventController', function ($scope, $rootScope, $state, 
 
     $scope.eventGet = function () {
         console.log("eventGet-->");
+        $scope.events = [];
         var id = $scope.userData.id;
         var api = $scope.propertyJson.VC_eventGet + "/" + id;
         //var api = "http://localhost:5000/vc/eventGet"+ "/" + id;;

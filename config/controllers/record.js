@@ -8,8 +8,9 @@ var createdDate = new Date();
 var randomstring = require("randomstring");
 var requireFromUrl = require('require-from-url');
 var GridStore = require('mongodb').GridStore;
-var streamifier = require('streamifier')
-
+var streamifier = require('streamifier');
+var base64 = require('file-base64');
+var event = db.collection('event');
 var transporter = nodemailer.createTransport({
     service: "godaddy",
     auth: {
@@ -252,138 +253,87 @@ module.exports.emailInvite = function (req, res) {
 
 module.exports.recordVideo = function (req, res) {
     console.log("recordVideo-->");
-    // var url = req.body.url;
-    console.log("req.body.base64data: "+req.body.base64data);
     var videoBase64 = req.body.base64data;
-    console.log("videoBase64: "+videoBase64);
 
-    // console.log("url: " + req.files.data);
-    // console.log("url: " + JSON.stringify(req.files.data));
-
-
-
-    // var fileData = req.files.data;
-    // if (!req.files)
-    //     return res.status(400).send('No files were uploaded.');
-    // console.log("req.files.sampleFile: " + req.files.data);
-    // let myFile = req.files.data;
-    // console.log("path--" + recordingDirectory);
-    // var fileArr = myFile.name.split(".");
-    // var fileName = "";
-    // for (var i = 0; i < fileArr.length - 1; i++) {
-    //     fileName = fileName + fileArr[i]
-    // }
-    // fileName = fileName + "_" + general.date() + "." + fileArr[fileArr.length - 1];
-    // console.log("fileName--" + fileName)
-
-    // myFile.mv(recordingDirectory + fileName, function (err) {
-    //     if (err) {
-    //         console.log(require('util').inspect(err));
-    //     }
-    //     else {
-    //var readPath = ABSPATH + '/public/Recording/' + fileName;
+    console.log("req.body.eventId: " + req.body.eventId)
     var gfs = Grid(conn.db);
     var writeStream = gfs.createWriteStream({
-        filename: 'sample1.mpg'
+        filename: 'vcRecord.mpg',
+
     });
+    // base64.encode(req.files.data, function (err, base64String) {
+    //     console.log(base64String);
+    //     var response = fs.createReadStream(base64String).pipe(writeStream);  // returns response which is having all information regarding saved byte string
+    //     var lastInsertedFileId = response._store.fileId;  // now you can store it into another document for future use.
+    //     console.log(lastInsertedFileId);
+    // });
     var byte_string = videoBase64.substr(23);//The base64 has a imageURL
     var buffer = new Buffer(byte_string);   //new Buffer(b64string, 'base64');  you can use base64 encoding with creating new buffer string
     var response = streamifier.createReadStream(buffer).pipe(writeStream);  // returns response which is having all information regarding saved byte string
     var lastInsertedFileId = response._store.fileId;  // now you can store it into another document for future use.
     console.log(lastInsertedFileId);
-    // fs.createReadStream('/public/Recording/1.mp4').pipe(writeStream);
-    // fs.createReadStream(readPath).pipe(writeStream);
+
     writeStream.on('close', function (file) {
         console.log(file.filename + "written to db");
+        var responseData;
+        console.log("req.body.id: " + req.body.id);
+        // if (general.emptyCheck(req.body.id)) {
+        var queryId = {
+            "_id": ObjectId(req.body.eventId)
+        }
+        console.log("queryId: " + JSON.stringify(queryId));
+        var setData = {
+            "vcRecordId": lastInsertedFileId
+        }
+        console.log("setData: " + JSON.stringify(setData));
+        event.update({"_id": ObjectId(req.body.eventId), 'vcRecordId': {$exists : false}},{ $set: { "vcRecordId": lastInsertedFileId } }, function (err, data) {
+            var io = req.app.get('socketio');
+            io.emit('eventUpdatedForHistory', {});
+            console.log("data: " + JSON.stringify(data));
+        })
     })
     responseData = {
         status: true,
         errorCode: 200,
         message: "insert Successfull and Failed to send mail",
-        
+
     };
     res.status(200).send(responseData);
-
-    //     }
-    // })
 
     console.log("<--recordVideo");
 }
 module.exports.getRecordVideo = function (req, res) {
     console.log("getRecordVideo-->");
-    // res.header("Content-Type", "video/mp4");
-    // res.header("X-Content-Type-Options", "nosniff");
-    // res.header("Accept-Ranges", "bytes");
-    // res.header("Content-Length", 903746);
-    // readStream.pipe(res);
+
     var gfs = Grid(conn.db);
-    //var readPath = fs.createWriteStream(ABSPATH + '/public/writeRecord/sample.mpg');
-    // var readStream = gfs.createReadStream({
-    //     filename: 'sample.mpg'
-    // }).pipe(res);
-    //console.log("readStream: " + readStream);
     var output = '';
     var readStream = gfs.createReadStream({
-        "_id" : ObjectId("5b1e21f89211846655bae63d")    // this id was stored in db when inserted a video stream above
+        "_id": req.params.id // this id was stored in db when inserted a video stream above
     });
-    readStream.on("data", function(chunk) {
+    readStream.on("data", function (chunk) {
         output += chunk;
     });
 
-    // dump contents to console when complete
-    readStream.on("end", function() {
+    // base64.decode(output, function (err, output) {
+    //     console.log('output');
+    //     // dump contents to console when complete
+        
+    // });
+    readStream.on("end", function () {
         console.log("Final Output");
         responseData = {
             status: true,
             message: "get successful",
             data: output
         };
-        res.status(400).send(responseData);
+        res.status(200).send(responseData);
         //console.log(output);
-       
+
     });
 
-    // readStream.pipe(readPath);
-    // readPath.on('close', function (file) {
-    //     console.log("File heas been wriiten fully");
-    // })
 
-    // const path = ABSPATH + '/public/writeRecord/sample.mpg';
-    // const stat = fs.statSync(path)
-    // console.log("stat: "+JSON.stringify(stat));
-    // const fileSize = stat.size
-    // console.log("fileSize: "+fileSize);
-    // const range = req.headers.range
-    // console.log("req.headers: "+JSON.stringify(req.headers));
-    // console.log("range: " + range);
-    //  if (range) {
-    //     const parts = range.replace(/bytes=/, "").split("-")
-    //     const start = parseInt(parts[0], 10)
-    //     const end = parts[1]
-    //         ? parseInt(parts[1], 10)
-    //         : fileSize - 1
 
-    //     const chunksize = (end - start) + 1
-    //     const file = fs.createReadStream(path, { start, end })
-    //     const head = {
-    //         'Content-Range': `bytes ${start}-${end}/${fileSize}`,
-    //         'Accept-Ranges': 'bytes',
-    //         'Content-Length': chunksize,
-    //         'Content-Type': 'video/mp4',
-    //     }
 
-    //     console.log("head: " + JSON.stringify(head));
-    //     res.writeHead(200, head)
-
-    //     file.pipe(res)
-    // } else {
-    //     const head = {
-    //         'Content-Length': fileSize,
-    //         'Content-Type': 'video/mp4',
-    //     }
-    //     res.writeHead(200, head)
-    //     fs.createReadStream(path).pipe(res)
-    // }
     console.log("<--getRecordVideo");
 }
 

@@ -27,47 +27,35 @@ app.use(fileUpload());
 var queryId = null;
 var userName = null;
 var time = null;
-// var mongoConfig = require('./config/dbConfig.js')
-// mongoConfig.connectToServer(function(err) {
-//     var server = app.listen("8080");
-//     var io = require('socket.io').listen(server);
-//     server.timeout = 9999999999;
-//     console.log("Listening on port 8080");
-//     // require('./config/express')(app, config);
-//     require('./config/express')(app);
-//     // require('./config/server_socket')(io);
-//     require('./config/server_socket')(io);
 
-//     require('./config/router')(app);
-// });
 var mongoConfig = require('./config/dbConfig.js');
-//app.set('port', (process.env.PORT || 5000));
-// main.listen(main.get('port'), function() {
-//     console.log('Node app is running on port', main.get('port'));
-//   });
+
+// var chatHistory = db.collection("chatHistory");
+
 var server = app.listen('5000', function () {
     console.log("Listening on port 5000");
 });
+
 
 // var server = app.listen("8080");
 
 var io = require('socket.io').listen(server);
 app.set('socketio', io);
-
+var chatHistory;
 // server.timeout = 9999999999;
 mongoConfig.connectToServer(function (err) {
-
     require('./config/router')(app);
+    var db = mongoConfig.getDb();
+    console.log("db: " + db);
+    chatHistory = db.collection("chatHistory");
 
 })
 app.use(express.static(__dirname + '/public'));
-//app.use(express.static(__dirname + '/public/bower_components'));
-// app.use(express.static(__dirname + '/node_modules'));
+
 app.get('/', function (req, res) {
     res.sendFile(__dirname + '/public/index.html');
 });
 
-// require('./config/server_socket')(io);
 
 app.get("/client", function (req, res) {
     queryId = null;
@@ -102,41 +90,41 @@ app.get("/careator", function (req, res) {
 app.get("/careator/:id/:time", function (req, res) {
     queryId = req.params.id;
     time = req.params.id;
-    console.log("queryId: " + req.params.id);
+    console.log("queryId: " + req.params.id + "Time: " + req.params.time);
     console.log("start to render page");
     res.sendFile(__dirname + '/public/careator.html');
 });
 
-app.get("/record", function (req, res) {
+// app.get("/record", function (req, res) {
 
-    queryId = null;
+//     queryId = null;
 
-    console.log("start to render page");
-    res.sendFile(__dirname + '/public/client1.html');
-});
+//     console.log("start to render page");
+//     res.sendFile(__dirname + '/public/client1.html');
+// });
 
-app.get("/record/:id/:time", function (req, res) {
-    queryId = req.params.id;
-    time = req.params.id;
-    console.log("queryId: " + req.params.id);
-    console.log("start to render page");
-    res.sendFile(__dirname + '/public/client1.html');
-});
-app.get("/disconnTest", function (req, res) {
+// app.get("/record/:id/:time", function (req, res) {
+//     queryId = req.params.id;
+//     time = req.params.id;
+//     console.log("queryId: " + req.params.id);
+//     console.log("start to render page");
+//     res.sendFile(__dirname + '/public/client1.html');
+// });
+// app.get("/disconnTest", function (req, res) {
 
-    queryId = null;
+//     queryId = null;
 
-    console.log("start to render page");
-    res.sendFile(__dirname + '/public/disconnTest.html');
-});
+//     console.log("start to render page");
+//     res.sendFile(__dirname + '/public/disconnTest.html');
+// });
 
-app.get("/disconnTest/:id/:time", function (req, res) {
-    queryId = req.params.id;
-    time = req.params.id;
-    console.log("queryId: " + req.params.id);
-    console.log("start to render page");
-    res.sendFile(__dirname + '/public/disconnTest.html');
-});
+// app.get("/disconnTest/:id/:time", function (req, res) {
+//     queryId = req.params.id;
+//     time = req.params.id;
+//     console.log("queryId: " + req.params.id);
+//     console.log("start to render page");
+//     res.sendFile(__dirname + '/public/disconnTest.html');
+// });
 // app.get("/mainPage", function (req, res) {
 //     console.log("start to render page");
 //     res.sendFile(__dirname + '/public/html/mainPage.html');
@@ -352,10 +340,36 @@ io.sockets.on('connection', function (socket) {
     /* ##### Start Gether text message  #### */
     socket.on('textMsg', function (data) {
         console.log("textMsg-->");
+
         // //Send message to everyone
         console.log("peerWithQueryId[data.userId]: " + peerWithQueryId[data.userId]);
+
         if (peerWithQueryId[data.userId] == data.queryLink && peerWithTimeId[data.userId] == data.timeLink) {
+            var date = new Date();
+            //console.log("timeLink: "+timeLink);
+            console.log("peerWithQueryId: " + peerWithQueryId[data.userId]);
+            console.log("peerWithQueryId: " + peerWithQueryId[data.userId]);
+            var queryObj = {
+                "url": "https://norecruits.com/careator/" + peerWithQueryId[data.userId] + "/" + data.urlDate,
+            }
+            console.log("queryObj: " + JSON.stringify(queryObj));
+            var obj = {
+                "email": data.email,
+                'message': data.message,
+                'userName': data.userName,
+                'textTime': date
+            }
+            console.log("obj: " + JSON.stringify(obj));
+            chatHistory.update(queryObj, { $push: { "chat": obj } }, function (err, data) {
+                if (err) {
+                    console.log("errr: " + JSON.stringify(err));
+                }
+                else {
+                    console.log("data: " + JSON.stringify(data));
+                }
+            })
             io.sockets.emit('newTextMsg', { 'message': data.message, 'userId': data.userId, 'queryId': peerWithQueryId[data.userId], 'time': peerWithTimeId[data.userId], 'userName': data.userName });
+
             // io.sockets.emit('userDetail', {'userId': data.userId,'userName': data.userName });
         }
         else {

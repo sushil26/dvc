@@ -70,7 +70,7 @@ if (stuff.length > 5) {
     console.log("No user data from session");
     $("#setName").trigger("click");
   }
-  document.getElementById("historyChat").style.display = "none";
+ 
   console.log("userName: " + userName);
 }
 else {
@@ -83,7 +83,7 @@ else {
     console.log("2 cond: emailIdSplit: " + JSON.stringify(emailIdSplit));
     userName = emailIdSplit[0];
     document.getElementById("videoConferenceUrl").style.display = "block";
-    document.getElementById("historyChat").style.display = "block";
+   
 
   }
   else {
@@ -332,30 +332,7 @@ function startSession(id, date) {
 
 }
 
-/* ### Start gathere history data ### */
-document.getElementById('historyChat').addEventListener("click", function () {
-  console.log("historyChat-->");
 
-  var email = localStorage.getItem('careatorEmail');
-    
-  $.ajax({
-    url: "https://norecruits.com/chatHistory/getHistoryByEmailId/" + email,
-    type: "GET",
-    contentType: "application/json",
-    dataType: "json",
-    success: function (data) {
-      console.log("data: " + JSON.stringify(data));
-      //window.location.href = "https://norecruits.com/careator/" + id + "/" + date;
-    },
-    error: function (err) {
-      console.log("err: " + JSON.stringify(err));
-      console.log("err.responseText: " + JSON.stringify(err.responseText));
-      console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
-    }
-  });
-  console.log("<--historyChat");
-})
-/* ### End gathere history data ### */
 
 signaling_socket.on("connect", function () {
   console.log("signaling_socket connect-->");

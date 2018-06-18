@@ -6,7 +6,7 @@ app.controller("vcChatAppCtrl", function ($scope, $http, $timeout) {
     $scope.notification = false;
     $("#loginClick").trigger("click");
   
-    $scope.logCareatorAdmin = function (loginType, email, Password) {
+    $scope.logCareatorAdmin = function ( email, Password) {
         console.log("logCareatorAdmin");
         // loginModal.close('resetModel');
       

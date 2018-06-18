@@ -9,21 +9,21 @@ $.ajax({
         console.log("data: " + JSON.stringify(data));
         console.log("data.data.length: " + data.data.length);
 
-        if (data.data.length > 0) {
-            var parentUL = document.getElementById('parentUl_listOfChat');
-            var li = document.createElement("li");  
-            li.className = "left clearfix";
-            var span = document.createElement("span");  
-            li.className = "chat-img pull-left";
-            var img = document.createElement("img");  
-            li.src = "https://lh6.googleusercontent.com/-y-MY2satK-E/AAAAAAAAAAI/AAAAAAAAAJU/ER_hFddBheQ/photo.jpg";
-            li.className = "img-circle";
-            span.appendChild(img);
-            li.appendChild(span);
-            parentUL.appendChild(li);
-
-        
-        }
+        // if (data.data.length > 0) {
+        //     console.log("started into")
+        //     var parentUL = document.getElementById('parentUl_listOfChat');
+        //     var li = document.createElement("li");  
+        //     li.className = "left clearfix";
+        //     var span = document.createElement("span");  
+        //     li.className = "chat-img pull-left";
+        //     var img = document.createElement("img");  
+        //     li.src = "https://lh6.googleusercontent.com/-y-MY2satK-E/AAAAAAAAAAI/AAAAAAAAAJU/ER_hFddBheQ/photo.jpg";
+        //     li.className = "img-circle";
+        //     span.appendChild(img);
+        //     li.appendChild(span);
+        //     parentUL.appendChild(li);
+       
+        // }
         //window.location.href = "https://norecruits.com/careator/" + id + "/" + date;
     },
     error: function (err) {

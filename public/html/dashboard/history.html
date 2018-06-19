@@ -38,8 +38,8 @@
                                                 <i class="icon_cogs"></i> Action</th>
 
                                         </tr>
-                                       <!-- <tr ng-repeat="event in events  | orderBy:'-startsAt'" ng-if="event.startsAt<todayDate"> -->
-                                        <tr ng-repeat="event in events  | orderBy:'-startsAt'">
+                                       <tr ng-repeat="event in events  | orderBy:'-startsAt'" ng-if="event.startsAt<todayDate">
+                                        <!-- <tr ng-repeat="event in events  | orderBy:'-startsAt'"> -->
                                             <td>{{event.title}}</td>
                                             <td>{{event.startsAt | date:'MMM d, y'}}</td>
                                             <td>{{event.startsAt | date:'h:mm a'}}-{{event.endsAt | date:'h:mm a'}}</td>

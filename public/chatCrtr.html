@@ -69,10 +69,10 @@
                                         <span class="badge pull-right">{{chatHistory.chat.length}}</span>
                                     </div>
                                     <div class="chat-body clearfix">
-                                        <div class="header_sec" >
+                                        <div class="header_sec">
                                             <strong class="primary-font">{{chatHistory.email}}</strong>
-                                            <div class="pull-right" style="font-size: 10px;"> 
-                                            {{chatHistory.session_dateTime | date:'d MMMM y h:mm a'}}</div>
+                                            <div class="pull-right" style="font-size: 10px;">
+                                                {{chatHistory.session_dateTime | date:'d MMMM y h:mm a'}}</div>
                                         </div>
                                     </div>
                                 </li>
@@ -108,25 +108,39 @@
                         <ul class="list-unstyled" ng-repeat="chat in chats">
                             <li class="left clearfix" ng-if="!chat.email">
                                 <span class="chat-img1 pull-left">
-                                    <i class="fa fa-user" style="font-size:40px; color:aquamarine"></i>
+                                    <i class="fa fa-user" style=" background: #e9e7e8 none repeat scroll 0 0;
+                                    border-radius: 100px;
+                                    height: 50px;
+                                    line-height: 45px;
+                                    text-align: center;
+                                    width: 50px;
+                                    font-size: 36px;
+                                    color: #a94442;"></i>
                                     <br>
                                     <label style="font-size: 12px;">{{chat.userName}}</label>
                                 </span>
                                 <div class="chat-body1 clearfix">
                                     <p>{{chat.message}}</p>
-                                    <div class="chat_time pull-right" style="font-size: 10px;" >{{chat.textTime | date:'d MMMM y h:mm a'}}</div>
+                                    <div class="chat_time pull-right" style="font-size: 10px;">{{chat.textTime | date:'d MMMM y h:mm a'}}</div>
                                 </div>
                             </li>
 
                             <li class="left clearfix admin_chat" ng-if="!!chat.email">
                                 <span class="chat-img1 pull-right">
-                                    <i class="fa fa-user" style="font-size:40px; color:orange"></i>
+                                    <i class="fa fa-user" style=" background: #e9e7e8 none repeat scroll 0 0;
+                                    border-radius: 100px;
+                                    height: 50px;
+                                    line-height: 45px;
+                                    text-align: center;
+                                    width: 50px;
+                                    font-size: 36px;
+                                    color: #4ba7aa;"></i>
                                     <br>
                                     <label style="font-size: 12px;">{{chat.userName}}</label>
                                 </span>
                                 <div class="chat-body1 clearfix">
                                     <p>{{chat.message}}</p>
-                                    <div class="chat_time pull-left" style="font-size: 10px;" >{{chat.textTime | date:'d MMMM y h:mm a'}}</div>
+                                    <div class="chat_time pull-left" style="font-size: 10px;">{{chat.textTime | date:'d MMMM y h:mm a'}}</div>
                                 </div>
                             </li>
                         </ul>

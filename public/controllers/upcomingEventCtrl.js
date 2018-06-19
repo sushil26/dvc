@@ -240,7 +240,9 @@ app.controller('upcomingEventController', function ($scope, $rootScope, $state, 
 
     socket.on('event_viewDetail_toSender', function (data) {
         console.log("event_viewDetail_toSender-->");
-        if(userData.id == data.userId){
+
+        if($scope.userData.id == data.userId){
+            console.log("start calling eventGet");
             $scope.eventGet();
         }
     })

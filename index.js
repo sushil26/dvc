@@ -32,7 +32,7 @@ var mongoConfig = require('./config/dbConfig.js');
 
 // var chatHistory = db.collection("chatHistory");
 
-var server = app.listen('5000', function () {
+var server = app.listen('5000', function() {
     console.log("Listening on port 5000");
 });
 
@@ -43,7 +43,7 @@ var io = require('socket.io').listen(server);
 app.set('socketio', io);
 var chatHistory;
 // server.timeout = 9999999999;
-mongoConfig.connectToServer(function (err) {
+mongoConfig.connectToServer(function(err) {
     require('./config/router')(app);
     var db = mongoConfig.getDb();
     console.log("db: " + db);
@@ -52,18 +52,18 @@ mongoConfig.connectToServer(function (err) {
 })
 app.use(express.static(__dirname + '/public'));
 
-app.get('/', function (req, res) {
+app.get('/', function(req, res) {
     res.sendFile(__dirname + '/public/index.html');
 });
 
 
-app.get("/client", function (req, res) {
+app.get("/client", function(req, res) {
     queryId = null;
     console.log("start to render page");
     res.sendFile(__dirname + '/public/client.html');
 });
 
-app.get("/client/:id/:time", function (req, res) {
+app.get("/client/:id/:time", function(req, res) {
     queryId = req.params.id;
     time = req.params.id;
     console.log("queryId: " + req.params.id);
@@ -71,21 +71,21 @@ app.get("/client/:id/:time", function (req, res) {
     res.sendFile(__dirname + '/public/client.html');
 });
 
-app.get("/clientNew", function (req, res) {
+app.get("/clientNew", function(req, res) {
     res.sendFile(__dirname + '/public/client1.html');
 });
 
-app.get("/clientNew/:id/:time", function (req, res) {
+app.get("/clientNew/:id/:time", function(req, res) {
     res.sendFile(__dirname + '/public/client1.html');
 });
 
-app.get("/careator", function (req, res) {
+app.get("/careator", function(req, res) {
     queryId = null;
     console.log("start to render page");
     res.sendFile(__dirname + '/public/careator.html');
 });
 
-app.get("/careator/:id/:time", function (req, res) {
+app.get("/careator/:id/:time", function(req, res) {
     queryId = req.params.id;
     time = req.params.id;
     console.log("queryId: " + req.params.id + "Time: " + req.params.time);
@@ -93,7 +93,7 @@ app.get("/careator/:id/:time", function (req, res) {
     res.sendFile(__dirname + '/public/careator.html');
 });
 
-app.get("/careatorChatHistory", function(req, res){
+app.get("/careatorChatHistory", function(req, res) {
     console.log("chatCrtr started to render-->");
     res.sendFile(__dirname + '/public/chatCrtr.html');
 });
@@ -156,7 +156,7 @@ var sessionHeaderId = null;
  * information. After all of that happens, they'll finally be able to complete
  * the peer connection and will be streaming audio/video between eachother.
  */
-io.sockets.on('connection', function (socket) {
+io.sockets.on('connection', function(socket) {
 
     console.log("connection started-->");
     //console.log("connection: socket: " + socket);
@@ -185,7 +185,7 @@ io.sockets.on('connection', function (socket) {
     console.log("QueryId: " + queryId);
     socket.emit('message', { 'peer_id': socket.id, 'queryId': queryId, 'time': time, 'userName': userName });
 
-    socket.on('disconnect', function () {
+    socket.on('disconnect', function() {
         console.log("[" + socket.id + "] connection disconnected Start");
         for (var channel in socket.channels) {
             console.log("connection: channel: " + channel);
@@ -196,7 +196,7 @@ io.sockets.on('connection', function (socket) {
 
     });
 
-    socket.on('disconnectSession', function (data) {
+    socket.on('disconnectSession', function(data) {
         console.log("disconnectSession-->");
         if (sessionHeaderId == data.owner) {
             for (var channel in socket.channels) {
@@ -221,7 +221,7 @@ io.sockets.on('connection', function (socket) {
     })
 
 
-    socket.on('join', function (config) {
+    socket.on('join', function(config) {
 
         console.log("Join-->");
         // console.log("config.owner: "+config.owner);
@@ -293,7 +293,7 @@ io.sockets.on('connection', function (socket) {
     }
     socket.on('part', part);
 
-    socket.on('relayICECandidate', function (config) {
+    socket.on('relayICECandidate', function(config) {
         console.log("relayICECandidate-->")
         var peer_id = config.peer_id;
         var ice_candidate = config.ice_candidate;
@@ -303,7 +303,7 @@ io.sockets.on('connection', function (socket) {
         console.log("<--relayICECandidate")
     });
 
-    socket.on('relaySessionDescription', function (config) {
+    socket.on('relaySessionDescription', function(config) {
         var peer_id = config.peer_id;
         console.log("relaySessionDescription-->");
         console.log("relaySessionDescription: " + JSON.stringify(config));
@@ -330,7 +330,7 @@ io.sockets.on('connection', function (socket) {
     });
 
     /* ##### Start remove PerticularId  ##### */
-    socket.on('closeThisConn', function (config) {
+    socket.on('closeThisConn', function(config) {
         console.log("closeThisConn-->")
         if (queryId == config.queryLink && time == config.timeLink) {
             console.log("queryId and config.queryLink are equal so gonna tell to client");
@@ -341,7 +341,7 @@ io.sockets.on('connection', function (socket) {
     /* ##### End remove PerticularId  ##### */
 
     /* ##### Start Gether text message  #### */
-    socket.on('textMsg', function (data) {
+    socket.on('textMsg', function(data) {
         console.log("textMsg-->");
 
         // //Send message to everyone
@@ -363,7 +363,7 @@ io.sockets.on('connection', function (socket) {
                 'textTime': date
             }
             console.log("obj: " + JSON.stringify(obj));
-            chatHistory.update(queryObj, { $push: { "chat": obj,  $position: 0 } }, function (err, data) {
+            chatHistory.update(queryObj, { $push: { "chat": obj, $position: 0 } }, function(err, data) {
                 if (err) {
                     console.log("errr: " + JSON.stringify(err));
                 }
@@ -387,7 +387,7 @@ io.sockets.on('connection', function (socket) {
     var information = null;
 
     /* ##### Start Gether Emails #### */
-    socket.on('emailCapture', function (data) {
+    socket.on('emailCapture', function(data) {
         console.log("emailCapture-->");
         console.log("data.userId " + data.userId);
         console.log("data.email: " + data.email);
@@ -399,7 +399,7 @@ io.sockets.on('connection', function (socket) {
                 subject: 'Video Conference URL',
                 text: 'Hi, Click This url to join video conference' + data.url
             };
-            transporter.sendMail(mailOptions, function (error, info) {
+            transporter.sendMail(mailOptions, function(error, info) {
                 if (error) {
                     console.log("error while sending email: " + error);
                     information = error;
@@ -421,7 +421,7 @@ io.sockets.on('connection', function (socket) {
     /* ##### End Gether Emails  #### */
 
     /* #### Start File Sharing  ##### */
-    socket.on('file', function (data) {
+    socket.on('file', function(data) {
         console.log("file-->");
         console.log("peerWithQueryId[data.userId]: " + peerWithQueryId[data.userId]);
         console.log("data.queryLink: " + data.queryLink);
@@ -437,7 +437,7 @@ io.sockets.on('connection', function (socket) {
     });
     /* #### End File Sharing  ##### */
 
-    socket.on('stateChanged', function (data) {
+    socket.on('stateChanged', function(data) {
         console.log("stateChanged-->");
         if (peerWithQueryId[data.userId] == data.queryLink && peerWithTimeId[data.userId] == data.timeLink) {
 
@@ -445,6 +445,13 @@ io.sockets.on('connection', function (socket) {
         }
         console.log("<--stateChanged");
     })
+
+    /* ### Start: Get the event view notification from the reciever(upcomingEventCtrl.js) ### */
+    socket.on('event_viewDetail_toserver', function(data) {
+        console.log("event_viewDetail_toserver-->");
+        socket.emit('event_viewDetail_toSender', { "userId": data.userId }) /* ### Note: Send event view notification to event sender(who's user id is matched with this userId) ### */
+    })
+    /* ### End: Get the event view notification from the reciever ### */
 
 
     console.log("<--connection Ended");

@@ -95,7 +95,7 @@ app.controller('upcomingEventController', function ($scope, $rootScope, $state, 
         })
     }
 
-    $scope.viewDetail = function (id, eventId) {
+    $scope.viewDetail = function (id, eventId, userId) {
         console.log("viewDetail-->");
         console.log("id: " + id);
         if ($scope.events[id].userId != $scope.userData.id) {
@@ -108,6 +108,7 @@ app.controller('upcomingEventController', function ($scope, $rootScope, $state, 
                 var checkStatus = httpFactory.dataValidation(data);
                 console.log("data--" + JSON.stringify(data.data));
                 $rootScope.$emit("CallParent_eventGet", {}); /* ### Note: calling method of parentController(dashboardCtr) ### */
+                socket.emit('event_viewDetail_toserver', { "userId": userId }); /* ### Note: Informing to server that this event is viewed (so that server can inform to respective person) ### */
                 if (checkStatus) {
                     console.log("data" + JSON.stringify(data.data));
                     var eventPostedData = data.data.data;
@@ -128,7 +129,6 @@ app.controller('upcomingEventController', function ($scope, $rootScope, $state, 
                 console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
             }
         })
-
         console.log("<--viewDetail");
     }
 
@@ -232,10 +232,17 @@ app.controller('upcomingEventController', function ($scope, $rootScope, $state, 
     //update the client with new data;
     socket.on('eventUpdated', function (data) {
         console.log("data: " + JSON.stringify(data));
-        if (data.id == $scope.userData.id || data.remoteId==$scope.userData.id){
+        if (data.id == $scope.userData.id || data.remoteId == $scope.userData.id) {
             $scope.eventGet();
         }
     });
+
+    socket.on('event_viewDetail_toSender', function (data) {
+        console.log("event_viewDetail_toSender-->");
+        if(userData.id == data.userId){
+            $scope.eventGet();
+        }
+    })
 
 
 

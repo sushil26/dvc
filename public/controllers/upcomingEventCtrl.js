@@ -107,8 +107,9 @@ app.controller('upcomingEventController', function ($scope, $rootScope, $state, 
             httpFactory.post(api, obj).then(function (data) {
                 var checkStatus = httpFactory.dataValidation(data);
                 console.log("data--" + JSON.stringify(data.data));
-                $rootScope.$emit("CallParent_eventGet", {}); /* ### Note: calling method of parentController(dashboardCtr) ### */
                 socket.emit('event_viewDetail_toserver', { "userId": userId }); /* ### Note: Informing to server that this event is viewed (so that server can inform to respective person) ### */
+                $rootScope.$emit("CallParent_eventGet", {}); /* ### Note: calling method of parentController(dashboardCtr) ### */
+                
                 if (checkStatus) {
                     console.log("data" + JSON.stringify(data.data));
                     var eventPostedData = data.data.data;

@@ -35,7 +35,7 @@
                     </div>
                     <button type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ng-click="careator_chatHistoryLogOut()"
                         style="color: wheat;margin-right: 10px;margin-top: -25px;">
-                        <i class="fa fa-cogs" aria-hidden="true"></i>Logout
+                        <i class="fa fa-cogs" aria-hidden="true"></i>&nbsp;Logout
                     </button>
                 </div>
 
@@ -65,15 +65,14 @@
                                     <span class="chat-img pull-left">
                                         <i class="fa fa-users" style="font-size:30px; color:rgb(20, 128, 92)"></i>
                                     </span>
+                                    <div class="contact_sec">
+                                        <span class="badge pull-right">{{chatHistory.chat.length}}</span>
+                                    </div>
                                     <div class="chat-body clearfix">
-                                        <div class="header_sec">
+                                        <div class="header_sec" >
                                             <strong class="primary-font">{{chatHistory.email}}</strong>
-                                            <strong class="pull-right">
-                                                {{chatHistory.session_dateTime | date:'M/d/yy h:mm a' }}</strong>
-                                        </div>
-                                        <div class="contact_sec">
-                                            <!-- <strong class="primary-font">(123) 123-456</strong> -->
-                                            <span class="badge pull-right">{{chatHistory.chat.length}}</span>
+                                            <div class="pull-right" style="font-size: 10px;"> 
+                                            {{chatHistory.session_dateTime | date:'d MMMM y h:mm a'}}</div>
                                         </div>
                                     </div>
                                 </li>
@@ -115,7 +114,8 @@
                                 </span>
                                 <div class="chat-body1 clearfix">
                                     <p>{{chat.message}}</p>
-                                    <div class="chat_time pull-right">{{chat.textTime | date:'M/d/yy h:mm a'}}</div>
+                                    <div class="chat_time pull-right" style="font-size: 10px;" >{{chat.textTime | date:''d MMMM y h:mm a''}}</div>
+                             
                                 </div>
                             </li>
 
@@ -127,7 +127,8 @@
                                 </span>
                                 <div class="chat-body1 clearfix">
                                     <p>{{chat.message}}</p>
-                                    <div class="chat_time pull-left">{{chat.textTime | date:'M/d/yy h:mm a'}}</div>
+                                    <div class="chat_time pull-left" style="font-size: 10px;" >{{chat.textTime | date:''d MMMM y h:mm a''}}</div>
+                            
                                 </div>
                             </li>
                         </ul>

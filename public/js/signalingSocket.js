@@ -1480,9 +1480,9 @@ document.querySelector('#stop-recording').onclick = function () {
   this.disabled = true;
   multiStreamRecorder.stream.stop();
   multiStreamRecorder.stop();
-  
+  streamArray = [];
 
-  // streamArray = [];
+  // 
   // document.querySelector('#pause-recording').disabled = true;
   document.querySelector('#start-recording').disabled = false;
   // document.querySelector('#add-stream').disabled = true;

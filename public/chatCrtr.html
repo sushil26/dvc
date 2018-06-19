@@ -65,15 +65,16 @@
                                     <span class="chat-img pull-left">
                                         <i class="fa fa-users" style="font-size:30px; color:rgb(20, 128, 92)"></i>
                                     </span>
+                                    <div class="contact_sec">
+                                        <span class="badge pull-right">{{chatHistory.chat.length}}</span>
+                                    </div>
                                     <div class="chat-body clearfix">
                                         <div class="header_sec">
                                             <strong class="primary-font">{{chatHistory.email}}</strong>
                                             <div class="pull-right">
                                                 {{chatHistory.session_dateTime | date:'M/d/yy h:mm a' }}</div>
                                         </div>
-                                        <div class="contact_sec">
-                                            <span class="badge pull-right">{{chatHistory.chat.length}}</span>
-                                        </div>
+
                                     </div>
                                 </li>
                             </ul>

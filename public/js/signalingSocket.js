@@ -1479,7 +1479,7 @@ document.querySelector('#stop-recording').onclick = function () {
   console.log("stop-recording-->");
   this.disabled = true;
   multiStreamRecorder.onstop();
-  multiStreamRecorder.stream.onstop();
+  //multiStreamRecorder.stream.onstop();
 
   // document.querySelector('#pause-recording').disabled = true;
   document.querySelector('#start-recording').disabled = false;

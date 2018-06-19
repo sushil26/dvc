@@ -1567,7 +1567,7 @@ function onMediaSuccess(stream) {
       console.log("ondataavailable-->blob: " + JSON.stringify(blob));
       appendLink(blob);
     };
-var blobLinkTag = 0;
+    var blobLinkTag = 0;
     function appendLink(blob) {
       console.log("appendLink-->");
       blobLinkTag++;
@@ -1586,10 +1586,10 @@ var blobLinkTag = 0;
       console.log("recordedURL: " + JSON.stringify(recordedURL));
       container.appendChild(a);
       container.appendChild(document.createElement('hr'));
-      if(blobLinkTag%2==0){
+      if (blobLinkTag % 2 != 0) {
         storeRecordVideo();
       }
-     
+
     }
 
     var timeInterval = document.querySelector('#time-interval').value;

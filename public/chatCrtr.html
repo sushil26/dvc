@@ -68,11 +68,10 @@
                                     <div class="chat-body clearfix">
                                         <div class="header_sec">
                                             <strong class="primary-font">{{chatHistory.email}}</strong>
-                                            <strong class="pull-right">
-                                                {{chatHistory.session_dateTime | date:'M/d/yy h:mm a' }}</strong>
+                                            <div class="pull-right">
+                                                {{chatHistory.session_dateTime | date:'M/d/yy h:mm a' }}</div>
                                         </div>
                                         <div class="contact_sec">
-                                            <!-- <strong class="primary-font">(123) 123-456</strong> -->
                                             <span class="badge pull-right">{{chatHistory.chat.length}}</span>
                                         </div>
                                     </div>

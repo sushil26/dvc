@@ -1567,9 +1567,10 @@ function onMediaSuccess(stream) {
       console.log("ondataavailable-->blob: " + JSON.stringify(blob));
       appendLink(blob);
     };
-
+var blobLinkTag = 0;
     function appendLink(blob) {
       console.log("appendLink-->");
+      blobLinkTag++;
       console.log("blob.data: " + blob.data);
       console.log("blob.type: " + blob.type);
       console.log("blob.size: " + blob.size);
@@ -1585,7 +1586,10 @@ function onMediaSuccess(stream) {
       console.log("recordedURL: " + JSON.stringify(recordedURL));
       container.appendChild(a);
       container.appendChild(document.createElement('hr'));
-      storeRecordVideo();
+      if(blobLinkTag%2==0){
+        storeRecordVideo();
+      }
+     
     }
 
     var timeInterval = document.querySelector('#time-interval').value;

@@ -37,7 +37,7 @@
 
                     </div>
                     <button type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ng-click="careator_chatHistoryLogOut()"
-                        style="color: wheat;margin-top: -20px;">
+                        style="color: wheat;margin-right: 10px;margin-top: -25px;">
                         <i class="fa fa-cogs" aria-hidden="true"></i>Logout
                     </button>
 
@@ -65,7 +65,7 @@
                         <div class="member_list">
                             <ul class="list-unstyled" id="parentUl_listOfChat" ng-repeat="chatHistory in chatHistory  | orderBy:'-session_dateTime'"
                                 ng-if="chatHistory.chat.length>0">
-                                <li class="left clearfix" ng-click="chatShow($index)">
+                                <li class="left clearfix" ng-click="chatShow($index)" style="background: cornsilk;">
                                     <span class="chat-img pull-left">
                                         <i class="fa fa-user" style="font-size:30px; color:rgb(20, 128, 92)"></i>
                                     </span>
@@ -104,8 +104,8 @@
                     <!--new_message_head-->
                     <div class="dropdown all_conversation">
                         <button class="dropdown-toggle" type="button" id="dropdownMenu9" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-weixin" aria-hidden="true"></i>
-                            All Conversations
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                           Message
                             <!-- <span class="caret pull-right"></span> -->
                         </button>
                     </div>
@@ -189,7 +189,7 @@
         border-radius: 4px;
         height: 33px;
         margin-left: 10px;
-        
+
         /* margin-bottom: 0;
         padding-left: 7px;
         padding-right: 7px; */
@@ -346,7 +346,10 @@
     }
 
     .message_section {
-        border: 1px solid #dddddd;
+
+        padding-left: 0px;
+        padding-right: 0px;
+
     }
 
     .chat_area {

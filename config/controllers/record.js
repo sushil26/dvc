@@ -252,6 +252,7 @@ module.exports.emailInvite = function (req, res) {
 }
 var recordData = '';
 module.exports.recordVideo = function (req, res) {
+    console.log("gather blob");
     var videoBase64 = req.body.base64data;
     if(recordData == ''){
         recordData = videoBase64

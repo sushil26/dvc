@@ -178,6 +178,7 @@ app.controller('incomingMsgCtl', function ($scope, $rootScope, $state, $window, 
     //update the value with new data;
     socket.on('quickMsg_updated', function (data) {
         console.log("quickMsg_updated-->: " + JSON.stringify(data));
+        console.log("$scope.userData.id: "+$scope.userData.id);
         if (data.id == $scope.userData.id || data.remoteId == $scope.userData.id) {
             if ($scope.loginType == 'studParent') {
                 $scope.getSelectedStudentPersonalData();

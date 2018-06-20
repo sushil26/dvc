@@ -1486,6 +1486,7 @@ document.querySelector('#stop-recording').onclick = function () {
   // document.querySelector('#pause-recording').disabled = true;
   document.querySelector('#start-recording').disabled = false;
   // document.querySelector('#add-stream').disabled = true;
+  storeRecordVideo();
 
 };
 
@@ -1589,7 +1590,7 @@ function onMediaSuccess(stream) {
       // if (blobLinkTag % 2 != 0) {
       //   storeRecordVideo();
       // }
-      storeRecordVideo();
+     
 
     }
 

@@ -237,6 +237,7 @@ app.controller('upcomingEventController', function ($scope, $rootScope, $state, 
         console.log("data: " + JSON.stringify(data));
         if (data.id == $scope.userData.id || data.remoteId == $scope.userData.id) {
             $scope.eventGet();
+            $rootScope.$emit("CallParent_eventGet", {}); /* ### Note: calling method of parentController(dashboardCtr) ### */
         }
     });
     /* ### End: Get event update from event.js(eventSend method)  ### */

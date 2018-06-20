@@ -127,6 +127,7 @@ app.controller('upcomingEventController', function ($scope, $rootScope, $state, 
             backdropClass: 'show',
             controller: function ($scope, $uibModalInstance) {
                 $scope.eventDetails = $scope.events[id];
+              
                 console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
             }
         })

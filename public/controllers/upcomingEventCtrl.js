@@ -244,7 +244,8 @@ app.controller('upcomingEventController', function ($scope, $rootScope, $state, 
 
     /* ### Start: Get event update from index.js  ### *///update the client with new data;
     socket.on('event_viewDetail_toSender', function (data) {
-        console.log("****event_viewDetail_toSender-->");
+        console.log("****event_viewDetail_toSender-->: "+JSON.stringify(data));;
+        
         if ($scope.userData.id == data.userId) {
             console.log("start calling eventGet");
             $scope.eventGet();

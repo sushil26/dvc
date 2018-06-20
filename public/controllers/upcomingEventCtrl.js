@@ -234,7 +234,7 @@ app.controller('upcomingEventController', function ($scope, $rootScope, $state, 
 
     /* ### Start: Get event update from event.js(eventSend method)  ### *///update the client with new data;
     socket.on('eventUpdated', function (data) {
-        console.log("data: " + JSON.stringify(data));
+        console.log("eventUpdated-->: " + JSON.stringify(data));
         if (data.id == $scope.userData.id || data.remoteId == $scope.userData.id) {
             $scope.eventGet();
             $rootScope.$emit("CallParent_eventGet", {}); /* ### Note: calling method of parentController(dashboardCtr) ### */

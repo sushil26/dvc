@@ -1,4 +1,4 @@
-app.controller('captureImgCtl', function ($scope, $rootScope, $route, $window, httpFactory, sessionAuthFactory) {
+app.controller('captureImgCtl', function ($scope, $rootScope,  $state, $window, httpFactory, sessionAuthFactory) {
     console.log("captureImgCtl==>");
     $scope.propertyJson = $rootScope.propertyJson;
     $scope.userData = sessionAuthFactory.getAccess();
@@ -196,7 +196,7 @@ app.controller('captureImgCtl', function ($scope, $rootScope, $route, $window, h
                 if (checkStatus) {
                     console.log("data" + JSON.stringify(data.data));
                     alert("success");
-                    $route.reload();
+                    $state.reload();
                 }
                 else {
                     alert("fail");

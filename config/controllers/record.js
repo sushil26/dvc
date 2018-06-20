@@ -250,23 +250,10 @@ module.exports.emailInvite = function (req, res) {
     });
 
 }
-var recordData = '';
-module.exports.recordVideo = function (req, res) {
-    console.log("gather blob");
-    var videoBase64 = req.body.base64data;
-    if(recordData == ''){
-        recordData = videoBase64
-    }
-    else{
-        recordData.concat(videoBase64);
-    }
-   
-}
 
-module.exports.recordVideoBlobGather = function (req, res) {
+module.exports.recordVideo = function (req, res) {
     console.log("recordVideo-->");
-    // var videoBase64 = req.body.base64data;
-    var videoBase64 = recordData;
+    var videoBase64 = req.body.base64data;
 
     console.log("req.body.eventId: " + req.body.eventId)
     var gfs = Grid(conn.db);
@@ -299,7 +286,7 @@ module.exports.recordVideoBlobGather = function (req, res) {
             "vcRecordId": lastInsertedFileId
         }
         console.log("setData: " + JSON.stringify(setData));
-        event.update({ "_id": ObjectId(req.body.eventId), 'vcRecordId': { $exists: false } }, { $set: { "vcRecordId": lastInsertedFileId } }, function (err, data) {
+        event.update({"_id": ObjectId(req.body.eventId), 'vcRecordId': {$exists : false}},{ $set: { "vcRecordId": lastInsertedFileId } }, function (err, data) {
             var io = req.app.get('socketio');
             io.emit('eventUpdatedForHistory', {});
             console.log("data: " + JSON.stringify(data));
@@ -330,7 +317,7 @@ module.exports.getRecordVideo = function (req, res) {
     // base64.decode(output, function (err, output) {
     //     console.log('output');
     //     // dump contents to console when complete
-
+        
     // });
     readStream.on("end", function () {
         console.log("Final Output");

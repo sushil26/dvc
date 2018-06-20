@@ -177,7 +177,6 @@ module.exports.eventNotificationOff = function (req, res) {
         res.status(400).send(responseData);
     }
 }
-
 module.exports.eventGet = function (req, res) {
     console.log("getEvent-->");
     var responseData;

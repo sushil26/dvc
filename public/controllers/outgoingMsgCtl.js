@@ -110,8 +110,19 @@ app.controller('outgoingMsgCtl', function ($scope, $rootScope, $state, $window, 
     socket.on('quickMsg_updated', function (data) {
         console.log("data: " + JSON.stringify(data));
         if (data.id == $scope.userData.id || data.remoteId == $scope.userData.id) {
+            $rootScope.$emit("CallParent_quickMsgGet", {}); /* ### Note: calling method of parentController(dashboardCtr) ### */
             $scope.quickMsgGet();
         }
     });
+
+     /* ### Start: Get event update from index.js  ### *///update the client with new data;
+     socket.on('quickMsg_viewDetail_toSender', function (data) {
+        console.log("****quickMsg_viewDetail_toSender-->");
+        if ($scope.userData.id == data.userId) {
+            console.log("start calling quickMsgGet");
+            $scope.quickMsgGet();
+        }
+    })
+    /* ### End: Get event update from index.js  ### */
 
 })

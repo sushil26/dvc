@@ -67,7 +67,7 @@ module.exports.quickMsgSend = function (req, res) {
             }
             else {
                 var io = req.app.get('socketio');
-                io.emit('quickMsg_updated',{"id":req.body.userId, "remoteId":req.body.studUserId});
+                io.emit('quickMsg_updated',{"id":req.body.userId, "remoteId":req.body.remoteCalendarId});
                 var mailOptions = {
                     from: "info@vc4all.in",
                     to: req.body.receiverEmail,

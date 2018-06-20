@@ -48,7 +48,7 @@ app.controller('dashboardController', function ($scope, $rootScope, $timeout, $w
                 var reqMin = todayDate.getMinutes();
                 var reqSec = todayDate.getSeconds();
                 $scope.todayDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
-                console.log("  $scope.todayDate: "+  $scope.todayDate);
+                console.log("  $scope.todayDate: " + $scope.todayDate);
                 console.log("consolidateDate: " + $scope.consolidateDate);
             }
             else {
@@ -68,14 +68,15 @@ app.controller('dashboardController', function ($scope, $rootScope, $timeout, $w
         httpFactory.get(api).then(function (data) {
             $scope.numberOfNotif_event = 0;
             var checkStatus = httpFactory.dataValidation(data);
-            console.log("data--" + JSON.stringify(data.data));
+            // console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
                 $scope.eventData = data.data.data;
                 // ownerEvents = [];
                 for (var x = 0; x < $scope.eventData.length; x++) {
                     console.log("$scope.eventData[" + x + "]: " + JSON.stringify($scope.eventData[x]));
+                    var startD = new Date($scope.eventData[x].start);
                     console.log("$scope.eventData[x].startAt: " + $scope.eventData[x].startAt + " $scope.todayDate: " + $scope.todayDate);
-                    if ($scope.eventData[x].notificationNeed == 'yes' && $scope.eventData[x].startAt >= $scope.todayDate) {
+                    if ($scope.eventData[x].notificationNeed == 'yes' && startD >= $scope.todayDate) {
                         if ($scope.eventData[x].userId != $scope.userData.id) {
                             console.log("not equal");
                             $scope.numberOfNotif_event = $scope.numberOfNotif_event + 1;

@@ -30,6 +30,34 @@ app.controller('dashboardController', function ($scope, $rootScope, $timeout, $w
     $scope.numberOfNotif_event = 0;
     $scope.numberOfNotif_quickMsg = 0;
 
+    $scope.getToDate = function () {
+        console.log("Get To Date-->");
+        var api = $scope.propertyJson.VC_getToDate;
+        httpFactory.get(api).then(function (data) {
+            var checkStatus = httpFactory.dataValidation(data);
+            console.log("data--" + JSON.stringify(data.data));
+            if (checkStatus) {
+                console.log("data.data.data.date: " + data.data.data.date);
+                var todayDate = new Date(data.data.data.date);
+                console.log("todayDate: " + todayDate);
+                var reqDate = todayDate.getDate();
+                console.log("reqDate: " + reqDate);
+                var reqMonth = todayDate.getMonth();
+                var reqYear = todayDate.getFullYear();
+                var reqHr = todayDate.getHours();
+                var reqMin = todayDate.getMinutes();
+                var reqSec = todayDate.getSeconds();
+                $scope.todayDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
+                console.log("consolidateDate: " + $scope.consolidateDate);
+               
+            }
+            else {
+            }
+        })
+        console.log("<--Get To Date");
+    }
+    $scope.getToDate();
+
     $scope.eventGet = function () {
         console.log("eventGet-->");
         var id = $scope.userData.id;
@@ -46,7 +74,7 @@ app.controller('dashboardController', function ($scope, $rootScope, $timeout, $w
                 // ownerEvents = [];
                 for (var x = 0; x < $scope.eventData.length; x++) {
                     console.log("$scope.eventData[" + x + "]: " + JSON.stringify($scope.eventData[x]));
-                    if ($scope.eventData[x].notificationNeed == 'yes') {
+                    if ($scope.eventData[x].notificationNeed == 'yes' &&  $scope.eventData[x].startsAt>=$scope.todayDate) {
                         if ($scope.eventData[x].userId != $scope.userData.id) {
                             console.log("not equal");
                             $scope.numberOfNotif_event = $scope.numberOfNotif_event + 1;

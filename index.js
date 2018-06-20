@@ -363,7 +363,7 @@ io.sockets.on('connection', function(socket) {
                 'textTime': date
             }
             console.log("obj: " + JSON.stringify(obj));
-            chatHistory.update(queryObj, { $push: { "chat": obj, $position: 0 } }, function(err, data) {
+            chatHistory.update(queryObj, { $push: { "chat": obj } }, function(err, data) {
                 if (err) {
                     console.log("errr: " + JSON.stringify(err));
                 }

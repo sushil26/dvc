@@ -24,6 +24,7 @@ var transporter = nodemailer.createTransport({
 module.exports.quickMsgSend = function (req, res) {
     console.log("quickMsgSend-->");
     var responseData;
+    console.log("req.body.userId: " + req.body.userId+" req.body.remoteCalendarId: " + req.body.remoteCalendarId);
     console.log("req.body.senderName: " + req.body.senderName);
     console.log("req.body.senderId: " + req.body.senderId);
     console.log("req.body.reason: " + req.body.reason);

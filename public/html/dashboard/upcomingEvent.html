@@ -48,13 +48,15 @@
                                                 <div ng-if="event.userId == userData.id">
                                                     <a class="fa fa-envelope"></a>&nbsp;
                                                     <b>{{event.title}}</b>
-                                                   
+
                                                 </div>
 
                                                 <div ng-if="event.userId != userData.id">
                                                     <a class="fa fa-inbox-in"></a>&nbsp;
                                                     <b>{{event.title}}</b>
-                                                    <a class="fa fa-share"></a>
+                                                    <a>
+                                                        <span class="glyphicon glyphicon-circle-arrow-right"></span>
+                                                    </a>
                                                 </div>
                                             </td>
 

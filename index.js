@@ -306,10 +306,10 @@ io.sockets.on('connection', function (socket) {
     socket.on('relaySessionDescription', function (config) {
         var peer_id = config.peer_id;
         console.log("relaySessionDescription-->");
-        console.log("relaySessionDescription: " + JSON.stringify(config));
-        console.log("config.peer_id: " + config.peer_id);
+        //console.log("relaySessionDescription: " + JSON.stringify(config));
+        //console.log("config.peer_id: " + config.peer_id);
         var session_description = config.session_description;
-        console.log("[" + socket.id + "] **********relaying session description to [" + peer_id + "] ", session_description);
+        //console.log("[" + socket.id + "] **********relaying session description to [" + peer_id + "] ", session_description);
         if (peer_id in sockets) {
             tempId = peer_id;
             console.log("+++++++++++queryId: " + queryId);

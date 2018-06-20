@@ -88,7 +88,7 @@ module.exports.eventSend = function (req, res) {
             }
             else {
                 var io = req.app.get('socketio');
-                io.emit('eventUpdated', { "id": req.body.remoteCalendarId, "remoteId": req.body.remoteCalendarId });
+                io.emit('eventUpdated', { "id": req.body.remoteCalendarId, "remoteId": req.body.remoteCalendarId }); /* ### Note: Emit message to upcomingEventCtrl.js ### */
                 var mailOptions = {
                     from: "info@vc4all.in",
                     to: req.body.receiverEmail,

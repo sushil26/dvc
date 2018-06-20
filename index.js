@@ -449,7 +449,7 @@ io.sockets.on('connection', function(socket) {
     /* ### Start: Get the event view notification from the reciever(upcomingEventCtrl.js) ### */
     socket.on('event_viewDetail_toserver', function(data) {
         console.log("event_viewDetail_toserver-->");
-        socket.emit('event_viewDetail_toSender', { "userId": data.userId }) /* ### Note: Send event view notification to event sender(who's user id is matched with this userId) ### */
+        io.sockets.emit('event_viewDetail_toSender', { "userId": data.userId }) /* ### Note: Send event view notification to event sender(who's user id is matched with this userId) ### */
     })
     /* ### End: Get the event view notification from the reciever ### */
 

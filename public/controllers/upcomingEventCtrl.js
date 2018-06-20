@@ -108,9 +108,9 @@ app.controller('upcomingEventController', function ($scope, $rootScope, $state, 
             httpFactory.post(api, obj).then(function (data) {
                 var checkStatus = httpFactory.dataValidation(data);
                 console.log("data--" + JSON.stringify(data.data));
-               
+
                 $rootScope.$emit("CallParent_eventGet", {}); /* ### Note: calling method of parentController(dashboardCtr) ### */
-                
+
                 if (checkStatus) {
                     console.log("data" + JSON.stringify(data.data));
                     var eventPostedData = data.data.data;
@@ -128,7 +128,7 @@ app.controller('upcomingEventController', function ($scope, $rootScope, $state, 
             backdropClass: 'show',
             controller: function ($scope, $uibModalInstance) {
                 $scope.eventDetails = $scope.events[id];
-              
+
                 console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
             }
         })
@@ -232,18 +232,19 @@ app.controller('upcomingEventController', function ($scope, $rootScope, $state, 
         console.log("<--deleteEvent");
     }
 
-    //update the client with new data;
+    /* ### Start: Get event update from event.js(eventSend method)  ### *///update the client with new data;
     socket.on('eventUpdated', function (data) {
         console.log("data: " + JSON.stringify(data));
         if (data.id == $scope.userData.id || data.remoteId == $scope.userData.id) {
             $scope.eventGet();
         }
     });
+    /* ### End: Get event update from event.js(eventSend method)  ### */
 
     socket.on('event_viewDetail_toSender', function (data) {
         console.log("****event_viewDetail_toSender-->");
 
-        if($scope.userData.id == data.userId){
+        if ($scope.userData.id == data.userId) {
             console.log("start calling eventGet");
             $scope.eventGet();
         }

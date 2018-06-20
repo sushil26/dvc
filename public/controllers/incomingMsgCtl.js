@@ -59,6 +59,7 @@ app.controller('incomingMsgCtl', function ($scope, $rootScope, $state, $window, 
 
     $scope.quickMsgGet = function () {
         console.log("quickMsgGet-->");
+        $scope.events = [];
         var id = $scope.userData.id;
         console.log("$scope.studCS: " + JSON.stringify($scope.studCS));
         if ($scope.loginType == 'studParent') {

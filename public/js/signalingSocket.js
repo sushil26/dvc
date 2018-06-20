@@ -1486,9 +1486,14 @@ document.querySelector('#stop-recording').onclick = function () {
   // document.querySelector('#pause-recording').disabled = true;
   document.querySelector('#start-recording').disabled = false;
   // document.querySelector('#add-stream').disabled = true;
+  var obj = {
+    "eventId": eventId,
+    "base64data": base64data
+  }
   $.ajax({
-    type: 'GET',
-    url: "https://norecruits.com/record/recordVideoBlobGather",
+    type: 'POST',
+    url: "https://norecruits.com/record/recordVideoBlobGather/",
+    data: JSON.stringify(obj),
     contentType: "application/json"
     //     dataType: "json",
   }).done(function (data) {

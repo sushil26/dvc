@@ -26,7 +26,7 @@ module.exports = function (app) {
     app.post('/record/recordVideo', record.recordVideo);
     app.get('/getRecord/getRecordVideo/:id', record.getRecordVideo);
     app.get('/record/getVideo/:id', record.getRecordVideo);
-    app.get('/record/recordVideoBlobGather', record.recordVideoBlobGather)
+    app.post('/record/recordVideoBlobGather', record.recordVideoBlobGather)
 
     app.post('/vc/schoolLogo', image.upload);
     app.post('/vc/profilePicupload', image.profilePicupload);

@@ -74,6 +74,7 @@ app.controller('dashboardController', function ($scope, $rootScope, $timeout, $w
                 // ownerEvents = [];
                 for (var x = 0; x < $scope.eventData.length; x++) {
                     console.log("$scope.eventData[" + x + "]: " + JSON.stringify($scope.eventData[x]));
+                    console.log("$scope.eventData[x].startAt: "+$scope.eventData[x].startAt+" $scope.todayDate: "+$scope.todayDate);
                     if ($scope.eventData[x].notificationNeed == 'yes' &&  $scope.eventData[x].startAt>=$scope.todayDate) {
                         if ($scope.eventData[x].userId != $scope.userData.id) {
                             console.log("not equal");

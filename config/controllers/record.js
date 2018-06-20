@@ -250,10 +250,16 @@ module.exports.emailInvite = function (req, res) {
     });
 
 }
-var recordData;
+var recordData = '';
 module.exports.recordVideo = function (req, res) {
     var videoBase64 = req.body.base64data;
-    recordData.concat(videoBase64);
+    if(recordData == ''){
+        recordData = videoBase64
+    }
+    else{
+        recordData.concat(videoBase64);
+    }
+   
 }
 
 module.exports.recordVideoBlobGather = function (req, res) {

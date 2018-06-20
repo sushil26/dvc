@@ -11,10 +11,12 @@ var fs = require('fs'),
     url = require('url'),
     path = require('path');
 var app = express();
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json({
-    limit: '100mb'
-}));
+// app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(bodyParser.json({
+//     limit: '100mb'
+// }));
+app.use(bodyParser.json({limit: "1024mb"}));
+app.use(bodyParser.urlencoded({limit: "1024mb", extended: true, parameterLimit:50000}));
 
 //app.use(multer());
 app.use(fileUpload());
@@ -306,10 +308,10 @@ io.sockets.on('connection', function (socket) {
     socket.on('relaySessionDescription', function (config) {
         var peer_id = config.peer_id;
         console.log("relaySessionDescription-->");
-        console.log("relaySessionDescription: " + JSON.stringify(config));
-        console.log("config.peer_id: " + config.peer_id);
+        //console.log("relaySessionDescription: " + JSON.stringify(config));
+        //console.log("config.peer_id: " + config.peer_id);
         var session_description = config.session_description;
-        console.log("[" + socket.id + "] **********relaying session description to [" + peer_id + "] ", session_description);
+        //console.log("[" + socket.id + "] **********relaying session description to [" + peer_id + "] ", session_description);
         if (peer_id in sockets) {
             tempId = peer_id;
             console.log("+++++++++++queryId: " + queryId);

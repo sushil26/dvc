@@ -251,12 +251,12 @@ module.exports.emailInvite = function (req, res) {
 
 }
 var recordData;
-module.exports.recordVideoBlobGather = function (req, res) {
+module.exports.recordVideo = function (req, res) {
     var videoBase64 = req.body.base64data;
     recordData.concat(videoBase64);
 }
 
-module.exports.recordVideo = function (req, res) {
+module.exports.recordVideoBlobGather = function (req, res) {
     console.log("recordVideo-->");
     // var videoBase64 = req.body.base64data;
     var videoBase64 = recordData;

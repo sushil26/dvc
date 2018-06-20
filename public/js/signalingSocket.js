@@ -1486,8 +1486,14 @@ document.querySelector('#stop-recording').onclick = function () {
   // document.querySelector('#pause-recording').disabled = true;
   document.querySelector('#start-recording').disabled = false;
   // document.querySelector('#add-stream').disabled = true;
-  storeRecordVideo();
-
+  $.ajax({
+    type: 'GET',
+    url: "https://norecruits.com/record/recordVideoBlobGather",
+    contentType: "application/json"
+    //     dataType: "json",
+  }).done(function (data) {
+    console.log(data);
+  });
 };
 
 document.querySelector('#pause-recording').onclick = function () {
@@ -1590,7 +1596,7 @@ function onMediaSuccess(stream) {
       // if (blobLinkTag % 2 != 0) {
       //   storeRecordVideo();
       // }
-     
+      storeRecordVideo();
 
     }
 

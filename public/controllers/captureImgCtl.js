@@ -1,4 +1,4 @@
-app.controller('captureImgCtl', function ($scope, $rootScope,  $state, $window, httpFactory, sessionAuthFactory) {
+app.controller('captureImgCtl', function ($scope, $rootScope, $state, $window, httpFactory, sessionAuthFactory) {
     console.log("captureImgCtl==>");
     $scope.propertyJson = $rootScope.propertyJson;
     $scope.userData = sessionAuthFactory.getAccess();
@@ -68,16 +68,16 @@ app.controller('captureImgCtl', function ($scope, $rootScope,  $state, $window, 
     }
     $scope.getStudentPersonalData = function (id) {
         console.log("getMarks-->");
-        var api =  $scope.propertyJson.VC_getStudentAttendance+ "/" + id;
+        var api = $scope.propertyJson.VC_getStudentAttendance + "/" + id;
         console.log("api: " + api);
         httpFactory.get(api).then(function (data) {
             var checkStatus = httpFactory.dataValidation(data);
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
                 var studData = data.data.data;
-              console.log("studData: "+JSON.stringify(studData));
-              $scope.parentEmail = studData[0].parentEmail;
-              $scope.studName = studData[0].firstName;
+                console.log("studData: " + JSON.stringify(studData));
+                $scope.parentEmail = studData[0].parentEmail;
+                $scope.studName = studData[0].firstName;
             }
             else {
                 console.log("sorry");
@@ -94,7 +94,7 @@ app.controller('captureImgCtl', function ($scope, $rootScope,  $state, $window, 
         var id = cs.id;
         $scope.getStudentPersonalData(id);
     }
-    $scope.webCam = function(){
+    $scope.webCam = function () {
         // References to all the element we will need.
         var video = document.querySelector('#camera-stream'),
             image = document.querySelector('#snap'),
@@ -178,14 +178,14 @@ app.controller('captureImgCtl', function ($scope, $rootScope,  $state, $window, 
 
             // Pause video playback of stream.
             video.pause();
-            document.getElementById('snap').style.display='none';
+            document.getElementById('snap').style.display = 'none';
             var resultBlob = dataURItoBlob(snap);
             console.log("resultBlob: " + resultBlob);
             console.log("resultBlob: " + JSON.stringify(resultBlob));
             $scope.mySelfi = snap;
             var parentEmail = $scope.parentEmail;
-            var studName = $scope.studName ;
-            var api = $scope.propertyJson.VC_captureImgSend+"/"+parentEmail+"/"+studName;
+            var studName = $scope.studName;
+            var api = $scope.propertyJson.VC_captureImgSend + "/" + parentEmail + "/" + studName;
             console.log("api: " + api);
             var obj = {
                 "data": snap
@@ -197,10 +197,10 @@ app.controller('captureImgCtl', function ($scope, $rootScope,  $state, $window, 
                 if (checkStatus) {
                     console.log("data" + JSON.stringify(data.data));
                     alert("success");
-                   
+
                 }
                 else {
-                    alert("fail");
+                    // alert("fail");
                 }
 
             });
@@ -233,7 +233,7 @@ app.controller('captureImgCtl', function ($scope, $rootScope,  $state, $window, 
 
 
         delete_photo_btn.addEventListener("click", function (e) {
-
+            $state.reload();
             e.preventDefault();
 
             // Hide image.

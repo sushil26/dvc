@@ -178,7 +178,7 @@ module.exports.eventNotificationOff = function (req, res) {
     }
 }
 module.exports.eventGet = function (req, res) {
-    console.log("getEvent-->");
+    console.log("*getEvent-->");
     var responseData;
     console.log("req.params.id: " + req.params.id);
 

@@ -11,10 +11,12 @@ var fs = require('fs'),
     url = require('url'),
     path = require('path');
 var app = express();
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json({
-    limit: '100mb'
-}));
+// app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(bodyParser.json({
+//     limit: '100mb'
+// }));
+app.use(bodyParser.json({limit: "1024mb"}));
+app.use(bodyParser.urlencoded({limit: "1024mb", extended: true, parameterLimit:50000}));
 
 //app.use(multer());
 app.use(fileUpload());

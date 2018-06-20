@@ -46,15 +46,15 @@
                                         <tr ng-repeat="event in events" ng-if="event.startsAt>=todayDate">
                                             <td ng-if="event.notificationNeed == 'yes'">
                                                 <div ng-if="event.userId == userData.id">
-                                                    <a class="fa fa-envelope"></a>&nbsp;
+                                                    <a   class="fa fa-envelope"></a>&nbsp;
                                                     <b>{{event.title}}</b>
-                                                    <a class="fa fa-arrow-circle-left"></a>
+                                                    <a  style="color:royalblue;"class="fa fa-arrow-circle-left"></a>
                                                 </div>
 
                                                 <div ng-if="event.userId != userData.id">
                                                         <a class="fa fa-envelope"></a>&nbsp;
                                                     <b>{{event.title}}</b>
-                                                    <a class="fa fa-arrow-circle-right"></a>
+                                                    <a  style="color:green;"class="fa fa-arrow-circle-right"></a>
                                                 </div>
                                             </td>
 

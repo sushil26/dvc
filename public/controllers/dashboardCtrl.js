@@ -139,8 +139,8 @@ app.controller('dashboardController', function ($scope, $rootScope, $timeout, $w
                 $scope.eventData = data.data.data;
                 for (var x = 0; x < $scope.eventData.length; x++) {
                     console.log("$scope.eventData[" + x + "]: " + JSON.stringify($scope.eventData[x]));
-
-                    if ($scope.eventData[x].notificationNeed == 'yes') {
+                    console.log("$scope.eventData[x].userId: " + $scope.eventData[x].userId + " $scope.userData.id: " + $scope.userData.id);
+                    if ($scope.eventData[x].notificationNeed == 'yes' && $scope.eventData[x].userId != $scope.userData.id) {
                         $scope.numberOfNotif_quickMsg = $scope.numberOfNotif_quickMsg + 1;
                     }
                 }

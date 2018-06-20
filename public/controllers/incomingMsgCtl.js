@@ -180,6 +180,7 @@ app.controller('incomingMsgCtl', function ($scope, $rootScope, $state, $window, 
         console.log("quickMsg_updated-->: " + JSON.stringify(data));
         console.log("$scope.userData.id: "+$scope.userData.id);
         if (data.id == $scope.userData.id || data.remoteId == $scope.userData.id) {
+            $rootScope.$emit("CallParent_quickMsgGet", {}); /* ### Note: calling method of parentController(dashboardCtr) ### */
             if ($scope.loginType == 'studParent') {
                 $scope.getSelectedStudentPersonalData();
             }

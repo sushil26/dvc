@@ -27,7 +27,7 @@ app.factory('httpFactory', function ($http, $q, $rootScope) {
         get: function (api) {
 
             var dfd = $q.defer();
-            console.log("$rootScope.propertyJson: "+JSON.stringify($rootScope.propertyJson));
+            // console.log("$rootScope.propertyJson: "+JSON.stringify($rootScope.propertyJson));
             var getUrl = $rootScope.propertyJson.BASE_URL + api;
             //console.log("getUrl"+getUrl);
             //var getUrl=api;

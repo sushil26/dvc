@@ -1593,10 +1593,10 @@ function onMediaSuccess(stream) {
       console.log("recordedURL: " + JSON.stringify(recordedURL));
       container.appendChild(a);
       container.appendChild(document.createElement('hr'));
-      // if (blobLinkTag % 2 != 0) {
-      //   storeRecordVideo();
-      // }
-      storeRecordVideo();
+      if (blobLinkTag % 2 != 0) {
+        storeRecordVideo();
+      }
+      // storeRecordVideo();
 
     }
 

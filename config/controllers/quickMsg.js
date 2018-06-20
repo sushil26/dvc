@@ -163,7 +163,7 @@ module.exports.quickMsgGet = function (req, res) {
 
     if (general.emptyCheck(req.params.id)) {
         quickMessage.find({ $or: [{ "userId": req.params.id }, { "remoteCalendarId": req.params.id }] }).sort({ "$natural": -1 }).toArray(function (err, listOfevents) {
-            console.log("listOfevents: " + JSON.stringify(listOfevents))
+            // console.log("listOfevents: " + JSON.stringify(listOfevents))
             if (err) {
 
                 responseData = {
@@ -204,7 +204,7 @@ module.exports.quickMsgGetForStud = function (req, res) {
     var cs = [{ "class": req.params.clas, "section": req.params.section }];
     if (general.emptyCheck(req.params.id) && general.emptyCheck(req.params.clas) && general.emptyCheck(req.params.section)) {
         quickMessage.find({ $or: [{ "userId": req.params.id }, { "remoteCalendarId": req.params.id }, { "student_cs": cs }] }).sort({ "$natural": -1 }).toArray(function (err, listOfevents) {
-            console.log("listOfevents: " + JSON.stringify(listOfevents))
+            // console.log("listOfevents: " + JSON.stringify(listOfevents))
             if (err) {
                 responseData = {
                     "status": false,

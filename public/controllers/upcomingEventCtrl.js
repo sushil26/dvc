@@ -232,7 +232,7 @@ app.controller('upcomingEventController', function ($scope, $rootScope, $state, 
         console.log("<--deleteEvent");
     }
 
-    /* ### Start: Get event update from event.js(eventSend method)  ### *///update the client with new data;
+    /* ### Start: Get event update from event.js(eventSend method)  ### */ //update the client with new data;
     socket.on('eventUpdated', function (data) {
         console.log("eventUpdated-->: " + JSON.stringify(data));
         if (data.id == $scope.userData.id || data.remoteId == $scope.userData.id) {
@@ -242,14 +242,15 @@ app.controller('upcomingEventController', function ($scope, $rootScope, $state, 
     });
     /* ### End: Get event update from event.js(eventSend method)  ### */
 
+    /* ### Start: Get event update from index.js  ### *///update the client with new data;
     socket.on('event_viewDetail_toSender', function (data) {
         console.log("****event_viewDetail_toSender-->");
-
         if ($scope.userData.id == data.userId) {
             console.log("start calling eventGet");
             $scope.eventGet();
         }
     })
+    /* ### End: Get event update from index.js  ### */
 
 
 

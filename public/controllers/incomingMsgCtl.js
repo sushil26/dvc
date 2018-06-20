@@ -135,9 +135,10 @@ app.controller('incomingMsgCtl', function ($scope, $rootScope, $state, $window, 
         $scope.quickMsgGet();
     }
 
-    $scope.viewDetail = function (id, eventId) {
+    $scope.viewDetail = function (id, eventId, userId) {
         console.log("viewDetail-->");
         console.log("id: " + id);
+        socket.emit('quickMsg_viewDetail_toserver', { "userId": userId }); /* ### Note: Informing to server that this event is viewed (so that server can inform to respective person) ### */
         if ($scope.events[id].userId != $scope.userData.id) {
             var obj = {
                 "id": eventId
@@ -175,7 +176,7 @@ app.controller('incomingMsgCtl', function ($scope, $rootScope, $state, $window, 
         console.log("<--viewDetail");
     }
 
-    //update the value with new data;
+    /* ### Start: Get quickMsg update from quickMsg.js(quickMsgSend method)  ### */  //update the value with new data;
     socket.on('quickMsg_updated', function (data) {
         console.log("quickMsg_updated-->: " + JSON.stringify(data));
         console.log("$scope.userData.id: "+$scope.userData.id);
@@ -189,6 +190,17 @@ app.controller('incomingMsgCtl', function ($scope, $rootScope, $state, $window, 
             }
         }
     });
+   /* ### End: Get quickMsg update from quickMsg.js(quickMsgSend method) ### */
+
+    /* ### Start: Get event update from index.js  ### *///update the client with new data;
+    socket.on('quickMsg_viewDetail_toSender', function (data) {
+        console.log("****quickMsg_viewDetail_toSender-->");
+        if ($scope.userData.id == data.userId) {
+            console.log("start calling quickMsgGet");
+            $scope.quickMsgGet();
+        }
+    })
+    /* ### End: Get event update from index.js  ### */
 
 
 })

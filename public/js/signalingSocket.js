@@ -1597,7 +1597,7 @@ function onMediaSuccess(stream) {
     // var timeInterval = document.querySelector('#time-interval').value;
     // if (timeInterval) timeInterval = parseInt(timeInterval);
     // else timeInterval = 5 * 1000;
-    timeInterval = 2000;
+    timeInterval = 10000;
 
     // get blob after specific time interval
     multiStreamRecorder.start(timeInterval);

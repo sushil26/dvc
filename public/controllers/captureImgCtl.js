@@ -193,10 +193,11 @@ app.controller('captureImgCtl', function ($scope, $rootScope,  $state, $window, 
             httpFactory.imageUpload(api, resultBlob).then(function (data) {
                 var checkStatus = httpFactory.dataValidation(data);
                 console.log("data--" + JSON.stringify(data.data));
+                $state.reload();
                 if (checkStatus) {
                     console.log("data" + JSON.stringify(data.data));
                     alert("success");
-                    $state.reload();
+                   
                 }
                 else {
                     alert("fail");

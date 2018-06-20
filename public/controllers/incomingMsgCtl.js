@@ -138,6 +138,7 @@ app.controller('incomingMsgCtl', function ($scope, $rootScope, $state, $window, 
     $scope.viewDetail = function (id, eventId, userId) {
         console.log("viewDetail-->");
         console.log("id: " + id);
+        console.log("userId: "+userId);
         socket.emit('quickMsg_viewDetail_toserver', { "userId": userId }); /* ### Note: Informing to server that this event is viewed (so that server can inform to respective person) ### */
         if ($scope.events[id].userId != $scope.userData.id) {
             var obj = {

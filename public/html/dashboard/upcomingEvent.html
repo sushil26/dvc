@@ -33,7 +33,7 @@
                                             </th>
                                             <!-- <th>
                                                 <i class="icon_clock"></i> End Time
-                                                <!-- <i class="arrow_up_alt pull-right"></i>
+                                                 <i class="arrow_up_alt pull-right"></i>
                                                 <i class="arrow_down_alt pull-right"></i> -->
                                             <!-- </th> -->
 
@@ -45,9 +45,19 @@
                                     <tbody style="background: white">
                                         <tr ng-repeat="event in events" ng-if="event.startsAt>=todayDate">
                                             <td ng-if="event.notificationNeed == 'yes'">
-                                                <a class="fa fa-envelope"></a>&nbsp;<b>{{event.title}}</b><a class="fa fa-reply"></a>
+                                                <div ng-if="event.userId == userData.id">
+                                                    <a class="fa fa-envelope"></a>&nbsp;
+                                                    <b>{{event.title}}</b>
+                                                   
+                                                </div>
+
+                                                <div ng-if="event.userId != userData.id">
+                                                    <a class="fa fa-inbox-in"></a>&nbsp;
+                                                    <b>{{event.title}}</b>
+                                                    <a class="fa fa-share"></a>
+                                                </div>
                                             </td>
-                                        
+
                                             <td ng-if="event.notificationNeed != 'yes'">
                                                 <a class="fa fa-envelope-open-o"></a>&nbsp;{{event.title}}</td>
                                             <td>{{event.startsAt | date:'MMM d, y'}}</td>
@@ -64,7 +74,7 @@
                                                     </a> -->
                                                     <a class="btn btn-primary" ng-click="conferenceStart(event.id, event.url, event.studUserId)">
                                                         <i class="icon_headphones"></i>&nbspStart
-                                                    </a> 
+                                                    </a>
                                                     <a ng-if="loginType=='teacher'" class="btn btn-success" href="" ng-click="rescheduleEvent($index)">
                                                         <i class="fa fa-pencil"></i>&nbsp;Reschedule
                                                     </a>

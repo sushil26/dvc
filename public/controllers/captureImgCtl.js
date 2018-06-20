@@ -1,4 +1,4 @@
-app.controller('captureImgCtl', function ($scope, $rootScope, $window, httpFactory, sessionAuthFactory) {
+app.controller('captureImgCtl', function ($scope, $rootScope, $route, $window, httpFactory, sessionAuthFactory) {
     console.log("captureImgCtl==>");
     $scope.propertyJson = $rootScope.propertyJson;
     $scope.userData = sessionAuthFactory.getAccess();
@@ -192,13 +192,14 @@ app.controller('captureImgCtl', function ($scope, $rootScope, $window, httpFacto
             }
             httpFactory.imageUpload(api, resultBlob).then(function (data) {
                 var checkStatus = httpFactory.dataValidation(data);
-                //console.log("data--" + JSON.stringify(data.data));
+                console.log("data--" + JSON.stringify(data.data));
                 if (checkStatus) {
                     console.log("data" + JSON.stringify(data.data));
-                    alert("success");;
+                    alert("success");
+                    $route.reload();
                 }
                 else {
-                    alert("fail");;
+                    alert("fail");
                 }
 
             });

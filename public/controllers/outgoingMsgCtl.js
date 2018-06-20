@@ -106,7 +106,7 @@ app.controller('outgoingMsgCtl', function ($scope, $rootScope, $state, $window, 
         console.log("<--viewDetail");
     }
 
-    //update the value with new data;
+    /* ### Start: Get quickMsg update from quickMsg.js(quickMsgSend method)  ### */  //update the value with new data;
     socket.on('quickMsg_updated', function (data) {
         console.log("data: " + JSON.stringify(data));
         if (data.id == $scope.userData.id || data.remoteId == $scope.userData.id) {
@@ -114,9 +114,10 @@ app.controller('outgoingMsgCtl', function ($scope, $rootScope, $state, $window, 
             $scope.quickMsgGet();
         }
     });
+    /* ### End: Get quickMsg update from quickMsg.js(quickMsgSend method) ### */
 
-     /* ### Start: Get event update from index.js  ### *///update the client with new data;
-     socket.on('quickMsg_viewDetail_toSender', function (data) {
+    /* ### Start: Get event update from index.js  ### *///update the client with new data;
+    socket.on('quickMsg_viewDetail_toSender', function (data) {
         console.log("****quickMsg_viewDetail_toSender-->");
         if ($scope.userData.id == data.userId) {
             console.log("start calling quickMsgGet");

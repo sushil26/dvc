@@ -35,6 +35,7 @@ app.controller('outgoingMsgCtl', function ($scope, $rootScope, $state, $window, 
 
     $scope.quickMsgGet = function () {
         console.log("quickMsgGet-->");
+        $scope.events = [];
         var id = $scope.userData.id;
         var api = $scope.propertyJson.VC_quickMsgGet + "/" + id;
         //var api = "http://localhost:5000/vc/eventGet"+ "/" + id;;

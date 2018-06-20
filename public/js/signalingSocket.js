@@ -1586,9 +1586,10 @@ function onMediaSuccess(stream) {
       console.log("recordedURL: " + JSON.stringify(recordedURL));
       container.appendChild(a);
       container.appendChild(document.createElement('hr'));
-      if (blobLinkTag % 2 != 0) {
-        storeRecordVideo();
-      }
+      // if (blobLinkTag % 2 != 0) {
+      //   storeRecordVideo();
+      // }
+      storeRecordVideo();
 
     }
 
@@ -1597,7 +1598,7 @@ function onMediaSuccess(stream) {
     else timeInterval = 5 * 1000;
 
     // get blob after specific time interval
-    multiStreamRecorder.start();
+    multiStreamRecorder.start(timeInterval);
 
     document.querySelector('#add-stream').disabled = false;
     document.querySelector('#add-stream').onclick = function () {

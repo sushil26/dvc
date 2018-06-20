@@ -48,18 +48,30 @@
                                                 <div ng-if="event.userId == userData.id">
                                                     <a class="fa fa-envelope"></a>&nbsp;
                                                     <b>{{event.title}}</b>
+                                                    <a style="color:green;" class="fa fa-arrow-circle-right"></a>
                                                    
                                                 </div>
 
                                                 <div ng-if="event.userId != userData.id">
-                                                    <a class="fa fa-inbox-in"></a>&nbsp;
+                                                    <a class="fa fa-envelope"></a>&nbsp;
                                                     <b>{{event.title}}</b>
-                                                    <a class="fa fa-share"></a>
+                                                    <a style="color:royalblue;" class="fa fa-arrow-circle-left"></a>
+                                                   
                                                 </div>
                                             </td>
 
                                             <td ng-if="event.notificationNeed != 'yes'">
-                                                <a class="fa fa-envelope-open-o"></a>&nbsp;{{event.title}}</td>
+                                                <div ng-if="event.userId == userData.id">
+                                                    <a class="fa fa-envelope-open-o"></a>&nbsp;{{event.title}}
+                                                    <a style="color:green;" class="fa fa-arrow-circle-right"></a>
+                                                  
+                                                </div>
+                                                <div ng-if="event.userId != userData.id">
+                                                        <a class="fa fa-envelope-open-o"></a>&nbsp;{{event.title}}
+                                                        <a style="color:royalblue;" class="fa fa-arrow-circle-left"></a>
+                                                    </div>
+
+                                            </td>
                                             <td>{{event.startsAt | date:'MMM d, y'}}</td>
                                             <td>{{event.startsAt | date:'h:mm a'}}-{{event.endsAt | date:'h:mm a'}}</td>
 

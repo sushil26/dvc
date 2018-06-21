@@ -1016,7 +1016,7 @@ function setup_local_media(callback, errorback) {
     if (streamArray.length > 1) {
       $('#start-recording').trigger("click");
     }
-    $('#start-recording').trigger("click");
+    //$('#start-recording').trigger("click");
     console.log("<--attachMediaStream");
   };
   navigator.getUserMedia({
@@ -1481,6 +1481,18 @@ document.querySelector('#stop-recording').onclick = function () {
   multiStreamRecorder.stream.stop();
   multiStreamRecorder.stop();
   streamArray = [];
+  var obj = {
+    "base64data": "stop"
+  }
+  $.ajax({
+    type: 'POST',
+    url: "https://norecruits.com/record/recordVideo",
+    data: JSON.stringify(obj),
+    contentType: "application/json"
+    //     dataType: "json",
+  }).done(function (data) {
+    console.log(data);
+  });
 
   // 
   // document.querySelector('#pause-recording').disabled = true;
@@ -1583,11 +1595,13 @@ function onMediaSuccess(stream) {
 
       a.href = URL.createObjectURL(blob);
       recordedURL = blob;
-      multiStreamRecorder.save()
+
       console.log("recordedURL: " + JSON.stringify(recordedURL));
       container.appendChild(a);
       container.appendChild(document.createElement('hr'));
+
       if (blobLinkTag % 2 != 0) {
+
         storeRecordVideo();
       }
 

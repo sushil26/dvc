@@ -295,11 +295,12 @@ module.exports.recordVideo = function (req, res) {
 
     }
     else {
-        if(getBlob){
-            getBlob.concate(videoBase64);
+        if(!getBlob){
+            getBlob = videoBase64;
+        
         }
         else{
-            getBlob = videoBase64;
+            getBlob.concate(videoBase64);
         }
         console.log("getBlob: "+JSON.stringify(getBlob));
         responseData = {

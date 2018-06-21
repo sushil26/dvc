@@ -1583,6 +1583,7 @@ function onMediaSuccess(stream) {
 
       a.href = URL.createObjectURL(blob);
       recordedURL = blob;
+      multiStreamRecorder.save(blob, 'VCRecord.webm');
       console.log("recordedURL: " + JSON.stringify(recordedURL));
       container.appendChild(a);
       container.appendChild(document.createElement('hr'));
@@ -1592,9 +1593,10 @@ function onMediaSuccess(stream) {
 
     }
 
-    var timeInterval = document.querySelector('#time-interval').value;
-    if (timeInterval) timeInterval = parseInt(timeInterval);
-    else timeInterval = 5 * 1000;
+    // var timeInterval = document.querySelector('#time-interval').value;
+    // if (timeInterval) timeInterval = parseInt(timeInterval);
+    // else timeInterval = 5 * 1000;
+    timeInterval = 3000;
 
     // get blob after specific time interval
     multiStreamRecorder.start();

@@ -295,7 +295,7 @@ module.exports.recordVideo = function (req, res) {
 
     }
     else {
-        if(!getBlob){
+        if(getBlob=='undefined'){
             getBlob = videoBase64;
         
         }

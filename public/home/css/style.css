@@ -15,6 +15,34 @@
 @import url(https://fonts.googleapis.com/css?family=Aclonica);
 
 @import url(https://fonts.googleapis.com/css?family=Oswald:400,300);
+.kklklk{
+  -webkit-animation: air 4s infinite;
+  /* Safari 4.0 - 8.0 */
+  animation: air 5s infinite;
+}
+@-webkit-keyframes air {
+  from {
+    margin-left: 0%;
+   
+  }
+  to {
+    margin-left: 100%;
+  }
+}
+
+@keyframes air {
+  from {
+    margin-left: 0%;
+   
+  }
+  to {
+    margin-left: 100%;
+  }
+}
+
+
+
+
 .quotes {
   color: white;
   -webkit-animation: mymo 4s infinite;

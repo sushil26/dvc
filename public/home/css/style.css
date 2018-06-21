@@ -17,7 +17,7 @@
   color: rgba(255, 255, 255, 0.3);
   -webkit-background-clip: text;
   -webkit-animation-name: shine;
-  -webkit-animation-duration: 5s;
+  -webkit-animation-duration: 2s;
   -webkit-animation-iteration-count: infinite;
   text-shadow: 0 0px 0px rgba(255, 255, 255, 0.5);
 }

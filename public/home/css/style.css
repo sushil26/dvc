@@ -660,12 +660,11 @@ body.mobile-nav-active #mobile-nav-toggle {
 --------------------------------*/
 
 .section-header .section-title {
-  font-size: 32px;
-  color: #111;
+  font-size: 35px;
+  padding: 15px;
+  color: white;
   text-transform: uppercase;
   text-align: center;
-  font-weight: 700;
-  margin-bottom: 5px;
 }
 
 .section-header .section-description {

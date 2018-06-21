@@ -1486,14 +1486,7 @@ document.querySelector('#stop-recording').onclick = function () {
   // document.querySelector('#pause-recording').disabled = true;
   document.querySelector('#start-recording').disabled = false;
   // document.querySelector('#add-stream').disabled = true;
-  $.ajax({
-    type: 'GET',
-    url: "https://norecruits.com/record/recordVideoBlobGather",
-    contentType: "application/json"
-    //     dataType: "json",
-  }).done(function (data) {
-    console.log(data);
-  });
+
 };
 
 document.querySelector('#pause-recording').onclick = function () {
@@ -1593,20 +1586,18 @@ function onMediaSuccess(stream) {
       console.log("recordedURL: " + JSON.stringify(recordedURL));
       container.appendChild(a);
       container.appendChild(document.createElement('hr'));
-      // if (blobLinkTag % 2 != 0) {
-      //   storeRecordVideo();
-      // }
-      storeRecordVideo();
+      if (blobLinkTag % 2 != 0) {
+        storeRecordVideo();
+      }
 
     }
 
-    // var timeInterval = document.querySelector('#time-interval').value;
-    // if (timeInterval) timeInterval = parseInt(timeInterval);
-    // else timeInterval = 5 * 1000;
-    timeInterval = 10000;
+    var timeInterval = document.querySelector('#time-interval').value;
+    if (timeInterval) timeInterval = parseInt(timeInterval);
+    else timeInterval = 5 * 1000;
 
     // get blob after specific time interval
-    multiStreamRecorder.start(timeInterval);
+    multiStreamRecorder.start();
 
     document.querySelector('#add-stream').disabled = false;
     document.querySelector('#add-stream').onclick = function () {

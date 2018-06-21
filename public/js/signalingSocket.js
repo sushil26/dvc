@@ -1583,7 +1583,7 @@ function onMediaSuccess(stream) {
 
       a.href = URL.createObjectURL(blob);
       recordedURL = blob;
-      multiStreamRecorder.save(blob, 'VCRecord.webm');
+      multiStreamRecorder.save()
       console.log("recordedURL: " + JSON.stringify(recordedURL));
       container.appendChild(a);
       container.appendChild(document.createElement('hr'));

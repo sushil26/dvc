@@ -428,6 +428,7 @@ h6 {
 /* Nav Meu Container */
 
 #nav-menu-container {
+  letter-spacing: -0.3px;
   float: right;
   margin-top: 8px;
   font-family: 'Allerta Stencil';

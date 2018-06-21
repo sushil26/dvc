@@ -11,7 +11,13 @@
 
 /* Trouble Shoot Section
 --------------------------------*/
-@import url(http://themes.googleusercontent.com/static/fonts/aclonica/v3/SRPydzL0KLANO5G2lBcEnfesZW2xOQ-xsNqO47m55DA.ttf);
+@font-face {
+  font-family: 'Aclonica';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Aclonica'), local('Aclonica-Regular'), url(http://themes.googleusercontent.com/static/fonts/aclonica/v3/SRPydzL0KLANO5G2lBcEnfesZW2xOQ-xsNqO47m55DA.ttf) format('truetype');
+}
+
 @import url(https://fonts.googleapis.com/css?family=Oswald:400,300);
 .quotes {
   color: #00bcd4f2;

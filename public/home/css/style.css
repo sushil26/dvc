@@ -431,6 +431,7 @@ h6 {
   float: right;
   margin-top: 8px;
   font-family: 'Allerta Stencil';
+  -webkit-font-smoothing: antialiased;
 }
 
 @media (max-width: 768px) {

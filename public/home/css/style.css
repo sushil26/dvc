@@ -14,7 +14,7 @@
 
 @import url(https://fonts.googleapis.com/css?family=Oswald:400,300);
 .quotes {
-  color: #030b3c;
+  color: #00bcd4f2;
   -webkit-animation: mymo 4s infinite;
   /* Safari 4.0 - 8.0 */
   animation: mymo 4s infinite;
@@ -22,19 +22,21 @@
 
 @-webkit-keyframes mymo {
   from {
-    color: #030b3c;
+    color: #00bcd4f2;
+   
   }
   to {
-    color: #00bcd4f2;
+    color: #030b3c;
   }
 }
 
 @keyframes mymo {
   from {
-    color: #030b3c;
+    color: #00bcd4f2;
+    
   }
   to {
-    color: #00bcd4f2;
+    color: #030b3c;
   }
 }
 

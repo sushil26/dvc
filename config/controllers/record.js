@@ -250,69 +250,70 @@ module.exports.emailInvite = function (req, res) {
     });
 
 }
-var blobs = {};
+var blobs = [];
 module.exports.recordVideo = function (req, res) {
     console.log("recordVideo-->");
     var videoBase64 = req.body.base64data;
 
-    // console.log("req.body.eventId: " + req.body.eventId)
-    // if (videoBase64 == "stop") {
-    var gfs = Grid(conn.db);
-    var writeStream = gfs.createWriteStream({
-        filename: 'vcRecord.mpg'
-    });
-    // base64.encode(req.files.data, function (err, base64String) {
-    //     console.log(base64String);
-    //     var response = fs.createReadStream(base64String).pipe(writeStream);  // returns response which is having all information regarding saved byte string
-    //     var lastInsertedFileId = response._store.fileId;  // now you can store it into another document for future use.
-    //     console.log(lastInsertedFileId);
-    // });
-    var byte_string = videoBase64.substr(23);//The base64 has a imageURL
-    var buffer = new Buffer(byte_string);   //new Buffer(b64string, 'base64');  you can use base64 encoding with creating new buffer string
-    var response = streamifier.createReadStream(buffer).pipe(writeStream);  // returns response which is having all information regarding saved byte string
-    var lastInsertedFileId = response._store.fileId;  // now you can store it into another document for future use.
-    console.log(lastInsertedFileId);
+    console.log("req.body.eventId: " + req.body.eventId)
+    if (videoBase64 == "stop") {
+        var gfs = Grid(conn.db);
+        var writeStream = gfs.createWriteStream({
+            filename: 'vcRecord.mpg'
+        });
+        // base64.encode(req.files.data, function (err, base64String) {
+        //     console.log(base64String);
+        //     var response = fs.createReadStream(base64String).pipe(writeStream);  // returns response which is having all information regarding saved byte string
+        //     var lastInsertedFileId = response._store.fileId;  // now you can store it into another document for future use.
+        //     console.log(lastInsertedFileId);
+        // });
+        var getValue = blobs[req.body.eventId];
+        var byte_string = getValue.substr(23);//The base64 has a imageURL
+        var buffer = new Buffer(byte_string);   //new Buffer(b64string, 'base64');  you can use base64 encoding with creating new buffer string
+        var response = streamifier.createReadStream(buffer).pipe(writeStream);  // returns response which is having all information regarding saved byte string
+        var lastInsertedFileId = response._store.fileId;  // now you can store it into another document for future use.
+        console.log(lastInsertedFileId);
 
-    writeStream.on('close', function (file) {
-        console.log(file.filename + "written to db");
-        var responseData;
-        console.log("req.body.id: " + req.body.id);
-        // if (general.emptyCheck(req.body.id)) {
-        var queryId = {
-            "_id": ObjectId(req.body.eventId)
-        }
-        console.log("queryId: " + JSON.stringify(queryId));
-        var setData = {
-            "vcRecordId": lastInsertedFileId
-        }
-        console.log("setData: " + JSON.stringify(setData));
-        event.update({ "_id": ObjectId(req.body.eventId), 'vcRecordId': { $exists: false } }, { $set: { "vcRecordId": lastInsertedFileId } }, function (err, data) {
-            var io = req.app.get('socketio');
-            io.emit('eventUpdatedForHistory', {});
-            console.log("data: " + JSON.stringify(data));
+        writeStream.on('close', function (file) {
+            console.log(file.filename + "written to db");
+            var responseData;
+            console.log("req.body.id: " + req.body.id);
+            // if (general.emptyCheck(req.body.id)) {
+            var queryId = {
+                "_id": ObjectId(req.body.eventId)
+            }
+            console.log("queryId: " + JSON.stringify(queryId));
+            var setData = {
+                "vcRecordId": lastInsertedFileId
+            }
+            console.log("setData: " + JSON.stringify(setData));
+            event.update({ "_id": ObjectId(req.body.eventId), 'vcRecordId': { $exists: false } }, { $set: { "vcRecordId": lastInsertedFileId } }, function (err, data) {
+                var io = req.app.get('socketio');
+                io.emit('eventUpdatedForHistory', {});
+                console.log("data: " + JSON.stringify(data));
+            })
         })
-    })
-    responseData = {
-        status: true,
-        errorCode: 200,
-        message: "insert Successfull and Failed to send mail",
-    };
-    res.status(200).send(responseData);
 
-    // }
-    // else {
+    }
+    else {
+        console.log("blobs.indexOf(req.body.eventId): " + blobs.indexOf(req.body.eventId));
+        if (blobs.valueOf(req.body.eventId) < 0) {
+            blobs[req.body.eventId] = videoBase64;
+        }
+        else {
+            var str =  blobs[req.body.eventId];
+            blobs[req.body.eventId] = str.concat(videoBase64);
+        }
+        //blobs[req.body.eventId].concate(videoBase64);
 
-    //         blobs[req.body.eventId].concate(videoBase64);
-
-
-    //     console.log("getBlob: " + JSON.stringify(getBlob));
-    //     responseData = {
-    //         status: true,
-    //         errorCode: 200,
-    //         message: "insert Successfull and Failed to send mail",
-    //     };
-    //     res.status(200).send(responseData);
-    // }
+        console.log("getBlob: " + JSON.stringify(getBlob));
+        responseData = {
+            status: true,
+            errorCode: 200,
+            message: "insert Successfull and Failed to send mail",
+        };
+        res.status(200).send(responseData);
+    }
 
     console.log("<--recordVideo");
 }

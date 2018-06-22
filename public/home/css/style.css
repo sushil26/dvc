@@ -11,35 +11,38 @@
 
 /* Trouble Shoot Section
 --------------------------------*/
-.shine {
-  background: #222 -webkit-gradient(linear, left top, right top, from(#222), to(#222), color-stop(0.5, #fff)) 0 0 no-repeat;
-  -webkit-background-size: 150px;
-  color: rgba(255, 255, 255, 0.3);
-  -webkit-background-clip: text;
-  -webkit-animation-name: shine;
-  -webkit-animation-duration: 5s;
-  -webkit-animation-iteration-count: infinite;
-  text-shadow: 0 0px 0px rgba(255, 255, 255, 0.5);
-}
-
-@-webkit-keyframes shine {
-  0%, 10% {
-    background-position: -1000px;
-  }
-  20% {
-    background-position: top left;
-  }
-  90% {
-    background-position: top right;
-  }
-  100% {
-    background-position: 1000px;
-  }
-}
 
 @import url(https://fonts.googleapis.com/css?family=Aclonica);
 
 @import url(https://fonts.googleapis.com/css?family=Oswald:400,300);
+.kklklk{
+  -webkit-animation: air 4s infinite;
+  /* Safari 4.0 - 8.0 */
+  animation: air 5s infinite;
+}
+@-webkit-keyframes air {
+  from {
+    margin-left: 0%;
+   
+  }
+  to {
+    margin-left: 100%;
+  }
+}
+
+@keyframes air {
+  from {
+    margin-left: 0%;
+   
+  }
+  to {
+    margin-left: 100%;
+  }
+}
+
+
+
+
 .quotes {
   color: white;
   -webkit-animation: mymo 4s infinite;
@@ -279,6 +282,9 @@ h6 {
   right: 0;
   transition: all 0.5s;
   z-index: 997;
+}
+.greenline-fixed{
+  height: 60px;
 }
 
 #header #logo {

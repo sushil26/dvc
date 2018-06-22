@@ -1481,18 +1481,19 @@ document.querySelector('#stop-recording').onclick = function () {
   multiStreamRecorder.stream.stop();
   multiStreamRecorder.stop();
   streamArray = [];
-  // var obj = {
-  //   "base64data": "stop"
-  // }
-  // $.ajax({
-  //   type: 'POST',
-  //   url: "https://norecruits.com/record/recordVideo",
-  //   data: JSON.stringify(obj),
-  //   contentType: "application/json"
-  //   //     dataType: "json",
-  // }).done(function (data) {
-  //   console.log(data);
-  // });
+  var obj = {
+    "eventId" : localStorage.getItem("eventId"),
+    "base64data": "stop"
+  }
+  $.ajax({
+    type: 'POST',
+    url: "https://norecruits.com/record/recordVideo",
+    data: JSON.stringify(obj),
+    contentType: "application/json"
+    //     dataType: "json",
+  }).done(function (data) {
+    console.log(data);
+  });
 
   // 
   // document.querySelector('#pause-recording').disabled = true;

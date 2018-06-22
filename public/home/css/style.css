@@ -794,7 +794,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 #services .box {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   width: 100%;
   padding: 50px 20px;
   margin-bottom: 50px;
@@ -827,9 +827,13 @@ body.mobile-nav-active #mobile-nav-toggle {
   color: #fff;
   font-size: 24px;
 }
-
 #services .box:hover .icon i {
   color: #2dc997;
+  
+}
+#services .box:hover{
+ 
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
 #services .box:hover .icon a {

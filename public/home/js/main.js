@@ -10,6 +10,7 @@ jQuery(document).ready(function ($) {
     } else {
       $('.back-to-top').fadeOut('slow');
       $('#header').removeClass('header-fixed');
+      $('#greenline').removeClass('greenline-fixed');
     }
   });
   $('.back-to-top').click(function () {

@@ -300,7 +300,7 @@ module.exports.recordVideo = function (req, res) {
     }
     else {
         console.log("blobs.indexOf(req.body.eventId): " + blobs.indexOf(req.body.eventId));
-        console.log(" videoBase64.substr(23): " + videoBase64.substr(23));
+        // console.log(" videoBase64.substr(23): " + videoBase64.substr(23));
         var byte_string = videoBase64.substr(23);//The base64 has a imageURL
         if (blobs.valueOf(req.body.eventId) < 0) {
             blobs[req.body.eventId] = byte_string;

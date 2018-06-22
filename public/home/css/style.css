@@ -318,6 +318,7 @@ h6 {
   }
   #header #logo img {
     width: 62px;
+    margin-top: 0px;
   }
   #header #mm {
     margin-top: 9px !important;

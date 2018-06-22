@@ -843,6 +843,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   
 }
 #services .box:hover{
+  color:#4CAF50;
   border:1px solid #4CAF50;
  
   box-shadow: 0 16px 32px 0 rgba(0, 0, 0, 0.2);

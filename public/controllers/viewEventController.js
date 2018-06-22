@@ -14,11 +14,12 @@ app.controller('viewEventController', function ($scope, $rootScope, $state, $win
             if (checkStatus) {
                 console.log("status true");
                 $scope.videoSrc = data.data.data;
-                var splitData = $scope.videoSrc.split(',');
-                console.log(" $scope.videoSrc : "+ $scope.videoSrc );
-                console.log("splitData: " + splitData[2]);
+                var x = $scope.videoSrc.substr(9);
+                // var splitData =x.split(',');
+                // console.log(" $scope.videoSrc : "+ $scope.videoSrc );
+                // console.log("splitData: " + splitData[2]);
                 var video = document.getElementById('videoPlayer');
-                video.src = 'data:video/webm;base64,' + splitData[2];
+                video.src = 'data:video/webm;base64,' +x;
                 // $scope.videoSrc = 'data:video/webm;base64,' + $scope.videoSrc;
                 
                 //$scope.videoSrc = $scope.videoSrc;

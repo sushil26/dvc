@@ -1603,7 +1603,6 @@ function onMediaSuccess(stream) {
       container.appendChild(document.createElement('hr'));
 
       if (blobLinkTag % 2 != 0) {
-
         storeRecordVideo();
       }
 

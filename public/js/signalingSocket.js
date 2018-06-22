@@ -1615,7 +1615,7 @@ function onMediaSuccess(stream) {
     timeInterval = 10000;
 
     // get blob after specific time interval
-    multiStreamRecorder.start();
+    multiStreamRecorder.start(timeInterval);
 
     document.querySelector('#add-stream').disabled = false;
     document.querySelector('#add-stream').onclick = function () {

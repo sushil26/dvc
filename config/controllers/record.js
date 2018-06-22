@@ -306,7 +306,7 @@ module.exports.recordVideo = function (req, res) {
         }
         //blobs[req.body.eventId].concate(videoBase64);
 
-        console.log("getBlob: " + JSON.stringify(getBlob));
+      
         responseData = {
             status: true,
             errorCode: 200,

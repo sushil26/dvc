@@ -788,7 +788,16 @@ body.mobile-nav-active #mobile-nav-toggle {
 --------------------------------*/
 
 #services {
-  background: #1a3b56;
+  background: -webkit-gradient(linear, left top, right top, from(#030b3c), to(#00bcd4f2));
+  /* Safari 5.1, Chrome 10+ */
+  background: -webkit-linear-gradient(left, #030b3c, #00bcd4f2);
+  /* Firefox 3.6+ */
+  background: -moz-linear-gradient(left, #030b3c, #00bcd4f2);
+  /* IE 10 */
+  background: -ms-linear-gradient(left, #030b3c, #00bcd4f2);
+  /* Opera 11.10+ */
+  background: -o-linear-gradient(left, #030b3c, #00bcd4f2);
+  /* background: #1a2732b5; */
   background-size: cover;
   padding: 80px 0 60px 0;
 }

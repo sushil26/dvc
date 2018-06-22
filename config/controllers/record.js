@@ -302,7 +302,7 @@ module.exports.recordVideo = function (req, res) {
         }
         else {
             var str =  blobs[req.body.eventId];
-            blobs[req.body.eventId] = str.concate(videoBase64);
+            blobs[req.body.eventId] = str.concat(videoBase64);
         }
         //blobs[req.body.eventId].concate(videoBase64);
 

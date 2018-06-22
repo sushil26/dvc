@@ -1481,18 +1481,18 @@ document.querySelector('#stop-recording').onclick = function () {
   multiStreamRecorder.stream.stop();
   multiStreamRecorder.stop();
   streamArray = [];
-  var obj = {
-    "base64data": "stop"
-  }
-  $.ajax({
-    type: 'POST',
-    url: "https://norecruits.com/record/recordVideo",
-    data: JSON.stringify(obj),
-    contentType: "application/json"
-    //     dataType: "json",
-  }).done(function (data) {
-    console.log(data);
-  });
+  // var obj = {
+  //   "base64data": "stop"
+  // }
+  // $.ajax({
+  //   type: 'POST',
+  //   url: "https://norecruits.com/record/recordVideo",
+  //   data: JSON.stringify(obj),
+  //   contentType: "application/json"
+  //   //     dataType: "json",
+  // }).done(function (data) {
+  //   console.log(data);
+  // });
 
   // 
   // document.querySelector('#pause-recording').disabled = true;
@@ -1522,6 +1522,7 @@ function storeRecordVideo() {
 
   reader.readAsDataURL(recordedURL);
   reader.onloadend = function () {
+    console.log("reader.result: "+JSON.stringify(reader.result));
     base64data = reader.result;
     console.log("base64data: " + base64data);
     var eventId = localStorage.getItem("eventId");
@@ -1596,7 +1597,7 @@ function onMediaSuccess(stream) {
       a.href = URL.createObjectURL(blob);
       recordedURL = blob;
 
-      console.log("recordedURL: " + JSON.stringify(recordedURL));
+      console.log("recordedURL: " + JSON.stringify());
       container.appendChild(a);
       container.appendChild(document.createElement('hr'));
 
@@ -1610,10 +1611,10 @@ function onMediaSuccess(stream) {
     // var timeInterval = document.querySelector('#time-interval').value;
     // if (timeInterval) timeInterval = parseInt(timeInterval);
     // else timeInterval = 5 * 1000;
-    timeInterval = 3000;
+    timeInterval = 10000;
 
     // get blob after specific time interval
-    multiStreamRecorder.start(timeInterval);
+    multiStreamRecorder.start();
 
     document.querySelector('#add-stream').disabled = false;
     document.querySelector('#add-stream').onclick = function () {

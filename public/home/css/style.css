@@ -841,7 +841,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 #services .box:hover .icon i {
-  color: #2dc997;
+  color: black;
 }
 
 #services .box:hover {

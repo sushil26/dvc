@@ -4259,7 +4259,9 @@ ul.amounts li {
 
 .panel-heading,
 .modal-header {
-  background: #1a3b56;
+
+  background: #030b3c;
+  /* background: #1a3b56; */
   color: white;
 }
 

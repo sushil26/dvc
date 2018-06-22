@@ -293,6 +293,7 @@ h6 {
   letter-spacing: 1px;
   text-transform: uppercase;
 }
+
 #header #logo h1 a,
 #header #logo h1 a:hover {
   color: #fff;
@@ -838,15 +839,20 @@ body.mobile-nav-active #mobile-nav-toggle {
   color: #fff;
   font-size: 24px;
 }
+
 #services .box:hover .icon i {
   color: #2dc997;
-  
 }
-#services .box:hover{
-  color:#4CAF50;
-  border:1px solid #4CAF50;
- 
-  box-shadow:  10px 10px 91px 0px rgba(0, 0, 0, 0.2);
+
+#services .box:hover {
+  color: #4CAF50;
+  border: 1px solid #4CAF50;
+  box-shadow: 10px 10px 91px 0px rgba(0, 0, 0, 0.2);
+  -ms-transform: scale(1.1, 1.1);
+  /* IE 9 */
+  -webkit-transform: scale(1.1, 1.1);
+  /* Safari */
+  transform: scale(1.1, 1.1);
 }
 
 #services .box:hover .icon a {

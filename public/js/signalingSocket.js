@@ -1482,7 +1482,7 @@ document.querySelector('#stop-recording').onclick = function () {
   multiStreamRecorder.stop();
   streamArray = [];
   var obj = {
-    "eventId" : localStorage.getItem("eventId"),
+    "eventId": localStorage.getItem("eventId"),
     "base64data": "stop"
   }
   $.ajax({
@@ -1523,7 +1523,7 @@ function storeRecordVideo() {
 
   reader.readAsDataURL(recordedURL);
   reader.onloadend = function () {
-    console.log("reader.result: "+JSON.stringify(reader.result));
+    console.log("reader.result: " + JSON.stringify(reader.result));
     base64data = reader.result;
     console.log("base64data: " + base64data);
     var eventId = localStorage.getItem("eventId");
@@ -1582,6 +1582,7 @@ function onMediaSuccess(stream) {
       appendLink(blob);
     };
     var blobLinkTag = 0;
+
     function appendLink(blob) {
       console.log("appendLink-->");
       blobLinkTag++;
@@ -1598,9 +1599,15 @@ function onMediaSuccess(stream) {
       a.href = URL.createObjectURL(blob);
       recordedURL = blob;
 
+      // if(blob.size>=1000-100)
+      // {
+      //   storeRecordVideo();
+      // }
+
       // console.log("recordedURL: " + JSON.stringify());
       container.appendChild(a);
       container.appendChild(document.createElement('hr'));
+
 
       if (blobLinkTag % 2 != 0) {
         storeRecordVideo();
@@ -1611,7 +1618,13 @@ function onMediaSuccess(stream) {
     // var timeInterval = document.querySelector('#time-interval').value;
     // if (timeInterval) timeInterval = parseInt(timeInterval);
     // else timeInterval = 5 * 1000;
-    timeInterval = 60000;
+  
+    // 30*60*1000 =180000
+    // 40*60*1000
+    // 60*60*1000
+    //15*60*1000 = 900000
+    // 3600000
+    timeInterval = 900000;
 
     // get blob after specific time interval
     multiStreamRecorder.start(timeInterval);

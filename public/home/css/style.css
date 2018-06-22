@@ -310,6 +310,9 @@ h6 {
 }
 
 @media (max-width: 768px) {
+  #header{
+    height: 71px;
+  }
   .btn {
     font-size: 8px ! important;
   }

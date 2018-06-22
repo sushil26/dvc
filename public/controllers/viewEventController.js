@@ -21,7 +21,7 @@ app.controller('viewEventController', function ($scope, $rootScope, $state, $win
                 // console.log(" $scope.videoSrc : "+ $scope.videoSrc );
                 // console.log("splitData: " + splitData[2]);
                 var video = document.getElementById('videoPlayer');
-                video.src = 'data:video/webm;base64,' +$scope.videoSrc;
+                video.src = $scope.videoSrc;
                 // $scope.videoSrc = 'data:video/webm;base64,' + $scope.videoSrc;
                 
                 //$scope.videoSrc = $scope.videoSrc;

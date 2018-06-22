@@ -1597,7 +1597,7 @@ function onMediaSuccess(stream) {
       a.href = URL.createObjectURL(blob);
       recordedURL = blob;
 
-      console.log("recordedURL: " + JSON.stringify(recordedURL));
+      console.log("recordedURL: " + JSON.stringify());
       container.appendChild(a);
       container.appendChild(document.createElement('hr'));
 
@@ -1614,7 +1614,7 @@ function onMediaSuccess(stream) {
     timeInterval = 10000;
 
     // get blob after specific time interval
-    multiStreamRecorder.start(timeInterval);
+    multiStreamRecorder.start();
 
     document.querySelector('#add-stream').disabled = false;
     document.querySelector('#add-stream').onclick = function () {

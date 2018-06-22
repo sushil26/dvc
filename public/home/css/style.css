@@ -13,17 +13,16 @@
 --------------------------------*/
 
 @import url(https://fonts.googleapis.com/css?family=Aclonica);
-
 @import url(https://fonts.googleapis.com/css?family=Oswald:400,300);
-.kklklk{
+.kklklk {
   -webkit-animation: air 4s infinite;
   /* Safari 4.0 - 8.0 */
   animation: air 5s infinite;
 }
+
 @-webkit-keyframes air {
   from {
     margin-left: 0%;
-   
   }
   to {
     margin-left: 100%;
@@ -33,15 +32,11 @@
 @keyframes air {
   from {
     margin-left: 0%;
-   
   }
   to {
     margin-left: 100%;
   }
 }
-
-
-
 
 .quotes {
   color: white;
@@ -53,7 +48,6 @@
 @-webkit-keyframes mymo {
   from {
     color: white;
-   
   }
   to {
     color: gainsboro;
@@ -63,7 +57,6 @@
 @keyframes mymo {
   from {
     color: white;
-    
   }
   to {
     color: gainsboro;
@@ -264,13 +257,10 @@ h6 {
   background: -webkit-gradient(linear, left top, right top, from(#030b3c), to(#00bcd4f2));
   /* Safari 5.1, Chrome 10+ */
   background: -webkit-linear-gradient(left, #030b3c, #00bcd4f2);
-
   /* Firefox 3.6+ */
   background: -moz-linear-gradient(left, #030b3c, #00bcd4f2);
-
   /* IE 10 */
   background: -ms-linear-gradient(left, #030b3c, #00bcd4f2);
-
   /* Opera 11.10+ */
   background: -o-linear-gradient(left, #030b3c, #00bcd4f2);
   /* background: #1a2732b5; */
@@ -283,8 +273,9 @@ h6 {
   transition: all 0.5s;
   z-index: 997;
 }
-.greenline-fixed{
-  height: 60px !important;
+
+.greenline-fixed {
+  top: 60px !important;
 }
 
 #header #logo {
@@ -337,13 +328,10 @@ h6 {
   background: -webkit-gradient(linear, left top, right top, from(#030b3c), to(#00bcd4f2));
   /* Safari 5.1, Chrome 10+ */
   background: -webkit-linear-gradient(left, #030b3c, #00bcd4f2);
-
   /* Firefox 3.6+ */
   background: -moz-linear-gradient(left, #030b3c, #00bcd4f2);
-
   /* IE 10 */
   background: -ms-linear-gradient(left, #030b3c, #00bcd4f2);
-
   /* Opera 11.10+ */
   background: -o-linear-gradient(left, #030b3c, #00bcd4f2);
   /* background: #1a2732; */

@@ -683,6 +683,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 --------------------------------*/
 
 .section-header .section-title {
+  font-family: 'Aclonica';
   font-size: 35px;
   padding: 15px;
   color: white;

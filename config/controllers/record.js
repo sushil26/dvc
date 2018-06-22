@@ -256,7 +256,7 @@ module.exports.recordVideo = function (req, res) {
     var videoBase64 = req.body.base64data;
 
     console.log("req.body.eventId: " + req.body.eventId)
-    if (videoBase64 == "stop") {
+    // if (videoBase64 == "stop") {
         console.log("stop started-->");
         console.log("blobs[req.body.eventId]: " + JSON.stringify(blobs[req.body.eventId]));
         var gfs = Grid(conn.db);
@@ -269,8 +269,8 @@ module.exports.recordVideo = function (req, res) {
         //     var lastInsertedFileId = response._store.fileId;  // now you can store it into another document for future use.
         //     console.log(lastInsertedFileId);
         // });
-        var getValue = blobs[req.body.eventId];
-        //var byte_string = getValue.substr(23);//The base64 has a imageURL
+        var getValue = videoBase64;
+        var byte_string = videoBase64.substr(23);//The base64 has a imageURL
         //var buffer = new Buffer(byte_string);   //new Buffer(b64string, 'base64');  you can use base64 encoding with creating new buffer string
         var buffer = new Buffer(getValue);   //new Buffer(b64string, 'base64');  you can use base64 encoding with creating new buffer string
         var response = streamifier.createReadStream(buffer).pipe(writeStream);  // returns response which is having all information regarding saved byte string
@@ -297,19 +297,19 @@ module.exports.recordVideo = function (req, res) {
             })
         })
 
-    }
-    else {
-        console.log("blobs.indexOf(req.body.eventId): " + blobs.indexOf(req.body.eventId));
-        console.log(" videoBase64.substr(23): " + videoBase64);
-        var byte_string = videoBase64.substr(23);//The base64 has a imageURL
-        if (blobs.valueOf(req.body.eventId) < 0) {
-            blobs[req.body.eventId] = byte_string;
-        }
-        else {
-            var str = blobs[req.body.eventId];
-            blobs[req.body.eventId] = str + byte_string;
-        }
-        //blobs[req.body.eventId].concate(videoBase64);
+    //}
+    // else {
+    //     console.log("blobs.indexOf(req.body.eventId): " + blobs.indexOf(req.body.eventId));
+    //     console.log(" videoBase64.substr(23): " + videoBase64);
+    //     var byte_string = videoBase64.substr(23);//The base64 has a imageURL
+    //     if (blobs.valueOf(req.body.eventId) < 0) {
+    //         blobs[req.body.eventId] = byte_string;
+    //     }
+    //     else {
+    //         var str = blobs[req.body.eventId];
+    //         blobs[req.body.eventId] = str + byte_string;
+    //     }
+    //     //blobs[req.body.eventId].concate(videoBase64);
 
 
         responseData = {

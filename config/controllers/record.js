@@ -302,11 +302,11 @@ module.exports.recordVideo = function (req, res) {
         }
         else {
             var str =  blobs[req.body.eventId];
-            blobs[req.body.eventId] = str.concat(videoBase64);
+            blobs[req.body.eventId] = str + videoBase64;
         }
         //blobs[req.body.eventId].concate(videoBase64);
 
-        console.log("getBlob: " + JSON.stringify(getBlob));
+      
         responseData = {
             status: true,
             errorCode: 200,

@@ -310,6 +310,9 @@ h6 {
 }
 
 @media (max-width: 768px) {
+  #greenline{
+    top:71px;
+  }
   #header{
     height: 71px;
   }

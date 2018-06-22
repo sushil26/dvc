@@ -14,6 +14,7 @@ app.controller('viewEventController', function ($scope, $rootScope, $state, $win
             if (checkStatus) {
                 console.log("status true");
                 $scope.videoSrc = data.data.data;
+                console.log(" $scope.videoSrc : "+ $scope.videoSrc );
                 var video = document.getElementById('videoPlayer');
                 video.src = 'data:video/webm;base64,' + $scope.videoSrc;
                 // $scope.videoSrc = 'data:video/webm;base64,' + $scope.videoSrc;

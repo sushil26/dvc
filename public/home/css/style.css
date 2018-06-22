@@ -606,6 +606,8 @@ h6 {
 }
 
 #mobile-nav ul {
+  letter-spacing: -1px;
+  font-family: 'Allerta Stencil';
   padding: 0;
   margin: 0;
   list-style: none;

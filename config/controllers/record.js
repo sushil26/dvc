@@ -257,6 +257,7 @@ module.exports.recordVideo = function (req, res) {
 
     console.log("req.body.eventId: " + req.body.eventId)
     if (videoBase64 == "stop") {
+        console.log("stop started-->")
         var gfs = Grid(conn.db);
         var writeStream = gfs.createWriteStream({
             filename: 'vcRecord.mpg'

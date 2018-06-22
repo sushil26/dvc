@@ -310,12 +310,7 @@ h6 {
 }
 
 @media (max-width: 768px) {
-  #greenline{
-    top:71px !important;
-  }
-  #header{
-    height: 71px;
-  }
+
   .btn {
     font-size: 8px ! important;
   }

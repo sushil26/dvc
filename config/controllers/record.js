@@ -296,6 +296,12 @@ module.exports.recordVideo = function (req, res) {
                 console.log("data: " + JSON.stringify(data));
             })
         })
+        responseData = {
+            status: true,
+            errorCode: 200,
+            message: "insert Successfull and Failed to send mail",
+        };
+        res.status(200).send(responseData);
 
     //}
     // else {
@@ -312,13 +318,8 @@ module.exports.recordVideo = function (req, res) {
     //     //blobs[req.body.eventId].concate(videoBase64);
 
 
-        responseData = {
-            status: true,
-            errorCode: 200,
-            message: "insert Successfull and Failed to send mail",
-        };
-        res.status(200).send(responseData);
-    }
+       
+    
 
     console.log("<--recordVideo");
 }

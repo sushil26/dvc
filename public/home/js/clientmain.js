@@ -6,7 +6,7 @@ jQuery(document).ready(function( $ ) {
         $('.back-to-top').fadeIn('slow');
         $('#header').addClass('header-fixed');
         $('#nav-menu-container').addClass('header-fixed');
-        $('#greenline').addClass('header-fixed');
+        $('#greenline').addClass('greenline-fixed');
       } else {
         $('.back-to-top').fadeOut('slow');
         $('#header').removeClass('header-fixed');

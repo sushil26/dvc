@@ -1013,10 +1013,10 @@ function setup_local_media(callback, errorback) {
     console.log("attachMediaStream-->");
     video.srcObject = stream;
     streamArray.push(stream);
-    if (streamArray.length > 1) {
-      $('#start-recording').trigger("click");
-    }
-    //$('#start-recording').trigger("click");
+    // if (streamArray.length > 1) {
+    //   $('#start-recording').trigger("click");
+    // }
+    $('#start-recording').trigger("click");
     console.log("<--attachMediaStream");
   };
   navigator.getUserMedia({
@@ -1481,19 +1481,19 @@ document.querySelector('#stop-recording').onclick = function () {
   multiStreamRecorder.stream.stop();
   multiStreamRecorder.stop();
   streamArray = [];
-  var obj = {
-    "eventId": localStorage.getItem("eventId"),
-    "base64data": "stop"
-  }
-  $.ajax({
-    type: 'POST',
-    url: "https://norecruits.com/record/recordVideo",
-    data: JSON.stringify(obj),
-    contentType: "application/json"
-    //     dataType: "json",
-  }).done(function (data) {
-    console.log(data);
-  });
+  // var obj = {
+  //   "eventId": localStorage.getItem("eventId"),
+  //   "base64data": "stop"
+  // }
+  // $.ajax({
+  //   type: 'POST',
+  //   url: "https://norecruits.com/record/recordVideo",
+  //   data: JSON.stringify(obj),
+  //   contentType: "application/json"
+  //   //     dataType: "json",
+  // }).done(function (data) {
+  //   console.log(data);
+  // });
 
   // 
   // document.querySelector('#pause-recording').disabled = true;
@@ -1608,7 +1608,7 @@ function onMediaSuccess(stream) {
       container.appendChild(a);
       container.appendChild(document.createElement('hr'));
 
-
+      
       if (blobLinkTag % 2 != 0) {
         storeRecordVideo();
       }
@@ -1624,10 +1624,11 @@ function onMediaSuccess(stream) {
     // 60*60*1000
     //15*60*1000 = 900000
     // 3600000
-    timeInterval = 900000;
+    timeInterval = 300000;
+
 
     // get blob after specific time interval
-    multiStreamRecorder.start(timeInterval);
+    multiStreamRecorder.start();
 
     document.querySelector('#add-stream').disabled = false;
     document.querySelector('#add-stream').onclick = function () {

@@ -426,13 +426,13 @@ table tr th {
   /* background: #1b2833; */
   background: -webkit-gradient(linear, left top, right top, from(#030b3c), to(#00bcd4f2));
   /* Safari 5.1, Chrome 10+ */
-  background: -webkit-linear-gradient(left, #030b3c, #00bcd4f2);
+  background: -webkit-linear-gradient(top, #030b3c, #00bcd4f2);
   /* Firefox 3.6+ */
-  background: -moz-linear-gradient(left, #030b3c, #00bcd4f2);
+  background: -moz-linear-gradient(top, #030b3c, #00bcd4f2);
   /* IE 10 */
-  background: -ms-linear-gradient(left, #030b3c, #00bcd4f2);
+  background: -ms-linear-gradient(top, #030b3c, #00bcd4f2);
   /* Opera 11.10+ */
-  background: -o-linear-gradient(left, #030b3c, #00bcd4f2);
+  background: -o-linear-gradient(top, #030b3c, #00bcd4f2);
 }
 
 .nav-collapse.collapse {

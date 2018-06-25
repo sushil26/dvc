@@ -271,10 +271,6 @@ app.controller('dashboardController', function ($scope, $rootScope, $timeout, $w
     })
 
 
-    $(window).load(function () {
-      // Animate loader off screen
-      $(".se-pre-con").fadeOut("slow");;
-    });
 
     /* ##### End function call request from another controller  ##### */
 

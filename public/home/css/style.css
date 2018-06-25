@@ -15,7 +15,7 @@
 @import url(https://fonts.googleapis.com/css?family=Oswald:400,300);
 .ng-enter {
   transition:0.75s;
-  opacity:0;
+  opacity:1;
 }
 .ng-enter-stagger{
   transition-delay: 0.1s;
@@ -34,7 +34,7 @@
   transition-delay: 0.1s;
 }
 .ng-leave.ng-leave-active {
-  opacity:0;
+  opacity:1;
 }
 
 

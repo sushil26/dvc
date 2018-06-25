@@ -1,6 +1,23 @@
 <link rel="stylesheet" href="././dashboard_Lib/css/style.css" />
 <link rel="stylesheet" href="././dashboard_Lib/css/style-responsive.css" />
 <link rel="stylesheet" href="././dashboard_Lib/css/elegant-icons-style.css" />
+<script>
+		// Wait for window load
+		$(window).load(function() {
+			// Animate loader off screen
+			$("#loader").animate({
+				top: -200
+			}, 1500);
+		});
+	</script>
+
+    <style>
+		/* This only works with JavaScript, 
+		   if it's not present, don't show loader */
+		.no-js #loader { display: none;  }
+		.js #loader { display: block; position: absolute; left: 100px; top: 0; }
+	</style>
+<img src="././gears-animation.gif" id="loader">
 <div ng-controller="dashboardController">
     <!-- container section start -->
     <section id="container" class="">

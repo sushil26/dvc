@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="././dashboard_Lib/css/style.css" />
 <link rel="stylesheet" href="././dashboard_Lib/css/style-responsive.css" />
 <link rel="stylesheet" href="././dashboard_Lib/css/elegant-icons-style.css" />
-<div ng-controller="dashboardController">
+<div id=uuu ng-controller="dashboardController">
     <!-- container section start -->
     <section id="container" class="">
         <!--header start-->
@@ -269,12 +269,18 @@
             </div>
         </aside>
         <!--sidebar end-->
-        <div ui-view class="user-body">
+        <div id="lll" ui-view class="user-body">
         </div>
         <!--main content end-->
     </section>
 
 </div>
+<script>
+    $('#uuu').fadeIn(500, function () {
+
+        $('#lll').fadeIn(1000);
+    });
+</script>
 
 <script src="././dashboard_Lib/js/jquery.js"></script>
 <script src="././dashboard_Lib/js/bootstrap.min.js"></script>

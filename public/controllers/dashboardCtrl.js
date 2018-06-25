@@ -271,7 +271,6 @@ app.controller('dashboardController', function ($scope, $rootScope, $timeout, $w
     })
 
 
-
     /* ##### End function call request from another controller  ##### */
 
 })

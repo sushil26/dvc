@@ -1,6 +1,4 @@
-<div style="-webkit-animation:scaleUp 0.5s both ease-in;
--moz-animation:scaleUp 0.5s both ease-in;
-animation:scaleUp 0.5s both ease-in;" ng-controller="dashboardController">
+<div   class="dsbrd" ng-controller="dashboardController">
     <!-- container section start -->
     <section id="container" class="">
         <!--header start-->
@@ -274,6 +272,13 @@ animation:scaleUp 0.5s both ease-in;" ng-controller="dashboardController">
     </section>
 
 </div>
+<style>
+    .dsbrd.ng-enter 		{  
+    -webkit-animation:scaleUp 0.5s both ease-in;
+	-moz-animation:scaleUp 0.5s both ease-in;
+	animation:scaleUp 0.5s both ease-in;    
+}
+</style>
 
 <!-- <script src="././dashboard_Lib/js/jquery.js"></script> -->
 <script src="././dashboard_Lib/js/bootstrap.min.js"></script>

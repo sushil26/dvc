@@ -78,12 +78,7 @@
   <script src="/controllers/logoutCtl.js"></script>
   <script src="/controllers/captureImgCtl.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
-  <script>
-    $(window).load(function () {
-      // Animate loader off screen
-      $(".se-pre-con").fadeOut("slow");;
-    });
-  </script>
+  
   <style>
     /* Paste this css to your style sheet file or under head tag */
 
@@ -722,6 +717,12 @@
       <script src="/home/lib/superfish/superfish.min.js"></script>
       <script src="/home/lib/counterup/counterup.min.js"></script>
       <script src="/home/js/main.js"></script>
+      <script>
+          $(window).load(function () {
+            // Animate loader off screen
+            $(".se-pre-con").fadeOut("slow");;
+          });
+        </script>
     </div>
 
   </div>

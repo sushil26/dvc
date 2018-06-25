@@ -258,14 +258,14 @@
       }
     }
 
-    function show(id, value) {
-      document.getElementById(id).style.display = value ? 'block' : 'none';
-    }
+    // function show(id, value) {
+    //   document.getElementById(id).style.display = value ? 'block' : 'none';
+    // }
 
-    onReady(function () {
-      show('page', true);
-      show('loading', false);
-    });
+    // onReady(function () {
+    //   show('page', true);
+    //   show('loading', false);
+    // });
   </script>
 
 </head>
@@ -273,6 +273,7 @@
 
 
 <body>
+    <div class="se-pre-con"></div>
   <!-- <div id="loading"></div> -->
   <div ng-app="vcApp" ng-controller="vcAppCtrl">
     <spinner name="spinner" id="veil"></spinner>

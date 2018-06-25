@@ -112,6 +112,7 @@
       background-color: #0a425f;
       background-size: 175px;
     }
+
     #loadings {
       display: block;
       position: absolute !important;
@@ -274,9 +275,10 @@
 
 
 <body>
-  <div id="loading"></div>
+
   <div ng-app="vcApp" ng-controller="vcAppCtrl">
     <spinner name="spinner" id="veil"></spinner>
+    <div id="loading"></div>
     <div id="page" ui-view>
       <!--==========================
     Header
@@ -564,7 +566,7 @@
                             margin-top: 8px;
                             text-transform: uppercase;
                             ">VC4ALL</span>
-                            </a>
+                          </a>
                           </span>
 
                         </div>

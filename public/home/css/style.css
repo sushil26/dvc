@@ -14,8 +14,11 @@
 @import url(https://fonts.googleapis.com/css?family=Aclonica);
 @import url(https://fonts.googleapis.com/css?family=Oswald:400,300);
 .ng-enter {
-  transition:0.5s linear all;
+  transition:0.75s;
   opacity:0;
+}
+.ng-enter-stagger{
+  transition-delay: 0.1s;
 }
 
 /* The finishing CSS styles for the enter animation */
@@ -24,8 +27,11 @@
 }
 
 .ng-leave {
-  transition:0.5s linear all;
+  transition:0.75s linear all;
   opacity:1;
+}
+.ng-leave-stagger{
+  transition-delay: 0.1s;
 }
 .ng-leave.ng-leave-active {
   opacity:0;

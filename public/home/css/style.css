@@ -855,6 +855,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   height: 200px;
   position: relative;
   background-image: url(/home/img/background.jpg);
+  background-position:right top;
 }
 
 #services .icon {

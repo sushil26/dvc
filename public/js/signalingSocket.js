@@ -1624,11 +1624,11 @@ function onMediaSuccess(stream) {
     // 60*60*1000
     //15*60*1000 = 900000
     // 3600000
-    timeInterval = 300000;
+    timeInterval = 900000;
 
 
     // get blob after specific time interval
-    multiStreamRecorder.start();
+    multiStreamRecorder.start(timeInterval);
 
     document.querySelector('#add-stream').disabled = false;
     document.querySelector('#add-stream').onclick = function () {

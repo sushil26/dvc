@@ -291,10 +291,10 @@ function disconnecSession() {
   } else {
     console.log("You are not session creater so you cant delete session");
   }
-  if (streamArray.length >= 1) {
-    console.log("stop rec");
-    $('#stop-recording').trigger("click");
-  }
+  // if (streamArray.length >= 1) {
+  //   console.log("stop rec");
+  //   $('#stop-recording').trigger("click");
+  // }
 
   console.log("-->disconnecSession");
 }

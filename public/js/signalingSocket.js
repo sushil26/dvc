@@ -1012,6 +1012,7 @@ function setup_local_media(callback, errorback) {
     console.log("attachMediaStream-->");
     video.srcObject = stream;
     streamArray.push(stream);
+ 
     if (streamArray.length > 1) {
      // $('#start-recording').trigger("click");
 

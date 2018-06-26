@@ -9,10 +9,8 @@ var stud = db.collection("students"); /* ### student collection  ### */
 var school = db.collection("school"); /* ### school collection  ### */
 var general = require("../general.js");
 var ObjectId = require("mongodb").ObjectID;
-var bodyParser = require('body-parser');
 var csv = require('fast-csv');
 var d = new Date();
-var fileUpload = require('express-fileupload');
 
 var nodemailer = require('nodemailer');
 

@@ -860,13 +860,13 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 #services .icon {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 1px;
+  left: 1px;
   /* left: calc(50% - 36px); */
   transition: 0.2s;
   /* border-radius: 50%; */
   display: inline-block;
-  border: 6px solid #fff;
+  /* border: 6px solid #fff; */
 }
 
 #services .icon a {

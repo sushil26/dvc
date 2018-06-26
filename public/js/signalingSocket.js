@@ -1547,17 +1547,17 @@ document.querySelector('#stop-recording').onclick = function () {
 
 };
 
-document.querySelector('#pause-recording').onclick = function () {
-  this.disabled = true;
-  multiStreamRecorder.pause();
-  document.querySelector('#resume-recording').disabled = false;
-};
+// document.querySelector('#pause-recording').onclick = function () {
+//   this.disabled = true;
+//   multiStreamRecorder.pause();
+//   document.querySelector('#resume-recording').disabled = false;
+// };
 
-document.querySelector('#resume-recording').onclick = function () {
-  this.disabled = true;
-  multiStreamRecorder.resume();
-  document.querySelector('#pause-recording').disabled = false;
-};
+// document.querySelector('#resume-recording').onclick = function () {
+//   this.disabled = true;
+//   multiStreamRecorder.resume();
+//   document.querySelector('#pause-recording').disabled = false;
+// };
 
 function storeRecordVideo() {
   console.log("storeRecordVideo-->");
@@ -1680,7 +1680,7 @@ function onMediaSuccess(stream) {
     // };
     document.querySelector('#stop-recording').style.display = 'inline';
     document.querySelector('#stop-recording').disabled = false;
-    document.querySelector('#pause-recording').disabled = false;
+    //document.querySelector('#pause-recording').disabled = false;
   }, false);
 
   video.play();

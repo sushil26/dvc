@@ -1626,7 +1626,6 @@ function onMediaSuccess(stream) {
     // 3600000
     timeInterval = 900000;
 
-
     // get blob after specific time interval
     multiStreamRecorder.start(timeInterval);
 

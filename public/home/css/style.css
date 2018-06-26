@@ -11,9 +11,35 @@
 
 /* Trouble Shoot Section
 --------------------------------*/
-
 @import url(https://fonts.googleapis.com/css?family=Aclonica);
 @import url(https://fonts.googleapis.com/css?family=Oswald:400,300);
+.ng-enter {
+  transition:0.75s;
+  opacity:0;
+}
+.ng-enter-stagger{
+  transition-delay: 0.1s;
+}
+
+/* The finishing CSS styles for the enter animation */
+.ng-enter.ng-enter-active {
+  opacity:1;
+}
+
+.ng-leave {
+  transition:0.75s;
+  opacity:1;
+}
+.ng-leave-stagger{
+  transition-delay: 0.1s;
+}
+.ng-leave.ng-leave-active {
+  opacity:0;
+}
+
+
+
+
 .kklklk {
   -webkit-animation: air 4s infinite;
   /* Safari 4.0 - 8.0 */
@@ -606,6 +632,8 @@ h6 {
 }
 
 #mobile-nav ul {
+  letter-spacing: -1px;
+  font-family: 'Allerta Stencil';
   padding: 0;
   margin: 0;
   list-style: none;
@@ -614,7 +642,17 @@ h6 {
 
 #mobile-nav ul li {
   position: relative;
-  background: linear-gradient(#212529c9, #343a40bd);
+  /* background: linear-gradient(#212529c9, #343a40bd); */
+  background: -webkit-gradient(linear, left top, right top, from(#030b3c), to(#00bcd4f2));
+  /* Safari 5.1, Chrome 10+ */
+  background: -webkit-linear-gradient(left, #030b3c, #00bcd4f2);
+  /* Firefox 3.6+ */
+  background: -moz-linear-gradient(left, #030b3c, #00bcd4f2);
+  /* IE 10 */
+  background: -ms-linear-gradient(left, #030b3c, #00bcd4f2);
+  /* Opera 11.10+ */
+  background: -o-linear-gradient(left, #030b3c, #00bcd4f2);
+  /* background: #1a2732b5; */
 }
 
 #mobile-nav ul li a {
@@ -816,7 +854,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   text-align: center;
   height: 200px;
   position: relative;
-  background-image: url(/home/img/bc.jpg);
+  background-image: url(/home/img/background.jpg);
 }
 
 #services .icon {
@@ -852,10 +890,9 @@ body.mobile-nav-active #mobile-nav-toggle {
   border: 1px solid #4CAF50;
   box-shadow: 10px 10px 91px 0px rgba(0, 0, 0, 0.2);
   -ms-transform: scale(1.1, 1.1);
-  /* IE 9 */
-  -webkit-transform: scale(1.1, 1.1);
-  /* Safari */
-  transform: scale(1.1, 1.1);
+  transition: all 0.3s;
+  -webkit-transform:scale(1.1, 1.1); /* Safari */
+  transform:scale(1.1, 1.1);
 }
 
 #services .box:hover .icon a {
@@ -875,6 +912,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 #services .description {
+  font-family: cursive;
   font-size: 14px;
   line-height: 24px;
 }

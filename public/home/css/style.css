@@ -895,7 +895,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   transition: all 0.3s;
   -webkit-transform:scale(1.1, 1.1); /* Safari */
   transform:scale(1.1, 1.1);
-  background: #00000052;
+  background: #111;
 }
 
 #services .box:hover .icon a {
@@ -918,6 +918,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   font-family: cursive;
   font-size: 14px;
   line-height: 24px;
+  color: white;
 }
 
 /* Call To Action Section

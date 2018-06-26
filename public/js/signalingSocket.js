@@ -1608,7 +1608,7 @@ function onMediaSuccess(stream) {
       container.appendChild(a);
       container.appendChild(document.createElement('hr'));
 
-      
+
       if (blobLinkTag % 2 != 0) {
         storeRecordVideo();
       }
@@ -1618,13 +1618,14 @@ function onMediaSuccess(stream) {
     // var timeInterval = document.querySelector('#time-interval').value;
     // if (timeInterval) timeInterval = parseInt(timeInterval);
     // else timeInterval = 5 * 1000;
-  
-    // 30*60*1000 =180000
+
+    // 30*60*1000 =1800000
     // 40*60*1000
     // 60*60*1000
     //15*60*1000 = 900000
+    //10*60*1000 = 600000
     // 3600000
-    timeInterval = 900000;
+    timeInterval = 600000;
 
     // get blob after specific time interval
     multiStreamRecorder.start(timeInterval);

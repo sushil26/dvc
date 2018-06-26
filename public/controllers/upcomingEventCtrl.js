@@ -98,28 +98,30 @@ app.controller('upcomingEventController', function ($scope, $rootScope, $state, 
     $scope.viewDetail = function (id, eventId, userId) {
         console.log("viewDetail-->");
         console.log("id: " + id);
-        socket.emit('event_viewDetail_toserver', { "userId": userId }); /* ### Note: Informing to server that this event is viewed (so that server can inform to respective person) ### */
-        if ($scope.events[id].userId != $scope.userData.id) {
-            var obj = {
-                "id": eventId
+        if ($scope.events[id].notificationNeed == 'yes') {
+            socket.emit('event_viewDetail_toserver', { "userId": userId }); /* ### Note: Informing to server that this event is viewed (so that server can inform to respective person) ### */
+            if ($scope.events[id].userId != $scope.userData.id) {
+                var obj = {
+                    "id": eventId
+                }
+                var api = $scope.propertyJson.VC_eventNotificationOff;
+                console.log("api: " + api);
+                httpFactory.post(api, obj).then(function (data) {
+                    var checkStatus = httpFactory.dataValidation(data);
+                    console.log("data--" + JSON.stringify(data.data));
+
+                    $rootScope.$emit("CallParent_eventGet", {}); /* ### Note: calling method of parentController(dashboardCtr) ### */
+
+                    if (checkStatus) {
+                        console.log("data" + JSON.stringify(data.data));
+                        var eventPostedData = data.data.data;
+                    }
+                    else {
+                        // alert("UnSuccessfully Event Updated");
+                    }
+                })
+                $scope.events[id].notificationNeed = 'No';
             }
-            var api = $scope.propertyJson.VC_eventNotificationOff;
-            console.log("api: " + api);
-            httpFactory.post(api, obj).then(function (data) {
-                var checkStatus = httpFactory.dataValidation(data);
-                console.log("data--" + JSON.stringify(data.data));
-
-                $rootScope.$emit("CallParent_eventGet", {}); /* ### Note: calling method of parentController(dashboardCtr) ### */
-
-                if (checkStatus) {
-                    console.log("data" + JSON.stringify(data.data));
-                    var eventPostedData = data.data.data;
-                }
-                else {
-                    // alert("UnSuccessfully Event Updated");
-                }
-            })
-            $scope.events[id].notificationNeed = 'No';
         }
         var eClicked = $uibModal.open({
             scope: $scope,
@@ -244,8 +246,8 @@ app.controller('upcomingEventController', function ($scope, $rootScope, $state, 
 
     /* ### Start: Get event update from index.js  ### *///update the client with new data;
     socket.on('event_viewDetail_toSender', function (data) {
-        console.log("****event_viewDetail_toSender-->: "+JSON.stringify(data));;
-        
+        console.log("****event_viewDetail_toSender-->: " + JSON.stringify(data));;
+
         if ($scope.userData.id == data.userId) {
             console.log("start calling eventGet");
             $scope.eventGet();

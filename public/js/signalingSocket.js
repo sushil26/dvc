@@ -1513,12 +1513,14 @@ var mediaConstraints = {
 };
 
 document.querySelector('#start-recording').onclick = function () {
+document.getElementById('start-recording').style.display = 'none';
   this.disabled = true;
   captureUserMedia(mediaConstraints, onMediaSuccess, onMediaError);
 };
 
 document.querySelector('#stop-recording').onclick = function () {
   console.log("stop-recording-->");
+  document.getElementById('stop-recording').style.display = 'none';
   this.disabled = true;
   multiStreamRecorder.stream.stop();
   multiStreamRecorder.stop();
@@ -1540,21 +1542,24 @@ document.querySelector('#stop-recording').onclick = function () {
   // 
   // document.querySelector('#pause-recording').disabled = true;
   document.querySelector('#start-recording').disabled = false;
+  document.querySelector('#start-recording').style.display = 'inline';
   // document.querySelector('#add-stream').disabled = true;
 
 };
 
 document.querySelector('#pause-recording').onclick = function () {
+  document.getElementById('pause-recording').style.display = 'none';
   this.disabled = true;
   multiStreamRecorder.pause();
-
+  document.querySelector('#resume-recording').style.display =  'inline';
   document.querySelector('#resume-recording').disabled = false;
 };
 
 document.querySelector('#resume-recording').onclick = function () {
+  document.querySelector('#resume-recording').style.display = 'none';
   this.disabled = true;
   multiStreamRecorder.resume();
-
+  document.querySelector('#pause-recording').style.display = 'inline';
   document.querySelector('#pause-recording').disabled = false;
 };
 
@@ -1677,8 +1682,9 @@ function onMediaSuccess(stream) {
       if (!multiStreamRecorder || !multiStreamRecorder.stream) return;
       multiStreamRecorder.addStream(multiStreamRecorder.stream);
     };
-
+    document.querySelector('#stop-recording').style.display = 'inline';
     document.querySelector('#stop-recording').disabled = false;
+    document.querySelector('#pause-recording').style.display = 'inline';
     document.querySelector('#pause-recording').disabled = false;
   }, false);
 
@@ -1712,5 +1718,6 @@ function getTimeLength(milliseconds) {
 }
 
 window.onbeforeunload = function () {
+  document.querySelector('#start-recording').style.display = 'inline';
   document.querySelector('#start-recording').disabled = false;
 };

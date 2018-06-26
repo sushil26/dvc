@@ -871,8 +871,8 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 #services .icon a {
   display: inline-block;
-  background: #2676bf;
-  border: 2px solid #2676bf;
+  background: black;
+  /* border: 2px solid #2676bf; */
   padding: 16px;
   /* border-radius: 50%; */
   transition: 0.3s;

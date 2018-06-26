@@ -50,7 +50,6 @@ mongoConfig.connectToServer(function (err) {
     var db = mongoConfig.getDb();
     console.log("db: " + db);
     chatHistory = db.collection("chatHistory");
-
 })
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/node_modules'));

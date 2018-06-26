@@ -889,13 +889,13 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 #services .box:hover {
   color: #4CAF50;
-  border: 1px solid #4CAF50;
+  /* border: 1px solid #4CAF50; */
   box-shadow: 10px 10px 91px 0px rgba(0, 0, 0, 0.2);
   -ms-transform: scale(1.1, 1.1);
   transition: all 0.3s;
   -webkit-transform:scale(1.1, 1.1); /* Safari */
   transform:scale(1.1, 1.1);
-  background: black;
+  background: #00000052;
 }
 
 #services .box:hover .icon a {

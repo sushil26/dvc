@@ -854,7 +854,8 @@ body.mobile-nav-active #mobile-nav-toggle {
   text-align: center;
   height: 200px;
   position: relative;
-  background-image: url(/home/img/background.jpg);
+  background: white;
+  /* background-image: url(/home/img/background.jpg); */
   background-position:right top;
 }
 

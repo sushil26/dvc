@@ -1677,11 +1677,11 @@ function onMediaSuccess(stream) {
     // get blob after specific time interval
     multiStreamRecorder.start();
 
-    document.querySelector('#add-stream').disabled = false;
-    document.querySelector('#add-stream').onclick = function () {
-      if (!multiStreamRecorder || !multiStreamRecorder.stream) return;
-      multiStreamRecorder.addStream(multiStreamRecorder.stream);
-    };
+    // document.querySelector('#add-stream').disabled = false;
+    // document.querySelector('#add-stream').onclick = function () {
+    //   if (!multiStreamRecorder || !multiStreamRecorder.stream) return;
+    //   multiStreamRecorder.addStream(multiStreamRecorder.stream);
+    // };
     document.querySelector('#stop-recording').style.display = 'inline';
     document.querySelector('#stop-recording').disabled = false;
     document.querySelector('#pause-recording').style.display = 'inline';

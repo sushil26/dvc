@@ -30,6 +30,31 @@
 table td {
   word-break: break-all;
 } */
+.moving {
+ 
+  -webkit-animation: mve 1s infinite;
+  animation: mve 1s infinite;
+}
+
+/* Safari 4.0 - 8.0 */
+
+@-webkit-keyframes mve {
+  from {
+    background: linear-gradient(to right, #00BCD4 , #3F51B5,#FF5722,white,#00000073);
+  }
+  to {
+    background: linear-gradient(to left, #00BCD4 , #3F51B5,#FF5722,white,#00000073);
+  }
+}
+
+@keyframes mve {
+  from {
+    background: linear-gradient(to right, #00BCD4 , #3F51B5,#FF5722,white,#00000073);
+  }
+  to {
+    background: linear-gradient(to left, #00BCD4 , #3F51B5,#FF5722,white,#00000073);
+  }
+}
 
 
 

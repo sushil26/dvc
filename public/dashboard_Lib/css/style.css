@@ -40,7 +40,7 @@ table td {
 
 @-webkit-keyframes mve {
   from {
-    background:red;
+    background:linear-gradient(to right, #00BCD4 , #3F51B5,#FF5722,white,#00000073);
   }
   to {
     background: black;
@@ -49,7 +49,7 @@ table td {
 
 @keyframes mve {
   from {
-    background:red;
+    background:linear-gradient(to right, #00BCD4 , #3F51B5,#FF5722,white,#00000073);
   }
   to {
     background: black;

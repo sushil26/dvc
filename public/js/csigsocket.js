@@ -1077,23 +1077,23 @@ function setup_local_media(callback, errorback) {
               track.stop();
             });
             videoElem.srcObject = null;
-            // delete this;
-            // $(this).remove();
-            // local_media_stream = null;
+            delete this;
+            $(this).remove();
+            local_media_stream = null;
           }
 
           $("#videosAttach").empty();
 
           //local_media_stream = stream;
           local_media_shareStream = stream;
-          // var local_mediaScreenShare = USE_VIDEO ?$("<video>") : $("<audio>");
-          // local_mediaScreenShare.prop("muted",true); /* always mute ourselves by default */
-          // local_mediaScreenShare.attr("id", "screenShareElem");
-          // local_mediaScreenShare.attr("autoplay", "true");
-          // local_mediaScreenShare.attr("style", "border:1px solid skyblue");
-          // $("#videosAttach").append(local_mediaScreenShare);
-          attachMediaStream(local_media[0], stream);
-          //attachMediaStream(local_mediaScreenShare[0], stream);
+          var local_mediaScreenShare = USE_VIDEO ?$("<video>") : $("<audio>");
+          local_mediaScreenShare.prop("muted",true); /* always mute ourselves by default */
+          local_mediaScreenShare.attr("id", "screenShareElem");
+          local_mediaScreenShare.attr("autoplay", "true");
+          local_mediaScreenShare.attr("style", "border:1px solid skyblue");
+          $("#videosAttach").append(local_mediaScreenShare);
+
+          attachMediaStream(local_mediaScreenShare[0], stream);
 
           /* ##### Start Stop Sharing ##### */
           // var btn = document.createElement("input");

@@ -1090,6 +1090,16 @@ function setup_local_media(callback, errorback) {
           local_mediaScreenShare.attr("style", "border:1px solid skyblue");
           $("#videosAttach").append(local_mediaScreenShare);
 
+          $("#screenShareElem").on('loadstart', function (event) {
+            $(this).addClass('background');
+            $(this).attr("poster", "/Preloader_2.gif");
+          });
+          
+          $("#screenShareElem").on('canplay', function (event) {
+            $(this).removeClass('background');
+            $(this).removeAttr("poster");
+          });
+
           attachMediaStream(local_mediaScreenShare[0], stream);
 
           /* ##### Start Stop Sharing ##### */
@@ -1132,6 +1142,16 @@ function setup_local_media(callback, errorback) {
                 local_media.attr("autoplay", true);
                 local_media.attr("style", "border:1px solid skyblue");
                 $("#videosAttach").append(local_media);
+
+                $("#videoElem").on('loadstart', function (event) {
+                  $(this).addClass('background');
+                  $(this).attr("poster", "/Preloader_2.gif");
+                });
+                
+                $("#videoElem").on('canplay', function (event) {
+                  $(this).removeClass('background');
+                  $(this).removeAttr("poster");
+                });
 
                 attachMediaStream(local_media[0], stream);
 

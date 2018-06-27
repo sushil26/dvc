@@ -552,20 +552,20 @@ signaling_socket.on("addPeer", function (config) {
     peer_media_elements[peer_id] = remote_media;
     remote_media.attr("id", peer_id + "Remote");
     $("#portfolio-wrapper").append(
-      '<div id="' +peer_id +'remoteContainer" class="portfolio-items col-xs-6 col-sm-6 col-md-4 col-lg-3" ><div id="' +
-      peer_id +'remoteVideoElement"></div><div class="details"><button id="' +
-      peer_id +'fullscreenbtn2" class="btn fa fa-expand" style="float:left;  margin-top: 10px; margin-left: 10px;"></button><h4>' +
+      '<div id="' + peer_id + 'remoteContainer" class="portfolio-items col-xs-6 col-sm-6 col-md-4 col-lg-3" ><div id="' +
+      peer_id + 'remoteVideoElement"></div><div class="details"><button id="' +
+      peer_id + 'fullscreenbtn2" class="btn fa fa-expand" style="float:left;  margin-top: 10px; margin-left: 10px;"></button><h4>' +
       config.userName + '</h4><i style="display:none; float:right;color: #555555e3; margin-top: -15px; margin-right: 10px;" id="closeThisConn' +
-      peer_id +'" class="fa fa-window-close cancelColrChange" aria-hidden="true" id="closeThisConn' +
-      peer_id +'" owner=' +peer_id +" name=" +config.userName +"></i><span>All is well</span></div></div>");
+      peer_id + '" class="fa fa-window-close cancelColrChange" aria-hidden="true" id="closeThisConn' +
+      peer_id + '" owner=' + peer_id + " name=" + config.userName + "></i><span>All is well</span></div></div>");
     $("#" + peer_id + "remoteVideoElement").append(remote_media);
     peer_userName_elements[peer_id] = document.getElementById("" + peer_id + "remoteContainer");
-    $("#"+peer_id+ "Remote").on('loadstart', function (event) {
+    $("#" + peer_id + "Remote").on('loadstart', function (event) {
       $(this).addClass('background');
       $(this).attr("poster", "/Preloader_2.gif");
     });
-    
-    $("#"+peer_id+ "Remote").on('canplay', function (event) {
+
+    $("#" + peer_id + "Remote").on('canplay', function (event) {
       $(this).removeClass('background');
       $(this).removeAttr("poster");
     });
@@ -1074,9 +1074,7 @@ function setup_local_media(callback, errorback) {
     console.log("screenShare-->");
     getScreenId(function (error, sourceId, screen_constraints) {
       navigator.getUserMedia(screen_constraints, function (stream) {
-        navigator.getUserMedia({
-          audio: true
-        }, function (audioStream) {
+        navigator.getUserMedia({ audio: true }, function (audioStream) {
           stream.addTrack(audioStream.getAudioTracks()[0]);
           // shareScreen = peerNew_id;
           var local_media = document.getElementById("videoElem");
@@ -1085,9 +1083,7 @@ function setup_local_media(callback, errorback) {
           function stopVideo(local_media) {
             let stream = videoElem.srcObject;
             let tracks = stream.getTracks();
-            tracks.forEach(function (track) {
-              track.stop();
-            });
+            tracks.forEach(function (track) { track.stop(); });
             videoElem.srcObject = null;
             delete this;
             $(this).remove();
@@ -1109,7 +1105,7 @@ function setup_local_media(callback, errorback) {
             $(this).addClass('background');
             $(this).attr("poster", "/Preloader_2.gif");
           });
-          
+
           $("#screenShareElem").on('canplay', function (event) {
             $(this).removeClass('background');
             $(this).removeAttr("poster");
@@ -1162,10 +1158,28 @@ function setup_local_media(callback, errorback) {
                   $(this).addClass('background');
                   $(this).attr("poster", "/Preloader_2.gif");
                 });
-                
+
                 $("#videoElem").on('canplay', function (event) {
                   $(this).removeClass('background');
                   $(this).removeAttr("poster");
+                });
+
+                document.getElementById("video_btn").addEventListener("click", function () {
+                  console.log("video_btn from stop screen local start-->");
+                  console.log("stream.getVideoTracks()[0].enabled : " + stream.getVideoTracks()[0].enabled);
+                  stream.getVideoTracks()[0].enabled = !stream.getVideoTracks()[0]
+                    .enabled;
+                  var videoVal = stream.getVideoTracks()[0].enabled;
+
+                  if (videoVal) {
+                    document.getElementById("videoMute_btn").style.display = "inline";
+                    document.getElementById("videoUnmute_btn").style.display = "none";
+                  } else {
+                    document.getElementById("videoMute_btn").style.display = "none";
+                    document.getElementById("videoUnmute_btn").style.display = "inline";
+                  }
+                  console.log("stream.getVideoTracks()[0].enabled: " + stream.getVideoTracks()[0].enabled);
+                  console.log("<--video_btn from stop screen local start-");
                 });
 
                 attachMediaStream(local_media[0], stream);

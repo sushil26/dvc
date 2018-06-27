@@ -23,22 +23,22 @@
 
 @-webkit-keyframes mve {
   0%  {
-    background:linear-gradient(to right,black);
+    background:black;
   }
 
   100% {
-    background:linear-gradient(to right,white);
+    background:white;
   }
 
 }
 
 @keyframes mve {
   0%  {
-    background:linear-gradient(to right,black);
+    background:black;
   }
 
   100% {
-    background:linear-gradient(to right,white);
+    background:white;
   }
 }
 

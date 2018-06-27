@@ -992,7 +992,7 @@ function setup_local_media(callback, errorback) {
         $(this).removeAttr("poster");
       });
 
-
+      /* ### Start: Video maximize and minimize ### */
       document.getElementById("videoElem").addEventListener("click", function () {
         console.log("screem size change request-->");
         var videoElem = document.getElementById("videoElem");
@@ -1020,6 +1020,9 @@ function setup_local_media(callback, errorback) {
           else if (videoElem.msExitFullscreen) videoElem.msExitFullscreen();
         }
       });
+      /* ### End: Video maximize and minimize ### */
+      /* ### Start: This for audio mute and unmute after SCREEN SHARE ### */
+      /* ### Start: This for audio mute and unmute after SCREEN SHARE ### */
       document.getElementById("audio_btn").addEventListener("click", function () {
         console.log("audio_btn-->");
         console.log(
@@ -1040,6 +1043,8 @@ function setup_local_media(callback, errorback) {
         console.log("stream.getAudioTracks()[0].enabled: " + stream.getAudioTracks()[0].enabled);
         console.log("<--audio_btn");
       });
+      /* ### End: This for audio mute and unmute after SCREEN SHARE ### */
+      /* ### Start: This for Video OFF and ON after SCREEN SHARE ### */
       document.getElementById("video_btn").addEventListener("click", function () {
         console.log("video_btn-->");
         console.log("stream.getVideoTracks()[0].enabled : " + stream.getVideoTracks()[0].enabled);
@@ -1057,6 +1062,7 @@ function setup_local_media(callback, errorback) {
         console.log("stream.getVideoTracks()[0].enabled: " + stream.getVideoTracks()[0].enabled);
         console.log("<--video_btn");
       });
+      /* ### End: This for Video OFF and ON after SCREEN SHARE ### */
 
       attachMediaStream(local_media[0], stream);
 
@@ -1131,80 +1137,78 @@ function setup_local_media(callback, errorback) {
               existing.parentNode.removeChild(existing);
             }
             $("#videosAttach").empty();
-            /* ######   ###### */
-            navigator.getUserMedia({
-              audio: USE_AUDIO,
-              video: USE_VIDEO
+
+            /* ###### Start: Local media after stop screen share  ###### */
+            navigator.getUserMedia({ audio: USE_AUDIO, video: USE_VIDEO }, function (stream) {
+              /* user accepted access to a/v */
+              console.log("Access granted to audio/video");
+              console.log("stream: " + stream);
+              console.log("stream: " + JSON.stringify(stream));
+              local_media_shareStream = null;
+              local_media_stream = stream;
+              // local_media_shareStream = stream;
+              var local_media = USE_VIDEO ? $("<video>") : $();
+              /* always mute ourselves by default */
+              local_media.prop("muted", true);
+              local_media.attr("id", "videoElem");
+              local_media.attr("autoplay", true);
+              local_media.attr("style", "border:1px solid skyblue");
+              $("#videosAttach").append(local_media);
+
+              $("#videoElem").on('loadstart', function (event) {
+                $(this).addClass('background');
+                $(this).attr("poster", "/Preloader_2.gif");
+              });
+              $("#videoElem").on('canplay', function (event) {
+                $(this).removeClass('background');
+                $(this).removeAttr("poster");
+              });
+              /* ### Start: This for audio mute and unmute after SCREEN SHARE ### */
+              document.getElementById("audio_btn").addEventListener("click", function () {
+                console.log("audio_btn from stop screen local start-->");
+                console.log(
+                  "stream.getAudioTracks()[0].enabled: " +
+                  stream.getAudioTracks()[0].enabled
+                );
+                stream.getAudioTracks()[0].enabled = !stream.getAudioTracks()[0]
+                  .enabled;
+                var michrophoneVal = stream.getAudioTracks()[0].enabled;
+
+                if (michrophoneVal) {
+                  document.getElementById("audioMute_btn").style.display = "inline";
+                  document.getElementById("audioUnmute_btn").style.display = "none";
+                } else {
+                  document.getElementById("audioMute_btn").style.display = "none";
+                  document.getElementById("audioUnmute_btn").style.display = "inline";
+                }
+                console.log("stream.getAudioTracks()[0].enabled: " + stream.getAudioTracks()[0].enabled);
+                console.log("<--audio_btn from stop screen local start");
+              });
+              /* ### End: This for audio mute and unmute after SCREEN SHARE ### */
+              /* ### Start: This for video ON and OFF after SCREEN SHARE ### */
+              document.getElementById("video_btn").addEventListener("click", function () {
+                console.log("video_btn from stop screen local start-->");
+                console.log("stream.getVideoTracks()[0].enabled : " + stream.getVideoTracks()[0].enabled);
+                stream.getVideoTracks()[0].enabled = !stream.getVideoTracks()[0]
+                  .enabled;
+                var videoVal = stream.getVideoTracks()[0].enabled;
+
+                if (videoVal) {
+                  document.getElementById("videoMute_btn").style.display = "inline";
+                  document.getElementById("videoUnmute_btn").style.display = "none";
+                } else {
+                  document.getElementById("videoMute_btn").style.display = "none";
+                  document.getElementById("videoUnmute_btn").style.display = "inline";
+                }
+                console.log("stream.getVideoTracks()[0].enabled: " + stream.getVideoTracks()[0].enabled);
+                console.log("<--video_btn from stop screen local start-");
+              });
+              /* ### End: This for video ON and OFF after SCREEN SHARE ### */
+
+              attachMediaStream(local_media[0], stream);
+
+              if (callback) callback();
             },
-              function (stream) {
-                /* user accepted access to a/v */
-                console.log("Access granted to audio/video");
-                console.log("stream: " + stream);
-                console.log("stream: " + JSON.stringify(stream));
-                local_media_shareStream = null;
-                local_media_stream = stream;
-                // local_media_shareStream = stream;
-                var local_media = USE_VIDEO ? $("<video>") : $();
-                //local_media.attr("autoplay", "autoplay");
-                local_media.prop("muted", true);
-                /* always mute ourselves by default */
-                // local_media.attr("controls", "");
-                local_media.attr("id", "videoElem");
-                local_media.attr("autoplay", true);
-                local_media.attr("style", "border:1px solid skyblue");
-                $("#videosAttach").append(local_media);
-
-                $("#videoElem").on('loadstart', function (event) {
-                  $(this).addClass('background');
-                  $(this).attr("poster", "/Preloader_2.gif");
-                });
-
-                $("#videoElem").on('canplay', function (event) {
-                  $(this).removeClass('background');
-                  $(this).removeAttr("poster");
-                });
-                document.getElementById("audio_btn").addEventListener("click", function () {
-                  console.log("audio_btn from stop screen local start-->");
-                  console.log(
-                    "stream.getAudioTracks()[0].enabled: " +
-                    stream.getAudioTracks()[0].enabled
-                  );
-                  stream.getAudioTracks()[0].enabled = !stream.getAudioTracks()[0]
-                    .enabled;
-                  var michrophoneVal = stream.getAudioTracks()[0].enabled;
-          
-                  if (michrophoneVal) {
-                    document.getElementById("audioMute_btn").style.display = "inline";
-                    document.getElementById("audioUnmute_btn").style.display = "none";
-                  } else {
-                    document.getElementById("audioMute_btn").style.display = "none";
-                    document.getElementById("audioUnmute_btn").style.display = "inline";
-                  }
-                  console.log("stream.getAudioTracks()[0].enabled: " + stream.getAudioTracks()[0].enabled);
-                  console.log("<--audio_btn from stop screen local start");
-                });
-                document.getElementById("video_btn").addEventListener("click", function () {
-                  console.log("video_btn from stop screen local start-->");
-                  console.log("stream.getVideoTracks()[0].enabled : " + stream.getVideoTracks()[0].enabled);
-                  stream.getVideoTracks()[0].enabled = !stream.getVideoTracks()[0]
-                    .enabled;
-                  var videoVal = stream.getVideoTracks()[0].enabled;
-
-                  if (videoVal) {
-                    document.getElementById("videoMute_btn").style.display = "inline";
-                    document.getElementById("videoUnmute_btn").style.display = "none";
-                  } else {
-                    document.getElementById("videoMute_btn").style.display = "none";
-                    document.getElementById("videoUnmute_btn").style.display = "inline";
-                  }
-                  console.log("stream.getVideoTracks()[0].enabled: " + stream.getVideoTracks()[0].enabled);
-                  console.log("<--video_btn from stop screen local start-");
-                });
-
-                attachMediaStream(local_media[0], stream);
-
-                if (callback) callback();
-              },
               function () {
                 /* user denied access to a/v */
                 console.log("Access denied for audio/video");
@@ -1214,7 +1218,7 @@ function setup_local_media(callback, errorback) {
                 if (errorback) errorback();
               }
             );
-            /* ######   ###### */
+            /* ###### Start: Local media after stop screen share  ###### */
           };
 
           /* ##### End Stop Sharing ##### */

@@ -24,10 +24,12 @@
 @-webkit-keyframes mve {
   from  {
     background:black;
+    opacity: 0;
   }
 
   to {
     background:white;
+    opacity: 1;
   }
 
 }
@@ -35,10 +37,12 @@
 @keyframes mve {
   from  {
     background:black;
+    opacity: 0;
   }
 
   to {
     background:white;
+    opacity: 1;
   }
 }
 

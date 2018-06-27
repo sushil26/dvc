@@ -24,7 +24,7 @@
 @-webkit-keyframes mve {
   from  {
     background:black;
-    opacity: 0;
+    opacity: 0.5;
   }
 
   to {
@@ -37,7 +37,7 @@
 @keyframes mve {
   from  {
     background:black;
-    opacity: 0;
+    opacity: 0.5;
   }
 
   to {

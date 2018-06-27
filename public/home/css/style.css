@@ -13,6 +13,57 @@
 --------------------------------*/
 @import url(https://fonts.googleapis.com/css?family=Aclonica);
 @import url(https://fonts.googleapis.com/css?family=Oswald:400,300);
+.moving {
+ 
+  -webkit-animation: mve 2s infinite;
+  animation: mve 2s infinite;
+}
+
+/* Safari 4.0 - 8.0 */
+
+@-webkit-keyframes mve {
+  from {
+    background:linear-gradient(to right, #00BCD4 , #3F51B5,#FF5722,white,#00000073);
+  }
+  to {
+    background: linear-gradient(to right, #3F51B5,#FF5722,white,#00000073,#00BCD4);
+  }
+}
+
+@keyframes mve {
+  from {
+    background:linear-gradient(to right, #00BCD4 , #3F51B5,#FF5722,white,#00000073);
+  }
+  to {
+    background: linear-gradient(to right, #3F51B5,#FF5722,white,#00000073,#00BCD4);
+  }
+}
+.movi {
+ 
+  -webkit-animation: mvei 2s infinite;
+  animation: mvei 2s infinite;
+}
+
+/* Safari 4.0 - 8.0 */
+
+@-webkit-keyframes mvei {
+  from {
+    background:linear-gradient(to right, #00BCD4 , #3F51B5,#FF5722,white,#00000073);
+  }
+  to {
+    background: linear-gradient(to right, #3F51B5,#FF5722,white,#00000073,#00BCD4);
+  }
+}
+
+@keyframes mvei {
+  from {
+    background:linear-gradient(to right, #00BCD4 , #3F51B5,#FF5722,white,#00000073);
+  }
+  to {
+    background: linear-gradient(to right, #3F51B5,#FF5722,white,#00000073,#00BCD4);
+  }
+}
+
 .ng-enter {
   transition:0.75s;
   opacity:0;

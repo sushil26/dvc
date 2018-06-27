@@ -1040,7 +1040,6 @@ function setup_local_media(callback, errorback) {
         console.log("stream.getAudioTracks()[0].enabled: " + stream.getAudioTracks()[0].enabled);
         console.log("<--audio_btn");
       });
-
       document.getElementById("video_btn").addEventListener("click", function () {
         console.log("video_btn-->");
         console.log("stream.getVideoTracks()[0].enabled : " + stream.getVideoTracks()[0].enabled);
@@ -1164,7 +1163,26 @@ function setup_local_media(callback, errorback) {
                   $(this).removeClass('background');
                   $(this).removeAttr("poster");
                 });
-
+                document.getElementById("audio_btn").addEventListener("click", function () {
+                  console.log("audio_btn from stop screen local start-->");
+                  console.log(
+                    "stream.getAudioTracks()[0].enabled: " +
+                    stream.getAudioTracks()[0].enabled
+                  );
+                  stream.getAudioTracks()[0].enabled = !stream.getAudioTracks()[0]
+                    .enabled;
+                  var michrophoneVal = stream.getAudioTracks()[0].enabled;
+          
+                  if (michrophoneVal) {
+                    document.getElementById("audioMute_btn").style.display = "inline";
+                    document.getElementById("audioUnmute_btn").style.display = "none";
+                  } else {
+                    document.getElementById("audioMute_btn").style.display = "none";
+                    document.getElementById("audioUnmute_btn").style.display = "inline";
+                  }
+                  console.log("stream.getAudioTracks()[0].enabled: " + stream.getAudioTracks()[0].enabled);
+                  console.log("<--audio_btn from stop screen local start");
+                });
                 document.getElementById("video_btn").addEventListener("click", function () {
                   console.log("video_btn from stop screen local start-->");
                   console.log("stream.getVideoTracks()[0].enabled : " + stream.getVideoTracks()[0].enabled);

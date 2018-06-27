@@ -1094,8 +1094,10 @@ div[data-role="editor-toolbar"] {
 }
 
 .top-nav .username {
-  font-size: 13px;
-  color: #bdbdbd;
+  font-weight: bolder;
+    font-size: 13px;
+    color: #00000091;
+
 }
 
 .top-nav ul.top-menu>li>a {

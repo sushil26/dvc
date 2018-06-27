@@ -70,7 +70,7 @@ if (stuff.length > 5) {
     console.log("No user data from session");
     $("#setName").trigger("click");
   }
- 
+
   console.log("userName: " + userName);
 }
 else {
@@ -83,7 +83,7 @@ else {
     console.log("2 cond: emailIdSplit: " + JSON.stringify(emailIdSplit));
     userName = emailIdSplit[0];
     document.getElementById("videoConferenceUrl").style.display = "block";
-   
+
 
   }
   else {
@@ -1058,8 +1058,6 @@ function setup_local_media(callback, errorback) {
     }
   );
 
-
-
   document.getElementById("screenShareBtn").addEventListener("click", function () {
     console.log("screenShare-->");
     getScreenId(function (error, sourceId, screen_constraints) {
@@ -1075,15 +1073,12 @@ function setup_local_media(callback, errorback) {
           function stopVideo(local_media) {
             let stream = videoElem.srcObject;
             let tracks = stream.getTracks();
-
             tracks.forEach(function (track) {
               track.stop();
             });
-
             videoElem.srcObject = null;
             delete this;
             $(this).remove();
-
             local_media_stream = null;
           }
 
@@ -1094,20 +1089,10 @@ function setup_local_media(callback, errorback) {
           var local_mediaScreenShare = USE_VIDEO ?
             $("<video>") :
             $("<audio>");
-          //local_mediaScreenShare.attr("autoplay", "autoplay");
-          local_mediaScreenShare.prop(
-            "muted",
-            true
-          ); /* always mute ourselves by default */
-          // local_mediaScreenShare.attr("controls", "");
+          local_mediaScreenShare.prop("muted",true); /* always mute ourselves by default */
           local_mediaScreenShare.attr("id", "screenShareElem");
           local_mediaScreenShare.attr("autoplay", "true");
-          local_mediaScreenShare.attr(
-            "style",
-            "border:1px solid skyblue"
-          );
-
-          //$('#portfolio-wrapper').append('<div id="'+id+'remoteContainer" class="col-lg-3 col-md-6 portfolio-items"><div id="'+id+'remoteVideoElement"></div><div class="details"><h4>'+config.userName+'</h4><span>All is well</span></div></div>');
+          local_mediaScreenShare.attr("style", "border:1px solid skyblue");
           $("#videosAttach").append(local_mediaScreenShare);
 
           attachMediaStream(local_mediaScreenShare[0], stream);

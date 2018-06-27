@@ -22,23 +22,27 @@
 /* Safari 4.0 - 8.0 */
 
 @-webkit-keyframes mve {
-  0%  {
-    background:linear-gradient(to right,white,black,white,black);
+  from  {
+    background:black;
+    opacity: 0;
   }
 
-  100% {
-    background:linear-gradient(to right,black,white,black,white);
+  to {
+    background:white;
+    opacity: 1;
   }
 
 }
 
 @keyframes mve {
-  0%  {
-    background:linear-gradient(to right,white,black,white,black);
+  from  {
+    background:black;
+    opacity: 0;
   }
 
-  100% {
-    background:linear-gradient(to right,black,white,black,white);
+  to {
+    background:white;
+    opacity: 1;
   }
 }
 

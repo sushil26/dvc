@@ -40,51 +40,61 @@
 
 <body>
     <!-- ### Start header #### -->
-    <header id="header" style="background:#1a2732;">
-        <!-- <header id="header" style="background: rgba(52, 59, 64, 0.9);padding: 20px; height: 72px;transition: all 0.5s;"> -->
+  
+    <header id="header">
         <div class="container">
-
-            <div id="logo" class="pull-left">
+          <div id="logo" class="pull-left">
+            <span>
+              <img style="float:left;" src="/home/img/fav.png" />
+              <a href="/" id="mm" style="font-size: 33px;
+              letter-spacing: -2.3px;
+          font-weight: 500;
+          font-family: 'Allerta Stencil';
+          color: #a8cf44 !important;
+          float: left;
+          margin-top: 4px;
+          text-transform: uppercase;">
                 <span>
-                    <img style="float:left;" src="/home/img/fav.png" />
-                    <a href="/" id="mm" style="font-size: 22px;
-                    font-weight: 500;
-                    color: #a8cf44;
-                    float: left;
-                    margin-top: 8px;
-                    letter-spacing: 1px;
-                    text-transform: uppercase;">VC
-                        <span style="color:#2577be;">4ALL</span>
-                        <!-- <h1 style="color:azure;float:left;text-shadow: 2px 2px 4px #000000; margin-top: 13px;">&nbspVC4ALL</h1> -->
+                  <span id="vc">VC4ALL</span>
                 </span>
-            </div>
+              </a>
+            </span>
+          </div>
+          <nav id="nav-menu-container">
+            <ul class="nav-menu">
+                <li>
+                    <a href="/">Home</a>
+                </li>
+         
+                <li id="dashboard" style="display:block;">
+                    <a href="#" onclick="attendance()">Attendance
+                    </a>
+                </li>
+                <li id="dashboard" style="display:block;">
+                    <a href="#" onclick="result()">Result
+                    </a>
+                </li>
+                <li id="userAuth" style="display:none; text-shadow: 2px 2px 4px #000000;">
+                    <a href="https://norecruits.com/mainPage#!/userAuth">Teacher List</a>
+                </li>
 
-            <nav id="nav-menu-container">
-                <ul class="nav-menu">
-                    <li>
-                        <a href="/">Home</a>
-                    </li>
-                    <!-- <li id="dashboard" style="display:block;">
-                        <a href="https://norecruits.com/#!dashboard/personalDetail">Dashboard
-                        </a>
-                    </li> -->
-                    <li id="dashboard" style="display:block;">
-                        <a href="#" onclick="attendance()">Attendance
-                        </a>
-                    </li>
-                    <li id="dashboard" style="display:block;">
-                        <a href="#" onclick="result()">Result
-                        </a>
-                    </li>
-                    <li id="userAuth" style="display:none; text-shadow: 2px 2px 4px #000000;">
-                        <a href="https://norecruits.com/mainPage#!/userAuth">Teacher List</a>
-                    </li>
+            </ul>
+          </nav>
 
-                </ul>
-            </nav>
-            <!-- #nav-menu-container -->
         </div>
-    </header>
+      </header>
+
+      <!-- <img   class="kklklk" src="robot.gif" style="margin-top: 81px; background: #a8d043ab; z-index: 1000; width: 100px;">-->
+      <div id="greenline" class="moving" style="position: fixed;
+      height: 5px;
+      left: 0;
+      top: 81px;
+      right: 0;
+      z-index: 1000;
+ 
+      transition: all 0.5s;">
+      </div>
+
     <!-- ### End header #### -->
 
     <!--==========================

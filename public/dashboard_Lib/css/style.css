@@ -30,31 +30,8 @@
 table td {
   word-break: break-all;
 } */
-.moving {
- 
-  -webkit-animation: mve 2s infinite;
-  animation: mve 2s infinite;
-}
 
-/* Safari 4.0 - 8.0 */
 
-@-webkit-keyframes mve {
-  from {
-    background:red;
-  }
-  to {
-    background: black;
-  }
-}
-
-@keyframes mve {
-  from {
-    background:red;
-  }
-  to {
-    background: black;
-  }
-}
 
 
 

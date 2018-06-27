@@ -13,6 +13,36 @@
 --------------------------------*/
 @import url(https://fonts.googleapis.com/css?family=Aclonica);
 @import url(https://fonts.googleapis.com/css?family=Oswald:400,300);
+.moving {
+ 
+  -webkit-animation: mve 5s infinite;
+  animation: mve 5s infinite;
+}
+
+/* Safari 4.0 - 8.0 */
+
+@-webkit-keyframes mve {
+  0%  {
+    background:linear-gradient(to right,white,black,white,black);
+  }
+
+  100% {
+    background:linear-gradient(to right,black,white,black,white);
+  }
+
+}
+
+@keyframes mve {
+  0%  {
+    background:linear-gradient(to right,white,black,white,black);
+  }
+
+  100% {
+    background:linear-gradient(to right,black,white,black,white);
+  }
+}
+
+
 .ng-enter {
   transition:0.75s;
   opacity:0;

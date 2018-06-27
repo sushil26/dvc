@@ -32,8 +32,8 @@ table td {
 } */
 .moving {
  
-  -webkit-animation: mve 4s infinite;
-  animation: mve 4s infinite;
+  -webkit-animation: mve 2s infinite;
+  animation: mve 2s infinite;
 }
 
 /* Safari 4.0 - 8.0 */

@@ -1,27 +1,23 @@
 <link rel="stylesheet" href="././dashboard_Lib/css/style.css" />
 <link rel="stylesheet" href="././dashboard_Lib/css/style-responsive.css" />
 <link rel="stylesheet" href="././dashboard_Lib/css/elegant-icons-style.css" />
-<div  ng-controller="dashboardController">
-        <!-- <div id="loadings"></div> -->
+<div ng-controller="dashboardController">
+    <!-- <div id="loadings"></div> -->
     <!-- container section start -->
     <section id="container" class="">
-<!--        
         <header class="header dark-bg">
             <div class="toggle-nav">
                 <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom">
                     <i class="icon_menu" ng-click="iconMenuClick()"></i>
                 </div>
             </div>
-            
             <span>
                 <img ng-click="homeClick()" style="float:left;width: 63px;margin-top: 5px" src="././home/img/fav.png" />
                 <a ng-click="homeClick()" class="logo" style="font-weight: 500; letter-spacing: -2.3px;font-family: 'Allerta Stencil';">VC4ALL</a>
             </span>
-
-          
             <div class="top-nav notification-row">
                 <ul class="nav pull-right top-menu">
-                  
+
                     <li class="dropdown">
                         <span ng-if="hour <'12' && min<='59' && sec<='59' && hour >='0'" class="username"> &nbspGood Morning&nbsp{{userName}}</span>
                         <span ng-if="hour >='12' && hour < '17'" class="username"> Good Afternoon&nbsp{{userName}}</span>
@@ -30,13 +26,11 @@
                         <span class="username" style="color: white;">
                             {{clock | date:' d MMM yyyy h:mm a'}}</span>
                     </li>
-     
                 </ul>
             </div>
+        </header>
 
-        </header> -->
-   
-        <header id="header">
+        <!-- <header id="header">
             <div class="container">
               <div id="logo" class="pull-left">
                 <span>
@@ -78,10 +72,10 @@
               </nav>
     
             </div>
-          </header>
-    
-          <!-- <img   class="kklklk" src="robot.gif" style="margin-top: 81px; background: #a8d043ab; z-index: 1000; width: 100px;">-->
-          <div id="greenline" style="position: fixed;
+          </header> -->
+
+        <!-- <img   class="kklklk" src="robot.gif" style="margin-top: 81px; background: #a8d043ab; z-index: 1000; width: 100px;">-->
+        <div id="greenline" style="position: fixed;
           height: 5px;
           left: 0;
           top: 81px;
@@ -89,7 +83,7 @@
           background: white;
           z-index: 1000;
           transition: all 0.5s;">
-          </div>
+        </div>
         <!--sidebar start-->
         <aside>
             <div id="sidebar" class="nav-collapse" style="margin-top: 60px;">

@@ -40,19 +40,19 @@ table td {
 
 @-webkit-keyframes mve {
   from {
-    background: linear-gradient(to right, #00BCD4 , #3F51B5,#FF5722,white,#00000073);
+    background:red;
   }
   to {
-    background: linear-gradient(to left,white);
+    background: black;
   }
 }
 
 @keyframes mve {
   from {
-    background: linear-gradient(to right, #00BCD4 , #3F51B5,#FF5722,white,#00000073);
+    background:red;
   }
   to {
-    background: linear-gradient(to left,white);
+    background: black;
   }
 }
 

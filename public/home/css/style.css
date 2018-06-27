@@ -26,13 +26,13 @@
     background:linear-gradient(to right, #00BCD4 , #3F51B5,#FF5722,black);
   }
   25%  {
-    background:linear-gradient(to right,  #3F51B5,#FF5722,black,#00BCD4);
+    background:linear-gradient(to left,  #3F51B5,#FF5722,black,#00BCD4);
   }
   50%  {
     background:linear-gradient(to right, #FF5722,black,#00BCD4, #3F51B5);
   }
   100% {
-    background:linear-gradient(to right,black,#00BCD4, #3F51B5,#FF5722);
+    background:linear-gradient(to left,black,#00BCD4, #3F51B5,#FF5722);
   }
 
 }
@@ -42,13 +42,13 @@
     background:linear-gradient(to right, #00BCD4 , #3F51B5,#FF5722,black);
   }
   25%  {
-    background:linear-gradient(to right,  #3F51B5,#FF5722,black,#00BCD4);
+    background:linear-gradient(to left,  #3F51B5,#FF5722,black,#00BCD4);
   }
   50%  {
     background:linear-gradient(to right, #FF5722,black,#00BCD4, #3F51B5);
   }
   100% {
-    background:linear-gradient(to right,black,#00BCD4, #3F51B5,#FF5722);
+    background:linear-gradient(to left,black,#00BCD4, #3F51B5,#FF5722);
   }
 }
 

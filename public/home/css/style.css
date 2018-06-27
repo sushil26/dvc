@@ -22,12 +22,16 @@
 /* Safari 4.0 - 8.0 */
 
 @-webkit-keyframes mve {
-  from  {
+  0%  {
     background:black;
-    opacity: 0.5;
+    opacity: 0.75;
+  }
+  50%{
+    background:black;
+    opacity: 0.50;
   }
 
-  to {
+  100% {
     background:black;
     opacity: 0.75;
   }
@@ -35,12 +39,16 @@
 }
 
 @keyframes mve {
-  from  {
+  0%  {
     background:black;
-    opacity: 0.5;
+    opacity: 0.75;
+  }
+  50%{
+    background:black;
+    opacity: 0.50;
   }
 
-  to {
+  100% {
     background:black;
     opacity: 0.75;
   }

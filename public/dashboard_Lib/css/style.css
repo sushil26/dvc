@@ -43,7 +43,7 @@ table td {
     background:linear-gradient(to right, #00BCD4 , #3F51B5,#FF5722,white,#00000073);
   }
   to {
-    background: black;
+    background: linear-gradient(to right, #00000073 ,white,#FF5722,#3F51B5,#00BCD4);
   }
 }
 
@@ -52,7 +52,7 @@ table td {
     background:linear-gradient(to right, #00BCD4 , #3F51B5,#FF5722,white,#00000073);
   }
   to {
-    background: black;
+    background: linear-gradient(to right, #00000073 ,white,#FF5722,#3F51B5,#00BCD4);
   }
 }
 

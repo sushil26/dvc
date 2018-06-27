@@ -395,6 +395,7 @@ signaling_socket.on("connect", function () {
       document.getElementById("openChat").style.display = "inline";
 
       document.getElementById("audio_btn").style.display = "inline";
+      document.getElementById("video_btn").style.display = "inline";
       document.getElementById("diconnect_btn").style.display = "inline";
 
       document.getElementById("linkToShare").style.display = "block";
@@ -1035,12 +1036,26 @@ function setup_local_media(callback, errorback) {
           document.getElementById("audioMute_btn").style.display = "none";
           document.getElementById("audioUnmute_btn").style.display = "inline";
         }
-
-        console.log(
-          "stream.getAudioTracks()[0].enabled: " +
-          stream.getAudioTracks()[0].enabled
-        );
+        console.log("stream.getAudioTracks()[0].enabled: " + stream.getAudioTracks()[0].enabled);
         console.log("<--audio_btn");
+      });
+
+      document.getElementById("video_btn").addEventListener("click", function () {
+        console.log("video_btn-->");
+        console.log("stream.getVideoTracks()[0].enabled : " + stream.getVideoTracks()[0].enabled);
+        stream.getVideoTracks()[0].enabled = !stream.getVideoTracks()[0]
+          .enabled;
+        var videoVal = stream.getVideoTracks()[0].enabled;
+
+        if (videoVal) {
+          document.getElementById("videoMute_btn").style.display = "inline";
+          document.getElementById("videoUnmute_btn").style.display = "none";
+        } else {
+          document.getElementById("videoMute_btn").style.display = "none";
+          document.getElementById("videoUnmute_btn").style.display = "inline";
+        }
+        console.log("stream.getVideoTracks()[0].enabled: " + stream.getVideoTracks()[0].enabled);
+        console.log("<--video_btn");
       });
 
       attachMediaStream(local_media[0], stream);

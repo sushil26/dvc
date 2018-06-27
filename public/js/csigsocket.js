@@ -1149,6 +1149,7 @@ function setup_local_media(callback, errorback) {
                 /* always mute ourselves by default */
                 // local_media.attr("controls", "");
                 local_media.attr("id", "videoElem");
+                local_media.attr("autoplay", true);
                 local_media.attr("style", "border:1px solid skyblue");
                 $("#videosAttach").append(local_media);
 

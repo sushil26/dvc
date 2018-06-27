@@ -15,8 +15,8 @@
 @import url(https://fonts.googleapis.com/css?family=Oswald:400,300);
 .moving {
  
-  -webkit-animation: mve 4s infinite;
-  animation: mve 4s infinite;
+  -webkit-animation: mve 3s infinite;
+  animation: mve 3s infinite;
 }
 
 /* Safari 4.0 - 8.0 */

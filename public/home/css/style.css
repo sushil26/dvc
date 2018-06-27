@@ -970,6 +970,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 #services .description {
+  background: #ff5722c4;
   font-family: cursive;
   font-size: 14px;
   line-height: 24px;

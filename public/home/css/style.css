@@ -22,22 +22,22 @@
 /* Safari 4.0 - 8.0 */
 
 @-webkit-keyframes mve {
-  0%  {
+  from  {
     background:black;
   }
 
-  100% {
+  to {
     background:white;
   }
 
 }
 
 @keyframes mve {
-  0%  {
+  from  {
     background:black;
   }
 
-  100% {
+  to {
     background:white;
   }
 }

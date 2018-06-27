@@ -23,7 +23,7 @@
 
 @-webkit-keyframes mve {
   0%  {
-    background:black;
+    background:#a8cf44;
     opacity: 0.75;
   }
  
@@ -37,7 +37,7 @@
   }
 
   100% {
-    background:black;
+    background:#a8cf44;
     opacity: 0.75;
   }
 
@@ -45,7 +45,7 @@
 
 @keyframes mve {
   0%  {
-    background:black;
+    background:#a8cf44;
     opacity: 0.75;
   }
  
@@ -59,7 +59,7 @@
   }
 
   100% {
-    background:black;
+    background:#a8cf44;
     opacity: 0.75;
   }
 }

@@ -37,10 +37,7 @@ var mongoConfig = require('./config/dbConfig.js');
 var server = app.listen('5000', function () {
     console.log("Listening on port 5000");
 });
-
-
 // var server = app.listen("8080");
-
 var io = require('socket.io').listen(server);
 app.set('socketio', io);
 var chatHistory;

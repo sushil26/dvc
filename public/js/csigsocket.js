@@ -994,6 +994,17 @@ function setup_local_media(callback, errorback) {
       );
       $("#videosAttach").append(local_media);
 
+      $('#videoElem').on('loadstart', function (event) {
+        $(this).addClass('background');
+        $(this).attr("poster", "/Preloader_2.gif");
+      });
+      
+      $('#videoElem').on('canplay', function (event) {
+        $(this).removeClass('background');
+        $(this).removeAttr("poster");
+      });
+      
+
       document.getElementById("videoElem").addEventListener("click", function () {
         console.log("screem size change request-->");
         var videoElem = document.getElementById("videoElem");

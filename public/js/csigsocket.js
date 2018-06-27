@@ -1095,7 +1095,7 @@ function setup_local_media(callback, errorback) {
             $("<video>") :
             $("<audio>");
           //local_mediaScreenShare.attr("autoplay", "autoplay");
-          local_mediaScreenShare.attr(
+          local_mediaScreenShare.prop(
             "muted",
             true
           ); /* always mute ourselves by default */

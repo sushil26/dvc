@@ -539,7 +539,7 @@ signaling_socket.on("addPeer", function (config) {
     // remote_media.attr("style", "border:5px solid gray");
     remote_media.attr("id", peer_id + "Remote");
     if (MUTE_AUDIO_BY_DEFAULT) {
-      remote_media.attr("muted", "true");
+      remote_media.prop("muted", true );
     }
     // remote_media.attr("controls", "");
 
@@ -978,7 +978,7 @@ function setup_local_media(callback, errorback) {
 
       local_media_stream = stream;
       var local_media = USE_VIDEO ? $("<video>") : $();
-      local_media.attr("muted", "muted"); /* always mute ourselves by default */
+      local_media.prop("muted", true ); /* always mute ourselves by default */
       local_media.attr("id", "videoElem");
       local_media.attr("autoplay", "true");
       // local_media.attr(
@@ -1094,10 +1094,7 @@ function setup_local_media(callback, errorback) {
             $("<video>") :
             $("<audio>");
           //local_mediaScreenShare.attr("autoplay", "autoplay");
-          local_mediaScreenShare.attr(
-            "muted",
-            "muted"
-          ); /* always mute ourselves by default */
+          local_mediaScreenShare.prop("muted", true ); /* always mute ourselves by default */
           // local_mediaScreenShare.attr("controls", "");
           local_mediaScreenShare.attr("id", "screenShareElem");
           local_mediaScreenShare.attr("autoplay", "true");
@@ -1144,10 +1141,7 @@ function setup_local_media(callback, errorback) {
                 // local_media_shareStream = stream;
                 var local_media = USE_VIDEO ? $("<video>") : $();
                 //local_media.attr("autoplay", "autoplay");
-                local_media.attr(
-                  "muted",
-                  "muted"
-                ); /* always mute ourselves by default */
+                local_media.prop("muted", true ); /* always mute ourselves by default */
                 // local_media.attr("controls", "");
                 local_media.attr("id", "videoElem");
                 local_media.attr("style", "border:1px solid skyblue");

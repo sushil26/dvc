@@ -755,7 +755,7 @@ ul.sidebar-menu li.active a i {
   background: -ms-linear-gradient(left, #030b3c, #00bcd4f2);
   /* Opera 11.10+ */
   background: -o-linear-gradient(left, #030b3c, #00bcd4f2);
-  border-bottom: 1px solid #f1f2f7;
+ 
 }
 
 .panel-content {

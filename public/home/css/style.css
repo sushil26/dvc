@@ -22,20 +22,32 @@
 /* Safari 4.0 - 8.0 */
 
 @-webkit-keyframes mve {
-  from {
-    background:linear-gradient(to right, #00BCD4 , #3F51B5,#FF5722,white,#00000073);
+  0%  {
+    background:linear-gradient(to right, #00BCD4 , #3F51B5,#FF5722,black);
   }
-  to {
-    background: linear-gradient(to right, #3F51B5,#FF5722,white,#00000073,#00BCD4);
+  25%  {
+    background:linear-gradient(to right,  #3F51B5,#FF5722,black,#00BCD4);
+  }
+  50%  {
+    background:linear-gradient(to right, #FF5722,black,#00BCD4, #3F51B5);
+  }
+  100% {
+    background:linear-gradient(to right,black,#00BCD4, #3F51B5,#FF5722);
   }
 }
 
 @keyframes mve {
-  from {
-    background:linear-gradient(to right, #00BCD4 , #3F51B5,#FF5722,white,#00000073);
+  0%  {
+    background:linear-gradient(to right, #00BCD4 , #3F51B5,#FF5722,black);
   }
-  to {
-    background: linear-gradient(to right, #3F51B5,#FF5722,white,#00000073,#00BCD4);
+  25%  {
+    background:linear-gradient(to right,  #3F51B5,#FF5722,black,#00BCD4);
+  }
+  50%  {
+    background:linear-gradient(to right, #FF5722,black,#00BCD4, #3F51B5);
+  }
+  100% {
+    background:linear-gradient(to right,black,#00BCD4, #3F51B5,#FF5722);
   }
 }
 

@@ -193,6 +193,7 @@ function checkPassword() {
 function saveName() {
   console.log("setName-->");
   var careatorFriendName = document.getElementById("userName").value;
+  localStorage.removeItem("careatorEmail");
   localStorage.setItem("careatorFriendName", careatorFriendName);
   userName = localStorage.getItem("careatorFriendName");
   careatorFriendName = true;

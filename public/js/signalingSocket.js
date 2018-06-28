@@ -1316,6 +1316,7 @@ function setup_local_media(callback, errorback) {
         );
       },
         function (error) {
+          console.log("extension missing");
           $("#screenShareExtensions").trigger("click");
           // var msg = "You Must Need to Install  Screen Share Extention, Click ok to install";
           // var newLine = "\r\n";

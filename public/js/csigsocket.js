@@ -326,6 +326,7 @@ function startSession(id, date) {
     dataType: "json",
     success: function (data) {
       console.log("data: " + JSON.stringify(data));
+      localStorage.setItem("sessionUrl", data.data.url);
       window.location.href = "https://norecruits.com/careator/" + id + "/" + date;
     },
     error: function (err) {

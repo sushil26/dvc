@@ -287,10 +287,10 @@ function disconnecSession() {
   localStorage.removeItem("careatorEmail");
   localStorage.removeItem("careatorFriendName");
   userName = null;
-
+  console.log("queryLink: "+queryLink);
   if (sessionHeader == peerNew_id) {
     console.log("start to disconnect the session");
-    console.log("queryLink: "+queryLink);
+    
 
     // signaling_socket.emit("disconnectSession", {
     //   deleteSessionId: queryLink,

@@ -23,7 +23,7 @@
 
 @-webkit-keyframes mve {
   0%  {
-    background:black;
+    background:#a8cf44;
     opacity: 0.75;
   }
  
@@ -32,12 +32,12 @@
     opacity: 0.50;
   }
   66%{
-    background:orange;
+    background:darkgreen;
     opacity: 0.50;
   }
 
   100% {
-    background:black;
+    background:#a8cf44;
     opacity: 0.75;
   }
 
@@ -45,7 +45,7 @@
 
 @keyframes mve {
   0%  {
-    background:black;
+    background:#a8cf44;
     opacity: 0.75;
   }
  
@@ -54,12 +54,12 @@
     opacity: 0.50;
   }
   66%{
-    background:orange;
+    background:darkgreen;
     opacity: 0.50;
   }
 
   100% {
-    background:black;
+    background:#a8cf44;
     opacity: 0.75;
   }
 }
@@ -953,10 +953,11 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 #services .box:hover .icon a {
   color: #2dc997;
-  background: #fff;
+  background: #ff5722c4;
 }
 
 #services .title {
+  
   font-weight: 700;
   font-size: 18px;
   margin-bottom: 15px;
@@ -970,7 +971,9 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 #services .description {
-  font-family: cursive;
+  font-weight: 100;
+  background: #ff5722c4;
+  /* font-family: sans-serif; */
   font-size: 14px;
   line-height: 24px;
   color: white;

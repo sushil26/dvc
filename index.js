@@ -198,12 +198,12 @@ io.sockets.on('connection', function (socket) {
     socket.on('disconnectSession', function (data) {
         console.log("disconnectSession-->");
         //if (sessionHeaderId == data.owner) {
-            var tempSock = sockets[data.deleteSessionId];
+        var tempSock = sockets[data.deleteSessionId];/* ### Note using this deleteSessionId we are getting real socket(tempSock)   ### */
         for (var channel in tempSock.channels) {
             console.log("connection: channel: " + channel);
             part(channel);
         }
-        
+
         console.log("started to delete session");
         console.log("data.deleteSessionId: " + data.deleteSessionId);
         console.log("sockets[data.deleteSessionId]: " + sockets.valueOf(data.deleteSessionId));

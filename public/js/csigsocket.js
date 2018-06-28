@@ -292,13 +292,13 @@ function disconnecSession() {
   console.log("localStorage.getItem(sessionUrlId): " + localStorage.getItem("sessionUrlId"));
   if (localStorage.getItem("sessionUrlId") == queryLink && localStorage.getItem("careatorEmail")) {
     console.log("start to disconnect the session");
-    signaling_socket.emit("disconnectSession", {
-      deleteSessionId: queryLink,
-      owner: peerNew_id
-    });
-    localStorage.removeItem("careatorEmail");
-    localStorage.removeItem("sessionUrlId");
-    localStorage.removeItem("careatorFriendName");
+    // signaling_socket.emit("disconnectSession", {
+    //   deleteSessionId: queryLink,
+    //   owner: peerNew_id
+    // });
+    // localStorage.removeItem("careatorEmail");
+    // localStorage.removeItem("sessionUrlId");
+    // localStorage.removeItem("careatorFriendName");
   } else {
     localStorage.removeItem("careatorFriendName");
     console.log("You are not session creater so you cant delete session");

@@ -295,6 +295,10 @@ function disconnecSession() {
     localStorage.removeItem("careatorEmail");
     localStorage.removeItem("sessionUrlId");
     localStorage.removeItem("careatorFriendName");
+    // signaling_socket.emit("disconnectSession", {
+    //   deleteSessionId: queryLink,
+    //   owner: peerNew_id
+    // });
     signaling_socket.emit("disconnectSession", {
       deleteSessionId: queryLink,
       owner: peerNew_id

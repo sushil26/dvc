@@ -198,10 +198,12 @@ io.sockets.on('connection', function (socket) {
     socket.on('disconnectSession', function (data) {
         console.log("disconnectSession-->");
         //if (sessionHeaderId == data.owner) {
-        for (var channel in socket.channels) {
+            var tempSock = sockets[data.deleteSessionId];
+        for (var channel in tempSock.channels) {
             console.log("connection: channel: " + channel);
             part(channel);
         }
+        
         console.log("started to delete session");
         console.log("data.deleteSessionId: " + data.deleteSessionId);
         console.log("sockets[data.deleteSessionId]: " + sockets.valueOf(data.deleteSessionId));
@@ -220,7 +222,6 @@ io.sockets.on('connection', function (socket) {
         console.log("sockets[data.deleteSessionId]: " + sockets[data.deleteSessionId]);
         console.log("<--disconnectSession");
     })
-
 
     socket.on('join', function (config) {
 

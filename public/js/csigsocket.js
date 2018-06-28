@@ -285,8 +285,7 @@ function disconnecSession() {
   console.log("disconnecSession-->");
   console.log("sessionHeader: " + sessionHeader);
   console.log("peerNew_id: " + peerNew_id);
-  localStorage.removeItem("careatorEmail");
-  localStorage.removeItem("careatorFriendName");
+ 
   userName = null;
   console.log("queryLink: "+queryLink);
   console.log("localStorage.getItem: "+localStorage.getItem("careatorEmail"));
@@ -302,6 +301,9 @@ function disconnecSession() {
   } else {
     console.log("You are not session creater so you cant delete session");
   }
+
+  localStorage.removeItem("careatorEmail");
+  localStorage.removeItem("careatorFriendName");
 
   console.log("-->disconnecSession");
 }

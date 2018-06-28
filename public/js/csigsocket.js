@@ -299,6 +299,7 @@ function disconnecSession() {
       deleteSessionId: queryLink,
       owner: peerNew_id
     });
+    
   
   } else {
     localStorage.removeItem("careatorFriendName");

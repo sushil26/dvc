@@ -285,25 +285,25 @@ function disconnecSession() {
   console.log("disconnecSession-->");
   console.log("sessionHeader: " + sessionHeader);
   console.log("peerNew_id: " + peerNew_id);
- 
-  userName = null;
-  console.log("queryLink: "+queryLink);
-  console.log("localStorage.getItem: "+localStorage.getItem("careatorEmail"));
-  
-  if (sessionHeader == peerNew_id) {
-    console.log("start to disconnect the session");
-    
 
-    // signaling_socket.emit("disconnectSession", {
-    //   deleteSessionId: queryLink,
-    //   owner: peerNew_id
-    // });
+  userName = null;
+  console.log("queryLink: " + queryLink);
+  console.log("localStorage.getItem: " + localStorage.getItem("careatorEmail"));
+
+  if (localStorage.getItem("careatorEmail")) {
+    console.log("start to disconnect the session");
+    signaling_socket.emit("disconnectSession", {
+      deleteSessionId: queryLink,
+      owner: peerNew_id
+    });
+    localStorage.removeItem("careatorEmail");
   } else {
+    localStorage.removeItem("careatorFriendName");
     console.log("You are not session creater so you cant delete session");
   }
 
-  localStorage.removeItem("careatorEmail");
-  localStorage.removeItem("careatorFriendName");
+
+
 
   console.log("-->disconnecSession");
 }
@@ -1161,7 +1161,7 @@ function setup_local_media(callback, errorback) {
               local_media.attr("autoplay", true);
               local_media.attr("style", "border:1px solid skyblue");
               $("#videosAttach").append(local_media);
-             
+
               /* ### Start: Loader Start and Stop ### */
               $("#videoElem").on('loadstart', function (event) {
                 $(this).addClass('background');

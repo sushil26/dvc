@@ -292,9 +292,9 @@ function disconnecSession() {
   console.log("localStorage.getItem(sessionUrlId): " + localStorage.getItem("sessionUrlId"));
   if (localStorage.getItem("sessionUrlId") == queryLink && localStorage.getItem("careatorEmail")) {
     console.log("start to disconnect the session");
-    localStorage.removeItem("careatorEmail");
-    localStorage.removeItem("sessionUrlId");
-    localStorage.removeItem("careatorFriendName");
+    // localStorage.removeItem("careatorEmail");
+    // localStorage.removeItem("sessionUrlId");
+    // localStorage.removeItem("careatorFriendName");
     // signaling_socket.emit("disconnectSession", {
     //   deleteSessionId: queryLink,
     //   owner: peerNew_id

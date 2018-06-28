@@ -1323,9 +1323,13 @@ function setup_local_media(callback, errorback) {
           msg +=
             "Note:Please Refresh the browser After Installing Extention ";
           if (window.confirm(msg)) {
+            console.log("clicked on OK");
             window.open(
-              "https://chrome.google.com/webstore/detail/screen-capturing/ajhifddimkapgcifgcodmmfdlknahffk?utm_source=chrome-app-launcher-info-dialog"
+              "https://chrome.google.com/webstore/detail/screen-capturing/ajhifddimkapgcifgcodmmfdlknahffk?utm_source=chrome-app-launcher-info-dialog","_blank"
             );
+          }
+          else{
+            console.log("clicked on Cancel");
           }
           //    alert("You Must Need to Install This Screen Share Extention https://chrome.google.com/webstore/detail/screen-capturing/ajhifddimkapgcifgcodmmfdlknahffk?utm_source=chrome-app-launcher-info-dialog ");
           console.error(error);

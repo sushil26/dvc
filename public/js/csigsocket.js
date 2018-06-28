@@ -981,16 +981,16 @@ function setup_local_media(callback, errorback) {
         "</h4><span>All is well</span></div></div>"
       );
       $("#videosAttach").append(local_media);
-
+      /* ### Start: Loader Start and Stop ### */
       $('#videoElem').on('loadstart', function (event) {
         $(this).addClass('background');
         $(this).attr("poster", "/Preloader_2.gif");
       });
-
       $('#videoElem').on('canplay', function (event) {
         $(this).removeClass('background');
         $(this).removeAttr("poster");
       });
+      /* ### End: Loader Start and Stop ### */
 
       /* ### Start: Video maximize and minimize ### */
       document.getElementById("videoElem").addEventListener("click", function () {
@@ -1021,8 +1021,8 @@ function setup_local_media(callback, errorback) {
         }
       });
       /* ### End: Video maximize and minimize ### */
-      /* ### Start: This for audio mute and unmute after SCREEN SHARE ### */
-      /* ### Start: This for audio mute and unmute after SCREEN SHARE ### */
+
+      /* ### Start: This for audio mute and unmute before SCREEN SHARE ### */
       document.getElementById("audio_btn").addEventListener("click", function () {
         console.log("audio_btn-->");
         console.log(
@@ -1043,8 +1043,9 @@ function setup_local_media(callback, errorback) {
         console.log("stream.getAudioTracks()[0].enabled: " + stream.getAudioTracks()[0].enabled);
         console.log("<--audio_btn");
       });
-      /* ### End: This for audio mute and unmute after SCREEN SHARE ### */
-      /* ### Start: This for Video OFF and ON after SCREEN SHARE ### */
+      /* ### End: This for audio mute and unmute before SCREEN SHARE ### */
+
+      /* ### Start: This for Video OFF and ON before SCREEN SHARE ### */
       document.getElementById("video_btn").addEventListener("click", function () {
         console.log("video_btn-->");
         console.log("stream.getVideoTracks()[0].enabled : " + stream.getVideoTracks()[0].enabled);
@@ -1062,7 +1063,7 @@ function setup_local_media(callback, errorback) {
         console.log("stream.getVideoTracks()[0].enabled: " + stream.getVideoTracks()[0].enabled);
         console.log("<--video_btn");
       });
-      /* ### End: This for Video OFF and ON after SCREEN SHARE ### */
+      /* ### End: This for Video OFF and ON before SCREEN SHARE ### */
 
       attachMediaStream(local_media[0], stream);
 
@@ -1097,7 +1098,6 @@ function setup_local_media(callback, errorback) {
           }
 
           $("#videosAttach").empty();
-
           //local_media_stream = stream;
           local_media_shareStream = stream;
           var local_mediaScreenShare = USE_VIDEO ? $("<video>") : $("<audio>");
@@ -1107,20 +1107,20 @@ function setup_local_media(callback, errorback) {
           local_mediaScreenShare.attr("style", "border:1px solid skyblue");
           $("#videosAttach").append(local_mediaScreenShare);
 
+          /* ### Start: Loader Start and Stop ### */
           $("#screenShareElem").on('loadstart', function (event) {
             $(this).addClass('background');
             $(this).attr("poster", "/Preloader_2.gif");
           });
-
           $("#screenShareElem").on('canplay', function (event) {
             $(this).removeClass('background');
             $(this).removeAttr("poster");
           });
+          /* ### End: Loader Start and Stop ### */
 
           attachMediaStream(local_mediaScreenShare[0], stream);
 
           /* ##### Start Stop Sharing ##### */
-          // var btn = document.createElement("input");
           var btn = document.getElementById("screenShareStop");
 
           btn.onclick = function stopVideo(local_mediaScreenShare) {
@@ -1154,7 +1154,8 @@ function setup_local_media(callback, errorback) {
               local_media.attr("autoplay", true);
               local_media.attr("style", "border:1px solid skyblue");
               $("#videosAttach").append(local_media);
-
+             
+              /* ### Start: Loader Start and Stop ### */
               $("#videoElem").on('loadstart', function (event) {
                 $(this).addClass('background');
                 $(this).attr("poster", "/Preloader_2.gif");
@@ -1163,6 +1164,8 @@ function setup_local_media(callback, errorback) {
                 $(this).removeClass('background');
                 $(this).removeAttr("poster");
               });
+              /* ### End: Loader Start and Stop ### */
+
               /* ### Start: This for audio mute and unmute after SCREEN SHARE ### */
               document.getElementById("audio_btn").addEventListener("click", function () {
                 console.log("audio_btn from stop screen local start-->");
@@ -1218,15 +1221,11 @@ function setup_local_media(callback, errorback) {
                 if (errorback) errorback();
               }
             );
-            /* ###### Start: Local media after stop screen share  ###### */
+            /* ###### End: Local media after stop screen share  ###### */
           };
-
           /* ##### End Stop Sharing ##### */
 
           if (callback) callback();
-          // document.querySelector('video').src = URL.createObjectURL(stream);
-
-          // share this "MediaStream" object using RTCPeerConnection API
         },
           function (error) {
             console.error(error);

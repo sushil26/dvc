@@ -298,6 +298,7 @@ function disconnecSession() {
     });
     localStorage.removeItem("careatorEmail");
     localStorage.removeItem("sessionUrlId");
+    localStorage.removeItem("careatorFriendName");
   } else {
     localStorage.removeItem("careatorFriendName");
     console.log("You are not session creater so you cant delete session");

@@ -255,9 +255,13 @@ module.exports.setCollection = function (req, res) {
         }
         else {
             console.log("data: " + JSON.stringify(data));
+            var obj = {
+                "url": req.body.url
+            }
             responseData = {
                 status: true,
-                message: "Successfully"
+                message: "Successfully",
+                data: obj
             };
             res.status(200).send(responseData);
         }

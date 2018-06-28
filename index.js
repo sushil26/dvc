@@ -197,18 +197,20 @@ io.sockets.on('connection', function (socket) {
 
     socket.on('disconnectSession', function (data) {
         console.log("disconnectSession-->");
-        if (sessionHeaderId == data.owner) {
-            for (var channel in socket.channels) {
-                console.log("connection: channel: " + channel);
-                part(channel);
-            }
-            console.log("started to delete session");
-            console.log("data.deleteSessionId: " + data.deleteSessionId);
-            console.log("sockets[data.deleteSessionId]: " + sockets.valueOf(data.deleteSessionId));
-            delete sockets[data.deleteSessionId];
-            delete channels[channel][data.deleteSessionId];
-            console.log("sockets[data.deleteSessionId]: " + sockets[data.deleteSessionId]);
+        //if (sessionHeaderId == data.owner) {
+        for (var channel in socket.channels) {
+            console.log("connection: channel: " + channel);
+            part(channel);
         }
+        console.log("started to delete session");
+        console.log("data.deleteSessionId: " + data.deleteSessionId);
+        console.log("sockets[data.deleteSessionId]: " + sockets.valueOf(data.deleteSessionId));
+        delete sockets[data.deleteSessionId];
+        delete peerTrackForVideo[data.deleteSessionId];
+        delete channels[channel][data.deleteSessionId];
+        console.log("sockets[data.deleteSessionId]: " + sockets[data.deleteSessionId]);
+
+        //}
 
         console.log("started to delete session");
         console.log("data.deleteSessionId: " + data.deleteSessionId);
@@ -241,7 +243,6 @@ io.sockets.on('connection', function (socket) {
             var timeValue = peerWithTimeId[key];
             if (value == config.queryLink && timeValue == config.timeLink) {
                 sessionHeaderId = key;
-
                 break;
             }
             console.log("value " + value);

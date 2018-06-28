@@ -193,6 +193,7 @@ function checkPassword() {
 function saveName() {
   console.log("setName-->");
   var careatorFriendName = document.getElementById("userName").value;
+  localStorage.removeItem("careatorEmail");
   localStorage.setItem("careatorFriendName", careatorFriendName);
   userName = localStorage.getItem("careatorFriendName");
   careatorFriendName = true;
@@ -284,20 +285,26 @@ function disconnecSession() {
   console.log("disconnecSession-->");
   console.log("sessionHeader: " + sessionHeader);
   console.log("peerNew_id: " + peerNew_id);
-  localStorage.removeItem("careatorEmail");
-  localStorage.removeItem("careatorFriendName");
-  userName = null;
 
-  if (sessionHeader == peerNew_id) {
+  userName = null;
+  console.log("queryLink: " + queryLink);
+  console.log("localStorage.getItem: " + localStorage.getItem("careatorEmail"));
+  console.log("localStorage.getItem(sessionUrlId): " + localStorage.getItem("sessionUrlId"));
+  if (localStorage.getItem("sessionUrlId") == queryLink && localStorage.getItem("careatorEmail")) {
     console.log("start to disconnect the session");
+    localStorage.removeItem("careatorEmail");
+    localStorage.removeItem("sessionUrlId");
+    localStorage.removeItem("careatorFriendName");
     signaling_socket.emit("disconnectSession", {
       deleteSessionId: queryLink,
       owner: peerNew_id
     });
+  
   } else {
+    localStorage.removeItem("careatorFriendName");
     console.log("You are not session creater so you cant delete session");
+    window.location.href = "https://norecruits.com";
   }
-
   console.log("-->disconnecSession");
 }
 
@@ -319,17 +326,15 @@ function startSession(id, date) {
     dataType: "json",
     success: function (data) {
       console.log("data: " + JSON.stringify(data));
+      localStorage.setItem("sessionUrlId", id);
       window.location.href = "https://norecruits.com/careator/" + id + "/" + date;
     },
     error: function (err) {
       console.log("err: " + JSON.stringify(err));
       console.log("err.responseText: " + JSON.stringify(err.responseText));
       console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
-
     }
-
   });
-
 }
 
 
@@ -569,7 +574,8 @@ signaling_socket.on("addPeer", function (config) {
       $(this).removeClass('background');
       $(this).removeAttr("poster");
     });
-    if (peerNew_id == sessionHeader) {
+    // if (peerNew_id == sessionHeader) {
+      if( localStorage.getItem("sessionUrlId") == queryLink && localStorage.getItem("careatorEmail") ) {
       document.getElementById("closeThisConn" + peer_id).style.display =
         "inline";
 
@@ -1154,7 +1160,7 @@ function setup_local_media(callback, errorback) {
               local_media.attr("autoplay", true);
               local_media.attr("style", "border:1px solid skyblue");
               $("#videosAttach").append(local_media);
-             
+
               /* ### Start: Loader Start and Stop ### */
               $("#videoElem").on('loadstart', function (event) {
                 $(this).addClass('background');
@@ -1241,8 +1247,9 @@ function setup_local_media(callback, errorback) {
           msg +=
             "Note:Please Refresh the browser After Installing Extention ";
           if (window.confirm(msg)) {
+            console.log("new tab opening");
             window.open(
-              "https://chrome.google.com/webstore/detail/screen-capturing/ajhifddimkapgcifgcodmmfdlknahffk?utm_source=chrome-app-launcher-info-dialog"
+               "https://chrome.google.com/webstore/detail/screen-capturing/ajhifddimkapgcifgcodmmfdlknahffk?utm_source=chrome-app-launcher-info-dialog", '_blank'
             );
           }
           //    alert("You Must Need to Install This Screen Share Extention https://chrome.google.com/webstore/detail/screen-capturing/ajhifddimkapgcifgcodmmfdlknahffk?utm_source=chrome-app-launcher-info-dialog ");

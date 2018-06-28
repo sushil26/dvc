@@ -302,6 +302,7 @@ function disconnecSession() {
   } else {
     localStorage.removeItem("careatorFriendName");
     console.log("You are not session creater so you cant delete session");
+    window.location.href = "https://norecruits.com";
   }
   console.log("-->disconnecSession");
 }

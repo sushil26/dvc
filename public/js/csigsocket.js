@@ -289,14 +289,15 @@ function disconnecSession() {
   userName = null;
   console.log("queryLink: " + queryLink);
   console.log("localStorage.getItem: " + localStorage.getItem("careatorEmail"));
-
-  if (localStorage.getItem("careatorEmail")) {
+  console.log("localStorage.getItem(sessionUrlId): " + localStorage.getItem("sessionUrlId"));
+  if (localStorage.getItem("sessionUrlId") == queryLink && localStorage.getItem("careatorEmail")) {
     console.log("start to disconnect the session");
     signaling_socket.emit("disconnectSession", {
       deleteSessionId: queryLink,
       owner: peerNew_id
     });
     localStorage.removeItem("careatorEmail");
+    localStorage.removeItem("sessionUrlId");
   } else {
     localStorage.removeItem("careatorFriendName");
     console.log("You are not session creater so you cant delete session");
@@ -326,7 +327,7 @@ function startSession(id, date) {
     dataType: "json",
     success: function (data) {
       console.log("data: " + JSON.stringify(data));
-      localStorage.setItem("sessionUrl", data.data.url);
+      localStorage.setItem("sessionUrlId", id);
       window.location.href = "https://norecruits.com/careator/" + id + "/" + date;
     },
     error: function (err) {

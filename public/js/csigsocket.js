@@ -303,10 +303,6 @@ function disconnecSession() {
     localStorage.removeItem("careatorFriendName");
     console.log("You are not session creater so you cant delete session");
   }
-
-
-
-
   console.log("-->disconnecSession");
 }
 
@@ -335,11 +331,8 @@ function startSession(id, date) {
       console.log("err: " + JSON.stringify(err));
       console.log("err.responseText: " + JSON.stringify(err.responseText));
       console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
-
     }
-
   });
-
 }
 
 
@@ -579,7 +572,8 @@ signaling_socket.on("addPeer", function (config) {
       $(this).removeClass('background');
       $(this).removeAttr("poster");
     });
-    if (peerNew_id == sessionHeader) {
+    // if (peerNew_id == sessionHeader) {
+      if( localStorage.getItem("sessionUrlId") == queryLink && localStorage.getItem("careatorEmail") ) {
       document.getElementById("closeThisConn" + peer_id).style.display =
         "inline";
 

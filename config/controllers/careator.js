@@ -138,8 +138,7 @@ module.exports.pswdGenerate = function (req, res) {
             var obj = {
                 "email": email,
                 "password": password,
-                "invite": [],
-                "session": 
+                "invite": []
             }
             careatorEmp.find({ "email": email }).toArray(function (err, findData) {
                 if (findData.length > 0) {

@@ -89,11 +89,12 @@ module.exports.pswdGenerate = function (req, res) {
         if (emailSplit[1] == 'careator.com') {
             var obj = {
                 "email": email,
-                "password": password
+                "password": password,
+                "invite": []
             }
             careatorEmp.find({ "email": email }).toArray(function (err, findData) {
                 if (findData.length > 0) {
-                    careatorEmp.update({ "email": email }, { $set: { "password": password } }, function (err, data) {
+                    careatorEmp.update({ "email": email }, { $set: { "password": password, "invite": [] } }, function (err, data) {
                         if (err) {
                             responseData = {
                                 status: true,
@@ -135,7 +136,6 @@ module.exports.pswdGenerate = function (req, res) {
                             });
                         }
                     })
-
                 }
                 else {
                     careatorEmp.insert(obj, function (err, data) {
@@ -202,6 +202,9 @@ module.exports.pswdGenerate = function (req, res) {
 
 module.exports.emailInvite = function (req, res) {
     console.log("careator email Invite-->");
+    console.log("req.body.sessionHost: "+req.body.sessionHost+" req.body.email: "+req.body.email);
+    var password = randomstring.generate(7);
+    console.log("password: "+password);
     var mailOptions = {
         from: "info@vc4all.in",
         to: req.body.email,
@@ -211,6 +214,47 @@ module.exports.emailInvite = function (req, res) {
         //html:"<html><head><p><b>Dear Team, </b></p><p>Please note, you have to attend meeting right now, please open the below link.<p>Here your link <a href=" + req.body.url + ">" + req.body.url + "</a> </p><p>Regards</p><p><b>Careator Technologies Pvt. Ltd</b></p></head><body></body></html>"
     };
     console.log("mailOptions: " + JSON.stringify(mailOptions));
+    careatorEmp.update({ email: req.body.sessionHost }, { $push: { "invite":{"remoteEmailId":req.body.email, "password": password}}}, function(err, data){
+        if (err) {
+            responseData = {
+                status: true,
+                errorCode: 200,
+                message: "Process not successful"
+            };
+            res.status(200).send(responseData);
+        }
+        else {
+            var mailOptions = {
+                from: "info@vc4all.in",
+                to: req.body.email,
+                subject: 'VC4ALL Credential',
+                html: "<table style='border:10px solid gainsboro;'><thead style=background:cornflowerblue;><tr><th><h2>Greetings from VC4ALL</h2></th></tr></thead><tfoot style=background:#396fc9;color:white;><tr><td style=padding:15px;><p><p>Regards</p><b>Careator Technologies Pvt. Ltd</b></p></td></tr></tfoot><tbody><tr><td><b>Dear Careator Employee,</b></td></tr><tr><td>Please note, You get the invitation from VC4ALL and sended by "+ req.body.sessionHost + " you can access the below link by using given password.<p style=background:gainsboro;>Password: " + password + "</p></td></tr></tbody></table>"
+                // "<html><body><p><b>Dear Careator Employee, </b></p><p>Please note, Your email Id is verified successfully,  you can access the below link by using given password.<p>Password: "+password+"</p></p><p>Regards</p><p><b>Careator Technologies Pvt. Ltd</b></p></body></html>"
+            };
+            transporter.sendMail(mailOptions, function (error, info) {
+                if (error) {
+                    console.log(error);
+                    responseData = {
+                        status: true,
+                        errorCode: 200,
+                        message: "insert Successfull and Failed to send mail",
+                        data: data
+                    };
+                    res.status(200).send(responseData);
+                } else {
+                    console.log("Email sent: " + info.response);
+                    responseData = {
+                        status: true,
+                        errorCode: 200,
+                        message: "Successfully mail sent",
+                        data: data
+                    };
+                    res.status(200).send(responseData);
+                }
+            });
+        }  
+    })
+
 
     transporter.sendMail(mailOptions, function (error, info) {
         if (error) {
@@ -278,8 +322,8 @@ module.exports.getHistoryByEmailId = function (req, res) {
     }
     console.log("obj: " + JSON.stringify(obj));
     chatHistory.find(obj).toArray(function (err, data) {
-        console.log("data: "+JSON.stringify(data));
-        console.log("data.length: "+data.length);
+        console.log("data: " + JSON.stringify(data));
+        console.log("data.length: " + data.length);
         if (err) {
             console.log("err: " + JSON.stringify(err));
             responseData = {
@@ -304,10 +348,10 @@ module.exports.getHistoryByEmailId = function (req, res) {
 
 module.exports.getHistory = function (req, res) {
     console.log("getHistory-->");
-    
+
     chatHistory.find().toArray(function (err, data) {
-        console.log("data: "+JSON.stringify(data));
-        console.log("data.length: "+data.length);
+        console.log("data: " + JSON.stringify(data));
+        console.log("data.length: " + data.length);
         if (err) {
             console.log("err: " + JSON.stringify(err));
             responseData = {

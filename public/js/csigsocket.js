@@ -208,6 +208,7 @@ function emailInvite() {
   console.log("email: " + email);
   console.log("URL: " + URL);
   var obj = {
+    sessionHost :  localStorage.getItem("careatorEmail"),
     email: email,
     url: URL
   };
@@ -277,7 +278,6 @@ var ICE_SERVERS = [{
   url: "turns:s3.xirsys.com:5349?transport=tcp",
   credential: sesionEnc,
   username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5"
-
 }
 ];
 

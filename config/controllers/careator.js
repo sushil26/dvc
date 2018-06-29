@@ -33,8 +33,9 @@ module.exports.RemoteJoinCheck = function (req, res) {
             "password": password
         }
         console.log("obj: " + JSON.stringify(obj));
-        careatorEmp.find({ "sessionURL": url }, { "invite": obj }).toArray(function (err, findData) {
+        careatorEmp.find({ "sessionURL": url}, {"css": {$elemMatch:{ "invite": obj }}}).toArray(function (err, findData) {
             console.log("findData: " + JSON.stringify(findData));
+            console.log("findData.length: " + findData.length);
             if (err) {
                 responseData = {
                     status: false,

@@ -138,8 +138,7 @@ module.exports.pswdGenerate = function (req, res) {
             var obj = {
                 "email": email,
                 "password": password,
-                "invite": [],
-                "session": 
+                "invite": []
             }
             careatorEmp.find({ "email": email }).toArray(function (err, findData) {
                 if (findData.length > 0) {
@@ -311,7 +310,7 @@ module.exports.setCollection = function (req, res) {
     }
     console.log("obj: " + JSON.stringify(obj));
 
-    careatorEmp.update({ "email": req.body.email }, { $set: { "sessionURL": url } }, function (err, urlUpdate) {
+    careatorEmp.update({ "email": req.body.email }, { $set: { "sessionURL": req.body.url } }, function (err, urlUpdate) {
         if (err) {
             console.log("err: " + JSON.stringify(err));
             responseData = {

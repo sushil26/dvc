@@ -188,7 +188,7 @@ document.getElementById("emailInvite").addEventListener("click", function () {
     url: URL
   };
   console.log("obj: " + JSON.stringify("obj"));
-  if(email){
+
   $.ajax({
     url: "https://norecruits.com/careator/emailInvite",
     //  url: "http://localhost:5000/vc/login4VC",
@@ -216,13 +216,7 @@ document.getElementById("emailInvite").addEventListener("click", function () {
       alert(err.responseJSON.message);
     }
   });
-}
-else{
-  document.getElementById("info").innerHTML = "Email field should not be empty"
-  setTimeout(function () {
-    $('#info').fadeOut('fast');
-  }, 3000);
-}
+
   console.log("<--emailInvite");
 })
 /* ##### End: Email Invite  ##### */

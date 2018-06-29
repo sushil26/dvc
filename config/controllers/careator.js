@@ -249,23 +249,7 @@ module.exports.emailInvite = function (req, res) {
     })
 
 
-    transporter.sendMail(mailOptions, function (error, info) {
-        if (error) {
-            console.log(error);
-            responseData = {
-                status: false,
-                message: "Failed to send mail",
-            };
-            res.status(400).send(responseData);
-        } else {
-            console.log("Email sent: " + info.response);
-            responseData = {
-                status: true,
-                message: "Successfull sent mail",
-            };
-            res.status(200).send(responseData);
-        }
-    });
+   
 
 }
 

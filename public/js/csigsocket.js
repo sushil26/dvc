@@ -58,14 +58,14 @@ if (stuff.length > 5) {
     userName = emailIdSplit[0];
     document.getElementById("videoConferenceUrl").style.display = "block";
     document.getElementById("emailInvitation").style.display = "block";
-    document.getElementById("videoCtrolBar").style.display = "block";
+    document.getElementById("videoCtrolBar").style.display = "grid";
   }
   else if (localStorage.getItem("careator_remoteEmail")) {
     userName = localStorage.getItem("careator_remoteEmail");
     careator_remoteEmail = true;
     document.getElementById("videoConferenceUrl").style.display = "none";
     document.getElementById("emailInvitation").style.display = "none";
-    document.getElementById("videoCtrolBar").style.display = "block";
+    document.getElementById("videoCtrolBar").style.display = "grid";
   }
   else {
     console.log("No user data from session");

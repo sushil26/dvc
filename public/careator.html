@@ -101,7 +101,7 @@
     </header>
     <!-- ### End header #### -->
 
-   
+
 
     <!--==========================
       Portfolio Section
@@ -112,53 +112,56 @@
                 <div id="downloadVideo"></div>
                 <div class="row">
                     <div class="col-lg-12" style="background: black;margin-top: -80px;min-height: 90vh;">
-                        
+
                         <center>
-                                
-                            <a id="videoConferenceUrl" style="display:none;">
-                                <button id="videoConfStart" class="bouncy fa fa-play-circle">
-                                    &nbsp
-                                    <b>Start Video Conference</b>
-                                </button>
-                            </a>
-                            <br>
-                            <a id="screenShareBtn" class="bcg">
-                                <button id="screenBtns" style="display:none;" class="bouncy fa fa-window-restore"></button>
-                            </a>
-                            <a id="screenShareStop" style="display:none;">
-                                <button id="screenBtns" class="bouncy fa fa-stop" style="color:red">
-                                </button>
-                            </a>
-                            <a id="addChatWindow" class="bcg">
-                                <button style="display:none;" id="openChat" class="bouncy fa fa-comments">
+                            <div class="giggy">
 
-                                </button>
-                                <b>
-                                    <span id="chatNotification" style="display:none;color:rgb(226, 101, 73);"></span>
-                                </b>
-                            </a>
-                            <a id="audio_btn" style="display:none" class="bcg">
-                                <button id="audioMute_btn" class="bouncy fa fa-microphone-slash">
 
-                                </button>
-                                <button id="audioUnmute_btn" style="display:none;" class="bouncy fa fa-microphone">
+                                <a id="videoConferenceUrl" style="display:none;">
+                                    <button id="videoConfStart" class="bouncy fa fa-play-circle">
+                                        &nbsp
+                                        <b>Start Video Conference</b>
+                                    </button>
+                                </a>
+                                <br>
+                                <a id="screenShareBtn" class="bcg">
+                                    <button id="screenBtns" style="display:none;" class="bouncy fa fa-window-restore"></button>
+                                </a>
+                                <a id="screenShareStop" style="display:none;">
+                                    <button id="screenBtns" class="bouncy fa fa-stop" style="color:red">
+                                    </button>
+                                </a>
+                                <a id="addChatWindow" class="bcg">
+                                    <button style="display:none;" id="openChat" class="bouncy fa fa-comments">
 
-                                </button>
-                            </a>
-                            <a id="video_btn" style="display:none" class="bcg">
-                                <button id="videoMute_btn" class="bouncy fa fa-eye-slash">
-                                </button>
-                                <button id="videoUnmute_btn" style="display:none;" class="bouncy fa fa-video-camera">
-                                </button>
-                            </a>
-                            <a href="#" style="display:none;" id="diconnect_btn" onclick="disconnecSession()" class="bcg">
-                                <button class="bouncy fa fa-power-off" style="color:red;">
-                                </button>
-                            </a>
-                            <a id="jc" style="" class="bcg">
-                                <button id="inv" class="bouncy fa fa-plus">
-                                </button>
-                            </a>
+                                    </button>
+                                    <b>
+                                        <span id="chatNotification" style="display:none;color:rgb(226, 101, 73);"></span>
+                                    </b>
+                                </a>
+                                <a id="audio_btn" style="display:none" class="bcg">
+                                    <button id="audioMute_btn" class="bouncy fa fa-microphone-slash">
+
+                                    </button>
+                                    <button id="audioUnmute_btn" style="display:none;" class="bouncy fa fa-microphone">
+
+                                    </button>
+                                </a>
+                                <a id="video_btn" style="display:none" class="bcg">
+                                    <button id="videoMute_btn" class="bouncy fa fa-eye-slash">
+                                    </button>
+                                    <button id="videoUnmute_btn" style="display:none;" class="bouncy fa fa-video-camera">
+                                    </button>
+                                </a>
+                                <a href="#" style="display:none;" id="diconnect_btn" onclick="disconnecSession()" class="bcg">
+                                    <button class="bouncy fa fa-power-off" style="color:red;">
+                                    </button>
+                                </a>
+                                <a id="jc" style="" class="bcg">
+                                    <button id="inv" class="bouncy fa fa-plus">
+                                    </button>
+                                </a>
+                            </div>
                             <div id="portfolio-wrapper" style="margin-right:auto;">
                             </div>
                             <button id="btnrestore" class="fa fa-window-restore btn" style="z-index: 2; position: absolute; display:none;"></button>
@@ -503,8 +506,6 @@
                 $("#portfolio-wrapper").removeClass("intro");
             });
         });
-
-       
     </script>
     <style>
         /* mirror Affect */

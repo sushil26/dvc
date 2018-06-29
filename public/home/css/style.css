@@ -167,16 +167,20 @@
   display: inline-block;
   font-size: 15px;
   font-weight: bold;
-  color: #fff ! important;
   text-align: center;
   padding: 10px;
   margin: 5px;
   position: relative;
   cursor: pointer;
   border: none;
-  background: #109bce;
-  background-image: linear-gradient(bottom, rgb(14, 137, 182) 0%, rgb(22, 179, 236) 100%);
   border-radius: 100px;
+  text-align: center;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#f7f7f7), to(#e7e7e7));
+  background-image: -webkit-linear-gradient(top, #f7f7f7, #e7e7e7); 
+  background-image: -moz-linear-gradient(top, #f7f7f7, #e7e7e7); 
+  background-image: -ms-linear-gradient(top, #f7f7f7, #e7e7e7); 
+  background-image: -o-linear-gradient(top, #f7f7f7, #e7e7e7); 
+  color: #a7a7a7;
   /* box-shadow: inset 0px 1px 0px #2ab7ec, 0px 1px 0px 0px #07526e, 0px 5px 5px #999; */
 }
 

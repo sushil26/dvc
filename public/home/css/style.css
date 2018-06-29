@@ -16,7 +16,7 @@
 @import url(https://fonts.googleapis.com/css?family=Aclonica);
 @import url(https://fonts.googleapis.com/css?family=Oswald:400,300);
 
-.bcg:hover{
+.bouncy:hover{
   color:black !important;
   background-image: -webkit-linear-gradient(top, #f7f7f7, #e7e7e7);
     

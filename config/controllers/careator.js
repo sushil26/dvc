@@ -206,7 +206,7 @@ module.exports.emailInvite = function (req, res) {
     var password = randomstring.generate(7);
     console.log("password: "+password);
    
-    console.log("mailOptions: " + JSON.stringify(mailOptions));
+    
     careatorEmp.update({ email: req.body.sessionHost }, { $push: { "invite":{"remoteEmailId":req.body.email, "password": password}}}, function(err, data){
         if (err) {
             responseData = {

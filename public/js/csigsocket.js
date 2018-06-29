@@ -130,8 +130,6 @@ function sendEmail() {
     }
 
   });
-
-
   console.log("<--sendEmail");
 }
 
@@ -175,10 +173,6 @@ function checkPassword() {
     $("#enterPswd").trigger("click");
   }
   console.log("<--checkPassword");
-}
-function saveName() {
- 
-  
 }
 
 function emailInvite() {

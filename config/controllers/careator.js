@@ -310,7 +310,7 @@ module.exports.setCollection = function (req, res) {
     }
     console.log("obj: " + JSON.stringify(obj));
 
-    careatorEmp.update({ "email": req.body.email }, { $set: { "sessionURL": url } }, function (err, urlUpdate) {
+    careatorEmp.update({ "email": req.body.email }, { $set: { "sessionURL": req.body.url } }, function (err, urlUpdate) {
         if (err) {
             console.log("err: " + JSON.stringify(err));
             responseData = {

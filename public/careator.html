@@ -109,16 +109,24 @@
                 <div id="downloadVideo"></div>
                 <div class="row">
                     <div class="col-lg-12" style="background: black;margin-top: -80px;min-height: 90vh;">
-                            <nav>
-                                    <ul class="nav">
-                                           <li><a href="#" class="icon-home"></a></li>
-                                           <li><a href="#" class="icon-cog"></a></li>
-                                           <li><a href="#" class="icon-cw"></a></li>
-                                           <li><a href="#" class="icon-location"></a></li>
-                                       </ul>
-                                   </nav>
+                        <nav>
+                            <ul class="nav">
+                                <li>
+                                    <a href="#" class="icon-home"></a>
+                                </li>
+                                <li>
+                                    <a href="#" class="icon-cog"></a>
+                                </li>
+                                <li>
+                                    <a href="#" class="icon-cw"></a>
+                                </li>
+                                <li>
+                                    <a href="#" class="icon-location"></a>
+                                </li>
+                            </ul>
+                        </nav>
                         <center>
-                                
+
                             <a id="videoConferenceUrl" style="display:none;">
                                 <button id="videoConfStart" class="bouncy fa fa-play-circle">
                                     &nbsp
@@ -143,10 +151,8 @@
                             </a>
                             <a id="audio_btn" style="display:none" class="bcg">
                                 <button id="audioMute_btn" class="bouncy fa fa-microphone-slash">
-
                                 </button>
                                 <button id="audioUnmute_btn" style="display:none;" class="bouncy fa fa-microphone">
-
                                 </button>
                             </a>
                             <a id="video_btn" style="display:none" class="bcg">
@@ -159,7 +165,8 @@
                                 <button class="bouncy fa fa-power-off" style="color:red;">
                                 </button>
                             </a>
-                            <a id="jc" style="" class="bcg">
+                            <a id="emailInvitation" style="display:none;" class="bcg" data-toggle="modal" data-target="#invitePeople" data-backdrop="static"
+                                data-keyboard="false">
                                 <button id="inv" class="bouncy fa fa-plus">
                                 </button>
                             </a>
@@ -233,6 +240,28 @@
                                             <button type="button" onclick="checkPassword()" style="background-color: #29b6bd;color:#f1f1f1" class="btn">Submit</button>
                                         </div>
                                     </div>
+                                </center>
+                            </div>
+                        </div>
+                        <div class="modal fade" id="invitePeople" role="dialog">
+                            <div class="modal-dialog">
+                                <center>
+                                    <form>
+                                        <div class="modal-content" style="color:#777;max-width:350px;">
+                                            <div class="modal-header" style="background-color: #53dc537d;">
+                                                <h4 class="modal-title">Please Enter Email</h4>
+                                                <br>
+                                                <label id="info" style="color:blue"></label>
+                                            </div>
+                                            <div class="modal-body">
+                                                <input type="email" class="form-control" size="45" placeholder="Email Address to Invite" required id="emailInvite">
+                                                <br>
+                                            </div>
+                                            <div class="modal-footer" style="border-top:0px;background-color: #f5f5f5;">
+                                                <button id="" type="submit" onclick="emailInvite()" style="background-color: #29b6bd;color:#f1f1f1" class="btn" data-dismiss="modal">Invite</button>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </center>
                             </div>
                         </div>
@@ -450,15 +479,12 @@
 
     <style>
         #portfolio .portfolio-items {
-
             display: inline-block;
             height: 200px;
-
         }
 
         #portfolio .intro {
             width: 75%;
-
         }
 
         /* .intro .portfolio-items:last-child {
@@ -485,10 +511,7 @@
     <script>
         function chatExpand() {
             window.location.href = "https://norecruits.com/chatCrtr";
-
         }
-
-
         $("#message").keyup(function (event) {
             if (event.keyCode === 13) {
                 $("#sndmgs").click();
@@ -508,7 +531,6 @@
             });
         });
 
-       
     </script>
     <style>
         /* mirror Affect */

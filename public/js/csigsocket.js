@@ -208,7 +208,7 @@ function emailInvite() {
   console.log("email: " + email);
   console.log("URL: " + URL);
   var obj = {
-    sessionHost :  localStorage.getItem("careatorEmail"),
+    sessionHost: localStorage.getItem("careatorEmail"),
     email: email,
     url: URL
   };
@@ -299,9 +299,9 @@ function disconnecSession() {
       deleteSessionId: queryLink,
       owner: peerNew_id
     });
-    
-  
   } else {
+    localStorage.removeItem("careatorEmail");
+    localStorage.removeItem("sessionUrlId");
     localStorage.removeItem("careatorFriendName");
     console.log("You are not session creater so you cant delete session");
     window.location.href = "https://norecruits.com";
@@ -576,7 +576,7 @@ signaling_socket.on("addPeer", function (config) {
       $(this).removeAttr("poster");
     });
     // if (peerNew_id == sessionHeader) {
-      if( localStorage.getItem("sessionUrlId") == queryLink && localStorage.getItem("careatorEmail") ) {
+    if (localStorage.getItem("sessionUrlId") == queryLink && localStorage.getItem("careatorEmail")) {
       document.getElementById("closeThisConn" + peer_id).style.display =
         "inline";
 
@@ -1250,7 +1250,7 @@ function setup_local_media(callback, errorback) {
           if (window.confirm(msg)) {
             console.log("new tab opening");
             window.open(
-               "https://chrome.google.com/webstore/detail/screen-capturing/ajhifddimkapgcifgcodmmfdlknahffk?utm_source=chrome-app-launcher-info-dialog", '_blank'
+              "https://chrome.google.com/webstore/detail/screen-capturing/ajhifddimkapgcifgcodmmfdlknahffk?utm_source=chrome-app-launcher-info-dialog", '_blank'
             );
           }
           //    alert("You Must Need to Install This Screen Share Extention https://chrome.google.com/webstore/detail/screen-capturing/ajhifddimkapgcifgcodmmfdlknahffk?utm_source=chrome-app-launcher-info-dialog ");

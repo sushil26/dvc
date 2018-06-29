@@ -52,25 +52,25 @@ console.log("stuff.length: " + stuff.length);
 console.log("id1**: " + id1);
 console.log("id2**: " + id2);
 if (stuff.length > 5) {
-
   if (localStorage.getItem("careatorEmail")) {
     var userNameEmail = localStorage.getItem("careatorEmail");
     var emailIdSplit = userNameEmail.split('@');
     userName = emailIdSplit[0];
     document.getElementById("videoConferenceUrl").style.display = "block";
     document.getElementById("emailInvitation").style.display = "block";
+    document.getElementById("videoCtrolBar").style.display = "block";
   }
   else if (localStorage.getItem("careator_remoteEmail")) {
     userName = localStorage.getItem("careator_remoteEmail");
     careator_remoteEmail = true;
     document.getElementById("videoConferenceUrl").style.display = "none";
     document.getElementById("emailInvitation").style.display = "none";
+    document.getElementById("videoCtrolBar").style.display = "block";
   }
   else {
     console.log("No user data from session");
     $("#setName").trigger("click");
   }
-
   console.log("userName: " + userName);
 }
 else {
@@ -83,7 +83,7 @@ else {
     console.log("2 cond: emailIdSplit: " + JSON.stringify(emailIdSplit));
     userName = emailIdSplit[0];
     document.getElementById("videoConferenceUrl").style.display = "block";
-
+    document.getElementById("videoCtrolBar").style.display = "block";
 
   }
   else {

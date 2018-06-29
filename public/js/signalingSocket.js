@@ -1316,21 +1316,13 @@ function setup_local_media(callback, errorback) {
         );
       },
         function (error) {
-          var msg =
-            "You Must Need to Install  Screen Share Extention, Click ok to install";
-          var newLine = "\r\n";
-          msg += newLine;
-          msg +=
-            "Note:Please Refresh the browser After Installing Extention ";
-          if (confirm("press a button!")) {
-            console.log("clicked on OK");
-            window.open(
-              "https://chrome.google.com/webstore/detail/screen-capturing/ajhifddimkapgcifgcodmmfdlknahffk?utm_source=chrome-app-launcher-info-dialog", "_blank"
-            );
-          }
-          else {
-            console.log("clicked on Cancel");
-          }
+          console.log("extension missing");
+          $("#screenShareExtension").trigger("click");
+          // var msg = "You Must Need to Install  Screen Share Extention, Click ok to install";
+          // var newLine = "\r\n";
+          // msg += newLine;
+          // msg +=
+          //   "Note:Please Refresh the browser After Installing Extention ";
           // if (window.confirm(msg)) {
           //   console.log("clicked on OK");
           //   window.open(
@@ -1340,9 +1332,8 @@ function setup_local_media(callback, errorback) {
           // else {
           //   console.log("clicked on Cancel");
           // }
-          //    alert("You Must Need to Install This Screen Share Extention https://chrome.google.com/webstore/detail/screen-capturing/ajhifddimkapgcifgcodmmfdlknahffk?utm_source=chrome-app-launcher-info-dialog ");
-          console.error(error);
-          if (errorback) errorback();
+          // console.error(error);
+          // if (errorback) errorback();
         }
       );
     });

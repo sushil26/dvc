@@ -11,10 +11,10 @@
 
 /* Trouble Shoot Section
 --------------------------------*/
+
 @import url(https://fonts.googleapis.com/css?family=Aclonica);
 @import url(https://fonts.googleapis.com/css?family=Oswald:400,300);
 .moving {
- 
   -webkit-animation: mve 10s infinite;
   animation: mve 10s infinite;
 }
@@ -22,75 +22,70 @@
 /* Safari 4.0 - 8.0 */
 
 @-webkit-keyframes mve {
-  0%  {
-    background:#a8cf44;
+  0% {
+    background: #a8cf44;
     opacity: 0.75;
   }
- 
-  33%{
-    background:green;
+  33% {
+    background: green;
     opacity: 0.50;
   }
-  66%{
-    background:darkgreen;
+  66% {
+    background: darkgreen;
     opacity: 0.50;
   }
-
   100% {
-    background:#a8cf44;
+    background: #a8cf44;
     opacity: 0.75;
   }
-
 }
 
 @keyframes mve {
-  0%  {
-    background:#a8cf44;
+  0% {
+    background: #a8cf44;
     opacity: 0.75;
   }
- 
-  33%{
-    background:green;
+  33% {
+    background: green;
     opacity: 0.50;
   }
-  66%{
-    background:darkgreen;
+  66% {
+    background: darkgreen;
     opacity: 0.50;
   }
-
   100% {
-    background:#a8cf44;
+    background: #a8cf44;
     opacity: 0.75;
   }
 }
-
 
 .ng-enter {
-  transition:0.75s;
-  opacity:0;
+  transition: 0.75s;
+  opacity: 0;
 }
-.ng-enter-stagger{
+
+.ng-enter-stagger {
   transition-delay: 0.1s;
 }
 
 /* The finishing CSS styles for the enter animation */
+
 .ng-enter.ng-enter-active {
-  opacity:1;
+  opacity: 1;
 }
 
 .ng-leave {
-  transition:0.75s;
-  opacity:1;
+  transition: 0.75s;
+  opacity: 1;
 }
-.ng-leave-stagger{
+
+.ng-leave-stagger {
   transition-delay: 0.1s;
 }
+
 .ng-leave.ng-leave-active {
-  opacity:0;
+  opacity: 0;
 }
-
-
-
 
 .kklklk {
   -webkit-animation: air 4s infinite;
@@ -164,25 +159,20 @@
 } */
 
 .bouncy {
-  display: inline-block;
-  font-size: 15px;
-  font-weight: bold;
-  text-align: center;
-  padding: 10px;
+  font-size: 25px;
   margin: 5px;
   position: relative;
   cursor: pointer;
   border: none;
   border-radius: 50%;
   text-align: center;
-width: 40px;
-height: 40px;
-
+  width: 50px;
+  height: 50px;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#f7f7f7), to(#e7e7e7));
-  background-image: -webkit-linear-gradient(top, #f7f7f7, #e7e7e7); 
-  background-image: -moz-linear-gradient(top, #f7f7f7, #e7e7e7); 
-  background-image: -ms-linear-gradient(top, #f7f7f7, #e7e7e7); 
-  background-image: -o-linear-gradient(top, #f7f7f7, #e7e7e7); 
+  background-image: -webkit-linear-gradient(top, #f7f7f7, #e7e7e7);
+  background-image: -moz-linear-gradient(top, #f7f7f7, #e7e7e7);
+  background-image: -ms-linear-gradient(top, #f7f7f7, #e7e7e7);
+  background-image: -o-linear-gradient(top, #f7f7f7, #e7e7e7);
   color: #a7a7a7;
   /* box-shadow: inset 0px 1px 0px #2ab7ec, 0px 1px 0px 0px #07526e, 0px 5px 5px #999; */
 }
@@ -338,7 +328,6 @@ h6 {
 }
 
 @media (max-width: 768px) {
-
   .btn {
     font-size: 8px ! important;
   }
@@ -858,7 +847,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   position: relative;
   background: white;
   /* background-image: url(/home/img/background.jpg); */
-  background-position:right top;
+  background-position: right top;
 }
 
 #services .icon {
@@ -896,8 +885,9 @@ body.mobile-nav-active #mobile-nav-toggle {
   box-shadow: 10px 10px 91px 0px rgba(0, 0, 0, 0.2);
   -ms-transform: scale(1.1, 1.1);
   transition: all 0.3s;
-  -webkit-transform:scale(1.1, 1.1); /* Safari */
-  transform:scale(1.1, 1.1);
+  -webkit-transform: scale(1.1, 1.1);
+  /* Safari */
+  transform: scale(1.1, 1.1);
   background: #111;
 }
 
@@ -907,7 +897,6 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 #services .title {
-  
   font-weight: 700;
   font-size: 18px;
   margin-bottom: 15px;

@@ -17,9 +17,6 @@
 @import url(https://fonts.googleapis.com/css?family=Oswald:400,300);
 
 .bouncy:hover{
-  width: 52px;
-  height: 52px;
-  line-height: 52px;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#f7f7f7), to(#e7e7e7));
   background-image: -webkit-linear-gradient(top, #f7f7f7, #e7e7e7);
   background-image: -moz-linear-gradient(top, #f7f7f7, #e7e7e7);

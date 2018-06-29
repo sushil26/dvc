@@ -176,7 +176,7 @@ function checkPassword() {
 }
 
 /* ##### Start: Email Invite  ##### */
-function emailInvite() {
+function emailInviteSend() {
   console.log("emailInvite-->");
   var email = document.getElementById("emailInvite").value;
   var URL = document.getElementById("linkToShare").innerHTML;

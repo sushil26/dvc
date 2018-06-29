@@ -16,6 +16,10 @@
 @import url(https://fonts.googleapis.com/css?family=Aclonica);
 @import url(https://fonts.googleapis.com/css?family=Oswald:400,300);
 
+.bcg{
+  
+}
+
 .moving {
   -webkit-animation: mve 10s infinite;
   animation: mve 10s infinite;

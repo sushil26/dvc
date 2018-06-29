@@ -175,7 +175,8 @@ function checkPassword() {
   console.log("<--checkPassword");
 }
 
-function emailInvite() {
+/* ##### Start: Email Invite  ##### */
+document.getElementById("emailInvite").addEventListener("click", function () {
   console.log("emailInvite-->");
   var email = document.getElementById("emailInvite").value;
   var URL = document.getElementById("linkToShare").innerHTML;
@@ -204,6 +205,7 @@ function emailInvite() {
       setTimeout(function () {
         $('#info').fadeOut('fast');
       }, 3000);
+      $('#myPasswordModal').modal('hide');
       // document.getElementById("info").innerHTML = data.message;
     },
     error: function (err) {
@@ -214,7 +216,8 @@ function emailInvite() {
     }
   });
   console.log("<--emailInvite");
-}
+})
+/* ##### End: Email Invite  ##### */
 
 
 var ICE_SERVERS = [{

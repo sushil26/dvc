@@ -428,9 +428,7 @@ signaling_socket.on("connect", function () {
         });
       }
 
-      document
-        .getElementById("setNameId")
-        .addEventListener("click", function () {
+      document.getElementById("setNameId").addEventListener("click", function () {
           console.log("setup_local_media calling**");
           setup_local_media(function () {
             join__channel(DEFAULT_CHANNEL, { "whatever-here": "stuff" });

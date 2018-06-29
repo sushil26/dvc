@@ -83,7 +83,7 @@ else {
     console.log("2 cond: emailIdSplit: " + JSON.stringify(emailIdSplit));
     userName = emailIdSplit[0];
     document.getElementById("videoConferenceUrl").style.display = "block";
-    document.getElementById("videoCtrolBar").style.display = "block";
+    document.getElementById("videoCtrolBar").style.display = "none";
 
   }
   else {

@@ -167,74 +167,24 @@
   display: inline-block;
   font-size: 15px;
   font-weight: bold;
-  color: #fff ! important;
   text-align: center;
   padding: 10px;
   margin: 5px;
   position: relative;
   cursor: pointer;
   border: none;
-  background: #109bce;
-  background-image: linear-gradient(bottom, rgb(14, 137, 182) 0%, rgb(22, 179, 236) 100%);
-  border-radius: 100px;
+  border-radius: 50%;
+  text-align: center;
+width: 40px;
+height: 40px;
+
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#f7f7f7), to(#e7e7e7));
+  background-image: -webkit-linear-gradient(top, #f7f7f7, #e7e7e7); 
+  background-image: -moz-linear-gradient(top, #f7f7f7, #e7e7e7); 
+  background-image: -ms-linear-gradient(top, #f7f7f7, #e7e7e7); 
+  background-image: -o-linear-gradient(top, #f7f7f7, #e7e7e7); 
+  color: #a7a7a7;
   /* box-shadow: inset 0px 1px 0px #2ab7ec, 0px 1px 0px 0px #07526e, 0px 5px 5px #999; */
-}
-
-bouncy:active {
-  top: 3px;
-  box-shadow: inset 0px 1px 0px #2ab7ec, 0px 2px 0px 0px #07526e, 0px 5px 3px #999;
-}
-
-bouncy:before {
-  font-family: 'socialfont';
-  font-size: 50px;
-  line-height: 1em;
-  font-weight: normal;
-  color: #fff;
-  content: "\F020";
-  width: 85px;
-  height: 90px;
-  display: block;
-  position: absolute;
-  padding-top: 10px;
-  top: 10px;
-  text-shadow: 1px 1px 2px #07526e;
-}
-
-bouncy:active:before {
-  top: 7px;
-  font-size: 50px;
-  text-shadow: 0px 3px 0px #07526e, 0px 5px 1px #07526e/*, 3px 0px 1px #07526e, 3px 3px 1px #07526e,
-     -2px 0px 1px #68cff2*/
-  ;
-}
-
-.bouncy {
-  position: relative;
-}
-
-@keyframes bouncy {
-  0% {
-    top: 0em;
-  }
-  40% {
-    top: 0em;
-  }
-  43% {
-    top: -0.9em;
-  }
-  46% {
-    top: 0em;
-  }
-  48% {
-    top: -0.4em;
-  }
-  50% {
-    top: 0em;
-  }
-  100% {
-    top: 0em;
-  }
 }
 
 .bt {

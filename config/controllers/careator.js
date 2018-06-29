@@ -205,14 +205,7 @@ module.exports.emailInvite = function (req, res) {
     console.log("req.body.sessionHost: "+req.body.sessionHost+" req.body.email: "+req.body.email+" req.body.url: "+req.body.url);
     var password = randomstring.generate(7);
     console.log("password: "+password);
-    var mailOptions = {
-        from: "info@vc4all.in",
-        to: req.body.email,
-        subject: "Regarding Instance Meeting",
-        html: "<table style='border:10px solid gainsboro;'><thead style=background:cornflowerblue;><tr><th><h2>Greetings from VC4ALL</h2></th></tr></thead><tfoot style=background:#396fc9;color:white;><tr><td style=padding:15px;><p><p>Regards</p><b>Careator Technologies Pvt. Ltd</b></p></td></tr></tfoot><tbody><tr><td><b>Dear Team,</b></td></tr><tr><td> Please note, you have to attend meeting right now, please open the below link.<p style=background:gainsboro;><p>Here your link <a href=" + req.body.url + ">" + req.body.url + "</a></p></td></tr></tbody></table>"
-
-        //html:"<html><head><p><b>Dear Team, </b></p><p>Please note, you have to attend meeting right now, please open the below link.<p>Here your link <a href=" + req.body.url + ">" + req.body.url + "</a> </p><p>Regards</p><p><b>Careator Technologies Pvt. Ltd</b></p></head><body></body></html>"
-    };
+   
     console.log("mailOptions: " + JSON.stringify(mailOptions));
     careatorEmp.update({ email: req.body.sessionHost }, { $push: { "invite":{"remoteEmailId":req.body.email, "password": password}}}, function(err, data){
         if (err) {

@@ -9,11 +9,24 @@
 # General
 --------------------------------------------------------------*/
 
+
 /* Trouble Shoot Section
 --------------------------------*/
 
 @import url(https://fonts.googleapis.com/css?family=Aclonica);
 @import url(https://fonts.googleapis.com/css?family=Oswald:400,300);
+.bcg{
+  background: #fff;
+  border-top: 2px solid #ddd;
+  position: absolute;
+  top: -18px;
+  left: -18px;
+  bottom: -18px;
+  right: -18px;
+  z-index: -1;
+  border-radius: 50%;
+  box-shadow: inset 0px 8px 48px #ddd;
+}
 .moving {
   -webkit-animation: mve 10s infinite;
   animation: mve 10s infinite;
@@ -159,6 +172,7 @@
 } */
 
 .bouncy {
+  line-height: 50px;
   font-size: 25px;
   margin: 5px;
   position: relative;

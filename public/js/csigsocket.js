@@ -176,7 +176,7 @@ function checkPassword() {
 }
 
 /* ##### Start: Email Invite  ##### */
-document.getElementById("emailInvite").addEventListener("click", function () {
+function emailInvite() {
   console.log("emailInvite-->");
   var email = document.getElementById("emailInvite").value;
   var URL = document.getElementById("linkToShare").innerHTML;
@@ -218,7 +218,7 @@ document.getElementById("emailInvite").addEventListener("click", function () {
   });
 
   console.log("<--emailInvite");
-})
+}
 /* ##### End: Email Invite  ##### */
 
 

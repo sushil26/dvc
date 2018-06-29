@@ -20,6 +20,54 @@ var transporter = nodemailer.createTransport({
 var chatHistory = db.collection("chatHistory");
 
 
+module.exports.RemoteJoinCheck = function (req, res) {
+    console.log("RemoteJoinCheck-->");
+    console.log("req.body.careator_remoteEmail: " + req.body.careator_remoteEmail + " req.body.careator_remotePswd" + req.body.careator_remotePswd);
+    console.log("req.body.url: " + req.body.url);
+    var password = req.body.careator_remotePswd;
+    var remote_careatorEmail = req.body.careator_remoteEmail;
+    var url = req.body.url;
+    if (general.emptyCheck(password) && general.emptyCheck(remote_careatorEmail)) {
+        var obj = {
+            "remoteEmailId": remote_careatorEmail,
+            "password": password
+        }
+        console.log("obj: " + JSON.stringify(obj));
+        careatorEmp.find({ "sessionURL": url }, { "invite": obj }).toArray(function (err, findData) {
+            console.log("findData: " + JSON.stringify(findData));
+            if (err) {
+                responseData = {
+                    status: false,
+                    message: "Process failed"
+                };
+                res.status(400).send(responseData);
+            }
+            else {
+                if (findData.length > 0) {
+                    responseData = {
+                        status: true,
+                        message: "Login Successfully"
+                    };
+                    res.status(200).send(responseData);
+                }
+                else {
+                    responseData = {
+                        status: false,
+                        message: "Credential Mismatch"
+                    };
+                    res.status(400).send(responseData);
+                }
+            }
+        })
+    }
+    else {
+        responseData = {
+            status: false,
+            message: "Empty value found"
+        };
+        res.status(400).send(responseData);
+    }
+}
 
 module.exports.pswdCheck = function (req, res) {
     console.log("pswdCheck-->");
@@ -90,7 +138,8 @@ module.exports.pswdGenerate = function (req, res) {
             var obj = {
                 "email": email,
                 "password": password,
-                "invite": []
+                "invite": [],
+                "session": 
             }
             careatorEmp.find({ "email": email }).toArray(function (err, findData) {
                 if (findData.length > 0) {
@@ -202,12 +251,12 @@ module.exports.pswdGenerate = function (req, res) {
 
 module.exports.emailInvite = function (req, res) {
     console.log("careator email Invite-->");
-    console.log("req.body.sessionHost: "+req.body.sessionHost+" req.body.email: "+req.body.email+" req.body.url: "+req.body.url);
+    console.log("req.body.sessionHost: " + req.body.sessionHost + " req.body.email: " + req.body.email + " req.body.url: " + req.body.url);
     var password = randomstring.generate(7);
-    console.log("password: "+password);
-   
-    
-    careatorEmp.update({ email: req.body.sessionHost }, { $push: { "invite":{"remoteEmailId":req.body.email, "password": password}}}, function(err, data){
+    console.log("password: " + password);
+
+
+    careatorEmp.update({ email: req.body.sessionHost }, { $push: { "invite": { "remoteEmailId": req.body.email, "password": password } } }, function (err, data) {
         if (err) {
             responseData = {
                 status: true,
@@ -221,7 +270,7 @@ module.exports.emailInvite = function (req, res) {
                 from: "info@vc4all.in",
                 to: req.body.email,
                 subject: 'VC4ALL Credential',
-                html: "<table style='border:10px solid gainsboro;'><thead style=background:cornflowerblue;><tr><th><h2>Greetings from VC4ALL</h2></th></tr></thead><tfoot style=background:#396fc9;color:white;><tr><td style=padding:15px;><p><p>Regards</p><b>Careator Technologies Pvt. Ltd</b></p></td></tr></tfoot><tbody><tr><td><b>Dear Careator Employee,</b></td></tr><tr><td>Please note, You get the invitation from VC4ALL and sended by "+ req.body.sessionHost + " you can access the below link by using given password.<p style=background:gainsboro;>Password: " + password + "</p><p style=background:gainsboro;>URL: " + req.body.url + "</p></td></tr></tbody></table>"
+                html: "<table style='border:10px solid gainsboro;'><thead style=background:cornflowerblue;><tr><th><h2>Greetings from VC4ALL</h2></th></tr></thead><tfoot style=background:#396fc9;color:white;><tr><td style=padding:15px;><p><p>Regards</p><b>Careator Technologies Pvt. Ltd</b></p></td></tr></tfoot><tbody><tr><td><b>Dear Careator Employee,</b></td></tr><tr><td>Please note, You get the invitation from VC4ALL and sended by " + req.body.sessionHost + " you can access the below link by using given password.<p style=background:gainsboro;>Password: " + password + "</p><a href="+req.body.url+" style=background:gainsboro;>URL: Click Me</p></td></tr></tbody></table>"
                 // "<html><body><p><b>Dear Careator Employee, </b></p><p>Please note, Your email Id is verified successfully,  you can access the below link by using given password.<p>Password: "+password+"</p></p><p>Regards</p><p><b>Careator Technologies Pvt. Ltd</b></p></body></html>"
             };
             transporter.sendMail(mailOptions, function (error, info) {
@@ -245,12 +294,8 @@ module.exports.emailInvite = function (req, res) {
                     res.status(200).send(responseData);
                 }
             });
-        }  
+        }
     })
-
-
-   
-
 }
 
 module.exports.setCollection = function (req, res) {
@@ -265,28 +310,43 @@ module.exports.setCollection = function (req, res) {
         "session_dateTime": new Date()
     }
     console.log("obj: " + JSON.stringify(obj));
-    chatHistory.insertOne(obj, function (err, data) {
+
+    careatorEmp.update({ "email": req.body.email }, { $set: { "sessionURL": url } }, function (err, urlUpdate) {
         if (err) {
             console.log("err: " + JSON.stringify(err));
             responseData = {
                 status: false,
-                message: "UnSuccessfully"
+                message: "Unsuccessfull, go back and refresh then start session"
             };
             res.status(400).send(responseData);
         }
         else {
-            console.log("data: " + JSON.stringify(data));
-            var obj = {
-                "url": req.body.url
-            }
-            responseData = {
-                status: true,
-                message: "Successfully",
-                data: obj
-            };
-            res.status(200).send(responseData);
+            chatHistory.insertOne(obj, function (err, data) {
+                if (err) {
+                    console.log("err: " + JSON.stringify(err));
+                    responseData = {
+                        status: false,
+                        message: "UnSuccessfully"
+                    };
+                    res.status(400).send(responseData);
+                }
+                else {
+                    console.log("data: " + JSON.stringify(data));
+                    var obj = {
+                        "url": req.body.url
+                    }
+                    responseData = {
+                        status: true,
+                        message: "Successfully",
+                        data: obj
+                    };
+                    res.status(200).send(responseData);
+                }
+            })
         }
     })
+
+
 
 
 }

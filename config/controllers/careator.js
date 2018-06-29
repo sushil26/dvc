@@ -202,7 +202,7 @@ module.exports.pswdGenerate = function (req, res) {
 
 module.exports.emailInvite = function (req, res) {
     console.log("careator email Invite-->");
-    console.log("req.body.sessionHost: "+req.body.sessionHost+" req.body.email: "+req.body.email);
+    console.log("req.body.sessionHost: "+req.body.sessionHost+" req.body.email: "+req.body.email+" req.body.url: "+req.body.url);
     var password = randomstring.generate(7);
     console.log("password: "+password);
     var mailOptions = {
@@ -228,7 +228,7 @@ module.exports.emailInvite = function (req, res) {
                 from: "info@vc4all.in",
                 to: req.body.email,
                 subject: 'VC4ALL Credential',
-                html: "<table style='border:10px solid gainsboro;'><thead style=background:cornflowerblue;><tr><th><h2>Greetings from VC4ALL</h2></th></tr></thead><tfoot style=background:#396fc9;color:white;><tr><td style=padding:15px;><p><p>Regards</p><b>Careator Technologies Pvt. Ltd</b></p></td></tr></tfoot><tbody><tr><td><b>Dear Careator Employee,</b></td></tr><tr><td>Please note, You get the invitation from VC4ALL and sended by "+ req.body.sessionHost + " you can access the below link by using given password.<p style=background:gainsboro;>Password: " + password + "</p></td></tr></tbody></table>"
+                html: "<table style='border:10px solid gainsboro;'><thead style=background:cornflowerblue;><tr><th><h2>Greetings from VC4ALL</h2></th></tr></thead><tfoot style=background:#396fc9;color:white;><tr><td style=padding:15px;><p><p>Regards</p><b>Careator Technologies Pvt. Ltd</b></p></td></tr></tfoot><tbody><tr><td><b>Dear Careator Employee,</b></td></tr><tr><td>Please note, You get the invitation from VC4ALL and sended by "+ req.body.sessionHost + " you can access the below link by using given password.<p style=background:gainsboro;>Password: " + password + "</p><p style=background:gainsboro;>URL: " + req.body.url + "</p></td></tr></tbody></table>"
                 // "<html><body><p><b>Dear Careator Employee, </b></p><p>Please note, Your email Id is verified successfully,  you can access the below link by using given password.<p>Password: "+password+"</p></p><p>Regards</p><p><b>Careator Technologies Pvt. Ltd</b></p></body></html>"
             };
             transporter.sendMail(mailOptions, function (error, info) {

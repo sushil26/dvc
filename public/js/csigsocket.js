@@ -206,7 +206,7 @@ document.getElementById("emailInvite").addEventListener("click", function () {
       setTimeout(function () {
         $('#info').fadeOut('fast');
       }, 3000);
-      $('#myPasswordModal').modal('hide');
+      
       // document.getElementById("info").innerHTML = data.message;
     },
     error: function (err) {

@@ -130,8 +130,6 @@ function sendEmail() {
     }
 
   });
-
-
   console.log("<--sendEmail");
 }
 
@@ -175,44 +173,6 @@ function checkPassword() {
     $("#enterPswd").trigger("click");
   }
   console.log("<--checkPassword");
-}
-function saveName() {
-  console.log("setName-->");
-  var careator_remoteEmail = document.getElementById("remote_userName").value;
-  var careator_remotePswd = document.getElementById("remote_password").value;
-  var checkObj = {
-    "url": window.location.href, 
-    "careator_remoteEmail": careator_remoteEmail,
-    "careator_remotePswd":careator_remotePswd
-  }
-  $.ajax({
-    url: "https://norecruits.com/careator/RemoteJoinCheck",
-    type: "POST",
-    data: JSON.stringify(checkObj),
-    contentType: "application/json",
-    dataType: "json",
-    success: function (data) {
-      console.log("data: " + JSON.stringify(data));
-      localStorage.removeItem("careatorEmail");
-      localStorage.setItem("careator_remoteEmail", careator_remoteEmail);
-      var emailIdSplit = careator_remoteEmail.split('@');
-      console.log("2 cond: emailIdSplit: " + JSON.stringify(emailIdSplit));
-      userName = emailIdSplit[0];
-      careator_remoteEmail = true;
-      document.getElementById("videoConferenceUrl").style.display = "none";
-      document.getElementById("emailInvitation").style.display = "none";
-      $('#remoteJoin').modal('hide');
-    },
-    error: function (err) {
-      console.log("err: " + JSON.stringify(err));
-      console.log("err.responseText: " + JSON.stringify(err.responseText));
-      console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
-      document.getElementById("videoConferenceUrl").style.display = "none";
-      document.getElementById("emailInvitation").style.display = "none";
-      userName = "";
-    }
-  });
-  
 }
 
 function emailInvite() {
@@ -430,9 +390,45 @@ signaling_socket.on("connect", function () {
 
       document.getElementById("setNameId").addEventListener("click", function () {
           console.log("setup_local_media calling**");
-          setup_local_media(function () {
-            join__channel(DEFAULT_CHANNEL, { "whatever-here": "stuff" });
+          console.log("setName-->");
+          var careator_remoteEmail = document.getElementById("remote_userName").value;
+          var careator_remotePswd = document.getElementById("remote_password").value;
+          var checkObj = {
+            "url": window.location.href, 
+            "careator_remoteEmail": careator_remoteEmail,
+            "careator_remotePswd":careator_remotePswd
+          }
+          $.ajax({
+            url: "https://norecruits.com/careator/RemoteJoinCheck",
+            type: "POST",
+            data: JSON.stringify(checkObj),
+            contentType: "application/json",
+            dataType: "json",
+            success: function (data) {
+              console.log("data: " + JSON.stringify(data));
+              localStorage.removeItem("careatorEmail");
+              localStorage.setItem("careator_remoteEmail", careator_remoteEmail);
+              var emailIdSplit = careator_remoteEmail.split('@');
+              console.log("2 cond: emailIdSplit: " + JSON.stringify(emailIdSplit));
+              userName = emailIdSplit[0];
+              careator_remoteEmail = true;
+              document.getElementById("videoConferenceUrl").style.display = "none";
+              document.getElementById("emailInvitation").style.display = "none";
+              $('#remoteJoin').modal('hide');
+              setup_local_media(function () {
+                join__channel(DEFAULT_CHANNEL, { "whatever-here": "stuff" });
+              });
+            },
+            error: function (err) {
+              console.log("err: " + JSON.stringify(err));
+              console.log("err.responseText: " + JSON.stringify(err.responseText));
+              console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
+              document.getElementById("videoConferenceUrl").style.display = "none";
+              document.getElementById("emailInvitation").style.display = "none";
+              userName = "";
+            }
           });
+          
         });
     }
     console.log("<--signaling_socket message");

@@ -1,4 +1,4 @@
-careatorApp.controller('chatHistoryCtrl', function ($scope, $rootScope, $filter, $window, httpFactory, sessionAuthFactory, $uibModal) {
+careatorApp.controller('chatHistoryCtrl', function ($scope, $rootScope, $filter, $window, $uibModal) {
     console.log("chatHistoryCtrl==>");
 
     $scope.getChatHistoryById = function () {

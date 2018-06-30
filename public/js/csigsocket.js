@@ -274,7 +274,7 @@ function disconnecSession() {
     localStorage.removeItem("sessionUrlId");
     localStorage.removeItem("careator_remoteEmail");
     signaling_socket.emit("disconnectSession", {deleteSessionId: queryLink, owner: peerNew_id});
-   
+    window.location.href = "https://norecruits.com/careator";
   } else {
     localStorage.removeItem("careatorEmail");
     localStorage.removeItem("sessionUrlId");
@@ -451,7 +451,7 @@ signaling_socket.on("disconnect", function () {
   peers = {};
   peer_media_elements = {};
   peer_userName_elements = {};
-  window.location.href = "https://norecruits.com";
+ 
   // peer_media_sselements = {};
   console.log("<--signaling_socket.on disconnect");
 });

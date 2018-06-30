@@ -37,7 +37,7 @@ careatorApp.config(function ($stateProvider, $urlRouterProvider) {
         })
         .state('careatorApp.chatHistory', {
             url: careator_chatHistory(),
-            templateUrl: '/html/careatorApp/careatorHTML/chatHistory.html',
+            templateUrl: '/careatorApp/html/chatHistory.html',
             controller: 'chatHistoryCtrl',
             resolve: {
                 result: function (sessionAuthFactory, $window) {

@@ -3,6 +3,22 @@ var careatorApp = angular.module('careatorCommApp', ['ui.router']);
 careatorApp.config(function ($stateProvider, $urlRouterProvider) {
 
     $stateProvider
+    .state('careatorApp.dashboard', {
+        url: careator_dashboard(),
+        templateUrl: '/careatorApp/html/careator_dashboard.html',
+        controller: 'careator_dashboardCtrl',
+        resolve: {
+            result: function (sessionAuthFactory, $window) {
+                var userData = sessionAuthFactory.getAccess("userData");
+                if (userData.loginType == 'admin') {
+
+                }
+                else {
+                    $window.location.href = 'https://norecruits.com';
+                }
+            }
+        }
+    })
         .state('careatorApp.userCreate', {
             url: careator_userCreate(),
             templateUrl: '/html/careatorApp/careatorHTML/createUsers.html',
@@ -36,6 +52,10 @@ careatorApp.config(function ($stateProvider, $urlRouterProvider) {
             }
         })
 })
+
+function careator_dashboard(){
+    return '/dashboard';
+}
 
 function careator_userCreate() {
     return '/userCreate';

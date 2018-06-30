@@ -279,7 +279,7 @@ function disconnecSession() {
     localStorage.removeItem("sessionUrlId");
     localStorage.removeItem("careator_remoteEmail");
     signaling_socket.emit("disconnectSession", { deleteSessionId: queryLink, owner: peerNew_id });
-    window.location.href = "https://norecruits.com";
+  
     check_response = function () {
       $.ajax(
         {
@@ -300,6 +300,7 @@ function disconnecSession() {
         });
     };
     setTimeout(check_response, retry_current * 1000);
+    window.location.href = "https://norecruits.com";
   } else {
     localStorage.removeItem("careatorEmail");
     localStorage.removeItem("sessionUrlId");

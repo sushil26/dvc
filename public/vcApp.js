@@ -390,7 +390,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
       controller: 'contactController'
     })
     .state('careatorComm', {
-      url: '/careatorComm',
+      url: careatorComm(),
       templateUrl: '/html/careatorComm/dashboard.html',
       controller: 'careatorDashboard'
     })

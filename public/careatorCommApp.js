@@ -3,7 +3,7 @@ var careatorApp = angular.module('careatorCommApp', ['ui.router']);
 careatorApp.config(function ($stateProvider, $urlRouterProvider) {
 
     $stateProvider
-    .state('careatorApp.dashboard', {
+    .state('dashboard', {
         url: careator_dashboard(),
         templateUrl: '/careatorApp/html/careator_dashboard.html',
         controller: 'careator_dashboardCtrl',

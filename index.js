@@ -94,7 +94,7 @@ app.get("/careator/:id/:time", function (req, res) {
 
 app.get("/careatorApp", function (req, res) {
     console.log("chatCrtr started to render-->");
-    res.sendFile(__dirname + '/public/chatCrtr.html');
+    res.sendFile(__dirname + '/public/careatorComm.html');
 });
 
 // app.get("/record", function (req, res) {

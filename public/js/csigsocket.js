@@ -351,12 +351,7 @@ signaling_socket.on("connect", function () {
 
     if (config.queryId == null) {
       console.log("query id is null");
-      document
-        .getElementById("videoConfStart")
-        .setAttribute(
-          "onclick",
-          "startSession('" + peerNew_id + "' , '" + date + "')"
-        );
+      document.getElementById("videoConfStart").setAttribute("onclick","startSession('" + peerNew_id + "' , '" + date + "')");
       document
         .getElementById("linkToShare")
         .setAttribute(
@@ -379,6 +374,7 @@ signaling_socket.on("connect", function () {
         "https://norecruits.com/careator/" + queryLink + "/" + date;
       document.getElementById("screenBtns").style.display = "inline";
       document.getElementById("videoConfStart").style.display = "none";
+      document.getElementById("chelam").style.display = "none";
       document.getElementById("openChat").style.display = "inline";
 
       document.getElementById("audio_btn").style.display = "inline";

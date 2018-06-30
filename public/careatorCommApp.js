@@ -1,4 +1,4 @@
-var careatorApp = angular.module('careatorApp', ['ui.router', 'ui.bootstrap', 'ngAnimate']);
+var careatorApp = angular.module('careatorApp', ['ui.router']);
 
 careatorApp.config(function ($stateProvider, $urlRouterProvider) {
 

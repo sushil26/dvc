@@ -126,10 +126,10 @@
                             background: white;
                             padding: 15px;
                             border-radius: 13px;display:none;">
-                            <a  href="/" id="ffrrt" style="display:none;" class="bcg">
-                                <button id="" class="bouncy fa fa-home">
-                                </button>
-                            </a>
+                                <a href="/" id="ffrrt" style="display:none;" class="bcg">
+                                    <button id="" class="bouncy fa fa-home">
+                                    </button>
+                                </a>
                                 <a id="emailInvitation" style="display:none;" class="bcg" data-toggle="modal" data-target="#invitePeople">
                                     <button id="inv" class="bouncy fa fa-plus">
                                     </button>
@@ -528,6 +528,33 @@
                 $("#portfolio-wrapper").removeClass("intro");
             });
         });
+
+
+        /* ### Start: Note: Location refres help for check_response function ### */
+        var retry_current = 8, // first refresh at 8 seconds
+            retry_max = 4096; // refresh time truncated at about 68 minutes
+        /* ### Start: Note: Location refres help for check_responsefunction ### */
+
+        check_response = function () {
+            $.ajax(
+                {
+                    url: window.location.href,
+                    type: "HEAD",
+                    complete: function (jqXHR) {
+                        switch (jqXHR.status) {
+                            case 200:
+                                window.location.reload(true);
+                                break;
+                            case 502:
+                                if (retry_current < retry_max) {
+                                    retry_current *= 2;
+                                }
+                                setTimeout(check_response, retry_current * 1000);
+                        }
+                    }
+                });
+        };
+        setTimeout(check_response, retry_current * 1000);
     </script>
     <style>
         /* mirror Affect */

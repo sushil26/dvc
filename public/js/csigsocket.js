@@ -36,10 +36,6 @@ var shareScreen = null;
 var sessionHeader = null;
 var peerStream = null;
 
-/* ### Start: Note: Location refres help for check_response function ### */
-var retry_current = 8, // first refresh at 8 seconds
-  retry_max = 4096; // refresh time truncated at about 68 minutes
-/* ### Start: Note: Location refres help for check_responsefunction ### */
 
 signaling_socket = io(SIGNALING_SERVER);
 
@@ -280,26 +276,6 @@ function disconnecSession() {
     localStorage.removeItem("careator_remoteEmail");
     signaling_socket.emit("disconnectSession", { deleteSessionId: queryLink, owner: peerNew_id });
   
-    check_response = function () {
-      $.ajax(
-        {
-          url: window.location.href,
-          type: "HEAD",
-          complete: function (jqXHR) {
-            switch (jqXHR.status) {
-              case 200:
-                window.location.reload(true);
-                break;
-              case 502:
-                if (retry_current < retry_max) {
-                  retry_current *= 2;
-                }
-                setTimeout(check_response, retry_current * 1000);
-            }
-          }
-        });
-    };
-    setTimeout(check_response, retry_current * 1000);
     window.location.href = "https://norecruits.com";
   } else {
     localStorage.removeItem("careatorEmail");

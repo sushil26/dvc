@@ -389,17 +389,10 @@ app.config(function ($stateProvider, $urlRouterProvider) {
       templateUrl: '/html/dashboard/contact.html',
       controller: 'contactController'
     })
-    .state('careatorComm', {
-      url: careatorComm(),
-      templateUrl: '/html/careatorComm/dashboard.html',
-      controller: 'careatorDashboard'
-    })
+  
 
 
 });
-function careatorComm() {
-  return '/careatorComm';
-}
 
 
 function captureImg() {

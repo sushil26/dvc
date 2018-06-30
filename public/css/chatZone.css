@@ -201,8 +201,8 @@ font-family: Oswald;
     display: block !important;
 }
 .popup-box .popup-head {
-    border-top-right-radius: 25px;
-    border-top-left-radius: 25px;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
     background-color: rgba(52, 59, 64, 0.9);
     clear: both;
     color: #d9edf7;

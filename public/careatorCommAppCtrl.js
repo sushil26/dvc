@@ -1,4 +1,4 @@
-careatorApp.controller("vcChatAppCtrl", function ($scope, $http, $timeout) {
+careatorApp.controller("careatorCommAppCtrl", function ($scope, $http, $timeout) {
     console.log("Chat controller==>");
 
     //    httpFactory.getFile('property.json');

@@ -1,4 +1,4 @@
-var careatorApp = angular.module('careatorApp', ['ui.router']);
+var careatorApp = angular.module('careatorCommApp', ['ui.router']);
 
 careatorApp.config(function ($stateProvider, $urlRouterProvider) {
 

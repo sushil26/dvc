@@ -368,7 +368,7 @@ signaling_socket.on("connect", function () {
       document.getElementById("ffrrt").style.display = "inline";
       document.getElementById("videoConfStart").style.display = "none";
       document.getElementById("chelam").style.display = "none";
-      document.getElementById("mobile-nav-toggle").style.display = "none";
+      // document.getElementById("mobile-nav-toggle").style.display = "none";
       document.getElementById("openChat").style.display = "inline";
 
       document.getElementById("audio_btn").style.display = "inline";

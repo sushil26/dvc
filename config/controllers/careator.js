@@ -473,6 +473,7 @@ module.exports.careatorMasterInsert = function (req, res) {
         .on("end", function () {
             console.log("end marker: ");
             if (alreadyExist == 'yes') {
+                careatorMasterArray = [];
                 alreadyExist = null;
                 var temp = existEmail;
                 existEmail = null;

@@ -5,8 +5,7 @@ careatorApp.config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
     .state('Cdashboard', {
         url: careator_dashboard(),
-        templateUrl: '/careatorApp/html/careator_dashboard.html',
-        controller: 'careator_dashboardCtrl',
+        templateUrl: '/careatorApp/html/careator_dashboard.html'
        
     })
         .state('Cdashboard.userCreate', {

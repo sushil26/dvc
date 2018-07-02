@@ -23,6 +23,11 @@ careatorApp.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: '/careatorApp/html/userList.html'
 
         })
+        .state('Cdashboard.groupListCtrl', {
+            url: groupListCtrl(),
+            templateUrl: '/careatorApp/html/groupList.html'
+
+        })
         .state('careatorApp.chatHistory', {
             url: careator_chatHistory(),
             templateUrl: '/careatorApp/html/chatHistory.html'
@@ -34,6 +39,9 @@ function careator_dashboard(){
     return '/dashboard';
 }
 
+function groupListCtrl() {
+    return '/groupList';
+}
 function usersListCtrl() {
     return '/usersList';
 }

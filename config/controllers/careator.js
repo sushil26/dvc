@@ -554,7 +554,7 @@ module.exports.careator_getAllEmp = function (req, res) {
                 status: true,
                 message: allEmp
             };
-            res.status(200).send(responseData);
+            res.status(200).send(response);
         }
     })
 

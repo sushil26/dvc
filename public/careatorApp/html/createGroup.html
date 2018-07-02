@@ -34,9 +34,9 @@
                             <div class="form-group ">
                                 <label class="col-lg-3">Group Members*</label>
                                 <div class="col-lg-9">
-                                    <div ng-dropdown-multiselect="" options="groupMemberData" selected-model="groupMemberModel" checkboxes="true" extra-settings="groupMemberSettings">
+                                    <div ng-dropdown-multiselect="" options="mem.name for mem in groupMemberData" selected-model="groupMemberModel" checkboxes="true" extra-settings="groupMemberSettings"> </div>
                                         <pre>Selected Model: {{groupMemberModel}} | json</pre>
-                                    </div>
+                                   
                                  
                                 </div>
                             </div>

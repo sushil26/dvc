@@ -436,7 +436,6 @@ module.exports.getHistory = function (req, res) {
 
 }
 
-
 module.exports.careatorMasterInsert = function (req, res) {
     console.log("careatorMasterInsert-->");
     var responseData;
@@ -514,6 +513,7 @@ module.exports.careatorMasterInsertValidate = function (data, callback) {
         "email": data.Email,
         "videoRights": data.VideoRights,
         "chatRights": data.ChatRights,
+        "status": "active"
     }
     careatorMaster.find(obj).toArray(function (err, findData) {
         if (err) {
@@ -537,7 +537,6 @@ module.exports.careatorMasterInsertValidate = function (data, callback) {
 
 }
 
-
 module.exports.careator_getAllEmp = function (req, res) {
     console.log("careator_getAllEmp-->");
     var response;
@@ -557,6 +556,88 @@ module.exports.careator_getAllEmp = function (req, res) {
                 status: true,
                 message: "Sucessfully retrived data",
                 data: allEmp
+            };
+            res.status(200).send(response);
+        }
+    })
+
+}
+
+module.exports.careator_getChatRightsEmp = function (req, res) {
+    console.log("careator_getChatRightsEmp-->");
+    var response;
+    careatorMaster.find({"chatRights":"yes"}).toArray(function (err, allEmp_chat) {
+        if (err) {
+            console.log("err: " + JSON.stringify(err));
+            response = {
+                status: fasle,
+                message: "Unsucessfully retrived data",
+                data: err
+            };
+            res.status(400).send(responseData);
+        }
+        else {
+            console.log("allEmp_chat: " + JSON.stringify(allEmp_chat));
+            response = {
+                status: true,
+                message: "Sucessfully retrived data",
+                data: allEmp_chat
+            };
+            res.status(200).send(response);
+        }
+    })
+
+}
+
+module.exports.careator_statusChangeById = function (req, res) {
+    console.log("careator_statusChangeById-->");
+    var response;
+    var id = req.params.id;
+    var status = req.body.status;
+    console.log("id: "+id+" status: "+status);
+
+    careatorMaster.update({"_id":id},{$set:{"status":status}}),function (err, updatedData) {
+        if (err) {
+            console.log("err: " + JSON.stringify(err));
+            response = {
+                status: fasle,
+                message: "Update unsucessfully",
+                data: err
+            };
+            res.status(400).send(responseData);
+        }
+        else {
+            console.log("updatedData: " + JSON.stringify(updatedData));
+            response = {
+                status: true,
+                message: "Update sucessfully",
+                data: updatedData
+            };
+            res.status(200).send(response);
+        }
+    }
+
+}
+
+module.exports.careator_getChatRightsEmp = function (req, res) {
+    console.log("careator_getChatRightsEmp-->");
+    var response;
+    careatorMaster.find({"chatRights":"yes"}).toArray(function (err, allEmp_chat) {
+        if (err) {
+            console.log("err: " + JSON.stringify(err));
+            response = {
+                status: fasle,
+                message: "Unsucessfully retrived data",
+                data: err
+            };
+            res.status(400).send(responseData);
+        }
+        else {
+            console.log("allEmp_chat: " + JSON.stringify(allEmp_chat));
+            response = {
+                status: true,
+                message: "Sucessfully retrived data",
+                data: allEmp_chat
             };
             res.status(200).send(response);
         }

@@ -49,15 +49,15 @@ careatorApp.factory('careatorHttpFactory', function ($http, $q, $rootScope) {
 
             return dfd.promise;
         },
-        put: function (api, data, userName) {
+        put: function (api, data) {
 
             // console.log("headers"+headers);
             var dfd = $q.defer();
-            var puttUrl = $rootScope.propertyJson.BASE_URL + api;
+           
             //console.log("puttUrl"+puttUrl);
             $http({
                 method: 'PUT',
-                url: puttUrl,
+                url: api,
                 headers: { "Content-Type": "application/json" },
                 data: data
             }).

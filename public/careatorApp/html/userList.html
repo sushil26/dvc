@@ -44,11 +44,11 @@
                                         <i ng-if="emp.videoRights=='no'" class="fa fa-times" style="color: red"></i>
                                     </td>
                                     <td>
-                                        Active
+                                        {{emp.status}}
                                     </td>
                                     <td>
-                                        <button>Activate</button>
-                                        <button>Deactivate</button>
+                                        <button ng-if="emp.status=='incctive'" ng-click="statusChange(emp_id, 'active')">Activate</button>
+                                        <button ng-if="emp.status=='active'" ng-click="statusChange(emp_id, 'inactive')">Deactivate</button>
                                         <button>Delete</button>
                                     </td>
 

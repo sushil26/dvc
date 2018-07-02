@@ -18,7 +18,7 @@ careatorApp.controller('createGroupCtrl', function ($scope, $rootScope, $filter,
         scrollable: true,
         enableSearch: true
     };
-    $scope.groupAdminData =  $scope.groupMemberModel;
+    $scope.groupAdminData =  JSON.stringify($scope.groupMemberModel);
 
     $scope.rightEmployeeList = function (value) {
         console.log("rightEmployeeList-->");

@@ -6,7 +6,7 @@ careatorApp.controller('createUsersCtrl', function ($scope, $rootScope, $filter,
         var obj = {
             "file": careatorEmp
           }
-          var api = $scope.propertyJson.careator_careatorMasterInsert;
+          var api = "https://norecruits.com/careator/careatorMasterInsert";
           console.log("api: "+api);
           httpFactory.csvUpload(obj, api).then(function (data) {
             var checkStatus = httpFactory.dataValidation(data);

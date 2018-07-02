@@ -14,9 +14,11 @@ careatorApp.controller('createUsersCtrl', function ($scope, $rootScope, $filter,
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
                 console.log("checkStatus: " + checkStatus);
+                alert(data.message);
             }
             else {
                 console.log("checkStatus: " + checkStatus);
+                alert(data.message);
             }
         })
         console.log("<--uploadCareatorEmp");

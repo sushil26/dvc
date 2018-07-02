@@ -24,7 +24,7 @@ careatorApp.controller('usersListCtrl', function ($scope, $rootScope, $filter, $
     $scope.getAllEmployee();
 
     $scope.statusChange = function(id, status){
-        console.log("usersListCtrl-->");
+        console.log("statusChange-->");
         console.log("id: "+id+" status: "+status);
         var obj = {
             "status": status
@@ -45,6 +45,6 @@ careatorApp.controller('usersListCtrl', function ($scope, $rootScope, $filter, $
                 console.log(data.data.message);
             }
         })
-        console.log("<--usersListCtrl");
+        console.log("<--statusChange");
     }
 })

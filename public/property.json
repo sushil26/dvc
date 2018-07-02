@@ -61,8 +61,6 @@
 "VC_captureImgSend": "vc/captureImgSend",
 "VC_getVideo": "record/getVideo",
 "VC_getRecordVideo": "getRecord/getRecordVideo",
-"VC_csvTest": "vc/csvTest",
-
-"careator_careatorMasterInsert": "careator/careatorMasterInsert"
+"VC_csvTest": "vc/csvTest"
 
 }

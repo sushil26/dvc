@@ -472,7 +472,6 @@ module.exports.careatorMasterInsert = function (req, res) {
                 responseData = {
                     status: false,
                     message: "Upload failed because this email " + existEmail + " already exist",
-                    data: data
                 };
                 alreadyExist = null;
                 existEmail = null;

@@ -30,10 +30,10 @@
 
                                     </td>
                                     <td>
-                                        Sushil
+                                        {{ emp.email | split:'@':0}}
                                     </td>
                                     <td>
-                                        emp.email
+                                        {{emp.email}}
                                     </td>
                                     <td>
                                         <i ng-if="emp.chatRights=='yes'" class="fa fa-check" style="color: green"></i>

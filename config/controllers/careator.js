@@ -459,7 +459,7 @@ module.exports.careatorMasterInsert = function (req, res) {
         parser.pause();
         module.exports.careatorMasterInsertValidate(data, function (err) {
             console.log("validation -->");
-            console.log("alreadyExist : " + alreadyExist + " existEmail" + existEmail);
+            console.log("alreadyExist : " + alreadyExist + " existEmail: " + existEmail);
             parser.resume();
         });
 

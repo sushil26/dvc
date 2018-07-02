@@ -1,5 +1,6 @@
 careatorApp.controller('createUsersCtrl', function ($scope, $rootScope, $filter, $window) {
     console.log("createUsersCtrl==>");
+    $scope.propertyJson = $rootScope.propertyJson;
     $scope.uploadCareatorEmp = function(careatorEmp){
         console.log("uploadCareatorEmp-->");
         var obj = {

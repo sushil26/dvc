@@ -459,74 +459,73 @@ module.exports.careatorMasterInsert = function (req, res) {
         parser.pause();
         module.exports.careatorMasterInsertValidate(data, function (err) {
             console.log("validation -->");
-            console.log("alreadyExist : " + alreadyExist +" existEmail"+ existEmail);
-            console.log("objJson: " + JSON.stringify(objJson));
+            console.log("alreadyExist : " + alreadyExist + " existEmail" + existEmail);
             parser.resume();
         });
 
-      
+
     })
         .on("end", function () {
             console.log("end marker: ");
-            if(alreadyExist == 'yes'){
-               
+            if (alreadyExist == 'yes') {
+
                 responseData = {
                     status: false,
-                    message: "Upload failed because this email "+existEmail+" already exist",
+                    message: "Upload failed because this email " + existEmail + " already exist",
                     data: data
                 };
-                alreadyExist=null;
+                alreadyExist = null;
                 existEmail = null;
                 res.status(400).send(responseData);
-                
+
             }
-            else{
-            careatorMaster.insert(careatorMasterArray, function (err, insertedData) {
-                careatorMasterArray = [];
-                if (err) {
-                    console.log("err: " + JSON.stringify(err));
-                    responseData = {
-                        status: false,
-                        message: "Insert Unsuccessful"
-                    };
-                    res.status(400).send(responseData);
-                } else {
-                    console.log("insertedData: " + JSON.stringify(insertedData));
-                    responseData = {
-                        status: true,
-                        message: "Insert Successfull",
-                    };
-                    res.status(200).send(responseData);
-                }
-            })
-        }
+            else {
+                careatorMaster.insert(careatorMasterArray, function (err, insertedData) {
+                    careatorMasterArray = [];
+                    if (err) {
+                        console.log("err: " + JSON.stringify(err));
+                        responseData = {
+                            status: false,
+                            message: "Insert Unsuccessful"
+                        };
+                        res.status(400).send(responseData);
+                    } else {
+                        console.log("insertedData: " + JSON.stringify(insertedData));
+                        responseData = {
+                            status: true,
+                            message: "Insert Successfull",
+                        };
+                        res.status(200).send(responseData);
+                    }
+                })
+            }
         })
 }
 
 module.exports.careatorMasterInsertValidate = function (data, callback) {
-console.log("careatorMasterInsertValidate-->");
-var obj = {
-    "email":data.Email
-}
-careatorMaster.find(obj).toArray(function(err, findData){
-    if(err){
-        console.log("err: " + JSON.stringify(err));
-       
+    console.log("careatorMasterInsertValidate-->");
+    var obj = {
+        "email": data.Email
     }
-    else{
-        console.log("findData: "+JSON.stringify(findData));
-        if(findData.length>0){
-            alreadyExist = "yes";
-            existEmail = data.Email;
-            if (callback) callback();
+    careatorMaster.find(obj).toArray(function (err, findData) {
+        if (err) {
+            console.log("err: " + JSON.stringify(err));
+
         }
-        else{
-           
-            careatorMasterArray.push(obj);
-            if (callback) callback();
+        else {
+            console.log("findData: " + JSON.stringify(findData));
+            if (findData.length > 0) {
+                alreadyExist = "yes";
+                existEmail = data.Email;
+                if (callback) callback();
+            }
+            else {
+
+                careatorMasterArray.push(obj);
+                if (callback) callback();
+            }
         }
-    }
-})
+    })
 
 }
 

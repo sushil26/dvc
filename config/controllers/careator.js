@@ -6,6 +6,12 @@ var ObjectId = require("mongodb").ObjectID;
 var nodemailer = require("nodemailer");
 var createdDate = new Date();
 var randomstring = require("randomstring");
+
+var careatorMaster = db.collection("careatorMaster"); /* ### careator employee collection  ### */
+var careatorChatGroup = db.collection("careatorChatGroup"); /* ### careatorChatGroup collection  ### */
+var careatorVideoGroup = db.collection("careatorVideoGroup"); /* ### careatorChatGroup collection  ### */
+var careatorMasterArray = {};
+
 var transporter = nodemailer.createTransport({
     service: "godaddy",
     auth: {
@@ -18,7 +24,6 @@ var transporter = nodemailer.createTransport({
 });
 
 var chatHistory = db.collection("chatHistory");
-
 
 module.exports.RemoteJoinCheck = function (req, res) {
     console.log("RemoteJoinCheck-->");
@@ -33,7 +38,7 @@ module.exports.RemoteJoinCheck = function (req, res) {
             "password": password
         }
         console.log("obj: " + JSON.stringify(obj));
-        careatorEmp.find({ "sessionURL": url, "invite": {$elemMatch:{ "remoteEmailId": remote_careatorEmail, "password": password }}}).toArray(function (err, findData) {
+        careatorEmp.find({ "sessionURL": url, "invite": { $elemMatch: { "remoteEmailId": remote_careatorEmail, "password": password } } }).toArray(function (err, findData) {
             console.log("findData: " + JSON.stringify(findData));
             console.log("findData.length: " + findData.length);
             if (err) {
@@ -92,11 +97,28 @@ module.exports.pswdCheck = function (req, res) {
             else {
                 if (findData.length > 0) {
                     if (findData[0].password == password) {
-                        responseData = {
-                            status: true,
-                            message: "Login Successfully"
-                        };
-                        res.status(200).send(responseData);
+                        careatorMaster.find({ "email": careatorEmail }).toArray(function (err, careatorMasterFind) {
+                            if (err) {
+                                responseData = {
+                                    status: false,
+                                    message: "This email is not in DB",
+                                    data: err
+                                };
+                                res.status(400).send(responseData);
+                            }
+                            else {
+                                console.log("careatorMasterFind: "+JSON.stringify(careatorMasterFind));
+                                if (careatorMasterFind.length > 0) {
+                                    responseData = {
+                                        status: true,
+                                        message: "Login Successfully",
+                                        data: careatorMasterFind[0]
+                                    };
+                                    res.status(200).send(responseData);
+                                }
+                            }
+                        })
+
                     }
                     else {
                         responseData = {
@@ -270,7 +292,7 @@ module.exports.emailInvite = function (req, res) {
                 from: "info@vc4all.in",
                 to: req.body.email,
                 subject: 'VC4ALL Credential',
-                html: "<table style='border:10px solid gainsboro;'><thead style=background:cornflowerblue;><tr><th><h2>Greetings from VC4ALL</h2></th></tr></thead><tfoot style=background:#396fc9;color:white;><tr><td style=padding:15px;><p><p>Regards</p><b>Careator Technologies Pvt. Ltd</b></p></td></tr></tfoot><tbody><tr><td><b>Dear Careator Employee,</b></td></tr><tr><td>Please note, You get the invitation from VC4ALL and sended by " + req.body.sessionHost + " you can access the below link by using given password.<p style=background:gainsboro;>Password: " + password + "</p><a href="+req.body.url+" style=background:gainsboro;>URL: Click Me</p></td></tr></tbody></table>"
+                html: "<table style='border:10px solid gainsboro;'><thead style=background:cornflowerblue;><tr><th><h2>Greetings from VC4ALL</h2></th></tr></thead><tfoot style=background:#396fc9;color:white;><tr><td style=padding:15px;><p><p>Regards</p><b>Careator Technologies Pvt. Ltd</b></p></td></tr></tfoot><tbody><tr><td><b>Dear Careator Employee,</b></td></tr><tr><td>Please note, You get the invitation from VC4ALL and sended by " + req.body.sessionHost + " you can access the below link by using given password.<p style=background:gainsboro;>Password: " + password + "</p><a href=" + req.body.url + " style=background:gainsboro;>URL: Click Me</p></td></tr></tbody></table>"
                 // "<html><body><p><b>Dear Careator Employee, </b></p><p>Please note, Your email Id is verified successfully,  you can access the below link by using given password.<p>Password: "+password+"</p></p><p>Regards</p><p><b>Careator Technologies Pvt. Ltd</b></p></body></html>"
             };
             transporter.sendMail(mailOptions, function (error, info) {
@@ -311,7 +333,7 @@ module.exports.setCollection = function (req, res) {
     }
     console.log("obj: " + JSON.stringify(obj));
 
-    careatorEmp.update({ "email": req.body.email }, { $set: { "sessionURL": req.body.url, "invite":[], "session_dateTime": new Date() } }, function (err, urlUpdate) {
+    careatorEmp.update({ "email": req.body.email }, { $set: { "sessionURL": req.body.url, "invite": [], "session_dateTime": new Date() } }, function (err, urlUpdate) {
         if (err) {
             console.log("err: " + JSON.stringify(err));
             responseData = {
@@ -408,6 +430,169 @@ module.exports.getHistory = function (req, res) {
         }
     })
 
+
+}
+
+
+module.exports.careatorMasterInsert = function (req, res) {
+    console.log("careatorMasterInsert-->");
+    var responseData;
+    if (!req.files)
+        return res.status(400).send('No files were uploaded.');
+
+    var userDataFile = req.files.img;
+    console.log("userDataFile: " + userDataFile);
+    var parser = csv.fromString(userDataFile.data.toString(), {
+        headers: true,
+        ignoreEmpty: true
+    }).on("data", function (data) {
+        console.log("data: " + JSON.stringify(data));
+        var obj = {
+            "email": data.Email,
+            "videoRights": data.VideoRights,
+            "chatRights": data.ChatRights
+        }
+        console.log("obj: " + JSON.stringify(obj));
+
+        careatorMasterArray.push(obj);
+    })
+        .on("end", function () {
+            console.log("end marker: ");
+            careatorMaster.insert({ $each: consolidateCS }, function (err, insertedData) {
+                if (err) {
+                    console.log("err: " + JSON.stringify(err));
+                    responseData = {
+                        status: false,
+                        message: "Insert Unsuccessful"
+                    };
+                    res.status(400).send(responseData);
+                } else {
+                    console.log("insertedData: " + JSON.stringify(insertedData));
+                    responseData = {
+                        status: true,
+                        message: "Insert Successfull",
+                    };
+                    res.status(200).send(responseData);
+                }
+            })
+        })
+}
+
+module.exports.careator_getAllEmp = function (req, res) {
+    console.log("careator_getAllEmp-->");
+    var response;
+    careatorMaster.find().toArray(function (err, allEmp) {
+        if (err) {
+            console.log("err: " + JSON.stringify(err));
+            response = {
+                status: fasle,
+                message: err
+            };
+            res.status(400).send(responseData);
+        }
+        else {
+            console.log("allEmp: " + JSON.stringify(allEmp));
+            response = {
+                status: true,
+                message: allEmp
+            };
+            res.status(200).send(responseData);
+        }
+    })
+
+}
+
+module.exports.careator_chat_creteGroup = function (req, res) {
+    console.log("careator_chat_creteGroup-->");
+    var response;
+    var groupName = req.body.groupName;
+    var groupMembers = req.body.groupMembers;
+    if (general.emptyCheck(groupName)) {
+
+        var insertObj = {
+            "groupName": groupName,
+            "groupMembers": groupMembers
+        }
+        careatorChatGroup.insert(insertObj, function (err, groupCreate) {
+            if (err) {
+                console.log("err: " + JSON.stringify(err));
+                response = {
+                    status: fasle,
+                    message: "Unsuccessfull group creation",
+                    data: err
+                };
+                res.status(400).send(responseData);
+            }
+            else {
+                console.log("groupCreate: " + JSON.stringify(groupCreate));
+                response = {
+                    status: true,
+                    message: "Successfully group created",
+                    data: groupCreate
+                };
+                res.status(200).send(responseData);
+            }
+        })
+    }
+    else {
+        console.log("Epty value found");
+        var groupName = {
+            "groupName": groupName
+        }
+        response = {
+            status: false,
+            message: "empty value found",
+            data: groupName
+        };
+        res.status(400).send(response);
+    }
+
+}
+
+module.exports.careator_video_creteGroup = function (req, res) {
+    console.log("careator_video_creteGroup-->");
+    var response;
+    var groupName = req.body.groupName;
+    var groupMembers = req.body.groupMembers;
+    if (general.emptyCheck(groupName)) {
+
+        var insertObj = {
+            "groupName": groupName,
+            "groupMembers": groupMembers
+        }
+        careatorVideoGroup.insert(insertObj, function (err, groupCreate) {
+            if (err) {
+                console.log("err: " + JSON.stringify(err));
+                response = {
+                    status: fasle,
+                    message: "Unsuccessfull group creation",
+                    data: err
+                };
+                res.status(400).send(responseData);
+            }
+            else {
+                console.log("groupCreate: " + JSON.stringify(groupCreate));
+                response = {
+                    status: true,
+                    message: "Successfully group created",
+                    data: groupCreate
+                };
+                res.status(200).send(responseData);
+            }
+        })
+    }
+    else {
+        console.log("Epty value found");
+        var groupName = {
+            "groupName": groupName
+        }
+        response = {
+            status: false,
+            message: "empty value found",
+            data: groupName
+        };
+        res.status(400).send(response);
+    }
 
 }
 

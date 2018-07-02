@@ -22,7 +22,7 @@ module.exports = function (app) {
     app.get('/chatHistory/getHistoryByEmailId/:email', careator.getHistoryByEmailId);
     app.post('/careator/careatorMasterInsert', careator.careatorMasterInsert);
     app.get('/careator/careator_getAllEmp', careator.careator_getAllEmp);
-    app.post('/careator/statusChangeById/:id', careator.statusChangeById);
+    app.post('/careator/statusChangeById', careator.statusChangeById);
 
 
     app.post('/record/pswdGenerate', record.pswdGenerate);

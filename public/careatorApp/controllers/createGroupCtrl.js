@@ -39,6 +39,7 @@ careatorApp.controller('createGroupCtrl', function ($scope, $rootScope, $filter,
                         "id": groupMembers._id
                     });
                 }
+                console.log(" $scope.groupMemberData: " + JSON.stringify( $scope.groupMemberData));
                 console.log(data.data.message);
             }
             else {

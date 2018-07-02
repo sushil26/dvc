@@ -10,7 +10,13 @@ careatorApp.controller('createGroupCtrl', function ($scope, $rootScope, $filter,
         scrollable: true,
         enableSearch: true
     };
-    $scope.example14data = [];
+    $scope.example14data = [{
+        "label": "Alabama",
+        "id": "AL"
+    }, {
+        "label": "Alaska",
+        "id": "AK"
+    }]
 
     $scope.rightEmployeeList = function (value) {
         console.log("rightEmployeeList-->");

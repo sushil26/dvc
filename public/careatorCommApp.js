@@ -43,6 +43,9 @@ careatorApp.config(function ($stateProvider, $urlRouterProvider) {
 
         })
 })
+function careator_dashboard() {
+    return '/dashboard';
+}
 
 function editUser() {
     return '/editUser';

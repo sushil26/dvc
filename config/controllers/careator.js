@@ -457,17 +457,23 @@ module.exports.careatorMasterInsert = function (req, res) {
         }
         console.log("obj: " + JSON.stringify(obj));
         parser.pause();
-        module.exports.careatorMasterInsertValidate(data, function (err) {
-            console.log("validation -->");
-            console.log("alreadyExist : " + alreadyExist + " existEmail: " + existEmail);
+        if (data.Email == "#") {
             parser.resume();
-        });
+        }
+        else {
+            module.exports.careatorMasterInsertValidate(data, function (err) {
+                console.log("validation -->");
+                console.log("alreadyExist : " + alreadyExist + " existEmail: " + existEmail);
+                parser.resume();
+            });
+        }
 
 
     })
         .on("end", function () {
             console.log("end marker: ");
             if (alreadyExist == 'yes') {
+                careatorMasterArray = [];
                 alreadyExist = null;
                 var temp = existEmail;
                 existEmail = null;
@@ -475,7 +481,7 @@ module.exports.careatorMasterInsert = function (req, res) {
                     status: false,
                     message: "Upload failed because this email " + temp + " already exist",
                 };
-                
+
                 res.status(400).send(responseData);
 
             }

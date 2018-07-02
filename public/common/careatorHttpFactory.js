@@ -27,13 +27,10 @@ careatorApp.factory('careatorHttpFactory', function ($http, $q, $rootScope) {
         get: function (api) {
 
             var dfd = $q.defer();
-            // console.log("$rootScope.propertyJson: "+JSON.stringify($rootScope.propertyJson));
-            var getUrl = $rootScope.propertyJson.BASE_URL + api;
-            //console.log("getUrl"+getUrl);
-            //var getUrl=api;
+          
             $http({
                 method: 'GET',
-                url: getUrl
+                url: api
             }).
                 then(function (data, status, headers, config) {
                     dfd.resolve(data);

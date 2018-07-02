@@ -9,7 +9,7 @@ careatorApp.controller('createUsersCtrl', function ($scope, $rootScope, $filter,
           var api = "https://norecruits.com/careator/careatorMasterInsert";
           console.log("api: "+api);
           careatorHttpFactory.csvUpload(obj, api).then(function (data) {
-            var checkStatus = httpFactory.dataValidation(data);
+            var checkStatus = careatorHttpFactory.dataValidation(data);
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
                 console.log("checkStatus: " + checkStatus);

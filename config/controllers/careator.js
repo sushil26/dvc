@@ -459,7 +459,7 @@ module.exports.careatorMasterInsert = function (req, res) {
     })
         .on("end", function () {
             console.log("end marker: ");
-            careatorMaster.insert({ $each: careatorMasterArray }, function (err, insertedData) {
+            careatorMaster.insert(careatorMasterArray, function (err, insertedData) {
                 careatorMasterArray = [];
                 if (err) {
                     console.log("err: " + JSON.stringify(err));

@@ -612,7 +612,7 @@ module.exports.careator_statusChangeById = function (req, res) {
                     message: "Update unsucessfully",
                     data: err
                 };
-                res.status(400).send(responseData);
+                res.status(400).send(response);
             }
             else {
                 console.log("updatedData: " + JSON.stringify(updatedData));

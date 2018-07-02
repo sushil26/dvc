@@ -1,23 +1,56 @@
 careatorApp.controller('createGroupCtrl', function ($scope, $rootScope, $filter, $window, careatorHttpFactory) {
     console.log("createGroupCtrl==>");
 
-$scope.names=['Chat','Video'];
+    $scope.names = ['Chat', 'Video'];
 
 
-    $scope.example14model = [];
-    $scope.example14settings = {
+    $scope.groupMemberModel = [];
+    $scope.groupMemberSettings = {
         scrollableHeight: '200px',
         scrollable: true,
         enableSearch: true
     };
-    $scope.example14data = [{
-        "label": "Alabama",
-        "id": "AL"
-    }, {
-        "label": "Alaska",
-        "id": "AK"
-    }]
+    $scope.groupMemberData = [];
 
+    $scope.rightEmployeeList = function (value) {
+        console.log("rightEmployeeList-->");
+        console.log("value: " + value);
+        var api;
+        if(value == "chat"){
+           api = "https://norecruits.com/careator/getChatRights_emp";
+        }
+        else if(value == "video"){
+            api = "https://norecruits.com/careator/getVideoRights_emp";
+        }
+        else{
+            api = "https://norecruits.com/careator/careator_getChatVideo_emp";
+        }
+        console.log("api: "+JSON.stringify(api));
+        careatorHttpFactory.get(api).then(function (data) {
+            console.log("data--" + JSON.stringify(data.data));
+            var checkStatus = careatorHttpFactory.dataValidation(data);
+            console.log("data--" + JSON.stringify(data.data));
+            if (checkStatus) {
+                var groupMembers = data.data.data;
+                console.log("groupMembers: " + JSON.stringify(groupMembers));
+                for(var x=0;x< groupMembers.length;x++){
+                    $scope.groupMemberData.push({
+                        "label": groupMembers.email,
+                        "id": groupMembers._id
+                    });
+                    console.log(" $scope.groupMemberData: " + JSON.stringify( $scope.groupMemberData));
+                }
+               
+                console.log(data.data.message);
+            }
+            else {
+                console.log("Sorry");
+                console.log(data.data.message);
+            }
+        })
+
+        console.log("<--rightEmployeeList");
+    }
 
 
 })

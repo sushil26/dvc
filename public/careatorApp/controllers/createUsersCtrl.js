@@ -1,3 +1,3 @@
-careatorApp.controller('createUsersCtrl', function ($scope, $rootScope, $filter, $window, $uibModal) {
+careatorApp.controller('createUsersCtrl', function ($scope, $rootScope, $filter, $window) {
     console.log("createUsersCtrl==>");
 })

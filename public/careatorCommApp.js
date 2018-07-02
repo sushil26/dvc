@@ -1,4 +1,4 @@
-var careatorApp = angular.module('careatorCommApp', ['ui.router']);
+var careatorApp = angular.module('careatorCommApp', ['ui.router','angularjs-dropdown-multiselect']);
 
 careatorApp.config(function ($stateProvider, $urlRouterProvider) {
 

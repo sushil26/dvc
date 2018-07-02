@@ -511,7 +511,9 @@ module.exports.careatorMasterInsert = function (req, res) {
 module.exports.careatorMasterInsertValidate = function (data, callback) {
     console.log("careatorMasterInsertValidate-->");
     var obj = {
-        "email": data.Email
+        "email": data.Email,
+        "videoRights": data.VideoRights,
+        "chatRights": data.ChatRights,
     }
     careatorMaster.find(obj).toArray(function (err, findData) {
         if (err) {

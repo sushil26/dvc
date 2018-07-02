@@ -566,7 +566,7 @@ module.exports.careator_getAllEmp = function (req, res) {
 module.exports.careator_getChatRightsEmp = function (req, res) {
     console.log("careator_getChatRightsEmp-->");
     var response;
-    careatorMaster.find({"chatRights":"yes"}).toArray(function (err, allEmp_chat) {
+    careatorMaster.find({ "chatRights": "yes" }).toArray(function (err, allEmp_chat) {
         if (err) {
             console.log("err: " + JSON.stringify(err));
             response = {
@@ -594,27 +594,40 @@ module.exports.careator_statusChangeById = function (req, res) {
     var response;
     var id = req.params.id;
     var status = req.body.status;
-    console.log("id: "+id+" status: "+status);
-
-    careatorMaster.update({"_id":id},{$set:{"status":status}}),function (err, updatedData) {
-        if (err) {
-            console.log("err: " + JSON.stringify(err));
-            response = {
-                status: fasle,
-                message: "Update unsucessfully",
-                data: err
-            };
-            res.status(400).send(responseData);
+    console.log("id: " + id + " status: " + status);
+    if (general.emptyCheck(id)) {
+        careatorMaster.update({ "_id": ObjectId(id) }, { $set: { "status": status } }), function (err, updatedData) {
+            if (err) {
+                console.log("err: " + JSON.stringify(err));
+                response = {
+                    status: fasle,
+                    message: "Update unsucessfully",
+                    data: err
+                };
+                res.status(400).send(responseData);
+            }
+            else {
+                console.log("updatedData: " + JSON.stringify(updatedData));
+                response = {
+                    status: true,
+                    message: "Update sucessfully",
+                    data: updatedData
+                };
+                res.status(200).send(response);
+            }
         }
-        else {
-            console.log("updatedData: " + JSON.stringify(updatedData));
-            response = {
-                status: true,
-                message: "Update sucessfully",
-                data: updatedData
-            };
-            res.status(200).send(response);
+    }
+    else {
+        console.log("Epty value found");
+        var obj = {
+            "id": id
         }
+        response = {
+            status: false,
+            message: "empty value found",
+            data: obj
+        };
+        res.status(400).send(response);
     }
 
 }
@@ -622,7 +635,7 @@ module.exports.careator_statusChangeById = function (req, res) {
 module.exports.careator_getChatRightsEmp = function (req, res) {
     console.log("careator_getChatRightsEmp-->");
     var response;
-    careatorMaster.find({"chatRights":"yes"}).toArray(function (err, allEmp_chat) {
+    careatorMaster.find({ "chatRights": "yes" }).toArray(function (err, allEmp_chat) {
         if (err) {
             console.log("err: " + JSON.stringify(err));
             response = {

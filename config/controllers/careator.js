@@ -458,8 +458,8 @@ module.exports.careatorMasterInsert = function (req, res) {
         console.log("obj: " + JSON.stringify(obj));
         parser.pause();
         module.exports.careatorMasterInsertValidate(data, function (err) {
-            console.log("savedatInitiate");
-            console.log("teacherFileValidation function start-->: " + teacherFileValidationMessage);
+            console.log("validation -->");
+            console.log("alreadyExist : " + alreadyExist +" existEmail"+ existEmail);
             console.log("objJson: " + JSON.stringify(objJson));
             parser.resume();
         });

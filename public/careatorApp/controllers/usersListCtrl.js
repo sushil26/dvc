@@ -31,7 +31,7 @@ careatorApp.controller('usersListCtrl', function ($scope, $rootScope, $filter, $
         }
         var api = "https://norecruits.com/careator/careator_statusChangeById/"+id;
         console.log("api: " + api);
-        careatorHttpFactory.put(api, obj).then(function (data) {
+        careatorHttpFactory.post(api, obj).then(function (data) {
             console.log("data--" + JSON.stringify(data.data));
             var checkStatus = careatorHttpFactory.dataValidation(data);
             console.log("data--" + JSON.stringify(data.data));

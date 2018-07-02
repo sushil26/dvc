@@ -3,6 +3,7 @@ careatorApp.controller('createUsersCtrl', function ($scope, $rootScope, $filter,
     $scope.propertyJson = $rootScope.propertyJson;
     $scope.uploadCareatorEmp = function(careatorEmp){
         console.log("uploadCareatorEmp-->");
+        
         var obj = {
             "file": careatorEmp
           }

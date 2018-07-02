@@ -10,13 +10,7 @@ careatorApp.controller('createGroupCtrl', function ($scope, $rootScope, $filter,
         scrollable: true,
         enableSearch: true
     };
-    $scope.example14data = [{
-        "label": "Alabama",
-        "id": "AL"
-    }, {
-        "label": "Alaska",
-        "id": "AK"
-    }]
+    $scope.example14data = [];
 
     $scope.rightEmployeeList = function (value) {
         console.log("rightEmployeeList-->");
@@ -40,7 +34,10 @@ careatorApp.controller('createGroupCtrl', function ($scope, $rootScope, $filter,
                 var groupMembers = data.data.data;
                 console.log("groupMembers: " + JSON.stringify(groupMembers));
                 for(var x=0;x< groupMembers.length;x++){
-                    $scope.example14data.push({"label": groupMembers.email, "id":groupMembers._id})
+                    $scope.example14data.push({
+                        "label": "Alabama",
+                        "id": "AL"
+                    });
                 }
                 console.log(data.data.message);
             }

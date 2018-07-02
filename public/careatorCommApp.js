@@ -1,13 +1,13 @@
-var careatorApp = angular.module('careatorCommApp', ['ui.router','angularjs-dropdown-multiselect']);
+var careatorApp = angular.module('careatorCommApp', ['ui.router', 'angularjs-dropdown-multiselect']);
 
 careatorApp.config(function ($stateProvider, $urlRouterProvider) {
 
     $stateProvider
-    .state('Cdashboard', {
-        url: careator_dashboard(),
-        templateUrl: '/careatorApp/html/careator_dashboard.html'
-       
-    })
+        .state('Cdashboard', {
+            url: careator_dashboard(),
+            templateUrl: '/careatorApp/html/careator_dashboard.html'
+
+        })
         .state('Cdashboard.userCreate', {
             url: careator_userCreate(),
             templateUrl: '/careatorApp/html/createUsers.html'
@@ -28,30 +28,45 @@ careatorApp.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: '/careatorApp/html/groupList.html'
 
         })
+        .state('Cdashboard.editUser', {
+            url: editUser(),
+            templateUrl: '/careatorApp/html/userEdit.html'
+
+        }).state('Cdashboard.editGroup', {
+            url: editGroup(),
+            templateUrl: '/careatorApp/html/groupEdit.html'
+
+        })
         .state('Cdashboard.chatHistory', {
             url: careator_chatHistory(),
             templateUrl: '/careatorApp/html/chatHistory.html'
-            
+
         })
 })
 
-function careator_dashboard(){
-    return '/dashboard';
+function editUser() {
+    return '/editUser';
+}
+function editGroup() {
+    return '/editGroup';
 }
 
 function groupListCtrl() {
     return '/groupList';
 }
+
 function usersListCtrl() {
     return '/usersList';
 }
+
 function careator_userCreate() {
     return '/userCreate';
 }
+
 function createGroup() {
     return '/createGroup';
 }
+
 function careator_chatHistory() {
     return '/chatHistory';
 }
-

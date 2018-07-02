@@ -28,7 +28,7 @@ careatorApp.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: '/careatorApp/html/groupList.html'
 
         })
-        .state('careatorApp.chatHistory', {
+        .state('Cdashboard.chatHistory', {
             url: careator_chatHistory(),
             templateUrl: '/careatorApp/html/chatHistory.html'
             

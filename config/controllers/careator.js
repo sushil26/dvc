@@ -544,7 +544,8 @@ module.exports.careator_getAllEmp = function (req, res) {
             console.log("err: " + JSON.stringify(err));
             response = {
                 status: fasle,
-                message: err
+                message: "Unsucessfully retrived data",
+                data: err
             };
             res.status(400).send(responseData);
         }
@@ -552,7 +553,8 @@ module.exports.careator_getAllEmp = function (req, res) {
             console.log("allEmp: " + JSON.stringify(allEmp));
             response = {
                 status: true,
-                message: allEmp
+                message: "Sucessfully retrived data",
+                data: allEmp
             };
             res.status(200).send(response);
         }

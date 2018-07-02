@@ -29,7 +29,7 @@ careatorApp.controller('usersListCtrl', function ($scope, $rootScope, $filter, $
         var obj = {
             "status": status
         }
-        var api = "https://norecruits.com/careator/careator_statusChangeById/"+id;
+        var api = "https://norecruits.com/careator/statusChangeById/"+id;
         console.log("api: " + api);
         careatorHttpFactory.post(api, obj).then(function (data) {
             console.log("data--" + JSON.stringify(data.data));

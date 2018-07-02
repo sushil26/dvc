@@ -640,10 +640,86 @@ module.exports.statusChangeById = function (req, res) {
 
 }
 
-module.exports.careator_getChatRightsEmp = function (req, res) {
-    console.log("careator_getChatRightsEmp-->");
+module.exports.getChatRights_emp = function (req, res) {
+    console.log("getChatRights_emp-->");
     var response;
     careatorMaster.find({ "chatRights": "yes" }).toArray(function (err, allEmp_chat) {
+        if (err) {
+            console.log("err: " + JSON.stringify(err));
+            response = {
+                status: fasle,
+                message: "Unsucessfully retrived data",
+                data: err
+            };
+            res.status(400).send(responseData);
+        }
+        else {
+            console.log("allEmp_chat: " + JSON.stringify(allEmp_chat));
+            response = {
+                status: true,
+                message: "Sucessfully retrived data",
+                data: allEmp_chat
+            };
+            res.status(200).send(response);
+        }
+    })
+
+}
+module.exports.getVideoRights_emp = function (req, res) {
+    console.log("getVideoRights_emp-->");
+    var response;
+    careatorMaster.find({ "videoRights": "yes" }).toArray(function (err, allEmp_chat) {
+        if (err) {
+            console.log("err: " + JSON.stringify(err));
+            response = {
+                status: fasle,
+                message: "Unsucessfully retrived data",
+                data: err
+            };
+            res.status(400).send(responseData);
+        }
+        else {
+            console.log("allEmp_chat: " + JSON.stringify(allEmp_chat));
+            response = {
+                status: true,
+                message: "Sucessfully retrived data",
+                data: allEmp_chat
+            };
+            res.status(200).send(response);
+        }
+    })
+
+}
+
+module.exports.getVideoRights_emp = function (req, res) {
+    console.log("getVideoRights_emp-->");
+    var response;
+    careatorMaster.find({ "videoRights": "yes" }).toArray(function (err, allEmp_chat) {
+        if (err) {
+            console.log("err: " + JSON.stringify(err));
+            response = {
+                status: fasle,
+                message: "Unsucessfully retrived data",
+                data: err
+            };
+            res.status(400).send(responseData);
+        }
+        else {
+            console.log("allEmp_chat: " + JSON.stringify(allEmp_chat));
+            response = {
+                status: true,
+                message: "Sucessfully retrived data",
+                data: allEmp_chat
+            };
+            res.status(200).send(response);
+        }
+    })
+
+}
+module.exports.careator_getChatVideo_emp = function (req, res) {
+    console.log("careator_getChatVideo_emp-->");
+    var response;
+    careatorMaster.find({ "chatRights":"yes", "videoRights": "yes" }).toArray(function (err, allEmp_chat) {
         if (err) {
             console.log("err: " + JSON.stringify(err));
             response = {

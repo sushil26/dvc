@@ -23,6 +23,9 @@ module.exports = function (app) {
     app.post('/careator/careatorMasterInsert', careator.careatorMasterInsert);
     app.get('/careator/careator_getAllEmp', careator.careator_getAllEmp);
     app.post('/careator/statusChangeById', careator.statusChangeById);
+    app.get('/careator/getChatRights_emp', careator.getChatRights_emp);
+    app.get('/careator/getVideoRights_emp', careator.getVideoRights_emp);
+    app.get('/careator/careator_getChatVideo_emp', careator.careator_getChatVideo_emp);
 
 
     app.post('/record/pswdGenerate', record.pswdGenerate);

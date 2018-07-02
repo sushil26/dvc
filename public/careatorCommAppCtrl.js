@@ -6,7 +6,7 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $http, $timeout,
 
 $scope.gotToDashboard = function(){
     console.log("gotToDashboard-->");
-    $state.go('dashboard', {});
+    $state.go('cdashboard', {});
 
 }
 

@@ -11,7 +11,7 @@ var careatorMaster = db.collection("careatorMaster"); /* ### careator employee c
 var careatorChatGroup = db.collection("careatorChatGroup"); /* ### careatorChatGroup collection  ### */
 var careatorVideoGroup = db.collection("careatorVideoGroup"); /* ### careatorChatGroup collection  ### */
 var csv = require('fast-csv');
-var careatorMasterArray = {};
+var careatorMasterArray = [];
 
 var transporter = nodemailer.createTransport({
     service: "godaddy",
@@ -459,7 +459,8 @@ module.exports.careatorMasterInsert = function (req, res) {
     })
         .on("end", function () {
             console.log("end marker: ");
-            careatorMaster.insert({ $each: consolidateCS }, function (err, insertedData) {
+            careatorMaster.insert(careatorMasterArray, function (err, insertedData) {
+                careatorMasterArray = [];
                 if (err) {
                     console.log("err: " + JSON.stringify(err));
                     responseData = {

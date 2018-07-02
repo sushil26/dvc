@@ -12,6 +12,14 @@ careatorApp.controller('createGroupCtrl', function ($scope, $rootScope, $filter,
     };
     $scope.groupMemberData = [];
 
+    $scope.groupAdminModel = [];
+    $scope.groupAdminSettings = {
+        scrollableHeight: '200px',
+        scrollable: true,
+        enableSearch: true
+    };
+    $scope.groupAdminData =  $scope.groupMemberModel;
+
     $scope.rightEmployeeList = function (value) {
         console.log("rightEmployeeList-->");
         console.log("value: " + value);

@@ -88,14 +88,13 @@ careatorApp.factory('careatorHttpFactory', function ($http, $q, $rootScope) {
         },
         csvUpload: function (obj, uploadUrl) {
             var dfd = $q.defer();
-            var postUrl = $rootScope.propertyJson.BASE_URL + uploadUrl;
-
+         
             var fd = new FormData();
             console.log("obj.file: " + obj.file);
 
             fd.append('img', obj.file);
 
-            $http.post(postUrl, fd, {
+            $http.post(uploadUrl, fd, {
                 transformRequest: angular.identity,
                 headers: { 'Content-Type': undefined }
             }).then(function (response) {

@@ -468,13 +468,14 @@ module.exports.careatorMasterInsert = function (req, res) {
         .on("end", function () {
             console.log("end marker: ");
             if (alreadyExist == 'yes') {
-
+                alreadyExist = null;
+                var temp = existEmail;
+                existEmail = null;
                 responseData = {
                     status: false,
-                    message: "Upload failed because this email " + existEmail + " already exist",
+                    message: "Upload failed because this email " + temp + " already exist",
                 };
-                alreadyExist = null;
-                existEmail = null;
+                
                 res.status(400).send(responseData);
 
             }

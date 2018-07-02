@@ -508,7 +508,7 @@ console.log("careatorMasterInsertValidate-->");
 var obj = {
     "email":data.Email
 }
-careatorMaster.find(email).toArray(function(err, findData){
+careatorMaster.find(obj).toArray(function(err, findData){
     if(err){
         console.log("err: " + JSON.stringify(err));
        

@@ -4,19 +4,13 @@ careatorApp.controller('createGroupCtrl', function ($scope, $rootScope, $filter,
     $scope.names = ['Chat', 'Video'];
 
 
-    $scope.example14model = [];
-    $scope.example14settings = {
+    $scope.memberListModel = [];
+    $scope.memberListSettings = {
         scrollableHeight: '200px',
         scrollable: true,
         enableSearch: true
     };
-    $scope.example14data = [{
-        "label": "Alabama",
-        "id": "AL"
-    }, {
-        "label": "Alaska",
-        "id": "AK"
-    }]
+    $scope.memberListData = [];
 
     $scope.rightEmployeeList = function (value) {
         console.log("rightEmployeeList-->");
@@ -37,8 +31,11 @@ careatorApp.controller('createGroupCtrl', function ($scope, $rootScope, $filter,
             var checkStatus = careatorHttpFactory.dataValidation(data);
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
-                $scope.allemployee = data.data.data;
-                console.log("allemployee: " + JSON.stringify($scope.allemployee));
+                var groupMembers = data.data.data;
+                console.log("groupMembers: " + JSON.stringify(groupMembers));
+                for(var x=0;x< groupMembers.length;x++){
+                    memberListData.push({"id":groupMembers._id, "email": groupMembers.email})
+                }
                 console.log(data.data.message);
             }
             else {

@@ -30,7 +30,7 @@
 
                                     </td>
                                     <td>
-                                        {{ emp.email | split:'@':0}}
+                                        {{ emp.email.split:'@'[0] }}
                                     </td>
                                     <td>
                                         {{emp.email}}

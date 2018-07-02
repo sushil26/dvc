@@ -33,6 +33,7 @@ careatorApp.controller('createGroupCtrl', function ($scope, $rootScope, $filter,
             if (checkStatus) {
                 var groupMembers = data.data.data;
                 console.log("groupMembers: " + JSON.stringify(groupMembers));
+                $scope.groupMemberData = [];
                 for(var x=0;x< groupMembers.length;x++){
                     console.log(" before $scope.groupMemberData: " + JSON.stringify($scope.groupMemberData));
                     console.log("groupMembers[x].email: "+groupMembers[x].email+" groupMembers[x]._id: "+groupMembers[x]._id);

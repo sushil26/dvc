@@ -1,4 +1,4 @@
-careatorApp.controller('createUsersCtrl', function ($scope, $rootScope, $filter, $window, httpFactory) {
+careatorApp.controller('createUsersCtrl', function ($scope, $rootScope, $filter, $window, careatorHttpFactory) {
     console.log("createUsersCtrl==>");
     $scope.propertyJson = $rootScope.propertyJson;
     $scope.uploadCareatorEmp = function(careatorEmp){
@@ -8,7 +8,7 @@ careatorApp.controller('createUsersCtrl', function ($scope, $rootScope, $filter,
           }
           var api = "https://norecruits.com/careator/careatorMasterInsert";
           console.log("api: "+api);
-          httpFactory.csvUpload(obj, api).then(function (data) {
+          careatorHttpFactory.csvUpload(obj, api).then(function (data) {
             var checkStatus = httpFactory.dataValidation(data);
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {

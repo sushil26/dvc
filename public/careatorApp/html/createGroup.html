@@ -24,8 +24,11 @@
                                 <label class="col-lg-3">Group Category*</label>
                                 <div class="col-lg-9">
                                     <span>
-                                        Chat&nbsp;<input type="radio" value="chat"> &nbsp;&nbsp; Video&nbsp;<input type="radio" value="video"> &nbsp;&nbsp; Both&nbsp;<input type="radio" value="both"> 
-                                        
+                                        Chat&nbsp;
+                                        <input type="radio" name="cat" value="chat"> &nbsp;&nbsp; Video&nbsp;
+                                        <input type="radio" name="cat" value="video"> &nbsp;&nbsp; Both&nbsp;
+                                        <input type="radio" name="cat" value="both">
+
                                     </span>
                                 </div>
                             </div>
@@ -37,12 +40,12 @@
                                 </div>
                             </div>
                             <div class="form-group ">
-                                    <label class="col-lg-3">Group Members*</label>
-                                    <div class="col-lg-9">
-                                        <div ng-dropdown-multiselect="" options="example14data" selected-model="example14model" checkboxes="true" extra-settings="example14settings"></div>
-                                        <pre>Selected Model: {{example14model}} | json</pre>
-                                    </div>
+                                <label class="col-lg-3">Group Members*</label>
+                                <div class="col-lg-9">
+                                    <div ng-dropdown-multiselect="" options="example14data" selected-model="example14model" checkboxes="true" extra-settings="example14settings"></div>
+                                    <pre>Selected Model: {{example14model}} | json</pre>
                                 </div>
+                            </div>
                             <div class="form-group ">
                                 <div class="col-lg-12">
                                     <button type="submit" class="btn btn-info" ng-click="uploadCareatorEmp(careatorEmp)">Save</button>

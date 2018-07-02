@@ -9,7 +9,7 @@ careatorApp.config(function ($stateProvider, $urlRouterProvider) {
         controller: 'careator_dashboardCtrl',
        
     })
-        .state('careatorApp.userCreate', {
+        .state('dashboard.userCreate', {
             url: careator_userCreate(),
             templateUrl: '/careatorApp/html/createUsers.html',
             controller: 'createUsersCtrl'

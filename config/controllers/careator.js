@@ -592,7 +592,7 @@ module.exports.careator_getChatRightsEmp = function (req, res) {
 module.exports.statusChangeById = function (req, res) {
     console.log("statusChangeById-->");
     var response;
-    var id = req.params.id;
+    var id = req.body.id;
     var status = req.body.status;
     console.log("id: " + id + " status: " + status);
     if (general.emptyCheck(id)) {

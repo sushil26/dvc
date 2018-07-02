@@ -61,7 +61,7 @@ p {
 }
 
 span {
-  font-family: Oswald;
+  font-family: Lato;
 }
 
 i {
@@ -556,7 +556,7 @@ ul.sidebar-menu .sub-menu li.active a {
 }
 
 ul.sidebar-menu li a i {
-  font-size: 18px;
+  /* font-size: 18px; */
   padding-right: 6px;
   /*color: #688a7e;*/
 }

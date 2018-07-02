@@ -16,17 +16,7 @@ careatorApp.config(function ($stateProvider, $urlRouterProvider) {
         .state('careatorApp.chatHistory', {
             url: careator_chatHistory(),
             templateUrl: '/careatorApp/html/chatHistory.html'
-            // resolve: {
-            //     result: function (sessionAuthFactory, $window) {
-            //         var userData = sessionAuthFactory.getAccess("userData");
-            //         if (userData.loginType == 'admin') {
-
-            //         }
-            //         else {
-            //             $window.location.href = 'https://norecruits.com';
-            //         }
-            //     }
-            // }
+            
         })
 })
 

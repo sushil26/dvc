@@ -10,14 +10,12 @@ careatorApp.config(function ($stateProvider, $urlRouterProvider) {
     })
         .state('Cdashboard.userCreate', {
             url: careator_userCreate(),
-            templateUrl: '/careatorApp/html/createUsers.html',
-            controller: 'createUsersCtrl'
+            templateUrl: '/careatorApp/html/createUsers.html'
 
         })
         .state('careatorApp.chatHistory', {
             url: careator_chatHistory(),
-            templateUrl: '/careatorApp/html/chatHistory.html',
-            controller: 'chatHistoryCtrl',
+            templateUrl: '/careatorApp/html/chatHistory.html'
             // resolve: {
             //     result: function (sessionAuthFactory, $window) {
             //         var userData = sessionAuthFactory.getAccess("userData");

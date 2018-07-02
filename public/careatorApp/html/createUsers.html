@@ -1,5 +1,4 @@
 <div ng-controller="createUsersCtrl">
-
     <section id="main-content">
         <section class="wrapper">
             <div id="profile">
@@ -18,12 +17,12 @@
                                     <span>
                                         <input type="file" style="margin-left: -10px; width: 166px;
                                     font-size: 10px;" class="bcontrol-label btn btn-warning m-bot15" name="myImage" value="Upload"
-                                            image-with-preview file-model="classUploadDoc" ng-model="image" accept="csv" ng-required="true">
+                                            image-with-preview file-model="careatorEmp" ng-model="image" accept="csv" ng-required="true">
                                     </span>
                                 </div>
 
                                 <div class="col-lg-offset-2 col-lg-10">
-                                    <button type="submit" class="btn btn-info" ng-click="upload_classPeriodsFile(classUploadDoc,'css')">Save</button>
+                                    <button type="submit" class="btn btn-info" ng-click="uploadCareatorEmp(careatorEmp)">Upload</button>
                                 </div>
                             </div>
                         </form>

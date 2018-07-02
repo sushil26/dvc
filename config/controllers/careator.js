@@ -596,7 +596,15 @@ module.exports.careator_statusChangeById = function (req, res) {
     var status = req.body.status;
     console.log("id: " + id + " status: " + status);
     if (general.emptyCheck(id)) {
-        careatorMaster.update({ "_id": ObjectId(id) }, { $set: { "status": status } }), function (err, updatedData) {
+        var queryId = {
+            "_id": ObjectId(id)
+        }
+        console.log("queryId: "+JSON.stringify(queryId));
+        var updateVlaue = {
+            "status": status
+        }
+        console.log("updateVlaue: "+JSON.stringify(updateVlaue));
+        careatorMaster.update(queryId, { $set: updateVlaue }), function (err, updatedData) {
             if (err) {
                 console.log("err: " + JSON.stringify(err));
                 response = {

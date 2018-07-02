@@ -21,6 +21,8 @@ module.exports = function (app) {
     app.get('/chatHistory/getHistory', careator.getHistory);
     app.get('/chatHistory/getHistoryByEmailId/:email', careator.getHistoryByEmailId);
     app.post('/careator/careatorMasterInsert', careator.careatorMasterInsert);
+    app.get('/careator/careator_getAllEmp', careator.careator_getAllEmp);
+
 
     app.post('/record/pswdGenerate', record.pswdGenerate);
     app.post('/record/pswdCheck', record.pswdCheck);

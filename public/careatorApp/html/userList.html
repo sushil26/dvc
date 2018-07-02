@@ -25,7 +25,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
+                                <tr ng-repeat="emp in allemployee">
                                     <td>
 
                                     </td>
@@ -33,13 +33,15 @@
                                         Sushil
                                     </td>
                                     <td>
-                                        Sushil.k@careator.com
+                                        emp.email
                                     </td>
                                     <td>
-                                        <i class="fa fa-check" style="color: green"></i>
+                                        <i ng-if="emp.chatRights=='yes'" class="fa fa-check" style="color: green"></i>
+                                        <i ng-if="emp.chatRights=='no'" class="fa fa-cross" style="color: red"></i>
                                     </td>
                                     <td>
-                                        <i class="fa fa-check" style="color: green"></i>
+                                            <i ng-if="emp.videoRights=='yes'" class="fa fa-check" style="color: green"></i>
+                                            <i ng-if="emp.videoRights=='no'" class="fa fa-cross" style="color: red"></i>
                                     </td>
                                     <td>
                                         Active

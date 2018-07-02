@@ -11,7 +11,7 @@ var careatorMaster = db.collection("careatorMaster"); /* ### careator employee c
 var careatorChatGroup = db.collection("careatorChatGroup"); /* ### careatorChatGroup collection  ### */
 var careatorVideoGroup = db.collection("careatorVideoGroup"); /* ### careatorChatGroup collection  ### */
 var csv = require('fast-csv');
-var careatorMasterArray = {};
+var careatorMasterArray = [];
 
 var transporter = nodemailer.createTransport({
     service: "godaddy",

@@ -2,8 +2,7 @@ careatorApp.controller('createGroupCtrl', function ($scope, $rootScope, $filter,
     console.log("createGroupCtrl==>");
 
     var expanded = false;
-
-    function showCheckboxes() {
+    $scope.showCheckboxes = function () {
         var checkboxes = document.getElementById("checkboxes");
         if (!expanded) {
             checkboxes.style.display = "block";

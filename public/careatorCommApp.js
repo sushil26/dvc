@@ -3,13 +3,13 @@ var careatorApp = angular.module('careatorCommApp', ['ui.router']);
 careatorApp.config(function ($stateProvider, $urlRouterProvider) {
 
     $stateProvider
-    .state('dashboard', {
+    .state('Cdashboard', {
         url: careator_dashboard(),
         templateUrl: '/careatorApp/html/careator_dashboard.html',
         controller: 'careator_dashboardCtrl',
        
     })
-        .state('dashboard.userCreate', {
+        .state('Cdashboard.userCreate', {
             url: careator_userCreate(),
             templateUrl: '/careatorApp/html/createUsers.html',
             controller: 'createUsersCtrl'

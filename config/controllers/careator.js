@@ -12,6 +12,8 @@ var careatorChatGroup = db.collection("careatorChatGroup"); /* ### careatorChatG
 var careatorVideoGroup = db.collection("careatorVideoGroup"); /* ### careatorChatGroup collection  ### */
 var csv = require('fast-csv');
 var careatorMasterArray = [];
+var alreadyExist = null;
+var existEmail = null;
 
 var transporter = nodemailer.createTransport({
     service: "godaddy",
@@ -108,7 +110,7 @@ module.exports.pswdCheck = function (req, res) {
                                 res.status(400).send(responseData);
                             }
                             else {
-                                console.log("careatorMasterFind: "+JSON.stringify(careatorMasterFind));
+                                console.log("careatorMasterFind: " + JSON.stringify(careatorMasterFind));
                                 if (careatorMasterFind.length > 0) {
                                     responseData = {
                                         status: true,
@@ -454,11 +456,31 @@ module.exports.careatorMasterInsert = function (req, res) {
             "chatRights": data.ChatRights
         }
         console.log("obj: " + JSON.stringify(obj));
+        parser.pause();
+        module.exports.careatorMasterInsertValidate(data, function (err) {
+            console.log("savedatInitiate");
+            console.log("teacherFileValidation function start-->: " + teacherFileValidationMessage);
+            console.log("objJson: " + JSON.stringify(objJson));
+            parser.resume();
+        });
 
-        careatorMasterArray.push(obj);
+      
     })
         .on("end", function () {
             console.log("end marker: ");
+            if(alreadyExist == 'yes'){
+               
+                responseData = {
+                    status: false,
+                    message: "Upload failed because this email "+existEmail+" already exist",
+                    data: data
+                };
+                alreadyExist=null;
+                existEmail = null;
+                res.status(400).send(responseData);
+                
+            }
+            else{
             careatorMaster.insert(careatorMasterArray, function (err, insertedData) {
                 careatorMasterArray = [];
                 if (err) {
@@ -477,8 +499,37 @@ module.exports.careatorMasterInsert = function (req, res) {
                     res.status(200).send(responseData);
                 }
             })
+        }
         })
 }
+
+module.exports.careatorMasterInsertValidate = function (data, callback) {
+console.log("careatorMasterInsertValidate-->");
+var obj = {
+    "email":data.Email
+}
+careatorMaster.find(email).toArray(function(err, findData){
+    if(err){
+        console.log("err: " + JSON.stringify(err));
+       
+    }
+    else{
+        console.log("findData: "+JSON.stringify(findData));
+        if(findData.length>0){
+            alreadyExist = "yes";
+            existEmail = data.Email;
+            if (callback) callback();
+        }
+        else{
+           
+            careatorMasterArray.push(obj);
+            if (callback) callback();
+        }
+    }
+})
+
+}
+
 
 module.exports.careator_getAllEmp = function (req, res) {
     console.log("careator_getAllEmp-->");

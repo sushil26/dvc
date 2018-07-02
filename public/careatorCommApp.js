@@ -13,6 +13,11 @@ careatorApp.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: '/careatorApp/html/createUsers.html'
 
         })
+        .state('Cdashboard.createGroup', {
+            url: createGroup(),
+            templateUrl: '/careatorApp/html/createGroup.html'
+
+        })
         .state('Cdashboard.usersListCtrl', {
             url: usersListCtrl(),
             templateUrl: '/careatorApp/html/userList.html'
@@ -34,6 +39,9 @@ function usersListCtrl() {
 }
 function careator_userCreate() {
     return '/userCreate';
+}
+function createGroup() {
+    return '/createGroup';
 }
 function careator_chatHistory() {
     return '/chatHistory';

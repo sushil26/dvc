@@ -12,7 +12,7 @@ careatorApp.config(function ($stateProvider, $urlRouterProvider) {
         .state('careatorApp.userCreate', {
             url: careator_userCreate(),
             templateUrl: '/careatorApp/html/createUsers.html',
-            controller: 'createUsersCtrl',
+            controller: 'createUsersCtrl'
 
         })
         .state('careatorApp.chatHistory', {

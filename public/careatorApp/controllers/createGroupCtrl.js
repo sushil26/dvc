@@ -61,8 +61,6 @@ careatorApp.controller('createGroupCtrl', function ($scope, $rootScope, $filter,
         $scope.groupAdminModel = [];
         $scope.groupAdminSettings = {
             selectionLimit: 1,
-            externalIdProp: '',
-            enableSearch: true,
         };
         $scope.groupAdminData = $scope.groupMemberModel;
     });

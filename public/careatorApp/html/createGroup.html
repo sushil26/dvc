@@ -34,7 +34,7 @@
                             <div class="form-group ">
                                 <label class="col-lg-3">Group Members*</label>
                                 <div class="col-lg-9">
-                                    <div ng-dropdown-multiselect="" options="groupMemberData" selected-model="groupMemberModel" checkboxes="true" extra-settings="groupMemberSettings" ng-change="memberschanges()">
+                                    <div ng-dropdown-multiselect="" options="groupMemberData" selected-model="groupMemberModel" checkboxes="true" extra-settings="groupMemberSettings" ng-change="memberschanges()" ng-model="valueselect">
                                     </div>
                                     <pre>Selected Memebers Emails: <span ng-repeat="mem in groupMemberModel">{{mem.label+", "}}</span></pre>
                                 </div>

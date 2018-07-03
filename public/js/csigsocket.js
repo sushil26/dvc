@@ -87,11 +87,11 @@ else {
     document.getElementById("videoCtrolBar").style.display = "none";
     if (localStorage.getItem("videoRights")=='yes') {
       
-      document.getElementById("videoConfStart").style.display = "inline";
+      document.getElementById("videoConfStart").style.display = "block";
     }
     else if (localStorage.getItem("chatRights")=='yes') {
       localStorage.setItem("chatRights", 'chatRights');
-      document.getElementById("chatConfStart").style.display = "inline";
+      document.getElementById("chatConfStart").style.display = "block";
     }
 
   }

@@ -1,7 +1,7 @@
 careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $filter, careatorSessionAuth, careatorHttpFactory) {
     console.log("careator_dashboardCtrl==>");
     $scope.getChatGroupListById = function (id) {
-        console.log("getAllEmployee-->");
+        console.log("getAllEmployee-->: "+id);
         var api = "https://norecruits.com/careator/getChatGroupListById/"+id;
         console.log("api: " + api);
         careatorHttpFactory.get(api).then(function (data) {

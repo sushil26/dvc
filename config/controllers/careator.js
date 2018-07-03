@@ -850,7 +850,7 @@ module.exports.pswdGenerate = function (req, res) {
     console.log("<--pswdGenerate");
 }
 
-module.exports.getChatGroupListById = function (req, res) {
+module.exports.careator_getChatGroupListById = function (req, res) {
     console.log("getChatGroupListById-->");
     var id = req.params.id;
     if (general.emptyCheck(id)) {

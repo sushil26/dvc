@@ -291,13 +291,18 @@ function disconnecSession() {
     localStorage.removeItem("careatorEmail");
     localStorage.removeItem("sessionUrlId");
     localStorage.removeItem("careator_remoteEmail");
+    localStorage.removeItem("chatRights");
+    localStorage.removeItem("videoRights");
     signaling_socket.emit("disconnectSession", { deleteSessionId: queryLink, owner: peerNew_id });
+    
 
     window.location.href = "https://norecruits.com";
   } else {
     localStorage.removeItem("careatorEmail");
     localStorage.removeItem("sessionUrlId");
     localStorage.removeItem("careator_remoteEmail");
+    localStorage.removeItem("chatRights");
+    localStorage.removeItem("videoRights");
     console.log("You are not session creater so you cant delete session");
     window.location.href = "https://norecruits.com";
   }

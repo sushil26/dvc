@@ -400,8 +400,8 @@ table tr th {
  background-color: #1a3652;
  transition-duration: 1s;
  transition-timing-function: ease-in;
- border-left: 2px solid #009688;
- border-right: 2px solid #009688;
+ border-left: 2px solid #2e3134;
+ border-right: 2px solid #2e3134;
 }
 
 .nav-collapse.collapse {
@@ -492,7 +492,8 @@ ul.sidebar-menu li a span {
 }
 
 ul.sidebar-menu li a {
-  border-bottom: 2px solid #009688;
+  border-top: 1px solid #2e3134;
+  border-bottom: 1px solid #2e3134;
   color: #d0d8df;
   text-decoration: none;
   display: block;

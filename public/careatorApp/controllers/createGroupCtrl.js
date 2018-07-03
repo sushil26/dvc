@@ -95,7 +95,7 @@ careatorApp.controller('createGroupCtrl', function ($scope, $rootScope, $filter,
             api = "https://norecruits.com/careator/careator_video_creteGroup";
         }
         else if ($scope.rightSelect == 'both') {
-            api = "https://norecruits.com/careator/chatVideo_groupCreate";
+            api = "https://norecruits.com/careator/careator_chatVideo_creteGroup";
         }
         console.log("api: " + api);
         careatorHttpFactory.post(api, obj).then(function (data) {

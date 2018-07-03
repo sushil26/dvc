@@ -1,4 +1,4 @@
-careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $window) {
+careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $window, careatorHttpFactory, careatorSessionAuth) {
     console.log("chatCtrl==>");
     var userData = careatorSessionAuth.getAccess("userData");
     console.log("userData: " + JSON.stringify(userData));

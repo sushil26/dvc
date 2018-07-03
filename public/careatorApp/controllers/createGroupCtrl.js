@@ -21,6 +21,14 @@ careatorApp.controller('createGroupCtrl', function ($scope, $rootScope, $filter,
         externalIdProp: ''
     };
     console.log("$scope.groupMemberModel: " + JSON.stringify($scope.groupMemberModel));
+    $scope.groupAdminData = $scope.groupMemberModel;
+    $scope.selectedGroupMembers = [];
+    angular.forEach($scope.groupMemberModel, function(value, key) {
+      if(key == 'label'){
+        this.push(value);
+      }
+        
+      }, $scope.selectedGroupMembers);
     //$scope.groupAdminData = $scope.groupMemberModel;
 
     $scope.rightEmployeeList = function (value) {
@@ -66,16 +74,6 @@ careatorApp.controller('createGroupCtrl', function ($scope, $rootScope, $filter,
         console.log("<--rightEmployeeList");
     }
 
-    $scope.groupMemberChanges = function(){
-        console.log("groupMemberChanges-->");
-        $scope.groupAdminData = $scope.groupMemberModel;
-        $scope.selectedGroupMembers = [];
-        angular.forEach($scope.groupMemberModel, function(value, key) {
-          if(key == 'label'){
-            this.push(value);
-          }
-            
-          }, $scope.selectedGroupMembers);
-    }
+ 
 
 })

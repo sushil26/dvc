@@ -399,6 +399,7 @@ table tr th {
   position: fixed;
  background-color: #1a3652;
  transition-duration: 1s;
+ transition-timing-function: ease-in;
 }
 
 .nav-collapse.collapse {
@@ -683,7 +684,7 @@ ul.sidebar-menu li.active a i {
 
 #main-content {
   margin-left: 180px;
-  transition-duration: 1s;
+  transition-duration: 1s;    transition-timing-function: ease-in;
 }
 
 .header,

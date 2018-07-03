@@ -71,11 +71,23 @@ careatorApp.controller('createGroupCtrl', function ($scope, $rootScope, $filter,
         console.log("creteGroup-->");
         var obj = {
             "groupName": $scope.groupName,
-            "rightSelect": $scope.rightSelect,
-            "memebers": $scope.groupMemberModel,
-            "admins": $scope.groupAdminModel
+            "rightSelect": $scope.rightSelect
         }
-        console.log("obj: "+JSON.stringify(obj));
+        var members = [];
+        for (var x = 0; x < $scope.groupMemberModel.length; x++) {
+            members.push({ "name": $scope.groupMemberModel[x].label, "email": $scope.groupMemberModel[x].email, "userId": $scope.groupMemberModel[x].id });
+        }
+        obj.memebers = memebers;
+        var admin = {};
+        for (var x = 0; x < $scope.groupAdminModel.length; x++) {
+            admin = {
+                "name": $scope.groupAdminModel[x].label,
+                "email": $scope.groupAdminModel[x].email,
+                "userId": $scope.groupAdminModel[x].id
+            };
+        }
+        obj.admin = admin;
+        console.log("obj: " + JSON.stringify(obj));
     }
 
 

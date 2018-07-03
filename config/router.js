@@ -29,7 +29,7 @@ module.exports = function (app) {
     app.post('/careator/careator_chat_creteGroup', careator.careator_chat_creteGroup);
     app.post('/careator/careator_video_creteGroup', careator.careator_video_creteGroup);
     app.post('/careator/careator_chatVideo_creteGroup', careator.careator_chatVideo_creteGroup);
-
+    app.get('/careator_chatGroupList/careator_getChatGroupListById/:id', careator.careator_getChatGroupListById);
 
     app.post('/record/pswdGenerate', record.pswdGenerate);
     app.post('/record/pswdCheck', record.pswdCheck);

@@ -708,7 +708,6 @@ module.exports.careator_chatVideo_creteGroup = function (req, res) {
     var groupMembers = req.body.members;
     var admin = req.body.admin;
     if (general.emptyCheck(groupName)) {
-
         var insertObj = {
             "groupName": groupName,
             "groupMembers": groupMembers,
@@ -849,6 +848,43 @@ module.exports.pswdGenerate = function (req, res) {
         res.status(400).send(responseData);
     }
     console.log("<--pswdGenerate");
+}
+
+module.exports.careator_getChatGroupListById = function (req, res) {
+    console.log("getChatGroupListById-->");
+    var id = req.params.id;
+    if (general.emptyCheck(id)) {
+        careatorChatGroup.find({"groupMembers":{$elemMatch:{"userId":id}}}).toArray(function(err, data){
+            if (err) {
+                console.log("err: "+JSON.stringify(err));
+                responseData = {
+                    status: false,
+                    data: err,
+                    message: "Process not successful"
+                };
+                res.status(400).send(responseData);
+            }
+            else{
+                console.log("data: "+JSON.stringify(data));
+                responseData = {
+                    status: true,
+                    errorCode: 200,
+                    message: "Successfully get Data",
+                    data: data
+                };
+                res.status(200).send(responseData);
+            }
+        })
+
+    }
+    else {
+        console.log("Epty value found");
+        response = {
+            status: false,
+            message: "empty value found"
+        };
+        res.status(400).send(response);
+    }
 }
 
 

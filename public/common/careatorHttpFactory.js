@@ -25,9 +25,9 @@ careatorApp.factory('careatorHttpFactory', function ($http, $q, $rootScope) {
             return dfd.promise;
         },
         get: function (api) {
-
+            console.log("get api-->");
             var dfd = $q.defer();
-          
+
             $http({
                 method: 'GET',
                 url: api
@@ -53,7 +53,7 @@ careatorApp.factory('careatorHttpFactory', function ($http, $q, $rootScope) {
 
             // console.log("headers"+headers);
             var dfd = $q.defer();
-           
+
             //console.log("puttUrl"+puttUrl);
             $http({
                 method: 'PUT',
@@ -85,7 +85,7 @@ careatorApp.factory('careatorHttpFactory', function ($http, $q, $rootScope) {
         },
         csvUpload: function (obj, uploadUrl) {
             var dfd = $q.defer();
-         
+
             var fd = new FormData();
             console.log("obj.file: " + obj.file);
 
@@ -103,7 +103,7 @@ careatorApp.factory('careatorHttpFactory', function ($http, $q, $rootScope) {
             });
             return dfd.promise;
         },
-        
+
         getFile: function (fileAddress) {
             console.log("getFile");
             // var dfd = $q.defer();
@@ -111,7 +111,7 @@ careatorApp.factory('careatorHttpFactory', function ($http, $q, $rootScope) {
                 method: 'GET',
                 url: fileAddress
             }).then(function (data) {
-              
+
                 $rootScope.propertyJson = data.data;
                 //console.log("data: "+JSON.stringify($rootScope.propertyJson));
                 return $rootScope.propertyJson;

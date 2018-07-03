@@ -1,4 +1,4 @@
-careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $filter, careatorSessionnAuth) {
+careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $filter, careatorSessionAuth) {
     console.log("careator_dashboardCtrl==>");
     $scope.getChatGroupListById = function (id) {
         console.log("getAllEmployee-->");

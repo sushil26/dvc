@@ -1,4 +1,4 @@
-careatorApp.factory('careatorSessionnAuth', function($cookieStore) {
+careatorApp.factory('careatorSessionAuth', function($cookieStore) {
     var authFact={};
 	authFact.setAccess=function(accessInfo){
 		$cookieStore.put('accessInfo',accessInfo);

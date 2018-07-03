@@ -13,17 +13,8 @@ careatorApp.controller('createGroupCtrl', function ($scope, $rootScope, $filter,
     };
     $scope.groupMemberData = [];
 
-    $scope.groupAdminModel = [];
-    $scope.groupAdminSettings = {
-        scrollableHeight: '200px',
-        scrollable: true,
-        enableSearch: true,
-        externalIdProp: ''
-    };
-    console.log("$scope.groupMemberModel: " + JSON.stringify($scope.groupMemberModel));
 
-    $scope.groupAdminData = $scope.groupMemberModel;
-     
+
     $scope.rightEmployeeList = function (value) {
         console.log("rightEmployeeList-->");
         console.log("value: " + value);
@@ -66,8 +57,18 @@ careatorApp.controller('createGroupCtrl', function ($scope, $rootScope, $filter,
 
         console.log("<--rightEmployeeList");
     }
-$scope.$watchCollection('groupMemberModel', function() { console.log("value changed") });
-  
- 
+    $scope.$watchCollection('groupMemberModel', function () {
+        console.log("value changed")
+        $scope.groupAdminModel = [];
+        $scope.groupAdminSettings = {
+            scrollableHeight: '200px',
+            scrollable: true,
+            enableSearch: true,
+            externalIdProp: ''
+        };
+        $scope.groupAdminData = $scope.groupMemberModel;
+    });
+
+
 
 })

@@ -451,7 +451,7 @@ module.exports.careatorMasterInsert = function (req, res) {
     }).on("data", function (data) {
         console.log("data: " + JSON.stringify(data));
         parser.pause();
-        if (data.Name == "#") {
+        if (data.Name == "#" || alreadyExist=='yes') {
             parser.resume();
         }
         else {

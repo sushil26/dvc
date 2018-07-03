@@ -159,6 +159,8 @@ function checkPassword() {
       success: function (data) {
         console.log("data: " + JSON.stringify(data));
         localStorage.setItem("userName", data.data.name);
+        localStorage.setItem("empId", data.data.empId);
+        localStorage.setItem("email", data.data.email);
         userName =  localStorage.getItem("userName");
     if (data.data.videoRights == 'yes') {
       localStorage.setItem("videoRights", 'yes');

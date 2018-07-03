@@ -8,7 +8,8 @@ careatorApp.controller('createGroupCtrl', function ($scope, $rootScope, $filter,
     $scope.groupMemberSettings = {
         scrollableHeight: '200px',
         scrollable: true,
-        enableSearch: true
+        enableSearch: true,
+        externalIdProp: ''
     };
     $scope.groupMemberData = [];
 
@@ -16,25 +17,26 @@ careatorApp.controller('createGroupCtrl', function ($scope, $rootScope, $filter,
     $scope.groupAdminSettings = {
         scrollableHeight: '200px',
         scrollable: true,
-        enableSearch: true
+        enableSearch: true,
+        externalIdProp: ''
     };
-    console.log("$scope.groupMemberModel: "+JSON.stringify($scope.groupMemberModel));
-    $scope.groupAdminData =  $scope.groupMemberModel;
+    console.log("$scope.groupMemberModel: " + JSON.stringify($scope.groupMemberModel));
+    $scope.groupAdminData = $scope.groupMemberModel;
 
     $scope.rightEmployeeList = function (value) {
         console.log("rightEmployeeList-->");
         console.log("value: " + value);
         var api;
-        if(value == "chat"){
-           api = "https://norecruits.com/careator/getChatRights_emp";
+        if (value == "chat") {
+            api = "https://norecruits.com/careator/getChatRights_emp";
         }
-        else if(value == "video"){
+        else if (value == "video") {
             api = "https://norecruits.com/careator/getVideoRights_emp";
         }
-        else{
+        else {
             api = "https://norecruits.com/careator/careator_getChatVideo_emp";
         }
-        console.log("api: "+JSON.stringify(api));
+        console.log("api: " + JSON.stringify(api));
         careatorHttpFactory.get(api).then(function (data) {
             console.log("data--" + JSON.stringify(data.data));
             var checkStatus = careatorHttpFactory.dataValidation(data);
@@ -43,16 +45,16 @@ careatorApp.controller('createGroupCtrl', function ($scope, $rootScope, $filter,
                 var groupMembers = data.data.data;
                 console.log("groupMembers: " + JSON.stringify(groupMembers));
                 $scope.groupMemberData = [];
-                for(var x=0;x< groupMembers.length;x++){
+                for (var x = 0; x < groupMembers.length; x++) {
                     console.log(" before $scope.groupMemberData: " + JSON.stringify($scope.groupMemberData));
-                    console.log("groupMembers[x].email: "+groupMembers[x].email+" groupMembers[x]._id: "+groupMembers[x]._id);
+                    console.log("groupMembers[x].email: " + groupMembers[x].email + " groupMembers[x]._id: " + groupMembers[x]._id);
                     $scope.groupMemberData.push({
                         "label": groupMembers[x].email,
                         "id": groupMembers[x]._id
                     });
-                    console.log(" after $scope.groupMemberData: " + JSON.stringify( $scope.groupMemberData));
+                    console.log(" after $scope.groupMemberData: " + JSON.stringify($scope.groupMemberData));
                 }
-               
+
                 console.log(data.data.message);
             }
             else {

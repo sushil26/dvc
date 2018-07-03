@@ -843,13 +843,57 @@ module.exports.careator_video_creteGroup = function (req, res) {
 module.exports.careator_chatVideo_creteGroup = function (req, res) {
     console.log("careator_chatVideo_creteGroup-->");
     var response;
-
+    var groupName = req.body.groupName;
+    var groupMembers = req.body.members;
+    var admin = req.body.admin;
     if (general.emptyCheck(groupName)) {
 
+        var insertObj = {
+            "groupName": groupName,
+            "groupMembers": groupMembers,
+            "admin": admin
+        }
+        careatorChatGroup.insert(insertObj, function (err, chatGroupCreate) {
+            if (err) {
+                console.log("err: " + JSON.stringify(err));
+                response = {
+                    status: fasle,
+                    message: "Unsuccessfull group creation",
+                    data: err
+                };
+                res.status(400).send(response);
+            }
+            else {
+                console.log("chatGroupCreate: " + JSON.stringify(chatGroupCreate));
+                careatorVideoGroup.insert(insertObj, function (err, videoGroupCreate) {
+                    if (err) {
+                        console.log("err: " + JSON.stringify(err));
+                        response = {
+                            status: fasle,
+                            message: "Successfull  chat group creation but unsuccessfull chat group creation",
+                            data: err
+                        };
+                        res.status(400).send(response);
+                    }
+                    else {
+                        console.log("videoGroupCreate: " + JSON.stringify(videoGroupCreate));
+                        response = {
+                            status: true,
+                            message: "Successfully group created",
+                            data: groupCreate
+                        };
+                        res.status(200).send(response);
+                    }
+                })
+                
+            }
+        })
     }
     else {
         console.log("Epty value found");
-
+        var groupName = {
+            "groupName": groupName
+        }
         response = {
             status: false,
             message: "empty value found",
@@ -857,7 +901,6 @@ module.exports.careator_chatVideo_creteGroup = function (req, res) {
         };
         res.status(400).send(response);
     }
-
 }
 
 

@@ -747,12 +747,14 @@ module.exports.careator_chat_creteGroup = function (req, res) {
     console.log("careator_chat_creteGroup-->");
     var response;
     var groupName = req.body.groupName;
-    var groupMembers = req.body.groupMembers;
+    var groupMembers = req.body.members;
+    var admin = req.body.admin;
     if (general.emptyCheck(groupName)) {
 
         var insertObj = {
             "groupName": groupName,
-            "groupMembers": groupMembers
+            "groupMembers": groupMembers,
+            "admin" : admin
         }
         careatorChatGroup.insert(insertObj, function (err, groupCreate) {
             if (err) {
@@ -762,7 +764,7 @@ module.exports.careator_chat_creteGroup = function (req, res) {
                     message: "Unsuccessfull group creation",
                     data: err
                 };
-                res.status(400).send(responseData);
+                res.status(400).send(response);
             }
             else {
                 console.log("groupCreate: " + JSON.stringify(groupCreate));
@@ -771,7 +773,7 @@ module.exports.careator_chat_creteGroup = function (req, res) {
                     message: "Successfully group created",
                     data: groupCreate
                 };
-                res.status(200).send(responseData);
+                res.status(200).send(response);
             }
         })
     }

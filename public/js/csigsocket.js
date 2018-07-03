@@ -9,7 +9,6 @@
 var sesionEnc = localStorage.getItem("sessionEnc");
 console.log("sesionEnc: " + sesionEnc);
 
-
 /** CONFIG **/
 console.log("Signaling Socket.js");
 var SIGNALING_SERVER = "https://norecruits.com";
@@ -35,7 +34,6 @@ var disconnPeerId = null;
 var shareScreen = null;
 var sessionHeader = null;
 var peerStream = null;
-
 
 signaling_socket = io(SIGNALING_SERVER);
 
@@ -160,40 +158,42 @@ function checkPassword() {
       dataType: "json",
       success: function (data) {
         console.log("data: " + JSON.stringify(data));
-        if (data.data.videoRights == 'yes') {
-          localStorage.setItem("videoRights", 'yes');
-          document.getElementById("videoConfStart").style.display = "inline";
-        }
-        else if (data.data.chatRights == 'yes') {
-          localStorage.setItem("chatRights", 'yes');
-          document.getElementById("chatConfStart").style.display = "inline";
-        }
-        var userNameEmail = localStorage.getItem("careatorEmail");
-        var emailIdSplit = userNameEmail.split('@');
-        userName = emailIdSplit[0];
-        console.log("userName: " + userName);
-        document.getElementById("videoConferenceUrl").style.display = "block";
-        $('#myPasswordModal').modal('hide');
-      },
-      error: function (err) {
-        console.log("err: " + JSON.stringify(err));
-        console.log("err.responseText: " + JSON.stringify(err.responseText));
-        console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
-        document.getElementById("videoConferenceUrl").style.display = "none";
-        localStorage.removeItem("careatorEmail");
-        userName = "";
-      }
-    });
+        localStorage.setItem("userName", data.data.name);
+        userName =  localStorage.getItem("userName");
+    if (data.data.videoRights == 'yes') {
+      localStorage.setItem("videoRights", 'yes');
+      document.getElementById("videoConfStart").style.display = "inline";
+    }
+    else if (data.data.chatRights == 'yes') {
+      localStorage.setItem("chatRights", 'yes');
+      document.getElementById("chatConfStart").style.display = "inline";
+    }
+    var userNameEmail = localStorage.getItem("careatorEmail");
+    var emailIdSplit = userNameEmail.split('@');
+    //userName = emailIdSplit[0];
+    console.log("userName: " + userName);
+    document.getElementById("videoConferenceUrl").style.display = "block";
+    $('#myPasswordModal').modal('hide');
+  },
+  error: function (err) {
+    console.log("err: " + JSON.stringify(err));
+    console.log("err.responseText: " + JSON.stringify(err.responseText));
+    console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
+    document.getElementById("videoConferenceUrl").style.display = "none";
+    localStorage.removeItem("careatorEmail");
+    userName = "";
+  }
+});
   }
   else {
-    $("#enterPswd").trigger("click");
-  }
-  console.log("<--checkPassword");
+  $("#enterPswd").trigger("click");
+}
+console.log("<--checkPassword");
 }
 
-function chatNavigation(){
+function chatNavigation() {
   console.log("chatNavigation-->");
-  window.location.href="https://norecruits.com/careatorApp/#!/dashboard";
+  window.location.href = "https://norecruits.com/careatorApp/#!/dashboard";
 }
 
 /* ##### Start: Email Invite  ##### */

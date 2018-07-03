@@ -37,7 +37,8 @@ careatorApp.controller('createGroupCtrl', function ($scope, $rootScope, $filter,
                     console.log(" before $scope.groupMemberData: " + JSON.stringify($scope.groupMemberData));
                     console.log("groupMembers[x].email: " + groupMembers[x].email + " groupMembers[x]._id: " + groupMembers[x]._id);
                     $scope.groupMemberData.push({
-                        "label": groupMembers[x].email,
+                        "email": groupMembers[x].email,
+                        "label":  groupMembers[x].name + "( " + groupMembers[x].empId + " )",
                         "id": groupMembers[x]._id
                     });
                     console.log(" after $scope.groupMemberData: " + JSON.stringify($scope.groupMemberData));
@@ -51,7 +52,7 @@ careatorApp.controller('createGroupCtrl', function ($scope, $rootScope, $filter,
             }
         })
         $scope.groupMemberModel = [];
-        
+
 
         console.log("<--rightEmployeeList");
     }

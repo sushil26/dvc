@@ -85,6 +85,14 @@ else {
     userName = emailIdSplit[0];
     document.getElementById("videoConferenceUrl").style.display = "block";
     document.getElementById("videoCtrolBar").style.display = "none";
+    console.log("localStorage.getItem(videoRights): " + localStorage.getItem("videoRights"));
+    console.log("localStorage.getItem(chatRights): " + localStorage.getItem("chatRights"));
+    if (localStorage.getItem("videoRights") == 'yes') {
+      document.getElementById("videoConfStart").style.display = "block";
+    }
+    else if (localStorage.getItem("chatRights") == 'yes') {
+      document.getElementById("chatConfStart").style.display = "block";
+    }
 
   }
   else {
@@ -97,7 +105,6 @@ else {
 function triggerInvite() {
   console.log("triggerInvite-->");
   $("#enterPswd").trigger("click");
-
 }
 function sendEmail() {
   console.log("sendEmail-->");
@@ -153,7 +160,14 @@ function checkPassword() {
       dataType: "json",
       success: function (data) {
         console.log("data: " + JSON.stringify(data));
-        
+        if (data.data.videoRights == 'yes') {
+          localStorage.setItem("videoRights", 'yes');
+          document.getElementById("videoConfStart").style.display = "inline";
+        }
+        else if (data.data.chatRights == 'yes') {
+          localStorage.setItem("chatRights", 'yes');
+          document.getElementById("chatConfStart").style.display = "inline";
+        }
         var userNameEmail = localStorage.getItem("careatorEmail");
         var emailIdSplit = userNameEmail.split('@');
         userName = emailIdSplit[0];
@@ -175,6 +189,11 @@ function checkPassword() {
     $("#enterPswd").trigger("click");
   }
   console.log("<--checkPassword");
+}
+
+function chatNavigation(){
+  console.log("chatNavigation-->");
+  window.location.href="https://norecruits.com/careatorApp/#!/dashboard";
 }
 
 /* ##### Start: Email Invite  ##### */
@@ -270,18 +289,27 @@ function disconnecSession() {
   console.log("queryLink: " + queryLink);
   console.log("localStorage.getItem: " + localStorage.getItem("careatorEmail"));
   console.log("localStorage.getItem(sessionUrlId): " + localStorage.getItem("sessionUrlId"));
+  if (localStorage.getItem("chatRights")) {
+    localStorage.removeItem("chatRights");
+  }
+  if (localStorage.getItem("videoRights")) {
+    localStorage.removeItem("videoRights");
+  }
   if (localStorage.getItem("sessionUrlId") == queryLink && localStorage.getItem("careatorEmail")) {
     console.log("start to disconnect the session");
     localStorage.removeItem("careatorEmail");
     localStorage.removeItem("sessionUrlId");
     localStorage.removeItem("careator_remoteEmail");
+
     signaling_socket.emit("disconnectSession", { deleteSessionId: queryLink, owner: peerNew_id });
-  
+
+
     window.location.href = "https://norecruits.com";
   } else {
     localStorage.removeItem("careatorEmail");
     localStorage.removeItem("sessionUrlId");
     localStorage.removeItem("careator_remoteEmail");
+
     console.log("You are not session creater so you cant delete session");
     window.location.href = "https://norecruits.com";
   }

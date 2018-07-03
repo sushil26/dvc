@@ -35,7 +35,7 @@
                                 <label class="col-lg-3">Group Members*</label>
                                 <div class="col-lg-9">
                                     <div ng-dropdown-multiselect="" options="groupMemberData" selected-model="groupMemberModel" checkboxes="true" extra-settings="groupMemberSettings"> </div>
-                                        <pre>Selected Model: {{groupMemberModel}} | json</pre>
+                                        <pre>Selected Model: {{groupMemberModel.label}} | json</pre>
                                    
                                  
                                 </div>
@@ -44,7 +44,7 @@
                                 <label class="col-lg-3">Group Admin*</label>
                                 <div class="col-lg-9">
                                     <div ng-dropdown-multiselect="" options="groupAdminData" selected-model="groupAdminModel" checkboxes="true" extra-settings="groupAdminSettings"></div>
-                                    <pre>Selected Model: {{groupAdminModel}} | json</pre>
+                                    <pre>Selected Model: {{groupAdminModel.label}} | json</pre>
                                 </div>
                             </div>
                             <div class="form-group ">

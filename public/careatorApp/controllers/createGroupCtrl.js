@@ -17,7 +17,8 @@ careatorApp.controller('createGroupCtrl', function ($scope, $rootScope, $filter,
     $scope.groupAdminSettings = {
         scrollableHeight: '200px',
         scrollable: true,
-        enableSearch: true
+        enableSearch: true,
+        externalIdProp: ''
     };
     console.log("$scope.groupMemberModel: " + JSON.stringify($scope.groupMemberModel));
     $scope.groupAdminData = $scope.groupMemberModel;

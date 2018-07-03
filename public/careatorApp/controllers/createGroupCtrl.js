@@ -2,6 +2,13 @@ careatorApp.controller('createGroupCtrl', function ($scope, $rootScope, $filter,
     console.log("createGroupCtrl==>");
 
     $scope.names = ['Chat', 'Video'];
+    $scope.groupMemberSettings = {
+        scrollableHeight: '200px',
+        scrollable: true,
+        enableSearch: true,
+        externalIdProp: ''
+    };
+    $scope.groupMemberData = [];
 
     $scope.rightEmployeeList = function (value) {
 
@@ -44,13 +51,7 @@ careatorApp.controller('createGroupCtrl', function ($scope, $rootScope, $filter,
             }
         })
         $scope.groupMemberModel = [];
-        $scope.groupMemberSettings = {
-            scrollableHeight: '200px',
-            scrollable: true,
-            enableSearch: true,
-            externalIdProp: ''
-        };
-        $scope.groupMemberData = [];
+        
 
         console.log("<--rightEmployeeList");
     }

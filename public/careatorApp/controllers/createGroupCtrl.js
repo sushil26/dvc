@@ -60,13 +60,23 @@ careatorApp.controller('createGroupCtrl', function ($scope, $rootScope, $filter,
         console.log("value changed")
         $scope.groupAdminModel = [];
         $scope.groupAdminSettings = {
-            scrollableHeight: '200px',
-            scrollable: true,
+           
             enableSearch: true,
-            externalIdProp: ''
+            externalIdProp: '',
+            selectionLimit: 1
         };
         $scope.groupAdminData = $scope.groupMemberModel;
     });
+
+    $scope.creteGroup = function(){
+        console.log("creteGroup-->");
+        var obj = {
+            "groupName": $scope.groupName,
+            "rightSelect": $scope.rightSelect,
+            "memebers": $scope.groupMemberModel,
+            "admins": $scope.groupAdminModel
+        }
+    }
 
 
 

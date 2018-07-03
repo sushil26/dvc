@@ -399,7 +399,7 @@ table tr th {
   height: 100%;
   position: fixed;
  background-color: #1a3652;
- transition-duration: 1s;
+ transition-duration: 0.3s;
  transition-timing-function: ease-in;
  border-left: 2px solid #2e3134;
  border-right: 2px solid #2e3134;
@@ -689,7 +689,7 @@ ul.sidebar-menu li.active a i {
 
 #main-content {
   margin-left: 180px;
-  transition-duration: 1s;    transition-timing-function: ease-in;
+  transition-duration: 0.3s;    transition-timing-function: ease-in;
 }
 
 .header,

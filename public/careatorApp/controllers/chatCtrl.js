@@ -31,6 +31,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
     $scope.groupDetails = function(index){
         console.log("groupDetails-->");
         console.log(" $scope.allGroup[index]: "+JSON.stringify($scope.allGroup[index]));
+        $scope.groupData = $scope.allGroup[index];
 
     }
 

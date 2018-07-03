@@ -75,36 +75,36 @@
           </header> -->
 
         <!-- <img   class="kklklk" src="robot.gif" style="margin-top: 81px; background: #a8d043ab; z-index: 1000; width: 100px;">-->
-        <div id="grline"  class="moving" style="position: fixed;
+        <!-- <div id="grline"  class="moving" style="position: fixed;
           height: 5px;
           left: 0;
           top: 59px;
           right: 0;
           z-index: 1000;
          ">
-        </div>
+        </div> -->
         <!--sidebar start-->
         <aside>
-            <div id="sidebar" class="nav-collapse" style="margin-top: 60px;">
+            <div id="sidebar" class="nav-collapse">
                 <!-- sidebar menu start-->
                 <ul class="sidebar-menu" ng-hide="sideBarMenu">
                     <li id="alink">
                         <a ng-click="homeClick()" class="home">
-                            <i style="font-size:15px;" class="fa fa-home">
+                            <i  class="fa fa-home">
                                 <span>&nbspHOME</span>
                             </i>
                         </a>
                     </li>
                     <li>
                         <a href="#!/dashboard/personalDetail">
-                            <i style="font-size:15px;" class="fa fa-user-circle">
+                            <i class="fa fa-user-circle">
                                 <span>&nbspPROFILE</span>
                             </i>
                         </a>
                     </li>
                     <li class="sub-menu" ng-if="loginType == 'teacher' || loginType == 'studParent'">
                         <a ng-click="eventClick('comm_subMenu')">
-                            <i style="font-size:15px;" class="fa fa-globe">
+                            <i  class="fa fa-globe">
                                 <span>&nbspCOMMUNICATION</span>
                             </i>
                             <span ng-if="comm_subMenu==true" class="menu-arrow arrow_carrot-right"></span>
@@ -122,7 +122,7 @@
                     <!-- ##### Start teacher/student Event  ##### -->
                     <li class="sub-menu" ng-if="loginType == 'teacher' || loginType == 'studParent'">
                         <a ng-click="eventClick('events_subMenu')">
-                            <i style="font-size:15px;" class="fa fa-calendar">
+                            <i  class="fa fa-calendar">
                                 <span>&nbspEVENTS</span>
                             </i>
                             <i ng-if="numberOfNotif_event>0" class="fa fa-circle llkk" style="font-size:10px"></i>
@@ -148,7 +148,7 @@
                     <!-- ##### Start teacher/student Quick Message  ##### -->
                     <li class="sub-menu" ng-if="loginType == 'teacher' || loginType == 'studParent'">
                         <a ng-click="eventClick('quickMsg_subMenu')">
-                            <i style="font-size:15px;" class="fa fa-envelope">
+                            <i   class="fa fa-envelope">
                                 <span>&nbspMESSAGE</span>
                             </i>
                             <i class="fa fa-circle llkk" style="font-size:10px" ng-if="numberOfNotif_quickMsg>0"></i>
@@ -173,7 +173,7 @@
                     <!-- ##### Start teacher/student Acdemic  ##### -->
                     <li class="sub-menu" ng-if="loginType=='teacher' || loginType=='studParent'">
                         <a ng-click="eventClick('academic_subMenu')">
-                            <i style="font-size:15px;" class="fa fa-clipboard">
+                            <i   class="fa fa-clipboard">
                                 <span>&nbspACADEMIC</span>
                             </i>
                             <span ng-if="academic_subMenu==true" class="menu-arrow arrow_carrot-right"></span>
@@ -195,7 +195,7 @@
                     <!-- ##### Start teacher/student  Setting  ##### -->
                     <li class="sub-menu" ng-if="loginType=='teacher' || loginType=='studParent'">
                         <a ng-click="eventClick('setting_subMenu')">
-                            <i style="font-size:15px;" class="fa fa-cog">
+                            <i   class="fa fa-cog">
                                 <span>&nbspSETTINGS</span>
 
                             </i>
@@ -216,7 +216,7 @@
                     <!-- ##### Start school admin Acdemic  ##### -->
                     <li class="sub-menu" ng-if="loginType=='admin'">
                         <a ng-click="eventClick('academic_subMenu')">
-                            <i style="font-size:15px;" class="fa fa-clipboard">
+                            <i   class="fa fa-clipboard">
                                 <span>&nbspACADEMIC</span>
                             </i>
                             <span ng-if="academic_subMenu==true" class="menu-arrow arrow_carrot-right"></span>
@@ -235,7 +235,7 @@
                     <!-- ##### Start school admin Setting  ##### -->
                     <li class="sub-menu" ng-if="loginType=='admin'">
                         <a ng-click="eventClick('setting_subMenu')">
-                            <i style="font-size:15px;" class="fa fa-cog">
+                            <i   class="fa fa-cog">
                                 <span>&nbspSETTINGS</span>
                             </i>
 
@@ -258,7 +258,7 @@
                     <!-- ##### Start VC4ALL admin Setting  ##### -->
                     <li class="sub-menu" ng-if="loginType=='vc4allAdmin'">
                         <a ng-click="eventClick('setting_subMenu')">
-                            <i style="font-size:15px;" class="fa fa-cog">
+                            <i   class="fa fa-cog">
                                 <span>&nbspSETTINGS</span>
                             </i>
                             <span ng-if="setting_subMenu==true" class="menu-arrow arrow_carrot-right"></span>
@@ -289,14 +289,14 @@
                     </li>
                     <li id="analink" ng-if="loginType=='vc4allAdmin'">
                         <a href="#!/dashboard/analytics" class="home">
-                            <i style="font-size:15px;" class="fa fa-line-chart">
+                            <i   class="fa fa-line-chart">
                                 <span>&nbspANALYTICS</span>
                             </i>
                         </a>
                     </li>
                     <li id="analink">
                         <a href="#!/dashboard/captureImg" class="home">
-                            <i style="font-size:15px;" class="fa fa-line-chart">
+                            <i   class="fa fa-line-chart">
                                 <span>&nbspCAPTURE IMAGE</span>
                             </i>
                         </a>
@@ -304,7 +304,7 @@
                     <!-- ##### End VC4ALL admin Setting  ##### -->
                     <li>
                         <a href="#" ng-click="logOut()">
-                            <i style="font-size:15px;" class="fa fa-sign-out">
+                            <i   class="fa fa-sign-out">
                                 <span>&nbspLOGOUT</span>
                             </i>
                         </a>

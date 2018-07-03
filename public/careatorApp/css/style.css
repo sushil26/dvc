@@ -398,6 +398,7 @@ table tr th {
   height: 100%;
   position: fixed;
  background-color: #1a3652;
+ transition-duration: 1s;
 }
 
 .nav-collapse.collapse {
@@ -682,6 +683,7 @@ ul.sidebar-menu li.active a i {
 
 #main-content {
   margin-left: 180px;
+  transition-duration: 1s;
 }
 
 .header,
@@ -1344,10 +1346,10 @@ div[data-role="editor-toolbar"] {
   line-height: 34px;
   padding: 0 15px;
   min-height: 34px;
-
+  /* 
   border-left: 1px solid #ccc;
 
-  border-right: 1px solid #ccc;
+  border-right: 1px solid #ccc; */
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
   border-radius: 0px;

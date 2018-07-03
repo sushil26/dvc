@@ -161,6 +161,7 @@ function checkPassword() {
         localStorage.setItem("userName", data.data.name);
         localStorage.setItem("empId", data.data.empId);
         localStorage.setItem("email", data.data.email);
+        localStorage.setItem("userId", data.data._id);
         userName =  localStorage.getItem("userName");
     if (data.data.videoRights == 'yes') {
       localStorage.setItem("videoRights", 'yes');

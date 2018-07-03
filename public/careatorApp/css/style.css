@@ -400,6 +400,8 @@ table tr th {
  background-color: #1a3652;
  transition-duration: 1s;
  transition-timing-function: ease-in;
+ border-left: 2px solid #009688;
+ border-right: 2px solid #009688;
 }
 
 .nav-collapse.collapse {

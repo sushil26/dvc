@@ -72,7 +72,6 @@ careatorApp.controller('createGroupCtrl', function ($scope, $rootScope, $filter,
         var api;
         var obj = {
             "groupName": $scope.groupName,
-            "rightSelect": $scope.rightSelect
         }
         var members = [];
         for (var x = 0; x < $scope.groupMemberModel.length; x++) {
@@ -98,16 +97,16 @@ careatorApp.controller('createGroupCtrl', function ($scope, $rootScope, $filter,
         else if ($scope.rightSelect == 'both') {
             api = "https://norecruits.com/careator/chatVideo_groupCreate";
         }
-        console.log("api: "+api);
+        console.log("api: " + api);
         careatorHttpFactory.post(api, obj).then(function (data) {
             console.log("data--" + JSON.stringify(data.data));
             var checkStatus = careatorHttpFactory.dataValidation(data);
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
-              console.log(data.data.message);
+                console.log(data.data.message);
             }
-            else{
-                console.log("Sorry: "+data.data.message);
+            else {
+                console.log("Sorry: " + data.data.message);
             }
         })
 

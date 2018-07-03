@@ -12,8 +12,9 @@ var careatorChatGroup = db.collection("careatorChatGroup"); /* ### careatorChatG
 var careatorVideoGroup = db.collection("careatorVideoGroup"); /* ### careatorChatGroup collection  ### */
 var csv = require('fast-csv');
 var careatorMasterArray = [];
-var alreadyExist = null;
-var existEmail = null;
+var alreadyExist = null; /* ### Note: Marker for user create ### */
+var existEmail = null; /* ### Note: Marker for user create ### */
+var existEmpId = null; /* ### Note: Marker for user create ### */
 
 var transporter = nodemailer.createTransport({
     service: "godaddy",
@@ -449,40 +450,38 @@ module.exports.careatorMasterInsert = function (req, res) {
         ignoreEmpty: true
     }).on("data", function (data) {
         console.log("data: " + JSON.stringify(data));
-        var obj = {
-            "email": data.Email,
-            "videoRights": data.VideoRights,
-            "chatRights": data.ChatRights
-        }
-        console.log("obj: " + JSON.stringify(obj));
         parser.pause();
-        if (data.Email == "#") {
+        if (data.Name == "#") {
             parser.resume();
         }
         else {
             module.exports.careatorMasterInsertValidate(data, function (err) {
                 console.log("validation -->");
-                console.log("alreadyExist : " + alreadyExist + " existEmail: " + existEmail);
+                console.log("alreadyExist : " + alreadyExist + " existEmail: " + existEmail + " existEmpId: " + existEmpId);
                 parser.resume();
             });
         }
-
-
     })
         .on("end", function () {
             console.log("end marker: ");
             if (alreadyExist == 'yes') {
                 careatorMasterArray = [];
                 alreadyExist = null;
-                var temp = existEmail;
+                if(existEmpId!=null){
+                    var temp = existEmpId;
+                }
+                else if(existEmail!=null)
+                {
+                    var temp = existEmail;
+                }
+                
                 existEmail = null;
+                existEmpId = null;
                 responseData = {
                     status: false,
-                    message: "Upload failed because this email " + temp + " already exist",
+                    message: "Upload failed because this " + temp + " already exist",
                 };
-
                 res.status(400).send(responseData);
-
             }
             else {
                 careatorMaster.insert(careatorMasterArray, function (err, insertedData) {
@@ -509,13 +508,21 @@ module.exports.careatorMasterInsert = function (req, res) {
 
 module.exports.careatorMasterInsertValidate = function (data, callback) {
     console.log("careatorMasterInsertValidate-->");
+    var findEmpId = {
+        "empId": data.EmpId
+    }
+    var findEmail = {
+        "email": data.Email
+    }
     var obj = {
+        "name": data.Name,
+        "empId": data.EmpId,
         "email": data.Email,
         "videoRights": data.VideoRights,
         "chatRights": data.ChatRights,
         "status": "active"
     }
-    careatorMaster.find(obj).toArray(function (err, findData) {
+    careatorMaster.find(findEmpId).toArray(function (err, findData) {
         if (err) {
             console.log("err: " + JSON.stringify(err));
 
@@ -524,13 +531,29 @@ module.exports.careatorMasterInsertValidate = function (data, callback) {
             console.log("findData: " + JSON.stringify(findData));
             if (findData.length > 0) {
                 alreadyExist = "yes";
-                existEmail = data.Email;
+                existEmpId = data.empId;
                 if (callback) callback();
             }
             else {
+                careatorMaster.find(findEmail).toArray(function (err, findData) {
+                    if (err) {
+                        console.log("err: " + JSON.stringify(err));
 
-                careatorMasterArray.push(obj);
-                if (callback) callback();
+                    }
+                    else {
+                        console.log("findData: " + JSON.stringify(findData));
+                        if (findData.length > 0) {
+                            alreadyExist = "yes";
+                            existEmail = data.Email;
+                            if (callback) callback();
+                        }
+                        else {
+                            careatorMasterArray.push(obj);
+                            if (callback) callback();
+                        }
+
+                    }
+                })
             }
         }
     })
@@ -599,11 +622,11 @@ module.exports.statusChangeById = function (req, res) {
         var queryId = {
             "_id": ObjectId(id)
         }
-        console.log("queryId: "+JSON.stringify(queryId));
+        console.log("queryId: " + JSON.stringify(queryId));
         var updateVlaue = {
             "status": status
         }
-        console.log("updateVlaue: "+JSON.stringify(updateVlaue));
+        console.log("updateVlaue: " + JSON.stringify(updateVlaue));
         careatorMaster.update(queryId, { $set: updateVlaue }), function (err, updatedData) {
             if (err) {
                 console.log("err: " + JSON.stringify(err));
@@ -643,7 +666,7 @@ module.exports.statusChangeById = function (req, res) {
 module.exports.getChatRights_emp = function (req, res) {
     console.log("getChatRights_emp-->");
     var response;
-    careatorMaster.find({ "chatRights": "yes", "status":"active" }).toArray(function (err, allEmp_chat) {
+    careatorMaster.find({ "chatRights": "yes", "status": "active" }).toArray(function (err, allEmp_chat) {
         if (err) {
             console.log("err: " + JSON.stringify(err));
             response = {
@@ -668,7 +691,7 @@ module.exports.getChatRights_emp = function (req, res) {
 module.exports.getVideoRights_emp = function (req, res) {
     console.log("getVideoRights_emp-->");
     var response;
-    careatorMaster.find({ "videoRights": "yes", "status":"active" }).toArray(function (err, allEmp_chat) {
+    careatorMaster.find({ "videoRights": "yes", "status": "active" }).toArray(function (err, allEmp_chat) {
         if (err) {
             console.log("err: " + JSON.stringify(err));
             response = {
@@ -694,7 +717,7 @@ module.exports.getVideoRights_emp = function (req, res) {
 module.exports.careator_getChatVideo_emp = function (req, res) {
     console.log("careator_getChatVideo_emp-->");
     var response;
-    careatorMaster.find({ "chatRights":"yes", "videoRights": "yes", "status":"active" }).toArray(function (err, allEmp_chat) {
+    careatorMaster.find({ "chatRights": "yes", "videoRights": "yes", "status": "active" }).toArray(function (err, allEmp_chat) {
         if (err) {
             console.log("err: " + JSON.stringify(err));
             response = {

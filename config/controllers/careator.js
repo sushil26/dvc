@@ -879,7 +879,7 @@ module.exports.careator_chatVideo_creteGroup = function (req, res) {
                         console.log("videoGroupCreate: " + JSON.stringify(videoGroupCreate));
                         response = {
                             status: true,
-                            message: "Successfully group created",
+                            message: "Successfully chat and video group created",
                             
                         };
                         res.status(200).send(response);

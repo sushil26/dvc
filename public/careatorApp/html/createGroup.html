@@ -36,7 +36,7 @@
                                 <div class="col-lg-9">
                                     <div ng-dropdown-multiselect="" options="groupMemberData" selected-model="groupMemberModel" checkboxes="true" extra-settings="groupMemberSettings" >
                                     </div>
-                                    <pre>Selected Model: {{groupMemberModel[$index].label}} | json</pre>
+                                    <pre ng-repeat="email in groupMemberModel">Selected Memebers: {{email.label}}</pre>
                                 </div>
                             </div>
                             <div class="form-group" ng-if="groupMemberModel.length>0">

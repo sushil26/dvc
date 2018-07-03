@@ -85,6 +85,14 @@ else {
     userName = emailIdSplit[0];
     document.getElementById("videoConferenceUrl").style.display = "block";
     document.getElementById("videoCtrolBar").style.display = "none";
+    if (localStorage.getItem("videoRights")=='yes') {
+      
+      document.getElementById("videoConfStart").style.display = "inline";
+    }
+    else if (localStorage.getItem("chatRights")=='yes') {
+      localStorage.setItem("chatRights", 'chatRights');
+      document.getElementById("chatConfStart").style.display = "inline";
+    }
 
   }
   else {
@@ -154,11 +162,11 @@ function checkPassword() {
       success: function (data) {
         console.log("data: " + JSON.stringify(data));
         if (data.data.videoRights == 'yes') {
-          localStorage.setItem("videoRights", 'videoRights');
+          localStorage.setItem("videoRights", 'yes');
           document.getElementById("videoConfStart").style.display = "inline";
         }
         else if (data.data.chatRights == 'yes') {
-          localStorage.setItem("chatRights", 'chatRights');
+          localStorage.setItem("chatRights", 'yes');
           document.getElementById("chatConfStart").style.display = "inline";
         }
         var userNameEmail = localStorage.getItem("careatorEmail");

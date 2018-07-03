@@ -69,6 +69,7 @@ careatorApp.controller('createGroupCtrl', function ($scope, $rootScope, $filter,
 
     $scope.creteGroup = function () {
         console.log("creteGroup-->");
+        var api;
         var obj = {
             "groupName": $scope.groupName,
             "rightSelect": $scope.rightSelect
@@ -88,6 +89,29 @@ careatorApp.controller('createGroupCtrl', function ($scope, $rootScope, $filter,
         }
         obj.admin = admin;
         console.log("obj: " + JSON.stringify(obj));
+        if (rightSelect == 'chat') {
+            api = "https://norecruits.com/careator/careator_chat_creteGroup";
+        }
+        else if (rightSelect == 'video') {
+            api = "https://norecruits.com/careator/careator_video_creteGroup";
+        }
+        else if (rightSelect == 'both') {
+            api = "https://norecruits.com/careator/chatVideo_groupCreate";
+        }
+        console.log("api: "+api);
+        careatorHttpFactory.post(api, obj).then(function (data) {
+            console.log("data--" + JSON.stringify(data.data));
+            var checkStatus = careatorHttpFactory.dataValidation(data);
+            console.log("data--" + JSON.stringify(data.data));
+            if (checkStatus) {
+              console.log(data.data.message);
+            }
+            else{
+                console.log("Sorry: "+data.data.message);
+            }
+        })
+
+
     }
 
 

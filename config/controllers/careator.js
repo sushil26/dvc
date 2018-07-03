@@ -585,7 +585,7 @@ module.exports.careator_getAllEmp = function (req, res) {
     })
 
 }
-
+/* ##### Start: Get careator all employee include status inactive  #### */
 module.exports.careator_getChatRightsEmp = function (req, res) {
     console.log("careator_getChatRightsEmp-->");
     var response;
@@ -611,6 +611,7 @@ module.exports.careator_getChatRightsEmp = function (req, res) {
     })
 
 }
+/* ##### End: Get careator all employee include status inactive  #### */
 
 module.exports.statusChangeById = function (req, res) {
     console.log("statusChangeById-->");
@@ -662,7 +663,7 @@ module.exports.statusChangeById = function (req, res) {
     }
 
 }
-
+/* ##### Start: Get careator all employee exclude status inactive  #### */
 module.exports.getChatRights_emp = function (req, res) {
     console.log("getChatRights_emp-->");
     var response;
@@ -688,6 +689,8 @@ module.exports.getChatRights_emp = function (req, res) {
     })
 
 }
+/* ##### End: Get careator all employee exclude status inactive  #### */
+
 module.exports.getVideoRights_emp = function (req, res) {
     console.log("getVideoRights_emp-->");
     var response;
@@ -834,6 +837,25 @@ module.exports.careator_video_creteGroup = function (req, res) {
 
 }
 
+module.exports.careator_chatVideo_creteGroup = function (req, res) {
+    console.log("careator_chatVideo_creteGroup-->");
+    var response;
+  
+    if (general.emptyCheck(groupName)) {
+
+    }
+    else {
+        console.log("Epty value found");
+       
+        response = {
+            status: false,
+            message: "empty value found",
+            data: groupName
+        };
+        res.status(400).send(response);
+    }
+
+}
 
 
 

@@ -89,13 +89,13 @@ careatorApp.controller('createGroupCtrl', function ($scope, $rootScope, $filter,
         }
         obj.admin = admin;
         console.log("obj: " + JSON.stringify(obj));
-        if (rightSelect == 'chat') {
+        if ($scope.rightSelect == 'chat') {
             api = "https://norecruits.com/careator/careator_chat_creteGroup";
         }
-        else if (rightSelect == 'video') {
+        else if ($scope.rightSelect == 'video') {
             api = "https://norecruits.com/careator/careator_video_creteGroup";
         }
-        else if (rightSelect == 'both') {
+        else if ($scope.rightSelect == 'both') {
             api = "https://norecruits.com/careator/chatVideo_groupCreate";
         }
         console.log("api: "+api);

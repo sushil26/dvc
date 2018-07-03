@@ -2141,9 +2141,9 @@ div[data-role="editor-toolbar"] {
 /*--sidebar toggle---*/
 
 .toggle-nav {
-  float: left;
+  float: right;
   padding-right: 15px;
-  margin-top: 20px;
+  margin-top: 15px;
 }
 
 .toggle-nav .icon-reorder {

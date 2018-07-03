@@ -28,6 +28,11 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         $scope.getChatGroupListById(localStorage.getItem("userId"));
     }
 
+    $scope.groupDetails = function(index){
+        console.log("groupDetails-->");
+        console.log(" $scope.allGroup[index]: "+JSON.stringify($scope.allGroup[index]));
+
+    }
 
 
 

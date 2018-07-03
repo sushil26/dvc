@@ -1344,10 +1344,10 @@ div[data-role="editor-toolbar"] {
   line-height: 34px;
   padding: 0 15px;
   min-height: 34px;
-  /* 
+
   border-left: 1px solid #ccc;
 
-  border-right: 1px solid #ccc; */
+  border-right: 1px solid #ccc;
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
   border-radius: 0px;

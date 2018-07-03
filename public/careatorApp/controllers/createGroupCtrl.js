@@ -21,6 +21,7 @@ careatorApp.controller('createGroupCtrl', function ($scope, $rootScope, $filter,
         externalIdProp: ''
     };
     console.log("$scope.groupMemberModel: " + JSON.stringify($scope.groupMemberModel));
+
     $scope.groupAdminData = $scope.groupMemberModel;
      
     $scope.rightEmployeeList = function (value) {
@@ -65,11 +66,8 @@ careatorApp.controller('createGroupCtrl', function ($scope, $rootScope, $filter,
 
         console.log("<--rightEmployeeList");
     }
-
-    $scope.memberschanges = function(){
-        console.log("memberschanges-->");
-    }
-
+$scope.$watchCollection('groupMemberModel', function() { console.log("value changed") });
+  
  
 
 })

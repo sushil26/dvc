@@ -85,11 +85,12 @@ else {
     userName = emailIdSplit[0];
     document.getElementById("videoConferenceUrl").style.display = "block";
     document.getElementById("videoCtrolBar").style.display = "none";
-    if (localStorage.getItem("videoRights")=='yes') {
-      
+    console.log("localStorage.getItem(videoRights): "+localStorage.getItem("videoRights"));
+    console.log("localStorage.getItem(chatRights): "+localStorage.getItem("chatRights"));
+    if (localStorage.getItem("videoRights") == 'yes') {
       document.getElementById("videoConfStart").style.display = "block";
     }
-    else if (localStorage.getItem("chatRights")=='yes') {
+    else if (localStorage.getItem("chatRights") == 'yes') {
       localStorage.setItem("chatRights", 'chatRights');
       document.getElementById("chatConfStart").style.display = "block";
     }

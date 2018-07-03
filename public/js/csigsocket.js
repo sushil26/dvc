@@ -105,7 +105,6 @@ else {
 function triggerInvite() {
   console.log("triggerInvite-->");
   $("#enterPswd").trigger("click");
-
 }
 function sendEmail() {
   console.log("sendEmail-->");
@@ -190,6 +189,11 @@ function checkPassword() {
     $("#enterPswd").trigger("click");
   }
   console.log("<--checkPassword");
+}
+
+function chatNavigation(){
+  console.log("chatNavigation-->");
+  window.location.href="https://norecruits.com/careatorApp/#!/dashboard";
 }
 
 /* ##### Start: Email Invite  ##### */

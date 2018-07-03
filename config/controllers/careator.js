@@ -451,7 +451,7 @@ module.exports.careatorMasterInsert = function (req, res) {
     }).on("data", function (data) {
         console.log("data: " + JSON.stringify(data));
         parser.pause();
-        if (data.Name == "#") {
+        if (data.Name == "#" || alreadyExist=='yes') {
             parser.resume();
         }
         else {
@@ -531,7 +531,7 @@ module.exports.careatorMasterInsertValidate = function (data, callback) {
             console.log("findData: " + JSON.stringify(findData));
             if (findData.length > 0) {
                 alreadyExist = "yes";
-                existEmpId = data.empId;
+                existEmpId = data.EmpId;
                 if (callback) callback();
             }
             else {

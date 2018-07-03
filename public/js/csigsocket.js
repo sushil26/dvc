@@ -85,13 +85,12 @@ else {
     userName = emailIdSplit[0];
     document.getElementById("videoConferenceUrl").style.display = "block";
     document.getElementById("videoCtrolBar").style.display = "none";
-    console.log("localStorage.getItem(videoRights): "+localStorage.getItem("videoRights"));
-    console.log("localStorage.getItem(chatRights): "+localStorage.getItem("chatRights"));
+    console.log("localStorage.getItem(videoRights): " + localStorage.getItem("videoRights"));
+    console.log("localStorage.getItem(chatRights): " + localStorage.getItem("chatRights"));
     if (localStorage.getItem("videoRights") == 'yes') {
       document.getElementById("videoConfStart").style.display = "block";
     }
     else if (localStorage.getItem("chatRights") == 'yes') {
-      localStorage.setItem("chatRights", 'chatRights');
       document.getElementById("chatConfStart").style.display = "block";
     }
 
@@ -286,10 +285,10 @@ function disconnecSession() {
   console.log("queryLink: " + queryLink);
   console.log("localStorage.getItem: " + localStorage.getItem("careatorEmail"));
   console.log("localStorage.getItem(sessionUrlId): " + localStorage.getItem("sessionUrlId"));
-  if( localStorage.getItem("chatRights")){
+  if (localStorage.getItem("chatRights")) {
     localStorage.removeItem("chatRights");
   }
-  if(localStorage.getItem("videoRights")){
+  if (localStorage.getItem("videoRights")) {
     localStorage.removeItem("videoRights");
   }
   if (localStorage.getItem("sessionUrlId") == queryLink && localStorage.getItem("careatorEmail")) {
@@ -297,16 +296,16 @@ function disconnecSession() {
     localStorage.removeItem("careatorEmail");
     localStorage.removeItem("sessionUrlId");
     localStorage.removeItem("careator_remoteEmail");
-   
+
     signaling_socket.emit("disconnectSession", { deleteSessionId: queryLink, owner: peerNew_id });
-    
+
 
     window.location.href = "https://norecruits.com";
   } else {
     localStorage.removeItem("careatorEmail");
     localStorage.removeItem("sessionUrlId");
     localStorage.removeItem("careator_remoteEmail");
-    
+
     console.log("You are not session creater so you cant delete session");
     window.location.href = "https://norecruits.com";
   }

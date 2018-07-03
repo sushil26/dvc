@@ -75,6 +75,7 @@ careatorApp.controller('createGroupCtrl', function ($scope, $rootScope, $filter,
             "memebers": $scope.groupMemberModel,
             "admins": $scope.groupAdminModel
         }
+        console.log("obj: "+JSON.stringify(obj));
     }
 
 

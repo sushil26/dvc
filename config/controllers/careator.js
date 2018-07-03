@@ -531,7 +531,7 @@ module.exports.careatorMasterInsertValidate = function (data, callback) {
             console.log("findData: " + JSON.stringify(findData));
             if (findData.length > 0) {
                 alreadyExist = "yes";
-                existEmpId = data.empId;
+                existEmpId = data.EmpId;
                 if (callback) callback();
             }
             else {

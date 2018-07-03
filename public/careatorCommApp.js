@@ -42,6 +42,11 @@ careatorApp.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: '/careatorApp/html/chatHistory.html'
 
         })
+        .state('Cdashboard.chat', {
+            url: careator_chat(),
+            templateUrl: '/careatorApp/html/chat.html'
+
+        })
 })
 function careator_dashboard() {
     return '/dashboard';
@@ -72,4 +77,8 @@ function createGroup() {
 
 function careator_chatHistory() {
     return '/chatHistory';
+}
+
+function careator_chat() {
+    return '/chat';
 }

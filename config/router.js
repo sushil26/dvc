@@ -12,7 +12,7 @@ var capture = require('./controllers/capture');
 module.exports = function (app) {
 
     app.post('/vc/captureImgSend/:parentEmail/:studName', capture.captureImgSend);
-    
+
     app.post('/careator/pswdGenerate', careator.pswdGenerate);
     app.post('/careator/pswdCheck', careator.pswdCheck);
     app.post('/careator/emailInvite', careator.emailInvite);
@@ -26,6 +26,9 @@ module.exports = function (app) {
     app.get('/careator/getChatRights_emp', careator.getChatRights_emp);
     app.get('/careator/getVideoRights_emp', careator.getVideoRights_emp);
     app.get('/careator/careator_getChatVideo_emp', careator.careator_getChatVideo_emp);
+    app.post('/careator/careator_chat_creteGroup', careator.careator_chat_creteGroup);
+    app.post('/careator/careator_video_creteGroup', careator.careator_video_creteGroup);
+    app.post('/careator/careator_chatVideo_creteGroup', careator.careator_chatVideo_creteGroup);
 
 
     app.post('/record/pswdGenerate', record.pswdGenerate);
@@ -37,7 +40,7 @@ module.exports = function (app) {
 
     app.post('/vc/schoolLogo', image.upload);
     app.post('/vc/profilePicupload', image.profilePicupload);
-    
+
 
     app.post('/vc/register4VC', user.register4VC);
     app.post('/vc/login4VC', user.login4VC);
@@ -94,7 +97,7 @@ module.exports = function (app) {
     app.get('/vc/getToDate', event.getToDate);
     app.post('/vc/eventSend', event.eventSend);
     app.post('/vc/eventNotificationOff', event.eventNotificationOff);
-    
+
     app.get('/vc/eventGet/:id', event.eventGet);
     app.post('/vc/eventReSchedule/:id', event.eventReSchedule);
     app.get('/vc/getEventById/:id', event.getEventById);

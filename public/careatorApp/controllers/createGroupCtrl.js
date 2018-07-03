@@ -77,7 +77,7 @@ careatorApp.controller('createGroupCtrl', function ($scope, $rootScope, $filter,
         for (var x = 0; x < $scope.groupMemberModel.length; x++) {
             members.push({ "name": $scope.groupMemberModel[x].label, "email": $scope.groupMemberModel[x].email, "userId": $scope.groupMemberModel[x].id });
         }
-        obj.memebers = memebers;
+        obj.members = members;
         var admin = {};
         for (var x = 0; x < $scope.groupAdminModel.length; x++) {
             admin = {

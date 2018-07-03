@@ -153,7 +153,14 @@ function checkPassword() {
       dataType: "json",
       success: function (data) {
         console.log("data: " + JSON.stringify(data));
-        
+        if (data.data.videoRights == 'yes') {
+          localStorage.setItem("videoRights", 'videoRights');
+          document.getElementById("videoConfStart").style.display = "inline";
+        }
+        else if (data.data.chatRights == 'yes') {
+          localStorage.setItem("chatRights", 'chatRights');
+          document.getElementById("chatConfStart").style.display = "inline";
+        }
         var userNameEmail = localStorage.getItem("careatorEmail");
         var emailIdSplit = userNameEmail.split('@');
         userName = emailIdSplit[0];
@@ -276,7 +283,7 @@ function disconnecSession() {
     localStorage.removeItem("sessionUrlId");
     localStorage.removeItem("careator_remoteEmail");
     signaling_socket.emit("disconnectSession", { deleteSessionId: queryLink, owner: peerNew_id });
-  
+
     window.location.href = "https://norecruits.com";
   } else {
     localStorage.removeItem("careatorEmail");

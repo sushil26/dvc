@@ -1,4 +1,4 @@
-careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $filter, careatorSessionAuth) {
+careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $filter, careatorSessionAuth, careatorHttpFactory) {
     console.log("careator_dashboardCtrl==>");
     $scope.getChatGroupListById = function (id) {
         console.log("getAllEmployee-->");
@@ -34,6 +34,6 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
         $scope.getChatGroupListById(localStorage.getItem("userId"));
     }
  
-    careatorSessionnAuth.setAccess(userData);
+    careatorSessionAuth.setAccess(userData);
 
 })

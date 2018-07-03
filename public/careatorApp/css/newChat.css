@@ -157,8 +157,9 @@ box-shadow: none;
 }
 
 .sideBar-body {
+    background: lightblue;
     position: relative;
-    padding: 10px !important;
+    padding: 2px !important;
     border-bottom: 1px solid #f7f7f7;
     height: 72px;
     margin: 0 !important;

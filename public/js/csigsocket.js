@@ -153,6 +153,7 @@ function checkPassword() {
       dataType: "json",
       success: function (data) {
         console.log("data: " + JSON.stringify(data));
+        
         var userNameEmail = localStorage.getItem("careatorEmail");
         var emailIdSplit = userNameEmail.split('@');
         userName = emailIdSplit[0];

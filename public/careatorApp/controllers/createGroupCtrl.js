@@ -66,6 +66,10 @@ careatorApp.controller('createGroupCtrl', function ($scope, $rootScope, $filter,
         console.log("<--rightEmployeeList");
     }
 
+    $scope.memberschanges = function(){
+        console.log("memberschanges-->");
+    }
+
  
 
 })

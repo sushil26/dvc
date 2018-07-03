@@ -1,4 +1,5 @@
 careatorApp.factory('careatorSessionAuth', function($cookieStore) {
+	console.log("careatorSessionAuth-->");
     var authFact={};
 	authFact.setAccess=function(accessInfo){
 		$cookieStore.put('accessInfo',accessInfo);

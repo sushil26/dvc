@@ -60,10 +60,10 @@ careatorApp.controller('createGroupCtrl', function ($scope, $rootScope, $filter,
         console.log("value changed")
         $scope.groupAdminModel = [];
         $scope.groupAdminSettings = {
-           
+            selectionLimit: 1,
             enableSearch: true,
-            externalIdProp: '',
-            selectionLimit: 1
+           
+            
         };
         $scope.groupAdminData = $scope.groupMemberModel;
     });

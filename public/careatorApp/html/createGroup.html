@@ -42,7 +42,7 @@
                             <div class="form-group" ng-if="groupMemberModel.length>0">
                                 <label class="col-lg-3">Group Admin*</label>
                                 <div class="col-lg-9">
-                                    <div ng-dropdown-multiselect="" options="groupAdminData" selected-model="groupAdminModel" checkboxes="true" extra-settings="groupAdminSettings"></div>
+                                    <div ng-dropdown-multiselect="" options="groupAdminData" selected-model="groupAdminModel"  extra-settings="groupAdminSettings"></div>
                                     <pre>Selected Memebers : <span ng-repeat="mem in groupAdminModel">{{mem.label+", "}}</span></pre>
                                 </div>
                             </div>

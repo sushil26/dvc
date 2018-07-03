@@ -38,7 +38,7 @@ careatorApp.controller('createGroupCtrl', function ($scope, $rootScope, $filter,
                     console.log("groupMembers[x].email: " + groupMembers[x].email + " groupMembers[x]._id: " + groupMembers[x]._id);
                     $scope.groupMemberData.push({
                         "email": groupMembers[x].email,
-                        "label":  groupMembers[x].name + " - " + groupMembers[x].empId,
+                        "label": groupMembers[x].name + " - " + groupMembers[x].empId,
                         "id": groupMembers[x]._id
                     });
                     console.log(" after $scope.groupMemberData: " + JSON.stringify($scope.groupMemberData));
@@ -60,15 +60,14 @@ careatorApp.controller('createGroupCtrl', function ($scope, $rootScope, $filter,
         console.log("value changed")
         $scope.groupAdminModel = [];
         $scope.groupAdminSettings = {
-           
-            enableSearch: true,
+            selectionLimit: 1,
             externalIdProp: '',
-            selectionLimit: 1
+            enableSearch: true,
         };
         $scope.groupAdminData = $scope.groupMemberModel;
     });
 
-    $scope.creteGroup = function(){
+    $scope.creteGroup = function () {
         console.log("creteGroup-->");
         var obj = {
             "groupName": $scope.groupName,

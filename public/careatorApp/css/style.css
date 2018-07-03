@@ -490,6 +490,7 @@ ul.sidebar-menu li a span {
 }
 
 ul.sidebar-menu li a {
+  border-bottom: 2px solid #009688;
   color: #d0d8df;
   text-decoration: none;
   display: block;

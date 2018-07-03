@@ -870,7 +870,7 @@ module.exports.careator_chatVideo_creteGroup = function (req, res) {
                         console.log("err: " + JSON.stringify(err));
                         response = {
                             status: fasle,
-                            message: "Unsuccessfull group creation",
+                            message: "Successfull  chat group creation but unsuccessfull chat group creation",
                             data: err
                         };
                         res.status(400).send(response);

@@ -38,7 +38,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
     $scope.getAllChatRightEmp = function () {
         console.log("getAllChatRightEmp-->");
         var id = userData.userId;
-        api = "https://norecruits.com/careator_getEmp/careator_getChatRightsAllemp/"+id;
+        api = "https://norecruits.com/careator_getEmp/careator_getChatRightsAllemp/" + id;
         console.log("api: " + JSON.stringify(api));
         careatorHttpFactory.get(api).then(function (data) {
             console.log("data--" + JSON.stringify(data.data));
@@ -65,6 +65,31 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
     $scope.sendText = function () {
         console.log("sendText-->");
         console.log("$scope.typedMessage: " + $scope.typedMessage);
+        var api;
+        var obj = {
+            "senderId": userData.userId,
+            "receiverId": $scope.individualData._id,
+            "message": $scope.typedMessage
+        }
+        if ($scope.selectedType == 'individual') {
+            api = "https://norecruits.com/careator_individualText/individualText";
+        }
+        else if ($scope.selectedType == 'group') {
+            api = "https://norecruits.com/careator_groupText/groupText";
+        }
+        console.log("api: " + api);
+        careatorHttpFactory.post(api, obj).then(function (data) {
+            console.log("data--" + JSON.stringify(data.data));
+            var checkStatus = careatorHttpFactory.dataValidation(data);
+            if (checkStatus) {
+                console.log("data.data.data: " + JSON.stringify(data.data.data));
+                console.log(data.data.message);
+            }
+            else {
+                console.log("Sorry");
+                console.log(data.data.message);
+            }
+        })
     }
 
     /* ### Start: Front end  CSS### */

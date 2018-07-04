@@ -41,7 +41,7 @@
 
                                     </span>
 
-                                    <span ng-if="userData[0].chatRights=='no'">
+                                    <span ng-if="userData[0].chatRights=='no' && userData[0].videoRights=='yes' ">
                                         Chat&nbsp;
                                         <input type="radio" name="cat" value="chat"> &nbsp;&nbsp; Video&nbsp;
                                         <input type="radio" name="cat" value="video" checked="checked"> &nbsp;&nbsp; Both&nbsp;
@@ -49,7 +49,7 @@
 
                                     </span>
 
-                                    <span ng-if="userData[0].videoRights=='no'">
+                                    <span ng-if="userData[0].videoRights=='no' && userData[0].chatRights=='yes'">
                                         Chat&nbsp;
                                         <input type="radio" name="cat" value="chat" checked="checked"> &nbsp;&nbsp; Video&nbsp;
                                         <input type="radio" name="cat" value="video"> &nbsp;&nbsp; Both&nbsp;

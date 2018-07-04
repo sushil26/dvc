@@ -156,7 +156,7 @@ box-shadow: none;
     position: relative;
     padding: 2px !important;
     border-bottom: 1px solid #f7f7f7;
-    height: 72px;
+    height: 54px;
     margin: 0 !important;
     cursor: pointer;
 }
@@ -203,6 +203,7 @@ box-shadow: none;
 }
 
 .time-meta {
+    margin-top: 15px;
     text-align: right;
     font-size: 12px;
     padding: 1% !important;
@@ -495,7 +496,7 @@ box-shadow: none;
         height: calc(100% - 130px);
     }
     .sideBar-body {
-        height: 80px;
+        height: 61px;
     }
     .sideBar-avatar {
         text-align: left;

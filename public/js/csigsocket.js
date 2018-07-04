@@ -167,7 +167,7 @@ function checkPassword() {
       localStorage.setItem("videoRights", 'yes');
       document.getElementById("videoConfStart").style.display = "inline";
     }
-    else if (data.data.chatRights == 'yes') {
+    if (data.data.chatRights == 'yes') {
       localStorage.setItem("chatRights", 'yes');
       document.getElementById("chatConfStart").style.display = "inline";
     }

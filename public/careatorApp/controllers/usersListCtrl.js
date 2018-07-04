@@ -53,7 +53,10 @@ careatorApp.controller('usersListCtrl', function ($scope,$state,careatorHttpFact
         console.log("editUser-->");
         console.log("$scope.allemployee[index]: "+JSON.stringify($scope.allemployee[index]));
         var data = $scope.allemployee[index];
-        
-        $state.go("Cdashboard.editUser",{"id":data._id, "userName":data.userName, "videoRights":data.videoRights, "chatRights":data.chatRights, "email":data.email});
+        var obj = {
+            "id":data._id, "userName":data.userName, "videoRights":data.videoRights, "chatRights":data.chatRights, "email":data.email
+        }
+        console.log("obj: "+JSON.stringify(obj));
+     //   $state.go("Cdashboard.editUser",{});
     }
 })

@@ -47,12 +47,11 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
     $('.icon_menu').click(function () {
 
         $('#tog').removeClass("icon_menu");
-        $('#tog').addClass("fa fa-plus kkkllkl");
+        $('#tog').addClass("fa fa-plus");
 
     });
     $('.kkkllkl').click(function () {
         $('#tog').removeClass("fa fa-plus");
-        $('#tog').removeClass("kkkllkl");
         $('#tog').addClass("icon_menu");
 
 

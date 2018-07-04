@@ -35,11 +35,12 @@
                                     </td>
 
                                     <td>
-                                        {{emp.groupMembers[0].name}}
+                                            <span ng-repeat="name in emp.groupMembers[0]">{{name.name}}</span>
+                                        
 
                                     </td>
                                     <td>
-                                        {{emp.admin.name}}
+                                        Active
                                     </td>
                                     <td>
                                         <button ng-if="emp.status=='inactive'" ng-click="statusChange(emp_id, 'active')">Activate</button>

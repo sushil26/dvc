@@ -1,6 +1,7 @@
 careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $window, careatorHttpFactory, careatorSessionAuth) {
     console.log("chatCtrl==>");
     var userData = careatorSessionAuth.getAccess("userData");
+    $scope.userId = userData.userId;
     console.log("userData: " + JSON.stringify(userData));
 
     $scope.getChatGroupListById = function (id) {
@@ -104,7 +105,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
             console.log("data--" + JSON.stringify(data.data));
             var checkStatus = careatorHttpFactory.dataValidation(data);
             if (checkStatus) {
-                $scope.allChat = data.data.data;
+                $scope.allChat = data.data.data[0];
                 console.log("allChat: " + JSON.stringify($scope.allChat));
                 console.log(data.data.message);
             }

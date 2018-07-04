@@ -50,8 +50,9 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
         $('#tog').addClass("fa fa-plus");
 
     });
-    $('.fa fa-plus').click(function () {
-        $('#tog').removeClass("fa fa-plus");
+    $('.fa-plus').click(function () {
+        $('#tog').removeClass("fa");
+        $('#tog').removeClass("fa-plus");
         $('#tog').addClass("icon_menu");
 
 

@@ -88,6 +88,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
             if (checkStatus) {
                 console.log("data.data.data: " + JSON.stringify(data.data.data));
                 console.log(data.data.message);
+                $scope.allChat.chats.push({"senderId":obj.senderId,"senderName":obj.senderName,"message":obj.message,"sendTime":new Date()});
             }
             else {
                 console.log("Sorry");

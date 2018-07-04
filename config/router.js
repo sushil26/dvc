@@ -25,8 +25,9 @@ module.exports = function (app) {
     app.post('/careator/statusChangeById', careator.statusChangeById);
     app.post('/careator/groupStatusChangeById', careator.groupStatusChangeById);
     
-    app.post('/careator/userEditById', careator.userEditById);
-    app.post('/careator/groupEditById', careator.groupEditById);
+    // app.post('/careator/userEditById', careator.userEditById);
+    // app.post('/careator/groupEditById', careator.groupEditById);
+
     app.get('/careator_getEmp/careator_getUserById/:id', careator.careator_getUserById);
 
 

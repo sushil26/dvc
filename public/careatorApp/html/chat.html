@@ -105,7 +105,9 @@
                                         </div>
                                     </div>
                                     <div class="col-sm-8 col-xs-7 heading-name">
-                                        <a class="heading-name-meta">{{chatData.groupName}}
+                                        <a ng-if="selectedType=='group'" class="heading-name-meta">{{groupData.groupName}}
+                                        </a>
+                                        <a ng-if="selectedType=='individualData'" class="heading-name-meta">{{individualData.groupName}}
                                         </a>
                                         <span class="heading-online">Online</span>
                                     </div>

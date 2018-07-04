@@ -30,8 +30,9 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
 
     $scope.groupDetails = function (index) {
         console.log("groupDetails-->");
+        $scope.selectedType = "group";
         console.log(" $scope.allGroup[index]: " + JSON.stringify($scope.allGroup[index]));
-        $scope.chatData = $scope.allGroup[index];
+        $scope.groupData = $scope.allGroup[index];
     }
 
     $scope.getAllChatRightEmp = function () {
@@ -54,8 +55,9 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
 
     $scope.getEmpDetail = function (index) {
         console.log("getEmpDetail-->");
+        $scope.selectedType = "individualData";
         console.log("$scope.allEmp[index]: " + JSON.stringify($scope.allEmp[index]));
-        $scope.chatData = $scope.allEmp[index];
+        $scope.individualData = $scope.allEmp[index];
     }
 
 

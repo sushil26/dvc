@@ -41,13 +41,13 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         careatorHttpFactory.get(api).then(function (data) {
             console.log("data--" + JSON.stringify(data.data));
             var checkStatus = careatorHttpFactory.dataValidation(data);
-            console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
-                console.log("data.data.data: "+JSON.stringify(data.data.data));
-                console.log("data.data.message: "+data.data.message);
+                $scope.allEmp = data.data.data;
+                console.log(" $scope.allEmp : " + JSON.stringify( $scope.allEmp ));
+                console.log("data.data.message: " + data.data.message);
             }
-            else{
-                console.log("Sorry: "+data.data.message);
+            else {
+                console.log("Sorry: " + data.data.message);
             }
         })
     }

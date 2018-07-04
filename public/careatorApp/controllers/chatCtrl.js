@@ -56,11 +56,15 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
     $scope.getEmpDetail = function (index) {
         console.log("getEmpDetail-->");
         $scope.selectedType = "individual";
-        console.log(" $scope.selectedType : "+ $scope.selectedType );
+        console.log(" $scope.selectedType : " + $scope.selectedType);
         $scope.individualData = $scope.allEmp[index];
-        console.log(" $scope.individualData: "+JSON.stringify( $scope.individualData));
+        console.log(" $scope.individualData: " + JSON.stringify($scope.individualData));
     }
 
+    $scope.sendText = function () {
+        console.log("sendText-->");
+        console.log("$scope.typedMessage: " + $scope.typedMessage);
+    }
 
     /* ### Start: Front end  CSS### */
     $(".heading-compose").click(function () {

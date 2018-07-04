@@ -176,6 +176,6 @@ document.getElementById("comment").addEventListener("keydown", function(e) {
     e.preventDefault(); // sometimes useful
 
     // Enter is pressed
-    if (e.keyCode == 13) { submitFunction(); }
+    if (e.keyCode == 13) { sendText() }
 }, false);
 })

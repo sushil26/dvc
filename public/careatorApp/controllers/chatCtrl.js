@@ -31,7 +31,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
     $scope.groupDetails = function (index) {
         console.log("groupDetails-->");
         console.log(" $scope.allGroup[index]: " + JSON.stringify($scope.allGroup[index]));
-        $scope.groupData = $scope.allGroup[index];
+        $scope.chatData = $scope.allGroup[index];
     }
 
     $scope.getAllChatRightEmp = function () {
@@ -43,7 +43,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
             var checkStatus = careatorHttpFactory.dataValidation(data);
             if (checkStatus) {
                 $scope.allEmp = data.data.data;
-                console.log(" $scope.allEmp : " + JSON.stringify( $scope.allEmp ));
+                console.log(" $scope.allEmp : " + JSON.stringify($scope.allEmp));
                 console.log("data.data.message: " + data.data.message);
             }
             else {
@@ -52,7 +52,11 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         })
     }
 
-
+    $scope.getEmpDetail = function (index) {
+        console.log("getEmpDetail-->");
+        console.log("$scope.allEmp[index]: " + JSON.stringify($scope.allEmp[index]));
+        $scope.chatData = $scope.allEmp[index];
+    }
 
 
     /* ### Start: Front end  CSS### */

@@ -73,8 +73,8 @@
                                         </div>
                                     </div>
 
-                                    <div class="row compose-sideBar">
-                                        <div class="row sideBar-body">
+                                    <div class="row compose-sideBar" ng-repeat="emp in allEmp">
+                                        <div class="row sideBar-body" ng-click="getEmpDetail($index)">
                                             <div class="col-sm-3 col-xs-3 sideBar-avatar">
                                                 <div class="avatar-icon">
                                                     <img src="https://bootdey.com/img/Content/avatar/avatar1.png">
@@ -83,7 +83,7 @@
                                             <div class="col-sm-9 col-xs-9 sideBar-main">
                                                 <div class="row">
                                                     <div class="col-sm-8 col-xs-8 sideBar-name">
-                                                        <span class="name-meta">Sushil
+                                                        <span class="name-meta">{{emp.name}}
                                                         </span>
                                                     </div>
                                                     <div class="col-sm-4 col-xs-4 pull-right sideBar-time">
@@ -105,7 +105,7 @@
                                         </div>
                                     </div>
                                     <div class="col-sm-8 col-xs-7 heading-name">
-                                        <a class="heading-name-meta">{{groupData.groupName}}
+                                        <a class="heading-name-meta">{{chatData.groupName}}
                                         </a>
                                         <span class="heading-online">Online</span>
                                     </div>

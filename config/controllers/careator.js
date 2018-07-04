@@ -890,8 +890,7 @@ module.exports.careator_getChatGroupListById = function (req, res) {
 
 module.exports.careator_getChatGroupList= function (req, res) {
     console.log("careator_getChatGroupList-->");
-    var id = req.params.id;
-    if (general.emptyCheck(id)) {
+    
         careatorChatGroup.find().toArray(function (err, data) {
             if (err) {
                 console.log("err: " + JSON.stringify(err));
@@ -913,16 +912,6 @@ module.exports.careator_getChatGroupList= function (req, res) {
                 res.status(200).send(responseData);
             }
         })
-
-    }
-    else {
-        console.log("Epty value found");
-        response = {
-            status: false,
-            message: "empty value found"
-        };
-        res.status(400).send(response);
-    }
 }
 
 module.exports.careator_getChatRightsAllemp = function (req, res) {

@@ -303,9 +303,9 @@ box-shadow: none;
     margin: 0 !important;
     /* background: url("w.jpg") no-repeat fixed center; */
     background-size: cover;
-
     border: 1px solid #f7f7f7;
     height: calc(100% - 120px);
+    overflow: auto;
 }
 
 .message-previous {
@@ -573,4 +573,15 @@ box-shadow: none;
         padding: 5px 2px 5px 0 !important;
         font-size: 1.8em !important;
     }
+}
+
+::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, .5);
+    -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
 }

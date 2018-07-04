@@ -12,10 +12,10 @@ careatorApp.controller('editUserCtrl', function ($scope, $state, $rootScope, $fi
             if (checkStatus) {
                 $scope.userData = data.data.data;
                 console.log("userData: " + JSON.stringify($scope.userData));
-                // console.log(data.data.message);
+                console.log(data.data.message);
             } else {
                 console.log("Sorry");
-                // console.log(data.data.message);
+                console.log(data.data.message);
             }
         })
         console.log("<--getAllEmployee");

@@ -1038,8 +1038,8 @@ module.exports.individualTextReadById = function (req, res) {
     var sId = req.params.sId;
     var rId = req.params.rId;
     console.log("sId: "+sId+" rId: " +rId);
-    var title = req.body.sId + req.body.rId;
-    var r_title = req.body.rId + req.body.sId;
+    var title = sId + rId;
+    var r_title = rId + sId;
     console.log("title : " + title + " r_title: " + r_title);
     if (general.emptyCheck(sId) && general.emptyCheck(rId)) {
         careatorChat.find({ $or: [{ "title": title }, { "title": r_title }] }).toArray(function (err, data) {
@@ -1050,7 +1050,7 @@ module.exports.individualTextReadById = function (req, res) {
                     message: "Unsucessfully retrived data",
                     data: err
                 };
-                res.status(400).send(responseData);
+                res.status(400).send(response);
             }
             else {
                 console.log("data.length: " + data.length);
@@ -1060,7 +1060,7 @@ module.exports.individualTextReadById = function (req, res) {
                     message: "Sucessfully retrived data",
                     data: data
                 };
-                res.status(200).send(responseData);
+                res.status(200).send(response);
             }
         })
     }

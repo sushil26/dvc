@@ -38,4 +38,12 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
     var userData = careatorSessionAuth.getAccess("userData");
     console.log("userData: "+JSON.stringify(userData));
 
+
+///////////////Hamburger/////////////////////////
+$('#nav-icon1,#nav-icon2,#nav-icon3,#nav-icon4').click(function(){
+    $(this).toggleClass('open');
+});
+
+
+
 })

@@ -32,26 +32,23 @@
                                 <label class="col-lg-3">User Rights</label>
                                 <div class="col-lg-9">
 
-                                    <span ng-if="userData[0].videoRights=='yes' &&  userData[0].chatRights=='yes'">
+                                    <!-- <span ng-if="userData[0].videoRights=='yes' &&  userData[0].chatRights=='yes'">
                                         Chat&nbsp;
-                                        <input type="checkbox" ng-model="Rights" value="Chat"> &nbsp;&nbsp; Video&nbsp;
-                                        <input type="checkbox" ng-model="Rights" value="Video"> &nbsp;&nbsp; Both&nbsp;
-                                        <input type="checkbox" ng-model="Rights" value="Both" >
-                                    </span>
-
+                                        <input type="checkbox" ng-checked="Rights" value="Chat" ng-checked="true"> &nbsp;&nbsp; Video&nbsp;
+                                        <input type="checkbox" ng-checked="Rights" value="Video" ng-checked="true">
+                                    </span> -->
+---{{userData[0].chatRights}}---{{userData[0].videoRights}}
                                     <span ng-if="userData[0].chatRights=='no' && userData[0].videoRights=='yes' ">
                                         Chat&nbsp;
-                                        <input type="checkbox" ng-model="Rights" value="Chat"> &nbsp;&nbsp; Video&nbsp;
-                                        <input type="checkbox" ng-model="Rights" value="Video" >Both&nbsp;
-                                        <input type="checkbox" ng-model="Rights" value="Both">
+                                        <input type="checkbox" ng-model="Rights" value="Chat" > &nbsp;&nbsp; Video&nbsp;
+                                        <input type="checkbox" ng-model="Rights" value="Video" ng-checked="true">
                                     </span>
 
-                                    <span ng-if="userData[0].videoRights=='no' && userData[0].chatRights=='yes'">
+                                    <!-- <span ng-if="userData[0].videoRights=='no' && userData[0].chatRights=='yes'">
                                         Chat&nbsp;
-                                        <input type="checkbox" ng-model="Rights" value="Chat" > &nbsp;&nbsp; Video&nbsp;
-                                        <input type="checkbox" ng-model="Rights" value="Video"> &nbsp;&nbsp;Both&nbsp;
-                                        <input type="checkbox" ng-model="Rights" value="Both">
-                                    </span>
+                                        <input type="checkbox" ng-checked="Rights" value="Chat" ng-checked="true"> &nbsp;&nbsp; Video&nbsp;
+                                        <input type="checkbox" ng-checked="Rights" value="Video">
+                                    </span> -->
 
                                 </div>
                             </div>

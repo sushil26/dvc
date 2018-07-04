@@ -53,7 +53,7 @@ function careator_dashboard() {
 }
 
 function editUser() {
-    return '/editUser';
+    return '/editUser/:id';
 }
 function editGroup() {
     return '/editGroup';

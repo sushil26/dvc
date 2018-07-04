@@ -14,8 +14,8 @@ careatorApp.controller('editUserCtrl', function ($scope, $state, $rootScope, $fi
             if (checkStatus) {
                 $scope.userData = data.data.data;
                 $scope.userDataRights = {
-                    "videoRights":$scope.userData.videoRights,
-                    "chatRights":$scope.userData.chatRights
+                    "videoRights": $scope.userData.videoRights,
+                    "chatRights": $scope.userData.chatRights
                 }
                 console.log("userData: " + JSON.stringify($scope.userData));
                 console.log(data.data.message);
@@ -30,4 +30,17 @@ careatorApp.controller('editUserCtrl', function ($scope, $state, $rootScope, $fi
         console.log("<--getAllEmployee");
     }
     $scope.getUser();
+
+    $scope.updateUser = function () {
+        console.log("updateUser-->");
+        console.log("userName: " + $scope.userName + " userEmail: " + $scope.userEmail);
+        console.log("userDataRights: " + JSON.stringify(userDataRights));
+        var obj = {
+            "userName": $scope.userName,
+            "userEmail": $scope.userEmail,
+            "videoRights": $scope.userDataRights.videoRights,
+            "chatRights": $scope.userDataRights.chatRights
+        }
+        console.log("obj: "+JSON.stringify(obj));
+    }
 })

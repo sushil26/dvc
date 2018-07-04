@@ -13,6 +13,10 @@ careatorApp.controller('editUserCtrl', function ($scope, $state, $rootScope, $fi
             var checkStatus = careatorHttpFactory.dataValidation(data);
             if (checkStatus) {
                 $scope.userData = data.data.data;
+                $scope.userDataRights = {
+                    "videoRights":$scope.userData.videoRights,
+                    "chatRights":$scope.userData.chatRights
+                }
                 console.log("userData: " + JSON.stringify($scope.userData));
                 console.log(data.data.message);
             }

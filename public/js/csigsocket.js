@@ -88,7 +88,7 @@ else {
     if (localStorage.getItem("videoRights") == 'yes') {
       document.getElementById("videoConfStart").style.display = "block";
     }
-    else if (localStorage.getItem("chatRights") == 'yes') {
+    if (localStorage.getItem("chatRights") == 'yes') {
       document.getElementById("chatConfStart").style.display = "block";
     }
 

@@ -888,30 +888,30 @@ module.exports.careator_getChatGroupListById = function (req, res) {
     }
 }
 
-module.exports.careator_getChatGroupList= function (req, res) {
+module.exports.careator_getChatGroupList = function (req, res) {
     console.log("careator_getChatGroupList-->");
-    
-        careatorChatGroup.find().toArray(function (err, data) {
-            if (err) {
-                console.log("err: " + JSON.stringify(err));
-                responseData = {
-                    status: false,
-                    data: err,
-                    message: "Process not successful"
-                };
-                res.status(400).send(responseData);
-            }
-            else {
-                console.log("data: " + JSON.stringify(data));
-                responseData = {
-                    status: true,
-                    errorCode: 200,
-                    message: "Successfully get Data",
-                    data: data
-                };
-                res.status(200).send(responseData);
-            }
-        })
+
+    careatorChatGroup.find().toArray(function (err, data) {
+        if (err) {
+            console.log("err: " + JSON.stringify(err));
+            responseData = {
+                status: false,
+                data: err,
+                message: "Process not successful"
+            };
+            res.status(400).send(responseData);
+        }
+        else {
+            console.log("data: " + JSON.stringify(data));
+            responseData = {
+                status: true,
+                errorCode: 200,
+                message: "Successfully get Data",
+                data: data
+            };
+            res.status(200).send(responseData);
+        }
+    })
 }
 
 module.exports.careator_getChatRightsAllemp = function (req, res) {
@@ -1009,7 +1009,7 @@ module.exports.individualText = function (req, res) {
                     "sendTime": date
                 }
                 console.log("obj : " + JSON.stringify(obj));
-                careatorChat.update({"_id":data[0]._id},{"$push":{"chats":obj}}, function(err, updatedData){
+                careatorChat.update({ "_id": data[0]._id }, { "$push": { "chats": obj } }, function (err, updatedData) {
                     if (err) {
                         console.log("err: " + JSON.stringify(err));
                         response = {
@@ -1020,7 +1020,7 @@ module.exports.individualText = function (req, res) {
                         res.status(400).send(responseData);
                     }
                     else {
-                        console.log("updatedData: "+JSON.stringify(updatedData));
+                        console.log("updatedData: " + JSON.stringify(updatedData));
                         response = {
                             status: true,
                             message: "Sucessfully updated",
@@ -1033,6 +1033,45 @@ module.exports.individualText = function (req, res) {
         }
     })
 }
+module.exports.individualTextReadById = function (req, res) {
+    console.log("individualTextReadById-->: " + req.params.id);
+    var sId = req.params.sId;
+    var rId = req.params.rId;
+    var title = req.body.sId + req.body.rId;
+    var r_title = req.body.rId + req.body.sId;
+    console.log("title : " + title + " r_title: " + r_title);
+    if (general.emptyCheck(sId) && general.emptyCheck(rId)) {
+        careatorChat.find({ $or: [{ "title": title }, { "title": r_title }] }).toArray(function (err, data) {
+            if (err) {
+                console.log("err: " + JSON.stringify(err));
+                response = {
+                    status: fasle,
+                    message: "Unsucessfully retrived data",
+                    data: err
+                };
+                res.status(400).send(responseData);
+            }
+            else {
+                console.log("data.length: " + data.length);
+                console.log("data: " + JSON.stringify(data));
+                response = {
+                    status: true,
+                    message: "Sucessfully retrived data",
+                    data: data
+                };
+                res.status(200).send(responseData);
+            }
+        })
+    }
+    else{
+        console.log("Epty value found");
+        response = {
+            status: false,
+            message: "empty value found"
+        };
+        res.status(400).send(response);
+    }
 
+}
 
 

@@ -94,6 +94,27 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
             }
         })
     }
+    $scope.readText = function () {
+        console.log("readText-->");
+        var sId = userData.userId;
+        var rId= $scope.individualData._id;
+        var api = "https://norecruits.com/careator_individualTextRead/individualTextReadById/"+sId+"/"+rId;
+        console.log("api: " + api);
+        careatorHttpFactory.get(api).then(function (data) {
+            console.log("data--" + JSON.stringify(data.data));
+            var checkStatus = careatorHttpFactory.dataValidation(data);
+            console.log("data--" + JSON.stringify(data.data));
+            if (checkStatus) {
+                $scope.allGroup = data.data.data;
+                console.log("allemployee: " + JSON.stringify($scope.allGroup));
+                console.log(data.data.message);
+            }
+            else {
+                console.log("Sorry");
+                console.log(data.data.message);
+            }
+        })
+    }
 
     /* ### Start: Front end  CSS### */
     $(".heading-compose").click(function () {

@@ -888,6 +888,32 @@ module.exports.careator_getChatGroupListById = function (req, res) {
     }
 }
 
+module.exports.careator_getChatGroupList= function (req, res) {
+    console.log("careator_getChatGroupList-->");
+    
+        careatorChatGroup.find().toArray(function (err, data) {
+            if (err) {
+                console.log("err: " + JSON.stringify(err));
+                responseData = {
+                    status: false,
+                    data: err,
+                    message: "Process not successful"
+                };
+                res.status(400).send(responseData);
+            }
+            else {
+                console.log("data: " + JSON.stringify(data));
+                responseData = {
+                    status: true,
+                    errorCode: 200,
+                    message: "Successfully get Data",
+                    data: data
+                };
+                res.status(200).send(responseData);
+            }
+        })
+}
+
 module.exports.careator_getChatRightsAllemp = function (req, res) {
     console.log("careator_getChatRightsAllemp-->: " + req.params.id);
     var id = req.params.id;

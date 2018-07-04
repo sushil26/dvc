@@ -125,20 +125,30 @@
                                         </div>
                                     </div>
 
-                                    <div class="row message-body">
-                                        <div class="col-sm-12 message-main-receiver">
+                                    <div class="row message-body" ng-repeat="chat in allChat.chats">
+                                        <div class="col-sm-12 message-main-receiver" ng-if="chat.senderId!=userId">
                                             <div class="receiver">
                                                 <div class="message-text">
-                                                    Hi, what are you doing?!
+                                                   {{chat.message}}
                                                 </div>
                                                 <span class="message-time pull-right">
-                                                    Sun
+                                                    {{chat.sendTime}}
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 message-main-sender" ng-if="chat.senderId==userId">
+                                            <div class="sender">
+                                                <div class="message-text">
+                                                    {{chat.message}}
+                                                </div>
+                                                <span class="message-time pull-right">
+                                                    {{chat.sendTime}}
                                                 </span>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="row message-body">
+                                    <!-- <div class="row message-body">
                                         <div class="col-sm-12 message-main-sender">
                                             <div class="sender">
                                                 <div class="message-text">
@@ -149,7 +159,7 @@
                                                 </span>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
 
                                 <div class="row reply">

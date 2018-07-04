@@ -15,8 +15,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                 $scope.allGroup = data.data.data;
                 console.log("allemployee: " + JSON.stringify($scope.allGroup));
                 console.log(data.data.message);
-            }
-            else {
+            } else {
                 console.log("Sorry");
                 console.log(data.data.message);
             }
@@ -47,8 +46,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                 $scope.allEmp = data.data.data;
                 console.log(" $scope.allEmp : " + JSON.stringify($scope.allEmp));
                 console.log("data.data.message: " + data.data.message);
-            }
-            else {
+            } else {
                 console.log("Sorry: " + data.data.message);
             }
         })
@@ -77,8 +75,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                 "receiverName": $scope.individualData.name,
                 "message": $scope.typedMessage
             }
-        }
-        else if ($scope.selectedType == 'group') {
+        } else if ($scope.selectedType == 'group') {
             api = "https://norecruits.com/careator_groupText/groupText";
         }
         console.log("api: " + api);
@@ -88,9 +85,13 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
             if (checkStatus) {
                 console.log("data.data.data: " + JSON.stringify(data.data.data));
                 console.log(data.data.message);
-                $scope.allChat.chats.push({ "senderId": obj.senderId, "senderName": obj.senderName, "message": obj.message, "sendTime": new Date() });
-            }
-            else {
+                $scope.allChat.chats.push({
+                    "senderId": obj.senderId,
+                    "senderName": obj.senderName,
+                    "message": obj.message,
+                    "sendTime": new Date()
+                });
+            } else {
                 console.log("Sorry");
                 console.log(data.data.message);
             }
@@ -109,15 +110,14 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                 $scope.allChat = data.data.data[0];
                 console.log("allChat: " + JSON.stringify($scope.allChat));
                 console.log(data.data.message);
-            }
-            else {
+            } else {
                 console.log("Sorry");
                 console.log(data.data.message);
             }
         })
     }
 
-    $scope.getChatRecords = function(){
+    $scope.getChatRecords = function () {
         console.log("getChatRecords-->");
         var id = $scope.userId;
         var api = "https://norecruits.com/careator_getChatRecords/getChatRecords/" + id;
@@ -129,8 +129,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                 $scope.allGroup = data.data.data;
                 console.log("allemployee: " + JSON.stringify($scope.allGroup));
                 console.log(data.data.message);
-            }
-            else {
+            } else {
                 console.log("Sorry");
                 console.log(data.data.message);
             }
@@ -138,13 +137,18 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
 
     }
 
-    /* ### Start: receive message from careator.js  ### *///update to client with new message;
+    /* ### Start: receive message from careator.js  ### */ //update to client with new message;
     socket.on('comm_textReceived', function (data) {
         console.log("****comm_textReceived-->: " + JSON.stringify(data));;
 
         if ($scope.allChat._id == data.id) {
             console.log("start pushing message");
-            $scope.allChat.chats.push({ "senderId": data.senderId, "senderName": data.senderName, "message": data.message, "sendTime": data.sendTime });
+            $scope.allChat.chats.push({
+                "senderId": data.senderId,
+                "senderName": data.senderName,
+                "message": data.message,
+                "sendTime": data.sendTime
+            });
         }
     })
     /* ### End: Get event update from index.js  ### */
@@ -154,12 +158,25 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         $(".side-two").css({
             "left": "0"
         });
+        scrollDown();
     });
 
     $(".newMessage-back").click(function () {
         $(".side-two").css({
             "left": "-100%"
         });
+        scrollDown();
     });
-    /* ### End: Front end CSS ### */
+    // /* ### End: Front end CSS ### */
+
+    // for automatic scroll up
+    function scrollDown() {
+        console.log("scrollDown-->");
+        $("#popupMsg").animate({
+                scrollTop: $("#popupMsg").prop("scrollHeight")
+            },
+            500
+        );
+        console.log("<--scrollDown");
+    }
 })

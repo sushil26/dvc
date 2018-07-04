@@ -60,6 +60,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         console.log(" $scope.selectedType : " + $scope.selectedType);
         $scope.individualData = $scope.allEmp[index];
         console.log(" $scope.individualData: " + JSON.stringify($scope.individualData));
+        $scope.readText();
     }
 
     $scope.sendText = function () {

@@ -892,7 +892,7 @@ module.exports.careator_getChatRightsAllemp = function (req, res) {
     console.log("careator_getChatRightsAllemp-->: " + req.params.id);
     var id = req.params.id;
     if (general.emptyCheck(id)) {
-        careatorMaster.find({"_id": {$ne:ObjectId(id)}, "chatRights": "yes", "status": "active" }).toArray(function (err, allEmp_chat) {
+        careatorMaster.find({ "_id": { $ne: ObjectId(id) }, "chatRights": "yes", "status": "active" }).toArray(function (err, allEmp_chat) {
             if (err) {
                 console.log("err: " + JSON.stringify(err));
                 response = {
@@ -912,7 +912,7 @@ module.exports.careator_getChatRightsAllemp = function (req, res) {
                 res.status(200).send(response);
             }
         })
-    
+
     }
     else {
         console.log("Epty value found");
@@ -924,24 +924,16 @@ module.exports.careator_getChatRightsAllemp = function (req, res) {
     }
 }
 
-module.exports.individualText = function(req, res){
+module.exports.individualText = function (req, res) {
     console.log("individualText-->");
     var date = new Date();
     var title = req.body.senderId + req.body.receiverId;
     var r_title = req.body.receiverId + req.body.senderId;
-    console.log("title : "+title+"r_title: "+r_title);
-    var obj = {
-        "senderId": req.body.senderId,
-        "receiverId": req.body.receiverId,
-        "message": req.body.message,
-        "timeStamp": date
-    }
-    console.log("obj : "+JSON.stringify(obj));
-  
-    
-    careatorChat.find({$or:[{"title":title}, {"title":r_title}]}).toArray(function(err, data){
-        if(err){
-            console.log("err: "+JSON.stringify(err));
+    console.log("title : " + title + "r_title: " + r_title);
+
+    careatorChat.find({ $or: [{ "title": title }, { "title": r_title }] }).toArray(function (err, data) {
+        if (err) {
+            console.log("err: " + JSON.stringify(err));
             response = {
                 status: fasle,
                 message: "Unsucessfully retrived data",
@@ -949,20 +941,71 @@ module.exports.individualText = function(req, res){
             };
             res.status(400).send(responseData);
         }
-        else{
-            console.log("data.length: "+data.length);
-            console.log("data: "+JSON.stringify(data));
-            response = {
-                status: true,
-                message: "Sucessfully retrived data",
-                data: data
-            };
-            res.status(200).send(response);
-
+        else {
+            console.log("data.length: " + data.length);
+            console.log("data: " + JSON.stringify(data));
+            if (data.length == 0) {
+                var obj = {
+                    "title": title,
+                    "senderId": req.body.senderId,
+                    "senderName": req.body.senderName,
+                    "receiverId": req.body.receiverId,
+                    "receiverName": req.body.receiverName,
+                    "chats": [{ "senderId": req.body.senderId, "senderName": req.body.senderName, "message": req.body.message, "sendTime": date }],
+                    "timeStamp": date
+                }
+                console.log("obj : " + JSON.stringify(obj));
+                careatorChat.insert(obj, function (err, insertedData) {
+                    if (err) {
+                        console.log("err: " + JSON.stringify(err));
+                        response = {
+                            status: fasle,
+                            message: "Unsucessfully retrived data",
+                            data: err
+                        };
+                        res.status(400).send(responseData);
+                    }
+                    else {
+                        response = {
+                            status: true,
+                            message: "Sucessfully sent",
+                            data: insertedData
+                        };
+                        res.status(200).send(response);
+                    }
+                })
+            }
+            else {
+                var obj = {
+                    "senderId": req.body.senderId,
+                    "senderName": req.body.senderName,
+                    "message": req.body.message,
+                    "sendTime": date
+                }
+                console.log("obj : " + JSON.stringify(obj));
+                careatorChat.update({"_id":data._id},{"$push":{"chats":obj}}, function(err, updatedData){
+                    if (err) {
+                        console.log("err: " + JSON.stringify(err));
+                        response = {
+                            status: fasle,
+                            message: "Unsucessfully updated data",
+                            data: err
+                        };
+                        res.status(400).send(responseData);
+                    }
+                    else {
+                        console.log("updatedData: "+JSON.stringify(updatedData));
+                        response = {
+                            status: true,
+                            message: "Sucessfully updated",
+                            data: updatedData
+                        };
+                        res.status(200).send(response);
+                    }
+                })
+            }
         }
     })
-    
-
 }
 
 

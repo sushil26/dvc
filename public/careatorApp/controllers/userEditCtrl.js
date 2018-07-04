@@ -34,7 +34,7 @@ careatorApp.controller('editUserCtrl', function ($scope, $state, $rootScope, $fi
     $scope.updateUser = function () {
         console.log("updateUser-->");
         console.log("userName: " + $scope.userName + " userEmail: " + $scope.userEmail);
-        console.log("userDataRights: " + JSON.stringify(userDataRights));
+        console.log("userDataRights: " + JSON.stringify($scope.userDataRights));
         var obj = {
             "userName": $scope.userName,
             "userEmail": $scope.userEmail,

@@ -4,7 +4,8 @@ careatorApp.controller('editUserCtrl', function ($scope, $state, $rootScope, $fi
     var id = $state.params.id;
     $scope.getUser = function () {
         console.log("getUser-->");
-        var api = "https://norecruits.com/careator_getEmp/careator_getUserById/" + id;
+
+        var api = "https://norecruits.com/careator_getUser/careator_getUserById/" + id;
         console.log("api: " + api);
         careatorHttpFactory.get(api).then(function (data) {
             console.log("data--" + JSON.stringify(data.data));

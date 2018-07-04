@@ -73,8 +73,8 @@
                                         </div>
                                     </div>
 
-                                    <div class="row compose-sideBar">
-                                        <div class="row sideBar-body">
+                                    <div class="row compose-sideBar" ng-repeat="emp in allEmp">
+                                        <div class="row sideBar-body" ng-click="getEmpDetail($index)">
                                             <div class="col-sm-3 col-xs-3 sideBar-avatar">
                                                 <div class="avatar-icon">
                                                     <img src="https://bootdey.com/img/Content/avatar/avatar1.png">
@@ -83,7 +83,7 @@
                                             <div class="col-sm-9 col-xs-9 sideBar-main">
                                                 <div class="row">
                                                     <div class="col-sm-8 col-xs-8 sideBar-name">
-                                                        <span class="name-meta">Sushil
+                                                        <span class="name-meta">{{emp.name}}
                                                         </span>
                                                     </div>
                                                     <div class="col-sm-4 col-xs-4 pull-right sideBar-time">
@@ -105,7 +105,9 @@
                                         </div>
                                     </div>
                                     <div class="col-sm-8 col-xs-7 heading-name">
-                                        <a class="heading-name-meta">{{groupData.groupName}}
+                                        <a ng-if="selectedType=='group'" class="heading-name-meta">{{groupData.groupName}}
+                                        </a>
+                                        <a ng-if="selectedType=='individual'" class="heading-name-meta">{{individualData.name}}
                                         </a>
                                         <span class="heading-online">Online</span>
                                     </div>
@@ -155,13 +157,13 @@
                                         <i class="fa fa-smile-o fa-2x"></i>
                                     </div>
                                     <div class="col-sm-9 col-xs-9 reply-main">
-                                        <textarea class="form-control" rows="1" id="comment"></textarea>
+                                        <textarea class="form-control" rows="1" id="comment" ng-model="typedMessage"></textarea>
                                     </div>
                                     <div class="col-sm-1 col-xs-1 reply-recording">
                                         <i class="fa fa-microphone fa-2x" aria-hidden="true"></i>
                                     </div>
                                     <div class="col-sm-1 col-xs-1 reply-send">
-                                        <i class="fa fa-send fa-2x" aria-hidden="true"></i>
+                                        <i class="fa fa-send fa-2x" aria-hidden="true" ng-click="sendText()"></i>
                                     </div>
                                 </div>
                             </div>

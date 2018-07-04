@@ -27,6 +27,7 @@ module.exports = function (app) {
     
     app.post('/careator/userEditById', careator.userEditById);
     app.post('/careator/groupEditById', careator.groupEditById);
+    app.get('/careator_getEmp/careator_getUserById/:id', careator.careator_getUserById);
 
 
     app.get('/careator/getChatRights_emp', careator.getChatRights_emp);

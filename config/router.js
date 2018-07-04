@@ -31,7 +31,7 @@ module.exports = function (app) {
     app.post('/careator/careator_chatVideo_creteGroup', careator.careator_chatVideo_creteGroup);
     app.get('/careator_chatGroupList/careator_getChatGroupListById/:id', careator.careator_getChatGroupListById);
     app.get('/careator_getEmp/careator_getChatRightsAllemp/:id', careator.careator_getChatRightsAllemp);
-    app.get("/careator_individualText/individualText", careator.individualText);
+    app.post("/careator_individualText/individualText", careator.individualText);
 
     app.post('/record/pswdGenerate', record.pswdGenerate);
     app.post('/record/pswdCheck', record.pswdCheck);

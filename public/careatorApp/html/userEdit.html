@@ -36,7 +36,7 @@
                                         Chat&nbsp;
                                         <input type="checkbox" ng-model="Rights" value="Chat"> &nbsp;&nbsp; Video&nbsp;
                                         <input type="checkbox" ng-model="Rights" value="Video"> &nbsp;&nbsp; Both&nbsp;
-                                        <input type="checkbox" value="Both" ng-checked="true">
+                                        <input type="checkbox" ng-model="Rights" value="Both" ng-checked="true">
                                     </span>
 
                                     <span ng-if="userData[0].chatRights=='no' && userData[0].videoRights=='yes' ">

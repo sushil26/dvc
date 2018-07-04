@@ -33,27 +33,27 @@
                                 <label class="col-lg-3">User Rights</label>
                                 <div class="col-lg-9">
 
-                                    <span ng-if="userData[0].videoRights=='yes' &&  userData[0].chatRights=='yes'">
+                                    <span ng-if="userData[0].videoRights=='yes' &&  userData[0].chatRights=='yes'" ng-init="Rights=3">
                                         Chat&nbsp;
-                                        <input type="radio" name="cat" value="chat"> &nbsp;&nbsp; Video&nbsp;
-                                        <input type="radio" name="cat" value="video"> &nbsp;&nbsp; Both&nbsp;
-                                        <input type="radio" name="cat" value="both" checked>
+                                        <input type="radio" name="cat" ng-model="Rights" value="1"> &nbsp;&nbsp; Video&nbsp;
+                                        <input type="radio" name="cat" ng-model="Rights" value="2"> &nbsp;&nbsp; Both&nbsp;
+                                        <input type="radio" name="cat" ng-model="Rights" value="3">
 
                                     </span>
 
-                                    <span ng-if="userData[0].chatRights=='no' && userData[0].videoRights=='yes' ">
+                                    <span ng-if="userData[0].chatRights=='no' && userData[0].videoRights=='yes' " ng-init="Rights=2"> 
                                         Chat&nbsp;
-                                        <input type="radio" name="cat" value="chat"> &nbsp;&nbsp; Video&nbsp;
-                                        <input type="radio" name="cat" value="video" checked> &nbsp;&nbsp; Both&nbsp;
-                                        <input type="radio" name="cat" value="both">
+                                        <input type="radio" name="cat" ng-model="Rights" value="1"> &nbsp;&nbsp; Video&nbsp;
+                                        <input type="radio" name="cat" ng-model="Rights" value="2"> &nbsp;&nbsp; Both&nbsp;
+                                        <input type="radio" name="cat" ng-model="Rights" value="3">
 
                                     </span>
 
-                                    <span ng-if="userData[0].videoRights=='no' && userData[0].chatRights=='yes'">
+                                    <span ng-if="userData[0].videoRights=='no' && userData[0].chatRights=='yes'" ng-init="Rights=1">
                                         Chat&nbsp;
-                                        <input type="radio" name="cat" value="chat" checked> &nbsp;&nbsp; Video&nbsp;
-                                        <input type="radio" name="cat" value="video"> &nbsp;&nbsp; Both&nbsp;
-                                        <input type="radio" name="cat" value="both">
+                                        <input type="radio" name="cat" ng-model="Rights" value="1"> &nbsp;&nbsp; Video&nbsp;
+                                        <input type="radio" name="cat" ng-model="Rights" value="2"> &nbsp;&nbsp; Both&nbsp;
+                                        <input type="radio" name="cat" ng-model="Rights" value="3">
 
                                     </span>
 

@@ -955,7 +955,7 @@ module.exports.individualText = function(req, res){
             response = {
                 status: true,
                 message: "Sucessfully retrived data",
-                data: allEmp_chat
+                data: data
             };
             res.status(200).send(response);
 

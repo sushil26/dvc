@@ -51,7 +51,7 @@ careatorApp.controller('usersListCtrl', function ($scope, $rootScope, $filter, $
 
     $scope.editUser = function(index){
         console.log("editUser-->");
-        console.log("$scope.allemployee[index]: "+$scope.allemployee[index]);
-        
+        console.log("$scope.allemployee[index]: "+JSON.stringify($scope.allemployee[index]));
+
     }
 })

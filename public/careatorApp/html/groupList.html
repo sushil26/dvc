@@ -22,13 +22,13 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>
-                                        1.
-                                    </td>
-                                    <td>
-                                        Development
-                                    </td>
+                                    <tr ng-repeat="emp in groupList">
+                                            <td>
+                                                {{$index+1}}
+                                            </td>
+                                            <td>
+                                                {{emp.groupName}}
+                                            </td>
                                     <td>
                                         Sushil
                                         <br> Logeshwari

@@ -48,4 +48,10 @@ careatorApp.controller('usersListCtrl', function ($scope, $rootScope, $filter, $
         })
         console.log("<--statusChange");
     }
+
+    $scope.editUser = function(index){
+        console.log("editUser-->");
+        console.log("$scope.allemployee[index]: "+$scope.allemployee[index]);
+        
+    }
 })

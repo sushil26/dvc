@@ -24,6 +24,11 @@ module.exports = function (app) {
     app.get('/careator/careator_getAllEmp', careator.careator_getAllEmp);
     app.post('/careator/statusChangeById', careator.statusChangeById);
     app.post('/careator/groupStatusChangeById', careator.groupStatusChangeById);
+    
+    app.post('/careator/userEditById', careator.userEditById);
+    app.post('/careator/groupEditById', careator.groupEditById);
+
+
     app.get('/careator/getChatRights_emp', careator.getChatRights_emp);
     app.get('/careator/getVideoRights_emp', careator.getVideoRights_emp);
     app.get('/careator/careator_getChatVideo_emp', careator.careator_getChatVideo_emp);

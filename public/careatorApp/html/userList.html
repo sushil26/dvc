@@ -51,7 +51,7 @@
                                         <button ng-if="emp.status=='active'" ng-click="statusChange(emp._id, 'inactive')">Deactivate</button>
                                         <button>Delete</button>
                                         <button>
-                                            <a href="#!/dashboard/editUser">Edit</a>
+                                            <a href="#" ng-click="editUser($index)">Edit</a>
                                         </button>
                                     </td>
 

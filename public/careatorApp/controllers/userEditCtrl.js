@@ -2,7 +2,6 @@ careatorApp.controller('editUserCtrl', function ($scope, $state, $rootScope, $fi
     console.log("editUserCtrl==>");
     console.log("id: " + $state.params.id);
     var id = $state.params.id;
-
     $scope.getUser = function () {
         console.log("getUser-->");
         var api = "https://norecruits.com/careator_getEmp/careator_getUserById/" + id;
@@ -21,8 +20,5 @@ careatorApp.controller('editUserCtrl', function ($scope, $state, $rootScope, $fi
         })
         console.log("<--getAllEmployee");
     }
-
     $scope.getUser();
-
-
 })

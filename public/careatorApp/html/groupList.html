@@ -14,6 +14,7 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Group-name</th>
+                                    <th>Admin</th>
                                     <th>Members</th>
                                     <th>Status</th>
                                     <th>Action</th>
@@ -22,28 +23,31 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
+                                <tr ng-repeat="emp in groupList">
                                     <td>
-                                        1.
+                                        {{$index+1}}
                                     </td>
                                     <td>
-                                        Development
+                                        {{emp.groupName}}
                                     </td>
                                     <td>
-                                        Sushil
-                                        <br> Logeshwari
-                                        <br> Monu
+                                        {{emp.admin.name}}
+                                    </td>
+
+                                    <td>
+                                        {{emp.groupMembers[0].name}}
 
                                     </td>
                                     <td>
-                                        Active
+                                        {{emp.admin.name}}
                                     </td>
-
                                     <td>
                                         <button ng-if="emp.status=='inactive'" ng-click="statusChange(emp_id, 'active')">Activate</button>
                                         <button ng-if="emp.status=='active'" ng-click="statusChange(emp_id, 'inactive')">Deactivate</button>
                                         <button>Delete</button>
-                                        <button> <a href="#!/dashboard/editGroup">Edit</a></button>
+                                        <button>
+                                            <a href="#!/dashboard/editGroup">Edit</a>
+                                        </button>
                                     </td>
 
                                 </tr>

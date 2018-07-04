@@ -1077,6 +1077,8 @@ module.exports.individualText = function (req, res) {
                     }
                     else {
                         console.log("updatedData: " + JSON.stringify(updatedData));
+                        var io = req.app.get('socketio');
+                        io.emit('comm_textReceived', { "id": data[0]._id, "senderId": obj.senderId, "senderName":obj.senderName,"message":message,"sendTime":obj.sendTime }); /* ### Note: Emit message to client ### */
                         response = {
                             status: true,
                             message: "Sucessfully updated",

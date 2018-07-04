@@ -38,7 +38,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
     $scope.getAllChatRightEmp = function () {
         console.log("getAllChatRightEmp-->");
         var id = userData.userId;
-        api = "https://norecruits.com/careator/getChatRightsAllemp/"+id;
+        api = "https://norecruits.com/careator/careator_getChatRightsAllemp/"+id;
         console.log("api: " + JSON.stringify(api));
         careatorHttpFactory.get(api).then(function (data) {
             console.log("data--" + JSON.stringify(data.data));

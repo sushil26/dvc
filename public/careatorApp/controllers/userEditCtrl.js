@@ -2,7 +2,7 @@ careatorApp.controller('editUserCtrl', function ($scope, $state, $rootScope, $fi
     console.log("editUserCtrl==>");
     console.log("id: " + $state.params.id);
     var id = $state.params.id;
-   
+
     $scope.getUser = function () {
         console.log("getUser-->");
 
@@ -11,10 +11,9 @@ careatorApp.controller('editUserCtrl', function ($scope, $state, $rootScope, $fi
         careatorHttpFactory.get(api).then(function (data) {
             console.log("data--" + JSON.stringify(data.data));
             var checkStatus = careatorHttpFactory.dataValidation(data);
-            console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
                 $scope.userData = data.data.data;
-                console.log("allemployee: " + JSON.stringify($scope.userData));
+                console.log("userData: " + JSON.stringify($scope.userData));
                 console.log(data.data.message);
             }
             else {
@@ -23,7 +22,7 @@ careatorApp.controller('editUserCtrl', function ($scope, $state, $rootScope, $fi
             }
         })
 
-       
+
         console.log("<--getAllEmployee");
     }
     $scope.getUser();

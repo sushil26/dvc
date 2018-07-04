@@ -55,9 +55,10 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
 
     $scope.getEmpDetail = function (index) {
         console.log("getEmpDetail-->");
-        $scope.selectedType = "individualData";
-        console.log("$scope.allEmp[index]: " + JSON.stringify($scope.allEmp[index]));
+        $scope.selectedType = "individual";
+        console.log(" $scope.selectedType : "+ $scope.selectedType );
         $scope.individualData = $scope.allEmp[index];
+        console.log(" $scope.individualData: "+JSON.stringify( $scope.individualData));
     }
 
 

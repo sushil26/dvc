@@ -6,7 +6,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
 
     $scope.getChatGroupListById = function (id) {
         console.log("getAllEmployee-->: " + id);
-        var api = "https://norecruits.com/careator_chatGroupList/careator_getChatGroupListById/" + id;
+        var api = "https://norecruits.com/careator_chat/careator_getChatGroupListById/" + id;
         console.log("api: " + api);
         careatorHttpFactory.get(api).then(function (data) {
             console.log("data--" + JSON.stringify(data.data));

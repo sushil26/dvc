@@ -33,13 +33,14 @@
                                 <label class="col-lg-3">User Rights</label>
                                 <div class="col-lg-9">
 
-                                    <span ng-if="userData[0].videoRights=='yes'">
+                                    <span ng-if="userData[0].videoRights=='yes' &&  userData[0].chatRights=='yes'">
                                         Chat&nbsp;
                                         <input type="radio" name="cat" value="chat"> &nbsp;&nbsp; Video&nbsp;
                                         <input type="radio" name="cat" value="video"> &nbsp;&nbsp; Both&nbsp;
                                         <input type="radio" name="cat" value="both" checked="checked">
 
                                     </span>
+
                                     <span ng-if="userData[0].chatRights=='yes'">
                                         Chat&nbsp;
                                         <input type="radio" name="cat" value="chat" checked="checked"> &nbsp;&nbsp; Video&nbsp;
@@ -47,13 +48,15 @@
                                         <input type="radio" name="cat" value="both">
 
                                     </span>
-                                    <span ng-if="{{userData[0].chatRights}}=='yes'" && "{{userData[0].videoRights}}=='yes'">
+
+                                    <span ng-if="userData[0].videoRights=='yes'">
                                         Chat&nbsp;
-                                        <input type="radio" name="cat" value="chat"> &nbsp;&nbsp; Video&nbsp;
-                                        <input type="radio" name="cat" value="video" checked="checked"> &nbsp;&nbsp; Both&nbsp;
+                                        <input type="radio" name="cat" value="chat" checked="checked"> &nbsp;&nbsp; Video&nbsp;
+                                        <input type="radio" name="cat" value="video"> &nbsp;&nbsp; Both&nbsp;
                                         <input type="radio" name="cat" value="both">
 
                                     </span>
+
                                 </div>
                             </div>
 

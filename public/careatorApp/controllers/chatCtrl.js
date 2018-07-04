@@ -66,13 +66,16 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         console.log("sendText-->");
         console.log("$scope.typedMessage: " + $scope.typedMessage);
         var api;
-        var obj = {
-            "senderId": userData.userId,
-            "receiverId": $scope.individualData._id,
-            "message": $scope.typedMessage
-        }
+        var obj;
         if ($scope.selectedType == 'individual') {
             api = "https://norecruits.com/careator_individualText/individualText";
+            obj = {
+                "senderId": userData.userId,
+                "receiverId": $scope.individualData._id,
+                "senderName": userData.userName,
+                "receiverName": $scope.individualData.name,
+                "message": $scope.typedMessage
+            }
         }
         else if ($scope.selectedType == 'group') {
             api = "https://norecruits.com/careator_groupText/groupText";

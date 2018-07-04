@@ -15,7 +15,7 @@
                                 <label class="col-lg-3">Username</label>
                                 <div class="col-lg-9">
                                     <span>
-                                        <input type="text" class="bcontrol-label m-bot15" value={{userData[0].name}}>
+                                        <input type="text" ng-model="userName" class="bcontrol-label m-bot15" value={{userData[0].name}}>
                                     </span>
                                 </div>
                             </div>
@@ -24,7 +24,7 @@
                                 <label class="col-lg-3">Email</label>
                                 <div class="col-lg-9">
                                     <span>
-                                        <input type="text" class="bcontrol-label m-bot15" value={{userData[0].email}}>
+                                        <input type="text" ng-model="userEmail" class="bcontrol-label m-bot15" value={{userData[0].email}}>
                                     </span>
                                 </div>
                             </div>
@@ -35,20 +35,23 @@
 
                                     <span ng-if="userData[0].videoRights=='yes' &&  userData[0].chatRights=='yes'">
                                         Chat&nbsp;
-                                        <input type="checkbox" ng-checked="true"> &nbsp;&nbsp; Video&nbsp;
-                                        <input type="checkbox" ng-checked="true"> &nbsp;&nbsp;
+                                        <input type="checkbox" ng-model="Chat"> &nbsp;&nbsp; Video&nbsp;
+                                        <input type="checkbox" ng-model="Video"> &nbsp;&nbsp; Both&nbsp;
+                                        <input type="checkbox" ng-model="Video" ng-checked="true">
                                     </span>
 
                                     <span ng-if="userData[0].chatRights=='no' && userData[0].videoRights=='yes' ">
                                         Chat&nbsp;
-                                        <input type="checkbox"> &nbsp;&nbsp; Video&nbsp;
-                                        <input type="checkbox" ng-checked="true">
+                                        <input type="checkbox" ng-model="Chat"> &nbsp;&nbsp; Video&nbsp;
+                                        <input type="checkbox" ng-model="Video" ng-checked="true">Both&nbsp;
+                                        <input type="checkbox" ng-model="Video">
                                     </span>
 
                                     <span ng-if="userData[0].videoRights=='no' && userData[0].chatRights=='yes'">
                                         Chat&nbsp;
-                                        <input type="checkbox" ng-checked="true"> &nbsp;&nbsp; Video&nbsp;
-                                        <input type="checkbox"> &nbsp;&nbsp;
+                                        <input type="checkbox" ng-model="Chat" ng-checked="true"> &nbsp;&nbsp; Video&nbsp;
+                                        <input type="checkbox" ng-model="Video"> &nbsp;&nbsp;Both&nbsp;
+                                        <input type="checkbox" ng-model="Video">
                                     </span>
 
                                 </div>

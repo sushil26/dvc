@@ -40,8 +40,8 @@
 ---{{userData[0].chatRights}}---{{userData[0].videoRights}}
                                     <span ng-if="userData[0].chatRights=='no' && userData[0].videoRights=='yes' ">
                                         Chat&nbsp;
-                                        <input type="checkbox" ng-model="Rights" value="Chat" > &nbsp;&nbsp; Video&nbsp;
-                                        <input type="checkbox" ng-model="Rights" value="Video" ng-checked="true">
+                                        <input type="checkbox" ng-model="userDataRights.chatRights" value="Chat" ng-true-value="'yes'" ng-false-value="'no'"> &nbsp;&nbsp; Video&nbsp;
+                                        <input type="checkbox" ng-model="userDataRights.videoRights" value="Video" ng-checked="true" ng-true-value="'yes'" ng-false-value="'no'">
                                     </span>
 
                                     <!-- <span ng-if="userData[0].videoRights=='no' && userData[0].chatRights=='yes'">

@@ -1034,9 +1034,10 @@ module.exports.individualText = function (req, res) {
     })
 }
 module.exports.individualTextReadById = function (req, res) {
-    console.log("individualTextReadById-->: " + req.params.id);
+    console.log("individualTextReadById--> ");
     var sId = req.params.sId;
     var rId = req.params.rId;
+    console.log("sId: "+sId+" rId: " +rId);
     var title = req.body.sId + req.body.rId;
     var r_title = req.body.rId + req.body.sId;
     console.log("title : " + title + " r_title: " + r_title);

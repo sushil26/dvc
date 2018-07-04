@@ -105,7 +105,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
             var checkStatus = careatorHttpFactory.dataValidation(data);
             if (checkStatus) {
                 $scope.allChat = data.data.data;
-                console.log("allemployee: " + JSON.stringify($scope.allChat));
+                console.log("allChat: " + JSON.stringify($scope.allChat));
                 console.log(data.data.message);
             }
             else {

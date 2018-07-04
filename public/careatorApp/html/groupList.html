@@ -43,7 +43,7 @@
                                         Active
                                     </td>
                                     <td>
-                                        <button ng-if="emp.status=='inactive' || null" ng-click="statusChange(emp_id, 'active')">Activate</button>
+                                        <button ng-if="emp.status=='inactive' ||emp.status== null" ng-click="statusChange(emp_id, 'active')">Activate</button>
                                         <button ng-if="emp.status=='active'" ng-click="statusChange(emp_id, 'inactive')">Deactivate</button>
                                         <button>Delete</button>
                                         <button>

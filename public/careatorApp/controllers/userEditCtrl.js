@@ -13,8 +13,8 @@ careatorApp.controller('editUserCtrl', function ($scope, $state, $rootScope, $fi
             var checkStatus = careatorHttpFactory.dataValidation(data);
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
-                $scope.allemployee = data.data.data;
-                console.log("allemployee: " + JSON.stringify($scope.allemployee));
+                $scope.userData = data.data.data;
+                console.log("allemployee: " + JSON.stringify($scope.userData));
                 console.log(data.data.message);
             }
             else {

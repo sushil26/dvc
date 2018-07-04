@@ -1137,7 +1137,7 @@ module.exports.careator_getUserById = function (req, res) {
     var response;
     if(general.emptyCheck(id)){
         var findObj = {
-            "_id": id
+            "_id": ObjectId(id)
         }
     careatorMaster.find(findObj).toArray(function (err, allEmp_chat) {
         if (err) {

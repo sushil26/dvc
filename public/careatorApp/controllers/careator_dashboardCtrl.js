@@ -44,18 +44,20 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
     });
 
     //////////////toggle//////////////////////////////
-    $('.icon_menu').click(function () {
+    $('#tog').click(function () {
 
-        $('#tog').removeClass("icon_menu");
-        $('#tog').addClass("fa fa-plus");
-
+        $('#tog').css({"display":"none"});
+        $('#fog').css({"display":"inline"});
+      
     });
-    $('.fa fa-plus').click(function () {
-        $('#tog').removeClass("fa fa-plus");
-        $('#tog').addClass("icon_menu");
+    $('#fog').click(function () {
 
-
+        $('#tog').css({"display":"inline"});
+        $('#fog').css({"display":"none"});
+      
     });
+   
+
 
 
 

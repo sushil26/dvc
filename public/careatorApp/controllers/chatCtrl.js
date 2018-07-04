@@ -2,10 +2,10 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
     console.log("chatCtrl==>");
     var userData = careatorSessionAuth.getAccess("userData");
     console.log("userData: " + JSON.stringify(userData));
- 
+
     $scope.getChatGroupListById = function (id) {
-        console.log("getAllEmployee-->: "+id);
-        var api = "https://norecruits.com/careator_chatGroupList/careator_getChatGroupListById/"+id;
+        console.log("getAllEmployee-->: " + id);
+        var api = "https://norecruits.com/careator_chatGroupList/careator_getChatGroupListById/" + id;
         console.log("api: " + api);
         careatorHttpFactory.get(api).then(function (data) {
             console.log("data--" + JSON.stringify(data.data));
@@ -24,18 +24,33 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         console.log("<--getAllEmployee");
     }
 
-    if(userData.chatRights=='yes'){
+    if (userData.chatRights == 'yes') {
         $scope.getChatGroupListById(localStorage.getItem("userId"));
     }
 
-    $scope.groupDetails = function(index){
+    $scope.groupDetails = function (index) {
         console.log("groupDetails-->");
-        console.log(" $scope.allGroup[index]: "+JSON.stringify($scope.allGroup[index]));
+        console.log(" $scope.allGroup[index]: " + JSON.stringify($scope.allGroup[index]));
         $scope.groupData = $scope.allGroup[index];
-
     }
 
-
+    $scope.getAllChatRightEmp = function () {
+        console.log("getAllChatRightEmp-->");
+        api = "https://norecruits.com/careator/getChatRights_emp";
+        console.log("api: " + JSON.stringify(api));
+        careatorHttpFactory.get(api).then(function (data) {
+            console.log("data--" + JSON.stringify(data.data));
+            var checkStatus = careatorHttpFactory.dataValidation(data);
+            console.log("data--" + JSON.stringify(data.data));
+            if (checkStatus) {
+                console.log("data.data.data: "+JSON.stringify(data.data.data));
+                console.log("data.data.message: "+data.data.message);
+            }
+            else{
+                console.log("Sorry: "+data.data.message);
+            }
+        })
+    }
 
 
 

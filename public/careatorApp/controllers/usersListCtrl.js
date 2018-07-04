@@ -1,4 +1,4 @@
-careatorApp.controller('usersListCtrl', function ($scope, $rootScope, $filter, $window, careatorHttpFactory) {
+careatorApp.controller('usersListCtrl', function ($scope,$state,careatorHttpFactory) {
     console.log("usersListCtrl==>");
     $scope.getAllEmployee = function () {
         console.log("getAllEmployee-->");
@@ -52,6 +52,6 @@ careatorApp.controller('usersListCtrl', function ($scope, $rootScope, $filter, $
     $scope.editUser = function(index){
         console.log("editUser-->");
         console.log("$scope.allemployee[index]: "+JSON.stringify($scope.allemployee[index]));
-
+        $state.go("Cdashboard.editUser",{});
     }
 })

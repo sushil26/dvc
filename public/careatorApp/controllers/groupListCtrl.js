@@ -22,4 +22,30 @@ careatorApp.controller('groupListCtrl', function ($scope, $rootScope, $filter, $
     }
 
     $scope.getGroupList();
+
+    $scope.statusChange = function(id, status){
+        console.log("statusChange-->");
+        console.log("id: "+id+" status: "+status);
+        var obj = {
+            "id": id,
+            "status": status
+        }
+        var api = "https://norecruits.com/careator/groupStatusChangeById";
+        console.log("api: " + api);
+        careatorHttpFactory.post(api, obj).then(function (data) {
+            console.log("data--" + JSON.stringify(data.data));
+            var checkStatus = careatorHttpFactory.dataValidation(data);
+            console.log("data--" + JSON.stringify(data.data));
+            if (checkStatus) {
+                $scope.groupList = data.data.data;
+                console.log("groupList: " + JSON.stringify($scope.groupList));
+                console.log(data.data.message);
+            }
+            else {
+                console.log("Sorry");
+                console.log(data.data.message);
+            }
+        })
+        console.log("<--statusChange");
+    }
 })

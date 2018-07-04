@@ -36,21 +36,21 @@
                                         Chat&nbsp;
                                         <input type="checkbox" ng-model="Chat"> &nbsp;&nbsp; Video&nbsp;
                                         <input type="checkbox" ng-model="Video"> &nbsp;&nbsp; Both&nbsp;
-                                        <input type="checkbox" ng-model="Video" ng-checked="true">
+                                        <input type="checkbox" ng-model="Both" ng-checked="true">
                                     </span>
 
                                     <span ng-if="userData[0].chatRights=='no' && userData[0].videoRights=='yes' ">
                                         Chat&nbsp;
                                         <input type="checkbox" ng-model="Chat"> &nbsp;&nbsp; Video&nbsp;
                                         <input type="checkbox" ng-model="Video" ng-checked="true">Both&nbsp;
-                                        <input type="checkbox" ng-model="Video">
+                                        <input type="checkbox" ng-model="Both">
                                     </span>
 
                                     <span ng-if="userData[0].videoRights=='no' && userData[0].chatRights=='yes'">
                                         Chat&nbsp;
                                         <input type="checkbox" ng-model="Chat" ng-checked="true"> &nbsp;&nbsp; Video&nbsp;
                                         <input type="checkbox" ng-model="Video"> &nbsp;&nbsp;Both&nbsp;
-                                        <input type="checkbox" ng-model="Video">
+                                        <input type="checkbox" ng-model="Both">
                                     </span>
 
                                 </div>

@@ -34,19 +34,19 @@
 
                                     <span ng-if="userData[0].videoRights=='yes' &&  userData[0].chatRights=='yes'">
                                         Chat&nbsp;
-                                        <input type="checkbox" ng-model="Rights" value="Chat"> &nbsp;&nbsp; Video&nbsp;
-                                        <input type="checkbox" ng-model="Rights" value="Video">
+                                        <input type="checkbox" ng-model="Rights" value="Chat" ng-checked="true"> &nbsp;&nbsp; Video&nbsp;
+                                        <input type="checkbox" ng-model="Rights" value="Video" ng-checked="true">
                                     </span>
 
                                     <span ng-if="userData[0].chatRights=='no' && userData[0].videoRights=='yes' ">
                                         Chat&nbsp;
-                                        <input type="checkbox" ng-checked="Rights" value="Chat"> &nbsp;&nbsp; Video&nbsp;
-                                        <input type="checkbox" ng-checked="Rights" value="Video">
+                                        <input type="checkbox" ng-checked="Rights" value="Chat" > &nbsp;&nbsp; Video&nbsp;
+                                        <input type="checkbox" ng-checked="Rights" value="Video" ng-checked="true">
                                     </span>
 
                                     <span ng-if="userData[0].videoRights=='no' && userData[0].chatRights=='yes'">
                                         Chat&nbsp;
-                                        <input type="checkbox" ng-model="Rights" value="Chat"> &nbsp;&nbsp; Video&nbsp;
+                                        <input type="checkbox" ng-model="Rights" value="Chat" ng-checked="true"> &nbsp;&nbsp; Video&nbsp;
                                         <input type="checkbox" ng-model="Rights" value="Video">
                                     </span>
 

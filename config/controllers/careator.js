@@ -1009,7 +1009,7 @@ module.exports.individualText = function (req, res) {
                     "sendTime": date
                 }
                 console.log("obj : " + JSON.stringify(obj));
-                careatorChat.update({"_id":data._id},{"$push":{"chats":obj}}, function(err, updatedData){
+                careatorChat.update({"_id":data[0]._id},{"$push":{"chats":obj}}, function(err, updatedData){
                     if (err) {
                         console.log("err: " + JSON.stringify(err));
                         response = {

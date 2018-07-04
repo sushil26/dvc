@@ -10,6 +10,7 @@ var randomstring = require("randomstring");
 var careatorMaster = db.collection("careatorMaster"); /* ### careator employee collection  ### */
 var careatorChatGroup = db.collection("careatorChatGroup"); /* ### careatorChatGroup collection  ### */
 var careatorVideoGroup = db.collection("careatorVideoGroup"); /* ### careatorChatGroup collection  ### */
+var careatorChat = db.collection("careatorChat"); /* ### careatorChat collection  ### */
 var csv = require('fast-csv');
 var careatorMasterArray = [];
 var alreadyExist = null; /* ### Note: Marker for user create ### */
@@ -921,6 +922,47 @@ module.exports.careator_getChatRightsAllemp = function (req, res) {
         };
         res.status(400).send(response);
     }
+}
+
+module.exports.individualText = function(req, res){
+    console.log("individualText-->");
+    var date = new Date();
+    var title = req.body.senderId + req.body.receiverId;
+    var r_title = req.body.receiverId + req.body.senderId;
+    console.log("title : "+title+"r_title: "+r_title);
+    var obj = {
+        "senderId": req.body.senderId,
+        "receiverId": req.body.receiverId,
+        "message": req.body.message,
+        "timeStamp": date
+    }
+    console.log("obj : "+JSON.stringify(obj));
+  
+    
+    careatorChat.find({$or:[{"title":title}, {"title":r_title}]}).toArray(function(err, data){
+        if(err){
+            console.log("err: "+JSON.stringify(err));
+            response = {
+                status: fasle,
+                message: "Unsucessfully retrived data",
+                data: err
+            };
+            res.status(400).send(responseData);
+        }
+        else{
+            console.log("data.length: "+data.length);
+            console.log("data: "+JSON.stringify(data));
+            response = {
+                status: true,
+                message: "Sucessfully retrived data",
+                data: allEmp_chat
+            };
+            res.status(200).send(response);
+
+        }
+    })
+    
+
 }
 
 

@@ -14,14 +14,15 @@ careatorApp.controller('editGroupCtrl', function ($scope, $state, $rootScope, $f
                 $scope.userData = data.data.data[0];
                 console.log("userData: " + JSON.stringify($scope.userData));
                 console.log(data.data.message);
+                $scope.selectedMembers = [];
                 for (var x = 0; x < $scope.userData.groupMembers.length; x++) {
-
-                    $scope.groupMemberModel.push({
-                        "email":  $scope.userData.groupMembers[x].email,
-                        "label":  $scope.userData.groupMembers[x].name,
-                        "id":  $scope.userData.groupMembers[x]._id
+                    $scope.selectedMembers.push({
+                        "email": $scope.userData.groupMembers[x].email,
+                        "label": $scope.userData.groupMembers[x].name,
+                        "id": $scope.userData.groupMembers[x].userId
                     })
                 }
+                $scope.rightEmployeeList();
 
             } else {
                 console.log("Sorry");
@@ -41,11 +42,11 @@ careatorApp.controller('editGroupCtrl', function ($scope, $state, $rootScope, $f
     $scope.groupMemberData = [];
     $scope.groupMemberModel = [];
 
-    $scope.rightEmployeeList = function (value) {
+    $scope.rightEmployeeList = function () {
 
         console.log("rightEmployeeList-->");
-        console.log("value: " + value);
-           var api = "https://norecruits.com/careator/getChatRights_emp";
+
+        var api = "https://norecruits.com/careator/getChatRights_emp";
         console.log("api: " + JSON.stringify(api));
         careatorHttpFactory.get(api).then(function (data) {
             console.log("data--" + JSON.stringify(data.data));
@@ -63,7 +64,12 @@ careatorApp.controller('editGroupCtrl', function ($scope, $state, $rootScope, $f
                         "label": groupMembers[x].name + " - " + groupMembers[x].empId,
                         "id": groupMembers[x]._id
                     });
-                    console.log(" after $scope.groupMemberData: " + JSON.stringify($scope.groupMemberData));
+                    for (var y = 0; y < $scope.selectedMembers.length; y++) {
+                        console.log("y iteration-->");
+                        if ($scope.selectedMembers[y].id == $scope.groupMemberData[x].id) {
+                            $scope.groupMemberModel.push($scope.groupMemberData[x]);
+                        }
+                    }
                 }
 
                 console.log(data.data.message);
@@ -73,12 +79,16 @@ careatorApp.controller('editGroupCtrl', function ($scope, $state, $rootScope, $f
                 console.log(data.data.message);
             }
         })
-        $scope.groupMemberModel = [];
-
-
         console.log("<--rightEmployeeList");
     }
 
-    $scope.rightEmployeeList();
+    $scope.groupAdminSettings = {
+        scrollableHeight: '200px',
+        scrollable: true,
+        enableSearch: true,
+        externalIdProp: ''
+    };
+    $scope.groupAdminData = $scope.groupMemberModel;
+    $scope.groupAdminModel = [];
 
 })

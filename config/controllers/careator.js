@@ -1027,6 +1027,16 @@ module.exports.individualTextReadById = function (req, res) {
 module.exports.groupText = function (req, res) {
     console.log("groupText-->");
     var date = new Date();
+    var obj = {
+        "groupId": req.body.groupId,
+        "groupName": req.body.groupName,
+        "senderId": req.body.senderId,
+        "senderName": req.body.senderName,
+        "message": req.body.typedMessage,
+        "chats": [{ "senderId": req.body.senderId, "senderName": req.body.senderName, "message": req.body.message, "sendTime": date }],
+        "timeStamp": date
+    }
+    console.log("obj : " + JSON.stringify(obj));
     if (general.emptyCheck(req.body.groupId)) {
         careatorChat.find({ "groupId": obj.groupId, "groupName": obj.groupName }).toArray(function (err, data) {
             if (err) {
@@ -1042,7 +1052,6 @@ module.exports.groupText = function (req, res) {
                 console.log("data.length: " + data.length);
                 console.log("data: " + JSON.stringify(data));
                 if (data.length == 0) {
-
                     var obj = {
                         "groupId": req.body.groupId,
                         "groupName": req.body.groupName,

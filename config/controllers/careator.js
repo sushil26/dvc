@@ -925,25 +925,25 @@ module.exports.individualText = function (req, res) {
                     "timeStamp": date
                 }
                 console.log("obj : " + JSON.stringify(obj));
-                // careatorChat.insert(obj, function (err, insertedData) {
-                //     if (err) {
-                //         console.log("err: " + JSON.stringify(err));
-                //         response = {
-                //             status: fasle,
-                //             message: "Unsucessfully retrived data",
-                //             data: err
-                //         };
-                //         res.status(400).send(responseData);
-                //     }
-                //     else {
-                //         response = {
-                //             status: true,
-                //             message: "Sucessfully sent",
-                //             data: insertedData
-                //         };
-                //         res.status(200).send(response);
-                //     }
-                // })
+                careatorChat.insert(obj, function (err, insertedData) {
+                    if (err) {
+                        console.log("err: " + JSON.stringify(err));
+                        response = {
+                            status: fasle,
+                            message: "Unsucessfully retrived data",
+                            data: err
+                        };
+                        res.status(400).send(responseData);
+                    }
+                    else {
+                        response = {
+                            status: true,
+                            message: "Sucessfully sent",
+                            data: insertedData
+                        };
+                        res.status(200).send(response);
+                    }
+                })
             }
             else {
                 var obj = {

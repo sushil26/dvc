@@ -37,7 +37,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-sm-9 col-xs-9 sideBar-main" ng-if="record.senderName || record.receiverName">
-                                                <div class="row">
+                                                <div class="row">--{{record.senderName}}---{{record.receiverName}}---{{$index}}
                                                     <div class="col-sm-8 col-xs-8 sideBar-name" ng-click="chatDetails('individual_chat', $index)">
                                                         <span ng-if="record.senderId!=userId" class="name-meta">{{record.senderName}}
                                                         </span>

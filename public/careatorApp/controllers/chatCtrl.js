@@ -108,9 +108,9 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
             api = "https://norecruits.com/careator_individualText/individualText";
             obj = {
                 "senderId": userData.userId,
-                "receiverId": $scope.individualData._id,
+                "receiverId":  $scope.receiverData._id,
                 "senderName": userData.userName,
-                "receiverName": $scope.individualData.name,
+                "receiverName":  $scope.receiverData.name,
                 "message": $scope.typedMessage
             }
             console.log("obj: " + JSON.stringify(obj));

@@ -27,10 +27,10 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         $scope.getChatGroupListById(localStorage.getItem("userId"));
     }
 
-    $scope.chatDetails = function (index) {
+    $scope.chatDetails = function (type, index) {
         
         console.log("chatDetails-->");
-        // $scope.selectedType = "group";
+        $scope.selectedType = type;
         // console.log(" $scope.allGroup[index]: " + JSON.stringify($scope.allGroup[index]));
         // $scope.groupData = $scope.allGroup[index];
         $scope.selectedType = "individual_chats";

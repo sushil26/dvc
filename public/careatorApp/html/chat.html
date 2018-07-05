@@ -38,7 +38,7 @@
                                             </div>
                                             <div class="col-sm-9 col-xs-9 sideBar-main" ng-if="record.senderName || record.receiverName">
                                                 <div class="row">
-                                                    <div class="col-sm-8 col-xs-8 sideBar-name" ng-click="chatDetails($index)">
+                                                    <div class="col-sm-8 col-xs-8 sideBar-name" ng-click="chatDetails('individual_chat', $index)">
                                                         <span ng-if="record.senderId!=userId" class="name-meta">{{record.senderName}}
                                                         </span>
                                                         <span ng-if="record.receiverId!=userId" class="name-meta">{{record.receiverName}}
@@ -52,7 +52,7 @@
                                             </div>
                                             <div class="col-sm-9 col-xs-9 sideBar-main" ng-if="record.groupName">
                                                 <div class="row">
-                                                    <div class="col-sm-8 col-xs-8 sideBar-name" ng-click="chatDetails($index)">
+                                                    <div class="col-sm-8 col-xs-8 sideBar-name" ng-click="chatDetails('group', $index)">
                                                         <span class="name-meta">{{record.groupName}}
                                                         </span>
                                                     </div>

@@ -31,6 +31,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         
         console.log("chatDetails-->");
         $scope.selectedType = type;
+        console.log("  $scope.selectedType: "+  $scope.selectedType);
         // console.log(" $scope.allGroup[index]: " + JSON.stringify($scope.allGroup[index]));
         // $scope.groupData = $scope.allGroup[index];
         $scope.selectedType = "individual_chats";

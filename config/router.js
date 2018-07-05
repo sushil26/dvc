@@ -11,13 +11,13 @@ var capture = require('./controllers/capture');
 
 module.exports = function (app) {
 
-    //app.post('/vc/captureImgSend/:parentEmail/:studName', capture.captureImgSend);
+    
 
-    app.post('/careator/pswdGenerate', careator.pswdGenerate);
-    app.post('/careator/pswdCheck', careator.pswdCheck);
-    app.post('/careator/emailInvite', careator.emailInvite);
-    app.post('/careator/RemoteJoinCheck', careator.RemoteJoinCheck);
-    app.post('/careator/setCollection', careator.setCollection);
+    // app.post('/careator/pswdGenerate', careator.pswdGenerate);
+    // app.post('/careator/pswdCheck', careator.pswdCheck);
+    // app.post('/careator/emailInvite', careator.emailInvite);
+    // app.post('/careator/RemoteJoinCheck', careator.RemoteJoinCheck);
+    // app.post('/careator/setCollection', careator.setCollection);
     app.get('/chatHistory/getHistory', careator.getHistory);
     app.get('/chatHistory/getHistoryByEmailId/:email', careator.getHistoryByEmailId);
     app.post('/careator/careatorMasterInsert', careator.careatorMasterInsert);
@@ -52,6 +52,7 @@ module.exports = function (app) {
     app.get('/getRecord/getRecordVideo/:id', record.getRecordVideo);
     app.get('/record/getVideo/:id', record.getRecordVideo);
 
+    app.post('/vc/captureImgSend/:parentEmail/:studName', capture.captureImgSend);
     app.post('/vc/schoolLogo', image.upload);
     app.post('/vc/profilePicupload', image.profilePicupload);
 

@@ -54,12 +54,13 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                 for (var x = 0; x < $scope.allEmp.length; x++) {
                     $scope.allGroupAndIndividual.push($scope.allEmp[x]);
                 }
+                console.log(" $scope.allGroupAndIndividual: "+JSON.stringify($scope.allGroupAndIndividual));
             } else {
                 console.log("Sorry: " + data.data.message);
             }
         })
     }
-    $scope.getAllChatRightEmp();
+   // $scope.getAllChatRightEmp();
     $scope.getEmpDetail = function (index) {
         console.log("getEmpDetail-->");
         $scope.selectedType = "individual_chats";

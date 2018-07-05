@@ -707,10 +707,6 @@ module.exports.careator_chat_creteGroup = function (req, res) {
     }
 
 }
-
-
-
-
 module.exports.pswdGenerate = function (req, res) {
     console.log("pswdGenerate-->");
     console.log("req.body.careatorEmail: " + req.body.careatorEmail);
@@ -1142,4 +1138,57 @@ module.exports.careator_getGroupById = function (req, res) {
     }
 
 }
+module.exports.userEditById = function (req, res) {
+    console.log("statusChangeById-->");
+    var response;
+    var id = req.body.id;
+    var status = req.body.status;
+    console.log("id: " + id + " status: " + status);
+    if (general.emptyCheck(id)) {
+        var queryId = {
+            "_id": ObjectId(id)
+        }
+        console.log("queryId: " + JSON.stringify(queryId));
+        var updateVlaue = {
+            "name" : "req.body.userName",
+            "empId" : "req.body.empId",
+            "email" : "req.body.userEmail",
+            "videoRights" : "req.body.videoRights",
+            "chatRights" : "req.body.chatRights"
+        }
+        console.log("updateVlaue: " + JSON.stringify(updateVlaue));
+        careatorMaster.update(queryId, { $set: updateVlaue }), function (err, updatedData) {
+            if (err) {
+                console.log("err: " + JSON.stringify(err));
+                response = {
+                    status: fasle,
+                    message: "Update unsucessfully",
+                    data: err
+                };
+                res.status(400).send(response);
+            }
+            else {
+                console.log("updatedData: " + JSON.stringify(updatedData));
+                response = {
+                    status: true,
+                    message: "Update sucessfully",
+                    data: updatedData
+                };
+                res.status(200).send(response);
+            }
+        }
+    }
+    else {
+        console.log("Epty value found");
+        var obj = {
+            "id": id
+        }
+        response = {
+            status: false,
+            message: "empty value found",
+            data: obj
+        };
+        res.status(400).send(response);
+    }
 
+}

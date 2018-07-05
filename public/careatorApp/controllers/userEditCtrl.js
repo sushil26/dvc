@@ -39,8 +39,25 @@ careatorApp.controller('editUserCtrl', function ($scope, $state, $rootScope, $fi
             "userName": $scope.userName,
             "userEmail": $scope.userEmail,
             "videoRights": $scope.userDataRights.videoRights,
-            "chatRights": $scope.userDataRights.chatRights
+            "chatRights": $scope.userDataRights.chatRights,
+            "empid": $scope.userDataRights.empid,
+
         }
         console.log("obj: "+JSON.stringify(obj));
+        careatorHttpFactory.post(api, obj).then(function (data) {
+            console.log("data--" + JSON.stringify(data.data));
+            var checkStatus = careatorHttpFactory.dataValidation(data);
+            console.log("data--" + JSON.stringify(data.data));
+            if (checkStatus) {
+                console.log(data.data.message);
+            }
+            else {
+                console.log("Sorry: " + data.data.message);
+            }
+        })
     }
+
+
+
+    
 })

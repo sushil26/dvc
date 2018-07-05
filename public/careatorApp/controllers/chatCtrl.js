@@ -13,7 +13,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
             var checkStatus = careatorHttpFactory.dataValidation(data);
             if (checkStatus) {
                 $scope.allGroup = data.data.data;
-                console.log("allemployee: " + JSON.stringify($scope.allGroup));
+                console.log("allGroup: " + JSON.stringify($scope.allGroup));
                 console.log(data.data.message);
             } else {
                 console.log("Sorry");

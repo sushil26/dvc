@@ -15,9 +15,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                 $scope.allGroup = data.data.data;
                 console.log("allGroup: " + JSON.stringify($scope.allGroup));
                 console.log(data.data.message);
-                for (var x = 0; x < $scope.allGroup.length; x++) {
-                    $scope.allGroupAndIndividual.push($scope.allGroup[x]);
-                }
+               
             } else {
                 console.log("Sorry");
                 console.log(data.data.message);
@@ -89,6 +87,9 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                 console.log("data.data.message: " + data.data.message);
                 for (var x = 0; x < $scope.allEmp.length; x++) {
                     $scope.allGroupAndIndividual.push($scope.allEmp[x]);
+                }
+                for (var x = 0; x < $scope.allGroup.length; x++) {
+                    $scope.allGroupAndIndividual.push($scope.allGroup[x]);
                 }
                 console.log(" $scope.allGroupAndIndividual: " + JSON.stringify($scope.allGroupAndIndividual));
             } else {

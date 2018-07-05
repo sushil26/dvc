@@ -120,14 +120,14 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
     $scope.getChatRecords = function () {
         console.log("getChatRecords-->");
         var id = $scope.userId;
-        var api = "https://norecruits.com/careator_getChatRecords/getChatRecords/" + id;
+        var api = "https://norecruits.com/careator_getChatListRecordById/getChatListRecordById/" + id;
         console.log("api: " + api);
         careatorHttpFactory.get(api).then(function (data) {
             console.log("data--" + JSON.stringify(data.data));
             var checkStatus = careatorHttpFactory.dataValidation(data);
             if (checkStatus) {
-                $scope.allGroup = data.data.data;
-                console.log("allemployee: " + JSON.stringify($scope.allGroup));
+                $scope.allChatRecords = data.data.data;
+                console.log("allChatRecords: " + JSON.stringify($scope.allChatRecords));
                 console.log(data.data.message);
             } else {
                 console.log("Sorry");
@@ -137,6 +137,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
 
     }
 
+    
     /* ### Start: receive message from careator.js  ### */ //update to client with new message;
     socket.on('comm_textReceived', function (data) {
         console.log("****comm_textReceived-->: " + JSON.stringify(data));;

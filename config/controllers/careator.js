@@ -1172,3 +1172,40 @@ else{
 }
 
 }
+
+module.exports.getChatListRecordById = function(req,res){
+    console.log("getChatListById-->: "+req.params.id);
+    var id = req.params.id;
+    if (general.emptyCheck(id)) {
+        careatorChat.find({$or:[{"senderId":id},{"receiverId":id}]}).toArray(function(err, findData){
+            if (err) {
+                console.log("err: " + JSON.stringify(err));
+                response = {
+                    status: fasle,
+                    message: "Unsucessfully retrived data",
+                    data: err
+                };
+                res.status(400).send(response);
+            }
+            else {
+                console.log("allEmp_chat: " + JSON.stringify(findData));
+                response = {
+                    status: true,
+                    message: "Sucessfully retrived data",
+                    data: findData
+                };
+                res.status(200).send(response);
+            }
+        })
+
+    }
+    else{
+        console.log("Epty value found");
+        response = {
+            status: false,
+            message: "empty value found"
+        };
+        res.status(400).send(response);  
+    }
+
+}

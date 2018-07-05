@@ -75,7 +75,7 @@ careatorApp.controller('editGroupCtrl', function ($scope, $state, $rootScope, $f
                 }
                 for(var x=0;x< $scope.groupMemberModel.length;x++){
                     console.log("$scope.groupMemberModel[x]: "+JSON.stringify($scope.groupMemberModel[x]));
-                    console.log("$scope.selectedAdmin.userId: "+$scope.selectedAdmin.userId);
+                    console.log("$scope.selectedAdmin: "+JSON.stringify($scope.selectedAdmin));
                     if($scope.groupMemberModel[x].id == $scope.selectedAdmin.userId){
                         $scope.groupAdminModel.push($scope.groupMemberModel[x].id);
                     }

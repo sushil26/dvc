@@ -163,7 +163,9 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                 "message": data.message,
                 "sendTime": data.sendTime
             });
+            scrollDown();
         }
+
     })
     /* ### End: Get event update from index.js  ### */
 
@@ -187,5 +189,16 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
             $("#sndmgs").click();
         }
     });
+
+
+    /////Auto Scroll Down Chat////////////////
+    $scope.scrollDown = function () {
+        $("#pulldown").animate({
+            scrollTop: $("#pulldown").prop("scrollHeight")
+        }, 500);
+    }
+
+    
+
 
 })

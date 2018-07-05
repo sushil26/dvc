@@ -19,7 +19,7 @@ careatorApp.controller('editGroupCtrl', function ($scope, $state, $rootScope, $f
                     $scope.selectedMembers.push({
                         "email": $scope.userData.groupMembers[x].email,
                         "label": $scope.userData.groupMembers[x].name,
-                        "id": $scope.userData.groupMembers[x]._id
+                        "id": $scope.userData.groupMembers[x].userId
                     })
                 }
                 console.log("$scope.selectedMembers.-->: "+JSON.stringify($scope.selectedMembers));

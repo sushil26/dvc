@@ -92,14 +92,13 @@ careatorApp.controller('editGroupCtrl', function ($scope, $state, $rootScope, $f
     }
 
     $scope.groupAdminSettings = {
-        scrollableHeight: '200px',
-        scrollable: true,
+        selectionLimit: 1,
+        externalIdProp: '',
         enableSearch: true,
-        externalIdProp: ''
     };
-  
+
     $scope.groupAdminModel = [];
- 
+
 
 
 })

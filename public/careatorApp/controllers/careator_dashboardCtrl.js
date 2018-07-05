@@ -14,9 +14,6 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
     // Start the timer
     $timeout(tick, $scope.tickInterval);
 
-
-
-
     var userData = {
         "email": localStorage.getItem("email"),
         "userName": localStorage.getItem("userName"),

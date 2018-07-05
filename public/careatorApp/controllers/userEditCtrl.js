@@ -40,7 +40,7 @@ careatorApp.controller('editUserCtrl', function ($scope, $state, $rootScope, $fi
             "userEmail": $scope.userEmail,
             "videoRights": $scope.userDataRights.videoRights,
             "chatRights": $scope.userDataRights.chatRights,
-            "empid": $scope.userDataRights.empid,
+            "empId": $scope.userDataRights.empId,
 
         }
         console.log("obj: "+JSON.stringify(obj));

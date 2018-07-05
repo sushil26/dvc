@@ -56,7 +56,7 @@ function editUser() {
     return '/editUser/:id';
 }
 function editGroup() {
-    return '/editGroup';
+    return '/editGroup/:id';
 }
 
 function groupListCtrl() {

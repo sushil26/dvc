@@ -2,7 +2,7 @@ careatorApp.controller('editGroupCtrl', function ($scope, $state, $rootScope, $f
     console.log("editGroupCtrl==>");
     console.log("id: " + $state.params.id);
     var id = $state.params.id;
-
+    $scope.selectedMembers = []; /* ### $scope.selectedMembers contains groupmembers  ### */
     $scope.getGroup = function () {
         console.log("getGroup-->");
         var api = "https://norecruits.com/careator_getGroup/careator_getGroupById/" + id;
@@ -14,7 +14,7 @@ careatorApp.controller('editGroupCtrl', function ($scope, $state, $rootScope, $f
                 $scope.userData = data.data.data[0];
                 console.log("userData: " + JSON.stringify($scope.userData));
                 console.log(data.data.message);
-                $scope.selectedMembers = [];
+              
                 for (var x = 0; x < $scope.userData.groupMembers.length; x++) {
                     $scope.selectedMembers.push({
                         "email": $scope.userData.groupMembers[x].email,
@@ -22,7 +22,7 @@ careatorApp.controller('editGroupCtrl', function ($scope, $state, $rootScope, $f
                         "id": $scope.userData.groupMembers[x].userId
                     })
                 }
-                $scope.groupAdminModel.push($scope.userData.admin);
+                $scope.selectedAdmin = $scope.userData.admin; /* ### $scope.selectedAdmin contains admin details  ### */
                 $scope.rightEmployeeList();
 
 
@@ -92,5 +92,11 @@ careatorApp.controller('editGroupCtrl', function ($scope, $state, $rootScope, $f
     };
     $scope.groupAdminData = $scope.groupMemberModel;
     $scope.groupAdminModel = [];
+    for(var x=0;x< $scope.groupMemberModel.length;x++){
+        if($scope.groupMemberModel[x].id == $scope.selectedAdmin.id){
+            $scope.groupAdminModel.push($scope.groupMemberModel[x].id);
+        }
+    }
+    
 
 })

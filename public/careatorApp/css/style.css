@@ -1058,7 +1058,7 @@ div[data-role="editor-toolbar"] {
 }
 
 .top-nav .username {
-  font-weight: bolder;
+  font-weight: 100;
     font-size: 13px;
     color: #00000091;
 

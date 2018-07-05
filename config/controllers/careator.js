@@ -1161,7 +1161,7 @@ module.exports.userEditById = function (req, res) {
             "chatRights" : "req.body.chatRights"
         }
         console.log("updateVlaue: " + JSON.stringify(updateVlaue));
-        careatorMaster.update(queryId, { $set: updateVlaue }), function (err, updatedData) {
+        careatorMaster.update(queryId, { $update: updateVlaue }), function (err, updatedData) {
             if (err) {
                 console.log("err: " + JSON.stringify(err));
                 response = {

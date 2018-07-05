@@ -47,10 +47,10 @@
                                         {{emp.status}}
                                     </td>
                                     <td>
-                                        <button ng-if="emp.status=='inactive'" ng-click="statusChange(emp._id, 'active')">Activate</button>
-                                        <button ng-if="emp.status=='active'" ng-click="statusChange(emp._id, 'inactive')">Deactivate</button>
-                                        <button>Delete</button>
-                                        <button>
+                                        <button class="btn btn-primary" ng-if="emp.status=='inactive'" ng-click="statusChange(emp._id, 'active')">Activate</button>
+                                        <button class="btn btn-warning" ng-if="emp.status=='active'" ng-click="statusChange(emp._id, 'inactive')">Deactivate</button>
+                                        <button class="btn btn-danger">Delete</button>
+                                        <button class="btn btn-info">
                                             <a href="#" ng-click="editUser($index)">Edit</a>
                                         </button>
                                     </td>

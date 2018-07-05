@@ -27,11 +27,15 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         $scope.getChatGroupListById(localStorage.getItem("userId"));
     }
 
-    $scope.groupDetails = function (index) {
-        console.log("groupDetails-->");
-        $scope.selectedType = "group";
-        console.log(" $scope.allGroup[index]: " + JSON.stringify($scope.allGroup[index]));
-        $scope.groupData = $scope.allGroup[index];
+    $scope.chatDetails = function (index) {
+        
+        console.log("chatDetails-->");
+        // $scope.selectedType = "group";
+        // console.log(" $scope.allGroup[index]: " + JSON.stringify($scope.allGroup[index]));
+        // $scope.groupData = $scope.allGroup[index];
+        console.log(" $scope.allChatRecords[index]: " + JSON.stringify($scope.allChatRecords[index]));
+        $scope.allChat = $scope.allChatRecords[index];
+        
     }
 
     $scope.getAllChatRightEmp = function () {
@@ -123,7 +127,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         var api = "https://norecruits.com/careator_getChatListRecordById/getChatListRecordById/" + id;
         console.log("api: " + api);
         careatorHttpFactory.get(api).then(function (data) {
-           // console.log("data--" + JSON.stringify(data.data));
+            // console.log("data--" + JSON.stringify(data.data));
             var checkStatus = careatorHttpFactory.dataValidation(data);
             if (checkStatus) {
                 $scope.allChatRecords = data.data.data;

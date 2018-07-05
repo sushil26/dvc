@@ -22,7 +22,6 @@ careatorApp.controller('editGroupCtrl', function ($scope, $state, $rootScope, $f
                         "id": $scope.userData.groupMembers[x].userId
                     })
                 }
-                console.log("$scope.selectedMembers.-->: "+JSON.stringify($scope.selectedMembers));
                 $scope.rightEmployeeList();
 
             } else {
@@ -67,16 +66,10 @@ careatorApp.controller('editGroupCtrl', function ($scope, $state, $rootScope, $f
                     });
                     for (var y = 0; y < $scope.selectedMembers.length; y++) {
                         console.log("y iteration-->");
-                        console.log("$scope.selectedMembers[y].id: "+JSON.stringify($scope.selectedMembers[y].id));
-                        console.log("$scope.groupMemberData[x].id: "+JSON.stringify($scope.groupMemberData[x].id));
                         if ($scope.selectedMembers[y].id == $scope.groupMemberData[x].id) {
-                            console.log(" $scope.groupMemberData[x]: " + JSON.stringify($scope.groupMemberData[x]));
                             $scope.groupMemberModel.push($scope.groupMemberData[x]);
-                            console.log(" $scope.groupMemberModel: " + JSON.stringify($scope.groupMemberModel));
                         }
                     }
-
-                    console.log(" after $scope.groupMemberData: " + JSON.stringify($scope.groupMemberData));
                 }
 
                 console.log(data.data.message);
@@ -88,7 +81,4 @@ careatorApp.controller('editGroupCtrl', function ($scope, $state, $rootScope, $f
         })
         console.log("<--rightEmployeeList");
     }
-
-
-
 })

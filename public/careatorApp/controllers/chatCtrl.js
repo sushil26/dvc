@@ -42,9 +42,9 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         $scope.receiverData = {
             "senderId": userData.userId,
             "senderName": userData.userName,
-            "receiverId": $scope.individualData.receiverId,
-            "receiverName": $scope.individualData.receiverName
+            
         }
+        console.log(" Before  $scope.receiverData : " + JSON.stringify($scope.receiverData));
         if ($scope.individualData.receiverId != userData.userId) {
             $scope.receiverData.receiverId = $scope.individualData.receiverId;
             $scope.receiverData.receiverName =  $scope.individualData.receiverName;

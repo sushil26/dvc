@@ -1027,7 +1027,6 @@ module.exports.individualTextReadById = function (req, res) {
 module.exports.groupText = function (req, res) {
     console.log("groupText-->");
     var date = new Date();
-
     if (general.emptyCheck(req.body.groupId)) {
         careatorChat.find({ "groupId": obj.groupId, "groupName": obj.groupName }).toArray(function (err, data) {
             if (err) {

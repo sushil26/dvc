@@ -42,10 +42,10 @@ careatorApp.controller('editGroupCtrl', function ($scope, $state, $rootScope, $f
     $scope.groupMemberData = [];
     $scope.groupMemberModel = [];
 
-    $scope.rightEmployeeList = function (value) {
+    $scope.rightEmployeeList = function () {
 
         console.log("rightEmployeeList-->");
-        console.log("value: " + value);
+        
         var api = "https://norecruits.com/careator/getChatRights_emp";
         console.log("api: " + JSON.stringify(api));
         careatorHttpFactory.get(api).then(function (data) {

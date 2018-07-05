@@ -123,7 +123,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         var api = "https://norecruits.com/careator_getChatListRecordById/getChatListRecordById/" + id;
         console.log("api: " + api);
         careatorHttpFactory.get(api).then(function (data) {
-            console.log("data--" + JSON.stringify(data.data));
+           // console.log("data--" + JSON.stringify(data.data));
             var checkStatus = careatorHttpFactory.dataValidation(data);
             if (checkStatus) {
                 $scope.allChatRecords = data.data.data;
@@ -136,7 +136,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         })
     }
     $scope.getChatRecords();
-    
+
     /* ### Start: receive message from careator.js  ### */ //update to client with new message;
     socket.on('comm_textReceived', function (data) {
         console.log("****comm_textReceived-->: " + JSON.stringify(data));;

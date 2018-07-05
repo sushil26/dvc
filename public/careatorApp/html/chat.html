@@ -30,7 +30,7 @@
                                                 </div>
                                             </button>
                                         </div>
-                                        <div class="row sideBar-body" ng-repeat="group in allGroup">
+                                        <div class="row sideBar-body" ng-repeat="record in allChatRecords">
                                             <div class="col-sm-3 col-xs-3 sideBar-avatar">
                                                 <div class="avatar-icon">
                                                     <img src="https://bootdey.com/img/Content/avatar/avatar5.png">
@@ -39,7 +39,9 @@
                                             <div class="col-sm-9 col-xs-9 sideBar-main" >
                                                 <div class="row">
                                                     <div class="col-sm-8 col-xs-8 sideBar-name" ng-click="groupDetails($index)">
-                                                        <span class="name-meta">{{group.groupName}}
+                                                        <span ng-if="record.senderId!=userId" class="name-meta">{{record.senderName}}
+                                                        </span>
+                                                        <span ng-if="record.receiverId!=userId" class="name-meta">{{record.receiverName}}
                                                         </span>
                                                     </div>
                                                     <div class="col-sm-4 col-xs-4 pull-right sideBar-time">

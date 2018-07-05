@@ -114,7 +114,7 @@
                         <center>
 
                             <a id="videoConferenceUrl" style="display:none;">
-                                <button id="videoConfStart" style="margin-top: 50px;display:none;" class="btn fa fa-play-circle" >Start
+                                <button id="videoConfStart" style="margin-top: 50px;display:none;" class="btn fa fa-play-circle">Start
                                 </button>
                                 <button id="chatConfStart" style="margin-top: 50px;display:none;" class="btn fa fa-play-circle" onclick="chatNavigation()">Chat
                                 </button>
@@ -229,12 +229,10 @@
                                             <h4 class="modal-title">Please enter password which you got from email</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <!-- <input type="text" class="form-control" placeholder="Enter your name" id="userName"> -->
-                                            <br>
                                             <input type="password" class="form-control" placeholder="Enter your Password" id="P_pswd">
                                         </div>
                                         <div class="modal-footer" style="border-top:0px;background-color: #f5f5f5;">
-                                            <button type="button" onclick="checkPassword()" style="background-color: #29b6bd;color:#f1f1f1" class="btn">Submit</button>
+                                            <button type="button"  id="sub" onclick="checkPassword()" style="background-color: #29b6bd;color:#f1f1f1" class="btn">Submit</button>
                                         </div>
                                     </div>
                                 </center>
@@ -514,6 +512,12 @@
                 $("#sndmgs").click();
             }
         });
+
+        $("#P_pswd").keyup(function (event) {
+            if (event.keyCode === 13) {
+                $("#sub").click();
+            }
+        });
     </script>
     <script>
         $(document).ready(function () {
@@ -527,8 +531,6 @@
                 $("#portfolio-wrapper").removeClass("intro");
             });
         });
-
-
     </script>
     <style>
         /* mirror Affect */

@@ -95,23 +95,21 @@
                                                 </div>
                                             </div>
                                             <div class="col-sm-9 col-xs-9 sideBar-main" ng-if="record.groupName!==undefined">
-                                                    <div class="row">
-                                                        <div class="col-sm-8 col-xs-8 sideBar-name" ng-click="chatDetails('group', $index)">
-                                                            <span class="name-meta">--{{record.groupName}}
-                                                            </span>
-                                                        </div>
-                                                        <div class="col-sm-4 col-xs-4 pull-right sideBar-time">
-                                                            <span class="time-meta pull-right">18:18
-                                                            </span>
-                                                        </div>
+                                                <div class="row">
+                                                    <div class="col-sm-8 col-xs-8 sideBar-name" ng-click="chatDetails('group', $index)">
+                                                        <span class="name-meta">--{{record.groupName}}
+                                                        </span>
+                                                    </div>
+                                                    <div class="col-sm-4 col-xs-4 pull-right sideBar-time">
+                                                        <span class="time-meta pull-right">18:18
+                                                        </span>
                                                     </div>
                                                 </div>
+                                            </div>
                                             <div class="col-sm-9 col-xs-9 sideBar-main" ng-if="record.groupName==undefined">
                                                 <div class="row">
                                                     <div class="col-sm-8 col-xs-8 sideBar-name" ng-click="chatDetails('individual_chats', $index)">
-                                                        <span ng-if="record.senderId!=userId" class="name-meta">{{record.senderName}}
-                                                        </span>
-                                                        <span ng-if="record.receiverId!=userId" class="name-meta">{{record.receiverName}}
+                                                        <span class="name-meta">{{record.name}}
                                                         </span>
                                                     </div>
                                                     <div class="col-sm-4 col-xs-4 pull-right sideBar-time">
@@ -120,7 +118,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                          
+
 
                                         </div>
                                     </div>
@@ -150,7 +148,7 @@
                                     </div>
                                 </div>
 
-                                <div class="row message" id="pulldown" >
+                                <div class="row message" id="pulldown">
                                     <!-- <div class="row message-previous">
                                         <div class="col-sm-12 previous">
                                             <a onclick="previous(this)" id="ankitjain28" name="20">
@@ -160,7 +158,7 @@
                                     </div> -->
 
 
-                                    <div class="row message-body"  ng-repeat="chat in allChat.chats">
+                                    <div class="row message-body" ng-repeat="chat in allChat.chats">
                                         <div class="col-sm-12 message-main-receiver" ng-if="chat.senderId!=userId">
                                             <div class="receiver">
                                                 <div class="message-text">

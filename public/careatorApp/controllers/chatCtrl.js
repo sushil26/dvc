@@ -39,6 +39,15 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         $scope.individualData = $scope.allChatRecords[index];
     }
 
+    $scope.chatDetailsFromNew = function (type, index) {
+        console.log("chatDetailsFromNew-->");
+        $scope.selectedType = type;
+        console.log("  $scope.selectedType: " + $scope.selectedType);
+        console.log(" $scope.allGroupAndIndividual[index]: " + JSON.stringify($scope.allGroupAndIndividual[index]));
+        $scope.allChat = $scope.allGroupAndIndividual[index];
+        $scope.individualData = $scope.allGroupAndIndividual[index];
+    }
+
     $scope.getAllChatRightEmp = function () {
         console.log("getAllChatRightEmp-->");
         var id = userData.userId;
@@ -54,13 +63,13 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                 for (var x = 0; x < $scope.allEmp.length; x++) {
                     $scope.allGroupAndIndividual.push($scope.allEmp[x]);
                 }
-                console.log(" $scope.allGroupAndIndividual: "+JSON.stringify($scope.allGroupAndIndividual));
+                console.log(" $scope.allGroupAndIndividual: " + JSON.stringify($scope.allGroupAndIndividual));
             } else {
                 console.log("Sorry: " + data.data.message);
             }
         })
     }
-   // $scope.getAllChatRightEmp();
+    // $scope.getAllChatRightEmp();
     $scope.getEmpDetail = function (index) {
         console.log("getEmpDetail-->");
         $scope.selectedType = "individual_chats";

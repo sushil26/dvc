@@ -86,7 +86,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- ### New Window ### -->
+                                    <!-- ### Start: New Window ### -->
                                     <div class="row compose-sideBar">
                                         <div class="row sideBar-body" ng-repeat="record in allGroupAndIndividual">
                                             <div class="col-sm-3 col-xs-3 sideBar-avatar">
@@ -122,9 +122,10 @@
 
                                         </div>
                                     </div>
+                                    <!-- ### End: New Window ### -->
                                 </div>
                             </div>
-
+                            <!-- ### Start: Remote Profile Head ### -->
                             <div class="col-sm-8 conversation">
                                 <div class="row heading">
                                     <div class="col-sm-2 col-md-1 col-xs-3 heading-avatar">
@@ -135,12 +136,12 @@
                                     <div class="col-sm-8 col-xs-7 heading-name">
                                         <a ng-if="selectedType=='group'" class="heading-name-meta">{{individualData.groupName}}
                                         </a>
-                                        <!-- <a ng-if="selectedType=='individual_chats'" class="heading-name-meta">{{individualData.name}}
-                                        </a> -->
-                                        <a ng-if="selectedType=='individual_chats' && individualData.senderId!=userId" class="heading-name-meta">{{individualData.senderName}}
+                                        <a ng-if="selectedType=='individual_chats'" class="heading-name-meta">{{individualData.name}}
+                                        </a>
+                                        <!-- <a ng-if="selectedType=='individual_chats' && individualData.senderId!=userId" class="heading-name-meta">{{individualData.senderName}}
                                         </a>
                                         <a ng-if="selectedType=='individual_chats' && individualData.receiverId!=userId" class="heading-name-meta">{{individualData.receiverName}}
-                                        </a>
+                                        </a> -->
                                         <span class="heading-online">Online</span>
                                     </div>
                                     <div class="col-sm-1 col-xs-1  heading-dot pull-right">
@@ -210,6 +211,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <!-- ### End: Remote Profile Head ### -->
                         </div>
                     </div>
                 </section>

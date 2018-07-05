@@ -31,6 +31,7 @@ module.exports = function (app) {
 
 
     app.get('/careator_getUser/careator_getUserById/:id', careator.careator_getUserById);
+    app.get('/careator_getGroup/careator_getGroupById/:id', careator.careator_getGroupById);
 
 
     app.get('/careator/getChatRights_emp', careator.getChatRights_emp);

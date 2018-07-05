@@ -48,4 +48,11 @@ careatorApp.controller('groupListCtrl', function ($scope, $rootScope, $filter, $
         })
         console.log("<--statusChange");
     }
+    /////////////////Redirect page with data (id)///////////////////////
+    $scope.editGroup = function(index){
+        console.log("editGroup-->");
+        console.log("$scope.groupList[index]: "+JSON.stringify($scope.groupList[index]));
+        var data = $scope.groupList[index];
+     $state.go("Cdashboard.editGroup",{ "id":data._id});
+    }
 })

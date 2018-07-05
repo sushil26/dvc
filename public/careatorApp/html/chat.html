@@ -86,7 +86,7 @@
                                             </div>
                                         </div>
                                     </div>
-
+                                    <!-- ### New Window ### -->
                                     <div class="row compose-sideBar">
                                         <div class="row sideBar-body" ng-repeat="record in allGroupAndIndividual">
                                             <div class="col-sm-3 col-xs-3 sideBar-avatar">
@@ -96,7 +96,7 @@
                                             </div>
                                             <div class="col-sm-9 col-xs-9 sideBar-main" ng-if="record.groupName!==undefined">
                                                 <div class="row">
-                                                    <div class="col-sm-8 col-xs-8 sideBar-name" ng-click="chatDetails('group', $index)">
+                                                    <div class="col-sm-8 col-xs-8 sideBar-name" ng-click="chatDetailsFromNew('group', $index)">
                                                         <span class="name-meta">--{{record.groupName}}
                                                         </span>
                                                     </div>
@@ -108,7 +108,7 @@
                                             </div>
                                             <div class="col-sm-9 col-xs-9 sideBar-main" ng-if="record.groupName==undefined">
                                                 <div class="row">
-                                                    <div class="col-sm-8 col-xs-8 sideBar-name" ng-click="chatDetails('individual_chats', $index)">
+                                                    <div class="col-sm-8 col-xs-8 sideBar-name" ng-click="chatDetailsFromNew('individual_chats', $index)">
                                                         <span class="name-meta">{{record.name}}
                                                         </span>
                                                     </div>

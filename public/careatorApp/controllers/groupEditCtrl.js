@@ -81,4 +81,14 @@ careatorApp.controller('editGroupCtrl', function ($scope, $state, $rootScope, $f
         })
         console.log("<--rightEmployeeList");
     }
+
+    $scope.groupAdminSettings = {
+        scrollableHeight: '200px',
+        scrollable: true,
+        enableSearch: true,
+        externalIdProp: ''
+    };
+    $scope.groupAdminData = $scope.groupMemberModel;
+    $scope.groupAdminModel = [];
+
 })

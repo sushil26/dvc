@@ -9,7 +9,6 @@ var randomstring = require("randomstring");
 
 var careatorMaster = db.collection("careatorMaster"); /* ### careator employee collection  ### */
 var careatorChatGroup = db.collection("careatorChatGroup"); /* ### careatorChatGroup collection  ### */
-var careatorVideoGroup = db.collection("careatorVideoGroup"); /* ### careatorChatGroup collection  ### */
 var careatorChat = db.collection("careatorChat"); /* ### careatorChat collection  ### */
 var csv = require('fast-csv');
 var careatorMasterArray = [];
@@ -971,7 +970,7 @@ module.exports.individualText = function (req, res) {
                     else {
                         console.log("updatedData: " + JSON.stringify(updatedData));
                         var io = req.app.get('socketio');
-                        io.emit('comm_textReceived', { "id": data[0]._id, "senderId": obj.senderId, "senderName":obj.senderName,"message":obj.message,"sendTime":obj.sendTime }); /* ### Note: Emit message to client ### */
+                        io.emit('comm_textReceived', { "id": data[0]._id, "senderId": obj.senderId, "senderName": obj.senderName, "message": obj.message, "sendTime": obj.sendTime }); /* ### Note: Emit message to client ### */
                         response = {
                             status: true,
                             message: "Sucessfully updated",
@@ -988,7 +987,7 @@ module.exports.individualTextReadById = function (req, res) {
     console.log("individualTextReadById--> ");
     var sId = req.params.sId;
     var rId = req.params.rId;
-    console.log("sId: "+sId+" rId: " +rId);
+    console.log("sId: " + sId + " rId: " + rId);
     var title = sId + rId;
     var r_title = rId + sId;
     console.log("title : " + title + " r_title: " + r_title);
@@ -1015,7 +1014,7 @@ module.exports.individualTextReadById = function (req, res) {
             }
         })
     }
-    else{
+    else {
         console.log("Epty value found");
         response = {
             status: false,
@@ -1030,47 +1029,47 @@ module.exports.careator_getUserById = function (req, res) {
     console.log("careator_getUserById-->");
     var id = req.params.id;
     var response;
-    if(general.emptyCheck(id)){
+    if (general.emptyCheck(id)) {
         var findObj = {
             "_id": ObjectId(id)
         }
-    careatorMaster.find(findObj).toArray(function (err, allEmp_chat) {
-        if (err) {
-            console.log("err: " + JSON.stringify(err));
-            response = {
-                status: fasle,
-                message: "Unsucessfully retrived data",
-                data: err
-            };
-            res.status(400).send(responseData);
-        }
-        else {
-            console.log("allEmp_chat: " + JSON.stringify(allEmp_chat));
-            response = {
-                status: true,
-                message: "Sucessfully retrived data",
-                data: allEmp_chat
-            };
-            res.status(200).send(response);
-        }
-    })
-}
-else{
-    console.log("empty value found");
-    response = {
-        status: fasle,
-        message: "Empty value found",
+        careatorMaster.find(findObj).toArray(function (err, allEmp_chat) {
+            if (err) {
+                console.log("err: " + JSON.stringify(err));
+                response = {
+                    status: fasle,
+                    message: "Unsucessfully retrived data",
+                    data: err
+                };
+                res.status(400).send(responseData);
+            }
+            else {
+                console.log("allEmp_chat: " + JSON.stringify(allEmp_chat));
+                response = {
+                    status: true,
+                    message: "Sucessfully retrived data",
+                    data: allEmp_chat
+                };
+                res.status(200).send(response);
+            }
+        })
     }
-    res.status(400).send(response);
-}
+    else {
+        console.log("empty value found");
+        response = {
+            status: fasle,
+            message: "Empty value found",
+        }
+        res.status(400).send(response);
+    }
 
 }
 
-module.exports.getChatListRecordById = function(req,res){
-    console.log("getChatListRecordById-->: "+req.params.id);
+module.exports.getChatListRecordById = function (req, res) {
+    console.log("getChatListRecordById-->: " + req.params.id);
     var id = req.params.id;
     if (general.emptyCheck(id)) {
-        careatorChat.find({$or:[{"senderId":id},{"receiverId":id}]}).toArray(function(err, findData){
+        careatorChat.find({ $or: [{ "senderId": id }, { "receiverId": id }] }).toArray(function (err, findData) {
             if (err) {
                 console.log("err: " + JSON.stringify(err));
                 response = {
@@ -1092,13 +1091,13 @@ module.exports.getChatListRecordById = function(req,res){
         })
 
     }
-    else{
+    else {
         console.log("Epty value found");
         response = {
             status: false,
             message: "empty value found"
         };
-        res.status(400).send(response);  
+        res.status(400).send(response);
     }
 
 }
@@ -1108,39 +1107,39 @@ module.exports.careator_getGroupById = function (req, res) {
     console.log("careator_getGroupById-->");
     var id = req.params.id;
     var response;
-    if(general.emptyCheck(id)){
+    if (general.emptyCheck(id)) {
         var findObj = {
             "_id": ObjectId(id)
         }
         careatorChatGroup.find(findObj).toArray(function (err, allEmp_chat) {
-        if (err) {
-            console.log("err: " + JSON.stringify(err));
-            response = {
-                status: fasle,
-                message: "Unsucessfully retrived data",
-                data: err
-            };
-            res.status(400).send(responseData);
-        }
-        else {
-            console.log("allEmp_chat: " + JSON.stringify(allEmp_chat));
-            response = {
-                status: true,
-                message: "Sucessfully retrived data",
-                data: allEmp_chat
-            };
-            res.status(200).send(response);
-        }
-    })
-}
-else{
-    console.log("empty value found");
-    response = {
-        status: fasle,
-        message: "Empty value found",
+            if (err) {
+                console.log("err: " + JSON.stringify(err));
+                response = {
+                    status: fasle,
+                    message: "Unsucessfully retrived data",
+                    data: err
+                };
+                res.status(400).send(responseData);
+            }
+            else {
+                console.log("allEmp_chat: " + JSON.stringify(allEmp_chat));
+                response = {
+                    status: true,
+                    message: "Sucessfully retrived data",
+                    data: allEmp_chat
+                };
+                res.status(200).send(response);
+            }
+        })
     }
-    res.status(400).send(response);
-}
+    else {
+        console.log("empty value found");
+        response = {
+            status: fasle,
+            message: "Empty value found",
+        }
+        res.status(400).send(response);
+    }
 
 }
 

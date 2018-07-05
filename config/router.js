@@ -45,7 +45,7 @@ module.exports = function (app) {
     app.get('/careator_getEmp/careator_getChatRightsAllemp/:id', careator.careator_getChatRightsAllemp);
     app.post('/careator_individualText/individualText', careator.individualText);
     app.get('/careator_individualTextRead/individualTextReadById/:sId/:rId', careator.individualTextReadById);
-    app.post('/careator_groupTextText/groupText', careator.groupText);
+    app.post('/careator_groupText/groupText', careator.groupText);
     app.get('/careator_groupTextRead/groupTextReadById/:sId/:rId', careator.groupTextReadById);
 
     app.post('/record/pswdGenerate', record.pswdGenerate);

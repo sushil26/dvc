@@ -36,14 +36,26 @@
                                                     <img src="https://bootdey.com/img/Content/avatar/avatar5.png">
                                                 </div>
                                             </div>
-                                            <div class="col-sm-9 col-xs-9 sideBar-main" >
+                                            <div class="col-sm-9 col-xs-9 sideBar-main">
                                                 <div class="row">
                                                     <div class="col-sm-8 col-xs-8 sideBar-name" ng-click="chatDetails($index)">
-                                                            ---record.receiverId---{{record.receiverId}}--------record.senderId--{{record.senderId}}----- userId--{{userId}}
                                                         <span ng-if="record.senderId!=userId" class="name-meta">{{record.senderName}}
                                                         </span>
                                                         <span ng-if="record.receiverId!=userId" class="name-meta">{{record.receiverName}}
                                                         </span>
+                                                    </div>
+                                                    <div class="col-sm-4 col-xs-4 pull-right sideBar-time">
+                                                        <span class="time-meta pull-right">18:18
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-9 col-xs-9 sideBar-main">
+                                                <div class="row">
+                                                    <div class="col-sm-8 col-xs-8 sideBar-name" ng-click="chatDetails($index)">
+                                                        <span  class="name-meta">group
+                                                        </span>
+
                                                     </div>
                                                     <div class="col-sm-4 col-xs-4 pull-right sideBar-time">
                                                         <span class="time-meta pull-right">18:18
@@ -76,7 +88,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="row compose-sideBar" >
+                                    <div class="row compose-sideBar">
                                         <div class="row sideBar-body" ng-repeat="emp in allEmp">
                                             <div class="col-sm-3 col-xs-3 sideBar-avatar">
                                                 <div class="avatar-icon">
@@ -112,6 +124,10 @@
                                         </a>
                                         <a ng-if="selectedType=='individual'" class="heading-name-meta">{{individualData.name}}
                                         </a>
+                                        <a ng-if="selectedType=='individual_chats' && individualData.senderId!=userId" class="heading-name-meta">{{individualData.senderName}}
+                                        </a>
+                                        <a ng-if="selectedType=='individual_chats' && individualData.receiverId!=userId" class="heading-name-meta">{{individualData.receiverName}}
+                                        </a>
                                         <span class="heading-online">Online</span>
                                     </div>
                                     <div class="col-sm-1 col-xs-1  heading-dot pull-right">
@@ -132,7 +148,7 @@
                                         <div class="col-sm-12 message-main-receiver" ng-if="chat.senderId!=userId">
                                             <div class="receiver">
                                                 <div class="message-text">
-                                                   {{chat.message}}
+                                                    {{chat.message}}
                                                 </div>
                                                 <span class="message-time pull-right">
                                                     {{chat.sendTime}}

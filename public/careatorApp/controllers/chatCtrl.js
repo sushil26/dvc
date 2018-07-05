@@ -13,7 +13,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
             var checkStatus = careatorHttpFactory.dataValidation(data);
             if (checkStatus) {
                 $scope.allGroup = data.data.data;
-                console.log("allemployee: " + JSON.stringify($scope.allGroup));
+                console.log("allGroup: " + JSON.stringify($scope.allGroup));
                 console.log(data.data.message);
             } else {
                 console.log("Sorry");
@@ -33,8 +33,10 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         // $scope.selectedType = "group";
         // console.log(" $scope.allGroup[index]: " + JSON.stringify($scope.allGroup[index]));
         // $scope.groupData = $scope.allGroup[index];
+        $scope.selectedType = "individual_chats";
         console.log(" $scope.allChatRecords[index]: " + JSON.stringify($scope.allChatRecords[index]));
         $scope.allChat = $scope.allChatRecords[index];
+        $scope.individualData  = $scope.allChatRecords[index];
         
     }
 

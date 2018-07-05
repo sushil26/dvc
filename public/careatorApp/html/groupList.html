@@ -18,8 +18,6 @@
                                     <th>Members</th>
                                     <th>Status</th>
                                     <th>Action</th>
-
-
                                 </tr>
                             </thead>
                             <tbody>
@@ -36,18 +34,16 @@
 
                                     <td>
                                         <div ng-repeat="name in emp.groupMembers">{{name.name}}</div>
-
-
                                     </td>
                                     <td>
                                         {{emp.status}}
                                     </td>
                                     <td>
-                                        <button ng-if="emp.status=='inactive' ||emp.status== null" ng-click="statusChange(emp._id, 'active')">Activate</button>
-                                        <button ng-if="emp.status=='active'" ng-click="statusChange(emp._id, 'inactive')">Deactivate</button>
-                                        <button>Delete</button>
+                                        <button class="btn btn-primary" ng-if="emp.status=='inactive' ||emp.status== null" ng-click="statusChange(emp._id, 'active')">Activate</button>
+                                        <button class="btn btn-warning" ng-if="emp.status=='active'" ng-click="statusChange(emp._id, 'inactive')">Deactivate</button>
+                                        <button class="btn btn-danger">Delete</button>
                                         <button>
-                                                <a href="#" ng-click="editGroup($index)">Edit</a>
+                                            <a href="#" ng-click="editGroup($index)">Edit</a>
                                         </button>
                                     </td>
 

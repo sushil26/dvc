@@ -165,7 +165,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                 "message": data.message,
                 "sendTime": data.sendTime
             });
-            scrollDown();
+            $scope.scrollDown();
         }
 
     })

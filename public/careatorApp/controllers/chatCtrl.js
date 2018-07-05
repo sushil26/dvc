@@ -130,6 +130,9 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                     "message": obj.message,
                     "sendTime": new Date()
                 });
+                $scope.scrollDown();
+                console.log("=====scrollDown=====");
+
             } else {
                 console.log("Sorry");
                 console.log(data.data.message);

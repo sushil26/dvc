@@ -22,7 +22,9 @@ careatorApp.controller('editGroupCtrl', function ($scope, $state, $rootScope, $f
                         "id": $scope.userData.groupMembers[x].userId
                     })
                 }
+                $scope.groupAdminModel.push($scope.userData.admin);
                 $scope.rightEmployeeList();
+
 
             } else {
                 console.log("Sorry");

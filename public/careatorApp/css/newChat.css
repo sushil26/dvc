@@ -357,9 +357,9 @@ box-shadow: none;
 .message-time {
     margin: 0 !important;
     margin-left: 50px !important;
-    font-size: 12px;
     text-align: right;
-    color: #9a9a9a;
+    font-size: 9px;
+    color: #1d3952;
 }
 
 .receiver {

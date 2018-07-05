@@ -36,7 +36,8 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         console.log("  $scope.selectedType: " + $scope.selectedType);
         console.log(" $scope.allChatRecords[index]: " + JSON.stringify($scope.allChatRecords[index]));
         $scope.allChat = $scope.allChatRecords[index];
-        //$scope.individualData = $scope.allChatRecords[index];
+        $scope.individualData = $scope.allChatRecords[index];
+        console.log(" $scope.individualData : "+ JSON.stringify($scope.individualData ));
     }
 
     $scope.chatDetailsFromNew = function (type, index) {
@@ -46,6 +47,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         console.log(" $scope.allGroupAndIndividual[index]: " + JSON.stringify($scope.allGroupAndIndividual[index]));
         $scope.allChat = $scope.allGroupAndIndividual[index];
         $scope.individualData = $scope.allGroupAndIndividual[index];
+        console.log(" $scope.individualData : "+ JSON.stringify($scope.individualData ));
     }
 
     $scope.getAllChatRightEmp = function () {

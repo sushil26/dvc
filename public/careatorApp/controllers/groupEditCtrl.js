@@ -22,6 +22,7 @@ careatorApp.controller('editGroupCtrl', function ($scope, $state, $rootScope, $f
                         "id": $scope.userData.groupMembers[x]._id
                     })
                 }
+                console.log("$scope.selectedMembers.-->: "+JSON.stringify($scope.selectedMembers));
                 $scope.rightEmployeeList();
 
             } else {

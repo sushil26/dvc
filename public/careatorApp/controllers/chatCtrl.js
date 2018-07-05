@@ -3,7 +3,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
     var userData = careatorSessionAuth.getAccess("userData");
     $scope.userId = userData.userId;
     console.log("userData: " + JSON.stringify(userData));
-
+    $scope.allGroupAndIndividual = []; /* ### Note:$scope.allGroupAndIndividual contains All employee list(who having chat rights) and group list(which are included by login person)   ### */
     $scope.getChatGroupListById = function (id) {
         console.log("getAllEmployee-->: " + id);
         var api = "https://norecruits.com/careator_chatGroupList/careator_getChatGroupListById/" + id;

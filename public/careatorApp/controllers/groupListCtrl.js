@@ -1,4 +1,4 @@
-careatorApp.controller('groupListCtrl', function ($scope, $rootScope, $filter, $window, careatorHttpFactory) {
+careatorApp.controller('groupListCtrl', function ($scope,$state, $rootScope, $filter, $window, careatorHttpFactory) {
     console.log("groupListCtrl==>");
     $scope.getGroupList = function () {
         console.log("getGroupList-->");

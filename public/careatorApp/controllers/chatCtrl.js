@@ -3,7 +3,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
     var userData = careatorSessionAuth.getAccess("userData");
     $scope.userId = userData.userId;
     console.log("userData: " + JSON.stringify(userData));
-
+    $scope.allGroupAndIndividual = []; /* ### Note:$scope.allGroupAndIndividual contains All employee list(who having chat rights) and group list(which are included by login person)   ### */
     $scope.getChatGroupListById = function (id) {
         console.log("getAllEmployee-->: " + id);
         var api = "https://norecruits.com/careator_chatGroupList/careator_getChatGroupListById/" + id;
@@ -15,6 +15,9 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                 $scope.allGroup = data.data.data;
                 console.log("allGroup: " + JSON.stringify($scope.allGroup));
                 console.log(data.data.message);
+                for (var x = 0; x < $scope.allGroup.length; x++) {
+                    $scope.allGroupAndIndividual.push($scope.allGroup[x]);
+                }
             } else {
                 console.log("Sorry");
                 console.log(data.data.message);
@@ -28,17 +31,12 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
     }
 
     $scope.chatDetails = function (type, index) {
-
         console.log("chatDetails-->");
         $scope.selectedType = type;
         console.log("  $scope.selectedType: " + $scope.selectedType);
-        // console.log(" $scope.allGroup[index]: " + JSON.stringify($scope.allGroup[index]));
-        // $scope.groupData = $scope.allGroup[index];
-        //$scope.selectedType = "individual_chats";
         console.log(" $scope.allChatRecords[index]: " + JSON.stringify($scope.allChatRecords[index]));
         $scope.allChat = $scope.allChatRecords[index];
         $scope.individualData = $scope.allChatRecords[index];
-
     }
 
     $scope.getAllChatRightEmp = function () {
@@ -53,12 +51,15 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                 $scope.allEmp = data.data.data;
                 console.log(" $scope.allEmp : " + JSON.stringify($scope.allEmp));
                 console.log("data.data.message: " + data.data.message);
+                for (var x = 0; x < $scope.allEmp.length; x++) {
+                    $scope.allGroupAndIndividual.push($scope.allEmp[x]);
+                }
             } else {
                 console.log("Sorry: " + data.data.message);
             }
         })
     }
-
+    $scope.getAllChatRightEmp();
     $scope.getEmpDetail = function (index) {
         console.log("getEmpDetail-->");
         $scope.selectedType = "individual_chats";
@@ -200,7 +201,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         }, 500);
     }
 
-    
+
 
 
 })

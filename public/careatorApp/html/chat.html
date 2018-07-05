@@ -36,7 +36,7 @@
                                                     <img src="https://bootdey.com/img/Content/avatar/avatar5.png">
                                                 </div>
                                             </div>
-                                            <div class="col-sm-9 col-xs-9 sideBar-main" ng-if="record.groupName!==undefined">
+                                            <div class="col-sm-9 col-xs-9 sideBar-main" ng-if="record.groupName==undefined">
                                                 <div class="row">
                                                     <div class="col-sm-8 col-xs-8 sideBar-name" ng-click="chatDetails('individual_chats', $index)">
                                                         <span ng-if="record.senderId!=userId" class="name-meta">{{record.senderName}}
@@ -50,7 +50,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-9 col-xs-9 sideBar-main" ng-if="record.groupName">
+                                            <div class="col-sm-9 col-xs-9 sideBar-main" ng-if="record.groupName!==undefined">
                                                 <div class="row">
                                                     <div class="col-sm-8 col-xs-8 sideBar-name" ng-click="chatDetails('group', $index)">
                                                         <span class="name-meta">{{record.groupName}}

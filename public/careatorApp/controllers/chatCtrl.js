@@ -37,7 +37,14 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         console.log(" $scope.allChatRecords[index]: " + JSON.stringify($scope.allChatRecords[index]));
         $scope.allChat = $scope.allChatRecords[index];
         $scope.individualData = $scope.allChatRecords[index];
-        console.log(" $scope.individualData : "+ JSON.stringify($scope.individualData ));
+        console.log(" $scope.individualData : " + JSON.stringify($scope.individualData));
+        $scope.receiverData = {
+            "senderId": userData.userId,
+            "senderName": userData.userName,
+            "receiverId": $scope.individualData.receiverId,
+            "receiverName": $scope.individualData.receiverName
+        }
+        console.log("   $scope.receiverData : " + JSON.stringify($scope.receiverData));
     }
 
     $scope.chatDetailsFromNew = function (type, index) {
@@ -47,7 +54,15 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         console.log(" $scope.allGroupAndIndividual[index]: " + JSON.stringify($scope.allGroupAndIndividual[index]));
         $scope.allChat = $scope.allGroupAndIndividual[index];
         $scope.individualData = $scope.allGroupAndIndividual[index];
-        console.log(" $scope.individualData : "+ JSON.stringify($scope.individualData ));
+        console.log(" $scope.individualData : " + JSON.stringify($scope.individualData));
+        $scope.receiverData = {
+            "senderId": userData.userId,
+            "senderName": userData.userName,
+            "receiverId": $scope.individualData._id,
+            "receiverName": $scope.individualData.name
+        }
+        console.log("   $scope.receiverData : " + JSON.stringify($scope.receiverData));
+
     }
 
     $scope.getAllChatRightEmp = function () {
@@ -98,7 +113,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                 "receiverName": $scope.individualData.name,
                 "message": $scope.typedMessage
             }
-            console.log("obj: "+JSON.stringify(obj));
+            console.log("obj: " + JSON.stringify(obj));
         } else if ($scope.selectedType == 'group') {
             api = "https://norecruits.com/careator_groupText/groupText";
         }

@@ -11,26 +11,26 @@ var capture = require('./controllers/capture');
 
 module.exports = function (app) {
 
-    app.post('/vc/captureImgSend/:parentEmail/:studName', capture.captureImgSend);
+    // app.post('/vc/captureImgSend/:parentEmail/:studName', capture.captureImgSend);
 
-    app.post('/careator/pswdGenerate', careator.pswdGenerate);
-    app.post('/careator/pswdCheck', careator.pswdCheck);
-    app.post('/careator/emailInvite', careator.emailInvite);
-    app.post('/careator/RemoteJoinCheck', careator.RemoteJoinCheck);
-    app.post('/careator/setCollection', careator.setCollection);
-    app.get('/chatHistory/getHistory', careator.getHistory);
-    app.get('/chatHistory/getHistoryByEmailId/:email', careator.getHistoryByEmailId);
-    app.post('/careator/careatorMasterInsert', careator.careatorMasterInsert);
-    app.get('/careator/careator_getAllEmp', careator.careator_getAllEmp);
-    app.post('/careator/statusChangeById', careator.statusChangeById);
-    app.post('/careator/groupStatusChangeById', careator.groupStatusChangeById);
-    app.get('/careator_getChatListRecordById/getChatListRecordById/:id', careator.getChatListById);
+    // app.post('/careator/pswdGenerate', careator.pswdGenerate);
+    // app.post('/careator/pswdCheck', careator.pswdCheck);
+    // app.post('/careator/emailInvite', careator.emailInvite);
+    // app.post('/careator/RemoteJoinCheck', careator.RemoteJoinCheck);
+    // app.post('/careator/setCollection', careator.setCollection);
+    // app.get('/chatHistory/getHistory', careator.getHistory);
+    // app.get('/chatHistory/getHistoryByEmailId/:email', careator.getHistoryByEmailId);
+    // app.post('/careator/careatorMasterInsert', careator.careatorMasterInsert);
+    // app.get('/careator/careator_getAllEmp', careator.careator_getAllEmp);
+    // app.post('/careator/statusChangeById', careator.statusChangeById);
+    // app.post('/careator/groupStatusChangeById', careator.groupStatusChangeById);
+    // app.get('/careator_getChatListRecordById/getChatListRecordById/:id', careator.getChatListById);
 
     // app.post('/careator/userEditById', careator.userEditById);
     // app.post('/careator/groupEditById', careator.groupEditById);
 
 
-    //app.get('/careator_getUser/careator_getUserById/:id', careator.careator_getUserById);
+    app.get('/careator_getUser/careator_getUserById/:id', careator.careator_getUserById);
 
 
     app.get('/careator/getChatRights_emp', careator.getChatRights_emp);

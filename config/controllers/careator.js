@@ -1057,7 +1057,6 @@ module.exports.groupText = function (req, res) {
                         "groupName": req.body.groupName,
                         "senderId": req.body.senderId,
                         "senderName": req.body.senderName,
-                        "message": req.body.typedMessage,
                         "chats": [{ "senderId": req.body.senderId, "senderName": req.body.senderName, "message": req.body.message, "sendTime": date }],
                         "timeStamp": date
                     }

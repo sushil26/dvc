@@ -30,13 +30,13 @@
                                                 </div>
                                             </button>
                                         </div>
-                                        <div class="row sideBar-body" ng-repeat="record in allChatRecords">
+                                        <div class="row sideBar-body" ng-repeat="record in chatedGroup_records">
                                             <div class="col-sm-3 col-xs-3 sideBar-avatar">
                                                 <div class="avatar-icon">
                                                     <img src="https://bootdey.com/img/Content/avatar/avatar5.png">
                                                 </div>
                                             </div>
-                                            <div class="col-sm-9 col-xs-9 sideBar-main">
+                                            <div class="col-sm-9 col-xs-9 sideBar-main" ng-if="record.senderName || record.receiverName">
                                                 <div class="row">
                                                     <div class="col-sm-8 col-xs-8 sideBar-name" ng-click="chatDetails($index)">
                                                         <span ng-if="record.senderId!=userId" class="name-meta">{{record.senderName}}
@@ -50,12 +50,11 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-9 col-xs-9 sideBar-main">
+                                            <div class="col-sm-9 col-xs-9 sideBar-main" ng-if="record.groupName">
                                                 <div class="row">
                                                     <div class="col-sm-8 col-xs-8 sideBar-name" ng-click="chatDetails($index)">
-                                                        <span  class="name-meta">group
+                                                        <span class="name-meta">{{record.groupName}}
                                                         </span>
-
                                                     </div>
                                                     <div class="col-sm-4 col-xs-4 pull-right sideBar-time">
                                                         <span class="time-meta pull-right">18:18

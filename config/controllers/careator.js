@@ -1102,3 +1102,45 @@ module.exports.getChatListRecordById = function(req,res){
     }
 
 }
+
+
+module.exports.careator_getGroupById = function (req, res) {
+    console.log("careator_getGroupById-->");
+    var id = req.params.id;
+    var response;
+    if(general.emptyCheck(id)){
+        var findObj = {
+            "_id": ObjectId(id)
+        }
+        careatorChatGroup.find(findObj).toArray(function (err, allEmp_chat) {
+        if (err) {
+            console.log("err: " + JSON.stringify(err));
+            response = {
+                status: fasle,
+                message: "Unsucessfully retrived data",
+                data: err
+            };
+            res.status(400).send(responseData);
+        }
+        else {
+            console.log("allEmp_chat: " + JSON.stringify(allEmp_chat));
+            response = {
+                status: true,
+                message: "Sucessfully retrived data",
+                data: allEmp_chat
+            };
+            res.status(200).send(response);
+        }
+    })
+}
+else{
+    console.log("empty value found");
+    response = {
+        status: fasle,
+        message: "Empty value found",
+    }
+    res.status(400).send(response);
+}
+
+}
+

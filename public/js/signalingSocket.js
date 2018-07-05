@@ -1353,13 +1353,7 @@ signaling_socket.on("stateChangedToClient", function (data) {
 });
 
 function scrollDown() {
-  console.log("scrollDown-->");
-  $("#popupMsg").animate({
-    scrollTop: $("#popupMsg").prop("scrollHeight")
-  },
-    500
-  );
-  console.log("<--scrollDown");
+  $("#popupMsg").animate({scrollTop: $("#popupMsg").prop("scrollHeight")},500);
 }
 
 // getScreenId.js

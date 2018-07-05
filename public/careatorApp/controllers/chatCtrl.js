@@ -135,7 +135,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
             console.log("obj: " + JSON.stringify(obj));
         } else if ($scope.selectedType == 'group') {
             obj = {
-                "groupId": $scope.sendGroupText_withData._id,
+                "groupId": $scope.sendGroupText_withData.groupId,
                 "groupName": $scope.sendGroupText_withData.groupName,
                 "senderId": userData.userId,
                 "senderName": userData.userName,

@@ -79,4 +79,6 @@ careatorApp.controller('editGroupCtrl', function ($scope, $state, $rootScope, $f
         console.log("<--rightEmployeeList");
     }
 
+    $scope.rightEmployeeList();
+
 })

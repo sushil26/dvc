@@ -39,6 +39,7 @@
                                             <div class="col-sm-9 col-xs-9 sideBar-main" >
                                                 <div class="row">
                                                     <div class="col-sm-8 col-xs-8 sideBar-name" ng-click="chatDetails($index)">
+                                                            ---record.receiverId---{{record.receiverId}}--------record.senderId--{{record.senderId}----- userId--{{userId}}
                                                         <span ng-if="record.senderId!=userId" class="name-meta">{{record.senderName}}
                                                         </span>
                                                         <span ng-if="record.receiverId!=userId" class="name-meta">{{record.receiverName}}

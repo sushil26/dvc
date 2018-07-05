@@ -36,7 +36,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         console.log("  $scope.selectedType: " + $scope.selectedType);
         console.log(" $scope.allChatRecords[index]: " + JSON.stringify($scope.allChatRecords[index]));
         $scope.allChat = $scope.allChatRecords[index];
-        $scope.individualData = $scope.allChatRecords[index];
+        //$scope.individualData = $scope.allChatRecords[index];
     }
 
     $scope.chatDetailsFromNew = function (type, index) {

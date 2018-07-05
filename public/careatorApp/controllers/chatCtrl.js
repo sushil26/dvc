@@ -100,6 +100,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
     $scope.sendText = function () {
         $('#comment').val('');
         console.log("sendText-->");
+        console.log("   $scope.receiverData : " + JSON.stringify($scope.receiverData));
         console.log("$scope.typedMessage: " + $scope.typedMessage);
         var api;
         var obj;

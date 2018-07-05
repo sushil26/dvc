@@ -32,6 +32,7 @@ careatorApp.controller('editUserCtrl', function ($scope, $state, $rootScope, $fi
 
     $scope.updateUser = function (ur) {
         console.log("updateUser-->");
+        var api = "https://norecruits.com/careator/userEditById/" + id;
        
         var obj = {
             "userName": $scope.userName,

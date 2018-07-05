@@ -105,6 +105,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
             }
         })
     }
+    
     $scope.readText = function () {
         console.log("readText-->");
         var sId = userData.userId;

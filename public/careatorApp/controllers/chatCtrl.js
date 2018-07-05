@@ -95,6 +95,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                 "receiverName": $scope.individualData.name,
                 "message": $scope.typedMessage
             }
+            console.log("obj: "+JSON.stringify(sendText));
         } else if ($scope.selectedType == 'group') {
             api = "https://norecruits.com/careator_groupText/groupText";
         }

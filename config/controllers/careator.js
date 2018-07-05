@@ -1154,14 +1154,14 @@ module.exports.userEditById = function (req, res) {
         }
         console.log("queryId: " + JSON.stringify(queryId));
         var updateVlaue = {
-            "name" : "req.body.userName",
-            "empId" : "req.body.empId",
-            "email" : "req.body.userEmail",
-            "videoRights" : "req.body.videoRights",
-            "chatRights" : "req.body.chatRights"
+            "name" : req.body.userName,
+            "empId" : req.body.empId,
+            "email" : req.body.userEmail,
+            "videoRights" : req.body.videoRights,
+            "chatRights" : req.body.chatRights
         }
         console.log("updateVlaue: " + JSON.stringify(updateVlaue));
-        careatorMaster.update(queryId, { $update: updateVlaue }), function (err, updatedData) {
+        careatorMaster.update(queryId, { $set: updateVlaue }), function (err, updatedData) {
             if (err) {
                 console.log("err: " + JSON.stringify(err));
                 response = {

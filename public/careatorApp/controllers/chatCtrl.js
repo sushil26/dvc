@@ -38,11 +38,20 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         $scope.allChat = $scope.allChatRecords[index];
         $scope.individualData = $scope.allChatRecords[index];
         console.log(" $scope.individualData : " + JSON.stringify($scope.individualData));
+
         $scope.receiverData = {
             "senderId": userData.userId,
             "senderName": userData.userName,
             "receiverId": $scope.individualData.receiverId,
             "receiverName": $scope.individualData.receiverName
+        }
+        if ($scope.individualData.receiverId != userData.userId) {
+            $scope.receiverData.receiverId = $scope.individualData.receiverId;
+            $scope.receiverData.receiverName =  $scope.individualData.receiverName;
+        }
+        else if ($scope.individualData.senderId != userData.userId) {
+            $scope.receiverData.senderId = $scope.individualData.senderId;
+            $scope.receiverData.receiverName =  $scope.individualData.senderName;
         }
         console.log("   $scope.receiverData : " + JSON.stringify($scope.receiverData));
     }

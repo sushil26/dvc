@@ -51,7 +51,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                 $scope.receiverData.receiverName = $scope.individualData.senderName;
             }
         }
-       else if ($scope.selectedType == 'group') {
+        else if ($scope.selectedType == 'group') {
             $scope.sendGroupText_withData = {
                 "groupId": $scope.individualData._id,
                 "groupName": $scope.individualData.groupName,
@@ -71,11 +71,22 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         $scope.allChat = $scope.allGroupAndIndividual[index];
         $scope.individualData = $scope.allGroupAndIndividual[index];
         console.log(" $scope.individualData : " + JSON.stringify($scope.individualData));
-        $scope.receiverData = {
-            "senderId": userData.userId,
-            "senderName": userData.userName,
-            "receiverId": $scope.individualData._id,
-            "receiverName": $scope.individualData.name
+        if ($scope.selectedType == "individual_chats") {
+            $scope.receiverData = {
+                "senderId": userData.userId,
+                "senderName": userData.userName,
+                "receiverId": $scope.individualData._id,
+                "receiverName": $scope.individualData.name
+            }
+        }
+        else if ($scope.selectedType == 'group') {
+            $scope.sendGroupText_withData = {
+                "groupId": $scope.individualData._id,
+                "groupName": $scope.individualData.groupName,
+                "senderId": userData.userId,
+                "senderName": userData.userName
+            }
+            console.log("sendGroupText_withData-->: " + JSON.stringify($scope.sendGroupText_withData));
         }
         console.log("   $scope.receiverData : " + JSON.stringify($scope.receiverData));
 
@@ -201,7 +212,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                 console.log(data.data.message);
                 $scope.chatedGroup_records = $scope.allChatRecords; /* ### Note: $scope.chatedGroup_records is Chat(chated records) and group(group records) records storage  ### */
                 // for (var x = 0; x < $scope.allGroup.length; x++) {
-                    
+
                 //     $scope.chatedGroup_records.push($scope.allGroup[x]);
                 // }
 

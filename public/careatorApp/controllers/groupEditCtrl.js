@@ -14,7 +14,7 @@ careatorApp.controller('editGroupCtrl', function ($scope, $state, $rootScope, $f
                 $scope.userData = data.data.data[0];
                 console.log("userData: " + JSON.stringify($scope.userData));
                 console.log(data.data.message);
-              
+
                 for (var x = 0; x < $scope.userData.groupMembers.length; x++) {
                     $scope.selectedMembers.push({
                         "email": $scope.userData.groupMembers[x].email,
@@ -73,14 +73,14 @@ careatorApp.controller('editGroupCtrl', function ($scope, $state, $rootScope, $f
                         }
                     }
                 }
-                for(var x=0;x< $scope.groupMemberModel.length;x++){
-                    console.log("$scope.groupMemberModel[x]: "+JSON.stringify($scope.groupMemberModel[x]));
-                    console.log("$scope.selectedAdmin: "+JSON.stringify($scope.selectedAdmin));
-                    if($scope.groupMemberModel[x].id == $scope.selectedAdmin.userId){
-                        $scope.groupAdminModel.push($scope.groupMemberModel[x].id);
+                $scope.groupAdminData = $scope.groupMemberModel;
+                for (var x = 0; x < $scope.groupAdminData.length; x++) {
+                    console.log("$scope.groupAdminData[x]: " + JSON.stringify($scope.groupAdminData[x]));
+                    console.log("$scope.selectedAdmin: " + JSON.stringify($scope.selectedAdmin));
+                    if ($scope.groupAdminData[x].id == $scope.selectedAdmin.userId) {
+                        $scope.groupAdminModel.push($scope.groupAdminData[x].id);
                     }
                 }
-
                 console.log(data.data.message);
             }
             else {
@@ -97,9 +97,9 @@ careatorApp.controller('editGroupCtrl', function ($scope, $state, $rootScope, $f
         enableSearch: true,
         externalIdProp: ''
     };
-    $scope.groupAdminData = $scope.groupMemberModel;
+
     $scope.groupAdminModel = [];
-    
-    
+
+
 
 })

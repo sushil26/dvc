@@ -34,12 +34,12 @@ module.exports = function (app) {
     app.get('/careator_getGroup/careator_getGroupById/:id', careator.careator_getGroupById);
 
 
-    app.get('/careator/getChatRights_emp', careator.getChatRights_emp);
-    app.get('/careator/getVideoRights_emp', careator.getVideoRights_emp);
-    app.get('/careator/careator_getChatVideo_emp', careator.careator_getChatVideo_emp);
-    app.post('/careator/careator_chat_creteGroup', careator.careator_chat_creteGroup);
-    app.post('/careator/careator_video_creteGroup', careator.careator_video_creteGroup);
-    app.post('/careator/careator_chatVideo_creteGroup', careator.careator_chatVideo_creteGroup);
+    // app.get('/careator/getChatRights_emp', careator.getChatRights_emp);
+    // app.get('/careator/getVideoRights_emp', careator.getVideoRights_emp);
+    // app.get('/careator/careator_getChatVideo_emp', careator.careator_getChatVideo_emp);
+    // app.post('/careator/careator_chat_creteGroup', careator.careator_chat_creteGroup);
+    // app.post('/careator/careator_video_creteGroup', careator.careator_video_creteGroup);
+    // app.post('/careator/careator_chatVideo_creteGroup', careator.careator_chatVideo_creteGroup);
     app.get('/careator_chatGroupList/careator_getChatGroupListById/:id', careator.careator_getChatGroupListById);
     app.get('/careator_chatGroupList/careator_getChatGroupList', careator.careator_getChatGroupList);
     app.get('/careator_getEmp/careator_getChatRightsAllemp/:id', careator.careator_getChatRightsAllemp);

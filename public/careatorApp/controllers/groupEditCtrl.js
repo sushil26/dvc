@@ -45,7 +45,7 @@ careatorApp.controller('editGroupCtrl', function ($scope, $state, $rootScope, $f
     $scope.rightEmployeeList = function () {
 
         console.log("rightEmployeeList-->");
-        
+
         var api = "https://norecruits.com/careator/getChatRights_emp";
         console.log("api: " + JSON.stringify(api));
         careatorHttpFactory.get(api).then(function (data) {
@@ -65,8 +65,13 @@ careatorApp.controller('editGroupCtrl', function ($scope, $state, $rootScope, $f
                         "id": groupMembers[x]._id
                     });
                     for (var y = 0; y < $scope.selectedMembers.length; y++) {
+                        console.log("y iteration-->");
+                        console.log("$scope.selectedMembers[y].id: "+JSON.stringify($scope.selectedMembers[y].id));
+                        console.log("$scope.groupMemberData[x].id: "+JSON.stringify($scope.groupMemberData[x].id));
                         if ($scope.selectedMembers[y].id == $scope.groupMemberData[x].id) {
+                            console.log(" $scope.groupMemberData[x]: " + JSON.stringify($scope.groupMemberData[x]));
                             $scope.groupMemberModel.push($scope.groupMemberData[x]);
+                            console.log(" $scope.groupMemberModel: " + JSON.stringify($scope.groupMemberModel));
                         }
                     }
 
@@ -83,6 +88,6 @@ careatorApp.controller('editGroupCtrl', function ($scope, $state, $rootScope, $f
         console.log("<--rightEmployeeList");
     }
 
-  
+
 
 })

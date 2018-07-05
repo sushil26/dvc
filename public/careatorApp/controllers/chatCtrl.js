@@ -15,7 +15,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                 $scope.allGroup = data.data.data;
                 console.log("allGroup: " + JSON.stringify($scope.allGroup));
                 console.log(data.data.message);
-               
+
             } else {
                 console.log("Sorry");
                 console.log(data.data.message);
@@ -40,16 +40,16 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         $scope.receiverData = {
             "senderId": userData.userId,
             "senderName": userData.userName,
-            
+
         }
         console.log(" Before  $scope.receiverData : " + JSON.stringify($scope.receiverData));
         if ($scope.individualData.receiverId != userData.userId) {
             $scope.receiverData.receiverId = $scope.individualData.receiverId;
-            $scope.receiverData.receiverName =  $scope.individualData.receiverName;
+            $scope.receiverData.receiverName = $scope.individualData.receiverName;
         }
         else if ($scope.individualData.senderId != userData.userId) {
             $scope.receiverData.receiverId = $scope.individualData.senderId;
-            $scope.receiverData.receiverName =  $scope.individualData.senderName;
+            $scope.receiverData.receiverName = $scope.individualData.senderName;
         }
         console.log("   $scope.receiverData : " + JSON.stringify($scope.receiverData));
     }
@@ -88,7 +88,6 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                 for (var x = 0; x < $scope.allEmp.length; x++) {
                     $scope.allGroupAndIndividual.push($scope.allEmp[x]);
                 }
-                console.log("$scope.allGroup: " + JSON.stringify($scope.allGroup));
                 for (var x = 0; x < $scope.allGroup.length; x++) {
                     $scope.allGroupAndIndividual.push($scope.allGroup[x]);
                 }

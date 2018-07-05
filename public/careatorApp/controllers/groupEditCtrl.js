@@ -14,9 +14,10 @@ careatorApp.controller('editGroupCtrl', function ($scope, $state, $rootScope, $f
                 $scope.userData = data.data.data[0];
                 console.log("userData: " + JSON.stringify($scope.userData));
                 console.log(data.data.message);
+                $scope.selectedMembers = [];
                 for (var x = 0; x < $scope.userData.groupMembers.length; x++) {
 
-                    $scope.groupMemberModel.push({
+                    $scope.selectedMembers.push({
                         "email":  $scope.userData.groupMembers[x].email,
                         "label":  $scope.userData.groupMembers[x].name,
                         "id":  $scope.userData.groupMembers[x]._id
@@ -63,6 +64,12 @@ careatorApp.controller('editGroupCtrl', function ($scope, $state, $rootScope, $f
                         "label": groupMembers[x].name + " - " + groupMembers[x].empId,
                         "id": groupMembers[x]._id
                     });
+                    for(var y=0;y<$scope.selectedMembers.length;y++){
+                        if($scope.selectedMembers[y].id==$scope.groupMemberData[x].id){
+                            $scope.groupMemberModel.push($scope.groupMemberData[x]);
+                        }
+                    }
+                    
                     console.log(" after $scope.groupMemberData: " + JSON.stringify($scope.groupMemberData));
                 }
 

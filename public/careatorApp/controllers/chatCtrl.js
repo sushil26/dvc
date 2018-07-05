@@ -100,7 +100,6 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
     $scope.sendText = function () {
         $('#comment').val('');
         console.log("sendText-->");
-        console.log("   $scope.receiverData : " + JSON.stringify($scope.receiverData));
         console.log("$scope.typedMessage: " + $scope.typedMessage);
         var api;
         var obj;
@@ -109,9 +108,9 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
             api = "https://norecruits.com/careator_individualText/individualText";
             obj = {
                 "senderId": userData.userId,
-                "receiverId":  $scope.receiverData._id,
+                "receiverId": $scope.receiverData.receiverId,
                 "senderName": userData.userName,
-                "receiverName":  $scope.receiverData.name,
+                "receiverName": $scope.receiverData.receiverName,
                 "message": $scope.typedMessage
             }
             console.log("obj: " + JSON.stringify(obj));

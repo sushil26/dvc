@@ -1,24 +1,22 @@
 careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $filter, careatorSessionAuth, careatorHttpFactory) {
     console.log("careator_dashboardCtrl==>");
-    // $scope.getChatGroupListById = function (id) {
-    //     console.log("getAllEmployee-->: " + id);
-    //     var api = "https://norecruits.com/careator_chatGroupList/careator_getChatGroupListById/" + id;
-    //     console.log("api: " + api);
-    //     careatorHttpFactory.get(api).then(function (data) {
-    //         console.log("data--" + JSON.stringify(data.data));
-    //         var checkStatus = careatorHttpFactory.dataValidation(data);
-    //         console.log("data--" + JSON.stringify(data.data));
-    //         if (checkStatus) {
-    //             $scope.allemployee = data.data.data;
-    //             console.log("allemployee: " + JSON.stringify($scope.allemployee));
-    //             console.log(data.data.message);
-    //         } else {
-    //             console.log("Sorry");
-    //             console.log(data.data.message);
-    //         }
-    //     })
-    //     console.log("<--getAllEmployee");
-    // }
+    $scope.clock = "loading clock..."; // initialise the time variable
+    $scope.tickInterval = 1000 //ms
+    $scope.propertyJson = $rootScope.propertyJson;
+
+    var tick = function () {
+        $scope.clock = new Date()
+        $scope.hour = $filter('date')($scope.clock, 'HH');
+        $scope.min = $filter('date')($scope.clock, 'mm');
+        $scope.sec = $filter('date')($scope.clock, 'ss');
+        $timeout(tick, $scope.tickInterval); // reset the timer
+    }
+    // Start the timer
+    $timeout(tick, $scope.tickInterval);
+
+
+
+
     var userData = {
         "email": localStorage.getItem("email"),
         "userName": localStorage.getItem("userName"),
@@ -30,7 +28,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
     }
     if (localStorage.getItem("chatRights") == 'yes') {
         userData.chatRights = "yes";
-       // $scope.getChatGroupListById(localStorage.getItem("userId"));
+        // $scope.getChatGroupListById(localStorage.getItem("userId"));
     }
 
     careatorSessionAuth.setAccess(userData);
@@ -46,17 +44,25 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
     //////////////toggle//////////////////////////////
     $('#tog').click(function () {
 
-        $('#tog').css({"display":"none"});
-        $('#fog').css({"display":"inline"});
-      
+        $('#tog').css({
+            "display": "none"
+        });
+        $('#fog').css({
+            "display": "inline"
+        });
+
     });
     $('#fog').click(function () {
 
-        $('#tog').css({"display":"inline"});
-        $('#fog').css({"display":"none"});
-      
+        $('#tog').css({
+            "display": "inline"
+        });
+        $('#fog').css({
+            "display": "none"
+        });
+
     });
-   
+
 
 
 

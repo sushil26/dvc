@@ -2,10 +2,8 @@ careatorApp.controller('editGroupCtrl', function ($scope,$state, $rootScope, $fi
     console.log("editGroupCtrl==>");
     console.log("id: " + $state.params.id);
     var id = $state.params.id;
-
     $scope.getGroup = function () {
         console.log("getGroup-->");
-
         var api = "https://norecruits.com/careator_getGroup/careator_getGroupById/" + id;
         console.log("api: " + api);
         careatorHttpFactory.get(api).then(function (data) {
@@ -25,12 +23,7 @@ careatorApp.controller('editGroupCtrl', function ($scope,$state, $rootScope, $fi
                 console.log(data.data.message);
             }
         })
-
-
         console.log("<--getAllEmployee");
     }
     $scope.getGroup();
-
-
-
 })

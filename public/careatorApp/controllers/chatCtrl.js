@@ -194,8 +194,9 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
 
     /////Auto Scroll Down Chat////////////////
     $scope.scrollDown = function () {
-        $("#conversation").animate({
-            scrollTop: $("#conversation").prop("scrollHeight")
+        console.log("scrollDown-->");
+        $("#pulldown").animate({
+            scrollTop: $("#pulldown").prop("scrollHeight")
         }, 500);
     }
 

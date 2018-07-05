@@ -1174,7 +1174,7 @@ else{
 }
 
 module.exports.getChatListRecordById = function(req,res){
-    console.log("getChatListById-->: "+req.params.id);
+    console.log("getChatListRecordById-->: "+req.params.id);
     var id = req.params.id;
     if (general.emptyCheck(id)) {
         careatorChat.find({$or:[{"senderId":id},{"receiverId":id}]}).toArray(function(err, findData){

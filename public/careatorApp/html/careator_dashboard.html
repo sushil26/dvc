@@ -4,9 +4,21 @@
         <header class="header dark-bg">
             <div class="toggle-nav">
                 <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom">
-                    <i  style="display: none;" class="fa fa-bars" id="tog" ng-click="iconMenuClick()"></i>
-                    <i  class="fa fa-times"  id="fog" ng-click="iconMenuClick()"></i>
+                    <i style="display: none;" class="fa fa-bars" id="tog" ng-click="iconMenuClick()"></i>
+                    <i class="fa fa-times" id="fog" ng-click="iconMenuClick()"></i>
                 </div>
+            </div>
+            <div class="top-nav notification-row">
+                <ul class="nav pull-right top-menu">
+
+                    <li class="dropdown">
+                        <span ng-if="hour <'12' && min<='59' && sec<='59' && hour >='0'" class="username"> &nbspGood Morning&nbsp{{userName}}</span>
+                        <span ng-if="hour >='12' && hour < '17'" class="username"> Good Afternoon&nbsp{{userName}}</span>
+                        <span ng-if="hour >='17' && min<='59' && sec<='59' && hour <='23'" class="username">Good Evening&nbsp{{userName}}</span>
+                        <br>
+                        <span class="username" style="color: white;">{{clock | date:' d MMM yyyy h:mm a'}}</span>
+                    </li>
+                </ul>
             </div>
             <span>
                 <img ng-click="homeClick()" style="float:left;width: 63px;margin-top: 5px" src="../home/img/fav.png" />

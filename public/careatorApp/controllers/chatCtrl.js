@@ -72,6 +72,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         console.log("$scope.typedMessage: " + $scope.typedMessage);
         var api;
         var obj;
+        console.log("$scope.selectedType: "+$scope.selectedType);
         if ($scope.selectedType == 'individual_chat') {
             api = "https://norecruits.com/careator_individualText/individualText";
             obj = {

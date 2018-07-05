@@ -134,9 +134,8 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                 console.log(data.data.message);
             }
         })
-
     }
-
+    $scope.getChatRecords();
     
     /* ### Start: receive message from careator.js  ### */ //update to client with new message;
     socket.on('comm_textReceived', function (data) {

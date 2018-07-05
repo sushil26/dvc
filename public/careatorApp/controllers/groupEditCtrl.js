@@ -6,7 +6,7 @@ careatorApp.controller('editGroupCtrl', function ($scope,$state, $rootScope, $fi
     $scope.getGroup = function () {
         console.log("getGroup-->");
 
-        var api = "https://norecruits.com//careator_getGroup/careator_getGroupById/" + id;
+        var api = "https://norecruits.com/careator_getGroup/careator_getGroupById/" + id;
         console.log("api: " + api);
         careatorHttpFactory.get(api).then(function (data) {
             console.log("data--" + JSON.stringify(data.data));

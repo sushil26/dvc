@@ -159,25 +159,24 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         $(".side-two").css({
             "left": "0"
         });
-        scrollDown();
+
     });
 
     $(".newMessage-back").click(function () {
         $(".side-two").css({
             "left": "-100%"
         });
-        scrollDown();
+
     });
     // /* ### End: Front end CSS ### */
 
-    // for automatic scroll up
-    function scrollDown() {
-        console.log("scrollDown-->");
-        $("#popupMsg").animate({
-                scrollTop: $("#popupMsg").prop("scrollHeight")
-            },
-            500
-        );
-        console.log("<--scrollDown");
-    }
+
+
+
+    $("#comment").keyup(function (event) {
+        if (event.keyCode === 13) {
+            $("#sndmgs").click();
+        }
+    });
+
 })

@@ -53,6 +53,10 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                 $scope.allEmp = data.data.data;
                 console.log(" $scope.allEmp : " + JSON.stringify($scope.allEmp));
                 console.log("data.data.message: " + data.data.message);
+                for(var x=0;x<$scope.allEmp.length;x++){
+                    $scope.allGroupAndIndividual.push( $scope.allEmp[x]);
+                }
+                
             } else {
                 console.log("Sorry: " + data.data.message);
             }

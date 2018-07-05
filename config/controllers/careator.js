@@ -1024,6 +1024,111 @@ module.exports.individualTextReadById = function (req, res) {
     }
 
 }
+module.exports.groupText = function (req, res) {
+    console.log("groupText-->");
+    var date = new Date();
+    var obj = {
+        "groupId": req.body.groupId,
+        "groupName": req.body.groupName,
+        "senderId": req.body.senderId,
+        "senderName": req.body.senderName,
+        "message": req.body.typedMessage,
+        "chats": [{ "senderId": req.body.senderId, "senderName": req.body.senderName, "message": req.body.message, "sendTime": date }],
+        "timeStamp": date
+    }
+    console.log("obj : " + JSON.stringify(obj));
+    if (general.emptyCheck(req.body.groupId)) {
+        careatorChat.find({ "groupId": obj.groupId, "groupName": obj.groupName }).toArray(function (err, data) {
+            if (err) {
+                console.log("err: " + JSON.stringify(err));
+                response = {
+                    status: fasle,
+                    message: "Unsucessfully retrived data",
+                    data: err
+                };
+                res.status(400).send(responseData);
+            }
+            else {
+                console.log("data.length: " + data.length);
+                console.log("data: " + JSON.stringify(data));
+                if (data.length == 0) {
+                    var obj = {
+                        "groupId": req.body.groupId,
+                        "groupName": req.body.groupName,
+                        "senderId": req.body.senderId,
+                        "senderName": req.body.senderName,
+                        "message": req.body.typedMessage,
+                        "chats": [{ "senderId": req.body.senderId, "senderName": req.body.senderName, "message": req.body.message, "sendTime": date }],
+                        "timeStamp": date
+                    }
+                    console.log("obj : " + JSON.stringify(obj));
+                    careatorChat.insert(obj, function (err, insertedData) {
+                        if (err) {
+                            console.log("err: " + JSON.stringify(err));
+                            response = {
+                                status: fasle,
+                                message: "Unsucessfully retrived data",
+                                data: err
+                            };
+                            res.status(400).send(responseData);
+                        }
+                        else {
+                            response = {
+                                status: true,
+                                message: "Sucessfully sent",
+                                data: insertedData
+                            };
+                            res.status(200).send(response);
+                        }
+                    })
+                }
+                else {
+                    var obj = {
+                        "senderId": req.body.senderId,
+                        "senderName": req.body.senderName,
+                        "message": req.body.message,
+                        "sendTime": date
+                    }
+                    console.log("obj : " + JSON.stringify(obj));
+                    var findObj = {
+                        "_id": data[0]._id
+                    }
+                    console.log("findObj: " + JSON.stringify(findObj));
+                    careatorChat.update(findObj, { "$push": { "chats": obj } }, function (err, updatedData) {
+                        if (err) {
+                            console.log("err: " + JSON.stringify(err));
+                            response = {
+                                status: fasle,
+                                message: "Unsucessfully updated data",
+                                data: err
+                            };
+                            res.status(400).send(responseData);
+                        }
+                        else {
+                            console.log("updatedData: " + JSON.stringify(updatedData));
+                            var io = req.app.get('socketio');
+                            io.emit('comm_textReceived', { "id": data[0]._id, "senderId": obj.senderId, "senderName": obj.senderName, "message": obj.message, "sendTime": obj.sendTime }); /* ### Note: Emit message to client ### */
+                            response = {
+                                status: true,
+                                message: "Sucessfully updated",
+                                data: updatedData
+                            };
+                            res.status(200).send(response);
+                        }
+                    })
+                }
+            }
+        })
+    }
+    else {
+        console.log("Epty value found");
+        response = {
+            status: false,
+            message: "empty value found"
+        };
+        res.status(400).send(response);
+    }
+}
 
 module.exports.careator_getUserById = function (req, res) {
     console.log("careator_getUserById-->");

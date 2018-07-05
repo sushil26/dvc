@@ -135,6 +135,11 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                 $scope.allChatRecords = data.data.data;
                 console.log("allChatRecords: " + JSON.stringify($scope.allChatRecords));
                 console.log(data.data.message);
+                $scope.chatedGroup_records =  $scope.allChatRecords;
+                for(var x=0;x<$scope.allGroup.length;x++){
+                    $scope.chatedGroup_records.push($scope.allGroup[x]);
+                }
+
             } else {
                 console.log("Sorry");
                 console.log(data.data.message);

@@ -60,7 +60,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
 
     $scope.getEmpDetail = function (index) {
         console.log("getEmpDetail-->");
-        $scope.selectedType = "individual_chat";
+        $scope.selectedType = "individual_chats";
         console.log(" $scope.selectedType : " + $scope.selectedType);
         $scope.individualData = $scope.allEmp[index];
         console.log(" $scope.individualData: " + JSON.stringify($scope.individualData));
@@ -73,7 +73,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         var api;
         var obj;
         console.log("$scope.selectedType: "+$scope.selectedType);
-        if ($scope.selectedType == 'individual_chat') {
+        if ($scope.selectedType == 'individual_chats') {
             api = "https://norecruits.com/careator_individualText/individualText";
             obj = {
                 "senderId": userData.userId,

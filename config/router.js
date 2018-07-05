@@ -40,10 +40,10 @@ module.exports = function (app) {
     app.post('/careator/careator_video_creteGroup', careator.careator_video_creteGroup);
     app.post('/careator/careator_chatVideo_creteGroup', careator.careator_chatVideo_creteGroup);
     app.get('/careator_chatGroupList/careator_getChatGroupListById/:id', careator.careator_getChatGroupListById);
-    app.get('/careator_chatGroupList/careator_getChatGroupList', careator.careator_getChatGroupList);
-    app.get('/careator_getEmp/careator_getChatRightsAllemp/:id', careator.careator_getChatRightsAllemp);
-    app.post('/careator_individualText/individualText', careator.individualText);
-    app.get('/careator_individualTextRead/individualTextReadById/:sId/:rId', careator.individualTextReadById);
+    // app.get('/careator_chatGroupList/careator_getChatGroupList', careator.careator_getChatGroupList);
+    // app.get('/careator_getEmp/careator_getChatRightsAllemp/:id', careator.careator_getChatRightsAllemp);
+    // app.post('/careator_individualText/individualText', careator.individualText);
+    // app.get('/careator_individualTextRead/individualTextReadById/:sId/:rId', careator.individualTextReadById);
 
     app.post('/record/pswdGenerate', record.pswdGenerate);
     app.post('/record/pswdCheck', record.pswdCheck);

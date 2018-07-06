@@ -533,9 +533,6 @@ module.exports.groupStatusChangeById = function (req, res) {
 
 }
 
-
-
-
 module.exports.statusChangeById = function (req, res) {
     console.log("statusChangeById-->");
     var response;
@@ -1270,7 +1267,6 @@ module.exports.getChatListRecordById = function (req, res) {
 
 }
 
-
 module.exports.careator_getGroupById = function (req, res) {
     console.log("careator_getGroupById-->");
     var id = req.params.id;
@@ -1309,7 +1305,7 @@ module.exports.careator_getGroupById = function (req, res) {
 
 }
 module.exports.userEditById = function (req, res) {
-    console.log("statusChangeById-->");
+    console.log("userEditById-->");
     var response;
     var id = req.params.id;
     console.log("id: " + id);
@@ -1373,7 +1369,7 @@ module.exports.userEditById = function (req, res) {
 
 }
 module.exports.userDeleteById = function (req, res) {
-    console.log("statusChangeById-->");
+    console.log("userDeleteByI-->");
     var response;
     var id = req.params.id;
     console.log("id: " + id);

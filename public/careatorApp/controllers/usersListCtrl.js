@@ -24,7 +24,7 @@ careatorApp.controller('usersListCtrl', function ($scope, $state, careatorHttpFa
 
     $scope.statusChange = function (id, status, index) {
         console.log("statusChange-->");
-        console.log("id: " + id + " status: " + status);
+        console.log("id: " + id + " status: " + status + " index: " + index);
         var obj = {
             "id": id,
             "status": status
@@ -67,9 +67,8 @@ careatorApp.controller('usersListCtrl', function ($scope, $state, careatorHttpFa
             var checkStatus = careatorHttpFactory.dataValidation(data);
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
-                $scope.allemployee = data.data.data;
-                console.log("allemployee: " + JSON.stringify($scope.allemployee));
                 console.log(data.data.message);
+                $scope.getAllEmployee();
             } else {
                 console.log("Sorry");
                 console.log(data.data.message);

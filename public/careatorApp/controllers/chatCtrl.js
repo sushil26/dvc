@@ -229,8 +229,20 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
     /* ### Start: receive message from careator.js  ### */ //update to client with new message;
     socket.on('comm_textReceived', function (data) {
         console.log("****comm_textReceived-->: " + JSON.stringify(data));;
+        console.log("$scope.individualData._id: " + $scope.individualData._id);
+        console.log(" data.id: " + data.id);
+        // if ($scope.allChat._id == data.id) {
+        //     console.log("start pushing message");
+        //     $scope.allChat.chats.push({
+        //         "senderId": data.senderId,
+        //         "senderName": data.senderName,
+        //         "message": data.message,
+        //         "sendTime": data.sendTime
+        //     });
+        //     $scope.scrollDown();
+        // }
 
-        if ($scope.allChat._id == data.id) {
+        if ($scope.individualData._id == data.id) {
             console.log("start pushing message");
             $scope.allChat.chats.push({
                 "senderId": data.senderId,

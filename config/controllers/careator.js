@@ -548,7 +548,8 @@ module.exports.statusChangeById = function (req, res) {
             "status": status
         }
         console.log("updateVlaue: " + JSON.stringify(updateVlaue));
-        careatorMaster.update(queryId, {$set: updateVlaue}).toArray(function (err, updatedData) {
+        careatorMaster.update(queryId, {$set: updateVlaue}),function (err, updatedData) {
+            console.log("status query proccessed-->");
                 if (err) {
                     console.log("err: " + JSON.stringify(err));
                     response = {
@@ -566,7 +567,7 @@ module.exports.statusChangeById = function (req, res) {
                     };
                     res.status(200).send(response);
                 }
-            })
+            }
     } else {
         console.log("Epty value found");
         var obj = {

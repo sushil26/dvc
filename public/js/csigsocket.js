@@ -82,7 +82,7 @@ else {
     console.log("2 cond: emailIdSplit: " + JSON.stringify(emailIdSplit));
     userName = emailIdSplit[0];
     document.getElementById("videoConferenceUrl").style.display = "block";
-    document.getElementById("videoCtrolBar").style.display = "grid";
+    document.getElementById("videoCtrolBar").style.display = "none";
     console.log("localStorage.getItem(videoRights): " + localStorage.getItem("videoRights"));
     console.log("localStorage.getItem(chatRights): " + localStorage.getItem("chatRights"));
     if (localStorage.getItem("videoRights") == 'yes') {
@@ -446,6 +446,7 @@ signaling_socket.on("connect", function () {
             careator_remoteEmail = true;
             document.getElementById("videoConferenceUrl").style.display = "none";
             document.getElementById("emailInvitation").style.display = "none";
+            document.getElementById("videoCtrolBar").style.display = "grid";
             $('#remoteJoin').modal('hide');
             setup_local_media(function () {
               join__channel(DEFAULT_CHANNEL, { "whatever-here": "stuff" });

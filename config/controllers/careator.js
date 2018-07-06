@@ -138,9 +138,7 @@ module.exports.emailInvite = function (req, res) {
     console.log("req.body.sessionHost: " + req.body.sessionHost + " req.body.email: " + req.body.email + " req.body.url: " + req.body.url);
     var password = randomstring.generate(7);
     console.log("password: " + password);
-
-
-    careatorEmp.update({
+    careatorMaster.update({
         email: req.body.sessionHost
     }, {
             $push: {

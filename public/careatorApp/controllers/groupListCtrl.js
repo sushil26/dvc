@@ -59,10 +59,11 @@ careatorApp.controller('groupListCtrl', function ($scope,$state, $rootScope, $fi
 
      ////////////////Delete User/////////////////////////
      $scope.deleteGroup = function (id) {
-        console.log("deleteUser-->");
+        console.log("deleteGroup-->");
         console.log("Obj ID  " + id);
         
         var api = "https://norecruits.com/careator_groupDelete/groupDeleteById/"+id;
+        console.log("api: "+api);
         careatorHttpFactory.get(api).then(function (data) {
             console.log("data--" + JSON.stringify(data.data));
             var checkStatus = careatorHttpFactory.dataValidation(data);

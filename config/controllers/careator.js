@@ -1483,8 +1483,7 @@ module.exports.groupDeleteById = function (req, res) {
             "_id": ObjectId(id)
         }
         console.log("queryId: " + JSON.stringify(queryId));
-        careatorMaster.deleteOne(queryId),
-            function (err, updatedData) {
+        careatorChatGroup.deleteOne(queryId,function (err, updatedData) {
                 if (err) {
                     console.log("err: " + JSON.stringify(err));
                     response = {
@@ -1502,7 +1501,7 @@ module.exports.groupDeleteById = function (req, res) {
                     };
                     res.status(200).send(response);
                 }
-            }
+            })
     } else {
         console.log("Empty value found");
         var obj = {

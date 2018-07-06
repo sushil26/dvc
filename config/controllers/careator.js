@@ -42,15 +42,7 @@ module.exports.RemoteJoinCheck = function (req, res) {
             "password": password
         }
         console.log("obj: " + JSON.stringify(obj));
-        careatorEmp.find({
-            "sessionURL": url,
-            "invite": {
-                $elemMatch: {
-                    "remoteEmailId": remote_careatorEmail,
-                    "password": password
-                }
-            }
-        }).toArray(function (err, findData) {
+        careatorMaster.find({"sessionURL": url,"invite": {$elemMatch: {"remoteEmailId": remote_careatorEmail,"password": password} }}).toArray(function (err, findData) {
             console.log("findData: " + JSON.stringify(findData));
             console.log("findData.length: " + findData.length);
             if (err) {
@@ -211,14 +203,8 @@ module.exports.setCollection = function (req, res) {
     }
     console.log("obj: " + JSON.stringify(obj));
 
-    careatorEmp.update({
-        "email": req.body.email
-    }, {
-            $set: {
-                "sessionURL": req.body.url,
-                "invite": [],
-                "session_dateTime": new Date()
-            }
+    careatorMaster.update({"email": req.body.email}, { $set: { 
+        "sessionURL": req.body.url, "invite": [],"session_dateTime": new Date()}
         }, function (err, urlUpdate) {
             if (err) {
                 console.log("err: " + JSON.stringify(err));

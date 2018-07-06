@@ -49,12 +49,8 @@
                                     <td>
                                         <button class="btn btn-primary" ng-if="emp.status=='inactive'" ng-click="statusChange(emp._id, 'active', $index)">Activate</button>
                                         <button class="btn btn-warning" ng-if="emp.status=='active'" ng-click="statusChange(emp._id, 'inactive', $index)">Deactivate</button>
-                                        <button class="btn btn-danger">
-                                            <a href="#" ng-click="deleteUser(emp._id)">Delete</a>
-                                        </button>
-                                        <button class="btn btn-info">
-                                            <a href="#" ng-click="editUser($index)">Edit</a>
-                                        </button>
+                                        <button class="btn btn-danger" ng-click="deleteUser(emp._id)">Delete</button>
+                                        <button class="btn btn-info" ng-click="editUser($index)">Edit</button>
                                     </td>
 
                                 </tr>

@@ -28,6 +28,7 @@ module.exports = function (app) {
 
 
     app.get('/careator_userDelete/userDeleteById/:id', careator.userDeleteById);
+    app.get('/careator_groupDelete/groupDeleteById/:id', careator.groupDeleteById);
     
 
 

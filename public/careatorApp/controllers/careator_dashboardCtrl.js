@@ -1,4 +1,4 @@
-careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $filter,$timeout, careatorSessionAuth, careatorHttpFactory) {
+careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $filter, $timeout, careatorSessionAuth, careatorHttpFactory) {
     console.log("careator_dashboardCtrl==>");
     $scope.clock = "loading clock..."; // initialise the time variable
     $scope.tickInterval = 1000 //ms
@@ -32,6 +32,21 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
     var userData = careatorSessionAuth.getAccess("userData");
     console.log("userData: " + JSON.stringify(userData));
     $scope.name = userData.userName;
+
+    $scope.logout = function () {
+        console.log("logout-->");
+        localStorage.removeItem("careatorEmail");
+        localStorage.removeItem("sessionUrlId");
+        localStorage.removeItem("careator_remoteEmail");
+        localStorage.removeItem("videoRights");
+        localStorage.removeItem("chatRights");
+        localStorage.removeItem("sessionUrlId");
+        localStorage.removeItem("careator_remoteEmail");
+        careatorSessionAuth.clearAccess("userData");
+        window.location.href = "https://norecruits.com";
+    }
+
+
 
 
     ///////////////Hamburger/////////////////////////

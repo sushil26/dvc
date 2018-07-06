@@ -82,7 +82,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         }
         else if ($scope.selectedType == 'group') {
             $scope.sendGroupText_withData = {
-                "group_Id": $scope.individualData._id,
+                "group_id": $scope.individualData._id,
                 "groupName": $scope.individualData.groupName,
                 "senderId": userData.userId,
                 "senderName": userData.userName

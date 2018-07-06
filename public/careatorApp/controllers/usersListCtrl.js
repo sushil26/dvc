@@ -62,7 +62,7 @@ careatorApp.controller('usersListCtrl', function ($scope, $state, careatorHttpFa
         console.log("deleteUser-->");
         console.log("Obj ID  " + id);
         
-        var api = "https://norecruits.com/careator/userDeleteById/"+id;
+        var api = "https://norecruits.com/careator_userDelete/userDeleteById/"+id;
         careatorHttpFactory.get(api).then(function (data) {
             console.log("data--" + JSON.stringify(data.data));
             var checkStatus = careatorHttpFactory.dataValidation(data);

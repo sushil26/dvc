@@ -11,8 +11,6 @@ var capture = require('./controllers/capture');
 
 module.exports = function (app) {
 
-
-
     app.post('/careator/pswdGenerate', careator.pswdGenerate);
     app.post('/careator/pswdCheck', careator.pswdCheck);
     app.post('/careator/emailInvite', careator.emailInvite);
@@ -25,21 +23,12 @@ module.exports = function (app) {
     app.post('/careator/statusChangeById', careator.statusChangeById);
     app.post('/careator/groupStatusChangeById', careator.groupStatusChangeById);
     app.get('/careator_getChatListRecordById/getChatListRecordById/:id', careator.getChatListRecordById);
-
-
     app.get('/careator_userDelete/userDeleteById/:id', careator.userDeleteById);
     app.get('/careator_groupDelete/groupDeleteById/:id', careator.groupDeleteById);
-    
-
-
     app.post('/careator/userEditById/:id', careator.userEditById);
     app.post('/careator/groupEditById/:id', careator.groupEditById);
-
-
     app.get('/careator_getUser/careator_getUserById/:id', careator.careator_getUserById);
     app.get('/careator_getGroup/careator_getGroupById/:id', careator.careator_getGroupById);
-
-
     app.get('/careator/getChatRights_emp', careator.getChatRights_emp);
     app.get('/careator/getVideoRights_emp', careator.getVideoRights_emp);
     app.get('/careator/careator_getChatVideo_emp', careator.careator_getChatVideo_emp);
@@ -51,6 +40,7 @@ module.exports = function (app) {
     app.get('/careator_getEmp/careator_getChatRightsAllemp/:id', careator.careator_getChatRightsAllemp);
     app.post('/careator_individualText/individualText', careator.individualText);
     app.get('/careator_individualTextRead/individualTextReadById/:sId/:rId', careator.individualTextReadById);
+    app.get('/careator_groupTextRead/groupTextReadByGroupId/:group_id', careator.groupTextReadByGroupId);
     app.post('/careator_groupText/groupText', careator.groupText);
     app.get('/careator_groupTextRead/groupTextReadById/:sId/:rId', careator.groupTextReadById);
 
@@ -64,8 +54,6 @@ module.exports = function (app) {
     app.post('/vc/captureImgSend/:parentEmail/:studName', capture.captureImgSend);
     app.post('/vc/schoolLogo', image.upload);
     app.post('/vc/profilePicupload', image.profilePicupload);
-
-
     app.post('/vc/register4VC', user.register4VC);
     app.post('/vc/login4VC', user.login4VC);
     app.post('/vc/checkPassword/:id/:loginType', user.checkPassword);

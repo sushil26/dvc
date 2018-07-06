@@ -1037,7 +1037,7 @@ module.exports.groupText = function (req, res) {
         "timeStamp": date
     }
     console.log("obj : " + JSON.stringify(obj));
-    if (general.emptyCheck(req.body.groupId)) {
+    if (general.emptyCheck(req.body.group_id)) {
         careatorChat.find({ "group_id": obj.groupId, "groupName": obj.groupName }).toArray(function (err, data) {
             if (err) {
                 console.log("err: " + JSON.stringify(err));

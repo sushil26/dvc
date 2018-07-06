@@ -105,25 +105,26 @@ careatorApp.controller('editGroupCtrl', function ($scope, $state, $rootScope, $f
         var api = "https://norecruits.com/careator_groupDelete/groupDeleteById/" + id;
         console.log("api: " + api);
         var obj = {
-            "userName": $scope.userName,
-            "userEmail": $scope.userEmail,
-            "empId": $scope.empId,
+            "groupName": $scope.grpname,
+            "groupMembers": $scope.groupMemberModel,
+            "groupAdminModel": $scope.groupAdminModel
         }
-        console.log("userName: " + $scope.userName + " userEmail: " + $scope.userEmail);
-        console.log("userDataRights: " + JSON.stringify($scope.userDataRights));
+        console.log("groupName: " + $scope.grpname);
+        console.log("groupMembers: " + JSON.stringify($scope.groupMembers));
+        console.log("groupAdminModel: " + JSON.stringify($scope.groupAdminModel));
         console.log("obj: " + JSON.stringify(obj));
-        careatorHttpFactory.post(api, obj).then(function (data) {
-            console.log("data--" + JSON.stringify(data.data));
-            var checkStatus = careatorHttpFactory.dataValidation(data);
-            console.log("data--" + JSON.stringify(data.data));
-            if (checkStatus) {
-                console.log(data.data.message);
-                $state.go("Cdashboard.groupListCtrl")
-            }
-            else {
-                console.log("Sorry: " + data.data.message);
-            }
-        })
+        // careatorHttpFactory.post(api, obj).then(function (data) {
+        //     console.log("data--" + JSON.stringify(data.data));
+        //     var checkStatus = careatorHttpFactory.dataValidation(data);
+        //     console.log("data--" + JSON.stringify(data.data));
+        //     if (checkStatus) {
+        //         console.log(data.data.message);
+        //         $state.go("Cdashboard.groupListCtrl")
+        //     }
+        //     else {
+        //         console.log("Sorry: " + data.data.message);
+        //     }
+        // })
     }
 
 

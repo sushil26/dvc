@@ -147,51 +147,51 @@ module.exports.emailInvite = function (req, res) {
     careatorEmp.update({
         email: req.body.sessionHost
     }, {
-        $push: {
-            "invite": {
-                "remoteEmailId": req.body.email,
-                "password": password
-            }
-        }
-    }, function (err, data) {
-        if (err) {
-            responseData = {
-                status: true,
-                errorCode: 200,
-                message: "Process not successful"
-            };
-            res.status(200).send(responseData);
-        } else {
-            var mailOptions = {
-                from: "info@vc4all.in",
-                to: req.body.email,
-                subject: 'VC4ALL Credential',
-                html: "<table style='border:10px solid gainsboro;'><thead style=background:cornflowerblue;><tr><th><h2>Greetings from VC4ALL</h2></th></tr></thead><tfoot style=background:#396fc9;color:white;><tr><td style=padding:15px;><p><p>Regards</p><b>Careator Technologies Pvt. Ltd</b></p></td></tr></tfoot><tbody><tr><td><b>Dear Careator Employee,</b></td></tr><tr><td>Please note, You get the invitation from VC4ALL and sended by " + req.body.sessionHost + " you can access the below link by using given password.<p style=background:gainsboro;>Password: " + password + "</p><a href=" + req.body.url + " style=background:gainsboro;>URL: Click Me</p></td></tr></tbody></table>"
-                // "<html><body><p><b>Dear Careator Employee, </b></p><p>Please note, Your email Id is verified successfully,  you can access the below link by using given password.<p>Password: "+password+"</p></p><p>Regards</p><p><b>Careator Technologies Pvt. Ltd</b></p></body></html>"
-            };
-            transporter.sendMail(mailOptions, function (error, info) {
-                if (error) {
-                    console.log(error);
-                    responseData = {
-                        status: true,
-                        errorCode: 200,
-                        message: "insert Successfull and Failed to send mail",
-                        data: data
-                    };
-                    res.status(200).send(responseData);
-                } else {
-                    console.log("Email sent: " + info.response);
-                    responseData = {
-                        status: true,
-                        errorCode: 200,
-                        message: "Successfully mail sent",
-                        data: data
-                    };
-                    res.status(200).send(responseData);
+            $push: {
+                "invite": {
+                    "remoteEmailId": req.body.email,
+                    "password": password
                 }
-            });
-        }
-    })
+            }
+        }, function (err, data) {
+            if (err) {
+                responseData = {
+                    status: true,
+                    errorCode: 200,
+                    message: "Process not successful"
+                };
+                res.status(200).send(responseData);
+            } else {
+                var mailOptions = {
+                    from: "info@vc4all.in",
+                    to: req.body.email,
+                    subject: 'VC4ALL Credential',
+                    html: "<table style='border:10px solid gainsboro;'><thead style=background:cornflowerblue;><tr><th><h2>Greetings from VC4ALL</h2></th></tr></thead><tfoot style=background:#396fc9;color:white;><tr><td style=padding:15px;><p><p>Regards</p><b>Careator Technologies Pvt. Ltd</b></p></td></tr></tfoot><tbody><tr><td><b>Dear Careator Employee,</b></td></tr><tr><td>Please note, You get the invitation from VC4ALL and sended by " + req.body.sessionHost + " you can access the below link by using given password.<p style=background:gainsboro;>Password: " + password + "</p><a href=" + req.body.url + " style=background:gainsboro;>URL: Click Me</p></td></tr></tbody></table>"
+                    // "<html><body><p><b>Dear Careator Employee, </b></p><p>Please note, Your email Id is verified successfully,  you can access the below link by using given password.<p>Password: "+password+"</p></p><p>Regards</p><p><b>Careator Technologies Pvt. Ltd</b></p></body></html>"
+                };
+                transporter.sendMail(mailOptions, function (error, info) {
+                    if (error) {
+                        console.log(error);
+                        responseData = {
+                            status: true,
+                            errorCode: 200,
+                            message: "insert Successfull and Failed to send mail",
+                            data: data
+                        };
+                        res.status(200).send(responseData);
+                    } else {
+                        console.log("Email sent: " + info.response);
+                        responseData = {
+                            status: true,
+                            errorCode: 200,
+                            message: "Successfully mail sent",
+                            data: data
+                        };
+                        res.status(200).send(responseData);
+                    }
+                });
+            }
+        })
 }
 
 module.exports.setCollection = function (req, res) {
@@ -210,43 +210,43 @@ module.exports.setCollection = function (req, res) {
     careatorEmp.update({
         "email": req.body.email
     }, {
-        $set: {
-            "sessionURL": req.body.url,
-            "invite": [],
-            "session_dateTime": new Date()
-        }
-    }, function (err, urlUpdate) {
-        if (err) {
-            console.log("err: " + JSON.stringify(err));
-            responseData = {
-                status: false,
-                message: "Unsuccessfull, go back and refresh then start session"
-            };
-            res.status(400).send(responseData);
-        } else {
-            chatHistory.insertOne(obj, function (err, data) {
-                if (err) {
-                    console.log("err: " + JSON.stringify(err));
-                    responseData = {
-                        status: false,
-                        message: "UnSuccessfully"
-                    };
-                    res.status(400).send(responseData);
-                } else {
-                    console.log("data: " + JSON.stringify(data));
-                    var obj = {
-                        "url": req.body.url
+            $set: {
+                "sessionURL": req.body.url,
+                "invite": [],
+                "session_dateTime": new Date()
+            }
+        }, function (err, urlUpdate) {
+            if (err) {
+                console.log("err: " + JSON.stringify(err));
+                responseData = {
+                    status: false,
+                    message: "Unsuccessfull, go back and refresh then start session"
+                };
+                res.status(400).send(responseData);
+            } else {
+                chatHistory.insertOne(obj, function (err, data) {
+                    if (err) {
+                        console.log("err: " + JSON.stringify(err));
+                        responseData = {
+                            status: false,
+                            message: "UnSuccessfully"
+                        };
+                        res.status(400).send(responseData);
+                    } else {
+                        console.log("data: " + JSON.stringify(data));
+                        var obj = {
+                            "url": req.body.url
+                        }
+                        responseData = {
+                            status: true,
+                            message: "Successfully",
+                            data: obj
+                        };
+                        res.status(200).send(responseData);
                     }
-                    responseData = {
-                        status: true,
-                        message: "Successfully",
-                        data: obj
-                    };
-                    res.status(200).send(responseData);
-                }
-            })
-        }
-    })
+                })
+            }
+        })
 
 
 
@@ -320,21 +320,21 @@ module.exports.careatorMasterInsert = function (req, res) {
     var userDataFile = req.files.img;
     console.log("userDataFile: " + userDataFile);
     var parser = csv.fromString(userDataFile.data.toString(), {
-            headers: true,
-            ignoreEmpty: true
-        }).on("data", function (data) {
-            console.log("data: " + JSON.stringify(data));
-            parser.pause();
-            if (data.Name == "#" || alreadyExist == 'yes') {
+        headers: true,
+        ignoreEmpty: true
+    }).on("data", function (data) {
+        console.log("data: " + JSON.stringify(data));
+        parser.pause();
+        if (data.Name == "#" || alreadyExist == 'yes') {
+            parser.resume();
+        } else {
+            module.exports.careatorMasterInsertValidate(data, function (err) {
+                console.log("validation -->");
+                console.log("alreadyExist : " + alreadyExist + " existEmail: " + existEmail + " existEmpId: " + existEmpId);
                 parser.resume();
-            } else {
-                module.exports.careatorMasterInsertValidate(data, function (err) {
-                    console.log("validation -->");
-                    console.log("alreadyExist : " + alreadyExist + " existEmail: " + existEmail + " existEmpId: " + existEmpId);
-                    parser.resume();
-                });
-            }
-        })
+            });
+        }
+    })
         .on("end", function () {
             console.log("end marker: ");
             if (alreadyExist == 'yes') {
@@ -497,8 +497,8 @@ module.exports.groupStatusChangeById = function (req, res) {
         }
         console.log("updateVlaue: " + JSON.stringify(updateVlaue));
         careatorChatGroup.update(queryId, {
-                $set: updateVlaue
-            }),
+            $set: updateVlaue
+        }),
             function (err, updatedData) {
                 if (err) {
                     console.log("err: " + JSON.stringify(err));
@@ -548,26 +548,26 @@ module.exports.statusChangeById = function (req, res) {
             "status": status
         }
         console.log("updateVlaue: " + JSON.stringify(updateVlaue));
-        careatorMaster.update({ "_id": ObjectId(id)}, {$set: updateVlaue}),function (err, updatedData) {
+        careatorMaster.update({ "_id": ObjectId(id) }, { $set: { "status": status } }, function (err, data) {
             console.log("status query proccessed-->");
-                if (err) {
-                    console.log("err: " + JSON.stringify(err));
-                    response = {
-                        status: false,
-                        message: "Update unsucessfully",
-                        data: err
-                    };
-                    res.status(400).send(response);
-                } else {
-                    console.log("updatedData: " + JSON.stringify(updatedData));
-                    response = {
-                        status: true,
-                        message: "Update sucessfully",
-                        data: updatedData
-                    };
-                    res.status(200).send(response);
-                }
+            if (err) {
+                console.log("err: " + JSON.stringify(err));
+                response = {
+                    status: false,
+                    message: "Update unsucessfully",
+                    data: err
+                };
+                res.status(400).send(response);
+            } else {
+                console.log("updatedData: " + JSON.stringify(data));
+                response = {
+                    status: true,
+                    message: "Update sucessfully",
+                    data: data
+                };
+                res.status(200).send(response);
             }
+        }
     } else {
         console.log("Epty value found");
         var obj = {
@@ -738,48 +738,48 @@ module.exports.pswdGenerate = function (req, res) {
                         "email": email,
                         "status": "active"
                     }, {
-                        $set: {
-                            "password": password,
-                            "invite": []
-                        }
-                    }, function (err, data) {
-                        if (err) {
-                            responseData = {
-                                status: true,
-                                errorCode: 200,
-                                message: "Process not successful"
-                            };
-                            res.status(200).send(responseData);
-                        } else {
-                            var mailOptions = {
-                                from: "info@vc4all.in",
-                                to: email,
-                                subject: 'VC4ALL Credential',
-                                html: "<table style='border:10px solid gainsboro;'><thead style=background:cornflowerblue;><tr><th><h2>Greetings from VC4ALL</h2></th></tr></thead><tfoot style=background:#396fc9;color:white;><tr><td style=padding:15px;><p><p>Regards</p><b>Careator Technologies Pvt. Ltd</b></p></td></tr></tfoot><tbody><tr><td><b>Dear Careator Employee,</b></td></tr><tr><td>Please note, Your email Id is verified successfully, you can access the below link by using given password.<p style=background:gainsboro;>Password: " + password + "</p></td></tr></tbody></table>"
-                            };
-                            transporter.sendMail(mailOptions, function (error, info) {
-                                if (error) {
-                                    console.log(error);
-                                    responseData = {
-                                        status: true,
-                                        errorCode: 200,
-                                        message: "insert Successfull and Failed to send mail",
-                                        data: data
-                                    };
-                                    res.status(200).send(responseData);
-                                } else {
-                                    console.log("Email sent: " + info.response);
-                                    responseData = {
-                                        status: true,
-                                        errorCode: 200,
-                                        message: "Successfully mail sent",
-                                        data: data
-                                    };
-                                    res.status(200).send(responseData);
-                                }
-                            });
-                        }
-                    })
+                            $set: {
+                                "password": password,
+                                "invite": []
+                            }
+                        }, function (err, data) {
+                            if (err) {
+                                responseData = {
+                                    status: true,
+                                    errorCode: 200,
+                                    message: "Process not successful"
+                                };
+                                res.status(200).send(responseData);
+                            } else {
+                                var mailOptions = {
+                                    from: "info@vc4all.in",
+                                    to: email,
+                                    subject: 'VC4ALL Credential',
+                                    html: "<table style='border:10px solid gainsboro;'><thead style=background:cornflowerblue;><tr><th><h2>Greetings from VC4ALL</h2></th></tr></thead><tfoot style=background:#396fc9;color:white;><tr><td style=padding:15px;><p><p>Regards</p><b>Careator Technologies Pvt. Ltd</b></p></td></tr></tfoot><tbody><tr><td><b>Dear Careator Employee,</b></td></tr><tr><td>Please note, Your email Id is verified successfully, you can access the below link by using given password.<p style=background:gainsboro;>Password: " + password + "</p></td></tr></tbody></table>"
+                                };
+                                transporter.sendMail(mailOptions, function (error, info) {
+                                    if (error) {
+                                        console.log(error);
+                                        responseData = {
+                                            status: true,
+                                            errorCode: 200,
+                                            message: "insert Successfull and Failed to send mail",
+                                            data: data
+                                        };
+                                        res.status(200).send(responseData);
+                                    } else {
+                                        console.log("Email sent: " + info.response);
+                                        responseData = {
+                                            status: true,
+                                            errorCode: 200,
+                                            message: "Successfully mail sent",
+                                            data: data
+                                        };
+                                        res.status(200).send(responseData);
+                                    }
+                                });
+                            }
+                        })
                 } else {
                     console.log("Email Not Matched, tell your admin to verify");
                     responseData = {
@@ -1314,25 +1314,25 @@ module.exports.userEditById = function (req, res) {
         console.log("queryId: " + JSON.stringify(queryId));
         var updateVlaue = {};
 
-        if(req.body.userName){
+        if (req.body.userName) {
             updateVlaue.name = req.body.userName;
         }
-        if(req.body.empId){
+        if (req.body.empId) {
             updateVlaue.empId = req.body.empId;
         }
-        if(req.body.userEmail){
+        if (req.body.userEmail) {
             updateVlaue.email = req.body.userEmail;
         }
-        if(req.body.videoRights){
+        if (req.body.videoRights) {
             updateVlaue.videoRights = req.body.videoRights;
         }
-        if(req.body.chatRights){
+        if (req.body.chatRights) {
             updateVlaue.chatRights = req.body.chatRights;
         }
         console.log("updateVlaue: " + JSON.stringify(updateVlaue));
         careatorMaster.update(queryId, {
-                $set: updateVlaue
-            }),
+            $set: updateVlaue
+        }),
             function (err, updatedData) {
                 if (err) {
                     console.log("err: " + JSON.stringify(err));

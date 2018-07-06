@@ -548,7 +548,7 @@ module.exports.statusChangeById = function (req, res) {
             "status": status
         }
         console.log("updateVlaue: " + JSON.stringify(updateVlaue));
-        careatorMaster.update(queryId, {$set: updateVlaue}),function (err, updatedData) {
+        careatorMaster.update({ "_id": ObjectId(id)}, {$set: updateVlaue}),function (err, updatedData) {
             console.log("status query proccessed-->");
                 if (err) {
                     console.log("err: " + JSON.stringify(err));

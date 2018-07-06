@@ -32,7 +32,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         console.log("chatDetails-->");
         if (screen.width < 768){
 
-             $('.side-one').css({"opecity": "0"});
+             $('.side-one').css({"opacity": "0"});
              $('.conversation').css({"position": "absolute","top":"0"});
 
             }

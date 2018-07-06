@@ -1318,12 +1318,22 @@ module.exports.userEditById = function (req, res) {
             "_id": ObjectId(id)
         }
         console.log("queryId: " + JSON.stringify(queryId));
-        var updateVlaue = {
-            "name": req.body.userName,
-            "empId": req.body.empId,
-            "email": req.body.userEmail,
-            "videoRights": req.body.videoRights,
-            "chatRights": req.body.chatRights
+        var updateVlaue = {};
+
+        if(req.body.userName){
+            updateVlaue.name = req.body.userName;
+        }
+        if(req.body.empId){
+            dateVlaue.empId = req.body.empId;
+        }
+        if(req.body.userEmail){
+            updateVlaue.email = req.body.userEmail;
+        }
+        if(req.body.videoRights){
+            updateVlaue.videoRights = req.body.videoRights;
+        }
+        if(req.body.chatRights){
+            updateVlaue.chatRights = req.body.chatRights;
         }
         console.log("updateVlaue: " + JSON.stringify(updateVlaue));
         careatorMaster.update(queryId, {

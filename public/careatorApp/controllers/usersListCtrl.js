@@ -22,7 +22,7 @@ careatorApp.controller('usersListCtrl', function ($scope, $state, careatorHttpFa
 
     $scope.getAllEmployee();
 
-    $scope.statusChange = function (id, status, $index) {
+    $scope.statusChange = function (id, status, index) {
         console.log("statusChange-->");
         console.log("id: " + id + " status: " + status);
         var obj = {

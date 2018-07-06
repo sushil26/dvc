@@ -53,7 +53,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         }
         else if ($scope.selectedType == 'group') {
             $scope.sendGroupText_withData = {
-                "groupId": $scope.individualData._id,
+                "group_id": $scope.individualData._id,
                 "groupName": $scope.individualData.groupName,
                 "senderId": userData.userId,
                 "senderName": userData.userName
@@ -82,7 +82,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         }
         else if ($scope.selectedType == 'group') {
             $scope.sendGroupText_withData = {
-                "groupId": $scope.individualData._id,
+                "group_Id": $scope.individualData._id,
                 "groupName": $scope.individualData.groupName,
                 "senderId": userData.userId,
                 "senderName": userData.userName
@@ -147,7 +147,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
             console.log("obj: " + JSON.stringify(obj));
         } else if ($scope.selectedType == 'group') {
             obj = {
-                "groupId": $scope.sendGroupText_withData.groupId,
+                "group_id": $scope.sendGroupText_withData.group_id,
                 "groupName": $scope.sendGroupText_withData.groupName,
                 "senderId": userData.userId,
                 "senderName": userData.userName,

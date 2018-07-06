@@ -1028,7 +1028,7 @@ module.exports.groupText = function (req, res) {
     console.log("groupText-->");
     var date = new Date();
     var obj = {
-        "groupId": req.body.groupId,
+        "group_id": req.body.group_id,
         "groupName": req.body.groupName,
         "senderId": req.body.senderId,
         "senderName": req.body.senderName,
@@ -1038,7 +1038,7 @@ module.exports.groupText = function (req, res) {
     }
     console.log("obj : " + JSON.stringify(obj));
     if (general.emptyCheck(req.body.groupId)) {
-        careatorChat.find({ "groupId": obj.groupId, "groupName": obj.groupName }).toArray(function (err, data) {
+        careatorChat.find({ "group_id": obj.groupId, "groupName": obj.groupName }).toArray(function (err, data) {
             if (err) {
                 console.log("err: " + JSON.stringify(err));
                 response = {
@@ -1053,7 +1053,7 @@ module.exports.groupText = function (req, res) {
                 console.log("data: " + JSON.stringify(data));
                 if (data.length == 0) {
                     var obj = {
-                        "groupId": req.body.groupId,
+                        "group_id": req.body.group_id,
                         "groupName": req.body.groupName,
                         "senderId": req.body.senderId,
                         "senderName": req.body.senderName,

@@ -482,11 +482,7 @@ module.exports.groupStatusChangeById = function (req, res) {
             "_id": ObjectId(id)
         }
         console.log("queryId: " + JSON.stringify(queryId));
-        var updateVlaue = {
-            "status": status
-        }
-        console.log("updateVlaue: " + JSON.stringify(updateVlaue));
-        careatorChatGroup.update(queryId, { $set: updateVlaue }, function (err, updatedData) {
+        careatorChatGroup.update({ "_id": ObjectId(id) }, { $set: { "status": status } }, function (err, data) {
             if (err) {
                 console.log("err: " + JSON.stringify(err));
                 response = {

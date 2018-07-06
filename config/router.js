@@ -13,19 +13,28 @@ module.exports = function (app) {
 
 
 
-    app.post('/careator/pswdGenerate', careator.pswdGenerate);
-    app.post('/careator/pswdCheck', careator.pswdCheck);
-    app.post('/careator/emailInvite', careator.emailInvite);
-    app.post('/careator/RemoteJoinCheck', careator.RemoteJoinCheck);
-    app.post('/careator/setCollection', careator.setCollection);
-    app.get('/chatHistory/getHistory', careator.getHistory);
-    app.get('/chatHistory/getHistoryByEmailId/:email', careator.getHistoryByEmailId);
-    app.post('/careator/careatorMasterInsert', careator.careatorMasterInsert);
-    app.get('/careator/careator_getAllEmp', careator.careator_getAllEmp);
-    app.post('/careator/statusChangeById', careator.statusChangeById);
-    app.post('/careator/groupStatusChangeById', careator.groupStatusChangeById);
-    app.get('/careator_getChatListRecordById/getChatListRecordById/:id', careator.getChatListRecordById);
+    // app.post('/careator/pswdGenerate', careator.pswdGenerate);
+    // app.post('/careator/pswdCheck', careator.pswdCheck);
+    // app.post('/careator/emailInvite', careator.emailInvite);
+    // app.post('/careator/RemoteJoinCheck', careator.RemoteJoinCheck);
+    // app.post('/careator/setCollection', careator.setCollection);
+    // app.get('/chatHistory/getHistory', careator.getHistory);
+    // app.get('/chatHistory/getHistoryByEmailId/:email', careator.getHistoryByEmailId);
+    // app.post('/careator/careatorMasterInsert', careator.careatorMasterInsert);
+    // app.get('/careator/careator_getAllEmp', careator.careator_getAllEmp);
+    // app.post('/careator/statusChangeById', careator.statusChangeById);
+    // app.post('/careator/groupStatusChangeById', careator.groupStatusChangeById);
+    // app.get('/careator_getChatListRecordById/getChatListRecordById/:id', careator.getChatListRecordById);
+    // app.get('/careator_userDelete/userDeleteById/:id', careator.userDeleteById);
+    // app.post('/careator/userEditById/:id', careator.userEditById);
+    // app.get('/careator_getUser/careator_getUserById/:id', careator.careator_getUserById);
+    // app.get('/careator_getGroup/careator_getGroupById/:id', careator.careator_getGroupById);
+    // app.get('/careator/getChatRights_emp', careator.getChatRights_emp);
+    // app.get('/careator/getVideoRights_emp', careator.getVideoRights_emp);
+    // app.get('/careator/careator_getChatVideo_emp', careator.careator_getChatVideo_emp);
+    // app.post('/careator/careator_chat_creteGroup', careator.careator_chat_creteGroup);
 
+<<<<<<< HEAD
 
     app.get('/careator_userDelete/userDeleteById/:id', careator.userDeleteById);
     app.get('/careator_groupDelete/groupDeleteById/:id', careator.groupDeleteById);
@@ -47,6 +56,8 @@ module.exports = function (app) {
     app.post('/careator/careator_chat_creteGroup', careator.careator_chat_creteGroup);
     //app.post('/careator/careator_video_creteGroup', careator.careator_video_creteGroup);
     //app.post('/careator/careator_chatVideo_creteGroup', careator.careator_chatVideo_creteGroup);
+=======
+>>>>>>> 03d26e95d96be0bd8db91ecc0207b8158d56c90c
     app.get('/careator_chatGroupList/careator_getChatGroupListById/:id', careator.careator_getChatGroupListById);
     app.get('/careator_chatGroupList/careator_getChatGroupList', careator.careator_getChatGroupList);
     app.get('/careator_getEmp/careator_getChatRightsAllemp/:id', careator.careator_getChatRightsAllemp);

@@ -1,4 +1,4 @@
-careatorApp.controller('groupListCtrl', function ($scope,$state, $rootScope, $filter, $window, careatorHttpFactory) {
+careatorApp.controller('groupListCtrl', function ($scope, $state, $rootScope, $filter, $window, careatorHttpFactory) {
     console.log("groupListCtrl==>");
     $scope.getGroupList = function () {
         console.log("getGroupList-->");
@@ -23,9 +23,9 @@ careatorApp.controller('groupListCtrl', function ($scope,$state, $rootScope, $fi
 
     $scope.getGroupList();
 
-    $scope.statusChange = function(id, status){
+    $scope.statusChange = function (id, status) {
         console.log("statusChange-->");
-        console.log("id: "+id+" status: "+status);
+        console.log("id: " + id + " status: " + status);
         var obj = {
             "id": id,
             "status": status
@@ -37,8 +37,7 @@ careatorApp.controller('groupListCtrl', function ($scope,$state, $rootScope, $fi
             var checkStatus = careatorHttpFactory.dataValidation(data);
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
-                $scope.groupList = data.data.data;
-                console.log("groupList: " + JSON.stringify($scope.groupList));
+
                 console.log(data.data.message);
             }
             else {
@@ -49,28 +48,28 @@ careatorApp.controller('groupListCtrl', function ($scope,$state, $rootScope, $fi
         console.log("<--statusChange");
     }
     /////////////////Redirect page with data (id)///////////////////////
-    $scope.editGroup = function(index){
+    $scope.editGroup = function (index) {
         console.log("editGroup-->");
-        console.log("$scope.groupList[index]: "+JSON.stringify($scope.groupList[index]));
+        console.log("$scope.groupList[index]: " + JSON.stringify($scope.groupList[index]));
         var data = $scope.groupList[index];
-     $state.go("Cdashboard.editGroup",{ "id":data._id});
+        $state.go("Cdashboard.editGroup", { "id": data._id });
     }
 
 
-     ////////////////Delete User/////////////////////////
-     $scope.deleteGroup = function (id) {
-        console.log("deleteUser-->");
+    ////////////////Delete User/////////////////////////
+    $scope.deleteGroup = function (id) {
+        console.log("deleteGroup-->");
         console.log("Obj ID  " + id);
-        
-        var api = "https://norecruits.com/careator_groupDelete/groupDeleteById/"+id;
+
+        var api = "https://norecruits.com/careator_groupDelete/groupDeleteById/" + id;
+        console.log("api: " + api);
         careatorHttpFactory.get(api).then(function (data) {
             console.log("data--" + JSON.stringify(data.data));
             var checkStatus = careatorHttpFactory.dataValidation(data);
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
-                $scope.allemployee = data.data.data;
-                console.log("allemployee: " + JSON.stringify($scope.allemployee));
                 console.log(data.data.message);
+                $scope.getGroupList();
             } else {
                 console.log("Sorry");
                 console.log(data.data.message);

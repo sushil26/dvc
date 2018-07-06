@@ -42,7 +42,15 @@ module.exports.RemoteJoinCheck = function (req, res) {
             "password": password
         }
         console.log("obj: " + JSON.stringify(obj));
-        careatorEmp.find({ "sessionURL": url, "invite": { $elemMatch: { "remoteEmailId": remote_careatorEmail, "password": password } } }).toArray(function (err, findData) {
+        careatorEmp.find({
+            "sessionURL": url,
+            "invite": {
+                $elemMatch: {
+                    "remoteEmailId": remote_careatorEmail,
+                    "password": password
+                }
+            }
+        }).toArray(function (err, findData) {
             console.log("findData: " + JSON.stringify(findData));
             console.log("findData.length: " + findData.length);
             if (err) {
@@ -51,16 +59,14 @@ module.exports.RemoteJoinCheck = function (req, res) {
                     message: "Process failed"
                 };
                 res.status(400).send(responseData);
-            }
-            else {
+            } else {
                 if (findData.length > 0) {
                     responseData = {
                         status: true,
                         message: "Login Successfully"
                     };
                     res.status(200).send(responseData);
-                }
-                else {
+                } else {
                     responseData = {
                         status: false,
                         message: "Credential Mismatch"
@@ -69,8 +75,7 @@ module.exports.RemoteJoinCheck = function (req, res) {
                 }
             }
         })
-    }
-    else {
+    } else {
         responseData = {
             status: false,
             message: "Empty value found"
@@ -97,8 +102,7 @@ module.exports.pswdCheck = function (req, res) {
                     message: "Process failed"
                 };
                 res.status(400).send(responseData);
-            }
-            else {
+            } else {
                 if (findData.length > 0) {
                     if (findData[0].password == password) {
                         responseData = {
@@ -107,16 +111,14 @@ module.exports.pswdCheck = function (req, res) {
                             data: findData[0]
                         };
                         res.status(200).send(responseData);
-                    }
-                    else {
+                    } else {
                         responseData = {
                             status: false,
                             message: "Password is wrong"
                         };
                         res.status(400).send(responseData);
                     }
-                }
-                else {
+                } else {
                     responseData = {
                         status: false,
                         message: "Email ID is not valid"
@@ -125,8 +127,7 @@ module.exports.pswdCheck = function (req, res) {
                 }
             }
         })
-    }
-    else {
+    } else {
         responseData = {
             status: false,
             message: "Empty value found"
@@ -143,7 +144,16 @@ module.exports.emailInvite = function (req, res) {
     console.log("password: " + password);
 
 
-    careatorEmp.update({ email: req.body.sessionHost }, { $push: { "invite": { "remoteEmailId": req.body.email, "password": password } } }, function (err, data) {
+    careatorEmp.update({
+        email: req.body.sessionHost
+    }, {
+        $push: {
+            "invite": {
+                "remoteEmailId": req.body.email,
+                "password": password
+            }
+        }
+    }, function (err, data) {
         if (err) {
             responseData = {
                 status: true,
@@ -151,8 +161,7 @@ module.exports.emailInvite = function (req, res) {
                 message: "Process not successful"
             };
             res.status(200).send(responseData);
-        }
-        else {
+        } else {
             var mailOptions = {
                 from: "info@vc4all.in",
                 to: req.body.email,
@@ -198,7 +207,15 @@ module.exports.setCollection = function (req, res) {
     }
     console.log("obj: " + JSON.stringify(obj));
 
-    careatorEmp.update({ "email": req.body.email }, { $set: { "sessionURL": req.body.url, "invite": [], "session_dateTime": new Date() } }, function (err, urlUpdate) {
+    careatorEmp.update({
+        "email": req.body.email
+    }, {
+        $set: {
+            "sessionURL": req.body.url,
+            "invite": [],
+            "session_dateTime": new Date()
+        }
+    }, function (err, urlUpdate) {
         if (err) {
             console.log("err: " + JSON.stringify(err));
             responseData = {
@@ -206,8 +223,7 @@ module.exports.setCollection = function (req, res) {
                 message: "Unsuccessfull, go back and refresh then start session"
             };
             res.status(400).send(responseData);
-        }
-        else {
+        } else {
             chatHistory.insertOne(obj, function (err, data) {
                 if (err) {
                     console.log("err: " + JSON.stringify(err));
@@ -216,8 +232,7 @@ module.exports.setCollection = function (req, res) {
                         message: "UnSuccessfully"
                     };
                     res.status(400).send(responseData);
-                }
-                else {
+                } else {
                     console.log("data: " + JSON.stringify(data));
                     var obj = {
                         "url": req.body.url
@@ -255,8 +270,7 @@ module.exports.getHistoryByEmailId = function (req, res) {
                 message: "UnSuccessfully"
             };
             res.status(400).send(responseData);
-        }
-        else {
+        } else {
             console.log("data: " + JSON.stringify(data));
             responseData = {
                 status: true,
@@ -283,8 +297,7 @@ module.exports.getHistory = function (req, res) {
                 message: "UnSuccessfully"
             };
             res.status(400).send(responseData);
-        }
-        else {
+        } else {
             console.log("data: " + JSON.stringify(data));
             responseData = {
                 status: true,
@@ -307,22 +320,21 @@ module.exports.careatorMasterInsert = function (req, res) {
     var userDataFile = req.files.img;
     console.log("userDataFile: " + userDataFile);
     var parser = csv.fromString(userDataFile.data.toString(), {
-        headers: true,
-        ignoreEmpty: true
-    }).on("data", function (data) {
-        console.log("data: " + JSON.stringify(data));
-        parser.pause();
-        if (data.Name == "#" || alreadyExist == 'yes') {
-            parser.resume();
-        }
-        else {
-            module.exports.careatorMasterInsertValidate(data, function (err) {
-                console.log("validation -->");
-                console.log("alreadyExist : " + alreadyExist + " existEmail: " + existEmail + " existEmpId: " + existEmpId);
+            headers: true,
+            ignoreEmpty: true
+        }).on("data", function (data) {
+            console.log("data: " + JSON.stringify(data));
+            parser.pause();
+            if (data.Name == "#" || alreadyExist == 'yes') {
                 parser.resume();
-            });
-        }
-    })
+            } else {
+                module.exports.careatorMasterInsertValidate(data, function (err) {
+                    console.log("validation -->");
+                    console.log("alreadyExist : " + alreadyExist + " existEmail: " + existEmail + " existEmpId: " + existEmpId);
+                    parser.resume();
+                });
+            }
+        })
         .on("end", function () {
             console.log("end marker: ");
             if (alreadyExist == 'yes') {
@@ -330,8 +342,7 @@ module.exports.careatorMasterInsert = function (req, res) {
                 alreadyExist = null;
                 if (existEmpId != null) {
                     var temp = existEmpId;
-                }
-                else if (existEmail != null) {
+                } else if (existEmail != null) {
                     var temp = existEmail;
                 }
 
@@ -342,8 +353,7 @@ module.exports.careatorMasterInsert = function (req, res) {
                     message: "Upload failed because this " + temp + " already exist",
                 };
                 res.status(400).send(responseData);
-            }
-            else {
+            } else {
                 careatorMaster.insert(careatorMasterArray, function (err, insertedData) {
                     careatorMasterArray = [];
                     if (err) {
@@ -386,28 +396,24 @@ module.exports.careatorMasterInsertValidate = function (data, callback) {
         if (err) {
             console.log("err: " + JSON.stringify(err));
 
-        }
-        else {
+        } else {
             console.log("findData: " + JSON.stringify(findData));
             if (findData.length > 0) {
                 alreadyExist = "yes";
                 existEmpId = data.EmpId;
                 if (callback) callback();
-            }
-            else {
+            } else {
                 careatorMaster.find(findEmail).toArray(function (err, findData) {
                     if (err) {
                         console.log("err: " + JSON.stringify(err));
 
-                    }
-                    else {
+                    } else {
                         console.log("findData: " + JSON.stringify(findData));
                         if (findData.length > 0) {
                             alreadyExist = "yes";
                             existEmail = data.Email;
                             if (callback) callback();
-                        }
-                        else {
+                        } else {
                             careatorMasterArray.push(obj);
                             if (callback) callback();
                         }
@@ -432,8 +438,7 @@ module.exports.careator_getAllEmp = function (req, res) {
                 data: err
             };
             res.status(400).send(responseData);
-        }
-        else {
+        } else {
             console.log("allEmp: " + JSON.stringify(allEmp));
             response = {
                 status: true,
@@ -449,7 +454,9 @@ module.exports.careator_getAllEmp = function (req, res) {
 module.exports.careator_getChatRightsEmp = function (req, res) {
     console.log("careator_getChatRightsEmp-->");
     var response;
-    careatorMaster.find({ "chatRights": "yes" }).toArray(function (err, allEmp_chat) {
+    careatorMaster.find({
+        "chatRights": "yes"
+    }).toArray(function (err, allEmp_chat) {
         if (err) {
             console.log("err: " + JSON.stringify(err));
             response = {
@@ -458,8 +465,7 @@ module.exports.careator_getChatRightsEmp = function (req, res) {
                 data: err
             };
             res.status(400).send(responseData);
-        }
-        else {
+        } else {
             console.log("allEmp_chat: " + JSON.stringify(allEmp_chat));
             response = {
                 status: true,
@@ -490,28 +496,29 @@ module.exports.groupStatusChangeById = function (req, res) {
             "status": status
         }
         console.log("updateVlaue: " + JSON.stringify(updateVlaue));
-        careatorChatGroup.update(queryId, { $set: updateVlaue }), function (err, updatedData) {
-            if (err) {
-                console.log("err: " + JSON.stringify(err));
-                response = {
-                    status: fasle,
-                    message: "Update unsucessfully",
-                    data: err
-                };
-                res.status(400).send(response);
+        careatorChatGroup.update(queryId, {
+                $set: updateVlaue
+            }),
+            function (err, updatedData) {
+                if (err) {
+                    console.log("err: " + JSON.stringify(err));
+                    response = {
+                        status: fasle,
+                        message: "Update unsucessfully",
+                        data: err
+                    };
+                    res.status(400).send(response);
+                } else {
+                    console.log("updatedData: " + JSON.stringify(updatedData));
+                    response = {
+                        status: true,
+                        message: "Update sucessfully",
+                        data: updatedData
+                    };
+                    res.status(200).send(response);
+                }
             }
-            else {
-                console.log("updatedData: " + JSON.stringify(updatedData));
-                response = {
-                    status: true,
-                    message: "Update sucessfully",
-                    data: updatedData
-                };
-                res.status(200).send(response);
-            }
-        }
-    }
-    else {
+    } else {
         console.log("Epty value found");
         var obj = {
             "id": id
@@ -544,28 +551,29 @@ module.exports.statusChangeById = function (req, res) {
             "status": status
         }
         console.log("updateVlaue: " + JSON.stringify(updateVlaue));
-        careatorMaster.update(queryId, { $set: updateVlaue }), function (err, updatedData) {
-            if (err) {
-                console.log("err: " + JSON.stringify(err));
-                response = {
-                    status: fasle,
-                    message: "Update unsucessfully",
-                    data: err
-                };
-                res.status(400).send(response);
+        careatorMaster.update(queryId, {
+                $set: updateVlaue
+            }),
+            function (err, updatedData) {
+                if (err) {
+                    console.log("err: " + JSON.stringify(err));
+                    response = {
+                        status: fasle,
+                        message: "Update unsucessfully",
+                        data: err
+                    };
+                    res.status(400).send(response);
+                } else {
+                    console.log("updatedData: " + JSON.stringify(updatedData));
+                    response = {
+                        status: true,
+                        message: "Update sucessfully",
+                        data: updatedData
+                    };
+                    res.status(200).send(response);
+                }
             }
-            else {
-                console.log("updatedData: " + JSON.stringify(updatedData));
-                response = {
-                    status: true,
-                    message: "Update sucessfully",
-                    data: updatedData
-                };
-                res.status(200).send(response);
-            }
-        }
-    }
-    else {
+    } else {
         console.log("Epty value found");
         var obj = {
             "id": id
@@ -583,7 +591,10 @@ module.exports.statusChangeById = function (req, res) {
 module.exports.getChatRights_emp = function (req, res) {
     console.log("getChatRights_emp-->");
     var response;
-    careatorMaster.find({ "chatRights": "yes", "status": "active" }).toArray(function (err, allEmp_chat) {
+    careatorMaster.find({
+        "chatRights": "yes",
+        "status": "active"
+    }).toArray(function (err, allEmp_chat) {
         if (err) {
             console.log("err: " + JSON.stringify(err));
             response = {
@@ -592,8 +603,7 @@ module.exports.getChatRights_emp = function (req, res) {
                 data: err
             };
             res.status(400).send(responseData);
-        }
-        else {
+        } else {
             console.log("allEmp_chat: " + JSON.stringify(allEmp_chat));
             response = {
                 status: true,
@@ -610,7 +620,10 @@ module.exports.getChatRights_emp = function (req, res) {
 module.exports.getVideoRights_emp = function (req, res) {
     console.log("getVideoRights_emp-->");
     var response;
-    careatorMaster.find({ "videoRights": "yes", "status": "active" }).toArray(function (err, allEmp_chat) {
+    careatorMaster.find({
+        "videoRights": "yes",
+        "status": "active"
+    }).toArray(function (err, allEmp_chat) {
         if (err) {
             console.log("err: " + JSON.stringify(err));
             response = {
@@ -619,8 +632,7 @@ module.exports.getVideoRights_emp = function (req, res) {
                 data: err
             };
             res.status(400).send(responseData);
-        }
-        else {
+        } else {
             console.log("allEmp_chat: " + JSON.stringify(allEmp_chat));
             response = {
                 status: true,
@@ -636,7 +648,11 @@ module.exports.getVideoRights_emp = function (req, res) {
 module.exports.careator_getChatVideo_emp = function (req, res) {
     console.log("careator_getChatVideo_emp-->");
     var response;
-    careatorMaster.find({ "chatRights": "yes", "videoRights": "yes", "status": "active" }).toArray(function (err, allEmp_chat) {
+    careatorMaster.find({
+        "chatRights": "yes",
+        "videoRights": "yes",
+        "status": "active"
+    }).toArray(function (err, allEmp_chat) {
         if (err) {
             console.log("err: " + JSON.stringify(err));
             response = {
@@ -645,8 +661,7 @@ module.exports.careator_getChatVideo_emp = function (req, res) {
                 data: err
             };
             res.status(400).send(responseData);
-        }
-        else {
+        } else {
             console.log("allEmp_chat: " + JSON.stringify(allEmp_chat));
             response = {
                 status: true,
@@ -681,8 +696,7 @@ module.exports.careator_chat_creteGroup = function (req, res) {
                     data: err
                 };
                 res.status(400).send(response);
-            }
-            else {
+            } else {
                 console.log("groupCreate: " + JSON.stringify(groupCreate));
                 response = {
                     status: true,
@@ -692,8 +706,7 @@ module.exports.careator_chat_creteGroup = function (req, res) {
                 res.status(200).send(response);
             }
         })
-    }
-    else {
+    } else {
         console.log("Epty value found");
         var groupName = {
             "groupName": groupName
@@ -722,9 +735,19 @@ module.exports.pswdGenerate = function (req, res) {
                 "password": password,
                 "invite": []
             }
-            careatorMaster.find({ "email": email }).toArray(function (err, findData) {
+            careatorMaster.find({
+                "email": email
+            }).toArray(function (err, findData) {
                 if (findData.length > 0) {
-                    careatorMaster.update({ "email": email, "status": "active" }, { $set: { "password": password, "invite": [] } }, function (err, data) {
+                    careatorMaster.update({
+                        "email": email,
+                        "status": "active"
+                    }, {
+                        $set: {
+                            "password": password,
+                            "invite": []
+                        }
+                    }, function (err, data) {
                         if (err) {
                             responseData = {
                                 status: true,
@@ -732,8 +755,7 @@ module.exports.pswdGenerate = function (req, res) {
                                 message: "Process not successful"
                             };
                             res.status(200).send(responseData);
-                        }
-                        else {
+                        } else {
                             var mailOptions = {
                                 from: "info@vc4all.in",
                                 to: email,
@@ -763,8 +785,7 @@ module.exports.pswdGenerate = function (req, res) {
                             });
                         }
                     })
-                }
-                else {
+                } else {
                     console.log("Email Not Matched, tell your admin to verify");
                     responseData = {
                         status: false,
@@ -776,16 +797,14 @@ module.exports.pswdGenerate = function (req, res) {
 
             })
 
-        }
-        else {
+        } else {
             responseData = {
                 status: false,
                 message: "Email id is not valid"
             };
             res.status(400).send(responseData);
         }
-    }
-    else {
+    } else {
         responseData = {
             status: false,
             message: "Empty value found"
@@ -799,7 +818,13 @@ module.exports.careator_getChatGroupListById = function (req, res) {
     console.log("getChatGroupListById-->");
     var id = req.params.id;
     if (general.emptyCheck(id)) {
-        careatorChatGroup.find({ "groupMembers": { $elemMatch: { "userId": id } } }).toArray(function (err, data) {
+        careatorChatGroup.find({
+            "groupMembers": {
+                $elemMatch: {
+                    "userId": id
+                }
+            }
+        }).toArray(function (err, data) {
             if (err) {
                 console.log("err: " + JSON.stringify(err));
                 responseData = {
@@ -808,8 +833,7 @@ module.exports.careator_getChatGroupListById = function (req, res) {
                     message: "Process not successful"
                 };
                 res.status(400).send(responseData);
-            }
-            else {
+            } else {
                 console.log("data: " + JSON.stringify(data));
                 responseData = {
                     status: true,
@@ -821,8 +845,7 @@ module.exports.careator_getChatGroupListById = function (req, res) {
             }
         })
 
-    }
-    else {
+    } else {
         console.log("Epty value found");
         response = {
             status: false,
@@ -844,8 +867,7 @@ module.exports.careator_getChatGroupList = function (req, res) {
                 message: "Process not successful"
             };
             res.status(400).send(responseData);
-        }
-        else {
+        } else {
             console.log("data: " + JSON.stringify(data));
             responseData = {
                 status: true,
@@ -862,7 +884,13 @@ module.exports.careator_getChatRightsAllemp = function (req, res) {
     console.log("careator_getChatRightsAllemp-->: " + req.params.id);
     var id = req.params.id;
     if (general.emptyCheck(id)) {
-        careatorMaster.find({ "_id": { $ne: ObjectId(id) }, "chatRights": "yes", "status": "active" }).toArray(function (err, allEmp_chat) {
+        careatorMaster.find({
+            "_id": {
+                $ne: ObjectId(id)
+            },
+            "chatRights": "yes",
+            "status": "active"
+        }).toArray(function (err, allEmp_chat) {
             if (err) {
                 console.log("err: " + JSON.stringify(err));
                 response = {
@@ -871,8 +899,7 @@ module.exports.careator_getChatRightsAllemp = function (req, res) {
                     data: err
                 };
                 res.status(400).send(responseData);
-            }
-            else {
+            } else {
                 console.log("allEmp_chat: " + JSON.stringify(allEmp_chat));
                 response = {
                     status: true,
@@ -883,8 +910,7 @@ module.exports.careator_getChatRightsAllemp = function (req, res) {
             }
         })
 
-    }
-    else {
+    } else {
         console.log("Epty value found");
         response = {
             status: false,
@@ -901,7 +927,13 @@ module.exports.individualText = function (req, res) {
     var r_title = req.body.receiverId + req.body.senderId;
     console.log("title : " + title + "r_title: " + r_title);
 
-    careatorChat.find({ $or: [{ "title": title }, { "title": r_title }] }).toArray(function (err, data) {
+    careatorChat.find({
+        $or: [{
+            "title": title
+        }, {
+            "title": r_title
+        }]
+    }).toArray(function (err, data) {
         if (err) {
             console.log("err: " + JSON.stringify(err));
             response = {
@@ -910,8 +942,7 @@ module.exports.individualText = function (req, res) {
                 data: err
             };
             res.status(400).send(responseData);
-        }
-        else {
+        } else {
             console.log("data.length: " + data.length);
             console.log("data: " + JSON.stringify(data));
             if (data.length == 0) {
@@ -921,7 +952,12 @@ module.exports.individualText = function (req, res) {
                     "senderName": req.body.senderName,
                     "receiverId": req.body.receiverId,
                     "receiverName": req.body.receiverName,
-                    "chats": [{ "senderId": req.body.senderId, "senderName": req.body.senderName, "message": req.body.message, "sendTime": date }],
+                    "chats": [{
+                        "senderId": req.body.senderId,
+                        "senderName": req.body.senderName,
+                        "message": req.body.message,
+                        "sendTime": date
+                    }],
                     "timeStamp": date
                 }
                 console.log("obj : " + JSON.stringify(obj));
@@ -934,8 +970,7 @@ module.exports.individualText = function (req, res) {
                             data: err
                         };
                         res.status(400).send(responseData);
-                    }
-                    else {
+                    } else {
                         response = {
                             status: true,
                             message: "Sucessfully sent",
@@ -944,8 +979,7 @@ module.exports.individualText = function (req, res) {
                         res.status(200).send(response);
                     }
                 })
-            }
-            else {
+            } else {
                 var obj = {
                     "senderId": req.body.senderId,
                     "senderName": req.body.senderName,
@@ -957,7 +991,11 @@ module.exports.individualText = function (req, res) {
                     "_id": data[0]._id
                 }
                 console.log("findObj: " + JSON.stringify(findObj));
-                careatorChat.update(findObj, { "$push": { "chats": obj } }, function (err, updatedData) {
+                careatorChat.update(findObj, {
+                    "$push": {
+                        "chats": obj
+                    }
+                }, function (err, updatedData) {
                     if (err) {
                         console.log("err: " + JSON.stringify(err));
                         response = {
@@ -966,11 +1004,16 @@ module.exports.individualText = function (req, res) {
                             data: err
                         };
                         res.status(400).send(responseData);
-                    }
-                    else {
+                    } else {
                         console.log("updatedData: " + JSON.stringify(updatedData));
                         var io = req.app.get('socketio');
-                        io.emit('comm_textReceived', { "id": data[0]._id, "senderId": obj.senderId, "senderName": obj.senderName, "message": obj.message, "sendTime": obj.sendTime }); /* ### Note: Emit message to client ### */
+                        io.emit('comm_textReceived', {
+                            "id": data[0]._id,
+                            "senderId": obj.senderId,
+                            "senderName": obj.senderName,
+                            "message": obj.message,
+                            "sendTime": obj.sendTime
+                        }); /* ### Note: Emit message to client ### */
                         response = {
                             status: true,
                             message: "Sucessfully updated",
@@ -992,7 +1035,13 @@ module.exports.individualTextReadById = function (req, res) {
     var r_title = rId + sId;
     console.log("title : " + title + " r_title: " + r_title);
     if (general.emptyCheck(sId) && general.emptyCheck(rId)) {
-        careatorChat.find({ $or: [{ "title": title }, { "title": r_title }] }).toArray(function (err, data) {
+        careatorChat.find({
+            $or: [{
+                "title": title
+            }, {
+                "title": r_title
+            }]
+        }).toArray(function (err, data) {
             if (err) {
                 console.log("err: " + JSON.stringify(err));
                 response = {
@@ -1001,8 +1050,7 @@ module.exports.individualTextReadById = function (req, res) {
                     data: err
                 };
                 res.status(400).send(response);
-            }
-            else {
+            } else {
                 console.log("data.length: " + data.length);
                 console.log("data: " + JSON.stringify(data));
                 response = {
@@ -1013,8 +1061,7 @@ module.exports.individualTextReadById = function (req, res) {
                 res.status(200).send(response);
             }
         })
-    }
-    else {
+    } else {
         console.log("Epty value found");
         response = {
             status: false,
@@ -1033,7 +1080,12 @@ module.exports.groupText = function (req, res) {
         "senderId": req.body.senderId,
         "senderName": req.body.senderName,
         "message": req.body.typedMessage,
-        "chats": [{ "senderId": req.body.senderId, "senderName": req.body.senderName, "message": req.body.message, "sendTime": date }],
+        "chats": [{
+            "senderId": req.body.senderId,
+            "senderName": req.body.senderName,
+            "message": req.body.message,
+            "sendTime": date
+        }],
         "timeStamp": date
     }
     console.log("obj : " + JSON.stringify(obj));
@@ -1047,8 +1099,7 @@ module.exports.groupText = function (req, res) {
                     data: err
                 };
                 res.status(400).send(responseData);
-            }
-            else {
+            } else {
                 console.log("data.length: " + data.length);
                 console.log("data: " + JSON.stringify(data));
                 if (data.length == 0) {
@@ -1057,7 +1108,12 @@ module.exports.groupText = function (req, res) {
                         "groupName": req.body.groupName,
                         "senderId": req.body.senderId,
                         "senderName": req.body.senderName,
-                        "chats": [{ "senderId": req.body.senderId, "senderName": req.body.senderName, "message": req.body.message, "sendTime": date }],
+                        "chats": [{
+                            "senderId": req.body.senderId,
+                            "senderName": req.body.senderName,
+                            "message": req.body.message,
+                            "sendTime": date
+                        }],
                         "timeStamp": date
                     }
                     console.log("obj : " + JSON.stringify(obj));
@@ -1070,8 +1126,7 @@ module.exports.groupText = function (req, res) {
                                 data: err
                             };
                             res.status(400).send(responseData);
-                        }
-                        else {
+                        } else {
                             response = {
                                 status: true,
                                 message: "Sucessfully sent",
@@ -1080,8 +1135,7 @@ module.exports.groupText = function (req, res) {
                             res.status(200).send(response);
                         }
                     })
-                }
-                else {
+                } else {
                     var obj = {
                         "senderId": req.body.senderId,
                         "senderName": req.body.senderName,
@@ -1093,7 +1147,11 @@ module.exports.groupText = function (req, res) {
                         "_id": data[0]._id
                     }
                     console.log("findObj: " + JSON.stringify(findObj));
-                    careatorChat.update(findObj, { "$push": { "chats": obj } }, function (err, updatedData) {
+                    careatorChat.update(findObj, {
+                        "$push": {
+                            "chats": obj
+                        }
+                    }, function (err, updatedData) {
                         if (err) {
                             console.log("err: " + JSON.stringify(err));
                             response = {
@@ -1102,11 +1160,16 @@ module.exports.groupText = function (req, res) {
                                 data: err
                             };
                             res.status(400).send(responseData);
-                        }
-                        else {
+                        } else {
                             console.log("updatedData: " + JSON.stringify(updatedData));
                             var io = req.app.get('socketio');
-                            io.emit('comm_textReceived', { "id": data[0]._id, "senderId": obj.senderId, "senderName": obj.senderName, "message": obj.message, "sendTime": obj.sendTime }); /* ### Note: Emit message to client ### */
+                            io.emit('comm_textReceived', {
+                                "id": data[0]._id,
+                                "senderId": obj.senderId,
+                                "senderName": obj.senderName,
+                                "message": obj.message,
+                                "sendTime": obj.sendTime
+                            }); /* ### Note: Emit message to client ### */
                             response = {
                                 status: true,
                                 message: "Sucessfully updated",
@@ -1118,8 +1181,7 @@ module.exports.groupText = function (req, res) {
                 }
             }
         })
-    }
-    else {
+    } else {
         console.log("Epty value found");
         response = {
             status: false,
@@ -1146,8 +1208,7 @@ module.exports.careator_getUserById = function (req, res) {
                     data: err
                 };
                 res.status(400).send(responseData);
-            }
-            else {
+            } else {
                 console.log("allEmp_chat: " + JSON.stringify(allEmp_chat));
                 response = {
                     status: true,
@@ -1157,8 +1218,7 @@ module.exports.careator_getUserById = function (req, res) {
                 res.status(200).send(response);
             }
         })
-    }
-    else {
+    } else {
         console.log("empty value found");
         response = {
             status: fasle,
@@ -1173,7 +1233,13 @@ module.exports.getChatListRecordById = function (req, res) {
     console.log("getChatListRecordById-->: " + req.params.id);
     var id = req.params.id;
     if (general.emptyCheck(id)) {
-        careatorChat.find({ $or: [{ "senderId": id }, { "receiverId": id }] }).toArray(function (err, findData) {
+        careatorChat.find({
+            $or: [{
+                "senderId": id
+            }, {
+                "receiverId": id
+            }]
+        }).toArray(function (err, findData) {
             if (err) {
                 console.log("err: " + JSON.stringify(err));
                 response = {
@@ -1182,8 +1248,7 @@ module.exports.getChatListRecordById = function (req, res) {
                     data: err
                 };
                 res.status(400).send(response);
-            }
-            else {
+            } else {
                 console.log("allEmp_chat: " + JSON.stringify(findData));
                 response = {
                     status: true,
@@ -1194,8 +1259,7 @@ module.exports.getChatListRecordById = function (req, res) {
             }
         })
 
-    }
-    else {
+    } else {
         console.log("Epty value found");
         response = {
             status: false,
@@ -1224,8 +1288,7 @@ module.exports.careator_getGroupById = function (req, res) {
                     data: err
                 };
                 res.status(400).send(responseData);
-            }
-            else {
+            } else {
                 console.log("allEmp_chat: " + JSON.stringify(allEmp_chat));
                 response = {
                     status: true,
@@ -1235,8 +1298,7 @@ module.exports.careator_getGroupById = function (req, res) {
                 res.status(200).send(response);
             }
         })
-    }
-    else {
+    } else {
         console.log("empty value found");
         response = {
             status: fasle,
@@ -1264,29 +1326,74 @@ module.exports.userEditById = function (req, res) {
             "chatRights": req.body.chatRights
         }
         console.log("updateVlaue: " + JSON.stringify(updateVlaue));
-        careatorMaster.update(queryId, { $set: updateVlaue }), function (err, updatedData) {
-            if (err) {
-                console.log("err: " + JSON.stringify(err));
-                response = {
-                    status: fasle,
-                    message: "Update unsucessfully",
-                    data: err
-                };
-                res.status(400).send(response);
+        careatorMaster.update(queryId, {
+                $set: updateVlaue
+            }),
+            function (err, updatedData) {
+                if (err) {
+                    console.log("err: " + JSON.stringify(err));
+                    response = {
+                        status: fasle,
+                        message: "Update unsucessfully",
+                        data: err
+                    };
+                    res.status(400).send(response);
+                } else {
+                    console.log("updatedData: " + JSON.stringify(updatedData));
+                    response = {
+                        status: true,
+                        message: "Update sucessfully",
+                        data: updatedData
+                    };
+                    res.status(200).send(response);
+                }
             }
-            else {
-                console.log("updatedData: " + JSON.stringify(updatedData));
-                response = {
-                    status: true,
-                    message: "Update sucessfully",
-                    data: updatedData
-                };
-                res.status(200).send(response);
-            }
-        }
-    }
-    else {
+    } else {
         console.log("Epty value found");
+        var obj = {
+            "id": id
+        }
+        response = {
+            status: false,
+            message: "empty value found",
+            data: obj
+        };
+        res.status(400).send(response);
+    }
+
+}
+module.exports.userDeleteById = function (req, res) {
+    console.log("statusChangeById-->");
+    var response;
+    var id = req.params.id;
+    console.log("id: " + id);
+    if (general.emptyCheck(id)) {
+        var queryId = {
+            "_id": ObjectId(id)
+        }
+        console.log("queryId: " + JSON.stringify(queryId));
+        careatorMaster.deleteOne(queryId),
+            function (err, updatedData) {
+                if (err) {
+                    console.log("err: " + JSON.stringify(err));
+                    response = {
+                        status: fasle,
+                        message: "Delete fail",
+                        data: err
+                    };
+                    res.status(400).send(response);
+                } else {
+                    console.log("updatedData: " + JSON.stringify(updatedData));
+                    response = {
+                        status: true,
+                        message: "Delete sucessfully",
+                        data: updatedData
+                    };
+                    res.status(200).send(response);
+                }
+            }
+    } else {
+        console.log("Empty value found");
         var obj = {
             "id": id
         }

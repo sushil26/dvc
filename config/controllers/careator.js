@@ -433,7 +433,7 @@ module.exports.careator_getAllEmp = function (req, res) {
         if (err) {
             console.log("err: " + JSON.stringify(err));
             response = {
-                status: fasle,
+                status: false,
                 message: "Unsucessfully retrived data",
                 data: err
             };
@@ -460,7 +460,7 @@ module.exports.careator_getChatRightsEmp = function (req, res) {
         if (err) {
             console.log("err: " + JSON.stringify(err));
             response = {
-                status: fasle,
+                status: false,
                 message: "Unsucessfully retrived data",
                 data: err
             };
@@ -503,7 +503,7 @@ module.exports.groupStatusChangeById = function (req, res) {
                 if (err) {
                     console.log("err: " + JSON.stringify(err));
                     response = {
-                        status: fasle,
+                        status: false,
                         message: "Update unsucessfully",
                         data: err
                     };
@@ -558,7 +558,7 @@ module.exports.statusChangeById = function (req, res) {
                 if (err) {
                     console.log("err: " + JSON.stringify(err));
                     response = {
-                        status: fasle,
+                        status: false,
                         message: "Update unsucessfully",
                         data: err
                     };
@@ -598,7 +598,7 @@ module.exports.getChatRights_emp = function (req, res) {
         if (err) {
             console.log("err: " + JSON.stringify(err));
             response = {
-                status: fasle,
+                status: false,
                 message: "Unsucessfully retrived data",
                 data: err
             };
@@ -627,7 +627,7 @@ module.exports.getVideoRights_emp = function (req, res) {
         if (err) {
             console.log("err: " + JSON.stringify(err));
             response = {
-                status: fasle,
+                status: false,
                 message: "Unsucessfully retrived data",
                 data: err
             };
@@ -656,7 +656,7 @@ module.exports.careator_getChatVideo_emp = function (req, res) {
         if (err) {
             console.log("err: " + JSON.stringify(err));
             response = {
-                status: fasle,
+                status: false,
                 message: "Unsucessfully retrived data",
                 data: err
             };
@@ -691,7 +691,7 @@ module.exports.careator_chat_creteGroup = function (req, res) {
             if (err) {
                 console.log("err: " + JSON.stringify(err));
                 response = {
-                    status: fasle,
+                    status: false,
                     message: "Unsuccessfull group creation",
                     data: err
                 };
@@ -894,7 +894,7 @@ module.exports.careator_getChatRightsAllemp = function (req, res) {
             if (err) {
                 console.log("err: " + JSON.stringify(err));
                 response = {
-                    status: fasle,
+                    status: false,
                     message: "Unsucessfully retrived data",
                     data: err
                 };
@@ -937,7 +937,7 @@ module.exports.individualText = function (req, res) {
         if (err) {
             console.log("err: " + JSON.stringify(err));
             response = {
-                status: fasle,
+                status: false,
                 message: "Unsucessfully retrived data",
                 data: err
             };
@@ -965,7 +965,7 @@ module.exports.individualText = function (req, res) {
                     if (err) {
                         console.log("err: " + JSON.stringify(err));
                         response = {
-                            status: fasle,
+                            status: false,
                             message: "Unsucessfully retrived data",
                             data: err
                         };
@@ -999,7 +999,7 @@ module.exports.individualText = function (req, res) {
                     if (err) {
                         console.log("err: " + JSON.stringify(err));
                         response = {
-                            status: fasle,
+                            status: false,
                             message: "Unsucessfully updated data",
                             data: err
                         };
@@ -1045,7 +1045,7 @@ module.exports.individualTextReadById = function (req, res) {
             if (err) {
                 console.log("err: " + JSON.stringify(err));
                 response = {
-                    status: fasle,
+                    status: false,
                     message: "Unsucessfully retrived data",
                     data: err
                 };
@@ -1094,7 +1094,7 @@ module.exports.groupText = function (req, res) {
             if (err) {
                 console.log("err: " + JSON.stringify(err));
                 response = {
-                    status: fasle,
+                    status: false,
                     message: "Unsucessfully retrived data",
                     data: err
                 };
@@ -1121,7 +1121,7 @@ module.exports.groupText = function (req, res) {
                         if (err) {
                             console.log("err: " + JSON.stringify(err));
                             response = {
-                                status: fasle,
+                                status: false,
                                 message: "Unsucessfully retrived data",
                                 data: err
                             };
@@ -1155,7 +1155,7 @@ module.exports.groupText = function (req, res) {
                         if (err) {
                             console.log("err: " + JSON.stringify(err));
                             response = {
-                                status: fasle,
+                                status: false,
                                 message: "Unsucessfully updated data",
                                 data: err
                             };
@@ -1203,7 +1203,7 @@ module.exports.careator_getUserById = function (req, res) {
             if (err) {
                 console.log("err: " + JSON.stringify(err));
                 response = {
-                    status: fasle,
+                    status: false,
                     message: "Unsucessfully retrived data",
                     data: err
                 };
@@ -1221,7 +1221,7 @@ module.exports.careator_getUserById = function (req, res) {
     } else {
         console.log("empty value found");
         response = {
-            status: fasle,
+            status: false,
             message: "Empty value found",
         }
         res.status(400).send(response);
@@ -1243,7 +1243,7 @@ module.exports.getChatListRecordById = function (req, res) {
             if (err) {
                 console.log("err: " + JSON.stringify(err));
                 response = {
-                    status: fasle,
+                    status: false,
                     message: "Unsucessfully retrived data",
                     data: err
                 };
@@ -1283,7 +1283,7 @@ module.exports.careator_getGroupById = function (req, res) {
             if (err) {
                 console.log("err: " + JSON.stringify(err));
                 response = {
-                    status: fasle,
+                    status: false,
                     message: "Unsucessfully retrived data",
                     data: err
                 };
@@ -1301,7 +1301,7 @@ module.exports.careator_getGroupById = function (req, res) {
     } else {
         console.log("empty value found");
         response = {
-            status: fasle,
+            status: false,
             message: "Empty value found",
         }
         res.status(400).send(response);
@@ -1343,7 +1343,7 @@ module.exports.userEditById = function (req, res) {
                 if (err) {
                     console.log("err: " + JSON.stringify(err));
                     response = {
-                        status: fasle,
+                        status: false,
                         message: "Update unsucessfully",
                         data: err
                     };
@@ -1387,7 +1387,7 @@ module.exports.userDeleteById = function (req, res) {
                 if (err) {
                     console.log("err: " + JSON.stringify(err));
                     response = {
-                        status: fasle,
+                        status: false,
                         message: "Delete fail",
                         data: err
                     };

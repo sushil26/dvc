@@ -1118,8 +1118,6 @@ module.exports.groupText = function (req, res) {
                     var obj = {
                         "group_id": req.body.group_id,
                         "groupName": req.body.groupName,
-                        "senderId": req.body.senderId,
-                        "senderName": req.body.senderName,
                         "chats": [{
                             "senderId": req.body.senderId,
                             "senderName": req.body.senderName,

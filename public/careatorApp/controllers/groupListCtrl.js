@@ -57,4 +57,28 @@ careatorApp.controller('groupListCtrl', function ($scope,$state, $rootScope, $fi
     }
 
 
+     ////////////////Delete User/////////////////////////
+     $scope.deleteGroup = function (id) {
+        console.log("deleteUser-->");
+        console.log("Obj ID  " + id);
+        
+        var api = "https://norecruits.com/careator_groupDelete/groupDeleteById/"+id;
+        careatorHttpFactory.get(api).then(function (data) {
+            console.log("data--" + JSON.stringify(data.data));
+            var checkStatus = careatorHttpFactory.dataValidation(data);
+            console.log("data--" + JSON.stringify(data.data));
+            if (checkStatus) {
+                $scope.allemployee = data.data.data;
+                console.log("allemployee: " + JSON.stringify($scope.allemployee));
+                console.log(data.data.message);
+            } else {
+                console.log("Sorry");
+                console.log(data.data.message);
+            }
+        })
+        console.log("<--statusChange");
+
+    }
+
+
 })

@@ -15,6 +15,7 @@ careatorApp.controller('createUsersCtrl', function ($scope, $rootScope, $filter,
             if (checkStatus) {
                 console.log("checkStatus: " + checkStatus);
                 alert(data.data.message);
+                $state.go("Cdashboard.usersListCtrl");
             }
             else {
                 console.log("checkStatus: " + checkStatus);

@@ -32,8 +32,9 @@ careatorApp.controller('editUserCtrl', function ($scope, $state, $rootScope, $fi
 
     $scope.updateUser = function () {
         console.log("updateUser-->");
+
         var api = "https://norecruits.com/careator/userEditById/" + id;
-       
+        console.log("api: " + api);
         var obj = {
             "userName": $scope.userName,
             "userEmail": $scope.userEmail,
@@ -44,7 +45,7 @@ careatorApp.controller('editUserCtrl', function ($scope, $state, $rootScope, $fi
         console.log("userName: " + $scope.userName + " userEmail: " + $scope.userEmail);
         // console.log("ur: "+JSON.stringify(ur));
         console.log("userDataRights: " + JSON.stringify($scope.userDataRights));
-        console.log("obj: "+JSON.stringify(obj));
+        console.log("obj: " + JSON.stringify(obj));
         careatorHttpFactory.post(api, obj).then(function (data) {
             console.log("data--" + JSON.stringify(data.data));
             var checkStatus = careatorHttpFactory.dataValidation(data);
@@ -60,5 +61,5 @@ careatorApp.controller('editUserCtrl', function ($scope, $state, $rootScope, $fi
 
 
 
-    
+
 })

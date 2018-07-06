@@ -37,7 +37,7 @@ careatorApp.controller('groupListCtrl', function ($scope, $state, $rootScope, $f
             var checkStatus = careatorHttpFactory.dataValidation(data);
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
-
+                $scope.getGroupList();
                 console.log(data.data.message);
             }
             else {

@@ -735,7 +735,7 @@ module.exports.pswdGenerate = function (req, res) {
             careatorMaster.find({ "email": email }).toArray(function (err, findData) {
                 console.log("findData: "+JSON.stringify(findData));
                 if (findData.length > 0) {
-                    careatorMaster.update({ "_id": findData[0]._id, "status": "active" }, { $set: { "password": password, "invite": [] } }, function (err, data) {
+                    careatorMaster.update({ "_id": ObjectId(findData[0]._id), "status": "active" }, { $set: { "password": password, "invite": [] } }, function (err, data) {
                         console.log("data: "+JSON.stringify(data));
                         if (err) {
                             responseData = {

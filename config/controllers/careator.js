@@ -1366,6 +1366,70 @@ module.exports.userEditById = function (req, res) {
     }
 
 }
+module.exports.groupEditById = function (req, res) {
+    console.log("groupEditById-->");
+    var response;
+    var id = req.params.id;
+    console.log("id: " + id);
+    if (general.emptyCheck(id)) {
+        var queryId = {
+            "_id": ObjectId(id)
+        }
+        console.log("queryId: " + JSON.stringify(queryId));
+        var updateVlaue = {};
+
+        if (req.body.userName) {
+            updateVlaue.name = req.body.userName;
+        }
+        if (req.body.empId) {
+            updateVlaue.empId = req.body.empId;
+        }
+        if (req.body.userEmail) {
+            updateVlaue.email = req.body.userEmail;
+        }
+        if (req.body.videoRights) {
+            updateVlaue.videoRights = req.body.videoRights;
+        }
+        if (req.body.chatRights) {
+            updateVlaue.chatRights = req.body.chatRights;
+        }
+        console.log("updateVlaue: " + JSON.stringify(updateVlaue));
+        careatorMaster.update(queryId, {
+            $set: updateVlaue
+        }),
+            function (err, updatedData) {
+                if (err) {
+                    console.log("err: " + JSON.stringify(err));
+                    response = {
+                        status: false,
+                        message: "Update unsucessfully",
+                        data: err
+                    };
+                    res.status(400).send(response);
+                } else {
+                    console.log("updatedData: " + JSON.stringify(updatedData));
+                    response = {
+                        status: true,
+                        message: "Update sucessfully",
+                        data: updatedData
+                    };
+                    res.status(200).send(response);
+                }
+            }
+    } else {
+        console.log("Epty value found");
+        var obj = {
+            "id": id
+        }
+        response = {
+            status: false,
+            message: "empty value found",
+            data: obj
+        };
+        res.status(400).send(response);
+    }
+
+}
 module.exports.userDeleteById = function (req, res) {
     console.log("userDeleteByI-->");
     var response;

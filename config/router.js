@@ -33,7 +33,7 @@ module.exports = function (app) {
 
 
     app.post('/careator/userEditById/:id', careator.userEditById);
-    // app.post('/careator/groupEditById/:id', careator.groupEditById);
+    app.post('/careator/groupEditById/:id', careator.groupEditById);
 
 
     app.get('/careator_getUser/careator_getUserById/:id', careator.careator_getUserById);

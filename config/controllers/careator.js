@@ -1330,10 +1330,7 @@ module.exports.userEditById = function (req, res) {
             updateVlaue.chatRights = req.body.chatRights;
         }
         console.log("updateVlaue: " + JSON.stringify(updateVlaue));
-        careatorMaster.update(queryId, {
-            $set: updateVlaue
-        }),
-            function (err, updatedData) {
+        careatorMaster.update(queryId, { $set: updateVlaue},function (err, updatedData) {
                 if (err) {
                     console.log("err: " + JSON.stringify(err));
                     response = {
@@ -1351,7 +1348,7 @@ module.exports.userEditById = function (req, res) {
                     };
                     res.status(200).send(response);
                 }
-            }
+            })
     } else {
         console.log("Epty value found");
         var obj = {

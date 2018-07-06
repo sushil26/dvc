@@ -69,7 +69,7 @@
                                 <div class="side-two">
                                     <div class="row newMessage-heading">
                                         <div class="row newMessage-main">
-                                            <div class="col-sm-2 col-xs-2 newMessage-back">
+                                            <div class="col-sm-2 col-xs-2 newMessage-back" id="backkjkj">
                                                 <i class="fa fa-arrow-left" aria-hidden="true"></i>
                                             </div>
                                             <div class="col-sm-10 col-xs-10 newMessage-title">
@@ -136,8 +136,8 @@
                                     <div class="col-sm-8 col-xs-7 heading-name">
                                         <a ng-if="selectedType=='group'" class="heading-name-meta">{{individualData.groupName}}
                                         </a>
-                                        <a ng-if="selectedType=='individual_chats' && (individualData.senderId==undefined || individualData.receiverId==undefined)" class="heading-name-meta">{{individualData.name}}
-                                        </a>
+                                        <!-- <a ng-if="selectedType=='individual_chats'" class="heading-name-meta">{{individualData.name}}
+                                        </a> -->
                                         <a ng-if="selectedType=='individual_chats' && individualData.senderId!=userId" class="heading-name-meta">{{individualData.senderName}}
                                         </a>
                                         <a ng-if="selectedType=='individual_chats' && individualData.receiverId!=userId" class="heading-name-meta">{{individualData.receiverName}}
@@ -165,7 +165,6 @@
                                                 <div class="message-text">
                                                     {{chat.message}}
                                                 </div>
-                                                <hr>
                                                 <span class="message-time pull-right">
                                                     {{chat.sendTime | date:' d MMM yyyy h:mm a'}}
                                                 </span>
@@ -176,7 +175,6 @@
                                                 <div class="message-text">
                                                     {{chat.message}}
                                                 </div>
-                                                <hr>
                                                 <span class="message-time pull-right">
                                                     {{chat.sendTime | date:' d MMM yyyy h:mm a'}}
                                                 </span>

@@ -74,9 +74,9 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
     $scope.chatDetailsFromNew = function (type, index) {
         console.log("chatDetailsFromNew-->");
         // $("#backkjkj").click();
-        // if (screen.width < 768){
+        if (screen.width < 768){
             
-        //     }
+            }
 
         $scope.selectedType = type;
         console.log("  $scope.selectedType: " + $scope.selectedType);

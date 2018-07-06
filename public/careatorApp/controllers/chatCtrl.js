@@ -65,6 +65,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
     }
 
     $scope.chatDetailsFromNew = function (type, index) {
+        $("#backkjkj").click();
         console.log("chatDetailsFromNew-->");
         $scope.selectedType = type;
         console.log("  $scope.selectedType: " + $scope.selectedType);

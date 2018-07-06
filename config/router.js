@@ -31,6 +31,8 @@ module.exports = function (app) {
     app.get('/careator_groupDelete/groupDeleteById/:id', careator.groupDeleteById);
 
 
+
+    
     app.post('/careator/userEditById/:id', careator.userEditById);
     app.post('/careator/groupEditById/:id', careator.groupEditById);
 

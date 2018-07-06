@@ -496,7 +496,12 @@ module.exports.groupStatusChangeById = function (req, res) {
             "_id": ObjectId(id)
         }
         console.log("queryId: " + JSON.stringify(queryId));
+        var updateVlaue = {
+            "status": status
+        }
+        console.log("updateVlaue: " + JSON.stringify(updateVlaue));
         careatorChatGroup.update({ "_id": ObjectId(id) }, { $set: { "status": status } }, function (err, data) {
+            console.log("status query proccessed-->");
             if (err) {
                 console.log("err: " + JSON.stringify(err));
                 response = {
@@ -506,11 +511,11 @@ module.exports.groupStatusChangeById = function (req, res) {
                 };
                 res.status(400).send(response);
             } else {
-                console.log("updatedData: " + JSON.stringify(updatedData));
+                console.log("updatedData: " + JSON.stringify(data));
                 response = {
                     status: true,
                     message: "Update sucessfully",
-                    data: updatedData
+                    data: data
                 };
                 res.status(200).send(response);
             }

@@ -52,6 +52,7 @@ careatorApp.controller('editUserCtrl', function ($scope, $state, $rootScope, $fi
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
                 console.log(data.data.message);
+                $state.go("Cdashboard.usersListCtrl")
             }
             else {
                 console.log("Sorry: " + data.data.message);

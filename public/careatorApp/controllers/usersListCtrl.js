@@ -22,7 +22,7 @@ careatorApp.controller('usersListCtrl', function ($scope, $state, careatorHttpFa
 
     $scope.getAllEmployee();
 
-    $scope.statusChange = function (id, status) {
+    $scope.statusChange = function (id, status, $index) {
         console.log("statusChange-->");
         console.log("id: " + id + " status: " + status);
         var obj = {
@@ -36,8 +36,7 @@ careatorApp.controller('usersListCtrl', function ($scope, $state, careatorHttpFa
             var checkStatus = careatorHttpFactory.dataValidation(data);
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
-                $scope.allemployee = data.data.data;
-                console.log("allemployee: " + JSON.stringify($scope.allemployee));
+                $scope.allemployee[index].status = status
                 console.log(data.data.message);
             } else {
                 console.log("Sorry");
@@ -61,8 +60,8 @@ careatorApp.controller('usersListCtrl', function ($scope, $state, careatorHttpFa
     $scope.deleteUser = function (id) {
         console.log("deleteUser-->");
         console.log("Obj ID  " + id);
-        
-        var api = "https://norecruits.com/careator_userDelete/userDeleteById/"+id;
+
+        var api = "https://norecruits.com/careator_userDelete/userDeleteById/" + id;
         careatorHttpFactory.get(api).then(function (data) {
             console.log("data--" + JSON.stringify(data.data));
             var checkStatus = careatorHttpFactory.dataValidation(data);

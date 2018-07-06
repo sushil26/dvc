@@ -106,29 +106,29 @@ careatorApp.controller('editGroupCtrl', function ($scope, $state, $rootScope, $f
         console.log("api: " + api);
         var obj = {
             "groupName": $scope.grpname,
-            "groupAdminModel": $scope.groupAdminModel
         }
         console.log("groupName: " + $scope.grpname);
-        console.log("$scope.groupMemberModel: " + JSON.stringify($scope.groupMemberModel));
+       
         var groupMembers = [];
-        for(var x=0;x<$scope.groupMemberModel.length;x++){
+        for (var x = 0; x < $scope.groupMemberModel.length; x++) {
             groupMembers.push({
-                "email":$scope.groupMemberModel[x].email,
+                "email": $scope.groupMemberModel[x].email,
                 "name": $scope.groupMemberModel[x].name,
                 "userId": $scope.groupMemberModel[x].userId
             })
         }
+        console.log("groupMembers: " + JSON.stringify(groupMembers));
         var groupAdmin = [];
-        for(var x=0;x<$scope.groupAdminModel.length;x++){
+        for (var x = 0; x < $scope.groupAdminModel.length; x++) {
             groupMembers.push({
-                "email":$scope.groupAdminModel[x].email,
+                "email": $scope.groupAdminModel[x].email,
                 "name": $scope.groupAdminModel[x].name,
                 "userId": $scope.groupAdminModel[x].userId
             })
         }
-        
-        console.log("groupAdminModel: " + JSON.stringify($scope.groupAdminModel));
-        console.log("obj: " + JSON.stringify(obj));
+
+        console.log("groupAdmin: " + JSON.stringify(groupAdmin));
+        console.log("groupMembers: " + JSON.stringify(groupMembers));
         // careatorHttpFactory.post(api, obj).then(function (data) {
         //     console.log("data--" + JSON.stringify(data.data));
         //     var checkStatus = careatorHttpFactory.dataValidation(data);

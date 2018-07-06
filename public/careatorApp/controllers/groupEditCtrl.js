@@ -103,17 +103,15 @@ careatorApp.controller('editGroupCtrl', function ($scope, $state, $rootScope, $f
     $scope.updateGroup = function () {
         console.log("updateGroup-->");
         var api = "https://norecruits.com/careator_groupDelete/groupDeleteById/" + id;
-       console.log("api: "+api);
+        console.log("api: " + api);
         var obj = {
             "userName": $scope.userName,
             "userEmail": $scope.userEmail,
-            "videoRights": $scope.userDataRights.videoRights,
-            "chatRights": $scope.userDataRights.chatRights,
             "empId": $scope.empId,
         }
         console.log("userName: " + $scope.userName + " userEmail: " + $scope.userEmail);
         console.log("userDataRights: " + JSON.stringify($scope.userDataRights));
-        console.log("obj: "+JSON.stringify(obj));
+        console.log("obj: " + JSON.stringify(obj));
         careatorHttpFactory.post(api, obj).then(function (data) {
             console.log("data--" + JSON.stringify(data.data));
             var checkStatus = careatorHttpFactory.dataValidation(data);

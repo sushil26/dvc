@@ -1324,7 +1324,7 @@ module.exports.userEditById = function (req, res) {
             updateVlaue.name = req.body.userName;
         }
         if(req.body.empId){
-            dateVlaue.empId = req.body.empId;
+            updateVlaue.empId = req.body.empId;
         }
         if(req.body.userEmail){
             updateVlaue.email = req.body.userEmail;

@@ -58,7 +58,7 @@ module.exports.careator_getAllEmp = function (req, res) {
         if (err) {
             console.log("err: " + JSON.stringify(err));
             response = {
-                status: fasle,
+                status: false,
                 message: err
             };
             res.status(400).send(responseData);
@@ -90,7 +90,7 @@ module.exports.careator_chat_creteGroup = function (req, res) {
             if (err) {
                 console.log("err: " + JSON.stringify(err));
                 response = {
-                    status: fasle,
+                    status: false,
                     message: "Unsuccessfull group creation",
                     data: err
                 };
@@ -137,7 +137,7 @@ module.exports.careator_video_creteGroup = function (req, res) {
             if (err) {
                 console.log("err: " + JSON.stringify(err));
                 response = {
-                    status: fasle,
+                    status: false,
                     message: "Unsuccessfull group creation",
                     data: err
                 };

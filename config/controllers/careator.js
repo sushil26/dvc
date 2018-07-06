@@ -496,10 +496,7 @@ module.exports.groupStatusChangeById = function (req, res) {
             "status": status
         }
         console.log("updateVlaue: " + JSON.stringify(updateVlaue));
-        careatorChatGroup.update(queryId, {
-            $set: updateVlaue
-        }),
-            function (err, updatedData) {
+        careatorChatGroup.update(queryId, {$set: updateVlaue} ,function (err, updatedData) {
                 if (err) {
                     console.log("err: " + JSON.stringify(err));
                     response = {
@@ -517,7 +514,7 @@ module.exports.groupStatusChangeById = function (req, res) {
                     };
                     res.status(200).send(response);
                 }
-            }
+            })
     } else {
         console.log("Epty value found");
         var obj = {

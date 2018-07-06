@@ -43,6 +43,7 @@ app.set('socketio', io);
 var chatHistory;
 // server.timeout = 9999999999;
 mongoConfig.connectToServer(function (err) {
+    console.log("mongo connected -->");
     require('./config/router')(app);
     var db = mongoConfig.getDb();
     console.log("db: " + db);

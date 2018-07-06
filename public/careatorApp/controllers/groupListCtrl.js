@@ -37,8 +37,8 @@ careatorApp.controller('groupListCtrl', function ($scope, $state, $rootScope, $f
             var checkStatus = careatorHttpFactory.dataValidation(data);
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
+
                 console.log(data.data.message);
-                $scope.getGroupList();
             }
             else {
                 console.log("Sorry");
@@ -68,9 +68,8 @@ careatorApp.controller('groupListCtrl', function ($scope, $state, $rootScope, $f
             var checkStatus = careatorHttpFactory.dataValidation(data);
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
-                $scope.allemployee = data.data.data;
-                console.log("allemployee: " + JSON.stringify($scope.allemployee));
                 console.log(data.data.message);
+                $scope.getGroupList();
             } else {
                 console.log("Sorry");
                 console.log(data.data.message);

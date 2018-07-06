@@ -567,7 +567,7 @@ module.exports.statusChangeById = function (req, res) {
                 };
                 res.status(200).send(response);
             }
-        }
+        })
     } else {
         console.log("Epty value found");
         var obj = {

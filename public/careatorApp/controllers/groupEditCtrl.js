@@ -120,6 +120,7 @@ careatorApp.controller('editGroupCtrl', function ($scope, $state, $rootScope, $f
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
                 console.log(data.data.message);
+                $state.go("Cdashboard.groupListCtrl")
             }
             else {
                 console.log("Sorry: " + data.data.message);

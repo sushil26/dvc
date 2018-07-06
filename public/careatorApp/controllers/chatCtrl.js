@@ -261,16 +261,19 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         console.log("****comm_textReceived-->: " + JSON.stringify(data));;
         console.log("$scope.individualData._id: " + $scope.individualData._id);
         console.log(" data.id: " + data.id);
-        // if ($scope.allChat._id == data.id) {
-        //     console.log("start pushing message");
-        //     $scope.allChat.chats.push({
-        //         "senderId": data.senderId,
-        //         "senderName": data.senderName,
-        //         "message": data.message,
-        //         "sendTime": data.sendTime
-        //     });
-        //     $scope.scrollDown();
-        // }
+        if($scope.selectedType=='group'){
+            if ($scope.allChat._id == data.id) {
+                console.log("start pushing message");
+                $scope.allChat.chats.push({
+                    "senderId": data.senderId,
+                    "senderName": data.senderName,
+                    "message": data.message,
+                    "sendTime": data.sendTime
+                });
+                $scope.scrollDown();
+            }
+        }
+       
 
         if ($scope.individualData._id == data.id) {
             console.log("start pushing message");

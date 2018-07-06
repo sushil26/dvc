@@ -24,7 +24,7 @@ careatorApp.controller('usersListCtrl', function ($scope, $state, careatorHttpFa
 
     $scope.statusChange = function (id, status, index) {
         console.log("statusChange-->");
-        console.log("id: " + id + " status: " + status);
+        console.log("id: " + id + " status: " + status+" index: "+index);
         var obj = {
             "id": id,
             "status": status

@@ -55,4 +55,6 @@ careatorApp.controller('groupListCtrl', function ($scope,$state, $rootScope, $fi
         var data = $scope.groupList[index];
      $state.go("Cdashboard.editGroup",{ "id":data._id});
     }
+
+
 })

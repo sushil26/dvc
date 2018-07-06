@@ -30,12 +30,12 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
 
     $scope.chatDetails = function (type, index) {
         console.log("chatDetails-->");
-        if (screen.width < 768) {
+        // if (screen.width < 768) {
 
-            $('.side-one').css({ "opacity": "0" });
-            $('.conversation').css({ "position": "absolute", "top": "0", "width": "100%" });
+        //     $('.side-one').css({ "opacity": "0" });
+        //     $('.conversation').css({ "position": "absolute", "top": "0", "width": "100%" });
 
-        }
+        // }
         $scope.selectedType = type;
         console.log("  $scope.selectedType: " + $scope.selectedType);
         $scope.allChat = $scope.allChatRecords[index];

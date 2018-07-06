@@ -73,7 +73,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
 
     $scope.chatDetailsFromNew = function (type, index) {
         console.log("chatDetailsFromNew-->");
-        //  $("#backkjkj").click();
+         $("#backkjkj").click();
         $scope.selectedType = type;
         console.log("  $scope.selectedType: " + $scope.selectedType);
         console.log(" $scope.allGroupAndIndividual[index]: " + JSON.stringify($scope.allGroupAndIndividual[index]));

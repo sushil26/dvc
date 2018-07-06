@@ -1047,6 +1047,45 @@ module.exports.individualTextReadById = function (req, res) {
     }
 
 }
+
+module.exports.groupTextReadByGroupId = function (req, res) {
+    console.log("groupTextReadByGroupId-->");
+    var date = new Date();
+    var group_id = req.params.group_id;
+    console.log("group_id: " + group_id);
+    if (general.emptyCheck(group_id)) {
+
+        careatorChat.find({ "group_id": group_id }).toArray(function (err, data) {
+            if (err) {
+                console.log("err: " + JSON.stringify(err));
+                response = {
+                    status: false,
+                    message: "Unsucessfully retrived data",
+                    data: err
+                };
+                res.status(400).send(responseData);
+            } else {
+                console.log("data.length: " + data.length);
+                console.log("data: " + JSON.stringify(data));
+                response = {
+                    status: true,
+                    message: "Sucessfully get",
+                    data: data
+                };
+                res.status(200).send(response);
+
+            }
+        })
+    }
+    else {
+        console.log("Epty value found");
+        response = {
+            status: false,
+            message: "empty value found"
+        };
+        res.status(400).send(response);
+    }
+}
 module.exports.groupText = function (req, res) {
     console.log("groupText-->");
     var date = new Date();
@@ -1163,6 +1202,8 @@ module.exports.groupText = function (req, res) {
         res.status(400).send(response);
     }
 }
+
+
 
 module.exports.careator_getUserById = function (req, res) {
     console.log("careator_getUserById-->");

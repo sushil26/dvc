@@ -1,4 +1,4 @@
-careatorApp.controller('createGroupCtrl', function ($scope, $rootScope, $filter, $window, careatorHttpFactory) {
+careatorApp.controller('createGroupCtrl', function ($scope, $state,careatorHttpFactory) {
     console.log("createGroupCtrl==>");
 
     $scope.names = ['Chat', 'Video'];

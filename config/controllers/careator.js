@@ -42,7 +42,7 @@ module.exports.RemoteJoinCheck = function (req, res) {
             "password": password
         }
         console.log("obj: " + JSON.stringify(obj));
-        careatorMaster.find({"sessionURL": url,"invite": {$elemMatch: {"remoteEmailId": remote_careatorEmail,"password": password} }}).toArray(function (err, findData) {
+        careatorMaster.find({ "sessionURL": url, "invite": { $elemMatch: { "remoteEmailId": remote_careatorEmail, "password": password } } }).toArray(function (err, findData) {
             console.log("findData: " + JSON.stringify(findData));
             console.log("findData.length: " + findData.length);
             if (err) {
@@ -78,7 +78,7 @@ module.exports.RemoteJoinCheck = function (req, res) {
 
 module.exports.pswdCheck = function (req, res) {
     console.log("pswdCheck-->");
-    console.log("req.body.password: " + req.body.password+" req.body.careatorEmail: "+req.body.careatorEmail);
+    console.log("req.body.password: " + req.body.password + " req.body.careatorEmail: " + req.body.careatorEmail);
     var password = req.body.password;
     var careatorEmail = req.body.careatorEmail;
     if (general.emptyCheck(password) && general.emptyCheck(careatorEmail)) {
@@ -201,40 +201,42 @@ module.exports.setCollection = function (req, res) {
     }
     console.log("obj: " + JSON.stringify(obj));
 
-    careatorMaster.update({"email": req.body.email}, { $set: { 
-        "sessionURL": req.body.url, "invite": [],"session_dateTime": new Date()}
-        }, function (err, urlUpdate) {
-            if (err) {
-                console.log("err: " + JSON.stringify(err));
-                responseData = {
-                    status: false,
-                    message: "Unsuccessfull, go back and refresh then start session"
-                };
-                res.status(400).send(responseData);
-            } else {
-                chatHistory.insertOne(obj, function (err, data) {
-                    if (err) {
-                        console.log("err: " + JSON.stringify(err));
-                        responseData = {
-                            status: false,
-                            message: "UnSuccessfully"
-                        };
-                        res.status(400).send(responseData);
-                    } else {
-                        console.log("data: " + JSON.stringify(data));
-                        var obj = {
-                            "url": req.body.url
-                        }
-                        responseData = {
-                            status: true,
-                            message: "Successfully",
-                            data: obj
-                        };
-                        res.status(200).send(responseData);
+    careatorMaster.update({ "email": req.body.email }, {
+        $set: {
+            "sessionURL": req.body.url, "invite": [], "session_dateTime": new Date()
+        }
+    }, function (err, urlUpdate) {
+        if (err) {
+            console.log("err: " + JSON.stringify(err));
+            responseData = {
+                status: false,
+                message: "Unsuccessfull, go back and refresh then start session"
+            };
+            res.status(400).send(responseData);
+        } else {
+            chatHistory.insertOne(obj, function (err, data) {
+                if (err) {
+                    console.log("err: " + JSON.stringify(err));
+                    responseData = {
+                        status: false,
+                        message: "UnSuccessfully"
+                    };
+                    res.status(400).send(responseData);
+                } else {
+                    console.log("data: " + JSON.stringify(data));
+                    var obj = {
+                        "url": req.body.url
                     }
-                })
-            }
-        })
+                    responseData = {
+                        status: true,
+                        message: "Successfully",
+                        data: obj
+                    };
+                    res.status(200).send(responseData);
+                }
+            })
+        }
+    })
 
 
 
@@ -716,12 +718,12 @@ module.exports.pswdGenerate = function (req, res) {
                 "password": password,
                 "invite": []
             }
-            console.log("obj: "+JSON.stringify(obj));
+            console.log("obj: " + JSON.stringify(obj));
             careatorMaster.find({ "email": email }).toArray(function (err, findData) {
-                console.log("findData: "+JSON.stringify(findData));
+                console.log("findData: " + JSON.stringify(findData));
                 if (findData.length > 0) {
                     careatorMaster.update({ "_id": ObjectId(findData[0]._id), "status": "active" }, { $set: { "password": password, "invite": [] } }, function (err, data) {
-                        console.log("data: "+JSON.stringify(data));
+                        console.log("data: " + JSON.stringify(data));
                         if (err) {
                             responseData = {
                                 status: true,
@@ -1051,9 +1053,6 @@ module.exports.groupText = function (req, res) {
     var obj = {
         "group_id": req.body.group_id,
         "groupName": req.body.groupName,
-        "senderId": req.body.senderId,
-        "senderName": req.body.senderName,
-        "message": req.body.typedMessage,
         "chats": [{
             "senderId": req.body.senderId,
             "senderName": req.body.senderName,

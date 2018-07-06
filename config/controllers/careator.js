@@ -1038,7 +1038,7 @@ module.exports.groupText = function (req, res) {
     }
     console.log("obj : " + JSON.stringify(obj));
     if (general.emptyCheck(req.body.group_id)) {
-        careatorChat.find({ "group_id": obj.groupId, "groupName": obj.groupName }).toArray(function (err, data) {
+        careatorChat.find({ "group_id": obj.group_id, "groupName": obj.groupName }).toArray(function (err, data) {
             if (err) {
                 console.log("err: " + JSON.stringify(err));
                 response = {
@@ -1061,25 +1061,25 @@ module.exports.groupText = function (req, res) {
                         "timeStamp": date
                     }
                     console.log("obj : " + JSON.stringify(obj));
-                    // careatorChat.insert(obj, function (err, insertedData) {
-                    //     if (err) {
-                    //         console.log("err: " + JSON.stringify(err));
-                    //         response = {
-                    //             status: fasle,
-                    //             message: "Unsucessfully retrived data",
-                    //             data: err
-                    //         };
-                    //         res.status(400).send(responseData);
-                    //     }
-                    //     else {
-                    //         response = {
-                    //             status: true,
-                    //             message: "Sucessfully sent",
-                    //             data: insertedData
-                    //         };
-                    //         res.status(200).send(response);
-                    //     }
-                    // })
+                    careatorChat.insert(obj, function (err, insertedData) {
+                        if (err) {
+                            console.log("err: " + JSON.stringify(err));
+                            response = {
+                                status: fasle,
+                                message: "Unsucessfully retrived data",
+                                data: err
+                            };
+                            res.status(400).send(responseData);
+                        }
+                        else {
+                            response = {
+                                status: true,
+                                message: "Sucessfully sent",
+                                data: insertedData
+                            };
+                            res.status(200).send(response);
+                        }
+                    })
                 }
                 else {
                     var obj = {
@@ -1093,28 +1093,28 @@ module.exports.groupText = function (req, res) {
                         "_id": data[0]._id
                     }
                     console.log("findObj: " + JSON.stringify(findObj));
-                    // careatorChat.update(findObj, { "$push": { "chats": obj } }, function (err, updatedData) {
-                    //     if (err) {
-                    //         console.log("err: " + JSON.stringify(err));
-                    //         response = {
-                    //             status: fasle,
-                    //             message: "Unsucessfully updated data",
-                    //             data: err
-                    //         };
-                    //         res.status(400).send(responseData);
-                    //     }
-                    //     else {
-                    //         console.log("updatedData: " + JSON.stringify(updatedData));
-                    //         var io = req.app.get('socketio');
-                    //         io.emit('comm_textReceived', { "id": data[0]._id, "senderId": obj.senderId, "senderName": obj.senderName, "message": obj.message, "sendTime": obj.sendTime }); /* ### Note: Emit message to client ### */
-                    //         response = {
-                    //             status: true,
-                    //             message: "Sucessfully updated",
-                    //             data: updatedData
-                    //         };
-                    //         res.status(200).send(response);
-                    //     }
-                    // })
+                    careatorChat.update(findObj, { "$push": { "chats": obj } }, function (err, updatedData) {
+                        if (err) {
+                            console.log("err: " + JSON.stringify(err));
+                            response = {
+                                status: fasle,
+                                message: "Unsucessfully updated data",
+                                data: err
+                            };
+                            res.status(400).send(responseData);
+                        }
+                        else {
+                            console.log("updatedData: " + JSON.stringify(updatedData));
+                            var io = req.app.get('socketio');
+                            io.emit('comm_textReceived', { "id": data[0]._id, "senderId": obj.senderId, "senderName": obj.senderName, "message": obj.message, "sendTime": obj.sendTime }); /* ### Note: Emit message to client ### */
+                            response = {
+                                status: true,
+                                message: "Sucessfully updated",
+                                data: updatedData
+                            };
+                            res.status(200).send(response);
+                        }
+                    })
                 }
             }
         })

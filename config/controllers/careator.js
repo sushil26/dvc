@@ -1412,3 +1412,47 @@ module.exports.userDeleteById = function (req, res) {
     }
 
 }
+module.exports.groupDeleteById = function (req, res) {
+    console.log("groupDeleteById-->");
+    var response;
+    var id = req.params.id;
+    console.log("id: " + id);
+    if (general.emptyCheck(id)) {
+        var queryId = {
+            "_id": ObjectId(id)
+        }
+        console.log("queryId: " + JSON.stringify(queryId));
+        careatorMaster.deleteOne(queryId),
+            function (err, updatedData) {
+                if (err) {
+                    console.log("err: " + JSON.stringify(err));
+                    response = {
+                        status: false,
+                        message: "Delete fail",
+                        data: err
+                    };
+                    res.status(400).send(response);
+                } else {
+                    console.log("updatedData: " + JSON.stringify(updatedData));
+                    response = {
+                        status: true,
+                        message: "Delete sucessfully",
+                        data: updatedData
+                    };
+                    res.status(200).send(response);
+                }
+            }
+    } else {
+        console.log("Empty value found");
+        var obj = {
+            "id": id
+        }
+        response = {
+            status: false,
+            message: "empty value found",
+            data: obj
+        };
+        res.status(400).send(response);
+    }
+
+}

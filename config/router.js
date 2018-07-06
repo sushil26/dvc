@@ -28,10 +28,11 @@ module.exports = function (app) {
 
 
     app.get('/careator_userDelete/userDeleteById/:id', careator.userDeleteById);
+    app.get('/careator_groupDelete/groupDeleteById/:id', careator.groupDeleteById);
 
 
     app.post('/careator/userEditById/:id', careator.userEditById);
-    // app.post('/careator/groupEditById', careator.groupEditById);
+    app.post('/careator/groupEditById/:id', careator.groupEditById);
 
 
     app.get('/careator_getUser/careator_getUserById/:id', careator.careator_getUserById);

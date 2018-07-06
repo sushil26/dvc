@@ -51,9 +51,9 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                 $scope.receiverData.receiverName = $scope.individualData.senderName;
             }
         }
-       else if ($scope.selectedType == 'group') {
+        else if ($scope.selectedType == 'group') {
             $scope.sendGroupText_withData = {
-                "groupId": $scope.individualData._id,
+                "group_id": $scope.individualData.group_id,
                 "groupName": $scope.individualData.groupName,
                 "senderId": userData.userId,
                 "senderName": userData.userName
@@ -61,6 +61,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
             console.log("sendGroupText_withData-->: " + JSON.stringify($scope.sendGroupText_withData));
         }
         console.log("   $scope.receiverData : " + JSON.stringify($scope.receiverData));
+        console.log("sendGroupText_withData-->: " + JSON.stringify($scope.sendGroupText_withData));
     }
 
     $scope.chatDetailsFromNew = function (type, index) {
@@ -71,11 +72,22 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         $scope.allChat = $scope.allGroupAndIndividual[index];
         $scope.individualData = $scope.allGroupAndIndividual[index];
         console.log(" $scope.individualData : " + JSON.stringify($scope.individualData));
-        $scope.receiverData = {
-            "senderId": userData.userId,
-            "senderName": userData.userName,
-            "receiverId": $scope.individualData._id,
-            "receiverName": $scope.individualData.name
+        if ($scope.selectedType == "individual_chats") {
+            $scope.receiverData = {
+                "senderId": userData.userId,
+                "senderName": userData.userName,
+                "receiverId": $scope.individualData._id,
+                "receiverName": $scope.individualData.name
+            }
+        }
+        else if ($scope.selectedType == 'group') {
+            $scope.sendGroupText_withData = {
+                "group_id": $scope.individualData._id,
+                "groupName": $scope.individualData.groupName,
+                "senderId": userData.userId,
+                "senderName": userData.userName
+            }
+            console.log("sendGroupText_withData-->: " + JSON.stringify($scope.sendGroupText_withData));
         }
         console.log("   $scope.receiverData : " + JSON.stringify($scope.receiverData));
 
@@ -135,7 +147,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
             console.log("obj: " + JSON.stringify(obj));
         } else if ($scope.selectedType == 'group') {
             obj = {
-                "groupId": $scope.sendGroupText_withData.groupId,
+                "group_id": $scope.sendGroupText_withData.group_id,
                 "groupName": $scope.sendGroupText_withData.groupName,
                 "senderId": userData.userId,
                 "senderName": userData.userName,
@@ -200,9 +212,10 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                 console.log("allChatRecords: " + JSON.stringify($scope.allChatRecords));
                 console.log(data.data.message);
                 $scope.chatedGroup_records = $scope.allChatRecords; /* ### Note: $scope.chatedGroup_records is Chat(chated records) and group(group records) records storage  ### */
-                for (var x = 0; x < $scope.allGroup.length; x++) {
-                    $scope.chatedGroup_records.push($scope.allGroup[x]);
-                }
+                // for (var x = 0; x < $scope.allGroup.length; x++) {
+
+                //     $scope.chatedGroup_records.push($scope.allGroup[x]);
+                // }
 
             } else {
                 console.log("Sorry");

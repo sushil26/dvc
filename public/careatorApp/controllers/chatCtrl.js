@@ -30,12 +30,12 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
 
     $scope.chatDetails = function (type, index) {
         console.log("chatDetails-->");
-        // if (screen.width < 768){
+        // if (screen.width < 768) {
 
-        //      $('.side-one').css({"opacity": 0});
-        //      $('.conversation').css({"position": "absolute","top":0,"width":"100%"});
+        //     $('.side-one').css({ "opacity": "0" });
+        //     $('.conversation').css({ "position": "absolute", "top": "0", "width": "100%" });
 
-        //     }
+        // }
         $scope.selectedType = type;
         console.log("  $scope.selectedType: " + $scope.selectedType);
         $scope.allChat = $scope.allChatRecords[index];
@@ -72,12 +72,8 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
     }
 
     $scope.chatDetailsFromNew = function (type, index) {
-        $("#backkjkj").click();
-        if (screen.width < 768){
-            
-            }
-
         console.log("chatDetailsFromNew-->");
+         $("#backkjkj").click();
         $scope.selectedType = type;
         console.log("  $scope.selectedType: " + $scope.selectedType);
         console.log(" $scope.allGroupAndIndividual[index]: " + JSON.stringify($scope.allGroupAndIndividual[index]));
@@ -209,7 +205,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                     console.log(data.data.message);
                 }
             })
-        
+
         }
         else {
             var sId = userData.userId;
@@ -261,7 +257,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         console.log("****comm_textReceived-->: " + JSON.stringify(data));;
         console.log("$scope.individualData._id: " + $scope.individualData._id);
         console.log(" data.id: " + data.id);
-        if($scope.selectedType=='group'){
+        if ($scope.selectedType == 'group') {
             if ($scope.allChat._id == data.id) {
                 console.log("start pushing message");
                 $scope.allChat.chats.push({
@@ -273,7 +269,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                 $scope.scrollDown();
             }
         }
-       
+
 
         if ($scope.individualData._id == data.id) {
             console.log("start pushing message");

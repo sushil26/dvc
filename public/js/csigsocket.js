@@ -141,7 +141,7 @@ function sendEmail() {
 
 function checkPassword() {
   console.log("checkPassword-->");
-  var password = document.getElementById("P_pswd").value;
+  var password = document.getElementById("ppswd").value;
   var careatorEmail = localStorage.getItem("careatorEmail");
   var obj = {
     "password": password,

@@ -43,6 +43,7 @@ app.set('socketio', io);
 var chatHistory;
 // server.timeout = 9999999999;
 mongoConfig.connectToServer(function (err) {
+    console.log("mongo connected -->");
     require('./config/router')(app);
     var db = mongoConfig.getDb();
     console.log("db: " + db);
@@ -361,6 +362,7 @@ io.sockets.on('connection', function (socket) {
                 'textTime': date
             }
             console.log("obj: " + JSON.stringify(obj));
+            console.log("chatHistory: "+JSON.stringify(chatHistory));
             chatHistory.update(queryObj, { $push: { "chat": obj } }, function (err, data) {
                 if (err) {
                     console.log("errr: " + JSON.stringify(err));

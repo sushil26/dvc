@@ -61,6 +61,8 @@ careatorApp.controller('userRestrictionCtrl', function ($scope, $state, $rootSco
         console.log("<--rightEmployeeList");
     }
 
+    $scope.rightEmployeeList();
+
     $scope.groupAdminSettings = {
         selectionLimit: 1,
         externalIdProp: '',

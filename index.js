@@ -157,7 +157,7 @@ var sessionHeaderId = null;
  * the peer connection and will be streaming audio/video between eachother.
  */
 io.sockets.on('connection', function (socket) {
-
+  
     console.log("connection started-->");
     //console.log("connection: socket: " + socket);
     // console.log("userName: "+userName);

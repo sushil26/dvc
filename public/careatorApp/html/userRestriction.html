@@ -22,7 +22,7 @@
                             <div class="form-group" ng-if="allUserModel.length>0">
                                 <label class="col-lg-3">Chat To*</label>
                                 <div class="col-lg-9" ng-init="authorizedFor()">
-                                    <div ng-dropdown-multiselect="" options="authorizedUserData" selected-model="authorizedUserModel"  extra-settings="authorizedUserSettings"></div>
+                                    <div ng-dropdown-multiselect="" options="authorizedUserData" selected-model="authorizedUserModel"  checkboxes="true" extra-settings="authorizedUserSettings"></div>
                                     <pre>Selected Memebers : <span ng-repeat="user in authorizedUserModel">{{user.label+", "}}</span></pre>
                                 </div>
                             </div>

@@ -116,6 +116,7 @@ careatorApp.controller('editGroupCtrl', function ($scope, $state, $rootScope, $f
                 "userId": $scope.groupMemberModel[x].userId
             })
         }
+        obj.memebers = groupMembers;
         console.log("groupMembers: " + JSON.stringify(groupMembers));
         var groupAdmin = [];
         console.log("$scope.groupAdminModel: "+JSON.stringify($scope.groupAdminModel));
@@ -126,9 +127,9 @@ careatorApp.controller('editGroupCtrl', function ($scope, $state, $rootScope, $f
                 "userId": $scope.groupAdminModel[x].userId
             })
         }
-
-        console.log("groupAdmin: " + JSON.stringify(groupAdmin));
-        console.log("groupMembers: " + JSON.stringify(groupMembers));
+        obj.admin = groupAdmin;
+        console.log("obj: " + JSON.stringify(obj));
+      
         // careatorHttpFactory.post(api, obj).then(function (data) {
         //     console.log("data--" + JSON.stringify(data.data));
         //     var checkStatus = careatorHttpFactory.dataValidation(data);

@@ -365,9 +365,21 @@ io.sockets.on('connection', function (socket) {
             chatHistory.update(queryObj, { $push: { "chat": obj } }, function (err, data) {
                 if (err) {
                     console.log("errr: " + JSON.stringify(err));
+                    responseData = {
+                        status: false,
+                        message: "Unsuccessfull",
+                        data: err
+                    };
+                    res.status(400).send(responseData);
                 }
                 else {
                     console.log("data: " + JSON.stringify(data));
+                    responseData = {
+                        status: true,
+                        message: "Successfull",
+                        data: data
+                    };
+                    res.status(200).send(responseData);
                 }
             })
             io.sockets.emit('newTextMsg', { 'message': data.message, 'userId': data.userId, 'queryId': peerWithQueryId[data.userId], 'time': peerWithTimeId[data.userId], 'userName': data.userName });

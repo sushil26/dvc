@@ -1541,10 +1541,10 @@ module.exports.groupUpdateById = function (req, res) {
         if (req.body.groupName) {
             objUpdate.groupName = req.body.groupName;
         }
-        if (req.body.memebers) {
+        if (req.body.memebers.lenth>0) {
             objUpdate.groupMembers = req.body.memebers;
         }
-        if (req.body.admin) {
+        if (req.body.admin.length>0) {
             objUpdate.admin = req.body.admin;
         }
 

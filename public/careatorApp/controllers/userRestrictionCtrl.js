@@ -66,6 +66,7 @@ careatorApp.controller('userRestrictionCtrl', function ($scope, $state, $rootSco
                 "id": $scope.allUserData[x]._id
             });
         }
+        console.log("authorizedUserData: "+JSON.stringify( $scope.authorizedUserData));
     }
 
 

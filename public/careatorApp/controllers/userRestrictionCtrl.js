@@ -60,6 +60,7 @@ careatorApp.controller('userRestrictionCtrl', function ($scope, $state, $rootSco
         $scope.authorizedUserData = [];
         $scope.authorizedUserModel = [];
         console.log(" $scope.allUserData.length: "+ $scope.allUserData.length);
+        console.log(" $scope.allUserData: "+ JSON.stringify($scope.allUserData));
         for (var x = 0; x < $scope.allUserData.length; x++) {
             console.log("start to gather data");
             if($scope.allUserModel[0].id!=$scope.allUserData[x].id){

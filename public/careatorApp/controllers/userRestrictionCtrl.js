@@ -80,4 +80,11 @@ careatorApp.controller('userRestrictionCtrl', function ($scope, $state, $rootSco
         console.log("authorizedUserData: " + JSON.stringify($scope.authorizedUserData));
     }
 
+    $scope.restrictUpdate = function(){
+        console.log("restrictUpdate-->");
+        console.log("allUserModel: "+JSON.stringify(allUserModel));
+        console.log("allUserModel[0].id: "+JallUserModel[0].id);
+        console.log("authorizedUserModel: "+JSON.stringify(authorizedUserModel));
+    }
+
 })

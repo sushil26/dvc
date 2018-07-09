@@ -82,8 +82,35 @@ careatorApp.controller('userRestrictionCtrl', function ($scope, $state, $rootSco
     $scope.restrictUpdate = function () {
         console.log("restrictUpdate-->");
         console.log("allUserModel: " + JSON.stringify($scope.allUserModel));
+        var id = $scope.allUserModel[0].id;
         console.log("allUserModel[0].id: " + $scope.allUserModel[0].id);
         console.log("authorizedUserModel: " + JSON.stringify($scope.authorizedUserModel));
+        var restrictedTo = [];
+        for (var x = 0; x < $scope.authorizedUserModel.length; x++) {
+            restrictedTo.push({
+                "email": $scope.authorizedUserModel[x].email,
+                "label": $scope.authorizedUserModel[x].label,
+                "userId": $scope.authorizedUserModel[x].id
+            });
+        }
+        console.log("restrictedTo: " + JSON.stringify($scope.restrictedTo));
+        var api = "https://norecruits.com/careator_restrictedTo/restrictedTo/" + id;
+        console.log("api: " + api);
+        var obj = {
+            "restrictedTo": restrictedTo
+        }
+        careatorHttpFactory.post(api, obj).then(function (data) {
+            console.log("data--" + JSON.stringify(data.data));
+            var checkStatus = careatorHttpFactory.dataValidation(data);
+            console.log("data--" + JSON.stringify(data.data));
+            if (checkStatus) {
+                console.log(data.data.message);
+                $state.go("Cdashboard.groupListCtrl")
+            }
+            else {
+                console.log("Sorry: " + data.data.message);
+            }
+        })
     }
 
 })

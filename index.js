@@ -339,8 +339,8 @@ io.sockets.on('connection', function (socket) {
     /* ##### Start Gether text message  #### */
     socket.on('textMsg', function (data) {
         console.log("textMsg-->");
-        var db = mongoConfig.getDb();
-        console.log("db: " + db);
+        // var db = mongoConfig.getDb();
+        // console.log("db: " + db);
         chatHistory = db.collection("chatHistory");
         // //Send message to everyone
         console.log("peerWithQueryId[data.userId]: " + peerWithQueryId[data.userId]);
@@ -362,26 +362,26 @@ io.sockets.on('connection', function (socket) {
             }
             console.log("obj: " + JSON.stringify(obj));
             console.log("chatHistory: " + JSON.stringify(chatHistory));
-            chatHistory.update(queryObj, { $push: { "chat": obj } }, function (err, data) {
-                if (err) {
-                    console.log("errr: " + JSON.stringify(err));
-                    responseData = {
-                        status: false,
-                        message: "Unsuccessfull",
-                        data: err
-                    };
-                    res.status(400).send(responseData);
-                }
-                else {
-                    console.log("data: " + JSON.stringify(data));
-                    responseData = {
-                        status: true,
-                        message: "Successfull",
-                        data: data
-                    };
-                    res.status(200).send(responseData);
-                }
-            })
+            // chatHistory.update(queryObj, { $push: { "chat": obj } }, function (err, data) {
+            //     if (err) {
+            //         console.log("errr: " + JSON.stringify(err));
+            //         responseData = {
+            //             status: false,
+            //             message: "Unsuccessfull",
+            //             data: err
+            //         };
+            //         res.status(400).send(responseData);
+            //     }
+            //     else {
+            //         console.log("data: " + JSON.stringify(data));
+            //         responseData = {
+            //             status: true,
+            //             message: "Successfull",
+            //             data: data
+            //         };
+            //         res.status(200).send(responseData);
+            //     }
+            // })
             io.sockets.emit('newTextMsg', { 'message': data.message, 'userId': data.userId, 'queryId': peerWithQueryId[data.userId], 'time': peerWithTimeId[data.userId], 'userName': data.userName });
 
             // io.sockets.emit('userDetail', {'userId': data.userId,'userName': data.userName });

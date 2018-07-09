@@ -45,9 +45,6 @@ var chatHistory;
 mongoConfig.connectToServer(function (err) {
     console.log("mongo connected -->");
     require('./config/router')(app);
-    var db = mongoConfig.getDb();
-    console.log("db: " + db);
-    chatHistory = db.collection("chatHistory");
 })
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/node_modules'));
@@ -213,11 +210,11 @@ io.sockets.on('connection', function (socket) {
         delete channels[channel][data.deleteSessionId];
         console.log("sockets[data.deleteSessionId]: " + sockets[data.deleteSessionId]);
 
-        
+
 
         //}
 
-       
+
         console.log("<--disconnectSession");
     })
 
@@ -342,7 +339,9 @@ io.sockets.on('connection', function (socket) {
     /* ##### Start Gether text message  #### */
     socket.on('textMsg', function (data) {
         console.log("textMsg-->");
-
+        var db = mongoConfig.getDb();
+        console.log("db: " + db);
+        chatHistory = db.collection("chatHistory");
         // //Send message to everyone
         console.log("peerWithQueryId[data.userId]: " + peerWithQueryId[data.userId]);
 
@@ -362,7 +361,7 @@ io.sockets.on('connection', function (socket) {
                 'textTime': date
             }
             console.log("obj: " + JSON.stringify(obj));
-            console.log("chatHistory: "+JSON.stringify(chatHistory));
+            console.log("chatHistory: " + JSON.stringify(chatHistory));
             chatHistory.update(queryObj, { $push: { "chat": obj } }, function (err, data) {
                 if (err) {
                     console.log("errr: " + JSON.stringify(err));

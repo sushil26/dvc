@@ -66,7 +66,7 @@ careatorApp.controller('userRestrictionCtrl', function ($scope, $state, $rootSco
                 $scope.authorizedUserData.push({
                     "email": $scope.allUserData[x].email,
                     "label": $scope.allUserData[x].name + " - " + $scope.allUserData[x].empId,
-                    "id": $scope.allUserData[x]._id
+                    "id": $scope.allUserData[x].id
                 });
             }
            

@@ -1,4 +1,4 @@
-careatorApp.controller('editGroupCtrl', function ($scope, $state, $rootScope, $filter, $window, careatorHttpFactory) {
+careatorApp.controller('userRestrictionCtrl', function ($scope, $state, $rootScope, $filter, $window, careatorHttpFactory) {
     console.log("editGroupCtrl==>");
     console.log("id: " + $state.params.id);
     var id = $state.params.id;

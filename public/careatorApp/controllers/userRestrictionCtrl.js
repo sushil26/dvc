@@ -3,46 +3,16 @@ careatorApp.controller('userRestrictionCtrl', function ($scope, $state, $rootSco
     console.log("id: " + $state.params.id);
     var id = $state.params.id;
     $scope.selectedMembers = []; /* ### $scope.selectedMembers contains groupmembers  ### */
-    $scope.getGroup = function () {
-        console.log("getGroup-->");
-        var api = "https://norecruits.com/careator_getGroup/careator_getGroupById/" + id;
-        console.log("api: " + api);
-        careatorHttpFactory.get(api).then(function (data) {
-            console.log("data--" + JSON.stringify(data.data));
-            var checkStatus = careatorHttpFactory.dataValidation(data);
-            if (checkStatus) {
-                $scope.userData = data.data.data[0];
-                console.log("userData: " + JSON.stringify($scope.userData));
-                console.log(data.data.message);
+   
 
-                for (var x = 0; x < $scope.userData.groupMembers.length; x++) {
-                    $scope.selectedMembers.push({
-                        "email": $scope.userData.groupMembers[x].email,
-                        "label": $scope.userData.groupMembers[x].name,
-                        "id": $scope.userData.groupMembers[x].userId
-                    })
-                }
-                $scope.selectedAdmin = $scope.userData.admin; /* ### $scope.selectedAdmin contains admin details  ### */
-                $scope.rightEmployeeList();
-
-
-            } else {
-                console.log("Sorry");
-                console.log(data.data.message);
-            }
-        })
-        console.log("<--getAllEmployee");
-    }
-    $scope.getGroup();
-
-    $scope.groupMemberSettings = {
+    $scope.memberSettings = {
         scrollableHeight: '200px',
         scrollable: true,
         enableSearch: true,
         externalIdProp: ''
     };
-    $scope.groupMemberData = [];
-    $scope.groupMemberModel = [];
+    $scope.memberData = [];
+    $scope.memberModel = [];
 
     $scope.rightEmployeeList = function () {
 
@@ -55,25 +25,25 @@ careatorApp.controller('userRestrictionCtrl', function ($scope, $state, $rootSco
             var checkStatus = careatorHttpFactory.dataValidation(data);
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
-                var groupMembers = data.data.data;
-                console.log("groupMembers: " + JSON.stringify(groupMembers));
-                $scope.groupMemberData = [];
+                var members = data.data.data;
+                console.log("members: " + JSON.stringify(members));
+                $scope.memberData = [];
                 for (var x = 0; x < groupMembers.length; x++) {
-                    console.log(" before $scope.groupMemberData: " + JSON.stringify($scope.groupMemberData));
-                    console.log("groupMembers[x].email: " + groupMembers[x].email + " groupMembers[x]._id: " + groupMembers[x]._id);
-                    $scope.groupMemberData.push({
-                        "email": groupMembers[x].email,
-                        "label": groupMembers[x].name + " - " + groupMembers[x].empId,
-                        "id": groupMembers[x]._id
+                    console.log(" before $scope.memberData: " + JSON.stringify($scope.memberData));
+                    console.log("members[x].email: " + members[x].email + " members[x]._id: " + members[x]._id);
+                    $scope.memberData.push({
+                        "email": members[x].email,
+                        "label": members[x].name + " - " + members[x].empId,
+                        "id": members[x]._id
                     });
-                    for (var y = 0; y < $scope.selectedMembers.length; y++) {
+                    for (var y = 0; y < $scope.members.length; y++) {
                         console.log("y iteration-->");
-                        if ($scope.selectedMembers[y].id == $scope.groupMemberData[x].id) {
-                            $scope.groupMemberModel.push($scope.groupMemberData[x]);
+                        if ($scope.selectedMembers[y].id == $scope.memberData[x].id) {
+                            $scope.memberModel.push($scope.memberData[x]);
                         }
                     }
                 }
-                $scope.groupAdminData = $scope.groupMemberModel;
+                $scope.groupAdminData = $scope.memberModel;
                 for (var x = 0; x < $scope.groupAdminData.length; x++) {
                     console.log("$scope.groupAdminData[x]: " + JSON.stringify($scope.groupAdminData[x]));
                     console.log("$scope.selectedAdmin: " + JSON.stringify($scope.selectedAdmin));

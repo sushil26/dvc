@@ -1528,18 +1528,12 @@ module.exports.groupDeleteById = function (req, res) {
     }
 
 }
-module.exports.careator_chat_creteGroup = function (req, res) {
+module.exports.groupUpdateById = function (req, res) {
     console.log("groupUpdateById-->");
     var response;
-    var id = req.body.id;
+    var id = req.params.id;
 
     if (general.emptyCheck(id)) {
-        var insertObj = {
-            "groupName": groupName,
-            "groupMembers": groupMembers,
-            "admin": admin,
-            "status": "active"
-        }
         var objFind = {
             "_id": id
         }

@@ -1528,7 +1528,7 @@ module.exports.groupDeleteById = function (req, res) {
     }
 
 }
-module.exports.careator_chat_creteGroup = function (req, res) {
+module.exports.groupUpdateById = function (req, res) {
     console.log("groupUpdateById-->");
     var response;
     var id = req.body.id;

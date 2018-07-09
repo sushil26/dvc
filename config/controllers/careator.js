@@ -469,7 +469,6 @@ module.exports.careator_getChatRightsEmp = function (req, res) {
 }
 /* ##### End: Get careator all employee include status inactive  #### */
 
-
 /////////////////Group Status Change////////////////////////////
 module.exports.groupStatusChangeById = function (req, res) {
     console.log("groupStatusChangeById-->");

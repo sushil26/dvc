@@ -51,6 +51,34 @@
 </head>
 
 <body>
+        <!-- <header class="header dark-bg">
+                <div class="toggle-nav">
+                    <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" style="border: 1px solid #428bca;
+                    padding-right: 5px;
+                    padding-left: 5px;
+                    padding-bottom: 2px;
+                    border-radius: 5px;" data-placement="bottom">
+                        <i style="display: none;" class="fa fa-bars" id="tog" ng-click="iconMenuClick()"></i>
+                        <i class="fa fa-times" id="fog" ng-click="iconMenuClick()"></i>
+                    </div>
+                </div>
+                <div class="top-nav notification-row">
+                    <ul class="nav pull-right top-menu">
+    
+                        <li class="dropdown">
+                            <span ng-if="hour <'12' && min<='59' && sec<='59' && hour >='0'" class="username" style="color: white;"> &nbspGood Morning&nbsp{{name}}</span>
+                            <span ng-if="hour >='12' && hour < '17'" class="username" style="color: white;"> Good Afternoon&nbsp{{name}}</span>
+                            <span ng-if="hour >='17' && min<='59' && sec<='59' && hour <='23'" class="username" style="color: white;">Good Evening&nbsp{{name}}</span>
+                            <br>
+                            <span class="username" style="color: white;">{{clock | date:' d MMM yyyy h:mm a'}}</span>
+                        </li>
+                    </ul>
+                </div>
+                <span>
+                    <img ng-click="homeClick()" style="float:left;width: 63px;margin-top: 5px" src="../home/img/fav.png" />
+                    <a ng-click="homeClick()" class="logo" style="font-weight: 500; letter-spacing: -2.3px;font-family: 'Allerta Stencil';">VC4ALL</a>
+                </span>
+            </header> -->
     <header id="chelam" style="background: -webkit-gradient(linear, left top, right top, from(#030b3c), to(#00bcd4f2));
     /* Safari 5.1, Chrome 10+ */
     background: -webkit-linear-gradient(left, #030b3c, #00bcd4f2);
@@ -212,7 +240,7 @@
                                             <h4 class="modal-title">Please enter password which you got from email</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <input type="password" class="form-control" placeholder="Enter your Password" id="P_pswd">
+                                            <input type="password" class="form-control" placeholder="Enter your Password" id="ppswd">
                                         </div>
                                         <div class="modal-footer" style="border-top:0px;background-color: #f5f5f5;">
                                             <button type="button" id="sub" onclick="checkPassword()" style="background-color: #29b6bd;color:#f1f1f1" class="btn">Submit</button>
@@ -471,7 +499,7 @@
             }
         });
 
-        $("#P_pswd").keyup(function (event) {
+        $("#ppswd").keyup(function (event) {
             if (event.keyCode === 13) {
                 $("#sub").click();
             }

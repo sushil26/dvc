@@ -45,9 +45,7 @@ careatorApp.controller('editGroupCtrl', function ($scope, $state, $rootScope, $f
     $scope.groupMemberModel = [];
 
     $scope.rightEmployeeList = function () {
-
         console.log("rightEmployeeList-->");
-
         var api = "https://norecruits.com/careator/getChatRights_emp";
         console.log("api: " + JSON.stringify(api));
         careatorHttpFactory.get(api).then(function (data) {
@@ -110,6 +108,7 @@ careatorApp.controller('editGroupCtrl', function ($scope, $state, $rootScope, $f
         console.log("groupName: " + $scope.grpname);
        
         var groupMembers = [];
+        console.log("$scope.groupMemberModel: "+JSON.stringify($scope.groupMemberModel));
         for (var x = 0; x < $scope.groupMemberModel.length; x++) {
             groupMembers.push({
                 "email": $scope.groupMemberModel[x].email,
@@ -117,8 +116,10 @@ careatorApp.controller('editGroupCtrl', function ($scope, $state, $rootScope, $f
                 "userId": $scope.groupMemberModel[x].userId
             })
         }
+        obj.memebers = groupMembers;
         console.log("groupMembers: " + JSON.stringify(groupMembers));
         var groupAdmin = [];
+        console.log("$scope.groupAdminModel: "+JSON.stringify($scope.groupAdminModel));
         for (var x = 0; x < $scope.groupAdminModel.length; x++) {
             groupMembers.push({
                 "email": $scope.groupAdminModel[x].email,
@@ -126,9 +127,9 @@ careatorApp.controller('editGroupCtrl', function ($scope, $state, $rootScope, $f
                 "userId": $scope.groupAdminModel[x].userId
             })
         }
-
-        console.log("groupAdmin: " + JSON.stringify(groupAdmin));
-        console.log("groupMembers: " + JSON.stringify(groupMembers));
+        obj.admin = groupAdmin;
+        console.log("obj: " + JSON.stringify(obj));
+      
         // careatorHttpFactory.post(api, obj).then(function (data) {
         //     console.log("data--" + JSON.stringify(data.data));
         //     var checkStatus = careatorHttpFactory.dataValidation(data);

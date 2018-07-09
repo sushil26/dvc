@@ -25,7 +25,7 @@ careatorApp.controller('userRestrictionCtrl', function ($scope, $state, $rootSco
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
                 allUsers = data.data.data;
-                $scope.authorizedFor();
+              
                 console.log("allUsers: " + JSON.stringify(allUsers));
                 $scope.allUserData = [];
                 for (var x = 0; x < allUsers.length; x++) {
@@ -43,6 +43,7 @@ careatorApp.controller('userRestrictionCtrl', function ($scope, $state, $rootSco
                         }
                     }
                 }
+                $scope.authorizedFor();
                 console.log(data.data.message);
             }
             else {
@@ -58,13 +59,17 @@ careatorApp.controller('userRestrictionCtrl', function ($scope, $state, $rootSco
         console.log("authorizedFor-->");
         $scope.authorizedUserData = [];
         $scope.authorizedUserModel = [];
+        console.log(" $scope.allUserData.length: "+ $scope.allUserData.length);
         for (var x = 0; x < $scope.allUserData.length; x++) {
             console.log("start to gather data");
-            $scope.authorizedUserData.push({
-                "email": $scope.allUserData[x].email,
-                "label": $scope.allUserData[x].name + " - " + $scope.allUserData[x].empId,
-                "id": $scope.allUserData[x]._id
-            });
+            if($scope.allUserModel[0].id!=$scope.allUserData[x].id){
+                $scope.authorizedUserData.push({
+                    "email": $scope.allUserData[x].email,
+                    "label": $scope.allUserData[x].name + " - " + $scope.allUserData[x].empId,
+                    "id": $scope.allUserData[x]._id
+                });
+            }
+           
         }
         console.log("authorizedUserData: "+JSON.stringify( $scope.authorizedUserData));
     }

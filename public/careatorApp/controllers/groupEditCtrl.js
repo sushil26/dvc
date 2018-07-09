@@ -110,7 +110,6 @@ careatorApp.controller('editGroupCtrl', function ($scope, $state, $rootScope, $f
         var groupMembers = [];
         console.log("$scope.groupMemberModel: " + JSON.stringify($scope.groupMemberModel));
         for (var x = 0; x < $scope.groupMemberModel.length; x++) {
-            console.log("splitName: " + JSON.stringify(splitName));
             groupMembers.push({
                 "email": $scope.groupMemberModel[x].email,
                 "name": $scope.groupMemberModel[x].label,

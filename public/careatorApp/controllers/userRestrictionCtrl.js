@@ -54,11 +54,18 @@ careatorApp.controller('userRestrictionCtrl', function ($scope, $state, $rootSco
     }
     $scope.rightEmployeeList();
 
+    $scope.authorizedUserModel = [];
+    $scope.authorizedUserSettings = {
+        scrollableHeight: '200px',
+        scrollable: true,
+        enableSearch: true,
+        externalIdProp: '',
+        selectionLimit: 5,
+    };
+
     $scope.authorizedFor = function () {
         console.log("authorizedFor-->");
         $scope.authorizedUserData = [];
-        $scope.authorizedUserModel = [];
-
         for (var x = 0; x < allUsers.length; x++) {
             console.log("start to gather data");
             if ($scope.allUserModel[0].id != allUsers[x]._id) {
@@ -72,10 +79,6 @@ careatorApp.controller('userRestrictionCtrl', function ($scope, $state, $rootSco
         }
         console.log("authorizedUserData: " + JSON.stringify($scope.authorizedUserData));
     }
-
-    $scope.authorizedUserSettings = {
-
-    };
 
 
 

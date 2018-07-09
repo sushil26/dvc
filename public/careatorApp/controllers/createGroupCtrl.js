@@ -11,7 +11,6 @@ careatorApp.controller('createGroupCtrl', function ($scope, $state,careatorHttpF
     $scope.groupMemberData = [];
 
     $scope.rightEmployeeList = function (value) {
-
         console.log("rightEmployeeList-->");
         console.log("value: " + value);
         var api;

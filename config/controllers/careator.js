@@ -667,7 +667,8 @@ module.exports.careator_chat_creteGroup = function (req, res) {
         var insertObj = {
             "groupName": groupName,
             "groupMembers": groupMembers,
-            "admin": admin
+            "admin": admin,
+            "status": "active"
         }
         careatorChatGroup.insert(insertObj, function (err, groupCreate) {
             if (err) {

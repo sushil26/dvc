@@ -363,14 +363,14 @@ io.sockets.on('connection', function (socket) {
             }
             console.log("obj: " + JSON.stringify(obj));
             console.log("chatHistory: "+JSON.stringify(chatHistory));
-            chatHistory.update(queryObj, { $push: { "chat": obj } }, function (err, data) {
-                if (err) {
-                    console.log("errr: " + JSON.stringify(err));
-                }
-                else {
-                    console.log("data: " + JSON.stringify(data));
-                }
-            })
+            // chatHistory.update(queryObj, { $push: { "chat": obj } }, function (err, data) {
+            //     if (err) {
+            //         console.log("errr: " + JSON.stringify(err));
+            //     }
+            //     else {
+            //         console.log("data: " + JSON.stringify(data));
+            //     }
+            // })
             io.sockets.emit('newTextMsg', { 'message': data.message, 'userId': data.userId, 'queryId': peerWithQueryId[data.userId], 'time': peerWithTimeId[data.userId], 'userName': data.userName });
 
             // io.sockets.emit('userDetail', {'userId': data.userId,'userName': data.userName });

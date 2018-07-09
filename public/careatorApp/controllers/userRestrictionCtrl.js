@@ -82,7 +82,7 @@ careatorApp.controller('userRestrictionCtrl', function ($scope, $state, $rootSco
     $scope.restrictUpdate = function () {
         console.log("restrictUpdate-->");
         console.log("allUserModel: " + JSON.stringify($scope.allUserModel));
-        console.log("allUserModel[0].id: " + JallUserModel[0].id);
+        console.log("allUserModel[0].id: " + $scope.allUserModel[0].id);
         console.log("authorizedUserModel: " + JSON.stringify($scope.authorizedUserModel));
     }
 

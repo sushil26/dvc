@@ -45,7 +45,9 @@ var chatHistory;
 mongoConfig.connectToServer(function (err) {
     console.log("mongo connected -->");
     require('./config/router')(app);
-   
+    var db = mongoConfig.getDb();
+    console.log("db: " + db);
+    chatHistory = db.collection("chatHistory");
 })
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/node_modules'));
@@ -155,7 +157,7 @@ var sessionHeaderId = null;
  * the peer connection and will be streaming audio/video between eachother.
  */
 io.sockets.on('connection', function (socket) {
-  
+
     console.log("connection started-->");
     //console.log("connection: socket: " + socket);
     // console.log("userName: "+userName);
@@ -340,10 +342,7 @@ io.sockets.on('connection', function (socket) {
     /* ##### Start Gether text message  #### */
     socket.on('textMsg', function (data) {
         console.log("textMsg-->");
-        var db = mongoConfig.getDb();
-        console.log("db: " + db);
-        chatHistory = db.collection("chatHistory");
-        console.log(" db.collection(chatHistory): "+ db.collection("chatHistory"));
+
         // //Send message to everyone
         console.log("peerWithQueryId[data.userId]: " + peerWithQueryId[data.userId]);
 
@@ -363,7 +362,7 @@ io.sockets.on('connection', function (socket) {
                 'textTime': date
             }
             console.log("obj: " + JSON.stringify(obj));
-            console.log("chatHistory: "+chatHistory);
+            console.log("chatHistory: "+JSON.stringify(chatHistory));
             chatHistory.update(queryObj, { $push: { "chat": obj } }, function (err, data) {
                 if (err) {
                     console.log("errr: " + JSON.stringify(err));

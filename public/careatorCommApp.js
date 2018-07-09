@@ -47,7 +47,16 @@ careatorApp.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: '/careatorApp/html/chat.html'
 
         })
+        .state('Cdashboard.video', {
+            url: careator_video(),
+            templateUrl: '/careatorApp/html/video.html'
+
+        })
 })
+function careator_video() {
+    return '/video';
+}
+
 function careator_dashboard() {
     return '/dashboard';
 }

@@ -3,10 +3,10 @@
         <section class="wrapper">
             <div id="profile">
                 <section class="panel">
-                    <div class="panel-heading">
+                    <!-- <div class="panel-heading">
                         <i class="fa fa-comment"></i>
                         <span style="color:white;">&nbspChat</span>
-                    </div>
+                    </div> -->
                     <link rel="stylesheet" href="./css/newChat.css" />
                     <div class="container app">
                         <div class="row app-one">
@@ -136,7 +136,8 @@
                                     <div class="col-sm-8 col-xs-7 heading-name">
                                         <a ng-if="selectedType=='group'" class="heading-name-meta">{{individualData.groupName}}
                                         </a>
-                                        <a ng-if="selectedType=='individual_chats' && (individualData.senderId==undefined && individualData.receiverId==undefined)" class="heading-name-meta">{{individualData.name}}
+                                        <a ng-if="selectedType=='individual_chats' && (individualData.senderId==undefined && individualData.receiverId==undefined)"
+                                            class="heading-name-meta">{{individualData.name}}
                                         </a>
                                         <a ng-if="selectedType=='individual_chats' && individualData.senderId!=userId" class="heading-name-meta">{{individualData.senderName}}
                                         </a>
@@ -147,8 +148,9 @@
                                     <!-- <div class="col-sm-1 col-xs-1  heading-dot pull-right">
                                         <i class="fa fa-ellipsis-v fa-2x  pull-right" aria-hidden="true"></i>
                                     </div> -->
-                                    <div class="col-sm-1 col-xs-1  heading-dot pull-right">
-                                        <input type="button" value="Go Back From Whence You Came!" onclick="history.back(-1)" />
+                                    <div class="col-sm-1 col-xs-1 pull-right" style="margin-top: 10px;margin-right: 20px;">
+                                        <i class="fa fa-home"></i>
+                                        <input type="button" value="Back" />
                                     </div>
                                 </div>
 

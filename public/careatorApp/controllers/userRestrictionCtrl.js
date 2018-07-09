@@ -3,7 +3,7 @@ careatorApp.controller('userRestrictionCtrl', function ($scope, $state, $rootSco
     console.log("id: " + $state.params.id);
     var id = $state.params.id;
     $scope.selectedMembers = []; /* ### $scope.selectedMembers contains groupmembers  ### */
-    var allUsers;
+    var allUsers = [];
 
     $scope.allUserSettings = {
         scrollableHeight: '200px',

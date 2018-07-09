@@ -59,7 +59,7 @@ careatorApp.config(function ($stateProvider, $urlRouterProvider) {
 })
 
 function careator_video() {
-    return '/video';
+    return '/videoChat';
 }
 
 function careator_dashboard() {

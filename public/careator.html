@@ -202,11 +202,7 @@
                 </span>
             </header> -->
     <header id="chelam" style="position: relative;background-image: linear-gradient(to bottom, #383c3f 0%, #202224 100%);
-    background-repeat: repeat-x;
-    min-height: 48px;
-    padding: 0 15px;
-    box-shadow: 1px 2px 5px #000;
-   ">
+    background-repeat: repeat-x;min-height: 48px;padding: 0 15px; box-shadow: 1px 2px 5px #000;">
 
         <div id="logo" class="pull-left">
             <span>
@@ -239,11 +235,21 @@
                     <div class="col-lg-12" style="margin-top: -80px;min-height: 100vh;">
                         <center>
                             <a id="videoConferenceUrl" style="display:none;">
-                                <button id="videoConfStart" style="margin-top: 50px;display:none; font-size: 20px;padding: 15px;" class=" fa fa-video-camera">&nbsp;Start
-                                </button>
-                                <button id="chatConfStart" style="margin-top: 50px;display:none; font-size: 20px;padding: 15px;" class=" fa fa-comments"
+                                <!-- <button id="videoConfStart" style="margin-top: 50px;display:none; font-size: 20px;padding: 15px;" class=" fa fa-video-camera">&nbsp;Start
+                                </button> -->
+                                <a class="button" id="videoConfStart" >
+                                    <span>
+                                        <i class="fa fa-video-camera"></i>Start
+                                    </span>
+                                </a>
+                                <a class="button" id="chatConfStart" onclick="chatNavigation()">
+                                    <span>
+                                        <i class="fa fa fa-comments"></i>Chat
+                                    </span>
+                                </a>
+                                <!-- <button id="chatConfStart" style="margin-top: 50px;display:none; font-size: 20px;padding: 15px;" class=" fa fa-comments"
                                     onclick="chatNavigation()">&nbsp;Chat
-                                </button>
+                                </button> -->
                             </a>
                             <a class="button" id="videoConferenceUrl">
                                 <span id="videoConfStart" >

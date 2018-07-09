@@ -1622,3 +1622,42 @@ module.exports.restrictedTo = function (req, res) {
     }
 
 }
+
+module.exports.getChatsById = function (req, res) {
+    console.log("getChatsById-->");
+    var id = req.params.id;
+    var response;
+    if (general.emptyCheck(id)) {
+        var findObj = {
+            "_id": ObjectId(id)
+        }
+        careatorChat.find(findObj).toArray(function (err, allChat) {
+            if (err) {
+                console.log("err: " + JSON.stringify(err));
+                response = {
+                    status: false,
+                    message: "Unsucessfully retrived data",
+                    data: err
+                };
+                res.status(400).send(responseData);
+            } else {
+                console.log("allChat: " + JSON.stringify(allChat));
+                response = {
+                    status: true,
+                    message: "Sucessfully retrived data",
+                    data: allChat[0]
+                };
+                res.status(200).send(response);
+            }
+        })
+    } else {
+        console.log("empty value found");
+        response = {
+            status: false,
+            message: "Empty value found",
+        }
+        res.status(400).send(response);
+    }
+
+}
+

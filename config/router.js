@@ -35,6 +35,7 @@ module.exports = function (app) {
     app.post('/careator/careator_chat_creteGroup', careator.careator_chat_creteGroup);
     app.post('/careator_groupUpdate/groupUpdateById/:id',careator.groupUpdateById);
     app.post('/careator_restrictedTo/restrictedTo/:id',careator.restrictedTo);
+    app.get('/careator_getChatsById/getChatsById/:id', careator.getChatsById);
     //app.post('/careator/careator_video_creteGroup', careator.careator_video_creteGroup);
     //app.post('/careator/careator_chatVideo_creteGroup', careator.careator_chatVideo_creteGroup);
     app.get('/careator_chatGroupList/careator_getChatGroupListById/:id', careator.careator_getChatGroupListById);

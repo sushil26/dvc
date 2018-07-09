@@ -28,7 +28,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         $scope.getChatGroupListById(localStorage.getItem("userId"));
     }
 
-    $scope.chatDetails = function (type, index) {
+    $scope.chatDetails = function (type, id) {
         console.log("chatDetails-->");
         if (screen.width < 768) {
 
@@ -38,10 +38,25 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         }
         $scope.selectedType = type;
         console.log("  $scope.selectedType: " + $scope.selectedType);
-        $scope.allChat = $scope.allChatRecords[index];
-        $scope.individualData = $scope.allChatRecords[index];
-        console.log(" $scope.allChatRecords[index]: " + JSON.stringify($scope.allChatRecords[index]));
-        console.log(" $scope.individualData : " + JSON.stringify($scope.individualData));
+
+        var api = "https://norecruits.com/careator_getChatsById/getChatsById/" + id;
+        console.log("api: " + api);
+        careatorHttpFactory.get(api).then(function (data) {
+            console.log("data--" + JSON.stringify(data.data));
+            var checkStatus = careatorHttpFactory.dataValidation(data);
+            if (checkStatus) {
+                $scope.allChat = data.data.data;
+                $scope.individualData = data.data.data;
+                console.log("$scope.allChat: " + JSON.stringify($scope.allChat));
+                console.log("$scope.individualData : " + JSON.stringify($scope.individualData));
+
+            } else {
+                console.log("Sorry");
+                console.log(data.data.message);
+            }
+        })
+
+
         if ($scope.selectedType == "individual_chats") {
             $scope.receiverData = {
                 "senderId": userData.userId,
@@ -73,7 +88,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
 
     $scope.chatDetailsFromNew = function (type, index) {
         console.log("chatDetailsFromNew-->");
-         $("#backkjkj").click();
+        $("#backkjkj").click();
         $scope.selectedType = type;
         console.log("  $scope.selectedType: " + $scope.selectedType);
         console.log(" $scope.allGroupAndIndividual[index]: " + JSON.stringify($scope.allGroupAndIndividual[index]));

@@ -1544,7 +1544,7 @@ module.exports.groupUpdateById = function (req, res) {
         if (req.body.memebers.lenth>0) {
             objUpdate.groupMembers = req.body.memebers;
         }
-        if (req.body.admin.length>0) {
+        if (req.body.admin>0) {
             objUpdate.admin = req.body.admin;
         }
 

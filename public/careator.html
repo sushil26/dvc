@@ -20,29 +20,7 @@
     <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
     <script src="/home/lib/jquery/jquery-migrate.min.js"></script>
     <script src="/js/studentMarkAtt_automation.js"></script>
-    <style>
-        .dark-bg {
-            color: #fff;
-            box-shadow: 1px 2px 5px #000;
-        }
 
-        .dark-bg {
-            background-image: linear-gradient(to bottom, #383c3f 0%, #202224 100%);
-            background-repeat: repeat-x;
-        }
-
-        .header {
-            position: fixed;
-            left: 0;
-            right: 0;
-            z-index: 1002;
-        }
-
-        .header {
-            min-height: 48px;
-            padding: 0 15px;
-        }
-    </style>
     <style>
         a {
             color: inherit;
@@ -104,19 +82,31 @@
                     <a ng-click="homeClick()" class="logo" style="font-weight: 500; letter-spacing: -2.3px;font-family: 'Allerta Stencil';">VC4ALL</a>
                 </span>
             </header> -->
-    <header class="header dark-bg" id="chelam" style="background-image: linear-gradient(to bottom, #383c3f 0%, #202224 100%);
+    <header id="chelam" style="background-image: linear-gradient(to bottom, #383c3f 0%, #202224 100%);
     background-repeat: repeat-x;
     padding: 20px 0;
     height: 60px;
     width: 105vw;">
-        <div class="container">
-            <div id="logo" class="pull-left" style="margin-top: -10px;">
-                <span>
-                    <img ng-click="homeClick()" style="float:left;width: 63px;margin-top: 5px" src="/home/img/fav.png" />
-                    <a ng-click="homeClick()" class="logo" style="font-weight: 500; letter-spacing: -2.3px;font-family: 'Allerta Stencil';">VC4ALL</a>
-                </span>
-            </div>
+
+        <div id="logo" class="pull-left" style="margin-top: -10px;">
+            <span>
+                <img style="float:left;width: 62px;
+                    margin-top: 0px;" src="/home/img/fav.png" />
+                <a href="/" id="mm" style="font-size: 33px;
+                      letter-spacing: -2.3px;
+                  font-weight: 500;
+                  font-family: 'Allerta Stencil';
+                  color: #a8cf44 !important;
+                  float: left;
+                  margin-top: -2px;
+                  text-transform: uppercase;">
+                    <span>
+                        <span id="vc">VC4ALL</span>
+                    </span>
+                </a>
+            </span>
         </div>
+
     </header>
     <!-- ### End header #### -->
 

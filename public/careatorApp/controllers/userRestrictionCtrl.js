@@ -58,8 +58,8 @@ careatorApp.controller('userRestrictionCtrl', function ($scope, $state, $rootSco
         console.log("authorizedFor-->");
         $scope.authorizedUserData = [];
         $scope.authorizedUserModel = [];
-       
-        for (var x = 0; x <allUsers.length; x++) {
+
+        for (var x = 0; x < allUsers.length; x++) {
             console.log("start to gather data");
             if ($scope.allUserModel[0].id != allUsers[x].id) {
                 $scope.authorizedUserData.push({
@@ -72,12 +72,6 @@ careatorApp.controller('userRestrictionCtrl', function ($scope, $state, $rootSco
         }
         console.log("authorizedUserData: " + JSON.stringify($scope.authorizedUserData));
     }
-
-    $scope.$watch($scope.allUserModel[0], function () {
-        console.log("$scope.allUserModel changes happene");
-        $scope.authorizedFor();
-    })
-
 
     $scope.authorizedUserSettings = {
         externalIdProp: '',

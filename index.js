@@ -351,18 +351,18 @@ io.sockets.on('connection', function (socket) {
             //console.log("timeLink: "+timeLink);
             console.log("peerWithQueryId: " + peerWithQueryId[data.userId]);
             console.log("peerWithQueryId: " + peerWithQueryId[data.userId]);
-            // var queryObj = {
-            //     "url": "https://norecruits.com/careator/" + peerWithQueryId[data.userId] + "/" + data.urlDate,
-            // }
-            // console.log("queryObj: " + JSON.stringify(queryObj));
-            // var obj = {
-            //     "email": data.email,
-            //     'message': data.message,
-            //     'userName': data.userName,
-            //     'textTime': date
-            // }
-            // console.log("obj: " + JSON.stringify(obj));
-            // console.log("chatHistory: "+JSON.stringify(chatHistory));
+            var queryObj = {
+                "url": "https://norecruits.com/careator/" + peerWithQueryId[data.userId] + "/" + data.urlDate,
+            }
+            console.log("queryObj: " + JSON.stringify(queryObj));
+            var obj = {
+                "email": data.email,
+                'message': data.message,
+                'userName': data.userName,
+                'textTime': date
+            }
+            console.log("obj: " + JSON.stringify(obj));
+            console.log("chatHistory: "+JSON.stringify(chatHistory));
             // chatHistory.update(queryObj, { $push: { "chat": obj } }, function (err, data) {
             //     if (err) {
             //         console.log("errr: " + JSON.stringify(err));

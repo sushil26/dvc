@@ -1549,6 +1549,7 @@ module.exports.groupUpdateById = function (req, res) {
         }
 
         console.log("objFind: " + JSON.stringify(objFind));
+        console.log("objUpdate: " + JSON.stringify(objUpdate));
         careatorChatGroup.update(objFind, { $set: objUpdate }, function (err, groupUpdate) {
             if (err) {
                 console.log("err: " + JSON.stringify(err));

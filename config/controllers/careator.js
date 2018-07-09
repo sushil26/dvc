@@ -1579,3 +1579,46 @@ module.exports.groupUpdateById = function (req, res) {
     }
 
 }
+module.exports.restrictedTo = function (req, res) {
+    console.log("restrictedTo-->");
+    var response;
+    var id = req.params.id;
+
+    if (general.emptyCheck(id)) {
+        var objFind = {
+            "_id": ObjectId(id)
+        }
+        var objUpdate = {
+            "restrictedTo": req.body.restrictedTo
+        };
+        console.log("objFind: " + JSON.stringify(objFind));
+        console.log("objUpdate: " + JSON.stringify(objUpdate));
+        careatorMaster.update(objFind, { $set: objUpdate }, function (err, restrict) {
+            if (err) {
+                console.log("err: " + JSON.stringify(err));
+                response = {
+                    status: false,
+                    message: "Unsuccessfull",
+                    data: err
+                };
+                res.status(400).send(response);
+            } else {
+                console.log("restrict: " + JSON.stringify(restrict));
+                response = {
+                    status: true,
+                    message: "Successfull",
+                    data: restrict
+                };
+                res.status(200).send(response);
+            }
+        })
+    } else {
+        console.log("Epty value found");
+        response = {
+            status: false,
+            message: "empty value found"
+        };
+        res.status(400).send(response);
+    }
+
+}

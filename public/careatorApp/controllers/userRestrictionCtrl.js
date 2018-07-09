@@ -4,7 +4,6 @@ careatorApp.controller('editGroupCtrl', function ($scope, $state, $rootScope, $f
     var id = $state.params.id;
     $scope.selectedMembers = []; /* ### $scope.selectedMembers contains groupmembers  ### */
  
-
     $scope.groupMemberSettings = {
         scrollableHeight: '200px',
         scrollable: true,

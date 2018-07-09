@@ -61,19 +61,23 @@ careatorApp.controller('userRestrictionCtrl', function ($scope, $state, $rootSco
         $scope.authorizedUserModel = [];
         console.log(" $scope.allUserData.length: "+ $scope.allUserData.length);
         console.log(" $scope.allUserData: "+ JSON.stringify($scope.allUserData));
-        for (var x = 0; x < $scope.allUserData.length; x++) {
+        for (var x = 0; x < $scope.allUsers.length; x++) {
             console.log("start to gather data");
-            if($scope.allUserModel[0].id!=$scope.allUserData[x].id){
+            if($scope.allUserModel[0].id!=$scope.allUsers[x].id){
                 $scope.authorizedUserData.push({
-                    "email": $scope.allUserData[x].email,
-                    "label": $scope.allUserData[x].lable,
-                    "id": $scope.allUserData[x].id
+                    "email": $scope.allUsers[x].email,
+                    "label": $scope.allUsers[x].lable,
+                    "id": $scope.allUsers[x].id
                 });
             }
            
         }
         console.log("authorizedUserData: "+JSON.stringify( $scope.authorizedUserData));
     }
+
+    $scope.$watch('$scope.allUserModel', function(){
+        console.log("$scope.allUserModel changes happene");
+    })
 
 
     $scope.authorizedUserSettings = {

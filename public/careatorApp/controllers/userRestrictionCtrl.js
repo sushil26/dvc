@@ -73,7 +73,7 @@ careatorApp.controller('userRestrictionCtrl', function ($scope, $state, $rootSco
         console.log("authorizedUserData: " + JSON.stringify($scope.authorizedUserData));
     }
 
-    $scope.$watch($scope.allUserModel[0], function () {
+    $scope.$watch($scope.allUserModel[0].id, function () {
         console.log("$scope.allUserModel changes happene");
         $scope.authorizedFor();
     })

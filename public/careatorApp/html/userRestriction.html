@@ -16,14 +16,14 @@
                                 <div class="col-lg-9">
                                     <div ng-dropdown-multiselect="" options="allUserData" selected-model="allUserModel" checkboxes="true" extra-settings="allUserSettings">
                                     </div>
-                                    <pre>Selected Memebers : <span ng-repeat="mem in allUserModel">{{mem.label+", "}}</span></pre>
+                                    <pre>Selected Memebers : <span ng-repeat="user in allUserModel">{{user.label+", "}}</span></pre>
                                 </div>
                             </div>
                             <div class="form-group" ng-if="allUserModel.length>0">
                                 <label class="col-lg-3">Chat To*</label>
                                 <div class="col-lg-9">
                                     <div ng-dropdown-multiselect="" options="authorizedUserData" selected-model="authorizedUserModel"  extra-settings="authorizedUserSettings"></div>
-                                    <pre>Selected Memebers : <span ng-repeat="mem in authorizedUserModel">{{mem.label+", "}}</span></pre>
+                                    <pre>Selected Memebers : <span ng-repeat="user in authorizedUserModel">{{user.label+", "}}</span></pre>
                                 </div>
                             </div>
                             <div class="form-group ">

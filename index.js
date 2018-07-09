@@ -45,6 +45,9 @@ var chatHistory;
 mongoConfig.connectToServer(function (err) {
     console.log("mongo connected -->");
     require('./config/router')(app);
+    var db = mongoConfig.getDb();
+    console.log("db: " + db);
+    chatHistory = db.collection("chatHistory");
 })
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/node_modules'));
@@ -154,7 +157,7 @@ var sessionHeaderId = null;
  * the peer connection and will be streaming audio/video between eachother.
  */
 io.sockets.on('connection', function (socket) {
-
+  
     console.log("connection started-->");
     //console.log("connection: socket: " + socket);
     // console.log("userName: "+userName);
@@ -210,11 +213,11 @@ io.sockets.on('connection', function (socket) {
         delete channels[channel][data.deleteSessionId];
         console.log("sockets[data.deleteSessionId]: " + sockets[data.deleteSessionId]);
 
-
+        
 
         //}
 
-
+       
         console.log("<--disconnectSession");
     })
 
@@ -339,9 +342,7 @@ io.sockets.on('connection', function (socket) {
     /* ##### Start Gether text message  #### */
     socket.on('textMsg', function (data) {
         console.log("textMsg-->");
-        // var db = mongoConfig.getDb();
-        // console.log("db: " + db);
-        chatHistory = db.collection("chatHistory");
+
         // //Send message to everyone
         console.log("peerWithQueryId[data.userId]: " + peerWithQueryId[data.userId]);
 
@@ -361,27 +362,15 @@ io.sockets.on('connection', function (socket) {
                 'textTime': date
             }
             console.log("obj: " + JSON.stringify(obj));
-            console.log("chatHistory: " + JSON.stringify(chatHistory));
-            // chatHistory.update(queryObj, { $push: { "chat": obj } }, function (err, data) {
-            //     if (err) {
-            //         console.log("errr: " + JSON.stringify(err));
-            //         responseData = {
-            //             status: false,
-            //             message: "Unsuccessfull",
-            //             data: err
-            //         };
-            //         res.status(400).send(responseData);
-            //     }
-            //     else {
-            //         console.log("data: " + JSON.stringify(data));
-            //         responseData = {
-            //             status: true,
-            //             message: "Successfull",
-            //             data: data
-            //         };
-            //         res.status(200).send(responseData);
-            //     }
-            // })
+            console.log("chatHistory: "+JSON.stringify(chatHistory));
+            chatHistory.update(queryObj, { $push: { "chat": obj } }, function (err, data) {
+                if (err) {
+                    console.log("errr: " + JSON.stringify(err));
+                }
+                else {
+                    console.log("data: " + JSON.stringify(data));
+                }
+            })
             io.sockets.emit('newTextMsg', { 'message': data.message, 'userId': data.userId, 'queryId': peerWithQueryId[data.userId], 'time': peerWithTimeId[data.userId], 'userName': data.userName });
 
             // io.sockets.emit('userDetail', {'userId': data.userId,'userName': data.userName });

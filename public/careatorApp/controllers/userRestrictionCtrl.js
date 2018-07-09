@@ -113,4 +113,5 @@ careatorApp.controller('userRestrictionCtrl', function ($scope, $state, $rootSco
         })
     }
 
+
 })

@@ -45,9 +45,7 @@ var chatHistory;
 mongoConfig.connectToServer(function (err) {
     console.log("mongo connected -->");
     require('./config/router')(app);
-    var db = mongoConfig.getDb();
-    console.log("db: " + db);
-    chatHistory = db.collection("chatHistory");
+   
 })
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/node_modules'));
@@ -342,7 +340,10 @@ io.sockets.on('connection', function (socket) {
     /* ##### Start Gether text message  #### */
     socket.on('textMsg', function (data) {
         console.log("textMsg-->");
-
+        var db = mongoConfig.getDb();
+        console.log("db: " + db);
+        chatHistory = db.collection("chatHistory");
+        console.log(" db.collection(chatHistory): "+ db.collection("chatHistory"));
         // //Send message to everyone
         console.log("peerWithQueryId[data.userId]: " + peerWithQueryId[data.userId]);
 

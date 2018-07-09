@@ -305,7 +305,7 @@ box-shadow: none;
     background-size: cover;
     border: 1px solid #f7f7f7;
     height: calc(100% - 120px);
-    overflow: auto;
+    overflow-x: hidden;
 }
 
 .message-previous {

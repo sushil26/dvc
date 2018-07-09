@@ -74,8 +74,10 @@ careatorApp.controller('userRestrictionCtrl', function ($scope, $state, $rootSco
     }
 
     $scope.authorizedUserSettings = {
-        externalIdProp: '',
+        scrollableHeight: '200px',
+        scrollable: true,
         enableSearch: true,
+        externalIdProp: ''
     };
 
 

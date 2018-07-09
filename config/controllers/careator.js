@@ -1531,7 +1531,7 @@ module.exports.groupDeleteById = function (req, res) {
 module.exports.groupUpdateById = function (req, res) {
     console.log("groupUpdateById-->");
     var response;
-    var id = req.body.id;
+    var id = req.params.id;
 
     if (general.emptyCheck(id)) {
         var insertObj = {

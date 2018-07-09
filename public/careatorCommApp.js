@@ -47,12 +47,21 @@ careatorApp.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: '/careatorApp/html/chat.html'
 
         })
+        .state('Cdashboard.video', {
+            url: careator_video(),
+            templateUrl: '/careatorApp/html/video.html'
+        })
         .state('Cdashboard.userRestrict', {
             url: careator_userRestrict(),
             templateUrl: '/careatorApp/html/userRestriction.html'
 
         })
 })
+
+function careator_video() {
+    return '/video';
+}
+
 function careator_dashboard() {
     return '/dashboard';
 }
@@ -60,6 +69,7 @@ function careator_dashboard() {
 function editUser() {
     return '/editUser/:id';
 }
+
 function editGroup() {
     return '/editGroup/:id';
 }
@@ -88,6 +98,6 @@ function careator_chat() {
     return '/chat';
 }
 
-function careator_userRestrict(){
+function careator_userRestrict() {
     return '/userRestrict'
 }

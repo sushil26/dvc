@@ -30,6 +30,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
 
     $scope.chatMenu = function () {
         if (screen.width < 768) {
+            console.log("chatMenu-->");
             $('.side-one').css({
                 "opacity": "1"
             });

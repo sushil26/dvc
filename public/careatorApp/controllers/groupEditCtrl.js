@@ -110,13 +110,10 @@ careatorApp.controller('editGroupCtrl', function ($scope, $state, $rootScope, $f
         var groupMembers = [];
         console.log("$scope.groupMemberModel: " + JSON.stringify($scope.groupMemberModel));
         for (var x = 0; x < $scope.groupMemberModel.length; x++) {
-            var label = $scope.groupMemberModel[x].label
-            console.log("label: " + label);
-            var splitName = label.split('-');
             console.log("splitName: " + JSON.stringify(splitName));
             groupMembers.push({
                 "email": $scope.groupMemberModel[x].email,
-                "name": splitName[0],
+                "name": $scope.groupMemberModel[x].label,
                 "userId": $scope.groupMemberModel[x].id
             })
         }
@@ -125,10 +122,9 @@ careatorApp.controller('editGroupCtrl', function ($scope, $state, $rootScope, $f
         var groupAdmin; /* ### Note: admin storage  ### */
         console.log("$scope.groupAdminModel: " + JSON.stringify($scope.groupAdminModel));
         for (var x = 0; x < $scope.groupAdminModel.length; x++) {
-            var splitName = $scope.groupAdminModel[x].label.split('-');
             groupAdmin = {
                 "email": $scope.groupAdminModel[x].email,
-                "name": splitName[0],
+                "name": $scope.groupAdminModel[x].label,
                 "userId": $scope.groupMemberModel[x].id
             }
         }

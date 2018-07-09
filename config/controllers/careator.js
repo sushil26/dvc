@@ -1535,7 +1535,7 @@ module.exports.groupUpdateById = function (req, res) {
 
     if (general.emptyCheck(id)) {
         var objFind = {
-            "_id": id
+            "_id": ObjectId(id)
         }
         var objUpdate = {};
         if (req.body.groupName) {

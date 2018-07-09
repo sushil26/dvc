@@ -28,7 +28,7 @@ careatorApp.controller('userRestrictionCtrl', function ($scope, $state, $rootSco
                 var members = data.data.data;
                 console.log("members: " + JSON.stringify(members));
                 $scope.memberData = [];
-                for (var x = 0; x < groupMembers.length; x++) {
+                for (var x = 0; x < members.length; x++) {
                     console.log(" before $scope.memberData: " + JSON.stringify($scope.memberData));
                     console.log("members[x].email: " + members[x].email + " members[x]._id: " + members[x]._id);
                     $scope.memberData.push({

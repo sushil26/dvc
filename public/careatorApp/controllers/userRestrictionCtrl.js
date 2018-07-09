@@ -25,7 +25,7 @@ careatorApp.controller('userRestrictionCtrl', function ($scope, $state, $rootSco
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
                 allUsers = data.data.data;
-              
+
                 console.log("allUsers: " + JSON.stringify(allUsers));
                 $scope.allUserData = [];
                 for (var x = 0; x < allUsers.length; x++) {
@@ -43,7 +43,6 @@ careatorApp.controller('userRestrictionCtrl', function ($scope, $state, $rootSco
                         }
                     }
                 }
-                $scope.authorizedFor();
                 console.log(data.data.message);
             }
             else {
@@ -59,24 +58,25 @@ careatorApp.controller('userRestrictionCtrl', function ($scope, $state, $rootSco
         console.log("authorizedFor-->");
         $scope.authorizedUserData = [];
         $scope.authorizedUserModel = [];
-        console.log(" $scope.allUserData.length: "+ $scope.allUserData.length);
-        console.log(" $scope.allUserData: "+ JSON.stringify($scope.allUserData));
+        console.log(" $scope.allUserData.length: " + $scope.allUserData.length);
+        console.log(" $scope.allUserData: " + JSON.stringify($scope.allUserData));
         for (var x = 0; x < $scope.allUsers.length; x++) {
             console.log("start to gather data");
-            if($scope.allUserModel[0].id!=$scope.allUsers[x].id){
+            if ($scope.allUserModel[0].id != $scope.allUsers[x].id) {
                 $scope.authorizedUserData.push({
                     "email": $scope.allUsers[x].email,
                     "label": $scope.allUsers[x].lable,
                     "id": $scope.allUsers[x].id
                 });
             }
-           
+
         }
-        console.log("authorizedUserData: "+JSON.stringify( $scope.authorizedUserData));
+        console.log("authorizedUserData: " + JSON.stringify($scope.authorizedUserData));
     }
 
-    $scope.$watch($scope.allUserModel, function(){
+    $scope.$watch($scope.allUserModel, function () {
         console.log("$scope.allUserModel changes happene");
+        $scope.authorizedFor();
     })
 
 

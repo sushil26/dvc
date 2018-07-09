@@ -117,7 +117,7 @@ careatorApp.controller('editGroupCtrl', function ($scope, $state, $rootScope, $f
             groupMembers.push({
                 "email": $scope.groupMemberModel[x].email,
                 "name": splitName[0],
-                "id": $scope.groupMemberModel[x].id
+                "userId": $scope.groupMemberModel[x].id
             })
         }
         obj.memebers = groupMembers;
@@ -129,7 +129,7 @@ careatorApp.controller('editGroupCtrl', function ($scope, $state, $rootScope, $f
             groupAdmin = {
                 "email": $scope.groupAdminModel[x].email,
                 "name": splitName[0],
-                "id": $scope.groupMemberModel[x].id
+                "userId": $scope.groupMemberModel[x].id
             }
         }
         obj.admin = groupAdmin;

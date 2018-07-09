@@ -100,7 +100,7 @@ careatorApp.controller('editGroupCtrl', function ($scope, $state, $rootScope, $f
 
     $scope.updateGroup = function () {
         console.log("updateGroup-->");
-        var api = "https://norecruits.com/careator_groupDelete/groupDeleteById/" + id;
+        var api = "https://norecruits.com/careator_groupUpdate/groupUpdateById/" + id;
         console.log("api: " + api);
         var obj = {
             "groupName": $scope.grpname,
@@ -136,18 +136,18 @@ careatorApp.controller('editGroupCtrl', function ($scope, $state, $rootScope, $f
         obj.admin = groupAdmin;
         console.log("obj: " + JSON.stringify(obj));
       
-        // careatorHttpFactory.post(api, obj).then(function (data) {
-        //     console.log("data--" + JSON.stringify(data.data));
-        //     var checkStatus = careatorHttpFactory.dataValidation(data);
-        //     console.log("data--" + JSON.stringify(data.data));
-        //     if (checkStatus) {
-        //         console.log(data.data.message);
-        //         $state.go("Cdashboard.groupListCtrl")
-        //     }
-        //     else {
-        //         console.log("Sorry: " + data.data.message);
-        //     }
-        // })
+        careatorHttpFactory.post(api, obj).then(function (data) {
+            console.log("data--" + JSON.stringify(data.data));
+            var checkStatus = careatorHttpFactory.dataValidation(data);
+            console.log("data--" + JSON.stringify(data.data));
+            if (checkStatus) {
+                console.log(data.data.message);
+                $state.go("Cdashboard.groupListCtrl")
+            }
+            else {
+                console.log("Sorry: " + data.data.message);
+            }
+        })
     }
 
 

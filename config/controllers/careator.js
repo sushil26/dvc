@@ -1201,8 +1201,6 @@ module.exports.groupText = function (req, res) {
     }
 }
 
-
-
 module.exports.careator_getUserById = function (req, res) {
     console.log("careator_getUserById-->");
     var id = req.params.id;
@@ -1525,6 +1523,62 @@ module.exports.groupDeleteById = function (req, res) {
             status: false,
             message: "empty value found",
             data: obj
+        };
+        res.status(400).send(response);
+    }
+
+}
+module.exports.careator_chat_creteGroup = function (req, res) {
+    console.log("groupUpdateById-->");
+    var response;
+    var id = req.body.id;
+
+    if (general.emptyCheck(id)) {
+        var insertObj = {
+            "groupName": groupName,
+            "groupMembers": groupMembers,
+            "admin": admin,
+            "status": "active"
+        }
+        var objFind = {
+            "_id": id
+        }
+        var objUpdate = {};
+        if (req.body.groupName) {
+            objUpdate.groupName = req.body.groupName;
+        }
+        if (req.body.memebers) {
+            objUpdate.groupMembers = req.body.memebers;
+        }
+        if (req.body.admin) {
+            objUpdate.admin = req.body.admin;
+        }
+
+        console.log("objFind: " + JSON.stringify(objFind));
+        careatorChatGroup.update(objFind, { $set: objUpdate }, function (err, groupUpdate) {
+            if (err) {
+                console.log("err: " + JSON.stringify(err));
+                response = {
+                    status: false,
+                    message: "Unsuccessfull group update",
+                    data: err
+                };
+                res.status(400).send(response);
+            } else {
+                console.log("groupCreate: " + JSON.stringify(groupUpdate));
+                response = {
+                    status: true,
+                    message: "Successfully group update",
+                    data: groupUpdate
+                };
+                res.status(200).send(response);
+            }
+        })
+    } else {
+        console.log("Epty value found");
+        response = {
+            status: false,
+            message: "empty value found"
         };
         res.status(400).send(response);
     }

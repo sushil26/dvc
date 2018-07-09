@@ -1534,12 +1534,6 @@ module.exports.groupUpdateById = function (req, res) {
     var id = req.params.id;
 
     if (general.emptyCheck(id)) {
-        var insertObj = {
-            "groupName": groupName,
-            "groupMembers": groupMembers,
-            "admin": admin,
-            "status": "active"
-        }
         var objFind = {
             "_id": id
         }

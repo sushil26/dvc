@@ -3,12 +3,14 @@ careatorApp.controller('userRestrictionCtrl', function ($scope, $state, $rootSco
     console.log("id: " + $state.params.id);
     var id = $state.params.id;
     $scope.selectedMembers = []; /* ### $scope.selectedMembers contains groupmembers  ### */
- 
+    var allUsers;
+
     $scope.allUserSettings = {
         scrollableHeight: '200px',
         scrollable: true,
         enableSearch: true,
-        externalIdProp: ''
+        externalIdProp: '',
+        selectionLimit: 1,
     };
     $scope.allUserData = [];
     $scope.allUserModel = [];
@@ -22,30 +24,23 @@ careatorApp.controller('userRestrictionCtrl', function ($scope, $state, $rootSco
             var checkStatus = careatorHttpFactory.dataValidation(data);
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
-                var groupMembers = data.data.data;
-                console.log("groupMembers: " + JSON.stringify(groupMembers));
+                allUsers = data.data.data;
+                $scope.authorizedFor();
+                console.log("allUsers: " + JSON.stringify(allUsers));
                 $scope.allUserData = [];
-                for (var x = 0; x < groupMembers.length; x++) {
+                for (var x = 0; x < allUsers.length; x++) {
                     console.log(" before $scope.allUserData: " + JSON.stringify($scope.allUserData));
-                    console.log("groupMembers[x].email: " + groupMembers[x].email + " groupMembers[x]._id: " + groupMembers[x]._id);
+                    console.log("allUsers[x].email: " + allUsers[x].email + " allUsers[x]._id: " + allUsers[x]._id);
                     $scope.allUserData.push({
-                        "email": groupMembers[x].email,
-                        "label": groupMembers[x].name + " - " + groupMembers[x].empId,
-                        "id": groupMembers[x]._id
+                        "email": allUsers[x].email,
+                        "label": allUsers[x].name + " - " + allUsers[x].empId,
+                        "id": allUsers[x]._id
                     });
                     for (var y = 0; y < $scope.selectedMembers.length; y++) {
                         console.log("y iteration-->");
                         if ($scope.selectedMembers[y].id == $scope.allUserData[x].id) {
                             $scope.allUserModel.push($scope.allUserData[x]);
                         }
-                    }
-                }
-                $scope.groupAdminData = $scope.allUserModel;
-                for (var x = 0; x < $scope.groupAdminData.length; x++) {
-                    console.log("$scope.groupAdminData[x]: " + JSON.stringify($scope.groupAdminData[x]));
-                    console.log("$scope.selectedAdmin: " + JSON.stringify($scope.selectedAdmin));
-                    if ($scope.groupAdminData[x].id == $scope.selectedAdmin.userId) {
-                        $scope.groupAdminModel.push($scope.groupAdminData[x]);
                     }
                 }
                 console.log(data.data.message);
@@ -59,13 +54,25 @@ careatorApp.controller('userRestrictionCtrl', function ($scope, $state, $rootSco
     }
     $scope.rightEmployeeList();
 
-    $scope.groupAdminSettings = {
-        selectionLimit: 1,
+    $scope.authorizedFor = function () {
+        console.log("authorizedFor-->");
+        $scope.authorizedUserData = [];
+        $scope.authorizedUserModel = [];
+        for (var x = 0; x < $scope.allUserData.length; x++) {
+            $scope.authorizedUserData.push({
+                "email": $scope.allUserData[x].email,
+                "label": $scope.allUserData[x].name + " - " + $scope.allUserData[x].empId,
+                "id": $scope.allUserData[x]._id
+            });
+        }
+    }
+
+
+    $scope.authorizedUserSettings = {
         externalIdProp: '',
         enableSearch: true,
     };
 
-    $scope.groupAdminModel = [];
 
 
 

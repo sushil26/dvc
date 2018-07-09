@@ -112,10 +112,11 @@ careatorApp.controller('editGroupCtrl', function ($scope, $state, $rootScope, $f
         for (var x = 0; x < $scope.groupMemberModel.length; x++) {
             var label =  $scope.groupMemberModel[x].label
             var splitName =label[x].split('-');
+            console.log("splitName: " + JSON.stringify(splitName));
             groupMembers.push({
                 "email": $scope.groupMemberModel[x].email,
                 "name": splitName[0] ,
-                "userId": $scope.groupMemberModel[x].id
+                "id": $scope.groupMemberModel[x].id
             })
         }
         obj.memebers = groupMembers;
@@ -127,7 +128,7 @@ careatorApp.controller('editGroupCtrl', function ($scope, $state, $rootScope, $f
             groupMembers.push({
                 "email": $scope.groupAdminModel[x].email,
                 "name":  splitName[0] ,
-                "userId": $scope.groupMemberModel[x].id
+                "id": $scope.groupMemberModel[x].id
             })
         }
         obj.admin = groupAdmin;

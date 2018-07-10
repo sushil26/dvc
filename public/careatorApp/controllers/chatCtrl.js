@@ -74,8 +74,8 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
             console.log("data--" + JSON.stringify(data.data));
             var checkStatus = careatorHttpFactory.dataValidation(data);
             if (checkStatus) {
-                $scope.allChat = data.data.data;
-                $scope.individualData = data.data.data;
+                $scope.allChat = data.data.data[0];
+                $scope.individualData = data.data.data[0];
                 console.log("$scope.allChat: " + JSON.stringify($scope.allChat));
                 console.log("$scope.individualData : " + JSON.stringify($scope.individualData));
                 if ($scope.selectedType == "individual_chats") {

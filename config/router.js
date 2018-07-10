@@ -40,7 +40,7 @@ module.exports = function (app) {
     //app.post('/careator/careator_chatVideo_creteGroup', careator.careator_chatVideo_creteGroup);
     app.get('/careator_chatGroupList/careator_getChatGroupListById/:id', careator.careator_getChatGroupListById);
     app.get('/careator_chatGroupList/careator_getChatGroupList', careator.careator_getChatGroupList);
-    app.post('/careator_getEmp/careator_getChatRightsAllemp', careator.careator_getChatRightsAllemp);
+    app.post('/careator_getEmp/careator_getChatRightsAllemp/:id', careator.careator_getChatRightsAllemp);
     app.post('/careator_individualText/individualText', careator.individualText);
     app.get('/careator_individualTextRead/individualTextReadById/:sId/:rId', careator.individualTextReadById);
     app.get('/careator_groupTextRead/groupTextReadByGroupId/:group_id', careator.groupTextReadByGroupId);

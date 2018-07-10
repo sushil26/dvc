@@ -5,7 +5,7 @@ careatorApp.controller('chatHistoryCtrl', function ($scope, $rootScope, $filter,
 
     /* ##### Start: UserData  ##### */
     var id = $state.params.id;
-    $scope.getUserDataById = function (id) {
+    $scope.getUserDataById = function () {
         console.log("getAllEmployee-->: " + id);
         var api = "https://norecruits.com/careator_getUser/careator_getUserById/" + id;
         console.log("api: " + api);
@@ -19,7 +19,11 @@ careatorApp.controller('chatHistoryCtrl', function ($scope, $rootScope, $filter,
                     "empId": data.data.data.empId,
                     "userId": data.data.data.userId
                 }
-                console.log("allGroup: " + JSON.stringify($scope.allGroup));
+                console.log("userData: " + JSON.stringify(userData));
+                $scope.userId = userData.userId;
+                $scope.userName = userData.userName;
+                $scope.getChatGroupListById($scope.userId);
+                
                 console.log(data.data.message);
             } else {
                 console.log("Sorry");
@@ -28,14 +32,10 @@ careatorApp.controller('chatHistoryCtrl', function ($scope, $rootScope, $filter,
         })
         console.log("<--getAllEmployee");
     }
+    $scope.getUserDataById();
     /* ##### End: UserData  ##### */
 
-    $scope.getAllChatGroupById = function () {
-        console.log("getAllChatGroupById-->");
-        $scope.userId = userData.userId;
-        $scope.userName = userData.userName;
-        $scope.getChatGroupListById($scope.userId);
-    }
+
     $scope.allGroupAndIndividual = []; /* ### Note:$scope.allGroupAndIndividual contains All employee list(who having chat rights) and group list(which are included by login person)   ### */
 
 

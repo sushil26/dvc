@@ -54,6 +54,10 @@ careatorApp.controller('usersListCtrl', function ($scope, $state, careatorHttpFa
             "id": data._id
         });
     }
+    $scope.seeChat = function(id){
+        console.log("seeChat-->");
+        $state.go('Cdashboard.chatHistory',{"id":id})
+    }
 
 
     ////////////////Delete User/////////////////////////

@@ -91,7 +91,7 @@ function createGroup() {
 }
 
 function careator_chatHistory() {
-    return '/chatHistory';
+    return '/chatHistory/:id';
 }
 
 function careator_chat() {

@@ -15,8 +15,6 @@
                             <pre>Selected Memebers : <span ng-repeat="user in allUserModel">{{user.label+", "}}</span></pre>
                         </div>
                     </div>
-
-
                     <link rel="stylesheet" href="./css/newChat.css" />
                     <div class="container app" ng-if="allUserModel.length>0">
                         <div class="row app-one" ng-init="getAllChatGroupById()">
@@ -24,6 +22,7 @@
                                 <div class="side-one">
                                     <div class="row heading">
                                         <div class="form-group has-feedback">
+                                            <h2>{{userName}}</h2>
                                             <input id="searchText" type="text" class="form-control" name="searchText" placeholder="Search">
                                             <span class="glyphicon glyphicon-search form-control-feedback"></span>
                                         </div>

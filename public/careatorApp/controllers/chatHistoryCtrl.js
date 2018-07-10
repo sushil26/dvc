@@ -31,6 +31,7 @@ careatorApp.controller('chatHistoryCtrl', function ($scope, $rootScope, $filter,
         })
         console.log("<--getAllEmployee");
     }
+    $scope.getUserDataById();
     /* ##### End: UserData  ##### */
 
 

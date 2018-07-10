@@ -12,8 +12,7 @@ careatorApp.controller('groupListCtrl', function ($scope, $state, $rootScope, $f
                 $scope.groupList = data.data.data;
                 console.log("GroupList: " + JSON.stringify($scope.groupList));
                 console.log(data.data.message);
-            }
-            else {
+            } else {
                 console.log("Sorry");
                 console.log(data.data.message);
             }
@@ -39,8 +38,7 @@ careatorApp.controller('groupListCtrl', function ($scope, $state, $rootScope, $f
             if (checkStatus) {
                 $scope.getGroupList();
                 console.log(data.data.message);
-            }
-            else {
+            } else {
                 console.log("Sorry");
                 console.log(data.data.message);
             }
@@ -52,7 +50,9 @@ careatorApp.controller('groupListCtrl', function ($scope, $state, $rootScope, $f
         console.log("editGroup-->");
         console.log("$scope.groupList[index]: " + JSON.stringify($scope.groupList[index]));
         var data = $scope.groupList[index];
-        $state.go("Cdashboard.editGroup", { "id": data._id });
+        $state.go("Cdashboard.editGroup", {
+            "id": data._id
+        });
     }
 
 
@@ -60,11 +60,10 @@ careatorApp.controller('groupListCtrl', function ($scope, $state, $rootScope, $f
     $scope.deleteGroup = function (id) {
         console.log("deleteGroup-->");
         console.log("Obj ID  " + id);
-       
-        var txt;
-        var r = confirm("Press a button!");
+
+
+        var r = confirm("Are You Sure To Delete ????");
         if (r == true) {
-            txt = "You pressed OK!";
             var api = "https://norecruits.com/careator_groupDelete/groupDeleteById/" + id;
             console.log("api: " + api);
             careatorHttpFactory.get(api).then(function (data) {
@@ -81,11 +80,11 @@ careatorApp.controller('groupListCtrl', function ($scope, $state, $rootScope, $f
             })
             console.log("<--statusChange");
         } else {
-            txt = "You pressed Cancel!";
+            console.log("<-- you cancelled");
         }
-        document.getElementById("demo").innerHTML = txt;
 
-    
+
+
 
     }
 

@@ -104,11 +104,8 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                 console.log(data.data.message);
             }
         })
-
-
-
-        console.log("   $scope.receiverData : " + JSON.stringify($scope.receiverData));
-        console.log("sendGroupText_withData-->: " + JSON.stringify($scope.sendGroupText_withData));
+        console.log("$scope.receiverData : " + JSON.stringify($scope.receiverData));
+       // console.log("sendGroupText_withData-->: " + JSON.stringify($scope.sendGroupText_withData));
     }
 
     $scope.chatDetailsFromNew = function (type, index) {

@@ -1626,6 +1626,7 @@ module.exports.restrictedTo = function (req, res) {
 module.exports.getChatsById = function (req, res) {
     console.log("getChatsById-->");
     var id = req.params.id;
+    console.log("id: "+id);
     var response;
     if (general.emptyCheck(id)) {
         var findObj = {

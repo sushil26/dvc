@@ -76,7 +76,7 @@ careatorApp.controller('chatHistoryCtrl', function ($scope, $rootScope, $filter,
                 $scope.allGroup = data.data.data;
                 console.log("allGroup: " + JSON.stringify($scope.allGroup));
                 console.log(data.data.message);
-
+                $scope.getAllChatRightEmp();
             } else {
                 console.log("Sorry");
                 console.log(data.data.message);
@@ -228,7 +228,7 @@ careatorApp.controller('chatHistoryCtrl', function ($scope, $rootScope, $filter,
             }
         })
     }
-    // $scope.getAllChatRightEmp();
+    
     $scope.getEmpDetail = function (index) {
         console.log("getEmpDetail-->");
         $scope.selectedType = "individual_chats";

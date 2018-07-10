@@ -1141,7 +1141,7 @@ module.exports.groupText = function (req, res) {
                             console.log("insertedData.ops[0]._id", insertedData.ops[0]._id);
                             var io = req.app.get('socketio');
                             io.emit('comm_textReceived', {
-                                "id": data[0]._id,
+                                "id": insertedData.ops[0]._id,
                                 "senderId": obj.senderId,
                                 "senderName": obj.senderName,
                                 "message": obj.message,

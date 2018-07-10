@@ -65,20 +65,42 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         if ($scope.selectedType == 'group') {
             var group_id = id;
             var api = "https://norecruits.com/careator_groupTextRead/groupTextReadByGroupId/" + group_id;
+            console.log("api: " + api);
+            careatorHttpFactory.get(api).then(function (data) {
+                console.log("data--" + JSON.stringify(data.data));
+                var checkStatus = careatorHttpFactory.dataValidation(data);
+                if (checkStatus) {
+                    $scope.allChat = data.data.data[0];
+                    $scope.individualData = data.data.data[0];
+                    console.log("$scope.allChat: " + JSON.stringify($scope.allChat));
+                    console.log("$scope.allChat.chats: " + JSON.stringify($scope.allChat.chats));
+                    console.log("$scope.individualData : " + JSON.stringify($scope.individualData));
+                    $scope.sendGroupText_withData = {
+                        "group_id": $scope.individualData.group_id,
+                        "groupName": $scope.individualData.groupName,
+                        "senderId": userData.userId,
+                        "senderName": userData.userName
+                    }
+                    console.log("sendGroupText_withData-->: " + JSON.stringify($scope.sendGroupText_withData));
+                    // $scope.readText();
+                } else {
+                    console.log("Sorry");
+                    console.log(data.data.message);
+                }
+            })
         }
-        else {
+        else if ($scope.selectedType == "individual_chats") {
             var api = "https://norecruits.com/careator_getChatsById/getChatsById/" + id;
-        }
-        console.log("api: " + api);
-        careatorHttpFactory.get(api).then(function (data) {
-            console.log("data--" + JSON.stringify(data.data));
-            var checkStatus = careatorHttpFactory.dataValidation(data);
-            if (checkStatus) {
-                $scope.allChat = data.data.data;
-                $scope.individualData = data.data.data;
-                console.log("$scope.allChat: " + JSON.stringify($scope.allChat));
-                console.log("$scope.individualData : " + JSON.stringify($scope.individualData));
-                if ($scope.selectedType == "individual_chats") {
+            console.log("api: " + api);
+            careatorHttpFactory.get(api).then(function (data) {
+                console.log("data--" + JSON.stringify(data.data));
+                var checkStatus = careatorHttpFactory.dataValidation(data);
+                if (checkStatus) {
+                    $scope.allChat = data.data.data;
+                    $scope.individualData = data.data.data;
+                    console.log("$scope.allChat: " + JSON.stringify($scope.allChat));
+                    console.log("$scope.individualData : " + JSON.stringify($scope.individualData));
+
                     $scope.receiverData = {
                         "senderId": userData.userId,
                         "senderName": userData.userName,
@@ -93,23 +115,15 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                         $scope.receiverData.receiverName = $scope.individualData.senderName;
                     }
                     console.log(" $scope.receiverData : " + JSON.stringify($scope.receiverData));
-                }
-                else if ($scope.selectedType == 'group') {
-                    $scope.sendGroupText_withData = {
-                        "group_id": $scope.individualData._id,
-                        "groupName": $scope.individualData.groupName,
-                        "senderId": userData.userId,
-                        "senderName": userData.userName
-                    }
-                    console.log("sendGroupText_withData-->: " + JSON.stringify($scope.sendGroupText_withData));
-                    $scope.readText();
-                }
 
-            } else {
-                console.log("Sorry");
-                console.log(data.data.message);
-            }
-        })
+
+                } else {
+                    console.log("Sorry");
+                    console.log(data.data.message);
+                }
+            })
+        }
+
 
         console.log("$scope.receiverData : " + JSON.stringify($scope.receiverData));
         // console.log("sendGroupText_withData-->: " + JSON.stringify($scope.sendGroupText_withData));
@@ -338,22 +352,22 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         console.log(" data.id: " + data.id);
         console.log("$scope.individualData._id: " + JSON.stringify($scope.individualData));
         console.log(" data.id: " + JSON.stringify(data));
-        if ($scope.selectedType == 'group') {
-            if ($scope.allChat._id == data.id) {
-                console.log("start pushing message");
-                $scope.allChat.chats.push({
-                    "senderId": data.senderId,
-                    "senderName": data.senderName,
-                    "message": data.message,
-                    "sendTime": data.sendTime
-                });
-                $scope.scrollDown();
-            }
-        }
+       
+            // if ($scope.allChat._id == data.id) {
+            //     console.log("1)start pushing message");
+            //     $scope.allChat.chats.push({
+            //         "senderId": data.senderId,
+            //         "senderName": data.senderName,
+            //         "message": data.message,
+            //         "sendTime": data.sendTime
+            //     });
+            //     $scope.scrollDown();
+            // }
+        
 
 
         if ($scope.individualData._id == data.id) {
-            console.log("start pushing message");
+            console.log("2)start pushing message");
             $scope.allChat.chats.push({
                 "senderId": data.senderId,
                 "senderName": data.senderName,

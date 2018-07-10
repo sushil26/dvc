@@ -182,7 +182,10 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                 if (checkStatus) {
                     $scope.allChat = data.data.data[0];
                     console.log("allChat: " + JSON.stringify($scope.allChat));
-                    //$scope.allChat = $scope.allGroupAndIndividual[index];
+                    if ($scope.allChat == undefined) {
+                        $scope.individualData = $scope.allGroupAndIndividual[index];
+                    }
+
                     $scope.individualData = $scope.allChat;
                     console.log(" $scope.individualData : " + JSON.stringify($scope.individualData));
 
@@ -352,18 +355,18 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         console.log(" data.id: " + data.id);
         console.log("$scope.individualData._id: " + JSON.stringify($scope.individualData));
         console.log(" data.id: " + JSON.stringify(data));
-       
-            // if ($scope.allChat._id == data.id) {
-            //     console.log("1)start pushing message");
-            //     $scope.allChat.chats.push({
-            //         "senderId": data.senderId,
-            //         "senderName": data.senderName,
-            //         "message": data.message,
-            //         "sendTime": data.sendTime
-            //     });
-            //     $scope.scrollDown();
-            // }
-        
+
+        // if ($scope.allChat._id == data.id) {
+        //     console.log("1)start pushing message");
+        //     $scope.allChat.chats.push({
+        //         "senderId": data.senderId,
+        //         "senderName": data.senderName,
+        //         "message": data.message,
+        //         "sendTime": data.sendTime
+        //     });
+        //     $scope.scrollDown();
+        // }
+
 
 
         if ($scope.individualData._id == data.id) {

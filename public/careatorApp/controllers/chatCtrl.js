@@ -94,7 +94,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                         }
                     }
                     console.log("$scope.individualData : " + JSON.stringify($scope.individualData));
-                    
+
                     console.log("sendGroupText_withData-->: " + JSON.stringify($scope.sendGroupText_withData));
                     // $scope.readText();
                 } else {
@@ -390,41 +390,41 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         //     });
         //     $scope.scrollDown();
         // }
-if(data.freshInsert==true){
-    var id = data.id;
-    var api = "https://norecruits.com/careator_getChatsById/getChatsById/" + id;
-    console.log("api: " + api);
-    careatorHttpFactory.get(api).then(function (data) {
-        console.log("data--" + JSON.stringify(data.data));
-        var checkStatus = careatorHttpFactory.dataValidation(data);
-        if (checkStatus) {
-            $scope.allChat = data.data.data;
-            $scope.individualData = data.data.data;
-            console.log("$scope.allChat: " + JSON.stringify($scope.allChat));
-            console.log("$scope.individualData : " + JSON.stringify($scope.individualData));
+        if (data.freshInsert == true) {
+            var id = data.id;
+            var api = "https://norecruits.com/careator_getChatsById/getChatsById/" + id;
+            console.log("api: " + api);
+            careatorHttpFactory.get(api).then(function (data) {
+                console.log("data--" + JSON.stringify(data.data));
+                var checkStatus = careatorHttpFactory.dataValidation(data);
+                if (checkStatus) {
+                    $scope.allChat = data.data.data;
+                    $scope.individualData = data.data.data;
+                    console.log("$scope.allChat: " + JSON.stringify($scope.allChat));
+                    console.log("$scope.individualData : " + JSON.stringify($scope.individualData));
 
-            $scope.receiverData = {
-                "senderId": userData.userId,
-                "senderName": userData.userName,
-            }
+                    $scope.receiverData = {
+                        "senderId": userData.userId,
+                        "senderName": userData.userName,
+                    }
 
-            if ($scope.individualData.receiverId != userData.userId) {
-                $scope.receiverData.receiverId = $scope.individualData.receiverId;
-                $scope.receiverData.receiverName = $scope.individualData.receiverName;
-            }
-            else if ($scope.individualData.senderId != userData.userId) {
-                $scope.receiverData.receiverId = $scope.individualData.senderId;
-                $scope.receiverData.receiverName = $scope.individualData.senderName;
-            }
-            console.log(" $scope.receiverData : " + JSON.stringify($scope.receiverData));
+                    if ($scope.individualData.receiverId != userData.userId) {
+                        $scope.receiverData.receiverId = $scope.individualData.receiverId;
+                        $scope.receiverData.receiverName = $scope.individualData.receiverName;
+                    }
+                    else if ($scope.individualData.senderId != userData.userId) {
+                        $scope.receiverData.receiverId = $scope.individualData.senderId;
+                        $scope.receiverData.receiverName = $scope.individualData.senderName;
+                    }
+                    console.log(" $scope.receiverData : " + JSON.stringify($scope.receiverData));
 
 
-        } else {
-            console.log("Sorry");
-            console.log(data.data.message);
+                } else {
+                    console.log("Sorry");
+                    console.log(data.data.message);
+                }
+            })
         }
-    })
-}
 
 
         if ($scope.individualData._id == data.id) {
@@ -470,7 +470,7 @@ if(data.freshInsert==true){
             scrollTop: $("#pulldown").prop("scrollHeight")
         }, 500);
     }
-  
+
 
 
 

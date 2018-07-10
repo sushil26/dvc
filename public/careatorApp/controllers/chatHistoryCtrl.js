@@ -13,7 +13,12 @@ careatorApp.controller('chatHistoryCtrl', function ($scope, $rootScope, $filter,
             console.log("data--" + JSON.stringify(data.data));
             var checkStatus = careatorHttpFactory.dataValidation(data);
             if (checkStatus) {
-                userData = data.data.data;
+                userData = {
+                    "email": data.data.data.email,
+                    "userName": data.data.data.userName,
+                    "empId": data.data.data.empId,
+                    "userId": data.data.data.userId
+                }
                 console.log("allGroup: " + JSON.stringify($scope.allGroup));
                 console.log(data.data.message);
             } else {

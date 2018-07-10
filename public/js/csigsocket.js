@@ -173,6 +173,7 @@ function checkPassword() {
     }
     if(data.data.restrictedTo)
     {
+      console.log("data.data.restrictedTo: "+JSON.stringify(data.data.restrictedTo));
       localStorage.setItem("restrictedTo", data.data.restrictedTo);
     }
     var userNameEmail = localStorage.getItem("careatorEmail");

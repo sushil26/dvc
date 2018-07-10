@@ -52,7 +52,8 @@
 }
 
 .heading {
-    padding: 10px;
+    height: 60px;
+    padding: 17px;
     /* padding: 19px 15px 10px 15px; */
     margin: 0;
     width: 100%;

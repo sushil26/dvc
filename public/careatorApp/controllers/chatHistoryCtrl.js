@@ -5,7 +5,7 @@ careatorApp.controller('chatHistoryCtrl', function ($scope, $rootScope, $filter,
 
     /* ##### Start: UserData  ##### */
     var id = $state.params.id;
-    $scope.getUserDataById = function (id) {
+    $scope.getUserDataById = function () {
         console.log("getAllEmployee-->: " + id);
         var api = "https://norecruits.com/careator_getUser/careator_getUserById/" + id;
         console.log("api: " + api);

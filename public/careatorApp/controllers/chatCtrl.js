@@ -28,12 +28,36 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         $scope.getChatGroupListById(localStorage.getItem("userId"));
     }
 
+    $scope.chatMenu = function () {
+        console.log("chatMenu-->");
+        console.log("screen.width: "+screen.width);      
+          if (screen.width < 768) {
+            $("#bcktohome").click();
+            console.log("chatMenu-->");
+            $('.side-one').css({
+                "opacity": "1"
+            });
+            $('.conversation').css({
+                "position": " ",
+                "top": " ",
+                "width": " "
+            });
+        }
+
+    }
+
     $scope.chatDetails = function (type, id) {
         console.log("chatDetails-->");
         if (screen.width < 768) {
 
-            $('.side-one').css({ "opacity": "0" });
-            $('.conversation').css({ "position": "absolute", "top": "0", "width": "100%" });
+            $('.side-one').css({
+                "opacity": "0"
+            });
+            $('.conversation').css({
+                "position": "absolute",
+                "top": "0",
+                "width": "100%"
+            });
 
         }
         $scope.selectedType = type;
@@ -103,8 +127,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                 "receiverId": $scope.individualData._id,
                 "receiverName": $scope.individualData.name
             }
-        }
-        else if ($scope.selectedType == 'group') {
+        } else if ($scope.selectedType == 'group') {
             $scope.sendGroupText_withData = {
                 "group_id": $scope.individualData._id,
                 "groupName": $scope.individualData.groupName,
@@ -222,8 +245,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                 }
             })
 
-        }
-        else {
+        } else {
             var sId = userData.userId;
             var rId = $scope.individualData._id;
             var api = "https://norecruits.com/careator_individualTextRead/individualTextReadById/" + sId + "/" + rId;

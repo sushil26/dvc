@@ -173,12 +173,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                     console.log(data.data.message);
                 }
             })
-
         }
-
-
-
-
     }
 
     $scope.getAllChatRightEmp = function () {
@@ -336,6 +331,8 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         console.log("****comm_textReceived-->: " + JSON.stringify(data));;
         console.log("$scope.individualData._id: " + $scope.individualData._id);
         console.log(" data.id: " + data.id);
+        console.log("$scope.individualData._id: " + JSON.stringify($scope.individualData));
+        console.log(" data.id: " +  JSON.stringify(data));
         if ($scope.selectedType == 'group') {
             if ($scope.allChat._id == data.id) {
                 console.log("start pushing message");

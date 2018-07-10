@@ -185,8 +185,10 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                     if ($scope.allChat == undefined) {
                         $scope.individualData = $scope.allGroupAndIndividual[index];
                     }
+                    else {
+                        $scope.individualData = $scope.allChat;
+                    }
 
-                    $scope.individualData = $scope.allChat;
                     console.log(" $scope.individualData : " + JSON.stringify($scope.individualData));
 
                     console.log(data.data.message);

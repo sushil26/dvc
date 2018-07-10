@@ -61,7 +61,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         }
         $scope.selectedType = type;
         console.log("  $scope.selectedType: " + $scope.selectedType);
-
+        console.log("id: " + id);
         var api = "https://norecruits.com/careator_getChatsById/getChatsById/" + id;
         console.log("api: " + api);
         careatorHttpFactory.get(api).then(function (data) {
@@ -104,11 +104,8 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                 console.log(data.data.message);
             }
         })
-
-
-
-        console.log("   $scope.receiverData : " + JSON.stringify($scope.receiverData));
-        console.log("sendGroupText_withData-->: " + JSON.stringify($scope.sendGroupText_withData));
+        console.log("$scope.receiverData : " + JSON.stringify($scope.receiverData));
+        // console.log("sendGroupText_withData-->: " + JSON.stringify($scope.sendGroupText_withData));
     }
 
     $scope.chatDetailsFromNew = function (type, index) {

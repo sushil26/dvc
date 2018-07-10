@@ -19,6 +19,9 @@ careatorApp.controller('chatHistoryCtrl', function ($scope, $rootScope, $filter,
                     "empId": data.data.data.empId,
                     "userId": data.data.data.userId
                 }
+                $scope.userId = userData.userId;
+                $scope.userName = userData.userName;
+                $scope.getChatGroupListById($scope.userId);
                 console.log("allGroup: " + JSON.stringify($scope.allGroup));
                 console.log(data.data.message);
             } else {
@@ -30,12 +33,7 @@ careatorApp.controller('chatHistoryCtrl', function ($scope, $rootScope, $filter,
     }
     /* ##### End: UserData  ##### */
 
-    $scope.getAllChatGroupById = function () {
-        console.log("getAllChatGroupById-->");
-        $scope.userId = userData.userId;
-        $scope.userName = userData.userName;
-        $scope.getChatGroupListById($scope.userId);
-    }
+
     $scope.allGroupAndIndividual = []; /* ### Note:$scope.allGroupAndIndividual contains All employee list(who having chat rights) and group list(which are included by login person)   ### */
 
 

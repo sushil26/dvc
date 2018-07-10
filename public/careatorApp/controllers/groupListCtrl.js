@@ -60,23 +60,32 @@ careatorApp.controller('groupListCtrl', function ($scope, $state, $rootScope, $f
     $scope.deleteGroup = function (id) {
         console.log("deleteGroup-->");
         console.log("Obj ID  " + id);
-        confirm("Are You Sure To Delete ????");
+       
+        var txt;
+        var r = confirm("Press a button!");
+        if (r == true) {
+            txt = "You pressed OK!";
+            var api = "https://norecruits.com/careator_groupDelete/groupDeleteById/" + id;
+            console.log("api: " + api);
+            careatorHttpFactory.get(api).then(function (data) {
+                console.log("data--" + JSON.stringify(data.data));
+                var checkStatus = careatorHttpFactory.dataValidation(data);
+                console.log("data--" + JSON.stringify(data.data));
+                if (checkStatus) {
+                    console.log(data.data.message);
+                    $scope.getGroupList();
+                } else {
+                    console.log("Sorry");
+                    console.log(data.data.message);
+                }
+            })
+            console.log("<--statusChange");
+        } else {
+            txt = "You pressed Cancel!";
+        }
+        document.getElementById("demo").innerHTML = txt;
 
-        var api = "https://norecruits.com/careator_groupDelete/groupDeleteById/" + id;
-        console.log("api: " + api);
-        careatorHttpFactory.get(api).then(function (data) {
-            console.log("data--" + JSON.stringify(data.data));
-            var checkStatus = careatorHttpFactory.dataValidation(data);
-            console.log("data--" + JSON.stringify(data.data));
-            if (checkStatus) {
-                console.log(data.data.message);
-                $scope.getGroupList();
-            } else {
-                console.log("Sorry");
-                console.log(data.data.message);
-            }
-        })
-        console.log("<--statusChange");
+    
 
     }
 

@@ -115,6 +115,13 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         console.log("  $scope.selectedType: " + $scope.selectedType);
         console.log(" $scope.allGroupAndIndividual[index]: " + JSON.stringify($scope.allGroupAndIndividual[index]));
         $scope.individualData = $scope.allGroupAndIndividual[index];
+        $scope.sendGroupText_withData = {
+            "group_id": $scope.individualData._id,
+            "groupName": $scope.individualData.groupName,
+            "senderId": userData.userId,
+            "senderName": userData.userName
+        }
+        console.log("sendGroupText_withData-->: " + JSON.stringify($scope.sendGroupText_withData));
         if ($scope.selectedType == 'group') {
             var group_id = $scope.individualData._id;
             var api = "https://norecruits.com/careator_groupTextRead/groupTextReadByGroupId/" + group_id;
@@ -128,13 +135,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                     //$scope.allChat = $scope.allGroupAndIndividual[index];
                     $scope.individualData = $scope.allChat;
                     console.log(" $scope.individualData : " + JSON.stringify($scope.individualData));
-                    $scope.sendGroupText_withData = {
-                        "group_id": $scope.individualData._id,
-                        "groupName": $scope.individualData.groupName,
-                        "senderId": userData.userId,
-                        "senderName": userData.userName
-                    }
-                    console.log("sendGroupText_withData-->: " + JSON.stringify($scope.sendGroupText_withData));
+                   
                     console.log(data.data.message);
                 } else {
                     console.log("Sorry");

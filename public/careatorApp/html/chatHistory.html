@@ -7,8 +7,15 @@
                         <i class="fa fa-comments"></i>
                         <span style="color:white;">&nbspChat History</span>
                     </div>
-
-
+                    <div class="form-group">
+                        <label class="col-lg-3">User Name*</label>
+                        <div class="col-lg-9">
+                            <div ng-dropdown-multiselect="" options="allUserData" selected-model="allUserModel" extra-settings="allUserSettings">
+                            </div>
+                            <pre>Selected Memebers : <span ng-repeat="user in allUserModel">{{user.label+", "}}</span></pre>
+                        </div>
+                    </div>
+                    
 
                     <link rel="stylesheet" href="./css/newChat.css" />
                     <div class="container app">
@@ -22,7 +29,6 @@
                                         </div>
                                     </div>
                                     <div class="row sideBar">
-                                
                                         <div class="row sideBar-body" ng-repeat="record in chatedGroup_records">
                                             <div class="col-sm-3 col-xs-3 sideBar-avatar" style="font-size: 35px;">
                                                 <div class="avatar-icon" ng-if="record.groupName==undefined">
@@ -166,7 +172,7 @@
                                     </div>
                                 </div> -->
                             </div>
-                           
+
                         </div>
                     </div>
 

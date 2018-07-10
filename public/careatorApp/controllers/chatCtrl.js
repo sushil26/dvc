@@ -352,9 +352,9 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         console.log(" data.id: " + data.id);
         console.log("$scope.individualData._id: " + JSON.stringify($scope.individualData));
         console.log(" data.id: " + JSON.stringify(data));
-        if ($scope.selectedType == 'group') {
+       
             if ($scope.allChat._id == data.id) {
-                console.log("start pushing message");
+                console.log("1)start pushing message");
                 $scope.allChat.chats.push({
                     "senderId": data.senderId,
                     "senderName": data.senderName,
@@ -363,19 +363,18 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                 });
                 $scope.scrollDown();
             }
-        }
+        
 
-        else {
-            if ($scope.individualData._id == data.id) {
-                console.log("start pushing message");
-                $scope.allChat.chats.push({
-                    "senderId": data.senderId,
-                    "senderName": data.senderName,
-                    "message": data.message,
-                    "sendTime": data.sendTime
-                });
-                $scope.scrollDown();
-            }
+
+        if ($scope.individualData._id == data.id) {
+            console.log("2)start pushing message");
+            $scope.allChat.chats.push({
+                "senderId": data.senderId,
+                "senderName": data.senderName,
+                "message": data.message,
+                "sendTime": data.sendTime
+            });
+            $scope.scrollDown();
         }
 
     })

@@ -38,9 +38,9 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                 "opacity": "1"
             });
             $('.conversation').css({
-                "position": "",
-                "top": "",
-                "width": ""
+                "position": " ",
+                "top": " ",
+                "width": " "
             });
         }
 

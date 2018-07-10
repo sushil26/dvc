@@ -428,6 +428,9 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
             scrollTop: $("#pulldown").prop("scrollHeight")
         }, 500);
     }
+    var elem = document.getElementById('pulldown');
+    elem.scrollTop = elem.scrollHeight;
+
 
 
 

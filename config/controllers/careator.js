@@ -859,6 +859,9 @@ module.exports.careator_getChatGroupList = function (req, res) {
 module.exports.careator_getChatRightsAllemp = function (req, res) {
     console.log("careator_getChatRightsAllemp-->: " + req.params.id);
     var restrictedUsers = req.body.restrictedTo;
+    for(var x=0;x<restrictedUsers.length;x++){
+        restrictedUsers[x]=ObjectId(restrictedUsers[x]);
+    }
     console.log("restrictedUsers: "+restrictedUsers);
     if (general.emptyCheck(restrictedUsers)) {
         careatorMaster.find({

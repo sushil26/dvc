@@ -173,6 +173,8 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
             })
         }
 
+        console.log(" $scope.receiverData : " + JSON.stringify($scope.receiverData));
+
 
     }
 

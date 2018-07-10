@@ -1137,6 +1137,15 @@ module.exports.groupText = function (req, res) {
                             };
                             res.status(400).send(responseData);
                         } else {
+                            console.log("insertedData: "+JSON.stringify(insertedData));
+                            var io = req.app.get('socketio');
+                            io.emit('comm_textReceived', {
+                                "id": data[0]._id,
+                                "senderId": obj.senderId,
+                                "senderName": obj.senderName,
+                                "message": obj.message,
+                                "sendTime": obj.sendTime
+                            }); /* ### Note: Emit message to client ### */
                             response = {
                                 status: true,
                                 message: "Sucessfully sent",
@@ -1626,7 +1635,7 @@ module.exports.restrictedTo = function (req, res) {
 module.exports.getChatsById = function (req, res) {
     console.log("getChatsById-->");
     var id = req.params.id;
-    console.log("id: "+id);
+    console.log("id: " + id);
     var response;
     if (general.emptyCheck(id)) {
         var findObj = {

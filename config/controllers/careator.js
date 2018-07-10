@@ -1137,12 +1137,6 @@ module.exports.groupText = function (req, res) {
                             };
                             res.status(400).send(responseData);
                         } else {
-                            response = {
-                                status: true,
-                                message: "Sucessfully sent",
-                                data: insertedData
-                            };
-                            res.status(200).send(response);
                             var io = req.app.get('socketio');
                             io.emit('comm_textReceived', {
                                 "id": data[0]._id,
@@ -1151,6 +1145,12 @@ module.exports.groupText = function (req, res) {
                                 "message": obj.message,
                                 "sendTime": obj.sendTime
                             }); /* ### Note: Emit message to client ### */
+                            response = {
+                                status: true,
+                                message: "Sucessfully sent",
+                                data: insertedData
+                            };
+                            res.status(200).send(response);
                         }
                     })
                 } else {
@@ -1634,7 +1634,7 @@ module.exports.restrictedTo = function (req, res) {
 module.exports.getChatsById = function (req, res) {
     console.log("getChatsById-->");
     var id = req.params.id;
-    console.log("id: "+id);
+    console.log("id: " + id);
     var response;
     if (general.emptyCheck(id)) {
         var findObj = {

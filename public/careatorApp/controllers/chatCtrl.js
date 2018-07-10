@@ -35,7 +35,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
             $("#bcktohome").click();
             console.log("chatMenu-->");
             $('.side-one').css({
-                "opacity": "1"
+                "display": "block"
             });
             $('.conversation').css({
                 "position": " ",
@@ -51,7 +51,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         console.log("screen.width : "+screen.width );
         if (screen.width < 768) {
             $('.side-one').css({
-                "opacity": "0"
+                "display": "none"
             });
             $('.conversation').css({
                 "position": "absolute",

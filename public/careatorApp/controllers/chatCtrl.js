@@ -59,6 +59,8 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                 "width": "100%"
             });
         }
+        var elem = document.getElementById('pulldown');
+        elem.scrollTop = elem.scrollHeight;
         $scope.selectedType = type;
         console.log("  $scope.selectedType: " + $scope.selectedType);
         console.log("id: " + id);
@@ -435,8 +437,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
             scrollTop: $("#pulldown").prop("scrollHeight")
         }, 500);
     }
-    var elem = document.getElementById('pulldown');
-    elem.scrollTop = elem.scrollHeight;
+  
 
 
 

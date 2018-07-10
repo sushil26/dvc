@@ -1138,13 +1138,14 @@ module.exports.groupText = function (req, res) {
                             res.status(400).send(responseData);
                         } else {
                             console.log("insertedData: "+JSON.stringify(insertedData));
+                            console.log("insertedData.ops[0]._id", insertedData.ops[0]._id);
                             var io = req.app.get('socketio');
                             io.emit('comm_textReceived', {
-                                "id": data[0]._id,
-                                "senderId": obj.senderId,
-                                "senderName": obj.senderName,
-                                "message": obj.message,
-                                "sendTime": obj.sendTime
+                                "id": insertedData.ops[0]._id,
+                                "senderId": obj.chats[0].senderId,
+                                "senderName": obj.chats[0].senderName,
+                                "message": obj.chats[0].message,
+                                "sendTime": obj.chats[0].sendTime
                             }); /* ### Note: Emit message to client ### */
                             response = {
                                 status: true,

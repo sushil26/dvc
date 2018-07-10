@@ -18,8 +18,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
         "email": localStorage.getItem("email"),
         "userName": localStorage.getItem("userName"),
         "empId": localStorage.getItem("empId"),
-        "userId": localStorage.getItem("userId")
-    
+        "userId": localStorage.getItem("userId"),
     }
     if (localStorage.getItem("videoRights") == 'yes') {
         userData.videoRights = "yes";
@@ -27,6 +26,9 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
     if (localStorage.getItem("chatRights") == 'yes') {
         userData.chatRights = "yes";
         // $scope.getChatGroupListById(localStorage.getItem("userId"));
+    }
+    if(localStorage.getItem("restrictedTo")){
+        userData.restrictedTo = restrictedTo;   
     }
 
     careatorSessionAuth.setAccess(userData);

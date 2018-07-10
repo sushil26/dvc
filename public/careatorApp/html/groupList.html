@@ -39,10 +39,11 @@
                                         {{emp.status}}
                                     </td>
                                     <td>
-                                        <button class="btn btn-primary" ng-if="emp.status=='inactive' ||emp.status== null" ng-click="statusChange(emp._id, 'active')">Activate</button>
-                                        <button class="btn btn-warning" ng-if="emp.status=='active'" ng-click="statusChange(emp._id, 'inactive')">Deactivate</button>
-                                        <button class="btn btn-danger" ng-click="deleteGroup(emp._id)">Delete</button>
-                                        <button class="btn btn-info" ng-click="editGroup($index)">Edit</button>
+                                        <button class="btn btn-primary fa fa-user-plus" ng-if="emp.status=='inactive' ||emp.status== null" ng-click="statusChange(emp._id, 'active')">&nbsp;Activate</button>
+                                        <button class="btn btn-warning fa fa-user-times" ng-if="emp.status=='active'" ng-click="statusChange(emp._id, 'inactive')">&nbsp;Deactivate</button>
+                                        <button class="btn btn-danger fa fa-trash" ng-click="deleteGroup(emp._id)">&nbsp;Delete</button>
+                                        <button class="btn btn-info fa fa-pencil-square-o" ng-click="editGroup($index)">&nbsp;Edit</button>
+
                                     </td>
 
                                 </tr>

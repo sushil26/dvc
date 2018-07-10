@@ -1,63 +1,32 @@
-careatorApp.controller('chatHistoryCtrl', function ($scope, $rootScope, $filter, careatorSessionAuth, careatorHttpFactory) {
+careatorApp.controller('chatHistoryCtrl', function ($scope, $rootScope, $filter, $state, careatorHttpFactory) {
     console.log("chatHistoryCtrl==>");
     var allUsers;
     var userData;
-    /* ##### Start: UserList  ##### */
-    $scope.allUserSettings = {
-        scrollableHeight: '200px',
-        scrollable: true,
-        enableSearch: true,
-        externalIdProp: '',
-        selectionLimit: 1,
-    };
-    $scope.allUserData = [];
-    $scope.allUserModel = [];
-    $scope.rightEmployeeList = function () {
-        console.log("rightEmployeeList-->");
-        var api = "https://norecruits.com/careator/getChatRights_emp";
-        console.log("api: " + JSON.stringify(api));
+
+    /* ##### Start: UserData  ##### */
+    var id = $state.params.id;
+    $scope.getUserDataById = function (id) {
+        console.log("getAllEmployee-->: " + id);
+        var api = "https://norecruits.com/careator_getUser/careator_getUserById/" + id;
+        console.log("api: " + api);
         careatorHttpFactory.get(api).then(function (data) {
             console.log("data--" + JSON.stringify(data.data));
             var checkStatus = careatorHttpFactory.dataValidation(data);
-            console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
-                allUsers = data.data.data;
-                console.log("allUsers: " + JSON.stringify(allUsers));
-                $scope.allUserData = [];
-                for (var x = 0; x < allUsers.length; x++) {
-                    console.log(" before $scope.allUserData: " + JSON.stringify($scope.allUserData));
-                    console.log("allUsers[x].email: " + allUsers[x].email + " allUsers[x]._id: " + allUsers[x]._id);
-                    $scope.allUserData.push({
-                        "email": allUsers[x].email,
-                        "label": allUsers[x].name + " - " + allUsers[x].empId,
-                        "id": allUsers[x]._id,
-                        "index": x
-                    });
-
-                }
+                userData = data.data.data;
+                console.log("allGroup: " + JSON.stringify($scope.allGroup));
                 console.log(data.data.message);
-            }
-            else {
+            } else {
                 console.log("Sorry");
                 console.log(data.data.message);
             }
         })
-        console.log("<--rightEmployeeList");
+        console.log("<--getAllEmployee");
     }
-    $scope.rightEmployeeList();
-    /* ##### End: UserList  ##### */
+    /* ##### End: UserData  ##### */
 
     $scope.getAllChatGroupById = function () {
         console.log("getAllChatGroupById-->");
-        console.log(" $scope.allUserModel[0].index : " + $scope.allUserModel[0].index);
-        var index = $scope.allUserModel[0].index;
-        userData = {
-            "email": allUsers[index].email,
-            "userName": allUsers[index].name,
-            "empId": allUsers[index].empId,
-            "userId": allUsers[index]._id
-        }
-        console.log("userData: " + JSON.stringify(userData));
         $scope.userId = userData.userId;
         $scope.userName = userData.userName;
         $scope.getChatGroupListById($scope.userId);

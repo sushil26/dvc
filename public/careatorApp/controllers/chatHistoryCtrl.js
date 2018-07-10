@@ -15,9 +15,9 @@ careatorApp.controller('chatHistoryCtrl', function ($scope, $rootScope, $filter,
             if (checkStatus) {
                 userData = {
                     "email": data.data.data[0].email,
-                    "userName": data.data.data[0].userName,
+                    "userName": data.data.data[0].name,
                     "empId": data.data.data[0].empId,
-                    "userId": data.data.data[0].userId
+                    "userId": data.data.data[0]._id
                 }
                 console.log("userData: " + JSON.stringify(userData));
                 $scope.userId = userData.userId;

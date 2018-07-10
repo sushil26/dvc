@@ -35,7 +35,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
             $("#bcktohome").click();
             console.log("chatMenu-->");
             $('.side-one').css({
-                "display": "block"
+                "display": " "
             });
             $('.conversation').css({
                 "position": " ",

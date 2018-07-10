@@ -77,7 +77,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                         "senderId": userData.userId,
                         "senderName": userData.userName,
                     }
-                    console.log(" Before  $scope.receiverData : " + JSON.stringify($scope.receiverData));
+                    
                     if ($scope.individualData.receiverId != userData.userId) {
                         $scope.receiverData.receiverId = $scope.individualData.receiverId;
                         $scope.receiverData.receiverName = $scope.individualData.receiverName;
@@ -86,6 +86,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                         $scope.receiverData.receiverId = $scope.individualData.senderId;
                         $scope.receiverData.receiverName = $scope.individualData.senderName;
                     }
+                    console.log(" $scope.receiverData : " + JSON.stringify($scope.receiverData));
                 }
                 else if ($scope.selectedType == 'group') {
                     $scope.sendGroupText_withData = {

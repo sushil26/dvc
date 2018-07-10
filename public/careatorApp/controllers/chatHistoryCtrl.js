@@ -1,11 +1,6 @@
 careatorApp.controller('chatHistoryCtrl', function ($scope, $rootScope, $filter, careatorSessionAuth, careatorHttpFactory) {
     console.log("chatHistoryCtrl==>");
-
-    var userData = careatorSessionAuth.getAccess("userData");
-    $scope.userId = userData.userId;
-    console.log("userData: " + JSON.stringify(userData));
-    $scope.allGroupAndIndividual = []; /* ### Note:$scope.allGroupAndIndividual contains All employee list(who having chat rights) and group list(which are included by login person)   ### */
-
+    var allUsers;
     /* ##### Start: UserList  ##### */
     $scope.allUserSettings = {
         scrollableHeight: '200px',
@@ -34,9 +29,10 @@ careatorApp.controller('chatHistoryCtrl', function ($scope, $rootScope, $filter,
                     $scope.allUserData.push({
                         "email": allUsers[x].email,
                         "label": allUsers[x].name + " - " + allUsers[x].empId,
-                        "id": allUsers[x]._id
+                        "id": allUsers[x]._id,
+                        "index": x
                     });
-                    
+
                 }
                 console.log(data.data.message);
             }
@@ -49,6 +45,19 @@ careatorApp.controller('chatHistoryCtrl', function ($scope, $rootScope, $filter,
     }
     $scope.rightEmployeeList();
     /* ##### End: UserList  ##### */
+
+    $scope.getAllChatGroupById = function () {
+        console.log("getAllChatGroupById-->");
+        console.log(" $scope.allUserModel[0].index : " + $scope.allUserModel[0].index);
+        var index = $scope.allUserModel[0].index;
+        console.log("allUsers[index]: " + JSON.stringify(allUsers[index]));
+    }
+
+    var userData = careatorSessionAuth.getAccess("userData");
+    $scope.userId = userData.userId;
+    console.log("userData: " + JSON.stringify(userData));
+    $scope.allGroupAndIndividual = []; /* ### Note:$scope.allGroupAndIndividual contains All employee list(who having chat rights) and group list(which are included by login person)   ### */
+
 
     $scope.getChatGroupListById = function (id) {
         console.log("getAllEmployee-->: " + id);
@@ -141,7 +150,7 @@ careatorApp.controller('chatHistoryCtrl', function ($scope, $rootScope, $filter,
                         }
                     }
                     console.log("$scope.individualData : " + JSON.stringify($scope.individualData));
-                    
+
                     console.log("sendGroupText_withData-->: " + JSON.stringify($scope.sendGroupText_withData));
                     // $scope.readText();
                 } else {
@@ -437,41 +446,41 @@ careatorApp.controller('chatHistoryCtrl', function ($scope, $rootScope, $filter,
         //     });
         //     $scope.scrollDown();
         // }
-if(data.freshInsert==true){
-    var id = data.id;
-    var api = "https://norecruits.com/careator_getChatsById/getChatsById/" + id;
-    console.log("api: " + api);
-    careatorHttpFactory.get(api).then(function (data) {
-        console.log("data--" + JSON.stringify(data.data));
-        var checkStatus = careatorHttpFactory.dataValidation(data);
-        if (checkStatus) {
-            $scope.allChat = data.data.data;
-            $scope.individualData = data.data.data;
-            console.log("$scope.allChat: " + JSON.stringify($scope.allChat));
-            console.log("$scope.individualData : " + JSON.stringify($scope.individualData));
+        if (data.freshInsert == true) {
+            var id = data.id;
+            var api = "https://norecruits.com/careator_getChatsById/getChatsById/" + id;
+            console.log("api: " + api);
+            careatorHttpFactory.get(api).then(function (data) {
+                console.log("data--" + JSON.stringify(data.data));
+                var checkStatus = careatorHttpFactory.dataValidation(data);
+                if (checkStatus) {
+                    $scope.allChat = data.data.data;
+                    $scope.individualData = data.data.data;
+                    console.log("$scope.allChat: " + JSON.stringify($scope.allChat));
+                    console.log("$scope.individualData : " + JSON.stringify($scope.individualData));
 
-            $scope.receiverData = {
-                "senderId": userData.userId,
-                "senderName": userData.userName,
-            }
+                    $scope.receiverData = {
+                        "senderId": userData.userId,
+                        "senderName": userData.userName,
+                    }
 
-            if ($scope.individualData.receiverId != userData.userId) {
-                $scope.receiverData.receiverId = $scope.individualData.receiverId;
-                $scope.receiverData.receiverName = $scope.individualData.receiverName;
-            }
-            else if ($scope.individualData.senderId != userData.userId) {
-                $scope.receiverData.receiverId = $scope.individualData.senderId;
-                $scope.receiverData.receiverName = $scope.individualData.senderName;
-            }
-            console.log(" $scope.receiverData : " + JSON.stringify($scope.receiverData));
+                    if ($scope.individualData.receiverId != userData.userId) {
+                        $scope.receiverData.receiverId = $scope.individualData.receiverId;
+                        $scope.receiverData.receiverName = $scope.individualData.receiverName;
+                    }
+                    else if ($scope.individualData.senderId != userData.userId) {
+                        $scope.receiverData.receiverId = $scope.individualData.senderId;
+                        $scope.receiverData.receiverName = $scope.individualData.senderName;
+                    }
+                    console.log(" $scope.receiverData : " + JSON.stringify($scope.receiverData));
 
 
-        } else {
-            console.log("Sorry");
-            console.log(data.data.message);
+                } else {
+                    console.log("Sorry");
+                    console.log(data.data.message);
+                }
+            })
         }
-    })
-}
 
 
         if ($scope.individualData._id == data.id) {
@@ -517,7 +526,7 @@ if(data.freshInsert==true){
             scrollTop: $("#pulldown").prop("scrollHeight")
         }, 500);
     }
-  
+
 
 
 

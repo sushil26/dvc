@@ -19,7 +19,7 @@
 
                     <link rel="stylesheet" href="./css/newChat.css" />
                     <div class="container app" ng-if="allUserModel.length>0">
-                        <div class="row app-one">
+                        <div class="row app-one" ng-init="getAllChatGroupById()">
                             <div class="col-sm-4 side">
                                 <div class="side-one">
                                     <div class="row heading">

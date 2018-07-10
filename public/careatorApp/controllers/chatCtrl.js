@@ -73,20 +73,27 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                     $scope.allChat = data.data.data[0];
                     if ($scope.allChat == undefined) {
                         $scope.individualData = $scope.chatedGroup_records[index];
+                        $scope.sendGroupText_withData = {
+                            "group_id": $scope.individualData._id,
+                            "groupName": $scope.individualData.groupName,
+                            "senderId": userData.userId,
+                            "senderName": userData.userName
+                        }
                         // $scope.individualData = data.data.data[0];
                     }
                     else {
                         $scope.individualData = data.data.data[0];
                         console.log("$scope.allChat: " + JSON.stringify($scope.allChat));
                         console.log("$scope.allChat.chats: " + JSON.stringify($scope.allChat.chats));
+                        $scope.sendGroupText_withData = {
+                            "group_id": $scope.individualData.group_id,
+                            "groupName": $scope.individualData.groupName,
+                            "senderId": userData.userId,
+                            "senderName": userData.userName
+                        }
                     }
                     console.log("$scope.individualData : " + JSON.stringify($scope.individualData));
-                    $scope.sendGroupText_withData = {
-                        "group_id": $scope.individualData.group_id,
-                        "groupName": $scope.individualData.groupName,
-                        "senderId": userData.userId,
-                        "senderName": userData.userName
-                    }
+                    
                     console.log("sendGroupText_withData-->: " + JSON.stringify($scope.sendGroupText_withData));
                     // $scope.readText();
                 } else {

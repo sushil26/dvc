@@ -172,12 +172,15 @@
                                     </div> -->
                                     <div class="row message-body" ng-repeat="chat in allChat.chats">
                                         <div class="col-sm-12 message-main-receiver" ng-if="chat.senderId!=userId">
+                                            <div>
+                                                {{chat.senderName}}
+                                            </div>
                                             <div class="receiver">
                                                 <div class="message-text">
                                                     {{chat.message}}
                                                 </div>
                                                 <span class="message-time pull-right">
-                                                    {{chat.senderName}} - {{chat.sendTime | date:' d MMM yyyy h:mm a'}}
+                                                    {{chat.sendTime | date:' d MMM yyyy h:mm a'}}
                                                 </span>
                                             </div>
                                         </div>

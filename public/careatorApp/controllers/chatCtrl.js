@@ -226,6 +226,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         console.log("getAllChatRightEmp-->");
         $scope.allGroupAndIndividual = [];
         var id = userData.userId;
+        var restrictedUser = [];
         api = "https://norecruits.com/careator_getEmp/careator_getChatRightsAllemp/" + id;
         console.log("api: " + JSON.stringify(api));
         careatorHttpFactory.get(api).then(function (data) {

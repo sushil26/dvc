@@ -171,6 +171,10 @@ function checkPassword() {
       localStorage.setItem("chatRights", 'yes');
       document.getElementById("chatConfStart").style.display = "inline";
     }
+    if(data.data.restrictedTo)
+    {
+      localStorage.setItem("restrictedTo", data.data.restrictedTo);
+    }
     var userNameEmail = localStorage.getItem("careatorEmail");
     var emailIdSplit = userNameEmail.split('@');
     //userName = emailIdSplit[0];

@@ -947,6 +947,15 @@ module.exports.individualText = function (req, res) {
                         };
                         res.status(400).send(responseData);
                     } else {
+                        var io = req.app.get('socketio');
+                            io.emit('comm_textReceived', {
+                                "id": insertedData.ops[0]._id,
+                                "senderId": obj.chats[0].senderId,
+                                "senderName": obj.chats[0].senderName,
+                                "message": obj.chats[0].message,
+                                "sendTime": obj.chats[0].sendTime,
+                                "freshInsert": true 
+                            }); /* ### Note: Emit message to client ### */
                         response = {
                             status: true,
                             message: "Sucessfully sent",

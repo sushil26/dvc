@@ -82,7 +82,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                         "senderName": userData.userName
                     }
                     console.log("sendGroupText_withData-->: " + JSON.stringify($scope.sendGroupText_withData));
-                    $scope.readText();
+                    // $scope.readText();
                 } else {
                     console.log("Sorry");
                     console.log(data.data.message);

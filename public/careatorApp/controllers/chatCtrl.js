@@ -142,7 +142,8 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
             "senderId": userData.userId,
             "senderName": userData.userName
         }
-        console.log("sendGroupText_withData-->: " + JSON.stringify($scope.sendGroupText_withData));
+        console.log("sendGroupText_withData-->: " + JSON.stringify($scope.individualData));
+        console.log("individualData-->: " + JSON.stringify($scope.sendGroupText_withData));
         if ($scope.selectedType == 'group') {
             var group_id = $scope.individualData._id;
             var api = "https://norecruits.com/careator_groupTextRead/groupTextReadByGroupId/" + group_id;

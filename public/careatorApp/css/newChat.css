@@ -157,7 +157,7 @@ box-shadow: none;
     position: relative;
     padding: 2px !important;
     border-bottom: 1px solid #f7f7f7;
-    height: 54px;
+    /* height: 54px; */
     margin: 0 !important;
     cursor: pointer;
 }

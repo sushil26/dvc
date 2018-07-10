@@ -1145,7 +1145,8 @@ module.exports.groupText = function (req, res) {
                                 "senderId": obj.chats[0].senderId,
                                 "senderName": obj.chats[0].senderName,
                                 "message": obj.chats[0].message,
-                                "sendTime": obj.chats[0].sendTime
+                                "sendTime": obj.chats[0].sendTime,
+                                "freshInsert": true 
                             }); /* ### Note: Emit message to client ### */
                             response = {
                                 status: true,

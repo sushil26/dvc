@@ -48,8 +48,8 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
 
     $scope.chatDetails = function (type, id) {
         console.log("chatDetails-->");
+        console.log("screen.width : "+screen.width );
         if (screen.width < 768) {
-
             $('.side-one').css({
                 "opacity": "0"
             });
@@ -58,7 +58,6 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                 "top": "0",
                 "width": "100%"
             });
-
         }
         $scope.selectedType = type;
         console.log("  $scope.selectedType: " + $scope.selectedType);

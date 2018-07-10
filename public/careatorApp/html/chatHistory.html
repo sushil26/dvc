@@ -15,10 +15,10 @@
                             <pre>Selected Memebers : <span ng-repeat="user in allUserModel">{{user.label+", "}}</span></pre>
                         </div>
                     </div>
-                    
+
 
                     <link rel="stylesheet" href="./css/newChat.css" />
-                    <div class="container app">
+                    <div class="container app" ng-if="allUserModel.length>0">
                         <div class="row app-one">
                             <div class="col-sm-4 side">
                                 <div class="side-one">

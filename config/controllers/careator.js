@@ -1138,6 +1138,7 @@ module.exports.groupText = function (req, res) {
                             res.status(400).send(responseData);
                         } else {
                             console.log("insertedData: "+JSON.stringify(insertedData));
+                            console.log("insertedData.insertedIds", insertedData.insertedIds);
                             var io = req.app.get('socketio');
                             io.emit('comm_textReceived', {
                                 "id": data[0]._id,

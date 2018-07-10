@@ -76,7 +76,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                     console.log("$scope.allChat.chats: " + JSON.stringify($scope.allChat.chats));
                     console.log("$scope.individualData : " + JSON.stringify($scope.individualData));
                     $scope.sendGroupText_withData = {
-                        "group_id": $scope.individualData._id,
+                        "group_id": $scope.individualData.group_id,
                         "groupName": $scope.individualData.groupName,
                         "senderId": userData.userId,
                         "senderName": userData.userName

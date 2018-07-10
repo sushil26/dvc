@@ -187,6 +187,7 @@ box-shadow: none;
 }
 
 .sideBar-name {
+    text-transform: capitalize;
     padding: 10px !important;
 }
 

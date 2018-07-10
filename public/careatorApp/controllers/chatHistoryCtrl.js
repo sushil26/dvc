@@ -26,7 +26,6 @@ careatorApp.controller('chatHistoryCtrl', function ($scope, $rootScope, $filter,
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
                 allUsers = data.data.data;
-
                 console.log("allUsers: " + JSON.stringify(allUsers));
                 $scope.allUserData = [];
                 for (var x = 0; x < allUsers.length; x++) {
@@ -37,12 +36,7 @@ careatorApp.controller('chatHistoryCtrl', function ($scope, $rootScope, $filter,
                         "label": allUsers[x].name + " - " + allUsers[x].empId,
                         "id": allUsers[x]._id
                     });
-                    for (var y = 0; y < $scope.selectedMembers.length; y++) {
-                        console.log("y iteration-->");
-                        if ($scope.selectedMembers[y].id == $scope.allUserData[x].id) {
-                            $scope.allUserModel.push($scope.allUserData[x]);
-                        }
-                    }
+                    
                 }
                 console.log(data.data.message);
             }

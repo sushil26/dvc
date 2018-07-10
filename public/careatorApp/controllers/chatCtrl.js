@@ -228,7 +228,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         splitRestrictedUser[splitRestrictedUser.length] = id;
           var restrictedUsers = splitRestrictedUser;
     
-        console.log("obj: "+JSON.stringify(obj));
+        // console.log("obj: "+JSON.stringify(obj));
         api = "https://norecruits.com/careator_getEmp/careator_getChatRightsAllemp/" + restrictedUsers;
         console.log("api: " + JSON.stringify(api));
         careatorHttpFactory.get(api).then(function (data) {

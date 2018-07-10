@@ -86,6 +86,7 @@
     color: white;
     display: block;
     margin-top: 10px;
+    text-transform: capitalize;
 }
 
 .heading-online {
@@ -516,6 +517,7 @@ box-shadow: none;
         margin: 0 !important;
     }
     .sideBar-name {
+        text-transform: capitalize;
         padding: 10px 5px !important;
     }
     .name-meta {

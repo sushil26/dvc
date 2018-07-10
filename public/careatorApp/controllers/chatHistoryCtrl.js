@@ -1,4 +1,4 @@
-careatorApp.controller('chatHistoryCtrl', function ($scope, $rootScope, $filter, $window) {
+careatorApp.controller('chatHistoryCtrl', function ($scope, $rootScope, $filter, careatorSessionAuth, careatorHttpFactory) {
     console.log("chatHistoryCtrl==>");
 
     var userData = careatorSessionAuth.getAccess("userData");

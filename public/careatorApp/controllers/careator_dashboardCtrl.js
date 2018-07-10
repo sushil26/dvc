@@ -27,10 +27,15 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
         userData.chatRights = "yes";
         // $scope.getChatGroupListById(localStorage.getItem("userId"));
     }
-    console.log("localStorage.getItem(restrictedTo): "+JSON.stringify(localStorage.getItem("restrictedTo")));
-    // if(localStorage.getItem("restrictedTo")){
-    //     userData.restrictedTo = restrictedTo;   
-    // }
+    console.log("localStorage.getItem(restrictedTo): " + JSON.stringify(localStorage.getItem("restrictedTo")));
+    if (localStorage.getItem("restrictedTo")) {
+        var restrictedTo = localStorage.getItem("restrictedTo");
+        var restrictedArray = [];
+        for (var x = 0; x < restrictedTo.length; x++) {
+            restrictedArray.push(restrictedTo[x].userId);
+        }
+        userData.restrictedTo =restrictedArray;
+    }
 
     careatorSessionAuth.setAccess(userData);
     var userData = careatorSessionAuth.getAccess("userData");

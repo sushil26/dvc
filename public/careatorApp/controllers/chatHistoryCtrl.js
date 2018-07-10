@@ -268,6 +268,7 @@ careatorApp.controller('chatHistoryCtrl', function ($scope, $rootScope, $filter,
                 for (var x = 0; x < $scope.allGroup.length; x++) {
                     $scope.chatedGroup_records.push($scope.allGroup[x]);
                 }
+                console.log(" $scope.chatedGroup_records[3]: "+ $scope.chatedGroup_records[3]);
 
             } else {
                 console.log("Sorry");

@@ -226,12 +226,14 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         var splitRestrictedUser = restrictedUser.split(',');
         console.log("splitRestrictedUser: " + JSON.stringify(splitRestrictedUser));
         splitRestrictedUser[splitRestrictedUser.length] = id;
-          var restrictedUsers = splitRestrictedUser;
-    
-        // console.log("obj: "+JSON.stringify(obj));
-        api = "https://norecruits.com/careator_getEmp/careator_getChatRightsAllemp/" + restrictedUsers;
+        var restrictedUsers = splitRestrictedUser;
+        var obj = {
+            "restrictedTo": restrictedUsers
+        }
+        console.log("obj: " + JSON.stringify(obj));
+        api = "https://norecruits.com/careator_getEmp/careator_getChatRightsAllemp"; /* #### without restricted emp  #### */
         console.log("api: " + JSON.stringify(api));
-        careatorHttpFactory.get(api).then(function (data) {
+        careatorHttpFactory.post(api, obj).then(function (data) {
             console.log("data--" + JSON.stringify(data.data));
             var checkStatus = careatorHttpFactory.dataValidation(data);
             if (checkStatus) {

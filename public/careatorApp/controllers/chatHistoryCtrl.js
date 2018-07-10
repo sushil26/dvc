@@ -14,10 +14,10 @@ careatorApp.controller('chatHistoryCtrl', function ($scope, $rootScope, $filter,
             var checkStatus = careatorHttpFactory.dataValidation(data);
             if (checkStatus) {
                 userData = {
-                    "email": data.data.data.email,
-                    "userName": data.data.data.userName,
-                    "empId": data.data.data.empId,
-                    "userId": data.data.data.userId
+                    "email": data.data.data[0].email,
+                    "userName": data.data.data[0].userName,
+                    "empId": data.data.data[0].empId,
+                    "userId": data.data.data[0].userId
                 }
                 console.log("userData: " + JSON.stringify(userData));
                 $scope.userId = userData.userId;

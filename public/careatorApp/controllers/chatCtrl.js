@@ -29,7 +29,9 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
     }
 
     $scope.chatMenu = function () {
-        if (screen.width < 768) {
+        console.log("chatMenu-->");
+        console.log("screen.width: "+screen.width);      
+          if (screen.width < 768) {
             $("#bcktohome").click();
             console.log("chatMenu-->");
             $('.side-one').css({

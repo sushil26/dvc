@@ -202,7 +202,7 @@ careatorApp.controller('chatHistoryCtrl', function ($scope, $rootScope, $filter,
         // console.log("sendGroupText_withData-->: " + JSON.stringify($scope.sendGroupText_withData));
     }
 
-    
+
     $scope.getEmpDetail = function (index) {
         console.log("getEmpDetail-->");
         $scope.selectedType = "individual_chats";
@@ -212,7 +212,7 @@ careatorApp.controller('chatHistoryCtrl', function ($scope, $rootScope, $filter,
         $scope.readText();
     }
 
- 
+
     $scope.readText = function () {
         console.log("readText-->");
         if ($scope.selectedType == 'group') {
@@ -268,15 +268,15 @@ careatorApp.controller('chatHistoryCtrl', function ($scope, $rootScope, $filter,
                 for (var x = 0; x < $scope.allGroup.length; x++) {
                     $scope.chatedGroup_records.push($scope.allGroup[x]);
                 }
-                console.log(" $scope.chatedGroup_records[3]: "+ $scope.chatedGroup_records[3]);
-
+                console.log(" $scope.chatedGroup_records[0]: " + JSON.stringify($scope.chatedGroup_records[0]));
+                console.log(" $scope.chatedGroup_records[3]: " + JSON.stringify($scope.chatedGroup_records[3]));
             } else {
                 console.log("Sorry");
                 console.log(data.data.message);
             }
         })
     }
-   
+
 
     /* ### Start: receive message from careator.js  ### */ //update to client with new message;
     socket.on('comm_textReceived', function (data) {

@@ -365,16 +365,17 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
             }
         }
 
-
-        if ($scope.individualData._id == data.id) {
-            console.log("start pushing message");
-            $scope.allChat.chats.push({
-                "senderId": data.senderId,
-                "senderName": data.senderName,
-                "message": data.message,
-                "sendTime": data.sendTime
-            });
-            $scope.scrollDown();
+        else {
+            if ($scope.individualData._id == data.id) {
+                console.log("start pushing message");
+                $scope.allChat.chats.push({
+                    "senderId": data.senderId,
+                    "senderName": data.senderName,
+                    "message": data.message,
+                    "sendTime": data.sendTime
+                });
+                $scope.scrollDown();
+            }
         }
 
     })

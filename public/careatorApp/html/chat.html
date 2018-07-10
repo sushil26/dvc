@@ -135,10 +135,10 @@
                             <div class="col-sm-8 conversation">
                                 <div class="row heading">
                                     <div class="col-sm-2 col-md-1 col-xs-3 heading-avatar">
-                                        <div class="avatar-icon" ng-if="selectedType=='group'">
+                                        <div class="avatar-icon" ng-if="record.groupName!==undefined">
                                             <img src="./css/group.png">
                                         </div>
-                                        <div class="avatar-icon" ng-if="selectedType=='individual_chats'">
+                                        <div class="avatar-icon" ng-if="record.groupName==undefined">
                                             <img src="./css/user.png">
                                         </div>
                                     </div>
@@ -231,7 +231,7 @@
                                         <!-- <i class="fa fa-microphone fa-2x" aria-hidden="true"></i> -->
                                     </div>
                                     <div class="col-sm-1 col-xs-1 reply-send">
-                                        <button class="fa fa-send fa-2x" aria-hidden="true" id="sndmgs" ng-click="sendText()">&nbsp;Send</button>
+                                        <i class="fa fa-send fa-2x" aria-hidden="true" id="sndmgs" ng-click="sendText()"></i>
                                     </div>
                                 </div>
                             </div>

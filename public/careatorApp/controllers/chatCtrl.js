@@ -164,7 +164,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                     $scope.allChat = data.data.data[0];
                     console.log("allChat: " + JSON.stringify($scope.allChat));
                     //$scope.allChat = $scope.allGroupAndIndividual[index];
-                    //$scope.individualData = $scope.allChat;
+                    $scope.individualData = $scope.allChat;
                     console.log(" $scope.individualData : " + JSON.stringify($scope.individualData));
 
                     console.log(data.data.message);
@@ -332,7 +332,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         console.log("$scope.individualData._id: " + $scope.individualData._id);
         console.log(" data.id: " + data.id);
         console.log("$scope.individualData._id: " + JSON.stringify($scope.individualData));
-        console.log(" data.id: " +  JSON.stringify(data));
+        console.log(" data.id: " + JSON.stringify(data));
         if ($scope.selectedType == 'group') {
             if ($scope.allChat._id == data.id) {
                 console.log("start pushing message");

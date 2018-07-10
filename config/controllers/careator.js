@@ -866,7 +866,7 @@ module.exports.careator_getChatRightsAllemp = function (req, res) {
     if (general.emptyCheck(restrictedUsers)) {
         careatorMaster.find({
             "_id": {
-                $nin: restrictedUsers
+                $in: restrictedUsers
             },
             "chatRights": "yes",
             "status": "active"

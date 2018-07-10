@@ -27,6 +27,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
         userData.chatRights = "yes";
         // $scope.getChatGroupListById(localStorage.getItem("userId"));
     }
+    console.log("localStorage.getItem(restrictedTo): "+JSON.stringify(localStorage.getItem("restrictedTo")));
     // if(localStorage.getItem("restrictedTo")){
     //     userData.restrictedTo = restrictedTo;   
     // }

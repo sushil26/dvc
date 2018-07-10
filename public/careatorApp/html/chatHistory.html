@@ -7,14 +7,14 @@
                         <i class="fa fa-comments"></i>
                         <span style="color:white;">&nbspChat History</span>
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label class="col-lg-3">User Name*</label>
                         <div class="col-lg-9">
                             <div ng-dropdown-multiselect="" options="allUserData" selected-model="allUserModel" extra-settings="allUserSettings">
                             </div>
                             <pre>Selected Memebers : <span ng-repeat="user in allUserModel">{{user.label+", "}}</span></pre>
                         </div>
-                    </div>
+                    </div> -->
                     <link rel="stylesheet" href="./css/newChat.css" />
                     <div class="container app" ng-if="allUserModel.length>0">
                         <div class="row app-one" ng-init="getAllChatGroupById()">

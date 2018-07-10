@@ -146,6 +146,13 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
             })
 
         } else {
+            $scope.receiverData = {
+                "senderId": userData.userId,
+                "senderName": userData.userName,
+                "receiverId": $scope.individualData._id,
+                "receiverName": $scope.individualData.name
+            }
+            console.log(" $scope.receiverData : " + JSON.stringify($scope.receiverData));
             var sId = userData.userId;
             var rId = $scope.individualData._id;
             var api = "https://norecruits.com/careator_individualTextRead/individualTextReadById/" + sId + "/" + rId;
@@ -157,25 +164,19 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                     $scope.allChat = data.data.data[0];
                     console.log("allChat: " + JSON.stringify($scope.allChat));
                     //$scope.allChat = $scope.allGroupAndIndividual[index];
-                    $scope.individualData = $scope.allChat;
+                    //$scope.individualData = $scope.allChat;
                     console.log(" $scope.individualData : " + JSON.stringify($scope.individualData));
-                    $scope.receiverData = {
-                        "senderId": userData.userId,
-                        "senderName": userData.userName,
-                        "receiverId": $scope.individualData._id,
-                        "receiverName": $scope.individualData.receiverName
-                    }
-                    console.log(" $scope.receiverData : " + JSON.stringify($scope.receiverData));
+
                     console.log(data.data.message);
                 } else {
                     console.log("Sorry");
                     console.log(data.data.message);
                 }
             })
-           
+
         }
 
-      
+
 
 
     }

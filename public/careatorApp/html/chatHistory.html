@@ -7,15 +7,19 @@
                         <i class="fa fa-comments"></i>
                         <span style="color:white;">&nbspChat History</span>
                     </div>
-                    <div class="panel-heading">
-                            <label class="col-lg-3">User Name*</label>
+                    
+                    <div class="panel-body bio-graph-info" style="padding: 15px;">
+                        <form class="form-horizontal" role="form" enctype="multipart/form-data">
+                            <div class="form-group ">
+                                <label class="col-lg-3">User Name*</label>
                                 <div class="col-lg-9">
                                     <div style="float: left;" ng-dropdown-multiselect="" options="allUserData" selected-model="allUserModel" extra-settings="allUserSettings">
                                     </div>
                                     <pre style="float: left;" >Selected User : <span ng-repeat="user in allUserModel">{{user.label+", "}}</span></pre>
                                 </div>
-                        </div>
-                    
+                            </div>
+                        </form>
+                    </div>
                     <!-- <div class="form-group">
                         <label class="col-lg-3">User Name*</label>
                         <div class="col-lg-9">

@@ -76,7 +76,7 @@ careatorApp.controller('chatHistoryCtrl', function ($scope, $rootScope, $filter,
                 $scope.allGroup = data.data.data;
                 console.log("allGroup: " + JSON.stringify($scope.allGroup));
                 console.log(data.data.message);
-                $scope.getAllChatRightEmp();
+                $scope.getChatRecords();
             } else {
                 console.log("Sorry");
                 console.log(data.data.message);
@@ -202,32 +202,6 @@ careatorApp.controller('chatHistoryCtrl', function ($scope, $rootScope, $filter,
         // console.log("sendGroupText_withData-->: " + JSON.stringify($scope.sendGroupText_withData));
     }
 
-
-    $scope.getAllChatRightEmp = function () {
-        console.log("getAllChatRightEmp-->");
-        $scope.allGroupAndIndividual = [];
-        var id = userData.userId;
-        api = "https://norecruits.com/careator_getEmp/careator_getChatRightsAllemp/" + id;
-        console.log("api: " + JSON.stringify(api));
-        careatorHttpFactory.get(api).then(function (data) {
-            console.log("data--" + JSON.stringify(data.data));
-            var checkStatus = careatorHttpFactory.dataValidation(data);
-            if (checkStatus) {
-                $scope.allEmp = data.data.data;
-                console.log(" $scope.allEmp : " + JSON.stringify($scope.allEmp));
-                console.log("data.data.message: " + data.data.message);
-                for (var x = 0; x < $scope.allEmp.length; x++) {
-                    $scope.allGroupAndIndividual.push($scope.allEmp[x]);
-                }
-                for (var x = 0; x < $scope.allGroup.length; x++) {
-                    $scope.allGroupAndIndividual.push($scope.allGroup[x]);
-                }
-                console.log(" $scope.allGroupAndIndividual: " + JSON.stringify($scope.allGroupAndIndividual));
-            } else {
-                console.log("Sorry: " + data.data.message);
-            }
-        })
-    }
     
     $scope.getEmpDetail = function (index) {
         console.log("getEmpDetail-->");
@@ -301,7 +275,7 @@ careatorApp.controller('chatHistoryCtrl', function ($scope, $rootScope, $filter,
             }
         })
     }
-    $scope.getChatRecords();
+   
 
     /* ### Start: receive message from careator.js  ### */ //update to client with new message;
     socket.on('comm_textReceived', function (data) {

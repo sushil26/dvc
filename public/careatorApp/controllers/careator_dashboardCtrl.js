@@ -31,7 +31,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
     if (localStorage.getItem("restrictedTo")) {
        
        
-        userData.restrictedTo =restrictedArray;
+        userData.restrictedTo =localStorage.getItem("restrictedTo");
     }
 
     careatorSessionAuth.setAccess(userData);

@@ -19,10 +19,11 @@ careatorApp.controller('chatHistoryCtrl', function ($scope, $rootScope, $filter,
                     "empId": data.data.data.empId,
                     "userId": data.data.data.userId
                 }
+                console.log("userData: " + JSON.stringify(userData));
                 $scope.userId = userData.userId;
                 $scope.userName = userData.userName;
                 $scope.getChatGroupListById($scope.userId);
-                console.log("allGroup: " + JSON.stringify($scope.allGroup));
+                
                 console.log(data.data.message);
             } else {
                 console.log("Sorry");

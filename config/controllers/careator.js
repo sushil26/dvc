@@ -1143,6 +1143,14 @@ module.exports.groupText = function (req, res) {
                                 data: insertedData
                             };
                             res.status(200).send(response);
+                            var io = req.app.get('socketio');
+                            io.emit('comm_textReceived', {
+                                "id": data[0]._id,
+                                "senderId": obj.senderId,
+                                "senderName": obj.senderName,
+                                "message": obj.message,
+                                "sendTime": obj.sendTime
+                            }); /* ### Note: Emit message to client ### */
                         }
                     })
                 } else {

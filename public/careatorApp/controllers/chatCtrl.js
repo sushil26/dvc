@@ -49,6 +49,31 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                 $scope.individualData = data.data.data;
                 console.log("$scope.allChat: " + JSON.stringify($scope.allChat));
                 console.log("$scope.individualData : " + JSON.stringify($scope.individualData));
+                if ($scope.selectedType == "individual_chats") {
+                    $scope.receiverData = {
+                        "senderId": userData.userId,
+                        "senderName": userData.userName,
+                    }
+                    console.log(" Before  $scope.receiverData : " + JSON.stringify($scope.receiverData));
+                    if ($scope.individualData.receiverId != userData.userId) {
+                        $scope.receiverData.receiverId = $scope.individualData.receiverId;
+                        $scope.receiverData.receiverName = $scope.individualData.receiverName;
+                    }
+                    else if ($scope.individualData.senderId != userData.userId) {
+                        $scope.receiverData.receiverId = $scope.individualData.senderId;
+                        $scope.receiverData.receiverName = $scope.individualData.senderName;
+                    }
+                }
+                else if ($scope.selectedType == 'group') {
+                    $scope.sendGroupText_withData = {
+                        "group_id": $scope.individualData._id,
+                        "groupName": $scope.individualData.groupName,
+                        "senderId": userData.userId,
+                        "senderName": userData.userName
+                    }
+                    console.log("sendGroupText_withData-->: " + JSON.stringify($scope.sendGroupText_withData));
+                    $scope.readText();
+                }
 
             } else {
                 console.log("Sorry");
@@ -57,31 +82,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         })
 
 
-        if ($scope.selectedType == "individual_chats") {
-            $scope.receiverData = {
-                "senderId": userData.userId,
-                "senderName": userData.userName,
-            }
-            console.log(" Before  $scope.receiverData : " + JSON.stringify($scope.receiverData));
-            if ($scope.individualData.receiverId != userData.userId) {
-                $scope.receiverData.receiverId = $scope.individualData.receiverId;
-                $scope.receiverData.receiverName = $scope.individualData.receiverName;
-            }
-            else if ($scope.individualData.senderId != userData.userId) {
-                $scope.receiverData.receiverId = $scope.individualData.senderId;
-                $scope.receiverData.receiverName = $scope.individualData.senderName;
-            }
-        }
-        else if ($scope.selectedType == 'group') {
-            $scope.sendGroupText_withData = {
-                "group_id": $scope.individualData._id,
-                "groupName": $scope.individualData.groupName,
-                "senderId": userData.userId,
-                "senderName": userData.userName
-            }
-            console.log("sendGroupText_withData-->: " + JSON.stringify($scope.sendGroupText_withData));
-            $scope.readText();
-        }
+       
         console.log("   $scope.receiverData : " + JSON.stringify($scope.receiverData));
         console.log("sendGroupText_withData-->: " + JSON.stringify($scope.sendGroupText_withData));
     }

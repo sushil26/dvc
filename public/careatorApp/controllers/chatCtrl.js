@@ -163,7 +163,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                         "senderId": userData.userId,
                         "senderName": userData.userName,
                         "receiverId": $scope.individualData._id,
-                        "receiverName": $scope.individualData.name
+                        "receiverName": $scope.individualData.receiverName
                     }
                     console.log(" $scope.receiverData : " + JSON.stringify($scope.receiverData));
                     console.log(data.data.message);

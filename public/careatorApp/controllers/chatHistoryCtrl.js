@@ -1,10 +1,55 @@
-careatorApp.controller('chatHistoryCtrl', function ($scope, $rootScope, $filter, $window) {
+careatorApp.controller('chatHistoryCtrl', function ($scope, $rootScope, $filter, careatorSessionAuth, careatorHttpFactory) {
     console.log("chatHistoryCtrl==>");
 
     var userData = careatorSessionAuth.getAccess("userData");
     $scope.userId = userData.userId;
     console.log("userData: " + JSON.stringify(userData));
     $scope.allGroupAndIndividual = []; /* ### Note:$scope.allGroupAndIndividual contains All employee list(who having chat rights) and group list(which are included by login person)   ### */
+
+    /* ##### Start: UserList  ##### */
+    $scope.allUserSettings = {
+        scrollableHeight: '200px',
+        scrollable: true,
+        enableSearch: true,
+        externalIdProp: '',
+        selectionLimit: 1,
+    };
+    $scope.allUserData = [];
+    $scope.allUserModel = [];
+    $scope.rightEmployeeList = function () {
+        console.log("rightEmployeeList-->");
+        var api = "https://norecruits.com/careator/getChatRights_emp";
+        console.log("api: " + JSON.stringify(api));
+        careatorHttpFactory.get(api).then(function (data) {
+            console.log("data--" + JSON.stringify(data.data));
+            var checkStatus = careatorHttpFactory.dataValidation(data);
+            console.log("data--" + JSON.stringify(data.data));
+            if (checkStatus) {
+                allUsers = data.data.data;
+                console.log("allUsers: " + JSON.stringify(allUsers));
+                $scope.allUserData = [];
+                for (var x = 0; x < allUsers.length; x++) {
+                    console.log(" before $scope.allUserData: " + JSON.stringify($scope.allUserData));
+                    console.log("allUsers[x].email: " + allUsers[x].email + " allUsers[x]._id: " + allUsers[x]._id);
+                    $scope.allUserData.push({
+                        "email": allUsers[x].email,
+                        "label": allUsers[x].name + " - " + allUsers[x].empId,
+                        "id": allUsers[x]._id
+                    });
+                    
+                }
+                console.log(data.data.message);
+            }
+            else {
+                console.log("Sorry");
+                console.log(data.data.message);
+            }
+        })
+        console.log("<--rightEmployeeList");
+    }
+    $scope.rightEmployeeList();
+    /* ##### End: UserList  ##### */
+
     $scope.getChatGroupListById = function (id) {
         console.log("getAllEmployee-->: " + id);
         var api = "https://norecruits.com/careator_chatGroupList/careator_getChatGroupListById/" + id;

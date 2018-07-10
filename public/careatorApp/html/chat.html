@@ -33,10 +33,10 @@
                                         <div class="row sideBar-body" ng-repeat="record in chatedGroup_records">
                                             <div class="col-sm-3 col-xs-3 sideBar-avatar" style="font-size: 35px;">
                                                 <div class="avatar-icon" ng-if="record.groupName==undefined">
-                                                        <img src="./css/user.png">
+                                                    <img src="./css/user.png">
                                                 </div>
                                                 <div class="avatar-icon" ng-if="record.groupName!==undefined">
-                                                        <img src="./css/group.png">
+                                                    <img src="./css/group.png">
                                                 </div>
                                             </div>
                                             <div class="col-sm-9 col-xs-9 sideBar-main" ng-if="record.groupName==undefined">
@@ -94,10 +94,10 @@
                                         <div class="row sideBar-body" ng-repeat="record in allGroupAndIndividual">
                                             <div class="col-sm-3 col-xs-3 sideBar-avatar">
                                                 <div class="avatar-icon" ng-if="record.groupName!==undefined">
-                                                        <img src="./css/group.png">
+                                                    <img src="./css/group.png">
                                                 </div>
                                                 <div class="avatar-icon" ng-if="record.groupName==undefined">
-                                                        <img src="./css/user.png">
+                                                    <img src="./css/user.png">
                                                 </div>
                                             </div>
                                             <div class="col-sm-9 col-xs-9 sideBar-main" ng-if="record.groupName!==undefined">
@@ -135,8 +135,11 @@
                             <div class="col-sm-8 conversation">
                                 <div class="row heading">
                                     <div class="col-sm-2 col-md-1 col-xs-3 heading-avatar">
-                                        <div class="heading-avatar-icon">
+                                        <div class="avatar-icon" ng-if="record.groupName!==undefined">
                                             <img src="./css/group.png">
+                                        </div>
+                                        <div class="avatar-icon" ng-if="record.groupName==undefined">
+                                            <img src="./css/user.png">
                                         </div>
                                     </div>
                                     <div class="col-sm-8 col-xs-7 heading-name">
@@ -204,7 +207,7 @@
                                         </div>
                                     </div> -->
                                 </div>
-          
+
 
                                 <div class="row reply">
                                     <div class="col-sm-1 col-xs-1 reply-emojis">

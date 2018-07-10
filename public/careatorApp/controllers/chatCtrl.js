@@ -46,7 +46,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
 
     }
 
-    $scope.chatDetails = function (type, id) {
+    $scope.chatDetails = function (type, id, index) {
         console.log("chatDetails-->");
         console.log("screen.width : " + screen.width);
         if (screen.width < 768) {
@@ -72,13 +72,14 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                 if (checkStatus) {
                     $scope.allChat = data.data.data[0];
                     if ($scope.allChat == undefined) {
-                       // $scope.individualData = data.data.data[0];
+                        $scope.individualData = $scope.chatedGroup_records[index];
+                        // $scope.individualData = data.data.data[0];
                     }
                     else {
                         $scope.individualData = data.data.data[0];
+                        console.log("$scope.allChat: " + JSON.stringify($scope.allChat));
+                        console.log("$scope.allChat.chats: " + JSON.stringify($scope.allChat.chats));
                     }
-                    console.log("$scope.allChat: " + JSON.stringify($scope.allChat));
-                    console.log("$scope.allChat.chats: " + JSON.stringify($scope.allChat.chats));
                     console.log("$scope.individualData : " + JSON.stringify($scope.individualData));
                     $scope.sendGroupText_withData = {
                         "group_id": $scope.individualData.group_id,

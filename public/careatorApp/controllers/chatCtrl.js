@@ -353,16 +353,16 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         console.log("$scope.individualData._id: " + JSON.stringify($scope.individualData));
         console.log(" data.id: " + JSON.stringify(data));
        
-            if ($scope.allChat._id == data.id) {
-                console.log("1)start pushing message");
-                $scope.allChat.chats.push({
-                    "senderId": data.senderId,
-                    "senderName": data.senderName,
-                    "message": data.message,
-                    "sendTime": data.sendTime
-                });
-                $scope.scrollDown();
-            }
+            // if ($scope.allChat._id == data.id) {
+            //     console.log("1)start pushing message");
+            //     $scope.allChat.chats.push({
+            //         "senderId": data.senderId,
+            //         "senderName": data.senderName,
+            //         "message": data.message,
+            //         "sendTime": data.sendTime
+            //     });
+            //     $scope.scrollDown();
+            // }
         
 
 

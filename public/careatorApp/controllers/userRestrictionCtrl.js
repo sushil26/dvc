@@ -133,7 +133,7 @@ careatorApp.controller('userRestrictionCtrl', function ($scope, $state, $rootSco
             var restrictedTo = {
                 "userId": $scope.allUserModel[0].id
             }
-            console.log("restrictedTo: " + JSON.stringify($scope.restrictedTo));
+            console.log("restrictedTo: " + JSON.stringify(restrictedTo));
             // var api = "https://norecruits.com/careator_removeRestrictedUserById/removeRestrictedUserById/" + id;
             // console.log("api: " + api);
             // var obj = {

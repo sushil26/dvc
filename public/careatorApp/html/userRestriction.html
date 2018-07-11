@@ -16,7 +16,7 @@
                                 <div class="col-lg-9">
                                     <div ng-dropdown-multiselect="" options="allUserData" selected-model="allUserModel" extra-settings="allUserSettings" events="userSelectEvent" >
                                     </div>
-                                    <pre ng-if="user.label">Selected Memebers : <span ng-repeat="user in allUserModel">{{user.label+", "}}</span></pre>
+                                    <pre ng-if="{{user.label}}">Selected Memebers : <span ng-repeat="user in allUserModel">{{user.label+", "}}</span></pre>
                                 </div>
                             </div>
                             <div class="form-group" ng-if="allUserModel.length>0">

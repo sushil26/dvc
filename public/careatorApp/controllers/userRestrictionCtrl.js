@@ -145,7 +145,7 @@ careatorApp.controller('userRestrictionCtrl', function ($scope, $state, $rootSco
                 console.log("data--" + JSON.stringify(data.data));
                 if (checkStatus) {
                     console.log(data.data.message);
-                    $state.go("Cdashboard.groupListCtrl")
+                  
                 }
                 else {
                     console.log("Sorry: " + data.data.message);
@@ -203,7 +203,7 @@ careatorApp.controller('userRestrictionCtrl', function ($scope, $state, $rootSco
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
                 console.log(data.data.message);
-                $state.go("Cdashboard.groupListCtrl")
+              
             }
             else {
                 console.log("Sorry: " + data.data.message);

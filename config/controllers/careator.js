@@ -1642,7 +1642,7 @@ module.exports.restrictedTo = function (req, res) {
                 var restrictedTo = [];
                 var updateObjects = req.body.restrictedTo;
                 for (var x = 0; x < updateObjects.length; x++) {
-                    restrictedTo.push(updateObjects[x]);
+                    restrictedTo.push(ObjectId(updateObjects[x].userId));
                 }
                 var findUpdateObjects = {
                     "_id": restrictedTo

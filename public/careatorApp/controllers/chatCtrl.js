@@ -8,7 +8,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
     console.log("restrictedUser: " + JSON.stringify(restrictedUser));
     var splitRestrictedUser = restrictedUser.split(',');
     console.log("splitRestrictedUser: " + JSON.stringify(splitRestrictedUser));
- 
+
     $scope.getChatGroupListById = function (id) {
         console.log("getAllEmployee-->: " + id);
         var api = "https://norecruits.com/careator_chatGroupList/careator_getChatGroupListById/" + id;
@@ -451,13 +451,21 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
     socket.on('comm_aboutRestrictedUpdate', function (data) { //update to client about their new restricted users
         console.log("****comm_aboutRestrictedUpdate-->: " + JSON.stringify(data));
         if ($scope.userId == data.id) {
+            console.log("Updated Started-->");
             var restrictedUser = data.restrictedTo;
-            console.log("restrictedUser: " + JSON.stringify(restrictedUser));
-            var splitRestrictedUser = restrictedUser.split(',');
-            console.log("splitRestrictedUser: " + JSON.stringify(splitRestrictedUser));
+            var restrictedArray = [];
+            for (var x = 0; x < restrictedUser.length; x++) {
+                restrictedArray.push(restrictedUser[x].userId);
+            }
+            console.log("restrictedArray: " + JSON.stringify(restrictedArray));
+            // if(restrictedArray.length>1){
+            //     var splitRestrictedUser = restrictedArray.split(',');
+            //     console.log("splitRestrictedUser: " + JSON.stringify(splitRestrictedUser));
+            // }
+           
+           
         }
     })
-
     /* ### End: Get event update from index.js  ### */
 
     /* ### Start: Front end  CSS### */

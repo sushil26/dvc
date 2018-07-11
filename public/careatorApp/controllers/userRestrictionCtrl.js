@@ -88,8 +88,6 @@ careatorApp.controller('userRestrictionCtrl', function ($scope, $state, $rootSco
         var restrictedTo = [];
         for (var x = 0; x < $scope.authorizedUserModel.length; x++) {
             restrictedTo.push({
-                "email": $scope.authorizedUserModel[x].email,
-                "label": $scope.authorizedUserModel[x].label,
                 "userId": $scope.authorizedUserModel[x].id
             });
         }

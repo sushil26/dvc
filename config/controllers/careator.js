@@ -1620,7 +1620,7 @@ module.exports.restrictedTo = function (req, res) {
 
         console.log("objFind: " + JSON.stringify(objFind));
         console.log("objUpdate: " + JSON.stringify(objUpdate));
-        careatorMaster.update({ "_id": id}, { $set: objUpdate }, function (err, restrict) {
+        careatorMaster.update({ "_id": ObjectId(id)}, { $set: objUpdate }, function (err, restrict) {
             if (err) {
                 console.log("err: " + JSON.stringify(err));
                 response = {

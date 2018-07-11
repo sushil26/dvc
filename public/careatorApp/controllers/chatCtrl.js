@@ -4,10 +4,11 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
     $scope.userId = userData.userId;
     console.log("userData: " + JSON.stringify(userData));
     $scope.allGroupAndIndividual = []; /* ### Note:$scope.allGroupAndIndividual contains All employee list(who having chat rights) and group list(which are included by login person)   ### */
-    var restrictedUser = userData.restrictedTo;
-    console.log("restrictedUser: " + JSON.stringify(restrictedUser));
-    var splitRestrictedUser = restrictedUser.split(',');
-    console.log("splitRestrictedUser: " + JSON.stringify(splitRestrictedUser));
+    var restrictedArray = userData.restrictedTo;
+    
+    console.log("restrictedArray: " + JSON.stringify(restrictedArray));
+    // var splitRestrictedUser = restrictedUser.split(',');
+    // console.log("splitRestrictedUser: " + JSON.stringify(splitRestrictedUser));
 
     $scope.getChatGroupListById = function (id) {
         console.log("getAllEmployee-->: " + id);
@@ -226,12 +227,12 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         console.log("getAllChatRightEmp-->");
         $scope.allGroupAndIndividual = [];
         var id = userData.userId;
-        var restrictedUser = userData.restrictedTo;
-        console.log("restrictedUser: " + JSON.stringify(restrictedUser));
-        var splitRestrictedUser = restrictedUser.split(',');
-        console.log("splitRestrictedUser: " + JSON.stringify(splitRestrictedUser));
+        // var restrictedUser = userData.restrictedTo;
+        // console.log("restrictedUser: " + JSON.stringify(restrictedUser));
+        // var splitRestrictedUser = restrictedUser.split(',');
+        // console.log("splitRestrictedUser: " + JSON.stringify(splitRestrictedUser));
 
-        var restrictedUsers = splitRestrictedUser;
+        var restrictedUsers = restrictedArray;
         var obj = {
             "restrictedTo": restrictedUsers
         }
@@ -462,8 +463,8 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
             //     var splitRestrictedUser = restrictedArray.split(',');
             //     console.log("splitRestrictedUser: " + JSON.stringify(splitRestrictedUser));
             // }
-           
-           
+
+
         }
     })
     /* ### End: Get event update from index.js  ### */

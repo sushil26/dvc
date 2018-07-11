@@ -16,6 +16,7 @@ careatorApp.controller('userRestrictionCtrl', function ($scope, $state, $rootSco
         onItemSelect: function (item) {
             console.log('selected: ' + item);
             console.log('selected json: ' + JSON.stringify(item));
+
             var id = item.id;
             var api = "https://norecruits.com//careator_getUser/careator_getUserById/" + id;
             console.log("api: " + JSON.stringify(api));
@@ -26,6 +27,11 @@ careatorApp.controller('userRestrictionCtrl', function ($scope, $state, $rootSco
                 if (checkStatus) {
                     allUsers = data.data.data;
                     console.log("allUsers: " + JSON.stringify(allUsers));
+                    $scope.restrictedTo = [];
+                    for (var x = 0; x < allUsers.restrictedTo.length; x++) {
+                        $scope.restrictedTo.push(allUsers.restrictedTo[x].userId);
+                    }
+
                 }
             })
 
@@ -94,10 +100,13 @@ careatorApp.controller('userRestrictionCtrl', function ($scope, $state, $rootSco
                 $scope.authorizedUserData.push({
                     "email": allUsers[x].email,
                     "label": allUsers[x].name + " - " + allUsers[x].empId,
-                    "id": allUsers[x]._id
+                    "id": allUsers[x]._id,
                 });
+                if ($scope.restrictedTo.indexOf($scope.allUserModel[0].id)) {
+                    $scope.authorizedUserModel.push($scope.authorizedUserData[x]);
+                }
+                
             }
-
         }
         console.log("authorizedUserData: " + JSON.stringify($scope.authorizedUserData));
     }

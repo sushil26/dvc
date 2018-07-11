@@ -1639,7 +1639,7 @@ module.exports.restrictedTo = function (req, res) {
                 response = {
                     status: true,
                     message: "Successfull",
-                    data: secondRestrict
+                    data: restrict
                 };
                 res.status(200).send(response);
             }

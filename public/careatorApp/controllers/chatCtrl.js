@@ -8,28 +8,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
     console.log("restrictedUser: " + JSON.stringify(restrictedUser));
     var splitRestrictedUser = restrictedUser.split(',');
     console.log("splitRestrictedUser: " + JSON.stringify(splitRestrictedUser));
-
-    $scope.getUserDataById = function(){
-        console.log("getUserDataById-->");
-        var id = $scope.userId;
-        var api = "https://norecruits.com/careator_getUser/careator_getUserById/" + id;
-        console.log("api: " + api);
-        careatorHttpFactory.get(api).then(function (data) {
-            console.log("data--" + JSON.stringify(data.data));
-            var checkStatus = careatorHttpFactory.dataValidation(data);
-            if (checkStatus) {
-                $scope.userData = data.data.data;
-                console.log("allGroup: " + JSON.stringify($scope.allGroup));
-                console.log(data.data.message);
-
-            } else {
-                console.log("Sorry");
-                console.log(data.data.message);
-            }
-        })
-
-    }
-
+ 
     $scope.getChatGroupListById = function (id) {
         console.log("getAllEmployee-->: " + id);
         var api = "https://norecruits.com/careator_chatGroupList/careator_getChatGroupListById/" + id;
@@ -320,8 +299,8 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                     }
                 })
             }
-            else{
-                alert("You not allowed to chat with "+$scope.receiverData.receiverName);
+            else {
+                alert("You not allowed to chat with " + $scope.receiverData.receiverName);
             }
 
 
@@ -349,8 +328,8 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
             })
 
         }
-        
-        
+
+
     }
 
     $scope.readText = function () {
@@ -417,24 +396,13 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
     }
     $scope.getChatRecords();
 
-    /* ### Start: receive message from careator.js  ### */ //update to client with new message;
-    socket.on('comm_textReceived', function (data) {
-        console.log("****comm_textReceived-->: " + JSON.stringify(data));;
+    /* ### Start: receive message from careator.js  ### */
+    socket.on('comm_textReceived', function (data) { //update to client with new message;
+        console.log("****comm_textReceived-->: " + JSON.stringify(data));
         console.log("$scope.individualData._id: " + $scope.individualData._id);
         console.log(" data.id: " + data.id);
         console.log("$scope.individualData._id: " + JSON.stringify($scope.individualData));
         console.log(" data.id: " + JSON.stringify(data));
-
-        // if ($scope.allChat._id == data.id) {
-        //     console.log("1)start pushing message");
-        //     $scope.allChat.chats.push({
-        //         "senderId": data.senderId,
-        //         "senderName": data.senderName,
-        //         "message": data.message,
-        //         "sendTime": data.sendTime
-        //     });
-        //     $scope.scrollDown();
-        // }
         if (data.freshInsert == true) {
             var id = data.id;
             var api = "https://norecruits.com/careator_getChatsById/getChatsById/" + id;
@@ -469,8 +437,6 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                 }
             })
         }
-
-
         if ($scope.individualData._id == data.id) {
             console.log("2)start pushing message");
             $scope.allChat.chats.push({
@@ -481,8 +447,17 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
             });
             $scope.scrollDown();
         }
-
     })
+    socket.on('comm_aboutRestrictedUpdate', function (data) { //update to client about their new restricted users
+        console.log("****comm_aboutRestrictedUpdate-->: " + JSON.stringify(data));
+        if ($scope.userId == data.id) {
+            var restrictedUser = data.restrictedTo;
+            console.log("restrictedUser: " + JSON.stringify(restrictedUser));
+            var splitRestrictedUser = restrictedUser.split(',');
+            console.log("splitRestrictedUser: " + JSON.stringify(splitRestrictedUser));
+        }
+    })
+
     /* ### End: Get event update from index.js  ### */
 
     /* ### Start: Front end  CSS### */

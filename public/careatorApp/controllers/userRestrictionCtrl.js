@@ -25,7 +25,7 @@ careatorApp.controller('userRestrictionCtrl', function ($scope, $state, $rootSco
                 var checkStatus = careatorHttpFactory.dataValidation(data);
                 console.log("data--" + JSON.stringify(data.data));
                 if (checkStatus) {
-                    allUsers = data.data.data;
+                    allUsers = data.data.data[0];
                     console.log("allUsers: " + JSON.stringify(allUsers));
                     $scope.restrictedTo = [];
                     for (var x = 0; x < allUsers.restrictedTo.length; x++) {

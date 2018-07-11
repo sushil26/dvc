@@ -227,6 +227,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         console.log("getAllChatRightEmp-->");
         $scope.allGroupAndIndividual = [];
         var id = userData.userId;
+        console.log("restrictedArray: " + JSON.stringify(restrictedArray));
         // var restrictedUser = userData.restrictedTo;
         // console.log("restrictedUser: " + JSON.stringify(restrictedUser));
         // var splitRestrictedUser = restrictedUser.split(',');

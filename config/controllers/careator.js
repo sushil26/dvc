@@ -1609,7 +1609,7 @@ module.exports.restrictedTo = function (req, res) {
     console.log("restrictedTo-->");
     var response;
     var id = req.params.id;
-console.log("req.body.restrictedTo: "+JSON.stringify(req.body.restrictedTo));
+    console.log("req.body.restrictedTo: " + JSON.stringify(req.body.restrictedTo));
     if (general.emptyCheck(id)) {
         var objFind = {
             "_id": ObjectId(id)
@@ -1620,7 +1620,7 @@ console.log("req.body.restrictedTo: "+JSON.stringify(req.body.restrictedTo));
 
         console.log("objFind: " + JSON.stringify(objFind));
         console.log("objUpdate: " + JSON.stringify(objUpdate));
-        careatorMaster.update(objFind, { $set: {"restrictedTo": req.body.restrictedTo} }, function (err, restrict) {
+        careatorMaster.update(objFind, { $set: { "restrictedTo": req.body.restrictedTo } }, function (err, restrict) {
             if (err) {
                 console.log("err: " + JSON.stringify(err));
                 response = {
@@ -1647,6 +1647,8 @@ console.log("req.body.restrictedTo: "+JSON.stringify(req.body.restrictedTo));
                 var findUpdateObjects = {
                     "_id": restrictedTo
                 };
+                console.log("findUpdateObjects: " + JSON.stringify(findUpdateObjects));
+                console.log("setObj: " + JSON.stringify(setObj));
                 careatorMaster.update(findUpdateObjects, { $push: { "restrictedTo": setObj } }, function (err, secondRestrict) {
                     if (err) {
                         console.log("err: " + JSON.stringify(err));

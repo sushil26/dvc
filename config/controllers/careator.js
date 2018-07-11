@@ -1620,7 +1620,7 @@ module.exports.restrictedTo = function (req, res) {
 
         console.log("objFind: " + JSON.stringify(objFind));
         console.log("objUpdate: " + JSON.stringify(objUpdate));
-        careatorMaster.update(objFind, { $set: { "restrictedTo": req.body.restrictedTo } }, function (err, restrict) {
+        careatorMaster.update(objFind, { $push: { "restrictedTo": req.body.restrictedTo } }, function (err, restrict) {
             if (err) {
                 console.log("err: " + JSON.stringify(err));
                 response = {
@@ -1636,44 +1636,12 @@ module.exports.restrictedTo = function (req, res) {
                     "id": id,
                     "restrictedTo": req.body.restrictedTo
                 }); /* ### Note: Emit message to user about their new restricted user ### */
-                var setObj = {
-                    "restrictedTo": id
-                }
-                var restrictedTo = [];
-                var updateObjects = req.body.restrictedTo;
-                for (var x = 0; x < updateObjects.length; x++) {
-                    restrictedTo.push(ObjectId(updateObjects[x].userId));
-                }
-                var findUpdateObjects = {
-                    "_id": restrictedTo
+                response = {
+                    status: true,
+                    message: "Successfull",
+                    data: secondRestrict
                 };
-                console.log("findUpdateObjects: " + JSON.stringify(findUpdateObjects));
-                console.log("setObj: " + JSON.stringify(setObj));
-                careatorMaster.update({"_id":{$in:restrictedTo}}, { $addToSet: { "restrictedTo":{"userId": id} } }, function (err, secondRestrict) {
-                    if (err) {
-                        console.log("err: " + JSON.stringify(err));
-                        response = {
-                            status: false,
-                            message: "Unsuccessfull",
-                            data: err
-                        };
-                        res.status(400).send(response);
-                    } else {
-                        console.log("secondRestrict: " + JSON.stringify(secondRestrict));
-                        var io = req.app.get('socketio');
-                        io.emit('comm_aboutRestrictedUpdate', {
-                            "ids": findUpdateObjects,
-                            "restrictedTo": id,
-                            "moreIds": 'yes'
-                        }); /* ### Note: Emit message to user about their new restricted user ### */
-                        response = {
-                            status: true,
-                            message: "Successfull",
-                            data: secondRestrict
-                        };
-                        res.status(200).send(response);
-                    }
-                })
+                res.status(200).send(response);
             }
         })
     } else {

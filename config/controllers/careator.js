@@ -1630,6 +1630,11 @@ module.exports.restrictedTo = function (req, res) {
                 res.status(400).send(response);
             } else {
                 console.log("restrict: " + JSON.stringify(restrict));
+                var io = req.app.get('socketio');
+                io.emit('comm_aboutRestrictedUpdate', {
+                    "id": id,
+                    "restrictedTo": req.body.restrictedTo
+                }); /* ### Note: Emit message to user about their new restricted user ### */
                 response = {
                     status: true,
                     message: "Successfull",

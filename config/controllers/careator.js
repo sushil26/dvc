@@ -1649,7 +1649,7 @@ module.exports.restrictedTo = function (req, res) {
                 };
                 console.log("findUpdateObjects: " + JSON.stringify(findUpdateObjects));
                 console.log("setObj: " + JSON.stringify(setObj));
-                careatorMaster.update({"_id":{$in:restrictedTo}}, { $addToSet: { "restrictedTo": id } }, function (err, secondRestrict) {
+                careatorMaster.update({"_id":{$in:restrictedTo}}, { $addToSet: { "restrictedTo":{"userId": id} } }, function (err, secondRestrict) {
                     if (err) {
                         console.log("err: " + JSON.stringify(err));
                         response = {

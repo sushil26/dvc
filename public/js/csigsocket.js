@@ -171,6 +171,17 @@ function checkPassword() {
       localStorage.setItem("chatRights", 'yes');
       document.getElementById("chatConfStart").style.display = "inline";
     }
+    if(data.data.restrictedTo)
+    {
+      console.log("data.data.restrictedTo: "+JSON.stringify(data.data.restrictedTo));
+      var restrictedTo = data.data.restrictedTo;
+      var restrictedArray = [];
+      for (var x = 0; x < restrictedTo.length; x++) {
+          restrictedArray.push(restrictedTo[x].userId);
+      }
+      console.log("restrictedArray: "+restrictedArray);
+      localStorage.setItem("restrictedTo", restrictedArray);
+    }
     var userNameEmail = localStorage.getItem("careatorEmail");
     var emailIdSplit = userNameEmail.split('@');
     //userName = emailIdSplit[0];

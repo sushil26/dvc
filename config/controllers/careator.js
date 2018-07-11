@@ -1609,7 +1609,7 @@ module.exports.restrictedTo = function (req, res) {
     console.log("restrictedTo-->");
     var response;
     var id = req.params.id;
-
+console.log("req.body.restrictedTo: "+JSON.stringify(req.body.restrictedTo));
     if (general.emptyCheck(id)) {
         var objFind = {
             "_id": ObjectId(id)
@@ -1620,7 +1620,7 @@ module.exports.restrictedTo = function (req, res) {
 
         console.log("objFind: " + JSON.stringify(objFind));
         console.log("objUpdate: " + JSON.stringify(objUpdate));
-        careatorMaster.update({ "_id": ObjectId(id)}, { $set: objUpdate }, function (err, restrict) {
+        careatorMaster.update(objFind, { $set: {"aa":"bb"} }, function (err, restrict) {
             if (err) {
                 console.log("err: " + JSON.stringify(err));
                 response = {

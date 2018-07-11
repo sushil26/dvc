@@ -16,7 +16,6 @@ careatorApp.controller('userRestrictionCtrl', function ($scope, $state, $rootSco
         onItemSelect: function (item) {
             console.log('selected: ' + item);
             console.log('selected json: ' + JSON.stringify(item));
-
             var id = item.id;
             var api = "https://norecruits.com//careator_getUser/careator_getUserById/" + id;
             console.log("api: " + JSON.stringify(api));
@@ -25,17 +24,15 @@ careatorApp.controller('userRestrictionCtrl', function ($scope, $state, $rootSco
                 var checkStatus = careatorHttpFactory.dataValidation(data);
                 console.log("data--" + JSON.stringify(data.data));
                 if (checkStatus) {
-                    allUsers = data.data.data[0];
-                    console.log("allUsers: " + JSON.stringify(allUsers));
+                    allUsersData = data.data.data[0];
+                    console.log("allUsersData: " + JSON.stringify(allUsersData));
                     $scope.restrictedTo = [];
-                    for (var x = 0; x < allUsers.restrictedTo.length; x++) {
-                        $scope.restrictedTo.push(allUsers.restrictedTo[x].userId);
+                    for (var x = 0; x < allUsersData.restrictedTo.length; x++) {
+                        $scope.restrictedTo.push(allUsersData.restrictedTo[x].userId);
                     }
                     $scope.authorizedFor();
-
                 }
             })
-
         },
         onItemDeselect: function (item) {
             console.log('unselected: ' + item);

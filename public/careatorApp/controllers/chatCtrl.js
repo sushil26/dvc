@@ -4,6 +4,11 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
     $scope.userId = userData.userId;
     console.log("userData: " + JSON.stringify(userData));
     $scope.allGroupAndIndividual = []; /* ### Note:$scope.allGroupAndIndividual contains All employee list(who having chat rights) and group list(which are included by login person)   ### */
+    var restrictedUser = userData.restrictedTo;
+    console.log("restrictedUser: " + JSON.stringify(restrictedUser));
+    var splitRestrictedUser = restrictedUser.split(',');
+    console.log("splitRestrictedUser: " + JSON.stringify(splitRestrictedUser));
+
     $scope.getChatGroupListById = function (id) {
         console.log("getAllEmployee-->: " + id);
         var api = "https://norecruits.com/careator_chatGroupList/careator_getChatGroupListById/" + id;
@@ -225,13 +230,13 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         console.log("restrictedUser: " + JSON.stringify(restrictedUser));
         var splitRestrictedUser = restrictedUser.split(',');
         console.log("splitRestrictedUser: " + JSON.stringify(splitRestrictedUser));
- 
+
         var restrictedUsers = splitRestrictedUser;
         var obj = {
             "restrictedTo": restrictedUsers
         }
         console.log("obj: " + JSON.stringify(obj));
-        api = "https://norecruits.com/careator_getEmp/careator_getChatRightsAllemp/"+id; /* #### without restricted emp  #### */
+        api = "https://norecruits.com/careator_getEmp/careator_getChatRightsAllemp/" + id; /* #### without restricted emp  #### */
         console.log("api: " + JSON.stringify(api));
         careatorHttpFactory.post(api, obj).then(function (data) {
             console.log("data--" + JSON.stringify(data.data));
@@ -271,14 +276,34 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         console.log("$scope.selectedType: " + $scope.selectedType);
         if ($scope.selectedType == 'individual_chats') {
             api = "https://norecruits.com/careator_individualText/individualText";
-            obj = {
-                "senderId": userData.userId,
-                "receiverId": $scope.receiverData.receiverId,
-                "senderName": userData.userName,
-                "receiverName": $scope.receiverData.receiverName,
-                "message": $scope.typedMessage
+            console.log("api: " + api);
+            console.log("$scope.receiverData.receiverId: " + $scope.receiverData.receiverId);
+            if (splitRestrictedUser.indexOf($scope.receiverData.receiverId) >= 0) {
+                obj = {
+                    "senderId": userData.userId,
+                    "receiverId": $scope.receiverData.receiverId,
+                    "senderName": userData.userName,
+                    "receiverName": $scope.receiverData.receiverName,
+                    "message": $scope.typedMessage
+                }
+                console.log("obj: " + JSON.stringify(obj));
+                careatorHttpFactory.post(api, obj).then(function (data) {
+                    console.log("data--" + JSON.stringify(data.data));
+                    var checkStatus = careatorHttpFactory.dataValidation(data);
+                    if (checkStatus) {
+                        console.log("data.data.data: " + JSON.stringify(data.data.data));
+                        console.log(data.data.message);
+                    } else {
+                        console.log("Sorry");
+                        console.log(data.data.message);
+                    }
+                })
             }
-            console.log("obj: " + JSON.stringify(obj));
+            else{
+                alert("You not allowed to chat with "+$scope.receiverData.receiverName);
+            }
+
+
         } else if ($scope.selectedType == 'group') {
             obj = {
                 "group_id": $scope.sendGroupText_withData.group_id,
@@ -289,28 +314,22 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
             }
             console.log("obj: " + JSON.stringify(obj));
             api = "https://norecruits.com//careator_groupText/groupText";
-        }
-        console.log("api: " + api);
-        careatorHttpFactory.post(api, obj).then(function (data) {
-            console.log("data--" + JSON.stringify(data.data));
-            var checkStatus = careatorHttpFactory.dataValidation(data);
-            if (checkStatus) {
-                console.log("data.data.data: " + JSON.stringify(data.data.data));
-                console.log(data.data.message);
-                // $scope.allChat.chats.push({
-                //     "senderId": obj.senderId,
-                //     "senderName": obj.senderName,
-                //     "message": obj.message,
-                //     "sendTime": new Date()
-                // });
-                // $scope.scrollDown();
-                console.log("=====scrollDown=====");
+            console.log("api: " + api);
+            careatorHttpFactory.post(api, obj).then(function (data) {
+                console.log("data--" + JSON.stringify(data.data));
+                var checkStatus = careatorHttpFactory.dataValidation(data);
+                if (checkStatus) {
+                    console.log("data.data.data: " + JSON.stringify(data.data.data));
+                    console.log(data.data.message);
+                } else {
+                    console.log("Sorry");
+                    console.log(data.data.message);
+                }
+            })
 
-            } else {
-                console.log("Sorry");
-                console.log(data.data.message);
-            }
-        })
+        }
+        
+        
     }
 
     $scope.readText = function () {

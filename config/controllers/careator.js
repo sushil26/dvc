@@ -1645,9 +1645,9 @@ console.log("req.body.restrictedTo: "+JSON.stringify(req.body.restrictedTo));
                     restrictedTo.push(ObjectId + updateObjects[x]);
                 }
                 var findUpdateObjects = {
-                    "_id": restrictedTo
+                    "_id": ObjectId(restrictedTo)
                 };
-                careatorMaster.update(findUpdateObjects, { $push: { restrictedTo: setObj } }, function (err, secondRestrict) {
+                careatorMaster.update(findUpdateObjects, { $push: { "restrictedTo": setObj } }, function (err, secondRestrict) {
                     if (err) {
                         console.log("err: " + JSON.stringify(err));
                         response = {

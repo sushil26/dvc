@@ -9,6 +9,27 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
     var splitRestrictedUser = restrictedUser.split(',');
     console.log("splitRestrictedUser: " + JSON.stringify(splitRestrictedUser));
 
+    $scope.getUserDataById = function(){
+        console.log("getUserDataById-->");
+        var id = $scope.userId;
+        var api = "https://norecruits.com/careator_getUser/careator_getUserById/" + id;
+        console.log("api: " + api);
+        careatorHttpFactory.get(api).then(function (data) {
+            console.log("data--" + JSON.stringify(data.data));
+            var checkStatus = careatorHttpFactory.dataValidation(data);
+            if (checkStatus) {
+                $scope.userData = data.data.data;
+                console.log("allGroup: " + JSON.stringify($scope.allGroup));
+                console.log(data.data.message);
+
+            } else {
+                console.log("Sorry");
+                console.log(data.data.message);
+            }
+        })
+
+    }
+
     $scope.getChatGroupListById = function (id) {
         console.log("getAllEmployee-->: " + id);
         var api = "https://norecruits.com/careator_chatGroupList/careator_getChatGroupListById/" + id;

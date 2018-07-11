@@ -458,8 +458,12 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                 restrictedArray.push(restrictedUser[x].userId);
             }
             console.log("restrictedArray: " + JSON.stringify(restrictedArray));
-            var splitRestrictedUser = restrictedArray.split(',');
-            console.log("splitRestrictedUser: " + JSON.stringify(splitRestrictedUser));
+            if(restrictedArray.length>1){
+                var splitRestrictedUser = restrictedArray.split(',');
+                console.log("splitRestrictedUser: " + JSON.stringify(splitRestrictedUser));
+            }
+           
+           
         }
     })
     /* ### End: Get event update from index.js  ### */

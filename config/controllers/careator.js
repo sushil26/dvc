@@ -860,15 +860,15 @@ module.exports.careator_getChatRightsAllemp = function (req, res) {
     console.log("careator_getChatRightsAllemp-->: " + req.params.id);
     var id = req.params.id;
     var restrictedUsers = req.body.restrictedTo;
-    for(var x=0;x<restrictedUsers.length;x++){
-        restrictedUsers[x]=ObjectId(restrictedUsers[x]);
+    for (var x = 0; x < restrictedUsers.length; x++) {
+        restrictedUsers[x] = ObjectId(restrictedUsers[x]);
     }
-    console.log("restrictedUsers: "+restrictedUsers);
+    console.log("restrictedUsers: " + restrictedUsers);
     if (general.emptyCheck(id)) {
         careatorMaster.find({
             "_id": {
                 $in: restrictedUsers
-                
+
             },
             "chatRights": "yes",
             "status": "active"
@@ -954,14 +954,14 @@ module.exports.individualText = function (req, res) {
                         res.status(400).send(responseData);
                     } else {
                         var io = req.app.get('socketio');
-                            io.emit('comm_textReceived', {
-                                "id": insertedData.ops[0]._id,
-                                "senderId": obj.chats[0].senderId,
-                                "senderName": obj.chats[0].senderName,
-                                "message": obj.chats[0].message,
-                                "sendTime": obj.chats[0].sendTime,
-                                "freshInsert": true 
-                            }); /* ### Note: Emit message to client ### */
+                        io.emit('comm_textReceived', {
+                            "id": insertedData.ops[0]._id,
+                            "senderId": obj.chats[0].senderId,
+                            "senderName": obj.chats[0].senderName,
+                            "message": obj.chats[0].message,
+                            "sendTime": obj.chats[0].sendTime,
+                            "freshInsert": true
+                        }); /* ### Note: Emit message to client ### */
                         response = {
                             status: true,
                             message: "Sucessfully sent",
@@ -1152,7 +1152,7 @@ module.exports.groupText = function (req, res) {
                             };
                             res.status(400).send(responseData);
                         } else {
-                            console.log("insertedData: "+JSON.stringify(insertedData));
+                            console.log("insertedData: " + JSON.stringify(insertedData));
                             console.log("insertedData.ops[0]._id", insertedData.ops[0]._id);
                             var io = req.app.get('socketio');
                             io.emit('comm_textReceived', {
@@ -1161,7 +1161,7 @@ module.exports.groupText = function (req, res) {
                                 "senderName": obj.chats[0].senderName,
                                 "message": obj.chats[0].message,
                                 "sendTime": obj.chats[0].sendTime,
-                                "freshInsert": true 
+                                "freshInsert": true
                             }); /* ### Note: Emit message to client ### */
                             response = {
                                 status: true,
@@ -1609,7 +1609,7 @@ module.exports.restrictedTo = function (req, res) {
     console.log("restrictedTo-->");
     var response;
     var id = req.params.id;
-
+    console.log("req.body.restrictedTo: " + JSON.stringify(req.body.restrictedTo));
     if (general.emptyCheck(id)) {
         var objFind = {
             "_id": ObjectId(id)
@@ -1617,9 +1617,10 @@ module.exports.restrictedTo = function (req, res) {
         var objUpdate = {
             "restrictedTo": req.body.restrictedTo
         };
+
         console.log("objFind: " + JSON.stringify(objFind));
         console.log("objUpdate: " + JSON.stringify(objUpdate));
-        careatorMaster.update(objFind, { $set: objUpdate }, function (err, restrict) {
+        careatorMaster.update(objFind, { $set: { "restrictedTo": req.body.restrictedTo } }, function (err, restrict) {
             if (err) {
                 console.log("err: " + JSON.stringify(err));
                 response = {
@@ -1635,12 +1636,44 @@ module.exports.restrictedTo = function (req, res) {
                     "id": id,
                     "restrictedTo": req.body.restrictedTo
                 }); /* ### Note: Emit message to user about their new restricted user ### */
-                response = {
-                    status: true,
-                    message: "Successfull",
-                    data: restrict
+                var setObj = {
+                    "restrictedTo": id
+                }
+                var restrictedTo = [];
+                var updateObjects = req.body.restrictedTo;
+                for (var x = 0; x < updateObjects.length; x++) {
+                    restrictedTo.push(ObjectId(updateObjects[x].userId));
+                }
+                var findUpdateObjects = {
+                    "_id": restrictedTo
                 };
-                res.status(200).send(response);
+                console.log("findUpdateObjects: " + JSON.stringify(findUpdateObjects));
+                console.log("setObj: " + JSON.stringify(setObj));
+                careatorMaster.update({"_id":{$in:restrictedTo}}, { $addToSet: { "restrictedTo":{"userId": id} } }, function (err, secondRestrict) {
+                    if (err) {
+                        console.log("err: " + JSON.stringify(err));
+                        response = {
+                            status: false,
+                            message: "Unsuccessfull",
+                            data: err
+                        };
+                        res.status(400).send(response);
+                    } else {
+                        console.log("secondRestrict: " + JSON.stringify(secondRestrict));
+                        var io = req.app.get('socketio');
+                        io.emit('comm_aboutRestrictedUpdate', {
+                            "ids": findUpdateObjects,
+                            "restrictedTo": id,
+                            "moreIds": 'yes'
+                        }); /* ### Note: Emit message to user about their new restricted user ### */
+                        response = {
+                            status: true,
+                            message: "Successfull",
+                            data: secondRestrict
+                        };
+                        res.status(200).send(response);
+                    }
+                })
             }
         })
     } else {

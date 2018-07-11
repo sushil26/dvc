@@ -128,10 +128,10 @@ careatorApp.controller('userRestrictionCtrl', function ($scope, $state, $rootSco
         onItemDeselect: function (item) {
             console.log('unselected: ' + item);
             console.log('unselected json: ' + JSON.stringify(item));
-            var id = item.id;
+            var id = $scope.allUserModel[0].id;
             console.log("id: " + id);
             var restrictedTo = {
-                "userId": $scope.allUserModel[0].id
+                "userId":  item.id
             }
             console.log("restrictedTo: " + JSON.stringify(restrictedTo));
             var api = "https://norecruits.com/careator_removeRestrictedUserById/removeRestrictedUserById/" + id;

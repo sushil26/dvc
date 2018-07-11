@@ -103,9 +103,9 @@ careatorApp.controller('userRestrictionCtrl', function ($scope, $state, $rootSco
             console.log('selected: ' + item);
             console.log('selected json: ' + JSON.stringify(item));
             var id = item.id;
-            var restrictedTo = [{
+            var restrictedTo = {
                 "userId": $scope.allUserModel[0].id
-            }]
+            }
             console.log("restrictedTo: " + JSON.stringify($scope.restrictedTo));
             var api = "https://norecruits.com/careator_restrictedTo/restrictedTo/" + id;
             console.log("api: " + api);

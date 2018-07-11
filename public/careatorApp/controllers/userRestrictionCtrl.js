@@ -27,14 +27,20 @@ careatorApp.controller('userRestrictionCtrl', function ($scope, $state, $rootSco
                     allUsersData = data.data.data[0];
                     console.log("allUsersData: " + JSON.stringify(allUsersData));
                     $scope.restrictedTo = [];
-                    console.log("allUsersData.restrictedTo: " + JSON.stringify(allUsersData.restrictedTo));
-                    console.log("allUsersData.restrictedTo.length: " + allUsersData.restrictedTo.length);
-                    
-                    for (var x = 0; x < allUsersData.restrictedTo.length; x++) {
-                        $scope.restrictedTo.push(allUsersData.restrictedTo[x].userId);
+                    if (allUsersData.restrictedTo == undefined) {
+                        $scope.authorizedFor();
                     }
-                    console.log("$scope.restrictedTo: " + JSON.stringify($scope.restrictedTo));
-                    $scope.authorizedFor();
+                    else {
+                        console.log("allUsersData.restrictedTo: " + JSON.stringify(allUsersData.restrictedTo));
+                        console.log("allUsersData.restrictedTo.length: " + allUsersData.restrictedTo.length);
+
+                        for (var x = 0; x < allUsersData.restrictedTo.length; x++) {
+                            $scope.restrictedTo.push(allUsersData.restrictedTo[x].userId);
+                        }
+                        console.log("$scope.restrictedTo: " + JSON.stringify($scope.restrictedTo));
+                        $scope.authorizedFor();
+                    }
+
                 }
             })
         },
@@ -98,7 +104,7 @@ careatorApp.controller('userRestrictionCtrl', function ($scope, $state, $rootSco
             console.log('selected json: ' + JSON.stringify(item));
             var id = item.id;
             var restrictedTo = [{
-            "userId": $scope.allUserModel[0].id
+                "userId": $scope.allUserModel[0].id
             }]
             console.log("restrictedTo: " + JSON.stringify($scope.restrictedTo));
             var api = "https://norecruits.com/careator_restrictedTo/restrictedTo/" + id;

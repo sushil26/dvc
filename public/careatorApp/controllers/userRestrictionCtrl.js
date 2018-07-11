@@ -192,7 +192,7 @@ careatorApp.controller('userRestrictionCtrl', function ($scope, $state, $rootSco
             });
         }
         console.log("restrictedTo: " + JSON.stringify($scope.restrictedTo));
-        var api = "https://norecruits.com/careator_restrictedTo/restrictedTo/" + id;
+        var api = "https://norecruits.com/careator_restrictedToSave/restrictedToSave/" + id;
         console.log("api: " + api);
         var obj = {
             "restrictedTo": restrictedTo

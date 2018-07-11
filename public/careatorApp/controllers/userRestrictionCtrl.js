@@ -129,6 +129,7 @@ careatorApp.controller('userRestrictionCtrl', function ($scope, $state, $rootSco
             console.log('unselected: ' + item);
             console.log('unselected json: ' + JSON.stringify(item));
             var id = item.id;
+            console.log("id: " + id);
             var restrictedTo = {
                 "userId": $scope.allUserModel[0].id
             }

@@ -32,6 +32,7 @@ careatorApp.controller('userRestrictionCtrl', function ($scope, $state, $rootSco
                     for (var x = 0; x < allUsersData.restrictedTo.length; x++) {
                         $scope.restrictedTo.push(allUsersData.restrictedTo[x].userId);
                     }
+                    console.log("restrictedTo: "+JSON.stringify(restrictedTo));
                     $scope.authorizedFor();
                 }
             })

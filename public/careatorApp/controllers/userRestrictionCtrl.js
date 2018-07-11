@@ -91,10 +91,40 @@ careatorApp.controller('userRestrictionCtrl', function ($scope, $state, $rootSco
         enableSearch: true,
         externalIdProp: ''
     };
-
+    $scope.restrictedUserSelectEvent = {
+        onItemSelect: function (item) {
+            console.log('selected: ' + item);
+            console.log('selected json: ' + JSON.stringify(item));
+            var id = item.id;
+            var api = "https://norecruits.com//careator_getUser/careator_getUserById/" + id;
+            console.log("api: " + JSON.stringify(api));
+            // careatorHttpFactory.get(api).then(function (data) {
+            //     console.log("data--" + JSON.stringify(data.data));
+            //     var checkStatus = careatorHttpFactory.dataValidation(data);
+            //     console.log("data--" + JSON.stringify(data.data));
+            //     if (checkStatus) {
+            //         allUsersData = data.data.data[0];
+            //         console.log("allUsersData: " + JSON.stringify(allUsersData));
+            //         $scope.restrictedTo = [];
+            //         console.log("allUsersData.restrictedTo.length: "+allUsersData.restrictedTo.length);
+            //         console.log("allUsersData.restrictedTo: "+JSON.stringify(allUsersData.restrictedTo));
+            //         for (var x = 0; x < allUsersData.restrictedTo.length; x++) {
+            //             $scope.restrictedTo.push(allUsersData.restrictedTo[x].userId);
+            //         }
+            //         console.log("$scope.restrictedTo: "+JSON.stringify($scope.restrictedTo));
+            //         $scope.authorizedFor();
+            //     }
+            // })
+        },
+        onItemDeselect: function (item) {
+            console.log('unselected: ' + item);
+            console.log('unselected json: ' + JSON.stringify(item));
+        }
+    }
     $scope.authorizedFor = function () {
         console.log("authorizedFor-->");
         $scope.authorizedUserData = [];
+        $scope.authorizedUserModel = [];
         console.log("$scope.restrictedTo: "+JSON.stringify($scope.restrictedTo));
         for (var x = 0; x < allUsers.length; x++) {
             console.log("start to gather data");

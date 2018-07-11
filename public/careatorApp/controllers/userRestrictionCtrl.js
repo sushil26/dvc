@@ -125,32 +125,32 @@ careatorApp.controller('userRestrictionCtrl', function ($scope, $state, $rootSco
                 }
             })
         },
-        // onItemDeselect: function (item) {
-        //     console.log('unselected: ' + item);
-        //     console.log('unselected json: ' + JSON.stringify(item));
-        //     var id = item.id;
-        //     var restrictedTo = {
-        //         "userId": $scope.allUserModel[0].id
-        //     }
-        //     console.log("restrictedTo: " + JSON.stringify($scope.restrictedTo));
-        //     var api = "https://norecruits.com/careator_removeRestrictedUserById/removeRestrictedUserById/" + id;
-        //     console.log("api: " + api);
-        //     var obj = {
-        //         "restrictedTo": restrictedTo
-        //     }
-        //     careatorHttpFactory.post(api, obj).then(function (data) {
-        //         console.log("data--" + JSON.stringify(data.data));
-        //         var checkStatus = careatorHttpFactory.dataValidation(data);
-        //         console.log("data--" + JSON.stringify(data.data));
-        //         if (checkStatus) {
-        //             console.log(data.data.message);
-        //             $state.go("Cdashboard.groupListCtrl")
-        //         }
-        //         else {
-        //             console.log("Sorry: " + data.data.message);
-        //         }
-        //     })
-        // }
+        onItemDeselect: function (item) {
+            console.log('unselected: ' + item);
+            console.log('unselected json: ' + JSON.stringify(item));
+            var id = item.id;
+            var restrictedTo = {
+                "userId": $scope.allUserModel[0].id
+            }
+            console.log("restrictedTo: " + JSON.stringify($scope.restrictedTo));
+            var api = "https://norecruits.com/careator_removeRestrictedUserById/removeRestrictedUserById/" + id;
+            console.log("api: " + api);
+            var obj = {
+                "restrictedTo": restrictedTo
+            }
+            careatorHttpFactory.post(api, obj).then(function (data) {
+                console.log("data--" + JSON.stringify(data.data));
+                var checkStatus = careatorHttpFactory.dataValidation(data);
+                console.log("data--" + JSON.stringify(data.data));
+                if (checkStatus) {
+                    console.log(data.data.message);
+                    $state.go("Cdashboard.groupListCtrl")
+                }
+                else {
+                    console.log("Sorry: " + data.data.message);
+                }
+            })
+        }
     }
     $scope.authorizedFor = function () {
         console.log("authorizedFor-->");

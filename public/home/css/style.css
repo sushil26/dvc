@@ -19,6 +19,9 @@
 .modal{
   font-family: Lato;
 }
+.modal-content{
+border-radius: 8px;
+}
 
 .bouncy:hover{
   background-image: -webkit-gradient(linear, left top, left bottom, from(#f7f7f7), to(#e7e7e7));

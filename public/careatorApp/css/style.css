@@ -11,6 +11,9 @@
 .modal{
   font-family: Lato;
 }
+.modal-content{
+  border-radius: 8px;
+  }
 
 .llkk {
   color: #00a8b3;

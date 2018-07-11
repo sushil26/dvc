@@ -452,21 +452,28 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
     })
     socket.on('comm_aboutRestrictedUpdate', function (data) { //update to client about their new restricted users
         console.log("****comm_aboutRestrictedUpdate-->: " + JSON.stringify(data));
-        if ($scope.userId == data.id) {
-            console.log("Updated Started-->");
-            var restrictedUser = data.restrictedTo;
-            $scope.restrictedArray = [];
-            for (var x = 0; x < restrictedUser.length; x++) {
-                 $scope.restrictedArray.push(restrictedUser[x].userId);
-            }
-            console.log(" $scope.restrictedArray: " + JSON.stringify( $scope.restrictedArray));
-            // if(restrictedArray.length>1){
-            //     var splitRestrictedUser = restrictedArray.split(',');
-            //     console.log("splitRestrictedUser: " + JSON.stringify(splitRestrictedUser));
-            // }
-
-
+        if (data.moreIds == 'yes') {
+            console.log("data: " + JSON.stringify(data));
+            console.log("data.ids.indexOf($scope.userId): " + data.ids.indexOf($scope.userId));            
         }
+        else {
+            if ($scope.userId == data.id) {
+                console.log("Updated Started-->");
+                var restrictedUser = data.restrictedTo;
+                $scope.restrictedArray = [];
+                for (var x = 0; x < restrictedUser.length; x++) {
+                    $scope.restrictedArray.push(restrictedUser[x].userId);
+                }
+                console.log(" $scope.restrictedArray: " + JSON.stringify($scope.restrictedArray));
+                // if(restrictedArray.length>1){
+                //     var splitRestrictedUser = restrictedArray.split(',');
+                //     console.log("splitRestrictedUser: " + JSON.stringify(splitRestrictedUser));
+                // }
+
+
+            }
+        }
+
     })
     /* ### End: Get event update from index.js  ### */
 

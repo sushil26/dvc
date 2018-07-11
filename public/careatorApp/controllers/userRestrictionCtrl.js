@@ -95,7 +95,7 @@ careatorApp.controller('userRestrictionCtrl', function ($scope, $state, $rootSco
     $scope.authorizedFor = function () {
         console.log("authorizedFor-->");
         $scope.authorizedUserData = [];
-        console.log("$scope.restrictedTo: "+JSON.stringify($scope.restrictedTo.indexOf));
+        console.log("$scope.restrictedTo: "+JSON.stringify($scope.restrictedTo));
         for (var x = 0; x < allUsers.length; x++) {
             console.log("start to gather data");
             if ($scope.allUserModel[0].id != allUsers[x]._id) {

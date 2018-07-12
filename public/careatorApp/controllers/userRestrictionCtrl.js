@@ -118,7 +118,7 @@ careatorApp.controller('userRestrictionCtrl', function ($scope, $state, $rootSco
                 console.log("data--" + JSON.stringify(data.data));
                 if (checkStatus) {
                     console.log(data.data.message);
-                 
+                 $scope.addRestrictionToSelectedUser($scope.allUserModel[0].id, item.id);
                 }
                 else {
                     console.log("Sorry: " + data.data.message);
@@ -220,6 +220,33 @@ careatorApp.controller('userRestrictionCtrl', function ($scope, $state, $rootSco
             }
             console.log("restrictedTo: " + JSON.stringify(restrictedTo));
             var api = "https://norecruits.com/careator_removeRestrictedUserById/removeRestrictedUserById/" + id;
+            console.log("api: " + api);
+            var obj = {
+                "restrictedTo": restrictedTo
+            }
+            careatorHttpFactory.post(api, obj).then(function (data) {
+                console.log("data--" + JSON.stringify(data.data));
+                var checkStatus = careatorHttpFactory.dataValidation(data);
+                console.log("data--" + JSON.stringify(data.data));
+                if (checkStatus) {
+                    console.log(data.data.message);
+                   
+                }
+                else {
+                    console.log("Sorry: " + data.data.message);
+                }
+            })
+    }
+
+    $scope.addRestrictionToSelectedUser = function(id, restrictedId){
+        console.log("removeRestriction-->");
+        var id = id;
+            console.log("id: " + id);
+            var restrictedTo = {
+                "userId":  restrictedId
+            }
+            console.log("restrictedTo: " + JSON.stringify(restrictedTo));
+            var api = "https://norecruits.com/careator_restrictedTo/restrictedTo/" + id;
             console.log("api: " + api);
             var obj = {
                 "restrictedTo": restrictedTo

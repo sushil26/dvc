@@ -33,12 +33,12 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
     if (userData.chatRights == 'yes') {
         $scope.getChatGroupListById(localStorage.getItem("userId"));
     }
-    if (screen.width < 768){
-        $('#homeicon').css({
-            "display": "block"
-        });
+    // if (screen.width < 768){
+    //     $('#homeicon').css({
+    //         "display": "block"
+    //     });
 
-    }
+    // }
     $scope.chatMenu = function () {
         console.log("chatMenu-->");
         console.log("screen.width: " + screen.width);

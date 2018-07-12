@@ -34,6 +34,7 @@
 .emojiPicker {
     display: none;
     position: absolute;
+    top: 73vh !important;
     outline: none;
     border: none;
     box-shadow: 0 0 7px #555;

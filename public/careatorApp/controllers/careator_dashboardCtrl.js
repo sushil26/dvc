@@ -14,29 +14,33 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
     // Start the timer
     $timeout(tick, $scope.tickInterval);
 
-    var userData = {
-        "email": localStorage.getItem("email"),
-        "userName": localStorage.getItem("userName"),
-        "empId": localStorage.getItem("empId"),
-        "userId": localStorage.getItem("userId"),
-    }
-    if (localStorage.getItem("videoRights") == 'yes') {
-        userData.videoRights = "yes";
-    }
-    if (localStorage.getItem("chatRights") == 'yes') {
-        userData.chatRights = "yes";
-        // $scope.getChatGroupListById(localStorage.getItem("userId"));
-    }
-    console.log("localStorage.getItem(restrictedTo): " + JSON.stringify(localStorage.getItem("restrictedTo")));
-    if (localStorage.getItem("restrictedTo")) {
-       
-       
-        userData.restrictedTo =localStorage.getItem("restrictedTo");
+    var userData = careatorSessionAuth.getAccess("userData");
+    if (userData == undefined) {
+
+        var userData = {
+            "email": localStorage.getItem("email"),
+            "userName": localStorage.getItem("userName"),
+            "empId": localStorage.getItem("empId"),
+            "userId": localStorage.getItem("userId"),
+        }
+        if (localStorage.getItem("videoRights") == 'yes') {
+            userData.videoRights = "yes";
+        }
+        if (localStorage.getItem("chatRights") == 'yes') {
+            userData.chatRights = "yes";
+            // $scope.getChatGroupListById(localStorage.getItem("userId"));
+        }
+        console.log("localStorage.getItem(restrictedTo): " + JSON.stringify(localStorage.getItem("restrictedTo")));
+        if (localStorage.getItem("restrictedTo")) {
+            userData.restrictedTo = localStorage.getItem("restrictedTo");
+        }
+
+        careatorSessionAuth.setAccess(userData);
+        var userData = careatorSessionAuth.getAccess("userData");
+        console.log("userData: " + JSON.stringify(userData));
     }
 
-    careatorSessionAuth.setAccess(userData);
-    var userData = careatorSessionAuth.getAccess("userData");
-    console.log("userData: " + JSON.stringify(userData));
+    
     $scope.name = userData.userName;
 
     $scope.logout = function () {

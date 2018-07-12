@@ -1119,6 +1119,64 @@ module.exports.individualTextReadById = function (req, res) {
     }
 
 }
+module.exports.addGroupTextById = function (req, res) {
+    console.log("addGroupTextById-->");
+    var id = req.params.id;
+    if (general.emptyCheck(id)) {
+
+        var date = new Date();
+        var obj = {
+            "senderId": req.body.senderId,
+            "senderName": req.body.senderName,
+            "message": req.body.message,
+            "sendTime": date
+        }
+        console.log("obj : " + JSON.stringify(obj));
+
+        var findObj = {
+            "_id": ObjectId(id)
+        }
+        console.log("findObj: " + JSON.stringify(findObj));
+        careatorChat.update(findObj, { "$push": { "chats": obj } }, function (err, updatedData) {
+            if (err) {
+                console.log("err: " + JSON.stringify(err));
+                response = {
+                    status: false,
+                    message: "Unsucessfully updated data",
+                    data: err
+                };
+                res.status(400).send(responseData);
+            } else {
+                console.log("updatedData: " + JSON.stringify(updatedData));
+                var io = req.app.get('socketio');
+                io.emit('comm_textReceived', {
+                    "id": data[0]._id,
+                    "senderId": obj.senderId,
+                    "senderName": obj.senderName,
+                    "message": obj.message,
+                    "receiverId": req.body.receiverId,
+                    "sendTime": obj.sendTime,
+                    "groupNotify": "no",
+                    "freshInsert": false
+                }); /* ### Note: Emit message to client ### */
+                response = {
+                    status: true,
+                    message: "Sucessfully updated",
+                    data: updatedData
+                };
+                res.status(200).send(response);
+            }
+        })
+    }
+    else {
+        console.log("Epty value found");
+        response = {
+            status: false,
+            message: "empty value found"
+        };
+        res.status(400).send(response);
+    }
+}
 
 module.exports.groupTextReadByGroupId = function (req, res) {
     console.log("groupTextReadByGroupId-->");
@@ -1368,7 +1426,7 @@ module.exports.getChatRecordForGroup_byId = function (req, res) {
     console.log("getChatRecordForGroup_byId-->");
     var id = req.params.id;
     if (general.emptyCheck(id)) {
-        careatorChat.find({"groupMemebers":id}).toArray(function (err, findData) {
+        careatorChat.find({ "groupMemebers": id }).toArray(function (err, findData) {
             if (err) {
                 console.log("err: " + JSON.stringify(err));
                 response = {

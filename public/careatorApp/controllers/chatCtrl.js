@@ -376,7 +376,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                     "message": $scope.typedMessage
                 }
                 console.log("obj: " + JSON.stringify(obj));
-                api = "https://norecruits.com//careator_groupText/groupText";
+                api = "https://norecruits.com/careator_groupText/groupText";
                 console.log("api: " + api);
                 careatorHttpFactory.post(api, obj).then(function (data) {
                     console.log("data--" + JSON.stringify(data.data));

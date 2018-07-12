@@ -669,5 +669,8 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
 
 
 
-
+    $('.question').emojiPicker({
+        height: '300px',
+        width: '450px'
+    });
 })

@@ -480,9 +480,9 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                     console.log(" userData.restrictedTo: " + userData.restrictedTo);
                     userData.restrictedTo =  restrictedArray;
                     console.log("userData.restrictedTo: " + JSON.stringify(userData.restrictedTo));
-                    //careatorSessionAuth.setAccess(userData.restrictedTo);
-                    // var userData = careatorSessionAuth.getAccess("userData");
-                    // console.log("userData: " + JSON.stringify(userData));
+                    careatorSessionAuth.setAccess(userData.restrictedTo);
+                    var userData = careatorSessionAuth.getAccess("userData");
+                    console.log("***userData: " + JSON.stringify(userData));
                     console.log(data.data.message);
 
                 } else {

@@ -1150,13 +1150,10 @@ module.exports.addGroupTextById = function (req, res) {
                 console.log("updatedData: " + JSON.stringify(updatedData));
                 var io = req.app.get('socketio');
                 io.emit('comm_textReceived', {
-                    "id": data[0]._id,
-                    "senderId": obj.senderId,
-                    "senderName": obj.senderName,
+                    "id": id,
                     "message": obj.message,
-                    "receiverId": req.body.receiverId,
                     "sendTime": obj.sendTime,
-                    "groupNotify": "no",
+                    "groupNotify": "yes",
                     "freshInsert": false
                 }); /* ### Note: Emit message to client ### */
                 response = {

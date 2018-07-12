@@ -48,6 +48,7 @@ module.exports = function (app) {
     app.get('/careator_individualTextRead/individualTextReadById/:sId/:rId', careator.individualTextReadById);
     app.get('/careator_groupTextRead/groupTextReadByGroupId/:group_id', careator.groupTextReadByGroupId);
     app.post('/careator_groupText/groupText', careator.groupText);
+    app.post('/careator_groupText/addGroupTextById/:id', careator.addGroupTextById)
     app.get('/careator_groupTextRead/groupTextReadById/:sId/:rId', careator.groupTextReadById);
 
     app.post('/record/pswdGenerate', record.pswdGenerate);

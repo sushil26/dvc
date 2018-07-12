@@ -662,6 +662,7 @@ module.exports.careator_chat_creteGroup = function (req, res) {
     var response;
     var groupName = req.body.groupName;
     var groupMembers = req.body.members;
+    var date = new Date();
     var groupMembers_ids = [];
     for (var x = 0; x < groupMembers.length; x++) {
         groupMembers_ids.push(groupMembers[x].userId);

@@ -459,6 +459,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         console.log("****comm_aboutRestrictedUpdate-->: " + JSON.stringify(data));
 
         if(data.id == userData.userId){
+            var id =   userData.userId;
             var api = "https://norecruits.com/careator_getUser/careator_getUserById/" + id;
             console.log("api: " + api);
             careatorHttpFactory.get(api).then(function (data) {

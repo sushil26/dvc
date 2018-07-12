@@ -494,7 +494,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
 
                     console.log("userData.restrictedTo: " + JSON.stringify(userData.restrictedTo));
                     careatorSessionAuth.setAccess(userData.restrictedTo);
-                    var userData = careatorSessionAuth.getAccess("userData");
+                    var userData = careatorSessionAuth.setAccess(userData);
                     console.log("***userData: " + JSON.stringify(userData));
                     $scope.getAllChatRightEmp();
                     console.log(data.data.message);

@@ -293,7 +293,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                     "receiverName": $scope.receiverData.receiverName,
                     "message": $scope.typedMessage
                 }
-                
+
                 console.log("obj: " + JSON.stringify(obj));
                 careatorHttpFactory.post(api, obj).then(function (data) {
                     console.log("data--" + JSON.stringify(data.data));
@@ -447,16 +447,19 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
             $scope.getChatRecords();
 
         }
-        if ($scope.individualData._id == data.id ) {
-            console.log("2)start pushing message");
-            $scope.allChat.chats.push({
-                "senderId": data.senderId,
-                "senderName": data.senderName,
-                "message": data.message,
-                "sendTime": data.sendTime
-            });
-            $scope.scrollDown();
+        else if (data.freshInsert == undefined) {
+            if ($scope.individualData._id == data.id) {
+                console.log("2)start pushing message");
+                $scope.allChat.chats.push({
+                    "senderId": data.senderId,
+                    "senderName": data.senderName,
+                    "message": data.message,
+                    "sendTime": data.sendTime
+                });
+                $scope.scrollDown();
+            }
         }
+
     })
     socket.on('comm_aboutRestrictedUpdate', function (data) { //update to client about their new restricted users
         console.log("****comm_aboutRestrictedUpdate-->: " + JSON.stringify(data));

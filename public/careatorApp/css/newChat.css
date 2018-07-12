@@ -212,8 +212,11 @@ box-shadow: none;
 
 .time-meta {
     /* margin-top: 15px; */
+    color: black !important;
+    /* color: beige; */
+    /* margin-top: 15px; */
     text-align: right;
-    font-size: 12px;
+    font-size: 7px;
     padding: 1% !important;
     color: rgba(0, 0, 0, .4);
     vertical-align: baseline;

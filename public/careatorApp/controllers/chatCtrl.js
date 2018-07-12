@@ -470,11 +470,16 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                     console.log("getUserById: " + JSON.stringify($scope.getUserById));
                     //console.log("$scope.getUserById.restrictedTo: "+JSON.stringify($scope.getUserById.restrictedTo));
                     console.log("userData: " + JSON.stringify(userData));
-                    var restrictedUser =  $scope.getUserById.restrictedTo;
-
-                    console.log("restrictedUser: " + JSON.stringify(restrictedUser));
+                    //var restrictedUser =  $scope.getUserById.restrictedTo;
+                    var restrictedTo =  $scope.getUserById.restrictedTo;
+                    var restrictedArray = [];
+                    for (var x = 0; x < restrictedTo.length; x++) {
+                        restrictedArray.push(restrictedTo[x].userId);
+                    }
+                    
                     console.log(" userData.restrictedTo: " + userData.restrictedTo);
-                   // userData.restrictedTo = $scope.getUserById.restrictedTo;
+                    userData.restrictedTo =  $scope.getUserById.restrictedTo;
+                    console.log("userData.restrictedTo: " + JSON.stringify(userData.restrictedTo));
                     //careatorSessionAuth.setAccess(userData.restrictedTo);
                     // var userData = careatorSessionAuth.getAccess("userData");
                     // console.log("userData: " + JSON.stringify(userData));

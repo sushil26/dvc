@@ -335,8 +335,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                         console.log(data.data.message);
                     }
                 })
-            }
-            else {
+            } else {
                 alert("You not allowed to chat with " + $scope.receiverData.receiverName);
             }
 
@@ -700,8 +699,10 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
 
 
 
-    $('.question').emojiPicker({
-        height: '300px',
-        width: '450px'
-    });
+    $('.question').emojiPicker(
+
+        {
+            height: '300px',
+            width: '450px'
+        });
 })

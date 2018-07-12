@@ -216,10 +216,9 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                     } else {
                         $scope.individualData = $scope.allChat;
                     }
-
                     console.log(" $scope.individualData : " + JSON.stringify($scope.individualData));
-
                     console.log(data.data.message);
+                    $scope.getChatRecords();
                 } else {
                     console.log("Sorry");
                     console.log(data.data.message);
@@ -476,7 +475,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                     for (var x = 0; x < restrictedTo.length; x++) {
                         restrictedArray.push(restrictedTo[x].userId);
                     }
-                    console.log("restrictedArray: "+JSON.stringify(restrictedArray));
+                    console.log("restrictedArray: " + JSON.stringify(restrictedArray));
                     $scope.restrictedArray = restrictedArray;
                     var userData = {
                         "email": localStorage.getItem("email"),
@@ -494,7 +493,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                     }
 
                     console.log("userData.restrictedTo: " + JSON.stringify(userData.restrictedTo));
-                                       
+
                     careatorSessionAuth.clearAccess("userData");
                     careatorSessionAuth.setAccess(userData);
                     var userData = careatorSessionAuth.getAccess("userData");

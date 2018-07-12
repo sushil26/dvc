@@ -528,7 +528,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
             $scope.getChatRecords();
 
         }
-        else if (data.freshInsert == true && data.groupNotify == "yes" && data.receiverId.indexOf[userData.userId] >= 0) {
+        else if (data.freshInsert == true && data.groupNotify == "yes" && (data.receiverId.indexOf[userData.userId] >= 0)) {
             console.log("2)comm_textReceived");
             $scope.getChatRecords();
         }

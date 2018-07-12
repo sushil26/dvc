@@ -74,42 +74,72 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         console.log("id: " + id);
         if ($scope.selectedType == 'group') {
             var group_id = id;
-            var api = "https://norecruits.com/careator_groupTextRead/groupTextReadByGroupId/" + group_id;
+            //var api = "https://norecruits.com/careator_groupTextRead/groupTextReadByGroupId/" + group_id;
+            var api = "https://norecruits.com/careator_getChatsById/getChatsById/" + id;
             console.log("api: " + api);
             careatorHttpFactory.get(api).then(function (data) {
                 console.log("data--" + JSON.stringify(data.data));
                 var checkStatus = careatorHttpFactory.dataValidation(data);
                 if (checkStatus) {
-                    $scope.allChat = data.data.data[0];
-                    if ($scope.allChat == undefined) {
-                        $scope.individualData = $scope.chatedGroup_records[index];
-                        $scope.sendGroupText_withData = {
-                            "group_id": $scope.individualData._id,
-                            "groupName": $scope.individualData.groupName,
-                            "senderId": userData.userId,
-                            "senderName": userData.userName
-                        }
-                        // $scope.individualData = data.data.data[0];
-                    } else {
-                        $scope.individualData = data.data.data[0];
-                        console.log("$scope.allChat: " + JSON.stringify($scope.allChat));
-                        console.log("$scope.allChat.chats: " + JSON.stringify($scope.allChat.chats));
-                        $scope.sendGroupText_withData = {
-                            "group_id": $scope.individualData.group_id,
-                            "groupName": $scope.individualData.groupName,
-                            "senderId": userData.userId,
-                            "senderName": userData.userName
-                        }
-                    }
+                    $scope.allChat = data.data.data;
+                    $scope.individualData = data.data.data;
+                    console.log("$scope.allChat: " + JSON.stringify($scope.allChat));
                     console.log("$scope.individualData : " + JSON.stringify($scope.individualData));
 
-                    console.log("sendGroupText_withData-->: " + JSON.stringify($scope.sendGroupText_withData));
-                    // $scope.readText();
+                    $scope.receiverData = {
+                        "senderId": userData.userId,
+                        "senderName": userData.userName,
+                    }
+
+                    if ($scope.individualData.receiverId != userData.userId) {
+                        $scope.receiverData.receiverId = $scope.individualData.receiverId;
+                        $scope.receiverData.receiverName = $scope.individualData.receiverName;
+                    } else if ($scope.individualData.senderId != userData.userId) {
+                        $scope.receiverData.receiverId = $scope.individualData.senderId;
+                        $scope.receiverData.receiverName = $scope.individualData.senderName;
+                    }
+                    console.log(" $scope.receiverData : " + JSON.stringify($scope.receiverData));
+
+
                 } else {
                     console.log("Sorry");
                     console.log(data.data.message);
                 }
             })
+            // careatorHttpFactory.get(api).then(function (data) {
+            //     console.log("data--" + JSON.stringify(data.data));
+            //     var checkStatus = careatorHttpFactory.dataValidation(data);
+            //     if (checkStatus) {
+            //         $scope.allChat = data.data.data[0];
+            //         if ($scope.allChat == undefined) {
+            //             $scope.individualData = $scope.chatedGroup_records[index];
+            //             $scope.sendGroupText_withData = {
+            //                 "group_id": $scope.individualData._id,
+            //                 "groupName": $scope.individualData.groupName,
+            //                 "senderId": userData.userId,
+            //                 "senderName": userData.userName
+            //             }
+            //             // $scope.individualData = data.data.data[0];
+            //         } else {
+            //             $scope.individualData = data.data.data[0];
+            //             console.log("$scope.allChat: " + JSON.stringify($scope.allChat));
+            //             console.log("$scope.allChat.chats: " + JSON.stringify($scope.allChat.chats));
+            //             $scope.sendGroupText_withData = {
+            //                 "group_id": $scope.individualData.group_id,
+            //                 "groupName": $scope.individualData.groupName,
+            //                 "senderId": userData.userId,
+            //                 "senderName": userData.userName
+            //             }
+            //         }
+            //         console.log("$scope.individualData : " + JSON.stringify($scope.individualData));
+
+            //         console.log("sendGroupText_withData-->: " + JSON.stringify($scope.sendGroupText_withData));
+            //         // $scope.readText();
+            //     } else {
+            //         console.log("Sorry");
+            //         console.log(data.data.message);
+            //     }
+            // })
         } else if ($scope.selectedType == "individual_chats") {
             var api = "https://norecruits.com/careator_getChatsById/getChatsById/" + id;
             console.log("api: " + api);

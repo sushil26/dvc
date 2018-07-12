@@ -351,7 +351,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                 }
                 console.log("obj: " + JSON.stringify(obj));
                 var id = $scope.group_chatId;
-                api = "https://norecruits.com//careator_groupText/addGroupTextById/"+id;
+                api = "https://norecruits.com/careator_groupText/addGroupTextById/"+id;
                 console.log("api: " + api);
                 careatorHttpFactory.post(api, obj).then(function (data) {
                     console.log("data--" + JSON.stringify(data.data));

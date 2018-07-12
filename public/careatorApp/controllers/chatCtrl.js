@@ -492,6 +492,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         // console.log("$scope.individualData._id: " + JSON.stringify($scope.individualData));
         // console.log(" data.id: " + JSON.stringify(data));
         if (data.freshInsert == true && data.groupNotify == "no" && (userData.userId == data.senderId || userData.userId == data.receiverId)) {
+            console.log("1)comm_textReceived");
             var id = data.id;
             var api = "https://norecruits.com/careator_getChatsById/getChatsById/" + id;
             console.log("api: " + api);
@@ -528,10 +529,13 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
 
         }
         else if (data.freshInsert == true && data.groupNotify == "yes" && data.receiverId.indexOf[userData.userId] >= 0) {
+            console.log("2)comm_textReceived");
             $scope.getChatRecords();
         }
         else if (data.freshInsert == false) {
+            console.log("3)comm_textReceived");
             if ($scope.individualData._id == data.id) {
+                console.log("3.1)comm_textReceived");
                 console.log("2)start pushing message");
                 $scope.allChat.chats.push({
                     "senderId": data.senderId,

@@ -39,7 +39,6 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
         var userData = careatorSessionAuth.getAccess("userData");
         console.log("userData: " + JSON.stringify(userData));
     }
-
     
     $scope.name = userData.userName;
 

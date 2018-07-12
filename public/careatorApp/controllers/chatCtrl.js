@@ -5,10 +5,10 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
     console.log("userData: " + JSON.stringify(userData));
     $scope.allGroupAndIndividual = []; /* ### Note:$scope.allGroupAndIndividual contains All employee list(who having chat rights) and group list(which are included by login person)   ### */
     var restrictedUser = userData.restrictedTo;
-
-    console.log("restrictedUser: " + JSON.stringify(restrictedUser));
-    $scope.restrictedArray = restrictedUser.split(',');
-    console.log(" $scope.restrictedArray: " + JSON.stringify($scope.restrictedArray));
+    $scope.restrictedArray = restrictedUser;
+    // console.log("restrictedUser: " + JSON.stringify(restrictedUser));
+    // $scope.restrictedArray = restrictedUser.split(',');
+    // console.log(" $scope.restrictedArray: " + JSON.stringify($scope.restrictedArray));
 
     $scope.getChatGroupListById = function (id) {
         console.log("getAllEmployee-->: " + id);

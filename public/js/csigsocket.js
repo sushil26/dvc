@@ -179,6 +179,7 @@ function checkPassword() {
       for (var x = 0; x < restrictedTo.length; x++) {
           restrictedArray.push(restrictedTo[x].userId);
       }
+      
       console.log("restrictedArray: "+restrictedArray);
       localStorage.setItem("restrictedTo", restrictedArray);
     }

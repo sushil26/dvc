@@ -471,14 +471,27 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                     //console.log("$scope.getUserById.restrictedTo: "+JSON.stringify($scope.getUserById.restrictedTo));
                     console.log("userData: " + JSON.stringify(userData));
                     //var restrictedUser =  $scope.getUserById.restrictedTo;
-                    var restrictedTo =  $scope.getUserById.restrictedTo;
+                    var restrictedTo = $scope.getUserById.restrictedTo;
                     var restrictedArray = [];
                     for (var x = 0; x < restrictedTo.length; x++) {
                         restrictedArray.push(restrictedTo[x].userId);
                     }
-                    
-                    console.log(" userData.restrictedTo: " + userData.restrictedTo);
-                    userData.restrictedTo =  restrictedArray;
+                    $scope.restrictedArray = restrictedArray;
+                    var userData = {
+                        "email": localStorage.getItem("email"),
+                        "userName": localStorage.getItem("userName"),
+                        "empId": localStorage.getItem("empId"),
+                        "userId": localStorage.getItem("userId"),
+                        "restrictedTo": restrictedArray
+                    }
+                    if (localStorage.getItem("videoRights") == 'yes') {
+                        userData.videoRights = "yes";
+                    }
+                    if (localStorage.getItem("chatRights") == 'yes') {
+                        userData.chatRights = "yes";
+                        // $scope.getChatGroupListById(localStorage.getItem("userId"));
+                    }
+                   
                     console.log("userData.restrictedTo: " + JSON.stringify(userData.restrictedTo));
                     careatorSessionAuth.setAccess(userData.restrictedTo);
                     var userData = careatorSessionAuth.getAccess("userData");

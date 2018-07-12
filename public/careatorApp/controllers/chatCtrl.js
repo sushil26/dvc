@@ -30,10 +30,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         console.log("<--getAllEmployee");
     }
 
-    if (userData.chatRights == 'yes') {
-        $scope.getChatGroupListById(localStorage.getItem("userId"));
-        $scope.getChatRecordForGroup_byId();
-    }
+    
     // if (screen.width < 768){
     //     $('#homeicon').css({
     //         "display": "block"
@@ -398,7 +395,11 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
             }
         })
     }
-    $scope.getChatRecordForGroup_byId();
+  
+    if (userData.chatRights == 'yes') {
+        $scope.getChatGroupListById(localStorage.getItem("userId"));
+        $scope.getChatRecordForGroup_byId();
+    }
 
     $scope.getChatRecords = function () {
         console.log("getChatRecords-->");

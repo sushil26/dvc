@@ -33,7 +33,12 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
     if (userData.chatRights == 'yes') {
         $scope.getChatGroupListById(localStorage.getItem("userId"));
     }
+    // if (screen.width < 768){
+    //     $('#homeicon').css({
+    //         "display": "block"
+    //     });
 
+    // }
     $scope.chatMenu = function () {
         console.log("chatMenu-->");
         console.log("screen.width: " + screen.width);
@@ -499,20 +504,20 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
     });
 
 
-    /////Auto Scroll Down Chat////////////////
-    // $scope.scrollDown = function () {
-    //     console.log("scrollDown-->");
-    //     $("#pulldown").animate({
-    //         scrollTop: $("#pulldown").prop("scrollHeight")
-    //     }, 500);
-    // }
-
+    ///Auto Scroll Down Chat////////////////
     $scope.scrollDown = function () {
         console.log("scrollDown-->");
         $("#pulldown").animate({
-            scrollTop: $("#pulldown").prop(0)
+            scrollTop: $("#pulldown").prop("scrollHeight")
         }, 500);
     }
+
+    // $scope.scrollDown = function () {
+    //     console.log("scrollDown-->");
+    //     $("#pulldown").animate({
+    //         scrollTop: $("#pulldown").prop(0,0)
+    //     }, 500);
+    // }
 
 
 

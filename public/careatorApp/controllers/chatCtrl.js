@@ -515,7 +515,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
     $scope.scrollDown = function () {
         console.log("scrollDown-->");
         $("#pulldown").animate({
-            scrollTop: $("#pulldown").prop(0)
+            scrollTop: $("#pulldown").prop(0,0)
         }, 500);
     }
 

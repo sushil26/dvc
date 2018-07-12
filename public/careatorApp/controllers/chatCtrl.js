@@ -194,6 +194,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
             })
 
         } else {
+            $scope.chatFromNewWindow = "yes"; /* ### Note: identify chat is coming new window means, may be we dont have chat record in the chated list, so we have to show the reciever as well sender to refresh the all chated list ### */
             $scope.receiverData = {
                 "senderId": userData.userId,
                 "senderName": userData.userName,
@@ -292,6 +293,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                     "receiverName": $scope.receiverData.receiverName,
                     "message": $scope.typedMessage
                 }
+                
                 console.log("obj: " + JSON.stringify(obj));
                 careatorHttpFactory.post(api, obj).then(function (data) {
                     console.log("data--" + JSON.stringify(data.data));
@@ -442,8 +444,10 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                     console.log(data.data.message);
                 }
             })
+            $scope.getChatRecords();
+
         }
-        if ($scope.individualData._id == data.id) {
+        if ($scope.individualData._id == data.id ) {
             console.log("2)start pushing message");
             $scope.allChat.chats.push({
                 "senderId": data.senderId,

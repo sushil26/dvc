@@ -468,7 +468,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                 if (checkStatus) {
                     $scope.getUserById = data.data.data[0];
                     console.log("getUserById: " + JSON.stringify($scope.getUserById));
-                    console.log("$scope.getUserById.restrictedTo: "+JSON.restrictedTo($scope.getUserById.restrictedTo));
+                    console.log("$scope.getUserById.restrictedTo: "+JSON.stringify($scope.getUserById.restrictedTo));
                     userData.restrictedTo = $scope.getUserById.restrictedTo;
                     careatorSessionAuth.setAccess(userData.restrictedTo);
                     var userData = careatorSessionAuth.getAccess("userData");

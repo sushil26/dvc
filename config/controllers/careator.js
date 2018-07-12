@@ -1151,6 +1151,7 @@ module.exports.addGroupTextById = function (req, res) {
                 var io = req.app.get('socketio');
                 io.emit('comm_textReceived', {
                     "id": id,
+                    "senderId": obj.senderId,
                     "message": obj.message,
                     "sendTime": obj.sendTime,
                     "groupNotify": "yes",

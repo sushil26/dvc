@@ -30,7 +30,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         console.log("<--getAllEmployee");
     }
 
-    
+
     // if (screen.width < 768){
     //     $('#homeicon').css({
     //         "display": "block"
@@ -334,8 +334,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                         console.log(data.data.message);
                     }
                 })
-            }
-            else {
+            } else {
                 alert("You not allowed to chat with " + $scope.receiverData.receiverName);
             }
 
@@ -425,7 +424,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
             }
         })
     }
-  
+
     if (userData.chatRights == 'yes') {
         $scope.getChatGroupListById(localStorage.getItem("userId"));
         $scope.getChatRecordForGroup_byId();
@@ -498,11 +497,9 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
             })
             $scope.getChatRecords();
 
-        }
-        else if (data.freshInsert == true && data.groupNotify == "yes" && data.receiverId.indexOf[userData.userId] >= 0) {
+        } else if (data.freshInsert == true && data.groupNotify == "yes" && data.receiverId.indexOf[userData.userId] >= 0) {
             $scope.getChatRecords();
-        }
-        else if (data.freshInsert == false) {
+        } else if (data.freshInsert == false) {
             if ($scope.individualData._id == data.id) {
                 console.log("2)start pushing message");
                 $scope.allChat.chats.push({
@@ -669,8 +666,10 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
 
 
 
-    $('.question').emojiPicker({
-        height: '300px',
-        width: '450px'
-    });
+    $('.question').emojiPicker(
+
+        {
+            height: '300px',
+            width: '450px'
+        });
 })

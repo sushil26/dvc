@@ -410,7 +410,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         console.log(" data.id: " + data.id);
         console.log("$scope.individualData._id: " + JSON.stringify($scope.individualData));
         console.log(" data.id: " + JSON.stringify(data));
-        if (data.freshInsert == true && (userData.userId==data.senderId || userData.userId==data.receiverId)) {
+        if (data.freshInsert == true && (userData.userId == data.senderId || userData.userId == data.receiverId)) {
             var id = data.id;
             var api = "https://norecruits.com/careator_getChatsById/getChatsById/" + id;
             console.log("api: " + api);
@@ -458,8 +458,8 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
     socket.on('comm_aboutRestrictedUpdate', function (data) { //update to client about their new restricted users
         console.log("****comm_aboutRestrictedUpdate-->: " + JSON.stringify(data));
 
-        if(data.id == userData.userId){
-            var id =   userData.userId;
+        if (data.id == userData.userId) {
+            var id = userData.userId;
             var api = "https://norecruits.com/careator_getUser/careator_getUserById/" + id;
             console.log("api: " + api);
             careatorHttpFactory.get(api).then(function (data) {
@@ -468,8 +468,12 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                 if (checkStatus) {
                     $scope.getUserById = data.data.data[0];
                     console.log("getUserById: " + JSON.stringify($scope.getUserById));
+                    userData.restrictedTo = $scope.getUserById.restrictedTo;
+                    careatorSessionAuth.setAccess(userData.restrictedTo);
+                    var userData = careatorSessionAuth.getAccess("userData");
+                    console.log("userData: " + JSON.stringify(userData));
                     console.log(data.data.message);
-    
+
                 } else {
                     console.log("Sorry");
                     console.log(data.data.message);

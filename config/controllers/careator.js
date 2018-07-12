@@ -1685,7 +1685,7 @@ module.exports.removeRestrictedUserById = function (req, res) {
             } else {
                 console.log("restrict: " + JSON.stringify(restrict));
                 var io = req.app.get('socketio');
-                io.emit('comm_aboutRestrictedRemoveUpdate', {
+                io.emit('comm_aboutRestrictedUpdate', {
                     "id": id,
                     "restrictedTo": req.body.restrictedTo
                 }); /* ### Note: Emit message to user about their new restricted user ### */

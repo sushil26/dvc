@@ -469,14 +469,15 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                     $scope.getUserById = data.data.data[0];
                     console.log("getUserById: " + JSON.stringify($scope.getUserById));
                     //console.log("$scope.getUserById.restrictedTo: "+JSON.stringify($scope.getUserById.restrictedTo));
+                    console.log("userData: " + JSON.stringify(userData));
                     var restrictedUser = userData.restrictedTo;
 
                     console.log("restrictedUser: " + JSON.stringify(restrictedUser));
                     console.log(" userData.restrictedTo: " + userData.restrictedTo);
-                    userData.restrictedTo = $scope.getUserById.restrictedTo;
-                    careatorSessionAuth.setAccess(userData.restrictedTo);
-                    var userData = careatorSessionAuth.getAccess("userData");
-                    console.log("userData: " + JSON.stringify(userData));
+                    // userData.restrictedTo = $scope.getUserById.restrictedTo;
+                    // careatorSessionAuth.setAccess(userData.restrictedTo);
+                    // var userData = careatorSessionAuth.getAccess("userData");
+                    // console.log("userData: " + JSON.stringify(userData));
                     console.log(data.data.message);
 
                 } else {

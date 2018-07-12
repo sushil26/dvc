@@ -861,9 +861,9 @@ module.exports.careator_getChatRightsAllemp = function (req, res) {
     console.log("careator_getChatRightsAllemp-->: " + req.params.id);
     var id = req.params.id;
     var restrictedUsers = req.body.restrictedTo;
-    console.log("restrictedUsers: "+JSONS.stringify(restrictedUsers));
+    console.log("restrictedUsers: "+JSON.stringify(restrictedUsers));
     for (var x = 0; x < restrictedUsers.length; x++) {
-        console.log("restrictedUsers[x]: "+JSONS.stringify(restrictedUsers[x]));
+        console.log("restrictedUsers[x]: "+JSON.stringify(restrictedUsers[x]));
         restrictedUsers[x] = ObjectId(restrictedUsers[x]);
     }
     console.log("restrictedUsers: " + restrictedUsers);

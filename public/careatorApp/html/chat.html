@@ -1,15 +1,8 @@
 <div ng-controller="chatCtrl">
-    <link rel="stylesheet" type="text/css" href="../bower_components/jquery-emoji-picker/css/jquery.emojipicker.css">
-    <script type="text/javascript" src="../bower_components/jquery-emoji-picker/js/jquery.emojipicker.js"></script>
-
-    <!-- Emoji Data -->
-    <link rel="stylesheet" type="text/css" href="../bower_components/jquery-emoji-picker/css/jquery.emojipicker.a.css">
-    <script type="text/javascript" src="../bower_components/jquery-emoji-picker/js/jquery.emojis.js"></script>
     <section id="main-content">
         <section class="wrapper">
             <div id="profile">
                 <section class="panel">
-
                     <!-- <div class="panel-heading">
                         <i class="fa fa-comment"></i>
                         <span style="color:white;">&nbspChat</span>
@@ -56,7 +49,7 @@
                                                         <span class="notify">39</span>
                                                     </div>
                                                     <div class="col-sm-4 col-xs-4 pull-right sideBar-time">
-                                                        <span class="time-meta pull-right">{{record.timeStamp | date:' d MMM h:mm a'}}
+                                                        <span class="time-meta pull-right">{{record.timeStamp | date:' d MMM  h:mm a'}}
                                                         </span>
                                                     </div>
                                                 </div>
@@ -69,7 +62,7 @@
                                                         <span class="notify">39</span>
                                                     </div>
                                                     <div class="col-sm-4 col-xs-4 pull-right sideBar-time">
-                                                        <span class="time-meta pull-right">{{record.timeStamp | date:' d MMM h:mm a'}}
+                                                        <span class="time-meta pull-right">{{record.timeStamp | date:' d MMM  h:mm a'}}
                                                         </span>
                                                     </div>
                                                 </div>
@@ -229,7 +222,7 @@
 
 
                                 <div class="row reply">
-                                    <div class="col-sm-1 col-xs-1 reply-emojis question">
+                                    <div class="col-sm-1 col-xs-1 reply-emojis">
                                         <i class="fa fa-smile-o fa-2x"></i>
 
                                     </div>
@@ -251,5 +244,4 @@
             </div>
         </section>
     </section>
-   
 </div>

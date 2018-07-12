@@ -476,6 +476,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                     for (var x = 0; x < restrictedTo.length; x++) {
                         restrictedArray.push(restrictedTo[x].userId);
                     }
+                    console.log("restrictedArray: "+JSON.stringify(restrictedArray));
                     $scope.restrictedArray = restrictedArray;
                     var userData = {
                         "email": localStorage.getItem("email"),

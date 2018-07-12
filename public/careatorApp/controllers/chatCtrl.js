@@ -504,20 +504,20 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
     });
 
 
-    /////Auto Scroll Down Chat////////////////
-    // $scope.scrollDown = function () {
-    //     console.log("scrollDown-->");
-    //     $("#pulldown").animate({
-    //         scrollTop: $("#pulldown").prop("scrollHeight")
-    //     }, 500);
-    // }
-
+    ///Auto Scroll Down Chat////////////////
     $scope.scrollDown = function () {
         console.log("scrollDown-->");
         $("#pulldown").animate({
-            scrollTop: $("#pulldown").prop(0,0)
+            scrollTop: $("#pulldown").prop("scrollHeight")
         }, 500);
     }
+
+    // $scope.scrollDown = function () {
+    //     console.log("scrollDown-->");
+    //     $("#pulldown").animate({
+    //         scrollTop: $("#pulldown").prop(0,0)
+    //     }, 500);
+    // }
 
 
 

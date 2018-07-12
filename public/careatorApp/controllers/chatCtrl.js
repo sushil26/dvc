@@ -407,10 +407,10 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
     /* ### Start: receive message from careator.js  ### */
     socket.on('comm_textReceived', function (data) { //update to client with new message;
         console.log("****comm_textReceived-->: " + JSON.stringify(data));
-        console.log("$scope.individualData._id: " + $scope.individualData._id);
-        console.log(" data.id: " + data.id);
-        console.log("$scope.individualData._id: " + JSON.stringify($scope.individualData));
-        console.log(" data.id: " + JSON.stringify(data));
+        // console.log("$scope.individualData._id: " + $scope.individualData._id);
+        // console.log(" data.id: " + data.id);
+        // console.log("$scope.individualData._id: " + JSON.stringify($scope.individualData));
+        // console.log(" data.id: " + JSON.stringify(data));
         if (data.freshInsert == true && (userData.userId == data.senderId || userData.userId == data.receiverId)) {
             var id = data.id;
             var api = "https://norecruits.com/careator_getChatsById/getChatsById/" + id;

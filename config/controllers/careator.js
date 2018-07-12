@@ -961,6 +961,7 @@ module.exports.individualText = function (req, res) {
                             "senderName": obj.chats[0].senderName,
                             "message": obj.chats[0].message,
                             "sendTime": obj.chats[0].sendTime,
+                            "receiverId": obj.receiverId,
                             "freshInsert": true
                         }); /* ### Note: Emit message to client ### */
                         response = {
@@ -1004,6 +1005,7 @@ module.exports.individualText = function (req, res) {
                             "senderId": obj.senderId,
                             "senderName": obj.senderName,
                             "message": obj.message,
+                            "receiverId": req.body.receiverId,
                             "sendTime": obj.sendTime
                         }); /* ### Note: Emit message to client ### */
                         response = {

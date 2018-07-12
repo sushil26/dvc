@@ -410,7 +410,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         console.log(" data.id: " + data.id);
         console.log("$scope.individualData._id: " + JSON.stringify($scope.individualData));
         console.log(" data.id: " + JSON.stringify(data));
-        if (data.freshInsert == true) {
+        if (data.freshInsert == true && (userData.userId==senderId || userData.userId==receiverId)) {
             var id = data.id;
             var api = "https://norecruits.com/careator_getChatsById/getChatsById/" + id;
             console.log("api: " + api);

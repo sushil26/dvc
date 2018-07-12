@@ -1127,7 +1127,7 @@ module.exports.groupTextReadByGroupId = function (req, res) {
     console.log("group_id: " + group_id);
     if (general.emptyCheck(group_id)) {
 
-        careatorChat.find({ "group_id": group_id }).toArray(function (err, data) {
+        careatorChat.find({ "group_id": ObjectId(group_id) }).toArray(function (err, data) {
             if (err) {
                 console.log("err: " + JSON.stringify(err));
                 response = {

@@ -194,6 +194,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
             })
 
         } else {
+            $scope.chatFromNewWindow = "yes"; /* ### Note: identify chat is coming new window means, may be we dont have chat record in the chated list, so we have to show the reciever as well sender to refresh the all chated list ### */
             $scope.receiverData = {
                 "senderId": userData.userId,
                 "senderName": userData.userName,
@@ -216,10 +217,9 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                     } else {
                         $scope.individualData = $scope.allChat;
                     }
-
                     console.log(" $scope.individualData : " + JSON.stringify($scope.individualData));
-
                     console.log(data.data.message);
+                    $scope.getChatRecords();
                 } else {
                     console.log("Sorry");
                     console.log(data.data.message);
@@ -293,6 +293,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                     "receiverName": $scope.receiverData.receiverName,
                     "message": $scope.typedMessage
                 }
+
                 console.log("obj: " + JSON.stringify(obj));
                 careatorHttpFactory.post(api, obj).then(function (data) {
                     console.log("data--" + JSON.stringify(data.data));
@@ -406,10 +407,10 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
     /* ### Start: receive message from careator.js  ### */
     socket.on('comm_textReceived', function (data) { //update to client with new message;
         console.log("****comm_textReceived-->: " + JSON.stringify(data));
-        console.log("$scope.individualData._id: " + $scope.individualData._id);
-        console.log(" data.id: " + data.id);
-        console.log("$scope.individualData._id: " + JSON.stringify($scope.individualData));
-        console.log(" data.id: " + JSON.stringify(data));
+        // console.log("$scope.individualData._id: " + $scope.individualData._id);
+        // console.log(" data.id: " + data.id);
+        // console.log("$scope.individualData._id: " + JSON.stringify($scope.individualData));
+        // console.log(" data.id: " + JSON.stringify(data));
         if (data.freshInsert == true && (userData.userId == data.senderId || userData.userId == data.receiverId)) {
             var id = data.id;
             var api = "https://norecruits.com/careator_getChatsById/getChatsById/" + id;
@@ -443,17 +444,22 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                     console.log(data.data.message);
                 }
             })
+            $scope.getChatRecords();
+
         }
-        if ($scope.individualData._id == data.id) {
-            console.log("2)start pushing message");
-            $scope.allChat.chats.push({
-                "senderId": data.senderId,
-                "senderName": data.senderName,
-                "message": data.message,
-                "sendTime": data.sendTime
-            });
-            $scope.scrollDown();
+        else if (data.freshInsert == undefined) {
+            if ($scope.individualData._id == data.id) {
+                console.log("2)start pushing message");
+                $scope.allChat.chats.push({
+                    "senderId": data.senderId,
+                    "senderName": data.senderName,
+                    "message": data.message,
+                    "sendTime": data.sendTime
+                });
+                $scope.scrollDown();
+            }
         }
+
     })
     socket.on('comm_aboutRestrictedUpdate', function (data) { //update to client about their new restricted users
         console.log("****comm_aboutRestrictedUpdate-->: " + JSON.stringify(data));
@@ -476,6 +482,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                     for (var x = 0; x < restrictedTo.length; x++) {
                         restrictedArray.push(restrictedTo[x].userId);
                     }
+                    console.log("restrictedArray: " + JSON.stringify(restrictedArray));
                     $scope.restrictedArray = restrictedArray;
                     var userData = {
                         "email": localStorage.getItem("email"),
@@ -493,9 +500,9 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                     }
 
                     console.log("userData.restrictedTo: " + JSON.stringify(userData.restrictedTo));
-                    careatorSessionAuth.setAccess(userData.restrictedTo);
+
+                    careatorSessionAuth.clearAccess("userData");
                     careatorSessionAuth.setAccess(userData);
-                    var userData = careatorSessionAuth.clearAccess("userData");
                     var userData = careatorSessionAuth.getAccess("userData");
                     console.log("***userData: " + JSON.stringify(userData));
                     $scope.getAllChatRightEmp();

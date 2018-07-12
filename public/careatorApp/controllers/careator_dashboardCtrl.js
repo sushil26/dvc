@@ -15,6 +15,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
     $timeout(tick, $scope.tickInterval);
 
     var userData = careatorSessionAuth.getAccess("userData");
+    console.log("userData==>: "+userData);
     if (userData == undefined) {
 
         var userData = {
@@ -32,14 +33,17 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
         }
         console.log("localStorage.getItem(restrictedTo): " + JSON.stringify(localStorage.getItem("restrictedTo")));
         if (localStorage.getItem("restrictedTo")) {
-            userData.restrictedTo = localStorage.getItem("restrictedTo");
+            var restrictedUser = localStorage.getItem("restrictedTo");
+            var restrictedArray = restrictedUser.split(',');
+            console.log(" restrictedArray: " + JSON.stringify(restrictedArray));
+            userData.restrictedTo = restrictedArray;
         }
 
         careatorSessionAuth.setAccess(userData);
         var userData = careatorSessionAuth.getAccess("userData");
         console.log("userData: " + JSON.stringify(userData));
     }
-    
+
     $scope.name = userData.userName;
 
     $scope.logout = function () {

@@ -9,7 +9,6 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
     // console.log("restrictedUser: " + JSON.stringify(restrictedUser));
     // $scope.restrictedArray = restrictedUser.split(',');
     // console.log(" $scope.restrictedArray: " + JSON.stringify($scope.restrictedArray));
-
     $scope.getChatGroupListById = function (id) {
         console.log("getAllEmployee-->: " + id);
         var api = "https://norecruits.com/careator_chatGroupList/careator_getChatGroupListById/" + id;

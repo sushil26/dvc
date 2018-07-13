@@ -76,6 +76,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                     $scope.getUserById = data.data.data[0];
                     console.log("getUserById: " + JSON.stringify($scope.getUserById));
                     console.log("userData: " + JSON.stringify(userData));
+                    
                     var restrictedTo = $scope.getUserById.restrictedTo;
                     var restrictedArray = [];
                     for (var x = 0; x < restrictedTo.length; x++) {
@@ -94,21 +95,29 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                         userData.videoRights = "yes";
                         userData.chatRights = "yes";
                         $scope.videoRights = "yes";
+                        localStorage.removeItem("videoRights");
+                        localStorage.addItem("videoRights", "yes");
                     }
                     else if ($scope.getUserById.videoRights == 'no'  && $scope.getUserById.chatRights == 'yes') {
                         userData.chatRights = "yes";
                         userData.videoRights = "no";
                         $scope.videoRights = "no";
+                        localStorage.removeItem("videoRights");
+                        localStorage.addItem("videoRights", "no");
                     }
                     else if ($scope.getUserById.videoRights == 'yes'  && $scope.getUserById.chatRights == 'no') {
                         userData.chatRights = "no";
                         userData.videoRights = "yes";
                         $scope.videoRights = "yes";
+                        localStorage.removeItem("videoRights");
+                        localStorage.addItem("videoRights", "yes");
                     }
                     else if ($scope.getUserById.videoRights == 'no'  && $scope.getUserById.chatRights == 'no') {
                         userData.chatRights = "no";
                         userData.videoRights = "no";
                         $scope.videoRights = "no";
+                        localStorage.removeItem("videoRights");
+                        localStorage.addItem("videoRights", "no");
                     }
                     console.log("userData: " + JSON.stringify(userData));
                     careatorSessionAuth.clearAccess("userData");

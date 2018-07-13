@@ -95,12 +95,12 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                         userData.chatRights = "yes";
                         $scope.videoRights = "yes";
                     }
-                    else if ($scope.getUserById.chatRights == 'yes'  && $scope.getUserById.chatRights == 'no') {
+                    else if ($scope.getUserById.videoRights == 'no'  && $scope.getUserById.chatRights == 'yes') {
                         userData.chatRights = "yes";
                         userData.videoRights = "no";
                         $scope.videoRights = "no";
                     }
-                    else if ($scope.getUserById.chatRights == 'no'  && $scope.getUserById.chatRights == 'yes') {
+                    else if ($scope.getUserById.videoRights == 'yes'  && $scope.getUserById.chatRights == 'no') {
                         userData.chatRights = "no";
                         userData.videoRights = "yes";
                         $scope.videoRights = "yes";

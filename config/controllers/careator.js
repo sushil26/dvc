@@ -1231,7 +1231,43 @@ module.exports.groupText = function (req, res) {
         res.status(400).send(response);
     }
 }
+module.exports.getGroupById = function(req, res){
+    console.log("getGroupById-->");
+    var id = req.params.id;
+    var response;
+    if (general.emptyCheck(id)) {
+        var findObj = {
+            "_id": ObjectId(id)
+        }
+        careatorChatGroup.find(findObj).toArray(function (err, groupData) {
+            if (err) {
+                console.log("err: " + JSON.stringify(err));
+                response = {
+                    status: false,
+                    message: "Unsucessfully retrived data",
+                    data: err
+                };
+                res.status(400).send(responseData);
+            } else {
+                console.log("groupData: " + JSON.stringify(groupData));
+                response = {
+                    status: true,
+                    message: "Sucessfully retrived data",
+                    data: groupData
+                };
+                res.status(200).send(response);
+            }
+        })
+    } else {
+        console.log("empty value found");
+        response = {
+            status: false,
+            message: "Empty value found",
+        }
+        res.status(400).send(response);
+    }
 
+}
 module.exports.careator_getUserById = function (req, res) {
     console.log("careator_getUserById-->");
     var id = req.params.id;

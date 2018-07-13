@@ -404,6 +404,25 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
     }
     $scope.getChatRecords();
 
+    $scope.getGroupDetails = function(id){
+        console.log("getGroupDetails-->");
+        var api = "https://norecruits.com/careator_getGroupById/getGroupById/" + id;
+        console.log("api: " + api);
+        careatorHttpFactory.get(api).then(function (data) {
+            // console.log("data--" + JSON.stringify(data.data));
+            var checkStatus = careatorHttpFactory.dataValidation(data);
+            if (checkStatus) {
+                $scope.groupData = data.data.data[0];
+                console.log("groupData: " + JSON.stringify($scope.groupData));
+                console.log(data.data.message);
+            } else {
+                console.log("Sorry");
+                console.log(data.data.message);
+            }
+        })
+
+    }
+
     /* ### Start: receive message from careator.js  ### */
     socket.on('comm_textReceived', function (data) { //update to client with new message;
         console.log("****comm_textReceived-->: " + JSON.stringify(data));

@@ -26,13 +26,28 @@ careatorApp.controller('createUsersCtrl', function ($scope, $rootScope, $state, 
     }
     $scope.careatorEmp = function (name, empId, emailId, rights) {
         console.log("careatorEmp-->");
-        console.log("name: "+name);
+        console.log("name: " + name);
+        var videoRights;
+        var chatRights;
+        if (rights == 'both') {
+            videoRights = "yes";
+            chatRights = "yes";
+        }
+        else if (rights == 'chat') {
+            videoRights = "no";
+            chatRights = "yes";
+        }
+        else if (rights == 'video') {
+            videoRights = "yes";
+            chatRights = "no";
+        }
         var obj = {
             "userName": name,
             "empId": empId,
             "empEmail": emailId,
-            "rightSelect": rights
+            "videoRights": videoRights,
+            "chatRights": chatRights
         }
-        console.log("obj: "+JSON.stringify(obj));
+        console.log("obj: " + JSON.stringify(obj));
     }
 });

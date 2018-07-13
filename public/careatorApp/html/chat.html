@@ -107,7 +107,7 @@
                                                     <div class="col-sm-8 col-xs-8 sideBar-name" ng-click="chatDetailsFromNew('group', $index)">
                                                         <span class="name-meta">{{record.groupName}}
                                                         </span>
-                                                        <i class="fa fa-info ">hghghg</i>
+
                                                     </div>
                                                     <div class="col-sm-4 col-xs-4 pull-right sideBar-time">
                                                         <span class="time-meta pull-right">
@@ -146,8 +146,11 @@
                                         </div>
                                     </div>
                                     <div class="col-sm-8 col-xs-7 heading-name">
-                                        <a ng-if="selectedType=='group'" class="heading-name-meta">{{individualData.groupName}}
-                                        </a>
+                                        <div ng-if="selectedType=='group'">
+                                            <a class="heading-name-meta">{{individualData.groupName}}
+                                            </a>
+                                            <i class="fa fa-info-circle"></i>
+                                        </div>
                                         <a ng-if="selectedType=='individual_chats' && (individualData.senderId==undefined && individualData.receiverId==undefined)"
                                             class="heading-name-meta">{{individualData.name}}
                                         </a>

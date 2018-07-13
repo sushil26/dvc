@@ -24,6 +24,11 @@
   border: none;
 }
 
+
+.modal-body {
+  min-height: 100px;
+}
+
 .mtitle {
   color: #2577be;
   font-family: lato;

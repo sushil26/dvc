@@ -381,7 +381,7 @@ module.exports.careatorMasterInsertValidate = function (data, callback) {
         "videoRights": data.VideoRights,
         "chatRights": data.ChatRights,
         "status": "active",
-        "restrictedTo" : []
+        "restrictedTo": []
     }
     careatorMaster.find(findEmpId).toArray(function (err, findData) {
         if (err) {
@@ -407,6 +407,93 @@ module.exports.careatorMasterInsertValidate = function (data, callback) {
                         } else {
                             careatorMasterArray.push(obj);
                             if (callback) callback();
+                        }
+
+                    }
+                })
+            }
+        }
+    })
+
+}
+
+
+module.exports.careatorSingleUserInsert = function (req, res) {
+    console.log("careatorSingleUserInsert-->");
+
+    var obj = {
+        "name": req.body.userName,
+        "empId": req.body.empId,
+        "email": req.body.empEmail,
+        "videoRights": req.body.videoRights,
+        "chatRights": req.body.chatRights,
+        "status": "active",
+        "restrictedTo": []
+    }
+    console.log("obj :" + JSON.stringify(obj));
+    var findEmpId = {
+        "empId": req.body.empId
+    }
+    var findEmail = {
+        "email": req.body.empEmail
+    }
+    console.log("findEmpId :" + JSON.stringify(findEmpId));
+    console.log("findEmail :" + JSON.stringify(findEmail));
+
+    careatorMaster.find(findEmpId).toArray(function (err, idFindData) {
+        if (err) {
+            console.log("err: " + JSON.stringify(err));
+            responseData = {
+                status: false,
+                message: "Find employeeid for insert failed"
+            };
+            res.status(400).send(responseData);
+        } else {
+            console.log("idFindData: " + JSON.stringify(idFindData));
+            if (idFindData.length > 0) {
+                
+                responseData = {
+                    status: false,
+                    message: "This employee id already exist"
+                };
+                res.status(400).send(responseData);
+            } else {
+                careatorMaster.find(findEmail).toArray(function (err, emailFindData) {
+                    if (err) {
+                        console.log("err: " + JSON.stringify(err));
+                        responseData = {
+                            status: false,
+                            message: "Find emailid for insert failed"
+                        };
+                        res.status(400).send(responseData);
+                    } else {
+                        console.log("emailFindData: " + JSON.stringify(emailFindData));
+                        if (emailFindData.length > 0) {
+                            
+                            responseData = {
+                                status: false,
+                                message: "This emaail id already exist"
+                            };
+                            res.status(400).send(responseData);
+                        } else {
+                            careatorMaster.insert(obj, function (err, insertedData) {
+                                if (err) {
+                                    console.log("err: " + JSON.stringify(err));
+                                    responseData = {
+                                        status: false,
+                                        message: "Insert Unsuccessful"
+                                    };
+                                    res.status(400).send(responseData);
+                                } else {
+                                    console.log("insertedData: " + JSON.stringify(insertedData));
+                                    responseData = {
+                                        status: true,
+                                        message: "Insert Successfull",
+                                    };
+                                    res.status(200).send(responseData);
+                                }
+                            })
+
                         }
 
                     }
@@ -861,9 +948,9 @@ module.exports.careator_getChatRightsAllemp = function (req, res) {
     console.log("careator_getChatRightsAllemp-->: " + req.params.id);
     var id = req.params.id;
     var restrictedUsers = req.body.restrictedTo;
-    console.log("restrictedUsers: "+JSON.stringify(restrictedUsers));
+    console.log("restrictedUsers: " + JSON.stringify(restrictedUsers));
     for (var x = 0; x < restrictedUsers.length; x++) {
-        console.log("restrictedUsers[x]: "+JSON.stringify(restrictedUsers[x]));
+        console.log("restrictedUsers[x]: " + JSON.stringify(restrictedUsers[x]));
         restrictedUsers[x] = ObjectId(restrictedUsers[x]);
     }
     console.log("restrictedUsers: " + restrictedUsers);
@@ -1231,7 +1318,7 @@ module.exports.groupText = function (req, res) {
         res.status(400).send(response);
     }
 }
-module.exports.getGroupById = function(req, res){
+module.exports.getGroupById = function (req, res) {
     console.log("getGroupById-->");
     var id = req.params.id;
     var response;

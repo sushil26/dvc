@@ -8,12 +8,31 @@
 /* Import fonts */
 
 @import url(https://fonts.googleapis.com/css?family=Lato:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic);
-.modal{
+.modal {
   font-family: Lato;
 }
-.modal-content{
+
+.modal-content {
   border-radius: 8px;
-  }
+  border: none;
+}
+
+.modal-body {
+  min-height: 100px;
+}
+
+.mtitle {
+  color: #2577be;
+  font-family: lato;
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.mtitle :hover {
+  color: brown;
+  font-size: 11px;
+  font-weight: 600;
+}
 
 .llkk {
   color: #00a8b3;
@@ -38,7 +57,7 @@
 
 @keyframes mymove {
   from {
-  font-size: 10px;
+    font-size: 10px;
     color: indianred;
   }
   to {
@@ -400,15 +419,15 @@ table tr th {
 /*sidebar navigation*/
 
 #sidebar {
-  margin-top:48px;
+  margin-top: 48px;
   width: 180px;
   height: 100%;
   position: fixed;
- background-color: #1a3652;
- transition-duration: 0.3s;
- transition-timing-function: ease-in;
- border-left: 2px solid #2e3134;
- border-right: 2px solid #2e3134;
+  background-color: #1a3652;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in;
+  border-left: 2px solid #2e3134;
+  border-right: 2px solid #2e3134;
 }
 
 .nav-collapse.collapse {
@@ -695,7 +714,8 @@ ul.sidebar-menu li.active a i {
 
 #main-content {
   margin-left: 180px;
-  transition-duration: 0.3s;    transition-timing-function: ease-in;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in;
 }
 
 .header,
@@ -727,7 +747,6 @@ ul.sidebar-menu li.active a i {
 .dark-bg {
   background-image: linear-gradient(to bottom, #383c3f 0%, #202224 100%);
   background-repeat: repeat-x;
- 
 }
 
 .panel-content {
@@ -1066,9 +1085,8 @@ div[data-role="editor-toolbar"] {
 
 .top-nav .username {
   font-weight: 100;
-    font-size: 13px;
-    color: #00000091;
-
+  font-size: 13px;
+  color: #00000091;
 }
 
 .top-nav ul.top-menu>li>a {
@@ -1318,7 +1336,6 @@ div[data-role="editor-toolbar"] {
 .dark-bg {
   color: #fff;
   box-shadow: 1px 2px 5px #000;
-  
 }
 
 .facebook-bg {
@@ -4235,7 +4252,6 @@ ul.amounts li {
 
 .panel-heading,
 .modal-header {
-
   background: #428bca;
   /* background: #1a3b56; */
   color: white;

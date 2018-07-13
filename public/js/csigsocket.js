@@ -51,6 +51,8 @@ console.log("stuff.length: " + stuff.length);
 console.log("id1**: " + id1);
 console.log("id2**: " + id2);
 if (stuff.length > 5) {
+  console.log("localStorage.getItem(careatorEmail): "+localStorage.getItem("careatorEmail"));
+  console.log("localStorage.getItem(sessionPassword): "+localStorage.getItem("sessionPassword"));
   if (localStorage.getItem("careatorEmail") && localStorage.getItem("sessionPassword")) {
     console.log("Hoster session check");
     var password = localStorage.getItem("sessionPassword");

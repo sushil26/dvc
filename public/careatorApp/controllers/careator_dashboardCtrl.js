@@ -15,7 +15,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
     $timeout(tick, $scope.tickInterval);
 
     var userData = careatorSessionAuth.getAccess("userData");
-    console.log("userData==>: " + userData);
+    console.log("userData==>: " + JSON.stringify(userData));
     if (userData == undefined) {
 
         var userData = {

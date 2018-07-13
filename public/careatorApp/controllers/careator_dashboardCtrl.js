@@ -84,17 +84,17 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                     console.log("restrictedArray: " + JSON.stringify(restrictedArray));
                     $scope.restrictedArray = restrictedArray;
                     var userData = {
-                        "email": localStorage.getItem("email"),
-                        "userName": localStorage.getItem("userName"),
-                        "empId": localStorage.getItem("empId"),
-                        "userId": localStorage.getItem("userId"),
+                        "email": $scope.getUserById.email,
+                        "userName": $scope.getUserById.name,
+                        "empId": $scope.getUserById.empId,
+                        "userId": $scope.getUserById._id,
                         "restrictedTo": restrictedArray
                     }
-                    if (localStorage.getItem("videoRights") == 'yes') {
+                    if ($scope.getUserById.videoRights == 'yes') {
                         userData.videoRights = "yes";
                         $scope.videoRights = "yes";
                     }
-                    if (localStorage.getItem("chatRights") == 'yes') {
+                    if ($scope.getUserById.videoRights == 'yes') {
                         userData.chatRights = "yes";
                     }
                     console.log("userData.restrictedTo: " + JSON.stringify(userData.restrictedTo));

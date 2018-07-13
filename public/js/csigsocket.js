@@ -52,6 +52,7 @@ console.log("id1**: " + id1);
 console.log("id2**: " + id2);
 if (stuff.length > 5) {
   if (localStorage.getItem("careatorEmail")) {
+    
     var userNameEmail = localStorage.getItem("careatorEmail");
     var emailIdSplit = userNameEmail.split('@');
     userName = emailIdSplit[0];

@@ -136,7 +136,7 @@ if (stuff.length > 5) {
 }
 else {
 
-  if (localStorage.getItem("careatorEmail")) {
+  if (localStorage.getItem("careatorEmail") && localStorage.getItem("sessionPassword")) {
     console.log("2 cond");
     var userNameEmail = localStorage.getItem("careatorEmail");
     console.log("2 cond: userNameEmail: " + userNameEmail);
@@ -157,6 +157,7 @@ else {
   }
   else {
     console.log("enterEmail: -->");
+    localStorage.removeItem("careatorEmail")
     $("#enterEmail").trigger("click");
   }
   console.log("userName: " + userName);

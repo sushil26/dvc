@@ -46,8 +46,11 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
     }
 
     $scope.name = userData.userName;
-    if (userData.videoRights) {
+    if (userData.videoRights=='yes') {
         $scope.videoRights = "yes";
+    }
+    else{
+        $scope.videoRights = "no";
     }
 
     $scope.logout = function () {

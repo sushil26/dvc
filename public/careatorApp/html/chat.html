@@ -177,11 +177,11 @@
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                <h4 class="modal-title">Group Partcipents</h4>----{{individualData[0] | json}}
+                                                <h4 class="modal-title">Group Partcipents</h4>----{{individualData | json}}
                                             </div>
                                             <div class="modal-body">
                                                 <table>
-                                                    <tr ng-repeat='groupMember in individualData[0].groupMembers'>
+                                                    <tr ng-repeat='groupMember in individualData.groupMembers'>
                                                         <td>
                                                             {{groupMember.name}}
                                                         </td>

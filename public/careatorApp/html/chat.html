@@ -138,10 +138,10 @@
                             <div class="col-sm-8 conversation">
                                 <div class="row heading">
                                     <div class="col-sm-2 col-md-1 col-xs-3 heading-avatar">
-                                        <div class="avatar-icon" ng-if="record.groupName!==undefined">
+                                        <div class="avatar-icon" ng-if="selectedType=='group'">
                                             <img src="./css/group.png">
                                         </div>
-                                        <div class="avatar-icon" ng-if="record.groupName==undefined">
+                                        <div class="avatar-icon" ng-if="selectedType !=='group'">
                                             <img src="./css/user.png">
                                         </div>
                                     </div>
@@ -149,7 +149,9 @@
                                         <div ng-if="selectedType=='group'">
                                             <a class="heading-name-meta">{{individualData.groupName}}
                                             </a>
-                                            <i class="fa fa-info-circle"></i>
+                                            <span>
+                                                <i class="fa fa-info-circle"></i>
+                                            </span>
                                         </div>
                                         <a ng-if="selectedType=='individual_chats' && (individualData.senderId==undefined && individualData.receiverId==undefined)"
                                             class="heading-name-meta">{{individualData.name}}

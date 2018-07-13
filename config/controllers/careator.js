@@ -451,7 +451,7 @@ module.exports.careatorSingleUserInsert = function (req, res) {
         } else {
             console.log("idFindData: " + JSON.stringify(idFindData));
             if (idFindData.length > 0) {
-                
+
                 responseData = {
                     status: false,
                     message: "This employee id already exist"
@@ -469,7 +469,7 @@ module.exports.careatorSingleUserInsert = function (req, res) {
                     } else {
                         console.log("emailFindData: " + JSON.stringify(emailFindData));
                         if (emailFindData.length > 0) {
-                            
+
                             responseData = {
                                 status: false,
                                 message: "This emaail id already exist"
@@ -1509,6 +1509,10 @@ module.exports.userEditById = function (req, res) {
                 };
                 res.status(400).send(response);
             } else {
+                var io = req.app.get('socketio');
+                io.emit('comm_aboutUserEdit', {
+                    "id": id
+                }); /* ### Note: Emit message to user about their new restricted user ### */
                 console.log("updatedData: " + JSON.stringify(updatedData));
                 response = {
                     status: true,

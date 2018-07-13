@@ -63,6 +63,56 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
         window.location.href = "https://norecruits.com";
     }
 
+    socket.on('comm_aboutUserEdit', function (data) {
+        console.log("***comm_aboutUserEdit-->");
+        if (data.id == userData.userId) {
+            var id = userData.userId;
+            var api = "https://norecruits.com/careator_getUser/careator_getUserById/" + id;
+            console.log("api: " + api);
+            careatorHttpFactory.get(api).then(function (data) {
+                console.log("data--" + JSON.stringify(data.data));
+                var checkStatus = careatorHttpFactory.dataValidation(data);
+                if (checkStatus) {
+                    $scope.getUserById = data.data.data[0];
+                    console.log("getUserById: " + JSON.stringify($scope.getUserById));
+                    console.log("userData: " + JSON.stringify(userData));
+                    var restrictedTo = $scope.getUserById.restrictedTo;
+                    var restrictedArray = [];
+                    for (var x = 0; x < restrictedTo.length; x++) {
+                        restrictedArray.push(restrictedTo[x].userId);
+                    }
+                    console.log("restrictedArray: " + JSON.stringify(restrictedArray));
+                    $scope.restrictedArray = restrictedArray;
+                    var userData = {
+                        "email": localStorage.getItem("email"),
+                        "userName": localStorage.getItem("userName"),
+                        "empId": localStorage.getItem("empId"),
+                        "userId": localStorage.getItem("userId"),
+                        "restrictedTo": restrictedArray
+                    }
+                    if (localStorage.getItem("videoRights") == 'yes') {
+                        userData.videoRights = "yes";
+                        $scope.videoRights = "yes";
+                    }
+                    if (localStorage.getItem("chatRights") == 'yes') {
+                        userData.chatRights = "yes";
+                    }
+                    console.log("userData.restrictedTo: " + JSON.stringify(userData.restrictedTo));
+                    careatorSessionAuth.clearAccess("userData");
+                    careatorSessionAuth.setAccess(userData);
+                    var userData = careatorSessionAuth.getAccess("userData");
+                    console.log("***userData: " + JSON.stringify(userData));
+                    $scope.getAllChatRightEmp();
+                    console.log(data.data.message);
+
+                } else {
+                    console.log("Sorry");
+                    console.log(data.data.message);
+                }
+            })
+        }
+    })
+
 
 
 

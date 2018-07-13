@@ -105,6 +105,11 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                         userData.videoRights = "yes";
                         $scope.videoRights = "yes";
                     }
+                    else if ($scope.getUserById.videoRights == 'no'  && $scope.getUserById.chatRights == 'no') {
+                        userData.chatRights = "no";
+                        userData.videoRights = "no";
+                        $scope.videoRights = "no";
+                    }
                     console.log("userData: " + JSON.stringify(userData));
                     careatorSessionAuth.clearAccess("userData");
                     careatorSessionAuth.setAccess(userData);

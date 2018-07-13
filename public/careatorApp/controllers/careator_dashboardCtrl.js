@@ -105,7 +105,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                         userData.videoRights = "yes";
                         $scope.videoRights = "yes";
                     }
-                    console.log("userData.restrictedTo: " + JSON.stringify(userData.restrictedTo));
+                    console.log("userData: " + JSON.stringify(userData));
                     careatorSessionAuth.clearAccess("userData");
                     careatorSessionAuth.setAccess(userData);
                     var userData = careatorSessionAuth.getAccess("userData");

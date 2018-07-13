@@ -51,6 +51,7 @@ console.log("stuff.length: " + stuff.length);
 console.log("id1**: " + id1);
 console.log("id2**: " + id2);
 if (stuff.length > 5) {
+  console.log("1 cond");
   console.log("localStorage.getItem(careatorEmail): " + localStorage.getItem("careatorEmail"));
   console.log("localStorage.getItem(sessionPassword): " + localStorage.getItem("sessionPassword"));
   console.log("localStorage.getItem(careator_remoteEmail): " + localStorage.getItem("careator_remoteEmail"));
@@ -133,7 +134,7 @@ if (stuff.length > 5) {
   console.log("userName: " + userName);
 } else {
 
-  if (localStorage.getItem("careatorEmail")) {
+  if (localStorage.getItem("careatorEmail") && localStorage.getItem("sessionPassword")) {
     console.log("2 cond");
     var userNameEmail = localStorage.getItem("careatorEmail");
     console.log("2 cond: userNameEmail: " + userNameEmail);
@@ -153,6 +154,7 @@ if (stuff.length > 5) {
 
   } else {
     console.log("enterEmail: -->");
+    localStorage.removeItem("careatorEmail")
     $("#enterEmail").trigger("click");
   }
   console.log("userName: " + userName);
@@ -184,6 +186,7 @@ function sendEmail() {
       if (data.message == 'Successfully mail sent') {
         console.log("Successfully mail sent");
         localStorage.setItem("careatorEmail", careatorEmail);
+        localStorage.removeItem("sessionPassword")
         triggerInvite();
       }
     },

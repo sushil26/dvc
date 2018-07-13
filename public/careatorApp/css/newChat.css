@@ -90,7 +90,7 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     color: white;
-    display: block;
+    /* display: block; */
     margin-top: 10px;
     text-transform: capitalize;
 }

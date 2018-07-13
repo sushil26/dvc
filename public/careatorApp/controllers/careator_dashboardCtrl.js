@@ -15,7 +15,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
     $timeout(tick, $scope.tickInterval);
 
     var userData = careatorSessionAuth.getAccess("userData");
-    console.log("userData==>: "+userData);
+    console.log("userData==>: " + userData);
     if (userData == undefined) {
 
         var userData = {
@@ -25,6 +25,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
             "userId": localStorage.getItem("userId"),
         }
         if (localStorage.getItem("videoRights") == 'yes') {
+            $scope.videoRights = "yes";
             userData.videoRights = "yes";
         }
         if (localStorage.getItem("chatRights") == 'yes') {
@@ -45,6 +46,9 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
     }
 
     $scope.name = userData.userName;
+    if (userData.videoRights) {
+        $scope.videoRights = "yes";
+    }
 
     $scope.logout = function () {
         console.log("logout-->");

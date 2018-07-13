@@ -51,6 +51,7 @@ console.log("stuff.length: " + stuff.length);
 console.log("id1**: " + id1);
 console.log("id2**: " + id2);
 if (stuff.length > 5) {
+  console.log("1 cond");
   console.log("localStorage.getItem(careatorEmail): " + localStorage.getItem("careatorEmail"));
   console.log("localStorage.getItem(sessionPassword): " + localStorage.getItem("sessionPassword"));
   console.log("localStorage.getItem(careator_remoteEmail): " + localStorage.getItem("careator_remoteEmail"));
@@ -188,6 +189,7 @@ function sendEmail() {
       if (data.message == 'Successfully mail sent') {
         console.log("Successfully mail sent");
         localStorage.setItem("careatorEmail", careatorEmail);
+        localStorage.removeItem("sessionPassword")
         triggerInvite();
       }
     },

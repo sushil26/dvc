@@ -49,5 +49,21 @@ careatorApp.controller('createUsersCtrl', function ($scope, $rootScope, $state, 
             "chatRights": chatRights
         }
         console.log("obj: " + JSON.stringify(obj));
+
+        var api = "https://norecruits.com/careator/careatorSingleUserInsert";
+        console.log("api: " + api);
+        careatorHttpFactory.post(obj, api).then(function (data) {
+            var checkStatus = careatorHttpFactory.dataValidation(data);
+            console.log("data--" + JSON.stringify(data.data));
+            if (checkStatus) {
+                console.log("checkStatus: " + checkStatus);
+                alert(data.data.message);
+                $state.go("Cdashboard.usersListCtrl");
+            }
+            else {
+                console.log("checkStatus: " + checkStatus);
+                alert(data.data.message);
+            }
+        })
     }
 });

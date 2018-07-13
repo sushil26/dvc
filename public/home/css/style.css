@@ -21,6 +21,7 @@
 
 .modal-content {
   border-radius: 8px;
+  border: none;
 }
 
 .mtitle {

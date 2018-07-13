@@ -467,8 +467,8 @@ module.exports.careatorSingleUserInsert = function (req, res) {
                         };
                         res.status(400).send(responseData);
                     } else {
-                        console.log("idFindData: " + JSON.stringify(idFindData));
-                        if (idFindData.length > 0) {
+                        console.log("emailFindData: " + JSON.stringify(emailFindData));
+                        if (emailFindData.length > 0) {
                             
                             responseData = {
                                 status: false,

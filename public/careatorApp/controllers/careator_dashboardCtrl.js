@@ -102,9 +102,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                     careatorSessionAuth.setAccess(userData);
                     var userData = careatorSessionAuth.getAccess("userData");
                     console.log("***userData: " + JSON.stringify(userData));
-                    $scope.getAllChatRightEmp();
                     console.log(data.data.message);
-
                 } else {
                     console.log("Sorry");
                     console.log(data.data.message);

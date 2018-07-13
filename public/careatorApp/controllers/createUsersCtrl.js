@@ -52,7 +52,7 @@ careatorApp.controller('createUsersCtrl', function ($scope, $rootScope, $state, 
 
         var api = "https://norecruits.com/careator/careatorSingleUserInsert";
         console.log("api: " + api);
-        careatorHttpFactory.post(obj, api).then(function (data) {
+        careatorHttpFactory.post(api, obj).then(function (data) {
             var checkStatus = careatorHttpFactory.dataValidation(data);
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {

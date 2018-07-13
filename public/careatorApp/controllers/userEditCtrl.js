@@ -32,7 +32,8 @@ careatorApp.controller('editUserCtrl', function ($scope, $state, $rootScope, $fi
 
     $scope.updateUser = function () {
         console.log("updateUser-->");
-
+        console.log("$scope.userDataRights.videoRights: " + $scope.userDataRights.videoRights);
+        console.log("$scope.userDataRights.chatRights: " + $scope.userDataRights.chatRights);
         var api = "https://norecruits.com/careator/userEditById/" + id;
         console.log("api: " + api);
         var obj = {

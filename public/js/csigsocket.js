@@ -52,6 +52,7 @@ console.log("id1**: " + id1);
 console.log("id2**: " + id2);
 if (stuff.length > 5) {
   if (localStorage.getItem("careatorEmail") && localStorage.getItem("sessionPassword")) {
+    console.log("Hoster session check");
     var password = localStorage.getItem("sessionPassword");
     var careatorEmail = localStorage.getItem("careatorEmail");
     var obj = {
@@ -87,6 +88,7 @@ if (stuff.length > 5) {
 
   }
   else if (localStorage.getItem("careator_remoteEmail") && localStorage.getItem("oneTimePassword")) {
+    console.log("remove session check");
     var careator_remoteEmail = localStorage.getItem("careator_remoteEmail");
     var careator_remotePswd = localStorage.getItem("oneTimePassword");
     var checkObj = {

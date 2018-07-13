@@ -90,12 +90,20 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                         "userId": $scope.getUserById._id,
                         "restrictedTo": restrictedArray
                     }
-                    if ($scope.getUserById.videoRights == 'yes') {
+                    if ($scope.getUserById.videoRights == 'yes' && $scope.getUserById.chatRights == 'yes') {
                         userData.videoRights = "yes";
+                        userData.chatRights = "yes";
                         $scope.videoRights = "yes";
                     }
-                    if ($scope.getUserById.videoRights == 'yes') {
+                    else if ($scope.getUserById.chatRights == 'yes'  && $scope.getUserById.chatRights == 'no') {
                         userData.chatRights = "yes";
+                        userData.videoRights = "no";
+                        $scope.videoRights = "no";
+                    }
+                    else if ($scope.getUserById.chatRights == 'no'  && $scope.getUserById.chatRights == 'yes') {
+                        userData.chatRights = "no";
+                        userData.videoRights = "yes";
+                        $scope.videoRights = "yes";
                     }
                     console.log("userData.restrictedTo: " + JSON.stringify(userData.restrictedTo));
                     careatorSessionAuth.clearAccess("userData");

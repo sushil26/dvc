@@ -24,14 +24,14 @@ careatorApp.controller('createUsersCtrl', function ($scope, $rootScope, $state, 
         })
         console.log("<--uploadCareatorEmp");
     }
-    $scope.careatorEmp = function () {
+    $scope.careatorEmp = function (name, empId, emailId, rights) {
         console.log("careatorEmp-->");
-        console.log("$scope.userName: "+$scope.userName);
+        console.log("name: "+name);
         var obj = {
-            "userName": $scope.userName,
-            "empId": $scope.empId,
-            "empEmail": $scope.empEmail,
-            "rightSelect": $scope.rightSelect
+            "userName": name,
+            "empId": empId,
+            "empEmail": emailId,
+            "rightSelect": rights
         }
         console.log("obj: "+JSON.stringify(obj));
     }

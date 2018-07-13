@@ -51,10 +51,10 @@ console.log("stuff.length: " + stuff.length);
 console.log("id1**: " + id1);
 console.log("id2**: " + id2);
 if (stuff.length > 5) {
-  console.log("localStorage.getItem(careatorEmail): "+localStorage.getItem("careatorEmail"));
-  console.log("localStorage.getItem(sessionPassword): "+localStorage.getItem("sessionPassword"));
-  console.log("localStorage.getItem(careator_remoteEmail): "+localStorage.getItem("careator_remoteEmail"));
-  console.log("localStorage.getItem(oneTimePassword): "+localStorage.getItem("oneTimePassword"));
+  console.log("localStorage.getItem(careatorEmail): " + localStorage.getItem("careatorEmail"));
+  console.log("localStorage.getItem(sessionPassword): " + localStorage.getItem("sessionPassword"));
+  console.log("localStorage.getItem(careator_remoteEmail): " + localStorage.getItem("careator_remoteEmail"));
+  console.log("localStorage.getItem(oneTimePassword): " + localStorage.getItem("oneTimePassword"));
   if (localStorage.getItem("careatorEmail") && localStorage.getItem("sessionPassword")) {
     console.log("Hoster session check");
     var password = localStorage.getItem("sessionPassword");
@@ -75,7 +75,6 @@ if (stuff.length > 5) {
         var userNameEmail = localStorage.getItem("careatorEmail");
         var emailIdSplit = userNameEmail.split('@');
         userName = emailIdSplit[0];
-        userName = "";
         document.getElementById("videoConferenceUrl").style.display = "block";
         document.getElementById("emailInvitation").style.display = "block";
         document.getElementById("videoCtrolBar").style.display = "grid";
@@ -84,6 +83,7 @@ if (stuff.length > 5) {
         console.log("err: " + JSON.stringify(err));
         console.log("err.responseText: " + JSON.stringify(err.responseText));
         console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
+        userName = "";
         localStorage.removeItem("careatorEmail");
         localStorage.removeItem("sessionPassword");
         $("#setName").trigger("click");

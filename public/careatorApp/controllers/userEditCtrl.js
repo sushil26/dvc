@@ -16,6 +16,7 @@ careatorApp.controller('editUserCtrl', function ($scope, $state, $rootScope, $fi
                     "videoRights": $scope.userData.videoRights,
                     "chatRights": $scope.userData.chatRights
                 }
+                console.log("$scope.userDataRights.videoRights: " + $scope.userDataRights.videoRights);
                 console.log("$scope.userDataRights: " + JSON.stringify($scope.userDataRights));
                 console.log("userData: " + JSON.stringify($scope.userData));
                 console.log(data.data.message);

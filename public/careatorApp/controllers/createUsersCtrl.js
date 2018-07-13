@@ -26,6 +26,7 @@ careatorApp.controller('createUsersCtrl', function ($scope, $rootScope, $state, 
     }
     $scope.careatorEmp = function () {
         console.log("careatorEmp-->");
+        console.log("$scope.userName: "+$scope.userName);
         var obj = {
             "userName": $scope.userName,
             "empId": $scope.empId,
@@ -34,4 +35,4 @@ careatorApp.controller('createUsersCtrl', function ($scope, $rootScope, $state, 
         }
         console.log("obj: "+JSON.stringify(obj));
     }
-})
+});

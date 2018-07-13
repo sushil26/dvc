@@ -149,7 +149,10 @@
                                         <div ng-if="selectedType=='group'">
                                             <span>
                                                 <a class="heading-name-meta">{{individualData.groupName}}
-                                                </a><i class="fa fa-info-circle"></i>
+                                                </a>
+                                                <span>
+                                                    <i class="fa fa-info-circle"></i>
+                                                </span>
                                             </span>
                                         </div>
                                         <a ng-if="selectedType=='individual_chats' && (individualData.senderId==undefined && individualData.receiverId==undefined)"

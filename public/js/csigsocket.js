@@ -201,7 +201,8 @@ function checkPassword() {
 });
   }
   else {
-  $("#enterPswd").trigger("click");
+    console.log("password trigger again-->");
+ // $("#enterPswd").trigger("click");
 }
 console.log("<--checkPassword");
 }

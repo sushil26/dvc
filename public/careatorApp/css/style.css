@@ -1970,7 +1970,7 @@ div[data-role="editor-toolbar"] {
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px;
   text-shadow: 0px 1px #fff;
-  border-bottom: 1px solid #fff;
+  /* border-bottom: 1px solid #fff; */
   border-top: 1px solid #ccc;
   padding: 8px 15px;
   font-size: 12px;

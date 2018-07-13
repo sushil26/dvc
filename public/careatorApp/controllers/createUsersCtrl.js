@@ -24,4 +24,7 @@ careatorApp.controller('createUsersCtrl', function ($scope, $rootScope,$state,ca
         })
         console.log("<--uploadCareatorEmp");
     }
+    $scope.careatorEmp = function(){
+        console.log("careatorEmp-->");
+    }
 })

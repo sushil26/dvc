@@ -1,9 +1,37 @@
-.notify{font-size: 10px;
+.modal {
+    font-family: Lato;
+}
+
+.modal-content {
+    border-radius: 8px;
+    border: none;
+}
+
+.modal-body {
+    min-height: 100px;
+}
+
+.mtitle {
+    color: #2577be;
+    font-family: lato;
+    font-size: 10px;
+    font-weight: 500;
+}
+
+.mtitle :hover {
+    color: brown;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.notify {
+    font-size: 10px;
     background: #ff7e4f;
     padding: 2px;
     border-radius: 50px;
     color: white;
 }
+
 .fa-2x {
     font-size: 1.5em;
 }
@@ -538,15 +566,15 @@ box-shadow: none;
         padding: 10px !important;
     }
     .time-meta {
-      /* margin-top: 15px; */
-    color: black !important;
-    /* color: beige; */
-    /* margin-top: 15px; */
-    text-align: right;
-    font-size: 8px;
-    padding: 1% !important;
-    color: rgba(0, 0, 0, .4);
-    vertical-align: baseline;
+        /* margin-top: 15px; */
+        color: black !important;
+        /* color: beige; */
+        /* margin-top: 15px; */
+        text-align: right;
+        font-size: 8px;
+        padding: 1% !important;
+        color: rgba(0, 0, 0, .4);
+        vertical-align: baseline;
     }
     /*Conversation*/
     .conversation {

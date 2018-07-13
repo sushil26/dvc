@@ -51,51 +51,78 @@ console.log("stuff.length: " + stuff.length);
 console.log("id1**: " + id1);
 console.log("id2**: " + id2);
 if (stuff.length > 5) {
-  if (localStorage.getItem("careatorEmail")) {
-    
-    var userNameEmail = localStorage.getItem("careatorEmail");
-    var emailIdSplit = userNameEmail.split('@');
-    userName = emailIdSplit[0];
-    document.getElementById("videoConferenceUrl").style.display = "block";
-    document.getElementById("emailInvitation").style.display = "block";
-    document.getElementById("videoCtrolBar").style.display = "grid";
+  if (localStorage.getItem("careatorEmail") && localStorage.getItem("sessionPassword")) {
+    console.log("Hoster session check");
+    var password = localStorage.getItem("sessionPassword");
+    var careatorEmail = localStorage.getItem("careatorEmail");
+    var obj = {
+      "password": password,
+      "careatorEmail": careatorEmail
+    };
+    console.log("obj: " + JSON.stringify(obj));
+    $.ajax({
+      url: "https://norecruits.com/careator/pswdCheck",
+      type: "POST",
+      data: JSON.stringify(obj),
+      contentType: "application/json",
+      dataType: "json",
+      success: function (data) {
+        console.log("data: " + JSON.stringify(data));
+        var userNameEmail = localStorage.getItem("careatorEmail");
+        var emailIdSplit = userNameEmail.split('@');
+        userName = emailIdSplit[0];
+        userName = "";
+        document.getElementById("videoConferenceUrl").style.display = "block";
+        document.getElementById("emailInvitation").style.display = "block";
+        document.getElementById("videoCtrolBar").style.display = "grid";
+      },
+      error: function (err) {
+        console.log("err: " + JSON.stringify(err));
+        console.log("err.responseText: " + JSON.stringify(err.responseText));
+        console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
+        localStorage.removeItem("careatorEmail");
+        localStorage.removeItem("sessionPassword");
+        $("#setName").trigger("click");
+      }
+    });
+
   }
   else if (localStorage.getItem("careator_remoteEmail") && localStorage.getItem("oneTimePassword")) {
-    var careator_remoteEmail =localStorage.getItem("careator_remoteEmail");
-        var careator_remotePswd = localStorage.getItem("oneTimePassword");
-        var checkObj = {
-          "url": window.location.href,
-          "careator_remoteEmail": careator_remoteEmail,
-          "careator_remotePswd": careator_remotePswd
-        }
-        $.ajax({
-          url: "https://norecruits.com/careator/RemoteJoinCheck",
-          type: "POST",
-          data: JSON.stringify(checkObj),
-          contentType: "application/json",
-          dataType: "json",
-          success: function (data) {
-            console.log("data: " + JSON.stringify(data));
-            userName = localStorage.getItem("careator_remoteEmail");
-            careator_remoteEmail = true;
-            document.getElementById("videoConferenceUrl").style.display = "none";
-            document.getElementById("emailInvitation").style.display = "none";
-            document.getElementById("videoCtrolBar").style.display = "grid";
-          },
-          error: function (err) {
-            console.log("err: " + JSON.stringify(err));
-            console.log("err.responseText: " + JSON.stringify(err.responseText));
-            console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
-            document.getElementById("videoConferenceUrl").style.display = "none";
-            document.getElementById("emailInvitation").style.display = "none";
-            userName = "";
-            localStorage.removeItem("careatorEmail");
-            localStorage.removeItem("careator_remoteEmail");
-            localStorage.removeItem("oneTimePassword");
-            $("#setName").trigger("click");
-          }
-        });
-  
+    console.log("remove session check");
+    var careator_remoteEmail = localStorage.getItem("careator_remoteEmail");
+    var careator_remotePswd = localStorage.getItem("oneTimePassword");
+    var checkObj = {
+      "url": window.location.href,
+      "careator_remoteEmail": careator_remoteEmail,
+      "careator_remotePswd": careator_remotePswd
+    }
+    $.ajax({
+      url: "https://norecruits.com/careator/RemoteJoinCheck",
+      type: "POST",
+      data: JSON.stringify(checkObj),
+      contentType: "application/json",
+      dataType: "json",
+      success: function (data) {
+        console.log("data: " + JSON.stringify(data));
+        userName = localStorage.getItem("careator_remoteEmail");
+        careator_remoteEmail = true;
+        document.getElementById("videoConferenceUrl").style.display = "none";
+        document.getElementById("emailInvitation").style.display = "none";
+        document.getElementById("videoCtrolBar").style.display = "grid";
+      },
+      error: function (err) {
+        console.log("err: " + JSON.stringify(err));
+        console.log("err.responseText: " + JSON.stringify(err.responseText));
+        console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
+        document.getElementById("videoConferenceUrl").style.display = "none";
+        document.getElementById("emailInvitation").style.display = "none";
+        userName = "";
+        localStorage.removeItem("careatorEmail");
+        localStorage.removeItem("careator_remoteEmail");
+        localStorage.removeItem("oneTimePassword");
+        $("#setName").trigger("click");
+      }
+    });
   }
   else {
     console.log("No user data from session");
@@ -193,52 +220,51 @@ function checkPassword() {
         localStorage.setItem("empId", data.data.empId);
         localStorage.setItem("email", data.data.email);
         localStorage.setItem("userId", data.data._id);
-        localStorage.setItem("oneTimePassword", password);
-        userName =  localStorage.getItem("userName");
-    if (data.data.videoRights == 'yes') {
-      localStorage.setItem("videoRights", 'yes');
-      document.getElementById("videoConfStart").style.display = "inline";
-    }
-    if (data.data.chatRights == 'yes') {
-      localStorage.setItem("chatRights", 'yes');
-      document.getElementById("chatConfStart").style.display = "inline";
-    }
-    if(data.data.restrictedTo)
-    {
-      console.log("data.data.restrictedTo: "+JSON.stringify(data.data.restrictedTo));
-      var restrictedTo = data.data.restrictedTo;
-      var restrictedArray = [];
-      for (var x = 0; x < restrictedTo.length; x++) {
-          restrictedArray.push(restrictedTo[x].userId);
+        localStorage.setItem("sessionPassword", password);
+        userName = localStorage.getItem("userName");
+        if (data.data.videoRights == 'yes') {
+          localStorage.setItem("videoRights", 'yes');
+          document.getElementById("videoConfStart").style.display = "inline";
+        }
+        if (data.data.chatRights == 'yes') {
+          localStorage.setItem("chatRights", 'yes');
+          document.getElementById("chatConfStart").style.display = "inline";
+        }
+        if (data.data.restrictedTo) {
+          console.log("data.data.restrictedTo: " + JSON.stringify(data.data.restrictedTo));
+          var restrictedTo = data.data.restrictedTo;
+          var restrictedArray = [];
+          for (var x = 0; x < restrictedTo.length; x++) {
+            restrictedArray.push(restrictedTo[x].userId);
+          }
+
+          console.log("restrictedArray: " + restrictedArray);
+          localStorage.setItem("restrictedTo", restrictedArray);
+        }
+        var userNameEmail = localStorage.getItem("careatorEmail");
+        var emailIdSplit = userNameEmail.split('@');
+        //userName = emailIdSplit[0];
+        console.log("userName: " + userName);
+        document.getElementById("videoConferenceUrl").style.display = "block";
+        $('#myPasswordModal').modal('hide');
+      },
+      error: function (err) {
+        console.log("err: " + JSON.stringify(err));
+        console.log("err.responseText: " + JSON.stringify(err.responseText));
+        console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
+        document.getElementById("videoConferenceUrl").style.display = "none";
+        localStorage.removeItem("careatorEmail");
+        userName = "";
       }
-      
-      console.log("restrictedArray: "+restrictedArray);
-      localStorage.setItem("restrictedTo", restrictedArray);
-    }
-    var userNameEmail = localStorage.getItem("careatorEmail");
-    var emailIdSplit = userNameEmail.split('@');
-    //userName = emailIdSplit[0];
-    console.log("userName: " + userName);
-    document.getElementById("videoConferenceUrl").style.display = "block";
-    $('#myPasswordModal').modal('hide');
-  },
-  error: function (err) {
-    console.log("err: " + JSON.stringify(err));
-    console.log("err.responseText: " + JSON.stringify(err.responseText));
-    console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
-    document.getElementById("videoConferenceUrl").style.display = "none";
-    localStorage.removeItem("careatorEmail");
-    userName = "";
-  }
-});
+    });
   }
   else {
     console.log("password trigger again-->");
     console.log("Password empty");
 
- // $("#enterPswd").trigger("click");
-}
-console.log("<--checkPassword");
+    // $("#enterPswd").trigger("click");
+  }
+  console.log("<--checkPassword");
 }
 
 function chatNavigation() {
@@ -494,6 +520,7 @@ signaling_socket.on("connect", function () {
             document.getElementById("videoConferenceUrl").style.display = "none";
             document.getElementById("emailInvitation").style.display = "none";
             document.getElementById("videoCtrolBar").style.display = "grid";
+            localStorage.setItem("oneTimePassword", password);
             $('#remoteJoin').modal('hide');
             setup_local_media(function () {
               join__channel(DEFAULT_CHANNEL, { "whatever-here": "stuff" });

@@ -451,7 +451,7 @@ module.exports.careatorSingleUserInsert = function (req, res) {
         } else {
             console.log("idFindData: " + JSON.stringify(idFindData));
             if (idFindData.length > 0) {
-                console.log("err: " + JSON.stringify(err));
+                
                 responseData = {
                     status: false,
                     message: "This employee id already exist"
@@ -469,7 +469,7 @@ module.exports.careatorSingleUserInsert = function (req, res) {
                     } else {
                         console.log("idFindData: " + JSON.stringify(idFindData));
                         if (idFindData.length > 0) {
-                            console.log("err: " + JSON.stringify(err));
+                            
                             responseData = {
                                 status: false,
                                 message: "This emaail id already exist"

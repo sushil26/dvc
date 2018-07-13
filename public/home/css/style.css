@@ -21,6 +21,12 @@
 
 .modal-content {
   border-radius: 8px;
+  border: none;
+}
+
+
+.modal-body {
+  min-height: 100px;
 }
 
 .mtitle {

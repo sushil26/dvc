@@ -202,7 +202,7 @@ function checkPassword() {
   }
   else {
     console.log("password trigger again-->");
-  $("#enterPswd").trigger("click");
+ // $("#enterPswd").trigger("click");
 }
 console.log("<--checkPassword");
 }

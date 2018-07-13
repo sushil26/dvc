@@ -11,12 +11,49 @@
                     <div class="panel-body bio-graph-info" style="padding: 15px;">
                         <form class="form-horizontal" role="form" enctype="multipart/form-data">
                             <div class="form-group ">
+                                <label class="col-lg-3">User Name*</label>
+                                <div class="col-lg-9">
+                                    <span>
+                                        <input type="text" ng-model="userName" class="bcontrol-label m-bot15">
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label class="col-lg-3">Employee Id*</label>
+                                <div class="col-lg-9">
+                                    <span>
+                                        <input type="text" ng-model="EmpId" class="bcontrol-label m-bot15">
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label class="col-lg-3">Email Id*</label>
+                                <div class="col-lg-9">
+                                    <span>
+                                        <input type="text" ng-model="empEmail" class="bcontrol-label m-bot15">
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="form-group ">
+
+                                <label class="col-lg-3">Group Category*</label>
+                                <div class="col-lg-9">
+                                    <span>
+                                        Chat&nbsp;
+                                        <input type="radio" name="cat" value="chat" ng-model="rightSelect" ng-change="rightEmployeeList('chat')"> &nbsp;&nbsp; Video&nbsp;
+                                        <input type="radio" name="cat" value="video" ng-model="rightSelect" ng-change="rightEmployeeList('video')"> &nbsp;&nbsp; Both&nbsp;
+                                        <input type="radio" name="cat" value="both" ng-model="rightSelect" ng-change="rightEmployeeList('bothChatVideo')">
+
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="form-group ">
 
                                 <label class="col-lg-3">Upload User Details*</label>
                                 <div class="col-lg-9">
                                     <span>
                                         <input type="file" style="width: 166px;font-size: 10px;" class="bcontrol-label btn btn-warning m-bot15" name="myImage" value="Upload"
-                                            image-with-preview  file-model="careatorEmp" ng-model="image" accept="csv" ng-required="true">
+                                            image-with-preview file-model="careatorEmp" ng-model="image" accept="csv" ng-required="true">
                                     </span>
                                 </div>
                             </div>

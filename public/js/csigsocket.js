@@ -524,7 +524,7 @@ signaling_socket.on("connect", function () {
             document.getElementById("videoConferenceUrl").style.display = "none";
             document.getElementById("emailInvitation").style.display = "none";
             document.getElementById("videoCtrolBar").style.display = "grid";
-            localStorage.setItem("oneTimePassword", password);
+            localStorage.setItem("oneTimePassword", careator_remotePswd);
             $('#remoteJoin').modal('hide');
             setup_local_media(function () {
               join__channel(DEFAULT_CHANNEL, { "whatever-here": "stuff" });

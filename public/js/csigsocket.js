@@ -92,7 +92,7 @@ if (stuff.length > 5) {
 
   }
   else if (localStorage.getItem("careator_remoteEmail") && localStorage.getItem("oneTimePassword")) {
-    console.log("remove session check");
+    console.log("remote session check");
     var careator_remoteEmail = localStorage.getItem("careator_remoteEmail");
     var careator_remotePswd = localStorage.getItem("oneTimePassword");
     var checkObj = {
@@ -490,7 +490,7 @@ signaling_socket.on("connect", function () {
       document.getElementById("linkToShare").style.display = "block";
       document.getElementById("emailInvitation").style.display = "inline";
       console.log("userName: " + userName);
-      if (userName != undefined) {
+      if (userName != undefined && userName != "") {
         console.log("userName with localmedia setup call: " + userName);
         setup_local_media(function () {
           join__channel(DEFAULT_CHANNEL, { "whatever-you--here": "stuff" });

@@ -152,13 +152,13 @@ careatorApp.controller('userRestrictionCtrl', function ($scope, $state, $rootSco
                 }
             })
         },
-        onSelectAll: function(items){
-            console.log('onSelectAll: ' + items);
-            console.log('selected json: ' + JSON.stringify(items));
+        onSelectAll: function(item){
+            console.log('onSelectAll: ' + item);
+            console.log('selected json: ' + JSON.stringify(item));
         },
-        onDeselectAll: function(items){
-            console.log('onDeselectAll: ' + items);
-            console.log('deselected json: ' + JSON.stringify(items));
+        onDeselectAll: function(item){
+            console.log('onDeselectAll: ' + item);
+            console.log('deselected json: ' + JSON.stringify(item));
         }
     }
     $scope.authorizedFor = function () {

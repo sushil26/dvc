@@ -427,6 +427,9 @@ function disconnecSession() {
 
     // window.location.href = "https://norecruits.com";
   }
+  else{
+    window.location.href = "https://norecruits.com";
+  }
   // userName = null;
   // console.log("queryLink: " + queryLink);
   // console.log("localStorage.getItem: " + localStorage.getItem("careatorEmail"));

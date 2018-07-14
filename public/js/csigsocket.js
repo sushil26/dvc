@@ -55,6 +55,7 @@ if (stuff.length > 5) {
   console.log("localStorage.getItem(oneTimePassword): " + localStorage.getItem("oneTimePassword"));
   if(localStorage.getItem("redirctRequired")==true)
   {
+    console.log("localStorage.getItem(redirctRequired): "+localStorage.getItem("redirctRequired"));
     localStorage.removeItem("redirctRequired");
     window.location.href="/careator"
   }

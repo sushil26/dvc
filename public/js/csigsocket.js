@@ -393,7 +393,7 @@ signaling_socket.on("disconnectSessionReply", function (data) {
   console.log("disconnectSessionReply from server-->");
   if (queryLink == data.deleteSessionId && peerNew_id == data.owner) {
     console.log("Ready for redirect-->");
-    window.location.href="/";
+   
     //window.location.href = "https://norecruits.com";
   }
   else if (queryLink == data.deleteSessionId && peerNew_id != data.owner) {
@@ -417,7 +417,7 @@ function disconnecSession() {
       owner: peerNew_id
     });
    
-
+    window.location.href="/";
     // window.location.href = "https://norecruits.com";
   }
   // userName = null;

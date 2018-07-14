@@ -806,7 +806,9 @@ signaling_socket.on("addPeer", function (config) {
       );
       $("#videosAttach").css({
         "z-index": "2",
-        "position": "fixed"
+        "position": "fixed",
+      "right": "-225px",
+      "bottom": "25px",
       }
 
       );

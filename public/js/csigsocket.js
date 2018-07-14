@@ -59,7 +59,7 @@ if (stuff.length > 5) {
     localStorage.removeItem("redirctRequired");
     window.location.href = "/careator"
   }
-  if (localStorage.getItem("careatorEmail") && localStorage.getItem("sessionPassword")) {
+  if (localStorage.getItem("careatorEmail") && localStorage.getItem("sessionPassword") && (localStorage.getItem("videoRights")=='yes')) {
     console.log("Hoster session check");
     var password = localStorage.getItem("sessionPassword");
     var careatorEmail = localStorage.getItem("careatorEmail");

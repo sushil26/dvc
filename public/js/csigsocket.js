@@ -54,11 +54,10 @@ if (stuff.length > 5) {
   console.log("localStorage.getItem(careator_remoteEmail): " + localStorage.getItem("careator_remoteEmail"));
   console.log("localStorage.getItem(oneTimePassword): " + localStorage.getItem("oneTimePassword"));
   console.log("localStorage.getItem(redirctRequired): " + localStorage.getItem("redirctRequired"));
-  if(localStorage.getItem("redirctRequired")=='true')
-  {
-    console.log("localStorage.getItem(redirctRequired): "+localStorage.getItem("redirctRequired"));
+  if (localStorage.getItem("redirctRequired") == 'true') {
+    console.log("localStorage.getItem(redirctRequired): " + localStorage.getItem("redirctRequired"));
     localStorage.removeItem("redirctRequired");
-    window.location.href="/careator"
+    window.location.href = "/careator"
   }
   if (localStorage.getItem("careatorEmail") && localStorage.getItem("sessionPassword")) {
     console.log("Hoster session check");
@@ -400,13 +399,14 @@ signaling_socket.on("disconnectSessionReply", function (data) {
   console.log("disconnectSessionReply from server-->");
   if (queryLink == data.deleteSessionId && peerNew_id == data.owner) {
     console.log("Ready for redirect-->");
-    localStorage.setItem("redirctRequired",true);
+    localStorage.setItem("redirctRequired", true);
 
     //window.location.href = "https://norecruits.com";
   }
   else if (queryLink == data.deleteSessionId && peerNew_id != data.owner) {
     console.log("remote notification that host disconnect the session-->");
     alert("Your host disconnect the session, you no longer can use this session");
+    localStorage.setItem("redirctRequired", true);
     // $("#homeLink").trigger("click");
     // window.location.href = "https://norecruits.com";
   }
@@ -424,7 +424,7 @@ function disconnecSession() {
       deleteSessionId: queryLink,
       owner: peerNew_id
     });
-    
+
     // window.location.href = "https://norecruits.com";
   }
   // userName = null;
@@ -615,9 +615,8 @@ signaling_socket.on("disconnect", function () {
   console.log("signaling_socket.on disconnect-->");
   disconnPeerId = peerNew_id;
   // document.getElementById(peerNew_id).remove();
-
   /* Tear down all of our peer connections and remove all the
-   * media divs when we disconnect */
+ * media divs when we disconnect */
   for (peer_id in peer_media_elements) {
     peer_media_elements[peer_id].remove();
     peer_userName_elements[peer_id].remove();
@@ -816,8 +815,8 @@ signaling_socket.on("addPeer", function (config) {
       $("#videosAttach").css({
         "z-index": "2",
         "position": "fixed",
-      "right": "-225px",
-      "bottom": "25px",
+        "right": "-225px",
+        "bottom": "25px",
       }
 
       );

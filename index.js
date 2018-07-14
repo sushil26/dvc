@@ -211,8 +211,6 @@ io.sockets.on('connection', function (socket) {
         delete channels[channel][data.deleteSessionId];
         console.log("sockets[data.deleteSessionId]: " + sockets[data.deleteSessionId]);
         //}
-
-
         console.log("<--disconnectSession");
     })
 

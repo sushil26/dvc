@@ -209,7 +209,7 @@ io.sockets.on('connection', function (socket) {
         delete peerTrackForVideo[data.deleteSessionId];
         delete channels[channel][data.deleteSessionId];
         console.log("sockets[data.deleteSessionId]: " + sockets[data.deleteSessionId]);
-
+        socket.emit('disconnectSessionReply', { "deleteSessionId": data.deleteSessionId, "owner": data.owner });
 
 
         //}

@@ -388,6 +388,19 @@ function logout() {
   }
 }
 
+signaling_socket.on("disconnectSessionReply", function (data) {
+  console.log("disconnectSessionReply from server-->");
+  if (queryLink == data.deleteSessionId && peerNew_id == data.owner) {
+    console.log("Ready for redirect-->");
+    window.location.href = "https://norecruits.com";
+  }
+  else if(queryLink == data.deleteSessionId){
+    console.log("remote notification that host disconnect the session-->");
+    alert("Your host disconnect the session, you no longer can use this session");
+    window.location.href = "https://norecruits.com";
+  }
+
+})
 function disconnecSession() {
   console.log("disconnecSession-->");
   console.log("sessionHeader: " + sessionHeader);
@@ -399,7 +412,7 @@ function disconnecSession() {
       deleteSessionId: queryLink,
       owner: peerNew_id
     });
-    window.location.href = "https://norecruits.com";
+
     // window.location.href = "https://norecruits.com";
   }
   // userName = null;

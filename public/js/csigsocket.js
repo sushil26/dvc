@@ -525,7 +525,7 @@ signaling_socket.on("connect", function () {
       document.getElementById("linkToShare").innerHTML =
         "https://norecruits.com/careator/" + queryLink + "/" + date;
       document.getElementById("screenBtns").style.display = "inline";
-      document.getElementById("ffrrt").style.display = "inline";
+      document.getElementById("homeLink").style.display = "inline";
       document.getElementById("videoConfStart").style.display = "none";
       // document.getElementById("chelam").style.display = "none";
       // document.getElementById("mobile-nav-toggle").style.display = "none";

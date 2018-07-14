@@ -420,7 +420,7 @@ function disconnecSession() {
 
   if (localStorage.getItem("sessionUrlId") == queryLink && localStorage.getItem("careatorEmail")) {
     console.log("start to disconnect the session");
-    localStorage.removeItem("sessionUrlId");
+    // localStorage.removeItem("sessionUrlId");
     signaling_socket.emit("disconnectSession", {
       deleteSessionId: queryLink,
       owner: peerNew_id
@@ -816,7 +816,9 @@ signaling_socket.on("addPeer", function (config) {
       );
       $("#videosAttach").css({
         "z-index": "2",
-        "position": "fixed"
+        "position": "fixed",
+      "right": "-225px",
+      "bottom": "25px",
       }
 
       );

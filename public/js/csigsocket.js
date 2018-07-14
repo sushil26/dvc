@@ -779,10 +779,7 @@ signaling_socket.on("addPeer", function (config) {
       $
       $("#videoElem").css({
         height: "auto",
-        width: "20%",
-        position:"absolute",
-        bottom:"0",
-        right:"0"
+        width: "20%"
       });
       $("#videoElem111").removeClass(
         "portfolio-items col-xs-6 col-sm-6 col-md-4 col-lg-3"

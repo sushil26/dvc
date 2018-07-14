@@ -99,28 +99,28 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                         userData.chatRights = "yes";
                         $scope.videoRights = "yes";
                         localStorage.removeItem("videoRights");
-                        localStorage.addItem("videoRights", "yes");
+                        localStorage.setItem("videoRights", "yes");
                     }
                     else if ($scope.getUserById.videoRights == 'no'  && $scope.getUserById.chatRights == 'yes') {
                         userData.chatRights = "yes";
                         userData.videoRights = "no";
                         $scope.videoRights = "no";
                         localStorage.removeItem("videoRights");
-                        localStorage.addItem("videoRights", "no");
+                        localStorage.setItem("videoRights", "no");
                     }
                     else if ($scope.getUserById.videoRights == 'yes'  && $scope.getUserById.chatRights == 'no') {
                         userData.chatRights = "no";
                         userData.videoRights = "yes";
                         $scope.videoRights = "yes";
                         localStorage.removeItem("videoRights");
-                        localStorage.addItem("videoRights", "yes");
+                        localStorage.setItem("videoRights", "yes");
                     }
                     else if ($scope.getUserById.videoRights == 'no'  && $scope.getUserById.chatRights == 'no') {
                         userData.chatRights = "no";
                         userData.videoRights = "no";
                         $scope.videoRights = "no";
                         localStorage.removeItem("videoRights");
-                        localStorage.addItem("videoRights", "no");
+                        localStorage.setItem("videoRights", "no");
                     }
                     console.log("userData: " + JSON.stringify(userData));
                     careatorSessionAuth.clearAccess("userData");

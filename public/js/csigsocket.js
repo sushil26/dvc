@@ -407,7 +407,7 @@ signaling_socket.on("disconnectSessionReply", function (data) {
   else if (queryLink == data.deleteSessionId && peerNew_id != data.owner) {
     console.log("remote notification that host disconnect the session-->");
     alert("Your host disconnect the session, you no longer can use this session");
-    $("#homeLink").trigger("click");
+    // $("#homeLink").trigger("click");
     // window.location.href = "https://norecruits.com";
   }
 })

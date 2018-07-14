@@ -53,6 +53,13 @@ if (stuff.length > 5) {
   console.log("localStorage.getItem(sessionPassword): " + localStorage.getItem("sessionPassword"));
   console.log("localStorage.getItem(careator_remoteEmail): " + localStorage.getItem("careator_remoteEmail"));
   console.log("localStorage.getItem(oneTimePassword): " + localStorage.getItem("oneTimePassword"));
+  console.log("localStorage.getItem(redirctRequired): " + localStorage.getItem("redirctRequired"));
+  if(localStorage.getItem("redirctRequired")=='true')
+  {
+    console.log("localStorage.getItem(redirctRequired): "+localStorage.getItem("redirctRequired"));
+    localStorage.removeItem("redirctRequired");
+    window.location.href="/careator"
+  }
   if (localStorage.getItem("careatorEmail") && localStorage.getItem("sessionPassword")) {
     console.log("Hoster session check");
     var password = localStorage.getItem("sessionPassword");
@@ -393,13 +400,14 @@ signaling_socket.on("disconnectSessionReply", function (data) {
   console.log("disconnectSessionReply from server-->");
   if (queryLink == data.deleteSessionId && peerNew_id == data.owner) {
     console.log("Ready for redirect-->");
+    localStorage.setItem("redirctRequired",true);
 
     //window.location.href = "https://norecruits.com";
   }
   else if (queryLink == data.deleteSessionId && peerNew_id != data.owner) {
     console.log("remote notification that host disconnect the session-->");
     alert("Your host disconnect the session, you no longer can use this session");
-    $("#homeLink").trigger("click");
+    // $("#homeLink").trigger("click");
     // window.location.href = "https://norecruits.com";
   }
 })
@@ -416,6 +424,7 @@ function disconnecSession() {
       deleteSessionId: queryLink,
       owner: peerNew_id
     });
+    
     // window.location.href = "https://norecruits.com";
   }
   // userName = null;

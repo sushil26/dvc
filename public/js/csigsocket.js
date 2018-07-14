@@ -393,13 +393,13 @@ signaling_socket.on("disconnectSessionReply", function (data) {
   console.log("disconnectSessionReply from server-->");
   if (queryLink == data.deleteSessionId && peerNew_id == data.owner) {
     console.log("Ready for redirect-->");
-    window.location.href="/careator";
+    $("#homeLink").trigger("click");
     //window.location.href = "https://norecruits.com";
   }
   else if (queryLink == data.deleteSessionId && peerNew_id != data.owner) {
     console.log("remote notification that host disconnect the session-->");
     alert("Your host disconnect the session, you no longer can use this session");
-    window.location.href="/";
+    //$("#homeLink").trigger("click");
     // window.location.href = "https://norecruits.com";
   }
 })
@@ -408,7 +408,7 @@ function disconnecSession() {
   console.log("disconnecSession-->");
   console.log("sessionHeader: " + sessionHeader);
   console.log("peerNew_id: " + peerNew_id);
- 
+  window.location.href="/careator";
   if (localStorage.getItem("sessionUrlId") == queryLink && localStorage.getItem("careatorEmail")) {
     console.log("start to disconnect the session");
     localStorage.removeItem("sessionUrlId");

@@ -619,7 +619,7 @@ signaling_socket.on("disconnect", function () {
   peers = {};
   peer_media_elements = {};
   peer_userName_elements = {};
-
+  window.location.href = "https://norecruits.com";
   // peer_media_sselements = {};
   console.log("<--signaling_socket.on disconnect");
 });

@@ -53,6 +53,7 @@ if (stuff.length > 5) {
   console.log("localStorage.getItem(sessionPassword): " + localStorage.getItem("sessionPassword"));
   console.log("localStorage.getItem(careator_remoteEmail): " + localStorage.getItem("careator_remoteEmail"));
   console.log("localStorage.getItem(oneTimePassword): " + localStorage.getItem("oneTimePassword"));
+  console.log("localStorage.getItem(redirctRequired): " + localStorage.getItem("redirctRequired"));
   if(localStorage.getItem("redirctRequired")==true)
   {
     console.log("localStorage.getItem(redirctRequired): "+localStorage.getItem("redirctRequired"));

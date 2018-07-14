@@ -408,7 +408,7 @@ function disconnecSession() {
   console.log("disconnecSession-->");
   console.log("sessionHeader: " + sessionHeader);
   console.log("peerNew_id: " + peerNew_id);
- window.location.href="/";
+ window.location.href="/careator";
   if (localStorage.getItem("sessionUrlId") == queryLink && localStorage.getItem("careatorEmail")) {
     console.log("start to disconnect the session");
     localStorage.removeItem("sessionUrlId");

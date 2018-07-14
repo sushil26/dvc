@@ -419,7 +419,7 @@ function disconnecSession() {
 
   if (localStorage.getItem("sessionUrlId") == queryLink && localStorage.getItem("careatorEmail")) {
     console.log("start to disconnect the session");
-    localStorage.removeItem("sessionUrlId");
+    // localStorage.removeItem("sessionUrlId");
     signaling_socket.emit("disconnectSession", {
       deleteSessionId: queryLink,
       owner: peerNew_id

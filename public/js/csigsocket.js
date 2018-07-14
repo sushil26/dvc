@@ -53,6 +53,11 @@ if (stuff.length > 5) {
   console.log("localStorage.getItem(sessionPassword): " + localStorage.getItem("sessionPassword"));
   console.log("localStorage.getItem(careator_remoteEmail): " + localStorage.getItem("careator_remoteEmail"));
   console.log("localStorage.getItem(oneTimePassword): " + localStorage.getItem("oneTimePassword"));
+  if(localStorage.getItem("redirctRequired")==true)
+  {
+    localStorage.removeItem("redirctRequired");
+    window.location.href="/careator"
+  }
   if (localStorage.getItem("careatorEmail") && localStorage.getItem("sessionPassword")) {
     console.log("Hoster session check");
     var password = localStorage.getItem("sessionPassword");
@@ -393,6 +398,7 @@ signaling_socket.on("disconnectSessionReply", function (data) {
   console.log("disconnectSessionReply from server-->");
   if (queryLink == data.deleteSessionId && peerNew_id == data.owner) {
     console.log("Ready for redirect-->");
+    localStorage.setItem("redirctRequired",true);
 
     //window.location.href = "https://norecruits.com";
   }
@@ -416,6 +422,7 @@ function disconnecSession() {
       deleteSessionId: queryLink,
       owner: peerNew_id
     });
+    
     // window.location.href = "https://norecruits.com";
   }
   // userName = null;

@@ -415,6 +415,7 @@ function disconnecSession() {
       deleteSessionId: queryLink,
       owner: peerNew_id
     });
+    $("#homeLink").trigger("click");
 
     // window.location.href = "https://norecruits.com";
   }

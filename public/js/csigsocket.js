@@ -408,14 +408,15 @@ function disconnecSession() {
   console.log("disconnecSession-->");
   console.log("sessionHeader: " + sessionHeader);
   console.log("peerNew_id: " + peerNew_id);
+  $("#homeLink").trigger("click");
   if (localStorage.getItem("sessionUrlId") == queryLink && localStorage.getItem("careatorEmail")) {
     console.log("start to disconnect the session");
     localStorage.removeItem("sessionUrlId");
-    signaling_socket.emit("disconnectSession", {
-      deleteSessionId: queryLink,
-      owner: peerNew_id
-    });
-    $("#homeLink").trigger("click");
+    // signaling_socket.emit("disconnectSession", {
+    //   deleteSessionId: queryLink,
+    //   owner: peerNew_id
+    // });
+   
 
     // window.location.href = "https://norecruits.com";
   }

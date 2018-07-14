@@ -615,9 +615,8 @@ signaling_socket.on("disconnect", function () {
   console.log("signaling_socket.on disconnect-->");
   disconnPeerId = peerNew_id;
   // document.getElementById(peerNew_id).remove();
-  window.location.href = "/";
   /* Tear down all of our peer connections and remove all the
-   * media divs when we disconnect */
+ * media divs when we disconnect */
   for (peer_id in peer_media_elements) {
     peer_media_elements[peer_id].remove();
     peer_userName_elements[peer_id].remove();

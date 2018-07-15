@@ -163,13 +163,16 @@
 
                                         <!--For Status -->
                                         <a ng-if="selectedType=='individual_chats' && (individualData.senderId==undefined && individualData.receiverId==undefined)"
-                                            class="heading-name-meta"><br>Online
+                                            class="heading-status">
+                                            <br>Online
                                         </a>
-                                        <a ng-if="selectedType=='individual_chats' && individualData.senderId!=userId" class="heading-name-meta"><br>Online
+                                        <a ng-if="selectedType=='individual_chats' && individualData.senderId!=userId" class="heading-status">
+                                            <br>Online
                                         </a>
-                                        <a ng-if="selectedType=='individual_chats' && individualData.receiverId!=userId" class="heading-name-meta"><br>Online
+                                        <a ng-if="selectedType=='individual_chats' && individualData.receiverId!=userId" class="heading-status">
+                                            <br>Online
                                         </a>
-                                         <!--For Status End -->
+                                        <!--For Status End -->
 
                                     </div>
                                     <!-- <div class="col-sm-1 col-xs-1  heading-dot pull-right">

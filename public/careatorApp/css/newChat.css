@@ -129,6 +129,11 @@
     font-size: 12px;
     color: #93918f;
 }
+.heading-status {
+    padding: 0 5px;
+    font-size: 12px;
+    color: #93918f;
+}
 
 .heading-compose {
     padding: 0;

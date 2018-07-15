@@ -406,6 +406,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
 
     $scope.getGroupDetails = function(id){
         console.log("getGroupDetails-->");
+        console.log("id: "+id);
         var api = "https://norecruits.com/careator_getGroup/careator_getGroupById/" + id;
         console.log("api: " + api);
         careatorHttpFactory.get(api).then(function (data) {

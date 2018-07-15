@@ -155,12 +155,18 @@
                                         </div>
                                         <a ng-if="selectedType=='individual_chats' && (individualData.senderId==undefined && individualData.receiverId==undefined)"
                                             class="heading-name-meta">{{individualData.name}}
+                                            <br>
+                                            <span class="heading-online">Online</span>
                                         </a>
                                         <a ng-if="selectedType=='individual_chats' && individualData.senderId!=userId" class="heading-name-meta">{{individualData.senderName}}
+                                            <br>
+                                            <span class="heading-online">Online</span>
                                         </a>
                                         <a ng-if="selectedType=='individual_chats' && individualData.receiverId!=userId" class="heading-name-meta">{{individualData.receiverName}}
+                                            <br>
+                                            <span class="heading-online">Online</span>
                                         </a>
-                                        <span class="heading-online">Online</span>
+
                                     </div>
                                     <!-- <div class="col-sm-1 col-xs-1  heading-dot pull-right">
                                         <i class="fa fa-ellipsis-v fa-2x  pull-right" aria-hidden="true"></i>

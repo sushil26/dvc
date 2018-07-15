@@ -62,6 +62,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
         localStorage.removeItem("chatRights");
         localStorage.removeItem("sessionUrlId");
         localStorage.removeItem("careator_remoteEmail");
+        localStorage.removeItem("restrictedTo");
         careatorSessionAuth.clearAccess("userData");
         window.location.href = "https://norecruits.com";
     }

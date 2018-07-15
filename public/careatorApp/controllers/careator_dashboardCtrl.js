@@ -46,10 +46,10 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
     }
 
     $scope.name = userData.userName;
-    if (userData.videoRights=='yes') {
+    if (userData.videoRights == 'yes') {
         $scope.videoRights = "yes";
     }
-    else{
+    else {
         $scope.videoRights = "no";
     }
 
@@ -58,10 +58,15 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
         localStorage.removeItem("careatorEmail");
         localStorage.removeItem("sessionUrlId");
         localStorage.removeItem("careator_remoteEmail");
-        localStorage.removeItem("videoRights");
-        localStorage.removeItem("chatRights");
         localStorage.removeItem("sessionUrlId");
         localStorage.removeItem("careator_remoteEmail");
+        localStorage.removeItem("email");
+        localStorage.removeItem("userName");
+        localStorage.removeItem("empId");
+        localStorage.removeItem("userId");
+        localStorage.removeItem("videoRights");
+        localStorage.removeItem("chatRights");
+        localStorage.removeItem("restrictedTo");
         careatorSessionAuth.clearAccess("userData");
         window.location.href = "https://norecruits.com";
     }
@@ -79,7 +84,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                     $scope.getUserById = data.data.data[0];
                     console.log("getUserById: " + JSON.stringify($scope.getUserById));
                     console.log("userData: " + JSON.stringify(userData));
-                    
+
                     var restrictedTo = $scope.getUserById.restrictedTo;
                     var restrictedArray = [];
                     for (var x = 0; x < restrictedTo.length; x++) {
@@ -101,21 +106,21 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                         localStorage.removeItem("videoRights");
                         localStorage.setItem("videoRights", "yes");
                     }
-                    else if ($scope.getUserById.videoRights == 'no'  && $scope.getUserById.chatRights == 'yes') {
+                    else if ($scope.getUserById.videoRights == 'no' && $scope.getUserById.chatRights == 'yes') {
                         userData.chatRights = "yes";
                         userData.videoRights = "no";
                         $scope.videoRights = "no";
                         localStorage.removeItem("videoRights");
                         localStorage.setItem("videoRights", "no");
                     }
-                    else if ($scope.getUserById.videoRights == 'yes'  && $scope.getUserById.chatRights == 'no') {
+                    else if ($scope.getUserById.videoRights == 'yes' && $scope.getUserById.chatRights == 'no') {
                         userData.chatRights = "no";
                         userData.videoRights = "yes";
                         $scope.videoRights = "yes";
                         localStorage.removeItem("videoRights");
                         localStorage.setItem("videoRights", "yes");
                     }
-                    else if ($scope.getUserById.videoRights == 'no'  && $scope.getUserById.chatRights == 'no') {
+                    else if ($scope.getUserById.videoRights == 'no' && $scope.getUserById.chatRights == 'no') {
                         userData.chatRights = "no";
                         userData.videoRights = "no";
                         $scope.videoRights = "no";

@@ -8,7 +8,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
     $scope.restrictedArray = restrictedUser;
     // console.log("restrictedUser: " + JSON.stringify(restrictedUser));
     // $scope.restrictedArray = restrictedUser.split(',');
-    // console.log(" $scope.restrictedArray: " + JSON.stringify($scope.restrictedArray));
+    console.log(" $scope.restrictedArray: " + JSON.stringify($scope.restrictedArray));
 
     $scope.getChatGroupListById = function (id) {
         console.log("getAllEmployee-->: " + id);

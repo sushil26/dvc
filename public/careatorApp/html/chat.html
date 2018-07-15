@@ -33,16 +33,7 @@
                             transition: opacity 0.3s;
                         }
 
-                        .tooltip .tooltiptext::after {
-                            content: "";
-                            position: absolute;
-                            bottom:  100%;
-                            left: 50%;
-                            margin-left: -5px;
-                            border-width: 5px;
-                            border-style: solid;
-                            border-color: #555 transparent transparent transparent;
-                        }
+                      
 
                         .tooltip:hover .tooltiptext {
                             visibility: visible;
@@ -65,7 +56,8 @@
                                             margin-top: -12px;
                                             margin-left: 55px;
                                             cursor: pointer;" class="tooltip" data-toggle="tooltip" data-placement="bottom">Available
-                                                <span class="tooltiptext">Tooltip text</span>
+                                                <div class="tooltiptext">Available</div>
+                                              
                                             </div>
 
 

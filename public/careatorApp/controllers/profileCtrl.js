@@ -28,6 +28,7 @@ careatorApp.controller('profileCtrl', function ($scope, $state, careatorHttpFact
 
 
     $scope.profilpic = function () {
+        $("#pfpic").css({"display":" "});
         ///////// take pic/////////////////
         // References to all the element we will need.
         var video = document.querySelector('#camera-stream'),
@@ -70,6 +71,7 @@ careatorApp.controller('profileCtrl', function ($scope, $state, careatorHttpFact
                         console.log("close webcam ->");
                         var track = stream.getTracks()[0];
                         track.stop();
+                        $("#pfpic").css({"display":"none"});
 
 
 

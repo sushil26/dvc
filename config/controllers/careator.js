@@ -2035,6 +2035,11 @@ module.exports.chatStatusUpdateById = function (req, res) {
                 res.status(400).send(responseData);
             } else {
                 console.log("chatStatusUpdated: " + JSON.stringify(chatStatusUpdated));
+                var io = req.app.get('socketio');
+                io.emit('comm_receiverStatusUpdate', {
+                    "id": id,
+                    "status": req.body.chatStatus
+                }); /* ### Note: Emit message to client ### */
                 response = {
                     status: true,
                     message: "Sucessfully retrived data",

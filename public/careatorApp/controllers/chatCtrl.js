@@ -293,6 +293,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
             if (checkStatus) {
                 var receiverData = data.data.data[0];
                 $scope.receiverChatStatus = receiverData.chatStatus;
+
                 console.log("receiverData: " + JSON.stringify(receiverData));
                 console.log("data.data.message: " + data.data.message);
             }
@@ -660,7 +661,16 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         // }
 
     })
-    /* ### End: Get event update from index.js  ### */
+    socket.on('comm_receiverStatusUpdate', function (data) { //update to client with new message;
+        console.log("****comm_receiverStatusUpdate-->: " + JSON.stringify(data));
+        console.log("$scope.individualData._id: " + $scope.individualData._id);
+        if($scope.individualData._id==data.id){
+            $scope.receiverChatStatus = data.status
+        }
+
+
+    })
+    /* ### End: receive message from careator.js  ### */
 
     /* ### Start: Front end  CSS### */
     $(".heading-compose").click(function () {

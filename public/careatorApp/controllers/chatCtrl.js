@@ -42,7 +42,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
 
     $scope.statusUpdate = function (status) {
         console.log("statusUpdate-->: " + status);
-        
+
         var id = userData.userId;
         api = "https://norecruits.com/careator_profile/chatStatusUpdateById/" + id;
         console.log("api: " + api);
@@ -55,6 +55,12 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
             if (checkStatus) {
                 console.log("data.data.data: " + JSON.stringify(data.data.data));
                 $scope.profileStatus = status;
+                var userData = userData;
+                userData.chatStatus = status;
+                careatorSessionAuth.clearAccess("userData");
+                careatorSessionAuth.setAccess("userData");
+                var userData = careatorSessionAuth.getAccess("userData");
+                console.log("userData: " + JSON.stringify(userData));
                 console.log(data.data.message);
             } else {
                 console.log("Sorry");

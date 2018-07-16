@@ -40,7 +40,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
         if (localStorage.getItem("restrictedTo")) {
             var restrictedUser = localStorage.getItem("restrictedTo");
             var restrictedArray = restrictedUser.split(',');
-            console.log(" restrictedArray: " + JSON.stringify(restrictedArray));
+            console.log("restrictedArray: " + JSON.stringify(restrictedArray));
             userData.restrictedTo = restrictedArray;
         }
 

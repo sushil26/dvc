@@ -27,6 +27,7 @@ careatorApp.controller('userRestrictionCtrl', function ($scope, $state, $rootSco
                     allUsersData = data.data.data[0];
                     console.log("allUsersData: " + JSON.stringify(allUsersData));
                     $scope.restrictedTo = [];
+                    
                     if (allUsersData.restrictedTo == undefined) {
                         $scope.authorizedFor();
                     }

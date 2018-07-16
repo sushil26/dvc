@@ -57,6 +57,26 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
         $scope.videoRights = "no";
     }
 
+    $scope.getAdmin_email_id = function(){
+        console.log("getAdmin_email_id-->");
+        var api = "https://norecruits.com/careator_adminBasicData/getAdminObjectId";
+        console.log("api: " + api);
+        careatorHttpFactory.get(api).then(function (data) {
+            console.log("data--" + JSON.stringify(data.data));
+            var checkStatus = careatorHttpFactory.dataValidation(data);
+            if (checkStatus) {
+                $scope.adminBasicData = data.data.data;
+                console.log("allGroup: " + JSON.stringify($scope.allGroup));
+                console.log(data.data.message);
+
+            } else {
+                console.log("Sorry");
+                console.log(data.data.message);
+            }
+        })
+
+    }
+
     $scope.logout = function () {
         console.log("logout-->");
         localStorage.removeItem("careatorEmail");

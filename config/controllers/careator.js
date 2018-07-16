@@ -222,7 +222,6 @@ module.exports.pswdGenerate = function (req, res) {
     }
     console.log("<--pswdGenerate");
 }
-
 module.exports.emailInvite = function (req, res) {
     console.log("careator email Invite-->");
     console.log("req.body.sessionHost: " + req.body.sessionHost + " req.body.email: " + req.body.email + " req.body.url: " + req.body.url);
@@ -276,6 +275,28 @@ module.exports.emailInvite = function (req, res) {
                 });
             }
         })
+}
+
+module.exports.getAdminObjectId = function (req, res) {
+    console.log("getAdminObjectId-->");
+    careatorMaster.find({ "email": "vc4allAdmin@gmail.com" }).toArray(function (err, admin) {
+        if (err) {
+            console.log("err: " + JSON.stringify(err));
+            responseData = {
+                status: false,
+                message: "Unsuccessfull, go back and refresh then start session"
+            };
+            res.status(400).send(responseData);
+        } else {
+            console.log("admin: " + JSON.stringify(admin));
+            responseData = {
+                status: true,
+                message: "Successfull",
+                data:admin._id
+            };
+            res.status(400).send(responseData);
+        }
+    })
 }
 
 module.exports.setCollection = function (req, res) {

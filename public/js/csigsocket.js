@@ -1310,6 +1310,59 @@ function setup_local_media(callback, errorback) {
           local_mediaScreenShare.attr("style", "border:1px solid skyblue");
           $("#videosAttach").append(local_mediaScreenShare);
 
+           /* ### Start: Video maximize and minimize ### */
+      document.getElementById("videoElem").addEventListener("click", function () {
+        console.log("screem size change request-->");
+        var videoElem = document.getElementById("videoElem");
+        var isFullScreen =
+          videoElem.requestFullscreen ||
+          videoElem.mozRequestFullScreen ||
+          videoElem.webkitRequestFullscreen;
+        console.log("isFullScreen: " + isFullScreen);
+        if (isFullScreen) {
+          console.log("SMall Screen");
+          if (videoElem.requestFullscreen) {
+            videoElem.requestFullscreen();
+          } else if (videoElem.mozRequestFullScreen) {
+            videoElem.mozRequestFullScreen();
+          } else if (videoElem.webkitRequestFullscreen) {
+            videoElem.webkitRequestFullscreen();
+          }
+        } else {
+          console.log("Big Screen");
+          if (videoElem.exitFullscreen) document.exitFullscreen();
+          else if (videoElem.webkitExitFullscreen)
+            videoElem.webkitExitFullscreen();
+          else if (videoElem.mozCancelFullScreen)
+            videoElem.mozCancelFullScreen();
+          else if (videoElem.msExitFullscreen) videoElem.msExitFullscreen();
+        }
+      });
+      /* ### End: Video maximize and minimize ### */
+
+      /* ### Start: This for audio mute and unmute before SCREEN SHARE ### */
+      document.getElementById("audio_btn").addEventListener("click", function () {
+        console.log("audio_btn-->");
+        console.log(
+          "stream.getAudioTracks()[0].enabled: " +
+          stream.getAudioTracks()[0].enabled
+        );
+        stream.getAudioTracks()[0].enabled = !stream.getAudioTracks()[0]
+          .enabled;
+        var michrophoneVal = stream.getAudioTracks()[0].enabled;
+
+        if (michrophoneVal) {
+          document.getElementById("audioMute_btn").style.display = "inline";
+          document.getElementById("audioUnmute_btn").style.display = "none";
+        } else {
+          document.getElementById("audioMute_btn").style.display = "none";
+          document.getElementById("audioUnmute_btn").style.display = "inline";
+        }
+        console.log("stream.getAudioTracks()[0].enabled: " + stream.getAudioTracks()[0].enabled);
+        console.log("<--audio_btn");
+      });
+      /* ### End: This for audio mute and unmute before SCREEN SHARE ### */
+
           /* ### Start: Loader Start and Stop ### */
           $("#screenShareElem").on('loadstart', function (event) {
             $(this).addClass('background');

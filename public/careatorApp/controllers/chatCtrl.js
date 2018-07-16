@@ -339,9 +339,30 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
             api = "https://norecruits.com/careator_individualText/individualText";
             console.log("api: " + api);
             console.log("$scope.receiverData.receiverId: " + $scope.receiverData.receiverId);
-            console.log(" $scope.receiverData.receiverId: "+ $scope.receiverData.receiverId);
-            console.log(" $rootScope.adminId: "+ $rootScope.adminId);
-            if ($scope.restrictedArray.indexOf($scope.receiverData.receiverId) >= 0 ||  $scope.receiverData.receiverId == $rootScope.adminId ) {
+            console.log(" $scope.receiverData.receiverId: " + $scope.receiverData.receiverId);
+            console.log(" $rootScope.adminId: " + $rootScope.adminId);
+            if ($rootScope.adminId == userData.userId) { /* ### Note: if loginId is userId then no need to check restricted list ### */
+                obj = {
+                    "senderId": userData.userId,
+                    "receiverId": $scope.receiverData.receiverId,
+                    "senderName": userData.userName,
+                    "receiverName": $scope.receiverData.receiverName,
+                    "message": $scope.typedMessage
+                }
+                console.log("obj: " + JSON.stringify(obj));
+                careatorHttpFactory.post(api, obj).then(function (data) {
+                    console.log("data--" + JSON.stringify(data.data));
+                    var checkStatus = careatorHttpFactory.dataValidation(data);
+                    if (checkStatus) {
+                        console.log("data.data.data: " + JSON.stringify(data.data.data));
+                        console.log(data.data.message);
+                    } else {
+                        console.log("Sorry");
+                        console.log(data.data.message);
+                    }
+                })
+            }
+            else if ($scope.restrictedArray.indexOf($scope.receiverData.receiverId) >= 0 || $scope.receiverData.receiverId == $rootScope.adminId) {
                 obj = {
                     "senderId": userData.userId,
                     "receiverId": $scope.receiverData.receiverId,

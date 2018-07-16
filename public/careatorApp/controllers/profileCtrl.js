@@ -28,7 +28,7 @@ careatorApp.controller('profileCtrl', function ($scope, $state, careatorHttpFact
 
 
     $scope.profilpic = function () {
-        $("#pfpic").css({"display":" "});
+        $("#pfpic").css({"display":"flex"});
         ///////// take pic/////////////////
         // References to all the element we will need.
         var video = document.querySelector('#camera-stream'),

@@ -2,8 +2,9 @@ careatorApp.controller('profileCtrl', function ($scope, $state, careatorHttpFact
     console.log("profileCtrl++++++>>>>>>");
 
     var userData = careatorSessionAuth.getAccess("userData");
-var id = userData.id;
-    $scope.getChatGroupListById = function (id) {
+var id = userData.userId;
+
+    $scope.getChatGroupListById = function () {
         console.log("getAllEmployee-->: " + id);
         var api = "https://norecruits.com/careator_chatGroupList/careator_getChatGroupListById/" + id;
         console.log("api: " + api);
@@ -23,7 +24,7 @@ var id = userData.id;
         console.log("<--getAllEmployee");
     }
 
-    $scope.getChatGroupListById(id);
+    $scope.getChatGroupListById();
 
 
 })

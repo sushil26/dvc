@@ -66,7 +66,7 @@ careatorApp.controller('profileCtrl', function ($scope, $state, careatorHttpFact
                     video.onplay = function () {
                         showVideo();
                     };
-                    document.getElementById("").addEventListener("click", function () {
+                    document.getElementById("close").addEventListener("click", function () {
                         console.log("close webcam ->");
                         var track = stream.getTracks()[0];
                         track.stop();

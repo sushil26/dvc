@@ -255,11 +255,11 @@
                                         </a>
                                         <a ng-if="selectedType=='individual_chats' && individualData.senderId!=userId && (individualData.title!=undefined)" class="heading-status">
                                             <br>
-                                            <i style="color: greenyellow;    font-size: 7px;" class="fa fa-circle"></i>&nbsp;Online
+                                            <i style="color: greenyellow;    font-size: 7px;" class="fa fa-circle"></i>&nbsp;{{receiverChatStatus}}
                                         </a>
                                         <a ng-if="selectedType=='individual_chats' && individualData.receiverId!=userId && (individualData.title!=undefined)" class="heading-status">
                                             <br>
-                                            <i style="color: greenyellow;    font-size: 7px;" class="fa fa-circle"></i>&nbsp;Online
+                                            <i style="color: greenyellow;    font-size: 7px;" class="fa fa-circle"></i>&nbsp;{{receiverChatStatus}}
                                         </a>
                                         <!--For Status End -->
 

@@ -80,7 +80,7 @@
                                             Acess : </div>
                                     </td>
                                     <td style="color:#00b1b1;">
-                                      Video
+                                        Video
                                     </td>
                                 </tr>
                                 <tr ng-if="userData.videoRights=='no' && userData.chatRights=='yes'">
@@ -99,7 +99,9 @@
 
                                     </td>
                                     <td style="color:#00b1b1;">
-                                        VC , VC4ALL
+                                        <div ng-repeat="Members in allGroup.groupMembers">
+                                            {{Members.name}}
+                                        </div>
                                     </td>
                                 </tr>
                                 <tr>

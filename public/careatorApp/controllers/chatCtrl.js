@@ -55,11 +55,11 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
             if (checkStatus) {
                 console.log("data.data.data: " + JSON.stringify(data.data.data));
                 $scope.profileStatus = status;
-                var userData = userData;
-                userData.chatStatus = status;
-                careatorSessionAuth.clearAccess("userData");
-                careatorSessionAuth.setAccess("userData");
-                var userData = careatorSessionAuth.getAccess("userData");
+                // var userData = userData;
+                // userData.chatStatus = status;
+                // careatorSessionAuth.clearAccess("userData");
+                // careatorSessionAuth.setAccess("userData");
+                // var userData = careatorSessionAuth.getAccess("userData");
                 console.log("userData: " + JSON.stringify(userData));
                 console.log(data.data.message);
             } else {

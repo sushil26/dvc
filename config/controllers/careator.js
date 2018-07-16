@@ -997,7 +997,7 @@ module.exports.careator_getChatRightsAllemp_byLoginId = function (req, res) {
     var id = req.params.id;
        
     if (general.emptyCheck(id)) {
-        careatorMaster.find({"_id": { $ne: id}, "chatRights": "yes"}).toArray(function (err, allEmp_chat) {
+        careatorMaster.find({"_id": { $ne: ObjectId(id)}, "chatRights": "yes"}).toArray(function (err, allEmp_chat) {
             if (err) {
                 console.log("err: " + JSON.stringify(err));
                 response = {

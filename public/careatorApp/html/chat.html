@@ -109,10 +109,10 @@
                                     <div class="row sideBar">
                                         <div class="row sideBar-body" ng-repeat="record in chatedGroup_records">
                                             <div class="col-sm-3 col-xs-3 sideBar-avatar" style="font-size: 35px;">
-                                                <div class="avatar-icon" ng-if="record.groupName==undefined && selectedReceiver.email!='vc4allAdmin@gmail.com'">
+                                                <div class="avatar-icon" ng-if="record.groupName==undefined && (record.receiverId!=adminId && record.senderId != adminId)">
                                                     <img src="./css/user.png">
                                                 </div>
-                                                <div class="avatar-icon" ng-if="record.groupName==undefined && selectedReceiver.email=='vc4allAdmin@gmail.com'">
+                                                <div class="avatar-icon" ng-if="record.groupName==undefined && (record.receiverId==adminId || record.senderId == adminId)">
                                                     <img src="./css/Admin.png">
                                                 </div>
                                                 <div class="avatar-icon" ng-if="record.groupName!==undefined">

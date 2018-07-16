@@ -290,7 +290,8 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
             console.log("data--" + JSON.stringify(data.data));
             var checkStatus = careatorHttpFactory.dataValidation(data);
             if (checkStatus) {
-                var receiverData = data.data.data;
+                var receiverData = data.data.data[0];
+                $scope.receiverChatStatus = receiverData.chatStatus;
                 console.log("receiverData: " + JSON.stringify(receiverData));
                 console.log("data.data.message: " + data.data.message);
             }

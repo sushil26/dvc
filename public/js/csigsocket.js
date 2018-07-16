@@ -241,7 +241,7 @@ function checkPassword() {
           localStorage.setItem("chatRights", 'yes');
           document.getElementById("chatConfStart").style.display = "inline";
         }
-        if(data.data.chatRights){
+        if(data.data.chatStatus){
           localStorage.setItem("chatStatus", data.data.chatStatus);
         }
         if (data.data.restrictedTo) {

@@ -166,6 +166,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         }
         console.log("sendGroupText_withData-->: " + JSON.stringify($scope.individualData));
         console.log("individualData-->: " + JSON.stringify($scope.sendGroupText_withData));
+        console.log(" $scope.restrictedArray: " + JSON.stringify($scope.restrictedArray));
         if ($scope.selectedType == 'group') {
             var group_id = $scope.individualData._id;
             var api = "https://norecruits.com/careator_groupTextRead/groupTextReadByGroupId/" + group_id;
@@ -232,7 +233,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         console.log("getAllChatRightEmp-->");
         $scope.allGroupAndIndividual = [];
         var id = userData.userId;
-        console.log(" $scope.restrictedArray: " + JSON.stringify($scope.restrictedArray));
+       // console.log(" $scope.restrictedArray: " + JSON.stringify($scope.restrictedArray));
         // var restrictedUser = userData.restrictedTo;
         // console.log("restrictedUser: " + JSON.stringify(restrictedUser));
         // var splitRestrictedUser = restrictedUser.split(',');

@@ -339,6 +339,8 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
             api = "https://norecruits.com/careator_individualText/individualText";
             console.log("api: " + api);
             console.log("$scope.receiverData.receiverId: " + $scope.receiverData.receiverId);
+            console.log(" $scope.receiverData.receiverId: "+ $scope.receiverData.receiverId);
+            console.log(" $rootScope.adminId: "+ $rootScope.adminId);
             if ($scope.restrictedArray.indexOf($scope.receiverData.receiverId) >= 0 ||  $scope.receiverData.receiverId == $rootScope.adminId ) {
                 obj = {
                     "senderId": userData.userId,

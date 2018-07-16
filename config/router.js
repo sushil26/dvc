@@ -52,7 +52,7 @@ module.exports = function (app) {
     app.get('/careator_groupTextRead/groupTextReadByGroupId/:group_id', careator.groupTextReadByGroupId);
     app.post('/careator_groupText/groupText', careator.groupText);
     app.get('/careator_groupTextRead/groupTextReadById/:sId/:rId', careator.groupTextReadById);
-
+    app.post('/vc/login4VC', user.login4VC);
 
     app.post('/record/pswdGenerate', record.pswdGenerate);
     app.post('/record/pswdCheck', record.pswdCheck);
@@ -61,7 +61,7 @@ module.exports = function (app) {
     app.get('/getRecord/getRecordVideo/:id', record.getRecordVideo);
     app.get('/record/getVideo/:id', record.getRecordVideo);
 
-    app.post('/vc/login4VC', user.login4VC);
+   
     app.post('/vc/captureImgSend/:parentEmail/:studName', capture.captureImgSend);
     app.post('/vc/schoolLogo', image.upload);
     app.post('/vc/profilePicupload', image.profilePicupload);

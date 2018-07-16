@@ -292,7 +292,7 @@ module.exports.getAdminObjectId = function (req, res) {
             responseData = {
                 status: true,
                 message: "Successfull",
-                data:admin._id
+                data:admin[0]._id
             };
             res.status(400).send(responseData);
         }

@@ -76,6 +76,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
         })
 
     }
+    $scope.getAdmin_email_id();
 
     $scope.logout = function () {
         console.log("logout-->");

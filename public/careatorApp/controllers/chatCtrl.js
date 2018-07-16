@@ -42,18 +42,19 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
 
     $scope.statusUpdate = function (status) {
         console.log("statusUpdate-->: " + status);
-        $scope.profileStatus = status;
+        
         var id = userData.userId;
         api = "https://norecruits.com/careator_profile/chatStatusUpdateById/" + id;
         console.log("api: " + api);
         var obj = {
-            "chatStatus": $scope.profileStatus
+            "chatStatus": status
         }
         careatorHttpFactory.post(api, obj).then(function (data) {
             console.log("data--" + JSON.stringify(data.data));
             var checkStatus = careatorHttpFactory.dataValidation(data);
             if (checkStatus) {
                 console.log("data.data.data: " + JSON.stringify(data.data.data));
+                $scope.profileStatus = status;
                 console.log(data.data.message);
             } else {
                 console.log("Sorry");

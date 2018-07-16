@@ -293,6 +293,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
             var checkStatus = careatorHttpFactory.dataValidation(data);
             if (checkStatus) {
                 var receiverData = data.data.data[0];
+                $scope.selectedReceiver = receiverData;
                 $scope.receiverChatStatus = receiverData.chatStatus;
 
                 console.log("receiverData: " + JSON.stringify(receiverData));

@@ -284,7 +284,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
 
     $scope.getReceiverDataById = function (id) {
         console.log("getReceiverData-->");
-        var api = "https://norecruits.com//careator_getUser/careator_getUserById/" + sId + "/" + rId;
+        var api = "https://norecruits.com//careator_getUser/careator_getUserById/" + id;
         console.log("api: " + api);
         careatorHttpFactory.get(api).then(function (data) {
             console.log("data--" + JSON.stringify(data.data));

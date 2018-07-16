@@ -2,6 +2,12 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
     console.log("chatCtrl==>");
     var userData = careatorSessionAuth.getAccess("userData");
     $scope.userId = userData.userId;
+    if(userData.chatStatus){
+        $scope.profileStatus = userData.chatStatus;
+    }
+    else{
+        $scope.profileStatus = "Available";
+    }
     console.log("userData: " + JSON.stringify(userData));
     $scope.allGroupAndIndividual = []; /* ### Note:$scope.allGroupAndIndividual contains All employee list(who having chat rights) and group list(which are included by login person)   ### */
     var restrictedUser = userData.restrictedTo;

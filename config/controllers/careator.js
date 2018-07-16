@@ -292,7 +292,7 @@ module.exports.getAdminObjectId = function (req, res) {
             responseData = {
                 status: true,
                 message: "Successfull",
-                data:admin[0]._id
+                data: admin[0]._id
             };
             res.status(200).send(responseData);
         }
@@ -1781,12 +1781,38 @@ module.exports.groupUpdateById = function (req, res) {
                 res.status(400).send(response);
             } else {
                 console.log("groupCreate: " + JSON.stringify(groupUpdate));
-                response = {
-                    status: true,
-                    message: "Successfully group update",
-                    data: groupUpdate
-                };
-                res.status(200).send(response);
+                if (req.body.groupName) {
+                    var objFindByGroupId = {
+                        "group_id": id
+                    }
+                    careatorChat.update(objFindByGroupId, { $set: { "groupName": req.body.groupName } }, function (err, groupNameUpdated) {
+                        if (err) {
+                            console.log("err: " + JSON.stringify(err));
+                            response = {
+                                status: false,
+                                message: "Unsuccessfull group update into chat details",
+                                data: err
+                            };
+                            res.status(400).send(response);
+                        } else {
+                            console.log("groupNameUpdated: " + JSON.stringify(groupNameUpdated));
+                            response = {
+                                status: true,
+                                message: "Successfully group update into chat details as well group details"
+                            };
+                            res.status(200).send(response);
+                        }
+                    })
+
+                }
+                else {
+                    response = {
+                        status: true,
+                        message: "Successfully group update",
+                        data: groupUpdate
+                    };
+                    res.status(200).send(response);
+                }
             }
         })
     } else {

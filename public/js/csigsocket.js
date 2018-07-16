@@ -1310,6 +1310,31 @@ function setup_local_media(callback, errorback) {
           local_mediaScreenShare.attr("style", "border:1px solid skyblue");
           $("#videosAttach").append(local_mediaScreenShare);
 
+          
+
+      /* ### Start: This for audio mute and unmute before SCREEN SHARE ### */
+      document.getElementById("audio_btn").addEventListener("click", function () {
+        console.log("audio_btn-->");
+        console.log(
+          "stream.getAudioTracks()[0].enabled: " +
+          stream.getAudioTracks()[0].enabled
+        );
+        stream.getAudioTracks()[0].enabled = !stream.getAudioTracks()[0]
+          .enabled;
+        var michrophoneVal = stream.getAudioTracks()[0].enabled;
+
+        if (michrophoneVal) {
+          document.getElementById("audioMute_btn").style.display = "inline";
+          document.getElementById("audioUnmute_btn").style.display = "none";
+        } else {
+          document.getElementById("audioMute_btn").style.display = "none";
+          document.getElementById("audioUnmute_btn").style.display = "inline";
+        }
+        console.log("stream.getAudioTracks()[0].enabled: " + stream.getAudioTracks()[0].enabled);
+        console.log("<--audio_btn");
+      });
+      /* ### End: This for audio mute and unmute before SCREEN SHARE ### */
+
           /* ### Start: Loader Start and Stop ### */
           $("#screenShareElem").on('loadstart', function (event) {
             $(this).addClass('background');

@@ -862,7 +862,15 @@ module.exports.pswdGenerate = function (req, res) {
 
             })
 
-        } else {
+        } 
+        else if(email == 'vc4allAdmin@gmail.com'){
+            responseData = {
+                status: true,
+                errorCode: 200,
+                message: "Process not successful"
+            };
+            res.status(200).send(responseData);
+        }else {
             responseData = {
                 status: false,
                 message: "Email id is not valid"

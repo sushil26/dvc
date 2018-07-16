@@ -2,10 +2,10 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
     console.log("chatCtrl==>");
     var userData = careatorSessionAuth.getAccess("userData");
     $scope.userId = userData.userId;
-    if(userData.chatStatus){
+    if (userData.chatStatus) {
         $scope.profileStatus = userData.chatStatus;
     }
-    else{
+    else {
         $scope.profileStatus = "Available";
     }
     console.log("userData: " + JSON.stringify(userData));
@@ -39,12 +39,37 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
     if (userData.chatRights == 'yes') {
         $scope.getChatGroupListById(localStorage.getItem("userId"));
     }
-   
-    $scope.statusUpdate =  function(status){
-        console.log("statusUpdate-->: "+status);
-        $scope.profileStatus = status;
+
+    $scope.statusUpdate = function (status) {
+        console.log("statusUpdate-->: " + status);
+
+        var id = userData.userId;
+        api = "https://norecruits.com/careator_profile/chatStatusUpdateById/" + id;
+        console.log("api: " + api);
+        var obj = {
+            "chatStatus": status
+        }
+        careatorHttpFactory.post(api, obj).then(function (data) {
+            console.log("data--" + JSON.stringify(data.data));
+            var checkStatus = careatorHttpFactory.dataValidation(data);
+            if (checkStatus) {
+                console.log("data.data.data: " + JSON.stringify(data.data.data));
+                $scope.profileStatus = status;
+                var userData = userData;
+                userData.chatStatus = status;
+                careatorSessionAuth.clearAccess("userData");
+                careatorSessionAuth.setAccess("userData");
+                var userData = careatorSessionAuth.getAccess("userData");
+                console.log("userData: " + JSON.stringify(userData));
+                console.log(data.data.message);
+            } else {
+                console.log("Sorry");
+                console.log(data.data.message);
+            }
+        })
+
     }
-    
+
     $scope.chatMenu = function () {
         console.log("chatMenu-->");
         console.log("screen.width: " + screen.width);
@@ -201,7 +226,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
             })
 
         } else {
-           
+
             $scope.chatFromNewWindow = "yes"; /* ### Note: identify chat is coming new window means, may be we dont have chat record in the chated list, so we have to show the reciever as well sender to refresh the all chated list ### */
             $scope.receiverData = {
                 "senderId": userData.userId,
@@ -240,7 +265,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         console.log("getAllChatRightEmp-->");
         $scope.allGroupAndIndividual = [];
         var id = userData.userId;
-       // console.log(" $scope.restrictedArray: " + JSON.stringify($scope.restrictedArray));
+        // console.log(" $scope.restrictedArray: " + JSON.stringify($scope.restrictedArray));
         // var restrictedUser = userData.restrictedTo;
         // console.log("restrictedUser: " + JSON.stringify(restrictedUser));
         // var splitRestrictedUser = restrictedUser.split(',');
@@ -249,9 +274,9 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         // var obj = {
         //     "restrictedTo": restrictedUsers
         // }
-       // console.log("obj: " + JSON.stringify(obj));
+        // console.log("obj: " + JSON.stringify(obj));
         //api = "https://norecruits.com/careator_getEmp/careator_getChatRightsAllemp/" + id; /* #### without restricted emp  #### */
-        api = "https://norecruits.com/careator_getEmp/careator_getChatRightsAllemp_byLoginId/"+id; /* #### without restricted emp  #### */
+        api = "https://norecruits.com/careator_getEmp/careator_getChatRightsAllemp_byLoginId/" + id; /* #### without restricted emp  #### */
         console.log("api: " + JSON.stringify(api));
         careatorHttpFactory.get(api).then(function (data) {
             console.log("data--" + JSON.stringify(data.data));
@@ -412,9 +437,9 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
     }
     $scope.getChatRecords();
 
-    $scope.getGroupDetails = function(id){
+    $scope.getGroupDetails = function (id) {
         console.log("getGroupDetails-->");
-        console.log("id: "+id);
+        console.log("id: " + id);
         var api = "https://norecruits.com/careator_getGroup/careator_getGroupById/" + id;
         console.log("api: " + api);
         careatorHttpFactory.get(api).then(function (data) {

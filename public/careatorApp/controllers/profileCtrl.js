@@ -62,8 +62,6 @@ careatorApp.controller('profileCtrl', function ($scope, $state, careatorHttpFact
                 // Create an object URL for the video stream and
                 // set it as src of our HTLM video element.
                 video.src = window.URL.createObjectURL(stream);
-
-                // Play the video element to start the stream.
                 video.play();
                 video.onplay = function () {
                     showVideo();

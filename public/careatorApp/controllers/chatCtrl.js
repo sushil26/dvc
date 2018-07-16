@@ -237,15 +237,15 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         // console.log("restrictedUser: " + JSON.stringify(restrictedUser));
         // var splitRestrictedUser = restrictedUser.split(',');
         // console.log("splitRestrictedUser: " + JSON.stringify(splitRestrictedUser));
-
-        var restrictedUsers = $scope.restrictedArray;
-        var obj = {
-            "restrictedTo": restrictedUsers
-        }
+        // var restrictedUsers = $scope.restrictedArray;
+        // var obj = {
+        //     "restrictedTo": restrictedUsers
+        // }
         console.log("obj: " + JSON.stringify(obj));
-        api = "https://norecruits.com/careator_getEmp/careator_getChatRightsAllemp/" + id; /* #### without restricted emp  #### */
+        //api = "https://norecruits.com/careator_getEmp/careator_getChatRightsAllemp/" + id; /* #### without restricted emp  #### */
+        api = "https://norecruits.com/careator_getEmp/careator_getChatRightsAllemp_byLoginId/"+id; /* #### without restricted emp  #### */
         console.log("api: " + JSON.stringify(api));
-        careatorHttpFactory.post(api, obj).then(function (data) {
+        careatorHttpFactory.get(api).then(function (data) {
             console.log("data--" + JSON.stringify(data.data));
             var checkStatus = careatorHttpFactory.dataValidation(data);
             if (checkStatus) {

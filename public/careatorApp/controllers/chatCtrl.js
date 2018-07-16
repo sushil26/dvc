@@ -664,8 +664,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
     })
     socket.on('comm_receiverStatusUpdate', function (data) { //update to client with new message;
         console.log("****comm_receiverStatusUpdate-->: " + JSON.stringify(data));
-        console.log("$scope.individualData.receiverId: " + $scope.individualData.receiverId);
-        if($scope.receiverData.receiverId==data.id){
+        if ($scope.receiverData.receiverId == data.id) {
             $scope.receiverChatStatus = data.status
         }
 

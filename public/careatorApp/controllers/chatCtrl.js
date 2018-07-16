@@ -54,7 +54,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
             var checkStatus = careatorHttpFactory.dataValidation(data);
             if (checkStatus) {
                 console.log("data.data.data: " + JSON.stringify(data.data.data));
-                $scope.profileStatus = status;
+                $scope.chatStatus = status;
                 var userData = {
                     "email": localStorage.getItem("email"),
                     "userName": localStorage.getItem("userName"),

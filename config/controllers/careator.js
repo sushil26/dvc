@@ -294,7 +294,7 @@ module.exports.getAdminObjectId = function (req, res) {
                 message: "Successfull",
                 data:admin[0]._id
             };
-            res.status(400).send(responseData);
+            res.status(200).send(responseData);
         }
     })
 }

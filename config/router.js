@@ -18,6 +18,7 @@ module.exports = function (app) {
     app.post('/careator/setCollection', careator.setCollection);
     app.get('/chatHistory/getHistory', careator.getHistory);
     app.get('/chatHistory/getHistoryByEmailId/:email', careator.getHistoryByEmailId);
+    app.post('/careator_profile/chatStatusUpdateById/:id', careator.chatStatusUpdateById);
     app.post('/careator/careatorMasterInsert', careator.careatorMasterInsert);
     app.post('/careator/careatorSingleUserInsert', careator.careatorSingleUserInsert);
     app.get('/careator/careator_getAllEmp', careator.careator_getAllEmp);
@@ -34,9 +35,9 @@ module.exports = function (app) {
     app.get('/careator/getVideoRights_emp', careator.getVideoRights_emp);
     app.get('/careator/careator_getChatVideo_emp', careator.careator_getChatVideo_emp);
     app.post('/careator/careator_chat_creteGroup', careator.careator_chat_creteGroup);
-    app.post('/careator_groupUpdate/groupUpdateById/:id',careator.groupUpdateById);
-    app.post('/careator_restrictedTo/restrictedTo/:id',careator.restrictedTo);
-    app.post('/careator_restrictedToSave/restrictedToSave/:id',careator.restrictedToSave);
+    app.post('/careator_groupUpdate/groupUpdateById/:id', careator.groupUpdateById);
+    app.post('/careator_restrictedTo/restrictedTo/:id', careator.restrictedTo);
+    app.post('/careator_restrictedToSave/restrictedToSave/:id', careator.restrictedToSave);
     app.post('/careator_removeRestrictedUserById/removeRestrictedUserById/:id', careator.removeRestrictedUserById);
     app.get('/careator_getChatsById/getChatsById/:id', careator.getChatsById);
     //app.post('/careator/careator_video_creteGroup', careator.careator_video_creteGroup);
@@ -50,8 +51,8 @@ module.exports = function (app) {
     app.get('/careator_groupTextRead/groupTextReadByGroupId/:group_id', careator.groupTextReadByGroupId);
     app.post('/careator_groupText/groupText', careator.groupText);
     app.get('/careator_groupTextRead/groupTextReadById/:sId/:rId', careator.groupTextReadById);
-    
-    
+
+
     app.post('/record/pswdGenerate', record.pswdGenerate);
     app.post('/record/pswdCheck', record.pswdCheck);
     app.post('/record/emailInvite', record.emailInvite);

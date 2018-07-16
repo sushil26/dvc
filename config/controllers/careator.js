@@ -992,6 +992,41 @@ module.exports.careator_getChatRightsAllemp = function (req, res) {
     }
 }
 
+module.exports.careator_getChatRightsAllemp_byLoginId = function (req, res) {
+    console.log("careator_getChatRightsAllemp_byLoginId-->: " + req.params.id);
+    var id = req.params.id;
+       
+    if (general.emptyCheck(id)) {
+        careatorMaster.find({"_id": { $ne: ObjectId(id)}, "chatRights": "yes"}).toArray(function (err, allEmp_chat) {
+            if (err) {
+                console.log("err: " + JSON.stringify(err));
+                response = {
+                    status: false,
+                    message: "Unsucessfully retrived data",
+                    data: err
+                };
+                res.status(400).send(responseData);
+            } else {
+                console.log("allEmp_chat: " + JSON.stringify(allEmp_chat));
+                response = {
+                    status: true,
+                    message: "Sucessfully retrived data",
+                    data: allEmp_chat
+                };
+                res.status(200).send(response);
+            }
+        })
+
+    } else {
+        console.log("Epty value found");
+        response = {
+            status: false,
+            message: "empty value found"
+        };
+        res.status(400).send(response);
+    }
+}
+
 module.exports.individualText = function (req, res) {
     console.log("individualText-->");
     var date = new Date();

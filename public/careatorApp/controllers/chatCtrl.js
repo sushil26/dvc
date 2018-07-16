@@ -33,12 +33,12 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
     if (userData.chatRights == 'yes') {
         $scope.getChatGroupListById(localStorage.getItem("userId"));
     }
-    // if (screen.width < 768){
-    //     $('#homeicon').css({
-    //         "display": "block"
-    //     });
-
-    // }
+   
+    $scope.statusUpdate =  function(status){
+        console.log("statusUpdate-->: "+status);
+        $scope.profileStatus = status;
+    }
+    
     $scope.chatMenu = function () {
         console.log("chatMenu-->");
         console.log("screen.width: " + screen.width);
@@ -195,6 +195,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
             })
 
         } else {
+           
             $scope.chatFromNewWindow = "yes"; /* ### Note: identify chat is coming new window means, may be we dont have chat record in the chated list, so we have to show the reciever as well sender to refresh the all chated list ### */
             $scope.receiverData = {
                 "senderId": userData.userId,

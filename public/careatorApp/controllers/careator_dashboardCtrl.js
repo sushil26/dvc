@@ -64,6 +64,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
         careatorHttpFactory.get(api).then(function (data) {
             console.log("data--" + JSON.stringify(data.data));
             var checkStatus = careatorHttpFactory.dataValidation(data);
+            console.log("checkStatus: "+checkStatus);
             if (checkStatus) {
                 $rootScope.adminId = data.data.data;
                console.log("$rootScope.adminId: "+$rootScope.adminId);

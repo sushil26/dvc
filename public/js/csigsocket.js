@@ -1310,35 +1310,7 @@ function setup_local_media(callback, errorback) {
           local_mediaScreenShare.attr("style", "border:1px solid skyblue");
           $("#videosAttach").append(local_mediaScreenShare);
 
-           /* ### Start: Video maximize and minimize ### */
-      document.getElementById("videoElem").addEventListener("click", function () {
-        console.log("screem size change request-->");
-        var videoElem = document.getElementById("videoElem");
-        var isFullScreen =
-          videoElem.requestFullscreen ||
-          videoElem.mozRequestFullScreen ||
-          videoElem.webkitRequestFullscreen;
-        console.log("isFullScreen: " + isFullScreen);
-        if (isFullScreen) {
-          console.log("SMall Screen");
-          if (videoElem.requestFullscreen) {
-            videoElem.requestFullscreen();
-          } else if (videoElem.mozRequestFullScreen) {
-            videoElem.mozRequestFullScreen();
-          } else if (videoElem.webkitRequestFullscreen) {
-            videoElem.webkitRequestFullscreen();
-          }
-        } else {
-          console.log("Big Screen");
-          if (videoElem.exitFullscreen) document.exitFullscreen();
-          else if (videoElem.webkitExitFullscreen)
-            videoElem.webkitExitFullscreen();
-          else if (videoElem.mozCancelFullScreen)
-            videoElem.mozCancelFullScreen();
-          else if (videoElem.msExitFullscreen) videoElem.msExitFullscreen();
-        }
-      });
-      /* ### End: Video maximize and minimize ### */
+          
 
       /* ### Start: This for audio mute and unmute before SCREEN SHARE ### */
       document.getElementById("audio_btn").addEventListener("click", function () {

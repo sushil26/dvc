@@ -61,11 +61,12 @@ module.exports = function (app) {
     app.get('/getRecord/getRecordVideo/:id', record.getRecordVideo);
     app.get('/record/getVideo/:id', record.getRecordVideo);
 
+    app.post('/vc/login4VC', user.login4VC);
     app.post('/vc/captureImgSend/:parentEmail/:studName', capture.captureImgSend);
     app.post('/vc/schoolLogo', image.upload);
     app.post('/vc/profilePicupload', image.profilePicupload);
     app.post('/vc/register4VC', user.register4VC);
-    app.post('/vc/login4VC', user.login4VC);
+    
     app.post('/vc/checkPassword/:id/:loginType', user.checkPassword);
     app.post('/vc/passwordUpdate/:id/:loginType', user.passwordUpdate);
     app.post('/vc/updateProfilePic/:id', user.profilePicUpdate);

@@ -43,7 +43,7 @@ module.exports = function (app) {
     app.get('/careator_getChatsById/getChatsById/:id', careator.getChatsById);
     //app.post('/careator/careator_video_creteGroup', careator.careator_video_creteGroup);
     //app.post('/careator/careator_chatVideo_creteGroup', careator.careator_chatVideo_creteGroup);
-    app.post('/vc/login4VC', user.login4VC);
+   
     app.get('/careator_chatGroupList/careator_getChatGroupListById/:id', careator.careator_getChatGroupListById);
     app.get('/careator_chatGroupList/careator_getChatGroupList', careator.careator_getChatGroupList);
     app.post('/careator_getEmp/careator_getChatRightsAllemp/:id', careator.careator_getChatRightsAllemp);
@@ -52,9 +52,10 @@ module.exports = function (app) {
     app.get('/careator_individualTextRead/individualTextReadById/:sId/:rId', careator.individualTextReadById);
     app.get('/careator_groupTextRead/groupTextReadByGroupId/:group_id', careator.groupTextReadByGroupId);
     app.post('/careator_groupText/groupText', careator.groupText);
-    app.get('/careator_groupTextRead/groupTextReadById/:sId/:rId', careator.groupTextReadById);
+    //app.get('/careator_groupTextRead/groupTextReadById/:sId/:rId', careator.groupTextReadById); /* Note: this api is not working */
    
 
+    app.post('/vc/login4VC', user.login4VC);
     app.post('/record/pswdGenerate', record.pswdGenerate);
     app.post('/record/pswdCheck', record.pswdCheck);
     app.post('/record/emailInvite', record.emailInvite);

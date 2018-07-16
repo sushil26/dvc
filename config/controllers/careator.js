@@ -1972,7 +1972,7 @@ module.exports.chatStatusUpdateById = function (req, res) {
         var findObj = {
             "_id": ObjectId(id)
         }
-        careatorChat.update(findObj,{$set:{chatStatus:req.body.chatStatus}}, function (err, chatStatusUpdated) {
+        careatorMaster.update(findObj,{$set:{chatStatus:req.body.chatStatus}}, function (err, chatStatusUpdated) {
             if (err) {
                 console.log("err: " + JSON.stringify(err));
                 response = {

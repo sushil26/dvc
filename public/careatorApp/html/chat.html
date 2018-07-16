@@ -248,16 +248,16 @@
                                             <br>
                                             <i style="color: greenyellow;    font-size: 7px;" class="fa fa-circle"></i>&nbsp;Online
                                         </a>
-                                        <a ng-if="selectedType=='individual_chats' && (individualData.senderId==undefined && individualData.receiverId==undefined)"
+                                        <a ng-if="selectedType=='individual_chats' && (individualData.senderId==undefined && individualData.receiverId==undefined) && (individualData.title!=undefined)"
                                             class="heading-status">
                                             <br>
                                             <i style="color: greenyellow;    font-size: 7px;" class="fa fa-circle"></i>&nbsp;Online
                                         </a>
-                                        <a ng-if="selectedType=='individual_chats' && individualData.senderId!=userId" class="heading-status">
+                                        <a ng-if="selectedType=='individual_chats' && individualData.senderId!=userId && (individualData.title!=undefined)" class="heading-status">
                                             <br>
                                             <i style="color: greenyellow;    font-size: 7px;" class="fa fa-circle"></i>&nbsp;Online
                                         </a>
-                                        <a ng-if="selectedType=='individual_chats' && individualData.receiverId!=userId" class="heading-status">
+                                        <a ng-if="selectedType=='individual_chats' && individualData.receiverId!=userId && (individualData.title!=undefined)" class="heading-status">
                                             <br>
                                             <i style="color: greenyellow;    font-size: 7px;" class="fa fa-circle"></i>&nbsp;Online
                                         </a>

@@ -32,9 +32,6 @@
                             opacity: 1;
                             transition: opacity 0.3s;
                         }
-
-
-
                         .tooltip:hover .tooltiptext {
                             visibility: visible;
                             opacity: 1;
@@ -57,27 +54,27 @@
                                             margin-top: -12px;
                                             margin-left: 55px;
                                             cursor: pointer;
-                                            color: yellowgreen;" class="tooltip">Available
+                                            color: yellowgreen;" class="tooltip">{{profileStatus}}
                                                 <div class="tooltiptext">
                                                     <span style="background:white;
                                                     padding: 5px;
-                                                    border-radius: 5px;line-height: 2.5; color: yellowgreen;">Available</span>
+                                                    border-radius: 5px;line-height: 2.5; color: yellowgreen;" ng-click="statusUpdate('Available')">Available</span>
 
                                                     <span style="background:white;
                                                     padding: 5px;
-                                                    border-radius: 5px;line-height: 2.5;color:goldenrod;">Buzy</span>
+                                                    border-radius: 5px;line-height: 2.5;color:goldenrod;" ng-click="statusUpdate('Buzy')">Buzy</span>
                                                     
                                                     <span style="background:white;
                                                     padding: 5px;
-                                                    border-radius: 5px;line-height: 2.5;color: dimgray;">Hide</span>
+                                                    border-radius: 5px;line-height: 2.5;color: dimgray;" ng-click="statusUpdate('Hide')">Hide</span>
                                                     <span style="background:white;
                                                     padding: 5px;
-                                                    border-radius: 5px;line-height: 2.5;color: black;">Sleeping</span>
+                                                    border-radius: 5px;line-height: 2.5;color: black;" ng-click="statusUpdate('Sleeping')">Sleeping</span>
 
                                         
                                                     <span style="background:white;
                                                     padding: 5px;
-                                                    border-radius: 5px;line-height: 2.5; color: darkred;">Custom</span>
+                                                    border-radius: 5px;line-height: 2.5; color: darkred;" ng-click="statusUpdate('Custom')">Custom</span>
 
                                                 </div>
 

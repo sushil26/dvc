@@ -51,17 +51,13 @@
                                             <img alt="User Pic" ng-if="chatStatus=='Available'" style="max-width: 50px;margin-top: -10px;border: 2px solid yellowgreen;"
                                                 src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"
                                                 id="profile-image1" class="img-circle img-responsive">
-                                            <img alt="User Pic" ng-if="chatStatus=='Buzy'" style="max-width: 50px;margin-top: -10px;border: 2px solid goldenrod;"
-                                                src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"
+                                            <img alt="User Pic" ng-if="chatStatus=='Buzy'" style="max-width: 50px;margin-top: -10px;border: 2px solid goldenrod;" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"
                                                 id="profile-image1" class="img-circle img-responsive">
-                                            <img alt="User Pic" ng-if="chatStatus=='Hide'" style="max-width: 50px;margin-top: -10px;border: 2px solid dimgray;"
-                                                src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"
+                                            <img alt="User Pic" ng-if="chatStatus=='Hide'" style="max-width: 50px;margin-top: -10px;border: 2px solid dimgray;" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"
                                                 id="profile-image1" class="img-circle img-responsive">
-                                            <img alt="User Pic" ng-if="chatStatus=='Sleeping'" style="max-width: 50px;margin-top: -10px;border: 2px solid black;"
-                                                src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"
+                                            <img alt="User Pic" ng-if="chatStatus=='Sleeping'" style="max-width: 50px;margin-top: -10px;border: 2px solid black;" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"
                                                 id="profile-image1" class="img-circle img-responsive">
-                                            <img alt="User Pic" ng-if="chatStatus=='Custom'" style="max-width: 50px;margin-top: -10px;border: 2px solid #FFC107;"
-                                                src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"
+                                            <img alt="User Pic" ng-if="chatStatus=='Custom'" style="max-width: 50px;margin-top: -10px;border: 2px solid #FFC107;" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"
                                                 id="profile-image1" class="img-circle img-responsive">
 
                                             <h5 style="margin-top: -30px;
@@ -243,16 +239,25 @@
                                         </a>
 
                                         <!--For Status -->
-                                        <a ng-if="selectedType=='individual_chats' && (individualData.senderId==undefined && individualData.receiverId==undefined)"
+                                        <!-- <a class="heading-status">
+                                            <br>
+                                            <i style="color: greenyellow;    font-size: 7px;" class="fa fa-circle"></i>&nbsp;Online
+                                        </a> -->
+                                        <a ng-if="selectedType=='individual_chats' && (individualData.title==undefined)"
                                             class="heading-status">
                                             <br>
                                             <i style="color: greenyellow;    font-size: 7px;" class="fa fa-circle"></i>&nbsp;Online
                                         </a>
-                                        <a ng-if="selectedType=='individual_chats' && individualData.senderId!=userId" class="heading-status">
+                                        <a ng-if="selectedType=='individual_chats' && (individualData.senderId==undefined && individualData.receiverId==undefined) && (individualData.title!=undefined)"
+                                            class="heading-status">
                                             <br>
                                             <i style="color: greenyellow;    font-size: 7px;" class="fa fa-circle"></i>&nbsp;Online
                                         </a>
-                                        <a ng-if="selectedType=='individual_chats' && individualData.receiverId!=userId" class="heading-status">
+                                        <a ng-if="selectedType=='individual_chats' && individualData.senderId!=userId && (individualData.title!=undefined)" class="heading-status">
+                                            <br>
+                                            <i style="color: greenyellow;    font-size: 7px;" class="fa fa-circle"></i>&nbsp;Online
+                                        </a>
+                                        <a ng-if="selectedType=='individual_chats' && individualData.receiverId!=userId && (individualData.title!=undefined)" class="heading-status">
                                             <br>
                                             <i style="color: greenyellow;    font-size: 7px;" class="fa fa-circle"></i>&nbsp;Online
                                         </a>

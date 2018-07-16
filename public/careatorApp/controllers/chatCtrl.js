@@ -291,12 +291,12 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
             var checkStatus = careatorHttpFactory.dataValidation(data);
             if (checkStatus) {
                 var receiverData = data.data.data;
-                console.log("receiverData: "+JSON.stringify(receiverData));
-                console.log("data.data.message: "+data.data.message);
+                console.log("receiverData: " + JSON.stringify(receiverData));
+                console.log("data.data.message: " + data.data.message);
             }
             else {
                 console.log("Sorry");
-                console.log("data.data.message: "+data.data.message);
+                console.log("data.data.message: " + data.data.message);
             }
         })
     }

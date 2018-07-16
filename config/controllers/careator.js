@@ -381,6 +381,7 @@ module.exports.careatorMasterInsertValidate = function (data, callback) {
         "videoRights": data.VideoRights,
         "chatRights": data.ChatRights,
         "status": "active",
+        "chatStatus": "Available",
         "restrictedTo": []
     }
     careatorMaster.find(findEmpId).toArray(function (err, findData) {

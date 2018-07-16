@@ -1,6 +1,7 @@
 careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $window, careatorHttpFactory, careatorSessionAuth) {
     console.log("chatCtrl==>");
     var userData = careatorSessionAuth.getAccess("userData");
+    $scope.loginUserName = userData.userName;
     $scope.userId = userData.userId;
     if (userData.chatStatus) {
         $scope.chatStatus = userData.chatStatus;
@@ -663,8 +664,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
     })
     socket.on('comm_receiverStatusUpdate', function (data) { //update to client with new message;
         console.log("****comm_receiverStatusUpdate-->: " + JSON.stringify(data));
-        console.log("$scope.individualData._id: " + $scope.individualData._id);
-        if($scope.individualData._id==data.id){
+        if ($scope.receiverData.receiverId == data.id) {
             $scope.receiverChatStatus = data.status
         }
 

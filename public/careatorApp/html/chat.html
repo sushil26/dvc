@@ -61,7 +61,7 @@
                                                 id="profile-image1" class="img-circle img-responsive">
 
                                             <h5 style="margin-top: -30px;
-                                                margin-left: 55px;">Sushil Kumar</h5>
+                                                margin-left: 55px;">{{loginUserName}}</h5>
                                             <div class="tooltip">
                                                 <span ng-if="chatStatus=='Available'" style="color: yellowgreen;">{{chatStatus}}</span>
                                                 <span ng-if="chatStatus=='Buzy'" style="color: goldenrod;">{{chatStatus}}</span>
@@ -172,11 +172,14 @@
                                     <div class="row compose-sideBar">
                                         <div class="row sideBar-body" ng-repeat="record in allGroupAndIndividual">
                                             <div class="col-sm-3 col-xs-3 sideBar-avatar">
-                                                <div class="avatar-icon" ng-if="record.groupName!==undefined">
+                                                <div class="avatar-icon" ng-if="record.groupName!==undefined && record.email!='vc4allAdmin@gmail.com'">
                                                     <img src="./css/group.png">
                                                 </div>
-                                                <div class="avatar-icon" ng-if="record.groupName==undefined">
+                                                <div class="avatar-icon" ng-if="record.groupName==undefined && record.email!='vc4allAdmin@gmail.com'">
                                                     <img src="./css/user.png">
+                                                </div>
+                                                <div class="avatar-icon" ng-if="record.groupName==undefined && record.email=='vc4allAdmin@gmail.com'">
+                                                    <img src="./css/Admin.png">
                                                 </div>
                                             </div>
                                             <div class="col-sm-9 col-xs-9 sideBar-main" ng-if="record.groupName!==undefined">

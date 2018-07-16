@@ -59,7 +59,7 @@ if (stuff.length > 5) {
     localStorage.removeItem("redirctRequired");
     window.location.href = "/careator"
   }
-  if (localStorage.getItem("careatorEmail") && localStorage.getItem("sessionPassword") && (localStorage.getItem("videoRights")=='yes')) {
+  if (localStorage.getItem("careatorEmail") && localStorage.getItem("sessionPassword") && (localStorage.getItem("videoRights") == 'yes')) {
     console.log("Hoster session check");
     var password = localStorage.getItem("sessionPassword");
     var careatorEmail = localStorage.getItem("careatorEmail");
@@ -240,6 +240,9 @@ function checkPassword() {
         if (data.data.chatRights == 'yes') {
           localStorage.setItem("chatRights", 'yes');
           document.getElementById("chatConfStart").style.display = "inline";
+        }
+        if(data.data.chatRights){
+          localStorage.setItem("chatStatus", data.data.chatStatus);
         }
         if (data.data.restrictedTo) {
           console.log("data.data.restrictedTo: " + JSON.stringify(data.data.restrictedTo));
@@ -427,7 +430,7 @@ function disconnecSession() {
 
     // window.location.href = "https://norecruits.com";
   }
-  else{
+  else {
     window.location.href = "https://norecruits.com";
   }
   // userName = null;
@@ -623,7 +626,7 @@ signaling_socket.on("disconnect", function () {
   for (peer_id in peer_media_elements) {
     peer_media_elements[peer_id].remove();
     peer_userName_elements[peer_id].remove();
-   
+
     // peer_media_sselements[peer_id].remove();
   }
   for (peer_id in peers) {
@@ -633,7 +636,7 @@ signaling_socket.on("disconnect", function () {
   peers = {};
   peer_media_elements = {};
   peer_userName_elements = {};
- 
+
   // peer_media_sselements = {};
   console.log("<--signaling_socket.on disconnect");
 });

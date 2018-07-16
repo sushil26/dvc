@@ -48,7 +48,20 @@
                                     <div class="row heading">
                                         <div class="form-group has-feedback">
 
-                                            <img alt="User Pic" style="max-width: 50px;margin-top: -10px;" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"
+                                            <img alt="User Pic" ng-if="chatStatus=='Available'" style="max-width: 50px;margin-top: -10px;border: 3px solid yellowgreen;"
+                                                src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"
+                                                id="profile-image1" class="img-circle img-responsive">
+                                            <img alt="User Pic" ng-if="chatStatus=='Buzy'" style="max-width: 50px;margin-top: -10px;border: 3px solid goldenrod;"
+                                                src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"
+                                                id="profile-image1" class="img-circle img-responsive">
+                                            <img alt="User Pic" ng-if="chatStatus=='Hide'" style="max-width: 50px;margin-top: -10px;border: 3px solid dimgray;"
+                                                src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"
+                                                id="profile-image1" class="img-circle img-responsive">
+                                            <img alt="User Pic" ng-if="chatStatus=='Sleeping'" style="max-width: 50px;margin-top: -10px;border: 3px solid black;"
+                                                src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"
+                                                id="profile-image1" class="img-circle img-responsive">
+                                            <img alt="User Pic" ng-if="chatStatus=='Custom'" style="max-width: 50px;margin-top: -10px;border: 3px solid #FFC107;"
+                                                src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"
                                                 id="profile-image1" class="img-circle img-responsive">
 
                                             <h5 style="margin-top: -30px;

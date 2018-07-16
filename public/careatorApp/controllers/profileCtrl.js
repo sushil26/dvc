@@ -66,6 +66,14 @@ $scope.profilpic=function(){
                 video.onplay = function () {
                     showVideo();
                 };
+                document.getElementById("").addEventListener("click", function () {
+                    console.log("close webcam ->");
+                    var track = stream.getTracks()[0];
+track.stop();
+
+                })
+
+                })
 
             },
             // Error Callback

@@ -241,7 +241,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         // var obj = {
         //     "restrictedTo": restrictedUsers
         // }
-        console.log("obj: " + JSON.stringify(obj));
+       // console.log("obj: " + JSON.stringify(obj));
         //api = "https://norecruits.com/careator_getEmp/careator_getChatRightsAllemp/" + id; /* #### without restricted emp  #### */
         api = "https://norecruits.com/careator_getEmp/careator_getChatRightsAllemp_byLoginId/"+id; /* #### without restricted emp  #### */
         console.log("api: " + JSON.stringify(api));

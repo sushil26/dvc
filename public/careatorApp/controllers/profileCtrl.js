@@ -27,7 +27,7 @@ careatorApp.controller('profileCtrl', function ($scope, $state, careatorHttpFact
     $scope.getChatGroupListById();
 
 
-
+$scope.profilpic=function(){
     ///////// take pic/////////////////
     // References to all the element we will need.
     var video = document.querySelector('#camera-stream'),
@@ -189,5 +189,5 @@ careatorApp.controller('profileCtrl', function ($scope, $state, careatorHttpFact
         error_message.classList.remove("visible");
     }
 
-
+}
 })

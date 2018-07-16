@@ -3715,14 +3715,14 @@ ul.inbox-pagination li {
 
 .page-404 {
   position: relative;
-  width: 350px;
-  height: 200px;
-  margin: 100px auto;
-  text-align: center;
+    /* width: 350px; */
+    /* height: 200px; */
+    /* margin: 100px auto; */
+    text-align: center;
 }
 
 .text-404 {
-  font-size: 138px;
+  font-size: 60px;
   background: #e9e3dd;
   background-image: url("https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQTdWeWNteABnbzguiXSBxmfc8Z8nh_HHoWoK35QL81x4HnpVmgvQ");
   background-repeat: no-repeat;

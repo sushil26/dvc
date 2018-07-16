@@ -10,9 +10,11 @@
                     <link rel="stylesheet" href="./css/newChat.css" />
                     <style>
                         .tooltip {
-
+                            font-size: 10px;
+                            margin-top: -12px;
+                            margin-left: 55px;
+                            cursor: pointer;
                             display: inline-block;
-
                             opacity: 1 !important;
                         }
 
@@ -32,6 +34,7 @@
                             opacity: 1;
                             transition: opacity 0.3s;
                         }
+
                         .tooltip:hover .tooltiptext {
                             visibility: visible;
                             opacity: 1;
@@ -50,11 +53,8 @@
 
                                             <h5 style="margin-top: -30px;
                                                 margin-left: 55px;">Sushil Kumar</h5>
-                                            <div style="font-size: 10px;
-                                            margin-top: -12px;
-                                            margin-left: 55px;
-                                            cursor: pointer;
-                                            color: yellowgreen;" class="tooltip">{{profileStatus}}
+                                            <div style="color: yellowgreen;" class="tooltip">
+                                                <span>{{chatStatus}}</span>
                                                 <div class="tooltiptext">
                                                     <span style="background:white;
                                                     padding: 5px;
@@ -63,7 +63,7 @@
                                                     <span style="background:white;
                                                     padding: 5px;
                                                     border-radius: 5px;line-height: 2.5;color:goldenrod;" ng-click="statusUpdate('Buzy')">Buzy</span>
-                                                    
+
                                                     <span style="background:white;
                                                     padding: 5px;
                                                     border-radius: 5px;line-height: 2.5;color: dimgray;" ng-click="statusUpdate('Hide')">Hide</span>
@@ -71,7 +71,7 @@
                                                     padding: 5px;
                                                     border-radius: 5px;line-height: 2.5;color: black;" ng-click="statusUpdate('Sleeping')">Sleeping</span>
 
-                                        
+
                                                     <span style="background:white;
                                                     padding: 5px;
                                                     border-radius: 5px;line-height: 2.5; color: darkred;" ng-click="statusUpdate('Custom')">Custom</span>

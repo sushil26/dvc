@@ -52,7 +52,7 @@ module.exports = function (app) {
     app.get('/careator_individualTextRead/individualTextReadById/:sId/:rId', careator.individualTextReadById);
     app.get('/careator_groupTextRead/groupTextReadByGroupId/:group_id', careator.groupTextReadByGroupId);
     app.post('/careator_groupText/groupText', careator.groupText);
-    //app.get('/careator_groupTextRead/groupTextReadById/:sId/:rId', careator.groupTextReadById); /* Note: this api is not working */
+    //app.get('/careator_groupTextRead/groupTextReadById/:sId/:rId', careator.groupTextReadById); /* Note: this api methos is not defining on the careator.js */
    
 
     app.post('/vc/login4VC', user.login4VC);

@@ -190,7 +190,7 @@ function sendEmail() {
     success: function (data) {
       console.log("data: " + JSON.stringify(data));
       //alert(data.message);
-      if (data.message == 'Successfully mail sent') {
+      if (data.message == 'Successfully mail sent' || data.message == "Successfully get admin login") {
         console.log("Successfully mail sent");
         localStorage.setItem("careatorEmail", careatorEmail);
         localStorage.removeItem("sessionPassword")

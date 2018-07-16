@@ -12,7 +12,7 @@ var id = userData.userId;
             console.log("data--" + JSON.stringify(data.data));
             var checkStatus = careatorHttpFactory.dataValidation(data);
             if (checkStatus) {
-                $scope.allGroup = data.data.data[0];
+                $scope.allGroup = data.data.data;
                 console.log("allGroup: " + JSON.stringify($scope.allGroup));
                 console.log(data.data.message);
 

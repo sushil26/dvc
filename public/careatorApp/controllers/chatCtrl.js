@@ -54,7 +54,31 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
             var checkStatus = careatorHttpFactory.dataValidation(data);
             if (checkStatus) {
                 console.log("data.data.data: " + JSON.stringify(data.data.data));
+<<<<<<< HEAD
+                $scope.profileStatus = status;
+                var userData = {
+                    "email": localStorage.getItem("email"),
+                    "userName": localStorage.getItem("userName"),
+                    "empId": localStorage.getItem("empId"),
+                    "userId": localStorage.getItem("userId"),
+                    "restrictedTo": localStorage.getItem("restrictedTo"),
+                    "chatStatus": status
+                }
+                if (localStorage.getItem("videoRights") == 'yes') {
+                    userData.videoRights = "yes";
+                }
+                if (localStorage.getItem("chatRights") == 'yes') {
+                    userData.chatRights = "yes";
+                    // $scope.getChatGroupListById(localStorage.getItem("userId"));
+                }
+                careatorSessionAuth.clearAccess("userData");
+                careatorSessionAuth.setAccess(userData);
+                var userData = careatorSessionAuth.getAccess("userData");
+                console.log("***userData: " + JSON.stringify(userData));
+
+=======
                 $scope.chatStatus = status;
+>>>>>>> 20857aefbcb8d671e518a019b420772231122b58
                 // var userData = userData;
                 // userData.chatStatus = status;
                 // careatorSessionAuth.clearAccess("userData");
@@ -326,7 +350,6 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                     "receiverName": $scope.receiverData.receiverName,
                     "message": $scope.typedMessage
                 }
-
                 console.log("obj: " + JSON.stringify(obj));
                 careatorHttpFactory.post(api, obj).then(function (data) {
                     console.log("data--" + JSON.stringify(data.data));
@@ -550,6 +573,9 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                     if (localStorage.getItem("chatRights") == 'yes') {
                         userData.chatRights = "yes";
                         // $scope.getChatGroupListById(localStorage.getItem("userId"));
+                    }
+                    if (localStorage.getItem("chatStatus")) {
+                        userData.chatStatus = localStorage.getItem("chatStatus");
                     }
 
                     console.log("userData.restrictedTo: " + JSON.stringify(userData.restrictedTo));

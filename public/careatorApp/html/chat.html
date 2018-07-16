@@ -238,21 +238,39 @@
                                         <a ng-if="selectedType=='individual_chats' && individualData.receiverId!=userId" class="heading-name-meta">{{individualData.receiverName}}
                                         </a>
 
-                                        <!--For Status -->
-                                        <!-- <a class="heading-status">
-                                            <br>
-                                            <i style="color: greenyellow;    font-size: 7px;" class="fa fa-circle"></i>&nbsp;Online
-                                        </a> -->
-                                        <a ng-if="selectedType=='individual_chats' && (individualData.title==undefined)"
-                                            class="heading-status">
+
+                                        <span ng-if="chatStatus=='Available'" style="color: yellowgreen;">{{chatStatus}}</span>
+                                        <span ng-if="chatStatus=='Buzy'" style="color: goldenrod;">{{chatStatus}}</span>
+                                        <span ng-if="chatStatus=='Hide'" style="color: dimgray;">{{chatStatus}}</span>
+                                        <span ng-if="chatStatus=='Sleeping'" style="color: black;">{{chatStatus}}</span>
+                                        <span ng-if="chatStatus=='Custom'" style="color: #FFC107;">{{chatStatus}}</span>
+
+                                        <a ng-if="selectedType=='individual_chats' &&  receiverChatStatus=='Available'" class="heading-status">
                                             <br>
                                             <i style="color: greenyellow;    font-size: 7px;" class="fa fa-circle"></i>&nbsp;{{receiverChatStatus}}
                                         </a>
-                                        <!-- <a ng-if="selectedType=='individual_chats' && (individualData.senderId==undefined && individualData.receiverId==undefined) && (individualData.title!=undefined)"
-                                            class="heading-status">
+                                        <a ng-if="selectedType=='individual_chats' &&  receiverChatStatus=='Buzy'" class="heading-status">
                                             <br>
-                                            <i style="color: greenyellow;    font-size: 7px;" class="fa fa-circle"></i>&nbsp;Online
-                                        </a> -->
+                                            <i style="color: goldenrod;    font-size: 7px;" class="fa fa-circle"></i>&nbsp;{{receiverChatStatus}}
+                                        </a>
+                                        <a ng-if="selectedType=='individual_chats' &&  receiverChatStatus=='Hide'" class="heading-status">
+                                            <br>
+                                            <i style="color: dimgray;    font-size: 7px;" class="fa fa-circle"></i>&nbsp;{{receiverChatStatus}}
+                                        </a>
+                                        <a ng-if="selectedType=='individual_chats' &&  receiverChatStatus=='Sleeping'" class="heading-status">
+                                            <br>
+                                            <i style="color: black;    font-size: 7px;" class="fa fa-circle"></i>&nbsp;{{receiverChatStatus}}
+                                        </a>
+                                        <a ng-if="selectedType=='individual_chats' &&  receiverChatStatus=='Custom'" class="heading-status">
+                                            <br>
+                                            <i style="color: FFC107;    font-size: 7px;" class="fa fa-circle"></i>&nbsp;{{receiverChatStatus}}
+                                        </a>
+
+                                        <!-- <a ng-if="selectedType=='individual_chats' && (individualData.title==undefined)" class="heading-status">
+                                            <br>
+                                            <i style="color: greenyellow;    font-size: 7px;" class="fa fa-circle"></i>&nbsp;{{receiverChatStatus}}
+                                        </a>
+
                                         <a ng-if="selectedType=='individual_chats' && individualData.senderId!=userId && (individualData.title!=undefined)" class="heading-status">
                                             <br>
                                             <i style="color: greenyellow;    font-size: 7px;" class="fa fa-circle"></i>&nbsp;{{receiverChatStatus}}
@@ -260,13 +278,11 @@
                                         <a ng-if="selectedType=='individual_chats' && individualData.receiverId!=userId && (individualData.title!=undefined)" class="heading-status">
                                             <br>
                                             <i style="color: greenyellow;    font-size: 7px;" class="fa fa-circle"></i>&nbsp;{{receiverChatStatus}}
-                                        </a>
+                                        </a> -->
                                         <!--For Status End -->
 
                                     </div>
-                                    <!-- <div class="col-sm-1 col-xs-1  heading-dot pull-right">
-                                        <i class="fa fa-ellipsis-v fa-2x  pull-right" aria-hidden="true"></i>
-                                    </div> -->
+
                                     <div class="col-sm-1 col-xs-1 pull-right" id="homeicon" ng-click="chatMenu()" style="margin-right: 20px; margin-top:5px;">
                                         <i style="font-size:25px; cursor: pointer;" class="fa fa-home"></i>
                                     </div>

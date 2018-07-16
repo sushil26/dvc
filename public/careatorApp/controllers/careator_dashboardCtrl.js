@@ -64,9 +64,10 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
         careatorHttpFactory.get(api).then(function (data) {
             console.log("data--" + JSON.stringify(data.data));
             var checkStatus = careatorHttpFactory.dataValidation(data);
+            console.log("checkStatus: "+checkStatus);
             if (checkStatus) {
-                $scope.adminBasicData = data.data.data;
-                console.log("allGroup: " + JSON.stringify($scope.allGroup));
+                $rootScope.adminId = data.data.data;
+               console.log("$rootScope.adminId: "+$rootScope.adminId);
                 console.log(data.data.message);
 
             } else {

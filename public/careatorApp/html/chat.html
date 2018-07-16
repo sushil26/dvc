@@ -172,10 +172,10 @@
                                     <div class="row compose-sideBar">
                                         <div class="row sideBar-body" ng-repeat="record in allGroupAndIndividual">
                                             <div class="col-sm-3 col-xs-3 sideBar-avatar">
-                                                <div class="avatar-icon" ng-if="record.groupName!==undefined">
+                                                <div class="avatar-icon" ng-if="record.groupName!==undefined && record.email!='vc4allAdmin@gmail.com'">
                                                     <img src="./css/group.png">
                                                 </div>
-                                                <div class="avatar-icon" ng-if="record.groupName==undefined">
+                                                <div class="avatar-icon" ng-if="record.groupName==undefined && record.email!='vc4allAdmin@gmail.com'">
                                                     <img src="./css/user.png">
                                                 </div>
                                                 <div class="avatar-icon" ng-if="record.groupName==undefined && record.email=='vc4allAdmin@gmail.com'">

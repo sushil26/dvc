@@ -41,7 +41,7 @@
 
                                     </td>
                                     <td style="color:#00b1b1;">
-                                            {{userData.userName}}
+                                        {{userData.userName}}
                                     </td>
                                 </tr>
                                 <tr>
@@ -51,7 +51,7 @@
 
                                     </td>
                                     <td style="color:#00b1b1;">
-                                        Sushil.k@careator.com
+                                        {{userData.email}}
                                     </td>
                                 </tr>
                                 <tr>
@@ -61,17 +61,35 @@
 
                                     </td>
                                     <td style="color:#00b1b1;">
-                                        CTPL-7809
+                                        {{userData.empId}}
                                     </td>
                                 </tr>
-                                <tr>
+
+                                <tr ng-if="userData.videoRights=='yes' && userData.chatRights=='yes'">
                                     <td>
                                         <div style="float: right;">
                                             Acess : </div>
-
                                     </td>
                                     <td style="color:#00b1b1;">
                                         Chat , Video
+                                    </td>
+                                </tr>
+                                <tr ng-if="userData.videoRights=='yes' && userData.chatRights=='no'">
+                                    <td>
+                                        <div style="float: right;">
+                                            Acess : </div>
+                                    </td>
+                                    <td style="color:#00b1b1;">
+                                      Video
+                                    </td>
+                                </tr>
+                                <tr ng-if="userData.videoRights=='no' && userData.chatRights=='yes'">
+                                    <td>
+                                        <div style="float: right;">
+                                            Acess : </div>
+                                    </td>
+                                    <td style="color:#00b1b1;">
+                                        Chat
                                     </td>
                                 </tr>
                                 <tr>

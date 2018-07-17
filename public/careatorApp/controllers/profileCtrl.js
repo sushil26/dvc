@@ -36,7 +36,7 @@ careatorApp.controller('profileCtrl', function ($scope, $state, careatorHttpFact
         console.log("schoolLogoStorage-->");
         /* #####  Start Upload File ###### */
         console.log("$scope.file: " + $scope.file);
-        console.log("$scope.file: " + $scope.file.upload);
+       // console.log("$scope.file: " + $scope.file.upload);
         if ($scope.myImage.resBlob) {
             var uploadURL = $scope.propertyJson.VC_schoolLogo;
             console.log("uploadURL: " + uploadURL);

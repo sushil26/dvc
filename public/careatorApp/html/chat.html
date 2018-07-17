@@ -104,8 +104,6 @@
                                                 </div>
 
                                             </div>
-
-
                                             <span class="heading-compose" style=" border-radius: 10px;
                                                 float: right;
                                                 background: white;
@@ -114,8 +112,6 @@
                                                 color: black;
                                                 padding: 5px;
                                                 cursor: pointer;" ng-click="getAllChatRightEmp()">New Chat</span>
-
-
                                         </div>
                                     </div>
                                     <div class="row sideBar">
@@ -136,12 +132,6 @@
                                                 <div class="avatar-icon" ng-if="record.groupName==undefined && (record.profilePicPath!=undefined)">
                                                     <img ng-src="{{record.profilePicPath}}">
                                                 </div>
-                                                <!-- <div class="avatar-icon" ng-if="record.groupName==undefined && (record.receiverId!=adminId && record.senderId != adminId) && record.profilePicPath">
-                                                    <img ng-src="{{record.profilePicPath}}">
-                                                </div> 
-                                                    <div class="avatar-icon" ng-if="record.groupName==undefined && (record.receiverId==adminId || record.senderId == adminId) && record.profilePicPath">
-                                                    <img ng-src="{{record.profilePicPath}}">
-                                                </div> -->
                                                 <!-- ###### End: If profile pic path is there  ##### -->
 
                                             </div>
@@ -259,7 +249,13 @@
                                         <div class="avatar-icon" ng-if="selectedType =='group'">
                                             <img src="./css/group.png">
                                         </div>
-                                        <div class="avatar-icon" ng-if="selectedType =='individual_chats'">
+                                        <div class="avatar-icon" ng-if="selectedType =='individual_chats' && chatListSection == 'chatWindow' (receiverProfilePicPath==undefined)">
+                                            <img src="./css/user.png">
+                                        </div>
+                                        <div class="avatar-icon" ng-if="selectedType =='individual_chats' && chatListSection == 'chatWindow' && (receiverProfilePicPath!=undefined)">
+                                            <img src="{{receiverProfilePicPath}}">
+                                        </div>
+                                        <div class="avatar-icon" ng-if="selectedType =='individual_chats' && chatListSection == 'newChatWindow'">
                                             <img src="./css/user.png">
                                         </div>
 

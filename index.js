@@ -351,10 +351,14 @@ io.sockets.on('connection', function (socket) {
             }
             console.log("queryObj: " + JSON.stringify(queryObj));
             var obj = {
-                "email": data.email,
+               
                 'message': data.message,
                 'userName': data.userName,
                 'textTime': date
+            }
+            if(data.email)
+            {
+                obj.email= data.email;
             }
             console.log("obj: " + JSON.stringify(obj));
             console.log("chatHistory: " + chatHistory);

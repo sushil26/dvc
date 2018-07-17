@@ -105,7 +105,7 @@ careatorApp.factory('careatorHttpFactory', function ($http, $q, $rootScope) {
         },/* #### Note:Start: Image upload into directory  #### */
         imageUpload: function (uploadUrl, file) { 
             var dfd = $q.defer();
-            var postUrl = $rootScope.propertyJson.BASE_URL + uploadUrl;
+            var postUrl = uploadUrl;
             var fd = new FormData();
             console.log("file: " + file);
             // console.log("file: " + file.upload);

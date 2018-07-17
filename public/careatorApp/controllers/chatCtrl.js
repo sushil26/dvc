@@ -765,12 +765,13 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
 
 
 
-    //////////emoji/////////////////////////////
-    // $(document).ready(function () {
-    //     $("#comment").emojioneArea({
-    //         pickerPosition: "top",
-    //         tonesStyle: "bullet"
-    //     });
+    ////////emoji/////////////////////////////
+    $(document).ready(function () {
+        $("#comment").emojioneArea({
+            pickerPosition: "top",
+            tonesStyle: "bullet"
+        });
+    })
     //     $("#emojionearea2").emojioneArea({
     //         pickerPosition: "bottom",
     //         tonesStyle: "radio"

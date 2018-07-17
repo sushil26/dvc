@@ -122,10 +122,10 @@
                                         <div class="row sideBar-body" ng-repeat="record in chatedGroup_records">
                                             <div class="col-sm-3 col-xs-3 sideBar-avatar" style="font-size: 35px;">
                                                 <!-- ###### Start: If profile pic path is not there  ##### -->
-                                                <div class="avatar-icon" ng-if="record.groupName==undefined && (record.receiverId!=adminId && record.senderId != adminId)">
+                                                <div class="avatar-icon" ng-if="record.groupName==undefined && (record.receiverId!=adminId && record.senderId != adminId) &&  (record.profilePicPath==undefined)">
                                                     <img src="./css/user.png">
                                                 </div>
-                                                <div class="avatar-icon" ng-if="record.groupName==undefined && (record.receiverId==adminId || record.senderId == adminId)">
+                                                <div class="avatar-icon" ng-if="record.groupName==undefined && (record.receiverId==adminId || record.senderId == adminId) && (record.profilePicPath==undefined)">
                                                     <img src="./css/Admin.png">
                                                 </div>
                                                 <div class="avatar-icon" ng-if="record.groupName!==undefined">
@@ -133,7 +133,7 @@
                                                 </div>
                                                 <!-- ###### End: If profile pic path is not there  ##### -->
                                                 <!-- ###### Start: If profile pic path is there  ##### -->
-                                                <div class="avatar-icon" ng-if="record.groupName==undefined && record.profilePicPath">
+                                                <div class="avatar-icon" ng-if="record.groupName==undefined && (record.profilePicPath!=undefined)">
                                                     <img ng-src="{{record.profilePicPath}}">
                                                 </div>
                                                 <!-- <div class="avatar-icon" ng-if="record.groupName==undefined && (record.receiverId!=adminId && record.senderId != adminId) && record.profilePicPath">

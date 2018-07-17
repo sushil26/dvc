@@ -107,7 +107,7 @@ careatorApp.controller('profileCtrl', function ($scope, $state, careatorHttpFact
         var api = "https://norecruits.com/careator_comm_profileImgUpdateById/comm_profileImgUpdateById/" + id;
         console.log("api: " + api);
         careatorHttpFactory.post(api, obj).then(function (data) {
-            var checkStatus = httpFactory.dataValidation(data);
+            var checkStatus = careatorHttpFactory.dataValidation(data);
             //console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
                 console.log("data" + JSON.stringify(data.data))

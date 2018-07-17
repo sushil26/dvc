@@ -13,7 +13,7 @@
 
                             <div class="col-md-6" style="padding: 10px;">
                                 <div align="center">
-                                    <img alt="User Pic" style="max-width: 200px;" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"
+                                    <img alt="User Pic" style="max-width: 200px;" ng-src="myImage.croppedImage"
                                         id="profile-image1" class="img-circle img-responsive">
 
                                     <input id="profile-image-upload" class="hidden" type="file">
@@ -49,7 +49,7 @@
                                 </div>
                                 <div>Cropped Image:</div>
                                 <div>
-                                    <img ng-src="{{myImage.croppedImage}}" />
+                                    <!-- <img ng-src="{{myImage.croppedImage}}" /> -->
                                 </div>
                                 <button ng-click="schoolLogoStorage()">Upload</button>
                             </div>

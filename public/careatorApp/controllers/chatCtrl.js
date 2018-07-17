@@ -364,6 +364,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                 for (var x = 0; x < $scope.allGroup.length; x++) {
                     $scope.allGroupAndIndividual.push($scope.allGroup[x]);
                 }
+                console.log(" $scope.allEmpWithIndexById: " + JSON.stringify($scope.allEmpWithIndexById));
                 console.log(" $scope.allGroupAndIndividual: " + JSON.stringify($scope.allGroupAndIndividual));
             } else {
                 console.log("Sorry: " + data.data.message);

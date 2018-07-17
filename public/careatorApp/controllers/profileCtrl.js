@@ -1,9 +1,31 @@
 careatorApp.controller('profileCtrl', function ($scope, $state, careatorHttpFactory, careatorSessionAuth) {
     console.log("profileCtrl++++++>>>>>>");
-
+    $scope.file = {}; /* ### Note Upload file declaration ### */
     var userData = careatorSessionAuth.getAccess("userData");
     var id = userData.userId;
-    $scope.file = {}; /* ### Note Upload file declaration ### */
+
+    $scope.getUserDataById = function () {
+        console.log("getUserDataById--> ");
+        var api = "https://norecruits.com//careator_getUser/careator_getUserById/" + id;
+        console.log("api: " + api);
+        careatorHttpFactory.get(api).then(function (data) {
+            console.log("data--" + JSON.stringify(data.data));
+            var checkStatus = careatorHttpFactory.dataValidation(data);
+            if (checkStatus) {
+                var userDetails = data.data.data[0];
+                $scope.userDetails = userDetails;
+
+                console.log("receiverData: " + JSON.stringify(receiverData));
+                console.log("data.data.message: " + data.data.message);
+            }
+            else {
+                console.log("Sorry");
+                console.log("data.data.message: " + data.data.message);
+            }
+        })
+    }
+
+
 
     $scope.getChatGroupListById = function () {
         console.log("getAllEmployee-->: " + id);
@@ -36,15 +58,15 @@ careatorApp.controller('profileCtrl', function ($scope, $state, careatorHttpFact
         console.log("schoolLogoStorage-->");
         /* #####  Start Upload File ###### */
         console.log("$scope.file: " + $scope.file);
-       // console.log("$scope.file: " + $scope.file.upload);
+        // console.log("$scope.file: " + $scope.file.upload);
         if ($scope.myImage.resBlob) {
             console.log("condition satisfied-->");
-            var uploadURL = $scope.propertyJson.VC_schoolLogo;
+            var uploadURL = "https://norecruits.com/careator_comm_profileImgUpload/comm_profileImgUpload";
             console.log("uploadURL: " + uploadURL);
             console.log("$scope.file.upload from : alumRegCtr.js: " + $scope.file.upload);
-            httpFactory.imageUpload(uploadURL, $scope.myImage.resBlob).then(function (data) {
+            careatorHttpFactory.imageUpload(uploadURL, $scope.myImage.resBlob).then(function (data) {
                 console.log("hello " + JSON.stringify(data));
-                var checkStatus = httpFactory.dataValidation(data);
+                var checkStatus = careatorHttpFactory.dataValidation(data);
                 console.log("checkStatus: " + checkStatus);
                 console.log("data.data.success: " + data.data.success);
                 if (checkStatus) {
@@ -54,32 +76,15 @@ careatorApp.controller('profileCtrl', function ($scope, $state, careatorHttpFact
                     $scope.message = data.data.message;
                     $scope.filePath = data.data.data.filePath;
                     console.log("$scope.filePath: " + $scope.filePath);
-                    var loginAlert = $uibModal.open({
-                        scope: $scope,
-                        templateUrl: '/html/templates/dashboardsuccess.html',
-                        windowClass: 'show',
-                        backdropClass: 'static',
-                        keyboard: false,
-                        controller: function ($scope, $uibModalInstance) {
-                            $scope.message = $scope.message
-                        }
-                    })
+                    $scope.profilePicUpdate();
+
                     // // console.log("JSON.stringify($scope.postJson): " + JSON.stringify(postJson));
                     // $scope.adminCreate();
                 } else {
                     $scope.status = data.data.status;
                     $scope.message = data.data.message;
                     console.log("image is not uploaded");
-                    var loginAlert = $uibModal.open({
-                        scope: $scope,
-                        templateUrl: '/html/templates/dashboardwarning.html',
-                        windowClass: 'show',
-                        backdropClass: 'static',
-                        keyboard: false,
-                        controller: function ($scope, $uibModalInstance) {
-                            $scope.message = $scope.message
-                        }
-                    })
+
                     // $scope.adminCreate();
                     // console.log("JSON.stringify($scope.postJson): " + JSON.stringify(postJson));
                     // $scope.savePost();
@@ -93,6 +98,29 @@ careatorApp.controller('profileCtrl', function ($scope, $state, careatorHttpFact
         console.log("<--schoolLogoStorage");
     }
 
+
+    $scope.profilePicUpdate = function () {
+        console.log("profilePicUpdate--->");
+        var obj = {
+            "profilePicPath": $scope.filePath
+        }
+        var api = "https://norecruits.com/careator_comm_profileImgUpdateById/comm_profileImgUpdateById/" + id;
+        console.log("api: " + api);
+        careatorHttpFactory.post(api, obj).then(function (data) {
+            var checkStatus = httpFactory.dataValidation(data);
+            //console.log("data--" + JSON.stringify(data.data));
+            if (checkStatus) {
+                console.log("data" + JSON.stringify(data.data))
+                console.log("data.data.message: " + data.data.message);
+                //$scope.eventGet();
+
+            }
+            else {
+                console.log("Sorry");
+                console.log("data.data.message: " + data.data.message);
+            }
+        })
+    }
 
     $scope.myImage = {
         originalImage: '',

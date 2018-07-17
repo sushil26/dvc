@@ -23,7 +23,7 @@
 
                             </div>
                             <div class="col-sm-4">
-                                <h2 style="color:#00b1b1;">{{userDetail.userName}}</h2>
+                                <h2 style="color:#00b1b1;">{{userDetails.userName}}</h2>
 
                                 <span>
                                     <p>Software Engg.</p>
@@ -63,7 +63,7 @@
 
                                     </td>
                                     <td style="color:#00b1b1;">
-                                        {{userDetail.userName}}
+                                        {{userDetails.userName}}
                                     </td>
                                 </tr>
                                 <tr>
@@ -73,7 +73,7 @@
 
                                     </td>
                                     <td style="color:#00b1b1;">
-                                        {{userDetail.email}}
+                                        {{userDetails.email}}
                                     </td>
                                 </tr>
                                 <tr>
@@ -83,11 +83,11 @@
 
                                     </td>
                                     <td style="color:#00b1b1;">
-                                        {{userDetail.empId}}
+                                        {{userDetails.empId}}
                                     </td>
                                 </tr>
 
-                                <tr ng-if="userDetail.videoRights=='yes' && userDetail.chatRights=='yes'">
+                                <tr ng-if="userDetails.videoRights=='yes' && userDetails.chatRights=='yes'">
                                     <td>
                                         <div style="float: right;">
                                             Acess : </div>
@@ -96,7 +96,7 @@
                                         Chat , Video
                                     </td>
                                 </tr>
-                                <tr ng-if="userDetail.videoRights=='yes' && userDetail.chatRights=='no'">
+                                <tr ng-if="userDetails.videoRights=='yes' && userDetails.chatRights=='no'">
                                     <td>
                                         <div style="float: right;">
                                             Acess : </div>
@@ -105,7 +105,7 @@
                                         Video
                                     </td>
                                 </tr>
-                                <tr ng-if="userDetail.videoRights=='no' && userDetail.chatRights=='yes'">
+                                <tr ng-if="userDetails.videoRights=='no' && userDetails.chatRights=='yes'">
                                     <td>
                                         <div style="float: right;">
                                             Acess : </div>
@@ -137,7 +137,7 @@
 
                                     </td>
                                     <td style="color:#00b1b1;">
-                                        {{userDetail.restrictedTo}}
+                                        {{userDetails.restrictedTo}}
                                     </td>
                                 </tr> -->
 

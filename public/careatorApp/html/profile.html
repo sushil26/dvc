@@ -13,8 +13,7 @@
 
                             <div class="col-md-6" style="padding: 10px;">
                                 <div align="center">
-                                    <img alt="User Pic" style="width: 35%;" ng-src="{{profilePicPath}}"
-                                        id="profile-image1" class="img-circle img-responsive">
+                                    <img alt="User Pic" style="width: 35%;" ng-src="{{profilePicPath}}" id="profile-image1" class="img-circle img-responsive">
 
                                     <input id="profile-image-upload" class="hidden" type="file">
                                     <div style="color:#999;cursor: pointer;" ng-click="profilpic()">click here to change profile image</div>
@@ -36,8 +35,8 @@
                         </div>
 
                         <br>
-                        <div class="form-group">
-                            <label class="col-lg-2 control-label">School Logo</label>
+                        <div class="row">
+
                             <div class="col-lg-6">
                                 <input type="file" id="fileInput" class="btnCont btnCont-uploadColor post_uploadFile" name="logo" value="Upload" onchange="angular.element(this).scope().uploadFile(this.files[0])"
                                     ng-click="fileUploadClick('profile_picPath')" accept="image/jpeg,image/png">
@@ -55,6 +54,7 @@
                             </div>
 
                         </div>
+
                         <div class="col-md-6">
                             <table class=" table table-hover">
                                 <tr>

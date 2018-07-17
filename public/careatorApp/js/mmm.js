@@ -1183,11 +1183,11 @@ document = window.document || {};
                 var text = event.originalEvent.clipboardData.getData('text/plain');
                 pasteText(text);
 
-                // if (event.preventDefault){
-                //     event.preventDefault();
-                // } else {
-                //     event.stop();
-                // }
+                if (event.preventDefault){
+                    event.preventDefault();
+                } else {
+                    event.stop();
+                }
 
                 event.returnValue = false;
                 event.stopPropagation();
@@ -1252,7 +1252,7 @@ document = window.document || {};
                 if (!app.is(".focused")) {
                     editor.trigger("focus");
                 }
-                // event.preventDefault();
+                event.preventDefault();
             }
             return false;
         })
@@ -1368,22 +1368,22 @@ document = window.document || {};
             });
         }
 
-        // if (options.shortcuts) {
-        //     self.on("@keydown", function(_, e) {
-        //         if (!e.ctrlKey) {
-        //             if (e.which == 9) {
-        //                 e.preventDefault();
-        //                 button.click();
-        //             }
-        //             else if (e.which == 27) {
-        //                 e.preventDefault();
-        //                 if (button.is(".active")) {
-        //                     self.hidePicker();
-        //                 }
-        //             }
-        //         }
-        //     });
-        // }
+        if (options.shortcuts) {
+            self.on("@keydown", function(_, e) {
+                if (!e.ctrlKey) {
+                    if (e.which == 9) {
+                        e.preventDefault();
+                        button.click();
+                    }
+                    else if (e.which == 27) {
+                        e.preventDefault();
+                        if (button.is(".active")) {
+                            self.hidePicker();
+                        }
+                    }
+                }
+            });
+        }
 
         if (isObject(options.events) && !$.isEmptyObject(options.events)) {
             $.each(options.events, function(event, handler) {
@@ -1462,14 +1462,14 @@ document = window.document || {};
             }
         }
 
-        // if (self.inline) {
-        //     app.addClass(selector('inline', true));
-        //     self.on("@keydown", function(_, e) {
-        //         if (e.which == 13) {
-        //             e.preventDefault();
-        //         }
-        //     });
-        // }
+        if (self.inline) {
+            app.addClass(selector('inline', true));
+            self.on("@keydown", function(_, e) {
+                if (e.which == 13) {
+                    e.preventDefault();
+                }
+            });
+        }
 
         if (/firefox/i.test(navigator.userAgent)) {
             // disabling resize images on Firefox

@@ -336,7 +336,7 @@ careatorApp.controller('chatHistoryCtrl', function ($scope, $rootScope, $filter,
         console.log("newMessage-back");
     });
     // /* ### End: Front end CSS ### */
-    $("#standalone").keyup(function (event) {
+    $("#comment").keyup(function (event) {
         if (event.keyCode === 13) {
             $("#sndmgs").click();
         }
@@ -357,7 +357,7 @@ careatorApp.controller('chatHistoryCtrl', function ($scope, $rootScope, $filter,
 
     //////////emoji/////////////////////////////
     // $(document).ready(function() {
-    //     $("#standalone").emojioneArea({
+    //     $("#emojionearea1").emojioneArea({
     //       pickerPosition: "right",
     //     tonesStyle: "bullet"
     //   });

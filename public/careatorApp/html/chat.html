@@ -118,7 +118,7 @@
                                                 <div class="avatar-icon" ng-if="record.groupName!==undefined">
                                                     <img src="./css/group.png">
                                                 </div>
-                                               
+
                                             </div>
                                             <div class="col-sm-9 col-xs-9 sideBar-main" ng-if="record.groupName==undefined">
                                                 <div class="row">
@@ -176,15 +176,25 @@
                                     <div class="row compose-sideBar">
                                         <div class="row sideBar-body" ng-repeat="record in allGroupAndIndividual">
                                             <div class="col-sm-3 col-xs-3 sideBar-avatar">
+                                                 <!-- ###### Start: If profile pic path is not there  ##### -->
                                                 <div class="avatar-icon" ng-if="record.groupName!==undefined && record.email!='vc4allAdmin@gmail.com'">
                                                     <img src="./css/group.png">
                                                 </div>
-                                                <div class="avatar-icon" ng-if="record.groupName==undefined && record.email!='vc4allAdmin@gmail.com'">
+                                                <div class="avatar-icon" ng-if="record.groupName==undefined && record.email!='vc4allAdmin@gmail.com' && record.profilePicPath==undefined">
                                                     <img src="./css/user.png">
                                                 </div>
                                                 <div class="avatar-icon" ng-if="record.groupName==undefined && record.email=='vc4allAdmin@gmail.com'">
                                                     <img src="./css/Admin.png">
                                                 </div>
+                                                 <!-- ###### End: If profile pic path is not there  ##### -->
+                                                <!-- ###### Start: If profile pic path is there  ##### -->
+                                                <div class="avatar-icon" ng-if="record.groupName==undefined && record.email!='vc4allAdmin@gmail.com' && record.profilePicPath!=undefined">
+                                                    <img ng-src="{{record.profilePicPath}}">
+                                                </div>
+                                                <div class="avatar-icon" ng-if="record.groupName==undefined && record.email=='vc4allAdmin@gmail.com'&& record.profilePicPath!=undefined">
+                                                    <img ng-src="{{record.profilePicPath}}">
+                                                </div>
+                                                <!-- ###### End: If profile pic path is there  ##### -->
                                             </div>
                                             <div class="col-sm-9 col-xs-9 sideBar-main" ng-if="record.groupName!==undefined">
                                                 <div class="row">
@@ -228,7 +238,7 @@
                                         <div class="avatar-icon" ng-if="selectedType =='individual_chats'">
                                             <img src="./css/user.png">
                                         </div>
-                                        
+
                                     </div>
                                     <div class="col-sm-8 col-xs-7 heading-name">
                                         <div ng-if="selectedType=='group'">

@@ -136,6 +136,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
 
     $scope.chatDetails = function (type, id, index) {
         console.log("chatDetails-->");
+        $scope.chatListSection = "chatWindow";
         console.log("screen.width : " + screen.width);
         if (screen.width < 768) {
             $('.side-one').css({
@@ -224,13 +225,14 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         }
 
 
-        console.log("$scope.receiverData : " + JSON.stringify($scope.receiverData));
+        //console.log("$scope.receiverData : " + JSON.stringify($scope.receiverData));
         // console.log("sendGroupText_withData-->: " + JSON.stringify($scope.sendGroupText_withData));
     }
 
     $scope.chatDetailsFromNew = function (type, index) {
         console.log("chatDetailsFromNew-->");
         $("#backkjkj").click();
+        $scope.chatListSection = "newChatWindow";
         $scope.selectedType = type;
         console.log("  $scope.selectedType: " + $scope.selectedType);
         console.log(" $scope.allGroupAndIndividual[index]: " + JSON.stringify($scope.allGroupAndIndividual[index]));
@@ -318,6 +320,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
             if (checkStatus) {
                 var receiverData = data.data.data[0];
                 $scope.receiverChatStatus = receiverData.chatStatus;
+                $scope.receiverProfilePicPath = receiverData.profilePicPath;
 
                 console.log("receiverData: " + JSON.stringify(receiverData));
                 console.log("data.data.message: " + data.data.message);
@@ -371,7 +374,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
             }
         })
     }
-     $scope.getAllChatRightEmp();
+    $scope.getAllChatRightEmp();
     $scope.getEmpDetail = function (index) {
         console.log("getEmpDetail-->");
         $scope.selectedType = "individual_chats";
@@ -519,18 +522,18 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                 console.log("allChatRecords: " + JSON.stringify($scope.allChatRecords));
                 console.log(data.data.message);
                 for (var x = 0; x < $scope.allChatRecords.length; x++) {
-                    if( $scope.allChatRecords[x].senderId != userData.userId){
+                    if ($scope.allChatRecords[x].senderId != userData.userId) {
                         var tempData = $scope.allEmpWithIndexById[$scope.allChatRecords[x].senderId];
                         //console.log("tempData: "+JSON.stringify(tempData));
-                        if(tempData.profilePicPath){
-                            $scope.allChatRecords[x].profilePicPath=tempData.profilePicPath;
+                        if (tempData.profilePicPath) {
+                            $scope.allChatRecords[x].profilePicPath = tempData.profilePicPath;
                         }
                     }
-                    else{
+                    else {
                         var tempData = $scope.allEmpWithIndexById[$scope.allChatRecords[x].receiverId];
                         //console.log("tempData: "+JSON.stringify(tempData));
-                        if(tempData.profilePicPath){
-                            $scope.allChatRecords[x].profilePicPath=tempData.profilePicPath;
+                        if (tempData.profilePicPath) {
+                            $scope.allChatRecords[x].profilePicPath = tempData.profilePicPath;
                         }
                     }
                 }

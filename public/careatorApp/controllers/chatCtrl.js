@@ -238,6 +238,12 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         console.log(" $scope.allGroupAndIndividual[index]: " + JSON.stringify($scope.allGroupAndIndividual[index]));
         $scope.individualData = $scope.allGroupAndIndividual[index];
         $scope.receiverChatStatus = $scope.individualData.chatStatus;
+        if( $scope.individualData.profilePicPath){
+            $scope.receiverProfilePicPath = $scope.individualData.profilePicPath;
+        }
+        else{
+            $scope.receiverProfilePicPath = undefined;
+        }
         $scope.sendGroupText_withData = {
             "group_id": $scope.individualData._id,
             "groupName": $scope.individualData.groupName,

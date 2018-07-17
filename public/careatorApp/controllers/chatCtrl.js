@@ -396,7 +396,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
     }
 
     $scope.sendText = function () {
-        $('#comment').val('');
+        $('#emojionearea1').val('');
         console.log("sendText-->");
         console.log("$scope.typedMessage: " + $scope.typedMessage);
         var api;
@@ -739,7 +739,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         console.log("newMessage-back");
     });
     // /* ### End: Front end CSS ### */
-    $("#comment").keyup(function (event) {
+    $("#emojionearea1").keyup(function (event) {
         if (event.keyCode === 13) {
             $("#sndmgs").click();
         }

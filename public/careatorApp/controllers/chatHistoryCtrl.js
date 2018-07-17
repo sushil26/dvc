@@ -336,7 +336,7 @@ careatorApp.controller('chatHistoryCtrl', function ($scope, $rootScope, $filter,
         console.log("newMessage-back");
     });
     // /* ### End: Front end CSS ### */
-    $("#comment").keyup(function (event) {
+    $("#emojionearea1").keyup(function (event) {
         if (event.keyCode === 13) {
             $("#sndmgs").click();
         }

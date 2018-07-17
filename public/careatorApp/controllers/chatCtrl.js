@@ -238,10 +238,9 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         console.log(" $scope.allGroupAndIndividual[index]: " + JSON.stringify($scope.allGroupAndIndividual[index]));
         $scope.individualData = $scope.allGroupAndIndividual[index];
         $scope.receiverChatStatus = $scope.individualData.chatStatus;
-        if( $scope.individualData.profilePicPath){
+        if ($scope.individualData.profilePicPath) {
             $scope.receiverProfilePicPath = $scope.individualData.profilePicPath;
-        }
-        else{
+        } else {
             $scope.receiverProfilePicPath = undefined;
         }
         $scope.sendGroupText_withData = {
@@ -327,13 +326,12 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                 var receiverData = data.data.data[0];
                 console.log("receiverData: " + JSON.stringify(receiverData));
                 $scope.receiverChatStatus = receiverData.chatStatus;
-                if( receiverData.profilePicPath){
+                if (receiverData.profilePicPath) {
                     $scope.receiverProfilePicPath = receiverData.profilePicPath;
-                }
-                else{
+                } else {
                     $scope.receiverProfilePicPath = undefined;
                 }
-                console.log("$scope.receiverProfilePicPath: "+$scope.receiverProfilePicPath);
+                console.log("$scope.receiverProfilePicPath: " + $scope.receiverProfilePicPath);
                 console.log("data.data.message: " + data.data.message);
             } else {
                 console.log("Sorry");
@@ -539,8 +537,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                         if (tempData.profilePicPath) {
                             $scope.allChatRecords[x].profilePicPath = tempData.profilePicPath;
                         }
-                    }
-                    else {
+                    } else {
                         var tempData = $scope.allEmpWithIndexById[$scope.allChatRecords[x].receiverId];
                         //console.log("tempData: "+JSON.stringify(tempData));
                         if (tempData.profilePicPath) {
@@ -769,21 +766,22 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
     $(document).ready(function () {
         $("#comment").emojioneArea({
             pickerPosition: "top",
-           
+
         });
         $("#comment").emojioneArea({
             events: {
-              keypress: function (editor, event) {
-                  console.log('event:keypress', event.which); //work
-                if(event.which == 13){
-                  console.log('event:keypress2', event.which); //work
-                //   $('#add-msg-form').submit(); // work
-                  //$('#txtMessage').val(''); //not work
-                  $('#comment').data("emojioneArea").setText(""); // this work
+                keypress: function (editor, event) {
+                    console.log('event:keypress', event.which); //work
+                    if (event.which == 13) {
+                        console.log('event:keypress2', event.which); //work
+                        $("#sndmgs").click();
+                        //   $('#add-msg-form').submit(); // work
+                        //$('#txtMessage').val(''); //not work
+                        $('#comment').data("emojioneArea").setText(""); // this work
+                    }
                 }
-              }
             }
-          });
+        });
     })
     //     $("#emojionearea2").emojioneArea({
     //         pickerPosition: "bottom",

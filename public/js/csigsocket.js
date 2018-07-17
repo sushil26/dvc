@@ -83,6 +83,7 @@ if (stuff.length > 5) {
         document.getElementById("logout").style.display = "block";
         document.getElementById("emailInvitation").style.display = "block";
         document.getElementById("videoCtrolBar").style.display = "grid";
+        getChatBack();
       },
       error: function (err) {
         console.log("err: " + JSON.stringify(err));
@@ -118,6 +119,7 @@ if (stuff.length > 5) {
         document.getElementById("logout").style.display = "none";
         document.getElementById("emailInvitation").style.display = "none";
         document.getElementById("videoCtrolBar").style.display = "grid";
+        getChatBack();
       },
       error: function (err) {
         console.log("err: " + JSON.stringify(err));
@@ -135,7 +137,9 @@ if (stuff.length > 5) {
     });
   } else {
     console.log("No user data from session");
+    getChatBack();
     $("#setName").trigger("click");
+    
   }
   console.log("userName: " + userName);
 } else {
@@ -492,7 +496,7 @@ function startSession(id, date) {
 }
 
 /* ### Note:Start Whenever page refresh get the chathistory respective to url  ### */
-function getCHatBack() {
+function getChatBack() {
   console.log("addChatWindow-->");
 
   var obj = {
@@ -524,7 +528,7 @@ function getCHatBack() {
     }
   });
 }
-getCHatBack();
+
 /* ### Note:End Whenever page refresh get the chathistory respective to url  ### */
 
 signaling_socket.on("connect", function () {

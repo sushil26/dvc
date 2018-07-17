@@ -777,9 +777,9 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                   console.log('event:keypress', event.which); //work
                 if(event.which == 13){
                   console.log('event:keypress2', event.which); //work
-                  $('#add-msg-form').submit(); // work
+                //   $('#add-msg-form').submit(); // work
                   //$('#txtMessage').val(''); //not work
-                  $('#txtMessage').data("emojioneArea").setText(""); // this work
+                  $('#comment').data("emojioneArea").setText(""); // this work
                 }
               }
             }

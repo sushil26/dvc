@@ -14,8 +14,6 @@
                             <div class="col-md-6" style="padding: 10px;">
                                 <div align="center">
                                     <img alt="User Pic" style="width: 35%;" ng-src="{{profilePicPath}}" id="profile-image1" class="img-circle img-responsive">
-
-                                    <input id="profile-image-upload" class="hidden btn btn-warning" type="file">
                                     <div style="color:#999;cursor: pointer;" ng-click="profilpic()">click here to change profile image</div>
                                 </div>
                             </div>
@@ -31,7 +29,7 @@
                         <div class="row" id="uploadlocal" style="display: none;">
 
                             <div class="col-md-6">
-                                <input type="file" id="fileInput" class="btnCont btnCont-uploadColor post_uploadFile" name="logo" value="Upload" onchange="angular.element(this).scope().uploadFile(this.files[0])"
+                                <input type="file" id="fileInput" class="btn btn-warning" name="logo" value="Upload" onchange="angular.element(this).scope().uploadFile(this.files[0])"
                                     ng-click="fileUploadClick('profile_picPath')" accept="image/jpeg,image/png">
                                 <div class="cropArea">
                                     <img-crop image="myImage.originalImage" result-image="myImage.croppedImage" result-blob="myImage.resBlob" area-type="rectangle"

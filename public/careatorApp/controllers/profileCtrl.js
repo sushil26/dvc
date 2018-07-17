@@ -38,6 +38,7 @@ careatorApp.controller('profileCtrl', function ($scope, $state, careatorHttpFact
         console.log("$scope.file: " + $scope.file);
        // console.log("$scope.file: " + $scope.file.upload);
         if ($scope.myImage.resBlob) {
+            console.log("condition satisfied-->");
             var uploadURL = $scope.propertyJson.VC_schoolLogo;
             console.log("uploadURL: " + uploadURL);
             console.log("$scope.file.upload from : alumRegCtr.js: " + $scope.file.upload);

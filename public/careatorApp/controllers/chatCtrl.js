@@ -396,7 +396,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
     }
 
     $scope.sendText = function () {
-        $('#emojionearea1').val('');
+        $('#standalone').val('');
         console.log("sendText-->");
         console.log("$scope.typedMessage: " + $scope.typedMessage);
         var api;
@@ -739,7 +739,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         console.log("newMessage-back");
     });
     // /* ### End: Front end CSS ### */
-    $("#emojionearea1").keyup(function (event) {
+    $("#standalone").keyup(function (event) {
         if (event.keyCode === 13) {
             $("#sndmgs").click();
         }
@@ -767,7 +767,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
 
     //////////emoji/////////////////////////////
     $(document).ready(function () {
-        $("#emojionearea1").emojioneArea({
+        $("#standalone").emojioneArea({
             pickerPosition: "right",
             tonesStyle: "bullet"
         });

@@ -142,7 +142,7 @@ careatorApp.controller('profileCtrl', function ($scope, $state, careatorHttpFact
         }
     };
 
-    $scope.profilpic()=function(){
+    $scope.profilpic=function(){
 
         $("uploadlocal").css({"display":"block"});
     }

@@ -3,6 +3,7 @@ careatorApp.controller('profileCtrl', function ($scope, $state, careatorHttpFact
 
     var userData = careatorSessionAuth.getAccess("userData");
     var id = userData.userId;
+    $scope.file = {}; /* ### Note Upload file declaration ### */
 
     $scope.getChatGroupListById = function () {
         console.log("getAllEmployee-->: " + id);

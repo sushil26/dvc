@@ -146,6 +146,10 @@ careatorApp.controller('profileCtrl', function ($scope, $state, careatorHttpFact
 
         $("#uploadlocal").css({"display":"block"});
     }
+    $scope.Cancel=function(){
+        $("#uploadlocal").css({"display":"none"});
+
+    }
 
 
 })

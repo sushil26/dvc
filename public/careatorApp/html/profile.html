@@ -17,21 +17,14 @@
 
                                     <input id="profile-image-upload" class="hidden" type="file">
                                     <div style="color:#999;cursor: pointer;" ng-click="profilpic()">click here to change profile image</div>
-
                                 </div>
-
-
                             </div>
                             <div class="col-sm-4">
-                                <h2 style="color:#00b1b1;">{{userData.userName}}</h2>
-
+                                <h2 style="color:#00b1b1;">{{userDetails.userName}}</h2>
                                 <span>
                                     <p>Software Engg.</p>
                                 </span>
                             </div>
-
-
-
                         </div>
 
                         <br>
@@ -63,7 +56,7 @@
 
                                     </td>
                                     <td style="color:#00b1b1;">
-                                        {{userData.userName}}
+                                        {{userDetails.name}}
                                     </td>
                                 </tr>
                                 <tr>
@@ -73,7 +66,7 @@
 
                                     </td>
                                     <td style="color:#00b1b1;">
-                                        {{userData.email}}
+                                        {{userDetails.email}}
                                     </td>
                                 </tr>
                                 <tr>
@@ -83,11 +76,11 @@
 
                                     </td>
                                     <td style="color:#00b1b1;">
-                                        {{userData.empId}}
+                                        {{userDetails.empId}}
                                     </td>
                                 </tr>
 
-                                <tr ng-if="userData.videoRights=='yes' && userData.chatRights=='yes'">
+                                <tr ng-if="userDetails.videoRights=='yes' && userDetails.chatRights=='yes'">
                                     <td>
                                         <div style="float: right;">
                                             Acess : </div>
@@ -96,7 +89,7 @@
                                         Chat , Video
                                     </td>
                                 </tr>
-                                <tr ng-if="userData.videoRights=='yes' && userData.chatRights=='no'">
+                                <tr ng-if="userDetails.videoRights=='yes' && userDetails.chatRights=='no'">
                                     <td>
                                         <div style="float: right;">
                                             Acess : </div>
@@ -105,7 +98,7 @@
                                         Video
                                     </td>
                                 </tr>
-                                <tr ng-if="userData.videoRights=='no' && userData.chatRights=='yes'">
+                                <tr ng-if="userDetails.videoRights=='no' && userDetails.chatRights=='yes'">
                                     <td>
                                         <div style="float: right;">
                                             Acess : </div>
@@ -137,7 +130,7 @@
 
                                     </td>
                                     <td style="color:#00b1b1;">
-                                        {{userData.restrictedTo}}
+                                        {{userDetails.restrictedTo}}
                                     </td>
                                 </tr> -->
 

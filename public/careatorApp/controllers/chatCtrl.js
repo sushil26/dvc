@@ -767,8 +767,8 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
 
     //////////emoji/////////////////////////////
     $(document).ready(function () {
-        $("#emojionearea1").emojioneArea({
-            pickerPosition: "right",
+        $("#comment").emojioneArea({
+            pickerPosition: "top",
             tonesStyle: "bullet"
         });
         $("#emojionearea2").emojioneArea({

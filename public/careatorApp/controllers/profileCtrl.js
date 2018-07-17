@@ -24,7 +24,7 @@ careatorApp.controller('profileCtrl', function ($scope, $state, careatorHttpFact
             }
         })
     }
-
+    $scope.getUserDataById();
 
 
     $scope.getChatGroupListById = function () {

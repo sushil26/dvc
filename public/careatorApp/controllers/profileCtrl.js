@@ -55,6 +55,7 @@ careatorApp.controller('profileCtrl', function ($scope, $state, careatorHttpFact
     ///////upload from loacal//////////////
 
     $scope.schoolLogoStorage = function () {
+        $("uploadlocal").css({"display":"none"});
         console.log("schoolLogoStorage-->");
         /* #####  Start Upload File ###### */
         console.log("$scope.file: " + $scope.file);
@@ -140,6 +141,11 @@ careatorApp.controller('profileCtrl', function ($scope, $state, careatorHttpFact
             imageReader.readAsDataURL(file);
         }
     };
+
+    $scope.profilpic()=function(){
+
+        $("uploadlocal").css({"display":"block"});
+    }
 
 
 })

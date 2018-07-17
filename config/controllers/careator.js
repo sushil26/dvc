@@ -2090,7 +2090,7 @@ module.exports.comm_profileImgUpdateById = function (req, res) {
     console.log("comm_profileImgUpdateById-->");
     var id = req.params.id;
     console.log("id: " + id);
-    console.log("chatStatus: " + req.body.chatStatus);
+    console.log("profilePicPath: " + req.body.profilePicPath);
     var response;
     if (general.emptyCheck(id)) {
         var findObj = {

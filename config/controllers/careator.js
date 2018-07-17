@@ -2110,7 +2110,7 @@ module.exports.comm_profileImgUpdateById = function (req, res) {
                 response = {
                     status: true,
                     message: "Sucessfully Pic Updated",
-                    data: chatStatusUpdated
+                    data: profilePicPathUpdated
                 };
                 res.status(200).send(response);
             }

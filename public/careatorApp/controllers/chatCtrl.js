@@ -771,13 +771,11 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         $("#comment").emojioneArea({
             events: {
                 keypress: function (editor, event) {
-                    console.log('event:keypress', event.which); //work
+             
                     if (event.which == 13) {
-                        console.log('event:keypress2', event.which); //work
-                        $("#sndmgs").click();
-                        //   $('#add-msg-form').submit(); // work
-                        //$('#txtMessage').val(''); //not work
                         $('#comment').data("emojioneArea").setText(""); // this work
+                        $("#sndmgs").click();
+                       
                     }
                 }
             }

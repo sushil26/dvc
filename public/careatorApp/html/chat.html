@@ -9,18 +9,10 @@
                     </div> -->
                     <link rel="stylesheet" href="./css/newChat.css" />
                     <style>
-                        .emojionearea .emojionearea-editor {
-
-                            height: 3em !important;
-                            min-height: 3em !important;
-                            max-height: 3em !important;
-                        }
-
-                    
                         .span6 {
                             float: left;
-                            width: 80%;
-                            padding: 0%;
+                            width: 48%;
+                            padding: 1%;
                         }
 
                         .emojionearea-standalone {
@@ -257,12 +249,13 @@
                                         <div class="avatar-icon" ng-if="selectedType =='group'">
                                             <img src="./css/group.png">
                                         </div>
-                                        <div class="avatar-icon" ng-if="selectedType =='individual_chats' && chatListSection == 'chatWindow' (receiverProfilePicPath==undefined)">
+                                        <div class="avatar-icon" ng-if="selectedType =='individual_chats' && chatListSection == 'chatWindow'">
+                                            <img ng-if="receiverProfilePicPath!=undefined" ng-src="{{receiverProfilePicPath}}">
+                                            <img ng-if="receiverProfilePicPath==undefined" src="./css/user.png">
+                                        </div>
+                                        <!-- <div class="avatar-icon" ng-if="selectedType =='individual_chats' && chatListSection == 'chatWindow' && ()">
                                             <img src="./css/user.png">
-                                        </div>
-                                        <div class="avatar-icon" ng-if="selectedType =='individual_chats' && chatListSection == 'chatWindow' && (receiverProfilePicPath!=undefined)">
-                                            <img src="{{receiverProfilePicPath}}">
-                                        </div>
+                                        </div> -->
                                         <div class="avatar-icon" ng-if="selectedType =='individual_chats' && chatListSection == 'newChatWindow'">
                                             <img src="./css/user.png">
                                         </div>
@@ -422,7 +415,9 @@
                                     <div class="span6">
                                         <textarea id="emojionearea1">Default :smile:</textarea>
                                     </div>
-
+                                    <!-- <div class="span6">
+                                        <input type="text" id="emojionearea2" value="inline :+1:" />
+                                    </div> -->
 
                                     <!-- <div class="col-sm-1 col-xs-1 reply-emojis">
                                         <div class="span6">

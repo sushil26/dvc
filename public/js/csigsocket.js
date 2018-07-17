@@ -499,7 +499,7 @@ document.getElementById("addChatWindow").addEventListener("click", function () {
   }
   console.log("obj: " + JSON.stringify(obj));
   $.ajax({
-    url: "https://norecruits.com/careator/getChatByUrl",
+    url: "https://norecruits.com/chatHistory/getChatByUrl",
     type: "POST",
     data: JSON.stringify(obj),
     contentType: "application/json",

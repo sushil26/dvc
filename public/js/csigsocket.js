@@ -506,8 +506,7 @@ document.getElementById("addChatWindow").addEventListener("click", function () {
     dataType: "json",
     success: function (data) {
       console.log("data: " + JSON.stringify(data));
-      localStorage.setItem("sessionUrlId", id);
-      window.location.href = "https://norecruits.com/careator/" + id + "/" + date;
+     
     },
     error: function (err) {
       console.log("err: " + JSON.stringify(err));

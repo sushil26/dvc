@@ -319,10 +319,9 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
             var checkStatus = careatorHttpFactory.dataValidation(data);
             if (checkStatus) {
                 var receiverData = data.data.data[0];
+                console.log("receiverData: " + JSON.stringify(receiverData));
                 $scope.receiverChatStatus = receiverData.chatStatus;
                 $scope.receiverProfilePicPath = receiverData.profilePicPath;
-
-                console.log("receiverData: " + JSON.stringify(receiverData));
                 console.log("data.data.message: " + data.data.message);
             } else {
                 console.log("Sorry");

@@ -491,7 +491,8 @@ function startSession(id, date) {
   });
 }
 
-document.getElementById("addChatWindow").addEventListener("click", function () {
+/* ### Note:Start Whenever page refresh get the chathistory respective to url  ### */
+function getCHatBack() {
   console.log("addChatWindow-->");
 
   var obj = {
@@ -506,7 +507,21 @@ document.getElementById("addChatWindow").addEventListener("click", function () {
     dataType: "json",
     success: function (data) {
       console.log("data: " + JSON.stringify(data));
-     
+      var chatData = data.data[0];
+      console.log("chatData: " + JSON.stringify(chatData));
+      for (var x = 0; x < chatData.chat.length; x++) {
+        if (userName == chatData.chat.userName) {
+
+          document.getElementById('message-container').innerHTML += '<div class="direct-chat-info clearfix"><span class="direct-chat-name pull-right">'
+          + chatData.chat.userName + '</span></div><i class="direct-chat-img" aria-hidden="true"></i><!-- /.direct-chat-img --><div class="content direct-chat-text new_windowAutoLink">' + chatData.chat.message + '</div><div class="direct-chat-info clearfix"><span class="direct-chat-timestamp pull-right">' + chatData.chat.textTime + '</span></div>'
+        }
+        else{
+          document.getElementById('message-container').innerHTML += '<div class="direct-chat-info clearfix"><span class="direct-chat-name pull-right">'
+          + chatData.chat.userName + '</span></div><i class="direct-chat-img" aria-hidden="true"></i><!-- /.direct-chat-img --><div class="content direct-chat-text new_windowAutoLink">' + chatData.chat.message + '</div><div class="direct-chat-info clearfix"><span class="direct-chat-timestamp pull-right">' + chatData.chat.textTime + '</span></div>'
+
+        }
+      }
+
     },
     error: function (err) {
       console.log("err: " + JSON.stringify(err));
@@ -514,9 +529,9 @@ document.getElementById("addChatWindow").addEventListener("click", function () {
       console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
     }
   });
-
-
-})
+}
+getCHatBack();
+/* ### Note:End Whenever page refresh get the chathistory respective to url  ### */
 
 signaling_socket.on("connect", function () {
   console.log("signaling_socket connect-->");

@@ -769,7 +769,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
     $(document).ready(function () {
         $("#comment").emojioneArea({
             pickerPosition: "top",
-            tonesStyle: "bullet"
+           
         });
     })
     //     $("#emojionearea2").emojioneArea({

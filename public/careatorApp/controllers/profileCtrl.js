@@ -113,6 +113,7 @@ careatorApp.controller('profileCtrl', function ($scope, $state, careatorHttpFact
                 console.log("data" + JSON.stringify(data.data))
                 console.log("data.data.message: " + data.data.message);
                 //$scope.eventGet();
+                $scope.getUserDataById
 
             }
             else {

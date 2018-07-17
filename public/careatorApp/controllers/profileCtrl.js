@@ -15,7 +15,7 @@ careatorApp.controller('profileCtrl', function ($scope, $state, careatorHttpFact
                 var userDetails = data.data.data[0];
                 $scope.userDetails = userDetails;
 
-                console.log("receiverData: " + JSON.stringify(receiverData));
+                console.log("userDetails: " + JSON.stringify(receiverData));
                 console.log("data.data.message: " + data.data.message);
             }
             else {

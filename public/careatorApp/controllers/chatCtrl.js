@@ -522,20 +522,20 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                 console.log("allChatRecords: " + JSON.stringify($scope.allChatRecords));
                 console.log(data.data.message);
                 for (var x = 0; x < $scope.allChatRecords.length; x++) {
-                    if ($scope.allChatRecords[x].senderId != userData.userId) {
-                        var tempData = $scope.allEmpWithIndexById[$scope.allChatRecords[x].senderId];
-                        //console.log("tempData: "+JSON.stringify(tempData));
-                        if (tempData.profilePicPath) {
-                            $scope.allChatRecords[x].profilePicPath = tempData.profilePicPath;
-                        }
-                    }
-                    else {
-                        var tempData = $scope.allEmpWithIndexById[$scope.allChatRecords[x].receiverId];
-                        //console.log("tempData: "+JSON.stringify(tempData));
-                        if (tempData.profilePicPath) {
-                            $scope.allChatRecords[x].profilePicPath = tempData.profilePicPath;
-                        }
-                    }
+                    // if ($scope.allChatRecords[x].senderId != userData.userId) {
+                    //     var tempData = $scope.allEmpWithIndexById[$scope.allChatRecords[x].senderId];
+                    //     //console.log("tempData: "+JSON.stringify(tempData));
+                    //     if (tempData.profilePicPath) {
+                    //         $scope.allChatRecords[x].profilePicPath = tempData.profilePicPath;
+                    //     }
+                    // }
+                    // else {
+                    //     var tempData = $scope.allEmpWithIndexById[$scope.allChatRecords[x].receiverId];
+                    //     //console.log("tempData: "+JSON.stringify(tempData));
+                    //     if (tempData.profilePicPath) {
+                    //         $scope.allChatRecords[x].profilePicPath = tempData.profilePicPath;
+                    //     }
+                    // }
                 }
                 $scope.chatedGroup_records = $scope.allChatRecords; /* ### Note: $scope.chatedGroup_records is Chat(chated records) and group(group records) records storage  ### */
                 for (var x = 0; x < $scope.allGroup.length; x++) {

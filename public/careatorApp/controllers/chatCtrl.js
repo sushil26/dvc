@@ -9,6 +9,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         $scope.chatStatus = "Available";
     }
     console.log("userData: " + JSON.stringify(userData));
+    $scope.allEmpWithIndexById = []; /* ### Note: Will keep all employee indexed by employee id ### */
     $scope.allGroupAndIndividual = []; /* ### Note:$scope.allGroupAndIndividual contains All employee list(who having chat rights) and group list(which are included by login person)   ### */
     var restrictedUser = userData.restrictedTo;
     $scope.restrictedArray = restrictedUser;
@@ -135,6 +136,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
 
     $scope.chatDetails = function (type, id, index) {
         console.log("chatDetails-->");
+        $scope.chatListSection = "chatWindow";
         console.log("screen.width : " + screen.width);
         if (screen.width < 768) {
             $('.side-one').css({
@@ -223,18 +225,25 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         }
 
 
-        console.log("$scope.receiverData : " + JSON.stringify($scope.receiverData));
+        //console.log("$scope.receiverData : " + JSON.stringify($scope.receiverData));
         // console.log("sendGroupText_withData-->: " + JSON.stringify($scope.sendGroupText_withData));
     }
 
     $scope.chatDetailsFromNew = function (type, index) {
         console.log("chatDetailsFromNew-->");
         $("#backkjkj").click();
+        $scope.chatListSection = "newChatWindow";
         $scope.selectedType = type;
         console.log("  $scope.selectedType: " + $scope.selectedType);
         console.log(" $scope.allGroupAndIndividual[index]: " + JSON.stringify($scope.allGroupAndIndividual[index]));
         $scope.individualData = $scope.allGroupAndIndividual[index];
         $scope.receiverChatStatus = $scope.individualData.chatStatus;
+        if( $scope.individualData.profilePicPath){
+            $scope.receiverProfilePicPath = $scope.individualData.profilePicPath;
+        }
+        else{
+            $scope.receiverProfilePicPath = undefined;
+        }
         $scope.sendGroupText_withData = {
             "group_id": $scope.individualData._id,
             "groupName": $scope.individualData.groupName,
@@ -316,9 +325,15 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
             var checkStatus = careatorHttpFactory.dataValidation(data);
             if (checkStatus) {
                 var receiverData = data.data.data[0];
-                $scope.receiverChatStatus = receiverData.chatStatus;
-
                 console.log("receiverData: " + JSON.stringify(receiverData));
+                $scope.receiverChatStatus = receiverData.chatStatus;
+                if( receiverData.profilePicPath){
+                    $scope.receiverProfilePicPath = receiverData.profilePicPath;
+                }
+                else{
+                    $scope.receiverProfilePicPath = undefined;
+                }
+                console.log("$scope.receiverProfilePicPath: "+$scope.receiverProfilePicPath);
                 console.log("data.data.message: " + data.data.message);
             } else {
                 console.log("Sorry");
@@ -358,17 +373,19 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                 console.log("data.data.message: " + data.data.message);
                 for (var x = 0; x < $scope.allEmp.length; x++) {
                     $scope.allGroupAndIndividual.push($scope.allEmp[x]);
+                    $scope.allEmpWithIndexById[$scope.allEmp[x]._id] = $scope.allEmp[x];
                 }
                 for (var x = 0; x < $scope.allGroup.length; x++) {
                     $scope.allGroupAndIndividual.push($scope.allGroup[x]);
                 }
+                console.log(" $scope.allEmpWithIndexById: " + JSON.stringify($scope.allEmpWithIndexById));
                 console.log(" $scope.allGroupAndIndividual: " + JSON.stringify($scope.allGroupAndIndividual));
             } else {
                 console.log("Sorry: " + data.data.message);
             }
         })
     }
-    // $scope.getAllChatRightEmp();
+    $scope.getAllChatRightEmp();
     $scope.getEmpDetail = function (index) {
         console.log("getEmpDetail-->");
         $scope.selectedType = "individual_chats";
@@ -515,6 +532,22 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                 $scope.allChatRecords = data.data.data;
                 console.log("allChatRecords: " + JSON.stringify($scope.allChatRecords));
                 console.log(data.data.message);
+                for (var x = 0; x < $scope.allChatRecords.length; x++) {
+                    if ($scope.allChatRecords[x].senderId != userData.userId) {
+                        var tempData = $scope.allEmpWithIndexById[$scope.allChatRecords[x].senderId];
+                        //console.log("tempData: "+JSON.stringify(tempData));
+                        if (tempData.profilePicPath) {
+                            $scope.allChatRecords[x].profilePicPath = tempData.profilePicPath;
+                        }
+                    }
+                    else {
+                        var tempData = $scope.allEmpWithIndexById[$scope.allChatRecords[x].receiverId];
+                        //console.log("tempData: "+JSON.stringify(tempData));
+                        if (tempData.profilePicPath) {
+                            $scope.allChatRecords[x].profilePicPath = tempData.profilePicPath;
+                        }
+                    }
+                }
                 $scope.chatedGroup_records = $scope.allChatRecords; /* ### Note: $scope.chatedGroup_records is Chat(chated records) and group(group records) records storage  ### */
                 for (var x = 0; x < $scope.allGroup.length; x++) {
                     $scope.chatedGroup_records.push($scope.allGroup[x]);
@@ -733,38 +766,38 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
 
 
     //////////emoji/////////////////////////////
-    $(document).ready(function() {
-	$("#emojionearea1").emojioneArea({
-  	pickerPosition: "right",
-    tonesStyle: "bullet"
-  });
-	$("#emojionearea2").emojioneArea({
-  	pickerPosition: "bottom",
-    tonesStyle: "radio"
-  });
-	$("#emojionearea3").emojioneArea({
-  	pickerPosition: "right",
-  	filtersPosition: "bottom",
-    tonesStyle: "square"
-  });
-	$("#emojionearea4").emojioneArea({
-  	pickerPosition: "bottom",
-  	filtersPosition: "bottom",
-    tonesStyle: "checkbox"
-  });
-	$("#emojionearea5").emojioneArea({
-  	pickerPosition: "top",
-  	filtersPosition: "bottom",
-    tones: false,
-    autocomplete: false,
-    inline: true,
-    hidePickerOnBlur: false
-  });
-  $("#comment").emojioneArea({
-    standalone: true,
-    autocomplete: false
-  });
-});
+    $(document).ready(function () {
+        $("#emojionearea1").emojioneArea({
+            pickerPosition: "right",
+            tonesStyle: "bullet"
+        });
+        $("#emojionearea2").emojioneArea({
+            pickerPosition: "bottom",
+            tonesStyle: "radio"
+        });
+        $("#emojionearea3").emojioneArea({
+            pickerPosition: "right",
+            filtersPosition: "bottom",
+            tonesStyle: "square"
+        });
+        $("#emojionearea4").emojioneArea({
+            pickerPosition: "bottom",
+            filtersPosition: "bottom",
+            tonesStyle: "checkbox"
+        });
+        $("#emojionearea5").emojioneArea({
+            pickerPosition: "top",
+            filtersPosition: "bottom",
+            tones: false,
+            autocomplete: false,
+            inline: true,
+            hidePickerOnBlur: false
+        });
+        $("#standalone").emojioneArea({
+            standalone: true,
+            autocomplete: false
+        });
+    });
 
 
 

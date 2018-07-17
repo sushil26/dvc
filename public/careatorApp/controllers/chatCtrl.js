@@ -9,6 +9,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         $scope.chatStatus = "Available";
     }
     console.log("userData: " + JSON.stringify(userData));
+    $scope.allEmpWithIndexById = []; /* ### Note: Will keep all employee indexed by employee id ### */
     $scope.allGroupAndIndividual = []; /* ### Note:$scope.allGroupAndIndividual contains All employee list(who having chat rights) and group list(which are included by login person)   ### */
     var restrictedUser = userData.restrictedTo;
     $scope.restrictedArray = restrictedUser;
@@ -358,17 +359,19 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                 console.log("data.data.message: " + data.data.message);
                 for (var x = 0; x < $scope.allEmp.length; x++) {
                     $scope.allGroupAndIndividual.push($scope.allEmp[x]);
+                    $scope.allEmpWithIndexById[$scope.allEmp[x]._id] = $scope.allEmp[x];
                 }
                 for (var x = 0; x < $scope.allGroup.length; x++) {
                     $scope.allGroupAndIndividual.push($scope.allGroup[x]);
                 }
+                console.log(" $scope.allEmpWithIndexById: " + JSON.stringify($scope.allEmpWithIndexById));
                 console.log(" $scope.allGroupAndIndividual: " + JSON.stringify($scope.allGroupAndIndividual));
             } else {
                 console.log("Sorry: " + data.data.message);
             }
         })
     }
-    // $scope.getAllChatRightEmp();
+     $scope.getAllChatRightEmp();
     $scope.getEmpDetail = function (index) {
         console.log("getEmpDetail-->");
         $scope.selectedType = "individual_chats";
@@ -515,6 +518,22 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                 $scope.allChatRecords = data.data.data;
                 console.log("allChatRecords: " + JSON.stringify($scope.allChatRecords));
                 console.log(data.data.message);
+                for (var x = 0; x < $scope.allChatRecords.length; x++) {
+                    if( $scope.allChatRecords[x].senderId != userData.userId){
+                        var tempData = $scope.allEmpWithIndexById[$scope.allChatRecords[x].senderId];
+                        console.log("tempData: "+JSON.stringify(tempData));
+                        if(tempData.profilePicPath){
+                            $scope.allChatRecords[x].profilePicPath=tempData.profilePicPath;
+                        }
+                    }
+                    else{
+                        var tempData = $scope.allEmpWithIndexById[$scope.allChatRecords[x].receiverId];
+                        console.log("tempData: "+JSON.stringify(tempData));
+                        if(tempData.profilePicPath){
+                            $scope.allChatRecords[x].profilePicPath=tempData.profilePicPath;
+                        }
+                    }
+                }
                 $scope.chatedGroup_records = $scope.allChatRecords; /* ### Note: $scope.chatedGroup_records is Chat(chated records) and group(group records) records storage  ### */
                 for (var x = 0; x < $scope.allGroup.length; x++) {
                     $scope.chatedGroup_records.push($scope.allGroup[x]);

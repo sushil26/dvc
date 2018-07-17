@@ -9,6 +9,19 @@
                     </div> -->
                     <link rel="stylesheet" href="./css/newChat.css" />
                     <style>
+                        .span6 {
+                            float: left;
+                            width: 48%;
+                            padding: 1%;
+                        }
+
+                        .emojionearea-standalone {
+                            float: right;
+                        }
+
+
+
+
                         .tooltip {
                             font-size: 10px;
                             margin-top: -12px;
@@ -49,8 +62,7 @@
                                         <div class="form-group has-feedback">
 
                                             <img alt="User Pic" ng-if="chatStatus=='Available'" style="max-width: 50px;margin-top: -10px;border: 2px solid yellowgreen;"
-                                                ng-src="{{profilePicPath}}"
-                                                id="profile-image1" class="img-circle img-responsive">
+                                                ng-src="{{profilePicPath}}" id="profile-image1" class="img-circle img-responsive">
                                             <img alt="User Pic" ng-if="chatStatus=='Buzy'" style="max-width: 50px;margin-top: -10px;border: 2px solid goldenrod;" ng-src="{{profilePicPath}}"
                                                 id="profile-image1" class="img-circle img-responsive">
                                             <img alt="User Pic" ng-if="chatStatus=='Hide'" style="max-width: 50px;margin-top: -10px;border: 2px solid dimgray;" ng-src="{{profilePicPath}}"
@@ -118,7 +130,7 @@
                                                 <div class="avatar-icon" ng-if="record.groupName!==undefined">
                                                     <img src="./css/group.png">
                                                 </div>
-                                               
+
                                             </div>
                                             <div class="col-sm-9 col-xs-9 sideBar-main" ng-if="record.groupName==undefined">
                                                 <div class="row">
@@ -228,7 +240,7 @@
                                         <div class="avatar-icon" ng-if="selectedType =='individual_chats'">
                                             <img src="./css/user.png">
                                         </div>
-                                        
+
                                     </div>
                                     <div class="col-sm-8 col-xs-7 heading-name">
                                         <div ng-if="selectedType=='group'">
@@ -380,6 +392,17 @@
 
 
                                 <div class="row reply">
+
+                                    <div class="row">
+                                        <div class="span6">
+                                            <textarea id="emojionearea1">Default :smile:</textarea>
+                                        </div>
+                                        <div class="span6">
+                                            <input type="text" id="emojionearea2" value="inline :+1:" />
+                                        </div>
+                                    </div>
+
+
                                     <div class="col-sm-1 col-xs-1 reply-emojis">
                                         <i class="fa fa-smile-o fa-2x"></i>
 
@@ -402,4 +425,6 @@
             </div>
         </section>
     </section>
+    <script src="https://rawgit.com/mervick/emojionearea/master/dist/emojionearea.js"></script>
+    <link href='https://rawgit.com/mervick/emojionearea/master/dist/emojionearea.css' rel='stylesheet'>
 </div>

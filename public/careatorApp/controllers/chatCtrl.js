@@ -768,12 +768,12 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
             pickerPosition: "top",
 
         });
-        $("#comment").emojioneArea({
+        $(".emojionearea-editor").emojioneArea({
             events: {
                 keypress: function (editor, event) {
              
                     if (event.which == 13) {
-                        $('#comment').data("emojioneArea").setText(""); // this work
+                        $('.emojionearea-editor').data("emojioneArea").setText(""); // this work
                         $("#sndmgs").click();
                        
                     }

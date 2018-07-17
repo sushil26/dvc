@@ -120,12 +120,15 @@
                                                 </div>
                                                 <!-- ###### End: If profile pic path is not there  ##### -->
                                                 <!-- ###### Start: If profile pic path is there  ##### -->
-                                                <div class="avatar-icon" ng-if="record.groupName==undefined && (record.receiverId!=adminId && record.senderId != adminId) && record.profilePicPath">
+                                                <div class="avatar-icon" ng-if="record.groupName==undefined && record.profilePicPath">
                                                     <img ng-src="{{record.profilePicPath}}">
                                                 </div>
-                                                <div class="avatar-icon" ng-if="record.groupName==undefined && (record.receiverId==adminId || record.senderId == adminId) && record.profilePicPath">
+                                                <!-- <div class="avatar-icon" ng-if="record.groupName==undefined && (record.receiverId!=adminId && record.senderId != adminId) && record.profilePicPath">
                                                     <img ng-src="{{record.profilePicPath}}">
-                                                </div>
+                                                </div> 
+                                                    <div class="avatar-icon" ng-if="record.groupName==undefined && (record.receiverId==adminId || record.senderId == adminId) && record.profilePicPath">
+                                                    <img ng-src="{{record.profilePicPath}}">
+                                                </div> -->
                                                 <!-- ###### End: If profile pic path is there  ##### -->
 
                                             </div>

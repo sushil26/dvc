@@ -109,12 +109,16 @@
                                     <div class="row sideBar">
                                         <div class="row sideBar-body" ng-repeat="record in chatedGroup_records">
                                             <div class="col-sm-3 col-xs-3 sideBar-avatar" style="font-size: 35px;">
-                                                <div class="avatar-icon" ng-if="record.groupName==undefined">
+                                                <div class="avatar-icon" ng-if="record.groupName==undefined && (record.receiverId!=adminId && record.senderId != adminId)">
                                                     <img src="./css/user.png">
+                                                </div>
+                                                <div class="avatar-icon" ng-if="record.groupName==undefined && (record.receiverId==adminId || record.senderId == adminId)">
+                                                    <img src="./css/Admin.png">
                                                 </div>
                                                 <div class="avatar-icon" ng-if="record.groupName!==undefined">
                                                     <img src="./css/group.png">
                                                 </div>
+                                               
                                             </div>
                                             <div class="col-sm-9 col-xs-9 sideBar-main" ng-if="record.groupName==undefined">
                                                 <div class="row">

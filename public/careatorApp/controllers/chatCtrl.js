@@ -760,7 +760,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
     inline: true,
     hidePickerOnBlur: false
   });
-  $("#standalone").emojioneArea({
+  $("#comment").emojioneArea({
     standalone: true,
     autocomplete: false
   });

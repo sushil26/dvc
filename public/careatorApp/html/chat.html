@@ -66,18 +66,20 @@
                                 <div class="side-one">
                                     <div class="row heading">
                                         <div class="form-group has-feedback">
-
-                                            <img alt="User Pic" ng-if="chatStatus=='Available'" style="max-width: 50px; border: 2px solid yellowgreen;" ng-src="{{profilePicPath}}"
-                                                id="profile-image1" class="img-circle img-responsive">
-                                            <img alt="User Pic" ng-if="chatStatus=='Busy'" style="max-width: 50px; border: 2px solid goldenrod;" ng-src="{{profilePicPath}}"
-                                                id="profile-image1" class="img-circle img-responsive">
-                                            <img alt="User Pic" ng-if="chatStatus=='Hide'" style="max-width: 50px; border: 2px solid dimgray;" ng-src="{{profilePicPath}}"
-                                                id="profile-image1" class="img-circle img-responsive">
-                                            <img alt="User Pic" ng-if="chatStatus=='Sleeping'" style="max-width: 50px; border: 2px solid black;" ng-src="{{profilePicPath}}"
-                                                id="profile-image1" class="img-circle img-responsive">
-                                            <img alt="User Pic" ng-if="chatStatus=='Custom'" style="max-width: 50px; border: 2px solid #FFC107;" ng-src="{{profilePicPath}}"
-                                                id="profile-image1" class="img-circle img-responsive">
-
+                                            <img alt="User Pic" ng-if="chatStatus=='Available' && profilePicPath==undefined" style="max-width: 50px; border: 2px solid yellowgreen;"
+                                                src="./css/user.png" id="profile-image1" class="img-circle img-responsive">
+                                            <div ng-if=" profilePicPath!=undefined">
+                                                <img alt="User Pic" ng-if="chatStatus=='Available'" style="max-width: 50px; border: 2px solid yellowgreen;" ng-src="{{profilePicPath}}"
+                                                    id="profile-image1" class="img-circle img-responsive">
+                                                <img alt="User Pic" ng-if="chatStatus=='Busy'" style="max-width: 50px; border: 2px solid goldenrod;" ng-src="{{profilePicPath}}"
+                                                    id="profile-image1" class="img-circle img-responsive">
+                                                <img alt="User Pic" ng-if="chatStatus=='Hide'" style="max-width: 50px; border: 2px solid dimgray;" ng-src="{{profilePicPath}}"
+                                                    id="profile-image1" class="img-circle img-responsive">
+                                                <img alt="User Pic" ng-if="chatStatus=='Sleeping'" style="max-width: 50px; border: 2px solid black;" ng-src="{{profilePicPath}}"
+                                                    id="profile-image1" class="img-circle img-responsive">
+                                                <img alt="User Pic" ng-if="chatStatus=='Custom'" style="max-width: 50px; border: 2px solid #FFC107;" ng-src="{{profilePicPath}}"
+                                                    id="profile-image1" class="img-circle img-responsive">
+                                            </div>
                                             <h5 style="margin-top: -30px;
                                                 margin-left: 55px;">{{loginUserName}}</h5>
                                             <div class="tooltip">
@@ -411,7 +413,7 @@
                                         <label for="fileselect">
                                             <i class="fa fa-upload fa-2x"> </i>
                                         </label>
-                                        <input id="fileselect" type="file" name="fileselect" style="display: none;"/>
+                                        <input id="fileselect" type="file" name="fileselect" style="display: none;" />
                                     </div>
                                     <div class="col-sm-1 col-xs-1 reply-send">
                                         <button class="btn btn-success" aria-hidden="true" id="sndmgs" ng-click="sendText()">Send</button>

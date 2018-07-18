@@ -797,7 +797,7 @@ signaling_socket.on("addPeer", function (config) {
       peer_id + 'fullscreenbtn2" class="btn fa fa-expand" style="float:left;  margin-top: 10px; margin-left: 10px;"></button><h4>' +
       config.userName + '</h4><i style="display:none; float:right;color: #555555e3; margin-top: -15px; margin-right: 10px;" id="closeThisConn' +
       peer_id + '" class="fa fa-window-close cancelColrChange" aria-hidden="true" id="closeThisConn' +
-      peer_id + '" owner=' + peer_id + " name=" + config.userName + "></i><span>All is well</span></div></div>");
+      peer_id + '" owner=' + peer_id + " name=" + config.userName + "></i> </div></div>");
     $("#" + peer_id + "remoteVideoElement").append(remote_media);
     peer_userName_elements[peer_id] = document.getElementById("" + peer_id + "remoteContainer");
     $("#" + peer_id + "Remote").on('loadstart', function (event) {
@@ -1221,7 +1221,7 @@ function setup_local_media(callback, errorback) {
       $("#portfolio-wrapper").append(
         '<div id="videoElem111" class="portfolio-items col-xs-6 col-sm-6 col-md-4 col-lg-3"><div id="videosAttach"></div><div class="details"><button id="fullscreenbtn" class="btn fa fa-expand" style="float:left; margin-top: 10px; margin-left: 10px;"></button><h4>' +
         userName +
-        "</h4><span>All is well</span></div></div>"
+        "</h4> </div></div>"
       );
       $("#videosAttach").append(local_media);
       /* ### Start: Loader Start and Stop ### */

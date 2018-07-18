@@ -539,7 +539,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                         }
                     } else {
                         var tempData = $scope.allEmpWithIndexById[$scope.allChatRecords[x].receiverId];
-                        //console.log("tempData: "+JSON.stringify(tempData));
+                        console.log("tempData: "+JSON.stringify(tempData));
                         if (tempData.profilePicPath!=undefined) {
                             $scope.allChatRecords[x].profilePicPath = tempData.profilePicPath;
                         }

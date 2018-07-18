@@ -203,8 +203,8 @@ io.sockets.on('connection', function (socket) {
         console.log("data.deleteSessionId: " + data.deleteSessionId);
         console.log("sockets[data.deleteSessionId]: " + sockets.valueOf(data.deleteSessionId));
         console.log("peerTrackForVideo[data.deleteSessionId]: " + peerTrackForVideo[data.deleteSessionId]);
-        console.log(" channels['some-global-ch-name'][data.deleteSessionId]: " + channels[some - global - ch - name][data.deleteSessionId]);
-        console.log("   socket.channels[some-global-ch-name] : " + socket.channels[some - global - ch - name]);
+        // console.log(" channels['some-global-ch-name'][data.deleteSessionId]: " + channels[some - global - ch - name][data.deleteSessionId]);
+        // console.log("   socket.channels[some-global-ch-name] : " + socket.channels[some - global - ch - name]);
         //delete tempSock.channels[channel];
         socket.leave(data.deleteSessionId);
         //delete channels['some-global-ch-name'][data.deleteSessionId];

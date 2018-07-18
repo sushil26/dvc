@@ -516,12 +516,13 @@ function getChatBack() {
       console.log("data: " + JSON.stringify(data));
       var chatData = data.data[0];
       console.log("chatData: " + JSON.stringify(chatData));
-      if (data.data[0]) {
-        for (var x = 0; x < chatData.chat.length; x++) {
-          document.getElementById('message-container').innerHTML += '<div class="direct-chat-info clearfix"><span class="direct-chat-name pull-left">'
-            + chatData.chat[x].userName + '</span></div><i class="direct-chat-img" aria-hidden="true"></i><!-- /.direct-chat-img --><div class="content direct-chat-text new_windowAutoLink">' + chatData.chat[x].message + '</div><div class="direct-chat-info clearfix"><span class="direct-chat-timestamp pull-right">' + chatData.chat[x].textTime + '</span></div>'
-        }
+      for (var x = 0; x < chatData.chat.length; x++) {
+
+        document.getElementById('message-container').innerHTML += '<div class="direct-chat-info clearfix"><span class="direct-chat-name pull-left">'
+          + chatData.chat[x].userName + '</span></div><i class="direct-chat-img" aria-hidden="true"></i><!-- /.direct-chat-img --><div class="content direct-chat-text new_windowAutoLink">' + chatData.chat[x].message + '</div><div class="direct-chat-info clearfix"><span class="direct-chat-timestamp pull-right">' + chatData.chat[x].textTime + '</span></div>'
+
       }
+
     },
     error: function (err) {
       console.log("err: " + JSON.stringify(err));
@@ -1166,35 +1167,6 @@ signaling_socket.on("authorizedForClose", function (config) {
   console.log("<--authorizedForClose");
 });
 
-signaling_socket.on("connectionNotAlive", function (config) {
-  console.log("connectionNotAlive-->");
-  if (config.deleteSessionId == queryLink) {
-    userName = "";
-    console.log("Sorry Connection not alive");
-    alert("Sorry Connection not alive");
-    redirectPage();
-  }
-  console.log("<--connectionNotAlive");
-})
-
-signaling_socket.on("doRedirect", function (config) {
-  console.log("doRedirect-->");
-  console.log("config.queryId: "+config.queryId);
-  console.log("queryLink: "+queryLink);
-  if (config.queryId == queryLink || queryLink==null) {
-    userName = "";
-    console.log("Sorry Connection not alive");
-    alert("Sorry Connection not alive");
-    redirectPage();
-  }
-  console.log("<--doRedirect");
-})
-
-function redirectPage() {
-  console.log("redirectPage-->");
-  window.location.href = "https://norecruits.com";
-
-}
 
 //     console.log("<--init");
 

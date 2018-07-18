@@ -552,10 +552,10 @@ box-shadow: none;
         text-align: left;
         padding: 0 8px !important;
     }
-    .avatar-icon img {
+    /* .avatar-icon img {
         height: 49px;
         width: 49px;
-    }
+    } */
     .sideBar-main {
         padding: 0 !important;
     }

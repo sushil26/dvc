@@ -1,34 +1,25 @@
-.img-circle {
+/* .img-circle {
     -webkit-animation-name: example;
-    /* Safari 4.0 - 8.0 */
     -webkit-animation-duration: 4s;
-    /* Safari 4.0 - 8.0 */
     animation-name: example;
     animation-duration: 4s;
-    animation-iteration-count: infinite;
 }
-
-/* Safari 4.0 - 8.0 */
-
 @-webkit-keyframes example {
     from {
         border: 0px solid yellowgreen;
     }
     to {
-        border: 3px solid yellowgreen;
+        border: 2px solid yellowgreen;
     }
 }
-
-/* Standard syntax */
-
 @keyframes example {
     from {
-        border: 0px solid yellowgreen;
+        border: 2px solid yellowgreen;
     }
     to {
-        border: 3px solid yellowgreen;
+        border: 2px solid yellowgreen;
     }
-}
+} */
 
 .modal {
     font-family: Lato;

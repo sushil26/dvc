@@ -1181,7 +1181,7 @@ signaling_socket.on("doRedirect", function (config) {
   console.log("doRedirect-->");
   console.log("config.queryId: "+config.queryId);
   console.log("queryLink: "+queryLink);
-  if (config.queryId == queryLink) {
+  if (config.queryId == queryLink || queryLink==null) {
     userName = "";
     console.log("Sorry Connection not alive");
     alert("Sorry Connection not alive");

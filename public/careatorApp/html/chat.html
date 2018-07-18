@@ -69,7 +69,7 @@
 
                                             <img alt="User Pic" ng-if="chatStatus=='Available'" style="max-width: 50px; border: 2px solid yellowgreen;" ng-src="{{profilePicPath}}"
                                                 id="profile-image1" class="img-circle img-responsive">
-                                            <img alt="User Pic" ng-if="chatStatus=='Buzy'" style="max-width: 50px; border: 2px solid goldenrod;" ng-src="{{profilePicPath}}"
+                                            <img alt="User Pic" ng-if="chatStatus=='Busy'" style="max-width: 50px; border: 2px solid goldenrod;" ng-src="{{profilePicPath}}"
                                                 id="profile-image1" class="img-circle img-responsive">
                                             <img alt="User Pic" ng-if="chatStatus=='Hide'" style="max-width: 50px; border: 2px solid dimgray;" ng-src="{{profilePicPath}}"
                                                 id="profile-image1" class="img-circle img-responsive">
@@ -82,7 +82,7 @@
                                                 margin-left: 55px;">{{loginUserName}}</h5>
                                             <div class="tooltip">
                                                 <span ng-if="chatStatus=='Available'" style="color: yellowgreen;">{{chatStatus}}</span>
-                                                <span ng-if="chatStatus=='Buzy'" style="color: goldenrod;">{{chatStatus}}</span>
+                                                <span ng-if="chatStatus=='Busy'" style="color: goldenrod;">{{chatStatus}}</span>
                                                 <span ng-if="chatStatus=='Hide'" style="color: dimgray;">{{chatStatus}}</span>
                                                 <span ng-if="chatStatus=='Sleeping'" style="color: black;">{{chatStatus}}</span>
                                                 <span ng-if="chatStatus=='Custom'" style="color: #FFC107;">{{chatStatus}}</span>
@@ -93,7 +93,7 @@
 
                                                     <span style="background:white;
                                                     padding: 5px;
-                                                    border-radius: 5px;line-height: 2.5;color:goldenrod;" ng-click="statusUpdate('Buzy')">Busy</span>
+                                                    border-radius: 5px;line-height: 2.5;color:goldenrod;" ng-click="statusUpdate('Busy')">Busy</span>
 
                                                     <span style="background:white;
                                                     padding: 5px;
@@ -276,7 +276,7 @@
                                             <br>
                                             <i style="color: greenyellow;    font-size: 7px;" class="fa fa-circle"></i>&nbsp;{{receiverChatStatus}}
                                         </a>
-                                        <a ng-if="selectedType=='individual_chats' &&  receiverChatStatus=='Buzy'" class="heading-status">
+                                        <a ng-if="selectedType=='individual_chats' &&  receiverChatStatus=='Busy'" class="heading-status">
                                             <br>
                                             <i style="color: goldenrod;    font-size: 7px;" class="fa fa-circle"></i>&nbsp;{{receiverChatStatus}}
                                         </a>

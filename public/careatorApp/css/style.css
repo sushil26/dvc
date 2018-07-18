@@ -1365,7 +1365,7 @@ div[data-role="editor-toolbar"] {
 /*----------------------	panel-----------------*/
 
 .panel {
-  border: none;
+  border: 1px solid #1b3752;
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
   border-radius: 0px;

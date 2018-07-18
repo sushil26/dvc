@@ -763,23 +763,24 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
 
 
     ////////emoji/////////////////////////////
-    // $(document).ready(function () {
-    //     $("#comment").emojioneArea({
-    //         pickerPosition: "top",
+    $(document).ready(function () {
+        $("#comment").emojioneArea({
+            pickerPosition: "top",
 
-    //     });
-        // $(".emojionearea-editor").emojioneArea({
-        //     events: {
-        //         keypress: function (editor, event) {
-             
-        //             if (event.which == 13) {
-        //                 $('.emojionearea-editor').data("emojioneArea").setText(""); // this work
-        //                 $("#sndmgs").click();
-                       
-        //             }
-        //         }
-        //     }
-        // });
+        });
+    })
+    // $(".emojionearea-editor").emojioneArea({
+    //     events: {
+    //         keypress: function (editor, event) {
+
+    //             if (event.which == 13) {
+    //                 $('.emojionearea-editor').data("emojioneArea").setText(""); // this work
+    //                 $("#sndmgs").click();
+
+    //             }
+    //         }
+    //     }
+    // });
     // })
     //     $("#emojionearea2").emojioneArea({
     //         pickerPosition: "bottom",

@@ -38,9 +38,6 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         })
     }
     $scope.getUserDataById();
-
-
-
     $scope.getChatGroupListById = function (id) {
         console.log("getAllEmployee-->: " + id);
         var api = "https://norecruits.com/careator_chatGroupList/careator_getChatGroupListById/" + id;
@@ -60,8 +57,6 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         })
         console.log("<--getAllEmployee");
     }
-
-
     if (userData.chatRights == 'yes') {
         $scope.getChatGroupListById(localStorage.getItem("userId"));
     }
@@ -169,7 +164,6 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                             "senderId": userData.userId,
                             "senderName": userData.userName
                         }
-                        // $scope.individualData = data.data.data[0];
                     } else {
                         $scope.individualData = data.data.data[0];
                         console.log("$scope.allChat: " + JSON.stringify($scope.allChat));
@@ -223,10 +217,6 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                 }
             })
         }
-
-
-        //console.log("$scope.receiverData : " + JSON.stringify($scope.receiverData));
-        // console.log("sendGroupText_withData-->: " + JSON.stringify($scope.sendGroupText_withData));
     }
 
     $scope.chatDetailsFromNew = function (type, index) {
@@ -534,14 +524,24 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                     if ($scope.allChatRecords[x].senderId != userData.userId) {
                         var tempData = $scope.allEmpWithIndexById[$scope.allChatRecords[x].senderId];
                         //console.log("tempData: "+JSON.stringify(tempData));
-                        if (tempData.profilePicPath!=undefined) {
-                            $scope.allChatRecords[x].profilePicPath = tempData.profilePicPath;
+                        if (tempData != undefined) {
+                            if (tempData.profilePicPath != undefined) {
+                                $scope.allChatRecords[x].profilePicPath = tempData.profilePicPath;
+                            }
+                        }
+                        else {
+
                         }
                     } else {
                         var tempData = $scope.allEmpWithIndexById[$scope.allChatRecords[x].receiverId];
-                        console.log("tempData: "+JSON.stringify(tempData));
-                        if (tempData.profilePicPath!=undefined) {
-                            $scope.allChatRecords[x].profilePicPath = tempData.profilePicPath;
+                        console.log("tempData: " + JSON.stringify(tempData));
+                        if (tempData != undefined) {
+                            if (tempData.profilePicPath != undefined) {
+                                $scope.allChatRecords[x].profilePicPath = tempData.profilePicPath;
+                            }
+                        }
+                        else {
+
                         }
                     }
                 }
@@ -737,14 +737,10 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
     });
     // /* ### End: Front end CSS ### */
     $("#comment").keyup(function (event) {
-      
-
         if (event.keyCode === 13) {
             // $(this).val('');
             $("#sndmgs").click();
             $("#comment").val('');
-
-
         }
     });
 
@@ -767,10 +763,6 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
     //         scrollTop: $("#pulldown").prop(0,0)
     //     }, 500);
     // }
-
-
-
-
 
     ////////emoji/////////////////////////////
     // $(document).ready(function () {

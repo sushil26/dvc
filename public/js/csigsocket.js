@@ -1167,15 +1167,22 @@ signaling_socket.on("authorizedForClose", function (config) {
   console.log("<--authorizedForClose");
 });
 
-// signaling_socket.on("connectionNotAlive", function (config) {
-//   console.log("connectionNotAlive-->");
-//   if (config.queryId == queryLink && config.peer_id == peerNew_id) {
-//     userName = "";
-//     console.log("Sorry Connection not alive");
-//     alert("Sorry Connection not alive");
-//   }
-//   console.log("<--connectionNotAlive");
-// })
+signaling_socket.on("connectionNotAlive", function (config) {
+  console.log("connectionNotAlive-->");
+  redirectPage();
+  // if (config.queryId == queryLink && config.peer_id == peerNew_id) {
+  //   userName = "";
+  //   console.log("Sorry Connection not alive");
+  //   alert("Sorry Connection not alive");
+  // }
+  console.log("<--connectionNotAlive");
+})
+
+function redirectPage(){
+  console.log("redirectPage-->");
+  window.location.href="https://norecruits.com";
+
+}
 
 //     console.log("<--init");
 

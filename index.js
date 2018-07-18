@@ -29,7 +29,7 @@ app.use(fileUpload());
 var queryId = null;
 var userName = null;
 var time = null;
-
+var allDisconnectedQueryId = [];
 var mongoConfig = require('./config/dbConfig.js');
 
 // var chatHistory = db.collection("chatHistory");
@@ -85,9 +85,14 @@ app.get("/careator", function (req, res) {
 app.get("/careator/:id/:time", function (req, res) {
     queryId = req.params.id;
     time = req.params.id;
-    console.log("queryId: " + req.params.id + "Time: " + req.params.time);
-    console.log("start to render page");
-    res.sendFile(__dirname + '/public/careator.html');
+    if (allDisconnectedQueryId[queryId] < 0) {
+        console.log("queryId: " + req.params.id + "Time: " + req.params.time);
+        console.log("start to render page");
+        res.sendFile(__dirname + '/public/careator.html');
+    }
+    else {
+        res.sendFile(__dirname + '/public/index.html');
+    }
 });
 
 app.get("/careatorApp", function (req, res) {
@@ -206,6 +211,8 @@ io.sockets.on('connection', function (socket) {
         // console.log(" channels['some-global-ch-name'][data.deleteSessionId]: " + channels[some - global - ch - name][data.deleteSessionId]);
         // console.log("   socket.channels[some-global-ch-name] : " + socket.channels[some - global - ch - name]);
         //delete tempSock.channels[channel];
+        allDisconnectedQueryId.push(data.deleteSessionId);
+
         delete peerTrack[peerTrack.indexOf(data.deleteSessionId)]
         socket.leave(data.deleteSessionId);
         //delete channels['some-global-ch-name'][data.deleteSessionId];
@@ -213,7 +220,7 @@ io.sockets.on('connection', function (socket) {
         delete sockets[data.deleteSessionId];
         // delete sockets[tempSock.id];
         delete peerTrackForVideo[data.deleteSessionId];
-
+        channels[channel][data.owner].emit('connectionNotAlive',{});
         console.log("sockets[data.deleteSessionId]: " + sockets[data.deleteSessionId]);
         console.log("peerTrackForVideo[data.deleteSessionId]: " + peerTrackForVideo[data.deleteSessionId]);
         //}

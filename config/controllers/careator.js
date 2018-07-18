@@ -569,7 +569,7 @@ module.exports.careatorSingleUserInsert = function (req, res) {
         "chatRights": req.body.chatRights,
         "status": "active",
         "restrictedTo": [],
-        "profilePicPath": "/css/user.png"
+        "profilePicPath": "./css/user.png"
     }
     console.log("obj :" + JSON.stringify(obj));
     var findEmpId = {

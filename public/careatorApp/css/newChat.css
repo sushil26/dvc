@@ -596,7 +596,7 @@ box-shadow: none;
         height: calc(100% - 140px);
     }
     .reply {
-        height: 70px;
+        height: 80px;
     }
     .reply-emojis {
         padding: 5px 0 !important;

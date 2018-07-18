@@ -85,7 +85,7 @@ app.get("/careator", function (req, res) {
 app.get("/careator/:id/:time", function (req, res) {
     queryId = req.params.id;
     time = req.params.id;
-    if (allDisconnectedQueryId[queryId] < 0) {
+    if (allDisconnectedQueryId.indexOf(queryId)< 0) {
         console.log("queryId: " + req.params.id + "Time: " + req.params.time);
         console.log("start to render page");
         res.sendFile(__dirname + '/public/careator.html');

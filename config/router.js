@@ -52,7 +52,6 @@ module.exports = function (app) {
     app.post('/careator_getEmp/careator_getChatRightsAllemp/:id', careator.careator_getChatRightsAllemp);
     app.get('/careator_getEmp/careator_getChatRightsAllemp_byLoginId/:id', careator.careator_getChatRightsAllemp_byLoginId);
     app.post('/careator_individualText/individualText', careator.individualText);
-    app.post('/careator_individualText/imageUpload_chat', careatorImgUpload.imageUpload_chat);
     app.get('/careator_individualTextRead/individualTextReadById/:sId/:rId', careator.individualTextReadById);
     app.get('/careator_groupTextRead/groupTextReadByGroupId/:group_id', careator.groupTextReadByGroupId);
     app.post('/careator_groupText/groupText', careator.groupText);

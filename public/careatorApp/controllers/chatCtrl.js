@@ -534,13 +534,13 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                     if ($scope.allChatRecords[x].senderId != userData.userId) {
                         var tempData = $scope.allEmpWithIndexById[$scope.allChatRecords[x].senderId];
                         //console.log("tempData: "+JSON.stringify(tempData));
-                        if (tempData.profilePicPath) {
+                        if (tempData.profilePicPath!=undefined) {
                             $scope.allChatRecords[x].profilePicPath = tempData.profilePicPath;
                         }
                     } else {
                         var tempData = $scope.allEmpWithIndexById[$scope.allChatRecords[x].receiverId];
-                        //console.log("tempData: "+JSON.stringify(tempData));
-                        if (tempData.profilePicPath) {
+                        console.log("tempData: "+JSON.stringify(tempData));
+                        if (tempData.profilePicPath!=undefined) {
                             $scope.allChatRecords[x].profilePicPath = tempData.profilePicPath;
                         }
                     }

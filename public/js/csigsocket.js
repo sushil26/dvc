@@ -139,7 +139,7 @@ if (stuff.length > 5) {
     console.log("No user data from session");
     getChatBack();
     $("#setName").trigger("click");
-    
+
   }
   console.log("userName: " + userName);
 } else {
@@ -258,6 +258,9 @@ function checkPassword() {
 
           console.log("restrictedArray: " + restrictedArray);
           localStorage.setItem("restrictedTo", restrictedArray);
+        }
+        if (data.data.profilePicPath) {
+          localStorage.setItem("profilePicPath", data.data.profilePicPath);
         }
         var userNameEmail = localStorage.getItem("careatorEmail");
         var emailIdSplit = userNameEmail.split('@');
@@ -514,10 +517,10 @@ function getChatBack() {
       var chatData = data.data[0];
       console.log("chatData: " + JSON.stringify(chatData));
       for (var x = 0; x < chatData.chat.length; x++) {
-       
-          document.getElementById('message-container').innerHTML += '<div class="direct-chat-info clearfix"><span class="direct-chat-name pull-left">'
+
+        document.getElementById('message-container').innerHTML += '<div class="direct-chat-info clearfix"><span class="direct-chat-name pull-left">'
           + chatData.chat[x].userName + '</span></div><i class="direct-chat-img" aria-hidden="true"></i><!-- /.direct-chat-img --><div class="content direct-chat-text new_windowAutoLink">' + chatData.chat[x].message + '</div><div class="direct-chat-info clearfix"><span class="direct-chat-timestamp pull-right">' + chatData.chat[x].textTime + '</span></div>'
-       
+
       }
 
     },

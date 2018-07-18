@@ -108,7 +108,7 @@
 }
 
 .heading-name {
-    margin-left: -33px;
+    /* margin-left: -33px; */
     margin-top: 10px;
     padding: 0 !important;
     cursor: pointer;

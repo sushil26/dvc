@@ -401,8 +401,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         var obj;
         console.log("$scope.selectedType: " + $scope.selectedType);
         if ($scope.selectedType == 'individual_chats') {
-            api = "https://norecruits.com/careator_individualText/individualText";
-            console.log("api: " + api);
+           
             console.log("$scope.receiverData.receiverId: " + $scope.receiverData.receiverId);
             console.log(" $scope.receiverData.receiverId: " + $scope.receiverData.receiverId);
             console.log(" $rootScope.adminId: " + $rootScope.adminId);
@@ -414,18 +413,42 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                     "receiverName": $scope.receiverData.receiverName,
                     "message": $scope.typedMessage
                 }
-                console.log("obj: " + JSON.stringify(obj));
-                careatorHttpFactory.post(api, obj).then(function (data) {
-                    console.log("data--" + JSON.stringify(data.data));
-                    var checkStatus = careatorHttpFactory.dataValidation(data);
-                    if (checkStatus) {
-                        console.log("data.data.data: " + JSON.stringify(data.data.data));
-                        console.log(data.data.message);
-                    } else {
-                        console.log("Sorry");
-                        console.log(data.data.message);
+                console.log("$scope.myFile: " + $scope.myFile);
+                if ($scope.myFile) {
+                    var obj = {
+                        myFile: $scope.myFile
                     }
-                })
+                    console.log("obj: " + JSON.stringify(obj));
+                    api = "https://norecruits.com/careator_individualText/imageUpload_chat";
+                    console.log("api: " + api);
+                    careatorHttpFactory.imageUpload(api, obj).then(function (data) {
+                        console.log("data--" + JSON.stringify(data.data));
+                        var checkStatus = careatorHttpFactory.dataValidation(data);
+                        if (checkStatus) {
+                            console.log("data.data.data: " + JSON.stringify(data.data.data));
+                            console.log(data.data.message);
+                        } else {
+                            console.log("Sorry");
+                            console.log(data.data.message);
+                        }
+                    })
+                }
+                else {
+                    console.log("obj: " + JSON.stringify(obj));
+                    api = "https://norecruits.com/careator_individualText/individualText";
+                    console.log("api: " + api);
+                    careatorHttpFactory.post(api, obj).then(function (data) {
+                        console.log("data--" + JSON.stringify(data.data));
+                        var checkStatus = careatorHttpFactory.dataValidation(data);
+                        if (checkStatus) {
+                            console.log("data.data.data: " + JSON.stringify(data.data.data));
+                            console.log(data.data.message);
+                        } else {
+                            console.log("Sorry");
+                            console.log(data.data.message);
+                        }
+                    })
+                }
             } else if ($scope.restrictedArray.indexOf($scope.receiverData.receiverId) >= 0 || $scope.receiverData.receiverId == $rootScope.adminId) {
                 obj = {
                     "senderId": userData.userId,
@@ -737,7 +760,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
     });
     // /* ### End: Front end CSS ### */
     $("#comment").keyup(function (event) {
-      
+
 
         if (event.keyCode === 13) {
             // $(this).val('');

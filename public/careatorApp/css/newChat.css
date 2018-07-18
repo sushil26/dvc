@@ -5,6 +5,7 @@
     /* Safari 4.0 - 8.0 */
     animation-name: example;
     animation-duration: 4s;
+    animation-iteration-count: infinite;
 }
 
 /* Safari 4.0 - 8.0 */

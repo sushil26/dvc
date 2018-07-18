@@ -1169,13 +1169,24 @@ signaling_socket.on("authorizedForClose", function (config) {
 
 signaling_socket.on("connectionNotAlive", function (config) {
   console.log("connectionNotAlive-->");
-  if (config.deleteSessionId == queryLink && config.owner == peerNew_id) {
+  if (config.deleteSessionId == queryLink ) {
     userName = "";
     console.log("Sorry Connection not alive");
     alert("Sorry Connection not alive");
     redirectPage();
   }
   console.log("<--connectionNotAlive");
+})
+
+signaling_socket.on("doRedirect", function (config) {
+  console.log("doRedirect-->");
+  if (config.queryId == queryLink ) {
+    userName = "";
+    console.log("Sorry Connection not alive");
+    alert("Sorry Connection not alive");
+    redirectPage();
+  }
+  console.log("<--doRedirect");
 })
 
 function redirectPage() {

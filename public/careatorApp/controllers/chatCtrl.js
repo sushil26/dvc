@@ -742,6 +742,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         }
     });
     $(".emojionearea-editor").keyup(function (event) {
+        console.log("emojionearea-editor enter working");
         if (event.keyCode === 13) {
             $("#sndmgs").click();
         }

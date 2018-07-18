@@ -1462,14 +1462,14 @@ document = window.document || {};
             }
         }
 
-        if (self.inline) {
-            app.addClass(selector('inline', true));
-            self.on("@keydown", function(_, e) {
-                if (e.which == 13) {
-                    e.preventDefault();
-                }
-            });
-        }
+        // if (self.inline) {
+        //     app.addClass(selector('inline', true));
+        //     self.on("@keydown", function(_, e) {
+        //         if (e.which == 13) {
+        //             e.preventDefault();
+        //         }
+        //     });
+        // }
 
         if (/firefox/i.test(navigator.userAgent)) {
             // disabling resize images on Firefox

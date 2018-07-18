@@ -736,17 +736,16 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         console.log("newMessage-back");
     });
     // /* ### End: Front end CSS ### */
-    $("#comment").keyup(function (event) {
+    $(".reply-main").keyup(function (event) {
         if (event.keyCode === 13) {
             $("#sndmgs").click();
         }
     });
-    
-    $(".emojionearea").keyup(function (event) {
-        if (event.keyCode === 13) {
-            $("#sndmgs").click();
-        }
-    });
+
+    // $(".reply-main").focus(function () {
+        
+
+    // })
 
     ///Auto Scroll Down Chat////////////////
     $scope.scrollDown = function () {

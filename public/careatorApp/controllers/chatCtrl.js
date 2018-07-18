@@ -737,14 +737,18 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
     });
     // /* ### End: Front end CSS ### */
     $(".reply-main").keyup(function (event) {
+        $(this).val('');
+
         if (event.keyCode === 13) {
-            $("#sndmgs").click();
             $(this).val('');
+            $("#sndmgs").click();
+
+
         }
     });
 
     // $(".reply-main").focus(function () {
-        
+
 
     // })
 

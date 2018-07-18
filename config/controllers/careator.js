@@ -520,7 +520,8 @@ module.exports.careatorMasterInsertValidate = function (data, callback) {
         "chatRights": data.ChatRights,
         "status": "active",
         "chatStatus": "Available",
-        "restrictedTo": []
+        "restrictedTo": [],
+        "profilePicPath": "/css/user.png"
     }
     careatorMaster.find(findEmpId).toArray(function (err, findData) {
         if (err) {
@@ -567,7 +568,8 @@ module.exports.careatorSingleUserInsert = function (req, res) {
         "videoRights": req.body.videoRights,
         "chatRights": req.body.chatRights,
         "status": "active",
-        "restrictedTo": []
+        "restrictedTo": [],
+        "profilePicPath": "/css/user.png"
     }
     console.log("obj :" + JSON.stringify(obj));
     var findEmpId = {

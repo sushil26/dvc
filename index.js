@@ -266,7 +266,7 @@ io.sockets.on('connection', function (socket) {
             channels[channel][id].emit('addPeer', { 'peer_id': socket.id, 'should_create_offer': false, 'owner': socket.id, 'queryId': queryId, 'time': time, 'userName': peerWithUserName[socket.id], 'sessionHeaderId': sessionHeaderId });
             socket.emit('addPeer', { 'peer_id': id, 'should_create_offer': true, 'owner': socket.id, 'queryId': queryId, 'time': time, 'userName': peerWithUserName[id], 'sessionHeaderId': sessionHeaderId });
         }
-
+console.log("channel: "+channel);
         channels[channel][socket.id] = socket;
         socket.channels[channel] = channel;
         console.log("<--Join");

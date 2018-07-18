@@ -207,7 +207,7 @@ io.sockets.on('connection', function (socket) {
         console.log("   socket.channels[some-global-ch-name] : " + socket.channels[some - global - ch - name]);
         //delete tempSock.channels[channel];
         socket.leave(data.deleteSessionId);
-        delete channels['some-global-ch-name'][data.deleteSessionId];
+        //delete channels['some-global-ch-name'][data.deleteSessionId];
         delete sockets[sockets.valueOf(data.deleteSessionId)];
         delete sockets[data.deleteSessionId];
         // delete sockets[tempSock.id];

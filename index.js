@@ -93,7 +93,7 @@ app.get("/careator/:id/:time", function (req, res) {
     }
     else {
         doRedirect = true;
-        res.sendFile(__dirname + '/public/index.html');
+       
     }
 });
 

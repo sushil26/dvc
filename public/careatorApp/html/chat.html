@@ -443,9 +443,10 @@
                                         <textarea data-emojiable="true" class="form-control" rows="1" id="comment" ng-model="typedMessage"></textarea>
                                     </div>
                                     <div class="col-sm-1 col-xs-1 reply-recording">
-
-                                        <i class="fa fa-upload fa-2x"> </i>
-
+                                        <label for="fileselect">
+                                            <i class="fa fa-upload fa-2x"> </i>
+                                        </label>
+                                        <input id="fileselect" type="file" name="fileselect" />
                                     </div>
                                     <div class="col-sm-1 col-xs-1 reply-send">
                                         <i class="fa fa-send fa-2x" aria-hidden="true" id="sndmgs" ng-click="sendText()"></i>

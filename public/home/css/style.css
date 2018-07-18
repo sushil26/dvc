@@ -1088,6 +1088,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   padding: 15px;
   margin: 0;
   text-transform: capitalize;
+  max-width: 150px;;
 }
 
 #portfolio .portfolio-items .details span {

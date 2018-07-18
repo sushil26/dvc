@@ -201,7 +201,7 @@ io.sockets.on('connection', function (socket) {
 
     socket.on('disconnectSession', function (data) {
         console.log("disconnectSession-->");
-        socket.emit('disconnectSessionReply', { "deleteSessionId": data.deleteSessionId, "owner": data.owner });
+      
         //if (sessionHeaderId == data.owner) {
         // var tempSock = sockets[data.deleteSessionId];/* ### Note using this deleteSessionId we are getting real socket(tempSock)   ### */
         // console.log("tempSock: " + JSON.stringify(tempSock));
@@ -211,13 +211,13 @@ io.sockets.on('connection', function (socket) {
         // console.log("peerTrackForVideo[data.deleteSessionId]: " + peerTrackForVideo[data.deleteSessionId]);
        
         allDisconnectedQueryId.push(data.deleteSessionId);
-
+        socket.emit('connectionNotAlive', { "deleteSessionId": data.deleteSessionId, "owner": data.owner });
         // delete peerTrack[peerTrack.indexOf(data.deleteSessionId)]
         // socket.leave(data.deleteSessionId);
         // delete sockets[sockets.valueOf(data.deleteSessionId)];
         // delete sockets[data.deleteSessionId];
         // delete peerTrackForVideo[data.deleteSessionId];
-        channels[channel][data.owner].emit('connectionNotAlive', {});
+       // socket.emit('connectionNotAlive', {""});
         console.log("sockets[data.deleteSessionId]: " + sockets[data.deleteSessionId]);
         console.log("peerTrackForVideo[data.deleteSessionId]: " + peerTrackForVideo[data.deleteSessionId]);
         //}

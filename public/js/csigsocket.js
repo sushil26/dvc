@@ -1169,18 +1169,18 @@ signaling_socket.on("authorizedForClose", function (config) {
 
 signaling_socket.on("connectionNotAlive", function (config) {
   console.log("connectionNotAlive-->");
-  redirectPage();
-  // if (config.queryId == queryLink && config.peer_id == peerNew_id) {
-  //   userName = "";
-  //   console.log("Sorry Connection not alive");
-  //   alert("Sorry Connection not alive");
-  // }
+  if (config.deleteSessionId == queryLink && config.owner == peerNew_id) {
+    userName = "";
+    console.log("Sorry Connection not alive");
+    alert("Sorry Connection not alive");
+    redirectPage();
+  }
   console.log("<--connectionNotAlive");
 })
 
-function redirectPage(){
+function redirectPage() {
   console.log("redirectPage-->");
-  window.location.href="https://norecruits.com";
+  window.location.href = "https://norecruits.com";
 
 }
 

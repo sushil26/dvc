@@ -1086,11 +1086,12 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 #portfolio .portfolio-items .details h4 {
-  font-size: 14px;
-  font-weight: 700;
-  color: #fff;
-  padding: 8px 0 2px 8px;
+  font-style: italic;
+  font-size: 15px;
+  font-weight: 100;
+  padding: 15px;
   margin: 0;
+  text-transform: capitalize;
 }
 
 #portfolio .portfolio-items .details span {

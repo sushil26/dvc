@@ -50,7 +50,7 @@
 .app-one {
     background-color: #f7f7f7;
     height: 90vh;
-    height: 87vh;
+    /* height: 87vh; */
     overflow: hidden;
     margin: 0;
     padding: 0;

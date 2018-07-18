@@ -741,15 +741,6 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
             $("#sndmgs").click();
         }
     });
-    $(".emojionearea-editor").keyup(function (event) {
-        console.log("emojionearea-editor enter working");
-        if (event.keyCode === 13) {
-            $("#sndmgs").click();
-        }
-    });
-
-
-    
 
 
     ///Auto Scroll Down Chat////////////////
@@ -772,11 +763,11 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
 
 
     ////////emoji/////////////////////////////
-    $(document).ready(function () {
-        $("#comment").emojioneArea({
-            pickerPosition: "top",
+    // $(document).ready(function () {
+    //     $("#comment").emojioneArea({
+    //         pickerPosition: "top",
 
-        });
+    //     });
         // $(".emojionearea-editor").emojioneArea({
         //     events: {
         //         keypress: function (editor, event) {
@@ -789,7 +780,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         //         }
         //     }
         // });
-     })
+    // })
     //     $("#emojionearea2").emojioneArea({
     //         pickerPosition: "bottom",
     //         tonesStyle: "radio"

@@ -516,13 +516,12 @@ function getChatBack() {
       console.log("data: " + JSON.stringify(data));
       var chatData = data.data[0];
       console.log("chatData: " + JSON.stringify(chatData));
-      for (var x = 0; x < chatData.chat.length; x++) {
-
-        document.getElementById('message-container').innerHTML += '<div class="direct-chat-info clearfix"><span class="direct-chat-name pull-left">'
-          + chatData.chat[x].userName + '</span></div><i class="direct-chat-img" aria-hidden="true"></i><!-- /.direct-chat-img --><div class="content direct-chat-text new_windowAutoLink">' + chatData.chat[x].message + '</div><div class="direct-chat-info clearfix"><span class="direct-chat-timestamp pull-right">' + chatData.chat[x].textTime + '</span></div>'
-
+      if (chatData.chat) {
+        for (var x = 0; x < chatData.chat.length; x++) {
+          document.getElementById('message-container').innerHTML += '<div class="direct-chat-info clearfix"><span class="direct-chat-name pull-left">'
+            + chatData.chat[x].userName + '</span></div><i class="direct-chat-img" aria-hidden="true"></i><!-- /.direct-chat-img --><div class="content direct-chat-text new_windowAutoLink">' + chatData.chat[x].message + '</div><div class="direct-chat-info clearfix"><span class="direct-chat-timestamp pull-right">' + chatData.chat[x].textTime + '</span></div>'
+        }
       }
-
     },
     error: function (err) {
       console.log("err: " + JSON.stringify(err));
@@ -1169,7 +1168,7 @@ signaling_socket.on("authorizedForClose", function (config) {
 
 signaling_socket.on("connectionNotAlive", function (config) {
   console.log("connectionNotAlive-->");
-  if (config.deleteSessionId == queryLink ) {
+  if (config.deleteSessionId == queryLink) {
     userName = "";
     console.log("Sorry Connection not alive");
     alert("Sorry Connection not alive");
@@ -1180,7 +1179,7 @@ signaling_socket.on("connectionNotAlive", function (config) {
 
 signaling_socket.on("doRedirect", function (config) {
   console.log("doRedirect-->");
-  if (config.queryId == queryLink ) {
+  if (config.queryId == queryLink) {
     userName = "";
     console.log("Sorry Connection not alive");
     alert("Sorry Connection not alive");

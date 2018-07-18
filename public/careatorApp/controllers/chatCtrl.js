@@ -741,6 +741,14 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
             $("#sndmgs").click();
         }
     });
+    $(".emojionearea-editor").keyup(function (event) {
+        if (event.keyCode === 13) {
+            $("#sndmgs").click();
+        }
+    });
+
+
+    
 
 
     ///Auto Scroll Down Chat////////////////

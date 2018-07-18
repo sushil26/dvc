@@ -1081,7 +1081,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 #portfolio .portfolio-items .details h4 {
-  font-style: italic;
+  font-family: lato;
   color: #d9f7e9b5;
   font-size: 15px;
   font-weight: 100;

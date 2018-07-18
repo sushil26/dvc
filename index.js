@@ -208,7 +208,7 @@ io.sockets.on('connection', function (socket) {
         console.log("sockets[data.deleteSessionId]: " + sockets.valueOf(data.deleteSessionId));
         //delete tempSock.channels[channel];
         delete sockets[data.deleteSessionId];
-        delete sockets[tempSock.id];
+        // delete sockets[tempSock.id];
         delete peerTrackForVideo[data.deleteSessionId];
         delete channels[channel][data.deleteSessionId];
         console.log("sockets[data.deleteSessionId]: " + sockets[data.deleteSessionId]);

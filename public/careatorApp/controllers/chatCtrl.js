@@ -736,12 +736,21 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         console.log("newMessage-back");
     });
     // /* ### End: Front end CSS ### */
-    $("#comment").keyup(function (event) {
+    $(".reply-main").keyup(function (event) {
+        $(this).val('');
+
         if (event.keyCode === 13) {
+            $(this).val('');
             $("#sndmgs").click();
+
+
         }
     });
 
+    // $(".reply-main").focus(function () {
+
+
+    // })
 
     ///Auto Scroll Down Chat////////////////
     $scope.scrollDown = function () {
@@ -768,19 +777,20 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
             pickerPosition: "top",
 
         });
-        $(".emojionearea-editor").emojioneArea({
-            events: {
-                keypress: function (editor, event) {
-             
-                    if (event.which == 13) {
-                        $('.emojionearea-editor').data("emojioneArea").setText(""); // this work
-                        $("#sndmgs").click();
-                       
-                    }
-                }
-            }
-        });
     })
+    // $(".emojionearea-editor").emojioneArea({
+    //     events: {
+    //         keypress: function (editor, event) {
+
+    //             if (event.which == 13) {
+    //                 $('.emojionearea-editor').data("emojioneArea").setText(""); // this work
+    //                 $("#sndmgs").click();
+
+    //             }
+    //         }
+    //     }
+    // });
+    // })
     //     $("#emojionearea2").emojioneArea({
     //         pickerPosition: "bottom",
     //         tonesStyle: "radio"

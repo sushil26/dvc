@@ -914,7 +914,7 @@ document = window.document || {};
             editor = self.editor = div("editor").attr({
                 contenteditable: (self.standalone) ? false : true,
                 placeholder: options.placeholder || source.data("placeholder") || source.attr("placeholder") || "",
-                tabindex: 1
+                tabindex: 0
             }),
             button = self.button = div('button',
                 div('button-open'),

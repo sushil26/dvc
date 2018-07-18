@@ -29,7 +29,7 @@ app.use(fileUpload());
 var queryId = null;
 var userName = null;
 var time = null;
-var allDisconnectedQueryId = [];
+
 var mongoConfig = require('./config/dbConfig.js');
 
 // var chatHistory = db.collection("chatHistory");
@@ -81,20 +81,13 @@ app.get("/careator", function (req, res) {
     console.log("start to render page");
     res.sendFile(__dirname + '/public/careator.html');
 });
-var doRedirect = false;
+
 app.get("/careator/:id/:time", function (req, res) {
     queryId = req.params.id;
     time = req.params.id;
-    console.log("allDisconnectedQueryId.indexOf(queryId): " + allDisconnectedQueryId.indexOf(queryId));
-    if (allDisconnectedQueryId.indexOf(queryId) < 0) {
-        console.log("queryId: " + req.params.id + "Time: " + req.params.time);
-        console.log("start to render page");
-        res.sendFile(__dirname + '/public/careator.html');
-    }
-    else {
-        doRedirect = true;
-        res.sendFile(__dirname + '/public/careator.html');
-    }
+    console.log("queryId: " + req.params.id + "Time: " + req.params.time);
+    console.log("start to render page");
+    res.sendFile(__dirname + '/public/careator.html');
 });
 
 app.get("/careatorApp", function (req, res) {
@@ -187,13 +180,8 @@ io.sockets.on('connection', function (socket) {
     // console.log("peerTrackForVideo."+queryId+": "+peerTrackForVideo.queryId);
     /* ##### End arrang all sockets in single array with key which id we are using in a link   ##### */
     console.log("QueryId: " + queryId);
+    socket.emit('message', { 'peer_id': socket.id, 'queryId': queryId, 'time': time, 'userName': userName });
 
-    if (doRedirect == false) {
-        socket.emit('message', { 'peer_id': socket.id, 'queryId': queryId, 'time': time, 'userName': userName });
-    }
-    else {
-        socket.emit('doRedirect', { "queryId": queryId });
-    }
     socket.on('disconnect', function () {
         console.log("[" + socket.id + "] connection disconnected Start");
         for (var channel in socket.channels) {
@@ -207,25 +195,21 @@ io.sockets.on('connection', function (socket) {
 
     socket.on('disconnectSession', function (data) {
         console.log("disconnectSession-->");
-
+        socket.emit('disconnectSessionReply', { "deleteSessionId": data.deleteSessionId, "owner": data.owner });
         //if (sessionHeaderId == data.owner) {
-        // var tempSock = sockets[data.deleteSessionId];/* ### Note using this deleteSessionId we are getting real socket(tempSock)   ### */
-        // console.log("tempSock: " + JSON.stringify(tempSock));
-        // console.log("started to delete session");
-        // console.log("data.deleteSessionId: " + data.deleteSessionId);
-        // console.log("sockets[data.deleteSessionId]: " + sockets.valueOf(data.deleteSessionId));
-        // console.log("peerTrackForVideo[data.deleteSessionId]: " + peerTrackForVideo[data.deleteSessionId]);
+        var tempSock = sockets[data.deleteSessionId];/* ### Note using this deleteSessionId we are getting real socket(tempSock)   ### */
+        for (var channel in tempSock.channels) {
+            console.log("connection: channel: " + channel);
+            part(channel);
+        }
 
-        allDisconnectedQueryId.push(data.deleteSessionId);
-        socket.emit('connectionNotAlive', { "deleteSessionId": data.deleteSessionId, "owner": data.owner });
-        // delete peerTrack[peerTrack.indexOf(data.deleteSessionId)]
-        // socket.leave(data.deleteSessionId);
-        // delete sockets[sockets.valueOf(data.deleteSessionId)];
-        // delete sockets[data.deleteSessionId];
-        // delete peerTrackForVideo[data.deleteSessionId];
-        // socket.emit('connectionNotAlive', {""});
+        console.log("started to delete session");
+        console.log("data.deleteSessionId: " + data.deleteSessionId);
+        console.log("sockets[data.deleteSessionId]: " + sockets.valueOf(data.deleteSessionId));
+        delete sockets[data.deleteSessionId];
+        delete peerTrackForVideo[data.deleteSessionId];
+        delete channels[channel][data.deleteSessionId];
         console.log("sockets[data.deleteSessionId]: " + sockets[data.deleteSessionId]);
-        console.log("peerTrackForVideo[data.deleteSessionId]: " + peerTrackForVideo[data.deleteSessionId]);
         //}
         console.log("<--disconnectSession");
     })
@@ -246,6 +230,7 @@ io.sockets.on('connection', function (socket) {
 
         for (var key in peerWithQueryId) {
             console.log("key: " + key);
+
             var value = peerWithQueryId[key];
             var timeValue = peerWithTimeId[key];
             if (value == config.queryLink && timeValue == config.timeLink) {
@@ -279,7 +264,7 @@ io.sockets.on('connection', function (socket) {
             channels[channel][id].emit('addPeer', { 'peer_id': socket.id, 'should_create_offer': false, 'owner': socket.id, 'queryId': queryId, 'time': time, 'userName': peerWithUserName[socket.id], 'sessionHeaderId': sessionHeaderId });
             socket.emit('addPeer', { 'peer_id': id, 'should_create_offer': true, 'owner': socket.id, 'queryId': queryId, 'time': time, 'userName': peerWithUserName[id], 'sessionHeaderId': sessionHeaderId });
         }
-        console.log("channel: " + channel);
+
         channels[channel][socket.id] = socket;
         socket.channels[channel] = channel;
         console.log("<--Join");

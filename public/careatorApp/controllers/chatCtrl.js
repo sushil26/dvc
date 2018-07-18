@@ -764,10 +764,10 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
 
     ////////emoji/////////////////////////////
     $(document).ready(function () {
-        // $("#comment").emojioneArea({
-        //     pickerPosition: "top",
+        $("#comment").emojioneArea({
+            pickerPosition: "top",
 
-        // });
+        });
         // $(".emojionearea-editor").emojioneArea({
         //     events: {
         //         keypress: function (editor, event) {

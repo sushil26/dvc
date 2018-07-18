@@ -40,7 +40,8 @@
     width: auto;
     position: relative;
     overflow: hidden;
-    height: calc(100% - 38px);
+    height: 90vh;
+    /* height: calc(100% - 38px); */
     margin: auto;
     padding: 0;
     box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .06), 0 2px 5px 0 rgba(0, 0, 0, .2);
@@ -48,6 +49,7 @@
 
 .app-one {
     background-color: #f7f7f7;
+    height: 90vh;
     height: 87vh;
     overflow: hidden;
     margin: 0;

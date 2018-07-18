@@ -4258,8 +4258,8 @@ ul.amounts li {
 
 .panel-heading,
 .modal-header {
-  background: #428bca;
-  /* background: #1a3b56; */
+  /* background: #428bca; */
+  background: #1a3b56;
   color: white;
 }
 

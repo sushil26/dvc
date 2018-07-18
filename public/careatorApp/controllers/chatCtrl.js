@@ -394,7 +394,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
     }
 
     $scope.sendText = function () {
-        $('.reply-main').val('');
+        $('.emojionearea-editor').val('');
         console.log("sendText-->");
         console.log("$scope.typedMessage: " + $scope.typedMessage);
         var api;

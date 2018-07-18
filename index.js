@@ -198,21 +198,23 @@ io.sockets.on('connection', function (socket) {
         socket.emit('disconnectSessionReply', { "deleteSessionId": data.deleteSessionId, "owner": data.owner });
         //if (sessionHeaderId == data.owner) {
         var tempSock = sockets[data.deleteSessionId];/* ### Note using this deleteSessionId we are getting real socket(tempSock)   ### */
-        // for (var channel in tempSock.channels) {
-        //     console.log("connection: channel: " + channel);
-        //     part(channel);
-        // }
-
+       console.log("tempSock: "+JSON.stringify(tempSock));
         console.log("started to delete session");
         console.log("data.deleteSessionId: " + data.deleteSessionId);
         console.log("sockets[data.deleteSessionId]: " + sockets.valueOf(data.deleteSessionId));
+        console.log("peerTrackForVideo[data.deleteSessionId]: " + peerTrackForVideo[data.deleteSessionId]);
+        console.log(" channels['some-global-ch-name'][data.deleteSessionId]: " +  channels[some-global-ch-name][data.deleteSessionId]);
+        console.log("   socket.channels[some-global-ch-name] : " +    socket.channels[some-global-ch-name] );
         //delete tempSock.channels[channel];
-        // delete channels[channel][data.deleteSessionId];
+       
+       delete channels[some-global-ch-name][data.deleteSessionId];
+       delete  sockets[sockets.valueOf(data.deleteSessionId)];
         delete sockets[data.deleteSessionId];
         // delete sockets[tempSock.id];
         delete peerTrackForVideo[data.deleteSessionId];
-      
+
         console.log("sockets[data.deleteSessionId]: " + sockets[data.deleteSessionId]);
+        console.log("peerTrackForVideo[data.deleteSessionId]: " + peerTrackForVideo[data.deleteSessionId]);
         //}
         console.log("<--disconnectSession");
     })
@@ -266,7 +268,7 @@ io.sockets.on('connection', function (socket) {
             channels[channel][id].emit('addPeer', { 'peer_id': socket.id, 'should_create_offer': false, 'owner': socket.id, 'queryId': queryId, 'time': time, 'userName': peerWithUserName[socket.id], 'sessionHeaderId': sessionHeaderId });
             socket.emit('addPeer', { 'peer_id': id, 'should_create_offer': true, 'owner': socket.id, 'queryId': queryId, 'time': time, 'userName': peerWithUserName[id], 'sessionHeaderId': sessionHeaderId });
         }
-
+console.log("channel: "+channel);
         channels[channel][socket.id] = socket;
         socket.channels[channel] = channel;
         console.log("<--Join");

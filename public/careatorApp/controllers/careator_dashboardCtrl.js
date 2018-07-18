@@ -43,6 +43,9 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
             console.log("restrictedArray: " + JSON.stringify(restrictedArray));
             userData.restrictedTo = restrictedArray;
         }
+        if(localStorage.getItem("profilePicPath")){
+            userData.profilePicPath = localStorage.getItem("profilePicPath");
+        }
 
         careatorSessionAuth.setAccess(userData);
         var userData = careatorSessionAuth.getAccess("userData");

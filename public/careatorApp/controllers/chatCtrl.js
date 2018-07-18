@@ -739,6 +739,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
     $(".reply-main").keyup(function (event) {
         if (event.keyCode === 13) {
             $("#sndmgs").click();
+            $(this).val('');
         }
     });
 

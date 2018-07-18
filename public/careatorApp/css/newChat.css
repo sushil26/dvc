@@ -1,3 +1,26 @@
+/* .img-circle {
+    -webkit-animation-name: example;
+    -webkit-animation-duration: 4s;
+    animation-name: example;
+    animation-duration: 4s;
+}
+@-webkit-keyframes example {
+    from {
+        border: 0px solid yellowgreen;
+    }
+    to {
+        border: 2px solid yellowgreen;
+    }
+}
+@keyframes example {
+    from {
+        border: 2px solid yellowgreen;
+    }
+    to {
+        border: 2px solid yellowgreen;
+    }
+} */
+
 .modal {
     font-family: Lato;
 }
@@ -88,7 +111,6 @@
 }
 
 .heading {
-    
     height: 60px;
     padding: 5px;
     /* padding: 19px 15px 10px 15px; */

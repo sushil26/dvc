@@ -276,7 +276,8 @@ io.sockets.on('connection', function (socket) {
         socket.channels[channel] = channel;
     }
     else{
-        channels[channel][id].emit('connectionNotAlive', { 'peer_id':config.owner, 'queryId': config.queryLink });
+        console.log("connectionNotAlive---->");
+        channels[channel][config.owner].emit('connectionNotAlive', { 'peer_id':config.owner, 'queryId': config.queryLink });
           
     }
         console.log("<--Join");

@@ -801,7 +801,7 @@ signaling_socket.on("addPeer", function (config) {
     peer_userName_elements[peer_id] = document.getElementById("" + peer_id + "remoteContainer");
     $("#" + peer_id + "Remote").on('loadstart', function (event) {
       $(this).addClass('background');
-      $(this).attr("poster", "/img/Preloader_2.gif");
+      $(this).attr("poster", "/img/ loading.gif");
     });
 
     $("#" + peer_id + "Remote").on('canplay', function (event) {
@@ -1256,7 +1256,7 @@ function setup_local_media(callback, errorback) {
       /* ### Start: Loader Start and Stop ### */
       $('#videoElem').on('loadstart', function (event) {
         $(this).addClass('background');
-        $(this).attr("poster", "/img/Preloader_2.gif");
+        $(this).attr("poster", "/img/ loading.gif");
       });
       $('#videoElem').on('canplay', function (event) {
         $(this).removeClass('background');
@@ -1411,7 +1411,7 @@ function setup_local_media(callback, errorback) {
           /* ### Start: Loader Start and Stop ### */
           $("#screenShareElem").on('loadstart', function (event) {
             $(this).addClass('background');
-            $(this).attr("poster", "/img/Preloader_2.gif");
+            $(this).attr("poster", "/img/ loading.gif");
           });
           $("#screenShareElem").on('canplay', function (event) {
             $(this).removeClass('background');
@@ -1462,7 +1462,7 @@ function setup_local_media(callback, errorback) {
               /* ### Start: Loader Start and Stop ### */
               $("#videoElem").on('loadstart', function (event) {
                 $(this).addClass('background');
-                $(this).attr("poster", "/img/Preloader_2.gif");
+                $(this).attr("poster", "/img/ loading.gif");
               });
               $("#videoElem").on('canplay', function (event) {
                 $(this).removeClass('background');

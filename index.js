@@ -179,7 +179,6 @@ io.sockets.on('connection', function (socket) {
     peerTrackForVideo[queryId].push(socket.id);
     // console.log("peerTrackForVideo."+queryId+": "+peerTrackForVideo.queryId);
     /* ##### End arrang all sockets in single array with key which id we are using in a link   ##### */
-
     console.log("QueryId: " + queryId);
     socket.emit('message', { 'peer_id': socket.id, 'queryId': queryId, 'time': time, 'userName': userName });
 
@@ -207,7 +206,7 @@ io.sockets.on('connection', function (socket) {
         // console.log(" channels['some-global-ch-name'][data.deleteSessionId]: " + channels[some - global - ch - name][data.deleteSessionId]);
         // console.log("   socket.channels[some-global-ch-name] : " + socket.channels[some - global - ch - name]);
         //delete tempSock.channels[channel];
-        delete peerTrack[peerTrack.indexOf(data.deleteSessionId)];
+        delete peerTrack[peerTrack.indexOf(data.deleteSessionId)]
         socket.leave(data.deleteSessionId);
         //delete channels['some-global-ch-name'][data.deleteSessionId];
         delete sockets[sockets.valueOf(data.deleteSessionId)];
@@ -226,7 +225,6 @@ io.sockets.on('connection', function (socket) {
         console.log("Join-->");
         // console.log("config.owner: "+config.owner);
         // console.log("config.queryLink: "+config.queryLink);
-        if(sockets[config.queryLink]>=0){
         peerWithQueryId[config.owner] = config.queryLink;
         peerWithTimeId[config.owner] = config.timeLink;
 
@@ -274,12 +272,6 @@ io.sockets.on('connection', function (socket) {
         console.log("channel: " + channel);
         channels[channel][socket.id] = socket;
         socket.channels[channel] = channel;
-    }
-    else{
-        console.log("connectionNotAlive---->");
-        channels[channel][config.owner].emit('connectionNotAlive', { 'peer_id':config.owner, 'queryId': config.queryLink });
-          
-    }
         console.log("<--Join");
     });
 

@@ -1017,7 +1017,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 #portfolio {
   background-image: url(././bc.jpg);
-  background: #f7f7f7;
+  /* background: #f7f7f7; */
   padding: 80px 0;
 }
 
@@ -1077,7 +1077,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 #portfolio .portfolio-items .details {
   height: 50px;
   /* background: #2dc997; */
-  /* background-image: linear-gradient(to bottom, #383c3f 0%, #202224 100%); */
+  background-image: linear-gradient(to bottom, #383c3f 0%, #202224 100%);
   position: absolute;
   width: 100%;
   height: 50px;

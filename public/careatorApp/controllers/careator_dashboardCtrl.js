@@ -85,7 +85,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
 
     $scope.logout = function () {
         console.log("logout-->");
-        var r = confirm("Are You Sure To Delete ????");
+        var r = confirm("Are you sure to close all session????");
         if (r == true) {
         socket.emit("comm_logout", { "userId": $scope.userData.userId, "email": $scope.userData.email }); /* ### Note: Logout notification to server ### */
         }

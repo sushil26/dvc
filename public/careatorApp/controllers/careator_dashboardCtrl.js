@@ -160,7 +160,8 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
     /* #### Start: Logout request from server(index.js) #### */
     socket.on('comm_logoutNotifyToUserById', function (data) {
         console.log("***comm_logoutNotifyToUserById-->: " + JSON.stringify(data));
-        if (data.userId == $scope.userData.userId && data.email == $scope.email) {
+        if (data.userId == $scope.userData.userId && data.email == $scope.userData.email) {
+            console.log("started to remove localstorage");
             localStorage.removeItem("careatorEmail");
             localStorage.removeItem("sessionUrlId");
             localStorage.removeItem("careator_remoteEmail");

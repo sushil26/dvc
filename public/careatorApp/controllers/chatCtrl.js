@@ -751,13 +751,14 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
     $scope.scrollDown = function () {
         console.log("scrollDown-->");
 
-        var $chat = $(".message-body");
-        $chat.scrollTop($chat.height());
+        // var $chat = $(".message-body");
+        // $chat.scrollTop($chat.height());
 
-
-        // $("#pulldown").animate({
-        //     scrollTop: $("#pulldown").prop("scrollHeight")
-        // }, 500);
+        var elmnt = document.getElementById("pulldown");
+        var y = elmnt.scrollHeight;
+        $("#pulldown").animate({
+            scrollTop: $("#pulldown").prop("y")
+        }, 500);
 
     }
 

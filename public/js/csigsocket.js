@@ -82,7 +82,7 @@ if (stuff.length > 5) {
         var emailIdSplit = userNameEmail.split('@');
         userName = emailIdSplit[0];
         document.getElementById("videoConferenceUrl").style.display = "block";
-        
+
         document.getElementById("emailInvitation").style.display = "block";
         document.getElementById("videoCtrolBar").style.display = "grid";
         getChatBack();
@@ -157,7 +157,7 @@ if (stuff.length > 5) {
     console.log("localStorage.getItem(chatRights): " + localStorage.getItem("chatRights"));
     if (localStorage.getItem("videoRights") == 'yes') {
       document.getElementById("videoConfStart").style.display = "block";
-      $("#buttonpage").css({"min-height":"auto"});
+      $("#buttonpage").css({ "min-height": "auto" });
     }
     if (localStorage.getItem("chatRights") == 'yes') {
       document.getElementById("chatConfStart").style.display = "block";
@@ -236,12 +236,12 @@ function checkPassword() {
         localStorage.setItem("email", data.data.email);
         localStorage.setItem("userId", data.data._id);
         localStorage.setItem("sessionPassword", password);
-        localStorage.setItem("sessionEnc",data.sessionData);
+        localStorage.setItem("sessionEnc", data.sessionData);
         userName = localStorage.getItem("userName");
         if (data.data.videoRights == 'yes') {
           localStorage.setItem("videoRights", 'yes');
           document.getElementById("videoConfStart").style.display = "inline";
-          $("#buttonpage").css({"min-height":"auto"});
+          $("#buttonpage").css({ "min-height": "auto" });
         }
         if (data.data.chatRights == 'yes') {
           localStorage.setItem("chatRights", 'yes');
@@ -407,7 +407,7 @@ function disconnecSession() {
 
   if (localStorage.getItem("sessionUrlId") == queryLink && localStorage.getItem("careatorEmail")) {
     console.log("start to disconnect the session");
-     localStorage.removeItem("sessionUrlId");
+    localStorage.removeItem("sessionUrlId");
     signaling_socket.emit("disconnectSession", {
       deleteSessionId: queryLink,
       owner: peerNew_id
@@ -540,7 +540,7 @@ signaling_socket.on("connect", function () {
       document.getElementById("screenBtns").style.display = "inline";
       document.getElementById("homeLink").style.display = "inline";
       document.getElementById("videoConfStart").style.display = "none";
-      $("#buttonpage").css({"min-height":"100vh"});
+      $("#buttonpage").css({ "min-height": "100vh" });
       // document.getElementById("chelam").style.display = "none";
       // document.getElementById("mobile-nav-toggle").style.display = "none";
       document.getElementById("openChat").style.display = "inline";
@@ -582,7 +582,7 @@ signaling_socket.on("connect", function () {
             console.log("data: " + JSON.stringify(data));
             localStorage.removeItem("careatorEmail");
             localStorage.setItem("careator_remoteEmail", careator_remoteEmail);
-            localStorage.setItem("sessionEnc",data.sessionData);
+            localStorage.setItem("sessionEnc", data.sessionData);
             var emailIdSplit = careator_remoteEmail.split('@');
             console.log("2 cond: emailIdSplit: " + JSON.stringify(emailIdSplit));
             userName = emailIdSplit[0];
@@ -1747,8 +1747,8 @@ signaling_socket.on('comm_logoutNotifyToUserById', function (data) {
 })
 
 window.onbeforeunload = function (event) {
-  
-  if(stuff.length > 5){
+
+  if (stuff.length > 5) {
     var message = 'Sure you want to leave?';
     if (typeof event == 'undefined') {
       event = window.event;
@@ -1756,8 +1756,11 @@ window.onbeforeunload = function (event) {
     if (event) {
       event.returnValue = message;
     }
-    console.log("message: "+message);
+    console.log("message: " + message);
     return message;
+  }
+  else {
+    this.alert("super");
   }
 
 }

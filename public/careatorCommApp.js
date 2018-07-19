@@ -12,7 +12,7 @@ careatorApp.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: '/careatorApp/html/createUsers.html',
             resolve: {
                 result: function (careatorSessionAuth, $window) {
-                    var userData = sessionAuthFactory.getAccess("userData");
+                    var userData = careatorSessionAuth.getAccess("userData");
                     if (userData.email == 'vc4allAdmin@gmail.com') {
 
                     }
@@ -28,7 +28,7 @@ careatorApp.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: '/careatorApp/html/createGroup.html',
             resolve: {
                 result: function (careatorSessionAuth, $window) {
-                    var userData = sessionAuthFactory.getAccess("userData");
+                    var userData = careatorSessionAuth.getAccess("userData");
                     if (userData.email == 'vc4allAdmin@gmail.com') {
 
                     }
@@ -44,7 +44,7 @@ careatorApp.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: '/careatorApp/html/userList.html',
             resolve: {
                 result: function (careatorSessionAuth, $window) {
-                    var userData = sessionAuthFactory.getAccess("userData");
+                    var userData = careatorSessionAuth.getAccess("userData");
                     if (userData.email == 'vc4allAdmin@gmail.com') {
 
                     }
@@ -60,7 +60,7 @@ careatorApp.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: '/careatorApp/html/groupList.html',
             resolve: {
                 result: function (careatorSessionAuth, $window) {
-                    var userData = sessionAuthFactory.getAccess("userData");
+                    var userData = careatorSessionAuth.getAccess("userData");
                     if (userData.email == 'vc4allAdmin@gmail.com') {
 
                     }
@@ -76,7 +76,7 @@ careatorApp.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: '/careatorApp/html/userEdit.html',
             resolve: {
                 result: function (careatorSessionAuth, $window) {
-                    var userData = sessionAuthFactory.getAccess("userData");
+                    var userData = careatorSessionAuth.getAccess("userData");
                     if (userData.email == 'vc4allAdmin@gmail.com') {
 
                     }
@@ -91,7 +91,7 @@ careatorApp.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: '/careatorApp/html/groupEdit.html',
             resolve: {
                 result: function (careatorSessionAuth, $window) {
-                    var userData = sessionAuthFactory.getAccess("userData");
+                    var userData = careatorSessionAuth.getAccess("userData");
                     if (userData.email == 'vc4allAdmin@gmail.com') {
 
                     }
@@ -107,7 +107,7 @@ careatorApp.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: '/careatorApp/html/chatHistory.html',
             resolve: {
                 result: function (careatorSessionAuth, $window) {
-                    var userData = sessionAuthFactory.getAccess("userData");
+                    var userData = careatorSessionAuth.getAccess("userData");
                     if (userData.email == 'vc4allAdmin@gmail.com') {
 
                     }
@@ -123,7 +123,7 @@ careatorApp.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: '/careatorApp/html/chat.html',
             resolve: {
                 result: function (careatorSessionAuth, $window) {
-                    var userData = sessionAuthFactory.getAccess("userData");
+                    var userData = careatorSessionAuth.getAccess("userData");
                     if (userData) {
 
                     }
@@ -143,7 +143,7 @@ careatorApp.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: '/careatorApp/html/profile.html',
             resolve: {
                 result: function (careatorSessionAuth, $window) {
-                    var userData = sessionAuthFactory.getAccess("userData");
+                    var userData = careatorSessionAuth.getAccess("userData");
                     if (userData) {
 
                     }
@@ -158,7 +158,7 @@ careatorApp.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: '/careatorApp/html/userRestriction.html',
             resolve: {
                 result: function (careatorSessionAuth, $window) {
-                    var userData = sessionAuthFactory.getAccess("userData");
+                    var userData = careatorSessionAuth.getAccess("userData");
                     if (userData.email == 'vc4allAdmin@gmail.com') {
 
                     }

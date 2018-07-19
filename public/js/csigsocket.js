@@ -80,7 +80,6 @@ if (stuff.length > 5) {
         var emailIdSplit = userNameEmail.split('@');
         userName = emailIdSplit[0];
         document.getElementById("videoConferenceUrl").style.display = "block";
-        document.getElementById("logout").style.display = "block";
         document.getElementById("emailInvitation").style.display = "block";
         document.getElementById("videoCtrolBar").style.display = "grid";
         getChatBack();
@@ -116,7 +115,6 @@ if (stuff.length > 5) {
         userName = localStorage.getItem("careator_remoteEmail");
         careator_remoteEmail = true;
         document.getElementById("videoConferenceUrl").style.display = "none";
-        document.getElementById("logout").style.display = "none";
         document.getElementById("emailInvitation").style.display = "none";
         document.getElementById("videoCtrolBar").style.display = "grid";
         getChatBack();
@@ -126,7 +124,6 @@ if (stuff.length > 5) {
         console.log("err.responseText: " + JSON.stringify(err.responseText));
         console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
         document.getElementById("videoConferenceUrl").style.display = "none";
-        document.getElementById("logout").style.display = "none";
         document.getElementById("emailInvitation").style.display = "none";
         userName = "";
         localStorage.removeItem("careatorEmail");
@@ -152,7 +149,6 @@ if (stuff.length > 5) {
     console.log("2 cond: emailIdSplit: " + JSON.stringify(emailIdSplit));
     userName = emailIdSplit[0];
     document.getElementById("videoConferenceUrl").style.display = "block";
-    document.getElementById("logout").style.display = "block";
     document.getElementById("videoCtrolBar").style.display = "none";
     console.log("localStorage.getItem(videoRights): " + localStorage.getItem("videoRights"));
     console.log("localStorage.getItem(chatRights): " + localStorage.getItem("chatRights"));
@@ -267,7 +263,6 @@ function checkPassword() {
         //userName = emailIdSplit[0];
         console.log("userName: " + userName);
         document.getElementById("videoConferenceUrl").style.display = "block";
-        document.getElementById("logout").style.display = "block";
         // $('#myPasswordModal').modal('hide');
         window.location.href = "https://norecruits.com/careatorApp/#!/dashboard/profile";
       },
@@ -276,7 +271,6 @@ function checkPassword() {
         console.log("err.responseText: " + JSON.stringify(err.responseText));
         console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
         document.getElementById("videoConferenceUrl").style.display = "none";
-        document.getElementById("logout").style.display = "none";
         localStorage.removeItem("careatorEmail");
         userName = "";
       }
@@ -611,7 +605,6 @@ signaling_socket.on("connect", function () {
             userName = emailIdSplit[0];
             careator_remoteEmail = true;
             document.getElementById("videoConferenceUrl").style.display = "none";
-            document.getElementById("logout").style.display = "none";
             document.getElementById("emailInvitation").style.display = "none";
             document.getElementById("videoCtrolBar").style.display = "grid";
             localStorage.setItem("oneTimePassword", careator_remotePswd);
@@ -627,7 +620,6 @@ signaling_socket.on("connect", function () {
             console.log("err.responseText: " + JSON.stringify(err.responseText));
             console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
             document.getElementById("videoConferenceUrl").style.display = "none";
-            document.getElementById("logout").style.display = "none";
             document.getElementById("emailInvitation").style.display = "none";
             userName = "";
           }
@@ -1717,15 +1709,15 @@ $(".back-to-top").click(function () {
 
 socket.on('comm_logoutNotifyToUserById', function (data) {
   console.log("***comm_logoutNotifyToUserById-->: " + JSON.stringify(data));
-  if (data.email ==  localStorage.getItem("careatorEmail") || data.email ==  localStorage.getItem("careator_remoteEmail")) {
-   
+  if (data.email == localStorage.getItem("careatorEmail") || data.email == localStorage.getItem("careator_remoteEmail")) {
+
     localStorage.removeItem("sessionUrlId");
-   
+
     localStorage.removeItem("email");
     localStorage.removeItem("userName");
     localStorage.removeItem("empId");
     localStorage.removeItem("userId");
-   
+
     localStorage.removeItem("restrictedTo");
     localStorage.removeItem("chatStatus");
     localStorage.removeItem("profilePicPath");
@@ -1747,7 +1739,7 @@ socket.on('comm_logoutNotifyToUserById', function (data) {
       localStorage.removeItem("careator_remoteEmail");
       localStorage.removeItem("oneTimePassword");
       console.log("You are not session creater so you cant delete session");
-     
+
     }
 
     disconnecSession();

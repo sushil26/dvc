@@ -268,7 +268,8 @@ function checkPassword() {
         console.log("userName: " + userName);
         document.getElementById("videoConferenceUrl").style.display = "block";
         document.getElementById("logout").style.display = "block";
-        $('#myPasswordModal').modal('hide');
+        // $('#myPasswordModal').modal('hide');
+        window.location.href="https://norecruits.com/careatorApp/#!/dashboard/profile";
       },
       error: function (err) {
         console.log("err: " + JSON.stringify(err));
@@ -601,9 +602,10 @@ signaling_socket.on("connect", function () {
       if (userName != undefined && userName != "") {
         console.log("userName with localmedia setup call: " + userName);
         setup_local_media(function () {
-          join__channel(queryLink, {
+          join__channel(DEFAULT_CHANNEL, {
             "whatever-you--here": "stuff"
           });
+          
         });
       }
 
@@ -802,7 +804,7 @@ signaling_socket.on("addPeer", function (config) {
     peer_userName_elements[peer_id] = document.getElementById("" + peer_id + "remoteContainer");
     $("#" + peer_id + "Remote").on('loadstart', function (event) {
       $(this).addClass('background');
-      $(this).attr("poster", "/img/loading.gif");
+      $(this).attr("poster", "/img/Preloader_2.gif");
     });
 
     $("#" + peer_id + "Remote").on('canplay', function (event) {
@@ -1228,7 +1230,7 @@ function setup_local_media(callback, errorback) {
       /* ### Start: Loader Start and Stop ### */
       $('#videoElem').on('loadstart', function (event) {
         $(this).addClass('background');
-        $(this).attr("poster", "/img/loading.gif");
+        $(this).attr("poster", "/img/Preloader_2.gif");
       });
       $('#videoElem').on('canplay', function (event) {
         $(this).removeClass('background');
@@ -1383,7 +1385,7 @@ function setup_local_media(callback, errorback) {
           /* ### Start: Loader Start and Stop ### */
           $("#screenShareElem").on('loadstart', function (event) {
             $(this).addClass('background');
-            $(this).attr("poster", "/img/loading.gif");
+            $(this).attr("poster", "/img/Preloader_2.gif");
           });
           $("#screenShareElem").on('canplay', function (event) {
             $(this).removeClass('background');
@@ -1434,7 +1436,7 @@ function setup_local_media(callback, errorback) {
               /* ### Start: Loader Start and Stop ### */
               $("#videoElem").on('loadstart', function (event) {
                 $(this).addClass('background');
-                $(this).attr("poster", "/img/loading.gif");
+                $(this).attr("poster", "/img/Preloader_2.gif");
               });
               $("#videoElem").on('canplay', function (event) {
                 $(this).removeClass('background');

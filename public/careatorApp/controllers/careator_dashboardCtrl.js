@@ -236,7 +236,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
     });
 
 
-
+/* ##### Start: on window only one open tab should be there for this page  ##### */
     if (+localStorage.tabCount > 0)
         close()
     else
@@ -248,3 +248,4 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
     };
 
 })
+/* ##### End: on window only one open tab should be there for this page  ##### */

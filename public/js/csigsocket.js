@@ -1746,24 +1746,7 @@ signaling_socket.on('comm_logoutNotifyToUserById', function (data) {
 
 })
 
-window.onbeforeunload = function (event) {
 
-  if (stuff.length > 5) {
-    var message = 'Sure you want to leave?';
-    if (typeof event == 'undefined') {
-      event = window.event;
-    }
-    if (event) {
-      event.returnValue = message;
-    }
-    console.log("message: " + message);
-    return message;
-  }
-  else {
-    this.alert("super");
-  }
-
-}
 
 
 

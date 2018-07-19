@@ -2138,7 +2138,7 @@ module.exports.getLoggedinSessionURLById = function (req, res){
         var findObj = {
             "_id": ObjectId(id)
         }
-        careatorMaster.find(findObj, function (err, getSessionURL) {
+        careatorMaster.find(findObj).toArray(function (err, getSessionURL) {
             if (err) {
                 console.log("err: " + JSON.stringify(err));
                 response = {

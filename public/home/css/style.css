@@ -198,7 +198,7 @@
 .bouncy {
   animation: blob 1s linear;
   line-height: 50px;
-  font-size: 25px;
+  font-size: 22px;
   margin: 5px;
   position: relative;
   cursor: pointer;

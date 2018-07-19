@@ -1739,8 +1739,17 @@ signaling_socket.on('comm_logoutNotifyToUserById', function (data) {
       console.log("You are not session creater so you cant delete session");
     }
 
-    disconnecSession();
+    signaling_socket.emit("disconnectSession", {
+      deleteSessionId: queryLink,
+      owner: peerNew_id
+    });
     //window.location.href = "https://norecruits.com";
+  }
+  if(localStorage.getItem("careatorEmail")==null || localStorage.getItem("careator_remoteEmail")==null){
+    signaling_socket.emit("disconnectSession", {
+      deleteSessionId: queryLink,
+      owner: peerNew_id
+    });
   }
 
 })

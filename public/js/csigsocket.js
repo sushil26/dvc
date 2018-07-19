@@ -155,6 +155,7 @@ if (stuff.length > 5) {
     console.log("localStorage.getItem(chatRights): " + localStorage.getItem("chatRights"));
     if (localStorage.getItem("videoRights") == 'yes') {
       document.getElementById("videoConfStart").style.display = "block";
+      $("#buttonpage").css({"min-height":"auto"});
     }
     if (localStorage.getItem("chatRights") == 'yes') {
       document.getElementById("chatConfStart").style.display = "block";
@@ -237,6 +238,7 @@ function checkPassword() {
         if (data.data.videoRights == 'yes') {
           localStorage.setItem("videoRights", 'yes');
           document.getElementById("videoConfStart").style.display = "inline";
+          $("#buttonpage").css({"min-height":"auto"});
         }
         if (data.data.chatRights == 'yes') {
           localStorage.setItem("chatRights", 'yes');
@@ -560,6 +562,7 @@ signaling_socket.on("connect", function () {
       document.getElementById("screenBtns").style.display = "inline";
       document.getElementById("homeLink").style.display = "inline";
       document.getElementById("videoConfStart").style.display = "none";
+      $("#buttonpage").css({"min-height":"100vh"});
       // document.getElementById("chelam").style.display = "none";
       // document.getElementById("mobile-nav-toggle").style.display = "none";
       document.getElementById("openChat").style.display = "inline";

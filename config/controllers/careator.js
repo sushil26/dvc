@@ -2128,3 +2128,39 @@ module.exports.comm_profileImgUpdateById = function (req, res) {
     }
 }
 
+module.exports.getLoggedinSessionURLById = function (req, res){
+    console.log("getLoggedinSessionURLById-->");
+    var response;
+    if (general.emptyCheck(id)) {
+        var findObj = {
+            "_id": ObjectId(id)
+        }
+        careatorMaster.find(findObj, function (err, getSessionURL) {
+            if (err) {
+                console.log("err: " + JSON.stringify(err));
+                response = {
+                    status: false,
+                    message: "Unsucessfully Pic Updated",
+                    data: err
+                };
+                res.status(400).send(responseData);
+            } else {
+                console.log("getSessionURL: " + JSON.stringify(getSessionURL));
+                response = {
+                    status: true,
+                    message: "Sucessfully Pic Updated",
+                    data: getSessionURL
+                };
+                res.status(200).send(response);
+            }
+        })
+    }
+    else{
+        console.log("empty value found");
+        response = {
+            status: false,
+            message: "Empty value found",
+        }
+        res.status(400).send(response);   
+    }
+}

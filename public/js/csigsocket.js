@@ -1743,6 +1743,10 @@ signaling_socket.on('comm_logoutNotifyToUserById', function (data) {
     disconnecSession();
     //window.location.href = "https://norecruits.com";
   }
+  if(data.sessionURL== localStorage.getItem("sessionUrlId"))
+  {
+    disconnecSession(); 
+  }
   // if(localStorage.getItem("careatorEmail")==null || localStorage.getItem("careator_remoteEmail")==null){
   //   disconnecSession();
   // }

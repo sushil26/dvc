@@ -87,9 +87,26 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
         console.log("logout-->");
         var r = confirm("Are you sure to close all session????");
         if (r == true) {
-        socket.emit("comm_logout", { "userId": $scope.userData.userId, "email": $scope.userData.email }); /* ### Note: Logout notification to server ### */
+            var id = userData.userId;
+            var api = "https://norecruits.com/careator_loggedin/getLoggedinSessionURLById/" + id;
+            console.log("api: " + api);
+            careatorHttpFactory.get(api).then(function (data) {
+                console.log("data--" + JSON.stringify(data.data));
+                var checkStatus = careatorHttpFactory.dataValidation(data);
+                console.log("checkStatus: " + checkStatus);
+                if (checkStatus) {
+                    var sessionURL = data.data.data.sessionURL;
+                    console.log(data.data.message);
+                    console.log("sessionURL: " + sessionURL);
+                    socket.emit("comm_logout", { "userId": $scope.userData.userId, "email": $scope.userData.email, "sessionURL": sessionURL }); /* ### Note: Logout notification to server ### */
+                } else {
+                    console.log("Sorry");
+                    console.log(data.data.message);
+                }
+            })
+
         }
-        else{
+        else {
             console.log("Logout cancelled");
         }
     }
@@ -169,9 +186,6 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
         if (data.userId == $scope.userData.userId && data.email == $scope.userData.email) {
             console.log("started to remove localstorage");
             localStorage.removeItem("careatorEmail");
-            localStorage.removeItem("sessionUrlId");
-            localStorage.removeItem("careator_remoteEmail");
-            localStorage.removeItem("sessionUrlId");
             localStorage.removeItem("careator_remoteEmail");
             localStorage.removeItem("email");
             localStorage.removeItem("userName");

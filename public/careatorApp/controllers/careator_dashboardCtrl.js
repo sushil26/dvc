@@ -162,20 +162,20 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
         console.log("***comm_logoutNotifyToUserById-->: " + JSON.stringify(data));
         if (data.userId == $scope.userData.userId && data.email == $scope.userData.email) {
             console.log("started to remove localstorage");
-            // localStorage.removeItem("careatorEmail");
-            // localStorage.removeItem("sessionUrlId");
-            // localStorage.removeItem("careator_remoteEmail");
-            // localStorage.removeItem("sessionUrlId");
-            // localStorage.removeItem("careator_remoteEmail");
-            // localStorage.removeItem("email");
-            // localStorage.removeItem("userName");
-            // localStorage.removeItem("empId");
-            // localStorage.removeItem("userId");
-            // localStorage.removeItem("videoRights");
-            // localStorage.removeItem("chatRights");
-            // localStorage.removeItem("restrictedTo");
-            // localStorage.removeItem("chatStatus");
-            // localStorage.removeItem("profilePicPath");
+            localStorage.removeItem("careatorEmail");
+            localStorage.removeItem("sessionUrlId");
+            localStorage.removeItem("careator_remoteEmail");
+            localStorage.removeItem("sessionUrlId");
+            localStorage.removeItem("careator_remoteEmail");
+            localStorage.removeItem("email");
+            localStorage.removeItem("userName");
+            localStorage.removeItem("empId");
+            localStorage.removeItem("userId");
+            localStorage.removeItem("videoRights");
+            localStorage.removeItem("chatRights");
+            localStorage.removeItem("restrictedTo");
+            localStorage.removeItem("chatStatus");
+            localStorage.removeItem("profilePicPath");
             careatorSessionAuth.clearAccess("userData");
             window.location.href = "https://norecruits.com";
         }

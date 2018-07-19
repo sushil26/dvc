@@ -57,7 +57,8 @@ if (stuff.length > 5) {
   if (localStorage.getItem("redirctRequired") == 'true') {
     console.log("localStorage.getItem(redirctRequired): " + localStorage.getItem("redirctRequired"));
     localStorage.removeItem("redirctRequired");
-    window.location.href = "/careator"
+    close();
+    //window.location.href = "/careator";
   }
   if (localStorage.getItem("careatorEmail") && localStorage.getItem("sessionPassword") && (localStorage.getItem("videoRights") == 'yes')) {
     console.log("Hoster session check");
@@ -1712,36 +1713,39 @@ signaling_socket.on('comm_logoutNotifyToUserById', function (data) {
   console.log("localStorage.getItem(careatorEmail): "+localStorage.getItem("careatorEmail"));
   if (data.email == localStorage.getItem("careatorEmail") || data.email == localStorage.getItem("careator_remoteEmail")) {
     console.log("Start to remove the session");
-    localStorage.removeItem("email");
-    localStorage.removeItem("userName");
-    localStorage.removeItem("empId");
-    localStorage.removeItem("userId");
-    localStorage.removeItem("restrictedTo");
-    localStorage.removeItem("chatStatus");
-    localStorage.removeItem("profilePicPath");
-    if (localStorage.getItem("chatRights")) {
-      localStorage.removeItem("chatRights");
-    }
-    if (localStorage.getItem("videoRights")) {
-      localStorage.removeItem("videoRights");
-    }
-    if (localStorage.getItem("sessionUrlId") == queryLink && localStorage.getItem("careatorEmail")) {
-      console.log("start to disconnect the session");
-      localStorage.removeItem("careatorEmail");
-      localStorage.removeItem("sessionUrlId");
-      localStorage.removeItem("careator_remoteEmail");
-      localStorage.removeItem("sessionPassword")
-    } else {
-      localStorage.removeItem("careatorEmail");
-      localStorage.removeItem("sessionUrlId");
-      localStorage.removeItem("careator_remoteEmail");
-      localStorage.removeItem("oneTimePassword");
-      console.log("You are not session creater so you cant delete session");
-    }
+    // localStorage.removeItem("email");
+    // localStorage.removeItem("userName");
+    // localStorage.removeItem("empId");
+    // localStorage.removeItem("userId");
+    // localStorage.removeItem("restrictedTo");
+    // localStorage.removeItem("chatStatus");
+    // localStorage.removeItem("profilePicPath");
+    // if (localStorage.getItem("chatRights")) {
+    //   localStorage.removeItem("chatRights");
+    // }
+    // if (localStorage.getItem("videoRights")) {
+    //   localStorage.removeItem("videoRights");
+    // }
+    // if (localStorage.getItem("sessionUrlId") == queryLink && localStorage.getItem("careatorEmail")) {
+    //   console.log("start to disconnect the session");
+    //   localStorage.removeItem("careatorEmail");
+    //   localStorage.removeItem("sessionUrlId");
+    //   localStorage.removeItem("careator_remoteEmail");
+    //   localStorage.removeItem("sessionPassword")
+    // } else {
+    //   localStorage.removeItem("careatorEmail");
+    //   localStorage.removeItem("sessionUrlId");
+    //   localStorage.removeItem("careator_remoteEmail");
+    //   localStorage.removeItem("oneTimePassword");
+    //   console.log("You are not session creater so you cant delete session");
+    // }
 
     disconnecSession();
     //window.location.href = "https://norecruits.com";
   }
+  // if(localStorage.getItem("careatorEmail")==null || localStorage.getItem("careator_remoteEmail")==null){
+  //   disconnecSession();
+  // }
 
 })
 

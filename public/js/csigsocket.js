@@ -1707,7 +1707,7 @@ $(".back-to-top").click(function () {
   return false;
 });
 
-socket.on('comm_logoutNotifyToUserById', function (data) {
+signaling_socket.on('comm_logoutNotifyToUserById', function (data) {
   console.log("***comm_logoutNotifyToUserById-->: " + JSON.stringify(data));
   if (data.email == localStorage.getItem("careatorEmail") || data.email == localStorage.getItem("careator_remoteEmail")) {
 

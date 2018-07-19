@@ -2152,7 +2152,7 @@ module.exports.getLoggedinSessionURLById = function (req, res){
                 response = {
                     status: true,
                     message: "Sucessfully Pic Updated",
-                    data: getSessionURL
+                    data: getSessionURL[0]
                 };
                 res.status(200).send(response);
             }

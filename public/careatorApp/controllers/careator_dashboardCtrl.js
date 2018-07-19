@@ -49,6 +49,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
 
         careatorSessionAuth.setAccess(userData);
         var userData = careatorSessionAuth.getAccess("userData");
+        $scope.userData = userData;
         console.log("userData: " + JSON.stringify(userData));
     }
 

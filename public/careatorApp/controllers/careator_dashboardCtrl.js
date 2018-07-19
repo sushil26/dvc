@@ -43,7 +43,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
             console.log("restrictedArray: " + JSON.stringify(restrictedArray));
             userData.restrictedTo = restrictedArray;
         }
-        if(localStorage.getItem("profilePicPath")){
+        if (localStorage.getItem("profilePicPath")) {
             userData.profilePicPath = localStorage.getItem("profilePicPath");
         }
 
@@ -61,17 +61,17 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
         $scope.videoRights = "no";
     }
 
-    $scope.getAdmin_email_id = function(){
+    $scope.getAdmin_email_id = function () {
         console.log("getAdmin_email_id-->");
         var api = "https://norecruits.com/careator_adminBasicData/getAdminObjectId";
         console.log("api: " + api);
         careatorHttpFactory.get(api).then(function (data) {
             console.log("data--" + JSON.stringify(data.data));
             var checkStatus = careatorHttpFactory.dataValidation(data);
-            console.log("checkStatus: "+checkStatus);
+            console.log("checkStatus: " + checkStatus);
             if (checkStatus) {
                 $rootScope.adminId = data.data.data;
-               console.log("$rootScope.adminId: "+$rootScope.adminId);
+                console.log("$rootScope.adminId: " + $rootScope.adminId);
                 console.log(data.data.message);
 
             } else {
@@ -85,22 +85,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
 
     $scope.logout = function () {
         console.log("logout-->");
-        localStorage.removeItem("careatorEmail");
-        localStorage.removeItem("sessionUrlId");
-        localStorage.removeItem("careator_remoteEmail");
-        localStorage.removeItem("sessionUrlId");
-        localStorage.removeItem("careator_remoteEmail");
-        localStorage.removeItem("email");
-        localStorage.removeItem("userName");
-        localStorage.removeItem("empId");
-        localStorage.removeItem("userId");
-        localStorage.removeItem("videoRights");
-        localStorage.removeItem("chatRights");
-        localStorage.removeItem("restrictedTo");
-        localStorage.removeItem("chatStatus");
-        localStorage.removeItem("profilePicPath");
-        careatorSessionAuth.clearAccess("userData");
-        window.location.href = "https://norecruits.com";
+        socket.emit("comm_logout", { "userId": $scope.userData, "email": $scope.userData.email }); /* ### Note: Logout notification to server ### */
     }
 
     socket.on('comm_aboutUserEdit', function (data) {
@@ -172,8 +157,30 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
             })
         }
     })
+    /* #### Start: Logout request from server(index.js) #### */
+    socket.on('comm_logoutNotifyToUserById', function (data) {
+        console.log("***comm_logoutNotifyToUserById-->: " + JSON.stringify(data));
+        if (data.userId == $scope.userData.userId && data.email == $scope.email) {
+            localStorage.removeItem("careatorEmail");
+            localStorage.removeItem("sessionUrlId");
+            localStorage.removeItem("careator_remoteEmail");
+            localStorage.removeItem("sessionUrlId");
+            localStorage.removeItem("careator_remoteEmail");
+            localStorage.removeItem("email");
+            localStorage.removeItem("userName");
+            localStorage.removeItem("empId");
+            localStorage.removeItem("userId");
+            localStorage.removeItem("videoRights");
+            localStorage.removeItem("chatRights");
+            localStorage.removeItem("restrictedTo");
+            localStorage.removeItem("chatStatus");
+            localStorage.removeItem("profilePicPath");
+            careatorSessionAuth.clearAccess("userData");
+            window.location.href = "https://norecruits.com";
+        }
 
-
+    })
+    /* #### End: Logout request from server(index.js) #### */
 
 
     ///////////////Hamburger/////////////////////////

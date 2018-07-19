@@ -237,6 +237,14 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
 
 
 
+    if (+localStorage.tabCount > 0)
+        close()
+    else
+        localStorage.tabCount = 0;
 
+    localStorage.tabCount = +localStorage.tabCount + 1;
+    window.onunload = function () {
+        localStorage.tabCount = +localStorage.tabCount - 1;
+    };
 
 })

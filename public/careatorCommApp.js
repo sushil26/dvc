@@ -120,20 +120,7 @@ careatorApp.config(function ($stateProvider, $urlRouterProvider) {
         })
         .state('Cdashboard.chat', {
             url: careator_chat(),
-            templateUrl: '/careatorApp/html/chat.html',
-            resolve: {
-                result: function (careatorSessionAuth, $window) {
-                    var userData = careatorSessionAuth.getAccess("userData");
-                    console.log("userData: "+JSON.stringify(userData));
-                    if (userData.email) {
-
-                    }
-                    else {
-                        $window.location.href = 'https://norecruits.com';
-                    }
-                }
-            }
-
+            templateUrl: '/careatorApp/html/chat.html'
         })
         .state('Cdashboard.contactAdmin', {
             url: contactAdmin(),
@@ -142,17 +129,6 @@ careatorApp.config(function ($stateProvider, $urlRouterProvider) {
         .state('Cdashboard.profile', {
             url: profile(),
             templateUrl: '/careatorApp/html/profile.html',
-            resolve: {
-                result: function (careatorSessionAuth, $window) {
-                    var userData = careatorSessionAuth.getAccess("userData");
-                    if (userData.email) {
-
-                    }
-                    else {
-                        $window.location.href = 'https://norecruits.com';
-                    }
-                }
-            }
         })
         .state('Cdashboard.userRestrict', {
             url: careator_userRestrict(),

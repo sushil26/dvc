@@ -2131,6 +2131,8 @@ module.exports.comm_profileImgUpdateById = function (req, res) {
 module.exports.getLoggedinSessionURLById = function (req, res){
     console.log("getLoggedinSessionURLById-->");
     var response;
+    var id = req.params.id;
+    console.log("id: "+id);
     if (general.emptyCheck(id)) {
         var findObj = {
             "_id": ObjectId(id)

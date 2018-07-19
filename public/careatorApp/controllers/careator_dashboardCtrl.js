@@ -85,6 +85,8 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
 
     $scope.videoUrlNavigation = function () {
         console.log("videoUrlNavigation-->");
+        console.log("localStorage.getItem(sessionUrlId): "+localStorage.getItem("sessionUrlId"));
+        
         if (localStorage.getItem("sessionUrlId")) {
             alert("You have to disconnect your old session in-order to open new");
         }

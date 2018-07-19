@@ -1763,18 +1763,7 @@ signaling_socket.on('comm_logoutNotifyToUserById', function (data) {
 
 })
 
-/* ##### Start: on window only one open tab should be there for this page  ##### */
-if (+localStorage.tabCount > 0)
-  close()
-else
-  localStorage.tabCount = 0;
 
-localStorage.tabCount = +localStorage.tabCount + 1;
-window.onunload = function () {
-  localStorage.tabCount = +localStorage.tabCount - 1;
-};
-
-/* ##### End: on window only one open tab should be there for this page  ##### */
 
 // function logout() {
 //   console.log("logout--> ");

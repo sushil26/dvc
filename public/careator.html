@@ -279,7 +279,7 @@
                         </center>
 
                     </div>
-                    <div class="col-lg-12"  id"extension" style="color: black;">
+                    <div class="col-lg-12" id "extension" style="color: black;">
 
                         <div id="videoConferenceLinkExtention">
                             <div class="form-group">
@@ -764,6 +764,20 @@
             }
         }
     </style>
+    <script>
+        /* ##### Start: on window only one open tab should be there for this page  ##### */
+        if (+localStorage.tabCount > 0)
+            close()
+        else
+            localStorage.tabCount = 0;
+
+        localStorage.tabCount = +localStorage.tabCount + 1;
+        window.onunload = function () {
+            localStorage.tabCount = +localStorage.tabCount - 1;
+        };
+
+/* ##### End: on window only one open tab should be there for this page  ##### */
+    </script>
 </body>
 
 </html>

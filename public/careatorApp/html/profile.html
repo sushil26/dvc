@@ -50,18 +50,24 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div>Cropped Image:</div>
-                                <div>
-                                    <img style="border-radius: 100px;" ng-src="{{myImage.croppedImage}}" />
-
-                                </div>
-                                <div>
-                                    <center>
-                                        <button class="btn btn-info" ng-click="schoolLogoStorage()">Save</button>
-                                        <button class="btn btn-info" ng-click="Cancel()">Cancel</button>
-                                    </center>
-                                </div>
-
+                                <table>
+                                    <tr>
+                                        <td>
+                                            Cropped Image:
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <img style="border-radius: 100px;" ng-src="{{myImage.croppedImage}}" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <button class="btn btn-info" ng-click="schoolLogoStorage()">Save</button>
+                                            <button class="btn btn-info" ng-click="Cancel()">Cancel</button>
+                                        </td>
+                                    </tr>
+                                </table>
                             </div>
 
 

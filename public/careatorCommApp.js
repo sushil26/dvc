@@ -124,6 +124,7 @@ careatorApp.config(function ($stateProvider, $urlRouterProvider) {
             resolve: {
                 result: function (careatorSessionAuth, $window) {
                     var userData = careatorSessionAuth.getAccess("userData");
+                    console.log("userData: "+JSON.stringify(userData));
                     if (userData.email) {
 
                     }

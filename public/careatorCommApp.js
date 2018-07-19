@@ -124,7 +124,7 @@ careatorApp.config(function ($stateProvider, $urlRouterProvider) {
             resolve: {
                 result: function (careatorSessionAuth, $window) {
                     var userData = careatorSessionAuth.getAccess("userData");
-                    if (userData) {
+                    if (userData.email!=null) {
 
                     }
                     else {
@@ -144,7 +144,7 @@ careatorApp.config(function ($stateProvider, $urlRouterProvider) {
             resolve: {
                 result: function (careatorSessionAuth, $window) {
                     var userData = careatorSessionAuth.getAccess("userData");
-                    if (userData) {
+                    if (userData.email!=null) {
 
                     }
                     else {

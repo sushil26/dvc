@@ -197,10 +197,14 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
             localStorage.removeItem("chatStatus");
             localStorage.removeItem("profilePicPath");
             careatorSessionAuth.clearAccess("userData");
-            window.location.href = "https://norecruits.com";
+            $scope.doRedirect();
         }
 
     })
+    $scope.doRedirect = function () {
+        console.log("$scope.doRedirect--->");
+        window.location.href = "https://norecruits.com";
+    }
     /* #### End: Logout request from server(index.js) #### */
 
 

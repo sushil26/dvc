@@ -144,6 +144,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
             });
         }
         $scope.scrollDown();
+        $scope.scrollDown();
         $scope.selectedType = type;
         console.log("  $scope.selectedType: " + $scope.selectedType);
         console.log("id: " + id);
@@ -528,7 +529,8 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                             if (tempData.profilePicPath != undefined) {
                                 $scope.allChatRecords[x].profilePicPath = tempData.profilePicPath;
                             }
-                        } else {
+                        }
+                        else {
 
                         }
                     } else {
@@ -538,7 +540,8 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                             if (tempData.profilePicPath != undefined) {
                                 $scope.allChatRecords[x].profilePicPath = tempData.profilePicPath;
                             }
-                        } else {
+                        }
+                        else {
 
                         }
                     }
@@ -627,6 +630,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                     "message": data.message,
                     "sendTime": data.sendTime
                 });
+                $scope.scrollDown();
                 $scope.scrollDown();
             }
         }
@@ -750,16 +754,9 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
     ///Auto Scroll Down Chat////////////////
     $scope.scrollDown = function () {
         console.log("scrollDown-->");
-
-        // var $chat = $(".message-body");
-        // $chat.scrollTop($chat.height());
-
-        var elmnt = document.getElementById("pulldown");
-        var y = elmnt.scrollHeight;
         $("#pulldown").animate({
-            scrollTop: $("#pulldown").prop(y)
+            scrollTop: $("#pulldown").prop("scrollHeight")
         }, 500);
-
     }
 
     // $scope.scrollDown = function () {

@@ -581,6 +581,7 @@ signaling_socket.on("connect", function () {
             console.log("data: " + JSON.stringify(data));
             localStorage.removeItem("careatorEmail");
             localStorage.setItem("careator_remoteEmail", careator_remoteEmail);
+            localStorage.setItem("sessionEnc",data.sessionData);
             var emailIdSplit = careator_remoteEmail.split('@');
             console.log("2 cond: emailIdSplit: " + JSON.stringify(emailIdSplit));
             userName = emailIdSplit[0];

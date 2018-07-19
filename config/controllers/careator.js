@@ -55,6 +55,7 @@ module.exports.RemoteJoinCheck = function (req, res) {
                 if (findData.length > 0) {
                     responseData = {
                         status: true,
+                        sessionData: "79ea520a-3e67-11e8-9679-97fa7aeb8e97",
                         message: "Login Successfully"
                     };
                     res.status(200).send(responseData);

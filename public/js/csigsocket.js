@@ -1745,7 +1745,11 @@ signaling_socket.on('comm_logoutNotifyToUserById', function (data) {
   }
   if(data.sessionURL== localStorage.getItem("sessionUrlId"))
   {
-    disconnecSession(); 
+    signaling_socket.emit("disconnectSession", {
+      deleteSessionId: queryLink,
+      owner: peerNew_id
+    });
+
   }
   // if(localStorage.getItem("careatorEmail")==null || localStorage.getItem("careator_remoteEmail")==null){
   //   disconnecSession();

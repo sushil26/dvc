@@ -457,7 +457,7 @@ io.sockets.on('connection', function (socket) {
 
     /* ### Start: Get the logoutNotification from the user(careator_dashboardCtrl.js) ### */
     socket.on('comm_logout', function (data) {
-        console.log("comm_logout-->");
+        console.log("comm_logout-->: "+JSON.stringify(data));
         io.sockets.emit('comm_logoutNotifyToUserById', { "userId": data.userId, "email":data.email }) /* ### Note: Send quick message view notification to event sender(who's user id is matched with this userId) ### */
     })
     /* ### End: Get the logoutNotification from the user(careator_dashboardCtrl.js) ### */

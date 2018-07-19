@@ -269,6 +269,7 @@ function checkPassword() {
         document.getElementById("videoConferenceUrl").style.display = "block";
         document.getElementById("logout").style.display = "block";
         $('#myPasswordModal').modal('hide');
+        window.location.href="https://norecruits.com/careatorApp/#!/dashboard";
       },
       error: function (err) {
         console.log("err: " + JSON.stringify(err));

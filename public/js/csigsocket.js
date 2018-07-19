@@ -549,7 +549,7 @@ signaling_socket.on("connect", function () {
       document.getElementById("diconnect_btn").style.display = "inline";
 
       document.getElementById("linkToShare").style.display = "block";
-      document.getElementById("emailInvitation").style.display = "inline";
+      // document.getElementById("emailInvitation").style.display = "inline";
       console.log("userName: " + userName);
       if (userName != undefined && userName != "") {
         console.log("userName with localmedia setup call: " + userName);

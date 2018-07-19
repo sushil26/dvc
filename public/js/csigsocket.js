@@ -287,7 +287,7 @@ function checkPassword() {
 
 function chatNavigation() {
   console.log("chatNavigation-->");
-  window.location.href = "https://norecruits.com/careatorApp/#!/dashboard";
+  window.location.href = "https://norecruits.com/careatorApp/#!/dashboard/profile";
 }
 
 /* ##### Start: Email Invite  ##### */

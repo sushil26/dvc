@@ -540,6 +540,7 @@ signaling_socket.on("connect", function () {
     if (config.queryId == null) {
       console.log("query id is null");
       document.getElementById("videoConfStart").setAttribute("onclick", "startSession('" + peerNew_id + "' , '" + date + "')");
+      $("#buttonpage").css({"min-height":"100vh"});
       document
         .getElementById("linkToShare")
         .setAttribute(

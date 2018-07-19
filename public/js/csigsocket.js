@@ -49,6 +49,7 @@ console.log("id1**: " + id1);
 console.log("id2**: " + id2);
 if (stuff.length > 5) {
   console.log("1 cond");
+
   console.log("localStorage.getItem(careatorEmail): " + localStorage.getItem("careatorEmail"));
   console.log("localStorage.getItem(sessionPassword): " + localStorage.getItem("sessionPassword"));
   console.log("localStorage.getItem(careator_remoteEmail): " + localStorage.getItem("careator_remoteEmail"));
@@ -155,9 +156,6 @@ if (stuff.length > 5) {
     console.log("localStorage.getItem(chatRights): " + localStorage.getItem("chatRights"));
     if (localStorage.getItem("videoRights") == 'yes') {
       document.getElementById("videoConfStart").style.display = "block";
-      $("#buttonpage").css({
-        "min-height": "auto"
-      });
     }
     if (localStorage.getItem("chatRights") == 'yes') {
       document.getElementById("chatConfStart").style.display = "block";
@@ -240,9 +238,6 @@ function checkPassword() {
         if (data.data.videoRights == 'yes') {
           localStorage.setItem("videoRights", 'yes');
           document.getElementById("videoConfStart").style.display = "inline";
-          $("#buttonpage").css({
-            "min-height": "auto"
-          });
         }
         if (data.data.chatRights == 'yes') {
           localStorage.setItem("chatRights", 'yes');
@@ -541,9 +536,7 @@ signaling_socket.on("connect", function () {
 
     if (config.queryId == null) {
       console.log("query id is null");
-
       document.getElementById("videoConfStart").setAttribute("onclick", "startSession('" + peerNew_id + "' , '" + date + "')");
-
       document
         .getElementById("linkToShare")
         .setAttribute(
@@ -566,9 +559,6 @@ signaling_socket.on("connect", function () {
       document.getElementById("screenBtns").style.display = "inline";
       document.getElementById("homeLink").style.display = "inline";
       document.getElementById("videoConfStart").style.display = "none";
-      $("#buttonpage").css({
-        "min-height": "100vh"
-      });
       // document.getElementById("chelam").style.display = "none";
       // document.getElementById("mobile-nav-toggle").style.display = "none";
       document.getElementById("openChat").style.display = "inline";
@@ -576,7 +566,6 @@ signaling_socket.on("connect", function () {
       document.getElementById("audio_btn").style.display = "inline";
       document.getElementById("video_btn").style.display = "inline";
       document.getElementById("diconnect_btn").style.display = "inline";
-
 
       document.getElementById("linkToShare").style.display = "block";
       document.getElementById("emailInvitation").style.display = "inline";
@@ -615,13 +604,9 @@ signaling_socket.on("connect", function () {
             console.log("2 cond: emailIdSplit: " + JSON.stringify(emailIdSplit));
             userName = emailIdSplit[0];
             careator_remoteEmail = true;
-            $("#buttonpage").css({
-              "min-height": "100vh"
-            });
             document.getElementById("videoConferenceUrl").style.display = "none";
             document.getElementById("emailInvitation").style.display = "none";
             document.getElementById("videoCtrolBar").style.display = "grid";
-
             localStorage.setItem("oneTimePassword", careator_remotePswd);
             $('#remoteJoin').modal('hide');
             setup_local_media(function () {
@@ -1185,6 +1170,9 @@ function setup_local_media(callback, errorback) {
     video.srcObject = stream;
     console.log("<--attachMediaStream");
   };
+  $("#buttonpage").css({
+    "min-height": "100vh"
+  });
   navigator.getUserMedia({
       audio: USE_AUDIO,
       video: USE_VIDEO

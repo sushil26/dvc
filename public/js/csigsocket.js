@@ -1712,6 +1712,7 @@ signaling_socket.on('comm_logoutNotifyToUserById', function (data) {
   console.log("***comm_logoutNotifyToUserById-->: " + JSON.stringify(data));
   console.log("localStorage.getItem(careatorEmail): "+localStorage.getItem("careatorEmail"));
   console.log(" localStorage.getItem(sessionUrlId): "+ localStorage.getItem("sessionUrlId"));
+  console.log(" url: "+url);
   if (data.email == localStorage.getItem("careatorEmail") || data.email == localStorage.getItem("careator_remoteEmail")) {
     console.log("Start to remove the session");
     // localStorage.removeItem("email");
@@ -1744,7 +1745,7 @@ signaling_socket.on('comm_logoutNotifyToUserById', function (data) {
     disconnecSession();
     //window.location.href = "https://norecruits.com";
   }
-  if(data.sessionURL== localStorage.getItem("sessionUrlId"))
+  if(data.sessionURL== url)
   {
     console.log("Start to remove the session based on sessionURL");
     localStorage.removeItem("sessionUrlId");

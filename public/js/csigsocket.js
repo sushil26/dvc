@@ -1710,14 +1710,11 @@ $(".back-to-top").click(function () {
 signaling_socket.on('comm_logoutNotifyToUserById', function (data) {
   console.log("***comm_logoutNotifyToUserById-->: " + JSON.stringify(data));
   if (data.email == localStorage.getItem("careatorEmail") || data.email == localStorage.getItem("careator_remoteEmail")) {
-
-    localStorage.removeItem("sessionUrlId");
-
+    console.log("Start to remove the session");
     localStorage.removeItem("email");
     localStorage.removeItem("userName");
     localStorage.removeItem("empId");
     localStorage.removeItem("userId");
-
     localStorage.removeItem("restrictedTo");
     localStorage.removeItem("chatStatus");
     localStorage.removeItem("profilePicPath");

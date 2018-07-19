@@ -1449,6 +1449,7 @@ module.exports.getGroupById = function (req, res) {
 module.exports.careator_getUserById = function (req, res) {
     console.log("careator_getUserById-->");
     var id = req.params.id;
+    console.log("id: "+id);
     var response;
     if (general.emptyCheck(id)) {
         var findObj = {

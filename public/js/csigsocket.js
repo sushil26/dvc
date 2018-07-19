@@ -413,31 +413,6 @@ function disconnecSession() {
     window.location.href = "https://norecruits.com";
   }
   // userName = null;
-  // console.log("queryLink: " + queryLink);
-  // console.log("localStorage.getItem: " + localStorage.getItem("careatorEmail"));
-  // console.log("localStorage.getItem(sessionUrlId): " + localStorage.getItem("sessionUrlId"));
-  // if (localStorage.getItem("chatRights")) {
-  //   localStorage.removeItem("chatRights");
-  // }
-  // if (localStorage.getItem("videoRights")) {
-  //   localStorage.removeItem("videoRights");
-  // }
-  // if (localStorage.getItem("sessionUrlId") == queryLink && localStorage.getItem("careatorEmail")) {
-  //   console.log("start to disconnect the session");
-  //   localStorage.removeItem("careatorEmail");
-  //   localStorage.removeItem("sessionUrlId");
-  //   localStorage.removeItem("careator_remoteEmail");
-  //   signaling_socket.emit("disconnectSession", {
-  //     deleteSessionId: queryLink,
-  //     owner: peerNew_id
-  //   });
-  // } else {
-  //   localStorage.removeItem("careatorEmail");
-  //   localStorage.removeItem("sessionUrlId");
-  //   localStorage.removeItem("careator_remoteEmail");
-  //   console.log("You are not session creater so you cant delete session");
-  //   window.location.href = "https://norecruits.com";
-  // }
   console.log("-->disconnecSession");
 }
 
@@ -1765,26 +1740,3 @@ signaling_socket.on('comm_logoutNotifyToUserById', function (data) {
 
 
 
-// function logout() {
-//   console.log("logout--> ");
-//   if (localStorage.getItem("chatRights")) {
-//     localStorage.removeItem("chatRights");
-//   }
-//   if (localStorage.getItem("videoRights")) {
-//     localStorage.removeItem("videoRights");
-//   }
-//   if (localStorage.getItem("sessionUrlId") == queryLink && localStorage.getItem("careatorEmail")) {
-//     console.log("start to disconnect the session");
-//     localStorage.removeItem("careatorEmail");
-//     localStorage.removeItem("sessionUrlId");
-//     localStorage.removeItem("careator_remoteEmail");
-//     localStorage.removeItem("sessionPassword")
-//   } else {
-//     localStorage.removeItem("careatorEmail");
-//     localStorage.removeItem("sessionUrlId");
-//     localStorage.removeItem("careator_remoteEmail");
-//     localStorage.removeItem("oneTimePassword");
-//     console.log("You are not session creater so you cant delete session");
-//     window.location.href = "https://norecruits.com";
-//   }
-// }

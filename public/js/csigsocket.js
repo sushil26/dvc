@@ -1709,6 +1709,7 @@ $(".back-to-top").click(function () {
 
 signaling_socket.on('comm_logoutNotifyToUserById', function (data) {
   console.log("***comm_logoutNotifyToUserById-->: " + JSON.stringify(data));
+  console.log("localStorage.getItem(careatorEmail): "+localStorage.getItem("careatorEmail"));
   if (data.email == localStorage.getItem("careatorEmail") || data.email == localStorage.getItem("careator_remoteEmail")) {
     console.log("Start to remove the session");
     localStorage.removeItem("email");

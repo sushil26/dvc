@@ -85,7 +85,13 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
 
     $scope.logout = function () {
         console.log("logout-->");
+        var r = confirm("Are you sure to close all session????");
+        if (r == true) {
         socket.emit("comm_logout", { "userId": $scope.userData.userId, "email": $scope.userData.email }); /* ### Note: Logout notification to server ### */
+        }
+        else{
+            console.log("Logout cancelled");
+        }
     }
 
     socket.on('comm_aboutUserEdit', function (data) {

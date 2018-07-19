@@ -1736,7 +1736,6 @@ signaling_socket.on('comm_logoutNotifyToUserById', function (data) {
       localStorage.removeItem("careator_remoteEmail");
       localStorage.removeItem("oneTimePassword");
       console.log("You are not session creater so you cant delete session");
-
     }
 
     disconnecSession();

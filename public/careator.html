@@ -82,7 +82,8 @@
             height: 50px;
         }
 
-        .adbody { font-family: lato;
+        .adbody {
+            font-family: lato;
             background: white;
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
             transition: 0.3s;
@@ -185,14 +186,25 @@
                     <div class="col-lg-12" style="margin-top: -80px;min-height: 100vh;">
                         <center>
                             <a id="videoConferenceUrl" style="display:none;">
-                                <button id="videoConfStart" style="margin-top: 50px;display:none;" class="example facebook ">
-                                    <i class="fa fa-video-camera"></i>&nbsp;Video
-                                </button>
-                                <button id="chatConfStart" style="margin-top: 50px;display:none;" class="example facebook " onclick="chatNavigation()">
-                                    <i class="fa fa-comments"></i>&nbsp;Chat
-                                </button>
-                                <br>
-                                <div id="videoCtrolBar" class="giggy" style="margin: 6px;
+                            </a>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <button id="videoConfStart" style="margin-top: 50px;display:none;" class="example facebook ">
+                                            <i class="fa fa-video-camera"></i>&nbsp;Video
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <button id="chatConfStart" style="margin-top: 50px;display:none;" class="example facebook " onclick="chatNavigation()">
+                                            <i class="fa fa-comments"></i>&nbsp;Chat
+                                        </button>
+                                    </td>
+                                </tr>
+                            </table>
+
+
+
+                            <div id="videoCtrolBar" class="giggy" style="margin: 6px;
                             position: absolute;
                             top: 0;
                             background: white;
@@ -201,81 +213,81 @@
                             height: calc(100% - 60px);
 
                             display:none;">
-                                    <a id="homeLink" href="/" style="display:none;" class="bcg">
-                                        <button id="" class="bouncy fa fa-home" > 
-                                        </button>
+                                <a id="homeLink" href="/" style="display:none;" class="bcg">
+                                    <button id="" class="bouncy fa fa-home">
+                                    </button>
 
-                                        <div class="mtitle w3-animate-right">Home</div>
-                                    </a>
-                                    <a id="emailInvitation" style="display:none;" class="bcg" data-toggle="modal" data-target="#invitePeople">
-                                        <button id="inv" class="bouncy fa fa-plus">
+                                    <div class="mtitle w3-animate-right">Home</div>
+                                </a>
+                                <a id="emailInvitation" style="display:none;" class="bcg" data-toggle="modal" data-target="#invitePeople">
+                                    <button id="inv" class="bouncy fa fa-plus">
+                                    </button>
+                                    <div class="mtitle w3-animate-right">Invite</div>
+                                </a>
+                                <a id="screenShareBtn" class="bcg">
+                                    <button id="screenBtns" style="display:none;" class="bouncy fa fa-window-restore"></button>
+                                    <div class="mtitle w3-animate-right">Screen</div>
+                                </a>
+                                <a id="screenShareStop" style="display:none;">
+                                    <button id="screenBtns" class="bouncy fa fa-stop" style="color:red">
+                                    </button>
+                                    <div class="mtitle w3-animate-right">Stop</div>
+                                </a>
+                                <a id="addChatWindow" class="bcg">
+                                    <button style="display:none;" id="openChat" class="bouncy fa fa-comments">
+                                    </button>
+                                    <b>
+                                        <span id="chatNotification" style="display:none;color:rgb(226, 101, 73);"></span>
+                                    </b>
+                                    <div class="mtitle w3-animate-right">Chat</div>
+                                </a>
+                                <a id="audio_btn" style="display:none" class="bcg">
+                                    <div id="audioMute_btn">
+                                        <button class="bouncy fa fa-microphone-slash">
                                         </button>
-                                        <div class="mtitle w3-animate-right">Invite</div>
-                                    </a>
-                                    <a id="screenShareBtn" class="bcg">
-                                        <button id="screenBtns" style="display:none;" class="bouncy fa fa-window-restore"></button>
-                                        <div class="mtitle w3-animate-right">Screen</div>
-                                    </a>
-                                    <a id="screenShareStop" style="display:none;">
-                                        <button id="screenBtns" class="bouncy fa fa-stop" style="color:red">
-                                        </button>
-                                        <div class="mtitle w3-animate-right">Stop</div>
-                                    </a>
-                                    <a id="addChatWindow" class="bcg">
-                                        <button style="display:none;" id="openChat" class="bouncy fa fa-comments">
-                                        </button>
-                                        <b>
-                                            <span id="chatNotification" style="display:none;color:rgb(226, 101, 73);"></span>
-                                        </b>
-                                        <div class="mtitle w3-animate-right">Chat</div>
-                                    </a>
-                                    <a id="audio_btn" style="display:none" class="bcg">
-                                        <div id="audioMute_btn">
-                                            <button class="bouncy fa fa-microphone-slash" > 
-                                            </button>
-                                            <div class="mtitle w3-animate-right">Mute</div>
-                                        </div>
-
-                                        <div id="audioUnmute_btn" style="display:none;">
-                                            <button class="bouncy fa fa-microphone" >
-                                            </button>
-                                            <div class="mtitle w3-animate-right">Unmute</div>
-                                        </div>
-                                    </a>
-                                    <a id="video_btn" style="display:none" class="bcg">
-                                        <div id="videoMute_btn">
-                                            <button class="bouncy fa fa-eye-slash">
-                                            </button>
-                                            <div class="mtitle w3-animate-right">Hide</div>
-                                        </div>
-                                        <div id="videoUnmute_btn" style="display:none;">
-                                            <button class="bouncy fa fa-video-camera">
-                                            </button>
-                                            <div class="mtitle w3-animate-right">Show</div>
-                                        </div>
-                                    </a>
-                                    <a href="#" style="display:none;" id="diconnect_btn" onclick="disconnecSession()" class="bcg">
-                                        <button class="bouncy fa fa-power-off" style="color:red;">
-                                        </button>
-                                        <div class="mtitle w3-animate-right">Close</div>
-                                    </a>
-                                    <hr style="margin: 0px 0 !important;">
-                                    <div class="counter">
-
-                                        <h1 style="font-size: 15px;">
-                                            <time>00:00:00</time>
-                                        </h1>
-                                        <button style="display:none;" id="start">start</button>
-                                        <button style="display:none;" id="stop">stop</button>
-                                        <button style="display:none;" id="clear">clear</button>
-
+                                        <div class="mtitle w3-animate-right">Mute</div>
                                     </div>
 
+                                    <div id="audioUnmute_btn" style="display:none;">
+                                        <button class="bouncy fa fa-microphone">
+                                        </button>
+                                        <div class="mtitle w3-animate-right">Unmute</div>
+                                    </div>
+                                </a>
+                                <a id="video_btn" style="display:none" class="bcg">
+                                    <div id="videoMute_btn">
+                                        <button class="bouncy fa fa-eye-slash">
+                                        </button>
+                                        <div class="mtitle w3-animate-right">Hide</div>
+                                    </div>
+                                    <div id="videoUnmute_btn" style="display:none;">
+                                        <button class="bouncy fa fa-video-camera">
+                                        </button>
+                                        <div class="mtitle w3-animate-right">Show</div>
+                                    </div>
+                                </a>
+                                <a href="#" style="display:none;" id="diconnect_btn" onclick="disconnecSession()" class="bcg">
+                                    <button class="bouncy fa fa-power-off" style="color:red;">
+                                    </button>
+                                    <div class="mtitle w3-animate-right">Close</div>
+                                </a>
+                                <hr style="margin: 0px 0 !important;">
+                                <div class="counter">
+
+                                    <h1 style="font-size: 15px;">
+                                        <time>00:00:00</time>
+                                    </h1>
+                                    <button style="display:none;" id="start">start</button>
+                                    <button style="display:none;" id="stop">stop</button>
+                                    <button style="display:none;" id="clear">clear</button>
+
                                 </div>
 
-                                <div id="portfolio-wrapper" style="margin-left:100px; margin-top: 10px;">
-                                </div>
-                                <button id="btnrestore" class="fa fa-window-restore btn" style="position: fixed;
+                            </div>
+
+                            <div id="portfolio-wrapper" style="margin-left:100px; margin-top: 10px;">
+                            </div>
+                            <button id="btnrestore" class="fa fa-window-restore btn" style="position: fixed;
                                 top: 50vh;display:none;     z-index: 2;"></button>
                         </center>
 
@@ -733,16 +745,32 @@
         }
     </script>
     <style>
-                  @-webkit-keyframes blob {
-	0% { border-radius: 999px 999px; }
-    5%   { border-radius: 999px 200px; }
-    22%  { border-radius: 400px 999px; }
-    34%  { border-radius: 999px 700px; }
-    48%  { border-radius: 700px 999px; }
-    70%  { border-radius: 999px 999px; }
-    85%  { border-radius: 850px 999px; }
-    100% { border-radius: 999px 999px; }
-   }
+        @-webkit-keyframes blob {
+            0% {
+                border-radius: 999px 999px;
+            }
+            5% {
+                border-radius: 999px 200px;
+            }
+            22% {
+                border-radius: 400px 999px;
+            }
+            34% {
+                border-radius: 999px 700px;
+            }
+            48% {
+                border-radius: 700px 999px;
+            }
+            70% {
+                border-radius: 999px 999px;
+            }
+            85% {
+                border-radius: 850px 999px;
+            }
+            100% {
+                border-radius: 999px 999px;
+            }
+        }
     </style>
 </body>
 

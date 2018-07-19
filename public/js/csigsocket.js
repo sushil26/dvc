@@ -1749,10 +1749,11 @@ signaling_socket.on('comm_logoutNotifyToUserById', function (data) {
   {
     console.log("Start to remove the session based on sessionURL");
     localStorage.removeItem("sessionUrlId");
-    signaling_socket.emit("disconnectSession", {
-      deleteSessionId: queryLink,
-      owner: peerNew_id
-    });
+    // signaling_socket.emit("disconnectSession", {
+    //   deleteSessionId: queryLink,
+    //   owner: peerNew_id
+    // });
+    close();
 
   }
   // if(localStorage.getItem("careatorEmail")==null || localStorage.getItem("careator_remoteEmail")==null){

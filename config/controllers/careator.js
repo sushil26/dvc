@@ -100,6 +100,7 @@ module.exports.pswdCheck = function (req, res) {
                         responseData = {
                             status: true,
                             message: "Login Successfully",
+                            sessionData: "79ea520a-3e67-11e8-9679-97fa7aeb8e97",
                             data: findData[0]
                         };
                         console.log("responseData: " + JSON.stringify(responseData));

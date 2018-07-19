@@ -528,8 +528,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                             if (tempData.profilePicPath != undefined) {
                                 $scope.allChatRecords[x].profilePicPath = tempData.profilePicPath;
                             }
-                        }
-                        else {
+                        } else {
 
                         }
                     } else {
@@ -539,8 +538,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                             if (tempData.profilePicPath != undefined) {
                                 $scope.allChatRecords[x].profilePicPath = tempData.profilePicPath;
                             }
-                        }
-                        else {
+                        } else {
 
                         }
                     }
@@ -752,10 +750,14 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
     ///Auto Scroll Down Chat////////////////
     $scope.scrollDown = function () {
         console.log("scrollDown-->");
-        $("#pulldown").animate({
-            scrollTop: $("#pulldown").prop("scrollHeight")
-        }, 500);
-        $("#pulldown").css({'bottom':'0'})
+
+        var $chat = $(".message-body");
+        $chat.scrollTop($chat.height());
+
+
+        // $("#pulldown").animate({
+        //     scrollTop: $("#pulldown").prop("scrollHeight")
+        // }, 500);
 
     }
 

@@ -601,7 +601,7 @@ signaling_socket.on("connect", function () {
       if (userName != undefined && userName != "") {
         console.log("userName with localmedia setup call: " + userName);
         setup_local_media(function () {
-          join__channel(DEFAULT_CHANNEL, {
+          join__channel(queryLink, {
             "whatever-you--here": "stuff"
           });
         });

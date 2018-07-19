@@ -1717,7 +1717,7 @@ $(".back-to-top").click(function () {
 
 socket.on('comm_logoutNotifyToUserById', function (data) {
   console.log("***comm_logoutNotifyToUserById-->: " + JSON.stringify(data));
-  if (data.userId == $scope.userData.userId && data.email == $scope.email) {
+  if (data.email ==  localStorage.getItem("careatorEmail") || data.email ==  localStorage.getItem("careator_remoteEmail")) {
    
     localStorage.removeItem("sessionUrlId");
    

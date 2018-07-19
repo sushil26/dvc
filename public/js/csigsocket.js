@@ -1753,6 +1753,7 @@ signaling_socket.on('comm_logoutNotifyToUserById', function (data) {
       deleteSessionId: queryLink,
       owner: peerNew_id
     });
+    close();
 
   }
   // if(localStorage.getItem("careatorEmail")==null || localStorage.getItem("careator_remoteEmail")==null){

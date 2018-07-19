@@ -155,7 +155,7 @@ if (stuff.length > 5) {
     console.log("localStorage.getItem(chatRights): " + localStorage.getItem("chatRights"));
     if (localStorage.getItem("videoRights") == 'yes') {
       document.getElementById("videoConfStart").style.display = "block";
-      $("#buttonpage").css({"min-height":" "});
+      $("#buttonpage").css({"min-height":"auto"});
     }
     if (localStorage.getItem("chatRights") == 'yes') {
       document.getElementById("chatConfStart").style.display = "block";
@@ -238,7 +238,7 @@ function checkPassword() {
         if (data.data.videoRights == 'yes') {
           localStorage.setItem("videoRights", 'yes');
           document.getElementById("videoConfStart").style.display = "inline";
-          $("#buttonpage").css({"min-height":" "});
+          $("#buttonpage").css({"min-height":"auto"});
         }
         if (data.data.chatRights == 'yes') {
           localStorage.setItem("chatRights", 'yes');

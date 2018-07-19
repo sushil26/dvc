@@ -144,6 +144,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
             });
         }
         $scope.scrollDown();
+        $scope.scrollDown();
         $scope.selectedType = type;
         console.log("  $scope.selectedType: " + $scope.selectedType);
         console.log("id: " + id);
@@ -629,6 +630,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                     "message": data.message,
                     "sendTime": data.sendTime
                 });
+                $scope.scrollDown();
                 $scope.scrollDown();
             }
         }

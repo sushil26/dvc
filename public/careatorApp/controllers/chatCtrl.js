@@ -385,7 +385,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
     }
 
     $scope.sendText = function () {
-        $("#comment").val('');
+        // $('#comment').val('');
         console.log("sendText-->");
         console.log("$scope.typedMessage: " + $scope.typedMessage);
         var api;
@@ -473,10 +473,6 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
     $scope.readText = function () {
         console.log("readText-->");
         if ($scope.selectedType == 'group') {
-
-
-            console("coming through group");
-
             var group_id = $scope.individualData._id;
             var api = "https://norecruits.com/careator_groupTextRead/groupTextReadByGroupId/" + group_id;
             console.log("api: " + api);
@@ -494,9 +490,6 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
             })
 
         } else {
-
-            console("coming through personal");
-
             var sId = userData.userId;
             var rId = $scope.individualData._id;
             var api = "https://norecruits.com/careator_individualTextRead/individualTextReadById/" + sId + "/" + rId;
@@ -592,7 +585,6 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         // console.log("$scope.individualData._id: " + JSON.stringify($scope.individualData));
         // console.log(" data.id: " + JSON.stringify(data));
         if (data.freshInsert == true && (userData.userId == data.senderId || userData.userId == data.receiverId)) {
-         
             var id = data.id;
             var api = "https://norecruits.com/careator_getChatsById/getChatsById/" + id;
             console.log("api: " + api);
@@ -613,25 +605,9 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                     if ($scope.individualData.receiverId != userData.userId) {
                         $scope.receiverData.receiverId = $scope.individualData.receiverId;
                         $scope.receiverData.receiverName = $scope.individualData.receiverName;
-                        $scope.scrollDown();
-                        $scope.playAudio = function () {
-                            var x = document.getElementById("myAudio");
-                            x.play();
-                            console.log("audio11>>>>>>>>>>>>>>>>>>")
-                        }
-                        $scope.playAudio();
-
                     } else if ($scope.individualData.senderId != userData.userId) {
                         $scope.receiverData.receiverId = $scope.individualData.senderId;
                         $scope.receiverData.receiverName = $scope.individualData.senderName;
-                        $scope.scrollDown();
-                        $scope.playAudio = function () {
-                            var x = document.getElementById("myAudio");
-                            x.play();
-                            console.log("audio22>>>>>>>>>>>>>>>>>>")
-                        }
-                        $scope.playAudio();
-
                     }
                     console.log(" $scope.receiverData : " + JSON.stringify($scope.receiverData));
 
@@ -642,11 +618,8 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                 }
             })
             $scope.getChatRecords();
-            $scope.scrollDown();
 
         } else if (data.freshInsert == undefined) {
-
-
             if ($scope.individualData._id == data.id) {
                 console.log("2)start pushing message");
                 $scope.allChat.chats.push({
@@ -655,11 +628,14 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                     "message": data.message,
                     "sendTime": data.sendTime
                 });
-
-               
-
-
-
+                $scope.scrollDown();
+                $scope.scrollDown();
+                $scope.playAudio = function () {
+                    var x = document.getElementById("myAudio");
+                    x.play();
+                    console.log("audio11>>>>>>>>>>>>>>>>>>")
+                }
+                $scope.playAudio();
             }
         }
 
@@ -720,6 +696,25 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                 }
             })
         }
+        // if (data.moreIds == 'yes') {
+        //     console.log("data: " + JSON.stringify(data));
+        //     console.log("data.ids.indexOf($scope.userId): " + data.ids.indexOf($scope.userId));            
+        // }
+        // else {
+        //     if ($scope.userId == data.id) {
+        //         console.log("Updated Started-->");
+        //         var restrictedUser = data.restrictedTo;
+        //         $scope.restrictedArray = [];
+        //         for (var x = 0; x < restrictedUser.length; x++) {
+        //             $scope.restrictedArray.push(restrictedUser[x].userId);
+        //         }
+        //         console.log(" $scope.restrictedArray: " + JSON.stringify($scope.restrictedArray));
+        //         // if(restrictedArray.length>1){
+        //         //     var splitRestrictedUser = restrictedArray.split(',');
+        //         //     console.log("splitRestrictedUser: " + JSON.stringify(splitRestrictedUser));
+        //         // }
+        //     }
+        // }
 
     })
     socket.on('comm_receiverStatusUpdate', function (data) { //update to client with new message;
@@ -755,7 +750,10 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         }
     });
 
+    // $(".reply-main").focus(function () {
 
+
+    // })
 
     ///Auto Scroll Down Chat////////////////
     $scope.scrollDown = function () {
@@ -765,11 +763,60 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         }, 500);
     }
 
+    // $scope.scrollDown = function () {
+    //     console.log("scrollDown-->");
+    //     $("#pulldown").animate({
+    //         scrollTop: $("#pulldown").prop(0,0)
+    //     }, 500);
+    // }
 
-    ///////////image expand/////////////////
+    ////////emoji/////////////////////////////
+    // $(document).ready(function () {
+    //     $("#comment").emojioneArea({
+    //         pickerPosition: "top",
 
+    //     });
+    // })
+    // $(".emojionearea-editor").emojioneArea({
+    //     events: {
+    //         keypress: function (editor, event) {
 
+    //             if (event.which == 13) {
+    //                 $('.emojionearea-editor').data("emojioneArea").setText(""); // this work
+    //                 $("#sndmgs").click();
 
+    //             }
+    //         }
+    //     }
+    // });
+    // })
+    //     $("#emojionearea2").emojioneArea({
+    //         pickerPosition: "bottom",
+    //         tonesStyle: "radio"
+    //     });
+    //     $("#emojionearea3").emojioneArea({
+    //         pickerPosition: "right",
+    //         filtersPosition: "bottom",
+    //         tonesStyle: "square"
+    //     });
+    //     $("#emojionearea4").emojioneArea({
+    //         pickerPosition: "bottom",
+    //         filtersPosition: "bottom",
+    //         tonesStyle: "checkbox"
+    //     });
+    //     $("#emojionearea5").emojioneArea({
+    //         pickerPosition: "top",
+    //         filtersPosition: "bottom",
+    //         tones: false,
+    //         autocomplete: false,
+    //         inline: true,
+    //         hidePickerOnBlur: false
+    //     });
+    //     $("#standalone").emojioneArea({
+    //         standalone: true,
+    //         autocomplete: false
+    //     });
+    // });
 
 
 

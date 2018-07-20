@@ -385,7 +385,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
     }
 
     $scope.sendText = function () {
-        // $('#comment').val('');
+        $('#comment').val('');
         console.log("sendText-->");
         console.log("$scope.typedMessage: " + $scope.typedMessage);
         var api;
@@ -529,7 +529,8 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                             if (tempData.profilePicPath != undefined) {
                                 $scope.allChatRecords[x].profilePicPath = tempData.profilePicPath;
                             }
-                        } else {
+                        }
+                        else {
 
                         }
                     } else {
@@ -539,7 +540,8 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                             if (tempData.profilePicPath != undefined) {
                                 $scope.allChatRecords[x].profilePicPath = tempData.profilePicPath;
                             }
-                        } else {
+                        }
+                        else {
 
                         }
                     }
@@ -618,14 +620,6 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                 }
             })
             $scope.getChatRecords();
-            $scope.scrollDown();
-
-            var x = document.getElementById("myAudio");
-            $scope.playAudio = function () {
-                x.play();
-            }
-            $scope.playAudio();
-
 
         } else if (data.freshInsert == undefined) {
             if ($scope.individualData._id == data.id) {
@@ -636,14 +630,8 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                     "message": data.message,
                     "sendTime": data.sendTime
                 });
-
                 $scope.scrollDown();
-                var x = document.getElementById("myAudio");
-                $scope.playAudio = function () {
-                    x.play();
-                }
-                $scope.playAudio();
-
+                $scope.scrollDown();
             }
         }
 

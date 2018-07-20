@@ -631,8 +631,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                 var x = document.getElementById("myAudio");
                 x.play();
             }
-            playAudio();
-
+            $scope.playAudio();
         } else if (data.freshInsert == undefined) {
 
             if ($scope.individualData._id == data.id) {
@@ -649,7 +648,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                     var x = document.getElementById("myAudio");
                     x.play();
                 }
-                playAudio();
+                $scope.playAudio();
 
 
             }

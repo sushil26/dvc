@@ -473,6 +473,9 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
     $scope.readText = function () {
         console.log("readText-->");
         if ($scope.selectedType == 'group') {
+
+            document.getElementById('xyz').play();
+         
             var group_id = $scope.individualData._id;
             var api = "https://norecruits.com/careator_groupTextRead/groupTextReadByGroupId/" + group_id;
             console.log("api: " + api);
@@ -490,6 +493,8 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
             })
 
         } else {
+            document.getElementById('xyz').play();
+            
             var sId = userData.userId;
             var rId = $scope.individualData._id;
             var api = "https://norecruits.com/careator_individualTextRead/individualTextReadById/" + sId + "/" + rId;
@@ -529,8 +534,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                             if (tempData.profilePicPath != undefined) {
                                 $scope.allChatRecords[x].profilePicPath = tempData.profilePicPath;
                             }
-                        }
-                        else {
+                        } else {
 
                         }
                     } else {
@@ -540,8 +544,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                             if (tempData.profilePicPath != undefined) {
                                 $scope.allChatRecords[x].profilePicPath = tempData.profilePicPath;
                             }
-                        }
-                        else {
+                        } else {
 
                         }
                     }
@@ -739,9 +742,9 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
 
 
     ///////////image expand/////////////////
-    
 
-  
+
+
 
 
 

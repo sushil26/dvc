@@ -628,7 +628,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
             $scope.scrollDown();
             var playPromise = document.querySelector('audio').play();
             if (playPromise !== undefined) {
-                document.getElementById('xyz').play();
+
                 playPromise.then(function () {}).catch(function (error) {});
             }
 
@@ -646,7 +646,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                 $scope.scrollDown();
                 var playPromise = document.querySelector('audio').play();
                 if (playPromise !== undefined) {
-                    document.getElementById('xyz').play();
+
                     playPromise.then(function () {}).catch(function (error) {});
                 }
 

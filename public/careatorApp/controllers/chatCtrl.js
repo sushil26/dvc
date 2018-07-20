@@ -612,9 +612,21 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                     if ($scope.individualData.receiverId != userData.userId) {
                         $scope.receiverData.receiverId = $scope.individualData.receiverId;
                         $scope.receiverData.receiverName = $scope.individualData.receiverName;
+                        $scope.playAudio = function () {
+                            var x = document.getElementById("myAudio");
+                            x.play();
+                            console.log("audio11>>>>>>>>>>>>>>>>>>")
+                        }
+                        $scope.playAudio();
                     } else if ($scope.individualData.senderId != userData.userId) {
                         $scope.receiverData.receiverId = $scope.individualData.senderId;
                         $scope.receiverData.receiverName = $scope.individualData.senderName;
+                        $scope.playAudio = function () {
+                            var x = document.getElementById("myAudio");
+                            x.play();
+                            console.log("audio22>>>>>>>>>>>>>>>>>>")
+                        }
+                        $scope.playAudio();
                     }
                     console.log(" $scope.receiverData : " + JSON.stringify($scope.receiverData));
 
@@ -627,12 +639,6 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
             $scope.getChatRecords();
             $scope.scrollDown();
 
-            $scope.playAudio = function () {
-                var x = document.getElementById("myAudio");
-                x.play();
-                console.log("audio1>>>>>>>>>>>>>>>>>")
-            }
-            $scope.playAudio();
         } else if (data.freshInsert == undefined) {
 
             if ($scope.individualData._id == data.id) {
@@ -645,12 +651,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                 });
 
                 $scope.scrollDown();
-                $scope.playAudio = function () {
-                    var x = document.getElementById("myAudio");
-                    x.play();
-                    console.log("audio2>>>>>>>>>>>>>>>>>>")
-                }
-                $scope.playAudio();
+               
 
 
             }

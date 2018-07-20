@@ -592,12 +592,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         // console.log("$scope.individualData._id: " + JSON.stringify($scope.individualData));
         // console.log(" data.id: " + JSON.stringify(data));
         if (data.freshInsert == true && (userData.userId == data.senderId || userData.userId == data.receiverId)) {
-            $scope.playAudio = function () {
-                var x = document.getElementById("myAudio");
-                x.play();
-                console.log("audio11>>>>>>>>>>>>>>>>>>")
-            }
-            $scope.playAudio();
+
             var id = data.id;
             var api = "https://norecruits.com/careator_getChatsById/getChatsById/" + id;
             console.log("api: " + api);
@@ -647,6 +642,12 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                 });
 
                 $scope.scrollDown();
+                $scope.playAudio = function () {
+                    var x = document.getElementById("myAudio");
+                    x.play();
+                    console.log("audio11>>>>>>>>>>>>>>>>>>")
+                }
+                $scope.playAudio();
 
 
 

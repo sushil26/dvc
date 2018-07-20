@@ -626,7 +626,8 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
             })
             $scope.getChatRecords();
             $scope.scrollDown();
-            document.getElementById('xyz').play();
+            var ringsushil = document.getElementById('xyz');
+            ringsushil.play();
 
         } else if (data.freshInsert == undefined) {
 
@@ -640,7 +641,8 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                 });
                
                 $scope.scrollDown();
-                document.getElementById('xyz').play();
+               var ringsushil = document.getElementById('xyz');
+            ringsushil.play();
             }
         }
 

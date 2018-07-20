@@ -356,6 +356,9 @@
                                     </div> -->
                                     <div class="row message-body" ng-repeat="chat in allChat.chats">
                                         <div class="col-sm-12 message-main-receiver" ng-if="chat.senderId!=userId">
+                                            <audio id="myAudio" ng-if="userId==chat.receiverId">
+                                                <source src="./audio/alert.mp3" type="audio/mpeg"> Your browser does not support the audio element.
+                                            </audio>
 
                                             <div ng-if="selectedType=='group'" style="background: #ddf8c6;
                                             width: max-content;
@@ -377,9 +380,7 @@
                                             </div>
                                         </div>
                                         <div>
-                                            <audio id="myAudio" ng-if="userId==chat.receiverId">
-                                                <source src="./audio/alert.mp3" type="audio/mpeg"> Your browser does not support the audio element.
-                                            </audio>
+
                                         </div>
                                         <div class="col-sm-12 message-main-sender" ng-if="chat.senderId==userId">
 

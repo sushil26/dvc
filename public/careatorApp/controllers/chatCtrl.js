@@ -474,7 +474,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         console.log("readText-->");
         if ($scope.selectedType == 'group') {
 
-            document.getElementById('xyz').play();
+          
             console("coming through group");
          
             var group_id = $scope.individualData._id;
@@ -494,7 +494,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
             })
 
         } else {
-            document.getElementById('xyz').play();
+           
             console("coming through personal");
 
             var sId = userData.userId;
@@ -625,8 +625,11 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                 }
             })
             $scope.getChatRecords();
+            $scope.scrollDown();
+            document.getElementById('xyz').play();
 
         } else if (data.freshInsert == undefined) {
+
             if ($scope.individualData._id == data.id) {
                 console.log("2)start pushing message");
                 $scope.allChat.chats.push({
@@ -635,8 +638,9 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                     "message": data.message,
                     "sendTime": data.sendTime
                 });
+               
                 $scope.scrollDown();
-                $scope.scrollDown();
+                document.getElementById('xyz').play();
             }
         }
 

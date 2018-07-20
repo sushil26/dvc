@@ -618,6 +618,14 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                 }
             })
             $scope.getChatRecords();
+            $scope.scrollDown();
+
+            var x = document.getElementById("myAudio");
+            $scope.playAudio=function () {
+                x.play();
+            }
+            $scope.playAudio();
+
 
         } else if (data.freshInsert == undefined) {
             if ($scope.individualData._id == data.id) {
@@ -628,16 +636,8 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                     "message": data.message,
                     "sendTime": data.sendTime
                 });
+
                 $scope.scrollDown();
-                var x = document.getElementById("myAudio");
-                $scope.playAudio = function () {
-
-                    x.play();
-                    console.log("audio11>>>>>>>>>>>>>>>>>>")
-                }
-                $scope.playAudio();
-
-
             }
         }
 

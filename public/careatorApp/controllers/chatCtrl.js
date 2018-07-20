@@ -592,7 +592,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         // console.log("$scope.individualData._id: " + JSON.stringify($scope.individualData));
         // console.log(" data.id: " + JSON.stringify(data));
         if (data.freshInsert == true && (userData.userId == data.senderId || userData.userId == data.receiverId)) {
-
+         
             var id = data.id;
             var api = "https://norecruits.com/careator_getChatsById/getChatsById/" + id;
             console.log("api: " + api);
@@ -613,10 +613,24 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                     if ($scope.individualData.receiverId != userData.userId) {
                         $scope.receiverData.receiverId = $scope.individualData.receiverId;
                         $scope.receiverData.receiverName = $scope.individualData.receiverName;
+                        $scope.scrollDown();
+                        $scope.playAudio = function () {
+                            var x = document.getElementById("myAudio");
+                            x.play();
+                            console.log("audio11>>>>>>>>>>>>>>>>>>")
+                        }
+                        $scope.playAudio();
 
                     } else if ($scope.individualData.senderId != userData.userId) {
                         $scope.receiverData.receiverId = $scope.individualData.senderId;
                         $scope.receiverData.receiverName = $scope.individualData.senderName;
+                        $scope.scrollDown();
+                        $scope.playAudio = function () {
+                            var x = document.getElementById("myAudio");
+                            x.play();
+                            console.log("audio22>>>>>>>>>>>>>>>>>>")
+                        }
+                        $scope.playAudio();
 
                     }
                     console.log(" $scope.receiverData : " + JSON.stringify($scope.receiverData));
@@ -632,6 +646,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
 
         } else if (data.freshInsert == undefined) {
 
+
             if ($scope.individualData._id == data.id) {
                 console.log("2)start pushing message");
                 $scope.allChat.chats.push({
@@ -641,13 +656,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                     "sendTime": data.sendTime
                 });
 
-                $scope.scrollDown();
-                $scope.playAudio = function () {
-                    var x = document.getElementById("myAudio");
-                    x.play();
-                    console.log("audio11>>>>>>>>>>>>>>>>>>")
-                }
-                $scope.playAudio();
+               
 
 
 

@@ -629,15 +629,15 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                     "sendTime": data.sendTime
                 });
                 $scope.scrollDown();
-
+                var x = document.getElementById("myAudio");
                 $scope.playAudio = function () {
-                    var x = document.getElementById("myAudio");
+
                     x.play();
                     console.log("audio11>>>>>>>>>>>>>>>>>>")
                 }
                 $scope.playAudio();
-            
-          
+
+
             }
         }
 

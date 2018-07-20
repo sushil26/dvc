@@ -621,7 +621,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
             $scope.scrollDown();
 
             var x = document.getElementById("myAudio");
-            $scope.playAudio=function () {
+            $scope.playAudio = function () {
                 x.play();
             }
             $scope.playAudio();
@@ -638,6 +638,12 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                 });
 
                 $scope.scrollDown();
+                var x = document.getElementById("myAudio");
+                $scope.playAudio = function () {
+                    x.play();
+                }
+                $scope.playAudio();
+
             }
         }
 

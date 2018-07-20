@@ -475,6 +475,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         if ($scope.selectedType == 'group') {
 
             document.getElementById('xyz').play();
+            console("coming through group");
          
             var group_id = $scope.individualData._id;
             var api = "https://norecruits.com/careator_groupTextRead/groupTextReadByGroupId/" + group_id;
@@ -494,7 +495,8 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
 
         } else {
             document.getElementById('xyz').play();
-            
+            console("coming through personal");
+
             var sId = userData.userId;
             var rId = $scope.individualData._id;
             var api = "https://norecruits.com/careator_individualTextRead/individualTextReadById/" + sId + "/" + rId;

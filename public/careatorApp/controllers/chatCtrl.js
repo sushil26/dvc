@@ -474,9 +474,9 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         console.log("readText-->");
         if ($scope.selectedType == 'group') {
 
-          
+
             console("coming through group");
-         
+
             var group_id = $scope.individualData._id;
             var api = "https://norecruits.com/careator_groupTextRead/groupTextReadByGroupId/" + group_id;
             console.log("api: " + api);
@@ -494,7 +494,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
             })
 
         } else {
-           
+
             console("coming through personal");
 
             var sId = userData.userId;
@@ -626,8 +626,11 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
             })
             $scope.getChatRecords();
             $scope.scrollDown();
-            var ringsushil = document.getElementById('xyz');
-            ringsushil.play();
+            var playPromise = document.querySelector('audio').play();
+            if (playPromise !== undefined) {
+                document.getElementById('xyz').play();
+                playPromise.then(function () {}).catch(function (error) {});
+            }
 
         } else if (data.freshInsert == undefined) {
 
@@ -639,10 +642,14 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                     "message": data.message,
                     "sendTime": data.sendTime
                 });
-               
+
                 $scope.scrollDown();
-               var ringsushil = document.getElementById('xyz');
-            ringsushil.play();
+                var playPromise = document.querySelector('audio').play();
+                if (playPromise !== undefined) {
+                    document.getElementById('xyz').play();
+                    playPromise.then(function () {}).catch(function (error) {});
+                }
+
             }
         }
 

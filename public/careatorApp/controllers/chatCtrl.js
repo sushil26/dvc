@@ -630,7 +630,9 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
 
             $scope.playAudio = function () {
                 x.play();
+
             }
+            playAudio();
 
         } else if (data.freshInsert == undefined) {
 
@@ -651,6 +653,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                 $scope.playAudio = function () {
                     x.play();
                 }
+                playAudio();
 
 
             }

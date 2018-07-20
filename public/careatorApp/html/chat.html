@@ -242,8 +242,17 @@
                                             <img src="./css/group.png">
                                         </div>
                                         <div class="avatar-icon" ng-if="selectedType =='individual_chats' && chatListSection == 'chatWindow'">
-                                            <img ng-if="receiverProfilePicPath!=undefined" ng-src="{{receiverProfilePicPath}}">
+                                            <img ng-if="receiverProfilePicPath!=undefined" id="myImg" ng-src="{{receiverProfilePicPath}}">
                                             <img ng-if="receiverProfilePicPath==undefined" src="./css/user.png">
+
+                                            <div id="myModal" class="modal">
+                                                <span class="close">&times;</span>
+                                                <img class="modal-content" id="img01">
+                                                <div id="caption"></div>
+                                            </div>
+
+
+
                                         </div>
                                         <!-- <div class="avatar-icon" ng-if="selectedType =='individual_chats' && chatListSection == 'chatWindow' && ()">
                                             <img src="./css/user.png">
@@ -411,7 +420,7 @@
                                         <label for="fileselect">
                                             <i class="fa fa-upload fa-2x"> </i>
                                         </label>
-                                        <input id="fileselect" type="file" name="fileselect" style="display: none;"/>
+                                        <input id="fileselect" type="file" name="fileselect" style="display: none;" />
                                     </div>
                                     <div class="col-sm-1 col-xs-1 reply-send">
                                         <button class="btn btn-success" aria-hidden="true" id="sndmgs" ng-click="sendText()">Send</button>

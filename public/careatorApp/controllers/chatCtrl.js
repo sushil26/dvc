@@ -529,8 +529,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                             if (tempData.profilePicPath != undefined) {
                                 $scope.allChatRecords[x].profilePicPath = tempData.profilePicPath;
                             }
-                        }
-                        else {
+                        } else {
 
                         }
                     } else {
@@ -540,8 +539,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                             if (tempData.profilePicPath != undefined) {
                                 $scope.allChatRecords[x].profilePicPath = tempData.profilePicPath;
                             }
-                        }
-                        else {
+                        } else {
 
                         }
                     }
@@ -692,25 +690,6 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                 }
             })
         }
-        // if (data.moreIds == 'yes') {
-        //     console.log("data: " + JSON.stringify(data));
-        //     console.log("data.ids.indexOf($scope.userId): " + data.ids.indexOf($scope.userId));            
-        // }
-        // else {
-        //     if ($scope.userId == data.id) {
-        //         console.log("Updated Started-->");
-        //         var restrictedUser = data.restrictedTo;
-        //         $scope.restrictedArray = [];
-        //         for (var x = 0; x < restrictedUser.length; x++) {
-        //             $scope.restrictedArray.push(restrictedUser[x].userId);
-        //         }
-        //         console.log(" $scope.restrictedArray: " + JSON.stringify($scope.restrictedArray));
-        //         // if(restrictedArray.length>1){
-        //         //     var splitRestrictedUser = restrictedArray.split(',');
-        //         //     console.log("splitRestrictedUser: " + JSON.stringify(splitRestrictedUser));
-        //         // }
-        //     }
-        // }
 
     })
     socket.on('comm_receiverStatusUpdate', function (data) { //update to client with new message;
@@ -746,10 +725,7 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         }
     });
 
-    // $(".reply-main").focus(function () {
 
-
-    // })
 
     ///Auto Scroll Down Chat////////////////
     $scope.scrollDown = function () {
@@ -759,60 +735,32 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
         }, 500);
     }
 
-    // $scope.scrollDown = function () {
-    //     console.log("scrollDown-->");
-    //     $("#pulldown").animate({
-    //         scrollTop: $("#pulldown").prop(0,0)
-    //     }, 500);
-    // }
 
-    ////////emoji/////////////////////////////
-    // $(document).ready(function () {
-    //     $("#comment").emojioneArea({
-    //         pickerPosition: "top",
+    ///////////image expand/////////////////
 
-    //     });
-    // })
-    // $(".emojionearea-editor").emojioneArea({
-    //     events: {
-    //         keypress: function (editor, event) {
 
-    //             if (event.which == 13) {
-    //                 $('.emojionearea-editor').data("emojioneArea").setText(""); // this work
-    //                 $("#sndmgs").click();
+    var modal = document.getElementById('myModal');
 
-    //             }
-    //         }
-    //     }
-    // });
-    // })
-    //     $("#emojionearea2").emojioneArea({
-    //         pickerPosition: "bottom",
-    //         tonesStyle: "radio"
-    //     });
-    //     $("#emojionearea3").emojioneArea({
-    //         pickerPosition: "right",
-    //         filtersPosition: "bottom",
-    //         tonesStyle: "square"
-    //     });
-    //     $("#emojionearea4").emojioneArea({
-    //         pickerPosition: "bottom",
-    //         filtersPosition: "bottom",
-    //         tonesStyle: "checkbox"
-    //     });
-    //     $("#emojionearea5").emojioneArea({
-    //         pickerPosition: "top",
-    //         filtersPosition: "bottom",
-    //         tones: false,
-    //         autocomplete: false,
-    //         inline: true,
-    //         hidePickerOnBlur: false
-    //     });
-    //     $("#standalone").emojioneArea({
-    //         standalone: true,
-    //         autocomplete: false
-    //     });
-    // });
+    // Get the image and insert it inside the modal - use its "alt" text as a caption
+    var img = document.getElementById('myImg');
+    var modalImg = document.getElementById("img01");
+    var captionText = document.getElementById("caption");
+    img.onclick = function () {
+        modal.style.display = "block";
+        modalImg.src = this.src;
+        captionText.innerHTML = this.alt;
+    }
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+
+
+
 
 
 

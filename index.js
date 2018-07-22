@@ -146,13 +146,13 @@ io.sockets.on('connection', function (socket) {
     // console.log("peerTrackForVideo."+queryId+": "+peerTrackForVideo.queryId);
     /* ##### End arrang all sockets in single array with key which id we are using in a link   ##### */
     console.log("QueryId: " + queryId);
-    console.log("deletedSocket_ids.indexOf(queryId): "+deletedSocket_ids.indexOf(queryId));
-    console.log("deletedSocket_ids: "+JSON.stringify(deletedSocket_ids));
+    console.log("deletedSocket_ids.indexOf(queryId): " + deletedSocket_ids.indexOf(queryId));
+    console.log("deletedSocket_ids: " + JSON.stringify(deletedSocket_ids));
     if (deletedSocket_ids.indexOf(queryId) < 0) {
-        socket.emit('message', { 'peer_id': socket.id, 'queryId': queryId, 'time': time, 'userName': userName, 'isQueryIdAuthorized':'yes' });
+        socket.emit('message', { 'peer_id': socket.id, 'queryId': queryId, 'time': time, 'userName': userName, 'isQueryIdAuthorized': 'yes' });
     }
     else {
-        socket.emit('message', { 'peer_id': socket.id, 'queryId': queryId, 'time': time, 'userName': userName, 'isQueryIdAuthorized':'no' });
+        socket.emit('message', { 'peer_id': socket.id, 'queryId': queryId, 'time': time, 'userName': userName, 'isQueryIdAuthorized': 'no' });
     }
 
 
@@ -172,8 +172,8 @@ io.sockets.on('connection', function (socket) {
         socket.emit('disconnectSessionReply', { "deleteSessionId": data.deleteSessionId, "owner": data.owner });
         //if (sessionHeaderId == data.owner) {
         deletedSocket_ids.push(data.deleteSessionId);
-        console.log("deletedSocket_ids: "+JSON.stringify(deletedSocket_ids));
-        var tempSock = sockets[data.deleteSessionId];/* ### Note using this deleteSessionId we are getting real socket(tempSock)   ### */
+        console.log("deletedSocket_ids: " + JSON.stringify(deletedSocket_ids));
+        var tempSock = sockets[data.deleteSessionId]; /* ### Note using this deleteSessionId we are getting real socket(tempSock)   ### */
         for (var channel in tempSock.channels) {
             console.log("connection: channel: " + channel);
             part(channel);
@@ -185,7 +185,7 @@ io.sockets.on('connection', function (socket) {
         delete peerTrackForVideo[data.deleteSessionId];
         //delete channels[channel][data.deleteSessionId];
         console.log("sockets[data.deleteSessionId]: " + sockets[data.deleteSessionId]);
-        //}
+        console.log("deletedSocket_ids: " + JSON.stringify(deletedSocket_ids));
         console.log("<--disconnectSession");
     })
 

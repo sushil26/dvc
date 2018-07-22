@@ -148,10 +148,10 @@ io.sockets.on('connection', function (socket) {
     console.log("QueryId: " + queryId);
     console.log("deletedSocket_ids.indexOf(queryId): "+deletedSocket_ids.indexOf(queryId));
     if (deletedSocket_ids.indexOf(queryId) < 0) {
-        socket.emit('message', { 'peer_id': socket.id, 'queryId': queryId, 'time': time, 'userName': userName, 'isQueryIdAuthorized':'no' });
+        socket.emit('message', { 'peer_id': socket.id, 'queryId': queryId, 'time': time, 'userName': userName, 'isQueryIdAuthorized':'yes' });
     }
     else {
-        socket.emit('message', { 'peer_id': socket.id, 'queryId': queryId, 'time': time, 'userName': userName, 'isQueryIdAuthorized':'yes' });
+        socket.emit('message', { 'peer_id': socket.id, 'queryId': queryId, 'time': time, 'userName': userName, 'isQueryIdAuthorized':'no' });
     }
 
 

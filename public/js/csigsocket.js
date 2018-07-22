@@ -497,7 +497,7 @@ signaling_socket.on("connect", function () {
   signaling_socket.on("message", function (config) {
     console.log("signaling_socket message-->");
     //console.log("Unique Peer Id: " + config.peer_id)
-    if (config.isQueryIdAuthorized == 'yes') {
+   
       queryLink = config.queryId;
       peerNew_id = config.peer_id;
       timeLink = config.time;
@@ -519,6 +519,7 @@ signaling_socket.on("connect", function () {
         document.getElementById("linkToShare").innerHTML = "https://norecruits.com/careator/" + peerNew_id + "/" + date;
       } else {
         console.log("query id nt null");
+        if (config.isQueryIdAuthorized == 'yes') {
         document.getElementById("linkToShare").setAttribute("href", "https://norecruits.com/careator/" + queryLink + "/" + date);
         document.getElementById("linkToShare").innerHTML = "https://norecruits.com/careator/" + queryLink + "/" + date;
         document.getElementById("screenBtns").style.display = "inline";
@@ -587,11 +588,12 @@ signaling_socket.on("connect", function () {
 
         });
       }
+      else{
+        alert("Sorry your link is not alive");
+        window.location.href="https://norecruits.com";
+      }
     }
-    else{
-      alert("Sorry your link is not alive");
-      window.location.href="https://norecruits.com";
-    }
+   
     console.log("<--signaling_socket message");
   });
   console.log("<--signaling_socket connect");

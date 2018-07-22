@@ -29,6 +29,7 @@ app.use(fileUpload());
 var queryId = null;
 var userName = null;
 var time = null;
+var deletedSocket_ids = [];
 
 var mongoConfig = require('./config/dbConfig.js');
 
@@ -95,41 +96,6 @@ app.get("/careatorApp", function (req, res) {
     res.sendFile(__dirname + '/public/careatorComm.html');
 });
 
-// app.get("/record", function (req, res) {
-
-//     queryId = null;
-
-//     console.log("start to render page");
-//     res.sendFile(__dirname + '/public/client1.html');
-// });
-
-// app.get("/record/:id/:time", function (req, res) {
-//     queryId = req.params.id;
-//     time = req.params.id;
-//     console.log("queryId: " + req.params.id);
-//     console.log("start to render page");
-//     res.sendFile(__dirname + '/public/client1.html');
-// });
-// app.get("/disconnTest", function (req, res) {
-
-//     queryId = null;
-
-//     console.log("start to render page");
-//     res.sendFile(__dirname + '/public/disconnTest.html');
-// });
-
-// app.get("/disconnTest/:id/:time", function (req, res) {
-//     queryId = req.params.id;
-//     time = req.params.id;
-//     console.log("queryId: " + req.params.id);
-//     console.log("start to render page");
-//     res.sendFile(__dirname + '/public/disconnTest.html');
-// });
-// app.get("/mainPage", function (req, res) {
-//     console.log("start to render page");
-//     res.sendFile(__dirname + '/public/html/mainPage.html');
-// });
-
 /*************************/
 /*** INTERESTING STUFF ***/
 /*************************/
@@ -180,7 +146,13 @@ io.sockets.on('connection', function (socket) {
     // console.log("peerTrackForVideo."+queryId+": "+peerTrackForVideo.queryId);
     /* ##### End arrang all sockets in single array with key which id we are using in a link   ##### */
     console.log("QueryId: " + queryId);
-    socket.emit('message', { 'peer_id': socket.id, 'queryId': queryId, 'time': time, 'userName': userName });
+    if (deletedSocket_ids.indexOf(queryId) < 0) {
+        socket.emit('message', { 'peer_id': socket.id, 'queryId': queryId, 'time': time, 'userName': userName, 'isQueryIdAuthorized':'no' });
+    }
+    else {
+        socket.emit('message', { 'peer_id': socket.id, 'queryId': queryId, 'time': time, 'userName': userName, 'isQueryIdAuthorized':'yes' });
+    }
+
 
     socket.on('disconnect', function () {
         console.log("[" + socket.id + "] connection disconnected Start");
@@ -197,6 +169,7 @@ io.sockets.on('connection', function (socket) {
         console.log("disconnectSession-->");
         socket.emit('disconnectSessionReply', { "deleteSessionId": data.deleteSessionId, "owner": data.owner });
         //if (sessionHeaderId == data.owner) {
+        deletedSocket_ids.push(data.deleteSessionId);
         var tempSock = sockets[data.deleteSessionId];/* ### Note using this deleteSessionId we are getting real socket(tempSock)   ### */
         for (var channel in tempSock.channels) {
             console.log("connection: channel: " + channel);
@@ -207,7 +180,7 @@ io.sockets.on('connection', function (socket) {
         console.log("sockets[data.deleteSessionId]: " + sockets.valueOf(data.deleteSessionId));
         delete sockets[data.deleteSessionId];
         delete peerTrackForVideo[data.deleteSessionId];
-        delete channels[channel][data.deleteSessionId];
+        //delete channels[channel][data.deleteSessionId];
         console.log("sockets[data.deleteSessionId]: " + sockets[data.deleteSessionId]);
         //}
         console.log("<--disconnectSession");
@@ -216,8 +189,6 @@ io.sockets.on('connection', function (socket) {
     socket.on('join', function (config) {
 
         console.log("Join-->");
-        // console.log("config.owner: "+config.owner);
-        // console.log("config.queryLink: "+config.queryLink);
         peerWithQueryId[config.owner] = config.queryLink;
         peerWithTimeId[config.owner] = config.timeLink;
 
@@ -456,8 +427,8 @@ io.sockets.on('connection', function (socket) {
 
     /* ### Start: Get the logoutNotification from the user(careator_dashboardCtrl.js) ### */
     socket.on('comm_logout', function (data) {
-        console.log("comm_logout-->: "+JSON.stringify(data));
-        io.sockets.emit('comm_logoutNotifyToUserById', { "userId": data.userId, "email":data.email, "sessionURL":data.sessionURL  }) /* ### Note: Send quick message view notification to event sender(who's user id is matched with this userId) ### */
+        console.log("comm_logout-->: " + JSON.stringify(data));
+        io.sockets.emit('comm_logoutNotifyToUserById', { "userId": data.userId, "email": data.email, "sessionURL": data.sessionURL }) /* ### Note: Send quick message view notification to event sender(who's user id is matched with this userId) ### */
     })
     /* ### End: Get the logoutNotification from the user(careator_dashboardCtrl.js) ### */
 

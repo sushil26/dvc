@@ -1070,6 +1070,8 @@ signaling_socket.on("removePeer", function (config) {
 
   delete peers[peer_id];
   delete peer_media_elements[config.peer_id];
+  alert("Sorry your link is not alive");
+  close();
   //peer_userName_elements[peer_id].remove();
   // delete peer_media_sselements[config.peer_id];
 });

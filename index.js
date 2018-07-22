@@ -147,6 +147,7 @@ io.sockets.on('connection', function (socket) {
     /* ##### End arrang all sockets in single array with key which id we are using in a link   ##### */
     console.log("QueryId: " + queryId);
     console.log("deletedSocket_ids.indexOf(queryId): "+deletedSocket_ids.indexOf(queryId));
+    console.log("deletedSocket_ids: "+JSON.stringify(deletedSocket_ids));
     if (deletedSocket_ids.indexOf(queryId) < 0) {
         socket.emit('message', { 'peer_id': socket.id, 'queryId': queryId, 'time': time, 'userName': userName, 'isQueryIdAuthorized':'yes' });
     }

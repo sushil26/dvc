@@ -519,6 +519,7 @@ signaling_socket.on("connect", function () {
         document.getElementById("linkToShare").innerHTML = "https://norecruits.com/careator/" + peerNew_id + "/" + date;
       } else {
         console.log("query id nt null");
+        console.log("config.isQueryIdAuthorized: "+config.isQueryIdAuthorized);
         if (config.isQueryIdAuthorized == 'yes') {
         document.getElementById("linkToShare").setAttribute("href", "https://norecruits.com/careator/" + queryLink + "/" + date);
         document.getElementById("linkToShare").innerHTML = "https://norecruits.com/careator/" + queryLink + "/" + date;

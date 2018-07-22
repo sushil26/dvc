@@ -146,6 +146,7 @@ io.sockets.on('connection', function (socket) {
     // console.log("peerTrackForVideo."+queryId+": "+peerTrackForVideo.queryId);
     /* ##### End arrang all sockets in single array with key which id we are using in a link   ##### */
     console.log("QueryId: " + queryId);
+    console.log("deletedSocket_ids.indexOf(queryId): "+deletedSocket_ids.indexOf(queryId));
     if (deletedSocket_ids.indexOf(queryId) < 0) {
         socket.emit('message', { 'peer_id': socket.id, 'queryId': queryId, 'time': time, 'userName': userName, 'isQueryIdAuthorized':'no' });
     }

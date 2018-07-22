@@ -172,6 +172,7 @@ io.sockets.on('connection', function (socket) {
         socket.emit('disconnectSessionReply', { "deleteSessionId": data.deleteSessionId, "owner": data.owner });
         //if (sessionHeaderId == data.owner) {
         deletedSocket_ids.push(data.deleteSessionId);
+        console.log("deletedSocket_ids: "+JSON.stringify(deletedSocket_ids));
         var tempSock = sockets[data.deleteSessionId];/* ### Note using this deleteSessionId we are getting real socket(tempSock)   ### */
         for (var channel in tempSock.channels) {
             console.log("connection: channel: " + channel);

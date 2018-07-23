@@ -1638,6 +1638,9 @@ module.exports.userEditById = function (req, res) {
         if (req.body.userEmail) {
             updateVlaue.email = req.body.userEmail;
         }
+        if(req.body.password){
+            updateVlaue.password = req.body.password
+        }
         if (req.body.videoRights) {
             updateVlaue.videoRights = req.body.videoRights;
         }

@@ -392,11 +392,10 @@ signaling_socket.on("disconnectSessionReply", function (data) {
     //window.location.href = "https://norecruits.com";
   } else if (queryLink == data.deleteSessionId && peerNew_id != data.owner) {
     console.log("remote notification that host disconnect the session-->");
-    alert("Your host disconnect the session, you no longer can use this session");
     setTimeout(function () {
-      close();
+      alert("Your host disconnect the session, you no longer can use this session");
     }, 2000);
-
+    close();
 
     // localStorage.setItem("redirctRequired", true);
     // $("#homeLink").trigger("click");

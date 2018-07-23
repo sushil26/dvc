@@ -85,55 +85,55 @@ module.exports.pswdCheck = function (req, res) {
     var emailSplit = careatorEmail.split('@');
     if (general.emptyCheck(password) && general.emptyCheck(careatorEmail)) {
         if (emailSplit[1] == 'careator.com' || careatorEmail == 'vc4allAdmin@gmail.com') {
-        var obj = {
-            "email": careatorEmail
-        }
-        console.log("obj: " + JSON.stringify(obj));
-        careatorMaster.find(obj).toArray(function (err, findData) {
-            console.log("findData: " + JSON.stringify(findData));
-            if (err) {
-                responseData = {
-                    status: false,
-                    message: "Process failed"
-                };
-                res.status(400).send(responseData);
-            } else {
-                if (findData.length > 0) {
-                    if (findData[0].password == password) {
-                        responseData = {
-                            status: true,
-                            message: "Login Successfully",
-                            sessionData: "79ea520a-3e67-11e8-9679-97fa7aeb8e97",
-                            data: findData[0]
-                        };
-                        console.log("responseData: " + JSON.stringify(responseData));
-                        res.status(200).send(responseData);
+            var obj = {
+                "email": careatorEmail
+            }
+            console.log("obj: " + JSON.stringify(obj));
+            careatorMaster.find(obj).toArray(function (err, findData) {
+                console.log("findData: " + JSON.stringify(findData));
+                if (err) {
+                    responseData = {
+                        status: false,
+                        message: "Process failed"
+                    };
+                    res.status(400).send(responseData);
+                } else {
+                    if (findData.length > 0) {
+                        if (findData[0].password == password) {
+                            responseData = {
+                                status: true,
+                                message: "Login Successfully",
+                                sessionData: "79ea520a-3e67-11e8-9679-97fa7aeb8e97",
+                                data: findData[0]
+                            };
+                            console.log("responseData: " + JSON.stringify(responseData));
+                            res.status(200).send(responseData);
+                        } else {
+                            responseData = {
+                                status: false,
+                                message: "Password is wrong"
+                            };
+                            console.log("responseData: " + JSON.stringify(responseData));
+                            res.status(400).send(responseData);
+                        }
                     } else {
                         responseData = {
                             status: false,
-                            message: "Password is wrong"
+                            message: "Email ID is not valid"
                         };
                         console.log("responseData: " + JSON.stringify(responseData));
                         res.status(400).send(responseData);
                     }
-                } else {
-                    responseData = {
-                        status: false,
-                        message: "Email ID is not valid"
-                    };
-                    console.log("responseData: " + JSON.stringify(responseData));
-                    res.status(400).send(responseData);
                 }
-            }
-        })
-    }
-    else{
-        responseData = {
-            status: false,
-            message: "Email id is not valid"
-        };
-        res.status(400).send(responseData);
-    }
+            })
+        }
+        else {
+            responseData = {
+                status: false,
+                message: "Email id is not valid"
+            };
+            res.status(400).send(responseData);
+        }
     } else {
         responseData = {
             status: false,

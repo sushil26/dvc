@@ -315,6 +315,7 @@ function checkPassword() {
       contentType: "application/json",
       dataType: "json",
       success: function (data) {
+        $('#myEmailModal').modal('hide');
         console.log("data: " + JSON.stringify(data));
         localStorage.setItem("userName", data.data.name);
         localStorage.setItem("empId", data.data.empId);
@@ -361,6 +362,12 @@ function checkPassword() {
         console.log("err: " + JSON.stringify(err));
         console.log("err.responseText: " + JSON.stringify(err.responseText));
         console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
+        document.getElementById("credentialErroe").innerHTML = err.responseJSON.message;
+        document.getElementById("credentialErroe").style.display = 'inline';
+        setTimeout(function () {
+          $('#credentialErroe').fadeOut('fast');
+        }, 3000);
+
         document.getElementById("videoConferenceUrl").style.display = "none";
         localStorage.removeItem("careatorEmail");
         userName = "";

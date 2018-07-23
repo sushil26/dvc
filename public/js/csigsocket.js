@@ -395,7 +395,8 @@ signaling_socket.on("disconnectSessionReply", function (data) {
     alert("Your host disconnect the session, you no longer can use this session");
     setTimeout(function () {
       close();
-    }, 1000);
+    }, 2000);
+
 
     // localStorage.setItem("redirctRequired", true);
     // $("#homeLink").trigger("click");

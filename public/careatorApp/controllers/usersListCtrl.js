@@ -103,7 +103,7 @@ careatorApp.controller('usersListCtrl', function ($scope, $state, careatorHttpFa
                 console.log("data--" + JSON.stringify(data.data));
                 if (checkStatus) {
                     console.log(data.data.message);
-                    $scope.getAllEmployee();
+                   // $scope.getAllEmployee();
                 } else {
                     console.log("Sorry");
                     console.log(data.data.message);

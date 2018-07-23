@@ -396,8 +396,10 @@ signaling_socket.on("disconnectSessionReply", function (data) {
     setTimeout(function () {
       $('#sessionDisconn_alert').fadeOut('Your host disconnect the session, you no longer can use this session');
     }, 3000);
+    setTimeout(function () {
+      close();
+    }, 3001);
 
-    close();
 
     // localStorage.setItem("redirctRequired", true);
     // $("#homeLink").trigger("click");

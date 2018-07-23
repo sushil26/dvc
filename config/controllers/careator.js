@@ -571,6 +571,7 @@ module.exports.careatorMasterInsertValidate = function (data, callback) {
         "email": data.Email,
         "videoRights": data.VideoRights,
         "chatRights": data.ChatRights,
+        "password": data.Password,
         "status": "active",
         "chatStatus": "Available",
         "restrictedTo": [],

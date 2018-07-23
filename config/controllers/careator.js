@@ -99,7 +99,7 @@ module.exports.pswdCheck = function (req, res) {
                     res.status(400).send(responseData);
                 } else {
                     if (findData.length > 0) {
-                        if (findData[0].logout == 'done' && findData[0].login == 'notDone') {
+                        if ((findData[0].logout == 'done' && findData[0].login == 'notDone') || findData[0].logout == undefined && findData[0].login == undefined)) {
                             careatorMaster.update({ "_id": ObjectId(findData[0]._id), "status": "active" }, { $set: { "password": password, "invite": [], "logout": "notDone", "login": "done" } }, function (err, data) {
                                 console.log("data: " + JSON.stringify(data));
                                 if (err) {

@@ -204,12 +204,15 @@ function sendEmail() {
       console.log("err: " + JSON.stringify(err));
       console.log("err.responseText: " + JSON.stringify(err.responseText));
       console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
-      alert(err.responseJSON.message);
+     
       if (err.responseJSON.message == 'You already logged in, please logout your lod session in-order to login')
       {
         console.log("You already logged in, please logout your lod session in-order to login");
-        alert(data.message);
+        alert(err.responseJSON.message);
         window.location.href="/";
+      }
+      else{
+        alert(err.responseJSON.message);
       }
     }
 

@@ -14,7 +14,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
             if (checkStatus) {
                 console.log("data.data.data[0].isDisconnected: " + data.data.data[0].isDisconnected);
                 // var sessionHostBlock;
-                if (data.data.data[0].isDisconnected == 'yes') {
+                if (data.data.data[0].isDisconnected == 'yes' || data.data.data[0].isDisconnected==undefined ) {
                     $scope.sessionHostBlock = 'no';
                 }
                 else {
@@ -154,10 +154,12 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
             console.log("Logout cancelled");
         }
     }
-    $scope.closeYourOldSession = function(){
-        console.log("closeYourOldSession-->");
-        alert("Close your old session in-order to do new session");
-    }
+    // $scope.closeYourOldSession = function(){
+    //     console.log("closeYourOldSession-->");
+    //     alert("Close your old session in-order to do new session");
+    //     window.open('https://norecruits.com/careator','_blank'); 
+          
+    // }
 
     socket.on('comm_aboutUserEdit', function (data) {
         console.log("***comm_aboutUserEdit-->");

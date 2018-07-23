@@ -43,11 +43,12 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
 
     var userData = careatorSessionAuth.getAccess("userData");
     $scope.userData = userData;
+    console.log("userData==>: " + JSON.stringify(userData));
     if(userData.userId){
         $scope.getLogin_hostDetailsById(userData.userId);
     }
    
-    console.log("userData==>: " + JSON.stringify(userData));
+  
     if (userData == undefined || userData.email == null) {
         $scope.getLogin_hostDetailsById(localStorage.getItem("userId"));
         var userData = {

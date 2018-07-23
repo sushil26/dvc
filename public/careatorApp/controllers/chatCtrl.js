@@ -141,6 +141,7 @@ careatorApp.controller("chatCtrl", function(
   };
 
   $scope.chatDetails = function(type, id, index) {
+    $scope.scrollDown();
     console.log("chatDetails-->");
     $scope.chatListSection = "chatWindow";
     console.log("screen.width : " + screen.width);

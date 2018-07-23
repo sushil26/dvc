@@ -417,7 +417,45 @@ module.exports.emailInvite = function (req, res) {
             }
         })
 }
+module.exports.resetLoginFlagsById = function (req, res) {
+    console.log("resetLoginFlags-->");
 
+    if (general.emptyCheck(id)) {
+        var obj = {
+            "id": ObjectId(id),
+        }
+        console.log("obj: " + JSON.stringify(obj));
+        careatorMaster.update(obj, { "$set": { "login": "notDone", "logout": "done" } }, function (err, data) {
+            console.log("data: " + JSON.stringify(data));
+            console.log("data.length: " + data.length);
+            if (err) {
+                console.log("err: " + JSON.stringify(err));
+                responseData = {
+                    status: false,
+                    message: "UnSuccessfully"
+                };
+                res.status(400).send(responseData);
+            } else {
+                console.log("data: " + JSON.stringify(data));
+                responseData = {
+                    status: true,
+                    message: "Successfully reset done",
+                    data: data
+                };
+                res.status(200).send(responseData);
+            }
+        })
+    }
+    else {
+        response = {
+            status: false,
+            message: "empty value found",
+            data: obj
+        };
+        res.status(400).send(response);
+    }
+
+}
 module.exports.getAdminObjectId = function (req, res) {
     console.log("getAdminObjectId-->");
     careatorMaster.find({ "email": "vc4all@careator.com" }).toArray(function (err, admin) {

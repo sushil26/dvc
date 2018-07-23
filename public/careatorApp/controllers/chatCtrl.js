@@ -816,7 +816,7 @@ careatorApp.controller("chatCtrl", function(
     console.log("scrollDown-->");
     $("#pulldown").animate(
       {
-        scrollTop: $("#pulldown").prop("scrollHeight")
+        scrollTop: $("#pulldown").prop("innerHeight")
       },
       500
     );

@@ -198,6 +198,11 @@ function sendEmail() {
         localStorage.removeItem("sessionPassword")
         triggerInvite();
       }
+      else if (data.message == 'You already logged in, please logout your lod session in-order to login')
+      {
+        console.log("You already logged in, please logout your lod session in-order to login");
+        alert(data.message);
+      }
     },
     error: function (err) {
       console.log("err: " + JSON.stringify(err));

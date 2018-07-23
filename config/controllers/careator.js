@@ -84,6 +84,68 @@ module.exports.pswdCheck = function (req, res) {
     var careatorEmail = req.body.careatorEmail;
     var emailSplit = careatorEmail.split('@');
     if (general.emptyCheck(password) && general.emptyCheck(careatorEmail)) {
+
+        var obj = {
+            "email": careatorEmail
+        }
+        console.log("obj: " + JSON.stringify(obj));
+        careatorMaster.find(obj).toArray(function (err, findData) {
+            console.log("findData: " + JSON.stringify(findData));
+            if (err) {
+                responseData = {
+                    status: false,
+                    message: "Process failed"
+                };
+                res.status(400).send(responseData);
+            } else {
+                if (findData.length > 0) {
+                    if (findData[0].password == password) {
+                        responseData = {
+                            status: true,
+                            message: "Login Successfully",
+                            sessionData: "79ea520a-3e67-11e8-9679-97fa7aeb8e97",
+                            data: findData[0]
+                        };
+                        console.log("responseData: " + JSON.stringify(responseData));
+                        res.status(200).send(responseData);
+                    } else {
+                        responseData = {
+                            status: false,
+                            message: "Password is wrong"
+                        };
+                        console.log("responseData: " + JSON.stringify(responseData));
+                        res.status(400).send(responseData);
+                    }
+
+                } else {
+                    responseData = {
+                        status: false,
+                        message: "Email ID is not valid"
+                    };
+                    console.log("responseData: " + JSON.stringify(responseData));
+                    res.status(400).send(responseData);
+                }
+            }
+        })
+
+    } else {
+        responseData = {
+            status: false,
+            message: "Empty value found"
+        };
+        console.log("responseData: " + JSON.stringify(responseData));
+        res.status(400).send(responseData);
+    }
+    console.log("<--pswdCheck");
+}
+
+module.exports.pswdCheck = function (req, res) {
+    console.log("pswdCheck-->");
+    console.log("req.body.password: " + req.body.password + " req.body.careatorEmail: " + req.body.careatorEmail);
+    var password = req.body.password;
+    var careatorEmail = req.body.careatorEmail;
+    var emailSplit = careatorEmail.split('@');
+    if (general.emptyCheck(password) && general.emptyCheck(careatorEmail)) {
         if (emailSplit[1] == 'careator.com' || careatorEmail == 'vc4allAdmin@gmail.com') {
             var obj = {
                 "email": careatorEmail
@@ -136,7 +198,7 @@ module.exports.pswdCheck = function (req, res) {
                             };
                             res.status(400).send(responseData);
                         }
-                      
+
                     } else {
                         responseData = {
                             status: false,
@@ -607,8 +669,8 @@ module.exports.careatorMasterInsertValidate = function (data, callback) {
         "chatStatus": "Available",
         "restrictedTo": [],
         "profilePicPath": "./css/user.png",
-        "login":"notDone",
-        "logout":"notDone",
+        "login": "notDone",
+        "logout": "notDone",
     }
     careatorMaster.find(findEmpId).toArray(function (err, findData) {
         if (err) {
@@ -657,9 +719,9 @@ module.exports.careatorSingleUserInsert = function (req, res) {
         "status": "active",
         "restrictedTo": [],
         "profilePicPath": "./css/user.png",
-        "login":"notDone",
-        "logout":"notDone",
-       
+        "login": "notDone",
+        "logout": "notDone",
+
     }
     console.log("obj :" + JSON.stringify(obj));
     var findEmpId = {

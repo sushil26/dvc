@@ -606,7 +606,9 @@ module.exports.careatorMasterInsertValidate = function (data, callback) {
         "status": "active",
         "chatStatus": "Available",
         "restrictedTo": [],
-        "profilePicPath": "./css/user.png"
+        "profilePicPath": "./css/user.png",
+        "login":"notDone",
+        "logout":"notDone",
     }
     careatorMaster.find(findEmpId).toArray(function (err, findData) {
         if (err) {

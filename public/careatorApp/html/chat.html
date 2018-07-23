@@ -355,10 +355,6 @@
                                             </div>
                                         </div> -->
 
-                                    <audio controls>
-                                      
-                                        <source src="./audio/alert.mp3" type="audio/mpeg"> Your browser does not support the audio element.
-                                    </audio>
                                     <div class="row message-body" ng-repeat="chat in allChat.chats">
                                         <div class="col-sm-12 message-main-receiver" ng-if="chat.senderId!=userId">
                                             <div ng-if="selectedType=='group'" style="background: #ddf8c6;
@@ -372,6 +368,9 @@
                                                 {{chat.senderName}}
                                             </div>
                                             <div class="receiver">
+                                                <audio id="myAudio">
+                                                    <source src="./audio/alert.mp3" type="audio/mpeg">
+                                                </audio>
                                                 <div class="message-text">
                                                     {{chat.message}}
                                                 </div>

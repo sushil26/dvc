@@ -54,13 +54,11 @@ if (stuff.length > 5) {
   console.log("localStorage.getItem(sessionPassword): " + localStorage.getItem("sessionPassword"));
   console.log("localStorage.getItem(careator_remoteEmail): " + localStorage.getItem("careator_remoteEmail"));
   console.log("localStorage.getItem(oneTimePassword): " + localStorage.getItem("oneTimePassword"));
-  console.log("localStorage.getItem(redirctRequired): " + localStorage.getItem("redirctRequired"));
-  if (localStorage.getItem("redirctRequired") == 'true') {
-    console.log("localStorage.getItem(redirctRequired): " + localStorage.getItem("redirctRequired"));
-    localStorage.removeItem("redirctRequired");
-    close();
-    //window.location.href = "/careator";
-  }
+  // if (localStorage.getItem("redirctRequired") == 'true') {
+  //   console.log("localStorage.getItem(redirctRequired): " + localStorage.getItem("redirctRequired"));
+  //   localStorage.removeItem("redirctRequired");
+  //   close();
+  // }
   if (localStorage.getItem("careatorEmail") && localStorage.getItem("sessionPassword") && (localStorage.getItem("videoRights") == 'yes')) {
     console.log("Hoster session check");
     var password = localStorage.getItem("sessionPassword");
@@ -388,13 +386,15 @@ signaling_socket.on("disconnectSessionReply", function (data) {
   console.log("disconnectSessionReply from server-->");
   if (queryLink == data.deleteSessionId && peerNew_id == data.owner) {
     console.log("Ready for redirect-->");
-    localStorage.setItem("redirctRequired", true);
-
+    // localStorage.setItem("redirctRequired", true);
+    //alert("Sorry your link is not alive");
+    close();
     //window.location.href = "https://norecruits.com";
   } else if (queryLink == data.deleteSessionId && peerNew_id != data.owner) {
     console.log("remote notification that host disconnect the session-->");
     alert("Your host disconnect the session, you no longer can use this session");
-    localStorage.setItem("redirctRequired", true);
+    close();
+    // localStorage.setItem("redirctRequired", true);
     // $("#homeLink").trigger("click");
     // window.location.href = "https://norecruits.com";
   }
@@ -497,9 +497,9 @@ signaling_socket.on("connect", function () {
   signaling_socket.on("message", function (config) {
     console.log("signaling_socket message-->");
     //console.log("Unique Peer Id: " + config.peer_id)
+
     queryLink = config.queryId;
     peerNew_id = config.peer_id;
-
     timeLink = config.time;
     console.log("urlDate: " + urlDate + " timeLink: " + timeLink);
     var dt = new Date();
@@ -507,109 +507,95 @@ signaling_socket.on("connect", function () {
     var fy = dt.getFullYear().toString();
     var m = dt.getMonth().toString();
     var hr = dt.getHours().toString();
-
     var date = dy.concat(fy, m, hr);
     urlDate = date;
     console.log("queryLink: " + queryLink);
     console.log("peerNew_id: " + peerNew_id);
     console.log("date: " + date);
-
     if (config.queryId == null) {
       console.log("query id is null");
       document.getElementById("videoConfStart").setAttribute("onclick", "startSession('" + peerNew_id + "' , '" + date + "')");
-      // $("#buttonpage").css({"min-height":"100vh"})
-      document
-        .getElementById("linkToShare")
-        .setAttribute(
-          "href",
-          "https://norecruits.com/careator/" + peerNew_id + "/" + date
-        );
-      document.getElementById("linkToShare").innerHTML =
-        "https://norecruits.com/careator/" + peerNew_id + "/" + date;
+      document.getElementById("linkToShare").setAttribute("href", "https://norecruits.com/careator/" + peerNew_id + "/" + date);
+      document.getElementById("linkToShare").innerHTML = "https://norecruits.com/careator/" + peerNew_id + "/" + date;
     } else {
       console.log("query id nt null");
-
-      document
-        .getElementById("linkToShare")
-        .setAttribute(
-          "href",
-          "https://norecruits.com/careator/" + queryLink + "/" + date
-        );
-      document.getElementById("linkToShare").innerHTML =
-        "https://norecruits.com/careator/" + queryLink + "/" + date;
-      document.getElementById("screenBtns").style.display = "inline";
-      document.getElementById("homeLink").style.display = "inline";
-      document.getElementById("videoConfStart").style.display = "none";
-      $("#buttonpage").css({ "min-height": "100vh" });
-      // document.getElementById("chelam").style.display = "none";
-      // document.getElementById("mobile-nav-toggle").style.display = "none";
-      document.getElementById("openChat").style.display = "inline";
-
-      document.getElementById("audio_btn").style.display = "inline";
-      document.getElementById("video_btn").style.display = "inline";
-      document.getElementById("diconnect_btn").style.display = "inline";
-
-      document.getElementById("linkToShare").style.display = "block";
-      // document.getElementById("emailInvitation").style.display = "inline";
-      console.log("userName: " + userName);
-      if (userName != undefined && userName != "") {
-        console.log("userName with localmedia setup call: " + userName);
-        setup_local_media(function () {
-          join__channel(DEFAULT_CHANNEL, {
-            "whatever-you--here": "stuff"
+      console.log("config.isQueryIdAuthorized: " + config.isQueryIdAuthorized);
+      if (config.isQueryIdAuthorized == 'yes') {
+        document.getElementById("linkToShare").setAttribute("href", "https://norecruits.com/careator/" + queryLink + "/" + date);
+        document.getElementById("linkToShare").innerHTML = "https://norecruits.com/careator/" + queryLink + "/" + date;
+        document.getElementById("screenBtns").style.display = "inline";
+        document.getElementById("homeLink").style.display = "inline";
+        document.getElementById("videoConfStart").style.display = "none";
+        $("#buttonpage").css({ "min-height": "100vh" });
+        document.getElementById("openChat").style.display = "inline";
+        document.getElementById("audio_btn").style.display = "inline";
+        document.getElementById("video_btn").style.display = "inline";
+        document.getElementById("diconnect_btn").style.display = "inline";
+        document.getElementById("linkToShare").style.display = "block";
+        console.log("userName: " + userName);
+        if (userName != undefined && userName != "") {
+          console.log("userName with localmedia setup call: " + userName);
+          setup_local_media(function () {
+            join__channel(DEFAULT_CHANNEL, {
+              "whatever-you--here": "stuff"
+            });
+          });
+        }
+        document.getElementById("setNameId").addEventListener("click", function () {
+          console.log("setup_local_media calling**");
+          console.log("setName-->");
+          var careator_remoteEmail = document.getElementById("remote_userName").value;
+          var careator_remotePswd = document.getElementById("remote_password").value;
+          var checkObj = {
+            "url": window.location.href,
+            "careator_remoteEmail": careator_remoteEmail,
+            "careator_remotePswd": careator_remotePswd
+          }
+          $.ajax({
+            url: "https://norecruits.com/careator/RemoteJoinCheck",
+            type: "POST",
+            data: JSON.stringify(checkObj),
+            contentType: "application/json",
+            dataType: "json",
+            success: function (data) {
+              console.log("data: " + JSON.stringify(data));
+              localStorage.removeItem("careatorEmail");
+              localStorage.setItem("careator_remoteEmail", careator_remoteEmail);
+              localStorage.setItem("sessionEnc", data.sessionData);
+              var emailIdSplit = careator_remoteEmail.split('@');
+              console.log("2 cond: emailIdSplit: " + JSON.stringify(emailIdSplit));
+              userName = emailIdSplit[0];
+              careator_remoteEmail = true;
+              document.getElementById("videoConferenceUrl").style.display = "none";
+              document.getElementById("emailInvitation").style.display = "none";
+              document.getElementById("videoCtrolBar").style.display = "grid";
+              localStorage.setItem("oneTimePassword", careator_remotePswd);
+              $('#remoteJoin').modal('hide');
+              setup_local_media(function () {
+                join__channel(DEFAULT_CHANNEL, {
+                  "whatever-here": "stuff"
+                });
+              });
+            },
+            error: function (err) {
+              console.log("err: " + JSON.stringify(err));
+              console.log("err.responseText: " + JSON.stringify(err.responseText));
+              console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
+              document.getElementById("videoConferenceUrl").style.display = "none";
+              document.getElementById("emailInvitation").style.display = "none";
+              userName = "";
+            }
           });
 
         });
       }
-
-      document.getElementById("setNameId").addEventListener("click", function () {
-        console.log("setup_local_media calling**");
-        console.log("setName-->");
-        var careator_remoteEmail = document.getElementById("remote_userName").value;
-        var careator_remotePswd = document.getElementById("remote_password").value;
-        var checkObj = {
-          "url": window.location.href,
-          "careator_remoteEmail": careator_remoteEmail,
-          "careator_remotePswd": careator_remotePswd
-        }
-        $.ajax({
-          url: "https://norecruits.com/careator/RemoteJoinCheck",
-          type: "POST",
-          data: JSON.stringify(checkObj),
-          contentType: "application/json",
-          dataType: "json",
-          success: function (data) {
-            console.log("data: " + JSON.stringify(data));
-            localStorage.removeItem("careatorEmail");
-            localStorage.setItem("careator_remoteEmail", careator_remoteEmail);
-            localStorage.setItem("sessionEnc", data.sessionData);
-            var emailIdSplit = careator_remoteEmail.split('@');
-            console.log("2 cond: emailIdSplit: " + JSON.stringify(emailIdSplit));
-            userName = emailIdSplit[0];
-            careator_remoteEmail = true;
-            document.getElementById("videoConferenceUrl").style.display = "none";
-            document.getElementById("emailInvitation").style.display = "none";
-            document.getElementById("videoCtrolBar").style.display = "grid";
-            localStorage.setItem("oneTimePassword", careator_remotePswd);
-            $('#remoteJoin').modal('hide');
-            setup_local_media(function () {
-              join__channel(DEFAULT_CHANNEL, {
-                "whatever-here": "stuff"
-              });
-            });
-          },
-          error: function (err) {
-            console.log("err: " + JSON.stringify(err));
-            console.log("err.responseText: " + JSON.stringify(err.responseText));
-            console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
-            document.getElementById("videoConferenceUrl").style.display = "none";
-            document.getElementById("emailInvitation").style.display = "none";
-            userName = "";
-          }
-        });
-
-      });
+      else {
+        alert("Sorry your link is not alive");
+        close();
+        // window.location.href = "https://norecruits.com";
+      }
     }
+
     console.log("<--signaling_socket message");
   });
   console.log("<--signaling_socket connect");
@@ -1084,6 +1070,8 @@ signaling_socket.on("removePeer", function (config) {
 
   delete peers[peer_id];
   delete peer_media_elements[config.peer_id];
+  alert("Sorry your link is not alive");
+  close();
   //peer_userName_elements[peer_id].remove();
   // delete peer_media_sselements[config.peer_id];
 });

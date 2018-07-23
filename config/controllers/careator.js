@@ -714,6 +714,7 @@ module.exports.careatorSingleUserInsert = function (req, res) {
         "name": req.body.userName,
         "empId": req.body.empId,
         "email": req.body.empEmail,
+        "password": req.body.empPass,
         "videoRights": req.body.videoRights,
         "chatRights": req.body.chatRights,
         "status": "active",

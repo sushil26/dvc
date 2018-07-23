@@ -82,7 +82,9 @@ module.exports.pswdCheck = function (req, res) {
     console.log("req.body.password: " + req.body.password + " req.body.careatorEmail: " + req.body.careatorEmail);
     var password = req.body.password;
     var careatorEmail = req.body.careatorEmail;
+    var emailSplit = careatorEmail.split('@');
     if (general.emptyCheck(password) && general.emptyCheck(careatorEmail)) {
+        if (emailSplit[1] == 'careator.com' || careatorEmail == 'vc4allAdmin@gmail.com') {
         var obj = {
             "email": careatorEmail
         }
@@ -124,6 +126,14 @@ module.exports.pswdCheck = function (req, res) {
                 }
             }
         })
+    }
+    else{
+        responseData = {
+            status: false,
+            message: "Email id is not valid"
+        };
+        res.status(400).send(responseData);
+    }
     } else {
         responseData = {
             status: false,
@@ -153,8 +163,8 @@ module.exports.pswdGenerate = function (req, res) {
             careatorMaster.find({ "email": email }).toArray(function (err, findData) {
                 console.log("findData: " + JSON.stringify(findData));
                 if (findData.length > 0) {
-                    if(findData[0].logout=='done' && findData[0].login == 'notDone'){
-                        careatorMaster.update({ "_id": ObjectId(findData[0]._id), "status": "active" }, { $set: { "password": password, "invite": [], "logout": "notDone","login":"done" } }, function (err, data) {
+                    if (findData[0].logout == 'done' && findData[0].login == 'notDone') {
+                        careatorMaster.update({ "_id": ObjectId(findData[0]._id), "status": "active" }, { $set: { "password": password, "invite": [], "logout": "notDone", "login": "done" } }, function (err, data) {
                             console.log("data: " + JSON.stringify(data));
                             if (err) {
                                 responseData = {
@@ -191,14 +201,14 @@ module.exports.pswdGenerate = function (req, res) {
                             }
                         })
                     }
-                    else{
+                    else {
                         responseData = {
                             status: false,
                             message: "You already logged in, please logout your old session in-order to login"
                         };
                         res.status(400).send(responseData);
                     }
-                   
+
                 } else {
                     console.log("Email Not Matched, tell your admin to verify");
                     responseData = {
@@ -216,8 +226,8 @@ module.exports.pswdGenerate = function (req, res) {
             careatorMaster.find({ "email": email }).toArray(function (err, findData) {
                 console.log("findData: " + JSON.stringify(findData));
                 if (findData.length > 0) {
-                    if(findData[0].logout=='done' && findData[0].login == 'notDone'){
-                        careatorMaster.update({ "_id": ObjectId(findData[0]._id), "status": "active" }, { $set: { "invite": [], "logout": "notDone","login":"done" } }, function (err, data) {
+                    if (findData[0].logout == 'done' && findData[0].login == 'notDone') {
+                        careatorMaster.update({ "_id": ObjectId(findData[0]._id), "status": "active" }, { $set: { "invite": [], "logout": "notDone", "login": "done" } }, function (err, data) {
                             console.log("data: " + JSON.stringify(data));
                             if (err) {
                                 responseData = {
@@ -234,14 +244,14 @@ module.exports.pswdGenerate = function (req, res) {
                             }
                         })
                     }
-                    else{
+                    else {
                         responseData = {
                             status: false,
                             message: "You already logged in, please logout your old session in-order to login"
                         };
                         res.status(400).send(responseData);
                     }
-                   
+
                 } else {
                     console.log("Email Not Matched, tell your admin to verify");
                     responseData = {
@@ -253,7 +263,7 @@ module.exports.pswdGenerate = function (req, res) {
                 }
 
             })
-           
+
         } else {
             responseData = {
                 status: false,
@@ -376,7 +386,7 @@ module.exports.setCollection = function (req, res) {
             var io = req.app.get('socketio');
             io.emit('comm_sessionCreateUpdate', {
                 "email": req.body.email,
-                "isDisconnected":"no"
+                "isDisconnected": "no"
             }); /* ### Note: Emit message to client(careator_dashboardCtrl.js) ### */
             chatHistory.insertOne(obj, function (err, data) {
                 if (err) {
@@ -1639,7 +1649,7 @@ module.exports.userEditById = function (req, res) {
         if (req.body.userEmail) {
             updateVlaue.email = req.body.userEmail;
         }
-        if(req.body.userPass){
+        if (req.body.userPass) {
             updateVlaue.password = req.body.userPass
         }
         if (req.body.videoRights) {

@@ -398,9 +398,9 @@ signaling_socket.on("disconnectSessionReply", function (data) {
     setTimeout(function () {
       $('#sessionDisconn_alert').fadeOut('fast');
     }, 3000);
-    setTimeout(function () {
-      close();
-    }, 3001);
+    // setTimeout(function () {
+    //   close();
+    // }, 3001);
 
 
     // localStorage.setItem("redirctRequired", true);

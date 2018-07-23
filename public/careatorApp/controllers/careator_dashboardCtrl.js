@@ -14,7 +14,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
             if (checkStatus) {
                 console.log("data.data.data[0].isDisconnected: " + data.data.data[0].isDisconnected);
                 // var sessionHostBlock;
-                if (data.data.data[0].isDisconnected == 'yes') {
+                if (data.data.data[0].isDisconnected == 'yes' || data.data.data[0].isDisconnected==undefined ) {
                     $scope.sessionHostBlock = 'no';
                 }
                 else {

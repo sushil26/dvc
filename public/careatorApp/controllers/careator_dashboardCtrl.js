@@ -14,16 +14,16 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
             console.log("checkStatus: " + checkStatus);
             if (checkStatus) {
                 console.log("data.data.data[0].isDisconnected: " + data.data.data[0].isDisconnected);
-                var sessionHostBlock;
+                // var sessionHostBlock;
                 if(data.data.data[0].isDisconnected=='yes')
                 {
-                    sessionHostBlock= 'no';
+                    $scope.sessionHostBlock= 'no';
                 }
                 else{
-                    sessionHostBlock= 'yes';
+                    $scope.sessionHostBlock= 'yes';
                 }
               
-                console.log("sessionHostBlock: " + sessionHostBlock);
+                console.log("$scope.sessionHostBlock: " + $scope.sessionHostBlock);
                 console.log(data.data.message);
 
             } else {

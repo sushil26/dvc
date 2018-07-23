@@ -1627,6 +1627,7 @@ module.exports.userEditById = function (req, res) {
             "_id": ObjectId(id)
         }
         console.log("queryId: " + JSON.stringify(queryId));
+        console.log("req.body.videoRights: " + req.body.videoRights);
         var updateVlaue = {};
 
         if (req.body.userName) {

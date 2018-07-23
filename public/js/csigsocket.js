@@ -198,26 +198,103 @@ function sendEmail() {
         localStorage.removeItem("sessionPassword")
         triggerInvite();
       }
-     
+
     },
     error: function (err) {
       console.log("err: " + JSON.stringify(err));
       console.log("err.responseText: " + JSON.stringify(err.responseText));
       console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
-     
-      if (err.responseJSON.message == 'You already logged in, please logout your old session in-order to login')
-      {
+
+      if (err.responseJSON.message == 'You already logged in, please logout your old session in-order to login') {
         console.log("You already logged in, please logout your old session in-order to login");
         alert(err.responseJSON.message);
-        window.location.href="/";
+        window.location.href = "/";
       }
-      else{
+      else {
         alert(err.responseJSON.message);
       }
     }
 
   });
   console.log("<--sendEmail");
+}
+function checkCredential() {
+  console.log("checkCredential-->");
+  var password = document.getElementById("careatorPswd").value;
+  var careatorEmail = document.getElementById("careatorEmail").value;
+  var obj = {
+    "password": password,
+    "careatorEmail": careatorEmail
+  };
+  console.log("obj: " + JSON.stringify(obj));
+  if (password != "" && careatorEmail != "") {
+
+    $.ajax({
+      url: "https://norecruits.com/careator/pswdCheck",
+      type: "POST",
+      data: JSON.stringify(obj),
+      contentType: "application/json",
+      dataType: "json",
+      success: function (data) {
+        console.log("data: " + JSON.stringify(data));
+        localStorage.setItem("careatorEmail", careatorEmail);
+        localStorage.setItem("userName", data.data.name);
+        localStorage.setItem("empId", data.data.empId);
+        localStorage.setItem("email", data.data.email);
+        localStorage.setItem("userId", data.data._id);
+        localStorage.setItem("sessionPassword", password);
+        localStorage.setItem("sessionEnc", data.sessionData);
+        userName = localStorage.getItem("userName");
+        if (data.data.videoRights == 'yes') {
+          localStorage.setItem("videoRights", 'yes');
+          document.getElementById("videoConfStart").style.display = "inline";
+          $("#buttonpage").css({ "min-height": "auto" });
+        }
+        if (data.data.chatRights == 'yes') {
+          localStorage.setItem("chatRights", 'yes');
+          document.getElementById("chatConfStart").style.display = "inline";
+        }
+        if (data.data.chatStatus) {
+          localStorage.setItem("chatStatus", data.data.chatStatus);
+        }
+        if (data.data.restrictedTo) {
+          console.log("data.data.restrictedTo: " + JSON.stringify(data.data.restrictedTo));
+          var restrictedTo = data.data.restrictedTo;
+          var restrictedArray = [];
+          for (var x = 0; x < restrictedTo.length; x++) {
+            restrictedArray.push(restrictedTo[x].userId);
+          }
+
+          console.log("restrictedArray: " + restrictedArray);
+          localStorage.setItem("restrictedTo", restrictedArray);
+        }
+        if (data.data.profilePicPath) {
+          localStorage.setItem("profilePicPath", data.data.profilePicPath);
+        }
+        var userNameEmail = localStorage.getItem("careatorEmail");
+        var emailIdSplit = userNameEmail.split('@');
+        //userName = emailIdSplit[0];
+        console.log("userName: " + userName);
+        document.getElementById("videoConferenceUrl").style.display = "block";
+        // $('#myPasswordModal').modal('hide');
+        window.location.href = "https://norecruits.com/careatorApp/#!/dashboard/profile";
+      },
+      error: function (err) {
+        console.log("err: " + JSON.stringify(err));
+        console.log("err.responseText: " + JSON.stringify(err.responseText));
+        console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
+        document.getElementById("videoConferenceUrl").style.display = "none";
+        localStorage.removeItem("careatorEmail");
+        userName = "";
+      }
+    });
+  } else {
+    console.log("password trigger again-->");
+    console.log("Password empty");
+
+    // $("#enterPswd").trigger("click");
+  }
+  console.log("<--checkCredential");
 }
 
 function checkPassword() {
@@ -404,7 +481,7 @@ signaling_socket.on("disconnectSessionReply", function (data) {
     console.log("remote notification that host disconnect the session-->");
     document.getElementById("sessionDisconn_alert").style.display = 'inline';
     document.getElementById("sessionDisconn_alert").innerHTML = 'Your host disconnect the session, you no longer can use this session';
-    
+
     setTimeout(function () {
       $('#sessionDisconn_alert').fadeOut('fast');
     }, 3000);
@@ -431,7 +508,8 @@ function disconnecSession() {
       deleteSessionId: queryLink,
       owner: peerNew_id,
       userId:
-      localStorage.getItem("userId")    });
+        localStorage.getItem("userId")
+    });
 
     // window.location.href = "https://norecruits.com";
   } else {

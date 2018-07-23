@@ -419,8 +419,9 @@ function disconnecSession() {
     localStorage.removeItem("sessionUrlId");
     signaling_socket.emit("disconnectSession", {
       deleteSessionId: queryLink,
-      owner: peerNew_id
-    });
+      owner: peerNew_id,
+      userId:
+      localStorage.getItem("userId")    });
 
     // window.location.href = "https://norecruits.com";
   } else {

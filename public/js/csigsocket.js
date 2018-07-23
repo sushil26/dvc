@@ -387,7 +387,7 @@ signaling_socket.on("disconnectSessionReply", function (data) {
   if (queryLink == data.deleteSessionId && peerNew_id == data.owner) {
     console.log("Ready for redirect-->");
     // localStorage.setItem("redirctRequired", true);
-    alert("Sorry your link is not alive");
+    //alert("Sorry your link is not alive");
     close();
     //window.location.href = "https://norecruits.com";
   } else if (queryLink == data.deleteSessionId && peerNew_id != data.owner) {

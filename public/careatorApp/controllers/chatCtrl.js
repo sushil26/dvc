@@ -498,7 +498,7 @@ careatorApp.controller("chatCtrl", function(
             console.log("data.data.data: " + JSON.stringify(data.data.data));
             console.log(data.data.message);
             $scope.zero=0;
-            $scope.count=zero+1;
+            $scope.count=$scope.zero+1;
             $scope.zero= $scope.count;
 
           } else {

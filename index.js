@@ -172,20 +172,20 @@ io.sockets.on('connection', function (socket) {
         console.log("disconnectSession-->");
         io.sockets.emit('disconnectSessionReply', { "deleteSessionId": data.deleteSessionId, "owner": data.owner });
         //if (sessionHeaderId == data.owner) {
-            var db = mongoConfig.getDb();
-            console.log("db: " + db);
-            careatorMaster = db.collection("careatorMaster");
-            var queryObj = {
-                "_id": ObjectId(data.userId)
+        var db = mongoConfig.getDb();
+        console.log("db: " + db);
+        careatorMaster = db.collection("careatorMaster");
+        var queryObj = {
+            "_id": ObjectId(data.userId)
+        }
+        careatorMaster.update(queryObj, { $set: { "isDisconnected": "yes" } }, function (err, data) {
+            if (err) {
+                console.log("errr: " + JSON.stringify(err));
             }
-            careatorMaster.update(queryObj, { $set: { "isDisconnected": "yes" } }, function (err, data) {
-                if (err) {
-                    console.log("errr: " + JSON.stringify(err));
-                }
-                else {
-                    console.log("data: " + JSON.stringify(data));
-                }
-            })
+            else {
+                console.log("data: " + JSON.stringify(data));
+            }
+        })
         deletedSocket_ids.push(data.deleteSessionId);
         console.log("deletedSocket_ids: " + JSON.stringify(deletedSocket_ids));
         var tempSock = sockets[data.deleteSessionId]; /* ### Note using this deleteSessionId we are getting real socket(tempSock)   ### */
@@ -446,7 +446,24 @@ io.sockets.on('connection', function (socket) {
     /* ### Start: Get the logoutNotification from the user(careator_dashboardCtrl.js) ### */
     socket.on('comm_logout', function (data) {
         console.log("comm_logout-->: " + JSON.stringify(data));
-        io.sockets.emit('comm_logoutNotifyToUserById', { "userId": data.userId, "email": data.email, "sessionURL": data.sessionURL }) /* ### Note: Send quick message view notification to event sender(who's user id is matched with this userId) ### */
+        var db = mongoConfig.getDb();
+        console.log("db: " + db);
+        careatorMaster = db.collection("careatorMaster");
+        var queryObj = {
+            "_id": ObjectId(data.userId)
+        }
+        console.log("queryObj: " + JSON.stringify(queryObj));
+        console.log("chatHistory: " + chatHistory);
+        careatorMaster.update(queryObj, { $set: { "logout": "done","login":"notDone" } }, function (err, data) {
+            if (err) {
+                console.log("errr: " + JSON.stringify(err));
+            }
+            else {
+                console.log("data: " + JSON.stringify(data));
+                io.sockets.emit('comm_logoutNotifyToUserById', { "userId": data.userId, "email": data.email, "sessionURL": data.sessionURL }) /* ### Note: Send quick message view notification to event sender(who's user id is matched with this userId) ### */
+            }
+        })
+        
     })
     /* ### End: Get the logoutNotification from the user(careator_dashboardCtrl.js) ### */
 

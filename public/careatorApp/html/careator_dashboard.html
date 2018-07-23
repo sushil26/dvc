@@ -87,9 +87,12 @@
                         </a>
                     </li>
                     <li ng-if="videoRights=='yes'">
-                         <a ng-if="sessionHostBlock=='no'" href="https://norecruits.com/careator" target="_blank" > 
-                            <a ng-if="sessionHostBlock=='yes'" href="#" ng-click="closeYourOldSession()"> 
-                        <!-- <a ng-click="videoUrlNavigation()"> -->
+                        <a ng-if="sessionHostBlock=='no'" href="https://norecruits.com/careator" target="_blank">
+                            <i class="fa fa-video-camera">
+                                <span>&nbspVideo</span>
+                            </i>
+                        </a>
+                        <a ng-if="sessionHostBlock=='yes'" href="#" ng-click="closeYourOldSession()">
                             <i class="fa fa-video-camera">
                                 <span>&nbspVideo</span>
                             </i>

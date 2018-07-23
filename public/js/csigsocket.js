@@ -315,7 +315,7 @@ function checkPassword() {
       contentType: "application/json",
       dataType: "json",
       success: function (data) {
-        // $('#myEmailModal').modal('hide');
+        $('#myEmailModal').modal('hide');
         console.log("data: " + JSON.stringify(data));
         localStorage.setItem("userName", data.data.name);
         localStorage.setItem("empId", data.data.empId);

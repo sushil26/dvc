@@ -194,7 +194,7 @@ module.exports.pswdGenerate = function (req, res) {
                     else{
                         responseData = {
                             status: false,
-                            message: "You already logged in, please logout your lod session in-order to login"
+                            message: "You already logged in, please logout your old session in-order to login"
                         };
                         res.status(400).send(responseData);
                     }
@@ -237,7 +237,7 @@ module.exports.pswdGenerate = function (req, res) {
                     else{
                         responseData = {
                             status: false,
-                            message: "You already logged in, please logout your lod session in-order to login"
+                            message: "You already logged in, please logout your old session in-order to login"
                         };
                         res.status(400).send(responseData);
                     }

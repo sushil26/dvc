@@ -316,7 +316,7 @@ module.exports.setCollection = function (req, res) {
 
     careatorMaster.update({ "email": req.body.email }, {
         $set: {
-            "sessionURL": req.body.url, "invite": [], "session_dateTime": new Date(),"isDisconnected":"no"
+            "sessionURL": req.body.url, "invite": [], "session_dateTime": new Date(), "isDisconnected": "no"
         }
     }, function (err, urlUpdate) {
         if (err) {
@@ -327,6 +327,11 @@ module.exports.setCollection = function (req, res) {
             };
             res.status(400).send(responseData);
         } else {
+            var io = req.app.get('socketio');
+            io.emit('comm_sessionCreateUpdate', {
+                "email": req.body.email,
+                "isDisconnected":"no"
+            }); /* ### Note: Emit message to client(careator_dashboardCtrl.js) ### */
             chatHistory.insertOne(obj, function (err, data) {
                 if (err) {
                     console.log("err: " + JSON.stringify(err));
@@ -1451,7 +1456,7 @@ module.exports.getGroupById = function (req, res) {
 module.exports.careator_getUserById = function (req, res) {
     console.log("careator_getUserById-->");
     var id = req.params.id;
-    console.log("id: "+id);
+    console.log("id: " + id);
     var response;
     if (general.emptyCheck(id)) {
         var findObj = {
@@ -2131,11 +2136,11 @@ module.exports.comm_profileImgUpdateById = function (req, res) {
     }
 }
 
-module.exports.getLoggedinSessionURLById = function (req, res){
+module.exports.getLoggedinSessionURLById = function (req, res) {
     console.log("getLoggedinSessionURLById-->");
     var response;
     var id = req.params.id;
-    console.log("id: "+id);
+    console.log("id: " + id);
     if (general.emptyCheck(id)) {
         var findObj = {
             "_id": ObjectId(id)
@@ -2160,12 +2165,12 @@ module.exports.getLoggedinSessionURLById = function (req, res){
             }
         })
     }
-    else{
+    else {
         console.log("empty value found");
         response = {
             status: false,
             message: "Empty value found",
         }
-        res.status(400).send(response);   
+        res.status(400).send(response);
     }
 }

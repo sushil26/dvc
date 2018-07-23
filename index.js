@@ -174,7 +174,7 @@ io.sockets.on('connection', function (socket) {
         //if (sessionHeaderId == data.owner) {
             var db = mongoConfig.getDb();
             console.log("db: " + db);
-            chatHistory = db.collection("chatHistory");
+            careatorMaster = db.collection("careatorMaster");
             var queryObj = {
                 "_id": ObjectId(data.userId)
             }

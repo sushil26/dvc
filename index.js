@@ -454,12 +454,12 @@ io.sockets.on('connection', function (socket) {
         }
         console.log("queryObj: " + JSON.stringify(queryObj));
         console.log("chatHistory: " + chatHistory);
-        careatorMaster.update(queryObj, { $set: { "logout": "done","login":"notDone" } }, function (err, data) {
+        careatorMaster.update(queryObj, { $set: { "logout": "done","login":"notDone" } }, function (err, updateData) {
             if (err) {
                 console.log("errr: " + JSON.stringify(err));
             }
             else {
-                console.log("data: " + JSON.stringify(data));
+                console.log("updateData: " + JSON.stringify(updateData));
                 io.sockets.emit('comm_logoutNotifyToUserById', { "userId": data.userId, "email": data.email, "sessionURL": data.sessionURL }) /* ### Note: Send quick message view notification to event sender(who's user id is matched with this userId) ### */
             }
         })

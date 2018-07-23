@@ -161,7 +161,7 @@ module.exports.pswdCheck = function (req, res) {
                     res.status(400).send(responseData);
                 } else {
                     if (findData.length > 0) {
-                        if ((findData[0].logout == 'done' && findData[0].login == 'notDone') || (findData[0].logout == 'notDone' && findData[0].login == 'notDone')) {
+                        if (findData[0].logout == 'done' && findData[0].login == 'notDone') {
                             careatorMaster.update({ "_id": ObjectId(findData[0]._id), "status": "active" }, { $set: { "password": password, "invite": [], "logout": "notDone", "login": "done" } }, function (err, data) {
                                 console.log("data: " + JSON.stringify(data));
                                 if (err) {
@@ -670,7 +670,7 @@ module.exports.careatorMasterInsertValidate = function (data, callback) {
         "restrictedTo": [],
         "profilePicPath": "./css/user.png",
         "login": "notDone",
-        "logout": "notDone",
+        "logout": "done",
     }
     careatorMaster.find(findEmpId).toArray(function (err, findData) {
         if (err) {
@@ -721,7 +721,7 @@ module.exports.careatorSingleUserInsert = function (req, res) {
         "restrictedTo": [],
         "profilePicPath": "./css/user.png",
         "login": "notDone",
-        "logout": "notDone",
+        "logout": "done",
 
     }
     console.log("obj :" + JSON.stringify(obj));

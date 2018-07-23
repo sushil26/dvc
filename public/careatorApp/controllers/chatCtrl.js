@@ -168,7 +168,6 @@ careatorApp.controller("chatCtrl", function(
         console.log("data--" + JSON.stringify(data.data));
         var checkStatus = careatorHttpFactory.dataValidation(data);
         if (checkStatus) {
-            $scope.scrollDown();
           $scope.allChat = data.data.data[0];
           if ($scope.allChat == undefined) {
             $scope.individualData = $scope.chatedGroup_records[index];
@@ -650,18 +649,15 @@ careatorApp.controller("chatCtrl", function(
 
   /* ### Start: receive message from careator.js  ### */
   socket.on("comm_textReceived", function(data) {
-    //update to client with new message;
+    $scope.scrollDown();
     console.log("****comm_textReceived-->: " + JSON.stringify(data));
-    // console.log("$scope.individualData._id: " + $scope.individualData._id);
-    // console.log(" data.id: " + data.id);
-    // console.log("$scope.individualData._id: " + JSON.stringify($scope.individualData));
-    // console.log(" data.id: " + JSON.stringify(data));
-    if(userData.userId == data.receiverId){
-        $scope.playAudio = function() {
-            var x = document.getElementById("myAudio");
-            x.play();
-          };
-          $scope.playAudio();
+
+    if (userData.userId == data.receiverId) {
+      $scope.playAudio = function() {
+        var x = document.getElementById("myAudio");
+        x.play();
+      };
+      $scope.playAudio();
     }
     if (
       data.freshInsert == true &&
@@ -714,8 +710,6 @@ careatorApp.controller("chatCtrl", function(
           sendTime: data.sendTime
         });
         $scope.scrollDown();
-
-
       }
     }
   });
@@ -778,28 +772,8 @@ careatorApp.controller("chatCtrl", function(
         }
       });
     }
-    // if (data.moreIds == 'yes') {
-    //     console.log("data: " + JSON.stringify(data));
-    //     console.log("data.ids.indexOf($scope.userId): " + data.ids.indexOf($scope.userId));
-    // }
-    // else {
-    //     if ($scope.userId == data.id) {
-    //         console.log("Updated Started-->");
-    //         var restrictedUser = data.restrictedTo;
-    //         $scope.restrictedArray = [];
-    //         for (var x = 0; x < restrictedUser.length; x++) {
-    //             $scope.restrictedArray.push(restrictedUser[x].userId);
-    //         }
-    //         console.log(" $scope.restrictedArray: " + JSON.stringify($scope.restrictedArray));
-    //         // if(restrictedArray.length>1){
-    //         //     var splitRestrictedUser = restrictedArray.split(',');
-    //         //     console.log("splitRestrictedUser: " + JSON.stringify(splitRestrictedUser));
-    //         // }
-    //     }
-    // }
   });
   socket.on("comm_receiverStatusUpdate", function(data) {
-    //update to client with new message;
     console.log("****comm_receiverStatusUpdate-->: " + JSON.stringify(data));
     if ($scope.receiverData.receiverId == data.id) {
       $scope.receiverChatStatus = data.status;
@@ -844,59 +818,4 @@ careatorApp.controller("chatCtrl", function(
       500
     );
   };
-
-  // $scope.scrollDown = function () {
-  //     console.log("scrollDown-->");
-  //     $("#pulldown").animate({
-  //         scrollTop: $("#pulldown").prop(0,0)
-  //     }, 500);
-  // }
-
-  ////////emoji/////////////////////////////
-  // $(document).ready(function () {
-  //     $("#comment").emojioneArea({
-  //         pickerPosition: "top",
-
-  //     });
-  // })
-  // $(".emojionearea-editor").emojioneArea({
-  //     events: {
-  //         keypress: function (editor, event) {
-
-  //             if (event.which == 13) {
-  //                 $('.emojionearea-editor').data("emojioneArea").setText(""); // this work
-  //                 $("#sndmgs").click();
-
-  //             }
-  //         }
-  //     }
-  // });
-  // })
-  //     $("#emojionearea2").emojioneArea({
-  //         pickerPosition: "bottom",
-  //         tonesStyle: "radio"
-  //     });
-  //     $("#emojionearea3").emojioneArea({
-  //         pickerPosition: "right",
-  //         filtersPosition: "bottom",
-  //         tonesStyle: "square"
-  //     });
-  //     $("#emojionearea4").emojioneArea({
-  //         pickerPosition: "bottom",
-  //         filtersPosition: "bottom",
-  //         tonesStyle: "checkbox"
-  //     });
-  //     $("#emojionearea5").emojioneArea({
-  //         pickerPosition: "top",
-  //         filtersPosition: "bottom",
-  //         tones: false,
-  //         autocomplete: false,
-  //         inline: true,
-  //         hidePickerOnBlur: false
-  //     });
-  //     $("#standalone").emojioneArea({
-  //         standalone: true,
-  //         autocomplete: false
-  //     });
-  // });
 });

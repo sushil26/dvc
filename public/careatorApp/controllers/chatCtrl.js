@@ -631,7 +631,13 @@ careatorApp.controller('chatCtrl', function ($scope, $rootScope, $filter, $windo
                     "sendTime": data.sendTime
                 });
                 $scope.scrollDown();
-                $scope.scrollDown();
+                var x = document.getElementById("myAudio"); 
+
+                $scope.playAudio=function() { 
+                    x.play(); 
+                } 
+                $scope.playAudio();
+                
             }
         }
 

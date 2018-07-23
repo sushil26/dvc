@@ -69,7 +69,7 @@ if (stuff.length > 5) {
     };
     console.log("obj: " + JSON.stringify(obj));
     $.ajax({
-      url: "https://norecruits.com/careator/pswdCheck",
+      url: "https://norecruits.com/careator/pswdCheckForSesstion",
       type: "POST",
       data: JSON.stringify(obj),
       contentType: "application/json",

@@ -77,7 +77,7 @@ module.exports.RemoteJoinCheck = function (req, res) {
     }
 }
 
-module.exports.pswdCheck = function (req, res) {
+module.exports.pswdCheckForSesstion = function (req, res) {
     console.log("pswdCheck-->");
     console.log("req.body.password: " + req.body.password + " req.body.careatorEmail: " + req.body.careatorEmail);
     var password = req.body.password;

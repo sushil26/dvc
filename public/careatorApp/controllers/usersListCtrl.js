@@ -88,4 +88,32 @@ careatorApp.controller('usersListCtrl', function ($scope, $state, careatorHttpFa
             console.log("selected cancel");
         }
     }
+
+
+
+    $scope.resetLoginFlag = function (id) {
+        console.log("deleteUser-->");
+        console.log("Obj ID  " + id);
+        var r = confirm("Are You Sure Reset ????");
+        if (r == true) {
+            var api = "https://norecruits.com/careator_userDelete/userDeleteById/" + id;
+            careatorHttpFactory.get(api).then(function (data) {
+                console.log("data--" + JSON.stringify(data.data));
+                var checkStatus = careatorHttpFactory.dataValidation(data);
+                console.log("data--" + JSON.stringify(data.data));
+                if (checkStatus) {
+                    console.log(data.data.message);
+                    $scope.getAllEmployee();
+                } else {
+                    console.log("Sorry");
+                    console.log(data.data.message);
+                }
+            })
+            console.log("<--statusChange");
+
+        }
+        else{
+            console.log("selected cancel");
+        }
+    }
 })

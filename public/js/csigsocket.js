@@ -400,7 +400,7 @@ signaling_socket.on("disconnectSessionReply", function (data) {
     }, 3000);
     setTimeout(function () {
       close();
-    }, 3002);
+    }, 4000);
 
 
     // localStorage.setItem("redirctRequired", true);

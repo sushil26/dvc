@@ -498,8 +498,7 @@ careatorApp.controller("chatCtrl", function(
           if (checkStatus) {
             console.log("data.data.data: " + JSON.stringify(data.data.data));
             console.log(data.data.message);
-           
-            $scope.count=$scope.count+1;
+         
            
 
           } else {
@@ -662,6 +661,7 @@ careatorApp.controller("chatCtrl", function(
       $scope.playAudio = function() {
         var x = document.getElementById("myAudio");
         x.play();
+        $scope.count=$scope.count+1;
       };
       $scope.playAudio();
     }

@@ -153,42 +153,52 @@ module.exports.pswdGenerate = function (req, res) {
             careatorMaster.find({ "email": email }).toArray(function (err, findData) {
                 console.log("findData: " + JSON.stringify(findData));
                 if (findData.length > 0) {
-                    careatorMaster.update({ "_id": ObjectId(findData[0]._id), "status": "active" }, { $set: { "password": password, "invite": [] } }, function (err, data) {
-                        console.log("data: " + JSON.stringify(data));
-                        if (err) {
-                            responseData = {
-                                status: true,
-                                message: "Process not successful"
-                            };
-                            res.status(200).send(responseData);
-                        } else {
-                            var mailOptions = {
-                                from: "info@vc4all.in",
-                                to: email,
-                                subject: 'VC4ALL Credential',
-                                html: "<table style='border:10px solid gainsboro;'><thead style='background-image: linear-gradient(to bottom, #00BCD4 0%, #00bcd40f 100%);'><tr><th><h2>Greetings from VC4ALL</h2></th></tr></thead><tfoot style=background:#00bcd4;color:white;><tr><td style=padding:15px;><p><p>Regards</p><b>Careator Technologies Pvt. Ltd</b></p></td></tr></tfoot><tbody><tr><td><b>Dear Careator Employee,</b></td></tr><tr><td>Please note, Your email Id is verified successfully, you can access the below link by using given password.<p style=background:gainsboro;>Password: " + password + "</p></td></tr></tbody></table>"
-                            };
-                            transporter.sendMail(mailOptions, function (error, info) {
-                                if (error) {
-                                    console.log(error);
-                                    responseData = {
-                                        status: true,
-                                        message: "insert Successfull and Failed to send mail",
-                                        data: data
-                                    };
-                                    res.status(200).send(responseData);
-                                } else {
-                                    console.log("Email sent: " + info.response);
-                                    responseData = {
-                                        status: true,
-                                        message: "Successfully mail sent",
-                                        data: data
-                                    };
-                                    res.status(200).send(responseData);
-                                }
-                            });
-                        }
-                    })
+                    if(findData[0].logout=='done' && findData[0].login == 'notDone'){
+                        careatorMaster.update({ "_id": ObjectId(findData[0]._id), "status": "active" }, { $set: { "password": password, "invite": [], "logout": "notDone","login":"done" } }, function (err, data) {
+                            console.log("data: " + JSON.stringify(data));
+                            if (err) {
+                                responseData = {
+                                    status: true,
+                                    message: "Process not successful"
+                                };
+                                res.status(400).send(responseData);
+                            } else {
+                                var mailOptions = {
+                                    from: "info@vc4all.in",
+                                    to: email,
+                                    subject: 'VC4ALL Credential',
+                                    html: "<table style='border:10px solid gainsboro;'><thead style='background-image: linear-gradient(to bottom, #00BCD4 0%, #00bcd40f 100%);'><tr><th><h2>Greetings from VC4ALL</h2></th></tr></thead><tfoot style=background:#00bcd4;color:white;><tr><td style=padding:15px;><p><p>Regards</p><b>Careator Technologies Pvt. Ltd</b></p></td></tr></tfoot><tbody><tr><td><b>Dear Careator Employee,</b></td></tr><tr><td>Please note, Your email Id is verified successfully, you can access the below link by using given password.<p style=background:gainsboro;>Password: " + password + "</p></td></tr></tbody></table>"
+                                };
+                                transporter.sendMail(mailOptions, function (error, info) {
+                                    if (error) {
+                                        console.log(error);
+                                        responseData = {
+                                            status: true,
+                                            message: "insert Successfull and Failed to send mail",
+                                            data: data
+                                        };
+                                        res.status(200).send(responseData);
+                                    } else {
+                                        console.log("Email sent: " + info.response);
+                                        responseData = {
+                                            status: true,
+                                            message: "Successfully mail sent",
+                                            data: data
+                                        };
+                                        res.status(200).send(responseData);
+                                    }
+                                });
+                            }
+                        })
+                    }
+                    else{
+                        responseData = {
+                            status: false,
+                            message: "You already logged in, please logout your lod session in-order to login"
+                        };
+                        res.status(400).send(responseData);
+                    }
+                   
                 } else {
                     console.log("Email Not Matched, tell your admin to verify");
                     responseData = {
@@ -203,11 +213,47 @@ module.exports.pswdGenerate = function (req, res) {
 
         }
         else if (email == 'vc4allAdmin@gmail.com') {
-            responseData = {
-                status: true,
-                message: "Successfully get admin login"
-            };
-            res.status(200).send(responseData);
+            careatorMaster.find({ "email": email }).toArray(function (err, findData) {
+                console.log("findData: " + JSON.stringify(findData));
+                if (findData.length > 0) {
+                    if(findData[0].logout=='done' && findData[0].login == 'notDone'){
+                        careatorMaster.update({ "_id": ObjectId(findData[0]._id), "status": "active" }, { $set: { "invite": [], "logout": "notDone","login":"done" } }, function (err, data) {
+                            console.log("data: " + JSON.stringify(data));
+                            if (err) {
+                                responseData = {
+                                    status: false,
+                                    message: "Process not successful"
+                                };
+                                res.status(400).send(responseData);
+                            } else {
+                                responseData = {
+                                    status: true,
+                                    message: "Successfully get admin login"
+                                };
+                                res.status(200).send(responseData);
+                            }
+                        })
+                    }
+                    else{
+                        responseData = {
+                            status: false,
+                            message: "You already logged in, please logout your lod session in-order to login"
+                        };
+                        res.status(400).send(responseData);
+                    }
+                   
+                } else {
+                    console.log("Email Not Matched, tell your admin to verify");
+                    responseData = {
+                        status: false,
+                        errorCode: 400,
+                        message: "Email Not matched or inactive"
+                    };
+                    res.status(200).send(responseData);
+                }
+
+            })
+           
         } else {
             responseData = {
                 status: false,

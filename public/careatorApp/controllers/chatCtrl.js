@@ -814,12 +814,12 @@ careatorApp.controller("chatCtrl", function(
     var clientHeight = document.getElementById('pulldown').scrollHeight;
     console.log("clientHeight"+clientHeight);
     console.log("scrollDown-->");
-    $("#pulldown").scrollTop(0);
-    $("#pulldown").animate(
-      {
-        scrollTop: $("#pulldown").prop("scrollHeight")
-      },
-      500
-    );
+    $("#pulldown").animate({ scrollTop:3031 },"fast");
+    // $("#pulldown").animate(
+    //   {
+    //     scrollTop: $("#pulldown").prop("scrollHeight")
+    //   },
+    //   500
+    // );
   };
 });

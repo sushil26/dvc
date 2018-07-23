@@ -811,10 +811,12 @@ careatorApp.controller("chatCtrl", function(
 
   ///Auto Scroll Down Chat////////////////
   $scope.scrollDown = function() {
+    var clientHeight = document.getElementById('pulldown').offsetHeight;
+    console.log("clientHeight"+clientHeight);
     console.log("scrollDown-->");
     $("#pulldown").animate(
       {
-        scrollTop: $("#pulldown").prop("scrollHeight")
+        scrollTop: $("#pulldown").prop("innerHeight")
       },
       500
     );

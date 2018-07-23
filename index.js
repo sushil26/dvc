@@ -4,6 +4,7 @@ var bodyParser = require('body-parser')
 var nodemailer = require('nodemailer');
 var fileUpload = require('express-fileupload');
 var cJSON = require('circular-json');
+var ObjectId = require("mongodb").ObjectID;
 
 var multer = require('multer');
 
@@ -171,6 +172,20 @@ io.sockets.on('connection', function (socket) {
         console.log("disconnectSession-->");
         io.sockets.emit('disconnectSessionReply', { "deleteSessionId": data.deleteSessionId, "owner": data.owner });
         //if (sessionHeaderId == data.owner) {
+            var db = mongoConfig.getDb();
+            console.log("db: " + db);
+            careatorMaster = db.collection("careatorMaster");
+            var queryObj = {
+                "_id": ObjectId(data.userId)
+            }
+            careatorMaster.update(queryObj, { $set: { "isDisconnected": "yes" } }, function (err, data) {
+                if (err) {
+                    console.log("errr: " + JSON.stringify(err));
+                }
+                else {
+                    console.log("data: " + JSON.stringify(data));
+                }
+            })
         deletedSocket_ids.push(data.deleteSessionId);
         console.log("deletedSocket_ids: " + JSON.stringify(deletedSocket_ids));
         var tempSock = sockets[data.deleteSessionId]; /* ### Note using this deleteSessionId we are getting real socket(tempSock)   ### */

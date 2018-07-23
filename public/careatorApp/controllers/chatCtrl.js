@@ -154,8 +154,7 @@ careatorApp.controller("chatCtrl", function(
         width: "100%"
       });
     }
-    $scope.scrollDown();
-    $scope.scrollDown();
+
     $scope.selectedType = type;
     console.log("  $scope.selectedType: " + $scope.selectedType);
     console.log("id: " + id);
@@ -169,6 +168,7 @@ careatorApp.controller("chatCtrl", function(
         console.log("data--" + JSON.stringify(data.data));
         var checkStatus = careatorHttpFactory.dataValidation(data);
         if (checkStatus) {
+
           $scope.allChat = data.data.data[0];
           if ($scope.allChat == undefined) {
             $scope.individualData = $scope.chatedGroup_records[index];
@@ -199,6 +199,7 @@ careatorApp.controller("chatCtrl", function(
             "sendGroupText_withData-->: " +
               JSON.stringify($scope.sendGroupText_withData)
           );
+          $scope.scrollDown();
           // $scope.readText();
         } else {
           console.log("Sorry");

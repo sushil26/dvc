@@ -316,7 +316,7 @@ module.exports.setCollection = function (req, res) {
 
     careatorMaster.update({ "email": req.body.email }, {
         $set: {
-            "sessionURL": req.body.url, "invite": [], "session_dateTime": new Date()
+            "sessionURL": req.body.url, "invite": [], "session_dateTime": new Date(),"isDisconnected":"no"
         }
     }, function (err, urlUpdate) {
         if (err) {

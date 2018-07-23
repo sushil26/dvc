@@ -7,6 +7,7 @@ careatorApp.controller("chatCtrl", function(
   careatorSessionAuth
 ) {
   console.log("chatCtrl==>");
+  $scope.count=0;
   var userData = careatorSessionAuth.getAccess("userData");
   $scope.loginUserName = userData.userName;
   $scope.userId = userData.userId;
@@ -497,9 +498,9 @@ careatorApp.controller("chatCtrl", function(
           if (checkStatus) {
             console.log("data.data.data: " + JSON.stringify(data.data.data));
             console.log(data.data.message);
-            $scope.zero=0;
-            $scope.count=$scope.zero+1;
-            $scope.zero= $scope.count;
+           
+            $scope.count=$scope.count+1;
+           
 
           } else {
             console.log("Sorry");

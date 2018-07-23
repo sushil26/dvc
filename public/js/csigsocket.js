@@ -822,7 +822,7 @@ signaling_socket.on("addPeer", function (config) {
       }
 
       );
-      // document.getElementById("chelam").style.display = "none";
+      // document.getElementById("someid").style.display = "none";
       document.getElementById("btnrestore").style.display = "inline";
     });
     $("#btnrestore").click(function () {
@@ -848,7 +848,7 @@ signaling_socket.on("addPeer", function (config) {
       $("#videoElem111").addClass(
         "portfolio-items col-xs-6 col-sm-6 col-md-4 col-lg-3"
       );
-      // document.getElementById("chelam").style.display = "inline";
+      // document.getElementById("someid").style.display = "inline";
       document.getElementById("btnrestore").style.display = "none";
     });
     // var fullscreenbtn2;

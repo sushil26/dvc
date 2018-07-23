@@ -174,50 +174,50 @@ function triggerInvite() {
   $("#enterPswd").trigger("click");
 }
 
-function sendEmail() {
-  console.log("sendEmail-->");
-  var careatorEmail = document.getElementById("careatorEmail").value;
-  console.log("careatorEmail: " + careatorEmail);
-  var obj = {
-    "careatorEmail": careatorEmail
-  };
-  console.log("obj: " + JSON.stringify(obj));
+// function sendEmail() {
+//   console.log("sendEmail-->");
+//   var careatorEmail = document.getElementById("careatorEmail").value;
+//   console.log("careatorEmail: " + careatorEmail);
+//   var obj = {
+//     "careatorEmail": careatorEmail
+//   };
+//   console.log("obj: " + JSON.stringify(obj));
 
-  $.ajax({
-    url: "https://norecruits.com/careator/pswdGenerate",
-    type: "POST",
-    data: JSON.stringify(obj),
-    contentType: "application/json",
-    dataType: "json",
-    success: function (data) {
-      console.log("data: " + JSON.stringify(data));
-      //alert(data.message);
-      if (data.message == 'Successfully mail sent' || data.message == "Successfully get admin login") {
-        console.log("Successfully mail sent");
-        localStorage.setItem("careatorEmail", careatorEmail);
-        localStorage.removeItem("sessionPassword")
-        triggerInvite();
-      }
+//   $.ajax({
+//     url: "https://norecruits.com/careator/pswdGenerate",
+//     type: "POST",
+//     data: JSON.stringify(obj),
+//     contentType: "application/json",
+//     dataType: "json",
+//     success: function (data) {
+//       console.log("data: " + JSON.stringify(data));
+//       //alert(data.message);
+//       if (data.message == 'Successfully mail sent' || data.message == "Successfully get admin login") {
+//         console.log("Successfully mail sent");
+//         localStorage.setItem("careatorEmail", careatorEmail);
+//         localStorage.removeItem("sessionPassword")
+//         triggerInvite();
+//       }
 
-    },
-    error: function (err) {
-      console.log("err: " + JSON.stringify(err));
-      console.log("err.responseText: " + JSON.stringify(err.responseText));
-      console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
+//     },
+//     error: function (err) {
+//       console.log("err: " + JSON.stringify(err));
+//       console.log("err.responseText: " + JSON.stringify(err.responseText));
+//       console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
 
-      if (err.responseJSON.message == 'You already logged in, please logout your old session in-order to login') {
-        console.log("You already logged in, please logout your old session in-order to login");
-        alert(err.responseJSON.message);
-        window.location.href = "/";
-      }
-      else {
-        alert(err.responseJSON.message);
-      }
-    }
+//       if (err.responseJSON.message == 'You already logged in, please logout your old session in-order to login') {
+//         console.log("You already logged in, please logout your old session in-order to login");
+//         alert(err.responseJSON.message);
+//         window.location.href = "/";
+//       }
+//       else {
+//         alert(err.responseJSON.message);
+//       }
+//     }
 
-  });
-  console.log("<--sendEmail");
-}
+//   });
+//   console.log("<--sendEmail");
+// }
 function checkCredential() {
   console.log("checkCredential-->");
   var password = document.getElementById("careatorPswd").value;

@@ -245,6 +245,13 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
         }
 
     })
+    socket.on('comm_sessionCreateUpdate', function(data){
+        console.log("comm_sessionCreateUpdate-->");
+        if (data.email == $scope.userData.email) {
+            console.log("started to update $scope.sessionHostBlock");
+            $scope.sessionHostBlock = "yes";
+        }
+    })
     $scope.doRedirect = function () {
         console.log("$scope.doRedirect--->");
         window.location.href = "https://norecruits.com";

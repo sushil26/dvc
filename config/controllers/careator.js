@@ -146,7 +146,7 @@ module.exports.pswdCheck = function (req, res) {
     var careatorEmail = req.body.careatorEmail;
     var emailSplit = careatorEmail.split('@');
     if (general.emptyCheck(password) && general.emptyCheck(careatorEmail)) {
-        if (emailSplit[1] == 'careator.com' || careatorEmail == 'vc4allAdmin@gmail.com') {
+        if (emailSplit[1] == 'careator.com' || careatorEmail == 'vc4all@careator.com') {
             var obj = {
                 "email": careatorEmail
             }
@@ -305,7 +305,7 @@ module.exports.pswdGenerate = function (req, res) {
             })
 
         }
-        else if (email == 'vc4allAdmin@gmail.com') {
+        else if (email == 'vc4all@careator.com') {
             careatorMaster.find({ "email": email }).toArray(function (err, findData) {
                 console.log("findData: " + JSON.stringify(findData));
                 if (findData.length > 0) {
@@ -420,7 +420,7 @@ module.exports.emailInvite = function (req, res) {
 
 module.exports.getAdminObjectId = function (req, res) {
     console.log("getAdminObjectId-->");
-    careatorMaster.find({ "email": "vc4allAdmin@gmail.com" }).toArray(function (err, admin) {
+    careatorMaster.find({ "email": "vc4all@careator.com" }).toArray(function (err, admin) {
         if (err) {
             console.log("err: " + JSON.stringify(err));
             responseData = {

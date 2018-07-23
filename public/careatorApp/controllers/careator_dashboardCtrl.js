@@ -3,6 +3,35 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
     $scope.clock = "loading clock..."; // initialise the time variable
     $scope.tickInterval = 1000 //ms
     $scope.propertyJson = $rootScope.propertyJson;
+    $scope.getLoginDetailsById = function (id) {
+        console.log("getLoginDetailsById-->");
+       
+        var api = "https://norecruits.com/careator_getUser/careator_getUserById/"+id;
+        console.log("api: " + api);
+        careatorHttpFactory.get(api).then(function (data) {
+            console.log("data--" + JSON.stringify(data.data));
+            var checkStatus = careatorHttpFactory.dataValidation(data);
+            console.log("checkStatus: " + checkStatus);
+            if (checkStatus) {
+                console.log("data.data.data[0].isDisconnected: " + data.data.data[0].isDisconnected);
+                var sessionHostBlock;
+                if(data.data.data[0].isDisconnected=='yes')
+                {
+                    sessionHostBlock= 'no';
+                }
+                else{
+                    sessionHostBlock= 'yes';
+                }
+              
+                console.log("sessionHostBlock: " + sessionHostBlock);
+                console.log(data.data.message);
+
+            } else {
+                console.log("Sorry");
+                console.log(data.data.message);
+            }
+        })
+    }
 
     var tick = function () {
         $scope.clock = new Date()
@@ -85,12 +114,12 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
 
     $scope.videoUrlNavigation = function () {
         console.log("videoUrlNavigation-->");
-        console.log("localStorage.getItem(sessionUrlId): "+localStorage.getItem("sessionUrlId"));
-        
+        console.log("localStorage.getItem(sessionUrlId): " + localStorage.getItem("sessionUrlId"));
+
         if (localStorage.getItem("sessionUrlId")) {
             alert("You have to disconnect your old session in-order to open new");
         }
-        else{
+        else {
             window.open('https://norecruits.com/careator', '_blank');
         }
 

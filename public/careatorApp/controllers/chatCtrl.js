@@ -655,6 +655,13 @@ careatorApp.controller("chatCtrl", function(
     // console.log(" data.id: " + data.id);
     // console.log("$scope.individualData._id: " + JSON.stringify($scope.individualData));
     // console.log(" data.id: " + JSON.stringify(data));
+    if(userData.userId == data.receiverId){
+        $scope.playAudio = function() {
+            var x = document.getElementById("myAudio");
+            x.play();
+          };
+          $scope.playAudio();
+    }
     if (
       data.freshInsert == true &&
       (userData.userId == data.senderId || userData.userId == data.receiverId)
@@ -707,11 +714,7 @@ careatorApp.controller("chatCtrl", function(
         });
         $scope.scrollDown();
 
-        $scope.playAudio = function() {
-          var x = document.getElementById("myAudio");
-          x.play();
-        };
-        $scope.playAudio();
+
       }
     }
   });

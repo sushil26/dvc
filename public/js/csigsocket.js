@@ -205,9 +205,9 @@ function sendEmail() {
       console.log("err.responseText: " + JSON.stringify(err.responseText));
       console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
      
-      if (err.responseJSON.message == 'You already logged in, please logout your lod session in-order to login')
+      if (err.responseJSON.message == 'You already logged in, please logout your old session in-order to login')
       {
-        console.log("You already logged in, please logout your lod session in-order to login");
+        console.log("You already logged in, please logout your old session in-order to login");
         alert(err.responseJSON.message);
         window.location.href="/";
       }

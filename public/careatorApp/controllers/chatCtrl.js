@@ -7,6 +7,7 @@ careatorApp.controller("chatCtrl", function(
   careatorSessionAuth
 ) {
   console.log("chatCtrl==>");
+  $scope.count=0;
   var userData = careatorSessionAuth.getAccess("userData");
   $scope.loginUserName = userData.userName;
   $scope.userId = userData.userId;
@@ -497,6 +498,10 @@ careatorApp.controller("chatCtrl", function(
           if (checkStatus) {
             console.log("data.data.data: " + JSON.stringify(data.data.data));
             console.log(data.data.message);
+           
+            $scope.count=$scope.count+1;
+           
+
           } else {
             console.log("Sorry");
             console.log(data.data.message);
@@ -814,7 +819,7 @@ careatorApp.controller("chatCtrl", function(
     var clientHeight = document.getElementById('pulldown').scrollHeight;
     console.log("clientHeight"+clientHeight);
     console.log("scrollDown-->");
-    $("#pulldown").animate({ scrollTop:clientHeight},500);
+    $("#pulldown").animate({ scrollTop:1234567890},500);
     // $("#pulldown").animate(
     //   {
     //     scrollTop: $("#pulldown").prop("scrollHeight")

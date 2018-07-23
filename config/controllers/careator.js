@@ -419,7 +419,8 @@ module.exports.emailInvite = function (req, res) {
 }
 module.exports.resetLoginFlagsById = function (req, res) {
     console.log("resetLoginFlags-->");
-
+    var id = req.params.id;
+    console.log("id: " + id);
     if (general.emptyCheck(id)) {
         var obj = {
             "id": ObjectId(id),

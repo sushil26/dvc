@@ -423,7 +423,7 @@ module.exports.resetLoginFlagsById = function (req, res) {
     console.log("id: " + id);
     if (general.emptyCheck(id)) {
         var obj = {
-            "id": ObjectId(id),
+            "_id": ObjectId(id),
         }
         console.log("obj: " + JSON.stringify(obj));
         careatorMaster.update(obj, { "$set": { "login": "notDone", "logout": "done" } }, function (err, data) {

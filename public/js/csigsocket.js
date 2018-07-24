@@ -324,7 +324,7 @@ function resetLoginFlag() {
 
       document.getElementById('notify_msg_show_content').innerHTML = "Reset successfully done,now you can login";
       $("#notify_msg_show_button").trigger("click");
-          
+
     },
     error: function (err) {
       console.log("err: " + JSON.stringify(err));
@@ -337,6 +337,13 @@ function resetLoginFlag() {
   });
 
   console.log("<--statusChange");
+}
+
+function triggerforLogin() {
+  console.log("triggerforLogin-->");
+  $("#notify_msg_show").modal('hide');
+  $("#enterEmail").trigger("click");
+
 }
 
 function checkPassword() {

@@ -309,7 +309,8 @@ function checkCredential() {
 
 function resetLoginFlag() {
   console.log("resetLoginFlag-->");
-  var id =resetId;
+  $("#notify_msg").modal('hide');
+  var id = resetId;
   console.log("Obj ID  " + id);
 
   $.ajax({
@@ -320,8 +321,10 @@ function resetLoginFlag() {
     dataType: "json",
     success: function (data) {
       console.log("data: " + JSON.stringify(data));
+
       document.getElementById('notify_msg_show_content').innerHTML = "Reset successfully done,now you can login";
       $("#notify_msg_show_button").trigger("click");
+      $("#enterEmail").trigger("click");
     },
     error: function (err) {
       console.log("err: " + JSON.stringify(err));

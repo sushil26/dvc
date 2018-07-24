@@ -281,14 +281,16 @@ function checkCredential() {
         window.location.href = "https://norecruits.com/careatorApp/#!/dashboard/profile";
       },
       error: function (err) {
+        $("#notify_msg_button").trigger("click");
+        alert("sorry");
         console.log("err: " + JSON.stringify(err));
         console.log("err.responseText: " + JSON.stringify(err.responseText));
         console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
         if (err.responseJSON.message == 'You already logged in, please logout your old session in-order to login') {
           console.log("You already logged in, please logout your old session in-order to login");
-          $("#setName").trigger("click");
-          $("#notify_msg_button").trigger("click");
-           alert(err.responseJSON.message);
+         
+         
+         //  alert(err.responseJSON.message);
           // document.getElementById('notify_msg_content').innerHTML = err.responseJSON.message;
           // $("#notify_msg_button").trigger("click");
          // window.location.href = "/";
@@ -296,9 +298,9 @@ function checkCredential() {
         else {
           alert(err.responseJSON.message);
         }
-        // document.getElementById("videoConferenceUrl").style.display = "none";
-        // localStorage.removeItem("careatorEmail");
-        // userName = "";
+        document.getElementById("videoConferenceUrl").style.display = "none";
+        localStorage.removeItem("careatorEmail");
+        userName = "";
       }
     });
   } else {

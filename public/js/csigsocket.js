@@ -417,7 +417,7 @@ function checkPassword() {
         document.getElementById("credentialErroe").style.display = 'inline';
         setTimeout(function () {
           $('#credentialErroe').fadeOut('fast');
-        }, 1000);
+        }, 3000);
         
 
         document.getElementById("videoConferenceUrl").style.display = "none";

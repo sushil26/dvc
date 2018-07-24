@@ -307,7 +307,7 @@ function checkCredential() {
 }
 
 function resetLoginFlag(id) {
-  console.log("deleteUser-->");
+  console.log("resetLoginFlag-->");
   console.log("Obj ID  " + id);
 
   $.ajax({

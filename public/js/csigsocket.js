@@ -222,7 +222,6 @@ function triggerInvite() {
 function checkCredential() {
   console.log("checkCredential-->");
   $('#myEmailModal').modal('hide');
-  $("#notify_msg_button").trigger("click");
   var password = document.getElementById("careatorPswd").value;
   var careatorEmail = document.getElementById("careatorEmail").value;
   var obj = {
@@ -239,7 +238,8 @@ function checkCredential() {
       contentType: "application/json",
       dataType: "json",
       success: function (data) {
-        console.log("data: " + JSON.stringify(data));
+        console.log("data: " + JSON.stringify(data))
+        //alert("succes");
         localStorage.setItem("careatorEmail", careatorEmail);
         localStorage.setItem("userName", data.data.name);
         localStorage.setItem("empId", data.data.empId);
@@ -280,7 +280,7 @@ function checkCredential() {
         console.log("userName: " + userName);
         document.getElementById("videoConferenceUrl").style.display = "block";
         // $('#myPasswordModal').modal('hide');
-        window.location.href = "https://norecruits.com/careatorApp/#!/dashboard/profile";
+        //window.location.href = "https://norecruits.com/careatorApp/#!/dashboard/profile";
       },
       error: function (err) {
         console.log("err: " + JSON.stringify(err));
@@ -288,10 +288,11 @@ function checkCredential() {
         console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
         if (err.responseJSON.message == 'You already logged in, please logout your old session in-order to login') {
           console.log("You already logged in, please logout your old session in-order to login");
-          $("#notify_msg_button").trigger("click");
-          alert(err.responseJSON.message);
           document.getElementById('notify_msg_content').innerHTML = err.responseJSON.message;
           $("#notify_msg_button").trigger("click");
+          // alert(err.responseJSON.message);
+          // document.getElementById('notify_msg_content').innerHTML = err.responseJSON.message;
+          // $("#notify_msg_button").trigger("click");
           // window.location.href = "/";
         }
         else {

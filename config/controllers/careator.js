@@ -195,7 +195,7 @@ module.exports.pswdCheck = function (req, res) {
                             responseData = {
                                 status: false,
                                 message: "You already logged in, please logout your old session in-order to login",
-                                data: {"id":findData[0]._id}
+                                data: { "id": findData[0]._id }
                             };
                             res.status(400).send(responseData);
                         }
@@ -479,7 +479,6 @@ module.exports.getAdminObjectId = function (req, res) {
         }
     })
 }
-
 module.exports.setCollection = function (req, res) {
     console.log("setCollection-->");
     console.log("req.body.url: " + req.body.url);
@@ -539,7 +538,6 @@ module.exports.setCollection = function (req, res) {
 
 
 }
-
 module.exports.getChatByUrl = function (req, res) {
     console.log("getChatByUrl-->");
     var obj = {
@@ -597,7 +595,6 @@ module.exports.getHistoryByEmailId = function (req, res) {
 
 
 }
-
 module.exports.getHistory = function (req, res) {
     console.log("getHistory-->");
 
@@ -692,6 +689,7 @@ module.exports.careatorMasterInsert = function (req, res) {
 
 module.exports.careatorMasterInsertValidate = function (data, callback) {
     console.log("careatorMasterInsertValidate-->");
+    var sessionRandomId = randomstring.generate(7);
     var findEmpId = {
         "empId": data.EmpId
     }
@@ -705,12 +703,13 @@ module.exports.careatorMasterInsertValidate = function (data, callback) {
         "videoRights": data.VideoRights,
         "chatRights": data.ChatRights,
         "password": data.Password,
+        "sessionRandomId": sessionRandomId,
         "status": "active",
         "chatStatus": "Available",
         "restrictedTo": [],
         "profilePicPath": "./css/user.png",
         "login": "notDone",
-        "logout": "done",
+        "logout": "done"
     }
     careatorMaster.find(findEmpId).toArray(function (err, findData) {
         if (err) {
@@ -749,20 +748,20 @@ module.exports.careatorMasterInsertValidate = function (data, callback) {
 
 module.exports.careatorSingleUserInsert = function (req, res) {
     console.log("careatorSingleUserInsert-->");
-
+    var sessionRandomId = randomstring.generate(7);
     var obj = {
         "name": req.body.userName,
         "empId": req.body.empId,
         "email": req.body.empEmail,
         "password": req.body.empPass,
+        "sessionRandomId": sessionRandomId,
         "videoRights": req.body.videoRights,
         "chatRights": req.body.chatRights,
         "status": "active",
         "restrictedTo": [],
         "profilePicPath": "./css/user.png",
         "login": "notDone",
-        "logout": "done",
-
+        "logout": "done"
     }
     console.log("obj :" + JSON.stringify(obj));
     var findEmpId = {

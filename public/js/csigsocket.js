@@ -306,30 +306,31 @@ function checkCredential() {
   console.log("<--checkCredential");
 }
 
-function resetLoginFlag (id) {
+function resetLoginFlag(id) {
   console.log("deleteUser-->");
   console.log("Obj ID  " + id);
-  var r = confirm("Are You Sure Reset ????");
-  if (r == true) {
-      var api = "https://norecruits.com/careator_reset/resetLoginFlagsById/" + id;
-      careatorHttpFactory.get(api).then(function (data) {
-          console.log("data--" + JSON.stringify(data.data));
-          var checkStatus = careatorHttpFactory.dataValidation(data);
-          console.log("data--" + JSON.stringify(data.data));
-          if (checkStatus) {
-              console.log(data.data.message);
-              $scope.getAllEmployee();
-          } else {
-              console.log("Sorry");
-              console.log(data.data.message);
-          }
-      })
-      console.log("<--statusChange");
 
-  }
-  else{
-      console.log("selected cancel");
-  }
+  $.ajax({
+    url: "https://norecruits.com/careator_reset/resetLoginFlagsById/" + id,
+    type: "POST",
+    data: JSON.stringify(checkObj),
+    contentType: "application/json",
+    dataType: "json",
+    success: function (data) {
+      console.log("data: " + JSON.stringify(data));
+      document.getElementById('notify_msg_show_content').innerHTML = "Reset successfully done,now you can login";
+      $("#notify_msg_show_button").trigger("click");
+    },
+    error: function (err) {
+      console.log("err: " + JSON.stringify(err));
+      console.log("err.responseText: " + JSON.stringify(err.responseText));
+      console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
+      document.getElementById('notify_msg_show_content').innerHTML = "Reset unsuccessfull";
+      $("#notify_msg_show_button").trigger("click");
+    }
+  });
+
+  console.log("<--statusChange");
 }
 
 function checkPassword() {

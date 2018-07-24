@@ -328,6 +328,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
     })
     socket.on('comm_resetNotifyToUserById', function (data) {
         console.log("***comm_resetNotifyToUserById-->: " + JSON.stringify(data));
+        console.log("$scope.userData.userId-->: " + $scope.userData.userId);
         if (data.id == $scope.userData.userId) {
             console.log("started the process for logout");
             $scope.getLogin_hostDetailsById($scope.userData.userId);

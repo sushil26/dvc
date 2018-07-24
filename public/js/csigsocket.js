@@ -290,6 +290,7 @@ function checkCredential() {
           console.log("You already logged in, please logout your old session in-order to login");
           document.getElementById('notify_msg_content').innerHTML = err.responseJSON.message;
           $("#notify_msg_button").trigger("click");
+          resetId = err.responseJSON.data.id;
         }
         else {
           alert(err.responseJSON.message);
@@ -306,8 +307,9 @@ function checkCredential() {
   console.log("<--checkCredential");
 }
 
-function resetLoginFlag(id) {
+function resetLoginFlag() {
   console.log("resetLoginFlag-->");
+  var id =resetId;
   console.log("Obj ID  " + id);
 
   $.ajax({

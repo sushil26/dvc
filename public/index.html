@@ -644,7 +644,31 @@ transition: all 0.5s;">
           </div>
         </section>
       </main>
-      ///////////////////////////////////////////
+
+      <!-- <div class="modal fade" id="myEmailModal" role="dialog">
+        <div class="modal-dialog">
+            <center>
+                <form>
+                    <div class="modal-content" style="color:#777;max-width:350px;">
+                        <div class="modal-header" style="display: inline-table; background-image: linear-gradient(to bottom, #383c3f 0%, #202224 100%);">
+                            <img style="width: 45px;margin-top: -15px; margin-left: -150px;" src="/home/img/fav.png" />
+                            <span class="modal-title">Employee Login</span>
+                        </div>
+                        <div class="modal-body">
+                            <input type="email" class="form-control" placeholder="Enter your Email" id="careatorEmail" required>
+                            <br>
+                            <input type="password" class="form-control" placeholder="Enter your Password" id="careatorPswd" required>
+                        </div>
+                        <div class="modal-footer" style="border-top:0px;background-color: #f5f5f5;">
+                            <label id="credentialErroe" style="display: none;color:red"></label>
+                            <button id="setEmail" type="submit" onclick="checkCredential()" style="background-color: #29b6bd;color:#f1f1f1" class="btn">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </center>
+        </div>
+    </div> -->
+/////////////////////////////////////////////////////////////////
       <div class="modal fade" id="crdntl" role="dialog">
         <div class="modal-dialog">
           <center>
@@ -655,10 +679,10 @@ transition: all 0.5s;">
                   <span class="modal-title">Login</span>
                 </div>
                 <div class="modal-body">
-                  <div>
+                
                     <input type="radio" ng-model="loginType" value="teacher" checked="checked"> School &nbsp&nbsp
                     <input type="radio" ng-model="loginType" value="studParent"> Parent
-                  </div>
+              
                   <hr>
                   <input ng-keyup="$event.keyCode == 13 && logVC(loginType, email, Password)" style="
                       background:  #ddd;
@@ -671,7 +695,7 @@ transition: all 0.5s;">
                       border-radius: inherit;
                       height: 50px;
                       border: #ddd;" type="password" id="crdPswd" class="form-control" placeholder="Password" ng-model="Password">
-                </div>
+               
                 <div class="modal-footer" style="border-top:0px;background-color: #f5f5f5;">
                   <button id="crdsubmit" type="button" style="background-color: #29b6bd;color:#f1f1f1; width: 100%; height:50px;" class="btn"
                     ng-click="logVC(loginType, email, Password)" data-dismiss="modal">Submit</button>

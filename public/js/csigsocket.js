@@ -418,9 +418,7 @@ function checkPassword() {
         setTimeout(function () {
           $('#credentialErroe').fadeOut('fast');
         }, 1000);
-        setTimeout(function () {
-          $('#invitePeople').modal('hide');
-        }, 2000);
+        
 
         document.getElementById("videoConferenceUrl").style.display = "none";
         localStorage.removeItem("careatorEmail");
@@ -473,8 +471,10 @@ function emailInviteSend() {
       document.getElementById("info").style.display = 'inline';
       setTimeout(function () {
         $('#info').fadeOut('fast');
-      }, 3000);
-
+      }, 1000);
+      setTimeout(function () {
+        $('#invitePeople').modal('hide');
+      }, 2000);
       // document.getElementById("info").innerHTML = data.message;
     },
     error: function (err) {

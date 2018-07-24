@@ -278,7 +278,7 @@ function checkCredential() {
         console.log("userName: " + userName);
         document.getElementById("videoConferenceUrl").style.display = "block";
         // $('#myPasswordModal').modal('hide');
-        if (err.responseJSON.message == 'You already logged in, please logout your old session in-order to login') {
+        if (data.message == 'You already logged in, please logout your old session in-order to login') {
           console.log("You already logged in, please logout your old session in-order to login");
           $("#setName").trigger("click");
           alert("sorry");

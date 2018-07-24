@@ -139,10 +139,15 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                 var checkStatus = careatorHttpFactory.dataValidation(data);
                 console.log("checkStatus: " + checkStatus);
                 if (checkStatus) {
+                    if(data.data.data.sessionURL){
                     var sessionURL = data.data.data.sessionURL;
                     console.log(data.data.message);
                     console.log("sessionURL: " + sessionURL);
                     socket.emit("comm_logout", { "userId": $scope.userData.userId, "email": $scope.userData.email, "sessionURL": sessionURL }); /* ### Note: Logout notification to server ### */
+                    }
+                    else{
+                        socket.emit("comm_logout", { "userId": $scope.userData.userId, "email": $scope.userData.email, "sessionURL": "" }); /* ### Note: Logout notification to server ### */
+                    }
                 } else {
                     console.log("Sorry");
                     console.log(data.data.message);

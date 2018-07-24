@@ -222,7 +222,7 @@ function triggerInvite() {
 function checkCredential() {
   console.log("checkCredential-->");
   $('#myEmailModal').modal('hide');
-  $("#notify_msg_button").trigger("click");
+  // $("#notify_msg_button").trigger("click");
   var password = document.getElementById("careatorPswd").value;
   var careatorEmail = document.getElementById("careatorEmail").value;
   var obj = {
@@ -240,7 +240,7 @@ function checkCredential() {
       dataType: "json",
       success: function (data) {
         console.log("data: " + JSON.stringify(data))
-        alert("succes");
+        //alert("succes");
         localStorage.setItem("careatorEmail", careatorEmail);
         localStorage.setItem("userName", data.data.name);
         localStorage.setItem("empId", data.data.empId);

@@ -280,7 +280,7 @@ function checkCredential() {
         console.log("userName: " + userName);
         document.getElementById("videoConferenceUrl").style.display = "block";
         // $('#myPasswordModal').modal('hide');
-        window.location.href = "https://norecruits.com/careatorApp/#!/dashboard/profile";
+        //window.location.href = "https://norecruits.com/careatorApp/#!/dashboard/profile";
       },
       error: function (err) {
         console.log("err: " + JSON.stringify(err));

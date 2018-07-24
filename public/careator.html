@@ -85,7 +85,8 @@
         }
 
         .adbody {
-
+            transition-duration: 0.2s;
+            transition-timing-function: ease-in;
             font-family: lato;
             color: #000;
             background: white;
@@ -95,7 +96,7 @@
             min-height: 200px;
             font-size: 15px;
             font-weight: 300;
-            border: 1px solid #303336;
+            /* border: 1px solid #303336; */
         }
 
         .adbody:hover {
@@ -316,13 +317,14 @@
                                                 <label id="notify_msg_show_content" style="color:red"></label>
                                             </div>
                                             <div class="modal-footer" style="border-top:0px;background-color: #f5f5f5;">
-                                                <button type="button" onclick="triggerforLogin()" style="background-color: #29b6bd;color:#f1f1f1" class="btn" >Ok</button>
+                                                <button type="button" onclick="triggerforLogin()" style="background-color: #29b6bd;color:#f1f1f1" class="btn">Ok</button>
                                             </div>
                                         </div>
                                     </form>
                                 </center>
                             </div>
                         </div>
+
 
                         <div class="modal fade" id="notify_msg" role="dialog">
                             <div class="modal-dialog">
@@ -348,6 +350,7 @@
                             </div>
                         </div>
 
+
                         <div class="modal fade" id="remoteJoin" role="dialog">
                             <div class="modal-dialog">
                                 <center>
@@ -367,6 +370,7 @@
                                 </center>
                             </div>
                         </div>
+
 
                         <div class="modal fade" id="myEmailModal" role="dialog">
                             <div class="modal-dialog">
@@ -392,6 +396,7 @@
                                 </center>
                             </div>
                         </div>
+
                         <div class="modal fade" id="myPasswordModal" role="dialog">
                             <div class="modal-dialog">
                                 <center>
@@ -412,22 +417,26 @@
                                 </center>
                             </div>
                         </div>
+
+
                         <div class="modal fade" id="invitePeople" role="dialog">
                             <div class="modal-dialog">
                                 <center>
                                     <form>
-                                        <div class="modal-content" style="color:#777;max-width:350px;">
-                                            <div class="modal-header" style="background-color: #1c3852;">
-                                                <h4 class="modal-title">Please Enter Email</h4>
-                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <div class="modal-content" style="color:#777;max-width:350px; border-radius: 8px;">
+                                            <div class="modal-header" style="padding-top: 15px;background-image: linear-gradient(to bottom, #383c3f 0%, #202224 100%);">
+                                                <img style="width: 45px;margin-top: -15px;margin-left: -190px;" src="/home/img/fav.png" />
+                                                <span class="modal-title" style="font-weight: 200;">Please Enter Email</span>
                                             </div>
                                             <div class="modal-body">
+
                                                 <input type="email" class="form-control" size="45" placeholder="Email Address to Invite" required id="emailInvite">
                                                 <br>
                                                 <label id="info" style="color:blue"></label>
+
                                             </div>
-                                            <div class="modal-footer" style="border-top:0px;background-color: #f5f5f5;">
-                                                <button type="button" onclick="emailInviteSend()" style="background-color: #29b6bd;color:#f1f1f1" class="btn">Invite</button>
+                                            <div class="modal-footer" style="padding-top: 15px;background-image: linear-gradient(to bottom, #202224 0%, #383c3f 100%);">
+                                                    <button type="button" onclick="emailInviteSend()" style="background-color: #29b6bd;color:#f1f1f1" class="btn">Invite</button>
                                             </div>
                                         </div>
                                     </form>

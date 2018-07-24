@@ -90,7 +90,6 @@ careatorApp.controller('usersListCtrl', function ($scope, $state, careatorHttpFa
     $scope.resetLoginFlag = function (id) {
         console.log("deleteUser-->");
         console.log("Obj ID  " + id);
-        var r = confirm("Are You Sure Reset ????");
         $scope.userReset = function () {
             var api = "https://norecruits.com/careator_reset/resetLoginFlagsById/" + id;
             careatorHttpFactory.get(api).then(function (data) {

@@ -37,10 +37,10 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                                 var sessionURL = data.data.data.sessionURL;
                                 console.log(data.data.message);
                                 console.log("sessionURL: " + sessionURL);
-                                socket.emit("comm_logout", { "userId": $scope.userData.userId, "email": $scope.userData.email, "sessionURL": sessionURL }); /* ### Note: Logout notification to server ### */
+                                socket.emit("comm_logout", { "userId": $scope.userData.userId, "email": $scope.userData.email, "sessionURL": sessionURL, "sessionRandomId": data.data.data[0].sessionRandomId }); /* ### Note: Logout notification to server ### */
                             }
                             else {
-                                socket.emit("comm_logout", { "userId": $scope.userData.userId, "email": $scope.userData.email, "sessionURL": "" }); /* ### Note: Logout notification to server ### */
+                                socket.emit("comm_logout", { "userId": $scope.userData.userId, "email": $scope.userData.email, "sessionURL": "", "sessionRandomId": data.data.data[0].sessionRandomId }); /* ### Note: Logout notification to server ### */
                             }
                         } else {
                             console.log("Sorry");
@@ -177,11 +177,11 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                             var sessionURL = data.data.data.sessionURL;
                             console.log(data.data.message);
                             console.log("sessionURL: " + sessionURL);
-                            socket.emit("comm_logout", { "userId": $scope.userData.userId, "email": $scope.userData.email, "sessionURL": sessionURL }); /* ### Note: Logout notification to server ### */
+                            socket.emit("comm_logout", { "userId": $scope.userData.userId, "email": $scope.userData.email, "sessionURL": sessionURL, "sessionRandomId": $scope.userData.sessionRandomId }); /* ### Note: Logout notification to server ### */
                         }
                     }
                     else {
-                        socket.emit("comm_logout", { "userId": $scope.userData.userId, "email": $scope.userData.email, "sessionURL": "" }); /* ### Note: Logout notification to server ### */
+                        socket.emit("comm_logout", { "userId": $scope.userData.userId, "email": $scope.userData.email, "sessionURL": "", "sessionRandomId": $scope.userData.sessionRandomId }); /* ### Note: Logout notification to server ### */
                     }
                 } else {
                     console.log("Sorry");
@@ -277,7 +277,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
     /* #### Start: Logout request from server(index.js) #### */
     socket.on('comm_logoutNotifyToUserById', function (data) {
         console.log("***comm_logoutNotifyToUserById-->: " + JSON.stringify(data));
-        if (data.userId == $scope.userData.userId && data.email == $scope.userData.email) {
+        if (data.userId == $scope.userData.userId && data.email == $scope.userData.email && data.sessionRandomId== $scope.userData.sessionRandomId) {
             console.log("started to remove localstorage");
             localStorage.removeItem("careatorEmail");
             localStorage.removeItem("careator_remoteEmail");

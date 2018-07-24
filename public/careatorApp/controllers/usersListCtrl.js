@@ -94,8 +94,17 @@ careatorApp.controller('usersListCtrl', function ($scope, $state, careatorHttpFa
     $scope.resetLoginFlag = function (id) {
         console.log("deleteUser-->");
         console.log("Obj ID  " + id);
-        var r = confirm("Are You Sure Reset ????");
-        if (r == true) {
+        document.getElementById('notify_msg_confirm_button').innerHTML = "Are You Sure Reset ????";
+        $("#notify_msg_button").trigger("click");
+        $scope.resetLoginFlag_clicked = true;
+        $scope.resertId = id;
+    }
+       // var r = confirm("Are You Sure Reset ????");
+        //if (r == true) {
+            $scope.ok_forLogin = function(){
+
+            console.log("ok_forLogin-->");
+            id =         $scope.resertId;
             var api = "https://norecruits.com/careator_reset/resetLoginFlagsById/" + id;
             careatorHttpFactory.get(api).then(function (data) {
                 console.log("data--" + JSON.stringify(data.data));
@@ -111,9 +120,9 @@ careatorApp.controller('usersListCtrl', function ($scope, $state, careatorHttpFa
             })
             console.log("<--statusChange");
 
-        }
-        else{
+        //}
+        //else{
             console.log("selected cancel");
-        }
+        //}
     }
 })

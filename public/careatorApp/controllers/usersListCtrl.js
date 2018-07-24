@@ -65,6 +65,7 @@ careatorApp.controller('usersListCtrl', function ($scope, $state, careatorHttpFa
     ////////////////Delete User/////////////////////////
     $scope.deleteUser = function (id) {
         $("#deleteConfirmationButton").trigger("click");
+      
         console.log("deleteUser-->");
         console.log("Obj ID  " + id);
         $scope.userDelete = function () {
@@ -88,6 +89,7 @@ careatorApp.controller('usersListCtrl', function ($scope, $state, careatorHttpFa
 
 
     $scope.resetLoginFlag = function (id) {
+        $("#ResetConfirmationButton").trigger("click");
         console.log("deleteUser-->");
         console.log("Obj ID  " + id);
         $scope.userReset = function () {

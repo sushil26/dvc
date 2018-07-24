@@ -306,30 +306,24 @@ function checkCredential() {
   console.log("<--checkCredential");
 }
 
-function resetLoginFlag (id) {
+function resetLoginFlag(id) {
   console.log("deleteUser-->");
   console.log("Obj ID  " + id);
-  var r = confirm("Are You Sure Reset ????");
-  if (r == true) {
-      var api = "https://norecruits.com/careator_reset/resetLoginFlagsById/" + id;
-      careatorHttpFactory.get(api).then(function (data) {
-          console.log("data--" + JSON.stringify(data.data));
-          var checkStatus = careatorHttpFactory.dataValidation(data);
-          console.log("data--" + JSON.stringify(data.data));
-          if (checkStatus) {
-              console.log(data.data.message);
-              $scope.getAllEmployee();
-          } else {
-              console.log("Sorry");
-              console.log(data.data.message);
-          }
-      })
-      console.log("<--statusChange");
 
-  }
-  else{
-      console.log("selected cancel");
-  }
+  var api = "https://norecruits.com/careator_reset/resetLoginFlagsById/" + id;
+  careatorHttpFactory.get(api).then(function (data) {
+    console.log("data--" + JSON.stringify(data.data));
+    var checkStatus = careatorHttpFactory.dataValidation(data);
+    console.log("data--" + JSON.stringify(data.data));
+    if (checkStatus) {
+      console.log(data.data.message);
+      $scope.getAllEmployee();
+    } else {
+      console.log("Sorry");
+      console.log(data.data.message);
+    }
+  })
+  console.log("<--statusChange");
 }
 
 function checkPassword() {

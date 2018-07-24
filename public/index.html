@@ -679,10 +679,8 @@ transition: all 0.5s;">
                   <span class="modal-title">Login</span>
                 </div>
                 <div class="modal-body">
-
                   <input type="radio" ng-model="loginType" value="teacher" checked="checked"> School &nbsp&nbsp
                   <input type="radio" ng-model="loginType" value="studParent"> Parent
-
                   <hr>
                   <input ng-keyup="$event.keyCode == 13 && logVC(loginType, email, Password)" type="email" class="form-control" placeholder="Email"
                     ng-model="email" id="crdEmail">

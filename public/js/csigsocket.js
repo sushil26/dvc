@@ -309,7 +309,7 @@ function checkCredential() {
 
 function resetLoginFlag() {
   console.log("resetLoginFlag-->");
-  $("#notify_msg_button").modal('hide');
+  $("#notify_msg").modal('hide');
   var id = resetId;
   console.log("Obj ID  " + id);
 

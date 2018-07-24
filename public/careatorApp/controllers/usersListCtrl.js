@@ -64,7 +64,7 @@ careatorApp.controller('usersListCtrl', function ($scope, $state, careatorHttpFa
 
     ////////////////Delete User/////////////////////////
     $scope.deleteUser = function (id) {
-        $( "#deleteConfirmationButton" ).trigger( "click" );
+        $("#deleteConfirmationButton").trigger("click");
         console.log("deleteUser-->");
         console.log("Obj ID  " + id);
         // var r = confirm("Are You Sure To Delete ????");

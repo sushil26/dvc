@@ -280,7 +280,7 @@ function checkCredential() {
         console.log("userName: " + userName);
         document.getElementById("videoConferenceUrl").style.display = "block";
         // $('#myPasswordModal').modal('hide');
-        //window.location.href = "https://norecruits.com/careatorApp/#!/dashboard/profile";
+        window.location.href = "https://norecruits.com/careatorApp/#!/dashboard/profile";
       },
       error: function (err) {
         console.log("err: " + JSON.stringify(err));
@@ -290,26 +290,46 @@ function checkCredential() {
           console.log("You already logged in, please logout your old session in-order to login");
           document.getElementById('notify_msg_content').innerHTML = err.responseJSON.message;
           $("#notify_msg_button").trigger("click");
-          // alert(err.responseJSON.message);
-          // document.getElementById('notify_msg_content').innerHTML = err.responseJSON.message;
-          // $("#notify_msg_button").trigger("click");
-          // window.location.href = "/";
         }
         else {
           alert(err.responseJSON.message);
         }
-        // document.getElementById("videoConferenceUrl").style.display = "none";
-        // localStorage.removeItem("careatorEmail");
-        // userName = "";
+        document.getElementById("videoConferenceUrl").style.display = "none";
+        localStorage.removeItem("careatorEmail");
+        userName = "";
       }
     });
   } else {
     console.log("password trigger again-->");
     console.log("Password empty");
-
-    // $("#enterPswd").trigger("click");
   }
   console.log("<--checkCredential");
+}
+
+function resetLoginFlag (id) {
+  console.log("deleteUser-->");
+  console.log("Obj ID  " + id);
+  var r = confirm("Are You Sure Reset ????");
+  if (r == true) {
+      var api = "https://norecruits.com/careator_reset/resetLoginFlagsById/" + id;
+      careatorHttpFactory.get(api).then(function (data) {
+          console.log("data--" + JSON.stringify(data.data));
+          var checkStatus = careatorHttpFactory.dataValidation(data);
+          console.log("data--" + JSON.stringify(data.data));
+          if (checkStatus) {
+              console.log(data.data.message);
+              $scope.getAllEmployee();
+          } else {
+              console.log("Sorry");
+              console.log(data.data.message);
+          }
+      })
+      console.log("<--statusChange");
+
+  }
+  else{
+      console.log("selected cancel");
+  }
 }
 
 function checkPassword() {

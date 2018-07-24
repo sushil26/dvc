@@ -24,6 +24,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                     console.log("$scope.sessionHostBlock: " + $scope.sessionHostBlock);
                 }
                 else {
+                    console.log("localstorage session randomId("+localStorage.getItem('sessionRandomId')+") is not matched with db data ("+data.data.data[0].sessionRandomId+")");
                     /* ##### Start: Logout Logic  ##### */
                     var id = userData.userId;
                     var api = "https://norecruits.com/careator_loggedin/getLoggedinSessionURLById/" + id;
@@ -76,10 +77,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
     console.log("userData==>: " + JSON.stringify(userData));
     if (userData != undefined) {
         $scope.getLogin_hostDetailsById(userData.userId);
-
     }
-
-
     if (userData == undefined || userData.email == null) {
         $scope.getLogin_hostDetailsById(localStorage.getItem("userId"));
         var userData = {
@@ -288,7 +286,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
         }
         console.log("obj: "+JSON.stringify(obj));
         console.log()
-        if (data.userId == $scope.userData.userId && data.email == $scope.userData.email && data.sessionRandomId == $scope.userData.sessionRandomId) {
+        if (data.userId == $scope.userData.userId && data.email == $scope.userData.email) {
             console.log("started to remove localstorage");
             localStorage.removeItem("careatorEmail");
             localStorage.removeItem("careator_remoteEmail");

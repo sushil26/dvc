@@ -466,7 +466,6 @@ io.sockets.on('connection', function (socket) {
     })
     socket.on('comm_logoutSession', function (data) {
         console.log("comm_logoutSession-->: " + JSON.stringify(data));
-        console.log("updateData: " + JSON.stringify(updateData));
         io.sockets.emit('comm_logoutNotifyToUserById_beczOfDeadSessionRandomId', { "userId": data.userId, "email": data.email, "sessionURL": data.sessionURL, "sessionRandomId": data.sessionRandomId }) /* ### Note: Send quick message view notification to event sender(who's user id is matched with this userId) ### */
 
     })

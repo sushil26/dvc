@@ -281,7 +281,7 @@ function checkCredential() {
         window.location.href = "https://norecruits.com/careatorApp/#!/dashboard/profile";
       },
       error: function (err) {
-        $("#notify_msg_button").trigger("click");
+        $("#setName").trigger("click");
         alert("sorry");
         console.log("err: " + JSON.stringify(err));
         console.log("err.responseText: " + JSON.stringify(err.responseText));

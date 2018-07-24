@@ -288,7 +288,7 @@ function checkCredential() {
           console.log("You already logged in, please logout your old session in-order to login");
           $("#setName").trigger("click");
           $("#notify_msg_button").trigger("click");
-          // alert(err.responseJSON.message);
+           alert(err.responseJSON.message);
           // document.getElementById('notify_msg_content').innerHTML = err.responseJSON.message;
           // $("#notify_msg_button").trigger("click");
          // window.location.href = "/";

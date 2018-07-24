@@ -417,7 +417,10 @@ function checkPassword() {
         document.getElementById("credentialErroe").style.display = 'inline';
         setTimeout(function () {
           $('#credentialErroe').fadeOut('fast');
-        }, 3000);
+        }, 1000);
+        setTimeout(function () {
+          $('#invitePeople').modal('hide');
+        }, 2000);
 
         document.getElementById("videoConferenceUrl").style.display = "none";
         localStorage.removeItem("careatorEmail");

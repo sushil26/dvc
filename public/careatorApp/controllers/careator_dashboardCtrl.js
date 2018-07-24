@@ -139,7 +139,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                 var checkStatus = careatorHttpFactory.dataValidation(data);
                 console.log("checkStatus: " + checkStatus);
                 if (checkStatus) {
-                    if(data.data.data.sessionURL){
+                    if(data.data.data.sessionURL != undefined){
                     var sessionURL = data.data.data.sessionURL;
                     console.log(data.data.message);
                     console.log("sessionURL: " + sessionURL);

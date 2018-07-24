@@ -324,7 +324,14 @@ function resetLoginFlag() {
 
       document.getElementById('notify_msg_show_content').innerHTML = "Reset successfully done,now you can login";
       $("#notify_msg_show_button").trigger("click");
-      $("#enterEmail").trigger("click");
+      if($('#notify_msg_show_button').hasClass('in'))
+      {
+
+      }
+      else{
+        $("#enterEmail").trigger("click");
+      }
+      
     },
     error: function (err) {
       console.log("err: " + JSON.stringify(err));
@@ -332,6 +339,7 @@ function resetLoginFlag() {
       console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
       document.getElementById('notify_msg_show_content').innerHTML = "Reset unsuccessfull";
       $("#notify_msg_show_button").trigger("click");
+
     }
   });
 

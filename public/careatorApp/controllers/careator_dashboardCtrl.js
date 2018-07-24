@@ -24,7 +24,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                     console.log("$scope.sessionHostBlock: " + $scope.sessionHostBlock);
                 }
                 else {
-                    console.log("localstorage session randomId("+localStorage.getItem('sessionRandomId')+") is not matched with db data ("+data.data.data[0].sessionRandomId+")");
+                    console.log("localstorage session randomId(" + localStorage.getItem('sessionRandomId') + ") is not matched with db data (" + data.data.data[0].sessionRandomId + ")");
                     /* ##### Start: Logout Logic  ##### */
                     var id = userData.userId;
                     var api = "https://norecruits.com/careator_loggedin/getLoggedinSessionURLById/" + id;
@@ -280,13 +280,13 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
     socket.on('comm_logoutNotifyToUserById', function (data) {
         console.log("***comm_logoutNotifyToUserById-->: " + JSON.stringify(data));
         var obj = {
-            "userId":$scope.userData.userId ,
+            "userId": $scope.userData.userId,
             "email": $scope.userData.email,
-            "sessionRandomId":$scope.userData.sessionRandomId
+            "sessionRandomId": $scope.userData.sessionRandomId
         }
-        console.log("obj: "+JSON.stringify(obj));
+        console.log("obj: " + JSON.stringify(obj));
         console.log()
-        if (data.userId == $scope.userData.userId && data.email == $scope.userData.email) {
+        if (data.userId == $scope.userData.userId && data.email == $scope.userData.email && data.sessionRandomId != $scope.userData.sessionRandomId) {
             console.log("started to remove localstorage");
             localStorage.removeItem("careatorEmail");
             localStorage.removeItem("careator_remoteEmail");
@@ -302,6 +302,9 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
             localStorage.removeItem("sessionRandomId");
             careatorSessionAuth.clearAccess("userData");
             $scope.doRedirect();
+        }
+        else if (data.userId == $scope.userData.userId && data.email == $scope.userData.email && data.sessionRandomId == $scope.userData.sessionRandomId) {
+            console.log("NO need of logout")
         }
     })
     socket.on('comm_resetNotifyToUserById', function (data) {

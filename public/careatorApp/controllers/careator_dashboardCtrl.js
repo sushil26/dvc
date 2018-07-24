@@ -200,6 +200,10 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
     //     window.open('https://norecruits.com/careator','_blank'); 
 
     // }
+    $scope.doRedirect = function () {
+        console.log("$scope.doRedirect--->");
+        window.location.href = "https://norecruits.com";
+    }
 
     socket.on('comm_aboutUserEdit', function (data) {
         console.log("***comm_aboutUserEdit-->");
@@ -290,7 +294,13 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
             careatorSessionAuth.clearAccess("userData");
             $scope.doRedirect();
         }
-
+    })
+    socket.on('comm_resetNotifyToUserById', function (data) {
+        console.log("***comm_resetNotifyToUserById-->: " + JSON.stringify(data));
+        if (data.userId == $scope.userData.userId && data.email == $scope.userData.email) {
+            console.log("started the process for logout");
+            $scope.getLogin_hostDetailsById($scope.userData.userId);
+        }
     })
     socket.on('comm_sessionCreateUpdate', function (data) {
         console.log("comm_sessionCreateUpdate-->");
@@ -299,10 +309,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
             $scope.sessionHostBlock = "yes";
         }
     })
-    $scope.doRedirect = function () {
-        console.log("$scope.doRedirect--->");
-        window.location.href = "https://norecruits.com";
-    }
+   
     /* #### End: Logout request from server(index.js) #### */
 
 

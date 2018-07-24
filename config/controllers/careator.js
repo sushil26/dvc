@@ -423,11 +423,12 @@ module.exports.resetLoginFlagsById = function (req, res) {
     var id = req.params.id;
     console.log("id: " + id);
     if (general.emptyCheck(id)) {
+        var sessionRandomId = randomstring.generate(7);
         var obj = {
             "_id": ObjectId(id),
         }
         console.log("obj: " + JSON.stringify(obj));
-        careatorMaster.update(obj, { "$set": { "login": "notDone", "logout": "done" } }, function (err, data) {
+        careatorMaster.update(obj, { "$set": { "login": "notDone", "logout": "done", "sessionRandomId": sessionRandomId } }, function (err, data) {
             console.log("data: " + JSON.stringify(data));
             console.log("data.length: " + data.length);
             if (err) {
@@ -439,6 +440,10 @@ module.exports.resetLoginFlagsById = function (req, res) {
                 res.status(400).send(responseData);
             } else {
                 console.log("data: " + JSON.stringify(data));
+                var io = req.app.get('socketio');
+                io.emit('comm_resetNotifyToUserById', {
+                    "id": id
+                }); /* ### Note: Emitreset message to client(careator_dashboardCtrl.js, csigsocket.js) ### */
                 responseData = {
                     status: true,
                     message: "Successfully reset done",

@@ -194,7 +194,8 @@ module.exports.pswdCheck = function (req, res) {
                         else {
                             responseData = {
                                 status: false,
-                                message: "You already logged in, please logout your old session in-order to login"
+                                message: "You already logged in, please logout your old session in-order to login",
+                                data: {"id":findData[0]._id}
                             };
                             res.status(400).send(responseData);
                         }

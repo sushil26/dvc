@@ -282,6 +282,7 @@ function checkCredential() {
       },
       error: function (err) {
         $("#notify_msg_button").trigger("click");
+        alert("sorry");
         console.log("err: " + JSON.stringify(err));
         console.log("err.responseText: " + JSON.stringify(err.responseText));
         console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
@@ -297,9 +298,9 @@ function checkCredential() {
         else {
           alert(err.responseJSON.message);
         }
-        // document.getElementById("videoConferenceUrl").style.display = "none";
-        // localStorage.removeItem("careatorEmail");
-        // userName = "";
+        document.getElementById("videoConferenceUrl").style.display = "none";
+        localStorage.removeItem("careatorEmail");
+        userName = "";
       }
     });
   } else {

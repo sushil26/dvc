@@ -98,7 +98,7 @@ careatorApp.controller('usersListCtrl', function ($scope, $state, careatorHttpFa
         var r = confirm("Are You Sure Reset ????");
         if (r == true) {
             var api = "https://norecruits.com/careator_reset/resetLoginFlagsById/" + id;
-            careatorHttpFactory.get(api).then(function (data) {
+            careatorHttpFactory.post(api).then(function (data) {
                 console.log("data--" + JSON.stringify(data.data));
                 var checkStatus = careatorHttpFactory.dataValidation(data);
                 console.log("data--" + JSON.stringify(data.data));

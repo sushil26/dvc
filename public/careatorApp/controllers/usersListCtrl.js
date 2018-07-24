@@ -93,8 +93,9 @@ careatorApp.controller('usersListCtrl', function ($scope, $state, careatorHttpFa
         console.log("deleteUser-->");
         console.log("Obj ID  " + id);
         $scope.userReset = function () {
+            console.log("userReset-->");
             var api = "https://norecruits.com/careator_reset/resetLoginFlagsById/" + id;
-            careatorHttpFactory.get(api).then(function (data) {
+            careatorHttpFactory.post(api).then(function (data) {
                 console.log("data--" + JSON.stringify(data.data));
                 var checkStatus = careatorHttpFactory.dataValidation(data);
                 console.log("data--" + JSON.stringify(data.data));

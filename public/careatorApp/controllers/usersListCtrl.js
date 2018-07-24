@@ -65,9 +65,10 @@ careatorApp.controller('usersListCtrl', function ($scope, $state, careatorHttpFa
     ////////////////Delete User/////////////////////////
     $scope.deleteUser = function (id) {
         $("#deleteConfirmationButton").trigger("click");
+      
         console.log("deleteUser-->");
         console.log("Obj ID  " + id);
-        $scope.userDelete=function(){
+        $scope.userDelete = function () {
             var api = "https://norecruits.com/careator_userDelete/userDeleteById/" + id;
             careatorHttpFactory.get(api).then(function (data) {
                 console.log("data--" + JSON.stringify(data.data));
@@ -88,10 +89,10 @@ careatorApp.controller('usersListCtrl', function ($scope, $state, careatorHttpFa
 
 
     $scope.resetLoginFlag = function (id) {
+        $("#ResetConfirmationButton").trigger("click");
         console.log("deleteUser-->");
         console.log("Obj ID  " + id);
-        var r = confirm("Are You Sure Reset ????");
-        if (r == true) {
+        $scope.userReset = function () {
             var api = "https://norecruits.com/careator_reset/resetLoginFlagsById/" + id;
             careatorHttpFactory.get(api).then(function (data) {
                 console.log("data--" + JSON.stringify(data.data));
@@ -106,10 +107,6 @@ careatorApp.controller('usersListCtrl', function ($scope, $state, careatorHttpFa
                 }
             })
             console.log("<--statusChange");
-
-        }
-        else{
-            console.log("selected cancel");
         }
     }
 })

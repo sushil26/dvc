@@ -290,7 +290,13 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
             careatorSessionAuth.clearAccess("userData");
             $scope.doRedirect();
         }
-
+    })
+    socket.io('comm_resetNotifyToUserById', function (data) {
+        console.log("***comm_resetNotifyToUserById-->: " + JSON.stringify(data));
+        if (data.userId == $scope.userData.userId && data.email == $scope.userData.email) {
+            console.log("started the process for logout");
+            $scope.getLogin_hostDetailsById($scope.userData.userId);
+        }
     })
     socket.on('comm_sessionCreateUpdate', function (data) {
         console.log("comm_sessionCreateUpdate-->");

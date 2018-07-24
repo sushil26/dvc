@@ -238,6 +238,7 @@ function checkCredential() {
       dataType: "json",
       success: function (data) {
         console.log("data: " + JSON.stringify(data));
+        alert("success");
         localStorage.setItem("careatorEmail", careatorEmail);
         localStorage.setItem("userName", data.data.name);
         localStorage.setItem("empId", data.data.empId);

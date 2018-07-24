@@ -294,9 +294,9 @@ function checkCredential() {
         else {
           alert(err.responseJSON.message);
         }
-        document.getElementById("videoConferenceUrl").style.display = "none";
-        localStorage.removeItem("careatorEmail");
-        userName = "";
+        // document.getElementById("videoConferenceUrl").style.display = "none";
+        // localStorage.removeItem("careatorEmail");
+        // userName = "";
       }
     });
   } else {

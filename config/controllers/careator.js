@@ -193,10 +193,10 @@ module.exports.pswdCheck = function (req, res) {
                         }
                         else {
                             responseData = {
-                                status: false,
+                                status: true,
                                 message: "You already logged in, please logout your old session in-order to login"
                             };
-                            res.status(400).send(responseData);
+                            res.status(200).send(responseData);
                         }
 
                     } else {

@@ -15,11 +15,11 @@ careatorApp.controller('createUsersCtrl', function ($scope, $rootScope, $state, 
             if (checkStatus) {
                 console.log("checkStatus: " + checkStatus);
                 // alert(data.data.message);
-                $("#ResetConfirmationButton").trigger("click");
+                $("#alertButton").trigger("click");
                 $state.go("Cdashboard.usersListCtrl");
             } else {
                 console.log("checkStatus: " + checkStatus);
-                $("#ResetConfirmationButton").trigger("click");
+                $("#alertButton").trigger("click");
                 // alert(data.data.message);
             }
         })
@@ -58,11 +58,11 @@ careatorApp.controller('createUsersCtrl', function ($scope, $rootScope, $state, 
             if (checkStatus) {
                 console.log("checkStatus: " + checkStatus);
                 // alert(data.data.message);
-                $("#ResetConfirmationButton").trigger("click");
+                $("#alertButton").trigger("click");
                 $state.go("Cdashboard.usersListCtrl");
             } else {
                 console.log("checkStatus: " + checkStatus);
-                $("#ResetConfirmationButton").trigger("click");
+                $("#alertButton").trigger("click");
                 // alert(data.data.message);
             }
         })

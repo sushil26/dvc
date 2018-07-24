@@ -454,7 +454,7 @@ io.sockets.on('connection', function (socket) {
         }
         console.log("queryObj: " + JSON.stringify(queryObj));
         console.log("chatHistory: " + chatHistory);
-        careatorMaster.update(queryObj, { $set: { "logout": "done","login":"notDone" } }, function (err, updateData) {
+        careatorMaster.update(queryObj, { $set: { "logout": "done", "login": "notDone" } }, function (err, updateData) {
             if (err) {
                 console.log("errr: " + JSON.stringify(err));
             }
@@ -463,7 +463,12 @@ io.sockets.on('connection', function (socket) {
                 io.sockets.emit('comm_logoutNotifyToUserById', { "userId": data.userId, "email": data.email, "sessionURL": data.sessionURL, "sessionRandomId": data.sessionRandomId }) /* ### Note: Send quick message view notification to event sender(who's user id is matched with this userId) ### */
             }
         })
-        
+    })
+    socket.on('comm_logoutSession', function (data) {
+        console.log("comm_logoutSession-->: " + JSON.stringify(data));
+        console.log("updateData: " + JSON.stringify(updateData));
+        io.sockets.emit('comm_logoutNotifyToUserById_beczOfDeadSessionRandomId', { "userId": data.userId, "email": data.email, "sessionURL": data.sessionURL, "sessionRandomId": data.sessionRandomId }) /* ### Note: Send quick message view notification to event sender(who's user id is matched with this userId) ### */
+
     })
     /* ### End: Get the logoutNotification from the user(careator_dashboardCtrl.js) ### */
 

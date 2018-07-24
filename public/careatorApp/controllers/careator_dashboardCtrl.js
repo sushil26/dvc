@@ -38,10 +38,10 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                                 var sessionURL = data.data.data.sessionURL;
                                 console.log(data.data.message);
                                 console.log("sessionURL: " + sessionURL);
-                                socket.emit("comm_logout", { "userId": $scope.userData.userId, "email": $scope.userData.email, "sessionURL": sessionURL, "sessionRandomId": data.data.data.sessionRandomId }); /* ### Note: Logout notification to server ### */
+                                socket.emit("comm_logoutSession", { "userId": $scope.userData.userId, "email": $scope.userData.email, "sessionURL": sessionURL, "sessionRandomId": data.data.data.sessionRandomId }); /* ### Note: Logout notification to server ### */
                             }
                             else {
-                                socket.emit("comm_logout", { "userId": $scope.userData.userId, "email": $scope.userData.email, "sessionURL": "", "sessionRandomId": data.data.data.sessionRandomId }); /* ### Note: Logout notification to server ### */
+                                socket.emit("comm_logoutSession", { "userId": $scope.userData.userId, "email": $scope.userData.email, "sessionURL": "", "sessionRandomId": data.data.data.sessionRandomId }); /* ### Note: Logout notification to server ### */
                             }
                         } else {
                             console.log("Sorry");
@@ -285,8 +285,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
             "sessionRandomId": $scope.userData.sessionRandomId
         }
         console.log("obj: " + JSON.stringify(obj));
-        console.log()
-        if (data.userId == $scope.userData.userId && data.email == $scope.userData.email && data.sessionRandomId != $scope.userData.sessionRandomId) {
+        if (data.userId == $scope.userData.userId && data.email == $scope.userData.email) {
             console.log("started to remove localstorage");
             localStorage.removeItem("careatorEmail");
             localStorage.removeItem("careator_remoteEmail");
@@ -303,8 +302,28 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
             careatorSessionAuth.clearAccess("userData");
             $scope.doRedirect();
         }
-        else if (data.userId == $scope.userData.userId && data.email == $scope.userData.email && data.sessionRandomId == $scope.userData.sessionRandomId) {
-            console.log("NO need of logout")
+        // else if (data.userId == $scope.userData.userId && data.email == $scope.userData.email && data.sessionRandomId == $scope.userData.sessionRandomId) {
+        //     console.log("NO need of logout")
+        // }
+    })
+    socket.on('comm_logoutNotifyToUserById_beczOfDeadSessionRandomId', function (data) {
+        console.log("comm_logoutNotifyToUserById_beczOfDeadSessionRandomId-->: " + JSON.stringify(data));
+        if (data.userId == $scope.userData.userId && data.email == $scope.userData.email) {
+            console.log("started to remove localstorage");
+            localStorage.removeItem("careatorEmail");
+            localStorage.removeItem("careator_remoteEmail");
+            localStorage.removeItem("email");
+            localStorage.removeItem("userName");
+            localStorage.removeItem("empId");
+            localStorage.removeItem("userId");
+            localStorage.removeItem("videoRights");
+            localStorage.removeItem("chatRights");
+            localStorage.removeItem("restrictedTo");
+            localStorage.removeItem("chatStatus");
+            localStorage.removeItem("profilePicPath");
+            localStorage.removeItem("sessionRandomId");
+            careatorSessionAuth.clearAccess("userData");
+            $scope.doRedirect();
         }
     })
     socket.on('comm_resetNotifyToUserById', function (data) {

@@ -188,8 +188,6 @@
       overflow: hidden;
     }
 
-
-
     /* Zoom in Keyframes */
 
     @-webkit-keyframes zoomin {
@@ -285,15 +283,6 @@
         }
       }
     }
-
-    // function show(id, value) {
-    //   document.getElementById(id).style.display = value ? 'block' : 'none';
-    // }
-
-    // onReady(function () {
-    //   show('page', true);
-    //   show('loading', false);
-    // });
   </script>
 
 </head>
@@ -356,9 +345,9 @@ transition: all 0.5s;">
               <li ng-if="userData.loginType">
                 <a href="#!dashboard/logout">LOGOUT</a>
               </li>
-              <li >
-                  <a href="https://norecruits.com/careator">Employee Login</a>
-                </li>
+              <li>
+                <a href="https://norecruits.com/careator">Employee Login</a>
+              </li>
 
             </ul>
           </nav>
@@ -367,7 +356,7 @@ transition: all 0.5s;">
       </header>
 
       <!-- <img   class="kklklk" src="robot.gif" style="margin-top: 81px; background: #a8d043ab; z-index: 1000; width: 100px;">-->
-    
+
 
 
       <!--==========================
@@ -655,9 +644,50 @@ transition: all 0.5s;">
           </div>
         </section>
       </main>
+      ///////////////////////////////////////////
+      <div class="modal fade" id="crdntl" role="dialog">
+        <div class="modal-dialog">
+          <center>
+            <form>
+              <div class="modal-content" style="color:#777;max-width:350px;">
+                <div class="modal-header" style="display: inline-table; background-image: linear-gradient(to bottom, #383c3f 0%, #202224 100%);">
+                  <img style="width: 45px;margin-top: -15px; margin-left: -150px;" src="/home/img/fav.png" />
+                  <span class="modal-title">Login</span>
+                </div>
+                <div class="modal-body">
+                  <div style="background:darkturquoise;
+            /* border: 1px solid white; */
+            border-radius: 5px;
+            width: 50%;
+            padding: 3px;">
+                    <input type="radio" ng-model="loginType" value="teacher" checked="checked"> School &nbsp&nbsp
+                    <input type="radio" ng-model="loginType" value="studParent"> Parent
+                  </div>
+                  <hr>
+                  <input ng-keyup="$event.keyCode == 13 && logVC(loginType, email, Password)" style="
+                      background:  #ddd;
+                      border-radius: inherit;
+                      height: 50px;
+                      border: #ddd;" type="email" class="form-control" placeholder="Email" ng-model="email" id="crdEmail">
+                  <br>
+                  <input ng-keyup="$event.keyCode == 13 && logVC(loginType, email, Password)" style="
+                      background:  #ddd;
+                      border-radius: inherit;
+                      height: 50px;
+                      border: #ddd;" type="password" id="crdPswd" class="form-control" placeholder="Password" ng-model="Password">
+                </div>
+                <div class="modal-footer" style="border-top:0px;background-color: #f5f5f5;">
+                  <button id="crdsubmit" type="button" style="background-color: #29b6bd;color:#f1f1f1; width: 100%; height:50px;" class="btn"
+                    ng-click="logVC(loginType, email, Password)" data-dismiss="modal">Submit</button>
+                </div>
+              </div>
+            </form>
+          </center>
+        </div>
+      </div>
 
       <!-- ##### Start login popup  ##### -->
-      <div class="modal fade" id="crdntl" role="dialog">
+      <!-- <div class="modal fade" id="crdntl" role="dialog">
         <div class="modal-dialog">
           <center>
             <div class="modal-content" style="
@@ -697,7 +727,7 @@ transition: all 0.5s;">
             </div>
           </center>
         </div>
-      </div>
+      </div> -->
       <!-- ##### End login popup  ##### -->
 
       <!--==========================

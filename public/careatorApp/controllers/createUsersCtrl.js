@@ -67,6 +67,7 @@ careatorApp.controller('createUsersCtrl', function ($scope, $rootScope, $state, 
             } else {
                 console.log("checkStatus: " + checkStatus);
                 $scope.notifyMsg = data.data.message;
+                console.log(" $scope.notifyMsg: "+  $scope.notifyMsg);
                 $("#alertButton").trigger("click");
                 // alert(data.data.message);
             }

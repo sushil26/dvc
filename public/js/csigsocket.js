@@ -246,6 +246,7 @@ function checkCredential() {
         localStorage.setItem("email", data.data.email);
         localStorage.setItem("userId", data.data._id);
         localStorage.setItem("sessionPassword", password);
+        localStorage.setItem("sessionRandomId", data.data.sessionRandomId);
         localStorage.setItem("sessionEnc", data.sessionData);
         userName = localStorage.getItem("userName");
         if (data.data.videoRights == 'yes') {

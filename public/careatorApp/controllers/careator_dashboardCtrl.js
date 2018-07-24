@@ -37,10 +37,10 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                                 var sessionURL = data.data.data.sessionURL;
                                 console.log(data.data.message);
                                 console.log("sessionURL: " + sessionURL);
-                                socket.emit("comm_logout", { "userId": $scope.userData.userId, "email": $scope.userData.email, "sessionURL": sessionURL, "sessionRandomId": data.data.data[0].sessionRandomId }); /* ### Note: Logout notification to server ### */
+                                socket.emit("comm_logout", { "userId": $scope.userData.userId, "email": $scope.userData.email, "sessionURL": sessionURL, "sessionRandomId": data.data.data.sessionRandomId }); /* ### Note: Logout notification to server ### */
                             }
                             else {
-                                socket.emit("comm_logout", { "userId": $scope.userData.userId, "email": $scope.userData.email, "sessionURL": "", "sessionRandomId": data.data.data[0].sessionRandomId }); /* ### Note: Logout notification to server ### */
+                                socket.emit("comm_logout", { "userId": $scope.userData.userId, "email": $scope.userData.email, "sessionURL": "", "sessionRandomId": data.data.data.sessionRandomId }); /* ### Note: Logout notification to server ### */
                             }
                         } else {
                             console.log("Sorry");

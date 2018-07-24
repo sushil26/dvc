@@ -289,7 +289,7 @@ function checkCredential() {
           alert(err.responseJSON.message);
           document.getElementById('notify_msg_content').innerHTML = err.responseJSON.message;
           $("#notify_msg_button").trigger("click");
-          window.location.href = "/";
+         // window.location.href = "/";
         }
         else {
           alert(err.responseJSON.message);

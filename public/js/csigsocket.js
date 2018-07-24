@@ -421,6 +421,7 @@ function checkPassword() {
         setTimeout(function () {
           $('#invitePeople').modal('hide');
         }, 2000);
+        
 
         document.getElementById("videoConferenceUrl").style.display = "none";
         localStorage.removeItem("careatorEmail");

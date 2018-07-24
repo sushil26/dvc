@@ -179,7 +179,11 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                             console.log("sessionURL: " + sessionURL);
                             socket.emit("comm_logout", { "userId": $scope.userData.userId, "email": $scope.userData.email, "sessionURL": sessionURL, "sessionRandomId": $scope.userData.sessionRandomId }); /* ### Note: Logout notification to server ### */
                         }
+                        else {
+                            socket.emit("comm_logout", { "userId": $scope.userData.userId, "email": $scope.userData.email, "sessionURL": "", "sessionRandomId": $scope.userData.sessionRandomId }); /* ### Note: Logout notification to server ### */
+                        }
                     }
+
                     else {
                         socket.emit("comm_logout", { "userId": $scope.userData.userId, "email": $scope.userData.email, "sessionURL": "", "sessionRandomId": $scope.userData.sessionRandomId }); /* ### Note: Logout notification to server ### */
                     }
@@ -277,7 +281,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
     /* #### Start: Logout request from server(index.js) #### */
     socket.on('comm_logoutNotifyToUserById', function (data) {
         console.log("***comm_logoutNotifyToUserById-->: " + JSON.stringify(data));
-        if (data.userId == $scope.userData.userId && data.email == $scope.userData.email && data.sessionRandomId== $scope.userData.sessionRandomId) {
+        if (data.userId == $scope.userData.userId && data.email == $scope.userData.email && data.sessionRandomId == $scope.userData.sessionRandomId) {
             console.log("started to remove localstorage");
             localStorage.removeItem("careatorEmail");
             localStorage.removeItem("careator_remoteEmail");
@@ -297,7 +301,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
     })
     socket.on('comm_resetNotifyToUserById', function (data) {
         console.log("***comm_resetNotifyToUserById-->: " + JSON.stringify(data));
-        if (data.id == $scope.userData.userId ) {
+        if (data.id == $scope.userData.userId) {
             console.log("started the process for logout");
             $scope.getLogin_hostDetailsById($scope.userData.userId);
         }
@@ -309,7 +313,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
             $scope.sessionHostBlock = "yes";
         }
     })
-   
+
     /* #### End: Logout request from server(index.js) #### */
 
 

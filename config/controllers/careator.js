@@ -193,11 +193,10 @@ module.exports.pswdCheck = function (req, res) {
                         }
                         else {
                             responseData = {
-                                status: true,
+                                status: false,
                                 message: "You already logged in, please logout your old session in-order to login"
                             };
-                            console.log("responseData: "+JSON.stringify(responseData));
-                            res.status(200).send(responseData);
+                            res.status(400).send(responseData);
                         }
 
                     } else {
@@ -287,11 +286,10 @@ module.exports.pswdGenerate = function (req, res) {
                     }
                     else {
                         responseData = {
-                            status: true,
+                            status: false,
                             message: "You already logged in, please logout your old session in-order to login"
                         };
-                        console.log("responseData: "+JSON.stringify(responseData));
-                        res.status(200).send(responseData);
+                        res.status(400).send(responseData);
                     }
 
                 } else {
@@ -331,11 +329,10 @@ module.exports.pswdGenerate = function (req, res) {
                     }
                     else {
                         responseData = {
-                            status: true,
+                            status: false,
                             message: "You already logged in, please logout your old session in-order to login"
                         };
-                        console.log("responseData: "+JSON.stringify(responseData));
-                        res.status(200).send(responseData);
+                        res.status(400).send(responseData);
                     }
 
                 } else {

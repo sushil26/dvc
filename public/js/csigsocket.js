@@ -238,7 +238,9 @@ function checkCredential() {
       dataType: "json",
       success: function (data) {
         console.log("data: " + JSON.stringify(data));
+            $('#myEmailModal').modal('hide');
         alert("success");
+         $("#setName").trigger("click");
         localStorage.setItem("careatorEmail", careatorEmail);
         localStorage.setItem("userName", data.data.name);
         localStorage.setItem("empId", data.data.empId);
@@ -282,7 +284,7 @@ function checkCredential() {
         if (data.message == 'You already logged in, please logout your old session in-order to login') {
           console.log("You already logged in, please logout your old session in-order to login");
           //$("#setName").trigger("click");
-          alert("sorry");
+          //alert("sorry");
 
           //  alert(err.responseJSON.message);
           // document.getElementById('notify_msg_content').innerHTML = err.responseJSON.message;

@@ -324,14 +324,7 @@ function resetLoginFlag() {
 
       document.getElementById('notify_msg_show_content').innerHTML = "Reset successfully done,now you can login";
       $("#notify_msg_show_button").trigger("click");
-      if($('#notify_msg_show_button').hasClass('in'))
-      {
-
-      }
-      else{
-        $("#enterEmail").trigger("click");
-      }
-      
+          
     },
     error: function (err) {
       console.log("err: " + JSON.stringify(err));

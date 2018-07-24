@@ -60,6 +60,7 @@ careatorApp.controller('groupListCtrl', function ($scope, $state, $rootScope, $f
     $scope.deleteGroup = function (id) {
         console.log("deleteGroup-->");
         console.log("Obj ID  " + id);
+        $("#GroupDeleteButton").trigger("click");
 
        $scope.groupDelete=function() {
             var api = "https://norecruits.com/careator_groupDelete/groupDeleteById/" + id;

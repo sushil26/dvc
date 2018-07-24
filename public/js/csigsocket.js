@@ -238,6 +238,7 @@ function checkCredential() {
       dataType: "json",
       success: function (data) {
         console.log("data: " + JSON.stringify(data));
+            $('#myEmailModal').modal('hide');
         alert("success");
          $("#setName").trigger("click");
         localStorage.setItem("careatorEmail", careatorEmail);

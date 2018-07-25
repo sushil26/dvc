@@ -439,24 +439,7 @@ function chatNavigation() {
   console.log("chatNavigation-->");
   window.location.href = "https://norecruits.com/careatorApp/#!/dashboard/profile";
 }
-window.onload = function(){
-  var a = document.querySelectorAll('.opener'), w = [], url;
-  for(i = 0; i < a.length; i++){
-    (function(i){
-      a[i].onclick = function(e) {
-        if (!w[i] || w[i].closed) {
-          url = this.href;
-          random = Math.floor((Math.random()*100)+1); 
-          w[i] = window.open(url, "_blank", random, "menubar=0,scrollbars=0");
-        } else {
-          console.log('window ' + url + ' is already opened');
-        }
-        e.preventDefault();
-        w[i].focus();
-      };
-    })(i);
-  }
-}
+
 
 /* ##### Start: Email Invite  ##### */
 function emailInviteSend() {

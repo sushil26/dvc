@@ -440,6 +440,7 @@ function chatNavigation() {
   window.location.href = "https://norecruits.com/careatorApp/#!/dashboard/profile";
 }
 
+
 /* ##### Start: Email Invite  ##### */
 function emailInviteSend() {
   console.log("emailInvite-->");

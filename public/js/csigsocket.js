@@ -763,7 +763,8 @@ signaling_socket.on("connect", function () {
       } else {
         $("#alertforsessioncloseButton").trigger("click");
         $scope.closeklklk = function () {
-          close();
+          console.log("closeklklk  ::::>>>>>:::::");
+        close();
         }
         // window.location.href = "https://norecruits.com";
       }

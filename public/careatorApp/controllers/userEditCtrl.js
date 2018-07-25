@@ -42,6 +42,7 @@ careatorApp.controller('editUserCtrl', function ($scope, $state, $rootScope, $fi
             "userName": $scope.userName,
             "userEmail": $scope.userEmail,
             "userPass": $scope.userPass,
+            "empDesignation":$scope.empDesignation,
             "videoRights": $scope.userDataRights.videoRights,
             "chatRights": $scope.userDataRights.chatRights,
             "empId": $scope.empId,

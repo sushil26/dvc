@@ -757,7 +757,7 @@ signaling_socket.on("connect", function () {
       else {
         $("#deleteConfirmationButton").trigger("click");
         // alert("Sorry your link is not alive");
-        close();
+        setTimeout(close(),5000);
         // window.location.href = "https://norecruits.com";
       }
     }

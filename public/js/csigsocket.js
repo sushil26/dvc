@@ -762,7 +762,7 @@ signaling_socket.on("connect", function () {
         });
       } else {
         $("#alertforsessioncloseButton").trigger("click");
-        $scope.closeklklk = function () {
+        function closeklklk(){
           console.log("closeklklk  ::::>>>>>:::::");
         close();
         }

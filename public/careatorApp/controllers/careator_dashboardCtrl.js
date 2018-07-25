@@ -373,15 +373,27 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
     });
 
     /* ##### Start: on window only one open tab should be there for this page  ##### */
-    if (+localStorage.tabCount > 0) 
-        var r = confirm("You have already open this url");
-        if (r == true) {
-            close()
-        }
-        else {
-            localStorage.tabCount = 0;
-        }
-    
+    if (+localStorage.tabCount > 0) {
+        $scope.confirmMsg = "You have already open this url, tou want to open it again?";
+        $scope.popupFrom = "tabReopenConfirm"; /* ### Note: $scope.popupFrom notifying the modal popup buttons for logout  ### */
+        $("#logoutConfirmationButton").trigger("click");
+    }
+    // var r = confirm("You have already open this url");
+    // if (r == true) {
+    //     close()
+    // }
+    // else {
+    //     localStorage.tabCount = 0;
+    // }
+    $scope.keepTab = function () {
+        console.log("keepTab-->");
+        localStorage.tabCount = 0;
+    }
+    $scope.closeTab = function () {
+        console.log("closeTab-->");
+        close();
+    }
+
     localStorage.tabCount = +localStorage.tabCount + 1;
     window.onunload = function () {
         localStorage.tabCount = +localStorage.tabCount - 1;

@@ -180,9 +180,9 @@
                             <button type="button" style="background-color: #29b6bd;color:#f1f1f1" class="btn" data-dismiss="modal">No</button>
                             <button type="button" style="background-color: #29b6bd;color:#f1f1f1" class="btn" ng-click="userLogout()" data-dismiss="modal">Yes</button>
                         </div>
-                        <div ng-if="popupFrom != 'logoutConfirm'" class="modal-footer" style="padding-top: 15px;background-image: linear-gradient(to bottom, #202224 0%, #383c3f 100%);">
-                            <button type="button" style="background-color: #29b6bd;color:#f1f1f1" class="btn" data-dismiss="modal">No</button>
-                            <button type="button" style="background-color: #29b6bd;color:#f1f1f1" class="btn" ng-click="userLogout()" data-dismiss="modal">Yes</button>
+                        <div ng-if="popupFrom == 'tabReopenConfirm'" class="modal-footer" style="padding-top: 15px;background-image: linear-gradient(to bottom, #202224 0%, #383c3f 100%);">
+                            <button type="button" style="background-color: #29b6bd;color:#f1f1f1" class="btn" ng-click="closeTab()" data-dismiss="modal">No</button>
+                            <button type="button" style="background-color: #29b6bd;color:#f1f1f1" class="btn" ng-click="keepTab()" data-dismiss="modal">Yes</button>
                         </div>
                     </div>
                 </form>

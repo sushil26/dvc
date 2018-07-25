@@ -382,7 +382,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
     localStorage.tabCount = +localStorage.tabCount + 1;
     window.onunload = function () {
         localStorage.tabCount = +localStorage.tabCount - 1;
-        window.location.reload();
+        location.reload();
     };
     /* ##### End: on window only one open tab should be there for this page  ##### */
 })

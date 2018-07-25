@@ -480,10 +480,10 @@ careatorApp.controller("chatCtrl", function (
             console.log(data.data.message);
           }
         });
-      } else if (
-        $scope.restrictedArray.indexOf($scope.receiverData.receiverId) >= 0 ||
-        $scope.receiverData.receiverId == $rootScope.adminId
-      ) {
+      } else if ( 
+        ($scope.restrictedArray !=undefined && $scope.restrictedArray.indexOf($scope.receiverData.receiverId) >= 0) ||
+        ($scope.restrictedArray !=undefined || $scope.receiverData.receiverId == $rootScope.adminId))
+         {
         obj = {
           senderId: userData.userId,
           receiverId: $scope.receiverData.receiverId,

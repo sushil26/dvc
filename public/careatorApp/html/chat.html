@@ -8,14 +8,17 @@
                         .emojionearea .emojionearea-picker.emojionearea-picker-position-top {
                             right: -50px !important;
                         }
+
                         .span6 {
                             float: left;
                             width: 80%;
                             padding: 0%;
                         }
+
                         .emojionearea-standalone {
                             float: right;
                         }
+
                         .tooltip {
                             font-size: 10px;
                             margin-top: -12px;
@@ -24,6 +27,7 @@
                             display: inline-block;
                             opacity: 1 !important;
                         }
+
                         .tooltip .tooltiptext {
                             visibility: hidden;
                             width: 60px;
@@ -40,6 +44,7 @@
                             opacity: 1;
                             transition: opacity 0.3s;
                         }
+
                         .tooltip:hover .tooltiptext {
                             visibility: visible;
                             opacity: 1;
@@ -317,9 +322,6 @@
                                                 {{chat.senderName}}
                                             </div>
                                             <div class="receiver">
-                                                <audio id="myAudio">
-                                                    <source src="./audio/alert.mp3" type="audio/mpeg">
-                                                </audio>
                                                 <div class="message-text">
                                                     {{chat.message}}
                                                 </div>
@@ -361,6 +363,11 @@
                 </section>
             </div>
         </section>
+        <!-- ##### Start audio play  ##### -->
+        <audio id="myAudio">
+            <source src="./audio/alert.mp3" type="audio/mpeg">
+        </audio>
+        <!-- ##### End audio play  ##### -->
 
     </section>
     <button data-toggle="modal" data-target="#alertcreatuser" id="alertButton" data-backdrop="static" data-keyboard="false" style="display:none"></button>

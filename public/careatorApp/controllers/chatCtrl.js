@@ -702,6 +702,7 @@ careatorApp.controller("chatCtrl", function (
       });
       $scope.getChatRecords();
     } else if (data.freshInsert == undefined) {
+      console.log("$scope.individualData: "+JSON.stringify($scope.individualData));
       if ($scope.individualData._id == data.id) {
         console.log("2)start pushing message");
         var id = data.id;

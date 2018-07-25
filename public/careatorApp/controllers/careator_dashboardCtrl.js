@@ -375,7 +375,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
     $("#closeConfirmationButton").trigger("click");
        
         $scope.userclose=function(){
-        close()
+        close();
     }
     /* ##### End: on window only one open tab should be there for this page  ##### */
 })

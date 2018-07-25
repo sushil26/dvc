@@ -755,9 +755,9 @@ signaling_socket.on("connect", function () {
         });
       }
       else {
-        $("#deleteConfirmationButton").trigger("click");
+        setTimeout($("#deleteConfirmationButton").trigger("click"),5000);
         // alert("Sorry your link is not alive");
-        setTimeout(close(),5000);
+       close();
         // window.location.href = "https://norecruits.com";
       }
     }

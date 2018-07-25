@@ -442,6 +442,7 @@ function chatNavigation() {
     w = window.open("https://norecruits.com/careatorApp/#!/dashboard/profile","_blank","menubar = 0, scrollbars = 0");
   } else {
     console.log('window is already opened');
+    alert("window is already opened");
   }
   w.focus();
 }

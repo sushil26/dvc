@@ -651,7 +651,7 @@ function getChatBack() {
 
 function closeExpireSessionCustom(){
   console.log("closeExpireSessionCustom-->");
-  close();
+  window.close();
 }
 /* ### Note:End Whenever page refresh get the chathistory respective to url  ### */
 

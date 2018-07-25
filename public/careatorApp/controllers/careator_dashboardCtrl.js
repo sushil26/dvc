@@ -344,7 +344,6 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
 
     /* #### End: Logout request from server(index.js) #### */
 
-
     ///////////////Hamburger/////////////////////////
     $('#nav-icon1,#nav-icon2,#nav-icon3,#nav-icon4').click(function () {
         $(this).toggleClass('open');

@@ -649,7 +649,6 @@ function getChatBack() {
   });
 }
 
-
 /* ### Note:End Whenever page refresh get the chathistory respective to url  ### */
 
 signaling_socket.on("connect", function () {
@@ -756,9 +755,9 @@ signaling_socket.on("connect", function () {
         });
       }
       else {
-       $("#alertConfirmationButton").trigger("click")
-       
-     
+        alert("Sorry your link is not alive");
+        close();
+        // window.location.href = "https://norecruits.com";
       }
     }
 

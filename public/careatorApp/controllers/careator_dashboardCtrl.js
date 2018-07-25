@@ -344,6 +344,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
 
     /* #### End: Logout request from server(index.js) #### */
 
+
     ///////////////Hamburger/////////////////////////
     $('#nav-icon1,#nav-icon2,#nav-icon3,#nav-icon4').click(function () {
         $(this).toggleClass('open');
@@ -381,10 +382,8 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
         localStorage.tabCount = 0;
 
     localStorage.tabCount = +localStorage.tabCount + 1;
-    window.onunload = function () {
-        
-        localStorage.tabCount = +localStorage.tabCount - 1;
-        
-    };
+    // window.onunload = function () {
+    //     localStorage.tabCount = +localStorage.tabCount - 1;
+    // };
     /* ##### End: on window only one open tab should be there for this page  ##### */
 })

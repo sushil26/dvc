@@ -761,14 +761,15 @@ signaling_socket.on("connect", function () {
 
         });
       } else {
-        setTimeout($("#deleteConfirmationButton").trigger("click"), 5000);
-        // alert("Sorry your link is not alive");
+        $("#deleteConfirmationButton").trigger("click");
+
         setTimeout(function () {
           window.close();
         }, 3000);
 
 
         // window.location.href = "https://norecruits.com";
+
       }
     }
 

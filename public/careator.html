@@ -777,7 +777,12 @@
         }
     </style>
     <script>
-        var timerInstance = new Timer();
+        var timer = new Timer();
+        timer.start();
+        timer.addEventListener('secondsUpdated', function (e) {
+            $('#basicUsage').html(timer.getTimeValues().toString());
+        });
+        var
     </script>
 </body>
 

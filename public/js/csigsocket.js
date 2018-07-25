@@ -759,8 +759,7 @@ signaling_socket.on("connect", function () {
         });
       }
       else {
-       $("#ResetConfirmationButton").trigger("click");
-       
+       $("#alertConfirmationButton").trigger("click")
        
      
       }

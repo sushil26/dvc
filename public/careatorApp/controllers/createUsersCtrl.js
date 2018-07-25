@@ -47,7 +47,7 @@ careatorApp.controller('createUsersCtrl', function ($scope, $rootScope, $state, 
             "empId": empId,
             "empEmail": emailId,
             "empPass": pswd,
-            "empDesignation":Designation,
+            "Designation":empDesignation,
             "videoRights": videoRights,
             "chatRights": chatRights
         }

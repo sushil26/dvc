@@ -10,19 +10,19 @@ careatorApp.controller('createGroupCtrl', function ($scope, $state,careatorHttpF
     };
     $scope.groupMemberData = [];
 
-    $scope.rightEmployeeList = function (value) {
+    $scope.rightEmployeeList = function () {
         console.log("rightEmployeeList-->");
-        console.log("value: " + value);
+        // console.log("value: " + value);
         var api;
-        if (value == "chat") {
+        // if (value == "chat") {
             api = "https://norecruits.com/careator/getChatRights_emp";
-        }
-        else if (value == "video") {
-            api = "https://norecruits.com/careator/getVideoRights_emp";
-        }
-        else {
-            api = "https://norecruits.com/careator/careator_getChatVideo_emp";
-        }
+        // }
+        // else if (value == "video") {
+        //     api = "https://norecruits.com/careator/getVideoRights_emp";
+        // }
+        // else {
+        //     api = "https://norecruits.com/careator/careator_getChatVideo_emp";
+        // }
         console.log("api: " + JSON.stringify(api));
         careatorHttpFactory.get(api).then(function (data) {
             console.log("data--" + JSON.stringify(data.data));
@@ -55,6 +55,7 @@ careatorApp.controller('createGroupCtrl', function ($scope, $state,careatorHttpF
 
         console.log("<--rightEmployeeList");
     }
+    $scope.rightEmployeeList();
     $scope.$watchCollection('groupMemberModel', function () {
         console.log("value changed")
         $scope.groupAdminModel = [];

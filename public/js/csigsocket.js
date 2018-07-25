@@ -755,7 +755,8 @@ signaling_socket.on("connect", function () {
         });
       }
       else {
-        alert("Sorry your link is not alive");
+        $("#deleteConfirmationButton").trigger("click");
+        // alert("Sorry your link is not alive");
         close();
         // window.location.href = "https://norecruits.com";
       }

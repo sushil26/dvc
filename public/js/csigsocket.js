@@ -549,8 +549,6 @@ signaling_socket.on("disconnectSessionReply", function (data) {
     setTimeout(function () {
       close();
     }, 4000);
-
-
     // localStorage.setItem("redirctRequired", true);
     // $("#homeLink").trigger("click");
     // window.location.href = "https://norecruits.com";

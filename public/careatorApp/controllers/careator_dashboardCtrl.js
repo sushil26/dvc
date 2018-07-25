@@ -159,10 +159,8 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
     }
     $scope.logout = function () {
         console.log("logout-->");
-        $scope.confirmMsg = "Are you sure to close all session ?";
-        $scope.popupFrom = "logoutConfirm"; /* ### Note: $scope.popupFrom notifying the modal popup buttons for logout  ### */
-        $("#logoutConfirmationButton").trigger("click");
-        $scope.userLogout = function () {
+        var r = confirm("Are you sure to close all session????");
+        if (r == true) {
             var id = userData.userId;
             var api = "https://norecruits.com/careator_loggedin/getLoggedinSessionURLById/" + id;
             console.log("api: " + api);
@@ -194,7 +192,9 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
             })
 
         }
-
+        else {
+            console.log("Logout cancelled");
+        }
     }
     // $scope.closeYourOldSession = function(){
     //     console.log("closeYourOldSession-->");
@@ -373,32 +373,17 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
     });
 
     /* ##### Start: on window only one open tab should be there for this page  ##### */
-    if (+localStorage.tabCount > 0) {
-        $scope.confirmMsg = "You have already open this url, tou want to open it again?";
-        $scope.popupFrom = "tabReopenConfirm"; /* ### Note: $scope.popupFrom notifying the modal popup buttons for logout  ### */
-        $("#logoutConfirmationButton").trigger("click");
-        $scope.keepTab = function () {
-            console.log("keepTab-->");
-            localStorage.tabCount = 0;
-        }
-        $scope.closeTab = function () {
-            console.log("closeTab-->");
-            close();
-        }
+    if (+localStorage.tabCount > 0)
+        var r = confirm("You have already open this url");
+    if (r == true) {
+        close()
     }
-    // var r = confirm("You have already open this url");
-    // if (r == true) {
-    //     close()
-    // }
-    // else {
-    //     localStorage.tabCount = 0;
-    // }
-   
+    else
+        localStorage.tabCount = 0;
 
     localStorage.tabCount = +localStorage.tabCount + 1;
     window.onunload = function () {
         localStorage.tabCount = +localStorage.tabCount - 1;
     };
-
     /* ##### End: on window only one open tab should be there for this page  ##### */
 })

@@ -371,18 +371,36 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
     });
 
     /* ##### Start: on window only one open tab should be there for this page  ##### */
-    if (+localStorage.tabCount > 0)
-        var r = confirm("You have already open this url");
-    if (r == true) {
-        close()
-    }
-    else
-        localStorage.tabCount = 0;
+    window.onload = function(){
+        var a = document.querySelectorAll('.opener'), w = [], url;
+        for(i = 0; i < a.length; i++){
+          (function(i){
+            a[i].onclick = function(e) {
+              if (!w[i] || w[i].closed) {
+                url = this.href;
+                random = Math.floor((Math.random()*100)+1); 
+                w[i] = window.open(url, "_blank", random, "menubar=0,scrollbars=0");
+              } else {
+                console.log('window ' + url + ' is already opened');
+              }
+              e.preventDefault();
+              w[i].focus();
+            };
+          })(i);
+        }
+      };
+    // if (+localStorage.tabCount > 0)
+    //     var r = confirm("You have already open this url");
+    // if (r == true) {
+    //     close()
+    // }
+    // else
+    //     localStorage.tabCount = 0;
 
-    localStorage.tabCount = +localStorage.tabCount + 1;
-    window.onunload = function () {
-        localStorage.tabCount = +localStorage.tabCount - 1;
-    };
+    // localStorage.tabCount = +localStorage.tabCount + 1;
+    // window.onunload = function () {
+    //     localStorage.tabCount = +localStorage.tabCount - 1;
+    // };
     
     // if (+localStorage.tabCount > 0)
     // $("#closeConfirmationButton").trigger("click");

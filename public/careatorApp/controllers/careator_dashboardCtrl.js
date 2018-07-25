@@ -385,7 +385,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
     });
 
     /* ##### Start: on window only one open tab should be there for this page  ##### */
-    if (+localStorage.tabCount > 0) {
+    if (+localStorage.tabCount > 0) 
         var r = confirm("You have already open this url");
         if (r == true) {
             close()
@@ -397,7 +397,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
         window.onunload = function () {
             localStorage.tabCount = +localStorage.tabCount - 1;
         };
-    }
+    
     // if (+localStorage.tabCount > 0)
     // $("#closeConfirmationButton").trigger("click");
 

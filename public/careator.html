@@ -595,7 +595,7 @@
 
 
     <button data-toggle="modal" data-target="#alertforsessionclose" id="alertConfirmationButton" data-backdrop="static" data-keyboard="false"
-    style="display:none"></button>
+        style="display:none"></button>
     <div class="modal fade" id="alertforsessionclose" role="dialog">
         <div class="modal-dialog">
             <center>
@@ -611,7 +611,8 @@
 
                         </div>
                         <div class="modal-footer" style="padding-top: 15px;background-image: linear-gradient(to bottom, #202224 0%, #383c3f 100%);">
-                            <button type="button" id="sub" onclick="closeExpireSessionCustom()" style="background-color: #29b6bd;color:#f1f1f1"   data-dismiss="modal" class="btn">ok</button>
+                            <button type="button" id="sub" onclick="closeExpireSessionCustom()" style="background-color: #29b6bd;color:#f1f1f1" data-dismiss="modal"
+                                class="btn">ok</button>
                         </div>
                     </div>
                 </form>
@@ -809,7 +810,12 @@
         timer.addEventListener('secondsUpdated', function (e) {
             $('#basicUsage').html(timer.getTimeValues().toString());
         });
-   
+    </script>
+    <script>
+        function closeExpireSessionCustom() {
+            console.log("closeExpireSessionCustom-->");
+            window.close();
+        }
     </script>
 </body>
 

@@ -649,10 +649,7 @@ function getChatBack() {
   });
 }
 
-function closeExpireSessionCustom(){
-  console.log("closeExpireSessionCustom-->");
-  window.close();
-}
+
 /* ### Note:End Whenever page refresh get the chathistory respective to url  ### */
 
 signaling_socket.on("connect", function () {

@@ -383,23 +383,34 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
         });
 
     });
+var w;
+    $scope.navigateintoBoth_CVoption = function () {
+        console.log("navigateintoBoth_CVoption-->");
+        if (!w || w.closed) {
+            w = window.open("https://norecruits.com/careator", "_blank");
+        } else {
+            console.log('window is already opened');
+            alert("window is already opened");
+        }
+        w.focus();
+    }
 
     /* ##### Start: on window only one open tab should be there for this page  ##### */
     // if (+localStorage.tabCount > 0) 
     //     var r = confirm("You have already open this url");
     //     if (r == true) {
     //         close()
-     
+
     //     } else
     //         localStorage.tabCount = 0;
 
     //     localStorage.tabCount = +localStorage.tabCount + 1;
     //     window.onunload = function () {
     //         localStorage.tabCount = +localStorage.tabCount - 1;
-     
+
     //     };
-      
-    
+
+
     // if (+localStorage.tabCount > 0)
     // $("#closeConfirmationButton").trigger("click");
 

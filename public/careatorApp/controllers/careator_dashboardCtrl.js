@@ -160,7 +160,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
     $scope.logout = function () {
         console.log("logout-->");
         $("#logoutConfirmationButton").trigger("click");
-        $scope.userLogout=function() {
+        $scope.userLogout = function () {
             var id = userData.userId;
             var api = "https://norecruits.com/careator_loggedin/getLoggedinSessionURLById/" + id;
             console.log("api: " + api);
@@ -192,7 +192,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
             })
 
         }
-       
+
     }
     // $scope.closeYourOldSession = function(){
     //     console.log("closeYourOldSession-->");
@@ -377,6 +377,5 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
         $scope.userclose=function(){
         close()
     }
-
     /* ##### End: on window only one open tab should be there for this page  ##### */
 })

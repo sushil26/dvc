@@ -208,8 +208,7 @@ careatorApp.controller("chatCtrl", function (
         }
       });
     } else if ($scope.selectedType == "individual_chats") {
-      var api =
-        "https://norecruits.com/careator_getChatsById/getChatsById/" + id;
+      var api = "https://norecruits.com/careator_getChatsById/getChatsById/" + id;
       console.log("api: " + api);
       careatorHttpFactory.get(api).then(function (data) {
         console.log("data--" + JSON.stringify(data.data));
@@ -218,15 +217,11 @@ careatorApp.controller("chatCtrl", function (
           $scope.allChat = data.data.data;
           $scope.individualData = data.data.data;
           console.log("$scope.allChat: " + JSON.stringify($scope.allChat));
-          console.log(
-            "$scope.individualData : " + JSON.stringify($scope.individualData)
-          );
-
+          console.log("$scope.individualData : " + JSON.stringify($scope.individualData) );
           $scope.receiverData = {
             senderId: userData.userId,
             senderName: userData.userName
           };
-
           if ($scope.individualData.receiverId != userData.userId) {
             $scope.receiverData.receiverId = $scope.individualData.receiverId;
             $scope.receiverData.receiverName =
@@ -235,10 +230,25 @@ careatorApp.controller("chatCtrl", function (
             $scope.receiverData.receiverId = $scope.individualData.senderId;
             $scope.receiverData.receiverName = $scope.individualData.senderName;
           }
-          console.log(
-            " $scope.receiverData : " + JSON.stringify($scope.receiverData)
-          );
+          console.log(" $scope.receiverData : " + JSON.stringify($scope.receiverData));
           $scope.getReceiverDataById($scope.receiverData.receiverId);
+          
+          var obj = {
+            "receiverSeen": "yes"
+          }
+          console.log("obj: " + JSON.stringify(obj));
+          var api = "https://norecruits.com/careator_textSeenFlagUpdate/textSeenFlagUpdate/" + id;
+          console.log("api: " + api);
+          careatorHttpFactory.post(api, obj).then(function (data) {
+            console.log("data--" + JSON.stringify(data.data));
+            var checkStatus = careatorHttpFactory.dataValidation(data);
+            if (checkStatus) {
+              console.log("Remove notification for this chat: " + data.data.message);
+            }
+            else {
+              console.log("Sorry: " + data.data.message);
+            }
+          })  
         } else {
           console.log("Sorry");
           console.log(data.data.message);

@@ -389,7 +389,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
         var r = confirm("You have already open this url");
         if (r == true) {
             close()
-            location.reload();
+            // location.reload();
         } else
             localStorage.tabCount = 0;
 

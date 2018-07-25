@@ -385,19 +385,19 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
     });
 
     /* ##### Start: on window only one open tab should be there for this page  ##### */
-    if (+localStorage.tabCount > 0) 
-        var r = confirm("You have already open this url");
-        if (r == true) {
-            close()
+    // if (+localStorage.tabCount > 0) 
+    //     var r = confirm("You have already open this url");
+    //     if (r == true) {
+    //         close()
      
-        } else
-            localStorage.tabCount = 0;
+    //     } else
+    //         localStorage.tabCount = 0;
 
-        localStorage.tabCount = +localStorage.tabCount + 1;
-        window.onunload = function () {
-            localStorage.tabCount = +localStorage.tabCount - 1;
+    //     localStorage.tabCount = +localStorage.tabCount + 1;
+    //     window.onunload = function () {
+    //         localStorage.tabCount = +localStorage.tabCount - 1;
      
-        };
+    //     };
       
     
     // if (+localStorage.tabCount > 0)

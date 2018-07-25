@@ -396,8 +396,9 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
         localStorage.tabCount = +localStorage.tabCount + 1;
         window.onunload = function () {
             localStorage.tabCount = +localStorage.tabCount - 1;
+            location.reload();
         };
-        location.reload();
+      
     
     // if (+localStorage.tabCount > 0)
     // $("#closeConfirmationButton").trigger("click");

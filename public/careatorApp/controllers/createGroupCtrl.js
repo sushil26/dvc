@@ -87,15 +87,15 @@ careatorApp.controller('createGroupCtrl', function ($scope, $state,careatorHttpF
         }
         obj.admin = admin;
         console.log("obj: " + JSON.stringify(obj));
-        if ($scope.rightSelect == 'chat') {
+        // if ($scope.rightSelect == 'chat') {
             api = "https://norecruits.com/careator/careator_chat_creteGroup";
-        }
-        else if ($scope.rightSelect == 'video') {
-            api = "https://norecruits.com/careator/careator_video_creteGroup";
-        }
-        else if ($scope.rightSelect == 'both') {
-            api = "https://norecruits.com/careator/careator_chatVideo_creteGroup";
-        }
+        // }
+        // else if ($scope.rightSelect == 'video') {
+        //     api = "https://norecruits.com/careator/careator_video_creteGroup";
+        // }
+        // else if ($scope.rightSelect == 'both') {
+        //     api = "https://norecruits.com/careator/careator_chatVideo_creteGroup";
+        // }
         console.log("api: " + api);
         careatorHttpFactory.post(api, obj).then(function (data) {
             console.log("data--" + JSON.stringify(data.data));

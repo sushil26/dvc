@@ -1780,8 +1780,8 @@ module.exports.userEditById = function (req, res) {
         if (req.body.empId) {
             updateVlaue.empId = req.body.empId;
         }
-        if (req.body.empDesignation) {
-            updateVlaue.empDesignation = req.body.empDesignation;
+        if (req.body.Designation) {
+            updateVlaue.Designation = req.body.Designation;
         }
         if (req.body.userEmail) {
             updateVlaue.email = req.body.userEmail;

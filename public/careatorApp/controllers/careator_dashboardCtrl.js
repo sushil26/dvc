@@ -159,6 +159,8 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
     }
     $scope.logout = function () {
         console.log("logout-->");
+        $scope.confirmMsg = "Are you sure to close all session ?";
+        $scope.popupFrom = "logoutConfirm"; /* ### Note: $scope.popupFrom notifying the modal popup buttons for logout  ### */
         $("#logoutConfirmationButton").trigger("click");
         $scope.userLogout = function () {
             var id = userData.userId;

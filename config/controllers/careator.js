@@ -1291,13 +1291,7 @@ module.exports.individualText = function (req, res) {
     var r_title = req.body.receiverId + req.body.senderId;
     console.log("title : " + title + "r_title: " + r_title);
 
-    careatorChat.find({
-        $or: [{
-            "title": title
-        }, {
-            "title": r_title
-        }]
-    }).toArray(function (err, data) {
+    careatorChat.find({ $or: [{ "title": title }, { "title": r_title }] }).toArray(function (err, data) {
         if (err) {
             console.log("err: " + JSON.stringify(err));
             response = {
@@ -1354,6 +1348,27 @@ module.exports.individualText = function (req, res) {
                     }
                 })
             } else {
+                var unseenCount, setObj;
+                if (data[0].unseenCount != undefined) {
+                    unseenCount = data[0].unseenCount + 1;
+                }
+                else {
+                    unseenCount = 1;
+                }
+                if (data[0].senderId == req.body.senderId) {
+                    setObj = {
+                        "senderSeen": "yes",
+                        "receiverSeen": "no",
+                        "unseenCount": unseenCount
+                    }
+                }
+                else {
+                    setObj = {
+                        "senderSeen": "no",
+                        "receiverSeen": "yes",
+                        "unseenCount": unseenCount
+                    }
+                }
                 var obj = {
                     "senderId": req.body.senderId,
                     "senderName": req.body.senderName,
@@ -1365,11 +1380,7 @@ module.exports.individualText = function (req, res) {
                     "_id": data[0]._id
                 }
                 console.log("findObj: " + JSON.stringify(findObj));
-                careatorChat.update(findObj, {
-                    "$push": {
-                        "chats": obj
-                    }
-                }, function (err, updatedData) {
+                careatorChat.update(findObj, { "$push": { "chats": obj }, "$set": setObj }, function (err, updatedData) {
                     if (err) {
                         console.log("err: " + JSON.stringify(err));
                         response = {
@@ -1387,7 +1398,10 @@ module.exports.individualText = function (req, res) {
                             "senderName": obj.senderName,
                             "message": obj.message,
                             "receiverId": req.body.receiverId,
-                            "sendTime": obj.sendTime
+                            "sendTime": obj.sendTime,
+                            "senderSeen": setObj.senderSeen,
+                            "receiverSeen": setObj.receiverSeen,
+                            "unseenCount": setObj.unseenCount
                         }); /* ### Note: Emit message to client ### */
                         response = {
                             status: true,
@@ -1400,6 +1414,48 @@ module.exports.individualText = function (req, res) {
             }
         }
     })
+}
+module.exports.textSeenFlagUpdate = function (req, res) {
+    console.log("textSeenFlagUpdate-->");
+    var response;
+    var id = req.params.id;
+    console.log("id: " + id);
+    if (general.emptyCheck(id)) {
+
+        var obj = {
+            "receiverSeen": req.body.receiverSeen,
+            "unseenCount": 0
+        }
+        console.log("obj: " + JSON.stringify(obj));
+
+        careatorChat.update({ "_id": id }, { "$set": obj }, function (err, updateddata) {
+            if (err) {
+                console.log("err: " + JSON.stringify(err));
+                response = {
+                    status: false,
+                    message: "Unsucessfully Updated data",
+                    data: err
+                };
+                res.status(400).send(response);
+            } else {
+                console.log("updateddata: " + JSON.stringify(updateddata));
+                response = {
+                    status: true,
+                    message: "Sucessfully Updated data",
+                    data: updateddata
+                };
+                res.status(200).send(response);
+            }
+        })
+    }
+    else {
+        console.log("Epty value found");
+        response = {
+            status: false,
+            message: "empty value found"
+        };
+        res.status(400).send(response);
+    }
 }
 module.exports.individualTextReadById = function (req, res) {
     console.log("individualTextReadById--> ");

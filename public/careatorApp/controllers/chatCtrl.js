@@ -715,7 +715,7 @@ careatorApp.controller("chatCtrl", function (
           sendTime: data.sendTime
         });
         $scope.scrollDown();
-      } else if ( $scope.individualData==undefined && $scope.individualData._id != data.id) {
+      } else if ( $scope.individualData==undefined || $scope.individualData._id != data.id) {
         console.log("Notify the Unseen message count");
         if (data.senderId != userData.userId) {
           var index = $scope.allChatRecordsReceiverId.indexOf(data.id);

@@ -1421,19 +1421,12 @@ module.exports.individualText = function (req, res) {
                     unseenCount = 1;
                 }
                 if (data[0].senderId == req.body.senderId) {
-                    setObj = {
-                        "senderSeen": "yes",
-                        "receiverSeen": "no",
-                        "unseenCount": unseenCount
-                    }
+                    setObj = { "senderSeen": "yes", "receiverSeen": "no", "unseenCount": unseenCount }
                 }
                 else {
-                    setObj = {
-                        "senderSeen": "no",
-                        "receiverSeen": "yes",
-                        "unseenCount": unseenCount
-                    }
+                    setObj = {"senderSeen": "no", "receiverSeen": "yes", "unseenCount": unseenCount }
                 }
+                console.log("setObj : " + JSON.stringify(setObj));
                 var obj = {
                     "senderId": req.body.senderId,
                     "senderName": req.body.senderName,
@@ -1441,9 +1434,7 @@ module.exports.individualText = function (req, res) {
                     "sendTime": date
                 }
                 console.log("obj : " + JSON.stringify(obj));
-                var findObj = {
-                    "_id": data[0]._id
-                }
+                var findObj = { "_id": data[0]._id }
                 console.log("findObj: " + JSON.stringify(findObj));
                 careatorChat.update(findObj, { "$push": { "chats": obj }, "$set": setObj }, function (err, updatedData) {
                     if (err) {

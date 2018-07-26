@@ -1427,12 +1427,12 @@ module.exports.individualText = function (req, res) {
                 else {
                     unseenCount = 1;
                 }
-                if (data[0].senderId == req.body.senderId) {
+                // if (data[0].senderId == req.body.senderId) {
                     setObj = { "senderSeen": "yes", "receiverSeen": "no", "unseenCount": unseenCount }
-                }
-                else {
-                    setObj = { "senderSeen": "no", "receiverSeen": "yes", "unseenCount": unseenCount }
-                }
+                // }
+                // else {
+                //     setObj = { "senderSeen": "no", "receiverSeen": "yes", "unseenCount": unseenCount }
+                // }
                 console.log("setObj : " + JSON.stringify(setObj));
                 var obj = {
                     "senderId": req.body.senderId,

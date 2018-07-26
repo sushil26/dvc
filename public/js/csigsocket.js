@@ -298,7 +298,7 @@ function checkCredential() {
           // alert(err.responseJSON.message);
           $("#alertButton").trigger("click");
           var x=
-          document.getElementById('alertcontent').innerHTML =err.responseJSON.message +"Please try with correct password or contact Admin" ;
+          document.getElementById('alertcontent').innerHTML =err.responseJSON.message +"<br>Please try with correct password or contact Admin" ;
           
 
         }

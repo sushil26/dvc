@@ -390,7 +390,9 @@ var w;
             w = window.open("https://norecruits.com/careator", "_blank");
         } else {
             console.log('window is already opened');
-            alert("window is already opened");
+            $("#closeConfirmationButton").trigger("click");
+
+            // alert("window is already opened");
         }
         w.focus();
     }

@@ -1653,12 +1653,12 @@ module.exports.groupText = function (req, res) {
                     }
                     var groupMembers = [];
                     var groupMem = req.body.groupMembers;
-                    for(var x=0;x<groupMem.length;x++){
-                        if(groupMem[x].userId==req.body.senderId){
+                    for (var x = 0; x < groupMem.length; x++) {
+                        if (groupMem[x].userId == req.body.senderId) {
                             groupMem[x].unseenCount = 0;
                             groupMembers.push(groupMem[x]);
                         }
-                        else{
+                        else {
                             groupMem[x].unseenCount = 1;
                             groupMembers.push(groupMem[x]);
                         }
@@ -1695,20 +1695,31 @@ module.exports.groupText = function (req, res) {
                         }
                     })
                 } else {
-
                     var obj = {
                         "senderId": req.body.senderId,
                         "senderName": req.body.senderName,
                         "message": req.body.message,
                         "sendTime": date
                     }
+                    var groupMembers = [];
+                    var groupMem = data[0].groupMembers;
+                    for (var x = 0; x < groupMem.length; x++) {
+                        if (groupMem[x].userId == req.body.senderId) {
+                            groupMem[x].unseenCount = 0;
+                            groupMembers.push(groupMem[x]);
+                        }
+                        else {
+                            groupMem[x].unseenCount = groupMem[x].unseenCount + 1;
+                            groupMembers.push(groupMem[x]);
+                        }
+                    }
                     console.log("obj : " + JSON.stringify(obj));
-                    console.log("visitingDetails : " + JSON.stringify(visitingDetails));
+                    console.log("groupMembers : " + JSON.stringify(groupMembers));
                     var findObj = {
                         "_id": data[0]._id
                     }
                     console.log("findObj: " + JSON.stringify(findObj));
-                    careatorChat.update(findObj, { "$push": { "chats": obj } }, function (err, updatedData) {
+                    careatorChat.update(findObj, { "$push": { "chats": obj }, "$set":groupMembers }, function (err, updatedData) {
                         if (err) {
                             console.log("err: " + JSON.stringify(err));
                             response = {

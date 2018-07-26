@@ -1761,7 +1761,7 @@ module.exports.groupText = function (req, res) {
 module.exports.textSeenFlagUpdate_toGroupChat = function (req, res) {
     console.log("textSeenFlagUpdate_toGroupChat-->");
 
-    if (general.emptyCheck(req.body.group_id)) {
+    if (general.emptyCheck(req.params.group_id)) {
 
         var obj = {
             "userId": req.body.seenBy,
@@ -1769,7 +1769,7 @@ module.exports.textSeenFlagUpdate_toGroupChat = function (req, res) {
         }
         console.log("obj: " + JSON.stringify(obj));
 
-        careatorChat.update({ "group_id": req.body.group_id }, { "$set": obj }, function (err, updateddata) {
+        careatorChat.update({ "group_id": req.params.group_id }, { "$set": obj }, function (err, updateddata) {
             if (err) {
                 console.log("err: " + JSON.stringify(err));
                 response = {

@@ -235,6 +235,7 @@ careatorApp.controller("chatCtrl", function (
             var checkStatus = careatorHttpFactory.dataValidation(data);
             if (checkStatus) {
               console.log("Remove notification for this chat: " + data.data.message);
+
             } else {
               console.log("Sorry: " + data.data.message);
             }
@@ -586,7 +587,7 @@ careatorApp.controller("chatCtrl", function (
         console.log(data.data.message);
         for (var x = 0; x < $scope.allChatRecords.length; x++) {
           if ($scope.allChatRecords[x].senderId != userData.userId) {
-            $scope.allChatRecordsReceiverId[x] = $scope.allChatRecords[x].senderId;
+            $scope.allChatRecordsReceiverId[x] = $scope.allChatRecords[x]._id;
             var tempData = $scope.allEmpWithIndexById[$scope.allChatRecords[x].senderId];
             //console.log("tempData: "+JSON.stringify(tempData));
             if (tempData != undefined) {
@@ -595,7 +596,7 @@ careatorApp.controller("chatCtrl", function (
               }
             } else { }
           } else {
-            $scope.allChatRecordsReceiverId[x] = $scope.allChatRecords[x].receiverId;
+            $scope.allChatRecordsReceiverId[x] = $scope.allChatRecords[x]._id;
             var tempData = $scope.allEmpWithIndexById[$scope.allChatRecords[x].receiverId];
             console.log("tempData: " + JSON.stringify(tempData));
             if (tempData != undefined) {
@@ -717,17 +718,18 @@ careatorApp.controller("chatCtrl", function (
       } else if ($scope.individualData._id != data.id) {
         console.log("Notify the Unseen message count");
         if (data.senderId != userData.userId) {
-          var index = $scope.allChatRecordsReceiverId.indexOf(data.senderId);
+          var index = $scope.allChatRecordsReceiverId.indexOf(data.id);
           $scope.allChatRecords[index].unseenCount = data.unseenCount;
         }
         else if (data.receiverId != userData.userId) {
-          var index = $scope.allChatRecordsReceiverId.indexOf(data.receiverId);
+          var index = $scope.allChatRecordsReceiverId.indexOf(data.id);
           $scope.allChatRecords[index].unseenCount = data.unseenCount;
         }
 
       }
     }
   });
+  
   socket.on("comm_aboutRestrictedUpdate", function (data) {
     //update to client about their new restricted users
     console.log("****comm_aboutRestrictedUpdate-->: " + JSON.stringify(data));

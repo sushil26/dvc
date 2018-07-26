@@ -1769,7 +1769,7 @@ module.exports.textSeenFlagUpdate_toGroupChat = function (req, res) {
         console.log("obj: " + JSON.stringify(obj));
 
 
-        careatorChat.update({ "group_id": req.params.group_id, groupMembers, "groupMembers.userId": req.body.seenBy }, { "$set": { "groupMembers.$.unseenCount": 0 } }, function (err, updateddata) {
+        careatorChat.update({ "group_id": req.params.group_id, "groupMembers.userId": req.body.seenBy }, { "$set": { "groupMembers.$.unseenCount": 0 } }, function (err, updateddata) {
             if (err) {
                 console.log("err: " + JSON.stringify(err));
                 response = {

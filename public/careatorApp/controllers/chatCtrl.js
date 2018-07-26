@@ -201,7 +201,9 @@ careatorApp.controller("chatCtrl", function (
       var group_id = id;
       var obj = {
         "seenBy": userData.userId,
-        "unseenCount": 0
+        "unseenCount": 0,
+        "groupMembers": $scope.individualData.groupMembers
+
       }
       console.log("obj: " + JSON.stringify(obj));
       var api = "https://norecruits.com/careator_textSeenFlagUpdate_toGroupChat/textSeenFlagUpdate_toGroupChat/" + group_id;

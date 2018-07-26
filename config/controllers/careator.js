@@ -1719,7 +1719,7 @@ module.exports.groupText = function (req, res) {
                         "_id": data[0]._id
                     }
                     console.log("findObj: " + JSON.stringify(findObj));
-                    careatorChat.update(findObj, { "$push": { "chats": obj }, "$set":{"groupMembers":groupMembers} }, function (err, updatedData) {
+                    careatorChat.update(findObj, { "$push": { "chats": obj }, "$set": { "groupMembers": groupMembers } }, function (err, updatedData) {
                         if (err) {
                             console.log("err: " + JSON.stringify(err));
                             response = {
@@ -1762,14 +1762,14 @@ module.exports.textSeenFlagUpdate_toGroupChat = function (req, res) {
     console.log("textSeenFlagUpdate_toGroupChat-->");
 
     if (general.emptyCheck(req.params.group_id)) {
-
         var obj = {
             "userId": req.body.seenBy,
             "unseenCount": 0,
         }
         console.log("obj: " + JSON.stringify(obj));
 
-        careatorChat.update({ "group_id": req.params.group_id }, { "$set": obj }, function (err, updateddata) {
+
+        careatorChat.update({ "group_id": req.params.group_id, "groupMembers.userId": req.body.seenBy }, { "$set": { "groupMembers.$.unseenCount": 0 } }, function (err, updateddata) {
             if (err) {
                 console.log("err: " + JSON.stringify(err));
                 response = {

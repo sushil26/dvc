@@ -383,7 +383,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
         });
 
     });
-var w;
+    var w;
     $scope.navigateintoBoth_CVoption = function () {
         console.log("navigateintoBoth_CVoption-->");
         if (!w || w.closed) {
@@ -391,10 +391,10 @@ var w;
         } else {
             console.log('window is already opened');
             $("#closeConfirmationButton").trigger("click");
-
-            // alert("window is already opened");
         }
-        w.focus();
+        $scope.focust = function () {
+            w.focus();
+        }
     }
 
     /* ##### Start: on window only one open tab should be there for this page  ##### */

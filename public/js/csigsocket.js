@@ -297,21 +297,9 @@ function checkCredential() {
         } else {
           // alert(err.responseJSON.message);
           $("#alertButton").trigger("click");
-<<<<<<< HEAD
           var x =
             document.getElementById('alertcontent').innerHTML = err.responseJSON.message + "<br>Please try with correct password or contact Admin";
 
-=======
-          if(err.responseJSON.message == "Password is wrong")
-          {
-            var x= document.getElementById('alertcontent').innerHTML =err.responseJSON.message +"<br>Please try with correct password or contact Admin" ;
-          }
-          else if(err.responseJSON.message == "Profile is not active"){
-            var x= document.getElementById('alertcontent').innerHTML =err.responseJSON.message +"<br>Please contact Admin" ;
-          }
-          
-          
->>>>>>> 802e374f3e3846218d9632114846e78e2fd3f2c5
 
         }
         document.getElementById("videoConferenceUrl").style.display = "none";
@@ -456,21 +444,23 @@ function checkPassword() {
 
 
 
-var ctab;
 
+
+
+var w;
 function chatNavigation() {
   console.log("chatNavigation-->");
-
-  if (!ctab || ctab.closed) {
-    ctab = window.open("https://norecruits.com/careatorApp/#!/dashboard/profile");
+  window.location.href = "https://norecruits.com/careatorApp/#!/dashboard/profile";
+  if (!w || w.closed) {
+    w = window.open("https://norecruits.com/careatorApp/#!/dashboard/profile");
   } else {
     console.log('window is already opened');
+    // alert("window is already opened");
     $("#closeConfirmationButton2").trigger("click");
-    alert("window is already opened");
   }
 
   function focust2() {
-    ctab.focus();
+    w.focus();
   }
 }
 

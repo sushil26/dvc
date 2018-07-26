@@ -844,4 +844,10 @@ careatorApp.controller("chatCtrl", function (
       "display": "none"
     })
   }
+  if (window.matchMedia('(max-width: 768px)').matches) {
+    console.log("<<<<<<<home icon hide>>>>>>>");
+    $("#homeicon").css({
+      "display": "block"
+    })
+  }
 });

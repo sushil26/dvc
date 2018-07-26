@@ -838,7 +838,7 @@ careatorApp.controller("chatCtrl", function (
       scrollTop: 1234567890
     }, 500);
   };
-  if (window.matchMedia('(max-width: 767px)').matches) {
+  if (window.matchMedia('(min-width: 768px)').matches) {
     $("#homeicon").css({
       "display": "none"
     })

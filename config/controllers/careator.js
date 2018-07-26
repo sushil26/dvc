@@ -164,59 +164,66 @@ module.exports.pswdCheck = function (req, res) {
                     res.status(400).send(responseData);
                 } else {
                     if (findData.length > 0) {
+                        if (findData[0].status == 'active') {
+                            if (findData[0].password == password) {
+                                if (findData[0].logout == 'done' && findData[0].login == 'notDone') {
+                                    careatorMaster.update({
+                                        "_id": ObjectId(findData[0]._id),
+                                        "status": "active"
+                                    }, {
+                                            $set: {
+                                                "password": password,
+                                                "invite": [],
+                                                "logout": "notDone",
+                                                "login": "done"
+                                            }
+                                        }, function (err, data) {
+                                            console.log("data: " + JSON.stringify(data));
+                                            if (err) {
+                                                responseData = {
+                                                    status: true,
+                                                    message: "Process not successful"
+                                                };
+                                                res.status(400).send(responseData);
+                                            } else {
+                                                responseData = {
+                                                    status: true,
+                                                    message: "Login Successfully",
+                                                    sessionData: "79ea520a-3e67-11e8-9679-97fa7aeb8e97",
+                                                    data: findData[0]
+                                                };
+                                                console.log("responseData: " + JSON.stringify(responseData));
+                                                res.status(200).send(responseData);
+                                            }
+                                        })
+                                } else {
+                                    responseData = {
+                                        status: false,
+                                        message: "You already logged in, please logout your old session in-order to login",
+                                        data: {
+                                            "id": findData[0]._id
+                                        }
+                                    };
+                                    res.status(400).send(responseData);
+                                }
 
-                        if (findData[0].password == password) {
-                            if (findData[0].logout == 'done' && findData[0].login == 'notDone') {
-                                careatorMaster.update({
-                                    "_id": ObjectId(findData[0]._id),
-                                    "status": "active"
-                                }, {
-                                        $set: {
-                                            "password": password,
-                                            "invite": [],
-                                            "logout": "notDone",
-                                            "login": "done"
-                                        }
-                                    }, function (err, data) {
-                                        console.log("data: " + JSON.stringify(data));
-                                        if (err) {
-                                            responseData = {
-                                                status: true,
-                                                message: "Process not successful"
-                                            };
-                                            res.status(400).send(responseData);
-                                        } else {
-                                            responseData = {
-                                                status: true,
-                                                message: "Login Successfully",
-                                                sessionData: "79ea520a-3e67-11e8-9679-97fa7aeb8e97",
-                                                data: findData[0]
-                                            };
-                                            console.log("responseData: " + JSON.stringify(responseData));
-                                            res.status(200).send(responseData);
-                                        }
-                                    })
                             } else {
                                 responseData = {
                                     status: false,
-                                    message: "You already logged in, please logout your old session in-order to login",
-                                    data: {
-                                        "id": findData[0]._id
-                                    }
+                                    message: "Password is wrong"
                                 };
+                                console.log("responseData: " + JSON.stringify(responseData));
                                 res.status(400).send(responseData);
                             }
-
-                        } else {
+                        }
+                        else {
                             responseData = {
                                 status: false,
-                                message: "Password is wrong"
+                                message: "Profile is not active"
                             };
                             console.log("responseData: " + JSON.stringify(responseData));
                             res.status(400).send(responseData);
                         }
-
-
                     } else {
                         responseData = {
                             status: false,
@@ -1424,7 +1431,7 @@ module.exports.individualText = function (req, res) {
                     setObj = { "senderSeen": "yes", "receiverSeen": "no", "unseenCount": unseenCount }
                 }
                 else {
-                    setObj = {"senderSeen": "no", "receiverSeen": "yes", "unseenCount": unseenCount }
+                    setObj = { "senderSeen": "no", "receiverSeen": "yes", "unseenCount": unseenCount }
                 }
                 console.log("setObj : " + JSON.stringify(setObj));
                 var obj = {

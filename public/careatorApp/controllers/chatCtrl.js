@@ -695,6 +695,7 @@ careatorApp.controller("chatCtrl", function (
         console.log("2)start pushing message");
         var id = data.id;
         console.log("id: " + id);
+        if( data.senderId != userData.userId){
         var obj = {
           "receiverSeen": "yes"
         }
@@ -710,6 +711,7 @@ careatorApp.controller("chatCtrl", function (
             console.log("Sorry: " + data.data.message);
           }
         })
+      }
         $scope.allChat.chats.push({
           senderId: data.senderId,
           senderName: data.senderName,

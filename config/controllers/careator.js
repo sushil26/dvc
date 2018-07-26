@@ -1733,10 +1733,12 @@ module.exports.groupText = function (req, res) {
                             var io = req.app.get('socketio');
                             io.emit('comm_textReceived', {
                                 "id": data[0]._id,
+                                "group_id": obj.group_id,
                                 "senderId": obj.senderId,
                                 "senderName": obj.senderName,
                                 "message": obj.message,
-                                "sendTime": obj.sendTime
+                                "sendTime": obj.sendTime,
+                                
                             }); /* ### Note: Emit message to client ### */
                             response = {
                                 status: true,

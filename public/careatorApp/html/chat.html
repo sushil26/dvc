@@ -128,7 +128,7 @@
                                                         </span>
                                                         <span ng-if="record.receiverId!=userId" class="name-meta">{{record.receiverName}}
                                                         </span>
-                                                        
+
                                                         <span ng-if="record.unseenCount > 0" class="notify"> {{record.unseenCount}}</span>
                                                     </div>
                                                     <div class="col-sm-4 col-xs-4 pull-right sideBar-time">
@@ -341,11 +341,15 @@
                                                 </span>
                                             </div>
                                         </div>
+                                      
+
                                     </div>
                                 </div>
                                 <div class="row reply">
                                     <div class="col-sm-9 col-xs-9 reply-main">
-                                        <textarea data-emojiable="true" class="form-control" rows="1" id="comment" ng-model="typedMessage"></textarea>
+                                       
+
+                                        <textarea class="form-control" rows="1" id="comment" ng-model="typedMessage"></textarea>
                                     </div>
                                     <div class="col-sm-1 col-xs-1 reply-recording">
                                         <!-- <label for="fileselect">

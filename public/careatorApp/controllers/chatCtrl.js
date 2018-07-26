@@ -613,7 +613,7 @@ careatorApp.controller("chatCtrl", function (
               if (tempData.profilePicPath != undefined) {
                 $scope.allChatRecords[x].profilePicPath = tempData.profilePicPath;
               }
-            } else { }
+            } else {}
           } else {
             $scope.allChatRecordsId[x] = $scope.allChatRecords[x]._id;
             var tempData = $scope.allEmpWithIndexById[$scope.allChatRecords[x].receiverId];
@@ -880,4 +880,6 @@ careatorApp.controller("chatCtrl", function (
       "display": "block"
     })
   }
+
+  
 });

@@ -387,9 +387,10 @@ var w;
     $scope.navigateintoBoth_CVoption = function () {
         console.log("navigateintoBoth_CVoption-->");
         if (!w || w.closed) {
-            w = window.open("https://norecruits.com/careator", "_blank");
+            w = window.open("https://norecruits.com/careator");
         } else {
             console.log('window is already opened');
+
             alert("window is already opened");
         }
         w.focus();

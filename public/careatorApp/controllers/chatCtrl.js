@@ -729,7 +729,11 @@ careatorApp.controller("chatCtrl", function (
       }
     }
   });
-  
+  socket.on("comm_textSeenFlagUpdate", function(data){
+    console.log("****comm_textSeenFlagUpdate-->: " + JSON.stringify(data));
+    var index = $scope.allChatRecordsReceiverId.indexOf(data.id);
+    $scope.allChatRecords[index].unseenCount = data.unseenCount;
+  })
   socket.on("comm_aboutRestrictedUpdate", function (data) {
     //update to client about their new restricted users
     console.log("****comm_aboutRestrictedUpdate-->: " + JSON.stringify(data));

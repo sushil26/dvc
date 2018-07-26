@@ -1505,16 +1505,9 @@ module.exports.textSeenFlagUpdate = function (req, res) {
             } else {
                 console.log("updateddata: " + JSON.stringify(updateddata));
                 var io = req.app.get('socketio');
-                io.emit('comm_textReceived', {
-                    "id": data[0]._id,
-                    "senderId": obj.senderId,
-                    "senderName": obj.senderName,
-                    "message": obj.message,
-                    "receiverId": req.body.receiverId,
-                    "sendTime": obj.sendTime,
-                    "senderSeen": setObj.senderSeen,
-                    "receiverSeen": setObj.receiverSeen,
-                    "unseenCount": setObj.unseenCount
+                io.emit('comm_textSeenFlagUpdate', {
+                    "id": id,
+                    "unseenCount": 0
                 }); /* ### Note: Emit message to client ### */
                 response = {
                     status: true,

@@ -1746,7 +1746,7 @@ module.exports.textSeenFlagUpdate_toGroupChat = function (req, res) {
         }
         console.log("obj: " + JSON.stringify(obj));
 
-        careatorChat.update({ "_id": ObjectId(id) }, { "$set": obj }, function (err, updateddata) {
+        careatorChat.update({ "group_id": req.body.group_id }, { "$set": obj }, function (err, updateddata) {
             if (err) {
                 console.log("err: " + JSON.stringify(err));
                 response = {

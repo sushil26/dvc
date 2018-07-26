@@ -1,11 +1,4 @@
-careatorApp.controller("chatCtrl", function (
-  $scope,
-  $rootScope,
-  $filter,
-  $window,
-  careatorHttpFactory,
-  careatorSessionAuth
-) {
+careatorApp.controller("chatCtrl", function ($scope, $rootScope, $filter, $window, careatorHttpFactory, careatorSessionAuth) {
   console.log("chatCtrl==>");
   $scope.count = 0;
   var userData = careatorSessionAuth.getAccess("userData");
@@ -26,7 +19,6 @@ careatorApp.controller("chatCtrl", function (
   console.log(
     " $scope.restrictedArray: " + JSON.stringify($scope.restrictedArray)
   );
-
   var id = userData.userId;
   $scope.getUserDataById = function () {
     console.log("getUserDataById--> ");

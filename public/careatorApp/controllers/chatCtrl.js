@@ -225,7 +225,8 @@ careatorApp.controller("chatCtrl", function (
           $scope.getReceiverDataById($scope.receiverData.receiverId);
 
           var obj = {
-            "receiverSeen": "yes"
+            "receiverSeen": "yes",
+            "seenBy":userData.userId
           }
           console.log("obj: " + JSON.stringify(obj));
           var api = "https://norecruits.com/careator_textSeenFlagUpdate/textSeenFlagUpdate/" + id;
@@ -732,8 +733,15 @@ careatorApp.controller("chatCtrl", function (
   });
   socket.on("comm_textSeenFlagUpdate", function(data){
     console.log("****comm_textSeenFlagUpdate-->: " + JSON.stringify(data));
-    var index = $scope.allChatRecordsId.indexOf(data.id);
-    $scope.allChatRecords[index].unseenCount = data.unseenCount;
+    if(data.seenBy != userData.userId){
+      console.log("Need to update");
+      var index = $scope.allChatRecordsId.indexOf(data.id);
+      $scope.allChatRecords[index].unseenCount = data.unseenCount;
+    }
+    else{
+      console.log("No need to update");
+    }
+    
   })
   socket.on("comm_aboutRestrictedUpdate", function (data) {
     //update to client about their new restricted users

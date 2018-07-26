@@ -633,6 +633,7 @@ careatorApp.controller("chatCtrl", function (
       var checkStatus = careatorHttpFactory.dataValidation(data);
       if (checkStatus) {
         $scope.groupData = data.data.data[0];
+      
         console.log("groupData: " + JSON.stringify($scope.groupData));
         console.log(data.data.message);
       } else {

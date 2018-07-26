@@ -413,8 +413,6 @@
                                 </center>
                             </div>
                         </div>
-
-
                         <div class="modal fade" id="myEmailModal" role="dialog">
                             <div class="modal-dialog">
                                 <center>
@@ -485,7 +483,7 @@
 
                                             </div>
                                             <div class="modal-footer" style="padding-top: 15px;background-image: linear-gradient(to bottom, #202224 0%, #383c3f 100%);">
-                                                <button type="button" onclick="emailInviteSend()" style="background-color: #29b6bd;color:#f1f1f1" class="btn">Invite</button>
+                                                <button type="button"   id="invitebutton" onclick="emailInviteSend()" style="background-color: #29b6bd;color:#f1f1f1" class="btn">Invite</button>
                                             </div>
                                         </div>
                                     </form>
@@ -733,6 +731,11 @@
         $("#careatorPswd").keyup(function (event) {
             if (event.keyCode === 13) {
                 $("#loginsubmit").click();
+            }
+        });
+        $("#emailInvite").keyup(function (event) {
+            if (event.keyCode === 13) {
+                $("#invitebutton").click();
             }
         });
     </script>

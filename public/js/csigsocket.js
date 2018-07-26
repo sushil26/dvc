@@ -297,6 +297,11 @@ function checkCredential() {
         } else {
           // alert(err.responseJSON.message);
           $("#alertButton").trigger("click");
+<<<<<<< HEAD
+          var x =
+            document.getElementById('alertcontent').innerHTML = err.responseJSON.message + "<br>Please try with correct password or contact Admin";
+
+=======
           if(err.responseJSON.message == "Password is wrong")
           {
             var x= document.getElementById('alertcontent').innerHTML =err.responseJSON.message +"<br>Please try with correct password or contact Admin" ;
@@ -306,6 +311,7 @@ function checkCredential() {
           }
           
           
+>>>>>>> 802e374f3e3846218d9632114846e78e2fd3f2c5
 
         }
         document.getElementById("videoConferenceUrl").style.display = "none";
@@ -448,18 +454,24 @@ function checkPassword() {
   console.log("<--checkPassword");
 }
 
-var w;
+
+
+var ctab;
 
 function chatNavigation() {
   console.log("chatNavigation-->");
-  window.location.href = "https://norecruits.com/careatorApp/#!/dashboard/profile";
-  // if (!w || w.closed) {
-  //   w = window.open("https://norecruits.com/careatorApp/#!/dashboard/profile","_blank","menubar = 0, scrollbars = 0");
-  // } else {
-  //   console.log('window is already opened');
-  //   alert("window is already opened");
-  // }
-  // w.focus();
+
+  if (!ctab || ctab.closed) {
+    ctab = window.open("https://norecruits.com/careatorApp/#!/dashboard/profile");
+  } else {
+    console.log('window is already opened');
+    $("#closeConfirmationButton2").trigger("click");
+    alert("window is already opened");
+  }
+
+  function focust2() {
+    ctab.focus();
+  }
 }
 
 
@@ -506,7 +518,7 @@ function emailInviteSend() {
       console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
       // alert(err.responseJSON.message);
       $("#alertButton").trigger("click");
-      document.getElementById('alertcontent').innerHTML =err.responseJSON.message;
+      document.getElementById('alertcontent').innerHTML = err.responseJSON.message;
     }
   });
 
@@ -1137,7 +1149,7 @@ signaling_socket.on("addPeer", function (config) {
           },
           function () {
             $("#alertButton").trigger("click");
-            document.getElementById('alertcontent').innerHTML ="Offer setLocalDescription failed";
+            document.getElementById('alertcontent').innerHTML = "Offer setLocalDescription failed";
 
             // alert("Offer setLocalDescription failed!");
           }
@@ -1295,7 +1307,7 @@ signaling_socket.on("authorizedForClose", function (config) {
 
     // alert("Session creater removed you from conference");
     $("#alertButton").trigger("click");
-    document.getElementById('alertcontent').innerHTML ="Session creater removed you from conference";
+    document.getElementById('alertcontent').innerHTML = "Session creater removed you from conference";
     window.location.href = "https://norecruits.com";
   }
 
@@ -1457,7 +1469,7 @@ function setup_local_media(callback, errorback) {
       console.log("Access denied for audio/video");
       // alert("You chose not to provide access to the camera/microphone, demo will not work.");
       $("#alertButton").trigger("click");
-      document.getElementById('alertcontent').innerHTML ="You choose not to provide access to the camera/microphone, Video will not work";
+      document.getElementById('alertcontent').innerHTML = "You choose not to provide access to the camera/microphone, Video will not work";
 
       if (errorback) errorback();
     }
@@ -1634,7 +1646,7 @@ function setup_local_media(callback, errorback) {
                     /* user denied access to a/v */
                     console.log("Access denied for audio/video");
                     $("#alertButton").trigger("click");
-                    document.getElementById('alertcontent').innerHTML ="You chose not to provide access to the camera/microphone, Video will not work";
+                    document.getElementById('alertcontent').innerHTML = "You chose not to provide access to the camera/microphone, Video will not work";
                     // alert(
                     //   "You chose not to provide access to the camera/microphone, Video will not work."
                     // );

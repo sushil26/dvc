@@ -302,7 +302,7 @@ function checkCredential() {
             var x= document.getElementById('alertcontent').innerHTML =err.responseJSON.message +"<br>Please try with correct password or contact Admin" ;
           }
           else if(err.responseJSON.message == "Profile is not active"){
-            var x= document.getElementById('alertcontent').innerHTML =err.responseJSON.message +"<br>Please try contact Admin" ;
+            var x= document.getElementById('alertcontent').innerHTML =err.responseJSON.message +"<br>Please contact Admin" ;
           }
           
           

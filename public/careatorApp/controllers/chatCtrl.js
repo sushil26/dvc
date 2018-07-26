@@ -17,6 +17,7 @@ careatorApp.controller("chatCtrl", function (
   console.log("userData: " + JSON.stringify(userData));
   $scope.allEmpWithIndexById = []; /* ### Note: Will keep all employee indexed by employee id ### */
   $scope.allChatRecordsId = []; /* ### Note: Will keep all receiver   ### */
+  $scope.allGroupIds = []; /* ### Note: Will keep all GroupIds   ### */
   $scope.allGroupAndIndividual = []; /* ### Note:$scope.allGroupAndIndividual contains All employee list(who having chat rights) and group list(which are included by login person)   ### */
   var restrictedUser = userData.restrictedTo;
   $scope.restrictedArray = restrictedUser;
@@ -626,7 +627,7 @@ careatorApp.controller("chatCtrl", function (
         for (var x = 0; x < $scope.allGroup.length; x++) {
           console.log(" $scope.allGroup.length: " + $scope.allGroup.length);
            console.log("  $scope.chatedGroup_records.length: " + $scope.chatedGroup_records.length);
-          // $scope.allGroupIds[$scope.chatedGroup_records.length] = $scope.allGroup[x]._id;
+          $scope.allGroupIds[$scope.chatedGroup_records.length] = $scope.allGroup[x]._id;
           $scope.chatedGroup_records.push($scope.allGroup[x]);
         }
       } else {

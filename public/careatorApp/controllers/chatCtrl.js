@@ -695,6 +695,7 @@ careatorApp.controller("chatCtrl", function (
         console.log("2)start pushing message");
         var id = data.id;
         console.log("id: " + id);
+        if( data.senderId != userData.userId){
         var obj = {
           "receiverSeen": "yes"
         }
@@ -710,6 +711,7 @@ careatorApp.controller("chatCtrl", function (
             console.log("Sorry: " + data.data.message);
           }
         })
+      }
         $scope.allChat.chats.push({
           senderId: data.senderId,
           senderName: data.senderName,
@@ -717,14 +719,14 @@ careatorApp.controller("chatCtrl", function (
           sendTime: data.sendTime
         });
         $scope.scrollDown();
-      } else if ( $scope.individualData==undefined || $scope.individualData._id != data.id) {
+      } else if ( $scope.individualData==undefined || $scope.allChatRecordsId.indexOf(data.id)>=0) {
         console.log("Notify the Unseen message count: "+JSON.stringify(data));
         // if (data.senderId != userData.userId) {
         //   var index = $scope.allChatRecordsId.indexOf(data.id);
         //   $scope.allChatRecords[index].unseenCount = data.unseenCount;
         // }
         // else
-         if (data.receiverId != userData.userId) {
+         if (data.receiverId == userData.userId) {
           var index = $scope.allChatRecordsId.indexOf(data.id);
           $scope.allChatRecords[index].unseenCount = data.unseenCount;
         }
@@ -736,12 +738,12 @@ careatorApp.controller("chatCtrl", function (
     console.log("****comm_textSeenFlagUpdate-->: " + JSON.stringify(data));
     console.log("$scope.allChatRecordsId: " + JSON.stringify($scope.allChatRecordsId));
     console.log("$scope.allChatRecordsIdindexOf(data.id): " + $scope.allChatRecordsId.indexOf(data.id));
-    if(($scope.allChatRecordsId.indexOf(data.id)>=0) && data.seenBy != userData.userId){
+    if(($scope.allChatRecordsId.indexOf(data.id)>=0) && data.seenBy == userData.userId){
       console.log("Need to update");
       var index = $scope.allChatRecordsId.indexOf(data.id);
       $scope.allChatRecords[index].unseenCount = data.unseenCount;
     }
-    else if(($scope.allChatRecordsId.indexOf(data.id)>=0) && data.seenBy == userData.userId){
+    else if(($scope.allChatRecordsId.indexOf(data.id)>=0) && data.seenBy != userData.userId){
       console.log("No need to update");
     }
     

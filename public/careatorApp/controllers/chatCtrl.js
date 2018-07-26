@@ -174,8 +174,9 @@ careatorApp.controller("chatCtrl", function (
               groupName: $scope.individualData.groupName,
               senderId: userData.userId,
               senderName: userData.userName,
-              members:$scope.individualData.members
+              groupMembers: $scope.individualData.groupMembers
             };
+            
           } else {
             $scope.individualData = data.data.data[0];
             console.log("$scope.allChat: " + JSON.stringify($scope.allChat));

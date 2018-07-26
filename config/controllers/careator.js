@@ -1643,7 +1643,7 @@ module.exports.groupText = function (req, res) {
                     var obj = {
                         "group_id": req.body.group_id,
                         "groupName": req.body.groupName,
-                        "members":req.body.members,
+                        "groupMembers":req.body.groupMembers,
                         "chats": [{
                             "senderId": req.body.senderId,
                             "senderName": req.body.senderName,

@@ -1421,6 +1421,7 @@ module.exports.individualText = function (req, res) {
                 })
             } else {
                 var unseenCount, setObj;
+                
                 if (data[0].unseenCount != undefined) {
                     unseenCount = data[0].unseenCount + 1;
                 }

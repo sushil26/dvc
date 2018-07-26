@@ -839,6 +839,7 @@ careatorApp.controller("chatCtrl", function (
     }, 500);
   };
   if (window.matchMedia('(min-width: 768px)').matches) {
+    console.log("<<<<<<<home icon hide>>>>>>>");
     $("#homeicon").css({
       "display": "none"
     })

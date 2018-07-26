@@ -14,8 +14,6 @@
  * Name:jquery.mb.emoticons
  * Version: 1.0
  */
-
-
 (function($) {
 	jQuery.mbEmoticons= {
 		author:"Matteo Bicocchi",
@@ -165,7 +163,6 @@
 			});
 			return this;
 		},
-
 		openSmileBox:function(){
 			var textarea = $(this);
 			var smilesBox= textarea.data("smilesBox");
@@ -176,14 +173,12 @@
 				$(document).one("click",function(){textarea.mbCloseSmilesBox();});
 			},100);
 		},
-
 		removeSmilesBox:function(){
 			$(this).data("smilesIsOpen",false);
 			var smilesBox= $(this).data("smilesBox");
 			smilesBox.fadeOut(500);
 		}
 	};
-
 	jQuery.fn.insertAtCaret = function (tagName) {
 		return this.each(function(){
 			if (document.selection) {
@@ -208,7 +203,6 @@
 			}
 		});
 	};
-
 	jQuery.fn.caret = function(pos) {
 		var target = this[0];
 		if (arguments.length == 0) { //get

@@ -86,7 +86,6 @@ module.exports.pswdCheckForSesstion = function (req, res) {
     console.log("req.body.password: " + req.body.password + " req.body.careatorEmail: " + req.body.careatorEmail);
     var password = req.body.password;
     var careatorEmail = req.body.careatorEmail;
-    var emailSplit = careatorEmail.split('@');
     if (general.emptyCheck(password) && general.emptyCheck(careatorEmail)) {
 
         var obj = {

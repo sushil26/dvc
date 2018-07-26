@@ -734,12 +734,12 @@ careatorApp.controller("chatCtrl", function (
   });
   socket.on("comm_textSeenFlagUpdate", function(data){
     console.log("****comm_textSeenFlagUpdate-->: " + JSON.stringify(data));
-    if(data.seenBy != userData.userId){
+    if(($scope.allChatRecordsId[data.id]>=0) && data.seenBy != userData.userId){
       console.log("Need to update");
       var index = $scope.allChatRecordsId.indexOf(data.id);
       $scope.allChatRecords[index].unseenCount = data.unseenCount;
     }
-    else{
+    else if(($scope.allChatRecordsId[data.id]>=0) && data.seenBy == userData.userId){
       console.log("No need to update");
     }
     

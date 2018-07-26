@@ -16,7 +16,7 @@ careatorApp.controller("chatCtrl", function (
   }
   console.log("userData: " + JSON.stringify(userData));
   $scope.allEmpWithIndexById = []; /* ### Note: Will keep all employee indexed by employee id ### */
-  $scope.allChatRecordsReceiverId = []; /* ### Note: Will keep all receiver   ### */
+  $scope.allChatRecordsId = []; /* ### Note: Will keep all receiver   ### */
   $scope.allGroupAndIndividual = []; /* ### Note:$scope.allGroupAndIndividual contains All employee list(who having chat rights) and group list(which are included by login person)   ### */
   var restrictedUser = userData.restrictedTo;
   $scope.restrictedArray = restrictedUser;
@@ -587,7 +587,7 @@ careatorApp.controller("chatCtrl", function (
         console.log(data.data.message);
         for (var x = 0; x < $scope.allChatRecords.length; x++) {
           if ($scope.allChatRecords[x].senderId != userData.userId) {
-            $scope.allChatRecordsReceiverId[x] = $scope.allChatRecords[x]._id;
+            $scope.allChatRecordsId[x] = $scope.allChatRecords[x]._id;
             var tempData = $scope.allEmpWithIndexById[$scope.allChatRecords[x].senderId];
             //console.log("tempData: "+JSON.stringify(tempData));
             if (tempData != undefined) {
@@ -596,7 +596,7 @@ careatorApp.controller("chatCtrl", function (
               }
             } else { }
           } else {
-            $scope.allChatRecordsReceiverId[x] = $scope.allChatRecords[x]._id;
+            $scope.allChatRecordsId[x] = $scope.allChatRecords[x]._id;
             var tempData = $scope.allEmpWithIndexById[$scope.allChatRecords[x].receiverId];
             console.log("tempData: " + JSON.stringify(tempData));
             if (tempData != undefined) {
@@ -717,12 +717,13 @@ careatorApp.controller("chatCtrl", function (
         $scope.scrollDown();
       } else if ( $scope.individualData==undefined || $scope.individualData._id != data.id) {
         console.log("Notify the Unseen message count: "+JSON.stringify(data));
-        if (data.senderId != userData.userId) {
-          var index = $scope.allChatRecordsReceiverId.indexOf(data.id);
-          $scope.allChatRecords[index].unseenCount = data.unseenCount;
-        }
-        else if (data.receiverId != userData.userId) {
-          var index = $scope.allChatRecordsReceiverId.indexOf(data.id);
+        // if (data.senderId != userData.userId) {
+        //   var index = $scope.allChatRecordsId.indexOf(data.id);
+        //   $scope.allChatRecords[index].unseenCount = data.unseenCount;
+        // }
+        // else
+         if (data.receiverId != userData.userId) {
+          var index = $scope.allChatRecordsId.indexOf(data.id);
           $scope.allChatRecords[index].unseenCount = data.unseenCount;
         }
 
@@ -731,7 +732,7 @@ careatorApp.controller("chatCtrl", function (
   });
   socket.on("comm_textSeenFlagUpdate", function(data){
     console.log("****comm_textSeenFlagUpdate-->: " + JSON.stringify(data));
-    var index = $scope.allChatRecordsReceiverId.indexOf(data.id);
+    var index = $scope.allChatRecordsId.indexOf(data.id);
     $scope.allChatRecords[index].unseenCount = data.unseenCount;
   })
   socket.on("comm_aboutRestrictedUpdate", function (data) {

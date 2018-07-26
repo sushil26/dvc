@@ -1,8 +1,6 @@
 careatorApp.controller("chatCtrl", function (
   $scope,
   $rootScope,
-  $filter,
-  $window,
   careatorHttpFactory,
   careatorSessionAuth
 ) {
@@ -217,7 +215,7 @@ careatorApp.controller("chatCtrl", function (
           $scope.allChat = data.data.data;
           $scope.individualData = data.data.data;
           console.log("$scope.allChat: " + JSON.stringify($scope.allChat));
-          console.log("$scope.individualData : " + JSON.stringify($scope.individualData) );
+          console.log("$scope.individualData : " + JSON.stringify($scope.individualData));
           $scope.receiverData = {
             senderId: userData.userId,
             senderName: userData.userName
@@ -232,7 +230,7 @@ careatorApp.controller("chatCtrl", function (
           }
           console.log(" $scope.receiverData : " + JSON.stringify($scope.receiverData));
           $scope.getReceiverDataById($scope.receiverData.receiverId);
-          
+
           var obj = {
             "receiverSeen": "yes"
           }
@@ -244,11 +242,10 @@ careatorApp.controller("chatCtrl", function (
             var checkStatus = careatorHttpFactory.dataValidation(data);
             if (checkStatus) {
               console.log("Remove notification for this chat: " + data.data.message);
-            }
-            else {
+            } else {
               console.log("Sorry: " + data.data.message);
             }
-          })  
+          })
         } else {
           console.log("Sorry");
           console.log(data.data.message);
@@ -490,10 +487,9 @@ careatorApp.controller("chatCtrl", function (
             console.log(data.data.message);
           }
         });
-      } else if ( 
-        ($scope.restrictedArray !=undefined && $scope.restrictedArray.indexOf($scope.receiverData.receiverId) >= 0) ||
-        ($scope.restrictedArray !=undefined || $scope.receiverData.receiverId == $rootScope.adminId))
-         {
+      } else if (
+        ($scope.restrictedArray != undefined && $scope.restrictedArray.indexOf($scope.receiverData.receiverId) >= 0) ||
+        ($scope.restrictedArray != undefined || $scope.receiverData.receiverId == $rootScope.adminId)) {
         obj = {
           senderId: userData.userId,
           receiverId: $scope.receiverData.receiverId,
@@ -617,8 +613,7 @@ careatorApp.controller("chatCtrl", function (
                 $scope.allChatRecords[x].profilePicPath =
                   tempData.profilePicPath;
               }
-            } else {
-            }
+            } else {}
           } else {
             var tempData =
               $scope.allEmpWithIndexById[$scope.allChatRecords[x].receiverId];
@@ -628,8 +623,7 @@ careatorApp.controller("chatCtrl", function (
                 $scope.allChatRecords[x].profilePicPath =
                   tempData.profilePicPath;
               }
-            } else {
-            }
+            } else {}
           }
         }
         $scope.chatedGroup_records =
@@ -712,7 +706,7 @@ careatorApp.controller("chatCtrl", function (
       });
       $scope.getChatRecords();
     } else if (data.freshInsert == undefined) {
-      console.log("$scope.individualData: "+JSON.stringify($scope.individualData));
+      console.log("$scope.individualData: " + JSON.stringify($scope.individualData));
       if ($scope.individualData._id == data.id) {
         console.log("2)start pushing message");
         var id = data.id;
@@ -728,8 +722,7 @@ careatorApp.controller("chatCtrl", function (
           var checkStatus = careatorHttpFactory.dataValidation(data);
           if (checkStatus) {
             console.log("Message: " + data.data.message);
-          }
-          else {
+          } else {
             console.log("Sorry: " + data.data.message);
           }
         })
@@ -740,8 +733,7 @@ careatorApp.controller("chatCtrl", function (
           sendTime: data.sendTime
         });
         $scope.scrollDown();
-      }
-      else if ($scope.individualData._id != data.id) {
+      } else if ($scope.individualData._id != data.id) {
         console.log("Notify the Unseen message count");
       }
     }
@@ -837,21 +829,18 @@ careatorApp.controller("chatCtrl", function (
     }
   });
 
-  // $(".reply-main").focus(function () {
-
-  // })
-
   ///Auto Scroll Down Chat////////////////
   $scope.scrollDown = function () {
     var clientHeight = document.getElementById('pulldown').scrollHeight;
     console.log("clientHeight" + clientHeight);
     console.log("scrollDown-->");
-    $("#pulldown").animate({ scrollTop: 1234567890 }, 500);
-    // $("#pulldown").animate(
-    //   {
-    //     scrollTop: $("#pulldown").prop("scrollHeight")
-    //   },
-    //   500
-    // );
+    $("#pulldown").animate({
+      scrollTop: 1234567890
+    }, 500);
   };
+  if (window.matchMedia('(max-width: 767px)').matches) {
+    $("#homeicon").css({
+      "display": "none"
+    })
+  }
 });

@@ -624,7 +624,8 @@ careatorApp.controller("chatCtrl", function (
         }
         $scope.chatedGroup_records = $scope.allChatRecords; /* ### Note: $scope.chatedGroup_records is Chat(chated records) and group(group records) records storage  ### */
         for (var x = 0; x < $scope.allGroup.length; x++) {
-          console.log(" $scope.allGroup.length: " + $scope.allGroup.length + "  $scope.chatedGroup_records.length: " + $scope.chatedGroup_records.length);
+          console.log(" $scope.allGroup.length: " + $scope.allGroup.length);
+          console.log("  $scope.chatedGroup_records.length: " + $scope.chatedGroup_records.length);
           $scope.allGroupIds[$scope.chatedGroup_records.length] = $scope.allGroup[x]._id;
           $scope.chatedGroup_records.push($scope.allGroup[x]);
         }

@@ -1782,7 +1782,7 @@ module.exports.textSeenFlagUpdate_toGroupChat = function (req, res) {
                 console.log("updateddata: " + JSON.stringify(updateddata));
                 var io = req.app.get('socketio');
                 io.emit('comm_textSeenFlagUpdate', {
-                    "id": id,
+                    "id": req.params.group_id,
                     "seenBy": req.body.seenBy,
                     "unseenCount": 0
                 }); /* ### Note: Emit message to client ### */

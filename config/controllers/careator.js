@@ -1421,7 +1421,7 @@ module.exports.individualText = function (req, res) {
                 })
             } else {
                 var unseenCount, setObj;
-                
+
                 if (data[0].unseenCount != undefined) {
                     unseenCount = data[0].unseenCount + 1;
                 }
@@ -1429,7 +1429,7 @@ module.exports.individualText = function (req, res) {
                     unseenCount = 1;
                 }
                 // if (data[0].senderId == req.body.senderId) {
-                    setObj = { "senderSeen": "yes", "receiverSeen": "no", "unseenCount": unseenCount }
+                setObj = { "senderSeen": "yes", "receiverSeen": "no", "unseenCount": unseenCount }
                 // }
                 // else {
                 //     setObj = { "senderSeen": "no", "receiverSeen": "yes", "unseenCount": unseenCount }
@@ -1572,7 +1572,6 @@ module.exports.individualTextReadById = function (req, res) {
     }
 
 }
-
 module.exports.groupTextReadByGroupId = function (req, res) {
     console.log("groupTextReadByGroupId-->");
     var date = new Date();
@@ -1628,10 +1627,7 @@ module.exports.groupText = function (req, res) {
     }
     console.log("obj : " + JSON.stringify(obj));
     if (general.emptyCheck(req.body.group_id)) {
-        careatorChat.find({
-            "group_id": obj.group_id,
-            "groupName": obj.groupName
-        }).toArray(function (err, data) {
+        careatorChat.find({ "group_id": obj.group_id, "groupName": obj.groupName }).toArray(function (err, data) {
             if (err) {
                 console.log("err: " + JSON.stringify(err));
                 response = {
@@ -1647,6 +1643,7 @@ module.exports.groupText = function (req, res) {
                     var obj = {
                         "group_id": req.body.group_id,
                         "groupName": req.body.groupName,
+                        "visitingDetails":[],
                         "chats": [{
                             "senderId": req.body.senderId,
                             "senderName": req.body.senderName,
@@ -1686,6 +1683,7 @@ module.exports.groupText = function (req, res) {
                         }
                     })
                 } else {
+                    
                     var obj = {
                         "senderId": req.body.senderId,
                         "senderName": req.body.senderName,
@@ -1693,15 +1691,12 @@ module.exports.groupText = function (req, res) {
                         "sendTime": date
                     }
                     console.log("obj : " + JSON.stringify(obj));
+                    console.log("visitingDetails : " + JSON.stringify(visitingDetails));
                     var findObj = {
                         "_id": data[0]._id
                     }
                     console.log("findObj: " + JSON.stringify(findObj));
-                    careatorChat.update(findObj, {
-                        "$push": {
-                            "chats": obj
-                        }
-                    }, function (err, updatedData) {
+                    careatorChat.update(findObj, {"$push": {"chats": obj} }, function (err, updatedData) {
                         if (err) {
                             console.log("err: " + JSON.stringify(err));
                             response = {
@@ -1729,6 +1724,51 @@ module.exports.groupText = function (req, res) {
                         }
                     })
                 }
+            }
+        })
+    } else {
+        console.log("Epty value found");
+        response = {
+            status: false,
+            message: "empty value found"
+        };
+        res.status(400).send(response);
+    }
+}
+module.exports.textSeenFlagUpdate_toGroupChat = function (req, res) {
+    console.log("textSeenFlagUpdate_toGroupChat-->");
+
+    if (general.emptyCheck(req.body.group_id)) {
+
+        var obj = {
+            "userId": req.body.seenBy,
+            "unseenCount": 0,
+        }
+        console.log("obj: " + JSON.stringify(obj));
+
+        careatorChat.update({ "_id": ObjectId(id) }, { "$set": obj }, function (err, updateddata) {
+            if (err) {
+                console.log("err: " + JSON.stringify(err));
+                response = {
+                    status: false,
+                    message: "Unsucessfully Updated data",
+                    data: err
+                };
+                res.status(400).send(response);
+            } else {
+                console.log("updateddata: " + JSON.stringify(updateddata));
+                var io = req.app.get('socketio');
+                io.emit('comm_textSeenFlagUpdate', {
+                    "id": id,
+                    "seenBy": req.body.seenBy,
+                    "unseenCount": 0
+                }); /* ### Note: Emit message to client ### */
+                response = {
+                    status: true,
+                    message: "Sucessfully Updated data",
+                    data: updateddata
+                };
+                res.status(200).send(response);
             }
         })
     } else {

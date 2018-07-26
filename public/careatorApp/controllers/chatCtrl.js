@@ -768,6 +768,8 @@ careatorApp.controller("chatCtrl", function (
             userName: localStorage.getItem("userName"),
             empId: localStorage.getItem("empId"),
             userId: localStorage.getItem("userId"),
+            userPic: localStorage.getItem("profilePicPath"),
+
             restrictedTo: restrictedArray
           };
           if (localStorage.getItem("videoRights") == "yes") {

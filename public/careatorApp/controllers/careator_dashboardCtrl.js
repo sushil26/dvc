@@ -392,10 +392,12 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
             console.log('window is already opened');
             $("#closeConfirmationButton").trigger("click");
         }
+        
         $scope.focust = function () {
             w.focus();
         }
     }
+   
 
     /* ##### Start: on window only one open tab should be there for this page  ##### */
     // if (+localStorage.tabCount > 0) 

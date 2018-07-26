@@ -1484,7 +1484,7 @@ module.exports.textSeenFlagUpdate = function (req, res) {
         }
         console.log("obj: " + JSON.stringify(obj));
 
-        careatorChat.update({ "_id": id }, { "$set": obj }, function (err, updateddata) {
+        careatorChat.update({ "_id": ObjectId(id) }, { "$set": obj }, function (err, updateddata) {
             if (err) {
                 console.log("err: " + JSON.stringify(err));
                 response = {

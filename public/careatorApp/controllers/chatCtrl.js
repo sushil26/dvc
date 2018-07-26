@@ -1,4 +1,9 @@
-careatorApp.controller("chatCtrl", function ($scope, $rootScope, $filter, $window, careatorHttpFactory, careatorSessionAuth) {
+careatorApp.controller("chatCtrl", function (
+  $scope,
+  $rootScope,
+  careatorHttpFactory,
+  careatorSessionAuth
+) {
   console.log("chatCtrl==>");
   $scope.count = 0;
   var userData = careatorSessionAuth.getAccess("userData");
@@ -11,6 +16,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, $filter, $windo
   }
   console.log("userData: " + JSON.stringify(userData));
   $scope.allEmpWithIndexById = []; /* ### Note: Will keep all employee indexed by employee id ### */
+  $scope.allChatRecordsReceiverId = []; /* ### Note: Will keep all receiver   ### */
   $scope.allGroupAndIndividual = []; /* ### Note:$scope.allGroupAndIndividual contains All employee list(who having chat rights) and group list(which are included by login person)   ### */
   var restrictedUser = userData.restrictedTo;
   $scope.restrictedArray = restrictedUser;
@@ -148,15 +154,12 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, $filter, $windo
         width: "100%"
       });
     }
-
     $scope.selectedType = type;
     console.log("  $scope.selectedType: " + $scope.selectedType);
     console.log("id: " + id);
     if ($scope.selectedType == "group") {
       var group_id = id;
-      var api =
-        "https://norecruits.com/careator_groupTextRead/groupTextReadByGroupId/" +
-        group_id;
+      var api = "https://norecruits.com/careator_groupTextRead/groupTextReadByGroupId/" + group_id;
       console.log("api: " + api);
       careatorHttpFactory.get(api).then(function (data) {
         console.log("data--" + JSON.stringify(data.data));
@@ -184,13 +187,9 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, $filter, $windo
               senderName: userData.userName
             };
           }
-          console.log(
-            "$scope.individualData : " + JSON.stringify($scope.individualData)
-          );
+          console.log("$scope.individualData : " + JSON.stringify($scope.individualData));
 
-          console.log(
-            "sendGroupText_withData-->: " +
-            JSON.stringify($scope.sendGroupText_withData)
+          console.log("sendGroupText_withData-->: " + JSON.stringify($scope.sendGroupText_withData)
           );
 
           // $scope.readText();
@@ -209,7 +208,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, $filter, $windo
           $scope.allChat = data.data.data;
           $scope.individualData = data.data.data;
           console.log("$scope.allChat: " + JSON.stringify($scope.allChat));
-          console.log("$scope.individualData : " + JSON.stringify($scope.individualData) );
+          console.log("$scope.individualData : " + JSON.stringify($scope.individualData));
           $scope.receiverData = {
             senderId: userData.userId,
             senderName: userData.userName
@@ -224,7 +223,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, $filter, $windo
           }
           console.log(" $scope.receiverData : " + JSON.stringify($scope.receiverData));
           $scope.getReceiverDataById($scope.receiverData.receiverId);
-          
+
           var obj = {
             "receiverSeen": "yes"
           }
@@ -236,11 +235,10 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, $filter, $windo
             var checkStatus = careatorHttpFactory.dataValidation(data);
             if (checkStatus) {
               console.log("Remove notification for this chat: " + data.data.message);
-            }
-            else {
+            } else {
               console.log("Sorry: " + data.data.message);
             }
-          })  
+          })
         } else {
           console.log("Sorry");
           console.log(data.data.message);
@@ -320,16 +318,10 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, $filter, $windo
         receiverId: $scope.individualData._id,
         receiverName: $scope.individualData.name
       };
-      console.log(
-        " $scope.receiverData : " + JSON.stringify($scope.receiverData)
-      );
+      console.log(" $scope.receiverData : " + JSON.stringify($scope.receiverData));
       var sId = userData.userId;
       var rId = $scope.individualData._id;
-      var api =
-        "https://norecruits.com/careator_individualTextRead/individualTextReadById/" +
-        sId +
-        "/" +
-        rId;
+      var api = "https://norecruits.com/careator_individualTextRead/individualTextReadById/" + sId + "/" + rId;
       console.log("api: " + api);
       careatorHttpFactory.get(api).then(function (data) {
         console.log("data--" + JSON.stringify(data.data));
@@ -342,9 +334,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, $filter, $windo
           } else {
             $scope.individualData = $scope.allChat;
           }
-          console.log(
-            " $scope.individualData : " + JSON.stringify($scope.individualData)
-          );
+          console.log(" $scope.individualData : " + JSON.stringify($scope.individualData));
           console.log(data.data.message);
           $scope.getChatRecords();
         } else {
@@ -482,10 +472,9 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, $filter, $windo
             console.log(data.data.message);
           }
         });
-      } else if ( 
-        ($scope.restrictedArray !=undefined && $scope.restrictedArray.indexOf($scope.receiverData.receiverId) >= 0) ||
-        ($scope.restrictedArray !=undefined || $scope.receiverData.receiverId == $rootScope.adminId))
-         {
+      } else if (
+        ($scope.restrictedArray != undefined && $scope.restrictedArray.indexOf($scope.receiverData.receiverId) >= 0) ||
+        ($scope.restrictedArray != undefined || $scope.receiverData.receiverId == $rootScope.adminId)) {
         obj = {
           senderId: userData.userId,
           receiverId: $scope.receiverData.receiverId,
@@ -500,9 +489,6 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, $filter, $windo
           if (checkStatus) {
             console.log("data.data.data: " + JSON.stringify(data.data.data));
             console.log(data.data.message);
-
-
-
           } else {
             console.log("Sorry");
             console.log(data.data.message);
@@ -588,8 +574,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, $filter, $windo
   $scope.getChatRecords = function () {
     console.log("getChatRecords-->");
     var id = $scope.userId;
-    var api =
-      "https://norecruits.com/careator_getChatListRecordById/getChatListRecordById/" +
+    var api = "https://norecruits.com/careator_getChatListRecordById/getChatListRecordById/" +
       id;
     console.log("api: " + api);
     careatorHttpFactory.get(api).then(function (data) {
@@ -601,26 +586,24 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, $filter, $windo
         console.log(data.data.message);
         for (var x = 0; x < $scope.allChatRecords.length; x++) {
           if ($scope.allChatRecords[x].senderId != userData.userId) {
-            var tempData =
-              $scope.allEmpWithIndexById[$scope.allChatRecords[x].senderId];
+            $scope.allChatRecordsReceiverId[x] = $scope.allChatRecords[x].senderId;
+            var tempData = $scope.allEmpWithIndexById[$scope.allChatRecords[x].senderId];
             //console.log("tempData: "+JSON.stringify(tempData));
             if (tempData != undefined) {
               if (tempData.profilePicPath != undefined) {
-                $scope.allChatRecords[x].profilePicPath =
-                  tempData.profilePicPath;
+                $scope.allChatRecords[x].profilePicPath = tempData.profilePicPath;
               }
-            } else {
-            }
+            } else { }
           } else {
-            var tempData =
-              $scope.allEmpWithIndexById[$scope.allChatRecords[x].receiverId];
+            $scope.allChatRecordsReceiverId[x] = $scope.allChatRecords[x].receiverId;
+            var tempData = $scope.allEmpWithIndexById[$scope.allChatRecords[x].receiverId];
             console.log("tempData: " + JSON.stringify(tempData));
             if (tempData != undefined) {
               if (tempData.profilePicPath != undefined) {
-                $scope.allChatRecords[x].profilePicPath =
-                  tempData.profilePicPath;
+                $scope.allChatRecords[x].profilePicPath = tempData.profilePicPath;
               }
             } else {
+
             }
           }
         }
@@ -704,7 +687,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, $filter, $windo
       });
       $scope.getChatRecords();
     } else if (data.freshInsert == undefined) {
-      console.log("$scope.individualData: "+JSON.stringify($scope.individualData));
+      console.log("$scope.individualData: " + JSON.stringify($scope.individualData));
       if ($scope.individualData._id == data.id) {
         console.log("2)start pushing message");
         var id = data.id;
@@ -720,8 +703,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, $filter, $windo
           var checkStatus = careatorHttpFactory.dataValidation(data);
           if (checkStatus) {
             console.log("Message: " + data.data.message);
-          }
-          else {
+          } else {
             console.log("Sorry: " + data.data.message);
           }
         })
@@ -732,9 +714,17 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, $filter, $windo
           sendTime: data.sendTime
         });
         $scope.scrollDown();
-      }
-      else if ($scope.individualData._id != data.id) {
+      } else if ($scope.individualData._id != data.id) {
         console.log("Notify the Unseen message count");
+        if (data.senderId != userData.userId) {
+          var index = $scope.allChatRecordsReceiverId.indexOf(data.senderId);
+          $scope.allChatRecords[index].unseenCount = data.unseenCount;
+        }
+        else if (data.receiverId != userData.userId) {
+          var index = $scope.allChatRecordsReceiverId.indexOf(data.receiverId);
+          $scope.allChatRecords[index].unseenCount = data.unseenCount;
+        }
+
       }
     }
   });
@@ -768,6 +758,8 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, $filter, $windo
             userName: localStorage.getItem("userName"),
             empId: localStorage.getItem("empId"),
             userId: localStorage.getItem("userId"),
+            userPic: localStorage.getItem("profilePicPath"),
+
             restrictedTo: restrictedArray
           };
           if (localStorage.getItem("videoRights") == "yes") {
@@ -829,21 +821,25 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, $filter, $windo
     }
   });
 
-  // $(".reply-main").focus(function () {
-
-  // })
-
   ///Auto Scroll Down Chat////////////////
   $scope.scrollDown = function () {
     var clientHeight = document.getElementById('pulldown').scrollHeight;
     console.log("clientHeight" + clientHeight);
     console.log("scrollDown-->");
-    $("#pulldown").animate({ scrollTop: 1234567890 }, 500);
-    // $("#pulldown").animate(
-    //   {
-    //     scrollTop: $("#pulldown").prop("scrollHeight")
-    //   },
-    //   500
-    // );
+    $("#pulldown").animate({
+      scrollTop: 1234567890
+    }, 500);
   };
+  if (window.matchMedia('(min-width: 768px)').matches) {
+    console.log("<<<<<<<home icon hide>>>>>>>");
+    $("#homeicon").css({
+      "display": "none"
+    })
+  }
+  if (window.matchMedia('(max-width: 768px)').matches) {
+    console.log("<<<<<<<home icon hide>>>>>>>");
+    $("#homeicon").css({
+      "display": "block"
+    })
+  }
 });

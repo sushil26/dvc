@@ -280,8 +280,6 @@ function checkCredential() {
           localStorage.setItem("profilePicPath", data.data.profilePicPath);
         }
         var userNameEmail = localStorage.getItem("careatorEmail");
-        var emailIdSplit = userNameEmail.split('@');
-        //userName = emailIdSplit[0];
         console.log("userName: " + userName);
         document.getElementById("videoConferenceUrl").style.display = "block";
         // $('#myPasswordModal').modal('hide');
@@ -297,7 +295,12 @@ function checkCredential() {
           $("#notify_msg_button").trigger("click");
           resetId = err.responseJSON.data.id;
         } else {
-          alert(err.responseJSON.message);
+          // alert(err.responseJSON.message);
+          $("#alertButton").trigger("click");
+          var x=
+          document.getElementById('alertcontent').innerHTML =err.responseJSON.message +"<br>Please try with correct password or contact Admin" ;
+          
+
         }
         document.getElementById("videoConferenceUrl").style.display = "none";
         localStorage.removeItem("careatorEmail");
@@ -495,7 +498,9 @@ function emailInviteSend() {
       console.log("err: " + JSON.stringify(err));
       console.log("err.responseText: " + JSON.stringify(err.responseText));
       console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
-      alert(err.responseJSON.message);
+      // alert(err.responseJSON.message);
+      $("#alertButton").trigger("click");
+      document.getElementById('alertcontent').innerHTML =err.responseJSON.message;
     }
   });
 
@@ -1125,7 +1130,10 @@ signaling_socket.on("addPeer", function (config) {
             console.log("Offer setLocalDescription succeeded");
           },
           function () {
-            alert("Offer setLocalDescription failed!");
+            $("#alertButton").trigger("click");
+            document.getElementById('alertcontent').innerHTML ="Offer setLocalDescription failed";
+
+            // alert("Offer setLocalDescription failed!");
           }
         );
         console.log("<--local_description");
@@ -1278,7 +1286,10 @@ signaling_socket.on("authorizedForClose", function (config) {
   console.log("peerNew_id: " + peerNew_id);
   if (config.removableId == peerNew_id) {
     console.log("Removable alert should start");
-    alert("Session creater removed you from conference");
+
+    // alert("Session creater removed you from conference");
+    $("#alertButton").trigger("click");
+    document.getElementById('alertcontent').innerHTML ="Session creater removed you from conference";
     window.location.href = "https://norecruits.com";
   }
 
@@ -1438,7 +1449,10 @@ function setup_local_media(callback, errorback) {
     function () {
       /* user denied access to a/v */
       console.log("Access denied for audio/video");
-      alert("You chose not to provide access to the camera/microphone, demo will not work.");
+      // alert("You chose not to provide access to the camera/microphone, demo will not work.");
+      $("#alertButton").trigger("click");
+      document.getElementById('alertcontent').innerHTML ="You choose not to provide access to the camera/microphone, Video will not work";
+
       if (errorback) errorback();
     }
   );
@@ -1613,9 +1627,11 @@ function setup_local_media(callback, errorback) {
                   function () {
                     /* user denied access to a/v */
                     console.log("Access denied for audio/video");
-                    alert(
-                      "You chose not to provide access to the camera/microphone, Video will not work."
-                    );
+                    $("#alertButton").trigger("click");
+                    document.getElementById('alertcontent').innerHTML ="You chose not to provide access to the camera/microphone, Video will not work";
+                    // alert(
+                    //   "You chose not to provide access to the camera/microphone, Video will not work."
+                    // );
                     if (errorback) errorback();
                   }
                 );

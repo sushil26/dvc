@@ -17,6 +17,7 @@ careatorApp.controller("chatCtrl", function (
   console.log("userData: " + JSON.stringify(userData));
   $scope.allEmpWithIndexById = []; /* ### Note: Will keep all employee indexed by employee id ### */
   $scope.allChatRecordsId = []; /* ### Note: Will keep all receiver   ### */
+  $scope.allGroupIds = []; /* ### Note: Will keep all GroupIds   ### */
   $scope.allGroupAndIndividual = []; /* ### Note:$scope.allGroupAndIndividual contains All employee list(who having chat rights) and group list(which are included by login person)   ### */
   var restrictedUser = userData.restrictedTo;
   $scope.restrictedArray = restrictedUser;
@@ -172,8 +173,10 @@ careatorApp.controller("chatCtrl", function (
               group_id: $scope.individualData._id,
               groupName: $scope.individualData.groupName,
               senderId: userData.userId,
-              senderName: userData.userName
+              senderName: userData.userName,
+              groupMembers: $scope.individualData.groupMembers
             };
+            
           } else {
             $scope.individualData = data.data.data[0];
             console.log("$scope.allChat: " + JSON.stringify($scope.allChat));
@@ -184,19 +187,35 @@ careatorApp.controller("chatCtrl", function (
               group_id: $scope.individualData.group_id,
               groupName: $scope.individualData.groupName,
               senderId: userData.userId,
-              senderName: userData.userName
+              senderName: userData.userName,
+              groupMembers: $scope.individualData.groupMembers
             };
           }
           console.log("$scope.individualData : " + JSON.stringify($scope.individualData));
-
           console.log("sendGroupText_withData-->: " + JSON.stringify($scope.sendGroupText_withData));
-
-          // $scope.readText();
         } else {
           console.log("Sorry");
           console.log(data.data.message);
         }
       });
+      var group_id = id;
+      var obj = {
+        "seenBy": userData.userId,
+        "unseenCount": 0
+      }
+      console.log("obj: " + JSON.stringify(obj));
+      var api = "https://norecruits.com/careator_textSeenFlagUpdate_toGroupChat/textSeenFlagUpdate_toGroupChat/" + group_id;
+      console.log("api: " + api);
+      careatorHttpFactory.post(api, obj).then(function (data) {
+        console.log("data--" + JSON.stringify(data.data));
+        var checkStatus = careatorHttpFactory.dataValidation(data);
+        if (checkStatus) {
+          console.log("Remove notification for this chat: " + data.data.message);
+
+        } else {
+          console.log("Sorry: " + data.data.message);
+        }
+      })
     } else if ($scope.selectedType == "individual_chats") {
       var api = "https://norecruits.com/careator_getChatsById/getChatsById/" + id;
       console.log("api: " + api);
@@ -453,7 +472,7 @@ careatorApp.controller("chatCtrl", function (
       );
       console.log(" $rootScope.adminId: " + $rootScope.adminId);
       if ($rootScope.adminId == userData.userId) {
-        /* ### Note: if loginId is userId then no need to check restricted list ### */
+        /* ### Note: if loginId is admin id then no need to check restricted list ### */
         obj = {
           senderId: userData.userId,
           receiverId: $scope.receiverData.receiverId,
@@ -496,9 +515,6 @@ careatorApp.controller("chatCtrl", function (
           }
         });
       } else {
-        // alert( 
-        //  "You not allowed to chat with " + $scope.receiverData.receiverName
-        // );
         $scope.notifyMsg = "You not allowed to chat with " + $scope.receiverData.receiverName;
         console.log(" $scope.notifyMsg: " + $scope.notifyMsg);
         $("#alertButton").trigger("click");
@@ -507,6 +523,7 @@ careatorApp.controller("chatCtrl", function (
       obj = {
         group_id: $scope.sendGroupText_withData.group_id,
         groupName: $scope.sendGroupText_withData.groupName,
+        groupMembers: $scope.sendGroupText_withData.groupMembers,
         senderId: userData.userId,
         senderName: userData.userName,
         message: $scope.typedMessage
@@ -608,9 +625,11 @@ careatorApp.controller("chatCtrl", function (
             }
           }
         }
-        $scope.chatedGroup_records =
-          $scope.allChatRecords; /* ### Note: $scope.chatedGroup_records is Chat(chated records) and group(group records) records storage  ### */
+        $scope.chatedGroup_records = $scope.allChatRecords; /* ### Note: $scope.chatedGroup_records is Chat(chated records) and group(group records) records storage  ### */
         for (var x = 0; x < $scope.allGroup.length; x++) {
+          console.log(" $scope.allGroup.length: " + $scope.allGroup.length);
+           console.log("  $scope.chatedGroup_records.length: " + $scope.chatedGroup_records.length);
+          $scope.allGroupIds[$scope.chatedGroup_records.length] = $scope.allGroup[x]._id;
           $scope.chatedGroup_records.push($scope.allGroup[x]);
         }
       } else {
@@ -741,7 +760,8 @@ careatorApp.controller("chatCtrl", function (
       console.log("Need to update");
       var index = $scope.allChatRecordsId.indexOf(data.id);
       $scope.allChatRecords[index].unseenCount = data.unseenCount;
-    } else if (($scope.allChatRecordsId.indexOf(data.id) >= 0) && data.seenBy != userData.userId) {
+    }
+    else if (($scope.allChatRecordsId.indexOf(data.id) >= 0) && data.seenBy != userData.userId) {
       console.log("No need to update");
     }
 

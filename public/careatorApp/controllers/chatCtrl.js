@@ -523,6 +523,7 @@ careatorApp.controller("chatCtrl", function (
       obj = {
         group_id: $scope.sendGroupText_withData.group_id,
         groupName: $scope.sendGroupText_withData.groupName,
+        groupMembers: $scope.sendGroupText_withData.groupMembers,
         senderId: userData.userId,
         senderName: userData.userName,
         message: $scope.typedMessage

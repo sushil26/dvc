@@ -298,7 +298,7 @@ function checkCredential() {
           // alert(err.responseJSON.message);
           $("#alertButton").trigger("click");
           var emsg=err.responseJSON.message;
-          document.getElementById('alertcontent').innerHTML =emsg;
+          document.getElementById('alertcontent').innerHTML ="emsg";
           
 
         }

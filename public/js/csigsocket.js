@@ -1451,7 +1451,7 @@ function setup_local_media(callback, errorback) {
       console.log("Access denied for audio/video");
       // alert("You chose not to provide access to the camera/microphone, demo will not work.");
       $("#alertButton").trigger("click");
-      document.getElementById('alertcontent').innerHTML ="You chose not to provide access to the camera/microphone, demo will not work";
+      document.getElementById('alertcontent').innerHTML ="You choose not to provide access to the camera/microphone, Video will not work";
 
       if (errorback) errorback();
     }

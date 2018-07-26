@@ -689,7 +689,7 @@ careatorApp.controller("chatCtrl", function (
       $scope.getChatRecords();
     } else if (data.freshInsert == undefined) {
       console.log("$scope.individualData: " + JSON.stringify($scope.individualData));
-      if ($scope.individualData._id == data.id) {
+      if ($scope.individualData!=undefined && $scope.individualData._id == data.id) {
         console.log("2)start pushing message");
         var id = data.id;
         console.log("id: " + id);
@@ -715,7 +715,7 @@ careatorApp.controller("chatCtrl", function (
           sendTime: data.sendTime
         });
         $scope.scrollDown();
-      } else if ($scope.individualData._id != data.id) {
+      } else if ( $scope.individualData==undefined && $scope.individualData._id != data.id) {
         console.log("Notify the Unseen message count");
         if (data.senderId != userData.userId) {
           var index = $scope.allChatRecordsReceiverId.indexOf(data.id);

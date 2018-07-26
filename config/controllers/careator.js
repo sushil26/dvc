@@ -1505,6 +1505,7 @@ module.exports.textSeenFlagUpdate = function (req, res) {
                 var io = req.app.get('socketio');
                 io.emit('comm_textSeenFlagUpdate', {
                     "id": id,
+                    "seenBy": req.body.seenBy,
                     "unseenCount": 0
                 }); /* ### Note: Emit message to client ### */
                 response = {

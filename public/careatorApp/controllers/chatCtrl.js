@@ -724,7 +724,7 @@ careatorApp.controller("chatCtrl", function (
         //   $scope.allChatRecords[index].unseenCount = data.unseenCount;
         // }
         // else
-         if (data.receiverId != userData.userId) {
+         if (data.receiverId == userData.userId) {
           var index = $scope.allChatRecordsId.indexOf(data.id);
           $scope.allChatRecords[index].unseenCount = data.unseenCount;
         }

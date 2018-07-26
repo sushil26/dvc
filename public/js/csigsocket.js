@@ -297,9 +297,21 @@ function checkCredential() {
         } else {
           // alert(err.responseJSON.message);
           $("#alertButton").trigger("click");
+<<<<<<< HEAD
           var x =
             document.getElementById('alertcontent').innerHTML = err.responseJSON.message + "<br>Please try with correct password or contact Admin";
 
+=======
+          if(err.responseJSON.message == "Password is wrong")
+          {
+            var x= document.getElementById('alertcontent').innerHTML =err.responseJSON.message +"<br>Please try with correct password or contact Admin" ;
+          }
+          else if(err.responseJSON.message == "Profile is not active"){
+            var x= document.getElementById('alertcontent').innerHTML =err.responseJSON.message +"<br>Please contact Admin" ;
+          }
+          
+          
+>>>>>>> 802e374f3e3846218d9632114846e78e2fd3f2c5
 
         }
         document.getElementById("videoConferenceUrl").style.display = "none";

@@ -189,8 +189,7 @@ careatorApp.controller("chatCtrl", function (
           }
           console.log("$scope.individualData : " + JSON.stringify($scope.individualData));
 
-          console.log("sendGroupText_withData-->: " + JSON.stringify($scope.sendGroupText_withData)
-          );
+          console.log("sendGroupText_withData-->: " + JSON.stringify($scope.sendGroupText_withData));
 
           // $scope.readText();
         } else {
@@ -226,7 +225,7 @@ careatorApp.controller("chatCtrl", function (
 
           var obj = {
             "receiverSeen": "yes",
-            "seenBy":userData.userId
+            "seenBy": userData.userId
           }
           console.log("obj: " + JSON.stringify(obj));
           var api = "https://norecruits.com/careator_textSeenFlagUpdate/textSeenFlagUpdate/" + id;
@@ -595,7 +594,7 @@ careatorApp.controller("chatCtrl", function (
               if (tempData.profilePicPath != undefined) {
                 $scope.allChatRecords[x].profilePicPath = tempData.profilePicPath;
               }
-            } else { }
+            } else {}
           } else {
             $scope.allChatRecordsId[x] = $scope.allChatRecords[x]._id;
             var tempData = $scope.allEmpWithIndexById[$scope.allChatRecords[x].receiverId];
@@ -633,7 +632,7 @@ careatorApp.controller("chatCtrl", function (
       var checkStatus = careatorHttpFactory.dataValidation(data);
       if (checkStatus) {
         $scope.groupData = data.data.data[0];
-      
+
         console.log("groupData: " + JSON.stringify($scope.groupData));
         console.log(data.data.message);
       } else {
@@ -691,27 +690,27 @@ careatorApp.controller("chatCtrl", function (
       $scope.getChatRecords();
     } else if (data.freshInsert == undefined) {
       console.log("$scope.individualData: " + JSON.stringify($scope.individualData));
-      if ($scope.individualData!=undefined && $scope.individualData._id == data.id) {
+      if ($scope.individualData != undefined && $scope.individualData._id == data.id) {
         console.log("2)start pushing message");
         var id = data.id;
         console.log("id: " + id);
-        if( data.senderId != userData.userId){
-        var obj = {
-          "receiverSeen": "yes"
-        }
-        console.log("obj: " + JSON.stringify(obj));
-        var api = "https://norecruits.com/careator_textSeenFlagUpdate/textSeenFlagUpdate/" + id;
-        console.log("api: " + api);
-        careatorHttpFactory.post(api, obj).then(function (data) {
-          console.log("data--" + JSON.stringify(data.data));
-          var checkStatus = careatorHttpFactory.dataValidation(data);
-          if (checkStatus) {
-            console.log("Message: " + data.data.message);
-          } else {
-            console.log("Sorry: " + data.data.message);
+        if (data.senderId != userData.userId) {
+          var obj = {
+            "receiverSeen": "yes"
           }
-        })
-      }
+          console.log("obj: " + JSON.stringify(obj));
+          var api = "https://norecruits.com/careator_textSeenFlagUpdate/textSeenFlagUpdate/" + id;
+          console.log("api: " + api);
+          careatorHttpFactory.post(api, obj).then(function (data) {
+            console.log("data--" + JSON.stringify(data.data));
+            var checkStatus = careatorHttpFactory.dataValidation(data);
+            if (checkStatus) {
+              console.log("Message: " + data.data.message);
+            } else {
+              console.log("Sorry: " + data.data.message);
+            }
+          })
+        }
         $scope.allChat.chats.push({
           senderId: data.senderId,
           senderName: data.senderName,
@@ -719,14 +718,14 @@ careatorApp.controller("chatCtrl", function (
           sendTime: data.sendTime
         });
         $scope.scrollDown();
-      } else if ( $scope.individualData==undefined || $scope.allChatRecordsId.indexOf(data.id)>=0) {
-        console.log("Notify the Unseen message count: "+JSON.stringify(data));
+      } else if ($scope.individualData == undefined || $scope.allChatRecordsId.indexOf(data.id) >= 0) {
+        console.log("Notify the Unseen message count: " + JSON.stringify(data));
         // if (data.senderId != userData.userId) {
         //   var index = $scope.allChatRecordsId.indexOf(data.id);
         //   $scope.allChatRecords[index].unseenCount = data.unseenCount;
         // }
         // else
-         if (data.receiverId == userData.userId) {
+        if (data.receiverId == userData.userId) {
           var index = $scope.allChatRecordsId.indexOf(data.id);
           $scope.allChatRecords[index].unseenCount = data.unseenCount;
         }
@@ -734,19 +733,18 @@ careatorApp.controller("chatCtrl", function (
       }
     }
   });
-  socket.on("comm_textSeenFlagUpdate", function(data){
+  socket.on("comm_textSeenFlagUpdate", function (data) {
     console.log("****comm_textSeenFlagUpdate-->: " + JSON.stringify(data));
     console.log("$scope.allChatRecordsId: " + JSON.stringify($scope.allChatRecordsId));
     console.log("$scope.allChatRecordsIdindexOf(data.id): " + $scope.allChatRecordsId.indexOf(data.id));
-    if(($scope.allChatRecordsId.indexOf(data.id)>=0) && data.seenBy == userData.userId){
+    if (($scope.allChatRecordsId.indexOf(data.id) >= 0) && data.seenBy == userData.userId) {
       console.log("Need to update");
       var index = $scope.allChatRecordsId.indexOf(data.id);
       $scope.allChatRecords[index].unseenCount = data.unseenCount;
-    }
-    else if(($scope.allChatRecordsId.indexOf(data.id)>=0) && data.seenBy != userData.userId){
+    } else if (($scope.allChatRecordsId.indexOf(data.id) >= 0) && data.seenBy != userData.userId) {
       console.log("No need to update");
     }
-    
+
   })
   socket.on("comm_aboutRestrictedUpdate", function (data) {
     //update to client about their new restricted users
@@ -860,4 +858,6 @@ careatorApp.controller("chatCtrl", function (
       "display": "block"
     })
   }
+
+  
 });

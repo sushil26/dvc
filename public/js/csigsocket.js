@@ -450,15 +450,14 @@ function checkPassword() {
 var w;
 function chatNavigation() {
   console.log("chatNavigation-->");
-  window.location.href = "https://norecruits.com/careatorApp/#!/dashboard/profile";
+  // window.location.href = "https://norecruits.com/careatorApp/#!/dashboard/profile";
   if (!w || w.closed) {
     w = window.open("https://norecruits.com/careatorApp/#!/dashboard/profile");
   } else {
-    console.log('window is already opened');
+    console.log('Window is already opened');
     // alert("window is already opened");
     $("#closeConfirmationButton2").trigger("click");
   }
-
   function focust2() {
     w.focus();
   }

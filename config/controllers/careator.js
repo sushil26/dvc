@@ -1,12 +1,8 @@
 var db = require("../dbConfig.js").getDb();
 var general = require("../general.js");
-var bodyParser = require("body-parser");
-var careatorEmp = db.collection("careatorEmp"); /* ### Teacher collection  ### */
 var ObjectId = require("mongodb").ObjectID;
 var nodemailer = require("nodemailer");
-var createdDate = new Date();
 var randomstring = require("randomstring");
-
 var careatorMaster = db.collection("careatorMaster"); /* ### careator employee collection  ### */
 var careatorChatGroup = db.collection("careatorChatGroup"); /* ### careatorChatGroup collection  ### */
 var careatorChat = db.collection("careatorChat"); /* ### careatorChat collection  ### */

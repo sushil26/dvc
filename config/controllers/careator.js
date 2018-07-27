@@ -1720,7 +1720,7 @@ module.exports.groupText = function (req, res) {
                         "_id": data[0]._id
                     }
                     console.log("findObj: " + JSON.stringify(findObj));
-                    careatorChat.update(findObj, { "$push": { "chats": obj }, "$set": { "groupMembers": groupMembers } }, function (err, updatedData) {
+                    careatorChat.update(findObj, { "$set": { "groupMembers": groupMembers } }, function (err, updatedData) {
                         if (err) {
                             console.log("err: " + JSON.stringify(err));
                             response = {

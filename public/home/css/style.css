@@ -51,8 +51,8 @@
 }
 
 .slideLeft {
-  -webkit-animation: slide 1s;
-  animation: slide 1s;
+  -webkit-animation: slide 0.5s;
+  animation: slide 0.5s;
   animation-timing-function: ease-out;
 
 }

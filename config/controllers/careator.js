@@ -1738,6 +1738,7 @@ module.exports.groupText = function (req, res) {
                                 "senderName": obj.senderName,
                                 "message": obj.message,
                                 "sendTime": obj.sendTime,
+                                "groupMembers": groupMem
                                 
                             }); /* ### Note: Emit message to client ### */
                             response = {

@@ -739,11 +739,17 @@ careatorApp.controller("chatCtrl", function (
           console.log("UnseenCount added to group");
           var index = $scope.allGroupIds.indexOf(data.group_id);
           console.log("index: " + index);
-          $scope.allChatRecords[index].unseenCount = data.unseenCount;
-          console.log(" $scope.allChatRecords[index]: " + JSON.stringify($scope.allChatRecords[index]));
+          for (var x = 0; x < data.groupMembers.length; x++) {
+            if (userData.userId == data.groupMembers[x].userId) {
+              $scope.allChatRecords[index].unseenCount = data.unseenCount;
+              console.log(" $scope.allChatRecords[index]: " + JSON.stringify($scope.allChatRecords[index]));
+              break;
+            }
+            else {
+              console.log("Noting to do");
+            }
+          }
         }
-
-
       }
     }
   });

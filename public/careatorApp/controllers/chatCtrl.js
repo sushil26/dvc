@@ -193,42 +193,43 @@ careatorApp.controller("chatCtrl", function (
           }
           console.log("$scope.individualData : " + JSON.stringify($scope.individualData));
           console.log("sendGroupText_withData-->: " + JSON.stringify($scope.sendGroupText_withData));
+          var group_id = id;
+          var obj = {
+            "seenBy": userData.userId,
+            "unseenCount": 0,
+          }
+          console.log("obj: " + JSON.stringify(obj));
+          var api = "https://norecruits.com/careator_textSeenFlagUpdate_toGroupChat/textSeenFlagUpdate_toGroupChat/" + group_id;
+          console.log("*api: " + api);
+          careatorHttpFactory.post(api, obj).then(function (data) {
+            console.log("data--" + JSON.stringify(data.data));
+            var checkStatus = careatorHttpFactory.dataValidation(data);
+            if (checkStatus) {
+              console.log("Remove notification for this chat: " + data.data.message);
+              var index = $scope.allGroupIds.indexOf(data.group_id);
+              console.log("index: " + index);
+              // if (index >= 0) {
+              //   for (var x = 0; x < data.groupMembers.length; x++) {
+              //     if (userData.userId == data.groupMembers[x].userId) {
+              //       $scope.allChatRecords[index].unseenCount = data.groupMembers[x].unseenCount;
+              //       console.log(" $scope.allChatRecords[index]: " + JSON.stringify($scope.allChatRecords[index]));
+              //       break;
+              //     }
+              //     else {
+              //       console.log("Noting to do");
+              //     }
+              //   }
+              // }
+            } else {
+              console.log("Sorry: " + data.data.message);
+            }
+          })
         } else {
           console.log("Sorry");
           console.log(data.data.message);
         }
       });
-      var group_id = id;
-      var obj = {
-        "seenBy": userData.userId,
-        "unseenCount": 0,
-      }
-      console.log("obj: " + JSON.stringify(obj));
-      var api = "https://norecruits.com/careator_textSeenFlagUpdate_toGroupChat/textSeenFlagUpdate_toGroupChat/" + group_id;
-      console.log("*api: " + api);
-      careatorHttpFactory.post(api, obj).then(function (data) {
-        console.log("data--" + JSON.stringify(data.data));
-        var checkStatus = careatorHttpFactory.dataValidation(data);
-        if (checkStatus) {
-          console.log("Remove notification for this chat: " + data.data.message);
-          var index = $scope.allGroupIds.indexOf(data.group_id);
-          console.log("index: " + index);
-          // if (index >= 0) {
-          //   for (var x = 0; x < data.groupMembers.length; x++) {
-          //     if (userData.userId == data.groupMembers[x].userId) {
-          //       $scope.allChatRecords[index].unseenCount = data.groupMembers[x].unseenCount;
-          //       console.log(" $scope.allChatRecords[index]: " + JSON.stringify($scope.allChatRecords[index]));
-          //       break;
-          //     }
-          //     else {
-          //       console.log("Noting to do");
-          //     }
-          //   }
-          // }
-        } else {
-          console.log("Sorry: " + data.data.message);
-        }
-      })
+     
     } else if ($scope.selectedType == "individual_chats") {
       console.log("**Individual text seen");
       var api = "https://norecruits.com/careator_getChatsById/getChatsById/" + id;

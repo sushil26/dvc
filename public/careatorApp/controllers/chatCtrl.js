@@ -668,6 +668,25 @@ careatorApp.controller("chatCtrl", function (
       }
       else {
         console.log("Need to notify");
+        console.log("")
+        if (($scope.individualData != undefined && $scope.individualData._id != data.id) || ($scope.individualData == undefined)) {
+          console.log("UnseenCount added to group");
+          var index = $scope.allGroupIds.indexOf(data.group_id);
+          console.log("index: " + index);
+          if(index>=0){
+            for (var x = 0; x < data.groupMembers.length; x++) {
+              if (userData.userId == data.groupMembers[x].userId) {
+                $scope.allChatRecords[index].unseenCount = data.groupMembers[x].unseenCount;
+                console.log(" $scope.allChatRecords[index]: " + JSON.stringify($scope.allChatRecords[index]));
+                break;
+              }
+              else {
+                console.log("Noting to do");
+              }
+            }
+          }
+         
+        }
       }
 
     }
@@ -713,10 +732,7 @@ careatorApp.controller("chatCtrl", function (
           var id = data.id;
           console.log("id: " + id);
           if (data.senderId != userData.userId) {
-
-            var obj = {
-              "receiverSeen": "yes"
-            }
+            var obj = { "receiverSeen": "yes" }
             console.log("obj: " + JSON.stringify(obj));
             var api = "https://norecruits.com/careator_textSeenFlagUpdate/textSeenFlagUpdate/" + id;
             console.log("api: " + api);
@@ -745,21 +761,7 @@ careatorApp.controller("chatCtrl", function (
             var index = $scope.allChatRecordsId.indexOf(data.id);
             $scope.allChatRecords[index].unseenCount = data.unseenCount;
           }
-          else if (data.group_id != undefined) {
-            console.log("UnseenCount added to group");
-            var index = $scope.allGroupIds.indexOf(data.group_id);
-            console.log("index: " + index);
-            for (var x = 0; x < data.groupMembers.length; x++) {
-              if (userData.userId == data.groupMembers[x].userId) {
-                $scope.allChatRecords[index].unseenCount = data.groupMembers[x].unseenCount;
-                console.log(" $scope.allChatRecords[index]: " + JSON.stringify($scope.allChatRecords[index]));
-                break;
-              }
-              else {
-                console.log("Noting to do");
-              }
-            }
-          }
+          
         }
         else {
 

@@ -227,7 +227,7 @@ box-shadow: none;
     /* height: 54px; */
     margin: 0 !important;
     cursor: pointer;
-    box-shadow: 1px 1px 4px #000;
+    /* box-shadow: 1px 1px 4px #000; */
 }
 
 .sideBar-body:hover {

@@ -730,11 +730,12 @@ careatorApp.controller("chatCtrl", function (
         $scope.scrollDown();
       } else if ($scope.individualData == undefined || $scope.allChatRecordsId.indexOf(data.id) >= 0) {
         console.log("Notify the Unseen message count: " + JSON.stringify(data));
-        if (data.receiverId == userData.userId) {
-          console.log("UuseenCount added");
+        if (data.receiverId == userData.userId || (data.group_id!=undefined)) {
+          console.log("UnseenCount added");
           var index = $scope.allChatRecordsId.indexOf(data.id);
           $scope.allChatRecords[index].unseenCount = data.unseenCount;
         }
+        
 
       }
     }

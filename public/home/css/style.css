@@ -50,7 +50,7 @@
   box-shadow: 0px 3px 8px #aaa, inset 0px 2px 3px #fff;
 }
 
-.bounceInright {
+.bounceright {
   -webkit-animation: bounceInRight 0.5s;
   animation: bounceInRight 0.5s;
   animation-timing-function: ease-out;

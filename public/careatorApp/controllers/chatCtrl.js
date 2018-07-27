@@ -699,7 +699,7 @@ careatorApp.controller("chatCtrl", function (
       else {
         console.log("Need to notify");
         console.log("")
-        if (($scope.individualData != undefined && $scope.individualData._id != data.id) || ($scope.individualData == undefined)) {
+        if (($scope.individualData != undefined && $scope.individualData._id != data.id) || $scope.allGroupIds.indexOf(data.group_id)>=0) {
           console.log("UnseenCount added to group");
           var index = $scope.allGroupIds.indexOf(data.group_id);
           console.log("index: " + index);

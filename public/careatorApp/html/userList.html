@@ -27,7 +27,7 @@
                         <tbody>
                             <tr ng-repeat="emp in allemployee">
                                 <td>
-                                    {{$index+1}}
+                                    {{$index+1}}.
                                 </td>
                                 <td>
                                     {{ emp.name }}
@@ -43,9 +43,14 @@
                                     <i ng-if="emp.videoRights=='yes'" class="fa fa-check" style="color: green"></i>
                                     <i ng-if="emp.videoRights=='no'" class="fa fa-times" style="color: red"></i>
                                 </td>
-                                <td>
-                                    {{emp.status}}
+                                <td ng-if="emp.status=='inactive'">
+                                    Inactive
+                                 
                                 </td>
+                                <td ng-if="emp.status=='active'">
+                                        Active
+                                     
+                                    </td>
                                 <td>
                                     <button class="btn btn-primary fa fa-user-plus" ng-if="emp.status=='inactive'" ng-click="statusChange(emp._id, 'active', $index)">&nbsp;Activate</button>
                                     <button class="btn btn-warning fa fa-user-times" ng-if="emp.status=='active'" ng-click="statusChange(emp._id, 'inactive', $index)">&nbsp;Deactivate</button>

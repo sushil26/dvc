@@ -674,30 +674,47 @@ careatorApp.controller("chatCtrl", function (
       console.log("**Group text received");
       if (data.freshInsert == true) {
         console.log("Fresh Insert");
-        var group_id = data.group_id;
-        var obj = {
-          "seenBy": userData.userId,
-          "unseenCount": 0,
-        }
-        console.log("obj: " + JSON.stringify(obj));
-        var api = "https://norecruits.com/careator_textSeenFlagUpdate_toGroupChat/textSeenFlagUpdate_toGroupChat/" + group_id;
-        console.log("*api: " + api);
-        careatorHttpFactory.post(api, obj).then(function (data) {
+        var id = data.id;
+        var api = "https://norecruits.com/careator_getChatsById/getChatsById/" + id;
+        console.log("api: " + api);
+        careatorHttpFactory.get(api).then(function (data) {
           console.log("data--" + JSON.stringify(data.data));
           var checkStatus = careatorHttpFactory.dataValidation(data);
           if (checkStatus) {
-            console.log("Message: " + data.data.message);
+            $scope.allChat = data.data.data;
+            $scope.individualData = data.data.data;
+            console.log("$scope.allChat: " + JSON.stringify($scope.allChat));
+            console.log(
+              "$scope.individualData : " + JSON.stringify($scope.individualData)
+            );
+            $scope.receiverData = {
+              senderId: userData.userId,
+              senderName: userData.userName
+            };
+            if ($scope.individualData.receiverId != userData.userId) {
+              $scope.receiverData.receiverId = $scope.individualData.receiverId;
+              $scope.receiverData.receiverName =
+                $scope.individualData.receiverName;
+            } else if ($scope.individualData.senderId != userData.userId) {
+              $scope.receiverData.receiverId = $scope.individualData.senderId;
+              $scope.receiverData.receiverName = $scope.individualData.senderName;
+            }
+            console.log("$scope.receiverData : " + JSON.stringify($scope.receiverData));
+            
           } else {
-            console.log("Sorry: " + data.data.message);
+            console.log("Sorry");
+            console.log(data.data.message);
           }
-        })
-        $scope.allChat.chats.push({
-          senderId: data.senderId,
-          senderName: data.senderName,
-          message: data.message,
-          sendTime: data.sendTime
         });
-        $scope.scrollDown();
+        $scope.getChatRecords();
+        
+        // $scope.allChat.chats.push({
+        //   senderId: data.senderId,
+        //   senderName: data.senderName,
+        //   message: data.message,
+        //   sendTime: data.sendTime
+        // });
+        // $scope.scrollDown();
       }
       else {
         if ($scope.individualData != undefined && $scope.individualData._id == data.id) {

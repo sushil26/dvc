@@ -803,7 +803,7 @@ careatorApp.controller("chatCtrl", function (
         });
         $scope.getChatRecords();
       } 
-      else if($scope.individualData == undefined && data.freshInsert == true &&  $scope.allChatRecordsId.indexOf(data.id) >= 0){
+      else if($scope.individualData == undefined && data.freshInsert == true &&  $scope.allChatRecordsId.indexOf(data.group_id) >= 0){
         $scope.getChatRecords();
       }
       else if (data.freshInsert == undefined) {

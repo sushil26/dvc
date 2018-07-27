@@ -508,19 +508,19 @@ careatorApp.controller("chatCtrl", function (
         message: $scope.typedMessage
       };
       console.log("obj: " + JSON.stringify(obj));
-      api = "https://norecruits.com//careator_groupText/groupText";
-      console.log("api: " + api);
-      careatorHttpFactory.post(api, obj).then(function (data) {
-        console.log("data--" + JSON.stringify(data.data));
-        var checkStatus = careatorHttpFactory.dataValidation(data);
-        if (checkStatus) {
-          console.log("data.data.data: " + JSON.stringify(data.data.data));
-          console.log(data.data.message);
-        } else {
-          console.log("Sorry");
-          console.log(data.data.message);
-        }
-      });
+      // api = "https://norecruits.com//careator_groupText/groupText";
+      // console.log("api: " + api);
+      // careatorHttpFactory.post(api, obj).then(function (data) {
+      //   console.log("data--" + JSON.stringify(data.data));
+      //   var checkStatus = careatorHttpFactory.dataValidation(data);
+      //   if (checkStatus) {
+      //     console.log("data.data.data: " + JSON.stringify(data.data.data));
+      //     console.log(data.data.message);
+      //   } else {
+      //     console.log("Sorry");
+      //     console.log(data.data.message);
+      //   }
+      // });
     }
   };
 

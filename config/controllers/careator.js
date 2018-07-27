@@ -1390,7 +1390,7 @@ module.exports.individualText = function (req, res) {
                     }],
                     "timeStamp": date,
                     "senderSeen": "yes",
-                    "senderSeen": "no",
+                    "receiverSeen": "no",
                     "unseenCount": 1
                 }
                 console.log("obj : " + JSON.stringify(obj));

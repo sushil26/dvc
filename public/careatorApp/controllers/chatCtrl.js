@@ -753,20 +753,20 @@ careatorApp.controller("chatCtrl", function (
   //     }
   //   }
   // });
-  socket.on("comm_textSeenFlagUpdate", function (data) {
-    console.log("****comm_textSeenFlagUpdate-->: " + JSON.stringify(data));
-    console.log("$scope.allChatRecordsId: " + JSON.stringify($scope.allChatRecordsId));
-    console.log("$scope.allChatRecordsIdindexOf(data.id): " + $scope.allChatRecordsId.indexOf(data.id));
-    if (($scope.allChatRecordsId.indexOf(data.id) >= 0) && data.seenBy == userData.userId) {
-      console.log("Need to update");
-      var index = $scope.allChatRecordsId.indexOf(data.id);
-      $scope.allChatRecords[index].unseenCount = data.unseenCount;
-    }
-    else if (($scope.allChatRecordsId.indexOf(data.id) >= 0) && data.seenBy != userData.userId) {
-      console.log("No need to update");
-    }
+  // socket.on("comm_textSeenFlagUpdate", function (data) {
+  //   console.log("****comm_textSeenFlagUpdate-->: " + JSON.stringify(data));
+  //   console.log("$scope.allChatRecordsId: " + JSON.stringify($scope.allChatRecordsId));
+  //   console.log("$scope.allChatRecordsIdindexOf(data.id): " + $scope.allChatRecordsId.indexOf(data.id));
+  //   if (($scope.allChatRecordsId.indexOf(data.id) >= 0) && data.seenBy == userData.userId) {
+  //     console.log("Need to update");
+  //     var index = $scope.allChatRecordsId.indexOf(data.id);
+  //     $scope.allChatRecords[index].unseenCount = data.unseenCount;
+  //   }
+  //   else if (($scope.allChatRecordsId.indexOf(data.id) >= 0) && data.seenBy != userData.userId) {
+  //     console.log("No need to update");
+  //   }
 
-  })
+  // })
   socket.on("comm_aboutRestrictedUpdate", function (data) {
     //update to client about their new restricted users
     console.log("****comm_aboutRestrictedUpdate-->: " + JSON.stringify(data));

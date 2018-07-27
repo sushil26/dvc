@@ -660,6 +660,7 @@ careatorApp.controller("chatCtrl", function (
   socket.on("comm_textReceived", function (data) {
     $scope.scrollDown();
     console.log("****comm_textReceived-->: " + JSON.stringify(data));
+    console.log("$scope.individualData: " + JSON.stringify($scope.individualData));
 
     if (userData.userId == data.receiverId) {
       $scope.playAudio = function () {
@@ -671,7 +672,7 @@ careatorApp.controller("chatCtrl", function (
     }
     if (data.group_id != undefined) {
       console.log("**Group text received");
-      if ($scope.individualData != undefined && $scope.individualData._id == data.id) {
+      if ((data.freshInsert==undefined && $scope.individualData != undefined && $scope.individualData._id == data.id) || (data.freshInsert==undefined && $scope.individualData != undefined && $scope.individualData._id == data.id)) {
         var group_id = data.group_id;
         var obj = {
           "seenBy": userData.userId,

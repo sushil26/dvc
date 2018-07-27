@@ -446,7 +446,7 @@ function checkPassword() {
 
 function chatNavigation() {
   console.log("chatNavigation-->");
-  window.location.href = "https://norecruits.com/careatorApp/#!/dashboard/profile";
+  window.location.href = "https://norecruits.com/careatorApp/#!/dashboard/chat";
 }
 
 

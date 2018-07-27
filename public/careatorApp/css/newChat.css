@@ -295,11 +295,12 @@ box-shadow: none;
 }
 
 .newMessage-heading {
+    background-image: linear-gradient(to bottom, #383c3f 0%, #202224 100%);
     padding: 10px 16px 10px 15px !important;
     margin: 0 !important;
     height: 100px;
     width: 100%;
-    background-color: #00bfa5;
+    /* background-color: #00bfa5; */
     z-index: 1001;
 }
 

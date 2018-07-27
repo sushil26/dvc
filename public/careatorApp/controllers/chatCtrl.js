@@ -741,7 +741,7 @@ careatorApp.controller("chatCtrl", function (
           console.log("index: " + index);
           for (var x = 0; x < data.groupMembers.length; x++) {
             if (userData.userId == data.groupMembers[x].userId) {
-              $scope.allChatRecords[index].unseenCount = data.unseenCount;
+              $scope.allChatRecords[index].unseenCount = data.groupMembers[x].unseenCount;
               console.log(" $scope.allChatRecords[index]: " + JSON.stringify($scope.allChatRecords[index]));
               break;
             }

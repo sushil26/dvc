@@ -694,14 +694,14 @@ careatorApp.controller("chatCtrl", function (
         console.log("id: " + id);
         if (data.senderId != userData.userId) {
           if (data.group_id != undefined) {
-            var group_id = data.group_id;
-            var obj = {
-              "seenBy": userData.userId,
-              "unseenCount": 0,
-            }
-            console.log("obj: " + JSON.stringify(obj));
-            var api = "https://norecruits.com/careator_textSeenFlagUpdate_toGroupChat/textSeenFlagUpdate_toGroupChat/" + group_id;
-            console.log("*api: " + api);
+            // var group_id = data.group_id;
+            // var obj = {
+            //   "seenBy": userData.userId,
+            //   "unseenCount": 0,
+            // }
+            // console.log("obj: " + JSON.stringify(obj));
+            // var api = "https://norecruits.com/careator_textSeenFlagUpdate_toGroupChat/textSeenFlagUpdate_toGroupChat/" + group_id;
+            // console.log("*api: " + api);
           }
           else {
             var obj = {
@@ -711,15 +711,15 @@ careatorApp.controller("chatCtrl", function (
             var api = "https://norecruits.com/careator_textSeenFlagUpdate/textSeenFlagUpdate/" + id;
             console.log("api: " + api);
           }
-          careatorHttpFactory.post(api, obj).then(function (data) {
-            console.log("data--" + JSON.stringify(data.data));
-            var checkStatus = careatorHttpFactory.dataValidation(data);
-            if (checkStatus) {
-              console.log("Message: " + data.data.message);
-            } else {
-              console.log("Sorry: " + data.data.message);
-            }
-          })
+          // careatorHttpFactory.post(api, obj).then(function (data) {
+          //   console.log("data--" + JSON.stringify(data.data));
+          //   var checkStatus = careatorHttpFactory.dataValidation(data);
+          //   if (checkStatus) {
+          //     console.log("Message: " + data.data.message);
+          //   } else {
+          //     console.log("Sorry: " + data.data.message);
+          //   }
+          // })
         }
         $scope.allChat.chats.push({
           senderId: data.senderId,

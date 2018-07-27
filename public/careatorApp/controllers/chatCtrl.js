@@ -700,14 +700,14 @@ careatorApp.controller("chatCtrl", function (
               $scope.receiverData.receiverName = $scope.individualData.senderName;
             }
             console.log("$scope.receiverData : " + JSON.stringify($scope.receiverData));
-            
+
           } else {
             console.log("Sorry");
             console.log(data.data.message);
           }
         });
         $scope.getChatRecords();
-        
+
         // $scope.allChat.chats.push({
         //   senderId: data.senderId,
         //   senderName: data.senderName,
@@ -768,10 +768,7 @@ careatorApp.controller("chatCtrl", function (
     }
     else if (data.group_id == undefined) {
       console.log("**Individual text received");
-      console.log("$scope.allChatRecordsId: "+JSON.stringify($scope.allChatRecordsId));
-      console.log("$scope.allChatRecordsId: "+JSON.stringify($scope.allChatRecordsId));
-      console.log(" $scope.allChatRecordsId.indexOf(data.id): "+ $scope.allChatRecordsId.indexOf(data.id));
-      if ( $scope.individualData != undefined && data.freshInsert == true && (userData.userId == data.senderId || userData.userId == data.receiverId)) {
+      if ($scope.individualData != undefined && data.freshInsert == true && (userData.userId == data.senderId || userData.userId == data.receiverId)) {
         var id = data.id;
         var api = "https://norecruits.com/careator_getChatsById/getChatsById/" + id;
         console.log("api: " + api);
@@ -804,8 +801,8 @@ careatorApp.controller("chatCtrl", function (
           }
         });
         $scope.getChatRecords();
-      } 
-      else if($scope.individualData == undefined && data.freshInsert == true &&  $scope.allChatRecordsId.indexOf(data.id) >= 0){
+      }
+      else if ($scope.individualData == undefined && data.freshInsert == true && userData.userId == data.receiverId) {
         $scope.getChatRecords();
       }
       else if (data.freshInsert == undefined) {

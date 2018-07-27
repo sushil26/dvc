@@ -46,7 +46,7 @@
                     <li ng-if="userData.email=='vc4all@careator.com'">
                         <a href="#!/dashboard/userRestrict">
                             <i class="fa fa-universal-access">
-                                <span>&nbspUser Restrict</span>
+                                <span>&nbspRestrict Connectivity</span>
                             </i>
                         </a>
                     </li>
@@ -60,14 +60,14 @@
                     <li ng-if="userData.email=='vc4all@careator.com'">
                         <a href="#!/dashboard/usersList">
                             <i class="fa fa-list-alt">
-                                <span>&nbspUser List</span>
+                                <span>&nbspAll Users</span>
                             </i>
                         </a>
                     </li>
                     <li ng-if="userData.email=='vc4all@careator.com'">
                         <a href="#!/dashboard/groupList">
                             <i class="fa fa-list">
-                                <span>&nbspGroup List</span>
+                                <span>&nbspAll Groups</span>
                             </i>
                         </a>
                     </li>
@@ -124,6 +124,8 @@
                 </ul>
             </div>
         </aside>
+        <!-- <textarea id="ta" class="ta"></textarea>
+        <div id="render" style="display:none"></div> -->
         <!--sidebar end-->
         <div ui-view class="user-body">
         </div>

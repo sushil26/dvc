@@ -13,7 +13,6 @@
 --------------------------------*/
 
 @import url(https://fonts.googleapis.com/css?family=Aclonica);
-@import url(https://fonts.googleapis.com/css?family=Oswald:400,300);
 @import url(https://fonts.googleapis.com/css?family=Lato:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic);
 .modal {
   font-family: Lato;
@@ -250,7 +249,7 @@ body {
   background-size: 10px 10px, 10px 10px, 100% 100%;
   background-position: 1px 1px, 0px 0px, center center;
   color: #666666;
-  font-family: Oswald !important;
+  font-family: Lato !important;
   padding: 0 !important;
 }
 

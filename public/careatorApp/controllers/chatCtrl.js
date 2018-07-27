@@ -229,7 +229,7 @@ careatorApp.controller("chatCtrl", function (
           console.log(data.data.message);
         }
       });
-     
+
     } else if ($scope.selectedType == "individual_chats") {
       console.log("**Individual text seen");
       var api = "https://norecruits.com/careator_getChatsById/getChatsById/" + id;
@@ -801,12 +801,12 @@ careatorApp.controller("chatCtrl", function (
     console.log("****comm_textSeenFlagUpdate-->: " + JSON.stringify(data));
     //console.log("$scope.allChatRecordsId: " + JSON.stringify($scope.allChatRecordsId));
     //console.log("$scope.allChatRecordsIdindexOf(data.id): " + $scope.allChatRecordsId.indexOf(data.id));
-    console.log("$scope.individualData: "+JSON.stringify($scope.individualData));
-   console.log("sendGroupText_withData-->: " + JSON.stringify($scope.sendGroupText_withData));
+    console.log("$scope.individualData: " + JSON.stringify($scope.individualData));
+    console.log("sendGroupText_withData-->: " + JSON.stringify($scope.sendGroupText_withData));
     if (data.isFromGroup != undefined) {
-      if (($scope.individualData != undefined && $scope.sendGroupText_withData.group_id == data.id) ) {
+      if (($scope.individualData != undefined && $scope.individualData.group_id == data.id)) {
         console.log("UnseenCount added to group");
-        console.log("$scope.allGroupIds: "+JSON.stringify($scope.allGroupIds));
+        console.log("$scope.allGroupIds: " + JSON.stringify($scope.allGroupIds));
         var index = $scope.allGroupIds.indexOf(data.id);
         console.log("index: " + index);
         if (index >= 0) {

@@ -670,6 +670,7 @@ careatorApp.controller("chatCtrl", function (
       $scope.playAudio();
     }
     if (data.group_id != undefined) {
+      console.log("**Group text received");
       if ($scope.individualData != undefined && $scope.individualData._id == data.id) {
         var group_id = data.group_id;
         var obj = {

@@ -672,7 +672,7 @@ careatorApp.controller("chatCtrl", function (
     }
     if (data.group_id != undefined) {
       console.log("**Group text received");
-      if (data.freshInsert == 'yes') {
+      if (data.freshInsert == 'true') {
         console.log("Fresh Insert");
         var group_id = data.group_id;
         var obj = {

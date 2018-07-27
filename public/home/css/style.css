@@ -58,6 +58,38 @@
 
 }
 
+.slideRight {
+  -webkit-animation: slider 0.5s;
+  animation: slider 0.5s;
+  animation-timing-function: ease-out;
+  /* animation-delay: 0.1s */
+
+}
+
+@-webkit-keyframes slider {
+  from {
+      -webkit-transform: translate3d(100%, 0, 0);
+      transform: translate3d(100%, 0, 0);
+      visibility: visible;
+  }
+  to {
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes slider {
+  from {
+      -webkit-transform: translate3d(100%, 0, 0);
+      transform: translate3d(100%, 0, 0);
+      visibility: visible;
+  }
+  to {
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+  }
+}
+
 @-webkit-keyframes slide {
   from {
     -webkit-transform: translate3d(-100%, 0, 0);

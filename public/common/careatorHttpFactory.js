@@ -13,7 +13,7 @@ careatorApp.factory('careatorHttpFactory', function ($http, $q, $rootScope) {
                 data: data
             }).
                 then(function (data) {
-                    console.log(data);
+                    //console.log(data);
                     dfd.resolve(data);
 
                 }, function (error) {

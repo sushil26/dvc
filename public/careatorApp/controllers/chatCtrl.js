@@ -768,7 +768,9 @@ careatorApp.controller("chatCtrl", function (
     }
     else if (data.group_id == undefined) {
       console.log("**Individual text received");
-      console.log("$scope.individualData: "+JSON.stringify($scope.individualData));
+      console.log("$scope.allChatRecordsId: "+JSON.stringify($scope.allChatRecordsId));
+      console.log("$scope.allChatRecordsId: "+JSON.stringify($scope.allChatRecordsId));
+      console.log(" $scope.allChatRecordsId.indexOf(data.id): "+ $scope.allChatRecordsId.indexOf(data.id));
       if ( $scope.individualData != undefined && data.freshInsert == true && (userData.userId == data.senderId || userData.userId == data.receiverId)) {
         var id = data.id;
         var api = "https://norecruits.com/careator_getChatsById/getChatsById/" + id;
@@ -803,7 +805,7 @@ careatorApp.controller("chatCtrl", function (
         });
         $scope.getChatRecords();
       } 
-      else if($scope.individualData == undefined && data.freshInsert == true &&  $scope.allChatRecordsId.indexOf(data.group_id) >= 0){
+      else if($scope.individualData == undefined && data.freshInsert == true &&  $scope.allChatRecordsId.indexOf(data.id) >= 0){
         $scope.getChatRecords();
       }
       else if (data.freshInsert == undefined) {

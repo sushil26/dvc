@@ -1388,7 +1388,10 @@ module.exports.individualText = function (req, res) {
                         "message": req.body.message,
                         "sendTime": date
                     }],
-                    "timeStamp": date
+                    "timeStamp": date,
+                    "senderSeen": "yes",
+                    "receiverSeen": "no",
+                    "unseenCount": 1
                 }
                 console.log("obj : " + JSON.stringify(obj));
                 careatorChat.insert(obj, function (err, insertedData) {
@@ -1650,9 +1653,6 @@ module.exports.groupText = function (req, res) {
                             "sendTime": date
                         }],
                         "timeStamp": date,
-                        "senderSeen": "yes",
-                        "senderSeen": "no",
-                        "unseenCount": 1
                     }
                     var groupMembers = [];
                     var groupMem = req.body.groupMembers;
@@ -1745,7 +1745,7 @@ module.exports.groupText = function (req, res) {
                                 "message": obj.message,
                                 "sendTime": obj.sendTime,
                                 "groupMembers": groupMem
-                                
+
                             }); /* ### Note: Emit message to client ### */
                             response = {
                                 status: true,
@@ -1792,7 +1792,7 @@ module.exports.textSeenFlagUpdate_toGroupChat = function (req, res) {
                     "id": req.params.group_id,
                     "seenBy": req.body.seenBy,
                     "unseenCount": 0,
-                     "isFromGroup": "yes"
+                    "isFromGroup": "yes"
                 }); /* ### Note: Emit message to client ### */
                 response = {
                     status: true,

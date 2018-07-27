@@ -220,13 +220,14 @@ box-shadow: none;
 }
 
 .sideBar-body {
-    background: lightblue;
+    background: paleturquoise;
     position: relative;
     padding: 2px !important;
     border-bottom: 1px solid #f7f7f7;
     /* height: 54px; */
     margin: 0 !important;
     cursor: pointer;
+    box-shadow: 1px 1px 4px #000;
 }
 
 .sideBar-body:hover {

@@ -1680,6 +1680,7 @@ module.exports.groupText = function (req, res) {
                             var io = req.app.get('socketio');
                             io.emit('comm_textReceived', {
                                 "id": insertedData.ops[0]._id,
+                                "group_id": insertedData.ops[0].group_id,
                                 "senderId": obj.chats[0].senderId,
                                 "senderName": obj.chats[0].senderName,
                                 "message": obj.chats[0].message,

@@ -205,16 +205,16 @@ careatorApp.controller("chatCtrl", function (
       console.log("obj: " + JSON.stringify(obj));
       var api = "https://norecruits.com/careator_textSeenFlagUpdate_toGroupChat/textSeenFlagUpdate_toGroupChat/" + group_id;
       console.log("*api: " + api);
-      // careatorHttpFactory.post(api, obj).then(function (data) {
-      //   console.log("data--" + JSON.stringify(data.data));
-      //   var checkStatus = careatorHttpFactory.dataValidation(data);
-      //   if (checkStatus) {
-      //     console.log("Remove notification for this chat: " + data.data.message);
+      careatorHttpFactory.post(api, obj).then(function (data) {
+        console.log("data--" + JSON.stringify(data.data));
+        var checkStatus = careatorHttpFactory.dataValidation(data);
+        if (checkStatus) {
+          console.log("Remove notification for this chat: " + data.data.message);
 
-      //   } else {
-      //     console.log("Sorry: " + data.data.message);
-      //   }
-      // })
+        } else {
+          console.log("Sorry: " + data.data.message);
+        }
+      })
     } else if ($scope.selectedType == "individual_chats") {
       var api = "https://norecruits.com/careator_getChatsById/getChatsById/" + id;
       console.log("api: " + api);

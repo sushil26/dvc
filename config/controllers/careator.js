@@ -1684,7 +1684,8 @@ module.exports.groupText = function (req, res) {
                                 "senderName": obj.chats[0].senderName,
                                 "message": obj.chats[0].message,
                                 "sendTime": obj.chats[0].sendTime,
-                                "freshInsert": true
+                                "freshInsert": true,
+                                "groupMembers": groupMem
                             }); /* ### Note: Emit message to client ### */
                             response = {
                                 status: true,

@@ -176,7 +176,7 @@ careatorApp.controller("chatCtrl", function (
               senderName: userData.userName,
               groupMembers: $scope.individualData.groupMembers
             };
-
+            
           } else {
             $scope.individualData = data.data.data[0];
             console.log("$scope.allChat: " + JSON.stringify($scope.allChat));
@@ -613,7 +613,7 @@ careatorApp.controller("chatCtrl", function (
               if (tempData.profilePicPath != undefined) {
                 $scope.allChatRecords[x].profilePicPath = tempData.profilePicPath;
               }
-            } else { }
+            } else {}
           } else {
             $scope.allChatRecordsId[x] = $scope.allChatRecords[x]._id;
             var tempData = $scope.allEmpWithIndexById[$scope.allChatRecords[x].receiverId];
@@ -630,7 +630,7 @@ careatorApp.controller("chatCtrl", function (
         $scope.chatedGroup_records = $scope.allChatRecords; /* ### Note: $scope.chatedGroup_records is Chat(chated records) and group(group records) records storage  ### */
         for (var x = 0; x < $scope.allGroup.length; x++) {
           console.log(" $scope.allGroup.length: " + $scope.allGroup.length);
-          console.log("  $scope.chatedGroup_records.length: " + $scope.chatedGroup_records.length);
+           console.log("  $scope.chatedGroup_records.length: " + $scope.chatedGroup_records.length);
           $scope.allGroupIds[$scope.chatedGroup_records.length] = $scope.allGroup[x]._id;
           $scope.chatedGroup_records.push($scope.allGroup[x]);
         }
@@ -715,7 +715,7 @@ careatorApp.controller("chatCtrl", function (
         console.log("2)start pushing message");
         var id = data.id;
         console.log("id: " + id);
-        if (data.senderId != userData.userId && data.group_id == undefined) {
+        if (data.senderId != userData.userId) {
           var obj = {
             "receiverSeen": "yes"
           }
@@ -731,31 +731,6 @@ careatorApp.controller("chatCtrl", function (
               console.log("Sorry: " + data.data.message);
             }
           })
-        }
-        else if (data.senderId != userData.userId && data.group_id != undefined) {
-          var group_id = data.group_id;
-          var obj = {
-            "seenBy": userData.userId,
-            "unseenCount": 0,
-            //"groupMembers": $scope.individualData.groupMembers
-
-          }
-          console.log("obj: " + JSON.stringify(obj));
-          var api = "https://norecruits.com/careator_textSeenFlagUpdate_toGroupChat/textSeenFlagUpdate_toGroupChat/" + group_id;
-          console.log("api: " + api);
-          careatorHttpFactory.post(api, obj).then(function (data) {
-            console.log("data--" + JSON.stringify(data.data));
-            var checkStatus = careatorHttpFactory.dataValidation(data);
-            if (checkStatus) {
-              console.log("Remove notification for this chat: " + data.data.message);
-
-            } else {
-              console.log("Sorry: " + data.data.message);
-            }
-          })
-        }
-        else {
-          console.log("Sorry: NOthing to do");
         }
         $scope.allChat.chats.push({
           senderId: data.senderId,
@@ -906,5 +881,5 @@ careatorApp.controller("chatCtrl", function (
     })
   }
 
-
+  
 });

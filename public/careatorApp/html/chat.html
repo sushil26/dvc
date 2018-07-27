@@ -95,14 +95,7 @@
                                             padding: 5px;
                                             cursor: pointer;
                                             background-image: linear-gradient(to bottom, #f7f8f9 0%, #6f6f6f 100%);
-                                            box-shadow: 1px 2px 5px #000;" ng-click="getAllChatRightEmp()">
-                                                <span style=" background-color: #565656;
-                                            color: transparent;
-                                            text-shadow: 2px 2px 3px rgba(255,255,255,0.5);
-                                            -webkit-background-clip: text;
-                                               -moz-background-clip: text;
-                                                    background-clip: text;">New Chat</span>
-                                            </span>
+                                            box-shadow: 1px 2px 5px #000;" ng-click="getAllChatRightEmp()">New Chat</span>
                                         </div>
                                     </div>
                                     <div class="row sideBar">
@@ -125,12 +118,10 @@
                                                     <div class="col-sm-8 col-xs-8 sideBar-name" ng-click="chatDetails('individual_chats', record._id, $index)">
                                                         <span ng-if="record.senderId!=userId" class="name-meta">{{record.senderName}}
                                                         </span>
-                                                        <span ng-if="record.senderId!=userId && record.receiverSeen=='no' && record.unseenCount > 0" class="notify"> {{record.unseenCount}}</span>
                                                         <span ng-if="record.receiverId!=userId" class="name-meta">{{record.receiverName}}
                                                         </span>
-                                                        <span ng-if="record.receiverId!=userId && record.senderId=='no' && record.unseenCount > 0" class="notify"> {{record.unseenCount}}</span>
 
-                                                       
+                                                        <span ng-if="record.unseenCount > 0" class="notify"> {{record.unseenCount}}</span>
                                                     </div>
                                                     <div class="col-sm-4 col-xs-4 pull-right sideBar-time">
                                                         <span class="time-meta pull-right">{{record.timeStamp | date:' d MMM h:mm a'}}

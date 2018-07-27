@@ -767,7 +767,7 @@ careatorApp.controller("chatCtrl", function (
       }
     }
     else if (data.group_id == undefined) {
-      if (data.freshInsert == true && (userData.userId == data.senderId || userData.userId == data.receiverId)) {
+      if (data.freshInsert == true && ((userData.userId == data.senderId || userData.userId == data.receiverId) || ($scope.individualData.id==data.receiverId)) ) {
         var id = data.id;
         var api = "https://norecruits.com/careator_getChatsById/getChatsById/" + id;
         console.log("api: " + api);

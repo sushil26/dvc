@@ -809,7 +809,7 @@ careatorApp.controller("chatCtrl", function (
         console.log("$scope.allGroupIds: " + JSON.stringify($scope.allGroupIds));
         var index = $scope.allGroupIds.indexOf(data.id);
         if (data.seenBy == userData.userId && index >= 0) {
-          $scope.allChatRecords[index].unseenCount = data.groupMembers[x].unseenCount;
+          $scope.allChatRecords[index].unseenCount = data.unseenCount;
         }
       }
     }

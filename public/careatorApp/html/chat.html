@@ -125,10 +125,10 @@
                                                     <div class="col-sm-8 col-xs-8 sideBar-name" ng-click="chatDetails('individual_chats', record._id, $index)">
                                                         <span ng-if="record.senderId!=userId" class="name-meta">{{record.senderName}}
                                                         </span>
-                                                        <span ng-if="record.senderSeen=='yes' && record.unseenCount > 0" class="notify"> {{record.unseenCount}}</span>
+                                                        <span ng-if="record.senderSeen=='no' && record.unseenCount > 0" class="notify"> {{record.unseenCount}}</span>
                                                         <span ng-if="record.receiverId!=userId" class="name-meta">{{record.receiverName}}
                                                         </span>
-                                                        <span ng-if="record.receiverSeen=='yes' && record.unseenCount > 0" class="notify"> {{record.unseenCount}}</span>
+                                                        <span ng-if="record.receiverSeen=='no' && record.unseenCount > 0" class="notify"> {{record.unseenCount}}</span>
 
                                                        
                                                     </div>

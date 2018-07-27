@@ -798,11 +798,12 @@ careatorApp.controller("chatCtrl", function (
   });
   socket.on("comm_textSeenFlagUpdate", function (data) {
     console.log("****comm_textSeenFlagUpdate-->: " + JSON.stringify(data));
-    console.log("$scope.allChatRecordsId: " + JSON.stringify($scope.allChatRecordsId));
-    console.log("$scope.allChatRecordsIdindexOf(data.id): " + $scope.allChatRecordsId.indexOf(data.id));
-    console.log("$scope.individualData: "+JSON.stringify($scope.individualData));
+    //console.log("$scope.allChatRecordsId: " + JSON.stringify($scope.allChatRecordsId));
+    //console.log("$scope.allChatRecordsIdindexOf(data.id): " + $scope.allChatRecordsId.indexOf(data.id));
+    //console.log("$scope.individualData: "+JSON.stringify($scope.individualData));
+   // console.log("sendGroupText_withData-->: " + JSON.stringify($scope.sendGroupText_withData));
     if (data.isFromGroup != undefined) {
-      if (($scope.individualData != undefined && $scope.individualData.group_id == data.id) ) {
+      if (($scope.individualData != undefined && $scope.sendGroupText_withData.group_id == data.id) ) {
         console.log("UnseenCount added to group");
         console.log("$scope.allGroupIds: "+JSON.stringify($scope.allGroupIds));
         var index = $scope.allGroupIds.indexOf(data.group_id);

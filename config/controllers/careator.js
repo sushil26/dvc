@@ -1731,17 +1731,17 @@ module.exports.groupText = function (req, res) {
                             res.status(400).send(responseData);
                         } else {
                             console.log("updatedData: " + JSON.stringify(updatedData));
-                            // var io = req.app.get('socketio');
-                            // io.emit('comm_textReceived', {
-                            //     "id": data[0]._id,
-                            //     "group_id": data[0].group_id,
-                            //     "senderId": obj.senderId,
-                            //     "senderName": obj.senderName,
-                            //     "message": obj.message,
-                            //     "sendTime": obj.sendTime,
-                            //     "groupMembers": groupMem
+                            var io = req.app.get('socketio');
+                            io.emit('comm_textReceived', {
+                                "id": data[0]._id,
+                                "group_id": data[0].group_id,
+                                "senderId": obj.senderId,
+                                "senderName": obj.senderName,
+                                "message": obj.message,
+                                "sendTime": obj.sendTime,
+                                "groupMembers": groupMem
                                 
-                            // }); /* ### Note: Emit message to client ### */
+                            }); /* ### Note: Emit message to client ### */
                             response = {
                                 status: true,
                                 message: "Sucessfully updated",

@@ -4,10 +4,8 @@
             <div id="profile">
                 <section class="panel">
                     <link rel="stylesheet" href="./css/newChat.css" />
-                    
-                    <style>
-                    
 
+                    <style>
                         .tooltip {
                             font-size: 10px;
                             margin-top: -12px;
@@ -320,9 +318,9 @@
                                                 </span>
                                             </div>
                                         </div>
-                                        <div class="col-sm-12 message-main-sender" ng-if="chat.senderId==userId">
-                                            <div class="sender slideLeft">
-                                                <div class="message-text " >
+                                        <div class="col-sm-12 message-main-sender slideLeft" ng-if="chat.senderId==userId">
+                                            <div class="sender">
+                                                <div class="message-text">
                                                     {{chat.message}}
                                                 </div>
                                                 <span class="message-time pull-right">
@@ -330,13 +328,13 @@
                                                 </span>
                                             </div>
                                         </div>
-                                      
+
 
                                     </div>
                                 </div>
                                 <div class="row reply">
                                     <div class="col-sm-9 col-xs-9 reply-main">
-                                       
+
 
                                         <textarea class="form-control" rows="1" id="comment" ng-model="typedMessage"></textarea>
                                     </div>

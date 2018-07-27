@@ -672,7 +672,7 @@ careatorApp.controller("chatCtrl", function (
     }
     if (data.group_id != undefined) {
       console.log("**Group text received");
-      if (data.freshInsert == true && $scope.individualData != undefined && $scope.individualData.group_id == data.group_id) {
+      if (data.freshInsert == true && $scope.individualData != undefined && $scope.individualData._id == data.group_id) {
         console.log("Fresh Insert");
         var id = data.id;
         var api = "https://norecruits.com/careator_getChatsById/getChatsById/" + id;

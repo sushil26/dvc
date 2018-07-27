@@ -202,8 +202,6 @@ careatorApp.controller("chatCtrl", function (
       var obj = {
         "seenBy": userData.userId,
         "unseenCount": 0,
-        "groupMembers": $scope.individualData.groupMembers
-
       }
       console.log("obj: " + JSON.stringify(obj));
       var api = "https://norecruits.com/careator_textSeenFlagUpdate_toGroupChat/textSeenFlagUpdate_toGroupChat/" + group_id;
@@ -705,7 +703,6 @@ careatorApp.controller("chatCtrl", function (
             console.log("obj: " + JSON.stringify(obj));
             var api = "https://norecruits.com/careator_textSeenFlagUpdate_toGroupChat/textSeenFlagUpdate_toGroupChat/" + group_id;
             console.log("api: " + api);
-
           }
           else {
             var obj = {
@@ -734,11 +731,6 @@ careatorApp.controller("chatCtrl", function (
         $scope.scrollDown();
       } else if ($scope.individualData == undefined || $scope.allChatRecordsId.indexOf(data.id) >= 0) {
         console.log("Notify the Unseen message count: " + JSON.stringify(data));
-        // if (data.senderId != userData.userId) {
-        //   var index = $scope.allChatRecordsId.indexOf(data.id);
-        //   $scope.allChatRecords[index].unseenCount = data.unseenCount;
-        // }
-        // else
         if (data.receiverId == userData.userId) {
           var index = $scope.allChatRecordsId.indexOf(data.id);
           $scope.allChatRecords[index].unseenCount = data.unseenCount;

@@ -54,8 +54,12 @@
                                                 id="profile-image1" class="img-circle img-responsive">
                                             <img alt="User Pic" ng-if="chatStatus=='Custom'" style="max-width: 50px; border: 2px solid #FFC107;" ng-src="{{profilePicPath}}"
                                                 id="profile-image1" class="img-circle img-responsive">
-                                            <h5 style="margin-top: -30px;
-                                                    margin-left: 55px;">{{loginUserName}}</h5>
+                                            <h5 style="    font-size: 15px;
+                                            text-transform: capitalize;
+                                            color: papayawhip;
+                                            margin-top: -30px;
+                                            margin-left: 55px;
+                                            font-family: sans-serif;">{{loginUserName}}</h5>
                                             <div class="tooltip">
                                                 <span ng-if="chatStatus=='Available'" style="color: yellowgreen;">{{chatStatus}}</span>
                                                 <span ng-if="chatStatus=='Busy'" style="color: goldenrod;">{{chatStatus}}</span>

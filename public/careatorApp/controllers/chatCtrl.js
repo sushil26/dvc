@@ -204,7 +204,7 @@ careatorApp.controller("chatCtrl", function (
       }
       console.log("obj: " + JSON.stringify(obj));
       var api = "https://norecruits.com/careator_textSeenFlagUpdate_toGroupChat/textSeenFlagUpdate_toGroupChat/" + group_id;
-      console.log("api: " + api);
+      console.log("*api: " + api);
       careatorHttpFactory.post(api, obj).then(function (data) {
         console.log("data--" + JSON.stringify(data.data));
         var checkStatus = careatorHttpFactory.dataValidation(data);
@@ -701,7 +701,7 @@ careatorApp.controller("chatCtrl", function (
             }
             console.log("obj: " + JSON.stringify(obj));
             var api = "https://norecruits.com/careator_textSeenFlagUpdate_toGroupChat/textSeenFlagUpdate_toGroupChat/" + group_id;
-            console.log("api: " + api);
+            console.log("*api: " + api);
           }
           else {
             var obj = {

@@ -739,8 +739,8 @@ careatorApp.controller("chatCtrl", function (
           console.log("UnseenCount added to group");
           var index = $scope.allGroupIds.indexOf(data.group_id);
           console.log("index: " + index);
-          console.log(" $scope.allChatRecords[index]: " + JSON.stringify($scope.allChatRecords[index]));
           $scope.allChatRecords[index].unseenCount = data.unseenCount;
+          console.log(" $scope.allChatRecords[index]: " + JSON.stringify($scope.allChatRecords[index]));
         }
 
 

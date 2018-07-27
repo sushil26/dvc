@@ -665,6 +665,15 @@ careatorApp.controller("chatCtrl", function (
         console.log("obj: " + JSON.stringify(obj));
         var api = "https://norecruits.com/careator_textSeenFlagUpdate_toGroupChat/textSeenFlagUpdate_toGroupChat/" + group_id;
         console.log("*api: " + api);
+        careatorHttpFactory.post(api, obj).then(function (data) {
+          console.log("data--" + JSON.stringify(data.data));
+          var checkStatus = careatorHttpFactory.dataValidation(data);
+          if (checkStatus) {
+            console.log("Message: " + data.data.message);
+          } else {
+            console.log("Sorry: " + data.data.message);
+          }
+        })
       }
       else {
         console.log("Need to notify");
@@ -673,7 +682,7 @@ careatorApp.controller("chatCtrl", function (
           console.log("UnseenCount added to group");
           var index = $scope.allGroupIds.indexOf(data.group_id);
           console.log("index: " + index);
-          if(index>=0){
+          if (index >= 0) {
             for (var x = 0; x < data.groupMembers.length; x++) {
               if (userData.userId == data.groupMembers[x].userId) {
                 $scope.allChatRecords[index].unseenCount = data.groupMembers[x].unseenCount;
@@ -685,10 +694,8 @@ careatorApp.controller("chatCtrl", function (
               }
             }
           }
-         
         }
       }
-
     }
     else if (data.group_id == undefined) {
       if (data.freshInsert == true && (userData.userId == data.senderId || userData.userId == data.receiverId)) {
@@ -761,7 +768,7 @@ careatorApp.controller("chatCtrl", function (
             var index = $scope.allChatRecordsId.indexOf(data.id);
             $scope.allChatRecords[index].unseenCount = data.unseenCount;
           }
-          
+
         }
         else {
 
@@ -773,15 +780,36 @@ careatorApp.controller("chatCtrl", function (
     console.log("****comm_textSeenFlagUpdate-->: " + JSON.stringify(data));
     console.log("$scope.allChatRecordsId: " + JSON.stringify($scope.allChatRecordsId));
     console.log("$scope.allChatRecordsIdindexOf(data.id): " + $scope.allChatRecordsId.indexOf(data.id));
-    if (($scope.allChatRecordsId.indexOf(data.id) >= 0) && data.seenBy == userData.userId) {
-      console.log("Need to update");
-      var index = $scope.allChatRecordsId.indexOf(data.id);
-      $scope.allChatRecords[index].unseenCount = data.unseenCount;
+    console.log("$scope.individualData: "+JSON.stringify($scope.individualData));
+    if (data.isFromGroup != undefined) {
+      if (($scope.individualData != undefined && $scope.individualData._id != data.id) ) {
+        console.log("UnseenCount added to group");
+        var index = $scope.allGroupIds.indexOf(data.group_id);
+        console.log("index: " + index);
+        if (index >= 0) {
+          for (var x = 0; x < data.groupMembers.length; x++) {
+            if (userData.userId == data.groupMembers[x].userId) {
+              $scope.allChatRecords[index].unseenCount = data.groupMembers[x].unseenCount;
+              console.log(" $scope.allChatRecords[index]: " + JSON.stringify($scope.allChatRecords[index]));
+              break;
+            }
+            else {
+              console.log("Noting to do");
+            }
+          }
+        }
+      }
     }
-    else if (($scope.allChatRecordsId.indexOf(data.id) >= 0) && data.seenBy != userData.userId) {
-      console.log("No need to update");
+    else {
+      if (($scope.allChatRecordsId.indexOf(data.id) >= 0) && data.seenBy == userData.userId) {
+        console.log("Need to update");
+        var index = $scope.allChatRecordsId.indexOf(data.id);
+        $scope.allChatRecords[index].unseenCount = data.unseenCount;
+      }
+      else if (($scope.allChatRecordsId.indexOf(data.id) >= 0) && data.seenBy != userData.userId) {
+        console.log("No need to update");
+      }
     }
-
   })
   socket.on("comm_aboutRestrictedUpdate", function (data) {
     //update to client about their new restricted users

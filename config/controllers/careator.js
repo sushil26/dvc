@@ -1786,7 +1786,8 @@ module.exports.textSeenFlagUpdate_toGroupChat = function (req, res) {
                 io.emit('comm_textSeenFlagUpdate', {
                     "id": req.params.group_id,
                     "seenBy": req.body.seenBy,
-                    "unseenCount": 0
+                    "unseenCount": 0,
+                     "isFromGroup": "yes"
                 }); /* ### Note: Emit message to client ### */
                 response = {
                     status: true,

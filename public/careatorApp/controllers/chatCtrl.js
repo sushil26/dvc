@@ -672,7 +672,7 @@ careatorApp.controller("chatCtrl", function (
     }
     if (data.group_id != undefined) {
       console.log("**Group text received");
-      if ((data.freshInsert==undefined && $scope.individualData != undefined && $scope.individualData._id == data.id) || (data.freshInsert==undefined && $scope.individualData != undefined && $scope.individualData._id == data.id)) {
+      if ((data.freshInsert==undefined && $scope.individualData != undefined && $scope.individualData._id == data.id) || (data.freshInsert=='yes' && $scope.individualData != undefined && $scope.individualData.group_id == data.group_id)) {
         var group_id = data.group_id;
         var obj = {
           "seenBy": userData.userId,

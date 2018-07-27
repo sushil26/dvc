@@ -126,7 +126,6 @@
   -webkit-animation: slide 0.5s;
   animation: slide 0.5s;
   animation-timing-function: ease-out;
-  animation-delay: 1s;
 }
 
 .slideRight {
@@ -141,10 +140,12 @@
     -webkit-transform: translate3d(100%, 0, 0);
     transform: translate3d(100%, 0, 0);
     visibility: visible;
+    opacity: 0;
   }
   to {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
+    opacity: 1;
   }
 }
 
@@ -152,11 +153,12 @@
   from {
     -webkit-transform: translate3d(100%, 0, 0);
     transform: translate3d(100%, 0, 0);
-    visibility: visible;
+    visibility: visible;opacity: 0;
   }
   to {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
+    opacity: 1;
   }
 }
 
@@ -177,10 +179,12 @@
     -webkit-transform: translate3d(-100%, 0, 0);
     transform: translate3d(-100%, 0, 0);
     visibility: visible;
+    opacity: 0;
   }
   to {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
+    opacity: 1;
   }
 }
 

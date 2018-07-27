@@ -39,83 +39,88 @@
                     <li ng-if="userData.email=='vc4all@careator.com'">
                         <a href="#!/dashboard/userCreate">
                             <i class="fa fa-user-circle">
-                                <span>&nbspCreate User</span>
+                                <span style="background-color: #565656;
+                                color: transparent;
+                                text-shadow: 2px 2px 3px rgba(255,255,255,0.5);
+                                -webkit-background-clip: text;
+                                   -moz-background-clip: text;
+                                        background-clip: text;">&nbspCreate User</span>
                             </i>
                         </a>
                     </li>
-                    <li ng-if="userData.email=='vc4all@careator.com'">
-                        <a href="#!/dashboard/userRestrict">
-                            <i class="fa fa-universal-access">
+                    <li ng-if="userData.email=='vc4all@careator.com' ">
+                        <a href="#!/dashboard/userRestrict ">
+                            <i class="fa fa-universal-access ">
                                 <span>&nbspRestrict Connectivity</span>
                             </i>
                         </a>
                     </li>
-                    <li ng-if="userData.email=='vc4all@careator.com'">
-                        <a href="#!/dashboard/createGroup">
-                            <i class="fa fa-users">
+                    <li ng-if="userData.email=='vc4all@careator.com' ">
+                        <a href="#!/dashboard/createGroup ">
+                            <i class="fa fa-users ">
                                 <span>&nbspCreate Group</span>
                             </i>
                         </a>
                     </li>
-                    <li ng-if="userData.email=='vc4all@careator.com'">
-                        <a href="#!/dashboard/usersList">
-                            <i class="fa fa-list-alt">
+                    <li ng-if="userData.email=='vc4all@careator.com' ">
+                        <a href="#!/dashboard/usersList ">
+                            <i class="fa fa-list-alt ">
                                 <span>&nbspAll Users</span>
                             </i>
                         </a>
                     </li>
-                    <li ng-if="userData.email=='vc4all@careator.com'">
-                        <a href="#!/dashboard/groupList">
-                            <i class="fa fa-list">
+                    <li ng-if="userData.email=='vc4all@careator.com' ">
+                        <a href="#!/dashboard/groupList ">
+                            <i class="fa fa-list ">
                                 <span>&nbspAll Groups</span>
                             </i>
                         </a>
                     </li>
                     <li>
-                        <a href="#!/dashboard/profile">
-                            <i class="fa fa-user-circle-o">
+                        <a href="#!/dashboard/profile ">
+                            <i class="fa fa-user-circle-o ">
                                 <span>&nbspProfile</span>
                             </i>
                         </a>
                     </li>
 
                     <li>
-                        <a href="#!/dashboard/chat">
-                            <i class="fa fa-comment">
+                        <a href="#!/dashboard/chat ">
+                            <i class="fa fa-comment ">
                                 <span>&nbspChat</span>
                             </i>
                         </a>
                     </li>
-                    <li ng-if="videoRights=='yes'">
-                        <!-- <a ng-if="sessionHostBlock=='no'" href="https://norecruits.com/careator" target="_blank"> -->
-                        <a href="#" ng-click="navigateintoBoth_CVoption()">
-                            <i class="fa fa-video-camera">
+                    <li ng-if="videoRights=='yes' ">
+                        <!-- <a ng-if="sessionHostBlock=='no' " href="https://norecruits.com/careator " target="_blank "> -->
+                        <a href="# " ng-click="navigateintoBoth_CVoption() ">
+                            <i class="fa fa-video-camera ">
                                 <span>&nbspVideo</span>
                             </i>
                         </a>
-                        <!-- <a ng-if="sessionHostBlock=='yes'" href="#" ng-click="closeYourOldSession()">
-                            <i class="fa fa-video-camera">
+                        <!-- <a ng-if="sessionHostBlock=='yes' " href="# " ng-click="closeYourOldSession() ">
+                            <i class="fa fa-video-camera ">
                                 <span>&nbspVideo</span>
                             </i>
                         </a> -->
                     </li>
-                    <!-- <li ng-if="userData.email !='vc4all@careator.com'">
-                        <a href="#!/dashboard/contactAdmin">
-                            <i class="fa fa-user-secret">
+                    <!-- <li ng-if="userData.email !='vc4all@careator.com' ">
+                        <a href="#!/dashboard/contactAdmin ">
+                            <i class="fa fa-user-secret ">
                                 <span>&nbspContact Admin</span>
                             </i>
                         </a>
                     </li> -->
                     <li>
-                        <a ng-click="logout()">
-                            <i class="fa fa-sign-out">
+                        <a ng-click="logout() ">
+                            <i class="fa fa-sign-out ">
                                 <span>&nbspLogout</span>
                             </i>
                         </a>
                     </li>
                     <!-- <li>
-                            <a href="#!/dashboard/videoChat">
-                                <i class="fa fa-sign-out">
+                            <a href="#!/dashboard/videoChat ">
+                                <i class="fa fa-sign-out ">
                                     <span>&nbsp;Video</span>
                                 </i>
                             </a>
@@ -124,30 +129,34 @@
                 </ul>
             </div>
         </aside>
-        <!-- <textarea id="ta" class="ta"></textarea>
-        <div id="render" style="display:none"></div> -->
+        <!-- <textarea id="ta " class="ta "></textarea>
+        <div id="render " style="display:none "></div> -->
         <!--sidebar end-->
-        <div ui-view class="user-body">
+        <div ui-view class="user-body ">
         </div>
 
-        <button data-toggle="modal" data-target="#notify_msg_confirm" id="notify_msg_confirm_button" data-backdrop="static" data-keyboard="false"
-            style="display:none">Enter Password</button>
+        <button data-toggle="modal " data-target="#notify_msg_confirm " id="notify_msg_confirm_button " data-backdrop="static
+                                    " data-keyboard="false "
+            style="display:none ">Enter Password</button>
 
-        <div class="modal fade" id="notify_msg_confirm" role="dialog">
-            <div class="modal-dialog">
+        <div class="modal fade " id="notify_msg_confirm " role="dialog ">
+            <div class="modal-dialog ">
                 <center>
                     <form>
-                        <div class="modal-content" style="color:#777;max-width:350px;">
-                            <div class="modal-header" style="background-image: linear-gradient(to bottom, #383c3f 0%, #202224 100%);">
-                                <img style="width: 45px;margin-top: -15px; margin-left: -150px;" src="/home/img/fav.png" />
-                                <span class="modal-title"></span>Message
+                        <div class="modal-content " style="color:#777;max-width:350px; ">
+                            <div class="modal-header " style="background-image: linear-gradient(to bottom, #383c3f 0%,
+                                    #202224 100%); ">
+                                <img style="width: 45px;margin-top: -15px; margin-left: -150px; " src="/home/img/fav.png " />
+                                <span class="modal-title "></span>Message
                             </div>
-                            <div class="modal-body">
-                                <label id="notify_msg_confirm_content" style="color:red"></label>
+                            <div class="modal-body ">
+                                <label id="notify_msg_confirm_content " style="color:red "></label>
                             </div>
-                            <div class="modal-footer" style="border-top:0px;background-color: #f5f5f5;" ng-if="resetLoginFlag_clicked=='true'">
-                                <button type="button" style="background-color: #29b6bd;color:#f1f1f1" class="btn" data-dismiss="modal">Cancel</button>
-                                <button type="button" style="background-color: #29b6bd;color:#f1f1f1" class="btn" ng-click="ok_forLogin()">Ok</button>
+                            <div class="modal-footer " style="border-top:0px;background-color: #f5f5f5; " ng-if="resetLoginFlag_clicked=='true' ">
+                                <button type="button " style="background-color: #29b6bd;color:#f1f1f1 " class="btn
+                                    " data-dismiss="modal ">Cancel</button>
+                                <button type="button " style="background-color: #29b6bd;color:#f1f1f1 " class="btn
+                                    " ng-click="ok_forLogin() ">Ok</button>
                             </div>
                         </div>
                     </form>
@@ -156,54 +165,63 @@
         </div>
 
     </section>
-    <!-- <script src="../dashboard_Lib/js/jquery.js"></script> -->
-    <script src="../dashboard_Lib/js/bootstrap.min.js"></script>
-    <script src="../dashboard_Lib/js/jquery.nicescroll.js"></script>
-    <script src="../dashboard_Lib/js/jquery.scrollTo.min.js"></script>
-    <script src="../dashboard_Lib/js/scripts.js"></script>
+    <!-- <script src="../dashboard_Lib/js/jquery.js "></script> -->
+    <script src="../dashboard_Lib/js/bootstrap.min.js "></script>
+    <script src="../dashboard_Lib/js/jquery.nicescroll.js "></script>
+    <script src="../dashboard_Lib/js/jquery.scrollTo.min.js "></script>
+    <script src="../dashboard_Lib/js/scripts.js "></script>
 
 
-    <button data-toggle="modal" data-target="#logoutConfirmation" id="logoutConfirmationButton" data-backdrop="static" data-keyboard="false"
-        style="display:none"></button>
+    <button data-toggle="modal " data-target="#logoutConfirmation " id="logoutConfirmationButton " data-backdrop="static
+                                    " data-keyboard="false "
+        style="display:none "></button>
 
-    <div class="modal fade" id="logoutConfirmation" role="dialog">
-        <div class="modal-dialog">
+    <div class="modal fade " id="logoutConfirmation " role="dialog ">
+        <div class="modal-dialog ">
             <center>
                 <form>
-                    <div class="modal-content" style="color:#777;max-width:350px; border-radius: 8px;">
-                        <div class="modal-header" style="padding-top: 15px;background-image: linear-gradient(to bottom, #383c3f 0%, #202224 100%);">
-                            <img style="width: 45px;margin-top: -15px;margin-left: -190px;" src="/home/img/fav.png" />
-                            <span class="modal-title" style="font-weight: 200;">Confirmation !!</span>
+                    <div class="modal-content " style="color:#777;max-width:350px; border-radius: 8px; ">
+                        <div class="modal-header " style="padding-top: 15px;background-image: linear-gradient(to bottom,
+                                    #383c3f 0%, #202224 100%); ">
+                            <img style="width: 45px;margin-top: -15px;margin-left: -190px; " src="/home/img/fav.png " />
+                            <span class="modal-title " style="font-weight: 200; ">Confirmation !!</span>
                         </div>
-                        <div class="modal-body">
-                            <label id="notify_msg_confirm_content" style="color:black;font-size: 20px;">Are you sure to close all session ?</label>
+                        <div class="modal-body ">
+                            <label id="notify_msg_confirm_content " style="color:black;font-size: 20px; ">Are you sure to close all session ?</label>
                         </div>
-                        <div class="modal-footer" style="padding-top: 15px;background-image: linear-gradient(to bottom, #202224 0%, #383c3f 100%);">
-                            <button type="button" style="background-color: #29b6bd;color:#f1f1f1" class="btn" data-dismiss="modal">No</button>
-                            <button type="button" style="background-color: #29b6bd;color:#f1f1f1" class="btn" ng-click="userLogout()" data-dismiss="modal">Yes</button>
+                        <div class="modal-footer " style="padding-top: 15px;background-image: linear-gradient(to bottom,
+                                    #202224 0%, #383c3f 100%); ">
+                            <button type="button " style="background-color: #29b6bd;color:#f1f1f1 " class="btn
+                                    " data-dismiss="modal ">No</button>
+                            <button type="button " style="background-color: #29b6bd;color:#f1f1f1 " class="btn
+                                    " ng-click="userLogout() " data-dismiss="modal ">Yes</button>
                         </div>
                     </div>
                 </form>
             </center>
         </div>
     </div>
-    <button data-toggle="modal" data-target="#closeConfirmation" id="closeConfirmationButton" data-backdrop="static" data-keyboard="false"
-        style="display:none"></button>
+    <button data-toggle="modal " data-target="#closeConfirmation " id="closeConfirmationButton " data-backdrop="static
+                                    " data-keyboard="false "
+        style="display:none "></button>
 
-    <div class="modal fade" id="closeConfirmation" role="dialog">
-        <div class="modal-dialog">
+    <div class="modal fade " id="closeConfirmation " role="dialog ">
+        <div class="modal-dialog ">
             <center>
                 <form>
-                    <div class="modal-content" style="color:#777;max-width:350px; border-radius: 8px;">
-                        <div class="modal-header" style="padding-top: 15px;background-image: linear-gradient(to bottom, #383c3f 0%, #202224 100%);">
-                            <img style="width: 45px;margin-top: -15px;margin-left: -190px;" src="/home/img/fav.png" />
-                            <span class="modal-title" style="font-weight: 200;">Alert !!</span>
+                    <div class="modal-content " style="color:#777;max-width:350px; border-radius: 8px; ">
+                        <div class="modal-header " style="padding-top: 15px;background-image: linear-gradient(to bottom,
+                                    #383c3f 0%, #202224 100%); ">
+                            <img style="width: 45px;margin-top: -15px;margin-left: -190px; " src="/home/img/fav.png " />
+                            <span class="modal-title " style="font-weight: 200; ">Alert !!</span>
                         </div>
-                        <div class="modal-body">
-                            <label id="notify_msg_confirm_content" style="color:black;font-size: 20px;">you have Already open open this url</label>
+                        <div class="modal-body ">
+                            <label id="notify_msg_confirm_content " style="color:black;font-size: 20px; ">you have Already open open this url</label>
                         </div>
-                        <div class="modal-footer" style="padding-top: 15px;background-image: linear-gradient(to bottom, #202224 0%, #383c3f 100%);">
-                            <button type="button" style="background-color: #29b6bd;color:#f1f1f1" class="btn" data-dismiss="modal" ng-click="focust()">OK</button>
+                        <div class="modal-footer " style="padding-top: 15px;background-image: linear-gradient(to bottom,
+                                    #202224 0%, #383c3f 100%); ">
+                            <button type="button " style="background-color: #29b6bd;color:#f1f1f1 " class="btn
+                                    " data-dismiss="modal " ng-click="focust() ">OK</button>
 
                         </div>
                     </div>
@@ -211,23 +229,27 @@
             </center>
         </div>
     </div>
-    <button data-toggle="modal" data-target="#closeConfirmation2" id="closeConfirmationButton2" data-backdrop="static" data-keyboard="false"
-    style="display:none"></button>
+    <button data-toggle="modal " data-target="#closeConfirmation2 " id="closeConfirmationButton2 " data-backdrop="static
+                                    " data-keyboard="false "
+    style="display:none "></button>
 
-<div class="modal fade" id="closeConfirmation2" role="dialog">
-    <div class="modal-dialog">
+<div class="modal fade " id="closeConfirmation2 " role="dialog ">
+    <div class="modal-dialog ">
         <center>
             <form>
-                <div class="modal-content" style="color:#777;max-width:350px; border-radius: 8px;">
-                    <div class="modal-header" style="padding-top: 15px;background-image: linear-gradient(to bottom, #383c3f 0%, #202224 100%);">
-                        <img style="width: 45px;margin-top: -15px;margin-left: -190px;" src="/home/img/fav.png" />
-                        <span class="modal-title" style="font-weight: 200;">Alert !!</span>
+                <div class="modal-content " style="color:#777;max-width:350px; border-radius: 8px; ">
+                    <div class="modal-header " style="padding-top: 15px;background-image: linear-gradient(to bottom, #383c3f
+                                    0%, #202224 100%); ">
+                        <img style="width: 45px;margin-top: -15px;margin-left: -190px; " src="/home/img/fav.png " />
+                        <span class="modal-title " style="font-weight: 200; ">Alert !!</span>
                     </div>
-                    <div class="modal-body">
-                        <label id="notify_ms" style="color:black;font-size: 20px;">you have Already open open this url</label>
+                    <div class="modal-body ">
+                        <label id="notify_ms " style="color:black;font-size: 20px; ">you have Already open open this url</label>
                     </div>
-                    <div class="modal-footer" style="padding-top: 15px;background-image: linear-gradient(to bottom, #202224 0%, #383c3f 100%);">
-                        <button type="button" style="background-color: #29b6bd;color:#f1f1f1" class="btn" data-dismiss="modal" onclick="focust2()">OK</button>
+                    <div class="modal-footer " style="padding-top: 15px;background-image: linear-gradient(to bottom, #202224
+                                    0%, #383c3f 100%); ">
+                        <button type="button " style="background-color: #29b6bd;color:#f1f1f1 " class="btn
+                                    " data-dismiss="modal " onclick="focust2() ">OK</button>
 
                     </div>
                 </div>

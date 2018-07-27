@@ -672,7 +672,7 @@ careatorApp.controller("chatCtrl", function (
     }
     if (data.group_id != undefined) {
       console.log("**Group text received");
-      if ((data.freshInsert==undefined && $scope.individualData != undefined && $scope.individualData._id == data.id) || (data.freshInsert=='yes' && $scope.individualData != undefined && $scope.individualData.group_id == data.group_id)) {
+      if (data.freshInsert == 'yes') {
         var group_id = data.group_id;
         var obj = {
           "seenBy": userData.userId,
@@ -699,21 +699,49 @@ careatorApp.controller("chatCtrl", function (
         $scope.scrollDown();
       }
       else {
-        console.log("Need to notify");
-        console.log("")
-        if (($scope.individualData != undefined && $scope.individualData._id != data.id) || $scope.allGroupIds.indexOf(data.group_id)>=0) {
-          console.log("UnseenCount added to group");
-          var index = $scope.allGroupIds.indexOf(data.group_id);
-          console.log("index: " + index);
-          if (index >= 0) {
-            for (var x = 0; x < data.groupMembers.length; x++) {
-              if (userData.userId == data.groupMembers[x].userId) {
-                $scope.allChatRecords[index].unseenCount = data.groupMembers[x].unseenCount;
-                console.log(" $scope.allChatRecords[index]: " + JSON.stringify($scope.allChatRecords[index]));
-                break;
-              }
-              else {
-                console.log("Noting to do");
+        if ($scope.individualData != undefined && $scope.individualData._id == data.id) {
+          var group_id = data.group_id;
+          var obj = {
+            "seenBy": userData.userId,
+            "unseenCount": 0,
+          }
+          console.log("obj: " + JSON.stringify(obj));
+          var api = "https://norecruits.com/careator_textSeenFlagUpdate_toGroupChat/textSeenFlagUpdate_toGroupChat/" + group_id;
+          console.log("*api: " + api);
+          careatorHttpFactory.post(api, obj).then(function (data) {
+            console.log("data--" + JSON.stringify(data.data));
+            var checkStatus = careatorHttpFactory.dataValidation(data);
+            if (checkStatus) {
+              console.log("Message: " + data.data.message);
+            } else {
+              console.log("Sorry: " + data.data.message);
+            }
+          })
+          $scope.allChat.chats.push({
+            senderId: data.senderId,
+            senderName: data.senderName,
+            message: data.message,
+            sendTime: data.sendTime
+          });
+          $scope.scrollDown();
+        }
+        else {
+          console.log("Need to notify");
+          console.log("")
+          if (($scope.individualData != undefined && $scope.individualData._id != data.id) || $scope.allGroupIds.indexOf(data.group_id) >= 0) {
+            console.log("UnseenCount added to group");
+            var index = $scope.allGroupIds.indexOf(data.group_id);
+            console.log("index: " + index);
+            if (index >= 0) {
+              for (var x = 0; x < data.groupMembers.length; x++) {
+                if (userData.userId == data.groupMembers[x].userId) {
+                  $scope.allChatRecords[index].unseenCount = data.groupMembers[x].unseenCount;
+                  console.log(" $scope.allChatRecords[index]: " + JSON.stringify($scope.allChatRecords[index]));
+                  break;
+                }
+                else {
+                  console.log("Noting to do");
+                }
               }
             }
           }

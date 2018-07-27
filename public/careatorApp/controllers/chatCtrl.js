@@ -674,6 +674,13 @@ careatorApp.controller("chatCtrl", function (
             console.log("Sorry: " + data.data.message);
           }
         })
+        $scope.allChat.chats.push({
+          senderId: data.senderId,
+          senderName: data.senderName,
+          message: data.message,
+          sendTime: data.sendTime
+        });
+        $scope.scrollDown();
       }
       else {
         console.log("Need to notify");

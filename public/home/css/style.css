@@ -51,8 +51,10 @@
 }
 
 .slideLeft {
-  -webkit-animation: slide 2s ;
-  animation: slide 2s ;
+  -webkit-animation: slide 0.5s;
+  animation: slide 0.5s;
+  animation-timing-function: ease-out;
+
 }
 
 @-webkit-keyframes slide {

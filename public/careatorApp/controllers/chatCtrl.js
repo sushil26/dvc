@@ -598,6 +598,9 @@ careatorApp.controller("chatCtrl", function (
         console.log("allChatRecords: " + JSON.stringify($scope.allChatRecords));
         console.log(data.data.message);
         for (var x = 0; x < $scope.allChatRecords.length; x++) {
+          if( $scope.allChatRecords[x].unseenCount!=undefined){
+
+          }
           if ($scope.allChatRecords[x].senderId != userData.userId) {
             $scope.allChatRecordsId[x] = $scope.allChatRecords[x]._id;
             var tempData = $scope.allEmpWithIndexById[$scope.allChatRecords[x].senderId];

@@ -1649,7 +1649,10 @@ module.exports.groupText = function (req, res) {
                             "message": req.body.message,
                             "sendTime": date
                         }],
-                        "timeStamp": date
+                        "timeStamp": date,
+                        "senderSeen": "yes",
+                        "senderSeen": "no",
+                        "unseenCount": 1
                     }
                     var groupMembers = [];
                     var groupMem = req.body.groupMembers;

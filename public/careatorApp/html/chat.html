@@ -131,7 +131,7 @@
                                                     <div class="col-sm-8 col-xs-8 sideBar-name" ng-click="chatDetails('group', record._id, $index)">
                                                         <span class="name-meta">{{record.groupName}}
                                                         </span>
-                                                        <span class="notify">{{count}}</span>
+                                                        <span ng-if="record.unseenCount > 0" class="notify"> {{record.unseenCount}}</span>
                                                     </div>
                                                     <div class="col-sm-4 col-xs-4 pull-right sideBar-time">
                                                         <span class="time-meta pull-right">{{record.timeStamp | date:' d MMM h:mm a'}}

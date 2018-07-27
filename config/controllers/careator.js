@@ -1703,6 +1703,7 @@ module.exports.groupText = function (req, res) {
                     }
                     var groupMembers = [];
                     var groupMem = data[0].groupMembers;
+                    console.log("groupMem : " + JSON.stringify(groupMem));
                     for (var x = 0; x < groupMem.length; x++) {
                         if (groupMem[x].userId == req.body.senderId) {
                             groupMem[x].unseenCount = 0;

@@ -211,7 +211,20 @@ careatorApp.controller("chatCtrl", function (
         var checkStatus = careatorHttpFactory.dataValidation(data);
         if (checkStatus) {
           console.log("Remove notification for this chat: " + data.data.message);
-
+          var index = $scope.allGroupIds.indexOf(data.group_id);
+          console.log("index: " + index);
+          // if (index >= 0) {
+          //   for (var x = 0; x < data.groupMembers.length; x++) {
+          //     if (userData.userId == data.groupMembers[x].userId) {
+          //       $scope.allChatRecords[index].unseenCount = data.groupMembers[x].unseenCount;
+          //       console.log(" $scope.allChatRecords[index]: " + JSON.stringify($scope.allChatRecords[index]));
+          //       break;
+          //     }
+          //     else {
+          //       console.log("Noting to do");
+          //     }
+          //   }
+          // }
         } else {
           console.log("Sorry: " + data.data.message);
         }
@@ -789,7 +802,7 @@ careatorApp.controller("chatCtrl", function (
     console.log("$scope.allChatRecordsIdindexOf(data.id): " + $scope.allChatRecordsId.indexOf(data.id));
     console.log("$scope.individualData: "+JSON.stringify($scope.individualData));
     if (data.isFromGroup != undefined) {
-      if (($scope.individualData != undefined && $scope.individualData._id != data.id) ) {
+      if (($scope.individualData != undefined && $scope.individualData.group_id != data.id) ) {
         console.log("UnseenCount added to group");
         var index = $scope.allGroupIds.indexOf(data.group_id);
         console.log("index: " + index);

@@ -808,18 +808,8 @@ careatorApp.controller("chatCtrl", function (
         console.log("UnseenCount added to group");
         console.log("$scope.allGroupIds: " + JSON.stringify($scope.allGroupIds));
         var index = $scope.allGroupIds.indexOf(data.id);
-        console.log("index: " + index);
-        if (index >= 0) {
-          for (var x = 0; x < data.groupMembers.length; x++) {
-            if (userData.userId == data.groupMembers[x].userId) {
-              $scope.allChatRecords[index].unseenCount = data.groupMembers[x].unseenCount;
-              console.log(" $scope.allChatRecords[index]: " + JSON.stringify($scope.allChatRecords[index]));
-              break;
-            }
-            else {
-              console.log("Noting to do");
-            }
-          }
+        if (data.seenBy == userData.userId && index >= 0) {
+          $scope.allChatRecords[index].unseenCount = data.groupMembers[x].unseenCount;
         }
       }
     }

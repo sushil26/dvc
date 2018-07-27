@@ -253,7 +253,6 @@ body {
   padding: 0 !important;
 }
 
-
 a:hover,
 a:active,
 a:focus {
@@ -1017,6 +1016,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   background-image: url(././lc.jpg);
   /* background: #f7f7f7; */
   padding: 80px 0;
+  background-attachment: fixed;
 }
 
 #portfolio #portfolio-wrapper {

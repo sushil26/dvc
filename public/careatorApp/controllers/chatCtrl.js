@@ -176,7 +176,6 @@ careatorApp.controller("chatCtrl", function (
               senderName: userData.userName,
               groupMembers: $scope.individualData.groupMembers
             };
-
           } else {
             $scope.individualData = data.data.data[0];
             console.log("$scope.allChat: " + JSON.stringify($scope.allChat));
@@ -732,6 +731,7 @@ careatorApp.controller("chatCtrl", function (
       } else if ($scope.individualData == undefined || $scope.allChatRecordsId.indexOf(data.id) >= 0) {
         console.log("Notify the Unseen message count: " + JSON.stringify(data));
         if (data.receiverId == userData.userId) {
+          console.log("UNseen added");
           var index = $scope.allChatRecordsId.indexOf(data.id);
           $scope.allChatRecords[index].unseenCount = data.unseenCount;
         }

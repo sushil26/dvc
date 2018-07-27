@@ -801,7 +801,7 @@ careatorApp.controller("chatCtrl", function (
     //console.log("$scope.allChatRecordsId: " + JSON.stringify($scope.allChatRecordsId));
     //console.log("$scope.allChatRecordsIdindexOf(data.id): " + $scope.allChatRecordsId.indexOf(data.id));
     //console.log("$scope.individualData: "+JSON.stringify($scope.individualData));
-   // console.log("sendGroupText_withData-->: " + JSON.stringify($scope.sendGroupText_withData));
+   console.log("sendGroupText_withData-->: " + JSON.stringify($scope.sendGroupText_withData));
     if (data.isFromGroup != undefined) {
       if (($scope.individualData != undefined && $scope.sendGroupText_withData.group_id == data.id) ) {
         console.log("UnseenCount added to group");

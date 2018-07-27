@@ -357,26 +357,7 @@
   /* box-shadow: inset 0px 1px 0px #2ab7ec, 0px 1px 0px 0px #07526e, 0px 5px 5px #999; */
 }
 
-.deepbutton {
-  border-radius: 5px;
-  float: right;
-  margin-top: -30px;
-  font-size: 10px;
-  color: black;
-  padding: 5px;
-  cursor: pointer;
-  background-image: linear-gradient(to bottom, #f7f8f9 0%, #6f6f6f 100%);
-  box-shadow: 1px 2px 5px #000;
 
- background-color: #565656;
-  color: transparent;
-  text-shadow: 2px 2px 3px rgba(188, 187, 187, 0.5);
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  background-clip: text;
-  
-
-}
 
 .bt {
   border: none;

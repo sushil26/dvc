@@ -292,7 +292,7 @@ io.sockets.on('connection', function (socket) {
                 }
                 else {
                     console.log("data: " + JSON.stringify(data));
-                    socket.on('doRedirect', {"email": config.email});
+                    socket.emit('doRedirect', {"email": config.email});
                 }
             })
     })

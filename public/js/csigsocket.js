@@ -599,7 +599,7 @@ function doRedirect(){
 signaling_socket.on("doRedirect", function(config){
   console.log("doRedirect-->");
   
-  function doRedirect();
+   doRedirect();
 })
 
 function startSession(id, date) {

@@ -523,6 +523,8 @@ box-shadow: none;
     box-shadow: none;
     height: 58px;
     font-size: 16px;
+    background: black;
+    color: white;
 }
 
 .reply-main textarea:focus {

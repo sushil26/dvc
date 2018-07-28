@@ -62,7 +62,7 @@ module.exports.RemoteJoinCheck = function (req, res) {
                             if (findData.length > 0) {
                                 var joinEmails = findData[0].joinEmails;
                                 var email = {
-                                    "email": remote_careatorEmail
+                                    "email": req.body.careator_remoteEmail
                                 }
                                 console.log("joinEmails: " + JSON.stringify(joinEmails));
                                 console.log("joinEmails.indexOf({email:remote_careatorEmail}): " + joinEmails.indexOf(email));

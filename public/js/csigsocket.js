@@ -580,7 +580,13 @@ function disconnecSession() {
 
     // window.location.href = "https://norecruits.com";
   } else {
-    window.location.href = "https://norecruits.com";
+    if (localStorage.getItem("careatorEmail")) {
+      signaling_socket.emit("disconnectNotification", { "email": localStorage.getItem("careatorEmail"), "sessionURL": window.location.href })
+    }
+    else {
+      signaling_socket.emit("disconnectNotification", { "email": localStorage.getItem("careator_remoteEmail"), "sessionURL": window.location.href })
+    }
+    //window.location.href = "https://norecruits.com";
   }
   // userName = null;
   console.log("-->disconnecSession");
@@ -653,16 +659,13 @@ function getChatBack() {
 
 signaling_socket.on("connect", function () {
   console.log("signaling_socket connect-->");
-
   if (disconnPeerId != null) {
     location.reload();
     disconnPeerId = null;
   }
-
   signaling_socket.on("message", function (config) {
     console.log("signaling_socket message-->");
     //console.log("Unique Peer Id: " + config.peer_id)
-
     queryLink = config.queryId;
     peerNew_id = config.peer_id;
     timeLink = config.time;
@@ -761,10 +764,7 @@ signaling_socket.on("connect", function () {
         setTimeout(function () {
           window.close();
         }, 3000);
-
-
         // window.location.href = "https://norecruits.com";
-
       }
     }
 
@@ -776,12 +776,6 @@ signaling_socket.on("connect", function () {
 signaling_socket.on("disconnect", function () {
   console.log("signaling_socket.on disconnect-->");
   disconnPeerId = peerNew_id;
-  if (localStorage.getItem("careatorEmail")) {
-    signaling_socket.emit("disconnectNotification", { "email": localStorage.getItem("careatorEmail"), "sessionURL": window.location.href })
-  }
-  else {
-    signaling_socket.emit("disconnectNotification", { "email": localStorage.getItem("careator_remoteEmail"), "sessionURL": window.location.href })
-  }
   // document.getElementById(peerNew_id).remove();
   /* Tear down all of our peer connections and remove all the
    * media divs when we disconnect */

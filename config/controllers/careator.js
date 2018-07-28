@@ -38,17 +38,9 @@ module.exports.RemoteJoinCheck = function (req, res) {
             "password": password
         }
         console.log("obj: " + JSON.stringify(obj));
-        careatorMaster.find({
-            "sessionURL": url,
-            "invite": {
-                $elemMatch: {
-                    "remoteEmailId": remote_careatorEmail,
-                    "password": password
-                }
-            }
-        }).toArray(function (err, findData) {
-            console.log("findData: " + JSON.stringify(findData));
-            console.log("findData.length: " + findData.length);
+        careatorMaster.find({ "sessionURL": url }).toArray(function (err, sessionURLFindData) {
+            console.log("sessionURLFindData: " + JSON.stringify(sessionURLFindData));
+            console.log("sessionURLFindData.length: " + sessionURLFindData.length);
             if (err) {
                 responseData = {
                     status: false,
@@ -56,8 +48,10 @@ module.exports.RemoteJoinCheck = function (req, res) {
                 };
                 res.status(400).send(responseData);
             } else {
-                if (findData.length > 0) {
-                    careatorMaster.update({ "sessionURL": url },{$pull: { "leftEmails":{"email": remote_careatorEmail} },  $push: { "joinEmails":{ "email": remote_careatorEmail}} }, function (err, data) {
+                if (sessionURLFindData.length > 0) {
+                    careatorMaster.find({ "sessionURL": url, "invite": { $elemMatch: { "remoteEmailId": remote_careatorEmail, "password": password } } }).toArray(function (err, findData) {
+                        console.log("findData: " + JSON.stringify(findData));
+                        console.log("findData.length: " + findData.length);
                         if (err) {
                             responseData = {
                                 status: false,
@@ -65,24 +59,55 @@ module.exports.RemoteJoinCheck = function (req, res) {
                             };
                             res.status(400).send(responseData);
                         } else {
-                            responseData = {
-                                status: true,
-                                sessionData: "79ea520a-3e67-11e8-9679-97fa7aeb8e97",
-                                message: "Login Successfully"
-                            };
-                            res.status(200).send(responseData);
+                            if (findData.length > 0) {
+                                var joinEmails = findData[0].joinEmails;
+                                console.log("joinEmails.indexOf({email:remote_careatorEmail}): " + joinEmails.indexOf({ "email": remote_careatorEmail }));
+                                if (joinEmails.indexOf({ "email": remote_careatorEmail }) < 0) {
+                                    careatorMaster.update({ "sessionURL": url }, { $pull: { "leftEmails": { "email": remote_careatorEmail } }, $push: { "joinEmails": { "email": remote_careatorEmail } } }, function (err, data) {
+                                        if (err) {
+                                            responseData = {
+                                                status: false,
+                                                message: "Process failed"
+                                            };
+                                            res.status(400).send(responseData);
+                                        } else {
+                                            responseData = {
+                                                status: true,
+                                                sessionData: "79ea520a-3e67-11e8-9679-97fa7aeb8e97",
+                                                message: "Login Successfully"
+                                            };
+                                            res.status(200).send(responseData);
+                                        }
+                                    })
+                                }
+                                else {
+                                    responseData = {
+                                        status: false,
+                                        message: "Sorry tusing his credential already user participating in confeence"
+                                    };
+                                    res.status(400).send(responseData);
+                                }
+                            } else {
+                                responseData = {
+                                    status: false,
+                                    message: "Credential Mismatch"
+                                };
+                                res.status(400).send(responseData);
+                            }
                         }
                     })
-                } else {
+                }
+                else {
                     responseData = {
                         status: false,
-                        message: "Credential Mismatch"
+                        message: "Your URL not alive"
                     };
                     res.status(400).send(responseData);
                 }
             }
         })
-    } else {
+    }
+    else {
         responseData = {
             status: false,
             message: "Empty value found"
@@ -97,7 +122,7 @@ module.exports.pswdCheckForSesstion = function (req, res) {
     var password = req.body.password;
     var careatorEmail = req.body.careatorEmail;
     if (general.emptyCheck(password) && general.emptyCheck(careatorEmail)) {
-        var obj = {"email": careatorEmail }
+        var obj = { "email": careatorEmail }
         console.log("obj: " + JSON.stringify(obj));
         careatorMaster.find(obj).toArray(function (err, findData) {
             console.log("findData: " + JSON.stringify(findData));

@@ -292,6 +292,7 @@ io.sockets.on('connection', function (socket) {
                 }
                 else {
                     console.log("data: " + JSON.stringify(data));
+                    socket.emit('doRedirect', {"email": config.email});
                 }
             })
     })

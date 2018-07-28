@@ -592,6 +592,16 @@ function disconnecSession() {
   console.log("-->disconnecSession");
 }
 
+function doRedirect() {
+  console.log("doRedirect function -->");
+  window.location.href = "https://norecruits.com"
+}
+signaling_socket.on("doRedirect", function (config) {
+  console.log("doRedirect-->");
+
+  doRedirect();
+})
+
 function startSession(id, date) {
   console.log("startSession-->");
   urlDate = date;
@@ -754,6 +764,11 @@ signaling_socket.on("connect", function () {
               document.getElementById("videoConferenceUrl").style.display = "none";
               document.getElementById("emailInvitation").style.display = "none";
               userName = "";
+              if (err.responseJSON.message == "Your URL not alive") {
+                $('#remoteJoin').modal('hide');
+                document.getElementById('notify_msg_content').innerHTML = err.responseJSON.message;
+                $("#notify_msg_button").trigger("click");
+              }
             }
           });
 
@@ -1250,6 +1265,7 @@ signaling_socket.on("removePeer", function (config) {
   //peer_userName_elements[peer_id].remove();
   // delete peer_media_sselements[config.peer_id];
 });
+
 
 /* Note: When video hoster want to remove perticular peer this functionality will work */
 signaling_socket.on("authorizedForClose", function (config) {

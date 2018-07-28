@@ -918,8 +918,8 @@
             close();
         }
         window.addEventListener("beforeunload", function (event) {
-            var url = window.location.href;
-            var stuff = url.split("/");
+            var current_url = window.location.href;
+            var stuff = current_url.split("/");
             if (stuff.length > 5) {
             event.returnValue = "Write something clever here..";
             }

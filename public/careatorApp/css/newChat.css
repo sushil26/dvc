@@ -213,7 +213,7 @@ box-shadow: none;
 .sideBar {
     padding: 0 !important;
     margin: 0 !important;
-    background-color: #fff;
+    background-color: #ddd;
     overflow-y: auto;
     border: 1px solid #f7f7f7;
     height: calc(100% - 120px);

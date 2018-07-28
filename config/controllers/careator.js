@@ -78,7 +78,7 @@ module.exports.RemoteJoinCheck = function (req, res) {
                                 }
 
                                 if ( index == -1 || index<0) {
-                                    careatorMaster.update({ "sessionURL": url }, { $pull: { "leftEmails": { "email": remote_careatorEmail } }, $push: { "joinEmails": { "email": remote_careatorEmail } } }, function (err, data) {
+                                    careatorMaster.update({ "sessionURL": url }, { $pull: { "leftEmails":  remote_careatorEmail }, $push: { "joinEmails": remote_careatorEmail  } }, function (err, data) {
                                         if (err) {
                                             responseData = {
                                                 status: false,

@@ -278,9 +278,9 @@ io.sockets.on('connection', function (socket) {
         console.log("db: " + db);
         chatMaster = db.collection("chatMaster");
         var queryObj = {
-            "url":config.sessionURL
+            "sessionURL":config.sessionURL
         }
-        console.log("queryObj: "+queryObj);
+        console.log("queryObj: "+JSON.stringify(queryObj));
         chatMaster.update(queryObj, { $push: { "leftEmails": config.email },$pull: {"joinEmails":config.email} }, function (err, data) {
             if (err) {
                 console.log("errr: " + JSON.stringify(err));

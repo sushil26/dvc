@@ -580,7 +580,13 @@ function disconnecSession() {
 
     // window.location.href = "https://norecruits.com";
   } else {
-    window.location.href = "https://norecruits.com";
+    if (localStorage.getItem("careatorEmail")) {
+      signaling_socket.emit("disconnectNotification", { "email": localStorage.getItem("careatorEmail"), "sessionURL": window.location.href })
+    }
+    else {
+      signaling_socket.emit("disconnectNotification", { "email": localStorage.getItem("careator_remoteEmail"), "sessionURL": window.location.href })
+    }
+    //window.location.href = "https://norecruits.com";
   }
   // userName = null;
   console.log("-->disconnecSession");
@@ -653,16 +659,13 @@ function getChatBack() {
 
 signaling_socket.on("connect", function () {
   console.log("signaling_socket connect-->");
-
   if (disconnPeerId != null) {
     location.reload();
     disconnPeerId = null;
   }
-
   signaling_socket.on("message", function (config) {
     console.log("signaling_socket message-->");
     //console.log("Unique Peer Id: " + config.peer_id)
-
     queryLink = config.queryId;
     peerNew_id = config.peer_id;
     timeLink = config.time;
@@ -761,10 +764,7 @@ signaling_socket.on("connect", function () {
         setTimeout(function () {
           window.close();
         }, 3000);
-
-
         // window.location.href = "https://norecruits.com";
-
       }
     }
 
@@ -1233,13 +1233,6 @@ signaling_socket.on("iceCandidate", function (config) {
  */
 signaling_socket.on("removePeer", function (config) {
   console.log("Signaling server said to remove peer:", config);
-  if (localStorage.getItem("careatorEmail")) {
-    signaling_socket.emit("removePeerNotification", { "email": localStorage.getItem("careatorEmail"), "sessionURL": window.location.href })
-  }
-  else {
-    signaling_socket.emit("removePeerNotification", { "email": localStorage.getItem("careator_remoteEmail"), "sessionURL": window.location.href })
-  }
-
   var peer_id = config.peer_id;
   if (peer_id in peer_media_elements) {
     peer_media_elements[peer_id].remove();

@@ -272,8 +272,8 @@ io.sockets.on('connection', function (socket) {
         }
     }
     socket.on('part', part);
-    socket.on('removePeerNotification', function(config){
-        console.log("removePeerNotification-->: "+JSON.stringify(config));
+    socket.on('disconnectNotification', function(config){
+        console.log("disconnectNotification-->: "+JSON.stringify(config));
         var db = mongoConfig.getDb();
         console.log("db: " + db);
         chatMaster = db.collection("chatMaster");
@@ -281,7 +281,7 @@ io.sockets.on('connection', function (socket) {
             "sessionURL":config.sessionURL
         }
         console.log("queryObj: "+JSON.stringify(queryObj));
-        chatMaster.update(queryObj, {$push: { "leftEmails":{"email": config.email} },  $pull: { "joinEmails":{ "email": config.email}} }, function (err, data) {
+        chatMaster.update(queryObj, {$push: { "leftEmails":{"email": config.email} } }, function (err, data) {
             if (err) {
                 console.log("errr: " + JSON.stringify(err));
             }

@@ -917,6 +917,21 @@
         function closeExpireSessionCustom() {
             close();
         }
+        window.onbeforeunload = function () {
+            return "Do you really want to leave our brilliant application?";
+            //if we return nothing here (just calling return;) then there will be no pop-up question at all
+            //return;
+        };
+        // window.onbeforeunload = function (event) {
+        //     var current_url = window.location.href;
+        //     var stuff = current_url.split("/");
+        //     if (stuff.length > 5) {
+        //         event.returnValue = "Write something clever here..";
+        //     }
+        //     else {
+        //         console.log("User cancel the tab close");
+        //     }
+        // };
     </script>
 </body>
 

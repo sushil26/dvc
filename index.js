@@ -272,27 +272,28 @@ io.sockets.on('connection', function (socket) {
         }
     }
     socket.on('part', part);
-    socket.on('disconnectNotification', function(config){
-        console.log("disconnectNotification-->: "+JSON.stringify(config));
+    socket.on('disconnectNotification', function (config) {
+        console.log("disconnectNotification-->: " + JSON.stringify(config));
         var db = mongoConfig.getDb();
         console.log("db: " + db);
-        chatMaster = db.collection("chatMaster");
+        careatorMaster = db.collection("careatorMaster");
         var queryObj = {
-            "sessionURL":config.sessionURL
+            "sessionURL": config.sessionURL
         }
-        console.log("queryObj: "+JSON.stringify(queryObj));
+        console.log("queryObj: " + JSON.stringify(queryObj));
         var leftEmails = {
             "email": config.email
         }
-        console.log("leftEmails: "+JSON.stringify(leftEmails));
-        chatMaster.update( {"sessionURL":config.sessionURL}, {$push: { "leftEmails":{"email": config.email} } }, function (err, data) {
-            if (err) {
-                console.log("errr: " + JSON.stringify(err));
-            }
-            else {
-                console.log("data: " + JSON.stringify(data));
-            }
-        })
+        console.log("leftEmails: " + JSON.stringify(leftEmails));
+        careatorMaster.update({ "sessionURL": config.sessionURL }, {
+            $push: { "leftEmails": { "email": config.email } }, $push: { "joinEmails": { "email": config.email } }, function(err, data) {
+                if (err) {
+                    console.log("errr: " + JSON.stringify(err));
+                }
+                else {
+                    console.log("data: " + JSON.stringify(data));
+                }
+            })
     })
 
     socket.on('relayICECandidate', function (config) {

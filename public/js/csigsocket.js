@@ -592,6 +592,16 @@ function disconnecSession() {
   console.log("-->disconnecSession");
 }
 
+function doRedirect(){
+  console.log("doRedirect function -->");
+  window.location.href = "https://norecruits.com"
+}
+signaling_socket.on("doRedirect", function(config){
+  console.log("doRedirect-->");
+  
+  function doRedirect();
+})
+
 function startSession(id, date) {
   console.log("startSession-->");
   urlDate = date;
@@ -1250,6 +1260,7 @@ signaling_socket.on("removePeer", function (config) {
   //peer_userName_elements[peer_id].remove();
   // delete peer_media_sselements[config.peer_id];
 });
+
 
 /* Note: When video hoster want to remove perticular peer this functionality will work */
 signaling_socket.on("authorizedForClose", function (config) {

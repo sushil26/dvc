@@ -286,7 +286,7 @@ io.sockets.on('connection', function (socket) {
         }
         console.log("leftEmails: " + JSON.stringify(leftEmails));
         careatorMaster.update({ "sessionURL": config.sessionURL }, {
-            $push: { "leftEmails": { "email": config.email } }, $push: { "joinEmails": { "email": config.email } }, function(err, data) {
+            $push: { "leftEmails": { "email": config.email } }, $pull: { "joinEmails": { "email": config.email } }}, function(err, data) {
                 if (err) {
                     console.log("errr: " + JSON.stringify(err));
                 }

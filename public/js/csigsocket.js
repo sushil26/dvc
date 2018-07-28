@@ -776,6 +776,12 @@ signaling_socket.on("connect", function () {
 signaling_socket.on("disconnect", function () {
   console.log("signaling_socket.on disconnect-->");
   disconnPeerId = peerNew_id;
+  if (localStorage.getItem("careatorEmail")) {
+    signaling_socket.emit("disconnectNotification", { "email": localStorage.getItem("careatorEmail"), "sessionURL": window.location.href })
+  }
+  else {
+    signaling_socket.emit("disconnectNotification", { "email": localStorage.getItem("careator_remoteEmail"), "sessionURL": window.location.href })
+  }
   // document.getElementById(peerNew_id).remove();
   /* Tear down all of our peer connections and remove all the
    * media divs when we disconnect */
@@ -1233,13 +1239,6 @@ signaling_socket.on("iceCandidate", function (config) {
  */
 signaling_socket.on("removePeer", function (config) {
   console.log("Signaling server said to remove peer:", config);
-  if (localStorage.getItem("careatorEmail")) {
-    signaling_socket.emit("removePeerNotification", { "email": localStorage.getItem("careatorEmail"), "sessionURL": window.location.href })
-  }
-  else {
-    signaling_socket.emit("removePeerNotification", { "email": localStorage.getItem("careator_remoteEmail"), "sessionURL": window.location.href })
-  }
-
   var peer_id = config.peer_id;
   if (peer_id in peer_media_elements) {
     peer_media_elements[peer_id].remove();

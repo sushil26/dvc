@@ -90,7 +90,7 @@ span {
 }
 
 i {
- color: #555;
+  color: #555;
 }
 
 #sidebar>ul>li>a>i.fa-home:hover {
@@ -443,7 +443,7 @@ table tr th {
 ul.sidebar-menu,
 ul.sidebar-menu li ul.sub {
   margin: -2px 0 0;
-  padding: 0;
+  padding-top: 5px;
 }
 
 /* ul.sidebar-menu {

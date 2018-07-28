@@ -57,22 +57,33 @@ module.exports.RemoteJoinCheck = function (req, res) {
                 res.status(400).send(responseData);
             } else {
                 if (findData.length > 0) {
-                    careatorMaster.update({ "sessionURL": url },{$pull: { "leftEmails":{"email": remote_careatorEmail} },  $push: { "joinEmails":{ "email": remote_careatorEmail}} }, function (err, data) {
-                        if (err) {
-                            responseData = {
-                                status: false,
-                                message: "Process failed"
-                            };
-                            res.status(400).send(responseData);
-                        } else {
-                            responseData = {
-                                status: true,
-                                sessionData: "79ea520a-3e67-11e8-9679-97fa7aeb8e97",
-                                message: "Login Successfully"
-                            };
-                            res.status(200).send(responseData);
-                        }
-                    })
+                    var joinEmails = findData[0].joinEmails;
+                    console.log("joinEmails.indexOf({email:remote_careatorEmail}): " + joinEmails.indexOf({ "email": remote_careatorEmail }));
+                    if (joinEmails.indexOf({ "email": remote_careatorEmail })<0) {
+                        careatorMaster.update({ "sessionURL": url }, { $pull: { "leftEmails": { "email": remote_careatorEmail } }, $push: { "joinEmails": { "email": remote_careatorEmail } } }, function (err, data) {
+                            if (err) {
+                                responseData = {
+                                    status: false,
+                                    message: "Process failed"
+                                };
+                                res.status(400).send(responseData);
+                            } else {
+                                responseData = {
+                                    status: true,
+                                    sessionData: "79ea520a-3e67-11e8-9679-97fa7aeb8e97",
+                                    message: "Login Successfully"
+                                };
+                                res.status(200).send(responseData);
+                            }
+                        })
+                    }
+                    else{
+                        responseData = {
+                            status: false,
+                            message: "Sorry tusing his credential already user participating in confeence"
+                        };
+                        res.status(400).send(responseData);
+                    }
                 } else {
                     responseData = {
                         status: false,
@@ -97,7 +108,7 @@ module.exports.pswdCheckForSesstion = function (req, res) {
     var password = req.body.password;
     var careatorEmail = req.body.careatorEmail;
     if (general.emptyCheck(password) && general.emptyCheck(careatorEmail)) {
-        var obj = {"email": careatorEmail }
+        var obj = { "email": careatorEmail }
         console.log("obj: " + JSON.stringify(obj));
         careatorMaster.find(obj).toArray(function (err, findData) {
             console.log("findData: " + JSON.stringify(findData));

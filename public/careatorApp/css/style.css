@@ -738,6 +738,20 @@ ul.sidebar-menu li.active a i {
   margin: 20px 10px 0 0;
 }
 
+.deepbutton {
+  color: #555;
+  border-radius: 5px;
+  font-size: 15px;
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  cursor: pointer;
+  background-image: linear-gradient(to bottom, #f7f8f9 0%, #6f6f6f 100%);
+  box-shadow: 1px 2px 5px #000;
+  text-shadow: 2px 2px 3px rgba(188, 187, 187, 0.5);
+}
+
 .header {
   position: fixed;
   left: 0;

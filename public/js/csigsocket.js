@@ -592,14 +592,14 @@ function disconnecSession() {
   console.log("-->disconnecSession");
 }
 
-function doRedirect(){
+function doRedirect() {
   console.log("doRedirect function -->");
   window.location.href = "https://norecruits.com"
 }
-signaling_socket.on("doRedirect", function(config){
+signaling_socket.on("doRedirect", function (config) {
   console.log("doRedirect-->");
-  
-   doRedirect();
+
+  doRedirect();
 })
 
 function startSession(id, date) {
@@ -764,6 +764,11 @@ signaling_socket.on("connect", function () {
               document.getElementById("videoConferenceUrl").style.display = "none";
               document.getElementById("emailInvitation").style.display = "none";
               userName = "";
+              if (err.responseJSON.message == "Your URL not alive") {
+                $('#remoteJoin').modal('hide');
+                document.getElementById('notify_msg_content').innerHTML = err.responseJSON.message;
+                $("#notify_msg_button").trigger("click");
+              }
             }
           });
 

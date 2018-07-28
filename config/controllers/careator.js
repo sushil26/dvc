@@ -61,24 +61,9 @@ module.exports.RemoteJoinCheck = function (req, res) {
                         } else {
                             if (findData.length > 0) {
                                 var joinEmails = findData[0].joinEmails;
-                                var email = {
-                                    "email": req.body.careator_remoteEmail
-                                }
-                                console.log("email: " + JSON.stringify(email));
-
-                                console.log("joinEmails: " + JSON.stringify(joinEmails));
-                                var index;
-                                if (joinEmails.length > 0) {
-                                    console.log("parser: "+JSON.parse(joinEmails));
-                                    console.log("parsejoinEmails.indexOf('req.body.careator_remoteEmail'): " + parsejoinEmails.map(function (d) { return d['email']; }).indexOf(req.body.careator_remoteEmail));
-                                    index = parsejoinEmails.map(function (d) { return d['email']; }).indexOf(req.body.careator_remoteEmail);
-                                }
-                                else {
-                                    index = -1;
-                                }
-
-                                if ( index == -1 || index<0) {
-                                    careatorMaster.update({ "sessionURL": url }, { $pull: { "leftEmails": { "email": remote_careatorEmail } }, $push: { "joinEmails": { "email": remote_careatorEmail } } }, function (err, data) {
+                              console.log("joinEmails: "+JSON.stringify(joinEmails));
+                                if ( joinEmails.indexOf(req.body.careator_remoteEmail)<0) {
+                                    careatorMaster.update({ "sessionURL": url }, { $pull: { "leftEmails":  remote_careatorEmail }, $push: { "joinEmails": remote_careatorEmail  } }, function (err, data) {
                                         if (err) {
                                             responseData = {
                                                 status: false,

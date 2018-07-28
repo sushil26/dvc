@@ -100,6 +100,7 @@ module.exports.RemoteJoinCheck = function (req, res) {
                                         status: false,
                                         message: "Sorry using his credential already user participating in confeence"
                                     };
+                                    console.log("responseData: "+JOSN.stringify(responseData));
                                     res.status(400).send(responseData);
                                 }
                             } else {

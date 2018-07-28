@@ -57,12 +57,22 @@ module.exports.RemoteJoinCheck = function (req, res) {
                 res.status(400).send(responseData);
             } else {
                 if (findData.length > 0) {
-                    responseData = {
-                        status: true,
-                        sessionData: "79ea520a-3e67-11e8-9679-97fa7aeb8e97",
-                        message: "Login Successfully"
-                    };
-                    res.status(200).send(responseData);
+                    careatorMaster.update({ "sessionURL": url },{$pull: { "leftEmails":{"email": remoteEmailId} }}, { $push: { "joinEmails":{ "email": remoteEmailId}} }, function (err, data) {
+                        if (err) {
+                            responseData = {
+                                status: false,
+                                message: "Process failed"
+                            };
+                            res.status(400).send(responseData);
+                        } else {
+                            responseData = {
+                                status: true,
+                                sessionData: "79ea520a-3e67-11e8-9679-97fa7aeb8e97",
+                                message: "Login Successfully"
+                            };
+                            res.status(200).send(responseData);
+                        }
+                    })
                 } else {
                     responseData = {
                         status: false,
@@ -87,10 +97,7 @@ module.exports.pswdCheckForSesstion = function (req, res) {
     var password = req.body.password;
     var careatorEmail = req.body.careatorEmail;
     if (general.emptyCheck(password) && general.emptyCheck(careatorEmail)) {
-
-        var obj = {
-            "email": careatorEmail
-        }
+        var obj = {"email": careatorEmail }
         console.log("obj: " + JSON.stringify(obj));
         careatorMaster.find(obj).toArray(function (err, findData) {
             console.log("findData: " + JSON.stringify(findData));
@@ -550,50 +557,52 @@ module.exports.setCollection = function (req, res) {
     }
     console.log("obj: " + JSON.stringify(obj));
 
-    careatorMaster.update({ "email": req.body.email }, { $set: {
-                "sessionURL": req.body.url,
-                "invite": [],
-                "leftSession":[],
-                "session_dateTime": new Date(),
+    careatorMaster.update({ "email": req.body.email }, {
+        $set: {
+            "sessionURL": req.body.url,
+            "invite": [],
+            "joinEmails": [],
+            "leftEmails": [],
+            "session_dateTime": new Date(),
+            "isDisconnected": "no"
+        }
+    }, function (err, urlUpdate) {
+        if (err) {
+            console.log("err: " + JSON.stringify(err));
+            responseData = {
+                status: false,
+                message: "Unsuccessfull, go back and refresh then start session"
+            };
+            res.status(400).send(responseData);
+        } else {
+            var io = req.app.get('socketio');
+            io.emit('comm_sessionCreateUpdate', {
+                "email": req.body.email,
                 "isDisconnected": "no"
-            }
-        }, function (err, urlUpdate) {
-            if (err) {
-                console.log("err: " + JSON.stringify(err));
-                responseData = {
-                    status: false,
-                    message: "Unsuccessfull, go back and refresh then start session"
-                };
-                res.status(400).send(responseData);
-            } else {
-                var io = req.app.get('socketio');
-                io.emit('comm_sessionCreateUpdate', {
-                    "email": req.body.email,
-                    "isDisconnected": "no"
-                }); /* ### Note: Emit message to client(careator_dashboardCtrl.js) ### */
-                chatHistory.insertOne(obj, function (err, data) {
-                    if (err) {
-                        console.log("err: " + JSON.stringify(err));
-                        responseData = {
-                            status: false,
-                            message: "UnSuccessfully"
-                        };
-                        res.status(400).send(responseData);
-                    } else {
-                        console.log("data: " + JSON.stringify(data));
-                        var obj = {
-                            "url": req.body.url
-                        }
-                        responseData = {
-                            status: true,
-                            message: "Successfully",
-                            data: obj
-                        };
-                        res.status(200).send(responseData);
+            }); /* ### Note: Emit message to client(careator_dashboardCtrl.js) ### */
+            chatHistory.insertOne(obj, function (err, data) {
+                if (err) {
+                    console.log("err: " + JSON.stringify(err));
+                    responseData = {
+                        status: false,
+                        message: "UnSuccessfully"
+                    };
+                    res.status(400).send(responseData);
+                } else {
+                    console.log("data: " + JSON.stringify(data));
+                    var obj = {
+                        "url": req.body.url
                     }
-                })
-            }
-        })
+                    responseData = {
+                        status: true,
+                        message: "Successfully",
+                        data: obj
+                    };
+                    res.status(200).send(responseData);
+                }
+            })
+        }
+    })
 
 
 
@@ -682,7 +691,6 @@ module.exports.getHistory = function (req, res) {
 
 
 }
-
 module.exports.careatorMasterInsert = function (req, res) {
     console.log("careatorMasterInsert-->");
     var responseData;
@@ -747,7 +755,6 @@ module.exports.careatorMasterInsert = function (req, res) {
             }
         })
 }
-
 module.exports.careatorMasterInsertValidate = function (data, callback) {
     console.log("careatorMasterInsertValidate-->");
     var sessionRandomId = randomstring.generate(7);
@@ -805,8 +812,6 @@ module.exports.careatorMasterInsertValidate = function (data, callback) {
     })
 
 }
-
-
 module.exports.careatorSingleUserInsert = function (req, res) {
     console.log("careatorSingleUserInsert-->");
     var sessionRandomId = randomstring.generate(7);
@@ -1198,8 +1203,6 @@ module.exports.careator_chat_creteGroup = function (req, res) {
     }
 
 }
-
-
 module.exports.careator_getChatGroupListById = function (req, res) {
     console.log("getChatGroupListById-->");
     var id = req.params.id;

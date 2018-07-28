@@ -272,6 +272,24 @@ io.sockets.on('connection', function (socket) {
         }
     }
     socket.on('part', part);
+    socket.on('removePeerNotification', function(config){
+        console.log("removePeerNotification-->");
+        var db = mongoConfig.getDb();
+        console.log("db: " + db);
+        chatMaster = db.collection("chatMaster");
+        var queryObj = {
+            "url":config.sessionURL
+        }
+        console.log("queryObj: "+queryObj);
+        chatMaster.update(queryObj, { $push: { "leftSession": config.email } }, function (err, data) {
+            if (err) {
+                console.log("errr: " + JSON.stringify(err));
+            }
+            else {
+                console.log("data: " + JSON.stringify(data));
+            }
+        })
+    })
 
     socket.on('relayICECandidate', function (config) {
         console.log("relayICECandidate-->")

@@ -550,12 +550,10 @@ module.exports.setCollection = function (req, res) {
     }
     console.log("obj: " + JSON.stringify(obj));
 
-    careatorMaster.update({
-        "email": req.body.email
-    }, {
-            $set: {
+    careatorMaster.update({ "email": req.body.email }, { $set: {
                 "sessionURL": req.body.url,
                 "invite": [],
+                "leftSession":[],
                 "session_dateTime": new Date(),
                 "isDisconnected": "no"
             }

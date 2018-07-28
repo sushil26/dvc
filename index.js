@@ -273,7 +273,7 @@ io.sockets.on('connection', function (socket) {
     }
     socket.on('part', part);
     socket.on('removePeerNotification', function(config){
-        console.log("removePeerNotification-->");
+        console.log("removePeerNotification-->: "+JSON.stringify(config));
         var db = mongoConfig.getDb();
         console.log("db: " + db);
         chatMaster = db.collection("chatMaster");

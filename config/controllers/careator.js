@@ -69,7 +69,7 @@ module.exports.RemoteJoinCheck = function (req, res) {
                                 console.log("joinEmails: " + JSON.stringify(joinEmails));
                                 var index;
                                 if (joinEmails.length > 0) {
-                                    var parsejoinEmails = JSON.parse(joinEmails);
+                                    console.log("parser: "+JSON.parse(joinEmails));
                                     console.log("parsejoinEmails.indexOf('req.body.careator_remoteEmail'): " + parsejoinEmails.map(function (d) { return d['email']; }).indexOf(req.body.careator_remoteEmail));
                                     index = parsejoinEmails.map(function (d) { return d['email']; }).indexOf(req.body.careator_remoteEmail);
                                 }

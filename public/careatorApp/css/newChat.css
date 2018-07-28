@@ -216,7 +216,7 @@ box-shadow: none;
     background-color: #ddd;
     overflow-y: auto;
     border: 1px solid #f7f7f7;
-    height: calc(100% - 120px);
+    height: calc(100% - 140px);
 }
 
 .sideBar-body {

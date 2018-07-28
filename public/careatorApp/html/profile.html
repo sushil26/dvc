@@ -2,13 +2,13 @@
     <section id="main-content">
 
         <section class="wrapper">
-         
+
             <div id="profile">
                 <section class="panel">
-                    
+
                     <div class="panel-heading">
                         <i class="fa fa-user-circle"></i>
-                        <span style="color:white;"></span>&nbspUser Profile</span>
+                        <span style="color:white;">&nbspUser Profile</span>
                     </div>
 
                     <div class="panel-body bio-graph-info" style="padding: 15px; margin: 0px !important;">
@@ -23,15 +23,21 @@
                                 </div>
                             </div>
                             <div class="col-sm-4">
-                                <h2 style="
-                                    font: bold 20px arial, sans-serif;
-                                    background-color: #565656;
-                                    color: transparent;
-                                    text-shadow: .2px .2px .3px rgba(255,255,255,0.5);
-                                    -webkit-background-clip: text;
-                                       -moz-background-clip: text;
-                                            background-clip: text;
-                                  ">{{userDetails.name}}</h2>
+                                <div style="border-bottom-right-radius: 10px;
+                                border-top-left-radius: 10px;
+                                background:#ccc">
+                                    <h2 style="
+                                width: max-content;
+                                padding: 5px;
+                                background-color: #565656;
+                                color: transparent;
+                                text-shadow: .2px .2px .3px rgba(255,255,255,0.5);
+                                -webkit-background-clip: text;
+                                   -moz-background-clip: text;
+                                        background-clip: text;
+                            
+                               ">{{userDetails.name}}</h2>
+                                </div>
                                 <span>
                                     <p style="BACKGROUND: #33333352;
                                     width: max-content;
@@ -156,7 +162,7 @@
                                 </tr>
                             </table>
                         </div>
-                       
+
                     </div>
                 </section>
             </div>

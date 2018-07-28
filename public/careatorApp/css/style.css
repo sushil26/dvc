@@ -502,7 +502,7 @@ ul.sidebar-menu li ul.sub li.active a {
 
 ul.sidebar-menu li {
   color: #555;
-  border-radius: 5px;
+  border-radius: 3px;
   font-size: 15px;
   cursor: pointer;
   background-image: linear-gradient(to bottom, #f7f8f9 0%, #6f6f6f 100%);

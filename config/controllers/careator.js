@@ -61,9 +61,12 @@ module.exports.RemoteJoinCheck = function (req, res) {
                         } else {
                             if (findData.length > 0) {
                                 var joinEmails = findData[0].joinEmails;
+                                var email = {
+                                    "email": remote_careatorEmail
+                                }
                                 console.log("joinEmails: " + JSON.stringify(joinEmails));
-                                console.log("joinEmails.indexOf({email:remote_careatorEmail}): " + joinEmails.indexOf({ "email": remote_careatorEmail }));
-                                if (joinEmails.indexOf({ "email": remote_careatorEmail }) < 0) {
+                                console.log("joinEmails.indexOf({email:remote_careatorEmail}): " + joinEmails.indexOf(email));
+                                if (joinEmails.indexOf(email) < 0) {
                                     careatorMaster.update({ "sessionURL": url }, { $pull: { "leftEmails": { "email": remote_careatorEmail } }, $push: { "joinEmails": { "email": remote_careatorEmail } } }, function (err, data) {
                                         if (err) {
                                             responseData = {

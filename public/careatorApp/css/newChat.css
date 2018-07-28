@@ -144,7 +144,7 @@
     text-align: left;
     text-overflow: ellipsis;
     white-space: nowrap;
-    color: white;
+    color: #555;
     /* display: block; */
     margin-top: 10px;
     text-transform: capitalize;

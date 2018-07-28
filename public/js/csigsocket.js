@@ -292,6 +292,7 @@ function checkCredential() {
         if (err.responseJSON.message == 'You already logged in, please logout your old session in-order to login') {
           console.log("You already logged in, please logout your old session in-order to login");
           document.getElementById('notify_msg_content').innerHTML = err.responseJSON.message;
+          document.getElementById('resetBtn').style.display = 'inline';
           $("#notify_msg_button").trigger("click");
           resetId = err.responseJSON.data.id;
         } else {
@@ -767,6 +768,7 @@ signaling_socket.on("connect", function () {
               if (err.responseJSON.message == "Your URL not alive") {
                 $('#remoteJoin').modal('hide');
                 document.getElementById('notify_msg_content').innerHTML = err.responseJSON.message;
+                document.getElementById('resetBtn').style.display = 'none';
                 $("#notify_msg_button").trigger("click");
               }
             }

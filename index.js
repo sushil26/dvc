@@ -281,7 +281,7 @@ io.sockets.on('connection', function (socket) {
             "sessionURL":config.sessionURL
         }
         console.log("queryObj: "+JSON.stringify(queryObj));
-        chatMaster.update(queryObj, {$push: { "leftEmails":{"email": config.email} },  $pull: { "joinEmails":{ "email": config.email}} }, function (err, data) {
+        chatMaster.update(queryObj, {$push: { "leftEmails":{"email": config.email} } }, function (err, data) {
             if (err) {
                 console.log("errr: " + JSON.stringify(err));
             }

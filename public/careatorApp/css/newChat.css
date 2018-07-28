@@ -382,6 +382,7 @@ box-shadow: none;
     border: 1px solid #f7f7f7;
     height: calc(100% - 140px);
     overflow-x: hidden;
+    border-radius: 0;
 }
 
 .message-previous {

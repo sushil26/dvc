@@ -87,7 +87,7 @@ module.exports.RemoteJoinCheck = function (req, res) {
                 } else {
                     responseData = {
                         status: false,
-                        message: "Credential Mismatch"
+                        message: "Credential Mismatch Or Your URL not alive"
                     };
                     res.status(400).send(responseData);
                 }

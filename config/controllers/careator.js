@@ -65,11 +65,19 @@ module.exports.RemoteJoinCheck = function (req, res) {
                                     "email": req.body.careator_remoteEmail
                                 }
                                 console.log("email: " + JSON.stringify(email));
-                               
+
                                 console.log("joinEmails: " + JSON.stringify(joinEmails));
-                                var parsejoinEmails = JSON.parse(joinEmails);
-                                console.log("parsejoinEmails.indexOf('req.body.careator_remoteEmail'): " + parsejoinEmails.map(function(d) { return d['email']; }).indexOf(req.body.careator_remoteEmail));
-                                if (parsejoinEmails.map(function(d) { return d['email']; }).indexOf(req.body.careator_remoteEmail) < 0) {
+                                var index;
+                                if (joinEmails.length > 0) {
+                                    var parsejoinEmails = JSON.parse(joinEmails);
+                                    console.log("parsejoinEmails.indexOf('req.body.careator_remoteEmail'): " + parsejoinEmails.map(function (d) { return d['email']; }).indexOf(req.body.careator_remoteEmail));
+                                    index = parsejoinEmails.map(function (d) { return d['email']; }).indexOf(req.body.careator_remoteEmail);
+                                }
+                                else {
+                                    index = -1;
+                                }
+
+                                if ( index == -1 || index<0) {
                                     careatorMaster.update({ "sessionURL": url }, { $pull: { "leftEmails": { "email": remote_careatorEmail } }, $push: { "joinEmails": { "email": remote_careatorEmail } } }, function (err, data) {
                                         if (err) {
                                             responseData = {
@@ -90,8 +98,9 @@ module.exports.RemoteJoinCheck = function (req, res) {
                                 else {
                                     responseData = {
                                         status: false,
-                                        message: "Sorry tusing his credential already user participating in confeence"
+                                        message: "Sorry using his credential already user participating in confeence"
                                     };
+                                    console.log("responseData: "+JOSN.stringify(responseData));
                                     res.status(400).send(responseData);
                                 }
                             } else {

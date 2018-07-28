@@ -917,7 +917,7 @@
         function closeExpireSessionCustom() {
             close();
         }
-        window.addEventListener("beforeunload", function (event) {
+        window.onbeforeunload= function (event) {
             var current_url = window.location.href;
             var stuff = current_url.split("/");
             if (stuff.length > 5) {
@@ -926,7 +926,7 @@
             else{
                 console.log("User cancel the tab close");
             }
-        });
+        };
     </script>
 </body>
 

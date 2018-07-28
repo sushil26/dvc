@@ -533,7 +533,7 @@ ul.sidebar-menu li a span {
 
 ul.sidebar-menu li a {
   border-top: 1px solid #2e3134;
-  border-bottom: 1px solid #2e3134;
+  /* border-bottom: 1px solid #2e3134; */
   color: #d0d8df;
   text-decoration: none;
   display: block;

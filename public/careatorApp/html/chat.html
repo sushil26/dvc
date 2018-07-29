@@ -44,65 +44,84 @@
                                 <div class="side-one">
                                     <div class="row heading">
                                         <div class="form-group has-feedback">
-                                            <img alt="User Pic" ng-if="chatStatus=='Available'" style="max-width: 49px; border: 2px solid yellowgreen;" ng-src="{{profilePicPath}}"
-                                                id="profile-image1" class="img-circle img-responsive">
-                                            <img alt="User Pic" ng-if="chatStatus=='Busy'" style="max-width: 49px; border: 2px solid goldenrod;" ng-src="{{profilePicPath}}"
-                                                id="profile-image1" class="img-circle img-responsive">
-                                            <img alt="User Pic" ng-if="chatStatus=='Hide'" style="max-width: 49px; border: 2px solid dimgray;" ng-src="{{profilePicPath}}"
-                                                id="profile-image1" class="img-circle img-responsive">
-                                            <img alt="User Pic" ng-if="chatStatus=='Sleeping'" style="max-width: 49px; border: 2px solid black;" ng-src="{{profilePicPath}}"
-                                                id="profile-image1" class="img-circle img-responsive">
-                                            <img alt="User Pic" ng-if="chatStatus=='Custom'" style="max-width: 49px; border: 2px solid #FFC107;" ng-src="{{profilePicPath}}"
-                                                id="profile-image1" class="img-circle img-responsive">
-                                            <h5 style="    font-size: 15px;
-                                            text-transform: capitalize;
-                                             color: #555;
-                                            margin-top: -30px;
-                                            margin-left: 55px;
-                                            font-family: sans-serif;">{{loginUserName}}</h5>
-                                            <div class="tooltip">
-                                                <span ng-if="chatStatus=='Available'" style="color: yellowgreen;">{{chatStatus}}</span>
-                                                <span ng-if="chatStatus=='Busy'" style="color: goldenrod;">{{chatStatus}}</span>
-                                                <span ng-if="chatStatus=='Hide'" style="color: dimgray;">{{chatStatus}}</span>
-                                                <span ng-if="chatStatus=='Sleeping'" style="color: black;">{{chatStatus}}</span>
-                                                <span ng-if="chatStatus=='Custom'" style="color: #FFC107;">{{chatStatus}}</span>
-                                                <div class="tooltiptext">
-                                                    <span style="background:white;
-                                                        padding: 5px;
-                                                        border-radius: 5px;line-height: 2.5; color: yellowgreen;" ng-click="statusUpdate('Available')">Available</span>
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <img alt="User Pic" ng-if="chatStatus=='Available'" style="max-width: 49px; border: 2px solid yellowgreen;" ng-src="{{profilePicPath}}"
+                                                            id="profile-image1" class="img-circle img-responsive">
+                                                        <img alt="User Pic" ng-if="chatStatus=='Busy'" style="max-width: 49px; border: 2px solid goldenrod;" ng-src="{{profilePicPath}}"
+                                                            id="profile-image1" class="img-circle img-responsive">
+                                                        <img alt="User Pic" ng-if="chatStatus=='Hide'" style="max-width: 49px; border: 2px solid dimgray;" ng-src="{{profilePicPath}}"
+                                                            id="profile-image1" class="img-circle img-responsive">
+                                                        <img alt="User Pic" ng-if="chatStatus=='Sleeping'" style="max-width: 49px; border: 2px solid black;" ng-src="{{profilePicPath}}"
+                                                            id="profile-image1" class="img-circle img-responsive">
+                                                        <img alt="User Pic" ng-if="chatStatus=='Custom'" style="max-width: 49px; border: 2px solid #FFC107;" ng-src="{{profilePicPath}}"
+                                                            id="profile-image1" class="img-circle img-responsive">
+                                                    </td>
+                                                    <td>
+                                                        <h5 style="font-size: 15px;
+                                                        text-transform: capitalize;
+                                                         color: #555;
+                                                        margin-top: -30px;
+                                                        margin-left: 55px;
+                                                        font-family: sans-serif;">{{loginUserName}}</h5>
+                                                        <div class="tooltip">
+                                                            <span ng-if="chatStatus=='Available'" style="color: yellowgreen;">{{chatStatus}}</span>
+                                                            <span ng-if="chatStatus=='Busy'" style="color: goldenrod;">{{chatStatus}}</span>
+                                                            <span ng-if="chatStatus=='Hide'" style="color: dimgray;">{{chatStatus}}</span>
+                                                            <span ng-if="chatStatus=='Sleeping'" style="color: black;">{{chatStatus}}</span>
+                                                            <span ng-if="chatStatus=='Custom'" style="color: #FFC107;">{{chatStatus}}</span>
+                                                            <div class="tooltiptext">
+                                                                <span style="background:white;
+                                                                        padding: 5px;
+                                                                        border-radius: 5px;line-height: 2.5; color: yellowgreen;"
+                                                                    ng-click="statusUpdate('Available')">Available</span>
 
-                                                    <span style="background:white;
-                                                        padding: 5px;
-                                                        border-radius: 5px;line-height: 2.5;color:goldenrod;" ng-click="statusUpdate('Busy')">Busy</span>
+                                                                <span style="background:white;
+                                                                        padding: 5px;
+                                                                        border-radius: 5px;line-height: 2.5;color:goldenrod;"
+                                                                    ng-click="statusUpdate('Busy')">Busy</span>
 
-                                                    <span style="background:white;
-                                                        padding: 5px;
-                                                        border-radius: 5px;line-height: 2.5;color: dimgray;" ng-click="statusUpdate('Hide')">Hide</span>
-                                                    <span style="background:white;
-                                                        padding: 5px;
-                                                        border-radius: 5px;line-height: 2.5;color: black;" ng-click="statusUpdate('Sleeping')">Sleeping</span>
+                                                                <span style="background:white;
+                                                                        padding: 5px;
+                                                                        border-radius: 5px;line-height: 2.5;color: dimgray;"
+                                                                    ng-click="statusUpdate('Hide')">Hide</span>
+                                                                <span style="background:white;
+                                                                        padding: 5px;
+                                                                        border-radius: 5px;line-height: 2.5;color: black;"
+                                                                    ng-click="statusUpdate('Sleeping')">Sleeping</span>
 
-                                                    <span style="background:white;
+                                                                <span style="background:white;
+                                                                        padding: 5px;
+                                                                        border-radius: 5px;line-height: 2.5; color: #FFC107;"
+                                                                    ng-click="statusUpdate('Custom')">Custom</span>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <span class="heading-compose" style="border-radius: 5px;
+                                                        float: right;
+                                                        margin-top: -30px;
+                                                        font-size: 10px;
+                                                        color: black;
                                                         padding: 5px;
-                                                        border-radius: 5px;line-height: 2.5; color: #FFC107;" ng-click="statusUpdate('Custom')">Custom</span>
-                                                </div>
-                                            </div>
-                                            <span class="heading-compose" style="    border-radius: 5px;
-                                            float: right;
-                                            margin-top: -30px;
-                                            font-size: 10px;
-                                            color: black;
-                                            padding: 5px;
-                                            cursor: pointer;
-                                            background-image: linear-gradient(to bottom, #f7f8f9 0%, #6f6f6f 100%);
-                                            box-shadow: 1px 2px 5px #000;" ng-click="getAllChatRightEmp()">
-                                                <span style=" background-color: #565656;
-                                            color: transparent;
-                                            text-shadow: 2px 2px 3px rgba(188, 187, 187, 0.5);
-                                            -webkit-background-clip: text;
-                                               -moz-background-clip: text;
-                                                    background-clip: text;"> New Chat</span>
-                                            </span>
+                                                        cursor: pointer;
+                                                        background-image: linear-gradient(to bottom, #f7f8f9 0%, #6f6f6f 100%);
+                                                        box-shadow: 1px 2px 5px #000;" ng-click="getAllChatRightEmp()">
+                                                            <span style=" background-color: #565656;
+                                                        color: transparent;
+                                                        text-shadow: 2px 2px 3px rgba(188, 187, 187, 0.5);
+                                                        -webkit-background-clip: text;
+                                                           -moz-background-clip: text;
+                                                                background-clip: text;"> New Chat</span>
+                                                        </span>
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+
+
+
                                         </div>
                                     </div>
                                     <div class="row sideBar">

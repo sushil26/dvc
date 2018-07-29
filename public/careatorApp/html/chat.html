@@ -340,11 +340,27 @@
                                         <img ng-if="receiverProfilePicPath==undefined" src="./css/user.png">
                                     </div> -->
                                 <div class="row message" id="pulldown">
-                                    <div class="row message-body" ng-if="!selectedType" style="    font-size: 30px;
+                                    <div class="row message-body" ng-if="!selectedType">
+
+                                        <h2>
+                                            welcome
+                                        </h2>
+                                        <img alt="User Pic" ng-if="chatStatus=='Available'" style=" border: 2px solid yellowgreen;" ng-src="{{profilePicPath}}"
+                                            id="profile-image1" class="img-circle img-responsive">
+                                        <img alt="User Pic" ng-if="chatStatus=='Busy'" style=" border: 2px solid goldenrod;" ng-src="{{profilePicPath}}"
+                                            id="profile-image1" class="img-circle img-responsive">
+                                        <img alt="User Pic" ng-if="chatStatus=='Hide'" style=" border: 2px solid dimgray;" ng-src="{{profilePicPath}}"
+                                            id="profile-image1" class="img-circle img-responsive">
+                                        <img alt="User Pic" ng-if="chatStatus=='Sleeping'" style=" border: 2px solid black;" ng-src="{{profilePicPath}}"
+                                            id="profile-image1" class="img-circle img-responsive">
+                                        <img alt="User Pic" ng-if="chatStatus=='Custom'" style=" border: 2px solid #FFC107;" ng-src="{{profilePicPath}}"
+                                            id="profile-image1" class="img-circle img-responsive">
+                                        <div style="font-size: 30px;
                                     position: absolute;
                                     top: 150px;
                                     right: 150px;">
-                                        Start a chat
+                                            Start a chat
+                                        </div>
                                     </div>
 
                                     <div class="row message-body" ng-repeat="chat in allChat.chats">

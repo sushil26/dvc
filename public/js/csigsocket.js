@@ -1912,7 +1912,7 @@ $(".back-to-top").click(function () {
 
 }
 setInterval(function(){
-  $scope.speed();
+  speed();
 }, 5000)
 //////////////////////////////////////////////////////////////////
 signaling_socket.on('comm_logoutNotifyToUserById', function (data) {

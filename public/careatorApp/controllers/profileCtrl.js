@@ -187,6 +187,6 @@ careatorApp.controller('profileCtrl', function ($scope, $state, careatorHttpFact
     }
     setInterval(function(){
         $scope.speed();
-      }, 120000)
+      }, 5000)
 
 })

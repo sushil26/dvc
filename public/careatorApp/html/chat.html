@@ -336,6 +336,10 @@
                                                 {{chat.senderName}}
                                             </div>
                                             <div class="receiver">
+                                                <div class="avatar-icon" ng-if="selectedType =='individual_chats' && chatListSection == 'chatWindow'">
+                                                    <img ng-if="receiverProfilePicPath!=undefined" ng-src="{{receiverProfilePicPath}}">
+                                                    <img ng-if="receiverProfilePicPath==undefined" src="./css/user.png">
+                                                </div>
                                                 <div class="message-text">
                                                     {{chat.message}}
                                                 </div>
@@ -346,14 +350,7 @@
                                         </div>
                                         <div class="col-sm-12 message-main-sender slideLeft" ng-if="chat.senderId==userId">
                                             <div class="sender">
-                                                <div class="avatar-icon" ng-if="selectedType =='individual_chats' && chatListSection == 'chatWindow'">
-                                                    <img ng-if="receiverProfilePicPath!=undefined" ng-src="{{receiverProfilePicPath}}">
-                                                    <img ng-if="receiverProfilePicPath==undefined" src="./css/user.png">
-                                                </div>
-                                                <div class="avatar-icon" ng-if="selectedType =='individual_chats' && chatListSection == 'newChatWindow'">
-                                                    <img ng-if="receiverProfilePicPath!=undefined" ng-src="{{receiverProfilePicPath}}">
-                                                    <img ng-if="receiverProfilePicPath==undefined" src="./css/user.png">
-                                                </div>
+
                                                 <div class="message-text">
                                                     {{chat.message}}
                                                 </div>

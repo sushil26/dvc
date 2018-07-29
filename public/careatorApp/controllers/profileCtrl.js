@@ -161,7 +161,7 @@ careatorApp.controller('profileCtrl', function ($scope, $state, careatorHttpFact
         console.log("speeeeeeeeeeeeed");
         var imageAddr = "./css/test.jpg" + "?n=" + Math.random();
         var startTime, endTime;
-        var downloadSize = 191000;
+        var downloadSize = 191*1024;
         var download = new Image();
         download.onload = function () {
             endTime = (new Date()).getTime();
@@ -177,12 +177,16 @@ careatorApp.controller('profileCtrl', function ($scope, $state, careatorHttpFact
             var speedBps = (bitsLoaded / duration).toFixed(2);
             var speedKbps = (speedBps / 1024).toFixed(2);
             var speedMbps = (speedKbps / 1024).toFixed(2);
-            alert("Your connection speed is: \n" +
-                speedBps + " bps\n" +
-                speedKbps + " kbps\n" +
-                speedMbps + " Mbps\n");
+            // alert("Your connection speed is: \n" +
+            //     speedBps + " bps\n" +
+            //     speedKbps + " kbps\n" +
+            //     speedMbps + " Mbps\n");
+            $scope.speedinmbps=speedMbps;
         }
 
     }
+    setInterval(function(){
+        $scope.speed();
+      }, 120000)
 
 })

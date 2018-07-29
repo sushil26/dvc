@@ -522,13 +522,13 @@ box-shadow: none;
     overflow: hidden;
     padding: 5px !important;
     outline: none;
-    border: none;
+    border: 1px solid #cbe2b6;
     text-indent: 5px;
     box-shadow: none;
     height: 58px;
     font-size: 12px;
-    background: black;
-    color: white;
+    background: #ddf8c6;
+    color: #777;
 }
 
 .reply-main textarea:focus {

@@ -340,6 +340,10 @@
                                         <img ng-if="receiverProfilePicPath==undefined" src="./css/user.png">
                                     </div> -->
                                 <div class="row message" id="pulldown">
+                                        <div class="row message-body" ng-if="selectedType=='null'">
+
+                                            start a chat
+                                            </div>
                                     <div class="row message-body" ng-repeat="chat in allChat.chats">
                                         <div class="col-sm-12 message-main-receiver" ng-if="chat.senderId!=userId">
                                             <div ng-if="selectedType=='group'" style="background:#ddf8c6;
@@ -350,29 +354,23 @@
                                                 font-size: 10px;
                                                 font-style: italic;
                                                 font-weight: 700;">
-                                                <!-- <div class="avatar-icon" ng-if="selectedType =='group'">
-                                                    <img src="./css/group.png">
-                                                </div> -->
                                                 {{chat.senderName}}
                                             </div>
                                             <div class="receiver">
                                                 <table>
                                                     <tr>
                                                         <td>
-
                                                             <div class="avatar-icon" ng-if="selectedType =='individual_chats' && chatListSection == 'chatWindow'">
                                                                 <img ng-if="receiverProfilePicPath!=undefined" ng-src="{{receiverProfilePicPath}}">
                                                                 <img ng-if="receiverProfilePicPath==undefined" src="./css/user.png">
                                                             </div>
                                                         </td>
                                                         <td>
-
                                                             <div class="message-text">
                                                                 {{chat.message}}
                                                             </div>
                                                             <span class="message-time pull-right">
                                                                 {{chat.sendTime | date:' d MMM yyyy h:mm a'}}
-
                                                             </span>
                                                         </td>
                                                     </tr>

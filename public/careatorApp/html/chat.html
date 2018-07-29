@@ -123,47 +123,57 @@
                                     </div>
                                     <div class="row sideBar">
                                         <div class="row sideBar-body" ng-repeat="record in chatedGroup_records">
-                                            <div class="col-sm-3 col-xs-3 sideBar-avatar">
-                                                <div class="avatar-icon" ng-if="record.groupName==undefined && (record.receiverId!=adminId && record.senderId != adminId)">
-                                                    <img ng-if="record.profilePicPath==undefined" src="./css/user.png">
-                                                    <img ng-if="record.profilePicPath!=undefined" ng-src="{{record.profilePicPath}}">
-                                                </div>
-                                                <div class="avatar-icon" ng-if="record.groupName==undefined && (record.receiverId==adminId || record.senderId == adminId) ">
-                                                    <img ng-if="record.profilePicPath==undefined" src="./css/Admin.png">
-                                                    <img ng-if="record.profilePicPath!=undefined" ng-src="{{record.profilePicPath}}">
-                                                </div>
-                                                <div class="avatar-icon" ng-if="record.groupName!==undefined">
-                                                    <img src="./css/group.png">
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-9 col-xs-9 sideBar-main" ng-if="record.groupName==undefined">
-                                                <div class="row">
-                                                    <div class="col-sm-8 col-xs-8 sideBar-name" ng-click="chatDetails('individual_chats', record._id, $index)">
-                                                        <span ng-if="record.senderId!=userId" class="name-meta">{{record.senderName}}
-                                                        </span>
-                                                        <span ng-if="record.receiverId!=userId" class="name-meta">{{record.receiverName}}
-                                                        </span>
-                                                        <br>
-                                                        <span class="time-meta">{{record.timeStamp | date:' d MMM h:mm a'}}
-                                                        </span>
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <div class="col-sm-3 col-xs-3 sideBar-avatar">
+                                                            <div class="avatar-icon" ng-if="record.groupName==undefined && (record.receiverId!=adminId && record.senderId != adminId)">
+                                                                <img ng-if="record.profilePicPath==undefined" src="./css/user.png">
+                                                                <img ng-if="record.profilePicPath!=undefined" ng-src="{{record.profilePicPath}}">
+                                                            </div>
+                                                            <div class="avatar-icon" ng-if="record.groupName==undefined && (record.receiverId==adminId || record.senderId == adminId) ">
+                                                                <img ng-if="record.profilePicPath==undefined" src="./css/Admin.png">
+                                                                <img ng-if="record.profilePicPath!=undefined" ng-src="{{record.profilePicPath}}">
+                                                            </div>
+                                                            <div class="avatar-icon" ng-if="record.groupName!==undefined">
+                                                                <img src="./css/group.png">
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-sm-9 col-xs-9 sideBar-main" ng-if="record.groupName==undefined">
+                                                            <div class="row">
+                                                                <div class="col-sm-8 col-xs-8 sideBar-name" ng-click="chatDetails('individual_chats', record._id, $index)">
+                                                                    <span ng-if="record.senderId!=userId" class="name-meta">{{record.senderName}}
+                                                                    </span>
+                                                                    <span ng-if="record.receiverId!=userId" class="name-meta">{{record.receiverName}}
+                                                                    </span>
+                                                                    <br>
+                                                                    <span class="time-meta">{{record.timeStamp | date:' d MMM h:mm a'}}
+                                                                    </span>
 
-                                                        <span ng-if="record.unseenCount > 0" class="notify"> {{record.unseenCount}}</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-9 col-xs-9 sideBar-main" ng-if="record.groupName!==undefined">
-                                                <div class="row">
-                                                    <div class="col-sm-8 col-xs-8 sideBar-name" ng-click="chatDetails('group', record._id, $index)">
-                                                        <span class="name-meta">{{record.groupName}}
-                                                        </span>
-                                                        <span ng-if="record.unseenCount > 0" class="notify"> {{record.unseenCount}}</span>
-                                                    </div>
-                                                    <div class="col-sm-4 col-xs-4 pull-right sideBar-time">
-                                                        <span class="time-meta pull-right">{{record.timeStamp | date:' d MMM h:mm a'}}
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                                                    <span ng-if="record.unseenCount > 0" class="notify"> {{record.unseenCount}}</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-sm-9 col-xs-9 sideBar-main" ng-if="record.groupName!==undefined">
+                                                            <div class="row">
+                                                                <div class="col-sm-8 col-xs-8 sideBar-name" ng-click="chatDetails('group', record._id, $index)">
+                                                                    <span class="name-meta">{{record.groupName}}
+                                                                    </span>
+                                                                    <span ng-if="record.unseenCount > 0" class="notify"> {{record.unseenCount}}</span>
+                                                                </div>
+                                                                <div class="col-sm-4 col-xs-4 pull-right sideBar-time">
+                                                                    <span class="time-meta pull-right">{{record.timeStamp | date:' d MMM h:mm a'}}
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
                                         </div>
                                     </div>
                                 </div>

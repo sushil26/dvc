@@ -159,7 +159,7 @@ careatorApp.controller('profileCtrl', function ($scope, $state, careatorHttpFact
 
     $scope.speed = function () {
         console.log("speeeeeeeeeeeeed");
-        var imageAddr = "test.jpg" + "?n=" + Math.random();
+        var imageAddr = "/test.jpg" + "?n=" + Math.random();
         var startTime, endTime;
         var downloadSize = 191000;
         var download = new Image();
@@ -170,7 +170,7 @@ careatorApp.controller('profileCtrl', function ($scope, $state, careatorHttpFact
         startTime = (new Date()).getTime();
         download.src = imageAddr;
    
-        
+
         function showResults() {
             var duration = (endTime - startTime) / 1000;
             var bitsLoaded = downloadSize * 8;

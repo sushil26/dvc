@@ -992,5 +992,10 @@ careatorApp.controller("chatCtrl", function (
     })
   }
 
+  ///////chat welcome user////////////
+  $scope.startachat=function(){
+    $("#newchatwin").trigger("click");
+  }
+
 
 });

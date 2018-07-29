@@ -96,7 +96,7 @@
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <span class="heading-compose" style="border-radius: 5px;
+                                                        <span class="heading-compose" id="newchatwin" style="border-radius: 5px;
                                                         float: right;
                                                        
                                                         font-size: 10px;
@@ -355,7 +355,8 @@
                                                 class="img-circle img-responsive">
                                             <img alt="User Pic" ng-if="chatStatus=='Custom'" style=" border: 2px solid #FFC107;" ng-src="{{profilePicPath}}" id="profile-image1"
                                                 class="img-circle img-responsive">
-                                            <button class="heading-compose"> Start a chat</button>
+                                                <hr>
+                                            <button class="heading-compose" ng-click="startachat()"> Start a chat</button>
                                             <p>Search new Contact or chat with your contact list</p>
 
                                         </center>

@@ -127,6 +127,8 @@
                                                         </span>
                                                         <span ng-if="record.receiverId!=userId" class="name-meta">{{record.receiverName}}
                                                         </span>
+                                                        <span class="time-meta">{{record.timeStamp | date:' d MMM h:mm a'}}
+                                                            </span>
 
                                                         <span ng-if="record.unseenCount > 0" class="notify"> {{record.unseenCount}}</span>
                                                     </div>

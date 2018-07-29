@@ -342,9 +342,16 @@
                                 <div class="row message" id="pulldown">
                                     <div class="row message-body" ng-if="!selectedType">
                                         <center>
-                                            <h2>
+                                            <h1 style="font-size: 30px;
+                                            font-weight: 900;
+                                            background-color: #565656;
+                                            color: transparent;
+                                            text-shadow: 2px 2px 3px rgba(188, 187, 187, 0.5);
+                                            -webkit-background-clip: text;
+                                            -moz-background-clip: text;
+                                            background-clip: text;">
                                                 Welcome , {{loginUserName}}
-                                            </h2>
+                                            </h1>
                                             <img alt="User Pic" ng-if="chatStatus=='Available'" style=" border: 2px solid yellowgreen;" ng-src="{{profilePicPath}}" id="profile-image1"
                                                 class="img-circle img-responsive">
                                             <img alt="User Pic" ng-if="chatStatus=='Busy'" style=" border: 2px solid goldenrod;" ng-src="{{profilePicPath}}" id="profile-image1"

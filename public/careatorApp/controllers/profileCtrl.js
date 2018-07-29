@@ -168,7 +168,7 @@ careatorApp.controller('profileCtrl', function ($scope, $state, careatorHttpFact
         }
         startTime = (new Date()).getTime();
         download.src = imageAddr;
-
+   
         function showResults() {
             var duration = (endTime - startTime) / 1000;
             var bitsLoaded = downloadSize * 8;

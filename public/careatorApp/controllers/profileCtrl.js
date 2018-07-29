@@ -17,8 +17,7 @@ careatorApp.controller('profileCtrl', function ($scope, $state, careatorHttpFact
                 $scope.profilePicPath = $scope.userDetails.profilePicPath;
                 console.log("   $scope.userDetails: " + JSON.stringify($scope.userDetails));
                 console.log("data.data.message: " + data.data.message);
-            }
-            else {
+            } else {
                 console.log("Sorry");
                 console.log("data.data.message: " + data.data.message);
             }
@@ -55,7 +54,9 @@ careatorApp.controller('profileCtrl', function ($scope, $state, careatorHttpFact
     ///////upload from loacal//////////////
 
     $scope.schoolLogoStorage = function () {
-        $("#uploadlocal").css({"display":"none"});
+        $("#uploadlocal").css({
+            "display": "none"
+        });
         console.log("schoolLogoStorage-->");
         /* #####  Start Upload File ###### */
         console.log("$scope.file: " + $scope.file);
@@ -116,8 +117,7 @@ careatorApp.controller('profileCtrl', function ($scope, $state, careatorHttpFact
                 //$scope.eventGet();
                 $scope.getUserDataById();
 
-            }
-            else {
+            } else {
                 console.log("Sorry");
                 console.log("data.data.message: " + data.data.message);
             }
@@ -142,15 +142,45 @@ careatorApp.controller('profileCtrl', function ($scope, $state, careatorHttpFact
         }
     };
 
-    $scope.profilpic=function(){
+    $scope.profilpic = function () {
 
-        $("#uploadlocal").css({"display":"block"});
+        $("#uploadlocal").css({
+            "display": "block"
+        });
     }
-    $scope.Cancel=function(){
-        $("#uploadlocal").css({"display":"none"});
+    $scope.Cancel = function () {
+        $("#uploadlocal").css({
+            "display": "none"
+        });
 
     }
-  
 
+
+
+    $scope.speed = function () {
+        var imageAddr = "test.jpg" + "?n=" + Math.random();
+        var startTime, endTime;
+        var downloadSize = 191000;
+        var download = new Image();
+        download.onload = function () {
+            endTime = (new Date()).getTime();
+            showResults();
+        }
+        startTime = (new Date()).getTime();
+        download.src = imageAddr;
+
+        function showResults() {
+            var duration = (endTime - startTime) / 1000;
+            var bitsLoaded = downloadSize * 8;
+            var speedBps = (bitsLoaded / duration).toFixed(2);
+            var speedKbps = (speedBps / 1024).toFixed(2);
+            var speedMbps = (speedKbps / 1024).toFixed(2);
+            alert("Your connection speed is: \n" +
+                speedBps + " bps\n" +
+                speedKbps + " kbps\n" +
+                speedMbps + " Mbps\n");
+        }
+
+    }
 
 })

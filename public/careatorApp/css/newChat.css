@@ -87,6 +87,7 @@
 }
 
 .side-one {
+    border-right: 1px solid;
     padding: 0;
     margin: 0;
     height: 100%;

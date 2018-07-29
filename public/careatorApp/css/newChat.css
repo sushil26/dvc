@@ -222,10 +222,10 @@ box-shadow: none;
 }
 
 .sideBar-body {
-    background: paleturquoise;
+    background: ivory;
     position: relative;
     padding: 2px !important;
-    border-bottom: 1px solid #f7f7f7;
+    border-top: 1px solid #ddd;
     /* height: 54px; */
     margin: 0 !important;
     cursor: pointer;

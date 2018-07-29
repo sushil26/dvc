@@ -340,9 +340,8 @@
                                         <img ng-if="receiverProfilePicPath==undefined" src="./css/user.png">
                                     </div> -->
                                 <div class="row message" id="pulldown">
-                                    <div class="row message-body" ng-if="selectedType=='null'">
-
-                                        start a chat
+                                    <div class="row message-body" ng-if="selectedType.chats">
+                                        Start a chat
                                     </div>
                                 </div>
                                 <div class="row message-body" ng-repeat="chat in allChat.chats">

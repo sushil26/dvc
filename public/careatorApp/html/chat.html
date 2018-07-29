@@ -340,11 +340,13 @@
                                                     <img ng-if="receiverProfilePicPath!=undefined" ng-src="{{receiverProfilePicPath}}">
                                                     <img ng-if="receiverProfilePicPath==undefined" src="./css/user.png">
                                                 </div>
-                                                <div class="message-text">
-                                                    {{chat.message}}
-                                                </div>
-                                                <span class="message-time pull-right">
-                                                    {{chat.sendTime | date:' d MMM yyyy h:mm a'}}
+                                                <span>
+                                                    <div class="message-text">
+                                                        {{chat.message}}
+                                                    </div>
+                                                    <span class="message-time pull-right">
+                                                        {{chat.sendTime | date:' d MMM yyyy h:mm a'}}
+                                                    </span>
                                                 </span>
                                             </div>
                                         </div>

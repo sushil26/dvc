@@ -336,20 +336,28 @@
                                                 {{chat.senderName}}
                                             </div>
                                             <div class="receiver">
-                                                <span>
-                                                    <div class="avatar-icon" ng-if="selectedType =='individual_chats' && chatListSection == 'chatWindow'">
-                                                        <img ng-if="receiverProfilePicPath!=undefined" ng-src="{{receiverProfilePicPath}}">
-                                                        <img ng-if="receiverProfilePicPath==undefined" src="./css/user.png">
-                                                    </div>
-                                                </span>
-                                                <span>
-                                                    <div class="message-text">
-                                                        {{chat.message}}
-                                                    </div>
-                                                    <span class="message-time pull-right">
-                                                        {{chat.sendTime | date:' d MMM yyyy h:mm a'}}
-                                                    </span>
-                                                </span>
+                                                <table>
+                                                    <tr>
+                                                        <td>
+
+                                                            <div class="avatar-icon" ng-if="selectedType =='individual_chats' && chatListSection == 'chatWindow'">
+                                                                <img ng-if="receiverProfilePicPath!=undefined" ng-src="{{receiverProfilePicPath}}">
+                                                                <img ng-if="receiverProfilePicPath==undefined" src="./css/user.png">
+                                                            </div>
+                                                        </td>
+                                                        <td>
+
+                                                            <div class="message-text">
+                                                                {{chat.message}}
+                                                            </div>
+                                                            <span class="message-time pull-right">
+                                                                {{chat.sendTime | date:' d MMM yyyy h:mm a'}}
+
+                                                            </span>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+
                                             </div>
                                         </div>
                                         <div class="col-sm-12 message-main-sender slideLeft" ng-if="chat.senderId==userId">

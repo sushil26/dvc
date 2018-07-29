@@ -343,10 +343,10 @@
                                     <div class="row message-body" ng-if="selectedType.chats">
                                         Start a chat
                                     </div>
-                                </div>
-                                <div class="row message-body" ng-repeat="chat in allChat.chats">
-                                    <div class="col-sm-12 message-main-receiver" ng-if="chat.senderId!=userId">
-                                        <div ng-if="selectedType=='group'" style="background:#ddf8c6;
+
+                                    <div class="row message-body" ng-repeat="chat in allChat.chats">
+                                        <div class="col-sm-12 message-main-receiver" ng-if="chat.senderId!=userId">
+                                            <div ng-if="selectedType=='group'" style="background:#ddf8c6;
                                                 width: max-content;
                                                 padding: 5px;
                                                 border-radius: 10px;
@@ -354,102 +354,102 @@
                                                 font-size: 10px;
                                                 font-style: italic;
                                                 font-weight: 700;">
-                                            {{chat.senderName}}
-                                        </div>
-                                        <div class="receiver">
-                                            <table>
-                                                <tr>
-                                                    <td>
-                                                        <div class="avatar-icon" ng-if="selectedType =='individual_chats' && chatListSection == 'chatWindow'">
-                                                            <img ng-if="receiverProfilePicPath!=undefined" ng-src="{{receiverProfilePicPath}}">
-                                                            <img ng-if="receiverProfilePicPath==undefined" src="./css/user.png">
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="message-text">
-                                                            {{chat.message}}
-                                                        </div>
-                                                        <span class="message-time pull-right">
-                                                            {{chat.sendTime | date:' d MMM yyyy h:mm a'}}
-                                                        </span>
-                                                    </td>
-                                                </tr>
-                                            </table>
-
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-12 message-main-sender slideLeft" ng-if="chat.senderId==userId">
-                                        <div class="sender">
-
-                                            <div class="message-text">
-                                                {{chat.message}}
+                                                {{chat.senderName}}
                                             </div>
-                                            <span class="message-time pull-right">
-                                                {{chat.sendTime | date:' d MMM yyyy h:mm a'}}
-                                            </span>
+                                            <div class="receiver">
+                                                <table>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="avatar-icon" ng-if="selectedType =='individual_chats' && chatListSection == 'chatWindow'">
+                                                                <img ng-if="receiverProfilePicPath!=undefined" ng-src="{{receiverProfilePicPath}}">
+                                                                <img ng-if="receiverProfilePicPath==undefined" src="./css/user.png">
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="message-text">
+                                                                {{chat.message}}
+                                                            </div>
+                                                            <span class="message-time pull-right">
+                                                                {{chat.sendTime | date:' d MMM yyyy h:mm a'}}
+                                                            </span>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+
+                                            </div>
                                         </div>
+                                        <div class="col-sm-12 message-main-sender slideLeft" ng-if="chat.senderId==userId">
+                                            <div class="sender">
+
+                                                <div class="message-text">
+                                                    {{chat.message}}
+                                                </div>
+                                                <span class="message-time pull-right">
+                                                    {{chat.sendTime | date:' d MMM yyyy h:mm a'}}
+                                                </span>
+                                            </div>
+                                        </div>
+
+
                                     </div>
-
-
                                 </div>
-                            </div>
-                            <div class="row reply">
-                                <div class="col-sm-9 col-xs-9 reply-main">
+                                <div class="row reply">
+                                    <div class="col-sm-9 col-xs-9 reply-main">
 
 
-                                    <textarea class="form-control" rows="1" id="comment" ng-model="typedMessage"></textarea>
-                                </div>
-                                <div class="col-sm-1 col-xs-1 reply-recording">
-                                    <!-- <label for="fileselect">
+                                        <textarea class="form-control" rows="1" id="comment" ng-model="typedMessage"></textarea>
+                                    </div>
+                                    <div class="col-sm-1 col-xs-1 reply-recording">
+                                        <!-- <label for="fileselect">
                                                 <i class="fa fa-upload fa-2x"> </i>
                                             </label>
                                             <input id="fileselect" type="file" name="fileselect" style="display: none;"/> -->
-                                </div>
-                                <div class="col-sm-1 col-xs-1 reply-send">
-                                    <span class="deepbutton" id="sndmgs" ng-click="sendText()">Send</span>
-                                    <!-- <button class="btn btn-success" aria-hidden="true" id="sndmgs" ng-click="sendText()">Send</button> -->
+                                    </div>
+                                    <div class="col-sm-1 col-xs-1 reply-send">
+                                        <span class="deepbutton" id="sndmgs" ng-click="sendText()">Send</span>
+                                        <!-- <button class="btn btn-success" aria-hidden="true" id="sndmgs" ng-click="sendText()">Send</button> -->
+                                    </div>
                                 </div>
                             </div>
+                            <!-- ### End: Remote Profile Head ### -->
                         </div>
-                        <!-- ### End: Remote Profile Head ### -->
                     </div>
+                </section>
             </div>
-            </section>
-</div>
-</section>
-<!-- ##### Start audio play  ##### -->
-<audio id="myAudio">
-    <source src="./audio/alert.mp3" type="audio/mpeg">
-</audio>
-<!-- ##### End audio play  ##### -->
+        </section>
+        <!-- ##### Start audio play  ##### -->
+        <audio id="myAudio">
+            <source src="./audio/alert.mp3" type="audio/mpeg">
+        </audio>
+        <!-- ##### End audio play  ##### -->
 
-</section>
-<button data-toggle="modal" data-target="#alertcreatuser" id="alertButton" data-backdrop="static" data-keyboard="false" style="display:none"></button>
+    </section>
+    <button data-toggle="modal" data-target="#alertcreatuser" id="alertButton" data-backdrop="static" data-keyboard="false" style="display:none"></button>
 
 
-<div class="modal fade" id="alertcreatuser" role="dialog">
-    <div class="modal-dialog">
-        <center>
-            <form>
-                <div class="modal-content" style="color:#777;max-width:350px; border-radius: 8px;">
-                    <div class="modal-header" style="padding-top: 15px;background-image: linear-gradient(to bottom, #383c3f 0%, #202224 100%);">
-                        <img style="width: 45px;margin-top: -15px;margin-left: -190px;" src="/home/img/fav.png" />
-                        <span class="modal-title" style="font-weight: 200;">Message</span>
-                    </div>
-                    <div class="modal-body">
-                        <label id="notify_msg_confirm_content" style="color:black;font-size: 20px;">{{notifyMsg}}</label>
-                    </div>
-                    <div class="modal-footer" style="padding-top: 15px;background-image: linear-gradient(to bottom, #202224 0%, #383c3f 100%);">
-                        <button type="button" style="background-color: #565656;
+    <div class="modal fade" id="alertcreatuser" role="dialog">
+        <div class="modal-dialog">
+            <center>
+                <form>
+                    <div class="modal-content" style="color:#777;max-width:350px; border-radius: 8px;">
+                        <div class="modal-header" style="padding-top: 15px;background-image: linear-gradient(to bottom, #383c3f 0%, #202224 100%);">
+                            <img style="width: 45px;margin-top: -15px;margin-left: -190px;" src="/home/img/fav.png" />
+                            <span class="modal-title" style="font-weight: 200;">Message</span>
+                        </div>
+                        <div class="modal-body">
+                            <label id="notify_msg_confirm_content" style="color:black;font-size: 20px;">{{notifyMsg}}</label>
+                        </div>
+                        <div class="modal-footer" style="padding-top: 15px;background-image: linear-gradient(to bottom, #202224 0%, #383c3f 100%);">
+                            <button type="button" style="background-color: #565656;
                             color: transparent;
                             text-shadow: 2px 2px 3px rgba(255,255,255,0.5);
                             -webkit-background-clip: text;
                                -moz-background-clip: text;
                                     background-clip: text;" class="btn" data-dismiss="modal">Ok</button>
+                        </div>
                     </div>
-                </div>
-            </form>
-        </center>
+                </form>
+            </center>
+        </div>
     </div>
-</div>
 </div>

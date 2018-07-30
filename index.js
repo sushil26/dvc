@@ -161,7 +161,25 @@ io.sockets.on('connection', function (socket) {
 
     socket.on('disconnect', function () {
         console.log("[" + socket.id + "] connection disconnected Start");
-        console.log("***emailTrack[socket.id]: "+emailTrack[socket.id]);
+        console.log("***emailTrack[socket.id]: " + emailTrack[socket.id]);
+        console.log("***sessionURLTrack[config.owner]: " + sessionURLTrack[config.owner]);
+        var db = mongoConfig.getDb();
+        console.log("db: " + db);
+        careatorMaster = db.collection("careatorMaster");
+        var queryObj = {
+            "sessionURL": sessionURLTrack[config.owner]
+        }
+        console.log("queryObj: " + JSON.stringify(queryObj));
+        careatorMaster.update(queryObj, {
+            $push: { "leftEmails": emailTrack[socket.id] }, $pull: { "joinEmails": emailTrack[socket.id] }
+        }, function (err, data) {
+            if (err) {
+                console.log("errr: " + JSON.stringify(err));
+            }
+            else {
+                console.log("data: " + JSON.stringify(data));
+            }
+        })
         for (var channel in socket.channels) {
             console.log("connection: channel: " + channel);
             part(channel);

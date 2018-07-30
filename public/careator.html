@@ -164,36 +164,48 @@
         </div>
         <div style="float:right; color: white;">Current Speed:
             <span id="speed"></span>&nbsp;Mbps
-            <br>
-            <div id="connectionStatus"></div>
-            <div id="bars4" class="signal-bars mt1 sizing-box good four-bars">
-                <div class="first-bar bar"></div>
-                <div class="second-bar bar"></div>
-                <div class="third-bar bar"></div>
-                <div class="fourth-bar bar"></div>
-                <!-- <div class="fifth-bar bar"></div> -->
-            </div>
-            <div id="bars3" class="signal-bars mt1 sizing-box good three-bars">
-                <div class="first-bar bar"></div>
-                <div class="second-bar bar"></div>
-                <div class="third-bar bar"></div>
-                <div class="fourth-bar bar"></div>
-                <!-- <div class="fifth-bar bar"></div> -->
-            </div>
-            <div id="bars2" class="signal-bars mt1 sizing-box ok two-bars">
-                <div class="first-bar bar"></div>
-                <div class="second-bar bar"></div>
-                <div class="third-bar bar"></div>
-                <div class="fourth-bar bar"></div>
-                <!-- <div class="fifth-bar bar"></div> -->
-            </div>
-            <div id="bars1" class="signal-bars mt1 sizing-box bad one-bar">
-                <div class="first-bar bar"></div>
-                <div class="second-bar bar"></div>
-                <div class="third-bar bar"></div>
-                <div class="fourth-bar bar"></div>
-                <!-- <div class="fifth-bar bar"></div> -->
-            </div>
+            <table>
+                <tr>
+                    <td>
+                        <div id="connectionStatus"></div>
+                    </td>
+                    <td>
+                        <span>
+                            <div id="bars4" class="signal-bars mt1 sizing-box good four-bars">
+                                <div class="first-bar bar"></div>
+                                <div class="second-bar bar"></div>
+                                <div class="third-bar bar"></div>
+                                <div class="fourth-bar bar"></div>
+                                <!-- <div class="fifth-bar bar"></div> -->
+                            </div>
+                            <div id="bars3" class="signal-bars mt1 sizing-box good three-bars">
+                                <div class="first-bar bar"></div>
+                                <div class="second-bar bar"></div>
+                                <div class="third-bar bar"></div>
+                                <div class="fourth-bar bar"></div>
+                                <!-- <div class="fifth-bar bar"></div> -->
+                            </div>
+                            <div id="bars2" class="signal-bars mt1 sizing-box ok two-bars">
+                                <div class="first-bar bar"></div>
+                                <div class="second-bar bar"></div>
+                                <div class="third-bar bar"></div>
+                                <div class="fourth-bar bar"></div>
+                                <!-- <div class="fifth-bar bar"></div> -->
+                            </div>
+                            <div id="bars1" class="signal-bars mt1 sizing-box bad one-bar">
+                                <div class="first-bar bar"></div>
+                                <div class="second-bar bar"></div>
+                                <div class="third-bar bar"></div>
+                                <div class="fourth-bar bar"></div>
+                                <!-- <div class="fifth-bar bar"></div> -->
+                            </div>
+                        </span>
+                    </td>
+                </tr>
+            </table>
+
+
+
         </div>
 
 
@@ -1066,8 +1078,8 @@
 
 
         .sizing-box {
-            height: 50px;
-            width: 80px;
+            height: 25px;
+            width: 40px;
         }
 
         .signal-bars {

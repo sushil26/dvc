@@ -171,7 +171,7 @@ io.sockets.on('connection', function (socket) {
         }
         console.log("queryObj: " + JSON.stringify(queryObj));
         careatorMaster.update(queryObj, {
-            $push: { "leftEmails": emailTrack[socket.id] }, $pull: { "joinEmails": emailTrack[socket.id] }
+            $addToSet: { "leftEmails": emailTrack[socket.id] }, $pull: { "joinEmails": emailTrack[socket.id] }
         }, function (err, data) {
             if (err) {
                 console.log("errr: " + JSON.stringify(err));
@@ -309,7 +309,7 @@ io.sockets.on('connection', function (socket) {
         }
         console.log("leftEmails: " + JSON.stringify(leftEmails));
         careatorMaster.update({ "sessionURL": config.sessionURL }, {
-            $push: { "leftEmails": config.email }, $pull: { "joinEmails": config.email }
+            $addToSet: { "leftEmails": config.email }, $pull: { "joinEmails": config.email }
         }, function (err, data) {
             if (err) {
                 console.log("errr: " + JSON.stringify(err));

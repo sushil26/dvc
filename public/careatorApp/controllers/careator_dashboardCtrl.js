@@ -191,6 +191,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                             socket.emit("comm_logout", {
                                 "userId": $scope.userData.userId,
                                 "email": $scope.userData.email,
+                                "sessionURL": sessionURL,
                                 "sessionRandomId": $scope.userData.sessionRandomId
                             }); /* ### Note: Logout notification to server ### */
                         }

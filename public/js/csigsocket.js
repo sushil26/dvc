@@ -543,7 +543,16 @@ signaling_socket.on("disconnectSessionReply", function (data) {
     console.log("Ready for redirect-->");
     // localStorage.setItem("redirctRequired", true);
     //alert("Sorry your link is not alive");
-    close();
+    document.getElementById("sessionDisconn_alert").style.display = 'inline';
+    document.getElementById("sessionDisconn_alert").innerHTML = 'Your conference got disconnect, you no longer can use this session';
+
+    setTimeout(function () {
+      $('#sessionDisconn_alert').fadeOut('fast');
+    }, 3000);
+    setTimeout(function () {
+      close();
+    }, 4000);
+    // close();
     //window.location.href = "https://norecruits.com";
   } else if (queryLink == data.deleteSessionId && peerNew_id != data.owner) {
     console.log("remote notification that host disconnect the session-->");

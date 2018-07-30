@@ -499,7 +499,9 @@ io.sockets.on('connection', function (socket) {
             console.log("stuff: " + JSON.stringify(stuff));
             console.log("emailTrack: " + JSON.stringify(emailTrack));
             console.log("emailTrack.indexOf(data.email): " + emailTrack.indexOf(data.email));
-            io.sockets.emit('disconnectSessionReply', { "deleteSessionId": stuff[4], "owner": emailTrack.indexOf(datadata.email) });
+            if (emailTrack.indexOf(data.email) >= 0) {
+                io.sockets.emit('disconnectSessionReply', { "deleteSessionId": stuff[4], "owner": emailTrack.indexOf(datadata.email) });
+            }
             var queryObj = {
                 "_id": ObjectId(data.userId)
             }

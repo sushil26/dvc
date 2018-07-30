@@ -62,45 +62,41 @@
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <div class="col-sm-9 col-xs-9 sideBar-main">
-                                                            <div class="row">
-                                                                <div class="col-sm-8 col-xs-8 sideBar-name">
-                                                                    <h5 style="font-size: 15px;
+                                                        <div>
+                                                            <h5 style="font-size: 15px;
                                                         text-transform: capitalize;
                                                          color: #555;
                                                         font-family: sans-serif;">{{loginUserName}}</h5>
-                                                                    <div class="tooltip">
-                                                                        <span ng-if="chatStatus=='Available'" style="color: yellowgreen;">{{chatStatus}}</span>
-                                                                        <span ng-if="chatStatus=='Busy'" style="color: goldenrod;">{{chatStatus}}</span>
-                                                                        <span ng-if="chatStatus=='Hide'" style="color: dimgray;">{{chatStatus}}</span>
-                                                                        <span ng-if="chatStatus=='Sleeping'" style="color: black;">{{chatStatus}}</span>
-                                                                        <span ng-if="chatStatus=='Custom'" style="color: #FFC107;">{{chatStatus}}</span>
-                                                                        <div class="tooltiptext">
-                                                                            <span style="background:white;
+                                                            <div class="tooltip">
+                                                                <span ng-if="chatStatus=='Available'" style="color: yellowgreen;">{{chatStatus}}</span>
+                                                                <span ng-if="chatStatus=='Busy'" style="color: goldenrod;">{{chatStatus}}</span>
+                                                                <span ng-if="chatStatus=='Hide'" style="color: dimgray;">{{chatStatus}}</span>
+                                                                <span ng-if="chatStatus=='Sleeping'" style="color: black;">{{chatStatus}}</span>
+                                                                <span ng-if="chatStatus=='Custom'" style="color: #FFC107;">{{chatStatus}}</span>
+                                                                <div class="tooltiptext">
+                                                                    <span style="background:white;
                                                                         padding: 5px;
                                                                         border-radius: 5px;line-height: 2.5; color: yellowgreen;"
-                                                                                ng-click="statusUpdate('Available')">Available</span>
+                                                                        ng-click="statusUpdate('Available')">Available</span>
 
-                                                                            <span style="background:white;
+                                                                    <span style="background:white;
                                                                         padding: 5px;
                                                                         border-radius: 5px;line-height: 2.5;color:goldenrod;"
-                                                                                ng-click="statusUpdate('Busy')">Busy</span>
+                                                                        ng-click="statusUpdate('Busy')">Busy</span>
 
-                                                                            <span style="background:white;
+                                                                    <span style="background:white;
                                                                         padding: 5px;
                                                                         border-radius: 5px;line-height: 2.5;color: dimgray;"
-                                                                                ng-click="statusUpdate('Hide')">Hide</span>
-                                                                            <span style="background:white;
+                                                                        ng-click="statusUpdate('Hide')">Hide</span>
+                                                                    <span style="background:white;
                                                                         padding: 5px;
                                                                         border-radius: 5px;line-height: 2.5;color: black;"
-                                                                                ng-click="statusUpdate('Sleeping')">Sleeping</span>
+                                                                        ng-click="statusUpdate('Sleeping')">Sleeping</span>
 
-                                                                            <span style="background:white;
+                                                                    <span style="background:white;
                                                                         padding: 5px;
                                                                         border-radius: 5px;line-height: 2.5; color: #FFC107;"
-                                                                                ng-click="statusUpdate('Custom')">Custom</span>
-                                                                        </div>
-                                                                    </div>
+                                                                        ng-click="statusUpdate('Custom')">Custom</span>
                                                                 </div>
                                                             </div>
                                                         </div>

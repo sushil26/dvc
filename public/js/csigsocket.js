@@ -770,11 +770,11 @@ signaling_socket.on("connect", function () {
 
         });
       } else {
-        $("#alertConfirmationButton").trigger("click");
+        // $("#alertConfirmationButton").trigger("click");
 
-        setTimeout(function () {
-          window.close();
-        }, 3000);
+        // setTimeout(function () {
+        //   window.close();
+        // }, 3000);
       }
     }
 

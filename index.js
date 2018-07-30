@@ -497,20 +497,22 @@ io.sockets.on('connection', function (socket) {
             var url = data.sessionURL;
             var stuff = url.split("/");
             console.log("stuff: " + JSON.stringify(stuff));
-            // console.log("emailTrack: " + JSON.stringify(emailTrack));
-            // console.log("emailTrack.indexOf(data.email): " + emailTrack.indexOf(data.email));
-            // io.sockets.emit('disconnectSessionReply', { "deleteSessionId": stuff[4], "owner": emailTrack.indexOf(datadata.email) });
-            // var queryObj = {
-            //     "_id": ObjectId(data.userId)
-            // }
-            // careatorMaster.update(queryObj, { $set: { "isDisconnected": "yes" } }, function (err, data) {
-            //     if (err) {
-            //         console.log("errr: " + JSON.stringify(err));
-            //     }
-            //     else {
-            //         console.log("data: " + JSON.stringify(data));
-            //     }
-            // })
+            console.log("emailTrack: " + JSON.stringify(emailTrack));
+            console.log("emailTrack.indexOf(data.email): " + emailTrack.indexOf(data.email));
+            if (emailTrack.indexOf(data.email) >= 0) {
+                io.sockets.emit('disconnectSessionReply', { "deleteSessionId": stuff[4], "owner": emailTrack.indexOf(datadata.email) });
+            }
+            var queryObj = {
+                "_id": ObjectId(data.userId)
+            }
+            careatorMaster.update(queryObj, { $set: { "isDisconnected": "yes" } }, function (err, data) {
+                if (err) {
+                    console.log("errr: " + JSON.stringify(err));
+                }
+                else {
+                    console.log("data: " + JSON.stringify(data));
+                }
+            })
             console.log("Deleting id: " + stuff[4]);
             deletedSocket_ids.push(stuff[4]);
             console.log("deletedSocket_ids: " + JSON.stringify(stuff[4]));

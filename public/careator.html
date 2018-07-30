@@ -166,7 +166,7 @@
             <span id="speed"></span>&nbsp;Mbps
             <br>
             <div id="connectionStatus"></div>
-            <div id="bars1" class="signal-bars mt1 sizing-box good four-bars" >
+            <div id="bars1" class="signal-bars mt1 sizing-box good four-bars">
                 <div class="first-bar bar"></div>
                 <div class="second-bar bar"></div>
                 <div class="third-bar bar"></div>
@@ -957,7 +957,6 @@
         //     //if we return nothing here (just calling return;) then there will be no pop-up question at all
         //     //return;
         // };
-        
     </script>
     <script>
         function speed() {
@@ -987,35 +986,67 @@
 
                 if (speedMbps <= 2) {
                     document.getElementById('connectionStatus').innerHTML = "Poor Network";
-               $("#bar1").css({"display":"block"});
-               $("#bar2").css({"display":"none"});
-               $("#bar3").css({"display":"none"});
-               $("#bar4").css({"display":"none"});
+                    $("#bars1").css({
+                        "display": "block"
+                    });
+                    $("#bars2").css({
+                        "display": "none"
+                    });
+                    $("#bars3").css({
+                        "display": "none"
+                    });
+                    $("#bars4").css({
+                        "display": "none"
+                    });
 
                 }
                 if (speedMbps > 2 && speedMbps < 4) {
                     document.getElementById('connectionStatus').innerHTML = "Fair Network";
-                    $("#bar1").css({"display":"none"});
-               $("#bar2").css({"display":"block"});
-               $("#bar3").css({"display":"none"});
-               $("#bar4").css({"display":"none"});
+                    $("#bars1").css({
+                        "display": "none"
+                    });
+                    $("#bars2").css({
+                        "display": "block"
+                    });
+                    $("#bars3").css({
+                        "display": "none"
+                    });
+                    $("#bars4").css({
+                        "display": "none"
+                    });
 
                 }
                 if (speedMbps > 4 && speedMbps < 10) {
                     document.getElementById('connectionStatus').innerHTML = "Good Network";
-                    $("#bar1").css({"display":"none"});
-               $("#bar2").css({"display":"none"});
-               $("#bar3").css({"display":"block"});
-               $("#bar4").css({"display":"none"});
+                    $("#bars1").css({
+                        "display": "none"
+                    });
+                    $("#bars2").css({
+                        "display": "none"
+                    });
+                    $("#bars3").css({
+                        "display": "block"
+                    });
+                    $("#bars4").css({
+                        "display": "none"
+                    });
 
                 }
 
                 if (speedMbps > 10) {
                     document.getElementById('connectionStatus').innerHTML = "Excellent Network";
-                    $("#bar1").css({"display":"none"});
-               $("#bar2").css({"display":"none"});
-               $("#bar3").css({"display":"none"});
-               $("#bar4").css({"display":"block"});
+                    $("#bars1").css({
+                        "display": "none"
+                    });
+                    $("#bars2").css({
+                        "display": "none"
+                    });
+                    $("#bars3").css({
+                        "display": "none"
+                    });
+                    $("#bars4").css({
+                        "display": "block"
+                    });
 
                 }
 

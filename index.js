@@ -497,7 +497,8 @@ io.sockets.on('connection', function (socket) {
             var url = data.sessionURL;
             var stuff = url.split("/");
             console.log("stuff: " + JSON.stringify(stuff));
-            console.log("emailTrack.indexOf(datadata.email): " + emailTrack.indexOf(data.email));
+            console.log("emailTrack: " + JSON.stringify(emailTrack));
+            console.log("emailTrack.indexOf(data.email): " + emailTrack.indexOf(data.email));
             io.sockets.emit('disconnectSessionReply', { "deleteSessionId": stuff[4], "owner": emailTrack.indexOf(datadata.email) });
             var queryObj = {
                 "_id": ObjectId(data.userId)

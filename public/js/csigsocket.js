@@ -772,7 +772,7 @@ signaling_socket.on("connect", function () {
         $("#alertConfirmationButton").trigger("click");
 
         setTimeout(function () {
-          window.close();
+          //window.close();
         }, 3000);
         // window.location.href = "https://norecruits.com";
       }

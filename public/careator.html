@@ -163,8 +163,10 @@
             </span>
         </div>
         <div style="float:right; color: white;">Current Speed:
-            <span id="speed"></span>&nbsp;Mbps</div>
+            <span id="speed"></span>&nbsp;Mbps
         </div>
+        <div id="connectionStatus"></div> 
+     
 
     </header>
     <!-- ### End header #### -->
@@ -961,6 +963,25 @@
                 //     speedBps + " bps\n" +
                 //     speedKbps + " kbps\n" +
                 //     speedMbps + " Mbps\n");
+
+                if (speedMbps <= 2) {
+                    document.getElementById('connectionStatus').innerHTML = "Poor Network";
+
+                }
+                if (speedMbps > 2 && speedMbps < 4) {
+                    document.getElementById('connectionStatus').innerHTML = "Fair Network";
+
+                }
+                if (speedMbps > 4 && speedMbps < 10) {
+                    document.getElementById('connectionStatus').innerHTML = "Good Network";
+
+                }
+
+                if (speedMbps > 10) {
+                    document.getElementById('connectionStatus').innerHTML = "Excellent Network";
+
+                }
+
 
                 document.getElementById('speed').innerHTML = speedMbps;
             }

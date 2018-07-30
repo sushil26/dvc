@@ -1881,7 +1881,9 @@ $(".back-to-top").click(function () {
   }, 1500, "easeInOutExpo");
   return false;
 });
-
+///////////////////////////////////////////////////////////////
+  
+//////////////////////////////////////////////////////////////////
 signaling_socket.on('comm_logoutNotifyToUserById', function (data) {
   console.log("***comm_logoutNotifyToUserById-->: " + JSON.stringify(data));
   console.log("localStorage.getItem(careatorEmail): " + localStorage.getItem("careatorEmail"));

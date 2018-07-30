@@ -2,10 +2,10 @@
     <section id="main-content">
 
         <section class="wrapper">
-         
+
             <div id="profile">
                 <section class="panel">
-                    
+
                     <div class="panel-heading">
                         <i class="fa fa-user-circle"></i>
                         <span style="color:white;">&nbspUser Profile</span>
@@ -153,12 +153,18 @@
                                 </tr>
                             </table>
                         </div>
-                       
+
                     </div>
+                    <button ng-click="speed()">speed</button>
+                    <span>
+                        {{speedinmbps}}
+                    </span>
+
                 </section>
             </div>
         </section>
     </section>
+
     <style>
         .cropArea {
             background: #E4E4E4;

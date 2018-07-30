@@ -83,7 +83,7 @@ module.exports.RemoteJoinCheck = function (req, res) {
                                 else {
                                     responseData = {
                                         status: false,
-
+                                        errorCode: "E0_alreadyInUse",
                                         message: "Sorry using this credential already user participating in confeence"
                                     };
                                     console.log("responseData: " + JSON.stringify(responseData));
@@ -92,6 +92,7 @@ module.exports.RemoteJoinCheck = function (req, res) {
                             } else {
                                 responseData = {
                                     status: false,
+                                    errorCode: "E1_credentialMismatch",
                                     message: "Credential Mismatch"
                                 };
                                 res.status(400).send(responseData);
@@ -102,6 +103,7 @@ module.exports.RemoteJoinCheck = function (req, res) {
                 else {
                     responseData = {
                         status: false,
+                        errorCode: "E0_URLE",
                         message: "Your URL not alive"
                     };
                     res.status(400).send(responseData);

@@ -171,8 +171,9 @@ module.exports.pswdCheckForSesstion = function (req, res) {
                                     else {
                                         var joinEmails = sessionURLFind[0].joinEmails;
                                         console.log("joinEmails: " + JSON.stringify(joinEmails));
-                                        console.log("joinEmails.indexOf(req.body.careator_remoteEmail): " + joinEmails.indexOf(req.body.careator_remoteEmail));
-                                        if (joinEmails.indexOf(req.body.careator_remoteEmail) < 0) {
+                                        console.log("req.body.careatorEmail: "+req.body.careatorEmail);
+                                        console.log("joinEmails.indexOf(req.body.careatorEmail): " + joinEmails.indexOf(req.body.careatorEmail));
+                                        if (joinEmails.indexOf(req.body.careatorEmail) < 0) {
                                             careatorMaster.update({ "sessionURL": req.body.sessionURL }, { $pull: { "leftEmails": careatorEmail }, $addToSet: { "joinEmails": careatorEmail } }, function (err, data) {
                                                 if (err) {
                                                     responseData = {

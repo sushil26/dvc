@@ -50,16 +50,10 @@ console.log("id2**: " + id2);
 // console.log("localStorage.getItem(careatorEmail )" +localStorage.getItem("careatorEmail")+"localStorage.getItem(sessionPassword): "+localStorage.getItem("sessionPassword"));
 if (stuff.length > 5) {
   console.log("1 cond");
-
   console.log("localStorage.getItem(careatorEmail): " + localStorage.getItem("careatorEmail"));
   console.log("localStorage.getItem(sessionPassword): " + localStorage.getItem("sessionPassword"));
   console.log("localStorage.getItem(careator_remoteEmail): " + localStorage.getItem("careator_remoteEmail"));
   console.log("localStorage.getItem(oneTimePassword): " + localStorage.getItem("oneTimePassword"));
-  // if (localStorage.getItem("redirctRequired") == 'true') {
-  //   console.log("localStorage.getItem(redirctRequired): " + localStorage.getItem("redirctRequired"));
-  //   localStorage.removeItem("redirctRequired");
-  //   close();
-  // }
   if (localStorage.getItem("careatorEmail") && localStorage.getItem("sessionPassword") && (localStorage.getItem("videoRights") == 'yes')) {
     console.log("Hoster session check");
     var password = localStorage.getItem("sessionPassword");
@@ -143,10 +137,11 @@ if (stuff.length > 5) {
   }
   console.log("userName: " + userName);
 } else {
-
+  console.log("2 cond");
+  console.log("localStorage.getItem(careatorEmail): " + localStorage.getItem("careatorEmail"));
+  console.log("localStorage.getItem(sessionPassword): " + localStorage.getItem("sessionPassword"));
   if (localStorage.getItem("careatorEmail") && localStorage.getItem("sessionPassword")) {
-    console.log("2 cond");
-    var userNameEmail = localStorage.getItem("careatorEmail");
+       var userNameEmail = localStorage.getItem("careatorEmail");
     console.log("2 cond: userNameEmail: " + userNameEmail);
     var emailIdSplit = userNameEmail.split('@');
     console.log("2 cond: emailIdSplit: " + JSON.stringify(emailIdSplit));

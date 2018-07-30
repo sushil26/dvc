@@ -137,7 +137,7 @@ if (stuff.length > 5) {
   }
   console.log("userName: " + userName);
 } else {
-  console.log("2 cond");
+  console.log("3 cond");
   console.log("localStorage.getItem(careatorEmail): " + localStorage.getItem("careatorEmail"));
   console.log("localStorage.getItem(sessionPassword): " + localStorage.getItem("sessionPassword"));
   if (localStorage.getItem("careatorEmail") && localStorage.getItem("sessionPassword")) {
@@ -542,7 +542,7 @@ signaling_socket.on("disconnectSessionReply", function (data) {
     console.log("Ready for redirect-->");
     // localStorage.setItem("redirctRequired", true);
     //alert("Sorry your link is not alive");
-    close();
+   // close();
     //window.location.href = "https://norecruits.com";
   } else if (queryLink == data.deleteSessionId && peerNew_id != data.owner) {
     console.log("remote notification that host disconnect the session-->");
@@ -553,7 +553,7 @@ signaling_socket.on("disconnectSessionReply", function (data) {
       $('#sessionDisconn_alert').fadeOut('fast');
     }, 3000);
     setTimeout(function () {
-      close();
+     // close();
     }, 4000);
     // localStorage.setItem("redirctRequired", true);
     // $("#homeLink").trigger("click");
@@ -647,12 +647,9 @@ function getChatBack() {
       var chatData = data.data[0];
       console.log("chatData: " + JSON.stringify(chatData));
       for (var x = 0; x < chatData.chat.length; x++) {
-
         document.getElementById('message-container').innerHTML += '<div class="direct-chat-info clearfix"><span class="direct-chat-name pull-left">' +
           chatData.chat[x].userName + '</span></div><i class="direct-chat-img" aria-hidden="true"></i><!-- /.direct-chat-img --><div class="content direct-chat-text new_windowAutoLink">' + chatData.chat[x].message + '</div><div class="direct-chat-info clearfix"><span class="direct-chat-timestamp pull-right">' + chatData.chat[x].textTime + '</span></div>'
-
       }
-
     },
     error: function (err) {
       console.log("err: " + JSON.stringify(err));
@@ -775,7 +772,7 @@ signaling_socket.on("connect", function () {
         $("#alertConfirmationButton").trigger("click");
 
         setTimeout(function () {
-          window.close();
+         // window.close();
         }, 3000);
         // window.location.href = "https://norecruits.com";
       }
@@ -1944,7 +1941,7 @@ signaling_socket.on('comm_logoutNotifyToUserById', function (data) {
     //   deleteSessionId: queryLink,
     //   owner: peerNew_id
     // });
-    close();
+   // close();
 
   }
   // if(localStorage.getItem("careatorEmail")==null || localStorage.getItem("careator_remoteEmail")==null){

@@ -126,6 +126,7 @@ module.exports.pswdCheckForSesstion = function (req, res) {
     console.log("req.body.password: " + req.body.password + " req.body.careatorEmail: " + req.body.careatorEmail);
     var password = req.body.password;
     var careatorEmail = req.body.careatorEmail;
+    var url = req.body.sessionURL;
     if (general.emptyCheck(password) && general.emptyCheck(careatorEmail)) {
         var obj = { "email": careatorEmail }
         console.log("obj: " + JSON.stringify(obj));
@@ -140,36 +141,60 @@ module.exports.pswdCheckForSesstion = function (req, res) {
             } else {
                 if (findData.length > 0) {
                     if (findData[0].password == password) {
-                        var joinEmails = findData[0].joinEmails;
-                        console.log("joinEmails: " + JSON.stringify(joinEmails));
-                        console.log("joinEmails.indexOf(req.body.careator_remoteEmail): " + joinEmails.indexOf(req.body.careator_remoteEmail));
-                        if (joinEmails.indexOf(req.body.careator_remoteEmail) < 0) {
-                            careatorMaster.update({ "sessionURL": req.body.sessionURL }, { $pull: { "leftEmails": careatorEmail }, $addToSet: { "joinEmails": careatorEmail } }, function (err, data) {
-                                if (err) {
-                                    responseData = {
-                                        status: false,
-                                        message: "Process failed"
-                                    };
-                                    res.status(400).send(responseData);
-                                } else {
-                                    responseData = {
-                                        status: true,
-                                        sessionData: "79ea520a-3e67-11e8-9679-97fa7aeb8e97",
-                                        message: "Login Successfully"
-                                    };
-                                    res.status(200).send(responseData);
+                        careatorMaster.find({ "sessionURL": url }).toArray(function (err, sessionURLFind) {
+                            if (err) {
+                                responseData = {
+                                    status: false,
+                                    message: "Process failed"
+                                };
+                                res.status(400).send(responseData);
+                            } else {
+                                if (sessionURLFind.length > 0) {
+                                    if (sessionURLFind[0].isDisconnected == 'yes') {
+                                        responseData = {
+                                            status: false,
+                                            errorCode: "E0_URLE",
+                                            message: "Your URL not alive"
+                                        };
+                                        res.status(400).send(responseData);
+                                    }
+                                    else {
+                                        var joinEmails = findData[0].joinEmails;
+                                        console.log("joinEmails: " + JSON.stringify(joinEmails));
+                                        console.log("joinEmails.indexOf(req.body.careator_remoteEmail): " + joinEmails.indexOf(req.body.careator_remoteEmail));
+                                        if (joinEmails.indexOf(req.body.careator_remoteEmail) < 0) {
+                                            careatorMaster.update({ "sessionURL": req.body.sessionURL }, { $pull: { "leftEmails": careatorEmail }, $addToSet: { "joinEmails": careatorEmail } }, function (err, data) {
+                                                if (err) {
+                                                    responseData = {
+                                                        status: false,
+                                                        message: "Process failed"
+                                                    };
+                                                    res.status(400).send(responseData);
+                                                } else {
+                                                    responseData = {
+                                                        status: true,
+                                                        sessionData: "79ea520a-3e67-11e8-9679-97fa7aeb8e97",
+                                                        message: "Login Successfully"
+                                                    };
+                                                    res.status(200).send(responseData);
+                                                }
+                                            })
+                                        }
+                                        else {
+                                            responseData = {
+                                                status: false,
+                                                errorCode: "E0_alreadyInUse",
+                                                message: "Sorry using this credential already user participating in confeence"
+                                            };
+                                            console.log("responseData: " + JSON.stringify(responseData));
+                                            res.status(400).send(responseData);
+                                        }
+                                    }
+
                                 }
-                            })
-                        }
-                        else {
-                            responseData = {
-                                status: false,
-                                errorCode: "E0_alreadyInUse",
-                                message: "Sorry using this credential already user participating in confeence"
-                            };
-                            console.log("responseData: " + JSON.stringify(responseData));
-                            res.status(400).send(responseData);
-                        }
+                            }
+                        })
+
 
                     } else {
                         responseData = {

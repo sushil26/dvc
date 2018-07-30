@@ -997,7 +997,7 @@
                 //     speedMbps + " Mbps\n");
 
                 if (speedMbps <= 2) {
-                    document.getElementById('connectionStatus').innerHTML = "Poor Network ";
+                    document.getElementById('connectionStatus').innerHTML = "Poor Network &nbsp;";
                     $("#bars1").css({
                         "display": "block"
                     });
@@ -1013,7 +1013,7 @@
 
                 }
                 if (speedMbps > 2 && speedMbps < 4) {
-                    document.getElementById('connectionStatus').innerHTML = "Fair Network ";
+                    document.getElementById('connectionStatus').innerHTML = "Fair Network &nbsp;";
                     $("#bars1").css({
                         "display": "none"
                     });
@@ -1029,7 +1029,7 @@
 
                 }
                 if (speedMbps > 4 && speedMbps < 10) {
-                    document.getElementById('connectionStatus').innerHTML = "Good Network ";
+                    document.getElementById('connectionStatus').innerHTML = "Good Network &nbsp;";
                     $("#bars1").css({
                         "display": "none"
                     });
@@ -1046,7 +1046,7 @@
                 }
 
                 if (speedMbps > 10) {
-                    document.getElementById('connectionStatus').innerHTML = "Excellent Network ";
+                    document.getElementById('connectionStatus').innerHTML = "Excellent Network &nbsp;";
                     $("#bars1").css({
                         "display": "none"
                     });

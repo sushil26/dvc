@@ -110,6 +110,8 @@ var peerWithUserName = []; /* PeerId with UserName: peer-id is a index, Value is
 var peerTrackForVideo = { 'link': [] }; /* This variable for getting socket.id's with perticular Link*/
 var tempId = null;
 var sessionHeaderId = null;
+var sessionURLTrack = []; /* sessionURL with peer Id: peer-id is a index, value is a sessionURL  */
+var emailTrack = []; /* email with peer Id: peer-id is a index, value is a email id  */
 /**
  * Users will connect to the signaling server, after which they'll issue a "join"
  * to join a particular channel. The signaling server keeps track of all sockets
@@ -159,6 +161,7 @@ io.sockets.on('connection', function (socket) {
 
     socket.on('disconnect', function () {
         console.log("[" + socket.id + "] connection disconnected Start");
+        console.log("***emailTrack[socket.id]: "+emailTrack[socket.id]);
         for (var channel in socket.channels) {
             console.log("connection: channel: " + channel);
             part(channel);
@@ -209,6 +212,8 @@ io.sockets.on('connection', function (socket) {
         console.log("Join-->");
         peerWithQueryId[config.owner] = config.queryLink;
         peerWithTimeId[config.owner] = config.timeLink;
+        sessionURLTrack[config.owner] = config.sessionURL;
+        emailTrack[config.owner] = config.email;
 
         peerWithUserName[config.owner] = config.userName;
 
@@ -259,7 +264,7 @@ io.sockets.on('connection', function (socket) {
     });
 
     function part(channel) {
-        console.log("***Part[" + socket.id + "] part ");
+        console.log("Part[" + socket.id + "] part ");
         if (!(channel in socket.channels)) {
             console.log("[" + socket.id + "] ERROR: not in ", channel);
             return;
@@ -286,15 +291,16 @@ io.sockets.on('connection', function (socket) {
         }
         console.log("leftEmails: " + JSON.stringify(leftEmails));
         careatorMaster.update({ "sessionURL": config.sessionURL }, {
-            $push: { "leftEmails":  config.email  }, $pull: { "joinEmails": config.email }}, function(err, data) {
-                if (err) {
-                    console.log("errr: " + JSON.stringify(err));
-                }
-                else {
-                    console.log("data: " + JSON.stringify(data));
-                    socket.emit('doRedirect', {"email": config.email});
-                }
-            })
+            $push: { "leftEmails": config.email }, $pull: { "joinEmails": config.email }
+        }, function (err, data) {
+            if (err) {
+                console.log("errr: " + JSON.stringify(err));
+            }
+            else {
+                console.log("data: " + JSON.stringify(data));
+                socket.emit('doRedirect', { "email": config.email });
+            }
+        })
     })
 
     socket.on('relayICECandidate', function (config) {

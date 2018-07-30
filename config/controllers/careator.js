@@ -132,7 +132,7 @@ module.exports.RemoteJoinCheck = function (req, res) {
 }
 
 module.exports.pswdCheckForSesstion = function (req, res) {
-    console.log("pswdCheck-->");
+    console.log("pswdCheckForSesstion-->");
     console.log("req.body.password: " + req.body.password + " req.body.careatorEmail: " + req.body.careatorEmail);
     var password = req.body.password;
     var careatorEmail = req.body.careatorEmail;
@@ -169,7 +169,7 @@ module.exports.pswdCheckForSesstion = function (req, res) {
                                         res.status(400).send(responseData);
                                     }
                                     else {
-                                        var joinEmails = findData[0].joinEmails;
+                                        var joinEmails = sessionURLFind[0].joinEmails;
                                         console.log("joinEmails: " + JSON.stringify(joinEmails));
                                         console.log("joinEmails.indexOf(req.body.careator_remoteEmail): " + joinEmails.indexOf(req.body.careator_remoteEmail));
                                         if (joinEmails.indexOf(req.body.careator_remoteEmail) < 0) {
@@ -234,7 +234,7 @@ module.exports.pswdCheckForSesstion = function (req, res) {
         console.log("responseData: " + JSON.stringify(responseData));
         res.status(400).send(responseData);
     }
-    console.log("<--pswdCheck");
+    console.log("<--pswdCheckForSesstion");
 }
 
 module.exports.pswdCheck = function (req, res) {

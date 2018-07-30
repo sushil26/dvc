@@ -764,6 +764,9 @@ signaling_socket.on("connect", function () {
                 document.getElementById('notify_msg_content').innerHTML = err.responseJSON.message;
                 document.getElementById('resetBtn').style.display = 'none';
                 $("#notify_msg_button").trigger("click");
+                setTimeout(function () {
+                  window.close();
+                }, 3000);
               }
             }
           });

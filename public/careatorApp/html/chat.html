@@ -45,17 +45,21 @@
                                         <div class="form-group has-feedback">
                                             <table style="width: 100%;">
                                                 <tr>
-                                                    <td>
-                                                        <img alt="User Pic" ng-if="chatStatus=='Available'" style="max-width: 49px; border: 2px solid yellowgreen;" ng-src="{{profilePicPath}}"
-                                                            id="profile-image1" class="img-circle img-responsive">
-                                                        <img alt="User Pic" ng-if="chatStatus=='Busy'" style="max-width: 49px; border: 2px solid goldenrod;" ng-src="{{profilePicPath}}"
-                                                            id="profile-image1" class="img-circle img-responsive">
-                                                        <img alt="User Pic" ng-if="chatStatus=='Hide'" style="max-width: 49px; border: 2px solid dimgray;" ng-src="{{profilePicPath}}"
-                                                            id="profile-image1" class="img-circle img-responsive">
-                                                        <img alt="User Pic" ng-if="chatStatus=='Sleeping'" style="max-width: 49px; border: 2px solid black;" ng-src="{{profilePicPath}}"
-                                                            id="profile-image1" class="img-circle img-responsive">
-                                                        <img alt="User Pic" ng-if="chatStatus=='Custom'" style="max-width: 49px; border: 2px solid #FFC107;" ng-src="{{profilePicPath}}"
-                                                            id="profile-image1" class="img-circle img-responsive">
+                                                    <td style="width: 50px;">
+                                                        <div class="col-sm-3 col-xs-3 sideBar-avatar">
+                                                            <div class="avatar-icon">
+                                                                <img alt="User Pic" ng-if="chatStatus=='Available'" style="max-width: 49px; border: 2px solid yellowgreen;" ng-src="{{profilePicPath}}"
+                                                                    id="profile-image1" class="img-circle img-responsive">
+                                                                <img alt="User Pic" ng-if="chatStatus=='Busy'" style="max-width: 49px; border: 2px solid goldenrod;" ng-src="{{profilePicPath}}"
+                                                                    id="profile-image1" class="img-circle img-responsive">
+                                                                <img alt="User Pic" ng-if="chatStatus=='Hide'" style="max-width: 49px; border: 2px solid dimgray;" ng-src="{{profilePicPath}}"
+                                                                    id="profile-image1" class="img-circle img-responsive">
+                                                                <img alt="User Pic" ng-if="chatStatus=='Sleeping'" style="max-width: 49px; border: 2px solid black;" ng-src="{{profilePicPath}}"
+                                                                    id="profile-image1" class="img-circle img-responsive">
+                                                                <img alt="User Pic" ng-if="chatStatus=='Custom'" style="max-width: 49px; border: 2px solid #FFC107;" ng-src="{{profilePicPath}}"
+                                                                    id="profile-image1" class="img-circle img-responsive">
+                                                            </div>
+                                                        </div>
                                                     </td>
                                                     <td>
                                                         <h5 style="font-size: 15px;

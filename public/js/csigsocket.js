@@ -542,7 +542,7 @@ signaling_socket.on("disconnectSessionReply", function (data) {
     console.log("Ready for redirect-->");
     // localStorage.setItem("redirctRequired", true);
     //alert("Sorry your link is not alive");
-   // close();
+    close();
     //window.location.href = "https://norecruits.com";
   } else if (queryLink == data.deleteSessionId && peerNew_id != data.owner) {
     console.log("remote notification that host disconnect the session-->");
@@ -553,7 +553,7 @@ signaling_socket.on("disconnectSessionReply", function (data) {
       $('#sessionDisconn_alert').fadeOut('fast');
     }, 3000);
     setTimeout(function () {
-     // close();
+      close();
     }, 4000);
     // localStorage.setItem("redirctRequired", true);
     // $("#homeLink").trigger("click");
@@ -769,11 +769,10 @@ signaling_socket.on("connect", function () {
 
         });
       } else {
-        console.log("alertConfirmationButton-->");
         $("#alertConfirmationButton").trigger("click");
 
         setTimeout(function () {
-         // window.close();
+          window.close();
         }, 3000);
         // window.location.href = "https://norecruits.com";
       }
@@ -1942,7 +1941,7 @@ signaling_socket.on('comm_logoutNotifyToUserById', function (data) {
     //   deleteSessionId: queryLink,
     //   owner: peerNew_id
     // });
-   // close();
+    close();
 
   }
   // if(localStorage.getItem("careatorEmail")==null || localStorage.getItem("careator_remoteEmail")==null){

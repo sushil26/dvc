@@ -131,6 +131,7 @@ if (stuff.length > 5) {
     });
   } else {
     console.log("No user data from session");
+    userName = "";
     getChatBack();
     $("#setName").trigger("click");
 
@@ -141,7 +142,7 @@ if (stuff.length > 5) {
   console.log("localStorage.getItem(careatorEmail): " + localStorage.getItem("careatorEmail"));
   console.log("localStorage.getItem(sessionPassword): " + localStorage.getItem("sessionPassword"));
   if (localStorage.getItem("careatorEmail") && localStorage.getItem("sessionPassword")) {
-       var userNameEmail = localStorage.getItem("careatorEmail");
+    var userNameEmail = localStorage.getItem("careatorEmail");
     console.log("2 cond: userNameEmail: " + userNameEmail);
     var emailIdSplit = userNameEmail.split('@');
     console.log("2 cond: emailIdSplit: " + JSON.stringify(emailIdSplit));
@@ -542,7 +543,7 @@ signaling_socket.on("disconnectSessionReply", function (data) {
     console.log("Ready for redirect-->");
     // localStorage.setItem("redirctRequired", true);
     //alert("Sorry your link is not alive");
-   // close();
+    close();
     //window.location.href = "https://norecruits.com";
   } else if (queryLink == data.deleteSessionId && peerNew_id != data.owner) {
     console.log("remote notification that host disconnect the session-->");
@@ -553,7 +554,7 @@ signaling_socket.on("disconnectSessionReply", function (data) {
       $('#sessionDisconn_alert').fadeOut('fast');
     }, 3000);
     setTimeout(function () {
-     // close();
+      close();
     }, 4000);
     // localStorage.setItem("redirctRequired", true);
     // $("#homeLink").trigger("click");
@@ -769,12 +770,11 @@ signaling_socket.on("connect", function () {
 
         });
       } else {
-        $("#alertConfirmationButton").trigger("click");
+        // $("#alertConfirmationButton").trigger("click");
 
-        setTimeout(function () {
-         // window.close();
-        }, 3000);
-        // window.location.href = "https://norecruits.com";
+        // setTimeout(function () {
+        //   window.close();
+        // }, 3000);
       }
     }
 
@@ -1941,7 +1941,7 @@ signaling_socket.on('comm_logoutNotifyToUserById', function (data) {
     //   deleteSessionId: queryLink,
     //   owner: peerNew_id
     // });
-   // close();
+    close();
 
   }
   // if(localStorage.getItem("careatorEmail")==null || localStorage.getItem("careator_remoteEmail")==null){

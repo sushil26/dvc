@@ -66,7 +66,8 @@ if (stuff.length > 5) {
     var careatorEmail = localStorage.getItem("careatorEmail");
     var obj = {
       "password": password,
-      "careatorEmail": careatorEmail
+      "careatorEmail": careatorEmail,
+      "sessionURL": window.location.href
     };
     console.log("obj: " + JSON.stringify(obj));
     $.ajax({

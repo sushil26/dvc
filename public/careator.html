@@ -162,7 +162,10 @@
                 </a>
             </span>
         </div>
-        <div style="float:right; color: white;">Current Speed:
+        <div style="    position: absolute;right: 10px;
+        color: white; 
+        font-weight: 100;
+        font-size: 14px;">Current Speed:
             <span id="speed"></span>&nbsp;Mbps
             <table>
                 <tr>
@@ -170,36 +173,36 @@
                         <div id="connectionStatus"></div>
                     </td>
                     <td>
-                        <span>
-                            <div id="bars4" class="signal-bars mt1 sizing-box good four-bars">
-                                <div class="first-bar bar"></div>
-                                <div class="second-bar bar"></div>
-                                <div class="third-bar bar"></div>
-                                <div class="fourth-bar bar"></div>
-                                <!-- <div class="fifth-bar bar"></div> -->
-                            </div>
-                            <div id="bars3" class="signal-bars mt1 sizing-box good three-bars">
-                                <div class="first-bar bar"></div>
-                                <div class="second-bar bar"></div>
-                                <div class="third-bar bar"></div>
-                                <div class="fourth-bar bar"></div>
-                                <!-- <div class="fifth-bar bar"></div> -->
-                            </div>
-                            <div id="bars2" class="signal-bars mt1 sizing-box ok two-bars">
-                                <div class="first-bar bar"></div>
-                                <div class="second-bar bar"></div>
-                                <div class="third-bar bar"></div>
-                                <div class="fourth-bar bar"></div>
-                                <!-- <div class="fifth-bar bar"></div> -->
-                            </div>
-                            <div id="bars1" class="signal-bars mt1 sizing-box bad one-bar">
-                                <div class="first-bar bar"></div>
-                                <div class="second-bar bar"></div>
-                                <div class="third-bar bar"></div>
-                                <div class="fourth-bar bar"></div>
-                                <!-- <div class="fifth-bar bar"></div> -->
-                            </div>
-                        </span>
+
+                        <div id="bars4" class="signal-bars mt1 sizing-box good four-bars" style="display: none;">
+                            <div class="first-bar bar"></div>
+                            <div class="second-bar bar"></div>
+                            <div class="third-bar bar"></div>
+                            <div class="fourth-bar bar"></div>
+                            <!-- <div class="fifth-bar bar"></div> -->
+                        </div>
+                        <div id="bars3" class="signal-bars mt1 sizing-box good three-bars" style="display: none;">
+                            <div class="first-bar bar"></div>
+                            <div class="second-bar bar"></div>
+                            <div class="third-bar bar"></div>
+                            <div class="fourth-bar bar"></div>
+                            <!-- <div class="fifth-bar bar"></div> -->
+                        </div>
+                        <div id="bars2" class="signal-bars mt1 sizing-box ok two-bars" style="display: none;">
+                            <div class="first-bar bar"></div>
+                            <div class="second-bar bar"></div>
+                            <div class="third-bar bar"></div>
+                            <div class="fourth-bar bar"></div>
+                            <!-- <div class="fifth-bar bar"></div> -->
+                        </div>
+                        <div id="bars1" class="signal-bars mt1 sizing-box bad one-bar" style="display: none;">
+                            <div class="first-bar bar"></div>
+                            <div class="second-bar bar"></div>
+                            <div class="third-bar bar"></div>
+                            <div class="fourth-bar bar"></div>
+                            <!-- <div class="fifth-bar bar"></div> -->
+                        </div>
+
                     </td>
                 </tr>
             </table>
@@ -997,7 +1000,7 @@
                 //     speedMbps + " Mbps\n");
 
                 if (speedMbps <= 2) {
-                    document.getElementById('connectionStatus').innerHTML = "Poor Network";
+                    document.getElementById('connectionStatus').innerHTML = "Poor Network &nbsp;";
                     $("#bars1").css({
                         "display": "block"
                     });
@@ -1013,7 +1016,7 @@
 
                 }
                 if (speedMbps > 2 && speedMbps < 4) {
-                    document.getElementById('connectionStatus').innerHTML = "Fair Network";
+                    document.getElementById('connectionStatus').innerHTML = "Fair Network &nbsp;";
                     $("#bars1").css({
                         "display": "none"
                     });
@@ -1029,7 +1032,7 @@
 
                 }
                 if (speedMbps > 4 && speedMbps < 10) {
-                    document.getElementById('connectionStatus').innerHTML = "Good Network";
+                    document.getElementById('connectionStatus').innerHTML = "Good Network &nbsp;";
                     $("#bars1").css({
                         "display": "none"
                     });
@@ -1046,7 +1049,7 @@
                 }
 
                 if (speedMbps > 10) {
-                    document.getElementById('connectionStatus').innerHTML = "Excellent Network";
+                    document.getElementById('connectionStatus').innerHTML = "Excellent Network &nbsp;";
                     $("#bars1").css({
                         "display": "none"
                     });

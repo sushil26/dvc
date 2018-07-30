@@ -49,57 +49,67 @@ module.exports.RemoteJoinCheck = function (req, res) {
                 res.status(400).send(responseData);
             } else {
                 if (sessionURLFindData.length > 0) {
-                    careatorMaster.find({ "sessionURL": url, "invite": { $elemMatch: { "remoteEmailId": remote_careatorEmail, "password": password } } }).toArray(function (err, findData) {
-                        console.log("findData: " + JSON.stringify(findData));
-                        console.log("findData.length: " + findData.length);
-                        if (err) {
-                            responseData = {
-                                status: false,
-                                message: "Process failed"
-                            };
-                            res.status(400).send(responseData);
-                        } else {
-                            if (findData.length > 0) {
-                                var joinEmails = findData[0].joinEmails;
-                                console.log("joinEmails: " + JSON.stringify(joinEmails));
-                                console.log("joinEmails.indexOf(req.body.careator_remoteEmail): " + joinEmails.indexOf(req.body.careator_remoteEmail));
-                                if (joinEmails.indexOf(req.body.careator_remoteEmail) < 0) {
-                                    careatorMaster.update({ "sessionURL": url }, { $pull: { "leftEmails": remote_careatorEmail }, $addToSet: { "joinEmails": remote_careatorEmail } }, function (err, data) {
-                                        if (err) {
-                                            responseData = {
-                                                status: false,
-                                                message: "Process failed"
-                                            };
-                                            res.status(400).send(responseData);
-                                        } else {
-                                            responseData = {
-                                                status: true,
-                                                sessionData: "79ea520a-3e67-11e8-9679-97fa7aeb8e97",
-                                                message: "Login Successfully"
-                                            };
-                                            res.status(200).send(responseData);
-                                        }
-                                    })
-                                }
-                                else {
-                                    responseData = {
-                                        status: false,
-                                        errorCode: "E0_alreadyInUse",
-                                        message: "Sorry using this credential already user participating in confeence"
-                                    };
-                                    console.log("responseData: " + JSON.stringify(responseData));
-                                    res.status(400).send(responseData);
-                                }
-                            } else {
+                    if (sessionURLFindData[0].isDisconnected == 'yes') {
+                        responseData = {
+                            status: false,
+                            errorCode: "E0_URLE",
+                            message: "Your URL not alive"
+                        };
+                        res.status(400).send(responseData);
+                    }
+                    else {
+                        careatorMaster.find({ "sessionURL": url, "invite": { $elemMatch: { "remoteEmailId": remote_careatorEmail, "password": password } } }).toArray(function (err, findData) {
+                            console.log("findData: " + JSON.stringify(findData));
+                            console.log("findData.length: " + findData.length);
+                            if (err) {
                                 responseData = {
                                     status: false,
-                                    errorCode: "E1_credentialMismatch",
-                                    message: "Credential Mismatch"
+                                    message: "Process failed"
                                 };
                                 res.status(400).send(responseData);
+                            } else {
+                                if (findData.length > 0) {
+                                    var joinEmails = findData[0].joinEmails;
+                                    console.log("joinEmails: " + JSON.stringify(joinEmails));
+                                    console.log("joinEmails.indexOf(req.body.careator_remoteEmail): " + joinEmails.indexOf(req.body.careator_remoteEmail));
+                                    if (joinEmails.indexOf(req.body.careator_remoteEmail) < 0) {
+                                        careatorMaster.update({ "sessionURL": url }, { $pull: { "leftEmails": remote_careatorEmail }, $addToSet: { "joinEmails": remote_careatorEmail } }, function (err, data) {
+                                            if (err) {
+                                                responseData = {
+                                                    status: false,
+                                                    message: "Process failed"
+                                                };
+                                                res.status(400).send(responseData);
+                                            } else {
+                                                responseData = {
+                                                    status: true,
+                                                    sessionData: "79ea520a-3e67-11e8-9679-97fa7aeb8e97",
+                                                    message: "Login Successfully"
+                                                };
+                                                res.status(200).send(responseData);
+                                            }
+                                        })
+                                    }
+                                    else {
+                                        responseData = {
+                                            status: false,
+                                            errorCode: "E0_alreadyInUse",
+                                            message: "Sorry using this credential already user participating in confeence"
+                                        };
+                                        console.log("responseData: " + JSON.stringify(responseData));
+                                        res.status(400).send(responseData);
+                                    }
+                                } else {
+                                    responseData = {
+                                        status: false,
+                                        errorCode: "E1_credentialMismatch",
+                                        message: "Credential Mismatch"
+                                    };
+                                    res.status(400).send(responseData);
+                                }
                             }
-                        }
-                    })
+                        })
+                    }
                 }
                 else {
                     responseData = {

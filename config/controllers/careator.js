@@ -62,6 +62,7 @@ module.exports.RemoteJoinCheck = function (req, res) {
                             if (findData.length > 0) {
                                 var joinEmails = findData[0].joinEmails;
                                 console.log("joinEmails: " + JSON.stringify(joinEmails));
+                                console.log("joinEmails.indexOf(req.body.careator_remoteEmail): "+joinEmails.indexOf(req.body.careator_remoteEmail));
                                 if (joinEmails.indexOf(req.body.careator_remoteEmail) < 0) {
                                     careatorMaster.update({ "sessionURL": url }, { $pull: { "leftEmails": remote_careatorEmail }, $addToSet: { "joinEmails": remote_careatorEmail } }, function (err, data) {
                                         if (err) {
@@ -83,7 +84,7 @@ module.exports.RemoteJoinCheck = function (req, res) {
                                 else {
                                     responseData = {
                                         status: false,
-
+                                        errorCode: "E0_alreadyInUse",
                                         message: "Sorry using this credential already user participating in confeence"
                                     };
                                     console.log("responseData: " + JSON.stringify(responseData));
@@ -92,6 +93,7 @@ module.exports.RemoteJoinCheck = function (req, res) {
                             } else {
                                 responseData = {
                                     status: false,
+                                    errorCode: "E1_credentialMismatch",
                                     message: "Credential Mismatch"
                                 };
                                 res.status(400).send(responseData);
@@ -102,6 +104,7 @@ module.exports.RemoteJoinCheck = function (req, res) {
                 else {
                     responseData = {
                         status: false,
+                        errorCode: "E0_URLE",
                         message: "Your URL not alive"
                     };
                     res.status(400).send(responseData);

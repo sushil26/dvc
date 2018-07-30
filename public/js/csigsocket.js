@@ -766,7 +766,7 @@ signaling_socket.on("connect", function () {
               document.getElementById("videoConferenceUrl").style.display = "none";
               document.getElementById("emailInvitation").style.display = "none";
               userName = "";
-              if (err.responseJSON.message == "Your URL not alive" || err.responseJSON.message == "Sorry using this credential already user participating in conference") {
+              if (err.responseJSON.errorCode == "E0_URLE" || err.responseJSON.errorCode == "E0_alreadyInUse") {
                 $('#remoteJoin').modal('hide');
                 document.getElementById('notify_msg_content').innerHTML = err.responseJSON.message;
                 document.getElementById('resetBtn').style.display = 'none';

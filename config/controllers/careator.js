@@ -152,6 +152,7 @@ module.exports.pswdCheckForSesstion = function (req, res) {
                 if (findData.length > 0) {
                     if (findData[0].password == password) {
                         careatorMaster.find({ "sessionURL": url }).toArray(function (err, sessionURLFind) {
+                            console.log("sessionURLFind: "+JSON.stringify(sessionURLFind));
                             if (err) {
                                 responseData = {
                                     status: false,
@@ -175,6 +176,7 @@ module.exports.pswdCheckForSesstion = function (req, res) {
                                         console.log("joinEmails.indexOf(req.body.careatorEmail): " + joinEmails.indexOf(req.body.careatorEmail));
                                         if (joinEmails.indexOf(req.body.careatorEmail) < 0) {
                                             careatorMaster.update({ "sessionURL": req.body.sessionURL }, { $pull: { "leftEmails": careatorEmail }, $addToSet: { "joinEmails": careatorEmail } }, function (err, data) {
+                                                console.log("sessionURLFind: "+JSON.stringify(sessionURLFind));
                                                 if (err) {
                                                     responseData = {
                                                         status: false,

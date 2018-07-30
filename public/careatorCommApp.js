@@ -129,6 +129,17 @@ careatorApp.config(function ($stateProvider, $urlRouterProvider) {
         .state('Cdashboard.profile', {
             url: profile(),
             templateUrl: '/careatorApp/html/profile.html',
+            resolve: {
+                result: function (careatorSessionAuth, $window) {
+                    var userData = careatorSessionAuth.getAccess("userData");
+                    if (userData.email != undefined) {
+
+                    }
+                    else {
+                        $window.location.href = 'https://norecruits.com';
+                    }
+                }
+            }
         })
         .state('Cdashboard.userRestrict', {
             url: careator_userRestrict(),

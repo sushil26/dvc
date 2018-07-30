@@ -180,7 +180,7 @@
                                     <div class="row newMessage-heading">
                                         <div class="row newMessage-main">
                                             <div class="col-sm-2 col-xs-2 newMessage-back" id="backkjkj">
-                                                <i style="font-size: 20px;"class="fa fa-arrow-left" aria-hidden="true"></i>
+                                                <i style="font-size: 20px;" class="fa fa-arrow-left" aria-hidden="true"></i>
                                             </div>
                                             <div class="col-sm-10 col-xs-10 newMessage-title">
                                                 New Chat
@@ -354,16 +354,16 @@
                                             background-clip: text;">
                                                 Welcome, {{loginUserName}}
                                             </h1>
-                                            <img alt="User Pic" ng-if="chatStatus=='Available'" style=" border: 2px solid yellowgreen;" ng-src="{{profilePicPath}}" id="profile-image1"
-                                                class="img-circle img-responsive">
-                                            <img alt="User Pic" ng-if="chatStatus=='Busy'" style=" border: 2px solid goldenrod;" ng-src="{{profilePicPath}}" id="profile-image1"
-                                                class="img-circle img-responsive">
-                                            <img alt="User Pic" ng-if="chatStatus=='Hide'" style=" border: 2px solid dimgray;" ng-src="{{profilePicPath}}" id="profile-image1"
-                                                class="img-circle img-responsive">
-                                            <img alt="User Pic" ng-if="chatStatus=='Sleeping'" style=" border: 2px solid black;" ng-src="{{profilePicPath}}" id="profile-image1"
-                                                class="img-circle img-responsive">
-                                            <img alt="User Pic" ng-if="chatStatus=='Custom'" style=" border: 2px solid #FFC107;" ng-src="{{profilePicPath}}" id="profile-image1"
-                                                class="img-circle img-responsive">
+                                            <img alt="User Pic" ng-if="chatStatus=='Available'" style=" border: 2px solid yellowgreen;     max-width: 200px;" ng-src="{{profilePicPath}}"
+                                                id="profile-image1" class="img-circle img-responsive">
+                                            <img alt="User Pic" ng-if="chatStatus=='Busy'" style=" border: 2px solid goldenrod;     max-width: 200px;" ng-src="{{profilePicPath}}"
+                                                id="profile-image1" class="img-circle img-responsive">
+                                            <img alt="User Pic" ng-if="chatStatus=='Hide'" style=" border: 2px solid dimgray;     max-width: 200px;" ng-src="{{profilePicPath}}"
+                                                id="profile-image1" class="img-circle img-responsive">
+                                            <img alt="User Pic" ng-if="chatStatus=='Sleeping'" style=" border: 2px solid black;     max-width: 200px;" ng-src="{{profilePicPath}}"
+                                                id="profile-image1" class="img-circle img-responsive">
+                                            <img alt="User Pic" ng-if="chatStatus=='Custom'" style=" border: 2px solid #FFC107;     max-width: 200px;" ng-src="{{profilePicPath}}"
+                                                id="profile-image1" class="img-circle img-responsive">
                                             <br>
                                             <button class="" style="padding: 5px;
                                             background: black; border-radius: 5px;" ng-click="startachat()"> Start a chat</button>

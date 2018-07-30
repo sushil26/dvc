@@ -769,6 +769,7 @@ signaling_socket.on("connect", function () {
 
         });
       } else {
+        console.log("alertConfirmationButton-->");
         $("#alertConfirmationButton").trigger("click");
 
         setTimeout(function () {

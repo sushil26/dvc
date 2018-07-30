@@ -137,7 +137,7 @@ module.exports.pswdCheckForSesstion = function (req, res) {
             } else {
                 if (findData.length > 0) {
                     if (findData[0].password == password) {
-                        careatorMaster.update({ "sessionURL": req.body.sessionURL }, { $pull: { "leftEmails": remote_careatorEmail }, $addToSet: { "joinEmails": remote_careatorEmail } }, function (err, data) {
+                        careatorMaster.update({ "sessionURL": req.body.sessionURL }, { $pull: { "leftEmails": careatorEmail }, $addToSet: { "joinEmails": careatorEmail } }, function (err, data) {
                             if (err) {
                                 responseData = {
                                     status: false,

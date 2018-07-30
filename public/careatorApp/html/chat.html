@@ -103,22 +103,16 @@
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <span class="heading-compose" id="newchatwin" style="border-radius: 5px;
-                                                        float: right;
-                                                       
-                                                        font-size: 10px;
-                                                        color: black;
-                                                        padding: 3px;
-                                                        cursor: pointer;
-                                                        background-image: linear-gradient(to bottom, #f7f8f9 0%, #6f6f6f 100%);
-                                                        box-shadow: 1px 2px 5px #000;" ng-click="getAllChatRightEmp()">
-                                                            <span style=" background-color: #565656;
-                                                        color: transparent;
-                                                        text-shadow: 2px 2px 3px rgba(188, 187, 187, 0.5);
-                                                        -webkit-background-clip: text;
-                                                           -moz-background-clip: text;
-                                                                background-clip: text;"> New Chat</span>
-                                                        </span>
+                                                        <button class="heading-compose" id="newchatwin" ng-click="getAllChatRightEmp()" style="
+                                                        font-family: lato;
+    color: white;
+    padding: 5px;
+    background: black;
+    border-radius: 5px;
+    border: none;
+    float: right;">New Chat
+
+                                                        </button>
                                                     </td>
                                                 </tr>
                                             </table>
@@ -443,7 +437,17 @@
                                             <input id="fileselect" type="file" name="fileselect" style="display: none;"/> -->
                                     </div>
                                     <div class="col-sm-1 col-xs-1 reply-send">
-                                        <span class="deepbutton" id="sndmgs" ng-click="sendText()">Send</span>
+                                        <button id="sndmgs" ng-click="sendText()" style="
+                                            font-family: lato;
+                                              color: white;                       
+                                             padding: 5px;
+                                             background: black;
+                                             border-radius: 5px;
+                                             border: none;
+                                             float: right;">
+                                            Send
+                                        </button>
+
                                         <!-- <button class="btn btn-success" aria-hidden="true" id="sndmgs" ng-click="sendText()">Send</button> -->
                                     </div>
                                 </div>

@@ -120,7 +120,18 @@ careatorApp.config(function ($stateProvider, $urlRouterProvider) {
         })
         .state('Cdashboard.chat', {
             url: careator_chat(),
-            templateUrl: '/careatorApp/html/chat.html'
+            templateUrl: '/careatorApp/html/chat.html',
+            resolve: {
+                result: function (careatorSessionAuth, $window) {
+                    var userData = careatorSessionAuth.getAccess("userData");
+                    if (userData.email != undefined) {
+
+                    }
+                    else {
+                        $window.location.href = 'https://norecruits.com';
+                    }
+                }
+            }
         })
         .state('Cdashboard.contactAdmin', {
             url: contactAdmin(),

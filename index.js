@@ -259,7 +259,7 @@ io.sockets.on('connection', function (socket) {
     });
 
     function part(channel) {
-        console.log("[" + socket.id + "] part ");
+        console.log("***Part[" + socket.id + "] part ");
         if (!(channel in socket.channels)) {
             console.log("[" + socket.id + "] ERROR: not in ", channel);
             return;

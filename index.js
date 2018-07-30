@@ -210,16 +210,11 @@ io.sockets.on('connection', function (socket) {
         deletedSocket_ids.push(data.deleteSessionId);
         console.log("deletedSocket_ids: " + JSON.stringify(deletedSocket_ids));
         var tempSock = sockets[data.deleteSessionId]; /* ### Note using this deleteSessionId we are getting real socket(tempSock)   ### */
-        // for (var channel in tempSock.channels) {
-        //     console.log("connection: channel: " + channel);
-        //     part(channel);
-        // }
         console.log("started to delete session");
         console.log("data.deleteSessionId: " + data.deleteSessionId);
         console.log("sockets[data.deleteSessionId]: " + sockets.valueOf(data.deleteSessionId));
         delete sockets[data.deleteSessionId];
         delete peerTrackForVideo[data.deleteSessionId];
-        //delete channels[channel][data.deleteSessionId];
         console.log("sockets[data.deleteSessionId]: " + sockets[data.deleteSessionId]);
         console.log("deletedSocket_ids: " + JSON.stringify(deletedSocket_ids));
         console.log("<--disconnectSession");
@@ -494,6 +489,39 @@ io.sockets.on('connection', function (socket) {
     /* ### Start: Get the logoutNotification from the user(careator_dashboardCtrl.js) ### */
     socket.on('comm_logout', function (data) {
         console.log("comm_logout-->: " + JSON.stringify(data));
+
+        var url = data.sessionURL;
+        var stuff = url.split("/");
+        console.log("stuff: " + JSON.stringify(stuff));
+
+        io.sockets.emit('disconnectSessionReply', { "deleteSessionId": data.deleteSessionId, "owner": data.owner });
+        var db = mongoConfig.getDb();
+        console.log("db: " + db);
+        careatorMaster = db.collection("careatorMaster");
+        var queryObj = {
+            "_id": ObjectId(data.userId)
+        }
+        careatorMaster.update(queryObj, { $set: { "isDisconnected": "yes" } }, function (err, data) {
+            if (err) {
+                console.log("errr: " + JSON.stringify(err));
+            }
+            else {
+                console.log("data: " + JSON.stringify(data));
+            }
+        })
+        deletedSocket_ids.push(data.deleteSessionId);
+        console.log("deletedSocket_ids: " + JSON.stringify(deletedSocket_ids));
+        var tempSock = sockets[data.deleteSessionId]; /* ### Note using this deleteSessionId we are getting real socket(tempSock)   ### */
+        console.log("started to delete session");
+        console.log("data.deleteSessionId: " + data.deleteSessionId);
+        console.log("sockets[data.deleteSessionId]: " + sockets.valueOf(data.deleteSessionId));
+        delete sockets[data.deleteSessionId];
+        delete peerTrackForVideo[data.deleteSessionId];
+        console.log("sockets[data.deleteSessionId]: " + sockets[data.deleteSessionId]);
+        console.log("deletedSocket_ids: " + JSON.stringify(deletedSocket_ids));
+        console.log("<--disconnectSession");
+
+
         var db = mongoConfig.getDb();
         console.log("db: " + db);
         careatorMaster = db.collection("careatorMaster");

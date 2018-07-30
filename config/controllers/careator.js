@@ -153,14 +153,6 @@ module.exports.pswdCheckForSesstion = function (req, res) {
                                 res.status(200).send(responseData);
                             }
                         })
-                        responseData = {
-                            status: true,
-                            message: "Login Successfully",
-                            sessionData: "79ea520a-3e67-11e8-9679-97fa7aeb8e97",
-                            data: findData[0]
-                        };
-                        console.log("responseData: " + JSON.stringify(responseData));
-                        res.status(200).send(responseData);
                     } else {
                         responseData = {
                             status: false,

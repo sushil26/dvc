@@ -162,12 +162,12 @@ io.sockets.on('connection', function (socket) {
     socket.on('disconnect', function () {
         console.log("[" + socket.id + "] connection disconnected Start");
         console.log("***emailTrack[socket.id]: " + emailTrack[socket.id]);
-        console.log("***sessionURLTrack[config.owner]: " + sessionURLTrack[config.owner]);
+        console.log("***sessionURLTrack[socket.id]: " + sessionURLTrack[socket.id]);
         var db = mongoConfig.getDb();
         console.log("db: " + db);
         careatorMaster = db.collection("careatorMaster");
         var queryObj = {
-            "sessionURL": sessionURLTrack[config.owner]
+            "sessionURL": sessionURLTrack[socket.id]
         }
         console.log("queryObj: " + JSON.stringify(queryObj));
         careatorMaster.update(queryObj, {

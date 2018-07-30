@@ -152,7 +152,7 @@ module.exports.pswdCheckForSesstion = function (req, res) {
                 if (findData.length > 0) {
                     if (findData[0].password == password) {
                         careatorMaster.find({ "sessionURL": url }).toArray(function (err, sessionURLFind) {
-                            console.log("sessionURLFind: "+JSON.stringify(sessionURLFind));
+                            console.log("sessionURLFind: " + JSON.stringify(sessionURLFind));
                             if (err) {
                                 responseData = {
                                     status: false,
@@ -172,11 +172,11 @@ module.exports.pswdCheckForSesstion = function (req, res) {
                                     else {
                                         var joinEmails = sessionURLFind[0].joinEmails;
                                         console.log("joinEmails: " + JSON.stringify(joinEmails));
-                                        console.log("req.body.careatorEmail: "+req.body.careatorEmail);
+                                        console.log("req.body.careatorEmail: " + req.body.careatorEmail);
                                         console.log("joinEmails.indexOf(req.body.careatorEmail): " + joinEmails.indexOf(req.body.careatorEmail));
                                         if (joinEmails.indexOf(req.body.careatorEmail) < 0) {
                                             careatorMaster.update({ "sessionURL": req.body.sessionURL }, { $pull: { "leftEmails": careatorEmail }, $addToSet: { "joinEmails": careatorEmail } }, function (err, data) {
-                                                console.log("sessionURLFind: "+JSON.stringify(sessionURLFind));
+                                                console.log("sessionURLFind: " + JSON.stringify(sessionURLFind));
                                                 if (err) {
                                                     responseData = {
                                                         status: false,
@@ -204,6 +204,14 @@ module.exports.pswdCheckForSesstion = function (req, res) {
                                         }
                                     }
 
+                                }
+                                else {
+                                    responseData = {
+                                        status: false,
+                                        errorCode: "E0_URLE",
+                                        message: "Your URL not alive"
+                                    };
+                                    res.status(400).send(responseData);
                                 }
                             }
                         })

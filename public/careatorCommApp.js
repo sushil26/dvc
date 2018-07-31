@@ -1,4 +1,4 @@
-var careatorApp = angular.module('careatorCommApp', ['ui.router', 'angularjs-dropdown-multiselect', 'ngCookies', 'ngImgCrop']);
+var careatorApp = angular.module('careatorCommApp', ['ui.router', 'angularjs-dropdown-multiselect', 'ngCookies', 'ngImgCrop','angularUtils.directives.dirPagination']);
 
 careatorApp.config(function ($stateProvider, $urlRouterProvider) {
 

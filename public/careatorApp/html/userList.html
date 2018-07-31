@@ -8,16 +8,17 @@
                         <span>&nbspUSER LIST</span>
                     </div>
                     <div class="card mb-3">
-                        <form class="form-inline">
-                            <div class="form-group">
-                                <label>Search</label>
-                                <input type="text" ng-model="search" class="form-control" placeholder="Search">
-                            </div>
-                        </form>
+
                         <!-- <div class="3">
                             <i class="fas fa-table"></i>
                             USER LIST</div> -->
                         <div class="card-body">
+                            <form class="form-inline">
+                                <div class="form-group">
+                                    <label>Search</label>
+                                    <input type="text" ng-model="search" class="form-control" placeholder="Search">
+                                </div>
+                            </form>
                             <div class="table-responsive">
                                 <table class="table table-bordered" width="100%" cellspacing="0">
 
@@ -85,10 +86,11 @@
                                     </tbody>
                                 </table>
                             </div>
+                            <dir-pagination-controls max-size="5" direction-links="true" boundary-links="true">
+                            </dir-pagination-controls>
                         </div>
 
-                        <dir-pagination-controls max-size="5" direction-links="true" boundary-links="true">
-                        </dir-pagination-controls>
+
                     </div>
                 </section>
             </div>

@@ -19,9 +19,9 @@
 
                                     <thead style="background: aliceblue;">
                                         <tr>
-                                            <th>#</th>
+                                            <th t-implicit at-sortable at-attribute="index"> #</th>
 
-                                            <th>Username</th>
+                                            <th t-implicit at-sortable at-attribute="index">Username</th>
                                             <th>Email</th>
                                             <th>Chat</th>
                                             <th>Video</th>
@@ -33,7 +33,7 @@
                                     </thead>
                                     <tbody>
                                         <tr ng-repeat="emp in allemployee">
-                                            <td t-implicit at-sortable at-attribute="index">
+                                            <td >
                                                 {{$index+1}}.
                                             </td>
                                             <td t-implicit at-sortable at-attribute="index">

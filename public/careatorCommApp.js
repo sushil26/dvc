@@ -1,5 +1,10 @@
 var careatorApp = angular.module('careatorCommApp', ['ui.router', 'angularjs-dropdown-multiselect', 'ngCookies', 'ngImgCrop','angularUtils.directives.dirPagination','angular-loading-bar']);
 
+careatorApp.config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
+    cfpLoadingBarProvider.includeBar = true;
+    cfpLoadingBarProvider.parentSelector = '#loading-bar-container';
+    cfpLoadingBarProvider.spinnerTemplate = '<div><span class="fa fa-spinner">Custom Loading Message...</div>';
+  }])
 careatorApp.config(function ($stateProvider, $urlRouterProvider) {
 
     $stateProvider

@@ -78,14 +78,19 @@
         var SIGNALING_SERVER = "https://norecruits.com";
         socket = io(SIGNALING_SERVER);
     </script>
+    <style>
+        #loading-bar .bar {
+            position: relative;
+        }
+    </style>
 
 
 </head>
 
 <body>
-    
+
     <div class="main_section" ng-app="careatorCommApp" ng-controller="careatorCommAppCtrl">
-            <div id="loading-bar-container"></div>
+        <div id="loading-bar-container"></div>
         <div id="page" ui-view>
             <!-- <h1>Welcome to careator chat product</h1>
             <button ng-click="gotToDashboard()">Go to dashboard</button> -->

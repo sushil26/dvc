@@ -1,5 +1,6 @@
 var db = require("../dbConfig.js").getDb();
 var general = require("../general.js");
+var property = require("..../property.json");
 var ObjectId = require("mongodb").ObjectID;
 var nodemailer = require("nodemailer");
 var randomstring = require("randomstring");

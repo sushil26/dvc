@@ -1,0 +1,16 @@
+{
+    "S0001": "User list uploaded successfully",
+    "S0002": "User created successfully",
+    "S0003": "User profile edited successfully",
+    "S0004": "User deleted successfully",
+    
+
+
+    "E0001": "User list upload failed",
+    "E0002": "User creation failed",
+    "E0003": "User profile edit failed",
+    "E0004": "User deletion failed"
+
+
+ 
+}

@@ -68,15 +68,17 @@
   display: block;
   position: fixed;
   z-index: 10002;
-  top: 10px;
-  left: 10px;
+  /* top: 10px;
+  left: 10px; */
+  left: 50%;
+   top: 50%; 
 }
 
 #loading-bar-spinner .spinner-icon {
-  width: 14px;
-  height: 14px;
+  width: 20px;
+  height: 20px;
 
-  border:  solid 2px transparent;
+  border:  solid 5px transparent;
   border-top-color:  #29d;
   border-left-color: #29d;
   border-radius: 50%;

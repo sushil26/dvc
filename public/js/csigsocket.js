@@ -286,7 +286,7 @@ function checkCredential() {
         console.log("err: " + JSON.stringify(err));
         console.log("err.responseText: " + JSON.stringify(err.responseText));
         console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
-        if (err.responseJSON.message == 'You already logged in, please logout your old session in-order to login') {
+        if (err.responseJSON.message == "You've already logged in. To log in again, please reset your session") {
           console.log("You already logged in, please logout your old session in-order to login");
           document.getElementById('notify_msg_content').innerHTML = err.responseJSON.message;
           document.getElementById('resetBtn').style.display = 'inline';

@@ -2,8 +2,9 @@ var careatorApp = angular.module('careatorCommApp', ['ui.router', 'angularjs-dro
 
 careatorApp.config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
     cfpLoadingBarProvider.includeBar = true;
+    cfpLoadingBarProvider.includeSpinner = true;
     cfpLoadingBarProvider.parentSelector = '#loading-bar-container';
-    cfpLoadingBarProvider.spinnerTemplate = '<div><span class="fa fa-spinner">Custom Loading Message...</div>';
+    cfpLoadingBarProvider.spinnerTemplate = '<div><span class="fa fa-spinner">Loading...</div>';
   }])
 careatorApp.config(function ($stateProvider, $urlRouterProvider) {
 

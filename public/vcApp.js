@@ -3,8 +3,9 @@ var app = angular.module('vcApp', ['ui.router', 'mwl.calendar', 'ui.bootstrap', 
 
 app.config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
   cfpLoadingBarProvider.includeBar = true;
+  cfpLoadingBarProvider.includeSpinner = true;
   cfpLoadingBarProvider.parentSelector = '#loading-bar-container';
-  cfpLoadingBarProvider.spinnerTemplate = '<div><span class="fa fa-spinner">Custom Loading Message...</div>';
+  cfpLoadingBarProvider.spinnerTemplate = '<div><span class="fa fa-spinner">Loading...</div>';
 }])
 app.config(function ($stateProvider, $urlRouterProvider) {
 

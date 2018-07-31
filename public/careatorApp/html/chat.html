@@ -3,9 +3,9 @@
         <section class="wrapper">
             <div id="profile">
                 <section class="panel">
-                   
 
-                   
+
+
                     <div class="container app">
                         <div class="row app-one">
                             <div class="col-sm-4 side">
@@ -121,7 +121,8 @@
                                                                     <span ng-if="record.receiverId!=userId" class="name-meta">{{record.receiverName}}
                                                                     </span>
                                                                     <br>
-                                                                    <span class="time-meta">{{record.timeStamp | date:' d MMM h:mm a'}}
+                                                                    <!-- <span class="time-meta">{{record.timeStamp | date:' d MMM h:mm a'}} -->
+                                                                    <span class="time-meta">{{record.timeStamp | amCalendar}}
                                                                     </span>
 
                                                                     <span ng-if="record.unseenCount > 0" class="notify"> {{record.unseenCount}}</span>
@@ -136,7 +137,7 @@
                                                                     <span ng-if="record.unseenCount > 0" class="notify"> {{record.unseenCount}}</span>
                                                                 </div>
                                                                 <div class="col-sm-4 col-xs-4 pull-right sideBar-time">
-                                                                    <span class="time-meta pull-right">{{record.timeStamp | date:' d MMM h:mm a'}}
+                                                                        <span class="time-meta">{{record.timeStamp |amCalendar}}
                                                                     </span>
                                                                 </div>
                                                             </div>
@@ -373,7 +374,7 @@
                                                                 {{chat.message}}
                                                             </div>
                                                             <span class="message-time pull-right">
-                                                                {{chat.sendTime | date:' d MMM yyyy h:mm a'}}
+                                                                {{chat.sendTime | amCalendar}}
                                                             </span>
                                                         </td>
                                                     </tr>
@@ -388,7 +389,7 @@
                                                     {{chat.message}}
                                                 </div>
                                                 <span class="message-time pull-right">
-                                                    {{chat.sendTime | date:' d MMM yyyy h:mm a'}}
+                                                        {{chat.sendTime | amCalendar}}
                                                 </span>
                                             </div>
                                         </div>

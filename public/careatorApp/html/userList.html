@@ -19,15 +19,15 @@
                             USER LIST</div> -->
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered" width="100%" cellspacing="0" at-table at-paginated at-list="list" at-config="config">
+                                <table class="table table-bordered" width="100%" cellspacing="0">
 
 
 
                                     <thead style="background: aliceblue;">
                                         <tr>
-                                            <th t-implicit at-sortable at-attribute="index"> #</th>
+                                            <th> #</th>
 
-                                            <th t-implicit at-sortable at-attribute="index">Username</th>
+                                            <th >Username</th>
                                             <th>Email</th>
                                             <th>Chat</th>
                                             <th>Video</th>
@@ -38,29 +38,29 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr ng-repeat="emp in allemployee">
+                                        <tr ng-repeat="emp in allemployee | filter:search">
                                             <td>
                                                 {{$index+1}}.
                                             </td>
-                                            <td t-implicit at-sortable at-attribute="index">
+                                            <td >
                                                 {{ emp.name }}
                                             </td>
-                                            <td t-implicit at-sortable at-attribute="index">
+                                            <td>
                                                 {{emp.email}}
                                             </td>
-                                            <td t-implicit at-sortable at-attribute="index">
+                                            <td>
                                                 <i ng-if="emp.chatRights=='yes'" class="fa fa-check" style="color: green"></i>
                                                 <i ng-if="emp.chatRights=='no'" class="fa fa-times" style="color: red"></i>
                                             </td>
-                                            <td t-implicit at-sortable at-attribute="index">
+                                            <td>
                                                 <i ng-if="emp.videoRights=='yes'" class="fa fa-check" style="color: green"></i>
                                                 <i ng-if="emp.videoRights=='no'" class="fa fa-times" style="color: red"></i>
                                             </td>
-                                            <td ng-if="emp.status=='inactive'" t-implicit at-sortable at-attribute="index">
+                                            <td ng-if="emp.status=='inactive'">
                                                 Inactive
 
                                             </td>
-                                            <td ng-if="emp.status=='active'" t-implicit at-sortable at-attribute="index">
+                                            <td ng-if="emp.status=='active'" >
                                                 Active
 
                                             </td>

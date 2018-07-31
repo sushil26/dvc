@@ -44,7 +44,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr ng-repeat="emp in allemployee | filter:search">
+                                        <tr ng-repeat="emp in allemployee | filter:search |orderBy:sortKey:reverse">
                                             <td>
                                                 {{$index+1}}.
                                             </td>

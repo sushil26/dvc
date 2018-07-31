@@ -124,8 +124,8 @@ careatorApp.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: '/careatorApp/html/profile.html',
         })
 
-        .state('Cdashboard.post', {
-            url: post(),
+        .state('Cdashboard.ipost', {
+            url: ipost(),
             templateUrl: '/careatorApp/html/internalPost.html',
         })
 
@@ -146,8 +146,8 @@ careatorApp.config(function ($stateProvider, $urlRouterProvider) {
         })
 })
 
-function post() {
-    return '/post';
+function ipost() {
+    return '/ipost';
 }
 
 function profile() {

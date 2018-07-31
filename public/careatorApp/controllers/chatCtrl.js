@@ -510,7 +510,7 @@ careatorApp.controller("chatCtrl", function (
           }
         });
       } else {
-        $scope.notifyMsg = "You not allowed to chat with " + $scope.receiverData.receiverName;
+        $scope.notifyMsg = "You do not have permission to chat with " + $scope.receiverData.receiverName;
         console.log(" $scope.notifyMsg: " + $scope.notifyMsg);
         $("#alertButton").trigger("click");
       }

@@ -297,8 +297,6 @@ function checkCredential() {
           $("#alertButton").trigger("click");
           var x =
             document.getElementById('alertcontent').innerHTML = err.responseJSON.message + "<br>Please try with correct password or contact Admin";
-
-
         }
         document.getElementById("videoConferenceUrl").style.display = "none";
         localStorage.removeItem("careatorEmail");

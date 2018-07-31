@@ -45,7 +45,7 @@ module.exports.RemoteJoinCheck = function (req, res) {
             if (err) {
                 responseData = {
                     status: false,
-                    message: "Process failed"
+                    message: property.E0007,
                 };
                 res.status(400).send(responseData);
             } else {
@@ -54,7 +54,7 @@ module.exports.RemoteJoinCheck = function (req, res) {
                         responseData = {
                             status: false,
                             errorCode: "E0_URLE",
-                            message: "Your URL not alive"
+                            message: property.N0004
                         };
                         res.status(400).send(responseData);
                     }
@@ -65,7 +65,7 @@ module.exports.RemoteJoinCheck = function (req, res) {
                             if (err) {
                                 responseData = {
                                     status: false,
-                                    message: "Process failed"
+                                    message: property.E0007,
                                 };
                                 res.status(400).send(responseData);
                             } else {
@@ -78,14 +78,14 @@ module.exports.RemoteJoinCheck = function (req, res) {
                                             if (err) {
                                                 responseData = {
                                                     status: false,
-                                                    message: "Process failed"
+                                                    message: property.E0007
                                                 };
                                                 res.status(400).send(responseData);
                                             } else {
                                                 responseData = {
                                                     status: true,
                                                     sessionData: "79ea520a-3e67-11e8-9679-97fa7aeb8e97",
-                                                    message: "Login Successfully"
+                                                    message: property.S0005
                                                 };
                                                 res.status(200).send(responseData);
                                             }
@@ -95,7 +95,7 @@ module.exports.RemoteJoinCheck = function (req, res) {
                                         responseData = {
                                             status: false,
                                             errorCode: "E0_alreadyInUse",
-                                            message: "Sorry using this credential already user participating in confeence"
+                                            message: property.N0005
                                         };
                                         console.log("responseData: " + JSON.stringify(responseData));
                                         res.status(400).send(responseData);
@@ -104,7 +104,7 @@ module.exports.RemoteJoinCheck = function (req, res) {
                                     responseData = {
                                         status: false,
                                         errorCode: "E1_credentialMismatch",
-                                        message: "Credential Mismatch"
+                                        message: property.E0008
                                     };
                                     res.status(400).send(responseData);
                                 }
@@ -116,7 +116,7 @@ module.exports.RemoteJoinCheck = function (req, res) {
                     responseData = {
                         status: false,
                         errorCode: "E0_URLE",
-                        message: "Your URL not alive"
+                        message: property.N0004
                     };
                     res.status(400).send(responseData);
                 }
@@ -126,7 +126,7 @@ module.exports.RemoteJoinCheck = function (req, res) {
     else {
         responseData = {
             status: false,
-            message: "Empty value found"
+            message: property.N0003
         };
         res.status(400).send(responseData);
     }
@@ -146,7 +146,7 @@ module.exports.pswdCheckForSesstion = function (req, res) {
             if (err) {
                 responseData = {
                     status: false,
-                    message: "Process failed"
+                    message: property.E0007
                 };
                 res.status(400).send(responseData);
             } else {
@@ -157,7 +157,7 @@ module.exports.pswdCheckForSesstion = function (req, res) {
                             if (err) {
                                 responseData = {
                                     status: false,
-                                    message: "Process failed"
+                                    message: property.E0007
                                 };
                                 res.status(400).send(responseData);
                             } else {
@@ -166,7 +166,7 @@ module.exports.pswdCheckForSesstion = function (req, res) {
                                         responseData = {
                                             status: false,
                                             errorCode: "E0_URLE",
-                                            message: "Your URL not alive"
+                                            message: property.N0004
                                         };
                                         res.status(400).send(responseData);
                                     }
@@ -181,14 +181,14 @@ module.exports.pswdCheckForSesstion = function (req, res) {
                                                 if (err) {
                                                     responseData = {
                                                         status: false,
-                                                        message: "Process failed"
+                                                        message: property.E0007
                                                     };
                                                     res.status(400).send(responseData);
                                                 } else {
                                                     responseData = {
                                                         status: true,
                                                         sessionData: "79ea520a-3e67-11e8-9679-97fa7aeb8e97",
-                                                        message: "Login Successfully"
+                                                        message: property.S0005
                                                     };
                                                     res.status(200).send(responseData);
                                                 }
@@ -198,7 +198,7 @@ module.exports.pswdCheckForSesstion = function (req, res) {
                                             responseData = {
                                                 status: false,
                                                 errorCode: "E0_alreadyInUse",
-                                                message: "Sorry using this credential already user participating in confeence"
+                                                message: property.N0005
                                             };
                                             console.log("responseData: " + JSON.stringify(responseData));
                                             res.status(400).send(responseData);
@@ -210,7 +210,7 @@ module.exports.pswdCheckForSesstion = function (req, res) {
                                     responseData = {
                                         status: false,
                                         errorCode: "E0_URLE",
-                                        message: "Your URL not alive"
+                                        message: property.N0004
                                     };
                                     res.status(400).send(responseData);
                                 }
@@ -222,7 +222,7 @@ module.exports.pswdCheckForSesstion = function (req, res) {
                         responseData = {
                             status: false,
                             errorCode: "E1_credentialMismatch",
-                            message: "Credential Mismatch"
+                            message: property.E0008
                         };
                         res.status(400).send(responseData);
                     }
@@ -230,7 +230,7 @@ module.exports.pswdCheckForSesstion = function (req, res) {
                 } else {
                     responseData = {
                         status: false,
-                        message: "Email ID is not valid"
+                        message: property.E0006
                     };
                     console.log("responseData: " + JSON.stringify(responseData));
                     res.status(400).send(responseData);
@@ -241,7 +241,7 @@ module.exports.pswdCheckForSesstion = function (req, res) {
     } else {
         responseData = {
             status: false,
-            message: "Empty value found"
+            message: property.N0003
         };
         console.log("responseData: " + JSON.stringify(responseData));
         res.status(400).send(responseData);
@@ -266,7 +266,7 @@ module.exports.pswdCheck = function (req, res) {
                 if (err) {
                     responseData = {
                         status: false,
-                        message: "Process failed"
+                        message: property.E0007
                     };
                     res.status(400).send(responseData);
                 } else {
@@ -289,13 +289,13 @@ module.exports.pswdCheck = function (req, res) {
                                             if (err) {
                                                 responseData = {
                                                     status: true,
-                                                    message: "Process not successful"
+                                                    message: property.E0007
                                                 };
                                                 res.status(400).send(responseData);
                                             } else {
                                                 responseData = {
                                                     status: true,
-                                                    message: "Login Successfully",
+                                                    message: property.S0005,
                                                     sessionData: "79ea520a-3e67-11e8-9679-97fa7aeb8e97",
                                                     data: findData[0]
                                                 };
@@ -306,7 +306,7 @@ module.exports.pswdCheck = function (req, res) {
                                 } else {
                                     responseData = {
                                         status: false,
-                                        message: "You already logged in, please logout your old session in-order to login",
+                                        message: property.N0001,
                                         data: {
                                             "id": findData[0]._id
                                         }
@@ -317,7 +317,7 @@ module.exports.pswdCheck = function (req, res) {
                             } else {
                                 responseData = {
                                     status: false,
-                                    message: "Password is wrong"
+                                    message: property.E0005
                                 };
                                 console.log("responseData: " + JSON.stringify(responseData));
                                 res.status(400).send(responseData);
@@ -326,7 +326,7 @@ module.exports.pswdCheck = function (req, res) {
                         else {
                             responseData = {
                                 status: false,
-                                message: "Profile is not active"
+                                message: property.N0002
                             };
                             console.log("responseData: " + JSON.stringify(responseData));
                             res.status(400).send(responseData);
@@ -334,7 +334,7 @@ module.exports.pswdCheck = function (req, res) {
                     } else {
                         responseData = {
                             status: false,
-                            message: "Email ID is not valid"
+                            message: property.E0006
                         };
                         console.log("responseData: " + JSON.stringify(responseData));
                         res.status(400).send(responseData);
@@ -344,14 +344,14 @@ module.exports.pswdCheck = function (req, res) {
         } else {
             responseData = {
                 status: false,
-                message: "Email id is not valid"
+                message: property.E0006
             };
             res.status(400).send(responseData);
         }
     } else {
         responseData = {
             status: false,
-            message: "Empty value found"
+            message: property.N0003
         };
         console.log("responseData: " + JSON.stringify(responseData));
         res.status(400).send(responseData);
@@ -536,7 +536,7 @@ module.exports.emailInvite = function (req, res) {
                 responseData = {
                     status: true,
                     errorCode: 200,
-                    message: "Process not successful"
+                    message: property.E0007
                 };
                 res.status(200).send(responseData);
             } else {
@@ -553,7 +553,7 @@ module.exports.emailInvite = function (req, res) {
                         responseData = {
                             status: true,
                             errorCode: 200,
-                            message: "insert Successfull and Failed to send mail",
+                            message: property.E0009,
                             data: data
                         };
                         res.status(200).send(responseData);
@@ -562,7 +562,7 @@ module.exports.emailInvite = function (req, res) {
                         responseData = {
                             status: true,
                             errorCode: 200,
-                            message: "Successfully mail sent",
+                            message: property.S0006,
                             data: data
                         };
                         res.status(200).send(responseData);
@@ -594,7 +594,7 @@ module.exports.resetLoginFlagsById = function (req, res) {
                 console.log("err: " + JSON.stringify(err));
                 responseData = {
                     status: false,
-                    message: "UnSuccessfully"
+                    message: property.E0007,
                 };
                 res.status(400).send(responseData);
             } else {
@@ -605,7 +605,7 @@ module.exports.resetLoginFlagsById = function (req, res) {
                 }); /* ### Note: Emitreset message to client(careator_dashboardCtrl.js, csigsocket.js) ### */
                 responseData = {
                     status: true,
-                    message: "Successfully reset done",
+                    message: property.S0007,
                     data: data
                 };
                 res.status(200).send(responseData);
@@ -614,7 +614,7 @@ module.exports.resetLoginFlagsById = function (req, res) {
     } else {
         response = {
             status: false,
-            message: "empty value found",
+            message: property.N0003,
             data: obj
         };
         res.status(400).send(response);
@@ -630,14 +630,14 @@ module.exports.getAdminObjectId = function (req, res) {
             console.log("err: " + JSON.stringify(err));
             responseData = {
                 status: false,
-                message: "Unsuccessfull, go back and refresh then start session"
+                message: property.E0009
             };
             res.status(400).send(responseData);
         } else {
             console.log("admin: " + JSON.stringify(admin));
             responseData = {
                 status: true,
-                message: "Successfull",
+                message: property.S0008,
                 data: admin[0]._id
             };
             res.status(200).send(responseData);
@@ -671,7 +671,7 @@ module.exports.setCollection = function (req, res) {
             console.log("err: " + JSON.stringify(err));
             responseData = {
                 status: false,
-                message: "Unsuccessfull, go back and refresh then start session"
+                message: property.E0007
             };
             res.status(400).send(responseData);
         } else {
@@ -685,7 +685,7 @@ module.exports.setCollection = function (req, res) {
                     console.log("err: " + JSON.stringify(err));
                     responseData = {
                         status: false,
-                        message: "UnSuccessfully"
+                        message: property.E0007
                     };
                     res.status(400).send(responseData);
                 } else {
@@ -695,7 +695,7 @@ module.exports.setCollection = function (req, res) {
                     }
                     responseData = {
                         status: true,
-                        message: "Successfully",
+                        message: property.S0009,
                         data: obj
                     };
                     res.status(200).send(responseData);
@@ -703,10 +703,6 @@ module.exports.setCollection = function (req, res) {
             })
         }
     })
-
-
-
-
 }
 module.exports.getChatByUrl = function (req, res) {
     console.log("getChatByUrl-->");
@@ -721,14 +717,14 @@ module.exports.getChatByUrl = function (req, res) {
             console.log("err: " + JSON.stringify(err));
             responseData = {
                 status: false,
-                message: "UnSuccessfully"
+                message: property.E0007
             };
             res.status(400).send(responseData);
         } else {
             console.log("data: " + JSON.stringify(data));
             responseData = {
                 status: true,
-                message: "Successfully",
+                message: property.S0008,
                 data: data
             };
             res.status(200).send(responseData);
@@ -749,14 +745,14 @@ module.exports.getHistoryByEmailId = function (req, res) {
             console.log("err: " + JSON.stringify(err));
             responseData = {
                 status: false,
-                message: "UnSuccessfully"
+                message: property.E0007
             };
             res.status(400).send(responseData);
         } else {
             console.log("data: " + JSON.stringify(data));
             responseData = {
                 status: true,
-                message: "Successfully",
+                message: property.S0008,
                 data: data
             };
             res.status(200).send(responseData);
@@ -775,14 +771,14 @@ module.exports.getHistory = function (req, res) {
             console.log("err: " + JSON.stringify(err));
             responseData = {
                 status: false,
-                message: "UnSuccessfully"
+                message: property.E0007
             };
             res.status(400).send(responseData);
         } else {
             console.log("data: " + JSON.stringify(data));
             responseData = {
                 status: true,
-                message: "Successfully",
+                message: property.E0008,
                 data: data
             };
             res.status(200).send(responseData);
@@ -840,14 +836,14 @@ module.exports.careatorMasterInsert = function (req, res) {
                         console.log("err: " + JSON.stringify(err));
                         responseData = {
                             status: false,
-                            message: "Insert Unsuccessful"
+                            message: property.E0007
                         };
                         res.status(400).send(responseData);
                     } else {
                         console.log("insertedData: " + JSON.stringify(insertedData));
                         responseData = {
                             status: true,
-                            message: "Insert Successfull",
+                            message: property.S0001,
                         };
                         res.status(200).send(responseData);
                     }
@@ -945,7 +941,7 @@ module.exports.careatorSingleUserInsert = function (req, res) {
             console.log("err: " + JSON.stringify(err));
             responseData = {
                 status: false,
-                message: "Find employeeid for insert failed"
+                message: property.E0007
             };
             res.status(400).send(responseData);
         } else {
@@ -954,7 +950,7 @@ module.exports.careatorSingleUserInsert = function (req, res) {
 
                 responseData = {
                     status: false,
-                    message: "This employee id already exist"
+                    message: property.N0006
                 };
                 res.status(400).send(responseData);
             } else {
@@ -963,7 +959,7 @@ module.exports.careatorSingleUserInsert = function (req, res) {
                         console.log("err: " + JSON.stringify(err));
                         responseData = {
                             status: false,
-                            message: "Find emailid for insert failed"
+                            message: property.E0007
                         };
                         res.status(400).send(responseData);
                     } else {
@@ -972,7 +968,7 @@ module.exports.careatorSingleUserInsert = function (req, res) {
 
                             responseData = {
                                 status: false,
-                                message: "This emaail id already exist"
+                                message: property.N0007
                             };
                             res.status(400).send(responseData);
                         } else {
@@ -981,14 +977,14 @@ module.exports.careatorSingleUserInsert = function (req, res) {
                                     console.log("err: " + JSON.stringify(err));
                                     responseData = {
                                         status: false,
-                                        message: "Insert Unsuccessful"
+                                        message: property.E0007
                                     };
                                     res.status(400).send(responseData);
                                 } else {
                                     console.log("insertedData: " + JSON.stringify(insertedData));
                                     responseData = {
                                         status: true,
-                                        message: "Insert Successfull",
+                                        message: property.S0002
                                     };
                                     res.status(200).send(responseData);
                                 }
@@ -1012,7 +1008,7 @@ module.exports.careator_getAllEmp = function (req, res) {
             console.log("err: " + JSON.stringify(err));
             response = {
                 status: false,
-                message: "Unsucessfully retrived data",
+                message: property.E0007,
                 data: err
             };
             res.status(400).send(responseData);
@@ -1020,7 +1016,7 @@ module.exports.careator_getAllEmp = function (req, res) {
             console.log("allEmp: " + JSON.stringify(allEmp));
             response = {
                 status: true,
-                message: "Sucessfully retrived data",
+                message: property.S0008,
                 data: allEmp
             };
             res.status(200).send(response);
@@ -1039,7 +1035,7 @@ module.exports.careator_getChatRightsEmp = function (req, res) {
             console.log("err: " + JSON.stringify(err));
             response = {
                 status: false,
-                message: "Unsucessfully retrived data",
+                message: property.E0007,
                 data: err
             };
             res.status(400).send(responseData);
@@ -1047,7 +1043,7 @@ module.exports.careator_getChatRightsEmp = function (req, res) {
             console.log("allEmp_chat: " + JSON.stringify(allEmp_chat));
             response = {
                 status: true,
-                message: "Sucessfully retrived data",
+                message: property.S0008,
                 data: allEmp_chat
             };
             res.status(200).send(response);
@@ -1085,7 +1081,7 @@ module.exports.groupStatusChangeById = function (req, res) {
                     console.log("err: " + JSON.stringify(err));
                     response = {
                         status: false,
-                        message: "Update unsucessfully",
+                        message: property.E0007,
                         data: err
                     };
                     res.status(400).send(response);
@@ -1093,7 +1089,7 @@ module.exports.groupStatusChangeById = function (req, res) {
                     console.log("updatedData: " + JSON.stringify(data));
                     response = {
                         status: true,
-                        message: "Update sucessfully",
+                        message: property.S0010,
                         data: data
                     };
                     res.status(200).send(response);
@@ -1106,7 +1102,7 @@ module.exports.groupStatusChangeById = function (req, res) {
         }
         response = {
             status: false,
-            message: "empty value found",
+            message: property.N0003,
             data: obj
         };
         res.status(400).send(response);
@@ -1141,7 +1137,7 @@ module.exports.statusChangeById = function (req, res) {
                     console.log("err: " + JSON.stringify(err));
                     response = {
                         status: false,
-                        message: "Update unsucessfully",
+                        message: property.E0007,
                         data: err
                     };
                     res.status(400).send(response);
@@ -1149,7 +1145,7 @@ module.exports.statusChangeById = function (req, res) {
                     console.log("updatedData: " + JSON.stringify(data));
                     response = {
                         status: true,
-                        message: "Update sucessfully",
+                        message: property.S0010,
                         data: data
                     };
                     res.status(200).send(response);
@@ -1162,7 +1158,7 @@ module.exports.statusChangeById = function (req, res) {
         }
         response = {
             status: false,
-            message: "empty value found",
+            message: property.N0003,
             data: obj
         };
         res.status(400).send(response);
@@ -1181,7 +1177,7 @@ module.exports.getChatRights_emp = function (req, res) {
             console.log("err: " + JSON.stringify(err));
             response = {
                 status: false,
-                message: "Unsucessfully retrived data",
+                message: property.E0007,
                 data: err
             };
             res.status(400).send(responseData);
@@ -1189,7 +1185,7 @@ module.exports.getChatRights_emp = function (req, res) {
             console.log("allEmp_chat: " + JSON.stringify(allEmp_chat));
             response = {
                 status: true,
-                message: "Sucessfully retrived data",
+                message: property.S0008,
                 data: allEmp_chat
             };
             res.status(200).send(response);
@@ -1210,7 +1206,7 @@ module.exports.getVideoRights_emp = function (req, res) {
             console.log("err: " + JSON.stringify(err));
             response = {
                 status: false,
-                message: "Unsucessfully retrived data",
+                message: property.E0007,
                 data: err
             };
             res.status(400).send(responseData);
@@ -1218,7 +1214,7 @@ module.exports.getVideoRights_emp = function (req, res) {
             console.log("allEmp_chat: " + JSON.stringify(allEmp_chat));
             response = {
                 status: true,
-                message: "Sucessfully retrived data",
+                message: property.S0008,
                 data: allEmp_chat
             };
             res.status(200).send(response);
@@ -1239,7 +1235,7 @@ module.exports.careator_getChatVideo_emp = function (req, res) {
             console.log("err: " + JSON.stringify(err));
             response = {
                 status: false,
-                message: "Unsucessfully retrived data",
+                message: property.E0007,
                 data: err
             };
             res.status(400).send(responseData);
@@ -1247,7 +1243,7 @@ module.exports.careator_getChatVideo_emp = function (req, res) {
             console.log("allEmp_chat: " + JSON.stringify(allEmp_chat));
             response = {
                 status: true,
-                message: "Sucessfully retrived data",
+                message: property.S0008,
                 data: allEmp_chat
             };
             res.status(200).send(response);
@@ -1275,7 +1271,7 @@ module.exports.careator_chat_creteGroup = function (req, res) {
                 console.log("err: " + JSON.stringify(err));
                 response = {
                     status: false,
-                    message: "Unsuccessfull group creation",
+                    message: property.E0007,
                     data: err
                 };
                 res.status(400).send(response);
@@ -1283,7 +1279,7 @@ module.exports.careator_chat_creteGroup = function (req, res) {
                 console.log("groupCreate: " + JSON.stringify(groupCreate));
                 response = {
                     status: true,
-                    message: "Successfully group created",
+                    message: property.S0011,
                     data: groupCreate
                 };
                 res.status(200).send(response);
@@ -1296,7 +1292,7 @@ module.exports.careator_chat_creteGroup = function (req, res) {
         }
         response = {
             status: false,
-            message: "empty value found",
+            message: property.N0003,
             data: groupName
         };
         res.status(400).send(response);
@@ -1319,7 +1315,7 @@ module.exports.careator_getChatGroupListById = function (req, res) {
                 responseData = {
                     status: false,
                     data: err,
-                    message: "Process not successful"
+                    message: property.E0007
                 };
                 res.status(400).send(responseData);
             } else {
@@ -1327,7 +1323,7 @@ module.exports.careator_getChatGroupListById = function (req, res) {
                 responseData = {
                     status: true,
                     errorCode: 200,
-                    message: "Successfully get Data",
+                    message: property.S0008,
                     data: data
                 };
                 res.status(200).send(responseData);
@@ -1338,7 +1334,7 @@ module.exports.careator_getChatGroupListById = function (req, res) {
         console.log("Epty value found");
         response = {
             status: false,
-            message: "empty value found"
+            message: property.N0003
         };
         res.status(400).send(response);
     }
@@ -1353,7 +1349,7 @@ module.exports.careator_getChatGroupList = function (req, res) {
             responseData = {
                 status: false,
                 data: err,
-                message: "Process not successful"
+                message: property.E0007
             };
             res.status(400).send(responseData);
         } else {
@@ -1361,7 +1357,7 @@ module.exports.careator_getChatGroupList = function (req, res) {
             responseData = {
                 status: true,
                 errorCode: 200,
-                message: "Successfully get Data",
+                message: property.S0008,
                 data: data
             };
             res.status(200).send(responseData);
@@ -1383,7 +1379,6 @@ module.exports.careator_getChatRightsAllemp = function (req, res) {
         careatorMaster.find({
             "_id": {
                 $in: restrictedUsers
-
             },
             "chatRights": "yes",
             "status": "active"
@@ -1392,7 +1387,7 @@ module.exports.careator_getChatRightsAllemp = function (req, res) {
                 console.log("err: " + JSON.stringify(err));
                 response = {
                     status: false,
-                    message: "Unsucessfully retrived data",
+                    message: property.E0007,
                     data: err
                 };
                 res.status(400).send(responseData);
@@ -1400,7 +1395,7 @@ module.exports.careator_getChatRightsAllemp = function (req, res) {
                 console.log("allEmp_chat: " + JSON.stringify(allEmp_chat));
                 response = {
                     status: true,
-                    message: "Sucessfully retrived data",
+                    message: property.S0008,
                     data: allEmp_chat
                 };
                 res.status(200).send(response);
@@ -1411,7 +1406,7 @@ module.exports.careator_getChatRightsAllemp = function (req, res) {
         console.log("Epty value found");
         response = {
             status: false,
-            message: "empty value found"
+            message: property.N0003
         };
         res.status(400).send(response);
     }
@@ -1432,7 +1427,7 @@ module.exports.careator_getChatRightsAllemp_byLoginId = function (req, res) {
                 console.log("err: " + JSON.stringify(err));
                 response = {
                     status: false,
-                    message: "Unsucessfully retrived data",
+                    message: property.E0007,
                     data: err
                 };
                 res.status(400).send(responseData);
@@ -1440,7 +1435,7 @@ module.exports.careator_getChatRightsAllemp_byLoginId = function (req, res) {
                 console.log("allEmp_chat: " + JSON.stringify(allEmp_chat));
                 response = {
                     status: true,
-                    message: "Sucessfully retrived data",
+                    message: property.S0008,
                     data: allEmp_chat
                 };
                 res.status(200).send(response);
@@ -1451,7 +1446,7 @@ module.exports.careator_getChatRightsAllemp_byLoginId = function (req, res) {
         console.log("Epty value found");
         response = {
             status: false,
-            message: "empty value found"
+            message: property.N0003
         };
         res.status(400).send(response);
     }
@@ -1469,7 +1464,7 @@ module.exports.individualText = function (req, res) {
             console.log("err: " + JSON.stringify(err));
             response = {
                 status: false,
-                message: "Unsucessfully retrived data",
+                message: property.E0007,
                 data: err
             };
             res.status(400).send(responseData);
@@ -1500,7 +1495,7 @@ module.exports.individualText = function (req, res) {
                         console.log("err: " + JSON.stringify(err));
                         response = {
                             status: false,
-                            message: "Unsucessfully retrived data",
+                            message: property.E0007,
                             data: err
                         };
                         res.status(400).send(responseData);
@@ -1517,7 +1512,7 @@ module.exports.individualText = function (req, res) {
                         }); /* ### Note: Emit message to client ### */
                         response = {
                             status: true,
-                            message: "Sucessfully sent",
+                            message: property.S0012,
                             data: insertedData
                         };
                         res.status(200).send(response);
@@ -1525,19 +1520,13 @@ module.exports.individualText = function (req, res) {
                 })
             } else {
                 var unseenCount, setObj;
-
                 if (data[0].unseenCount != undefined) {
                     unseenCount = data[0].unseenCount + 1;
                 }
                 else {
                     unseenCount = 1;
                 }
-                // if (data[0].senderId == req.body.senderId) {
                 setObj = { "senderSeen": "yes", "receiverSeen": "no", "unseenCount": unseenCount }
-                // }
-                // else {
-                //     setObj = { "senderSeen": "no", "receiverSeen": "yes", "unseenCount": unseenCount }
-                // }
                 console.log("setObj : " + JSON.stringify(setObj));
                 var obj = {
                     "senderId": req.body.senderId,
@@ -1553,7 +1542,7 @@ module.exports.individualText = function (req, res) {
                         console.log("err: " + JSON.stringify(err));
                         response = {
                             status: false,
-                            message: "Unsucessfully updated data",
+                            message: property.EOO07,
                             data: err
                         };
                         res.status(400).send(responseData);
@@ -1573,7 +1562,7 @@ module.exports.individualText = function (req, res) {
                         }); /* ### Note: Emit message to client ### */
                         response = {
                             status: true,
-                            message: "Sucessfully updated",
+                            message: property.S0010,
                             data: updatedData
                         };
                         res.status(200).send(response);
@@ -1601,7 +1590,7 @@ module.exports.textSeenFlagUpdate = function (req, res) {
                 console.log("err: " + JSON.stringify(err));
                 response = {
                     status: false,
-                    message: "Unsucessfully Updated data",
+                    message: property.E0007,
                     data: err
                 };
                 res.status(400).send(response);
@@ -1615,7 +1604,7 @@ module.exports.textSeenFlagUpdate = function (req, res) {
                 }); /* ### Note: Emit message to client ### */
                 response = {
                     status: true,
-                    message: "Sucessfully Updated data",
+                    message: property.S0010,
                     data: updateddata
                 };
                 res.status(200).send(response);
@@ -1626,7 +1615,7 @@ module.exports.textSeenFlagUpdate = function (req, res) {
         console.log("Epty value found");
         response = {
             status: false,
-            message: "empty value found"
+            message: property.N0003,
         };
         res.status(400).send(response);
     }
@@ -1651,7 +1640,7 @@ module.exports.individualTextReadById = function (req, res) {
                 console.log("err: " + JSON.stringify(err));
                 response = {
                     status: false,
-                    message: "Unsucessfully retrived data",
+                    message: property.E0007,
                     data: err
                 };
                 res.status(400).send(response);
@@ -1660,7 +1649,7 @@ module.exports.individualTextReadById = function (req, res) {
                 console.log("data: " + JSON.stringify(data));
                 response = {
                     status: true,
-                    message: "Sucessfully retrived data",
+                    message: property.S0008,
                     data: data
                 };
                 res.status(200).send(response);
@@ -1670,7 +1659,7 @@ module.exports.individualTextReadById = function (req, res) {
         console.log("Epty value found");
         response = {
             status: false,
-            message: "empty value found"
+            message: property.N0003
         };
         res.status(400).send(response);
     }
@@ -1690,7 +1679,7 @@ module.exports.groupTextReadByGroupId = function (req, res) {
                 console.log("err: " + JSON.stringify(err));
                 response = {
                     status: false,
-                    message: "Unsucessfully retrived data",
+                    message: property.E0007,
                     data: err
                 };
                 res.status(400).send(responseData);
@@ -1699,7 +1688,7 @@ module.exports.groupTextReadByGroupId = function (req, res) {
                 console.log("data: " + JSON.stringify(data));
                 response = {
                     status: true,
-                    message: "Sucessfully get",
+                    message: property.S0008,
                     data: data
                 };
                 res.status(200).send(response);
@@ -1710,7 +1699,7 @@ module.exports.groupTextReadByGroupId = function (req, res) {
         console.log("Epty value found");
         response = {
             status: false,
-            message: "empty value found"
+            message: property.N0003,
         };
         res.status(400).send(response);
     }
@@ -1736,7 +1725,7 @@ module.exports.groupText = function (req, res) {
                 console.log("err: " + JSON.stringify(err));
                 response = {
                     status: false,
-                    message: "Unsucessfully retrived data",
+                    message: property.E0007,
                     data: err
                 };
                 res.status(400).send(responseData);
@@ -1774,7 +1763,7 @@ module.exports.groupText = function (req, res) {
                             console.log("err: " + JSON.stringify(err));
                             response = {
                                 status: false,
-                                message: "Unsucessfully retrived data",
+                                message: property.S0008,
                                 data: err
                             };
                             res.status(400).send(responseData);
@@ -1794,7 +1783,7 @@ module.exports.groupText = function (req, res) {
                             }); /* ### Note: Emit message to client ### */
                             response = {
                                 status: true,
-                                message: "Sucessfully sent",
+                                message: property.S0012,
                                 data: insertedData
                             };
                             res.status(200).send(response);
@@ -1831,7 +1820,7 @@ module.exports.groupText = function (req, res) {
                             console.log("err: " + JSON.stringify(err));
                             response = {
                                 status: false,
-                                message: "Unsucessfully updated data",
+                                message: property.E0007,
                                 data: err
                             };
                             res.status(400).send(responseData);
@@ -1850,7 +1839,7 @@ module.exports.groupText = function (req, res) {
                             }); /* ### Note: Emit message to client ### */
                             response = {
                                 status: true,
-                                message: "Sucessfully updated",
+                                message: property.S0010,
                                 data: updatedData
                             };
                             res.status(200).send(response);
@@ -1863,7 +1852,7 @@ module.exports.groupText = function (req, res) {
         console.log("Epty value found");
         response = {
             status: false,
-            message: "empty value found"
+            message: property.NOOO3
         };
         res.status(400).send(response);
     }
@@ -1882,7 +1871,7 @@ module.exports.textSeenFlagUpdate_toGroupChat = function (req, res) {
                 console.log("err: " + JSON.stringify(err));
                 response = {
                     status: false,
-                    message: "Unsucessfully Updated data",
+                    message: property.E0007,
                     data: err
                 };
                 res.status(400).send(response);
@@ -1897,7 +1886,7 @@ module.exports.textSeenFlagUpdate_toGroupChat = function (req, res) {
                 }); /* ### Note: Emit message to client ### */
                 response = {
                     status: true,
-                    message: "Sucessfully Updated data",
+                    message: property.S0010,
                     data: updateddata
                 };
                 res.status(200).send(response);
@@ -1907,7 +1896,7 @@ module.exports.textSeenFlagUpdate_toGroupChat = function (req, res) {
         console.log("Epty value found");
         response = {
             status: false,
-            message: "empty value found"
+            message: property.N0003
         };
         res.status(400).send(response);
     }
@@ -1925,7 +1914,7 @@ module.exports.getGroupById = function (req, res) {
                 console.log("err: " + JSON.stringify(err));
                 response = {
                     status: false,
-                    message: "Unsucessfully retrived data",
+                    message: property.E0007,
                     data: err
                 };
                 res.status(400).send(responseData);
@@ -1933,7 +1922,7 @@ module.exports.getGroupById = function (req, res) {
                 console.log("groupData: " + JSON.stringify(groupData));
                 response = {
                     status: true,
-                    message: "Sucessfully retrived data",
+                    message: property.S0008,
                     data: groupData
                 };
                 res.status(200).send(response);
@@ -1943,7 +1932,7 @@ module.exports.getGroupById = function (req, res) {
         console.log("empty value found");
         response = {
             status: false,
-            message: "Empty value found",
+            message: property.N0003,
         }
         res.status(400).send(response);
     }
@@ -1963,7 +1952,7 @@ module.exports.careator_getUserById = function (req, res) {
                 console.log("err: " + JSON.stringify(err));
                 response = {
                     status: false,
-                    message: "Unsucessfully retrived data",
+                    message: property.E0007,
                     data: err
                 };
                 res.status(400).send(responseData);
@@ -1971,7 +1960,7 @@ module.exports.careator_getUserById = function (req, res) {
                 console.log("allEmp_chat: " + JSON.stringify(allEmp_chat));
                 response = {
                     status: true,
-                    message: "Sucessfully retrived data",
+                    message: property.S0008,
                     data: allEmp_chat
                 };
                 res.status(200).send(response);
@@ -1981,7 +1970,7 @@ module.exports.careator_getUserById = function (req, res) {
         console.log("empty value found");
         response = {
             status: false,
-            message: "Empty value found",
+            message: property.N0003,
         }
         res.status(400).send(response);
     }
@@ -2003,7 +1992,7 @@ module.exports.getChatListRecordById = function (req, res) {
                 console.log("err: " + JSON.stringify(err));
                 response = {
                     status: false,
-                    message: "Unsucessfully retrived data",
+                    message: property.E0007,
                     data: err
                 };
                 res.status(400).send(response);
@@ -2011,7 +2000,7 @@ module.exports.getChatListRecordById = function (req, res) {
                 console.log("allEmp_chat: " + JSON.stringify(findData));
                 response = {
                     status: true,
-                    message: "Sucessfully retrived data",
+                    message: property.S0008,
                     data: findData
                 };
                 res.status(200).send(response);
@@ -2022,7 +2011,7 @@ module.exports.getChatListRecordById = function (req, res) {
         console.log("Epty value found");
         response = {
             status: false,
-            message: "empty value found"
+            message: property.N0003
         };
         res.status(400).send(response);
     }
@@ -2042,7 +2031,7 @@ module.exports.careator_getGroupById = function (req, res) {
                 console.log("err: " + JSON.stringify(err));
                 response = {
                     status: false,
-                    message: "Unsucessfully retrived data",
+                    message: property.E0007,
                     data: err
                 };
                 res.status(400).send(responseData);
@@ -2050,7 +2039,7 @@ module.exports.careator_getGroupById = function (req, res) {
                 console.log("allEmp_chat: " + JSON.stringify(allEmp_chat));
                 response = {
                     status: true,
-                    message: "Sucessfully retrived data",
+                    message: property.S0008,
                     data: allEmp_chat
                 };
                 res.status(200).send(response);
@@ -2060,7 +2049,7 @@ module.exports.careator_getGroupById = function (req, res) {
         console.log("empty value found");
         response = {
             status: false,
-            message: "Empty value found",
+            message: property.NOOO3,
         }
         res.status(400).send(response);
     }
@@ -2108,7 +2097,7 @@ module.exports.userEditById = function (req, res) {
                 console.log("err: " + JSON.stringify(err));
                 response = {
                     status: false,
-                    message: "Update unsucessfully",
+                    message: property.E0007,
                     data: err
                 };
                 res.status(400).send(response);
@@ -2120,7 +2109,7 @@ module.exports.userEditById = function (req, res) {
                 console.log("updatedData: " + JSON.stringify(updatedData));
                 response = {
                     status: true,
-                    message: "Update sucessfully",
+                    message: property.S0015,
                     data: updatedData
                 };
                 res.status(200).send(response);
@@ -2133,7 +2122,7 @@ module.exports.userEditById = function (req, res) {
         }
         response = {
             status: false,
-            message: "empty value found",
+            message: property.N0003,
             data: obj
         };
         res.status(400).send(response);
@@ -2176,7 +2165,7 @@ module.exports.groupEditById = function (req, res) {
                     console.log("err: " + JSON.stringify(err));
                     response = {
                         status: false,
-                        message: "Update unsucessfully",
+                        message: property.E0007,
                         data: err
                     };
                     res.status(400).send(response);
@@ -2184,7 +2173,7 @@ module.exports.groupEditById = function (req, res) {
                     console.log("updatedData: " + JSON.stringify(updatedData));
                     response = {
                         status: true,
-                        message: "Update sucessfully",
+                        message: property.S0010,
                         data: updatedData
                     };
                     res.status(200).send(response);
@@ -2197,7 +2186,7 @@ module.exports.groupEditById = function (req, res) {
         }
         response = {
             status: false,
-            message: "empty value found",
+            message: property.N0003,
             data: obj
         };
         res.status(400).send(response);
@@ -2219,7 +2208,7 @@ module.exports.userDeleteById = function (req, res) {
                 console.log("err: " + JSON.stringify(err));
                 response = {
                     status: false,
-                    message: "Delete fail",
+                    message: property.E0007,
                     data: err
                 };
                 res.status(400).send(response);
@@ -2227,7 +2216,7 @@ module.exports.userDeleteById = function (req, res) {
                 console.log("updatedData: " + JSON.stringify(updatedData));
                 response = {
                     status: true,
-                    message: "Delete sucessfully",
+                    message: property.S0016,
                     data: updatedData
                 };
                 res.status(200).send(response);
@@ -2240,7 +2229,7 @@ module.exports.userDeleteById = function (req, res) {
         }
         response = {
             status: false,
-            message: "empty value found",
+            message: property.N0003,
             data: obj
         };
         res.status(400).send(response);
@@ -2262,7 +2251,7 @@ module.exports.groupDeleteById = function (req, res) {
                 console.log("err: " + JSON.stringify(err));
                 response = {
                     status: false,
-                    message: "Delete fail",
+                    message: property.E0007,
                     data: err
                 };
                 res.status(400).send(response);
@@ -2270,7 +2259,7 @@ module.exports.groupDeleteById = function (req, res) {
                 console.log("updatedData: " + JSON.stringify(updatedData));
                 response = {
                     status: true,
-                    message: "Delete sucessfully",
+                    message: property.S0013,
                     data: updatedData
                 };
                 res.status(200).send(response);
@@ -2283,7 +2272,7 @@ module.exports.groupDeleteById = function (req, res) {
         }
         response = {
             status: false,
-            message: "empty value found",
+            message: property.N0003,
             data: obj
         };
         res.status(400).send(response);
@@ -2319,7 +2308,7 @@ module.exports.groupUpdateById = function (req, res) {
                 console.log("err: " + JSON.stringify(err));
                 response = {
                     status: false,
-                    message: "Unsuccessfull group update",
+                    message: property.E0007,
                     data: err
                 };
                 res.status(400).send(response);
@@ -2338,7 +2327,7 @@ module.exports.groupUpdateById = function (req, res) {
                             console.log("err: " + JSON.stringify(err));
                             response = {
                                 status: false,
-                                message: "Unsuccessfull group update into chat details",
+                                message:property.E0007,
                                 data: err
                             };
                             res.status(400).send(response);
@@ -2346,7 +2335,7 @@ module.exports.groupUpdateById = function (req, res) {
                             console.log("groupNameUpdated: " + JSON.stringify(groupNameUpdated));
                             response = {
                                 status: true,
-                                message: "Successfully group update into chat details as well group details"
+                                message: property.S0010,
                             };
                             res.status(200).send(response);
                         }
@@ -2355,7 +2344,7 @@ module.exports.groupUpdateById = function (req, res) {
                 } else {
                     response = {
                         status: true,
-                        message: "Successfully group update",
+                        message: property.S0010,
                         data: groupUpdate
                     };
                     res.status(200).send(response);
@@ -2366,7 +2355,7 @@ module.exports.groupUpdateById = function (req, res) {
         console.log("Epty value found");
         response = {
             status: false,
-            message: "empty value found"
+            message: property.N0003,
         };
         res.status(400).send(response);
     }
@@ -2396,7 +2385,7 @@ module.exports.restrictedTo = function (req, res) {
                 console.log("err: " + JSON.stringify(err));
                 response = {
                     status: false,
-                    message: "Unsuccessfull",
+                    message: property.E0007,
                     data: err
                 };
                 res.status(400).send(response);
@@ -2409,7 +2398,7 @@ module.exports.restrictedTo = function (req, res) {
                 }); /* ### Note: Emit message to user about their new restricted user ### */
                 response = {
                     status: true,
-                    message: "Successfull",
+                    message: property.S0010,
                     data: restrict
                 };
                 res.status(200).send(response);
@@ -2419,7 +2408,7 @@ module.exports.restrictedTo = function (req, res) {
         console.log("Epty value found");
         response = {
             status: false,
-            message: "empty value found"
+            message: property.N0003
         };
         res.status(400).send(response);
     }
@@ -2450,7 +2439,7 @@ module.exports.removeRestrictedUserById = function (req, res) {
                 console.log("err: " + JSON.stringify(err));
                 response = {
                     status: false,
-                    message: "Unsuccessfull",
+                    message: property.E0007,
                     data: err
                 };
                 res.status(400).send(response);
@@ -2463,7 +2452,7 @@ module.exports.removeRestrictedUserById = function (req, res) {
                 }); /* ### Note: Emit message to user about their new restricted user ### */
                 response = {
                     status: true,
-                    message: "Successfull",
+                    message:property.S0010,
                     data: restrict
                 };
                 res.status(200).send(response);
@@ -2473,7 +2462,7 @@ module.exports.removeRestrictedUserById = function (req, res) {
         console.log("Epty value found");
         response = {
             status: false,
-            message: "empty value found"
+            message: property.N0003
         };
         res.status(400).send(response);
     }
@@ -2504,7 +2493,7 @@ module.exports.restrictedToSave = function (req, res) {
                 console.log("err: " + JSON.stringify(err));
                 response = {
                     status: false,
-                    message: "Unsuccessfull",
+                    message: property.E0007,
                     data: err
                 };
                 res.status(400).send(response);
@@ -2517,7 +2506,7 @@ module.exports.restrictedToSave = function (req, res) {
                 }); /* ### Note: Emit message to user about their new restricted user ### */
                 response = {
                     status: true,
-                    message: "Successfull",
+                    message: property.S0010,
                     data: restrict
                 };
                 res.status(200).send(response);
@@ -2527,7 +2516,7 @@ module.exports.restrictedToSave = function (req, res) {
         console.log("Epty value found");
         response = {
             status: false,
-            message: "empty value found"
+            message: property.N0003
         };
         res.status(400).send(response);
     }
@@ -2548,7 +2537,7 @@ module.exports.getChatsById = function (req, res) {
                 console.log("err: " + JSON.stringify(err));
                 response = {
                     status: false,
-                    message: "Unsucessfully retrived data",
+                    message: property.E0007,
                     data: err
                 };
                 res.status(400).send(responseData);
@@ -2556,7 +2545,7 @@ module.exports.getChatsById = function (req, res) {
                 console.log("allChat: " + JSON.stringify(allChat));
                 response = {
                     status: true,
-                    message: "Sucessfully retrived data",
+                    message: property.S0008,
                     data: allChat[0]
                 };
                 res.status(200).send(response);
@@ -2566,7 +2555,7 @@ module.exports.getChatsById = function (req, res) {
         console.log("empty value found");
         response = {
             status: false,
-            message: "Empty value found",
+            message: property.N0003,
         }
         res.status(400).send(response);
     }
@@ -2592,7 +2581,7 @@ module.exports.chatStatusUpdateById = function (req, res) {
                 console.log("err: " + JSON.stringify(err));
                 response = {
                     status: false,
-                    message: "Unsucessfully retrived data",
+                    message: property.E0007,
                     data: err
                 };
                 res.status(400).send(responseData);
@@ -2605,7 +2594,7 @@ module.exports.chatStatusUpdateById = function (req, res) {
                 }); /* ### Note: Emit message to client ### */
                 response = {
                     status: true,
-                    message: "Sucessfully retrived data",
+                    message: property.S0008,
                     data: chatStatusUpdated
                 };
                 res.status(200).send(response);
@@ -2615,7 +2604,7 @@ module.exports.chatStatusUpdateById = function (req, res) {
         console.log("empty value found");
         response = {
             status: false,
-            message: "Empty value found",
+            message: property.N0003,
         }
         res.status(400).send(response);
     }
@@ -2640,7 +2629,7 @@ module.exports.comm_profileImgUpdateById = function (req, res) {
                 console.log("err: " + JSON.stringify(err));
                 response = {
                     status: false,
-                    message: "Unsucessfully Pic Updated",
+                    message: property.E0007,
                     data: err
                 };
                 res.status(400).send(responseData);
@@ -2648,7 +2637,7 @@ module.exports.comm_profileImgUpdateById = function (req, res) {
                 console.log("profilePicPathUpdated: " + JSON.stringify(profilePicPathUpdated));
                 response = {
                     status: true,
-                    message: "Sucessfully Pic Updated",
+                    message: property.S0014,
                     data: profilePicPathUpdated
                 };
                 res.status(200).send(response);
@@ -2658,7 +2647,7 @@ module.exports.comm_profileImgUpdateById = function (req, res) {
         console.log("empty value found");
         response = {
             status: false,
-            message: "Empty value found",
+            message: property.N0003,
         }
         res.status(400).send(response);
     }
@@ -2678,7 +2667,7 @@ module.exports.getLoggedinSessionURLById = function (req, res) {
                 console.log("err: " + JSON.stringify(err));
                 response = {
                     status: false,
-                    message: "Unsucessfully Pic Updated",
+                    message:property.E0007,
                     data: err
                 };
                 res.status(400).send(responseData);
@@ -2686,7 +2675,7 @@ module.exports.getLoggedinSessionURLById = function (req, res) {
                 console.log("getSessionURL: " + JSON.stringify(getSessionURL));
                 response = {
                     status: true,
-                    message: "Sucessfully Pic Updated",
+                    message: property.S0008,
                     data: getSessionURL[0]
                 };
                 res.status(200).send(response);
@@ -2696,7 +2685,7 @@ module.exports.getLoggedinSessionURLById = function (req, res) {
         console.log("empty value found");
         response = {
             status: false,
-            message: "Empty value found",
+            message: property.N0003,
         }
         res.status(400).send(response);
     }

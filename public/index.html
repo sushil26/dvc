@@ -308,7 +308,8 @@
 
 
 <body>
-  <div class="se-pre-con"></div>
+  <div id="loading-bar-container"></div>
+
 
   <div ng-app="vcApp" ng-controller="vcAppCtrl">
     <!-- <spinner name="spinner" id="veil"></spinner>
@@ -779,15 +780,6 @@ transition: all 0.5s;">
         <script src="/home/js/main.js"></script>
         <script>
           //paste this code under the head tag or in a separate js file.
-          // Wait for window load
-          $(window).load(function () {
-            // Animate loader off screen
-            $(".se-pre-con").fadeOut("slow");;
-          });
-          $(page).load(function () {
-            // Animate loader off screen
-            $(".se-pre-con").fadeOut("slow");;
-          });
         </script>
       </div>
 

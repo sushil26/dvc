@@ -27,11 +27,17 @@
                                         <tr>
                                             <th> #</th>
 
-                                            <th >Username</th>
-                                            <th>Email</th>
+                                            <th ng-click="sort('name')">Username
+                                                <span class="glyphicon sort-icon" ng-show="sortKey=='name'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                                            </th>
+                                            <th ng-click="sort('email')">Email
+                                                <span class="glyphicon sort-icon" ng-show="sortKey=='email'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                                            </th>
                                             <th>Chat</th>
                                             <th>Video</th>
-                                            <th>Status</th>
+                                            <th ng-click="sort('status')">Status
+                                                <span class="glyphicon sort-icon" ng-show="sortKey=='status'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                                            </th>
                                             <th>Action</th>
 
 
@@ -42,7 +48,7 @@
                                             <td>
                                                 {{$index+1}}.
                                             </td>
-                                            <td >
+                                            <td>
                                                 {{ emp.name }}
                                             </td>
                                             <td>
@@ -60,7 +66,7 @@
                                                 Inactive
 
                                             </td>
-                                            <td ng-if="emp.status=='active'" >
+                                            <td ng-if="emp.status=='active'">
                                                 Active
 
                                             </td>

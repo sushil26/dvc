@@ -1,5 +1,5 @@
 
-var app = angular.module('vcApp', ['ui.router', 'mwl.calendar', 'ui.bootstrap', 'ngCookies', 'ngAnimate','ngImgCrop']);
+var app = angular.module('vcApp', ['ui.router', 'mwl.calendar', 'ui.bootstrap', 'ngCookies', 'ngAnimate','ngImgCrop','angular-loading-bar']);
 
 
 app.config(function ($stateProvider, $urlRouterProvider) {

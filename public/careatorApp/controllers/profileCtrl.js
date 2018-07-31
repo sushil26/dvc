@@ -95,7 +95,7 @@ careatorApp.controller('profileCtrl', function ($scope, $state, careatorHttpFact
         }
         /* #####  End Upload File ###### */
         else {
-            alert("logo is required");
+            alert("Logo is required");
         }
         console.log("<--schoolLogoStorage");
     }

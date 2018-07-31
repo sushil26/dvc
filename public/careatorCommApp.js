@@ -126,7 +126,7 @@ careatorApp.config(function ($stateProvider, $urlRouterProvider) {
 
         .state('Cdashboard.ipost', {
             url: ipost(),
-            templateUrl: '/careatorApp/html/internalPost.html',
+            templateUrl: '/careatorApp/html/ipost.html',
         })
 
         .state('Cdashboard.userRestrict', {

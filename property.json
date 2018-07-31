@@ -27,7 +27,7 @@
     "E0008": "Credential Mismatch",
     "E0009": "Failed to send mail",
     
-    "N0001": "You've already logged in. To log in again, please reset your session. ",
+    "N0001": "You've already logged in. To log in again, please reset your session",
     "N0002": "You profile is inactive. Please contact the admin to activate.",
     "N0003": "Empty value found",
     "N0004": "Your URL not alive",

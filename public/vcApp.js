@@ -1,5 +1,5 @@
 
-var app = angular.module('vcApp', ['ui.router', 'mwl.calendar', 'ui.bootstrap', 'ngCookies', 'ngAnimate','ngImgCrop','angular-loading-bar']);
+var app = angular.module('vcApp', ['ui.router', 'mwl.calendar', 'ui.bootstrap', 'ngCookies', 'ngAnimate','ngImgCrop','angular-loading-bar','angularMoment']);
 
 app.config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
   // cfpLoadingBarProvider.includeBar = true;

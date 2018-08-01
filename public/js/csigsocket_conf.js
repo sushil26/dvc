@@ -1135,6 +1135,7 @@ signaling_socket.on("addPeer", function (config) {
           local_description,
           function () {
             // console.log("local_description: " + JSON.stringify(local_description));
+
             signaling_socket.emit("relaySessionDescription", {
               peer_id: peer_id,
               session_description: local_description,
@@ -1197,21 +1198,29 @@ signaling_socket.on("sessionDescription", function (config) {
           peer.createAnswer(function (local_description) {
             console.log("Answer description is: ", local_description);
             console.log("local_description: " + local_description);
-            peer.setLocalDescription(local_description, function () {
-              signaling_socket.emit("relaySessionDescription", {
-                peer_id: peer_id,
-                session_description: local_description,
-                from: "sessionDescription",
-                owner: config.owner,
-                queryLink: queryLink,
-                timeLink: timeLink
-              });
-              console.log("Answer setLocalDescription succeeded");
-            },
-              function () {
-                console.log("Answer setLocalDescription failed!");
-              }
-            );
+            if(config.queryId == queryLink){
+              peer.setLocalDescription(local_description, function () {
+                signaling_socket.emit("relaySessionDescription", {
+                  peer_id: peer_id,
+                  session_description: local_description,
+                  from: "sessionDescription",
+                  owner: config.owner,
+                  queryLink: queryLink,
+                  timeLink: timeLink
+                });
+                console.log("Answer setLocalDescription succeeded");
+              },
+                function () {
+                  console.log("Answer setLocalDescription failed!");
+                }
+              );
+            }
+            else{
+              console.log("Your Query Id from server and query link in the browser link are different");
+              console.log("config.queryId: "+config.queryId);
+              console.log("queryLink: "+queryLink);
+            }
+           
           },
             function (error) {
               console.log("Error creating answer: ", error);

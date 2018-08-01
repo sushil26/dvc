@@ -2328,7 +2328,7 @@ module.exports.groupUpdateById = function (req, res) {
                             console.log("err: " + JSON.stringify(err));
                             response = {
                                 status: false,
-                                message:property.E0007,
+                                message: property.E0007,
                                 data: err
                             };
                             res.status(400).send(response);
@@ -2453,7 +2453,7 @@ module.exports.removeRestrictedUserById = function (req, res) {
                 }); /* ### Note: Emit message to user about their new restricted user ### */
                 response = {
                     status: true,
-                    message:property.S0010,
+                    message: property.S0010,
                     data: restrict
                 };
                 res.status(200).send(response);
@@ -2668,7 +2668,7 @@ module.exports.getLoggedinSessionURLById = function (req, res) {
                 console.log("err: " + JSON.stringify(err));
                 response = {
                     status: false,
-                    message:property.E0007,
+                    message: property.E0007,
                     data: err
                 };
                 res.status(400).send(responseData);

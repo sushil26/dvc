@@ -251,11 +251,16 @@ function checkCredential() {
         console.log("err.responseText: " + JSON.stringify(err.responseText));
         console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
         if (err.responseJSON.message == "You've already logged in. To log in again, please reset your session") {
+          checkObj = {
+            "password": password,
+            "careatorEmail": careatorEmail
+          }
           console.log("You already logged in, please logout your old session in-order to login");
           document.getElementById('notify_msg_content').innerHTML = err.responseJSON.message;
           document.getElementById('resetBtn').style.display = 'inline';
           $("#notify_msg_button").trigger("click");
           resetId = err.responseJSON.data.id;
+
         } else {
           // alert(err.responseJSON.message);
           $("#alertButton").trigger("click");
@@ -288,10 +293,8 @@ function resetLoginFlag() {
     dataType: "json",
     success: function (data) {
       console.log("data: " + JSON.stringify(data));
-
       document.getElementById('notify_msg_show_content').innerHTML = "Reset successfully done,now you can login";
       $("#notify_msg_show_button").trigger("click");
-
     },
     error: function (err) {
       console.log("err: " + JSON.stringify(err));
@@ -651,147 +654,147 @@ signaling_socket.on("connect", function () {
     console.log("peerNew_id: " + peerNew_id);
     console.log("date: " + date);
     // if (config.queryId == null) {
-      console.log("query id is null");
-      document.getElementById("videoConfStart").setAttribute("onclick", "startSession('" + peerNew_id + "' , '" + date + "')");
-      document.getElementById("linkToShare").setAttribute("href", "https://norecruits.com/careator/" + peerNew_id + "/" + date);
-      document.getElementById("linkToShare").innerHTML = "https://norecruits.com/careator/" + peerNew_id + "/" + date;
+    console.log("query id is null");
+    document.getElementById("videoConfStart").setAttribute("onclick", "startSession('" + peerNew_id + "' , '" + date + "')");
+    document.getElementById("linkToShare").setAttribute("href", "https://norecruits.com/careator/" + peerNew_id + "/" + date);
+    document.getElementById("linkToShare").innerHTML = "https://norecruits.com/careator/" + peerNew_id + "/" + date;
     // } else {
     //   console.log("query id nt null");
     //   console.log("config.isQueryIdAuthorized: " + config.isQueryIdAuthorized);
-  //if (config.isQueryIdAuthorized == 'yes') {
-        // document.getElementById("linkToShare").setAttribute("href", "https://norecruits.com/careator/" + queryLink + "/" + date);
-        // document.getElementById("linkToShare").innerHTML = "https://norecruits.com/careator/" + queryLink + "/" + date;
-        // document.getElementById("screenBtns").style.display = "inline";
-        // document.getElementById("homeLink").style.display = "inline";
-        // document.getElementById("videoConfStart").style.display = "none";
-        // $("#buttonpage").css({
-        //   "min-height": "100vh"
-        // });
-        // document.getElementById("openChat").style.display = "inline";
-        // document.getElementById("audio_btn").style.display = "inline";
-        //document.getElementById("video_btn").style.display = "inline";
-        // document.getElementById("diconnect_btn").style.display = "inline";
-        // document.getElementById("linkToShare").style.display = "block";
-        // console.log("userName: " + userName);
-        // if (userName != undefined && userName != "") {
-        //   console.log("userName with localmedia setup call: " + userName);
-        //   setup_local_media(function () {
-        //     join__channel(DEFAULT_CHANNEL, {
-        //       "whatever-you--here": "stuff"
-        //     });
-        //   });
-        // }
-        // document.getElementById("setNameId").addEventListener("click", function () {
-        //   console.log("setup_local_media calling**");
-        //   console.log("setName-->");
-        //   var careator_remoteEmail = document.getElementById("remote_userName").value;
-        //   var careator_remotePswd = document.getElementById("remote_password").value;
-        //   var checkObj = {
-        //     "url": window.location.href,
-        //     "careator_remoteEmail": careator_remoteEmail,
-        //     "careator_remotePswd": careator_remotePswd
-        //   }
-        //   $.ajax({
-        //     url: "https://norecruits.com/careator/RemoteJoinCheck",
-        //     type: "POST",
-        //     data: JSON.stringify(checkObj),
-        //     contentType: "application/json",
-        //     dataType: "json",
-        //     success: function (data) {
-        //       console.log("data: " + JSON.stringify(data));
-        //       localStorage.removeItem("careatorEmail");
-        //       localStorage.setItem("careator_remoteEmail", careator_remoteEmail);
-        //       localStorage.setItem("sessionEnc", data.sessionData);
-        //       var emailIdSplit = careator_remoteEmail.split('@');
-        //       console.log("2 cond: emailIdSplit: " + JSON.stringify(emailIdSplit));
-        //       userName = emailIdSplit[0];
-        //       careator_remoteEmail = true;
-        //       document.getElementById("videoConferenceUrl").style.display = "none";
-        //       document.getElementById("emailInvitation").style.display = "none";
-        //       //document.getElementById("videoCtrolBar").style.display = "grid";
-        //       localStorage.setItem("oneTimePassword", careator_remotePswd);
-        //       $('#remoteJoin').modal('hide');
-        //       // setup_local_media(function () {
-        //       //   join__channel(DEFAULT_CHANNEL, {
-        //       //     "whatever-here": "stuff"
-        //       //   });
-        //       // });
-        //     },
-        //     error: function (err) {
-        //       console.log("err: " + JSON.stringify(err));
-        //       console.log("err.responseText: " + JSON.stringify(err.responseText));
-        //       console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
-        //       document.getElementById("videoConferenceUrl").style.display = "none";
-        //       document.getElementById("emailInvitation").style.display = "none";
-        //       userName = "";
-        //       if (err.responseJSON.errorCode == "E0_URLE" || err.responseJSON.errorCode == "E0_alreadyInUse") {
-        //         $('#remoteJoin').modal('hide');
-        //         document.getElementById('notify_msg_content').innerHTML = err.responseJSON.message;
-        //         document.getElementById('resetBtn').style.display = 'none';
-        //         $("#notify_msg_button").trigger("click");
-        //         setTimeout(function () {
-        //           window.close();
-        //         }, 3000);
-        //       }
-        //     }
-        //   });
+    //if (config.isQueryIdAuthorized == 'yes') {
+    // document.getElementById("linkToShare").setAttribute("href", "https://norecruits.com/careator/" + queryLink + "/" + date);
+    // document.getElementById("linkToShare").innerHTML = "https://norecruits.com/careator/" + queryLink + "/" + date;
+    // document.getElementById("screenBtns").style.display = "inline";
+    // document.getElementById("homeLink").style.display = "inline";
+    // document.getElementById("videoConfStart").style.display = "none";
+    // $("#buttonpage").css({
+    //   "min-height": "100vh"
+    // });
+    // document.getElementById("openChat").style.display = "inline";
+    // document.getElementById("audio_btn").style.display = "inline";
+    //document.getElementById("video_btn").style.display = "inline";
+    // document.getElementById("diconnect_btn").style.display = "inline";
+    // document.getElementById("linkToShare").style.display = "block";
+    // console.log("userName: " + userName);
+    // if (userName != undefined && userName != "") {
+    //   console.log("userName with localmedia setup call: " + userName);
+    //   setup_local_media(function () {
+    //     join__channel(DEFAULT_CHANNEL, {
+    //       "whatever-you--here": "stuff"
+    //     });
+    //   });
+    // }
+    // document.getElementById("setNameId").addEventListener("click", function () {
+    //   console.log("setup_local_media calling**");
+    //   console.log("setName-->");
+    //   var careator_remoteEmail = document.getElementById("remote_userName").value;
+    //   var careator_remotePswd = document.getElementById("remote_password").value;
+    //   var checkObj = {
+    //     "url": window.location.href,
+    //     "careator_remoteEmail": careator_remoteEmail,
+    //     "careator_remotePswd": careator_remotePswd
+    //   }
+    //   $.ajax({
+    //     url: "https://norecruits.com/careator/RemoteJoinCheck",
+    //     type: "POST",
+    //     data: JSON.stringify(checkObj),
+    //     contentType: "application/json",
+    //     dataType: "json",
+    //     success: function (data) {
+    //       console.log("data: " + JSON.stringify(data));
+    //       localStorage.removeItem("careatorEmail");
+    //       localStorage.setItem("careator_remoteEmail", careator_remoteEmail);
+    //       localStorage.setItem("sessionEnc", data.sessionData);
+    //       var emailIdSplit = careator_remoteEmail.split('@');
+    //       console.log("2 cond: emailIdSplit: " + JSON.stringify(emailIdSplit));
+    //       userName = emailIdSplit[0];
+    //       careator_remoteEmail = true;
+    //       document.getElementById("videoConferenceUrl").style.display = "none";
+    //       document.getElementById("emailInvitation").style.display = "none";
+    //       //document.getElementById("videoCtrolBar").style.display = "grid";
+    //       localStorage.setItem("oneTimePassword", careator_remotePswd);
+    //       $('#remoteJoin').modal('hide');
+    //       // setup_local_media(function () {
+    //       //   join__channel(DEFAULT_CHANNEL, {
+    //       //     "whatever-here": "stuff"
+    //       //   });
+    //       // });
+    //     },
+    //     error: function (err) {
+    //       console.log("err: " + JSON.stringify(err));
+    //       console.log("err.responseText: " + JSON.stringify(err.responseText));
+    //       console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
+    //       document.getElementById("videoConferenceUrl").style.display = "none";
+    //       document.getElementById("emailInvitation").style.display = "none";
+    //       userName = "";
+    //       if (err.responseJSON.errorCode == "E0_URLE" || err.responseJSON.errorCode == "E0_alreadyInUse") {
+    //         $('#remoteJoin').modal('hide');
+    //         document.getElementById('notify_msg_content').innerHTML = err.responseJSON.message;
+    //         document.getElementById('resetBtn').style.display = 'none';
+    //         $("#notify_msg_button").trigger("click");
+    //         setTimeout(function () {
+    //           window.close();
+    //         }, 3000);
+    //       }
+    //     }
+    //   });
 
-        // });
-      // } else {
-      //   document.getElementById("setNameId").addEventListener("click", function () {
-      //     console.log("setup_local_media calling**");
-      //     console.log("setName-->");
-      //     var careator_remoteEmail = document.getElementById("remote_userName").value;
-      //     var careator_remotePswd = document.getElementById("remote_password").value;
-      //     var checkObj = {
-      //       "url": window.location.href,
-      //       "careator_remoteEmail": careator_remoteEmail,
-      //       "careator_remotePswd": careator_remotePswd
-      //     }
-      //     $.ajax({
-      //       url: "https://norecruits.com/careator/RemoteJoinCheck",
-      //       type: "POST",
-      //       data: JSON.stringify(checkObj),
-      //       contentType: "application/json",
-      //       dataType: "json",
-      //       success: function (data) {
-      //         console.log("data: " + JSON.stringify(data));
-      //         localStorage.removeItem("careatorEmail");
-      //         localStorage.setItem("careator_remoteEmail", careator_remoteEmail);
-      //         localStorage.setItem("sessionEnc", data.sessionData);
-      //         var emailIdSplit = careator_remoteEmail.split('@');
-      //         console.log("2 cond: emailIdSplit: " + JSON.stringify(emailIdSplit));
-      //         userName = emailIdSplit[0];
-      //         careator_remoteEmail = true;
-      //         document.getElementById("videoConferenceUrl").style.display = "none";
-      //         document.getElementById("emailInvitation").style.display = "none";
-      //         //document.getElementById("videoCtrolBar").style.display = "grid";
-      //         localStorage.setItem("oneTimePassword", careator_remotePswd);
-      //         $('#remoteJoin').modal('hide');
-      //         setup_local_media(function () {
-      //           join__channel(DEFAULT_CHANNEL, {
-      //             "whatever-here": "stuff"
-      //           });
-      //         });
-      //       },
-      //       error: function (err) {
-      //         console.log("err: " + JSON.stringify(err));
-      //         console.log("err.responseText: " + JSON.stringify(err.responseText));
-      //         console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
-      //         document.getElementById("videoConferenceUrl").style.display = "none";
-      //         document.getElementById("emailInvitation").style.display = "none";
-      //         userName = "";
-      //         if (err.responseJSON.errorCode == "E0_URLE" || err.responseJSON.errorCode == "E0_alreadyInUse") {
-      //           $('#remoteJoin').modal('hide');
-      //           document.getElementById('notify_msg_content').innerHTML = err.responseJSON.message;
-      //           document.getElementById('resetBtn').style.display = 'none';
-      //           $("#notify_msg_button").trigger("click");
-      //           setTimeout(function () {
-      //             window.close();
-      //           }, 3000);
-      //         }
-      //       }
-      //     });
+    // });
+    // } else {
+    //   document.getElementById("setNameId").addEventListener("click", function () {
+    //     console.log("setup_local_media calling**");
+    //     console.log("setName-->");
+    //     var careator_remoteEmail = document.getElementById("remote_userName").value;
+    //     var careator_remotePswd = document.getElementById("remote_password").value;
+    //     var checkObj = {
+    //       "url": window.location.href,
+    //       "careator_remoteEmail": careator_remoteEmail,
+    //       "careator_remotePswd": careator_remotePswd
+    //     }
+    //     $.ajax({
+    //       url: "https://norecruits.com/careator/RemoteJoinCheck",
+    //       type: "POST",
+    //       data: JSON.stringify(checkObj),
+    //       contentType: "application/json",
+    //       dataType: "json",
+    //       success: function (data) {
+    //         console.log("data: " + JSON.stringify(data));
+    //         localStorage.removeItem("careatorEmail");
+    //         localStorage.setItem("careator_remoteEmail", careator_remoteEmail);
+    //         localStorage.setItem("sessionEnc", data.sessionData);
+    //         var emailIdSplit = careator_remoteEmail.split('@');
+    //         console.log("2 cond: emailIdSplit: " + JSON.stringify(emailIdSplit));
+    //         userName = emailIdSplit[0];
+    //         careator_remoteEmail = true;
+    //         document.getElementById("videoConferenceUrl").style.display = "none";
+    //         document.getElementById("emailInvitation").style.display = "none";
+    //         //document.getElementById("videoCtrolBar").style.display = "grid";
+    //         localStorage.setItem("oneTimePassword", careator_remotePswd);
+    //         $('#remoteJoin').modal('hide');
+    //         setup_local_media(function () {
+    //           join__channel(DEFAULT_CHANNEL, {
+    //             "whatever-here": "stuff"
+    //           });
+    //         });
+    //       },
+    //       error: function (err) {
+    //         console.log("err: " + JSON.stringify(err));
+    //         console.log("err.responseText: " + JSON.stringify(err.responseText));
+    //         console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
+    //         document.getElementById("videoConferenceUrl").style.display = "none";
+    //         document.getElementById("emailInvitation").style.display = "none";
+    //         userName = "";
+    //         if (err.responseJSON.errorCode == "E0_URLE" || err.responseJSON.errorCode == "E0_alreadyInUse") {
+    //           $('#remoteJoin').modal('hide');
+    //           document.getElementById('notify_msg_content').innerHTML = err.responseJSON.message;
+    //           document.getElementById('resetBtn').style.display = 'none';
+    //           $("#notify_msg_button").trigger("click");
+    //           setTimeout(function () {
+    //             window.close();
+    //           }, 3000);
+    //         }
+    //       }
+    //     });
 
     //     // });
     //     // $("#alertConfirmationButton").trigger("click");

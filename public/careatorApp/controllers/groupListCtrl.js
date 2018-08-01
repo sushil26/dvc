@@ -1,4 +1,4 @@
-careatorApp.controller('groupListCtrl', function ($scope, $state,careatorHttpFactory,SweetAlert) {
+careatorApp.controller('groupListCtrl', function ($scope, $state, careatorHttpFactory, SweetAlert) {
     console.log("groupListCtrl==>");
     $scope.getGroupList = function () {
         console.log("getGroupList-->");
@@ -23,16 +23,16 @@ careatorApp.controller('groupListCtrl', function ($scope, $state,careatorHttpFac
     $scope.getGroupList();
 
     $scope.statusChange = function (id, status) {
-        if (status='active') {
+        if (status = 'active') {
             SweetAlert.swal({
-                title: "Are you sure to Activate the Group?", //Bold text
-                text: "User will be able to Use !", //light text
-                type: "warning", //type -- adds appropiriate icon
-                showCancelButton: true, // displays cancel btton
-                confirmButtonColor: "#DD6B55",
-                confirmButtonText: "Yes, Activate it!",
-                closeOnConfirm: false, //do not close popup after click on confirm, usefull when you want to display a subsequent popup
-                closeOnCancel: false
+                    title: "Are you sure to Activate the Group?", //Bold text
+                    text: "User will be able to Use !", //light text
+                    type: "warning", //type -- adds appropiriate icon
+                    showCancelButton: true, // displays cancel btton
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Yes, Activate it!",
+                    closeOnConfirm: false, //do not close popup after click on confirm, usefull when you want to display a subsequent popup
+                    closeOnCancel: false
                 },
                 function (isConfirm) { //Function that triggers on user action.
                     if (isConfirm) {
@@ -65,16 +65,16 @@ careatorApp.controller('groupListCtrl', function ($scope, $state,careatorHttpFac
 
             )
         }
-        if (status='inactive') {
+        if (status = 'inactive') {
             SweetAlert.swal({
-                title: "Are you sure to Deactivate the Group ?", //Bold text
-                text: "User will not be able to use !", //light text
-                type: "warning", //type -- adds appropiriate icon
-                showCancelButton: true, // displays cancel btton
-                confirmButtonColor: "#DD6B55",
-                confirmButtonText: "Yes, Deactivate!",
-                closeOnConfirm: false, //do not close popup after click on confirm, usefull when you want to display a subsequent popup
-                closeOnCancel: false
+                    title: "Are you sure to Deactivate the Group ?", //Bold text
+                    text: "User will not be able to use !", //light text
+                    type: "warning", //type -- adds appropiriate icon
+                    showCancelButton: true, // displays cancel btton
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Yes, Deactivate!",
+                    closeOnConfirm: false, //do not close popup after click on confirm, usefull when you want to display a subsequent popup
+                    closeOnCancel: false
                 },
                 function (isConfirm) { //Function that triggers on user action.
                     if (isConfirm) {
@@ -121,27 +121,43 @@ careatorApp.controller('groupListCtrl', function ($scope, $state,careatorHttpFac
 
     ////////////////Delete User/////////////////////////
     $scope.deleteGroup = function (id) {
-        console.log("deleteGroup-->");
-        console.log("Obj ID  " + id);
-        $("#GroupDeleteButton").trigger("click");
-
-        $scope.groupDelete = function () {
-            var api = "https://norecruits.com/careator_groupDelete/groupDeleteById/" + id;
-            console.log("api: " + api);
-            careatorHttpFactory.get(api).then(function (data) {
-                console.log("data--" + JSON.stringify(data.data));
-                var checkStatus = careatorHttpFactory.dataValidation(data);
-                console.log("data--" + JSON.stringify(data.data));
-                if (checkStatus) {
-                    console.log(data.data.message);
-                    $scope.getGroupList();
+        SweetAlert.swal({
+                title: "Are you sure you want to delete the Group??", //Bold text
+                text: "Your will not be able to recover this Group!", //light text
+                type: "warning", //type -- adds appropiriate icon
+                showCancelButton: true, // displays cancel btton
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, delete it!",
+                closeOnConfirm: false, //do not close popup after click on confirm, usefull when you want to display a subsequent popup
+                closeOnCancel: false
+            },
+            function (isConfirm) { //Function that triggers on user action.
+                if (isConfirm) {
+                    SweetAlert.swal("Deleted!");
+                    console.log("deleteGroup-->");
+                    console.log("Obj ID  " + id);
+                    // $("#GroupDeleteButton").trigger("click");
+                    var api = "https://norecruits.com/careator_groupDelete/groupDeleteById/" + id;
+                    console.log("api: " + api);
+                    careatorHttpFactory.get(api).then(function (data) {
+                        console.log("data--" + JSON.stringify(data.data));
+                        var checkStatus = careatorHttpFactory.dataValidation(data);
+                        console.log("data--" + JSON.stringify(data.data));
+                        if (checkStatus) {
+                            console.log(data.data.message);
+                            $scope.getGroupList();
+                        } else {
+                            console.log("Sorry");
+                            console.log(data.data.message);
+                        }
+                    })
+                    console.log("<--statusChange");
                 } else {
-                    console.log("Sorry");
-                    console.log(data.data.message);
+                    SweetAlert.swal("Your group is safe!");
                 }
-            })
-            console.log("<--statusChange");
-        }
+            }
+
+        )
 
 
 

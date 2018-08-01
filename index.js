@@ -321,7 +321,7 @@ io.sockets.on('connection', function (socket) {
         var peer_id = config.peer_id;
         var ice_candidate = config.ice_candidate;
         if (peer_id in sockets) {
-            sockets[peer_id].emit('iceCandidate', { 'peer_id': socket.id, 'ice_candidate': ice_candidate });
+            sockets[peer_id].emit('iceCandidate', { 'peer_id': socket.id, 'ice_candidate': ice_candidate, "queryId": config.queryLink });
         }
         console.log("<--relayICECandidate")
     });

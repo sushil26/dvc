@@ -901,6 +901,7 @@ signaling_socket.on("addPeer", function (config) {
       console.log("started to call server relayICECandidate--><--");
       signaling_socket.emit("relayICECandidate", {
         peer_id: peer_id,
+        queryLink: queryLink,
         ice_candidate: {
           sdpMLineIndex: event.candidate.sdpMLineIndex,
           candidate: event.candidate.candidate
@@ -1251,11 +1252,17 @@ signaling_socket.on("sessionDescription", function (config) {
 signaling_socket.on("iceCandidate", function (config) {
   console.log("iceCandidate-->");
   // console.log("iceCandidate: " + JSON.stringify(config));
-  var peer = peers[config.peer_id];
-  var ice_candidate = config.ice_candidate;
-  console.log("ice_candidate: " + ice_candidate);
-  peer.addIceCandidate(new RTCIceCandidate(ice_candidate));
-  console.log("<--iceCandidate");
+  if(config.queryId == queryLink){
+    var peer = peers[config.peer_id];
+    var ice_candidate = config.ice_candidate;
+    console.log("ice_candidate: " + ice_candidate);
+    peer.addIceCandidate(new RTCIceCandidate(ice_candidate));
+    console.log("<--iceCandidate");
+  }
+  else{
+    console.log("********************sorry we have diferent querId and querLink");
+  }
+  
 });
 
 /**

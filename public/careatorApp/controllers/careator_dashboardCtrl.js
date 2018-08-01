@@ -3,7 +3,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
     $scope.clock = "loading clock..."; // initialise the time variable
     $scope.tickInterval = 1000 //ms
     $scope.propertyJson = $rootScope.propertyJson;
-    console.log("localStorage.getItem(careatorEmail): "+localStorage.getItem(careatorEmail));
+    console.log("localStorage.getItem(careatorEmail): "+localStorage.getItem("careatorEmail"));
     $scope.getLogin_hostDetailsById = function (id) {
         console.log("getLogin_hostDetailsById-->: " + id);
         var api = "https://norecruits.com/careator_getUser/careator_getUserById/" + id;

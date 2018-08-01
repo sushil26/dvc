@@ -95,7 +95,7 @@ careatorApp.controller('usersListCtrl', function ($scope, $state, careatorHttpFa
 
     ////////////////Delete User/////////////////////////
 
-    $scope.deleteUser = function () {
+    $scope.deleteUser = function (id) {
         SweetAlert.swal({
                 title: "Are you sure?", //Bold text
                 text: "Your will not be able to recover this imaginary file!", //light text

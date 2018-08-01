@@ -853,6 +853,7 @@ function part__channel(channel) {
 signaling_socket.on("addPeer", function (config) {
   console.log("addPeer-->");
   console.log("addPeer 1: Signaling server said to add peer:", config);
+  console.log("config: "+JSON.stringify(config));
   // console.log('Signaling server said to add peer:', JSON.stringify(config));
   var peer_id = config.peer_id;
   sessionHeader = config.sessionHeaderId;
@@ -877,19 +878,14 @@ signaling_socket.on("addPeer", function (config) {
      * eventually (supposedly), but is necessary 
      * for now to get firefox to talk to chrome */
   );
-
-  console.log("peer_connection: " + peer_connection);
   console.log("peer_connection: " + peer_connection);
 
   // peer_connection.oniceconnectionstatechange = function (event) {
-
   //     console.log("#####peer_connection.oniceconnectionstatechange-->#####: " + peer_connection.oniceconnectionstatechange);
   //     console.log("event", event);
   //     var currentState = event.currentTarget.iceConnectionState;
   //     if (currentState == 'failed') {
-
   //         join_chat_channel(DEFAULT_CHANNEL, { 'whatever-you-want-here': 'stuff' });
-
   //     }
   // }
 

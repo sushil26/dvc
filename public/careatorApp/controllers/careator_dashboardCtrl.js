@@ -392,7 +392,8 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
             w = window.open("https://norecruits.com/careator", "_blank");
         } else {
             console.log('window is already opened');
-            $("#closeConfirmationButton").trigger("click");
+            SweetAlert.swal($scope.notifyMsg);
+            // $("#closeConfirmationButton").trigger("click");
         }
 
         $scope.focust = function () {

@@ -736,7 +736,7 @@ signaling_socket.on("connect", function () {
             }
           });
 
-        // });
+        });
       } else {
         // document.getElementById("setNameId").addEventListener("click", function () {
         //   console.log("setup_local_media calling**");

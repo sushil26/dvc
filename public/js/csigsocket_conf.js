@@ -506,7 +506,7 @@ signaling_socket.on("disconnectSessionReply", function (data) {
     }, 3000);
     setTimeout(function () {
       close();
-    }, 4000);
+    }, 5000);
     // close();
     //window.location.href = "https://norecruits.com";
   } else if (queryLink == data.deleteSessionId && peerNew_id != data.owner) {

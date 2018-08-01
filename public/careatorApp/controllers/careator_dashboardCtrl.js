@@ -1,4 +1,4 @@
-careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $filter, $timeout, careatorSessionAuth, careatorHttpFactory) {
+careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $filter, $timeout, careatorSessionAuth, careatorHttpFactory,SweetAlert) {
     console.log("careator_dashboardCtrl==>");
     $scope.clock = "loading clock..."; // initialise the time variable
     $scope.tickInterval = 1000 //ms
@@ -392,7 +392,8 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
             w = window.open("https://norecruits.com/careator", "_blank");
         } else {
             console.log('window is already opened');
-            $("#closeConfirmationButton").trigger("click");
+            SweetAlert.swal($scope.notifyMsg);
+            // $("#closeConfirmationButton").trigger("click");
         }
 
         $scope.focust = function () {

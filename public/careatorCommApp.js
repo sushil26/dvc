@@ -6,7 +6,7 @@ careatorApp.config(['cfpLoadingBarProvider', function (cfpLoadingBarProvider) {
     // cfpLoadingBarProvider.parentSelector = '#loading-bar-container';
     // cfpLoadingBarProvider.spinnerTemplate = '<div><span class="fa fa-spinner">Loading...</div>';
 }])
-careatorApp.config(function ($stateProvider, $urlRouterProvider) {
+careatorApp.config(function ($stateProvider) {
 
     $stateProvider
         .state('Cdashboard', {

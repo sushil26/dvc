@@ -241,431 +241,511 @@
                                     </td>
                                 </tr>
                             </table>
+                            <div id="videoCtrolBar" class="giggy" style="margin: 6px;
+                            position: absolute;
+                            top: 0;
+                            background: white;
+                            padding: 15px;
+                            border-radius:5px;
+                            height: calc(100% - 60px);
 
+                            display:none;">
+                                <a id="homeLink" href="/" style="display:none;" class="bcg">
+                                    <button id="" class="bouncy fa fa-home">
+                                    </button>
+
+                                    <div class="mtitle w3-animate-right">Home</div>
+                                </a>
+                                <a id="emailInvitation" style="display:none;" class="bcg" data-toggle="modal" data-target="#invitePeople">
+                                    <button id="inv" class="bouncy fa fa-plus">
+                                    </button>
+                                    <div class="mtitle w3-animate-right">Invite</div>
+                                </a>
+                                <a id="screenShareBtn" class="bcg">
+                                    <button id="screenBtns" style="display:none;" class="bouncy fa fa-window-restore"></button>
+                                    <div class="mtitle w3-animate-right">Screen</div>
+                                </a>
+                                <a id="screenShareStop" style="display:none;">
+                                    <button id="screenBtns" class="bouncy fa fa-stop" style="color:red">
+                                    </button>
+                                    <div class="mtitle w3-animate-right">Stop</div>
+                                </a>
+                                <a id="addChatWindow" class="bcg">
+                                    <button style="display:none;" id="openChat" class="bouncy fa fa-comments">
+                                    </button>
+                                    <b>
+                                        <span id="chatNotification" style="display:none;color:rgb(226, 101, 73);"></span>
+                                    </b>
+                                    <div class="mtitle w3-animate-right">Chat</div>
+                                </a>
+                                <a id="audio_btn" style="display:none" class="bcg">
+                                    <div id="audioMute_btn">
+                                        <button class="bouncy fa fa-microphone-slash">
+                                        </button>
+                                        <div class="mtitle w3-animate-right">Mute</div>
+                                    </div>
+
+                                    <div id="audioUnmute_btn" style="display:none;">
+                                        <button class="bouncy fa fa-microphone">
+                                        </button>
+                                        <div class="mtitle w3-animate-right">Unmute</div>
+                                    </div>
+                                </a>
+                                <a id="video_btn" style="display:none" class="bcg">
+                                    <div id="videoMute_btn">
+                                        <button class="bouncy fa fa-eye-slash">
+                                        </button>
+                                        <div class="mtitle w3-animate-right">Hide</div>
+                                    </div>
+                                    <div id="videoUnmute_btn" style="display:none;">
+                                        <button class="bouncy fa fa-video-camera">
+                                        </button>
+                                        <div class="mtitle w3-animate-right">Show</div>
+                                    </div>
+                                </a>
+                                <a href="#" style="display:none;" id="diconnect_btn" onclick="disconnecSession()" class="bcg">
+                                    <button class="bouncy fa fa-power-off" style="color:red;">
+                                    </button>
+                                    <div class="mtitle w3-animate-right">Close</div>
+                                </a>
+                                <hr style="margin: 0px 0 !important;">
+
+                                <div id="basicUsage">00:00:00</div>
+
+
+                            </div>
+
+                            <div id="portfolio-wrapper" style="margin-left:100px; margin-top: 10px;">
+                                <center>
+                                    <h1 id="sessionDisconn_alert" style="display:none;color:red"></h1>
+                                </center>
+                            </div>
+                            <button id="btnrestore" class="fa fa-window-restore btn" style="position: fixed;
+                                top: 50vh;display:none;     z-index: 2;"></button>
                         </center>
 
                     </div>
 
+               
 
 
 
 
 
-
-                    <!--=============================
+    <!--=============================
           Footer
     ===============================-->
-                    <footer id="footer">
-                        <!-- <div class="footer-top">
+    <footer id="footer">
+        <!-- <div class="footer-top">
             <div class="container">
 
             </div>
         </div> -->
-                        <div class="row">
+        <div class="row">
 
-                            <div class="col-md-5 col-lg-5">
+            <div class="col-md-5 col-lg-5">
 
-                                <div class="copyright">
-                                    <img style="width: 110px;" src="/img/logo.svg"> &nbsp;|&nbsp; &copy; Copyright
-                                    <strong>Careator</strong>. All Rights Reserved
-                                </div>
-
-                            </div>
-                            <div class="col-md-2 col-lg-2">
-
-                            </div>
-
-                            <div class="col-md-5 col-lg-5">
-
-                                <div class="copyright">
-                                    <span class="icn">
-                                        <a href="#" style="color: #1ea1f2;" class="twitter imm">
-                                            <i class="fa fa-twitter"></i>
-                                        </a>
-                                        <a href="#" style="color: #3d5998;" class="facebook imm">
-                                            <i class="fa fa-facebook"></i>
-                                        </a>
-                                        <a href="#" class="instagram imm">
-                                            <i class="fa fa-instagram" style="background: -webkit-linear-gradient(#dd004f, #fec85c);
-                                        -webkit-background-clip: text !important;
-                                        -webkit-text-fill-color: transparent;"></i>
-                                        </a>
-                                        <a href="#" style="color: #dd4b39;" class="google-plus imm">
-                                            <i class="fa fa-google-plus"></i>
-                                        </a>
-                                        <a href="#" style="color: #0072b1;" class="linkedin imm">
-                                            <i class="fa fa-linkedin"></i>
-                                        </a>
-                                    </span>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-
-                    </footer>
-                    <!--=============================
-    Footer End
-  =============================-->
-                    <a href="#" class="back-to-top">
-                        <i class="fa fa-chevron-up"></i>
-                    </a>
-
-                    <style>
-                        #portfolio .portfolio-items {
-                            display: inline-block;
-                            height: 200px;
-                        }
-
-                        #portfolio .intro {
-                            width: 75%;
-                        }
-                    </style>
-
+                <div class="copyright">
+                    <img style="width: 110px;" src="/img/logo.svg"> &nbsp;|&nbsp; &copy; Copyright
+                    <strong>Careator</strong>. All Rights Reserved
                 </div>
 
-                <!-- JavaScript Libraries -->
-                <script src="/home/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
-                <script src="/home/lib/easing/easing.min.js"></script>
-                <script src="/home/lib/wow/wow.min.js"></script>
-                <script src="/home/lib/superfish/superfish.min.js"></script>
-                <script src="/home/lib/counterup/counterup.min.js"></script>
-                <script src="/js/csigsocket.js"></script>
-                <script src="/js/chat.js"></script>
-                <script>
-                    function chatExpand() {
-                        window.location.href = "https://norecruits.com/chatCrtr";
-                    }
-                    $("#message").keyup(function (event) {
-                        if (event.keyCode === 13) {
-                            $("#sndmgs").click();
-                        }
-                    });
+            </div>
+            <div class="col-md-2 col-lg-2">
 
-                    $("#ppswd").keyup(function (event) {
-                        if (event.keyCode === 13) {
-                            $("#sub").click();
-                        }
-                    });
-                    $("#careatorEmail").keyup(function (event) {
-                        if (event.keyCode === 13) {
-                            $("#loginsubmit").click();
-                        }
-                    });
-                    $("#careatorPswd").keyup(function (event) {
-                        if (event.keyCode === 13) {
-                            $("#loginsubmit").click();
-                        }
-                    });
-                    $("#emailInvite").keyup(function (event) {
-                        if (event.keyCode === 13) {
-                            $("#invitebutton").click();
-                        }
-                    });
-                </script>
-                <script>
-                    $(document).ready(function () {
+            </div>
 
-                        if (window.matchMedia('(min-width:500px)').matches) {
-                            console.log("<<<<<<<home icon hide>>>>>>>");
-                            $("#extnn").css({
-                                "display": "contents"
-                            })
-                        }
-                        if (window.matchMedia('(max-width: 500px)').matches) {
-                            console.log("<<<<<<<home icon hide>>>>>>>");
-                            $("#extnn").css({
-                                "display": "none"
-                            })
-                        }
+            <div class="col-md-5 col-lg-5">
+
+                <div class="copyright">
+                    <span class="icn">
+                        <a href="#" style="color: #1ea1f2;" class="twitter imm">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                        <a href="#" style="color: #3d5998;" class="facebook imm">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                        <a href="#" class="instagram imm">
+                            <i class="fa fa-instagram" style="background: -webkit-linear-gradient(#dd004f, #fec85c);
+                                        -webkit-background-clip: text !important;
+                                        -webkit-text-fill-color: transparent;"></i>
+                        </a>
+                        <a href="#" style="color: #dd4b39;" class="google-plus imm">
+                            <i class="fa fa-google-plus"></i>
+                        </a>
+                        <a href="#" style="color: #0072b1;" class="linkedin imm">
+                            <i class="fa fa-linkedin"></i>
+                        </a>
+                    </span>
+                </div>
+
+            </div>
+
+        </div>
 
 
-                        $("#openChat").click(function () {
+    </footer>
+    <!--=============================
+    Footer End
+  =============================-->
+    <a href="#" class="back-to-top">
+        <i class="fa fa-chevron-up"></i>
+    </a>
 
-                            $("#portfolio-wrapper").addClass("intro");
-                            $("portfolio-items col-xs-6 col-sm-6 col-md-4 col-lg-3").removeClass("col-lg-3");
+    <style>
+        #portfolio .portfolio-items {
+            display: inline-block;
+            height: 200px;
+        }
 
-                        });
-                        $("#removeClass").click(function () {
-                            $("#portfolio-wrapper").removeClass("intro");
-                        });
-                    });
-                </script>
+        #portfolio .intro {
+            width: 75%;
+        }
+    </style>
+
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="/home/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/home/lib/easing/easing.min.js"></script>
+    <script src="/home/lib/wow/wow.min.js"></script>
+    <script src="/home/lib/superfish/superfish.min.js"></script>
+    <script src="/home/lib/counterup/counterup.min.js"></script>
+    <script src="/js/csigsocket.js"></script>
+    <script src="/js/chat.js"></script>
+    <script>
+        function chatExpand() {
+            window.location.href = "https://norecruits.com/chatCrtr";
+        }
+        $("#message").keyup(function (event) {
+            if (event.keyCode === 13) {
+                $("#sndmgs").click();
+            }
+        });
+
+        $("#ppswd").keyup(function (event) {
+            if (event.keyCode === 13) {
+                $("#sub").click();
+            }
+        });
+        $("#careatorEmail").keyup(function (event) {
+            if (event.keyCode === 13) {
+                $("#loginsubmit").click();
+            }
+        });
+        $("#careatorPswd").keyup(function (event) {
+            if (event.keyCode === 13) {
+                $("#loginsubmit").click();
+            }
+        });
+        $("#emailInvite").keyup(function (event) {
+            if (event.keyCode === 13) {
+                $("#invitebutton").click();
+            }
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+
+            if (window.matchMedia('(min-width:500px)').matches) {
+                console.log("<<<<<<<home icon hide>>>>>>>");
+                $("#extnn").css({
+                    "display": "contents"
+                })
+            }
+            if (window.matchMedia('(max-width: 500px)').matches) {
+                console.log("<<<<<<<home icon hide>>>>>>>");
+                $("#extnn").css({
+                    "display": "none"
+                })
+            }
 
 
-                <style>
-                    /* mirror Affect */
+            $("#openChat").click(function () {
 
-                    #videosAttach {
-                        transform: rotateY(180deg);
-                        -webkit-transform: rotateY(180deg);
-                        -moz-transform: rotateY(180deg);
-                    }
+                $("#portfolio-wrapper").addClass("intro");
+                $("portfolio-items col-xs-6 col-sm-6 col-md-4 col-lg-3").removeClass("col-lg-3");
+
+            });
+            $("#removeClass").click(function () {
+                $("#portfolio-wrapper").removeClass("intro");
+            });
+        });
+    </script>
 
 
-                    .fullscr {
-                        position: fixed;
-                        left: 0;
-                        bottom: 0;
-                        min-width: 100%;
-                        z-index: 1;
-                    }
+    <style>
+        /* mirror Affect */
 
-                    #portfolio .portfolio-items {
-                        display: inline-block;
-                        height: auto;
-                    }
+        #videosAttach {
+            transform: rotateY(180deg);
+            -webkit-transform: rotateY(180deg);
+            -moz-transform: rotateY(180deg);
+        }
 
-                    #portfolio .intro {
-                        width: 75%;
-                    }
-                </style>
-                <script>
-                    let timerOn = true;
 
-                    function timer(remaining) {
-                        var m = Math.floor(remaining / 60);
-                        var s = remaining % 60;
+        .fullscr {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            min-width: 100%;
+            z-index: 1;
+        }
 
-                        m = m < 10 ? '0' + m : m;
-                        s = s < 10 ? '0' + s : s;
-                        document.getElementById('timer').innerHTML = m + ':' + s;
-                        remaining -= 1;
+        #portfolio .portfolio-items {
+            display: inline-block;
+            height: auto;
+        }
 
-                        if (remaining >= 0 && timerOn) {
-                            setTimeout(function () {
-                                timer(remaining);
-                            }, 1000);
-                            return;
-                        }
+        #portfolio .intro {
+            width: 75%;
+        }
+    </style>
+    <script>
+        let timerOn = true;
 
-                        if (!timerOn) {
-                            // Do validate stuff here
-                            return;
-                        }
+        function timer(remaining) {
+            var m = Math.floor(remaining / 60);
+            var s = remaining % 60;
 
-                        // Do timeout stuff here
-                        // alert('Timeout for otp');
-                        timer(120);
-                    }
-                </script>
-                <style>
-                    @-webkit-keyframes blob {
-                        0% {
-                            border-radius: 999px 999px;
-                        }
-                        5% {
-                            border-radius: 999px 200px;
-                        }
-                        22% {
-                            border-radius: 400px 999px;
-                        }
-                        34% {
-                            border-radius: 999px 700px;
-                        }
-                        48% {
-                            border-radius: 700px 999px;
-                        }
-                        70% {
-                            border-radius: 999px 999px;
-                        }
-                        85% {
-                            border-radius: 850px 999px;
-                        }
-                        100% {
-                            border-radius: 999px 999px;
-                        }
-                    }
+            m = m < 10 ? '0' + m : m;
+            s = s < 10 ? '0' + s : s;
+            document.getElementById('timer').innerHTML = m + ':' + s;
+            remaining -= 1;
 
-                    .imm {
-                        font-size: 25px;
-                    }
-                </style>
-                <script>
-                    var timer = new Timer();
-                    timer.start();
-                    timer.addEventListener('secondsUpdated', function (e) {
-                        $('#basicUsage').html(timer.getTimeValues().toString());
-                    });
-                </script>
-                <script>
-                    function closeExpireSessionCustom() {
-                        close();
-                    }
+            if (remaining >= 0 && timerOn) {
+                setTimeout(function () {
+                    timer(remaining);
+                }, 1000);
+                return;
+            }
+
+            if (!timerOn) {
+                // Do validate stuff here
+                return;
+            }
+
+            // Do timeout stuff here
+            // alert('Timeout for otp');
+            timer(120);
+        }
+    </script>
+    <style>
+        @-webkit-keyframes blob {
+            0% {
+                border-radius: 999px 999px;
+            }
+            5% {
+                border-radius: 999px 200px;
+            }
+            22% {
+                border-radius: 400px 999px;
+            }
+            34% {
+                border-radius: 999px 700px;
+            }
+            48% {
+                border-radius: 700px 999px;
+            }
+            70% {
+                border-radius: 999px 999px;
+            }
+            85% {
+                border-radius: 850px 999px;
+            }
+            100% {
+                border-radius: 999px 999px;
+            }
+        }
+
+        .imm {
+            font-size: 25px;
+        }
+    </style>
+    <script>
+        var timer = new Timer();
+        timer.start();
+        timer.addEventListener('secondsUpdated', function (e) {
+            $('#basicUsage').html(timer.getTimeValues().toString());
+        });
+    </script>
+    <script>
+        function closeExpireSessionCustom() {
+            close();
+        }
         // window.onbeforeunload = function () {
         //     return "Do you really want to leave our brilliant application?";
         //     //if we return nothing here (just calling return;) then there will be no pop-up question at all
         //     //return;
         // };
-                </script>
-                <script>
-                    function speed() {
-                        console.log("speeeeeeeeeeeeed");
-                        var imageAddr = "/css/test.jpg" + "?n=" + Math.random();
-                        var startTime, endTime;
-                        var downloadSize = 191 * 1024;
-                        var download = new Image();
-                        download.onload = function () {
-                            endTime = (new Date()).getTime();
-                            showResults();
-                        }
-                        startTime = (new Date()).getTime();
-                        download.src = imageAddr;
+    </script>
+    <script>
+        function speed() {
+            console.log("speeeeeeeeeeeeed");
+            var imageAddr = "/css/test.jpg" + "?n=" + Math.random();
+            var startTime, endTime;
+            var downloadSize = 191 * 1024;
+            var download = new Image();
+            download.onload = function () {
+                endTime = (new Date()).getTime();
+                showResults();
+            }
+            startTime = (new Date()).getTime();
+            download.src = imageAddr;
 
 
-                        function showResults() {
-                            var duration = (endTime - startTime) / 1000;
-                            var bitsLoaded = downloadSize * 8;
-                            var speedBps = (bitsLoaded / duration).toFixed(2);
-                            var speedKbps = (speedBps / 1024).toFixed(2);
-                            var speedMbps = (speedKbps / 1024).toFixed(2);
-                            // alert("Your connection speed is: \n" +
-                            //     speedBps + " bps\n" +
-                            //     speedKbps + " kbps\n" +
-                            //     speedMbps + " Mbps\n");
+            function showResults() {
+                var duration = (endTime - startTime) / 1000;
+                var bitsLoaded = downloadSize * 8;
+                var speedBps = (bitsLoaded / duration).toFixed(2);
+                var speedKbps = (speedBps / 1024).toFixed(2);
+                var speedMbps = (speedKbps / 1024).toFixed(2);
+                // alert("Your connection speed is: \n" +
+                //     speedBps + " bps\n" +
+                //     speedKbps + " kbps\n" +
+                //     speedMbps + " Mbps\n");
 
-                            if (speedMbps <= 2) {
-                                document.getElementById('connectionStatus').innerHTML = "Poor Network &nbsp;";
-                                $("#bars1").css({
-                                    "display": "block"
-                                });
-                                $("#bars2").css({
-                                    "display": "none"
-                                });
-                                $("#bars3").css({
-                                    "display": "none"
-                                });
-                                $("#bars4").css({
-                                    "display": "none"
-                                });
+                if (speedMbps <= 2) {
+                    document.getElementById('connectionStatus').innerHTML = "Poor Network &nbsp;";
+                    $("#bars1").css({
+                        "display": "block"
+                    });
+                    $("#bars2").css({
+                        "display": "none"
+                    });
+                    $("#bars3").css({
+                        "display": "none"
+                    });
+                    $("#bars4").css({
+                        "display": "none"
+                    });
 
-                            }
-                            if (speedMbps > 2 && speedMbps < 4) {
-                                document.getElementById('connectionStatus').innerHTML = "Fair Network &nbsp;";
-                                $("#bars1").css({
-                                    "display": "none"
-                                });
-                                $("#bars2").css({
-                                    "display": "block"
-                                });
-                                $("#bars3").css({
-                                    "display": "none"
-                                });
-                                $("#bars4").css({
-                                    "display": "none"
-                                });
+                }
+                if (speedMbps > 2 && speedMbps < 4) {
+                    document.getElementById('connectionStatus').innerHTML = "Fair Network &nbsp;";
+                    $("#bars1").css({
+                        "display": "none"
+                    });
+                    $("#bars2").css({
+                        "display": "block"
+                    });
+                    $("#bars3").css({
+                        "display": "none"
+                    });
+                    $("#bars4").css({
+                        "display": "none"
+                    });
 
-                            }
-                            if (speedMbps > 4 && speedMbps < 10) {
-                                document.getElementById('connectionStatus').innerHTML = "Good Network &nbsp;";
-                                $("#bars1").css({
-                                    "display": "none"
-                                });
-                                $("#bars2").css({
-                                    "display": "none"
-                                });
-                                $("#bars3").css({
-                                    "display": "block"
-                                });
-                                $("#bars4").css({
-                                    "display": "none"
-                                });
+                }
+                if (speedMbps > 4 && speedMbps < 10) {
+                    document.getElementById('connectionStatus').innerHTML = "Good Network &nbsp;";
+                    $("#bars1").css({
+                        "display": "none"
+                    });
+                    $("#bars2").css({
+                        "display": "none"
+                    });
+                    $("#bars3").css({
+                        "display": "block"
+                    });
+                    $("#bars4").css({
+                        "display": "none"
+                    });
 
-                            }
+                }
 
-                            if (speedMbps > 10) {
-                                document.getElementById('connectionStatus').innerHTML = "Excellent Network &nbsp;";
-                                $("#bars1").css({
-                                    "display": "none"
-                                });
-                                $("#bars2").css({
-                                    "display": "none"
-                                });
-                                $("#bars3").css({
-                                    "display": "none"
-                                });
-                                $("#bars4").css({
-                                    "display": "block"
-                                });
+                if (speedMbps > 10) {
+                    document.getElementById('connectionStatus').innerHTML = "Excellent Network &nbsp;";
+                    $("#bars1").css({
+                        "display": "none"
+                    });
+                    $("#bars2").css({
+                        "display": "none"
+                    });
+                    $("#bars3").css({
+                        "display": "none"
+                    });
+                    $("#bars4").css({
+                        "display": "block"
+                    });
 
-                            }
-
-
-                            document.getElementById('speed').innerHTML = speedMbps;
-                        }
-
-                    }
-                    setInterval(function () {
-                        speed();
-                    }, 5000)
-                </script>
-                <style>
-                    * {
-                        box-sizing: border-box;
-                    }
+                }
 
 
-                    .sizing-box {
-                        height: 25px;
-                        width: 40px;
-                    }
+                document.getElementById('speed').innerHTML = speedMbps;
+            }
 
-                    .signal-bars {
-                        display: inline-block;
-                    }
+        }
+        setInterval(function () {
+            speed();
+        }, 5000)
+    </script>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
 
-                    .signal-bars .bar {
-                        width: 14%;
-                        margin-left: 1%;
-                        min-height: 20%;
-                        display: inline-block;
-                    }
 
-                    .signal-bars .bar.first-bar {
-                        height: 20%;
-                    }
+        .sizing-box {
+            height: 25px;
+            width: 40px;
+        }
 
-                    .signal-bars .bar.second-bar {
-                        height: 40%;
-                    }
+        .signal-bars {
+            display: inline-block;
+        }
 
-                    .signal-bars .bar.third-bar {
-                        height: 60%;
-                    }
+        .signal-bars .bar {
+            width: 14%;
+            margin-left: 1%;
+            min-height: 20%;
+            display: inline-block;
+        }
 
-                    .signal-bars .bar.fourth-bar {
-                        height: 80%;
-                    }
+        .signal-bars .bar.first-bar {
+            height: 20%;
+        }
 
-                    .signal-bars .bar.fifth-bar {
-                        height: 99%;
-                    }
+        .signal-bars .bar.second-bar {
+            height: 40%;
+        }
 
-                    .good .bar {
-                        background-color: #16a085;
-                        border: thin solid darken(#16a085, 7%);
-                    }
+        .signal-bars .bar.third-bar {
+            height: 60%;
+        }
 
-                    .bad .bar {
-                        background-color: #e74c3c;
-                        border: thin solid darken(#e74c3c, 20%);
-                    }
+        .signal-bars .bar.fourth-bar {
+            height: 80%;
+        }
 
-                    .ok .bar {
-                        background-color: #f1c40f;
-                        border: thin solid darken(#f1c40f, 7%);
-                    }
+        .signal-bars .bar.fifth-bar {
+            height: 99%;
+        }
 
-                    .four-bars .bar.fifth-bar,
-                    .three-bars .bar.fifth-bar,
-                    .three-bars .bar.fourth-bar,
-                    .one-bar .bar:not(.first-bar),
-                    .two-bars .bar:not(.first-bar):not(.second-bar) {
-                        background-color: #fafafa;
-                        border: thin solid #f3f3f3;
-                    }
-                </style>
+        .good .bar {
+            background-color: #16a085;
+            border: thin solid darken(#16a085, 7%);
+        }
+
+        .bad .bar {
+            background-color: #e74c3c;
+            border: thin solid darken(#e74c3c, 20%);
+        }
+
+        .ok .bar {
+            background-color: #f1c40f;
+            border: thin solid darken(#f1c40f, 7%);
+        }
+
+        .four-bars .bar.fifth-bar,
+        .three-bars .bar.fifth-bar,
+        .three-bars .bar.fourth-bar,
+        .one-bar .bar:not(.first-bar),
+        .two-bars .bar:not(.first-bar):not(.second-bar) {
+            background-color: #fafafa;
+            border: thin solid #f3f3f3;
+        }
+    </style>
 </body>
 
 </html>

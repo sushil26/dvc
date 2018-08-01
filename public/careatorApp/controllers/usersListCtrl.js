@@ -210,26 +210,46 @@ careatorApp.controller('usersListCtrl', function ($scope, $state, careatorHttpFa
     }
 
     $scope.resetLoginFlag = function (id) {
-        $("#ResetConfirmationButton").trigger("click");
-        console.log("deleteUser-->");
-        console.log("Obj ID  " + id);
-        $scope.userReset = function () {
-            console.log("userReset-->");
-            var api = "https://norecruits.com/careator_reset/resetLoginFlagsById/" + id;
-            careatorHttpFactory.post(api).then(function (data) {
-                console.log("data--" + JSON.stringify(data.data));
-                var checkStatus = careatorHttpFactory.dataValidation(data);
-                console.log("data--" + JSON.stringify(data.data));
-                if (checkStatus) {
-                    console.log(data.data.message);
-                    $scope.getAllEmployee();
+        // $("#ResetConfirmationButton").trigger("click");
+
+        SweetAlert.swal({
+                title: "Are you sure to Reset User ??", //Bold text
+                text: "User will be logged out from all session", //light text
+                type: "warning", //type -- adds appropiriate icon
+                showCancelButton: true, // displays cancel btton
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, Reset!",
+                closeOnConfirm: false, //do not close popup after click on confirm, usefull when you want to display a subsequent popup
+                closeOnCancel: false
+            },
+            function (isConfirm) { //Function that triggers on user action.
+                if (isConfirm) {
+                    SweetAlert.swal("Reseted!");
+                    console.log("Obj ID  " + id);
+                    console.log("userReset-->");
+                    var api = "https://norecruits.com/careator_reset/resetLoginFlagsById/" + id;
+                    careatorHttpFactory.post(api).then(function (data) {
+                        console.log("data--" + JSON.stringify(data.data));
+                        var checkStatus = careatorHttpFactory.dataValidation(data);
+                        console.log("data--" + JSON.stringify(data.data));
+                        if (checkStatus) {
+                            console.log(data.data.message);
+                            $scope.getAllEmployee();
+                        } else {
+                            console.log("Sorry");
+                            console.log(data.data.message);
+                        }
+                    })
+                    console.log("<--statusChange");
                 } else {
-                    console.log("Sorry");
-                    console.log(data.data.message);
+                    SweetAlert.swal("Your  didn't Reset the user!");
                 }
-            })
-            console.log("<--statusChange");
-        }
+            }
+
+        )
+
+
+
     }
 
     /////////serch///////////////////

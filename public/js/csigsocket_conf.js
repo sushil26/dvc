@@ -1194,7 +1194,9 @@ signaling_socket.on("sessionDescription", function (config) {
           console.log("Creating answer");
           console.log("++++config.queryId: " + config.queryId);
           // console.log("++++config.peerIdForAuth: "+config.peerIdForAuth);
-
+          console.log("**************Your Query Id from server and query link in the browser ");
+          console.log("config.queryId: "+config.queryId);
+          console.log("queryLink: "+queryLink);
           peer.createAnswer(function (local_description) {
             console.log("Answer description is: ", local_description);
             console.log("local_description: " + local_description);
@@ -1216,7 +1218,7 @@ signaling_socket.on("sessionDescription", function (config) {
               );
             }
             else{
-              console.log("Your Query Id from server and query link in the browser link are different");
+              console.log("**************Your Query Id from server and query link in the browser link are different");
               console.log("config.queryId: "+config.queryId);
               console.log("queryLink: "+queryLink);
             }

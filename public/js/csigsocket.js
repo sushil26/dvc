@@ -309,12 +309,12 @@ function resetLoginFlag() {
   console.log("<--statusChange");
 }
 
-// function triggerforLogin() {
-//   console.log("triggerforLogin-->");
-//   $("#notify_msg_show").modal('hide');
-//   $("#enterEmail").trigger("click");
+function triggerforLogin() {
+  console.log("triggerforLogin-->");
+  $("#notify_msg_show").modal('hide');
+  $("#enterEmail").trigger("click");
 
-// }
+}
 
 // function checkPassword() {
 //   console.log("checkPassword-->");

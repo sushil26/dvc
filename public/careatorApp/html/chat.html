@@ -3,40 +3,9 @@
         <section class="wrapper">
             <div id="profile">
                 <section class="panel">
-                    <link rel="stylesheet" href="./css/newChat.css" />
 
-                    <style>
-                        .tooltip {
-                            font-size: 10px;
-                            margin-top: -12px;
-                            cursor: pointer;
-                            display: inline-block;
-                            opacity: 1 !important;
-                        }
 
-                        .tooltip .tooltiptext {
-                            visibility: hidden;
-                            width: 60px;
-                            background: #f7f7f7;
-                            color: #fff;
-                            text-align: center;
-                            border-radius: 6px;
-                            padding: 5px 0;
-                            position: absolute;
-                            z-index: 1;
-                            top: 100%;
-                            left: 50%;
-                            margin-left: -30px;
-                            opacity: 1;
-                            transition: opacity 0.3s;
-                        }
 
-                        .tooltip:hover .tooltiptext {
-                            visibility: visible;
-                            opacity: 1;
-                            cursor: pointer;
-                        }
-                    </style>
                     <div class="container app">
                         <div class="row app-one">
                             <div class="col-sm-4 side">
@@ -111,7 +80,10 @@
     background: black;
     border-radius: 5px;
     border: none;
-    float: right;">New <span style="color:white">Chat</span>                           </button>
+    float: right;
+    color: gray;">New
+                                                            <span style="color:white">Chat</span>
+                                                        </button>
                                                     </td>
                                                 </tr>
                                             </table>
@@ -149,7 +121,8 @@
                                                                     <span ng-if="record.receiverId!=userId" class="name-meta">{{record.receiverName}}
                                                                     </span>
                                                                     <br>
-                                                                    <span class="time-meta">{{record.timeStamp | date:' d MMM h:mm a'}}
+                                                                    <!-- <span class="time-meta">{{record.timeStamp | date:' d MMM h:mm a'}} -->
+                                                                    <span class="time-meta">{{record.timeStamp | amCalendar}}
                                                                     </span>
 
                                                                     <span ng-if="record.unseenCount > 0" class="notify"> {{record.unseenCount}}</span>
@@ -164,7 +137,7 @@
                                                                     <span ng-if="record.unseenCount > 0" class="notify"> {{record.unseenCount}}</span>
                                                                 </div>
                                                                 <div class="col-sm-4 col-xs-4 pull-right sideBar-time">
-                                                                    <span class="time-meta pull-right">{{record.timeStamp | date:' d MMM h:mm a'}}
+                                                                        <span class="time-meta">{{record.timeStamp |amCalendar}}
                                                                     </span>
                                                                 </div>
                                                             </div>
@@ -401,7 +374,7 @@
                                                                 {{chat.message}}
                                                             </div>
                                                             <span class="message-time pull-right">
-                                                                {{chat.sendTime | date:' d MMM yyyy h:mm a'}}
+                                                                {{chat.sendTime | amCalendar}}
                                                             </span>
                                                         </td>
                                                     </tr>
@@ -416,7 +389,7 @@
                                                     {{chat.message}}
                                                 </div>
                                                 <span class="message-time pull-right">
-                                                    {{chat.sendTime | date:' d MMM yyyy h:mm a'}}
+                                                        {{chat.sendTime | amCalendar}}
                                                 </span>
                                             </div>
                                         </div>
@@ -438,7 +411,8 @@
                                     </div>
                                     <div class="col-sm-1 col-xs-1 reply-send">
                                         <button id="sndmgs" ng-click="sendText()" style="
-                                            font-family: lato;                     
+                                            font-family: lato;  
+                                            color: gray;                   
                                              padding: 5px;
                                              background: black;
                                              border-radius: 5px;

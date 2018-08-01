@@ -65,7 +65,7 @@ careatorApp.controller('usersListCtrl', function ($scope, $state, careatorHttpFa
     ////////////////Delete User/////////////////////////
     $scope.deleteUser = function (id) {
         $("#deleteConfirmationButton").trigger("click");
-      
+
         console.log("deleteUser-->");
         console.log("Obj ID  " + id);
         $scope.userDelete = function () {
@@ -107,5 +107,11 @@ careatorApp.controller('usersListCtrl', function ($scope, $state, careatorHttpFa
             })
             console.log("<--statusChange");
         }
+    }
+
+    /////////serch///////////////////
+    $scope.sort = function (keyname) {
+        $scope.sortKey = keyname; //set the sortKey to the param passed
+        $scope.reverse = !$scope.reverse; //if true make it false and vice versa
     }
 })

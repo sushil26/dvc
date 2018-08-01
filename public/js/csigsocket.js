@@ -571,7 +571,7 @@ function chatNavigation() {
 function startSession(id, date) {
   console.log("startSession-->");
   urlDate = date;
-  var url = "https://norecruits.com/careator/" + id + "/" + date;
+  var url = "https://norecruits.com/careator_conf/" + id + "/" + date;
 
   var obj = {
     "email": localStorage.getItem('careatorEmail'),
@@ -587,7 +587,7 @@ function startSession(id, date) {
     success: function (data) {
       console.log("data: " + JSON.stringify(data));
       localStorage.setItem("sessionUrlId", id);
-      window.location.href = "https://norecruits.com/careator/" + id + "/" + date;
+      window.location.href = "https://norecruits.com/careator_conf/" + id + "/" + date;
     },
     error: function (err) {
       console.log("err: " + JSON.stringify(err));

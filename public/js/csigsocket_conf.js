@@ -138,35 +138,7 @@ if (stuff.length > 5) {
   }
   console.log("userName: " + userName);
 } else {
-  console.log("3 cond");
-  console.log("localStorage.getItem(careatorEmail): " + localStorage.getItem("careatorEmail"));
-  console.log("localStorage.getItem(sessionPassword): " + localStorage.getItem("sessionPassword"));
-  if (localStorage.getItem("careatorEmail") && localStorage.getItem("sessionPassword")) {
-    var userNameEmail = localStorage.getItem("careatorEmail");
-    console.log("2 cond: userNameEmail: " + userNameEmail);
-    var emailIdSplit = userNameEmail.split('@');
-    console.log("2 cond: emailIdSplit: " + JSON.stringify(emailIdSplit));
-    userName = emailIdSplit[0];
-   // document.getElementById("videoConferenceUrl").style.display = "block";
-    document.getElementById("videoCtrolBar").style.display = "none";
-    console.log("localStorage.getItem(videoRights): " + localStorage.getItem("videoRights"));
-    console.log("localStorage.getItem(chatRights): " + localStorage.getItem("chatRights"));
-    if (localStorage.getItem("videoRights") == 'yes') {
-      //document.getElementById("videoConfStart").style.display = "block";
-      $("#buttonpage").css({
-        "min-height": "auto"
-      });
-    }
-    if (localStorage.getItem("chatRights") == 'yes') {
-      //document.getElementById("chatConfStart").style.display = "block";
-    }
-
-  } else {
-    console.log("enterEmail: -->");
-    localStorage.removeItem("careatorEmail")
-    $("#enterEmail").trigger("click");
-  }
-  console.log("userName: " + userName);
+  window.location.href="https://norecruits.com"
 }
 
 function triggerInvite() {
@@ -649,17 +621,18 @@ signaling_socket.on("connect", function () {
     console.log("queryLink: " + queryLink);
     console.log("peerNew_id: " + peerNew_id);
     console.log("date: " + date);
-    if (config.queryId == null) {
-      console.log("query id is null");
-      //document.getElementById("videoConfStart").setAttribute("onclick", "startSession('" + peerNew_id + "' , '" + date + "')");
-      document.getElementById("linkToShare").setAttribute("href", "https://norecruits.com/careator/" + peerNew_id + "/" + date);
-      document.getElementById("linkToShare").innerHTML = "https://norecruits.com/careator/" + peerNew_id + "/" + date;
-    } else {
-      console.log("query id nt null");
+    // if (config.queryId == null) {
+    //   console.log("query id is null");
+    //   //document.getElementById("videoConfStart").setAttribute("onclick", "startSession('" + peerNew_id + "' , '" + date + "')");
+    //   document.getElementById("linkToShare").setAttribute("href", "https://norecruits.com/careator_conf/" + peerNew_id + "/" + date);
+    //   document.getElementById("linkToShare").innerHTML = "https://norecruits.com/careator_conf/" + peerNew_id + "/" + date;
+    // } 
+    // else {
+      // console.log("query id nt null");
       console.log("config.isQueryIdAuthorized: " + config.isQueryIdAuthorized);
       if (config.isQueryIdAuthorized == 'yes') {
-        document.getElementById("linkToShare").setAttribute("href", "https://norecruits.com/careator/" + queryLink + "/" + date);
-        document.getElementById("linkToShare").innerHTML = "https://norecruits.com/careator/" + queryLink + "/" + date;
+        document.getElementById("linkToShare").setAttribute("href", "https://norecruits.com/careator_conf/" + queryLink + "/" + date);
+        document.getElementById("linkToShare").innerHTML = "https://norecruits.com/careator_conf/" + queryLink + "/" + date;
         document.getElementById("screenBtns").style.display = "inline";
         document.getElementById("homeLink").style.display = "inline";
         //document.getElementById("videoConfStart").style.display = "none";
@@ -799,7 +772,7 @@ signaling_socket.on("connect", function () {
         //   window.close();
         // }, 3000);
       }
-    }
+    // }
 
     console.log("<--signaling_socket message");
   });

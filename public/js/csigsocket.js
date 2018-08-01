@@ -681,62 +681,62 @@ signaling_socket.on("connect", function () {
         //     });
         //   });
         // }
-        document.getElementById("setNameId").addEventListener("click", function () {
-          console.log("setup_local_media calling**");
-          console.log("setName-->");
-          var careator_remoteEmail = document.getElementById("remote_userName").value;
-          var careator_remotePswd = document.getElementById("remote_password").value;
-          var checkObj = {
-            "url": window.location.href,
-            "careator_remoteEmail": careator_remoteEmail,
-            "careator_remotePswd": careator_remotePswd
-          }
-          $.ajax({
-            url: "https://norecruits.com/careator/RemoteJoinCheck",
-            type: "POST",
-            data: JSON.stringify(checkObj),
-            contentType: "application/json",
-            dataType: "json",
-            success: function (data) {
-              console.log("data: " + JSON.stringify(data));
-              localStorage.removeItem("careatorEmail");
-              localStorage.setItem("careator_remoteEmail", careator_remoteEmail);
-              localStorage.setItem("sessionEnc", data.sessionData);
-              var emailIdSplit = careator_remoteEmail.split('@');
-              console.log("2 cond: emailIdSplit: " + JSON.stringify(emailIdSplit));
-              userName = emailIdSplit[0];
-              careator_remoteEmail = true;
-              document.getElementById("videoConferenceUrl").style.display = "none";
-              document.getElementById("emailInvitation").style.display = "none";
-              //document.getElementById("videoCtrolBar").style.display = "grid";
-              localStorage.setItem("oneTimePassword", careator_remotePswd);
-              $('#remoteJoin').modal('hide');
-              // setup_local_media(function () {
-              //   join__channel(DEFAULT_CHANNEL, {
-              //     "whatever-here": "stuff"
-              //   });
-              // });
-            },
-            error: function (err) {
-              console.log("err: " + JSON.stringify(err));
-              console.log("err.responseText: " + JSON.stringify(err.responseText));
-              console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
-              document.getElementById("videoConferenceUrl").style.display = "none";
-              document.getElementById("emailInvitation").style.display = "none";
-              userName = "";
-              if (err.responseJSON.errorCode == "E0_URLE" || err.responseJSON.errorCode == "E0_alreadyInUse") {
-                $('#remoteJoin').modal('hide');
-                document.getElementById('notify_msg_content').innerHTML = err.responseJSON.message;
-                document.getElementById('resetBtn').style.display = 'none';
-                $("#notify_msg_button").trigger("click");
-                setTimeout(function () {
-                  window.close();
-                }, 3000);
-              }
-            }
-          });
+        // document.getElementById("setNameId").addEventListener("click", function () {
+        //   console.log("setup_local_media calling**");
+        //   console.log("setName-->");
+        //   var careator_remoteEmail = document.getElementById("remote_userName").value;
+        //   var careator_remotePswd = document.getElementById("remote_password").value;
+        //   var checkObj = {
+        //     "url": window.location.href,
+        //     "careator_remoteEmail": careator_remoteEmail,
+        //     "careator_remotePswd": careator_remotePswd
+        //   }
+        //   $.ajax({
+        //     url: "https://norecruits.com/careator/RemoteJoinCheck",
+        //     type: "POST",
+        //     data: JSON.stringify(checkObj),
+        //     contentType: "application/json",
+        //     dataType: "json",
+        //     success: function (data) {
+        //       console.log("data: " + JSON.stringify(data));
+        //       localStorage.removeItem("careatorEmail");
+        //       localStorage.setItem("careator_remoteEmail", careator_remoteEmail);
+        //       localStorage.setItem("sessionEnc", data.sessionData);
+        //       var emailIdSplit = careator_remoteEmail.split('@');
+        //       console.log("2 cond: emailIdSplit: " + JSON.stringify(emailIdSplit));
+        //       userName = emailIdSplit[0];
+        //       careator_remoteEmail = true;
+        //       document.getElementById("videoConferenceUrl").style.display = "none";
+        //       document.getElementById("emailInvitation").style.display = "none";
+        //       //document.getElementById("videoCtrolBar").style.display = "grid";
+        //       localStorage.setItem("oneTimePassword", careator_remotePswd);
+        //       $('#remoteJoin').modal('hide');
+        //       // setup_local_media(function () {
+        //       //   join__channel(DEFAULT_CHANNEL, {
+        //       //     "whatever-here": "stuff"
+        //       //   });
+        //       // });
+        //     },
+        //     error: function (err) {
+        //       console.log("err: " + JSON.stringify(err));
+        //       console.log("err.responseText: " + JSON.stringify(err.responseText));
+        //       console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
+        //       document.getElementById("videoConferenceUrl").style.display = "none";
+        //       document.getElementById("emailInvitation").style.display = "none";
+        //       userName = "";
+        //       if (err.responseJSON.errorCode == "E0_URLE" || err.responseJSON.errorCode == "E0_alreadyInUse") {
+        //         $('#remoteJoin').modal('hide');
+        //         document.getElementById('notify_msg_content').innerHTML = err.responseJSON.message;
+        //         document.getElementById('resetBtn').style.display = 'none';
+        //         $("#notify_msg_button").trigger("click");
+        //         setTimeout(function () {
+        //           window.close();
+        //         }, 3000);
+        //       }
+        //     }
+        //   });
 
-        });
+        // });
       // } else {
       //   document.getElementById("setNameId").addEventListener("click", function () {
       //     console.log("setup_local_media calling**");

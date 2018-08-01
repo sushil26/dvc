@@ -227,7 +227,7 @@
                         <center>
                             <a id="videoConferenceUrl" style="display:none;">
                             </a>
-                            <!-- <table>
+                            <table>
                                 <tr>
                                     <td>
                                         <button id="videoConfStart" style="margin-top: 50px;display:none;" class="example facebook slideLeft ">
@@ -240,7 +240,7 @@
                                         </button>
                                     </td>
                                 </tr>
-                            </table> -->
+                            </table>
                             <div id="videoCtrolBar" class="giggy" style="margin: 6px;
                             position: absolute;
                             top: 0;
@@ -430,10 +430,10 @@
                         </div>
 
                         <button data-toggle="modal" data-target="#remoteJoin" id="setName" data-backdrop="static" data-keyboard="false" style="display:none">Set Name</button>
-                        <!-- <button data-toggle="modal" data-target="#myEmailModal" id="enterEmail" data-backdrop="static" data-keyboard="false" style="display:none">Set Name</button> -->
+                        <button data-toggle="modal" data-target="#myEmailModal" id="enterEmail" data-backdrop="static" data-keyboard="false" style="display:none">Set Name</button>
                         <button data-toggle="modal" data-target="#myPasswordModal" id="enterPswd" data-backdrop="static" data-keyboard="false" style="display:none">Enter Password</button>
-                        <!-- <button data-toggle="modal" data-target="#notify_msg" id="notify_msg_button" data-backdrop="static" data-keyboard="false"
-                            style="display:none"></button> -->
+                        <button data-toggle="modal" data-target="#notify_msg" id="notify_msg_button" data-backdrop="static" data-keyboard="false"
+                            style="display:none"></button>
                         <button data-toggle="modal" data-target="#notify_msg_show" id="notify_msg_show_button" data-backdrop="static" data-keyboard="false"
                             style="display:none"></button>
 
@@ -472,6 +472,8 @@
                                                 <label id="notify_msg_content" style="color:red"></label>
                                             </div>
                                             <div class="modal-footer" style="border-top:0px;background-color: #f5f5f5;">
+
+                                                <!-- <button id="setEmail" type="submit" onclick="sendEmail()" style="background-color: #29b6bd;color:#f1f1f1" class="btn" data-dismiss="modal">Submit</button> -->
                                                 <button id="resetBtn" type="button" onclick="resetLoginFlag()" style="background-color: #29b6bd;color:#f1f1f1" class="btn">Reset</button>
                                                 <button type="button" style="background-color: #29b6bd;color:#f1f1f1" class="btn" data-dismiss="modal">Ok</button>
                                             </div>
@@ -499,7 +501,7 @@
                                 </center>
                             </div>
                         </div>
-                        <!-- <div class="modal fade" id="myEmailModal" role="dialog">
+                        <div class="modal fade" id="myEmailModal" role="dialog">
                             <div class="modal-dialog">
                                 <center>
                                     <form>
@@ -517,13 +519,14 @@
                                             </div>
                                             <div class="modal-footer" style="padding-top: 15px;background-image: linear-gradient(to bottom, #202224 0%, #383c3f 100%);">
                                                 <label id="credentialErroe" style="display: none;color:red"></label>
+                                                <!-- <button id="setEmail" type="submit" onclick="sendEmail()" style="background-color: #29b6bd;color:#f1f1f1" class="btn" data-dismiss="modal">Submit</button> -->
                                                 <button id="loginsubmit" type="button" onclick="checkCredential()" style="background-color: #29b6bd;color:#f1f1f1" class="btn">Submit</button>
                                             </div>
                                         </div>
                                     </form>
                                 </center>
                             </div>
-                        </div> -->
+                        </div>
 
                         <div class="modal fade" id="myPasswordModal" role="dialog">
                             <div class="modal-dialog">

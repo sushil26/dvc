@@ -164,14 +164,14 @@
                                     <div class="row composeBox">
                                         <div class="col-sm-12 composeBox-inner">
                                             <div class="form-group has-feedback">
-                                                <input id="composeText" type="text" class="form-control" name="searchText" placeholder="Search People">
+                                                <input id="composeText" type="text" class="form-control" ng-model="search"  name="searchText" placeholder="Search People">
                                                 <span class="glyphicon glyphicon-search form-control-feedback"></span>
                                             </div>
                                         </div>
                                     </div>
                                     <!-- ### Start: New Window ### -->
                                     <div class="row compose-sideBar">
-                                        <div class="row sideBar-body" ng-repeat="record in allGroupAndIndividual">
+                                        <div class="row sideBar-body" ng-repeat="record in allGroupAndIndividual |filter:search">
                                             <div class="col-sm-3 col-xs-3 sideBar-avatar">
                                                 <div class="avatar-icon" ng-if="record.groupName!==undefined && record.email!='vc4all@careator.com'">
                                                     <img src="./css/group.png">

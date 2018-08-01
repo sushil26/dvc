@@ -1,9 +1,9 @@
-careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $filter, $timeout, careatorSessionAuth, careatorHttpFactory,SweetAlert) {
+careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $filter, $timeout, careatorSessionAuth, careatorHttpFactory, SweetAlert) {
     console.log("careator_dashboardCtrl==>");
     $scope.clock = "loading clock..."; // initialise the time variable
     $scope.tickInterval = 1000 //ms
     $scope.propertyJson = $rootScope.propertyJson;
-    console.log("localStorage.getItem(careatorEmail): "+localStorage.getItem("careatorEmail"));
+    console.log("localStorage.getItem(careatorEmail): " + localStorage.getItem("careatorEmail"));
     $scope.getLogin_hostDetailsById = function (id) {
         console.log("getLogin_hostDetailsById-->: " + id);
         var api = "https://norecruits.com/careator_getUser/careator_getUserById/" + id;
@@ -391,14 +391,32 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
         if (!w || w.closed) {
             w = window.open("https://norecruits.com/careator", "_blank");
         } else {
-            console.log('window is already opened');
-            SweetAlert.swal($scope.notifyMsg);
-            // $("#closeConfirmationButton").trigger("click");
+            SweetAlert.swal({
+                    title: "window is already opened", //Bold text
+                    text: "we will take you the desired page!", //light text
+                    type: "warning", //type -- adds appropiriate icon
+                    showCancelButton: true, // displays cancel btton
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Go to the page",
+                    closeOnConfirm: false, //do not close popup after click on confirm, usefull when you want to display a subsequent popup
+                    closeOnCancel: false
+                },
+                function (isConfirm) { //Function that triggers on user action.
+                    if (isConfirm) {
+                        SweetAlert.swal("ok!");
+                        $scope.focust = function () {
+                            w.focus();
+                        }
+                    } else {
+                        SweetAlert.swal("didnt open");
+                    }
+                }
+
+            )
+         
         }
 
-        $scope.focust = function () {
-            w.focus();
-        }
+
     }
 
 

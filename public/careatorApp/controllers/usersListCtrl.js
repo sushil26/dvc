@@ -86,8 +86,6 @@ careatorApp.controller('usersListCtrl', function ($scope, $state, careatorHttpFa
         }
     }
 
-
-
     $scope.resetLoginFlag = function (id) {
         $("#ResetConfirmationButton").trigger("click");
         console.log("deleteUser-->");

@@ -54,27 +54,49 @@ careatorApp.controller('usersListCtrl', function ($scope, $state, careatorHttpFa
     $scope.getAllEmployee();
 
     $scope.statusChange = function (id, status, index) {
-        console.log("statusChange-->");
-        console.log("id: " + id + " status: " + status + " index: " + index);
-        var obj = {
-            "id": id,
-            "status": status
-        }
-        var api = "https://norecruits.com/careator/statusChangeById";
-        console.log("api: " + api);
-        careatorHttpFactory.post(api, obj).then(function (data) {
-            console.log("data--" + JSON.stringify(data.data));
-            var checkStatus = careatorHttpFactory.dataValidation(data);
-            console.log("data--" + JSON.stringify(data.data));
-            if (checkStatus) {
-                $scope.allemployee[index].status = status
-                console.log(data.data.message);
-            } else {
-                console.log("Sorry");
-                console.log(data.data.message);
+
+        SweetAlert.swal({
+                title: "Are you sure to Activate/Deactivate the user??", //Bold text
+                text: "User will not be able to Login if deactivate!", //light text
+                type: "warning", //type -- adds appropiriate icon
+                showCancelButton: true, // displays cancel btton
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, Change it!",
+                closeOnConfirm: false, //do not close popup after click on confirm, usefull when you want to display a subsequent popup
+                closeOnCancel: false
+            },
+            function (isConfirm) { //Function that triggers on user action.
+                if (isConfirm) {
+                    SweetAlert.swal("Changed!");
+                    console.log("statusChange-->");
+                    console.log("id: " + id + " status: " + status + " index: " + index);
+                    var obj = {
+                        "id": id,
+                        "status": status
+                    }
+                    var api = "https://norecruits.com/careator/statusChangeById";
+                    console.log("api: " + api);
+                    careatorHttpFactory.post(api, obj).then(function (data) {
+                        console.log("data--" + JSON.stringify(data.data));
+                        var checkStatus = careatorHttpFactory.dataValidation(data);
+                        console.log("data--" + JSON.stringify(data.data));
+                        if (checkStatus) {
+                            $scope.allemployee[index].status = status
+                            console.log(data.data.message);
+                        } else {
+                            console.log("Sorry");
+                            console.log(data.data.message);
+                        }
+                    })
+                    console.log("<--statusChange");
+
+
+                } else {
+                    SweetAlert.swal("Your user is safe!");
+                }
             }
-        })
-        console.log("<--statusChange");
+        )
+
     }
 
     $scope.editUser = function (index) {

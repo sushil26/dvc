@@ -125,7 +125,7 @@ careatorApp.controller('usersListCtrl', function ($scope, $state, careatorHttpFa
                     console.log("<--statusChange");
 
                 } else {
-                    SweetAlert.swal("Your file is safe!");
+                    SweetAlert.swal("Your user is safe!");
                 }
             }
 

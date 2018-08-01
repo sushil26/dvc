@@ -156,14 +156,8 @@ careatorApp.controller('groupListCtrl', function ($scope, $state, careatorHttpFa
                     SweetAlert.swal("Your group is safe!");
                 }
             }
-
         )
-
-
-
-
     }
-
     /////////serch///////////////////
     $scope.sort = function (keyname) {
         $scope.sortKey = keyname; //set the sortKey to the param passed

@@ -97,8 +97,8 @@ careatorApp.controller('usersListCtrl', function ($scope, $state, careatorHttpFa
 
     $scope.deleteUser = function (id) {
         SweetAlert.swal({
-                title: "Are you sure?", //Bold text
-                text: "Your will not be able to recover this imaginary file!", //light text
+                title: "Are you sure you want to delete the user??", //Bold text
+                text: "Your will not be able to recover this user!", //light text
                 type: "warning", //type -- adds appropiriate icon
                 showCancelButton: true, // displays cancel btton
                 confirmButtonColor: "#DD6B55",

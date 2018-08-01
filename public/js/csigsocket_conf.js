@@ -46,6 +46,7 @@ var id1 = stuff[stuff.length - 2];
 var id2 = stuff[stuff.length - 3];
 console.log("stuff.length: " + stuff.length);
 console.log("id1**: " + id1);
+queryLink=id1;
 console.log("id2**: " + id2);
 // console.log("localStorage.getItem(careatorEmail )" +localStorage.getItem("careatorEmail")+"localStorage.getItem(sessionPassword): "+localStorage.getItem("sessionPassword"));
 if (stuff.length > 5) {
@@ -607,7 +608,7 @@ signaling_socket.on("connect", function () {
   signaling_socket.on("message", function (config) {
     console.log("signaling_socket message-->");
     //console.log("Unique Peer Id: " + config.peer_id)
-    queryLink = config.queryId;
+    //queryLink = config.queryId;
     peerNew_id = config.peer_id;
     timeLink = config.time;
     console.log("urlDate: " + urlDate + " timeLink: " + timeLink);

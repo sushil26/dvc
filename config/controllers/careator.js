@@ -879,7 +879,6 @@ module.exports.careatorMasterInsertValidate = function (data, callback) {
     careatorMaster.find(findEmpId).toArray(function (err, findData) {
         if (err) {
             console.log("err: " + JSON.stringify(err));
-
         } else {
             console.log("findData: " + JSON.stringify(findData));
             if (findData.length > 0) {

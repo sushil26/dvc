@@ -854,6 +854,8 @@ signaling_socket.on("addPeer", function (config) {
   console.log("addPeer-->");
   console.log("addPeer 1: Signaling server said to add peer:", config);
   console.log("config: "+JSON.stringify(config));
+  console.log("queryLink: "+queryLink);
+  if(config.queryId == queryLink){
   // console.log('Signaling server said to add peer:', JSON.stringify(config));
   var peer_id = config.peer_id;
   sessionHeader = config.sessionHeaderId;
@@ -879,7 +881,6 @@ signaling_socket.on("addPeer", function (config) {
      * for now to get firefox to talk to chrome */
   );
   console.log("peer_connection: " + peer_connection);
-
   // peer_connection.oniceconnectionstatechange = function (event) {
   //     console.log("#####peer_connection.oniceconnectionstatechange-->#####: " + peer_connection.oniceconnectionstatechange);
   //     console.log("event", event);
@@ -888,7 +889,6 @@ signaling_socket.on("addPeer", function (config) {
   //         join_chat_channel(DEFAULT_CHANNEL, { 'whatever-you-want-here': 'stuff' });
   //     }
   // }
-
   peers[peer_id] = peer_connection;
 
   peer_connection.onicecandidate = function (event) {
@@ -1160,6 +1160,10 @@ signaling_socket.on("addPeer", function (config) {
   }
 
   console.log("<--addPeer");
+}
+else{
+  console.log("Sorry: Your queryId and query link totally different");
+}
 });
 
 /**

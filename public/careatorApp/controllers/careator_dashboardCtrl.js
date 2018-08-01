@@ -391,7 +391,6 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
         if (!w || w.closed) {
             w = window.open("https://norecruits.com/careator", "_blank");
         } else {
-            console.log('window is already opened');
             SweetAlert.swal({
                     title: "window is already opened", //Bold text
                     text: "we will take you the desired page!", //light text
@@ -414,7 +413,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                 }
 
             )
-            // $("#closeConfirmationButton").trigger("click");
+         
         }
 
 

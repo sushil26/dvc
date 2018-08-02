@@ -92,7 +92,7 @@ if (stuff.length > 5) {
           document.getElementById('resetBtn').style.display = 'none';
           $("#notify_msg_button").trigger("click");
           setTimeout(function () {
-            window.close();
+            close();
           }, 3000);
         }
         else if(err.responseJSON.errorCode == "E1_credentialMismatch"){
@@ -719,7 +719,7 @@ signaling_socket.on("connect", function () {
               document.getElementById('resetBtn').style.display = 'none';
               $("#notify_msg_button").trigger("click");
               setTimeout(function () {
-                window.close();
+                close();
               }, 3000);
             }
 
@@ -778,7 +778,7 @@ signaling_socket.on("connect", function () {
               document.getElementById('resetBtn').style.display = 'none';
               $("#notify_msg_button").trigger("click");
               setTimeout(function () {
-                window.close();
+                close();
               }, 3000);
             }
           }

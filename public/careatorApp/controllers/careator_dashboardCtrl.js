@@ -93,6 +93,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
             "userName": localStorage.getItem("userName"),
             "empId": localStorage.getItem("empId"),
             "userId": localStorage.getItem("userId"),
+            "sessionPassword": localStorage.getItem("sessionPassword"),
             "sessionRandomId": localStorage.getItem("sessionRandomId")
         }
         if (localStorage.getItem("videoRights") == 'yes') {
@@ -410,6 +411,8 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
     $scope.navigateintoBoth_CVoption = function () {
         console.log("navigateintoBoth_CVoption-->");
         if (!w || w.closed) {
+            localStorage.setItem("careatorEmail", userData.email);
+            localStorage.setItem("sessionPassword", userData.sessionPassword);
             w = window.open("https://norecruits.com/careator", "_blank");
         } else {
             SweetAlert.swal({

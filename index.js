@@ -92,6 +92,7 @@ app.get("/careator_conf/:id/:time", function (req, res) {
     res.sendFile(__dirname + '/public/careatorConference.html');
 });
 
+
 app.get("/careatorApp", function (req, res) {
     console.log("chatCrtr started to render-->");
     res.sendFile(__dirname + '/public/careatorComm.html');

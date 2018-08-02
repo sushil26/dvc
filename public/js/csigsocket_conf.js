@@ -311,7 +311,7 @@ function checkPassword() {
           localStorage.setItem("videoRights", 'yes');
           //document.getElementById("videoConfStart").style.display = "inline";
           $("#buttonpage").css({
-            "min-height": "auto"
+           
           });
         }
         if (data.data.chatRights == 'yes') {
@@ -638,7 +638,8 @@ signaling_socket.on("connect", function () {
       document.getElementById("homeLink").style.display = "inline";
       //document.getElementById("videoConfStart").style.display = "none";
       $("#buttonpage").css({
-        "min-height": "100vh"
+      
+
       });
       document.getElementById("openChat").style.display = "inline";
       document.getElementById("audio_btn").style.display = "inline";
@@ -1366,7 +1367,7 @@ function setup_local_media(callback, errorback) {
     console.log("<--attachMediaStream");
   };
   $("#buttonpage").css({
-    "min-height": "100vh"
+   
   });
   navigator.getUserMedia({
     audio: USE_AUDIO,

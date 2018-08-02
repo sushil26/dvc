@@ -46,7 +46,7 @@ var id1 = stuff[stuff.length - 2];
 var id2 = stuff[stuff.length - 3];
 console.log("stuff.length: " + stuff.length);
 console.log("id1**: " + id1);
-queryLink = id1;
+queryLink=id1;
 console.log("id2**: " + id2);
 // console.log("localStorage.getItem(careatorEmail )" +localStorage.getItem("careatorEmail")+"localStorage.getItem(sessionPassword): "+localStorage.getItem("sessionPassword"));
 if (stuff.length > 5) {
@@ -77,40 +77,19 @@ if (stuff.length > 5) {
         var emailIdSplit = userNameEmail.split('@');
         userName = emailIdSplit[0];
         //document.getElementById("videoConferenceUrl").style.display = "block";
-        console.log("localStorage.getItem('sessionUrlId'): " + localStorage.getItem("sessionUrlId"));
-        console.log("window.location.href: " + window.location.href);
-        document.getElementById("videoCtrolBar").style.display = "inline";
-        if (localStorage.getItem("sessionUrlId") == queryLink) {
-          document.getElementById("emailInvitation").style.display = "block";
-        }
-        else {
-          document.getElementById("emailInvitation").style.display = "none";
-        }
+
+        document.getElementById("emailInvitation").style.display = "block";
+        document.getElementById("videoCtrolBar").style.display = "grid";
         getChatBack();
       },
       error: function (err) {
         console.log("err: " + JSON.stringify(err));
         console.log("err.responseText: " + JSON.stringify(err.responseText));
         console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
-        if (err.responseJSON.errorCode == "E0_URLE" || err.responseJSON.errorCode == "E0_alreadyInUse") {
-
-          document.getElementById('notify_msg_content').innerHTML = err.responseJSON.message;
-          document.getElementById('resetBtn').style.display = 'none';
-          $("#notify_msg_button").trigger("click");
-          setTimeout(function () {
-            close();
-          }, 3000);
-        }
-        else if (err.responseJSON.errorCode == "E1_credentialMismatch") {
-          document.getElementById('notify_msg_content').innerHTML = err.responseJSON.message;
-          document.getElementById('resetBtn').style.display = 'none';
-          $("#notify_msg_button").trigger("click");
-          userName = "";
-          // localStorage.removeItem("careatorEmail");
-          // localStorage.removeItem("sessionPassword");
-          $("#setName").trigger("click");
-        }
-
+        userName = "";
+        localStorage.removeItem("careatorEmail");
+        localStorage.removeItem("sessionPassword");
+        $("#setName").trigger("click");
       }
     });
 
@@ -135,7 +114,7 @@ if (stuff.length > 5) {
         careator_remoteEmail = true;
         //document.getElementById("videoConferenceUrl").style.display = "none";
         document.getElementById("emailInvitation").style.display = "none";
-        document.getElementById("videoCtrolBar").style.display = "inline";
+        document.getElementById("videoCtrolBar").style.display = "grid";
         getChatBack();
       },
       error: function (err) {
@@ -332,7 +311,7 @@ function checkPassword() {
           localStorage.setItem("videoRights", 'yes');
           //document.getElementById("videoConfStart").style.display = "inline";
           $("#buttonpage").css({
-
+            "min-height": "auto"
           });
         }
         if (data.data.chatRights == 'yes') {
@@ -447,41 +426,41 @@ function emailInviteSend() {
 
 
 var ICE_SERVERS = [{
-    url: "stun:stun.l.google.com:19302"
-  },
-  {
-    url: "stun:s3.xirsys.com"
-  },
-  {
-    url: "turn:s3.xirsys.com:80?transport=udp",
-    credential: sesionEnc,
-    username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5"
+  url: "stun:stun.l.google.com:19302"
+},
+{
+  url: "stun:s3.xirsys.com"
+},
+{
+  url: "turn:s3.xirsys.com:80?transport=udp",
+  credential: sesionEnc,
+  username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5"
 
-  }, {
-    url: "turn:s3.xirsys.com:3478?transport=udp",
-    credential: sesionEnc,
-    username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5"
+}, {
+  url: "turn:s3.xirsys.com:3478?transport=udp",
+  credential: sesionEnc,
+  username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5"
 
-  }, {
-    url: "turn:s3.xirsys.com:80?transport=tcp",
-    credential: sesionEnc,
-    username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5"
+}, {
+  url: "turn:s3.xirsys.com:80?transport=tcp",
+  credential: sesionEnc,
+  username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5"
 
-  }, {
-    url: "turn:s3.xirsys.com:3478?transport=tcp",
-    credential: sesionEnc,
-    username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5"
+}, {
+  url: "turn:s3.xirsys.com:3478?transport=tcp",
+  credential: sesionEnc,
+  username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5"
 
-  }, {
-    url: "turns:s3.xirsys.com:443?transport=tcp",
-    credential: sesionEnc,
-    username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5"
+}, {
+  url: "turns:s3.xirsys.com:443?transport=tcp",
+  credential: sesionEnc,
+  username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5"
 
-  }, {
-    url: "turns:s3.xirsys.com:5349?transport=tcp",
-    credential: sesionEnc,
-    username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5"
-  }
+}, {
+  url: "turns:s3.xirsys.com:5349?transport=tcp",
+  credential: sesionEnc,
+  username: "79ea5156-3e67-11e8-9a2e-41c3c9d814b5"
+}
 ];
 
 
@@ -537,15 +516,10 @@ function disconnecSession() {
     // window.location.href = "https://norecruits.com";
   } else {
     if (localStorage.getItem("careatorEmail")) {
-      signaling_socket.emit("disconnectNotification", {
-        "email": localStorage.getItem("careatorEmail"),
-        "sessionURL": window.location.href
-      })
-    } else {
-      signaling_socket.emit("disconnectNotification", {
-        "email": localStorage.getItem("careator_remoteEmail"),
-        "sessionURL": window.location.href
-      })
+      signaling_socket.emit("disconnectNotification", { "email": localStorage.getItem("careatorEmail"), "sessionURL": window.location.href })
+    }
+    else {
+      signaling_socket.emit("disconnectNotification", { "email": localStorage.getItem("careator_remoteEmail"), "sessionURL": window.location.href })
     }
     //window.location.href = "https://norecruits.com";
   }
@@ -664,8 +638,7 @@ signaling_socket.on("connect", function () {
       document.getElementById("homeLink").style.display = "inline";
       //document.getElementById("videoConfStart").style.display = "none";
       $("#buttonpage").css({
-
-
+        "min-height": "100vh"
       });
       document.getElementById("openChat").style.display = "inline";
       document.getElementById("audio_btn").style.display = "inline";
@@ -708,7 +681,7 @@ signaling_socket.on("connect", function () {
             careator_remoteEmail = true;
             //document.getElementById("videoConferenceUrl").style.display = "none";
             document.getElementById("emailInvitation").style.display = "none";
-            document.getElementById("videoCtrolBar").style.display = "inline";
+            document.getElementById("videoCtrolBar").style.display = "grid";
             localStorage.setItem("oneTimePassword", careator_remotePswd);
             $('#remoteJoin').modal('hide');
             setup_local_media(function () {
@@ -724,16 +697,15 @@ signaling_socket.on("connect", function () {
             //document.getElementById("videoConferenceUrl").style.display = "none";
             document.getElementById("emailInvitation").style.display = "none";
             userName = "";
-            if (err.responseJSON.errorCode == "E0_URLE" || err.responseJSON.errorCode == "E0_alreadyInUse" || err.responseJSON.errorCode == "E1_credentialMismatch") {
+            if (err.responseJSON.errorCode == "E0_URLE" || err.responseJSON.errorCode == "E0_alreadyInUse") {
               $('#remoteJoin').modal('hide');
               document.getElementById('notify_msg_content').innerHTML = err.responseJSON.message;
               document.getElementById('resetBtn').style.display = 'none';
               $("#notify_msg_button").trigger("click");
               setTimeout(function () {
-                close();
+                window.close();
               }, 3000);
             }
-
           }
         });
 
@@ -766,7 +738,7 @@ signaling_socket.on("connect", function () {
             careator_remoteEmail = true;
             //document.getElementById("videoConferenceUrl").style.display = "none";
             document.getElementById("emailInvitation").style.display = "none";
-            document.getElementById("videoCtrolBar").style.display = "inline";
+            document.getElementById("videoCtrolBar").style.display = "grid";
             localStorage.setItem("oneTimePassword", careator_remotePswd);
             $('#remoteJoin').modal('hide');
             setup_local_media(function () {
@@ -782,14 +754,13 @@ signaling_socket.on("connect", function () {
             // document.getElementById("videoConferenceUrl").style.display = "none";
             document.getElementById("emailInvitation").style.display = "none";
             userName = "";
-            if (err.responseJSON.errorCode == "E0_URLE" || err.responseJSON.errorCode == "E0_alreadyInUse" || err.responseJSON.errorCode == "E1_credentialMismatch") {
-
+            if (err.responseJSON.errorCode == "E0_URLE" || err.responseJSON.errorCode == "E0_alreadyInUse") {
               $('#remoteJoin').modal('hide');
               document.getElementById('notify_msg_content').innerHTML = err.responseJSON.message;
               document.getElementById('resetBtn').style.display = 'none';
               $("#notify_msg_button").trigger("click");
               setTimeout(function () {
-                close();
+                window.close();
               }, 3000);
             }
           }
@@ -849,7 +820,8 @@ function join__channel(channel, userdata) {
       "email": localStorage.getItem("careatorEmail"),
       "sessionURL": window.location.href
     });
-  } else {
+  }
+  else {
     signaling_socket.emit("join", {
       "channel": channel,
       "userdata": userdata,
@@ -882,316 +854,317 @@ function part__channel(channel) {
 signaling_socket.on("addPeer", function (config) {
   console.log("addPeer-->");
   console.log("addPeer 1: Signaling server said to add peer:", config);
-  console.log("config: " + JSON.stringify(config));
-  console.log("queryLink: " + queryLink);
-  if (config.queryId == queryLink) {
-    // console.log('Signaling server said to add peer:', JSON.stringify(config));
-    var peer_id = config.peer_id;
-    sessionHeader = config.sessionHeaderId;
-    console.log("sessionHeader: " + sessionHeader);
-    // console.log("addPeer 1.1: peers: " + JSON.stringify(peers));
-    // console.log("addPeer 1.2: peer_id: " + peer_id);
-    // console.log("addPeer : config.parentPeer: " + config.parentPeer);
+  console.log("config: "+JSON.stringify(config));
+  console.log("queryLink: "+queryLink);
+  if(config.queryId == queryLink){
+  // console.log('Signaling server said to add peer:', JSON.stringify(config));
+  var peer_id = config.peer_id;
+  sessionHeader = config.sessionHeaderId;
+  console.log("sessionHeader: " + sessionHeader);
+  // console.log("addPeer 1.1: peers: " + JSON.stringify(peers));
+  // console.log("addPeer 1.2: peer_id: " + peer_id);
+  // console.log("addPeer : config.parentPeer: " + config.parentPeer);
 
-    if (peer_id in peers) {
-      /* This could happen if the user joins multiple channels where the other peer is also in. */
-      console.log("addPeer 1.3: Already connected to peer ", peer_id);
-      // return;
-    }
-    var peer_connection = new RTCPeerConnection({
-        iceServers: ICE_SERVERS
-      }, {
-        optional: [{
-          DtlsSrtpKeyAgreement: true
-        }]
-      }
-      /* this will no longer be needed by chrome
-       * eventually (supposedly), but is necessary 
-       * for now to get firefox to talk to chrome */
-    );
-    console.log("peer_connection: " + peer_connection);
-    // peer_connection.oniceconnectionstatechange = function (event) {
-    //     console.log("#####peer_connection.oniceconnectionstatechange-->#####: " + peer_connection.oniceconnectionstatechange);
-    //     console.log("event", event);
-    //     var currentState = event.currentTarget.iceConnectionState;
-    //     if (currentState == 'failed') {
-    //         join_chat_channel(DEFAULT_CHANNEL, { 'whatever-you-want-here': 'stuff' });
-    //     }
-    // }
-    peers[peer_id] = peer_connection;
-
-    peer_connection.onicecandidate = function (event) {
-      console.log("onicecandidate-->");
-      if (event.candidate) {
-        console.log("started to call server relayICECandidate--><--");
-        signaling_socket.emit("relayICECandidate", {
-          peer_id: peer_id,
-          queryLink: queryLink,
-          ice_candidate: {
-            sdpMLineIndex: event.candidate.sdpMLineIndex,
-            candidate: event.candidate.candidate
-          }
-        });
-      }
-      console.log("<--onicecandidate");
-    };
-    console.log("shareScreen != 'true'");
-
-    peer_connection.onaddstream = function (event) {
-      console.log("onaddstream-->");
-
-      var existing = document.getElementById(peer_id + "remoteContainer");
-      if (existing) {
-        existing.parentNode.removeChild(existing);
-      }
-      var remote_media = USE_VIDEO ? $("<video>") : $();
-      console.log("remote_media: " + remote_media);
-      remote_media.attr("autoplay", "autoplay");
-      remote_media.attr("id", peer_id + "Remote");
-      if (MUTE_AUDIO_BY_DEFAULT) {
-        remote_media.prop("muted", true);
-      }
-      remote_media.attr("name", config.userName);
-      console.log("onaddstream: peer_id: " + peer_id);
-      peer_media_elements[peer_id] = remote_media;
-      remote_media.attr("id", peer_id + "Remote");
-      $("#newWrapper").append(
-        '<div id="' + peer_id + 'remoteContainer" class="col-xs-6 col-sm-6 col-md-4 col-lg-3"><div id="' +
-        peer_id + 'remoteVideoElement"></div><div class="details"><button id="' +
-        peer_id + 'fullscreenbtn2" class="btn fa fa-expand" style="float:left;  margin-top: 10px; margin-left: 10px;"></button><h4>' +
-        config.userName + '</h4><i style="display:none; float:right;color: #555555e3; margin-top: -15px; margin-right: 10px;" id="closeThisConn' +
-        peer_id + '" class="fa fa-window-close cancelColrChange" aria-hidden="true" id="closeThisConn' +
-        peer_id + '" owner=' + peer_id + " name=" + config.userName + "></i> </div></div>");
-      $("#" + peer_id + "remoteVideoElement").append(remote_media);
-      peer_userName_elements[peer_id] = document.getElementById("" + peer_id + "remoteContainer");
-      $("#" + peer_id + "Remote").on('loadstart', function (event) {
-        $(this).addClass('background');
-        $(this).attr("poster", "/img/loading.gif");
-      });
-
-      $("#" + peer_id + "Remote").on('canplay', function (event) {
-        $(this).removeClass('background');
-        $(this).removeAttr("poster");
-      });
-      // if (peerNew_id == sessionHeader) {
-      if (localStorage.getItem("sessionUrlId") == queryLink && localStorage.getItem("careatorEmail")) {
-        document.getElementById("closeThisConn" + peer_id).style.display =
-          "inline";
-
-        document.getElementById("closeThisConn" + peer_id).addEventListener("click", function () {
-          var removableId = document
-            .getElementById("closeThisConn" + peer_id)
-            .getAttribute("owner");
-          var removableName = document.getElementById("closeThisConn" + peer_id).getAttribute("name");
-          signaling_socket.emit("closeThisConn", {
-            removableId: removableId,
-            removableName: removableName,
-            controllerId: peerNew_id,
-            queryLink: queryLink,
-            timeLink: timeLink
-          });
-        });
-      }
-
-      var fullscreenbtn;
-      vid = document.getElementById("videoElem");
-
-      fullscreenbtn = document.getElementById("fullscreenbtn");
-      fullscreenbtn.addEventListener("click", toggleFullScreen, false);
-
-      function toggleFullScreen() {
-        console.log();
-        if (vid.requestFullScreen) {
-          vid.requestFullScreen();
-        } else if (vid.webkitRequestFullScreen) {
-          vid.webkitRequestFullScreen();
-        } else if (vid.mozRequestFullScreen) {
-          vid.mozRequestFullScreen();
-        }
-      }
-
-      $("#" + peer_id + "fullscreenbtn2").click(function () {
-        console.log("sushil screen test");
-        console.log("remove id videoElem111");
-        $("#" + peer_id + "remoteVideoElement").addClass("fullscr");
-        $("#" + peer_id + "remoteContainer").removeClass(
-          "portfolio-items col-xs-6 col-sm-6 col-md-4 col-lg-3"
-        );
-        $("#" + peer_id + "Remote").css({
-          height: "105vh"
-        });
-        $
-        $("#videoElem").css({
-          height: "auto",
-          width: "20%"
-        });
-        $("#videoElem111").removeClass(
-          "portfolio-items col-xs-6 col-sm-6 col-md-4 col-lg-3"
-        );
-        $("#videosAttach").css({
-            "z-index": "2",
-            "position": "fixed",
-            "right": "-225px",
-            "bottom": "25px",
-          }
-
-        );
-        // document.getElementById("someid").style.display = "none";
-        document.getElementById("btnrestore").style.display = "inline";
-      });
-      $("#btnrestore").click(function () {
-        console.log("add id videoElem111");
-        $("#" + peer_id + "remoteVideoElement").removeClass("fullscr");
-        $("#" + peer_id + "remoteContainer").addClass(
-          "portfolio-items col-xs-6 col-sm-6 col-md-4 col-lg-3"
-        );
-        $("#" + peer_id + "Remote").css({
-          height: "auto"
-        });
-        $("#videosAttach").css({
-            "z-index": "",
-            "position": ""
-          }
-
-        );
-        $("#videoElem").css({
-
-          height: "",
-          width: ""
-        });
-        $("#videoElem111").addClass(
-          "portfolio-items col-xs-6 col-sm-6 col-md-4 col-lg-3"
-        );
-        // document.getElementById("someid").style.display = "inline";
-        document.getElementById("btnrestore").style.display = "none";
-      });
-      // var fullscreenbtn2;
-      // vid2 = document.getElementById(peer_id + "Remote");
-      // fullscreenbtn2 = document.getElementById("fullscreenbtn2");
-      // fullscreenbtn2.addEventListener("click", toggleFullScreen2, false);
-      // function toggleFullScreen2() {
-      //     if (vid2.requestFullScreen) {
-      //         vid2.requestFullScreen();
-      //     }
-      //     else if (vid2.webkitRequestFullScreen) {
-      //         vid2.webkitRequestFullScreen();
-      //     }
-
-      //     else if (vid2.mozRequestFullScreen) {
-      //         vid2.mozRequestFullScreen();
-      //     }
-
-      // }
-      var fullscreenbtn;
-      vid3 = document.getElementById("screenShareElem");
-
-      fullscreenbtn = document.getElementById("fullscreenbtn");
-      fullscreenbtn.addEventListener("click", toggleFullScreen3, false);
-
-      function toggleFullScreen3() {
-        if (vid3.requestFullScreen) {
-          vid3.requestFullScreen();
-        } else if (vid3.webkitRequestFullScreen) {
-          vid3.webkitRequestFullScreen();
-        } else if (vid3.mozRequestFullScreen) {
-          vid3.mozRequestFullScreen();
-        }
-      }
-
-      // $('#videosAttach').append(remote_media);
-      // var parentElement = document.getElementById('videosAttach');
-
-      // var label = document.getElementById(peer_id + "RemoteUserName");
-      // console.log(label);
-      // if (label == null) {
-      //     var label = document.createElement("Label");
-      //     label.setAttribute("id", peer_id + "RemoteUserName");
-      //     label.innerHTML = document.getElementById(peer_id + "Remote").getAttribute("name");
-      //     parentElement.insertBefore(label, parentElement.children[2]);
-      // }
-      // else {
-      //     label.innerHTML = document.getElementById(peer_id + "Remote").getAttribute("name");
-      // }
-
-      // peer_userName_elements[peer_id] = label;
-
-      // var br = document.createElement("br");
-
-      // parentElement.insertBefore(br,parentElement.children[2]);
-      // $('#videosAttach').append(label);
-      peerStream = event.stream;
-
-      attachMediaStream(remote_media[0], event.stream);
-      // attachMediaStream(remoteScreen_media[0], event.stream);
-      console.log("<--X is NUll");
-      console.log("<--onaddstream");
-    };
-    if (local_media_stream) {
-      document.getElementById("screenShareBtn").style.display = "inline";
-      document.getElementById("screenShareStop").style.display = "none";
-      document.getElementById("video_btn").style.display = "inline";
-      console.log("peer_connection.addStream(local_media_stream)-->");
-      console.log("local_media_stream: " + local_media_stream);
-      peer_connection.addStream(local_media_stream);
-    }
-
-    if (local_media_shareStream) {
-      console.log("peer_connection.addStream(local_media_shareStream);-->");
-      document.getElementById("screenShareBtn").style.display = "none";
-      document.getElementById("screenShareStop").style.display = "inline";
-      document.getElementById("video_btn").style.display = "none";
-
-      peer_connection.addStream(local_media_shareStream);
-    }
-
-    /* Only one side of the peer connection should create the
-     * offer, the signaling server picks one to be the offerer. 
-     * The other user will get a 'sessionDescription' event and will
-     * create an offer, then send back an answer 'sessionDescription' to us
-     */
-    if (config.should_create_offer) {
-      console.log("Create offer-->");
-      // console.log("creating offer from peer id: " + config.owner);
-      // console.log("config: " + JSON.stringify(config));
-      peer_connection.createOffer(
-        function (local_description) {
-          console.log("local_description-->");
-          console.log("Local offer description is: ", local_description);
-          peer_connection.setLocalDescription(
-            local_description,
-            function () {
-              // console.log("local_description: " + JSON.stringify(local_description));
-              signaling_socket.emit("relaySessionDescription", {
-                peer_id: peer_id,
-                session_description: local_description,
-                from: "addpeer",
-                owner: config.owner,
-                queryLink: queryLink,
-                timeLink: timeLink
-              });
-              console.log("Offer setLocalDescription succeeded");
-            },
-            function () {
-              $("#alertButton").trigger("click");
-              document.getElementById('alertcontent').innerHTML = "Offer setLocalDescription failed";
-              // alert("Offer setLocalDescription failed!");
-            }
-          );
-          console.log("<--local_description");
-        },
-        function (error) {
-          console.log("Error sending offer: ", error);
-        }, {
-          iceRestart: true
-        }
-      );
-      console.log("<--Create offer");
-    }
-
-    console.log("<--addPeer");
-  } else {
-    console.log("Sorry: Your queryId and query link totally different");
+  if (peer_id in peers) {
+    /* This could happen if the user joins multiple channels where the other peer is also in. */
+    console.log("addPeer 1.3: Already connected to peer ", peer_id);
+    // return;
   }
+  var peer_connection = new RTCPeerConnection({
+    iceServers: ICE_SERVERS
+  }, {
+      optional: [{
+        DtlsSrtpKeyAgreement: true
+      }]
+    }
+    /* this will no longer be needed by chrome
+     * eventually (supposedly), but is necessary 
+     * for now to get firefox to talk to chrome */
+  );
+  console.log("peer_connection: " + peer_connection);
+  // peer_connection.oniceconnectionstatechange = function (event) {
+  //     console.log("#####peer_connection.oniceconnectionstatechange-->#####: " + peer_connection.oniceconnectionstatechange);
+  //     console.log("event", event);
+  //     var currentState = event.currentTarget.iceConnectionState;
+  //     if (currentState == 'failed') {
+  //         join_chat_channel(DEFAULT_CHANNEL, { 'whatever-you-want-here': 'stuff' });
+  //     }
+  // }
+  peers[peer_id] = peer_connection;
+
+  peer_connection.onicecandidate = function (event) {
+    console.log("onicecandidate-->");
+    if (event.candidate) {
+      console.log("started to call server relayICECandidate--><--");
+      signaling_socket.emit("relayICECandidate", {
+        peer_id: peer_id,
+        queryLink: queryLink,
+        ice_candidate: {
+          sdpMLineIndex: event.candidate.sdpMLineIndex,
+          candidate: event.candidate.candidate
+        }
+      });
+    }
+    console.log("<--onicecandidate");
+  };
+  console.log("shareScreen != 'true'");
+
+  peer_connection.onaddstream = function (event) {
+    console.log("onaddstream-->");
+
+    var existing = document.getElementById(peer_id + "remoteContainer");
+    if (existing) {
+      existing.parentNode.removeChild(existing);
+    }
+    var remote_media = USE_VIDEO ? $("<video>") : $();
+    console.log("remote_media: " + remote_media);
+    remote_media.attr("autoplay", "autoplay");
+    remote_media.attr("id", peer_id + "Remote");
+    if (MUTE_AUDIO_BY_DEFAULT) {
+      remote_media.prop("muted", true);
+    }
+    remote_media.attr("name", config.userName);
+    console.log("onaddstream: peer_id: " + peer_id);
+    peer_media_elements[peer_id] = remote_media;
+    remote_media.attr("id", peer_id + "Remote");
+    $("#portfolio-wrapper").append(
+      '<div id="' + peer_id + 'remoteContainer" class="portfolio-items col-xs-6 col-sm-6 col-md-4 col-lg-3" ><div id="' +
+      peer_id + 'remoteVideoElement"></div><div class="details"><button id="' +
+      peer_id + 'fullscreenbtn2" class="btn fa fa-expand" style="float:left;  margin-top: 10px; margin-left: 10px;"></button><h4>' +
+      config.userName + '</h4><i style="display:none; float:right;color: #555555e3; margin-top: -15px; margin-right: 10px;" id="closeThisConn' +
+      peer_id + '" class="fa fa-window-close cancelColrChange" aria-hidden="true" id="closeThisConn' +
+      peer_id + '" owner=' + peer_id + " name=" + config.userName + "></i> </div></div>");
+    $("#" + peer_id + "remoteVideoElement").append(remote_media);
+    peer_userName_elements[peer_id] = document.getElementById("" + peer_id + "remoteContainer");
+    $("#" + peer_id + "Remote").on('loadstart', function (event) {
+      $(this).addClass('background');
+      $(this).attr("poster", "/img/loading.gif");
+    });
+
+    $("#" + peer_id + "Remote").on('canplay', function (event) {
+      $(this).removeClass('background');
+      $(this).removeAttr("poster");
+    });
+    // if (peerNew_id == sessionHeader) {
+    if (localStorage.getItem("sessionUrlId") == queryLink && localStorage.getItem("careatorEmail")) {
+      document.getElementById("closeThisConn" + peer_id).style.display =
+        "inline";
+
+      document.getElementById("closeThisConn" + peer_id).addEventListener("click", function () {
+        var removableId = document
+          .getElementById("closeThisConn" + peer_id)
+          .getAttribute("owner");
+        var removableName = document.getElementById("closeThisConn" + peer_id).getAttribute("name");
+        signaling_socket.emit("closeThisConn", {
+          removableId: removableId,
+          removableName: removableName,
+          controllerId: peerNew_id,
+          queryLink: queryLink,
+          timeLink: timeLink
+        });
+      });
+    }
+
+    var fullscreenbtn;
+    vid = document.getElementById("videoElem");
+
+    fullscreenbtn = document.getElementById("fullscreenbtn");
+    fullscreenbtn.addEventListener("click", toggleFullScreen, false);
+
+    function toggleFullScreen() {
+      console.log();
+      if (vid.requestFullScreen) {
+        vid.requestFullScreen();
+      } else if (vid.webkitRequestFullScreen) {
+        vid.webkitRequestFullScreen();
+      } else if (vid.mozRequestFullScreen) {
+        vid.mozRequestFullScreen();
+      }
+    }
+
+    $("#" + peer_id + "fullscreenbtn2").click(function () {
+      console.log("sushil screen test");
+      console.log("remove id videoElem111");
+      $("#" + peer_id + "remoteVideoElement").addClass("fullscr");
+      $("#" + peer_id + "remoteContainer").removeClass(
+        "portfolio-items col-xs-6 col-sm-6 col-md-4 col-lg-3"
+      );
+      $("#" + peer_id + "Remote").css({
+        height: "105vh"
+      });
+      $
+      $("#videoElem").css({
+        height: "auto",
+        width: "20%"
+      });
+      $("#videoElem111").removeClass(
+        "portfolio-items col-xs-6 col-sm-6 col-md-4 col-lg-3"
+      );
+      $("#videosAttach").css({
+        "z-index": "2",
+        "position": "fixed",
+        "right": "-225px",
+        "bottom": "25px",
+      }
+
+      );
+      // document.getElementById("someid").style.display = "none";
+      document.getElementById("btnrestore").style.display = "inline";
+    });
+    $("#btnrestore").click(function () {
+      console.log("add id videoElem111");
+      $("#" + peer_id + "remoteVideoElement").removeClass("fullscr");
+      $("#" + peer_id + "remoteContainer").addClass(
+        "portfolio-items col-xs-6 col-sm-6 col-md-4 col-lg-3"
+      );
+      $("#" + peer_id + "Remote").css({
+        height: "auto"
+      });
+      $("#videosAttach").css({
+        "z-index": "",
+        "position": ""
+      }
+
+      );
+      $("#videoElem").css({
+
+        height: "",
+        width: ""
+      });
+      $("#videoElem111").addClass(
+        "portfolio-items col-xs-6 col-sm-6 col-md-4 col-lg-3"
+      );
+      // document.getElementById("someid").style.display = "inline";
+      document.getElementById("btnrestore").style.display = "none";
+    });
+    // var fullscreenbtn2;
+    // vid2 = document.getElementById(peer_id + "Remote");
+    // fullscreenbtn2 = document.getElementById("fullscreenbtn2");
+    // fullscreenbtn2.addEventListener("click", toggleFullScreen2, false);
+    // function toggleFullScreen2() {
+    //     if (vid2.requestFullScreen) {
+    //         vid2.requestFullScreen();
+    //     }
+    //     else if (vid2.webkitRequestFullScreen) {
+    //         vid2.webkitRequestFullScreen();
+    //     }
+
+    //     else if (vid2.mozRequestFullScreen) {
+    //         vid2.mozRequestFullScreen();
+    //     }
+
+    // }
+    var fullscreenbtn;
+    vid3 = document.getElementById("screenShareElem");
+
+    fullscreenbtn = document.getElementById("fullscreenbtn");
+    fullscreenbtn.addEventListener("click", toggleFullScreen3, false);
+
+    function toggleFullScreen3() {
+      if (vid3.requestFullScreen) {
+        vid3.requestFullScreen();
+      } else if (vid3.webkitRequestFullScreen) {
+        vid3.webkitRequestFullScreen();
+      } else if (vid3.mozRequestFullScreen) {
+        vid3.mozRequestFullScreen();
+      }
+    }
+
+    // $('#videosAttach').append(remote_media);
+    // var parentElement = document.getElementById('videosAttach');
+
+    // var label = document.getElementById(peer_id + "RemoteUserName");
+    // console.log(label);
+    // if (label == null) {
+    //     var label = document.createElement("Label");
+    //     label.setAttribute("id", peer_id + "RemoteUserName");
+    //     label.innerHTML = document.getElementById(peer_id + "Remote").getAttribute("name");
+    //     parentElement.insertBefore(label, parentElement.children[2]);
+    // }
+    // else {
+    //     label.innerHTML = document.getElementById(peer_id + "Remote").getAttribute("name");
+    // }
+
+    // peer_userName_elements[peer_id] = label;
+
+    // var br = document.createElement("br");
+
+    // parentElement.insertBefore(br,parentElement.children[2]);
+    // $('#videosAttach').append(label);
+    peerStream = event.stream;
+
+    attachMediaStream(remote_media[0], event.stream);
+    // attachMediaStream(remoteScreen_media[0], event.stream);
+    console.log("<--X is NUll");
+    console.log("<--onaddstream");
+  };
+  if (local_media_stream) {
+    document.getElementById("screenShareBtn").style.display = "inline";
+    document.getElementById("screenShareStop").style.display = "none";
+    document.getElementById("video_btn").style.display = "inline";
+    console.log("peer_connection.addStream(local_media_stream)-->");
+    console.log("local_media_stream: " + local_media_stream);
+    peer_connection.addStream(local_media_stream);
+  }
+
+  if (local_media_shareStream) {
+    console.log("peer_connection.addStream(local_media_shareStream);-->");
+    document.getElementById("screenShareBtn").style.display = "none";
+    document.getElementById("screenShareStop").style.display = "inline";
+    document.getElementById("video_btn").style.display = "none";
+
+    peer_connection.addStream(local_media_shareStream);
+  }
+
+  /* Only one side of the peer connection should create the
+   * offer, the signaling server picks one to be the offerer. 
+   * The other user will get a 'sessionDescription' event and will
+   * create an offer, then send back an answer 'sessionDescription' to us
+   */
+  if (config.should_create_offer) {
+    console.log("Create offer-->");
+    // console.log("creating offer from peer id: " + config.owner);
+    // console.log("config: " + JSON.stringify(config));
+    peer_connection.createOffer(
+      function (local_description) {
+        console.log("local_description-->");
+        console.log("Local offer description is: ", local_description);
+        peer_connection.setLocalDescription(
+          local_description,
+          function () {
+            // console.log("local_description: " + JSON.stringify(local_description));
+            signaling_socket.emit("relaySessionDescription", {
+              peer_id: peer_id,
+              session_description: local_description,
+              from: "addpeer",
+              owner: config.owner,
+              queryLink: queryLink,
+              timeLink: timeLink
+            });
+            console.log("Offer setLocalDescription succeeded");
+          },
+          function () {
+            $("#alertButton").trigger("click");
+            document.getElementById('alertcontent').innerHTML = "Offer setLocalDescription failed";
+            // alert("Offer setLocalDescription failed!");
+          }
+        );
+        console.log("<--local_description");
+      },
+      function (error) {
+        console.log("Error sending offer: ", error);
+      }, {
+        iceRestart: true
+      }
+    );
+    console.log("<--Create offer");
+  }
+
+  console.log("<--addPeer");
+}
+else{
+  console.log("Sorry: Your queryId and query link totally different");
+}
 });
 
 /**
@@ -1223,35 +1196,36 @@ signaling_socket.on("sessionDescription", function (config) {
           // console.log("++++config.peerIdForAuth: "+config.peerIdForAuth);
 
           peer.createAnswer(function (local_description) {
-              console.log("Answer description is: ", local_description);
-              console.log("local_description: " + local_description);
-              peer.setLocalDescription(local_description, function () {
-                  console.log("**************Your Query Id from server and query link in the browser ");
-                  console.log("config.queryId: " + config.queryId);
-                  console.log("queryLink: " + queryLink);
-                  if (config.queryId == queryLink) {
-                    signaling_socket.emit("relaySessionDescription", {
-                      peer_id: peer_id,
-                      session_description: local_description,
-                      from: "sessionDescription",
-                      owner: config.owner,
-                      queryLink: queryLink,
-                      timeLink: timeLink
-                    });
-                  } else {
-                    console.log("**************Your Query Id from server and query link in the browser link are different");
-                    console.log("config.queryId: " + config.queryId);
-                    console.log("queryLink: " + queryLink);
-                  }
-                  console.log("Answer setLocalDescription succeeded");
-                },
-                function () {
-                  console.log("Answer setLocalDescription failed!");
-                }
-              );
-
-
+            console.log("Answer description is: ", local_description);
+            console.log("local_description: " + local_description);
+            peer.setLocalDescription(local_description, function () {
+              console.log("**************Your Query Id from server and query link in the browser ");
+              console.log("config.queryId: " + config.queryId);
+              console.log("queryLink: " + queryLink);
+              if (config.queryId == queryLink) {
+                signaling_socket.emit("relaySessionDescription", {
+                  peer_id: peer_id,
+                  session_description: local_description,
+                  from: "sessionDescription",
+                  owner: config.owner,
+                  queryLink: queryLink,
+                  timeLink: timeLink
+                });
+              }
+              else {
+                console.log("**************Your Query Id from server and query link in the browser link are different");
+                console.log("config.queryId: " + config.queryId);
+                console.log("queryLink: " + queryLink);
+              }
+              console.log("Answer setLocalDescription succeeded");
             },
+              function () {
+                console.log("Answer setLocalDescription failed!");
+              }
+            );
+
+
+          },
             function (error) {
               console.log("Error creating answer: ", error);
               console.log(peer);
@@ -1279,16 +1253,17 @@ signaling_socket.on("sessionDescription", function (config) {
 signaling_socket.on("iceCandidate", function (config) {
   console.log("iceCandidate-->");
   // console.log("iceCandidate: " + JSON.stringify(config));
-  if (config.queryId == queryLink) {
+  if(config.queryId == queryLink){
     var peer = peers[config.peer_id];
     var ice_candidate = config.ice_candidate;
     console.log("ice_candidate: " + ice_candidate);
     peer.addIceCandidate(new RTCIceCandidate(ice_candidate));
     console.log("<--iceCandidate");
-  } else {
+  }
+  else{
     console.log("********************sorry we have diferent querId and querLink");
   }
-
+  
 });
 
 /**
@@ -1391,12 +1366,12 @@ function setup_local_media(callback, errorback) {
     console.log("<--attachMediaStream");
   };
   $("#buttonpage").css({
-
+    "min-height": "100vh"
   });
   navigator.getUserMedia({
-      audio: USE_AUDIO,
-      video: USE_VIDEO
-    },
+    audio: USE_AUDIO,
+    video: USE_VIDEO
+  },
     function (stream) {
       /* user accepted access to a/v */
       console.log("Access granted to audio/video");
@@ -1413,8 +1388,8 @@ function setup_local_media(callback, errorback) {
       //   "border:1px solid skyblue;display:inline !important"
       // );
 
-      $("#newWrapper").append(
-        '<div id="videoElem111" class="col-xs-6 col-sm-6 col-md-4 col-lg-3"><div id="videosAttach"></div><div class="details"><button id="fullscreenbtn" class="btn fa fa-expand" style="float:left; margin-top: 10px; margin-left: 10px;"></button><h4>' +
+      $("#portfolio-wrapper").append(
+        '<div id="videoElem111" class="portfolio-items col-xs-6 col-sm-6 col-md-4 col-lg-3"><div id="videosAttach"></div><div class="details"><button id="fullscreenbtn" class="btn fa fa-expand" style="float:left; margin-top: 10px; margin-left: 10px;"></button><h4>' +
         userName +
         "</h4> </div></div>"
       );
@@ -1522,41 +1497,126 @@ function setup_local_media(callback, errorback) {
     console.log("screenShare-->");
     getScreenId(function (error, sourceId, screen_constraints) {
       navigator.getUserMedia(screen_constraints, function (stream) {
-          navigator.getUserMedia({
-              audio: true
-            }, function (audioStream) {
-              stream.addTrack(audioStream.getAudioTracks()[0]);
-              // shareScreen = peerNew_id;
-              var local_media = document.getElementById("videoElem");
-              stopVideo(local_media);
+        navigator.getUserMedia({
+          audio: true
+        }, function (audioStream) {
+          stream.addTrack(audioStream.getAudioTracks()[0]);
+          // shareScreen = peerNew_id;
+          var local_media = document.getElementById("videoElem");
+          stopVideo(local_media);
 
-              function stopVideo(local_media) {
-                let stream = videoElem.srcObject;
-                let tracks = stream.getTracks();
-                tracks.forEach(function (track) {
-                  track.stop();
-                });
-                videoElem.srcObject = null;
-                delete this;
-                $(this).remove();
-                local_media_stream = null;
-              }
+          function stopVideo(local_media) {
+            let stream = videoElem.srcObject;
+            let tracks = stream.getTracks();
+            tracks.forEach(function (track) {
+              track.stop();
+            });
+            videoElem.srcObject = null;
+            delete this;
+            $(this).remove();
+            local_media_stream = null;
+          }
 
-              $("#videosAttach").empty();
-              //local_media_stream = stream;
-              local_media_shareStream = stream;
-              var local_mediaScreenShare = USE_VIDEO ? $("<video>") : $("<audio>");
-              local_mediaScreenShare.prop("muted", true); /* always mute ourselves by default */
-              local_mediaScreenShare.attr("id", "screenShareElem");
-              local_mediaScreenShare.attr("autoplay", "true");
-              local_mediaScreenShare.attr("style", "border:1px solid skyblue");
-              $("#videosAttach").append(local_mediaScreenShare);
+          $("#videosAttach").empty();
+          //local_media_stream = stream;
+          local_media_shareStream = stream;
+          var local_mediaScreenShare = USE_VIDEO ? $("<video>") : $("<audio>");
+          local_mediaScreenShare.prop("muted", true); /* always mute ourselves by default */
+          local_mediaScreenShare.attr("id", "screenShareElem");
+          local_mediaScreenShare.attr("autoplay", "true");
+          local_mediaScreenShare.attr("style", "border:1px solid skyblue");
+          $("#videosAttach").append(local_mediaScreenShare);
 
 
 
-              /* ### Start: This for audio mute and unmute before SCREEN SHARE ### */
+          /* ### Start: This for audio mute and unmute before SCREEN SHARE ### */
+          document.getElementById("audio_btn").addEventListener("click", function () {
+            console.log("audio_btn-->");
+            console.log(
+              "stream.getAudioTracks()[0].enabled: " +
+              stream.getAudioTracks()[0].enabled
+            );
+            stream.getAudioTracks()[0].enabled = !stream.getAudioTracks()[0]
+              .enabled;
+            var michrophoneVal = stream.getAudioTracks()[0].enabled;
+
+            if (michrophoneVal) {
+              document.getElementById("audioMute_btn").style.display = "inline";
+              document.getElementById("audioUnmute_btn").style.display = "none";
+            } else {
+              document.getElementById("audioMute_btn").style.display = "none";
+              document.getElementById("audioUnmute_btn").style.display = "inline";
+            }
+            console.log("stream.getAudioTracks()[0].enabled: " + stream.getAudioTracks()[0].enabled);
+            console.log("<--audio_btn");
+          });
+          /* ### End: This for audio mute and unmute before SCREEN SHARE ### */
+
+          /* ### Start: Loader Start and Stop ### */
+          $("#screenShareElem").on('loadstart', function (event) {
+            $(this).addClass('background');
+            $(this).attr("poster", "/img/loading.gif");
+          });
+          $("#screenShareElem").on('canplay', function (event) {
+            $(this).removeClass('background');
+            $(this).removeAttr("poster");
+          });
+          /* ### End: Loader Start and Stop ### */
+
+          attachMediaStream(local_mediaScreenShare[0], stream);
+
+          /* ##### Start Stop Sharing ##### */
+          var btn = document.getElementById("screenShareStop");
+
+          btn.onclick = function stopVideo(local_mediaScreenShare) {
+            let stream = screenShareElem.srcObject;
+            let tracks = stream.getTracks();
+
+            tracks.forEach(function (track) {
+              track.stop();
+            });
+
+            screenShareElem.srcObject = null;
+            var existing = document.getElementById("screenShareElem");
+            if (existing) {
+              existing.parentNode.removeChild(existing);
+            }
+            $("#videosAttach").empty();
+
+            /* ###### Start: Local media after stop screen share  ###### */
+            navigator.getUserMedia({
+              audio: USE_AUDIO,
+              video: USE_VIDEO
+            }, function (stream) {
+              /* user accepted access to a/v */
+              console.log("Access granted to audio/video");
+              console.log("stream: " + stream);
+              console.log("stream: " + JSON.stringify(stream));
+              local_media_shareStream = null;
+              local_media_stream = stream;
+              // local_media_shareStream = stream;
+              var local_media = USE_VIDEO ? $("<video>") : $();
+              /* always mute ourselves by default */
+              local_media.prop("muted", true);
+              local_media.attr("id", "videoElem");
+              local_media.attr("autoplay", true);
+              local_media.attr("style", "border:1px solid skyblue");
+              $("#videosAttach").append(local_media);
+
+              /* ### Start: Loader Start and Stop ### */
+              $("#videoElem").on('loadstart', function (event) {
+                $(this).addClass('background');
+                $(this).attr("poster", "/img/loading.gif");
+              });
+              $("#videoElem").on('canplay', function (event) {
+                $(this).removeClass('background');
+                $(this).removeAttr("poster");
+              });
+              /* ### End: Loader Start and Stop ### */
+
+              /* ### Start: This for audio mute and unmute after SCREEN SHARE ### */
               document.getElementById("audio_btn").addEventListener("click", function () {
-                console.log("audio_btn-->");
+                console.log("audio_btn from stop screen local start-->");
                 console.log(
                   "stream.getAudioTracks()[0].enabled: " +
                   stream.getAudioTracks()[0].enabled
@@ -1573,141 +1633,56 @@ function setup_local_media(callback, errorback) {
                   document.getElementById("audioUnmute_btn").style.display = "inline";
                 }
                 console.log("stream.getAudioTracks()[0].enabled: " + stream.getAudioTracks()[0].enabled);
-                console.log("<--audio_btn");
+                console.log("<--audio_btn from stop screen local start");
               });
-              /* ### End: This for audio mute and unmute before SCREEN SHARE ### */
+              /* ### End: This for audio mute and unmute after SCREEN SHARE ### */
+              /* ### Start: This for video ON and OFF after SCREEN SHARE ### */
+              document.getElementById("video_btn").addEventListener("click", function () {
+                console.log("video_btn from stop screen local start-->");
+                console.log("stream.getVideoTracks()[0].enabled : " + stream.getVideoTracks()[0].enabled);
+                stream.getVideoTracks()[0].enabled = !stream.getVideoTracks()[0]
+                  .enabled;
+                var videoVal = stream.getVideoTracks()[0].enabled;
 
-              /* ### Start: Loader Start and Stop ### */
-              $("#screenShareElem").on('loadstart', function (event) {
-                $(this).addClass('background');
-                $(this).attr("poster", "/img/loading.gif");
-              });
-              $("#screenShareElem").on('canplay', function (event) {
-                $(this).removeClass('background');
-                $(this).removeAttr("poster");
-              });
-              /* ### End: Loader Start and Stop ### */
-
-              attachMediaStream(local_mediaScreenShare[0], stream);
-
-              /* ##### Start Stop Sharing ##### */
-              var btn = document.getElementById("screenShareStop");
-
-              btn.onclick = function stopVideo(local_mediaScreenShare) {
-                let stream = screenShareElem.srcObject;
-                let tracks = stream.getTracks();
-
-                tracks.forEach(function (track) {
-                  track.stop();
-                });
-
-                screenShareElem.srcObject = null;
-                var existing = document.getElementById("screenShareElem");
-                if (existing) {
-                  existing.parentNode.removeChild(existing);
+                if (videoVal) {
+                  document.getElementById("videoMute_btn").style.display = "inline";
+                  document.getElementById("videoUnmute_btn").style.display = "none";
+                } else {
+                  document.getElementById("videoMute_btn").style.display = "none";
+                  document.getElementById("videoUnmute_btn").style.display = "inline";
                 }
-                $("#videosAttach").empty();
+                console.log("stream.getVideoTracks()[0].enabled: " + stream.getVideoTracks()[0].enabled);
+                console.log("<--video_btn from stop screen local start-");
+              });
+              /* ### End: This for video ON and OFF after SCREEN SHARE ### */
 
-                /* ###### Start: Local media after stop screen share  ###### */
-                navigator.getUserMedia({
-                    audio: USE_AUDIO,
-                    video: USE_VIDEO
-                  }, function (stream) {
-                    /* user accepted access to a/v */
-                    console.log("Access granted to audio/video");
-                    console.log("stream: " + stream);
-                    console.log("stream: " + JSON.stringify(stream));
-                    local_media_shareStream = null;
-                    local_media_stream = stream;
-                    // local_media_shareStream = stream;
-                    var local_media = USE_VIDEO ? $("<video>") : $();
-                    /* always mute ourselves by default */
-                    local_media.prop("muted", true);
-                    local_media.attr("id", "videoElem");
-                    local_media.attr("autoplay", true);
-                    local_media.attr("style", "border:1px solid skyblue");
-                    $("#videosAttach").append(local_media);
-
-                    /* ### Start: Loader Start and Stop ### */
-                    $("#videoElem").on('loadstart', function (event) {
-                      $(this).addClass('background');
-                      $(this).attr("poster", "/img/loading.gif");
-                    });
-                    $("#videoElem").on('canplay', function (event) {
-                      $(this).removeClass('background');
-                      $(this).removeAttr("poster");
-                    });
-                    /* ### End: Loader Start and Stop ### */
-
-                    /* ### Start: This for audio mute and unmute after SCREEN SHARE ### */
-                    document.getElementById("audio_btn").addEventListener("click", function () {
-                      console.log("audio_btn from stop screen local start-->");
-                      console.log(
-                        "stream.getAudioTracks()[0].enabled: " +
-                        stream.getAudioTracks()[0].enabled
-                      );
-                      stream.getAudioTracks()[0].enabled = !stream.getAudioTracks()[0]
-                        .enabled;
-                      var michrophoneVal = stream.getAudioTracks()[0].enabled;
-
-                      if (michrophoneVal) {
-                        document.getElementById("audioMute_btn").style.display = "inline";
-                        document.getElementById("audioUnmute_btn").style.display = "none";
-                      } else {
-                        document.getElementById("audioMute_btn").style.display = "none";
-                        document.getElementById("audioUnmute_btn").style.display = "inline";
-                      }
-                      console.log("stream.getAudioTracks()[0].enabled: " + stream.getAudioTracks()[0].enabled);
-                      console.log("<--audio_btn from stop screen local start");
-                    });
-                    /* ### End: This for audio mute and unmute after SCREEN SHARE ### */
-                    /* ### Start: This for video ON and OFF after SCREEN SHARE ### */
-                    document.getElementById("video_btn").addEventListener("click", function () {
-                      console.log("video_btn from stop screen local start-->");
-                      console.log("stream.getVideoTracks()[0].enabled : " + stream.getVideoTracks()[0].enabled);
-                      stream.getVideoTracks()[0].enabled = !stream.getVideoTracks()[0]
-                        .enabled;
-                      var videoVal = stream.getVideoTracks()[0].enabled;
-
-                      if (videoVal) {
-                        document.getElementById("videoMute_btn").style.display = "inline";
-                        document.getElementById("videoUnmute_btn").style.display = "none";
-                      } else {
-                        document.getElementById("videoMute_btn").style.display = "none";
-                        document.getElementById("videoUnmute_btn").style.display = "inline";
-                      }
-                      console.log("stream.getVideoTracks()[0].enabled: " + stream.getVideoTracks()[0].enabled);
-                      console.log("<--video_btn from stop screen local start-");
-                    });
-                    /* ### End: This for video ON and OFF after SCREEN SHARE ### */
-
-                    attachMediaStream(local_media[0], stream);
-
-                    if (callback) callback();
-                  },
-                  function () {
-                    /* user denied access to a/v */
-                    console.log("Access denied for audio/video");
-                    $("#alertButton").trigger("click");
-                    document.getElementById('alertcontent').innerHTML = "You chose not to provide access to the camera/microphone, Video will not work";
-                    // alert(
-                    //   "You chose not to provide access to the camera/microphone, Video will not work."
-                    // );
-                    if (errorback) errorback();
-                  }
-                );
-                /* ###### End: Local media after stop screen share  ###### */
-              };
-              /* ##### End Stop Sharing ##### */
+              attachMediaStream(local_media[0], stream);
 
               if (callback) callback();
             },
-            function (error) {
-              console.error(error);
-              if (errorback) errorback();
-            }
-          );
+              function () {
+                /* user denied access to a/v */
+                console.log("Access denied for audio/video");
+                $("#alertButton").trigger("click");
+                document.getElementById('alertcontent').innerHTML = "You chose not to provide access to the camera/microphone, Video will not work";
+                // alert(
+                //   "You chose not to provide access to the camera/microphone, Video will not work."
+                // );
+                if (errorback) errorback();
+              }
+            );
+            /* ###### End: Local media after stop screen share  ###### */
+          };
+          /* ##### End Stop Sharing ##### */
+
+          if (callback) callback();
         },
+          function (error) {
+            console.error(error);
+            if (errorback) errorback();
+          }
+        );
+      },
         function (error) {
           var msg =
             "You Must Need to Install  Screen Share Extention, Click ok to install";
@@ -1745,8 +1720,8 @@ signaling_socket.on("stateChangedToClient", function (data) {
 function scrollDown() {
   console.log("scrollDown-->");
   $("#popupMsg").animate({
-      scrollTop: $("#popupMsg").prop("scrollHeight")
-    },
+    scrollTop: $("#popupMsg").prop("scrollHeight")
+  },
     500
   );
   console.log("<--scrollDown");
@@ -1837,8 +1812,8 @@ function scrollDown() {
     }
 
     iframe.contentWindow.postMessage({
-        captureSourceId: true
-      },
+      captureSourceId: true
+    },
       "*"
     );
   }
@@ -1912,8 +1887,8 @@ function scrollDown() {
     }
 
     iframe.contentWindow.postMessage({
-        getChromeExtensionStatus: true
-      },
+      getChromeExtensionStatus: true
+    },
       "*"
     );
   }

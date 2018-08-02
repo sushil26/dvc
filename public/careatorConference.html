@@ -593,7 +593,7 @@
                                 </div>
                                 <div class="modal-body">
 
-                                    <input type="email" class="form-control" size="45" placeholder="Email Address to Invite" required id="emailInvite">
+                                    <input type="email" class="form-control" size="45" placeholder="Email Address to Invite" id="emailInvite" required>
                                     <br>
                                     <label id="info" style="color:blue"></label>
 
@@ -866,6 +866,7 @@
         });
         $("#emailInvite").keyup(function (event) {
             if (event.keyCode === 13) {
+                e.preventDefault();
                 $("#invitebutton").click();
             }
         });

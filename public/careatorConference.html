@@ -850,11 +850,12 @@
                 $("#loginsubmit").click();
             }
         });
-        // $("#emailInvite").keyup(function (event) {
-        //     if (event.keyCode === 13) {
-        //         $("#invitebutton").click();
-        //     }
-        // });
+        $("#emailInvite").keyup(function (event) {
+            if (event.keyCode === 13) {
+                event.preventDefault();
+                $("#invitebutton").click();
+            }
+        });
     </script>
     <script>
         $(document).ready(function () {

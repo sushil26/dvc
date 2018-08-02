@@ -1185,6 +1185,13 @@
             border: thin solid #f3f3f3;
         }
     </style>
+    <script>
+        $("#emailInvite").keyup(function (event) {
+            if (event.keyCode === 13) {
+                $("#invitebutton").click();
+            }
+        });
+    </script>
 </body>
 
 </html>

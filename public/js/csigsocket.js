@@ -111,7 +111,7 @@ var sessionPassword = localStorage.getItem("sessionPassword");
 //   console.log("localStorage.getItem(careatorEmail): " + localStorage.getItem("careatorEmail"));
 //   console.log("localStorage.getItem(sessionPassword): " + localStorage.getItem("sessionPassword"));
 
-if (localStorage.getItem("careatorEmail") && localStorage.getItem("sessionPassword")) {
+if ((localStorage.getItem("careatorEmail")!=null && localStorage.getItem("careatorEmail")!=undefined) && (localStorage.getItem("sessionPassword")!=null && localStorage.getItem("sessionPassword")!=undefined)) {
   var userNameEmail = localStorage.getItem("careatorEmail");
   console.log("2 cond: userNameEmail: " + userNameEmail);
   var emailIdSplit = userNameEmail.split('@');

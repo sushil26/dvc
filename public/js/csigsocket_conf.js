@@ -79,7 +79,7 @@ if (stuff.length > 5) {
         //document.getElementById("videoConferenceUrl").style.display = "block";
 
         document.getElementById("emailInvitation").style.display = "block";
-        document.getElementById("videoCtrolBar").style.display = "grid";
+        document.getElementById("videoCtrolBar").style.display = "block";
         getChatBack();
       },
       error: function (err) {
@@ -114,7 +114,7 @@ if (stuff.length > 5) {
         careator_remoteEmail = true;
         //document.getElementById("videoConferenceUrl").style.display = "none";
         document.getElementById("emailInvitation").style.display = "none";
-        document.getElementById("videoCtrolBar").style.display = "grid";
+        document.getElementById("videoCtrolBar").style.display = "block";
         getChatBack();
       },
       error: function (err) {
@@ -681,7 +681,7 @@ signaling_socket.on("connect", function () {
             careator_remoteEmail = true;
             //document.getElementById("videoConferenceUrl").style.display = "none";
             document.getElementById("emailInvitation").style.display = "none";
-            document.getElementById("videoCtrolBar").style.display = "grid";
+            document.getElementById("videoCtrolBar").style.display = "block";
             localStorage.setItem("oneTimePassword", careator_remotePswd);
             $('#remoteJoin').modal('hide');
             setup_local_media(function () {
@@ -738,7 +738,7 @@ signaling_socket.on("connect", function () {
             careator_remoteEmail = true;
             //document.getElementById("videoConferenceUrl").style.display = "none";
             document.getElementById("emailInvitation").style.display = "none";
-            document.getElementById("videoCtrolBar").style.display = "grid";
+            document.getElementById("videoCtrolBar").style.display = "block";
             localStorage.setItem("oneTimePassword", careator_remotePswd);
             $('#remoteJoin').modal('hide');
             setup_local_media(function () {

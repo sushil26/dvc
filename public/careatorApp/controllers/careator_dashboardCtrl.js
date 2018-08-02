@@ -177,63 +177,58 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
             closeOnConfirm: false, //do not close popup after click on confirm, usefull when you want to display a subsequent popup
             closeOnCancel: false
         },
-        function (isConfirm) { //Function that triggers on user action.
-            if (isConfirm) {
-                SweetAlert.swal("Logged Out");
-                var id = userData.userId;
-                var api = "https://norecruits.com/careator_loggedin/getLoggedinSessionURLById/" + id;
-                console.log("api: " + api);
-                careatorHttpFactory.get(api).then(function (data) {
-                    console.log("data--" + JSON.stringify(data.data));
-                    var checkStatus = careatorHttpFactory.dataValidation(data);
-                    console.log("checkStatus: " + checkStatus);
-                    if (checkStatus) {
-    
-                        if (data.data.data != undefined) {
-                            if (data.data.data.sessionURL != undefined) {
-                                var sessionURL = data.data.data.sessionURL;
-                                console.log(data.data.message);
-                                console.log("sessionURL: " + sessionURL);
-                                socket.emit("comm_logout", {
-                                    "userId": $scope.userData.userId,
-                                    "email": $scope.userData.email,
-                                    "sessionURL": sessionURL,
-                                    "sessionRandomId": $scope.userData.sessionRandomId
-                                }); /* ### Note: Logout notification to server ### */
-    
+            function (isConfirm) { //Function that triggers on user action.
+                if (isConfirm) {
+                    SweetAlert.swal("Logged Out");
+                    var id = userData.userId;
+                    var api = "https://norecruits.com/careator_loggedin/getLoggedinSessionURLById/" + id;
+                    console.log("api: " + api);
+                    careatorHttpFactory.get(api).then(function (data) {
+                        console.log("data--" + JSON.stringify(data.data));
+                        var checkStatus = careatorHttpFactory.dataValidation(data);
+                        console.log("checkStatus: " + checkStatus);
+                        if (checkStatus) {
+
+                            if (data.data.data != undefined) {
+                                if (data.data.data.sessionURL != undefined) {
+                                    var sessionURL = data.data.data.sessionURL;
+                                    console.log(data.data.message);
+                                    console.log("sessionURL: " + sessionURL);
+                                    socket.emit("comm_logout", {
+                                        "userId": $scope.userData.userId,
+                                        "email": $scope.userData.email,
+                                        "sessionURL": sessionURL,
+                                        "sessionRandomId": $scope.userData.sessionRandomId
+                                    }); /* ### Note: Logout notification to server ### */
+
+                                } else {
+                                    socket.emit("comm_logout", {
+                                        "userId": $scope.userData.userId,
+                                        "email": $scope.userData.email,
+                                        "sessionURL": sessionURL,
+                                        "sessionRandomId": $scope.userData.sessionRandomId
+                                    }); /* ### Note: Logout notification to server ### */
+                                }
                             } else {
                                 socket.emit("comm_logout", {
                                     "userId": $scope.userData.userId,
                                     "email": $scope.userData.email,
-                                    "sessionURL": sessionURL,
+                                    "sessionURL": "",
                                     "sessionRandomId": $scope.userData.sessionRandomId
                                 }); /* ### Note: Logout notification to server ### */
                             }
                         } else {
-                            socket.emit("comm_logout", {
-                                "userId": $scope.userData.userId,
-                                "email": $scope.userData.email,
-                                "sessionURL": "",
-                                "sessionRandomId": $scope.userData.sessionRandomId
-                            }); /* ### Note: Logout notification to server ### */
+                            console.log("Sorry");
+                            console.log(data.data.message);
                         }
-                    } else {
-                        console.log("Sorry");
-                        console.log(data.data.message);
-                    }
-                })
-            } else {
-                SweetAlert.swal("Your still logged in ");
+                    })
+                } else {
+                    SweetAlert.swal("Your still logged in ");
+                }
             }
-        }
 
-    )
+        )
         // $("#logoutConfirmationButton").trigger("click");
-   
-          
-
-      
-
     }
     // $scope.closeYourOldSession = function(){
     //     console.log("closeYourOldSession-->");
@@ -326,6 +321,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
             localStorage.removeItem("careatorEmail");
             localStorage.removeItem("careator_remoteEmail");
             localStorage.removeItem("email");
+            localStorage.removeItem("sessionPassword");
             localStorage.removeItem("userName");
             localStorage.removeItem("empId");
             localStorage.removeItem("userId");
@@ -349,6 +345,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
             localStorage.removeItem("careatorEmail");
             localStorage.removeItem("careator_remoteEmail");
             localStorage.removeItem("email");
+            localStorage.removeItem("sessionPassword");
             localStorage.removeItem("userName");
             localStorage.removeItem("empId");
             localStorage.removeItem("userId");
@@ -416,15 +413,15 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
             w = window.open("https://norecruits.com/careator", "_blank");
         } else {
             SweetAlert.swal({
-                    title: "window is already opened", //Bold text
-                    text: "we will take you the desired page!", //light text
-                    type: "warning", //type -- adds appropiriate icon
-                    showCancelButton: true, // displays cancel btton
-                    confirmButtonColor: "#DD6B55",
-                    confirmButtonText: "Go to the page",
-                    closeOnConfirm: false, //do not close popup after click on confirm, usefull when you want to display a subsequent popup
-                    closeOnCancel: false
-                },
+                title: "window is already opened", //Bold text
+                text: "we will take you the desired page!", //light text
+                type: "warning", //type -- adds appropiriate icon
+                showCancelButton: true, // displays cancel btton
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Go to the page",
+                closeOnConfirm: false, //do not close popup after click on confirm, usefull when you want to display a subsequent popup
+                closeOnCancel: false
+            },
                 function (isConfirm) { //Function that triggers on user action.
                     if (isConfirm) {
                         SweetAlert.swal("ok!");

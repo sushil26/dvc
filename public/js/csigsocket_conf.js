@@ -80,7 +80,7 @@ if (stuff.length > 5) {
         console.log("localStorage.getItem('sessionUrlId'): " + localStorage.getItem("sessionUrlId"));
         console.log("window.location.href: " + window.location.href);
         document.getElementById("videoCtrolBar").style.display = "inline";
-        if (localStorage.getItem("sessionUrlId") == window.location.href) {
+        if (localStorage.getItem("sessionUrlId") == queryLink) {
           document.getElementById("emailInvitation").style.display = "block";
         }
         else {

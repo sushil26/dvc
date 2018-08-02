@@ -49,6 +49,10 @@ console.log("id1**: " + id1);
 console.log("id2**: " + id2);
 console.log("localStorage.getItem(careatorEmail): " + localStorage.getItem("careatorEmail"));
 console.log("localStorage.getItem(sessionPassword): " + localStorage.getItem("sessionPassword"));
+var careatorEmail = localStorage.getItem("careatorEmail");
+var sessionPassword = localStorage.getItem("sessionPassword");
+localStorage.setItem("careatorEmail", careatorEmail);
+localStorage.setItem("sessionPassword", sessionPassword);
 // // console.log("localStorage.getItem(careatorEmail )" +localStorage.getItem("careatorEmail")+"localStorage.getItem(sessionPassword): "+localStorage.getItem("sessionPassword"));
 // if (stuff.length > 5) {
 //   console.log("1 cond");

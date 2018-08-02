@@ -46,6 +46,7 @@ var id1 = stuff[stuff.length - 2];
 var id2 = stuff[stuff.length - 3];
 console.log("stuff.length: " + stuff.length);
 console.log("id1**: " + id1);
+queryLink=id1;
 console.log("id2**: " + id2);
 // console.log("localStorage.getItem(careatorEmail )" +localStorage.getItem("careatorEmail")+"localStorage.getItem(sessionPassword): "+localStorage.getItem("sessionPassword"));
 if (stuff.length > 5) {
@@ -607,7 +608,7 @@ signaling_socket.on("connect", function () {
   signaling_socket.on("message", function (config) {
     console.log("signaling_socket message-->");
     //console.log("Unique Peer Id: " + config.peer_id)
-    queryLink = config.queryId;
+    //queryLink = config.queryId;
     peerNew_id = config.peer_id;
     timeLink = config.time;
     console.log("urlDate: " + urlDate + " timeLink: " + timeLink);
@@ -854,6 +855,8 @@ signaling_socket.on("addPeer", function (config) {
   console.log("addPeer-->");
   console.log("addPeer 1: Signaling server said to add peer:", config);
   console.log("config: "+JSON.stringify(config));
+  console.log("queryLink: "+queryLink);
+  if(config.queryId == queryLink){
   // console.log('Signaling server said to add peer:', JSON.stringify(config));
   var peer_id = config.peer_id;
   sessionHeader = config.sessionHeaderId;
@@ -879,7 +882,6 @@ signaling_socket.on("addPeer", function (config) {
      * for now to get firefox to talk to chrome */
   );
   console.log("peer_connection: " + peer_connection);
-
   // peer_connection.oniceconnectionstatechange = function (event) {
   //     console.log("#####peer_connection.oniceconnectionstatechange-->#####: " + peer_connection.oniceconnectionstatechange);
   //     console.log("event", event);
@@ -888,7 +890,6 @@ signaling_socket.on("addPeer", function (config) {
   //         join_chat_channel(DEFAULT_CHANNEL, { 'whatever-you-want-here': 'stuff' });
   //     }
   // }
-
   peers[peer_id] = peer_connection;
 
   peer_connection.onicecandidate = function (event) {
@@ -1160,6 +1161,10 @@ signaling_socket.on("addPeer", function (config) {
   }
 
   console.log("<--addPeer");
+}
+else{
+  console.log("Sorry: Your queryId and query link totally different");
+}
 });
 
 /**

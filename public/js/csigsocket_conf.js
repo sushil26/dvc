@@ -78,8 +78,13 @@ if (stuff.length > 5) {
         userName = emailIdSplit[0];
         //document.getElementById("videoConferenceUrl").style.display = "block";
 
-        document.getElementById("emailInvitation").style.display = "block";
         document.getElementById("videoCtrolBar").style.display = "inline";
+        if (localStorage.getItem("sessionUrlId") == window.location.href) {
+          document.getElementById("emailInvitation").style.display = "block";
+        }
+        else {
+          document.getElementById("emailInvitation").style.display = "none";
+        }
         getChatBack();
       },
       error: function (err) {
@@ -87,7 +92,7 @@ if (stuff.length > 5) {
         console.log("err.responseText: " + JSON.stringify(err.responseText));
         console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
         if (err.responseJSON.errorCode == "E0_URLE" || err.responseJSON.errorCode == "E0_alreadyInUse") {
-         
+
           document.getElementById('notify_msg_content').innerHTML = err.responseJSON.message;
           document.getElementById('resetBtn').style.display = 'none';
           $("#notify_msg_button").trigger("click");
@@ -95,7 +100,7 @@ if (stuff.length > 5) {
             close();
           }, 3000);
         }
-        else if(err.responseJSON.errorCode == "E1_credentialMismatch"){
+        else if (err.responseJSON.errorCode == "E1_credentialMismatch") {
           document.getElementById('notify_msg_content').innerHTML = err.responseJSON.message;
           document.getElementById('resetBtn').style.display = 'none';
           $("#notify_msg_button").trigger("click");

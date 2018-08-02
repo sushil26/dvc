@@ -55,13 +55,6 @@ if (stuff.length > 5) {
   console.log("localStorage.getItem(sessionPassword): " + localStorage.getItem("sessionPassword"));
   console.log("localStorage.getItem(careator_remoteEmail): " + localStorage.getItem("careator_remoteEmail"));
   console.log("localStorage.getItem(oneTimePassword): " + localStorage.getItem("oneTimePassword"));
-  var careatorEmail = localStorage.getItem("careatorEmail");
-  var sessionPassword = localStorage.getItem("sessionPassword");
-  var videoRights = localStorage.getItem("videoRights");
-  // localStorage.setItem(careatorEmail, "careatorEmail");
-  // localStorage.setItem(sessionPassword, "sessionPassword");
-  // localStorage.setItem(videoRights, "videoRights");
- 
   if (localStorage.getItem("careatorEmail") && localStorage.getItem("sessionPassword") && (localStorage.getItem("videoRights") == 'yes')) {
     console.log("Hoster session check");
     var password = localStorage.getItem("sessionPassword");
@@ -86,7 +79,7 @@ if (stuff.length > 5) {
         //document.getElementById("videoConferenceUrl").style.display = "block";
 
         document.getElementById("emailInvitation").style.display = "block";
-        document.getElementById("videoCtrolBar").style.display = "grid";
+        document.getElementById("videoCtrolBar").style.display = "inline";
         getChatBack();
       },
       error: function (err) {
@@ -121,7 +114,7 @@ if (stuff.length > 5) {
         careator_remoteEmail = true;
         //document.getElementById("videoConferenceUrl").style.display = "none";
         document.getElementById("emailInvitation").style.display = "none";
-        document.getElementById("videoCtrolBar").style.display = "grid";
+        document.getElementById("videoCtrolBar").style.display = "inline";
         getChatBack();
       },
       error: function (err) {
@@ -688,7 +681,7 @@ signaling_socket.on("connect", function () {
             careator_remoteEmail = true;
             //document.getElementById("videoConferenceUrl").style.display = "none";
             document.getElementById("emailInvitation").style.display = "none";
-            document.getElementById("videoCtrolBar").style.display = "grid";
+            document.getElementById("videoCtrolBar").style.display = "inline";
             localStorage.setItem("oneTimePassword", careator_remotePswd);
             $('#remoteJoin').modal('hide');
             setup_local_media(function () {
@@ -745,7 +738,7 @@ signaling_socket.on("connect", function () {
             careator_remoteEmail = true;
             //document.getElementById("videoConferenceUrl").style.display = "none";
             document.getElementById("emailInvitation").style.display = "none";
-            document.getElementById("videoCtrolBar").style.display = "grid";
+            document.getElementById("videoCtrolBar").style.display = "inline";
             localStorage.setItem("oneTimePassword", careator_remotePswd);
             $('#remoteJoin').modal('hide');
             setup_local_media(function () {

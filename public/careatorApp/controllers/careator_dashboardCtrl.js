@@ -411,7 +411,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
     $scope.navigateintoBoth_CVoption = function () {
         console.log("navigateintoBoth_CVoption-->");
         if (!w || w.closed) {
-            localStorage.setItem("email", userData.email);
+            localStorage.setItem("careatorEmail", userData.email);
             localStorage.setItem("sessionPassword", userData.sessionPassword);
             w = window.open("https://norecruits.com/careator", "_blank");
         } else {

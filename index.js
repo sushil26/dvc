@@ -92,6 +92,20 @@ app.get("/careator_conf/:id/:time", function (req, res) {
     res.sendFile(__dirname + '/public/careatorConference.html');
 });
 
+app.get("/careator_RND", function (req, res) {
+    queryId = null;
+    console.log("start to render page");
+    res.sendFile(__dirname + '/public/careator_RND.html');
+});
+
+app.get("/careator_conf_RND/:id/:time", function (req, res) {
+    queryId = req.params.id;
+    time = req.params.id;
+    console.log("queryId: " + req.params.id + "Time: " + req.params.time);
+    console.log("start to render page");
+    res.sendFile(__dirname + '/public/careatorConference_RND.html');
+});
+
 app.get("/careatorApp", function (req, res) {
     console.log("chatCrtr started to render-->");
     res.sendFile(__dirname + '/public/careatorComm.html');

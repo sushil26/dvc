@@ -565,7 +565,7 @@ module.exports.emailInvite = function (req, res) {
                                     status: true,
                                     errorCode: 200,
                                     message: property.S0006,
-                                    data: data
+                                    data: updatedOnIndex
                                 };
                                 res.status(200).send(responseData);
                             }

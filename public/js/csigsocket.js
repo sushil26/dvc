@@ -51,8 +51,8 @@ console.log("localStorage.getItem(careatorEmail): " + localStorage.getItem("care
 console.log("localStorage.getItem(sessionPassword): " + localStorage.getItem("sessionPassword"));
 var careatorEmail = localStorage.getItem("careatorEmail");
 var sessionPassword = localStorage.getItem("sessionPassword");
-localStorage.setItem("careatorEmail", careatorEmail);
-localStorage.setItem("sessionPassword", sessionPassword);
+// localStorage.setItem("careatorEmail", careatorEmail);
+// localStorage.setItem("sessionPassword", sessionPassword);
 // // console.log("localStorage.getItem(careatorEmail )" +localStorage.getItem("careatorEmail")+"localStorage.getItem(sessionPassword): "+localStorage.getItem("sessionPassword"));
 // if (stuff.length > 5) {
 //   console.log("1 cond");

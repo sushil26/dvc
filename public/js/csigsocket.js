@@ -51,8 +51,8 @@ console.log("localStorage.getItem(careatorEmail): " + localStorage.getItem("care
 console.log("localStorage.getItem(sessionPassword): " + localStorage.getItem("sessionPassword"));
 var careatorEmail = localStorage.getItem("careatorEmail");
 var sessionPassword = localStorage.getItem("sessionPassword");
-localStorage.setItem("careatorEmail", careatorEmail);
-localStorage.setItem("sessionPassword", sessionPassword);
+// localStorage.setItem("careatorEmail", careatorEmail);
+// localStorage.setItem("sessionPassword", sessionPassword);
 // // console.log("localStorage.getItem(careatorEmail )" +localStorage.getItem("careatorEmail")+"localStorage.getItem(sessionPassword): "+localStorage.getItem("sessionPassword"));
 // if (stuff.length > 5) {
 //   console.log("1 cond");
@@ -111,7 +111,7 @@ localStorage.setItem("sessionPassword", sessionPassword);
 //   console.log("localStorage.getItem(careatorEmail): " + localStorage.getItem("careatorEmail"));
 //   console.log("localStorage.getItem(sessionPassword): " + localStorage.getItem("sessionPassword"));
 
-if (localStorage.getItem("careatorEmail") && localStorage.getItem("sessionPassword")) {
+if ((localStorage.getItem("careatorEmail")!=null && localStorage.getItem("careatorEmail")!=undefined) && (localStorage.getItem("sessionPassword")!=null && localStorage.getItem("sessionPassword")!=undefined)) {
   var userNameEmail = localStorage.getItem("careatorEmail");
   console.log("2 cond: userNameEmail: " + userNameEmail);
   var emailIdSplit = userNameEmail.split('@');

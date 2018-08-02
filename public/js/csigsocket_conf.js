@@ -77,7 +77,8 @@ if (stuff.length > 5) {
         var emailIdSplit = userNameEmail.split('@');
         userName = emailIdSplit[0];
         //document.getElementById("videoConferenceUrl").style.display = "block";
-
+        console.log("localStorage.getItem('sessionUrlId'): " + localStorage.getItem("sessionUrlId"));
+        console.log("window.location.href: " + window.location.href);
         document.getElementById("videoCtrolBar").style.display = "inline";
         if (localStorage.getItem("sessionUrlId") == window.location.href) {
           document.getElementById("emailInvitation").style.display = "block";

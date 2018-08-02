@@ -525,22 +525,22 @@ module.exports.emailInvite = function (req, res) {
     careatorMaster.find({ email: req.body.sessionHost, 'invite.remoteEmailId': req.body.email }).toArray(function (err, findData) {
         if (err) {
             responseData = {
-                status: true,
-                errorCode: 200,
+                status: false,
+                errorCode: 400,
                 message: property.E0007
             };
-            res.status(200).send(responseData);
+            res.status(400).send(responseData);
         } else {
 
             if (findData.length > 0) {
                 careatorMaster.update({ email: req.body.sessionHost, 'invite.remoteEmailId': req.body.email }, { "$set": { "invite.$.password": password } }, function(err, updatedOnIndex) {
                     if (err) {
                         responseData = {
-                            status: true,
-                            errorCode: 200,
+                            status: false,
+                            errorCode: 400,
                             message: property.E0007
                         };
-                        res.status(200).send(responseData);
+                        res.status(400).send(responseData);
                     } else {
                         var mailOptions = {
                             from: "info@vc4all.in",

@@ -344,20 +344,16 @@
         </div>
     </div>
 
-    <section id="portfolio">
-
-        <div class="row" style="min-height:100vh;color:#797979;">
-            <div id="newWrapper"></div>
-
-
-            <h1 id="sessionDisconn_alert" style="display:none;color:red"></h1>
-
+    <section id="portfolio" style="min-height:100vh;color:#797979;">
+        <div class="row">
+            <div id="portfolio-wrapper" style="width: 100%;">
+                <h1 id="sessionDisconn_alert" style="display:none;color:red"></h1>
+            </div>
             <button id="btnrestore" class="fa fa-window-restore btn" style="position: fixed;
                                 top: 50vh;display:none;z-index: 2;"></button>
-
-
-
         </div>
+
+
 
         <div class="row">
             <div id="extnn">
@@ -603,7 +599,7 @@
 
                                 </div>
                                 <div class="modal-footer" style="padding-top: 15px;background-image: linear-gradient(to bottom, #202224 0%, #383c3f 100%);">
-                                    <button type="button" id="invitebutton" onclick="emailInviteSend()" style="background-color: #29b6bd;color:#f1f1f1" class="btn">Invite</button>
+                                    <button type="submit" id="invitebutton" onclick="emailInviteSend()" style="background-color: #29b6bd;color:#f1f1f1" class="btn">Invite</button>
                                 </div>
                             </div>
                         </form>
@@ -1189,13 +1185,7 @@
             border: thin solid #f3f3f3;
         }
     </style>
-    <script>
-        $("#emailInvite").keyup(function (event) {
-            if (event.keyCode === 13) {
-                $("#invitebutton").click();
-            }
-        });
-    </script>
+    
 </body>
 
 </html>

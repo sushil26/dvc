@@ -376,8 +376,8 @@
 
 video {
   width: 100%;
-  height: auto;
-  background: #004085;
+  height: 25vh;
+  background: maroon;
 }
 
 body {

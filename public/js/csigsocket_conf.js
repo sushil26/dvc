@@ -55,6 +55,13 @@ if (stuff.length > 5) {
   console.log("localStorage.getItem(sessionPassword): " + localStorage.getItem("sessionPassword"));
   console.log("localStorage.getItem(careator_remoteEmail): " + localStorage.getItem("careator_remoteEmail"));
   console.log("localStorage.getItem(oneTimePassword): " + localStorage.getItem("oneTimePassword"));
+  var careatorEmail = localStorage.getItem("careatorEmail");
+  var sessionPassword = localStorage.getItem("sessionPassword");
+  var videoRights = localStorage.getItem("videoRights");
+  localStorage.setItem(careatorEmail, "careatorEmail");
+  localStorage.setItem(sessionPassword, "sessionPassword");
+  localStorage.setItem(videoRights, "videoRights");
+ 
   if (localStorage.getItem("careatorEmail") && localStorage.getItem("sessionPassword") && (localStorage.getItem("videoRights") == 'yes')) {
     console.log("Hoster session check");
     var password = localStorage.getItem("sessionPassword");

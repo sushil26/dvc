@@ -882,6 +882,19 @@
                     "display": "none"
                 })
             }
+            if (window.matchMedia('(min-width:500px)').matches) {
+                console.log("<<<<<<<home icon hide>>>>>>>");
+                $("#screenShareBtn").css({
+                    "display": "none"
+                })
+            }
+            if (window.matchMedia('(max-width: 500px)').matches) {
+                console.log("<<<<<<<home icon hide>>>>>>>");
+                $("#screenShareBtn").css({
+                    "display": "inline"
+                })
+            }
+
 
 
             $("#openChat").click(function () {

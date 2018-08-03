@@ -1001,9 +1001,9 @@ signaling_socket.on("addPeer", function (config) {
         "portfolio-items col-xs-4 col-sm-4 col-md-4 col-lg-3"
       );
       $("#videosAttach").css({
-        "z-index": "2",
+        "z-index": "4",
         "position": "fixed",
-        "right": "-225px",
+        "right": "-20px",
         "bottom": "25px",
       }
 

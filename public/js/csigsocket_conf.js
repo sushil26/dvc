@@ -1048,7 +1048,7 @@ signaling_socket.on("addPeer", function (config) {
 
       console.log("add id videoElem111");
       $("#btnrestore").css({"display":"none"})
-      $("#portfolio .portfolio-items").css({"position":"relative"})
+      // $("#portfolio .portfolio-items").css({"position":"relative"})
       $("#" + peer_id + "remoteVideoElement").removeClass("fullscr");
       $("#" + peer_id + "remoteContainer").addClass(
         "portfolio-items col-xs-4 col-sm-4 col-md-4 col-lg-3"

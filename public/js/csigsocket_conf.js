@@ -1,3 +1,12 @@
+
+if (window.matchMedia('(min-width: 401px)').matches) {
+  console.log("<<<<<<<home icon hide>>>>>>>");
+  $("#portfolio .portfolio-items").css({"width":"auto"})
+}
+if (window.matchMedia('(max-width: 400px)').matches) {
+  console.log("<<<<<<<home icon hide>>>>>>>");
+  $("#portfolio .portfolio-items").css({"width":"27vw"})
+}
 // var encUrl = localStorage.getItem("encUrl");
 // var encPswd = localStorage.getItem("encPswd");
 // var decryptedUrl = CryptoJS.AES.decrypt(encUrl, "url");

@@ -357,8 +357,6 @@
   /* box-shadow: inset 0px 1px 0px #2ab7ec, 0px 1px 0px 0px #07526e, 0px 5px 5px #999; */
 }
 
-
-
 .bt {
   border: none;
   background-color: transparent;
@@ -1157,7 +1155,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   background-image: url(././lc.jpg);
   /* background: #f7f7f7; */
   padding: 0;
- margin-top: 120px; 
+  margin-top: 120px;
   background-attachment: fixed;
 }
 
@@ -1229,12 +1227,10 @@ body.mobile-nav-active #mobile-nav-toggle {
   font-family: lato;
   color: #d9f7e9b5;
   font-size: 15px;
+  margin-top: 15px;
+  margin-right: 100px;
+  float: right;
   font-weight: 100;
-  padding: 15px;
-  margin: 0;
-  text-transform: capitalize;
-  max-width: 150px;
-  ;
 }
 
 #portfolio .portfolio-items .details span {
@@ -1438,7 +1434,6 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 #footer .copyright {
-
   font-weight: 100;
   font-size: 10px;
   text-align: center;

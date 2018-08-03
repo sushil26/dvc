@@ -1237,7 +1237,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   display: block;
   color: #fff;
   font-size: 13px;
-  padding-left: 8px;
+  /* padding-left: 8px; */
 }
 
 #portfolio .portfolio-items:hover .details {

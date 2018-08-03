@@ -78,40 +78,19 @@ if (stuff.length > 5) {
         var emailIdSplit = userNameEmail.split('@');
         userName = emailIdSplit[0];
         //document.getElementById("videoConferenceUrl").style.display = "block";
-        console.log("localStorage.getItem('sessionUrlId'): " + localStorage.getItem("sessionUrlId"));
-        console.log("window.location.href: " + window.location.href);
-        document.getElementById("videoCtrolBar").style.display = "inline";
-        if (localStorage.getItem("sessionUrlId") == queryLink) {
-          document.getElementById("emailInvitation").style.display = "block";
-        }
-        else {
-          document.getElementById("emailInvitation").style.display = "none";
-        }
+
+        document.getElementById("emailInvitation").style.display = "block";
+        document.getElementById("videoCtrolBar").style.display = "block";
         getChatBack();
       },
       error: function (err) {
         console.log("err: " + JSON.stringify(err));
         console.log("err.responseText: " + JSON.stringify(err.responseText));
         console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
-        if (err.responseJSON.errorCode == "E0_URLE" || err.responseJSON.errorCode == "E0_alreadyInUse") {
-
-          document.getElementById('notify_msg_content').innerHTML = err.responseJSON.message;
-          document.getElementById('resetBtn').style.display = 'none';
-          $("#notify_msg_button").trigger("click");
-          setTimeout(function () {
-            close();
-          }, 3000);
-        }
-        else if (err.responseJSON.errorCode == "E1_credentialMismatch") {
-          document.getElementById('notify_msg_content').innerHTML = err.responseJSON.message;
-          document.getElementById('resetBtn').style.display = 'none';
-          $("#notify_msg_button").trigger("click");
-          userName = "";
-          // localStorage.removeItem("careatorEmail");
-          // localStorage.removeItem("sessionPassword");
-          $("#setName").trigger("click");
-        }
-
+        userName = "";
+        localStorage.removeItem("careatorEmail");
+        localStorage.removeItem("sessionPassword");
+        $("#setName").trigger("click");
       }
     });
 
@@ -136,7 +115,7 @@ if (stuff.length > 5) {
         careator_remoteEmail = true;
         //document.getElementById("videoConferenceUrl").style.display = "none";
         document.getElementById("emailInvitation").style.display = "none";
-        document.getElementById("videoCtrolBar").style.display = "inline";
+        document.getElementById("videoCtrolBar").style.display = "block";
         getChatBack();
       },
       error: function (err) {
@@ -333,7 +312,7 @@ function checkPassword() {
           localStorage.setItem("videoRights", 'yes');
           //document.getElementById("videoConfStart").style.display = "inline";
           $("#buttonpage").css({
-
+            "min-height": "auto"
           });
         }
         if (data.data.chatRights == 'yes') {
@@ -538,15 +517,10 @@ function disconnecSession() {
     // window.location.href = "https://norecruits.com";
   } else {
     if (localStorage.getItem("careatorEmail")) {
-      signaling_socket.emit("disconnectNotification", {
-        "email": localStorage.getItem("careatorEmail"),
-        "sessionURL": window.location.href
-      })
-    } else {
-      signaling_socket.emit("disconnectNotification", {
-        "email": localStorage.getItem("careator_remoteEmail"),
-        "sessionURL": window.location.href
-      })
+      signaling_socket.emit("disconnectNotification", { "email": localStorage.getItem("careatorEmail"), "sessionURL": window.location.href })
+    }
+    else {
+      signaling_socket.emit("disconnectNotification", { "email": localStorage.getItem("careator_remoteEmail"), "sessionURL": window.location.href })
     }
     //window.location.href = "https://norecruits.com";
   }
@@ -665,8 +639,7 @@ signaling_socket.on("connect", function () {
       document.getElementById("homeLink").style.display = "inline";
       //document.getElementById("videoConfStart").style.display = "none";
       $("#buttonpage").css({
-
-
+        "min-height": "100vh"
       });
       document.getElementById("openChat").style.display = "inline";
       document.getElementById("audio_btn").style.display = "inline";
@@ -709,7 +682,7 @@ signaling_socket.on("connect", function () {
             careator_remoteEmail = true;
             //document.getElementById("videoConferenceUrl").style.display = "none";
             document.getElementById("emailInvitation").style.display = "none";
-            document.getElementById("videoCtrolBar").style.display = "inline";
+            document.getElementById("videoCtrolBar").style.display = "block";
             localStorage.setItem("oneTimePassword", careator_remotePswd);
             $('#remoteJoin').modal('hide');
             setup_local_media(function () {
@@ -725,16 +698,15 @@ signaling_socket.on("connect", function () {
             //document.getElementById("videoConferenceUrl").style.display = "none";
             document.getElementById("emailInvitation").style.display = "none";
             userName = "";
-            if (err.responseJSON.errorCode == "E0_URLE" || err.responseJSON.errorCode == "E0_alreadyInUse" || err.responseJSON.errorCode == "E1_credentialMismatch") {
+            if (err.responseJSON.errorCode == "E0_URLE" || err.responseJSON.errorCode == "E0_alreadyInUse") {
               $('#remoteJoin').modal('hide');
               document.getElementById('notify_msg_content').innerHTML = err.responseJSON.message;
               document.getElementById('resetBtn').style.display = 'none';
               $("#notify_msg_button").trigger("click");
               setTimeout(function () {
-                close();
+                window.close();
               }, 3000);
             }
-
           }
         });
 
@@ -767,7 +739,7 @@ signaling_socket.on("connect", function () {
             careator_remoteEmail = true;
             //document.getElementById("videoConferenceUrl").style.display = "none";
             document.getElementById("emailInvitation").style.display = "none";
-            document.getElementById("videoCtrolBar").style.display = "inline";
+            document.getElementById("videoCtrolBar").style.display = "block";
             localStorage.setItem("oneTimePassword", careator_remotePswd);
             $('#remoteJoin').modal('hide');
             setup_local_media(function () {
@@ -783,14 +755,13 @@ signaling_socket.on("connect", function () {
             // document.getElementById("videoConferenceUrl").style.display = "none";
             document.getElementById("emailInvitation").style.display = "none";
             userName = "";
-            if (err.responseJSON.errorCode == "E0_URLE" || err.responseJSON.errorCode == "E0_alreadyInUse" || err.responseJSON.errorCode == "E1_credentialMismatch") {
-
+            if (err.responseJSON.errorCode == "E0_URLE" || err.responseJSON.errorCode == "E0_alreadyInUse") {
               $('#remoteJoin').modal('hide');
               document.getElementById('notify_msg_content').innerHTML = err.responseJSON.message;
               document.getElementById('resetBtn').style.display = 'none';
               $("#notify_msg_button").trigger("click");
               setTimeout(function () {
-                close();
+                window.close();
               }, 3000);
             }
           }

@@ -1152,11 +1152,11 @@ body.mobile-nav-active #mobile-nav-toggle {
 --------------------------------*/
 
 #portfolio {
-  background-image: url(././lc.jpg);
+  
   /* background: #f7f7f7; */
   padding: 0;
   margin-top: 120px;
-  background-attachment: fixed;
+ 
 }
 
 #portfolio #portfolio-wrapper {

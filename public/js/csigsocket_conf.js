@@ -928,7 +928,7 @@ signaling_socket.on("addPeer", function (config) {
     peer_media_elements[peer_id] = remote_media;
     remote_media.attr("id", peer_id + "Remote");
     $("#portfolio-wrapper").append(
-      '<div id="' + peer_id + 'remoteContainer" class="portfolio-items col-xs-6 col-sm-6 col-md-4 col-lg-3" ><div id="' +
+      '<div id="' + peer_id + 'remoteContainer" class="portfolio-items col-xs-4 col-sm-4 col-md-4 col-lg-3" ><div id="' +
       peer_id + 'remoteVideoElement"></div><div class="details"><button id="' +
       peer_id + 'fullscreenbtn2" class="btn fa fa-expand" style="float:left;  margin-top: 10px; margin-left: 10px;"></button><h4>' +
       config.userName + '</h4><i style="display:none; float:right;color: #555555e3; margin-top: -15px; margin-right: 10px;" id="closeThisConn' +
@@ -1389,7 +1389,7 @@ function setup_local_media(callback, errorback) {
       // );
 
       $("#portfolio-wrapper").append(
-        '<div id="videoElem111" class="portfolio-items col-xs-6 col-sm-6 col-md-4 col-lg-3"><div id="videosAttach"></div><div class="details"><button id="fullscreenbtn" class="btn fa fa-expand" style="float:left; margin-top: 10px; margin-left: 10px;"></button><h4>' +
+        '<div id="videoElem111" class="portfolio-items col-xs-4 col-sm-4 col-md-4 col-lg-3"><div id="videosAttach"></div><div class="details"><button id="fullscreenbtn" class="btn fa fa-expand" style="float:left; margin-top: 10px; margin-left: 10px;"></button><h4>' +
         userName +
         "</h4> </div></div>"
       );

@@ -1228,8 +1228,8 @@ body.mobile-nav-active #mobile-nav-toggle {
   color: #d9f7e9b5;
   font-size: 15px;
   margin-top: 15px;
-  margin-right: 100px;
-  float: right;
+  /* margin-right: 100px;
+  float: right; */
   font-weight: 100;
 }
 

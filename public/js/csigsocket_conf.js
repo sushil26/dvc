@@ -994,7 +994,7 @@ signaling_socket.on("addPeer", function (config) {
       });
       $
       $("#videoElem").css({
-        // height: "auto",
+        height: "auto",
         width: "20%"
       });
       $("#videoElem111").removeClass(
@@ -1018,7 +1018,7 @@ signaling_socket.on("addPeer", function (config) {
         "portfolio-items col-xs-4 col-sm-4 col-md-4 col-lg-3"
       );
       $("#" + peer_id + "Remote").css({
-        // height: "auto"
+       height: "25vh"
       });
       $("#videosAttach").css({
         "z-index": "",

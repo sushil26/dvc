@@ -577,7 +577,7 @@
                         <div class="modal fade" id="invitePeople" role="dialog">
                             <div class="modal-dialog">
                                 <center>
-                                    <form>
+                                    <form onSubmit="return false;">
                                         <div class="modal-content" style="color:#777;max-width:350px; border-radius: 8px;">
                                             <div class="modal-header" style="display: table-caption;padding-top: 15px;background-image: linear-gradient(to bottom, #383c3f 0%, #202224 100%);">
                                                 <img style="width: 45px; margin-top: -15px;margin-left: -170px;" src="/home/img/fav.png" />
@@ -854,11 +854,12 @@
                 $("#loginsubmit").click();
             }
         });
-        // $("#emailInvite").keyup(function (event) {
-        //     if (event.keyCode === 13) {
-        //         $("#invitebutton").click();
-        //     }
-        // });
+        $("#emailInvite").keyup(function (event) {
+            if (event.keyCode === 13) {
+                event.preventDefault();
+                $("#invitebutton").click();
+            }
+        });
     </script>
     <script>
         $(document).ready(function () {

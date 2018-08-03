@@ -166,131 +166,6 @@ function triggerInvite() {
   $("#enterPswd").trigger("click");
 }
 
-
-// function checkCredential() {
-//   console.log("checkCredential-->");
-//   $('#myEmailModal').modal('hide');
-//   var password = document.getElementById("careatorPswd").value;
-//   var careatorEmail = document.getElementById("careatorEmail").value;
-//   var obj = {
-//     "password": password,
-//     "careatorEmail": careatorEmail
-//   };
-//   console.log("obj: " + JSON.stringify(obj));
-//   if (password != "" && careatorEmail != "") {
-
-//     $.ajax({
-//       url: "https://norecruits.com/careator/pswdCheck",
-//       type: "POST",
-//       data: JSON.stringify(obj),
-//       contentType: "application/json",
-//       dataType: "json",
-//       success: function (data) {
-//         console.log("data: " + JSON.stringify(data))
-//         //alert("succes");
-//         localStorage.setItem("careatorEmail", careatorEmail);
-//         localStorage.setItem("userName", data.data.name);
-//         localStorage.setItem("empId", data.data.empId);
-//         localStorage.setItem("email", data.data.email);
-//         localStorage.setItem("userId", data.data._id);
-//         localStorage.setItem("sessionPassword", password);
-//         localStorage.setItem("sessionRandomId", data.data.sessionRandomId);
-//         localStorage.setItem("sessionEnc", data.sessionData);
-//         userName = localStorage.getItem("userName");
-//         if (data.data.videoRights == 'yes') {
-//           localStorage.setItem("videoRights", 'yes');
-//           //document.getElementById("videoConfStart").style.display = "inline";
-//           $("#buttonpage").css({
-//             "min-height": "auto"
-//           });
-//         }
-//         if (data.data.chatRights == 'yes') {
-//           localStorage.setItem("chatRights", 'yes');
-//           //document.getElementById("chatConfStart").style.display = "inline";
-//         }
-//         if (data.data.chatStatus) {
-//           localStorage.setItem("chatStatus", data.data.chatStatus);
-//         }
-//         if (data.data.restrictedTo) {
-//           console.log("data.data.restrictedTo: " + JSON.stringify(data.data.restrictedTo));
-//           var restrictedTo = data.data.restrictedTo;
-//           var restrictedArray = [];
-//           for (var x = 0; x < restrictedTo.length; x++) {
-//             restrictedArray.push(restrictedTo[x].userId);
-//           }
-
-//           console.log("restrictedArray: " + restrictedArray);
-//           localStorage.setItem("restrictedTo", restrictedArray);
-//         }
-//         if (data.data.profilePicPath) {
-//           localStorage.setItem("profilePicPath", data.data.profilePicPath);
-//         }
-//         var userNameEmail = localStorage.getItem("careatorEmail");
-//         console.log("userName: " + userName);
-//        // document.getElementById("videoConferenceUrl").style.display = "block";
-//         // $('#myPasswordModal').modal('hide');
-//         window.location.href = "https://norecruits.com/careatorApp/#!/dashboard/profile";
-//       },
-//       error: function (err) {
-//         console.log("err: " + JSON.stringify(err));
-//         console.log("err.responseText: " + JSON.stringify(err.responseText));
-//         console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
-//         if (err.responseJSON.message == "You've already logged in. To log in again, please reset your session") {
-//           console.log("You already logged in, please logout your old session in-order to login");
-//           document.getElementById('notify_msg_content').innerHTML = err.responseJSON.message;
-//           document.getElementById('resetBtn').style.display = 'inline';
-//           $("#notify_msg_button").trigger("click");
-//           resetId = err.responseJSON.data.id;
-//         } else {
-//           // alert(err.responseJSON.message);
-//           $("#alertButton").trigger("click");
-//           var x =
-//             document.getElementById('alertcontent').innerHTML = err.responseJSON.message + "<br>Please try with correct password or contact Admin";
-//         }
-//        // document.getElementById("videoConferenceUrl").style.display = "none";
-//         localStorage.removeItem("careatorEmail");
-//         userName = "";
-//       }
-//     });
-//   } else {
-//     console.log("password trigger again-->");
-//     console.log("Password empty");
-//   }
-//   console.log("<--checkCredential");
-// }
-
-// function resetLoginFlag() {
-//   console.log("resetLoginFlag-->");
-//   $("#notify_msg").modal('hide');
-//   var id = resetId;
-//   console.log("Obj ID  " + id);
-
-//   $.ajax({
-//     url: "https://norecruits.com/careator_reset/resetLoginFlagsById/" + id,
-//     type: "POST",
-//     data: JSON.stringify(checkObj),
-//     contentType: "application/json",
-//     dataType: "json",
-//     success: function (data) {
-//       console.log("data: " + JSON.stringify(data));
-
-//       document.getElementById('notify_msg_show_content').innerHTML = "Reset successfully done,now you can login";
-//       $("#notify_msg_show_button").trigger("click");
-
-//     },
-//     error: function (err) {
-//       console.log("err: " + JSON.stringify(err));
-//       console.log("err.responseText: " + JSON.stringify(err.responseText));
-//       console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
-//       document.getElementById('notify_msg_show_content').innerHTML = "Reset unsuccessfull";
-//       $("#notify_msg_show_button").trigger("click");
-
-//     }
-//   });
-
-//   console.log("<--statusChange");
-// }
-
 function triggerforLogin() {
   console.log("triggerforLogin-->");
   $("#notify_msg_show").modal('hide');
@@ -1139,7 +1014,7 @@ signaling_socket.on("addPeer", function (config) {
       console.log("<--onaddstream");
     };
     if (local_media_stream) {
-      if (window.matchMedia('(max-width: 500px)').matches) {
+      if (window.matchMedia('max-width: 500px').matches) {
         $("#screenShareBtn").css({"display" : "inline"})
       }
       document.getElementById("screenShareStop").style.display = "none";

@@ -989,6 +989,8 @@ signaling_socket.on("addPeer", function (config) {
       $("#" + peer_id + "remoteContainer").removeClass(
         "portfolio-items col-xs-4 col-sm-4 col-md-4 col-lg-3"
       );
+      $("#portfolio >.portfolio-items").css({"position":"absolute"})
+
       $("#" + peer_id + "Remote").css({
         height: "82vh"
       });
@@ -1013,6 +1015,7 @@ signaling_socket.on("addPeer", function (config) {
     });
     $("#btnrestore").click(function () {
       console.log("add id videoElem111");
+      $("#portfolio >.portfolio-items").css({"position":"relative"})
       $("#" + peer_id + "remoteVideoElement").removeClass("fullscr");
       $("#" + peer_id + "remoteContainer").addClass(
         "portfolio-items col-xs-4 col-sm-4 col-md-4 col-lg-3"

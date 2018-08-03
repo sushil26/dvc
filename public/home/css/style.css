@@ -1157,7 +1157,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   background-image: url(././lc.jpg);
   /* background: #f7f7f7; */
   padding: 0;
-  /* margin-top: 72px; */
+ margin-top: 120px; 
   background-attachment: fixed;
 }
 

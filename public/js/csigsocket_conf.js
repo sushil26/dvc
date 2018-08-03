@@ -1140,7 +1140,7 @@ signaling_socket.on("addPeer", function (config) {
     };
     if (local_media_stream) {
       if (window.matchMedia('(max-width: 500px)').matches) {
-        document.getElementById("screenShareBtn").style.display = "inline";
+        $("#screenShareBtn").css({"display" : "inline"})
       }
       document.getElementById("screenShareStop").style.display = "none";
       document.getElementById("video_btn").style.display = "inline";

@@ -1036,8 +1036,8 @@ signaling_socket.on("addPeer", function (config) {
       $("#videosAttach").css({
         "z-index": "4",
         "position": "fixed",
-        "right": "20px",
-        "bottom": "25px",
+        "right": "35px",
+        "bottom": "30px"
       }
 
       );

@@ -985,6 +985,7 @@ signaling_socket.on("addPeer", function (config) {
     $("#" + peer_id + "fullscreenbtn2").click(function () {
       console.log("sushil screen test");
       console.log("remove id videoElem111");
+      $("#btnrestore").css({"display":"inline"})
       $("#" + peer_id + "remoteVideoElement").addClass("fullscr");
       $("#" + peer_id + "remoteContainer").removeClass(
         "portfolio-items col-xs-4 col-sm-4 col-md-4 col-lg-3"
@@ -1014,7 +1015,9 @@ signaling_socket.on("addPeer", function (config) {
       document.getElementById("btnrestore").style.display = "inline";
     });
     $("#btnrestore").click(function () {
+
       console.log("add id videoElem111");
+      $("#btnrestore").css({"display":"none"})
       $("#portfolio .portfolio-items").css({"position":"relative"})
       $("#" + peer_id + "remoteVideoElement").removeClass("fullscr");
       $("#" + peer_id + "remoteContainer").addClass(

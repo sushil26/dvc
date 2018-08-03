@@ -931,7 +931,7 @@ signaling_socket.on("addPeer", function (config) {
       '<div id="' + peer_id + 'remoteContainer" class="portfolio-items col-xs-4 col-sm-4 col-md-4 col-lg-3" ><div id="' +
       peer_id + 'remoteVideoElement"></div><div class="details"><button id="' +
       peer_id + 'fullscreenbtn2" class="btn fa fa-expand" style="float:left;  margin-top: 10px; margin-left: 10px;margin-right: 10px;"></button><h4>' +
-      config.userName + '</h4><i style="display:none; float:right;color: #555555e3; margin-top: -15px; margin-right: 10px;" id="closeThisConn' +
+      config.userName + '</h4><i style="display:none; float:right;color: #555555e3; margin-top: -25px; margin-right: 10px;" id="closeThisConn' +
       peer_id + '" class="fa fa-window-close cancelColrChange" aria-hidden="true" id="closeThisConn' +
       peer_id + '" owner=' + peer_id + " name=" + config.userName + "></i> </div></div>");
     $("#" + peer_id + "remoteVideoElement").append(remote_media);

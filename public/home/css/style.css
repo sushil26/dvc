@@ -1167,7 +1167,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 #portfolio #portfolio-flters {
   padding: 0;
-  margin: 0 0 45px 0;
+  /* margin: 0 0 45px 0; */
   list-style: none;
   text-align: center;
 }
@@ -1176,7 +1176,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   cursor: pointer;
   margin: 0 10px;
   display: inline-block;
-  padding: 10px 22px;
+  /* padding: 10px 22px; */
   font-size: 12px;
   line-height: 20px;
   color: #666666;

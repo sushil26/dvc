@@ -1020,7 +1020,7 @@ signaling_socket.on("addPeer", function (config) {
       $("#" + peer_id + "remoteContainer").removeClass(
         "portfolio-items col-xs-4 col-sm-4 col-md-4 col-lg-3"
       );
-      $("#portfolio .portfolio-items").css({"position":"absolute"})
+      // $("#portfolio .portfolio-items").css({"position":"absolute"})
 
       $("#" + peer_id + "Remote").css({
         height: "82vh"

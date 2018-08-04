@@ -917,7 +917,7 @@ signaling_socket.on("addPeer", function (config) {
 
         );
         // document.getElementById("someid").style.display = "none";
-        document.getElementById("btnrestore").style.display = "inline";
+        // document.getElementById("btnrestore").style.display = "inline";
       });
       $("#btnrestore").click(function () {
 
@@ -925,32 +925,31 @@ signaling_socket.on("addPeer", function (config) {
         $("#btnrestore").css({
           "display": "none"
         })
-        $("#portfolio .portfolio-items").css({
-          "position": "relative"
-        })
         $("#" + peer_id + "remoteVideoElement").removeClass("fullscr");
         $("#" + peer_id + "remoteContainer").addClass(
           "portfolio-items col-xs-4 col-sm-4 col-md-4 col-lg-3"
         );
+        $("#portfolio .portfolio-items").css({
+          "position": "relative"
+        })
+
         $("#" + peer_id + "Remote").css({
-          height: "25vh"
+          height: "82vh"
         });
-        $("#videosAttach").css({
-            "z-index": "",
-            "position": ""
-          }
-
-        );
+        $
         $("#videoElem").css({
-
           height: "",
           width: ""
         });
         $("#videoElem111").addClass(
           "portfolio-items col-xs-4 col-sm-4 col-md-4 col-lg-3"
         );
-
-        document.getElementById("btnrestore").style.display = "none";
+        $("#videosAttach").css({
+            "z-index": "",
+            "position": "",
+            "right": "",
+            "bottom": ""
+          })
       });
       // var fullscreenbtn2;
       // vid2 = document.getElementById(peer_id + "Remote");

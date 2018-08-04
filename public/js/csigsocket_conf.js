@@ -922,13 +922,17 @@ signaling_socket.on("addPeer", function (config) {
       $("#btnrestore").click(function () {
 
         console.log("add id videoElem111");
-        $("#btnrestore").css({
-          "display": "none"
-        })
+        $("#videoElem111").addClass(
+          "portfolio-items col-xs-4 col-sm-4 col-md-4 col-lg-3"
+        );
         $("#" + peer_id + "remoteVideoElement").removeClass("fullscr");
         $("#" + peer_id + "remoteContainer").addClass(
           "portfolio-items col-xs-4 col-sm-4 col-md-4 col-lg-3"
         );
+        $("#btnrestore").css({
+          "display": "none"
+        })
+      
         $("#portfolio .portfolio-items").css({
           "position": "relative"
         })
@@ -938,13 +942,10 @@ signaling_socket.on("addPeer", function (config) {
         });
         $
         $("#videoElem").css({
-          position:"relative",
           height: "",
           width: ""
         });
-        $("#videoElem111").addClass(
-          "portfolio-items col-xs-4 col-sm-4 col-md-4 col-lg-3"
-        );
+      
         $("#videosAttach").css({
             "z-index": "",
             "position": "",

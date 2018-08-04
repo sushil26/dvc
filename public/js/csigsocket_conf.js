@@ -886,14 +886,19 @@ signaling_socket.on("addPeer", function (config) {
       $("#" + peer_id + "fullscreenbtn2").click(function () {
         console.log("sushil screen test");
         console.log("remove id videoElem111");
-        $('html, body').css('overflow', 'hidden'); 
+      
+        $("#videoElem111").removeClass(
+          "portfolio-items col-xs-4 col-sm-4 col-md-4 col-lg-3"
+        );
+        $("#" + peer_id + "remoteContainer").removeClass(
+          "portfolio-items col-xs-4 col-sm-4 col-md-4 col-lg-3"
+        );
+        $('html, body').css('overflow', 'hidden');
         $("#btnrestore").css({
           "display": "inline"
         })
         $("#" + peer_id + "remoteVideoElement").addClass("fullscr");
-        $("#" + peer_id + "remoteContainer").removeClass(
-          "portfolio-items col-xs-4 col-sm-4 col-md-4 col-lg-3"
-        );
+
         $("#portfolio .portfolio-items").css({
           "position": "absolute"
         })
@@ -906,9 +911,7 @@ signaling_socket.on("addPeer", function (config) {
           height: "auto",
           width: "20%"
         });
-        $("#videoElem111").removeClass(
-          "portfolio-items col-xs-4 col-sm-4 col-md-4 col-lg-3"
-        );
+       
         $("#videosAttach").css({
             "z-index": "4",
             "position": "fixed",
@@ -921,20 +924,21 @@ signaling_socket.on("addPeer", function (config) {
         // document.getElementById("btnrestore").style.display = "inline";
       });
       $("#btnrestore").click(function () {
-        $('html, body').css('overflow', 'auto'); 
+        $("#" + peer_id + "remoteVideoElement").removeClass("fullscr");
+        $('html, body').css('overflow', 'auto');
 
         console.log("add id videoElem111");
         $("#videoElem111").addClass(
           "portfolio-items col-xs-4 col-sm-4 col-md-4 col-lg-3"
         );
-        $("#" + peer_id + "remoteVideoElement").removeClass("fullscr");
+ 
         $("#" + peer_id + "remoteContainer").addClass(
           "portfolio-items col-xs-4 col-sm-4 col-md-4 col-lg-3"
         );
         $("#btnrestore").css({
           "display": "none"
         })
-      
+
         $("#portfolio .portfolio-items").css({
           "position": "relative"
         })
@@ -947,13 +951,13 @@ signaling_socket.on("addPeer", function (config) {
           height: "",
           width: ""
         });
-      
+
         $("#videosAttach").css({
-            "z-index": "",
-            "position": "",
-            "right": "",
-            "bottom": ""
-          })
+          "z-index": "",
+          "position": "",
+          "right": "",
+          "bottom": ""
+        })
       });
       // var fullscreenbtn2;
       // vid2 = document.getElementById(peer_id + "Remote");
@@ -1018,7 +1022,9 @@ signaling_socket.on("addPeer", function (config) {
     };
     if (local_media_stream) {
       if (window.matchMedia("(min-width: 500px)").matches) {
-        $("#screenShareBtn").css({"display" : "inline"})
+        $("#screenShareBtn").css({
+          "display": "inline"
+        })
       }
       document.getElementById("screenShareStop").style.display = "none";
       document.getElementById("video_btn").style.display = "inline";

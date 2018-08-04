@@ -938,6 +938,7 @@ signaling_socket.on("addPeer", function (config) {
         });
         $
         $("#videoElem").css({
+          position:"relative",
           height: "",
           width: ""
         });

@@ -886,6 +886,7 @@ signaling_socket.on("addPeer", function (config) {
       $("#" + peer_id + "fullscreenbtn2").click(function () {
         console.log("sushil screen test");
         console.log("remove id videoElem111");
+        $('html, body').css('overflow', 'hidden'); 
         $("#btnrestore").css({
           "display": "inline"
         })
@@ -920,6 +921,7 @@ signaling_socket.on("addPeer", function (config) {
         // document.getElementById("btnrestore").style.display = "inline";
       });
       $("#btnrestore").click(function () {
+        $('html, body').css('overflow', 'auto'); 
 
         console.log("add id videoElem111");
         $("#videoElem111").addClass(

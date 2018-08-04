@@ -1192,6 +1192,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 #portfolio .portfolio-items {
+  width: 50%;
   position: relative;
   overflow: hidden !important;
   transition: all 350ms ease;

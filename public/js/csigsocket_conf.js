@@ -934,7 +934,7 @@ signaling_socket.on("addPeer", function (config) {
         })
 
         $("#" + peer_id + "Remote").css({
-          height: "82vh"
+          height: ""
         });
         $
         $("#videoElem").css({

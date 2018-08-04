@@ -1014,7 +1014,7 @@ signaling_socket.on("addPeer", function (config) {
       console.log("<--onaddstream");
     };
     if (local_media_stream) {
-      if (window.matchMedia("(max-width: 500px)").matches) {
+      if (window.matchMedia("(min-width: 500px)").matches) {
         $("#screenShareBtn").css({"display" : "inline"})
       }
       document.getElementById("screenShareStop").style.display = "none";

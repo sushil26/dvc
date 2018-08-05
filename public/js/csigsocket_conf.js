@@ -886,7 +886,7 @@ signaling_socket.on("addPeer", function (config) {
       $("#" + peer_id + "fullscreenbtn2").click(function () {
         console.log("sushil screen test");
         console.log("remove id videoElem111");
-      
+
         $("#videoElem111").removeClass(
           "portfolio-items col-xs-4 col-sm-4 col-md-4 col-lg-3"
         );
@@ -911,7 +911,7 @@ signaling_socket.on("addPeer", function (config) {
           height: "auto",
           width: "20%"
         });
-       
+
         $("#videosAttach").css({
             "z-index": "4",
             "position": "fixed",
@@ -931,7 +931,7 @@ signaling_socket.on("addPeer", function (config) {
         $("#videoElem111").addClass(
           "portfolio-items col-xs-4 col-sm-4 col-md-4 col-lg-3"
         );
- 
+
         $("#" + peer_id + "remoteContainer").addClass(
           "portfolio-items col-xs-4 col-sm-4 col-md-4 col-lg-3"
         );
@@ -1021,12 +1021,11 @@ signaling_socket.on("addPeer", function (config) {
       console.log("<--onaddstream");
     };
     if (local_media_stream) {
-      if (window.matchMedia("(min-width: 500px)").matches) {
-        console.log("min 500px-->");
-        $("#screenShareBtn").css({
-          "display": "inline"
-        })
-      }
+      
+      $("#screenShareBtn").css({
+        "display": "inline"
+      })
+
       document.getElementById("screenShareStop").style.display = "none";
       document.getElementById("video_btn").style.display = "inline";
       console.log("peer_connection.addStream(local_media_stream)-->");
@@ -1889,3 +1888,10 @@ signaling_socket.on('comm_logoutNotifyToUserById', function (data) {
   // }
 
 })
+
+if (window.matchMedia('(min-width: 500px)').matches) {
+  console.log("<<<<<<<screenShareBtn icon hide>>>>>>>");
+  $("#screenShareBtn").css({
+    "display": "none"
+  })
+}

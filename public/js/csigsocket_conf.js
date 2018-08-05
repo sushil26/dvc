@@ -1888,10 +1888,14 @@ signaling_socket.on('comm_logoutNotifyToUserById', function (data) {
   // }
 
 })
-
-if (window.matchMedia('(min-width: 500px)').matches) {
+var widthSize = window.matchMedia('(min-width: 500px)').matches;
+console.log("widthSize: "+widthSize); 
+if (widthSize) {
   console.log("<<<<<<<screenShareBtn icon hide>>>>>>>");
   $("#screenShareBtn").css({
     "display": "none"
   })
+}
+else{
+  
 }

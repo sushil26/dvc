@@ -1022,6 +1022,7 @@ signaling_socket.on("addPeer", function (config) {
     };
     if (local_media_stream) {
       if (window.matchMedia("(min-width: 500px)").matches) {
+        console.log("min 500px-->");
         $("#screenShareBtn").css({
           "display": "inline"
         })

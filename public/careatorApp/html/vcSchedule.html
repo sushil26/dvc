@@ -66,7 +66,7 @@
                 </div>
                 <div class="panel-body bio-graph-info" style="padding: 1px;">
                   <div style="margin:20px !important;">
-                    <div class="row" ng-if="userLoginType=='admin' || userLoginType=='teacher' || userLoginType=='studParent'">
+                    <div class="row" >
                       <div class="col-md-9 col-sm-12 col-lg-9 col-xs-12 portlets">
                         <div class="panel panel-default">
                           <div class="panel-heading" style="height: 50px;">
@@ -74,7 +74,7 @@
                               <div style="float:left !important; position: absolute;
                       left: 0;">
       
-                                <select class="btn btn-warning" ng-if="userLoginType=='teacher'" placeholder="select" ng-model="cssSelect" ng-change="getStudListForCS(cssSelect)"
+                                <select class="btn btn-warning"  placeholder="select" ng-model="cssSelect" ng-change="getStudListForCS(cssSelect)"
                                   ng-options="css as css.class+ '-' + css.section for css in teacherData[0].css">
                                   <option value="" disabled selected>Class</option>
                                 </select>

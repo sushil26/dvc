@@ -1,4 +1,4 @@
-var careatorApp = angular.module('careatorCommApp', ['ui.router', 'angularjs-dropdown-multiselect', 'ngCookies', 'ngImgCrop', 'angularUtils.directives.dirPagination', 'angular-loading-bar', 'angularMoment','oitozero.ngSweetAlert']);
+var careatorApp = angular.module('careatorCommApp', ['ui.router', 'angularjs-dropdown-multiselect', 'ngCookies', 'ngImgCrop', 'angularUtils.directives.dirPagination', 'angular-loading-bar', 'angularMoment','oitozero.ngSweetAlert', 'mwl.calendar', 'angularMoment', 'ui.bootstrap']);
 
 careatorApp.config(['cfpLoadingBarProvider', function (cfpLoadingBarProvider) {
     // cfpLoadingBarProvider.includeBar = true;
@@ -150,6 +150,21 @@ careatorApp.config(function ($stateProvider) {
             }
 
         })
+
+        .state('Cdashboard.vc4allSchedule', {
+            url: careator_vc4allSchedule(),
+            templateUrl: '/careatorApp/html/vcSchedule.html',
+            resolve: {
+                result: function (careatorSessionAuth, $window) {
+                    // var userData = careatorSessionAuth.getAccess("userData");
+                    // if (userData.email == 'vc4all@careator.com') {
+
+                    // } else {
+                    //     $window.location.href = 'https://norecruits.com';
+                    // }
+                }
+            }
+        })
 })
 
 function ipost() {
@@ -203,4 +218,8 @@ function careator_chat() {
 
 function careator_userRestrict() {
     return '/userRestrict'
+}
+
+function careator_vc4allSchedule(){
+    return '/vc4allSchedule';
 }

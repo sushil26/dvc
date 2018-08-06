@@ -634,6 +634,12 @@ function startSession(id, date) {
 
 /* ### Note:End Whenever page refresh get the chathistory respective to url  ### */
 
+document.getElementById("scheduleVC").addEventListener("click", function () {
+    console.log("scheduleVC4ALL Emp--->");
+    window.location.href="https://norecruits.com/careatorApp/#!/dashboard/vc4allSchedule"
+
+})
+
 signaling_socket.on("connect", function () {
   console.log("signaling_socket connect-->");
   if (disconnPeerId != null) {
@@ -659,7 +665,7 @@ signaling_socket.on("connect", function () {
     console.log("date: " + date);
     // if (config.queryId == null) {
     console.log("query id is null");
-    document.getElementById("videoConfStart").setAttribute("onclick", "startSession('" + peerNew_id + "' , '" + date + "')");
+    document.getElementById("instantVC").setAttribute("onclick", "startSession('" + peerNew_id + "' , '" + date + "')");
     document.getElementById("linkToShare").setAttribute("href", "https://norecruits.com/careator_conf/" + peerNew_id + "/" + date);
     document.getElementById("linkToShare").innerHTML = "https://norecruits.com/careator_conf/" + peerNew_id + "/" + date;
     // } else {

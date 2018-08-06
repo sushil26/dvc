@@ -137,7 +137,8 @@
             color: green !important;
 
         }
-        .bsdsdsdsd{
+
+        .bsdsdsdsd {
             background-image: url("/careatorApp/css/bc.jpg");
         }
     </style>
@@ -233,7 +234,7 @@
                                 <table>
                                     <tr>
                                         <td>
-                                            <button id="videoConfStart" style="margin-top: 50px;display:none;" class="example facebook slideLeft ">
+                                            <button id="videoConfStart" style="margin-top: 50px;display:none;" class="example facebook slideLeft"  data-toggle="modal" data-target="#instantOrSched">
                                                 <i class="fa fa-video-camera"></i>&nbsp;Video
                                             </button>
                                         </td>
@@ -428,7 +429,7 @@
                                 </div>
                             </div>
 
-                            <!-- <button data-toggle="modal" data-target="#remoteJoin" id="setName" data-backdrop="static" data-keyboard="false" style="display:none">Set Name</button> -->
+                            <button data-toggle="modal" data-target="#instantOrSched" id="vcType" data-backdrop="static" data-keyboard="false" style="display:none">Set Name</button>
                             <button data-toggle="modal" data-target="#myEmailModal" id="enterEmail" data-backdrop="static" data-keyboard="false" style="display:none">Set Name</button>
                             <!-- <button data-toggle="modal" data-target="#myPasswordModal" id="enterPswd" data-backdrop="static" data-keyboard="false" style="display:none">Enter Password</button> -->
                             <button data-toggle="modal" data-target="#notify_msg" id="notify_msg_button" data-backdrop="static" data-keyboard="false"
@@ -481,25 +482,25 @@
                                     </center>
                                 </div>
                             </div>
-                            <!-- <div class="modal fade" id="remoteJoin" role="dialog">
-                            <div class="modal-dialog">
-                                <center>
-                                    <div class="modal-content" style="color:#777;max-width:350px;">
-                                        <div class="modal-header" style="background-color: #1c3852;">
-                                            <h4 class="modal-title" style="font-size: 15px;">Please enter your email and one time password</h4>
+                            <div class="modal fade" id="instantOrSched" role="dialog">
+                                <div class="modal-dialog">
+                                    <center>
+                                        <div class="modal-content" style="color:#777;max-width:350px;">
+                                            <div class="modal-header" style="background-color: #1c3852;">
+                                                <h4 class="modal-title" style="font-size: 15px;">Instant or Schedule??</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <button id="instantVC" type="button" style="background-color: #29b6bd;color:#f1f1f1" class="btn">Instant</button>
+                                                <br>
+                                                <button id="scheduleVC" type="button" style="background-color: #29b6bd;color:#f1f1f1" class="btn">Schedule</button>
+                                            </div>
+                                            <div class="modal-footer" style="border-top:0px;background-color: #f5f5f5;">
+                                                <button id="setNameId" type="button" style="background-color: #29b6bd;color:#f1f1f1" data-dismiss="modal">Cancel</button>
+                                            </div>
                                         </div>
-                                        <div class="modal-body">
-                                            <input type="email" class="form-control" placeholder="Enter your email" id="remote_userName">
-                                            <br>
-                                            <input type="password" class="form-control" placeholder="Enter your one time password" id="remote_password">
-                                        </div>
-                                        <div class="modal-footer" style="border-top:0px;background-color: #f5f5f5;">
-                                            <button id="setNameId" type="button" style="background-color: #29b6bd;color:#f1f1f1" class="btn">Submit</button>
-                                        </div>
-                                    </div>
-                                </center>
+                                    </center>
+                                </div>
                             </div>
-                        </div> -->
                             <div class="modal fade" id="myEmailModal" role="dialog">
                                 <div class="modal-dialog">
                                     <center>

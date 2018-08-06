@@ -1,4 +1,4 @@
-app.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, $rootScope, $state, $rootScope, $compile, $window, $filter, careatorHttpFactory, careatorSessionAuth, moment, calendarConfig, $uibModal) {
+careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, $rootScope, $state, $rootScope, $compile, $window, $filter, careatorHttpFactory, careatorSessionAuth, moment, calendarConfig, $uibModal) {
     console.log("vc4allEmpScheduleCtrl==>");
     var dayEventmodal; /* ### Note: open model for event send ###  */
     var studEvents = []; /* ### Note: selected student events ### */

@@ -352,6 +352,45 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
     //   // window.location.href = "https://norecruits.com";
     // }
   
+    // $scope.getAllEmp = function(){
+    //   console.log("getStudListForCS-->");
+    //   $scope.getAllChatRightEmp = function () {
+    //     console.log("getAllChatRightEmp-->");
+       
+    //     var id = userData.userId;
+    //     api = "https://norecruits.com/careator_getEmp/careator_getAllemp_whoActive/" +
+    //       id; /* #### without restricted emp  #### */
+    //     console.log("api: " + JSON.stringify(api));
+    //     careatorHttpFactory.get(api).then(function (data) {
+    //       console.log("data--" + JSON.stringify(data.data));
+    //       var checkStatus = careatorHttpFactory.dataValidation(data);
+    //       if (checkStatus) {
+    //         $scope.allEmp = data.data.data;
+    //         console.log(" $scope.allEmp : " + JSON.stringify($scope.allEmp));
+    //         console.log("data.data.message: " + data.data.message);
+    //         for (var x = 0; x < $scope.allEmp.length; x++) {
+    //           $scope.allGroupAndIndividual.push($scope.allEmp[x]);
+    //           $scope.allEmpWithIndexById[$scope.allEmp[x]._id] = $scope.allEmp[x];
+    //         }
+    //         for (var x = 0; x < $scope.allGroup.length; x++) {
+    //           $scope.allGroupAndIndividual.push($scope.allGroup[x]);
+    //         }
+    //         console.log(
+    //           " $scope.allEmpWithIndexById: " +
+    //           JSON.stringify($scope.allEmpWithIndexById)
+    //         );
+    //         console.log(
+    //           " $scope.allGroupAndIndividual: " +
+    //           JSON.stringify($scope.allGroupAndIndividual)
+    //         );
+    //       } else {
+    //         console.log("Sorry: " + data.data.message);
+    //       }
+    //     });
+    //   };
+    //   $scope.getAllChatRightEmp();
+    // }
+
     // $scope.getStudListForCS = function (css) {
   
     //   console.log("getStudListForCS-->");

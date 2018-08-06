@@ -49,12 +49,12 @@ console.log("id1**: " + id1);
 queryLink = id1;
 console.log("id2**: " + id2);
 
-$.browser.firefox = /firefox/.test(navigator.userAgent.toLowerCase());
-$.browser.chrome = /chrome/.test(navigator.userAgent.toLowerCase());
-$.browser.safari = /safari/.test(navigator.userAgent.toLowerCase());
-$.browser.opera = /opera/.test(navigator.userAgent.toLowerCase());
-if ($.browser.firefox == true || $.browser.chrome == true || $.browser.safari == true || $.browser.opera == true) {
-  console.log("Your in any one these browser: 1) Chrome, 2) Firefox, 3) Safari, 4) Opera");
+// $.browser.firefox = /firefox/.test(navigator.userAgent.toLowerCase());
+// $.browser.chrome = /chrome/.test(navigator.userAgent.toLowerCase());
+// $.browser.safari = /safari/.test(navigator.userAgent.toLowerCase());
+// $.browser.opera = /opera/.test(navigator.userAgent.toLowerCase());
+// if ($.browser.firefox == true || $.browser.chrome == true || $.browser.safari == true || $.browser.opera == true) {
+//   console.log("Your in any one these browser: 1) Chrome, 2) Firefox, 3) Safari, 4) Opera");
 
   // console.log("localStorage.getItem(careatorEmail )" +localStorage.getItem("careatorEmail")+"localStorage.getItem(sessionPassword): "+localStorage.getItem("sessionPassword"));
   if (stuff.length > 5) {
@@ -1922,8 +1922,8 @@ if ($.browser.firefox == true || $.browser.chrome == true || $.browser.safari ==
   // }
 
 
-}
-else {
-  console.log("Your in none of these browser: 1) Chrome, 2) Firefox, 3) Safari, 4) Opera");
-  alert("Please open this link in chrome/firefox/safari/opera");
-}
+//}
+// else {
+//   console.log("Your in none of these browser: 1) Chrome, 2) Firefox, 3) Safari, 4) Opera");
+//   alert("Please open this link in chrome/firefox/safari/opera");
+// }

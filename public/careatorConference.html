@@ -248,7 +248,7 @@
                             </a>
                         </td>
                         <td>
-                            <a id="screenShareBtn" class="bcg">
+                            <a class="screenShareBtn_Class" id="screenShareBtn" class="bcg">
                                 <button id="screenBtns" style="display:none;" class="bouncy fa fa-window-restore"></button>
                                 <center>
                                     <div class="mtitle w3-animate-right">Screen</div>
@@ -1170,12 +1170,12 @@
             background-color: #fafafa;
             border: thin solid #f3f3f3;
         }
-
-       @media (max-width: 768px) {
-            #screenShareBtn{
+        @media only screen and (max-width: 600px) {
+            .screenShareBtn_Class{
                 display: "none"
             }
         }
+      
     </style>
     </div>
 </body>

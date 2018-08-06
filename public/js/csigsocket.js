@@ -636,6 +636,7 @@ function startSession(id, date) {
 
 document.getElementById("scheduleVC").addEventListener("click", function () {
     console.log("scheduleVC4ALL Emp--->");
+    window.location.href="https://norecruits.com/careatorApp/#!/dashboard/vc4allSchedule"
 
 })
 

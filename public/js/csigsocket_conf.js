@@ -1889,14 +1889,14 @@ signaling_socket.on('comm_logoutNotifyToUserById', function (data) {
   // }
 
 })
-var widthSize = window.matchMedia('(max-width: 500px)').matches;
-console.log("widthSize: "+widthSize); 
-if (widthSize) {
-  console.log("<<<<<<<screenShareBtn icon hide>>>>>>>");
-  $("#screenShareBtn").css({
-    "display": "none"
-  })
-}
-else{
+// var widthSize = window.matchMedia('(max-width: 500px)').matches;
+// console.log("widthSize: "+widthSize); 
+// if (widthSize) {
+//   console.log("<<<<<<<screenShareBtn icon hide>>>>>>>");
+//   $("#screenShareBtn").css({
+//     "display": "none"
+//   })
+// }
+// else{
   
-}
+// }

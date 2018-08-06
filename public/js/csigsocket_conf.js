@@ -53,6 +53,8 @@ console.log("id2**: " + id2);
 // $.browser.chrome = /chrome/.test(navigator.userAgent.toLowerCase());
 // $.browser.safari = /safari/.test(navigator.userAgent.toLowerCase());
 // $.browser.opera = /opera/.test(navigator.userAgent.toLowerCase());
+console.log("navigator.userAgent: "+navigator.userAgent);
+alert("navigator.userAgent: "+navigator.userAgent);
  if (navigator.userAgent.search("Chrome") >= 0 || navigator.userAgent.search("Firefox") >= 0 || navigator.userAgent.search("Safari") >= 0 && navigator.userAgent.search("Chrome") < 0 || navigator.userAgent.search("Opera") >= 0) {
    console.log("Your in any one these browser: 1) Chrome, 2) Firefox, 3) Safari, 4) Opera");
 

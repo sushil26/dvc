@@ -53,7 +53,7 @@ console.log("id2**: " + id2);
 // $.browser.chrome = /chrome/.test(navigator.userAgent.toLowerCase());
 // $.browser.safari = /safari/.test(navigator.userAgent.toLowerCase());
 // $.browser.opera = /opera/.test(navigator.userAgent.toLowerCase());
- if (navigator.userAgent.search("MSIE")>= 0 || navigator.userAgent.search("Chrome") >= 0 || navigator.userAgent.search("Firefox") >= 0 || navigator.userAgent.search("Safari") >= 0 && navigator.userAgent.search("Chrome") < 0 || navigator.userAgent.search("Opera") >= 0) {
+ if (navigator.userAgent.search("Chrome") >= 0 || navigator.userAgent.search("Firefox") >= 0 || navigator.userAgent.search("Safari") >= 0 && navigator.userAgent.search("Chrome") < 0 || navigator.userAgent.search("Opera") >= 0) {
    console.log("Your in any one these browser: 1) Chrome, 2) Firefox, 3) Safari, 4) Opera");
 
   // console.log("localStorage.getItem(careatorEmail )" +localStorage.getItem("careatorEmail")+"localStorage.getItem(sessionPassword): "+localStorage.getItem("sessionPassword"));

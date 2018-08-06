@@ -262,7 +262,7 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
       $scope.selectedDate = date;
       dayEventmodal = $uibModal.open({
         scope: $scope,
-        templateUrl: '/common/scheduleTemplate.html',
+        templateUrl: '/careatorApp/common/scheduleTemplate.html',
         windowClass: 'show',
         backdropClass: 'show',
         controller: function ($scope, $uibModalInstance) {

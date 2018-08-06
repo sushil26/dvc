@@ -634,6 +634,11 @@ function startSession(id, date) {
 
 /* ### Note:End Whenever page refresh get the chathistory respective to url  ### */
 
+document.getElementById("scheduleVC").addEventListener("click", function () {
+    console.log("scheduleVC4ALL Emp--->");
+
+})
+
 signaling_socket.on("connect", function () {
   console.log("signaling_socket connect-->");
   if (disconnPeerId != null) {

@@ -32,8 +32,8 @@
                     <th>
                         <h3 style="color:coral">:&nbsp
                             <!-- <input style="margin-top:10px;" type="text" ng-model="eventDetails.title"> -->
-                            <ng-email-list ng-model="emails" rejected="true" repeat="true"></ng-email-list>
-                            <!-- <email-list name="list" ng-model="emails" rejected="rejects" repeat="repeats"></email-list> -->
+                            <!-- <ng-email-list ng-model="emails" rejected="true" repeat="true"></ng-email-list> -->
+                            <email-list name="list" ng-model="emails" rejected="true" repeat="false"></email-list>
                             <div ng-show="inviteForm.list.$error.emailList">
                                 <p>The email list is invalid!</p>
                             </div>

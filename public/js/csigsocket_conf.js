@@ -886,6 +886,10 @@ signaling_socket.on("addPeer", function (config) {
       $("#" + peer_id + "fullscreenbtn2").click(function () {
         console.log("sushil screen test");
         console.log("remove id videoElem111");
+        $('html, body').css('overflow', 'hidden');
+        $("#btnrestore").css({
+          "display": "inline"
+        })
 
         $("#videoElem111").removeClass(
           "portfolio-items col-xs-4 col-sm-4 col-md-4 col-lg-3"
@@ -893,10 +897,7 @@ signaling_socket.on("addPeer", function (config) {
         $("#" + peer_id + "remoteContainer").removeClass(
           "portfolio-items col-xs-4 col-sm-4 col-md-4 col-lg-3"
         );
-        $('html, body').css('overflow', 'hidden');
-        $("#btnrestore").css({
-          "display": "inline"
-        })
+       
         $("#" + peer_id + "remoteVideoElement").addClass("fullscr");
 
         $("#portfolio .portfolio-items").css({

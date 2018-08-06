@@ -926,7 +926,7 @@ signaling_socket.on("addPeer", function (config) {
       });
       $("#btnrestore").click(function () {
         $("#" + peer_id + "remoteVideoElement").removeClass("fullscr");
-        $('html, body').css('overflow', 'unset');
+        $('html, body').css('overflow', '');
 
         console.log("add id videoElem111");
         $("#videoElem111").addClass(

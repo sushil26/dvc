@@ -260,30 +260,74 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
       console.log("selectedDateForEvent: " + $scope.selectedDateForEvent);
   
       $scope.selectedDate = date;
-     
-        $('#timeTable_modal').modal('show');
-      
-  
-  
-  
-      // if (vm.calendarView === 'month') {
-      //   if ((vm.cellIsOpen && moment(date).startOf('day').isSame(moment(vm.viewDate).startOf('day'))) || cell.events.length === 0 || !cell.inMonth) {
-      //     vm.cellIsOpen = false;
-      //   } else {
-      //     vm.cellIsOpen = true;
-      //     vm.viewDate = date;
-      //   }
-      // } else if (vm.calendarView === 'year') {
-      //   if ((vm.cellIsOpen && moment(date).startOf('month').isSame(moment(vm.viewDate).startOf('month'))) || cell.events.length === 0) {
-      //     vm.cellIsOpen = false;
-      //   } else {
-      //     vm.cellIsOpen = true;
-      //     vm.viewDate = date;
-      //   }
+      dayEventmodal = $uibModal.open({
+        scope: $scope,
+        templateUrl: '/careatorApp/common/scheduleTemplate.html',
+        windowClass: 'show',
+        backdropClass: 'show',
+        controller: function ($scope, $uibModalInstance) {
+          var dt = new Date();
+          $scope.eventDetails = {
+            "startsAt": $scope.selectedDate,
+            "endsAt": $scope.selectedDate
+          }
+          console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
+        }
+      })
+      // if ($scope.remoteCalendarId) {
+      //   $('#timeTable_modal').modal('show');
       // }
-      console.log("<--timespanClicked");
+      // else {
+      //   if ($scope.userData.loginType == 'teacher') {
+      //     var loginAlert = $uibModal.open({
+      //       scope: $scope,
+      //       templateUrl: '/html/templates/dashboardwarning.html',
+      //       windowClass: 'show',
+      //       backdropClass: 'static',
+      //       keyboard: false,
+      //       controller: function ($scope, $uibModalInstance) {
+      //         $scope.message = "Select Student";
+      //       }
+      //     })
+      //     console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
+      //     //alert("Select Student");
+      //   }
+      //   else {
+      //     var loginAlert = $uibModal.open({
+      //       scope: $scope,
+      //       templateUrl: '/html/templates/dashboardwarning.html',
+      //       windowClass: 'show',
+      //       backdropClass: 'static',
+      //       keyboard: false,
+      //       controller: function ($scope, $uibModalInstance) {
+      //         $scope.message = "Select Teacher";
+      //         console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
+      //       }
+      //     })
+      //   }
   
-    };
+       }
+  
+  
+  
+    //   // if (vm.calendarView === 'month') {
+    //   //   if ((vm.cellIsOpen && moment(date).startOf('day').isSame(moment(vm.viewDate).startOf('day'))) || cell.events.length === 0 || !cell.inMonth) {
+    //   //     vm.cellIsOpen = false;
+    //   //   } else {
+    //   //     vm.cellIsOpen = true;
+    //   //     vm.viewDate = date;
+    //   //   }
+    //   // } else if (vm.calendarView === 'year') {
+    //   //   if ((vm.cellIsOpen && moment(date).startOf('month').isSame(moment(vm.viewDate).startOf('month'))) || cell.events.length === 0) {
+    //   //     vm.cellIsOpen = false;
+    //   //   } else {
+    //   //     vm.cellIsOpen = true;
+    //   //     vm.viewDate = date;
+    //   //   }
+    //   // }
+    //   console.log("<--timespanClicked");
+  
+    // };
   
   
   

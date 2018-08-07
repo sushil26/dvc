@@ -35,7 +35,8 @@ careatorApp.controller('careator_historyCtr', function ($scope, $rootScope, $sta
     $scope.eventGet = function () {
         console.log("eventGet-->");
         var id = $scope.userData.id;
-        var api = $scope.propertyJson.VC_eventGet + "/" + id;
+        var api = "https://norecruits.com/careator_eventSchedule/careator_eventGetById/" + id;
+        console.log("api: "+api);
         //var api = "http://localhost:5000/vc/eventGet"+ "/" + id;;
         $scope.calendarOwner = "Your";
         careatorHttpFactory.get(api).then(function (data) {

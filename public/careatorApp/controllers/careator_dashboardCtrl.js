@@ -168,15 +168,15 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
     $scope.logout = function () {
         console.log("logout-->");
         SweetAlert.swal({
-            title: "Have you closed all the sessions?", //Bold text
-            text: "It will close all your open sessions", //light text
-            type: "warning", //type -- adds appropiriate icon
-            showCancelButton: true, // displays cancel btton
-            confirmButtonColor: "#DD6B55",
-            confirmButtonText: "Sure",
-            closeOnConfirm: false, //do not close popup after click on confirm, usefull when you want to display a subsequent popup
-            closeOnCancel: false
-        },
+                title: "Have you closed all the sessions?", //Bold text
+                text: "It will close all your open sessions", //light text
+                type: "warning", //type -- adds appropiriate icon
+                showCancelButton: true, // displays cancel btton
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Sure",
+                closeOnConfirm: false, //do not close popup after click on confirm, usefull when you want to display a subsequent popup
+                closeOnCancel: false
+            },
             function (isConfirm) { //Function that triggers on user action.
                 if (isConfirm) {
                     SweetAlert.swal("Logged Out");
@@ -409,54 +409,55 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
 
 
         SweetAlert.swal({
-            title: "what you want ?? ", //Bold text
-            text: "if dont want to schedule click on instant!", //light text
-            type: "question", //type -- adds appropiriate icon
-            // showCancelButton: true, // displays cancel 
-            cencelButtonText: "Instant",
-            confirmButtonColor: "#DD6B55",
-            confirmButtonText: "Schedule",
-            closeOnConfirm: false, //do not close popup after click on confirm, usefull when you want to display a subsequent popup
-            closeOnCancel: false
-        },
+                title: "what you want ?? ", //Bold text
+                text: "if dont want to schedule click on instant!", //light text
+                type: "question", //type -- adds appropiriate icon
+                // showCancelButton: true, // displays cancel 
+                cencelButtonText: "Instant",
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Schedule",
+                closeOnConfirm: false, //do not close popup after click on confirm, usefull when you want to display a subsequent popup
+                closeOnCancel: false
+            },
             function (isConfirm) { //Function that triggers on user action.
                 if (isConfirm) {
                     SweetAlert.swal("Instant!");
-                  
+                    console.log("navigateintoBoth_CVoption-->");
+                    if (!w || w.closed) {
+                        localStorage.setItem("careatorEmail", userData.email);
+                        localStorage.setItem("sessionPassword", userData.sessionPassword);
+                        w = window.open("https://norecruits.com/careator", "_blank");
+                    } else {
+                        SweetAlert.swal({
+                                title: "window is already opened", //Bold text
+                                text: "we will take you the desired page!", //light text
+                                type: "warning", //type -- adds appropiriate icon
+                                showCancelButton: true, // displays cancel btton
+                                confirmButtonColor: "#DD6B55",
+                                confirmButtonText: "Go to the page",
+                                closeOnConfirm: false, //do not close popup after click on confirm, usefull when you want to display a subsequent popup
+                                closeOnCancel: false
+                            },
+                            function (isConfirm) { //Function that triggers on user action.
+                                if (isConfirm) {
+                                    SweetAlert.swal("ok!");
+                                    w.focus();
+                                } else {
+                                    SweetAlert.swal("didnt open");
+                                }
+                            }
+
+                        )
+
+                    }
+
+
                 } else {
                     SweetAlert.swal("Schedule");
                 }
             }
 
         )
-        console.log("navigateintoBoth_CVoption-->");
-        if (!w || w.closed) {
-            localStorage.setItem("careatorEmail", userData.email);
-            localStorage.setItem("sessionPassword", userData.sessionPassword);
-            w = window.open("https://norecruits.com/careator", "_blank");
-        } else {
-            SweetAlert.swal({
-                title: "window is already opened", //Bold text
-                text: "we will take you the desired page!", //light text
-                type: "warning", //type -- adds appropiriate icon
-                showCancelButton: true, // displays cancel btton
-                confirmButtonColor: "#DD6B55",
-                confirmButtonText: "Go to the page",
-                closeOnConfirm: false, //do not close popup after click on confirm, usefull when you want to display a subsequent popup
-                closeOnCancel: false
-            },
-                function (isConfirm) { //Function that triggers on user action.
-                    if (isConfirm) {
-                        SweetAlert.swal("ok!");
-                        w.focus();
-                    } else {
-                        SweetAlert.swal("didnt open");
-                    }
-                }
-
-            )
-
-        }
 
 
     }

@@ -46,7 +46,7 @@ careatorApp.controller('careator_upcomingEventCtr', function ($scope, $rootScope
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
                 $scope.eventData = data.data.data;
-                vm.events = [];
+                // vm.events = [];
                 ownerEvents = [];
                 for (var x = 0; x < $scope.eventData.length; x++) {
                     console.log("$scope.eventData[" + x + "]: " + JSON.stringify($scope.eventData[x]));

@@ -25,7 +25,7 @@ module.exports.careator_eventGetById = function (req, res) {
     console.log("req.params.id: " + req.params.id);
 
     if (general.emptyCheck(req.params.id)) {
-        event.find({ "senderId": req.params.id }).sort({ "$natural": -1 }).toArray(function (err, listOfevents) {
+        careatorEvents.find({ "senderId": req.params.id }).sort({ "$natural": -1 }).toArray(function (err, listOfevents) {
             // console.log("listOfevents: " + JSON.stringify(listOfevents))
             if (err) {
                 responseData = {

@@ -25,6 +25,7 @@ careatorApp.controller('careator_upcomingEventCtr', function ($scope, $rootScope
                 var reqSec = todayDate.getSeconds();
                 $scope.todayDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
                 console.log("consolidateDate: " + $scope.consolidateDate);
+                $scope.eventGet();
             }
             else {
             }
@@ -45,7 +46,7 @@ careatorApp.controller('careator_upcomingEventCtr', function ($scope, $rootScope
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
                 $scope.eventData = data.data.data;
-                vm.events = [];
+                // vm.events = [];
                 ownerEvents = [];
                 for (var x = 0; x < $scope.eventData.length; x++) {
                     console.log("$scope.eventData[" + x + "]: " + JSON.stringify($scope.eventData[x]));
@@ -64,9 +65,7 @@ careatorApp.controller('careator_upcomingEventCtr', function ($scope, $rootScope
                         "primColor": $scope.eventData[x].primColor,
                         "url": $scope.eventData[x].url,
                         "date": $scope.eventData[x].date,
-                        'draggable': true,
-                        'resizable': true,
-                        'actions': actions
+                       
                     }
                     console.log(" obj" + JSON.stringify(obj))
                     

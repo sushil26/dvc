@@ -180,7 +180,7 @@ careatorApp.controller('careator_upcomingEventCtr', function ($scope, $rootScope
         }
         var eClicked = $uibModal.open({
             scope: $scope,
-            templateUrl: '/html/templates/eventDetails.html',
+            templateUrl: '/careatorApp/common/eventDetailTemplate.html',
             windowClass: 'show',
             backdropClass: 'show',
             controller: function ($scope, $uibModalInstance) {

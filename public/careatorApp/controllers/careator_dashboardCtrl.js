@@ -450,7 +450,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
             var hr = dt.getHours().toString();
             var date = dy.concat(fy, m, hr);
             urlDate = date;
-            w = window.open("https://norecruits.com/careator", "_blank");
+            // w = window.open("https://norecruits.com/careator", "_blank");
             var SIGNALING_SERVER = "https://norecruits.com";
             signaling_socket = io(SIGNALING_SERVER);
             signaling_socket.on('connect', function () {
@@ -477,7 +477,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                             console.log("url: " + url);
                             // window.location.href = url;
                             var configString = "height=" + 1000 + ",width=" + 1000 + ",top=0,left=0";
-                            $window.open(url, 'C-Sharpcorner', 'width=500,height=400');
+                            window.open(url, '_blank', 'width=500,height=400');
                             console.log("***");
                             // $window.open(url, "_blank");
 

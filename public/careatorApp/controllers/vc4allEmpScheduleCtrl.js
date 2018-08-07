@@ -12,18 +12,14 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
 
 
   $scope.save = function (title, emailList, sd, ed, reason) {
-   console.log("title: "+title);
-   console.log("emailList: "+emailList);
+    console.log("title: " + title);
+    console.log("emailList: " + emailList);
     console.log("sd: " + sd);
     console.log("ed: " + ed);
-    console.log("reason: "+reason);
-   
+    console.log("reason: " + reason);
     var formatedStartTime = $filter('date')(sd, "HH:mm:ss 'GMT'Z (IST)'");
     var formatedEndTime = $filter('date')(ed, "HH:mm:ss 'GMT'Z (IST)'");
-    
     var dateForEvent = $filter('date')(sd, "EEE MMM dd y");
-    console.log("$scope.startDate with filter : " + $filter('date')(sd, "EEE MMM dd y"));
-    console.log("$scope.endDate with filter: " + $filter('date')(e, "HH:mm:ss 'GMT'Z (IST)'"));
     dayEventmodal.close('resetModel');
     $scope.eventSend(title, emailList, dateForEvent, formatedStartTime, formatedEndTime, sd, ed, reason);
   }
@@ -85,7 +81,7 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
             // console.log("data" + JSON.stringify(data.data))
             // $window.location.href = $scope.propertyJson.R082;
 
-             alert("Successfully sent the event");
+            alert("Successfully sent the event");
             // vm.events.splice(0, 1);
             var eventPostedData = data.data.data;
             var objData = {
@@ -112,7 +108,7 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
           }
           else {
             alert("Event Send Failed");
-            
+
           }
         })
       });

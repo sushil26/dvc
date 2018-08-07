@@ -12,10 +12,11 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
 
 
   $scope.save = function (title, emailList, sd, ed, reason) {
-    console.log("s: " + s);
-    console.log("e: " + e);
+   console.log("title: "+title);
+   console.log("emailList: "+emailList);
     console.log("sd: " + sd);
     console.log("ed: " + ed);
+    console.log("reason: "+reason);
     var res = $filter('limitTo')(s, 2);
     var formatedStartTime = $filter('date')(sd, "HH:mm:ss 'GMT'Z (IST)'");
     var formatedEndTime = $filter('date')(ed, "HH:mm:ss 'GMT'Z (IST)'");
@@ -23,15 +24,8 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
     var dateForEvent = $filter('date')(sd, "EEE MMM dd y");
     console.log("$scope.startDate with filter : " + $filter('date')(sd, "EEE MMM dd y"));
     console.log("$scope.endDate with filter: " + $filter('date')(e, "HH:mm:ss 'GMT'Z (IST)'"));
-
-
     dayEventmodal.close('resetModel');
-
-
     $scope.eventSend(title, emailList, dateForEvent, formatedStartTime, formatedEndTime, sd, ed, reason);
-
-
-
   }
 
   function getSocketUrlFromServer() {

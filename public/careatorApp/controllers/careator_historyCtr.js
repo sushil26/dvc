@@ -64,7 +64,7 @@ app.controller('careator_historyCtr', function ($scope, $rootScope, $state, $win
                        
                     }
                     console.log(" obj" + JSON.stringify(obj));
-                                       
+                    $scope.events.push(obj);        
                 }
             }
             else {

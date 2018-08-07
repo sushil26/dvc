@@ -1,7 +1,7 @@
-app.controller('careator_historyCtr', function ($scope, $rootScope, $state, $window, httpFactory, sessionAuthFactory, $uibModal) {
+careatorApp.controller('careator_historyCtr', function ($scope, $rootScope, $state, $window, careatorHttpFactory, careatorSessionAuth, $uibModal) {
     console.log("careator_historyCtr==>");
     $scope.events = [];
-    $scope.userData = sessionAuthFactory.getAccess("userData");
+    $scope.userData = careatorSessionAuth.getAccess("userData");
     $scope.propertyJson = $rootScope.propertyJson;
     // $scope.today = new Date();
     $scope.getToDate = function () {
@@ -38,8 +38,8 @@ app.controller('careator_historyCtr', function ($scope, $rootScope, $state, $win
         var api = $scope.propertyJson.VC_eventGet + "/" + id;
         //var api = "http://localhost:5000/vc/eventGet"+ "/" + id;;
         $scope.calendarOwner = "Your";
-        httpFactory.get(api).then(function (data) {
-            var checkStatus = httpFactory.dataValidation(data);
+        careatorHttpFactory.get(api).then(function (data) {
+            var checkStatus = careatorHttpFactory.dataValidation(data);
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
                 $scope.eventData = data.data.data;
@@ -83,8 +83,8 @@ app.controller('careator_historyCtr', function ($scope, $rootScope, $state, $win
         // var id = $scope.events[indexId].vcRecordId;
         // var api = $scope.propertyJson.VC_getRecordVideo + "/" + id;
         // console.log("api: " + api);
-        // httpFactory.get(api).then(function (data) {
-        //     var checkStatus = httpFactory.dataValidation(data);
+        // careatorHttpFactory.get(api).then(function (data) {
+        //     var checkStatus = careatorHttpFactory.dataValidation(data);
         //     console.log("data--" + JSON.stringify(data.data));
         //     if (checkStatus) {
         //         console.log("status true");

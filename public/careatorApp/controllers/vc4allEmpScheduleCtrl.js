@@ -10,7 +10,6 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
 
   $scope.propertyJson = $rootScope.propertyJson;
 
-
   $scope.save = function (title, emailList, sd, ed, reason) {
     console.log("title: " + title);
     console.log("emailList: " + emailList);

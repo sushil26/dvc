@@ -123,7 +123,7 @@ careatorApp.config(function ($stateProvider) {
             result: function (careatorSessionAuth, $window) {
                 var userData = careatorSessionAuth.getAccess("userData");
                 if (userData.email != undefined && userData.email != null && userData.email != "") {
-
+                    $window.location.href = 'https://norecruits.com';
                 } else {
                     $window.location.href = 'https://norecruits.com';
                 }

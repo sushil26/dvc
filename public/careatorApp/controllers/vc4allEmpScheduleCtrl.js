@@ -100,19 +100,29 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
     var consolidateDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
     console.log("consolidateDate: " + consolidateDate + " $scope.todayDate: " + $scope.todayDate);
     if (consolidateDate > $scope.todayDate) {
-      var conflicts = PersonalRemoteCombineCal.some(function (event) {
-        //   return (event.startsAt <= s && s <= event.endsAt) ||event.startsAt <= e && e <= event.endsAt || s <= event.startsAt && event.startsAt <= e ||s <= event.endsAt && event.endsAt <= e});
-        return (event.startsAt <= rsd && rsd < event.endsAt) ||
-          event.startsAt < red && red < event.endsAt ||
-          rsd <= event.startsAt && event.startsAt < red ||
-          rsd < event.endsAt && event.endsAt < red
-      });
-      console.log("conflicts: " + conflicts);
-      if (conflicts) {
-        console.log("conflicts is there");
-        alert("ON this time you have an appointment");
+      if(PersonalRemoteCombineCal.length>0){
+        var conflicts = PersonalRemoteCombineCal.some(function (event) {
+          //   return (event.startsAt <= s && s <= event.endsAt) ||event.startsAt <= e && e <= event.endsAt || s <= event.startsAt && event.startsAt <= e ||s <= event.endsAt && event.endsAt <= e});
+          return (event.startsAt <= rsd && rsd < event.endsAt) ||
+            event.startsAt < red && red < event.endsAt ||
+            rsd <= event.startsAt && event.startsAt < red ||
+            rsd < event.endsAt && event.endsAt < red
+        });
+        console.log("conflicts: " + conflicts);
+        if (conflicts) {
+          console.log("conflicts is there");
+          alert("ON this time you have an appointment");
+        }
+        else {
+          console.log("no conflicts is there");
+          var formatedStartTime = $filter('date')(sd, "HH:mm a");
+          var formatedEndTime = $filter('date')(ed, "HH:mm a");
+          var dateForEvent = $filter('date')(sd, "EEE MMM dd y");
+          dayEventmodal.close('resetModel');
+          $scope.eventSend(title, emailList, dateForEvent, formatedStartTime, formatedEndTime, sd, ed, reason);
+        }
       }
-      else {
+      else{
         console.log("no conflicts is there");
         var formatedStartTime = $filter('date')(sd, "HH:mm a");
         var formatedEndTime = $filter('date')(ed, "HH:mm a");
@@ -120,6 +130,8 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
         dayEventmodal.close('resetModel');
         $scope.eventSend(title, emailList, dateForEvent, formatedStartTime, formatedEndTime, sd, ed, reason);
       }
+     
+    
     }
   }
 

@@ -406,6 +406,29 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
     });
     var w;
     $scope.navigateintoBoth_CVoption = function () {
+
+
+        SweetAlert.swal({
+            title: "what you want ?? ", //Bold text
+            text: "if dont want to schedule click on instant!", //light text
+            type: "question", //type -- adds appropiriate icon
+            // showCancelButton: true, // displays cancel 
+            cencelButtonText: "Instant",
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Schedule",
+            closeOnConfirm: false, //do not close popup after click on confirm, usefull when you want to display a subsequent popup
+            closeOnCancel: false
+        },
+            function (isConfirm) { //Function that triggers on user action.
+                if (isConfirm) {
+                    SweetAlert.swal("Instant!");
+                  
+                } else {
+                    SweetAlert.swal("Schedule");
+                }
+            }
+
+        )
         console.log("navigateintoBoth_CVoption-->");
         if (!w || w.closed) {
             localStorage.setItem("careatorEmail", userData.email);

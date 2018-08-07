@@ -478,6 +478,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                             // window.location.href = url;
                             var configString = "height=" + 1000 + ",width=" + 1000 + ",top=0,left=0";
                             $window.open(url, "_blank", configString);
+                            console.log("***");
                             // $window.open(url, "_blank");
 
                         }

@@ -6,7 +6,7 @@
 // console.log("decryptedPswd: "+decryptedPswd.toString(CryptoJS.enc.Utf8));
 
 // ];
-$('html, body').css('overflow', '');
+$('html, body').css('overflow-x', 'hidden');
 var sesionEnc = localStorage.getItem("sessionEnc");
 console.log("sesionEnc: " + sesionEnc);
 

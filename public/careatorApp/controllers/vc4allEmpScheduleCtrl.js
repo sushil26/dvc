@@ -81,18 +81,51 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
       }
     })
   }
-  
+
   $scope.save = function (title, emailList, sd, ed, reason) {
     console.log("title: " + title);
     console.log("emailList: " + emailList);
     console.log("sd: " + sd);
     console.log("ed: " + ed);
     console.log("reason: " + reason);
-    var formatedStartTime = $filter('date')(sd, "HH:mm a");
-    var formatedEndTime = $filter('date')(ed, "HH:mm a");
-    var dateForEvent = $filter('date')(sd, "EEE MMM dd y");
-    dayEventmodal.close('resetModel');
-    $scope.eventSend(title, emailList, dateForEvent, formatedStartTime, formatedEndTime, sd, ed, reason);
+    var rsd = new Date(sd);
+    var red = new Date(ed);
+    var PersonalRemoteCombineCal = ownerEvents;
+    var reqDate = rsd.getDate() - 1;
+    var reqMonth = rsd.getMonth();
+    var reqYear = rsd.getFullYear();
+    var reqHr = rsd.getHours();
+    var reqMin = rsd.getMinutes();
+    var reqSec = rsd.getSeconds();
+    var consolidateDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
+    console.log("consolidateDate: " + consolidateDate + " $scope.todayDate: " + $scope.todayDate);
+    if (consolidateDate > $scope.todayDate) {
+      var conflicts = PersonalRemoteCombineCal.some(function (event) {
+        //   return (event.startsAt <= s && s <= event.endsAt) ||event.startsAt <= e && e <= event.endsAt || s <= event.startsAt && event.startsAt <= e ||s <= event.endsAt && event.endsAt <= e});
+        return (event.startsAt <= rsd && rsd < event.endsAt) ||
+          event.startsAt < red && red < event.endsAt ||
+          rsd <= event.startsAt && event.startsAt < red ||
+          rsd < event.endsAt && event.endsAt < red
+      });
+      console.log("conflicts: " + conflicts);
+      if (conflicts) {
+        console.log("conflicts is there");
+
+        alert("ON this time you/student not free, try on other time");
+
+      }
+      else {
+        console.log("no conflicts is there");
+
+
+
+        var formatedStartTime = $filter('date')(sd, "HH:mm a");
+        var formatedEndTime = $filter('date')(ed, "HH:mm a");
+        var dateForEvent = $filter('date')(sd, "EEE MMM dd y");
+        dayEventmodal.close('resetModel');
+        $scope.eventSend(title, emailList, dateForEvent, formatedStartTime, formatedEndTime, sd, ed, reason);
+      }
+    }
   }
 
   function getSocketUrlFromServer() {
@@ -395,50 +428,24 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
     console.log("date: " + date);
     $scope.selectedDateForEvent = $filter('date')(date, "EEE");
     $scope.selectedDate = date;
-    var rsd = new Date(date);
-    var PersonalRemoteCombineCal = ownerEvents;
-    var reqDate = rsd.getDate() - 1;
-    var reqMonth = rsd.getMonth();
-    var reqYear = rsd.getFullYear();
-    var reqHr = rsd.getHours();
-    var reqMin = rsd.getMinutes();
-    var reqSec = rsd.getSeconds();
-    var consolidateDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
-    console.log("consolidateDate: " + consolidateDate + " $scope.todayDate: " + $scope.todayDate);
-    if (consolidateDate > $scope.todayDate) {
-      var conflicts = PersonalRemoteCombineCal.some(function (event) {
-        //   return (event.startsAt <= s && s <= event.endsAt) ||event.startsAt <= e && e <= event.endsAt || s <= event.startsAt && event.startsAt <= e ||s <= event.endsAt && event.endsAt <= e});
-        return (event.startsAt <= rsd && rsd < event.endsAt) ||
-          event.startsAt < red && red < event.endsAt ||
-          rsd <= event.startsAt && event.startsAt < red ||
-          rsd < event.endsAt && event.endsAt < red
-      });
-      console.log("conflicts: " + conflicts);
-      if (conflicts) {
-        console.log("conflicts is there");
 
-        alert("ON this time you/student not free, try on other time");
-
+    dayEventmodal = $uibModal.open({
+      scope: $scope,
+      templateUrl: '/careatorApp/common/scheduleTemplate.html',
+      windowClass: 'show',
+      backdropClass: 'show',
+      controller: function ($scope, $uibModalInstance) {
+        var dt = new Date();
+        $scope.eventDetails = {
+          "startsAt": $scope.selectedDate,
+          "endsAt": $scope.selectedDate
+        }
+        console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
       }
-      else {
-        console.log("no conflicts is there");
-        dayEventmodal = $uibModal.open({
-          scope: $scope,
-          templateUrl: '/careatorApp/common/scheduleTemplate.html',
-          windowClass: 'show',
-          backdropClass: 'show',
-          controller: function ($scope, $uibModalInstance) {
-            var dt = new Date();
-            $scope.eventDetails = {
-              "startsAt": $scope.selectedDate,
-              "endsAt": $scope.selectedDate
-            }
-            console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
-          }
-        })
-      }
-
-    }
+    })
   }
+
+
+
 
 })

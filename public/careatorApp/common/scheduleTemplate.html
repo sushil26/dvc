@@ -2,77 +2,62 @@
     <button type="button" class="close" ng-click="$close()">&times;</button>
 </div>
 <div class="modal-body">
-    <form name="inviteForm">
-        <table>
-            <thead>
-                <tr>
-                    <th>
-                        <h3>Schedule on &nbsp</h3>
-                    </th>
-                    <th>
-                        <h3 style="color:coral">:&nbsp{{ eventDetails.startsAt | date }}</h3>
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th>
-                        <h3>Title &nbsp</h3>
-                    </th>
-                    <th>
-                        <h3 style="color:coral">:&nbsp
-                            <input style="margin-top:10px;" type="text" ng-model="eventDetails.title">
-                        </h3>
-                    </th>
-                </tr>
-                <tr>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    <h3>Schedule on &nbsp</h3>
+                </th>
+                <th>
+                    <h3 style="color:coral">:&nbsp{{ eventDetails.startsAt | date }}</h3>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>
+                    <h3>Title &nbsp</h3>
+                </th>
+                <th>
+                    <h3 style="color:coral">:&nbsp
+                        <input style="margin-top:10px;" type="text" ng-model="eventDetails.title">
+                    </h3>
+                </th>
+            </tr>
+            <tr>
                     <th>
                         <h3>Inviting To &nbsp</h3>
                     </th>
                     <th>
                         <h3 style="color:coral">:&nbsp
-                            <!-- <input style="margin-top:10px;" type="text" ng-model="eventDetails.title"> -->
-                            <ng-email-list name="list" ng-model="emails" rejected="true" repeat="true"></ng-email-list>
-                            <!-- <email-list name="list" ng-model="emails" rejected="true" repeat="true"></email-list> -->
-                            <div ng-show="inviteForm.list.$error.ngEmailList">
-                                <p>The email list is invalid!</p>
-                            </div>
-                            <div ng-show="inviteForm.list.$error.email">
-                                <p ng-show="rejects.length === 1">The following email is invalid {{rejects[0]}}</p>
-                                <p ng-show="rejects.length > 1">The following emails are invalid: {{rejects.join(', ')}}</p>
-                            </div>
-                            <div ng-show="inviteForm.list.$error.repeat">
-                                <p ng-show="repeats.length === 1">The following email is repeated:{{repeats[0]}}</p>
-                                <p ng-show="repeats.length > 1">The following emails are repeated:{{repeats.join(', ')}}</p>
-                            </div>
+                            <input style="margin-top:10px;" type="text" ng-model="eventDetails.emails">
                         </h3>
                     </th>
                 </tr>
-                <tr>
-                    <th>
-                        <h3>
-                            Timing &nbsp
-                        </h3>
-                    </th>
-                    <th>
-                        <div class="row" style="padding:2%">
-                            <div uib-timepicker ng-model="event.startsAt" hour-step="1" minute-step="20" show-meridian="true">
-                            </div>
-                            &nbspTo&nbsp
-                            <div uib-timepicker ng-model="event.endsAt" hour-step="1" minute-step="20" show-meridian="true">
-                            </div>
+            <tr>
+                <th>
+                    <h3>
+                        Timing &nbsp
+                    </h3>
+                </th>
+                <th>
+                    <div class="row" style="padding:2%">
+                        <div uib-timepicker ng-model="event.startsAt" hour-step="1" minute-step="20" show-meridian="true">
                         </div>
-                        <!-- <h3 style="color:coral">:&nbsp
+                        &nbspTo&nbsp
+                        <div uib-timepicker ng-model="event.endsAt" hour-step="1" minute-step="20" show-meridian="true">
+                        </div>
+                    </div>
+                    <!-- <h3 style="color:coral">:&nbsp
                             
                             {{ eventDetails.startsAt | date:'h:mm a' }} To {{ eventDetails.endsAt | date:'h:mm a' }}
                         </h3> -->
-                    </th>
-                </tr>
+                </th>
+            </tr>
 
 
-            </tbody>
-        </table>
-    </form>
+        </tbody>
+    </table>
 
 
 
@@ -101,7 +86,8 @@
 </div>
 <div class="modal-footer loginpopUp_footer">
     <button class="btn btn-default loginpopUp_footerBtn" type="button" ng-click="$close()">Close</button>
-    <button class="btn btn-primary" style="width: 80px;" data-dismiss="modal" ng-click="save(eventDetails.startsAt| date:'M/d/yy',eventDetails.startsAt| date:'h:mm a', eventDetails.endsAt| date:'h:mm a', eventDetails.startsAt, eventDetails.endsAt, eventDetails.startsAt | date:'M/d/yy h:mm a', eventDetails.endsAt | date:'M/d/yy h:mm a', eventDetails.title, eventDetails.reason)">
+    <button class="btn btn-primary" style="width: 80px;" data-dismiss="modal" ng-click="save( eventDetails.title,eventDetails.emailList,event.startsAt,event.endsAt, eventDetails.reason)"></button>
+    <!-- <button class="btn btn-primary" style="width: 80px;" data-dismiss="modal" ng-click="save(eventDetails.startsAt| date:'M/d/yy',eventDetails.startsAt| date:'h:mm a', eventDetails.endsAt| date:'h:mm a', eventDetails.startsAt, eventDetails.endsAt, eventDetails.startsAt | date:'M/d/yy h:mm a', eventDetails.endsAt | date:'M/d/yy h:mm a', eventDetails.title, eventDetails.reason)"> -->
         Save
     </button>
     <!-- <button type="submit" class="btn btn-default loginpopUp_footerBtn" ng-click="specOffSub(speOff_uploadForm, speOffTitle, speOffMsg, file.upload)">Upload</button> -->

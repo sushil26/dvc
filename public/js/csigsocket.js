@@ -123,12 +123,13 @@ if ((localStorage.getItem("careatorEmail")!=null && localStorage.getItem("careat
   console.log("localStorage.getItem(chatRights): " + localStorage.getItem("chatRights"));
   if (localStorage.getItem("videoRights") == 'yes') {
     document.getElementById("videoConfStart").style.display = "block";
+    document.getElementById("scheduleVC").style.display = "block";
     $("#buttonpage").css({
       "min-height": "auto"
     });
   }
   if (localStorage.getItem("chatRights") == 'yes') {
-    document.getElementById("chatConfStart").style.display = "block";
+    // document.getElementById("chatConfStart").style.display = "block";
   }
 
 } else {
@@ -219,13 +220,14 @@ function checkCredential() {
         if (data.data.videoRights == 'yes') {
           localStorage.setItem("videoRights", 'yes');
           document.getElementById("videoConfStart").style.display = "inline";
+          document.getElementById("scheduleVC").style.display = "inline";
           $("#buttonpage").css({
             "min-height": "auto"
           });
         }
         if (data.data.chatRights == 'yes') {
           localStorage.setItem("chatRights", 'yes');
-          document.getElementById("chatConfStart").style.display = "inline";
+          // document.getElementById("chatConfStart").style.display = "inline";
         }
         if (data.data.chatStatus) {
           localStorage.setItem("chatStatus", data.data.chatStatus);
@@ -665,7 +667,7 @@ signaling_socket.on("connect", function () {
     console.log("date: " + date);
     // if (config.queryId == null) {
     console.log("query id is null");
-    document.getElementById("instantVC").setAttribute("onclick", "startSession('" + peerNew_id + "' , '" + date + "')");
+    document.getElementById("videoConfStart").setAttribute("onclick", "startSession('" + peerNew_id + "' , '" + date + "')");
     document.getElementById("linkToShare").setAttribute("href", "https://norecruits.com/careator_conf/" + peerNew_id + "/" + date);
     document.getElementById("linkToShare").innerHTML = "https://norecruits.com/careator_conf/" + peerNew_id + "/" + date;
     // } else {

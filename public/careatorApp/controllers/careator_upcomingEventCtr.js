@@ -65,9 +65,7 @@ careatorApp.controller('careator_upcomingEventCtr', function ($scope, $rootScope
                         "primColor": $scope.eventData[x].primColor,
                         "url": $scope.eventData[x].url,
                         "date": $scope.eventData[x].date,
-                        'draggable': true,
-                        'resizable': true,
-                        'actions': actions
+                       
                     }
                     console.log(" obj" + JSON.stringify(obj))
                     

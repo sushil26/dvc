@@ -141,6 +141,7 @@ module.exports.careator_sendEventSchedule = function (req, res) {
         }
         res.status(400).send(responseData);
     }
+    console.log("<--careator_sendEventSchedule");
 }
 
 module.exports.careator_getToDate = function (req, res) {

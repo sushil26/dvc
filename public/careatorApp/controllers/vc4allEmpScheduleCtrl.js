@@ -62,8 +62,8 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
     console.log("sd: " + sd);
     console.log("ed: " + ed);
     console.log("reason: " + reason);
-    var formatedStartTime = $filter('date')(sd, "HH:mm:ss 'GMT'Z (IST)'");
-    var formatedEndTime = $filter('date')(ed, "HH:mm:ss 'GMT'Z (IST)'");
+    var formatedStartTime = $filter('date')(sd, "HH:mm a");
+    var formatedEndTime = $filter('date')(ed, "HH:mm a");
     var dateForEvent = $filter('date')(sd, "EEE MMM dd y");
     dayEventmodal.close('resetModel');
     $scope.eventSend(title, emailList, dateForEvent, formatedStartTime, formatedEndTime, sd, ed, reason);
@@ -120,7 +120,7 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
         console.log("obj: " + JSON.stringify(obj));
         careatorHttpFactory.post(api, obj).then(function (data) {
           var checkStatus = careatorHttpFactory.dataValidation(data);
-          //console.log("data--" + JSON.stringify(data.data));
+          console.log("data--" + JSON.stringify(data.data));
           if (checkStatus) {
             // console.log("data" + JSON.stringify(data.data))
             // $window.location.href = $scope.propertyJson.R082;

@@ -450,7 +450,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
             var hr = dt.getHours().toString();
             var date = dy.concat(fy, m, hr);
             urlDate = date;
-            // w = window.open("https://norecruits.com/careator", "_blank");
+            w = window.open("https://norecruits.com/careator", "_blank");
             var SIGNALING_SERVER = "https://norecruits.com";
             signaling_socket = io(SIGNALING_SERVER);
             signaling_socket.on('connect', function () {

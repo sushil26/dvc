@@ -142,3 +142,17 @@ module.exports.careator_sendEventSchedule = function (req, res) {
         res.status(400).send(responseData);
     }
 }
+
+module.exports.careator_getToDate = function (req, res) {
+    console.log("careator_getToDate-->");
+    var date = new Date();
+    console.log("***date: " + date);
+    var responseData = {
+        "status": true,
+        "message": "date get successfully",
+        "data": { "date": date }
+    }
+    console.log("responseData: " + JSON.stringify(responseData));
+    res.status(200).send(responseData);
+    console.log("<--careator_getToDate");
+}

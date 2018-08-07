@@ -8,6 +8,17 @@ var careatorMaster = db.collection("careatorMaster"); /* ### careator employee c
 var careatorEvents = db.collection("careatorEvents"); /* ### careatorChatGroup collection  ### */
 
 
+var transporter = nodemailer.createTransport({
+    service: "godaddy",
+    auth: {
+        user: "info@vc4all.in",
+        pass: "ctpl@123"
+    },
+    tls: {
+        rejectUnauthorized: false
+    }
+});
+
 module.exports.careator_sendEventSchedule = function (req, res) {
     console.log("careator_eventSend-->");
     var responseData;

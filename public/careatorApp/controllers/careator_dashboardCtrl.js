@@ -4,6 +4,33 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
     $scope.tickInterval = 1000 //ms
     $scope.propertyJson = $rootScope.propertyJson;
     console.log("localStorage.getItem(careatorEmail): " + localStorage.getItem("careatorEmail"));
+
+    $scope.getToDate = function () {
+        console.log("Get To Date-->");
+        var api = "https://norecruits.com/careator_getToDate/careator_getToDate";
+        careatorHttpFactory.get(api).then(function (data) {
+            var checkStatus = careatorHttpFactory.dataValidation(data);
+            console.log("data--" + JSON.stringify(data.data));
+            if (checkStatus) {
+                console.log("data.data.data.date: " + data.data.data.date);
+                var todayDate = new Date(data.data.data.date);
+                console.log("todayDate: " + todayDate);
+                var reqDate = todayDate.getDate();
+                console.log("reqDate: " + reqDate);
+                var reqMonth = todayDate.getMonth();
+                var reqYear = todayDate.getFullYear();
+                var reqHr = todayDate.getHours();
+                var reqMin = todayDate.getMinutes();
+                var reqSec = todayDate.getSeconds();
+                $scope.todayDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
+                console.log("consolidateDate: " + $scope.consolidateDate);
+            }
+            else {
+            }
+        })
+        console.log("<--Get To Date");
+    }
+    $scope.getToDate();
     $scope.getLogin_hostDetailsById = function (id) {
         console.log("getLogin_hostDetailsById-->: " + id);
         var api = "https://norecruits.com/careator_getUser/careator_getUserById/" + id;
@@ -416,6 +443,13 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
         if (!w || w.closed) {
             localStorage.setItem("careatorEmail", userData.email);
             localStorage.setItem("sessionPassword", userData.sessionPassword);
+            var dt = $scope.todayDate;
+            var dy = dt.getDay().toString();
+            var fy = dt.getFullYear().toString();
+            var m = dt.getMonth().toString();
+            var hr = dt.getHours().toString();
+            var date = dy.concat(fy, m, hr);
+            urlDate = date;
             // w = window.open("https://norecruits.com/careator", "_blank");
             var SIGNALING_SERVER = "https://norecruits.com";
             signaling_socket = io(SIGNALING_SERVER);
@@ -425,7 +459,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                     console.log("signaling_socket message-->");
                     queryLink = config.queryId;
                     peerNew_id = config.peer_id;
-                    var url = "https://norecruits.com/client_conf/" + peerNew_id + "/" + $scope.urlDate;
+                    var url = "https://norecruits.com/client_conf/" + peerNew_id + "/" + urlDate;
                     // window.location.href = url;
                     var api = "https://norecruits.com/careator/setCollection";
                     console.log("api: " + api);

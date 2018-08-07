@@ -150,8 +150,15 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
 
         queryLink = config.queryId;
         peerNew_id = config.peer_id;
+        var dt = $scope.todayDate;
+        var dy = dt.getDay().toString();
+        var fy = dt.getFullYear().toString();
+        var m = dt.getMonth().toString();
+        var hr = dt.getHours().toString();
+        var date = dy.concat(fy, m, hr);
+        urlDate = date;
 
-        var url = "https://norecruits.com/client_conf/" + peerNew_id + "/" + $scope.urlDate;
+        var url = "https://norecruits.com/client_conf/" + peerNew_id + "/" + urlDate;
         dfd.resolve(url);
       })
     })

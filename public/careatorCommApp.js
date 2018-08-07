@@ -165,6 +165,20 @@ careatorApp.config(function ($stateProvider) {
                 }
             }
         })
+        .state('Cdashboard.upcomingEvent', {
+            url: careator_upcomingEvent(),
+            templateUrl: '/careatorApp/html/careator_upcomingEvent.html',
+            resolve: {
+                result: function (careatorSessionAuth, $window) {
+                    // var userData = careatorSessionAuth.getAccess("userData");
+                    // if (userData.email == 'vc4all@careator.com') {
+
+                    // } else {
+                    //     $window.location.href = 'https://norecruits.com';
+                    // }
+                }
+            }
+        })
         
 })
 
@@ -223,4 +237,8 @@ function careator_userRestrict() {
 
 function careator_vc4allSchedule(){
     return '/vc4allSchedule';
+}
+
+function careator_upcomingEvent(){
+    return '/upcomingEvent'
 }

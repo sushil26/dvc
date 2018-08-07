@@ -62,8 +62,8 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
     console.log("sd: " + sd);
     console.log("ed: " + ed);
     console.log("reason: " + reason);
-    var formatedStartTime = $filter('date')(sd, "HH:mm:ss");
-    var formatedEndTime = $filter('date')(ed, "HH:mm:ss");
+    var formatedStartTime = $filter('date')(sd, "HH:mm a");
+    var formatedEndTime = $filter('date')(ed, "HH:mm a");
     var dateForEvent = $filter('date')(sd, "EEE MMM dd y");
     dayEventmodal.close('resetModel');
     $scope.eventSend(title, emailList, dateForEvent, formatedStartTime, formatedEndTime, sd, ed, reason);

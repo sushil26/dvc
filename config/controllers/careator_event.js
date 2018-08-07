@@ -99,7 +99,10 @@ module.exports.careator_sendEventSchedule = function (req, res) {
                 var failedList = [];
                 // var io = req.app.get('socketio');
                 // io.emit('eventUpdated', { "id": req.body.remoteCalendarId, "remoteId": req.body.remoteCalendarId }); /* ### Note: Emit message to upcomingEventCtrl.js ### */
-                var maillist = req.body.invitingTo;
+                var emailString = req.body.invitingTo;
+                var emailSplit = emailString.split(',');
+                console.log("emailSplit: " + JSON.stringify(emailSplit));
+                var maillist = emailSplit;
 
                 maillist.forEach(function (to, i, array) {
                     console.log("To: " + to);
@@ -122,18 +125,20 @@ module.exports.careator_sendEventSchedule = function (req, res) {
 
                         } else {
                             console.log('Email sent: ' + info.response);
-                            // responseData = {
-                            //     "status": true,
-                            //     "errorCode": 200,
-                            //     "message": "Registeration Successfull and sent mail",
-                            //     "data": data
-                            // }
-                            // res.status(200).send(responseData);
                         }
                     })
+                    if (maillist.length-1==i)
+                    {
+                        responseData = {
+                            "status": true,
+                            "message": "Email send successfully",
+                            "failedToSend": failedList
+                        }
+                        res.status(200).send(responseData);
+                    }
 
                     });
-                }
+            }
         })
     }
     else {

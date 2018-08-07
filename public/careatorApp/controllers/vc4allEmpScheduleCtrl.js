@@ -176,10 +176,13 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
           var checkStatus = careatorHttpFactory.dataValidation(data);
           console.log("data--" + JSON.stringify(data.data));
           if (checkStatus) {
-            // console.log("data" + JSON.stringify(data.data))
-            // $window.location.href = $scope.propertyJson.R082;
-
+           if(data.data.failedToSend.length==0){
             alert("Successfully sent the event");
+           }
+           else{
+            alert("Failed to send "+JSON.stringify(data.data.failedToSend.length));
+           }
+            
             // vm.events.splice(0, 1);
             var eventPostedData = data.data.data;
             var objData = {
@@ -207,8 +210,6 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
         })
       });
     }, 0);
-
-
     console.log("<--eventSend");
     // var url = document.getElementById('linkToShare').innerHTML;
   }
@@ -324,7 +325,7 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
     // $('#eDetail').trigger('click');
     var eClicked = $uibModal.open({
       scope: $scope,
-      templateUrl: '/html/templates/eventDetails.html',
+      templateUrl: '/careatorApp/common/eventDetailTemplate.html',
       windowClass: 'show',
       backdropClass: 'show',
       controller: function ($scope, $uibModalInstance) {

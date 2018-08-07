@@ -1,4 +1,4 @@
-careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $filter, $timeout,$window, careatorSessionAuth, careatorHttpFactory, SweetAlert) {
+careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $filter, $timeout, $window, careatorSessionAuth, careatorHttpFactory, SweetAlert) {
     console.log("careator_dashboardCtrl==>");
     $scope.clock = "loading clock..."; // initialise the time variable
     $scope.tickInterval = 1000 //ms
@@ -474,9 +474,12 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                         console.log("checkStatus--" + checkStatus);
                         if (checkStatus) {
                             localStorage.setItem("sessionUrlId", peerNew_id);
-                            console.log("url: "+url);
+                            console.log("url: " + url);
                             // window.location.href = url;
-                            $window.open(url, "_blank");
+                            var configString = "height=" + 1000 + ",width=" + 1000 + ",top=0,left=0";
+                            $window.open(url, "_blank", configString);
+                            // $window.open(url, "_blank");
+
                         }
                         else {
                             console.log("Sorry");

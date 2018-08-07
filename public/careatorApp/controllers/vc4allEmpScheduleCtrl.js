@@ -367,10 +367,7 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
   vm.timespanClicked = function (date, css) {
     console.log("timespanClicked-->");
     console.log("date: " + date);
-    console.log("teacherPersonalData: " + JSON.stringify($scope.teacherPersonalData));
     $scope.selectedDateForEvent = $filter('date')(date, "EEE");
-    console.log("selectedDateForEvent: " + $scope.selectedDateForEvent);
-
     $scope.selectedDate = date;
     var rsd = new Date(date);
     var PersonalRemoteCombineCal = ownerEvents;

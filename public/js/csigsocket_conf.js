@@ -949,7 +949,7 @@ console.log("id2**: " + id2);
         });
         $("#btnrestore").click(function () {
           $("#" + peer_id + "remoteVideoElement").removeClass("fullscr");
-          $('html, body').css('overflow-x', 'hidden');
+          $('html, body').css('overflow', '');
 
           console.log("add id videoElem111");
           $("#videoElem111").addClass(

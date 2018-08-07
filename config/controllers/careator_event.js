@@ -75,7 +75,7 @@ module.exports.careator_sendEventSchedule = function (req, res) {
                             "status": true,
                             "errorCode": 200,
                             "message": "Registeration Successfull and Failed to send mail",
-                            "data": userData
+                            "data": data
                         }
                         res.status(200).send(responseData);
 
@@ -85,7 +85,7 @@ module.exports.careator_sendEventSchedule = function (req, res) {
                             "status": true,
                             "errorCode": 200,
                             "message": "Registeration Successfull and sent mail",
-                            "data": userData
+                            "data": data
                         }
                         res.status(200).send(responseData);
                     }

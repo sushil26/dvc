@@ -136,12 +136,12 @@ careatorApp.config(function ($stateProvider) {
             templateUrl: '/careatorApp/html/profile.html',
             resolve: {
                 result: function (careatorSessionAuth, $window) {
-                    var userData = careatorSessionAuth.getAccess("userData");
-                    if (userData.email == null || userData.email == "") {
-                        $window.location.href = 'https://norecruits.com';
-                    } else {
+                    // var userData = careatorSessionAuth.getAccess("userData");
+                    // if (userData.email == null || userData.email == "") {
+                    //     $window.location.href = 'https://norecruits.com';
+                    // } else {
                        
-                    }
+                    // }
                 }
             }
         })

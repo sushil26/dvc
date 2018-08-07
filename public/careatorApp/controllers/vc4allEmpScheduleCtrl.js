@@ -55,7 +55,7 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
       }
     })
   }
-
+  $scope.eventGet();
   $scope.save = function (title, emailList, sd, ed, reason) {
     console.log("title: " + title);
     console.log("emailList: " + emailList);

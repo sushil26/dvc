@@ -246,7 +246,7 @@ function checkCredential() {
         if (data.data.profilePicPath) {
           localStorage.setItem("profilePicPath", data.data.profilePicPath);
         }
-        var userNameEmail = localStorage.getItem("careatorEmail");
+
         console.log("userName: " + userName);
         document.getElementById("videoConferenceUrl").style.display = "block";
         // $('#myPasswordModal').modal('hide');

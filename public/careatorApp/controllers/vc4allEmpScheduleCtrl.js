@@ -110,15 +110,10 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
       console.log("conflicts: " + conflicts);
       if (conflicts) {
         console.log("conflicts is there");
-
         alert("ON this time you have an appointment");
-
       }
       else {
         console.log("no conflicts is there");
-
-
-
         var formatedStartTime = $filter('date')(sd, "HH:mm a");
         var formatedEndTime = $filter('date')(ed, "HH:mm a");
         var dateForEvent = $filter('date')(sd, "EEE MMM dd y");

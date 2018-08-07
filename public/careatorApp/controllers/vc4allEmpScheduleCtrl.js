@@ -37,7 +37,7 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
         queryLink = config.queryId;
         peerNew_id = config.peer_id;
 
-        var url = "https://norecruits.com/client/" + peerNew_id + "/" + $scope.urlDate;
+        var url = "https://norecruits.com/client_conf/" + peerNew_id + "/" + $scope.urlDate;
         dfd.resolve(url);
       })
     })

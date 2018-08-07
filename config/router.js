@@ -5,7 +5,7 @@ var image = require('./controllers/image');
 var adminAction = require('./controllers/adminAction');
 var school = require('./controllers/school');
 var careator = require('./controllers/careator');
-var careator = require('./controllers/careator_event');
+var careator_event = require('./controllers/careator_event');
 var careatorImgUpload = require('./controllers/careatorImgUploads.js');
 
 

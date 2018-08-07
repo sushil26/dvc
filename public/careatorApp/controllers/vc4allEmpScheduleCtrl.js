@@ -55,7 +55,7 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
       getSocketUrlFromServer().then(function (url) {
         console.log("Back to function call-->");
         console.log("url: " + url);
-        var api = "https://norecruits.com/careator/careator_sendEventSchedule";
+        var api = "https://norecruits.com/careator_eventSchedule/careator_sendEventSchedule";
         console.log("api: " + api);
         var obj = {
           "senderId": $scope.userData.userId,
@@ -84,23 +84,19 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
             // vm.events.splice(0, 1);
             var eventPostedData = data.data.data;
             var objData = {
-              'id': obj.userId,
-              'title': obj.title,
-              'color': obj.primColor,
-              'startsAt': $filter('date')($scope.startFiltered, "h:mm a"),
-              'endsAt': $filter('date')($scope.endFiltered, "h:mm a"),
-              'draggable': true,
-              'resizable': true,
-              'actions': actions,
-              'url': obj.url,
-              "reason": res,
-              "senderName": name,
-              "senderId": id,
-              "senderMN": senderMN,
-              "receiverEmail": email,
-              "receiverName": receiverName,
-              "receiverId": receiverId,
-              "receiverMN": receiverMN,
+              "senderId": $scope.userData.userId,
+              "senderName": $scope.userData.userName,
+              "senderEmail": $scope.userData.email,
+              "title": title,
+              "reason": reason,
+              "invitingTo": emailList,
+              "formatedStartTime": formatedStartTime,
+              "formatedEndTime": formatedEndTime,
+              "startsAt": sd,
+              "endsAt": ed,
+              "primColor": "red",
+              "url": url,
+              "date": dateForEvent,
             }
             ownerEvents.push(objData);
             vm.events.push(objData);

@@ -13,10 +13,10 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
   $scope.eventGet = function () {
     console.log("eventGet-->");
     var id = $scope.userData.userId
-    var api = "https://norecruits.com/careator_eventSchedule/careator_eventGetById/"+id;
+    var api = "https://norecruits.com/careator_eventSchedule/careator_eventGetById/" + id;
     //var api = "http://localhost:5000/vc/eventGet"+ "/" + id;;
     $scope.calendarOwner = "Your";
-
+    console.log("api: " + api);
     careatorHttpFactory.get(api).then(function (data) {
       var checkStatus = careatorHttpFactory.dataValidation(data);
       console.log("data--" + JSON.stringify(data.data));

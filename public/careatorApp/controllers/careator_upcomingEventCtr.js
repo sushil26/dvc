@@ -25,6 +25,7 @@ careatorApp.controller('careator_upcomingEventCtr', function ($scope, $rootScope
                 var reqSec = todayDate.getSeconds();
                 $scope.todayDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
                 console.log("consolidateDate: " + $scope.consolidateDate);
+                $scope.eventGet();
             }
             else {
             }

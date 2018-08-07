@@ -111,7 +111,7 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
       if (conflicts) {
         console.log("conflicts is there");
 
-        alert("ON this time you/student not free, try on other time");
+        alert("ON this time you have an appointment");
 
       }
       else {

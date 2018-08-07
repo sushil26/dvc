@@ -438,7 +438,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                         var checkStatus = careatorHttpFactory.dataValidation(data);
                         console.log("data--" + JSON.stringify(data.data));
                         if (checkStatus) {
-                            localStorage.setItem("sessionUrlId", id);
+                            localStorage.setItem("sessionUrlId", peerNew_id);
                             // window.location.href = url;
                             window.open(url, "_blank");
                         }

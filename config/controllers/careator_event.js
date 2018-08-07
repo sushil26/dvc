@@ -99,7 +99,7 @@ module.exports.careator_sendEventSchedule = function (req, res) {
                 var failedList = [];
                 // var io = req.app.get('socketio');
                 // io.emit('eventUpdated', { "id": req.body.remoteCalendarId, "remoteId": req.body.remoteCalendarId }); /* ### Note: Emit message to upcomingEventCtrl.js ### */
-                var emailSTring = req.body.invitingTo;
+                var emailString = req.body.invitingTo;
                 var emailSplit = emailString.split(',');
                 console.log("emailSplit: "+JSON.stringify(emailSplit));
                 var maillist = emailSplit;

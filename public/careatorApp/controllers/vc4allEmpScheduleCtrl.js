@@ -158,7 +158,7 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
         var date = dy.concat(fy, m, hr);
         urlDate = date;
 
-        var url = "https://norecruits.com/client_conf/" + peerNew_id + "/" + urlDate;
+        var url = "https://norecruits.com/careator_conf/" + peerNew_id + "/" + urlDate;
         dfd.resolve(url);
       })
     })

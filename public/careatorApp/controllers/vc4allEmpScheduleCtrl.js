@@ -120,7 +120,7 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
         console.log("obj: " + JSON.stringify(obj));
         careatorHttpFactory.post(api, obj).then(function (data) {
           var checkStatus = careatorHttpFactory.dataValidation(data);
-          //console.log("data--" + JSON.stringify(data.data));
+          console.log("data--" + JSON.stringify(data.data));
           if (checkStatus) {
             // console.log("data" + JSON.stringify(data.data))
             // $window.location.href = $scope.propertyJson.R082;

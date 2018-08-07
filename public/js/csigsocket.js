@@ -10,6 +10,8 @@
 var sesionEnc = localStorage.getItem("sessionEnc");
 console.log("sesionEnc: " + sesionEnc);
 
+$('html, body').css('overflow', '');
+
 /** CONFIG **/
 console.log("Signaling Socket.js");
 var SIGNALING_SERVER = "https://norecruits.com";
@@ -112,7 +114,7 @@ var sessionPassword = localStorage.getItem("sessionPassword");
 //   console.log("localStorage.getItem(careatorEmail): " + localStorage.getItem("careatorEmail"));
 //   console.log("localStorage.getItem(sessionPassword): " + localStorage.getItem("sessionPassword"));
 
-if ((localStorage.getItem("careatorEmail")!=null && localStorage.getItem("careatorEmail")!=undefined) && (localStorage.getItem("sessionPassword")!=null && localStorage.getItem("sessionPassword")!=undefined)) {
+if ((localStorage.getItem("careatorEmail") != null && localStorage.getItem("careatorEmail") != undefined) && (localStorage.getItem("sessionPassword") != null && localStorage.getItem("sessionPassword") != undefined)) {
   var userNameEmail = localStorage.getItem("careatorEmail");
   console.log("2 cond: userNameEmail: " + userNameEmail);
   var emailIdSplit = userNameEmail.split('@');
@@ -258,7 +260,7 @@ function checkCredential() {
         console.log("err.responseText: " + JSON.stringify(err.responseText));
         console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
         if (err.responseJSON.message == "You've already logged in. To log in again, please reset your session") {
-         
+
           checkObj = {
             "password": password,
             "careatorEmail": careatorEmail
@@ -641,8 +643,8 @@ function startSession(id, date) {
 /* ### Note:End Whenever page refresh get the chathistory respective to url  ### */
 
 document.getElementById("scheduleVC").addEventListener("click", function () {
-    console.log("scheduleVC4ALL Emp--->");
-    window.location.href="https://norecruits.com/careatorApp/#!/dashboard/vc4allSchedule"
+  console.log("scheduleVC4ALL Emp--->");
+  window.location.href = "https://norecruits.com/careatorApp/#!/dashboard/vc4allSchedule"
 
 })
 
@@ -1748,8 +1750,8 @@ signaling_socket.on("connect", function () {
 function scrollDown() {
   console.log("scrollDown-->");
   $("#popupMsg").animate({
-    scrollTop: $("#popupMsg").prop("scrollHeight")
-  },
+      scrollTop: $("#popupMsg").prop("scrollHeight")
+    },
     500
   );
   console.log("<--scrollDown");
@@ -1840,8 +1842,8 @@ function scrollDown() {
     }
 
     iframe.contentWindow.postMessage({
-      captureSourceId: true
-    },
+        captureSourceId: true
+      },
       "*"
     );
   }
@@ -1915,8 +1917,8 @@ function scrollDown() {
     }
 
     iframe.contentWindow.postMessage({
-      getChromeExtensionStatus: true
-    },
+        getChromeExtensionStatus: true
+      },
       "*"
     );
   }

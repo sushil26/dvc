@@ -181,7 +181,7 @@ careatorApp.config(function ($stateProvider) {
         })
         .state('Cdashboard.historyEvent', {
             url: careator_historyEvent(),
-            templateUrl: '/careatorApp/html/careator_upcomingEvent.html',
+            templateUrl: '/careatorApp/html/careator_historyEvent.html',
             resolve: {
                 result: function (careatorSessionAuth, $window) {
                     // var userData = careatorSessionAuth.getAccess("userData");

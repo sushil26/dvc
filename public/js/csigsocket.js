@@ -10,7 +10,7 @@
 var sesionEnc = localStorage.getItem("sessionEnc");
 console.log("sesionEnc: " + sesionEnc);
 
-$('html, body').css('overflow', '');
+$('html, body').css('overflow-x', 'hidden');
 
 /** CONFIG **/
 console.log("Signaling Socket.js");

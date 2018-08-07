@@ -27,20 +27,8 @@
     <!-- <link rel="stylesheet" type="text/css" href="/css/sweet-alert.css">
     <script src="/js/SweetAlert.min.js"></script>
     <script src="/js/sweet-alert.min.js"></script> -->
-
+   
     <style>
-        .modal.fade .modal-dialog {
-            -webkit-transform: translate(0);
-            -moz-transform: translate(0);
-            transform: translate(0);
-        }
-
-        .modal-open {
-            overflow: hidden;
-            padding-right: 0px !important;
-        }
-
-
         .extn {
             margin-right: 25px;
             list-style-type: none;
@@ -324,7 +312,7 @@
                         </div>
                         <div class="col-lg-12">
                             <button data-toggle="modal" data-target="#alertcreator" id="alertButton" data-backdrop="static" data-keyboard="false" style="display:none"></button>
-                            <div class="modal fade" id="alertcreator" role="dialog">
+                            <div class="modal" id="alertcreator" role="dialog">
                                 <div class="modal-dialog">
                                     <center>
                                         <form>
@@ -347,7 +335,7 @@
 
                             <button data-toggle="modal" data-target="#alertforsessionclose" id="alertConfirmationButton" data-backdrop="static" data-keyboard="false"
                                 style="display:none"></button>
-                            <div class="modal fade" id="alertforsessionclose" role="dialog">
+                            <div class="modal" id="alertforsessionclose" role="dialog">
                                 <div class="modal-dialog">
                                     <center>
                                         <form>
@@ -376,7 +364,7 @@
                             <button data-toggle="modal" data-target="#notify_msg_show" id="notify_msg_show_button" data-backdrop="static" data-keyboard="false"
                                 style="display:none"></button>
 
-                            <div class="modal fade" id="notify_msg_show" role="dialog">
+                            <div class="modal" id="notify_msg_show" role="dialog">
                                 <div class="modal-dialog">
                                     <center>
                                         <form>
@@ -403,7 +391,7 @@
 
 
 
-                            <div class="modal fade" id="notify_msg" role="dialog">
+                            <div class="modal " id="notify_msg" role="dialog">
                                 <div class="modal-dialog">
                                     <center>
                                         <form>
@@ -425,7 +413,7 @@
                                 </div>
                             </div>
 
-
+                       
                             <!-- <div class="modal fade" id="instantOrSched" role="dialog">
                                 <div class="modal-dialog">
                                     <center>
@@ -445,7 +433,7 @@
                                     </center>
                                 </div>
                             </div> -->
-                            <div class="modal fade" id="myEmailModal" role="dialog">
+                            <div class="modal" id="myEmailModal" role="dialog">
                                 <div class="modal-dialog">
                                     <center>
                                         <form>
@@ -1078,14 +1066,6 @@
             border: thin solid #f3f3f3;
         }
     </style>
-    <script>
-        $('.modal').on('show.bs.modal', function (e) {
-            $('.modal .modal-dialog').attr('class', 'modal-dialog  flipInX  animated');
-        })
-        $('.modal').on('hide.bs.modal', function (e) {
-            $('.modal .modal-dialog').attr('class', 'modal-dialog  flipOutX  animated');
-        })
-    </script>
     </div>
 </body>
 

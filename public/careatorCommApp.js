@@ -126,18 +126,24 @@ careatorApp.config(function ($stateProvider) {
                     if (userData.email == null || userData.email == "") {
                         $window.location.href = 'https://norecruits.com';
                     } else {
-                       
+
                     }
                 }
             }
         })
-        .state('Cdashboard.contactAdmin', {
-            url: contactAdmin(),
-            templateUrl: '/careatorApp/html/contactAdmin.html'
-        })
         .state('Cdashboard.profile', {
             url: profile(),
             templateUrl: '/careatorApp/html/profile.html',
+            resolve: {
+                result: function (careatorSessionAuth, $window) {
+                    var userData = careatorSessionAuth.getAccess("userData");
+                    if (userData.email == null || userData.email == "") {
+                        $window.location.href = 'https://norecruits.com';
+                    } else {
+                       
+                    }
+                }
+            }
         })
 
         .state('Cdashboard.ipost', {
@@ -166,12 +172,12 @@ careatorApp.config(function ($stateProvider) {
             templateUrl: '/careatorApp/html/vcSchedule.html',
             resolve: {
                 result: function (careatorSessionAuth, $window) {
-                    // var userData = careatorSessionAuth.getAccess("userData");
-                    // if (userData.email == 'vc4all@careator.com') {
-
-                    // } else {
-                    //     $window.location.href = 'https://norecruits.com';
-                    // }
+                    var userData = careatorSessionAuth.getAccess("userData");
+                    if (userData.email == null || userData.email == "") {
+                        $window.location.href = 'https://norecruits.com';
+                    } else {
+                       
+                    }
                 }
             }
         })
@@ -180,30 +186,31 @@ careatorApp.config(function ($stateProvider) {
             templateUrl: '/careatorApp/html/careator_upcomingEvent.html',
             resolve: {
                 result: function (careatorSessionAuth, $window) {
-                    // var userData = careatorSessionAuth.getAccess("userData");
-                    // if (userData.email == 'vc4all@careator.com') {
-
-                    // } else {
-                    //     $window.location.href = 'https://norecruits.com';
-                    // }
+                    var userData = careatorSessionAuth.getAccess("userData");
+                    if (userData.email == null || userData.email == "") {
+                        $window.location.href = 'https://norecruits.com';
+                    } else {
+                       
+                    }
                 }
             }
+            
         })
         .state('Cdashboard.historyEvent', {
             url: careator_historyEvent(),
             templateUrl: '/careatorApp/html/careator_historyEvent.html',
             resolve: {
                 result: function (careatorSessionAuth, $window) {
-                    // var userData = careatorSessionAuth.getAccess("userData");
-                    // if (userData.email == 'vc4all@careator.com') {
-
-                    // } else {
-                    //     $window.location.href = 'https://norecruits.com';
-                    // }
+                    var userData = careatorSessionAuth.getAccess("userData");
+                    if (userData.email == null || userData.email == "") {
+                        $window.location.href = 'https://norecruits.com';
+                    } else {
+                       
+                    }
                 }
             }
         })
-        
+
 })
 
 function ipost() {
@@ -259,14 +266,14 @@ function careator_userRestrict() {
     return '/userRestrict'
 }
 
-function careator_vc4allSchedule(){
+function careator_vc4allSchedule() {
     return '/vc4allSchedule';
 }
 
-function careator_upcomingEvent(){
+function careator_upcomingEvent() {
     return '/upcomingEvent'
 }
 
-function careator_historyEvent(){
+function careator_historyEvent() {
     return '/historyEvent'
 }

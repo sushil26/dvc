@@ -104,8 +104,8 @@ module.exports.careator_sendEventSchedule = function (req, res) {
             }
             else {
                 var failedList = [];
-                // var io = req.app.get('socketio');
-                // io.emit('eventUpdated', { "id": req.body.remoteCalendarId, "remoteId": req.body.remoteCalendarId }); /* ### Note: Emit message to upcomingEventCtrl.js ### */
+                var io = req.app.get('socketio');
+                io.emit('eventUpdated', { "id": req.body.remoteCalendarId, "remoteId": req.body.remoteCalendarId }); /* ### Note: Emit message to upcomingEventCtrl.js ### */
 
                 maillist.forEach(function (to, i, array) {
                     console.log("To: " + to);

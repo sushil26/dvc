@@ -65,10 +65,10 @@ careatorApp.controller('careator_upcomingEventCtr', function ($scope, $rootScope
                         "primColor": $scope.eventData[x].primColor,
                         "url": $scope.eventData[x].url,
                         "date": $scope.eventData[x].date,
-                       
+
                     }
                     console.log(" obj" + JSON.stringify(obj));
-                    
+
                     if ($scope.eventData[x].notificationNeed == 'yes') {
                         if ($scope.eventData[x].userId != $scope.userData.id) {
                             console.log("not equal");
@@ -80,7 +80,7 @@ careatorApp.controller('careator_upcomingEventCtr', function ($scope, $rootScope
                     // ownerEvents.push(obj);
                     $scope.events.push(obj);
                 }
-                console.log(" $scope.events: "+JSON.stringify( $scope.events));
+                console.log(" $scope.events: " + JSON.stringify($scope.events));
             }
             else {
                 //alert("Event get Failed");
@@ -252,16 +252,7 @@ careatorApp.controller('careator_upcomingEventCtr', function ($scope, $rootScope
 
     $scope.waitForTime = function (time) {
         console.log("waitForTime-->");
-        var loginAlert = $uibModal.open({
-            scope: $scope,
-            templateUrl: '/html/templates/dashboardwarning.html',
-            windowClass: 'show',
-            backdropClass: 'static',
-            keyboard: false,
-            controller: function ($scope, $uibModalInstance) {
-                $scope.message = "Wait till " + time;
-            }
-        })
+        alert("Wait till " + time);
         console.log("<--waitForTime");
     }
 

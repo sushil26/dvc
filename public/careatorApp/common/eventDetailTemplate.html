@@ -40,17 +40,16 @@
             </tr>
             <tr>
                 <td>
+                    Timing
+                </td>
+                <td>
+                    <div style="color:green">{{eventDetails.startsAt | date:'h:mm a'}}-{{eventDetails.endsAt | date:'h:mm a'}} </div>
+                </td>
+                <td>
                     Message
                 </td>
                 <td>
                     <div style="color:green">{{eventDetails.reason}} </div>
-                </td>
-                <td>
-                    Timing
-                </td>
-                <td>
-
-                    <div style="color:green">{{eventDetails.startsAt | date:'h:mm a'}}-{{eventDetails.endsAt | date:'h:mm a'}} </div>
                 </td>
             </tr>
         </tbody>
@@ -73,11 +72,11 @@
                     Emails
                 </td>
                 <td ng-repeat="email in eventDetails.invitingTo">
-                    <div style="color:green" >{{email}} </div>
+                    <div style="color:green">{{email}} </div>
                 </td>
-               
+
             </tr>
-         
+
         </tbody>
 
         <!-- ng-if only for history -->

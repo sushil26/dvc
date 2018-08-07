@@ -165,6 +165,7 @@ careatorApp.config(function ($stateProvider) {
                 }
             }
         })
+        
 })
 
 function ipost() {

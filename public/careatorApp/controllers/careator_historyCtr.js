@@ -67,6 +67,7 @@ careatorApp.controller('careator_historyCtr', function ($scope, $rootScope, $sta
                     console.log(" obj" + JSON.stringify(obj));
                     $scope.events.push(obj);        
                 }
+                console.log(" $scope.events: "+ JSON.stringify($scope.events));
             }
             else {
                 //alert("Event get Failed");

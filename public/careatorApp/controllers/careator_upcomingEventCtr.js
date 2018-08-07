@@ -67,7 +67,7 @@ careatorApp.controller('careator_upcomingEventCtr', function ($scope, $rootScope
                         "date": $scope.eventData[x].date,
                        
                     }
-                    console.log(" obj" + JSON.stringify(obj))
+                    console.log(" obj" + JSON.stringify(obj));
                     
                     if ($scope.eventData[x].notificationNeed == 'yes') {
                         if ($scope.eventData[x].userId != $scope.userData.id) {

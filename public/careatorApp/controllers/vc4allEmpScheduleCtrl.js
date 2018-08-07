@@ -55,7 +55,7 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
       getSocketUrlFromServer().then(function (url) {
         console.log("Back to function call-->");
         console.log("url: " + url);
-        var api = "https://norecruits.com/careator/careator_sendEventSchedule";
+        var api = "https://norecruits.com/careator_eventSchedule/careator_sendEventSchedule";
         console.log("api: " + api);
         var obj = {
           "senderId": $scope.userData.userId,

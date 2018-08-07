@@ -475,8 +475,8 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                         if (checkStatus) {
                             localStorage.setItem("sessionUrlId", peerNew_id);
                             console.log("url: " + url);
-                            // window.location.href = url;
-                            var configString = "height=" + 1000 + ",width=" + 1000 + ",top=0,left=0";
+                            
+                            
                             w = window.open(url, '_blank');
                             console.log("***");
                             // $window.open(url, "_blank");

@@ -909,7 +909,7 @@ console.log("id2**: " + id2);
         $("#" + peer_id + "fullscreenbtn2").click(function () {
           console.log("sushil screen test");
           console.log("remove id videoElem111");
-          $('html, body').css('overflow', 'hidden');
+          $('html, body').css('overflow-x', 'hidden');
           $("#btnrestore").css({
             "display": "inline"
           })
@@ -949,7 +949,7 @@ console.log("id2**: " + id2);
         });
         $("#btnrestore").click(function () {
           $("#" + peer_id + "remoteVideoElement").removeClass("fullscr");
-          $('html, body').css('overflow', '');
+          $('html, body').css('overflow-x', 'hidden');
 
           console.log("add id videoElem111");
           $("#videoElem111").addClass(

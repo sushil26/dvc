@@ -129,7 +129,7 @@ if ((localStorage.getItem("careatorEmail")!=null && localStorage.getItem("careat
     });
   }
   if (localStorage.getItem("chatRights") == 'yes') {
-    // document.getElementById("chatConfStart").style.display = "block";
+    document.getElementById("chatConfStart").style.display = "block";
   }
 
 } else {
@@ -227,7 +227,7 @@ function checkCredential() {
         }
         if (data.data.chatRights == 'yes') {
           localStorage.setItem("chatRights", 'yes');
-          // document.getElementById("chatConfStart").style.display = "inline";
+          document.getElementById("chatConfStart").style.display = "inline";
         }
         if (data.data.chatStatus) {
           localStorage.setItem("chatStatus", data.data.chatStatus);

@@ -130,6 +130,7 @@ if ((localStorage.getItem("careatorEmail") != null && localStorage.getItem("care
     $("#buttonpage").css({
       "min-height": "auto"
     });
+    window.location.href = "https://norecruits.com/careatorApp/#!/dashboard/profile";
   }
   if (localStorage.getItem("chatRights") == 'yes') {
     document.getElementById("chatConfStart").style.display = "block";

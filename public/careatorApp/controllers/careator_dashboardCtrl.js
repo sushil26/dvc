@@ -426,7 +426,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                     queryLink = config.queryId;
                     peerNew_id = config.peer_id;
                     var url = "https://norecruits.com/client_conf/" + peerNew_id + "/" + $scope.urlDate;
-                    window.location.href = url;
+                    // window.location.href = url;
                     var api = "https://norecruits.com/careator_eventSchedule/careator_sendEventSchedule";
                     console.log("api: " + api);
                     var obj = {
@@ -439,7 +439,8 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                         console.log("data--" + JSON.stringify(data.data));
                         if (checkStatus) {
                             localStorage.setItem("sessionUrlId", id);
-                            window.location.href = url;
+                            // window.location.href = url;
+                            window.open(url, "_blank");
                         }
                         else {
                             console.log("Sorry");

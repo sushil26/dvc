@@ -131,6 +131,12 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
         $scope.videoRights = "no";
     }
 
+
+    // $scope.instantConference = function () {
+    //     console.log("instantConference-->");
+
+    // }
+
     $scope.getAdmin_email_id = function () {
         console.log("getAdmin_email_id-->");
         var api = "https://norecruits.com/careator_adminBasicData/getAdminObjectId";
@@ -410,7 +416,38 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
         if (!w || w.closed) {
             localStorage.setItem("careatorEmail", userData.email);
             localStorage.setItem("sessionPassword", userData.sessionPassword);
-            w = window.open("https://norecruits.com/careator", "_blank");
+            // w = window.open("https://norecruits.com/careator", "_blank");
+            var SIGNALING_SERVER = "https://norecruits.com";
+            signaling_socket = io(SIGNALING_SERVER);
+            signaling_socket.on('connect', function () {
+                console.log("signaling_socket connect-->");
+                signaling_socket.on('message', function (config) {
+                    console.log("signaling_socket message-->");
+                    queryLink = config.queryId;
+                    peerNew_id = config.peer_id;
+                    var url = "https://norecruits.com/client_conf/" + peerNew_id + "/" + $scope.urlDate;
+                    // window.location.href = url;
+                    var api = "https://norecruits.com/careator/setCollection";
+                    console.log("api: " + api);
+                    var obj = {
+                        "email": localStorage.getItem('careatorEmail'),
+                        "url": url
+                    }
+                    console.log("obj: " + JSON.stringify(obj));
+                    careatorHttpFactory.post(api, obj).then(function (data) {
+                        var checkStatus = careatorHttpFactory.dataValidation(data);
+                        console.log("data--" + JSON.stringify(data.data));
+                        if (checkStatus) {
+                            localStorage.setItem("sessionUrlId", peerNew_id);
+                            // window.location.href = url;
+                            window.open(url, "_blank");
+                        }
+                        else {
+                            console.log("Sorry");
+                        }
+                    })
+                })
+            })
         } else {
             SweetAlert.swal({
                 title: "window is already opened", //Bold text

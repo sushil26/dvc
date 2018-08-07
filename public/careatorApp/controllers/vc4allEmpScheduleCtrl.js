@@ -100,8 +100,8 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
     var consolidateDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
     console.log("consolidateDate: " + consolidateDate + " $scope.todayDate: " + $scope.todayDate);
     if (consolidateDate > $scope.todayDate) {
-      console.log("PersonalRemoteCombineCal.length: "+PersonalRemoteCombineCal.length);
-      if(PersonalRemoteCombineCal.length>0){
+      console.log("PersonalRemoteCombineCal.length: " + PersonalRemoteCombineCal.length);
+      if (PersonalRemoteCombineCal.length > 0) {
         var conflicts = PersonalRemoteCombineCal.some(function (event) {
           //   return (event.startsAt <= s && s <= event.endsAt) ||event.startsAt <= e && e <= event.endsAt || s <= event.startsAt && event.startsAt <= e ||s <= event.endsAt && event.endsAt <= e});
           return (event.startsAt <= rsd && rsd < event.endsAt) ||
@@ -123,7 +123,7 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
           $scope.eventSend(title, emailList, dateForEvent, formatedStartTime, formatedEndTime, sd, ed, reason);
         }
       }
-      else{
+      else {
         console.log("no conflicts is there");
         var formatedStartTime = $filter('date')(sd, "HH:mm a");
         var formatedEndTime = $filter('date')(ed, "HH:mm a");
@@ -131,10 +131,11 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
         dayEventmodal.close('resetModel');
         $scope.eventSend(title, emailList, dateForEvent, formatedStartTime, formatedEndTime, sd, ed, reason);
       }
-     
-    
+
+
     }
   }
+
 
   function getSocketUrlFromServer() {
     console.log("getSocketUrlFromServer-->");
@@ -189,13 +190,13 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
           var checkStatus = careatorHttpFactory.dataValidation(data);
           console.log("data--" + JSON.stringify(data.data));
           if (checkStatus) {
-           if(data.data.failedToSend.length==0){
-            alert("Successfully sent the event");
-           }
-           else{
-            alert("Failed to send "+JSON.stringify(data.data.failedToSend.length));
-           }
-            
+            if (data.data.failedToSend.length == 0) {
+              alert("Successfully sent the event");
+            }
+            else {
+              alert("Failed to send " + JSON.stringify(data.data.failedToSend.length));
+            }
+
             // vm.events.splice(0, 1);
             var eventPostedData = data.data.data;
             var objData = {

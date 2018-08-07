@@ -81,6 +81,7 @@ careatorApp.controller('careator_upcomingEventCtr', function ($scope, $rootScope
                     // ownerEvents.push(obj);
                     $scope.events.push(obj);
                 }
+                console.log(" $scope.events: "+JSON.stringify( $scope.events));
             }
             else {
                 //alert("Event get Failed");

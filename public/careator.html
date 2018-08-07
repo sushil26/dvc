@@ -27,8 +27,15 @@
     <!-- <link rel="stylesheet" type="text/css" href="/css/sweet-alert.css">
     <script src="/js/SweetAlert.min.js"></script>
     <script src="/js/sweet-alert.min.js"></script> -->
-   
+
     <style>
+        .modal.fade .modal-dialog {
+            -webkit-transform: translate(0);
+            -moz-transform: translate(0);
+            transform: translate(0);
+        }
+
+
         .extn {
             margin-right: 25px;
             list-style-type: none;
@@ -413,7 +420,7 @@
                                 </div>
                             </div>
 
-                       
+
                             <!-- <div class="modal fade" id="instantOrSched" role="dialog">
                                 <div class="modal-dialog">
                                     <center>
@@ -1066,6 +1073,14 @@
             border: thin solid #f3f3f3;
         }
     </style>
+    <script>
+        $('.modal').on('show.bs.modal', function (e) {
+            $('.modal .modal-dialog').attr('class', 'modal-dialog  flipInX  animated');
+        })
+        $('.modal').on('hide.bs.modal', function (e) {
+            $('.modal .modal-dialog').attr('class', 'modal-dialog  flipOutX  animated');
+        })
+    </script>
     </div>
 </body>
 

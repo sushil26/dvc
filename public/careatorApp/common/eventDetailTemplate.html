@@ -32,12 +32,6 @@
             </tr>
             <tr>
                 <td>
-                    Phone
-                </td>
-                <td>
-                    <div style="color:green">{{eventDetails.senderMN}} </div>
-                </td>
-                <td>
                     Title
                 </td>
                 <td>
@@ -66,7 +60,7 @@
 
                 <th>
                     <div class="panel-heading">
-                        Receiver Details
+                        Receiver Emails
                     </div>
 
                 </th>
@@ -76,32 +70,14 @@
         <tbody>
             <tr>
                 <td>
-                    Name
+                    Emails
                 </td>
                 <td>
-                    <div style="color:green">{{eventDetails.receiverName}} </div>
+                    <div style="color:green" ng-repeat="email in eventDetails.invitingTo">{{email}} </div>
                 </td>
-                <td>
-                    Id
-                </td>
-                <td>
-                    <div style="color:green">{{eventDetails.receiverId}} </div>
-                </td>
+               
             </tr>
-            <tr>
-                <td>
-                    Phone
-                </td>
-                <td>
-                    <div style="color:green">{{eventDetails.receiverMN}} </div>
-                </td>
-                <td>
-
-                </td>
-                <td>
-
-                </td>
-            </tr>
+         
         </tbody>
 
         <!-- ng-if only for history -->

@@ -909,7 +909,7 @@ console.log("id2**: " + id2);
         $("#" + peer_id + "fullscreenbtn2").click(function () {
           console.log("sushil screen test");
           console.log("remove id videoElem111");
-          $('html, body').css('overflow-x', 'hidden');
+          $('html, body').css('overflow', 'hidden');
           $("#btnrestore").css({
             "display": "inline"
           })

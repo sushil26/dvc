@@ -99,7 +99,7 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
     var reqSec = rsd.getSeconds();
     var consolidateDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
     console.log("consolidateDate: " + consolidateDate + " $scope.todayDate: " + $scope.todayDate);
-    // if (consolidateDate > $scope.todayDate) {
+    if (consolidateDate > $scope.todayDate) {
       console.log("PersonalRemoteCombineCal.length: " + PersonalRemoteCombineCal.length);
       if (PersonalRemoteCombineCal.length > 0) {
         var conflicts = PersonalRemoteCombineCal.some(function (event) {
@@ -131,10 +131,10 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
         dayEventmodal.close('resetModel');
         $scope.eventSend(title, emailList, dateForEvent, formatedStartTime, formatedEndTime, sd, ed, reason);
       }
-    // }
-    // else{
-    //   alert("Selected should not be lesser than current date");
-    // }
+    }
+    else{
+      alert("Selected should not be lesser than current date");
+    }
   }
 
 

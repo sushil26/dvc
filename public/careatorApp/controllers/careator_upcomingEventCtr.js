@@ -65,10 +65,10 @@ careatorApp.controller('careator_upcomingEventCtr', function ($scope, $rootScope
                         "primColor": $scope.eventData[x].primColor,
                         "url": $scope.eventData[x].url,
                         "date": $scope.eventData[x].date,
-                       
+
                     }
                     console.log(" obj" + JSON.stringify(obj));
-                    
+
                     if ($scope.eventData[x].notificationNeed == 'yes') {
                         if ($scope.eventData[x].userId != $scope.userData.id) {
                             console.log("not equal");
@@ -80,7 +80,7 @@ careatorApp.controller('careator_upcomingEventCtr', function ($scope, $rootScope
                     // ownerEvents.push(obj);
                     $scope.events.push(obj);
                 }
-                console.log(" $scope.events: "+JSON.stringify( $scope.events));
+                console.log(" $scope.events: " + JSON.stringify($scope.events));
             }
             else {
                 //alert("Event get Failed");
@@ -153,34 +153,34 @@ careatorApp.controller('careator_upcomingEventCtr', function ($scope, $rootScope
     $scope.viewDetail = function (id, eventId, userId) {
         console.log("viewDetail-->");
         console.log("id: " + id);
-        if ($scope.events[id].notificationNeed == 'yes') {
-            socket.emit('event_viewDetail_toserver', { "userId": userId }); /* ### Note: Informing to server that this event is viewed (so that server can inform to respective person) ### */
-            if ($scope.events[id].userId != $scope.userData.id) {
-                var obj = {
-                    "id": eventId
-                }
-                var api = $scope.propertyJson.VC_eventNotificationOff;
-                console.log("api: " + api);
-                careatorHttpFactory.post(api, obj).then(function (data) {
-                    var checkStatus = careatorHttpFactory.dataValidation(data);
-                    console.log("data--" + JSON.stringify(data.data));
+        // if ($scope.events[id].notificationNeed == 'yes') {
+        //     socket.emit('event_viewDetail_toserver', { "userId": userId }); /* ### Note: Informing to server that this event is viewed (so that server can inform to respective person) ### */
+        //     if ($scope.events[id].userId != $scope.userData.id) {
+        //         var obj = {
+        //             "id": eventId
+        //         }
+        //         var api = $scope.propertyJson.VC_eventNotificationOff;
+        //         console.log("api: " + api);
+        //         careatorHttpFactory.post(api, obj).then(function (data) {
+        //             var checkStatus = careatorHttpFactory.dataValidation(data);
+        //             console.log("data--" + JSON.stringify(data.data));
 
-                    $rootScope.$emit("CallParent_eventGet", {}); /* ### Note: calling method of parentController(dashboardCtr) ### */
+        //             $rootScope.$emit("CallParent_eventGet", {}); /* ### Note: calling method of parentController(dashboardCtr) ### */
 
-                    if (checkStatus) {
-                        console.log("data" + JSON.stringify(data.data));
-                        var eventPostedData = data.data.data;
-                    }
-                    else {
-                        // alert("UnSuccessfully Event Updated");
-                    }
-                })
-                $scope.events[id].notificationNeed = 'No';
-            }
-        }
+        //             if (checkStatus) {
+        //                 console.log("data" + JSON.stringify(data.data));
+        //                 var eventPostedData = data.data.data;
+        //             }
+        //             else {
+        //                 // alert("UnSuccessfully Event Updated");
+        //             }
+        //         })
+        //         $scope.events[id].notificationNeed = 'No';
+        //     }
+        // }
         var eClicked = $uibModal.open({
             scope: $scope,
-            templateUrl: '/html/templates/eventDetails.html',
+            templateUrl: '/careatorApp/common/eventDetailTemplate.html',
             windowClass: 'show',
             backdropClass: 'show',
             controller: function ($scope, $uibModalInstance) {
@@ -252,16 +252,7 @@ careatorApp.controller('careator_upcomingEventCtr', function ($scope, $rootScope
 
     $scope.waitForTime = function (time) {
         console.log("waitForTime-->");
-        var loginAlert = $uibModal.open({
-            scope: $scope,
-            templateUrl: '/html/templates/dashboardwarning.html',
-            windowClass: 'show',
-            backdropClass: 'static',
-            keyboard: false,
-            controller: function ($scope, $uibModalInstance) {
-                $scope.message = "Wait till " + time;
-            }
-        })
+        alert("Wait till " + time);
         console.log("<--waitForTime");
     }
 

@@ -131,8 +131,9 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
         dayEventmodal.close('resetModel');
         $scope.eventSend(title, emailList, dateForEvent, formatedStartTime, formatedEndTime, sd, ed, reason);
       }
-
-
+    }
+    else{
+      alert("Selected should not be lesser than current date");
     }
   }
 

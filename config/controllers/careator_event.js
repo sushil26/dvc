@@ -66,13 +66,20 @@ module.exports.careator_sendEventSchedule = function (req, res) {
 
     if (general.emptyCheck(req.body.senderName) && general.emptyCheck(req.body.senderId) && general.emptyCheck(req.body.reason)) {
         var password = 'abc';
+
+        var emailString = req.body.invitingTo;
+        var emailSplit = emailString.split(',');
+        console.log("emailSplit: " + JSON.stringify(emailSplit));
+        var maillist = emailSplit;
+
+
         var userData = {
             "senderId": req.body.senderId,
             "senderName": req.body.senderName,
             "senderEmail": req.body.senderEmail,
             "title": req.body.title,
             "reason": req.body.reason,
-            "invitingTo": req.body.invitingTo,
+            "invitingTo": maillist,
             "formatedStartTime": req.body.formatedStartTime,
             "formatedEndTime": req.body.formatedEndTime,
             "startsAt": req.body.startsAt,
@@ -99,10 +106,6 @@ module.exports.careator_sendEventSchedule = function (req, res) {
                 var failedList = [];
                 // var io = req.app.get('socketio');
                 // io.emit('eventUpdated', { "id": req.body.remoteCalendarId, "remoteId": req.body.remoteCalendarId }); /* ### Note: Emit message to upcomingEventCtrl.js ### */
-                var emailString = req.body.invitingTo;
-                var emailSplit = emailString.split(',');
-                console.log("emailSplit: " + JSON.stringify(emailSplit));
-                var maillist = emailSplit;
 
                 maillist.forEach(function (to, i, array) {
                     console.log("To: " + to);
@@ -127,8 +130,7 @@ module.exports.careator_sendEventSchedule = function (req, res) {
                             console.log('Email sent: ' + info.response);
                         }
                     })
-                    if (maillist.length-1==i)
-                    {
+                    if (maillist.length - 1 == i) {
                         responseData = {
                             "status": true,
                             "message": "Email send successfully",
@@ -137,7 +139,7 @@ module.exports.careator_sendEventSchedule = function (req, res) {
                         res.status(200).send(responseData);
                     }
 
-                    });
+                });
             }
         })
     }

@@ -427,7 +427,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                     peerNew_id = config.peer_id;
                     var url = "https://norecruits.com/client_conf/" + peerNew_id + "/" + $scope.urlDate;
                     // window.location.href = url;
-                    var api = "https://norecruits.com/careator_eventSchedule/careator_sendEventSchedule";
+                    var api = "https://norecruits.com/careator/setCollection";
                     console.log("api: " + api);
                     var obj = {
                         "email": localStorage.getItem('careatorEmail'),

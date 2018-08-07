@@ -10,7 +10,7 @@
 var sesionEnc = localStorage.getItem("sessionEnc");
 console.log("sesionEnc: " + sesionEnc);
 
-$('html, body').css('overflow', '');
+ 
 
 /** CONFIG **/
 console.log("Signaling Socket.js");
@@ -269,13 +269,13 @@ function checkCredential() {
           document.getElementById('notify_msg_content').innerHTML = err.responseJSON.message;
           document.getElementById('resetBtn').style.display = 'inline';
           $("#notify_msg_button").trigger("click");
-          $('html, body').css('overflow', '');
+           
           resetId = err.responseJSON.data.id;
 
         } else {
           // alert(err.responseJSON.message);
           $("#alertButton").trigger("click");
-          $('html, body').css('overflow', '');
+           
           var x =
             document.getElementById('alertcontent').innerHTML = err.responseJSON.message + "<br>Please try with correct password or contact Admin";
         }

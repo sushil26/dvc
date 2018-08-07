@@ -9,7 +9,33 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
   $scope.userData = careatorSessionAuth.getAccess();
 
   $scope.propertyJson = $rootScope.propertyJson;
-
+  $scope.getToDate = function () {
+    console.log("Get To Date-->");
+    var api = "https://norecruits.com/careator_getToDate/careator_getToDate";
+    careatorHttpFactory.get(api).then(function (data) {
+      var checkStatus = careatorHttpFactory.dataValidation(data);
+      console.log("data--" + JSON.stringify(data.data));
+      if (checkStatus) {
+        console.log("data.data.data.date: " + data.data.data.date);
+        var todayDate = new Date(data.data.data.date);
+        console.log("todayDate: " + todayDate);
+        var reqDate = todayDate.getDate();
+        console.log("reqDate: " + reqDate);
+        var reqMonth = todayDate.getMonth();
+        var reqYear = todayDate.getFullYear();
+        var reqHr = todayDate.getHours();
+        var reqMin = todayDate.getMinutes();
+        var reqSec = todayDate.getSeconds();
+        $scope.todayDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
+        console.log("consolidateDate: " + $scope.consolidateDate);
+        $scope.eventGet();
+      }
+      else {
+      }
+    })
+    console.log("<--Get To Date");
+  }
+  $scope.getToDate();
   $scope.eventGet = function () {
     console.log("eventGet-->");
     var id = $scope.userData.userId
@@ -55,7 +81,7 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
       }
     })
   }
-  $scope.eventGet();
+  
   $scope.save = function (title, emailList, sd, ed, reason) {
     console.log("title: " + title);
     console.log("emailList: " + emailList);

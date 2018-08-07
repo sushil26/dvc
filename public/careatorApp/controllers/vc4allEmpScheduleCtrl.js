@@ -10,6 +10,52 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
 
   $scope.propertyJson = $rootScope.propertyJson;
 
+  $scope.eventGet = function () {
+    console.log("eventGet-->");
+    var id = $scope.userData.id
+    var api = "https://norecruits.com/careator_eventSchedule/careator_eventGetById";
+    //var api = "http://localhost:5000/vc/eventGet"+ "/" + id;;
+    $scope.calendarOwner = "Your";
+
+    careatorHttpFactory.get(api).then(function (data) {
+      var checkStatus = careatorHttpFactory.dataValidation(data);
+      console.log("data--" + JSON.stringify(data.data));
+      if (checkStatus) {
+        $scope.eventData = data.data.data;
+        vm.events = [];
+        ownerEvents = [];
+        for (var x = 0; x < $scope.eventData.length; x++) {
+          console.log("$scope.eventData[" + x + "]: " + JSON.stringify($scope.eventData[x]));
+          var obj = {
+            'id': $scope.eventData[x]._id,
+            "senderId": $scope.eventData[x].senderId,
+            "senderName": $scope.eventData[x].senderName,
+            "senderEmail": $scope.eventData[x].senderEmail,
+            "title": $scope.eventData[x].title,
+            "reason": $scope.eventData[x].reason,
+            "invitingTo": $scope.eventData[x].invitingTo,
+            "formatedStartTime": $scope.eventData[x].formatedStartTime,
+            "formatedEndTime": $scope.eventData[x].formatedEndTime,
+            "startsAt": new Date($scope.eventData[x].startsAt),
+            "endsAt": new Date($scope.eventData[x].endsAt),
+            "primColor": $scope.eventData[x].primColor,
+            "url": $scope.eventData[x].url,
+            "date": $scope.eventData[x].date,
+            'draggable': true,
+            'resizable': true,
+            'actions': actions
+          }
+          console.log(" obj" + JSON.stringify(obj))
+          ownerEvents.push(obj);
+          vm.events.push(obj);
+        }
+      }
+      else {
+        //alert("Event get Failed");
+      }
+    })
+  }
+
   $scope.save = function (title, emailList, sd, ed, reason) {
     console.log("title: " + title);
     console.log("emailList: " + emailList);
@@ -46,7 +92,6 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
 
   $scope.eventSend = function (title, emailList, dateForEvent, formatedStartTime, formatedEndTime, sd, ed, reason) {
     console.log("eventSend-->");
-
     //var SIGNALING_SERVER = "http://localhost:5000";
     var queryLink = null;
     var peerNew_id = null;
@@ -113,7 +158,6 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
     console.log("<--eventSend");
     // var url = document.getElementById('linkToShare').innerHTML;
   }
-
 
   var vm = this;
   //These variables MUST be set as a minimum for the calendar to work

@@ -19,8 +19,46 @@ var transporter = nodemailer.createTransport({
     }
 });
 
+module.exports.careator_eventGetById = function (req, res) {
+    console.log("careator_eventGetById-->");
+    var responseData;
+    console.log("req.params.id: " + req.params.id);
+
+    if (general.emptyCheck(req.params.id)) {
+        event.find({ "senderId": req.params.id }).sort({ "$natural": -1 }).toArray(function (err, listOfevents) {
+            // console.log("listOfevents: " + JSON.stringify(listOfevents))
+            if (err) {
+                responseData = {
+                    "status": false,
+                    "message": "Failed to get Data",
+                    "data": data
+                }
+                res.status(400).send(responseData);
+            }
+            else {
+                responseData = {
+                    "status": true,
+                    "message": "Registeration Successfull",
+                    "data": listOfevents
+                }
+                res.status(200).send(responseData);
+            }
+        })
+    }
+    else {
+        console.log("Epty value found");
+        responseData = {
+            "status": false,
+            "message": "there is no userId to find",
+
+        }
+        res.status(400).send(responseData);
+    }
+
+}
+
 module.exports.careator_sendEventSchedule = function (req, res) {
-    console.log("careator_eventSend-->");
+    console.log("careator_sendEventSchedule-->");
     var responseData;
     console.log("req.body.senderName: " + req.body.senderName);
     console.log("req.body.senderId: " + req.body.senderId);

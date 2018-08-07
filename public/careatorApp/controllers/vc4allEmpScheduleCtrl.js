@@ -325,7 +325,7 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
     // $('#eDetail').trigger('click');
     var eClicked = $uibModal.open({
       scope: $scope,
-      templateUrl: '/html/templates/eventDetails.html',
+      templateUrl: '/careatorApp/common/scheduleTemplate.html',
       windowClass: 'show',
       backdropClass: 'show',
       controller: function ($scope, $uibModalInstance) {

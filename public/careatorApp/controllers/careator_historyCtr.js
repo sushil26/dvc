@@ -36,7 +36,7 @@ careatorApp.controller('careator_historyCtr', function ($scope, $rootScope, $sta
         console.log("eventGet-->");
         var id = $scope.userData.userId;
         var api = "https://norecruits.com/careator_eventSchedule/careator_eventGetById/" + id;
-        console.log("api: "+api);
+        console.log("api: " + api);
         //var api = "http://localhost:5000/vc/eventGet"+ "/" + id;;
         $scope.calendarOwner = "Your";
         careatorHttpFactory.get(api).then(function (data) {
@@ -62,12 +62,12 @@ careatorApp.controller('careator_historyCtr', function ($scope, $rootScope, $sta
                         "primColor": $scope.eventData[x].primColor,
                         "url": $scope.eventData[x].url,
                         "date": $scope.eventData[x].date,
-                       
+
                     }
                     console.log(" obj" + JSON.stringify(obj));
-                    $scope.events.push(obj);        
+                    $scope.events.push(obj);
                 }
-                console.log(" $scope.events: "+ JSON.stringify($scope.events));
+                console.log(" $scope.events: " + JSON.stringify($scope.events));
             }
             else {
                 //alert("Event get Failed");
@@ -78,44 +78,21 @@ careatorApp.controller('careator_historyCtr', function ($scope, $rootScope, $sta
     // $scope.eventGet();
     $scope.viewDetail = function (id) {
         console.log("viewDetail-->");
-        console.log("id: "+id);
-        $state.go('dashboard.viewEvent', { 'id': id});
-        // console.log("id: " + id);
-        // var indexId = id;
-        // var id = $scope.events[indexId].vcRecordId;
-        // var api = $scope.propertyJson.VC_getRecordVideo + "/" + id;
-        // console.log("api: " + api);
-        // careatorHttpFactory.get(api).then(function (data) {
-        //     var checkStatus = careatorHttpFactory.dataValidation(data);
-        //     console.log("data--" + JSON.stringify(data.data));
-        //     if (checkStatus) {
-        //         console.log("status true");
-        //         $scope.videoSrc = data.data.data;
-        //         //console.log(" $scope.videoSrc: "+ $scope.videoSrc);
-        //     }
-        //     else {
-        //         console.log("Sorry: status false");
-        //         console.log("data: "+JSON.stringify(data));
-        //     }
-        //     // console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
-        // })
-        // var eClicked = $uibModal.open({
-        //     scope: $scope,
-        //     templateUrl: '/html/templates/eventDetails.html',
-        //     windowClass: 'show',
-        //     backdropClass: 'show',
-        //     controller: function ($scope, $uibModalInstance) {
-        //         $scope.eventDetails = $scope.events[indexId];
-        //         // var video = document.getElementById('videoPlayer');
-        //         $scope.videoSrc = 'data:video/webm;base64,' + $scope.videoSrc;
-        //         console.log("$scope.videoSrc: " + $scope.videoSrc);
-        //         // $scope.videoSrc =  $scope.videoSrc;
-        //         //console.log("$scope.events["+indexId+"]: "+JSON.stringify($scope.events[indexId]));
+        console.log("id: " + id);
+        var eClicked = $uibModal.open({
+            scope: $scope,
+            templateUrl: '/careatorApp/common/eventDetailTemplate.html',
+            windowClass: 'show',
+            backdropClass: 'show',
+            controller: function ($scope, $uibModalInstance) {
+                $scope.eventDetails = $scope.events[id];
 
-        //     }
-        // })
+                console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
+            }
+        })
         console.log("<--viewDetail");
     }
+   
 
     //update the client with new data;
     socket.on('eventUpdatedForHistory', function (data) {

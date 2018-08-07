@@ -153,31 +153,31 @@ careatorApp.controller('careator_upcomingEventCtr', function ($scope, $rootScope
     $scope.viewDetail = function (id, eventId, userId) {
         console.log("viewDetail-->");
         console.log("id: " + id);
-        if ($scope.events[id].notificationNeed == 'yes') {
-            socket.emit('event_viewDetail_toserver', { "userId": userId }); /* ### Note: Informing to server that this event is viewed (so that server can inform to respective person) ### */
-            if ($scope.events[id].userId != $scope.userData.id) {
-                var obj = {
-                    "id": eventId
-                }
-                var api = $scope.propertyJson.VC_eventNotificationOff;
-                console.log("api: " + api);
-                careatorHttpFactory.post(api, obj).then(function (data) {
-                    var checkStatus = careatorHttpFactory.dataValidation(data);
-                    console.log("data--" + JSON.stringify(data.data));
+        // if ($scope.events[id].notificationNeed == 'yes') {
+        //     socket.emit('event_viewDetail_toserver', { "userId": userId }); /* ### Note: Informing to server that this event is viewed (so that server can inform to respective person) ### */
+        //     if ($scope.events[id].userId != $scope.userData.id) {
+        //         var obj = {
+        //             "id": eventId
+        //         }
+        //         var api = $scope.propertyJson.VC_eventNotificationOff;
+        //         console.log("api: " + api);
+        //         careatorHttpFactory.post(api, obj).then(function (data) {
+        //             var checkStatus = careatorHttpFactory.dataValidation(data);
+        //             console.log("data--" + JSON.stringify(data.data));
 
-                    $rootScope.$emit("CallParent_eventGet", {}); /* ### Note: calling method of parentController(dashboardCtr) ### */
+        //             $rootScope.$emit("CallParent_eventGet", {}); /* ### Note: calling method of parentController(dashboardCtr) ### */
 
-                    if (checkStatus) {
-                        console.log("data" + JSON.stringify(data.data));
-                        var eventPostedData = data.data.data;
-                    }
-                    else {
-                        // alert("UnSuccessfully Event Updated");
-                    }
-                })
-                $scope.events[id].notificationNeed = 'No';
-            }
-        }
+        //             if (checkStatus) {
+        //                 console.log("data" + JSON.stringify(data.data));
+        //                 var eventPostedData = data.data.data;
+        //             }
+        //             else {
+        //                 // alert("UnSuccessfully Event Updated");
+        //             }
+        //         })
+        //         $scope.events[id].notificationNeed = 'No';
+        //     }
+        // }
         var eClicked = $uibModal.open({
             scope: $scope,
             templateUrl: '/careatorApp/common/eventDetailTemplate.html',

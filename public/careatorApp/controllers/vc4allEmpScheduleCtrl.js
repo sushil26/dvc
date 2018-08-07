@@ -58,12 +58,12 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
         var api = "https://norecruits.com/careator/careator_sendEventSchedule";
         console.log("api: " + api);
         var obj = {
-          "studUserId": $scope.userData.userId,
+          "senderId": $scope.userData.userId,
           "senderName": $scope.userData.userName,
           "senderEmail": $scope.userData.email,
           "title": title,
           "reason": reason,
-          "InvitingTo": emailList,
+          "invitingTo": emailList,
           "formatedStartTime": formatedStartTime,
           "formatedEndTime": formatedEndTime,
           "startsAt": sd,

@@ -100,6 +100,7 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
     var consolidateDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
     console.log("consolidateDate: " + consolidateDate + " $scope.todayDate: " + $scope.todayDate);
     if (consolidateDate > $scope.todayDate) {
+      console.log("PersonalRemoteCombineCal.length: "+PersonalRemoteCombineCal.length);
       if(PersonalRemoteCombineCal.length>0){
         var conflicts = PersonalRemoteCombineCal.some(function (event) {
           //   return (event.startsAt <= s && s <= event.endsAt) ||event.startsAt <= e && e <= event.endsAt || s <= event.startsAt && event.startsAt <= e ||s <= event.endsAt && event.endsAt <= e});

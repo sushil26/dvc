@@ -34,7 +34,7 @@ careatorApp.controller('careator_historyCtr', function ($scope, $rootScope, $sta
 
     $scope.eventGet = function () {
         console.log("eventGet-->");
-        var id = $scope.userData.id;
+        var id = $scope.userData.userId;
         var api = "https://norecruits.com/careator_eventSchedule/careator_eventGetById/" + id;
         console.log("api: "+api);
         //var api = "http://localhost:5000/vc/eventGet"+ "/" + id;;

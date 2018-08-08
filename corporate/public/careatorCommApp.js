@@ -11,11 +11,11 @@ careatorApp.config(function ($stateProvider) {
     $stateProvider
         .state('Cdashboard', {
             url: careator_dashboard(),
-            templateUrl: '/html/careator_dashboard.html',
+            templateUrl: '/careatorApp/html/careator_dashboard.html',
         })
         .state('Cdashboard.userCreate', {
             url: careator_userCreate(),
-            templateUrl: '/html/createUsers.html',
+            templateUrl: '/careatorApp/html/createUsers.html',
             resolve: {
                 result: function (careatorSessionAuth, $window) {
                     var userData = careatorSessionAuth.getAccess("userData");
@@ -30,7 +30,7 @@ careatorApp.config(function ($stateProvider) {
         })
         .state('Cdashboard.createGroup', {
             url: createGroup(),
-            templateUrl: '/html/createGroup.html',
+            templateUrl: '/careatorApp/html/createGroup.html',
             resolve: {
                 result: function (careatorSessionAuth, $window) {
                     var userData = careatorSessionAuth.getAccess("userData");
@@ -45,7 +45,7 @@ careatorApp.config(function ($stateProvider) {
         })
         .state('Cdashboard.usersListCtrl', {
             url: usersListCtrl(),
-            templateUrl: '/html/userList.html',
+            templateUrl: '/careatorApp/html/userList.html',
             resolve: {
                 result: function (careatorSessionAuth, $window) {
                     var userData = careatorSessionAuth.getAccess("userData");
@@ -60,7 +60,7 @@ careatorApp.config(function ($stateProvider) {
         })
         .state('Cdashboard.groupListCtrl', {
             url: groupListCtrl(),
-            templateUrl: '/html/groupList.html',
+            templateUrl: '/careatorApp/html/groupList.html',
             resolve: {
                 result: function (careatorSessionAuth, $window) {
                     var userData = careatorSessionAuth.getAccess("userData");
@@ -75,7 +75,7 @@ careatorApp.config(function ($stateProvider) {
         })
         .state('Cdashboard.editUser', {
             url: editUser(),
-            templateUrl: '/html/userEdit.html',
+            templateUrl: '/careatorApp/html/userEdit.html',
             resolve: {
                 result: function (careatorSessionAuth, $window) {
                     var userData = careatorSessionAuth.getAccess("userData");
@@ -89,7 +89,7 @@ careatorApp.config(function ($stateProvider) {
 
         }).state('Cdashboard.editGroup', {
             url: editGroup(),
-            templateUrl: '/html/groupEdit.html',
+            templateUrl: '/careatorApp/html/groupEdit.html',
             resolve: {
                 result: function (careatorSessionAuth, $window) {
                     var userData = careatorSessionAuth.getAccess("userData");
@@ -104,7 +104,7 @@ careatorApp.config(function ($stateProvider) {
         })
         .state('Cdashboard.chatHistory', {
             url: careator_chatHistory(),
-            templateUrl: '/html/chatHistory.html',
+            templateUrl: '/careatorApp/html/chatHistory.html',
             resolve: {
                 result: function (careatorSessionAuth, $window) {
                     var userData = careatorSessionAuth.getAccess("userData");
@@ -119,7 +119,7 @@ careatorApp.config(function ($stateProvider) {
         })
         .state('Cdashboard.chat', {
             url: careator_chat(),
-            templateUrl: '/html/chat.html',
+            templateUrl: '/careatorApp/html/chat.html',
             resolve: {
                 result: function (careatorSessionAuth, $window) {
                     var userData = careatorSessionAuth.getAccess("userData");
@@ -133,7 +133,7 @@ careatorApp.config(function ($stateProvider) {
         })
         .state('Cdashboard.profile', {
             url: profile(),
-            templateUrl: '/html/profile.html',
+            templateUrl: '/careatorApp/html/profile.html',
             resolve: {
                 result: function (careatorSessionAuth, $window) {
                     // var userData = careatorSessionAuth.getAccess("userData");
@@ -148,12 +148,12 @@ careatorApp.config(function ($stateProvider) {
 
         .state('Cdashboard.ipost', {
             url: ipost(),
-            templateUrl: '/html/ipost.html',
+            templateUrl: '/careatorApp/html/ipost.html',
         })
 
         .state('Cdashboard.userRestrict', {
             url: careator_userRestrict(),
-            templateUrl: '/html/userRestriction.html',
+            templateUrl: '/careatorApp/html/userRestriction.html',
             resolve: {
                 result: function (careatorSessionAuth, $window) {
                     var userData = careatorSessionAuth.getAccess("userData");
@@ -169,7 +169,7 @@ careatorApp.config(function ($stateProvider) {
 
         .state('Cdashboard.vc4allSchedule', {
             url: careator_vc4allSchedule(),
-            templateUrl: '/html/vcSchedule.html',
+            templateUrl: '/careatorApp/html/vcSchedule.html',
             resolve: {
                 result: function (careatorSessionAuth, $window) {
                     var userData = careatorSessionAuth.getAccess("userData");
@@ -183,7 +183,7 @@ careatorApp.config(function ($stateProvider) {
         })
         .state('Cdashboard.upcomingEvent', {
             url: careator_upcomingEvent(),
-            templateUrl: '/html/careator_upcomingEvent.html',
+            templateUrl: '/careatorApp/html/careator_upcomingEvent.html',
             resolve: {
                 result: function (careatorSessionAuth, $window) {
                     var userData = careatorSessionAuth.getAccess("userData");
@@ -198,7 +198,7 @@ careatorApp.config(function ($stateProvider) {
         })
         .state('Cdashboard.historyEvent', {
             url: careator_historyEvent(),
-            templateUrl: '/html/careator_historyEvent.html',
+            templateUrl: '/careatorApp/html/careator_historyEvent.html',
             resolve: {
                 result: function (careatorSessionAuth, $window) {
                     var userData = careatorSessionAuth.getAccess("userData");

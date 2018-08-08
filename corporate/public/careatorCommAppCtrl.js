@@ -21,8 +21,9 @@ if ($scope.cUserData) {
 $scope.logVC = function (email, password) {
     console.log("logVC from ");
     var obj = {
-        "password": password,
-        "careatorEmail": email
+        "careatorEmail": email,
+        "password": password
+       
     };
     console.log("obj: " + JSON.stringify(obj));
     console.log("logVC");

@@ -41,6 +41,7 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window,s
             document.getElementById("scheduleVC").style.display = "inline";
             $("#buttonpage").css({
               "min-height": "auto"
+              
             });
           }
           if (data.data.chatRights == 'yes') {

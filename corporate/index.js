@@ -46,6 +46,29 @@ app.get('/', function (req, res) {
     res.sendFile(__dirname + '/public/index.html');
 });
 
+
+app.get("/client", function (req, res) {
+    queryId = null;
+    console.log("start to render page");
+    res.sendFile(__dirname + '/public/client.html');
+});
+
+app.get("/client/:id/:time", function (req, res) {
+    queryId = req.params.id;
+    time = req.params.id;
+    console.log("queryId: " + req.params.id);
+    console.log("start to render page");
+    res.sendFile(__dirname + '/public/client.html');
+});
+
+app.get("/clientNew", function (req, res) {
+    res.sendFile(__dirname + '/public/client1.html');
+});
+
+app.get("/clientNew/:id/:time", function (req, res) {
+    res.sendFile(__dirname + '/public/client1.html');
+});
+
 app.get("/careator", function (req, res) {
     queryId = null;
     console.log("start to render page");
@@ -440,7 +463,19 @@ io.sockets.on('connection', function (socket) {
         console.log("<--stateChanged");
     })
 
-   
+    /* ### Start: Get the event view notification from the reciever(upcomingEventCtrl.js) ### */
+    socket.on('event_viewDetail_toserver', function (data) {
+        console.log("event_viewDetail_toserver-->");
+        io.sockets.emit('event_viewDetail_toSender', { "userId": data.userId }) /* ### Note: Send event view notification to event sender(who's user id is matched with this userId) ### */
+    })
+    /* ### End: Get the event view notification from the reciever ### */
+
+    /* ### Start: Get the quick message view notification from the reciever(incomingMsgCtl.js) ### */
+    socket.on('quickMsg_viewDetail_toserver', function (data) {
+        console.log("quickMsg_viewDetail_toserver-->");
+        io.sockets.emit('quickMsg_viewDetail_toSender', { "userId": data.userId }) /* ### Note: Send quick message view notification to event sender(who's user id is matched with this userId) ### */
+    })
+    /* ### End: Get the quick message view notification from the reciever ### */
 
     /* ### Start: Get the logoutNotification from the user(careator_dashboardCtrl.js) ### */
     socket.on('comm_logout', function (data) {

@@ -1,4 +1,4 @@
-careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careatorSessionAuth, careatorHttpFactory) {
+careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careatorSessionAuth, careatorHttpFactory, $uibModal) {
     console.log("careatorCommAppCtrl controller==>");
 
     // $scope.gotToDashboard = function () {

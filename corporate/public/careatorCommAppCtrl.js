@@ -9,13 +9,13 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
     var userName;
 
     $scope.cUserData = careatorSessionAuth.getAccess("userData");
-    console.log(" $scope.userData : " + JSON.stringify($scope.userData));
+    console.log(" $scope.userData : " + JSON.stringify($scope.cUserData));
     if ($scope.cUserData) {
         userName = $scope.cUserData.userName;
         // $scope.loginType = $scope.userData.loginType;
-        console.log("userData: " + JSON.stringify($scope.userData));
+        console.log("cUserData: " + JSON.stringify($scope.cUserData));
         console.log("userName: " + userName);
-        console.log("loginType: " + $scope.userData.loginType);
+        
     }
 
     $scope.logVC = function (email, password) {

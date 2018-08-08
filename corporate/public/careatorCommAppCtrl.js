@@ -1,5 +1,5 @@
 careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, $uibModal, careatorSessionAuth, careatorHttpFactory) {
-    console.log("Chat controller==>");
+    console.log("careatorCommAppCtrl controller==>");
 
     // $scope.gotToDashboard = function () {
     //     console.log("gotToDashboard-->");

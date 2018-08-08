@@ -101,6 +101,36 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
     console.log("<--checkCredential");
   }
 
+  function resetLoginFlag() {
+    console.log("resetLoginFlag-->");
+    $("#notify_msg").modal('hide');
+    var id = resetId;
+    console.log("Obj ID  " + id);
+
+    $.ajax({
+      url: "https://norecruits.com/careator_reset/resetLoginFlagsById/" + id,
+      type: "POST",
+      data: JSON.stringify(checkObj),
+      contentType: "application/json",
+      dataType: "json",
+      success: function (data) {
+        console.log("data: " + JSON.stringify(data));
+        document.getElementById('notify_msg_show_content').innerHTML = "Reset successfully done,now you can login";
+        $("#notify_msg_show_button").trigger("click");
+      },
+      error: function (err) {
+        console.log("err: " + JSON.stringify(err));
+        console.log("err.responseText: " + JSON.stringify(err.responseText));
+        console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
+        document.getElementById('notify_msg_show_content').innerHTML = "Reset unsuccessfull";
+        $("#notify_msg_show_button").trigger("click");
+
+      }
+    });
+
+    console.log("<--statusChange");
+  }
+
 
 
 

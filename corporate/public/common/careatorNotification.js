@@ -1,5 +1,5 @@
 	
-app.directive('notification',function ($compile) {
+careatorApp.directive('notification',function ($compile) {
     return {
         transclude: false,
         restrict: 'E',

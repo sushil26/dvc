@@ -131,6 +131,12 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
     console.log("<--statusChange");
   }
 
+   $scope.triggerforLogin=function() {
+    console.log("triggerforLogin-->");
+    $("#notify_msg_show").modal('hide');
+    $("#enterEmail").trigger("click");
+  
+  }
 
 
 

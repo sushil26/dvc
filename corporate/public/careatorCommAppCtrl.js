@@ -76,8 +76,8 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
         console.log("sessionSet-->");
         console.log("data: " + JSON.stringify(data));
         console.log(" data.sessionData: " + data.sessionData);
-        localStorage.setItem("careatorEmail", careatorEmail);
-        localStorage.setItem("sessionPassword", password);
+        localStorage.setItem("careatorEmail", data.data.email);
+        localStorage.setItem("sessionPassword", data.data.password);
         localStorage.setItem("sessionRandomId", data.data.sessionRandomId);
         localStorage.setItem("sessionEnc", data.sessionData);
         console.log("localStorage.getItem(sessionEnc): " + localStorage.getItem("sessionEnc"));

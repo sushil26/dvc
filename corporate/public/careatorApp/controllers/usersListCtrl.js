@@ -91,7 +91,7 @@ careatorApp.controller('usersListCtrl', function ($scope, $state, careatorHttpFa
                         SweetAlert.swal({
                             title: "Good job!",
                             text: "Deactivated",
-                            icon: "success",
+                            type: "success",
                         });
 
                         console.log("statusChange-->");

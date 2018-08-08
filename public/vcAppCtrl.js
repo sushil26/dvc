@@ -32,8 +32,8 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
           userName = localStorage.getItem("userName");
           if (data.data.videoRights == 'yes') {
             localStorage.setItem("videoRights", 'yes');
-            document.getElementById("videoConfStart").style.display = "inline";
-            document.getElementById("scheduleVC").style.display = "inline";
+            // document.getElementById("videoConfStart").style.display = "inline";
+            // document.getElementById("scheduleVC").style.display = "inline";
             $("#buttonpage").css({
               "min-height": "auto"
             });

@@ -43,7 +43,11 @@ careatorApp.controller('usersListCtrl', function ($scope, $state, careatorHttpFa
                 },
                 function (isConfirm) { //Function that triggers on user action.
                     if (isConfirm) {
-                        SweetAlert.swal("Activated!");
+                        SweetAlert.swal({
+                            text: "Activated",
+                            type: "success",
+                        });
+
                         console.log("statusChange-->");
                         console.log("id: " + id + " status: " + status + " index: " + index);
                         var obj = {
@@ -68,7 +72,10 @@ careatorApp.controller('usersListCtrl', function ($scope, $state, careatorHttpFa
 
 
                     } else {
-                        SweetAlert.swal("You did not Activate the user!");
+                        SweetAlert.swal({
+                            text: "You did not Activate the user!",
+                            type: "info",
+                        });
                     }
                 }
             )
@@ -89,7 +96,6 @@ careatorApp.controller('usersListCtrl', function ($scope, $state, careatorHttpFa
                 function (isConfirm) { //Function that triggers on user action.
                     if (isConfirm) {
                         SweetAlert.swal({
-                            title: "Good job!",
                             text: "Deactivated",
                             type: "success",
                         });
@@ -118,7 +124,10 @@ careatorApp.controller('usersListCtrl', function ($scope, $state, careatorHttpFa
 
 
                     } else {
-                        SweetAlert.swal("User cant login Now!");
+                        SweetAlert.swal({
+                            text: "User cant login Now!",
+                            type: "info",
+                        });
                     }
                 }
             )

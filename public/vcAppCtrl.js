@@ -4,7 +4,8 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
   $scope.checkCredential = function (email, Password) {
     console.log("checkCredential-->");
     $('#myEmailModal').modal('hide');
-
+var careatorEmail=email;
+var password=Password;
     var obj = {
       "password": Password,
       "careatorEmail": email

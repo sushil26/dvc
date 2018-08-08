@@ -89,7 +89,7 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
             var x =
               document.getElementById('alertcontent').innerHTML = err.responseJSON.message + "<br>Please try with correct password or contact Admin";
           }
-          document.getElementById("videoConferenceUrl").style.display = "none";
+          // document.getElementById("videoConferenceUrl").style.display = "none";
           localStorage.removeItem("careatorEmail");
           userName = "";
         }

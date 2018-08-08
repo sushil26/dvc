@@ -42,8 +42,8 @@ $scope.logVC = function (email, password) {
             if (data.data.message == "You've already logged in. To log in again, please reset your session") {
 
                 $scope.checkObj = {
-                    "password": password,
-                    "careatorEmail": email
+                    "careatorEmail": email,
+                    "password": password
                 }
                 document.getElementById('notify_msg_content').innerHTML = data.data.message;
                 document.getElementById('resetBtn').style.display = 'inline';

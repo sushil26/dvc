@@ -27,16 +27,14 @@
   <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
   <script src="/angular-animate/angular-animate.min.js"></script>
   <!-- bootstrap -->
-  <script src="vcApp.js"></script>
-  <script src="vcAppCtrl.js"></script>
-  <!-- <script src="careatorCommApp.js"></script>
-  <script src="careatorCommAppCtrl.js"></script> -->
+  <script src="careatorCommApp.js"></script>
+  <script src="careatorCommAppCtrl.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
   <link rel="stylesheet" href="https://unpkg.com/angular-bootstrap-colorpicker@3/css/colorpicker.min.css" />
-  <!-- <script src="/common/careatorHttpFactory.js"></script>
+  <script src="/common/careatorHttpFactory.js"></script>
   <script src="/common/careatorSessionAuth.js"></script>
   <script src="/common/careatorFileModel.js"></script>
-  <script src="/common/careatorNotification.js"></script> -->
+  <script src="/common/careatorNotification.js"></script>
   <script src="/bower_components/moment/min/moment.min.js"></script>
   <script src=" https://cdnjs.cloudflare.com/ajax/libs/angular-moment/0.10.1/angular-moment.min.js"></script>
   <link rel="stylesheet" href="/bower_components/angular-bootstrap-calendar/dist/css/angular-bootstrap-calendar.min.css">
@@ -49,7 +47,8 @@
   <script src="/bower_components/angularUtils-pagination/dirPagination.js"></script>
   <link rel='stylesheet' href='/bower_components/angular-loading-bar/build/loading-bar.css' type='text/css' media='all' />
   <script src="/nodePackages/ng-email-list/dist/ng-email-list.min.js"></script>
-<!--  
+  <!-- <script src="/bower_components/ui-cropper/source/js/ui-cropper.js"></script> -->
+  <!-- <script src="/home/lib/bootstrap/js/bootstrap.bundle.min.js"></script> -->
   <script src="/careatorApp/controllers/careator_dashboardCtrl.js"></script>
   <script src="/careatorApp/controllers/chatHistoryCtrl.js"></script>
   <script src="/careatorApp/controllers/chatCtrl.js"></script>
@@ -66,7 +65,7 @@
   <script src="/careatorApp/controllers/userRestrictionCtrl.js"></script>
   <script src="/careatorApp/controllers/vc4allEmpScheduleCtrl.js"></script>
   <script src="/careatorApp/controllers/careator_upcomingEventCtr.js"></script>
-  <script src="/careatorApp/controllers/careator_historyCtr.js"></script> -->
+  <script src="/careatorApp/controllers/careator_historyCtr.js"></script>
 
   <link rel='stylesheet' href='/bower_components/angular-loading-bar/build/loading-bar.css' type='text/css' media='all' />
   <script type='text/javascript' src='/bower_components/angular-loading-bar/build/loading-bar.min.js'></script>
@@ -307,7 +306,7 @@
 
 
 
-  <div ng-app="careatorApp" ng-controller="careatorCommAppCtrl">
+  <div ng-app="careatorCommApp" ng-controller="careatorCommAppCtrl">
     <div id="loading-bar-container"></div>
     <!-- <spinner name="spinner" id="veil"></spinner>
     <div id="loading"></div> -->
@@ -663,14 +662,14 @@ transition: all 0.5s;">
                 </div>
                 <div class="modal-body">
 
-                  <input ng-keyup="$event.keyCode == 13 && logVC(loginType, email, Password)" type="email" class="form-control" placeholder="Email"
+                  <input ng-keyup="$event.keyCode == 13 && logVC(email, Password)" type="email" class="form-control" placeholder="Email"
                     ng-model="email" id="crdEmail">
                   <br>
-                  <input ng-keyup="$event.keyCode == 13 && logVC(loginType, email, Password)" type="password" id="crdPswd" class="form-control"
-                    placeholder="Password" ng-model="Password">
+                  <input ng-keyup="$event.keyCode == 13 && logVC(email, Password)" type="password" id="crdPswd" class="form-control"
+                    placeholder="Password" ng-model="password">
 
                   <div class="modal-footer" style="border-top:0px;background-color: #f5f5f5;">
-                    <button id="crdsubmit" type="button" style="background-color: #29b6bd;color:#f1f1f1" class="btn" ng-click="logVC(loginType, email, Password)"
+                    <button id="crdsubmit" type="button" style="background-color: #29b6bd;color:#f1f1f1" class="btn" ng-click="logVC(email, password)"
                       data-dismiss="modal">Submit</button>
                   </div>
                 </div>
@@ -693,7 +692,7 @@ transition: all 0.5s;">
                     <label id="notify_msg_content" style="color:red"></label>
                   </div>
                   <div class="modal-footer" style="padding-top: 15px;background-image: linear-gradient(to bottom, #202224 0%, #383c3f 100%);">
-                    <button id="resetBtn" type="button" onclick="resetLoginFlag()" style="background-color: #29b6bd;color:#f1f1f1" class="btn">Reset</button>
+                    <button id="resetBtn" type="button" ng-click="resetLoginFlag()" style="background-color: #29b6bd;color:#f1f1f1" class="btn">Reset</button>
                     <button type="button" style="background-color: #29b6bd;color:#f1f1f1" class="btn" data-dismiss="modal">Ok</button>
                   </div>
                 </div>

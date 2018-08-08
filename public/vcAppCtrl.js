@@ -4,8 +4,8 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
   $scope.checkCredential = function (email, Password) {
     console.log("checkCredential-->");
     $('#myEmailModal').modal('hide');
-var careatorEmail=email;
-var password=Password;
+    var careatorEmail = email;
+    var password = Password;
     var obj = {
       "password": Password,
       "careatorEmail": email
@@ -21,7 +21,6 @@ var password=Password;
         dataType: "json",
         success: function (data) {
           console.log("data: " + JSON.stringify(data))
-          //alert("succes");
           localStorage.setItem("careatorEmail", careatorEmail);
           localStorage.setItem("userName", data.data.name);
           localStorage.setItem("empId", data.data.empId);
@@ -129,8 +128,6 @@ var password=Password;
     console.log("obj: " + JSON.stringify(obj));
     console.log("logVC");
     var api = "vc/login4VC";
-    //var api = "http://localhost:5000/vc/teacherDetail" + "/" + id;
-    //var api = "http://localhost:5000/vc/eventGet";
     console.log("api: " + api);
     httpFactory.post(api, obj).then(function (data) {
       var checkStatus = httpFactory.dataValidation(data);

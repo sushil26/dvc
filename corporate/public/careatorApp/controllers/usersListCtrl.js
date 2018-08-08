@@ -88,7 +88,12 @@ careatorApp.controller('usersListCtrl', function ($scope, $state, careatorHttpFa
                 },
                 function (isConfirm) { //Function that triggers on user action.
                     if (isConfirm) {
-                        SweetAlert.swal("Deactivated!");
+                        SweetAlert.swal({
+                            title: "Good job!",
+                            text: "Deactivated",
+                            icon: "success",
+                        });
+
                         console.log("statusChange-->");
                         console.log("id: " + id + " status: " + status + " index: " + index);
                         var obj = {

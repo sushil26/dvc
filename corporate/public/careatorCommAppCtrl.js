@@ -39,7 +39,7 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
                 $scope.sessionSet(datas);
             } else {
                 if (data.data.message == "You've already logged in. To log in again, please reset your session") {
-                   
+
                     $scope.checkObj = {
                         "password": password,
                         "careatorEmail": email
@@ -51,21 +51,8 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
                 }
                 else {
                     console.log("sorry");
-                    var loginAlert = $uibModal.open({
-                        scope: $scope,
-                        templateUrl: '/html/templates/loginAlert.html',
-                        windowClass: 'show',
-                        backdropClass: 'static',
-                        keyboard: false,
-                        controller: function ($scope, $uibModalInstance) {
-                            $scope.message = data.data.message;
-                            console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
-                            $scope.close = function () {
-                                loginAlert.close('resetModel');
+                    alert("data.data.message");
 
-                            }
-                        }
-                    })
                 }
             }
         });
@@ -144,7 +131,7 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
     }
 
 
-    $scope.resetLoginFlag = function() {
+    $scope.resetLoginFlag = function () {
         console.log("resetLoginFlag-->");
         $("#notify_msg").modal('hide');
         var id = resetId;
@@ -156,42 +143,14 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
             if (checkStatus) {
                 var datas = data.data;
                 console.log("data.message: " + data.data.message);
-                var loginAlert = $uibModal.open({
-                    scope: $scope,
-                    templateUrl: '/html/templates/loginAlert.html',
-                    windowClass: 'show',
-                    backdropClass: 'static',
-                    keyboard: false,
-                    controller: function ($scope, $uibModalInstance) {
-                        $scope.message = data.data.message;
-                        console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
-                        $scope.close = function () {
-                            loginAlert.close('resetModel');
-
-                        }
-                    }
-                })
-
+                alert(data.data.message);
             } else {
                 console.log("sorry");
-                var loginAlert = $uibModal.open({
-                    scope: $scope,
-                    templateUrl: '/html/templates/loginAlert.html',
-                    windowClass: 'show',
-                    backdropClass: 'static',
-                    keyboard: false,
-                    controller: function ($scope, $uibModalInstance) {
-                        $scope.message = data.data.message;
-                        console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
-                        $scope.close = function () {
-                            loginAlert.close('resetModel');
-
-                        }
-                    }
-                })
+                alert(data.data.message);
+               
             }
         })
     }
-    
+
 
 })

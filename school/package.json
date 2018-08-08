@@ -2,9 +2,9 @@
   "name": "rnd",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "sindex.js",
   "scripts": {
-    "start": "node index"
+    "start": "node sindex"
   },
   "author": "",
   "license": "ISC",

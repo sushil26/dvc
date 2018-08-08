@@ -120,16 +120,16 @@ careatorApp.config(function ($stateProvider) {
         .state('Cdashboard.chat', {
             url: careator_chat(),
             templateUrl: '/careatorApp/html/chat.html',
-            resolve: {
-                result: function (careatorSessionAuth, $window) {
-                    var userData = careatorSessionAuth.getAccess("userData");
-                    if (userData.email == null || userData.email == "") {
-                        $window.location.href = 'https://norecruits.com';
-                    } else {
+            // resolve: {
+            //     result: function (careatorSessionAuth, $window) {
+            //         var userData = careatorSessionAuth.getAccess("userData");
+            //         if (userData.email == null || userData.email == "") {
+            //             $window.location.href = 'https://norecruits.com';
+            //         } else {
 
-                    }
-                }
-            }
+            //         }
+            //     }
+            // }
         })
         .state('Cdashboard.profile', {
             url: profile(),

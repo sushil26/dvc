@@ -373,11 +373,8 @@ transition: all 0.5s;">
                 <a href="#!dashboard/logout">LOGOUT</a>
               </li>
               <li>
-                <a href="#" data-target="#myEmailModal" data-toggle="modal">Employee Login</a>
-              </li>
-              <!-- <li>
                 <a href="https://norecruits.com/careator">Employee Login</a>
-              </li> -->
+              </li>
 
             </ul>
           </nav>
@@ -621,7 +618,6 @@ transition: all 0.5s;">
                     </tr>
                   </table>
                 </div>
-
               </div>
               <div class="col-sm-4">
                 <div class="info">
@@ -696,81 +692,6 @@ transition: all 0.5s;">
           </center>
           </div>
         </div>
-
-        <div class="modal animated jello faster" id="myEmailModal" role="dialog">
-          <div class="modal-dialog">
-            <center>
-              <form>
-                <div class="modal-content" style="color:#777;max-width:350px; border-radius: 8px;">
-                  <div class="modal-header" style="display: table-caption;padding-top: 15px;background-image: linear-gradient(to bottom, #383c3f 0%, #202224 100%);">
-                    <img style="width: 45px; margin-top: -15px;margin-left: -170px;" src="/home/img/fav.png" />
-                    <span class="modal-title" style="font-weight: 200;">Employee Login</span>
-                  </div>
-                  <form action="">
-                    <div class="modal-body">
-
-                      <input type="email" class="form-control" ng-model="oemail" placeholder="Enter your Email" id="careatorEmail" required>
-                      <br>
-                      <input type="password" class="form-control" ng-model="oPassword" placeholder="Enter your Password" id="careatorPswd" required>
-
-                    </div>
-                    <div class="modal-footer" style="padding-top: 15px;background-image: linear-gradient(to bottom, #202224 0%, #383c3f 100%);">
-                      <label id="credentialErroe" style="display: none;color:red"></label>
-                      <button id="loginsubmit" type="button" ng-click="checkCredential(oemail,oPassword)" style="background-color: #29b6bd;color:#f1f1f1"
-                        class="btn">Submit</button>
-                    </div>
-                  </form>
-                </div>
-              </form>
-            </center>
-          </div>
-        </div>
-        <button data-toggle="modal" data-target="#notify_msg" id="notify_msg_button" data-backdrop="static" data-keyboard="false"
-          style="display:none"></button>
-        <div class="modal animated jello faster " id="notify_msg" role="dialog">
-          <div class="modal-dialog">
-            <center>
-              <form>
-                <div class="modal-content" style="color:#777;max-width:350px; border-radius: 8px;">
-                  <div class="modal-header" style="display: table-caption;padding-top: 15px;background-image: linear-gradient(to bottom, #383c3f 0%, #202224 100%);">
-                    <img style="width: 45px; margin-top: -15px;margin-left: -170px;" src="/home/img/fav.png" />
-                    <span class="modal-title" style="font-weight: 200;">Message</span>
-                  </div>
-                  <div class="modal-body">
-                    <label id="notify_msg_content" style="color:red"></label>
-                  </div>
-                  <div class="modal-footer" style="padding-top: 15px;background-image: linear-gradient(to bottom, #202224 0%, #383c3f 100%);">
-                    <button id="resetBtn" type="button" ng-click="resetLoginFlag()" style="background-color: #29b6bd;color:#f1f1f1" class="btn">Reset</button>
-                    <button type="button" style="background-color: #29b6bd;color:#f1f1f1" class="btn" data-dismiss="modal">Ok</button>
-                  </div>
-                </div>
-              </form>
-            </center>
-          </div>
-        </div>
-        <button data-toggle="modal" data-target="#notify_msg_show" id="notify_msg_show_button" data-backdrop="static" data-keyboard="false"
-        style="display:none"></button>
-
-    <div class="modal animated jello faster" id="notify_msg_show" role="dialog">
-        <div class="modal-dialog">
-            <center>
-                <form>
-                    <div class="modal-content" style="color:#777;max-width:350px; border-radius: 8px;">
-                        <div class="modal-header" style="display: table-caption;padding-top: 15px;background-image: linear-gradient(to bottom, #383c3f 0%, #202224 100%);">
-                            <img style="width: 45px; margin-top: -15px;margin-left: -170px;" src="/home/img/fav.png" />
-                            <span class="modal-title" style="font-weight: 200;">Message</span>
-                        </div>
-                        <div class="modal-body">
-                            <label id="notify_msg_show_content" style="color:red"></label>
-                        </div>
-                        <div class="modal-footer" style="padding-top: 15px;background-image: linear-gradient(to bottom, #202224 0%, #383c3f 100%);">
-                            <button type="button" ng-click="triggerforLogin()" style="background-color: #29b6bd;color:#f1f1f1" class="btn">Ok</button>
-                        </div>
-                    </div>
-                </form>
-            </center>
-        </div>
-    </div>
 
         <!-- ##### Start login popup  ##### -->
         <!-- <div class="modal fade" id="crdntl" role="dialog">

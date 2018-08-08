@@ -8,7 +8,7 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
     var loginModal; /* ### Note: get login modal instance on this variable ###*/
     var userName;
 
-    $scope.cUserData = sessionAuthFactory.getAccess("userData");
+    $scope.cUserData = careatorSessionAuth.getAccess("userData");
     console.log(" $scope.userData : " + JSON.stringify($scope.userData));
     if ($scope.cUserData) {
         userName = $scope.cUserData.userName;

@@ -10,7 +10,7 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
       "careatorEmail": email
     };
     console.log("obj: " + JSON.stringify(obj));
-    if (password != 'null' && careatorEmail != 'null') {
+    if (password != null && careatorEmail != null) {
 
       $.ajax({
         url: "https://norecruits.com/careator/pswdCheck",

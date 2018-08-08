@@ -132,9 +132,11 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
   }
 
    $scope.triggerforLogin=function() {
+
     console.log("triggerforLogin-->");
     $("#notify_msg_show").modal('hide');
     $("#enterEmail").trigger("click");
+    window.location.href = "https://norecruits.com/careatorApp/#!/dashboard/profile";
   
   }
 

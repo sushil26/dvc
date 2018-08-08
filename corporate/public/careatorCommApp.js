@@ -1,4 +1,4 @@
-var careatorApp = angular.module('careatorCommApp', ['ui.router', 'angularjs-dropdown-multiselect', 'ngCookies', 'ngImgCrop','angular-loading-bar', 'oitozero.ngSweetAlert', 'mwl.calendar', 'angularMoment', 'ui.bootstrap', 'ng-email-list']);
+var careatorApp = angular.module('careatorCommApp', ['ui.router', 'angularjs-dropdown-multiselect', 'ngCookies', 'ngImgCrop','angular-loading-bar', 'oitozero.ngSweetAlert', 'mwl.calendar']);
 
 careatorApp.config(['cfpLoadingBarProvider', function (cfpLoadingBarProvider) {
     // cfpLoadingBarProvider.includeBar = true;

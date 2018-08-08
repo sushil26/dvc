@@ -40,7 +40,7 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
           }
           if (data.data.chatRights == 'yes') {
             localStorage.setItem("chatRights", 'yes');
-            document.getElementById("chatConfStart").style.display = "inline";
+            // document.getElementById("chatConfStart").style.display = "inline";
           }
           if (data.data.chatStatus) {
             localStorage.setItem("chatStatus", data.data.chatStatus);

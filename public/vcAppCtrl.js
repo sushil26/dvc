@@ -1,7 +1,7 @@
-app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window,sessionAuthFactory, $uibModal, SweetAlert) {
+app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, sessionAuthFactory, $uibModal, SweetAlert) {
   console.log("controller==>");
 
-  $scope.checkCredential =function(email, Password) {
+  $scope.checkCredential = function (email, Password) {
     console.log("checkCredential-->");
     $('#myEmailModal').modal('hide');
     var password = document.getElementById("careatorPswd").value;
@@ -24,7 +24,7 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window,s
         if (checkStatus) {
           var datas = data.data;
           console.log("data.message: " + data.data.message);
-          console.log("data: " + JSON.stringify(data))
+          console.log("data: " + JSON.stringify(data));
 
           localStorage.setItem("careatorEmail", careatorEmail);
           localStorage.setItem("userName", data.data.name);
@@ -35,77 +35,49 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window,s
           localStorage.setItem("sessionRandomId", data.data.sessionRandomId);
           localStorage.setItem("sessionEnc", data.sessionData);
           userName = localStorage.getItem("userName");
-          if (data.data.videoRights == 'yes') {
-            localStorage.setItem("videoRights", 'yes');
-            document.getElementById("videoConfStart").style.display = "inline";
-            document.getElementById("scheduleVC").style.display = "inline";
-            $("#buttonpage").css({
-              "min-height": "auto"
-              
-            });
-          }
-          if (data.data.chatRights == 'yes') {
-            localStorage.setItem("chatRights", 'yes');
-            document.getElementById("chatConfStart").style.display = "inline";
-          }
-          if (data.data.chatStatus) {
-            localStorage.setItem("chatStatus", data.data.chatStatus);
-          }
-          if (data.data.restrictedTo) {
-            console.log("data.data.restrictedTo: " + JSON.stringify(data.data.restrictedTo));
-            var restrictedTo = data.data.restrictedTo;
-            var restrictedArray = [];
-            for (var x = 0; x < restrictedTo.length; x++) {
-              restrictedArray.push(restrictedTo[x].userId);
-            }
-  
-            console.log("restrictedArray: " + restrictedArray);
-            localStorage.setItem("restrictedTo", restrictedArray);
-          }
-          if (data.data.profilePicPath) {
-            localStorage.setItem("profilePicPath", data.data.profilePicPath);
-          }
-  
-          console.log("userName: " + userName);
-          document.getElementById("videoConferenceUrl").style.display = "block";
-          // $('#myPasswordModal').modal('hide');
-          window.location.href = "https://norecruits.com/careatorApp/#!/dashboard/profile";
-        },
-        error: function (err) {
-          console.log("err: " + JSON.stringify(err));
-          console.log("err.responseText: " + JSON.stringify(err.responseText));
-          console.log("err.responseJSON: " + JSON.stringify(err.responseJSON.message));
-          if (err.responseJSON.message == "You've already logged in. To log in again, please reset your session") {
-  
-            checkObj = {
-              "password": password,
-              "careatorEmail": careatorEmail
-            }
-            console.log("You already logged in, please logout your old session in-order to login");
-            document.getElementById('notify_msg_content').innerHTML = err.responseJSON.message;
-            document.getElementById('resetBtn').style.display = 'inline';
-            $("#notify_msg_button").trigger("click");
-             
-            resetId = err.responseJSON.data.id;
-  
-          } else {
-            // alert(err.responseJSON.message);
-            $("#alertButton").trigger("click");
-             
-            var x =
-              document.getElementById('alertcontent').innerHTML = err.responseJSON.message + "<br>Please try with correct password or contact Admin";
-          }
-          document.getElementById("videoConferenceUrl").style.display = "none";
-          localStorage.removeItem("careatorEmail");
-          userName = "";
         }
-      });
-    } else {
-      console.log("password trigger again-->");
-      console.log("Password empty");
+
+        if (data.data.videoRights == 'yes') {
+          localStorage.setItem("videoRights", 'yes');
+          document.getElementById("videoConfStart").style.display = "inline";
+          document.getElementById("scheduleVC").style.display = "inline";
+          $("#buttonpage").css({
+            "min-height": "auto"
+
+          });
+        }
+        if (data.data.chatRights == 'yes') {
+          localStorage.setItem("chatRights", 'yes');
+          document.getElementById("chatConfStart").style.display = "inline";
+        }
+        if (data.data.chatStatus) {
+          localStorage.setItem("chatStatus", data.data.chatStatus);
+        }
+        if (data.data.restrictedTo) {
+          console.log("data.data.restrictedTo: " + JSON.stringify(data.data.restrictedTo));
+          var restrictedTo = data.data.restrictedTo;
+          var restrictedArray = [];
+          for (var x = 0; x < restrictedTo.length; x++) {
+            restrictedArray.push(restrictedTo[x].userId);
+          }
+          console.log("restrictedArray: " + restrictedArray);
+          localStorage.setItem("restrictedTo", restrictedArray);
+        }
+        if (data.data.profilePicPath) {
+          localStorage.setItem("profilePicPath", data.data.profilePicPath);
+        }
+
+
+
+
+        window.location.href = "https://norecruits.com/careatorApp/#!/dashboard/profile";
+
+
+      })
+
     }
-    console.log("<--checkCredential");
   }
+
 
   //document.getElementById('mobile-nav').style.display='none';
   var loginModal; /* ### Note: get login modal instance on this variable ###*/

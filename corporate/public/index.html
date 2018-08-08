@@ -16,12 +16,6 @@
   <link href="/home/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
   <link href="/home/lib/animate/animate.min.css" rel="stylesheet">
   <!-- Main Stylesheet File -->
-  <!--  After login   -->
-  <link rel="stylesheet" href="/careatorApp/css/style.css" />
-  <link rel="stylesheet" href="/careatorApp/css/style-responsive.css" />
-  <link rel="stylesheet" href="/careatorApp/css/elegant-icons-style.css" />
-  <link rel="stylesheet" href="/careatorApp/css/newChat.css" />
-
   <link href="/home/css/style.css" rel="stylesheet">
   <link rel="stylesheet" href="/dashboard_Lib/css/style.css" />
   <link rel="stylesheet" href="/dashboard_Lib/css/style-responsive.css" />
@@ -32,14 +26,15 @@
   <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
   <script src="/angular-animate/angular-animate.min.js"></script>
   <!-- bootstrap -->
-  <script src="careatorCommApp.js"></script>
-  <script src="careatorCommAppCtrl.js"></script>
+  <script src="vcApp.js"></script>
+  <script src="vcAppCtrl.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
   <link rel="stylesheet" href="https://unpkg.com/angular-bootstrap-colorpicker@3/css/colorpicker.min.css" />
-  <script src="/common/careatorHttpFactory.js"></script>
-  <script src="/common/careatorSessionAuth.js"></script>
-  <script src="/common/careatorFileModel.js"></script>
-  <script src="/common/careatorNotification.js"></script>
+  <script src="/common/httpFactory.js"></script>
+  <script src="/common/socketFactory.js"></script>
+  <script src="/common/sessionAuthFactory.js"></script>
+  <script src="/common/fileModel.js"></script>
+  <script src="/common/notification.js"></script>
   <script src="/bower_components/moment/min/moment.min.js"></script>
   <script src=" https://cdnjs.cloudflare.com/ajax/libs/angular-moment/0.10.1/angular-moment.min.js"></script>
   <link rel="stylesheet" href="/bower_components/angular-bootstrap-calendar/dist/css/angular-bootstrap-calendar.min.css">
@@ -48,30 +43,42 @@
   <script src="/bower_components/angular-cookies/angular-cookies.js"></script>
   <link href="/bower_components/ng-img-crop-full-extended/compile/unminified/ng-img-crop.css" rel="stylesheet">
   <script src="/bower_components/ng-img-crop-full-extended/compile/unminified/ng-img-crop.js"></script>
-  <script src="/bower_components/angularjs-dropdown-multiselect/dist/angularjs-dropdown-multiselect.min.js"></script>
-  <script src="/bower_components/angularUtils-pagination/dirPagination.js"></script>
-  <link rel='stylesheet' href='/bower_components/angular-loading-bar/build/loading-bar.css' type='text/css' media='all' />
-  <script src="/nodePackages/ng-email-list/dist/ng-email-list.min.js"></script>
   <!-- <script src="/bower_components/ui-cropper/source/js/ui-cropper.js"></script> -->
   <!-- <script src="/home/lib/bootstrap/js/bootstrap.bundle.min.js"></script> -->
-  <script src="/careatorApp/controllers/careator_dashboardCtrl.js"></script>
-  <script src="/careatorApp/controllers/chatHistoryCtrl.js"></script>
-  <script src="/careatorApp/controllers/chatCtrl.js"></script>
-  <script src="/careatorApp/controllers/contactAdminCtrl.js"></script>
-  <script src="/careatorApp/controllers/profileCtrl.js"></script>
-  <script src="/careatorApp/controllers/internalPostCtrl.js"></script>
-
-  <script src="/careatorApp/controllers/createUsersCtrl.js"></script>
-  <script src="/careatorApp/controllers/usersListCtrl.js"></script>
-  <script src="/careatorApp/controllers/groupListCtrl.js"></script>
-  <script src="/careatorApp/controllers/userEditCtrl.js"></script>
-  <script src="/careatorApp/controllers/groupEditCtrl.js"></script>
-  <script src="/careatorApp/controllers/createGroupCtrl.js"></script>
-  <script src="/careatorApp/controllers/userRestrictionCtrl.js"></script>
-  <script src="/careatorApp/controllers/vc4allEmpScheduleCtrl.js"></script>
-  <script src="/careatorApp/controllers/careator_upcomingEventCtr.js"></script>
-  <script src="/careatorApp/controllers/careator_historyCtr.js"></script>
-
+  <script src="/controllers/viewUserCtrl.js"></script>
+  <script src="/controllers/calendarCtrl.js"></script>
+  <script src="/controllers/userAuthCtrl.js"></script>
+  <script src="/controllers/teacherInsertCtrl.js"></script>
+  <script src="/controllers/studentInsertCtrl.js"></script>
+  <script src="/controllers/dashboardCtrl.js"></script>
+  <script src="/controllers/dashboardEventCtrl.js"></script>
+  <script src="/controllers/dashboardEditCtrl.js"></script>
+  <script src="/controllers/dashboardPersonalDetailCtrl.js"></script>
+  <script src="/controllers/dashboardScheduleCtrl.js"></script>
+  <script src="/controllers/quickMsgCtl.js"></script>
+  <script src="/controllers/dashboardRescheduleCtrl.js"></script>
+  <script src="/controllers/dashboardConfCtrl.js"></script>
+  <script src="/controllers/analyticsCtl.js"></script>
+  <script src="/controllers/upcomingEventCtrl.js"></script>
+  <script src="/controllers/incomingMsgCtl.js"></script>
+  <script src="/controllers/outgoingMsgCtl.js"></script>
+  <script src="/controllers/historyController.js"></script>
+  <script src="/controllers/adminCreateCtl.js"></script>
+  <script src="/controllers/reportsUploadCtl.js"></script>
+  <script src="/controllers/reportsUpdateCtl.js"></script>
+  <script src="/controllers/adminCreateCtl.js"></script>
+  <script src="/controllers/allUserCtl.js"></script>
+  <script src="/controllers/allAdminCtl.js"></script>
+  <script src="/controllers/allSchoolCtl.js"></script>
+  <script src="/controllers/attendanceViewCtl.js"></script>
+  <script src="/controllers/markViewCtl.js"></script>
+  <script src="/controllers/feeViewCtl.js"></script>
+  <script src="/controllers/markViewWithConfId_Ctl.js"></script>
+  <script src="/controllers/attendanceViewWithConfId_Ctl.js"></script>
+  <script src="/controllers/changePasswordCtl.js"></script>
+  <script src="/controllers/viewEventController.js"></script>
+  <script src="/controllers/logoutCtl.js"></script>
+  <script src="/controllers/captureImgCtl.js"></script>
   <link rel='stylesheet' href='/bower_components/angular-loading-bar/build/loading-bar.css' type='text/css' media='all' />
   <script type='text/javascript' src='/bower_components/angular-loading-bar/build/loading-bar.min.js'></script>
   <link rel="stylesheet" type="text/css" href="/css/sweet-alert.css">
@@ -311,7 +318,7 @@
 
 
 
-  <div ng-app="careatorCommApp" ng-controller="careatorCommAppCtrl">
+  <div ng-app="vcApp" ng-controller="vcAppCtrl">
     <div id="loading-bar-container"></div>
     <!-- <spinner name="spinner" id="veil"></spinner>
     <div id="loading"></div> -->
@@ -359,15 +366,16 @@ transition: all 0.5s;">
               <li>
                 <a href="#contact">ABOUT US</a>
               </li>
-              <li>
-                <a href="#" data-target="#crdntl" data-toggle="modal">Employee Login</a>
+              <!-- <li ng-if="!userData.loginType">
+                <a href="#" data-target="#crdntl" data-toggle="modal">LOGIN</a>
               </li>
-              <!-- <li ng-if="userData.loginType">
+              <li ng-if="userData.loginType">
                 <a href="#!dashboard/logout">LOGOUT</a>
               </li> -->
-              <!-- <li>
+              <li>
                 <a href="https://norecruits.com/careator">Employee Login</a>
-              </li> -->
+              </li>
+
             </ul>
           </nav>
 
@@ -666,15 +674,17 @@ transition: all 0.5s;">
                   <span class="modal-title" style="color: #ccc;font-size: 17px;">Login</span>
                 </div>
                 <div class="modal-body">
-
-                  <input ng-keyup="$event.keyCode == 13 && logVC(email, Password)" type="email" class="form-control" placeholder="Email"
+                  <input type="radio" ng-model="loginType" value="teacher" checked="checked"> School &nbsp&nbsp
+                  <input type="radio" ng-model="loginType" value="studParent"> Parent
+                  <hr>
+                  <input ng-keyup="$event.keyCode == 13 && logVC(loginType, email, Password)" type="email" class="form-control" placeholder="Email"
                     ng-model="email" id="crdEmail">
                   <br>
-                  <input ng-keyup="$event.keyCode == 13 && logVC(email, Password)" type="password" id="crdPswd" class="form-control"
-                    placeholder="Password" ng-model="password">
+                  <input ng-keyup="$event.keyCode == 13 && logVC(loginType, email, Password)" type="password" id="crdPswd" class="form-control"
+                    placeholder="Password" ng-model="Password">
 
                   <div class="modal-footer" style="border-top:0px;background-color: #f5f5f5;">
-                    <button id="crdsubmit" type="button" style="background-color: #29b6bd;color:#f1f1f1" class="btn" ng-click="logVC(email, password)"
+                    <button id="crdsubmit" type="button" style="background-color: #29b6bd;color:#f1f1f1" class="btn" ng-click="logVC(loginType, email, Password)"
                       data-dismiss="modal">Submit</button>
                   </div>
                 </div>
@@ -682,29 +692,7 @@ transition: all 0.5s;">
           </center>
           </div>
         </div>
-        <button data-toggle="modal" data-target="#notify_msg" id="notify_msg_button" data-backdrop="static" data-keyboard="false"
-          style="display:none"></button>
-        <div class="modal animated jello faster " id="notify_msg" role="dialog">
-          <div class="modal-dialog">
-            <center>
-              <form>
-                <div class="modal-content" style="color:#777;max-width:350px; border-radius: 8px;">
-                  <div class="modal-header" style="display: table-caption;padding-top: 15px;background-image: linear-gradient(to bottom, #383c3f 0%, #202224 100%);">
-                    <img style="width: 45px; margin-top: -15px;margin-left: -170px;" src="/home/img/fav.png" />
-                    <span class="modal-title" style="font-weight: 200;">Message</span>
-                  </div>
-                  <div class="modal-body">
-                    <label id="notify_msg_content" style="color:red"></label>
-                  </div>
-                  <div class="modal-footer" style="padding-top: 15px;background-image: linear-gradient(to bottom, #202224 0%, #383c3f 100%);">
-                    <button id="resetBtn" type="button" ng-click="resetLoginFlag()" style="background-color: #29b6bd;color:#f1f1f1" class="btn">Reset</button>
-                    <button type="button" style="background-color: #29b6bd;color:#f1f1f1" class="btn" data-dismiss="modal">Ok</button>
-                  </div>
-                </div>
-              </form>
-            </center>
-          </div>
-        </div>
+
         <!-- ##### Start login popup  ##### -->
         <!-- <div class="modal fade" id="crdntl" role="dialog">
         <div class="modal-dialog">

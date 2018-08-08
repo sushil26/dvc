@@ -27,7 +27,7 @@ $scope.logVC = function (email, password) {
     };
     console.log("obj: " + JSON.stringify(obj));
     console.log("logVC");
-    var api = "https://norecruits.com/careator/pswdCheck";
+    var api = "/careator/pswdCheck";
     console.log("api: " + api);
     careatorHttpFactory.post(api, obj).then(function (data) {
         var checkStatus = careatorHttpFactory.dataValidation(data);

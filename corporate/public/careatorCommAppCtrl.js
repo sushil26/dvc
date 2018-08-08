@@ -144,7 +144,7 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
     }
 
 
-    function resetLoginFlag() {
+    $scope.resetLoginFlag = function() {
         console.log("resetLoginFlag-->");
         $("#notify_msg").modal('hide');
         var id = resetId;

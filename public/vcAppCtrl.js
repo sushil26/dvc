@@ -101,7 +101,7 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
     console.log("<--checkCredential");
   }
 
-  function resetLoginFlag() {
+   $scope.resetLoginFlag=function() {
     console.log("resetLoginFlag-->");
     $("#notify_msg").modal('hide');
     var id = resetId;

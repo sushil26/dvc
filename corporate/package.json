@@ -2,9 +2,9 @@
   "name": "rnd",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "cindex.js",
   "scripts": {
-    "start": "node index"
+    "start": "node cindex"
   },
   "author": "",
   "license": "ISC",

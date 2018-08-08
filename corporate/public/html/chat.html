@@ -3,9 +3,6 @@
         <section class="wrapper">
             <div id="profile">
                 <section class="panel">
-
-
-
                     <div class="container app">
                         <div class="row app-one">
                             <div class="col-sm-4 side">
@@ -87,10 +84,6 @@
                                                     </td>
                                                 </tr>
                                             </table>
-
-
-
-
                                         </div>
                                     </div>
                                     <div class="row sideBar">
@@ -100,15 +93,15 @@
                                                     <td style="width: 50px;">
                                                         <div class="col-sm-3 col-xs-3 sideBar-avatar">
                                                             <div class="avatar-icon" ng-if="record.groupName==undefined && (record.receiverId!=adminId && record.senderId != adminId)">
-                                                                <img ng-if="record.profilePicPath==undefined" src="./css/user.png">
+                                                                <img ng-if="record.profilePicPath==undefined" src="/css/user.png">
                                                                 <img ng-if="record.profilePicPath!=undefined" ng-src="{{record.profilePicPath}}">
                                                             </div>
                                                             <div class="avatar-icon" ng-if="record.groupName==undefined && (record.receiverId==adminId || record.senderId == adminId) ">
-                                                                <img ng-if="record.profilePicPath==undefined" src="./css/Admin.png">
+                                                                <img ng-if="record.profilePicPath==undefined" src="/css/Admin.png">
                                                                 <img ng-if="record.profilePicPath!=undefined" ng-src="{{record.profilePicPath}}">
                                                             </div>
                                                             <div class="avatar-icon" ng-if="record.groupName!==undefined">
-                                                                <img src="./css/group.png">
+                                                                <img src="/css/group.png">
                                                             </div>
                                                         </div>
                                                     </td>
@@ -137,7 +130,7 @@
                                                                     <span ng-if="record.unseenCount > 0" class="notify"> {{record.unseenCount}}</span>
                                                                 </div>
                                                                 <div class="col-sm-4 col-xs-4 pull-right sideBar-time">
-                                                                        <span class="time-meta">{{record.timeStamp |amCalendar}}
+                                                                    <span class="time-meta">{{record.timeStamp |amCalendar}}
                                                                     </span>
                                                                 </div>
                                                             </div>
@@ -164,7 +157,7 @@
                                     <div class="row composeBox">
                                         <div class="col-sm-12 composeBox-inner">
                                             <div class="form-group has-feedback">
-                                                <input id="composeText" type="text" class="form-control" ng-model="search"  name="searchText" placeholder="Search People">
+                                                <input id="composeText" type="text" class="form-control" ng-model="search" name="searchText" placeholder="Search People">
                                                 <span class="glyphicon glyphicon-search form-control-feedback"></span>
                                             </div>
                                         </div>
@@ -174,14 +167,14 @@
                                         <div class="row sideBar-body" ng-repeat="record in allGroupAndIndividual |filter:search">
                                             <div class="col-sm-3 col-xs-3 sideBar-avatar">
                                                 <div class="avatar-icon" ng-if="record.groupName!==undefined && record.email!='vc4all@careator.com'">
-                                                    <img src="./css/group.png">
+                                                    <img src="/css/group.png">
                                                 </div>
                                                 <div class="avatar-icon" ng-if="record.groupName==undefined && record.email!='vc4all@careator.com'">
-                                                    <img ng-if="record.profilePicPath==undefined" src="./css/user.png">
+                                                    <img ng-if="record.profilePicPath==undefined" src="/css/user.png">
                                                     <img ng-if="record.profilePicPath!=undefined" ng-src="{{record.profilePicPath}}">
                                                 </div>
                                                 <div class="avatar-icon" ng-if="record.groupName==undefined && record.email=='vc4all@careator.com'">
-                                                    <img ng-if="record.profilePicPath==undefined" src="./css/Admin.png">
+                                                    <img ng-if="record.profilePicPath==undefined" src="/css/Admin.png">
                                                     <img ng-if="record.profilePicPath!=undefined" ng-src="{{record.profilePicPath}}">
                                                 </div>
                                             </div>
@@ -219,15 +212,15 @@
                                 <div class="row heading" style="overflow: hidden;">
                                     <!-- <div class="col-sm-2 col-md-1 col-xs-3 heading-avatar">
                                         <div class="avatar-icon" ng-if="selectedType =='group'">
-                                            <img src="./css/group.png">
+                                            <img src="/css/group.png">
                                         </div>
                                         <div class="avatar-icon" ng-if="selectedType =='individual_chats' && chatListSection == 'chatWindow'">
                                             <img ng-if="receiverProfilePicPath!=undefined" ng-src="{{receiverProfilePicPath}}">
-                                            <img ng-if="receiverProfilePicPath==undefined" src="./css/user.png">
+                                            <img ng-if="receiverProfilePicPath==undefined" src="/css/user.png">
                                         </div>
                                         <div class="avatar-icon" ng-if="selectedType =='individual_chats' && chatListSection == 'newChatWindow'">
                                             <img ng-if="receiverProfilePicPath!=undefined" ng-src="{{receiverProfilePicPath}}">
-                                            <img ng-if="receiverProfilePicPath==undefined" src="./css/user.png">
+                                            <img ng-if="receiverProfilePicPath==undefined" src="/css/user.png">
                                         </div>
 
                                     </div> -->
@@ -302,15 +295,15 @@
                                     </div>
                                 </div>
                                 <!-- <div class="avatar-icon" ng-if="selectedType =='group'">
-                                        <img src="./css/group.png">
+                                        <img src="/css/group.png">
                                     </div>
                                     <div class="avatar-icon" ng-if="selectedType =='individual_chats' && chatListSection == 'chatWindow'">
                                         <img ng-if="receiverProfilePicPath!=undefined" ng-src="{{receiverProfilePicPath}}">
-                                        <img ng-if="receiverProfilePicPath==undefined" src="./css/user.png">
+                                        <img ng-if="receiverProfilePicPath==undefined" src="/css/user.png">
                                     </div>
                                     <div class="avatar-icon" ng-if="selectedType =='individual_chats' && chatListSection == 'newChatWindow'">
                                         <img ng-if="receiverProfilePicPath!=undefined" ng-src="{{receiverProfilePicPath}}">
-                                        <img ng-if="receiverProfilePicPath==undefined" src="./css/user.png">
+                                        <img ng-if="receiverProfilePicPath==undefined" src="/css/user.png">
                                     </div> -->
                                 <div class="row message" id="pulldown">
                                     <div class="row message-body" ng-if="!selectedType">
@@ -366,7 +359,7 @@
                                                         <td>
                                                             <div class="avatar-icon" ng-if="selectedType =='individual_chats' && chatListSection == 'chatWindow'">
                                                                 <img ng-if="receiverProfilePicPath!=undefined" ng-src="{{receiverProfilePicPath}}">
-                                                                <img ng-if="receiverProfilePicPath==undefined" src="./css/user.png">
+                                                                <img ng-if="receiverProfilePicPath==undefined" src="/css/user.png">
                                                             </div>
                                                         </td>
                                                         <td>
@@ -389,7 +382,7 @@
                                                     {{chat.message}}
                                                 </div>
                                                 <span class="message-time pull-right">
-                                                        {{chat.sendTime | amCalendar}}
+                                                    {{chat.sendTime | amCalendar}}
                                                 </span>
                                             </div>
                                         </div>

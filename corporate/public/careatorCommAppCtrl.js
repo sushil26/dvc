@@ -100,9 +100,12 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
 
                 localStorage.setItem("restrictedTo", restrictedArray);
                 var restrictedUser = restrictedArray;
-                var restrictedArray = restrictedUser.split(',');
-                console.log("restrictedArray: " + JSON.stringify(restrictedArray));
+               
                 userData.restrictedTo = restrictedArray;
+                
+
+                console.log("restrictedArray: " + JSON.stringify(restrictedArray));
+
             }
             if (data.data.profilePicPath) {
                 userData.profilePicPath = data.data.profilePicPath;
@@ -147,7 +150,7 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
             } else {
                 console.log("sorry");
                 alert(data.data.message);
-               
+
             }
         })
     }

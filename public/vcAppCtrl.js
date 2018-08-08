@@ -61,7 +61,7 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
           }
 
           console.log("userName: " + userName);
-          document.getElementById("videoConferenceUrl").style.display = "block";
+          // document.getElementById("videoConferenceUrl").style.display = "block";
           // $('#myPasswordModal').modal('hide');
           window.location.href = "https://norecruits.com/careatorApp/#!/dashboard/profile";
         },

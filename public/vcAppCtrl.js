@@ -136,6 +136,11 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
     console.log("triggerforLogin-->");
     $("#notify_msg_show").modal('hide');
     $("#enterEmail").trigger("click");
+    swal({
+      title: "Good job!",
+      text: "You clicked the button!",
+      icon: "success",
+    });
     window.location.href = "https://norecruits.com/careatorApp/#!/dashboard/profile";
   
   }

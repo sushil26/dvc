@@ -1,4 +1,4 @@
-careatorApp.factory('alert', function($uibModal) {
+app.factory('alert', function($uibModal) {
 
     function show(action, event) {
       return $uibModal.open({

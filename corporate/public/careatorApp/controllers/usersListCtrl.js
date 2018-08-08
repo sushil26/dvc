@@ -43,11 +43,7 @@ careatorApp.controller('usersListCtrl', function ($scope, $state, careatorHttpFa
                 },
                 function (isConfirm) { //Function that triggers on user action.
                     if (isConfirm) {
-                        SweetAlert.swal({
-                            text: "Activated",
-                            type: "success",
-                        });
-
+                        SweetAlert.swal("Activated!");
                         console.log("statusChange-->");
                         console.log("id: " + id + " status: " + status + " index: " + index);
                         var obj = {
@@ -72,10 +68,7 @@ careatorApp.controller('usersListCtrl', function ($scope, $state, careatorHttpFa
 
 
                     } else {
-                        SweetAlert.swal({
-                            text: "You did not Activate the user!",
-                            type: "info",
-                        });
+                        SweetAlert.swal("You did not Activate the user!");
                     }
                 }
             )
@@ -95,11 +88,7 @@ careatorApp.controller('usersListCtrl', function ($scope, $state, careatorHttpFa
                 },
                 function (isConfirm) { //Function that triggers on user action.
                     if (isConfirm) {
-                        SweetAlert.swal({
-                            text: "Deactivated",
-                            type: "success",
-                        });
-
+                        SweetAlert.swal("Deactivated!");
                         console.log("statusChange-->");
                         console.log("id: " + id + " status: " + status + " index: " + index);
                         var obj = {
@@ -124,10 +113,7 @@ careatorApp.controller('usersListCtrl', function ($scope, $state, careatorHttpFa
 
 
                     } else {
-                        SweetAlert.swal({
-                            text: "User cant login Now!",
-                            type: "info",
-                        });
+                        SweetAlert.swal("User cant login Now!");
                     }
                 }
             )

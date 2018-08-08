@@ -1,0 +1,797 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML Basic 1.1//EN"
+    "http://www.w3.org/TR/xhtml-basic/xhtml-basic11.dtd">
+<html>
+
+<head>
+  <title>VC4ALL</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <link href='https://fonts.googleapis.com/css?family=Allerta Stencil' rel='stylesheet'>
+  <link href="/home/img/fav.png" rel="icon" size="32x32">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700" rel="stylesheet">
+  <!-- Bootstrap CSS File -->
+  <link href="/home/lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+  <!-- Libraries CSS Files -->
+  <link href="/home/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="/home/lib/animate/animate.min.css" rel="stylesheet">
+  <!-- Main Stylesheet File -->
+  <link href="/home/css/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="/dashboard_Lib/css/style.css" />
+  <link rel="stylesheet" href="/dashboard_Lib/css/style-responsive.css" />
+  <link rel="stylesheet" href="/dashboard_Lib/css/elegant-icons-style.css" />
+  <link rel="stylesheet" href="/css/chatZone.css" />
+  <script src="/js/socket.io-1.4.5.js"></script>
+  <script src="/bower_components/angular/angular.min.js"></script>
+  <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+  <script src="/angular-animate/angular-animate.min.js"></script>
+  <!-- bootstrap -->
+  <script src="vcApp.js"></script>
+  <script src="vcAppCtrl.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/angular-bootstrap-colorpicker@3/css/colorpicker.min.css" />
+  <script src="/common/httpFactory.js"></script>
+  <script src="/common/socketFactory.js"></script>
+  <script src="/common/sessionAuthFactory.js"></script>
+  <script src="/common/fileModel.js"></script>
+  <script src="/common/notification.js"></script>
+  <script src="/bower_components/moment/min/moment.min.js"></script>
+  <script src=" https://cdnjs.cloudflare.com/ajax/libs/angular-moment/0.10.1/angular-moment.min.js"></script>
+  <link rel="stylesheet" href="/bower_components/angular-bootstrap-calendar/dist/css/angular-bootstrap-calendar.min.css">
+  <script src="/bower_components/angular-bootstrap-calendar/dist/js/angular-bootstrap-calendar-tpls.js"></script>
+  <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <script src="/bower_components/angular-cookies/angular-cookies.js"></script>
+  <link href="/bower_components/ng-img-crop-full-extended/compile/unminified/ng-img-crop.css" rel="stylesheet">
+  <script src="/bower_components/ng-img-crop-full-extended/compile/unminified/ng-img-crop.js"></script>
+  <!-- <script src="/bower_components/ui-cropper/source/js/ui-cropper.js"></script> -->
+  <!-- <script src="/home/lib/bootstrap/js/bootstrap.bundle.min.js"></script> -->
+  <script src="/controllers/viewUserCtrl.js"></script>
+  <script src="/controllers/calendarCtrl.js"></script>
+  <script src="/controllers/userAuthCtrl.js"></script>
+  <script src="/controllers/teacherInsertCtrl.js"></script>
+  <script src="/controllers/studentInsertCtrl.js"></script>
+  <script src="/controllers/dashboardCtrl.js"></script>
+  <script src="/controllers/dashboardEventCtrl.js"></script>
+  <script src="/controllers/dashboardEditCtrl.js"></script>
+  <script src="/controllers/dashboardPersonalDetailCtrl.js"></script>
+  <script src="/controllers/dashboardScheduleCtrl.js"></script>
+  <script src="/controllers/quickMsgCtl.js"></script>
+  <script src="/controllers/dashboardRescheduleCtrl.js"></script>
+  <script src="/controllers/dashboardConfCtrl.js"></script>
+  <script src="/controllers/analyticsCtl.js"></script>
+  <script src="/controllers/upcomingEventCtrl.js"></script>
+  <script src="/controllers/incomingMsgCtl.js"></script>
+  <script src="/controllers/outgoingMsgCtl.js"></script>
+  <script src="/controllers/historyController.js"></script>
+  <script src="/controllers/adminCreateCtl.js"></script>
+  <script src="/controllers/reportsUploadCtl.js"></script>
+  <script src="/controllers/reportsUpdateCtl.js"></script>
+  <script src="/controllers/adminCreateCtl.js"></script>
+  <script src="/controllers/allUserCtl.js"></script>
+  <script src="/controllers/allAdminCtl.js"></script>
+  <script src="/controllers/allSchoolCtl.js"></script>
+  <script src="/controllers/attendanceViewCtl.js"></script>
+  <script src="/controllers/markViewCtl.js"></script>
+  <script src="/controllers/feeViewCtl.js"></script>
+  <script src="/controllers/markViewWithConfId_Ctl.js"></script>
+  <script src="/controllers/attendanceViewWithConfId_Ctl.js"></script>
+  <script src="/controllers/changePasswordCtl.js"></script>
+  <script src="/controllers/viewEventController.js"></script>
+  <script src="/controllers/logoutCtl.js"></script>
+  <script src="/controllers/captureImgCtl.js"></script>
+  <link rel='stylesheet' href='/bower_components/angular-loading-bar/build/loading-bar.css' type='text/css' media='all' />
+  <script type='text/javascript' src='/bower_components/angular-loading-bar/build/loading-bar.min.js'></script>
+  <link rel="stylesheet" type="text/css" href="/css/sweet-alert.css">
+  <script src="/js/SweetAlert.min.js"></script>
+  <script src="/js/sweet-alert.min.js"></script>
+  <script>
+    var SIGNALING_SERVER = "https://norecruits.com";
+    socket = io(SIGNALING_SERVER);
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
+
+
+  <style>
+    /* #loading-bar .bar {
+  position: relative;
+} */
+
+    .modal {
+      font-family: Lato;
+    }
+
+    .modal-header {
+      padding: 15px;
+    }
+
+
+    .modal-content {
+      border-radius: 8px;
+      border: none;
+    }
+
+
+    .no-js #loader {
+      display: none;
+    }
+
+    .js #loader {
+      display: block;
+      position: absolute;
+      left: 100px;
+      top: 0;
+    }
+
+    .se-pre-con {
+      position: fixed;
+      left: 0px;
+      top: 0px;
+      width: 100%;
+      height: 100%;
+      z-index: 9999;
+      background: url(img/loading.gif) center no-repeat #fff;
+    }
+
+    .red {
+      background-color: red;
+    }
+
+    .green {
+      background-color: green;
+    }
+
+    .blue {
+      background-color: blue;
+    }
+
+    .quotes {
+      display: none;
+    }
+
+    #loading {
+      display: block;
+      position: absolute !important;
+      top: 0;
+      left: 0;
+      z-index: 100;
+      width: 100vw;
+      height: 100vh;
+      background-color: green;
+      background-image: url("gears-animation.gif");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-color: #0a425f;
+      background-size: 175px;
+    }
+
+    #loadings {
+      display: block;
+      position: absolute !important;
+      top: 0;
+      left: 0;
+      z-index: 100;
+      width: 100vw;
+      height: 100vh;
+      background-color: green;
+      background-image: url("gears-animation.gif");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-color: #0a425f;
+      background-size: 175px;
+    }
+  </style>
+  <style>
+    /* The outermost element*/
+
+    .header-wrapper {
+      overflow: hidden;
+    }
+
+    .zoominheader {
+      background: url("/home/img/op.jpg");
+      background-size: cover;
+      background-attachment: fixed;
+      background-repeat: repeat;
+      position: relative;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      -webkit-animation: zoomin 15s ease-in infinite;
+      animation: zoomin 15s ease-in infinite;
+      transition: all .5s ease-in-out;
+      overflow: hidden;
+    }
+
+    /* The innermost element*/
+
+    .zoomoutheader {
+      text-align: center;
+      background: none;
+      -webkit-animation: zoomout 10s ease-in infinite;
+      animation: zoomout 10s ease-in infinite;
+      transition: all .5s ease-in-out;
+      overflow: hidden;
+    }
+
+    /* Zoom in Keyframes */
+
+    @-webkit-keyframes zoomin {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.5);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    @keyframes zoomin {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.5);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    /*End of Zoom in Keyframes */
+
+    /* Zoom out Keyframes */
+
+    @-webkit-keyframes zoomout {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(0.67);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    @keyframes zoomout {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(0.67);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    /*End of Zoom out Keyframes */
+
+    .cropArea {
+      background: #E4E4E4;
+      overflow: hidden;
+      width: 325px;
+      height: 350px;
+    }
+  </style>
+
+  <!-- Dropdown with search -->
+  <script>
+    function myFunction() {
+      document.getElementById("myDropdown").classList.toggle("show");
+    }
+
+    function filterFunction() {
+      var input, filter, ul, li, a, i;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      div = document.getElementById("myDropdown");
+      a = div.getElementsByTagName("a");
+      for (i = 0; i < a.length; i++) {
+        if (a[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
+          a[i].style.display = "";
+        } else {
+          a[i].style.display = "none";
+        }
+      }
+    }
+
+    function onReady(callback) {
+      var intervalID = window.setInterval(checkReady, 1000);
+
+      function checkReady() {
+        if (document.getElementsByTagName('body')[0] !== undefined) {
+          window.clearInterval(intervalID);
+          callback.call(this);
+        }
+      }
+    }
+  </script>
+
+</head>
+
+
+
+<body>
+
+
+
+  <div ng-app="vcApp" ng-controller="vcAppCtrl">
+    <div id="loading-bar-container"></div>
+    <!-- <spinner name="spinner" id="veil"></spinner>
+    <div id="loading"></div> -->
+    <div id="page" ui-view>
+      <!--==========================
+    Header
+============================-->
+      <div id="" class="" style="position: fixed;
+height: 5px;
+left: 0;
+top: 0;
+right: 0;
+z-index: 1000;
+
+transition: all 0.5s;">
+      </div>
+      <header id="header">
+        <div class="container">
+          <div id="logo" class="pull-left">
+            <span>
+              <img style="float:left;" src="/home/img/fav.png" />
+              <a href="/" id="mm" style="font-size: 33px;
+              letter-spacing: -2.3px;
+          font-weight: 500;
+          font-family: 'Allerta Stencil';
+          color: #a8cf44 !important;
+          float: left;
+          margin-top: 4px;
+          text-transform: uppercase;">
+                <span>
+                  <span id="vc">VC4ALL</span>
+                </span>
+              </a>
+            </span>
+          </div>
+          <nav id="nav-menu-container">
+            <ul class="nav-menu">
+              <li ng-if="userData.loginType" id="dashboard" style="display:block;">
+                <a href="#!dashboard/personalDetail">DASHBOARD
+                </a>
+              </li>
+              <li>
+                <a href="#services">FEATURES</a>
+              </li>
+              <li>
+                <a href="#contact">ABOUT US</a>
+              </li>
+              <li ng-if="!userData.loginType">
+                <a href="#" data-target="#crdntl" data-toggle="modal">LOGIN</a>
+              </li>
+              <li ng-if="userData.loginType">
+                <a href="#!dashboard/logout">LOGOUT</a>
+              </li>
+              <!-- <li>
+                <a href="https://norecruits.com/careator">Employee Login</a>
+              </li> -->
+
+            </ul>
+          </nav>
+
+        </div>
+      </header>
+      <!--==========================
+    Hero Section
+  ============================-->
+      <section id="hero">
+        <div class="hero-container ">
+          <div class="">
+            <center>
+              <div class="quotes" style="width: fit-content;
+              font-family: Aclonica;
+            height: auto;
+            font-weight: 300;
+            font-size:6vw;
+            line-height: 1;">
+                Welcome to
+                <span style="font-size:6vw; color:#a8cf44;">VC4ALL</span>
+              </div>
+              <div class="quotes" style="width: fit-content;
+              font-family: Aclonica;
+            height: auto;
+            font-weight: 300;
+            font-size:6vw;
+            line-height: 1;">The Ultimate Platform</div>
+              <div class="quotes" style="width: fit-content;
+              font-family: Aclonica;
+          height: auto;
+          font-weight: 300;
+          font-size:6vw;
+          line-height: 1;">For Video Conferencing</div>
+              <div class="quotes" style="width: fit-content;
+              font-family: Aclonica;
+        height: auto;
+        font-weight: 300;
+        font-size:6vw;
+        line-height: 1;">And Instant Messaging</div>
+              <!-- <a href="#about" class="btn-get-started">Start Journey</a> -->
+            </center>
+          </div>
+        </div>
+      </section>
+      <!--==========================
+    Hero Section
+  ============================-->
+
+      <main id="main">
+        <!--==========================
+      About Us Section
+    ============================-->
+        <!--==========================
+      Services Section
+    ============================-->
+        <section id="services">
+          <div class="container wow fadeIn">
+            <div class="section-header" style="margin-bottom: 40px;">
+              <h3 class="section-title">Why VC4ALL?</h3>
+              <p class="section-description"> </p>
+            </div>
+            <div class="row">
+              <div class="col-lg-4 col-md-6 wow fadeInUp " data-wow-delay="0.2s">
+                <div class="box" style="background-image: url('schedule1.jpg');     background-size: cover;">
+                  <div class="icon">
+                    <a href="">
+                      <i class="fa fa-calendar"></i>
+                    </a>
+                  </div>
+                  <h4 class="title">
+                    <a href="">Schedule a Meeting</a>
+                  </h4>
+                  <p class="description">Schedule/Reschedule a meeting as per your convenience.</p>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
+                <div class="box" style="background-image: url('img/multiplechat.jpg');     background-size: cover;">
+                  <div class="icon">
+                    <a href="">
+                      <i class="fa fa-comments"></i>
+                    </a>
+                  </div>
+                  <h4 class="title">
+                    <a href="">Multiple Chatting</a>
+                  </h4>
+                  <p class="description">Chat with multiple people at once.
+                  </p>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
+                <div class="box" style="background-image: url('img/type.jpg');     background-size: cover;">
+                  <div class="icon">
+                    <a href="">
+                      <i class="fa fa-keyboard-o"></i>
+                    </a>
+                  </div>
+                  <h4 class="title">
+                    <a href="">Talk and type</a>
+                  </h4>
+                  <p class="description">Talk and type messages at the same time.</p>
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+                <div class="box" style="background-image: url('img/screen_share.jpg');     background-size: cover;">
+                  <div class="icon">
+                    <a href="">
+                      <i class="fa fa-photo"></i>
+                    </a>
+                  </div>
+                  <h4 class="title">
+                    <a href="">Share your Screen</a>
+                  </h4>
+                  <p class="description">Share your screen and make the discussions even easier.</p>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
+                <div class="box" style="background-image: url('img/schedule1.jpg');     background-size: cover;">
+                  <div class="icon">
+                    <a href="">
+                      <i class="fa fa-pencil"></i>
+                    </a>
+                  </div>
+                  <h4 class="title">
+                    <a href="">Book the appointment</a>
+                  </h4>
+                  <p class="description">Book a slot and make the conversations dedicated to you.</p>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
+                <div class="box" style="background-image: url('img/notify.png');     background-size: cover;">
+                  <div class="icon">
+                    <a href="">
+                      <i class="fa fa-bullhorn"></i>
+                    </a>
+                  </div>
+                  <h4 class="title">
+                    <a href="">Get Notified</a>
+                  </h4>
+                  <p class="description">Get email notification for each meeting schedule.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </section>
+        <!-- #services -->
+
+
+        <section id="facts" style="background-image:url(home/img/background.jpg);    background-size: cover;">
+          <!-- <section id="facts" style="background-color:black"> -->
+          <div class="container wow">
+            <div class="section-header">
+              <h3 class="section-title">&nbsp</h3>
+              <h3 class="section-title" style="color:#3f3f3f;">About us</h3>
+              <h3 class="section-title"></h3>
+              <p class="section-description" style="color:#3f3f3f;text-align: justify; font-family:sans-serif; font-size:15px;">
+                VC4ALL is a holistic new age technology platform for schools integrated with messaging and video conferencing.
+                <br>
+                <br> The genesis of VC4All is to ease the communication between Parent and Teacher, and get connected anywhere.
+                VC4ALL helps the parents to have a dedicated one-to-one discussion with the teachers without having to travel
+                down to the respective school. Not only this, but VC4ALL also lets teachers and parents have a group conversations
+                to have a better perspective about the children’s overall growth.
+                <br>
+                <br> This uninterrupted connectivity allows the schools to let the children get education over live chats and
+                video calls.
+                <br>
+                <br> To know more about vc4all please call us at +91 924 653 1986.
+              </p>
+            </div>
+          </div>
+
+
+          <!--==========================
+      Facts Section
+    ============================-->
+
+          <div class="container wow fadeIn">
+            <hr>
+            <div class="row counters">
+
+              <div class="col-lg-3 col-6 text-center">
+                <span data-toggle="counter-up">232</span>
+                <p>Clients</p>
+              </div>
+
+              <div class="col-lg-3 col-6 text-center">
+                <span data-toggle="counter-up">521</span>
+                <p>Projects</p>
+              </div>
+
+              <div class="col-lg-3 col-6 text-center">
+                <span data-toggle="counter-up">1,463</span>
+                <p>Hours Of Support</p>
+              </div>
+
+              <div class="col-lg-3 col-6 text-center">
+                <span data-toggle="counter-up">15</span>
+                <p>Hard Workers</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="contact">
+          <div class="container wow">
+            <div class="row justify-content-center">
+              <div class="ssk" style="height: 36px;width: 100%;"></div>
+              <div class="col-sm-4">
+                <div class="info">
+                  <table>
+                    <tr>
+                      <td>
+                        <div id="logo" class="pull-left">
+                          <!-- Uncomment below if you prefer to use a text logo -->
+                          <span>
+                            <img style="width: 60px;margin-top: -20px;" src="/home/img/fav.png" />
+                            <a href="/" id="mm" style="
+                            letter-spacing: -2.3px;
+                            font-size: 18px;
+                            font-family: 'Allerta Stencil';
+                            color: wb;
+                            font-size: 22px;
+                            font-weight: 500;
+                            color: #a8cf44;
+                            margin-top: 8px;
+                            text-transform: uppercase;
+                            ">VC4ALL</span>
+                          </a>
+                          </span>
+
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="font-size: 15px;
+                      font-family: sans-serif;
+                      color: #a8cf44;"> Careator Technologies Private Limited</td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="info">
+                  <table>
+                    <tr>
+                      <td>
+                        <div>
+                          <i style="text-shadow: 2px 2px 2px #00000061;" class="fa fa-map-marker"></i>
+                          <p style="
+                            font-family:  sans-serif;
+                            font-size: 11px;font-weight: 100;
+                        "> SLJ TOWER, II FLOOR, BDA # 297, VII BLOCK, OUTER RING ROAD, KATHREGUPPE, BANASHANKARI 3RD STAGE,
+                            BENGALURU, KARNATAKA
+                            <br>560061</p>
+                        </div>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="info">
+                  <table>
+                    <tr>
+                      <td>
+                        <div>
+                          <i style="text-shadow: 2px 2px 2px #00000061;" class="fa fa-map-marker"></i>
+                          <p style="
+                          font-family:  sans-serif;
+                          font-size: 11px;font-weight: 100;
+                      ">MR HOUSE, INDIAN AIRLINES COLONY, BEGUMPET, HYDRABAD,TELANGANA
+                            <br>500016</p>
+                        </div>
+
+                      </td>
+
+                    </tr>
+                  </table>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+      </main>
+      <div class="modal fade" id="crdntl" role="dialog">
+        <div class="modal-dialog">
+          <center>
+            <form>
+              <div class="modal-content" style="color:#777;max-width:350px;">
+                <div class="modal-header" style="display: inline-table; background-image: linear-gradient(to bottom, #383c3f 0%, #202224 100%);">
+                  <img style="width: 45px;margin-top: -15px; margin-left: -150px;" src="/home/img/fav.png" />
+                  <span class="modal-title" style="color: #ccc;font-size: 17px;">Login</span>
+                </div>
+                <div class="modal-body">
+                  <input type="radio" ng-model="loginType" value="teacher" checked="checked"> School &nbsp&nbsp
+                  <input type="radio" ng-model="loginType" value="studParent"> Parent
+                  <hr>
+                  <input ng-keyup="$event.keyCode == 13 && logVC(loginType, email, Password)" type="email" class="form-control" placeholder="Email"
+                    ng-model="email" id="crdEmail">
+                  <br>
+                  <input ng-keyup="$event.keyCode == 13 && logVC(loginType, email, Password)" type="password" id="crdPswd" class="form-control"
+                    placeholder="Password" ng-model="Password">
+
+                  <div class="modal-footer" style="border-top:0px;background-color: #f5f5f5;">
+                    <button id="crdsubmit" type="button" style="background-color: #29b6bd;color:#f1f1f1" class="btn" ng-click="logVC(loginType, email, Password)"
+                      data-dismiss="modal">Submit</button>
+                  </div>
+                </div>
+            </form>
+          </center>
+          </div>
+        </div>
+
+        <!-- ##### Start login popup  ##### -->
+        <!-- <div class="modal fade" id="crdntl" role="dialog">
+        <div class="modal-dialog">
+          <center>
+            <div class="modal-content" style="
+                max-width: 350px;
+                background: #00000075; color:#777; border: 0px;">
+              <div class="modal-header" style="background-color: darkturquoise;     border-bottom: 0px;">
+                <h4 class="modal-title" style="margin-left: 2px;">Login</h4>
+                <button class="btn-default fa fa-close" style="margin-top: 2px;    border-color: white;
+              border-radius: 25%;" aria-hidden="true" type="reset" data-dismiss="modal"></button>
+              </div>
+              <div class="modal-body">
+                <div style="background:darkturquoise;
+            /* border: 1px solid white; */
+            border-radius: 5px;
+            width: 50%;
+            padding: 3px;">
+                  <input type="radio" ng-model="loginType" value="teacher" checked="checked"> School &nbsp&nbsp
+                  <input type="radio" ng-model="loginType" value="studParent"> Parent
+                </div>
+                <hr>
+                <input ng-keyup="$event.keyCode == 13 && logVC(loginType, email, Password)" style="
+                      background:  #ddd;
+                      border-radius: inherit;
+                      height: 50px;
+                      border: #ddd;" type="email" class="form-control" placeholder="Email" ng-model="email" id="crdEmail">
+                <br>
+                <input ng-keyup="$event.keyCode == 13 && logVC(loginType, email, Password)" style="
+                      background:  #ddd;
+                      border-radius: inherit;
+                      height: 50px;
+                      border: #ddd;" type="password" id="crdPswd" class="form-control" placeholder="Password" ng-model="Password">
+              </div>
+              <div class="modal-footer" style="border-top:0px; padding: 15px;">
+                <button id="crdsubmit" type="button" style="background-color: #29b6bd;color:#f1f1f1; width: 100%; height:50px;" class="btn"
+                  ng-click="logVC(loginType, email, Password)" data-dismiss="modal">Submit</button>
+              </div>
+            </div>
+          </center>
+        </div>
+      </div> -->
+        <!-- ##### End login popup  ##### -->
+
+        <!--==========================
+    Footer
+  ============================-->
+        <footer id="footer">
+
+          <div class="container">
+            <div class="copyright">
+              &copy; Copyright
+              <strong>Careator</strong>. All Rights Reserved,
+              <a href="#" style="color: #2676bf;">Terms & Conditions</a>
+            </div>
+          </div>
+          <div class="container">
+            <div class="copyright">
+              <span class="icn">
+                <a href="#" class="twitter imm">
+                  <i class="fa fa-twitter"></i>
+                </a>
+                <a href="#" class="facebook imm">
+                  <i class="fa fa-facebook"></i>
+                </a>
+                <a href="#" class="instagram imm">
+                  <i class="fa fa-instagram"></i>
+                </a>
+                <a href="#" class="google-plus imm">
+                  <i class="fa fa-google-plus"></i>
+                </a>
+                <a href="#" class="linkedin imm">
+                  <i class="fa fa-linkedin"></i>
+                </a>
+              </span>
+            </div>
+          </div>
+        </footer>
+        <!-- #footer -->
+        <a href="#" class="back-to-top">
+          <i class="fa fa-chevron-up"></i>
+        </a>
+        <script src="/home/lib/jquery/jquery.min.js"></script>
+        <script src="/home/lib/jquery/jquery-migrate.min.js"></script>
+        <script src="/home/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="/home/lib/easing/easing.min.js"></script>
+        <script src="/home/lib/wow/wow.min.js"></script>
+
+        <script src="/home/lib/waypoints/waypoints.min.js"></script>
+        <script src="/home/lib/superfish/hoverIntent.js"></script>
+        <script src="/home/lib/superfish/superfish.min.js"></script>
+        <script src="/home/lib/counterup/counterup.min.js"></script>
+        <script src="/home/js/main.js"></script>
+        <script>
+          //paste this code under the head tag or in a separate js file.
+        </script>
+      </div>
+
+    </div>
+</body>
+
+</html>

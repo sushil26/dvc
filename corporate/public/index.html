@@ -665,22 +665,43 @@ transition: all 0.5s;">
                   <span class="modal-title" style="color: #ccc;font-size: 17px;">Login</span>
                 </div>
                 <div class="modal-body">
-                  <input type="radio" ng-model="loginType" value="teacher" checked="checked"> School &nbsp&nbsp
-                  <input type="radio" ng-model="loginType" value="studParent"> Parent
-                  <hr>
-                  <input ng-keyup="$event.keyCode == 13 && logVC(loginType, email, Password)" type="email" class="form-control" placeholder="Email"
+
+                  <input ng-keyup="$event.keyCode == 13 && logVC(email, Password)" type="email" class="form-control" placeholder="Email"
                     ng-model="email" id="crdEmail">
                   <br>
-                  <input ng-keyup="$event.keyCode == 13 && logVC(loginType, email, Password)" type="password" id="crdPswd" class="form-control"
-                    placeholder="Password" ng-model="Password">
+                  <input ng-keyup="$event.keyCode == 13 && logVC(email, Password)" type="password" id="crdPswd" class="form-control"
+                    placeholder="Password" ng-model="password">
 
                   <div class="modal-footer" style="border-top:0px;background-color: #f5f5f5;">
-                    <button id="crdsubmit" type="button" style="background-color: #29b6bd;color:#f1f1f1" class="btn" ng-click="logVC(loginType, email, Password)"
+                    <button id="crdsubmit" type="button" style="background-color: #29b6bd;color:#f1f1f1" class="btn" ng-click="logVC(email, password)"
                       data-dismiss="modal">Submit</button>
                   </div>
                 </div>
             </form>
           </center>
+          </div>
+        </div>
+        <button data-toggle="modal" data-target="#notify_msg" id="notify_msg_button" data-backdrop="static" data-keyboard="false"
+          style="display:none"></button>
+        <div class="modal animated jello faster " id="notify_msg" role="dialog">
+          <div class="modal-dialog">
+            <center>
+              <form>
+                <div class="modal-content" style="color:#777;max-width:350px; border-radius: 8px;">
+                  <div class="modal-header" style="display: table-caption;padding-top: 15px;background-image: linear-gradient(to bottom, #383c3f 0%, #202224 100%);">
+                    <img style="width: 45px; margin-top: -15px;margin-left: -170px;" src="/home/img/fav.png" />
+                    <span class="modal-title" style="font-weight: 200;">Message</span>
+                  </div>
+                  <div class="modal-body">
+                    <label id="notify_msg_content" style="color:red"></label>
+                  </div>
+                  <div class="modal-footer" style="padding-top: 15px;background-image: linear-gradient(to bottom, #202224 0%, #383c3f 100%);">
+                    <button id="resetBtn" type="button" ng-click="resetLoginFlag()" style="background-color: #29b6bd;color:#f1f1f1" class="btn">Reset</button>
+                    <button type="button" style="background-color: #29b6bd;color:#f1f1f1" class="btn" data-dismiss="modal">Ok</button>
+                  </div>
+                </div>
+              </form>
+            </center>
           </div>
         </div>
 

@@ -38,16 +38,16 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
                 console.log("data.message: " + data.data.message);
                 $scope.sessionSet(datas);
             } else {
-                if (data.message == "You've already logged in. To log in again, please reset your session") {
+                if (data.data.message == "You've already logged in. To log in again, please reset your session") {
                    
                     $scope.checkObj = {
                         "password": password,
                         "careatorEmail": email
                     }
-                    document.getElementById('notify_msg_content').innerHTML = data.message;
+                    document.getElementById('notify_msg_content').innerHTML = data.data.message;
                     document.getElementById('resetBtn').style.display = 'inline';
                     $("#notify_msg_button").trigger("click");
-                    resetId = data.message.data.id;
+                    resetId = data.data.data.id;
                 }
                 else {
                     console.log("sorry");

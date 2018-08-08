@@ -136,7 +136,7 @@ app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window, 
     console.log("triggerforLogin-->");
     $("#notify_msg_show").modal('hide');
     $("#enterEmail").trigger("click");
-    swal({
+    SweetAlert.swal({
       title: "Good job!",
       text: "You clicked the button!",
       icon: "success",

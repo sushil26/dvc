@@ -373,7 +373,7 @@ transition: all 0.5s;">
                 <a href="#contact">ABOUT US</a>
               </li>
               <li>
-                <a ng-if="uerData.email==null || userData.email==undefined" href="#" id="empLogin" data-target="#crdntl" data-toggle="modal" >Employee Login</a>
+                <a ng-if="userData.email==null || userData.email==undefined" href="#" id="empLogin" data-target="#crdntl" data-toggle="modal" >Employee Login</a>
                 <a ng-if="userData.email!=null && userData.email!=undefined" href="#" ng-click="logout()"  >Employee Logout</a>
               </li>
               

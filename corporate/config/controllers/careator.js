@@ -304,7 +304,7 @@ module.exports.pswdCheck = function (req, res) {
                                                     .catch(err => {
                                                         console.error(err)
                                                     })
-                                                log.info("req.originalUrl: " + req.originalUrl + " Email: " + findData[0].email, " Date: (" + date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate() + ")" + " Time: " + date.gettimezone() + " IP Location:" + JSON.stringify(ipLocationResponse));
+                                                log.info("req.originalUrl: " + req.originalUrl + " Email: " + findData[0].email, " Date: (" + date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate() + ")" + " Time: (" + date.getHours()+":"+date.getMinutes +")"+ " IP Location:" + JSON.stringify(ipLocationResponse));
                                                 console.log("log: " + log);
                                                 responseData = {
                                                     status: true,

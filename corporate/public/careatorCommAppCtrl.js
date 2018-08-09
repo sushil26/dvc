@@ -51,7 +51,24 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
                 }
                 else {
                     console.log("sorry");
-                    alert("data.data.message");
+                    //alert("data.data.message");
+                    var loginAlert = $uibModal.open({
+                        scope: $scope,
+                        templateUrl: '/careatorApp/common/loginAlert.html',
+                        windowClass: 'show',
+                        backdropClass: 'static',
+                        keyboard: false,
+                        controller: function ($scope, $uibModalInstance) {
+                            $scope.message = data.data.message;
+                            console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
+                            $scope.close = function () {
+                                loginResetAlert.close('resetModel');
+                            }
+                        }
+                    })
+                    $timeout( function(){
+                        loginAlert.close('resetModel');
+                    }, 5000 );
 
                 }
             }
@@ -173,7 +190,24 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
                
             } else {
                 console.log("sorry");
-                alert(data.data.message);
+                //alert(data.data.message);
+                var loginResetAlert = $uibModal.open({
+                    scope: $scope,
+                    templateUrl: '/careatorApp/common/loginAlert.html',
+                    windowClass: 'show',
+                    backdropClass: 'static',
+                    keyboard: false,
+                    controller: function ($scope, $uibModalInstance) {
+                        $scope.message = data.data.message;
+                        console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
+                        $scope.close = function () {
+                            loginResetAlert.close('resetModel');
+                        }
+                    }
+                })
+                $timeout( function(){
+                    loginResetAlert.close('resetModel');
+                }, 5000 );
 
             }
         })

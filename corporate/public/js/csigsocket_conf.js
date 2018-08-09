@@ -930,7 +930,10 @@ console.log("id2**: " + id2);
           $("#" + peer_id + "Remote").css({
             height: "82vh"
           });
-          $
+
+          $("video").css({
+            border: "none"
+          });
           $("#videoElem").css({
             height: "auto",
             width: "20%"
@@ -950,6 +953,10 @@ console.log("id2**: " + id2);
         $("#btnrestore").click(function () {
           $("#" + peer_id + "remoteVideoElement").removeClass("fullscr");
           $('html, body').css('overflow-x', 'hidden');
+
+          $("video").css({
+            border: "5px solid white"
+          });
 
           console.log("add id videoElem111");
           $("#videoElem111").addClass(

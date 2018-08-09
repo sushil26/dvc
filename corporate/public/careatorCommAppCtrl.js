@@ -8,14 +8,14 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
     var loginModal; /* ### Note: get login modal instance on this variable ###*/
     var userName;
 
-    $scope.cUserData = careatorSessionAuth.getAccess("userData");
-    console.log(" $scope.userData : " + JSON.stringify($scope.cUserData));
-    if ($scope.cUserData) {
-        userName = $scope.cUserData.userName;
+    $scope.userData = careatorSessionAuth.getAccess("userData");
+    console.log(" $scope.userData : " + JSON.stringify($scope.userData));
+    if ($scope.userData) {
+        userName = $scope.userData.userName;
         // $scope.loginType = $scope.userData.loginType;
-        console.log("cUserData: " + JSON.stringify($scope.cUserData));
+        console.log("userData: " + JSON.stringify($scope.userData));
         console.log("userName: " + userName);
-        if (($scope.cUserData.email != null && $scope.cUserData.email != undefined) && ($scope.cUserData.sessionPassword != null && $scope.cUserData.sessionPassword != undefined)) {
+        if (($scope.userData.email != null && $scope.userData.email != undefined) && ($scope.userData.sessionPassword != null && $scope.userData.sessionPassword != undefined)) {
                     
            
             
@@ -136,11 +136,11 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
             if (data.data.profilePicPath) {
                 userData.profilePicPath = data.data.profilePicPath;
             }
-            var cUserData = userData;
-            careatorSessionAuth.setAccess(cUserData);
-            var cUserData = careatorSessionAuth.getAccess("cUserData");
-            $scope.cUserData = cUserData;
-            console.log("cUserData: " + JSON.stringify(cUserData));
+            var userData = userData;
+            careatorSessionAuth.setAccess(userData);
+            var userData = careatorSessionAuth.getAccess("userData");
+            $scope.userData = userData;
+            console.log("userData: " + JSON.stringify(userData));
 
             $state.go('Cdashboard.profile', {});
 

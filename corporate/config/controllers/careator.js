@@ -295,7 +295,7 @@ module.exports.pswdCheck = function (req, res) {
                                                 };
                                                 res.status(400).send(responseData);
                                             } else {
-                                                log.info("req.originalUrl: "+req.originalUrl+" protocol: "+req.protocol+" message: "+findData[0].email);
+                                                log.error("req.originalUrl: "+req.originalUrl+" protocol: "+req.protocol+" message: "+findData[0].email);
                                                 responseData = {
                                                     status: true,
                                                     message: property.S0005,

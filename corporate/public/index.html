@@ -5,33 +5,25 @@
 
 <head>
   <title>VC4ALL</title>
-  <meta charset="UTF-8" content="user-scalable=no,width=device-width, initial-scale=1" name="viewport">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <link href='https://fonts.googleapis.com/css?family=Allerta Stencil' rel='stylesheet'>
+  <link href="/home/img/fav.png" rel="icon" size="32x32">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700" rel="stylesheet">
+  <!-- Bootstrap CSS File -->
   <link href="/home/lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+  <!-- Libraries CSS Files -->
+  <link href="/home/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
   <link href="/home/lib/animate/animate.min.css" rel="stylesheet">
+  <!-- Main Stylesheet File -->
   <link href="/home/css/style.css" rel="stylesheet">
   <link rel="stylesheet" href="/dashboard_Lib/css/style.css" />
   <link rel="stylesheet" href="/dashboard_Lib/css/style-responsive.css" />
   <link rel="stylesheet" href="/dashboard_Lib/css/elegant-icons-style.css" />
   <link rel="stylesheet" href="/css/chatZone.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
-  <link rel="stylesheet" href="https://unpkg.com/angular-bootstrap-colorpicker@3/css/colorpicker.min.css" />
-
-
-  <link href="/home/img/fav.png" rel="icon" size="32x32">
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-  <!-- <script src="/js/vendor/jquery/jquery.min.js"></script> -->
-  <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-  <link href='https://fonts.googleapis.com/css?family=Allerta Stencil' rel='stylesheet'>
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700" rel="stylesheet">
-  <link rel="stylesheet" href="/careatorApp/css/style.css" />
-  <link rel="stylesheet" href="/careatorApp/css/style-responsive.css" />
-  <link rel="stylesheet" href="/careatorApp/css/elegant-icons-style.css" />
-  <link rel="stylesheet" href="/careatorApp/css/newChat.css" />
-  <link href="/home/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <script src="/js/socket.io-1.4.5.js"></script>
   <script src="/bower_components/angular/angular.min.js"></script>
   <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-  <script src="/angular-animate/angular-animate.min.js"></script>
   <script src="/bower_components/angularjs-dropdown-multiselect/dist/angularjs-dropdown-multiselect.min.js"></script>
   <script src="/bower_components/angular-cookies/angular-cookies.js"></script>
   <link href="/bower_components/ng-img-crop-full-extended/compile/unminified/ng-img-crop.css" rel="stylesheet">
@@ -41,15 +33,34 @@
   <script type='text/javascript' src='/bower_components/angular-loading-bar/build/loading-bar.min.js'></script>
   <script src="/bower_components/moment/min/moment.min.js"></script>
   <script src=" https://cdnjs.cloudflare.com/ajax/libs/angular-moment/0.10.1/angular-moment.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="/css/sweet-alert.css">
+  <script src="/js/SweetAlert.min.js"></script>
+  <script src="/js/sweet-alert.min.js"></script>
   <link rel="stylesheet" href="/bower_components/angular-bootstrap-calendar/dist/css/angular-bootstrap-calendar.min.css">
   <script src="/bower_components/angular-bootstrap-calendar/dist/js/angular-bootstrap-calendar-tpls.js"></script>
   <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 
-  <script src="/nodePackages/ng-email-list/dist/ng-email-list.min.js"></script>
+  <script src="/angular-animate/angular-animate.min.js"></script>
+  <!-- bootstrap -->
 
-  <link rel="stylesheet" type="text/css" href="/css/sweet-alert.css">
-  <script src="/js/SweetAlert.min.js"></script>
-  <script src="/js/sweet-alert.min.js"></script>
+  <script src="careatorCommApp.js"></script>
+  <script src="careatorCommAppCtrl.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/angular-bootstrap-colorpicker@3/css/colorpicker.min.css" />
+  <script src="/common/careatorHttpFactory.js"></script>
+  <script src="/common/careatorSessionAuth.js"></script>
+  <script src="/common/careatorFileModel.js"></script>
+  <!-- <script src="/common/notification.js"></script> -->
+
+
+  <link rel="stylesheet" href="/careatorApp/css/style.css" />
+  <link rel="stylesheet" href="/careatorApp/css/style-responsive.css" />
+  <link rel="stylesheet" href="/careatorApp/css/elegant-icons-style.css" />
+  <link rel="stylesheet" href="/careatorApp/css/newChat.css" />
+
+
+
+
 
   <script src="/careatorCommApp.js"></script>
   <script src="/careatorCommAppCtrl.js"></script>
@@ -661,7 +672,7 @@ transition: all 0.5s;">
       </main>
       
 
-      <div class="modal animated jello faster " id="crdntl" role="dialog">
+      <div class="modal fade" id="crdntl" role="dialog">
         <div class="modal-dialog">
           <center>
             <form>
@@ -686,7 +697,7 @@ transition: all 0.5s;">
           </center>
         </div>
       </div>
-      <!-- <button data-toggle="modal" data-target="#notify_msg" id="notify_msg_button" data-backdrop="static" data-keyboard="false"
+      <button data-toggle="modal" data-target="#notify_msg" id="notify_msg_button" data-backdrop="static" data-keyboard="false"
           style="display:none"></button>
         <div class="modal animated jello faster " id="notify_msg" role="dialog">
           <div class="modal-dialog">
@@ -708,7 +719,7 @@ transition: all 0.5s;">
               </form>
             </center>
           </div>
-        </div> -->
+        </div>
       <!-- ##### Start login popup  ##### -->
       <!-- <div class="modal fade" id="crdntl" role="dialog">
         <div class="modal-dialog">

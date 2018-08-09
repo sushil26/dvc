@@ -100,15 +100,15 @@
                                                     <td style="width: 50px;">
                                                         <div class="col-sm-3 col-xs-3 sideBar-avatar">
                                                             <div class="avatar-icon" ng-if="record.groupName==undefined && (record.receiverId!=adminId && record.senderId != adminId)">
-                                                                <img ng-if="record.profilePicPath==undefined" src="./css/user.png">
+                                                                <img ng-if="record.profilePicPath==undefined" src="/careatorApp/css/user.png">
                                                                 <img ng-if="record.profilePicPath!=undefined" ng-src="{{record.profilePicPath}}">
                                                             </div>
                                                             <div class="avatar-icon" ng-if="record.groupName==undefined && (record.receiverId==adminId || record.senderId == adminId) ">
-                                                                <img ng-if="record.profilePicPath==undefined" src="./css/Admin.png">
+                                                                <img ng-if="record.profilePicPath==undefined" src="/careatorApp/css/Admin.png">
                                                                 <img ng-if="record.profilePicPath!=undefined" ng-src="{{record.profilePicPath}}">
                                                             </div>
                                                             <div class="avatar-icon" ng-if="record.groupName!==undefined">
-                                                                <img src="./css/group.png">
+                                                                <img src="/careatorApp/css/group.png">
                                                             </div>
                                                         </div>
                                                     </td>

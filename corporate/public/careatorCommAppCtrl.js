@@ -150,7 +150,7 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
                 // document.getElementById('notify_msg_content').innerHTML = data.data.message;
                 // document.getElementById('resetBtn').style.display = 'inline';
                 // $("#notify_msg_button").trigger("click");
-                //  $("#empLogin").trigger("click");
+                 $("#empLogin").trigger("click");
             } else {
                 console.log("sorry");
                 alert(data.data.message);

@@ -136,7 +136,7 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
 
     $scope.resetLoginFlag = function () {
         console.log("resetLoginFlag-->");
-        $("#notify_msg").modal('hide');
+        // $("#notify_msg").modal('hide');
         var id = resetId;
         console.log("Obj ID  " + id);
         var api = "https://norecruits.com/careator_reset/resetLoginFlagsById/" + id;
@@ -146,10 +146,11 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
             if (checkStatus) {
                 var datas = data.data;
                 console.log("data.message: " + data.data.message);
+                //alert(data.data.message+" Now do click on login");
                 // document.getElementById('notify_msg_content').innerHTML = data.data.message;
                 // document.getElementById('resetBtn').style.display = 'inline';
                 // $("#notify_msg_button").trigger("click");
-                $("#empLogin").trigger("click");
+                 $("#empLogin").trigger("click");
             } else {
                 console.log("sorry");
                 alert(data.data.message);

@@ -362,7 +362,7 @@ transition: all 0.5s;">
           </div>
           <nav id="nav-menu-container">
             <ul class="nav-menu">
-              <li ng-if="cUserData.email!=null && cUserData.email!=undefined" id="dashboard" style="display:block;">
+              <li ng-if="userData.email!=null && cUserData.email!=undefined" id="dashboard" style="display:block;">
                 <a href="#!dashboard/personalDetail">DASHBOARD
                 </a>
               </li>
@@ -373,8 +373,8 @@ transition: all 0.5s;">
                 <a href="#contact">ABOUT US</a>
               </li>
               <li>
-                <a ng-if="cUserData.email==null || cUserData.email==undefined" href="#" id="empLogin" data-target="#crdntl" data-toggle="modal" >Employee Login</a>
-                <a ng-if="cUserData.email!=null && cUserData.email!=undefined" href="#" ng-click="logout()"  >Employee Logout</a>
+                <a ng-if="uerData.email==null || userData.email==undefined" href="#" id="empLogin" data-target="#crdntl" data-toggle="modal" >Employee Login</a>
+                <a ng-if="userData.email!=null && userData.email!=undefined" href="#" ng-click="logout()"  >Employee Logout</a>
               </li>
               
               <!-- <li ng-if="!userData.loginType">

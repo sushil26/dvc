@@ -2,6 +2,8 @@ var db = require("../dbConfig.js").getDb();
 var general = require("../general.js");
 var property = require("../../property.json");
 var ObjectId = require("mongodb").ObjectID;
+var logger = require('../config/log.js');
+var log=logger.LOG;
 var nodemailer = require("nodemailer");
 var randomstring = require("randomstring");
 var careatorMaster = db.collection("careatorMaster"); /* ### careator employee collection  ### */
@@ -288,11 +290,12 @@ module.exports.pswdCheck = function (req, res) {
                                             console.log("data: " + JSON.stringify(data));
                                             if (err) {
                                                 responseData = {
-                                                    status: true,
+                                                    status: false,
                                                     message: property.E0007
                                                 };
                                                 res.status(400).send(responseData);
                                             } else {
+                                                log.info("req.originalUrl: "+req.originalUrl+" fresh: "+req.fresh+" protocol: "+req.protocol);
                                                 responseData = {
                                                     status: true,
                                                     message: property.S0005,

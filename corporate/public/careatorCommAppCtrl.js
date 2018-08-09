@@ -313,6 +313,7 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
             localStorage.removeItem("profilePicPath");
             localStorage.removeItem("sessionRandomId");
             careatorSessionAuth.clearAccess("userData");
+            $scope.userData = careatorSessionAuth.getAccess("userData");
             // $scope.doRedirect();
         }
         // else if (data.userId == $scope.userData.userId && data.email == $scope.userData.email && data.sessionRandomId == $scope.userData.sessionRandomId) {

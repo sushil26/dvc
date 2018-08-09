@@ -4,6 +4,7 @@ var property = require("../../property.json");
 var ObjectId = require("mongodb").ObjectID;
 var logger = require('../log4.js');
 var log = logger.LOG;
+var iplocation = require('iplocation')
 var nodemailer = require("nodemailer");
 var randomstring = require("randomstring");
 var careatorMaster = db.collection("careatorMaster"); /* ### careator employee collection  ### */
@@ -296,7 +297,14 @@ module.exports.pswdCheck = function (req, res) {
                                                 res.status(400).send(responseData);
                                             } else {
                                                 var date = new Date();
-                                                log.info("req.originalUrl: " + req.originalUrl + " Email: " + findData[0].email, " Date: ("+date.getFullYear+"-"+date.getMonth+"-"+date.getDate+")"+" Time: "+date.gettimezone);
+                                                var ipLocationResponse;
+                                                iplocation('56.70.97.8').then(res => {
+                                                    ipLocationResponse = res
+                                                })
+                                                    .catch(err => {
+                                                        console.error(err)
+                                                    })
+                                                log.info("req.originalUrl: " + req.originalUrl + " Email: " + findData[0].email, " Date: (" + date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate() + ")" + " Time: " + date.gettimezone() + " IP Location:" + JSON.stringify(ipLocationResponse));
                                                 console.log("log: " + log);
                                                 responseData = {
                                                     status: true,

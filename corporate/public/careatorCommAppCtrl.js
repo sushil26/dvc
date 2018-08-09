@@ -1,4 +1,4 @@
-careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careatorSessionAuth, careatorHttpFactory) {
+careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careatorSessionAuth, careatorHttpFactory, $uibModal, $timeout) {
     console.log("Chat controller==>");
 
     $scope.gotToDashboard = function () {
@@ -146,11 +146,31 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
             if (checkStatus) {
                 var datas = data.data;
                 console.log("data.message: " + data.data.message);
+                var loginResetAlert = $uibModal.open({
+                    scope: $scope,
+                    templateUrl: '/careatorApp/common/loginAlert.html',
+                    windowClass: 'show',
+                    backdropClass: 'static',
+                    keyboard: false,
+                    controller: function ($scope, $uibModalInstance) {
+                        $scope.message = data.data.message;
+                        console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
+                        $scope.close = function () {
+                            loginResetAlert.close('resetModel');
+                        }
+                    }
+                })
+                $timeout( function(){
+                    loginResetAlert.close('resetModel');
+                }, 5000 );
                 //alert(data.data.message+" Now do click on login");
                 // document.getElementById('notify_msg_content').innerHTML = data.data.message;
                 // document.getElementById('resetBtn').style.display = 'inline';
                 // $("#notify_msg_button").trigger("click");
-                 $("#empLogin").trigger("click");
+                $timeout( function(){
+                    $("#empLogin").trigger("click");
+                }, 6000 );
+               
             } else {
                 console.log("sorry");
                 alert(data.data.message);

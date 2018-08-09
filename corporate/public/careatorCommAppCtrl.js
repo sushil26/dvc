@@ -237,7 +237,7 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
             function (isConfirm) { //Function that triggers on user action.
                 if (isConfirm) {
                     SweetAlert.swal("Logged Out");
-                    var id = userData.userId;
+                    var id = $scope.userData.userId;
                     var api = "https://norecruits.com/careator_loggedin/getLoggedinSessionURLById/" + id;
                     console.log("api: " + api);
                     careatorHttpFactory.get(api).then(function (data) {

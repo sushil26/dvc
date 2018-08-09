@@ -15,7 +15,16 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
         // $scope.loginType = $scope.userData.loginType;
         console.log("cUserData: " + JSON.stringify($scope.cUserData));
         console.log("userName: " + userName);
-
+        if (($scope.cUserData.email != null && $scope.cUserData.email != undefined) && ($scope.cUserData.sessionPassword != null && $scope.cUserData.sessionPassword != undefined)) {
+                    
+           
+            
+          
+          } else {
+            console.log("enterEmail: -->");
+            localStorage.removeItem("careatorEmail")
+            $("#enterEmail").trigger("click");
+          }
     }
 
     $scope.logVC = function (email, password) {

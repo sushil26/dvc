@@ -10,21 +10,22 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
 
     $scope.userData = careatorSessionAuth.getAccess("userData");
     console.log(" $scope.userData : " + JSON.stringify($scope.userData));
+
     if ($scope.userData) {
         userName = $scope.userData.userName;
+
         // $scope.loginType = $scope.userData.loginType;
         console.log("userData: " + JSON.stringify($scope.userData));
         console.log("userName: " + userName);
         if (($scope.userData.email != null && $scope.userData.email != undefined) && ($scope.userData.sessionPassword != null && $scope.userData.sessionPassword != undefined)) {
-                    
-           
-            
-          
-          } else {
+
+            $scope.email = $scope.userData.email;
+
+
+        } else {
             console.log("enterEmail: -->");
-            localStorage.removeItem("careatorEmail")
-            $("#enterEmail").trigger("click");
-          }
+            $scope.email = $scope.userData.email;
+        }
     }
 
     $scope.logVC = function (email, password) {
@@ -75,9 +76,9 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
                             }
                         }
                     })
-                    $timeout( function(){
+                    $timeout(function () {
                         loginAlert.close('resetModel');
-                    }, 5000 );
+                    }, 5000);
 
                 }
             }
@@ -186,17 +187,17 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
                         }
                     }
                 })
-                $timeout( function(){
+                $timeout(function () {
                     loginResetAlert.close('resetModel');
-                }, 5000 );
+                }, 5000);
                 //alert(data.data.message+" Now do click on login");
                 // document.getElementById('notify_msg_content').innerHTML = data.data.message;
                 // document.getElementById('resetBtn').style.display = 'inline';
                 // $("#notify_msg_button").trigger("click");
-                $timeout( function(){
+                $timeout(function () {
                     $("#empLogin").trigger("click");
-                }, 6000 );
-               
+                }, 6000);
+
             } else {
                 console.log("sorry");
                 //alert(data.data.message);
@@ -214,9 +215,9 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
                         }
                     }
                 })
-                $timeout( function(){
+                $timeout(function () {
                     loginResetAlert.close('resetModel');
-                }, 5000 );
+                }, 5000);
 
             }
         })
@@ -314,8 +315,9 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
             localStorage.removeItem("sessionRandomId");
             careatorSessionAuth.clearAccess("userData");
             $scope.userData = careatorSessionAuth.getAccess("userData");
+            $scope.email = $scope.userData.email ;
             
-            
+
             // $scope.doRedirect();
         }
         // else if (data.userId == $scope.userData.userId && data.email == $scope.userData.email && data.sessionRandomId == $scope.userData.sessionRandomId) {

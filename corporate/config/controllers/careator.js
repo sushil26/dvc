@@ -920,7 +920,7 @@ module.exports.careatorMasterInsertValidate = function (data, callback) {
         "status": "active",
         "chatStatus": "Available",
         "restrictedTo": [],
-        "profilePicPath": "./css/user.png",
+        "profilePicPath": "/careatorApp/css/user.png",
         "login": "notDone",
         "logout": "done"
     }
@@ -971,7 +971,7 @@ module.exports.careatorSingleUserInsert = function (req, res) {
         "status": "active",
         "chatStatus": "Available",
         "restrictedTo": [],
-        "profilePicPath": "./css/user.png",
+        "profilePicPath": "/careatorApp/css/user.png",
         "login": "notDone",
         "logout": "done"
     }

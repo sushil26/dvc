@@ -1,4 +1,4 @@
-careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careatorSessionAuth, careatorHttpFactory, $uibModal, $timeout) {
+careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careatorSessionAuth, careatorHttpFactory, $uibModal, $timeout, SweetAlert) {
     console.log("Chat controller==>");
 
     $scope.gotToDashboard = function () {
@@ -8,14 +8,24 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
     var loginModal; /* ### Note: get login modal instance on this variable ###*/
     var userName;
 
-    $scope.cUserData = careatorSessionAuth.getAccess("userData");
-    console.log(" $scope.userData : " + JSON.stringify($scope.cUserData));
-    if ($scope.cUserData) {
-        userName = $scope.cUserData.userName;
-        // $scope.loginType = $scope.userData.loginType;
-        console.log("cUserData: " + JSON.stringify($scope.cUserData));
-        console.log("userName: " + userName);
+    $scope.userData = careatorSessionAuth.getAccess("userData");
+    console.log(" $scope.userData : " + JSON.stringify($scope.userData));
 
+    if ($scope.userData) {
+        userName = $scope.userData.userName;
+
+        // $scope.loginType = $scope.userData.loginType;
+        console.log("userData: " + JSON.stringify($scope.userData));
+        console.log("userName: " + userName);
+        if (($scope.userData.email != null && $scope.userData.email != undefined) && ($scope.userData.sessionPassword != null && $scope.userData.sessionPassword != undefined)) {
+
+            
+
+
+        } else {
+            console.log("enterEmail: -->");
+           
+        }
     }
 
     $scope.logVC = function (email, password) {
@@ -66,9 +76,9 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
                             }
                         }
                     })
-                    $timeout( function(){
+                    $timeout(function () {
                         loginAlert.close('resetModel');
-                    }, 5000 );
+                    }, 5000);
 
                 }
             }
@@ -127,11 +137,11 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
             if (data.data.profilePicPath) {
                 userData.profilePicPath = data.data.profilePicPath;
             }
-            var cUserData = userData;
-            careatorSessionAuth.setAccess(cUserData);
-            var cUserData = careatorSessionAuth.getAccess("cUserData");
-            $scope.cUserData = cUserData;
-            console.log("cUserData: " + JSON.stringify(cUserData));
+            var userData = userData;
+            careatorSessionAuth.setAccess(userData);
+            var userData = careatorSessionAuth.getAccess("userData");
+            $scope.userData = userData;
+            console.log("userData: " + JSON.stringify(userData));
 
             $state.go('Cdashboard.profile', {});
 
@@ -177,17 +187,17 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
                         }
                     }
                 })
-                $timeout( function(){
+                $timeout(function () {
                     loginResetAlert.close('resetModel');
-                }, 5000 );
+                }, 5000);
                 //alert(data.data.message+" Now do click on login");
                 // document.getElementById('notify_msg_content').innerHTML = data.data.message;
                 // document.getElementById('resetBtn').style.display = 'inline';
                 // $("#notify_msg_button").trigger("click");
-                $timeout( function(){
+                $timeout(function () {
                     $("#empLogin").trigger("click");
-                }, 6000 );
-               
+                }, 6000);
+
             } else {
                 console.log("sorry");
                 //alert(data.data.message);
@@ -205,13 +215,153 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
                         }
                     }
                 })
-                $timeout( function(){
+                $timeout(function () {
                     loginResetAlert.close('resetModel');
-                }, 5000 );
+                }, 5000);
 
             }
         })
     }
+
+    $scope.logout = function () {
+        console.log("logout-->");
+        SweetAlert.swal({
+            title: "Have you closed all the sessions?", //Bold text
+            text: "It will close all your open sessions", //light text
+            type: "warning", //type -- adds appropiriate icon
+            showCancelButton: true, // displays cancel btton
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Sure",
+            closeOnConfirm: false, //do not close popup after click on confirm, usefull when you want to display a subsequent popup
+            closeOnCancel: false
+        },
+            function (isConfirm) { //Function that triggers on user action.
+                if (isConfirm) {
+                    SweetAlert.swal("Logged Out");
+                    var id = $scope.userData.userId;
+                    var api = "https://norecruits.com/careator_loggedin/getLoggedinSessionURLById/" + id;
+                    console.log("api: " + api);
+                    careatorHttpFactory.get(api).then(function (data) {
+                        console.log("data--" + JSON.stringify(data.data));
+                        var checkStatus = careatorHttpFactory.dataValidation(data);
+                        console.log("checkStatus: " + checkStatus);
+                        if (checkStatus) {
+
+                            if (data.data.data != undefined) {
+                                if (data.data.data.sessionURL != undefined) {
+                                    var sessionURL = data.data.data.sessionURL;
+                                    console.log(data.data.message);
+                                    console.log("sessionURL: " + sessionURL);
+                                    socket.emit("comm_logout", {
+                                        "userId": $scope.userData.userId,
+                                        "email": $scope.userData.email,
+                                        "sessionURL": sessionURL,
+                                        "sessionRandomId": $scope.userData.sessionRandomId
+                                    }); /* ### Note: Logout notification to server ### */
+
+                                } else {
+                                    socket.emit("comm_logout", {
+                                        "userId": $scope.userData.userId,
+                                        "email": $scope.userData.email,
+                                        "sessionURL": sessionURL,
+                                        "sessionRandomId": $scope.userData.sessionRandomId
+                                    }); /* ### Note: Logout notification to server ### */
+                                }
+                            } else {
+                                socket.emit("comm_logout", {
+                                    "userId": $scope.userData.userId,
+                                    "email": $scope.userData.email,
+                                    "sessionURL": "",
+                                    "sessionRandomId": $scope.userData.sessionRandomId
+                                }); /* ### Note: Logout notification to server ### */
+                            }
+                        } else {
+                            console.log("Sorry");
+                            console.log(data.data.message);
+                        }
+                    })
+                } else {
+                    SweetAlert.swal("Your still logged in ");
+                }
+            }
+
+        )
+        // $("#logoutConfirmationButton").trigger("click");
+    }
+
+    /* #### Start: Logout request from server(index.js) #### */
+    socket.on('comm_logoutNotifyToUserById', function (data) {
+        console.log("***comm_logoutNotifyToUserById-->: " + JSON.stringify(data));
+        var obj = {
+            "userId": $scope.userData.userId,
+            "email": $scope.userData.email,
+            "sessionRandomId": $scope.userData.sessionRandomId
+        }
+        console.log("obj: " + JSON.stringify(obj));
+        if (data.userId == $scope.userData.userId && data.email == $scope.userData.email) {
+            console.log("started to remove localstorage");
+            localStorage.removeItem("careatorEmail");
+            localStorage.removeItem("careator_remoteEmail");
+            localStorage.removeItem("email");
+            localStorage.removeItem("sessionPassword");
+            localStorage.removeItem("userName");
+            localStorage.removeItem("empId");
+            localStorage.removeItem("userId");
+            localStorage.removeItem("videoRights");
+            localStorage.removeItem("chatRights");
+            localStorage.removeItem("restrictedTo");
+            localStorage.removeItem("chatStatus");
+            localStorage.removeItem("profilePicPath");
+            localStorage.removeItem("sessionRandomId");
+            careatorSessionAuth.clearAccess("userData");
+            $scope.userData = careatorSessionAuth.getAccess("userData");
+           
+            
+
+            // $scope.doRedirect();
+        }
+        // else if (data.userId == $scope.userData.userId && data.email == $scope.userData.email && data.sessionRandomId == $scope.userData.sessionRandomId) {
+        //     console.log("NO need of logout")
+        // }
+    })
+    socket.on('comm_logoutNotifyToUserById_beczOfDeadSessionRandomId', function (data) {
+        console.log("comm_logoutNotifyToUserById_beczOfDeadSessionRandomId-->: " + JSON.stringify(data));
+        if (data.userId == $scope.userData.userId && data.email == $scope.userData.email) {
+            console.log("started to remove localstorage");
+            localStorage.removeItem("careatorEmail");
+            localStorage.removeItem("careator_remoteEmail");
+            localStorage.removeItem("email");
+            localStorage.removeItem("sessionPassword");
+            localStorage.removeItem("userName");
+            localStorage.removeItem("empId");
+            localStorage.removeItem("userId");
+            localStorage.removeItem("videoRights");
+            localStorage.removeItem("chatRights");
+            localStorage.removeItem("restrictedTo");
+            localStorage.removeItem("chatStatus");
+            localStorage.removeItem("profilePicPath");
+            localStorage.removeItem("sessionRandomId");
+            careatorSessionAuth.clearAccess("userData");
+            $scope.doRedirect();
+        }
+    })
+    socket.on('comm_resetNotifyToUserById', function (data) {
+        console.log("***comm_resetNotifyToUserById-->: " + JSON.stringify(data));
+        console.log("$scope.userData.userId-->: " + $scope.userData.userId);
+        if (data.id == $scope.userData.userId) {
+            console.log("started the process for logout");
+            $scope.getLogin_hostDetailsById($scope.userData.userId);
+        }
+    })
+    socket.on('comm_sessionCreateUpdate', function (data) {
+        console.log("comm_sessionCreateUpdate-->");
+        if (data.email == $scope.userData.email) {
+            console.log("started to update $scope.sessionHostBlock");
+            $scope.sessionHostBlock = "yes";
+        }
+    })
+
+    /* #### End: Logout request from server(index.js) #### */
 
 
 

@@ -314,7 +314,7 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
             localStorage.removeItem("sessionRandomId");
             careatorSessionAuth.clearAccess("userData");
             $scope.userData = careatorSessionAuth.getAccess("userData");
-            $scope.userData.email = null;
+            
             
             // $scope.doRedirect();
         }

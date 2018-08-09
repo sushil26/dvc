@@ -222,6 +222,72 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
         })
     }
 
+    $scope.logout = function () {
+        console.log("logout-->");
+        SweetAlert.swal({
+            title: "Have you closed all the sessions?", //Bold text
+            text: "It will close all your open sessions", //light text
+            type: "warning", //type -- adds appropiriate icon
+            showCancelButton: true, // displays cancel btton
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Sure",
+            closeOnConfirm: false, //do not close popup after click on confirm, usefull when you want to display a subsequent popup
+            closeOnCancel: false
+        },
+            function (isConfirm) { //Function that triggers on user action.
+                if (isConfirm) {
+                    SweetAlert.swal("Logged Out");
+                    var id = userData.userId;
+                    var api = "https://norecruits.com/careator_loggedin/getLoggedinSessionURLById/" + id;
+                    console.log("api: " + api);
+                    careatorHttpFactory.get(api).then(function (data) {
+                        console.log("data--" + JSON.stringify(data.data));
+                        var checkStatus = careatorHttpFactory.dataValidation(data);
+                        console.log("checkStatus: " + checkStatus);
+                        if (checkStatus) {
+
+                            if (data.data.data != undefined) {
+                                if (data.data.data.sessionURL != undefined) {
+                                    var sessionURL = data.data.data.sessionURL;
+                                    console.log(data.data.message);
+                                    console.log("sessionURL: " + sessionURL);
+                                    socket.emit("comm_logout", {
+                                        "userId": $scope.userData.userId,
+                                        "email": $scope.userData.email,
+                                        "sessionURL": sessionURL,
+                                        "sessionRandomId": $scope.userData.sessionRandomId
+                                    }); /* ### Note: Logout notification to server ### */
+
+                                } else {
+                                    socket.emit("comm_logout", {
+                                        "userId": $scope.userData.userId,
+                                        "email": $scope.userData.email,
+                                        "sessionURL": sessionURL,
+                                        "sessionRandomId": $scope.userData.sessionRandomId
+                                    }); /* ### Note: Logout notification to server ### */
+                                }
+                            } else {
+                                socket.emit("comm_logout", {
+                                    "userId": $scope.userData.userId,
+                                    "email": $scope.userData.email,
+                                    "sessionURL": "",
+                                    "sessionRandomId": $scope.userData.sessionRandomId
+                                }); /* ### Note: Logout notification to server ### */
+                            }
+                        } else {
+                            console.log("Sorry");
+                            console.log(data.data.message);
+                        }
+                    })
+                } else {
+                    SweetAlert.swal("Your still logged in ");
+                }
+            }
+
+        )
+        // $("#logoutConfirmationButton").trigger("click");
+    }
+
 
 
 })

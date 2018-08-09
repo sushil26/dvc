@@ -295,7 +295,7 @@ module.exports.pswdCheck = function (req, res) {
                                                 };
                                                 res.status(400).send(responseData);
                                             } else {
-                                                logger.trace('*Entering cheese testing');
+                                                log.trace('*Entering cheese testing');
                                                 log.debug('*Got cheese.');
                                                 log.info('*Cheese is Gouda.');
                                                 log.warn('*Cheese is quite smelly.');

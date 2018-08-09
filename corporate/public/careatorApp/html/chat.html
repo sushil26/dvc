@@ -342,7 +342,7 @@
                                     </div>
 
                                     <div class="row message-body" ng-repeat="chat in allChat.chats">
-                                        <div class="col-sm-12 message-main-receiver jello" ng-if="chat.senderId!=userId">
+                                        <div class="col-sm-12 message-main-receiver slideRight" ng-if="chat.senderId!=userId">
                                             <div ng-if="selectedType=='group'" style="background:#ddf8c6;
                                                 width: max-content;
                                                 padding: 5px;
@@ -375,7 +375,7 @@
 
                                             </div>
                                         </div>
-                                        <div class="col-sm-12 message-main-sender jello" ng-if="chat.senderId==userId">
+                                        <div class="col-sm-12 message-main-sender slideLeft" ng-if="chat.senderId==userId">
                                             <div class="sender">
 
                                                 <div class="message-text">

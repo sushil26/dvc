@@ -295,13 +295,14 @@ module.exports.pswdCheck = function (req, res) {
                                                 };
                                                 res.status(400).send(responseData);
                                             } else {
-                                                // logger.trace('Entering cheese testing');
+                                                logger.trace('*Entering cheese testing');
                                                 log.debug('*Got cheese.');
                                                 log.info('*Cheese is Gouda.');
                                                 log.warn('*Cheese is quite smelly.');
                                                 log.error('*Cheese is too ripe!');
                                                 log.fatal('*Cheese was breeding ground for listeria.');
                                                 log.error("req.originalUrl: " + req.originalUrl + " protocol: " + req.protocol + " message: " + findData[0].email);
+                                                console.log("log: "+log);
                                                 responseData = {
                                                     status: true,
                                                     message: property.S0005,

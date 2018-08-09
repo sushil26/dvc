@@ -21,13 +21,12 @@ if ($scope.cUserData) {
 $scope.logVC = function (email, password) {
     console.log("logVC from ");
     var obj = {
-        "careatorEmail": email,
-        "password": password
-       
+        "password": password,
+        "careatorEmail": email
     };
     console.log("obj: " + JSON.stringify(obj));
     console.log("logVC");
-    var api = "/careator/pswdCheck";
+    var api = "https://norecruits.com/careator/pswdCheck";
     console.log("api: " + api);
     careatorHttpFactory.post(api, obj).then(function (data) {
         var checkStatus = careatorHttpFactory.dataValidation(data);
@@ -42,8 +41,8 @@ $scope.logVC = function (email, password) {
             if (data.data.message == "You've already logged in. To log in again, please reset your session") {
 
                 $scope.checkObj = {
-                    "careatorEmail": email,
-                    "password": password
+                    "password": password,
+                    "careatorEmail": email
                 }
                 document.getElementById('notify_msg_content').innerHTML = data.data.message;
                 document.getElementById('resetBtn').style.display = 'inline';

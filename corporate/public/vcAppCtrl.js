@@ -1,60 +1,78 @@
-app.controller("vcAppCtrl", function ($scope, careatorSessionAuth, careatorHttpFactory, $state,$uibModal, SweetAlert) {
+app.controller("vcAppCtrl", function ($scope, $rootScope, httpFactory, $window,sessionAuthFactory, $uibModal, SweetAlert) {
   console.log("controller==>");
   //document.getElementById('mobile-nav').style.display='none';
-
-  $scope.gotToDashboard = function () {
-    console.log("gotToDashboard-->");
-    $state.go('Cdashboard', {});
-  }
   var loginModal; /* ### Note: get login modal instance on this variable ###*/
   var userName;
-
-  $scope.cUserData = careatorSessionAuth.getAccess("userData");
-  console.log(" $scope.userData : " + JSON.stringify($scope.cUserData));
-  if ($scope.cUserData) {
-    userName = $scope.cUserData.userName;
+  httpFactory.getFile('property.json');
+  $scope.userData = sessionAuthFactory.getAccess("userData");
+  console.log(" $scope.userData : " + JSON.stringify($scope.userData));
+  if ($scope.userData) {
+    userName = $scope.userData.userName;
     // $scope.loginType = $scope.userData.loginType;
-    console.log("cUserData: " + JSON.stringify($scope.cUserData));
+    console.log("userData: " + JSON.stringify($scope.userData));
     console.log("userName: " + userName);
-
+    console.log("loginType: " + $scope.userData.loginType);
   }
-
-  $scope.logVC = function (email, password) {
+  $scope.logVC = function (loginType, email, Password) {
     console.log("logVC from ");
+    // loginModal.close('resetModel');
     var obj = {
-      "careatorEmail": email,
-      "password": password
-
+      "email": email,
+      "password": Password,
+      "loginType": loginType
     };
     console.log("obj: " + JSON.stringify(obj));
     console.log("logVC");
-    var api = "/careator/pswdCheck";
+    var api = "vc/login4VC";
+    //var api = "http://localhost:5000/vc/teacherDetail" + "/" + id;
+    //var api = "http://localhost:5000/vc/eventGet";
     console.log("api: " + api);
-    careatorHttpFactory.post(api, obj).then(function (data) {
-      var checkStatus = careatorHttpFactory.dataValidation(data);
+    httpFactory.post(api, obj).then(function (data) {
+      var checkStatus = httpFactory.dataValidation(data);
       console.log("data--" + JSON.stringify(data.data));
       console.log("checkStatus" + checkStatus);
       console.log("data.message: " + data.data.message);
       if (checkStatus) {
         var datas = data.data;
         console.log("data.message: " + data.data.message);
-        $scope.sessionSet(datas);
-      } else {
-        if (data.data.message == "You've already logged in. To log in again, please reset your session") {
+        if (data.data.message == 'Profile Inactive') {
+          var loginAlert = $uibModal.open({
+            scope: $scope,
+            templateUrl: '/html/templates/loginAlert.html',
+            windowClass: 'show',
+            backdropClass: 'static',
+            keyboard: false,
+            controller: function ($scope, $uibModalInstance) {
+              $scope.message = "Your Profile is inactive, inform your system admin to verify it";
+              console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
+            }
+          })
+          //alert("Your Profile is inactive, inform your system admin to verify it");
+        } else if (data.data.message == 'Login Successfully') {
+          console.log("Login Successfully");
 
-          $scope.checkObj = {
-            "careatorEmail": email,
-            "password": password
-          }
-          document.getElementById('notify_msg_content').innerHTML = data.data.message;
-          document.getElementById('resetBtn').style.display = 'inline';
-          $("#notify_msg_button").trigger("click");
-          resetId = data.data.data.id;
+          $scope.sessionSet(datas);
+          userName = data.data.userName;
         } else {
-          console.log("sorry");
-          alert("data.data.message");
+          var loginAlert = $uibModal.open({
+            scope: $scope,
+            templateUrl: '/html/templates/loginAlert.html',
+            windowClass: 'show',
+            backdropClass: 'static',
+            keyboard: false,
+            controller: function ($scope, $uibModalInstance) {
+              $scope.message = data.data.message;
+              console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
+              $scope.close = function () {
+                loginAlert.close('resetModel');
+
+              }
+            }
+          })
 
         }
+      } else {
+        console.log("sorry");
       }
     });
 
@@ -64,61 +82,81 @@ app.controller("vcAppCtrl", function ($scope, careatorSessionAuth, careatorHttpF
     console.log("sessionSet-->");
     console.log("data: " + JSON.stringify(data));
     console.log(" data.sessionData: " + data.sessionData);
-    localStorage.setItem("careatorEmail", data.data.email);
-    localStorage.setItem("sessionPassword", data.data.password);
-    localStorage.setItem("sessionRandomId", data.data.sessionRandomId);
+    // var encryptedUrl = CryptoJS.AES.encrypt(data.sessionData.url,"url");
+    // var encryptedPswd = CryptoJS.AES.encrypt(data.sessionData.pswd,"pswd");
+    // localStorage.setItem("encUrl",encryptedUrl); 
+    // localStorage.setItem("encPswd",encryptedPswd);
     localStorage.setItem("sessionEnc", data.sessionData);
     console.log("localStorage.getItem(sessionEnc): " + localStorage.getItem("sessionEnc"));
     if (typeof (Storage) !== "undefined") {
-      var userData = {
-        "email": data.data.email,
-        "userName": data.data.name,
-        "empId": data.data.empId,
-        "userId": data.data._id,
-        "sessionPassword": data.data.password,
-        "sessionRandomId": data.data.sessionRandomId
-      }
-      if (data.data.videoRights == 'yes') {
-        $scope.videoRights = "yes";
-        userData.videoRights = "yes";
-        localStorage.setItem("videoRights", 'yes');
-      }
-      if (data.data.chatRights == 'yes') {
-        userData.chatRights = "yes";
-        localStorage.setItem("chatRights", 'yes');
-      }
-      if (data.data.chatStatus) {
-        userData.chatStatus = data.data.chatStatus;
-      }
-      console.log("localStorage.getItem(restrictedTo): " + JSON.stringify(localStorage.getItem("restrictedTo")));
-      if (data.data.restrictedTo) {
-        console.log("data.data.restrictedTo: " + JSON.stringify(data.data.restrictedTo));
-        var restrictedTo = data.data.restrictedTo;
-        var restrictedArray = [];
-        for (var x = 0; x < restrictedTo.length; x++) {
-          restrictedArray.push(restrictedTo[x].userId);
+      if (data.data.loginType == 'teacher') {
+        var un = data.data.firstName + " " + data.data.lastName
+        var userData = {
+          "userName": un,
+          "status": data.data.status,
+          "email": data.data.teacherEmail,
+          "loginType": data.data.loginType,
+          "id": data.data._id,
+          "schoolName": data.data.schoolName,
         }
+        console.log("userData: " + JSON.stringify(userData));
+        sessionAuthFactory.setAccess(userData);
 
-        localStorage.setItem("restrictedTo", restrictedArray);
-        var restrictedUser = restrictedArray;
+        $scope.userData = sessionAuthFactory.getAccess("userData");
+        userName = $scope.userData.userName;
+        $scope.loginType = $scope.userData.loginType;
+        $window.location.reload();
 
-        userData.restrictedTo = restrictedArray;
+      } else if (data.data.loginType == 'studParent') {
+        var un = data.data.firstName + " " + data.data.lastName
+        var userData = {
+          "userName": un,
+          "status": data.data.status,
+          "email": data.data.parentEmail,
+          "loginType": data.data.loginType,
+          "id": data.data._id,
+          "schoolName": data.data.schoolName
+        }
+        sessionAuthFactory.setAccess(userData);
 
+        $scope.userData = sessionAuthFactory.getAccess("userData");
+        userName = $scope.userData.userName;
+        $scope.loginType = $scope.userData.loginType;
+        $window.location.reload();
+      } else if (data.data.loginType == 'admin') {
+        var un = data.data.firstName + " " + data.data.lastName
+        var userData = {
+          "userName": un,
+          "status": data.data.status,
+          "email": data.data.email,
+          "loginType": data.data.loginType,
+          "id": data.data._id,
+          "schoolName": data.data.schoolName,
+        }
+        console.log("userData: " + JSON.stringify(userData));
+        sessionAuthFactory.setAccess(userData);
 
-        console.log("restrictedArray: " + JSON.stringify(restrictedArray));
+        $scope.userData = sessionAuthFactory.getAccess("userData");
+        userName = $scope.userData.userName;
+        $scope.loginType = $scope.userData.loginType;
+        $window.location.reload();
+      } else {
+        var un = data.data.firstName + " " + data.data.lastName
+        var userData = {
+          "userName": un,
+          "status": data.data.status,
+          "email": data.data.email,
+          "loginType": data.data.loginType,
+          "id": data.data._id
 
+        }
+        console.log("userData: " + JSON.stringify(userData));
+        sessionAuthFactory.setAccess(userData);
+        $scope.userData = sessionAuthFactory.getAccess("userData");
+        userName = $scope.userData.userName;
+        $scope.loginType = $scope.userData.loginType;
+        $window.location.reload();
       }
-      if (data.data.profilePicPath) {
-        userData.profilePicPath = data.data.profilePicPath;
-      }
-      var cUserData = userData;
-      careatorSessionAuth.setAccess(cUserData);
-      var cUserData = careatorSessionAuth.getAccess("cUserData");
-      $scope.cUserData = cUserData;
-      console.log("cUserData: " + JSON.stringify(cUserData));
-
-      $state.go('Cdashboard.profile', {});
-
     } else {
       var loginAlert = $uibModal.open({
         scope: $scope,
@@ -133,33 +171,59 @@ app.controller("vcAppCtrl", function ($scope, careatorSessionAuth, careatorHttpF
     }
     console.log("<--sessionSet");
   }
-
-
-  $scope.resetLoginFlag = function () {
-    console.log("resetLoginFlag-->");
-    $("#notify_msg").modal('hide');
-    var id = resetId;
-    console.log("Obj ID  " + id);
-    var api = "https://norecruits.com/careator_reset/resetLoginFlagsById/" + id;
-    console.log("api: " + api);
-    careatorHttpFactory.post(api, $scope.checkObj).then(function (data) {
-      var checkStatus = careatorHttpFactory.dataValidation(data);
-      if (checkStatus) {
-        var datas = data.data;
-        console.log("data.message: " + data.data.message);
-        alert(data.data.message);
-      } else {
-        console.log("sorry");
-        alert(data.data.message);
-
+  $scope.vcLogin = function () {
+    console.log("vcLogin-->");
+    loginModal = $uibModal.open({
+      scope: $scope,
+      templateUrl: '/html/templates/loginPopup.html',
+      windowClass: 'show',
+      backdropClass: 'show',
+      controller: function ($scope, $uibModalInstance) {
+        console.log("<--vcLogin");
       }
     })
   }
-
-
-
-
-
+  $rootScope.TimeTable_timing = [{
+      "startsAt": "09:00",
+      "endsAt": "09:45",
+      "meridian": 'AM'
+    },
+    {
+      "startsAt": "9:45",
+      "endsAt": "10:30",
+      "meridian": 'AM'
+    },
+    {
+      "startsAt": "10:30",
+      "endsAt": "11:15",
+      "meridian": 'AM'
+    },
+    {
+      "startsAt": "11:15",
+      "endsAt": "12:00",
+      "meridian": 'AM'
+    },
+    {
+      "startsAt": "01:00",
+      "endsAt": "01:45",
+      "meridian": 'PM'
+    },
+    {
+      "startsAt": "01:45",
+      "endsAt": "02:30",
+      "meridian": 'PM'
+    },
+    {
+      "startsAt": "02:30",
+      "endsAt": "03:15",
+      "meridian": 'PM'
+    },
+    {
+      "startsAt": "03:15",
+      "endsAt": "04:00",
+      "meridian": 'PM'
+    }
+  ];
 
 
 

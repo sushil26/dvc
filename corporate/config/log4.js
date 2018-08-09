@@ -14,19 +14,19 @@
 
 const log4js = require('log4js');
 
-// const log4js_extend = require("log4js-extend");
+const log4js_extend = require("log4js-extend");
 
 log4js.configure({
   appenders: { cheese: { type: 'file', filename: './logs/loggedinUsers.log' } },
-  categories: { default: { appenders: ['cheese'], level: 'error' } }
+  categories: { default: { appenders: ['cheese'], level: 'all' } }
 });
 
-// log4js_extend(log4js, {
-//     path: __dirname,
-//     format: "at @name (@file:@line:@column)"
-//   });
+log4js_extend(log4js, {
+    path: __dirname,
+    format: "at @name (@file:@line:@column)"
+  });
    
-const logger = log4js.getLogger("cheese");
+  const logger = log4js.getLogger("cheese");
 // ----  
 
  

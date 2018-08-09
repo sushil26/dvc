@@ -19,12 +19,12 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
         console.log("userName: " + userName);
         if (($scope.userData.email != null && $scope.userData.email != undefined) && ($scope.userData.sessionPassword != null && $scope.userData.sessionPassword != undefined)) {
 
-            $scope.email = $scope.userData.email;
+            
 
 
         } else {
             console.log("enterEmail: -->");
-            $scope.email = $scope.userData.email;
+           
         }
     }
 
@@ -315,7 +315,7 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
             localStorage.removeItem("sessionRandomId");
             careatorSessionAuth.clearAccess("userData");
             $scope.userData = careatorSessionAuth.getAccess("userData");
-            $scope.email = $scope.userData.email ;
+           
             
 
             // $scope.doRedirect();

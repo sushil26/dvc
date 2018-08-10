@@ -259,7 +259,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                 } else {
                     SweetAlert.swal({
                         title: "Your still logged in",
-                        type:"warning"
+                        type:"info"
                     });
                 }
             }

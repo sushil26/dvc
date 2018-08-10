@@ -333,7 +333,7 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
                 } else {
                     SweetAlert.swal({
                         title: "Your still logged in",
-                        type:"warning"
+                        type:"info"
                     });
                 }
             }

@@ -27,13 +27,14 @@
     <div style="border: 1px solid lightgray;border-radius: 5px;">
 
 
-        <div uib-timepicker ng-model="eventDetails.startsAt" hour-step="1" minute-step="20" show-meridian="true">
-        </div>
+        <span>
+            <div uib-timepicker ng-model="eventDetails.startsAt" hour-step="1" minute-step="20" show-meridian="true">
+            </div>
 
 
-        <div uib-timepicker ng-model="eventDetails.endsAt" hour-step="1" minute-step="20" show-meridian="true">
-        </div>
-
+            <div uib-timepicker ng-model="eventDetails.endsAt" hour-step="1" minute-step="20" show-meridian="true">
+            </div>
+        </span>
     </div>
 
 
@@ -41,9 +42,9 @@
 
 
 
-        <label for="comment">Message:</label>
-        <textarea class="form-control" rows="5" id="comment" ng-model="eventDetails.reason"></textarea>
-  
+    <label for="comment">Message:</label>
+    <textarea class="form-control" rows="5" id="comment" ng-model="eventDetails.reason"></textarea>
+
 
 
 </div>

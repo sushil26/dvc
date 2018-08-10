@@ -145,7 +145,7 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
 
             SweetAlert.swal({
                     title: "Login Successfully", //light text
-                    icon: "success", //type -- adds appropiriate icon
+                    type: "success", //type -- adds appropiriate icon
                     showCancelButton: true, // displays cancel btton
                     confirmButtonColor: "#DD6B55",
                     confirmButtonText: "Go Dashboard",

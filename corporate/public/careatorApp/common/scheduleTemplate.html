@@ -16,9 +16,9 @@
 
 
 
-    <h4 style="color:coral">:&nbsp{{ eventDetails.startsAt | date }}</h4>
+    <h3>{{ eventDetails.startsAt | date }}</h3>
     <input type="text" class="form-control" placeholder="Topic" ng-model="eventDetails.title">
-    <input style="margin-top:10px;" type="text" placeholder="Enter Email" ng-model="eventDetails.emailList">
+    <input style="margin-top:10px;" class="form-control" type="text" placeholder="Enter Email" ng-model="eventDetails.emailList">
     <table>
         <tbody>
             <tr>

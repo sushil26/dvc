@@ -17,10 +17,8 @@
 <div class="modal-body">
     <input type="text" class="form-control" placeholder="Topic" ng-model="eventDetails.title">
     <input style="margin-top:10px;" class="form-control" type="text" placeholder="Participents Email" ng-model="eventDetails.emailList">
-    <label for="comment">Message:</label>
-    <textarea class="form-control" rows="5" id="comment" ng-model="eventDetails.reason"></textarea>
-
     <label>Timing:</label>
+    <hr>
     <table>
         <tr>
             <td>
@@ -33,6 +31,11 @@
             </td>
         </tr>
     </table>
+    <hr>
+    <label for="comment">Message:</label>
+    <textarea class="form-control" rows="5" id="comment" ng-model="eventDetails.reason"></textarea>
+
+
 </div>
 <div class="modal-footer loginpopUp_footer">
     <button class="btn btn-warning loginpopUp_footerBtn" type="button" ng-click="$close()">Close</button>

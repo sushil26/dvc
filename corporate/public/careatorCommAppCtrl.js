@@ -1,30 +1,4 @@
 careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careatorSessionAuth, careatorHttpFactory, $uibModal, $timeout, SweetAlert) {
-
-
-    // SweetAlert.swal({
-    //         title: "Are you sure to Deactivate the user ?", //Bold text
-    //         text: "User will not be able to Login !", //light text
-    //         type: "warning", //type -- adds appropiriate icon
-    //         showCancelButton: true, // displays cancel btton
-    //         confirmButtonColor: "#DD6B55",
-    //         confirmButtonText: "Yes, Deactivate!",
-    //         closeOnConfirm: false, //do not close popup after click on confirm, usefull when you want to display a subsequent popup
-    //         closeOnCancel: false
-    //     },
-    //     function (isConfirm) { //Function that triggers on user action.
-    //         if (isConfirm) {
-    //             SweetAlert.swal("Deactivated!");
-
-
-
-    //         } else {
-    //             SweetAlert.swal("User cant login Now!");
-    //         }
-    //     }
-    // )
-
-
-
     console.log("Chat controller==>");
 
     $scope.gotToDashboard = function () {
@@ -45,12 +19,12 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
         console.log("userName: " + userName);
         if (($scope.userData.email != null && $scope.userData.email != undefined) && ($scope.userData.sessionPassword != null && $scope.userData.sessionPassword != undefined)) {
 
-
+            
 
 
         } else {
             console.log("enterEmail: -->");
-
+           
         }
     }
 
@@ -84,7 +58,8 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
                     document.getElementById('resetBtn').style.display = 'inline';
                     $("#notify_msg_button").trigger("click");
                     resetId = data.data.data.id;
-                } else {
+                }
+                else {
                     console.log("sorry");
                     //alert("data.data.message");
                     var loginAlert = $uibModal.open({
@@ -168,7 +143,27 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
             $scope.userData = userData;
             console.log("userData: " + JSON.stringify(userData));
 
-            $state.go('Cdashboard.profile', {});
+
+            SweetAlert.swal({
+                text: "Login Successfully", //light text
+                type: "Success", //type -- adds appropiriate icon
+                showCancelButton: true, // displays cancel btton
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Go Dashboard",
+                closeOnConfirm: false, //do not close popup after click on confirm, usefull when you want to display a subsequent popup
+                closeOnCancel: false
+            },
+            function (isConfirm) { //Function that triggers on user action.
+                if (isConfirm) {
+                    $state.go('Cdashboard.profile', {});
+                } else {
+                   
+                }
+            }
+        )
+
+
+         
 
         } else {
             var loginAlert = $uibModal.open({
@@ -188,7 +183,7 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
 
     $scope.resetLoginFlag = function () {
         console.log("resetLoginFlag-->");
-
+        // $("#notify_msg").modal('hide');
         var id = resetId;
         console.log("Obj ID  " + id);
         var api = "https://norecruits.com/careator_reset/resetLoginFlagsById/" + id;
@@ -196,35 +191,32 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
         careatorHttpFactory.post(api, $scope.checkObj).then(function (data) {
             var checkStatus = careatorHttpFactory.dataValidation(data);
             if (checkStatus) {
-
+                var datas = data.data;
                 console.log("data.message: " + data.data.message);
-
-
-
-                SweetAlert.swal({
-                        title: "Reset Done", //Bold text
-                        text: "You Can Login Now", //light text
-                        type: "sucess", //type -- adds appropiriate icon
-                        showCancelButton: true, // displays cancel btton
-                        confirmButtonColor: "#DD6B55",
-                        confirmButtonText: "login",
-                        closeOnConfirm: false, //do not close popup after click on confirm, usefull when you want to display a subsequent popup
-                        closeOnCancel: false
-                    },
-                    function (isConfirm) { //Function that triggers on user action.
-                        if (isConfirm) {
-
-                            $("#empLogin").trigger("click");
-
-
-
-                        } else {
-                            SweetAlert.swal(" you can login by selecting manually");
+                var loginResetAlert = $uibModal.open({
+                    scope: $scope,
+                    templateUrl: '/careatorApp/common/loginAlert.html',
+                    windowClass: 'show',
+                    backdropClass: 'static',
+                    keyboard: false,
+                    controller: function ($scope, $uibModalInstance) {
+                        $scope.message = data.data.message;
+                        console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
+                        $scope.close = function () {
+                            loginResetAlert.close('resetModel');
                         }
                     }
-                )
-
-
+                })
+                $timeout(function () {
+                    loginResetAlert.close('resetModel');
+                }, 5000);
+                //alert(data.data.message+" Now do click on login");
+                // document.getElementById('notify_msg_content').innerHTML = data.data.message;
+                // document.getElementById('resetBtn').style.display = 'inline';
+                // $("#notify_msg_button").trigger("click");
+                $timeout(function () {
+                    $("#empLogin").trigger("click");
+                }, 6000);
 
             } else {
                 console.log("sorry");
@@ -254,15 +246,15 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
     $scope.logout = function () {
         console.log("logout-->");
         SweetAlert.swal({
-                title: "Have you closed all the sessions?", //Bold text
-                text: "It will close all your open sessions", //light text
-                type: "warning", //type -- adds appropiriate icon
-                showCancelButton: true, // displays cancel btton
-                confirmButtonColor: "#DD6B55",
-                confirmButtonText: "Sure",
-                closeOnConfirm: false, //do not close popup after click on confirm, usefull when you want to display a subsequent popup
-                closeOnCancel: false
-            },
+            title: "Have you closed all the sessions?", //Bold text
+            text: "It will close all your open sessions", //light text
+            type: "warning", //type -- adds appropiriate icon
+            showCancelButton: true, // displays cancel btton
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Sure",
+            closeOnConfirm: false, //do not close popup after click on confirm, usefull when you want to display a subsequent popup
+            closeOnCancel: false
+        },
             function (isConfirm) { //Function that triggers on user action.
                 if (isConfirm) {
                     SweetAlert.swal("Logged Out");
@@ -343,8 +335,8 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
             localStorage.removeItem("sessionRandomId");
             careatorSessionAuth.clearAccess("userData");
             $scope.userData = careatorSessionAuth.getAccess("userData");
-
-
+           
+            
 
             // $scope.doRedirect();
         }

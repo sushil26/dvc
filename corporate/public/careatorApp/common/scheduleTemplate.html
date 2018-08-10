@@ -27,15 +27,19 @@
     <div style="border: 1px solid lightgray;border-radius: 5px;">
 
 
-        <span>
-            <div uib-timepicker ng-model="eventDetails.startsAt" hour-step="1" minute-step="20" show-meridian="true">
-            </div>
-        </span>
+        <table>
+            <tr>
+                <td>
+                    <div uib-timepicker ng-model="eventDetails.startsAt" hour-step="1" minute-step="20" show-meridian="true">
+                    </div>
+                </td>
+                <td>
+                    <div uib-timepicker ng-model="eventDetails.endsAt" hour-step="1" minute-step="20" show-meridian="true">
+                    </div>
+                </td>
+            </tr>
+        </table>
 
-        <span>
-            <div uib-timepicker ng-model="eventDetails.endsAt" hour-step="1" minute-step="20" show-meridian="true">
-            </div>
-        </span>
     </div>
 
 

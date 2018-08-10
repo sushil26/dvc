@@ -220,9 +220,8 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
         careatorHttpFactory.post(api, $scope.checkObj).then(function (data) {
             var checkStatus = careatorHttpFactory.dataValidation(data);
             if (checkStatus) {
-                var datas = data.data;
                 console.log("data.message: " + data.data.message);
-                $("#empLogin").trigger("click");
+                $("#crdntl").trigger("click");
 
             } else {
                 console.log("sorry");

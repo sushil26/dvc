@@ -20,8 +20,8 @@
   <link href="/home/lib/animate/animate.min.css" rel="stylesheet">
   <!-- Main Stylesheet File -->
   <link href="/home/css/style.css" rel="stylesheet">
-<!-- <link rel="stylesheet" href="/dashboard_Lib/css/style.css"/> -->
-    <!-- <link rel="stylesheet" href="/dashboard_Lib/css/style-responsive.css" />
+  <!-- <link rel="stylesheet" href="/dashboard_Lib/css/style.css"/> -->
+  <!-- <link rel="stylesheet" href="/dashboard_Lib/css/style-responsive.css" />
   <link rel="stylesheet" href="/dashboard_Lib/css/elegant-icons-style.css" /> -->
   <link rel="stylesheet" href="/css/chatZone.css" />
   <script src="/js/socket.io-1.4.5.js"></script>
@@ -94,6 +94,11 @@
     /* #loading-bar .bar {
   position: relative;
 } */
+
+    .modal-backdrop {
+
+      background-color: #0000002b;
+    }
 
     .modal {
       font-family: Lato;
@@ -362,8 +367,8 @@ transition: all 0.5s;">
                 <a href="#contact">ABOUT US</a>
               </li>
               <li>
-                <a ng-if="userData.email==null || userData==undefined" href="#" id="empLogin" data-target="#crdntl" data-toggle="modal" >Employee Login</a>
-                <a ng-if="userData.email!=null && userData!=undefined" href="#" ng-click="logout()"  >Employee Logout</a>
+                <a ng-if="userData.email==null || userData==undefined" href="#" id="empLogin" data-target="#crdntl" data-toggle="modal">Employee Login</a>
+                <a ng-if="userData.email!=null && userData!=undefined" href="#" ng-click="logout()">Employee Logout</a>
               </li>
 
             </ul>
@@ -654,7 +659,7 @@ transition: all 0.5s;">
           </div>
         </section>
       </main>
-      
+
 
       <div class="modal animated jello faster " id="crdntl" role="dialog">
         <div class="modal-dialog">
@@ -682,28 +687,29 @@ transition: all 0.5s;">
         </div>
       </div>
       <button data-toggle="modal" data-target="#notify_msg" id="notify_msg_button" data-backdrop="static" data-keyboard="false"
-          style="display:none"></button>
-        <div class="modal animated jello faster " id="notify_msg" role="dialog">
-          <div class="modal-dialog">
-            <center>
-              <form>
-                <div class="modal-content" style="color:#777;max-width:350px; border-radius: 8px;">
-                  <div class="modal-header" style="padding-top: 15px;background-image: linear-gradient(to bottom, #383c3f 0%, #202224 100%);">
-                    <img style="width: 45px; margin-top: -15px;margin-left: -170px;" src="/home/img/fav.png" />
-                    <span class="modal-title" style="font-weight: 200;">Message</span>
-                  </div>
-                  <div class="modal-body">
-                    <label id="notify_msg_content" style="color:red"></label>
-                  </div>
-                  <div class="modal-footer" style="padding-top: 15px;background-image: linear-gradient(to bottom, #202224 0%, #383c3f 100%);">
-                    <button id="resetBtn" type="button" ng-click="resetLoginFlag()" style="background-color: #29b6bd;color:#f1f1f1" class="btn"  data-dismiss="modal">Reset</button>
-                    <button type="button" style="background-color: #29b6bd;color:#f1f1f1" class="btn" data-dismiss="modal">Ok</button>
-                  </div>
+        style="display:none"></button>
+      <div class="modal animated jello faster " id="notify_msg" role="dialog">
+        <div class="modal-dialog">
+          <center>
+            <form>
+              <div class="modal-content" style="color:#777;max-width:350px; border-radius: 8px;">
+                <div class="modal-header" style="padding-top: 15px;background-image: linear-gradient(to bottom, #383c3f 0%, #202224 100%);">
+                  <img style="width: 45px; margin-top: -15px;margin-left: -170px;" src="/home/img/fav.png" />
+                  <span class="modal-title" style="font-weight: 200;">Message</span>
                 </div>
-              </form>
-            </center>
-          </div>
+                <div class="modal-body">
+                  <label id="notify_msg_content" style="color:red"></label>
+                </div>
+                <div class="modal-footer" style="padding-top: 15px;background-image: linear-gradient(to bottom, #202224 0%, #383c3f 100%);">
+                  <button id="resetBtn" type="button" ng-click="resetLoginFlag()" style="background-color: #29b6bd;color:#f1f1f1" class="btn"
+                    data-dismiss="modal">Reset</button>
+                  <button type="button" style="background-color: #29b6bd;color:#f1f1f1" class="btn" data-dismiss="modal">Ok</button>
+                </div>
+              </div>
+            </form>
+          </center>
         </div>
+      </div>
       <!-- ##### Start login popup  ##### -->
       <!-- <div class="modal fade" id="crdntl" role="dialog">
         <div class="modal-dialog">

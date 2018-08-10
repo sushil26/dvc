@@ -67,6 +67,11 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
                                     "password": password,
                                     "careatorEmail": email
                                 }
+                                SweetAlert.swal({
+                                    title: "Reset Done",
+                                    text: "you can login now",
+                                    type: "success"
+                                });
 
                                 resetId = data.data.data.id;
                                 $scope.resetLoginFlag();

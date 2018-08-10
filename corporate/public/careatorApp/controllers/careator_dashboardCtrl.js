@@ -24,9 +24,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                 var reqSec = todayDate.getSeconds();
                 $scope.todayDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
                 console.log("consolidateDate: " + $scope.consolidateDate);
-            }
-            else {
-            }
+            } else {}
         })
         console.log("<--Get To Date");
     }
@@ -201,18 +199,21 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
     $scope.logout = function () {
         console.log("logout-->");
         SweetAlert.swal({
-            title: "Have you closed all the sessions?", //Bold text
-            text: "It will close all your open sessions", //light text
-            type: "warning", //type -- adds appropiriate icon
-            showCancelButton: true, // displays cancel btton
-            confirmButtonColor: "#DD6B55",
-            confirmButtonText: "Sure",
-            closeOnConfirm: false, //do not close popup after click on confirm, usefull when you want to display a subsequent popup
-            closeOnCancel: false
-        },
+                title: "Have you closed all the sessions?", //Bold text
+                text: "It will close all your open sessions", //light text
+                type: "warning", //type -- adds appropiriate icon
+                showCancelButton: true, // displays cancel btton
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Sure",
+                closeOnConfirm: false, //do not close popup after click on confirm, usefull when you want to display a subsequent popup
+                closeOnCancel: false
+            },
             function (isConfirm) { //Function that triggers on user action.
                 if (isConfirm) {
-                    SweetAlert.swal("Logged Out");
+                    SweetAlert.swal({
+                        title: "Logged Out",
+                        type: "success"
+                    });
                     var id = userData.userId;
                     var api = "https://norecruits.com/careator_loggedin/getLoggedinSessionURLById/" + id;
                     console.log("api: " + api);
@@ -476,14 +477,13 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                         if (checkStatus) {
                             localStorage.setItem("sessionUrlId", peerNew_id);
                             console.log("url: " + url);
-                            
-                            
+
+
                             w = window.open(url, '_blank');
                             console.log("***");
                             // $window.open(url, "_blank");
 
-                        }
-                        else {
+                        } else {
                             console.log("Sorry");
                         }
                     })
@@ -491,15 +491,15 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
             })
         } else {
             SweetAlert.swal({
-                title: "window is already opened", //Bold text
-                text: "we will take you the desired page!", //light text
-                type: "warning", //type -- adds appropiriate icon
-                showCancelButton: true, // displays cancel btton
-                confirmButtonColor: "#DD6B55",
-                confirmButtonText: "Go to the page",
-                closeOnConfirm: false, //do not close popup after click on confirm, usefull when you want to display a subsequent popup
-                closeOnCancel: false
-            },
+                    title: "window is already opened", //Bold text
+                    text: "we will take you the desired page!", //light text
+                    type: "warning", //type -- adds appropiriate icon
+                    showCancelButton: true, // displays cancel btton
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Go to the page",
+                    closeOnConfirm: false, //do not close popup after click on confirm, usefull when you want to display a subsequent popup
+                    closeOnCancel: false
+                },
                 function (isConfirm) { //Function that triggers on user action.
                     if (isConfirm) {
                         SweetAlert.swal("ok!");

@@ -42,17 +42,12 @@
   <link rel="stylesheet" href="/bower_components/angular-bootstrap-calendar/dist/css/angular-bootstrap-calendar.min.css">
   <script src="/bower_components/angular-bootstrap-calendar/dist/js/angular-bootstrap-calendar-tpls.js"></script>
   <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-
   <script src="/angular-animate/angular-animate.min.js"></script>
-  <!-- bootstrap -->
 
-  <script src="careatorCommApp.js"></script>
-  <script src="careatorCommAppCtrl.js"></script>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
   <link rel="stylesheet" href="https://unpkg.com/angular-bootstrap-colorpicker@3/css/colorpicker.min.css" />
-  <script src="/common/careatorHttpFactory.js"></script>
-  <script src="/common/careatorSessionAuth.js"></script>
-  <script src="/common/careatorFileModel.js"></script>
+
   <!-- <script src="/common/notification.js"></script> -->
 
   <link rel="stylesheet" href="/careatorApp/css/style.css" />
@@ -333,7 +328,6 @@ left: 0;
 top: 0;
 right: 0;
 z-index: 1000;
-
 transition: all 0.5s;">
       </div>
       <header id="header">
@@ -371,16 +365,6 @@ transition: all 0.5s;">
                 <a ng-if="userData.email==null || userData==undefined" href="#" id="empLogin" data-target="#crdntl" data-toggle="modal" >Employee Login</a>
                 <a ng-if="userData.email!=null && userData!=undefined" href="#" ng-click="logout()"  >Employee Logout</a>
               </li>
-              
-              <!-- <li ng-if="!userData.loginType">
-                <a href="#" data-target="#crdntl" data-toggle="modal">LOGIN</a>
-              </li>
-              <li ng-if="userData.loginType">
-                <a href="#!dashboard/logout">LOGOUT</a>
-              </li> -->
-              <!-- <li>
-                <a href="https://norecruits.com/careator">Employee Login</a>
-              </li> -->
 
             </ul>
           </nav>

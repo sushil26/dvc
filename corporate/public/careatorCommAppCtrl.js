@@ -1,27 +1,27 @@
 careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careatorSessionAuth, careatorHttpFactory, $uibModal, $timeout, SweetAlert) {
 
 
-    SweetAlert.swal({
-            title: "Are you sure to Deactivate the user ?", //Bold text
-            text: "User will not be able to Login !", //light text
-            type: "warning", //type -- adds appropiriate icon
-            showCancelButton: true, // displays cancel btton
-            confirmButtonColor: "#DD6B55",
-            confirmButtonText: "Yes, Deactivate!",
-            closeOnConfirm: false, //do not close popup after click on confirm, usefull when you want to display a subsequent popup
-            closeOnCancel: false
-        },
-        function (isConfirm) { //Function that triggers on user action.
-            if (isConfirm) {
-                SweetAlert.swal("Deactivated!");
+    // SweetAlert.swal({
+    //         title: "Are you sure to Deactivate the user ?", //Bold text
+    //         text: "User will not be able to Login !", //light text
+    //         type: "warning", //type -- adds appropiriate icon
+    //         showCancelButton: true, // displays cancel btton
+    //         confirmButtonColor: "#DD6B55",
+    //         confirmButtonText: "Yes, Deactivate!",
+    //         closeOnConfirm: false, //do not close popup after click on confirm, usefull when you want to display a subsequent popup
+    //         closeOnCancel: false
+    //     },
+    //     function (isConfirm) { //Function that triggers on user action.
+    //         if (isConfirm) {
+    //             SweetAlert.swal("Deactivated!");
 
 
 
-            } else {
-                SweetAlert.swal("User cant login Now!");
-            }
-        }
-    )
+    //         } else {
+    //             SweetAlert.swal("User cant login Now!");
+    //         }
+    //     }
+    // )
 
 
 

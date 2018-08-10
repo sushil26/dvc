@@ -82,10 +82,6 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
                             }
                         }
                     )
-
-
-
-
                 } else {
                     console.log("sorry");
                     //alert("data.data.message");

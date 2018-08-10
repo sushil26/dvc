@@ -220,9 +220,30 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
         careatorHttpFactory.post(api, $scope.checkObj).then(function (data) {
             var checkStatus = careatorHttpFactory.dataValidation(data);
             if (checkStatus) {
-                console.log("data.message: " + data.data.message);
-                $("#crdntl").trigger("click");
 
+
+                SweetAlert.swal({
+                    title: "Reset Done", //light text
+                    type: "success", //type -- adds appropiriate icon
+                    showCancelButton: true, // displays cancel btton
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "login",
+                    closeOnConfirm: true, //do not close popup after click on confirm, usefull when you want to display a subsequent popup
+                    closeOnCancel: true
+                },
+                function (isConfirm) { //Function that triggers on user action.
+                    if (isConfirm) {
+                        console.log("data.message: " + data.data.message);
+                        $("#crdntl").trigger("click");
+        
+                    } else {
+                        SweetAlert.swal("you selected to login later");
+
+                    }
+                }
+            )
+
+              
             } else {
                 console.log("sorry");
                 //alert(data.data.message);

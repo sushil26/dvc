@@ -2,7 +2,9 @@
     <button type="button" class="close" ng-click="$close()">&times;</button>
 </div>
 <style>
-    .btn {height:"";}
+    .btn {
+        height: "";
+    }
 </style>
 <div class="modal-body">
     <table>
@@ -44,6 +46,7 @@
                     </h4>
                 </td>
                 <td>
+                    <md-time-picker ng-model="time.twelve" message="message"></md-time-picker>
                     <div uib-timepicker ng-model="eventDetails.startsAt" hour-step="1" minute-step="20" show-meridian="true">
                     </div>
                 </td>

@@ -13,38 +13,14 @@
     }
 </style>
 <div class="modal-body">
+
+
+
+    <h4 style="color:coral">:&nbsp{{ eventDetails.startsAt | date }}</h4>
+    <input type="text" class="form-control" placeholder="Topic" ng-model="eventDetails.title">
+    <input style="margin-top:10px;" type="text" placeholder="Enter Email" ng-model="eventDetails.emailList">
     <table>
-        <tdead>
-            <tr>
-                <td>
-                    <h4>Schedule on &nbsp</h4>
-                </td>
-                <td>
-                    <h4 style="color:coral">:&nbsp{{ eventDetails.startsAt | date }}</h4>
-                </td>
-            </tr>
-        </tdead>
         <tbody>
-            <tr>
-                <td>
-                    <h4>Title &nbsp</h4>
-                </td>
-                <td>
-                    <h4 style="color:coral">:&nbsp
-                        <input style="margin-top:10px;" type="text" ng-model="eventDetails.title">
-                    </h4>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <h4>Inviting To &nbsp</h4>
-                </td>
-                <td>
-                    <h4 style="color:coral">:&nbsp
-                        <input style="margin-top:10px;" type="text" ng-model="eventDetails.emailList">
-                    </h4>
-                </td>
-            </tr>
             <tr>
                 <td>
                     <h4>

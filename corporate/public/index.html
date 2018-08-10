@@ -670,7 +670,8 @@ transition: all 0.5s;">
                   <input ng-keyup="$event.keyCode == 13 && logVC(email, Password)" type="password" id="crdPswd" class="form-control" placeholder="Password"
                     ng-model="password">
                 </div>
-                <div class="modal-footer" style="padding-top: 15px" class="btn" ng-click="logVC(email, password)" data-dismiss="modal">Submit</button>
+                <div class="modal-footer" style="padding-top: 15px;">
+                  <button id="crdsubmit" style="padding: 5px;" type="button" class="btn" ng-click="logVC(email, password)" data-dismiss="modal">Submit</button>
                 </div>
               </div>
             </form>

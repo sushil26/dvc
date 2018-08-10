@@ -67,10 +67,9 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
                                     "password": password,
                                     "careatorEmail": email
                                 }
-                                $("#notify_msg_button").trigger("click");
+
                                 resetId = data.data.data.id;
-                                document.getElementById('notify_msg_content').innerHTML = data.data.message;
-                                document.getElementById('resetBtn').style.display = 'inline';
+                                $scope.resetLoginFlag();
 
 
                             } else {

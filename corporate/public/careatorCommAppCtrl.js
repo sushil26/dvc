@@ -234,7 +234,7 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
                 function (isConfirm) { //Function that triggers on user action.
                     if (isConfirm) {
                         console.log("data.message: " + data.data.message);
-                        $("#crdntl").trigger("click");
+                        $("#empLogin").trigger("click");
         
                     } else {
                         SweetAlert.swal("you selected to login later");

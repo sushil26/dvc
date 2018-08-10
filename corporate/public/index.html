@@ -662,7 +662,7 @@ transition: all 0.5s;">
                 <div class="modal-header" style="padding-top: 15px;     height: 55px;background-image: linear-gradient(to bottom, #383c3f 0%, #202224 100%);">
                   <img style="width: 45px; float: left;" src="/home/img/fav.png" />
                   <span class="modal-title" style="margin-top: 10px;
-                  font-weight: 400;float: left;">Login</span>
+                  font-weight: 400;float: left;">&nbsp;Login</span>
                 </div>
                 <div class="modal-body">
                   <input ng-keyup="$event.keyCode == 13 && logVC(email, Password)" type="email" class="form-control" placeholder="Email" ng-model="email"
@@ -672,7 +672,7 @@ transition: all 0.5s;">
                     ng-model="password">
                 </div>
                 <div class="modal-footer" style="padding-top: 15px;background-image: linear-gradient(to bottom, #202224 0%, #383c3f 100%);">
-                  <button id="crdsubmit" type="button" style="background-color: #29b6bd;color:#f1f1f1" class="btn" ng-click="logVC(email, password)"
+                  <button id="crdsubmit" type="button" style="background-color: #29b6bd;color:#f1f1f1;padding: 5px;" class="btn" ng-click="logVC(email, password)"
                     data-dismiss="modal">Submit</button>
                 </div>
               </div>

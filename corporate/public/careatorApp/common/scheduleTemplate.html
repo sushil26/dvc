@@ -1,6 +1,7 @@
 <div class="modal-header loginpopUp_header" style="height: 50px;">
     <span class="modal-title" style="font-weight: 200;">
-        <b>Scheduling on</b>:&nbsp;{{ eventDetails.startsAt | date }}</span>
+        <b>Schedule</b>
+    </span>
     <button type="button" class="close" ng-click="$close()">&times;</button>
 </div>
 <style>
@@ -15,6 +16,7 @@
     }
 </style>
 <div class="modal-body">
+    <label> {{ eventDetails.startsAt | date }}</label>
     <input type="text" class="form-control" placeholder="Topic" ng-model="eventDetails.title">
     <input style="margin-top:10px;" class="form-control" type="text" placeholder="Participents Email" ng-model="eventDetails.emailList">
     <label>Timing:</label>

@@ -1,4 +1,4 @@
-<div class="modal-header loginpopUp_header" style="height: 50px;">
+<div class="modal-header loginpopUp_header" style="height: 50px;     background-image: linear-gradient(to bottom, #383c3f 0%, #202224 100%);">
     <span class="modal-title" style="font-weight: 200;">
         <b>&nbsp;Scheduling on :&nbsp;</b>{{ eventDetails.startsAt | date }}</span>
     <button type="button" class="close" ng-click="$close()">&times;</button>
@@ -40,7 +40,7 @@
 
 
 </div>
-<div class="modal-footer loginpopUp_footer">
+<div class="modal-footer loginpopUp_footer" style="    background-image: linear-gradient(to bottom, #383c3f 0%, #202224 100%);">
     <button class="btn btn-warning loginpopUp_footerBtn" type="button" ng-click="$close()">Close</button>
     <button class="btn btn-primary" data-dismiss="modal" ng-click="save( eventDetails.title,eventDetails.emailList,eventDetails.startsAt,eventDetails.endsAt, eventDetails.reason)">Save</button>
 </div>

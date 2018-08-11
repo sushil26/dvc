@@ -1,5 +1,6 @@
 careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, $rootScope, $state, $rootScope, $compile, $window, $filter, careatorHttpFactory, careatorSessionAuth, moment, calendarConfig, $uibModal, SweetAlert) {
   console.log("vc4allEmpScheduleCtrl==>");
+  console.log("date: "+new Date());
   var dayEventmodal; /* ### Note: open model for event send ###  */
   var studEvents = []; /* ### Note: selected student events ### */
   var teacherEvents = []; /* ### Note: selected teacher events ### */
@@ -26,16 +27,15 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
         var reqHr = todayDate.getHours();
         var reqMin = todayDate.getMinutes();
         var reqSec = todayDate.getSeconds();
-        var todayDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
+        $scope.todayDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
         console.log("consolidateDate: " + $scope.consolidateDate);
         $scope.eventGet();
-        return todayDate;
-
+        
       } else { }
     })
     console.log("<--Get To Date");
   }
-  $scope.todayDate = $scope.getToDate();
+  $scope.getToDate();
   $scope.eventGet = function () {
     console.log("eventGet-->");
     var id = $scope.userData.userId
@@ -436,18 +436,12 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
 
   vm.timespanClicked = function (date, css) {
     console.log("timespanClicked-->");
-    currentDate = $scope.getToDate();
+    $scope.getToDate();
     console.log("date: " + date);
-    console.log("currentDate: " + currentDate);
-    $scope.dateComparision(currentDate, date);
-  }
-
-  $scope.dateComparision = function (currentDate, date) {
-    console.log(" date comparision-->");
-
-    var reqDate = currentDate.getDate();
-    var reqMonth = currentDate.getMonth();
-    var reqYear = currentDate.getFullYear();
+    console.log("$scope.todayDate: " + $scope.todayDate);
+    var reqDate = $scope.todayDate.getDate();
+    var reqMonth = $scope.todayDate.getMonth();
+    var reqYear = $scope.todayDate.getFullYear();
     var todayDate = new Date(reqYear, reqMonth, reqDate);
     console.log("todayDate: " + todayDate);
     var selected_reqDate = date.getDate();
@@ -476,8 +470,8 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
       console.log("todayDate: " + todayDate.getTime() + "selected_date: " + selected_date.getTime());
       if (todayDate.getTime() == selected_date.getTime()) {
         console.log("selected and today both are same");
-        selectedStartDate = currentDate.setMinutes(date.getMinutes() + 5);
-        selectedEndDate = currentDate.setMinutes(date.getMinutes() + 20);
+        selectedStartDate = $scope.todayDate.setMinutes(date.getMinutes() + 5);
+        selectedEndDate = $scope.todayDate.setMinutes(date.getMinutes() + 20);
         console.log("selectedStartDate: " + selectedStartDate + "selectedEndDate: " + selectedEndDate);
       }
       else {
@@ -485,6 +479,9 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
         selectedStartDate = date;
         selectedEndDate = date;
       }
+
+
+
       dayEventmodal = $uibModal.open({
         scope: $scope,
         templateUrl: '/careatorApp/common/scheduleTemplate.html',
@@ -501,7 +498,6 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
       })
     }
   }
-
 
 
 

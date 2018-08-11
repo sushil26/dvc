@@ -456,9 +456,9 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
         console.log("consolidateDate: " + $scope.consolidateDate);
         console.log("date: " + date);
         console.log("$scope.todayDate: " + $scope.todayDate);
-        // var reqDate = $scope.todayDate.getDate();
-        // var reqMonth = $scope.todayDate.getMonth();
-        // var reqYear = $scope.todayDate.getFullYear();
+        var reqDate = $scope.todayDate.getDate();
+        var reqMonth = $scope.todayDate.getMonth();
+        var reqYear = $scope.todayDate.getFullYear();
         var todayDate = new Date(reqYear, reqMonth, reqDate);
         console.log("todayDate: " + todayDate);
         var selected_reqDate = date.getDate();
@@ -485,8 +485,8 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
           console.log("todayDate: " + todayDate.getTime() + "selected_date: " + selected_date.getTime());
           if (todayDate.getTime() == selected_date.getTime()) {
             console.log("selected and today both are same");
-            selectedStartDate = $scope.todayDate.setMinutes(date.getMinutes() + 5);
-            selectedEndDate = $scope.todayDate.setMinutes(date.getMinutes() + 20);
+            selectedStartDate = $scope.todayDate.setMinutes($scope.todayDate.getMinutes() + 5);
+            selectedEndDate = $scope.todayDate.setMinutes($scope.todayDate.getMinutes() + 20);
             console.log("selectedStartDate: " + selectedStartDate + "selectedEndDate: " + selectedEndDate);
           }
           else {

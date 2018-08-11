@@ -490,8 +490,15 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
     else {
       $scope.selectedDateForEvent = $filter('date')(date, "EEE");
       $scope.selectedDate = date;
-      selectedStartDate = date.setMinutes(date.getMinutes()+5);
-      selectedEndDate = date.setMinutes(date.getMinutes()+20);
+      if(todayDate == selected_date){
+        selectedStartDate = date.setMinutes(date.getMinutes()+5);
+        selectedEndDate = date.setMinutes(date.getMinutes()+20);
+      }
+      else{
+        selectedStartDate = date;
+        selectedEndDate = date;
+      }
+      
       
 
       dayEventmodal = $uibModal.open({

@@ -486,7 +486,7 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
           if (todayDate.getTime() == selected_date.getTime()) {
             console.log("selected and today both are same");
             selectedStartDate = $scope.todayDate.setMinutes($scope.todayDate.getMinutes() + 5);
-            selectedEndDate = $scope.todayDate.setMinutes(selectedStartDate.getMinutes() + 10);
+            selectedEndDate = $scope.todayDate.setMinutes($scope.todayDate.getMinutes() + 15);
             console.log("selectedStartDate: " + selectedStartDate + "selectedEndDate: " + selectedEndDate);
           }
           else {

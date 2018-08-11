@@ -6,30 +6,43 @@
 </div>
 <div class="modal-body">
 
+    <table>
+        <tr>
+            <td>
+                <label>Name</label>
+            </td>
+            <td> {{eventDetails.senderName}} </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Topic</label>
+            </td>
+            <td>{{eventDetails.title}}</td>
+        </tr>
+        <tr>
+            <td>
+                <label>Timing</label>
+            </td>
+            <td>{{eventDetails.startsAt | date:'h:mm a'}}-{{eventDetails.endsAt | date:'h:mm a'}} </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Message</label>
+            </td>
+            <td>{{eventDetails.reason}}</td>
+        </tr>
+        <tr>
+            <td>
+                <label>Receiver Emails</label>
+            </td>
+            <td>
+                <div ng-repeat="email in eventDetails.invitingTo">
+                    {{email}}
+                </div>
+            </td>
+        </tr>
+    </table>
 
-    <div>
-        <label>Name</label>
-        {{eventDetails.senderName}}
-    </div>
-
-    <div>
-        <label>Topic</label>
-        {{eventDetails.title}}
-    </div>
-
-    <div>
-        <label>Timing</label>
-        {{eventDetails.startsAt | date:'h:mm a'}}-{{eventDetails.endsAt | date:'h:mm a'}}
-    </div>
-    <div>
-        <label>Message</label>
-        {{eventDetails.reason}}</div>
-    <div>
-        <label> Receiver Emails</label>
-        <div ng-repeat="email in eventDetails.invitingTo">
-            {{email}}
-        </div>
-    </div>
 
 
 

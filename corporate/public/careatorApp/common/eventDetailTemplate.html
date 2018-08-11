@@ -6,24 +6,43 @@
 </div>
 <div class="modal-body">
 
+    <table>
+        <tr>
+            <td>
+                <label>Name</label>
+            </td>
+            <td> {{eventDetails.senderName}} </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Topic</label>
+            </td>
+            <td>{{eventDetails.title}}</td>
+        </tr>
+        <tr>
+            <td>
+                <label>Timing</label>
+            </td>
+            <td>{{eventDetails.startsAt | date:'h:mm a'}}-{{eventDetails.endsAt | date:'h:mm a'}} </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Message</label>
+            </td>
+            <td>{{eventDetails.reason}}</td>
+        </tr>
+        <tr>
+            <td>
+                <label>Receiver Emails</label>
+            </td>
+            <td>
+                <span ng-repeat="email in eventDetails.invitingTo">
+                    {{email}}
+                </span>
+            </td>
+        </tr>
+    </table>
 
-
-    <label>Name</label>
-    <div style="color:green">{{eventDetails.senderName}} </div>
-
-    <label>Topic</label>
-    <div style="color:green">{{eventDetails.title}} </div>
-
-    <label>Timing</label>
-    <div style="color:green">{{eventDetails.startsAt | date:'h:mm a'}}-{{eventDetails.endsAt | date:'h:mm a'}} </div>
-
-    <label>Message</label>
-    <div style="color:green">{{eventDetails.reason}} </div>
-
-    <label> Receiver Emails</label>
-    <div style="color:green" ng-repeat="email in eventDetails.invitingTo">
-        {{email}}
-    </div>
 
 
 

@@ -97,26 +97,37 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
     var reqMin = rsd.getMinutes();
     var reqSec = rsd.getSeconds();
     var consolidateDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
-    console.log("consolidateDate: " + consolidateDate + " $scope.todayDate: " + $scope.todayDate);
-    if (consolidateDate > $scope.todayDate) {
-      console.log("PersonalRemoteCombineCal.length: " + PersonalRemoteCombineCal.length);
-      if (PersonalRemoteCombineCal.length > 0) {
-        var conflicts = PersonalRemoteCombineCal.some(function (event) {
-          //   return (event.startsAt <= s && s <= event.endsAt) ||event.startsAt <= e && e <= event.endsAt || s <= event.startsAt && event.startsAt <= e ||s <= event.endsAt && event.endsAt <= e});
-          return (event.startsAt <= rsd && rsd < event.endsAt) ||
-            event.startsAt < red && red < event.endsAt ||
-            rsd <= event.startsAt && event.startsAt < red ||
-            rsd < event.endsAt && event.endsAt < red
-        });
-        console.log("conflicts: " + conflicts);
-        if (conflicts) {
-          console.log("conflicts is there");
-          SweetAlert.swal({
-            title: "Not Available",
-            type: "info",
-            text: "you have a apponitment on same time",
-          })
-          // alert("ON this time you have an appointment");
+    console.log("rsd.getTime(): " + rsd.getTime() + " red: " + red.getTime());
+    if (rsd.getTime() < red.getTime()) {
+      var diff = red.getHours() - rsd.getHours();
+      console.log("diff: "+diff);
+      if(diff<=8){
+        console.log("PersonalRemoteCombineCal.length: " + PersonalRemoteCombineCal.length);
+        if (PersonalRemoteCombineCal.length > 0) {
+          var conflicts = PersonalRemoteCombineCal.some(function (event) {
+            //   return (event.startsAt <= s && s <= event.endsAt) ||event.startsAt <= e && e <= event.endsAt || s <= event.startsAt && event.startsAt <= e ||s <= event.endsAt && event.endsAt <= e});
+            return (event.startsAt <= rsd && rsd < event.endsAt) ||
+              event.startsAt < red && red < event.endsAt ||
+              rsd <= event.startsAt && event.startsAt < red ||
+              rsd < event.endsAt && event.endsAt < red
+          });
+          console.log("conflicts: " + conflicts);
+          if (conflicts) {
+            console.log("conflicts is there");
+            SweetAlert.swal({
+              title: "Not Available",
+              type: "info",
+              text: "you have a apponitment on same time",
+            })
+            // alert("ON this time you have an appointment");
+          } else {
+            console.log("no conflicts is there");
+            var formatedStartTime = $filter('date')(sd, "HH:mm a");
+            var formatedEndTime = $filter('date')(ed, "HH:mm a");
+            var dateForEvent = $filter('date')(sd, "EEE MMM dd y");
+            dayEventmodal.close('resetModel');
+            $scope.eventSend(title, emailList, dateForEvent, formatedStartTime, formatedEndTime, sd, ed, reason);
+          }
         } else {
           console.log("no conflicts is there");
           var formatedStartTime = $filter('date')(sd, "HH:mm a");
@@ -125,19 +136,20 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
           dayEventmodal.close('resetModel');
           $scope.eventSend(title, emailList, dateForEvent, formatedStartTime, formatedEndTime, sd, ed, reason);
         }
-      } else {
-        console.log("no conflicts is there");
-        var formatedStartTime = $filter('date')(sd, "HH:mm a");
-        var formatedEndTime = $filter('date')(ed, "HH:mm a");
-        var dateForEvent = $filter('date')(sd, "EEE MMM dd y");
-        dayEventmodal.close('resetModel');
-        $scope.eventSend(title, emailList, dateForEvent, formatedStartTime, formatedEndTime, sd, ed, reason);
       }
+      else{
+        SweetAlert.swal({
+          title: "Invalid Time Duration",
+          type: "warning",
+          text: "Sorry! maximum 8hours duration only allowed for schedule",
+        })
+      }
+      
     } else {
       SweetAlert.swal({
         title: "Invalid Date",
         type: "warning",
-        text: "Selected should not be lesser than current date",
+        text: "End time should not be lesser than/equal to start time",
       })
       // alert("Selected should not be lesser than current date");
     }
@@ -486,7 +498,7 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
           if (todayDate.getTime() == selected_date.getTime()) {
             console.log("selected and today both are same");
             selectedStartDate = $scope.todayDate.setMinutes($scope.todayDate.getMinutes() + 5);
-            selectedEndDate = $scope.todayDate.setMinutes($scope.todayDate.getMinutes() + 20);
+            selectedEndDate = $scope.todayDate.setMinutes($scope.todayDate.getMinutes() + 15);
             console.log("selectedStartDate: " + selectedStartDate + "selectedEndDate: " + selectedEndDate);
           }
           else {

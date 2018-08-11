@@ -4,6 +4,17 @@
     </span>
     <button type="button" class="close" data-dismiss="modal" ng-click="$close()">&times;</button>
 </div>
+<style>
+    .btn {
+        background: none;
+        box-shadow: none;
+    }
+
+    .modal-content {
+        border-radius: 5px;
+        background: white;
+    }
+</style>
 <div class="modal-body">
     <center>
         <table>
@@ -112,5 +123,5 @@
 
 </div>
 <div class="modal-footer loginpopUp_footer" style="    background-image: linear-gradient(to bottom, #383c3f 0%, #202224 100%);">
-    <button class="btn btn-default loginpopUp_footerBtn" type="button" ng-click="$close()">Close</button>
+    <button class="btn btn-warning loginpopUp_footerBtn" type="button" ng-click="$close()">Close</button>
 </div>

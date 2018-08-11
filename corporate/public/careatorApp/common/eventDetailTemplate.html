@@ -7,17 +7,11 @@
 <div class="modal-body">
 
 
-    <div class="panel-heading">
-        Sender Details
-    </div>
 
     <label>Name</label>
     <div style="color:green">{{eventDetails.senderName}} </div>
 
-    <label>Id</label>
-    <div style="color:green">{{eventDetails.senderId}} </div>
-
-    <label>Title</label>
+    <label>Topic</label>
     <div style="color:green">{{eventDetails.title}} </div>
 
     <label>Timing</label>
@@ -26,14 +20,7 @@
     <label>Message</label>
     <div style="color:green">{{eventDetails.reason}} </div>
 
-
-    <div class="panel-heading">
-        Receiver Emails
-    </div>
-
-
-
-    <label> Emails</label>
+    <label> Receiver Emails</label>
     <div style="color:green" ng-repeat="email in eventDetails.invitingTo">
         {{email}}
     </div>

@@ -1,6 +1,15 @@
 careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careatorSessionAuth, careatorHttpFactory, $uibModal, $timeout, SweetAlert) {
     console.log("Chat controller==>");
 
+
+    document.getElementById("mobile-nav-toggle").addEventListener("click", function () {
+        console.log("mobile-nav-toggle clicked-->");
+        $("body").addClass('header-fixed');
+
+    })
+
+
+
     $scope.gotToDashboard = function () {
         console.log("gotToDashboard-->");
         $state.go('Cdashboard', {});
@@ -52,15 +61,15 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
 
 
                     SweetAlert.swal({
-                            title: "Reset Session",
-                            text: "You've already logged in. To log in again, please reset your session", //light text
-                            type: "warning", //type -- adds appropiriate icon
-                            showCancelButton: true, // displays cancel btton
-                            confirmButtonColor: "#DD6B55",
-                            confirmButtonText: "Reset",
-                            closeOnConfirm: true, //do not close popup after click on confirm, usefull when you want to display a subsequent popup
-                            closeOnCancel: true
-                        },
+                        title: "Reset Session",
+                        text: "You've already logged in. To log in again, please reset your session", //light text
+                        type: "warning", //type -- adds appropiriate icon
+                        showCancelButton: true, // displays cancel btton
+                        confirmButtonColor: "#DD6B55",
+                        confirmButtonText: "Reset",
+                        closeOnConfirm: true, //do not close popup after click on confirm, usefull when you want to display a subsequent popup
+                        closeOnCancel: true
+                    },
                         function (isConfirm) { //Function that triggers on user action.
                             if (isConfirm) {
 
@@ -174,14 +183,14 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
 
 
             SweetAlert.swal({
-                    title: "Login Successfully", //light text
-                    type: "success", //type -- adds appropiriate icon
-                    showCancelButton: true, // displays cancel btton
-                    confirmButtonColor: "#DD6B55",
-                    confirmButtonText: "Go Dashboard",
-                    closeOnConfirm: true, //do not close popup after click on confirm, usefull when you want to display a subsequent popup
-                    closeOnCancel: true
-                },
+                title: "Login Successfully", //light text
+                type: "success", //type -- adds appropiriate icon
+                showCancelButton: true, // displays cancel btton
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Go Dashboard",
+                closeOnConfirm: true, //do not close popup after click on confirm, usefull when you want to display a subsequent popup
+                closeOnCancel: true
+            },
                 function (isConfirm) { //Function that triggers on user action.
                     if (isConfirm) {
                         $state.go('Cdashboard.profile', {});
@@ -223,14 +232,14 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
 
 
                 SweetAlert.swal({
-                        title: "Reset Done", //light text
-                        type: "success", //type -- adds appropiriate icon
-                        showCancelButton: true, // displays cancel btton
-                        confirmButtonColor: "#DD6B55",
-                        confirmButtonText: "login",
-                        closeOnConfirm: true, //do not close popup after click on confirm, usefull when you want to display a subsequent popup
-                        closeOnCancel: true
-                    },
+                    title: "Reset Done", //light text
+                    type: "success", //type -- adds appropiriate icon
+                    showCancelButton: true, // displays cancel btton
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "login",
+                    closeOnConfirm: true, //do not close popup after click on confirm, usefull when you want to display a subsequent popup
+                    closeOnCancel: true
+                },
                     function (isConfirm) { //Function that triggers on user action.
                         if (isConfirm) {
                             console.log("data.message: " + data.data.message);
@@ -272,15 +281,15 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
     $scope.logout = function () {
         console.log("logout-->");
         SweetAlert.swal({
-                title: "Have you closed all the sessions?", //Bold text
-                text: "It will close all your open sessions", //light text
-                type: "warning", //type -- adds appropiriate icon
-                showCancelButton: true, // displays cancel btton
-                confirmButtonColor: "#DD6B55",
-                confirmButtonText: "Sure",
-                closeOnConfirm: false, //do not close popup after click on confirm, usefull when you want to display a subsequent popup
-                closeOnCancel: false
-            },
+            title: "Have you closed all the sessions?", //Bold text
+            text: "It will close all your open sessions", //light text
+            type: "warning", //type -- adds appropiriate icon
+            showCancelButton: true, // displays cancel btton
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Sure",
+            closeOnConfirm: false, //do not close popup after click on confirm, usefull when you want to display a subsequent popup
+            closeOnCancel: false
+        },
             function (isConfirm) { //Function that triggers on user action.
                 if (isConfirm) {
                     SweetAlert.swal({
@@ -333,7 +342,7 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
                 } else {
                     SweetAlert.swal({
                         title: "Your still logged in",
-                        type:"info"
+                        type: "info"
                     });
                 }
             }
@@ -420,6 +429,6 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
 
 
 
-    
+
 
 })

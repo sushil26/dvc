@@ -456,9 +456,9 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
         console.log("consolidateDate: " + $scope.consolidateDate);
         console.log("date: " + date);
         console.log("$scope.todayDate: " + $scope.todayDate);
-        // var reqDate = $scope.todayDate.getDate();
-        // var reqMonth = $scope.todayDate.getMonth();
-        // var reqYear = $scope.todayDate.getFullYear();
+        var reqDate = $scope.todayDate.getDate();
+        var reqMonth = $scope.todayDate.getMonth();
+        var reqYear = $scope.todayDate.getFullYear();
         var todayDate = new Date(reqYear, reqMonth, reqDate);
         console.log("todayDate: " + todayDate);
         var selected_reqDate = date.getDate();

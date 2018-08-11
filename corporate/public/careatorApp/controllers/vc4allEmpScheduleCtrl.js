@@ -476,7 +476,7 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
     if (todayDate > selected_date) {
       SweetAlert.swal({
         title: "Date Error",
-        type: "danger",
+        type: "warning",
         text: "Schedule date should not be lesser than current date",
       })
      

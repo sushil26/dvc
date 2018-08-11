@@ -33,6 +33,7 @@ jQuery(document).ready(function ($) {
 
   // Mobile Navigation
   if ($('#nav-menu-container').length) {
+    console.log("Mobile Navigation-->");
     var $mobile_nav = $('#nav-menu-container').clone().prop({
       id: 'mobile-nav'
     });

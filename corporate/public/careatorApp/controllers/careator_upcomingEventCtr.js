@@ -1,4 +1,4 @@
-careatorApp.controller('careator_upcomingEventCtr', function ($scope, $rootScope, $state, $window, careatorHttpFactory, $uibModal, $filter, careatorSessionAuth) {
+careatorApp.controller('careator_upcomingEventCtr', function ($scope, $rootScope, $state, $window, careatorHttpFactory, $uibModal, $filter, careatorSessionAuth, SweetAlert) {
     console.log("upcomingEventController==>");
     $scope.userData = careatorSessionAuth.getAccess("userData");
     $scope.loginType = $scope.userData.loginType;

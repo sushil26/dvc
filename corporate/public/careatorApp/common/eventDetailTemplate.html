@@ -1,16 +1,19 @@
-<div class="modal-header loginpopUp_header" style="height: 50px;     background-image: linear-gradient(to bottom, #383c3f 0%, #202224 100%);">
+<div div class="modal-header loginpopUp_header">
     <h4 class="modal-title">Event Details</h4>
     <button type="button" class="close" data-dismiss="modal" ng-click="$close()" aria-hidden="true">&times;</button>
 </div>
 <div class="modal-body">
 
-    <div class="panel-heading">
-        Sender Details
-    </div>
-
     <table class="table table-sm">
-
-
+        <thead>
+            <tr>
+                <th>
+                    <div class="panel-heading">
+                        Sender Details
+                    </div>
+                </th>
+            </tr>
+        </thead>
         <tbody>
             <tr>
                 <td>
@@ -97,8 +100,29 @@
 
             </tr>
         </tbody>
+        <!-- <thead ng-if="viewType=='history'">
+            <tr>
+                <th>
+                    <div class="panel-heading">
+                        VC Record
+                    </div>
+                </th>
+            </tr>
+        </thead>
+        <tbody ng-if="viewType=='history'">
+            <tr>
+                <td>
+                    Video Conference
+                </td>
+                <td>
+                    <video id="videoPlayer" autoplay='true' controls>
+                        <source src="{{videoSrc}}" type="video/mp4"> Your browser does not support the video tag.
+                    </video>
+                </td>
+            </tr>
+        </tbody> -->
     </table>
 </div>
-<div class="modal-footer loginpopUp_footer" style="background-image: linear-gradient(to bottom, #383c3f 0%, #202224 100%);">
+<div class="modal-footer">
     <button class="btn btn-default loginpopUp_footerBtn" type="button" ng-click="$close()">Close</button>
 </div>

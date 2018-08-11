@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <link href='https://fonts.googleapis.com/css?family=Allerta Stencil' rel='stylesheet'>
   <link href="/home/img/fav.png" rel="icon" size="32x32">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700" rel="stylesheet">
@@ -25,6 +25,7 @@
   <!-- <link rel="stylesheet" href="/css/chatZone.css" /> -->
 
   <script src="/bower_components/angular/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
   <script src="/bower_components/angularjs-dropdown-multiselect/dist/angularjs-dropdown-multiselect.min.js"></script>
   <script src="/bower_components/angular-cookies/angular-cookies.js"></script>
@@ -351,7 +352,7 @@ transition: all 0.5s;">
           </div>
           <nav id="nav-menu-container">
             <ul class="nav-menu">
-              <li ng-if="false" id="dashboard" style="display:block;">
+              <li ng-if="userData.email!=null && userData!=undefined" id="dashboard" style="display:block;">
                 <a href="#!/dashboard/profile">DASHBOARD--{{userData.email}}
                 </a>
               </li>

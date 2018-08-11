@@ -65,6 +65,7 @@ jQuery(document).ready(function ($) {
     });
 
     $(document).on('click', '#mobile-nav-toggle', function (e) {
+      console.log("mobile-nav-toggle clicked-->");
       
       $('body').toggleClass('mobile-nav-active');
       $('#mobile-nav-toggle i').toggleClass('fa-times fa-bars');

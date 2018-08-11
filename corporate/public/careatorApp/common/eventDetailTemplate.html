@@ -11,25 +11,41 @@
             <td>
                 <label>Name</label>
             </td>
-            <td> {{eventDetails.senderName}} </td>
+            <td>
+                <lable>
+                    <b>{{eventDetails.senderName}}</b>
+                </lable>
+            </td>
         </tr>
         <tr>
             <td>
                 <label>Topic</label>
             </td>
-            <td>{{eventDetails.title}}</td>
+            <td>
+                <lable>
+                    <b>{{eventDetails.title}}</b>
+                </lable>
+            </td>
         </tr>
         <tr>
             <td>
                 <label>Timing</label>
             </td>
-            <td>{{eventDetails.startsAt | date:'h:mm a'}}-{{eventDetails.endsAt | date:'h:mm a'}} </td>
+            <td>
+                <lable>
+                    <b>{{eventDetails.startsAt | date:'h:mm a'}}-{{eventDetails.endsAt | date:'h:mm a'}}</b>
+                </lable>
+            </td>
         </tr>
         <tr>
             <td>
                 <label>Message</label>
             </td>
-            <td>{{eventDetails.reason}}</td>
+            <td>
+                <lable>
+                    <b>{{eventDetails.reason}}</b>
+                </lable>
+            </td>
         </tr>
         <tr>
             <td>
@@ -37,7 +53,9 @@
             </td>
             <td>
                 <span ng-repeat="email in eventDetails.invitingTo">
-                    {{email}}
+                    <lable>
+                        <b>{{email}}</b>
+                    </lable>
                 </span>
             </td>
         </tr>
@@ -60,10 +78,10 @@
     <tbody>
         <tr>
             <td ng-if="loginType='teacher'">
-                <div style="color:green">{{eventDetails.teacher_mom}} </div>
+                <div style="color:green"><lable><b>{{eventDetails.teacher_mom}}</b></lable> </div>
             </td>
             <td ng-if="loginType='studParent'">
-                <div style="color:green">{{eventDetails.parent_mom}} </div>
+                <div style="color:green"><lable><b>{{eventDetails.parent_mom}}</b></lable> </div>
             </td>
 
         </tr>
@@ -84,7 +102,7 @@
                 </td>
                 <td>
                     <video id="videoPlayer" autoplay='true' controls>
-                        <source src="{{videoSrc}}" type="video/mp4"> Your browser does not support the video tag.
+                        <source src="<lable><b>{{videoSrc}}</b></lable>" type="video/mp4"> Your browser does not support the video tag.
                     </video>
                 </td>
             </tr>

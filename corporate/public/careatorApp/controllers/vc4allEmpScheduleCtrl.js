@@ -98,7 +98,19 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
     var reqSec = rsd.getSeconds();
     var consolidateDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
     console.log("rsd.getTime(): " + rsd.getTime() + " red: " + red.getTime());
-    if (rsd.getTime() < red.getTime()) {
+    var reqDate = $scope.todayDate.getDate();
+    var reqMonth = $scope.todayDate.getMonth();
+    var reqYear = $scope.todayDate.getFullYear();
+    var todayDate = new Date(reqYear, reqMonth, reqDate);
+    console.log("todayDate: " + todayDate);
+    var selected_reqDate = rsd.getDate();
+    var selected_reqMonth = rsd.getMonth();
+    var selected_reqYear = rsd.getFullYear();
+    
+    var selected_date = new Date(selected_reqYear, selected_reqMonth, selected_reqDate);
+if(rsd.getTime() > $scope.todayDate.getTime() )
+{
+    if (rsd.getTime() < red.getTime() ) {
       var diff = red.getHours() - rsd.getHours();
       console.log("diff: "+diff);
       if(diff<=8){
@@ -153,6 +165,14 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
       })
       // alert("Selected should not be lesser than current date");
     }
+  }
+  else{
+    SweetAlert.swal({
+      title: "Invalid Date",
+      type: "warning",
+      text: "Start time should not be lesser than/equal to current time",
+    })
+  }
   }
 
 

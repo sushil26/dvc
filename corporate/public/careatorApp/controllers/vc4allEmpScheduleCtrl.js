@@ -29,7 +29,7 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
         $scope.todayDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
         console.log("consolidateDate: " + $scope.consolidateDate);
         $scope.eventGet();
-      } else {}
+      } else { }
     })
     console.log("<--Get To Date");
   }
@@ -111,8 +111,8 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
           console.log("conflicts is there");
           SweetAlert.swal({
             title: "Not Available",
-            type:"info",
-            text:"you have a apponitment on same time",
+            type: "info",
+            text: "you have a apponitment on same time",
           })
           // alert("ON this time you have an appointment");
         } else {
@@ -134,8 +134,8 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
     } else {
       SweetAlert.swal({
         title: "Invalid Date",
-        type:"warning",
-        text:"Selected should not be lesser than current date",
+        type: "warning",
+        text: "Selected should not be lesser than current date",
       })
       // alert("Selected should not be lesser than current date");
     }
@@ -206,15 +206,15 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
               // alert("Successfully sent the event");
               SweetAlert.swal({
                 title: "Invited Successfully",
-                type:"success",
-                text:"Successfully sent the event",
+                type: "success",
+                text: "Successfully sent the event",
               })
-              
+
             } else {
               SweetAlert.swal({
                 title: "Failed",
-                type:"warning",
-                text:"Failed to send" + JSON.stringify(data.data.failedToSend.length)
+                type: "warning",
+                text: "Failed to send" + JSON.stringify(data.data.failedToSend.length)
               })
               // alert("Failed to send " + JSON.stringify(data.data.failedToSend.length));
             }
@@ -242,8 +242,8 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
             // alert("Event Send Failed");
             SweetAlert.swal({
               title: "Failed",
-              type:"warning",
-              text:"Failed to send"
+              type: "warning",
+              text: "Failed to send"
             })
 
           }
@@ -264,60 +264,60 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
   calendarConfig.dateFormats.hour = 'HH:mm';
   if ($scope.userData.loginType == 'teacher') {
     var actions = [{
-        // label: '<i class=\'glyphicon glyphicon-pencil\'></i>',
-        label: 'Re-Schedule',
-        onClick: function (args) {
-          // alert("Edit Event Comming Soon");
-          console.log("args.calendarEvent: " + args.calendarEvent);
-          console.log("JSON args.calendarEvent: " + JSON.stringify(args.calendarEvent));
-          var date = args.calendarEvent.startsAt;
-          var reqDate = date.getDate() - 1;
-          var reqMonth = date.getMonth();
-          var reqYear = date.getFullYear();
-          var reqHr = date.getHours();
-          var reqMin = date.getMinutes();
-          var reqSec = date.getSeconds();
-          var consolidateDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
-          console.log("args.calendarEvent.id: " + args.calendarEvent.id);
-          console.log("args.calendarEvent: " + JSON.stringify(args.calendarEvent));
-          if (consolidateDate > $scope.todayDate) {
-            // alert("Edit Started-->");
-            var id = args.calendarEvent.id;
-            //   var cs= $scope.events[id].student_cs;
+      // label: '<i class=\'glyphicon glyphicon-pencil\'></i>',
+      label: 'Re-Schedule',
+      onClick: function (args) {
+        // alert("Edit Event Comming Soon");
+        console.log("args.calendarEvent: " + args.calendarEvent);
+        console.log("JSON args.calendarEvent: " + JSON.stringify(args.calendarEvent));
+        var date = args.calendarEvent.startsAt;
+        var reqDate = date.getDate() - 1;
+        var reqMonth = date.getMonth();
+        var reqYear = date.getFullYear();
+        var reqHr = date.getHours();
+        var reqMin = date.getMinutes();
+        var reqSec = date.getSeconds();
+        var consolidateDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
+        console.log("args.calendarEvent.id: " + args.calendarEvent.id);
+        console.log("args.calendarEvent: " + JSON.stringify(args.calendarEvent));
+        if (consolidateDate > $scope.todayDate) {
+          // alert("Edit Started-->");
+          var id = args.calendarEvent.id;
+          //   var cs= $scope.events[id].student_cs;
 
-            //   var stud_id = $scope.events[id].student_id; 
-            //   var name = $scope.events[id].student_Name;
+          //   var stud_id = $scope.events[id].student_id; 
+          //   var name = $scope.events[id].student_Name;
 
-            console.log("id: " + id);
-            $state.go('dashboard.eventReschedule', {
-              'id': id
-            });
-          } else {
-            var loginAlert = $uibModal.open({
-              scope: $scope,
-              templateUrl: '/html/templates/dashboardwarning.html',
-              windowClass: 'show',
-              backdropClass: 'static',
-              keyboard: false,
-              controller: function ($scope, $uibModalInstance) {
-                $scope.message = "Sorry you not allow to edit";
-              }
-            })
-            // alert("Sorry you not allow to edit");
-          }
-          // var eClicked = $uibModal.open({
-          //   scope: $scope,
-          //   templateUrl: '/html/templates/eventDetails_edit.html',
-          //   windowClass: 'show',
-          //   backdropClass: 'show',
-          //   controller: function ($scope, $uibModalInstance) {
-          //     $scope.eventDetails = args.calendarEvent;
-          //     console.log("$scope.eventDetails: " + $scope.eventDetails);
-          //   }
-          // })
-
+          console.log("id: " + id);
+          $state.go('dashboard.eventReschedule', {
+            'id': id
+          });
+        } else {
+          var loginAlert = $uibModal.open({
+            scope: $scope,
+            templateUrl: '/html/templates/dashboardwarning.html',
+            windowClass: 'show',
+            backdropClass: 'static',
+            keyboard: false,
+            controller: function ($scope, $uibModalInstance) {
+              $scope.message = "Sorry you not allow to edit";
+            }
+          })
+          // alert("Sorry you not allow to edit");
         }
+        // var eClicked = $uibModal.open({
+        //   scope: $scope,
+        //   templateUrl: '/html/templates/eventDetails_edit.html',
+        //   windowClass: 'show',
+        //   backdropClass: 'show',
+        //   controller: function ($scope, $uibModalInstance) {
+        //     $scope.eventDetails = args.calendarEvent;
+        //     console.log("$scope.eventDetails: " + $scope.eventDetails);
+        //   }
+        // })
+
       }
+    }
       // {
 
       //   label: 'Delete',
@@ -364,7 +364,7 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
     $scope.evtData = event;
     console.log("$scope.evtData: " + JSON.stringify($scope.evtData));
     // $('#eDetail').trigger('click');
-    var eClicked = $uibModal.open({
+    $uibModal.open({
       scope: $scope,
       templateUrl: '/careatorApp/common/eventDetailTemplate.html',
       windowClass: 'show',
@@ -462,23 +462,44 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
   vm.timespanClicked = function (date, css) {
     console.log("timespanClicked-->");
     console.log("date: " + date);
-    $scope.selectedDateForEvent = $filter('date')(date, "EEE");
-    $scope.selectedDate = date;
+    console.log("$scope.todayDate: " + $scope.todayDate);
+    var reqDate = $scope.todayDate.getDate();
+    var reqMonth = $scope.todayDate.getMonth();
+    var reqYear = $scope.todayDate.getFullYear();
+    var todayDate = new Date(reqYear, reqMonth, reqDate);
+    console.log("todayDate: " + todayDate);
+    var selected_reqDate = date.getDate();
+    var selected_reqMonth = date.getMonth();
+    var selected_reqYear = date.getFullYear();
+    var selected_date = new Date(selected_reqYear, selected_reqMonth, selected_reqDate);
+    console.log("selected_date: " + selected_date);
+    if (todayDate > selected_date) {
+      SweetAlert.swal({
+        title: "Date Error",
+        type: "warning",
+        text: "Schedule date should not be lesser than current date",
+      })
+     
+    }
+    else {
+      $scope.selectedDateForEvent = $filter('date')(date, "EEE");
+      $scope.selectedDate = date;
 
-    dayEventmodal = $uibModal.open({
-      scope: $scope,
-      templateUrl: '/careatorApp/common/scheduleTemplate.html',
-      windowClass: 'show',
-      backdropClass: 'show',
-      controller: function ($scope, $uibModalInstance) {
-        var dt = new Date();
-        $scope.eventDetails = {
-          "startsAt": $scope.selectedDate,
-          "endsAt": $scope.selectedDate
+      dayEventmodal = $uibModal.open({
+        scope: $scope,
+        templateUrl: '/careatorApp/common/scheduleTemplate.html',
+        windowClass: 'show',
+        backdropClass: 'show',
+        controller: function ($scope, $uibModalInstance) {
+          var dt = new Date();
+          $scope.eventDetails = {
+            "startsAt": $scope.selectedDate,
+            "endsAt": $scope.selectedDate
+          }
+          console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
         }
-        console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
-      }
-    })
+      })
+    }
   }
 
 

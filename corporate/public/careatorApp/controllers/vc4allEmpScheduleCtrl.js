@@ -439,7 +439,7 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
     currentDate = $scope.getToDate();
     $scope.dateComparision(currentDate, date);
     console.log("date: " + date);
-    console.log("$scope.todayDate: " + $scope.todayDate);
+    console.log("currentDate: " + currentDate);
   }
 
   $scope.dateComparision = function(currentDate, date){

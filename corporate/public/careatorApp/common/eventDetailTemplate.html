@@ -10,94 +10,59 @@
     <div class="panel-heading">
         Sender Details
     </div>
-    <table>
-        <tbody>
-            <tr>
-                <td>
-                    Name
-                </td>
-                <td>
-                    <div style="color:green">{{eventDetails.senderName}} </div>
-                </td>
-                <td>
-                    Id
-                </td>
-                <td>
-                    <div style="color:green">{{eventDetails.senderId}} </div>
-                </td>
 
-            </tr>
-            <tr>
-                <td>
-                    Title
-                </td>
-                <td>
-                    <div style="color:green">{{eventDetails.title}} </div>
-                </td>
-                <td>
-                    Timing
-                </td>
-                <td>
-                    <div style="color:green">{{eventDetails.startsAt | date:'h:mm a'}}-{{eventDetails.endsAt | date:'h:mm a'}} </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Message
-                </td>
-                <td>
-                    <div style="color:green">{{eventDetails.reason}} </div>
-                </td>
-            </tr>
-        </tbody>
+    <label>Name</label>
+    <div style="color:green">{{eventDetails.senderName}} </div>
 
-        <thead>
-            <tr>
+    <label>Id</label>
+    <div style="color:green">{{eventDetails.senderId}} </div>
 
-                <th>
-                    <div class="panel-heading">
-                        Receiver Emails
-                    </div>
+    <label>Title</label>
+    <div style="color:green">{{eventDetails.title}} </div>
 
-                </th>
+    <label>Timing</label>
+    <div style="color:green">{{eventDetails.startsAt | date:'h:mm a'}}-{{eventDetails.endsAt | date:'h:mm a'}} </div>
 
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>
-                    Emails
-                </td>
-                <td ng-repeat="email in eventDetails.invitingTo">
-                    <div style="color:green">{{email}} </div>
-                </td>
+    <label>Message</label>
+    <div style="color:green">{{eventDetails.reason}} </div>
 
-            </tr>
 
-        </tbody>
+    <div class="panel-heading">
+        Receiver Emails
+    </div>
 
-        <!-- ng-if only for history -->
-        <thead ng-if="eventDetails.teacher_mom && eventDetails.parent_mom">
-            <tr>
-                <td>
-                    <div class="panel-heading">
-                        Minutes of Meeting
-                    </div>
-                </td>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td ng-if="loginType='teacher'">
-                    <div style="color:green">{{eventDetails.teacher_mom}} </div>
-                </td>
-                <td ng-if="loginType='studParent'">
-                    <div style="color:green">{{eventDetails.parent_mom}} </div>
-                </td>
 
-            </tr>
-        </tbody>
-        <!-- <thead ng-if="viewType=='history'">
+
+    <label> Emails</label>
+    <div style="color:green" ng-repeat="email in eventDetails.invitingTo">
+        {{email}}
+    </div>
+
+
+
+
+    <!-- ng-if only for history -->
+    <!-- <thead ng-if="eventDetails.teacher_mom && eventDetails.parent_mom">
+        <tr>
+            <td>
+                <div class="panel-heading">
+                    Minutes of Meeting
+                </div>
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td ng-if="loginType='teacher'">
+                <div style="color:green">{{eventDetails.teacher_mom}} </div>
+            </td>
+            <td ng-if="loginType='studParent'">
+                <div style="color:green">{{eventDetails.parent_mom}} </div>
+            </td>
+
+        </tr>
+    </tbody> -->
+    <!-- <thead ng-if="viewType=='history'">
             <tr>
                 <th>
                     <div class="panel-heading">
@@ -118,7 +83,7 @@
                 </td>
             </tr>
         </tbody> -->
-    </table>
+
 </div>
 <div class="modal-footer loginpopUp_footer" style="    background-image: linear-gradient(to bottom, #383c3f 0%, #202224 100%);">
     <button class="btn btn-default loginpopUp_footerBtn" type="button" ng-click="$close()">Close</button>

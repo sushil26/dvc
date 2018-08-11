@@ -471,19 +471,28 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
     var selected_reqDate = date.getDate();
     var selected_reqMonth = date.getMonth();
     var selected_reqYear = date.getFullYear();
+    // var selected_reqHr = todayDate.getHours();
+    // var selected_reqMin = todayDate.getMinutes();
+    // var selected_reqSec = todayDate.getSeconds();
     var selected_date = new Date(selected_reqYear, selected_reqMonth, selected_reqDate);
+    
+    console.log("date: "+date);
     console.log("selected_date: " + selected_date);
+    
     if (todayDate > selected_date) {
       SweetAlert.swal({
         title: "Date Error",
         type: "warning",
         text: "Schedule date should not be lesser than current date",
       })
-     
+
     }
     else {
       $scope.selectedDateForEvent = $filter('date')(date, "EEE");
       $scope.selectedDate = date;
+      selectedStartDate = date.setMinutes(date.getMinutes()+5);
+      selectedEndDate = date.setMinutes(date.getMinutes()+20);
+      
 
       dayEventmodal = $uibModal.open({
         scope: $scope,
@@ -493,8 +502,8 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
         controller: function ($scope, $uibModalInstance) {
           var dt = new Date();
           $scope.eventDetails = {
-            "startsAt": $scope.selectedDate,
-            "endsAt": $scope.selectedDate
+            "startsAt": selectedStartDate,
+            "endsAt": selectedEndDate
           }
           console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
         }

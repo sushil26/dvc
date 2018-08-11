@@ -14,10 +14,12 @@
         background: white;
     }
 </style>
+<form name="scheduleInviteForm">
 <div class="modal-body">
     <input type="text" class="form-control" placeholder="Topic" ng-model="eventDetails.title">
-    <input style="margin-top:10px;" class="form-control" type="text" placeholder="Participents Email" ng-model="eventDetails.emailList">
-
+    <input style="margin-top:10px;" name="emailToInvite" class="form-control" type="text" placeholder="Participents Email" ng-model="eventDetails.emailList">
+    <span ng-show="scheduleInviteForm.emailToInvite.$touched">Ex:abc@gmail.com, xyz@gmail.com(Multiple email should separated by comma)</span>
+</p>
 
     <table>
         <tr>
@@ -44,3 +46,4 @@
     <button class="btn btn-warning loginpopUp_footerBtn" type="button" ng-click="$close()">Cancel</button>
     <button class="btn btn-primary" data-dismiss="modal" ng-click="save( eventDetails.title,eventDetails.emailList,eventDetails.startsAt,eventDetails.endsAt, eventDetails.reason)">Invite</button>
 </div>
+</form>

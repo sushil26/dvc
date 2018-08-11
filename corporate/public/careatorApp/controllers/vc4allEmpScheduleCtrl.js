@@ -481,7 +481,7 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
         backdropClass: 'static',
         keyboard: false,
         controller: function ($scope, $uibModalInstance) {
-          $scope.message = "Schedule date must be lesser than current date";
+          $scope.message = "Schedule date should not be lesser than current date";
         }
       })
     }

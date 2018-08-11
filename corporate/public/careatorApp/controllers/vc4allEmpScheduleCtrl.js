@@ -99,6 +99,8 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
     var consolidateDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
     console.log("rsd.getTime(): " + rsd.getTime() + " red: " + red.getTime());
     if (rsd.getTime() < red.getTime()) {
+      var diff = red.getHours() - rsd.getHours();
+      console.log("diff: "+diff);
       console.log("PersonalRemoteCombineCal.length: " + PersonalRemoteCombineCal.length);
       if (PersonalRemoteCombineCal.length > 0) {
         var conflicts = PersonalRemoteCombineCal.some(function (event) {
@@ -137,7 +139,7 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
       SweetAlert.swal({
         title: "Invalid Date",
         type: "warning",
-        text: "End time should not be lesser than start time",
+        text: "End time should not be lesser than/equal to start time",
       })
       // alert("Selected should not be lesser than current date");
     }

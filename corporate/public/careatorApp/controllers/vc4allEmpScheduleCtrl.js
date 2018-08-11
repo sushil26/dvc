@@ -1,6 +1,6 @@
 careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, $rootScope, $state, $rootScope, $compile, $window, $filter, careatorHttpFactory, careatorSessionAuth, moment, calendarConfig, $uibModal, SweetAlert) {
   console.log("vc4allEmpScheduleCtrl==>");
-  console.log("date: "+new Date());
+  console.log("date: " + new Date());
   var dayEventmodal; /* ### Note: open model for event send ###  */
   var studEvents = []; /* ### Note: selected student events ### */
   var teacherEvents = []; /* ### Note: selected teacher events ### */
@@ -30,7 +30,7 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
         $scope.todayDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
         console.log("consolidateDate: " + $scope.consolidateDate);
         $scope.eventGet();
-        
+
       } else { }
     })
     console.log("<--Get To Date");
@@ -436,67 +436,84 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
 
   vm.timespanClicked = function (date, css) {
     console.log("timespanClicked-->");
-    $scope.getToDate();
-    console.log("date: " + date);
-    console.log("$scope.todayDate: " + $scope.todayDate);
-    var reqDate = $scope.todayDate.getDate();
-    var reqMonth = $scope.todayDate.getMonth();
-    var reqYear = $scope.todayDate.getFullYear();
-    var todayDate = new Date(reqYear, reqMonth, reqDate);
-    console.log("todayDate: " + todayDate);
-    var selected_reqDate = date.getDate();
-    var selected_reqMonth = date.getMonth();
-    var selected_reqYear = date.getFullYear();
-    // var selected_reqHr = todayDate.getHours();
-    // var selected_reqMin = todayDate.getMinutes();
-    // var selected_reqSec = todayDate.getSeconds();
-    var selected_date = new Date(selected_reqYear, selected_reqMonth, selected_reqDate);
+    /* ##### Start getdate api  ##### */
+    var api = "https://norecruits.com/careator_getToDate/careator_getToDate";
+    careatorHttpFactory.get(api).then(function (data) {
+      var checkStatus = careatorHttpFactory.dataValidation(data);
+      console.log("data--" + JSON.stringify(data.data));
+      if (checkStatus) {
+        console.log("data.data.data.date: " + data.data.data.date);
+        var todayDate = new Date(data.data.data.date);
+        console.log("todayDate: " + todayDate);
+        var reqDate = todayDate.getDate();
+        console.log("reqDate: " + reqDate);
+        var reqMonth = todayDate.getMonth();
+        var reqYear = todayDate.getFullYear();
+        var reqHr = todayDate.getHours();
+        var reqMin = todayDate.getMinutes();
+        var reqSec = todayDate.getSeconds();
+        $scope.todayDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
+        console.log("consolidateDate: " + $scope.consolidateDate);
+        console.log("date: " + date);
+        console.log("$scope.todayDate: " + $scope.todayDate);
+        // var reqDate = $scope.todayDate.getDate();
+        // var reqMonth = $scope.todayDate.getMonth();
+        // var reqYear = $scope.todayDate.getFullYear();
+        var todayDate = new Date(reqYear, reqMonth, reqDate);
+        console.log("todayDate: " + todayDate);
+        var selected_reqDate = date.getDate();
+        var selected_reqMonth = date.getMonth();
+        var selected_reqYear = date.getFullYear();
+        
+        var selected_date = new Date(selected_reqYear, selected_reqMonth, selected_reqDate);
 
-    console.log("date: " + date);
-    console.log("selected_date: " + selected_date);
+        console.log("date: " + date);
+        console.log("selected_date: " + selected_date);
 
-    if (todayDate > selected_date) {
-      SweetAlert.swal({
-        title: "Date Error",
-        type: "warning",
-        text: "Schedule date should not be lesser than current date",
-      })
+        if (todayDate > selected_date) {
+          SweetAlert.swal({
+            title: "Date Error",
+            type: "warning",
+            text: "Schedule date should not be lesser than current date",
+          })
 
-    }
-    else {
-      console.log("Ready to process the date");
-      $scope.selectedDateForEvent = $filter('date')(date, "EEE");
-      $scope.selectedDate = date;
-      console.log("todayDate: " + todayDate.getTime() + "selected_date: " + selected_date.getTime());
-      if (todayDate.getTime() == selected_date.getTime()) {
-        console.log("selected and today both are same");
-        selectedStartDate = $scope.todayDate.setMinutes(date.getMinutes() + 5);
-        selectedEndDate = $scope.todayDate.setMinutes(date.getMinutes() + 20);
-        console.log("selectedStartDate: " + selectedStartDate + "selectedEndDate: " + selectedEndDate);
-      }
-      else {
-        console.log("selected and today both are different");
-        selectedStartDate = date;
-        selectedEndDate = date;
-      }
-
-
-
-      dayEventmodal = $uibModal.open({
-        scope: $scope,
-        templateUrl: '/careatorApp/common/scheduleTemplate.html',
-        windowClass: 'show',
-        backdropClass: 'show',
-        controller: function ($scope, $uibModalInstance) {
-          var dt = new Date();
-          $scope.eventDetails = {
-            "startsAt": selectedStartDate,
-            "endsAt": selectedEndDate
-          }
-          console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
         }
-      })
-    }
+        else {
+          console.log("Ready to process the date");
+          $scope.selectedDateForEvent = $filter('date')(date, "EEE");
+          $scope.selectedDate = date;
+          console.log("todayDate: " + todayDate.getTime() + "selected_date: " + selected_date.getTime());
+          if (todayDate.getTime() == selected_date.getTime()) {
+            console.log("selected and today both are same");
+            selectedStartDate = $scope.todayDate.setMinutes(date.getMinutes() + 5);
+            selectedEndDate = $scope.todayDate.setMinutes(date.getMinutes() + 20);
+            console.log("selectedStartDate: " + selectedStartDate + "selectedEndDate: " + selectedEndDate);
+          }
+          else {
+            console.log("selected and today both are different");
+            selectedStartDate = date;
+            selectedEndDate = date;
+          }
+          dayEventmodal = $uibModal.open({
+            scope: $scope,
+            templateUrl: '/careatorApp/common/scheduleTemplate.html',
+            windowClass: 'show',
+            backdropClass: 'show',
+            controller: function ($scope, $uibModalInstance) {
+              var dt = new Date();
+              $scope.eventDetails = {
+                "startsAt": selectedStartDate,
+                "endsAt": selectedEndDate
+              }
+              console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
+            }
+          })
+        }
+
+      } else { }
+    })
+    /* ##### End getdate api  ##### */
+
   }
 
 

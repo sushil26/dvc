@@ -1,19 +1,16 @@
-<div div class="modal-header loginpopUp_header">
-    <h4 class="modal-title">Event Details</h4>
-    <button type="button" class="close" data-dismiss="modal" ng-click="$close()" aria-hidden="true">&times;</button>
+<div class="modal-header loginpopUp_header" style="height: 50px;     background-image: linear-gradient(to bottom, #383c3f 0%, #202224 100%);">
+    <span class="modal-title" style="font-weight: 200;">
+        <b>&nbsp;Event Details</b>
+    </span>
+    <button type="button" class="close" data-dismiss="modal" ng-click="$close()">&times;</button>
 </div>
 <div class="modal-body">
 
-    <table class="table table-sm">
-        <thead>
-            <tr>
-                <th>
-                    <div class="panel-heading">
-                        Sender Details
-                    </div>
-                </th>
-            </tr>
-        </thead>
+
+    <div class="panel-heading">
+        Sender Details
+    </div>
+    <table>
         <tbody>
             <tr>
                 <td>
@@ -123,6 +120,6 @@
         </tbody> -->
     </table>
 </div>
-<div class="modal-footer">
+<div class="modal-footer loginpopUp_footer" style="    background-image: linear-gradient(to bottom, #383c3f 0%, #202224 100%);">
     <button class="btn btn-default loginpopUp_footerBtn" type="button" ng-click="$close()">Close</button>
 </div>

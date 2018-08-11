@@ -2,11 +2,11 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
     console.log("Chat controller==>");
 
 
-    document.getElementById("mobile-nav-toggle").addEventListener("click", function () {
-        console.log("mobile-nav-toggle clicked-->");
-        $("body").addClass('header-fixed');
+    // document.getElementById("mobile-nav-toggle").addEventListener("click", function () {
+    //     console.log("mobile-nav-toggle clicked-->");
+    //     $("body").addClass('header-fixed');
 
-    })
+    // })
 
 
 

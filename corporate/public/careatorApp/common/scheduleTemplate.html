@@ -18,7 +18,7 @@
 <div class="modal-body">
     <input type="text" class="form-control" placeholder="Topic" ng-model="eventDetails.title">
     <input style="margin-top:10px;" name="emailToInvite" class="form-control" type="text" placeholder="Participents Email" ng-model="eventDetails.emailList">
-    <span ng-show="scheduleInviteForm.emailToInvite.$touched">Ex:abc@gmail.com, xyz@gmail.com(Multiple email should separated by comma)</span>
+    <span ng-show="scheduleInviteForm.emailToInvite.$dirty" style="color:blue">*Note:Multiple email should separated by comma (Ex:abc@gmail.com, xyz@gmail.com</span>
 </p>
 
     <table>

@@ -388,7 +388,7 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
             localStorage.removeItem("profilePicPath");
             localStorage.removeItem("sessionRandomId");
             careatorSessionAuth.clearAccess("userData");
-            $scope.doRedirect();
+           // $scope.doRedirect();
         }
     })
     socket.on('comm_resetNotifyToUserById', function (data) {

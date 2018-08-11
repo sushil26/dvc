@@ -97,8 +97,8 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
     var reqMin = rsd.getMinutes();
     var reqSec = rsd.getSeconds();
     var consolidateDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
-    console.log("consolidateDate.getTime(): " + consolidateDate.getTime() + " $scope.todayDate: " + $scope.todayDate.getTime());
-    if (rsd.getTime() >= red.getTime()) {
+    console.log("rsd.getTime(): " + rsd.getTime() + " red: " + red.getTime());
+    if (rsd.getTime() < red.getTime()) {
       console.log("PersonalRemoteCombineCal.length: " + PersonalRemoteCombineCal.length);
       if (PersonalRemoteCombineCal.length > 0) {
         var conflicts = PersonalRemoteCombineCal.some(function (event) {

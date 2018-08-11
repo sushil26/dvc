@@ -761,7 +761,8 @@ transition: all 0.5s;">
   </div>
 
   <script>
-    $("#mobile-nav-toggle").click(function () {
+     document.getElementById("mobile-nav-toggle").addEventListener("click", function () {
+   
       console.log("mobile-nav-toggle clicked-->");
       $("body").addClass('header-fixed');
 

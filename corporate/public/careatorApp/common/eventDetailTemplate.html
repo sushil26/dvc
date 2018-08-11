@@ -9,19 +9,19 @@
 
 
     <label>Name</label>
-    <div style="color:green">{{eventDetails.senderName}} </div>
+  {{eventDetails.senderName}} 
 
     <label>Topic</label>
-    <div style="color:green">{{eventDetails.title}} </div>
+  {{eventDetails.title}} 
 
     <label>Timing</label>
-    <div style="color:green">{{eventDetails.startsAt | date:'h:mm a'}}-{{eventDetails.endsAt | date:'h:mm a'}} </div>
+{{eventDetails.startsAt | date:'h:mm a'}}-{{eventDetails.endsAt | date:'h:mm a'}} 
 
     <label>Message</label>
-    <div style="color:green">{{eventDetails.reason}} </div>
+{{eventDetails.reason}} 
 
     <label> Receiver Emails</label>
-    <div style="color:green" ng-repeat="email in eventDetails.invitingTo">
+    <div ng-repeat="email in eventDetails.invitingTo">
         {{email}}
     </div>
 

@@ -101,7 +101,7 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
     if (rsd.getTime() < red.getTime()) {
       var diff = red.getHours() - rsd.getHours();
       console.log("diff: "+diff);
-      if(diff>8){
+      if(diff<=8){
         console.log("PersonalRemoteCombineCal.length: " + PersonalRemoteCombineCal.length);
         if (PersonalRemoteCombineCal.length > 0) {
           var conflicts = PersonalRemoteCombineCal.some(function (event) {

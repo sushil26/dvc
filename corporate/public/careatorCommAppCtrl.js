@@ -2,16 +2,9 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
     console.log("Chat controller==>");
 
 
-    // document.getElementById("mobile-nav-toggle").addEventListener("click", function () {
-    //     console.log("mobile-nav-toggle clicked-->");
-    //     $("body").addClass('header-fixed');
-
-    // })
-
-
-
     $scope.gotToDashboard = function () {
         console.log("gotToDashboard-->");
+
         $state.go('Cdashboard', {});
     }
     var loginModal; /* ### Note: get login modal instance on this variable ###*/
@@ -58,7 +51,6 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
                 $scope.sessionSet(datas);
             } else {
                 if (data.data.message == "You've already logged in. To log in again, please reset your session") {
-
 
                     SweetAlert.swal({
                         title: "Reset Session",
@@ -216,8 +208,6 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
         careatorHttpFactory.post(api, $scope.checkObj).then(function (data) {
             var checkStatus = careatorHttpFactory.dataValidation(data);
             if (checkStatus) {
-
-
                 SweetAlert.swal({
                     title: "Reset Done", //light text
                     type: "success", //type -- adds appropiriate icon

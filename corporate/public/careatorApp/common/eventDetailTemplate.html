@@ -8,51 +8,51 @@
 
     <table>
         <tr>
-            <td style="float:right;">
-                <label>Name:</label>
+            <td>
+                <label style="float:right;">Name:</label>
             </td>
-            <td style="float:left;">
-                <lable>
+            <td>
+                <lable style="float:left;">
                     <b>{{eventDetails.senderName}}</b>
                 </lable>
             </td>
         </tr>
         <tr>
-            <td style="float:right;">
-                <label>Topic:</label>
+            <td>
+                <label style="float:right;">Topic:</label>
             </td>
-            <td style="float:left;">
-                <lable>
+            <td>
+                <lable style="float:left;">
                     <b>{{eventDetails.title}}</b>
                 </lable>
             </td>
         </tr>
         <tr>
-            <td style="float:right;">
-                <label>Timing:</label>
+            <td>
+                <label style="float:right;">Timing:</label>
             </td>
-            <td style="float:left;">
-                <lable>
+            <td>
+                <lable style="float:left;">
                     <b>{{eventDetails.startsAt | date:'h:mm a'}}-{{eventDetails.endsAt | date:'h:mm a'}}</b>
                 </lable>
             </td>
         </tr>
         <tr>
-            <td style="float:right;">
-                <label>Message:</label>
+            <td>
+                <label style="float:right;">Message:</label>
             </td>
-            <td style="float:left;">
-                <lable>
+            <td>
+                <lable style="float:left;">
                     <b>{{eventDetails.reason}}</b>
                 </lable>
             </td>
         </tr>
         <tr>
-            <td style="float:right;">
-                <label>Receiver Emails:</label>
+            <td>
+                <label style="float:right;">Receiver Emails:</label>
             </td>
-            <td style="float:left;">
-                <span ng-repeat="email in eventDetails.invitingTo">
+            <td>
+                <span style="float:left;" ng-repeat="email in eventDetails.invitingTo">
                     <lable>
                         <b>{{email}}</b>
                     </lable>

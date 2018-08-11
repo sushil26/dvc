@@ -436,12 +436,18 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
 
   vm.timespanClicked = function (date, css) {
     console.log("timespanClicked-->");
-    $scope.todayDate = $scope.getToDate();
+    currentDate = $scope.getToDate();
+    $scope.dateComparision(currentDate, date);
     console.log("date: " + date);
     console.log("$scope.todayDate: " + $scope.todayDate);
-    var reqDate = $scope.todayDate.getDate();
-    var reqMonth = $scope.todayDate.getMonth();
-    var reqYear = $scope.todayDate.getFullYear();
+  }
+
+  $scope.dateComparision = function(currentDate, date){
+    console.log(" date comparision-->");
+
+    var reqDate = currentDate.getDate();
+    var reqMonth = currentDate.getMonth();
+    var reqYear = currentDate.getFullYear();
     var todayDate = new Date(reqYear, reqMonth, reqDate);
     console.log("todayDate: " + todayDate);
     var selected_reqDate = date.getDate();
@@ -470,8 +476,8 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
       console.log("todayDate: " + todayDate.getTime() + "selected_date: " + selected_date.getTime());
       if (todayDate.getTime() == selected_date.getTime()) {
         console.log("selected and today both are same");
-        selectedStartDate = $scope.todayDate.setMinutes(date.getMinutes() + 5);
-        selectedEndDate = $scope.todayDate.setMinutes(date.getMinutes() + 20);
+        selectedStartDate = currentDate.setMinutes(date.getMinutes() + 5);
+        selectedEndDate = currentDate.setMinutes(date.getMinutes() + 20);
         console.log("selectedStartDate: " + selectedStartDate + "selectedEndDate: " + selectedEndDate);
       }
       else {
@@ -479,9 +485,6 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
         selectedStartDate = date;
         selectedEndDate = date;
       }
-
-
-
       dayEventmodal = $uibModal.open({
         scope: $scope,
         templateUrl: '/careatorApp/common/scheduleTemplate.html',
@@ -498,6 +501,7 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
       })
     }
   }
+
 
 
 

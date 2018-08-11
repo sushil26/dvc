@@ -493,6 +493,7 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
       if(todayDate == selected_date){
         selectedStartDate = date.setMinutes(date.getMinutes()+5);
         selectedEndDate = date.setMinutes(date.getMinutes()+20);
+        console.log("selectedStartDate: "+selectedStartDate+"selectedEndDate: "+selectedEndDate);
       }
       else{
         selectedStartDate = date;

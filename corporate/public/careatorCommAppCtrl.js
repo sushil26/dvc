@@ -21,9 +21,6 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
         console.log("userName: " + userName);
         if (($scope.userData.email != null && $scope.userData.email != undefined) && ($scope.userData.sessionPassword != null && $scope.userData.sessionPassword != undefined)) {
 
-
-
-
         } else {
             console.log("enterEmail: -->");
 
@@ -102,6 +99,16 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
         });
 
     }
+
+    $scope.$watch($scope.userData, function(newVal, oldVal) {
+        if(newVal !== oldVal) {
+          // call with updated filters
+          console.log("different value found");
+        }
+        else{
+            console.log("Same valeu");
+        }
+      });
 
     $scope.sessionSet = function (data) {
         console.log("sessionSet-->");

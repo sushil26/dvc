@@ -98,7 +98,7 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
     var reqSec = rsd.getSeconds();
     var consolidateDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
     console.log("consolidateDate: " + consolidateDate + " $scope.todayDate: " + $scope.todayDate);
-    if (consolidateDate > $scope.todayDate) {
+    if (consolidateDate >= $scope.todayDate) {
       console.log("PersonalRemoteCombineCal.length: " + PersonalRemoteCombineCal.length);
       if (PersonalRemoteCombineCal.length > 0) {
         var conflicts = PersonalRemoteCombineCal.some(function (event) {

@@ -26,14 +26,16 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
         var reqHr = todayDate.getHours();
         var reqMin = todayDate.getMinutes();
         var reqSec = todayDate.getSeconds();
-        $scope.todayDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
+        var todayDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
         console.log("consolidateDate: " + $scope.consolidateDate);
         $scope.eventGet();
+        return todayDate;
+
       } else { }
     })
     console.log("<--Get To Date");
   }
-  $scope.getToDate();
+  $scope.todayDate = $scope.getToDate();
   $scope.eventGet = function () {
     console.log("eventGet-->");
     var id = $scope.userData.userId
@@ -434,7 +436,7 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
 
   vm.timespanClicked = function (date, css) {
     console.log("timespanClicked-->");
-    $scope.getToDate();
+    $scope.todayDate = $scope.getToDate();
     console.log("date: " + date);
     console.log("$scope.todayDate: " + $scope.todayDate);
     var reqDate = $scope.todayDate.getDate();

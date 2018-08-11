@@ -101,7 +101,7 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
 
                     SweetAlert.swal({
                         title: "Error",
-                        text: "data.data.message",
+                        text: data.data.message,
                         type: "warning"
                     });
 

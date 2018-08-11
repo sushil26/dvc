@@ -7,22 +7,28 @@
 <div class="modal-body">
 
 
+    <div>
+        <label>Name</label>
+        {{eventDetails.senderName}}
+    </div>
 
-    <label>Name</label>
-  {{eventDetails.senderName}} 
+    <div>
+        <label>Topic</label>
+        {{eventDetails.title}}
+    </div>
 
-    <label>Topic</label>
-  {{eventDetails.title}} 
-
-    <label>Timing</label>
-{{eventDetails.startsAt | date:'h:mm a'}}-{{eventDetails.endsAt | date:'h:mm a'}} 
-
-    <label>Message</label>
-{{eventDetails.reason}} 
-
-    <label> Receiver Emails</label>
-    <div ng-repeat="email in eventDetails.invitingTo">
-        {{email}}
+    <div>
+        <label>Timing</label>
+        {{eventDetails.startsAt | date:'h:mm a'}}-{{eventDetails.endsAt | date:'h:mm a'}}
+    </div>
+    <div>
+        <label>Message</label>
+        {{eventDetails.reason}}</div>
+    <div>
+        <label> Receiver Emails</label>
+        <div ng-repeat="email in eventDetails.invitingTo">
+            {{email}}
+        </div>
     </div>
 
 

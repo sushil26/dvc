@@ -264,10 +264,8 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
   calendarConfig.dateFormats.hour = 'HH:mm';
   if ($scope.userData.loginType == 'teacher') {
     var actions = [{
-      // label: '<i class=\'glyphicon glyphicon-pencil\'></i>',
       label: 'Re-Schedule',
       onClick: function (args) {
-        // alert("Edit Event Comming Soon");
         console.log("args.calendarEvent: " + args.calendarEvent);
         console.log("JSON args.calendarEvent: " + JSON.stringify(args.calendarEvent));
         var date = args.calendarEvent.startsAt;
@@ -283,11 +281,6 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
         if (consolidateDate > $scope.todayDate) {
           // alert("Edit Started-->");
           var id = args.calendarEvent.id;
-          //   var cs= $scope.events[id].student_cs;
-
-          //   var stud_id = $scope.events[id].student_id; 
-          //   var name = $scope.events[id].student_Name;
-
           console.log("id: " + id);
           $state.go('dashboard.eventReschedule', {
             'id': id
@@ -305,28 +298,8 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
           })
           // alert("Sorry you not allow to edit");
         }
-        // var eClicked = $uibModal.open({
-        //   scope: $scope,
-        //   templateUrl: '/html/templates/eventDetails_edit.html',
-        //   windowClass: 'show',
-        //   backdropClass: 'show',
-        //   controller: function ($scope, $uibModalInstance) {
-        //     $scope.eventDetails = args.calendarEvent;
-        //     console.log("$scope.eventDetails: " + $scope.eventDetails);
-        //   }
-        // })
-
       }
     }
-      // {
-
-      //   label: 'Delete',
-      //   onClick: function (args) {
-      //     alert("Delete Event Comming Soon");
-      //     console.log("args: " + args);
-
-      //   }
-      // }
     ];
   }
 
@@ -461,6 +434,7 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
 
   vm.timespanClicked = function (date, css) {
     console.log("timespanClicked-->");
+    $scope.getToDate();
     console.log("date: " + date);
     console.log("$scope.todayDate: " + $scope.todayDate);
     var reqDate = $scope.todayDate.getDate();
@@ -475,10 +449,10 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
     // var selected_reqMin = todayDate.getMinutes();
     // var selected_reqSec = todayDate.getSeconds();
     var selected_date = new Date(selected_reqYear, selected_reqMonth, selected_reqDate);
-    
-    console.log("date: "+date);
+
+    console.log("date: " + date);
     console.log("selected_date: " + selected_date);
-    
+
     if (todayDate > selected_date) {
       SweetAlert.swal({
         title: "Date Error",
@@ -491,20 +465,20 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
       console.log("Ready to process the date");
       $scope.selectedDateForEvent = $filter('date')(date, "EEE");
       $scope.selectedDate = date;
-      console.log("todayDate: "+todayDate.getTime()+"selected_date: "+selected_date.getTime());
-      if(todayDate.getTime() == selected_date.getTime()){
+      console.log("todayDate: " + todayDate.getTime() + "selected_date: " + selected_date.getTime());
+      if (todayDate.getTime() == selected_date.getTime()) {
         console.log("selected and today both are same");
-        selectedStartDate = date.setMinutes(date.getMinutes()+5);
-        selectedEndDate = date.setMinutes(date.getMinutes()+20);
-        console.log("selectedStartDate: "+selectedStartDate+"selectedEndDate: "+selectedEndDate);
+        selectedStartDate = $scope.todayDate.setMinutes(date.getMinutes() + 5);
+        selectedEndDate = $scope.todayDate.setMinutes(date.getMinutes() + 20);
+        console.log("selectedStartDate: " + selectedStartDate + "selectedEndDate: " + selectedEndDate);
       }
-      else{
+      else {
         console.log("selected and today both are different");
         selectedStartDate = date;
         selectedEndDate = date;
       }
-      
-      
+
+
 
       dayEventmodal = $uibModal.open({
         scope: $scope,

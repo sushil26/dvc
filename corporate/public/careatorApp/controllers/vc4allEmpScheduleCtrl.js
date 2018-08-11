@@ -463,23 +463,47 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
     console.log("timespanClicked-->");
     console.log("date: " + date);
     console.log("$scope.todayDate: " + $scope.todayDate);
-    $scope.selectedDateForEvent = $filter('date')(date, "EEE");
-    $scope.selectedDate = date;
-
-    dayEventmodal = $uibModal.open({
-      scope: $scope,
-      templateUrl: '/careatorApp/common/scheduleTemplate.html',
-      windowClass: 'show',
-      backdropClass: 'show',
-      controller: function ($scope, $uibModalInstance) {
-        var dt = new Date();
-        $scope.eventDetails = {
-          "startsAt": $scope.selectedDate,
-          "endsAt": $scope.selectedDate
+    var reqDate = $scope.todayDate.getDate();
+    var reqMonth = $scope.todayDate.getMonth();
+    var reqYear = $scope.todayDate.getFullYear();
+    var todayDate = new Date(reqYear, reqMonth, reqDate);
+    console.log("todayDate: " + todayDate);
+    var selected_reqDate = date.getDate();
+    var selected_reqMonth = date.getMonth();
+    var selected_reqYear = date.getFullYear();
+    var selected_date = new Date(selected_reqYear, selected_reqMonth, selected_reqDate);
+    console.log("selected_date: " + selected_date);
+    if ($scope.todayDate > date) {
+      var loginAlert = $uibModal.open({
+        scope: $scope,
+        templateUrl: '/html/templates/dashboardwarning.html',
+        windowClass: 'show',
+        backdropClass: 'static',
+        keyboard: false,
+        controller: function ($scope, $uibModalInstance) {
+          $scope.message = "Schedule date ";
         }
-        console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
-      }
-    })
+      })
+    }
+    else {
+      $scope.selectedDateForEvent = $filter('date')(date, "EEE");
+      $scope.selectedDate = date;
+
+      dayEventmodal = $uibModal.open({
+        scope: $scope,
+        templateUrl: '/careatorApp/common/scheduleTemplate.html',
+        windowClass: 'show',
+        backdropClass: 'show',
+        controller: function ($scope, $uibModalInstance) {
+          var dt = new Date();
+          $scope.eventDetails = {
+            "startsAt": $scope.selectedDate,
+            "endsAt": $scope.selectedDate
+          }
+          console.log("$scope.eventDetails: " + JSON.stringify($scope.eventDetails));
+        }
+      })
+    }
   }
 
 

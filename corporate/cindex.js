@@ -483,8 +483,8 @@ io.sockets.on('connection', function (socket) {
 
         var db = mongoConfig.getDb();
         console.log("db: " + db);
-        careatorMaster = db.collection("careatorMaster");
-        var careatorMaster = db.collection("careatorMaster");
+       var careatorMaster = db.collection("careatorMaster");
+        var loginDetails = db.collection("loginDetails");
         if (data.sessionURL != "" && data.sessionURL != undefined) {
             var url = data.sessionURL;
             var stuff = url.split("/");
@@ -505,7 +505,7 @@ io.sockets.on('connection', function (socket) {
                     console.log("data: " + JSON.stringify(data));
                     var date = new Date();
                     loginDetails.update(queryObj, { $set: { "userId": data.userId, "login": false, "logoutDate": date, "logout": true } }, function (err, logoutData) {
-                        if (err) {
+                    if (err) {
                             console.log("errr: " + JSON.stringify(err));
                         }
                         else {

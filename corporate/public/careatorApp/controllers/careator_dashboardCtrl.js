@@ -189,7 +189,11 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
         console.log("localStorage.getItem(sessionUrlId): " + localStorage.getItem("sessionUrlId"));
 
         if (localStorage.getItem("sessionUrlId")) {
-            SweetAlert.swal("You have to disconnect your old session in-order to open new");
+            SweetAlert.swal({
+                title: "Disconnected",
+                type: "warning",
+                text: "You have to disconnect your old session in-order to open new",
+            });
             // alert("You have to disconnect your old session in-order to open new");
         } else {
             window.open('https://norecruits.com/careator', '_blank');
@@ -517,7 +521,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
 
         //custom scrollbar
         //for html
-  
+
 
         //sidebar dropdown menu
         $('#sidebar .sub-menu > a').click(function () {

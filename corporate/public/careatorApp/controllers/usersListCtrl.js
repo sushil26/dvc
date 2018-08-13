@@ -43,7 +43,10 @@ careatorApp.controller('usersListCtrl', function ($scope, $state, careatorHttpFa
                 },
                 function (isConfirm) { //Function that triggers on user action.
                     if (isConfirm) {
-                        SweetAlert.swal("Activated!");
+                        SweetAlert.swal({
+                            title: "Activated!",
+                            type: "success"
+                        });
                         console.log("statusChange-->");
                         console.log("id: " + id + " status: " + status + " index: " + index);
                         var obj = {
@@ -68,7 +71,11 @@ careatorApp.controller('usersListCtrl', function ($scope, $state, careatorHttpFa
 
 
                     } else {
-                        SweetAlert.swal("You did not Activate the user!");
+                        SweetAlert.swal({
+                            title: "Not Activated!",
+                            type: "info",
+                            text: "You did not Activate the user!"
+                        });
                     }
                 }
             )
@@ -88,7 +95,11 @@ careatorApp.controller('usersListCtrl', function ($scope, $state, careatorHttpFa
                 },
                 function (isConfirm) { //Function that triggers on user action.
                     if (isConfirm) {
-                        SweetAlert.swal("Deactivated!");
+                        SweetAlert.swal({
+                            title: "Deactivated!",
+                            type: "success",
+                            text: "User can not login Now!"
+                        });
                         console.log("statusChange-->");
                         console.log("id: " + id + " status: " + status + " index: " + index);
                         var obj = {
@@ -111,7 +122,12 @@ careatorApp.controller('usersListCtrl', function ($scope, $state, careatorHttpFa
                         })
                         console.log("<--statusChange");
                     } else {
-                        SweetAlert.swal("User cant login Now!");
+                        SweetAlert.swal({
+                            title: "Not Deactivated!",
+                            type: "warning",
+                            text: "User can still login Now!"
+                        });
+
                     }
                 }
             )
@@ -150,7 +166,10 @@ careatorApp.controller('usersListCtrl', function ($scope, $state, careatorHttpFa
             },
             function (isConfirm) { //Function that triggers on user action.
                 if (isConfirm) {
-                    SweetAlert.swal("Deleted!");
+                    SweetAlert.swal({
+                        title: "Deleted!",
+                        type: "success"
+                    });
                     var api = "https://norecruits.com/careator_userDelete/userDeleteById/" + id;
                     careatorHttpFactory.get(api).then(function (data) {
                         console.log("data--" + JSON.stringify(data.data));
@@ -167,7 +186,12 @@ careatorApp.controller('usersListCtrl', function ($scope, $state, careatorHttpFa
                     console.log("<--statusChange");
 
                 } else {
-                    SweetAlert.swal("Your user is safe!");
+                    SweetAlert.swal({
+                        title: "Not Deleted!",
+                        text: "Your user is safe!",
+                        type: "info"
+                    });
+
                 }
             }
 
@@ -196,6 +220,11 @@ careatorApp.controller('usersListCtrl', function ($scope, $state, careatorHttpFa
             },
             function (isConfirm) { //Function that triggers on user action.
                 if (isConfirm) {
+                    SweetAlert.swal({
+                        title: "Resetted!",
+                        text: "All session of this user got killed",
+                        type: "success"
+                    });
                     SweetAlert.swal("Reseted!");
                     console.log("Obj ID  " + id);
                     console.log("userReset-->");

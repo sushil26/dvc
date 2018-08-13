@@ -36,7 +36,10 @@ careatorApp.controller('groupListCtrl', function ($scope, $state, careatorHttpFa
                 },
                 function (isConfirm) { //Function that triggers on user action.
                     if (isConfirm) {
-                        SweetAlert.swal("Activated!");
+                        SweetAlert.swal({
+                            title: "Activated!",
+                            type: "success"
+                        });
                         console.log("statusChange-->");
                         console.log("id: " + id + " status: " + status);
                         var obj = {
@@ -59,7 +62,12 @@ careatorApp.controller('groupListCtrl', function ($scope, $state, careatorHttpFa
                         })
                         console.log("<--statusChange");
                     } else {
-                        SweetAlert.swal("You did not Activate the user!");
+
+                        SweetAlert.swal({
+                            title: "Not Activated!",
+                            type: "info",
+                            text: "You did not Activate the group!"
+                        });
                     }
                 }
 
@@ -78,7 +86,10 @@ careatorApp.controller('groupListCtrl', function ($scope, $state, careatorHttpFa
                 },
                 function (isConfirm) { //Function that triggers on user action.
                     if (isConfirm) {
-                        SweetAlert.swal("Deactivated!");
+                        SweetAlert.swal({
+                            title: "Deactivated!",
+                            type: "success"
+                        });
                         console.log("statusChange-->");
                         console.log("id: " + id + " status: " + status);
                         var obj = {
@@ -101,7 +112,11 @@ careatorApp.controller('groupListCtrl', function ($scope, $state, careatorHttpFa
                         })
                         console.log("<--statusChange");
                     } else {
-                        SweetAlert.swal("Users cant use this group!");
+                        SweetAlert.swal({
+                            title: "Not Deactivated!",
+                            type: "warning",
+                            text: "Users can  still use this Group!"
+                        });
                     }
                 }
 
@@ -133,7 +148,10 @@ careatorApp.controller('groupListCtrl', function ($scope, $state, careatorHttpFa
             },
             function (isConfirm) { //Function that triggers on user action.
                 if (isConfirm) {
-                    SweetAlert.swal("Deleted!");
+                    SweetAlert.swal({
+                        title: "Deleted!",
+                        type: "success",
+                    });
                     console.log("deleteGroup-->");
                     console.log("Obj ID  " + id);
                     // $("#GroupDeleteButton").trigger("click");
@@ -153,7 +171,11 @@ careatorApp.controller('groupListCtrl', function ($scope, $state, careatorHttpFa
                     })
                     console.log("<--statusChange");
                 } else {
-                    SweetAlert.swal("Your group is safe!");
+                    SweetAlert.swal({
+                        title: "safe",
+                        text: "Your group is safe!",
+                        type: "info"
+                    });
                 }
             }
         )

@@ -1,4 +1,4 @@
-careatorApp.controller("chatCtrl", function ($scope,$rootScope, careatorHttpFactory, careatorSessionAuth, SweetAlert) {
+careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFactory, careatorSessionAuth, SweetAlert) {
   console.log("chatCtrl==>");
   $scope.count = 0;
   var userData = careatorSessionAuth.getAccess("userData");
@@ -506,7 +506,11 @@ careatorApp.controller("chatCtrl", function ($scope,$rootScope, careatorHttpFact
         $scope.notifyMsg = "You do not have permission to chat with " + $scope.receiverData.receiverName;
         console.log(" $scope.notifyMsg: " + $scope.notifyMsg);
         // $("#alertButton").trigger("click");
-        SweetAlert.swal($scope.notifyMsg);
+        SweetAlert.swal({
+          title:"Not Allowed",
+          text: $scope.notifyMsg,
+          type: "info"
+        });
       }
     } else if ($scope.selectedType == "group") {
       obj = {

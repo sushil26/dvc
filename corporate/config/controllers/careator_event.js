@@ -5,7 +5,7 @@ var ObjectId = require("mongodb").ObjectID;
 var nodemailer = require("nodemailer");
 var randomstring = require("randomstring");
 var careatorMaster = db.collection("careatorMaster"); /* ### careator employee collection  ### */
-var careatorEvents = db.collection("careatorEvents"); /* ### careatorChatGroup collection  ### */
+var careatorEvents = db.collection("careatorEvents"); /* ### careatorEvents collection  ### */
 
 
 var transporter = nodemailer.createTransport({

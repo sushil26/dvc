@@ -1,9 +1,6 @@
 careatorApp.controller('userLoginDetailsCtrl', function ($scope, $state, careatorHttpFactory, SweetAlert) {
     console.log("userLoginDetailsCtrl==>");
 
-
-    
-
     $scope.getAllEmployeeLoginDetails = function () {
         console.log("getAllEmployeeLoginDetails-->");
         var api = "https://norecruits.com/careator/careator_getAllEmpLoginDetails";
@@ -26,8 +23,8 @@ careatorApp.controller('userLoginDetailsCtrl', function ($scope, $state, careato
 
     $scope.getAllEmployeeLoginDetails();
 
-  
-   
+
+
     /////////serch///////////////////
     $scope.sort = function (keyname) {
         $scope.sortKey = keyname; //set the sortKey to the param passed

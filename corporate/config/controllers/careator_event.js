@@ -71,8 +71,6 @@ module.exports.careator_sendEventSchedule = function (req, res) {
         var emailSplit = emailString.split(',');
         console.log("emailSplit: " + JSON.stringify(emailSplit));
         var maillist = emailSplit;
-
-
         var userData = {
             "senderId": req.body.senderId,
             "senderName": req.body.senderName,

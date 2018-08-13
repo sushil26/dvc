@@ -2,9 +2,6 @@ careatorApp.controller('userLoginDetailsCtrl', function ($scope, $state, careato
     console.log("userLoginDetailsCtrl==>");
 
 
-
-
-
     $scope.getAllEmployee = function () {
         console.log("getAllEmployee-->");
         var api = "https://norecruits.com/careator/careator_getAllEmp";

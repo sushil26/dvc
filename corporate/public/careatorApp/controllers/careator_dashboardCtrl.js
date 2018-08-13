@@ -259,7 +259,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                 } else {
                     SweetAlert.swal({
                         title: "Your still logged in",
-                        type:"info"
+                        type: "info"
                     });
                 }
             }
@@ -473,7 +473,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
             })
         } else {
             SweetAlert.swal({
-                    title:"window is already opened", //Bold text
+                    title: "window is already opened", //Bold text
                     text: "we will take you the desired page!", //light text
                     type: "warning", //type -- adds appropiriate icon
                     showCancelButton: true, // displays cancel btton
@@ -484,10 +484,16 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                 },
                 function (isConfirm) { //Function that triggers on user action.
                     if (isConfirm) {
-                        SweetAlert.swal("ok!");
+                        // SweetAlert.swal("ok!");
                         w.focus();
                     } else {
-                        SweetAlert.swal("didnt open");
+                        SweetAlert.swal({
+                            
+                            title: "Cancelled",
+                            text: "You have entered cancel you are still in same Page",
+                            type: "info"
+                        });
+
                     }
                 }
 

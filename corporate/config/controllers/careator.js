@@ -8,6 +8,7 @@ var log = logger.LOG;
 var nodemailer = require("nodemailer");
 var randomstring = require("randomstring");
 var careatorMaster = db.collection("careatorMaster"); /* ### careator employee collection  ### */
+var loginDetails = db.collection("loginDetails"); /* ### careator login detail collection  ### */
 var careatorChatGroup = db.collection("careatorChatGroup"); /* ### careatorChatGroup collection  ### */
 var careatorChat = db.collection("careatorChat"); /* ### careatorChat collection  ### */
 var csv = require('fast-csv');
@@ -277,39 +278,39 @@ module.exports.pswdCheck = function (req, res) {
                         if (findData[0].status == 'active') {
                             if (findData[0].password == password) {
                                 if (findData[0].logout == 'done' && findData[0].login == 'notDone') {
-                                    careatorMaster.update({
-                                        "_id": ObjectId(findData[0]._id),
-                                        "status": "active"
-                                    }, {
-                                            $set: {
-                                                "password": password,
-                                                "invite": [],
-                                                "logout": "notDone",
-                                                "login": "done"
-                                            }
-                                        }, function (err, data) {
-                                            console.log("data: " + JSON.stringify(data));
-                                            if (err) {
-                                                responseData = {
-                                                    status: false,
-                                                    message: property.E0007
-                                                };
-                                                res.status(400).send(responseData);
-                                            } else {
-                                                var date = new Date();
-                                              
-                                                log.info("req.originalUrl: " + req.originalUrl + " Email: " + findData[0].email, " Date: (" + date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate() + ")" + " Time: (" + date.getHours() + ":" + date.getMinutes() + ")" );
-                                                console.log("log: " + log);
-                                                responseData = {
-                                                    status: true,
-                                                    message: property.S0005,
-                                                    sessionData: "79ea520a-3e67-11e8-9679-97fa7aeb8e97",
-                                                    data: findData[0]
-                                                };
-                                                console.log("responseData: " + JSON.stringify(responseData));
-                                                res.status(200).send(responseData);
-                                            }
-                                        })
+                                    careatorMaster.update({ "_id": ObjectId(findData[0]._id), "status": "active" }, { $set: { "password": password, "invite": [], "logout": "notDone", "login": "done" } }, function (err, data) {
+                                        console.log("data: " + JSON.stringify(data));
+                                        if (err) {
+                                            responseData = {
+                                                status: false,
+                                                message: property.E0007
+                                            };
+                                            res.status(400).send(responseData);
+                                        } else {
+                                            var date = new Date();
+                                            loginDetails.update({ "_id": ObjectId(findData[0]._id) }, { $set: { "userId": findData[0]._id, "login": true, "loginDate": date, "logout": false } }, function (err, data) {
+                                                if (err) {
+                                                    responseData = {
+                                                        status: false,
+                                                        message: property.E0007
+                                                    };
+                                                    res.status(400).send(responseData);
+                                                } else {
+                                                    // log.info("req.originalUrl: " + req.originalUrl + " Email: " + findData[0].email, " Date: (" + date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate() + ")" + " Time: (" + date.getHours() + ":" + date.getMinutes() + ")");
+                                                    console.log("log: " + log);
+                                                    responseData = {
+                                                        status: true,
+                                                        message: property.S0005,
+                                                        sessionData: "79ea520a-3e67-11e8-9679-97fa7aeb8e97",
+                                                        data: findData[0]
+                                                    };
+                                                    console.log("responseData: " + JSON.stringify(responseData));
+                                                    res.status(200).send(responseData);
+                                                }
+                                            })
+
+                                        }
+                                    })
                                 } else {
                                     responseData = {
                                         status: false,

@@ -252,8 +252,8 @@ module.exports.pswdCheckForSesstion = function (req, res) {
     }
     console.log("<--pswdCheckForSesstion");
 }
-module.exports.pswdCheckForSchedule_Sesstion = function (req, res) {
-    console.log("pswdCheckForSesstion-->");
+module.exports.pswdCheckForSession_schedule = function (req, res) {
+    console.log("pswdCheckForSession_schedule-->");
     console.log("req.body.password: " + req.body.password + " req.body.careatorEmail: " + req.body.careatorEmail);
     var password = req.body.password;
     var careatorEmail = req.body.careatorEmail;

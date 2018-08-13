@@ -293,5 +293,5 @@ function careator_historyEvent() {
 }
 
 function careator_loginDetails(){
-    return '/careator_loginDetails'
+    return '/loginDetails'
 }

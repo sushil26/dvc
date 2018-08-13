@@ -70,6 +70,13 @@
                         </a>
                     </li>
                     <li ng-if="userData.email=='vc4all@careator.com'">
+                        <a href="#!/dashboard/loginDetails">
+                            <i class="fa fa-sign-out">
+                                <span>&nbspLog Details</span>
+                            </i>
+                        </a>
+                    </li>
+                    <li ng-if="userData.email=='vc4all@careator.com'">
                         <a href="#!/dashboard/groupList">
                             <i class="fa fa-list">
                                 <span>&nbspAll Groups</span>
@@ -125,13 +132,7 @@
                             </i>
                         </a>
                     </li>
-                    <li ng-if="userData.email=='vc4all@careator.com'">
-                        <a href="#!/dashboard/loginDetails">
-                            <i class="fa fa-sign-out">
-                                <span>&nbspLog Details</span>
-                            </i>
-                        </a>
-                    </li>
+
                     <li>
                         <a ng-click="logout()">
                             <i class="fa fa-sign-out">

@@ -1081,6 +1081,30 @@ module.exports.careator_getAllEmp = function (req, res) {
     })
 
 }
+
+module.exports.careator_getAllEmpLoginDetails= function (req, res) {
+console.log("careator_getAllEmpLoginDetails-->");
+var response;
+loginDetails.find().toArray(function (err, allEmpLoginDetails) {
+        if (err) {
+            console.log("err: " + JSON.stringify(err));
+            response = {
+                status: false,
+                message: property.E0007,
+                data: err
+            };
+            res.status(400).send(responseData);
+        } else {
+            console.log("allEmpLoginDetails: " + JSON.stringify(allEmpLoginDetails));
+            response = {
+                status: true,
+                message: property.S0008,
+                data: allEmpLoginDetails
+            };
+            res.status(200).send(response);
+        }
+    })
+}
 /* ##### Start: Get careator all employee include status inactive  #### */
 module.exports.careator_getChatRightsEmp = function (req, res) {
     console.log("careator_getChatRightsEmp-->");

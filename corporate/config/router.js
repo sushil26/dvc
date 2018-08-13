@@ -69,6 +69,8 @@ module.exports = function (app) {
     app.post('/careator_comm_profileImgUpload/comm_profileImgUpload', careatorImgUpload.comm_profileImgUpload);
     app.post('/careator_comm_profileImgUpdateById/comm_profileImgUpdateById/:id', careator.comm_profileImgUpdateById);
 
+    app.get('careator/careator_getAllEmpLoginDetails', careator.careator_getAllEmpLoginDetails);
+
     app.post('/vc/login4VC', user.login4VC);
     app.post('/record/pswdGenerate', record.pswdGenerate);
     app.post('/record/pswdCheck', record.pswdCheck);

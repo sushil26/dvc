@@ -1179,12 +1179,13 @@
     </div>
     <script>
         var w;
-        w ="https://norecruits.com/#!/dashboard/profile";
+        w = window.open("https://norecruits.com/#!/dashboard/profile");
 
         function goToDashboard() {
             console.log("goToDashboard-->");
             if (!w || w.closed) {
                 w = window.open("https://norecruits.com/#!/dashboard/profile", "_blank");
+
             } else {
                 w.focus();
             }

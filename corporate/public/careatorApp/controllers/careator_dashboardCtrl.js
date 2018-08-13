@@ -484,9 +484,10 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                 },
                 function (isConfirm) { //Function that triggers on user action.
                     if (isConfirm) {
-                        window.close();
+                        var win = window.open('', '_self');
+                        win.close()
                         w.focus();
-                       
+
                     } else {
                         SweetAlert.swal({
 
@@ -521,7 +522,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
 
         //custom scrollbar
         //for html
-  
+
 
         //sidebar dropdown menu
         $('#sidebar .sub-menu > a').click(function () {

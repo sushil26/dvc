@@ -19,7 +19,7 @@ careatorApp.config(function ($stateProvider) {
             resolve: {
                 result: function (careatorSessionAuth, $window) {
                     var userData = careatorSessionAuth.getAccess("userData");
-                    if (userData.email == 'vc4all@careator.com') {
+                    if (userData.email == 'vc4all@talenkart.com') {
 
                     } else {
                         $window.location.href = 'https://norecruits.com';
@@ -34,7 +34,7 @@ careatorApp.config(function ($stateProvider) {
             resolve: {
                 result: function (careatorSessionAuth, $window) {
                     var userData = careatorSessionAuth.getAccess("userData");
-                    if (userData.email == 'vc4all@careator.com') {
+                    if (userData.email == 'vc4all@talenkart.com') {
 
                     } else {
                         $window.location.href = 'https://norecruits.com';
@@ -49,7 +49,7 @@ careatorApp.config(function ($stateProvider) {
             resolve: {
                 result: function (careatorSessionAuth, $window) {
                     var userData = careatorSessionAuth.getAccess("userData");
-                    if (userData.email == 'vc4all@careator.com') {
+                    if (userData.email == 'vc4all@talenkart.com') {
 
                     } else {
                         $window.location.href = 'https://norecruits.com';
@@ -64,7 +64,7 @@ careatorApp.config(function ($stateProvider) {
             resolve: {
                 result: function (careatorSessionAuth, $window) {
                     var userData = careatorSessionAuth.getAccess("userData");
-                    if (userData.email == 'vc4all@careator.com') {
+                    if (userData.email == 'vc4all@talenkart.com') {
 
                     } else {
                         $window.location.href = 'https://norecruits.com';
@@ -79,7 +79,7 @@ careatorApp.config(function ($stateProvider) {
             resolve: {
                 result: function (careatorSessionAuth, $window) {
                     var userData = careatorSessionAuth.getAccess("userData");
-                    if (userData.email == 'vc4all@careator.com') {
+                    if (userData.email == 'vc4all@talenkart.com') {
 
                     } else {
                         $window.location.href = 'https://norecruits.com';
@@ -93,7 +93,7 @@ careatorApp.config(function ($stateProvider) {
             resolve: {
                 result: function (careatorSessionAuth, $window) {
                     var userData = careatorSessionAuth.getAccess("userData");
-                    if (userData.email == 'vc4all@careator.com') {
+                    if (userData.email == 'vc4all@talenkart.com') {
 
                     } else {
                         $window.location.href = 'https://norecruits.com';
@@ -108,7 +108,7 @@ careatorApp.config(function ($stateProvider) {
             resolve: {
                 result: function (careatorSessionAuth, $window) {
                     var userData = careatorSessionAuth.getAccess("userData");
-                    if (userData.email == 'vc4all@careator.com') {
+                    if (userData.email == 'vc4all@talenkart.com') {
 
                     } else {
                         $window.location.href = 'https://norecruits.com';
@@ -157,7 +157,7 @@ careatorApp.config(function ($stateProvider) {
             resolve: {
                 result: function (careatorSessionAuth, $window) {
                     var userData = careatorSessionAuth.getAccess("userData");
-                    if (userData.email == 'vc4all@careator.com') {
+                    if (userData.email == 'vc4all@talenkart.com') {
 
                     } else {
                         $window.location.href = 'https://norecruits.com';
@@ -216,7 +216,7 @@ careatorApp.config(function ($stateProvider) {
             resolve: {
                 result: function (careatorSessionAuth, $window) {
                     var userData = careatorSessionAuth.getAccess("userData");
-                    if (userData.email == 'vc4all@careator.com') {
+                    if (userData.email == 'vc4all@talenkart.com') {
 
                     } else {
                         $window.location.href = 'https://norecruits.com';

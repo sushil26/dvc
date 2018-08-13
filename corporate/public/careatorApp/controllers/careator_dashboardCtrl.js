@@ -484,7 +484,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                 },
                 function (isConfirm) { //Function that triggers on user action.
                     if (isConfirm) {
-                    window.parent.close();
+                        w.parent.close();
                         w.focus();
 
 

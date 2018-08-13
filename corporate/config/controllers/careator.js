@@ -288,7 +288,7 @@ module.exports.pswdCheck = function (req, res) {
                                             res.status(400).send(responseData);
                                         } else {
                                             var date = new Date();
-                                            loginDetails.update({ "_id": ObjectId(findData[0]._id) }, { $set: { "userId": findData[0]._id, "login": true, "loginDate": date, "logout": false } }, function (err, loginData) {
+                                            loginDetails.update({ "_id": ObjectId(findData[0]._id) }, { $set: { "userId": findData[0]._id, "login": true, "loginDate": date, "logout": false } },{ upsert : true }, function (err, loginData) {
                                                 if (err) {
                                                     responseData = {
                                                         status: false,

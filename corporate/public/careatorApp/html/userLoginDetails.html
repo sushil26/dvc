@@ -56,14 +56,16 @@
                                                 <i ng-if="emp.login == 'false'" class="fa fa-times" style="color: red"></i>
                                             </td>
                                             <td>
-                                                {{emp.loginDate | 'MMM d, y h:mm:ss a'}}
+                                                <p ng-if="logoutDate!=undefined">{{emp.loginDate | 'MMM d, y h:mm:ss a'}}</p>
+                                                <p ng-if="logoutDate==undefined">null</p>
                                             </td>
                                             <td>
                                                 <i ng-if="emp.logout" class="fa fa-check" style="color: green"></i>
                                                 <i ng-if="emp.logout=='false'" class="fa fa-times" style="color: red"></i>
                                             </td>
                                             <td>
-                                                {{emp.logoutDate | 'MMM d, y h:mm:ss a'}}
+                                                <p ng-if="logoutDate!=undefined">{{emp.logoutDate | 'MMM d, y h:mm:ss a'}}</p>
+                                                <p ng-if="logoutDate==undefined">null</p>
                                             </td>
                                             <td>
 

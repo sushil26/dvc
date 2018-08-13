@@ -1,5 +1,5 @@
-careatorApp.controller('usersLoginDetailsCtrl', function ($scope, $state, careatorHttpFactory, SweetAlert) {
-    console.log("usersLoginDetailsCtrl==>");
+careatorApp.controller('userLoginDetailsCtrl', function ($scope, $state, careatorHttpFactory, SweetAlert) {
+    console.log("userLoginDetailsCtrl==>");
 
 
 

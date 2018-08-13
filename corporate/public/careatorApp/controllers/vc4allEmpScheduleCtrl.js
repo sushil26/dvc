@@ -168,7 +168,7 @@ if(rsd.getTime() > $scope.todayDate.getTime() )
   }
   else{
     SweetAlert.swal({
-      title: "Invalid Date Start date/time: "+rsd+" End date/time: "+$scope.todayDate,
+      title: "Invalid Date",
       type: "warning",
       text: "Sorry! Start time should not be lesser than/equal to current time("+$scope.todayDate+")",
     })

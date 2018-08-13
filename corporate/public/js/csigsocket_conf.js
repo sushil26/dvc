@@ -76,6 +76,8 @@ console.log("id2**: " + id2);
         "sessionURL": window.location.href
       };
       console.log("obj: " + JSON.stringify(obj));
+      var urlForSessionCheck;
+      
       $.ajax({
         url: "https://norecruits.com/careator/pswdCheckForSesstion",
         type: "POST",
@@ -137,6 +139,7 @@ console.log("id2**: " + id2);
         "careator_remoteEmail": careator_remoteEmail,
         "careator_remotePswd": careator_remotePswd
       }
+           
       $.ajax({
         url: "https://norecruits.com/careator/RemoteJoinCheck",
         type: "POST",

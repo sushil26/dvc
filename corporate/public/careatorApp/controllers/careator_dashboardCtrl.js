@@ -519,33 +519,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
 
         //custom scrollbar
         //for html
-        $("html").niceScroll({
-            styler: "fb",
-            cursorcolor: "#007AFF",
-            cursorwidth: '6',
-            cursorborderradius: '10px',
-            background: '#F7F7F7',
-            cursorborder: '',
-            zindex: '1000'
-        });
-        //for sidebar
-        $("#sidebar").niceScroll({
-            styler: "fb",
-            cursorcolor: "#007AFF",
-            cursorwidth: '3',
-            cursorborderradius: '10px',
-            background: '#F7F7F7',
-            cursorborder: ''
-        });
-        // for scroll panel
-        $(".scroll-panel").niceScroll({
-            styler: "fb",
-            cursorcolor: "#007AFF",
-            cursorwidth: '3',
-            cursorborderradius: '10px',
-            background: '#F7F7F7',
-            cursorborder: ''
-        });
+  
 
         //sidebar dropdown menu
         $('#sidebar .sub-menu > a').click(function () {

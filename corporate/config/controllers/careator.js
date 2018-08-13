@@ -252,7 +252,122 @@ module.exports.pswdCheckForSesstion = function (req, res) {
     }
     console.log("<--pswdCheckForSesstion");
 }
+module.exports.pswdCheckForSchedule_Sesstion = function (req, res) {
+    console.log("pswdCheckForSesstion-->");
+    console.log("req.body.password: " + req.body.password + " req.body.careatorEmail: " + req.body.careatorEmail);
+    var password = req.body.password;
+    var careatorEmail = req.body.careatorEmail;
+    var url = req.body.sessionURL;
+    if (general.emptyCheck(password) && general.emptyCheck(careatorEmail)) {
+        var obj = { "email": careatorEmail }
+        console.log("obj: " + JSON.stringify(obj));
+        careatorMaster.find(obj).toArray(function (err, findData) {
+            console.log("findData: " + JSON.stringify(findData));
+            if (err) {
+                responseData = {
+                    status: false,
+                    message: property.E0007
+                };
+                res.status(400).send(responseData);
+            } else {
+                if (findData.length > 0) {
+                    if (findData[0].password == password) {
+                        careatorEvents.find({ "url": url,"senderEmail": careatorEmail}).toArray(function (err, sessionURLFind) {
+                            console.log("sessionURLFind: " + JSON.stringify(sessionURLFind));
+                            if (err) {
+                                responseData = {
+                                    status: false,
+                                    message: property.E0007
+                                };
+                                res.status(400).send(responseData);
+                            } else {
+                                if (sessionURLFind.length > 0) {
+                                    if (sessionURLFind[0].isDisconnected == 'yes') {
+                                        responseData = {
+                                            status: false,
+                                            errorCode: "E0_URLE",
+                                            message: property.N0004
+                                        };
+                                        res.status(400).send(responseData);
+                                    }
+                                    else {
+                                        var joinEmails = sessionURLFind[0].joinEmails;
+                                        console.log("joinEmails: " + JSON.stringify(joinEmails));
+                                        console.log("req.body.careatorEmail: " + req.body.careatorEmail);
+                                        console.log("joinEmails.indexOf(req.body.careatorEmail): " + joinEmails.indexOf(req.body.careatorEmail));
+                                        if (joinEmails.indexOf(req.body.careatorEmail) < 0) {
+                                            careatorEvents.update({ "url": req.body.sessionURL }, { $pull: { "leftEmails": careatorEmail }, $addToSet: { "joinEmails": careatorEmail } }, function (err, data) {
+                                                console.log("sessionURLFind: " + JSON.stringify(sessionURLFind));
+                                                if (err) {
+                                                    responseData = {
+                                                        status: false,
+                                                        message: property.E0007
+                                                    };
+                                                    res.status(400).send(responseData);
+                                                } else {
+                                                    responseData = {
+                                                        status: true,
+                                                        sessionData: "79ea520a-3e67-11e8-9679-97fa7aeb8e97",
+                                                        message: property.S0005
+                                                    };
+                                                    res.status(200).send(responseData);
+                                                }
+                                            })
+                                        }
+                                        else {
+                                            responseData = {
+                                                status: false,
+                                                errorCode: "E0_alreadyInUse",
+                                                message: property.N0005
+                                            };
+                                            console.log("responseData: " + JSON.stringify(responseData));
+                                            res.status(400).send(responseData);
+                                        }
+                                    }
 
+                                }
+                                else {
+                                    responseData = {
+                                        status: false,
+                                        errorCode: "E0_URLE",
+                                        message: property.N0004
+                                    };
+                                    res.status(400).send(responseData);
+                                }
+                            }
+                        })
+
+
+                    } else {
+                        responseData = {
+                            status: false,
+                            errorCode: "E1_credentialMismatch",
+                            message: property.E0008
+                        };
+                        res.status(400).send(responseData);
+                    }
+
+                } else {
+                    responseData = {
+                        status: false,
+                        message: property.E0006
+                    };
+                    console.log("responseData: " + JSON.stringify(responseData));
+                    res.status(400).send(responseData);
+                }
+            }
+        })
+
+    } else {
+        responseData = {
+            status: false,
+            message: property.N0003
+        };
+        console.log("responseData: " + JSON.stringify(responseData));
+        res.status(400).send(responseData);
+    }
+    console.log("<--pswdCheckForSesstion");
+}
 module.exports.pswdCheck = function (req, res) {
     console.log("pswdCheck-->");
     console.log("req.body.password: " + req.body.password + " req.body.careatorEmail: " + req.body.careatorEmail);

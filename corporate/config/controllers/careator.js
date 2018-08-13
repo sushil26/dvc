@@ -381,7 +381,7 @@ module.exports.pswdCheck = function (req, res) {
     var careatorEmail = req.body.careatorEmail;
     var emailSplit = careatorEmail.split('@');
     if (general.emptyCheck(password) && general.emptyCheck(careatorEmail)) {
-        if (emailSplit[1] == 'talenkart.com' || careatorEmail == 'vc4all@careator.com') {
+        if (emailSplit[1] == 'talenkart.com' || careatorEmail == 'vc4all@talenkart.com') {
             var obj = {
                 "email": careatorEmail
             }
@@ -575,7 +575,7 @@ module.exports.pswdGenerate = function (req, res) {
 
             })
 
-        } else if (email == 'vc4all@careator.com') {
+        } else if (email == 'vc4all@talenkart.com') {
             careatorMaster.find({
                 "email": email
             }).toArray(function (err, findData) {
@@ -801,7 +801,7 @@ module.exports.resetLoginFlagsById = function (req, res) {
 module.exports.getAdminObjectId = function (req, res) {
     console.log("getAdminObjectId-->");
     careatorMaster.find({
-        "email": "vc4all@careator.com"
+        "email": "vc4all@talenkart.com"
     }).toArray(function (err, admin) {
         if (err) {
             console.log("err: " + JSON.stringify(err));

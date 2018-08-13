@@ -35,9 +35,6 @@
                                             <th>Login Date</th>
                                             <th>Logout</th>
                                             <th>Logout Date</th>
-
-                                            <th>Action</th>
-
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -67,13 +64,6 @@
                                                 <p ng-if="emp.logoutDate!=undefined">{{emp.logoutDate | date: 'MMM d, y h:mm:ss a'}}</p>
                                                 <p ng-if="emp.logoutDate==undefined">null</p>
                                             </td>
-                                            <td>
-
-                                                <button class="btn btn-info fa fa-pencil-square-o" ng-click="editUser(emp._id)">&nbsp;Edit</button>
-
-
-                                            </td>
-
                                         </tr>
 
                                     </tbody>

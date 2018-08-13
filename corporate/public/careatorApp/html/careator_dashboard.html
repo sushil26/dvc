@@ -70,6 +70,13 @@
                         </a>
                     </li>
                     <li ng-if="userData.email=='vc4all@careator.com'">
+                        <a href="#!/dashboard/loginDetails">
+                            <i class="fa fa-address-book">
+                                <span>&nbspLog Details</span>
+                            </i>
+                        </a>
+                    </li>
+                    <li ng-if="userData.email=='vc4all@careator.com'">
                         <a href="#!/dashboard/groupList">
                             <i class="fa fa-list">
                                 <span>&nbspAll Groups</span>
@@ -106,32 +113,26 @@
                     </li>
                     <li ng-if="videoRights=='yes'">
                         <a href="#!/dashboard/vc4allSchedule">
-                            <i class="fa fa-video-camera">
+                            <i class="fa fa-pencil-square-o">
                                 <span>&nbspSchedule</span>
                             </i>
                         </a>
                     </li>
                     <li>
                         <a href="#!/dashboard/upcomingEvent">
-                            <i class="fa fa-video-camera">
+                            <i class="fa fa-calendar">
                                 <span>&nbsp;Upcoming Event</span>
                             </i>
                         </a>
                     </li>
                     <li>
                         <a href="#!/dashboard/historyEvent">
-                            <i class="fa fa-video-camera">
-                                <span>&nbsp;History Event</span>
+                            <i class="fa fa-history">
+                                <span>&nbsp;Event History</span>
                             </i>
                         </a>
                     </li>
-                    <li ng-if="userData.email=='vc4all@careator.com'">
-                        <a href="#!/dashboard/loginDetails">
-                            <i class="fa fa-sign-out">
-                                <span>&nbspLogin/Logout Details</span>
-                            </i>
-                        </a>
-                    </li>
+
                     <li>
                         <a ng-click="logout()">
                             <i class="fa fa-sign-out">

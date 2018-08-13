@@ -484,11 +484,10 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                 },
                 function (isConfirm) { //Function that triggers on user action.
                     if (isConfirm) {
-                        // SweetAlert.swal("ok!");
                         w.focus();
                     } else {
                         SweetAlert.swal({
-                            
+
                             title: "Cancelled",
                             text: "You have entered cancel you are still in same Page",
                             type: "info"

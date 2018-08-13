@@ -484,8 +484,9 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                 },
                 function (isConfirm) { //Function that triggers on user action.
                     if (isConfirm) {
-                        w.focus();
                         $window.close();
+                        w.focus();
+                       
                     } else {
                         SweetAlert.swal({
 

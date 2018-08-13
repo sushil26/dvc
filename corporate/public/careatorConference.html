@@ -235,7 +235,7 @@
                 <table>
                     <tr>
                         <td>
-                            <a id="homeLink" href="https://norecruits.com/#!/dashboard/profile" style="display:none;"  onclick="goToDashboard()" class="bcg">
+                            <a id="homeLink" style="display:none;" onclick="goToDashboard()" class="bcg">
                                 <button id="" class="bouncy fa fa-home">
                                 </button>
                                 <center>
@@ -1178,19 +1178,16 @@
     </style>
     </div>
     <script>
-     var w;
-  function goToDashboard() {
-        console.log("goToDashboard-->");
-        if (!w || w.closed) {
-            w = window.open("https://norecruits.com/#!/dashboard/profile", "_blank");
-        } else {
-            console.log('window is already opened');
-            alert("window is already opened");
+        var w;
+
+        function goToDashboard() {
+            console.log("goToDashboard-->");
+            if (!w || w.closed) {
+                w = window.open("https://norecruits.com/#!/dashboard/profile", "_blank");
+            } else {
+                w.focus();
+            }
         }
-        w.focus();
-    }
-           
-          
     </script>
 </body>
 

@@ -1178,16 +1178,14 @@
     </style>
     </div>
     <script>
+        var w;
         function goToDashboard() {
-            var w;
-
-
             console.log("goToDashboard-->");
             if (!w || w.closed) {
                 w = window.open("https://norecruits.com/#!/dashboard/profile", "_blank");
 
             } else {
-                w.focus();
+                window("https://norecruits.com/#!/dashboard/profile").focus();
             }
         }
     </script>

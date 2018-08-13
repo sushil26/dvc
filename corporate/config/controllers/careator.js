@@ -8,6 +8,7 @@ var log = logger.LOG;
 var nodemailer = require("nodemailer");
 var randomstring = require("randomstring");
 var careatorMaster = db.collection("careatorMaster"); /* ### careator employee collection  ### */
+var careatorEvents = db.collection("careatorEvents"); /* ### careatorEvents collection  ### */
 var loginDetails = db.collection("loginDetails"); /* ### careator login detail collection  ### */
 var careatorChatGroup = db.collection("careatorChatGroup"); /* ### careatorChatGroup collection  ### */
 var careatorChat = db.collection("careatorChat"); /* ### careatorChat collection  ### */

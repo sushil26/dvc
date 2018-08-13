@@ -253,7 +253,7 @@ careatorApp.controller('careator_upcomingEventCtr', function ($scope, $rootScope
 
         SweetAlert.swal({
             title: "Its too early",
-            text: "Now time is just"+currentTime+"Wait till" + time+" wt: "+wt +" ct: "+ct,
+            text: "Now time is just "+currentTime+" Wait till" + time+" wt: "+wt +" ct: "+ct,
             type: "warning"
         });
         // alert("Wait till " + time);

@@ -77,7 +77,7 @@ console.log("id2**: " + id2);
       };
       console.log("obj: " + JSON.stringify(obj));
       $.ajax({
-        url: "https://norecruits.com/careator/pswdCheckFor_schedule",
+        url: "https://norecruits.com/careator/pswdCheckForSession_schedule",
         type: "POST",
         data: JSON.stringify(obj),
         contentType: "application/json",

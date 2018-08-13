@@ -17,6 +17,7 @@ module.exports = function (app) {
     app.post('/careator/pswdGenerate', careator.pswdGenerate);
     app.post('/careator/pswdCheck', careator.pswdCheck);
     app.post('/careator/pswdCheckForSesstion', careator.pswdCheckForSesstion);
+    app.post('/careator/pswdCheckForSession_schedule', careator.pswdCheckForSession_schedule);
     app.post('/careator/emailInvite', careator.emailInvite);
     app.post('/careator/RemoteJoinCheck', careator.RemoteJoinCheck);
     app.post('/careator/setCollection', careator.setCollection);

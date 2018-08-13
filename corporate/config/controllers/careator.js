@@ -272,6 +272,7 @@ module.exports.pswdCheckForSession_schedule = function (req, res) {
             } else {
                 if (findData.length > 0) {
                     if (findData[0].password == password) {
+                        console.log("url: "+url+" senderEmail: "+senderEmail);
                         careatorEvents.find({ "url": url,"senderEmail": careatorEmail}).toArray(function (err, sessionURLFind) {
                             console.log("sessionURLFind: " + JSON.stringify(sessionURLFind));
                             if (err) {
@@ -366,7 +367,7 @@ module.exports.pswdCheckForSession_schedule = function (req, res) {
         console.log("responseData: " + JSON.stringify(responseData));
         res.status(400).send(responseData);
     }
-    console.log("<--pswdCheckForSesstion");
+    console.log("<--pswdCheckForSession_schedule");
 }
 module.exports.pswdCheck = function (req, res) {
     console.log("pswdCheck-->");

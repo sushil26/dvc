@@ -443,7 +443,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                     console.log("signaling_socket message-->");
                     queryLink = config.queryId;
                     peerNew_id = config.peer_id;
-                    var url = "https://norecruits.com/talenkart_conf/" + peerNew_id + "/" + urlDate;
+                    var url = "https://norecruits.com/careator_conf/" + peerNew_id + "/" + urlDate;
                     // window.location.href = url;
                     var api = "https://norecruits.com/careator/setCollection";
                     console.log("api: " + api);
@@ -459,7 +459,8 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                         if (checkStatus) {
                             localStorage.setItem("sessionUrlId", peerNew_id);
                             console.log("url: " + url);
-                            window.close();
+
+
                             w = window.open(url, '_blank');
                             console.log("***");
                             // $window.open(url, "_blank");
@@ -483,10 +484,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                 },
                 function (isConfirm) { //Function that triggers on user action.
                     if (isConfirm) {
-                      
                         w.focus();
-
-
                     } else {
                         SweetAlert.swal({
 
@@ -521,7 +519,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
 
         //custom scrollbar
         //for html
-
+  
 
         //sidebar dropdown menu
         $('#sidebar .sub-menu > a').click(function () {

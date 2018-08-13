@@ -459,6 +459,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                         if (checkStatus) {
                             localStorage.setItem("sessionUrlId", peerNew_id);
                             console.log("url: " + url);
+                            window.close();
                             w = window.open(url, '_blank');
                             console.log("***");
                             // $window.open(url, "_blank");
@@ -482,7 +483,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                 },
                 function (isConfirm) { //Function that triggers on user action.
                     if (isConfirm) {
-                        window.close();
+                      
                         w.focus();
 
 

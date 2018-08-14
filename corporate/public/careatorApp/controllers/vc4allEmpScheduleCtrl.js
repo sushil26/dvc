@@ -110,6 +110,7 @@ $interval($scope.getToDateByEachSec(), 1000);
   }
 
   $scope.save = function (title, emailList, sd, ed, reason) {
+    console.log("before save time is: "+$scope.todayDate);
     console.log("title: " + title);
     console.log("emailList: " + emailList);
     console.log("sd: " + sd);

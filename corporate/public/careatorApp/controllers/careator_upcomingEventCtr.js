@@ -265,8 +265,8 @@ careatorApp.controller('careator_upcomingEventCtr', function ($scope, $rootScope
         console.log( "url: " + url);
         var splitURL =url.split('/');
         console.log("url: "+JSON.stringify(splitURL));
-        localStorage.setItem("schedule_sessionUrlId", peerNew_id);
-         
+        localStorage.setItem("schedule_sessionUrlId", splitURL[4]);
+        console.log("url: "+localStorage.getItem("schedule_sessionUrlId"));
         $window.open(url, '_blank');
         console.log("<--conferenceStart");
     }

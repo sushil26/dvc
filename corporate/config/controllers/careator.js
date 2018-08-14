@@ -171,7 +171,7 @@ if (general.emptyCheck(password) && general.emptyCheck(remote_careatorEmail)) {
                     res.status(400).send(responseData);
                 }
                 else {
-                    careatorEvents.find({ "sessionURL": url, "invite": { $elemMatch: { "remoteEmailId": remote_careatorEmail, "password": password } } }).toArray(function (err, findData) {
+                    careatorEvents.find({ "sessionURL": url, "invite": { $elemMatch: obj } }).toArray(function (err, findData) {
                         console.log("findData: " + JSON.stringify(findData));
                         console.log("findData.length: " + findData.length);
                         if (err) {

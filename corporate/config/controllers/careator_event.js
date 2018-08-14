@@ -76,7 +76,7 @@ module.exports.careator_sendEventSchedule = function (req, res) {
                 length: 6,
                 charset: 'numeric'
             });
-            maillist.push({ "remoteEmailId": emailSplit[x], "password": password })
+            maillist.push({ "remoteEmailId": emailSplit[x].trim(), "password": password })
         }
 
         var userData = {

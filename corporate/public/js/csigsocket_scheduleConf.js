@@ -617,7 +617,7 @@ signaling_socket.on("connect", function () {
               $("#notify_msg_button").trigger("click");
               setTimeout(function () {
                 close();
-              }, 3000);
+              }, 5000);
             }
 
           }
@@ -672,7 +672,7 @@ signaling_socket.on("connect", function () {
             // document.getElementById("videoConferenceUrl").style.display = "none";
             document.getElementById("emailInvitation").style.display = "none";
             userName = "";
-            if (err.responseJSON.errorCode == "E0_URLE" || err.responseJSON.errorCode == "E0_alreadyInUse" || err.responseJSON.errorCode == "E1_credentialMismatch") {
+            if (err.responseJSON.errorCode == "E0_URLE" || err.responseJSON.errorCode == "E0_alreadyInUse" || err.responseJSON.errorCode == "E1_credentialMismatch" ||  err.responseJSON.errorCode == "E1_timeInvalid") {
 
               $('#remoteJoin').modal('hide');
               document.getElementById('notify_msg_content').innerHTML = err.responseJSON.message;
@@ -680,7 +680,7 @@ signaling_socket.on("connect", function () {
               $("#notify_msg_button").trigger("click");
               setTimeout(function () {
                 close();
-              }, 3000);
+              }, 5000);
             }
           }
         });

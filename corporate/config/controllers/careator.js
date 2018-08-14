@@ -185,7 +185,7 @@ module.exports.RemoteJoinCheck_schedule = function (req, res) {
                                     var date = new Date();
                                     var newFormatedDate_currentDate = new Date(date.getFullYear(), date.getMonth(), date.getDate(), date.getHours(), date.getMinutes());
                                     var sd = new Date(findData[0].startsAt);
-                                    var ed = new Date(findDate[0].endsAt);
+                                    var ed = new Date(findData[0].endsAt);
                                     var newFormate_sd = new Date(sd.getFullYear(), sd.getMonth(), sd.getDate(), sd.getHours(), sd.getMinutes());
                                     var newFormated_ed = new Date(ed.getFullYear(), ed.getMonth(), ed.getDate(), ed.getHours(), ed.getMinutes());
                                     console.log("newFormatedDate_currentDate: " + newFormatedDate_currentDate);
@@ -227,7 +227,7 @@ module.exports.RemoteJoinCheck_schedule = function (req, res) {
                                         console.log("Not allowed for conference");
                                         responseData = {
                                             status: false,
-                                            errorCode: E1_timeInvalid,
+                                            errorCode: "E1_timeInvalid",
                                             message: "You can join conference only time, between "+newFormate_sd+" to "+newFormated_ed,
                                         };
                                         res.status(400).send(responseData);

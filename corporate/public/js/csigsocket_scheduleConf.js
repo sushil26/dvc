@@ -80,14 +80,14 @@ if (stuff.length > 5) {
         userName = emailIdSplit[0];
         //document.getElementById("videoConferenceUrl").style.display = "block";
         sessionURL_fe = obj.sessionURL;
-        console.log("localStorage.getItem('sessionUrlId'): " + localStorage.getItem("sessionUrlId"));
+        console.log("localStorage.getItem('schedule_sessionUrlId'): " + localStorage.getItem("schedule_sessionUrlId"));
         console.log("window.location.href: " + window.location.href);
         document.getElementById("videoCtrolBar").style.display = "inline";
         console.log("screen.width: " + screen.width);
         if (screen.width <= 768) {
           document.getElementById("screenShareBtn").style.display = 'none';
         }
-        if (localStorage.getItem("sessionUrlId") == queryLink) {
+        if (localStorage.getItem("schedule_sessionUrlId") == queryLink) {
           document.getElementById("emailInvitation").style.display = "block";
         } else {
           document.getElementById("emailInvitation").style.display = "none";
@@ -408,9 +408,9 @@ function disconnecSession() {
   console.log("sessionHeader: " + sessionHeader);
   console.log("peerNew_id: " + peerNew_id);
 
-  if (localStorage.getItem("sessionUrlId") == queryLink && localStorage.getItem("careatorEmail")) {
+  if (localStorage.getItem("schedule_sessionUrlId") == queryLink && localStorage.getItem("careatorEmail")) {
     console.log("start to disconnect the session");
-    localStorage.removeItem("sessionUrlId");
+    localStorage.removeItem("schedule_sessionUrlId");
     signaling_socket.emit("disconnectSession", {
       requestFrom: "schedulePage",
       deleteSessionId: queryLink,
@@ -465,7 +465,7 @@ signaling_socket.on("doRedirect", function (config) {
 //     dataType: "json",
 //     success: function (data) {
 //       console.log("data: " + JSON.stringify(data));
-//       localStorage.setItem("sessionUrlId", id);
+//       localStorage.setItem("schedule_sessionUrlId", id);
 //       window.location.href = "https://norecruits.com/careator/" + id + "/" + date;
 //     },
 //     error: function (err) {
@@ -828,7 +828,7 @@ signaling_socket.on("addPeer", function (config) {
     peer_connection.onaddstream = function (event) {
       console.log("onaddstream-->");
       console.log("localStorage.getItem('careatorEmail'): " + localStorage.getItem("careatorEmail"));
-      console.log("localStorage.getItem(sessionUrlId): "+localStorage.getItem("sessionUrlId"));
+      console.log("localStorage.getItem(schedule_sessionUrlId): "+localStorage.getItem("schedule_sessionUrlId"));
       console.log("queryLink: "+queryLink);
       var existing = document.getElementById(peer_id + "remoteContainer");
       if (existing) {
@@ -864,7 +864,7 @@ signaling_socket.on("addPeer", function (config) {
         $(this).removeAttr("poster");
       });
       // if (peerNew_id == sessionHeader) {
-      if (localStorage.getItem("sessionUrlId") == queryLink && localStorage.getItem("careatorEmail")) {
+      if (localStorage.getItem("schedule_sessionUrlId") == queryLink && localStorage.getItem("careatorEmail")) {
         document.getElementById("closeThisConn" + peer_id).style.display = "inline";
 
         document.getElementById("closeThisConn" + peer_id).addEventListener("click", function () {
@@ -1862,7 +1862,7 @@ $(".back-to-top").click(function () {
 signaling_socket.on('comm_logoutNotifyToUserById', function (data) {
   console.log("***comm_logoutNotifyToUserById-->: " + JSON.stringify(data));
   console.log("localStorage.getItem(careatorEmail): " + localStorage.getItem("careatorEmail"));
-  console.log(" localStorage.getItem(sessionUrlId): " + localStorage.getItem("sessionUrlId"));
+  console.log(" localStorage.getItem(schedule_sessionUrlId): " + localStorage.getItem("schedule_sessionUrlId"));
   console.log(" url: " + url);
   if (data.email == localStorage.getItem("careatorEmail") || data.email == localStorage.getItem("careator_remoteEmail")) {
     console.log("Start to remove the session");
@@ -1879,15 +1879,15 @@ signaling_socket.on('comm_logoutNotifyToUserById', function (data) {
     // if (localStorage.getItem("videoRights")) {
     //   localStorage.removeItem("videoRights");
     // }
-    // if (localStorage.getItem("sessionUrlId") == queryLink && localStorage.getItem("careatorEmail")) {
+    // if (localStorage.getItem("schedule_sessionUrlId") == queryLink && localStorage.getItem("careatorEmail")) {
     //   console.log("start to disconnect the session");
     //   localStorage.removeItem("careatorEmail");
-    //   localStorage.removeItem("sessionUrlId");
+    //   localStorage.removeItem("schedule_sessionUrlId");
     //   localStorage.removeItem("careator_remoteEmail");
     //   localStorage.removeItem("sessionPassword")
     // } else {
     //   localStorage.removeItem("careatorEmail");
-    //   localStorage.removeItem("sessionUrlId");
+    //   localStorage.removeItem("schedule_sessionUrlId");
     //   localStorage.removeItem("careator_remoteEmail");
     //   localStorage.removeItem("oneTimePassword");
     //   console.log("You are not session creater so you cant delete session");
@@ -1898,7 +1898,7 @@ signaling_socket.on('comm_logoutNotifyToUserById', function (data) {
   }
   if (data.sessionURL == url) {
     console.log("Start to remove the session based on sessionURL");
-    localStorage.removeItem("sessionUrlId");
+    localStorage.removeItem("schedule_sessionUrlId");
     // signaling_socket.emit("disconnectSession", {
     //   deleteSessionId: queryLink,
     //   owner: peerNew_id

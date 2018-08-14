@@ -402,7 +402,7 @@ console.log("id2**: " + id2);
       // window.location.href = "https://norecruits.com";
     }
   })
-  /* ##### End: disconnectSessionReply from server(index.js)   ##### */
+    /* ##### End: disconnectSessionReply from server(index.js)   ##### */
   function disconnecSession() {
     console.log("disconnecSession-->");
     console.log("sessionHeader: " + sessionHeader);

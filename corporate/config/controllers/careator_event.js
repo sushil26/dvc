@@ -70,7 +70,7 @@ module.exports.careator_sendEventSchedule = function (req, res) {
         var emailString = req.body.invitingTo;
         var emailSplit = emailString.split(',');
         console.log("emailSplit: " + JSON.stringify(emailSplit));
-        var maillist = {}
+        var maillist = [];
         for (var x = 0; x < emailSplit.length; x++) {
             var password = randomstring.generate({
                 length: 6,

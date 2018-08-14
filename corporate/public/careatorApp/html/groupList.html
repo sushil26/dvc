@@ -62,7 +62,7 @@
                                                 Active
                                             </td>
                                             <td>
-                                                <button class="btn btn-primary fa fa-user-plus" ng-if="emp.status=='inactive' ||emp.status== null" ng-click="statusChange(emp._id, 'active')">&nbsp;Activate</button>
+                                                <button class="btn btn-primary fa fa-user-plus" ng-if="emp.status=='inactive'" ng-click="statusChange(emp._id, 'active')">&nbsp;Activate</button>
                                                 <button class="btn btn-warning fa fa-user-times" ng-if="emp.status=='active'" ng-click="statusChange(emp._id, 'inactive')">&nbsp;Deactivate</button>
                                                 <button class="btn btn-danger fa fa-trash" ng-click="deleteGroup(emp._id)">&nbsp;Delete</button>
                                                 <button class="btn btn-info fa fa-pencil-square-o" ng-click="editGroup($index)">&nbsp;Edit</button>

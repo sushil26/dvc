@@ -6,6 +6,7 @@
 // console.log("decryptedPswd: "+decryptedPswd.toString(CryptoJS.enc.Utf8));
 
 // ];
+console.log("csigsocket_scheduleConf-->");
 $('html, body').css('overflow-x', 'hidden');
 var sesionEnc = localStorage.getItem("sessionEnc");
 console.log("sesionEnc: " + sesionEnc);

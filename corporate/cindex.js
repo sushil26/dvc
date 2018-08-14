@@ -191,7 +191,7 @@ io.sockets.on('connection', function (socket) {
     });
 
     socket.on('disconnectSession', function (data) {
-        console.log("disconnectSession-->");
+        console.log("disconnectSession-->: "+JSON.stringify(data));
         io.sockets.emit('disconnectSessionReply', { "deleteSessionId": data.deleteSessionId, "owner": data.owner });
         //if (sessionHeaderId == data.owner) {
         var db = mongoConfig.getDb();
@@ -212,7 +212,6 @@ io.sockets.on('connection', function (socket) {
                     console.log("data: " + JSON.stringify(data));
                 }
             })
-
         }
         else {
             careatorMaster.update(queryObj, { $set: { "isDisconnected": "yes" } }, function (err, data) {

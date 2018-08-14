@@ -266,7 +266,7 @@ careatorApp.controller('careator_upcomingEventCtr', function ($scope, $rootScope
         var splitURL =url.split('/');
         console.log("url: "+JSON.stringify(splitURL));
         localStorage.setItem("schedule_sessionUrlId", splitURL[4]);
-        localStorage.setItem("userId",  $scope.userData.id);
+        localStorage.setItem("userId",  $scope.userData.userId);
         console.log("url: "+localStorage.getItem("schedule_sessionUrlId"));
         console.log("url: "+localStorage.getItem("userId"));
         $window.open(url, '_blank');

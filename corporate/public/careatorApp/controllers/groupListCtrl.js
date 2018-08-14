@@ -44,7 +44,7 @@ careatorApp.controller('groupListCtrl', function ($scope, $state, careatorHttpFa
                         console.log("id: " + id + " status: " + status);
                         var obj = {
                             "id": id,
-                            "status": this.status
+                            "status": status
                         }
                         var api = "https://norecruits.com/careator/groupStatusChangeById";
                         console.log("api: " + api);

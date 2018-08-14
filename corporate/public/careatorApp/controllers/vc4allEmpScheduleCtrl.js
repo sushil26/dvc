@@ -197,7 +197,7 @@ if(rsd.getTime() > $scope.todayDate.getTime() )
         var date = dy.concat(fy, m, hr);
         urlDate = date;
 
-        var url = "https://norecruits.com/talenkart_conf/" + peerNew_id + "/" + urlDate;
+        var url = "https://norecruits.com/talenkart_scheduleConf/" + peerNew_id + "/" + urlDate;
         dfd.resolve(url);
       })
     })

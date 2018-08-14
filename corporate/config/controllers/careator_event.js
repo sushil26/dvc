@@ -70,7 +70,7 @@ module.exports.careator_sendEventSchedule = function (req, res) {
         var emailString = req.body.invitingTo;
         var emailSplit = emailString.split(',');
         console.log("emailSplit: " + JSON.stringify(emailSplit));
-        var maillist = {}
+        var maillist = [];
         for (var x = 0; x < emailSplit.length; x++) {
             var password = randomstring.generate({
                 length: 6,
@@ -138,7 +138,7 @@ module.exports.careator_sendEventSchedule = function (req, res) {
                             console.log('Email sent: ' + info.response);
                         }
                     })
-                    if (maillist.length - 1 == i) {
+                    if (maillist.length - 1 == x) {
                         responseData = {
                             "status": true,
                             "message": "Email send successfully",
@@ -147,13 +147,13 @@ module.exports.careator_sendEventSchedule = function (req, res) {
                         res.status(200).send(responseData);
                     }
                 }
-                maillist.forEach(function (to, i, array) {
-                    console.log("To: " + to);
-                    console.log("i: " + i);
-                    console.log("array: " + JSON.stringify(array));
+                // maillist.forEach(function (to, i, array) {
+                //     console.log("To: " + to);
+                //     console.log("i: " + i);
+                //     console.log("array: " + JSON.stringify(array));
 
 
-                });
+                // });
             }
         })
     }

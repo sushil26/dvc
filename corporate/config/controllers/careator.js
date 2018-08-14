@@ -183,48 +183,57 @@ module.exports.RemoteJoinCheck_schedule = function (req, res) {
                             } else {
                                 if (findData.length > 0) {
                                     var date = new Date();
-                                    var newFormatedDate_currentDate = new Date(date.getFullYear(),date.getMonth(), date.getDate(), date.getHours(), date.getMinutes());
+                                    var newFormatedDate_currentDate = new Date(date.getFullYear(), date.getMonth(), date.getDate(), date.getHours(), date.getMinutes());
                                     var sd = new Date(findData[0].startsAt);
-                                    var newFormate_sd = new Date(sd.getFullYear(),sd.getMonth(), sd.getDate(), sd.getHours(), sd.getMinutes());
+                                    var ed = new Date(findDate[0].endsAt);
+                                    var newFormate_sd = new Date(sd.getFullYear(), sd.getMonth(), sd.getDate(), sd.getHours(), sd.getMinutes());
+                                    var newFormated_ed = new Date(ed.getFullYear(), ed.getMonth(), ed.getDate(), ed.getHours(), ed.getMinutes());
                                     console.log("newFormatedDate_currentDate: " + newFormatedDate_currentDate);
                                     console.log("newFormate_sd: " + newFormate_sd);
-                                    if (newFormatedDate_currentDate <= newFormate_sd) {
+                                    if (newFormatedDate_currentDate <= newFormate_sd && newFormatedDate_currentDate >= newFormated_ed) {
                                         console.log("Allowed for conference");
+                                        var joinEmails = findData[0].joinEmails;
+                                        console.log("joinEmails: " + JSON.stringify(joinEmails));
+                                        console.log("joinEmails.indexOf(req.body.careator_remoteEmail): " + joinEmails.indexOf(req.body.careator_remoteEmail));
+                                        if (joinEmails.indexOf(req.body.careator_remoteEmail) < 0) {
+                                            careatorEvents.update({ "sessionURL": url }, { $pull: { "leftEmails": remote_careatorEmail }, $addToSet: { "joinEmails": remote_careatorEmail } }, function (err, data) {
+                                                if (err) {
+                                                    responseData = {
+                                                        status: false,
+                                                        message: property.E0007
+                                                    };
+                                                    res.status(400).send(responseData);
+                                                } else {
+                                                    responseData = {
+                                                        status: true,
+                                                        sessionData: "79ea520a-3e67-11e8-9679-97fa7aeb8e97",
+                                                        message: property.S0005
+                                                    };
+                                                    res.status(200).send(responseData);
+                                                }
+                                            })
+                                        }
+                                        else {
+                                            responseData = {
+                                                status: false,
+                                                errorCode: "E0_alreadyInUse",
+                                                message: property.N0005
+                                            };
+                                            console.log("responseData: " + JSON.stringify(responseData));
+                                            res.status(400).send(responseData);
+                                        }
                                     }
                                     else {
                                         console.log("Not allowed for conference");
-                                    }
-
-                                    var joinEmails = findData[0].joinEmails;
-                                    console.log("joinEmails: " + JSON.stringify(joinEmails));
-                                    console.log("joinEmails.indexOf(req.body.careator_remoteEmail): " + joinEmails.indexOf(req.body.careator_remoteEmail));
-                                    if (joinEmails.indexOf(req.body.careator_remoteEmail) < 0) {
-                                        careatorEvents.update({ "sessionURL": url }, { $pull: { "leftEmails": remote_careatorEmail }, $addToSet: { "joinEmails": remote_careatorEmail } }, function (err, data) {
-                                            if (err) {
-                                                responseData = {
-                                                    status: false,
-                                                    message: property.E0007
-                                                };
-                                                res.status(400).send(responseData);
-                                            } else {
-                                                responseData = {
-                                                    status: true,
-                                                    sessionData: "79ea520a-3e67-11e8-9679-97fa7aeb8e97",
-                                                    message: property.S0005
-                                                };
-                                                res.status(200).send(responseData);
-                                            }
-                                        })
-                                    }
-                                    else {
                                         responseData = {
                                             status: false,
-                                            errorCode: "E0_alreadyInUse",
-                                            message: property.N0005
+                                            errorCode: "You can join conference only time, between "+newFormate_sd+" to "+newFormated_ed,
+                                            message: property.E0008
                                         };
-                                        console.log("responseData: " + JSON.stringify(responseData));
                                         res.status(400).send(responseData);
                                     }
+
+
                                 } else {
                                     responseData = {
                                         status: false,

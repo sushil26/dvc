@@ -170,7 +170,7 @@ if (general.emptyCheck(password) && general.emptyCheck(remote_careatorEmail)) {
                     res.status(400).send(responseData);
                 }
                 else {
-                    careatorMaster.find({ "sessionURL": url, "invite": { $elemMatch: { "remoteEmailId": remote_careatorEmail, "password": password } } }).toArray(function (err, findData) {
+                    careatorEvents.find({ "sessionURL": url, "invite": { $elemMatch: { "remoteEmailId": remote_careatorEmail, "password": password } } }).toArray(function (err, findData) {
                         console.log("findData: " + JSON.stringify(findData));
                         console.log("findData.length: " + findData.length);
                         if (err) {
@@ -185,7 +185,7 @@ if (general.emptyCheck(password) && general.emptyCheck(remote_careatorEmail)) {
                                 console.log("joinEmails: " + JSON.stringify(joinEmails));
                                 console.log("joinEmails.indexOf(req.body.careator_remoteEmail): " + joinEmails.indexOf(req.body.careator_remoteEmail));
                                 if (joinEmails.indexOf(req.body.careator_remoteEmail) < 0) {
-                                    careatorMaster.update({ "sessionURL": url }, { $pull: { "leftEmails": remote_careatorEmail }, $addToSet: { "joinEmails": remote_careatorEmail } }, function (err, data) {
+                                    careatorEvents.update({ "sessionURL": url }, { $pull: { "leftEmails": remote_careatorEmail }, $addToSet: { "joinEmails": remote_careatorEmail } }, function (err, data) {
                                         if (err) {
                                             responseData = {
                                                 status: false,

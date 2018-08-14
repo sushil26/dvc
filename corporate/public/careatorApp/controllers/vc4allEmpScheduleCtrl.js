@@ -1,4 +1,4 @@
-careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, $rootScope, $state, $rootScope, $compile, $window, $filter, careatorHttpFactory, careatorSessionAuth, moment, calendarConfig, $uibModal, SweetAlert) {
+careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, $rootScope, $state, $rootScope, $compile, $window, $filter, careatorHttpFactory, careatorSessionAuth, moment, calendarConfig, $uibModal, SweetAlert, $interval) {
   console.log("vc4allEmpScheduleCtrl==>");
   console.log("date: " + new Date());
   var dayEventmodal; /* ### Note: open model for event send ###  */
@@ -36,6 +36,34 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
     console.log("<--Get To Date");
   }
   $scope.getToDate();
+
+  $scope.getToDateByEachSec = function () {
+    console.log("Get To Date-->");
+    var api = "https://norecruits.com/careator_getToDate/careator_getToDate";
+    careatorHttpFactory.get(api).then(function (data) {
+        var checkStatus = careatorHttpFactory.dataValidation(data);
+        console.log("data--" + JSON.stringify(data.data));
+        if (checkStatus) {
+            console.log("data.data.data.date: " + data.data.data.date);
+            var todayDate = new Date(data.data.data.date);
+            console.log("todayDate: " + todayDate);
+            var reqDate = todayDate.getDate();
+            console.log("reqDate: " + reqDate);
+            var reqMonth = todayDate.getMonth();
+            var reqYear = todayDate.getFullYear();
+            var reqHr = todayDate.getHours();
+            var reqMin = todayDate.getMinutes();
+            var reqSec = todayDate.getSeconds();
+            $scope.todayDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
+            console.log("consolidateDate: " + $scope.consolidateDate);
+        } else { }
+    })
+    console.log("<--Get To Date");
+}
+$scope.getToDateByEachSec();
+
+$interval($scope.getToDateByEachSec(), 1000);
+
   $scope.eventGet = function () {
     console.log("eventGet-->");
     var id = $scope.userData.userId

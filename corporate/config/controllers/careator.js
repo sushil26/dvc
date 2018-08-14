@@ -184,7 +184,7 @@ module.exports.RemoteJoinCheck_schedule = function (req, res) {
                                 if (findData.length > 0) {
                                     var date = new Date();
                                     var newFormatedDate_currentDate = new Date(date.getFullYear(),date.getMonth(), date.getDate(), date.getHours(), date.getMinutes());
-                                    var sd = findData[0].startsAt;
+                                    var sd = new Date(findData[0].startsAt);
                                     var newFormate_sd = new Date(sd.getFullYear(),sd.getMonth(), sd.getDate(), sd.getHours(), sd.getMinutes());
                                     console.log("newFormatedDate_currentDate: " + newFormatedDate_currentDate);
                                     console.log("newFormate_sd: " + newFormate_sd);

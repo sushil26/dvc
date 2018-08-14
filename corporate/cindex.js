@@ -168,7 +168,7 @@ io.sockets.on('connection', function (socket) {
                         }
                     })
                 }
-                else{
+                else {
                     console.log("start to update if url is in careatorEvents-->");
                     careatorEvents.update(queryObj, { $addToSet: { "leftEmails": emailTrack[socket.id] }, $pull: { "joinEmails": emailTrack[socket.id] } }, function (err, data) {
                         if (err) {
@@ -197,17 +197,31 @@ io.sockets.on('connection', function (socket) {
         var db = mongoConfig.getDb();
         console.log("db: " + db);
         careatorMaster = db.collection("careatorMaster");
+        careatorEvents = db.collection("careatorEvents");
         var queryObj = {
             "_id": ObjectId(data.userId)
         }
-        careatorMaster.update(queryObj, { $set: { "isDisconnected": "yes" } }, function (err, data) {
-            if (err) {
-                console.log("errr: " + JSON.stringify(err));
-            }
-            else {
-                console.log("data: " + JSON.stringify(data));
-            }
-        })
+        if (data.requestFrom == 'schedulePage') {
+            careatorEvents.update(queryObj, { $set: { "isDisconnected": "yes" } }, function (err, data) {
+                if (err) {
+                    console.log("errr: " + JSON.stringify(err));
+                }
+                else {
+                    console.log("data: " + JSON.stringify(data));
+                }
+            })
+
+        }
+        else {
+            careatorMaster.update(queryObj, { $set: { "isDisconnected": "yes" } }, function (err, data) {
+                if (err) {
+                    console.log("errr: " + JSON.stringify(err));
+                }
+                else {
+                    console.log("data: " + JSON.stringify(data));
+                }
+            })
+        }
         deletedSocket_ids.push(data.deleteSessionId);
         console.log("deletedSocket_ids: " + JSON.stringify(deletedSocket_ids));
         var tempSock = sockets[data.deleteSessionId]; /* ### Note using this deleteSessionId we are getting real socket(tempSock)   ### */

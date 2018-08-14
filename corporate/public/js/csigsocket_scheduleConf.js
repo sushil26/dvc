@@ -51,16 +51,6 @@ console.log("id1**: " + id1);
 queryLink = id1;
 console.log("id2**: " + id2);
 
-// $.browser.firefox = /firefox/.test(navigator.userAgent.toLowerCase());
-// $.browser.chrome = /chrome/.test(navigator.userAgent.toLowerCase());
-// $.browser.safari = /safari/.test(navigator.userAgent.toLowerCase());
-// $.browser.opera = /opera/.test(navigator.userAgent.toLowerCase());
-// console.log("navigator.userAgent: "+navigator.userAgent);
-// alert("navigator.userAgent: "+navigator.userAgent);
-//  if (navigator.userAgent.search("Chrome") >= 0 || navigator.userAgent.search("Firefox") >= 0 || navigator.userAgent.search("Safari") >= 0 && navigator.userAgent.search("Chrome") < 0 || navigator.userAgent.search("Opera") >= 0) {
-//    console.log("Your in any one these browser: 1) Chrome, 2) Firefox, 3) Safari, 4) Opera");
-
-  // console.log("localStorage.getItem(careatorEmail )" +localStorage.getItem("careatorEmail")+"localStorage.getItem(sessionPassword): "+localStorage.getItem("sessionPassword"));
   if (stuff.length > 5) {
     console.log("1 cond");
     console.log("localStorage.getItem(careatorEmail): " + localStorage.getItem("careatorEmail"));
@@ -412,7 +402,7 @@ console.log("id2**: " + id2);
       // window.location.href = "https://norecruits.com";
     }
   })
-  /* ##### End: disconnectSessionReply from server(index.js)   ##### */
+    /* ##### End: disconnectSessionReply from server(index.js)   ##### */
   function disconnecSession() {
     console.log("disconnecSession-->");
     console.log("sessionHeader: " + sessionHeader);
@@ -422,11 +412,11 @@ console.log("id2**: " + id2);
       console.log("start to disconnect the session");
       localStorage.removeItem("sessionUrlId");
       signaling_socket.emit("disconnectSession", {
+        requestFrom:"schedulePage",
         deleteSessionId: queryLink,
         owner: peerNew_id,
         userId: localStorage.getItem("userId")
       });
-
       // window.location.href = "https://norecruits.com";
     } else {
       if (localStorage.getItem("careatorEmail")) {

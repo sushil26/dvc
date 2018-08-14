@@ -83,14 +83,15 @@
                                 >>
                               </label>
                         </div>
-                        <div style="word-wrap: break-word; position: absolute !important;
-                      right: 43%;">
-                          <h2 ng-if="calendarOwner!='Your'">
-                            <strong class="respcal">{{ vm.calendarTitle }}({{calendarOwner}})</strong>
-                          </h2>
-                          <h2 ng-if="calendarOwner=='Your'">
-                            <strong class="respcal">{{ vm.calendarTitle }}</strong>
-                          </h2>
+                        <div style="word-wrap: break-word;">
+                          <center>
+                            <h2 ng-if="calendarOwner!='Your'">
+                              <strong class="respcal">{{ vm.calendarTitle }}({{calendarOwner}})</strong>
+                            </h2>
+                            <h2 ng-if="calendarOwner=='Your'">
+                              <strong class="respcal">{{ vm.calendarTitle }}</strong>
+                            </h2>
+                          </center>
                         </div>
 
                         <div style="float:right; position: absolute;

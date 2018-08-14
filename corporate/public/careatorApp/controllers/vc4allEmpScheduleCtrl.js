@@ -55,6 +55,7 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
             var reqMin = todayDate.getMinutes();
             var reqSec = todayDate.getSeconds();
             $scope.todayDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
+            $scope.currentTime = $scope.todayDate
             console.log("$scope.todayDate: " + $scope.todayDate);
         } else { }
     })
@@ -110,7 +111,7 @@ $interval($scope.getToDateByEachSec(), 1000);
   }
 
   $scope.save = function (title, emailList, sd, ed, reason) {
-    console.log("before save time is: "+$scope.todayDate);
+    console.log("before save time is: "+$scope.todayDate)
     console.log("title: " + title);
     console.log("emailList: " + emailList);
     console.log("sd: " + sd);
@@ -127,9 +128,9 @@ $interval($scope.getToDateByEachSec(), 1000);
     var reqSec = rsd.getSeconds();
     var consolidateDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
     console.log("rsd.getTime(): " + rsd.getTime() + " red: " + red.getTime());
-    var reqDate = $scope.todayDate.getDate();
-    var reqMonth = $scope.todayDate.getMonth();
-    var reqYear = $scope.todayDate.getFullYear();
+    var reqDate = $scope.currentTime.getDate();
+    var reqMonth = $scope.currentTime.getMonth();
+    var reqYear = $scope.currentTime.getFullYear();
     var todayDate = new Date(reqYear, reqMonth, reqDate);
     console.log("todayDate: " + todayDate);
     var selected_reqDate = rsd.getDate();
@@ -137,7 +138,7 @@ $interval($scope.getToDateByEachSec(), 1000);
     var selected_reqYear = rsd.getFullYear();
 
     var selected_date = new Date(selected_reqYear, selected_reqMonth, selected_reqDate);
-    if (rsd.getTime() > $scope.todayDate.getTime()) {
+    if (rsd.getTime() > $scope.currentTime.getTime()) {
       if (rsd.getTime() < red.getTime()) {
         var diff = red.getHours() - rsd.getHours();
         console.log("diff: " + diff);
@@ -196,7 +197,7 @@ $interval($scope.getToDateByEachSec(), 1000);
       SweetAlert.swal({
         title: "Invalid Date",
         type: "warning",
-        text: "Sorry! Start time should not be lesser than/equal to current time(" + $scope.todayDate + ")",
+        text: "Sorry! Start time should not be lesser than/equal to current time(" + $scope.currentTime + ")",
       })
     }
   }

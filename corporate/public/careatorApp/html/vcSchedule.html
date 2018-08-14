@@ -70,12 +70,12 @@
                 <div class="col-md-9 col-sm-12 col-lg-9 col-xs-12 portlets">
                   <div class="panel panel-default" id="calnwidth">
                     <div class="panel-heading" style="height: 50px;">
-                      <div style="word-wrap: break-word;" style="margin-top: 7px;">
+                      <div style="word-wrap: break-word;">
                         <center>
-                          <h2 ng-if="calendarOwner!='Your'">
+                          <h2 ng-if="calendarOwner!='Your'" style="margin-top: 7px;">
                             <strong class="respcal">{{ vm.calendarTitle }}({{calendarOwner}})</strong>
                           </h2>
-                          <h2 ng-if="calendarOwner=='Your'">
+                          <h2 ng-if="calendarOwner=='Your'" style="margin-top: 7px;">
                             <strong class="respcal">{{ vm.calendarTitle }}</strong>
                           </h2>
                         </center>

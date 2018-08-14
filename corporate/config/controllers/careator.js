@@ -190,7 +190,7 @@ module.exports.RemoteJoinCheck_schedule = function (req, res) {
                                     var newFormated_ed = new Date(ed.getFullYear(), ed.getMonth(), ed.getDate(), ed.getHours(), ed.getMinutes());
                                     console.log("newFormatedDate_currentDate: " + newFormatedDate_currentDate);
                                     console.log("newFormate_sd: " + newFormate_sd);
-                                    if (newFormatedDate_currentDate <= newFormate_sd && newFormatedDate_currentDate >= newFormated_ed) {
+                                    if ((newFormatedDate_currentDate <= newFormate_sd && newFormatedDate_currentDate >= newFormated_ed) || (newFormatedDate_currentDate >= newFormate_sd && newFormatedDate_currentDate <= newFormated_ed)) {
                                         console.log("Allowed for conference");
                                         var joinEmails = findData[0].joinEmails;
                                         console.log("joinEmails: " + JSON.stringify(joinEmails));

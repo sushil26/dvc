@@ -20,6 +20,7 @@ module.exports = function (app) {
     app.post('/careator/pswdCheckForSession_schedule', careator.pswdCheckForSession_schedule);
     app.post('/careator/emailInvite', careator.emailInvite);
     app.post('/careator/RemoteJoinCheck', careator.RemoteJoinCheck);
+    app.post('/careator/RemoteJoinCheck_schedule', careator.RemoteJoinCheck_schedule);
     app.post('/careator/setCollection', careator.setCollection);
     app.post('/chatHistory/getChatByUrl', careator.getChatByUrl);
     app.get('/chatHistory/getHistory', careator.getHistory);

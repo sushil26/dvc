@@ -61,7 +61,7 @@ careatorApp.controller('careator_upcomingEventCtr', function ($scope, $rootScope
                         "startsAt": new Date($scope.eventData[x].startsAt),
                         "endsAt": new Date($scope.eventData[x].endsAt),
                         "primColor": $scope.eventData[x].primColor,
-                        "url": $scope.eventData[x].sessionURL,
+                        "sessionURL": $scope.eventData[x].sessionURL,
                         "date": $scope.eventData[x].date,
 
                     }

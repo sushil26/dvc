@@ -668,6 +668,7 @@ transition: all 0.5s;">
                   <img style="width: 45px; float: left;" src="/home/img/fav.png" />
                   <span class="modal-title" style="margin-top: 10px;
                   font-weight: 400;float: left;">&nbsp;Login</span>
+                  <button type="button" class="close" data-dismiss="modal" ng-click="$close()">&times;</button>
                 </div>
                 <div class="modal-body">
                   <input ng-keyup="$event.keyCode == 13 && logVC(email, Password)" type="email" class="form-control" placeholder="Email" ng-model="email"

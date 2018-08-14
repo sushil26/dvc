@@ -552,7 +552,8 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
     console.log("<<<<<<<home icon hide>>>>>>>");
     $("#calnwidth").css({
       "width": " ",
-      "margin-left": " "
+      "margin-left": " ",
+      "font-size":"10px"
     })
   }
 

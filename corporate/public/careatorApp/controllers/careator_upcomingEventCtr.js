@@ -264,7 +264,7 @@ careatorApp.controller('careator_upcomingEventCtr', function ($scope, $rootScope
         console.log("conferenceStart-->");
         console.log(" event_id: " + event_id + " id: " + id + "url: " + url);
         var splitURL = JSON.stringify(url.split('/'));
-        console.log("url: "+JSON.stringify(url.split('/')));
+        console.log("url: "+JSON.stringify(splitURL));
         // localStorage.setItem("sessionUrlId", peerNew_id);
         localStorage.setItem("id", id);
         localStorage.setItem("schoolName", $scope.userData.schoolName);

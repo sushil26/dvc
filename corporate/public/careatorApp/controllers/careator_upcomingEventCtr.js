@@ -260,20 +260,13 @@ careatorApp.controller('careator_upcomingEventCtr', function ($scope, $rootScope
         console.log("<--waitForTime");
     }
 
-    $scope.conferenceStart = function (event_id, url) {
+    $scope.conferenceStart = function ( url) {
         console.log("conferenceStart-->");
-        console.log(" event_id: " + event_id  + "url: " + url);
+        console.log( "url: " + url);
         var splitURL =url.split('/');
         console.log("url: "+JSON.stringify(splitURL));
         // localStorage.setItem("sessionUrlId", peerNew_id);
-        localStorage.setItem("id", id);
-        localStorage.setItem("schoolName", $scope.userData.schoolName);
-        localStorage.setItem("eventId", event_id);
-        if ($scope.loginType == 'teacher') {
-            localStorage.setItem("teacherLoginId", $scope.userData.id);
-        } else if ($scope.loginType == 'studParent') {
-            localStorage.setItem("studLoginId", $scope.userData.id);
-        }
+         
         $window.open(url, '_blank');
         console.log("<--conferenceStart");
     }

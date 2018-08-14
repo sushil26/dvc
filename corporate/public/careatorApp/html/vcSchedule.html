@@ -71,38 +71,15 @@
                   <div class="panel panel-default" id="calnwidth">
                     <div class="panel-heading" style="height: 50px;">
                       <div class="panel-actions">
-                        <!-- <div style="float:left !important; position: absolute;
-                      left: 0;">
-                          <select class="btn btn-warning" placeholder="select" ng-model="cssSelect" ng-change="getStudListForCS(cssSelect)" ng-options="css as css.class+ '-' + css.section for css in teacherData[0].css">
-                            <option value="" disabled selected>Employee</option>
-                          </select>
-                          <select class="btn" ng-if="userLoginType=='teacher'" placeholder="select" ng-model="csSelect" ng-change="getStudentCalendar(csSelect)"
-                            ng-options="cs as cs.name + '-' + cs.studId for cs in studList">
-                            <option value="" disabled selected>Student</option>
-                          </select>
-                          <select class=" btn btn-warning" ng-if="userLoginType=='studParent'" placeholder="select" ng-model="cssSelect" ng-change="getTeacherCalendar(cssSelect)"
-                            ng-options="cs as cs.name + '-' + cs.teacherId+'-'+cs.subject for cs in teacherList">
-                            <option value="" disabled selected>Teacher</option>
-                          </select>
-                        </div> -->
-
-                        <div style="float:right; position: absolute;
-                      right: 0;">
-
-                        </div>
-                      </div>
-                    </div>
-                    <div class="panel-heading" style="height: 50px;">
-                      <div class="panel-actions">
 
                         <div style="float:left !important; position: absolute;
                           left: 0;">
-                          <label class="btn uib-btn-radio" mwl-date-modifier date="vm.viewDate" decrement="vm.calendarView" ng-click="vm.cellIsOpen = false">
+                          <label class="btn uib-btn-radio respcal" mwl-date-modifier date="vm.viewDate" decrement="vm.calendarView" ng-click="vm.cellIsOpen = false">
                             << </label>
-                              <label class="btn btn-default" mwl-date-modifier date="vm.viewDate" set-to-today ng-click="vm.cellIsOpen = false">
+                              <label class="btn btn-default respcal" mwl-date-modifier date="vm.viewDate" set-to-today ng-click="vm.cellIsOpen = false">
                                 Today
                               </label>
-                              <label class="btn uib-btn-radio" mwl-date-modifier date="vm.viewDate" increment="vm.calendarView" ng-click="vm.cellIsOpen = false">
+                              <label class="btn uib-btn-radio respcal" mwl-date-modifier date="vm.viewDate" increment="vm.calendarView" ng-click="vm.cellIsOpen = false">
                                 >>
                               </label>
                         </div>
@@ -118,8 +95,8 @@
 
                         <div style="float:right; position: absolute;
                         right: 0;">
-                          <label class="btn btn-info" ng-model="vm.calendarView" uib-btn-radio="'year'" ng-click="vm.cellIsOpen = false">Year</label>
-                          <label class="btn btn-info" ng-model="vm.calendarView" uib-btn-radio="'month'" ng-click="vm.cellIsOpen = false">Month</label>
+                          <label class="btn btn-info respcal" ng-model="vm.calendarView" uib-btn-radio="'year'" ng-click="vm.cellIsOpen = false">Year</label>
+                          <label class="btn btn-info respcal" ng-model="vm.calendarView" uib-btn-radio="'month'" ng-click="vm.cellIsOpen = false">Month</label>
                         </div>
                       </div>
                     </div>

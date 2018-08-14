@@ -65,13 +65,13 @@ app.get("/talenkart_conf/:id/:time", function (req, res) {
 
 
 
-// app.get("/careator_scheduleConf/:id/:time", function (req, res) {
-//     queryId = req.params.id;
-//     time = req.params.id;
-//     console.log("queryId: " + req.params.id + "Time: " + req.params.time);
-//     console.log("start to render page");
-//     res.sendFile(__dirname + '/public/careatorScheduleConference.html');
-// });
+app.get("/talenkart_scheduleConf/:id/:time", function (req, res) {
+    queryId = req.params.id;
+    time = req.params.id;
+    console.log("queryId: " + req.params.id + "Time: " + req.params.time);
+    console.log("start to render page");
+    res.sendFile(__dirname + '/public/careatorScheduleConference.html');
+});
 
 
 app.get("/careatorApp", function (req, res) {

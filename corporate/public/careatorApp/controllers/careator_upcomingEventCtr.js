@@ -26,12 +26,37 @@ careatorApp.controller('careator_upcomingEventCtr', function ($scope, $rootScope
                 $scope.todayDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
                 console.log("consolidateDate: " + $scope.consolidateDate);
                 $scope.eventGet();
-            } else {}
+            } else { }
         })
         console.log("<--Get To Date");
     }
     $scope.getToDate();
+    $scope.getToDateByEachSec = function () {
+        console.log("Get To Date-->");
+        var api = "https://norecruits.com/careator_getToDate/careator_getToDate";
+        careatorHttpFactory.get(api).then(function (data) {
+            var checkStatus = careatorHttpFactory.dataValidation(data);
+            console.log("data--" + JSON.stringify(data.data));
+            if (checkStatus) {
+                console.log("data.data.data.date: " + data.data.data.date);
+                var todayDate = new Date(data.data.data.date);
+                console.log("todayDate: " + todayDate);
+                var reqDate = todayDate.getDate();
+                console.log("reqDate: " + reqDate);
+                var reqMonth = todayDate.getMonth();
+                var reqYear = todayDate.getFullYear();
+                var reqHr = todayDate.getHours();
+                var reqMin = todayDate.getMinutes();
+                var reqSec = todayDate.getSeconds();
+                $scope.todayDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
+                console.log("consolidateDate: " + $scope.consolidateDate);
+            } else { }
+        })
+        console.log("<--Get To Date");
+    }
+    $scope.getToDateByEachSec();
 
+    $interval($scope.getToDateByEachSec(), 1000);
     $scope.eventGet = function () {
         console.log("eventGet-->");
         var id = $scope.userData.userId
@@ -253,22 +278,22 @@ careatorApp.controller('careator_upcomingEventCtr', function ($scope, $rootScope
 
         SweetAlert.swal({
             title: "Its too early",
-            text: "Now time is just "+ currentTime+" Wait till" + time,
+            text: "Now time is just " + currentTime + " Wait till" + time,
             type: "warning"
         });
         // alert("Wait till " + time);
         console.log("<--waitForTime");
     }
 
-    $scope.conferenceStart = function ( url) {
+    $scope.conferenceStart = function (url) {
         console.log("conferenceStart-->");
-        console.log( "url: " + url);
-        var splitURL =url.split('/');
-        console.log("url: "+JSON.stringify(splitURL));
+        console.log("url: " + url);
+        var splitURL = url.split('/');
+        console.log("url: " + JSON.stringify(splitURL));
         localStorage.setItem("schedule_sessionUrlId", splitURL[4]);
-        localStorage.setItem("userId",  $scope.userData.userId);
-        console.log("url: "+localStorage.getItem("schedule_sessionUrlId"));
-        console.log("url: "+localStorage.getItem("userId"));
+        localStorage.setItem("userId", $scope.userData.userId);
+        console.log("url: " + localStorage.getItem("schedule_sessionUrlId"));
+        console.log("url: " + localStorage.getItem("userId"));
         $window.open(url, '_blank');
         console.log("<--conferenceStart");
     }

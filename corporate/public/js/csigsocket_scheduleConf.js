@@ -419,6 +419,7 @@ console.log("id2**: " + id2);
       });
       // window.location.href = "https://norecruits.com";
     } else {
+      console.log("start to redirect");
       if (localStorage.getItem("careatorEmail")) {
         signaling_socket.emit("disconnectNotification", {
           "email": localStorage.getItem("careatorEmail"),

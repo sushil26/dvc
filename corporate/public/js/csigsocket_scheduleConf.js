@@ -585,7 +585,7 @@ console.log("id2**: " + id2);
             "careator_remotePswd": careator_remotePswd
           }
           $.ajax({
-            url: "https://norecruits.com/careator/RemoteJoinCheck",
+            url: "https://norecruits.com/careator/RemoteJoinCheck_schedule",
             type: "POST",
             data: JSON.stringify(checkObj),
             contentType: "application/json",
@@ -643,7 +643,7 @@ console.log("id2**: " + id2);
             "careator_remotePswd": careator_remotePswd
           }
           $.ajax({
-            url: "https://norecruits.com/careator/RemoteJoinCheck",
+            url: "https://norecruits.com/careator/RemoteJoinCheck_schedule",
             type: "POST",
             data: JSON.stringify(checkObj),
             contentType: "application/json",

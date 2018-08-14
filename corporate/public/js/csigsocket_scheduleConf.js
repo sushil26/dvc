@@ -417,7 +417,6 @@ console.log("id2**: " + id2);
         owner: peerNew_id,
         userId: localStorage.getItem("userId")
       });
-
       // window.location.href = "https://norecruits.com";
     } else {
       if (localStorage.getItem("careatorEmail")) {

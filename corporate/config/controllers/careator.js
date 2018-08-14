@@ -138,31 +138,103 @@ module.exports.RemoteJoinCheck = function (req, res) {
 }
 
 module.exports.RemoteJoinCheck_schedule = function (req, res) {
-console.log("RemoteJoinCheck_schedule-->");
-console.log("req.body.careator_remoteEmail: " + req.body.careator_remoteEmail + " req.body.careator_remotePswd" + req.body.careator_remotePswd);
-console.log("req.body.url: " + req.body.url);
-var password = req.body.careator_remotePswd;
-var remote_careatorEmail = req.body.careator_remoteEmail;
-var url = req.body.url;
-if (general.emptyCheck(password) && general.emptyCheck(remote_careatorEmail)) {
-    var obj = {
-        "remoteEmailId": remote_careatorEmail,
-        "password": password
-    }
-    console.log("obj: " + JSON.stringify(obj));
-    console.log("url: " + url);
-    careatorEvents.find({ "sessionURL": url }).toArray(function (err, sessionURLFindData) {
-        console.log("sessionURLFindData: " + JSON.stringify(sessionURLFindData));
-        console.log("sessionURLFindData.length: " + sessionURLFindData.length);
-        if (err) {
-            responseData = {
-                status: false,
-                message: property.E0007,
-            };
-            res.status(400).send(responseData);
-        } else {
-            if (sessionURLFindData.length > 0) {
-                if (sessionURLFindData[0].isDisconnected == 'yes') {
+    console.log("RemoteJoinCheck_schedule-->");
+    console.log("req.body.careator_remoteEmail: " + req.body.careator_remoteEmail + " req.body.careator_remotePswd" + req.body.careator_remotePswd);
+    console.log("req.body.url: " + req.body.url);
+    var password = req.body.careator_remotePswd;
+    var remote_careatorEmail = req.body.careator_remoteEmail;
+    var url = req.body.url;
+    if (general.emptyCheck(password) && general.emptyCheck(remote_careatorEmail)) {
+        var obj = {
+            "remoteEmailId": remote_careatorEmail,
+            "password": password
+        }
+        console.log("obj: " + JSON.stringify(obj));
+        console.log("url: " + url);
+        careatorEvents.find({ "sessionURL": url }).toArray(function (err, sessionURLFindData) {
+            console.log("sessionURLFindData: " + JSON.stringify(sessionURLFindData));
+            console.log("sessionURLFindData.length: " + sessionURLFindData.length);
+            if (err) {
+                responseData = {
+                    status: false,
+                    message: property.E0007,
+                };
+                res.status(400).send(responseData);
+            } else {
+                if (sessionURLFindData.length > 0) {
+                    if (sessionURLFindData[0].isDisconnected == 'yes') {
+                        responseData = {
+                            status: false,
+                            errorCode: "E0_URLE",
+                            message: property.N0004
+                        };
+                        res.status(400).send(responseData);
+                    }
+                    else {
+                        careatorEvents.find({ "sessionURL": url, "invite": { $elemMatch: obj } }).toArray(function (err, findData) {
+                            console.log("findData: " + JSON.stringify(findData));
+                            console.log("findData.length: " + findData.length);
+                            if (err) {
+                                responseData = {
+                                    status: false,
+                                    message: property.E0007,
+                                };
+                                res.status(400).send(responseData);
+                            } else {
+                                if (findData.length > 0) {
+                                    var date = new Date();
+                                    console.log("findData[0].startsAt: " + findData[0].startsAt);
+                                    console.log("date: " + date);
+                                    if (date <= findData[0].startsAt) {
+                                        console.log("Allowed for conference");
+                                    }
+                                    else {
+                                        console.log("Not allowed for conference");
+                                    }
+
+                                    var joinEmails = findData[0].joinEmails;
+                                    console.log("joinEmails: " + JSON.stringify(joinEmails));
+                                    console.log("joinEmails.indexOf(req.body.careator_remoteEmail): " + joinEmails.indexOf(req.body.careator_remoteEmail));
+                                    if (joinEmails.indexOf(req.body.careator_remoteEmail) < 0) {
+                                        careatorEvents.update({ "sessionURL": url }, { $pull: { "leftEmails": remote_careatorEmail }, $addToSet: { "joinEmails": remote_careatorEmail } }, function (err, data) {
+                                            if (err) {
+                                                responseData = {
+                                                    status: false,
+                                                    message: property.E0007
+                                                };
+                                                res.status(400).send(responseData);
+                                            } else {
+                                                responseData = {
+                                                    status: true,
+                                                    sessionData: "79ea520a-3e67-11e8-9679-97fa7aeb8e97",
+                                                    message: property.S0005
+                                                };
+                                                res.status(200).send(responseData);
+                                            }
+                                        })
+                                    }
+                                    else {
+                                        responseData = {
+                                            status: false,
+                                            errorCode: "E0_alreadyInUse",
+                                            message: property.N0005
+                                        };
+                                        console.log("responseData: " + JSON.stringify(responseData));
+                                        res.status(400).send(responseData);
+                                    }
+                                } else {
+                                    responseData = {
+                                        status: false,
+                                        errorCode: "E1_credentialMismatch",
+                                        message: property.E0008
+                                    };
+                                    res.status(400).send(responseData);
+                                }
+                            }
+                        })
+                    }
+                }
+                else {
                     responseData = {
                         status: false,
                         errorCode: "E0_URLE",
@@ -170,79 +242,17 @@ if (general.emptyCheck(password) && general.emptyCheck(remote_careatorEmail)) {
                     };
                     res.status(400).send(responseData);
                 }
-                else {
-                    careatorEvents.find({ "sessionURL": url, "invite": { $elemMatch: obj } }).toArray(function (err, findData) {
-                        console.log("findData: " + JSON.stringify(findData));
-                        console.log("findData.length: " + findData.length);
-                        if (err) {
-                            responseData = {
-                                status: false,
-                                message: property.E0007,
-                            };
-                            res.status(400).send(responseData);
-                        } else {
-                            if (findData.length > 0) {
-                                var joinEmails = findData[0].joinEmails;
-                                console.log("joinEmails: " + JSON.stringify(joinEmails));
-                                console.log("joinEmails.indexOf(req.body.careator_remoteEmail): " + joinEmails.indexOf(req.body.careator_remoteEmail));
-                                if (joinEmails.indexOf(req.body.careator_remoteEmail) < 0) {
-                                    careatorEvents.update({ "sessionURL": url }, { $pull: { "leftEmails": remote_careatorEmail }, $addToSet: { "joinEmails": remote_careatorEmail } }, function (err, data) {
-                                        if (err) {
-                                            responseData = {
-                                                status: false,
-                                                message: property.E0007
-                                            };
-                                            res.status(400).send(responseData);
-                                        } else {
-                                            responseData = {
-                                                status: true,
-                                                sessionData: "79ea520a-3e67-11e8-9679-97fa7aeb8e97",
-                                                message: property.S0005
-                                            };
-                                            res.status(200).send(responseData);
-                                        }
-                                    })
-                                }
-                                else {
-                                    responseData = {
-                                        status: false,
-                                        errorCode: "E0_alreadyInUse",
-                                        message: property.N0005
-                                    };
-                                    console.log("responseData: " + JSON.stringify(responseData));
-                                    res.status(400).send(responseData);
-                                }
-                            } else {
-                                responseData = {
-                                    status: false,
-                                    errorCode: "E1_credentialMismatch",
-                                    message: property.E0008
-                                };
-                                res.status(400).send(responseData);
-                            }
-                        }
-                    })
-                }
             }
-            else {
-                responseData = {
-                    status: false,
-                    errorCode: "E0_URLE",
-                    message: property.N0004
-                };
-                res.status(400).send(responseData);
-            }
-        }
-    })
-}
-else {
-    responseData = {
-        status: false,
-        message: property.N0003
-    };
-    res.status(400).send(responseData);
-}
-console.log("<--RemoteJoinCheck_schedule");
+        })
+    }
+    else {
+        responseData = {
+            status: false,
+            message: property.N0003
+        };
+        res.status(400).send(responseData);
+    }
+    console.log("<--RemoteJoinCheck_schedule");
 }
 
 module.exports.pswdCheckForSesstion = function (req, res) {
@@ -385,7 +395,7 @@ module.exports.pswdCheckForSession_schedule = function (req, res) {
                             "sessionURL": url,
                             "senderEmail": careatorEmail
                         }
-                        console.log("eventFindObj: "+eventFindObj);
+                        console.log("eventFindObj: " + eventFindObj);
                         careatorEvents.find(eventFindObj).toArray(function (err, sessionURLFind) {
                             console.log("sessionURLFind: " + JSON.stringify(sessionURLFind));
                             if (err) {
@@ -517,7 +527,7 @@ module.exports.pswdCheck = function (req, res) {
                                             res.status(400).send(responseData);
                                         } else {
                                             var date = new Date();
-                                            loginDetails.update({ "_id": ObjectId(findData[0]._id) }, { $set: { "userId": findData[0]._id, "userName":findData[0].name, "email":findData[0].email, "login": true, "loginDate": date, "logout": false } },{ upsert : true }, function (err, loginData) {
+                                            loginDetails.update({ "_id": ObjectId(findData[0]._id) }, { $set: { "userId": findData[0]._id, "userName": findData[0].name, "email": findData[0].email, "login": true, "loginDate": date, "logout": false } }, { upsert: true }, function (err, loginData) {
                                                 if (err) {
                                                     responseData = {
                                                         status: false,
@@ -1311,10 +1321,10 @@ module.exports.careator_getAllEmp = function (req, res) {
 
 }
 
-module.exports.careator_getAllEmpLoginDetails= function (req, res) {
-console.log("careator_getAllEmpLoginDetails-->");
-var response;
-loginDetails.find().toArray(function (err, allEmpLoginDetails) {
+module.exports.careator_getAllEmpLoginDetails = function (req, res) {
+    console.log("careator_getAllEmpLoginDetails-->");
+    var response;
+    loginDetails.find().toArray(function (err, allEmpLoginDetails) {
         if (err) {
             console.log("err: " + JSON.stringify(err));
             response = {

@@ -61,7 +61,7 @@ careatorApp.controller('careator_upcomingEventCtr', function ($scope, $rootScope
                         "startsAt": new Date($scope.eventData[x].startsAt),
                         "endsAt": new Date($scope.eventData[x].endsAt),
                         "primColor": $scope.eventData[x].primColor,
-                        "url": $scope.eventData[x].url,
+                        "sessionURL": $scope.eventData[x].sessionURL,
                         "date": $scope.eventData[x].date,
 
                     }
@@ -260,18 +260,15 @@ careatorApp.controller('careator_upcomingEventCtr', function ($scope, $rootScope
         console.log("<--waitForTime");
     }
 
-    $scope.conferenceStart = function (event_id, url, id) {
+    $scope.conferenceStart = function ( url) {
         console.log("conferenceStart-->");
-        console.log(" event_id: " + event_id + " id: " + id + "url: " + url);
-
-        localStorage.setItem("id", id);
-        localStorage.setItem("schoolName", $scope.userData.schoolName);
-        localStorage.setItem("eventId", event_id);
-        if ($scope.loginType == 'teacher') {
-            localStorage.setItem("teacherLoginId", $scope.userData.id);
-        } else if ($scope.loginType == 'studParent') {
-            localStorage.setItem("studLoginId", $scope.userData.id);
-        }
+        console.log( "url: " + url);
+        var splitURL =url.split('/');
+        console.log("url: "+JSON.stringify(splitURL));
+        localStorage.setItem("schedule_sessionUrlId", splitURL[4]);
+        localStorage.setItem("userId",  $scope.userData.userId);
+        console.log("url: "+localStorage.getItem("schedule_sessionUrlId"));
+        console.log("url: "+localStorage.getItem("userId"));
         $window.open(url, '_blank');
         console.log("<--conferenceStart");
     }

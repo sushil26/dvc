@@ -191,7 +191,7 @@ io.sockets.on('connection', function (socket) {
     });
 
     socket.on('disconnectSession', function (data) {
-        console.log("disconnectSession-->");
+        console.log("disconnectSession-->: "+JSON.stringify(data));
         io.sockets.emit('disconnectSessionReply', { "deleteSessionId": data.deleteSessionId, "owner": data.owner });
         //if (sessionHeaderId == data.owner) {
         var db = mongoConfig.getDb();
@@ -199,9 +199,11 @@ io.sockets.on('connection', function (socket) {
         careatorMaster = db.collection("careatorMaster");
         careatorEvents = db.collection("careatorEvents");
         var queryObj = {
-            "_id": ObjectId(data.userId)
+            "senderId": data.userId
         }
+        console.log("queryObj: "+JSON.stringify(queryObj));
         if (data.requestFrom == 'schedulePage') {
+            console.log("Disconnect session From Schedule Page");
             careatorEvents.update(queryObj, { $set: { "isDisconnected": "yes" } }, function (err, data) {
                 if (err) {
                     console.log("errr: " + JSON.stringify(err));
@@ -210,7 +212,6 @@ io.sockets.on('connection', function (socket) {
                     console.log("data: " + JSON.stringify(data));
                 }
             })
-
         }
         else {
             careatorMaster.update(queryObj, { $set: { "isDisconnected": "yes" } }, function (err, data) {
@@ -310,6 +311,7 @@ io.sockets.on('connection', function (socket) {
         var db = mongoConfig.getDb();
         console.log("db: " + db);
         careatorMaster = db.collection("careatorMaster");
+        careatorEvents = db.collection("careatorEvents");
         var queryObj = {
             "sessionURL": config.sessionURL
         }
@@ -318,17 +320,33 @@ io.sockets.on('connection', function (socket) {
             "email": config.email
         }
         console.log("leftEmails: " + JSON.stringify(leftEmails));
-        careatorMaster.update({ "sessionURL": config.sessionURL }, {
-            $addToSet: { "leftEmails": config.email }, $pull: { "joinEmails": config.email }
-        }, function (err, data) {
-            if (err) {
-                console.log("errr: " + JSON.stringify(err));
-            }
-            else {
-                console.log("data: " + JSON.stringify(data));
-                socket.emit('doRedirect', { "email": config.email });
-            }
-        })
+        if(config.requestFrom=='schedulePage'){
+            careatorEvents.update({ "sessionURL": config.sessionURL }, {
+                $addToSet: { "leftEmails": config.email }, $pull: { "joinEmails": config.email }
+            }, function (err, data) {
+                if (err) {
+                    console.log("errr: " + JSON.stringify(err));
+                }
+                else {
+                    console.log("data: " + JSON.stringify(data));
+                    socket.emit('doRedirect', { "email": config.email });
+                }
+            })
+        }
+        else{
+            careatorMaster.update({ "sessionURL": config.sessionURL }, {
+                $addToSet: { "leftEmails": config.email }, $pull: { "joinEmails": config.email }
+            }, function (err, data) {
+                if (err) {
+                    console.log("errr: " + JSON.stringify(err));
+                }
+                else {
+                    console.log("data: " + JSON.stringify(data));
+                    socket.emit('doRedirect', { "email": config.email });
+                }
+            })
+        }
+        
     })
 
     socket.on('relayICECandidate', function (config) {

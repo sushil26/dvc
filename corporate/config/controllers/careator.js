@@ -183,9 +183,11 @@ module.exports.RemoteJoinCheck_schedule = function (req, res) {
                             } else {
                                 if (findData.length > 0) {
                                     var date = new Date();
-                                    console.log("findData[0].startsAt: " + findData[0].startsAt);
-                                    console.log("date: " + date);
-                                    if (date <= findData[0].startsAt) {
+                                    var newFormatedDate_currentDate = new Date(date.getFullYear(),date.getMonth(), date.getDate(), date.getHours(), date.getMinutes());
+                                    var newFormate_sd = new date(findData[0].startsAt.getFullYear(),findData[0].startsAt.getMonth(), findData[0].startsAt.getDate(), findData[0].startsAt.getHours(), findData[0].startsAt.getMinutes());
+                                    console.log("newFormatedDate_currentDate: " + newFormatedDate_currentDate);
+                                    console.log("newFormate_sd: " + newFormate_sd);
+                                    if (newFormatedDate_currentDate <= newFormate_sd) {
                                         console.log("Allowed for conference");
                                     }
                                     else {

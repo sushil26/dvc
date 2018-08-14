@@ -199,7 +199,7 @@ io.sockets.on('connection', function (socket) {
         careatorMaster = db.collection("careatorMaster");
         careatorEvents = db.collection("careatorEvents");
         var queryObj = {
-            "_id": ObjectId(data.userId)
+            "senderId": data.userId
         }
         console.log("queryObj: "+JSON.stringify(queryObj));
         if (data.requestFrom == 'schedulePage') {

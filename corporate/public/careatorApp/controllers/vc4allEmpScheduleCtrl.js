@@ -556,7 +556,8 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
       "font-size": "10px",
     })
     $(".respcal").css({
-      "font-size": "10px"
+      "font-size": "10px",
+      "padding": "4px"
     })
   }
 

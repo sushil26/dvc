@@ -150,6 +150,7 @@ if (general.emptyCheck(password) && general.emptyCheck(remote_careatorEmail)) {
         "password": password
     }
     console.log("obj: " + JSON.stringify(obj));
+    console.log("url: " + url);
     careatorEvents.find({ "sessionURL": url }).toArray(function (err, sessionURLFindData) {
         console.log("sessionURLFindData: " + JSON.stringify(sessionURLFindData));
         console.log("sessionURLFindData.length: " + sessionURLFindData.length);

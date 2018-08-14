@@ -311,6 +311,7 @@ io.sockets.on('connection', function (socket) {
         var db = mongoConfig.getDb();
         console.log("db: " + db);
         careatorMaster = db.collection("careatorMaster");
+        careatorEvents = db.collection("careatorEvents");
         var queryObj = {
             "sessionURL": config.sessionURL
         }
@@ -319,17 +320,33 @@ io.sockets.on('connection', function (socket) {
             "email": config.email
         }
         console.log("leftEmails: " + JSON.stringify(leftEmails));
-        careatorMaster.update({ "sessionURL": config.sessionURL }, {
-            $addToSet: { "leftEmails": config.email }, $pull: { "joinEmails": config.email }
-        }, function (err, data) {
-            if (err) {
-                console.log("errr: " + JSON.stringify(err));
-            }
-            else {
-                console.log("data: " + JSON.stringify(data));
-                socket.emit('doRedirect', { "email": config.email });
-            }
-        })
+        if(config.requestFrom=='schedulePage'){
+            careatorEvents.update({ "sessionURL": config.sessionURL }, {
+                $addToSet: { "leftEmails": config.email }, $pull: { "joinEmails": config.email }
+            }, function (err, data) {
+                if (err) {
+                    console.log("errr: " + JSON.stringify(err));
+                }
+                else {
+                    console.log("data: " + JSON.stringify(data));
+                    socket.emit('doRedirect', { "email": config.email });
+                }
+            })
+        }
+        else{
+            careatorMaster.update({ "sessionURL": config.sessionURL }, {
+                $addToSet: { "leftEmails": config.email }, $pull: { "joinEmails": config.email }
+            }, function (err, data) {
+                if (err) {
+                    console.log("errr: " + JSON.stringify(err));
+                }
+                else {
+                    console.log("data: " + JSON.stringify(data));
+                    socket.emit('doRedirect', { "email": config.email });
+                }
+            })
+        }
+        
     })
 
     socket.on('relayICECandidate', function (config) {

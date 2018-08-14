@@ -422,11 +422,13 @@ function disconnecSession() {
     console.log("start to redirect");
     if (localStorage.getItem("careatorEmail")) {
       signaling_socket.emit("disconnectNotification", {
+        "requestFrom": "schedulePage",
         "email": localStorage.getItem("careatorEmail"),
         "sessionURL": window.location.href
       })
     } else {
       signaling_socket.emit("disconnectNotification", {
+        "requestFrom": "schedulePage",
         "email": localStorage.getItem("careator_remoteEmail"),
         "sessionURL": window.location.href
       })

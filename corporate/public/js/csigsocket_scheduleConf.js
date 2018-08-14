@@ -370,7 +370,7 @@ var ICE_SERVERS = [{
 
 /* ##### Start: disconnectSessionReply from server(index.js)   ##### */
 signaling_socket.on("disconnectSessionReply", function (data) {
-  console.log("disconnectSessionReply from server-->");
+  console.log("disconnectSessionReply from server-->: "+JSON.stringify(data));
   if (queryLink == data.deleteSessionId && peerNew_id == data.owner) {
     console.log("Ready for redirect-->");
     // localStorage.setItem("redirctRequired", true);

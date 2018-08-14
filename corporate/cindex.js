@@ -158,6 +158,7 @@ io.sockets.on('connection', function (socket) {
             }
             else {
                 if (sessionURLFindData.length > 0) {
+                    console.log("found url on careator master-->");
                     careatorMaster.update(queryObj, { $addToSet: { "leftEmails": emailTrack[socket.id] }, $pull: { "joinEmails": emailTrack[socket.id] } }, function (err, data) {
                         if (err) {
                             console.log("errr: " + JSON.stringify(err));
@@ -168,6 +169,7 @@ io.sockets.on('connection', function (socket) {
                     })
                 }
                 else{
+                    console.log("start to update if url is in careatorEvents-->");
                     careatorEvents.update(queryObj, { $addToSet: { "leftEmails": emailTrack[socket.id] }, $pull: { "joinEmails": emailTrack[socket.id] } }, function (err, data) {
                         if (err) {
                             console.log("errr: " + JSON.stringify(err));

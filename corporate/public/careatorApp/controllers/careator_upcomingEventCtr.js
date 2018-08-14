@@ -260,9 +260,9 @@ careatorApp.controller('careator_upcomingEventCtr', function ($scope, $rootScope
         console.log("<--waitForTime");
     }
 
-    $scope.conferenceStart = function (event_id, url, id) {
+    $scope.conferenceStart = function (event_id, url) {
         console.log("conferenceStart-->");
-        console.log(" event_id: " + event_id + " id: " + id + "url: " + url);
+        console.log(" event_id: " + event_id  + "url: " + url);
         var splitURL =url.split('/');
         console.log("url: "+JSON.stringify(splitURL));
         // localStorage.setItem("sessionUrlId", peerNew_id);

@@ -182,9 +182,10 @@ module.exports.RemoteJoinCheck_schedule = function (req, res) {
                                 res.status(400).send(responseData);
                             } else {
                                 if (findData.length > 0) {
+                                    console.log("findData[0].startsAt: "+findData[0].startsAt);
                                     var date = new Date();
                                     var newFormatedDate_currentDate = new Date(date.getFullYear(),date.getMonth(), date.getDate(), date.getHours(), date.getMinutes());
-                                    var sd = findData[0].startsAt;
+                                    var sd = new Date(findData[0].startsAt);
                                     var newFormate_sd = new date(sd.getFullYear(),sd.getMonth(), sd.getDate(), sd.getHours(), sd.getMinutes());
                                     console.log("newFormatedDate_currentDate: " + newFormatedDate_currentDate);
                                     console.log("newFormate_sd: " + newFormate_sd);

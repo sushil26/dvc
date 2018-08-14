@@ -201,7 +201,9 @@ io.sockets.on('connection', function (socket) {
         var queryObj = {
             "_id": ObjectId(data.userId)
         }
+        console.log("queryObj: "+JSON.stringify(queryObj));
         if (data.requestFrom == 'schedulePage') {
+            console.log("Disconnect session From Schedule Page");
             careatorEvents.update(queryObj, { $set: { "isDisconnected": "yes" } }, function (err, data) {
                 if (err) {
                     console.log("errr: " + JSON.stringify(err));

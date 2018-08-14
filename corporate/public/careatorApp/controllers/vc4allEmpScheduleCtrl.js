@@ -553,7 +553,7 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
     $("#calnwidth").css({
       "width": " ",
       "margin-left": " ",
-      // "font-size":"10px"
+      "font-size":"10px"
     })
   }
 

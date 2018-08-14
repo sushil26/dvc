@@ -227,7 +227,7 @@ module.exports.RemoteJoinCheck_schedule = function (req, res) {
                                         console.log("Not allowed for conference");
                                         responseData = {
                                             status: false,
-                                            errorCode: E1_timeInvalid,
+                                            errorCode: "E1_timeInvalid",
                                             message: "You can join conference only time, between "+newFormate_sd+" to "+newFormated_ed,
                                         };
                                         res.status(400).send(responseData);

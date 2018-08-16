@@ -30,15 +30,17 @@ console.log("chatFile: "+JSON.stringify(chatFile));
             metadata: userDataFile
             
         });
-        var response = fs.createReadStream(req.files.img.path).pipe(writestream);
+        var buffer = new Buffer(chatFile);
+        console.log("buffer: "+buffer );
+        // var response = fs.createReadStream(req.files.img.path).pipe(writestream);
       
-        var getValue = chatFile;
-        //var byte_string = videoBase64.substr(23);//The base64 has a imageURL
-        //var buffer = new Buffer(byte_string);   //new Buffer(b64string, 'base64');  you can use base64 encoding with creating new buffer string
-        // var buffer = new Buffer(chatFile);   //new Buffer(b64string, 'base64');  you can use base64 encoding with creating new buffer string
-        // var response = streamifier.createReadStream(buffer).pipe(writeStream);  // returns response which is having all information regarding saved byte string
-        var lastInsertedFileId = response._store.fileId;  // now you can store it into another document for future use.
-        console.log(lastInsertedFileId);
+        // var getValue = chatFile;
+        // //var byte_string = videoBase64.substr(23);//The base64 has a imageURL
+        // //var buffer = new Buffer(byte_string);   //new Buffer(b64string, 'base64');  you can use base64 encoding with creating new buffer string
+        // // var buffer = new Buffer(chatFile);   //new Buffer(b64string, 'base64');  you can use base64 encoding with creating new buffer string
+        // // var response = streamifier.createReadStream(buffer).pipe(writeStream);  // returns response which is having all information regarding saved byte string
+        // var lastInsertedFileId = response._store.fileId;  // now you can store it into another document for future use.
+        // console.log(lastInsertedFileId);
 
         writeStream.on('close', function (file) {
             console.log(file.filename + "written to db");

@@ -952,7 +952,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
               console.log("data--" + JSON.stringify(getData.data));
               var checkStatus = careatorHttpFactory.dataValidation(getData);
               if (checkStatus) {
-                console.log("Message: " + data.data.message);
+                console.log("Message: " + data.message);
                 $scope.allChat.chats.push({
                   senderId: data.senderId,
                   senderName: data.senderName,

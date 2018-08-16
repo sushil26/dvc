@@ -254,16 +254,20 @@
                                         <a ng-if="selectedType=='individual_chats' &&  receiverChatStatus=='Sleeping'" class="heading-status">
                                             <br>
                                             <i style="color: black;    font-size: 7px;" class="fa fa-circle"></i>&nbsp;{{receiverChatStatus}}
-                                        </a> 
-                                        
+                                        </a>
+
                                         <a ng-if="selectedType=='individual_chats' &&  receiverChatStatus=='Custom'" class="heading-status">
                                             <br>
                                             <i style="color: #FFC107;    font-size: 7px;" class="fa fa-circle"></i>&nbsp;{{receiverChatStatus}}
                                         </a>
                                     </div>
-                                    <div class="form-group has-feedback">
-                                        <input type="text" class="form-control" ng-model="searchm" name="searchText" placeholder="Search text">
-                                        <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                                    <div class="row composeBox">
+                                        <div class="col-sm-6 composeBox-inner">
+                                            <div class="form-group has-feedback">
+                                                <input type="text" class="form-control" ng-model="searchm" name="searchText" placeholder="Search text">
+                                                <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                                            </div>
+                                        </div>
                                     </div>
 
 

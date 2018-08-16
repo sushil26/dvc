@@ -10,7 +10,12 @@ var blobs = [];
 
 module.exports.chatFileUpload = function (req, res) {
     console.log("chatFileUpload-->");
-    console.log("req.body.logo: "+req.body.img);
+    if (!req.files)
+        return res.status(400).send('No files were uploaded.');
+
+    var userDataFile = req.files.img;
+    console.log("userDataFile: " + userDataFile);
+    // console.log("req.body.logo: "+req.body.img);
     var chatFile = req.body.logo;
 console.log("chatFile: "+JSON.stringify(chatFile));
     console.log("req.body.eventId: " + req.body.eventId)

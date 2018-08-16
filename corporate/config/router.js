@@ -73,7 +73,7 @@ module.exports = function (app) {
     app.post('/careator_comm_profileImgUpdateById/comm_profileImgUpdateById/:id', careator.comm_profileImgUpdateById);
 
     app.get('/careator/careator_getAllEmpLoginDetails', careator.careator_getAllEmpLoginDetails);
-    app.post('/careator_chatFileUpload/chatFileUpload', chatUpload.chatFileUpload);
+    // app.post('/careator_chatFileUpload/chatFileUpload', chatUpload.chatFileUpload);
     
 
     app.post('/vc/login4VC', user.login4VC);

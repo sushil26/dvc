@@ -26,7 +26,7 @@ careatorApp.controller('careator_upcomingEventCtr', function ($scope, $rootScope
                 $scope.todayDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
                 console.log("consolidateDate: " + $scope.consolidateDate);
                 $scope.eventGet();
-            } else { }
+            } else {}
         })
         console.log("<--Get To Date");
     }
@@ -50,7 +50,7 @@ careatorApp.controller('careator_upcomingEventCtr', function ($scope, $rootScope
                 var reqSec = todayDate.getSeconds();
                 $scope.todayDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
                 console.log("consolidateDate: " + $scope.consolidateDate);
-            } else { }
+            } else {}
         })
         console.log("<--Get To Date");
     }
@@ -325,6 +325,10 @@ careatorApp.controller('careator_upcomingEventCtr', function ($scope, $rootScope
         }
     })
     /* ### End: Get event update from index.js  ### */
+    $scope.sort = function (keyname) {
+        $scope.sortKey = keyname; //set the sortKey to the param passed
+        $scope.reverse = !$scope.reverse; //if true make it false and vice versa
+    }
 
 
 

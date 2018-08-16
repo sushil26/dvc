@@ -537,11 +537,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
       });
     }
   };
-  $scope.chatFile = function(){
-    console.log("chatFile-->");
-    var filename = event.target.files[0].name;
-    alert('file was selected: ' + filename);
-  }
+  
 
   $scope.sendTextWithFile = function (chatFile) {
     $("#comment").val("");
@@ -550,18 +546,21 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
     console.log("chatFilewithJson: "+JSON.stringify(chatFile));
     console.log("$scope.chatFile: "+$scope.chatFile);
     console.log("$scope.chatFilewith json: "+JSON.stringify(chatFile));
-  //   var api = "https://norecruits.com/careator_chatFileUpload/groupTextReadByGroupId/";
-  //   careatorHttpFactory.imageUpload(id, uploadUrl).then(function (data) {
-  //     console.log("hello " + JSON.stringify(data));
-  //     var checkStatus = careatorHttpFactory.dataValidation(data);
-  //     if (checkStatus) {
-  //         $scope.waterImg = data.data;
-  //         console.log("$scope.photo" + JSON.stringify($scope.photo));
-  //     } else {
-  //         console.log("image is not uploaded");
-  //         alertDialog.alert("Upload Appropriate File Formate", "error");
-  //     }
-  // });
+    var api = "https://norecruits.com/careator_chatFileUpload/chatFileUpload/";
+    careatorHttpFactory.imageUpload(id, uploadUrl).then(function (data) {
+      console.log("hello " + JSON.stringify(data));
+      var checkStatus = careatorHttpFactory.dataValidation(data);
+      if (checkStatus) {
+          $scope.waterImg = data.data;
+          console.log("$scope.photo" + JSON.stringify($scope.photo));
+          if($scope.typedMessage){
+            $scope.sendText();
+          }
+      } else {
+          console.log("image is not uploaded");
+          alertDialog.alert("Upload Appropriate File Formate", "error");
+      }
+  });
   };
 
   $scope.readText = function () {

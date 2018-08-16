@@ -27,7 +27,7 @@ module.exports.chatFileUpload = function (req, res) {
     fileName = fileName + "_" + general.date() + "." + fileArr[fileArr.length - 1];
     console.log("fileName--" + fileName)
 
-    myFile.mv(chatFileDirectory + fileName, function (err) {
+    myFile.mv(chatFileDirectory , function (err) {
         if (err) {
             console.log(require('util').inspect(err));
             var responseData = {

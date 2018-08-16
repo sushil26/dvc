@@ -112,6 +112,7 @@ function sendMessage() {
             if (msg) {
                 console.log("Start to emit message  ");
                 console.log("peerNew_id: " + peerNew_id);
+                console.log("id2: " + id2);
                 if (id2 == 'talenkart_scheduleConf') {
                     signaling_socket.emit('textMsg', { 'message': msg, 'userId': peerNew_id, 'queryLink': queryLink, 'timeLink': timeLink, 'userName': userName, "email": localStorage.getItem('careatorEmail'), "urlDate": urlDate, "requestFrom":"schedulePage" });
                 }

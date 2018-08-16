@@ -538,6 +538,27 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
     }
   };
 
+  $scope.sendTextWithFile = function (chatFile) {
+    $("#comment").val("");
+    console.log("sendTextWithFile-->");
+    console.log("chatFile: "+chatFile);
+    console.log("chatFilewithJson: "+JSON.stringify(chatFile));
+    console.log("$scope.chatFile: "+$scope.chatFile);
+    console.log("$scope.chatFilewith json: "+JSON.stringify(chatFile));
+  //   var api = "https://norecruits.com/careator_chatFileUpload/groupTextReadByGroupId/";
+  //   careatorHttpFactory.imageUpload(id, uploadUrl).then(function (data) {
+  //     console.log("hello " + JSON.stringify(data));
+  //     var checkStatus = careatorHttpFactory.dataValidation(data);
+  //     if (checkStatus) {
+  //         $scope.waterImg = data.data;
+  //         console.log("$scope.photo" + JSON.stringify($scope.photo));
+  //     } else {
+  //         console.log("image is not uploaded");
+  //         alertDialog.alert("Upload Appropriate File Formate", "error");
+  //     }
+  // });
+  };
+
   $scope.readText = function () {
     console.log("readText-->");
     if ($scope.selectedType == "group") {

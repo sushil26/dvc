@@ -575,7 +575,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
               senderName: userData.userName,
               receiverName: $scope.receiverData.receiverName,
               messageType: "file",
-              message: uploadResponse.data
+              message: uploadResponse
             };
             console.log("obj: " + JSON.stringify(obj));
             careatorHttpFactory.post(api, obj).then(function (data) {
@@ -598,7 +598,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
               senderName: userData.userName,
               receiverName: $scope.receiverData.receiverName,
               messageType: "file",
-              message: uploadResponse.data
+              message: uploadResponse
             };
             console.log("obj: " + JSON.stringify(obj));
             careatorHttpFactory.post(api, obj).then(function (data) {
@@ -630,7 +630,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
             senderId: userData.userId,
             senderName: userData.userName,
             messageType: "file",
-            message: uploadResponse.data
+            message: $scope.typedMessage
           };
           console.log("obj: " + JSON.stringify(obj));
           api = "https://norecruits.com//careator_groupText/groupText";
@@ -853,35 +853,12 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
               console.log("Sorry: " + data.data.message);
             }
           })
-          if (data.messageType == 'file') {
-            console.log("********MSG TYPE IS FILE");
-            var api = "https://norecruits.com/careator_chatFileUpload/getChatFileUpload/" + data.message;
-            console.log("*api: " + api);
-            careatorHttpFactory.get(api).then(function (data) {
-              console.log("data--" + JSON.stringify(data.data));
-              var checkStatus = careatorHttpFactory.dataValidation(data);
-              if (checkStatus) {
-                console.log("Message: " + data.data.message);
-                $scope.allChat.chats.push({
-                  senderId: data.senderId,
-                  senderName: data.senderName,
-                  messageType: "file",
-                  message: data.dat.data,
-                  sendTime: data.sendTime
-                });
-              } else {
-                console.log("Sorry: " + data.data.message);
-              }
-            })
-          }
-          else {
-            $scope.allChat.chats.push({
-              senderId: data.senderId,
-              senderName: data.senderName,
-              message: data.message,
-              sendTime: data.sendTime
-            });
-          }
+          $scope.allChat.chats.push({
+            senderId: data.senderId,
+            senderName: data.senderName,
+            message: data.message,
+            sendTime: data.sendTime
+          });
           $scope.scrollDown();
         } else {
           console.log("Need to notify");
@@ -966,12 +943,35 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
               }
             })
           }
-          $scope.allChat.chats.push({
-            senderId: data.senderId,
-            senderName: data.senderName,
-            message: data.message,
-            sendTime: data.sendTime
-          });
+          if (data.messageType == 'file') {
+            console.log("********MSG TYPE IS FILE");
+            var api = "https://norecruits.com/careator_chatFileUpload/getChatFileUpload/" + data.message;
+            console.log("*api: " + api);
+            careatorHttpFactory.get(api).then(function (data) {
+              console.log("data--" + JSON.stringify(data.data));
+              var checkStatus = careatorHttpFactory.dataValidation(data);
+              if (checkStatus) {
+                console.log("Message: " + data.data.message);
+                $scope.allChat.chats.push({
+                  senderId: data.senderId,
+                  senderName: data.senderName,
+                  messageType: "file",
+                  message: data.dat.data,
+                  sendTime: data.sendTime
+                });
+              } else {
+                console.log("Sorry: " + data.data.message);
+              }
+            })
+          }
+          else {
+            $scope.allChat.chats.push({
+              senderId: data.senderId,
+              senderName: data.senderName,
+              message: data.message,
+              sendTime: data.sendTime
+            });
+          }
           $scope.scrollDown();
         } else if ($scope.individualData == undefined || $scope.allChatRecordsId.indexOf(data.id) >= 0) {
           console.log("Notify the Unseen message count: " + JSON.stringify(data));

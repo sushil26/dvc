@@ -407,10 +407,12 @@
                                         <label for="fileselect">
                                             <i class="fa fa-upload fa-2x"> </i>
                                         </label>
-                                        <input type="file" style="width: 166px;font-size: 10px;" class="bcontrol-label btn btn-warning m-bot15" name="myImage" value="Upload"
+                                        <!-- <input type="file" style="width: 166px;font-size: 10px;" class="bcontrol-label btn btn-warning m-bot15" name="myImage" value="Upload"
                                                     image-with-preview file-model="chatFile" ng-model="image" accept="csv"
-                                                    ng-required="true">
-                                        <!-- <input id="fileselect" type="file" name="fileselect" file-model="chatFile.file" style="display: none;" /> -->
+                                                    ng-required="true"> -->
+                                        <input id="fileselect" type="file" name="fileselect" style="display: none;"  name="myImage" value="Upload"
+                                                    image-with-preview file-model="chatFile" ng-model="image" accept="image/*"
+                                                    ng-required="true"/>
                                     </div>
                                     <div class="col-sm-1 col-xs-1 reply-send">
                                         <button id="sndmgs" ng-click="sendText()" style="

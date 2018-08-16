@@ -104,6 +104,11 @@ module.exports.getChatFileUpload = function (req, res) {
     //     // dump contents to console when complete
 
     // });
+    readstream.on('error', function (err) {
+        console.log('An error occurred!', err);
+        throw err;
+      });
+      
     readStream.on("end", function () {
         console.log("Final Output");
         console.log("res: "+res);

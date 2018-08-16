@@ -87,7 +87,6 @@ module.exports.getChatFileUpload = function (req, res) {
         console.log("chunk: "+chunk);
         output += chunk;
     });
-
     // base64.decode(output, function (err, output) {
     //     console.log('output');
     //     // dump contents to console when complete

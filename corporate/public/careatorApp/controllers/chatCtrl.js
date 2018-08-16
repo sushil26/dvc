@@ -948,7 +948,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
             var id= data.message;
             var api = "https://norecruits.com/careator_chatFileUpload/getChatFileUpload/" + id;
             console.log("*api: " + api);
-            careatorHttpFactory.get(api).then(function (getData) {
+            careatorHttpFactory.getFromGrid(api).then(function (getData) {
               console.log("data--" + JSON.stringify(getData.data));
               var checkStatus = careatorHttpFactory.dataValidation(getData);
               if (checkStatus) {

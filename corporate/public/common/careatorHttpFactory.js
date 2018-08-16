@@ -31,6 +31,7 @@ careatorApp.factory('careatorHttpFactory', function ($http, $q, $rootScope) {
             $http({
                 method: 'GET',
                 url: api
+               
             }).
                 then(function (data, status, headers, config) {
                     dfd.resolve(data);
@@ -49,6 +50,33 @@ careatorApp.factory('careatorHttpFactory', function ($http, $q, $rootScope) {
 
             return dfd.promise;
         },
+        getFromGrid: function (api) {
+            //console.log("get api-->");
+            var dfd = $q.defer();
+
+            $http({
+                method: 'GET',
+                url: api,
+                responseType: 'arraybuffer'
+            }).
+                then(function (data, status, headers, config) {
+                    dfd.resolve(data);
+
+                }, function (error) {
+                    console.log(error);
+                    dfd.resolve(error);
+
+                });
+            /* error(function(data, status, headers, config) {
+                 dfd.reject(data);
+             });*/
+            var j = dfd.promise.then(function (data) {
+                return data;
+            })
+
+            return dfd.promise;
+        },
+
         put: function (api, data) {
 
             // console.log("headers"+headers);

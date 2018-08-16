@@ -243,7 +243,11 @@ careatorApp.controller('usersListCtrl', function ($scope, $state, careatorHttpFa
                     })
                     console.log("<--statusChange");
                 } else {
-                    SweetAlert.swal("Your  didn't Reset the user!");
+                    SweetAlert.swal({
+                        title: "Not Resetted!",
+
+                        type: "info"
+                    });
                 }
             }
 

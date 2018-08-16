@@ -130,7 +130,7 @@
                                                                     <span ng-if="record.unseenCount > 0" class="notify"> {{record.unseenCount}}</span>
                                                                 </div>
                                                                 <div class="col-sm-4 col-xs-4 pull-right sideBar-time">
-                                                                        <span class="time-meta">{{record.timeStamp |amCalendar}}
+                                                                    <span class="time-meta">{{record.timeStamp |amCalendar}}
                                                                     </span>
                                                                 </div>
                                                             </div>
@@ -157,7 +157,7 @@
                                     <div class="row composeBox">
                                         <div class="col-sm-12 composeBox-inner">
                                             <div class="form-group has-feedback">
-                                                <input id="composeText" type="text" class="form-control" ng-model="search"  name="searchText" placeholder="Search People">
+                                                <input id="composeText" type="text" class="form-control" ng-model="search" name="searchText" placeholder="Search People">
                                                 <span class="glyphicon glyphicon-search form-control-feedback"></span>
                                             </div>
                                         </div>
@@ -255,11 +255,21 @@
                                             <br>
                                             <i style="color: black;    font-size: 7px;" class="fa fa-circle"></i>&nbsp;{{receiverChatStatus}}
                                         </a>
+
                                         <a ng-if="selectedType=='individual_chats' &&  receiverChatStatus=='Custom'" class="heading-status">
                                             <br>
                                             <i style="color: #FFC107;    font-size: 7px;" class="fa fa-circle"></i>&nbsp;{{receiverChatStatus}}
                                         </a>
                                     </div>
+                                    <div class="row composeBox">
+                                        <div class="col-sm-6 composeBox-inner">
+                                            <div class="form-group has-feedback">
+                                                <input type="text" class="form-control" ng-model="searchm" name="searchText" placeholder="Search text">
+                                                <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
 
                                     <div class="col-sm-1 col-xs-1 pull-right" id="homeicon" ng-click="chatMenu()" style="margin-right: 20px; margin-top:5px;">
                                         <i style="font-size:25px; cursor: pointer;" class="fa fa-home"></i>
@@ -341,7 +351,7 @@
                                         </center>
                                     </div>
 
-                                    <div class="row message-body" ng-repeat="chat in allChat.chats">
+                                    <div class="row message-body" ng-repeat="chat in allChat.chats | filter:searchm">
                                         <div class="col-sm-12 message-main-receiver slideRight" ng-if="chat.senderId!=userId">
                                             <div ng-if="selectedType=='group'" style="background:#ddf8c6;
                                                 width: max-content;
@@ -382,7 +392,7 @@
                                                     {{chat.message}}
                                                 </div>
                                                 <span class="message-time pull-right">
-                                                        {{chat.sendTime | amCalendar}}
+                                                    {{chat.sendTime | amCalendar}}
                                                 </span>
                                             </div>
                                         </div>
@@ -398,9 +408,9 @@
                                     </div>
                                     <div class="col-sm-1 col-xs-1 reply-recording">
                                         <label for="fileselect">
-                                                <i class="fa fa-upload fa-2x"> </i>
-                                            </label>
-                                            <input id="fileselect" type="file" name="fileselect" file-model ="chatFile" style="display: none;"/>
+                                            <i class="fa fa-upload fa-2x"> </i>
+                                        </label>
+                                        <input id="fileselect" type="file" name="fileselect" file-model="chatFile" style="display: none;" />
                                     </div>
                                     <div class="col-sm-1 col-xs-1 reply-send">
                                         <button ng-if="chatFile == undefined" id="sndmgs" ng-click="sendText()" style="
@@ -415,7 +425,7 @@
                                              float: right;">
                                             Send
                                         </button>
-                                        <button  ng-if="chatFile != undefined" id="sndmgs" ng-click="sendTextWithFile(chatFile)" style="
+                                        <button ng-if="chatFile != undefined" id="sndmgs" ng-click="sendTextWithFile(chatFile)" style="
                                         font-family: lato;  
                                         color: gray;                   
                                          padding: 5px;
@@ -425,8 +435,8 @@
                                          padding-left: 10px;
                                          padding-right: 10px;
                                          float: right;">
-                                        Send
-                                    </button>
+                                            Send
+                                        </button>
 
                                         <!-- <button class="btn btn-success" aria-hidden="true" id="sndmgs" ng-click="sendText()">Send</button> -->
                                     </div>

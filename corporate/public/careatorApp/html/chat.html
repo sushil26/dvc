@@ -224,7 +224,7 @@
                                         </div>
 
                                     </div> -->
-                                    <div class="col-sm-8 col-xs-7 heading-name">
+                                    <div class="col-sm-4 col-xs-3 heading-name">
                                         <div ng-if="selectedType=='group'">
                                             <a class="heading-name-meta">{{individualData.groupName}}
                                             </a>&nbsp;&nbsp;&nbsp;
@@ -259,13 +259,12 @@
                                             <br>
                                             <i style="color: #FFC107;    font-size: 7px;" class="fa fa-circle"></i>&nbsp;{{receiverChatStatus}}
                                         </a>
-
-
-
-
-                                        <input type="text" class="form-control" ng-model="searchm" name="searchText" placeholder="Search text">
-
-
+                                    </div>
+                                    <div class="col-sm-4 col-xs-3">
+                                        <div class="form-group has-feedback">
+                                            <input id="composeText" type="text" class="form-control" ng-model="search" name="searchText" placeholder="Search People">
+                                            <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                                        </div>
                                     </div>
 
 

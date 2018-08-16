@@ -32,10 +32,11 @@ module.exports.chatFileUpload = function (req, res) {
     });
     var buffer = new Buffer(chatFile.data);
     //console.log("buffer: " + buffer);
-    var response = streamifier.createReadStream(buffer).pipe(writeStream);  // returns response which is having all information regarding saved byte string
-    var lastInsertedFileId = response._store.fileId;
+    //var response = streamifier.createReadStream(buffer).pipe(writeStream);  // returns response which is having all information regarding saved byte string
+    //var lastInsertedFileId = response._store.fileId;
     console.log("lastInsertedFileId: "+lastInsertedFileId);
-    // var response = fs.createReadStream(req.files.img.path).pipe(writestream);
+     var response = fs.createReadStream(req.files.img.path).pipe(writestream);
+     var lastInsertedFileId = response._store.fileId;
 
     // var getValue = chatFile;
     // //var byte_string = videoBase64.substr(23);//The base64 has a imageURL
@@ -48,7 +49,7 @@ module.exports.chatFileUpload = function (req, res) {
     writeStream.on('close', function (file) {
         console.log(file.filename + "written to db");
         var responseData;
-        console.log("req.body.id: " + req.body.id);
+       // console.log("req.body.id: " + req.body.id);
 
         // var queryId = {
         //     "_id": ObjectId(req.body.eventId)
@@ -57,7 +58,7 @@ module.exports.chatFileUpload = function (req, res) {
         var setData = {
             "vcRecordId": lastInsertedFileId
         }
-        console.log("setData: " + JSON.stringify(setData));
+       // console.log("setData: " + JSON.stringify(setData));
         // event.update({ "_id": ObjectId(req.body.eventId), 'vcRecordId': { $exists: false } }, { $set: { "vcRecordId": lastInsertedFileId } }, function (err, data) {
         //     var io = req.app.get('socketio');
         //     io.emit('eventUpdatedForHistory', {});

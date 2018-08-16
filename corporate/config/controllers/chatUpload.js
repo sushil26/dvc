@@ -19,7 +19,7 @@ module.exports.chatFileUpload = function (req, res) {
     // console.log("req.body.logo: "+req.body.img);
     var chatFile = req.files.img
     //console.log("chatFile: " + JSON.stringify(chatFile));
-    console.log("chatFile.data: " + JSON.stringify(chatFile.data));
+    //console.log("chatFile.data: " + JSON.stringify(chatFile.data));
 
 
     var gfs = Grid(conn.db);
@@ -28,10 +28,9 @@ module.exports.chatFileUpload = function (req, res) {
         mode: 'w',
         content_type: req.files.img.mimetype,
         metadata: userDataFile
-
     });
     var buffer = new Buffer(chatFile.data);
-    console.log("buffer: " + buffer);
+    //console.log("buffer: " + buffer);
     var response = streamifier.createReadStream(buffer).pipe(writeStream);  // returns response which is having all information regarding saved byte string
     var lastInsertedFileId = response._store.fileId;
     console.log("lastInsertedFileId: "+lastInsertedFileId);

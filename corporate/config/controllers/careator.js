@@ -228,7 +228,7 @@ module.exports.RemoteJoinCheck_schedule = function (req, res) {
                                         responseData = {
                                             status: false,
                                             errorCode: "E1_timeInvalid",
-                                            message: "You can join conference only time, between "+newFormate_sd+" to "+newFormated_ed,
+                                            message: "You can join conference only time, between " + newFormate_sd + " to " + newFormated_ed,
                                         };
                                         res.status(400).send(responseData);
                                     }
@@ -1833,7 +1833,7 @@ module.exports.individualText = function (req, res) {
                         res.status(400).send(responseData);
                     } else {
                         var io = req.app.get('socketio');
-                        io.emit('comm_textReceived', {
+                        var emitObj = {
                             "id": insertedData.ops[0]._id,
                             "senderId": obj.chats[0].senderId,
                             "senderName": obj.chats[0].senderName,
@@ -1841,7 +1841,12 @@ module.exports.individualText = function (req, res) {
                             "sendTime": obj.chats[0].sendTime,
                             "receiverId": obj.receiverId,
                             "freshInsert": true
-                        }); /* ### Note: Emit message to client ### */
+                        }
+                        if (req.body.messageType == 'file') {
+                            emitObj.messageType = req.body.messageType
+                        }
+                        io.emit('comm_textReceived', emitObj); /* ### Note: Emit message to client ### */
+
                         response = {
                             status: true,
                             message: property.S0012,
@@ -1881,7 +1886,7 @@ module.exports.individualText = function (req, res) {
                     } else {
                         console.log("updatedData: " + JSON.stringify(updatedData));
                         var io = req.app.get('socketio');
-                        io.emit('comm_textReceived', {
+                        var emitObj = {
                             "id": data[0]._id,
                             "senderId": obj.senderId,
                             "senderName": obj.senderName,
@@ -1891,7 +1896,11 @@ module.exports.individualText = function (req, res) {
                             "senderSeen": setObj.senderSeen,
                             "receiverSeen": setObj.receiverSeen,
                             "unseenCount": setObj.unseenCount
-                        }); /* ### Note: Emit message to client ### */
+                        }
+                        if(req.body.messageType=='file'){
+                            emitObj.messageType=req.body.messageType
+                        }
+                        io.emit('comm_textReceived',emitObj); /* ### Note: Emit message to client ### */
                         response = {
                             status: true,
                             message: property.S0010,

@@ -553,11 +553,11 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
       console.log("hello " + JSON.stringify(data));
       var checkStatus = careatorHttpFactory.dataValidation(data);
       if (checkStatus) {
-        $scope.waterImg = data.data;
-        console.log("$scope.photo" + JSON.stringify($scope.photo));
+        var uploadResponse = data.data;
+        console.log("$scope.photo" + JSON.stringify(uploadResponse));
         $scope.chatFile = undefined;
         /* ##### Start send file info  ##### */
-       
+
         var api;
         var obj;
         console.log("$scope.selectedType: " + $scope.selectedType);
@@ -575,7 +575,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
               senderName: userData.userName,
               receiverName: $scope.receiverData.receiverName,
               messageType: "file",
-              message: $scope.typedMessage
+              message: uploadResponse
             };
             console.log("obj: " + JSON.stringify(obj));
             careatorHttpFactory.post(api, obj).then(function (data) {
@@ -598,7 +598,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
               senderName: userData.userName,
               receiverName: $scope.receiverData.receiverName,
               messageType: "file",
-              message: $scope.typedMessage
+              message: uploadResponse
             };
             console.log("obj: " + JSON.stringify(obj));
             careatorHttpFactory.post(api, obj).then(function (data) {
@@ -630,7 +630,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
             senderId: userData.userId,
             senderName: userData.userName,
             messageType: "file",
-            message: $scope.typedMessage
+            message: uploadResponse
           };
           console.log("obj: " + JSON.stringify(obj));
           api = "https://norecruits.com//careator_groupText/groupText";
@@ -853,12 +853,22 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
               console.log("Sorry: " + data.data.message);
             }
           })
-          $scope.allChat.chats.push({
-            senderId: data.senderId,
-            senderName: data.senderName,
-            message: data.message,
-            sendTime: data.sendTime
-          });
+          if (data.messageType == 'file') {
+            $scope.allChat.chats.push({
+              senderId: data.senderId,
+              senderName: data.senderName,
+              message: data.message,
+              sendTime: data.sendTime
+            });
+          }
+          else {
+            $scope.allChat.chats.push({
+              senderId: data.senderId,
+              senderName: data.senderName,
+              message: data.message,
+              sendTime: data.sendTime
+            });
+          }
           $scope.scrollDown();
         } else {
           console.log("Need to notify");

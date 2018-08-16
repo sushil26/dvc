@@ -957,7 +957,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
                   senderId: data.senderId,
                   senderName: data.senderName,
                   messageType: "file",
-                  message: data.data.data,
+                  message: data.message,
                   sendTime: data.sendTime
                 });
               } else {

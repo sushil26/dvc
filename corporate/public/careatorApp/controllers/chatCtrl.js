@@ -537,6 +537,11 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
       });
     }
   };
+  $scope.chatFile = function(){
+    console.log("chatFile-->");
+    var filename = event.target.files[0].name;
+    alert('file was selected: ' + filename);
+  }
 
   $scope.sendTextWithFile = function (chatFile) {
     $("#comment").val("");

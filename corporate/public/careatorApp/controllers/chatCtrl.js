@@ -1,4 +1,4 @@
-careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFactory, careatorSessionAuth, SweetAlert) {
+careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFactory, careatorSessionAuth, SweetAlert,$sce) {
   console.log("chatCtrl==>");
   $scope.count = 0;
   var userData = careatorSessionAuth.getAccess("userData");
@@ -953,8 +953,10 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
               var checkStatus = careatorHttpFactory.dataValidation(getData);
               if (checkStatus) {
                 console.log("Message: " + data.message);
-
-               $scope.chatFile_src = 'data:image/jpeg;base64,' +data.message;
+                var file = new Blob([resp.data], {type: 'application/pdf'});
+                var fileURL = URL.createObjectURL(file);
+                $scope.chatFile_src = $sce.trustAsResourceUrl(fileURL);
+              // $scope.chatFile_src = 'data:image/jpeg;base64,' +data.message;
                 $scope.allChat.chats.push({
                   senderId: data.senderId,
                   senderName: data.senderName,

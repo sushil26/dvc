@@ -953,6 +953,8 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
               var checkStatus = careatorHttpFactory.dataValidation(getData);
               if (checkStatus) {
                 console.log("Message: " + data.message);
+
+               $scope.chatFile_src = 'data:image/jpeg;base64,' + btoa(data.message);
                 $scope.allChat.chats.push({
                   senderId: data.senderId,
                   senderName: data.senderName,

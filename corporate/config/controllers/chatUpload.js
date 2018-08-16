@@ -16,12 +16,11 @@ module.exports.chatFileUpload = function (req, res) {
     var userDataFile = req.files.img;
     console.log("userDataFile: " + userDataFile);
     // console.log("req.body.logo: "+req.body.img);
-    var chatFile = req.body.logo;
+    var chatFile = req.files.img
 console.log("chatFile: "+JSON.stringify(chatFile));
-    console.log("req.body.eventId: " + req.body.eventId)
-    // if (videoBase64 == "stop") {
-        console.log("stop started-->");
-        console.log("blobs[req.body.eventId]: " + JSON.stringify(blobs[req.body.eventId]));
+   
+       
+        
         var gfs = Grid(conn.db);
         var writeStream = gfs.createWriteStream({
             filename: 'vcRecord.mpg'
@@ -40,10 +39,10 @@ console.log("chatFile: "+JSON.stringify(chatFile));
             var responseData;
             console.log("req.body.id: " + req.body.id);
           
-            var queryId = {
-                "_id": ObjectId(req.body.eventId)
-            }
-            console.log("queryId: " + JSON.stringify(queryId));
+            // var queryId = {
+            //     "_id": ObjectId(req.body.eventId)
+            // }
+            // console.log("queryId: " + JSON.stringify(queryId));
             var setData = {
                 "vcRecordId": lastInsertedFileId
             }

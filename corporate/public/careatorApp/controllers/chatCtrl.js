@@ -555,6 +555,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
       if (checkStatus) {
         $scope.waterImg = data.data;
         console.log("$scope.photo" + JSON.stringify($scope.photo));
+        $scope.chatFile = undefined;
         if ($scope.typedMessage) {
           $scope.sendText();
         }

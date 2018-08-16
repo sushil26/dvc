@@ -507,7 +507,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
         console.log(" $scope.notifyMsg: " + $scope.notifyMsg);
         // $("#alertButton").trigger("click");
         SweetAlert.swal({
-          title:"Not Allowed",
+          title: "Not Allowed",
           text: $scope.notifyMsg,
           type: "info"
         });
@@ -537,30 +537,35 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
       });
     }
   };
-  
+
 
   $scope.sendTextWithFile = function (chatFile) {
     $("#comment").val("");
     console.log("sendTextWithFile-->");
-    console.log("chatFile: "+chatFile);
-    console.log("chatFilewithJson: "+JSON.stringify(chatFile));
-    console.log("$scope.chatFile: "+$scope.chatFile);
-    console.log("$scope.chatFilewith json: "+JSON.stringify(chatFile));
+    console.log("chatFile: " + chatFile);
+    console.log("chatFilewithJson: " + JSON.stringify(chatFile));
+    console.log("$scope.chatFile: " + $scope.chatFile);
+    console.log("$scope.chatFilewith json: " + JSON.stringify(chatFile));
+    var obj = {
+      "file": chatFile
+    }
+    console.log("obj: " + JSON.stringify(obj));
     var api = "https://norecruits.com/careator_chatFileUpload/chatFileUpload";
-    careatorHttpFactory.imageUpload(api, chatFile).then(function (data) {
+    console.log("api: " + api);
+    careatorHttpFactory.chatUpload(chatFile, api).then(function (data) {
       console.log("hello " + JSON.stringify(data));
       var checkStatus = careatorHttpFactory.dataValidation(data);
       if (checkStatus) {
-          $scope.waterImg = data.data;
-          console.log("$scope.photo" + JSON.stringify($scope.photo));
-          if($scope.typedMessage){
-            $scope.sendText();
-          }
+        $scope.waterImg = data.data;
+        console.log("$scope.photo" + JSON.stringify($scope.photo));
+        if ($scope.typedMessage) {
+          $scope.sendText();
+        }
       } else {
-          console.log("image is not uploaded");
-          alertDialog.alert("Upload Appropriate File Formate", "error");
+        console.log("image is not uploaded");
+        alertDialog.alert("Upload Appropriate File Formate", "error");
       }
-  });
+    });
   };
 
   $scope.readText = function () {
@@ -632,7 +637,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
               if (tempData.profilePicPath != undefined) {
                 $scope.allChatRecords[x].profilePicPath = tempData.profilePicPath;
               }
-            } else {}
+            } else { }
           } else {
             $scope.allChatRecordsId[x] = $scope.allChatRecords[x]._id;
             var tempData = $scope.allEmpWithIndexById[$scope.allChatRecords[x].receiverId];
@@ -865,7 +870,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
             $scope.allChatRecords[index].unseenCount = data.unseenCount;
           }
 
-        } else {}
+        } else { }
       }
     }
   });

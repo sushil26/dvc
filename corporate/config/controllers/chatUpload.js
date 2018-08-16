@@ -66,12 +66,12 @@ module.exports.chatFileUpload = function (req, res) {
                 };
                 res.status(200).send(responseData);
             })
-            var responseData = {
-                "status": true,
-                "message": "date stored successfully",
-                "data": { "filePath": "/schoolLogo/" + fileName }
-            }
-            res.status(200).send(responseData);
+            // var responseData = {
+            //     "status": true,
+            //     "message": "date stored successfully",
+            //     "data": { "filePath": "/schoolLogo/" + fileName }
+            // }
+            // res.status(200).send(responseData);
         }
     });
 

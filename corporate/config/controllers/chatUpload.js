@@ -95,7 +95,7 @@ module.exports.getChatFileUpload = function (req, res) {
         "_id": req.params.id // this id was stored in db when inserted a video stream above
     });
     readStream.on("data", function (chunk) {
-        console.log("chunk: " + chunk);
+       // console.log("chunk: " + chunk);
         output += chunk;
     });
     // base64.decode(output, function (err, output) {
@@ -105,6 +105,7 @@ module.exports.getChatFileUpload = function (req, res) {
     // });
     readStream.on("end", function () {
         console.log("Final Output");
+        console.log("res: "+res);
         readStream.pipe(res);
         // responseData = {
         //     status: true,

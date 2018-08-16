@@ -92,7 +92,7 @@ module.exports.getChatFileUpload = function (req, res) {
     var gfs = Grid(conn.db);
     var output = '';
     var readStream = gfs.createReadStream({
-        "_id": ObjectId(req.params.id) // this id was stored in db when inserted a video stream above
+        "_id": req.params.id // this id was stored in db when inserted a video stream above
     });
     readStream.on("data", function (chunk) {
         console.log("chunk: " + chunk);

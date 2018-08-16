@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var general = require("../general.js");
 mongoose.connect('mongodb://localhost/vc');
 var conn = mongoose.connection;
 var Grid = require('gridfs-stream');
@@ -47,7 +48,7 @@ module.exports.chatFileUpload = function (req, res) {
             });
 
             console.log("lastInsertedFileId: " + lastInsertedFileId);
-            var response = fs.createReadStream( "/public/schoolLogo/" + fileName).pipe(writestream);
+            var response = fs.createReadStream( "/public/chatFiles/" + fileName).pipe(writestream);
             var lastInsertedFileId = response._store.fileId;
 
 

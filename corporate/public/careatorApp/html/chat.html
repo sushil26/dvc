@@ -386,8 +386,8 @@
                                             <div class="sender">
                                                 <div ng-if="chat.messageType=='file'" class="message-text">
                                                     --
-                                                    <img  ng-src="{{chat.message}}">
-                                                    <iframe ng-src="{{chat.message}}" width="100%" />
+                                                    <img  ng-src={{chat.message}}>
+                                                    <!-- <iframe ng-src="{{chat.message}}" width="100%" /> -->
                                                 </div>
                                                 <div class="message-text">
                                                     {{chat.message}}

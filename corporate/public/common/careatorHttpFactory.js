@@ -83,6 +83,26 @@ careatorApp.factory('careatorHttpFactory', function ($http, $q, $rootScope) {
                 return false;
             }
         },
+        chatUpload: function (obj, uploadUrl) {
+            var dfd = $q.defer();
+
+            var fd = new FormData();
+            console.log("obj.file: " + obj.file);
+
+            fd.append('img', obj.file);
+
+            $http.post(uploadUrl, fd, {
+                transformRequest: angular.identity,
+                headers: { 'Content-Type': undefined }
+            }).then(function (response) {
+                console.log("lego--" + response)
+                dfd.resolve(response);
+            }, function (error) {
+                console.log(error);
+                dfd.resolve(error);
+            });
+            return dfd.promise;
+        },
         csvUpload: function (obj, uploadUrl) {
             var dfd = $q.defer();
 

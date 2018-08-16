@@ -66,6 +66,7 @@ module.exports.chatFileUpload = function (req, res) {
             status: true,
             errorCode: 200,
             message: "insert Successfull and Failed to send mail",
+            data:lastInsertedFileId
         };
         res.status(200).send(responseData);
     })

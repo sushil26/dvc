@@ -410,7 +410,7 @@
                                         <label for="fileselect">
                                             <i class="fa fa-upload fa-2x"> </i>
                                         </label>
-                                        <input id="fileselect" type="file" name="fileselect" file-model="chatFile" style="display: none;" />
+                                        <input id="fileselect" type="file" name="fileselect" file-model="chatFile.file" style="display: none;" />
                                     </div>
                                     <div class="col-sm-1 col-xs-1 reply-send">
                                         <button ng-if="chatFile == undefined" id="sndmgs" ng-click="sendText()" style="
@@ -425,7 +425,7 @@
                                              float: right;">
                                             Send
                                         </button>
-                                        <button ng-if="chatFile != undefined" id="sndmgs" ng-click="sendTextWithFile(chatFile)" style="
+                                        <button ng-if="chatFile != undefined" id="sndmgs" ng-click="sendTextWithFile(chatFile.file)" style="
                                         font-family: lato;  
                                         color: gray;                   
                                          padding: 5px;

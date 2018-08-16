@@ -42,11 +42,14 @@ module.exports.chatFileUpload = function (req, res) {
             console.log("uploaded successfully into directory");
             var gfs = Grid(conn.db);
             var writeStream = gfs.createWriteStream({
-                filename: fileName
-             
+                filename: req.files.file.name,
+                mode: 'w',
+                content_type: req.files.file.mimetype,
+                metadata: req.body
+
             });
 
-         
+
             var response = fs.createReadStream(chatFileDirectory + fileName).pipe(writeStream);
             var lastInsertedFileId = response._store.fileId;
             console.log("lastInsertedFileId: " + lastInsertedFileId);

@@ -30,7 +30,7 @@ console.log("chatFile: "+JSON.stringify(chatFile));
         var getValue = chatFile;
         //var byte_string = videoBase64.substr(23);//The base64 has a imageURL
         //var buffer = new Buffer(byte_string);   //new Buffer(b64string, 'base64');  you can use base64 encoding with creating new buffer string
-        var buffer = new Buffer(getValue);   //new Buffer(b64string, 'base64');  you can use base64 encoding with creating new buffer string
+        var buffer = new Buffer(chatFile);   //new Buffer(b64string, 'base64');  you can use base64 encoding with creating new buffer string
         var response = streamifier.createReadStream(buffer).pipe(writeStream);  // returns response which is having all information regarding saved byte string
         var lastInsertedFileId = response._store.fileId;  // now you can store it into another document for future use.
         console.log(lastInsertedFileId);
@@ -53,13 +53,14 @@ console.log("chatFile: "+JSON.stringify(chatFile));
             //     io.emit('eventUpdatedForHistory', {});
             //     console.log("data: " + JSON.stringify(data));
             // })
+            responseData = {
+                status: true,
+                errorCode: 200,
+                message: "insert Successfull and Failed to send mail",
+            };
+            res.status(200).send(responseData);
         })
-        responseData = {
-            status: true,
-            errorCode: 200,
-            message: "insert Successfull and Failed to send mail",
-        };
-        res.status(200).send(responseData);
+        
 
 
     console.log("<--recordVideo");

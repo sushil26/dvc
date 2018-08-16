@@ -854,6 +854,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
             }
           })
           if (data.messageType == 'file') {
+            console.log("********MSG TYPE IS FILE");
             var api = "https://norecruits.com/careator_chatFileUpload/getChatFileUpload/" + data.message;
             console.log("*api: " + api);
             careatorHttpFactory.get(api).then(function (data) {

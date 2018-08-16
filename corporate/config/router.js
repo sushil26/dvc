@@ -74,7 +74,7 @@ module.exports = function (app) {
 
     app.get('/careator/careator_getAllEmpLoginDetails', careator.careator_getAllEmpLoginDetails);
      app.post('/careator_chatFileUpload/chatFileUpload', chatUpload.chatFileUpload);
-    
+     app.get('/careator_chatFileUpload/getChatFileUpload/:id', chatUpload.getChatFileUpload);
 
     // app.post('/vc/login4VC', user.login4VC);
     // app.post('/record/pswdGenerate', record.pswdGenerate);

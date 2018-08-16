@@ -445,6 +445,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
   $scope.sendText = function () {
     $("#comment").val("");
     console.log("sendText-->");
+    //  console.log("chatFile: "+$scope.chatFile);
     console.log("$scope.typedMessage: " + $scope.typedMessage);
     var api;
     var obj;
@@ -452,12 +453,8 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
     if ($scope.selectedType == "individual_chats") {
       api = "https://norecruits.com/careator_individualText/individualText";
       console.log("api: " + api);
-      console.log(
-        "$scope.receiverData.receiverId: " + $scope.receiverData.receiverId
-      );
-      console.log(
-        " $scope.receiverData.receiverId: " + $scope.receiverData.receiverId
-      );
+      console.log("$scope.receiverData.receiverId: " + $scope.receiverData.receiverId);
+      console.log(" $scope.receiverData.receiverId: " + $scope.receiverData.receiverId);
       console.log(" $rootScope.adminId: " + $rootScope.adminId);
       if ($rootScope.adminId == userData.userId) {
         /* ### Note: if loginId is admin id then no need to check restricted list ### */
@@ -552,15 +549,106 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
     console.log("obj: " + JSON.stringify(obj));
     var api = "https://norecruits.com/careator_chatFileUpload/chatFileUpload";
     console.log("api: " + api);
-    careatorHttpFactory.chatUpload(obj,api).then(function (data) {
+    careatorHttpFactory.chatUpload(obj, api).then(function (data) {
       console.log("hello " + JSON.stringify(data));
       var checkStatus = careatorHttpFactory.dataValidation(data);
       if (checkStatus) {
-        $scope.waterImg = data.data;
-        console.log("$scope.photo" + JSON.stringify($scope.photo));
-        if ($scope.typedMessage) {
-          $scope.sendText();
+        var uploadResponse = data.data;
+        console.log("$scope.photo" + JSON.stringify(uploadResponse));
+        $scope.chatFile = undefined;
+        /* ##### Start send file info  ##### */
+
+        var api;
+        var obj;
+        console.log("$scope.selectedType: " + $scope.selectedType);
+        if ($scope.selectedType == "individual_chats") {
+          api = "https://norecruits.com/careator_individualText/individualText";
+          console.log("api: " + api);
+          console.log("$scope.receiverData.receiverId: " + $scope.receiverData.receiverId);
+          console.log(" $scope.receiverData.receiverId: " + $scope.receiverData.receiverId);
+          console.log(" $rootScope.adminId: " + $rootScope.adminId);
+          if ($rootScope.adminId == userData.userId) {
+            /* ### Note: if loginId is admin id then no need to check restricted list ### */
+            obj = {
+              senderId: userData.userId,
+              receiverId: $scope.receiverData.receiverId,
+              senderName: userData.userName,
+              receiverName: $scope.receiverData.receiverName,
+              messageType: "file",
+              message: uploadResponse
+            };
+            console.log("obj: " + JSON.stringify(obj));
+            careatorHttpFactory.post(api, obj).then(function (data) {
+              console.log("data--" + JSON.stringify(data.data));
+              var checkStatus = careatorHttpFactory.dataValidation(data);
+              if (checkStatus) {
+                console.log("data.data.data: " + JSON.stringify(data.data.data));
+                console.log(data.data.message);
+              } else {
+                console.log("Sorry");
+                console.log(data.data.message);
+              }
+            });
+          } else if (
+            ($scope.restrictedArray != undefined && $scope.restrictedArray.indexOf($scope.receiverData.receiverId) >= 0) ||
+            ($scope.restrictedArray != undefined || $scope.receiverData.receiverId == $rootScope.adminId)) {
+            obj = {
+              senderId: userData.userId,
+              receiverId: $scope.receiverData.receiverId,
+              senderName: userData.userName,
+              receiverName: $scope.receiverData.receiverName,
+              messageType: "file",
+              message: uploadResponse
+            };
+            console.log("obj: " + JSON.stringify(obj));
+            careatorHttpFactory.post(api, obj).then(function (data) {
+              console.log("data--" + JSON.stringify(data.data));
+              var checkStatus = careatorHttpFactory.dataValidation(data);
+              if (checkStatus) {
+                console.log("data.data.data: " + JSON.stringify(data.data.data));
+                console.log(data.data.message);
+              } else {
+                console.log("Sorry");
+                console.log(data.data.message);
+              }
+            });
+          } else {
+            $scope.notifyMsg = "You do not have permission to chat with " + $scope.receiverData.receiverName;
+            console.log(" $scope.notifyMsg: " + $scope.notifyMsg);
+            // $("#alertButton").trigger("click");
+            SweetAlert.swal({
+              title: "Not Allowed",
+              text: $scope.notifyMsg,
+              type: "info"
+            });
+          }
+        } else if ($scope.selectedType == "group") {
+          obj = {
+            group_id: $scope.sendGroupText_withData.group_id,
+            groupName: $scope.sendGroupText_withData.groupName,
+            groupMembers: $scope.sendGroupText_withData.groupMembers,
+            senderId: userData.userId,
+            senderName: userData.userName,
+            messageType: "file",
+            message: $scope.typedMessage
+          };
+          console.log("obj: " + JSON.stringify(obj));
+          api = "https://norecruits.com//careator_groupText/groupText";
+          console.log("api: " + api);
+          careatorHttpFactory.post(api, obj).then(function (data) {
+            console.log("data--" + JSON.stringify(data.data));
+            var checkStatus = careatorHttpFactory.dataValidation(data);
+            if (checkStatus) {
+              console.log("data.data.data: " + JSON.stringify(data.data.data));
+              console.log(data.data.message);
+            } else {
+              console.log("Sorry");
+              console.log(data.data.message);
+            }
+          });
         }
+        /* ##### End send file info  ##### */
+
       } else {
         console.log("image is not uploaded");
         alertDialog.alert("Upload Appropriate File Formate", "error");
@@ -855,12 +943,35 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
               }
             })
           }
-          $scope.allChat.chats.push({
-            senderId: data.senderId,
-            senderName: data.senderName,
-            message: data.message,
-            sendTime: data.sendTime
-          });
+          if (data.messageType == 'file') {
+            console.log("********MSG TYPE IS FILE");
+            var api = "https://norecruits.com/careator_chatFileUpload/getChatFileUpload/" + data.message;
+            console.log("*api: " + api);
+            careatorHttpFactory.get(api).then(function (data) {
+              console.log("data--" + JSON.stringify(data.data));
+              var checkStatus = careatorHttpFactory.dataValidation(data);
+              if (checkStatus) {
+                console.log("Message: " + data.data.message);
+                $scope.allChat.chats.push({
+                  senderId: data.senderId,
+                  senderName: data.senderName,
+                  messageType: "file",
+                  message: data.dat.data,
+                  sendTime: data.sendTime
+                });
+              } else {
+                console.log("Sorry: " + data.data.message);
+              }
+            })
+          }
+          else {
+            $scope.allChat.chats.push({
+              senderId: data.senderId,
+              senderName: data.senderName,
+              message: data.message,
+              sendTime: data.sendTime
+            });
+          }
           $scope.scrollDown();
         } else if ($scope.individualData == undefined || $scope.allChatRecordsId.indexOf(data.id) >= 0) {
           console.log("Notify the Unseen message count: " + JSON.stringify(data));

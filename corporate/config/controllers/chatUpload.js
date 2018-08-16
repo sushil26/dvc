@@ -3,6 +3,7 @@ mongoose.connect('mongodb://localhost/vc');
 var conn = mongoose.connection;
 var Grid = require('gridfs-stream');
 var streamifier = require('streamifier');
+var ObjectId = require("mongodb").ObjectID;
 var fs = require('fs');
 const path = require('path');
 const ABSPATH = path.dirname(process.mainModule.filename); // Absolute path to our app directory
@@ -19,7 +20,7 @@ module.exports.chatFileUpload = function (req, res) {
     // console.log("req.body.logo: "+req.body.img);
     var chatFile = req.files.img
     //console.log("chatFile: " + JSON.stringify(chatFile));
-    console.log("chatFile.data: " + JSON.stringify(chatFile.data));
+    //console.log("chatFile.data: " + JSON.stringify(chatFile.data));
 
 
     var gfs = Grid(conn.db);
@@ -28,10 +29,9 @@ module.exports.chatFileUpload = function (req, res) {
         mode: 'w',
         content_type: req.files.img.mimetype,
         metadata: userDataFile
-
     });
     var buffer = new Buffer(chatFile.data);
-    console.log("buffer: " + buffer);
+    //console.log("buffer: " + buffer);
     var response = streamifier.createReadStream(buffer).pipe(writeStream);  // returns response which is having all information regarding saved byte string
     var lastInsertedFileId = response._store.fileId;
     console.log("lastInsertedFileId: "+lastInsertedFileId);
@@ -67,11 +67,42 @@ module.exports.chatFileUpload = function (req, res) {
             status: true,
             errorCode: 200,
             message: "insert Successfull and Failed to send mail",
+            data:lastInsertedFileId
         };
         res.status(200).send(responseData);
     })
-
-
-
     console.log("<--recordVideo");
+}
+
+module.exports.getChatFileUpload = function (req, res) {
+    console.log("getChatFileUpload-->");
+
+    var gfs = Grid(conn.db);
+    var output = '';
+    var readStream = gfs.createReadStream({
+        "_id": ObjectId(req.params.id) // this id was stored in db when inserted a video stream above
+    });
+    readStream.on("data", function (chunk) {
+        console.log("chunk: "+chunk);
+        output += chunk;
+    });
+
+    // base64.decode(output, function (err, output) {
+    //     console.log('output');
+    //     // dump contents to console when complete
+
+    // });
+    readStream.on("end", function () {
+        console.log("Final Output");
+        responseData = {
+            status: true,
+            message: "get successful",
+            data: output
+        };
+        res.status(200).send(responseData);
+        //console.log(output);
+
+    });
+
+    console.log("<--getRecordVideo");
 }

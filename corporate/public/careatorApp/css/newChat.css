@@ -483,7 +483,7 @@ box-shadow: none;
     width: auto !important;
     padding: 4px 10px 7px !important;
     border-radius: 10px 10px 10px 0;
-    background: ivory;
+    background: bisque;
     font-size: 12px;
     text-shadow: 0 1px 1px rgba(0, 0, 0, .2);
     word-wrap: break-word;
@@ -493,6 +493,7 @@ box-shadow: none;
 .sender {
     box-shadow: 0 1px 1px rgba(0, 0, 0, .2);
     float: right;
+    
     width: auto !important;
     background: #afeef0;
     border-radius: 10px 10px 0 10px;

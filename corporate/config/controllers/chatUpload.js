@@ -18,8 +18,8 @@ module.exports.chatFileUpload = function (req, res) {
     // console.log("userDataFile: " + userDataFile);
     // console.log("req.body.logo: "+req.body.img);
     var chatFile = req.files.img
-    console.log("chatFile: " + JSON.stringify(chatFile));
-    console.log("chatFile.data: " + JSON.stringify(chatFile.data));
+    // console.log("chatFile: " + JSON.stringify(chatFile));
+    console.log("chatFile.data: " + JSON.stringify(chatFile.data.data));
 
 
     var gfs = Grid(conn.db);

@@ -47,7 +47,7 @@ module.exports.chatFileUpload = function (req, res) {
             });
 
          
-            var response = fs.createReadStream(ABSPATH+"/"+ chatFiles +"/"+ fileName).pipe(writeStream);
+            var response = fs.createReadStream(ABSPATH+"/chatFiles/"+ fileName).pipe(writeStream);
             var lastInsertedFileId = response._store.fileId;
             console.log("lastInsertedFileId: " + lastInsertedFileId);
 

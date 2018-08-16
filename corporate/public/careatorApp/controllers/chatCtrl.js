@@ -552,7 +552,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
     console.log("obj: " + JSON.stringify(obj));
     var api = "https://norecruits.com/careator_chatFileUpload/chatFileUpload";
     console.log("api: " + api);
-    careatorHttpFactory.chatUpload(chatFile, obj).then(function (data) {
+    careatorHttpFactory.chatUpload(api, obj).then(function (data) {
       console.log("hello " + JSON.stringify(data));
       var checkStatus = careatorHttpFactory.dataValidation(data);
       if (checkStatus) {

@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/vc');
 var conn = mongoose.connection;
 var Grid = require('gridfs-stream');
+var streamifier = require('streamifier');
 var fs = require('fs');
 const path = require('path');
 const ABSPATH = path.dirname(process.mainModule.filename); // Absolute path to our app directory

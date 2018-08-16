@@ -617,7 +617,7 @@ signaling_socket.on("connect", function () {
               $("#notify_msg_button").trigger("click");
               setTimeout(function () {
                 close();
-              }, 5000);
+              }, 10000);
             }
 
           }
@@ -680,7 +680,7 @@ signaling_socket.on("connect", function () {
               $("#notify_msg_button").trigger("click");
               setTimeout(function () {
                 close();
-              }, 5000);
+              }, 10000);
             }
           }
         });

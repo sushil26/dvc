@@ -15,23 +15,28 @@ module.exports.chatFileUpload = function (req, res) {
         return res.status(400).send('No files were uploaded.');
 
     var userDataFile = req.files.img;
-    console.log("userDataFile: " + userDataFile);
+   // console.log("userDataFile: " + userDataFile);
     // console.log("req.body.logo: "+req.body.img);
     var chatFile = req.files.img
-console.log("chatFile: "+JSON.stringify(chatFile));
+//console.log("chatFile: "+JSON.stringify(chatFile));
    
        
         
         var gfs = Grid(conn.db);
         var writeStream = gfs.createWriteStream({
-            filename: 'vcRecord.mpg'
+            filename: req.files.file.name,
+            mode: 'w',
+            content_type: req.files.file.mimetype,
+            metadata: userDataFile
+            
         });
+        var response = fs.createReadStream(req.files.file.path).pipe(writestream);
       
         var getValue = chatFile;
         //var byte_string = videoBase64.substr(23);//The base64 has a imageURL
         //var buffer = new Buffer(byte_string);   //new Buffer(b64string, 'base64');  you can use base64 encoding with creating new buffer string
-        var buffer = new Buffer(chatFile);   //new Buffer(b64string, 'base64');  you can use base64 encoding with creating new buffer string
-        var response = streamifier.createReadStream(buffer).pipe(writeStream);  // returns response which is having all information regarding saved byte string
+        // var buffer = new Buffer(chatFile);   //new Buffer(b64string, 'base64');  you can use base64 encoding with creating new buffer string
+        // var response = streamifier.createReadStream(buffer).pipe(writeStream);  // returns response which is having all information regarding saved byte string
         var lastInsertedFileId = response._store.fileId;  // now you can store it into another document for future use.
         console.log(lastInsertedFileId);
 

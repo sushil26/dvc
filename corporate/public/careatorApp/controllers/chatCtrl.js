@@ -575,7 +575,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
               senderName: userData.userName,
               receiverName: $scope.receiverData.receiverName,
               messageType: "file",
-              message: uploadResponse
+              message: uploadResponse.data
             };
             console.log("obj: " + JSON.stringify(obj));
             careatorHttpFactory.post(api, obj).then(function (data) {

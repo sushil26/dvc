@@ -108,7 +108,7 @@ module.exports.getChatFileUpload = function (req, res) {
     // });
     readStream.on("end", function () {
         console.log("Final Output");
-        readstream.pipe(res);
+        readStream.pipe(res);
         // responseData = {
         //     status: true,
         //     message: "get file successful",

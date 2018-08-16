@@ -78,31 +78,31 @@ module.exports.getChatFileUpload = function (req, res) {
     console.log("getChatFileUpload-->");
     console.log("req.params.id: "+req.params.id);
 
-    var gfs = Grid(conn.db);
-    var output = '';
-    var readStream = gfs.createReadStream({
-        "_id": ObjectId(req.params.id) // this id was stored in db when inserted a video stream above
-    });
-    readStream.on("data", function (chunk) {
-        console.log("chunk: "+chunk);
-        output += chunk;
-    });
-    // base64.decode(output, function (err, output) {
-    //     console.log('output');
-    //     // dump contents to console when complete
+    // var gfs = Grid(conn.db);
+    // var output = '';
+    // var readStream = gfs.createReadStream({
+    //     "_id": ObjectId(req.params.id) // this id was stored in db when inserted a video stream above
+    // });
+    // readStream.on("data", function (chunk) {
+    //     console.log("chunk: "+chunk);
+    //     output += chunk;
+    // });
+    // // base64.decode(output, function (err, output) {
+    // //     console.log('output');
+    // //     // dump contents to console when complete
+
+    // // });
+    // readStream.on("end", function () {
+    //     console.log("Final Output");
+    //     responseData = {
+    //         status: true,
+    //         message: "get successful",
+    //         data: output
+    //     };
+    //     res.status(200).send(responseData);
+    //     //console.log(output);
 
     // });
-    readStream.on("end", function () {
-        console.log("Final Output");
-        responseData = {
-            status: true,
-            message: "get successful",
-            data: output
-        };
-        res.status(200).send(responseData);
-        //console.log(output);
-
-    });
 
     console.log("<--getRecordVideo");
 }

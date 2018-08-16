@@ -191,7 +191,7 @@ io.sockets.on('connection', function (socket) {
     });
 
     socket.on('disconnectSession', function (data) {
-        console.log("disconnectSession-->: "+JSON.stringify(data));
+        console.log("disconnectSession-->: " + JSON.stringify(data));
         io.sockets.emit('disconnectSessionReply', { "deleteSessionId": data.deleteSessionId, "owner": data.owner });
         //if (sessionHeaderId == data.owner) {
         var db = mongoConfig.getDb();
@@ -201,7 +201,7 @@ io.sockets.on('connection', function (socket) {
         var queryObj = {
             "senderId": data.userId
         }
-        console.log("queryObj: "+JSON.stringify(queryObj));
+        console.log("queryObj: " + JSON.stringify(queryObj));
         if (data.requestFrom == 'schedulePage') {
             console.log("Disconnect session From Schedule Page");
             careatorEvents.update(queryObj, { $set: { "isDisconnected": "yes" } }, function (err, data) {
@@ -320,7 +320,7 @@ io.sockets.on('connection', function (socket) {
             "email": config.email
         }
         console.log("leftEmails: " + JSON.stringify(leftEmails));
-        if(config.requestFrom=='schedulePage'){
+        if (config.requestFrom == 'schedulePage') {
             careatorEvents.update({ "sessionURL": config.sessionURL }, {
                 $addToSet: { "leftEmails": config.email }, $pull: { "joinEmails": config.email }
             }, function (err, data) {
@@ -333,7 +333,7 @@ io.sockets.on('connection', function (socket) {
                 }
             })
         }
-        else{
+        else {
             careatorMaster.update({ "sessionURL": config.sessionURL }, {
                 $addToSet: { "leftEmails": config.email }, $pull: { "joinEmails": config.email }
             }, function (err, data) {
@@ -346,7 +346,7 @@ io.sockets.on('connection', function (socket) {
                 }
             })
         }
-        
+
     })
 
     socket.on('relayICECandidate', function (config) {
@@ -410,8 +410,16 @@ io.sockets.on('connection', function (socket) {
             //console.log("timeLink: "+timeLink);
             console.log("peerWithQueryId: " + peerWithQueryId[data.userId]);
             console.log("peerWithQueryId: " + peerWithQueryId[data.userId]);
-            var queryObj = {
-                "url": "https://norecruits.com/careator/" + peerWithQueryId[data.userId] + "/" + data.urlDate,
+            var queryObj;
+            if (data.requestFrom == 'schedulePage') {
+                queryObj = {
+                    "url": "https://norecruits.com/talenkart_scheduleConf/" + peerWithQueryId[data.userId] + "/" + data.urlDate,
+                }
+            }
+            else {
+                queryObj = {
+                    "url": "https://norecruits.com/talenkart_conf/" + peerWithQueryId[data.userId] + "/" + data.urlDate,
+                }
             }
             console.log("queryObj: " + JSON.stringify(queryObj));
             var obj = {
@@ -427,6 +435,9 @@ io.sockets.on('connection', function (socket) {
                     console.log("errr: " + JSON.stringify(err));
                 }
                 else {
+                    if (data.nModified == 0) {
+
+                    }
                     console.log("data: " + JSON.stringify(data));
                 }
             })

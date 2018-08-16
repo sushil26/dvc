@@ -70,8 +70,37 @@ module.exports.chatFileUpload = function (req, res) {
         };
         res.status(200).send(responseData);
     })
-
-
-
     console.log("<--recordVideo");
+}
+
+module.exports.getChatFileUpload = function (req, res) {
+    console.log("getChatFileUpload-->");
+
+    var gfs = Grid(conn.db);
+    var output = '';
+    var readStream = gfs.createReadStream({
+        "_id": req.params.id // this id was stored in db when inserted a video stream above
+    });
+    readStream.on("data", function (chunk) {
+        output += chunk;
+    });
+
+    // base64.decode(output, function (err, output) {
+    //     console.log('output');
+    //     // dump contents to console when complete
+
+    // });
+    readStream.on("end", function () {
+        console.log("Final Output");
+        responseData = {
+            status: true,
+            message: "get successful",
+            data: output
+        };
+        res.status(200).send(responseData);
+        //console.log(output);
+
+    });
+
+    console.log("<--getRecordVideo");
 }

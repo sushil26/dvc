@@ -854,12 +854,24 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
             }
           })
           if (data.messageType == 'file') {
-            $scope.allChat.chats.push({
-              senderId: data.senderId,
-              senderName: data.senderName,
-              message: data.message,
-              sendTime: data.sendTime
-            });
+            var api = "https://norecruits.com/careator_chatFileUpload/getChatFileUpload/" + data.message;
+            console.log("*api: " + api);
+            careatorHttpFactory.get(api).then(function (data) {
+              console.log("data--" + JSON.stringify(data.data));
+              var checkStatus = careatorHttpFactory.dataValidation(data);
+              if (checkStatus) {
+                console.log("Message: " + data.data.message);
+                $scope.allChat.chats.push({
+                  senderId: data.senderId,
+                  senderName: data.senderName,
+                  messageType: "file",
+                  message: data.dat.data,
+                  sendTime: data.sendTime
+                });
+              } else {
+                console.log("Sorry: " + data.data.message);
+              }
+            })
           }
           else {
             $scope.allChat.chats.push({

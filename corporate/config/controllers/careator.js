@@ -1857,7 +1857,7 @@ module.exports.individualText = function (req, res) {
                 })
             } else {
                 console.log("NOt Fresh insert");
-                console.log("req.body.meesageType: "+req.body.meesageType);
+                console.log("req.body.meesageType: "+req.body.messageType);
                 var unseenCount, setObj;
                 if (data[0].unseenCount != undefined) {
                     unseenCount = data[0].unseenCount + 1;

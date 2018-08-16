@@ -76,6 +76,7 @@ module.exports.chatFileUpload = function (req, res) {
 
 module.exports.getChatFileUpload = function (req, res) {
     console.log("getChatFileUpload-->");
+    console.log("req.params.id: "+req.params.id);
 
     var gfs = Grid(conn.db);
     var output = '';

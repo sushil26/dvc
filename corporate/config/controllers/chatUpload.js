@@ -40,40 +40,40 @@ module.exports.chatFileUpload = function (req, res) {
         }
         else {
             console.log("uploaded successfully into directory");
-            // var gfs = Grid(conn.db);
-            // var writeStream = gfs.createWriteStream({
-            //     filename: fileName,
-            //     mode: 'w',
-            //     content_type: req.files.img.mimetype,
-            //     metadata: userDataFile
-            // });
+            var gfs = Grid(conn.db);
+            var writeStream = gfs.createWriteStream({
+                filename: fileName,
+                mode: 'w',
+                content_type: req.files.img.mimetype,
+                metadata: userDataFile
+            });
 
-            // console.log("lastInsertedFileId: " + lastInsertedFileId);
-            // var response = fs.createReadStream( "/public/chatFiles/" + fileName).pipe(writestream);
-            // var lastInsertedFileId = response._store.fileId;
+            console.log("lastInsertedFileId: " + lastInsertedFileId);
+            var response = fs.createReadStream( "/public/chatFiles/" + fileName).pipe(writestream);
+            var lastInsertedFileId = response._store.fileId;
 
 
-            // writeStream.on('close', function (file) {
-            //     console.log(file.filename + "written to db");
-            //     var responseData;
-            //     var setData = {
-            //         "vcRecordId": lastInsertedFileId
-            //     }
+            writeStream.on('close', function (file) {
+                console.log(file.filename + "written to db");
+                var responseData;
+                var setData = {
+                    "vcRecordId": lastInsertedFileId
+                }
 
-            //     responseData = {
-            //         status: true,
-            //         errorCode: 200,
-            //         message: "insert Successfull and Failed to send mail",
-            //         data: lastInsertedFileId
-            //     };
-            //     res.status(200).send(responseData);
-            // })
-            // var responseData = {
-            //     "status": true,
-            //     "message": "date stored successfully",
-            //     "data": { "filePath": "/schoolLogo/" + fileName }
-            // }
-            // res.status(200).send(responseData);
+                responseData = {
+                    status: true,
+                    errorCode: 200,
+                    message: "insert Successfull and Failed to send mail",
+                    data: lastInsertedFileId
+                };
+                res.status(200).send(responseData);
+            })
+            var responseData = {
+                "status": true,
+                "message": "date stored successfully",
+                "data": { "filePath": "/schoolLogo/" + fileName }
+            }
+            res.status(200).send(responseData);
         }
     });
 

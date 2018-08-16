@@ -348,7 +348,7 @@
                                         </center>
                                     </div>
 
-                                    <div class="row message-body" ng-repeat="chat in allChat.chats | fileselect:searchm ">
+                                    <div class="row message-body" ng-repeat="chat in allChat.chats | filter:searchm ">
                                         <div class="col-sm-12 message-main-receiver slideRight" ng-if="chat.senderId!=userId">
                                             <div ng-if="selectedType=='group'" style="background:#ddf8c6;
                                                 width: max-content;

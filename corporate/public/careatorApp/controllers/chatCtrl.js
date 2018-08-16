@@ -948,16 +948,16 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
             var id= data.message;
             var api = "https://norecruits.com/careator_chatFileUpload/getChatFileUpload/" + id;
             console.log("*api: " + api);
-            careatorHttpFactory.get(api).then(function (data) {
-              console.log("data--" + JSON.stringify(data.data));
-              var checkStatus = careatorHttpFactory.dataValidation(data);
+            careatorHttpFactory.get(api).then(function (getData) {
+              console.log("data--" + JSON.stringify(getData.data));
+              var checkStatus = careatorHttpFactory.dataValidation(getData);
               if (checkStatus) {
-                console.log("Message: " + data.data.message);
+                console.log("Message: " + data.message);
                 $scope.allChat.chats.push({
                   senderId: data.senderId,
                   senderName: data.senderName,
                   messageType: "file",
-                  message: data.message,
+                  message: getData.data,
                   sendTime: data.sendTime
                 });
               } else {

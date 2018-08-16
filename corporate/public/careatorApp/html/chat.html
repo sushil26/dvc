@@ -224,7 +224,7 @@
                                         </div>
 
                                     </div> -->
-                                    <div class="col-sm-4 col-xs-3 heading-name">
+                                    <div class="col-sm-8 col-xs-7 heading-name">
                                         <div ng-if="selectedType=='group'">
                                             <a class="heading-name-meta">{{individualData.groupName}}
                                             </a>&nbsp;&nbsp;&nbsp;
@@ -255,20 +255,18 @@
                                             <br>
                                             <i style="color: black;    font-size: 7px;" class="fa fa-circle"></i>&nbsp;{{receiverChatStatus}}
                                         </a>
-
                                         <a ng-if="selectedType=='individual_chats' &&  receiverChatStatus=='Custom'" class="heading-status">
                                             <br>
                                             <i style="color: #FFC107;    font-size: 7px;" class="fa fa-circle"></i>&nbsp;{{receiverChatStatus}}
                                         </a>
-                                    </div>
 
-                                    <div class="col-sm-4 col-xs-4 composeBox-inner">
-                                        <div class="form-group has-feedback">
-                                            <input type="text" class="form-control" ng-model="searchm" name="searchText" placeholder="Search text">
-                                            <span class="glyphicon glyphicon-search form-control-feedback"></span>
-                                        </div>
-                                    </div>
 
+
+
+                                        <input type="text" class="form-control" ng-model="searchm" name="searchText" placeholder="Search text">
+
+
+                                    </div>
 
 
                                     <div class="col-sm-1 col-xs-1 pull-right" id="homeicon" ng-click="chatMenu()" style="margin-right: 20px; margin-top:5px;">
@@ -351,7 +349,7 @@
                                         </center>
                                     </div>
 
-                                    <div class="row message-body" ng-repeat="chat in allChat.chats | filter:searchm">
+                                    <div class="row message-body" ng-repeat="chat in allChat.chats | fileselect:searchm ">
                                         <div class="col-sm-12 message-main-receiver slideRight" ng-if="chat.senderId!=userId">
                                             <div ng-if="selectedType=='group'" style="background:#ddf8c6;
                                                 width: max-content;
@@ -413,7 +411,7 @@
                                         <input id="fileselect" type="file" name="fileselect" file-model="chatFile.file" style="display: none;" />
                                     </div>
                                     <div class="col-sm-1 col-xs-1 reply-send">
-                                        <button ng-if="chatFile == undefined" id="sndmgs" ng-click="sendText()" style="
+                                        <button id="sndmgs" ng-click="sendText()" style="
                                             font-family: lato;  
                                             color: gray;                   
                                              padding: 5px;

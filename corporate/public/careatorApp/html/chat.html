@@ -399,11 +399,11 @@
                                     <div class="col-sm-1 col-xs-1 reply-recording">
                                         <label for="fileselect">
                                                 <i class="fa fa-upload fa-2x"> </i>
-                                            </label>"
-                                            <input id="fileselect" type="file" name="fileselect" file-model ="chatFile" ng-click="sendTextWithFile(chatFile)" style="display: none;"/>
+                                            </label>
+                                            <input id="fileselect" type="file" name="fileselect" file-model ="chatFile" style="display: none;"/>
                                     </div>
                                     <div class="col-sm-1 col-xs-1 reply-send">
-                                        <button  id="sndmgs" ng-click="sendText()" style="
+                                        <button ng-if="chatFile == undefined" id="sndmgs" ng-click="sendText()" style="
                                             font-family: lato;  
                                             color: gray;                   
                                              padding: 5px;
@@ -415,7 +415,18 @@
                                              float: right;">
                                             Send
                                         </button>
-                                        
+                                        <button  ng-if="chatFile != undefined" id="sndmgs" ng-click="sendTextWithFile(chatFile)" style="
+                                        font-family: lato;  
+                                        color: gray;                   
+                                         padding: 5px;
+                                         background: black;
+                                         border-radius: 5px;
+                                         border: none;
+                                         padding-left: 10px;
+                                         padding-right: 10px;
+                                         float: right;">
+                                        Send
+                                    </button>
 
                                         <!-- <button class="btn btn-success" aria-hidden="true" id="sndmgs" ng-click="sendText()">Send</button> -->
                                     </div>

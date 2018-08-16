@@ -31,7 +31,7 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
         console.log("consolidateDate: " + $scope.consolidateDate);
         $scope.eventGet();
 
-      } else {}
+      } else { }
     })
     console.log("<--Get To Date");
   }
@@ -41,29 +41,29 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
     console.log("Get To Date-->");
     var api = "https://norecruits.com/careator_getToDate/careator_getToDate";
     careatorHttpFactory.get(api).then(function (data) {
-        var checkStatus = careatorHttpFactory.dataValidation(data);
-        console.log("data--" + JSON.stringify(data.data));
-        if (checkStatus) {
-            console.log("data.data.data.date: " + data.data.data.date);
-            var todayDate = new Date(data.data.data.date);
-            console.log("todayDate: " + todayDate);
-            var reqDate = todayDate.getDate();
-            console.log("reqDate: " + reqDate);
-            var reqMonth = todayDate.getMonth();
-            var reqYear = todayDate.getFullYear();
-            var reqHr = todayDate.getHours();
-            var reqMin = todayDate.getMinutes();
-            var reqSec = todayDate.getSeconds();
-            $scope.todayDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
-            $scope.currentTime = $scope.todayDate
-            console.log("$scope.todayDate: " + $scope.todayDate);
-        } else { }
+      var checkStatus = careatorHttpFactory.dataValidation(data);
+      console.log("data--" + JSON.stringify(data.data));
+      if (checkStatus) {
+        console.log("data.data.data.date: " + data.data.data.date);
+        var todayDate = new Date(data.data.data.date);
+        console.log("todayDate: " + todayDate);
+        var reqDate = todayDate.getDate();
+        console.log("reqDate: " + reqDate);
+        var reqMonth = todayDate.getMonth();
+        var reqYear = todayDate.getFullYear();
+        var reqHr = todayDate.getHours();
+        var reqMin = todayDate.getMinutes();
+        var reqSec = todayDate.getSeconds();
+        $scope.todayDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
+        $scope.currentTime = $scope.todayDate
+        console.log("$scope.todayDate: " + $scope.todayDate);
+      } else { }
     })
     console.log("<--Get To Date");
-}
-$scope.getToDateByEachSec();
+  }
+  $scope.getToDateByEachSec();
 
-$interval($scope.getToDateByEachSec(), 1000);
+  $interval($scope.getToDateByEachSec(), 1000);
 
   $scope.eventGet = function () {
     console.log("eventGet-->");
@@ -111,56 +111,65 @@ $interval($scope.getToDateByEachSec(), 1000);
   }
 
   $scope.save = function (title, emailList, sd, ed, reason) {
-    console.log("before save time is: "+$scope.todayDate)
-    console.log("title: " + title);
-    console.log("emailList: " + emailList);
-    console.log("sd: " + sd);
-    console.log("ed: " + ed);
-    console.log("reason: " + reason);
-    var rsd = new Date(sd);
-    var red = new Date(ed);
-    var PersonalRemoteCombineCal = ownerEvents;
-    var reqDate = rsd.getDate() - 1;
-    var reqMonth = rsd.getMonth();
-    var reqYear = rsd.getFullYear();
-    var reqHr = rsd.getHours();
-    var reqMin = rsd.getMinutes();
-    var reqSec = rsd.getSeconds();
-    var consolidateDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
-    console.log("rsd.getTime(): " + rsd.getTime() + " red: " + red.getTime());
-    var reqDate = $scope.currentTime.getDate();
-    var reqMonth = $scope.currentTime.getMonth();
-    var reqYear = $scope.currentTime.getFullYear();
-    var todayDate = new Date(reqYear, reqMonth, reqDate);
-    console.log("todayDate: " + todayDate);
-    var selected_reqDate = rsd.getDate();
-    var selected_reqMonth = rsd.getMonth();
-    var selected_reqYear = rsd.getFullYear();
+    if (title && emailList && sd && ed && reason) {
+      console.log("before save time is: " + $scope.todayDate)
+      console.log("title: " + title);
+      console.log("emailList: " + emailList);
+      console.log("sd: " + sd);
+      console.log("ed: " + ed);
+      console.log("reason: " + reason);
+      var rsd = new Date(sd);
+      var red = new Date(ed);
+      var PersonalRemoteCombineCal = ownerEvents;
+      var reqDate = rsd.getDate() - 1;
+      var reqMonth = rsd.getMonth();
+      var reqYear = rsd.getFullYear();
+      var reqHr = rsd.getHours();
+      var reqMin = rsd.getMinutes();
+      var reqSec = rsd.getSeconds();
+      var consolidateDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
+      console.log("rsd.getTime(): " + rsd.getTime() + " red: " + red.getTime());
+      var reqDate = $scope.currentTime.getDate();
+      var reqMonth = $scope.currentTime.getMonth();
+      var reqYear = $scope.currentTime.getFullYear();
+      var todayDate = new Date(reqYear, reqMonth, reqDate);
+      console.log("todayDate: " + todayDate);
+      var selected_reqDate = rsd.getDate();
+      var selected_reqMonth = rsd.getMonth();
+      var selected_reqYear = rsd.getFullYear();
 
-    var selected_date = new Date(selected_reqYear, selected_reqMonth, selected_reqDate);
-    if (rsd.getTime() > $scope.currentTime.getTime()) {
-      if (rsd.getTime() < red.getTime()) {
-        var diff = red.getHours() - rsd.getHours();
-        console.log("diff: " + diff);
-        if (diff <= 8) {
-          console.log("PersonalRemoteCombineCal.length: " + PersonalRemoteCombineCal.length);
-          if (PersonalRemoteCombineCal.length > 0) {
-            var conflicts = PersonalRemoteCombineCal.some(function (event) {
-              //   return (event.startsAt <= s && s <= event.endsAt) ||event.startsAt <= e && e <= event.endsAt || s <= event.startsAt && event.startsAt <= e ||s <= event.endsAt && event.endsAt <= e});
-              return (event.startsAt <= rsd && rsd < event.endsAt) ||
-                event.startsAt < red && red < event.endsAt ||
-                rsd <= event.startsAt && event.startsAt < red ||
-                rsd < event.endsAt && event.endsAt < red
-            });
-            console.log("conflicts: " + conflicts);
-            if (conflicts) {
-              console.log("conflicts is there");
-              SweetAlert.swal({
-                title: "Not Available",
-                type: "info",
-                text: "you have a apponitment on same time",
-              })
-              // alert("ON this time you have an appointment");
+      var selected_date = new Date(selected_reqYear, selected_reqMonth, selected_reqDate);
+      if (rsd.getTime() > $scope.currentTime.getTime()) {
+        if (rsd.getTime() < red.getTime()) {
+          var diff = red.getHours() - rsd.getHours();
+          console.log("diff: " + diff);
+          if (diff <= 8) {
+            console.log("PersonalRemoteCombineCal.length: " + PersonalRemoteCombineCal.length);
+            if (PersonalRemoteCombineCal.length > 0) {
+              var conflicts = PersonalRemoteCombineCal.some(function (event) {
+                //   return (event.startsAt <= s && s <= event.endsAt) ||event.startsAt <= e && e <= event.endsAt || s <= event.startsAt && event.startsAt <= e ||s <= event.endsAt && event.endsAt <= e});
+                return (event.startsAt <= rsd && rsd < event.endsAt) ||
+                  event.startsAt < red && red < event.endsAt ||
+                  rsd <= event.startsAt && event.startsAt < red ||
+                  rsd < event.endsAt && event.endsAt < red
+              });
+              console.log("conflicts: " + conflicts);
+              if (conflicts) {
+                console.log("conflicts is there");
+                SweetAlert.swal({
+                  title: "Not Available",
+                  type: "info",
+                  text: "you have a apponitment on same time",
+                })
+                // alert("ON this time you have an appointment");
+              } else {
+                console.log("no conflicts is there");
+                var formatedStartTime = $filter('date')(sd, "HH:mm a");
+                var formatedEndTime = $filter('date')(ed, "HH:mm a");
+                var dateForEvent = $filter('date')(sd, "EEE MMM dd y");
+                dayEventmodal.close('resetModel');
+                $scope.eventSend(title, emailList, dateForEvent, formatedStartTime, formatedEndTime, sd, ed, reason);
+              }
             } else {
               console.log("no conflicts is there");
               var formatedStartTime = $filter('date')(sd, "HH:mm a");
@@ -170,36 +179,37 @@ $interval($scope.getToDateByEachSec(), 1000);
               $scope.eventSend(title, emailList, dateForEvent, formatedStartTime, formatedEndTime, sd, ed, reason);
             }
           } else {
-            console.log("no conflicts is there");
-            var formatedStartTime = $filter('date')(sd, "HH:mm a");
-            var formatedEndTime = $filter('date')(ed, "HH:mm a");
-            var dateForEvent = $filter('date')(sd, "EEE MMM dd y");
-            dayEventmodal.close('resetModel');
-            $scope.eventSend(title, emailList, dateForEvent, formatedStartTime, formatedEndTime, sd, ed, reason);
+            SweetAlert.swal({
+              title: "Invalid Time Duration",
+              type: "warning",
+              text: "Sorry! maximum 8hours duration only allowed for schedule",
+            })
           }
+
         } else {
           SweetAlert.swal({
-            title: "Invalid Time Duration",
+            title: "Invalid Date",
             type: "warning",
-            text: "Sorry! maximum 8hours duration only allowed for schedule",
+            text: "End time should not be lesser than/equal to start time",
           })
+          // alert("Selected should not be lesser than current date");
         }
-
       } else {
         SweetAlert.swal({
           title: "Invalid Date",
           type: "warning",
-          text: "End time should not be lesser than/equal to start time",
+          text: "Sorry! Start time should not be lesser than/equal to current time(" + $scope.currentTime + ")",
         })
-        // alert("Selected should not be lesser than current date");
       }
-    } else {
+    }
+    else {
       SweetAlert.swal({
-        title: "Invalid Date",
+        title: "Invalid Input",
         type: "warning",
-        text: "Sorry! Start time should not be lesser than/equal to current time(" + $scope.currentTime + ")",
+        text: "Fill the mandatory feild",
       })
     }
+
   }
 
 
@@ -566,7 +576,7 @@ $interval($scope.getToDateByEachSec(), 1000);
           })
         }
 
-      } else {}
+      } else { }
     })
     /* ##### End getdate api  ##### */
 

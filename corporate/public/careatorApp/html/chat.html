@@ -414,7 +414,7 @@
                                             file-model="chatFile" ng-model="image" accept="image/*" ng-required="true" />
                                     </div>
                                     <div class="col-sm-1 col-xs-1 reply-send">
-                                        <button id="sndmgs" ng-click="sendText()" style="
+                                        <button  ng-if="chatFile == undefined"  id="sndmgs" ng-click="sendText()" style="
                                             font-family: lato;  
                                             color: gray;                   
                                              padding: 5px;

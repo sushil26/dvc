@@ -46,10 +46,10 @@ module.exports.chatFileUpload = function (req, res) {
              
             });
 
-            console.log("lastInsertedFileId: " + lastInsertedFileId);
-            var response = fs.createReadStream( "/public/chatFiles/" + fileName).pipe(writestream);
+         
+            var response = fs.createReadStream( "/public/chatFiles/" + fileName).pipe(writeStream);
             var lastInsertedFileId = response._store.fileId;
-
+            console.log("lastInsertedFileId: " + lastInsertedFileId);
 
             writeStream.on('close', function (file) {
                 console.log(file.filename + "written to db");

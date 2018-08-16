@@ -3,6 +3,7 @@ mongoose.connect('mongodb://localhost/vc');
 var conn = mongoose.connection;
 var Grid = require('gridfs-stream');
 var streamifier = require('streamifier');
+var ObjectId = require("mongodb").ObjectID;
 var fs = require('fs');
 const path = require('path');
 const ABSPATH = path.dirname(process.mainModule.filename); // Absolute path to our app directory
@@ -79,9 +80,10 @@ module.exports.getChatFileUpload = function (req, res) {
     var gfs = Grid(conn.db);
     var output = '';
     var readStream = gfs.createReadStream({
-        "_id": req.params.id // this id was stored in db when inserted a video stream above
+        "_id": ObjectId(req.params.id) // this id was stored in db when inserted a video stream above
     });
     readStream.on("data", function (chunk) {
+        console.log("chunk: "+chunk);
         output += chunk;
     });
 

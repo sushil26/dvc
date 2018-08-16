@@ -955,7 +955,8 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
                 console.log("Message: " + data.message);
                 var file = new Blob([getData.data], {type: 'application/pdf'});
                 var fileURL = URL.createObjectURL(file);
-                $scope.chatFile_src = $sce.trustAsResourceUrl(fileURL);
+                $scope.chatFile_src = getData.data;
+                //$sce.trustAsResourceUrl(fileURL);
               // $scope.chatFile_src = 'data:image/jpeg;base64,' +data.message;
                 $scope.allChat.chats.push({
                   senderId: data.senderId,

@@ -18,19 +18,19 @@ module.exports.chatFileUpload = function (req, res) {
    // console.log("userDataFile: " + userDataFile);
     // console.log("req.body.logo: "+req.body.img);
     var chatFile = req.files.img
-//console.log("chatFile: "+JSON.stringify(chatFile));
+console.log("chatFile: "+JSON.stringify(chatFile));
    
        
         
         var gfs = Grid(conn.db);
         var writeStream = gfs.createWriteStream({
-            filename: req.files.file.name,
+            filename: req.files.img.name,
             mode: 'w',
-            content_type: req.files.file.mimetype,
+            content_type: req.files.img.mimetype,
             metadata: userDataFile
             
         });
-        var response = fs.createReadStream(req.files.file.path).pipe(writestream);
+        var response = fs.createReadStream(req.files.img.path).pipe(writestream);
       
         var getValue = chatFile;
         //var byte_string = videoBase64.substr(23);//The base64 has a imageURL

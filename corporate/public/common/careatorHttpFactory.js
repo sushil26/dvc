@@ -108,7 +108,7 @@ careatorApp.factory('careatorHttpFactory', function ($http, $q, $rootScope) {
             var postUrl = uploadUrl;
             var fd = new FormData();
             console.log("file: " + file);
-            // console.log("file: " + file.upload);
+            console.log("file: " + file);
 
             fd.append('logo', file);
             console.log("fd: " + fd);

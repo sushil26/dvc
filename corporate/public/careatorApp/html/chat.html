@@ -130,7 +130,7 @@
                                                                     <span ng-if="record.unseenCount > 0" class="notify"> {{record.unseenCount}}</span>
                                                                 </div>
                                                                 <div class="col-sm-4 col-xs-4 pull-right sideBar-time">
-                                                                        <span class="time-meta">{{record.timeStamp |amCalendar}}
+                                                                    <span class="time-meta">{{record.timeStamp |amCalendar}}
                                                                     </span>
                                                                 </div>
                                                             </div>
@@ -157,7 +157,7 @@
                                     <div class="row composeBox">
                                         <div class="col-sm-12 composeBox-inner">
                                             <div class="form-group has-feedback">
-                                                <input id="composeText" type="text" class="form-control" ng-model="search"  name="searchText" placeholder="Search People">
+                                                <input id="composeText" type="text" class="form-control" ng-model="search" name="searchText" placeholder="Search People">
                                                 <span class="glyphicon glyphicon-search form-control-feedback"></span>
                                             </div>
                                         </div>
@@ -262,12 +262,12 @@
 
 
 
-                                        <div class="has-feedback">
-                                            <input type="text" class="form-control" ng-model="searchm" name="searchText" placeholder="Search text">
-                                            <span class="glyphicon glyphicon-search form-control-feedback"></span>
-                                        </div>
+
+                                        <input type="text" class="form-control" ng-model="searchm" name="searchText" placeholder="Search text">
+
+
                                     </div>
-                                    
+
 
                                     <div class="col-sm-1 col-xs-1 pull-right" id="homeicon" ng-click="chatMenu()" style="margin-right: 20px; margin-top:5px;">
                                         <i style="font-size:25px; cursor: pointer;" class="fa fa-home"></i>
@@ -390,7 +390,7 @@
                                                     {{chat.message}}
                                                 </div>
                                                 <span class="message-time pull-right">
-                                                        {{chat.sendTime | amCalendar}}
+                                                    {{chat.sendTime | amCalendar}}
                                                 </span>
                                             </div>
                                         </div>

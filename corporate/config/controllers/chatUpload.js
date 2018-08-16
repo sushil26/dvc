@@ -42,7 +42,6 @@ module.exports.chatFileUpload = function (req, res) {
             var gfs = Grid(conn.db);
             var writeStream = gfs.createWriteStream({
                 filename: fileName,
-                mode: 'w',
                 content_type: req.files.file.mimetype,
                 metadata: req.body
             });

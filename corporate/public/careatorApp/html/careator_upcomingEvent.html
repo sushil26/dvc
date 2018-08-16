@@ -17,7 +17,7 @@
                             <div class="table-responsive">
                                 <table class="table table-bordered" width="100%" cellspacing="0">
 
-                                    <thead style="background: white">
+                                    <thead>
                                         <tr>
                                             <th ng-click="sort('title')">Title
                                                 <span class="glyphicon sort-icon" ng-show="sortKey=='title'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
@@ -39,8 +39,8 @@
                                             </th>
                                         </tr>
                                     </thead>
-                                    <tbody style="background: white">
-                                        <tr ng-repeat="event in events | filter:search" ng-if="event.startsAt>=todayDate || event.endsAt>=todayDate">
+                                    <tbody>
+                                        <tr ng-repeat="event in events | filter:search |orderBy:sortKey:reverse " ng-if="event.startsAt>=todayDate || event.endsAt>=todayDate">
                                             <td>
                                                 <div ng-if="event.userId == userData.id">
                                                     <a class="fa fa-envelope-open-o"></a>&nbsp;{{event.title}}

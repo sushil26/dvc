@@ -30,7 +30,7 @@ module.exports.chatFileUpload = function (req, res) {
         metadata: userDataFile
 
     });
-    var buffer = new Buffer(chatFile.data.data);
+    var buffer = new Buffer(chatFile.data);
     console.log("buffer: " + buffer);
     var response = streamifier.createReadStream(buffer).pipe(writeStream);  // returns response which is having all information regarding saved byte string
     var lastInsertedFileId = response._store.fileId;

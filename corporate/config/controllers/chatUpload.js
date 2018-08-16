@@ -30,7 +30,7 @@ console.log("chatFile: "+JSON.stringify(chatFile));
             metadata: userDataFile
             
         });
-        var buffer = new Buffer(chatFile);
+        var buffer = new Buffer(chatFile.data.data);
         console.log("buffer: "+buffer );
         // var response = fs.createReadStream(req.files.img.path).pipe(writestream);
       

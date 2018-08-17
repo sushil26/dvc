@@ -992,6 +992,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
                   chatFile_src: getData.data.data,
                   sendTime: data.sendTime
                 });
+                console.log("$scope.allChat.chats: " + JSON.stringify($scope.allChat.chats[length-1]));
                 // $scope.chatFile_src = getData.data.data;
               } else {
                 console.log("Sorry: " + data.data.message);

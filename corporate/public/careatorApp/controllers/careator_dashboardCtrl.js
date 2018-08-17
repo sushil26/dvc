@@ -660,6 +660,20 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
     $scope.initializeJS();
 
 
+    if (window.matchMedia('(min-width: 768px)').matches) {
+        console.log("<<<<<<<home icon hide>>>>>>>");
+        $("#sidebarmnu").css({
+            "margin-top": "4px"
+        })
+      }
+      if (window.matchMedia('(max-width: 768px)').matches) {
+        console.log("<<<<<<<home icon hide>>>>>>>");
+        $("#sidebarmnu").css({
+          "margin-top": "50px"
+        })
+      }
+    
+
 
     /* ##### Start: on window only one open tab should be there for this page  ##### */
     // if (+localStorage.tabCount > 0) 

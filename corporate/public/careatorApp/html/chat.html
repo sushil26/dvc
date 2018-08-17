@@ -372,7 +372,7 @@
                                                         </td>
                                                         <td>
                                                             <div ng-if="chat.messageType=='file'" class="message-text">
-                                                                <img ng-src="{{chat.chatFile_src}}">
+                                                                <img  style="max-width:200px;" ng-src="{{chat.chatFile_src}}">
                                                             </div>
                                                             <div ng-if="chat.messageType!='file'"  class="message-text">
                                                                 {{chat.message}}

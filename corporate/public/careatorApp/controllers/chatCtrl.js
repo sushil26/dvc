@@ -1,4 +1,4 @@
-careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFactory, careatorSessionAuth, SweetAlert,$sce) {
+careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFactory, careatorSessionAuth, SweetAlert, $sce) {
   console.log("chatCtrl==>");
   $scope.count = 0;
   var userData = careatorSessionAuth.getAccess("userData");
@@ -173,9 +173,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
           } else {
             $scope.individualData = data.data.data[0];
             console.log("$scope.allChat: " + JSON.stringify($scope.allChat));
-            console.log(
-              "$scope.allChat.chats: " + JSON.stringify($scope.allChat.chats)
-            );
+            console.log("$scope.allChat.chats: " + JSON.stringify($scope.allChat.chats));
             $scope.sendGroupText_withData = {
               group_id: $scope.individualData.group_id,
               groupName: $scope.individualData.groupName,
@@ -234,6 +232,33 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
           $scope.allChat = data.data.data;
           $scope.individualData = data.data.data;
           console.log("$scope.allChat: " + JSON.stringify($scope.allChat));
+          for (var x = 0; x < $scope.allChat.length; x++) {
+            if ($scope.allChat[x].messageType == 'file') {
+              var id = $scope.allChat[x].message;
+              var api = "https://norecruits.com/careator_chatFileUpload/getChatFileUpload/" + id;
+              console.log("*api: " + api);
+              careatorHttpFactory.getFromGrid(api).then(function (getData) {
+                console.log("data--" + JSON.stringify(getData));
+                var checkStatus = careatorHttpFactory.dataValidation(getData);
+                if (checkStatus) {
+                  console.log("getData.data.data;: " + getData.data.data);
+                  console.log("getData.data.data.data: " + getData.data.data.data);
+                  // var file = new Blob([getData.data], {type: 'image/jpeg'});
+                  // var fileURL = URL.createObjectURL(file);
+                  // $scope.chatFile_src = $sce.trustAsResourceUrl(fileURL);
+
+                  console.log("$scope.chatFile_src: " + $scope.chatFile_src);
+                 
+                  $scope.allChat[x].chatFile_src = getData.data.data;
+                } else {
+                  console.log("Sorry: " + data.data.message);
+                }
+              })
+            }
+            else {
+              console.log("no file")
+            }
+          }
           console.log("$scope.individualData : " + JSON.stringify($scope.individualData));
           $scope.receiverData = {
             senderId: userData.userId,
@@ -656,6 +681,10 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
     });
   };
 
+  $scope.getFileFRomGridfs = function () {
+
+  }
+
   $scope.readText = function () {
     console.log("readText-->");
     if ($scope.selectedType == "group") {
@@ -894,9 +923,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
             $scope.allChat = data.data.data;
             $scope.individualData = data.data.data;
             console.log("$scope.allChat: " + JSON.stringify($scope.allChat));
-            console.log(
-              "$scope.individualData : " + JSON.stringify($scope.individualData)
-            );
+            console.log("$scope.individualData : " + JSON.stringify($scope.individualData));
             $scope.receiverData = {
               senderId: userData.userId,
               senderName: userData.userName
@@ -945,20 +972,20 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
           }
           if (data.messageType == 'file') {
             console.log("********MSG TYPE IS FILE");
-            var id= data.message;
+            var id = data.message;
             var api = "https://norecruits.com/careator_chatFileUpload/getChatFileUpload/" + id;
             console.log("*api: " + api);
             careatorHttpFactory.getFromGrid(api).then(function (getData) {
               console.log("data--" + JSON.stringify(getData));
               var checkStatus = careatorHttpFactory.dataValidation(getData);
               if (checkStatus) {
-                console.log("getData.data.data;: " +getData.data.data);
-                console.log("getData.data.data.data: " +getData.data.data.data);
+                console.log("getData.data.data;: " + getData.data.data);
+                console.log("getData.data.data.data: " + getData.data.data.data);
                 // var file = new Blob([getData.data], {type: 'image/jpeg'});
                 // var fileURL = URL.createObjectURL(file);
                 // $scope.chatFile_src = $sce.trustAsResourceUrl(fileURL);
-               
-               console.log("$scope.chatFile_src: "+$scope.chatFile_src);
+
+                console.log("$scope.chatFile_src: " + $scope.chatFile_src);
                 $scope.allChat.chats.push({
                   senderId: data.senderId,
                   senderName: data.senderName,
@@ -1061,9 +1088,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
             userData.chatStatus = localStorage.getItem("chatStatus");
           }
 
-          console.log(
-            "userData.restrictedTo: " + JSON.stringify(userData.restrictedTo)
-          );
+          console.log("userData.restrictedTo: " + JSON.stringify(userData.restrictedTo));
 
           careatorSessionAuth.clearAccess("userData");
           careatorSessionAuth.setAccess(userData);

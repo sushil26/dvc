@@ -233,7 +233,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
           $scope.individualData = data.data.data;
           console.log("$scope.allChat: " + JSON.stringify($scope.allChat));
           for (var x = 0; x < $scope.allChat.chats.length; x++) {
-            console.log("$scope.allChat.chats[x]: " + JSON.stringify($scope.allChat.chats[x]));
+            console.log("$scope.allChat.chats["+x+"]: " + JSON.stringify($scope.allChat.chats[x]));
             if ($scope.allChat.chats[x].messageType!=undefined && $scope.allChat.chats[x].messageType == 'file') {
               var id = $scope.allChat.chats[x].message;
               console.log("$scope.allChat.chats[x]: " + JSON.stringify($scope.allChat.chats[x]));

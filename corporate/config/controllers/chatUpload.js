@@ -91,7 +91,7 @@ module.exports.getChatFileUpload = function (req, res) {
 
     var gfs = Grid(conn.db);
     var output = '';
-    res.set('Content-Type', 'image/jpeg');
+    res.set(200, {'Content-Type': 'image/jpeg'});
     var readStream = gfs.createReadStream({
         "_id": req.params.id // this id was stored in db when inserted a video stream above
     });
@@ -111,7 +111,7 @@ module.exports.getChatFileUpload = function (req, res) {
       
     readStream.on("end", function () {
         console.log("Final Output");
-        console.log("res: "+res);
+        console.log("res: "+res[1].dbgileName.bufer,'binary');
         readStream.pipe(res);
         // responseData = {
         //     status: true,

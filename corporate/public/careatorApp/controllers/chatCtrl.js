@@ -233,7 +233,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
           $scope.individualData = data.data.data;
           console.log("$scope.allChat: " + JSON.stringify($scope.allChat));
           for (var x = 0; x < $scope.allChat.chats.length; x++) {
-            var dfd = $q.defer();
+           
             console.log("$scope.allChat.chats["+x+"]: " + JSON.stringify($scope.allChat.chats[x]));
             if ($scope.allChat.chats[x].messageType!=undefined && $scope.allChat.chats[x].messageType == 'file') {
               var id = $scope.allChat.chats[x].message;
@@ -248,13 +248,13 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
                   console.log("$scope.allChat.chats["+x+"]: " + JSON.stringify($scope.allChat.chats[x]));
                   
                   $scope.allChat.chats[x].chatFile_src = getData.data.data;
-                  dfd.resolve(getData.data.data);
+                 
                 } else {
                   console.log("Sorry: " + data.data.message);
                 }
                 console.log("$scope.allChat.chats[x]: " + JSON.stringify($scope.allChat.chats[x]));
               })
-              dfd.resolve(getData.data.data);
+             
             }
             else {
               console.log("no file")
@@ -590,9 +590,9 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
         if ($scope.selectedType == "individual_chats") {
           api = "https://norecruits.com/careator_individualText/individualText";
           console.log("api: " + api);
-          // console.log("$scope.receiverData.receiverId: " + $scope.receiverData.receiverId);
-          // console.log(" $scope.receiverData.receiverId: " + $scope.receiverData.receiverId);
-          // console.log(" $rootScope.adminId: " + $rootScope.adminId);
+          console.log("$scope.receiverData.receiverId: " + $scope.receiverData.receiverId);
+          console.log(" $scope.receiverData.receiverId: " + $scope.receiverData.receiverId);
+          console.log(" $rootScope.adminId: " + $rootScope.adminId);
           if ($rootScope.adminId == userData.userId) {
             /* ### Note: if loginId is admin id then no need to check restricted list ### */
             obj = {

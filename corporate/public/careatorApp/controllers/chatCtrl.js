@@ -590,9 +590,9 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
         if ($scope.selectedType == "individual_chats") {
           api = "https://norecruits.com/careator_individualText/individualText";
           console.log("api: " + api);
-          console.log("$scope.receiverData.receiverId: " + $scope.receiverData.receiverId);
-          console.log(" $scope.receiverData.receiverId: " + $scope.receiverData.receiverId);
-          console.log(" $rootScope.adminId: " + $rootScope.adminId);
+          // console.log("$scope.receiverData.receiverId: " + $scope.receiverData.receiverId);
+          // console.log(" $scope.receiverData.receiverId: " + $scope.receiverData.receiverId);
+          // console.log(" $rootScope.adminId: " + $rootScope.adminId);
           if ($rootScope.adminId == userData.userId) {
             /* ### Note: if loginId is admin id then no need to check restricted list ### */
             obj = {

@@ -7,8 +7,14 @@
     <!-- <script src="../dashboard_Lib/js/scripts.js"></script> -->
 
     <style>
+        .ictextparnt{background: wheat
+
+        }
         .ictext {
             font-size: 10px;
+        }
+        .ictexticon  {
+            color:white;
         }
     </style>
     <section id="container" class="">
@@ -149,53 +155,53 @@
                 <!-- sidebar menu start-->
                 <div class="sidebar-menu" ng-hide="sideBarMenu">
 
-                    <div class="col-sm-6  col-xs-4" ng-if="userData.email=='vc4all@talenkart.com'">
+                    <div class="col-sm-6  col-xs-4 ictextparnt" ng-if="userData.email=='vc4all@talenkart.com'">
                         <a href="#!/dashboard/userCreate">
-                            <i class="fa fa-user-circle">
+                            <i class="fa fa-user-circle ictexticon">
 
                             </i>
                             <br>
                             <span class="ictext">Create User</span>
                         </a>
                     </div>
-                    <div class="col-sm-6  col-xs-4" ng-if="userData.email=='vc4all@talenkart.com'">
+                    <div class="col-sm-6  col-xs-4 ictextparnt" ng-if="userData.email=='vc4all@talenkart.com'">
                         <a href="#!/dashboard/userRestrict">
-                            <i class="fa fa-universal-access">
+                            <i class="fa fa-universal-access ictexticon">
 
                             </i>
                             <br>
                             <span class="ictext">Restrict Connectivity</span>
                         </a>
                     </div>
-                    <div class="col-sm-6  col-xs-4" ng-if="userData.email=='vc4all@talenkart.com'">
-                        <a href="#!/dashboard/createGroup">
-                            <i class="fa fa-users">
+                    <div class="col-sm-6  col-xs-4 ictextparnt" ng-if="userData.email=='vc4all@talenkart.com'">
+                        <a href="#!/dashboard/createGroup ictexticon">
+                            <i class="fa fa-users ictexticon">
                             </i>
                             <br>
                             <span class="ictext">Create Group</span>
                         </a>
                     </div>
-                    <div class="col-sm-6  col-xs-4" ng-if="userData.email=='vc4all@talenkart.com'">
+                    <div class="col-sm-6  col-xs-4 ictextparnt" ng-if="userData.email=='vc4all@talenkart.com'">
                         <a href="#!/dashboard/usersList">
-                            <i class="fa fa-list-alt">
+                            <i class="fa fa-list-alt ictexticon">
 
                             </i>
                             <br>
                             <span class="ictext">All Users</span>
                         </a>
                     </div>
-                    <div class="col-sm-6  col-xs-4" ng-if="userData.email=='vc4all@talenkart.com'">
+                    <div class="col-sm-6  col-xs-4 ictextparnt" ng-if="userData.email=='vc4all@talenkart.com'">
                         <a href="#!/dashboard/loginDetails">
-                            <i class="fa fa-address-book">
+                            <i class="fa fa-address-book ictexticon">
 
                             </i>
                             <br>
                             <span class="ictext">Log Details</span>
                         </a>
                     </div>
-                    <div class="col-sm-6  col-xs-4" ng-if="userData.email=='vc4all@talenkart.com'">
-                        <a href="#!/dashboard/groupList">
-                            <i class="fa fa-list">
+                    <div class="col-sm-6  col-xs-4 ictextparnt" ng-if="userData.email=='vc4all@talenkart.com'">
+                        <a href="#!/dashboard/groupList ">
+                            <i class="fa fa-list ictexticon">
 
                             </i>
                             <br>
@@ -204,54 +210,54 @@
                     </div>
 
 
-                    <div class="col-sm-6  col-xs-4">
+                    <div class="col-sm-6  col-xs-4 ictextparnt">
                         <a href="#!/dashboard/profile">
-                            <i class="fa fa-user-circle-o">
+                            <i class="fa fa-user-circle-o ictexticon">
 
                             </i>
                             <br>
                             <span class="ictext">Profile</span>
                         </a>
                     </div>
-                    <div class="col-sm-6  col-xs-4">
+                    <div class="col-sm-6  col-xs-4 ictextparnt">
                         <a href="#!/dashboard/chat">
-                            <i class="fa fa-comment">
+                            <i class="fa fa-comment ictexticon">
 
                             </i>
                             <br>
                             <span class="ictext">Chat</span>
                         </a>
                     </div>
-                    <div class="col-sm-6  col-xs-4" ng-if="videoRights=='yes'">
+                    <div class="col-sm-6  col-xs-4 ictextparnt" ng-if="videoRights=='yes'">
                         <a ng-click="navigateintoBoth_CVoption()">
-                            <i class="fa fa-video-camera">
+                            <i class="fa fa-video-camera ictexticon">
 
                             </i>
                             <br>
                             <span class="ictext">Instant</span>
                         </a>
                     </div>
-                    <div class="col-sm-6  col-xs-4" ng-if="videoRights=='yes'">
+                    <div class="col-sm-6  col-xs-4 ictextparnt" ng-if="videoRights=='yes'">
                         <a href="#!/dashboard/vc4allSchedule">
-                            <i class="fa fa-pencil-square-o">
+                            <i class="fa fa-pencil-square-o ictexticon">
 
                             </i>
                             <br>
                             <span class="ictext">Schedule</span>
                         </a>
                     </div>
-                    <div class="col-sm-6  col-xs-4">
+                    <div class="col-sm-6  col-xs-4 ictextparnt">
                         <a href="#!/dashboard/upcomingEvent">
-                            <i class="fa fa-calendar">
+                            <i class="fa fa-calendar ictexticon">
 
                             </i>
                             <br>
                             <span class="ictext">Upcoming Event</span>
                         </a>
                     </div>
-                    <div class="col-sm-6 col-xs-4">
+                    <div class="col-sm-6 col-xs-4 ictextparnt">
                         <a href="#!/dashboard/historyEvent">
-                            <i class="fa fa-history">
+                            <i class="fa fa-history ictexticon">
 
                             </i>
                             <br>
@@ -259,9 +265,9 @@
                         </a>
                     </div>
 
-                    <div class="col-sm-6  col-xs-4">
+                    <div class="col-sm-6  col-xs-4 ictextparnt">
                         <a ng-click="logout()">
-                            <i class="fa fa-sign-out">
+                            <i class="fa fa-sign-out ictexticon">
 
                             </i>
                             <br>

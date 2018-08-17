@@ -244,7 +244,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
                 var checkStatus = careatorHttpFactory.dataValidation(getData);
                 if (checkStatus) {
                   console.log("getData.data.data;: " + getData.data.data);
-                  console.log("$scope.allChat: " + JSON.stringify($scope.allChat));
+                  console.log("$scope.allChat.chats["+x+"]: " + JSON.stringify($scope.allChat.chats[x]));
                   
                   $scope.allChat.chats[x].chatFile_src = getData.data.data;
                 } else {

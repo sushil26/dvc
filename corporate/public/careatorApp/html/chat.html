@@ -407,15 +407,14 @@
 
                                         <textarea class="form-control" rows="1" id="comment" ng-model="typedMessage"></textarea>
                                     </div>
-                                    <div class="col-sm-2 col-xs-2 reply-recording">
-                                    
-                                            <label for="fileselect">
-                                                <i class="fa fa-paperclip"> </i>
-                                            </label>
-                                            <input id="fileselect" type="file" name="fileselect" style="display: none;" name="myImage" value="Upload" image-with-preview
-                                                file-model="chatFile" ng-model="image" accept="image/*" ng-required="true" />
-                                    </div>
-                                    <div class="col-sm-1 col-xs-1 reply-send">
+                                    <div class="col-sm-3 col-xs-3 reply-send">
+
+                                        <label for="fileselect">
+                                            <i class="fa fa-paperclip"> </i>
+                                        </label>
+                                        <input id="fileselect" type="file" name="fileselect" style="display: none;" name="myImage" value="Upload" image-with-preview
+                                            file-model="chatFile" ng-model="image" accept="image/*" ng-required="true" />
+
                                         <button ng-if="chatFile == undefined" id="sndmgs" ng-click="sendText()" style="
                                             font-family: lato;  
                                             color: gray;                   

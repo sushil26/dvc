@@ -120,7 +120,7 @@ module.exports.getChatFileUpload = function (req, res) {
             data: "data:image/png;base64,"+output
         };
         res.status(200).send(responseData);
-        console.log(output);
+        console.log("responseData: "+JSON.stringify(responseData));
 
     });
 

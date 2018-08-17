@@ -7,15 +7,23 @@
     <!-- <script src="../dashboard_Lib/js/scripts.js"></script> -->
 
     <style>
-        .ictextparnt{
-            height: 60px;
+        .ictextparnt {
+            line-height: 15px;
+            height: 70px;
             border: 1px solid
         }
+
         .ictext {
             font-size: 10px;
+
+
         }
-        .ictexticon  {
-            color:white;
+
+        .ictexticon {
+            position: absolute;
+            top: 20px;
+            right: 50%;
+            color: white;
         }
     </style>
     <section id="container" class="">
@@ -155,16 +163,18 @@
 
                 <!-- sidebar menu start-->
                 <div class="sidebar-menu" id="sidebarmnu" ng-hide="sideBarMenu">
+                    <a href="#!/dashboard/userCreate">
 
-                    <div class="col-sm-6  col-xs-4 ictextparnt" ng-if="userData.email=='vc4all@talenkart.com'">
-                        <a href="#!/dashboard/userCreate">
+                        <div class="col-sm-6  col-xs-4 ictextparnt" ng-if="userData.email=='vc4all@talenkart.com'">
+
                             <i class="fa fa-user-circle ictexticon">
 
                             </i>
                             <br>
                             <span class="ictext">Create User</span>
-                        </a>
-                    </div>
+
+                        </div>
+                    </a>
                     <div class="col-sm-6  col-xs-4 ictextparnt" ng-if="userData.email=='vc4all@talenkart.com'">
                         <a href="#!/dashboard/userRestrict">
                             <i class="fa fa-universal-access ictexticon">

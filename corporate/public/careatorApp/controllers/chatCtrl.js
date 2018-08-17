@@ -983,18 +983,13 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
               var checkStatus = careatorHttpFactory.dataValidation(getData);
               if (checkStatus) {
                 console.log("getData.data.data;: " + getData.data.data);
-                console.log("getData.data.data.data: " + getData.data.data.data);
-                // var file = new Blob([getData.data], {type: 'image/jpeg'});
-                // var fileURL = URL.createObjectURL(file);
-                // $scope.chatFile_src = $sce.trustAsResourceUrl(fileURL);
-
-               
+                               
                 $scope.allChat.chats.push({
                   senderId: data.senderId,
                   senderName: data.senderName,
                   messageType: "file",
                   message: id,
-                  chatFile_src: $scope.chatFile_src,
+                  chatFile_src: getData.data.data,
                   sendTime: data.sendTime
                 });
                 // $scope.chatFile_src = getData.data.data;

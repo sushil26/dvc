@@ -226,13 +226,13 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
       var api = "https://norecruits.com/careator_getChatsById/getChatsById/" + id;
       console.log("api: " + api);
       careatorHttpFactory.get(api).then(function (data) {
-        console.log("data--" + JSON.stringify(data.data));
+        // console.log("data--" + JSON.stringify(data.data));
         var checkStatus = careatorHttpFactory.dataValidation(data);
         if (checkStatus) {
           $scope.allChat = data.data.data;
           $scope.individualData = data.data.data;
           console.log("$scope.allChat: " + JSON.stringify($scope.allChat));
-          for (var x = 0; x < $scope.allChat.length; x++) {
+          for (var x = 0; x < $scope.allChat.chats.length; x++) {
             if ($scope.allChat[x].messageType == 'file') {
               var id = $scope.allChat[x].message;
               var api = "https://norecruits.com/careator_chatFileUpload/getChatFileUpload/" + id;
@@ -249,7 +249,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
 
                   console.log("$scope.chatFile_src: " + $scope.chatFile_src);
                  
-                  $scope.allChat[x].chatFile_src = getData.data.data;
+                  $scope.allChat[x].chats.chatFile_src = getData.data.data;
                 } else {
                   console.log("Sorry: " + data.data.message);
                 }

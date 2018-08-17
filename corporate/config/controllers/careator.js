@@ -1873,6 +1873,9 @@ module.exports.individualText = function (req, res) {
                     "message": req.body.message,
                     "sendTime": date
                 }
+                if(req.body.messageType!=undefined && req.body.messageType=='file'){
+                    obj.messageType = 'file';
+                }
                 console.log("obj : " + JSON.stringify(obj));
                 var findObj = { "_id": data[0]._id }
                 console.log("findObj: " + JSON.stringify(findObj));

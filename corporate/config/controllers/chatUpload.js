@@ -99,7 +99,8 @@ module.exports.getChatFileUpload = function (req, res) {
        console.log("chunk: " + JSON.stringify(chunk));
        console.log("chunk.data: " + chunk.data);
         output += chunk.data;
-        console.log("output: "+JSON.stringify(output));
+        var vals = (new Buffer(chunk)).toString('base64')
+        console.log("vals: "+JSON.stringify(vals));
     });
     
     // base64.decode(output, function (err, output) {

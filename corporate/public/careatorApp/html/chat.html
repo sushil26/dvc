@@ -384,13 +384,13 @@
                                         </div>
                                         <div class="col-sm-12 message-main-sender slideLeft" ng-if="chat.senderId==userId">
                                             <div class="sender">
-                                                    <img ng-src="{{chatFile_src}}">
+
                                                 <div ng-if="chat.messageType=='file'" class="message-text">
-                                                   
+                                                        <img ng-src="{{chat.chatFile_src}}">
                                                    
                                                     <!-- <iframe ng-src="{{chat.message}}" width="100%" /> -->
                                                 </div>
-                                                <div class="message-text">
+                                                <div class="message-text" ng-if="chat.messageType!='file'">
                                                     {{chat.message}}
                                                 </div>
                                                 <span class="message-time pull-right">

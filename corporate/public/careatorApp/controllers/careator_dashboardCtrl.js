@@ -663,7 +663,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
     if (window.matchMedia('(min-width: 768px)').matches) {
         console.log("<<<<<<<home icon hide>>>>>>>");
         $("#sidebarmnu").css({
-            "margin-top": "10px"
+            "margin-top": "4px"
         })
       }
       if (window.matchMedia('(max-width: 768px)').matches) {

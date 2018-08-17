@@ -953,6 +953,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
               var checkStatus = careatorHttpFactory.dataValidation(getData);
               if (checkStatus) {
                 console.log("getData.data.data;: " +getData.data.data);
+                console.log("getData.data.data.data: " +getData.data.data.data);
                 // var file = new Blob([getData.data], {type: 'image/jpeg'});
                 // var fileURL = URL.createObjectURL(file);
                 // $scope.chatFile_src = $sce.trustAsResourceUrl(fileURL);

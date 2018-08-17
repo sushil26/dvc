@@ -956,7 +956,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
                 // var file = new Blob([getData.data], {type: 'image/jpeg'});
                 // var fileURL = URL.createObjectURL(file);
                 // $scope.chatFile_src = $sce.trustAsResourceUrl(fileURL);
-               $scope.chatFile_src = data.data.data;
+               $scope.chatFile_src = getData.data.data;
                 $scope.allChat.chats.push({
                   senderId: data.senderId,
                   senderName: data.senderName,

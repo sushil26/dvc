@@ -92,18 +92,17 @@ module.exports.getChatFileUpload = function (req, res) {
     var gfs = Grid(conn.db);
     var output = '';
     //var vals ='';
-  //  res.set(200, {'Content-Type': 'image/jpeg'});
+    //  res.set(200, {'Content-Type': 'image/jpeg'});
     var readStream = gfs.createReadStream({
         "_id": req.params.id // this id was stored in db when inserted a video stream above
     });
     readStream.on("data", function (chunk) {
-       console.log("chunk: " + JSON.stringify(chunk));
-       console.log("chunk.data: " + chunk.data);
+        console.log("chunk: " + JSON.stringify(chunk));
+        console.log("chunk.data: " + chunk.data);
         output += chunk.data;
         vals = (new Buffer(chunk)).toString('base64')
-        console.log("vals: "+JSON.stringify(vals));
+        console.log("vals: " + JSON.stringify(vals));
     });
-    
     // base64.decode(output, function (err, output) {
     //     console.log('output');
     //     // dump contents to console when complete
@@ -112,20 +111,20 @@ module.exports.getChatFileUpload = function (req, res) {
     readStream.on('error', function (err) {
         console.log('An error occurred!', err);
         throw err;
-      });
-      
+    });
+
     readStream.on("end", function () {
         console.log("Final Output");
-        console.log("vals: "+JSON.stringify(vals));
-       // console.log("res: "+res[1].dbgileName.bufer,'binary');
-       // readStream.pipe(res);
+        console.log("vals: " + JSON.stringify(vals));
+        // console.log("res: "+res[1].dbgileName.bufer,'binary');
+        // readStream.pipe(res);
         responseData = {
             status: true,
             message: "get file successful",
-            data: "data:image/png;base64,"+vals
+            data: "data:image/png;base64," + vals
         };
         res.status(200).send(responseData);
-        console.log("responseData: "+JSON.stringify(responseData));
+        console.log("responseData: " + JSON.stringify(responseData));
 
     });
 

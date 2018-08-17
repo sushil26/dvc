@@ -1,6 +1,7 @@
 var express = require('express');
 var http = require('http');
 var bodyParser = require('body-parser')
+var formidable = require("express-formidable");
 var nodemailer = require('nodemailer');
 var fs = require('fs'),
 url = require('url'),
@@ -17,4 +18,5 @@ module.exports = function(app, config) {
 	app.use(bodyParser.json({
 		limit: '100mb'
 	}));
+	app.use(formidable());
 }

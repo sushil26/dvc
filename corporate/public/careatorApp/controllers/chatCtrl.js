@@ -233,8 +233,8 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
           $scope.individualData = data.data.data;
           console.log("$scope.allChat: " + JSON.stringify($scope.allChat));
           for (var x = 0; x < $scope.allChat.chats.length; x++) {
-            if ($scope.allChat[x].messageType == 'file') {
-              var id = $scope.allChat[x].message;
+            if ($scope.allChat[x].chats!=undefined && $scope.allChat[x].chats.messageType == 'file') {
+              var id = $scope.allChat[x].chats.message;
               var api = "https://norecruits.com/careator_chatFileUpload/getChatFileUpload/" + id;
               console.log("*api: " + api);
               careatorHttpFactory.getFromGrid(api).then(function (getData) {

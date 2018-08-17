@@ -994,6 +994,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
                   senderName: data.senderName,
                   messageType: "file",
                   message: getData.data,
+                  chatFile_src: $scope.chatFile_src,
                   sendTime: data.sendTime
                 });
                 $scope.chatFile_src = getData.data.data;

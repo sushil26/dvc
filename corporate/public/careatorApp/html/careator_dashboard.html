@@ -15,8 +15,6 @@
 
         .ictext {
             font-size: 10px;
-            position: absolute;
-            bottom: 0;
 
 
         }
@@ -165,16 +163,18 @@
 
                 <!-- sidebar menu start-->
                 <div class="sidebar-menu" id="sidebarmnu" ng-hide="sideBarMenu">
+                    <a href="#!/dashboard/userCreate">
 
-                    <div class="col-sm-6  col-xs-4 ictextparnt" ng-if="userData.email=='vc4all@talenkart.com'">
-                        <a href="#!/dashboard/userCreate">
+                        <div class="col-sm-6  col-xs-4 ictextparnt" ng-if="userData.email=='vc4all@talenkart.com'">
+
                             <i class="fa fa-user-circle ictexticon">
 
                             </i>
                             <br>
                             <span class="ictext">Create User</span>
-                        </a>
-                    </div>
+
+                        </div>
+                    </a>
                     <div class="col-sm-6  col-xs-4 ictextparnt" ng-if="userData.email=='vc4all@talenkart.com'">
                         <a href="#!/dashboard/userRestrict">
                             <i class="fa fa-universal-access ictexticon">

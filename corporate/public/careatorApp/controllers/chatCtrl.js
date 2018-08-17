@@ -259,7 +259,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
               console.log("no file")
             }
           }
-          console.log("$scope.individualData : " + JSON.stringify($scope.individualData));
+          //console.log("$scope.individualData : " + JSON.stringify($scope.individualData));
           $scope.receiverData = {
             senderId: userData.userId,
             senderName: userData.userName
@@ -808,7 +808,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
   socket.on("comm_textReceived", function (data) {
     $scope.scrollDown();
     console.log("****comm_textReceived-->: " + JSON.stringify(data));
-    console.log("$scope.individualData: " + JSON.stringify($scope.individualData));
+    //console.log("$scope.individualData: " + JSON.stringify($scope.individualData));
 
     if (userData.userId == data.receiverId) {
       $scope.playAudio = function () {

@@ -1,4 +1,4 @@
-careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFactory, careatorSessionAuth, SweetAlert, $sce) {
+careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFactory, careatorSessionAuth, SweetAlert, $q) {
   console.log("chatCtrl==>");
   $scope.count = 0;
   var userData = careatorSessionAuth.getAccess("userData");
@@ -233,6 +233,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
           $scope.individualData = data.data.data;
           console.log("$scope.allChat: " + JSON.stringify($scope.allChat));
           for (var x = 0; x < $scope.allChat.chats.length; x++) {
+            var dfd = $q.defer();
             console.log("$scope.allChat.chats["+x+"]: " + JSON.stringify($scope.allChat.chats[x]));
             if ($scope.allChat.chats[x].messageType!=undefined && $scope.allChat.chats[x].messageType == 'file') {
               var id = $scope.allChat.chats[x].message;
@@ -247,11 +248,13 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
                   console.log("$scope.allChat.chats["+x+"]: " + JSON.stringify($scope.allChat.chats[x]));
                   
                   $scope.allChat.chats[x].chatFile_src = getData.data.data;
+                  dfd.resolve(getData.data.data);
                 } else {
                   console.log("Sorry: " + data.data.message);
                 }
                 console.log("$scope.allChat.chats[x]: " + JSON.stringify($scope.allChat.chats[x]));
               })
+              dfd.resolve(getData.data.data);
             }
             else {
               console.log("no file")

@@ -97,6 +97,7 @@ module.exports.getChatFileUpload = function (req, res) {
     });
     readStream.on("data", function (chunk) {
        console.log("chunk: " + JSON.stringify(chunk));
+       console.log("chunk.data: " + chunk.data);
         output += chunk.data;
         console.log("output: "+JSON.stringify(output));
     });

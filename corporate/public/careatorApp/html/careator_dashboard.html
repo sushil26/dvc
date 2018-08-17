@@ -13,7 +13,11 @@
             padding: 12PX;
             box-shadow: 1px 2px 5px #000;
         }
+        .ictextparnt:hover{
+            background: #124169;
+            box-shadow: 1px 2px 5px #000;
 
+        }
         .ictext {
             color: gainsboro;
             font-size: 11px;
@@ -21,8 +25,9 @@
 
         .ictexticon {
             font-size: 20px;
-            color: lightsalmon;
+            color:lightsalmon;
         }
+
     </style>
     <section id="container" class="">
         <header class="header dark-bg" style="position:fixed;">
@@ -162,45 +167,19 @@
                 <!-- sidebar menu start-->
                 <div class="sidebar-menu" id="sidebarmnu" ng-hide="sideBarMenu">
                     <a href="#!/dashboard/userCreate">
-
                         <div class="col-sm-6  col-xs-4 ictextparnt" ng-if="userData.email=='vc4all@talenkart.com'">
-                            <table>
-                                <tr>
-                                    <td>
-                                        <i class="fa fa-user-circle ictexticon">
-                                        </i>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span class="ictext">Create User</span>
-                                    </td>
-                                </tr>
-                            </table>
+                            <i class="fa fa-user-circle ictexticon">
+                            </i>
+                            <br>
+                            <span class="ictext">Create User</span>
                         </div>
                     </a>
                     <a href="#!/dashboard/userRestrict">
                         <div class="col-sm-6  col-xs-4 ictextparnt" ng-if="userData.email=='vc4all@talenkart.com'">
-
-                            <table>
-                                <tr>
-                                    <td>
-                                        <i class="fa fa-universal-access ictexticon">
-                                        </i>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-
-                                        <span class="ictext">Restrict Connectivity</span>
-
-                                    </td>
-                                </tr>
-
-                            </table>
-
-
-
+                            <i class="fa fa-universal-access ictexticon">
+                            </i>
+                            <br>
+                            <span class="ictext">Restrict Connectivity</span>
                         </div>
                     </a>
                     <a href="#!/dashboard/createGroup">

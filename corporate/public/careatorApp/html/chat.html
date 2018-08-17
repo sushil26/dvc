@@ -386,7 +386,7 @@
                                             <div class="sender">
                                                 <div ng-if="chat.messageType=='file'" class="message-text">
                                                     --
-                                                    <img  src="{{chatFile_src}}" >
+                                                    <img src="{{chatFile_src}}">
                                                     <!-- <iframe ng-src="{{chat.message}}" width="100%" /> -->
                                                 </div>
                                                 <div class="message-text">
@@ -408,14 +408,22 @@
                                         <textarea class="form-control" rows="1" id="comment" ng-model="typedMessage"></textarea>
                                     </div>
                                     <div class="col-sm-2 col-xs-2 reply-recording">
-                                        <label for="fileselect">
-                                            <i class="fa fa-upload fa-2x"> </i>
-                                        </label>
-                                        <!-- <input type="file" style="width: 166px;font-size: 10px;" class="bcontrol-label btn btn-warning m-bot15" name="myImage" value="Upload"
-                                                    image-with-preview file-model="chatFile" ng-model="image" accept="csv"
-                                                    ng-required="true"> -->
-                                        <input id="fileselect" type="file" name="fileselect" style="display: none;" name="myImage" value="Upload" image-with-preview
-                                            file-model="chatFile" ng-model="image" accept="image/*" ng-required="true" />
+                                        <button style="
+                                            font-family: lato;  
+                                            color: gray;                   
+                                             padding: 5px;
+                                             background: black;
+                                             border-radius: 5px;
+                                             border: none;
+                                             padding-left: 10px;
+                                             padding-right: 10px;
+                                             float: left;">
+                                            <label for="fileselect">
+                                                <i class="fa fa-upload fa-2x"> </i>
+                                            </label>
+                                            <input id="fileselect" type="file" name="fileselect" style="display: none;" name="myImage" value="Upload" image-with-preview
+                                                file-model="chatFile" ng-model="image" accept="image/*" ng-required="true" />
+                                        </button>
                                     </div>
                                     <div class="col-sm-1 col-xs-1 reply-send">
                                         <button ng-if="chatFile == undefined" id="sndmgs" ng-click="sendText()" style="

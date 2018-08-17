@@ -2117,7 +2117,7 @@ module.exports.groupText = function (req, res) {
                             console.log("insertedData: " + JSON.stringify(insertedData));
                             console.log("insertedData.ops[0]._id", insertedData.ops[0]._id);
                             var io = req.app.get('socketio');
-                            io.emit('comm_textReceived', {
+                            var emitObj = {
                                 "id": insertedData.ops[0]._id,
                                 "group_id": insertedData.ops[0].group_id,
                                 "senderId": obj.chats[0].senderId,
@@ -2126,7 +2126,11 @@ module.exports.groupText = function (req, res) {
                                 "sendTime": obj.chats[0].sendTime,
                                 "freshInsert": true,
                                 "groupMembers": groupMem
-                            }); /* ### Note: Emit message to client ### */
+                            }
+                            if (req.body.messageType == 'file') {
+                                emitObj.messageType = req.body.messageType
+                            }
+                            io.emit('comm_textReceived', emitObj); /* ### Note: Emit message to client ### */
                             response = {
                                 status: true,
                                 message: property.S0012,
@@ -2141,6 +2145,9 @@ module.exports.groupText = function (req, res) {
                         "senderName": req.body.senderName,
                         "message": req.body.message,
                         "sendTime": date
+                    }
+                    if(req.body.messageType!=undefined && req.body.messageType=='file'){
+                        obj.messageType = 'file';
                     }
                     var groupMembers = [];
                     var groupMem = data[0].groupMembers;
@@ -2173,7 +2180,7 @@ module.exports.groupText = function (req, res) {
                         } else {
                             console.log("updatedData: " + JSON.stringify(updatedData));
                             var io = req.app.get('socketio');
-                            io.emit('comm_textReceived', {
+                            var emitObj = {
                                 "id": data[0]._id,
                                 "group_id": data[0].group_id,
                                 "senderId": obj.senderId,
@@ -2181,8 +2188,11 @@ module.exports.groupText = function (req, res) {
                                 "message": obj.message,
                                 "sendTime": obj.sendTime,
                                 "groupMembers": groupMem
-
-                            }); /* ### Note: Emit message to client ### */
+                            }
+                            if (req.body.messageType == 'file') {
+                                emitObj.messageType = req.body.messageType
+                            }
+                            io.emit('comm_textReceived', emitObj); /* ### Note: Emit message to client ### */
                             response = {
                                 status: true,
                                 message: property.S0010,

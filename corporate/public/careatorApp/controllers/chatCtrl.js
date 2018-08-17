@@ -64,7 +64,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
     console.log("<--getAllEmployee");
   };
   if (userData.chatRights == "yes") {
-    $scope.getChatGroupListById(localStorage.getItem("userId"));
+    $scope.getChatGroupListById($scope.userId);
   }
 
   $scope.statusUpdate = function (status) {

@@ -56,8 +56,7 @@ careatorApp.factory('careatorHttpFactory', function ($http, $q, $rootScope) {
 
             $http({
                 method: 'GET',
-                url: api,
-                responseType: 'arraybuffer'
+                url: api
             }).
                 then(function (data, status, headers, config) {
                     dfd.resolve(data);

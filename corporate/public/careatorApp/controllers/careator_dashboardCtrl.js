@@ -576,6 +576,30 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
         });
 
         $('.toggle-nav').click(function () {
+
+
+
+
+            if ($('#sidebar').is(":visible") === true) {
+                $('#main-content').css({
+                    'margin-left': '0px'
+                });
+                $('#sidebar').css({
+                    'margin-left': '-180px'
+                });
+                $('#sidebar').hide();
+                $("#container").addClass("sidebar-closed");
+            } else {
+                $('#main-content').css({
+                    'margin-left': '180px'
+                });
+                $('#sidebar').show();
+                $('#sidebar').css({
+                    'margin-left': '0'
+                });
+                $("#container").removeClass("sidebar-closed");
+            }
+
             // if (wSize <= 768) {
             //     $('#profile').css({
             //         'margin-top ': '195px'
@@ -596,25 +620,25 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
 
 
             // }
-            if ($('#sidebar > ul').is(":visible") === true) {
-                $('#main-content').css({
-                    'margin-left': '0px'
-                });
-                $('#sidebar').css({
-                    'margin-left': '-180px'
-                });
-                $('#sidebar > ul').hide();
-                $("#container").addClass("sidebar-closed");
-            } else {
-                $('#main-content').css({
-                    'margin-left': '180px'
-                });
-                $('#sidebar > ul').show();
-                $('#sidebar').css({
-                    'margin-left': '0'
-                });
-                $("#container").removeClass("sidebar-closed");
-            }
+            // if ($('#sidebar > ul').is(":visible") === true) {
+            //     $('#main-content').css({
+            //         'margin-left': '0px'
+            //     });
+            //     $('#sidebar').css({
+            //         'margin-left': '-180px'
+            //     });
+            //     $('#sidebar > ul').hide();
+            //     $("#container").addClass("sidebar-closed");
+            // } else {
+            //     $('#main-content').css({
+            //         'margin-left': '180px'
+            //     });
+            //     $('#sidebar > ul').show();
+            //     $('#sidebar').css({
+            //         'margin-left': '0'
+            //     });
+            //     $("#container").removeClass("sidebar-closed");
+            // }
         });
 
         //bar chart

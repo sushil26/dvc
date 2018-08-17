@@ -99,6 +99,7 @@ module.exports.getChatFileUpload = function (req, res) {
        // console.log("chunk: " + chunk);
         output += chunk;
     });
+    
     // base64.decode(output, function (err, output) {
     //     console.log('output');
     //     // dump contents to console when complete
@@ -112,14 +113,14 @@ module.exports.getChatFileUpload = function (req, res) {
     readStream.on("end", function () {
         console.log("Final Output");
         console.log("res: "+res[1].dbgileName.bufer,'binary');
-        readStream.pipe(res);
-        // responseData = {
-        //     status: true,
-        //     message: "get file successful",
-        //     data: output
-        // };
-        // res.status(200).send(responseData);
-        //console.log(output);
+        // readStream.pipe(res);
+        responseData = {
+            status: true,
+            message: "get file successful",
+            data: "data:image/png;base64,"+output
+        };
+        res.status(200).send(responseData);
+        console.log(output);
 
     });
 

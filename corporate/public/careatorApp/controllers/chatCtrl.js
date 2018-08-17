@@ -952,11 +952,13 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
               console.log("data--" + JSON.stringify(getData));
               var checkStatus = careatorHttpFactory.dataValidation(getData);
               if (checkStatus) {
-                console.log("Message: " + data.message);
+                console.log("getData.data.data;: " +getData.data.data);
+                console.log("getData.data.data.data: " +getData.data.data.data);
                 // var file = new Blob([getData.data], {type: 'image/jpeg'});
                 // var fileURL = URL.createObjectURL(file);
                 // $scope.chatFile_src = $sce.trustAsResourceUrl(fileURL);
-               $scope.chatFile_src = data.data.data;
+               
+               console.log("$scope.chatFile_src: "+$scope.chatFile_src);
                 $scope.allChat.chats.push({
                   senderId: data.senderId,
                   senderName: data.senderName,
@@ -964,6 +966,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
                   message: getData.data,
                   sendTime: data.sendTime
                 });
+                $scope.chatFile_src = getData.data.data;
               } else {
                 console.log("Sorry: " + data.data.message);
               }

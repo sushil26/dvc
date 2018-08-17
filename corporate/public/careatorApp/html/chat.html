@@ -384,9 +384,10 @@
                                         </div>
                                         <div class="col-sm-12 message-main-sender slideLeft" ng-if="chat.senderId==userId">
                                             <div class="sender">
+                                                    <img ng-src="{{chatFile_src}}">
                                                 <div ng-if="chat.messageType=='file'" class="message-text">
-                                                    --
-                                                    <img src="{{chatFile_src}}">
+                                                   
+                                                   
                                                     <!-- <iframe ng-src="{{chat.message}}" width="100%" /> -->
                                                 </div>
                                                 <div class="message-text">

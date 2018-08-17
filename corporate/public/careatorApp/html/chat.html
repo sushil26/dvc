@@ -342,7 +342,8 @@
                                             <button class="" style="padding: 5px;
                                             box-shadow:  1px 2px 5px #0000004f;
                                             background:white; border-radius: 5px; padding-right: 10px;padding-left: 10px; border:none;"
-                                                ng-click="startachat()"> Start a chat</button>
+                                                ng-click="startachat()"> Start a
+                                                chat</button>
                                             <p>Search new Contact or chat with your contact list</p>
 
                                         </center>
@@ -370,7 +371,10 @@
                                                             </div>
                                                         </td>
                                                         <td>
-                                                            <div class="message-text">
+                                                            <div ng-if="chat.messageType=='file'" class="message-text">
+                                                                <img ng-src="{{chat.chatFile_src}}">
+                                                            </div>
+                                                            <div ng-if="chat.messageType!='file'"  class="message-text">
                                                                 {{chat.message}}
                                                             </div>
                                                             <span class="message-time pull-right">
@@ -386,8 +390,8 @@
                                             <div class="sender">
 
                                                 <div ng-if="chat.messageType=='file'" class="message-text">
-                                                        <img ng-src="{{chat.chatFile_src}}">
-                                                   
+                                                    <img ng-src="{{chat.chatFile_src}}">
+
                                                     <!-- <iframe ng-src="{{chat.message}}" width="100%" /> -->
                                                 </div>
                                                 <div class="message-text" ng-if="chat.messageType!='file'">
@@ -411,7 +415,7 @@
                                     <div class="col-sm-3 col-xs-3 reply-send">
 
                                         <label for="fileselect">
-                                            <i  style="color: gray;"class="fa fa-paperclip fa-2x"> </i>
+                                            <i style="color: gray;" class="fa fa-paperclip fa-2x"> </i>
                                         </label>
                                         <input id="fileselect" type="file" name="fileselect" style="display: none;" name="myImage" value="Upload" image-with-preview
                                             file-model="chatFile" ng-model="image" accept="image/*" ng-required="true" />

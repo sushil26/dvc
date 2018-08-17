@@ -112,7 +112,7 @@ module.exports.getChatFileUpload = function (req, res) {
       
     readStream.on("end", function () {
         console.log("Final Output");
-        console.log("res: "+res[1].dbgileName.bufer,'binary');
+       // console.log("res: "+res[1].dbgileName.bufer,'binary');
         // readStream.pipe(res);
         responseData = {
             status: true,

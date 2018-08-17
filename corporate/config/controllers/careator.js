@@ -2889,6 +2889,7 @@ module.exports.getChatsById = function (req, res) {
                 res.status(400).send(responseData);
             } else {
                 console.log("allChat: " + JSON.stringify(allChat));
+                
                 response = {
                     status: true,
                     message: property.S0008,

@@ -988,7 +988,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
                 // var fileURL = URL.createObjectURL(file);
                 // $scope.chatFile_src = $sce.trustAsResourceUrl(fileURL);
 
-                console.log("$scope.chatFile_src: " + $scope.chatFile_src);
+               
                 $scope.allChat.chats.push({
                   senderId: data.senderId,
                   senderName: data.senderName,
@@ -997,7 +997,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
                   chatFile_src: $scope.chatFile_src,
                   sendTime: data.sendTime
                 });
-                $scope.chatFile_src = getData.data.data;
+                // $scope.chatFile_src = getData.data.data;
               } else {
                 console.log("Sorry: " + data.data.message);
               }

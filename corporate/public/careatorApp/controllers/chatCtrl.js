@@ -885,12 +885,40 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
               console.log("Sorry: " + data.data.message);
             }
           })
-          $scope.allChat.chats.push({
-            senderId: data.senderId,
-            senderName: data.senderName,
-            message: data.message,
-            sendTime: data.sendTime
-          });
+          if (data.messageType == 'file') {
+            console.log("********MSG TYPE IS FILE");
+            var id = data.message;
+            var api = "https://norecruits.com/careator_chatFileUpload/getChatFileUpload/" + id;
+            console.log("*api: " + api);
+            careatorHttpFactory.getFromGrid(api).then(function (getData) {
+              console.log("data--" + JSON.stringify(getData));
+              var checkStatus = careatorHttpFactory.dataValidation(getData);
+              if (checkStatus) {
+                console.log("getData.data.data;: " + getData.data.data);
+
+                $scope.allChat.chats.push({
+                  senderId: data.senderId,
+                  senderName: data.senderName,
+                  messageType: "file",
+                  message: id,
+                  chatFile_src: getData.data.data,
+                  sendTime: data.sendTime
+                });
+                console.log("$scope.allChat.chats: " + JSON.stringify($scope.allChat.chats[length - 1]));
+                // $scope.chatFile_src = getData.data.data;
+              } else {
+                console.log("Sorry: " + data.data.message);
+              }
+            })
+          }
+          else {
+            $scope.allChat.chats.push({
+              senderId: data.senderId,
+              senderName: data.senderName,
+              message: data.message,
+              sendTime: data.sendTime
+            });
+          }
           $scope.scrollDown();
         } else {
           console.log("Need to notify");
@@ -983,7 +1011,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
               var checkStatus = careatorHttpFactory.dataValidation(getData);
               if (checkStatus) {
                 console.log("getData.data.data;: " + getData.data.data);
-                               
+
                 $scope.allChat.chats.push({
                   senderId: data.senderId,
                   senderName: data.senderName,
@@ -992,7 +1020,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
                   chatFile_src: getData.data.data,
                   sendTime: data.sendTime
                 });
-                console.log("$scope.allChat.chats: " + JSON.stringify($scope.allChat.chats[length-1]));
+                console.log("$scope.allChat.chats: " + JSON.stringify($scope.allChat.chats[length - 1]));
                 // $scope.chatFile_src = getData.data.data;
               } else {
                 console.log("Sorry: " + data.data.message);

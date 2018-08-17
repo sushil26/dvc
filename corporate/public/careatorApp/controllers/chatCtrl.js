@@ -640,7 +640,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
             senderId: userData.userId,
             senderName: userData.userName,
             messageType: "file",
-            message: $scope.typedMessage
+            message: uploadResponse.data
           };
           console.log("obj: " + JSON.stringify(obj));
           api = "https://norecruits.com//careator_groupText/groupText";

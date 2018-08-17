@@ -233,8 +233,8 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
           $scope.individualData = data.data.data;
           console.log("$scope.allChat: " + JSON.stringify($scope.allChat));
           for (var x = 0; x < $scope.allChat.chats.length; x++) {
-            if ($scope.allChat[x].chats!=undefined && $scope.allChat[x].chats.messageType == 'file') {
-              var id = $scope.allChat[x].chats.message;
+            if ($scope.allChat.chats[x].messageType!=undefined && $scope.allChat.chats[x].messageType == 'file') {
+              var id = $scope.allChat.chats[x].message;
               var api = "https://norecruits.com/careator_chatFileUpload/getChatFileUpload/" + id;
               console.log("*api: " + api);
               careatorHttpFactory.getFromGrid(api).then(function (getData) {
@@ -249,7 +249,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
 
                   console.log("$scope.chatFile_src: " + $scope.chatFile_src);
                  
-                  $scope.allChat[x].chats.chatFile_src = getData.data.data;
+                  $scope.allChat.chats[x].chatFile_src = getData.data.data;
                 } else {
                   console.log("Sorry: " + data.data.message);
                 }
@@ -259,7 +259,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
               console.log("no file")
             }
           }
-          console.log("$scope.individualData : " + JSON.stringify($scope.individualData));
+          //console.log("$scope.individualData : " + JSON.stringify($scope.individualData));
           $scope.receiverData = {
             senderId: userData.userId,
             senderName: userData.userName
@@ -808,7 +808,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
   socket.on("comm_textReceived", function (data) {
     $scope.scrollDown();
     console.log("****comm_textReceived-->: " + JSON.stringify(data));
-    console.log("$scope.individualData: " + JSON.stringify($scope.individualData));
+    //console.log("$scope.individualData: " + JSON.stringify($scope.individualData));
 
     if (userData.userId == data.receiverId) {
       $scope.playAudio = function () {

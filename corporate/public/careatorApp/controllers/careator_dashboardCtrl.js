@@ -576,10 +576,6 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
         });
 
         $('.toggle-nav').click(function () {
-
-
-
-
             if ($('#sidebar').is(":visible") === true) {
                 $('#main-content').css({
                     'margin-left': '0px'
@@ -598,6 +594,10 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                     'margin-left': '0'
                 });
                 $("#container").removeClass("sidebar-closed");
+            }
+            $scope.menuclick=function(){
+                $('.toggle-nav').trigger();
+
             }
 
             // if (wSize <= 768) {

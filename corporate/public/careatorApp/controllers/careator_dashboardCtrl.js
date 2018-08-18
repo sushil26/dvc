@@ -682,11 +682,18 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
     if (window.matchMedia('(min-width: 768px)').matches) {
         console.log("<<<<<<<home icon hide>>>>>>>");
         $("#sidebarmnu").css({
+            "display": "none"
+        })
+        $("#sidebarmnudesktop").css({
             "margin-top": "4px"
         })
+
     }
     if (window.matchMedia('(max-width: 768px)').matches) {
         console.log("<<<<<<<home icon hide>>>>>>>");
+        $("#sidebarmnudesktop").css({
+            "display": "none"
+        })
         $("#sidebarmnu").css({
             "margin-top": "50px"
         })

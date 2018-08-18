@@ -574,7 +574,10 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
             $(window).on('load', responsiveView);
             $(window).on('resize', responsiveView);
         });
+        $scope.menuclick = function () {
+            $('.toggle-nav').trigger();
 
+        }
         $('.toggle-nav').click(function () {
             if ($('#sidebar').is(":visible") === true) {
                 $('#main-content').css({
@@ -595,10 +598,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                 });
                 $("#container").removeClass("sidebar-closed");
             }
-            $scope.menuclick=function(){
-                $('.toggle-nav').trigger();
 
-            }
 
             // if (wSize <= 768) {
             //     $('#profile').css({
@@ -665,14 +665,14 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
         $("#sidebarmnu").css({
             "margin-top": "4px"
         })
-      }
-      if (window.matchMedia('(max-width: 768px)').matches) {
+    }
+    if (window.matchMedia('(max-width: 768px)').matches) {
         console.log("<<<<<<<home icon hide>>>>>>>");
         $("#sidebarmnu").css({
-          "margin-top": "50px"
+            "margin-top": "50px"
         })
-      }
-    
+    }
+
 
 
     /* ##### Start: on window only one open tab should be there for this page  ##### */

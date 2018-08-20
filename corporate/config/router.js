@@ -1,10 +1,7 @@
-//var user = require('./controllers/user');
-//var event = require('./controllers/event');
-//var quickMsg = require('./controllers/quickMsg');
+
 var image = require('./controllers/image');
-var chatUpload = require('./controllers/chatUpload');
-//var adminAction = require('./controllers/adminAction');
-//var school = require('./controllers/school');
+//var chatUpload = require('./controllers/chatUpload');
+
 var careator = require('./controllers/careator');
 var careator_event = require('./controllers/careator_event');
 var careatorImgUpload = require('./controllers/careatorImgUploads.js');
@@ -73,8 +70,8 @@ module.exports = function (app) {
     app.post('/careator_comm_profileImgUpdateById/comm_profileImgUpdateById/:id', careator.comm_profileImgUpdateById);
 
     app.get('/careator/careator_getAllEmpLoginDetails', careator.careator_getAllEmpLoginDetails);
-     app.post('/careator_chatFileUpload/chatFileUpload', chatUpload.chatFileUpload);
-     app.get('/careator_chatFileUpload/getChatFileUpload/:id', chatUpload.getChatFileUpload);
+    //  app.post('/careator_chatFileUpload/chatFileUpload', chatUpload.chatFileUpload);
+    //  app.get('/careator_chatFileUpload/getChatFileUpload/:id', chatUpload.getChatFileUpload);
 
     // app.post('/vc/login4VC', user.login4VC);
     // app.post('/record/pswdGenerate', record.pswdGenerate);

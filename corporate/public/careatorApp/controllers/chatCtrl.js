@@ -548,7 +548,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
     $("#comment").val("");
     console.log("sendTextWithFile-->");
 
-    if (upload_form.file.$valid && chatFile) { //check if from is valid
+    // if (upload_form.file.$valid && chatFile) { //check if from is valid
 
       console.log("chatFile: " + chatFile);
       console.log("chatFilewithJson: " + JSON.stringify(chatFile));
@@ -666,10 +666,10 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
           alertDialog.alert("Upload Appropriate File Formate", "error");
         }
       });
-    }
-    else{
-      console.log("Form is not valied");
-    }
+  //  }
+    // else{
+    //   console.log("Form is not valied");
+    // }
     };
 
     $scope.getFileFRomGridfs = function (x, id) {

@@ -171,6 +171,14 @@
 
                 <!-- sidebar menu start-->
                 <div class="sidebar-menu" id="sidebarmnudesktop" ng-hide="sideBarMenu">
+                    <a href="#!/dashboard/adminCreate">
+                        <div class="col-sm-6  col-xs-4 ictextparnt" ng-if="userData.email=='vc4all@talenkart.com'">
+                            <i class="fa fa-user-circle ictexticon">
+                            </i>
+                            <br>
+                            <span class="ictext">Create Admin</span>
+                        </div>
+                    </a>
                     <a href="#!/dashboard/userCreate">
                         <div class="col-sm-6  col-xs-4 ictextparnt" ng-if="userData.email=='vc4all@talenkart.com'">
                             <i class="fa fa-user-circle ictexticon">
@@ -300,6 +308,14 @@
                     </a>
                 </div>
                 <div class="sidebar-menu" id="sidebarmnu" ng-hide="sideBarMenu">
+                        <a href="#!/dashboard/adminCreate" ng-click="menuclick()"> 
+                            <div class="col-sm-6  col-xs-4 ictextparnt" ng-if="userData.email=='vc4all@talenkart.com'">
+                                <i class="fa fa-user-circle ictexticon">
+                                </i>
+                                <br>
+                                <span class="ictext">Create Admin</span>
+                            </div>
+                        </a>
                     <a href="#!/dashboard/userCreate" ng-click="menuclick()">
                         <div class="col-sm-6  col-xs-4 ictextparnt" ng-if="userData.email=='vc4all@talenkart.com'">
                             <i class="fa fa-user-circle ictexticon">

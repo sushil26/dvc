@@ -13,6 +13,21 @@ careatorApp.config(function ($stateProvider) {
             url: careator_dashboard(),
             templateUrl: '/careatorApp/html/careator_dashboard.html',
         })
+        .state('Cdashboard.adminCreate', {
+            url: careator_adminCreate(),
+            templateUrl: '/careatorApp/html/createAdmin.html',
+            resolve: {
+                result: function (careatorSessionAuth, $window) {
+                    var userData = careatorSessionAuth.getAccess("userData");
+                    if (userData.email == 'vc4all@talenkart.com') {
+
+                    } else {
+                        $window.location.href = 'https://norecruits.com';
+                    }
+                }
+            }
+
+        })
         .state('Cdashboard.userCreate', {
             url: careator_userCreate(),
             templateUrl: '/careatorApp/html/createUsers.html',
@@ -234,7 +249,9 @@ function ipost() {
 function profile() {
     return '/profile';
 }
-
+function careator_adminCreate() {
+    return '/adminCreate';
+}
 
 function contactAdmin() {
     return '/contactAdmin';

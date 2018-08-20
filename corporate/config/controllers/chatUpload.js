@@ -140,7 +140,7 @@ var gfs = Grid(conn.db);
 /* ##### Start Multer  ##### */
 /** Setting up storage using multer-gridfs-storage */
 var storage = GridFsStorage({
-    url: gfs,
+    url: 'mongodb://localhost/vc',
     filename: function (req, file, cb) {
         console.log("filename-->");
         var datetimestamp = Date.now();

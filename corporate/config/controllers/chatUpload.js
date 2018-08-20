@@ -8,15 +8,20 @@ const path = require('path');
 
 // var blobs = [];
 var mongoose = require('mongoose');
-// mongoose.connect('mongodb://localhost/vc');
+var mongoURI = 'mongodb://127.0.0.1:27017/vc';
+var conn = mongoose.connect(mongoURI);
 //var conn = mongoose.connection;
 var multer = require('multer');
 var GridFsStorage = require('multer-gridfs-storage');
 var Grid = require('gridfs-stream');
 const methodOverride = require('method-override');
-
+let gfs;
+conn.once('open',()=>{
+     gfs = Grid(db, mongoose.mongo);
+    gfs.collection('uploads');
+})
 //Grid.mongo = mongoose.mongo;
-//var gfs = Grid(db, mongoose.mongo);
+
 // Grid.collection("upload");
 //const chatFileDirectory = process.cwd() + '/public/chatFiles/';
 
@@ -144,7 +149,7 @@ const methodOverride = require('method-override');
 /* ##### Start Multer  ##### */
 /** Setting up storage using multer-gridfs-storage */
 var storage = GridFsStorage({
-    url: 'mongodb://localhost/vc',
+    url: mongoURI,
     file: (req, file) => {
     return new Promise((resolve, reject) => {
       crypto.randomBytes(16, (err, buf) => {
@@ -170,7 +175,7 @@ module.exports.chatFileUpload = function (req, res) {
     console.log("chatFileUpload-->");
     console.log("req.file: "+req.file);
     console.log("req.files: "+req.files);
-    //console.log("gfs: " + gfs);
+    console.log("gfs: " + gfs);
     cfUpload(req, res, function (err) {
         console.log("cfUpload from storage");
          console.log("req.filename: "+res.filename);

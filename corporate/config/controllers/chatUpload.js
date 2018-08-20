@@ -150,7 +150,8 @@ var storage = GridFsStorage({
         }
         const filename = buf.toString('hex') + path.extname(file.originalname);
         const fileInfo = {
-          filename: filename
+          filename: filename,
+          metadata:req.body
         };
         resolve(fileInfo);
       });

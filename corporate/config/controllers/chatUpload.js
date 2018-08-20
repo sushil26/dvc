@@ -168,7 +168,7 @@ var storage = GridFsStorage({
 });
 
 var cfUpload = multer({ //multer settings for single upload
-    storage: storage
+    storage
 }).single('file');
 /** API path that will upload the files */
 module.exports.chatFileUpload = function (req, res) {

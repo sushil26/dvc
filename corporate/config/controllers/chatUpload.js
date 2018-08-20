@@ -167,7 +167,7 @@ var storage = GridFsStorage({
                 if (err) {
                     return reject(err);
                 }
-                const filename = buf.toString('hex') + path.extname(file.originalname);
+                const filename = buf.toString('hex') + path.extname(file.img.originalname);
                 const fileInfo = {
                     filename: filename,
                     metadata: req.body

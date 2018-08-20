@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var general = require("../general.js");
 const crypto = require('crypto');
 
+const path = require('path');
 
 // const ABSPATH = path.dirname(process.mainModule.filename); // Absolute path to our app directory
 

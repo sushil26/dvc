@@ -8,7 +8,7 @@ const path = require('path');
 
 // var blobs = [];
 var mongoose = require('mongoose');
-//var mongoURI = 'mongodb://127.0.0.1:27017/vc';
+var mongoURI = 'mongodb://127.0.0.1:27017/vc';
 //var conn =  mongoose.connection;
 //var conn = mongoose.connection;
 var multer = require('multer');

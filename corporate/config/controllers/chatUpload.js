@@ -8,20 +8,16 @@ const path = require('path');
 
 // var blobs = [];
 var mongoose = require('mongoose');
-var mongoURI = 'mongodb://127.0.0.1:27017/vc';
+
 //var conn =  mongoose.connection;
 //var conn = mongoose.connection;
 var multer = require('multer');
 var GridFsStorage = require('multer-gridfs-storage');
 var Grid = require('gridfs-stream');
-Grid.mongo = mongoose.mongo;
 
-let gfs;
-db.once('open',()=>{
-   // gfs = Grid(conn.db);
-     gfs = Grid(db, mongoose.mongo);
-    gfs.collection('uploads');
-})
+
+
+
 //Grid.mongo = mongoose.mongo;
 
 // Grid.collection("upload");
@@ -153,20 +149,20 @@ db.once('open',()=>{
 var storage = GridFsStorage({
     url: mongoURI,
     file: (req, file) => {
-    return new Promise((resolve, reject) => {
-      crypto.randomBytes(16, (err, buf) => {
-        if (err) {
-          return reject(err);
-        }
-        const filename = buf.toString('hex') + path.extname(file.originalname);
-        const fileInfo = {
-          filename: filename,
-          metadata:req.body
-        };
-        resolve(fileInfo);
-      });
-    });
-  }
+        return new Promise((resolve, reject) => {
+            crypto.randomBytes(16, (err, buf) => {
+                if (err) {
+                    return reject(err);
+                }
+                const filename = buf.toString('hex') + path.extname(file.originalname);
+                const fileInfo = {
+                    filename: filename,
+                    metadata: req.body
+                };
+                resolve(fileInfo);
+            });
+        });
+    }
 });
 
 var cfUpload = multer({ //multer settings for single upload
@@ -175,12 +171,26 @@ var cfUpload = multer({ //multer settings for single upload
 /** API path that will upload the files */
 module.exports.chatFileUpload = function (req, res) {
     console.log("chatFileUpload-->");
-    console.log("req.file: "+req.file);
-    console.log("req.files: "+req.files);
+    console.log("req.file: " + req.file);
+    console.log("req.files: " + req.files);
     console.log("gfs: " + gfs);
+    // Mongo URI
+    const mongoURI = 'mongodb://127.0.0.1:27017/mongouploads';
+
+    // Create mongo connection
+    const conn = mongoose.createConnection(mongoURI);
+
+    // Init gfs
+    let gfs;
+
+    conn.once('open', () => {
+        // Init stream
+        gfs = Grid(conn.db, mongoose.mongo);
+        gfs.collection('uploads');
+    });
     cfUpload(req, res, function (err) {
         console.log("cfUpload from storage");
-         console.log("req.filename: "+res.filename);
+        console.log("req.filename: " + res.filename);
         //console.log("req.originalname: "+res.file.originalname);
         if (err) {
             res.json({ error_code: 1, err_desc: err });

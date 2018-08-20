@@ -544,7 +544,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
   };
 
 
-  $scope.sendTextWithFile = function (chatFile, upload_form) {
+  $scope.sendTextWithFile = function (chatFile) {
     $("#comment").val("");
     console.log("sendTextWithFile-->");
 

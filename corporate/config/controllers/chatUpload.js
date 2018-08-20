@@ -15,7 +15,19 @@ var multer = require('multer');
 var GridFsStorage = require('multer-gridfs-storage');
 var Grid = require('gridfs-stream');
 
+// Mongo URI
+const mongoURI = 'mongodb://127.0.0.1:27017/mongouploads';
 
+// Create mongo connection
+const conn = mongoose.createConnection(mongoURI);
+
+// Init gfs
+let gfs;
+
+
+// Init stream
+gfs = Grid(db, mongoose.mongo);
+gfs.collection('uploads');
 
 
 //Grid.mongo = mongoose.mongo;
@@ -174,20 +186,7 @@ module.exports.chatFileUpload = function (req, res) {
     console.log("req.file: " + req.file);
     console.log("req.files: " + req.files);
     console.log("gfs: " + gfs);
-    // Mongo URI
-    const mongoURI = 'mongodb://127.0.0.1:27017/mongouploads';
 
-    // Create mongo connection
-    const conn = mongoose.createConnection(mongoURI);
-
-    // Init gfs
-    let gfs;
-
-
-        // Init stream
-        gfs = Grid(conn.db, mongoose.mongo);
-        gfs.collection('uploads');
-  
     cfUpload(req, res, function (err) {
         console.log("cfUpload from storage");
         console.log("req.filename: " + res.filename);

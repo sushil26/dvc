@@ -140,7 +140,7 @@ var gfs = Grid(conn.db);
 /* ##### Start Multer  ##### */
 /** Setting up storage using multer-gridfs-storage */
 var storage = GridFsStorage({
-    gfs: gfs,
+    url: gfs,
     filename: function (req, file, cb) {
         console.log("filename-->");
         var datetimestamp = Date.now();
@@ -154,7 +154,7 @@ var storage = GridFsStorage({
     root: 'cfFiles' //root name for collection to store files into
 });
 
-var chatFileUpload = multer({ //multer settings for single upload
+var cfUpload = multer({ //multer settings for single upload
     storage: storage
 }).single('file');
 
@@ -162,8 +162,10 @@ var chatFileUpload = multer({ //multer settings for single upload
 module.exports.chatFileUpload = function (req, res) {
     console.log("chatFileUpload-->");
     console.log("gfs: " + gfs);
-    chatFileUpload(req, res, function (err) {
-        console.log("chatFileUpload from storage");
+    cfUpload(req, res, function (err) {
+        console.log("cfUpload from storage");
+        console.log("req.originalname: "+res.files.originalname);
+        console.log("req.originalname: "+res.file.originalname);
         if (err) {
             res.json({ error_code: 1, err_desc: err });
             return;

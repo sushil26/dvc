@@ -150,8 +150,8 @@ var storage = GridFsStorage({
     /** With gridfs we can store aditional meta-data along with the file */
     metadata: function(req, file, cb) {
         cb(null, { originalname: file.originalname });
-    },
-    root: 'cfFiles' //root name for collection to store files into
+    }
+    //root: 'cfFiles' //root name for collection to store files into
 });
 
 var chatFileUpload = multer({ //multer settings for single upload
@@ -173,7 +173,8 @@ module.exports.chatFileUpload = function (req, res) {
 };
 
 module.exports.getChatFileUpload = function (req, res) {
-    gfs.collection('cfFiles'); //set collection name to lookup into
+    var gfs = Grid(conn.db);
+    //gfs.collection('cfFiles'); //set collection name to lookup into
 
     /** First check if file exists */
     gfs.files.find({filename: req.params.filename}).toArray(function(err, files){
@@ -185,8 +186,7 @@ module.exports.getChatFileUpload = function (req, res) {
         }
         /** create read stream */
         var readstream = gfs.createReadStream({
-            filename: files[0].filename,
-            root: "cfFiles"
+            filename: files[0].filename
         });
         /** set the proper content type */
         res.set('Content-Type', files[0].contentType)

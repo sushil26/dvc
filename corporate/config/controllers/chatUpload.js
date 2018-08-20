@@ -162,7 +162,6 @@ var storage = GridFsStorage({
 var cfUpload = multer({ //multer settings for single upload
     storage: storage
 }).single('file');
-
 /** API path that will upload the files */
 module.exports.chatFileUpload = function (req, res) {
     console.log("chatFileUpload-->");
@@ -178,7 +177,6 @@ module.exports.chatFileUpload = function (req, res) {
         res.json({ error_code: 0, err_desc: null });
     });
 };
-
 module.exports.getChatFileUpload = function (req, res) {
     var gfs = Grid(conn.db);
     gfs.collection('cfFiles'); //set collection name to lookup into

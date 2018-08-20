@@ -1,22 +1,23 @@
 var mongoose = require('mongoose');
 var general = require("../general.js");
 var multer = require('multer');
-    var GridFsStorage = require('multer-gridfs-storage');
+var GridFsStorage = require('multer-gridfs-storage');
    
    
 mongoose.connect('mongodb://localhost/vc');
 var conn = mongoose.connection;
 var Grid = require('gridfs-stream');
-var streamifier = require('streamifier');
+// 
 var ObjectId = require("mongodb").ObjectID;
 var fs = require('fs');
 const path = require('path');
-const ABSPATH = path.dirname(process.mainModule.filename); // Absolute path to our app directory
+// const ABSPATH = path.dirname(process.mainModule.filename); // Absolute path to our app directory
 
-var blobs = [];
+// var blobs = [];
 Grid.mongo = mongoose.mongo;
 var gfs = Grid(conn.db);
-const chatFileDirectory = process.cwd() + '/public/chatFiles/';
+gfs.collection('cfFiles');
+//const chatFileDirectory = process.cwd() + '/public/chatFiles/';
 
 // module.exports.chatFileUpload = function (req, res) {
 //     console.log("chatFileUpload-->");
@@ -142,7 +143,7 @@ const chatFileDirectory = process.cwd() + '/public/chatFiles/';
 /* ##### Start Multer  ##### */
 /** Setting up storage using multer-gridfs-storage */
 var storage = GridFsStorage({
-    gfs :  Grid(conn.db),
+    gfs : gfs,
     filename: function (req, file, cb) {
         var datetimestamp = Date.now();
         cb(null, file.fieldname + '-' + datetimestamp + '.' + file.originalname.split('.')[file.originalname.split('.').length -1]);
@@ -150,8 +151,8 @@ var storage = GridFsStorage({
     /** With gridfs we can store aditional meta-data along with the file */
     metadata: function(req, file, cb) {
         cb(null, { originalname: file.originalname });
-    }
-    //root: 'cfFiles' //root name for collection to store files into
+    },
+    root: 'cfFiles' //root name for collection to store files into
 });
 
 var chatFileUpload = multer({ //multer settings for single upload
@@ -174,7 +175,7 @@ module.exports.chatFileUpload = function (req, res) {
 
 module.exports.getChatFileUpload = function (req, res) {
     var gfs = Grid(conn.db);
-    //gfs.collection('cfFiles'); //set collection name to lookup into
+    gfs.collection('cfFiles'); //set collection name to lookup into
 
     /** First check if file exists */
     gfs.files.find({filename: req.params.filename}).toArray(function(err, files){

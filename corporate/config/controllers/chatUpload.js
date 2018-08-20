@@ -16,7 +16,7 @@ var Grid = require('gridfs-stream');
 const methodOverride = require('method-override');
 
 //Grid.mongo = mongoose.mongo;
-var gfs = Grid(db, mongoose.mongo);
+//var gfs = Grid(db, mongoose.mongo);
 // Grid.collection("upload");
 //const chatFileDirectory = process.cwd() + '/public/chatFiles/';
 
@@ -144,7 +144,7 @@ var gfs = Grid(db, mongoose.mongo);
 /* ##### Start Multer  ##### */
 /** Setting up storage using multer-gridfs-storage */
 var storage = GridFsStorage({
-    url: gfs,
+    url: 'mongodb://localhost/vc',
     file: (req, file) => {
     return new Promise((resolve, reject) => {
       crypto.randomBytes(16, (err, buf) => {

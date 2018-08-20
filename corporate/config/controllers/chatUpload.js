@@ -142,7 +142,7 @@ const chatFileDirectory = process.cwd() + '/public/chatFiles/';
 /* ##### Start Multer  ##### */
 /** Setting up storage using multer-gridfs-storage */
 var storage = GridFsStorage({
-    gfs : gfs,
+    gfs :  Grid(conn.db),
     filename: function (req, file, cb) {
         var datetimestamp = Date.now();
         cb(null, file.fieldname + '-' + datetimestamp + '.' + file.originalname.split('.')[file.originalname.split('.').length -1]);

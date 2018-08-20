@@ -16,7 +16,7 @@ var Grid = require('gridfs-stream');
 
 //Grid.mongo = mongoose.mongo;
 var gfs = Grid(db, mongoose.mongo);
-Grid.collection("upload");
+// Grid.collection("upload");
 //const chatFileDirectory = process.cwd() + '/public/chatFiles/';
 
 // module.exports.chatFileUpload = function (req, res) {

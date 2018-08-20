@@ -1,4 +1,4 @@
-
+var db = require("../dbConfig.js").getDb();
 var general = require("../general.js");
 const crypto = require('crypto');
 
@@ -8,13 +8,13 @@ const path = require('path');
 
 // var blobs = [];
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/vc');
-var conn = mongoose.connection;
+// mongoose.connect('mongodb://localhost/vc');
+//var conn = mongoose.connection;
 var multer = require('multer');
 var GridFsStorage = require('multer-gridfs-storage');
 var Grid = require('gridfs-stream');
 Grid.mongo = mongoose.mongo;
-var gfs = Grid(conn.db);
+var gfs = Grid(db);
 //const chatFileDirectory = process.cwd() + '/public/chatFiles/';
 
 // module.exports.chatFileUpload = function (req, res) {

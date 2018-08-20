@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var general = require("../general.js");
-
+const crypto = require('crypto');
 
 
 // const ABSPATH = path.dirname(process.mainModule.filename); // Absolute path to our app directory
@@ -135,17 +135,6 @@ var gfs = Grid(conn.db);
 
 //     console.log("<--getRecordVideo");
 // }
-const conn = mongoose.createConnection(mongoURI);
-
-// Init gfs
-let gfs;
-
-// conn.once('open', () => {
-//   // Init stream
-//   gfs = Grid(conn.db, mongoose.mongo);
-//   gfs.collection('cfFiles');
-// });
-
 
 
 /* ##### Start Multer  ##### */
@@ -153,20 +142,20 @@ let gfs;
 var storage = GridFsStorage({
     url: 'mongodb://localhost/vc',
     file: (req, file) => {
-        return new Promise((resolve, reject) => {
-          crypto.randomBytes(16, (err, buf) => {
-            if (err) {
-              return reject(err);
-            }
-            const filename = buf.toString('hex') + path.extname(file.originalname);
-            const fileInfo = {
-              filename: filename,
-              bucketName: 'cfFiles'
-            };
-            resolve(fileInfo);
-          });
-        });
-      }
+    return new Promise((resolve, reject) => {
+      crypto.randomBytes(16, (err, buf) => {
+        if (err) {
+          return reject(err);
+        }
+        const filename = buf.toString('hex') + path.extname(file.originalname);
+        const fileInfo = {
+          filename: filename,
+          bucketName: 'uploads'
+        };
+        resolve(fileInfo);
+      });
+    });
+  }
 });
 
 var cfUpload = multer({ //multer settings for single upload

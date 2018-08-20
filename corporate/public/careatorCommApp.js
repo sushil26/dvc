@@ -7,7 +7,6 @@ careatorApp.config(['cfpLoadingBarProvider', function (cfpLoadingBarProvider) {
     // cfpLoadingBarProvider.spinnerTemplate = '<div><span class="fa fa-spinner">Loading...</div>';
 }])
 careatorApp.config(function ($stateProvider) {
-
     $stateProvider
         .state('Cdashboard', {
             url: careator_dashboard(),

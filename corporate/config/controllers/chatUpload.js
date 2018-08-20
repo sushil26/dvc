@@ -163,7 +163,7 @@ module.exports.chatFileUpload = function (req, res) {
     console.log("chatFileUpload-->");
     console.log("gfs: "+gfs);
     chatFileUpload(req,res,function(err){
-        console.log("res: "+JSON.stringify(res));
+        //console.log("res: "+JSON.stringify(res));
         if(err){
              res.json({error_code:1,err_desc:err});
              return;

@@ -1,6 +1,6 @@
 // var MongoClient = require( 'mongodb' ).MongoClient;
 var mongoose = require('mongoose');
-var GridFsStorage = require('multer-gridfs-storage');
+var Grid = require('gridfs-stream');
 var _db;
 module.exports = {
   connectToServer: function( callback ) {

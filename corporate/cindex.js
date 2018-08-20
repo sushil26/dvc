@@ -37,6 +37,7 @@ var chatHistory;
 // server.timeout = 9999999999;
 mongoConfig.connectToServer(function (err) {
     console.log("mongo connected -->");
+  
     require('./config/router')(app);
 })
 app.use(express.static(__dirname + '/public'));

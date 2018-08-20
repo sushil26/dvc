@@ -168,6 +168,8 @@ var cfUpload = multer({ //multer settings for single upload
 /** API path that will upload the files */
 module.exports.chatFileUpload = function (req, res) {
     console.log("chatFileUpload-->");
+    console.log("req.file: "+req.file);
+    console.log("req.files: "+req.files);
     console.log("gfs: " + gfs);
     cfUpload(req, res, function (err) {
         console.log("cfUpload from storage");

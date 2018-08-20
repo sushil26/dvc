@@ -8,13 +8,21 @@ const path = require('path');
 
 // var blobs = [];
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/vc');
+mongoose.createConnection('mongodb://localhost/vc');
 var conn = mongoose.connection;
 var multer = require('multer');
 var GridFsStorage = require('multer-gridfs-storage');
 var Grid = require('gridfs-stream');
 Grid.mongo = mongoose.mongo;
-var gfs = Grid(conn.db);
+//var gfs = Grid(conn.db);
+// Init gfs
+let gfs;
+
+conn.once('open', () => {
+  // Init stream
+  gfs = Grid(conn.db, mongoose.mongo);
+  gfs.collection('uploads');
+});
 //const chatFileDirectory = process.cwd() + '/public/chatFiles/';
 
 // module.exports.chatFileUpload = function (req, res) {

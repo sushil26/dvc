@@ -14,8 +14,8 @@ const mongoose = require('mongoose');
 const multer = require('multer');
 const GridFsStorage = require('multer-gridfs-storage');
 const Grid = require('gridfs-stream');
- app.use(bodyParser.json({limit: "1024mb"}));
- app.use(bodyParser.urlencoded({limit: "1024mb", extended: true, parameterLimit:50000}));
+app.use(bodyParser.json({ limit: "1024mb" }));
+app.use(bodyParser.urlencoded({ limit: "1024mb", extended: true, parameterLimit: 50000 }));
 
 //app.use(multer());
 //app.use(fileUpload());
@@ -54,19 +54,25 @@ const conn = mongoose.createConnection(mongoURI);
 let gfs;
 
 conn.once('open', () => {
-  // Init stream
-  gfs = Grid(conn.db, mongoose.mongo);
-  gfs.collection('uploads');
+    // Init stream
+    gfs = Grid(conn.db, mongoose.mongo);
+    gfs.collection('uploads');
 });
 
 
 mongoConfig.connectToServer(function (err) {
-        console.log("mongo connected -->");
+    console.log("mongo connected -->");
 
-        require('./config/router')(app);
-    })
+    require('./config/router')(app);
+})
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/node_modules'));
+
+
+app.get('/', function (req, res) {
+    res.sendFile(__dirname + '/public/index.html');
+});
+
 /* ##### Start Multer  ##### */
 /** Setting up storage using multer-gridfs-storage */
 var storage = GridFsStorage({
@@ -109,11 +115,6 @@ app.post('/chatFileUpload', function (req, res) {
         res.json({ error_code: 0, err_desc: null });
     });
 })
-
-app.get('/', function (req, res) {
-    res.sendFile(__dirname + '/public/index.html');
-});
-
 
 
 

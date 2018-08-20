@@ -16,7 +16,7 @@ var Grid = require('gridfs-stream');
 const methodOverride = require('method-override');
 
 //Grid.mongo = mongoose.mongo;
-var gfs = Grid(db.getDb(), mongoose.mongo);
+var gfs = Grid(db, mongoose.mongo);
 // Grid.collection("upload");
 //const chatFileDirectory = process.cwd() + '/public/chatFiles/';
 

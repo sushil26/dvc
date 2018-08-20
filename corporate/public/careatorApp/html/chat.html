@@ -425,14 +425,14 @@
                                         </label>
                                         <form name="upload_form">
 ----{{chatFile}}
-                                            <input id="fileselect" value="Upload" style="display: none;" type="file" ngf-select ng-model="" name="file" ngf-pattern="'image/*'"
+                                            <input id="fileselect" value="Upload" style="display: none;" type="file" ngf-select ng-model="chatFile" name="file" ngf-pattern="'image/*'"
                                                 accept="image/*" ngf-max-size="20MB" />
-                                            <img style="width:100px;" ng-if="chatFile !=undefined" ngf-thumbnail="up.file || '/thumb.jpg'" />                                            
+                                            <!-- <img style="width:100px;" ng-if="chatFile !=undefined" ngf-thumbnail="up.file || '/thumb.jpg'" />                                            
                                             <i ng-show="upload_form.file.$error.required">*required</i><br>
                                             <i ng-show="upload_form.file.$error.maxSize">File too large {{up.file.size/ 1000000|number:1}}MB:
-                                                max 20M</i>
-                                            <!-- <button type="submit" ng-click="up.submit()">submit</button> -->
-                                            <p>{{progress}}
+                                                max 20M</i> -->
+                                           
+                                            <!-- <p>{{progress}} -->
 
                                                 <!-- <input id="fileselect" type="file" name="fileselect" style="display: none;" name="myImage" value="Upload" image-with-preview
                                             file-model="chatFile" ng-model="image" accept="image/*" ng-required="true" /> -->

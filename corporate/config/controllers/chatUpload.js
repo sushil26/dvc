@@ -14,12 +14,12 @@ var conn = mongoose.connect(mongoURI);
 var multer = require('multer');
 var GridFsStorage = require('multer-gridfs-storage');
 var Grid = require('gridfs-stream');
-const methodOverride = require('method-override');
+
 let gfs;
-// conn.once('open',()=>{
-//      gfs = Grid(db, mongoose.mongo);
-//     gfs.collection('uploads');
-// })
+conn.once('open',()=>{
+     gfs = Grid(db, mongoose.mongo);
+    gfs.collection('uploads');
+})
 //Grid.mongo = mongoose.mongo;
 
 // Grid.collection("upload");

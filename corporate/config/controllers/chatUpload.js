@@ -183,7 +183,7 @@ module.exports.chatFileUpload = function (req, res) {
     // Init gfs
     let gfs;
 
-    conn.once('open', () => {
+    conn.once('openUri', () => {
         // Init stream
         gfs = Grid(conn.db, mongoose.mongo);
         gfs.collection('uploads');

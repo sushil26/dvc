@@ -574,12 +574,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
             $(window).on('load', responsiveView);
             $(window).on('resize', responsiveView);
         });
-
-        $('.toggle-nav').click(function () {
-
-
-
-
+        $scope.menuclick = function () {
             if ($('#sidebar').is(":visible") === true) {
                 $('#main-content').css({
                     'margin-left': '0px'
@@ -599,6 +594,30 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                 });
                 $("#container").removeClass("sidebar-closed");
             }
+
+
+        }
+        $('.toggle-nav').click(function () {
+            if ($('#sidebar').is(":visible") === true) {
+                $('#main-content').css({
+                    'margin-left': '0px'
+                });
+                $('#sidebar').css({
+                    'margin-left': '-180px'
+                });
+                $('#sidebar').hide();
+                $("#container").addClass("sidebar-closed");
+            } else {
+                $('#main-content').css({
+                    'margin-left': '180px'
+                });
+                $('#sidebar').show();
+                $('#sidebar').css({
+                    'margin-left': '0'
+                });
+                $("#container").removeClass("sidebar-closed");
+            }
+
 
             // if (wSize <= 768) {
             //     $('#profile').css({
@@ -663,16 +682,23 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
     if (window.matchMedia('(min-width: 768px)').matches) {
         console.log("<<<<<<<home icon hide>>>>>>>");
         $("#sidebarmnu").css({
+            "display": "none"
+        })
+        $("#sidebarmnudesktop").css({
             "margin-top": "4px"
         })
-      }
-      if (window.matchMedia('(max-width: 768px)').matches) {
+
+    }
+    if (window.matchMedia('(max-width: 768px)').matches) {
         console.log("<<<<<<<home icon hide>>>>>>>");
-        $("#sidebarmnu").css({
-          "margin-top": "50px"
+        $("#sidebarmnudesktop").css({
+            "display": "none"
         })
-      }
-    
+        $("#sidebarmnu").css({
+            "margin-top": "50px"
+        })
+    }
+
 
 
     /* ##### Start: on window only one open tab should be there for this page  ##### */

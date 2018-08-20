@@ -110,7 +110,7 @@ careatorApp.factory('careatorHttpFactory', function ($http, $q, $rootScope) {
                 return false;
             }
         },
-        chatUpload: function (obj, uploadUrl) {
+        chatUpload: function (uploadUrl, obj) {
             var dfd = $q.defer();
 
             var fd = new FormData();
@@ -127,6 +127,12 @@ careatorApp.factory('careatorHttpFactory', function ($http, $q, $rootScope) {
             }, function (error) {
                 console.log(error);
                 dfd.resolve(error);
+            }, function (evt) { 
+                console.log(evt);
+                var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+                console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
+                progress = 'progress: ' + progressPercentage + '% '; // capture upload progress
+                dfd.resolve(progress);
             });
             return dfd.promise;
         },

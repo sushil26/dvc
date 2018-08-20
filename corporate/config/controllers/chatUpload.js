@@ -15,6 +15,7 @@ var multer = require('multer');
 var GridFsStorage = require('multer-gridfs-storage');
 var Grid = require('gridfs-stream');
 
+
 // Mongo URI
 const mongoURI = 'mongodb://127.0.0.1:27017/mongouploads';
 
@@ -24,11 +25,11 @@ const conn = mongoose.createConnection(mongoURI);
 // Init gfs
 let gfs;
 
-
-// Init stream
-gfs = Grid(db, mongoose.mongo);
-gfs.collection('uploads');
-
+conn.once('open', () => {
+  // Init stream
+  gfs = Grid(conn.db, mongoose.mongo);
+  gfs.collection('uploads');
+});
 
 //Grid.mongo = mongoose.mongo;
 

@@ -8,18 +8,20 @@ const path = require('path');
 
 // var blobs = [];
 var mongoose = require('mongoose');
-var mongoURI = 'mongodb://127.0.0.1:27017/vc';
-//var conn = mongoose.connect(mongoURI);
+//var mongoURI = 'mongodb://127.0.0.1:27017/vc';
+//var conn =  mongoose.connection;
 //var conn = mongoose.connection;
 var multer = require('multer');
 var GridFsStorage = require('multer-gridfs-storage');
 var Grid = require('gridfs-stream');
+Grid.mongo = mongoose.mongo;
 
 let gfs;
-// db.once('open',()=>{
+db.once('open',()=>{
+    gfs = Grid(conn.db);
      gfs = Grid(db, mongoose.mongo);
     gfs.collection('uploads');
-// })
+})
 //Grid.mongo = mongoose.mongo;
 
 // Grid.collection("upload");
@@ -168,7 +170,7 @@ var storage = GridFsStorage({
 });
 
 var cfUpload = multer({ //multer settings for single upload
-    storage
+    storage: storage
 }).single('file');
 /** API path that will upload the files */
 module.exports.chatFileUpload = function (req, res) {

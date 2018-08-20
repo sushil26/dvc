@@ -18,7 +18,7 @@ Grid.mongo = mongoose.mongo;
 
 let gfs;
 db.once('open',()=>{
-    gfs = Grid(conn.db);
+   // gfs = Grid(conn.db);
      gfs = Grid(db, mongoose.mongo);
     gfs.collection('uploads');
 })

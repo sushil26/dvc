@@ -13,9 +13,10 @@ var mongoose = require('mongoose');
 var multer = require('multer');
 var GridFsStorage = require('multer-gridfs-storage');
 var Grid = require('gridfs-stream');
+const methodOverride = require('method-override');
 
 //Grid.mongo = mongoose.mongo;
-var gfs = Grid(db, mongoose.mongo);
+var gfs = Grid(db.getDb, mongoose.mongo);
 // Grid.collection("upload");
 //const chatFileDirectory = process.cwd() + '/public/chatFiles/';
 

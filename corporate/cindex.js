@@ -40,7 +40,7 @@ mongoConfig.connectToServer(function (err) {
     console.log("mongo connected -->");
    
     
-  storage = new GridFSStorage({ db: promise });
+  
   
     require('./config/router')(app);
 })

@@ -16,7 +16,7 @@ var GridFsStorage = require('multer-gridfs-storage');
 var Grid = require('gridfs-stream');
 
 let gfs;
-conn.once('open',()=>{
+db.once('open',()=>{
      gfs = Grid(db, mongoose.mongo);
     gfs.collection('uploads');
 })

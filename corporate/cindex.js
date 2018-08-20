@@ -1,6 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser')
 var fileUpload = require('express-fileupload');
+var multer = require('multer');
 var ObjectId = require("mongodb").ObjectID;
 var app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -11,7 +12,7 @@ app.use(bodyParser.json({
 // app.use(bodyParser.urlencoded({limit: "1024mb", extended: true, parameterLimit:50000}));
 
 //app.use(multer());
-app.use(fileUpload());
+//app.use(fileUpload());
 
 // module.exports = function (app, config) {
 //app.set('view engine','html');
@@ -33,10 +34,12 @@ var server = app.listen('5000', function () {
 // var server = app.listen("8080");
 var io = require('socket.io').listen(server);
 app.set('socketio', io);
+
 var chatHistory;
 // server.timeout = 9999999999;
 mongoConfig.connectToServer(function (err) {
     console.log("mongo connected -->");
+   
     require('./config/router')(app);
 })
 app.use(express.static(__dirname + '/public'));

@@ -178,7 +178,7 @@ module.exports.chatFileUpload = function (req, res) {
     });
 };
 module.exports.getChatFileUpload = function (req, res) {
-    var gfs = Grid(conn.db);
+    var gfs = Grid(db);
     gfs.collection('cfFiles'); //set collection name to lookup into
 
     /** First check if file exists */

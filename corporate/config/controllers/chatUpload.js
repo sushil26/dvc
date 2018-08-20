@@ -140,11 +140,11 @@ const conn = mongoose.createConnection(mongoURI);
 // Init gfs
 let gfs;
 
-conn.once('open', () => {
-  // Init stream
-  gfs = Grid(conn.db, mongoose.mongo);
-  gfs.collection('cfFiles');
-});
+// conn.once('open', () => {
+//   // Init stream
+//   gfs = Grid(conn.db, mongoose.mongo);
+//   gfs.collection('cfFiles');
+// });
 
 
 

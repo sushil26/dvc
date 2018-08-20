@@ -142,11 +142,13 @@ var gfs = Grid(conn.db);
 var storage = GridFsStorage({
     gfs: gfs,
     filename: function (req, file, cb) {
+        console.log("filename-->");
         var datetimestamp = Date.now();
         cb(null, file.fieldname + '-' + datetimestamp + '.' + file.originalname.split('.')[file.originalname.split('.').length - 1]);
     },
     /** With gridfs we can store aditional meta-data along with the file */
     metadata: function (req, file, cb) {
+        console.log("metadata-->");
         cb(null, { originalname: file.originalname });
     },
     root: 'cfFiles' //root name for collection to store files into

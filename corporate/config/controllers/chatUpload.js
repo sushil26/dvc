@@ -143,7 +143,7 @@ let gfs;
 conn.once('open', () => {
   // Init stream
   gfs = Grid(conn.db, mongoose.mongo);
-  gfs.collection('uploads');
+  gfs.collection('cfFiles');
 });
 
 
@@ -161,7 +161,7 @@ var storage = GridFsStorage({
             const filename = buf.toString('hex') + path.extname(file.originalname);
             const fileInfo = {
               filename: filename,
-              bucketName: 'uploads'
+              bucketName: 'cfFiles'
             };
             resolve(fileInfo);
           });

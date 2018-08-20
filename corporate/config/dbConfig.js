@@ -7,6 +7,7 @@ module.exports = {
     // MongoClient.connect( "mongodb://127.0.0.1:8080/vc", function(err,db) {
       console.log("connecting to VC");
       console.log("db: "+db);
+     
       _db = db;
      return callback(err);
     });

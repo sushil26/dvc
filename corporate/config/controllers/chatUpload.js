@@ -135,23 +135,38 @@ var gfs = Grid(conn.db);
 
 //     console.log("<--getRecordVideo");
 // }
+const conn = mongoose.createConnection(mongoURI);
+
+// Init gfs
+let gfs;
+
+conn.once('open', () => {
+  // Init stream
+  gfs = Grid(conn.db, mongoose.mongo);
+  gfs.collection('uploads');
+});
+
 
 
 /* ##### Start Multer  ##### */
 /** Setting up storage using multer-gridfs-storage */
 var storage = GridFsStorage({
     url: 'mongodb://localhost/vc',
-    filename: function (req, file, cb) {
-        console.log("filename-->");
-        var datetimestamp = Date.now();
-        cb(null, file.fieldname + '-' + datetimestamp + '.' + file.originalname.split('.')[file.originalname.split('.').length - 1]);
-    },
-    /** With gridfs we can store aditional meta-data along with the file */
-    metadata: function (req, file, cb) {
-        console.log("metadata-->");
-        cb(null, { originalname: file.originalname });
-    },
-    root: 'cfFiles' //root name for collection to store files into
+    file: (req, file) => {
+        return new Promise((resolve, reject) => {
+          crypto.randomBytes(16, (err, buf) => {
+            if (err) {
+              return reject(err);
+            }
+            const filename = buf.toString('hex') + path.extname(file.originalname);
+            const fileInfo = {
+              filename: filename,
+              bucketName: 'uploads'
+            };
+            resolve(fileInfo);
+          });
+        });
+      }
 });
 
 var cfUpload = multer({ //multer settings for single upload
@@ -170,7 +185,7 @@ module.exports.chatFileUpload = function (req, res) {
             res.json({ error_code: 1, err_desc: err });
             return;
         }
-        res.json({ error_code: 0, err_desc: null, res: res });
+        res.json({ error_code: 0, err_desc: null });
     });
 };
 

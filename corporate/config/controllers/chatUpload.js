@@ -165,12 +165,12 @@ module.exports.chatFileUpload = function (req, res) {
     cfUpload(req, res, function (err) {
         console.log("cfUpload from storage");
         // console.log("req.originalname: "+res.files.originalname);
-        console.log("req.originalname: "+res.file.originalname);
+        //console.log("req.originalname: "+res.file.originalname);
         if (err) {
             res.json({ error_code: 1, err_desc: err });
             return;
         }
-        res.json({ error_code: 0, err_desc: null });
+        res.json({ error_code: 0, err_desc: null, res: res });
     });
 };
 

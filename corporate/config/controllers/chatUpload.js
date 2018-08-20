@@ -1,22 +1,19 @@
 var mongoose = require('mongoose');
 var general = require("../general.js");
-var multer = require('multer');
-var GridFsStorage = require('multer-gridfs-storage');
-   
-   
-mongoose.connect('mongodb://localhost/vc');
-var conn = mongoose.connection;
-var Grid = require('gridfs-stream');
-// 
-var ObjectId = require("mongodb").ObjectID;
-var fs = require('fs');
-const path = require('path');
+
+
+
 // const ABSPATH = path.dirname(process.mainModule.filename); // Absolute path to our app directory
 
 // var blobs = [];
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/vc');
+var conn = mongoose.connection;
+var multer = require('multer');
+var GridFsStorage = require('multer-gridfs-storage');
+var Grid = require('gridfs-stream');
 Grid.mongo = mongoose.mongo;
 var gfs = Grid(conn.db);
-gfs.collection('cfFiles');
 //const chatFileDirectory = process.cwd() + '/public/chatFiles/';
 
 // module.exports.chatFileUpload = function (req, res) {
@@ -143,13 +140,13 @@ gfs.collection('cfFiles');
 /* ##### Start Multer  ##### */
 /** Setting up storage using multer-gridfs-storage */
 var storage = GridFsStorage({
-    gfs : gfs,
+    gfs: gfs,
     filename: function (req, file, cb) {
         var datetimestamp = Date.now();
-        cb(null, file.fieldname + '-' + datetimestamp + '.' + file.originalname.split('.')[file.originalname.split('.').length -1]);
+        cb(null, file.fieldname + '-' + datetimestamp + '.' + file.originalname.split('.')[file.originalname.split('.').length - 1]);
     },
     /** With gridfs we can store aditional meta-data along with the file */
-    metadata: function(req, file, cb) {
+    metadata: function (req, file, cb) {
         cb(null, { originalname: file.originalname });
     },
     root: 'cfFiles' //root name for collection to store files into
@@ -162,14 +159,14 @@ var chatFileUpload = multer({ //multer settings for single upload
 /** API path that will upload the files */
 module.exports.chatFileUpload = function (req, res) {
     console.log("chatFileUpload-->");
-    console.log("gfs: "+gfs);
-    chatFileUpload(req,res,function(err){
+    console.log("gfs: " + gfs);
+    chatFileUpload(req, res, function (err) {
         //console.log("res: "+JSON.stringify(res));
-        if(err){
-             res.json({error_code:1,err_desc:err});
-             return;
+        if (err) {
+            res.json({ error_code: 1, err_desc: err });
+            return;
         }
-         res.json({error_code:0,err_desc:null});
+        res.json({ error_code: 0, err_desc: null });
     });
 };
 
@@ -178,8 +175,8 @@ module.exports.getChatFileUpload = function (req, res) {
     gfs.collection('cfFiles'); //set collection name to lookup into
 
     /** First check if file exists */
-    gfs.files.find({filename: req.params.filename}).toArray(function(err, files){
-        if(!files || files.length === 0){
+    gfs.files.find({ filename: req.params.filename }).toArray(function (err, files) {
+        if (!files || files.length === 0) {
             return res.status(404).json({
                 responseCode: 1,
                 responseMessage: "error"

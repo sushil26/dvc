@@ -144,7 +144,7 @@ var gfs = Grid(db, mongoose.mongo);
 /* ##### Start Multer  ##### */
 /** Setting up storage using multer-gridfs-storage */
 var storage = GridFsStorage({
-    url: 'mongodb://localhost/vc',
+    url: gfs,
     file: (req, file) => {
     return new Promise((resolve, reject) => {
       crypto.randomBytes(16, (err, buf) => {

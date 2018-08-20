@@ -1,15 +1,21 @@
 var express = require('express');
 var bodyParser = require('body-parser')
 var fileUpload = require('express-fileupload');
-var multer = require('multer');
+//var multer = require('multer');
 var ObjectId = require("mongodb").ObjectID;
 var app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json({
     limit: '100mb'
 }));
-// app.use(bodyParser.json({limit: "1024mb"}));
-// app.use(bodyParser.urlencoded({limit: "1024mb", extended: true, parameterLimit:50000}));
+const path = require('path');
+const crypto = require('crypto');
+const mongoose = require('mongoose');
+const multer = require('multer');
+const GridFsStorage = require('multer-gridfs-storage');
+const Grid = require('gridfs-stream');
+app.use(bodyParser.json({ limit: "1024mb" }));
+app.use(bodyParser.urlencoded({ limit: "1024mb", extended: true, parameterLimit: 50000 }));
 
 //app.use(multer());
 //app.use(fileUpload());
@@ -37,18 +43,78 @@ app.set('socketio', io);
 
 var chatHistory;
 // server.timeout = 9999999999;
+
+/// Mongo URI
+const mongoURI = 'mongodb://localhost/mongouploads';
+
+// Create mongo connection
+const conn = mongoose.createConnection(mongoURI);
+
+// Init gfs
+let gfs;
+
+conn.once('open', () => {
+    // Init stream
+    gfs = Grid(conn.db, mongoose.mongo);
+    gfs.collection('uploads');
+});
+
+
 mongoConfig.connectToServer(function (err) {
     console.log("mongo connected -->");
-   
+
     require('./config/router')(app);
 })
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/node_modules'));
 
+
 app.get('/', function (req, res) {
     res.sendFile(__dirname + '/public/index.html');
 });
 
+/* ##### Start Multer  ##### */
+/** Setting up storage using multer-gridfs-storage */
+var storage = GridFsStorage({
+    url: mongoURI,
+    file: (req, file) => {
+        return new Promise((resolve, reject) => {
+            crypto.randomBytes(16, (err, buf) => {
+                if (err) {
+                    return reject(err);
+                }
+                const filename = buf.toString('hex') + path.extname(file.originalname);
+                const fileInfo = {
+                    filename: filename,
+                    metadata: req.body
+                };
+                resolve(fileInfo);
+            });
+        });
+    }
+});
+
+var cfUpload = multer({ //multer settings for single upload
+    storage: storage
+}).single('file');
+/** API path that will upload the files */
+app.post('/careator_chatFileUpload/chatFileUpload', function (req, res) {
+    console.log("chatFileUpload-->");
+    console.log("req.file: " + req.file);
+    console.log("req.files: " + req.files);
+    console.log("gfs: " + gfs);
+
+    cfUpload(req, res, function (err) {
+        console.log("cfUpload from storage");
+        console.log("req.filename: " + res.filename);
+        //console.log("req.originalname: "+res.file.originalname);
+        if (err) {
+            res.json({ error_code: 1, err_desc: err });
+            return;
+        }
+        res.json({ error_code: 0, err_desc: null });
+    });
+})
 
 
 

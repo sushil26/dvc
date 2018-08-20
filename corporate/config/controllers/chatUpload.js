@@ -17,7 +17,7 @@ var Grid = require('gridfs-stream');
 
 
 // Mongo URI
-const mongoURI = 'mongodb://127.0.0.1:27017/mongouploads';
+const mongoURI = 'mongodb://127.0.0.1:27017/vc';
 
 // Create mongo connection
 const conn = mongoose.createConnection(mongoURI);

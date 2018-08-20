@@ -98,7 +98,7 @@ var cfUpload = multer({ //multer settings for single upload
     storage: storage
 }).single('file');
 /** API path that will upload the files */
-app.post('/chatFileUpload', function (req, res) {
+app.post('/careator_chatFileUpload/chatFileUpload', function (req, res) {
     console.log("chatFileUpload-->");
     console.log("req.file: " + req.file);
     console.log("req.files: " + req.files);

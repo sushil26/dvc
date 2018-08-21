@@ -409,9 +409,7 @@ module.exports.getOrg_admin_byOrgId = function (req, res) {
         var obj = {
             _id: ObjectId(req.body.id)
         };
-        var updatedJson = {
-            status: req.body.status
-        };
+       console.log("obj: "+JSON.stringify(obj));
         organizations.find(obj).toArray(function (err, data) {
             if (err) {
                 responseData = {

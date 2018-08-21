@@ -47,11 +47,11 @@ careatorApp.controller('adminListCtrl', function ($scope, $state, careatorHttpFa
             "id": id,
             "status": status
         }
-        httpFactory.post(api, obj).then(function (data) {
-            var checkStatus = httpFactory.dataValidation(data);
+        careatorHttpFactory.post(api, obj).then(function (data) {
+            var checkStatus = careatorHttpFactory.dataValidation(data);
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
-                $scope.allSchool[index].status = status;
+                $scope.allAdminList[index].status = status;
                 console.log("Updated Status Successfully");
 
             }

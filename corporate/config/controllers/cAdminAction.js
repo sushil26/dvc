@@ -420,7 +420,7 @@ module.exports.getOrg_admin_byOrgId = function (req, res) {
                 res.status(400).send(responseData);
             } else {
                 var findObj = {
-                    orgId: req.params.id
+                    orgId: ObjectId(req.params.id)
                 };
                 console.log("findObj: "+JSON.stringify(findObj));
                 careatorMaster.find(findObj).toArray(function (err, adminPassword) {

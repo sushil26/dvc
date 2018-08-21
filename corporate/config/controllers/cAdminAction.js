@@ -8,7 +8,7 @@ var organizations = db.collection("organizations"); /* ### careator employee col
 
 module.exports.adminCreate = function (req, res) {
     console.log("adminCreate-->");
-
+var createdDate = new Date();
     var organizationObj = {
         "organizationName": req.body.organizationName,
         "domain": req.body.organizationDomain,
@@ -24,7 +24,7 @@ module.exports.adminCreate = function (req, res) {
         "country": req.body.country,
         "status": "active",
         "logoPath": req.body.logoPath,
-        "created_at": general.createdDate()
+        "created_at": createdDate
     }
     var adminObj = {
         "firstName": req.body.firstName,
@@ -36,7 +36,7 @@ module.exports.adminCreate = function (req, res) {
         "status": "active",
         "loginType": "admin",
         "logoPath": req.body.logoPath,
-        "created_at": general.createdDate()
+        "created_at": createdDate
     }
     console.log("organizationObj: " + JSON.stringify(organizationObj));
     console.log("adminObj: " + JSON.stringify(adminObj));

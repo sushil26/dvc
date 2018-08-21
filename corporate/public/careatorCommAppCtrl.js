@@ -127,7 +127,8 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
                 "empId": data.data.empId,
                 "userId": data.data._id,
                 "sessionPassword": data.data.password,
-                "sessionRandomId": data.data.sessionRandomId
+                "sessionRandomId": data.data.sessionRandomId,
+                "loginType": data.data.loginType
             }
             if (data.data.videoRights == 'yes') {
                 $scope.videoRights = "yes";
@@ -166,6 +167,7 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
             careatorSessionAuth.setAccess(userData);
             var userData = careatorSessionAuth.getAccess("userData");
             $scope.userData = userData;
+            $scope.loginType = userData.loginType;
             console.log("userData: " + JSON.stringify(userData));
 
 

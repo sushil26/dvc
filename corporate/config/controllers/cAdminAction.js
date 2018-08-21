@@ -4,7 +4,7 @@ var property = require("../../property.json");
 var ObjectId = require("mongodb").ObjectID;
 var organizationModel = require("./schemas/organization.js");
 var careatorMaster = db.collection("careatorMaster"); /* ### careator employee collection  ### */
-var organizations = db.collection("organizations"); /* ### careator employee collection  ### */
+var organizations = db.collection("organizations"); /* ### organizations collection  ### */
 
 var nodemailer = require('nodemailer');
 

@@ -1,6 +1,7 @@
 careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careatorSessionAuth, careatorHttpFactory, $timeout, SweetAlert) {
     console.log("Chat controller==>");
 
+    careatorHttpFactory.getFile('property.json');
 
     $scope.gotToDashboard = function () {
         console.log("gotToDashboard-->");

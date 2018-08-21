@@ -9,7 +9,6 @@ var organizationSchema = new Schema({
     domain: { type: String, required: true, unique: true },
     dor: { type: Date, required: true },
     registrationRegNumber: { type: String, required: true, unique: true },
-    address: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     mobNumber: { type: Number, required: true, unique: true },
     streetName: { type: String, required: true },

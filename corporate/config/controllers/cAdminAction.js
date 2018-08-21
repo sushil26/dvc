@@ -56,7 +56,7 @@ module.exports.adminCreate = function (req, res) {
         "logoPath": req.body.logoPath,
         "created_at": createdDate,
         "videoRights": 'yes',
-        "chatRights": 'no',
+        "chatRights": 'yes',
         "chatStatus": "Available",
         "restrictedTo": [],
         "profilePicPath": "/careatorApp/css/user.png",

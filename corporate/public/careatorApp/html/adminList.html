@@ -42,7 +42,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr ng-repeat="org in allAdminList">
+                                        <tr ng-repeat="org in allOrgList">
                                             <td>
                                                 {{$index+1}}
                                             </td>
@@ -66,8 +66,8 @@
 
                                             <td>
 
-                                                <button class="btn btn-primary fa fa-user-plus" ng-if="org.status=='inactive'" ng-click="updateOrganizationStatus(emp.orgId, 'active', $index)">&nbsp;Activate</button>
-                                                <button class="btn btn-warning fa fa-user-times" ng-if="org.status=='active'" ng-click="updateOrganizationStatus(emp.orgId, 'inactive', $index)">&nbsp;Deactivate</button>
+                                                <button class="btn btn-primary fa fa-user-plus" ng-if="org.status=='inactive'" ng-click="updateOrganizationStatus(emp._id, 'active', $index)">&nbsp;Activate</button>
+                                                <button class="btn btn-warning fa fa-user-times" ng-if="org.status=='active'" ng-click="updateOrganizationStatus(emp._id, 'inactive', $index)">&nbsp;Deactivate</button>
                                           
                                                 <button class="btn btn-warning fa fa-cog">&nbspSetting</button>
                                             </td>

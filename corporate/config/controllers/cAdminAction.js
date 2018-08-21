@@ -6,6 +6,19 @@ var organizationModel = require("./schemas/organization.js");
 var careatorMaster = db.collection("careatorMaster"); /* ### careator employee collection  ### */
 var organizations = db.collection("organizations"); /* ### careator employee collection  ### */
 
+var nodemailer = require('nodemailer');
+
+var transporter = nodemailer.createTransport({
+    service: "godaddy",
+    auth: {
+        user: "info@vc4all.in",
+        pass: "ctpl@123"
+    },
+    tls: {
+        rejectUnauthorized: false
+    }
+});
+
 module.exports.adminCreate = function (req, res) {
     console.log("adminCreate-->");
 var createdDate = new Date();

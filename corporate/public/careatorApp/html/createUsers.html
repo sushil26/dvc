@@ -24,10 +24,18 @@
                             <div ng-switch="userInsertType">
                                 <div ng-switch-when="enterValue">
                                     <div class="form-group ">
-                                        <label class="col-lg-3">User Name*:</label>
+                                        <label class="col-lg-3">User First Name*:</label>
                                         <div class="col-lg-9">
                                             <span>
-                                                <input type="text" ng-model="userName" class="bcontrol-label m-bot15">
+                                                <input type="text" ng-model="firstName" class="bcontrol-label m-bot15">
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label class="col-lg-3">User Second Name*:</label>
+                                        <div class="col-lg-9">
+                                            <span>
+                                                <input type="text" ng-model="lastName" class="bcontrol-label m-bot15">
                                             </span>
                                         </div>
                                     </div>
@@ -78,7 +86,7 @@
                                     </div>
                                     <div class="form-group ">
                                         <div class="col-lg-12">
-                                            <button type="submit" class="btn btn-info" ng-click="careatorEmp(userName,empId, empEmail, empPass,Designation,rightSelect)">Upload</button>
+                                            <button type="submit" class="btn btn-info" ng-click="careatorEmp(firstName, lastName,empId, empEmail, empPass,Designation,rightSelect)">Upload</button>
                                         </div>
                                     </div>
                                 </div>

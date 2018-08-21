@@ -48,7 +48,7 @@ module.exports.adminCreate = function (req, res) {
         "email": req.body.email,
         "organizationName": req.body.organizationName,
         "mobNumber": req.body.mobNumber,
-        "pswd": req.body.pswd,
+        "password": req.body.pswd,
         "status": "active",
         "loginType": "admin",
         "logoPath": req.body.logoPath,

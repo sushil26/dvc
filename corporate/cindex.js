@@ -4,16 +4,15 @@ var fileUpload = require('express-fileupload');
 var multer = require('multer');
 var ObjectId = require("mongodb").ObjectID;
 var app = express();
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json({
-    limit: '10mb'
-}));
-
-// app.use(bodyParser.json({limit: "100mb"}));
-// app.use(bodyParser.urlencoded({limit: "100mb", extended: true, parameterLimit:50000}));
+// app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(bodyParser.json({
+//     limit: '100mb'
+// }));
+app.use(bodyParser.json({limit: "100mb"}));
+app.use(bodyParser.urlencoded({limit: "100mb", extended: true, parameterLimit:50000}));
 
 //app.use(multer());
-app.use(fileUpload());
+//app.use(fileUpload());
 
 // module.exports = function (app, config) {
 //app.set('view engine','html');

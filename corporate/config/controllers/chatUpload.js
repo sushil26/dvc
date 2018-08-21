@@ -10,7 +10,7 @@ const chatFileDirectory = process.cwd() + '/public/chatFiles/';
 module.exports.chatFileUpload = function (req, res) {
     console.log("chatFileUpload-->");
     if (!req.files) {
-        console.log("req.files.img: " + req.files.img);
+        // console.log("req.files.img: " + req.files.img);
         console.log("req.file.img: " + req.file.img);
         return res.status(400).send('No files were uploaded.');
     }

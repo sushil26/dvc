@@ -20,6 +20,7 @@ var organizationSchema = new Schema({
     country: { type: String, required: true },
     status: { type: String, required: true },
     logoPath: { type: String },
+    subscription: {type: String, required: true},
     created_at: Date,
 });
 

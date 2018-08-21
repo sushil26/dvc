@@ -6,7 +6,7 @@ var ObjectId = require("mongodb").ObjectID;
 var app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json({
-    limit: '100mb'
+    limit: '50mb'
 }));
 
 // app.use(bodyParser.json({limit: "100mb"}));

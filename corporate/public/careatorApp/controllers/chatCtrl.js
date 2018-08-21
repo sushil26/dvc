@@ -2,7 +2,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
   console.log("chatCtrl==>");
   $scope.count = 0;
   var userData = careatorSessionAuth.getAccess("userData");
-  $scope.loginUserName = userData.userName;
+  $scope.loginUserName = userData.firstName+" "+userData.lastName;
   $scope.userId = userData.userId;
   if (userData.chatStatus) {
     $scope.chatStatus = userData.chatStatus;

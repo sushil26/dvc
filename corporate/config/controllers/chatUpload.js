@@ -20,7 +20,7 @@ module.exports.chatFileUpload = function (req, res) {
         return res.status(400).send('No files were uploaded.');
     }
     else {
-        console.log("req.files.sampleFile: " + req.files.img);
+        console.log("req.files.sampleFile: " + JSONS.stringify(req.files.img));
         let myFile = req.files.img;
         
         console.log("path--" + chatFileDirectory);

@@ -21,7 +21,7 @@ careatorApp.controller('adminListCtrl', function ($scope, $state, careatorHttpFa
     }
     $scope.getAllAdmin();
 
-    $scope.C_getAllOrg = function(){
+    $scope.C_getAllOrg = function () {
         console.log("-->");
 
         api = $scope.propertyJson.C_getAllOrg;
@@ -38,6 +38,28 @@ careatorApp.controller('adminListCtrl', function ($scope, $state, careatorHttpFa
                 console.log("data.data.message: " + data.data.message);
             }
         })
+    }
+
+    $scope.updateOrganizationStatus = function (id, status, index) {
+        console.log("updateOrganizationStatus-->");
+        var api = $scope.propertyJson.C_updateOrgStatus;
+        var obj = {
+            "id": id,
+            "status": status
+        }
+        httpFactory.post(api, obj).then(function (data) {
+            var checkStatus = httpFactory.dataValidation(data);
+            console.log("data--" + JSON.stringify(data.data));
+            if (checkStatus) {
+                $scope.allSchool[index].status = status;
+                console.log("Updated Status Successfully");
+
+            }
+            else {
+                console.log("Status updated failed, try again");
+            }
+        })
+        console.log("<--updateOrganizationStatus");
     }
 
 

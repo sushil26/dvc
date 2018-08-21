@@ -22,6 +22,7 @@ module.exports.chatFileUpload = function (req, res) {
     else {
         console.log("req.files.sampleFile: " + req.files.img);
         let myFile = req.files.img;
+        
         console.log("path--" + chatFileDirectory);
         var fileArr = myFile.name.split(".");
         var fileName = "";
@@ -101,11 +102,11 @@ module.exports.getChatFileUpload = function (req, res) {
         "_id": req.params.id // this id was stored in db when inserted a video stream above
     });
     readStream.on("data", function (chunk) {
-        console.log("chunk: " + JSON.stringify(chunk));
-        console.log("chunk.data: " + chunk.data);
+        // console.log("chunk: " + JSON.stringify(chunk));
+        // console.log("chunk.data: " + chunk.data);
         output += chunk.data;
         vals = (new Buffer(chunk)).toString('base64')
-        console.log("vals: " + JSON.stringify(vals));
+       // console.log("vals: " + JSON.stringify(vals));
     });
     // base64.decode(output, function (err, output) {
     //     console.log('output');
@@ -119,7 +120,7 @@ module.exports.getChatFileUpload = function (req, res) {
 
     readStream.on("end", function () {
         console.log("Final Output");
-        console.log("vals: " + JSON.stringify(vals));
+       // console.log("vals: " + JSON.stringify(vals));
         // console.log("res: "+res[1].dbgileName.bufer,'binary');
         // readStream.pipe(res);
         responseData = {

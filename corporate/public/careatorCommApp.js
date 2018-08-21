@@ -272,7 +272,7 @@ careatorApp.config(function ($stateProvider) {
 
 })
 function orgSetting(){
-    return 'orgSetting';
+    return '/orgSetting';
 }
 
 function ipost() {

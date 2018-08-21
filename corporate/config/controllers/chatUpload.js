@@ -9,66 +9,70 @@ const chatFileDirectory = process.cwd() + '/public/chatFiles/';
 
 module.exports.chatFileUpload = function (req, res) {
     console.log("chatFileUpload-->");
-    if (!req.files)
+    if (!req.files) {
+        // console.log("req.files.img: " + req.files.img);
+        console.log("req.file.img: " + req.file.img);
         return res.status(400).send('No files were uploaded.');
-    console.log("req.files.sampleFile: " + req.files.img);
-    let myFile = req.files.img;
-    console.log("path--" + chatFileDirectory);
-    var fileArr = myFile.name.split(".");
-    var fileName = "";
-    for (var i = 0; i < fileArr.length - 1; i++) {
-        fileName = fileName + fileArr[i]
     }
-    fileName = fileName + "_" + general.date() + "." + fileArr[fileArr.length - 1];
-    console.log("fileName--" + fileName)
-
-    myFile.mv(chatFileDirectory + fileName, function (err) {
-        if (err) {
-            console.log(require('util').inspect(err));
-            var responseData = {
-                "status": true,
-                "message": "date stored unsuccessfully",
-                "data": { "err": err }
-            }
-            res.status(500).send(responseData);
+    else {
+        console.log("req.files.sampleFile: " + req.files.img);
+        let myFile = req.files.img;
+        console.log("path--" + chatFileDirectory);
+        var fileArr = myFile.name.split(".");
+        var fileName = "";
+        for (var i = 0; i < fileArr.length - 1; i++) {
+            fileName = fileName + fileArr[i]
         }
-        else {
-            console.log("uploaded successfully into directory");
-            var gfs = Grid(conn.db);
-            var writeStream = gfs.createWriteStream({
-                filename: fileName
-            });
+        fileName = fileName + "_" + general.date() + "." + fileArr[fileArr.length - 1];
+        console.log("fileName--" + fileName)
 
-            var response = fs.createReadStream(chatFileDirectory + fileName).pipe(writeStream);
-            var lastInsertedFileId = response._store.fileId;
-            console.log("lastInsertedFileId: " + lastInsertedFileId);
-
-            writeStream.on('close', function (file) {
-                console.log(file.filename + "written to db");
-                var responseData;
-                var setData = {
-                    "vcRecordId": lastInsertedFileId
+        myFile.mv(chatFileDirectory + fileName, function (err) {
+            if (err) {
+                console.log(require('util').inspect(err));
+                var responseData = {
+                    "status": true,
+                    "message": "date stored unsuccessfully",
+                    "data": { "err": err }
                 }
+                res.status(500).send(responseData);
+            }
+            else {
+                console.log("uploaded successfully into directory");
+                var gfs = Grid(conn.db);
+                var writeStream = gfs.createWriteStream({
+                    filename: fileName
+                });
 
-                responseData = {
-                    status: true,
-                    errorCode: 200,
-                    message: "insert Successfull and Failed to send mail",
-                    data: lastInsertedFileId
-                };
-                res.status(200).send(responseData);
-            })
-            // var responseData = {
-            //     "status": true,
-            //     "message": "date stored successfully",
-            //     "data": { "filePath": "/schoolLogo/" + fileName }
-            // }
-            // res.status(200).send(responseData);
-        }
-    });
+                var response = fs.createReadStream(chatFileDirectory + fileName).pipe(writeStream);
+                var lastInsertedFileId = response._store.fileId;
+                console.log("lastInsertedFileId: " + lastInsertedFileId);
+
+                writeStream.on('close', function (file) {
+                    console.log(file.filename + "written to db");
+                    var responseData;
+                    var setData = {
+                        "vcRecordId": lastInsertedFileId
+                    }
+
+                    responseData = {
+                        status: true,
+                        errorCode: 200,
+                        message: "insert Successfull and Failed to send mail",
+                        data: lastInsertedFileId
+                    };
+                    res.status(200).send(responseData);
+                })
+                // var responseData = {
+                //     "status": true,
+                //     "message": "date stored successfully",
+                //     "data": { "filePath": "/schoolLogo/" + fileName }
+                // }
+                // res.status(200).send(responseData);
+            }
+        });
 
 
-
+    }
 
 
     // var userDataFile = req.files.img;

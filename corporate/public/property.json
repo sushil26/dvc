@@ -2,7 +2,7 @@
 "BASE_URL": "https://norecruits.com/",
 
 "C_adminCreate": "https://norecruits.com/c/adminCreate",
-"C_getAllAdmin": "https://norecruits.com/c/C_getAllAdmin",
+"C_getAllAdmin": "https://norecruits.com/c/getAllAdmin",
 "C_getAllOrg": "https://norecruits.com/c/getAllOrg",
 
 "VC_updateUserStatus": "vc/updateUserStatus",

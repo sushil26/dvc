@@ -407,7 +407,7 @@ module.exports.getOrg_admin_byOrgId = function (req, res) {
     var responseData;
     if (general.emptyCheck(req.params.id)) {
         var obj = {
-            _id: ObjectId(req.body.id)
+            _id: ObjectId(req.params.id)
         };
        console.log("obj: "+JSON.stringify(obj));
         organizations.find(obj).toArray(function (err, data) {
@@ -420,7 +420,7 @@ module.exports.getOrg_admin_byOrgId = function (req, res) {
                 res.status(400).send(responseData);
             } else {
                 var obj = {
-                    orgId: req.body.id
+                    orgId: req.params.id
                 };
                 careatorMaster.find(obj).toArray(function (err, adminPassword) {
                     if (err) {

@@ -1,10 +1,5 @@
 careatorApp.controller('usersListCtrl', function ($scope, $state, careatorHttpFactory, SweetAlert) {
     console.log("usersListCtrl==>");
-
-
-
-
-
     $scope.getAllEmployee = function () {
         console.log("getAllEmployee-->");
         var api = "https://norecruits.com/careator/careator_getAllEmp";

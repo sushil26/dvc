@@ -5,6 +5,7 @@ mongoose.connect('mongodb://localhost/vc');
 var conn = mongoose.connection;
 var Grid = require('gridfs-stream');
 const path = require('path');
+var fs = require('fs');
 Grid.mongo = mongoose.mongo;
 //Grid.mongo = mongoose.mongo;
 

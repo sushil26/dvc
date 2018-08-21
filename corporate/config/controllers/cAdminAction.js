@@ -393,7 +393,6 @@ module.exports.updateOrgStatus = function (req, res) {
         responseData = {
             status: false,
             message: "empty value found",
-            data: userData
         };
         res.status(400).send(responseData);
     }

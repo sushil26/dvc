@@ -12,6 +12,7 @@ var careatorEvents = db.collection("careatorEvents"); /* ### careatorEvents coll
 var loginDetails = db.collection("loginDetails"); /* ### careator login detail collection  ### */
 var careatorChatGroup = db.collection("careatorChatGroup"); /* ### careatorChatGroup collection  ### */
 var careatorChat = db.collection("careatorChat"); /* ### careatorChat collection  ### */
+var organizations = db.collection("organizations"); /* ### organizations collection  ### */
 var csv = require('fast-csv');
 var careatorMasterArray = [];
 var alreadyExist = null; /* ### Note: Marker for user create ### */
@@ -511,7 +512,7 @@ module.exports.pswdCheck = function (req, res) {
     var careatorEmail = req.body.careatorEmail;
     var emailSplit = careatorEmail.split('@');
     if (general.emptyCheck(password) && general.emptyCheck(careatorEmail)) {
-        if (emailSplit[1] == 'talenkart.com' || careatorEmail == 'vc4all@talenkart.com') {
+        if (careatorEmail == 'vc4all@talenkart.com') {
             var obj = {
                 "email": careatorEmail
             }
@@ -591,6 +592,112 @@ module.exports.pswdCheck = function (req, res) {
                             res.status(400).send(responseData);
                         }
                     } else {
+                        responseData = {
+                            status: false,
+                            message: property.E0006
+                        };
+                        console.log("responseData: " + JSON.stringify(responseData));
+                        res.status(400).send(responseData);
+                    }
+                }
+            })
+        }
+        else if (emailSplit[1]) {
+            organizations.find({ "domain": emailSplit[1] }).toArray(function (err, findData) {
+                if (err) {
+                    responseData = {
+                        status: false,
+                        message: property.E0007
+                    };
+                    res.status(400).send(responseData);
+                } else {
+                    if (findData.length > 0) {
+                        careatorMaster.find(obj).toArray(function (err, findData) {
+                            console.log("findData: " + JSON.stringify(findData));
+                            if (err) {
+                                responseData = {
+                                    status: false,
+                                    message: property.E0007
+                                };
+                                res.status(400).send(responseData);
+                            } else {
+                                if (findData.length > 0) {
+                                    if (findData[0].status == 'active') {
+                                        if (findData[0].password == password) {
+                                            if (findData[0].logout == 'done' && findData[0].login == 'notDone') {
+                                                careatorMaster.update({ "_id": ObjectId(findData[0]._id), "status": "active" }, { $set: { "password": password, "invite": [], "logout": "notDone", "login": "done" } }, function (err, data) {
+                                                    console.log("data: " + JSON.stringify(data));
+                                                    if (err) {
+                                                        responseData = {
+                                                            status: false,
+                                                            message: property.E0007
+                                                        };
+                                                        res.status(400).send(responseData);
+                                                    } else {
+                                                        var date = new Date();
+                                                        loginDetails.update({ "_id": ObjectId(findData[0]._id) }, { $set: { "userId": findData[0]._id, "userName": findData[0].name, "email": findData[0].email, "login": true, "loginDate": date, "logout": false } }, { upsert: true }, function (err, loginData) {
+                                                            if (err) {
+                                                                responseData = {
+                                                                    status: false,
+                                                                    message: property.E0007
+                                                                };
+                                                                res.status(400).send(responseData);
+                                                            } else {
+                                                                // log.info("req.originalUrl: " + req.originalUrl + " Email: " + findData[0].email, " Date: (" + date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate() + ")" + " Time: (" + date.getHours() + ":" + date.getMinutes() + ")");
+                                                                console.log("log: " + log);
+                                                                responseData = {
+                                                                    status: true,
+                                                                    message: property.S0005,
+                                                                    sessionData: "79ea520a-3e67-11e8-9679-97fa7aeb8e97",
+                                                                    data: findData[0]
+                                                                };
+                                                                console.log("responseData: " + JSON.stringify(responseData));
+                                                                res.status(200).send(responseData);
+                                                            }
+                                                        })
+
+                                                    }
+                                                })
+                                            } else {
+                                                responseData = {
+                                                    status: false,
+                                                    message: property.N0001,
+                                                    data: {
+                                                        "id": findData[0]._id
+                                                    }
+                                                };
+                                                res.status(400).send(responseData);
+                                            }
+
+                                        } else {
+                                            responseData = {
+                                                status: false,
+                                                message: property.E0005
+                                            };
+                                            console.log("responseData: " + JSON.stringify(responseData));
+                                            res.status(400).send(responseData);
+                                        }
+                                    }
+                                    else {
+                                        responseData = {
+                                            status: false,
+                                            message: property.N0002
+                                        };
+                                        console.log("responseData: " + JSON.stringify(responseData));
+                                        res.status(400).send(responseData);
+                                    }
+                                } else {
+                                    responseData = {
+                                        status: false,
+                                        message: property.E0006
+                                    };
+                                    console.log("responseData: " + JSON.stringify(responseData));
+                                    res.status(400).send(responseData);
+                                }
+                            }
+                        })
+                    }
+                    else {
                         responseData = {
                             status: false,
                             message: property.E0006
@@ -1859,7 +1966,7 @@ module.exports.individualText = function (req, res) {
                 })
             } else {
                 console.log("NOt Fresh insert");
-                console.log("req.body.meesageType: "+req.body.messageType);
+                console.log("req.body.meesageType: " + req.body.messageType);
                 var unseenCount, setObj;
                 if (data[0].unseenCount != undefined) {
                     unseenCount = data[0].unseenCount + 1;
@@ -1875,7 +1982,7 @@ module.exports.individualText = function (req, res) {
                     "message": req.body.message,
                     "sendTime": date
                 }
-                if(req.body.messageType!=undefined && req.body.messageType=='file'){
+                if (req.body.messageType != undefined && req.body.messageType == 'file') {
                     obj.messageType = 'file';
                 }
                 console.log("obj : " + JSON.stringify(obj));
@@ -1904,10 +2011,10 @@ module.exports.individualText = function (req, res) {
                             "receiverSeen": setObj.receiverSeen,
                             "unseenCount": setObj.unseenCount
                         }
-                        if(req.body.messageType=='file'){
-                            emitObj.messageType=req.body.messageType
+                        if (req.body.messageType == 'file') {
+                            emitObj.messageType = req.body.messageType
                         }
-                        io.emit('comm_textReceived',emitObj); /* ### Note: Emit message to client ### */
+                        io.emit('comm_textReceived', emitObj); /* ### Note: Emit message to client ### */
                         response = {
                             status: true,
                             message: property.S0010,
@@ -2148,7 +2255,7 @@ module.exports.groupText = function (req, res) {
                         "message": req.body.message,
                         "sendTime": date
                     }
-                    if(req.body.messageType!=undefined && req.body.messageType=='file'){
+                    if (req.body.messageType != undefined && req.body.messageType == 'file') {
                         obj.messageType = 'file';
                     }
                     var groupMembers = [];
@@ -2901,7 +3008,7 @@ module.exports.getChatsById = function (req, res) {
                 res.status(400).send(responseData);
             } else {
                 console.log("allChat: " + JSON.stringify(allChat));
-                
+
                 response = {
                     status: true,
                     message: property.S0008,

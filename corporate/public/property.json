@@ -4,10 +4,11 @@
 "C_adminCreate": "https://norecruits.com/c/adminCreate",
 "C_getAllAdmin": "https://norecruits.com/c/getAllAdmin",
 "C_getAllOrg": "https://norecruits.com/c/getAllOrg",
+"C_updateOrgStatus": "https://norecruits.com/c/updateOrgStatus",
 
 "VC_updateUserStatus": "vc/updateUserStatus",
 "VC_getAllSchool": "vc/getAllSchool",
-"VC_updateSchoolStatus": "vc/updateSchoolStatus",
+
 "VC_getSchoolList": "vc/getSchoolList",
 "VC_getSchoolUser": "vc/getSchoolUser",
 "VC_getStudentAttendance": "vc/getStudentAttendance",

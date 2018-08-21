@@ -21,7 +21,7 @@ var transporter = nodemailer.createTransport({
 
 module.exports.adminCreate = function (req, res) {
     console.log("adminCreate-->");
-var createdDate = new Date();
+    var createdDate = new Date();
     var organizationObj = {
         "organizationName": req.body.organizationName,
         "domain": req.body.organizationDomain,
@@ -37,6 +37,7 @@ var createdDate = new Date();
         "country": req.body.country,
         "status": "active",
         "logoPath": req.body.logoPath,
+        "subscription": "Basic",
         "created_at": createdDate
     }
     var adminObj = {
@@ -299,7 +300,7 @@ module.exports.getAllAdmin = function (req, res) {
             responseData = {
                 status: false,
                 message: "Failed to get Data"
-               
+
             };
             res.status(400).send(responseData);
         } else {
@@ -326,7 +327,7 @@ module.exports.getAllOrg = function (req, res) {
             responseData = {
                 status: false,
                 message: "Failed to get Data",
-               
+
             };
             res.status(400).send(responseData);
         } else {
@@ -343,3 +344,58 @@ module.exports.getAllOrg = function (req, res) {
     console.log("<--getAllOrganization");
 
 }
+
+
+module.exports.updateOrgStatus = function (req, res) {
+    console.log("updateOrgStatus-->");
+    var responseData;
+    if (general.emptyCheck(req.body.id)) {
+        var obj = {
+            _id: ObjectId(req.body.id)
+        };
+        var updatedJson = {
+            status: req.body.status
+        };
+        organizations.update(obj, { $set: updatedJson }, function (err, data) {
+            if (err) {
+                responseData = {
+                    status: false,
+                    message: "Failed to get Data",
+                    data: data
+                };
+                res.status(400).send(responseData);
+            } else {
+                var obj = {
+                    orgId: req.body.id
+                };
+                careatorMaster.update(obj, { $set: updatedJson }, function (err, data) {
+                    if (err) {
+                        responseData = {
+                            status: false,
+                            message: "Failed to get Data",
+                            data: data
+                        };
+                        res.status(400).send(responseData);
+                    } else {
+                        responseData = {
+                            status: true,
+                            message: "Successfull updated status",
+                            data: data
+                        };
+
+                        res.status(200).send(responseData);
+                    }
+                })
+            }
+        });
+    } else {
+        console.log("Epty value found");
+        responseData = {
+            status: false,
+            message: "empty value found",
+        };
+        res.status(400).send(responseData);
+    }
+
+    console.log("<--updateOrgStatus");
+};

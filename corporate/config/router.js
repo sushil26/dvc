@@ -76,6 +76,7 @@ module.exports = function (app) {
      app.post('/c/adminCreate', cAdminAction.adminCreate);
      app.get('/c/getAllAdmin', cAdminAction.getAllAdmin);
      app.get('/c/getAllOrg', cAdminAction.getAllOrg);
+     app.post('/c/updateOrgStatus', cAdminAction.updateOrgStatus);
 
     
 }

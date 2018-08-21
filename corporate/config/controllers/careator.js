@@ -512,6 +512,9 @@ module.exports.pswdCheck = function (req, res) {
     var careatorEmail = req.body.careatorEmail;
     var emailSplit = careatorEmail.split('@');
     if (general.emptyCheck(password) && general.emptyCheck(careatorEmail)) {
+        var obj = {
+            "email": careatorEmail
+        }
         if (careatorEmail == 'vc4all@talenkart.com') {
             console.log("VC4ALL Admin login-->");
             var obj = {
@@ -609,7 +612,7 @@ module.exports.pswdCheck = function (req, res) {
                 "domain": emailSplit[1] 
             }
             console.log("domainCheck: "+JSON.stringify(domainCheck));
-            organizations.find(domainCheck).toArray(function (err, findData) {
+            organizations.find(domainCheck).toArray(function (err, organizationDomain) {
                 if (err) {
                     responseData = {
                         status: false,
@@ -617,8 +620,8 @@ module.exports.pswdCheck = function (req, res) {
                     };
                     res.status(400).send(responseData);
                 } else {
-                    console.log("findData.length: "+findData.length);
-                    if (findData.length > 0) {
+                    console.log("organizationDomain.length: "+organizationDomain.length);
+                    if (organizationDomain.length > 0) {
                         careatorMaster.find(obj).toArray(function (err, findData) {
                             console.log("findData: " + JSON.stringify(findData));
                             if (err) {

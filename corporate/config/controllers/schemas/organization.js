@@ -7,8 +7,8 @@ var validate = require('mongoose-validator');
 var organizationSchema = new Schema({
     organizationName: { type: String, required: true, unique: true },
     domain: { type: String, required: true, unique: true },
-    firstName: { type: String, required: true },
-    lastName: { type: String, required: true },
+    adminFirstName: { type: String, required: true },
+    adminLastName: { type: String, required: true },
     dor: { type: Date, required: true },
     registrationRegNumber: { type: String, required: true, unique: true },
     email: { type: String, required: true, unique: true },

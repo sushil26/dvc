@@ -1,5 +1,5 @@
-careatorApp.controller('organizationSettingCtrl', function ($scope, $state, careatorHttpFactory) {
+careatorApp.controller('organizationSettingCtrl', function ($scope,  $rootScope, $state, careatorHttpFactory) {
     console.log("organizationSettingCtrl==>");
-
-    C_getOrg_admin_byOrgId
+    $scope.propertyJson = $rootScope.propertyJson;
+    console.log("$state.params.id: "+$state.params.id);
 })

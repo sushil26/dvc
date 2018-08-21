@@ -144,7 +144,7 @@ var createdDate = new Date();
         else {
             adminObj.orgId = data._id;
             var password = "abc";
-            careatorMaster.create(adminObj, function (err, data) {
+            careatorMaster.insert(adminObj, function (err, data) {
                 console.log("data: " + JSON.stringify(data));
                 if (err) {
                     if (err.code == 11000) {

@@ -5,6 +5,7 @@ var ObjectId = require("mongodb").ObjectID;
 var organizationModel = require("./schemas/organization.js");
 var careatorMaster = db.collection("careatorMaster"); /* ### careator employee collection  ### */
 var organizations = db.collection("organizations"); /* ### organizations collection  ### */
+var randomstring = require("randomstring");
 
 var nodemailer = require('nodemailer');
 
@@ -22,6 +23,7 @@ var transporter = nodemailer.createTransport({
 module.exports.adminCreate = function (req, res) {
     console.log("adminCreate-->");
     var createdDate = new Date();
+    var sessionRandomId = randomstring.generate(7);
     var organizationObj = {
         "organizationName": req.body.organizationName,
         "domain": req.body.organizationDomain,
@@ -59,7 +61,8 @@ module.exports.adminCreate = function (req, res) {
         "restrictedTo": [],
         "profilePicPath": "/careatorApp/css/user.png",
         "login": "notDone",
-        "logout": "done"
+        "logout": "done",
+        "sessionRandomId": sessionRandomId,
     }
     console.log("organizationObj: " + JSON.stringify(organizationObj));
     console.log("adminObj: " + JSON.stringify(adminObj));

@@ -42,54 +42,38 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
+                                        <tr ng-repeat="org in allAdminList">
                                             <td>
-1.
+                                                {{$index+1}}
                                             </td>
                                             <td>
-                                                Talenkart
+                                                {{org.organizationName}}
                                             </td>
                                             <td>
-                                                Shirdhi
+                                                {{org.firstName}}&nbsp;{{org.lastName}}
                                             </td>
-                                            <td>
+                                            <td ng-if="org.status=='inactive'">
+                                                Inactive
+
+                                            </td>
+                                            <td ng-if="org.status=='active'">
                                                 Active
                                             </td>
+
                                             <td>
-                                                Trial,Silver,Gold,platinum
+                                                {{org.subscription}}
                                             </td>
 
                                             <td>
-                                                <button> Deactivate</button>
-                                                <button> Change Subscription</button>
 
+                                                <button class="btn btn-primary fa fa-user-plus" ng-if="org.status=='inactive'" ng-click="statusChange(emp._id, 'active', $index)">&nbsp;Activate</button>
+                                                <button class="btn btn-warning fa fa-user-times" ng-if="org.status=='active'" ng-click="statusChange(emp._id, 'inactive', $index)">&nbsp;Deactivate</button>
+                                          
+                                                <button class="btn btn-warning fa fa-cog">&nbspSetting</button>
                                             </td>
-                                            
+
                                         </tr>
-                                        <tr>
-                                                <td>
-    2.
-                                                </td>
-                                                <td>
-                                                    NeedyIn
-                                                </td>
-                                                <td>
-                                                    Ramesh
-                                                </td>
-                                                <td>
-                                                    Active
-                                                </td>
-                                                <td>
-                                                    Trial,Silver,Gold,platinum
-                                                </td>
-    
-                                                <td>
-                                                    <button> Deactivate</button>
-                                                    <button> Change Subscription</button>
-    
-                                                </td>
-                                                
-                                            </tr>
+
 
 
                                     </tbody>

@@ -602,7 +602,7 @@ module.exports.pswdCheck = function (req, res) {
                 }
             })
         }
-        else if (emailSplit[1]) {
+        else if (emailSplit[1] != undefined) {
             organizations.find({ "domain": emailSplit[1] }).toArray(function (err, findData) {
                 if (err) {
                     responseData = {

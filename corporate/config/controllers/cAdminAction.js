@@ -28,6 +28,8 @@ module.exports.adminCreate = function (req, res) {
         "dor": req.body.dor,
         "registrationRegNumber": req.body.registrationRegNumber,
         // "address": req.body.organizationAddress,
+        "adminFirstName": req.body.firstName,
+        "adminLastName": req.body.lastName,
         "email": req.body.email,
         "mobNumber": req.body.mobNumber,
         "streetName": req.body.streetName,

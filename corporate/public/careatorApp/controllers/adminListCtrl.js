@@ -1,6 +1,6 @@
-careatorApp.controller('adminListCtrl', function ($scope, $state, careatorHttpFactory, SweetAlert) {
+careatorApp.controller('adminListCtrl', function ($scope, $rootScope, $state, careatorHttpFactory, SweetAlert) {
     console.log("adminListCtrl==>");
-
+    $scope.propertyJson = $rootScope.propertyJson;
     $scope.getAllAdmin = function () {
         console.log("getAllSchool-->");
         api = $scope.propertyJson.C_getAllAdmin;

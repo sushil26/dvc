@@ -123,7 +123,8 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
         if (typeof (Storage) !== "undefined") {
             var userData = {
                 "email": data.data.email,
-                "userName": data.data.name,
+                "firstName": data.data.firstName,
+                "lastName": data.data.lastName,
                 "empId": data.data.empId,
                 "userId": data.data._id,
                 "sessionPassword": data.data.password,

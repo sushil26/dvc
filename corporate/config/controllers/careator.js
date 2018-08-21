@@ -1181,7 +1181,8 @@ module.exports.careatorMasterInsertValidate = function (data, callback) {
         "restrictedTo": [],
         "profilePicPath": "/careatorApp/css/user.png",
         "login": "notDone",
-        "logout": "done"
+        "logout": "done",
+        "loginType": "employee"
     }
     careatorMaster.find(findEmpId).toArray(function (err, findData) {
         if (err) {
@@ -1232,7 +1233,8 @@ module.exports.careatorSingleUserInsert = function (req, res) {
         "restrictedTo": [],
         "profilePicPath": "/careatorApp/css/user.png",
         "login": "notDone",
-        "logout": "done"
+        "logout": "done",
+        "loginType": "employee"
     }
     console.log("obj :" + JSON.stringify(obj));
     var findEmpId = {

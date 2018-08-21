@@ -69,7 +69,8 @@
                                                 <button class="btn btn-primary fa fa-user-plus" ng-if="org.status=='inactive'" ng-click="updateOrganizationStatus(emp.orgId, 'active', $index)">&nbsp;Activate</button>
                                                 <button class="btn btn-warning fa fa-user-times" ng-if="org.status=='active'" ng-click="updateOrganizationStatus(emp.orgId, 'inactive', $index)">&nbsp;Deactivate</button>
                                           
-                                                <button class="btn btn-warning fa fa-cog">&nbspSetting</button>
+                                                <button class="btn btn-warning fa fa-cog">
+                                                    <a href="#!/dashboard/orgSetting">&nbspSetting</a></button>
                                             </td>
 
                                         </tr>

@@ -1,8 +1,7 @@
 {
 "BASE_URL": "https://norecruits.com/",
-"VC_teacherDetail": "vc/teacherDetail",
-"VC_studentDetail": "vc/studentDetail",
-"VC_adminCreate": "vc/adminCreate",
+
+"C_adminCreate": "https://norecruits.com/c/adminCreate",
 "VC_getAllAdmin": "vc/getAllAdmin",
 "VC_updateUserStatus": "vc/updateUserStatus",
 "VC_getAllSchool": "vc/getAllSchool",

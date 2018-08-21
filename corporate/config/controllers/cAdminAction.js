@@ -52,7 +52,14 @@ module.exports.adminCreate = function (req, res) {
         "status": "active",
         "loginType": "admin",
         "logoPath": req.body.logoPath,
-        "created_at": createdDate
+        "created_at": createdDate,
+        "videoRights": 'yes',
+        "chatRights": 'no',
+        "chatStatus": "Available",
+        "restrictedTo": [],
+        "profilePicPath": "/careatorApp/css/user.png",
+        "login": "notDone",
+        "logout": "done"
     }
     console.log("organizationObj: " + JSON.stringify(organizationObj));
     console.log("adminObj: " + JSON.stringify(adminObj));

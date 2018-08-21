@@ -37,7 +37,7 @@ careatorApp.controller('createUsersCtrl', function ($scope, $rootScope, $state, 
         })
         console.log("<--uploadCareatorEmp");
     }
-    $scope.careatorEmp = function (name, empId, emailId, pswd, Designation, rights) {
+    $scope.careatorEmp = function (fn, ln, empId, emailId, pswd, Designation, rights) {
         console.log("careatorEmp-->");
         console.log("name: " + name);
         var videoRights;
@@ -53,7 +53,8 @@ careatorApp.controller('createUsersCtrl', function ($scope, $rootScope, $state, 
             chatRights = "no";
         }
         var obj = {
-            "userName": name,
+            "firstName": fn,
+            "lastName": ln,
             "empId": empId,
             "empEmail": emailId,
             "empPass": pswd,

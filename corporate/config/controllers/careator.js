@@ -1285,7 +1285,8 @@ module.exports.careatorMasterInsertValidate = function (data, callback) {
         "email": data.Email
     }
     var obj = {
-        "name": data.Name,
+        "firstName": data.FirstName,
+        "lastName": data.LastName,
         "empId": data.EmpId,
         "email": data.Email,
         "videoRights": data.VideoRights,
@@ -1337,7 +1338,8 @@ module.exports.careatorSingleUserInsert = function (req, res) {
     console.log("careatorSingleUserInsert-->");
     var sessionRandomId = randomstring.generate(7);
     var obj = {
-        "name": req.body.userName,
+        "firstName": req.body.firstName,
+        "lastName": req.body.lastName,
         "empId": req.body.empId,
         "email": req.body.empEmail,
         "password": req.body.empPass,

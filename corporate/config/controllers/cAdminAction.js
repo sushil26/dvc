@@ -401,3 +401,60 @@ module.exports.updateOrgStatus = function (req, res) {
 
     console.log("<--updateOrgStatus");
 };
+
+module.exports.getOrg_admin_byOrgId = function (req, res) {
+    console.log("getOrg_admin_byOrgId-->");
+    var responseData;
+    if (general.emptyCheck(req.params.id)) {
+        var obj = {
+            _id: ObjectId(req.body.id)
+        };
+        var updatedJson = {
+            status: req.body.status
+        };
+        organizations.find(obj).toArray(function (err, data) {
+            if (err) {
+                responseData = {
+                    status: false,
+                    message: "Failed to get Data",
+                    data: data
+                };
+                res.status(400).send(responseData);
+            } else {
+                var obj = {
+                    orgId: req.body.id
+                };
+                careatorMaster.find(obj).toArray(function (err, adminPassword) {
+                    if (err) {
+                        responseData = {
+                            status: false,
+                            message: "Failed to get Data",
+                            data: data
+                        };
+                        res.status(400).send(responseData);
+                    } else {
+                        data[0].pswd =  adminPassword[0].pswd;
+                        responseData = {
+                            status: true,
+                            message: "Successfull updated status",
+                            data: data[0]
+                        };
+
+                        res.status(200).send(responseData);
+                    }
+                })
+            }
+        })
+
+
+    }
+    else {
+        console.log("Epty value found");
+        responseData = {
+            status: false,
+            message: "empty value found",
+        };
+        res.status(400).send(responseData);
+    }
+}
+

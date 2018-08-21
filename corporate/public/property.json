@@ -5,6 +5,7 @@
 "C_getAllAdmin": "https://norecruits.com/c/getAllAdmin",
 "C_getAllOrg": "https://norecruits.com/c/getAllOrg",
 "C_updateOrgStatus": "https://norecruits.com/c/updateOrgStatus",
+"C_getOrg_admin_byOrgId": "https://norecruits.com/c/getOrg_admin_byOrgId",
 
 "VC_updateUserStatus": "vc/updateUserStatus",
 "VC_getAllSchool": "vc/getAllSchool",

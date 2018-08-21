@@ -513,6 +513,7 @@ module.exports.pswdCheck = function (req, res) {
     var emailSplit = careatorEmail.split('@');
     if (general.emptyCheck(password) && general.emptyCheck(careatorEmail)) {
         if (careatorEmail == 'vc4all@talenkart.com') {
+            console.log("VC4ALL Admin login-->");
             var obj = {
                 "email": careatorEmail
             }
@@ -603,6 +604,7 @@ module.exports.pswdCheck = function (req, res) {
             })
         }
         else if (emailSplit[1] != undefined) {
+            console.log("other employee login-->");
             organizations.find({ "domain": emailSplit[1] }).toArray(function (err, findData) {
                 if (err) {
                     responseData = {

@@ -431,7 +431,7 @@ module.exports.getOrg_admin_byOrgId = function (req, res) {
                         };
                         res.status(400).send(responseData);
                     } else {
-                        console.log("data[0]: "+JSON.stringify(data[0]));
+                        console.log("adminPassword[0]: "+JSON.stringify(adminPassword[0]));
                         data[0].pswd =  adminPassword[0].pswd;
                         responseData = {
                             status: true,

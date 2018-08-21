@@ -66,10 +66,10 @@
 
                                             <td>
 
-                                                <button class="btn btn-primary fa fa-user-plus" ng-if="org.status=='inactive'" ng-click="updateOrganizationStatus(emp._id, 'active', $index)">&nbsp;Activate</button>
-                                                <button class="btn btn-warning fa fa-user-times" ng-if="org.status=='active'" ng-click="updateOrganizationStatus(emp._id, 'inactive', $index)">&nbsp;Deactivate</button>
+                                                <button class="btn btn-primary fa fa-user-plus" ng-if="org.status=='inactive'" ng-click="updateOrganizationStatus(org._id, 'active', $index)">&nbsp;Activate</button>
+                                                <button class="btn btn-warning fa fa-user-times" ng-if="org.status=='active'" ng-click="updateOrganizationStatus(org._id, 'inactive', $index)">&nbsp;Deactivate</button>
 
-                                                <a href="#!/dashboard/orgSetting">
+                                                <a href="#!/dashboard/orgSetting/{{org._id}}">
                                                     <button class="btn btn-warning fa fa-cog">
                                                         &nbspSetting</button>
                                                 </a>

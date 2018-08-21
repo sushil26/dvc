@@ -608,7 +608,7 @@ module.exports.pswdCheck = function (req, res) {
             var domainCheck = {
                 "domain": emailSplit[1] 
             }
-            console.log("domainCheck: "+domainCheck);
+            console.log("domainCheck: "+JSON.stringify(domainCheck));
             organizations.find(domainCheck).toArray(function (err, findData) {
                 if (err) {
                     responseData = {

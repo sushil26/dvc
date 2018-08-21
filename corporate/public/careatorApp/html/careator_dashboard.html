@@ -48,9 +48,9 @@
                 <ul class="nav pull-right top-menu">
 
                     <li class="dropdown">
-                        <span ng-if="hour <'12' && min<='59' && sec<='59' && hour >='0'" class="username" style="color: white;"> &nbspGood Morning&nbsp{{name}}</span>
-                        <span ng-if="hour >='12' && hour < '17'" class="username" style="color: white;"> Good Afternoon&nbsp{{name}}</span>
-                        <span ng-if="hour >='17' && min<='59' && sec<='59' && hour <='23'" class="username" style="color: white;">Good Evening&nbsp{{name}}</span>
+                        <span ng-if="hour <'12' && min<='59' && sec<='59' && hour >='0'" class="username" style="color: white;"> &nbspGood Morning&nbsp{{userData.firstName}}&nbsp;{{userData.lastName}}</span>
+                        <span ng-if="hour >='12' && hour < '17'" class="username" style="color: white;"> Good Afternoon&nbsp;{{userData.firstName}}&nbsp;{{userData.lastName}}</span>
+                        <span ng-if="hour >='17' && min<='59' && sec<='59' && hour <='23'" class="username" style="color: white;">Good Evening&nbsp;{{userData.firstName}}&nbsp;{{userData.lastName}}</span>
                         <br>
                         <span class="username" style="color: white;">{{clock | date:' d MMM yyyy h:mm a'}}</span>
                     </li>

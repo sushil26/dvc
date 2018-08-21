@@ -613,6 +613,7 @@ module.exports.pswdCheck = function (req, res) {
                     };
                     res.status(400).send(responseData);
                 } else {
+                    console.log("findData.length: "+findData.length);
                     if (findData.length > 0) {
                         careatorMaster.find(obj).toArray(function (err, findData) {
                             console.log("findData: " + JSON.stringify(findData));

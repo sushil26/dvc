@@ -419,10 +419,11 @@ module.exports.getOrg_admin_byOrgId = function (req, res) {
                 };
                 res.status(400).send(responseData);
             } else {
-                var obj = {
+                var findObj = {
                     orgId: req.params.id
                 };
-                careatorMaster.find(obj).toArray(function (err, adminPassword) {
+                console.log("findObj: "+JSON.stringify(findObj));
+                careatorMaster.find(findObj).toArray(function (err, adminPassword) {
                     if (err) {
                         responseData = {
                             status: false,

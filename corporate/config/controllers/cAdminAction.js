@@ -368,7 +368,7 @@ module.exports.updateOrgStatus = function (req, res) {
                 res.status(400).send(responseData);
             } else {
                 var obj = {
-                    orgId: req.body.id
+                    orgId: ObjectId(req.body.id)
                 };
                 careatorMaster.update(obj, { $set: updatedJson }, function (err, data) {
                     if (err) {

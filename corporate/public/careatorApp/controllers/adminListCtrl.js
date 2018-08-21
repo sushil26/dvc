@@ -19,7 +19,7 @@ careatorApp.controller('adminListCtrl', function ($scope, $state, careatorHttpFa
             }
         })
     }
-    $scope.getAllAdmin();
+  //  $scope.getAllAdmin();
 
     $scope.C_getAllOrg = function () {
         console.log("-->");
@@ -33,13 +33,14 @@ careatorApp.controller('adminListCtrl', function ($scope, $state, careatorHttpFa
             if (checkStatus) {
                 console.log("data.data.data: " + JSON.stringify(data.data.data));
                 console.log("data.data.message: " + data.data.message);
+                $scope.allOrgList = data.data.data;
             }
             else {
                 console.log("data.data.message: " + data.data.message);
             }
         })
     }
-
+    $scope.C_getAllOrg();
     $scope.updateOrganizationStatus = function (id, status, index) {
         console.log("updateOrganizationStatus-->");
         var api = $scope.propertyJson.C_updateOrgStatus;
@@ -51,7 +52,7 @@ careatorApp.controller('adminListCtrl', function ($scope, $state, careatorHttpFa
             var checkStatus = careatorHttpFactory.dataValidation(data);
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
-                $scope.allAdminList[index].status = status;
+                $scope.allOrgList[index].status = status;
                 console.log("Updated Status Successfully");
 
             }

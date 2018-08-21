@@ -1,7 +1,11 @@
 //var db = require("../dbConfig.js").getDb();
 var general = require("../general.js");
-
-
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/vc');
+var conn = mongoose.connection;
+var Grid = require('gridfs-stream');
+const path = require('path');
+Grid.mongo = mongoose.mongo;
 //Grid.mongo = mongoose.mongo;
 
 // Grid.collection("upload");

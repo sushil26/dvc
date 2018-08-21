@@ -102,6 +102,21 @@ careatorApp.config(function ($stateProvider) {
             }
 
         })
+        .state('Cdashboard.orgSetting', {
+            url: orgSetting(),
+            templateUrl: '/careatorApp/html/organizationSetting.html',
+            resolve: {
+                result: function (careatorSessionAuth, $window) {
+                    var userData = careatorSessionAuth.getAccess("userData");
+                    if (userData.email == 'vc4all@talenkart.com') {
+
+                    } else {
+                        $window.location.href = 'https://norecruits.com';
+                    }
+                }
+            }
+
+        })
         .state('Cdashboard.editUser', {
             url: editUser(),
             templateUrl: '/careatorApp/html/userEdit.html',
@@ -116,7 +131,8 @@ careatorApp.config(function ($stateProvider) {
                 }
             }
 
-        }).state('Cdashboard.editGroup', {
+        })
+        .state('Cdashboard.editGroup', {
             url: editGroup(),
             templateUrl: '/careatorApp/html/groupEdit.html',
             resolve: {
@@ -255,6 +271,9 @@ careatorApp.config(function ($stateProvider) {
         })
 
 })
+function orgSetting(){
+    return 'orgSetting';
+}
 
 function ipost() {
     return '/ipost';

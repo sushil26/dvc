@@ -605,7 +605,11 @@ module.exports.pswdCheck = function (req, res) {
         }
         else if (emailSplit[1] != undefined) {
             console.log("other employee login-->");
-            organizations.find({ "domain": emailSplit[1] }).toArray(function (err, findData) {
+            var domainCheck = {
+                "domain": emailSplit[1] 
+            }
+            console.log("domainCheck: "+domainCheck);
+            organizations.find(domainCheck).toArray(function (err, findData) {
                 if (err) {
                     responseData = {
                         status: false,

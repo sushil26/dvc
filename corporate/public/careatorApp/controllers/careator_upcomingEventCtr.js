@@ -31,7 +31,7 @@ careatorApp.controller('careator_upcomingEventCtr', function ($scope, $rootScope
         console.log("<--Get To Date");
     }
     $scope.getToDate();
-    $scope.getToDateByEachSec = function () {
+    getToDateByEachSec = function () {
         console.log("Get To Date-->");
         var api = "https://norecruits.com/careator_getToDate/careator_getToDate";
         careatorHttpFactory.get(api).then(function (data) {
@@ -54,9 +54,9 @@ careatorApp.controller('careator_upcomingEventCtr', function ($scope, $rootScope
         })
         console.log("<--Get To Date");
     }
-    $scope.getToDateByEachSec();
+    getToDateByEachSec();
 
-    $interval($scope.getToDateByEachSec(), 1000);
+    $interval(getToDateByEachSec(), 1000);
     $scope.eventGet = function () {
         console.log("eventGet-->");
         var id = $scope.userData.userId

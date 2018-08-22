@@ -255,7 +255,7 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
         console.log("api: " + api);
         var obj = {
           "senderId": $scope.userData.userId,
-          "senderName": $scope.userData.userName,
+          "senderName": $scope.userData.firstName+" "+$scope.userData.lastName,
           "senderEmail": $scope.userData.email,
           "title": title,
           "reason": reason,
@@ -294,7 +294,7 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
             var eventPostedData = data.data.data;
             var objData = {
               "senderId": $scope.userData.userId,
-              "senderName": $scope.userData.userName,
+              "senderName": $scope.userData.firstName+" "+$scope.userData.lastName,
               "senderEmail": $scope.userData.email,
               "title": title,
               "reason": reason,

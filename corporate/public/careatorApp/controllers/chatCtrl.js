@@ -342,9 +342,9 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
         "yes"; /* ### Note: identify chat is coming new window means, may be we dont have chat record in the chated list, so we have to show the reciever as well sender to refresh the all chated list ### */
       $scope.receiverData = {
         senderId: userData.userId,
-        senderName: userData.userName,
+        senderName: userData.firstName+" "+userData.lastName,
         receiverId: $scope.individualData._id,
-        receiverName: $scope.individualData.name
+        receiverName: $scope.individualData.firstName+" "+$scope.individualData.lastName
       };
       console.log(" $scope.receiverData : " + JSON.stringify($scope.receiverData));
       var sId = userData.userId;
@@ -469,7 +469,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
         obj = {
           senderId: userData.userId,
           receiverId: $scope.receiverData.receiverId,
-          senderName: userData.userName,
+          senderName: userData.firstName+" "+ userData.lastName,
           receiverName: $scope.receiverData.receiverName,
           message: $scope.typedMessage
         };
@@ -491,7 +491,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
         obj = {
           senderId: userData.userId,
           receiverId: $scope.receiverData.receiverId,
-          senderName: userData.userName,
+          senderName: userData.firstName+" "+userData.lastName,
           receiverName: $scope.receiverData.receiverName,
           message: $scope.typedMessage
         };
@@ -523,7 +523,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
         groupName: $scope.sendGroupText_withData.groupName,
         groupMembers: $scope.sendGroupText_withData.groupMembers,
         senderId: userData.userId,
-        senderName: userData.userName,
+        senderName: userData.firstName+" "+userData.lastName,
         message: $scope.typedMessage
       };
       console.log("obj: " + JSON.stringify(obj));
@@ -584,7 +584,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
               obj = {
                 senderId: userData.userId,
                 receiverId: $scope.receiverData.receiverId,
-                senderName: userData.userName,
+                senderName: userData.firstName+" "+userData.lastName,
                 receiverName: $scope.receiverData.receiverName,
                 messageType: "file",
                 message: uploadResponse.data
@@ -607,7 +607,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
               obj = {
                 senderId: userData.userId,
                 receiverId: $scope.receiverData.receiverId,
-                senderName: userData.userName,
+                senderName: userData.firstName+" "+userData.lastName,
                 receiverName: $scope.receiverData.receiverName,
                 messageType: "file",
                 message: uploadResponse.data
@@ -640,7 +640,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
               groupName: $scope.sendGroupText_withData.groupName,
               groupMembers: $scope.sendGroupText_withData.groupMembers,
               senderId: userData.userId,
-              senderName: userData.userName,
+              senderName: userData.firstName+" "+userData.lastName,
               messageType: "file",
               message: uploadResponse.data
             };
@@ -846,7 +846,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
               );
               $scope.receiverData = {
                 senderId: userData.userId,
-                senderName: userData.userName
+                senderName: userData.firstName+" "+userData.lastName
               };
               if ($scope.individualData.receiverId != userData.userId) {
                 $scope.receiverData.receiverId = $scope.individualData.receiverId;
@@ -963,7 +963,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
               console.log("$scope.individualData : " + JSON.stringify($scope.individualData));
               $scope.receiverData = {
                 senderId: userData.userId,
-                senderName: userData.userName
+                senderName: userData.firstName+" "+userData.lastName
               };
               if ($scope.individualData.receiverId != userData.userId) {
                 $scope.receiverData.receiverId = $scope.individualData.receiverId;

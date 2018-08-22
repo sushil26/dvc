@@ -1,6 +1,10 @@
 careatorApp.controller('createUsersCtrl', function ($scope, $rootScope, $state, careatorHttpFactory, SweetAlert) {
     console.log("createUsersCtrl==>");
     $scope.propertyJson = $rootScope.propertyJson;
+    $scope.userData = careatorSessionAuth.getAccess("userData");
+    console.log(" $scope.userData : " + JSON.stringify($scope.userData));
+    var orgId = $scope.userData.orgId;
+
     $scope.uploadCareatorEmp = function (careatorEmp) {
         console.log("uploadCareatorEmp-->");
 
@@ -60,7 +64,8 @@ careatorApp.controller('createUsersCtrl', function ($scope, $rootScope, $state, 
             "empPass": pswd,
             "Designation": Designation,
             "videoRights": videoRights,
-            "chatRights": chatRights
+            "chatRights": chatRights,
+            "orgId": orgId
         }
         console.log("obj: " + JSON.stringify(obj));
 

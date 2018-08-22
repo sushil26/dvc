@@ -24,7 +24,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                 var reqSec = todayDate.getSeconds();
                 $scope.todayDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
                 console.log("consolidateDate: " + $scope.consolidateDate);
-            } else { }
+            } else {}
         })
         console.log("<--Get To Date");
     }
@@ -121,7 +121,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
     //         "userId": localStorage.getItem("userId"),
     //         "sessionPassword": localStorage.getItem("sessionPassword"),
     //         "sessionRandomId": localStorage.getItem("sessionRandomId"),
-
+            
     //     }
     //     if (localStorage.getItem("videoRights") == 'yes') {
     //         $scope.videoRights = "yes";
@@ -205,15 +205,15 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
     $scope.logout = function () {
         console.log("logout-->");
         SweetAlert.swal({
-            title: "Have you closed all the sessions?", //Bold text
-            text: "It will close all your open sessions", //light text
-            type: "warning", //type -- adds appropiriate icon
-            showCancelButton: true, // displays cancel btton
-            confirmButtonColor: "#DD6B55",
-            confirmButtonText: "Sure",
-            closeOnConfirm: false, //do not close popup after click on confirm, usefull when you want to display a subsequent popup
-            closeOnCancel: false
-        },
+                title: "Have you closed all the sessions?", //Bold text
+                text: "It will close all your open sessions", //light text
+                type: "warning", //type -- adds appropiriate icon
+                showCancelButton: true, // displays cancel btton
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Sure",
+                closeOnConfirm: false, //do not close popup after click on confirm, usefull when you want to display a subsequent popup
+                closeOnCancel: false
+            },
             function (isConfirm) { //Function that triggers on user action.
                 if (isConfirm) {
                     SweetAlert.swal({
@@ -407,71 +407,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
         console.log("$scope.userData.userId-->: " + $scope.userData.userId);
         if (data.id == $scope.userData.userId) {
             console.log("started the process for logout");
-            // $scope.getLogin_hostDetailsById($scope.userData.userId);
-            /* ### Start check check whether login session has been changed or what  ### */
-            var api = "https://norecruits.com/careator_getUser/careator_getUserById/" + id;
-            console.log("api: " + api);
-            careatorHttpFactory.get(api).then(function (data) {
-                console.log("data--" + JSON.stringify(data.data));
-                var checkStatus = careatorHttpFactory.dataValidation(data);
-                console.log("checkStatus: " + checkStatus);
-                if (checkStatus) {
-                    if (data.data.data[0].sessionRandomId == localStorage.getItem("sessionRandomId")) {
-                        // var sessionHostBlock;
-                        console.log("data.data.data[0].isDisconnected: " + data.data.data[0].isDisconnected);
-                        if (data.data.data[0].isDisconnected == 'yes' || data.data.data[0].isDisconnected == undefined) {
-                            $scope.sessionHostBlock = 'no';
-                        } else {
-                            $scope.sessionHostBlock = 'yes';
-                        }
-                        console.log("$scope.sessionHostBlock: " + $scope.sessionHostBlock);
-                    } else {
-                        console.log("localstorage session randomId(" + localStorage.getItem('sessionRandomId') + ") is not matched with db data (" + data.data.data[0].sessionRandomId + ")");
-                        /* ##### Start: Logout Logic  ##### */
-                        var id = userData.userId;
-                        var api = "https://norecruits.com/careator_loggedin/getLoggedinSessionURLById/" + id;
-                        console.log("api: " + api);
-                        careatorHttpFactory.get(api).then(function (data) {
-                            console.log("data--" + JSON.stringify(data.data));
-                            var checkStatus = careatorHttpFactory.dataValidation(data);
-                            console.log("checkStatus: " + checkStatus);
-                            if (checkStatus) {
-                                if (data.data.data.sessionURL != undefined) {
-                                    var sessionURL = data.data.data.sessionURL;
-                                    console.log(data.data.message);
-                                    console.log("sessionURL: " + sessionURL);
-                                    socket.emit("comm_logoutSession", {
-                                        "userId": $scope.userData.userId,
-                                        "email": $scope.userData.email,
-                                        "sessionURL": sessionURL,
-                                        "sessionRandomId": data.data.data.sessionRandomId
-                                    }); /* ### Note: Logout notification to server ### */
-                                } else {
-                                    socket.emit("comm_logoutSession", {
-                                        "userId": $scope.userData.userId,
-                                        "email": $scope.userData.email,
-                                        "sessionURL": "",
-                                        "sessionRandomId": data.data.data.sessionRandomId
-                                    }); /* ### Note: Logout notification to server ### */
-                                }
-                            } else {
-                                console.log("Sorry");
-                                console.log(data.data.message);
-                            }
-                        })
-                        /* ##### End: Logout Logic  ##### */
-                    }
-
-
-
-                    console.log(data.data.message);
-
-                } else {
-                    console.log("Sorry");
-                    console.log(data.data.message);
-                }
-            })
-             /* ### Start check check whether login session has been changed or what  ### */
+            $scope.getLogin_hostDetailsById($scope.userData.userId);
         }
     })
     socket.on('comm_sessionCreateUpdate', function (data) {
@@ -542,15 +478,15 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
             })
         } else {
             SweetAlert.swal({
-                title: "window is already opened", //Bold text
-                text: "we will take you the desired page!", //light text
-                type: "warning", //type -- adds appropiriate icon
-                showCancelButton: true, // displays cancel btton
-                confirmButtonColor: "#DD6B55",
-                confirmButtonText: "Go to the page",
-                closeOnConfirm: false, //do not close popup after click on confirm, usefull when you want to display a subsequent popup
-                closeOnCancel: false
-            },
+                    title: "window is already opened", //Bold text
+                    text: "we will take you the desired page!", //light text
+                    type: "warning", //type -- adds appropiriate icon
+                    showCancelButton: true, // displays cancel btton
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Go to the page",
+                    closeOnConfirm: false, //do not close popup after click on confirm, usefull when you want to display a subsequent popup
+                    closeOnCancel: false
+                },
                 function (isConfirm) { //Function that triggers on user action.
                     if (isConfirm) {
                         w.focus();

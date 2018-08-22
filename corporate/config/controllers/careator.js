@@ -609,9 +609,9 @@ module.exports.pswdCheck = function (req, res) {
         else if (emailSplit[1] != undefined) {
             console.log("other employee login-->");
             var domainCheck = {
-                "domain": emailSplit[1] 
+                "domain": emailSplit[1]
             }
-            console.log("domainCheck: "+JSON.stringify(domainCheck));
+            console.log("domainCheck: " + JSON.stringify(domainCheck));
             organizations.find(domainCheck).toArray(function (err, organizationDomain) {
                 if (err) {
                     responseData = {
@@ -620,7 +620,7 @@ module.exports.pswdCheck = function (req, res) {
                     };
                     res.status(400).send(responseData);
                 } else {
-                    console.log("organizationDomain.length: "+organizationDomain.length);
+                    console.log("organizationDomain.length: " + organizationDomain.length);
                     if (organizationDomain.length > 0) {
                         careatorMaster.find(obj).toArray(function (err, findData) {
                             console.log("findData: " + JSON.stringify(findData));
@@ -1431,26 +1431,38 @@ module.exports.careatorSingleUserInsert = function (req, res) {
 
 module.exports.careator_getAllEmp = function (req, res) {
     console.log("careator_getAllEmp-->");
+    console.log("orgId: "+req.params.orgId);
     var response;
-    careatorMaster.find().toArray(function (err, allEmp) {
-        if (err) {
-            console.log("err: " + JSON.stringify(err));
-            response = {
-                status: false,
-                message: property.E0007,
-                data: err
-            };
-            res.status(400).send(responseData);
-        } else {
-            console.log("allEmp: " + JSON.stringify(allEmp));
-            response = {
-                status: true,
-                message: property.S0008,
-                data: allEmp
-            };
-            res.status(200).send(response);
-        }
-    })
+    if (general.emptyCheck(req.params.orgId)) {
+        
+        careatorMaster.find({"orgId": ObjectId(req.params.orgId), loginType:{$ne:"admin"}}).toArray(function (err, allEmp) {
+            if (err) {
+                console.log("err: " + JSON.stringify(err));
+                response = {
+                    status: false,
+                    message: property.E0007,
+                    data: err
+                };
+                res.status(400).send(responseData);
+            } else {
+                console.log("allEmp: " + JSON.stringify(allEmp));
+                response = {
+                    status: true,
+                    message: property.S0008,
+                    data: allEmp
+                };
+                res.status(200).send(response);
+            }
+        })
+    }
+    else {
+        response = {
+            status: false,
+            message: property.N0003,
+            data: obj
+        };
+        res.status(400).send(response);
+    }
 
 }
 
@@ -1756,7 +1768,7 @@ module.exports.careator_getChatGroupListById = function (req, res) {
     console.log("getChatGroupListById-->");
     var id = req.params.id;
     if (general.emptyCheck(id)) {
-        careatorChatGroup.find({ "groupMembers": { $elemMatch: { "userId": id }}}).toArray(function (err, data) {
+        careatorChatGroup.find({ "groupMembers": { $elemMatch: { "userId": id } } }).toArray(function (err, data) {
             if (err) {
                 console.log("err: " + JSON.stringify(err));
                 responseData = {

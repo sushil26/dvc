@@ -179,7 +179,7 @@ careatorApp.controller('userRestrictionCtrl', function ($scope, $state, $rootSco
                 counter = counter + 1;
                 $scope.authorizedUserData.push({
                     "email": allUsers[x].email,
-                    "label": allUsers[x].name + " - " + allUsers[x].empId,
+                    "label": allUsers[x].firstName +" "+allUsers[x].lastName + " - " + allUsers[x].empId,
                     "id": allUsers[x]._id,
                 });
                 console.log("$scope.restrictedTo.indexOf(" + allUsers[x]._id + "): " + $scope.restrictedTo.indexOf(allUsers[x]._id));

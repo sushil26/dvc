@@ -1,4 +1,4 @@
-careatorApp.controller('usersListCtrl', function ($scope, $state, careatorHttpFactory, SweetAlert) {
+careatorApp.controller('usersListCtrl', function ($scope, $state, careatorHttpFactory, SweetAlert, careatorSessionAuth) {
     console.log("usersListCtrl==>");
     $scope.userData = careatorSessionAuth.getAccess("userData");
     console.log(" $scope.userData : " + JSON.stringify($scope.userData));

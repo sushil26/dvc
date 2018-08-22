@@ -2,6 +2,7 @@ careatorApp.controller('profileCtrl', function ($scope, $state, careatorHttpFact
     console.log("profileCtrl++++++>>>>>>");
     $scope.file = {}; /* ### Note Upload file declaration ### */
     var userData = careatorSessionAuth.getAccess("userData");
+    console.log("userData: "+JSON.stringify(userData));
     var id = userData.userId;
 
     $scope.getUserDataById = function () {

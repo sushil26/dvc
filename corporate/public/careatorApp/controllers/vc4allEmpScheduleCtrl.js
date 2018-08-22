@@ -213,7 +213,7 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
   }
 
 
-  function getSocketUrlFromServer() {
+  var getSocketUrlFromServer = function() {
     console.log("getSocketUrlFromServer-->");
     var dfd = $q.defer();
     var SIGNALING_SERVER = "https://norecruits.com";
@@ -242,7 +242,19 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
   }
    
   function sendEventSchedule(url){
-    console.log("Back to function call-->");
+    
+  }
+
+  $scope.eventSend = function (title, emailList, dateForEvent, formatedStartTime, formatedEndTime, sd, ed, reason) {
+    console.log("eventSend-->");
+    //var SIGNALING_SERVER = "http://localhost:5000";
+    var queryLink = null;
+    var peerNew_id = null;
+    var url;
+    $timeout(function () {
+      getSocketUrlFromServer().then(function (url) {
+        // sendEventSchedule(url);
+        console.log("Back to function call-->");
     console.log("url: " + url);
     var api = "https://norecruits.com/careator_eventSchedule/careator_sendEventSchedule";
     console.log("api: " + api);
@@ -312,17 +324,6 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
 
       }
     })
-  }
-
-  $scope.eventSend = function (title, emailList, dateForEvent, formatedStartTime, formatedEndTime, sd, ed, reason) {
-    console.log("eventSend-->");
-    //var SIGNALING_SERVER = "http://localhost:5000";
-    var queryLink = null;
-    var peerNew_id = null;
-    var url;
-    $timeout(function () {
-      getSocketUrlFromServer().then(function (url) {
-        sendEventSchedule(url);
       });
     }, 0);
     console.log("<--eventSend");

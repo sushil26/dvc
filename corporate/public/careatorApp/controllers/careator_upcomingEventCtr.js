@@ -5,58 +5,6 @@ careatorApp.controller('careator_upcomingEventCtr', function ($scope, $rootScope
     $scope.events = [];
     $scope.propertyJson = $rootScope.propertyJson;
     $scope.numberOfNotif = 0;
-
-    $scope.getToDate = function () {
-        console.log("Get To Date-->");
-        var api = "https://norecruits.com/careator_getToDate/careator_getToDate";
-        careatorHttpFactory.get(api).then(function (data) {
-            var checkStatus = careatorHttpFactory.dataValidation(data);
-            console.log("data--" + JSON.stringify(data.data));
-            if (checkStatus) {
-                console.log("data.data.data.date: " + data.data.data.date);
-                var todayDate = new Date(data.data.data.date);
-                console.log("todayDate: " + todayDate);
-                var reqDate = todayDate.getDate();
-                console.log("reqDate: " + reqDate);
-                var reqMonth = todayDate.getMonth();
-                var reqYear = todayDate.getFullYear();
-                var reqHr = todayDate.getHours();
-                var reqMin = todayDate.getMinutes();
-                var reqSec = todayDate.getSeconds();
-                $scope.todayDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
-                console.log("consolidateDate: " + $scope.consolidateDate);
-                $scope.eventGet();
-            } else {}
-        })
-        console.log("<--Get To Date");
-    }
-    $scope.getToDate();
-    getToDateByEachSec = function () {
-        //console.log("Get To Date-->");
-        var api = "https://norecruits.com/careator_getToDate/careator_getToDate";
-        careatorHttpFactory.get(api).then(function (data) {
-            var checkStatus = careatorHttpFactory.dataValidation(data);
-            //console.log("data--" + JSON.stringify(data.data));
-            if (checkStatus) {
-               // console.log("data.data.data.date: " + data.data.data.date);
-                var todayDate = new Date(data.data.data.date);
-                //console.log("todayDate: " + todayDate);
-                var reqDate = todayDate.getDate();
-                //console.log("reqDate: " + reqDate);
-                var reqMonth = todayDate.getMonth();
-                var reqYear = todayDate.getFullYear();
-                var reqHr = todayDate.getHours();
-                var reqMin = todayDate.getMinutes();
-                var reqSec = todayDate.getSeconds();
-                $scope.todayDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
-                //console.log("consolidateDate: " + $scope.consolidateDate);
-            } else {}
-        })
-        console.log("<--Get To Date");
-    }
-    getToDateByEachSec();
-
-    $interval(getToDateByEachSec, 1000);
     $scope.eventGet = function () {
         console.log("eventGet-->");
         var id = $scope.userData.userId
@@ -109,6 +57,58 @@ careatorApp.controller('careator_upcomingEventCtr', function ($scope, $rootScope
             }
         })
     }
+    $scope.getToDate = function () {
+        console.log("Get To Date-->");
+        var api = "https://norecruits.com/careator_getToDate/careator_getToDate";
+        careatorHttpFactory.get(api).then(function (data) {
+            var checkStatus = careatorHttpFactory.dataValidation(data);
+            console.log("data--" + JSON.stringify(data.data));
+            if (checkStatus) {
+                console.log("data.data.data.date: " + data.data.data.date);
+                var todayDate = new Date(data.data.data.date);
+                console.log("todayDate: " + todayDate);
+                var reqDate = todayDate.getDate();
+                console.log("reqDate: " + reqDate);
+                var reqMonth = todayDate.getMonth();
+                var reqYear = todayDate.getFullYear();
+                var reqHr = todayDate.getHours();
+                var reqMin = todayDate.getMinutes();
+                var reqSec = todayDate.getSeconds();
+                $scope.todayDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
+                console.log("consolidateDate: " + $scope.consolidateDate);
+                $scope.eventGet();
+            } else {}
+        })
+        console.log("<--Get To Date");
+    }
+    $scope.getToDate();
+    getToDateByEachSec = function () {
+        //console.log("Get To Date-->");
+        var api = "https://norecruits.com/careator_getToDate/careator_getToDate";
+        careatorHttpFactory.get(api).then(function (data) {
+            var checkStatus = careatorHttpFactory.dataValidation(data);
+            //console.log("data--" + JSON.stringify(data.data));
+            if (checkStatus) {
+               // console.log("data.data.data.date: " + data.data.data.date);
+                var todayDate = new Date(data.data.data.date);
+                //console.log("todayDate: " + todayDate);
+                var reqDate = todayDate.getDate();
+                //console.log("reqDate: " + reqDate);
+                var reqMonth = todayDate.getMonth();
+                var reqYear = todayDate.getFullYear();
+                var reqHr = todayDate.getHours();
+                var reqMin = todayDate.getMinutes();
+                var reqSec = todayDate.getSeconds();
+                $scope.todayDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
+                //console.log("consolidateDate: " + $scope.consolidateDate);
+            } else {}
+        })
+        console.log("<--Get To Date");
+    }
+    getToDateByEachSec();
+
+    $interval(getToDateByEachSec, 1000);
+   
 
 
     // $scope.eventGet = function () {

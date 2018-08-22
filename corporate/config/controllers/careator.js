@@ -1919,10 +1919,7 @@ module.exports.careator_getChatRightsAllemp_byLoginId = function (req, res) {
     var id = req.params.id;
 
     if (general.emptyCheck(id)) {
-        careatorMaster.find({
-            "_id": {
-                $ne: ObjectId(id)
-            },
+        careatorMaster.find({"_id": { $ne: ObjectId(id), "orgId": req.params.orgId},
             "chatRights": "yes"
         }).toArray(function (err, allEmp_chat) {
             if (err) {

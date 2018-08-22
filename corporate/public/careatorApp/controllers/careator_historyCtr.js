@@ -32,6 +32,33 @@ careatorApp.controller('careator_historyCtr', function ($scope, $rootScope, $sta
     }
     $scope.getToDate();
 
+    getToDateByEachSec = function () {
+        //console.log("Get To Date-->");
+        var api = "https://norecruits.com/careator_getToDate/careator_getToDate";
+        careatorHttpFactory.get(api).then(function (data) {
+            var checkStatus = careatorHttpFactory.dataValidation(data);
+            //console.log("data--" + JSON.stringify(data.data));
+            if (checkStatus) {
+               // console.log("data.data.data.date: " + data.data.data.date);
+                var todayDate = new Date(data.data.data.date);
+                //console.log("todayDate: " + todayDate);
+                var reqDate = todayDate.getDate();
+                //console.log("reqDate: " + reqDate);
+                var reqMonth = todayDate.getMonth();
+                var reqYear = todayDate.getFullYear();
+                var reqHr = todayDate.getHours();
+                var reqMin = todayDate.getMinutes();
+                var reqSec = todayDate.getSeconds();
+                $scope.todayDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
+                //console.log("consolidateDate: " + $scope.consolidateDate);
+            } else {}
+        })
+        console.log("<--Get To Date");
+    }
+    getToDateByEachSec();
+
+    $interval(getToDateByEachSec, 1000);
+
     $scope.eventGet = function () {
         console.log("eventGet-->");
         var id = $scope.userData.userId;
@@ -54,7 +81,7 @@ careatorApp.controller('careator_historyCtr', function ($scope, $rootScope, $sta
                         "senderEmail": $scope.eventData[x].senderEmail,
                         "title": $scope.eventData[x].title,
                         "reason": $scope.eventData[x].reason,
-                        "invitingTo": $scope.eventData[x].invitingTo,
+                        "invite": $scope.eventData[x].invite,
                         "formatedStartTime": $scope.eventData[x].formatedStartTime,
                         "formatedEndTime": $scope.eventData[x].formatedEndTime,
                         "startsAt": new Date($scope.eventData[x].startsAt),

@@ -544,7 +544,7 @@ module.exports.pswdCheck = function (req, res) {
                                             res.status(400).send(responseData);
                                         } else {
                                             var date = new Date();
-                                            loginDetails.update({ "_id": ObjectId(findData[0]._id) }, { $set: { "userId": findData[0]._id, "orgId":findData[0].orgId, "userName": findData[0].firstName+" "+findData[0].lastName, "email": findData[0].email, "login": true, "loginDate": date, "logout": false } }, { upsert: true }, function (err, loginData) {
+                                            loginDetails.insert( { "userId": findData[0]._id,"sessionRandomId":findData[0].sessionRandomId, "orgId":findData[0].orgId, "userName": findData[0].firstName+" "+findData[0].lastName, "email": findData[0].email, "login": true, "loginDate": date, "logout": false } , function (err, loginData) {
                                                 if (err) {
                                                     responseData = {
                                                         status: false,
@@ -645,7 +645,7 @@ module.exports.pswdCheck = function (req, res) {
                                                         res.status(400).send(responseData);
                                                     } else {
                                                         var date = new Date();
-                                                        loginDetails.update({ "_id": ObjectId(findData[0]._id) }, { $set: { "userId": findData[0]._id,"orgId":findData[0].orgId,"userName": findData[0].firstName+" "+findData[0].lastName, "email": findData[0].email, "login": true, "loginDate": date, "logout": false } }, { upsert: true }, function (err, loginData) {
+                                                        loginDetails.insert( { "userId": findData[0]._id, "sessionRandomId":findData[0].sessionRandomId, "orgId":findData[0].orgId,"userName": findData[0].firstName+" "+findData[0].lastName, "email": findData[0].email, "login": true, "loginDate": date, "logout": false } ,function (err, loginData) {
                                                             if (err) {
                                                                 responseData = {
                                                                     status: false,

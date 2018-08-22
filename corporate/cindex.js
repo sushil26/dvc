@@ -609,7 +609,6 @@ io.sockets.on('connection', function (socket) {
                     else {
                         console.log("logoutData: " + JSON.stringify(logoutData));
                     }
-
                 })
                 console.log("updateData: " + JSON.stringify(updateData));
                 io.sockets.emit('comm_logoutNotifyToUserById', { "userId": data.userId, "email": data.email, "sessionURL": data.sessionURL, "sessionRandomId": data.sessionRandomId }) /* ### Note: Send quick message view notification to event sender(who's user id is matched with this userId) ### */

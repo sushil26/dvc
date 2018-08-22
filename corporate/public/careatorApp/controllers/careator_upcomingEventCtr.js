@@ -80,7 +80,7 @@ careatorApp.controller('careator_upcomingEventCtr', function ($scope, $rootScope
                         "senderEmail": $scope.eventData[x].senderEmail,
                         "title": $scope.eventData[x].title,
                         "reason": $scope.eventData[x].reason,
-                        "invitingTo": $scope.eventData[x].invitingTo,
+                        "invite": $scope.eventData[x].invite,
                         "formatedStartTime": $scope.eventData[x].formatedStartTime,
                         "formatedEndTime": $scope.eventData[x].formatedEndTime,
                         "startsAt": new Date($scope.eventData[x].startsAt),

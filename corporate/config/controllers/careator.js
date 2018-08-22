@@ -515,7 +515,7 @@ module.exports.pswdCheck = function (req, res) {
         var obj = {
             "email": careatorEmail
         }
-        if (careatorEmail == 'vc4all@talenkart.com') {
+        if (careatorEmail == 'admin@vc4all.in') {
             console.log("VC4ALL Admin login-->");
             var obj = {
                 "email": careatorEmail

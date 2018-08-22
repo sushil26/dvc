@@ -15,7 +15,7 @@ careatorApp.controller('profileCtrl', function ($scope, $state, careatorHttpFact
             if (checkStatus) {
                 var userDetails = data.data.data[0];
                 $scope.userDetails = userDetails;
-                console.log("   $scope.userDetails: " + JSON.stringify($scope.userDetails));
+                console.log("$scope.userDetails: " + JSON.stringify($scope.userDetails));
                 $scope.profilePicPath = $scope.userDetails.profilePicPath;
                 console.log("$scope.profilePicPath: " + $scope.profilePicPath);
                 console.log("data.data.message: " + data.data.message);

@@ -560,6 +560,9 @@ io.sockets.on('connection', function (socket) {
                 else {
                     console.log("data: " + JSON.stringify(data));
                     var date = new Date();
+                    var queryObj = {
+                        "userId": data.userId
+                    }
                     loginDetails.update(queryObj, { $set: { "userId": data.userId, "login": false, "logoutDate": date, "logout": true } }, { upsert: true }, function (err, logoutData) {
                         if (err) {
                             console.log("errr: " + JSON.stringify(err));

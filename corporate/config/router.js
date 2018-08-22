@@ -69,7 +69,7 @@ module.exports = function (app) {
     app.post('/careator_comm_profileImgUpload/comm_profileImgUpload', careatorImgUpload.comm_profileImgUpload);
     app.post('/careator_comm_profileImgUpdateById/comm_profileImgUpdateById/:id', careator.comm_profileImgUpdateById);
 
-    app.get('/careator/careator_getAllEmpLoginDetails', careator.careator_getAllEmpLoginDetails);
+    app.get('/careator/careator_getAllEmpLoginDetails/:orgId', careator.careator_getAllEmpLoginDetails);
      app.post('/careator_chatFileUpload/chatFileUpload', chatUpload.chatFileUpload);
      app.get('/careator_chatFileUpload/getChatFileUpload/:id', chatUpload.getChatFileUpload);
 

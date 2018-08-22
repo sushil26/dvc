@@ -38,11 +38,21 @@ careatorApp.controller('createGroupCtrl', function ($scope, $state,careatorHttpF
                 for (var x = 0; x < groupMembers.length; x++) {
                     console.log(" before $scope.groupMemberData: " + JSON.stringify($scope.groupMemberData));
                     console.log("groupMembers[x].email: " + groupMembers[x].email + " groupMembers[x]._id: " + groupMembers[x]._id);
-                    $scope.groupMemberData.push({
-                        "email": groupMembers[x].email,
-                        "label": groupMembers[x].name + " - " + groupMembers[x].empId,
-                        "id": groupMembers[x]._id
-                    });
+                    if(groupMembers[x].loginType=='admin'){
+                        $scope.groupMemberData.push({
+                            "email": groupMembers[x].email,
+                            "label": groupMembers[x].firstName+" "+ groupMembers[x].lastName + "(Admin)",
+                            "id": groupMembers[x]._id
+                        });
+                    }
+                    else{
+                        $scope.groupMemberData.push({
+                            "email": groupMembers[x].email,
+                            "label": groupMembers[x].firstName+" "+ groupMembers[x].lastName + " - " + groupMembers[x].empId,
+                            "id": groupMembers[x]._id
+                        });
+                    }
+                   
                     console.log(" after $scope.groupMemberData: " + JSON.stringify($scope.groupMemberData));
                 }
 

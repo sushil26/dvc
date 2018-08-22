@@ -1756,13 +1756,7 @@ module.exports.careator_getChatGroupListById = function (req, res) {
     console.log("getChatGroupListById-->");
     var id = req.params.id;
     if (general.emptyCheck(id)) {
-        careatorChatGroup.find({
-            "groupMembers": {
-                $elemMatch: {
-                    "userId": id
-                }
-            }
-        }).toArray(function (err, data) {
+        careatorChatGroup.find({ "groupMembers": { $elemMatch: { "userId": id }}}).toArray(function (err, data) {
             if (err) {
                 console.log("err: " + JSON.stringify(err));
                 responseData = {

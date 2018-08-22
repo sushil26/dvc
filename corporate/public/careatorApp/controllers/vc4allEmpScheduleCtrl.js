@@ -255,7 +255,7 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
       getSocketUrlFromServer().then(function (url) {
         sendEventSchedule(url);
       });
-    }, 0);
+    }, 1);
     console.log("<--eventSend");
     // var url = document.getElementById('linkToShare').innerHTML;
   }

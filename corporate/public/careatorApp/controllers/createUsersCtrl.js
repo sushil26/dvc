@@ -1,4 +1,4 @@
-careatorApp.controller('createUsersCtrl', function ($scope, $rootScope, $state, careatorHttpFactory, SweetAlert) {
+careatorApp.controller('createUsersCtrl', function ($scope, $rootScope, $state, careatorSessionAuth, careatorHttpFactory, SweetAlert) {
     console.log("createUsersCtrl==>");
     $scope.propertyJson = $rootScope.propertyJson;
     $scope.userData = careatorSessionAuth.getAccess("userData");

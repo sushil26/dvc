@@ -1347,6 +1347,7 @@ module.exports.careatorSingleUserInsert = function (req, res) {
         "sessionRandomId": sessionRandomId,
         "videoRights": req.body.videoRights,
         "chatRights": req.body.chatRights,
+        "orgId": req.body.orgId,
         "status": "active",
         "chatStatus": "Available",
         "restrictedTo": [],

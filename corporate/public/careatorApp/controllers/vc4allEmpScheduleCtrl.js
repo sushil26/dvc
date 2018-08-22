@@ -213,33 +213,33 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
   }
 
 
-  function getSocketUrlFromServer() {
-    console.log("getSocketUrlFromServer-->");
-    var dfd = $q.defer();
-    var SIGNALING_SERVER = "https://norecruits.com";
-    signaling_socket = io(SIGNALING_SERVER);
-    signaling_socket.on('connect', function () {
-      console.log("signaling_socket connect-->");
+  // function getSocketUrlFromServer() {
+  //   console.log("getSocketUrlFromServer-->");
+  //   var dfd = $q.defer();
+  //   var SIGNALING_SERVER = "https://norecruits.com";
+  //   signaling_socket = io(SIGNALING_SERVER);
+  //   signaling_socket.on('connect', function () {
+  //     console.log("signaling_socket connect-->");
 
-      signaling_socket.on('message', function (config) {
-        console.log("signaling_socket message-->");
+  //     signaling_socket.on('message', function (config) {
+  //       console.log("signaling_socket message-->");
 
-        queryLink = config.queryId;
-        peerNew_id = config.peer_id;
-        var dt = $scope.todayDate;
-        var dy = dt.getDay().toString();
-        var fy = dt.getFullYear().toString();
-        var m = dt.getMonth().toString();
-        var hr = dt.getHours().toString();
-        var date = dy.concat(fy, m, hr);
-        urlDate = date;
+  //       queryLink = config.queryId;
+  //       peerNew_id = config.peer_id;
+  //       var dt = $scope.todayDate;
+  //       var dy = dt.getDay().toString();
+  //       var fy = dt.getFullYear().toString();
+  //       var m = dt.getMonth().toString();
+  //       var hr = dt.getHours().toString();
+  //       var date = dy.concat(fy, m, hr);
+  //       urlDate = date;
 
-        var url = "https://norecruits.com/talenkart_scheduleConf/" + peerNew_id + "/" + urlDate;
-        dfd.resolve(url);
-      })
-    })
-    return dfd.promise;
-  }
+  //       var url = "https://norecruits.com/talenkart_scheduleConf/" + peerNew_id + "/" + urlDate;
+  //       dfd.resolve(url);
+  //     })
+  //   })
+  //   return dfd.promise;
+  // }
    
  
 

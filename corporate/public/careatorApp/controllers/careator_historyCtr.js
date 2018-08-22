@@ -1,4 +1,4 @@
-careatorApp.controller('careator_historyCtr', function ($scope, $rootScope, $state, $window, careatorHttpFactory, careatorSessionAuth, $uibModal) {
+careatorApp.controller('careator_historyCtr', function ($scope, $rootScope, $interval, careatorHttpFactory, careatorSessionAuth, $uibModal) {
     console.log("careator_historyCtr==>");
     $scope.events = [];
     $scope.userData = careatorSessionAuth.getAccess("userData");

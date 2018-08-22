@@ -4,6 +4,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
   var userData = careatorSessionAuth.getAccess("userData");
   $scope.loginUserName = userData.firstName+" "+userData.lastName;
   $scope.userId = userData.userId;
+  var orgId =  $scope.userData.orgId;
   if (userData.chatStatus) {
     $scope.chatStatus = userData.chatStatus;
   } else {
@@ -46,8 +47,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
   $scope.getChatGroupListById = function (id) {
     console.log("getAllEmployee-->: " + id);
     var api =
-      "https://norecruits.com/careator_chatGroupList/careator_getChatGroupListById/" +
-      id;
+      "https://norecruits.com/careator_chatGroupList/careator_getChatGroupListById/" + id;
     console.log("api: " + api);
     careatorHttpFactory.get(api).then(function (data) {
       console.log("data--" + JSON.stringify(data.data));
@@ -408,8 +408,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
     console.log("getAllChatRightEmp-->");
     $scope.allGroupAndIndividual = [];
     var id = userData.userId;
-    api = "https://norecruits.com/careator_getEmp/careator_getChatRightsAllemp_byLoginId/" +
-      id; /* #### without restricted emp  #### */
+    api = "https://norecruits.com/careator_getEmp/careator_getChatRightsAllemp_byLoginId/" + id+"/"+orgId; /* #### without restricted emp  #### */
     console.log("api: " + JSON.stringify(api));
     careatorHttpFactory.get(api).then(function (data) {
       console.log("data--" + JSON.stringify(data.data));

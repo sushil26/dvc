@@ -59,7 +59,7 @@ module.exports = function (app) {
     app.get('/careator_chatGroupList/careator_getChatGroupListById/:id', careator.careator_getChatGroupListById);
     app.get('/careator_chatGroupList/careator_getChatGroupList/:orgId', careator.careator_getChatGroupList);
     app.post('/careator_getEmp/careator_getChatRightsAllemp/:id', careator.careator_getChatRightsAllemp);
-    app.get('/careator_getEmp/careator_getChatRightsAllemp_byLoginId/:id', careator.careator_getChatRightsAllemp_byLoginId);
+    app.get('/careator_getEmp/careator_getChatRightsAllemp_byLoginId/:id/:orgId', careator.careator_getChatRightsAllemp_byLoginId);
     app.post('/careator_individualText/individualText', careator.individualText);
     app.get('/careator_individualTextRead/individualTextReadById/:sId/:rId', careator.individualTextReadById);
     app.get('/careator_groupTextRead/groupTextReadByGroupId/:group_id', careator.groupTextReadByGroupId);

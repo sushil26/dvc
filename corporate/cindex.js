@@ -217,6 +217,9 @@ io.sockets.on('connection', function (socket) {
             })
         }
         else {
+            var queryObj = {
+                "_id": data.userId
+            }
             careatorMaster.update(queryObj, { $set: { "isDisconnected": "yes" } }, function (err, data) {
                 if (err) {
                     console.log("errr: " + JSON.stringify(err));

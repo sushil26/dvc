@@ -444,6 +444,7 @@ module.exports.getOrg_admin_byOrgId = function (req, res) {
                     } else {
                         console.log("adminPassword[0]: "+JSON.stringify(adminPassword[0]));
                         data[0].pswd =  adminPassword[0].pswd;
+                        console.log("data[0] with password: "+data[0]);
                         responseData = {
                             status: true,
                             message: "Successfull updated status",

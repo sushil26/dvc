@@ -1228,6 +1228,7 @@ module.exports.careatorMasterInsert = function (req, res) {
         if (data.Name == "#" || alreadyExist == 'yes') {
             parser.resume();
         } else {
+            data.orgId = ObjectId(req.params.orgId);
             module.exports.careatorMasterInsertValidate(data, function (err) {
                 console.log("validation -->");
                 console.log("alreadyExist : " + alreadyExist + " existEmail: " + existEmail + " existEmpId: " + existEmpId);
@@ -1294,6 +1295,7 @@ module.exports.careatorMasterInsertValidate = function (data, callback) {
         "password": data.Password,
         "Designation": data.Designation,
         "sessionRandomId": sessionRandomId,
+        "orgId": data.orgId,
         "status": "active",
         "chatStatus": "Available",
         "restrictedTo": [],

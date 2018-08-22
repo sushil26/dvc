@@ -1,5 +1,9 @@
-careatorApp.controller('createGroupCtrl', function ($scope, $state,careatorHttpFactory) {
+careatorApp.controller('createGroupCtrl', function ($scope, $state,careatorHttpFactory, careatorSessionAuth) {
     console.log("createGroupCtrl==>");
+    $scope.userData = careatorSessionAuth.getAccess("userData");
+    console.log(" $scope.userData : " + JSON.stringify($scope.userData));
+    var orgId =  $scope.userData.orgId;
+
     $scope.names = ['Chat', 'Video'];
     $scope.groupMemberSettings = {
         scrollableHeight: '200px',
@@ -14,7 +18,7 @@ careatorApp.controller('createGroupCtrl', function ($scope, $state,careatorHttpF
         // console.log("value: " + value);
         var api;
         // if (value == "chat") {
-            api = "https://norecruits.com/careator/getChatRights_emp";
+            api = "https://norecruits.com/careator/getChatRights_emp/"+orgId;
         // }
         // else if (value == "video") {
         //     api = "https://norecruits.com/careator/getVideoRights_emp";
@@ -71,6 +75,7 @@ careatorApp.controller('createGroupCtrl', function ($scope, $state,careatorHttpF
         var api;
         var obj = {
             "groupName": $scope.groupName,
+            "orgId": orgId
         }
         var members = [];
         for (var x = 0; x < $scope.groupMemberModel.length; x++) {

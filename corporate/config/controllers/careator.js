@@ -1646,29 +1646,37 @@ module.exports.statusChangeById = function (req, res) {
 /* ##### Start: Get careator all employee exclude status inactive  #### */
 module.exports.getChatRights_emp = function (req, res) {
     console.log("getChatRights_emp-->");
+    console.log("req.params.orgId: "+req.params.orgId);
     var response;
-    careatorMaster.find({
-        "chatRights": "yes",
-        "status": "active"
-    }).toArray(function (err, allEmp_chat) {
-        if (err) {
-            console.log("err: " + JSON.stringify(err));
-            response = {
-                status: false,
-                message: property.E0007,
-                data: err
-            };
-            res.status(400).send(responseData);
-        } else {
-            console.log("allEmp_chat: " + JSON.stringify(allEmp_chat));
-            response = {
-                status: true,
-                message: property.S0008,
-                data: allEmp_chat
-            };
-            res.status(200).send(response);
-        }
-    })
+    if (general.emptyCheck(req.params.orgId)) {
+        careatorMaster.find({ "chatRights": "yes", "status": "active", "orgId":ObjectId(req.params.orgId) }).toArray(function (err, allEmp_chat) {
+            if (err) {
+                console.log("err: " + JSON.stringify(err));
+                response = {
+                    status: false,
+                    message: property.E0007,
+                    data: err
+                };
+                res.status(400).send(responseData);
+            } else {
+                console.log("allEmp_chat: " + JSON.stringify(allEmp_chat));
+                response = {
+                    status: true,
+                    message: property.S0008,
+                    data: allEmp_chat
+                };
+                res.status(200).send(response);
+            }
+        })
+    }
+    else {
+        response = {
+            status: false,
+            message: property.N0003,
+            data: obj
+        };
+        res.status(400).send(response);
+    }
 
 }
 /* ##### End: Get careator all employee exclude status inactive  #### */
@@ -1742,6 +1750,7 @@ module.exports.careator_chat_creteGroup = function (req, res) {
             "groupName": groupName,
             "groupMembers": groupMembers,
             "admin": admin,
+            "orgId":ObjectId(req.body.orgId),
             "status": "active"
         }
         careatorChatGroup.insert(insertObj, function (err, groupCreate) {
@@ -2567,7 +2576,7 @@ module.exports.userEditById = function (req, res) {
         if (req.body.firstName) {
             updateVlaue.firstName = req.body.firstName;
         }
-        if(req.body.lastName) {
+        if (req.body.lastName) {
             updateVlaue.lastName = req.body.lastName;
         }
         if (req.body.empId) {

@@ -1214,67 +1214,77 @@ module.exports.getHistory = function (req, res) {
 module.exports.careatorMasterInsert = function (req, res) {
     console.log("careatorMasterInsert-->");
     var responseData;
-    if (!req.files)
-        return res.status(400).send('No files were uploaded.');
+    if (general.emptyCheck(req.params.orgId)) {
+        if (!req.files)
+            return res.status(400).send('No files were uploaded.');
 
-    var userDataFile = req.files.img;
-    console.log("userDataFile: " + userDataFile);
-    var parser = csv.fromString(userDataFile.data.toString(), {
-        headers: true,
-        ignoreEmpty: true
-    }).on("data", function (data) {
-        console.log("data: " + JSON.stringify(data));
-        parser.pause();
-        if (data.Name == "#" || alreadyExist == 'yes') {
-            parser.resume();
-        } else {
-            data.orgId = ObjectId(req.params.orgId);
-            module.exports.careatorMasterInsertValidate(data, function (err) {
-                console.log("validation -->");
-                console.log("alreadyExist : " + alreadyExist + " existEmail: " + existEmail + " existEmpId: " + existEmpId);
+        var userDataFile = req.files.img;
+        console.log("userDataFile: " + userDataFile);
+        var parser = csv.fromString(userDataFile.data.toString(), {
+            headers: true,
+            ignoreEmpty: true
+        }).on("data", function (data) {
+            console.log("data: " + JSON.stringify(data));
+            parser.pause();
+            if (data.Name == "#" || alreadyExist == 'yes') {
                 parser.resume();
-            });
-        }
-    })
-        .on("end", function () {
-            console.log("end marker: ");
-            if (alreadyExist == 'yes') {
-                careatorMasterArray = [];
-                alreadyExist = null;
-                if (existEmpId != null) {
-                    var temp = existEmpId;
-                } else if (existEmail != null) {
-                    var temp = existEmail;
-                }
-
-                existEmail = null;
-                existEmpId = null;
-                responseData = {
-                    status: false,
-                    message: "Upload failed because this " + temp + " already exist",
-                };
-                res.status(400).send(responseData);
             } else {
-                careatorMaster.insert(careatorMasterArray, function (err, insertedData) {
-                    careatorMasterArray = [];
-                    if (err) {
-                        console.log("err: " + JSON.stringify(err));
-                        responseData = {
-                            status: false,
-                            message: property.E0007
-                        };
-                        res.status(400).send(responseData);
-                    } else {
-                        console.log("insertedData: " + JSON.stringify(insertedData));
-                        responseData = {
-                            status: true,
-                            message: property.S0001,
-                        };
-                        res.status(200).send(responseData);
-                    }
-                })
+                data.orgId = ObjectId(req.params.orgId);
+                module.exports.careatorMasterInsertValidate(data, function (err) {
+                    console.log("validation -->");
+                    console.log("alreadyExist : " + alreadyExist + " existEmail: " + existEmail + " existEmpId: " + existEmpId);
+                    parser.resume();
+                });
             }
         })
+            .on("end", function () {
+                console.log("end marker: ");
+                if (alreadyExist == 'yes') {
+                    careatorMasterArray = [];
+                    alreadyExist = null;
+                    if (existEmpId != null) {
+                        var temp = existEmpId;
+                    } else if (existEmail != null) {
+                        var temp = existEmail;
+                    }
+
+                    existEmail = null;
+                    existEmpId = null;
+                    responseData = {
+                        status: false,
+                        message: "Upload failed because this " + temp + " already exist",
+                    };
+                    res.status(400).send(responseData);
+                } else {
+                    careatorMaster.insert(careatorMasterArray, function (err, insertedData) {
+                        careatorMasterArray = [];
+                        if (err) {
+                            console.log("err: " + JSON.stringify(err));
+                            responseData = {
+                                status: false,
+                                message: property.E0007
+                            };
+                            res.status(400).send(responseData);
+                        } else {
+                            console.log("insertedData: " + JSON.stringify(insertedData));
+                            responseData = {
+                                status: true,
+                                message: property.S0001,
+                            };
+                            res.status(200).send(responseData);
+                        }
+                    })
+                }
+            })
+    }
+    else {
+        response = {
+            status: false,
+            message: property.N0003,
+            data: obj
+        };
+        res.status(400).send(response);
+    }
 }
 module.exports.careatorMasterInsertValidate = function (data, callback) {
     console.log("careatorMasterInsertValidate-->");
@@ -1434,11 +1444,11 @@ module.exports.careatorSingleUserInsert = function (req, res) {
 
 module.exports.careator_getAllEmp = function (req, res) {
     console.log("careator_getAllEmp-->");
-    console.log("orgId: "+req.params.orgId);
+    console.log("orgId: " + req.params.orgId);
     var response;
     if (general.emptyCheck(req.params.orgId)) {
-        
-        careatorMaster.find({"orgId": ObjectId(req.params.orgId), loginType:{$ne:"admin"}}).toArray(function (err, allEmp) {
+
+        careatorMaster.find({ "orgId": ObjectId(req.params.orgId), loginType: { $ne: "admin" } }).toArray(function (err, allEmp) {
             if (err) {
                 console.log("err: " + JSON.stringify(err));
                 response = {

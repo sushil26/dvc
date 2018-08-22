@@ -598,6 +598,7 @@ io.sockets.on('connection', function (socket) {
                 console.log("errr: " + JSON.stringify(err));
             }
             else {
+                var date = new Date();
                 var queryObj = {
                     "userId": data.userId
                 }

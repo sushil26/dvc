@@ -544,7 +544,7 @@ module.exports.pswdCheck = function (req, res) {
                                             res.status(400).send(responseData);
                                         } else {
                                             var date = new Date();
-                                            loginDetails.insert( { "userId": findData[0]._id,"sessionRandomId":findData[0].sessionRandomId, "orgId":findData[0].orgId, "userName": findData[0].firstName+" "+findData[0].lastName, "email": findData[0].email, "login": true, "loginDate": date, "logout": false } , function (err, loginData) {
+                                            loginDetails.insert({ "userId": findData[0]._id, "sessionRandomId": findData[0].sessionRandomId, "orgId": findData[0].orgId, "userName": findData[0].firstName + " " + findData[0].lastName, "email": findData[0].email, "login": true, "loginDate": date, "logout": false }, function (err, loginData) {
                                                 if (err) {
                                                     responseData = {
                                                         status: false,
@@ -645,7 +645,7 @@ module.exports.pswdCheck = function (req, res) {
                                                         res.status(400).send(responseData);
                                                     } else {
                                                         var date = new Date();
-                                                        loginDetails.insert( { "userId": findData[0]._id, "sessionRandomId":findData[0].sessionRandomId, "orgId":findData[0].orgId,"userName": findData[0].firstName+" "+findData[0].lastName, "email": findData[0].email, "login": true, "loginDate": date, "logout": false } ,function (err, loginData) {
+                                                        loginDetails.insert({ "userId": findData[0]._id, "sessionRandomId": findData[0].sessionRandomId, "orgId": findData[0].orgId, "userName": findData[0].firstName + " " + findData[0].lastName, "email": findData[0].email, "login": true, "loginDate": date, "logout": false }, function (err, loginData) {
                                                             if (err) {
                                                                 responseData = {
                                                                     status: false,
@@ -1484,7 +1484,7 @@ module.exports.careator_getAllEmpLoginDetails = function (req, res) {
     var response;
     console.log("orgId: " + req.params.orgId);
     if (general.emptyCheck(req.params.orgId)) {
-        loginDetails.find({"orgId":ObjectId(req.params.orgId)}).toArray(function (err, allEmpLoginDetails) {
+        loginDetails.find({ "orgId": ObjectId(req.params.orgId) }).toArray(function (err, allEmpLoginDetails) {
             if (err) {
                 console.log("err: " + JSON.stringify(err));
                 response = {
@@ -1834,27 +1834,37 @@ module.exports.careator_getChatGroupListById = function (req, res) {
 
 module.exports.careator_getChatGroupList = function (req, res) {
     console.log("careator_getChatGroupList-->");
-
-    careatorChatGroup.find().toArray(function (err, data) {
-        if (err) {
-            console.log("err: " + JSON.stringify(err));
-            responseData = {
-                status: false,
-                data: err,
-                message: property.E0007
-            };
-            res.status(400).send(responseData);
-        } else {
-            console.log("data: " + JSON.stringify(data));
-            responseData = {
-                status: true,
-                errorCode: 200,
-                message: property.S0008,
-                data: data
-            };
-            res.status(200).send(responseData);
-        }
-    })
+    console.log("req.params.orgId: "+req.params.orgId);
+    var id = req.params.orgId;
+    if (general.emptyCheck(id)) {
+        careatorChatGroup.find({"orgId":ObjectId(id)}).toArray(function (err, data) {
+            if (err) {
+                console.log("err: " + JSON.stringify(err));
+                responseData = {
+                    status: false,
+                    data: err,
+                    message: property.E0007
+                };
+                res.status(400).send(responseData);
+            } else {
+                console.log("data: " + JSON.stringify(data));
+                responseData = {
+                    status: true,
+                    errorCode: 200,
+                    message: property.S0008,
+                    data: data
+                };
+                res.status(200).send(responseData);
+            }
+        })
+    } else {
+        console.log("Epty value found");
+        response = {
+            status: false,
+            message: property.N0003
+        };
+        res.status(400).send(response);
+    }
 }
 
 module.exports.careator_getChatRightsAllemp = function (req, res) {

@@ -37,18 +37,18 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
   }
   $scope.getToDate();
 
-  $scope.getToDateByEachSec = function () {
+  function getToDateByEachSec () {
     console.log("Get To Date-->");
     var api = "https://norecruits.com/careator_getToDate/careator_getToDate";
     careatorHttpFactory.get(api).then(function (data) {
       var checkStatus = careatorHttpFactory.dataValidation(data);
-      console.log("data--" + JSON.stringify(data.data));
+     // console.log("data--" + JSON.stringify(data.data));
       if (checkStatus) {
-        console.log("data.data.data.date: " + data.data.data.date);
+       // console.log("data.data.data.date: " + data.data.data.date);
         var todayDate = new Date(data.data.data.date);
-        console.log("todayDate: " + todayDate);
+       // console.log("todayDate: " + todayDate);
         var reqDate = todayDate.getDate();
-        console.log("reqDate: " + reqDate);
+        //console.log("reqDate: " + reqDate);
         var reqMonth = todayDate.getMonth();
         var reqYear = todayDate.getFullYear();
         var reqHr = todayDate.getHours();
@@ -56,14 +56,14 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
         var reqSec = todayDate.getSeconds();
         $scope.todayDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
         $scope.currentTime = $scope.todayDate
-        console.log("$scope.todayDate: " + $scope.todayDate);
+        //console.log("$scope.todayDate: " + $scope.todayDate);
       } else { }
     })
     console.log("<--Get To Date");
   }
-  $scope.getToDateByEachSec();
+  getToDateByEachSec();
 
-  $interval($scope.getToDateByEachSec(), 1000);
+  $interval(getToDateByEachSec, 10000);
 
   $scope.eventGet = function () {
     console.log("eventGet-->");
@@ -249,80 +249,80 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
     var queryLink = null;
     var peerNew_id = null;
     var url;
-    // $timeout(function () {
-    //   getSocketUrlFromServer().then(function (url) {
-    //     console.log("Back to function call-->");
-    //     console.log("url: " + url);
-    //     var api = "https://norecruits.com/careator_eventSchedule/careator_sendEventSchedule";
-    //     console.log("api: " + api);
-    //     var obj = {
-    //       "senderId": $scope.userData.userId,
-    //       "senderName": $scope.userData.firstName+" "+$scope.userData.lastName,
-    //       "senderEmail": $scope.userData.email,
-    //       "title": title,
-    //       "reason": reason,
-    //       "invitingTo": emailList,
-    //       "formatedStartTime": formatedStartTime,
-    //       "formatedEndTime": formatedEndTime,
-    //       "startsAt": sd,
-    //       "endsAt": ed,
-    //       "primColor": "red",
-    //       "url": url,
-    //       "date": dateForEvent,
-    //     }
-    //     console.log("obj: " + JSON.stringify(obj));
-    //     careatorHttpFactory.post(api, obj).then(function (data) {
-    //       var checkStatus = careatorHttpFactory.dataValidation(data);
-    //       console.log("data--" + JSON.stringify(data.data));
-    //       if (checkStatus) {
-    //         if (data.data.failedToSend.length == 0) {
-    //           // alert("Successfully sent the event");
-    //           SweetAlert.swal({
-    //             title: "Invited Successfully",
-    //             type: "success",
-    //             text: "Successfully sent the event",
-    //           })
+    $timeout(function () {
+      getSocketUrlFromServer().then(function (url) {
+        console.log("Back to function call-->");
+        console.log("url: " + url);
+        var api = "https://norecruits.com/careator_eventSchedule/careator_sendEventSchedule";
+        console.log("api: " + api);
+        var obj = {
+          "senderId": $scope.userData.userId,
+          "senderName": $scope.userData.firstName+" "+$scope.userData.lastName,
+          "senderEmail": $scope.userData.email,
+          "title": title,
+          "reason": reason,
+          "invitingTo": emailList,
+          "formatedStartTime": formatedStartTime,
+          "formatedEndTime": formatedEndTime,
+          "startsAt": sd,
+          "endsAt": ed,
+          "primColor": "red",
+          "url": url,
+          "date": dateForEvent,
+        }
+        console.log("obj: " + JSON.stringify(obj));
+        careatorHttpFactory.post(api, obj).then(function (data) {
+          var checkStatus = careatorHttpFactory.dataValidation(data);
+          console.log("data--" + JSON.stringify(data.data));
+          if (checkStatus) {
+            if (data.data.failedToSend.length == 0) {
+              // alert("Successfully sent the event");
+              SweetAlert.swal({
+                title: "Invited Successfully",
+                type: "success",
+                text: "Successfully sent the event",
+              })
 
-    //         } else {
-    //           SweetAlert.swal({
-    //             title: "Failed",
-    //             type: "warning",
-    //             text: "Failed to send" + JSON.stringify(data.data.failedToSend.length)
-    //           })
-    //           // alert("Failed to send " + JSON.stringify(data.data.failedToSend.length));
-    //         }
+            } else {
+              SweetAlert.swal({
+                title: "Failed",
+                type: "warning",
+                text: "Failed to send" + JSON.stringify(data.data.failedToSend.length)
+              })
+              // alert("Failed to send " + JSON.stringify(data.data.failedToSend.length));
+            }
 
-    //         // vm.events.splice(0, 1);
-    //         var eventPostedData = data.data.data;
-    //         var objData = {
-    //           "senderId": $scope.userData.userId,
-    //           "senderName": $scope.userData.firstName+" "+$scope.userData.lastName,
-    //           "senderEmail": $scope.userData.email,
-    //           "title": title,
-    //           "reason": reason,
-    //           "invitingTo": emailList,
-    //           "formatedStartTime": formatedStartTime,
-    //           "formatedEndTime": formatedEndTime,
-    //           "startsAt": sd,
-    //           "endsAt": ed,
-    //           "primColor": "red",
-    //           "url": url,
-    //           "date": dateForEvent,
-    //         }
-    //         ownerEvents.push(objData);
-    //         vm.events.push(objData);
-    //       } else {
-    //         // alert("Event Send Failed");
-    //         SweetAlert.swal({
-    //           title: "Failed",
-    //           type: "warning",
-    //           text: "Failed to send"
-    //         })
+            // vm.events.splice(0, 1);
+            var eventPostedData = data.data.data;
+            var objData = {
+              "senderId": $scope.userData.userId,
+              "senderName": $scope.userData.firstName+" "+$scope.userData.lastName,
+              "senderEmail": $scope.userData.email,
+              "title": title,
+              "reason": reason,
+              "invitingTo": emailList,
+              "formatedStartTime": formatedStartTime,
+              "formatedEndTime": formatedEndTime,
+              "startsAt": sd,
+              "endsAt": ed,
+              "primColor": "red",
+              "url": url,
+              "date": dateForEvent,
+            }
+            ownerEvents.push(objData);
+            vm.events.push(objData);
+          } else {
+            // alert("Event Send Failed");
+            SweetAlert.swal({
+              title: "Failed",
+              type: "warning",
+              text: "Failed to send"
+            })
 
-    //       }
-    //     })
-    //   });
-    // }, 0);
+          }
+        })
+      });
+    }, 0);
     console.log("<--eventSend");
     // var url = document.getElementById('linkToShare').innerHTML;
   }

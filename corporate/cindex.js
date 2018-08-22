@@ -553,15 +553,15 @@ io.sockets.on('connection', function (socket) {
             var queryObj = {
                 "_id": ObjectId(data.userId)
             }
-            careatorMaster.update(queryObj, { $set: { "isDisconnected": "yes" } }, function (err, data) {
+            careatorMaster.update(queryObj, { $set: { "isDisconnected": "yes" } }, function (err, updateData) {
                 if (err) {
                     console.log("errr: " + JSON.stringify(err));
                 }
                 else {
-                    console.log("data: " + JSON.stringify(data));
+                    console.log("updateData: " + JSON.stringify(updateData));
                     var date = new Date();
                     var queryObj = {
-                        "userId": data.userId
+                        "sessionRandomId": data.sessionRandomId
                     }
                     loginDetails.update(queryObj, { $set: { "login": false, "logoutDate": date, "logout": true } }, { upsert: true }, function (err, logoutData) {
                         if (err) {
@@ -600,7 +600,7 @@ io.sockets.on('connection', function (socket) {
             else {
                 var date = new Date();
                 var queryObj = {
-                    "userId": data.userId
+                    "sessionRandomId": data.sessionRandomId
                 }
                 loginDetails.update(queryObj, { $set: { "login": false, "logoutDate": date, "logout": true } }, { upsert: true }, function (err, logoutData) {
                     if (err) {

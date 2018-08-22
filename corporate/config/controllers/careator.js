@@ -1048,7 +1048,7 @@ module.exports.resetLoginFlagsById = function (req, res) {
 module.exports.getAdminObjectId = function (req, res) {
     console.log("getAdminObjectId-->");
     careatorMaster.find({
-        "email": "vc4all@talenkart.com"
+        "loginType": "superAdmin"
     }).toArray(function (err, admin) {
         if (err) {
             console.log("err: " + JSON.stringify(err));

@@ -9,173 +9,153 @@
                     </div>
 
                     <div class="panel-body bio-graph-info" style="padding: 15px;">
-                        <div class="formsetting">
-                            <form class="form-horizontal" role="form" enctype="multipart/form-data">
-                                <!-- <div class="form-group ">
-                                <label class="col-lg-3">Username</label>
-                                <div class="col-lg-9">
-                                    <span>
-                                        <input type="text" ng-model="userName" class="form-control" ng-value="userData[0].name">
-                                    </span>
-                                </div>
-                            </div> -->
-                                <div class="form-group ">
-                                    <label class="col-lg-3">Organization Name*:</label>
-                                    <div class="col-lg-9">
-                                        <span>
-                                            <input type="text" ng-model="organizationName" class="form-control" ng-value="orgDetails.organizationName">
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="form-group ">
-                                    <label class="col-lg-3">Organization Domain*:</label>
-                                    <div class="col-lg-9">
-                                        <span>
-                                            <input type="text" ng-model="organizationDomain" class="form-control" ng-value="orgDetails.domain">
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="form-group ">
-                                    <label class="col-lg-3">Registration Date:</label>
-                                    <div class="col-lg-9">
-                                        <span>
-                                            <input type="date" ng-model="dor" class="form-control" ng-value="orgDetails.dor">
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="form-group ">
-                                    <label class="col-lg-3">Registration Number:</label>
-                                    <div class="col-lg-9">
-                                        <span>
-                                            <input type="text" ng-model="registrationRegNumber" class="form-control" ng-value="orgDetails.registrationRegNumber">
-                                        </span>
-                                    </div>
-                                </div>
-                                <div>
-                                    <label>
-                                        <b>Address</b>
-                                    </label>
-                                    <div class="form-group ">
-                                        <label class="col-lg-3"> streetName*:</label>
-                                        <div class="col-lg-9">
-                                            <span>
-                                                <input type="text" ng-model="streetName" class="form-control" ng-value="orgDetails.streetName">
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group ">
-                                        <label class="col-lg-3"> city*:</label>
-                                        <div class="col-lg-9">
-                                            <span>
-                                                <input type="text" ng-model="city" class="form-control" ng-value="orgDetails.city">
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group ">
-                                        <label class="col-lg-3"> state*:</label>
-                                        <div class="col-lg-9">
-                                            <span>
-                                                <input type="text" ng-model="state" class="form-control" ng-value="orgDetails.state">
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group ">
-                                        <label class="col-lg-3"> pinCode*:</label>
-                                        <div class="col-lg-9">
-                                            <span>
-                                                <input type="text" ng-model="pinCode" class="form-control" ng-value="orgDetails.pinCode">
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group ">
-                                        <label class="col-lg-3"> country*:</label>
-                                        <div class="col-lg-9">
-                                            <span>
-                                                <input type="text" ng-model="country" class="form-control" ng-value="orgDetails.country">
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <label>
-                                        <b>Admin</b>
-                                    </label>
-                                    <div class="form-group ">
-                                        <label class="col-lg-3">First Name:</label>
-                                        <div class="col-lg-9">
-                                            <span>
-                                                <input type="text" ng-model="adminFirstName" class="form-control" ng-value="orgDetails.adminFirstName">
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group ">
-                                        <label class="col-lg-3">Last Name:</label>
-                                        <div class="col-lg-9">
-                                            <span>
-                                                <input type="text" ng-model="adminLastName" class="form-control" ng-value="orgDetails.adminLastName">
-                                            </span>
-                                        </div>
-                                    </div>
 
-                                    <div class="form-group">
-                                        <label class="col-lg-3">Admin Email ID*:</label>
-                                        <div class="col-lg-9">
-                                            <span>
-                                                <input type="email" ng-model="adminEmail" class="form-control" ng-value="orgDetails.email">
-                                            </span>
-                                        </div>
-                                    </div>
+                        <div class="form-group ">
+                            <label class="col-lg-3">Organization Name*:</label>
+                            <div class="col-lg-3">
+                                <span>
+                                    <input type="text" ng-model="organizationName" class="form-control" ng-value="orgDetails.organizationName">
+                                </span>
+                            </div>
 
-                                    <div class="form-group">
-                                        <label class="col-lg-3">Admin Mobile. No.*:</label>
-                                        <div class="col-lg-9">
-                                            <span>
-                                                <input type="number" ng-model="mobNumber" class="form-control" ng-value="orgDetails.mobNumber">
-                                            </span>
-                                        </div>
-                                    </div>
+                            <label class="col-lg-3">Organization Domain*:</label>
+                            <div class="col-lg-3">
+                                <span>
+                                    <input type="text" ng-model="organizationDomain" class="form-control" ng-value="orgDetails.domain">
+                                </span>
+                            </div>
 
-                                    <div class="form-group">
-                                        <label class="col-lg-3">Password*</label>
-                                        <div class="col-lg-9">
-                                            <span>
-                                                <input type="text" ng-model="adminPassword" class="form-control" ng-value="orgDetails.dor">
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group ">
-                                        <div class="col-lg-12">
-                                            <button type="submit" class="btn btn-info" ng-click="updateloginInfo()">Save</button>
-                                        </div>
-                                    </div>
+                            <label class="col-lg-3">Registration Date:</label>
+                            <div class="col-lg-3">
+                                <span>
+                                    <input type="date" ng-model="dor" class="form-control" ng-value="orgDetails.dor">
+                                </span>
+                            </div>
 
-                                </div>
-                            </form>
+                            <label class="col-lg-3">Registration Number:</label>
+                            <div class="col-lg-3">
+                                <span>
+                                    <input type="text" ng-model="registrationRegNumber" class="form-control" ng-value="orgDetails.registrationRegNumber">
+                                </span>
+                            </div>
                         </div>
+                        <div class="form-group ">
+                            <label class="col-lg-12">
+                                <b>Address</b>
+                            </label>
+                        </div>
+                        <div class="form-group ">
+                            <label class="col-lg-3"> streetName*:</label>
+                            <div class="col-lg-3">
+                                <span>
+                                    <input type="text" ng-model="streetName" class="form-control" ng-value="orgDetails.streetName">
+                                </span>
+                            </div>
 
-                        <div class="formsetting">
-                            <form class="form-horizontal" role="form" enctype="multipart/form-data">
-                                <div class="form-group">
-                                    <label class="col-lg-3">Subscrption</label>
-                                    <div class="col-lg-9">
-                                        <span>
-                                            <input type="radio" ng-model="Subscrption" value="Basic">&nbsp;Basic&nbsp;&nbsp;
-                                            <input type="radio" ng-model="Subscrption" value="Start">&nbsp;Start-Up&nbsp;&nbsp;
-                                            <input type="radio" ng-model="Subscrption" value="SME">&nbsp;SME&nbsp;&nbsp;
-                                            <input type="radio" ng-model="Subscrption" value="Enterp">&nbsp;Enterprise&nbsp;&nbsp;
-                                            <input type="radio" ng-model="Subscrption" value="Custom">&nbsp;Custom
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="form-group ">
-                                    <div class="col-lg-12">
-                                        <button type="submit" class="btn btn-info" ng-click="updateSetting()">Save</button>
-                                    </div>
-                                </div>
+                            <label class="col-lg-3"> city*:</label>
+                            <div class="col-lg-3">
+                                <span>
+                                    <input type="text" ng-model="city" class="form-control" ng-value="orgDetails.city">
+                                </span>
+                            </div>
 
-                            </form>
+                            <label class="col-lg-3"> state*:</label>
+                            <div class="col-lg-3">
+                                <span>
+                                    <input type="text" ng-model="state" class="form-control" ng-value="orgDetails.state">
+                                </span>
+                            </div>
+
+                            <label class="col-lg-3"> pinCode*:</label>
+                            <div class="col-lg-3">
+                                <span>
+                                    <input type="text" ng-model="pinCode" class="form-control" ng-value="orgDetails.pinCode">
+                                </span>
+                            </div>
+
+                            <label class="col-lg-3"> country*:</label>
+                            <div class="col-lg-3">
+                                <span>
+                                    <input type="text" ng-model="country" class="form-control" ng-value="orgDetails.country">
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <label class="col-lg-12">
+                                <b>Admin</b>
+                            </label>
+                        </div>
+                        <div class="form-group ">
+                            <label class="col-lg-3">First Name:</label>
+                            <div class="col-lg-3">
+                                <span>
+                                    <input type="text" ng-model="adminFirstName" class="form-control" ng-value="orgDetails.adminFirstName">
+                                </span>
+                            </div>
+
+                            <label class="col-lg-3">Last Name:</label>
+                            <div class="col-lg-3">
+                                <span>
+                                    <input type="text" ng-model="adminLastName" class="form-control" ng-value="orgDetails.adminLastName">
+                                </span>
+                            </div>
+
+                            <label class="col-lg-3">Admin Email ID*:</label>
+                            <div class="col-lg-3">
+                                <span>
+                                    <input type="email" ng-model="adminEmail" class="form-control" ng-value="orgDetails.email">
+                                </span>
+                            </div>
+
+                            <label class="col-lg-3">Admin Mobile. No.*:</label>
+                            <div class="col-lg-3">
+                                <span>
+                                    <input type="number" ng-model="mobNumber" class="form-control" ng-value="orgDetails.mobNumber">
+                                </span>
+                            </div>
+
+                            <label class="col-lg-3">Password*</label>
+                            <div class="col-lg-3">
+                                <span>
+                                    <input type="text" ng-model="adminPassword" class="form-control" ng-value="orgDetails.dor">
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <div class="col-lg-12">
+                                <button type="submit" class="btn btn-info" ng-click="updateloginInfo()">Save</button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-12">
+                                <hr>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-12">
+                                <b>Subscrption</b>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3">Subscrption type</label>
+                            <div class="col-lg-9">
+                                <span>
+                                    <input type="radio" ng-model="Subscrption" value="Basic">&nbsp;Basic&nbsp;&nbsp;
+                                    <input type="radio" ng-model="Subscrption" value="Start">&nbsp;Start-Up&nbsp;&nbsp;
+                                    <input type="radio" ng-model="Subscrption" value="SME">&nbsp;SME&nbsp;&nbsp;
+                                    <input type="radio" ng-model="Subscrption" value="Enterp">&nbsp;Enterprise&nbsp;&nbsp;
+                                    <input type="radio" ng-model="Subscrption" value="Custom">&nbsp;Custom
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <div class="col-lg-12">
+                                <button type="submit" class="btn btn-info" ng-click="updateSetting()">Save</button>
+                            </div>
                         </div>
                     </div>
+
+
                 </section>
             </div>
         </section>

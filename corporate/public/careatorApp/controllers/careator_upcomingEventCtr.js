@@ -32,7 +32,7 @@ careatorApp.controller('careator_upcomingEventCtr', function ($scope, $rootScope
     }
     $scope.getToDate();
     getToDateByEachSec = function () {
-        console.log("Get To Date-->");
+        //console.log("Get To Date-->");
         var api = "https://norecruits.com/careator_getToDate/careator_getToDate";
         careatorHttpFactory.get(api).then(function (data) {
             var checkStatus = careatorHttpFactory.dataValidation(data);

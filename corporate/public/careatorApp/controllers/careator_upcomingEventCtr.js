@@ -56,7 +56,7 @@ careatorApp.controller('careator_upcomingEventCtr', function ($scope, $rootScope
     }
     getToDateByEachSec();
 
-    $interval(getToDateByEachSec(), 1000);
+    $interval(getToDateByEachSec, 1000);
     $scope.eventGet = function () {
         console.log("eventGet-->");
         var id = $scope.userData.userId

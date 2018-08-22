@@ -240,22 +240,54 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
     })
     return dfd.promise;
   }
+   
+  function sendEventSchedule(){
+    console.log("Back to function call-->");
+    console.log("url: " + url);
+    var api = "https://norecruits.com/careator_eventSchedule/careator_sendEventSchedule";
+    console.log("api: " + api);
+    var obj = {
+      "senderId": $scope.userData.userId,
+      "senderName": $scope.userData.firstName+" "+$scope.userData.lastName,
+      "senderEmail": $scope.userData.email,
+      "title": title,
+      "reason": reason,
+      "invitingTo": emailList,
+      "formatedStartTime": formatedStartTime,
+      "formatedEndTime": formatedEndTime,
+      "startsAt": sd,
+      "endsAt": ed,
+      "primColor": "red",
+      "url": url,
+      "date": dateForEvent,
+    }
+    console.log("obj: " + JSON.stringify(obj));
+    careatorHttpFactory.post(api, obj).then(function (data) {
+      var checkStatus = careatorHttpFactory.dataValidation(data);
+      console.log("data--" + JSON.stringify(data.data));
+      if (checkStatus) {
+        if (data.data.failedToSend.length == 0) {
+          // alert("Successfully sent the event");
+          SweetAlert.swal({
+            title: "Invited Successfully",
+            type: "success",
+            text: "Successfully sent the event",
+          })
 
-  $scope.eventSend = function (title, emailList, dateForEvent, formatedStartTime, formatedEndTime, sd, ed, reason) {
-    console.log("eventSend-->");
-    //var SIGNALING_SERVER = "http://localhost:5000";
-    var queryLink = null;
-    var peerNew_id = null;
-    var url;
-    $timeout(function () {
-      getSocketUrlFromServer().then(function (url) {
-        console.log("Back to function call-->");
-        console.log("url: " + url);
-        var api = "https://norecruits.com/careator_eventSchedule/careator_sendEventSchedule";
-        console.log("api: " + api);
-        var obj = {
+        } else {
+          SweetAlert.swal({
+            title: "Failed",
+            type: "warning",
+            text: "Failed to send" + JSON.stringify(data.data.failedToSend.length)
+          })
+          // alert("Failed to send " + JSON.stringify(data.data.failedToSend.length));
+        }
+
+        // vm.events.splice(0, 1);
+        var eventPostedData = data.data.data;
+        var objData = {
           "senderId": $scope.userData.userId,
-          "senderName": $scope.userData.userName,
+          "senderName": $scope.userData.firstName+" "+$scope.userData.lastName,
           "senderEmail": $scope.userData.email,
           "title": title,
           "reason": reason,
@@ -268,57 +300,29 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
           "url": url,
           "date": dateForEvent,
         }
-        console.log("obj: " + JSON.stringify(obj));
-        careatorHttpFactory.post(api, obj).then(function (data) {
-          var checkStatus = careatorHttpFactory.dataValidation(data);
-          console.log("data--" + JSON.stringify(data.data));
-          if (checkStatus) {
-            if (data.data.failedToSend.length == 0) {
-              // alert("Successfully sent the event");
-              SweetAlert.swal({
-                title: "Invited Successfully",
-                type: "success",
-                text: "Successfully sent the event",
-              })
-
-            } else {
-              SweetAlert.swal({
-                title: "Failed",
-                type: "warning",
-                text: "Failed to send" + JSON.stringify(data.data.failedToSend.length)
-              })
-              // alert("Failed to send " + JSON.stringify(data.data.failedToSend.length));
-            }
-
-            // vm.events.splice(0, 1);
-            var eventPostedData = data.data.data;
-            var objData = {
-              "senderId": $scope.userData.userId,
-              "senderName": $scope.userData.userName,
-              "senderEmail": $scope.userData.email,
-              "title": title,
-              "reason": reason,
-              "invitingTo": emailList,
-              "formatedStartTime": formatedStartTime,
-              "formatedEndTime": formatedEndTime,
-              "startsAt": sd,
-              "endsAt": ed,
-              "primColor": "red",
-              "url": url,
-              "date": dateForEvent,
-            }
-            ownerEvents.push(objData);
-            vm.events.push(objData);
-          } else {
-            // alert("Event Send Failed");
-            SweetAlert.swal({
-              title: "Failed",
-              type: "warning",
-              text: "Failed to send"
-            })
-
-          }
+        ownerEvents.push(objData);
+        vm.events.push(objData);
+      } else {
+        // alert("Event Send Failed");
+        SweetAlert.swal({
+          title: "Failed",
+          type: "warning",
+          text: "Failed to send"
         })
+
+      }
+    })
+  }
+
+  $scope.eventSend = function (title, emailList, dateForEvent, formatedStartTime, formatedEndTime, sd, ed, reason) {
+    console.log("eventSend-->");
+    //var SIGNALING_SERVER = "http://localhost:5000";
+    var queryLink = null;
+    var peerNew_id = null;
+    var url;
+    $timeout(function () {
+      getSocketUrlFromServer().then(function (url) {
+        sendEventSchedule();
       });
     }, 0);
     console.log("<--eventSend");

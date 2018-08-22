@@ -15,7 +15,7 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
     console.log(" $scope.userData : " + JSON.stringify($scope.userData));
 
     if ($scope.userData) {
-        userName = $scope.userData.userName;
+        userName = $scope.userData.firstName+" "+$scope.userData.lastName;
 
         // $scope.loginType = $scope.userData.loginType;
         console.log("userData: " + JSON.stringify($scope.userData));

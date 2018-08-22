@@ -1750,7 +1750,7 @@ module.exports.careator_chat_creteGroup = function (req, res) {
             "groupName": groupName,
             "groupMembers": groupMembers,
             "admin": admin,
-            "orgId":ObjectId(orgId),
+            "orgId":ObjectId(req.body.orgId),
             "status": "active"
         }
         careatorChatGroup.insert(insertObj, function (err, groupCreate) {

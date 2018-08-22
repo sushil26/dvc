@@ -212,7 +212,6 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
 
   }
 
-
   // function getSocketUrlFromServer() {
   //   console.log("getSocketUrlFromServer-->");
   //   var dfd = $q.defer();

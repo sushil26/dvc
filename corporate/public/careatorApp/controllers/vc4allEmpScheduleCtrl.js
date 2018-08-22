@@ -42,13 +42,13 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
     var api = "https://norecruits.com/careator_getToDate/careator_getToDate";
     careatorHttpFactory.get(api).then(function (data) {
       var checkStatus = careatorHttpFactory.dataValidation(data);
-      console.log("data--" + JSON.stringify(data.data));
+     // console.log("data--" + JSON.stringify(data.data));
       if (checkStatus) {
-        console.log("data.data.data.date: " + data.data.data.date);
+       // console.log("data.data.data.date: " + data.data.data.date);
         var todayDate = new Date(data.data.data.date);
-        console.log("todayDate: " + todayDate);
+       // console.log("todayDate: " + todayDate);
         var reqDate = todayDate.getDate();
-        console.log("reqDate: " + reqDate);
+        //console.log("reqDate: " + reqDate);
         var reqMonth = todayDate.getMonth();
         var reqYear = todayDate.getFullYear();
         var reqHr = todayDate.getHours();
@@ -56,14 +56,14 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
         var reqSec = todayDate.getSeconds();
         $scope.todayDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
         $scope.currentTime = $scope.todayDate
-        console.log("$scope.todayDate: " + $scope.todayDate);
+        //console.log("$scope.todayDate: " + $scope.todayDate);
       } else { }
     })
     console.log("<--Get To Date");
   }
   getToDateByEachSec();
 
-  $interval(getToDateByEachSec, 1000);
+  $interval(getToDateByEachSec, 10000);
 
   $scope.eventGet = function () {
     console.log("eventGet-->");

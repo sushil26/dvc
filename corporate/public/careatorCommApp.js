@@ -18,7 +18,7 @@ careatorApp.config(function ($stateProvider) {
             resolve: {
                 result: function (careatorSessionAuth, $window) {
                     var userData = careatorSessionAuth.getAccess("userData");
-                    if (userData.email == 'vc4all@talenkart.com') {
+                    if (userData.loginType == 'superAdmin') {
 
                     } else {
                         $window.location.href = 'https://norecruits.com';
@@ -33,7 +33,7 @@ careatorApp.config(function ($stateProvider) {
             resolve: {
                 result: function (careatorSessionAuth, $window) {
                     var userData = careatorSessionAuth.getAccess("userData");
-                    if (userData.email == 'vc4all@talenkart.com') {
+                    if (userData.loginType == 'superAdmin') {
 
                     } else {
                         $window.location.href = 'https://norecruits.com';
@@ -48,7 +48,7 @@ careatorApp.config(function ($stateProvider) {
             resolve: {
                 result: function (careatorSessionAuth, $window) {
                     var userData = careatorSessionAuth.getAccess("userData");
-                    if (userData.email == 'vc4all@talenkart.com') {
+                    if (userData.loginType == 'admin') {
 
                     } else {
                         $window.location.href = 'https://norecruits.com';
@@ -63,7 +63,7 @@ careatorApp.config(function ($stateProvider) {
             resolve: {
                 result: function (careatorSessionAuth, $window) {
                     var userData = careatorSessionAuth.getAccess("userData");
-                    if (userData.email == 'vc4all@talenkart.com') {
+                    if (userData.loginType == 'admin') {
 
                     } else {
                         $window.location.href = 'https://norecruits.com';
@@ -78,7 +78,7 @@ careatorApp.config(function ($stateProvider) {
             resolve: {
                 result: function (careatorSessionAuth, $window) {
                     var userData = careatorSessionAuth.getAccess("userData");
-                    if (userData.email == 'vc4all@talenkart.com') {
+                    if (userData.loginType == 'admin') {
 
                     } else {
                         $window.location.href = 'https://norecruits.com';
@@ -93,7 +93,7 @@ careatorApp.config(function ($stateProvider) {
             resolve: {
                 result: function (careatorSessionAuth, $window) {
                     var userData = careatorSessionAuth.getAccess("userData");
-                    if (userData.email == 'vc4all@talenkart.com') {
+                    if (userData.loginType == 'admin') {
 
                     } else {
                         $window.location.href = 'https://norecruits.com';
@@ -108,7 +108,7 @@ careatorApp.config(function ($stateProvider) {
             resolve: {
                 result: function (careatorSessionAuth, $window) {
                     var userData = careatorSessionAuth.getAccess("userData");
-                    if (userData.email == 'vc4all@talenkart.com') {
+                    if (userData.loginType == 'superAdmin') {
 
                     } else {
                         $window.location.href = 'https://norecruits.com';
@@ -123,7 +123,7 @@ careatorApp.config(function ($stateProvider) {
             resolve: {
                 result: function (careatorSessionAuth, $window) {
                     var userData = careatorSessionAuth.getAccess("userData");
-                    if (userData.email == 'vc4all@talenkart.com') {
+                    if (userData.loginType == 'admin') {
 
                     } else {
                         $window.location.href = 'https://norecruits.com';
@@ -138,7 +138,7 @@ careatorApp.config(function ($stateProvider) {
             resolve: {
                 result: function (careatorSessionAuth, $window) {
                     var userData = careatorSessionAuth.getAccess("userData");
-                    if (userData.email == 'vc4all@talenkart.com') {
+                    if (userData.loginType == 'admin') {
 
                     } else {
                         $window.location.href = 'https://norecruits.com';
@@ -153,7 +153,7 @@ careatorApp.config(function ($stateProvider) {
             resolve: {
                 result: function (careatorSessionAuth, $window) {
                     var userData = careatorSessionAuth.getAccess("userData");
-                    if (userData.email == 'vc4all@talenkart.com') {
+                    if (userData.loginType == 'admin') {
 
                     } else {
                         $window.location.href = 'https://norecruits.com';
@@ -165,28 +165,28 @@ careatorApp.config(function ($stateProvider) {
         .state('Cdashboard.chat', {
             url: careator_chat(),
             templateUrl: '/careatorApp/html/chat.html',
-            // resolve: {
-            //     result: function (careatorSessionAuth, $window) {
-            //         var userData = careatorSessionAuth.getAccess("userData");
-            //         if (userData.email == null || userData.email == "") {
-            //             $window.location.href = 'https://norecruits.com';
-            //         } else {
-
-            //         }
-            //     }
-            // }
+            resolve: {
+                result: function (careatorSessionAuth, $window) {
+                    var userData = careatorSessionAuth.getAccess("userData");
+                    if (userData.loginType == 'admin' || userData.loginType == 'superAdmin' || userData.loginType == 'employee') {
+                        
+                    } else {
+                        $window.location.href = 'https://norecruits.com';
+                    }
+                }
+            }
         })
         .state('Cdashboard.profile', {
             url: profile(),
             templateUrl: '/careatorApp/html/profile.html',
             resolve: {
                 result: function (careatorSessionAuth, $window) {
-                    // var userData = careatorSessionAuth.getAccess("userData");
-                    // if (userData.email == null || userData.email == "") {
-                    //     $window.location.href = 'https://norecruits.com';
-                    // } else {
-                       
-                    // }
+                    var userData = careatorSessionAuth.getAccess("userData");
+                    if (userData.loginType == 'admin' || userData.loginType == 'superAdmin' || userData.loginType == 'employee') {
+                        
+                    } else {
+                        $window.location.href = 'https://norecruits.com';
+                    }
                 }
             }
         })
@@ -202,7 +202,7 @@ careatorApp.config(function ($stateProvider) {
             resolve: {
                 result: function (careatorSessionAuth, $window) {
                     var userData = careatorSessionAuth.getAccess("userData");
-                    if (userData.email == 'vc4all@talenkart.com') {
+                    if (userData.loginType == 'admin') {
 
                     } else {
                         $window.location.href = 'https://norecruits.com';
@@ -218,10 +218,10 @@ careatorApp.config(function ($stateProvider) {
             resolve: {
                 result: function (careatorSessionAuth, $window) {
                     var userData = careatorSessionAuth.getAccess("userData");
-                    if (userData.email == null || userData.email == "") {
-                        $window.location.href = 'https://norecruits.com';
-                    } else {
+                    if (userData.loginType == 'admin' || userData.loginType == 'superAdmin' || userData.loginType == 'employee') {
                        
+                    } else {
+                        $window.location.href = 'https://norecruits.com';  
                     }
                 }
             }
@@ -232,10 +232,10 @@ careatorApp.config(function ($stateProvider) {
             resolve: {
                 result: function (careatorSessionAuth, $window) {
                     var userData = careatorSessionAuth.getAccess("userData");
-                    if (userData.email == null || userData.email == "") {
-                        $window.location.href = 'https://norecruits.com';
+                    if (userData.loginType == 'admin' || userData.loginType == 'superAdmin' || userData.loginType == 'employee') {
+                        
                     } else {
-                       
+                        $window.location.href = 'https://norecruits.com';
                     }
                 }
             }
@@ -247,10 +247,10 @@ careatorApp.config(function ($stateProvider) {
             resolve: {
                 result: function (careatorSessionAuth, $window) {
                     var userData = careatorSessionAuth.getAccess("userData");
-                    if (userData.email == null || userData.email == "") {
-                        $window.location.href = 'https://norecruits.com';
+                    if (userData.loginType == 'admin' || userData.loginType == 'superAdmin' || userData.loginType == 'employee') {
+                        
                     } else {
-                       
+                        $window.location.href = 'https://norecruits.com';
                     }
                 }
             }
@@ -261,7 +261,7 @@ careatorApp.config(function ($stateProvider) {
             resolve: {
                 result: function (careatorSessionAuth, $window) {
                     var userData = careatorSessionAuth.getAccess("userData");
-                    if (userData.email == 'vc4all@talenkart.com') {
+                    if (userData.loginType == 'admin') {
 
                     } else {
                         $window.location.href = 'https://norecruits.com';

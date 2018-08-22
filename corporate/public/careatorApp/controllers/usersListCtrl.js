@@ -1,8 +1,12 @@
-careatorApp.controller('usersListCtrl', function ($scope, $state, careatorHttpFactory, SweetAlert) {
+careatorApp.controller('usersListCtrl', function ($scope, $state, careatorHttpFactory, SweetAlert, careatorSessionAuth) {
     console.log("usersListCtrl==>");
+    $scope.userData = careatorSessionAuth.getAccess("userData");
+    console.log(" $scope.userData : " + JSON.stringify($scope.userData));
+    var orgId =  $scope.userData.orgId;
+
     $scope.getAllEmployee = function () {
         console.log("getAllEmployee-->");
-        var api = "https://norecruits.com/careator/careator_getAllEmp";
+        var api = "https://norecruits.com/careator/careator_getAllEmp/"+orgId;
         console.log("api: " + api);
         careatorHttpFactory.get(api).then(function (data) {
             console.log("data--" + JSON.stringify(data.data));

@@ -515,7 +515,7 @@ module.exports.pswdCheck = function (req, res) {
         var obj = {
             "email": careatorEmail
         }
-        if (careatorEmail == 'vc4all@talenkart.com') {
+        if (careatorEmail == 'admin@vc4all.in') {
             console.log("VC4ALL Admin login-->");
             var obj = {
                 "email": careatorEmail
@@ -609,9 +609,9 @@ module.exports.pswdCheck = function (req, res) {
         else if (emailSplit[1] != undefined) {
             console.log("other employee login-->");
             var domainCheck = {
-                "domain": emailSplit[1] 
+                "domain": emailSplit[1]
             }
-            console.log("domainCheck: "+JSON.stringify(domainCheck));
+            console.log("domainCheck: " + JSON.stringify(domainCheck));
             organizations.find(domainCheck).toArray(function (err, organizationDomain) {
                 if (err) {
                     responseData = {
@@ -620,7 +620,7 @@ module.exports.pswdCheck = function (req, res) {
                     };
                     res.status(400).send(responseData);
                 } else {
-                    console.log("organizationDomain.length: "+organizationDomain.length);
+                    console.log("organizationDomain.length: " + organizationDomain.length);
                     if (organizationDomain.length > 0) {
                         careatorMaster.find(obj).toArray(function (err, findData) {
                             console.log("findData: " + JSON.stringify(findData));
@@ -1048,7 +1048,7 @@ module.exports.resetLoginFlagsById = function (req, res) {
 module.exports.getAdminObjectId = function (req, res) {
     console.log("getAdminObjectId-->");
     careatorMaster.find({
-        "email": "vc4all@talenkart.com"
+        "loginType": "superAdmin"
     }).toArray(function (err, admin) {
         if (err) {
             console.log("err: " + JSON.stringify(err));
@@ -1214,66 +1214,77 @@ module.exports.getHistory = function (req, res) {
 module.exports.careatorMasterInsert = function (req, res) {
     console.log("careatorMasterInsert-->");
     var responseData;
-    if (!req.files)
-        return res.status(400).send('No files were uploaded.');
+    if (general.emptyCheck(req.params.orgId)) {
+        if (!req.files)
+            return res.status(400).send('No files were uploaded.');
 
-    var userDataFile = req.files.img;
-    console.log("userDataFile: " + userDataFile);
-    var parser = csv.fromString(userDataFile.data.toString(), {
-        headers: true,
-        ignoreEmpty: true
-    }).on("data", function (data) {
-        console.log("data: " + JSON.stringify(data));
-        parser.pause();
-        if (data.Name == "#" || alreadyExist == 'yes') {
-            parser.resume();
-        } else {
-            module.exports.careatorMasterInsertValidate(data, function (err) {
-                console.log("validation -->");
-                console.log("alreadyExist : " + alreadyExist + " existEmail: " + existEmail + " existEmpId: " + existEmpId);
+        var userDataFile = req.files.img;
+        console.log("userDataFile: " + userDataFile);
+        var parser = csv.fromString(userDataFile.data.toString(), {
+            headers: true,
+            ignoreEmpty: true
+        }).on("data", function (data) {
+            console.log("data: " + JSON.stringify(data));
+            parser.pause();
+            if (data.Name == "#" || alreadyExist == 'yes') {
                 parser.resume();
-            });
-        }
-    })
-        .on("end", function () {
-            console.log("end marker: ");
-            if (alreadyExist == 'yes') {
-                careatorMasterArray = [];
-                alreadyExist = null;
-                if (existEmpId != null) {
-                    var temp = existEmpId;
-                } else if (existEmail != null) {
-                    var temp = existEmail;
-                }
-
-                existEmail = null;
-                existEmpId = null;
-                responseData = {
-                    status: false,
-                    message: "Upload failed because this " + temp + " already exist",
-                };
-                res.status(400).send(responseData);
             } else {
-                careatorMaster.insert(careatorMasterArray, function (err, insertedData) {
-                    careatorMasterArray = [];
-                    if (err) {
-                        console.log("err: " + JSON.stringify(err));
-                        responseData = {
-                            status: false,
-                            message: property.E0007
-                        };
-                        res.status(400).send(responseData);
-                    } else {
-                        console.log("insertedData: " + JSON.stringify(insertedData));
-                        responseData = {
-                            status: true,
-                            message: property.S0001,
-                        };
-                        res.status(200).send(responseData);
-                    }
-                })
+                data.orgId = ObjectId(req.params.orgId);
+                module.exports.careatorMasterInsertValidate(data, function (err) {
+                    console.log("validation -->");
+                    console.log("alreadyExist : " + alreadyExist + " existEmail: " + existEmail + " existEmpId: " + existEmpId);
+                    parser.resume();
+                });
             }
         })
+            .on("end", function () {
+                console.log("end marker: ");
+                if (alreadyExist == 'yes') {
+                    careatorMasterArray = [];
+                    alreadyExist = null;
+                    if (existEmpId != null) {
+                        var temp = existEmpId;
+                    } else if (existEmail != null) {
+                        var temp = existEmail;
+                    }
+
+                    existEmail = null;
+                    existEmpId = null;
+                    responseData = {
+                        status: false,
+                        message: "Upload failed because this " + temp + " already exist",
+                    };
+                    res.status(400).send(responseData);
+                } else {
+                    careatorMaster.insert(careatorMasterArray, function (err, insertedData) {
+                        careatorMasterArray = [];
+                        if (err) {
+                            console.log("err: " + JSON.stringify(err));
+                            responseData = {
+                                status: false,
+                                message: property.E0007
+                            };
+                            res.status(400).send(responseData);
+                        } else {
+                            console.log("insertedData: " + JSON.stringify(insertedData));
+                            responseData = {
+                                status: true,
+                                message: property.S0001,
+                            };
+                            res.status(200).send(responseData);
+                        }
+                    })
+                }
+            })
+    }
+    else {
+        response = {
+            status: false,
+            message: property.N0003,
+            data: obj
+        };
+        res.status(400).send(response);
+    }
 }
 module.exports.careatorMasterInsertValidate = function (data, callback) {
     console.log("careatorMasterInsertValidate-->");
@@ -1294,6 +1305,7 @@ module.exports.careatorMasterInsertValidate = function (data, callback) {
         "password": data.Password,
         "Designation": data.Designation,
         "sessionRandomId": sessionRandomId,
+        "orgId": data.orgId,
         "status": "active",
         "chatStatus": "Available",
         "restrictedTo": [],
@@ -1347,6 +1359,7 @@ module.exports.careatorSingleUserInsert = function (req, res) {
         "sessionRandomId": sessionRandomId,
         "videoRights": req.body.videoRights,
         "chatRights": req.body.chatRights,
+        "orgId": ObjectId(req.body.orgId),
         "status": "active",
         "chatStatus": "Available",
         "restrictedTo": [],
@@ -1431,26 +1444,38 @@ module.exports.careatorSingleUserInsert = function (req, res) {
 
 module.exports.careator_getAllEmp = function (req, res) {
     console.log("careator_getAllEmp-->");
+    console.log("orgId: " + req.params.orgId);
     var response;
-    careatorMaster.find().toArray(function (err, allEmp) {
-        if (err) {
-            console.log("err: " + JSON.stringify(err));
-            response = {
-                status: false,
-                message: property.E0007,
-                data: err
-            };
-            res.status(400).send(responseData);
-        } else {
-            console.log("allEmp: " + JSON.stringify(allEmp));
-            response = {
-                status: true,
-                message: property.S0008,
-                data: allEmp
-            };
-            res.status(200).send(response);
-        }
-    })
+    if (general.emptyCheck(req.params.orgId)) {
+
+        careatorMaster.find({ "orgId": ObjectId(req.params.orgId), loginType: { $ne: "admin" } }).toArray(function (err, allEmp) {
+            if (err) {
+                console.log("err: " + JSON.stringify(err));
+                response = {
+                    status: false,
+                    message: property.E0007,
+                    data: err
+                };
+                res.status(400).send(responseData);
+            } else {
+                console.log("allEmp: " + JSON.stringify(allEmp));
+                response = {
+                    status: true,
+                    message: property.S0008,
+                    data: allEmp
+                };
+                res.status(200).send(response);
+            }
+        })
+    }
+    else {
+        response = {
+            status: false,
+            message: property.N0003,
+            data: obj
+        };
+        res.status(400).send(response);
+    }
 
 }
 
@@ -1756,13 +1781,7 @@ module.exports.careator_getChatGroupListById = function (req, res) {
     console.log("getChatGroupListById-->");
     var id = req.params.id;
     if (general.emptyCheck(id)) {
-        careatorChatGroup.find({
-            "groupMembers": {
-                $elemMatch: {
-                    "userId": id
-                }
-            }
-        }).toArray(function (err, data) {
+        careatorChatGroup.find({ "groupMembers": { $elemMatch: { "userId": id } } }).toArray(function (err, data) {
             if (err) {
                 console.log("err: " + JSON.stringify(err));
                 responseData = {
@@ -2545,8 +2564,11 @@ module.exports.userEditById = function (req, res) {
         console.log("req.body.videoRights: " + req.body.videoRights);
         var updateVlaue = {};
 
-        if (req.body.userName) {
-            updateVlaue.name = req.body.userName;
+        if (req.body.firstName) {
+            updateVlaue.firstName = req.body.firstName;
+        }
+        if(req.body.lastName) {
+            updateVlaue.lastName = req.body.lastName;
         }
         if (req.body.empId) {
             updateVlaue.empId = req.body.empId;

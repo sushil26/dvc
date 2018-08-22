@@ -40,7 +40,7 @@ careatorApp.controller('createGroupCtrl', function ($scope, $state,careatorHttpF
                     console.log("groupMembers[x].email: " + groupMembers[x].email + " groupMembers[x]._id: " + groupMembers[x]._id);
                     $scope.groupMemberData.push({
                         "email": groupMembers[x].email,
-                        "label": groupMembers[x].name + " - " + groupMembers[x].empId,
+                        "label": groupMembers[x].firstName+" "+ groupMembers[x].lastName + " - " + groupMembers[x].empId,
                         "id": groupMembers[x]._id
                     });
                     console.log(" after $scope.groupMemberData: " + JSON.stringify($scope.groupMemberData));

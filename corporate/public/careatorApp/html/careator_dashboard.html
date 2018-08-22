@@ -172,7 +172,7 @@
                 <!-- sidebar menu start-->
                 <div class="sidebar-menu" id="sidebarmnudesktop" ng-hide="sideBarMenu">
                     <a href="#!/dashboard/adminCreate">
-                        <div class="col-sm-6  col-xs-4 ictextparnt" ng-if="userData.email=='vc4all@talenkart.com'">
+                        <div class="col-sm-6  col-xs-4 ictextparnt" ng-if="loginType=='superAdmin'">
                              
                             <i class="fa fa-user-secret ictexticon">
                             </i>
@@ -181,7 +181,7 @@
                         </div>
                     </a>
                     <a href="#!/dashboard/adminList">
-                        <div class="col-sm-6  col-xs-4 ictextparnt" ng-if="userData.email=='vc4all@talenkart.com'">
+                        <div class="col-sm-6  col-xs-4 ictextparnt" ng-if="loginType=='superAdmin'">
                             <i class="fa fa-list-alt ictexticon">
                             </i>
                             <br>
@@ -198,7 +198,7 @@
                         </div>
                     </a>
                     <a href="#!/dashboard/userRestrict">
-                        <div class="col-sm-6  col-xs-4 ictextparnt" ng-if="userData.email=='vc4all@talenkart.com'">
+                        <div class="col-sm-6  col-xs-4 ictextparnt" ng-if="loginType=='admin'">
                             <i class="fa fa-universal-access ictexticon">
                             </i>
                             <br>
@@ -206,7 +206,7 @@
                         </div>
                     </a>
                     <a href="#!/dashboard/createGroup">
-                        <div class="col-sm-6  col-xs-4 ictextparnt" ng-if="userData.email=='vc4all@talenkart.com'">
+                        <div class="col-sm-6  col-xs-4 ictextparnt" ng-if="loginType=='admin'">
 
                             <i class="fa fa-users ictexticon">
                             </i>
@@ -215,7 +215,7 @@
                         </div>
                     </a>
                     <a href="#!/dashboard/usersList">
-                        <div class="col-sm-6  col-xs-4 ictextparnt" ng-if="userData.email=='vc4all@talenkart.com'">
+                        <div class="col-sm-6  col-xs-4 ictextparnt" ng-if="loginType=='admin'">
                             <i class="fa fa-list-alt ictexticon">
                             </i>
                             <br>
@@ -224,7 +224,7 @@
                         </div>
                     </a>
                     <a href="#!/dashboard/loginDetails">
-                        <div class="col-sm-6  col-xs-4 ictextparnt" ng-if="userData.email=='vc4all@talenkart.com'">
+                        <div class="col-sm-6  col-xs-4 ictextparnt" ng-if="loginType=='admin'">
                             <i class="fa fa-address-book ictexticon">
                             </i>
                             <br>
@@ -232,7 +232,7 @@
                         </div>
                     </a>
                     <a href="#!/dashboard/groupList ">
-                        <div class="col-sm-6  col-xs-4 ictextparnt" ng-if="userData.email=='vc4all@talenkart.com'">
+                        <div class="col-sm-6  col-xs-4 ictextparnt" ng-if="loginType=='admin'">
                             <i class="fa fa-list ictexticon">
                             </i>
                             <br>
@@ -319,7 +319,7 @@
                 </div>
                 <div class="sidebar-menu" id="sidebarmnu" ng-hide="sideBarMenu">
                         <a href="#!/dashboard/adminCreate" ng-click="menuclick()"> 
-                            <div class="col-sm-6  col-xs-4 ictextparnt" ng-if="userData.email=='vc4all@talenkart.com'">
+                            <div class="col-sm-6  col-xs-4 ictextparnt" ng-if="loginType=='superAdmin'">
                                 <i class="fa fa-user-secret ictexticon">
                                 </i>
                                 <br>
@@ -327,7 +327,7 @@
                             </div>
                         </a>
                         <a href="#!/dashboard/adminList" ng-click="menuclick()">
-                            <div class="col-sm-6  col-xs-4 ictextparnt" ng-if="userData.email=='vc4all@talenkart.com'">
+                            <div class="col-sm-6  col-xs-4 ictextparnt" ng-if="loginType=='superAdmin'">
                                 <i class="fa fa-list-alt ictexticon">
                                 </i>
                                 <br>
@@ -336,7 +336,7 @@
                             </div>
                         </a>
                     <a href="#!/dashboard/userCreate" ng-click="menuclick()">
-                        <div class="col-sm-6  col-xs-4 ictextparnt" ng-if="userData.email=='vc4all@talenkart.com'">
+                        <div class="col-sm-6  col-xs-4 ictextparnt" ng-if="loginType=='admin'">
                             <i class="fa fa-user-circle ictexticon">
                             </i>
                             <br>
@@ -344,7 +344,7 @@
                         </div>
                     </a>
                     <a href="#!/dashboard/userRestrict" ng-click="menuclick()">
-                        <div class="col-sm-6  col-xs-4 ictextparnt" ng-if="userData.email=='vc4all@talenkart.com'">
+                        <div class="col-sm-6  col-xs-4 ictextparnt" ng-if="loginType=='admin'">
                             <i class="fa fa-universal-access ictexticon">
                             </i>
                             <br>
@@ -352,7 +352,7 @@
                         </div>
                     </a>
                     <a href="#!/dashboard/createGroup" ng-click="menuclick()">
-                        <div class="col-sm-6  col-xs-4 ictextparnt" ng-if="userData.email=='vc4all@talenkart.com'">
+                        <div class="col-sm-6  col-xs-4 ictextparnt" ng-if="loginType=='admin'">
 
                             <i class="fa fa-users ictexticon">
                             </i>
@@ -361,7 +361,7 @@
                         </div>
                     </a>
                     <a href="#!/dashboard/usersList" ng-click="menuclick()">
-                        <div class="col-sm-6  col-xs-4 ictextparnt" ng-if="userData.email=='vc4all@talenkart.com'">
+                        <div class="col-sm-6  col-xs-4 ictextparnt" ng-if="loginType=='admin'">
                             <i class="fa fa-list-alt ictexticon">
                             </i>
                             <br>
@@ -370,7 +370,7 @@
                         </div>
                     </a>
                     <a href="#!/dashboard/loginDetails" ng-click="menuclick()">
-                        <div class="col-sm-6  col-xs-4 ictextparnt" ng-if="userData.email=='vc4all@talenkart.com'">
+                        <div class="col-sm-6  col-xs-4 ictextparnt" ng-if="loginType=='admin'">
                             <i class="fa fa-address-book ictexticon">
                             </i>
                             <br>
@@ -378,7 +378,7 @@
                         </div>
                     </a>
                     <a href="#!/dashboard/groupList" ng-click="menuclick()">
-                        <div class="col-sm-6  col-xs-4 ictextparnt" ng-if="userData.email=='vc4all@talenkart.com'">
+                        <div class="col-sm-6  col-xs-4 ictextparnt" ng-if="loginType=='admin'">
                             <i class="fa fa-list ictexticon">
                             </i>
                             <br>

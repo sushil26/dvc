@@ -563,7 +563,7 @@ io.sockets.on('connection', function (socket) {
                     var queryObj = {
                         "userId": data.userId
                     }
-                    loginDetails.update(queryObj, { $set: { "userId": data.userId, "login": false, "logoutDate": date, "logout": true } }, { upsert: true }, function (err, logoutData) {
+                    loginDetails.update(queryObj, { $set: { "login": false, "logoutDate": date, "logout": true } }, { upsert: true }, function (err, logoutData) {
                         if (err) {
                             console.log("errr: " + JSON.stringify(err));
                         }
@@ -572,9 +572,6 @@ io.sockets.on('connection', function (socket) {
                         }
 
                     })
-
-
-
                 }
             })
             console.log("Deleting id: " + stuff[4]);
@@ -601,6 +598,18 @@ io.sockets.on('connection', function (socket) {
                 console.log("errr: " + JSON.stringify(err));
             }
             else {
+                var queryObj = {
+                    "userId": data.userId
+                }
+                loginDetails.update(queryObj, { $set: { "login": false, "logoutDate": date, "logout": true } }, { upsert: true }, function (err, logoutData) {
+                    if (err) {
+                        console.log("errr: " + JSON.stringify(err));
+                    }
+                    else {
+                        console.log("logoutData: " + JSON.stringify(logoutData));
+                    }
+
+                })
                 console.log("updateData: " + JSON.stringify(updateData));
                 io.sockets.emit('comm_logoutNotifyToUserById', { "userId": data.userId, "email": data.email, "sessionURL": data.sessionURL, "sessionRandomId": data.sessionRandomId }) /* ### Note: Send quick message view notification to event sender(who's user id is matched with this userId) ### */
             }

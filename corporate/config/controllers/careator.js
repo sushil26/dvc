@@ -2564,8 +2564,11 @@ module.exports.userEditById = function (req, res) {
         console.log("req.body.videoRights: " + req.body.videoRights);
         var updateVlaue = {};
 
-        if (req.body.userName) {
-            updateVlaue.name = req.body.userName;
+        if (req.body.firstName) {
+            updateVlaue.firstName = req.body.firstName;
+        }
+        if(req.body.lastName) {
+            updateVlaue.lastName = req.body.lastName;
         }
         if (req.body.empId) {
             updateVlaue.empId = req.body.empId;

@@ -241,7 +241,7 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
     return dfd.promise;
   }
    
-  function sendEventSchedule(){
+  function sendEventSchedule(url){
     console.log("Back to function call-->");
     console.log("url: " + url);
     var api = "https://norecruits.com/careator_eventSchedule/careator_sendEventSchedule";
@@ -322,7 +322,7 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
     var url;
     $timeout(function () {
       getSocketUrlFromServer().then(function (url) {
-        sendEventSchedule();
+        sendEventSchedule(url);
       });
     }, 0);
     console.log("<--eventSend");

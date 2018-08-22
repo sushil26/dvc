@@ -443,11 +443,13 @@ module.exports.getOrg_admin_byOrgId = function (req, res) {
                         res.status(400).send(responseData);
                     } else {
                         console.log("adminPassword[0]: "+JSON.stringify(adminPassword[0]));
-                        data[0].pswd =  adminPassword[0].pswd;
+                        var obj = data[0];
+                        obj.password =  adminPassword[0].password;
+                        console.log("obj: "+JSON.stringify(obj));
                         responseData = {
                             status: true,
                             message: "Successfull updated status",
-                            data: data[0]
+                            data: obj
                         };
 
                         res.status(200).send(responseData);

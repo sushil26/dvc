@@ -2578,6 +2578,67 @@ module.exports.careator_getGroupById = function (req, res) {
     }
 
 }
+module.exports.orgEditById = function (req, res) {
+    console.log("userEditById-->");
+    var response;
+    var id = req.params.id;
+    console.log("id: " + id);
+    if (general.emptyCheck(id)) {
+        var queryId = {
+            "_id": ObjectId(id)
+        }
+        var updateVlaue = {};
+
+        if (req.body.organizationName) {
+            updateVlaue.organizationName = req.body.organizationName;
+        }
+        if (req.body.organizationDomain) {
+            updateVlaue.organizationDomain = req.body.organizationDomain;
+        }
+        if (req.body.dor) {
+            updateVlaue.empId = req.body.dor;
+        }
+        if (req.body.registrationRegNumber) {
+            updateVlaue.Designation = req.body.registrationRegNumber;
+        }
+    
+        console.log("updateValue: " + JSON.stringify(updateVlaue));
+        organizations.update(queryId, {
+            $set: updateVlaue
+        }, function (err, updatedData) {
+            if (err) {
+                console.log("err: " + JSON.stringify(err));
+                response = {
+                    status: false,
+                    message: property.E0007,
+                    data: err
+                };
+                res.status(400).send(response);
+            } else {
+                console.log("updatedData: " + JSON.stringify(updatedData));
+                response = {
+                    status: true,
+                    message: property.S0015,
+                    data: updatedData
+                };
+                res.status(200).send(response);
+            }
+        })
+    } else {
+        console.log("Empty value found");
+        var obj = {
+            "id": id
+        }
+        response = {
+            status: false,
+            message: property.N0003,
+            data: obj
+        };
+        res.status(400).send(response);
+    }
+
+}
+
 module.exports.userEditById = function (req, res) {
     console.log("userEditById-->");
     var response;

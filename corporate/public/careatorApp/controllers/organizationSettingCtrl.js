@@ -22,4 +22,44 @@ careatorApp.controller('organizationSettingCtrl', function ($scope,  $rootScope,
         })
     }
     $scope.getOrg_admin_byOrgId(id);
+
+
+    $scope.updateBasicInfo = function () {
+        console.log("updateBasicInfo-->");
+        var api = "https://norecruits.com/careator/orgEditById/" + id;
+        console.log("api: " + api);
+  
+            var obj = {
+                "organizationName": $scope.organizationName,
+                "organizationDomain": $scope.organizationDomain,
+                "dor": $scope.dor,
+                "registrationRegNumber": $scope.registrationRegNumber,
+                "email": $scope.adminEmail,
+                "mobNumber": $scope.mobNumber,
+                "streetName": $scope.streetName,
+                "city": $scope.city,
+                "state": $scope.state,
+                "pinCode": $scope.pinCode,
+                "country": $scope.country,
+                "firstName": $scope.adminFirstName,
+                "lastName": $scope.adminLastName,
+                "pswd": $scope.adminPassword,
+            }
+      
+        careatorHttpFactory.post(api, obj).then(function (data) {
+            console.log("data--" + JSON.stringify(data.data));
+            var checkStatus = careatorHttpFactory.dataValidation(data);
+            console.log("data--" + JSON.stringify(data.data));
+            if (checkStatus) {
+                console.log(data.data.message);
+                $state.go("Cdashboard.adminListCtrl")
+            }
+            else {
+                console.log("Sorry: " + data.data.message);
+            }
+        })
+    }
+
+
+
 })

@@ -192,4 +192,7 @@ careatorApp.controller('groupListCtrl', function ($scope, $state, careatorHttpFa
         $scope.sortKey = keyname; //set the sortKey to the param passed
         $scope.reverse = !$scope.reverse; //if true make it false and vice versa
     }
+
+
+    
 })

@@ -1585,7 +1585,13 @@ module.exports.groupStatusChangeById = function (req, res) {
                         };
                         res.status(400).send(response);
                     } else {
-
+                        console.log("emit started to client-->");
+                        var io = req.app.get('socketio');
+                        var emitObj = {
+                            "id": id,
+                            "status": status,
+                        }
+                        io.emit('comm_groupStatusNotify', emitObj); /* ### Note: Emit message to client(groupListCtrl.js) ### */
                         console.log("updatedData: " + JSON.stringify(data));
                         response = {
                             status: true,

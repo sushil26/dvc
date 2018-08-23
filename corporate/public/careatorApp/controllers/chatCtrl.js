@@ -522,7 +522,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
         });
       }
     } else if ($scope.selectedType == "group") {
-      console.log("$scope.sendGroupText_withData.status: "+$scope.sendGroupText_withData.status);
+      console.log("$scope.sendGroupText_withData.status: " + $scope.sendGroupText_withData.status);
       if ($scope.sendGroupText_withData.status != 'inactive') {
 
         obj = {
@@ -1195,6 +1195,18 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
           /* ##### End get group list ##### */
         }
       }
+    }
+  });
+  socket.on("comm_groupStatusNotify", function (data) {
+    console.log("****comm_groupStatusNotify-->: " + JSON.stringify(data));
+    if ($scope.sendGroupText_withData.group_id == data.id) {
+      $scope.sendGroupText_withData.status = data.status;
+    }
+    else if ($scope.individualData.group_id == data.id) {
+      $scope.individualData.status = data.status;
+    }
+    else {
+
     }
   });
   /* ### End: receive message from careator.js  ### */

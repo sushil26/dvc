@@ -14,6 +14,10 @@ careatorApp.controller('userLoginDetailsCtrl', function ($scope, $state, careato
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
                 $scope.allemployeeLoginDetails = data.data.data;
+                $scope.logDetails = [];
+                for(var x=0;x<$scope.allemployeeLoginDetails.length;x++){
+                    $scope.logDetails[$scope.allemployeeLoginDetails._id] = $scope.allemployeeLoginDetails[x];
+                }
                 console.log("allemployeeLoginDetails: " + JSON.stringify($scope.allemployeeLoginDetails));
                 console.log(data.data.message);
             } else {

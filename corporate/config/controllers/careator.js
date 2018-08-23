@@ -654,7 +654,14 @@ module.exports.pswdCheck = function (req, res) {
                                                                 res.status(400).send(responseData);
                                                             } else {
                                                                 // log.info("req.originalUrl: " + req.originalUrl + " Email: " + findData[0].email, " Date: (" + date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate() + ")" + " Time: (" + date.getHours() + ":" + date.getMinutes() + ")");
-                                                                console.log("log: " + log);
+                                                                console.log("loginData: " + Json.stringify(loginData));
+                                                                // console.log("emit started to client-->");
+                                                                // var io = req.app.get('socketio');
+                                                                // var emitObj = {
+                                                                //     "id": id,
+                                                                //     "status": status,
+                                                                // }
+                                                                // io.emit('comm_groupStatusNotify', emitObj); /* ### Note: Emit message to client(groupListCtrl.js) ### */
                                                                 responseData = {
                                                                     status: true,
                                                                     message: property.S0005,

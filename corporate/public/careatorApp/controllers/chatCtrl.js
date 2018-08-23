@@ -549,7 +549,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
 
     // if (upload_form.file.$valid && chatFile) { //check if from is valid
 
-      console.log("chatFile: " + chatFile);
+      console.log("chatFile: " + chatFile.size);
       console.log("chatFilewithJson: " + JSON.stringify(chatFile));
       console.log("$scope.chatFile: " + $scope.chatFile);
       console.log("$scope.chatFilewith json: " + JSON.stringify(chatFile));

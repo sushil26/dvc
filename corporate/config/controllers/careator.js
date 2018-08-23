@@ -1775,6 +1775,14 @@ module.exports.careator_chat_creteGroup = function (req, res) {
                 res.status(400).send(response);
             } else {
                 console.log("groupCreate: " + JSON.stringify(groupCreate));
+                var io = req.app.get('socketio');
+                var emitObj = {
+                    "groupMembers": insertObj.groupMembers,
+                    "orgId": req.body.orgId,
+                }
+               
+                io.emit('comm_groupCreateNotify', emitObj); /* ### Note: Emit message to client(chatCtrl.js) ### */
+
                 response = {
                     status: true,
                     message: property.S0011,
@@ -1834,10 +1842,10 @@ module.exports.careator_getChatGroupListById = function (req, res) {
 
 module.exports.careator_getChatGroupList = function (req, res) {
     console.log("careator_getChatGroupList-->");
-    console.log("req.params.orgId: "+req.params.orgId);
+    console.log("req.params.orgId: " + req.params.orgId);
     var id = req.params.orgId;
     if (general.emptyCheck(id)) {
-        careatorChatGroup.find({"orgId":ObjectId(id)}).toArray(function (err, data) {
+        careatorChatGroup.find({ "orgId": ObjectId(id) }).toArray(function (err, data) {
             if (err) {
                 console.log("err: " + JSON.stringify(err));
                 responseData = {
@@ -1919,7 +1927,8 @@ module.exports.careator_getChatRightsAllemp_byLoginId = function (req, res) {
     var id = req.params.id;
 
     if (general.emptyCheck(id)) {
-        careatorMaster.find({"_id": { $ne: ObjectId(id)}, "orgId": ObjectId(req.params.orgId),
+        careatorMaster.find({
+            "_id": { $ne: ObjectId(id) }, "orgId": ObjectId(req.params.orgId),
             "chatRights": "yes"
         }).toArray(function (err, allEmp_chat) {
             if (err) {

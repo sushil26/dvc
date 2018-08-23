@@ -1149,6 +1149,15 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
         $scope.receiverChatStatus = data.status;
       }
     });
+    socket.on("comm_groupCreateNotify", function (data) {
+      console.log("****comm_groupCreateNotify-->: " + JSON.stringify(data));
+      if ($scope.userData.orgId == data.orgId) {
+        console.log("data.groupMembers: "+JSON.stringify(data.groupMembers));
+        for(var x=0;x<data.groupMembers.length;x++){
+         
+        }
+      }
+    });
     /* ### End: receive message from careator.js  ### */
 
     /* ### Start: Front end  CSS### */

@@ -4,6 +4,9 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
     $scope.tickInterval = 1000 //ms
     $scope.propertyJson = $rootScope.propertyJson;
     console.log("localStorage.getItem(careatorEmail): " + localStorage.getItem("careatorEmail"));
+    $scope.userData = careatorSessionAuth.getAccess("userData");
+    $scope.loginUserName = userData.firstName + " " + userData.lastName;
+    $scope.userId = userData.userId;
 
     $scope.getToDate = function () {
         console.log("Get To Date-->");
@@ -38,7 +41,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
             var checkStatus = careatorHttpFactory.dataValidation(data);
             console.log("checkStatus: " + checkStatus);
             if (checkStatus) {
-                if (data.data.data[0].sessionRandomId == localStorage.getItem("sessionRandomId")) {
+                if (data.data.data[0].sessionRandomId ==  $scope.userData.sessionRandomId) {
                     // var sessionHostBlock;
                     console.log("data.data.data[0].isDisconnected: " + data.data.data[0].isDisconnected);
                     if (data.data.data[0].isDisconnected == 'yes' || data.data.data[0].isDisconnected == undefined) {
@@ -48,39 +51,39 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                     }
                     console.log("$scope.sessionHostBlock: " + $scope.sessionHostBlock);
                 } else {
-                    console.log("localstorage session randomId(" + localStorage.getItem('sessionRandomId') + ") is not matched with db data (" + data.data.data[0].sessionRandomId + ")");
+                    console.log("localstorage session randomId(" + $scope.userData.sessionRandomId + ") is not matched with db data (" + data.data.data[0].sessionRandomId + ")");
                     /* ##### Start: Logout Logic  ##### */
-                    // var id = userData.userId;
-                    // var api = "https://norecruits.com/careator_loggedin/getLoggedinSessionURLById/" + id;
-                    // console.log("api: " + api);
-                    // careatorHttpFactory.get(api).then(function (data) {
-                    //     console.log("data--" + JSON.stringify(data.data));
-                    //     var checkStatus = careatorHttpFactory.dataValidation(data);
-                    //     console.log("checkStatus: " + checkStatus);
-                    //     if (checkStatus) {
-                    //         if (data.data.data.sessionURL != undefined) {
-                    //             var sessionURL = data.data.data.sessionURL;
-                    //             console.log(data.data.message);
-                    //             console.log("sessionURL: " + sessionURL);
-                    //             socket.emit("comm_logoutSession", {
-                    //                 "userId": $scope.userData.userId,
-                    //                 "email": $scope.userData.email,
-                    //                 "sessionURL": sessionURL,
-                    //                 "sessionRandomId": data.data.data.sessionRandomId
-                    //             }); /* ### Note: Logout notification to server ### */
-                    //         } else {
-                    //             socket.emit("comm_logoutSession", {
-                    //                 "userId": $scope.userData.userId,
-                    //                 "email": $scope.userData.email,
-                    //                 "sessionURL": "",
-                    //                 "sessionRandomId": data.data.data.sessionRandomId
-                    //             }); /* ### Note: Logout notification to server ### */
-                    //         }
-                    //     } else {
-                    //         console.log("Sorry");
-                    //         console.log(data.data.message);
-                    //     }
-                    // })
+                    var id = userData.userId;
+                    var api = "https://norecruits.com/careator_loggedin/getLoggedinSessionURLById/" + id;
+                    console.log("api: " + api);
+                    careatorHttpFactory.get(api).then(function (data) {
+                        console.log("data--" + JSON.stringify(data.data));
+                        var checkStatus = careatorHttpFactory.dataValidation(data);
+                        console.log("checkStatus: " + checkStatus);
+                        if (checkStatus) {
+                            if (data.data.data.sessionURL != undefined) {
+                                var sessionURL = data.data.data.sessionURL;
+                                console.log(data.data.message);
+                                console.log("sessionURL: " + sessionURL);
+                                socket.emit("comm_logoutSession", {
+                                    "userId": $scope.userData.userId,
+                                    "email": $scope.userData.email,
+                                    "sessionURL": sessionURL,
+                                    "sessionRandomId": data.data.data.sessionRandomId
+                                }); /* ### Note: Logout notification to server ### */
+                            } else {
+                                socket.emit("comm_logoutSession", {
+                                    "userId": $scope.userData.userId,
+                                    "email": $scope.userData.email,
+                                    "sessionURL": "",
+                                    "sessionRandomId": data.data.data.sessionRandomId
+                                }); /* ### Note: Logout notification to server ### */
+                            }
+                        } else {
+                            console.log("Sorry");
+                            console.log(data.data.message);
+                        }
+                    })
                     /* ##### End: Logout Logic  ##### */
                 }
 

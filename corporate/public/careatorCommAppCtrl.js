@@ -37,7 +37,7 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
             var checkStatus = careatorHttpFactory.dataValidation(data);
             console.log("checkStatus: " + checkStatus);
             if (checkStatus) {
-                if (data.data.data[0].sessionRandomId == localStorage.getItem("sessionRandomId")) {
+                if (data.data.data[0].sessionRandomId == $scope.userData.sessionRandomId) {
                     // var sessionHostBlock;
                     console.log("data.data.data[0].isDisconnected: " + data.data.data[0].isDisconnected);
                     if (data.data.data[0].isDisconnected == 'yes' || data.data.data[0].isDisconnected == undefined) {
@@ -47,7 +47,7 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
                     }
                     console.log("$scope.sessionHostBlock: " + $scope.sessionHostBlock);
                 } else {
-                    console.log("localstorage session randomId(" + localStorage.getItem('sessionRandomId') + ") is not matched with db data (" + data.data.data[0].sessionRandomId + ")");
+                    console.log("localstorage session randomId(" + $scope.userData.sessionRandomId + ") is not matched with db data (" + data.data.data[0].sessionRandomId + ")");
                     /* ##### Start: Logout Logic  ##### */
                     var id = userData.userId;
                     var api = "https://norecruits.com/careator_loggedin/getLoggedinSessionURLById/" + id;

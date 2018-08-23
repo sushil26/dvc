@@ -52,7 +52,7 @@ careatorApp.controller('userLoginDetailsCtrl', function ($scope, $state, careato
             for(var x=0;x<$scope.allemployeeLoginDetails.length;x++)
             {
                 console.log("for loop-->");
-                if($scope.allemployeeLoginDetails[x].sessionRandomId == data.data)
+                if($scope.allemployeeLoginDetails[x].sessionRandomId == data.sessionRandomId)
                 {
                     console.log("stated to update-->");;
                     $scope.allemployeeLoginDetails[x].logoutDate = data.logoutDate;

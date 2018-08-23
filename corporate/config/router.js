@@ -33,8 +33,6 @@ module.exports = function (app) {
     app.get('/careator_getChatListRecordById/getChatListRecordById/:id', careator.getChatListRecordById);
     app.get('/careator_userDelete/userDeleteById/:id', careator.userDeleteById);
     app.get('/careator_groupDelete/groupDeleteById/:id', careator.groupDeleteById);
-
-    app.post('/careator/orgEditById/:id', careator.orgEditById);
     app.post('/careator/userEditById/:id', careator.userEditById);
     app.post('/careator/groupEditById/:id', careator.groupEditById);
     app.get('/careator_getUser/careator_getUserById/:id', careator.careator_getUserById);
@@ -72,16 +70,16 @@ module.exports = function (app) {
     app.post('/careator_comm_profileImgUpdateById/comm_profileImgUpdateById/:id', careator.comm_profileImgUpdateById);
 
     app.get('/careator/careator_getAllEmpLoginDetails/:orgId', careator.careator_getAllEmpLoginDetails);
-     app.post('/careator_chatFileUpload/chatFileUpload', chatUpload.chatFileUpload);
-     app.get('/careator_chatFileUpload/getChatFileUpload/:id', chatUpload.getChatFileUpload);
+    app.post('/careator_chatFileUpload/chatFileUpload', chatUpload.chatFileUpload);
+    app.get('/careator_chatFileUpload/getChatFileUpload/:id', chatUpload.getChatFileUpload);
 
-     app.post('/c/adminCreate', cAdminAction.adminCreate);
-     app.get('/c/getAllAdmin', cAdminAction.getAllAdmin);
-     app.get('/c/getAllOrg', cAdminAction.getAllOrg);
-     app.post('/c/updateOrgStatus', cAdminAction.updateOrgStatus);
-     app.get('/c/getOrg_admin_byOrgId/:id', cAdminAction.getOrg_admin_byOrgId);
+    app.post('/c/adminCreate', cAdminAction.adminCreate);
+    app.get('/c/getAllAdmin', cAdminAction.getAllAdmin);
+    app.get('/c/getAllOrg', cAdminAction.getAllOrg);
+    app.post('/c/updateOrgStatus', cAdminAction.updateOrgStatus);
+    app.get('/c/getOrg_admin_byOrgId/:id', cAdminAction.getOrg_admin_byOrgId);
+    app.post('/careator/orgEditById/:id', careator.orgEditById);
 
-    
+
 }
 
-  

@@ -419,7 +419,7 @@ module.exports.getOrg_admin_byOrgId = function (req, res) {
         var obj = {
             _id: ObjectId(req.params.id)
         };
-       console.log("obj: "+JSON.stringify(obj));
+        console.log("obj: " + JSON.stringify(obj));
         organizations.find(obj).toArray(function (err, data) {
             if (err) {
                 responseData = {
@@ -432,7 +432,7 @@ module.exports.getOrg_admin_byOrgId = function (req, res) {
                 var findObj = {
                     orgId: ObjectId(req.params.id)
                 };
-                console.log("findObj: "+JSON.stringify(findObj));
+                console.log("findObj: " + JSON.stringify(findObj));
                 careatorMaster.find(findObj).toArray(function (err, adminPassword) {
                     if (err) {
                         responseData = {
@@ -442,9 +442,9 @@ module.exports.getOrg_admin_byOrgId = function (req, res) {
                         };
                         res.status(400).send(responseData);
                     } else {
-                        console.log("adminPassword[0]: "+JSON.stringify(adminPassword[0]));
+                        console.log("adminPassword[0]: " + JSON.stringify(adminPassword[0]));
                         var obj = data[0];
-                        obj.password =  adminPassword[0].password;
+                        obj.password = adminPassword[0].password;
                         //console.log("obj: "+JSON.stringify(obj));
                         responseData = {
                             status: true,
@@ -469,4 +469,138 @@ module.exports.getOrg_admin_byOrgId = function (req, res) {
         res.status(400).send(responseData);
     }
 }
+
+module.exports.orgEditById = function (req, res) {
+    console.log("userEditById-->");
+    var response;
+    var id = req.params.id;
+    console.log("id: " + id);
+    if (general.emptyCheck(id)) {
+        var date = new Date();
+        var queryId = {
+            "_id": ObjectId(id)
+        }
+        var updateVlaue = {
+            "lastUpdatedDate": date
+        };
+
+        if (req.body.organizationName) {
+            updateVlaue.organizationName = req.body.organizationName;
+        }
+        if (req.body.organizationDomain) {
+            updateVlaue.domain = req.body.organizationDomain;
+        }
+        if (req.body.dor) {
+            updateVlaue.dor = req.body.dor;
+        }
+        if (req.body.registrationRegNumber) {
+            updateVlaue.registrationRegNumber = req.body.registrationRegNumber;
+        }
+        if (req.body.email) {
+            updateVlaue.email = req.body.email;
+        }
+        if (req.body.mobNumber) {
+            updateVlaue.mobNumber = req.body.mobNumber
+        }
+        if (req.body.streetName) {
+            updateVlaue.streetName = req.body.streetName;
+        }
+        if (req.body.city) {
+            updateVlaue.city = req.body.city
+        }
+        if (req.body.state) {
+            updateVlaue.state = req.body.state;
+        }
+        if (req.body.pinCode) {
+            updateVlaue.pinCode = req.body.pinCode;
+        }
+        if (req.body.country) {
+            updateVlaue.country = req.body.country;
+        }
+        if (req.body.firstName) {
+            updateVlaue.adminFirstName = req.body.firstName;
+        }
+        if (req.body.lastName) {
+            updateVlaue.adminLastName = req.body.lastName;
+        }
+
+        console.log("updateValue: " + JSON.stringify(updateVlaue));
+         /* ###  Start: Admin data, Organization data updated from careator master collection, organization collection ### */
+        organizations.update(queryId, { $set: updateVlaue }, function (err, updatedData) {
+            if (err) {
+                console.log("err: " + JSON.stringify(err));
+                response = {
+                    status: false,
+                    message: property.E0007,
+                    data: err
+                };
+                res.status(400).send(response);
+            } else {
+                console.log("updatedData: " + JSON.stringify(updatedData));
+
+                var careatorUpdateQueryId = {
+                    "objId": ObjectId(id)
+                }
+                var adminObj = {
+                    "lastUpdatedDate": date
+                }
+                if (req.body.firstName) {
+                    adminObj.firstName = req.body.firstName;
+                }
+                if (req.body.lastName) {
+                    adminObj.lastName = req.body.lastName;
+                }
+                if (req.body.organizationName) {
+                    adminObj.organizationName = req.body.organizationName;
+                }
+                if (req.body.email) {
+                    adminObj.email = req.body.email;
+                }
+                if (req.body.mobNumber) {
+                    adminObj.mobNumber = req.body.mobNumber
+                }
+                if (req.body.pswd) {
+                    adminObj.password = req.body.pswd;
+                }
+                console.log("adminObj: " + JSON.stringify(adminObj));
+                /* ###  Start: Admin data updated from careator master collection ### */
+                careatorMaster.update(careatorUpdateQueryId, { $set: adminObj }, function (err, updatedData) {
+                    if (err) {
+                        console.log("err: " + JSON.stringify(err));
+                        response = {
+                            status: false,
+                            message: property.E0007,
+                            data: err
+                        };
+                        res.status(400).send(response);
+                    } else {
+                        console.log("updatedData: " + JSON.stringify(updatedData));
+
+                        response = {
+                            status: true,
+                            message: property.S0015,
+                            data: updatedData
+                        };
+                        res.status(200).send(response);
+                    }
+                })
+                /* ###  End: Admin data updated from careator master collection ### */
+            }
+        })
+         /* ###  End: Admin data, Organization data updated from careator master collection, organization collection ### */
+    } else {
+        console.log("Empty value found");
+        var obj = {
+            "id": id
+        }
+        response = {
+            status: false,
+            message: property.N0003,
+            data: obj
+        };
+        res.status(400).send(response);
+    }
+
+}
+
 

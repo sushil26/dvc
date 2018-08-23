@@ -15,6 +15,7 @@ careatorApp.controller('organizationSettingCtrl', function ($scope,  $rootScope,
                 console.log("data.data.data: " + JSON.stringify(data.data.data));
                 console.log("data.data.message: " + data.data.message);
                 $scope.orgDetails = data.data.data;
+                $scope.dor = new Date($scope.orgDetails.dor);
             }
             else {
                 console.log("data.data.message: " + data.data.message);

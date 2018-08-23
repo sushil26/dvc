@@ -572,7 +572,7 @@ io.sockets.on('connection', function (socket) {
                         }
                         else {
                             console.log("emit started to client-->");
-                            var io = req.app.get('socketio');
+                          
                             var emitObj = {
                                 "orgId":data.orgId,
                                 "sessionRandomId": queryObj.sessionRandomId,
@@ -580,7 +580,7 @@ io.sockets.on('connection', function (socket) {
                                 "login": false,
                                 "logout": true
                             }
-                            io.emit('comm_userLogoutNotify', emitObj); /* ### Note: Emit message to client(userLoginDetailsCtrl.js) ### */
+                            io.sockets.emit('comm_userLogoutNotify', emitObj); /* ### Note: Emit message to client(userLoginDetailsCtrl.js) ### */
                             console.log("logoutData: " + JSON.stringify(logoutData));
                         }
 
@@ -622,7 +622,7 @@ io.sockets.on('connection', function (socket) {
                     else {
                         console.log("logoutData: " + JSON.stringify(logoutData));
                         console.log("emit started to client-->");
-                        var io = req.app.get('socketio');
+                       
                         var emitObj = {
                             "orgId":data.orgId,
                             "sessionRandomId": queryObj.sessionRandomId,
@@ -630,7 +630,7 @@ io.sockets.on('connection', function (socket) {
                             "login": false,
                             "logout": true
                         }
-                        io.emit('comm_userLogoutNotify', emitObj); /* ### Note: Emit message to client(userLoginDetailsCtrl.js) ### */
+                        io.sockets.emit('comm_userLogoutNotify', emitObj); /* ### Note: Emit message to client(userLoginDetailsCtrl.js) ### */
                     }
                 })
                 console.log("updateData: " + JSON.stringify(updateData));

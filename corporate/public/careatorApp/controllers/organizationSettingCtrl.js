@@ -27,7 +27,7 @@ careatorApp.controller('organizationSettingCtrl', function ($scope,  $rootScope,
 
     $scope.updateBasicInfo = function () {
         console.log("updateBasicInfo-->");
-        var api = "https://norecruits.com/careator/orgEditById/" + id;
+        var api = $scope.propertyJson.C_orgEditById +"/"+ id;
         console.log("api: " + api);
   
             var obj = {
@@ -46,6 +46,7 @@ careatorApp.controller('organizationSettingCtrl', function ($scope,  $rootScope,
                 "lastName": $scope.adminLastName,
                 "pswd": $scope.adminPassword,
             }
+            console.log("obj: "+JSON.stringify(obj));
       
         careatorHttpFactory.post(api, obj).then(function (data) {
             console.log("data--" + JSON.stringify(data.data));

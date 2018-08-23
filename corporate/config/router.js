@@ -78,7 +78,7 @@ module.exports = function (app) {
     app.get('/c/getAllOrg', cAdminAction.getAllOrg);
     app.post('/c/updateOrgStatus', cAdminAction.updateOrgStatus);
     app.get('/c/getOrg_admin_byOrgId/:id', cAdminAction.getOrg_admin_byOrgId);
-    app.post('/careator/orgEditById/:id', careator.orgEditById);
+    app.post('/c/orgEditById/:id', cAdminAction.orgEditById);
 
 
 }

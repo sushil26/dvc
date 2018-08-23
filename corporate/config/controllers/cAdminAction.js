@@ -540,7 +540,7 @@ module.exports.orgEditById = function (req, res) {
                 console.log("updatedData: " + JSON.stringify(updatedData));
 
                 var careatorUpdateQueryId = {
-                    "objId": ObjectId(id)
+                    "orgId": ObjectId(id)
                 }
                 console.log("careatorUpdateQueryId: "+JSON.stringify(careatorUpdateQueryId));
                 var adminObj = {

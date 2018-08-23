@@ -567,6 +567,7 @@ module.exports.pswdCheck = function (req, res) {
                                                         "logout": loginData.ops[0].logout
                                                     }
                                                     io.emit('comm_userLoginNotify', emitObj); /* ### Note: Emit message to client(userLoginDetailsCtrl.js) ### */
+                                                    findData[0].sessionRandomId = sessionRandomId+findData[0]._id;
                                                     responseData = {
                                                         status: true,
                                                         message: property.S0005,

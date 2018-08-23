@@ -36,7 +36,7 @@ careatorApp.controller('createAdminCtrl', function ($scope, $rootScope, $state, 
                     text: data.data.message,
                     type: "success"
                 });
-                $state.go("Cdashboard.adminListCtrl");
+                $state.go("Cdashboard.adminList");
             }
             else {
                 console.log("data.data.message: " + data.data.message);

@@ -1155,6 +1155,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
         console.log("data.groupMembers: "+JSON.stringify(data.groupMembers));
         for(var x=0;x<data.groupMembers.length;x++){
          if($scope.userId == data.groupMembers[x].userId){
+          $scope.getChatGroupListById($scope.userId);
           $scope.getChatRecords();
          }
         }

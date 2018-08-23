@@ -1775,6 +1775,7 @@ module.exports.careator_chat_creteGroup = function (req, res) {
                 res.status(400).send(response);
             } else {
                 console.log("groupCreate: " + JSON.stringify(groupCreate));
+                console.log("emit started to client-->");
                 var io = req.app.get('socketio');
                 var emitObj = {
                     "groupMembers": insertObj.groupMembers,

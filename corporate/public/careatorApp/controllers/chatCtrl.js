@@ -2,9 +2,9 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
   console.log("chatCtrl==>");
   $scope.count = 0;
   var userData = careatorSessionAuth.getAccess("userData");
-  $scope.loginUserName = userData.firstName+" "+userData.lastName;
+  $scope.loginUserName = userData.firstName + " " + userData.lastName;
   $scope.userId = userData.userId;
-  var orgId =  $scope.userData.orgId;
+  var orgId = $scope.userData.orgId;
   if (userData.chatStatus) {
     $scope.chatStatus = userData.chatStatus;
   } else {
@@ -342,9 +342,9 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
         "yes"; /* ### Note: identify chat is coming new window means, may be we dont have chat record in the chated list, so we have to show the reciever as well sender to refresh the all chated list ### */
       $scope.receiverData = {
         senderId: userData.userId,
-        senderName: userData.firstName+" "+userData.lastName,
+        senderName: userData.firstName + " " + userData.lastName,
         receiverId: $scope.individualData._id,
-        receiverName: $scope.individualData.firstName+" "+$scope.individualData.lastName
+        receiverName: $scope.individualData.firstName + " " + $scope.individualData.lastName
       };
       console.log(" $scope.receiverData : " + JSON.stringify($scope.receiverData));
       var sId = userData.userId;
@@ -408,7 +408,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
     console.log("getAllChatRightEmp-->");
     $scope.allGroupAndIndividual = [];
     var id = userData.userId;
-    api = "https://norecruits.com/careator_getEmp/careator_getChatRightsAllemp_byLoginId/" + id+"/"+orgId; /* #### without restricted emp  #### */
+    api = "https://norecruits.com/careator_getEmp/careator_getChatRightsAllemp_byLoginId/" + id + "/" + orgId; /* #### without restricted emp  #### */
     console.log("api: " + JSON.stringify(api));
     careatorHttpFactory.get(api).then(function (data) {
       console.log("data--" + JSON.stringify(data.data));
@@ -468,7 +468,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
         obj = {
           senderId: userData.userId,
           receiverId: $scope.receiverData.receiverId,
-          senderName: userData.firstName+" "+ userData.lastName,
+          senderName: userData.firstName + " " + userData.lastName,
           receiverName: $scope.receiverData.receiverName,
           message: $scope.typedMessage
         };
@@ -490,7 +490,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
         obj = {
           senderId: userData.userId,
           receiverId: $scope.receiverData.receiverId,
-          senderName: userData.firstName+" "+userData.lastName,
+          senderName: userData.firstName + " " + userData.lastName,
           receiverName: $scope.receiverData.receiverName,
           message: $scope.typedMessage
         };
@@ -522,7 +522,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
         groupName: $scope.sendGroupText_withData.groupName,
         groupMembers: $scope.sendGroupText_withData.groupMembers,
         senderId: userData.userId,
-        senderName: userData.firstName+" "+userData.lastName,
+        senderName: userData.firstName + " " + userData.lastName,
         message: $scope.typedMessage
       };
       console.log("obj: " + JSON.stringify(obj));
@@ -549,7 +549,8 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
 
     // if (upload_form.file.$valid && chatFile) { //check if from is valid
 
-      console.log("chatFile: " + chatFile.size);
+    console.log("chatFile: " + chatFile.size);
+    if (chatFile.size <= 237069) {
       console.log("chatFilewithJson: " + JSON.stringify(chatFile));
       console.log("$scope.chatFile: " + $scope.chatFile);
       console.log("$scope.chatFilewith json: " + JSON.stringify(chatFile));
@@ -562,7 +563,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
       careatorHttpFactory.chatUpload(api, obj).then(function (data) {
         console.log("hello " + JSON.stringify(data));
         var checkStatus = careatorHttpFactory.dataValidation(data);
-     //   $scope.progress = 'progress: ' + progress + '% '; // capture upload progress
+        //   $scope.progress = 'progress: ' + progress + '% '; // capture upload progress
         if (checkStatus) {
           var uploadResponse = data.data;
           console.log("$scope.photo" + JSON.stringify(uploadResponse));
@@ -583,7 +584,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
               obj = {
                 senderId: userData.userId,
                 receiverId: $scope.receiverData.receiverId,
-                senderName: userData.firstName+" "+userData.lastName,
+                senderName: userData.firstName + " " + userData.lastName,
                 receiverName: $scope.receiverData.receiverName,
                 messageType: "file",
                 message: uploadResponse.data
@@ -606,7 +607,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
               obj = {
                 senderId: userData.userId,
                 receiverId: $scope.receiverData.receiverId,
-                senderName: userData.firstName+" "+userData.lastName,
+                senderName: userData.firstName + " " + userData.lastName,
                 receiverName: $scope.receiverData.receiverName,
                 messageType: "file",
                 message: uploadResponse.data
@@ -639,7 +640,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
               groupName: $scope.sendGroupText_withData.groupName,
               groupMembers: $scope.sendGroupText_withData.groupMembers,
               senderId: userData.userId,
-              senderName: userData.firstName+" "+userData.lastName,
+              senderName: userData.firstName + " " + userData.lastName,
               messageType: "file",
               message: uploadResponse.data
             };
@@ -665,10 +666,16 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
           alertDialog.alert("Upload Appropriate File Formate", "error");
         }
       });
-  //  }
-    // else{
-    //   console.log("Form is not valied");
-    // }
+       }
+      else{
+        console.log("File size allowed only upto 227Kb")
+        SweetAlert.swal({
+          title: "Not Allowed",
+          text: "File size allowed only upto 227Kb",
+          type: "info"
+        });
+       }
+    
     };
 
     $scope.getFileFRomGridfs = function (x, id) {
@@ -845,7 +852,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
               );
               $scope.receiverData = {
                 senderId: userData.userId,
-                senderName: userData.firstName+" "+userData.lastName
+                senderName: userData.firstName + " " + userData.lastName
               };
               if ($scope.individualData.receiverId != userData.userId) {
                 $scope.receiverData.receiverId = $scope.individualData.receiverId;
@@ -962,7 +969,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
               console.log("$scope.individualData : " + JSON.stringify($scope.individualData));
               $scope.receiverData = {
                 senderId: userData.userId,
-                senderName: userData.firstName+" "+userData.lastName
+                senderName: userData.firstName + " " + userData.lastName
               };
               if ($scope.individualData.receiverId != userData.userId) {
                 $scope.receiverData.receiverId = $scope.individualData.receiverId;

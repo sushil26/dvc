@@ -54,37 +54,37 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                 } else {
                     console.log("localstorage session randomId(" + $scope.userData.sessionRandomId + ") is not matched with db data (" + data.data.data[0].sessionRandomId + ")");
                     /* ##### Start: Logout Logic  ##### */
-                    // var id = userData.userId;
-                    // var api = "https://norecruits.com/careator_loggedin/getLoggedinSessionURLById/" + id;
-                    // console.log("api: " + api);
-                    // careatorHttpFactory.get(api).then(function (data) {
-                    //     console.log("data--" + JSON.stringify(data.data));
-                    //     var checkStatus = careatorHttpFactory.dataValidation(data);
-                    //     console.log("checkStatus: " + checkStatus);
-                    //     if (checkStatus) {
-                    //         if (data.data.data.sessionURL != undefined) {
-                    //             var sessionURL = data.data.data.sessionURL;
-                    //             console.log(data.data.message);
-                    //             console.log("sessionURL: " + sessionURL);
-                    //             socket.emit("comm_logoutSession", {
-                    //                 "userId": $scope.userData.userId,
-                    //                 "email": $scope.userData.email,
-                    //                 "sessionURL": sessionURL,
-                    //                 "sessionRandomId": data.data.data.sessionRandomId
-                    //             }); /* ### Note: Logout notification to server ### */
-                    //         } else {
-                    //             socket.emit("comm_logoutSession", {
-                    //                 "userId": $scope.userData.userId,
-                    //                 "email": $scope.userData.email,
-                    //                 "sessionURL": "",
-                    //                 "sessionRandomId": data.data.data.sessionRandomId
-                    //             }); /* ### Note: Logout notification to server ### */
-                    //         }
-                    //     } else {
-                    //         console.log("Sorry");
-                    //         console.log(data.data.message);
-                    //     }
-                    // })
+                    var id = userData.userId;
+                    var api = "https://norecruits.com/careator_loggedin/getLoggedinSessionURLById/" + id;
+                    console.log("api: " + api);
+                    careatorHttpFactory.get(api).then(function (data) {
+                        console.log("data--" + JSON.stringify(data.data));
+                        var checkStatus = careatorHttpFactory.dataValidation(data);
+                        console.log("checkStatus: " + checkStatus);
+                        if (checkStatus) {
+                            if (data.data.data.sessionURL != undefined) {
+                                var sessionURL = data.data.data.sessionURL;
+                                console.log(data.data.message);
+                                console.log("sessionURL: " + sessionURL);
+                                socket.emit("comm_logoutSession", {
+                                    "userId": $scope.userData.userId,
+                                    "email": $scope.userData.email,
+                                    "sessionURL": sessionURL,
+                                    "sessionRandomId": data.data.data.sessionRandomId
+                                }); /* ### Note: Logout notification to server ### */
+                            } else {
+                                socket.emit("comm_logoutSession", {
+                                    "userId": $scope.userData.userId,
+                                    "email": $scope.userData.email,
+                                    "sessionURL": "",
+                                    "sessionRandomId": data.data.data.sessionRandomId
+                                }); /* ### Note: Logout notification to server ### */
+                            }
+                        } else {
+                            console.log("Sorry");
+                            console.log(data.data.message);
+                        }
+                    })
                     /* ##### End: Logout Logic  ##### */
                 }
 

@@ -27,9 +27,9 @@ careatorApp.config(function ($stateProvider) {
             }
 
         })
-        .state('Cdashboard.adminList', {
-            url: adminList(),
-            templateUrl: '/careatorApp/html/adminList.html',
+        .state('Cdashboard.organizationList', {
+            url: organizationList(),
+            templateUrl: '/careatorApp/html/organizationList.html',
             resolve: {
                 result: function (careatorSessionAuth, $window) {
                     var userData = careatorSessionAuth.getAccess("userData");
@@ -285,8 +285,8 @@ function profile() {
 function careator_adminCreate() {
     return '/adminCreate';
 }
-function adminList() {
-    return '/adminList';
+function organizationList() {
+    return '/organizationList';
 }
 
 function contactAdmin() {

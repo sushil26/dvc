@@ -1036,7 +1036,7 @@ module.exports.resetLoginFlagsById = function (req, res) {
             "$set": {
                 "login": "notDone",
                 "logout": "done",
-                "sessionRandomId": sessionRandomId
+                "sessionRandomId": sessionRandomId+obj._id
             }
         }, function (err, data) {
             console.log("data: " + JSON.stringify(data));

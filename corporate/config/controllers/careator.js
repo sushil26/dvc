@@ -654,7 +654,7 @@ module.exports.pswdCheck = function (req, res) {
                                                                 res.status(400).send(responseData);
                                                             } else {
                                                                 // log.info("req.originalUrl: " + req.originalUrl + " Email: " + findData[0].email, " Date: (" + date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate() + ")" + " Time: (" + date.getHours() + ":" + date.getMinutes() + ")");
-                                                                console.log("loginData: " + Json.stringify(loginData));
+                                                                console.log("loginData: " + JSON.stringify(loginData));
                                                                 // console.log("emit started to client-->");
                                                                 // var io = req.app.get('socketio');
                                                                 // var emitObj = {

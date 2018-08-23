@@ -60,6 +60,8 @@ module.exports = function (app) {
     app.get('/careator_chatGroupList/careator_getChatGroupList/:orgId', careator.careator_getChatGroupList);
     app.post('/careator_getEmp/careator_getChatRightsAllemp/:id', careator.careator_getChatRightsAllemp);
     app.get('/careator_getEmp/careator_getChatRightsAllemp_byLoginId/:id/:orgId', careator.careator_getChatRightsAllemp_byLoginId);
+    app.get('/careator_getEmp/careator_getChatRightsAllempWithSuperAdmin_byLoginId/:id/:orgId', careator.careator_getChatRightsAllempWithSuperAdmin_byLoginId);
+    app.get('/careator_getEmp/careator_getAllAdmins_byLoginId/:id', careator.careator_getAllAdmins_byLoginId);
     app.post('/careator_individualText/individualText', careator.individualText);
     app.get('/careator_individualTextRead/individualTextReadById/:sId/:rId', careator.individualTextReadById);
     app.get('/careator_groupTextRead/groupTextReadByGroupId/:group_id', careator.groupTextReadByGroupId);
@@ -79,6 +81,7 @@ module.exports = function (app) {
     app.post('/c/updateOrgStatus', cAdminAction.updateOrgStatus);
     app.get('/c/getOrg_admin_byOrgId/:id', cAdminAction.getOrg_admin_byOrgId);
     app.post('/c/orgEditById/:id', cAdminAction.orgEditById);
+    app.post('/careator_getChatRightsAllemp_byLoginId')
 
 
 }

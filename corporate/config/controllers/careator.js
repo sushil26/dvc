@@ -2009,6 +2009,76 @@ module.exports.careator_getChatRightsAllemp_byLoginId = function (req, res) {
     }
 }
 
+module.exports.careator_getChatRightsAllempWithSuperAdmin_byLoginId = function(req, res){
+    console.log("careator_getChatRightsAllempWithSuperAdmin_byLoginId-->"+ req.params.id);
+    var id = req.params.id;
+
+    if (general.emptyCheck(id)) {
+        careatorMaster.find({"_id": { $ne: ObjectId(id) }, "orgId": ObjectId(req.params.orgId), "loginType":'superAdmin', "chatRights": "yes" }).toArray(function (err, allEmp_chat) {
+            if (err) {
+                console.log("err: " + JSON.stringify(err));
+                response = {
+                    status: false,
+                    message: property.E0007,
+                    data: err
+                };
+                res.status(400).send(responseData);
+            } else {
+                console.log("allEmp_chat: " + JSON.stringify(allEmp_chat));
+                response = {
+                    status: true,
+                    message: property.S0008,
+                    data: allEmp_chat
+                };
+                res.status(200).send(response);
+            }
+        })
+
+    } else {
+        console.log("Epty value found");
+        response = {
+            status: false,
+            message: property.N0003
+        };
+        res.status(400).send(response);
+    }
+}
+
+module.exports.careator_getAllAdmins_byLoginId = function(req, res){
+    console.log("careator_getAllAdmins_byLoginId-->: "+req.params.id);
+    var id = req.params.id;
+
+    if (general.emptyCheck(id)) {
+        careatorMaster.find({"_id": { $ne: ObjectId(id) },"loginType": "admin"}).toArray(function (err, allEmp_chat) {
+            if (err) {
+                console.log("err: " + JSON.stringify(err));
+                response = {
+                    status: false,
+                    message: property.E0007,
+                    data: err
+                };
+                res.status(400).send(responseData);
+            } else {
+                console.log("allEmp_chat: " + JSON.stringify(allEmp_chat));
+                response = {
+                    status: true,
+                    message: property.S0008,
+                    data: allEmp_chat
+                };
+                res.status(200).send(response);
+            }
+        })
+
+    } else {
+        console.log("Epty value found");
+        response = {
+            status: false,
+            message: property.N0003
+        };
+        res.status(400).send(response);
+    }
+}
+
 module.exports.individualText = function (req, res) {
     console.log("individualText-->");
     var date = new Date();

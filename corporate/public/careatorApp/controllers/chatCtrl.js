@@ -2,6 +2,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
   console.log("chatCtrl==>");
   $scope.count = 0;
   var userData = careatorSessionAuth.getAccess("userData");
+  $scope.userData = userData;
   $scope.loginUserName = userData.firstName + " " + userData.lastName;
   $scope.userId = userData.userId;
   var orgId = $scope.userData.orgId;
@@ -33,9 +34,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
         var userDetails = data.data.data[0];
         $scope.userDetails = userDetails;
         $scope.profilePicPath = $scope.userDetails.profilePicPath;
-        console.log(
-          "   $scope.userDetails: " + JSON.stringify($scope.userDetails)
-        );
+        console.log("$scope.userDetails: " + JSON.stringify($scope.userDetails));
         console.log("data.data.message: " + data.data.message);
       } else {
         console.log("Sorry");
@@ -395,9 +394,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
         } else {
           $scope.receiverProfilePicPath = undefined;
         }
-        console.log(
-          "$scope.receiverProfilePicPath: " + $scope.receiverProfilePicPath
-        );
+        console.log("$scope.receiverProfilePicPath: " + $scope.receiverProfilePicPath);
         console.log("data.data.message: " + data.data.message);
       } else {
         console.log("Sorry");
@@ -411,36 +408,102 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
 
   $scope.getAllChatRightEmp = function () {
     console.log("getAllChatRightEmp-->");
-    $scope.allGroupAndIndividual = [];
-    var id = userData.userId;
-    api = "https://norecruits.com/careator_getEmp/careator_getChatRightsAllemp_byLoginId/" + id + "/" + orgId; /* #### without restricted emp  #### */
-    console.log("api: " + JSON.stringify(api));
-    careatorHttpFactory.get(api).then(function (data) {
-      console.log("data--" + JSON.stringify(data.data));
-      var checkStatus = careatorHttpFactory.dataValidation(data);
-      if (checkStatus) {
-        $scope.allEmp = data.data.data;
-        console.log(" $scope.allEmp : " + JSON.stringify($scope.allEmp));
-        console.log("data.data.message: " + data.data.message);
-        for (var x = 0; x < $scope.allEmp.length; x++) {
-          $scope.allGroupAndIndividual.push($scope.allEmp[x]);
-          $scope.allEmpWithIndexById[$scope.allEmp[x]._id] = $scope.allEmp[x];
+    if ($scope.userData.loginType == 'employee') {
+      $scope.allGroupAndIndividual = [];
+      var id = userData.userId;
+      api = "https://norecruits.com/careator_getEmp/careator_getChatRightsAllemp_byLoginId/" + id + "/" + orgId; /* #### without restricted emp  #### */
+      console.log("api: " + JSON.stringify(api));
+      careatorHttpFactory.get(api).then(function (data) {
+        console.log("data--" + JSON.stringify(data.data));
+        var checkStatus = careatorHttpFactory.dataValidation(data);
+        if (checkStatus) {
+          $scope.allEmp = data.data.data;
+          console.log(" $scope.allEmp : " + JSON.stringify($scope.allEmp));
+          console.log("data.data.message: " + data.data.message);
+          for (var x = 0; x < $scope.allEmp.length; x++) {
+            $scope.allGroupAndIndividual.push($scope.allEmp[x]);
+            $scope.allEmpWithIndexById[$scope.allEmp[x]._id] = $scope.allEmp[x];
+          }
+          for (var x = 0; x < $scope.allGroup.length; x++) {
+            $scope.allGroupAndIndividual.push($scope.allGroup[x]);
+          }
+          console.log(
+            " $scope.allEmpWithIndexById: " +
+            JSON.stringify($scope.allEmpWithIndexById)
+          );
+          console.log(
+            " $scope.allGroupAndIndividual: " +
+            JSON.stringify($scope.allGroupAndIndividual)
+          );
+        } else {
+          console.log("Sorry: " + data.data.message);
         }
-        for (var x = 0; x < $scope.allGroup.length; x++) {
-          $scope.allGroupAndIndividual.push($scope.allGroup[x]);
+      });
+    }
+    else if ($scope.userData.loginType == 'admin') {
+      $scope.allGroupAndIndividual = [];
+      var id = userData.userId;
+      api = "https://norecruits.com/careator_getEmp/careator_getChatRightsAllempWithSuperAdmin_byLoginId/" + id + "/" + orgId; /* #### without restricted emp  #### */
+      console.log("api: " + JSON.stringify(api));
+      careatorHttpFactory.get(api).then(function (data) {
+        console.log("data--" + JSON.stringify(data.data));
+        var checkStatus = careatorHttpFactory.dataValidation(data);
+        if (checkStatus) {
+          $scope.allEmp = data.data.data;
+          console.log(" $scope.allEmp : " + JSON.stringify($scope.allEmp));
+          console.log("data.data.message: " + data.data.message);
+          for (var x = 0; x < $scope.allEmp.length; x++) {
+            $scope.allGroupAndIndividual.push($scope.allEmp[x]);
+            $scope.allEmpWithIndexById[$scope.allEmp[x]._id] = $scope.allEmp[x];
+          }
+          for (var x = 0; x < $scope.allGroup.length; x++) {
+            $scope.allGroupAndIndividual.push($scope.allGroup[x]);
+          }
+          console.log(
+            " $scope.allEmpWithIndexById: " +
+            JSON.stringify($scope.allEmpWithIndexById)
+          );
+          console.log(
+            " $scope.allGroupAndIndividual: " +
+            JSON.stringify($scope.allGroupAndIndividual)
+          );
+        } else {
+          console.log("Sorry: " + data.data.message);
         }
-        console.log(
-          " $scope.allEmpWithIndexById: " +
-          JSON.stringify($scope.allEmpWithIndexById)
-        );
-        console.log(
-          " $scope.allGroupAndIndividual: " +
-          JSON.stringify($scope.allGroupAndIndividual)
-        );
-      } else {
-        console.log("Sorry: " + data.data.message);
-      }
-    });
+      });
+    }
+    else if ($scope.userData.loginType == 'superAdmin') {
+      $scope.allGroupAndIndividual = [];
+      var id = userData.userId;
+      api = "https://norecruits.com/careator_getEmp/careator_getAllAdmins_byLoginId/" + id; /* #### without restricted emp  #### */
+      console.log("api: " + JSON.stringify(api));
+      careatorHttpFactory.get(api).then(function (data) {
+        console.log("data--" + JSON.stringify(data.data));
+        var checkStatus = careatorHttpFactory.dataValidation(data);
+        if (checkStatus) {
+          $scope.allEmp = data.data.data;
+          console.log(" $scope.allEmp : " + JSON.stringify($scope.allEmp));
+          console.log("data.data.message: " + data.data.message);
+          for (var x = 0; x < $scope.allEmp.length; x++) {
+            $scope.allGroupAndIndividual.push($scope.allEmp[x]);
+            $scope.allEmpWithIndexById[$scope.allEmp[x]._id] = $scope.allEmp[x];
+          }
+          for (var x = 0; x < $scope.allGroup.length; x++) {
+            $scope.allGroupAndIndividual.push($scope.allGroup[x]);
+          }
+          console.log(
+            " $scope.allEmpWithIndexById: " +
+            JSON.stringify($scope.allEmpWithIndexById)
+          );
+          console.log(
+            " $scope.allGroupAndIndividual: " +
+            JSON.stringify($scope.allGroupAndIndividual)
+          );
+        } else {
+          console.log("Sorry: " + data.data.message);
+        }
+      });
+    }
   };
   $scope.getAllChatRightEmp();
   $scope.getEmpDetail = function (index) {

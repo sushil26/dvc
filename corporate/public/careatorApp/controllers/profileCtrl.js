@@ -83,13 +83,13 @@ careatorApp.controller('profileCtrl', function ($scope, $state, careatorHttpFact
                     $scope.profilePicUpdate();
 
                     // // console.log("JSON.stringify($scope.postJson): " + JSON.stringify(postJson));
-                    // $scope.adminCreate();
+                    // $scope.organizationCreate();
                 } else {
                     $scope.status = data.data.status;
                     $scope.message = data.data.message;
                     console.log("image is not uploaded");
 
-                    // $scope.adminCreate();
+                    // $scope.organizationCreate();
                     // console.log("JSON.stringify($scope.postJson): " + JSON.stringify(postJson));
                     // $scope.savePost();
                 }

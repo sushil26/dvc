@@ -304,10 +304,10 @@ app.config(function ($stateProvider, $urlRouterProvider) {
       templateUrl: '/html/dashboard/markViewWithConfId.html',
       controller: 'markViewWithConfId_Ctl'
     })
-    .state('dashboard.adminCreate', {
-      url: adminCreate(),
-      templateUrl: '/html/dashboard/adminCreate.html',
-      controller: 'adminCreateCtl',
+    .state('dashboard.organizationCreate', {
+      url: organizationCreate(),
+      templateUrl: '/html/dashboard/organizationCreate.html',
+      controller: 'organizationCreateCtl',
       resolve: {
         result: function (sessionAuthFactory, $window) {
           var userData = sessionAuthFactory.getAccess("userData");
@@ -465,8 +465,8 @@ function dashboardComingSoon() {
 function dashboardConference() {
   return '/dashboardConference';
 }
-function adminCreate() {
-  return '/adminCreate';
+function organizationCreate() {
+  return '/organizationCreate';
 }
 function reportsUpload() {
   return '/reportsUpload';
@@ -474,8 +474,8 @@ function reportsUpload() {
 function reportsUpdate() {
   return '/reportsUpdate';
 }
-function adminCreate() {
-  return '/adminCreate';
+function organizationCreate() {
+  return '/organizationCreate';
 }
 function allUser() {
   return '/allUser';

@@ -1,7 +1,7 @@
 {
 "BASE_URL": "https://norecruits.com/",
 
-"C_adminCreate": "https://norecruits.com/c/adminCreate",
+"C_organizationCreate": "https://norecruits.com/c/organizationCreate",
 "C_getAllAdmin": "https://norecruits.com/c/getAllAdmin",
 "C_getAllOrg": "https://norecruits.com/c/getAllOrg",
 "C_updateOrgStatus": "https://norecruits.com/c/updateOrgStatus",

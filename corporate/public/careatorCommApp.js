@@ -12,8 +12,8 @@ careatorApp.config(function ($stateProvider) {
             url: careator_dashboard(),
             templateUrl: '/careatorApp/html/careator_dashboard.html',
         })
-        .state('Cdashboard.adminCreate', {
-            url: careator_adminCreate(),
+        .state('Cdashboard.organizationCreate', {
+            url: careator_organizationCreate(),
             templateUrl: '/careatorApp/html/organizationCreate.html',
             resolve: {
                 result: function (careatorSessionAuth, $window) {
@@ -282,8 +282,8 @@ function ipost() {
 function profile() {
     return '/profile';
 }
-function careator_adminCreate() {
-    return '/adminCreate';
+function careator_organizationCreate() {
+    return '/organizationCreate';
 }
 function organizationList() {
     return '/organizationList';

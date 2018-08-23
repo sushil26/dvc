@@ -22,7 +22,7 @@ careatorApp.controller('organizationCreateCtrl', function ($scope, $rootScope, $
         }
         console.log("obj: " + JSON.stringify(obj));
 
-        api = $scope.propertyJson.C_adminCreate
+        api = $scope.propertyJson.C_organizationCreate
         console.log("api: " + api);
 
         careatorHttpFactory.post(api, obj).then(function (data) {

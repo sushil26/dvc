@@ -24,7 +24,9 @@ module.exports = function (app) {
     app.get('/chatHistory/getHistory', careator.getHistory);
     app.get('/chatHistory/getHistoryByEmailId/:email', careator.getHistoryByEmailId);
     app.post('/careator_profile/chatStatusUpdateById/:id', careator.chatStatusUpdateById);
-    app.get('/careator_adminBasicData/getAdminObjectId', careator.getAdminObjectId);
+    app.get('/careator_adminBasicData/getAdminObjectIdByOrgId/:orgId', careator.getAdminObjectIdByOrgId);
+    app.get('/careator_adminBasicData/getSuperAdminObjectId', careator.getSuperAdminObjectId);
+    app.get('/careator_adminBasicData/getAllAdminObjectIdByOrgId', careator.getAllAdminObjectIdByOrgId);
     app.post('/careator/careatorMasterInsert/:orgId', careator.careatorMasterInsert);
     app.post('/careator/careatorSingleUserInsert', careator.careatorSingleUserInsert);
     app.get('/careator/careator_getAllEmp/:orgId', careator.careator_getAllEmp);

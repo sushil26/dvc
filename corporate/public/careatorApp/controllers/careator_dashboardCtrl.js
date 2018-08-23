@@ -8,6 +8,11 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
     $scope.userData =userData;
     $scope.loginUserName = userData.firstName + " " + userData.lastName;
     $scope.userId = userData.userId;
+    var orgId;
+    if($scope.userData.loginType!= 'superAdmin'){
+        orgId = $scope.userData.orgId;
+    }
+    
 
     $scope.getToDate = function () {
         console.log("Get To Date-->");
@@ -170,7 +175,26 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
 
     $scope.getAdmin_email_id = function () {
         console.log("getAdmin_email_id-->");
-        var api = "https://norecruits.com/careator_adminBasicData/getAdminObjectId";
+        if($scope.userData.loginType=='admin'){
+            var api = "https://norecruits.com/careator_adminBasicData/getSuperAdminObjectId";
+            console.log("api: " + api);
+            careatorHttpFactory.get(api).then(function (data) {
+                console.log("data--" + JSON.stringify(data.data));
+                var checkStatus = careatorHttpFactory.dataValidation(data);
+                console.log("checkStatus: " + checkStatus);
+                if (checkStatus) {
+                    $rootScope.adminId = data.data.data;
+                    console.log("$rootScope.adminId: " + $rootScope.adminId);
+                    console.log(data.data.message);
+    
+                } else {
+                    console.log("Sorry");
+                    console.log(data.data.message);
+                }
+            })
+        }
+       else if($scope.userData.loginType=='employee'){
+        var api = "https://norecruits.com/careator_adminBasicData/getAdminObjectIdByOrgId/"+orgId;
         console.log("api: " + api);
         careatorHttpFactory.get(api).then(function (data) {
             console.log("data--" + JSON.stringify(data.data));
@@ -186,6 +210,26 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                 console.log(data.data.message);
             }
         })
+       }
+       else if($scope.userData.loginType=='superAdmin'){
+        var api = "https://norecruits.com/careator_adminBasicData/getAllAdminObjectIdByOrgId";
+        console.log("api: " + api);
+        careatorHttpFactory.get(api).then(function (data) {
+            console.log("data--" + JSON.stringify(data.data));
+            var checkStatus = careatorHttpFactory.dataValidation(data);
+            console.log("checkStatus: " + checkStatus);
+            if (checkStatus) {
+                $rootScope.adminId = data.data.data;
+                console.log("$rootScope.adminId: " + $rootScope.adminId);
+                console.log(data.data.message);
+
+            } else {
+                console.log("Sorry");
+                console.log(data.data.message);
+            }
+        })
+       }
+       
 
     }
     $scope.getAdmin_email_id();

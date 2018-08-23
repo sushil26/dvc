@@ -535,7 +535,7 @@ module.exports.pswdCheck = function (req, res) {
                         if (findData[0].status == 'active') {
                             if (findData[0].password == password) {
                                 if (findData[0].logout == 'done' && findData[0].login == 'notDone') {
-                                    careatorMaster.update({ "_id": ObjectId(findData[0]._id), "status": "active" }, { $set: { "password": password, "invite": [], "logout": "notDone", "login": "done", "sessionRandomId":sessionRandomId+findData[0]._id } }, function (err, data) {
+                                    careatorMaster.update({ "_id": ObjectId(findData[0]._id), "status": "active" }, { $set: { "password": password, "invite": [], "logout": "notDone", "login": "done", "sessionRandomId": sessionRandomId + findData[0]._id } }, function (err, data) {
                                         console.log("data: " + JSON.stringify(data));
                                         if (err) {
                                             responseData = {
@@ -545,7 +545,7 @@ module.exports.pswdCheck = function (req, res) {
                                             res.status(400).send(responseData);
                                         } else {
                                             var date = new Date();
-                                            loginDetails.insert({ "userId": findData[0]._id, "sessionRandomId": sessionRandomId+findData[0]._id, "orgId": findData[0].orgId, "userName": findData[0].firstName + " " + findData[0].lastName, "email": findData[0].email, "login": true, "loginDate": date, "logout": false }, function (err, loginData) {
+                                            loginDetails.insert({ "userId": findData[0]._id, "sessionRandomId": sessionRandomId + findData[0]._id, "orgId": findData[0].orgId, "userName": findData[0].firstName + " " + findData[0].lastName, "email": findData[0].email, "login": true, "loginDate": date, "logout": false }, function (err, loginData) {
                                                 if (err) {
                                                     responseData = {
                                                         status: false,
@@ -567,7 +567,7 @@ module.exports.pswdCheck = function (req, res) {
                                                         "logout": loginData.ops[0].logout
                                                     }
                                                     io.emit('comm_userLoginNotify', emitObj); /* ### Note: Emit message to client(userLoginDetailsCtrl.js) ### */
-                                                    findData[0].sessionRandomId = sessionRandomId+findData[0]._id;
+                                                    findData[0].sessionRandomId = sessionRandomId + findData[0]._id;
                                                     responseData = {
                                                         status: true,
                                                         message: property.S0005,
@@ -649,7 +649,7 @@ module.exports.pswdCheck = function (req, res) {
                                     if (findData[0].status == 'active') {
                                         if (findData[0].password == password) {
                                             if (findData[0].logout == 'done' && findData[0].login == 'notDone') {
-                                                careatorMaster.update({ "_id": ObjectId(findData[0]._id), "status": "active" }, { $set: { "password": password, "invite": [], "logout": "notDone", "login": "done", "sessionRandomId":sessionRandomId+findData[0]._id  } }, function (err, data) {
+                                                careatorMaster.update({ "_id": ObjectId(findData[0]._id), "status": "active" }, { $set: { "password": password, "invite": [], "logout": "notDone", "login": "done", "sessionRandomId": sessionRandomId + findData[0]._id } }, function (err, data) {
                                                     console.log("data: " + JSON.stringify(data));
                                                     if (err) {
                                                         responseData = {
@@ -659,7 +659,7 @@ module.exports.pswdCheck = function (req, res) {
                                                         res.status(400).send(responseData);
                                                     } else {
                                                         var date = new Date();
-                                                        loginDetails.insert({ "userId": findData[0]._id, "sessionRandomId":sessionRandomId+findData[0]._id , "orgId": findData[0].orgId, "userName": findData[0].firstName + " " + findData[0].lastName, "email": findData[0].email, "login": true, "loginDate": date, "logout": false }, function (err, loginData) {
+                                                        loginDetails.insert({ "userId": findData[0]._id, "sessionRandomId": sessionRandomId + findData[0]._id, "orgId": findData[0].orgId, "userName": findData[0].firstName + " " + findData[0].lastName, "email": findData[0].email, "login": true, "loginDate": date, "logout": false }, function (err, loginData) {
                                                             if (err) {
                                                                 responseData = {
                                                                     status: false,
@@ -683,7 +683,7 @@ module.exports.pswdCheck = function (req, res) {
                                                                     "logout": loginData.ops[0].logout
                                                                 }
                                                                 io.emit('comm_userLoginNotify', emitObj); /* ### Note: Emit message to client(userLoginDetailsCtrl.js) ### */
-                                                                findData[0].sessionRandomId = sessionRandomId+findData[0]._id;
+                                                                findData[0].sessionRandomId = sessionRandomId + findData[0]._id;
                                                                 responseData = {
                                                                     status: true,
                                                                     message: property.S0005,
@@ -1038,7 +1038,7 @@ module.exports.resetLoginFlagsById = function (req, res) {
             "$set": {
                 "login": "notDone",
                 "logout": "done",
-                "sessionRandomId": sessionRandomId+obj._id
+                "sessionRandomId": sessionRandomId + obj._id
             }
         }, function (err, data) {
             console.log("data: " + JSON.stringify(data));
@@ -1074,29 +1074,87 @@ module.exports.resetLoginFlagsById = function (req, res) {
     }
 
 }
-module.exports.getAdminObjectId = function (req, res) {
-    console.log("getAdminObjectId-->");
-    careatorMaster.find({
-        "loginType": "superAdmin"
-    }).toArray(function (err, admin) {
-        if (err) {
-            console.log("err: " + JSON.stringify(err));
-            responseData = {
-                status: false,
-                message: property.E0009
-            };
-            res.status(400).send(responseData);
-        } else {
-            console.log("admin: " + JSON.stringify(admin));
-            responseData = {
-                status: true,
-                message: property.S0008,
-                data: admin[0]._id
-            };
-            res.status(200).send(responseData);
-        }
-    })
+module.exports.getAdminObjectIdByOrgId = function (req, res) {
+    console.log("getAdminObjectIdByOrgId-->");
+    var orgId = req.params.orgId;
+    if (general.emptyCheck(orgId)) {
+        careatorMaster.find({ "orgId": ObjectId(orgId), loginType: "admin" }).toArray(function (err, admin) {
+            if (err) {
+                console.log("err: " + JSON.stringify(err));
+                responseData = {
+                    status: false,
+                    message: property.E0009
+                };
+                res.status(400).send(responseData);
+            } else {
+                console.log("admin: " + JSON.stringify(admin));
+                responseData = {
+                    status: true,
+                    message: property.S0008,
+                    data: admin[0]._id
+                };
+                res.status(200).send(responseData);
+            }
+        })
+    }
+    else {
+        response = {
+            status: false,
+            message: property.N0003,
+            data: obj
+        };
+        res.status(400).send(response);
+    }
 }
+module.exports.getSuperAdminObjectId = function (req, res) {
+    console.log("getSuperAdminObjectId-->");
+   
+        careatorMaster.find({ loginType: "superAdmin" }).toArray(function (err, admin) {
+            if (err) {
+                console.log("err: " + JSON.stringify(err));
+                responseData = {
+                    status: false,
+                    message: property.E0009
+                };
+                res.status(400).send(responseData);
+            } else {
+                console.log("admin: " + JSON.stringify(admin));
+                responseData = {
+                    status: true,
+                    message: property.S0008,
+                    data: admin[0]._id
+                };
+                res.status(200).send(responseData);
+            }
+        })
+   
+    console.log("<--getSuperAdminObjectId");
+}
+module.exports.getAllAdminObjectIdByOrgId = function (req, res) {
+    console.log("getAllAdminObjectIdByOrgId-->");
+   
+        careatorMaster.find({ loginType: "admin" }).toArray(function (err, admin) {
+            if (err) {
+                console.log("err: " + JSON.stringify(err));
+                responseData = {
+                    status: false,
+                    message: property.E0009
+                };
+                res.status(400).send(responseData);
+            } else {
+                console.log("admin: " + JSON.stringify(admin));
+                responseData = {
+                    status: true,
+                    message: property.S0008,
+                    data: admin[0]._id
+                };
+                res.status(200).send(responseData);
+            }
+        })
+   
+    console.log("<--getAllAdminObjectIdByOrgId");
+}
+
 module.exports.setCollection = function (req, res) {
     console.log("setCollection-->");
     console.log("req.body.url: " + req.body.url);
@@ -2009,12 +2067,12 @@ module.exports.careator_getChatRightsAllemp_byLoginId = function (req, res) {
     }
 }
 
-module.exports.careator_getChatRightsAllempWithSuperAdmin_byLoginId = function(req, res){
-    console.log("careator_getChatRightsAllempWithSuperAdmin_byLoginId-->"+ req.params.id);
+module.exports.careator_getChatRightsAllempWithSuperAdmin_byLoginId = function (req, res) {
+    console.log("careator_getChatRightsAllempWithSuperAdmin_byLoginId-->" + req.params.id);
     var id = req.params.id;
 
     if (general.emptyCheck(id)) {
-        careatorMaster.find({"_id": { $ne: ObjectId(id) }, $or:[{"orgId": ObjectId(req.params.orgId), "chatRights": "yes" },{"loginType":'superAdmin'}] }).toArray(function (err, allEmp_chat) {
+        careatorMaster.find({ "_id": { $ne: ObjectId(id) }, $or: [{ "orgId": ObjectId(req.params.orgId), "chatRights": "yes" }, { "loginType": 'superAdmin' }] }).toArray(function (err, allEmp_chat) {
             if (err) {
                 console.log("err: " + JSON.stringify(err));
                 response = {
@@ -2044,12 +2102,12 @@ module.exports.careator_getChatRightsAllempWithSuperAdmin_byLoginId = function(r
     }
 }
 
-module.exports.careator_getAllAdmins_byLoginId = function(req, res){
-    console.log("careator_getAllAdmins_byLoginId-->: "+req.params.id);
+module.exports.careator_getAllAdmins_byLoginId = function (req, res) {
+    console.log("careator_getAllAdmins_byLoginId-->: " + req.params.id);
     var id = req.params.id;
 
     if (general.emptyCheck(id)) {
-        careatorMaster.find({"_id": { $ne: ObjectId(id) },"loginType": "admin"}).toArray(function (err, allEmp_chat) {
+        careatorMaster.find({ "_id": { $ne: ObjectId(id) }, "loginType": "admin" }).toArray(function (err, allEmp_chat) {
             if (err) {
                 console.log("err: " + JSON.stringify(err));
                 response = {

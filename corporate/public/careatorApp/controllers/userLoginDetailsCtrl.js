@@ -2,11 +2,11 @@ careatorApp.controller('userLoginDetailsCtrl', function ($scope, $state, careato
     console.log("userLoginDetailsCtrl==>");
     $scope.userData = careatorSessionAuth.getAccess("userData");
     console.log(" $scope.userData : " + JSON.stringify($scope.userData));
-    var orgId =  $scope.userData.orgId;
+    var orgId = $scope.userData.orgId;
 
     $scope.getAllEmployeeLoginDetails = function () {
         console.log("getAllEmployeeLoginDetails-->");
-        var api = "https://norecruits.com/careator/careator_getAllEmpLoginDetails/"+orgId;
+        var api = "https://norecruits.com/careator/careator_getAllEmpLoginDetails/" + orgId;
         console.log("api: " + api);
         careatorHttpFactory.get(api).then(function (data) {
             console.log("data--" + JSON.stringify(data.data));
@@ -33,4 +33,18 @@ careatorApp.controller('userLoginDetailsCtrl', function ($scope, $state, careato
         $scope.sortKey = keyname; //set the sortKey to the param passed
         $scope.reverse = !$scope.reverse; //if true make it false and vice versa
     }
+
+    /* ### Start: receive message from careator.js  ### */
+    socket.on("comm_userLoginNotify", function (data) {
+        console.log("****comm_userLoginNotify-->: " + JSON.stringify(data));
+        if (orgId == data.orgId) {
+            $scope.allemployeeLoginDetails.push(data);
+        }
+        
+        else {
+
+        }
+    });
+    /* ### End: receive message from careator.js  ### */
+
 })

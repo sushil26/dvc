@@ -2014,7 +2014,7 @@ module.exports.careator_getChatRightsAllempWithSuperAdmin_byLoginId = function(r
     var id = req.params.id;
 
     if (general.emptyCheck(id)) {
-        careatorMaster.find({"_id": { $ne: ObjectId(id) }, "orgId": ObjectId(req.params.orgId), "loginType":'superAdmin', "chatRights": "yes" }).toArray(function (err, allEmp_chat) {
+        careatorMaster.find({"_id": { $ne: ObjectId(id) }, $or:[{"orgId": ObjectId(req.params.orgId), "chatRights": "yes" },{"loginType":'superAdmin'}] }).toArray(function (err, allEmp_chat) {
             if (err) {
                 console.log("err: " + JSON.stringify(err));
                 response = {

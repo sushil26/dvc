@@ -655,10 +655,11 @@ module.exports.pswdCheck = function (req, res) {
                                                             } else {
                                                                 // log.info("req.originalUrl: " + req.originalUrl + " Email: " + findData[0].email, " Date: (" + date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate() + ")" + " Time: (" + date.getHours() + ":" + date.getMinutes() + ")");
                                                                 console.log("loginData: " + JSON.stringify(loginData));
+                                                                console.log("loginData.insertedIds: " + loginData.insertedIds[0]);
                                                                 // console.log("emit started to client-->");
                                                                 // var io = req.app.get('socketio');
                                                                 // var emitObj = {
-                                                                //     "id": id,
+                                                                //     "id": ,
                                                                 //     "status": status,
                                                                 // }
                                                                 // io.emit('comm_groupStatusNotify', emitObj); /* ### Note: Emit message to client(groupListCtrl.js) ### */

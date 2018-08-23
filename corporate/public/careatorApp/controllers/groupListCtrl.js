@@ -28,7 +28,7 @@ careatorApp.controller('groupListCtrl', function ($scope, $state, careatorHttpFa
 
     $scope.statusChange = function (id, status) {
         console.log("status: "+status);
-        if (status = 'active') {
+        if (status == 'active') {
             console.log("active-->");
             SweetAlert.swal({
                     title: "Are you sure to Activate the Group?", //Bold text
@@ -79,7 +79,7 @@ careatorApp.controller('groupListCtrl', function ($scope, $state, careatorHttpFa
 
             )
         }
-        if (status = 'inactive') {
+        if (status == 'inactive') {
             console.log("inactive-->");
             SweetAlert.swal({
                     title: "Are you sure to Deactivate the Group ?", //Bold text

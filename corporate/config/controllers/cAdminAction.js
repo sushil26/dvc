@@ -471,7 +471,7 @@ module.exports.getOrg_admin_byOrgId = function (req, res) {
 }
 
 module.exports.orgEditById = function (req, res) {
-    console.log("userEditById-->");
+    console.log("orgEditById-->");
     var response;
     var id = req.params.id;
     console.log("id: " + id);
@@ -480,6 +480,7 @@ module.exports.orgEditById = function (req, res) {
         var queryId = {
             "_id": ObjectId(id)
         }
+        console.log("Organization queryId: "+JSON.stringify(queryId));
         var updateVlaue = {
             "lastUpdatedDate": date
         };
@@ -525,7 +526,7 @@ module.exports.orgEditById = function (req, res) {
         }
 
         console.log("updateValue: " + JSON.stringify(updateVlaue));
-         /* ###  Start: Admin data, Organization data updated from careator master collection, organization collection ### */
+        /* ###  Start: Admin data, Organization data updated from careator master collection, organization collection ### */
         organizations.update(queryId, { $set: updateVlaue }, function (err, updatedData) {
             if (err) {
                 console.log("err: " + JSON.stringify(err));
@@ -541,6 +542,7 @@ module.exports.orgEditById = function (req, res) {
                 var careatorUpdateQueryId = {
                     "objId": ObjectId(id)
                 }
+                console.log("careatorUpdateQueryId: "+JSON.stringify(careatorUpdateQueryId));
                 var adminObj = {
                     "lastUpdatedDate": date
                 }
@@ -587,7 +589,7 @@ module.exports.orgEditById = function (req, res) {
                 /* ###  End: Admin data updated from careator master collection ### */
             }
         })
-         /* ###  End: Admin data, Organization data updated from careator master collection, organization collection ### */
+        /* ###  End: Admin data, Organization data updated from careator master collection, organization collection ### */
     } else {
         console.log("Empty value found");
         var obj = {
@@ -600,7 +602,7 @@ module.exports.orgEditById = function (req, res) {
         };
         res.status(400).send(response);
     }
-
+    console.log("<--orgEditById");
 }
 
 

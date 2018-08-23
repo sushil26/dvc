@@ -234,8 +234,8 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
             var userData = userData;
             careatorSessionAuth.setAccess(userData);
             var userData = careatorSessionAuth.getAccess("userData");
-            $scope.userData = userData;
-            $scope.loginType = userData.loginType;
+            $scope.userData = careatorSessionAuth.getAccess("userData");
+            $scope.loginType = $scope.userData.loginType;
             console.log("userData: " + JSON.stringify(userData));
 
 

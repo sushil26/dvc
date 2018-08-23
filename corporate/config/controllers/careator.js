@@ -1558,32 +1558,45 @@ module.exports.groupStatusChangeById = function (req, res) {
             "status": status
         }
         console.log("updateVlaue: " + JSON.stringify(updateVlaue));
-        careatorChatGroup.update({
-            "_id": ObjectId(id)
-        }, {
-                $set: {
+        careatorChatGroup.update({ "_id": ObjectId(id) }, { $set: { "status": status } }, function (err, data) {
+            console.log("status query proccessed-->");
+            if (err) {
+                console.log("err: " + JSON.stringify(err));
+                response = {
+                    status: false,
+                    message: property.E0007,
+                    data: err
+                };
+                res.status(400).send(response);
+            } else {
+                console.log("updatedData: " + JSON.stringify(data));
+                var careatorChatUpdateVlaue = {
                     "status": status
                 }
-            }, function (err, data) {
-                console.log("status query proccessed-->");
-                if (err) {
-                    console.log("err: " + JSON.stringify(err));
-                    response = {
-                        status: false,
-                        message: property.E0007,
-                        data: err
-                    };
-                    res.status(400).send(response);
-                } else {
-                    console.log("updatedData: " + JSON.stringify(data));
-                    response = {
-                        status: true,
-                        message: property.S0010,
-                        data: data
-                    };
-                    res.status(200).send(response);
-                }
-            })
+                console.log("careatorChatUpdateVlaue: " + JSON.stringify(careatorChatUpdateVlaue));
+                careatorChat.update({ "group_id": id }, { $set: { "status": status } }, function (err, data) {
+                    console.log("status query proccessed-->");
+                    if (err) {
+                        console.log("err: " + JSON.stringify(err));
+                        response = {
+                            status: false,
+                            message: property.E0007,
+                            data: err
+                        };
+                        res.status(400).send(response);
+                    } else {
+
+                        console.log("updatedData: " + JSON.stringify(data));
+                        response = {
+                            status: true,
+                            message: property.S0010,
+                            data: data
+                        };
+                        res.status(200).send(response);
+                    }
+                })
+            }
+        })
     } else {
         console.log("Epty value found");
         var obj = {
@@ -1781,7 +1794,7 @@ module.exports.careator_chat_creteGroup = function (req, res) {
                     "groupMembers": insertObj.groupMembers,
                     "orgId": req.body.orgId,
                 }
-               
+
                 io.emit('comm_groupCreateNotify', emitObj); /* ### Note: Emit message to client(chatCtrl.js) ### */
 
                 response = {

@@ -566,6 +566,7 @@ io.sockets.on('connection', function (socket) {
                     var queryObj = {
                         "sessionRandomId": data.sessionRandomId
                     }
+                    console.log("queryObj: "+JSON.stringify(queryObj));
                     loginDetails.update(queryObj, { $set: { "login": false, "logoutDate": date, "logout": true } }, { upsert: true }, function (err, logoutData) {
                         if (err) {
                             console.log("errr: " + JSON.stringify(err));

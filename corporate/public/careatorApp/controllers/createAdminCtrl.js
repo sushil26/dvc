@@ -31,9 +31,20 @@ careatorApp.controller('createAdminCtrl', function ($scope, $rootScope, $state, 
             if (checkStatus) {
                 console.log("data.data.data: " + JSON.stringify(data.data.data));
                 console.log("data.data.message: " + data.data.message);
+                SweetAlert.swal({
+                    title: "Successfully Created",
+                    text: data.data.message,
+                    type: "success"
+                });
+                $state.go("Cdashboard.adminListCtrl");
             }
             else {
                 console.log("data.data.message: " + data.data.message);
+                SweetAlert.swal({
+                    title: "Failed",
+                    text: data.data.message,
+                    type: "warning"
+                });
             }
         })
     }

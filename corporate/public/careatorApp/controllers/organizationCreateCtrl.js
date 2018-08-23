@@ -1,8 +1,8 @@
-careatorApp.controller('createAdminCtrl', function ($scope, $rootScope, $state, careatorHttpFactory, SweetAlert) {
-    console.log("createAdminCtrl==>");
+careatorApp.controller('organizationCreateCtrl', function ($scope, $rootScope, $state, careatorHttpFactory, SweetAlert) {
+    console.log("organizationCreateCtrl==>");
     $scope.propertyJson = $rootScope.propertyJson;
-    $scope.createAdmin = function () {
-        console.log("createAdmin-->");
+    $scope.organizationCreate = function () {
+        console.log("organizationCreate-->");
 
         var obj = {
             "organizationName": $scope.organizationName,

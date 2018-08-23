@@ -14,7 +14,7 @@ careatorApp.config(function ($stateProvider) {
         })
         .state('Cdashboard.adminCreate', {
             url: careator_adminCreate(),
-            templateUrl: '/careatorApp/html/createAdmin.html',
+            templateUrl: '/careatorApp/html/organizationCreate.html',
             resolve: {
                 result: function (careatorSessionAuth, $window) {
                     var userData = careatorSessionAuth.getAccess("userData");

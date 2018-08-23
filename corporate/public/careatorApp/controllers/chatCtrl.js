@@ -522,6 +522,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
         });
       }
     } else if ($scope.selectedType == "group") {
+      console.log("$scope.sendGroupText_withData.status: "+$scope.sendGroupText_withData.status);
       if ($scope.sendGroupText_withData.status != 'inactive') {
 
         obj = {

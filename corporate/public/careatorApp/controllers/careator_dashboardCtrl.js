@@ -4,7 +4,8 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
     $scope.tickInterval = 1000 //ms
     $scope.propertyJson = $rootScope.propertyJson;
     console.log("localStorage.getItem(careatorEmail): " + localStorage.getItem("careatorEmail"));
-    $scope.userData = careatorSessionAuth.getAccess("userData");
+    var userData = careatorSessionAuth.getAccess("userData");
+    $scope.userData =userData;
     $scope.loginUserName = userData.firstName + " " + userData.lastName;
     $scope.userId = userData.userId;
 

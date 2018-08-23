@@ -499,7 +499,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                     console.log("signaling_socket message-->");
                     queryLink = config.queryId;
                     peerNew_id = config.peer_id;
-                    var url = "https://norecruits.com/talenkart_conf/" + peerNew_id + "/" + urlDate;
+                    var url = "https://norecruits.com/vc4all_conf/" + peerNew_id + "/" + urlDate;
                     // window.location.href = url;
                     var api = "https://norecruits.com/careator/setCollection";
                     console.log("api: " + api);

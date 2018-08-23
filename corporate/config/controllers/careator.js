@@ -507,6 +507,7 @@ module.exports.pswdCheckForSession_schedule = function (req, res) {
 }
 module.exports.pswdCheck = function (req, res) {
     console.log("pswdCheck-->");
+    var sessionRandomId = randomstring.generate(7);
     console.log("req.body.password: " + req.body.password + " req.body.careatorEmail: " + req.body.careatorEmail);
     var password = req.body.password;
     var careatorEmail = req.body.careatorEmail;
@@ -534,7 +535,7 @@ module.exports.pswdCheck = function (req, res) {
                         if (findData[0].status == 'active') {
                             if (findData[0].password == password) {
                                 if (findData[0].logout == 'done' && findData[0].login == 'notDone') {
-                                    careatorMaster.update({ "_id": ObjectId(findData[0]._id), "status": "active" }, { $set: { "password": password, "invite": [], "logout": "notDone", "login": "done" } }, function (err, data) {
+                                    careatorMaster.update({ "_id": ObjectId(findData[0]._id), "status": "active" }, { $set: { "password": password, "invite": [], "logout": "notDone", "login": "done", "sessionRandomId":sessionRandomId+findData[0]._id } }, function (err, data) {
                                         console.log("data: " + JSON.stringify(data));
                                         if (err) {
                                             responseData = {
@@ -544,7 +545,7 @@ module.exports.pswdCheck = function (req, res) {
                                             res.status(400).send(responseData);
                                         } else {
                                             var date = new Date();
-                                            loginDetails.insert({ "userId": findData[0]._id, "sessionRandomId": findData[0].sessionRandomId, "orgId": findData[0].orgId, "userName": findData[0].firstName + " " + findData[0].lastName, "email": findData[0].email, "login": true, "loginDate": date, "logout": false }, function (err, loginData) {
+                                            loginDetails.insert({ "userId": findData[0]._id, "sessionRandomId": sessionRandomId+findData[0]._id, "orgId": findData[0].orgId, "userName": findData[0].firstName + " " + findData[0].lastName, "email": findData[0].email, "login": true, "loginDate": date, "logout": false }, function (err, loginData) {
                                                 if (err) {
                                                     responseData = {
                                                         status: false,
@@ -647,7 +648,7 @@ module.exports.pswdCheck = function (req, res) {
                                     if (findData[0].status == 'active') {
                                         if (findData[0].password == password) {
                                             if (findData[0].logout == 'done' && findData[0].login == 'notDone') {
-                                                careatorMaster.update({ "_id": ObjectId(findData[0]._id), "status": "active" }, { $set: { "password": password, "invite": [], "logout": "notDone", "login": "done" } }, function (err, data) {
+                                                careatorMaster.update({ "_id": ObjectId(findData[0]._id), "status": "active" }, { $set: { "password": password, "invite": [], "logout": "notDone", "login": "done", "sessionRandomId":sessionRandomId+findData[0]._id  } }, function (err, data) {
                                                     console.log("data: " + JSON.stringify(data));
                                                     if (err) {
                                                         responseData = {
@@ -657,7 +658,7 @@ module.exports.pswdCheck = function (req, res) {
                                                         res.status(400).send(responseData);
                                                     } else {
                                                         var date = new Date();
-                                                        loginDetails.insert({ "userId": findData[0]._id, "sessionRandomId": findData[0].sessionRandomId, "orgId": findData[0].orgId, "userName": findData[0].firstName + " " + findData[0].lastName, "email": findData[0].email, "login": true, "loginDate": date, "logout": false }, function (err, loginData) {
+                                                        loginDetails.insert({ "userId": findData[0]._id, "sessionRandomId":sessionRandomId+findData[0]._id , "orgId": findData[0].orgId, "userName": findData[0].firstName + " " + findData[0].lastName, "email": findData[0].email, "login": true, "loginDate": date, "logout": false }, function (err, loginData) {
                                                             if (err) {
                                                                 responseData = {
                                                                     status: false,

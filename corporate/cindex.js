@@ -8,8 +8,8 @@ var app = express();
 // app.use(bodyParser.json({
 //     limit: '100mb'
 // }));
-app.use(bodyParser.json({limit: "100mb"}));
-app.use(bodyParser.urlencoded({limit: "100mb", extended: true, parameterLimit:50000}));
+app.use(bodyParser.json({ limit: "100mb" }));
+app.use(bodyParser.urlencoded({ limit: "100mb", extended: true, parameterLimit: 50000 }));
 
 //app.use(multer());
 app.use(fileUpload());
@@ -39,7 +39,7 @@ var chatHistory;
 // server.timeout = 9999999999;
 mongoConfig.connectToServer(function (err) {
     console.log("mongo connected -->");
-   
+
     require('./config/router')(app);
 })
 app.use(express.static(__dirname + '/public'));
@@ -571,6 +571,16 @@ io.sockets.on('connection', function (socket) {
                             console.log("errr: " + JSON.stringify(err));
                         }
                         else {
+                            console.log("emit started to client-->");
+                            var io = req.app.get('socketio');
+                            var emitObj = {
+                                "orgId":data.orgId,
+                                "sessionRandomId": queryObj.sessionRandomId,
+                                "logoutDate": date,
+                                "login": false,
+                                "logout": true
+                            }
+                            io.emit('comm_userLogoutNotify', emitObj); /* ### Note: Emit message to client(userLoginDetailsCtrl.js) ### */
                             console.log("logoutData: " + JSON.stringify(logoutData));
                         }
 
@@ -611,6 +621,16 @@ io.sockets.on('connection', function (socket) {
                     }
                     else {
                         console.log("logoutData: " + JSON.stringify(logoutData));
+                        console.log("emit started to client-->");
+                        var io = req.app.get('socketio');
+                        var emitObj = {
+                            "orgId":data.orgId,
+                            "sessionRandomId": queryObj.sessionRandomId,
+                            "logoutDate": date,
+                            "login": false,
+                            "logout": true
+                        }
+                        io.emit('comm_userLogoutNotify', emitObj); /* ### Note: Emit message to client(userLoginDetailsCtrl.js) ### */
                     }
                 })
                 console.log("updateData: " + JSON.stringify(updateData));

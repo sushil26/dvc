@@ -14,10 +14,6 @@ careatorApp.controller('userLoginDetailsCtrl', function ($scope, $state, careato
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
                 $scope.allemployeeLoginDetails = data.data.data;
-                $scope.logDetails = [];
-                for(var x=0;x<$scope.allemployeeLoginDetails.length;x++){
-                    $scope.logDetails[$scope.allemployeeLoginDetails._id] = $scope.allemployeeLoginDetails[x];
-                }
                 console.log("allemployeeLoginDetails: " + JSON.stringify($scope.allemployeeLoginDetails));
                 console.log(data.data.message);
             } else {
@@ -44,7 +40,25 @@ careatorApp.controller('userLoginDetailsCtrl', function ($scope, $state, careato
         if (orgId == data.orgId) {
             $scope.allemployeeLoginDetails.push(data);
         }
-        
+
+        else {
+
+        }
+    });
+    socket.on("comm_userLogoutNotify", function (data) {
+        console.log("****comm_userLogoutNotify-->: " + JSON.stringify(data));
+        if (orgId == data.orgId) {
+            for(var x=0;x<$scope.allemployeeLoginDetails.length;x++)
+            {
+                if($scope.allemployeeLoginDetails[x].sessionRandomId == data.data)
+                {
+                    $scope.allemployeeLoginDetails[x].logoutDate = data.logoutDate;
+                    $scope.allemployeeLoginDetails[x].login = data.login;
+                    $scope.allemployeeLoginDetails[x].logout = data.logout;
+                }
+
+            }
+        }
         else {
 
         }

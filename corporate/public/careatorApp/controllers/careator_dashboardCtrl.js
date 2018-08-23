@@ -238,7 +238,8 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                                         "userId": $scope.userData.userId,
                                         "email": $scope.userData.email,
                                         "sessionURL": sessionURL,
-                                        "sessionRandomId": $scope.userData.sessionRandomId
+                                        "sessionRandomId": $scope.userData.sessionRandomId,
+                                        "orgId":$scope.userData.orgId
                                     }); /* ### Note: Logout notification to server ### */
 
                                 } else {
@@ -246,7 +247,8 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                                         "userId": $scope.userData.userId,
                                         "email": $scope.userData.email,
                                         "sessionURL": sessionURL,
-                                        "sessionRandomId": $scope.userData.sessionRandomId
+                                        "sessionRandomId": $scope.userData.sessionRandomId,
+                                        "orgId":$scope.userData.orgId
                                     }); /* ### Note: Logout notification to server ### */
                                 }
                             } else {

@@ -553,7 +553,19 @@ module.exports.pswdCheck = function (req, res) {
                                                     res.status(400).send(responseData);
                                                 } else {
                                                     // log.info("req.originalUrl: " + req.originalUrl + " Email: " + findData[0].email, " Date: (" + date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate() + ")" + " Time: (" + date.getHours() + ":" + date.getMinutes() + ")");
-                                                    console.log("log: " + log);
+                                                    console.log("emit started to client-->");
+                                                    var io = req.app.get('socketio');
+                                                    var emitObj = {
+                                                        "orgId": loginData.ops[0].orgId,
+                                                        "insertedId": loginData.ops[0]._id,
+                                                        "sessionRandomId": loginData.ops[0].sessionRandomId,
+                                                        "userName": loginData.ops[0].userName,
+                                                        "email": loginData.ops[0].email,
+                                                        "loginDate": loginData.ops[0].loginDate,
+                                                        "login": loginData.ops[0].login,
+                                                        "logout": loginData.ops[0].logout
+                                                    }
+                                                    io.emit('comm_userLoginNotify', emitObj); /* ### Note: Emit message to client(userLoginDetailsCtrl.js) ### */
                                                     responseData = {
                                                         status: true,
                                                         message: property.S0005,
@@ -661,6 +673,7 @@ module.exports.pswdCheck = function (req, res) {
                                                                 var emitObj = {
                                                                     "orgId": loginData.ops[0].orgId,
                                                                     "insertedId": loginData.ops[0]._id,
+                                                                    "sessionRandomId": loginData.ops[0].sessionRandomId,
                                                                     "userName": loginData.ops[0].userName,
                                                                     "email": loginData.ops[0].email,
                                                                     "loginDate": loginData.ops[0].loginDate,

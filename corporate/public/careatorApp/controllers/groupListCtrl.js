@@ -27,6 +27,7 @@ careatorApp.controller('groupListCtrl', function ($scope, $state, careatorHttpFa
     $scope.getGroupList();
 
     $scope.statusChange = function (id, status) {
+        console.log("status: "+status);
         if (status = 'active') {
             SweetAlert.swal({
                     title: "Are you sure to Activate the Group?", //Bold text

@@ -168,7 +168,8 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
               groupName: $scope.individualData.groupName,
               senderId: userData.userId,
               senderName: userData.userName,
-              groupMembers: $scope.individualData.groupMembers
+              groupMembers: $scope.individualData.groupMembers,
+              status: $scope.individualData.status
             };
           } else {
             $scope.individualData = data.data.data[0];
@@ -179,7 +180,8 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
               groupName: $scope.individualData.groupName,
               senderId: userData.userId,
               senderName: userData.userName,
-              groupMembers: $scope.individualData.groupMembers
+              groupMembers: $scope.individualData.groupMembers,
+              status: $scope.individualData.status
             };
           }
           console.log("$scope.individualData : " + JSON.stringify($scope.individualData));
@@ -306,6 +308,9 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
       senderId: userData.userId,
       senderName: userData.userName
     };
+    if($scope.individualData.status){
+      $scope.sendGroupText_withData.status = $scope.individualData.status
+    }
     console.log("sendGroupText_withData-->: " + JSON.stringify($scope.individualData));
     console.log("individualData-->: " + JSON.stringify($scope.sendGroupText_withData));
     console.log(" $scope.restrictedArray: " + JSON.stringify($scope.restrictedArray));
@@ -517,6 +522,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
         });
       }
     } else if ($scope.selectedType == "group") {
+
       obj = {
         group_id: $scope.sendGroupText_withData.group_id,
         groupName: $scope.sendGroupText_withData.groupName,

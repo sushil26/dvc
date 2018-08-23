@@ -232,10 +232,12 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
                 userData.profilePicPath = data.data.profilePicPath;
             }
             var userData = userData;
+            console.log("userData before update into localstorage: "+JSON.stringify(userData));
             careatorSessionAuth.setAccess(userData);
             var userData = careatorSessionAuth.getAccess("userData");
             $scope.userData = careatorSessionAuth.getAccess("userData");
             $scope.loginType = $scope.userData.loginType;
+            console.log("userData After update into localstorage: "+JSON.stringify(            $scope.userData));
             console.log("userData: " + JSON.stringify(userData));
 
 

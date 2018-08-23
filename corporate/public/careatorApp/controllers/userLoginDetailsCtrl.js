@@ -48,13 +48,17 @@ careatorApp.controller('userLoginDetailsCtrl', function ($scope, $state, careato
     socket.on("comm_userLogoutNotify", function (data) {
         console.log("****comm_userLogoutNotify-->: " + JSON.stringify(data));
         if (orgId == data.orgId) {
+            console.log("same orgid");
             for(var x=0;x<$scope.allemployeeLoginDetails.length;x++)
             {
+                console.log("for loop-->");
                 if($scope.allemployeeLoginDetails[x].sessionRandomId == data.data)
                 {
+                    console.log("stated to update-->");;
                     $scope.allemployeeLoginDetails[x].logoutDate = data.logoutDate;
                     $scope.allemployeeLoginDetails[x].login = data.login;
                     $scope.allemployeeLoginDetails[x].logout = data.logout;
+                    break;
                 }
 
             }

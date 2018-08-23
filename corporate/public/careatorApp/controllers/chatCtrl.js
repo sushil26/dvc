@@ -308,7 +308,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
       senderId: userData.userId,
       senderName: userData.userName
     };
-    if($scope.individualData.status){
+    if ($scope.individualData.status) {
       $scope.sendGroupText_withData.status = $scope.individualData.status
     }
     console.log("sendGroupText_withData-->: " + JSON.stringify($scope.individualData));
@@ -522,29 +522,40 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
         });
       }
     } else if ($scope.selectedType == "group") {
+      if ($scope.sendGroupText_withData.status != 'inactive') {
 
-      obj = {
-        group_id: $scope.sendGroupText_withData.group_id,
-        groupName: $scope.sendGroupText_withData.groupName,
-        groupMembers: $scope.sendGroupText_withData.groupMembers,
-        senderId: userData.userId,
-        senderName: userData.firstName + " " + userData.lastName,
-        message: $scope.typedMessage
-      };
-      console.log("obj: " + JSON.stringify(obj));
-      api = "https://norecruits.com//careator_groupText/groupText";
-      console.log("api: " + api);
-      careatorHttpFactory.post(api, obj).then(function (data) {
-        console.log("data--" + JSON.stringify(data.data));
-        var checkStatus = careatorHttpFactory.dataValidation(data);
-        if (checkStatus) {
-          console.log("data.data.data: " + JSON.stringify(data.data.data));
-          console.log(data.data.message);
-        } else {
-          console.log("Sorry");
-          console.log(data.data.message);
-        }
-      });
+        obj = {
+          group_id: $scope.sendGroupText_withData.group_id,
+          groupName: $scope.sendGroupText_withData.groupName,
+          groupMembers: $scope.sendGroupText_withData.groupMembers,
+          senderId: userData.userId,
+          senderName: userData.firstName + " " + userData.lastName,
+          message: $scope.typedMessage
+        };
+        console.log("obj: " + JSON.stringify(obj));
+        api = "https://norecruits.com//careator_groupText/groupText";
+        console.log("api: " + api);
+        careatorHttpFactory.post(api, obj).then(function (data) {
+          console.log("data--" + JSON.stringify(data.data));
+          var checkStatus = careatorHttpFactory.dataValidation(data);
+          if (checkStatus) {
+            console.log("data.data.data: " + JSON.stringify(data.data.data));
+            console.log(data.data.message);
+          } else {
+            console.log("Sorry");
+            console.log(data.data.message);
+          }
+        });
+      }
+      else {
+        $scope.notifyMsg = "This Group is not active right now"
+        console.log(" $scope.notifyMsg: " + $scope.notifyMsg);
+        SweetAlert.swal({
+          title: "Not Allowed",
+          text: $scope.notifyMsg,
+          type: "info"
+        });
+      }
     }
   };
 
@@ -1161,7 +1172,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
       console.log("data.groupMembers: " + JSON.stringify(data.groupMembers));
       for (var x = 0; x < data.groupMembers.length; x++) {
         if ($scope.userId == data.groupMembers[x].userId) {
-          
+
           /* ##### Start get group list ##### */
           var id = $scope.userId;
           var api = "https://norecruits.com/careator_chatGroupList/careator_getChatGroupListById/" + id;

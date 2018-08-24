@@ -3,8 +3,8 @@ careatorApp.controller('organizationUserListCtrl', function ($scope, $state, car
    
     var orgId =  $state.params.id;
 
-    $scope.getAllEmployee = function () {
-        console.log("getAllEmployee-->");
+    $scope.getAllUser = function () {
+        console.log("getAllUser-->");
         var api = "https://norecruits.com/careator/careator_getAllUser/"+orgId;
         console.log("api: " + api);
         careatorHttpFactory.get(api).then(function (data) {
@@ -20,10 +20,10 @@ careatorApp.controller('organizationUserListCtrl', function ($scope, $state, car
                 console.log(data.data.message);
             }
         })
-        console.log("<--getAllEmployee");
+        console.log("<--getAllUser");
     }
 
-    $scope.getAllEmployee();
+    $scope.getAllUser();
 
     $scope.statusChange = function (id, status, index) {
 

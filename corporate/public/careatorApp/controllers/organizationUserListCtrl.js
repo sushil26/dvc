@@ -175,7 +175,7 @@ careatorApp.controller('organizationUserListCtrl', function ($scope, $state, car
                         console.log("data--" + JSON.stringify(data.data));
                         if (checkStatus) {
                             console.log(data.data.message);
-                            $scope.getAllEmployee();
+                            $scope.allUser();
                         } else {
                             console.log("Sorry");
                             console.log(data.data.message);
@@ -233,7 +233,7 @@ careatorApp.controller('organizationUserListCtrl', function ($scope, $state, car
                         console.log("data--" + JSON.stringify(data.data));
                         if (checkStatus) {
                             console.log(data.data.message);
-                            $scope.getAllEmployee();
+                            $scope.allUser();
                         } else {
                             console.log("Sorry");
                             console.log(data.data.message);

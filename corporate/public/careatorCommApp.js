@@ -57,6 +57,22 @@ careatorApp.config(function ($stateProvider) {
             }
 
         })
+        .state('Cdashboard.organizationUserList', {
+            url: organizationUserList(),
+            templateUrl: '/careatorApp/html/organizationUserList.html',
+            resolve: {
+                result: function (careatorSessionAuth, $window) {
+                    var userData = careatorSessionAuth.getAccess("userData");
+                    if (userData.loginType == 'superAdmin') {
+
+                    } else {
+                        $window.location.href = 'https://norecruits.com';
+                    }
+                }
+            }
+
+        })
+
         .state('Cdashboard.createGroup', {
             url: createGroup(),
             templateUrl: '/careatorApp/html/createGroup.html',
@@ -273,6 +289,9 @@ careatorApp.config(function ($stateProvider) {
 })
 function orgSetting(){
     return '/orgSetting/:id';
+}
+function organizationUserList(){
+    return'/organizationUserList/:id';
 }
 
 function ipost() {

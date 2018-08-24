@@ -56,7 +56,6 @@ careatorApp.controller('organizationSettingCtrl', function ($scope,  $rootScope,
                 console.log(data.data.message);
                 SweetAlert.swal({
                     title: "Successfully Changed",
-                    text: data.data.message,
                     type: "success"
                 });
                 $state.go("Cdashboard.organizationList")

@@ -58,7 +58,7 @@ careatorApp.controller('organizationUserListCtrl', function ($scope, $state, car
                             var checkStatus = careatorHttpFactory.dataValidation(data);
                             console.log("data--" + JSON.stringify(data.data));
                             if (checkStatus) {
-                                $scope.allemployee[index].status = status
+                                $scope.allUser[index].status = status
                                 console.log(data.data.message);
                             } else {
                                 console.log("Sorry");
@@ -111,7 +111,7 @@ careatorApp.controller('organizationUserListCtrl', function ($scope, $state, car
                             var checkStatus = careatorHttpFactory.dataValidation(data);
                             console.log("data--" + JSON.stringify(data.data));
                             if (checkStatus) {
-                                $scope.allemployee[index].status = status
+                                $scope.allUser[index].status = status
                                 console.log(data.data.message);
                             } else {
                                 console.log("Sorry");
@@ -136,7 +136,7 @@ careatorApp.controller('organizationUserListCtrl', function ($scope, $state, car
     $scope.editUser = function (id) {
         console.log("editUser-->");
         console.log("id: " + id);
-        //var data = $scope.allemployee[index];
+        //var data = $scope.allUser[index];
         $state.go("Cdashboard.editUser", {
             "id": id
         });

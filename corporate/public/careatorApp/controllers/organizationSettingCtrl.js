@@ -1,4 +1,4 @@
-careatorApp.controller('organizationSettingCtrl', function ($scope,  $rootScope, $state, careatorHttpFactory) {
+careatorApp.controller('organizationSettingCtrl', function ($scope,  $rootScope, $state, careatorHttpFactory,SweetAlert) {
     console.log("organizationSettingCtrl==>");
     $scope.propertyJson = $rootScope.propertyJson;
     console.log("$state.params.id: "+$state.params.id);
@@ -54,6 +54,11 @@ careatorApp.controller('organizationSettingCtrl', function ($scope,  $rootScope,
             console.log("data--" + JSON.stringify(data.data));
             if (checkStatus) {
                 console.log(data.data.message);
+                SweetAlert.swal({
+                    title: "Successfully Changed",
+                    text: data.data.message,
+                    type: "success"
+                });
                 $state.go("Cdashboard.organizationList")
             }
             else {

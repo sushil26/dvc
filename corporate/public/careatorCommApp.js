@@ -185,7 +185,7 @@ careatorApp.config(function ($stateProvider) {
                 result: function (careatorSessionAuth, $window) {
                     var userData = careatorSessionAuth.getAccess("userData");
                     if (userData.loginType == 'admin' || userData.loginType == 'superAdmin' || userData.loginType == 'employee') {
-                        
+
                     } else {
                         $window.location.href = 'https://norecruits.com';
                     }
@@ -199,7 +199,7 @@ careatorApp.config(function ($stateProvider) {
                 result: function (careatorSessionAuth, $window) {
                     var userData = careatorSessionAuth.getAccess("userData");
                     if (userData.loginType == 'admin' || userData.loginType == 'superAdmin' || userData.loginType == 'employee') {
-                        
+
                     } else {
                         $window.location.href = 'https://norecruits.com';
                     }
@@ -235,9 +235,9 @@ careatorApp.config(function ($stateProvider) {
                 result: function (careatorSessionAuth, $window) {
                     var userData = careatorSessionAuth.getAccess("userData");
                     if (userData.loginType == 'admin' || userData.loginType == 'superAdmin' || userData.loginType == 'employee') {
-                       
+
                     } else {
-                        $window.location.href = 'https://norecruits.com';  
+                        $window.location.href = 'https://norecruits.com';
                     }
                 }
             }
@@ -249,13 +249,13 @@ careatorApp.config(function ($stateProvider) {
                 result: function (careatorSessionAuth, $window) {
                     var userData = careatorSessionAuth.getAccess("userData");
                     if (userData.loginType == 'admin' || userData.loginType == 'superAdmin' || userData.loginType == 'employee') {
-                        
+
                     } else {
                         $window.location.href = 'https://norecruits.com';
                     }
                 }
             }
-            
+
         })
         .state('Cdashboard.historyEvent', {
             url: careator_historyEvent(),
@@ -264,7 +264,7 @@ careatorApp.config(function ($stateProvider) {
                 result: function (careatorSessionAuth, $window) {
                     var userData = careatorSessionAuth.getAccess("userData");
                     if (userData.loginType == 'admin' || userData.loginType == 'superAdmin' || userData.loginType == 'employee') {
-                        
+
                     } else {
                         $window.location.href = 'https://norecruits.com';
                     }
@@ -287,12 +287,23 @@ careatorApp.config(function ($stateProvider) {
         })
 
 })
-function orgSetting(){
+
+function orgSetting() {
     return '/orgSetting/:id';
 }
-function organizationUserList(){
-    return'/organizationUserList/:id';
+
+function organizationUserList() {
+    return '/organizationUserList/:id';
 }
+
+function careator_organizationCreate() {
+    return '/organizationCreate';
+}
+
+function organizationList() {
+    return '/organizationList';
+}
+
 
 function ipost() {
     return '/ipost';
@@ -300,12 +311,6 @@ function ipost() {
 
 function profile() {
     return '/profile';
-}
-function careator_organizationCreate() {
-    return '/organizationCreate';
-}
-function organizationList() {
-    return '/organizationList';
 }
 
 function contactAdmin() {
@@ -364,6 +369,6 @@ function careator_historyEvent() {
     return '/historyEvent'
 }
 
-function careator_loginDetails(){
+function careator_loginDetails() {
     return '/loginDetails'
 }

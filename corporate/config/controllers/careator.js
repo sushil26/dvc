@@ -45,7 +45,7 @@ module.exports.RemoteJoinCheck = function (req, res) {
             "password": password
         }
         console.log("obj: " + JSON.stringify(obj));
-        careatorMaster.find({ "sessionURL": url }).toArray(function (err, sessionURLFindData) {
+        careatorMaster.find({ "instantConf.sessionURL": url },{'instantConf.$':1}).toArray(function (err, sessionURLFindData) {
             console.log("sessionURLFindData: " + JSON.stringify(sessionURLFindData));
             console.log("sessionURLFindData.length: " + sessionURLFindData.length);
             if (err) {
@@ -56,7 +56,7 @@ module.exports.RemoteJoinCheck = function (req, res) {
                 res.status(400).send(responseData);
             } else {
                 if (sessionURLFindData.length > 0) {
-                    if (sessionURLFindData[0].isDisconnected == 'yes') {
+                    if (sessionURLFindData[0].instantConf.isDisconnected == 'yes') {
                         responseData = {
                             status: false,
                             errorCode: "E0_URLE",
@@ -1167,53 +1167,55 @@ module.exports.setCollection = function (req, res) {
         "session_dateTime": new Date()
     }
     console.log("obj: " + JSON.stringify(obj));
-
+    var pushObj = {
+        "sessionURL": req.body.url,
+        "invite": [],
+        "joinEmails": [],
+        "leftEmails": [],
+        "session_dateTime": new Date(),
+        "isDisconnected": "no"
+    }
+    console.log("pushObj: " + JSON.stringify(pushObj));
     careatorMaster.update({ "email": req.body.email }, {
-        $set: {
-            "sessionURL": req.body.url,
-            "invite": [],
-            "joinEmails": [],
-            "leftEmails": [],
-            "session_dateTime": new Date(),
-            "isDisconnected": "no"
-        }
-    }, function (err, urlUpdate) {
-        if (err) {
-            console.log("err: " + JSON.stringify(err));
-            responseData = {
-                status: false,
-                message: property.E0007
-            };
-            res.status(400).send(responseData);
-        } else {
-            var io = req.app.get('socketio');
-            io.emit('comm_sessionCreateUpdate', {
-                "email": req.body.email,
-                "isDisconnected": "no"
-            }); /* ### Note: Emit message to client(careator_dashboardCtrl.js) ### */
-            chatHistory.insertOne(obj, function (err, data) {
-                if (err) {
-                    console.log("err: " + JSON.stringify(err));
-                    responseData = {
-                        status: false,
-                        message: property.E0007
-                    };
-                    res.status(400).send(responseData);
-                } else {
-                    console.log("data: " + JSON.stringify(data));
-                    var obj = {
-                        "url": req.body.url
+        $push: {"instantConf":pushObj}}, function (err, urlUpdate) {
+            if (err) {
+                console.log("err: " + JSON.stringify(err));
+                responseData = {
+                    status: false,
+                    message: property.E0007
+                };
+                res.status(400).send(responseData);
+            } else {
+                var io = req.app.get('socketio');
+                io.emit('comm_sessionCreateUpdate', {
+                    "email": req.body.email,
+                    "isDisconnected": "no"
+                }); /* ### Note: Emit message to client(careator_dashboardCtrl.js) ### */
+                chatHistory.insertOne(obj, function (err, data) {
+                    if (err) {
+                        console.log("err: " + JSON.stringify(err));
+                        responseData = {
+                            status: false,
+                            message: property.E0007
+                        };
+                        res.status(400).send(responseData);
+                    } else {
+                        console.log("data: " + JSON.stringify(data));
+                        var obj = {
+                            "url": req.body.url
+                        }
+                        responseData = {
+                            status: true,
+                            message: property.S0009,
+                            data: obj
+                        };
+                        res.status(200).send(responseData);
                     }
-                    responseData = {
-                        status: true,
-                        message: property.S0009,
-                        data: obj
-                    };
-                    res.status(200).send(responseData);
-                }
-            })
-        }
-    })
+                })
+            }
+        })
+
+    
 }
 module.exports.getChatByUrl = function (req, res) {
     console.log("getChatByUrl-->");
@@ -1393,6 +1395,7 @@ module.exports.careatorMasterInsertValidate = function (data, callback) {
         "Designation": data.Designation,
         "sessionRandomId": sessionRandomId,
         "orgId": data.orgId,
+        "instantConf":[],
         "status": "active",
         "chatStatus": "Available",
         "restrictedTo": [],
@@ -1447,6 +1450,7 @@ module.exports.careatorSingleUserInsert = function (req, res) {
         "videoRights": req.body.videoRights,
         "chatRights": req.body.chatRights,
         "orgId": ObjectId(req.body.orgId),
+        "instantConf":[],
         "status": "active",
         "chatStatus": "Available",
         "restrictedTo": [],

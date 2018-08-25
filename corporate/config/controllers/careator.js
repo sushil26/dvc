@@ -288,7 +288,7 @@ module.exports.pswdCheckForSesstion = function (req, res) {
             } else {
                 if (findData.length > 0) {
                     if (findData[0].password == password) {
-                        careatorMaster.find({ "sessionURL": url }).toArray(function (err, sessionURLFind) {
+                        careatorMaster.find({"instantConf.sessionURL": url },{'instantConf.$':1}).toArray(function (err, sessionURLFind) {
                             console.log("sessionURLFind: " + JSON.stringify(sessionURLFind));
                             if (err) {
                                 responseData = {
@@ -298,7 +298,7 @@ module.exports.pswdCheckForSesstion = function (req, res) {
                                 res.status(400).send(responseData);
                             } else {
                                 if (sessionURLFind.length > 0) {
-                                    if (sessionURLFind[0].isDisconnected == 'yes') {
+                                    if (sessionURLFind[0].instantConf.isDisconnected == 'yes') {
                                         responseData = {
                                             status: false,
                                             errorCode: "E0_URLE",

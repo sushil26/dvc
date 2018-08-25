@@ -288,7 +288,8 @@ module.exports.pswdCheckForSesstion = function (req, res) {
             } else {
                 if (findData.length > 0) {
                     if (findData[0].password == password) {
-                        careatorMaster.find({"instantConf.sessionURL": url,"instantConf.isDisconnected":'no' },{"instantConf.$":1,"_id":0}).toArray(function (err, sessionURLFind) {
+                        careatorMaster.find({"instantConf.sessionURL": url },{"fields":{"_id":0 ,"firstName":0,"lastName":0 ,	"empId":0, "email":0, "password":0 ,"Designation":0 ,"sessionRandomId":0,"videoRights":0 ,"chatRights":0 ,"orgId":0,"instantConf":0 ,"status":0 ,"chatStatus":0,
+                        "restrictedTo":0,"profilePicPath":0 ,"login":0,	"logout":0,	"loginType":0 ,"instantConf.$":1 }}, function (err, sessionURLFind) {
                             console.log("sessionURLFind: " + JSON.stringify(sessionURLFind));
                             if (err) {
                                 responseData = {
@@ -298,7 +299,15 @@ module.exports.pswdCheckForSesstion = function (req, res) {
                                 res.status(400).send(responseData);
                             } else {
                                 if (sessionURLFind.length > 0) {
-                                   
+                                    if (sessionURLFind[0].instantConf.isDisconnected == 'yes') {
+                                        responseData = {
+                                            status: false,
+                                            errorCode: "E0_URLE",
+                                            message: property.N0004
+                                        };
+                                        res.status(400).send(responseData);
+                                    }
+                                    else {
                                         var joinEmails = sessionURLFind[0].joinEmails;
                                         console.log("joinEmails: " + JSON.stringify(joinEmails));
                                         console.log("req.body.careatorEmail: " + req.body.careatorEmail);
@@ -331,7 +340,7 @@ module.exports.pswdCheckForSesstion = function (req, res) {
                                             console.log("responseData: " + JSON.stringify(responseData));
                                             res.status(400).send(responseData);
                                         }
-                                  
+                                    }
 
                                 }
                                 else {

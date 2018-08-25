@@ -288,7 +288,7 @@ module.exports.pswdCheckForSesstion = function (req, res) {
             } else {
                 if (findData.length > 0) {
                     if (findData[0].password == password) {
-                        careatorMaster.findOne({"instantConf.sessionURL": url },["instantConf" ] , (function (err, sessionURLFind) {
+                        careatorMaster.findOne({"instantConf.sessionURL": url },["instantConf" ] , function (err, sessionURLFind) {
                             console.log("sessionURLFind: " + JSON.stringify(sessionURLFind));
                             if (err) {
                                 responseData = {

@@ -299,7 +299,7 @@ module.exports.pswdCheckForSesstion = function (req, res) {
                                 res.status(400).send(responseData);
                             } else {
                                 if (sessionURLFind.length > 0) {
-                                    if (sessionURLFind[0].instantConf.isDisconnected == 'yes') {
+                                    if (sessionURLFind[0].instantConf[0].isDisconnected == 'yes') {
                                         responseData = {
                                             status: false,
                                             errorCode: "E0_URLE",
@@ -308,7 +308,7 @@ module.exports.pswdCheckForSesstion = function (req, res) {
                                         res.status(400).send(responseData);
                                     }
                                     else {
-                                        var joinEmails = sessionURLFind[0].instantConf.joinEmails;
+                                        var joinEmails = sessionURLFind[0].instantConf[0].joinEmails;
                                         console.log("joinEmails: " + JSON.stringify(joinEmails));
                                         console.log("req.body.careatorEmail: " + req.body.careatorEmail);
                                         console.log("joinEmails.indexOf(req.body.careatorEmail): " + joinEmails.indexOf(req.body.careatorEmail));

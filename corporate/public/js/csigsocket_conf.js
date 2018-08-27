@@ -48,6 +48,7 @@ var id2 = stuff[stuff.length - 3];
 console.log("stuff.length: " + stuff.length);
 console.log("id1**: " + id1);
 queryLink = id1;
+queryTime = id2;
 console.log("id2**: " + id2);
 
 // $.browser.firefox = /firefox/.test(navigator.userAgent.toLowerCase());
@@ -426,6 +427,7 @@ console.log("id2**: " + id2);
       localStorage.removeItem("sessionUrlId");
       signaling_socket.emit("disconnectSession", {
         deleteSessionId: queryLink,
+        queryTime: queryTime,
         owner: peerNew_id,
         userId: localStorage.getItem("userId")
       });

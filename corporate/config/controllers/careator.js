@@ -66,7 +66,6 @@ module.exports.RemoteJoinCheck = function (req, res) {
                     }
                     else {
                         //careatorMaster.find({ "sessionURL": url, "invite": { $elemMatch: { "remoteEmailId": remote_careatorEmail, "password": password } } }).toArray(function (err, findData) {
-
                         careatorMaster.find({ "instantConf":{ $elemMatch:{"sessionURL": url, "invite": { $elemMatch: { "remoteEmailId": remote_careatorEmail, "password": password }}} } }).project({"instantConf.$":1}).toArray(function (err, findData) {
                             console.log("findData: " + JSON.stringify(findData));
                             console.log("findData.length: " + findData.length);

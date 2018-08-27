@@ -946,9 +946,9 @@ module.exports.emailInvite = function (req, res) {
                 var inviteArray = findData[0].instantConf[0].invite;
                 console.log("inviteArray: "+JSON.stringify(inviteArray));
                 for(var x=0;x<inviteArray.length;x++){
-                    if(req.body.email == findData[0].instantConf.invite[x].remoteEmailId)
+                    if(req.body.email == findData[0].instantConf[0].invite[x].remoteEmailId)
                     {
-                        passwordFind = findData[0].instantConf.invite[x].passwordFind;
+                        passwordFind = findData[0].instantConf[0].invite[x].passwordFind;
                     }
                 }
                 careatorMaster.update({ email: req.body.sessionHost, 'instantConf.invite.remoteEmailId': req.body.email }, { "$pull": { "instantConf.$.invite":{"remoteEmailId":req.body.email, "password":passwordFind} },"$push":{"instantConf.$.invite":{"remoteEmailId":findData[0].remoteEmailId, "password":password} }}, function (err, updatedOnIndex) {

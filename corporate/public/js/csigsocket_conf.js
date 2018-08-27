@@ -48,7 +48,7 @@ var id2 = stuff[stuff.length - 3];
 console.log("stuff.length: " + stuff.length);
 console.log("id1**: " + id1);
 queryLink = id1;
-queryTime = stuff[stuff.length - 4];
+queryTime = stuff[stuff.length - 1];
 console.log("id2**: " + id2);
 
 // $.browser.firefox = /firefox/.test(navigator.userAgent.toLowerCase());

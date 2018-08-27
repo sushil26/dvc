@@ -344,8 +344,8 @@ io.sockets.on('connection', function (socket) {
             })
         }
         else {
-            careatorMaster.update({ "sessionURL": config.sessionURL }, {
-                $addToSet: { "leftEmails": config.email }, $pull: { "joinEmails": config.email }
+            careatorMaster.update({ "instantConf.sessionURL": config.sessionURL }, {
+                $addToSet: { "instantConf.$.leftEmails": config.email }, $pull: { "instantConf.$.joinEmails": config.email }
             }, function (err, data) {
                 if (err) {
                     console.log("errr: " + JSON.stringify(err));

@@ -930,6 +930,7 @@ module.exports.emailInvite = function (req, res) {
     });
     console.log("password: " + password);
     careatorMaster.find({ email: req.body.sessionHost, 'instantConf.invite.remoteEmailId': req.body.email }).toArray(function (err, findData) {
+        console.log("findData: "+JSON.stringify(findData));
         if (err) {
             responseData = {
                 status: false,

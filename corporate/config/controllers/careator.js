@@ -943,7 +943,7 @@ module.exports.emailInvite = function (req, res) {
             if (findData.length > 0) {
                 console.log("UPdating password");
                 var passwordFind;
-                var inviteArray = findData[0].instantConf.invite;
+                var inviteArray = findData[0].instantConf[0].invite;
                 console.log("inviteArray: "+JSON.stringify(inviteArray));
                 for(var x=0;x<inviteArray.length;x++){
                     if(req.body.email == findData[0].instantConf.invite[x].remoteEmailId)

@@ -942,7 +942,14 @@ module.exports.emailInvite = function (req, res) {
 
             if (findData.length > 0) {
                 console.log("UPdating password");
-                careatorMaster.update({ email: req.body.sessionHost, 'instantConf.invite.remoteEmailId': req.body.email }, { "$pull": { "instantConf.$.invite":findData[0] },"$push":{"instantConf.$.invite":{"remoteEmailId":findData[0].remoteEmailId, "password":password} }}, function (err, updatedOnIndex) {
+                var passwordFind;
+                for(var x=0;x<findData[0].instantConf.invite.length;x++){
+                    if(req.body.email == findData[0].instantConf.invite[x].remoteEmailId)
+                    {
+                        passwordFind = findData[0].instantConf.invite[x].passwordFind;
+                    }
+                }
+                careatorMaster.update({ email: req.body.sessionHost, 'instantConf.invite.remoteEmailId': req.body.email }, { "$pull": { "instantConf.$.invite":{"remoteEmailId":req.body.email, "password":passwordFind} },"$push":{"instantConf.$.invite":{"remoteEmailId":findData[0].remoteEmailId, "password":password} }}, function (err, updatedOnIndex) {
                     if (err) {
                         console.log("err: "+JSON.stringify(err));
                         responseData = {

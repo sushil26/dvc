@@ -222,7 +222,7 @@ io.sockets.on('connection', function (socket) {
         else {
             var queryObj = {
                 "_id": data.userId,
-                "instantConf.sessionURL": "https://norecruits.com/vc4all_conf/"+data.deleteSessionId+"/"+data.queryTime;
+                "instantConf.sessionURL": "https://norecruits.com/vc4all_conf/"+data.deleteSessionId+"/"+data.queryTime
             }
             careatorMaster.update(queryObj, { $set: { "instantConf.$.isDisconnected": "yes" } }, function (err, data) {
                 if (err) {

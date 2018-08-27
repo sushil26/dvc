@@ -67,7 +67,7 @@ module.exports.RemoteJoinCheck = function (req, res) {
                     else {
                         //careatorMaster.find({ "sessionURL": url, "invite": { $elemMatch: { "remoteEmailId": remote_careatorEmail, "password": password } } }).toArray(function (err, findData) {
 
-                        careatorMaster.find({ "instantConf":{ $elemMatch:{"sessionURL": url, "invite": { $elemMatch: { "remoteEmailId": remote_careatorEmail, "password": password }}} } }).toArray(function (err, findData) {
+                        careatorMaster.find({ "instantConf":{ $elemMatch:{"sessionURL": url, "invite": { $elemMatch: { "remoteEmailId": remote_careatorEmail, "password": password }}} } }).project({"instantConf.$":1}).toArray(function (err, findData) {
                             console.log("findData: " + JSON.stringify(findData));
                             console.log("findData.length: " + findData.length);
                             if (err) {
@@ -78,11 +78,11 @@ module.exports.RemoteJoinCheck = function (req, res) {
                                 res.status(400).send(responseData);
                             } else {
                                 if (findData.length > 0) {
-                                    var joinEmails = findData[0].joinEmails;
+                                    var joinEmails = findData[0].instantConf[0].joinEmails;
                                     console.log("joinEmails: " + JSON.stringify(joinEmails));
                                     console.log("joinEmails.indexOf(req.body.careator_remoteEmail): " + joinEmails.indexOf(req.body.careator_remoteEmail));
                                     if (joinEmails.indexOf(req.body.careator_remoteEmail) < 0) {
-                                        careatorMaster.update({ "sessionURL": url }, { $pull: { "leftEmails": remote_careatorEmail }, $addToSet: { "joinEmails": remote_careatorEmail } }, function (err, data) {
+                                        careatorMaster.update({ "instantConf.sessionURL": url }, { $pull: { "instantConf.$.leftEmails": remote_careatorEmail }, $addToSet: { "instantConf.$.joinEmails": remote_careatorEmail } }, function (err, data) {
                                             if (err) {
                                                 responseData = {
                                                     status: false,

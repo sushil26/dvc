@@ -941,7 +941,7 @@ module.exports.emailInvite = function (req, res) {
         } else {
 
             if (findData.length > 0) {
-                careatorMaster.update({ email: req.body.sessionHost, 'instantConf.invite.remoteEmailId': req.body.email }, { "$set": { "instantConf.$.invite.$.password": password } }, function (err, updatedOnIndex) {
+                careatorMaster.update({ email: req.body.sessionHost, 'instantConf.invite.remoteEmailId': req.body.email }, { "$set": { "instantConf.invite.$.password": password } }, function (err, updatedOnIndex) {
                     if (err) {
                         responseData = {
                             status: false,

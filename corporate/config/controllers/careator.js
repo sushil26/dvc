@@ -45,8 +45,7 @@ module.exports.RemoteJoinCheck = function (req, res) {
             "password": password
         }
         console.log("obj: " + JSON.stringify(obj));
-        careatorMaster.find({ "instantConf.sessionURL": url },"instantConf",
-        ).toArray(function (err, sessionURLFindData) {
+        careatorMaster.find({ "instantConf.sessionURL": url }).project({"instantConf.$":1}).toArray(function (err, sessionURLFindData) {
             console.log("sessionURLFindData* : " + JSON.stringify(sessionURLFindData));
             console.log("sessionURLFindData.length: " + sessionURLFindData.length);
             if (err) {
@@ -57,7 +56,7 @@ module.exports.RemoteJoinCheck = function (req, res) {
                 res.status(400).send(responseData);
             } else {
                 if (sessionURLFindData.length > 0) {
-                    if (sessionURLFindData[0].instantConf.isDisconnected == 'yes') {
+                    if (sessionURLFindData[0].instantConf[0].isDisconnected == 'yes') {
                         responseData = {
                             status: false,
                             errorCode: "E0_URLE",
@@ -66,7 +65,9 @@ module.exports.RemoteJoinCheck = function (req, res) {
                         res.status(400).send(responseData);
                     }
                     else {
-                        careatorMaster.find({ "sessionURL": url, "invite": { $elemMatch: { "remoteEmailId": remote_careatorEmail, "password": password } } }).toArray(function (err, findData) {
+                        //careatorMaster.find({ "sessionURL": url, "invite": { $elemMatch: { "remoteEmailId": remote_careatorEmail, "password": password } } }).toArray(function (err, findData) {
+
+                        careatorMaster.find({ "instantConf":{ $elemMatch:{"sessionURL": url, "invite": { $elemMatch: { "remoteEmailId": remote_careatorEmail, "password": password }}} } }).toArray(function (err, findData) {
                             console.log("findData: " + JSON.stringify(findData));
                             console.log("findData.length: " + findData.length);
                             if (err) {
@@ -299,7 +300,8 @@ module.exports.pswdCheckForSesstion = function (req, res) {
                                 res.status(400).send(responseData);
                             } else {
                                 if (sessionURLFind.length > 0) {
-                                    if (sessionURLFind[0].instantConf.isDisconnected == 'yes') {
+                                    console.log("sessionURLFind[0].instantConf[0]: "+JSON.stringify(sessionURLFind[0].instantConf[0]));
+                                    if (sessionURLFind[0].instantConf[0].isDisconnected == 'yes') {
                                         responseData = {
                                             status: false,
                                             errorCode: "E0_URLE",
@@ -308,7 +310,7 @@ module.exports.pswdCheckForSesstion = function (req, res) {
                                         res.status(400).send(responseData);
                                     }
                                     else {
-                                        var joinEmails = sessionURLFind[0].instantConf.joinEmails;
+                                        var joinEmails = sessionURLFind[0].instantConf[0].joinEmails;
                                         console.log("joinEmails: " + JSON.stringify(joinEmails));
                                         console.log("req.body.careatorEmail: " + req.body.careatorEmail);
                                         console.log("joinEmails.indexOf(req.body.careatorEmail): " + joinEmails.indexOf(req.body.careatorEmail));

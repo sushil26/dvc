@@ -56,77 +56,77 @@ module.exports.RemoteJoinCheck = function (req, res) {
                 };
                 res.status(400).send(responseData);
             } else {
-                // if (sessionURLFindData.length > 0) {
-                //     if (sessionURLFindData[0].instantConf.isDisconnected == 'yes') {
-                //         responseData = {
-                //             status: false,
-                //             errorCode: "E0_URLE",
-                //             message: property.N0004
-                //         };
-                //         res.status(400).send(responseData);
-                //     }
-                //     else {
-                //         careatorMaster.find({ "sessionURL": url, "invite": { $elemMatch: { "remoteEmailId": remote_careatorEmail, "password": password } } }).toArray(function (err, findData) {
-                //             console.log("findData: " + JSON.stringify(findData));
-                //             console.log("findData.length: " + findData.length);
-                //             if (err) {
-                //                 responseData = {
-                //                     status: false,
-                //                     message: property.E0007,
-                //                 };
-                //                 res.status(400).send(responseData);
-                //             } else {
-                //                 if (findData.length > 0) {
-                //                     var joinEmails = findData[0].joinEmails;
-                //                     console.log("joinEmails: " + JSON.stringify(joinEmails));
-                //                     console.log("joinEmails.indexOf(req.body.careator_remoteEmail): " + joinEmails.indexOf(req.body.careator_remoteEmail));
-                //                     if (joinEmails.indexOf(req.body.careator_remoteEmail) < 0) {
-                //                         careatorMaster.update({ "sessionURL": url }, { $pull: { "leftEmails": remote_careatorEmail }, $addToSet: { "joinEmails": remote_careatorEmail } }, function (err, data) {
-                //                             if (err) {
-                //                                 responseData = {
-                //                                     status: false,
-                //                                     message: property.E0007
-                //                                 };
-                //                                 res.status(400).send(responseData);
-                //                             } else {
-                //                                 responseData = {
-                //                                     status: true,
-                //                                     sessionData: "79ea520a-3e67-11e8-9679-97fa7aeb8e97",
-                //                                     message: property.S0005
-                //                                 };
-                //                                 res.status(200).send(responseData);
-                //                             }
-                //                         })
-                //                     }
-                //                     else {
-                //                         responseData = {
-                //                             status: false,
-                //                             errorCode: "E0_alreadyInUse",
-                //                             message: property.N0005
-                //                         };
-                //                         console.log("responseData: " + JSON.stringify(responseData));
-                //                         res.status(400).send(responseData);
-                //                     }
-                //                 } else {
-                //                     responseData = {
-                //                         status: false,
-                //                         errorCode: "E1_credentialMismatch",
-                //                         message: property.E0008
-                //                     };
-                //                     res.status(400).send(responseData);
-                //                 }
-                //             }
-                //         })
-                //     }
-                // }
-                // else {
-                //     responseData = {
-                //         status: false,
-                //         errorCode: "E0_URLE",
-                //         message: property.N0004
-                //     };
-                //     res.status(400).send(responseData);
-                // }
+                if (sessionURLFindData.length > 0) {
+                    if (sessionURLFindData[0].instantConf.isDisconnected == 'yes') {
+                        responseData = {
+                            status: false,
+                            errorCode: "E0_URLE",
+                            message: property.N0004
+                        };
+                        res.status(400).send(responseData);
+                    }
+                    else {
+                        careatorMaster.find({ "sessionURL": url, "invite": { $elemMatch: { "remoteEmailId": remote_careatorEmail, "password": password } } }).toArray(function (err, findData) {
+                            console.log("findData: " + JSON.stringify(findData));
+                            console.log("findData.length: " + findData.length);
+                            if (err) {
+                                responseData = {
+                                    status: false,
+                                    message: property.E0007,
+                                };
+                                res.status(400).send(responseData);
+                            } else {
+                                if (findData.length > 0) {
+                                    var joinEmails = findData[0].joinEmails;
+                                    console.log("joinEmails: " + JSON.stringify(joinEmails));
+                                    console.log("joinEmails.indexOf(req.body.careator_remoteEmail): " + joinEmails.indexOf(req.body.careator_remoteEmail));
+                                    if (joinEmails.indexOf(req.body.careator_remoteEmail) < 0) {
+                                        careatorMaster.update({ "sessionURL": url }, { $pull: { "leftEmails": remote_careatorEmail }, $addToSet: { "joinEmails": remote_careatorEmail } }, function (err, data) {
+                                            if (err) {
+                                                responseData = {
+                                                    status: false,
+                                                    message: property.E0007
+                                                };
+                                                res.status(400).send(responseData);
+                                            } else {
+                                                responseData = {
+                                                    status: true,
+                                                    sessionData: "79ea520a-3e67-11e8-9679-97fa7aeb8e97",
+                                                    message: property.S0005
+                                                };
+                                                res.status(200).send(responseData);
+                                            }
+                                        })
+                                    }
+                                    else {
+                                        responseData = {
+                                            status: false,
+                                            errorCode: "E0_alreadyInUse",
+                                            message: property.N0005
+                                        };
+                                        console.log("responseData: " + JSON.stringify(responseData));
+                                        res.status(400).send(responseData);
+                                    }
+                                } else {
+                                    responseData = {
+                                        status: false,
+                                        errorCode: "E1_credentialMismatch",
+                                        message: property.E0008
+                                    };
+                                    res.status(400).send(responseData);
+                                }
+                            }
+                        })
+                    }
+                }
+                else {
+                    responseData = {
+                        status: false,
+                        errorCode: "E0_URLE",
+                        message: property.N0004
+                    };
+                    res.status(400).send(responseData);
+                }
             }
         })
     }
@@ -289,7 +289,7 @@ module.exports.pswdCheckForSesstion = function (req, res) {
             } else {
                 if (findData.length > 0) {
                     if (findData[0].password == password) {
-                        careatorMaster.find({"instantConf.sessionURL": url }, {"instantConf":true }).toArray(function (err, sessionURLFind) {
+                        careatorMaster.find({"instantConf.sessionURL": url }).project( {"instantConf.$":1, "_id":0 }).toArray(function (err, sessionURLFind) {
                             console.log("*sessionURLFind*: "+JSON.stringify(sessionURLFind));
                             if (err) {
                                 responseData = {
@@ -308,12 +308,12 @@ module.exports.pswdCheckForSesstion = function (req, res) {
                                         res.status(400).send(responseData);
                                     }
                                     else {
-                                        var joinEmails = sessionURLFind[0].joinEmails;
+                                        var joinEmails = sessionURLFind[0].instantConf.joinEmails;
                                         console.log("joinEmails: " + JSON.stringify(joinEmails));
                                         console.log("req.body.careatorEmail: " + req.body.careatorEmail);
                                         console.log("joinEmails.indexOf(req.body.careatorEmail): " + joinEmails.indexOf(req.body.careatorEmail));
                                         if (joinEmails.indexOf(req.body.careatorEmail) < 0) {
-                                            careatorMaster.update({ "sessionURL": req.body.sessionURL }, { $pull: { "leftEmails": careatorEmail }, $addToSet: { "joinEmails": careatorEmail } }, function (err, data) {
+                                            careatorMaster.update({ "instantConf.sessionURL": req.body.sessionURL }, { $pull: { "instantConf.$.leftEmails": careatorEmail }, $addToSet: { "instantConf.$.joinEmails": careatorEmail } }, function (err, data) {
                                                 console.log("sessionURLFind: " + JSON.stringify(sessionURLFind));
                                                 if (err) {
                                                     responseData = {

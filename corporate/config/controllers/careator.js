@@ -944,6 +944,7 @@ module.exports.emailInvite = function (req, res) {
                 console.log("UPdating password");
                 careatorMaster.update({ email: req.body.sessionHost, 'instantConf.invite.remoteEmailId': req.body.email }, { "$set": { "instantConf.$.invite.password": password } }, function (err, updatedOnIndex) {
                     if (err) {
+                        console.log("err: "+JSON.stringify(err));
                         responseData = {
                             status: false,
                             errorCode: 400,
@@ -951,6 +952,7 @@ module.exports.emailInvite = function (req, res) {
                         };
                         res.status(400).send(responseData);
                     } else {
+                        console.log("updatedOnIndex: "+JSON.stringify(updatedOnIndex));
                         var mailOptions = {
                             from: "info@vc4all.in",
                             to: req.body.email,

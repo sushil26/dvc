@@ -955,7 +955,7 @@ module.exports.emailInvite = function (req, res) {
 
                     }
                 }
-                careatorMaster.update({ email: req.body.sessionHost, 'instantConf.invite.remoteEmailId': req.body.email }, { "$set": { "instantConf.$.invite['\+existEmailIndex\+']":{"password":password} }}, function (err, updatedOnIndex) {
+                careatorMaster.update({ email: req.body.sessionHost, 'instantConf.invite.remoteEmailId': req.body.email }, { "$set": { "instantConf.$.invite.'\existEmailIndex\'.password":{"password":password} }}, function (err, updatedOnIndex) {
                     if (err) {
                         console.log("err: "+JSON.stringify(err));
                         responseData = {

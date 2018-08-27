@@ -45,7 +45,8 @@ module.exports.RemoteJoinCheck = function (req, res) {
             "password": password
         }
         console.log("obj: " + JSON.stringify(obj));
-        careatorMaster.find({ "instantConf.sessionURL": url },{'instantConf.$':1}).toArray(function (err, sessionURLFindData) {
+        careatorMaster.find({ "instantConf.sessionURL": url },{"_id":0 ,"firstName":0 , "suhsil":0,"lastName":0 ,	"empId":0 , "email":0, "password":0 ,"Designation":0 ,	"sessionRandomId":0 ,"videoRights":0,"chatRights":0 ,	"orgId":0,"instantConf":1 ,"status":0 ,"chatStatus":0,
+        "restrictedTo":0,	"profilePicPath":0 ,"login":0,	"logout":0,	"loginType":0 ,"invite":0}).toArray(function (err, sessionURLFindData) {
             console.log("sessionURLFindData: " + JSON.stringify(sessionURLFindData));
             console.log("sessionURLFindData.length: " + sessionURLFindData.length);
             if (err) {
@@ -55,77 +56,77 @@ module.exports.RemoteJoinCheck = function (req, res) {
                 };
                 res.status(400).send(responseData);
             } else {
-                if (sessionURLFindData.length > 0) {
-                    if (sessionURLFindData[0].instantConf.isDisconnected == 'yes') {
-                        responseData = {
-                            status: false,
-                            errorCode: "E0_URLE",
-                            message: property.N0004
-                        };
-                        res.status(400).send(responseData);
-                    }
-                    else {
-                        careatorMaster.find({ "sessionURL": url, "invite": { $elemMatch: { "remoteEmailId": remote_careatorEmail, "password": password } } }).toArray(function (err, findData) {
-                            console.log("findData: " + JSON.stringify(findData));
-                            console.log("findData.length: " + findData.length);
-                            if (err) {
-                                responseData = {
-                                    status: false,
-                                    message: property.E0007,
-                                };
-                                res.status(400).send(responseData);
-                            } else {
-                                if (findData.length > 0) {
-                                    var joinEmails = findData[0].joinEmails;
-                                    console.log("joinEmails: " + JSON.stringify(joinEmails));
-                                    console.log("joinEmails.indexOf(req.body.careator_remoteEmail): " + joinEmails.indexOf(req.body.careator_remoteEmail));
-                                    if (joinEmails.indexOf(req.body.careator_remoteEmail) < 0) {
-                                        careatorMaster.update({ "sessionURL": url }, { $pull: { "leftEmails": remote_careatorEmail }, $addToSet: { "joinEmails": remote_careatorEmail } }, function (err, data) {
-                                            if (err) {
-                                                responseData = {
-                                                    status: false,
-                                                    message: property.E0007
-                                                };
-                                                res.status(400).send(responseData);
-                                            } else {
-                                                responseData = {
-                                                    status: true,
-                                                    sessionData: "79ea520a-3e67-11e8-9679-97fa7aeb8e97",
-                                                    message: property.S0005
-                                                };
-                                                res.status(200).send(responseData);
-                                            }
-                                        })
-                                    }
-                                    else {
-                                        responseData = {
-                                            status: false,
-                                            errorCode: "E0_alreadyInUse",
-                                            message: property.N0005
-                                        };
-                                        console.log("responseData: " + JSON.stringify(responseData));
-                                        res.status(400).send(responseData);
-                                    }
-                                } else {
-                                    responseData = {
-                                        status: false,
-                                        errorCode: "E1_credentialMismatch",
-                                        message: property.E0008
-                                    };
-                                    res.status(400).send(responseData);
-                                }
-                            }
-                        })
-                    }
-                }
-                else {
-                    responseData = {
-                        status: false,
-                        errorCode: "E0_URLE",
-                        message: property.N0004
-                    };
-                    res.status(400).send(responseData);
-                }
+                // if (sessionURLFindData.length > 0) {
+                //     if (sessionURLFindData[0].instantConf.isDisconnected == 'yes') {
+                //         responseData = {
+                //             status: false,
+                //             errorCode: "E0_URLE",
+                //             message: property.N0004
+                //         };
+                //         res.status(400).send(responseData);
+                //     }
+                //     else {
+                //         careatorMaster.find({ "sessionURL": url, "invite": { $elemMatch: { "remoteEmailId": remote_careatorEmail, "password": password } } }).toArray(function (err, findData) {
+                //             console.log("findData: " + JSON.stringify(findData));
+                //             console.log("findData.length: " + findData.length);
+                //             if (err) {
+                //                 responseData = {
+                //                     status: false,
+                //                     message: property.E0007,
+                //                 };
+                //                 res.status(400).send(responseData);
+                //             } else {
+                //                 if (findData.length > 0) {
+                //                     var joinEmails = findData[0].joinEmails;
+                //                     console.log("joinEmails: " + JSON.stringify(joinEmails));
+                //                     console.log("joinEmails.indexOf(req.body.careator_remoteEmail): " + joinEmails.indexOf(req.body.careator_remoteEmail));
+                //                     if (joinEmails.indexOf(req.body.careator_remoteEmail) < 0) {
+                //                         careatorMaster.update({ "sessionURL": url }, { $pull: { "leftEmails": remote_careatorEmail }, $addToSet: { "joinEmails": remote_careatorEmail } }, function (err, data) {
+                //                             if (err) {
+                //                                 responseData = {
+                //                                     status: false,
+                //                                     message: property.E0007
+                //                                 };
+                //                                 res.status(400).send(responseData);
+                //                             } else {
+                //                                 responseData = {
+                //                                     status: true,
+                //                                     sessionData: "79ea520a-3e67-11e8-9679-97fa7aeb8e97",
+                //                                     message: property.S0005
+                //                                 };
+                //                                 res.status(200).send(responseData);
+                //                             }
+                //                         })
+                //                     }
+                //                     else {
+                //                         responseData = {
+                //                             status: false,
+                //                             errorCode: "E0_alreadyInUse",
+                //                             message: property.N0005
+                //                         };
+                //                         console.log("responseData: " + JSON.stringify(responseData));
+                //                         res.status(400).send(responseData);
+                //                     }
+                //                 } else {
+                //                     responseData = {
+                //                         status: false,
+                //                         errorCode: "E1_credentialMismatch",
+                //                         message: property.E0008
+                //                     };
+                //                     res.status(400).send(responseData);
+                //                 }
+                //             }
+                //         })
+                //     }
+                // }
+                // else {
+                //     responseData = {
+                //         status: false,
+                //         errorCode: "E0_URLE",
+                //         message: property.N0004
+                //     };
+                //     res.status(400).send(responseData);
+                // }
             }
         })
     }

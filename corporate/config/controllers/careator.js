@@ -45,8 +45,8 @@ module.exports.RemoteJoinCheck = function (req, res) {
             "password": password
         }
         console.log("obj: " + JSON.stringify(obj));
-        careatorMaster.find({ "instantConf.sessionURL": url },{"_id":0 ,"firstName":0 , "suhsil":0,"lastName":0 ,	"empId":0 , "email":0, "password":0 ,"Designation":0 ,	"sessionRandomId":0 ,"videoRights":0,"chatRights":0 ,	"orgId":0,"instantConf":1 ,"status":0 ,"chatStatus":0,
-        "restrictedTo":0,	"profilePicPath":0 ,"login":0,	"logout":0,	"loginType":0 ,"invite":0}).toArray(function (err, sessionURLFindData) {
+        careatorMaster.find({ "instantConf.sessionURL": url }).project({"_id":0 ,"instantConf":1
+        }).toArray(function (err, sessionURLFindData) {
             console.log("sessionURLFindData: " + JSON.stringify(sessionURLFindData));
             console.log("sessionURLFindData.length: " + sessionURLFindData.length);
             if (err) {

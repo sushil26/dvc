@@ -152,7 +152,7 @@ io.sockets.on('connection', function (socket) {
         careatorMaster = db.collection("careatorMaster");
         careatorEvents = db.collection("careatorEvents");
         var queryObj = {
-            "sessionURL": sessionURLTrack[socket.id]
+            "instantConf.sessionURL": sessionURLTrack[socket.id]
         }
         console.log("queryObj: " + JSON.stringify(queryObj));
         careatorMaster.find(queryObj).toArray(function (err, sessionURLFindData) {
@@ -162,7 +162,7 @@ io.sockets.on('connection', function (socket) {
             else {
                 if (sessionURLFindData.length > 0) {
                     console.log("found url on careator master-->");
-                    careatorMaster.update(queryObj, { $addToSet: { "leftEmails": emailTrack[socket.id] }, $pull: { "joinEmails": emailTrack[socket.id] } }, function (err, data) {
+                    careatorMaster.update(queryObj, { $addToSet: { "instantConf.$.leftEmails": emailTrack[socket.id] }, $pull: { "instantConf.$.joinEmails": emailTrack[socket.id] } }, function (err, data) {
                         if (err) {
                             console.log("errr: " + JSON.stringify(err));
                         }
@@ -173,6 +173,9 @@ io.sockets.on('connection', function (socket) {
                 }
                 else {
                     console.log("start to update if url is in careatorEvents-->");
+                    var queryObj = {
+                        "sessionURL": sessionURLTrack[socket.id]
+                    }
                     careatorEvents.update(queryObj, { $addToSet: { "leftEmails": emailTrack[socket.id] }, $pull: { "joinEmails": emailTrack[socket.id] } }, function (err, data) {
                         if (err) {
                             console.log("errr: " + JSON.stringify(err));
@@ -218,9 +221,10 @@ io.sockets.on('connection', function (socket) {
         }
         else {
             var queryObj = {
-                "_id": data.userId
+                "_id": data.userId,
+                "instantConf.sessionURL": "https://norecruits.com/vc4all_conf/"+data.deleteSessionId+"/"+data.queryTime;
             }
-            careatorMaster.update(queryObj, { $set: { "isDisconnected": "yes" } }, function (err, data) {
+            careatorMaster.update(queryObj, { $set: { "instantConf.$.isDisconnected": "yes" } }, function (err, data) {
                 if (err) {
                     console.log("errr: " + JSON.stringify(err));
                 }

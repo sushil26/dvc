@@ -162,7 +162,7 @@ io.sockets.on('connection', function (socket) {
             else {
                 if (sessionURLFindData.length > 0) {
                     console.log("found url on careator master-->");
-                    careatorMaster.update(queryObj, { $addToSet: { "instantConf.$.leftEmails": emailTrack[socket.id] }, $pull: { "instantConf.$.joinEmails": emailTrack[socket.id] } }, function (err, data) {
+                    careatorMaster.update({ "instantConf.sessionURL": sessionURLTrack[socket.id]}, { $addToSet: { "instantConf.$.leftEmails": emailTrack[socket.id] }, $pull: { "instantConf.$.joinEmails": emailTrack[socket.id] } }, function (err, data) {
                         if (err) {
                             console.log("errr: " + JSON.stringify(err));
                         }

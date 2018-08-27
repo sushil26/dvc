@@ -185,6 +185,7 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
         localStorage.setItem("sessionPassword", data.data.password);
         localStorage.setItem("sessionRandomId", data.data.sessionRandomId);
         localStorage.setItem("sessionEnc", data.sessionData);
+        localStorage.setItem("userId", data.data._id);
         console.log("localStorage.getItem(sessionEnc): " + localStorage.getItem("sessionEnc"));
         if (typeof (Storage) !== "undefined") {
             var userData = {

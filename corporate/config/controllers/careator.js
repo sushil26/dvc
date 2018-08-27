@@ -45,9 +45,9 @@ module.exports.RemoteJoinCheck = function (req, res) {
             "password": password
         }
         console.log("obj: " + JSON.stringify(obj));
-        careatorMaster.find({ "instantConf.sessionURL": url },{projection:{"instantConf":1
-        }}).toArray(function (err, sessionURLFindData) {
-            console.log("sessionURLFindData: " + JSON.stringify(sessionURLFindData));
+        careatorMaster.find({ "instantConf.sessionURL": url },"instantConf",
+        ).toArray(function (err, sessionURLFindData) {
+            console.log("sessionURLFindData* : " + JSON.stringify(sessionURLFindData));
             console.log("sessionURLFindData.length: " + sessionURLFindData.length);
             if (err) {
                 responseData = {

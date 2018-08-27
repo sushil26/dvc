@@ -299,6 +299,7 @@ module.exports.pswdCheckForSesstion = function (req, res) {
                                 res.status(400).send(responseData);
                             } else {
                                 if (sessionURLFind.length > 0) {
+                                    console.log("sessionURLFind[0].instantConf[0]: "+JSON.stringify(sessionURLFind[0].instantConf[0]));
                                     if (sessionURLFind[0].instantConf[0].isDisconnected == 'yes') {
                                         responseData = {
                                             status: false,

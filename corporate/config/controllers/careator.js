@@ -982,7 +982,7 @@ module.exports.emailInvite = function (req, res) {
                 })
             }
             else {
-                careatorMaster.update({ email: req.body.sessionHost }, { $push: {"instantConf":{ "invite": { "remoteEmailId": req.body.email, "password": password } } } }, function (err, data) {
+                careatorMaster.update({ email: req.body.sessionHost, "instantConf.sessionURL":req.body.url }, { $push: {"instantConf.$.invite": { "remoteEmailId": req.body.email, "password": password } } }, function (err, data) {
                     if (err) {
                         responseData = {
                             status: true,

@@ -554,7 +554,7 @@ io.sockets.on('connection', function (socket) {
             if (emailTrack.indexOf(data.email) >= 0) {
                 io.sockets.emit('disconnectSessionReply', { "deleteSessionId": stuff[4], "owner": emailTrack.indexOf(datadata.email) });
             }
-            io.sockets.emit('comm_logoutNotifyToUserById', { "userId": data.userId, "email": data.email, "sessionURL": data.sessionURL, "sessionRandomId": data.sessionRandomId }) /* ### Note: Send quick message view notification to event sender(who's user id is matched with this userId) ### */
+            io.sockets.emit('comm_logoutNotifyToUserById', { "userId": data.userId, "email": data.email, "sessionURL": data.undisconnectedSession[x], "sessionRandomId": data.sessionRandomId }) /* ### Note: Send quick message view notification to event sender(who's user id is matched with this userId) ### */
             var url = data.undisconnectedSession[x];
             var stuff = url.split("/");
             console.log("stuff: " + JSON.stringify(stuff));

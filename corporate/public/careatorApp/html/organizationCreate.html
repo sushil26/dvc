@@ -16,7 +16,7 @@
                                     <span ng-show="orgCreate.orgName.$error.required" class="required_mark"></span></label>
                                 <div class="col-lg-3 ">
                                     <span>
-                                        <input type="text " ng-model="organizationName" class="form-control" name="orgName" required>
+                                        <input type="text " ng-model="organizationName" class="form-control capitalizeCase" name="orgName" required>
                                     </span>
                                     <span ng-show="orgCreate.orgName.$touched && orgCreate.orgName.$error.required" class="validation_fe">Organization
                                         Name is required</span>
@@ -26,7 +26,7 @@
                                     <span ng-show="orgCreate.orgDomain.$error.required" class="required_mark"></span></label>
                                 <div class="col-lg-3 ">
                                     <span>
-                                        <input type="text " ng-model="organizationDomain" class="form-control" name="orgDomain" required>
+                                        <input type="text " ng-model="organizationDomain" class="form-control smallerCase" name="orgDomain" required>
                                     </span>
                                     <span ng-show="orgCreate.orgDomain.$touched && orgCreate.orgDomain.$error.required" class="validation_fe ">Organization Domain is required</span>
                                 </div>
@@ -60,7 +60,7 @@
                                     <span ng-show="orgCreate.street.$error.required" class="required_mark"></span></label>
                                 <div class="col-lg-3 ">
                                     <span>
-                                        <input type="text " ng-model="streetName " name="street " class="form-control " required>
+                                        <input type="text " ng-model="streetName " name="street " class="form-control capitalizeCase" required>
                                     </span>
                                     <span ng-show="orgCreate.street.$touched && orgCreate.street.$error.required
                                         " class="validation_fe">Street
@@ -70,7 +70,7 @@
                                 <label class="col-lg-3 "> City <span ng-show="orgCreate.cities.$error.required" class="required_mark "></span></label>
                                 <div class="col-lg-3 ">
                                     <span>
-                                        <input type="text " ng-model="city" name="cities" class="form-control" required>
+                                        <input type="text " ng-model="city" name="cities" class="form-control capitalizeCase" required>
                                     </span>
                                     <span ng-show="orgCreate.cities.$touched && orgCreate.cities.$error.required
                                         " class="validation_fe">City is required.</span>
@@ -80,7 +80,7 @@
                                     <span ng-show="orgCreate.states.$error.required" class="required_mark"></span></label>
                                 <div class="col-lg-3 ">
                                     <span>
-                                        <input type="text " ng-model="state" name="states" class="form-control" required>
+                                        <input type="text " ng-model="state" name="states" class="form-control capitalizeCase" required>
                                     </span>
                                     <span ng-show="orgCreate.states.$touched && orgCreate.states.$error.required" class="validation_fe">State is required.</span>
                                 </div>
@@ -98,7 +98,7 @@
                                     <span ng-show="orgCreate.countries.$error.required" class="required_mark"></span></label>
                                 <div class="col-lg-3 ">
                                     <span>
-                                        <input type="text" ng-model="country" name="countries" class="form-control" required>
+                                        <input type="text" ng-model="country" name="countries" class="form-control capitalizeCase" required>
                                     </span>
                                     <span ng-show="orgCreate.countries.$touched && orgCreate.countries.$error.required" class="validation_fe">Country is required.</span>
                                 </div>
@@ -114,7 +114,7 @@
                                     <span ng-show="orgCreate.fn.$error.required" class="required_mark"></span></label>
                                 <div class="col-lg-3">
                                     <span>
-                                        <input type="text" ng-model="adminFirstName" name="fn" class="form-control " required>
+                                        <input type="text" ng-model="adminFirstName" name="fn" class="form-control capitalizeCase" required>
                                     </span>
                                     <span ng-show="orgCreate.fn.$touched && orgCreate.fn.$error.required " class="validation_fe">First Name is required.</span>
                                 </div>
@@ -122,7 +122,7 @@
                                 <label class="col-lg-3 ">Last Name <span ng-show="orgCreate.ln.$error.required" class="required_mark"></span></label>
                                 <div class="col-lg-3 ">
                                     <span>
-                                        <input type="text" ng-model="adminLastName" name="ln" class="form-control" required>
+                                        <input type="text" ng-model="adminLastName" name="ln" class="form-control capitalizeCase" required>
                                     </span>
                                     <span ng-show="orgCreate.ln.$touched && orgCreate.ln.$error.required " class="validation_fe">Last Name is required.</span>
                                 </div>
@@ -131,7 +131,7 @@
                                         class="required_mark"></span></label>
                                 <div class="col-lg-3 ">
                                     <span>
-                                        <input type="email" ng-model="adminEmail" name="emailId" class="form-control" required>
+                                        <input type="email" ng-model="adminEmail" name="emailId" class="form-control smallerCase" required>
                                     </span>
                                     <span ng-show="orgCreate.emailId.$touched && orgCreate.emailId.$error.required
                                         " class="validation_fe">Email is required.</span>

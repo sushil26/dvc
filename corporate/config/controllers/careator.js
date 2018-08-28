@@ -1191,13 +1191,15 @@ module.exports.setCollection = function (req, res) {
         "session_dateTime": new Date()
     }
     console.log("obj: " + JSON.stringify(obj));
+
     var pushObj = {
         "sessionURL": req.body.url,
         "invite": [],
         "joinEmails": [],
         "leftEmails": [],
         "session_dateTime": new Date(),
-        "isDisconnected": "no"
+        "isDisconnected": "no",
+       
     }
     console.log("pushObj: " + JSON.stringify(pushObj));
     careatorMaster.update({ "email": req.body.email }, {
@@ -1421,6 +1423,7 @@ module.exports.careatorMasterInsertValidate = function (data, callback) {
         "sessionRandomId": sessionRandomId,
         "orgId": data.orgId,
         "instantConf": [],
+        "total_instantConf":0,
         "status": "active",
         "chatStatus": "Available",
         "restrictedTo": [],
@@ -1476,6 +1479,7 @@ module.exports.careatorSingleUserInsert = function (req, res) {
         "chatRights": req.body.chatRights,
         "orgId": ObjectId(req.body.orgId),
         "instantConf": [],
+        "total_instantConf":0,
         "status": "active",
         "chatStatus": "Available",
         "restrictedTo": [],
@@ -3440,7 +3444,7 @@ module.exports.getLoggedinSessionURLById = function (req, res) {
         var findObj = {
             "_id": ObjectId(id)
         }
-        careatorMaster.find(findObj).project({ "instantConf": 1 }).toArray(function (err, getSessionURL) {
+        careatorMaster.find(findObj).project({ "instantConf": 1, "total_instantConf":1 }).toArray(function (err, getSessionURL) {
             if (err) {
                 console.log("err: " + JSON.stringify(err));
                 response = {
@@ -3452,7 +3456,7 @@ module.exports.getLoggedinSessionURLById = function (req, res) {
             } else {
                 console.log("getSessionURL: " + JSON.stringify(getSessionURL));
                 var allInstantConf = getSessionURL[0].instantConf;
-                var total_instantConf = allInstantConf.length;
+                var total_instantConf = allInstantConf.length+getSessionURL[0].total_instantConf;
                 console.log("allInstantConf: " + JSON.stringify(allInstantConf));
                 var undisconnectedSession = [];
                 for (var x = 0; x < allInstantConf.length; x++) {
@@ -3460,7 +3464,7 @@ module.exports.getLoggedinSessionURLById = function (req, res) {
                         undisconnectedSession.push(allInstantConf[x].sessionURL)
                     }
                 }
-                careatorMaster.update({ "_id": ObjectId(id) }, { $set: { "instantConf": "[]" , "total_instantConf": total_instantConf }}, function (err, updatedValue) {
+                careatorMaster.update({ "_id": ObjectId(id) }, { $set: { "instantConf": [] , "total_instantConf": total_instantConf }}, function (err, updatedValue) {
                     if (err) {
                         console.log("err: " + JSON.stringify(err));
                         response = {

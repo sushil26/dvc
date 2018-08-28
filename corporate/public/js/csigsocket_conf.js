@@ -1914,7 +1914,7 @@ console.log("id2**: " + id2);
       disconnecSession();
       //window.location.href = "https://norecruits.com";
     }
-    if (data.sessionURL == stuff[4]) {
+    if (data.sessionURL == url) {
       console.log("Start to remove the session based on sessionURL");
       //localStorage.removeItem("sessionUrlId");
       // signaling_socket.emit("disconnectSession", {

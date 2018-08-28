@@ -133,8 +133,7 @@
                                     <span >
                                         <input type="email" ng-model="adminEmail" ng-value="organizationDomain" name="emailId" class="form-control smallerCase" required>
                                     </span>
-                                    <span ng-show="orgCreate.emailId.$touched && orgCreate.emailId.$error.required
-                                        " class="validation_fe">Email is required.</span>
+                                    <span ng-show="orgCreate.emailId.$touched && orgCreate.emailId.$error.required" class="validation_fe">Email is required (EX:abc@{{organizationDomain}}).</span>
                                 </div>
 
                                 <label class="col-lg-3">Admin Mobile. No <span ng-show="orgCreate.mobNum.$error.required"

@@ -12,6 +12,7 @@ console.log("sesionEnc: " + sesionEnc);
 
 /** CONFIG **/
 console.log("Signaling Socket.js");
+console.log("sessionUrlId: "+localStorage.getItem("sessionUrlId"));
 var SIGNALING_SERVER = "https://norecruits.com";
 //var SIGNALING_SERVER = "http://localhost:5000";
 var streamArray = [];

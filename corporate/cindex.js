@@ -618,27 +618,15 @@ io.sockets.on('connection', function (socket) {
         var db = mongoConfig.getDb();
         console.log("db: " + db);
         careatorMaster = db.collection("careatorMaster");
-        if (data.sessionURL != "" && data.sessionURL != undefined) {
-            var url = data.sessionURL;
-            var stuff = url.split("/");
-            console.log("stuff: " + JSON.stringify(stuff));
-            console.log("emailTrack: " + JSON.stringify(emailTrack));
-            console.log("emailTrack.indexOf(data.email): " + emailTrack.indexOf(data.email));
+        for(var x=0;x<data.undisconnectedSession.length;x++){
             if (emailTrack.indexOf(data.email) >= 0) {
                 io.sockets.emit('disconnectSessionReply', { "deleteSessionId": stuff[4], "owner": emailTrack.indexOf(datadata.email) });
             }
-            var queryObj = {
-                "_id": ObjectId(data.userId)
-            }
-            careatorMaster.update(queryObj, { $set: { "isDisconnected": "yes" } }, function (err, data) {
-                if (err) {
-                    console.log("errr: " + JSON.stringify(err));
-                }
-                else {
-                    console.log("data: " + JSON.stringify(data));
-                }
-            })
-            console.log("Deleting id: " + stuff[4]);
+            var url = data.undisconnectedSession[x];
+            var stuff = url.split("/");
+            console.log("stuff: " + JSON.stringify(stuff));
+           // console.log("stuff.length-2: " + stuff.length-2);
+           console.log("Deleting id: " + stuff[4]);
             deletedSocket_ids.push(stuff[4]);
             console.log("deletedSocket_ids: " + JSON.stringify(stuff[4]));
             var tempSock = sockets[stuff[4]]; /* ### Note using this deleteSessionId we are getting real socket(tempSock)   ### */
@@ -650,7 +638,9 @@ io.sockets.on('connection', function (socket) {
             console.log("sockets[ stuff[4]]: " + sockets[stuff[4]]);
             console.log("deletedSocket_ids: " + JSON.stringify(deletedSocket_ids));
             console.log("<--disconnectSession");
+            
         }
+        
 
         var queryObj = {
             "_id": ObjectId(data.userId)
@@ -663,7 +653,7 @@ io.sockets.on('connection', function (socket) {
             }
             else {
                 console.log("updateData: " + JSON.stringify(updateData));
-                io.sockets.emit('comm_logoutNotifyToUserById', { "userId": data.userId, "email": data.email, "sessionURL": data.sessionURL, "sessionRandomId": data.sessionRandomId }) /* ### Note: Send quick message view notification to event sender(who's user id is matched with this userId) ### */
+                io.sockets.emit('comm_logoutNotifyToUserById', { "userId": data.userId, "email": data.email,  "sessionRandomId": data.sessionRandomId }) /* ### Note: Send quick message view notification to event sender(who's user id is matched with this userId) ### */
             }
         })
 

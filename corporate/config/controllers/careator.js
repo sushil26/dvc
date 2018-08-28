@@ -1203,7 +1203,7 @@ module.exports.setCollection = function (req, res) {
     }
     console.log("pushObj: " + JSON.stringify(pushObj));
     careatorMaster.update({ "email": req.body.email }, {
-        $push: { "instantConf": pushObj }
+        $push: { "instantConf": pushObj },  $inc: { "total_instantConf": 1,}
     }, function (err, urlUpdate) {
         if (err) {
             console.log("err: " + JSON.stringify(err));
@@ -3456,7 +3456,7 @@ module.exports.getLoggedinSessionURLById = function (req, res) {
             } else {
                 console.log("getSessionURL: " + JSON.stringify(getSessionURL));
                 var allInstantConf = getSessionURL[0].instantConf;
-                var total_instantConf = allInstantConf.length+getSessionURL[0].total_instantConf;
+                var total_instantConf = allInstantConf.length;
                 console.log("allInstantConf: " + JSON.stringify(allInstantConf));
                 var undisconnectedSession = [];
                 for (var x = 0; x < allInstantConf.length; x++) {

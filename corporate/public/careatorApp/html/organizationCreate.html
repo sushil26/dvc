@@ -12,8 +12,8 @@
                         <p> *All the fields are mandatory to fill.</p>
                         <form name="orgCreate">
                             <div class="form-group ">
-                                <label class="col-lg-3">Organization Name <span ng-show="orgCreate.orgName.$error.required"
-                                        class="validation_fe required_mark"></span></label>
+                                <label class="col-lg-3">Organization Name 
+                                    <span ng-show="orgCreate.orgName.$error.required" class="required_mark"></span></label>
                                 <div class="col-lg-3 ">
                                     <span>
                                         <input type="text " ng-model="organizationName" class="form-control" name="orgName" required>
@@ -22,34 +22,29 @@
                                         Name is required</span>
                                 </div>
 
-                                <label class="col-lg-3 required_mark ">Organization Domain <span ng-show="orgCreate.orgDomain.$error.required
-                                        " class="validation_fe required_mark "></span></label>
+                                <label class="col-lg-3 required_mark ">Organization Domain 
+                                    <span ng-show="orgCreate.orgDomain.$error.required" class="required_mark"></span></label>
                                 <div class="col-lg-3 ">
                                     <span>
-                                        <input type="text " ng-model="organizationDomain " class="form-control " name="orgDomain " required>
+                                        <input type="text " ng-model="organizationDomain" class="form-control" name="orgDomain" required>
                                     </span>
-                                    <span ng-show="orgCreate.orgDomain.$touched && orgCreate.orgDomain.$error.required
-                                        " class="validation_fe ">Organization
-                                        Domain is required</span>
+                                    <span ng-show="orgCreate.orgDomain.$touched && orgCreate.orgDomain.$error.required" class="validation_fe ">Organization Domain is required</span>
                                 </div>
 
-                                <label class="col-lg-3 ">Registration Date <span ng-show="orgCreate.regDate.$error.required "
-                                        class="validation_fe required_mark"></span></label>
+                                <label class="col-lg-3 ">Registration Date 
+                                    <span ng-show="orgCreate.regDate.$error.required"  class="required_mark"></span></label>
                                 <div class="col-lg-3 ">
                                     <span>
-                                        <input type="date " ng-model="dor " name="regDate " class="form-control " required>
+                                        <input type="date " ng-model="dor" name="regDate" class="form-control" required>
                                     </span>
-                                    <span ng-show="orgCreate.regDate.$touched && orgCreate.regDate.$error.required
-                                        " class="validation_fe">Registration Date is
-                                        required.</span>
+                                    <span ng-show="orgCreate.regDate.$touched && orgCreate.regDate.$error.required" class="validation_fe">Registration Date is required.</span>
                                 </div>
 
-                                <label class="col-lg-3 ">Registration Number <span ng-show="orgCreate.orgName.$error.required
-                                        " class="validation_fe" required_mark "></span></label>
+                                <label class="col-lg-3 ">Registration Number 
+                                    <span ng-show="orgCreate.orgName.$error.required" class="required_mark"></span></label>
                                 <div class="col-lg-3 ">
                                     <span>
-                                        <input type="text " ng-model="registrationRegNumber " name="regNum" style="text-transform:uppercase;
-                                        " class="form-control"  required>
+                                        <input type="text" ng-model="registrationRegNumber" name="regNum" style="text-transform:uppercase;" class="form-control"  required>
                                     </span>
                                     <span ng-show="orgCreate.regNum.$touched && orgCreate.regNum.$error.required" class="validation_fe">Registration Number is required.</span>
                                 </div>
@@ -61,7 +56,8 @@
                                 </label>
                             </div>
                             <div class="form-group ">
-                                <label class="col-lg-3 "> Street <span ng-show="orgCreate.street.$error.required" class="validation_fe required_mark"></span></label>
+                                <label class="col-lg-3 "> Street 
+                                    <span ng-show="orgCreate.street.$error.required" class="required_mark"></span></label>
                                 <div class="col-lg-3 ">
                                     <span>
                                         <input type="text " ng-model="streetName " name="street " class="form-control " required>
@@ -71,41 +67,38 @@
                                         is required.</span>
                                 </div>
 
-                                <label class="col-lg-3 "> City <span ng-show="orgCreate.cities.$error.required" class="validation_fe required_mark "></span></label>
+                                <label class="col-lg-3 "> City <span ng-show="orgCreate.cities.$error.required" class="required_mark "></span></label>
                                 <div class="col-lg-3 ">
                                     <span>
-                                        <input type="text " ng-model="city " name="cities" class="form-control " required>
+                                        <input type="text " ng-model="city" name="cities" class="form-control" required>
                                     </span>
                                     <span ng-show="orgCreate.cities.$touched && orgCreate.cities.$error.required
-                                        " class="validation_fe">City
-                                        is required.</span>
+                                        " class="validation_fe">City is required.</span>
                                 </div>
 
-                                <label class="col-lg-3 "> State <span ng-show="orgCreate.states.$error.required
-                                        " class="validation_fe required_mark"></span></label>
+                                <label class="col-lg-3 "> State 
+                                    <span ng-show="orgCreate.states.$error.required" class="required_mark"></span></label>
                                 <div class="col-lg-3 ">
                                     <span>
                                         <input type="text " ng-model="state" name="states" class="form-control" required>
                                     </span>
-                                    <span ng-show="orgCreate.states.$touched && orgCreate.states.$error.required
-                                        " class="validation_fe">State
-                                        is required.</span>
+                                    <span ng-show="orgCreate.states.$touched && orgCreate.states.$error.required" class="validation_fe">State is required.</span>
                                 </div>
 
-                                <label class="col-lg-3 "> PinCode <span ng-show="orgCreate.pincodes.$error.required" class="validation_fe required_mark"></span></label>
+                                <label class="col-lg-3 "> PinCode 
+                                    <span ng-show="orgCreate.pincodes.$error.required" class="required_mark"></span></label>
                                 <div class="col-lg-3">
                                     <span>
-                                        <input type="text" ng-model="pinCode" name="pincodes" class="form-control " required>
+                                        <input type="text" ng-model="pinCode" name="pincodes" class="form-control" required>
                                     </span>
-                                    <span ng-show="orgCreate.pincodes.$touched && orgCreate.pincodes.$error.required
-                                        " class="validation_fe">Pincode is required.</span>
+                                    <span ng-show="orgCreate.pincodes.$touched && orgCreate.pincodes.$error.required" class="validation_fe">Pincode is required.</span>
                                 </div>
 
-                                <label class="col-lg-3 "> Country <span ng-show="orgCreate.countries.$error.required
-                                        " class="validation_fe required_mark"></span></label>
+                                <label class="col-lg-3 "> Country 
+                                    <span ng-show="orgCreate.countries.$error.required" class="required_mark"></span></label>
                                 <div class="col-lg-3 ">
                                     <span>
-                                        <input type="text " ng-model="country" name="countries" class="form-control " required>
+                                        <input type="text" ng-model="country" name="countries" class="form-control" required>
                                     </span>
                                     <span ng-show="orgCreate.countries.$touched && orgCreate.countries.$error.required" class="validation_fe">Country is required.</span>
                                 </div>
@@ -117,8 +110,8 @@
                                 </label>
                             </div>
                             <div class="form-group">
-                                <label class="col-lg-3 ">First Name <span ng-show="orgCreate.fn.$error.required
-                                        " class="validation_fe required_mark"></span></label>
+                                <label class="col-lg-3 ">First Name 
+                                    <span ng-show="orgCreate.fn.$error.required" class="required_mark"></span></label>
                                 <div class="col-lg-3">
                                     <span>
                                         <input type="text" ng-model="adminFirstName" name="fn" class="form-control " required>
@@ -126,7 +119,7 @@
                                     <span ng-show="orgCreate.fn.$touched && orgCreate.fn.$error.required " class="validation_fe">First Name is required.</span>
                                 </div>
 
-                                <label class="col-lg-3 ">Last Name <span ng-show="orgCreate.ln.$error.required" class="validation_fe required_mark"></span></label>
+                                <label class="col-lg-3 ">Last Name <span ng-show="orgCreate.ln.$error.required" class="required_mark"></span></label>
                                 <div class="col-lg-3 ">
                                     <span>
                                         <input type="text" ng-model="adminLastName" name="ln" class="form-control" required>
@@ -135,7 +128,7 @@
                                 </div>
 
                                 <label class="col-lg-3 ">Admin Email ID <span ng-show="orgCreate.emailId.$error.required"
-                                        class="validation_fe required_mark"></span></label>
+                                        class="required_mark"></span></label>
                                 <div class="col-lg-3 ">
                                     <span>
                                         <input type="email" ng-model="adminEmail" name="emailId" class="form-control" required>
@@ -145,7 +138,7 @@
                                 </div>
 
                                 <label class="col-lg-3">Admin Mobile. No <span ng-show="orgCreate.mobNum.$error.required"
-                                        class="validation_fe required_mark"></span></label>
+                                        class="required_mark"></span></label>
                                 <div class="col-lg-3 ">
                                     <span>
                                         <input type="text" ng-model="mobNumber" name="mobNum" class="form-control" required>
@@ -154,7 +147,7 @@
                                         " class="validation_fe">Mobile Number is required.</span>
                                 </div>
 
-                                <label class="col-lg-3 ">Password <span ng-show="orgCreate.pswd.$error.required" class="validation_fe required_mark"></span></label>
+                                <label class="col-lg-3 ">Password <span ng-show="orgCreate.pswd.$error.required" class="required_mark"></span></label>
                                 <div class="col-lg-3">
                                     <span>
                                         <input type="text " ng-model="adminPassword" name="pswd" class="form-control">

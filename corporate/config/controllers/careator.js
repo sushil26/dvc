@@ -1557,7 +1557,6 @@ module.exports.careatorSingleUserInsert = function (req, res) {
     })
 
 }
-
 module.exports.careator_getAllEmp = function (req, res) {
     console.log("careator_getAllEmp-->");
     console.log("orgId: " + req.params.orgId);
@@ -1594,7 +1593,6 @@ module.exports.careator_getAllEmp = function (req, res) {
     }
 
 }
-
 module.exports.careator_getAllUser = function (req, res) {
     console.log("careator_getAllUser-->");
     console.log("orgId: " + req.params.orgId);

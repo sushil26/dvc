@@ -45,7 +45,7 @@ module.exports.RemoteJoinCheck = function (req, res) {
             "password": password
         }
         console.log("obj: " + JSON.stringify(obj));
-        careatorMaster.find({ "instantConf.sessionURL": url }).project({"instantConf.$":1}).toArray(function (err, sessionURLFindData) {
+        careatorMaster.find({ "instantConf.sessionURL": url }).project({ "instantConf.$": 1 }).toArray(function (err, sessionURLFindData) {
             console.log("sessionURLFindData* : " + JSON.stringify(sessionURLFindData));
             console.log("sessionURLFindData.length: " + sessionURLFindData.length);
             if (err) {
@@ -66,7 +66,7 @@ module.exports.RemoteJoinCheck = function (req, res) {
                     }
                     else {
                         //careatorMaster.find({ "sessionURL": url, "invite": { $elemMatch: { "remoteEmailId": remote_careatorEmail, "password": password } } }).toArray(function (err, findData) {
-                        careatorMaster.find({ "instantConf":{ $elemMatch:{"sessionURL": url, "invite": { $elemMatch: { "remoteEmailId": remote_careatorEmail, "password": password }}} } }).project({"instantConf.$":1}).toArray(function (err, findData) {
+                        careatorMaster.find({ "instantConf": { $elemMatch: { "sessionURL": url, "invite": { $elemMatch: { "remoteEmailId": remote_careatorEmail, "password": password } } } } }).project({ "instantConf.$": 1 }).toArray(function (err, findData) {
                             console.log("findData: " + JSON.stringify(findData));
                             console.log("findData.length: " + findData.length);
                             if (err) {
@@ -289,8 +289,8 @@ module.exports.pswdCheckForSesstion = function (req, res) {
             } else {
                 if (findData.length > 0) {
                     if (findData[0].password == password) {
-                        careatorMaster.find({"instantConf.sessionURL": url }).project( {"instantConf.$":1, "_id":0 }).toArray(function (err, sessionURLFind) {
-                            console.log("*sessionURLFind*: "+JSON.stringify(sessionURLFind));
+                        careatorMaster.find({ "instantConf.sessionURL": url }).project({ "instantConf.$": 1, "_id": 0 }).toArray(function (err, sessionURLFind) {
+                            console.log("*sessionURLFind*: " + JSON.stringify(sessionURLFind));
                             if (err) {
                                 responseData = {
                                     status: false,
@@ -299,7 +299,7 @@ module.exports.pswdCheckForSesstion = function (req, res) {
                                 res.status(400).send(responseData);
                             } else {
                                 if (sessionURLFind.length > 0) {
-                                    console.log("sessionURLFind[0].instantConf[0]: "+JSON.stringify(sessionURLFind[0].instantConf[0]));
+                                    console.log("sessionURLFind[0].instantConf[0]: " + JSON.stringify(sessionURLFind[0].instantConf[0]));
                                     if (sessionURLFind[0].instantConf[0].isDisconnected == 'yes') {
                                         responseData = {
                                             status: false,
@@ -928,10 +928,10 @@ module.exports.emailInvite = function (req, res) {
         length: 6,
         charset: 'numeric'
     });
-       console.log("password: " + password);
+    console.log("password: " + password);
     //careatorMaster.find({ email: req.body.sessionHost, 'instantConf.invite.remoteEmailId': req.body.email }).project({"instantConf.$.invite":1}).toArray(function (err, findData) {
-        careatorMaster.find({ email: req.body.sessionHost, "instantConf":{ $elemMatch:{"sessionURL":req.body.url,"invite.remoteEmailId":req.body.email}}}).project({"instantConf.$.invite":1}).toArray(function (err, findData) {
-        console.log("findData: "+JSON.stringify(findData));
+    careatorMaster.find({ email: req.body.sessionHost, "instantConf": { $elemMatch: { "sessionURL": req.body.url, "invite":{$elemMatch:{"remoteEmailId": req.body.email} } } }}).project({ "instantConf.$": 1 }).toArray(function (err, findData) {
+        console.log("findData: " + JSON.stringify(findData));
         if (err) {
             responseData = {
                 status: false,
@@ -943,25 +943,24 @@ module.exports.emailInvite = function (req, res) {
 
             if (findData.length > 0) {
                 console.log("UPdating password");
-                
+
                 var existEmailIndex;
                 var inviteArray = findData[0].instantConf[0].invite;
-                console.log("inviteArray: "+JSON.stringify(inviteArray));
-                for(var x=0;x<inviteArray.length;x++){
-                    if(req.body.email == findData[0].instantConf[0].invite[x].remoteEmailId)
-                    {
-                       
+                console.log("inviteArray: " + JSON.stringify(inviteArray));
+                for (var x = 0; x < inviteArray.length; x++) {
+                    if (req.body.email == findData[0].instantConf[0].invite[x].remoteEmailId) {
+
                         existEmailIndex = x;
                         break;
 
                     }
                 }
-                var update = { "$set": { } };
+                var update = { "$set": {} };
                 update["$set"]["instantConf.$.invite." + existEmailIndex + ".password"] = password;
 
                 careatorMaster.update({ email: req.body.sessionHost, 'instantConf.invite.remoteEmailId': req.body.email }, update, function (err, updatedOnIndex) {
                     if (err) {
-                        console.log("err: "+JSON.stringify(err));
+                        console.log("err: " + JSON.stringify(err));
                         responseData = {
                             status: false,
                             errorCode: 400,
@@ -969,7 +968,7 @@ module.exports.emailInvite = function (req, res) {
                         };
                         res.status(400).send(responseData);
                     } else {
-                        console.log("updatedOnIndex: "+JSON.stringify(updatedOnIndex));
+                        console.log("updatedOnIndex: " + JSON.stringify(updatedOnIndex));
                         var mailOptions = {
                             from: "info@vc4all.in",
                             to: req.body.email,
@@ -1003,7 +1002,7 @@ module.exports.emailInvite = function (req, res) {
             }
             else {
                 console.log("UPdating password with email");
-                careatorMaster.update({ email: req.body.sessionHost, "instantConf.sessionURL":req.body.url }, { "$push": {"instantConf.$.invite": { "remoteEmailId": req.body.email, "password": password } } }, function (err, data) {
+                careatorMaster.update({ email: req.body.sessionHost, "instantConf.sessionURL": req.body.url }, { "$push": { "instantConf.$.invite": { "remoteEmailId": req.body.email, "password": password } } }, function (err, data) {
                     if (err) {
                         responseData = {
                             status: true,
@@ -1201,45 +1200,46 @@ module.exports.setCollection = function (req, res) {
     }
     console.log("pushObj: " + JSON.stringify(pushObj));
     careatorMaster.update({ "email": req.body.email }, {
-        $push: {"instantConf":pushObj}}, function (err, urlUpdate) {
-            if (err) {
-                console.log("err: " + JSON.stringify(err));
-                responseData = {
-                    status: false,
-                    message: property.E0007
-                };
-                res.status(400).send(responseData);
-            } else {
-                var io = req.app.get('socketio');
-                io.emit('comm_sessionCreateUpdate', {
-                    "email": req.body.email,
-                    "isDisconnected": "no"
-                }); /* ### Note: Emit message to client(careator_dashboardCtrl.js) ### */
-                chatHistory.insertOne(obj, function (err, data) {
-                    if (err) {
-                        console.log("err: " + JSON.stringify(err));
-                        responseData = {
-                            status: false,
-                            message: property.E0007
-                        };
-                        res.status(400).send(responseData);
-                    } else {
-                        console.log("data: " + JSON.stringify(data));
-                        var obj = {
-                            "url": req.body.url
-                        }
-                        responseData = {
-                            status: true,
-                            message: property.S0009,
-                            data: obj
-                        };
-                        res.status(200).send(responseData);
+        $push: { "instantConf": pushObj }
+    }, function (err, urlUpdate) {
+        if (err) {
+            console.log("err: " + JSON.stringify(err));
+            responseData = {
+                status: false,
+                message: property.E0007
+            };
+            res.status(400).send(responseData);
+        } else {
+            var io = req.app.get('socketio');
+            io.emit('comm_sessionCreateUpdate', {
+                "email": req.body.email,
+                "isDisconnected": "no"
+            }); /* ### Note: Emit message to client(careator_dashboardCtrl.js) ### */
+            chatHistory.insertOne(obj, function (err, data) {
+                if (err) {
+                    console.log("err: " + JSON.stringify(err));
+                    responseData = {
+                        status: false,
+                        message: property.E0007
+                    };
+                    res.status(400).send(responseData);
+                } else {
+                    console.log("data: " + JSON.stringify(data));
+                    var obj = {
+                        "url": req.body.url
                     }
-                })
-            }
-        })
+                    responseData = {
+                        status: true,
+                        message: property.S0009,
+                        data: obj
+                    };
+                    res.status(200).send(responseData);
+                }
+            })
+        }
+    })
 
-    
+
 }
 module.exports.getChatByUrl = function (req, res) {
     console.log("getChatByUrl-->");
@@ -1419,7 +1419,7 @@ module.exports.careatorMasterInsertValidate = function (data, callback) {
         "Designation": data.Designation,
         "sessionRandomId": sessionRandomId,
         "orgId": data.orgId,
-        "instantConf":[],
+        "instantConf": [],
         "status": "active",
         "chatStatus": "Available",
         "restrictedTo": [],
@@ -1474,7 +1474,7 @@ module.exports.careatorSingleUserInsert = function (req, res) {
         "videoRights": req.body.videoRights,
         "chatRights": req.body.chatRights,
         "orgId": ObjectId(req.body.orgId),
-        "instantConf":[],
+        "instantConf": [],
         "status": "active",
         "chatStatus": "Available",
         "restrictedTo": [],
@@ -1600,7 +1600,7 @@ module.exports.careator_getAllUser = function (req, res) {
     var response;
     if (general.emptyCheck(req.params.orgId)) {
 
-        careatorMaster.find({ "orgId": ObjectId(req.params.orgId)}).toArray(function (err, allEmp) {
+        careatorMaster.find({ "orgId": ObjectId(req.params.orgId) }).toArray(function (err, allEmp) {
             if (err) {
                 console.log("err: " + JSON.stringify(err));
                 response = {

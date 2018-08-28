@@ -3460,7 +3460,7 @@ module.exports.getLoggedinSessionURLById = function (req, res) {
                         undisconnectedSession.push(allInstantConf[x].sessionURL)
                     }
                 }
-                careatorMaster.update({ "_id": ObjectId(id) }, { $set: { "instantConf": "[]" }, "total_instantConf": total_instantConf }, function (err, updatedValue) {
+                careatorMaster.update({ "_id": ObjectId(id) }, { $set: { "instantConf": "[]" , "total_instantConf": total_instantConf }}, function (err, updatedValue) {
                     if (err) {
                         console.log("err: " + JSON.stringify(err));
                         response = {

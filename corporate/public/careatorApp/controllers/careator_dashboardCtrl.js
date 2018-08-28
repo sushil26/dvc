@@ -279,36 +279,36 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                         console.log("checkStatus: " + checkStatus);
                         if (checkStatus) {
 
-                            if (data.data.data != undefined) {
-                                if (data.data.data.sessionURL != undefined) {
-                                    var sessionURL = data.data.data.sessionURL;
-                                    console.log(data.data.message);
-                                    console.log("sessionURL: " + sessionURL);
-                                    socket.emit("comm_logout", {
-                                        "userId": $scope.userData.userId,
-                                        "email": $scope.userData.email,
-                                        "sessionURL": sessionURL,
-                                        "sessionRandomId": $scope.userData.sessionRandomId,
-                                        "orgId":$scope.userData.orgId
-                                    }); /* ### Note: Logout notification to server ### */
+                            // if (data.data.data != undefined) {
+                            //     if (data.data.data.sessionURL != undefined) {
+                            //         var sessionURL = data.data.data.sessionURL;
+                            //         console.log(data.data.message);
+                            //         console.log("sessionURL: " + sessionURL);
+                            //         socket.emit("comm_logout", {
+                            //             "userId": $scope.userData.userId,
+                            //             "email": $scope.userData.email,
+                            //             "sessionURL": sessionURL,
+                            //             "sessionRandomId": $scope.userData.sessionRandomId,
+                            //             "orgId":$scope.userData.orgId
+                            //         }); /* ### Note: Logout notification to server ### */
 
-                                } else {
-                                    socket.emit("comm_logout", {
-                                        "userId": $scope.userData.userId,
-                                        "email": $scope.userData.email,
-                                        "sessionURL": sessionURL,
-                                        "sessionRandomId": $scope.userData.sessionRandomId,
-                                        "orgId":$scope.userData.orgId
-                                    }); /* ### Note: Logout notification to server ### */
-                                }
-                            } else {
-                                socket.emit("comm_logout", {
-                                    "userId": $scope.userData.userId,
-                                    "email": $scope.userData.email,
-                                    "sessionURL": "",
-                                    "sessionRandomId": $scope.userData.sessionRandomId
-                                }); /* ### Note: Logout notification to server ### */
-                            }
+                            //     } else {
+                            //         socket.emit("comm_logout", {
+                            //             "userId": $scope.userData.userId,
+                            //             "email": $scope.userData.email,
+                            //             "sessionURL": sessionURL,
+                            //             "sessionRandomId": $scope.userData.sessionRandomId,
+                            //             "orgId":$scope.userData.orgId
+                            //         }); /* ### Note: Logout notification to server ### */
+                            //     }
+                            // } else {
+                            //     socket.emit("comm_logout", {
+                            //         "userId": $scope.userData.userId,
+                            //         "email": $scope.userData.email,
+                            //         "sessionURL": "",
+                            //         "sessionRandomId": $scope.userData.sessionRandomId
+                            //     }); /* ### Note: Logout notification to server ### */
+                            // }
                         } else {
                             console.log("Sorry");
                             console.log(data.data.message);

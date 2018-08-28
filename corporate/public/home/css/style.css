@@ -1437,7 +1437,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 .validation_fe{
   color:red;
 }
-.required_mark:before { content:" *"; color:red;}
+.required_mark:before { content:" *"; color:red;size:14px;font-weight: 900;font-size: 20px;}
 .smallerCase{
   text-transform: lowercase;
 }

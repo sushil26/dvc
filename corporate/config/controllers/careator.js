@@ -955,10 +955,10 @@ module.exports.emailInvite = function (req, res) {
 
                     }
                 }
-                // var update = { "$set": { } };
-                // update["$set"]["instantConf.$.invite." + existEmailIndex + ".password"] = password;
+                var update = { "$set": { } };
+                update["$set"]["instantConf.$.invite." + existEmailIndex + ".password"] = password;
 
-                careatorMaster.update({ email: req.body.sessionHost, 'instantConf.invite.remoteEmailId': req.body.email }, { "$set": { "instantConf.$.invite.$[existEmailIndex].password":password }}, function (err, updatedOnIndex) {
+                careatorMaster.update({ email: req.body.sessionHost, 'instantConf.invite.remoteEmailId': req.body.email }, update, function (err, updatedOnIndex) {
                     if (err) {
                         console.log("err: "+JSON.stringify(err));
                         responseData = {

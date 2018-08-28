@@ -461,16 +461,7 @@ h6 {
 --------------------------------------------------------------*/
 
 #header {
-  background: -webkit-gradient(linear, left top, right top, from(#030b3c), to(#00bcd4f2));
-  /* Safari 5.1, Chrome 10+ */
-  background: -webkit-linear-gradient(left, #030b3c, #00bcd4f2);
-  /* Firefox 3.6+ */
-  background: -moz-linear-gradient(left, #030b3c, #00bcd4f2);
-  /* IE 10 */
-  background: -ms-linear-gradient(left, #030b3c, #00bcd4f2);
-  /* Opera 11.10+ */
-  background: -o-linear-gradient(left, #030b3c, #00bcd4f2);
-  /* background: #1a2732b5; */
+background: white;
   padding: 30px 0;
   height: 81px;
   position: fixed;
@@ -699,7 +690,7 @@ h6 {
   padding: 0 8px 2px 8px;
   text-decoration: none;
   display: inline-block;
-  color: #fff;
+  color: #454546;
   letter-spacing: -1px;
   font-weight: 100;
   text-transform: uppercase;

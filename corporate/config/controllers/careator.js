@@ -1203,7 +1203,7 @@ module.exports.setCollection = function (req, res) {
     }
     console.log("pushObj: " + JSON.stringify(pushObj));
     careatorMaster.update({ "email": req.body.email }, {
-        $push: { "instantConf": pushObj }
+        $push: { "instantConf": pushObj },  $inc: { "total_instantConf": 1,}
     }, function (err, urlUpdate) {
         if (err) {
             console.log("err: " + JSON.stringify(err));

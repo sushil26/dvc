@@ -147,10 +147,11 @@
                                         " class="validation_fe">Mobile Number is required.</span>
                                 </div>
 
-                                <label class="col-lg-3 ">Password <span ng-show="orgCreate.pswd.$error.required" class="required_mark"></span></label>
+                                <label class="col-lg-3 ">Password 
+                                    <span ng-show="orgCreate.pswd.$error.required" class="required_mark"></span></label>
                                 <div class="col-lg-3">
                                     <span>
-                                        <input type="text " ng-model="adminPassword" name="pswd" class="form-control">
+                                        <input type="text " ng-model="adminPassword" name="pswd" class="form-control" required>
                                     </span>
                                     <span ng-show="orgCreate.pswd.$touched && orgCreate.pswd.$error.required" class="validation_fe">Mobile NUmber is required.</span>
                                 </div>

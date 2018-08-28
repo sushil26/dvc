@@ -67,14 +67,14 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                         var checkStatus = careatorHttpFactory.dataValidation(data);
                         console.log("checkStatus: " + checkStatus);
                         if (checkStatus) {
-                           
-                                socket.emit("comm_logoutSession", {
-                                    "userId": $scope.userData.userId,
-                                    "email": $scope.userData.email,
-                                    "undisconnectedSession": data.data.data.undisconnectedSession,
-                                    "sessionRandomId": data.data.data.sessionRandomId
-                                }); /* ### Note: Logout notification to server ### */
-                            
+
+                            socket.emit("comm_logoutSession", {
+                                "userId": $scope.userData.userId,
+                                "email": $scope.userData.email,
+                                "undisconnectedSession": data.data.data.undisconnectedSession,
+                                "sessionRandomId": data.data.data.sessionRandomId
+                            }); /* ### Note: Logout notification to server ### */
+
                         } else {
                             console.log("Sorry");
                             console.log(data.data.message);
@@ -268,13 +268,13 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                         var checkStatus = careatorHttpFactory.dataValidation(data);
                         console.log("checkStatus: " + checkStatus);
                         if (checkStatus) {
-                           
+                            console.log(data.data.message);
                             socket.emit("comm_logout", {
                                 "userId": $scope.userData.userId,
                                 "email": $scope.userData.email,
                                 "sessionRandomId": $scope.userData.sessionRandomId,
                                 "undisconnectedSession": data.data.data.undisconnectedSession,
-                                "orgId":$scope.userData.orgId
+                                "orgId": $scope.userData.orgId
                             }); /* ### Note: Logout notification to server ### */
                             // if (data.data.data != undefined) {
                             //     if (data.data.data.sessionURL != undefined) {

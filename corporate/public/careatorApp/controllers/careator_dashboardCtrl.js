@@ -516,6 +516,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                         console.log("checkStatus--" + checkStatus);
                         if (checkStatus) {
                             localStorage.setItem("sessionUrlId", peerNew_id);
+                            localStorage.setItem("sessionUrlId", url);
                             console.log("url: " + url);
                             w = window.open(url, '_blank');
                             $window.close();

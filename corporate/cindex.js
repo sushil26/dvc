@@ -573,6 +573,9 @@ io.sockets.on('connection', function (socket) {
             console.log("<--disconnectSession");
             
         }
+        if(data.undisconnectedSession.length==0){
+            io.sockets.emit('comm_logoutNotifyToUserById', { "userId": data.userId, "email": data.email, "sessionRandomId": data.sessionRandomId }) /* ### Note: Send quick message view notification to event sender(who's user id is matched with this userId) ### */
+        }
         
 
         var queryObj = {
@@ -641,6 +644,9 @@ io.sockets.on('connection', function (socket) {
             console.log("deletedSocket_ids: " + JSON.stringify(deletedSocket_ids));
             console.log("<--disconnectSession");
             
+        }
+        if(data.undisconnectedSession.length==0){
+            io.sockets.emit('comm_logoutNotifyToUserById', { "userId": data.userId, "email": data.email, "sessionRandomId": data.sessionRandomId }) /* ### Note: Send quick message view notification to event sender(who's user id is matched with this userId) ### */
         }
         
 

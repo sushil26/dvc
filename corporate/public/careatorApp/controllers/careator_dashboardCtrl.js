@@ -278,11 +278,12 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                         var checkStatus = careatorHttpFactory.dataValidation(data);
                         console.log("checkStatus: " + checkStatus);
                         if (checkStatus) {
-                            // socket.emit("comm_logout", {
-                            //     "userId": $scope.userData.userId,
-                            //     "email": $scope.userData.email,
-                            //     "sessionRandomId": $scope.userData.sessionRandomId
-                            // }); /* ### Note: Logout notification to server ### */
+                            socket.emit("comm_logout", {
+                                "userId": $scope.userData.userId,
+                                "email": $scope.userData.email,
+                                "sessionRandomId": $scope.userData.sessionRandomId,
+                                "undisconnectedSession": data.data.data.undisconnectedSession
+                            }); /* ### Note: Logout notification to server ### */
                             // if (data.data.data != undefined) {
                             //     if (data.data.data.sessionURL != undefined) {
                             //         var sessionURL = data.data.data.sessionURL;

@@ -1191,13 +1191,15 @@ module.exports.setCollection = function (req, res) {
         "session_dateTime": new Date()
     }
     console.log("obj: " + JSON.stringify(obj));
+
     var pushObj = {
         "sessionURL": req.body.url,
         "invite": [],
         "joinEmails": [],
         "leftEmails": [],
         "session_dateTime": new Date(),
-        "isDisconnected": "no"
+        "isDisconnected": "no",
+       
     }
     console.log("pushObj: " + JSON.stringify(pushObj));
     careatorMaster.update({ "email": req.body.email }, {

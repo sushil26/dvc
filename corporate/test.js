@@ -103,7 +103,7 @@ console.log("id2**: " + id2);
           if (screen.width <= 768) {
             document.getElementById("screenShareBtn").style.display = 'none';
           }
-          if (sessionHeaderEmail == careatorEmail) {
+          if (localStorage.getItem("sessionUrlId") == queryLink) {
             document.getElementById("emailInvitation").style.display = "block";
           } else {
             document.getElementById("emailInvitation").style.display = "none";
@@ -425,7 +425,7 @@ console.log("id2**: " + id2);
     console.log("sessionHeader: " + sessionHeader);
     console.log("peerNew_id: " + peerNew_id);
 
-    if (sessionHeaderEmail == localStorage.getItem("careatorEmail")) {
+    if (localStorage.getItem("sessionUrlId") == queryLink && localStorage.getItem("careatorEmail")) {
       console.log("start to disconnect the session");
       localStorage.removeItem("sessionUrlId");
       signaling_socket.emit("disconnectSession", {
@@ -879,7 +879,7 @@ console.log("id2**: " + id2);
           $(this).removeAttr("poster");
         });
         // if (peerNew_id == sessionHeader) {
-        if (sessionHeaderEmail == localStorage.getItem("careatorEmail")) {
+        if (localStorage.getItem("sessionUrlId") == queryLink && localStorage.getItem("careatorEmail")) {
           document.getElementById("closeThisConn" + peer_id).style.display =
             "inline";
 

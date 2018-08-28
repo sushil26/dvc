@@ -3440,7 +3440,7 @@ module.exports.getLoggedinSessionURLById = function (req, res) {
         var findObj = {
             "_id": ObjectId(id)
         }
-        careatorMaster.find(findObj).project({ "instantConf": 1 }).toArray(function (err, getSessionURL) {
+        careatorMaster.find(findObj).project({ "instantConf": 1, "total_instantConf":1 }).toArray(function (err, getSessionURL) {
             if (err) {
                 console.log("err: " + JSON.stringify(err));
                 response = {
@@ -3452,7 +3452,7 @@ module.exports.getLoggedinSessionURLById = function (req, res) {
             } else {
                 console.log("getSessionURL: " + JSON.stringify(getSessionURL));
                 var allInstantConf = getSessionURL[0].instantConf;
-                var total_instantConf = allInstantConf.length;
+                var total_instantConf = allInstantConf.length+getSessionURL[0].total_instantConf;
                 console.log("allInstantConf: " + JSON.stringify(allInstantConf));
                 var undisconnectedSession = [];
                 for (var x = 0; x < allInstantConf.length; x++) {

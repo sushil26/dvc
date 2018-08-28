@@ -928,8 +928,9 @@ module.exports.emailInvite = function (req, res) {
         length: 6,
         charset: 'numeric'
     });
-    console.log("password: " + password);
-    careatorMaster.find({ email: req.body.sessionHost, 'instantConf.invite.remoteEmailId': req.body.email }).project({"instantConf.$.invite":1}).toArray(function (err, findData) {
+       console.log("password: " + password);
+    //careatorMaster.find({ email: req.body.sessionHost, 'instantConf.invite.remoteEmailId': req.body.email }).project({"instantConf.$.invite":1}).toArray(function (err, findData) {
+        careatorMaster.find({ email: req.body.sessionHost, "instantConf":{ $elemMatch:{"sessionURL":req.body.url,"invite.remoteEmailId":req.body.email}}}).project({"instantConf.$.invite":1}).toArray(function (err, findData) {
         console.log("findData: "+JSON.stringify(findData));
         if (err) {
             responseData = {

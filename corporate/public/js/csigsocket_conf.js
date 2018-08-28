@@ -1880,6 +1880,8 @@ console.log("id2**: " + id2);
     console.log("localStorage.getItem(careatorEmail): " + localStorage.getItem("careatorEmail"));
     console.log(" localStorage.getItem(sessionUrlId): " + localStorage.getItem("sessionUrlId"));
     console.log(" url: " + url);
+    console.log(" data.sessionURL: " + data.sessionURL);
+    console.log(" stuff[4]: " + stuff[4]);
     if (data.email == localStorage.getItem("careatorEmail") || data.email == localStorage.getItem("careator_remoteEmail")) {
       console.log("Start to remove the session");
       // localStorage.removeItem("email");
@@ -1914,7 +1916,7 @@ console.log("id2**: " + id2);
     }
     if (data.sessionURL == url) {
       console.log("Start to remove the session based on sessionURL");
-      localStorage.removeItem("sessionUrlId");
+      //localStorage.removeItem("sessionUrlId");
       // signaling_socket.emit("disconnectSession", {
       //   deleteSessionId: queryLink,
       //   owner: peerNew_id

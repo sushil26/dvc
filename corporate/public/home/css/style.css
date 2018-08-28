@@ -1432,3 +1432,10 @@ body.mobile-nav-active #mobile-nav-toggle {
   font-size: 13px;
   color: #ccc;
 }
+
+/* ##### Start Front End Validation  ##### */
+.validation_fe{
+  color:red;
+}
+.required_mark:before { content:" *"; color:red;}
+/* ##### End Front End Validation  ##### */

@@ -3473,7 +3473,7 @@ module.exports.getLoggedinSessionURLById = function (req, res) {
                                 response = {
                                     status: true,
                                     message: property.S0008,
-                                    data: undisconnectedSession
+                                    data: {"undisconnectedSession":undisconnectedSession}
                                 };
                                 res.status(200).send(response);
                             }

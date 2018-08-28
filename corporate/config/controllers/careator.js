@@ -3452,35 +3452,35 @@ module.exports.getLoggedinSessionURLById = function (req, res) {
             } else {
                 console.log("getSessionURL: " + JSON.stringify(getSessionURL));
                 var allInstantConf = getSessionURL[0].instantConf;
-                console.log("allInstantConf: "+JSON.stringify(allInstantConf));
+                var total_instantConf = allInstantConf.length;
+                console.log("allInstantConf: " + JSON.stringify(allInstantConf));
                 var undisconnectedSession = [];
                 for (var x = 0; x < allInstantConf.length; x++) {
                     if (allInstantConf[x].isDisconnected == 'no') {
                         undisconnectedSession.push(allInstantConf[x].sessionURL)
                     }
-                    if (x == allInstantConf.length - 1) {
-
-                        careatorMaster.update(findObj, { $set: { "instantConf.$[i].isDisconnected": 'yes' }},{arrayFilters: [{"i.isDisconnected": "no"}]}, function (err, updatedValue) {
-                            if (err) {
-                                console.log("err: " + JSON.stringify(err));
-                                response = {
-                                    status: false,
-                                    message: property.E0007,
-                                    data: err
-                                };
-                                res.status(400).send(responseData);
-                            } else {
-                                console.log("updatedValue: "+JSON.stringify(updatedValue));
-                                response = {
-                                    status: true,
-                                    message: property.S0008,
-                                    data: {"undisconnectedSession":undisconnectedSession}
-                                };
-                                res.status(200).send(response);
-                            }
-                        })
-                    }
                 }
+                careatorMaster.update({ "_id": ObjectId(id) }, { $set: { "instantConf": "[]" , "total_instantConf": total_instantConf }}, function (err, updatedValue) {
+                    if (err) {
+                        console.log("err: " + JSON.stringify(err));
+                        response = {
+                            status: false,
+                            message: property.E0007,
+                            data: err
+                        };
+                        res.status(400).send(responseData);
+                    } else {
+                        console.log("updatedValue: " + JSON.stringify(updatedValue));
+                        response = {
+                            status: true,
+                            message: property.S0008,
+                            data: { "undisconnectedSession": undisconnectedSession }
+                        };
+                        res.status(200).send(response);
+                    }
+                })
+
+
 
 
             }

@@ -5,14 +5,14 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
     $scope.propertyJson = $rootScope.propertyJson;
     console.log("localStorage.getItem(careatorEmail): " + localStorage.getItem("careatorEmail"));
     var userData = careatorSessionAuth.getAccess("userData");
-    $scope.userData =userData;
+    $scope.userData = userData;
     $scope.loginUserName = userData.firstName + " " + userData.lastName;
     $scope.userId = userData.userId;
     var orgId;
-    if($scope.userData.loginType!= 'superAdmin'){
+    if ($scope.userData.loginType != 'superAdmin') {
         orgId = $scope.userData.orgId;
     }
-    
+
 
     $scope.getToDate = function () {
         console.log("Get To Date-->");
@@ -33,7 +33,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                 var reqSec = todayDate.getSeconds();
                 $scope.todayDate = new Date(reqYear, reqMonth, reqDate, reqHr, reqMin, reqSec);
                 console.log("consolidateDate: " + $scope.consolidateDate);
-            } else {}
+            } else { }
         })
         console.log("<--Get To Date");
     }
@@ -47,7 +47,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
             var checkStatus = careatorHttpFactory.dataValidation(data);
             console.log("checkStatus: " + checkStatus);
             if (checkStatus) {
-                if (data.data.data[0].sessionRandomId ==  $scope.userData.sessionRandomId) {
+                if (data.data.data[0].sessionRandomId == $scope.userData.sessionRandomId) {
                     // var sessionHostBlock;
                     console.log("data.data.data[0].isDisconnected: " + data.data.data[0].isDisconnected);
                     if (data.data.data[0].isDisconnected == 'yes' || data.data.data[0].isDisconnected == undefined) {
@@ -130,7 +130,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
     //         "userId": localStorage.getItem("userId"),
     //         "sessionPassword": localStorage.getItem("sessionPassword"),
     //         "sessionRandomId": localStorage.getItem("sessionRandomId"),
-            
+
     //     }
     //     if (localStorage.getItem("videoRights") == 'yes') {
     //         $scope.videoRights = "yes";
@@ -175,7 +175,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
 
     $scope.getAdmin_email_id = function () {
         console.log("getAdmin_email_id-->");
-        if($scope.userData.loginType=='admin'){
+        if ($scope.userData.loginType == 'admin') {
             var api = "https://norecruits.com/careator_adminBasicData/getSuperAdminObjectId";
             console.log("api: " + api);
             careatorHttpFactory.get(api).then(function (data) {
@@ -186,50 +186,50 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                     $rootScope.adminId = data.data.data;
                     console.log("$rootScope.adminId: " + $rootScope.adminId);
                     console.log(data.data.message);
-    
+
                 } else {
                     console.log("Sorry");
                     console.log(data.data.message);
                 }
             })
         }
-       else if($scope.userData.loginType=='employee'){
-        var api = "https://norecruits.com/careator_adminBasicData/getAdminObjectIdByOrgId/"+orgId;
-        console.log("api: " + api);
-        careatorHttpFactory.get(api).then(function (data) {
-            console.log("data--" + JSON.stringify(data.data));
-            var checkStatus = careatorHttpFactory.dataValidation(data);
-            console.log("checkStatus: " + checkStatus);
-            if (checkStatus) {
-                $rootScope.adminId = data.data.data;
-                console.log("$rootScope.adminId: " + $rootScope.adminId);
-                console.log(data.data.message);
+        else if ($scope.userData.loginType == 'employee') {
+            var api = "https://norecruits.com/careator_adminBasicData/getAdminObjectIdByOrgId/" + orgId;
+            console.log("api: " + api);
+            careatorHttpFactory.get(api).then(function (data) {
+                console.log("data--" + JSON.stringify(data.data));
+                var checkStatus = careatorHttpFactory.dataValidation(data);
+                console.log("checkStatus: " + checkStatus);
+                if (checkStatus) {
+                    $rootScope.adminId = data.data.data;
+                    console.log("$rootScope.adminId: " + $rootScope.adminId);
+                    console.log(data.data.message);
 
-            } else {
-                console.log("Sorry");
-                console.log(data.data.message);
-            }
-        })
-       }
-       else if($scope.userData.loginType=='superAdmin'){
-        var api = "https://norecruits.com/careator_adminBasicData/getAllAdminObjectIdByOrgId";
-        console.log("api: " + api);
-        careatorHttpFactory.get(api).then(function (data) {
-            console.log("data--" + JSON.stringify(data.data));
-            var checkStatus = careatorHttpFactory.dataValidation(data);
-            console.log("checkStatus: " + checkStatus);
-            if (checkStatus) {
-                $rootScope.adminId = data.data.data;
-                console.log("$rootScope.adminId: " + $rootScope.adminId);
-                console.log(data.data.message);
+                } else {
+                    console.log("Sorry");
+                    console.log(data.data.message);
+                }
+            })
+        }
+        else if ($scope.userData.loginType == 'superAdmin') {
+            var api = "https://norecruits.com/careator_adminBasicData/getAllAdminObjectIdByOrgId";
+            console.log("api: " + api);
+            careatorHttpFactory.get(api).then(function (data) {
+                console.log("data--" + JSON.stringify(data.data));
+                var checkStatus = careatorHttpFactory.dataValidation(data);
+                console.log("checkStatus: " + checkStatus);
+                if (checkStatus) {
+                    $rootScope.adminId = data.data.data;
+                    console.log("$rootScope.adminId: " + $rootScope.adminId);
+                    console.log(data.data.message);
 
-            } else {
-                console.log("Sorry");
-                console.log(data.data.message);
-            }
-        })
-       }
-       
+                } else {
+                    console.log("Sorry");
+                    console.log(data.data.message);
+                }
+            })
+        }
+
 
     }
     $scope.getAdmin_email_id();
@@ -253,15 +253,15 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
     $scope.logout = function () {
         console.log("logout-->");
         SweetAlert.swal({
-                title: "Have you closed all the sessions?", //Bold text
-                text: "It will close all your open sessions", //light text
-                type: "warning", //type -- adds appropiriate icon
-                showCancelButton: true, // displays cancel btton
-                confirmButtonColor: "#DD6B55",
-                confirmButtonText: "Sure",
-                closeOnConfirm: false, //do not close popup after click on confirm, usefull when you want to display a subsequent popup
-                closeOnCancel: false
-            },
+            title: "Have you closed all the sessions?", //Bold text
+            text: "It will close all your open sessions", //light text
+            type: "warning", //type -- adds appropiriate icon
+            showCancelButton: true, // displays cancel btton
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Sure",
+            closeOnConfirm: false, //do not close popup after click on confirm, usefull when you want to display a subsequent popup
+            closeOnCancel: false
+        },
             function (isConfirm) { //Function that triggers on user action.
                 if (isConfirm) {
                     SweetAlert.swal({
@@ -278,7 +278,11 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                         var checkStatus = careatorHttpFactory.dataValidation(data);
                         console.log("checkStatus: " + checkStatus);
                         if (checkStatus) {
-
+                            // socket.emit("comm_logout", {
+                            //     "userId": $scope.userData.userId,
+                            //     "email": $scope.userData.email,
+                            //     "sessionRandomId": $scope.userData.sessionRandomId
+                            // }); /* ### Note: Logout notification to server ### */
                             // if (data.data.data != undefined) {
                             //     if (data.data.data.sessionURL != undefined) {
                             //         var sessionURL = data.data.data.sessionURL;
@@ -517,7 +521,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                         if (checkStatus) {
                             localStorage.setItem("sessionUrlId", peerNew_id);
                             localStorage.setItem("sessionUrlId", peerNew_id);
-                           // localStorage.setItem("sessionUrlId", url);
+                            // localStorage.setItem("sessionUrlId", url);
                             console.log("url: " + url);
                             w = window.open(url, '_blank');
                             $window.close();
@@ -532,15 +536,15 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
             })
         } else {
             SweetAlert.swal({
-                    title: "window is already opened", //Bold text
-                    text: "we will take you the desired page!", //light text
-                    type: "warning", //type -- adds appropiriate icon
-                    showCancelButton: true, // displays cancel btton
-                    confirmButtonColor: "#DD6B55",
-                    confirmButtonText: "Go to the page",
-                    closeOnConfirm: false, //do not close popup after click on confirm, usefull when you want to display a subsequent popup
-                    closeOnCancel: false
-                },
+                title: "window is already opened", //Bold text
+                text: "we will take you the desired page!", //light text
+                type: "warning", //type -- adds appropiriate icon
+                showCancelButton: true, // displays cancel btton
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Go to the page",
+                closeOnConfirm: false, //do not close popup after click on confirm, usefull when you want to display a subsequent popup
+                closeOnCancel: false
+            },
                 function (isConfirm) { //Function that triggers on user action.
                     if (isConfirm) {
                         w.focus();

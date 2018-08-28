@@ -12,12 +12,12 @@
                         <p> *All the fields are mandatory to fill.</p>
 <form name="orgCreate">
                         <div class="form-group ">
-                            <label class="col-lg-3 required_mark" >Organization Name:</label>
+                            <label class="col-lg-3" >Organization Name:</label>
                             <div class="col-lg-3">
                                 <span>
                                     <input type="text" ng-model="organizationName" class="form-control required_mark" name="orgName" required>
                                 </span>
-                                <span ng-show="orgCreate.orgName.$touched && orgCreate.orgName.$error.required" class="validation_fe">Organization Name is required.</span>
+                                <span ng-show="orgCreate.orgName.$touched && orgCreate.orgName.$error.required" class="validation_fe required_mark">Organization Name is required.</span>
                             </div>
 
                             <label class="col-lg-3 required_mark">Organization Domain:</label>

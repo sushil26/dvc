@@ -15,16 +15,17 @@
                             <label class="col-lg-3">Organization Name*:</label>
                             <div class="col-lg-3">
                                 <span>
-                                    <input type="text" ng-model="organizationName" name="orgName" class="form-control" required>
+                                    <input type="text" ng-model="organizationName" class="form-control required_mark" name="orgName" required>
                                 </span>
-                                <span ng-show="orgCreate.orgName.$touched && orgCreate.orgName.$error.required" class="validation_fe">*Organization Name is required.</span>
+                                <span ng-show="orgCreate.orgName.$touched && orgCreate.orgName.$error.required" class="validation_fe">Organization Name is required.</span>
                             </div>
 
                             <label class="col-lg-3">Organization Domain*:</label>
                             <div class="col-lg-3">
                                 <span>
-                                    <input type="text" ng-model="organizationDomain" class="form-control">
+                                    <input type="text" ng-model="organizationDomain" class="form-control" name="orgDomain"  required>
                                 </span>
+                                <span ng-show="orgCreate.orgDomain.$touched && orgCreate.orgDomain.$error.required" class="validation_fe">Organization Domain is required.</span>
                             </div>
 
                             <label class="col-lg-3">Registration Date:</label>

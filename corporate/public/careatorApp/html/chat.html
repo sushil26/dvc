@@ -40,14 +40,12 @@
                                                          color: #555;
                                                          font-weight:600;
                                                         font-family: sans-serif;">{{loginUserName}}</h5>
-                                                            <div class="tooltip">--{{chatStatus}}
+                                                            <div class="tooltip">
                                                                 <span ng-if="chatStatus=='Available'" style="color: yellowgreen;">{{chatStatus}}</span>
                                                                 <span ng-if="chatStatus=='Busy'" style="color: goldenrod;">{{chatStatus}}</span>
                                                                 <span ng-if="chatStatus=='Hide'" style="color: dimgray;">{{chatStatus}}</span>
                                                                 <span ng-if="chatStatus=='Sleeping'" style="color: black;">{{chatStatus}}</span>
                                                                 <span ng-if="chatStatus=='Custom'" style="color: #FFC107;">{{chatStatus}}</span>
-                                                                <span ng-if="chatStatus=='Offline'" style="color: dimgray;">{{chatStatus}}</span>
-
                                                                 <div class="tooltiptext">
                                                                     <span style="background:white;
                                                                         padding: 5px;
@@ -264,6 +262,10 @@
                                             <i style="color: black;    font-size: 7px;" class="fa fa-circle"></i>&nbsp;{{receiverChatStatus}}
                                         </a>
                                         <a ng-if="selectedType=='individual_chats' &&  receiverChatStatus=='Custom'" class="heading-status">
+                                            <br>
+                                            <i style="color: #FFC107;    font-size: 7px;" class="fa fa-circle"></i>&nbsp;{{receiverChatStatus}}
+                                        </a>
+                                        <a ng-if="selectedType=='individual_chats' &&  receiverChatStatus=='Offline'" class="heading-status">
                                             <br>
                                             <i style="color: #FFC107;    font-size: 7px;" class="fa fa-circle"></i>&nbsp;{{receiverChatStatus}}
                                         </a>

@@ -42,7 +42,7 @@
                                             <span>
                                                 <input type="text" ng-model="lastName" name="uln" class="form-control" required>
                                             </span>
-                                            <span ng-show="userCreate.uln.$touched && userCreate.uln.$error.required" class="validation_fe">User Last Name is required</span>
+                                            <span ng-show="(userCreate.uln.$touched || userCreate.$submitted) && userCreate.uln.$error.required" class="validation_fe">User Last Name is required</span>
                                         </div>
                                     </div>
                                     <div class="form-group ">

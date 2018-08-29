@@ -569,6 +569,10 @@ module.exports.pswdCheck = function (req, res) {
                                                         "logout": loginData.ops[0].logout
                                                     }
                                                     io.emit('comm_userLoginNotify', emitObj); /* ### Note: Emit message to client(userLoginDetailsCtrl.js) ### */
+                                                    io.emit('comm_receiverStatusUpdate', {
+                                                        "id": loginData.ops[0]._id,
+                                                        "status": "Available"
+                                                    }); /* ### Note: Emit message to client ### */
                                                     findData[0].sessionRandomId = sessionRandomId + findData[0]._id;
                                                     responseData = {
                                                         status: true,
@@ -688,7 +692,7 @@ module.exports.pswdCheck = function (req, res) {
                                                                
                                                                 io.emit('comm_receiverStatusUpdate', {
                                                                     "id": loginData.ops[0]._id,
-                                                                    "status": req.body.chatStatus
+                                                                    "status": "Available"
                                                                 }); /* ### Note: Emit message to client ### */
                                                                 findData[0].sessionRandomId = sessionRandomId + findData[0]._id;
                                                                 responseData = {
@@ -1067,6 +1071,7 @@ module.exports.resetLoginFlagsById = function (req, res) {
             "$set": {
                 "login": "notDone",
                 "logout": "done",
+                "chatStatus": "Offline",
                 "sessionRandomId": sessionRandomId + obj._id
             }
         }, function (err, data) {
@@ -1085,6 +1090,10 @@ module.exports.resetLoginFlagsById = function (req, res) {
                 io.emit('comm_resetNotifyToUserById', {
                     "id": id
                 }); /* ### Note: Emitreset message to client(careator_dashboardCtrl.js, csigsocket.js) ### */
+                io.emit('comm_receiverStatusUpdate', {
+                    "id": id,
+                    "status": "Offline"
+                }); /* ### Note: Emit message to client ### */
                 responseData = {
                     status: true,
                     message: property.S0007,

@@ -82,7 +82,7 @@ careatorApp.controller('createGroupCtrl', function ($scope, $state, careatorHttp
 
     $scope.creteGroup = function (groupCreate) {
         console.log("creteGroup-->");
-        if (groupCreate.$valid) {
+        if (groupCreate.$valid && $scope.groupMemberModel.length>0 && $scope.groupAdminModel.length>0) {
             var api;
             var obj = {
                 "groupName": $scope.groupName,

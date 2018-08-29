@@ -297,8 +297,8 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
             var emailSplitByComma = emailList.split(",");
             var temEmailArray = [];
             for(var x=0;x<emailSplitByComma.length;x++){
-              temEmailArray.push(emailSplitByComma[x]);
-            }
+              temEmailArray.push({"remoteEmailId":emailSplitByComma[x]});
+            } 
             var objData = {
               "senderId": $scope.userData.userId,
               "senderName": $scope.userData.firstName+" "+$scope.userData.lastName,

@@ -41,8 +41,9 @@ careatorApp.controller('createUsersCtrl', function ($scope, $rootScope, $state, 
         })
         console.log("<--uploadCareatorEmp");
     }
-    $scope.careatorEmp = function (fn, ln, empId, emailId, pswd, Designation, rights) {
+    $scope.careatorEmp = function (formName, fn, ln, empId, emailId, pswd, Designation, rights) {
         console.log("careatorEmp-->");
+        if (formName.$valid) {
         console.log("name: " + name);
         var videoRights;
         var chatRights;
@@ -99,5 +100,9 @@ careatorApp.controller('createUsersCtrl', function ($scope, $rootScope, $state, 
                 // alert(data.data.message);
             }
         })
+    }
+    else{
+        alert("Fill all the required field");
+    }
     }
 });

@@ -51,7 +51,12 @@ careatorApp.controller('organizationCreateCtrl', function ($scope, $rootScope, $
             })
         }
         else{
-            alert("Fill all the fields");
+            //alert("Fill all the fields");
+            SweetAlert.swal({
+                title: "Not Valied",
+                text: "Fill all the required field",
+                type: "info"
+              });
         }
     }
 

@@ -152,7 +152,7 @@ module.exports.organizationCreate = function (req, res) {
                     else if (err.errors.pinCode) {
                         responseData = {
                             status: false,
-                            message: "PinCode of registration is required"
+                            message: "PinCode is required as number"
                         };
                         res.status(400).send(responseData);
                     }
@@ -471,7 +471,7 @@ module.exports.getOrg_admin_byOrgId = function (req, res) {
 }
 
 module.exports.getOrganizationDetailsById = function (req, res) {
-    console.log("getOrganizationDetailsById-->" + req.params.orgId);
+    console.log("getOrganizationDetailsById-->");
     if (general.emptyCheck(req.params.orgId)) {
         var obj = {
             "_id": ObjectId(req.params.orgId)

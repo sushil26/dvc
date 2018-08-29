@@ -678,6 +678,9 @@ background: white;
 /* Nav Meu Styling */
 
 .nav-menu a {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url(/careatorApp/css/menubc.png);
   padding: 0 8px 2px 8px;
   text-decoration: none;
   display: inline-block;

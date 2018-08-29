@@ -1,6 +1,7 @@
 careatorApp.directive('capitalizeDirective', ['$parse', function ($parse) {
     return {
         restrict: 'A',
+        require: 'ngModel',
         link: function (scope, element, attrs, modelCtrl) {
             var model = $parse(attrs.ngModel);
             var modelSetter = model.assign;

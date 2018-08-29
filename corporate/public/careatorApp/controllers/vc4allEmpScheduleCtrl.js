@@ -88,7 +88,7 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
             "senderEmail": $scope.eventData[x].senderEmail,
             "title": $scope.eventData[x].title,
             "reason": $scope.eventData[x].reason,
-            "invite": $scope.eventData[x].invite,
+            "invitingTo": $scope.eventData[x].invite,
             "formatedStartTime": $scope.eventData[x].formatedStartTime,
             "formatedEndTime": $scope.eventData[x].formatedEndTime,
             "startsAt": new Date($scope.eventData[x].startsAt),
@@ -294,13 +294,18 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
 
             // vm.events.splice(0, 1);
             var eventPostedData = data.data.data;
+            var emailSplitByComma = emailList.split(",");
+            var temEmailArray = [];
+            for(var x=0;x<emailSplitByComma.length;x++){
+              temEmailArray.push({"remoteEmailId":emailSplitByComma[x]});
+            } 
             var objData = {
               "senderId": $scope.userData.userId,
               "senderName": $scope.userData.firstName+" "+$scope.userData.lastName,
               "senderEmail": $scope.userData.email,
               "title": title,
               "reason": reason,
-              "invite": emailList,
+              "invitingTo": temEmailArray,
               "formatedStartTime": formatedStartTime,
               "formatedEndTime": formatedEndTime,
               "startsAt": sd,

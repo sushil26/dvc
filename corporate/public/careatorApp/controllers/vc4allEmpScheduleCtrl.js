@@ -295,13 +295,17 @@ careatorApp.controller('vc4allEmpScheduleCtrl', function ($scope, $q, $timeout, 
             // vm.events.splice(0, 1);
             var eventPostedData = data.data.data;
             var emailSplitByComma = emailList.split(",");
+            var temEmailArray = [];
+            for(var x=0;x<emailSplitByComma.length;x++){
+              temEmailArray.push(emailSplitByComma[x]);
+            }
             var objData = {
               "senderId": $scope.userData.userId,
               "senderName": $scope.userData.firstName+" "+$scope.userData.lastName,
               "senderEmail": $scope.userData.email,
               "title": title,
               "reason": reason,
-              "invitingTo": emailSplitByComma,
+              "invitingTo": temEmailArray,
               "formatedStartTime": formatedStartTime,
               "formatedEndTime": formatedEndTime,
               "startsAt": sd,

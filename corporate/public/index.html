@@ -431,7 +431,7 @@ transition: all 0.5s;">
                 <a href="#Pricing">PRICING</a>
               </li>
               <li>
-                <a ng-if="userData==undefined || userData.email==null" href="#" id="empLogin" data-target="#crdntl" data-toggle="modal">Employee Login</a>
+                <a ng-if="userData==undefined || userData.email==null" href="#" id="empLogin" data-target="#crdntl" data-toggle="modal">Login</a>
                 <a ng-if="userData!=undefined && userData.email!=null" ng-click="logout()" href="#">Logout</a>
               </li>
 
@@ -636,23 +636,18 @@ transition: all 0.5s;">
                   <p>C.E.O</p>
 
 
-                  <table>
-                    <tr>
-                      <td>
-                        <a href="#" class="">
-                          <i class="fa fa-facebook" aria-hidden="true"></i>
-                        </a>
 
-                        <a href="#" class="">
-                          <i class="fa fa-twitter" aria-hidden="true"></i>
-                        </a>
+                  <a href="#" class="proicon">
+                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                  </a>
 
-                        <a href="#" class="">
-                          <i class="fa fa-dribbble" aria-hidden="true"></i>
-                        </a>
-                      </td>
-                    </tr>
-                  </table>
+                  <a href="#" class="proicon">
+                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                  </a>
+
+                  <a href="#" class="proicon">
+                    <i class="fa fa-dribbble" aria-hidden="true"></i>
+                  </a>
 
                 </div>
 

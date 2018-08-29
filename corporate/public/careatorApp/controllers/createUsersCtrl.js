@@ -1,4 +1,4 @@
-careatorApp.controller('createUsersCtrl', function ($scope, $rootScope, $state, careatorSessionAuth, careatorHttpFactory, SweetAlert) {
+careatorApp.controller('createUsersCtrl', function ($scope, $rootScope, $state, careatorSessionAuth, careatorHttpFactory, SweetAlert, $filter) {
     console.log("createUsersCtrl==>");
     $scope.propertyJson = $rootScope.propertyJson;
     $scope.userData = careatorSessionAuth.getAccess("userData");
@@ -59,12 +59,12 @@ careatorApp.controller('createUsersCtrl', function ($scope, $rootScope, $state, 
                 chatRights = "no";
             }
             var obj = {
-                "firstName": fn,
-                "lastName": ln,
+                "firstName": $filter('capitalize')(fn),
+                "lastName": $filter('capitalize')(ln),
                 "empId": empId,
-                "empEmail": emailId,
+                "empEmail": $filter('lowercase')(emailId),
                 "empPass": pswd,
-                "Designation": Designation,
+                "Designation": $filter('capitalize')(Designation),
                 "videoRights": videoRights,
                 "chatRights": chatRights,
                 "orgId": orgId

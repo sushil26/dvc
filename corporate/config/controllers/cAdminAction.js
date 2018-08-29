@@ -152,7 +152,7 @@ module.exports.organizationCreate = function (req, res) {
                     else if (err.errors.pinCode) {
                         responseData = {
                             status: false,
-                            message: "PinCode of registration is required"
+                            message: "PinCode of registration is required as number"
                         };
                         res.status(400).send(responseData);
                     }

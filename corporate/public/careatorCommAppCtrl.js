@@ -15,7 +15,7 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
     console.log(" $scope.userData : " + JSON.stringify($scope.userData));
 
     if ($scope.userData) {
-        userName = $scope.userData.firstName+" "+$scope.userData.lastName;
+        userName = $scope.userData.firstName + " " + $scope.userData.lastName;
 
         // $scope.loginType = $scope.userData.loginType;
         console.log("userData: " + JSON.stringify($scope.userData));
@@ -93,7 +93,31 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
             }
         })
     }
-    
+
+    $scope.statusUpdate = function (status, id) {
+        console.log("statusUpdate-->: " + status);
+
+        
+        api = "https://norecruits.com/careator_profile/chatStatusUpdateById/" + id;
+        console.log("api: " + api);
+        var obj = {
+            chatStatus: status
+        };
+        careatorHttpFactory.post(api, obj).then(function (data) {
+            console.log("data--" + JSON.stringify(data.data));
+            var checkStatus = careatorHttpFactory.dataValidation(data);
+            if (checkStatus) {
+                console.log("data.data.data: " + JSON.stringify(data.data.data));
+                $scope.chatStatus = status;
+
+                console.log(data.data.message);
+            } else {
+                console.log("Sorry");
+                console.log(data.data.message);
+            }
+        });
+    };
+
     $scope.logVC = function (email, password) {
         console.log("logVC from ");
         var obj = {
@@ -167,15 +191,15 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
 
     }
 
-    $scope.$watch($scope.userData, function(newVal, oldVal) {
-        if(newVal !== oldVal) {
-          // call with updated filters
-          console.log("different value found");
+    $scope.$watch($scope.userData, function (newVal, oldVal) {
+        if (newVal !== oldVal) {
+            // call with updated filters
+            console.log("different value found");
         }
-        else{
+        else {
             console.log("Same valeu");
         }
-      });
+    });
 
     $scope.sessionSet = function (data) {
         console.log("sessionSet-->");
@@ -233,14 +257,14 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
                 userData.profilePicPath = data.data.profilePicPath;
             }
             var userData = userData;
-            console.log("userData before update into localstorage: "+JSON.stringify(userData));
+            console.log("userData before update into localstorage: " + JSON.stringify(userData));
             careatorSessionAuth.setAccess(userData);
             var userData = careatorSessionAuth.getAccess("userData");
             $scope.userData = careatorSessionAuth.getAccess("userData");
             $scope.loginType = $scope.userData.loginType;
-            console.log("userData After update into localstorage: "+JSON.stringify(            $scope.userData));
+            console.log("userData After update into localstorage: " + JSON.stringify($scope.userData));
             console.log("userData: " + JSON.stringify(userData));
-
+            $scope.statusUpdate('Available', userData.userId);
 
             SweetAlert.swal({
                 title: "Login Successfully", //light text
@@ -462,7 +486,7 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
             localStorage.removeItem("profilePicPath");
             localStorage.removeItem("sessionRandomId");
             careatorSessionAuth.clearAccess("userData");
-           // $scope.doRedirect();
+            // $scope.doRedirect();
         }
     })
     socket.on('comm_resetNotifyToUserById', function (data) {

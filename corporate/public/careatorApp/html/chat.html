@@ -1,8 +1,7 @@
 <div ng-controller="chatCtrl">
     <section id="main-content">
-            <link rel="stylesheet" href="/careatorApp/css/newChat.css" />
+        <link rel="stylesheet" href="/careatorApp/css/newChat.css" />
         <style>
-
             body {
                 overflow-y: hidden;
             }
@@ -266,6 +265,10 @@
                                             <br>
                                             <i style="color: #FFC107;    font-size: 7px;" class="fa fa-circle"></i>&nbsp;{{receiverChatStatus}}
                                         </a>
+                                        <a ng-if="selectedType=='individual_chats' &&  receiverChatStatus=='Offline'" class="heading-status">
+                                            <br>
+                                            <i style="color: #FFC107;    font-size: 7px;" class="fa fa-circle"></i>&nbsp;{{receiverChatStatus}}
+                                        </a>
                                         <span ng-if="selectedType=='individual_chats'">
                                             <i class="fa fa-phone"></i>
                                             <i class="fa fa-video-camera"></i>
@@ -353,7 +356,8 @@
                                             <button class="" style="padding: 5px;
                                             box-shadow:  1px 2px 5px #0000004f;
                                             background:white; border-radius: 5px; padding-right: 10px;padding-left: 10px; border:none;"
-                                                ng-click="startachat()"> Start a chat
+                                                ng-click="startachat()"> Start a
+                                                chat
                                             </button>
                                             <p>Search new Contact or chat with your contact list</p>
 

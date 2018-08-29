@@ -111,57 +111,13 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
     if (userData != undefined) {
         $scope.getLogin_hostDetailsById(userData.userId);
     }
-    // if (userData == undefined || userData.email == null) {
-    //     $scope.getLogin_hostDetailsById(localStorage.getItem("userId"));
-    //     var userData = {
-    //         "email": localStorage.getItem("email"),
-    //         "userName": localStorage.getItem("userName"),
-    //         "empId": localStorage.getItem("empId"),
-    //         "userId": localStorage.getItem("userId"),
-    //         "sessionPassword": localStorage.getItem("sessionPassword"),
-    //         "sessionRandomId": localStorage.getItem("sessionRandomId"),
-
-    //     }
-    //     if (localStorage.getItem("videoRights") == 'yes') {
-    //         $scope.videoRights = "yes";
-    //         userData.videoRights = "yes";
-    //     }
-    //     if (localStorage.getItem("chatRights") == 'yes') {
-    //         userData.chatRights = "yes";
-    //         // $scope.getChatGroupListById(localStorage.getItem("userId"));
-    //     }
-    //     if (localStorage.getItem("chatStatus")) {
-    //         userData.chatStatus = localStorage.getItem("chatStatus");
-    //     }
-    //     console.log("localStorage.getItem(restrictedTo): " + JSON.stringify(localStorage.getItem("restrictedTo")));
-    //     if (localStorage.getItem("restrictedTo")) {
-    //         var restrictedUser = localStorage.getItem("restrictedTo");
-    //         var restrictedArray = restrictedUser.split(',');
-    //         console.log("restrictedArray: " + JSON.stringify(restrictedArray));
-    //         userData.restrictedTo = restrictedArray;
-    //     }
-    //     if (localStorage.getItem("profilePicPath")) {
-    //         userData.profilePicPath = localStorage.getItem("profilePicPath");
-    //     }
-
-    //     careatorSessionAuth.setAccess(userData);
-    //     var userData = careatorSessionAuth.getAccess("userData");
-    //     $scope.userData = userData;
-    //     console.log("userData: " + JSON.stringify(userData));
-    // }
-
+   
     $scope.name = userData.userName;
     if (userData.videoRights == 'yes') {
         $scope.videoRights = "yes";
     } else {
         $scope.videoRights = "no";
     }
-
-
-    // $scope.instantConference = function () {
-    //     console.log("instantConference-->");
-
-    // }
 
     $scope.getAdmin_email_id = function () {
         console.log("getAdmin_email_id-->");
@@ -264,8 +220,32 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
         }
 
     }
+    $scope.statusUpdate = function (status) {
+        console.log("statusUpdate-->: " + status);
+    
+        var id = userData.userId;
+        api = "https://norecruits.com/careator_profile/chatStatusUpdateById/" + id;
+        console.log("api: " + api);
+        var obj = {
+          chatStatus: status
+        };
+        careatorHttpFactory.post(api, obj).then(function (data) {
+          console.log("data--" + JSON.stringify(data.data));
+          var checkStatus = careatorHttpFactory.dataValidation(data);
+          if (checkStatus) {
+            console.log("data.data.data: " + JSON.stringify(data.data.data));
+            $scope.chatStatus = status;
+            
+            console.log(data.data.message);
+          } else {
+            console.log("Sorry");
+            console.log(data.data.message);
+          }
+        });
+      };
     $scope.logout = function () {
         console.log("logout-->");
+
         SweetAlert.swal({
             title: "Have you closed all the sessions?", //Bold text
             text: "It will close all your open sessions", //light text
@@ -278,6 +258,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
         },
             function (isConfirm) { //Function that triggers on user action.
                 if (isConfirm) {
+                    $scope.statusUpdate('Offline');
                     SweetAlert.swal({
                         title: "Logged Out",
                         type: "success",

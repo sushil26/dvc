@@ -29,6 +29,7 @@
                                         <input type="text" ng-model="organizationDomain" class="form-control smallerCase" name="orgDomain" required capitalize-directive>
                                     </span>
                                     <span ng-show="(orgCreate.orgDomain.$touched || submitted) && orgCreate.orgDomain.$error.required" class="validation_fe ">Organization Domain is required</span>
+                                    <span ng-show="organizationDomain.split('.').length!=2 && orgCreate.orgDomain.$error.required!=true" class="validation_fe ">Organization Domain (Ex: abc.com, abc.in, abc.co )</span>
                                 </div>
 
                                 <label class="col-lg-3 ">Registration Date 
@@ -134,7 +135,7 @@
                                         <input type="email" ng-model="adminEmail" name="emailId" class="form-control smallerCase" required>
                                     </span>
                                     <span ng-show="(orgCreate.emailId.$touched || submitted) && orgCreate.emailId.$error.required" class="validation_fe">Email is required (EX:abc@{{organizationDomain}}).</span>
-                                    <span ng-show="(orgCreate.emailId.$touched || submitted) && orgCreate.emailId.$invalid && orgCreate.emailId.$error.required!=true" class="validation_fe">Valid input EX:abc@{{organizationDomain}}</span>
+                                    <span ng-show="(orgCreate.emailId.$touched || submitted) && orgCreate.emailId.$invalid && orgCreate.emailId.$error.required!=true" class="validation_fe">You have to give valid input EX:abc@{{organizationDomain}}</span>
                                     <span ng-show="adminEmail.split('@')[1]!=organizationDomain && orgCreate.emailId.$valid && orgCreate.emailId.$error.required!=true" class="validation_fe">You have to give you domain name for email EX:abc@{{organizationDomain}}</span>
                                 </div>
 

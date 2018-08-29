@@ -4,6 +4,8 @@ careatorApp.controller('createUsersCtrl', function ($scope, $rootScope, $state, 
     $scope.userData = careatorSessionAuth.getAccess("userData");
     console.log(" $scope.userData : " + JSON.stringify($scope.userData));
     var orgId = $scope.userData.orgId;
+console.log("$rootScope.orgDatas: "+JSON.stringify($rootScope.orgDatas));
+    $scope.domainName = $rootScope.orgDatas.domain;
 
     $scope.uploadCareatorEmp = function (careatorEmp) {
         console.log("uploadCareatorEmp-->");

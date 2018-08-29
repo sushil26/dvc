@@ -7,14 +7,15 @@ careatorApp.directive('capitalizeDirective', ['$parse', function ($parse) {
             var modelSetter = model.assign;
 
             element.bind('change', function () {
+                scope.modelValue = function () {
+                    console.log('modelvalue - ' + ngModel.$viewValue);
+                    //return ngModel.$viewValue;
+                };
                 scope.$apply(function () {
                     console.log("capitalizeDirective-->");
                     console.log("attrs.ngModel: "+$parse(attrs.ngModel))
                     console.log("modelSetter: "+modelSetter);
-                    scope.modelValue = function () {
-                        console.log('modelvalue - ' + ngModel.$viewValue);
-                        //return ngModel.$viewValue;
-                    };
+                    
                     inputValue = modelSetter.toLowerCase();
                     resultInput = inputValue.substring(0, 1).toUpperCase() + modelSetter.substring(1);
                     // console.log("file from filemodel cutom drctve: " + element.files);

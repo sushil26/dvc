@@ -32,13 +32,11 @@
                 <td>
                     <div uib-timepicker name="startTime" ng-model="eventDetails.startsAt" hour-step="1" minute-step="20" show-meridian="true" required>
                     </div>
-                    --{{eventDetails.startsAt}}
                 </td>
                 <td>&nbsp;-&nbsp;</td>
                 <td>
                     <div uib-timepicker name="endTime" ng-model="eventDetails.endsAt" hour-step="1" minute-step="20" show-meridian="true" required>
                     </div>
-                    --{{eventDetails.endsAt}}
                 </td>
                 <span ng-if="scheduleInviteForm.startTime.$error.required || scheduleInviteForm.endTime.$error.required" style="color:red">*Note:Start Date and End Date is required</span>
             </tr>

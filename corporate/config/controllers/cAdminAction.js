@@ -471,7 +471,7 @@ module.exports.getOrg_admin_byOrgId = function (req, res) {
 }
 
 module.exports.getOrganizationDetailsById = function (req, res) {
-    console.log("getOrganizationDetailsById-->" + req.params.orgId);
+    console.log("getOrganizationDetailsById-->");
     if (general.emptyCheck(req.params.orgId)) {
         var obj = {
             "_id": ObjectId(req.params.orgId)

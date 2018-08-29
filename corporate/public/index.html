@@ -1,766 +1,1137 @@
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
-<!DOCTYPE html>
-<html lang="en">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML Basic 1.1//EN"
+    "http://www.w3.org/TR/xhtml-basic/xhtml-basic11.dtd">
+<html>
+
 <head>
-<title>Execute a business category bootstrap responsive website template</title>
-<!--/tags -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="keywords" content="Execute Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
-<!--css-->
-<link href="lib/css/bootstrap.min.css" rel="stylesheet">
-<link href="lib/css/chocolat.css" rel="stylesheet" type="text/css" media="all">
-<link href="lib/css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all">
-<link href="lib/css/style.css" rel="stylesheet" type="text/css" media="all">
+  <title>VC4ALL</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <link href='https://fonts.googleapis.com/css?family=Allerta Stencil' rel='stylesheet'>
+
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
+
+  <link href="/home/img/fav.png" rel="icon" size="32x32">
+  <script src="/bower_components/angular/angular.min.js"></script>
+
+
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <!-- Google Fonts -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+  <link href="/home/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="/home/lib/animate/animate.min.css" rel="stylesheet">
+  <script src="/home/js/main.js"></script>
+
+
+  <link href="/home/css/style.css" rel="stylesheet">
+  <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+  <script src="/bower_components/angularjs-dropdown-multiselect/dist/angularjs-dropdown-multiselect.min.js"></script>
+  <script src="/bower_components/angular-cookies/angular-cookies.js"></script>
+  <link href="/bower_components/ng-img-crop-full-extended/compile/unminified/ng-img-crop.css" rel="stylesheet">
+  <script src="/bower_components/ng-img-crop-full-extended/compile/unminified/ng-img-crop.js"></script>
+  <script src="/bower_components/angularUtils-pagination/dirPagination.js"></script>
+  <link rel='stylesheet' href='/bower_components/angular-loading-bar/build/loading-bar.css' type='text/css' media='all' />
+  <script type='text/javascript' src='/bower_components/angular-loading-bar/build/loading-bar.min.js'></script>
+  <script src="/bower_components/moment/min/moment.min.js"></script>
+  <script src=" https://cdnjs.cloudflare.com/ajax/libs/angular-moment/0.10.1/angular-moment.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="/css/sweet-alert.css">
+  <script src="/js/SweetAlert.min.js"></script>
+  <script src="/js/sweet-alert.min.js"></script>
+  <link rel="stylesheet" href="/bower_components/angular-bootstrap-calendar/dist/css/angular-bootstrap-calendar.min.css">
+  <script src="/bower_components/angular-bootstrap-calendar/dist/js/angular-bootstrap-calendar-tpls.js"></script>
+  <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <script type="text/javascript" src="/bower_components/ng-file-upload/ng-file-upload.min.js"></script>
+  <script type="text/javascript" src="/bower_components/ng-file-upload/ng-file-upload-shim.min.js"></script>
+  <script src="/angular-animate/angular-animate.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/angular-bootstrap-colorpicker@3/css/colorpicker.min.css" />
+
+  <!-- <script src="/common/notification.js"></script>  -->
+  <link rel="stylesheet" href="/careatorApp/css/style.css" />
+  <link rel="stylesheet" href="/careatorApp/css/style-responsive.css" />
+  <link rel="stylesheet" href="/careatorApp/css/elegant-icons-style.css" />
+
+
+  <script src="/careatorCommApp.js"></script>
+  <script src="/careatorCommAppCtrl.js"></script>
+  <script src="/common/careatorHttpFactory.js"></script>
+  <script src="/common/careatorFileModel.js"></script>
+  <script src="/common/careatorSessionAuth.js"></script>
+  <script src="/careatorApp/controllers/careator_dashboardCtrl.js"></script>
+  <script src="/careatorApp/controllers/chatHistoryCtrl.js"></script>
+  <script src="/careatorApp/controllers/chatCtrl.js"></script>
+  <script src="/careatorApp/controllers/contactAdminCtrl.js"></script>
+  <script src="/careatorApp/controllers/profileCtrl.js"></script>
+  <script src="/careatorApp/controllers/internalPostCtrl.js"></script>
+  <script src="/careatorApp/controllers/createUsersCtrl.js"></script>
+  <script src="/careatorApp/controllers/usersListCtrl.js"></script>
+  <script src="/careatorApp/controllers/groupListCtrl.js"></script>
+  <script src="/careatorApp/controllers/userEditCtrl.js"></script>
+  <script src="/careatorApp/controllers/groupEditCtrl.js"></script>
+  <script src="/careatorApp/controllers/createGroupCtrl.js"></script>
+
+  <script src="/careatorApp/controllers/organizationCreateCtrl.js"></script>
+  <script src="/careatorApp/controllers/organizationListCtrl.js"></script>
+  <script src="/careatorApp/controllers/organizationSettingCtrl.js"></script>
+  <script src="/careatorApp/controllers/organizationUserListCtrl.js"></script>
+
+  <script src="/careatorApp/controllers/userRestrictionCtrl.js"></script>
+  <script src="/careatorApp/controllers/vc4allEmpScheduleCtrl.js"></script>
+  <script src="/careatorApp/controllers/careator_upcomingEventCtr.js"></script>
+  <script src="/careatorApp/controllers/careator_historyCtr.js"></script>
+  <script src="/careatorApp/controllers/userLoginDetailsCtrl.js"></script>
+  <script src="/js/socket.io-1.4.5.js"></script>
+
+
+
+
+  <script>
+    var SIGNALING_SERVER = "https://norecruits.com";
+    socket = io(SIGNALING_SERVER);
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
+
+
+  <style>
+    /* #loading-bar .bar {
+  position: relative;
+} */
+
+    .pricing-text li {
+      margin: 1.8px;
+      background: #0a0a0a08;
+    }
+
+    .formsetting {
+      /* background: beige; */
+      padding: 10px;
+      margin: 5px;
+    }
+
+    .selplan {
+      padding-top: 10px;
+      padding-bottom: 10px;
+      padding-left: 30px;
+      padding-right: 30px;
+      font-weight: 400;
+      border-radius: 10px;
+      border: none;
+      margin: 5px;
+
+    }
+
+    .pricingcard {
+      padding: 10px;
+    }
+
+    .spannumber {
+      font-size: 25px;
+      color: coral;
+    }
+
+    .cbb {
+      line-height: 1.6;
+    }
+
+    .chh {
+      font-family: 'Tangerine', serif;
+      font-size: 48px;
+      text-shadow: 2px 3px 5px #aaa;
+      margin-bottom: -5px;
+      font-size: 48px;
+      font-weight: 600;
+      color: #565656;
+    }
+
+    .cdd {
+      box-shadow: 0px 0px 5px #2424248f;
+
+      border: 5px solid white;
+      background-size: cover;
+    }
+
+    .modal-backdrop {
+
+      background-color: #0000002b;
+    }
+
+    .modal {
+      font-family: Lato;
+    }
+
+    .modal-header {
+      padding: 15px;
+    }
+
+
+    .modal-content {
+      border-radius: 8px;
+      border: none;
+    }
+
+
+    .no-js #loader {
+      display: none;
+    }
+
+    .js #loader {
+      display: block;
+      position: absolute;
+      left: 100px;
+      top: 0;
+    }
+
+    .se-pre-con {
+      position: fixed;
+      left: 0px;
+      top: 0px;
+      width: 100%;
+      height: 100%;
+      z-index: 9999;
+      background: url(img/loading.gif) center no-repeat #fff;
+    }
+
+    .red {
+      background-color: red;
+    }
+
+    .green {
+      background-color: green;
+    }
+
+    .blue {
+      background-color: blue;
+    }
+
+    .quotes {
+      display: none;
+    }
+
+    #loading {
+      display: block;
+      position: absolute !important;
+      top: 0;
+      left: 0;
+      z-index: 100;
+      width: 100vw;
+      height: 100vh;
+      background-color: green;
+      background-image: url("gears-animation.gif");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-color: #0a425f;
+      background-size: 175px;
+    }
+
+    #loadings {
+      display: block;
+      position: absolute !important;
+      top: 0;
+      left: 0;
+      z-index: 100;
+      width: 100vw;
+      height: 100vh;
+      background-color: green;
+      background-image: url("gears-animation.gif");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-color: #0a425f;
+      background-size: 175px;
+    }
+  </style>
+  <style>
+    /* The outermost element*/
+
+    .header-wrapper {
+      overflow: hidden;
+    }
+
+    .zoominheader {
+      background: url("/home/img/op.jpg");
+      background-size: cover;
+      background-attachment: fixed;
+      background-repeat: repeat;
+      position: relative;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      -webkit-animation: zoomin 15s ease-in infinite;
+      animation: zoomin 15s ease-in infinite;
+      transition: all .5s ease-in-out;
+      overflow: hidden;
+    }
+
+    /* The innermost element*/
+
+    .zoomoutheader {
+      text-align: center;
+      background: none;
+      -webkit-animation: zoomout 10s ease-in infinite;
+      animation: zoomout 10s ease-in infinite;
+      transition: all .5s ease-in-out;
+      overflow: hidden;
+    }
+
+    /* Zoom in Keyframes */
+
+    @-webkit-keyframes zoomin {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.5);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    @keyframes zoomin {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.5);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    /*End of Zoom in Keyframes */
+
+    /* Zoom out Keyframes */
+
+    @-webkit-keyframes zoomout {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(0.67);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    @keyframes zoomout {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(0.67);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    /*End of Zoom out Keyframes */
+
+    .cropArea {
+      background: #E4E4E4;
+      overflow: hidden;
+      width: 325px;
+      height: 350px;
+    }
+  </style>
+
+  <!-- Dropdown with search -->
+  <script>
+    function myFunction() {
+      document.getElementById("myDropdown").classList.toggle("show");
+    }
+
+    function filterFunction() {
+      var input, filter, ul, li, a, i;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      div = document.getElementById("myDropdown");
+      a = div.getElementsByTagName("a");
+      for (i = 0; i < a.length; i++) {
+        if (a[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
+          a[i].style.display = "";
+        } else {
+          a[i].style.display = "none";
+        }
+      }
+    }
+
+    function onReady(callback) {
+      var intervalID = window.setInterval(checkReady, 1000);
+
+      function checkReady() {
+        if (document.getElementsByTagName('body')[0] !== undefined) {
+          window.clearInterval(intervalID);
+          callback.call(this);
+        }
+      }
+    }
+  </script>
+
 </head>
+
+
+
 <body>
-<div class="top nav">
-<nav class="navbar navbar-default">
-  <div class="container">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <h1 class="navbar-brand"><a href="#"><span>E</span>xecute</a></h1>
+  <div ng-app="careatorCommApp" ng-controller="careatorCommAppCtrl">
+    <div id="loading-bar-container"></div>
+    <div id="page" ui-view>
+      <!--==========================
+    Header
+============================-->
+      <div id="" class="" style="position: fixed;
+height: 5px;
+left: 0;
+top: 0;
+right: 0;
+z-index: 1000;
+transition: all 0.5s;">
+      </div>
+      <header id="header">
+        <div class="container">
+          <div id="logo" class="pull-left">
+            <span>
+              <img style="float:left;" src="/home/img/fav.png" />
+              <a href="/" id="mm" style="font-size: 33px;
+              letter-spacing: -2.3px;
+          font-weight: 500;
+          font-family: 'Allerta Stencil';
+          color: #a8cf44 !important;
+          float: left;
+          margin-top: 4px;
+          text-transform: uppercase;">
+                <span>
+                  <span id="vc">VC4ALL</span>
+                </span>
+              </a>
+            </span>
+          </div>
+          <nav id="nav-menu-container">
+            <ul class="nav-menu">
+              <li ng-if="userData!=undefined && userData.email!=null" id="dashboard" style="display:block;">
+                <a href="#!/dashboard/profile">DASHBOARD
+                </a>
+              </li>
+              <li>
+                <a href="#services">FEATURES</a>
+              </li>
+              <li>
+                <a href="#facts">ABOUT US</a>
+              </li>
+              <li>
+                <a href="#Pricing">PRICING</a>
+              </li>
+              <li>
+                <a ng-if="userData==undefined || userData.email==null" href="#" id="empLogin" data-target="#crdntl" data-toggle="modal">Employee Login</a>
+                <a ng-if="userData!=undefined && userData.email!=null" ng-click="logout()" href="#">Logout</a>
+              </li>
+
+            </ul>
+          </nav>
+
+        </div>
+      </header>
+      <!--==========================
+    Hero Section
+  ============================-->
+      <section id="hero">
+        <div class="hero-container ">
+          <div class="">
+            <center>
+              <div class="quotes" style="width: fit-content;
+              font-family: Aclonica;
+            height: auto;
+            font-weight: 300;
+            font-size:6vw;
+            line-height: 1;">
+                Welcome to
+                <span style="font-size:6vw; color:#a8cf44;">VC4ALL</span>
+              </div>
+              <div class="quotes" style="width: fit-content;
+              font-family: Aclonica;
+            height: auto;
+            font-weight: 300;
+            font-size:6vw;
+            line-height: 1;">The Ultimate Platform</div>
+              <div class="quotes" style="width: fit-content;
+              font-family: Aclonica;
+          height: auto;
+          font-weight: 300;
+          font-size:6vw;
+          line-height: 1;">For Video Conferencing</div>
+              <div class="quotes" style="width: fit-content;
+              font-family: Aclonica;
+        height: auto;
+        font-weight: 300;
+        font-size:6vw;
+        line-height: 1;">And Instant Messaging</div>
+              <!-- <a href="#about" class="btn-get-started">Start Journey</a> -->
+            </center>
+          </div>
+        </div>
+      </section>
+      <!--==========================
+    Hero Section
+  ============================-->
+
+      <main id="main">
+        <!--==========================
+      About Us Section
+    ============================-->
+        <!--==========================
+      Services Section
+    ============================-->
+        <section id="services">
+          <div class="container wow fadeIn">
+            <div class="section-header" style="margin-bottom: 40px;">
+              <h3 class="section-title">Why VC4ALL?</h3>
+              <p class="section-description"> </p>
+            </div>
+            <div class="row">
+              <div class="col-lg-4 col-md-6 wow fadeInUp " data-wow-delay="0.2s">
+                <div class="box" style="background-image: url('img/schedule1.jpg');     background-size: cover;">
+                  <div class="icon">
+                    <a href="">
+                      <i class="fa fa-calendar"></i>
+                    </a>
+                  </div>
+                  <h4 class="title">
+                    <a href="">Schedule a Meeting</a>
+                  </h4>
+                  <p class="description">Schedule/Reschedule a meeting as per your convenience.</p>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
+                <div class="box" style="background-image: url('img/multiplechat.jpg');     background-size: cover;">
+                  <div class="icon">
+                    <a href="">
+                      <i class="fa fa-comments"></i>
+                    </a>
+                  </div>
+                  <h4 class="title">
+                    <a href="">Multiple Chatting</a>
+                  </h4>
+                  <p class="description">Chat with multiple people at once.
+                  </p>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
+                <div class="box" style="background-image: url('img/type.jpg');     background-size: cover;">
+                  <div class="icon">
+                    <a href="">
+                      <i class="fa fa-keyboard-o"></i>
+                    </a>
+                  </div>
+                  <h4 class="title">
+                    <a href="">Talk and type</a>
+                  </h4>
+                  <p class="description">Talk and type messages at the same time.</p>
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+                <div class="box" style="background-image: url('img/screen_share.jpg');     background-size: cover;">
+                  <div class="icon">
+                    <a href="">
+                      <i class="fa fa-photo"></i>
+                    </a>
+                  </div>
+                  <h4 class="title">
+                    <a href="">Share your Screen</a>
+                  </h4>
+                  <p class="description">Share your screen and make the discussions even easier.</p>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
+                <div class="box" style="background-image: url('img/schedule1.jpg');     background-size: cover;">
+                  <div class="icon">
+                    <a href="">
+                      <i class="fa fa-pencil"></i>
+                    </a>
+                  </div>
+                  <h4 class="title">
+                    <a href="">Book the appointment</a>
+                  </h4>
+                  <p class="description">Book a slot and make the conversations dedicated to you.</p>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
+                <div class="box" style="background-image: url('img/notify.png');     background-size: cover;">
+                  <div class="icon">
+                    <a href="">
+                      <i class="fa fa-bullhorn"></i>
+                    </a>
+                  </div>
+                  <h4 class="title">
+                    <a href="">Get Notified</a>
+                  </h4>
+                  <p class="description">Get email notification for each meeting schedule.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </section>
+        <!-- #services -->
+
+
+        <section id="facts" style="background-image:url(home/img/background.jpg);    background-size: cover;">
+          <!-- <section id="facts" style="background-color:black"> -->
+          <div class="container wow">
+            <div class="section-header">
+              <h3 class="section-title">&nbsp</h3>
+              <h3 class="section-title" style="color:#3f3f3f;">About us</h3>
+              <h3 class="section-title"></h3>
+              <p class="section-description" style="color:#3f3f3f;text-align: justify; font-family:sans-serif; font-size:15px;">
+                VC4ALL is a holistic new age technology platform for schools integrated with messaging and video conferencing.
+                <br>
+                <br> The genesis of VC4All is to ease the communication between Parent and Teacher, and get connected anywhere.
+                VC4ALL helps the parents to have a dedicated one-to-one discussion with the teachers without having to travel
+                down to the respective school. Not only this, but VC4ALL also lets teachers and parents have a group conversations
+                to have a better perspective about the children’s overall growth.
+                <br>
+                <br> This uninterrupted connectivity allows the schools to let the children get education over live chats and
+                video calls.
+                <br>
+                <br> To know more about vc4all please call us at +91 924 653 1986.
+              </p>
+            </div>
+          </div>
+
+
+          <!--==========================
+      Facts Section
+    ============================-->
+
+
+          <div class="container wow fadeIn">
+            <hr>
+            <div class="row counters">
+
+              <div class="col-lg-3 col-6 text-center">
+                <span data-toggle="counter-up">232</span>
+                <p>Clients</p>
+              </div>
+
+              <div class="col-lg-3 col-6 text-center">
+                <span data-toggle="counter-up">521</span>
+                <p>Projects</p>
+              </div>
+
+              <div class="col-lg-3 col-6 text-center">
+                <span data-toggle="counter-up">1,463</span>
+                <p>Hours Of Support</p>
+              </div>
+
+              <div class="col-lg-3 col-6 text-center">
+                <span data-toggle="counter-up">15</span>
+                <p>Hard Workers</p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="Pricing" style="background:white;">
+          <div class="section-header">
+            <h3 class="section-title" style="color:#555;margin-bottom: -20px;">Pricing options</h3>
+            <p class="section-description">Select a plan that best fits your needs. Upgrade, downgrade or cancel at any time</p>
+          </div>
+          <div class="row" style="margin:0 !important;     margin: 0 !important;
+          padding-left: 40px;
+          padding-right: 40px;
+          padding-bottom: 10px;">
+
+            <div class="col-lg-3 col-md-4 col-sm-6 pricingcard">
+              <div class="card cdd text-center" style=" background-image: url(/careatorApp/css/bc1.png);">
+                <h2 class="heading" style="background: #a5ddfe;">
+                  Trial
+                </h2>
+                <div class="card-body cbb">
+
+                  <ul class="pricing-text" style="margin-left:-4rem; margin-top: 1rem;">
+                    <li>
+                      <strong>Free One Month</strong>
+                    </li>
+                    <li>
+                      <strong>3</strong> User Access</li>
+                    <li>
+                      <strong>10</strong> Guest Invite</li>
+
+                    <li>
+                      <strong>2</strong>participents</li>
+
+
+                    <li>
+                      <strong>10 Minutes</strong>video/call</li>
+                    <li>
+                      <strong>1</strong>Group Setting</li>
+                    <li>
+                      <strong>0 Mb</strong>File Sharing Limit</li>
+                    <li>
+                      <strong>No</strong>Storage</li>
+
+                    <li> Screen Sharing </li>
+                    <li> No Admin Control</li>
+                    <li> No Recording </li>
+                    <li> No Meeting Control </li>
+                    <li> Mobile and Desktop </li>
+                    <li> No User Restriction Feature </li>
+                    <li> No File Sharing</li>
+                    <li> No Message Archive</li>
+                  </ul>
+                  <button class="selplan" style="background: #a5ddfe;">Get Started</button>
+
+                </div>
+              </div>
+
+
+            </div>
+
+
+            <div class="col-lg-3 col-md-4 col-sm-6 pricingcard">
+              <div class="card cdd text-center" style=" background-image: url(/careatorApp/css/bc2.png);">
+                <h2 class="heading" style="    background: #d5edb8;">
+                  Start-up
+                </h2>
+                <div class="card-body cbb">
+
+                  <ul class="pricing-text" style="margin-left:-4rem; margin-top: 1rem;">
+                    <li>
+                      <strong>INR 500 / User/ Month</strong>
+                    </li>
+                    <li>
+                      <strong>10</strong> User Access</li>
+                    <li>
+                      <strong>100</strong> Guest Invite</li>
+
+                    <li>
+                      <strong>3</strong>participents</li>
+
+
+                    <li>
+                      <strong>Unlimited</strong>video/call</li>
+                    <li>
+                      <strong>3</strong>Group Setting</li>
+                    <li>
+                      <strong>1 Mb</strong>File Sharing Limit</li>
+                    <li>
+                      <strong>50 Gb</strong>Storage</li>
+
+                    <li> Screen Sharing </li>
+                    <li> No Admin Control</li>
+                    <li> No Recording </li>
+                    <li> No Meeting Control </li>
+                    <li> Mobile and Desktop </li>
+                    <li> No User Restriction Feature </li>
+                    <li> File Sharing</li>
+                    <li> No Message Archive</li>
+                  </ul>
+                  <button class="selplan" style="background: #d5edb8;">Get Started</button>
+
+                </div>
+              </div>
+
+
+            </div>
+
+
+
+            <div class="col-lg-3 col-md-4 col-sm-6 pricingcard">
+              <div class="card cdd text-center" style=" background-image: url(/careatorApp/css/bc3.png);">
+                <h2 class="heading" style="background: #f0d4d7;">
+                  SME
+                </h2>
+                <div class="card-body cbb">
+
+                  <ul class="pricing-text" style="margin-left:-4rem; margin-top: 1rem;">
+                    <li>
+                      <strong>INR 750 / User/ Month</strong>
+                    </li>
+                    <li>
+                      <strong>25</strong> User Access</li>
+                    <li>
+                      <strong>500</strong> Guest Invite</li>
+
+                    <li>
+                      <strong>5</strong>participents</li>
+
+
+                    <li>
+                      <strong>Unlimited</strong>video/call</li>
+                    <li>
+                      <strong>5</strong>Group Setting</li>
+                    <li>
+                      <strong>3 Mb</strong>File Sharing Limit</li>
+                    <li>
+                      <strong>100 Gb</strong>Storage</li>
+
+                    <li> Screen Sharing </li>
+                    <li> Admin Control</li>
+                    <li> No Recording </li>
+                    <li> No Meeting Control </li>
+                    <li> Mobile and Desktop </li>
+                    <li> User Restriction Feature </li>
+                    <li> File Sharing</li>
+                    <li> Message Archive</li>
+                  </ul>
+                  <button class="selplan" style="background: #f0d4d7;">Get Started</button>
+
+                </div>
+              </div>
+
+
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 pricingcard">
+              <div class="card cdd text-center" style=" background-image: url(/careatorApp/css/bc4.png);">
+                <h2 class="heading" style="background: #feea9f;">
+                  Enterprise
+                </h2>
+                <div class="card-body cbb">
+
+                  <ul class="pricing-text" style="margin-left:-4rem; margin-top: 1rem;">
+                    <li>
+                      <strong>INR 1000 / User/ Month</strong>
+                    </li>
+                    <li>
+                      <strong>25+</strong> User Access</li>
+                    <li>
+                      <strong>Unlimited</strong> Guest Invite</li>
+
+                    <li>
+                      <strong>5</strong>participents</li>
+
+
+                    <li>
+                      <strong>Unlimited</strong>video/call</li>
+                    <li>
+                      <strong>Unlimited</strong>Group Setting</li>
+                    <li>
+                      <strong>5 MB</strong>File Sharing Limit</li>
+                    <li>
+                      <strong>1 TB</strong>Storage</li>
+
+                    <li> Screen Sharing </li>
+                    <li> Admin Control</li>
+                    <li> Recording </li>
+                    <li> Meeting Control </li>
+                    <li> Mobile and Desktop </li>
+                    <li> User Restriction Feature </li>
+                    <li> File Sharing</li>
+                    <li> Message Archive</li>
+                  </ul>
+                  <button class="selplan" style="background: #feea9f;">Get Started</button>
+
+                </div>
+              </div>
+
+
+            </div>
+
+
+          </div>
+        </section>
+
+
+
+        <section id="contact">
+          <div class="container wow">
+            <div class="row justify-content-center">
+              <div class="ssk" style="height: 36px;width: 100%;"></div>
+              <div class="col-sm-4">
+                <div class="info">
+                  <table>
+                    <tr>
+                      <td>
+                        <div id="logo" class="pull-left">
+                          <!-- Uncomment below if you prefer to use a text logo -->
+                          <span>
+                            <img style="width: 60px;margin-top: -20px;" src="/home/img/fav.png" />
+                            <a href="/" id="mm" style="
+                            letter-spacing: -2.3px;
+                            font-size: 18px;
+                            font-family: 'Allerta Stencil';
+                            color: wb;
+                            font-size: 22px;
+                            font-weight: 500;
+                            color: #a8cf44;
+                            margin-top: 8px;
+                            text-transform: uppercase;
+                            ">VC4ALL</span>
+                          </a>
+                          </span>
+
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="font-size: 15px;
+                      font-family: sans-serif;
+                      color: #a8cf44;"> Careator Technologies Private Limited</td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="info">
+                  <table>
+                    <tr>
+                      <td>
+                        <div>
+                          <i style="text-shadow: 2px 2px 2px #00000061;" class="fa fa-map-marker"></i>
+                          <p style="
+                            font-family:  sans-serif;
+                            font-size: 11px;font-weight: 100;
+                        "> SLJ TOWER, II FLOOR, BDA # 297, VII BLOCK, OUTER RING ROAD, KATHREGUPPE, BANASHANKARI 3RD STAGE,
+                            BENGALURU, KARNATAKA
+                            <br>560061</p>
+                        </div>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="info">
+                  <table>
+                    <tr>
+                      <td>
+                        <div>
+                          <i style="text-shadow: 2px 2px 2px #00000061;" class="fa fa-map-marker"></i>
+                          <p style="
+                          font-family:  sans-serif;
+                          font-size: 11px;font-weight: 100;
+                      ">MR HOUSE, INDIAN AIRLINES COLONY, BEGUMPET, HYDRABAD,TELANGANA
+                            <br>500016</p>
+                        </div>
+
+                      </td>
+
+                    </tr>
+                  </table>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+      </main>
+
+
+      <div class="modal animated jello faster " id="crdntl" role="dialog">
+        <div class="modal-dialog">
+          <center>
+            <form>
+              <div class="modal-content" style="background:none;color:#777;max-width:350px; border-radius: 8px;">
+                <div class="modal-header" style="padding-top: 15px;     height: 55px;background-image: linear-gradient(to bottom, #383c3f 0%, #202224 100%);">
+                  <img style="width: 45px; float: left;" src="/home/img/fav.png" />
+                  <span class="modal-title" style="margin-top: 10px;
+                  font-weight: 400;float: left;">&nbsp;Login</span>
+                  <button type="button" class="close" data-dismiss="modal" ng-click="$close()">&times;</button>
+                </div>
+                <div class="modal-body">
+                  <input ng-keyup="$event.keyCode == 13 && logVC(email, Password)" type="email" class="form-control" placeholder="Email" ng-model="email"
+                    id="crdEmail">
+                  <br>
+                  <input ng-keyup="$event.keyCode == 13 && logVC(email, Password)" type="password" id="crdPswd" class="form-control" placeholder="Password"
+                    ng-model="password">
+                </div>
+                <div class="modal-footer" style="padding-top: 15px;background-image: linear-gradient(to bottom, #202224 0%, #383c3f 100%);">
+                  <button id="crdsubmit" type="button" style="background-color: #29b6bd;color:#f1f1f1;padding: 5px;" class="btn" ng-click="logVC(email, password)"
+                    data-dismiss="modal">Submit</button>
+                </div>
+              </div>
+            </form>
+          </center>
+        </div>
+      </div>
+      <button data-toggle="modal" data-target="#notify_msg" id="notify_msg_button" data-backdrop="static" data-keyboard="false"
+        style="display:none"></button>
+      <div class="modal animated jello faster " id="notify_msg" role="dialog">
+        <div class="modal-dialog">
+          <center>
+            <form>
+              <div class="modal-content" style="color:#777;max-width:350px; border-radius: 8px;">
+                <div class="modal-header" style="padding-top: 15px;background-image: linear-gradient(to bottom, #383c3f 0%, #202224 100%);">
+                  <img style="width: 45px; margin-top: -15px;margin-left: -170px;" src="/home/img/fav.png" />
+                  <span class="modal-title" style="font-weight: 200;">Message</span>
+                </div>
+                <div class="modal-body">
+                  <label id="notify_msg_content" style="color:red"></label>
+                </div>
+                <div class="modal-footer" style="padding-top: 15px;background-image: linear-gradient(to bottom, #202224 0%, #383c3f 100%);">
+                  <button id="resetBtn" type="button" ng-click="resetLoginFlag()" style="background-color: #29b6bd;color:#f1f1f1" class="btn"
+                    data-dismiss="modal">Reset</button>
+                  <button type="button" style="background-color: #29b6bd;color:#f1f1f1;padding: 5px;" class="btn" data-dismiss="modal">Ok</button>
+                </div>
+              </div>
+            </form>
+          </center>
+        </div>
+      </div>
+      <!--==========================
+    Footer
+  ============================-->
+      <footer id="footer">
+
+        <div class="container">
+          <div class="copyright">
+            &copy; Copyright
+            <strong>Careator</strong>. All Rights Reserved,
+            <a href="#" style="color: #2676bf;">Terms & Conditions</a>
+          </div>
+        </div>
+        <div class="container">
+          <div class="copyright">
+            <span class="icn">
+              <a href="#" class="twitter imm">
+                <i class="fa fa-twitter"></i>
+              </a>
+              <a href="#" class="facebook imm">
+                <i class="fa fa-facebook"></i>
+              </a>
+              <a href="#" class="instagram imm">
+                <i class="fa fa-instagram"></i>
+              </a>
+              <a href="#" class="google-plus imm">
+                <i class="fa fa-google-plus"></i>
+              </a>
+              <a href="#" class="linkedin imm">
+                <i class="fa fa-linkedin"></i>
+              </a>
+            </span>
+          </div>
+        </div>
+      </footer>
+      <!-- #footer -->
+      <a href="#" class="back-to-top">
+        <i class="fa fa-chevron-up"></i>
+      </a>
+      <!-- <script src="/home/lib/jquery/jquery.min.js"></script> -->
+      <!-- <script src="/home/lib/jquery/jquery-migrate.min.js"></script> -->
+      <!-- <script src="/home/lib/bootstrap/js/bootstrap.bundle.min.js"></script> -->
+
+      <script src="/home/lib/easing/easing.min.js"></script>
+      <script src="/home/lib/wow/wow.min.js"></script>
+      <script src="/home/lib/waypoints/waypoints.min.js"></script>
+      <script src="/home/lib/superfish/hoverIntent.js"></script>
+      <script src="/home/lib/superfish/superfish.min.js"></script>
+      <script src="/home/lib/counterup/counterup.min.js"></script>
+
+      <script>
+        //paste this code under the head tag or in a separate js file.
+      </script>
+
     </div>
+  </div>
+  <style>
+    .block-7 {
+      margin-bottom: 30px;
+      padding: 30px;
+      padding-top: 0;
+      -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.03);
+      -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.03);
+      box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.03);
+      background: #fff;
+    }
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <nav class="link-effect-2" id="link-effect-2">
+    .text-center {
+      text-align: center !important;
+    }
 
-      <ul class="nav navbar-nav navbar-right">
-        <li class="active"><a href="#" class="effect-3">Home</a></li>
-		<li><a href="#we-offer" class="effect-3 page-scroll">About</a></li>
-		<li><a href="#services" class="effect-3 page-scroll">Services</a></li>
-		<li><a href="#our-team" class="effect-3 page-scroll">Our team</a></li>
-		<li><a href="#gallery" class="effect-3 page-scroll">Projects</a></li>
-		<li><a href="#testimonials" class="effect-3 page-scroll">Testimonials</a></li>
-		<li><a href="#contact" class="effect-3 page-scroll">Contact</a></li>
-      </ul>
-	  </nav>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
-</div>
-<!--banner-->
-<div class="banner">
-<div class="w3layouts-banner-slider">
-				<div class="container">
-					<div class="slider">
-						<div class="callbacks_container">
-							<ul class="rslides callbacks callbacks1" id="slider4">
-								<li>
-									<div class="agileits-banner-info">
-										<h3>Business
-											<span>clients and staff</span></h3>
-										<div class="w3-button">
-											<div class="w3ls-button">
-												<a href="#we-offer" class="scroll hvr-shutter-out-vertical page-scroll">About</a>
-											</div>
-											<div class="clearfix"> </div>
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="agileits-banner-info">
-										<h3>Ownership
-											 <span>Accurate and detail oriented,</span></h3>
-										<div class="w3-button">
-											<div class="w3ls-button">
-												<a href="#we-offer" class="scroll hvr-shutter-out-vertical page-scroll">About</a>
-											</div>
-											<div class="clearfix"> </div>
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="agileits-banner-info">
-										<h3>Limited liability
-										 <span>good with people.</span></h3>
-										<div class="w3-button">
-											<div class="w3ls-button">
-												<a href="#we-offer" class="scroll hvr-shutter-out-vertical page-scroll">About</a>
-											</div>
-											<div class="clearfix"> </div>
-										</div>
-									</div>
-								</li>
-							</ul>
-						</div>
-						<div class="clearfix"> </div>
+    .cdd .heading {
+      width: 70%;
+      font-size: 25px;
+      line-height: 1;
+      font-weight: 500;
+      padding: 12px 20px;
+      color: #0e0e0e;
+      border-radius: 0px 0px 10px 10px;
+      -moz-border-radius: 0px 0px 10px 10px;
+      -webkit-border-radius: 0px 0px 10px 10px;
+      display: inline-block;
+    }
 
-					</div>
-				</div>
-			</div>
-		</div>
+    .block-7 .price {
+      margin: 0;
+      padding: 0;
+      display: block;
+    }
+
+    .block-7 .excerpt {
+      margin-bottom: 20px;
+      color: #b3b3b3;
+    }
+
+    .d-block {
+      display: block !important;
+    }
+
+    .btn:not(:disabled):not(.disabled) {
+      cursor: pointer;
+    }
+
+    .btn.btn-primary {
+      background: #daf6f8;
+      border: 2px solid #daf6f8;
+      color: #24bdc9;
+    }
+
+    block-7 .heading-2 {
+      font-size: 16px;
+      font-weight: normal;
+    }
+
+    .mb-3,
+    .my-3 {
+      margin-bottom: 1rem !important;
+    }
 
 
+    .block-7 .pricing-text,
+    .block-7 .pricing-text li {
+      padding: 0;
+      margin: 0;
+    }
 
-<!--about-->
-<div class="we-offer" id="we-offer">
-	<div class="we-offer-info text-center">
-		<h3>What We Offer</h3>
-		<label></label>
-		<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-	</div>
-		<div class="we-offer-content">
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-4 col-md-4 we-offer-cont">
-						<div class="we-offer-content1">
-							<div class="row cont">
-								<div class="col-sm-3 col-md-2 cont-icon1">
-									<i class="fa fa-anchor" aria-hidden="true"></i>
-								</div>
-								<div class="col-sm-9 col-md-10">
-									<h3>Companies</h3>
-									<p>Contrary to popular belief,</p>
-								</div>
-								<div class="clearfix"></div>
-							</div>
-						</div>
-							<div class="we-offer-par">
-								<p>It is a long established fact that a reader will be distracted by the readable content</p>
-							</div>
-					</div>
-					<div class="col-sm-4 col-md-4 we-offer-cont">
-						<div class="we-offer-content1">
-							<div class="row cont">
-								<div class="col-sm-3 col-md-2 cont-icon1">
-									<i class="fa fa-users" aria-hidden="true"></i>
-								</div>
-								<div class="col-sm-9 col-md-10">
-									<h3>Employees</h3>
-									<p>Contrary to popular belief,</p>
-								</div>
-								<div class="clearfix"></div>
-							</div>
-						</div>
-							<div class="we-offer-par">
-								<p>It is a long established fact that a reader will be distracted by the readable content</p>
-							</div>
-					</div>
-					<div class="col-sm-4 col-md-4 we-offer-cont">
-						<div class="we-offer-content1">
-							<div class="row cont">
-								<div class="col-sm-3 col-md-2 cont-icon1">
-									<i class="fa fa-wpforms" aria-hidden="true"></i>
-								</div>
-								<div class="col-sm-9 col-md-10">
-									<h3>Rated</h3>
-									<p>Contrary to popular belief,</p>
-								</div>
-								<div class="clearfix"></div>
-						</div>
-							<div class="we-offer-par">
-								<p>It is a long established fact that a reader will be distracted by the readable content</p>
-							</div>
-					</div>
-	</div>
-	<div class="clearfix"></div>
-			</div>
-			</div>
-</div>
-	<div class="we-offer-about">
-		<div class="container">
-			<div class="row about">
-				<div class="col-sm-6 col-md-6 choose">
-					<h2>Why choose us ?</h2>
-					<label></label>
-			
-			<p> Aenean aliquet nec mi et lacinia. Aliquam maximus iaculis mi, sed efficitur orci efficitur nec.</p>
-			<div class="panel-group w3l_panel_group_faq" id="accordion" role="tablist" aria-multiselectable="true">
-			  <div class="panel panel-default">
-				<div class="panel-heading" role="tab" id="headingOne">
-				  <h4 class="panel-title asd">
-					<a class="pa_italic" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-					  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span><i class="glyphicon glyphicon-minus" aria-hidden="true"></i>assumenda est cliche quia
-					</a>
-				  </h4>
-				</div>
-				<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-				  <div class="panel-body panel_text">
-					Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia.
-				  </div>
-				</div>
-			  </div>
-			  <div class="panel panel-default">
-				<div class="panel-heading" role="tab" id="headingTwo">
-				  <h4 class="panel-title asd">
-					<a class="pa_italic collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-					  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span><i class="glyphicon glyphicon-minus" aria-hidden="true"></i>Itaque earum rerum
-					</a>
-				  </h4>
-				</div>
-				<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-				   <div class="panel-body panel_text">
-					Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia.
-				  </div>
-				</div>
-			  </div>
-			  <div class="panel panel-default">
-				<div class="panel-heading" role="tab" id="headingThree">
-				  <h4 class="panel-title asd">
-					<a class="pa_italic collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-					  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span><i class="glyphicon glyphicon-minus" aria-hidden="true"></i>autem accusamus terry sed
-					</a>
-				  </h4>
-				</div>
-				<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-				   <div class="panel-body panel_text">
-					Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia.
-				  </div>
-				</div>
-			  </div>
-			</div>
-</div>
-				<div class="col-sm-6 col-md-6">
-					<img src="lib/images/we-offer-img.jpg" alt=" ">
-				</div>
-				<div class="clearfix"></div>
-			
-		</div>
-	</div>
-</div>
-</div>
-<!--services-->
-<div class="services" id="services">
-	<div class="services-info text-center">
-		<h3>Services</h3>
-		<label></label>
-	</div>
-		<div class="services-content">
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-6 col-md-6 serv">
-						<div class="service1">
-						<div class="row serv1">
-							<div class="col-sm-2 col-md-2 icon1">
-								<i class="fa fa-building-o" aria-hidden="true"></i>
-							</div>
-							<div class="col-sm-10 col-md-10">
-							<p>It is a long established fact that a reader will be distracted by the readable content</p>
-							</div>
-							<div class="clearfix"></div>
-							</div>
-						</div>
-						<div class="service1">
-						<div class="row serv1">
-							<div class="col-sm-2 col-md-2 icon1">
-								<i class="fa fa-briefcase" aria-hidden="true"></i>
-							</div>
-							<div class="col-sm-10 col-md-10">
-							<p>It is a long established fact that a reader will be distracted by the readable content </p>
-							</div>
-							<div class="clearfix"></div>
-							</div>
-						</div>
-						<div class="service1">
-						<div class="row serv1">
-							<div class="col-sm-2 col-md-2 icon1">
-								<i class="fa fa-line-chart" aria-hidden="true"></i>
-							</div>
-							<div class="col-sm-10 col-md-10">
-							<p>It is a long established fact that a reader will be distracted by the readable content</p>
-							</div>
-							<div class="clearfix"></div>
-							</div>
-						</div>
-						<div class="service1">
-						<div class="row serv1">
-							<div class="col-sm-2 col-md-2 icon1">
-								<i class="fa fa-user-o" aria-hidden="true"></i>
-							</div>
-							<div class="col-sm-10 col-md-10">
-							<p>It is a long established fact that a reader will be distracted by the readable content</p>
-							</div>
-							<div class="clearfix"></div>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-6 col-md-6 serv">
-						<div class="service1">
-						<div class="row serv1">
-							<div class="col-sm-2 col-md-2 icon1">
-								<i class="fa fa-bar-chart" aria-hidden="true"></i>
-							</div>
-							<div class="col-sm-10 col-md-10">
-							<p>It is a long established fact that a reader will be distracted by the readable content</p>
-							</div>
-							<div class="clearfix"></div>
-							</div>
-						</div>
-						<div class="service1">
-						<div class="row serv1">
-							<div class="col-sm-2 col-md-2 icon1">
-								<i class="fa fa-calendar-o" aria-hidden="true"></i>
-							</div>
-							<div class="col-sm-10 col-md-10">
-							<p>It is a long established fact that a reader will be distracted by the readable content</p>
-							</div>
-							<div class="clearfix"></div>
-							</div>
-						</div>
-						<div class="service1">
-						<div class="row serv1">
-							<div class="col-sm-2 col-md-2 icon1">
-								<i class="fa fa-external-link" aria-hidden="true"></i>
-							</div>
-							<div class="col-sm-10 col-md-10">
-							<p>It is a long established fact that a reader will be distracted by the readable content</p>
-							</div>
-							<div class="clearfix"></div>
-							</div>
-						</div>
-						<div class="service1">
-						<div class="row serv1">
-							<div class="col-sm-2 col-md-2 icon1">
-								<i class="fa fa-wpforms" aria-hidden="true"></i>
-							</div>
-							<div class="col-sm-10 col-md-10">
-							<p>It is a long established fact that a reader will be distracted by the readable content</p>
-							</div>
-							<div class="clearfix"></div>
-							</div>
-						</div>
-					</div>
-					<div class="clearfix"></div>
-				</div>
-			</div>
-		</div>
-</div>
-<!-- team -->
-	<div class="our-team" id="our-team">
-		<div class="our-team-info text-center">
-			<h3>Our Team</h3>
-			<label></label>
-		</div>
-	<div id="team" class="our-team_services">
-		<div class="container">
-			<div class="agile_wthree_inner_grids">
-				<div class="col-md-4 w3_agile_team_grid_info">
-					<img src="lib/images/team-img1.jpg" alt=" " class="img-responsive" />
-					<h3>Anna Deynah</h3>
-					<p>C.E.O</p>
-					<div class="agileits_w3layouts_nav_right team_agile _icons">
-						<ul>
-							<li><a href="#" class="w3_agile_facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-							<li><a href="#" class="agile_twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-							<li><a href="#" class="w3_agile_dribble"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
+    .block-7 .pricing-text {
+      margin-bottom: 0;
+    }
 
-						</ul>
-					</div>
-				</div>
-				<div class="col-md-4 w3_agile_team_grid_info">
-					<img src="lib/images/team-img2.jpg" alt=" " class="img-responsive" />
-					<h3>Maria Kate</h3>
-					<p>GENERAL MANAGER</p>
-					<div class="agileits_w3layouts_nav_right team_agile _icons">
-						<ul>
-							<li><a href="#" class="w3_agile_facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-							<li><a href="#" class="agile_twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-							<li><a href="#" class="w3_agile_dribble"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
+    ol,
+    ul,
+    dl {
+      margin-top: 0;
+      margin-bottom: 1rem;
+    }
 
-						</ul>
-					</div>
-				</div>
-				<div class="col-md-4 w3_agile_team_grid_info">
-					<img src="lib/images/team-img3.jpg" alt=" " class="img-responsive" />
-					<h3>Laura Mark</h3>
-					<p>ASISTANT GENERAL MANAGER</p>
-					<div class="agileits_w3layouts_nav_right team_agile _icons">
-						<ul>
-							<li><a href="#" class="w3_agile_facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-							<li><a href="#" class="agile_twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-							<li><a href="#" class="w3_agile_dribble"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
+    *,
+    *::before,
+    *::after {
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+    }
 
-						</ul>
-					</div>
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-		</div>
-	</div>
-	</div>
-<!-- team -->
-<div class="gallery" id="gallery">
-	<div class="gallery-info text-center">
-		<h3>Projects</h3>
-		<label></label>
-	</div>
-	<div class="gallery-content">
-		<div class="container">
-			<div class="portfolio-gallery" id="gal">
-				<div class="gallery_product col-lg-4 col-md-4 col-sm-6 col-xs-12">
-					<div class="hovereffect">
-						<a class="chocolat-image"  href="lib/images/gallery-img1.jpg">
-							<img src="lib/images/gallery-img1.jpg" class="img-responsive" alt=" ">
-							<div class="overlay">
-								<h4>Getting Financing</h4>
-							</div>
-						</a>
-					</div>
-				</div>
-				<div class="gallery_product col-lg-4 col-md-4 col-sm-6 col-xs-12">
-					<div class="hovereffect">
-						<a class="chocolat-image" href="lib/images/gallery-img2.jpg">
-							<img src="lib/images/gallery-img2.jpg" class="img-responsive" alt=" ">
-							<div class="overlay">
-								<h4>Office Setup</h4>
-							</div>
-						</a>
-					</div>	
-				</div>
-				<div class="gallery_product col-lg-4 col-md-4 col-sm-6 col-xs-12">
-					<div class="hovereffect">
-						<a class="chocolat-image" href="lib/images/gallery-img3.jpg"><img src="lib/images/gallery-img3.jpg" class="img-responsive" alt=" ">
-							<div class="overlay">
-								<h4>Business plans</h4>
-							</div>
-						</a>
-					</div>				
-				</div>
-				<div class="gallery_product col-lg-4 col-md-4 col-sm-6 col-xs-12">
-					<div class="hovereffect">
-						<a class="chocolat-image" href="lib/images/gallery-img4.jpg">
-							<img src="lib/images/gallery-img4.jpg" class="img-responsive" alt=" ">
-							<div class="overlay">
-								<h4>Managment</h4>
-							</div>
-						</a>
-					</div>
-				</div>
-				<div class="gallery_product col-lg-4 col-md-4 col-sm-6 col-xs-12">
-					<div class="hovereffect">
-						<a class="chocolat-image" href="lib/images/gallery-img5.jpg">
-							<img src="lib/images/gallery-img5.jpg" class="img-responsive" alt="">
-							<div class="overlay">
-								<h4>Mobile business</h4>
-							</div>
-						</a>
-					</div>
-				</div>
-				<div class="gallery_product col-lg-4 col-md-4 col-sm-6 col-xs-12">
-					<div class="hovereffect">
-						<a class="chocolat-image" href="lib/images/gallery-img6.jpg">
-							<img src="lib/images/gallery-img6.jpg" class="img-responsive" alt=" ">
-							<div class="overlay">
-								<h4>On site computer services</h4>
-							</div>
-						</a>
-					</div>
-				</div>
-				<div class="gallery_product col-lg-4 col-md-4 col-sm-6 col-xs-12">
-					<div class="hovereffect">
-						<a class="chocolat-image" href="lib/images/gallery-img7.jpg">
-							<img src="lib/images/gallery-img7.jpg" class="img-responsive" alt=" ">
-							<div class="overlay">
-								<h4>Optimization Business</h4>
-							</div>
-						</a>
-					</div>
-				</div>
-				<div class="gallery_product col-lg-4 col-md-4 col-sm-6 col-xs-12">
-					<div class="hovereffect">
-						<a class="chocolat-image" href="lib/images/gallery-img8.jpg">
-							<img src="lib/images/gallery-img8.jpg" class="img-responsive" alt=" ">
-							<div class="overlay">
-								<h4>Management Consulting</h4>
-							</div>
-						</a>
-					</div>
-				</div>
-				<div class="gallery_product col-lg-4 col-md-4 col-sm-6 col-xs-12">
-					<div class="hovereffect">
-						<a class="chocolat-image" href="lib/images/gallery-img9.jpg">
-							<img src="lib/images/gallery-img9.jpg" class="img-responsive" alt=" ">
-							<div class="overlay">
-								<h4>Social Media Consulting Business</h4>
-							</div>
-						</a>
-					</div>
-				</div>
-				<div class="clearfix"></div>
-			</div>
-		</div> <!-- container / end -->
-	</div>
-</div>
-<!-- stats -->
-<div class="stats">
-	<div class="stats-info text-center">
-		<h3>Stats</h3>
-		<label></label>
-	</div>
-	<div class="stats second" id="stats">
-		<div class="container">
-			<div class="wthree_head_section">
-				
-			</div>
-			<div class="agile_wthree_inner_grids">
-				<div class="col-sm-3 col-md-3 w3layouts_stats_left w3_counter_grid">
-				    <i class="fa fa-building-o" aria-hidden="true"></i>
-					<p class="counter">45</p>
-					<h3>Companies</h3>
-				</div>
-				<div class="col-sm-3 col-md-3 w3layouts_stats_left w3_counter_grid1">
-					<i class="fa fa-bar-chart" aria-hidden="true"></i>
-					<p class="counter">165</p>
-					<h3>Position</h3>
-				</div>
-				<div class="col-sm-3 col-md-3 w3layouts_stats_left w3_counter_grid2">
-					<i class="fa fa-users" aria-hidden="true"></i>
-					<p class="counter">563</p>
-					<h3>Employees</h3>
-				</div>
-				<div class="col-sm-3 col-md-3 w3layouts_stats_left w3_counter_grid3">
-					<i class="fa fa-star" aria-hidden="true"></i>
-					<p class="counter">245</p>
-					<h3>Rated Us</h3>
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-		</div>
-	</div>
-	</div>
-	<!-- //stats -->
-	
-	<div class="testimonials" id="testimonials">
-		<div class="testimonials-info text-center">
-			<h3>Testimonials</h3>
-			<label></label>
-		</div>
-			<div class="testimonials-content">
-				<div class="container">
-				 <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="3000" data-pause="false">
-					<!-- Indicators -->
-					<ol class="carousel-indicators">
-						<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-						<li data-target="#myCarousel" data-slide-to="1"></li>
-						<li data-target="#myCarousel" data-slide-to="2"></li>
-					</ol>
-					<!-- Wrapper for slides -->
-					<div class="carousel-inner" role="listbox">
-						<div class="item active">
-							<div class="row">
-								<div class="col-xs-6 col-sm-6 col-md-6">
-							<div class="row">
-								<div class="col-sm-12 col-md-6">
-									<img src="lib/images/testimonials-img1.jpg" alt=" ">
-								</div>
-								<div class="col-sm-12 col-md-6">
-									<h3>Mashok khan</h3>
-									<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard </p>
-								</div>
-							</div>
-							</div>
-							<div class="col-xs-6 col-sm-6 col-md-6">
-								<div class="row">
-								<div class="col-sm-12 col-md-6">
-									<img src="lib/images/testimonials-img2.jpg" alt="">
-								</div>
-								<div class="col-sm-12 col-md-6">
-									<h3>Romana nasrin</h3>
-									<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</p>
-								</div>
-							</div>
-							</div>
-							</div>
-						</div>
-						<div class="item">
-							<div class="row">
-								<div class="col-xs-6 col-sm-6 col-md-6">
-							<div class="row">
-								<div class="col-sm-12 col-md-6">
-									<img src="lib/images/testimonials-img3.jpg" alt=" ">
-								</div>
-								<div class="col-sm-12 col-md-6">
-									<h3>Mashok khan</h3>
-									<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</p>
-								</div>
-							</div>
-							</div>
-							<div class="col-xs-6 col-sm-6 col-md-6">
-								<div class="row">
-								<div class="col-sm-12 col-md-6">
-									<img src="lib/images/testimonials-img4.jpg" alt="">
-								</div>
-								<div class="col-sm-12 col-md-6">
-									<h3>Romana nasrin</h3>
-									<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</p>
-								</div>
-							</div>
-							</div>
-							</div>
-						</div>
-						<div class="item">
-							<div class="row">
-								<div class="col-xs-6 col-sm-6 col-md-6">
-							<div class="row">
-								<div class="col-sm-12 col-md-6">
-									<img src="lib/images/testimonials-img1.jpg" alt=" ">
-								</div>
-								<div class="col-sm-12 col-md-6">
-									<h3>Mashok khan</h3>
-									<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard </p>
-								</div>
-							</div>
-							</div>
-							<div class="col-xs-6 col-sm-6 col-md-6">
-								<div class="row">
-								<div class="col-sm-12 col-md-6">
-									<img src="lib/images/testimonials-img2.jpg" alt="">
-								</div>
-								<div class="col-sm-12 col-md-6">
-									<h3>Romana nasrin</h3>
-									<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</p>
-								</div>
-							</div>
-							</div>
-							</div>
-						</div>
-						
-					</div>
-					<!-- Left and right controls -->
-					
-					</div>
-			</div>
-			</div>
-		</div>
+    user agent stylesheet ul,
+    menu,
+    dir {
+      display: block;
+      list-style-type: disc;
+      -webkit-margin-before: 1em;
+      -webkit-margin-after: 1em;
+      -webkit-margin-start: 0px;
+      -webkit-margin-end: 0px;
+      -webkit-padding-start: 40px;
+    }
+  </style>
 
-	<div class="contact" id="contact">
-		<div class="contact-info text-center">
-			<h3>Contact</h3>
-			<label></label>
-		</div>
-			<div class="contact-content">
-			<div class="container">
-		<div class="row">
-		  <div class="col-sm-12 col-md-3">
-			<div class="contact-tel">
-				<ul>
-					<li class="tel1"><i class="fa fa-mobile" aria-hidden="true"></i><span>+(000) 123 4565 32</span></li>
-					<li class="tel2"><i class="fa fa-envelope-o contact-mail" aria-hidden="true"></i><a href="mailto:info@outlook.com">info@example1.com</a></li>
-				</ul>
-			</div>
-		  </div>
-		  <div class="col-sm-12 col-md-9">
-			<div class="contact-form">
-				<form id="contact-us" method="post" action="#">
-					<div class="row form1">
-						<div class="col-sm-12 col-md-6">
-							<input class="name" type="text" name="name" placeholder="Name">
-						</div>
-						<div class="col-sm-12 col-md-6">
-							<input class="email" type="email" name="email" placeholder="Email">
-						</div>
-						</div>
-							<div class="row form2">
-								<div class="col-sm-12 col-md-8">
-									<textarea class="textarea" placeholder="Message"
-									></textarea>
-								</div>
-								<div class="col-sm-12 col-md-4 text-center">
-									<input class="submit"  type="submit" value="Submit">
-								</div>
-							</div>
-					
-				</form>
-			</div>
-		  </div>
-	</div>
-	</div>
-	</div>
-	</div>
 
-<div class="footer text-center">&copy; 2018 Execute. All Rights Reserved | Design by <a href="https://w3layouts.com/">W3layouts</a></div>
-	<script src="lib/js/jquery-2.1.4.min.js"></script>
-	<script src="lib/js/bootstrap.js"></script>
-	<script src="lib/js/move-top.js"></script>
-	<script src="lib/js/smoothscroll.js"></script>
-	<script src="lib/js/jquery.easing.min.js"></script>
-	<script src="lib/js/grayscale.js"></script>
-	
-	<script>
-			// You can also use "$(window).load(function() {"
-			$(function () {
-				// Slideshow 4
-				$("#slider4").responsiveSlides({
-					auto: true,
-					pager: true,
-					nav: true,
-					speed: 500,
-					namespace: "callbacks",
-					before: function () {
-						$('.events').append("<li>before event fired.</li>");
-					},
-					after: function () {
-						$('.events').append("<li>after event fired.</li>");
-					}
-				});
 
-			});
-	</script>
-	<script>
-		// You can also use "$(window).load(function() {"
-		$(function () {
-			// Slideshow 4
-			$("#slider3").responsiveSlides({
-				auto: true,
-				pager: false,
-				nav: false,
-				speed: 500,
-				namespace: "callbacks",
-				before: function () {
-					$('.events').append("<li>before event fired.</li>");
-				},
-				after: function () {
-					$('.events').append("<li>after event fired.</li>");
-				}
-			});
-
-		});
-	</script>
-	<script src="lib/js/responsiveslides.min.js"></script>
-	<!-- stats -->
-	<script src="lib/js/jquery.waypoints.min.js"></script>
-	<script src="lib/js/jquery.countup.js"></script>
-	<script>
-		$('.counter').countUp();
-	</script>
-	<!-- //stats -->
-	
-	
-<!-- js for gallery -->
-<script type="text/javascript" src="lib/js/jquery.chocolat.js"></script>
-<script>
-$(function(){
-                $('#gal').Chocolat({
-                    imageSize: 'contain'
-                });
-            });
-</script>
-	<script type="text/javascript">
-	$(document).ready(function() {
-	var defaults = {
-	containerID: 'toTop', // fading element id
-	containerHoverID: 'toTopHover', // fading element hover id
-	scrollSpeed: 1200,
-	easingType: 'linear' 
-	};
-	$().UItoTop({ easingType: 'easeOutQuart' });
-
-	});
-	</script>
-<!-- //js for gallery -->	
 </body>
+
 </html>

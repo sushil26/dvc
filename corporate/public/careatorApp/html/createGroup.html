@@ -35,13 +35,13 @@
                             </div> -->
                             <div class="form-group">
                                 <label class="col-lg-3">Group Members
-                                    <span ng-show="groupMemberModel==undefined" class="required_mark"></span>
+                                    <span ng-show="groupMemberModel" class="required_mark"></span>
                                 </label>
                                 <div class="col-lg-9">
                                     <div ng-dropdown-multiselect="" options="groupMemberData" selected-model="groupMemberModel" checkboxes="true" extra-settings="groupMemberSettings">
                                     </div>
                                     <pre>Selected Memebers : <span ng-repeat="mem in groupMemberModel">{{mem.label+", "}}</span></pre>
-                                    <span ng-show="groupMemberModel==undefined" class="validation_fe">Group Member is required</span>
+                                    <span ng-show="groupMemberModel" class="validation_fe">Group Member is required</span>
                                 </div>
                             </div>
                             <div class="form-group" ng-if="groupMemberModel.length>0">

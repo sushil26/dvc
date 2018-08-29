@@ -94,6 +94,30 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
         })
     }
     
+    $scope.statusUpdate = function (status) {
+        console.log("statusUpdate-->: " + status);
+    
+        var id = userData.userId;
+        api = "https://norecruits.com/careator_profile/chatStatusUpdateById/" + id;
+        console.log("api: " + api);
+        var obj = {
+          chatStatus: status
+        };
+        careatorHttpFactory.post(api, obj).then(function (data) {
+          console.log("data--" + JSON.stringify(data.data));
+          var checkStatus = careatorHttpFactory.dataValidation(data);
+          if (checkStatus) {
+            console.log("data.data.data: " + JSON.stringify(data.data.data));
+            $scope.chatStatus = status;
+            
+            console.log(data.data.message);
+          } else {
+            console.log("Sorry");
+            console.log(data.data.message);
+          }
+        });
+      };
+      
     $scope.logVC = function (email, password) {
         console.log("logVC from ");
         var obj = {
@@ -112,6 +136,7 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
             if (checkStatus) {
                 var datas = data.data;
                 console.log("data.message: " + data.data.message);
+                $scope.statusUpdate('Available');
                 $scope.sessionSet(datas);
             } else {
                 if (data.data.message == "You've already logged in. To log in again, please reset your session") {

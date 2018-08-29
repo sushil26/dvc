@@ -2,15 +2,20 @@ careatorApp.directive('capitalizeDirective', ['$parse', function ($parse) {
     return {
         restrict: 'A',
         require: 'ngModel',
-        link: function (scope, element, attrs, modelCtrl) {
-            // var model = $parse(attrs.ngModel);
-            // var modelSetter = model.assign;
+        link: function (scope, element, attrs, ngModel) {
+            var model = $parse(attrs.ngModel);
+            var modelSetter = model.assign;
+            scope.modelValue = function () {
+                console.log('modelvalue - ' + ngModel.$viewValue);
+                //return ngModel.$viewValue;
+            };
 
             // element.bind('change', function () {
             //     scope.$apply(function () {
             //         console.log("capitalizeDirective-->");
             //         console.log("attrs.ngModel: "+$parse(attrs.ngModel))
             //         console.log("modelSetter: "+modelSetter);
+                   
             //         inputValue = modelSetter.toLowerCase();
             //         resultInput = inputValue.substring(0, 1).toUpperCase() + modelSetter.substring(1);
             //         // console.log("file from filemodel cutom drctve: " + element.files);
@@ -21,14 +26,14 @@ careatorApp.directive('capitalizeDirective', ['$parse', function ($parse) {
             //         console.log("resultInput: " + resultInput);;
             //         modelSetter(scope, resultInput);
             //     });
-            // });
-            modelCtrl.$parsers.push(function (inputValue) {
+            //});
+            // modelCtrl.$parsers.push(function (inputValue) {
 
                
-                input = inputValue.toLowerCase();
-                return inputValue.substring(0,1).toUpperCase()+inputValue.substring(1);
+            //     input = inputValue.toLowerCase();
+            //     return inputValue.substring(0,1).toUpperCase()+inputValue.substring(1);
                     
-              });
+            //   });
         }
 
     }

@@ -233,7 +233,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
             console.log("checkStatus: " + checkStatus);
             if (checkStatus) {
                 $rootScope.orgDatas = data.data.data;
-                console.log("$rootScope.orgDatas: " + $rootScope.orgDatas);
+                console.log("$rootScope.orgDatas: " + JSON.stringify($rootScope.orgDatas));
                 console.log(data.data.message);
 
             } else {

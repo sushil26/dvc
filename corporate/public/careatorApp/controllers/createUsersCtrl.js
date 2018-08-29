@@ -59,12 +59,12 @@ careatorApp.controller('createUsersCtrl', function ($scope, $rootScope, $state, 
                 chatRights = "no";
             }
             var obj = {
-                "firstName": $filter('capitalize')(fn),
-                "lastName": $filter('capitalize')(ln),
+                "firstName":fn,
+                "lastName": ln,
                 "empId": empId,
                 "empEmail": $filter('lowercase')(emailId),
                 "empPass": pswd,
-                "Designation": $filter('capitalize')(Designation),
+                "Designation": Designation,
                 "videoRights": videoRights,
                 "chatRights": chatRights,
                 "orgId": orgId

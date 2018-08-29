@@ -94,10 +94,10 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
         })
     }
 
-    $scope.statusUpdate = function (status) {
+    $scope.statusUpdate = function (status, id) {
         console.log("statusUpdate-->: " + status);
 
-        var id = userData.userId;
+        
         api = "https://norecruits.com/careator_profile/chatStatusUpdateById/" + id;
         console.log("api: " + api);
         var obj = {
@@ -264,7 +264,7 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
             $scope.loginType = $scope.userData.loginType;
             console.log("userData After update into localstorage: " + JSON.stringify($scope.userData));
             console.log("userData: " + JSON.stringify(userData));
-            $scope.statusUpdate('Available');
+            $scope.statusUpdate('Available', userData.userId);
 
             SweetAlert.swal({
                 title: "Login Successfully", //light text

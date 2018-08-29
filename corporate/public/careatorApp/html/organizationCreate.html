@@ -135,6 +135,7 @@
                                     </span>
                                     <span ng-show="(orgCreate.emailId.$touched || submitted) && orgCreate.emailId.$error.required" class="validation_fe">Email is required (EX:abc@{{organizationDomain}}).</span>
                                     <span ng-show="(orgCreate.emailId.$touched || submitted) && orgCreate.emailId.$invalid && orgCreate.emailId.$error.required!=true" class="validation_fe">EX:abc@{{organizationDomain}}</span>
+                                    <span ng-show="adminEmail.split('@')[1]!=organizationDomain && orgCreate.emailId.$invalid && orgCreate.emailId.$error.required!=true" class="validation_fe">You have to give you domain name for email EX:abc@{{organizationDomain}}</span>
                                 </div>
 
                                 <label class="col-lg-3">Admin Mobile. No <span ng-show="orgCreate.mobNum.$error.required"

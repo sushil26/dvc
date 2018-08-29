@@ -31,7 +31,7 @@
                                             <span>
                                                 <input type="text" ng-model="firstName" name="ufn" class="form-control" required>
                                             </span>
-                                            <span ng-show="userCreate.ufn.$touched && userCreate.ufn.$error.required" class="validation_fe">User First Name is required</span>
+                                            <span ng-show="(userCreate.ufn.$touched || userCreate.$submitted) && userCreate.ufn.$error.required" class="validation_fe">User First Name is required</span>
                                         </div>
                                     </div>
                                     <div class="form-group ">

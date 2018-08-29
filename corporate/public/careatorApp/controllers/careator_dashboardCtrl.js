@@ -258,7 +258,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
         },
             function (isConfirm) { //Function that triggers on user action.
                 if (isConfirm) {
-                    $scope.statusUpdate('offline');
+                    $scope.statusUpdate('Offline');
                     SweetAlert.swal({
                         title: "Logged Out",
                         type: "success",

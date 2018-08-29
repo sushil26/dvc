@@ -1249,6 +1249,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
   socket.on("comm_receiverStatusUpdate", function (data) {
     console.log("****comm_receiverStatusUpdate-->: " + JSON.stringify(data));
     if ($scope.receiverData.receiverId == data.id) {
+      console.log("got remote person chat status");
       $scope.receiverChatStatus = data.status;
     }
   });

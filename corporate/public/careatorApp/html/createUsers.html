@@ -31,7 +31,7 @@
                                             <span>
                                                 <input type="text" ng-model="firstName" name="ufn" class="form-control" required>
                                             </span>
-                                            <span ng-show="(userCreate.ufn.$touched || userCreate.$submitted) && userCreate.ufn.$error.required" class="validation_fe">User First Name is required</span>
+                                            <span ng-show="(userCreate.ufn.$touched || submitted) && userCreate.ufn.$error.required" class="validation_fe">User First Name is required</span>
                                         </div>
                                     </div>
                                     <div class="form-group ">
@@ -42,7 +42,7 @@
                                             <span>
                                                 <input type="text" ng-model="lastName" name="uln" class="form-control" required>
                                             </span>
-                                            <span ng-show="(userCreate.uln.$touched || userCreate.$submitted) && userCreate.uln.$error.required" class="validation_fe">User Last Name is required</span>
+                                            <span ng-show="(userCreate.uln.$touched || submitted) && userCreate.uln.$error.required" class="validation_fe">User Last Name is required</span>
                                         </div>
                                     </div>
                                     <div class="form-group ">
@@ -53,7 +53,7 @@
                                             <span>
                                                 <input type="text" ng-model="empId" name="employeeID" class="form-control" required>
                                             </span>
-                                            <span ng-show="userCreate.employeeID.$touched && userCreate.employeeID.$error.required" class="validation_fe">Employee Id is required</span>
+                                            <span ng-show="(userCreate.employeeID.$touched || submitted) && userCreate.employeeID.$error.required" class="validation_fe">Employee Id is required</span>
                                         </div>
                                     </div>
                                     <div class="form-group ">
@@ -64,7 +64,7 @@
                                             <span>
                                                 <input type="text" ng-model="Designation" name="desig" class="form-control" required>
                                             </span>
-                                            <span ng-show="userCreate.desig.$touched && userCreate.desig.$error.required" class="validation_fe">Designation is required</span>
+                                            <span ng-show="(userCreate.desig.$touched || submitted) && userCreate.desig.$error.required" class="validation_fe">Designation is required</span>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -75,7 +75,7 @@
                                             <span>
                                                 <input type="email" ng-model="empEmail" name="employeeEmail" class="form-control" required>
                                             </span>
-                                            <span ng-show="userCreate.employeeEmail.$touched && userCreate.employeeEmail.$error.required" class="validation_fe">Email Id is required</span>
+                                            <span ng-show="(userCreate.employeeEmail.$touched || submitted) && userCreate.employeeEmail.$error.required" class="validation_fe">Email Id is required</span>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -90,7 +90,7 @@
                                                 <input type="radio" name="perm" value="video" ng-model="rightSelect" ng-change="rightEmployeeList('video')" required> &nbsp;&nbsp; Both&nbsp;
                                                 <input type="radio" name="perm" value="both" ng-model="rightSelect" ng-change="rightEmployeeList('bothChatVideo')" required>
                                             </span>
-                                            <span ng-show="userCreate.perm.$touched && userCreate.perm.$error.required" class="validation_fe">Permision is required</span>
+                                            <span ng-show="(userCreate.perm.$touched || submitted) && userCreate.perm.$error.required" class="validation_fe">Permision is required</span>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -101,7 +101,7 @@
                                             <span>
                                                 <input type="text" ng-model="empPass" name="pswd" class="form-control" required>
                                             </span>
-                                            <span ng-show="userCreate.pswd.$touched && userCreate.pswd.$error.required" class="validation_fe">Password is required</span>
+                                            <span ng-show="(userCreate.pswd.$touched || submitted) && userCreate.pswd.$error.required" class="validation_fe">Password is required</span>
                                         </div>
                                     </div>
                                     <div class="form-group ">

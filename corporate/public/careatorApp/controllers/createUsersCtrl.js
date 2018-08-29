@@ -43,6 +43,7 @@ careatorApp.controller('createUsersCtrl', function ($scope, $rootScope, $state, 
     }
     $scope.careatorEmp = function (formName, fn, ln, empId, emailId, pswd, Designation, rights) {
         console.log("careatorEmp-->");
+        $scope.submitted=true;
         if (formName.$valid) {
             console.log("name: " + name);
             var videoRights;

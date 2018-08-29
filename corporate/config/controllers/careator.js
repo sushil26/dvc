@@ -574,6 +574,7 @@ module.exports.pswdCheck = function (req, res) {
                                                         "status": "Available"
                                                     }); /* ### Note: Emit message to client ### */
                                                     findData[0].sessionRandomId = sessionRandomId + findData[0]._id;
+                                                    findData[0].chatStatus = "Available";
                                                     responseData = {
                                                         status: true,
                                                         message: property.S0005,
@@ -695,6 +696,7 @@ module.exports.pswdCheck = function (req, res) {
                                                                     "status": "Available"
                                                                 }); /* ### Note: Emit message to client ### */
                                                                 findData[0].sessionRandomId = sessionRandomId + findData[0]._id;
+                                                                findData[0].chatStatus = "Available";
                                                                 responseData = {
                                                                     status: true,
                                                                     message: property.S0005,

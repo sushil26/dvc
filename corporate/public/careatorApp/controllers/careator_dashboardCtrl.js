@@ -243,7 +243,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
         })
         console.log("<--getOrganizationDetailsById");
     }
-    $scope.getOrganizationDetails($scope.userData.orgId)
+    $scope.getOrganizationDetailsById($scope.userData.orgId)
 
     $scope.videoUrlNavigation = function () {
         console.log("videoUrlNavigation-->");

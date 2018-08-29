@@ -8,7 +8,7 @@ careatorApp.directive('capitalizeDirective', ['$parse', function ($parse) {
             element.bind('change', function () {
                 scope.$apply(function () {
                     console.log("capitalizeDirective-->");
-                    console.log("attrs.ngModel: "+attrs.ngModel);
+                    console.log("attrs.ngModel: "+attrs.ngModel.value);
                     inputValue = modelSetter.toLowerCase();
                     resultInput = inputValue.substring(0, 1).toUpperCase() + modelSetter.substring(1);
                     // console.log("file from filemodel cutom drctve: " + element.files);

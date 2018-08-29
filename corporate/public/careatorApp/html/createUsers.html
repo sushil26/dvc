@@ -29,7 +29,7 @@
                                         </label>
                                         <div class="col-lg-9">
                                             <span>
-                                                <input type="text" ng-model="firstName" name="ufn" class="form-control" required>
+                                                <input type="text" ng-model="firstName" name="ufn" class="form-control capitalizeCase" required>
                                             </span>
                                             <span ng-show="(userCreate.ufn.$touched || submitted) && userCreate.ufn.$error.required" class="validation_fe">User First Name is required</span>
                                         </div>
@@ -40,7 +40,7 @@
                                         </label>
                                         <div class="col-lg-9">
                                             <span>
-                                                <input type="text" ng-model="lastName" name="uln" class="form-control" required>
+                                                <input type="text" ng-model="lastName" name="uln" class="form-control capitalizeCase" required>
                                             </span>
                                             <span ng-show="(userCreate.uln.$touched || submitted) && userCreate.uln.$error.required" class="validation_fe">User Last Name is required</span>
                                         </div>
@@ -62,7 +62,7 @@
                                         </label>
                                         <div class="col-lg-9">
                                             <span>
-                                                <input type="text" ng-model="Designation" name="desig" class="form-control" required>
+                                                <input type="text" ng-model="Designation" name="desig" class="form-control capitalizeCase" required>
                                             </span>
                                             <span ng-show="(userCreate.desig.$touched || submitted) && userCreate.desig.$error.required" class="validation_fe">Designation is required</span>
                                         </div>
@@ -73,7 +73,7 @@
                                         </label>
                                         <div class="col-lg-9">
                                             <span>
-                                                <input type="email" ng-model="empEmail" name="employeeEmail" class="form-control" required>
+                                                <input type="email" ng-model="empEmail" name="employeeEmail" class="form-control smallerCase" required>
                                             </span>
                                             <span ng-show="(userCreate.employeeEmail.$touched || submitted) && userCreate.employeeEmail.$error.required" class="validation_fe">Email Id is required</span>
                                         </div>

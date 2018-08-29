@@ -82,6 +82,7 @@ careatorApp.controller('createGroupCtrl', function ($scope, $state, careatorHttp
 
     $scope.creteGroup = function (groupCreate) {
         console.log("creteGroup-->");
+        $scope.submitted=true; /* ### Note: Front end validation for check the form submission ### */
         if (groupCreate.$valid && $scope.groupMemberModel.length>0 && $scope.groupAdminModel.length>0) {
             var api;
             var obj = {

@@ -223,6 +223,27 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
 
     }
     $scope.getAdmin_email_id();
+    $scope.getOrganizationDetailsById = function (orgId) {
+        console.log("getOrganizationDetailsById-->");
+        var api = $scope.propertyJson.C_getOrganizationDetailsById + "/" + orgId;
+        console.log("api: " + api);
+        careatorHttpFactory.get(api).then(function (data) {
+            console.log("data--" + JSON.stringify(data.data));
+            var checkStatus = careatorHttpFactory.dataValidation(data);
+            console.log("checkStatus: " + checkStatus);
+            if (checkStatus) {
+                $rootScope.orgDatas = data.data.data;
+                console.log("$rootScope.orgDatas: " + JSON.stringify($rootScope.orgDatas));
+                console.log(data.data.message);
+
+            } else {
+                console.log("Sorry");
+                console.log(data.data.message);
+            }
+        })
+        console.log("<--getOrganizationDetailsById");
+    }
+    $scope.getOrganizationDetailsById($scope.userData.orgId)
 
     $scope.videoUrlNavigation = function () {
         console.log("videoUrlNavigation-->");

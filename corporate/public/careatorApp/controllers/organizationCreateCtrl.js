@@ -3,6 +3,7 @@ careatorApp.controller('organizationCreateCtrl', function ($scope, $rootScope, $
     $scope.propertyJson = $rootScope.propertyJson;
     $scope.organizationCreate = function (formName) {
         console.log("organizationCreate-->");
+        $scope.submitted=true; /* ### Note: Front end validation for check the form submission ### */
         if (formName.$valid) {
 
             var obj = {

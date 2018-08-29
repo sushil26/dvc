@@ -1,4 +1,4 @@
-careatorApp.controller('createUsersCtrl', function ($scope, $rootScope, $state, careatorSessionAuth, careatorHttpFactory, SweetAlert) {
+careatorApp.controller('createUsersCtrl', function ($scope, $rootScope, $state, careatorSessionAuth, careatorHttpFactory, SweetAlert, $filter) {
     console.log("createUsersCtrl==>");
     $scope.propertyJson = $rootScope.propertyJson;
     $scope.userData = careatorSessionAuth.getAccess("userData");
@@ -43,6 +43,7 @@ careatorApp.controller('createUsersCtrl', function ($scope, $rootScope, $state, 
     }
     $scope.careatorEmp = function (formName, fn, ln, empId, emailId, pswd, Designation, rights) {
         console.log("careatorEmp-->");
+        $scope.submitted=true; /* ### Note: Front end validation for check the form submission ### */
         if (formName.$valid) {
             console.log("name: " + name);
             var videoRights;
@@ -58,10 +59,10 @@ careatorApp.controller('createUsersCtrl', function ($scope, $rootScope, $state, 
                 chatRights = "no";
             }
             var obj = {
-                "firstName": fn,
+                "firstName":fn,
                 "lastName": ln,
                 "empId": empId,
-                "empEmail": emailId,
+                "empEmail": $filter('lowercase')(emailId),
                 "empPass": pswd,
                 "Designation": Designation,
                 "videoRights": videoRights,

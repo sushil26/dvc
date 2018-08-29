@@ -537,7 +537,7 @@ module.exports.pswdCheck = function (req, res) {
                         if (findData[0].status == 'active') {
                             if (findData[0].password == password) {
                                 if (findData[0].logout == 'done' && findData[0].login == 'notDone') {
-                                    careatorMaster.update({ "_id": ObjectId(findData[0]._id), "status": "active" }, { $set: { "password": password, "invite": [], "logout": "notDone", "login": "done", "sessionRandomId": sessionRandomId + findData[0]._id } }, function (err, data) {
+                                    careatorMaster.update({ "_id": ObjectId(findData[0]._id), "status": "active" }, { $set: { "password": password, "invite": [], "logout": "notDone", "login": "done", "sessionRandomId": sessionRandomId + findData[0]._id, "chatStatus":"Available" } }, function (err, data) {
                                         console.log("data: " + JSON.stringify(data));
                                         if (err) {
                                             responseData = {
@@ -651,7 +651,7 @@ module.exports.pswdCheck = function (req, res) {
                                     if (findData[0].status == 'active') {
                                         if (findData[0].password == password) {
                                             if (findData[0].logout == 'done' && findData[0].login == 'notDone') {
-                                                careatorMaster.update({ "_id": ObjectId(findData[0]._id), "status": "active" }, { $set: { "password": password, "invite": [], "logout": "notDone", "login": "done", "sessionRandomId": sessionRandomId + findData[0]._id } }, function (err, data) {
+                                                careatorMaster.update({ "_id": ObjectId(findData[0]._id), "status": "active" }, { $set: { "password": password, "invite": [], "logout": "notDone", "login": "done", "sessionRandomId": sessionRandomId + findData[0]._id, "chatStatus":"Available" } }, function (err, data) {
                                                     console.log("data: " + JSON.stringify(data));
                                                     if (err) {
                                                         responseData = {
@@ -670,7 +670,7 @@ module.exports.pswdCheck = function (req, res) {
                                                                 res.status(400).send(responseData);
                                                             } else {
                                                                 // log.info("req.originalUrl: " + req.originalUrl + " Email: " + findData[0].email, " Date: (" + date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate() + ")" + " Time: (" + date.getHours() + ":" + date.getMinutes() + ")");
-                                                                //console.log("loginData: " + JSON.stringify(loginData));
+                                                                console.log("loginData: " + JSON.stringify(loginData));
                                                                 // console.log("loginData.insertedIds: " + loginData.insertedIds[0]);
                                                                 console.log("emit started to client-->");
                                                                 var io = req.app.get('socketio');
@@ -685,6 +685,11 @@ module.exports.pswdCheck = function (req, res) {
                                                                     "logout": loginData.ops[0].logout
                                                                 }
                                                                 io.emit('comm_userLoginNotify', emitObj); /* ### Note: Emit message to client(userLoginDetailsCtrl.js) ### */
+                                                               
+                                                                io.emit('comm_receiverStatusUpdate', {
+                                                                    "id": loginData.ops[0]._id,
+                                                                    "status": req.body.chatStatus
+                                                                }); /* ### Note: Emit message to client ### */
                                                                 findData[0].sessionRandomId = sessionRandomId + findData[0]._id;
                                                                 responseData = {
                                                                     status: true,

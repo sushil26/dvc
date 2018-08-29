@@ -552,7 +552,29 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
             console.log(data.data.message);
           }
         });
-      } else if (
+      } else if ($rootScope.orgDatas.subscription == 'Basic') {
+        console.log("Subscription is basic so this person can chat with anyone");
+        obj = {
+          senderId: userData.userId,
+          receiverId: $scope.receiverData.receiverId,
+          senderName: userData.firstName + " " + userData.lastName,
+          receiverName: $scope.receiverData.receiverName,
+          message: $scope.typedMessage
+        };
+        console.log("obj: " + JSON.stringify(obj));
+        careatorHttpFactory.post(api, obj).then(function (data) {
+          console.log("data--" + JSON.stringify(data.data));
+          var checkStatus = careatorHttpFactory.dataValidation(data);
+          if (checkStatus) {
+            console.log("data.data.data: " + JSON.stringify(data.data.data));
+            console.log(data.data.message);
+          } else {
+            console.log("Sorry");
+            console.log(data.data.message);
+          }
+        });
+      }
+      else if (
         ($scope.restrictedArray != undefined && $scope.restrictedArray.indexOf($scope.receiverData.receiverId) >= 0) ||
         ($scope.restrictedArray != undefined || $scope.receiverData.receiverId == $rootScope.adminId)) {
         obj = {

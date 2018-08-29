@@ -12,6 +12,9 @@
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
 
+  <link href="lib/css/chocolat.css" rel="stylesheet" type="text/css" media="all">
+
+
   <link href="/home/img/fav.png" rel="icon" size="32x32">
   <script src="/bower_components/angular/angular.min.js"></script>
 
@@ -1130,8 +1133,15 @@ transition: all 0.5s;">
       <script src="/home/lib/superfish/superfish.min.js"></script>
       <script src="/home/lib/counterup/counterup.min.js"></script>
 
-      <script src="lib/js/move-top.js"></script>
       <script src="lib/js/smoothscroll.js"></script>
+      <script type="text/javascript" src="lib/js/jquery.chocolat.js"></script>
+      <script>
+        $(function () {
+          $('#gal').Chocolat({
+            imageSize: 'contain'
+          });
+        });
+      </script>
 
       <script>
         //paste this code under the head tag or in a separate js file.

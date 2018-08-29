@@ -224,7 +224,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
     }
     $scope.getAdmin_email_id();
     $scope.getOrganizationDetailsById = function (orgId) {
-        console.log("getOrganizationDetailsById-->");
+        console.log("getOrganizationDetailsById-->"+orgId);
         var api = $scope.propertyJson.C_getOrganizationDetailsById + "/" + orgId;
         console.log("api: " + api);
         careatorHttpFactory.get(api).then(function (data) {

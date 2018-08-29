@@ -127,7 +127,7 @@ careatorApp.controller('createGroupCtrl', function ($scope, $state, careatorHttp
             })
         }
         else {
-            alert("Fill all the required field");
+            //alert("Fill all the required field");
             SweetAlert.swal({
                 title: "Not Valied",
                 text: "Fill all the required field",

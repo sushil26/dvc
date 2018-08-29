@@ -87,8 +87,8 @@
                                             <span>
                                                 Chat&nbsp;
                                                 <input type="radio" name="perm" value="chat" ng-model="rightSelect" ng-change="rightEmployeeList('chat')" required> &nbsp;&nbsp; Video&nbsp;
-                                                <input type="radio" name="perm" value="video" ng-model="rightSelect" ng-change="rightEmployeeList('video')"> &nbsp;&nbsp; Both&nbsp;
-                                                <input type="radio" name="perm" value="both" ng-model="rightSelect" ng-change="rightEmployeeList('bothChatVideo')">
+                                                <input type="radio" name="perm" value="video" ng-model="rightSelect" ng-change="rightEmployeeList('video')" required> &nbsp;&nbsp; Both&nbsp;
+                                                <input type="radio" name="perm" value="both" ng-model="rightSelect" ng-change="rightEmployeeList('bothChatVideo')" required>
                                             </span>
                                             <span ng-show="userCreate.perm.$touched && userCreate.perm.$error.required" class="validation_fe">Permision is required</span>
                                         </div>

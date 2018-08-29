@@ -31,7 +31,7 @@
                                             <span>
                                                 <input type="text" ng-model="firstName" name="ufn" class="form-control" required>
                                             </span>
-                                            <span ng-show="userCreate.ufn.$touched && userCreate.ufn.$error.required" class="validation_fe">User First Name is required</span>
+                                            <span ng-show="(userCreate.ufn.$touched || userCreate.$submitted) && userCreate.ufn.$error.required" class="validation_fe">User First Name is required</span>
                                         </div>
                                     </div>
                                     <div class="form-group ">
@@ -42,7 +42,7 @@
                                             <span>
                                                 <input type="text" ng-model="lastName" name="uln" class="form-control" required>
                                             </span>
-                                            <span ng-show="userCreate.uln.$touched && userCreate.uln.$error.required" class="validation_fe">User Last Name is required</span>
+                                            <span ng-show="(userCreate.uln.$touched || userCreate.$submitted) && userCreate.uln.$error.required" class="validation_fe">User Last Name is required</span>
                                         </div>
                                     </div>
                                     <div class="form-group ">
@@ -87,8 +87,8 @@
                                             <span>
                                                 Chat&nbsp;
                                                 <input type="radio" name="perm" value="chat" ng-model="rightSelect" ng-change="rightEmployeeList('chat')" required> &nbsp;&nbsp; Video&nbsp;
-                                                <input type="radio" name="perm" value="video" ng-model="rightSelect" ng-change="rightEmployeeList('video')"> &nbsp;&nbsp; Both&nbsp;
-                                                <input type="radio" name="perm" value="both" ng-model="rightSelect" ng-change="rightEmployeeList('bothChatVideo')">
+                                                <input type="radio" name="perm" value="video" ng-model="rightSelect" ng-change="rightEmployeeList('video')" required> &nbsp;&nbsp; Both&nbsp;
+                                                <input type="radio" name="perm" value="both" ng-model="rightSelect" ng-change="rightEmployeeList('bothChatVideo')" required>
                                             </span>
                                             <span ng-show="userCreate.perm.$touched && userCreate.perm.$error.required" class="validation_fe">Permision is required</span>
                                         </div>

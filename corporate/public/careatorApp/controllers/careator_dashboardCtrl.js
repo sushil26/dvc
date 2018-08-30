@@ -484,7 +484,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
     var w;
     $scope.navigateintoBoth_CVoption = function (e) {
         console.log("navigateintoBoth_CVoption-->");
-
+        e.preventDefault();
 
         if (!w || w.closed) {
             localStorage.setItem("careatorEmail", userData.email);
@@ -531,7 +531,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                             localStorage.setItem("sessionUrlId", peerNew_id);
                             localStorage.setItem("sessionUrlId", peerNew_id);
                             // localStorage.setItem("sessionUrlId", url);
-                            e.preventDefault();
+                           
                             console.log("url: " + url);
                             w = window.open(url, '_blank');
                             $window.close();

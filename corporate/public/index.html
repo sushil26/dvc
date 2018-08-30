@@ -103,7 +103,21 @@
   <style>
     /* #loading-bar .bar {
   position: relative;
+
 } */
+.staticon{
+  width: 100px;
+border-radius: 50%;
+}
+    .proicon {
+      width: 30px;
+      height: 30px;
+      padding: 8px;
+      margin: 5px;
+      /* line-height: 15px; */
+      background: beige;
+      border: 1px solid grey;
+    }
 
     .pricing-text li {
       margin: 1.8px;
@@ -388,13 +402,7 @@
       <!--==========================
     Header
 ============================-->
-      <div id="" class="" style="position: fixed;
-height: 5px;
-left: 0;
-top: 0;
-right: 0;
-z-index: 1000;
-transition: all 0.5s;">
+      <div id="" class="" style="position: fixed;height: 5px;left: 0;top: 0;right: 0;z-index: 1000;transition: all 0.5s;">
       </div>
       <header id="header">
         <div class="container">
@@ -431,7 +439,8 @@ transition: all 0.5s;">
                 <a href="#Pricing">PRICING</a>
               </li>
               <li>
-                <a ng-if="userData==undefined || userData.email==null" href="#" id="empLogin" data-target="#crdntl" data-toggle="modal">Login</a>
+                <a ng-if="userData==undefined || userData.email==null" href="#" id="empLogin" data-target="#crdntl"
+                  data-toggle="modal">Login</a>
                 <a ng-if="userData!=undefined && userData.email!=null" ng-click="logout()" href="#">Logout</a>
               </li>
 
@@ -461,19 +470,22 @@ transition: all 0.5s;">
             height: auto;
             font-weight: 300;
             font-size:6vw;
-            line-height: 1;">The Ultimate Platform</div>
+            line-height: 1;">The
+                Ultimate Platform</div>
               <div class="quotes" style="width: fit-content;
               font-family: Aclonica;
           height: auto;
           font-weight: 300;
           font-size:6vw;
-          line-height: 1;">For Video Conferencing</div>
+          line-height: 1;">For
+                Video Conferencing</div>
               <div class="quotes" style="width: fit-content;
               font-family: Aclonica;
         height: auto;
         font-weight: 300;
         font-size:6vw;
-        line-height: 1;">And Instant Messaging</div>
+        line-height: 1;">And
+                Instant Messaging</div>
               <!-- <a href="#about" class="btn-get-started">Start Journey</a> -->
             </center>
           </div>
@@ -588,38 +600,39 @@ transition: all 0.5s;">
         <!-- #services -->
 
 
-        <section id="facts" style="background-image:url(home/img/background.jpg);    background-size: cover;">
-          <!-- <section id="facts" style="background-color:black"> -->
-          <div class="container wow">
-            <div class="section-header">
-              <h3 class="section-title">&nbsp</h3>
-              <h3 class="section-title" style="color:#3f3f3f;">About us</h3>
-              <h3 class="section-title"></h3>
-              <p class="section-description" style="color:#3f3f3f;text-align: justify; font-family:sans-serif; font-size:15px;">
-                VC4ALL is a holistic new age technology platform for schools integrated with messaging and video conferencing.
-                <br>
-                <br> The genesis of VC4All is to ease the communication between Parent and Teacher, and get connected anywhere.
-                VC4ALL helps the parents to have a dedicated one-to-one discussion with the teachers without having to travel
-                down to the respective school. Not only this, but VC4ALL also lets teachers and parents have a group conversations
-                to have a better perspective about the children’s overall growth.
-                <br>
-                <br> This uninterrupted connectivity allows the schools to let the children get education over live chats and
-                video calls.
-                <br>
-                <br> To know more about vc4all please call us at +91 924 653 1986.
-              </p>
-            </div>
+        <section id="facts" style="background-image:url(home/img/background.jpg);background-size: cover;margin-bottom: 40px;">
+          <div class="section-header">
+            <h3 class="section-title">&nbsp</h3>
+            <h3 class="section-title" style="color:#3f3f3f;">About us</h3>
+            <h3 class="section-title"></h3>
           </div>
+          <div class="container wow">
 
-
-          <!--==========================
-      Facts Section
-    ============================-->
-
-
-
+            <p class="section-description" style="color:#3f3f3f;text-align: justify; font-family:sans-serif; font-size:15px;">
+              VC4ALL is a holistic new age technology platform for schools integrated with messaging and video
+              conferencing.
+              <br>
+              <br> The genesis of VC4All is to ease the communication between Parent and Teacher, and get connected
+              anywhere.
+              VC4ALL helps the parents to have a dedicated one-to-one discussion with the teachers without having to
+              travel
+              down to the respective school. Not only this, but VC4ALL also lets teachers and parents have a group
+              conversations
+              to have a better perspective about the children’s overall growth.
+              <br>
+              <br> This uninterrupted connectivity allows the schools to let the children get education over live
+              chats and
+              video calls.
+              <br>
+              <br> To know more about vc4all please call us at +91 924 653 1986.
+            </p>
+          </div>
         </section>
-        <div class="our-team" id="our-team">
+
+
+
+
+        <section class="our-team" id="our-team">
           <div class="section-header">
             <h3 class="section-title">&nbsp;</h3>
             <h3 class="section-title" style="color:#3f3f3f;">Our Team</h3>
@@ -627,140 +640,176 @@ transition: all 0.5s;">
             <p class="section-description"> </p>
           </div>
 
-          <div id="team" class="our-team_services">
-            <div class="container">
-              <div class="agile_wthree_inner_grids">
-                <div class="col-md-4">
-                  <img src="lib/images/team-img1.jpg" alt=" " class="img-responsive" />
-                  <h3>Aditya</h3>
-                  <p>C.E.O</p>
+          <div id="team" class="container">
+            <div class="row">
+
+              <div class="col-lg-3 col-md-4 col-sm-6">
+                <img src="lib/images/user.jpg" alt=" " class="img-responsive" />
+
+
+                <h3 style="    margin-left: 15px;
+                margin-top: 10px;">Aditya</h3>
 
 
 
-                  <a href="#" class="proicon">
-                    <i class="fa fa-facebook" aria-hidden="true"></i>
+
+                <p style="    margin-left: 15px;
+               ">C.E.O</p>
+
+                <p>
+                  <a href="#" class="">
+                    <i class="fa fa-facebook proicon"></i>
                   </a>
 
-                  <a href="#" class="proicon">
-                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                  <a href="#" class="">
+                    <i class="fa fa-twitter proicon"></i>
                   </a>
 
-                  <a href="#" class="proicon">
-                    <i class="fa fa-dribbble" aria-hidden="true"></i>
+                  <a href="#" class="">
+                    <i class="fa fa-dribbble proicon"></i>
+                  </a>
+                </p>
+
+
+              </div>
+              <div class="col-lg-3 col-md-4 col-sm-6">
+                <img src="lib/images/user.jpg" alt=" " class="img-responsive" />
+
+
+                <h3 style="    margin-left: 15px;
+                  margin-top: 10px;">Shirdhi</h3>
+
+
+
+
+                <p style="    margin-left: 15px;
+                 ">PRODUCT MANAGER</p>
+
+                <p>
+                  <a href="#" class="">
+                    <i class="fa fa-facebook proicon"></i>
                   </a>
 
-                </div>
+                  <a href="#" class="">
+                    <i class="fa fa-twitter proicon"></i>
+                  </a>
 
-                <div class="col-md-4">
-                  <img src="lib/images/team-img1.jpg" alt=" " class="img-responsive" />
-                  <h3>Shirdhi</h3>
-                  <p>PROJECT MANAGER</p>
-                  <div class="  ">
-                    <ul>
-                      <li>
-                        <a href="#" class="">
-                          <i class="fa fa-facebook" aria-hidden="true"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" class="">
-                          <i class="fa fa-twitter" aria-hidden="true"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" class="">
-                          <i class="fa fa-dribbble" aria-hidden="true"></i>
-                        </a>
-                      </li>
+                  <a href="#" class="">
+                    <i class="fa fa-dribbble proicon"></i>
+                  </a>
+                </p>
 
-                    </ul>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <img src="lib/images/team-img2.jpg" alt=" " class="img-responsive" />
-                  <h3>Logeswari</h3>
-                  <p>SR. DEVELOPER</p>
-                  <div class="  ">
-                    <ul>
-                      <li>
-                        <a href="#" class="">
-                          <i class="fa fa-facebook" aria-hidden="true"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" class="">
-                          <i class="fa fa-twitter" aria-hidden="true"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" class="">
-                          <i class="fa fa-dribbble" aria-hidden="true"></i>
-                        </a>
-                      </li>
 
-                    </ul>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <img src="lib/images/team-img3.jpg" alt=" " class="img-responsive" />
-                  <h3>Sushil</h3>
-                  <p>DEVELOPER</p>
-                  <div class="agileits_w3layouts_nav_right team_agile _icons">
-                    <ul>
-                      <li>
-                        <a href="#" class="w3_agile_facebook">
-                          <i class="fa fa-facebook" aria-hidden="true"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" class="agile_twitter">
-                          <i class="fa fa-twitter" aria-hidden="true"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" class="w3_agile_dribble">
-                          <i class="fa fa-dribbble" aria-hidden="true"></i>
-                        </a>
-                      </li>
+              </div>
+              <div class="col-lg-3 col-md-4 col-sm-6">
+                <img src="lib/images/user.jpg" alt=" " class="img-responsive" />
 
-                    </ul>
-                  </div>
-                </div>
-                <div class="clearfix"> </div>
+
+                <h3 style="    margin-left: 15px;
+                    margin-top: 10px;">Logeswari</h3>
+
+
+
+
+                <p style="    margin-left: 15px;
+                   ">SENIOR DEVELOPER</p>
+
+                <p>
+                  <a href="#" class="">
+                    <i class="fa fa-facebook proicon"></i>
+                  </a>
+
+                  <a href="#" class="">
+                    <i class="fa fa-twitter proicon"></i>
+                  </a>
+
+                  <a href="#" class="">
+                    <i class="fa fa-dribbble proicon"></i>
+                  </a>
+                </p>
+
+
+              </div>
+              <div class="col-lg-3 col-md-4 col-sm-6">
+                <img src="lib/images/user.jpg" alt=" " class="img-responsive" />
+
+
+                <h3 style="    margin-left: 15px;
+                      margin-top: 10px;">Sushil</h3>
+
+
+
+
+                <p style="    margin-left: 15px;
+                     ">DEVELOPER</p>
+
+                <p>
+                  <a href="#" class="">
+                    <i class="fa fa-facebook proicon"></i>
+                  </a>
+
+                  <a href="#" class="">
+                    <i class="fa fa-twitter proicon"></i>
+                  </a>
+
+                  <a href="#" class="">
+                    <i class="fa fa-dribbble proicon"></i>
+                  </a>
+                </p>
+
+
+              </div>
+
+              <div class="clearfix"> </div>
+
+            </div>
+          </div>
+        </section>
+        <section id="stats" style="background:turquoise;">
+          <div class="section-header" style="margin-bottom:40px;">
+            <h3 class="section-title">&nbsp;</h3>
+            <h3 class="section-title" style="color:#3f3f3f;">Stats</h3>
+            <h3 class="section-title"></h3>
+            <p class="section-description"> </p>
+          </div>
+
+          <div class="container wow fadeIn">
+
+            <div class="row counters text-center" style="margin-bottom:40px;">
+
+              <div class="col-lg-3 col-md-4 col-sm-6">
+                <img class="staticon" src="careatorApp/css/client.png" alt="">
+                <p data-toggle="counter-up" style="font-size:4rem">232</p>
+                <p>Clients</p>
+              </div>
+              <div class="col-lg-3 col-md-4 col-sm-6">
+                <img class="staticon" src="careatorApp/css/project.png" alt="">
+                <p data-toggle="counter-up" style="font-size:4rem">521</p>
+                <p>Projects</p>
+              </div>
+
+              <div class="col-lg-3 col-md-4 col-sm-6">
+                <img class="staticon" src="careatorApp/css/support.png" alt="">
+                <p data-toggle="counter-up" style="font-size:4rem">1,463</p>
+                <p>Hours Of Support</p>
+              </div>
+
+              <div class="col-lg-3 col-md-4 col-sm-6">
+                <img class="staticon" src="careatorApp/css/worker.png" alt="">
+                <p data-toggle="counter-up" style="font-size:4rem">15</p>
+                <p>Hard Workers</p>
               </div>
             </div>
+            <div class="clearfix"> </div>
           </div>
-        </div>
-        <div class="container wow fadeIn">
-          <hr>
-          <div class="row counters">
-
-            <div class="col-lg-3 col-6 text-center">
-              <i class="fa fa-building-o" aria-hidden="true"></i>
-              <span data-toggle="counter-up">232</span>
-              <p>Clients</p>
-            </div>
-
-            <div class="col-lg-3 col-6 text-center">
-              <span data-toggle="counter-up">521</span>
-              <p>Projects</p>
-            </div>
-
-            <div class="col-lg-3 col-6 text-center">
-              <span data-toggle="counter-up">1,463</span>
-              <p>Hours Of Support</p>
-            </div>
-
-            <div class="col-lg-3 col-6 text-center">
-              <span data-toggle="counter-up">15</span>
-              <p>Hard Workers</p>
-            </div>
-          </div>
-        </div>
+        </section>
         <section id="Pricing" style="background:white;">
           <div class="section-header">
-            <h3 class="section-title" style="color:#555;margin-bottom: -20px;">Pricing options</h3>
-            <p class="section-description">Select a plan that best fits your needs. Upgrade, downgrade or cancel at any time</p>
+            <h3 class="section-title">&nbsp;</h3>
+            <h3 class="section-title" style="color:#3f3f3f;">Pricing Options</h3>
+            <h3 class="section-title"></h3>
+            <p class="section-description">Select a plan that best fits your needs. Upgrade, downgrade or cancel at any
+              time</p>
           </div>
           <div class="row" style="margin:0 !important;     margin: 0 !important;
           padding-left: 40px;
@@ -768,7 +817,7 @@ transition: all 0.5s;">
           padding-bottom: 10px;">
 
             <div class="col-lg-3 col-md-4 col-sm-6 pricingcard">
-              <div class="card cdd text-center" style=" background-image: url(/careatorApp/css/bc1.png);">
+              <div class="card cdd text-center">
                 <h2 class="heading" style="background: #a5ddfe;">
                   Trial
                 </h2>
@@ -815,7 +864,8 @@ transition: all 0.5s;">
 
 
             <div class="col-lg-3 col-md-4 col-sm-6 pricingcard">
-              <div class="card cdd text-center" style=" background-image: url(/careatorApp/css/bc2.png);">
+              <div class="card cdd text-center">
+                <!-- <div class="card cdd text-center" style=" background-image: url(/careatorApp/css/bc2.png);"> -->
                 <h2 class="heading" style="    background: #d5edb8;">
                   Start-up
                 </h2>
@@ -863,7 +913,7 @@ transition: all 0.5s;">
 
 
             <div class="col-lg-3 col-md-4 col-sm-6 pricingcard">
-              <div class="card cdd text-center" style=" background-image: url(/careatorApp/css/bc3.png);">
+              <div class="card cdd text-center">
                 <h2 class="heading" style="background: #f0d4d7;">
                   SME
                 </h2>
@@ -908,7 +958,7 @@ transition: all 0.5s;">
 
             </div>
             <div class="col-lg-3 col-md-4 col-sm-6 pricingcard">
-              <div class="card cdd text-center" style=" background-image: url(/careatorApp/css/bc4.png);">
+              <div class="card cdd text-center">
                 <h2 class="heading" style="background: #feea9f;">
                   Enterprise
                 </h2>
@@ -955,6 +1005,7 @@ transition: all 0.5s;">
 
 
           </div>
+          <div class="clearfix"> </div>
         </section>
 
 
@@ -993,7 +1044,8 @@ transition: all 0.5s;">
                     <tr>
                       <td style="font-size: 15px;
                       font-family: sans-serif;
-                      color: #a8cf44;"> Careator Technologies Private Limited</td>
+                      color: #a8cf44;">
+                        Careator Technologies Private Limited</td>
                     </tr>
                   </table>
                 </div>
@@ -1008,7 +1060,9 @@ transition: all 0.5s;">
                           <p style="
                             font-family:  sans-serif;
                             font-size: 11px;font-weight: 100;
-                        "> SLJ TOWER, II FLOOR, BDA # 297, VII BLOCK, OUTER RING ROAD, KATHREGUPPE, BANASHANKARI 3RD STAGE,
+                        ">
+                            SLJ TOWER, II FLOOR, BDA # 297, VII BLOCK, OUTER RING ROAD, KATHREGUPPE, BANASHANKARI 3RD
+                            STAGE,
                             BENGALURU, KARNATAKA
                             <br>560061</p>
                         </div>
@@ -1027,7 +1081,8 @@ transition: all 0.5s;">
                           <p style="
                           font-family:  sans-serif;
                           font-size: 11px;font-weight: 100;
-                      ">MR HOUSE, INDIAN AIRLINES COLONY, BEGUMPET, HYDRABAD,TELANGANA
+                      ">MR
+                            HOUSE, INDIAN AIRLINES COLONY, BEGUMPET, HYDRABAD,TELANGANA
                             <br>500016</p>
                         </div>
 
@@ -1040,6 +1095,7 @@ transition: all 0.5s;">
               </div>
 
             </div>
+            <div class="clearfix"> </div>
           </div>
         </section>
       </main>
@@ -1057,15 +1113,15 @@ transition: all 0.5s;">
                   <button type="button" class="close" data-dismiss="modal" ng-click="$close()">&times;</button>
                 </div>
                 <div class="modal-body">
-                  <input ng-keyup="$event.keyCode == 13 && logVC(email, Password)" type="email" class="form-control" placeholder="Email" ng-model="email"
-                    id="crdEmail">
+                  <input ng-keyup="$event.keyCode == 13 && logVC(email, Password)" type="email" class="form-control"
+                    placeholder="Email" ng-model="email" id="crdEmail">
                   <br>
-                  <input ng-keyup="$event.keyCode == 13 && logVC(email, Password)" type="password" id="crdPswd" class="form-control" placeholder="Password"
-                    ng-model="password">
+                  <input ng-keyup="$event.keyCode == 13 && logVC(email, Password)" type="password" id="crdPswd" class="form-control"
+                    placeholder="Password" ng-model="password">
                 </div>
                 <div class="modal-footer" style="padding-top: 15px;background-image: linear-gradient(to bottom, #202224 0%, #383c3f 100%);">
-                  <button id="crdsubmit" type="button" style="background-color: #29b6bd;color:#f1f1f1;padding: 5px;" class="btn" ng-click="logVC(email, password)"
-                    data-dismiss="modal">Submit</button>
+                  <button id="crdsubmit" type="button" style="background-color: #29b6bd;color:#f1f1f1;padding: 5px;"
+                    class="btn" ng-click="logVC(email, password)" data-dismiss="modal">Submit</button>
                 </div>
               </div>
             </form>
@@ -1087,9 +1143,10 @@ transition: all 0.5s;">
                   <label id="notify_msg_content" style="color:red"></label>
                 </div>
                 <div class="modal-footer" style="padding-top: 15px;background-image: linear-gradient(to bottom, #202224 0%, #383c3f 100%);">
-                  <button id="resetBtn" type="button" ng-click="resetLoginFlag()" style="background-color: #29b6bd;color:#f1f1f1" class="btn"
-                    data-dismiss="modal">Reset</button>
-                  <button type="button" style="background-color: #29b6bd;color:#f1f1f1;padding: 5px;" class="btn" data-dismiss="modal">Ok</button>
+                  <button id="resetBtn" type="button" ng-click="resetLoginFlag()" style="background-color: #29b6bd;color:#f1f1f1"
+                    class="btn" data-dismiss="modal">Reset</button>
+                  <button type="button" style="background-color: #29b6bd;color:#f1f1f1;padding: 5px;" class="btn"
+                    data-dismiss="modal">Ok</button>
                 </div>
               </div>
             </form>
@@ -1148,107 +1205,107 @@ transition: all 0.5s;">
       <script src="lib/js/smoothscroll.js"></script>
 
     </div>
-  </div>
-  <style>
-    .block-7 {
-      margin-bottom: 30px;
-      padding: 30px;
-      padding-top: 0;
-      -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.03);
-      -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.03);
-      box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.03);
-      background: #fff;
-    }
 
-    .text-center {
-      text-align: center !important;
-    }
+    <style>
+      .block-7 {
+        margin-bottom: 30px;
+        padding: 30px;
+        padding-top: 0;
+        -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.03);
+        -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.03);
+        box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.03);
+        background: #fff;
+      }
 
-    .cdd .heading {
-      width: 70%;
-      font-size: 25px;
-      line-height: 1;
-      font-weight: 500;
-      padding: 12px 20px;
-      color: #0e0e0e;
-      border-radius: 0px 0px 10px 10px;
-      -moz-border-radius: 0px 0px 10px 10px;
-      -webkit-border-radius: 0px 0px 10px 10px;
-      display: inline-block;
-    }
+      .text-center {
+        text-align: center !important;
+      }
 
-    .block-7 .price {
-      margin: 0;
-      padding: 0;
-      display: block;
-    }
+      .cdd .heading {
+        width: 70%;
+        font-size: 25px;
+        line-height: 1;
+        font-weight: 500;
+        padding: 12px 20px;
+        color: #0e0e0e;
+        border-radius: 0px 0px 10px 10px;
+        -moz-border-radius: 0px 0px 10px 10px;
+        -webkit-border-radius: 0px 0px 10px 10px;
+        display: inline-block;
+      }
 
-    .block-7 .excerpt {
-      margin-bottom: 20px;
-      color: #b3b3b3;
-    }
+      .block-7 .price {
+        margin: 0;
+        padding: 0;
+        display: block;
+      }
 
-    .d-block {
-      display: block !important;
-    }
+      .block-7 .excerpt {
+        margin-bottom: 20px;
+        color: #b3b3b3;
+      }
 
-    .btn:not(:disabled):not(.disabled) {
-      cursor: pointer;
-    }
+      .d-block {
+        display: block !important;
+      }
 
-    .btn.btn-primary {
-      background: #daf6f8;
-      border: 2px solid #daf6f8;
-      color: #24bdc9;
-    }
+      .btn:not(:disabled):not(.disabled) {
+        cursor: pointer;
+      }
 
-    block-7 .heading-2 {
-      font-size: 16px;
-      font-weight: normal;
-    }
+      .btn.btn-primary {
+        background: #daf6f8;
+        border: 2px solid #daf6f8;
+        color: #24bdc9;
+      }
 
-    .mb-3,
-    .my-3 {
-      margin-bottom: 1rem !important;
-    }
+      block-7 .heading-2 {
+        font-size: 16px;
+        font-weight: normal;
+      }
+
+      .mb-3,
+      .my-3 {
+        margin-bottom: 1rem !important;
+      }
 
 
-    .block-7 .pricing-text,
-    .block-7 .pricing-text li {
-      padding: 0;
-      margin: 0;
-    }
+      .block-7 .pricing-text,
+      .block-7 .pricing-text li {
+        padding: 0;
+        margin: 0;
+      }
 
-    .block-7 .pricing-text {
-      margin-bottom: 0;
-    }
+      .block-7 .pricing-text {
+        margin-bottom: 0;
+      }
 
-    ol,
-    ul,
-    dl {
-      margin-top: 0;
-      margin-bottom: 1rem;
-    }
+      ol,
+      ul,
+      dl {
+        margin-top: 0;
+        margin-bottom: 1rem;
+      }
 
-    *,
-    *::before,
-    *::after {
-      -webkit-box-sizing: border-box;
-      box-sizing: border-box;
-    }
+      *,
+      *::before,
+      *::after {
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+      }
 
-    user agent stylesheet ul,
-    menu,
-    dir {
-      display: block;
-      list-style-type: disc;
-      -webkit-margin-before: 1em;
-      -webkit-margin-after: 1em;
-      -webkit-margin-start: 0px;
-      -webkit-margin-end: 0px;
-      -webkit-padding-start: 40px;
-    }
-  </style>
+      user agent stylesheet ul,
+      menu,
+      dir {
+        display: block;
+        list-style-type: disc;
+        -webkit-margin-before: 1em;
+        -webkit-margin-after: 1em;
+        -webkit-margin-start: 0px;
+        -webkit-margin-end: 0px;
+        -webkit-padding-start: 40px;
+      }
+    </style>
 
 
 

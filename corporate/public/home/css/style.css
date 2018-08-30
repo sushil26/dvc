@@ -4,16 +4,14 @@
   Author: BootstrapMade.com
   License: https://bootstrapmade.com/license/
 */
-
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
-
 /* Trouble Shoot Section
 --------------------------------*/
+@import url(https: //fonts.googleapis.com/css?family=Aclonica);
+@import url(https: //fonts.googleapis.com/css?family=Lato:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic);
 
-@import url(https://fonts.googleapis.com/css?family=Aclonica);
-@import url(https://fonts.googleapis.com/css?family=Lato:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic);
 .modal {
   font-family: Lato;
 }
@@ -57,6 +55,7 @@
 }
 
 @-webkit-keyframes bounceInRight {
+
   from,
   60%,
   75%,
@@ -65,24 +64,29 @@
     -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
     animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
   }
+
   from {
     opacity: 0;
     -webkit-transform: translate3d(3000px, 0, 0);
     transform: translate3d(3000px, 0, 0);
   }
+
   60% {
     opacity: 1;
     -webkit-transform: translate3d(-25px, 0, 0);
     transform: translate3d(-25px, 0, 0);
   }
+
   75% {
     -webkit-transform: translate3d(10px, 0, 0);
     transform: translate3d(10px, 0, 0);
   }
+
   90% {
     -webkit-transform: translate3d(-5px, 0, 0);
     transform: translate3d(-5px, 0, 0);
   }
+
   to {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
@@ -90,6 +94,7 @@
 }
 
 @keyframes bounceInRight {
+
   from,
   60%,
   75%,
@@ -98,24 +103,29 @@
     -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
     animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
   }
+
   from {
     opacity: 0;
     -webkit-transform: translate3d(3000px, 0, 0);
     transform: translate3d(3000px, 0, 0);
   }
+
   60% {
     opacity: 1;
     -webkit-transform: translate3d(-25px, 0, 0);
     transform: translate3d(-25px, 0, 0);
   }
+
   75% {
     -webkit-transform: translate3d(10px, 0, 0);
     transform: translate3d(10px, 0, 0);
   }
+
   90% {
     -webkit-transform: translate3d(-5px, 0, 0);
     transform: translate3d(-5px, 0, 0);
   }
+
   to {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
@@ -142,6 +152,7 @@
     visibility: visible;
     opacity: 0;
   }
+
   to {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
@@ -156,6 +167,7 @@
     visibility: visible;
     opacity: 0;
   }
+
   to {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
@@ -169,6 +181,7 @@
     transform: translate3d(-100%, 0, 0);
     visibility: visible;
   }
+
   to {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
@@ -182,6 +195,7 @@
     visibility: visible;
     opacity: 0;
   }
+
   to {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
@@ -195,20 +209,22 @@
 }
 
 /* Safari 4.0 - 8.0 */
-
 @-webkit-keyframes mve {
   0% {
     background: #a8cf44;
     opacity: 0.75;
   }
+
   33% {
     background: green;
     opacity: 0.50;
   }
+
   66% {
     background: darkgreen;
     opacity: 0.50;
   }
+
   100% {
     background: #a8cf44;
     opacity: 0.75;
@@ -220,14 +236,17 @@
     background: #a8cf44;
     opacity: 0.75;
   }
+
   33% {
     background: green;
     opacity: 0.50;
   }
+
   66% {
     background: darkgreen;
     opacity: 0.50;
   }
+
   100% {
     background: #a8cf44;
     opacity: 0.75;
@@ -244,7 +263,6 @@
 }
 
 /* The finishing CSS styles for the enter animation */
-
 .ng-enter.ng-enter-active {
   opacity: 1;
 }
@@ -272,6 +290,7 @@
   from {
     margin-left: 0%;
   }
+
   to {
     margin-left: 100%;
   }
@@ -281,6 +300,7 @@
   from {
     margin-left: 0%;
   }
+
   to {
     margin-left: 100%;
   }
@@ -297,6 +317,7 @@
   from {
     color: white;
   }
+
   to {
     color: gainsboro;
   }
@@ -306,6 +327,7 @@
   from {
     color: white;
   }
+
   to {
     color: gainsboro;
   }
@@ -327,12 +349,10 @@
 0%,100% { opacity: 0; }
 50% { opacity: 1; }
 } */
-
 /* .bouncy:hover {
   animation: bouncy 1s infinite linear;
   background: gold;
 } */
-
 .bouncy {
   text-shadow: -1px -1px 0px rgba(255, 255, 255, 0), 1px 1px 1px rgba(0, 0, 0, 1);
   animation: blob 1s linear;
@@ -354,7 +374,7 @@
   background-image: -o-linear-gradient(top, #f7f7f7, #e7e7e7); */
   color: gainsboro;
   box-shadow: inset 1px 1px 2px rgba(255, 255, 255, 0.3), inset 3px 15px 45px rgba(255, 255, 255, 0.1), inset -1px -1px 2px rgba(0, 0, 0, 0.5), inset -3px -15px 45px rgba(0, 0, 0, 0.2), 1px 5px 30px -4px rgba(0, 0, 0, 1)
-  /* box-shadow: inset 0px 1px 0px #2ab7ec, 0px 1px 0px 0px #07526e, 0px 5px 5px #999; */
+    /* box-shadow: inset 0px 1px 0px #2ab7ec, 0px 1px 0px 0px #07526e, 0px 5px 5px #999; */
 }
 
 .bt {
@@ -371,7 +391,6 @@
   background-size: cover;
   padding: 80px 0 60px 0;
 } */
-
 video {
   width: 100%;
   height: 25vh;
@@ -424,7 +443,6 @@ h6 {
 }
 
 /* Back to top button */
-
 .back-to-top {
   position: fixed;
   display: none;
@@ -459,9 +477,8 @@ h6 {
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
-
 #header {
-background:#f8f8f8;
+  background: #f8f8f8;
   padding: 30px 0;
   height: 81px;
   position: fixed;
@@ -507,13 +524,16 @@ background:#f8f8f8;
   .btn {
     font-size: 15px;
   }
+
   #header #logo h1 {
     font-size: 26px;
   }
+
   #header #logo img {
     width: 62px;
     margin-top: 0px;
   }
+
   #header #mm {
     margin-top: 9px !important;
     font-size: 22px !important;
@@ -521,7 +541,7 @@ background:#f8f8f8;
 }
 
 #header.header-fixed {
- background: white;
+  background: white;
   padding: 20px 0;
   height: 60px;
   transition: all 0.5s;
@@ -530,7 +550,6 @@ background:#f8f8f8;
 /*--------------------------------------------------------------
 # Hero Section
 --------------------------------------------------------------*/
-
 #hero {
   display: table;
   width: 100%;
@@ -599,9 +618,7 @@ background:#f8f8f8;
 /*--------------------------------------------------------------
 # Navigation Menu
 --------------------------------------------------------------*/
-
 /* Nav Menu Essentials */
-
 .nav-menu,
 .nav-menu * {
   margin: 0;
@@ -641,7 +658,6 @@ background:#f8f8f8;
 }
 
 /* Nav Menu Arrows */
-
 .sf-arrows .sf-with-ul {
   padding-right: 30px;
 }
@@ -660,7 +676,6 @@ background:#f8f8f8;
 }
 
 /* Nav Meu Container */
-
 #nav-menu-container {
   letter-spacing: -0.3px;
   float: right;
@@ -676,7 +691,6 @@ background:#f8f8f8;
 }
 
 /* Nav Meu Styling */
-
 .nav-menu a {
   /* background-size: cover;
   background-repeat: no-repeat;
@@ -751,7 +765,6 @@ background:#f8f8f8;
 }
 
 /* Mobile Nav Toggle */
-
 #mobile-nav-toggle {
   position: fixed;
   right: 10px;
@@ -778,7 +791,6 @@ background:#f8f8f8;
 }
 
 /* Mobile Nav Styling */
-
 #mobile-nav {
   position: fixed;
   top: 0;
@@ -865,7 +877,6 @@ background:#f8f8f8;
 }
 
 /* Mobile Nav body classes */
-
 body.mobile-nav-active {
   overflow: hidden;
 }
@@ -882,10 +893,8 @@ body.mobile-nav-active #mobile-nav-toggle {
 /*--------------------------------------------------------------
 # Sections
 --------------------------------------------------------------*/
-
 /* Sections Header
 --------------------------------*/
-
 .section-header .section-title {
   font-size: 3em;
   margin: 0;
@@ -904,7 +913,6 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 /* About Us Section
 --------------------------------*/
-
 #about {
   background: #fff;
 }
@@ -978,7 +986,6 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 /* Facts Section
 --------------------------------*/
-
 #facts .counters span {
   font-size: 48px;
   display: block;
@@ -993,9 +1000,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 /* Services Section
 --------------------------------*/
-
-#services,#facts,#stats,#Pricing{
-
+#services, #facts, #stats, #Pricing {
   padding: 80px 0 60px 0;
 }
 
@@ -1082,7 +1087,6 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 /* Call To Action Section
 --------------------------------*/
-
 #call-to-action {
   background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../call-to-action-bg.jpg) fixed center center;
   background-size: cover;
@@ -1130,13 +1134,10 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 /* Portfolio Section
 --------------------------------*/
-
 #portfolio {
-  
   /* background: #f7f7f7; */
   padding: 0;
   margin-top: 120px;
- 
 }
 
 #portfolio #portfolio-wrapper {
@@ -1232,7 +1233,6 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 /* Team Section
 --------------------------------*/
-
 #team {
   background: #fff;
   padding: 80px 0 60px 0;
@@ -1284,11 +1284,9 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 /* Contact Section
 --------------------------------*/
-
 #contact {
   background: black;
-
-
+  border-bottom: 1px solid;
   /* padding: 80px 0 40px 0; */
 }
 
@@ -1400,7 +1398,6 @@ body.mobile-nav-active #mobile-nav-toggle {
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
-
 #footer {
   background: black;
   padding: 15px 0;
@@ -1422,14 +1419,24 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 /* ##### Start Front End Validation  ##### */
-.validation_fe{
-  color:red;
+.validation_fe {
+  color: red;
 }
-.required_mark:before { content:" *"; color:red;size:14px;font-weight: 900;font-size: 20px;}
-.smallerCase{
+
+.required_mark:before {
+  content: " *";
+  color: red;
+  size: 14px;
+  font-weight: 900;
+  font-size: 20px;
+}
+
+.smallerCase {
   text-transform: lowercase;
 }
-.capitalizeCase{
-  text-transform:capitalize;
+
+.capitalizeCase {
+  text-transform: capitalize;
 }
+
 /* ##### End Front End Validation  ##### */

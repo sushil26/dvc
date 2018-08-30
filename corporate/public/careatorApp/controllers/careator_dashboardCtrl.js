@@ -490,7 +490,12 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
             localStorage.setItem("careatorEmail", userData.email);
             localStorage.setItem("sessionPassword", userData.sessionPassword);
             if (w == null || typeof (w) == 'undefined') {
-                alert('Please disable your pop-up blocker on your windows top right cornor and click the "Open" link again.');
+                //alert('Please disable your pop-up blocker on your windows top right cornor and click the "Open" link again.');
+                SweetAlert.swal({
+                    title: "Unblock Popup",
+                    text: "Please disable your pop-up blocker on your windows top right cornor and click the 'Instant' link again",
+                    type: "warning"
+                });
             }
 
             var dt = $scope.todayDate;

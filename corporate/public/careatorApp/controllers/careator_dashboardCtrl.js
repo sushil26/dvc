@@ -482,9 +482,9 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
     });
 
     var w;
-    $scope.navigateintoBoth_CVoption = function (e) {
+    $scope.navigateintoBoth_CVoption = function () {
         console.log("navigateintoBoth_CVoption-->");
-        e.preventDefault();
+        
 
         if (!w || w.closed) {
             localStorage.setItem("careatorEmail", userData.email);

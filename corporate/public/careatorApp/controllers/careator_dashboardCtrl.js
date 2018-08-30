@@ -111,7 +111,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
     if (userData != undefined) {
         $scope.getLogin_hostDetailsById(userData.userId);
     }
-   
+
     $scope.name = userData.userName;
     if (userData.videoRights == 'yes') {
         $scope.videoRights = "yes";
@@ -222,27 +222,27 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
     }
     $scope.statusUpdate = function (status) {
         console.log("statusUpdate-->: " + status);
-    
+
         var id = userData.userId;
         api = "https://norecruits.com/careator_profile/chatStatusUpdateById/" + id;
         console.log("api: " + api);
         var obj = {
-          chatStatus: status
+            chatStatus: status
         };
         careatorHttpFactory.post(api, obj).then(function (data) {
-          console.log("data--" + JSON.stringify(data.data));
-          var checkStatus = careatorHttpFactory.dataValidation(data);
-          if (checkStatus) {
-            console.log("data.data.data: " + JSON.stringify(data.data.data));
-            $scope.chatStatus = status;
-            
-            console.log(data.data.message);
-          } else {
-            console.log("Sorry");
-            console.log(data.data.message);
-          }
+            console.log("data--" + JSON.stringify(data.data));
+            var checkStatus = careatorHttpFactory.dataValidation(data);
+            if (checkStatus) {
+                console.log("data.data.data: " + JSON.stringify(data.data.data));
+                $scope.chatStatus = status;
+
+                console.log(data.data.message);
+            } else {
+                console.log("Sorry");
+                console.log(data.data.message);
+            }
         });
-      };
+    };
     $scope.logout = function () {
         console.log("logout-->");
 
@@ -482,82 +482,90 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
     });
 
     var w;
-    $scope.navigateintoBoth_CVoption = function () {
+    $scope.navigateintoBoth_CVoption = function (e) {
         console.log("navigateintoBoth_CVoption-->");
-        if (!w || w.closed) {
-            localStorage.setItem("careatorEmail", userData.email);
-            localStorage.setItem("sessionPassword", userData.sessionPassword);
-            var dt = $scope.todayDate;
-            var dy = dt.getDay().toString();
-            var fy = dt.getFullYear().toString();
-            var m = dt.getMonth().toString();
-            var hr = dt.getHours().toString();
-            var date = dy.concat(fy, m, hr);
-            urlDate = date;
-            // w = window.open("https://norecruits.com/careator", "_blank");
-            var SIGNALING_SERVER = "https://norecruits.com";
-            signaling_socket = io(SIGNALING_SERVER);
-            signaling_socket.on('connect', function () {
-                console.log("signaling_socket connect-->");
-                signaling_socket.on('message', function (config) {
-                    console.log("signaling_socket message-->");
-                    queryLink = config.queryId;
-                    peerNew_id = config.peer_id;
-                    var url = "https://norecruits.com/vc4all_conf/" + peerNew_id + "/" + urlDate;
-                    // window.location.href = url;
-                    var api = "https://norecruits.com/careator/setCollection";
-                    console.log("api: " + api);
-                    var obj = {
-                        "email": localStorage.getItem('careatorEmail'),
-                        "url": url
-                    }
-                    console.log("obj: " + JSON.stringify(obj));
-                    careatorHttpFactory.post(api, obj).then(function (data) {
-                        var checkStatus = careatorHttpFactory.dataValidation(data);
-                        console.log("data--" + JSON.stringify(data.data));
-                        console.log("checkStatus--" + checkStatus);
-                        if (checkStatus) {
-                            localStorage.setItem("sessionUrlId", peerNew_id);
-                            localStorage.setItem("sessionUrlId", peerNew_id);
-                            // localStorage.setItem("sessionUrlId", url);
-                            console.log("url: " + url);
-                            w = window.open(url, '_blank');
-                            $window.close();
-                            console.log("***");
-                            // $window.open(url, "_blank");
+        if (w == null || typeof (w) == 'undefined') {
+            alert('Please disable your pop-up blocker and click the "Open" link again.');
+        }
+        else {
+            popUp.focus();
 
-                        } else {
-                            console.log("Sorry");
+            if (!w || w.closed) {
+                localStorage.setItem("careatorEmail", userData.email);
+                localStorage.setItem("sessionPassword", userData.sessionPassword);
+                var dt = $scope.todayDate;
+                var dy = dt.getDay().toString();
+                var fy = dt.getFullYear().toString();
+                var m = dt.getMonth().toString();
+                var hr = dt.getHours().toString();
+                var date = dy.concat(fy, m, hr);
+                urlDate = date;
+                // w = window.open("https://norecruits.com/careator", "_blank");
+                var SIGNALING_SERVER = "https://norecruits.com";
+                signaling_socket = io(SIGNALING_SERVER);
+                signaling_socket.on('connect', function () {
+                    console.log("signaling_socket connect-->");
+                    signaling_socket.on('message', function (config) {
+                        console.log("signaling_socket message-->");
+                        queryLink = config.queryId;
+                        peerNew_id = config.peer_id;
+                        var url = "https://norecruits.com/vc4all_conf/" + peerNew_id + "/" + urlDate;
+                        // window.location.href = url;
+                        var api = "https://norecruits.com/careator/setCollection";
+                        console.log("api: " + api);
+                        var obj = {
+                            "email": localStorage.getItem('careatorEmail'),
+                            "url": url
                         }
+                        console.log("obj: " + JSON.stringify(obj));
+                        careatorHttpFactory.post(api, obj).then(function (data) {
+                            var checkStatus = careatorHttpFactory.dataValidation(data);
+                            console.log("data--" + JSON.stringify(data.data));
+                            console.log("checkStatus--" + checkStatus);
+                            if (checkStatus) {
+                                localStorage.setItem("sessionUrlId", peerNew_id);
+                                localStorage.setItem("sessionUrlId", peerNew_id);
+                                // localStorage.setItem("sessionUrlId", url);
+                                e.preventDefault();
+                                console.log("url: " + url);
+                                w = window.open(url, '_blank');
+                                $window.close();
+                                console.log("***");
+                                // $window.open(url, "_blank");
+
+                            } else {
+                                console.log("Sorry");
+                            }
+                        })
                     })
                 })
-            })
-        } else {
-            SweetAlert.swal({
-                title: "window is already opened", //Bold text
-                text: "we will take you the desired page!", //light text
-                type: "warning", //type -- adds appropiriate icon
-                showCancelButton: true, // displays cancel btton
-                confirmButtonColor: "#DD6B55",
-                confirmButtonText: "Go to the page",
-                closeOnConfirm: false, //do not close popup after click on confirm, usefull when you want to display a subsequent popup
-                closeOnCancel: false
-            },
-                function (isConfirm) { //Function that triggers on user action.
-                    if (isConfirm) {
-                        w.focus();
-                    } else {
-                        SweetAlert.swal({
-                            title: "Cancelled",
-                            text: "You have entered cancel you are still in same Page",
-                            type: "info"
-                        });
+            } else {
+                SweetAlert.swal({
+                    title: "window is already opened", //Bold text
+                    text: "we will take you the desired page!", //light text
+                    type: "warning", //type -- adds appropiriate icon
+                    showCancelButton: true, // displays cancel btton
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Go to the page",
+                    closeOnConfirm: false, //do not close popup after click on confirm, usefull when you want to display a subsequent popup
+                    closeOnCancel: false
+                },
+                    function (isConfirm) { //Function that triggers on user action.
+                        if (isConfirm) {
+                            w.focus();
+                        } else {
+                            SweetAlert.swal({
+                                title: "Cancelled",
+                                text: "You have entered cancel you are still in same Page",
+                                type: "info"
+                            });
 
+                        }
                     }
-                }
 
-            )
+                )
 
+            }
         }
 
 

@@ -7,8 +7,12 @@ careatorApp.config(['cfpLoadingBarProvider', function (cfpLoadingBarProvider) {
     // cfpLoadingBarProvider.spinnerTemplate = '<div><span class="fa fa-spinner">Loading...</div>';
 }])
 careatorApp.config(function ($stateProvider) {
-    $stateProvider
-        .state('Cdashboard', {
+    $urlRouterProvider.otherwise('/home');
+    $stateProvider.state('Chome', {
+        url: careator_home(),
+        templateUrl: './index.html',
+    })
+     .state('Cdashboard', {
             url: careator_dashboard(),
             templateUrl: '/careatorApp/html/careator_dashboard.html',
         })
@@ -287,6 +291,10 @@ careatorApp.config(function ($stateProvider) {
         })
 
 })
+
+function careator_home(){
+    return '/home';
+}
 
 function orgSetting() {
     return '/orgSetting/:id';

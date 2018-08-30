@@ -482,18 +482,19 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
     });
 
     var w;
-    $scope.navigateintoBoth_CVoption = function (e) {
+    $scope.navigateintoBoth_CVoption = function () {
         console.log("navigateintoBoth_CVoption-->");
-        e.preventDefault();
+        
 
         if (!w || w.closed) {
             localStorage.setItem("careatorEmail", userData.email);
             localStorage.setItem("sessionPassword", userData.sessionPassword);
             if (w == null || typeof (w) == 'undefined') {
+                console.log("w: "+JSON.stringify(w));
                 //alert('Please disable your pop-up blocker on your windows top right cornor and click the "Open" link again.');
                 SweetAlert.swal({
                     title: "Unblock Popup",
-                    text: "Please disable your pop-up blocker on your windows top right cornor and click the 'Instant' link again",
+                    text: "Please disable your pop-up blocker on your window's top right cornor and click the 'Instant' link again",
                     type: "warning"
                 });
             }

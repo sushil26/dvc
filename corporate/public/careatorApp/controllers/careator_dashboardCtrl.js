@@ -489,15 +489,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
         if (!w || w.closed) {
             localStorage.setItem("careatorEmail", userData.email);
             localStorage.setItem("sessionPassword", userData.sessionPassword);
-            if (w == null || typeof (w) == 'undefined') {
-                console.log("w: "+JSON.stringify(w));
-                //alert('Please disable your pop-up blocker on your windows top right cornor and click the "Open" link again.');
-                SweetAlert.swal({
-                    title: "Unblock Popup",
-                    text: "Please disable your pop-up blocker on your window's top right cornor and click the 'Instant' link again",
-                    type: "warning"
-                });
-            }
+           
 
             var dt = $scope.todayDate;
             var dy = dt.getDay().toString();
@@ -536,6 +528,15 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                             console.log("url: " + url);
                             w = window.open(url, '_blank');
                             $window.close();
+                            if (w == null || typeof (w) == 'undefined') {
+                                console.log("w: "+JSON.stringify(w));
+                                //alert('Please disable your pop-up blocker on your windows top right cornor and click the "Open" link again.');
+                                SweetAlert.swal({
+                                    title: "Unblock Popup",
+                                    text: "Please disable your pop-up blocker on your window's top right cornor and click the 'Instant' link again",
+                                    type: "warning"
+                                });
+                            }
                             console.log("***");
                             // $window.open(url, "_blank");
 

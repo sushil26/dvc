@@ -3,6 +3,11 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
 
     careatorHttpFactory.getFile('property.json');
 
+    $scope.home = function(){
+        console.log("home trigger-->");
+        window.location.href="https://norecruits.com";
+    }
+
     $scope.gotToDashboard = function () {
         console.log("gotToDashboard-->");
 

@@ -484,11 +484,11 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
     var w;
     $scope.navigateintoBoth_CVoption = function (e) {
         console.log("navigateintoBoth_CVoption-->");
-        if (w == null || typeof (w) == 'undefined') {
-            alert('Please disable your pop-up blocker and click the "Open" link again.');
-        }
-        else {
-            popUp.focus();
+        // if (w == null || typeof (w) == 'undefined') {
+        //     alert('Please disable your pop-up blocker and click the "Open" link again.');
+        // }
+        // else {
+           // popUp.focus();
 
             if (!w || w.closed) {
                 localStorage.setItem("careatorEmail", userData.email);
@@ -566,7 +566,7 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
                 )
 
             }
-        }
+        // }
 
 
     }

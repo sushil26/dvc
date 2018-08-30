@@ -93,6 +93,10 @@ careatorApp.controller('careator_dashboardCtrl', function ($scope, $rootScope, $
             }
         })
     }
+    $scope.home = function(){
+        console.log("home trigger-->");
+        window.location.href="https://norecruits.com";
+    }
 
     var tick = function () {
         $scope.clock = new Date()

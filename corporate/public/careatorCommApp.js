@@ -6,9 +6,15 @@ careatorApp.config(['cfpLoadingBarProvider', function (cfpLoadingBarProvider) {
     // cfpLoadingBarProvider.parentSelector = '#loading-bar-container';
     // cfpLoadingBarProvider.spinnerTemplate = '<div><span class="fa fa-spinner">Loading...</div>';
 }])
-careatorApp.config(function ($stateProvider) {
+careatorApp.config(function ($stateProvider, $urlRouterProvider) {
+    $urlRouterProvider.otherwise('/home');
+    // .state('Chome', {
+    //     url: careator_home(),
+    //     templateUrl: './index.html',
+    // })
     $stateProvider
-        .state('Cdashboard', {
+   
+     .state('Cdashboard', {
             url: careator_dashboard(),
             templateUrl: '/careatorApp/html/careator_dashboard.html',
         })
@@ -287,6 +293,10 @@ careatorApp.config(function ($stateProvider) {
         })
 
 })
+
+function careator_home(){
+    return '/home';
+}
 
 function orgSetting() {
     return '/orgSetting/:id';

@@ -8,10 +8,12 @@ careatorApp.config(['cfpLoadingBarProvider', function (cfpLoadingBarProvider) {
 }])
 careatorApp.config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/home');
-    $stateProvider.state('Chome', {
-        url: careator_home(),
-        templateUrl: './index.html',
-    })
+    // .state('Chome', {
+    //     url: careator_home(),
+    //     templateUrl: './index.html',
+    // })
+    $stateProvider
+   
      .state('Cdashboard', {
             url: careator_dashboard(),
             templateUrl: '/careatorApp/html/careator_dashboard.html',

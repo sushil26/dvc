@@ -418,7 +418,7 @@ border-radius: 50%;
           margin-top: 4px;
           text-transform: uppercase;">
                 <span>
-                  <span id="vc">VC4ALL</span>
+                  <span id="vc">VC4<span style="color:#2676bf;">ALL</span></span>
                 </span>
               </a>
             </span>
@@ -600,15 +600,16 @@ border-radius: 50%;
         <!-- #services -->
 
 
-        <section id="facts" style="background-image:url(home/img/background.jpg);background-size: cover;margin-bottom: 40px;">
-          <div class="section-header">
-            <h3 class="section-title">&nbsp</h3>
-            <h3 class="section-title" style="color:#3f3f3f;">About us</h3>
-            <h3 class="section-title"></h3>
-          </div>
-          <div class="container wow">
+        <section id="facts" style="margin-bottom: 40px;background-image:url(home/img/background.jpg);background-size: cover;">
+          <div>
+            <div class="section-header">
+              <h3 class="section-title">&nbsp</h3>
+              <h3 class="section-title" style="color:#3f3f3f;">About us</h3>
+              <h3 class="section-title"></h3>
+            </div>
 
-            <p class="section-description" style="color:#3f3f3f;text-align: justify; font-family:sans-serif; font-size:15px;">
+
+            <p class="section-description" style="color:#3f3f3f;text-align: justify; font-family:sans-serif; font-size:15px; padding: 40px;">
               VC4ALL is a holistic new age technology platform for schools integrated with messaging and video
               conferencing.
               <br>
@@ -627,7 +628,10 @@ border-radius: 50%;
               <br> To know more about vc4all please call us at +91 924 653 1986.
             </p>
           </div>
-          <div class="clearfix"> </div>
+
+
+
+
         </section>
 
 
@@ -641,20 +645,21 @@ border-radius: 50%;
             <p class="section-description"> </p>
           </div>
 
-          <div id="team" class="container">
-            <div class="row">
 
+          <div class="row" style="padding-top: 40px;
+          padding-bottom: 40px;">
+            <center>
               <div class="col-lg-3 col-md-4 col-sm-6">
                 <img src="lib/images/user.jpg" alt=" " class="img-responsive" />
 
 
-                <h3 style="    margin-left: 15px;
+                <h3 style="   
                 margin-top: 10px;">Aditya</h3>
 
 
 
 
-                <p style="    margin-left: 15px;
+                <p style="    
                ">C.E.O</p>
 
                 <p>
@@ -677,13 +682,13 @@ border-radius: 50%;
                 <img src="lib/images/user.jpg" alt=" " class="img-responsive" />
 
 
-                <h3 style="    margin-left: 15px;
+                <h3 style="    
                   margin-top: 10px;">Shirdhi</h3>
 
 
 
 
-                <p style="    margin-left: 15px;
+                <p style="    
                  ">PRODUCT MANAGER</p>
 
                 <p>
@@ -706,13 +711,13 @@ border-radius: 50%;
                 <img src="lib/images/user.jpg" alt=" " class="img-responsive" />
 
 
-                <h3 style="    margin-left: 15px;
+                <h3 style="    
                     margin-top: 10px;">Logeswari</h3>
 
 
 
 
-                <p style="    margin-left: 15px;
+                <p style="    
                    ">SENIOR DEVELOPER</p>
 
                 <p>
@@ -735,13 +740,13 @@ border-radius: 50%;
                 <img src="lib/images/user.jpg" alt=" " class="img-responsive" />
 
 
-                <h3 style="    margin-left: 15px;
+                <h3 style="   
                       margin-top: 10px;">Sushil</h3>
 
 
 
 
-                <p style="    margin-left: 15px;
+                <p style="   
                      ">DEVELOPER</p>
 
                 <p>
@@ -761,10 +766,10 @@ border-radius: 50%;
 
               </div>
 
-              <div class="clearfix"> </div>
+            </center>
 
-            </div>
           </div>
+
         </section>
         <section id="stats" style="background:turquoise;">
           <div class="section-header" style="margin-bottom:40px;">
@@ -809,10 +814,11 @@ border-radius: 50%;
             <h3 class="section-title">&nbsp;</h3>
             <h3 class="section-title" style="color:#3f3f3f;">Pricing Options</h3>
             <h3 class="section-title"></h3>
-            <p class="section-description">Select a plan that best fits your needs. Upgrade, downgrade or cancel at any
+            <p class="section-description" style="padding: 20px;">Select a plan that best fits your needs. Upgrade,
+              downgrade or cancel at any
               time</p>
           </div>
-          <div class="row" style="margin:0 !important;     margin: 0 !important;
+          <div class="row" style="margin:0 !important; 
             padding-left: 40px;
             padding-right: 40px;
             padding-bottom: 10px;">
@@ -1111,23 +1117,31 @@ border-radius: 50%;
         <div class="modal-dialog">
           <center>
             <form>
-              <div class="modal-content" style="background:none;color:#777;max-width:350px; border-radius: 8px;">
-                <div class="modal-header" style="padding-top: 15px;     height: 55px;background-image: linear-gradient(to bottom, #383c3f 0%, #202224 100%);">
+              <div class="modal-content" style="background:none;color:#777;max-width:450px; border-radius: 8px;">
+                <div class="modal-header" style="padding-top: 15px;    background: #f8f8f8; height: 60px;">
                   <img style="width: 45px; float: left;" src="/home/img/fav.png" />
-                  <span class="modal-title" style="margin-top: 10px;
-                  font-weight: 400;float: left;">&nbsp;Login</span>
+                  <span class="modal-title" style="font-size: 20px;
+                  margin-top: 3px;
+                  font-weight: 300;
+                  float: left;
+                  color: rgb(67, 67, 67);">&nbsp;Login</span>
                   <button type="button" class="close" data-dismiss="modal" ng-click="$close()">&times;</button>
                 </div>
                 <div class="modal-body">
-                  <input ng-keyup="$event.keyCode == 13 && logVC(email, Password)" type="email" class="form-control"
-                    placeholder="Email" ng-model="email" id="crdEmail">
+                  <input ng-keyup="$event.keyCode == 13 && logVC(email, Password)" type="email" style="background: #000000b8;
+                  border: none;
+                  height: 40px;
+                  color: #d1cece;"
+                    class="form-control" placeholder="Email" ng-model="email" id="crdEmail">
                   <br>
-                  <input ng-keyup="$event.keyCode == 13 && logVC(email, Password)" type="password" id="crdPswd" class="form-control"
-                    placeholder="Password" ng-model="password">
+                  <input ng-keyup="$event.keyCode == 13 && logVC(email, Password)" type="password" style="background: #000000b8;
+                  border: none;
+                  height: 40px;     color: #d1cece;"
+                    id="crdPswd" class="form-control" placeholder="Password" ng-model="password">
                 </div>
-                <div class="modal-footer" style="padding-top: 15px;background-image: linear-gradient(to bottom, #202224 0%, #383c3f 100%);">
-                  <button id="crdsubmit" type="button" style="background-color: #29b6bd;color:#f1f1f1;padding: 5px;"
-                    class="btn" ng-click="logVC(email, password)" data-dismiss="modal">Submit</button>
+                <div class="modal-footer" style="padding: 15px; background: #f8f8f8;height: 60px;">
+                  <button id="crdsubmit" type="button" style="width:100px;background-color: #9abd3e;color:#f1f1f1;padding: 5px;"
+                    class="btn" ng-click="logVC(email, password)" data-dismiss="modal">Login</button>
                 </div>
               </div>
             </form>
@@ -1140,7 +1154,7 @@ border-radius: 50%;
         <div class="modal-dialog">
           <center>
             <form>
-              <div class="modal-content" style="color:#777;max-width:350px; border-radius: 8px;">
+              <div class="modal-content" style="color:#777;max-width:350px;  border-radius: 8px;">
                 <div class="modal-header" style="padding-top: 15px;background-image: linear-gradient(to bottom, #383c3f 0%, #202224 100%);">
                   <img style="width: 45px; margin-top: -15px;margin-left: -170px;" src="/home/img/fav.png" />
                   <span class="modal-title" style="font-weight: 200;">Message</span>

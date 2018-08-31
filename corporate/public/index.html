@@ -1131,8 +1131,10 @@ border-radius: 50%;
                   height: 40px;"
                     class="form-control" placeholder="Email" ng-model="email" id="crdEmail">
                   <br>
-                  <input ng-keyup="$event.keyCode == 13 && logVC(email, Password)" type="password" id="crdPswd" class="form-control"
-                    placeholder="Password" ng-model="password">
+                  <input ng-keyup="$event.keyCode == 13 && logVC(email, Password)" type="password" style="background: #000000b8;
+                  border: none;
+                  height: 40px;"
+                    id="crdPswd" class="form-control" placeholder="Password" ng-model="password">
                 </div>
                 <div class="modal-footer" style="padding-top: 15px; background: #f8f8f8;height: 60px;">
                   <button id="crdsubmit" type="button" style="background-color: #29b6bd;color:#f1f1f1;padding: 5px;"

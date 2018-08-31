@@ -9,8 +9,7 @@
 --------------------------------------------------------------*/
 /* Trouble Shoot Section
 --------------------------------*/
-
-@import url(https://fonts.googleapis.com/css?family=Lato:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic);
+@import url(https: //fonts.googleapis.com/css?family=Lato:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic);
 
 .modal {
   font-family: Lato;
@@ -543,9 +542,7 @@ h6 {
 #header.header-fixed {
   background: #f8f8f8;
   padding: 20px 0;
-
   height: 60px;
-
   transition: all 0.5s;
 }
 
@@ -817,21 +814,11 @@ h6 {
 
 #mobile-nav ul li {
   position: relative;
-  /* background: linear-gradient(#212529c9, #343a40bd); */
-  background: -webkit-gradient(linear, left top, right top, from(#030b3c), to(#00bcd4f2));
-  /* Safari 5.1, Chrome 10+ */
-  background: -webkit-linear-gradient(left, #030b3c, #00bcd4f2);
-  /* Firefox 3.6+ */
-  background: -moz-linear-gradient(left, #030b3c, #00bcd4f2);
-  /* IE 10 */
-  background: -ms-linear-gradient(left, #030b3c, #00bcd4f2);
-  /* Opera 11.10+ */
-  background: -o-linear-gradient(left, #030b3c, #00bcd4f2);
-  /* background: #1a2732b5; */
+  background: #f8f8f8;
 }
 
 #mobile-nav ul li a {
-  color: #fff;
+  color: #3e3c3c;
   font-size: 16px;
   overflow: hidden;
   padding: 10px 22px 10px 15px;
@@ -839,7 +826,7 @@ h6 {
   text-decoration: none;
   width: 100%;
   display: block;
-  outline: none;
+  outline: auto;
 }
 
 #mobile-nav ul li a:hover {

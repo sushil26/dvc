@@ -512,6 +512,7 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
 
 
     $("#helpChat").click(function () {
+        console.log("helpChat clicked-->");
         $("#hmodal").css({"display":"inline"})
     
     })

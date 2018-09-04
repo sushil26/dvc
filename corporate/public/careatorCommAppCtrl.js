@@ -2,7 +2,7 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
     console.log("Chat controller==>");
 
     careatorHttpFactory.getFile('property.json');
-
+    $scope.help_var =false;
     $scope.home = function(){
         console.log("home trigger-->");
         window.location.href="https://norecruits.com";

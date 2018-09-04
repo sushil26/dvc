@@ -420,11 +420,17 @@ border-radius: 50%;
 
   <div ng-app="careatorCommApp" ng-controller="careatorCommAppCtrl">
     <div id="loading-bar-container"></div>
-    <div class="help" data-toggle="hmodal" data-target="#helpmodal"  data-keyboard="false">
+    <div class="help" data-toggle="hmodal" data-target="#helpmodal" data-keyboard="false">
       &nbsp; Need Help ?? &nbsp;
 
     </div>
-    <div class="hmodal animated jello faster " id="helpmodal" role="dialog">
+    <div class="hmodal animated jello faster " id="helpmodal" role="dialog" style="display: none;
+    margin-left: -60px;
+    margin-bottom: -15px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 2;">
       <div class="modal-dialog">
         <center>
           <form>

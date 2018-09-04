@@ -296,7 +296,7 @@ careatorApp.config(function ($stateProvider, $urlRouterProvider) {
             }
         })
 
-        .state('Cdashboard.talenkartVCSchedule', {
+        .state('Tdashboard.talenkartVCSchedule', {
             url: careator_talenkartVCSchedule(),
             templateUrl: '/careatorApp/html/talenkartSchedule.html',
             resolve: {

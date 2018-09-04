@@ -392,13 +392,21 @@ border-radius: 50%;
 
 
 <body>
-  
+
   <div ng-app="careatorCommApp" ng-controller="careatorCommAppCtrl">
     <div id="loading-bar-container"></div>
-    <div class="help" style="position:fixed;left: 0;bottom: 0; border:2px solid white;">
-        Need Help
+    <div class="help" style="position: fixed;
+    left: 5px;
+    bottom: 5px;
+    background: #a8cf45b5;
+    border: 2px solid #2477bd4f;
+    z-index: 1;
+    border-radius: 10px;
+    padding: 5px;
+">
+      Need Help
 
-      </div>
+    </div>
     <div id="page" ui-view>
       <!--==========================
     Header
@@ -454,7 +462,7 @@ border-radius: 50%;
     Hero Section
   ============================-->
       <section id="hero">
-       
+
 
 
         <div class="hero-container ">

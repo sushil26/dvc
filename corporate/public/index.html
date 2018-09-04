@@ -419,9 +419,44 @@ border-radius: 50%;
 
   <div ng-app="careatorCommApp" ng-controller="careatorCommAppCtrl">
     <div id="loading-bar-container"></div>
-    <div class="help">
+    <div class="help" data-toggle="modal" data-target="#helpmodal"  data-keyboard="false">
       &nbsp; Need Help ?? &nbsp;
 
+    </div>
+    <div class="modal animated jello faster " id="helpmodal" role="dialog">
+      <div class="modal-dialog">
+        <center>
+          <form>
+            <div class="modal-content" style="background:none;color:#777;max-width:450px; border-radius: 8px;">
+              <div class="modal-header" style="padding-top: 15px;    background: #f8f8f8; height: 60px;">
+                <img style="width: 45px; float: left;" src="/home/img/fav.png" />
+                <span class="modal-title" style="font-size: 20px;
+                  margin-top: 3px;
+                  font-weight: 300;
+                  float: left;
+                  color: rgb(67, 67, 67);">&nbsp;Login</span>
+                <button type="button" class="close" data-dismiss="modal" ng-click="$close()">&times;</button>
+              </div>
+              <div class="modal-body">
+                <input ng-keyup="$event.keyCode == 13 && logVC(email, Password)" type="email" style="background: #000000b8;
+                  border: none;
+                  height: 40px;
+                  color: #d1cece;"
+                  class="form-control" placeholder="Email" ng-model="email" id="crdEmail">
+                <br>
+                <input ng-keyup="$event.keyCode == 13 && logVC(email, Password)" type="password" style="background: #000000b8;
+                  border: none;
+                  height: 40px;     color: #d1cece;"
+                  id="crdPswd" class="form-control" placeholder="Password" ng-model="password">
+              </div>
+              <div class="modal-footer" style="padding: 15px; background: #f8f8f8;height: 60px;">
+                <button id="crdsubmit" type="button" style="width:100px;background-color: #9abd3e;color:#f1f1f1;padding: 5px;"
+                  class="btn" ng-click="logVC(email, password)" data-dismiss="modal">Login</button>
+              </div>
+            </div>
+          </form>
+        </center>
+      </div>
     </div>
     <div id="page" ui-view>
       <!--==========================

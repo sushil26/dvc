@@ -18,6 +18,10 @@ careatorApp.config(function ($stateProvider, $urlRouterProvider) {
             url: careator_dashboard(),
             templateUrl: '/careatorApp/html/careator_dashboard.html',
         })
+        .state('Tdashboard', {
+            url: talenkart_dashboard(),
+            templateUrl: '/careatorApp/html/talenkartDashboard.html',
+        })
         .state('Cdashboard.organizationCreate', {
             url: careator_organizationCreate(),
             templateUrl: '/careatorApp/html/organizationCreate.html',
@@ -372,6 +376,10 @@ function contactAdmin() {
 
 function careator_dashboard() {
     return '/dashboard';
+}
+
+function talenkart_dashboard(){
+    return '/talenkart_dashboard'
 }
 
 function editUser() {

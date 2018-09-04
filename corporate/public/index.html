@@ -9,16 +9,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <link href='https://fonts.googleapis.com/css?family=Allerta Stencil' rel='stylesheet'>
 
-
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
-
-
-
 
   <link href="/home/img/fav.png" rel="icon" size="32x32">
   <script src="/bower_components/angular/angular.min.js"></script>
-
-
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
   <!-- Google Fonts -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -229,6 +223,8 @@ border-radius: 50%;
     }
 
     .quotes {
+      /* background: #0000005e;
+      padding: 10px; */
       display: none;
     }
 
@@ -399,8 +395,21 @@ border-radius: 50%;
 
 
 <body>
+
   <div ng-app="careatorCommApp" ng-controller="careatorCommAppCtrl">
     <div id="loading-bar-container"></div>
+    <div class="help" style="position: fixed;
+    left: 15px;
+    bottom: 15px;
+    background: #a8cf45b5;
+    border: 2px solid #2477bd4f;
+    z-index: 1;
+    border-radius: 10px;
+    padding: 5px;
+">
+      Need Help
+
+    </div>
     <div id="page" ui-view>
       <!--==========================
     Header
@@ -456,11 +465,13 @@ border-radius: 50%;
     Hero Section
   ============================-->
       <section id="hero">
+
+
+
         <div class="hero-container ">
           <div class="">
             <center>
-              <div class="quotes" style="width: fit-content;
-              font-family: Aclonica;
+              <div class="quotes" style="width: fit-content; 
             height: auto;
             font-weight: 300;
             font-size:6vw;
@@ -469,21 +480,19 @@ border-radius: 50%;
                 <span style="font-size:6vw; color:#a8cf44;">VC4ALL</span>
               </div>
               <div class="quotes" style="width: fit-content;
-              font-family: Aclonica;
+             
             height: auto;
             font-weight: 300;
             font-size:6vw;
             line-height: 1;">The
                 Ultimate Platform</div>
-              <div class="quotes" style="width: fit-content;
-              font-family: Aclonica;
+              <div class="quotes" style="width: fit-content;    
           height: auto;
           font-weight: 300;
           font-size:6vw;
           line-height: 1;">For
                 Video Conferencing</div>
               <div class="quotes" style="width: fit-content;
-              font-family: Aclonica;
         height: auto;
         font-weight: 300;
         font-size:6vw;
@@ -805,7 +814,7 @@ border-radius: 50%;
                 <p>Hard Workers</p>
               </div>
             </div>
-            <div class="clearfix"> </div>
+
           </div>
         </section>
         <section id="Pricing" style="background:white;">
@@ -1017,96 +1026,109 @@ border-radius: 50%;
 
 
         <section id="contact">
-          <div class="section-header">
+          <div class="section-header" style="margin-bottom:40px;">
             <h3 class="section-title">&nbsp</h3>
             <h3 class="section-title" style="color:#3f3f3f;">Reach us</h3>
             <h3 class="section-title"></h3>
           </div>
-          <div class="wow">
-            <div class="row justify-content-center">
-              <div class="ssk" style="height: 36px;width: 100%;"></div>
-              <div class="col-sm-4">
-                <div class="info">
-                  <table>
-                    <tr>
-                      <td>
-                        <div id="logo" class="pull-left">
-                          <!-- Uncomment below if you prefer to use a text logo -->
-                          <span>
+          <div class="row">
+            <div class="col-md-4" style="    padding: 25px;">
+              <ul>
+                <li>
 
-                            <img style="width: 60px;margin-top: -20px;" src="/home/img/fav.png" />
-                            <a href="/" id="mm" style="
-                            letter-spacing: -2.3px;
-                            font-size: 18px;
-                            font-family: 'Allerta Stencil';
-                            color: wb;
-                            font-size: 22px;
-                            font-weight: 500;
-                            color: #a8cf44;
-                            margin-top: 8px;
-                            text-transform: uppercase;
-                            ">VC4ALL</span>
-                          </a>
-                          </span>
+                  <div id="logo" class="pull-left">
+                    <!-- Uncomment below if you prefer to use a text logo -->
+                    <span>
 
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td style="font-size: 15px;
-                      font-family: sans-serif;
-                      color: #a8cf44;">
-                        Careator Technologies Private Limited</td>
-                    </tr>
-                  </table>
-                </div>
-              </div>
-              <div class="col-sm-4">
-                <div class="info">
-                  <table>
-                    <tr>
-                      <td>
-                        <div>
-                          <i style="text-shadow: 2px 2px 2px #00000061;" class="fa fa-map-marker"></i>
-                          <p style="
-                            font-family:  sans-serif;
-                            font-size: 11px;font-weight: 100;
-                        ">
-                            SLJ TOWER, II FLOOR, BDA # 297, VII BLOCK, OUTER RING ROAD, KATHREGUPPE, BANASHANKARI 3RD
-                            STAGE,
-                            BENGALURU, KARNATAKA
-                            <br>560061</p>
-                        </div>
-                      </td>
-                    </tr>
-                  </table>
-                </div>
-              </div>
-              <div class="col-sm-4">
-                <div class="info">
-                  <table>
-                    <tr>
-                      <td>
-                        <div>
-                          <i style="text-shadow: 2px 2px 2px #00000061;" class="fa fa-map-marker"></i>
-                          <p style="
-                          font-family:  sans-serif;
-                          font-size: 11px;font-weight: 100;
-                      ">MR
-                            HOUSE, INDIAN AIRLINES COLONY, BEGUMPET, HYDRABAD,TELANGANA
-                            <br>500016</p>
-                        </div>
+                      <img style="width: 60px;margin-top: -20px;" src="/home/img/fav.png" />
+                      <a href="/" id="mm" style="
+                          letter-spacing: -2.3px;
+                          font-size: 18px;
+                          font-family: 'Allerta Stencil';
+                          color: wb;
+                          font-size: 22px;
+                          font-weight: 500;
+                          color: #a8cf44;
+                          margin-top: 8px;
+                          text-transform: uppercase;
+                          ">VC4ALL</span>
+                    </a>
+                    </span>
 
-                      </td>
+                  </div>
 
-                    </tr>
-                  </table>
-
-                </div>
-              </div>
-
+                </li><br><br>
+                <li style="color: #ffffffb0;">
+                  Careator Technologies Private Limited
+                </li>
+              </ul>
             </div>
-            <div class="clearfix"> </div>
+            <div class="col-md-4" style="    padding: 25px;">
+              <article class="location-div">
+                <h4 class="h4" style="color:white; font-weight: 300;">HYDRABAD </h4>
+                <figure><img class="img-responsive" src="img/hyd-ban-img.jpg"></figure>
+                <table class="contact-table" cell-paccing="0" cellspacing="0" width="100%" style="    color: #ffffffb0;
+                font-weight: 300;">
+                  <tbody>
+                    <tr>
+                      <td><i class="fa fa-map"></i></td>
+                      <td>
+                        <p>
+                          <br>MR House, <span style="font-family:Timesnewroman">I</span> Floor, H. No: 1-8-344 (E),
+                          Indian Airlines Colony, Begumpet, Hyderabad - 500016, Telangana, India.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><i class="fa fa-phone"></i></td>
+                      <td>
+                        <p x-ms-format-detection="none">+91 801 909 9030</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><i class="fa fa-envelope"></i></td>
+                      <td>
+                        <p><a href="mailto:info@careator.com">info@careator.com</a> </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </article>
+            </div>
+            <div class="col-md-4" style="    padding: 25px;">
+              <article class="location-div">
+                <h4 class="h4" style="color:white; font-weight: 300;">BENGALURU </h4>
+                <figure><img class="img-responsive" src="img/bengaluru-location-img.jpg"></figure>
+                <table class="contact-table" cell-paccing="0" cellspacing="0" width="100%" style=" color: #ffffffb0;
+                font-weight: 300;">
+                  <tbody>
+                    <tr>
+                      <td><i class="fa fa-map"></i></td>
+                      <td>
+                        <p>
+                          <br> SLJ Tower, <span style="font-family:Timesnewroman">II</span> Floor, BDA # 297, <span
+                            style="font-family:Timesnewroman">VII</span> Block, <span style="font-family:Timesnewroman">IV</span>
+                          Phase, BSK <span style="font-family:Timesnewroman">III</span> Stage, Bengaluru - 560 085,
+                          Karnataka, India. </p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><i class="fa fa-phone"></i></td>
+                      <td>
+                        <p x-ms-format-detection="none">+91 801 909 9030</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><i class="fa fa-envelope"></i></td>
+                      <td>
+                        <p><a href="mailto:info@careator.com">info@careator.com</a> </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </article>
+            </div>
+
+
           </div>
         </section>
       </main>

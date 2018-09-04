@@ -7,7 +7,7 @@ careatorApp.config(['cfpLoadingBarProvider', function (cfpLoadingBarProvider) {
     // cfpLoadingBarProvider.spinnerTemplate = '<div><span class="fa fa-spinner">Loading...</div>';
 }])
 careatorApp.config(function ($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise('/home');
+  //  $urlRouterProvider.otherwise('/home');
     // .state('Chome', {
     //     url: careator_home(),
     //     templateUrl: './index.html',
@@ -379,7 +379,7 @@ function careator_dashboard() {
 }
 
 function talenkart_dashboard(){
-    return '/talenkart_dashboard'
+    return '/Tdashboard'
 }
 
 function editUser() {

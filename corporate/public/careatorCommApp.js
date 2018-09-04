@@ -18,6 +18,10 @@ careatorApp.config(function ($stateProvider, $urlRouterProvider) {
             url: careator_dashboard(),
             templateUrl: '/careatorApp/html/careator_dashboard.html',
         })
+        .state('Tdashboard', {
+            url: talenkart_dashboard(),
+            templateUrl: '/careatorApp/html/talenkartDashboard.html',
+        })
         .state('Cdashboard.organizationCreate', {
             url: careator_organizationCreate(),
             templateUrl: '/careatorApp/html/organizationCreate.html',
@@ -292,6 +296,49 @@ careatorApp.config(function ($stateProvider, $urlRouterProvider) {
             }
         })
 
+        .state('Tdashboard.talenkartVCSchedule', {
+            url: careator_talenkartVCSchedule(),
+            templateUrl: '/careatorApp/html/talenkartSchedule.html',
+            resolve: {
+                result: function (careatorSessionAuth, $window) {
+                    //var userData = careatorSessionAuth.getAccess("userData");
+                    // if (userData.loginType == 'admin' || userData.loginType == 'superAdmin' || userData.loginType == 'employee') {
+                    // } else {
+                    //     $window.location.href = 'https://norecruits.com';
+                    // }
+                }
+            }
+        })
+        .state('Cdashboard.talenkartVCUpcomingEvent', {
+            url: careator_talenkartVCScheduleUpcomingEvent(),
+            templateUrl: '/careatorApp/html/talenkartSchedule_upcoming.html',
+            resolve: {
+                result: function (careatorSessionAuth, $window) {
+                    //var userData = careatorSessionAuth.getAccess("userData");
+                    // if (userData.loginType == 'admin' || userData.loginType == 'superAdmin' || userData.loginType == 'employee') {
+
+                    // } else {
+                    //     $window.location.href = 'https://norecruits.com';
+                    // }
+                }
+            }
+
+        })
+        .state('Cdashboard.talenkartVCHistoryEvent', {
+            url: careator_talenkartVCScheduleHistoryEvent(),
+            templateUrl: '/careatorApp/html/talenkartSchedule_historyEvent.html',
+            resolve: {
+                result: function (careatorSessionAuth, $window) {
+                    // var userData = careatorSessionAuth.getAccess("userData");
+                    // if (userData.loginType == 'admin' || userData.loginType == 'superAdmin' || userData.loginType == 'employee') {
+
+                    // } else {
+                    //     $window.location.href = 'https://norecruits.com';
+                    // }
+                }
+            }
+        })
+
 })
 
 function careator_home(){
@@ -329,6 +376,10 @@ function contactAdmin() {
 
 function careator_dashboard() {
     return '/dashboard';
+}
+
+function talenkart_dashboard(){
+    return '/talenkart_dashboard'
 }
 
 function editUser() {
@@ -381,4 +432,14 @@ function careator_historyEvent() {
 
 function careator_loginDetails() {
     return '/loginDetails'
+}
+function careator_talenkartVCSchedule(){
+    return '/talenkartVCSchedule';
+}
+function careator_talenkartVCScheduleUpcomingEvent() {
+    return '/talenkartVCUpcomingEvent'
+}
+
+function careator_talenkartVCScheduleHistoryEvent() {
+    return '/talenkartVCHistoryEvent'
 }

@@ -33,6 +33,11 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
         }
     }
 
+    $scope.closeNeedHelp = function(){
+        console.log("closeNeedHelp-->");
+        $scope.help_var = false;
+    }
+
     $scope.getLogin_hostDetailsById = function (id) {
         console.log("getLogin_hostDetailsById-->: " + id);
         var api = "https://norecruits.com/careator_getUser/careator_getUserById/" + id;

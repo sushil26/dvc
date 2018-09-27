@@ -3529,8 +3529,8 @@ module.exports.careator_needHelp = function (req, res) {
         if (error) {
             console.log(error);
             responseData = {
-                status: true,
-                message: "insert Successfull and Failed to send mail"
+                status: false,
+                message: "Try again"
                 
             };
             res.status(200).send(responseData);

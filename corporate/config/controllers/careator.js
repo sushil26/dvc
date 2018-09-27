@@ -3517,6 +3517,7 @@ module.exports.getLoggedinSessionURLById = function (req, res) {
 
 module.exports.careator_needHelp = function (req, res) {
     console.log("careator_needHelp-->");
+    console.log("req.body.email: "+req.body.email+" req.body.query: "+req.body.query);
     if(general.emptyCheck(req.body.email) && general.emptyCheck(req.body.query))
 
     var mailOptions = {

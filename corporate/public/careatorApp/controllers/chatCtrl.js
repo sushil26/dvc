@@ -1316,7 +1316,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
   $("#comment").keyup(function (event) {
     if (event.keyCode === 13) {
       // $(this).val('');
-      $("#sndmgs").click();
+      $scope.sendText();
       $("#comment").val("");
     }
   });

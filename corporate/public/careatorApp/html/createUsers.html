@@ -78,7 +78,7 @@
                                         <div class="col-lg-9">
                                             <span>
                                                 <input type="email" ng-model="empEmail" name="employeeEmail" class="form-control smallerCase" required>
-                                            </span>
+                                            </span>---{{orgDatas.domain}} --{{adminEmail.split('@')[1]}}
                                             <span ng-show="(userCreate.employeeEmail.$touched || submitted) && userCreate.employeeEmail.$error.required" class="validation_fe">Email
                                                 Id is required (Ex:abc@{{organizationDomain}})</span>
                                                 

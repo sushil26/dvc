@@ -39,6 +39,7 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
     }
     $scope.needHelp_submit = function (formName, needHelp_query) {
         console.log("needHelp_submit-->");
+        $scope.submitted=true; /* ### Note: Front end validation for check the form submission ### */
         var obj = {};
 
         if (formName.$valid) {

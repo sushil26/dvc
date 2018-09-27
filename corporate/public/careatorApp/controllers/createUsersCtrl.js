@@ -4,7 +4,7 @@ careatorApp.controller('createUsersCtrl', function ($scope, $rootScope, $state, 
     $scope.userData = careatorSessionAuth.getAccess("userData");
     console.log(" $scope.userData : " + JSON.stringify($scope.userData));
     var orgId = $scope.userData.orgId;
-    //console.log("$scope.orgDatas: "+JSON.stringify($scope.orgDatas));
+    console.log("$scope.orgDatas: "+JSON.stringify($scope.orgDatas));
 //console.log("$rootScope.orgDatas: "+JSON.stringify($rootScope.orgDatas));
     //$scope.domainName = $rootScope.orgDatas.domain;
 
@@ -110,7 +110,7 @@ careatorApp.controller('createUsersCtrl', function ($scope, $rootScope, $state, 
         else {
             //alert("Fill all the required field");
             SweetAlert.swal({
-                title: "Not Valied",
+                title: "Email id is Not Valied",
                 text: "Domain name mismatch",
                 type: "info"
             });

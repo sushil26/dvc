@@ -59,7 +59,38 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
                 "query": needHelp_query
             }
             console.log("obj: "+JSON.stringify(obj));
+            var api = "https://norecruits.com/c/careator_needHelp";
+            console.log("api: " + api);
+            careatorHttpFactory.post(api, obj).then(function (data) {
+                var checkStatus = careatorHttpFactory.dataValidation(data);
+                console.log("data--" + JSON.stringify(data.data));
+                if (checkStatus) {
+                    console.log("checkStatus: " + checkStatus);
+                    // alert(data.data.message);
+                    $scope.notifyMsg = data.data.message;
+                    console.log(" $scope.notifyMsg: " + $scope.notifyMsg);
+                    // $("#alertButton").trigger("click");
+                    SweetAlert.swal({
+                        title: "Craeted",
+                        text: $scope.notifyMsg,
+                        type: "success"
+                    });
+                  
+                } else {
+                    console.log("checkStatus: " + checkStatus);
+                    $scope.notifyMsg = data.data.message;
+                    console.log(" $scope.notifyMsg: " + $scope.notifyMsg);
+                    // $("#alertButton").trigger("click");
+                    SweetAlert.swal({
+                        title: "Error",
+                        text: $scope.notifyMsg,
+                        type: "warning"
+                    });
+                    // alert(data.data.message);
+                }
+            })
             $scope.help_var = false;
+
 
         }
 

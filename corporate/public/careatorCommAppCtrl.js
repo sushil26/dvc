@@ -66,10 +66,10 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
                 console.log("data--" + JSON.stringify(data.data));
                 if (checkStatus) {
                     console.log("checkStatus: " + checkStatus);
-                    // alert(data.data.message);
+                   
                     $scope.notifyMsg = data.data.message;
                     console.log(" $scope.notifyMsg: " + $scope.notifyMsg);
-                    // $("#alertButton").trigger("click");
+                    
                     SweetAlert.swal({
                         title: "Successfull",
                         text: $scope.notifyMsg,

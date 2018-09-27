@@ -22,7 +22,7 @@ var existEmpId = null; /* ### Note: Marker for user create ### */
 var transporter = nodemailer.createTransport({
     service: "godaddy",
     auth: {
-        user: "info@norecruits.com",
+        user: "info@vc4all.in",
         pass: "ctpl@123"
     },
     tls: {

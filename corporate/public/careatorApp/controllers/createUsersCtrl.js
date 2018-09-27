@@ -4,7 +4,7 @@ careatorApp.controller('createUsersCtrl', function ($scope, $rootScope, $state, 
     $scope.userData = careatorSessionAuth.getAccess("userData");
     console.log(" $scope.userData : " + JSON.stringify($scope.userData));
     var orgId = $scope.userData.orgId;
-    console.log("$scope.orgDatas: "+JSON.stringify($scope.orgDatas));
+    //console.log("$scope.orgDatas: "+JSON.stringify($scope.orgDatas));
 //console.log("$rootScope.orgDatas: "+JSON.stringify($rootScope.orgDatas));
     //$scope.domainName = $rootScope.orgDatas.domain;
 
@@ -48,7 +48,7 @@ careatorApp.controller('createUsersCtrl', function ($scope, $rootScope, $state, 
         console.log("careatorEmp-->");
         $scope.submitted=true; /* ### Note: Front end validation for check the form submission ### */
         if (formName.$valid ) {
-            if(emailId.split('@')[1] == $scope.orgDatas.domain)
+            if(emailId.split('@')[1] == $scope.orgDatas.domain){
             console.log("name: " + name);
             var videoRights;
             var chatRights;

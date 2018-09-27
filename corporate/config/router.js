@@ -87,7 +87,7 @@ module.exports = function (app) {
     app.post('/c/orgEditById/:id', cAdminAction.orgEditById);
     app.post('/careator_getChatRightsAllemp_byLoginId');
 
-    app.post('/careator/careator_needHelp', cAdminAction.careator_needHelp);
+    app.post('/c/careator_needHelp', careator.careator_needHelp);
 
 
 }

@@ -59,7 +59,7 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
                 "query": needHelp_query
             }
             console.log("obj: "+JSON.stringify(obj));
-            var api = "https://norecruits.com/careator/careator_needHelp";
+            var api = "https://norecruits.com/c/careator_needHelp";
             console.log("api: " + api);
             careatorHttpFactory.post(api, obj).then(function (data) {
                 var checkStatus = careatorHttpFactory.dataValidation(data);

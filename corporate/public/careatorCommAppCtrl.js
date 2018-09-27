@@ -57,7 +57,7 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
                 title: "Not valid",
                 text: "Valid data required", //light text
                 type: "warning",
-            }
+            })
         }
 
         $scope.help_var = false;

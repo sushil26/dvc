@@ -364,7 +364,7 @@
                                         </center>
                                     </div>
 
-<div class="row message-body" ng-repeat="chat in allChat.chats | filter:searchtext">
+<div class="row message-body" ng-repeat="chat in allChat.chats">
                                         <div class="col-sm-12 message-main-receiver slideRight" ng-if="chat.senderId!=userId">
                                             <div ng-if="selectedType=='group'" style="background:#ddf8c6;
                                                 width: max-content;
@@ -390,7 +390,7 @@
                                                                 <img style="max-width:200px;" ng-src="{{chat.chatFile_src}}">
                                                             </div>
                                                             <div ng-if="chat.messageType!='file'" class="message-text">
-                                                                {{chat.message}}
+{{chat.message | filter:searchtext}}
                                                             </div>
                                                             <span class="message-time pull-right">
                                                                 {{chat.sendTime | amCalendar}}
@@ -410,7 +410,7 @@
                                                     <!-- <iframe ng-src="{{chat.message}}" width="100%" /> -->
                                                 </div>
                                                 <div class="message-text" ng-if="chat.messageType!='file'">
-                                                    {{chat.message}}
+{{chat.message | filter:searchtext}}
                                                 </div>
                                                 <span class="message-time pull-right">
                                                     {{chat.sendTime | amCalendar}}

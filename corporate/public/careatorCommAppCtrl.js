@@ -52,7 +52,6 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
         var obj = {};
 
         if (formName.$valid) {
-
             obj = {
                 "name": needHelp_name,
                 "email": needHelp_email,

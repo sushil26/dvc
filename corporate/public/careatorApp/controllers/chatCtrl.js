@@ -517,11 +517,12 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
     $scope.readText();
   };
 
-  $scope.sendText = function () {
+  $scope.sendText = function (typedMessage) {
     $("#comment").val("");
+   // $scope.typedMessage = typedMessage;
     console.log("sendText-->");
     //  console.log("chatFile: "+$scope.chatFile);
-    console.log("$scope.typedMessage: " + $scope.typedMessage);
+    console.log("typedMessage: " + typedMessage);
     var api;
     var obj;
     console.log("$scope.selectedType: " + $scope.selectedType);
@@ -538,7 +539,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
           receiverId: $scope.receiverData.receiverId,
           senderName: userData.firstName + " " + userData.lastName,
           receiverName: $scope.receiverData.receiverName,
-          message: $scope.typedMessage
+          message: typedMessage
         };
         console.log("obj: " + JSON.stringify(obj));
         careatorHttpFactory.post(api, obj).then(function (data) {
@@ -559,7 +560,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
           receiverId: $scope.receiverData.receiverId,
           senderName: userData.firstName + " " + userData.lastName,
           receiverName: $scope.receiverData.receiverName,
-          message: $scope.typedMessage
+          message:typedMessage
         };
         console.log("obj: " + JSON.stringify(obj));
         careatorHttpFactory.post(api, obj).then(function (data) {
@@ -582,7 +583,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
           receiverId: $scope.receiverData.receiverId,
           senderName: userData.firstName + " " + userData.lastName,
           receiverName: $scope.receiverData.receiverName,
-          message: $scope.typedMessage
+          message: typedMessage
         };
         console.log("obj: " + JSON.stringify(obj));
         careatorHttpFactory.post(api, obj).then(function (data) {
@@ -616,7 +617,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
           groupMembers: $scope.sendGroupText_withData.groupMembers,
           senderId: userData.userId,
           senderName: userData.firstName + " " + userData.lastName,
-          message: $scope.typedMessage
+          message: typedMessage
         };
         console.log("obj: " + JSON.stringify(obj));
         api = "https://norecruits.com//careator_groupText/groupText";

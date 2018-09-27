@@ -423,9 +423,7 @@ border-radius: 50%;
     <div id="loading-bar-container"></div>
 
 
-    <button class="help" ng-click="help_var=!help_var">
-      &nbsp; Need Help ?? &nbsp;
-    </button>
+
 
 
     <div class="helpbox" ng-show="help_var" style="position: fixed;
@@ -443,7 +441,8 @@ border-radius: 50%;
               margin-top: 3px;
               font-weight: 300;
               float: left;
-              color: rgb(67, 67, 67);">&nbsp;Need Help ??</span>
+              color: rgb(67, 67, 67);">&nbsp;Need
+                Help ??</span>
               <button type="button" class="close" ng-click="closeNeedHelp()">&times;</button>
             </div>
             <div class="modal-body" style="background:white;">
@@ -469,7 +468,7 @@ border-radius: 50%;
             </div>
             <div class="modal-footer" style="padding: 15px; background: #f8f8f8;height: 60px;">
               <button type="button" style="width:100px;background-color: #9abd3e;color:#f1f1f1;padding: 5px;" class="btn"
-              ng-click="closeNeedHelp()">Send</button>
+                ng-click="closeNeedHelp()">Send</button>
             </div>
           </div>
 
@@ -479,6 +478,9 @@ border-radius: 50%;
     </div>
 
     <div id="page" ui-view>
+      <button class="help" ng-click="help_var=!help_var">
+        &nbsp; Need Help ?? &nbsp;
+      </button>
       <!--==========================
     Header
 ============================-->

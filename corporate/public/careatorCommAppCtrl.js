@@ -33,6 +33,13 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
         }
     }
 
+    $scope.needHelp_click = function(){
+        console.log("needHelp_click-->");
+        console.log("$scope.help_var : "+$scope.help_var );
+        $scope.help_var = !help_var;
+        console.log("$scope.help_var : "+$scope.help_var );
+    }
+
     $scope.closeNeedHelp = function () {
         console.log("closeNeedHelp-->");
         console.log("$scope.help_var : "+$scope.help_var );

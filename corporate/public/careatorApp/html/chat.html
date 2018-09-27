@@ -276,8 +276,8 @@
                                     </div>
                                     <div class="col-sm-4 col-xs-3" style="float:right; margin-top: 10px;">
                                         <div class="form-group has-feedback" ng-if="chatListSection != undefined &&chatListSection != null">
-                                            <input id="composeText" type="text" class="form-control" ng-model="searchtext" name="searchText" placeholder="Search text">
-                                            <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                                            <!-- <input id="composeText" type="text" class="form-control" ng-model="searchtext" name="searchText" placeholder="Search text">
+                                            <span class="glyphicon glyphicon-search form-control-feedback"></span> -->
                                         </div>
                                     </div>
 
@@ -390,7 +390,7 @@
                                                                 <img style="max-width:200px;" ng-src="{{chat.chatFile_src}}">
                                                             </div>
                                                             <div ng-if="chat.messageType!='file'" class="message-text">
-{{chat.message | filter:searchtext}}
+{{chat.message}}
                                                             </div>
                                                             <span class="message-time pull-right">
                                                                 {{chat.sendTime | amCalendar}}
@@ -410,7 +410,7 @@
                                                     <!-- <iframe ng-src="{{chat.message}}" width="100%" /> -->
                                                 </div>
                                                 <div class="message-text" ng-if="chat.messageType!='file'">
-{{chat.message | filter:searchtext}}
+                                                    {{chat.message}}
                                                 </div>
                                                 <span class="message-time pull-right">
                                                     {{chat.sendTime | amCalendar}}

@@ -3530,16 +3530,15 @@ module.exports.careator_needHelp = function (req, res) {
             console.log(error);
             responseData = {
                 status: true,
-                message: "insert Successfull and Failed to send mail",
-                data: data
+                message: "insert Successfull and Failed to send mail"
+                
             };
             res.status(200).send(responseData);
         } else {
             console.log("Email sent: " + info.response);
             responseData = {
                 status: true,
-                message: "Successfully mail sent",
-                data: data
+                message: "Successfully mail sent"
             };
             res.status(200).send(responseData);
         }

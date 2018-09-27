@@ -35,6 +35,7 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
 
     $scope.closeNeedHelp = function () {
         console.log("closeNeedHelp-->");
+        console.log("$scope.help_var : "+$scope.help_var );
         $scope.help_var = false;
         console.log("$scope.help_var : "+$scope.help_var );
     }

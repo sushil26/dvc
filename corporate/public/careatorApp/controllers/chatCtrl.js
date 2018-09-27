@@ -1313,13 +1313,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
     console.log("newMessage-back");
   });
   // /* ### End: Front end CSS ### */
-  $("#comment").keyup(function (event) {
-    if (event.keyCode === 13) {
-      // $(this).val('');
-      $scope.sendText();
-      $("#comment").val("");
-    }
-  });
+ 
 
   ///Auto Scroll Down Chat////////////////
   $scope.scrollDown = function () {

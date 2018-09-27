@@ -65,7 +65,7 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
         else {
             SweetAlert.swal({
                 title: "Not valid",
-                text: "Valid data required", //light text
+                text: "All the fields are required", //light text
                 type: "warning",
             })
         }

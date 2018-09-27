@@ -4,8 +4,8 @@ careatorApp.controller('createUsersCtrl', function ($scope, $rootScope, $state, 
     $scope.userData = careatorSessionAuth.getAccess("userData");
     console.log(" $scope.userData : " + JSON.stringify($scope.userData));
     var orgId = $scope.userData.orgId;
-    console.log("$scope.orgDatas: "+JSON.stringify($scope.orgDatas.domain));
-    console.log("$rootScope.orgDatas: "+JSON.stringify($rootScope.orgDatas.domain));
+    //console.log("$scope.orgDatas: "+JSON.stringify($scope.orgDatas.domain));
+    console.log("$rootScope.orgDatas: "+JSON.stringify($rootScope.orgDatas));
 //console.log("$rootScope.orgDatas: "+JSON.stringify($rootScope.orgDatas));
     //$scope.domainName = $rootScope.orgDatas.domain;
 

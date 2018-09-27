@@ -46,7 +46,7 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
         $scope.help_var = false;
         console.log("$scope.help_var : "+$scope.help_var );
     }
-    $scope.needHelp_submit = function (formName, needHelp_query) {
+    $scope.needHelp_submit = function (formName, needHelp_name, needHelp_email, needHelp_query) {
         console.log("needHelp_submit-->");
         $scope.submitted=true; /* ### Note: Front end validation for check the form submission ### */
         var obj = {};
@@ -54,8 +54,8 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
         if (formName.$valid) {
 
             obj = {
-                "name": $scope.needHelp_name,
-                "email": $scope.needHelp_email,
+                "name": needHelp_name,
+                "email": needHelp_email,
                 "query": needHelp_query
             }
             console.log("obj: "+JSON.stringify(obj));

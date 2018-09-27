@@ -12,7 +12,7 @@ var nodemailer = require('nodemailer');
 var transporter = nodemailer.createTransport({
     service: "godaddy",
     auth: {
-        user: "info@vc4all.in",
+        user: "info@norecruits.com",
         pass: "ctpl@123"
     },
     tls: {
@@ -257,10 +257,10 @@ module.exports.organizationCreate = function (req, res) {
                     }
                 } else {
                     var mailOptions = {
-                        from: "info@vc4all.in",
+                        from: "info@norecruits.com",
                         to: req.body.email,
                         subject: "Regarding VC4ALL Credential",
-                        html: "<table style='border:10px solid gainsboro;'><thead style='background-image: linear-gradient(to bottom, #00BCD4 0%, #00bcd40f 100%);'><tr><th><h2>Greetings from VC4ALL</h2></th></tr></thead><tfoot style=background:#00bcd4;color:white;><tr><td style=padding:15px;><p><p>Regards</p><b>Careator Technologies Pvt. Ltd</b></p></td></tr></tfoot><tbody><tr><td><b>Dear Admin,</b></td></tr><tr><td><p>Please note, you have to use the following credential for login. <p style=background:gainsboro;>Here your link and credential for login.</p> <p> Link: <a href='https://vc4all.in'>https://vc4all.in/</a> </p><p> Email: " + req.body.email + "</p><p> Password: " + req.body.pswd + "</p></td></tr></tbody></table>"
+                        html: "<table style='border:10px solid gainsboro;'><thead style='background-image: linear-gradient(to bottom, #00BCD4 0%, #00bcd40f 100%);'><tr><th><h2>Greetings from VC4ALL</h2></th></tr></thead><tfoot style=background:#00bcd4;color:white;><tr><td style=padding:15px;><p><p>Regards</p><b>Careator Technologies Pvt. Ltd</b></p></td></tr></tfoot><tbody><tr><td><b>Dear Admin,</b></td></tr><tr><td><p>Please note, you have to use the following credential for login. <p style=background:gainsboro;>Here your link and credential for login.</p> <p> Link: <a href='https://norecruits.com'>https://norecruits.com/</a> </p><p> Email: " + req.body.email + "</p><p> Password: " + req.body.pswd + "</p></td></tr></tbody></table>"
                         // html: "<html><head><p><b>Dear Parents, </b></p><p>Please note, you have to attend meeting regarding <b>" + req.body.reason + " </b>please open the below link at sharp " + req.body.startAt + " to " + req.body.endAt + "</p><p style=background:gainsboro;>Here your link and password for meeting <a href=" + req.body.url + ">" + req.body.url + "</a> and Password: " + password + "</p><p>Regards</p><p><b>Careator Technologies Pvt. Ltd</b></p></head><body></body></html>"
                     };
                     console.log("mailOptions: " + JSON.stringify(mailOptions));

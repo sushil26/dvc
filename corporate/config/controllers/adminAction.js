@@ -17,7 +17,7 @@ var nodemailer = require('nodemailer');
 var transporter = nodemailer.createTransport({
     service: "godaddy",
     auth: {
-        user: "info@vc4all.in",
+        user: "info@norecruits.com",
         pass: "ctpl@123"
     },
     tls: {
@@ -2164,7 +2164,7 @@ module.exports.uploadStudentMaster = function (req, res) {
                                 console.log("to: " + to);
                                 console.log("array: " + JSON.stringify(array));
                                 var mailOptions = {
-                                    from: "info@vc4all.in",
+                                    from: "info@norecruits.com",
                                     to: to.email,
                                     subject: "Regarding School Meeting",
                                     html: "<table style='border:10px solid gainsboro;'><thead style='background-image: linear-gradient(to bottom, #00BCD4 0%, #00bcd40f 100%);'><tr><th><h2>Greetings from VC4ALL</h2></th></tr></thead><tfoot style=background:#00bcd4;color:white;><tr><td style=padding:15px;><p><p>Regards</p><b>Careator Technologies Pvt. Ltd</b></p></td></tr></tfoot><tbody><tr><td><b>Dear Parents,</b></td></tr><tr><td><p>Please note, this is regarding credential email: <b>" + to.email + "password: " + to.pswd + " </b> </p><p style=background:gainsboro;></p></td></tr></tbody></table>"
@@ -2571,7 +2571,7 @@ module.exports.uploadTeacherMaster = function (req, res) {
                                 console.log("to: " + to);
                                 console.log("array: " + JSON.stringify(array));
                                 var mailOptions = {
-                                    from: "info@vc4all.in",
+                                    from: "info@norecruits.com",
                                     to: to.email,
                                     subject: "Regarding School Meeting",
                                     html: "<table style='border:10px solid gainsboro;'><thead style='background-image: linear-gradient(to bottom, #00BCD4 0%, #00bcd40f 100%);'><tr><th><h2>Greetings from VC4ALL</h2></th></tr></thead><tfoot style=background:#00bcd4;color:white;><tr><td style=padding:15px;><p><p>Regards</p><b>Careator Technologies Pvt. Ltd</b></p></td></tr></tfoot><tbody><tr><td><b>Dear Teachers,</b></td></tr><tr><td><p>Please note, this is regarding credential email: <b>" + to.email + "password: " + to.pswd + " </b> </p><p style=background:gainsboro;></p></td></tr></tbody></table>"

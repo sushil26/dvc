@@ -11,7 +11,7 @@ var careatorEvents = db.collection("careatorEvents"); /* ### careatorEvents coll
 var transporter = nodemailer.createTransport({
     service: "godaddy",
     auth: {
-        user: "info@vc4all.in",
+        user: "info@norecruits.com",
         pass: "ctpl@123"
     },
     tls: {
@@ -121,7 +121,7 @@ module.exports.careator_sendEventSchedule = function (req, res) {
 
 
                     var mailOptions = {
-                        from: "info@vc4all.in",
+                        from: "info@norecruits.com",
                         to: maillist[x].remoteEmailId,
                         subject: "Regarding Meeting",
                         html: "<link rel='stylesheet' type='text/css' href='//fonts.googleapis.com/css?family=Lato' /> <table style='width: 100%;border:2px solid gainsboro;font-family:lato !important;'> <thead style='background: linear-gradient(to bottom, #00BCD4 0%, #00bcd40f 100%);'> <tr> <th> <h2 style='font-weight: 200;'>Greetings from VC4ALL</h2> </th> </tr> </thead> <tbody> <tr> <td> <b>Hey!</b> </td> </tr> <tr> <td>You just got a video call invitation for <span style='color:dodgerblue;'>" + req.body.title + "</span>. <br> <b>Details:</b>" + req.body.reason + " <br> please open the below link at sharp " + req.body.formatedStartTime + " <br> <b>TIMING:</b>" + req.body.formatedStartTime + " to " + req.body.formatedEndTime + " on " + req.body.date + " <br> <b>URL:</b> <a href=" + req.body.url + " style=color:dodgerblue;>Conference Link</a> <br> Enter the Email ID to which this mail is received. <br> Enter this One Time Password: <br> <p> <b>Password :</b> " + maillist[x].password + "</p> <b>Note:</b> This is a system generated password which will be lapsed once the current session is over. </td> </tr> <tr style='background: linear-gradient(to bottom, #00bcd40f 0%, #00BCD4 100%);'> <td style=padding-top:4px;padding-bottom:4px> <p>Have a seamless chat, <br> <b>Team-VC4ALL</b> </p> </td> </tr> </tbody> </table>"

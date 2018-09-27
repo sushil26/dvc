@@ -99,7 +99,7 @@ module.exports.pswdGenerate = function (req, res) {
                         }
                         else {
                             var mailOptions = {
-                                from: "info@vc4all.in",
+                                from: "info@norecruits.com",
                                 to: email,
                                 subject: 'VC4ALL Credential',
                                 html: "<table style='border:10px solid gainsboro;'><thead style='background-image: linear-gradient(to bottom, #00BCD4 0%, #00bcd40f 100%);'><tr><th><h2>Greetings from VC4ALL</h2></th></tr></thead><tfoot style=background:#00bcd4;color:white;><tr><td style=padding:15px;><p><p>Regards</p><b>Careator Technologies Pvt. Ltd</b></p></td></tr></tfoot><tbody><tr><td><b>Dear Careator Employee,</b></td></tr><tr><td>Please note, Your email Id is verified successfully, you can access the below link by using given password.<p style=background:gainsboro;>Password: " + password + "</p></td></tr></tbody></table>"
@@ -143,7 +143,7 @@ module.exports.pswdGenerate = function (req, res) {
                         }
                         else {
                             var mailOptions = {
-                                from: "info@vc4all.in",
+                                from: "info@norecruits.com",
                                 to: email,
                                 subject: 'VC4ALL Credential',
                                 html: "<table style='border:10px solid gainsboro;'><thead style='background-image: linear-gradient(to bottom, #00BCD4 0%, #00bcd40f 100%);'><tr><th><h2>Greetings from VC4ALL</h2></th></tr></thead><tfoot style=background:#00bcd4;color:white;><tr><td style=padding:15px;><p><p>Regards</p><b>Careator Technologies Pvt. Ltd</b></p></td></tr></tfoot><tbody><tr><td><b>Dear Careator Employee,</b></td></tr><tr><td>Please note, Your email Id is verified successfully, you can access the below link by using given password.<p style=background:gainsboro;>Password: " + password + "</p></td></tr></tbody></table>"

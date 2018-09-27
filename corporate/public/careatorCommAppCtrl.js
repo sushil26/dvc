@@ -71,7 +71,7 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
                     console.log(" $scope.notifyMsg: " + $scope.notifyMsg);
                     // $("#alertButton").trigger("click");
                     SweetAlert.swal({
-                        title: "Craeted",
+                        title: "Successfull",
                         text: $scope.notifyMsg,
                         type: "success"
                     });

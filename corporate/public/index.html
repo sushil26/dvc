@@ -439,8 +439,8 @@ border-radius: 50%;
   
         <div class="animated jello faster">
           <div class="modal-dialog">
-  
             <div class="modal-content" style="background:none;color:#777;width:300px; border-radius: 8px;">
+              <form name="needHelp_form">
               <div class="modal-header" style="padding-top: 15px;    background: #f8f8f8; height: 60px;">
                 <img style="width: 45px; float: left;" src="/home/img/fav.png" />
                 <span class="modal-title" style="font-size: 20px;
@@ -456,26 +456,38 @@ border-radius: 50%;
                 border: none;
                 height: 40px;
                 color: #d1cece;"
-                  class="form-control" placeholder="Name">
+                name="nh_name"
+                ng-model="needHelp_name"
+                  class="form-control" placeholder="Name" required>
+                  <span ng-show="(needHelp_form.nh_name.$touched || submitted) && needHelp_form.nh_name.$error.required" class="validation_fe">User
+                      Name is required</span>
                 <br>
                 <input type="email" style="background: #000000b8;
                 border: none;
                 height: 40px;
                 color: #d1cece;"
-                  class="form-control" placeholder="Email">
-  
+                name="nh_email"
+                ng-model="needHelp_email"
+                  class="form-control" placeholder="Email" required>
+                  <span ng-show="(needHelp_form.nh_email.$touched || submitted) && needHelp_form.nh_email.$error.required" class="validation_fe">Email Id
+                      is required</span>
                 <br>
                 <textarea style="background: #000000b8;
                   border: none;
                   height: 80px;
                   color: #d1cece;"
-                  class="form-control" placeholder="Query"></textarea>
+                  name="nh_query"
+                  ng-model="needHelp_query"
+                  class="form-control" placeholder="Query/Message" required></textarea>
+                  <span ng-show="(needHelp_form.nh_query.$touched || submitted) && needHelp_form.nh_query.$error.required" class="validation_fe"> Query/Message
+                      is required</span>
   
               </div>
               <div class="modal-footer" style="padding: 15px; background: #f8f8f8;height: 60px;">
                 <button type="button" style="width:100px;background-color: #9abd3e;color:#f1f1f1;padding: 5px;" class="btn"
-                  ng-click="closeNeedHelp()">Send</button>
+                  ng-click="needHelp_submit(needHelp_form, needHelp_query)">Send</button>
               </div>
+            </form>
             </div>
   
           </div>

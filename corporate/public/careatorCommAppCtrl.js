@@ -2,10 +2,10 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
     console.log("Chat controller==>");
 
     careatorHttpFactory.getFile('property.json');
-    $scope.help_var =false;
-    $scope.home = function(){
+    $scope.help_var = false;
+    $scope.home = function () {
         console.log("home trigger-->");
-        window.location.href="https://norecruits.com";
+        window.location.href = "https://norecruits.com";
     }
 
     $scope.gotToDashboard = function () {
@@ -33,9 +33,38 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
         }
     }
 
-    $scope.closeNeedHelp = function(){
+    $scope.closeNeedHelp = function () {
         console.log("closeNeedHelp-->");
+        console.log("$scope.help_var : "+$scope.help_var );
         $scope.help_var = false;
+        console.log("$scope.help_var : "+$scope.help_var );
+    }
+    $scope.needHelp_submit = function (formName, needHelp_query) {
+        console.log("needHelp_submit-->");
+        $scope.submitted=true; /* ### Note: Front end validation for check the form submission ### */
+        var obj = {};
+
+        if (formName.$valid) {
+
+            obj = {
+                "name": $scope.needHelp_name,
+                "email": $scope.needHelp_email,
+                "query": needHelp_query
+            }
+            console.log("obj: "+JSON.stringify(obj));
+
+        }
+
+        else {
+            SweetAlert.swal({
+                title: "Not valid",
+                text: "Valid data required", //light text
+                type: "warning",
+            })
+        }
+
+        $scope.help_var = false;
+        console.log("$scope.help_var : "+$scope.help_var );
     }
 
     $scope.getLogin_hostDetailsById = function (id) {
@@ -107,7 +136,7 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
     $scope.statusUpdate = function (status, id) {
         console.log("statusUpdate-->: " + status);
 
-        
+
         api = "https://norecruits.com/careator_profile/chatStatusUpdateById/" + id;
         console.log("api: " + api);
         var obj = {
@@ -384,7 +413,7 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
         },
             function (isConfirm) { //Function that triggers on user action.
                 if (isConfirm) {
-                    
+
                     var id = $scope.userData.userId;
                     var api = "https://norecruits.com/careator_loggedin/getLoggedinSessionURLById/" + id;
                     console.log("api: " + api);
@@ -425,7 +454,7 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
                             SweetAlert.swal({
                                 title: "Logged Out",
                                 type: "success"
-        
+
                             });
                         } else {
                             console.log("Sorry");
@@ -433,7 +462,7 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
                             SweetAlert.swal({
                                 title: "Logged Out",
                                 type: "success"
-        
+
                             });
                         }
                     })
@@ -524,8 +553,8 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
 
     $("#helpChat").click(function () {
         console.log("helpChat clicked-->");
-        $("#helpmodal").css({"display":"inline"})
-    
+        $("#helpmodal").css({ "display": "inline" })
+
     })
     /* #### End: Logout request from server(index.js) #### */
 

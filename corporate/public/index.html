@@ -1221,7 +1221,7 @@ border-radius: 50%;
       <div class="modal animated jello faster " id="crdntl" role="dialog">
         <div class="modal-dialog">
           <center>
-            <form>
+<form ng-keyup="$event.keyCode == 13 && logVC(email, password)">
               <div class="modal-content" style="background:none;color:#777;max-width:450px; border-radius: 8px;">
                 <div class="modal-header" style="padding-top: 15px;    background: #f8f8f8; height: 60px;">
                   <img style="width: 45px; float: left;" src="/home/img/fav.png" />
@@ -1233,13 +1233,14 @@ border-radius: 50%;
                   <button type="button" class="close" data-dismiss="modal" ng-click="$close()">&times;</button>
                 </div>
                 <div class="modal-body">
-                  <input ng-keyup="$event.keyCode == 13 && logVC(email, Password)" type="email" style="background: #000000b8;
+<input ng-keyup="$event.keyCode == 13 && logVC(email, password)"
+  type="email" style="background: #000000b8;
                   border: none;
                   height: 40px;
                   color: #d1cece;"
                     class="form-control" placeholder="Email" ng-model="email" id="crdEmail">
                   <br>
-                  <input ng-keyup="$event.keyCode == 13 && logVC(email, Password)" type="password" style="background: #000000b8;
+<input ng-keyup="$event.keyCode == 13 && logVC(email, password)" type="password" style="background: #000000b8;
                   border: none;
                   height: 40px;     color: #d1cece;"
                     id="crdPswd" class="form-control" placeholder="Password" ng-model="password">

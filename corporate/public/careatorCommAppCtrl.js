@@ -59,6 +59,7 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
                 "query": needHelp_query
             }
             console.log("obj: "+JSON.stringify(obj));
+            $scope.help_var = false;
 
         }
 
@@ -69,9 +70,7 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
                 type: "warning",
             })
         }
-
-        $scope.help_var = false;
-        console.log("$scope.help_var : "+$scope.help_var );
+     
     }
 
     $scope.getLogin_hostDetailsById = function (id) {

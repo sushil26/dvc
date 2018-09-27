@@ -426,61 +426,62 @@ border-radius: 50%;
 
 
 
-    <div class="helpbox" ng-show="help_var" style="position: fixed;
-    left: 15px;
-    bottom: 15px; min-height: 350px;
-    z-index: 2;">
-
-      <div class="animated jello faster">
-        <div class="modal-dialog">
-
-          <div class="modal-content" style="background:none;color:#777;width:300px; border-radius: 8px;">
-            <div class="modal-header" style="padding-top: 15px;    background: #f8f8f8; height: 60px;">
-              <img style="width: 45px; float: left;" src="/home/img/fav.png" />
-              <span class="modal-title" style="font-size: 20px;
-              margin-top: 3px;
-              font-weight: 300;
-              float: left;
-              color: rgb(67, 67, 67);">&nbsp;Need
-                Help ??</span>
-              <button type="button" class="close" ng-click="closeNeedHelp()">&times;</button>
-            </div>
-            <div class="modal-body" style="background:white;">
-              <input type="text" style="background: #000000b8;
-              border: none;
-              height: 40px;
-              color: #d1cece;"
-                class="form-control" placeholder="Name">
-              <br>
-              <input type="email" style="background: #000000b8;
-              border: none;
-              height: 40px;
-              color: #d1cece;"
-                class="form-control" placeholder="Email">
-
-              <br>
-              <textarea style="background: #000000b8;
-                border: none;
-                height: 80px;
-                color: #d1cece;"
-                class="form-control" placeholder="Query"></textarea>
-
-            </div>
-            <div class="modal-footer" style="padding: 15px; background: #f8f8f8;height: 60px;">
-              <button type="button" style="width:100px;background-color: #9abd3e;color:#f1f1f1;padding: 5px;" class="btn"
-                ng-click="closeNeedHelp()">Send</button>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-    </div>
+  
 
     <div id="page" ui-view>
       <button class="help" ng-click="help_var=!help_var">
         &nbsp; Need Help ?? &nbsp;
       </button>
+      <div class="helpbox" ng-show="help_var" style="position: fixed;
+      left: 15px;
+      bottom: 15px; min-height: 350px;
+      z-index: 2;">
+  
+        <div class="animated jello faster">
+          <div class="modal-dialog">
+  
+            <div class="modal-content" style="background:none;color:#777;width:300px; border-radius: 8px;">
+              <div class="modal-header" style="padding-top: 15px;    background: #f8f8f8; height: 60px;">
+                <img style="width: 45px; float: left;" src="/home/img/fav.png" />
+                <span class="modal-title" style="font-size: 20px;
+                margin-top: 3px;
+                font-weight: 300;
+                float: left;
+                color: rgb(67, 67, 67);">&nbsp;Need
+                  Help ??</span>
+                <button type="button" class="close" ng-click="closeNeedHelp()">&times;</button>
+              </div>
+              <div class="modal-body" style="background:white;">
+                <input type="text" style="background: #000000b8;
+                border: none;
+                height: 40px;
+                color: #d1cece;"
+                  class="form-control" placeholder="Name">
+                <br>
+                <input type="email" style="background: #000000b8;
+                border: none;
+                height: 40px;
+                color: #d1cece;"
+                  class="form-control" placeholder="Email">
+  
+                <br>
+                <textarea style="background: #000000b8;
+                  border: none;
+                  height: 80px;
+                  color: #d1cece;"
+                  class="form-control" placeholder="Query"></textarea>
+  
+              </div>
+              <div class="modal-footer" style="padding: 15px; background: #f8f8f8;height: 60px;">
+                <button type="button" style="width:100px;background-color: #9abd3e;color:#f1f1f1;padding: 5px;" class="btn"
+                  ng-click="closeNeedHelp()">Send</button>
+              </div>
+            </div>
+  
+          </div>
+        </div>
+  
+      </div>
       <!--==========================
     Header
 ============================-->

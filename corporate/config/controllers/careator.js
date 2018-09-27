@@ -22,7 +22,7 @@ var existEmpId = null; /* ### Note: Marker for user create ### */
 var transporter = nodemailer.createTransport({
     service: "godaddy",
     auth: {
-        user: "info@norecruits.com",
+        user: "info@vc4all.in",
         pass: "ctpl@123"
     },
     tls: {
@@ -3517,13 +3517,14 @@ module.exports.getLoggedinSessionURLById = function (req, res) {
 
 module.exports.careator_needHelp = function (req, res) {
     console.log("careator_needHelp-->");
+    console.log("req.body.email: "+req.body.email+" req.body.query: "+req.body.query);
     if(general.emptyCheck(req.body.email) && general.emptyCheck(req.body.query))
 
     var mailOptions = {
         from: req.body.email,
         to: "logeswari.g@careator.com",
         subject: 'VC4ALL Credential',
-        html: "<table style='border:10px solid gainsboro;'><thead style='background-image: linear-gradient(to bottom, #00BCD4 0%, #00bcd40f 100%);'></thead><tfoot style=background:#00bcd4;color:white;><tr><td style=padding:15px;><p><p>Regards</p><b>Careator Technologies Pvt. Ltd</b></p></td></tr></tfoot><tbody><tr><td><b>Dear Careator Employee,</b></td></tr><tr><td><b>User Name : "+req.body.name+"</b></td></tr><tr><td>"+req.body.query+"</td></tr></tbody></table>"
+        html: "<table style='border:10px solid gainsboro;'><thead style='background-image: linear-gradient(to bottom, #00BCD4 0%, #00bcd40f 100%);'></thead><tfoot style=background:#00bcd4;color:white;><tr><td style=padding:15px;><p><p>Regards</p><b>Careator Technologies Pvt. Ltd</b></p></td></tr></tfoot><tbody><tr><td><b>Dear Careator Admin,</b></td></tr><tr><td><b>User Name : "+req.body.name+"</b></td></tr><tr><td>"+req.body.query+"</td></tr></tbody></table>"
     };
     transporter.sendMail(mailOptions, function (error, info) {
         if (error) {
@@ -3531,7 +3532,6 @@ module.exports.careator_needHelp = function (req, res) {
             responseData = {
                 status: false,
                 message: "Try again"
-                
             };
             res.status(200).send(responseData);
         } else {
@@ -3543,6 +3543,4 @@ module.exports.careator_needHelp = function (req, res) {
             res.status(200).send(responseData);
         }
     });
-
-
 }

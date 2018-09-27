@@ -36,6 +36,7 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
     $scope.closeNeedHelp = function () {
         console.log("closeNeedHelp-->");
         $scope.help_var = false;
+        console.log("$scope.help_var : "+$scope.help_var );
     }
     $scope.needHelp_submit = function (formName, needHelp_query) {
         console.log("needHelp_submit-->");
@@ -62,6 +63,7 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
         }
 
         $scope.help_var = false;
+        console.log("$scope.help_var : "+$scope.help_var );
     }
 
     $scope.getLogin_hostDetailsById = function (id) {

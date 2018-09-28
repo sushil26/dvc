@@ -1352,7 +1352,7 @@ console.log("id2**: " + id2);
         // );
 
         $("#portfolio-wrapper").append(
-          '<div id="videoElem111" class="portfolio-items col-xs-4 col-sm-4 col-md-4 col-lg-3"><div id="videosAttach"></div><div class="details"><button id="fullscreenbtn" class="btn fa fa-expand" style="float:left; margin-top: 10px; margin-left: 10px; margin-right: 10px;"></button><h4>' +
+          '<div id="videoElem111" class="portfolio-items col-xs-4 col-sm-4 col-md-4 col-lg-3"><div id="videosAttach"></div><div class="details"><h4>' +
           userName +
           "</h4> </div></div>"
         );

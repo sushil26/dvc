@@ -2,7 +2,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
   console.log("chatCtrl==>");
   $scope.count = 0;
   $scope.chatMessage = {typedMessage: ""} /* ### Note: $scope.chatMessage is text area variable of chat window  ### */
-  $scope.isChatFileSelected =false;
+  $scope.isChatFileSelected =false; /* ### Note: $scope.isChatFileSelected is watch whether file is uploading or not based on this send button function changes in chat  ### */
   var userData = careatorSessionAuth.getAccess("userData");
   $scope.userData = userData;
   $scope.loginUserName = userData.firstName + " " + userData.lastName;

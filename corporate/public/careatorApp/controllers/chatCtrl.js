@@ -516,6 +516,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
     );
     $scope.readText();
   };
+  $scope.chatMessage = {typedMessage: ""}
 
   $scope.sendText = function (typedMessage) {
     $("#comment").val("");
@@ -788,7 +789,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
 
   $scope.sendTextByHit = function(){
     console.log("sendTextByHit-->");
-    console.log("$scope.message.typedMessage: "+$scope.message.typedMessage);
+    console.log("$scope.chatMessage.typedMessage: "+$scope.chatMessage.typedMessage);
     if($scope.typedMessage!="" && $scope.typedMessage!=undefined)
     {
       $scope.sendText($scope.typedMessage);

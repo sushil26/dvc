@@ -668,16 +668,8 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
       careatorHttpFactory.chatUpload(api, obj).then(function (data) {
         console.log("hello " + JSON.stringify(data));
         var checkStatus = careatorHttpFactory.dataValidation(data);
-        //$scope.chatFile = undefined;
-        $scope.$watch($scope.chatFile, function (newValue, oldValue) {
-          
-          var chatFile = undefined;
-          // angular copy will preserve the reference of $scope.someVar
-          // so it will not trigger another digest 
-          angular.copy(chatFile, $scope.chatFile);
-          console.log("$scope.chatFile updated as "+$scope.chatFile);
-
-        });
+        $scope.chatFile = undefined;
+        document.getElementById('fileselect').value = undefined;
 
         //   $scope.progress = 'progress: ' + progress + '% '; // capture upload progress
         if (checkStatus) {

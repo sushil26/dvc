@@ -519,9 +519,9 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
 
   $scope.sendText = function (typedMessage) {
     $("#comment").val("");
-   // $scope.typedMessage = typedMessage;
+    // $scope.typedMessage = typedMessage;
     console.log("sendText-->");
-    console.log("chatFile: "+JSON.stringify($scope.chatFile));
+    console.log("chatFile: " + JSON.stringify($scope.chatFile));
     //  console.log("chatFile: "+$scope.chatFile);
     console.log("typedMessage: " + typedMessage);
     var api;
@@ -584,7 +584,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
           receiverId: $scope.receiverData.receiverId,
           senderName: userData.firstName + " " + userData.lastName,
           receiverName: $scope.receiverData.receiverName,
-          message:typedMessage
+          message: typedMessage
         };
         console.log("obj: " + JSON.stringify(obj));
         careatorHttpFactory.post(api, obj).then(function (data) {
@@ -618,7 +618,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
           groupMembers: $scope.sendGroupText_withData.groupMembers,
           senderId: userData.userId,
           senderName: userData.firstName + " " + userData.lastName,
-          message:typedMessage
+          message: typedMessage
         };
         console.log("obj: " + JSON.stringify(obj));
         api = "https://norecruits.com//careator_groupText/groupText";
@@ -668,12 +668,22 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
       careatorHttpFactory.chatUpload(api, obj).then(function (data) {
         console.log("hello " + JSON.stringify(data));
         var checkStatus = careatorHttpFactory.dataValidation(data);
-        $scope.chatFile = undefined;
+        //$scope.chatFile = undefined;
+        scope.$watch($scope.chatFile, function (newValue, oldValue) {
+          
+          var chatFile = undefined;
+          // angular copy will preserve the reference of $scope.someVar
+          // so it will not trigger another digest 
+          angular.copy(chatFile, $scope.chatFile);
+          console.log("$scope.chatFile updated as "+$scope.chatFile);
+
+        });
+
         //   $scope.progress = 'progress: ' + progress + '% '; // capture upload progress
         if (checkStatus) {
           var uploadResponse = data.data;
           console.log("$scope.photo" + JSON.stringify(uploadResponse));
-         
+
           /* ##### Start send file info  ##### */
 
           var api;
@@ -1315,7 +1325,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
     console.log("newMessage-back");
   });
   // /* ### End: Front end CSS ### */
- 
+
 
   ///Auto Scroll Down Chat////////////////
   $scope.scrollDown = function () {

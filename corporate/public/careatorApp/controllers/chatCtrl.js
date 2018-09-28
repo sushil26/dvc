@@ -521,9 +521,11 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
 
   $scope.sendText = function () {
     $("#comment").val("");
-    var typedMessage = $scope.chatMessage.typedMessage;
+    
     console.log("sendText-->");
-    console.log("chatFile: " + JSON.stringify($scope.chatFile));
+    if($scope.chatMessage.typedMessage!=''){
+      var typedMessage = $scope.chatMessage.typedMessage;
+    //console.log("chatFile: " + JSON.stringify($scope.chatFile));
     //  console.log("chatFile: "+$scope.chatFile);
     console.log("typedMessage: " + typedMessage);
     var api;
@@ -648,6 +650,10 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
         });
       }
     }
+  }
+  else{
+
+  }
   };
 
   $scope.sendTextWithFile = function (chatFile) {

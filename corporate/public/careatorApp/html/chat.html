@@ -421,6 +421,7 @@
 
                                     </div>
                                 </div>
+                                ----<h5 ng-if="chatFile==undefined">UNdefined</h5>---<h5 ng-if="chatFile!=undefined">notUNdefined</h5>
                                 <div class="row reply" ng-if="chatListSection != undefined &&chatListSection != null">
                                     <div class="col-sm-9 col-xs-9 reply-main">
 
@@ -432,7 +433,6 @@
                                         <label for="fileselect">
                                             <i style="color: gray;" class="fa fa-paperclip fa-2x"> </i>
                                         </label>
-                                        ----<h5 ng-if="chatFile==undefined">UNdefined</h5>---<h5 ng-if="chatFile!=undefined">notUNdefined</h5>
                                         <form name="upload_form">
 
                                             <input id="fileselect" value="Upload" style="display: none;" type="file" ngf-select ng-model="image" name="file" ngf-pattern="'image/*'"

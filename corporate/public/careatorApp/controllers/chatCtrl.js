@@ -648,9 +648,10 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
   };
 
 
-  $scope.sendTextWithFile = function (chatFile) {
+  $scope.sendTextWithFile = function () {
     $("#fileselect").val("");
     console.log("sendTextWithFile-->");
+    chatFile = $scope.chatFile;
 
     // if (upload_form.file.$valid && chatFile) { //check if from is valid
 

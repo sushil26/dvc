@@ -560,7 +560,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
           receiverId: $scope.receiverData.receiverId,
           senderName: userData.firstName + " " + userData.lastName,
           receiverName: $scope.receiverData.receiverName,
-          message:typedMessage
+          message: typedMessage
         };
         console.log("obj: " + JSON.stringify(obj));
         careatorHttpFactory.post(api, obj).then(function (data) {
@@ -583,7 +583,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
           receiverId: $scope.receiverData.receiverId,
           senderName: userData.firstName + " " + userData.lastName,
           receiverName: $scope.receiverData.receiverName,
-          message: typedMessage
+          message:typedMessage
         };
         console.log("obj: " + JSON.stringify(obj));
         careatorHttpFactory.post(api, obj).then(function (data) {
@@ -617,7 +617,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
           groupMembers: $scope.sendGroupText_withData.groupMembers,
           senderId: userData.userId,
           senderName: userData.firstName + " " + userData.lastName,
-          message: typedMessage
+          message:typedMessage
         };
         console.log("obj: " + JSON.stringify(obj));
         api = "https://norecruits.com//careator_groupText/groupText";
@@ -648,7 +648,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
 
 
   $scope.sendTextWithFile = function (chatFile) {
-    $("#comment").val("");
+    $("#fileselect").val("");
     console.log("sendTextWithFile-->");
 
     // if (upload_form.file.$valid && chatFile) { //check if from is valid

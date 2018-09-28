@@ -436,7 +436,7 @@
 
                                             <input id="fileselect" value="Upload" style="display: none;" type="file" ngf-select ng-model="image" name="file" ngf-pattern="'image/*'"
                                                 accept="image/*" ngf-max-size="20MB" file-model="chatFile" />
-                                        </form>----
+                                        </form>----<p ng-if="chatFile==undefined">UNdefined</p>---
                                         <span style="    position: absolute;
                                         left: 35px;
                                         bottom: 10px;">
@@ -480,6 +480,8 @@
 
     </section>
     <button data-toggle="modal" data-target="#alertcreatuser" id="alertButton" data-backdrop="static" data-keyboard="false" style="display:none"></button>
+
+
     <div class="modal fade" id="alertcreatuser" role="dialog">
         <div class="modal-dialog">
             <center>

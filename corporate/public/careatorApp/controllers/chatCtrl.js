@@ -1,6 +1,7 @@
 careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFactory, careatorSessionAuth, SweetAlert, $q) {
   console.log("chatCtrl==>");
   $scope.count = 0;
+  $scope.chatMessage = {typedMessage: ""}
   var userData = careatorSessionAuth.getAccess("userData");
   $scope.userData = userData;
   $scope.loginUserName = userData.firstName + " " + userData.lastName;
@@ -516,11 +517,11 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
     );
     $scope.readText();
   };
-  $scope.chatMessage = {typedMessage: ""}
+ 
 
   $scope.sendText = function (typedMessage) {
     $("#comment").val("");
-    // $scope.typedMessage = typedMessage;
+    var typedMessage = $scope.chatMessage.typedMessage;
     console.log("sendText-->");
     console.log("chatFile: " + JSON.stringify($scope.chatFile));
     //  console.log("chatFile: "+$scope.chatFile);
@@ -547,7 +548,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
         careatorHttpFactory.post(api, obj).then(function (data) {
           console.log("data--" + JSON.stringify(data.data));
           var checkStatus = careatorHttpFactory.dataValidation(data);
-          $scope.typedMessage = "";
+          $scope.chatMessage = {typedMessage: ""}
           if (checkStatus) {
             console.log("data.data.data: " + JSON.stringify(data.data.data));
             console.log(data.data.message);

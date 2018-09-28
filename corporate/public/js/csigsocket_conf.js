@@ -1345,7 +1345,7 @@ console.log("id2**: " + id2);
         var local_media = USE_VIDEO ? $("<video>") : $();
         local_media.prop("muted", true); /* always mute ourselves by default */
         local_media.attr("id", "videoElem");
-        local_media.attr("autoplay", "true");
+        local_media.attr("autoplay", "autoplay");
         // local_media.attr(
         //   "style",
         //   "border:1px solid skyblue;display:inline !important"
@@ -1569,7 +1569,7 @@ console.log("id2**: " + id2);
                 /* ### Start: Loader Start and Stop ### */
                 $("#videoElem").on('loadstart', function (event) {
                   $(this).addClass('background');
-                  
+
                   $(this).attr("poster", "/img/loading.gif");
                 });
                 $("#videoElem").on('canplay', function (event) {

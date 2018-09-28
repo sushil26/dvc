@@ -438,8 +438,7 @@
                                                 </div>
                                                 <span class="message-time pull-right">
                                                     {{chat.sendTime | amCalendar}}
-                                                </span>--{{image}}
-                                               <h5 ng-if="image==undefined">UNdefined</h5>---<h5 ng-if="image!=undefined">notUNdefined</h5>
+                                                </span>
                                                
                                             </div>
                                         </div>
@@ -469,7 +468,7 @@
                                         <span style="position: absolute;
                                         left: 35px;
                                         bottom: 10px;">
-                                            <button ng-if="chatFile != undefined" id="sndmgs" ng-click="sendTextWithFile(chatFile)"
+                                            <button ng-if="image != undefined" id="sndmgs" ng-click="sendTextWithFile(chatFile)"
                                                 style="
                                         font-family: lato;  
                                         color: white;                   
@@ -481,7 +480,7 @@
                                          padding-right: 10px;">
                                                 Send
                                             </button>
-                                            <button ng-if="chatFile == undefined" id="sndmgs" ng-click="sendText(typedMessage)"
+                                            <button ng-if="image == undefined" id="sndmgs" ng-click="sendText(typedMessage)"
                                                 style="
                                         font-family: lato;  
                                         color:white;                   

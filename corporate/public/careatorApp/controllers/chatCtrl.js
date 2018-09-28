@@ -521,6 +521,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
     $("#comment").val("");
    // $scope.typedMessage = typedMessage;
     console.log("sendText-->");
+    console.log("chatFile: "+JSON.stringify($scope.chatFile));
     //  console.log("chatFile: "+$scope.chatFile);
     console.log("typedMessage: " + typedMessage);
     var api;

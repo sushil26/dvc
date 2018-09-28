@@ -436,7 +436,7 @@
 
                                             <input id="fileselect" value="Upload" style="display: none;" type="file" ngf-select ng-model="image" name="file" ngf-pattern="'image/*'"
                                                 accept="image/*" ngf-max-size="20MB" file-model="chatFile" />
-                                        </form>
+                                        </form>----<p ng-if="chatFile==undefined">UNdefined</p>---<p ng-if="chatFile!=undefined">UNdefined</p>
                                         <span style="    position: absolute;
                                         left: 35px;
                                         bottom: 10px;">

@@ -1371,7 +1371,7 @@ console.log("id2**: " + id2);
         /* ### Start: Video maximize and minimize ### */
         document.getElementById("videoElem").addEventListener("click", function () {
           console.log("screem size change request-->");
-          var videoElem = document.getElementById("videoElem");
+          // var videoElem = document.getElementById("videoElem");
           var isFullScreen =
             videoElem.requestFullscreen ||
             videoElem.mozRequestFullScreen ||

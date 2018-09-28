@@ -2,7 +2,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
   console.log("chatCtrl==>");
   $scope.count = 0;
   $scope.chatMessage = {typedMessage: ""} /* ### Note: $scope.chatMessage is text area variable of chat window  ### */
-  $scope.chatFile = {file:""};
+  $scope.chatFile ="";
   var userData = careatorSessionAuth.getAccess("userData");
   $scope.userData = userData;
   $scope.loginUserName = userData.firstName + " " + userData.lastName;
@@ -659,10 +659,10 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
   }
   };
 
-  $scope.sendTextWithFile = function ($event) {
+  $scope.sendTextWithFile = function (chatFile) {
     $("#fileselect").val("");
     console.log("sendTextWithFile-->");
-    var chatFile = $event.target.files;
+    
 
     // if (upload_form.file.$valid && chatFile) { //check if from is valid
     console.log("chatFile: " + chatFile);
@@ -681,7 +681,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
         console.log("hello " + JSON.stringify(data));
         var checkStatus = careatorHttpFactory.dataValidation(data);
         //$scope.chatFile = undefined;
-        $scope.isUploaded = true;
+        $scope.chatFile = "";
         //   $scope.progress = 'progress: ' + progress + '% '; // capture upload progress
         if (checkStatus) {
           var uploadResponse = data.data;

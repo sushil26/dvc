@@ -669,7 +669,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
         console.log("hello " + JSON.stringify(data));
         var checkStatus = careatorHttpFactory.dataValidation(data);
         //$scope.chatFile = undefined;
-        scope.$watch($scope.chatFile, function (newValue, oldValue) {
+        $scope.$watch($scope.chatFile, function (newValue, oldValue) {
           
           var chatFile = undefined;
           // angular copy will preserve the reference of $scope.someVar

@@ -449,8 +449,10 @@
 
                                 <div class="row reply" ng-if="chatListSection != undefined &&chatListSection != null">
                                     <div class="col-sm-9 col-xs-9 reply-main">
-                                        <input class="form-control" rows="1" id="comment" ng-keyup="$event.keyCode == 13 && sendText(typedMessage)"
-                                            ng-model="typedMessage"/>
+
+
+                                        <textarea class="form-control" rows="1" id="comment" ng-keyup="$event.keyCode == 13 && sendText(typedMessage)"
+                                            ng-model="typedMessage"></textarea>
                                     </div>
                                     <div class="col-sm-3 col-xs-3 reply-send">
 

@@ -519,7 +519,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
   };
  
 
-  $scope.sendText = function (typedMessage) {
+  $scope.sendText = function () {
     $("#comment").val("");
     var typedMessage = $scope.chatMessage.typedMessage;
     console.log("sendText-->");

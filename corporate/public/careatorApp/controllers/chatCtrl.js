@@ -546,6 +546,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
         careatorHttpFactory.post(api, obj).then(function (data) {
           console.log("data--" + JSON.stringify(data.data));
           var checkStatus = careatorHttpFactory.dataValidation(data);
+          $scope.typedMessage = "";
           if (checkStatus) {
             console.log("data.data.data: " + JSON.stringify(data.data.data));
             console.log(data.data.message);

@@ -1,7 +1,7 @@
 careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFactory, careatorSessionAuth, SweetAlert, $q) {
   console.log("chatCtrl==>");
   $scope.count = 0;
-  $scope.chatMessage = {typedMessage: ""}
+  $scope.chatMessage = {typedMessage: ""} /* ### Note: $scope.chatMessage is text area variable of chat window  ### */
   var userData = careatorSessionAuth.getAccess("userData");
   $scope.userData = userData;
   $scope.loginUserName = userData.firstName + " " + userData.lastName;
@@ -790,9 +790,9 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
   $scope.sendTextByHit = function(){
     console.log("sendTextByHit-->");
     console.log("$scope.chatMessage.typedMessage: "+$scope.chatMessage.typedMessage);
-    if($scope.typedMessage!="" && $scope.typedMessage!=undefined)
+    if($scope.chatMessage.typedMessage!="" && $scope.chatMessage.typedMessage!=undefined)
     {
-      $scope.sendText($scope.typedMessage);
+      $scope.sendText();
     }
     else{
 

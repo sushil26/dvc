@@ -668,10 +668,8 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
       careatorHttpFactory.chatUpload(api, obj).then(function (data) {
         console.log("hello " + JSON.stringify(data));
         var checkStatus = careatorHttpFactory.dataValidation(data);
-        $scope.chatFile = undefined;
-        $scope.image = undefined;
-       
-
+        //$scope.chatFile = undefined;
+        $scope.isUploaded = true;
         //   $scope.progress = 'progress: ' + progress + '% '; // capture upload progress
         if (checkStatus) {
           var uploadResponse = data.data;

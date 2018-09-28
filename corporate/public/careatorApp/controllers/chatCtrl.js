@@ -786,6 +786,18 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
 
   };
 
+  $scope.sendTextByHit = function(){
+    console.log("sendTextByHit-->");
+    if($scope.typedMessage!="" && $scope.typedMessage!=undefined)
+    {
+      $scope.sendText($scope.typedMessage);
+    }
+    else{
+
+    }
+    
+  }
+
   $scope.getFileFRomGridfs = function (x, id) {
     console.log("getFileFRomGridfs-->");
     console.log("$scope.allChat.chats[x]: " + JSON.stringify($scope.allChat.chats[x]));

@@ -649,7 +649,6 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
     }
   };
 
-
   $scope.sendTextWithFile = function (chatFile) {
     $("#fileselect").val("");
     console.log("sendTextWithFile-->");

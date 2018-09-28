@@ -523,8 +523,9 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
     $("#comment").val("");
     
     console.log("sendText-->");
-    if($scope.chatMessage.typedMessage!=''){
+    if($scope.chatMessage.typedMessage!=""){
       var typedMessage = $scope.chatMessage.typedMessage;
+      $scope.chatMessage.typedMessage = "";
     //console.log("chatFile: " + JSON.stringify($scope.chatFile));
     //  console.log("chatFile: "+$scope.chatFile);
     console.log("typedMessage: " + typedMessage);
@@ -650,6 +651,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
         });
       }
     }
+
   }
   else{
 

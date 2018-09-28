@@ -659,13 +659,13 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
   }
   };
 
-  $scope.sendTextWithFile = function () {
+  $scope.sendTextWithFile = function ($event) {
     $("#fileselect").val("");
     console.log("sendTextWithFile-->");
-    var chatFile = $scope.image;
+    var chatFile = $event.target.files;
 
     // if (upload_form.file.$valid && chatFile) { //check if from is valid
-    console.log("4scope.chatFile: " + JSON.stringify($scope.image));
+    console.log("chatFile: " + chatFile);
     console.log("chatFile: " + chatFile.size);
     if (chatFile.size <= 237069) {
       console.log("chatFilewithJson: " + JSON.stringify(chatFile));

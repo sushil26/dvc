@@ -788,6 +788,7 @@ careatorApp.controller("chatCtrl", function ($scope, $rootScope, careatorHttpFac
 
   $scope.sendTextByHit = function(){
     console.log("sendTextByHit-->");
+    console.log("$scope.typedMessage: "+$scope.typedMessage);
     if($scope.typedMessage!="" && $scope.typedMessage!=undefined)
     {
       $scope.sendText($scope.typedMessage);

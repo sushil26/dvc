@@ -513,7 +513,7 @@ function getChatBack() {
       console.log("chatData: " + JSON.stringify(chatData));
       for (var x = 0; x < chatData.chat.length; x++) {
         document.getElementById('message-container').innerHTML += '<div class="direct-chat-info clearfix"><span class="direct-chat-name pull-left">' +
-          chatData.chat[x].userName + '</span></div><i class="fa fa-user" style="color: cornflowerblue;float: left;font-size: 30px;"></i><div class="content direct-chat-text new_windowAutoLink">' + chatData.chat[x].message + '</div><div class="direct-chat-info clearfix"><span class="direct-chat-timestamp pull-right">' + chatData.chat[x].textTime + '</span></div>'
+          chatData.chat[x].userName + '</span></div><i class="fa fa-user" aria-hidden="true"></i><div class="content direct-chat-text new_windowAutoLink">' + chatData.chat[x].message + '</div><div class="direct-chat-info clearfix"><span class="direct-chat-timestamp pull-right">' + chatData.chat[x].textTime + '</span></div>'
       }
     },
     error: function (err) {
@@ -1352,7 +1352,7 @@ function setup_local_media(callback, errorback) {
       // );
 
       $("#portfolio-wrapper").append(
-        '<div id="videoElem111" class="portfolio-items col-xs-4 col-sm-4 col-md-4 col-lg-3"><div id="videosAttach"></div><div class="details"><button class="btn fa fa-expand" style="float:left; margin-top: 10px; margin-left: 10px; margin-right: 10px;"></button><h4>' +
+        '<div id="videoElem111" class="portfolio-items col-xs-4 col-sm-4 col-md-4 col-lg-3"><div id="videosAttach"></div><div class="details"><button id="fullscreenbtn" class="btn fa fa-expand" style="float:left; margin-top: 10px; margin-left: 10px; margin-right: 10px;"></button><h4>' +
         userName +
         "</h4> </div></div>"
       );

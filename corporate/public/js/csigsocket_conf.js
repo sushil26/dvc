@@ -898,11 +898,11 @@ signaling_socket.on("addPeer", function (config) {
         });
       }
 
-      var fullscreenbtn;
+      // var fullscreenbtn;
       vid = document.getElementById("videoElem");
 
-      fullscreenbtn = document.getElementById("fullscreenbtn");
-      fullscreenbtn.addEventListener("click", toggleFullScreen, false);
+      // fullscreenbtn = document.getElementById("fullscreenbtn");
+      // fullscreenbtn.addEventListener("click", toggleFullScreen, false);
 
       function toggleFullScreen() {
         console.log();
@@ -1016,11 +1016,11 @@ signaling_socket.on("addPeer", function (config) {
       //     }
 
       // }
-      var fullscreenbtn;
+      // var fullscreenbtn;
       vid3 = document.getElementById("screenShareElem");
 
-      fullscreenbtn = document.getElementById("fullscreenbtn");
-      fullscreenbtn.addEventListener("click", toggleFullScreen3, false);
+      // fullscreenbtn = document.getElementById("fullscreenbtn");
+      // fullscreenbtn.addEventListener("click", toggleFullScreen3, false);
 
       function toggleFullScreen3() {
         if (vid3.requestFullScreen) {

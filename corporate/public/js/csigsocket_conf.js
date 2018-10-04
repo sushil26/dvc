@@ -906,13 +906,13 @@ signaling_socket.on("addPeer", function (config) {
 
       function toggleFullScreen() {
         console.log();
-        if (vid.requestFullScreen) {
-          vid.requestFullScreen();
-        } else if (vid.webkitRequestFullScreen) {
-          vid.webkitRequestFullScreen();
-        } else if (vid.mozRequestFullScreen) {
-          vid.mozRequestFullScreen();
-        }
+        // if (vid.requestFullScreen) {
+        //   vid.requestFullScreen();
+        // } else if (vid.webkitRequestFullScreen) {
+        //   vid.webkitRequestFullScreen();
+        // } else if (vid.mozRequestFullScreen) {
+        //   vid.mozRequestFullScreen();
+        // }
       }
 
       $("#" + peer_id + "fullscreenbtn2").click(function () {

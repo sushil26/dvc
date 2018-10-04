@@ -157,7 +157,7 @@ io.sockets.on('connection', function (socket) {
         console.log("queryObj: " + JSON.stringify(queryObj));
         if(sessionURLTrack[socket.id]!=undefined){
             console.log("started to update left status");
-            careatorMaster.find({"instantConf":queryObj}).toArray(function (err, sessionURLFindData) {
+            careatorMaster.find({"instantConf.sessionURL":sessionURLTrack[socket.id]}).toArray(function (err, sessionURLFindData) {
                 console.log("sessionURLFindData.length: "+sessionURLFindData.length);
                 if (err) {
                     console.log("errr: " + JSON.stringify(err));

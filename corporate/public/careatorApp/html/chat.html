@@ -451,8 +451,8 @@
                                     <div class="col-sm-9 col-xs-9 reply-main">
 
 
-                                        <textarea class="form-control" rows="1" id="comment" ng-keyup="$event.keyCode == 13 && sendText(typedMessage)"
-                                            ng-model="typedMessage"></textarea>
+                                        <textarea class="form-control" rows="1" id="comment" ng-keyup="$event.keyCode == 13 && sendTextByHit()"
+                                            ng-model="chatMessage.typedMessage"></textarea>
                                     </div>
                                     <div class="col-sm-3 col-xs-3 reply-send">
 
@@ -463,12 +463,12 @@
 
                                             <input id="fileselect" value="Upload" style="display: none;" type="file"
                                                 ngf-select ng-model="image" name="file" ngf-pattern="'image/*'" accept="image/*"
-                                                ngf-max-size="20MB" file-model="chatFile" />
+                                                ngf-max-size="20MB" file-model="chatFile" onchange="angular.element(this).scope().fileSelected_chat()"/>
                                         </form>
                                         <span style="position: absolute;
                                         left: 35px;
                                         bottom: 10px;">
-                                            <button ng-if="chatFile != undefined && isUploaded != true" id="sndmgs" ng-click="sendTextWithFile(chatFile)"
+                                            <button ng-if="isChatFileSelected" id="sndmgs" ng-click="sendTextWithFile(chatFile)"
                                                 style="
                                         font-family: lato;  
                                         color: white;                   
@@ -480,7 +480,7 @@
                                          padding-right: 10px;">
                                                 Send
                                             </button>
-                                            <button ng-if="chatFile == undefined || isUploaded == true" id="sndmgs" ng-click="sendText(typedMessage)"
+                                            <button ng-if="isChatFileSelected==false" id="sndmgs" ng-click="sendText()"
                                                 style="
                                         font-family: lato;  
                                         color:white;                   

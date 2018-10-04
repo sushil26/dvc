@@ -158,6 +158,7 @@ io.sockets.on('connection', function (socket) {
         if(sessionURLTrack[socket.id]!=undefined){
             console.log("started to update left status");
             careatorMaster.find(queryObj).toArray(function (err, sessionURLFindData) {
+                console.log("sessionURLFindData.length: "+sessionURLFindData.length);
                 if (err) {
                     console.log("errr: " + JSON.stringify(err));
                 }

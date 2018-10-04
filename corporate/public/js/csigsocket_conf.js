@@ -899,21 +899,21 @@ signaling_socket.on("addPeer", function (config) {
       }
 
       // var fullscreenbtn;
-      vid = document.getElementById("videoElem");
+      // vid = document.getElementById("videoElem");
 
       // fullscreenbtn = document.getElementById("fullscreenbtn");
       // fullscreenbtn.addEventListener("click", toggleFullScreen, false);
 
-      function toggleFullScreen() {
-        console.log();
-        if (vid.requestFullScreen) {
-          vid.requestFullScreen();
-        } else if (vid.webkitRequestFullScreen) {
-          vid.webkitRequestFullScreen();
-        } else if (vid.mozRequestFullScreen) {
-          vid.mozRequestFullScreen();
-        }
-      }
+      // function toggleFullScreen() {
+      //   console.log();
+      //   if (vid.requestFullScreen) {
+      //     vid.requestFullScreen();
+      //   } else if (vid.webkitRequestFullScreen) {
+      //     vid.webkitRequestFullScreen();
+      //   } else if (vid.mozRequestFullScreen) {
+      //     vid.mozRequestFullScreen();
+      //   }
+      // }
 
       $("#" + peer_id + "fullscreenbtn2").click(function () {
         console.log("sushil screen test");

@@ -226,11 +226,13 @@ io.sockets.on('connection', function (socket) {
             })
         }
         else {
+            console.log("Started to update isDisconnected field as yes")
             var queryObj = {
                 "_id": data.userId,
-                "instantConf.sessionURL": "https://norecruits.com/vc4all_conf/"+data.deleteSessionId+"/"+data.queryTime
+                
             }
-            careatorMaster.update(queryObj, { $set: { "instantConf.$.isDisconnected": "yes" } }, function (err, data) {
+            console.log("queryObj: "+JSON.stringify(queryObj));
+            careatorMaster.update({"_id": data.userId, "instantConf.sessionURL": "https://norecruits.com/vc4all_conf/"+data.deleteSessionId+"/"+data.queryTime}, { $set: { "instantConf.$.isDisconnected": "yes" } }, function (err, data) {
                 if (err) {
                     console.log("errr: " + JSON.stringify(err));
                 }

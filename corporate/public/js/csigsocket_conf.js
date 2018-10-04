@@ -902,7 +902,7 @@ signaling_socket.on("addPeer", function (config) {
       vid = document.getElementById("videoElem");
 
       fullscreenbtn = document.getElementById("fullscreenbtn");
-      fullscreenbtn.addEventListener("click", toggleFullScreen, false);
+      //fullscreenbtn.addEventListener("click", toggleFullScreen, false);
 
       function toggleFullScreen() {
         console.log();

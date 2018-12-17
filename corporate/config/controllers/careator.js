@@ -1142,7 +1142,7 @@ module.exports.getAdminObjectIdByOrgId = function (req, res) {
                 };
                 res.status(400).send(responseData);
             } else {
-                console.log("admin: " + JSON.stringify(admin));
+                // console.log("admin: " + JSON.stringify(admin));
                 responseData = {
                     status: true,
                     message: property.S0008,
@@ -1173,7 +1173,7 @@ module.exports.getSuperAdminObjectId = function (req, res) {
             };
             res.status(400).send(responseData);
         } else {
-            console.log("admin: " + JSON.stringify(admin));
+            // console.log("admin: " + JSON.stringify(admin));
             responseData = {
                 status: true,
                 message: property.S0008,

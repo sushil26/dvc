@@ -1089,7 +1089,7 @@ module.exports.careator_getChatRightsEmp = function (req, res) {
             };
             res.status(400).send(responseData);
         } else {
-            console.log("allEmp_chat: " + JSON.stringify(allEmp_chat));
+            // console.log("allEmp_chat: " + JSON.stringify(allEmp_chat));
             response = {
                 status: true,
                 message: property.S0008,
@@ -1231,7 +1231,7 @@ module.exports.getChatRights_emp = function (req, res) {
             };
             res.status(400).send(responseData);
         } else {
-            console.log("allEmp_chat: " + JSON.stringify(allEmp_chat));
+            // console.log("allEmp_chat: " + JSON.stringify(allEmp_chat));
             response = {
                 status: true,
                 message: property.S0008,
@@ -1260,7 +1260,7 @@ module.exports.getVideoRights_emp = function (req, res) {
             };
             res.status(400).send(responseData);
         } else {
-            console.log("allEmp_chat: " + JSON.stringify(allEmp_chat));
+            // console.log("allEmp_chat: " + JSON.stringify(allEmp_chat));
             response = {
                 status: true,
                 message: property.S0008,
@@ -1289,7 +1289,7 @@ module.exports.careator_getChatVideo_emp = function (req, res) {
             };
             res.status(400).send(responseData);
         } else {
-            console.log("allEmp_chat: " + JSON.stringify(allEmp_chat));
+            // console.log("allEmp_chat: " + JSON.stringify(allEmp_chat));
             response = {
                 status: true,
                 message: property.S0008,
@@ -1441,7 +1441,7 @@ module.exports.careator_getChatRightsAllemp = function (req, res) {
                 };
                 res.status(400).send(responseData);
             } else {
-                console.log("allEmp_chat: " + JSON.stringify(allEmp_chat));
+                // console.log("allEmp_chat: " + JSON.stringify(allEmp_chat));
                 response = {
                     status: true,
                     message: property.S0008,
@@ -1481,7 +1481,7 @@ module.exports.careator_getChatRightsAllemp_byLoginId = function (req, res) {
                 };
                 res.status(400).send(responseData);
             } else {
-                console.log("allEmp_chat: " + JSON.stringify(allEmp_chat));
+                // console.log("allEmp_chat: " + JSON.stringify(allEmp_chat));
                 response = {
                     status: true,
                     message: property.S0008,
@@ -2006,7 +2006,7 @@ module.exports.careator_getUserById = function (req, res) {
                 };
                 res.status(400).send(responseData);
             } else {
-                console.log("allEmp_chat: " + JSON.stringify(allEmp_chat));
+                // console.log("allEmp_chat: " + JSON.stringify(allEmp_chat));
                 response = {
                     status: true,
                     message: property.S0008,
@@ -2085,7 +2085,7 @@ module.exports.careator_getGroupById = function (req, res) {
                 };
                 res.status(400).send(responseData);
             } else {
-                console.log("allEmp_chat: " + JSON.stringify(allEmp_chat));
+                // console.log("allEmp_chat: " + JSON.stringify(allEmp_chat));
                 response = {
                     status: true,
                     message: property.S0008,

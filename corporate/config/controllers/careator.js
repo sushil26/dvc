@@ -1942,7 +1942,7 @@ module.exports.careator_getChatVideo_emp = function (req, res) {
             };
             res.status(400).send(responseData);
         } else {
-            console.log("allEmp_chat: " + JSON.stringify(allEmp_chat));
+            // console.log("allEmp_chat: " + JSON.stringify(allEmp_chat));
             response = {
                 status: true,
                 message: property.S0008,

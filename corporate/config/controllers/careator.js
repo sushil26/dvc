@@ -1608,7 +1608,7 @@ module.exports.careator_getAllEmp = function (req, res) {
                 };
                 res.status(400).send(responseData);
             } else {
-                console.log("allEmp: " + JSON.stringify(allEmp));
+                // console.log("allEmp: " + JSON.stringify(allEmp));
                 response = {
                     status: true,
                     message: property.S0008,
@@ -1644,7 +1644,7 @@ module.exports.careator_getAllUser = function (req, res) {
                 };
                 res.status(400).send(responseData);
             } else {
-                console.log("allEmp: " + JSON.stringify(allEmp));
+                // console.log("allEmp: " + JSON.stringify(allEmp));
                 response = {
                     status: true,
                     message: property.S0008,

@@ -2046,7 +2046,7 @@ module.exports.getChatListRecordById = function (req, res) {
                 };
                 res.status(400).send(response);
             } else {
-                console.log("allEmp_chat: " + JSON.stringify(findData));
+                // console.log("allEmp_chat: " + JSON.stringify(findData));
                 response = {
                     status: true,
                     message: property.S0008,

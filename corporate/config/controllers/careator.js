@@ -37,8 +37,8 @@ var chatHistory = db.collection("chatHistory");
 
 module.exports.RemoteJoinCheck = function (req, res) {
     console.log("RemoteJoinCheck-->");
-    console.log("req.body.careator_remoteEmail: " + req.body.careator_remoteEmail + " req.body.careator_remotePswd" + req.body.careator_remotePswd);
-    console.log("req.body.url: " + req.body.url);
+    // console.log("req.body.careator_remoteEmail: " + req.body.careator_remoteEmail + " req.body.careator_remotePswd" + req.body.careator_remotePswd);
+    // console.log("req.body.url: " + req.body.url);
     var password = req.body.careator_remotePswd;
     var remote_careatorEmail = req.body.careator_remoteEmail;
     var url = req.body.url;
@@ -47,10 +47,10 @@ module.exports.RemoteJoinCheck = function (req, res) {
             "remoteEmailId": remote_careatorEmail,
             "password": password
         }
-        console.log("obj: " + JSON.stringify(obj));
+        // console.log("obj: " + JSON.stringify(obj));
         careatorMaster.find({ "instantConf.sessionURL": url }).project({ "instantConf.$": 1 }).toArray(function (err, sessionURLFindData) {
-            console.log("sessionURLFindData* : " + JSON.stringify(sessionURLFindData));
-            console.log("sessionURLFindData.length: " + sessionURLFindData.length);
+            // console.log("sessionURLFindData* : " + JSON.stringify(sessionURLFindData));
+            // console.log("sessionURLFindData.length: " + sessionURLFindData.length);
             if (err) {
                 responseData = {
                     status: false,
@@ -70,8 +70,8 @@ module.exports.RemoteJoinCheck = function (req, res) {
                     else {
                         //careatorMaster.find({ "sessionURL": url, "invite": { $elemMatch: { "remoteEmailId": remote_careatorEmail, "password": password } } }).toArray(function (err, findData) {
                         careatorMaster.find({ "instantConf": { $elemMatch: { "sessionURL": url, "invite": { $elemMatch: { "remoteEmailId": remote_careatorEmail, "password": password } } } } }).project({ "instantConf.$": 1 }).toArray(function (err, findData) {
-                            console.log("findData: " + JSON.stringify(findData));
-                            console.log("findData.length: " + findData.length);
+                            // console.log("findData: " + JSON.stringify(findData));
+                            // console.log("findData.length: " + findData.length);
                             if (err) {
                                 responseData = {
                                     status: false,
@@ -81,8 +81,8 @@ module.exports.RemoteJoinCheck = function (req, res) {
                             } else {
                                 if (findData.length > 0) {
                                     var joinEmails = findData[0].instantConf[0].joinEmails;
-                                    console.log("joinEmails: " + JSON.stringify(joinEmails));
-                                    console.log("joinEmails.indexOf(req.body.careator_remoteEmail): " + joinEmails.indexOf(req.body.careator_remoteEmail));
+                                    // console.log("joinEmails: " + JSON.stringify(joinEmails));
+                                    // console.log("joinEmails.indexOf(req.body.careator_remoteEmail): " + joinEmails.indexOf(req.body.careator_remoteEmail));
                                     if (joinEmails.indexOf(req.body.careator_remoteEmail) < 0) {
                                         careatorMaster.update({ "instantConf.sessionURL": url }, { $pull: { "instantConf.$.leftEmails": remote_careatorEmail }, $addToSet: { "instantConf.$.joinEmails": remote_careatorEmail } }, function (err, data) {
                                             if (err) {
@@ -107,7 +107,7 @@ module.exports.RemoteJoinCheck = function (req, res) {
                                             errorCode: "E0_alreadyInUse",
                                             message: property.N0005
                                         };
-                                        console.log("responseData: " + JSON.stringify(responseData));
+                                        // console.log("responseData: " + JSON.stringify(responseData));
                                         res.status(400).send(responseData);
                                     }
                                 } else {
@@ -144,8 +144,8 @@ module.exports.RemoteJoinCheck = function (req, res) {
 
 module.exports.RemoteJoinCheck_schedule = function (req, res) {
     console.log("RemoteJoinCheck_schedule-->");
-    console.log("req.body.careator_remoteEmail: " + req.body.careator_remoteEmail + " req.body.careator_remotePswd" + req.body.careator_remotePswd);
-    console.log("req.body.url: " + req.body.url);
+    // console.log("req.body.careator_remoteEmail: " + req.body.careator_remoteEmail + " req.body.careator_remotePswd" + req.body.careator_remotePswd);
+    // console.log("req.body.url: " + req.body.url);
     var password = req.body.careator_remotePswd;
     var remote_careatorEmail = req.body.careator_remoteEmail;
     var url = req.body.url;
@@ -154,11 +154,11 @@ module.exports.RemoteJoinCheck_schedule = function (req, res) {
             "remoteEmailId": remote_careatorEmail,
             "password": password
         }
-        console.log("obj: " + JSON.stringify(obj));
-        console.log("url: " + url);
+        // console.log("obj: " + JSON.stringify(obj));
+        // console.log("url: " + url);
         careatorEvents.find({ "sessionURL": url }).toArray(function (err, sessionURLFindData) {
-            console.log("sessionURLFindData: " + JSON.stringify(sessionURLFindData));
-            console.log("sessionURLFindData.length: " + sessionURLFindData.length);
+            // console.log("sessionURLFindData: " + JSON.stringify(sessionURLFindData));
+            // console.log("sessionURLFindData.length: " + sessionURLFindData.length);
             if (err) {
                 responseData = {
                     status: false,
@@ -177,8 +177,8 @@ module.exports.RemoteJoinCheck_schedule = function (req, res) {
                     }
                     else {
                         careatorEvents.find({ "sessionURL": url, "invite": { $elemMatch: obj } }).toArray(function (err, findData) {
-                            console.log("findData: " + JSON.stringify(findData));
-                            console.log("findData.length: " + findData.length);
+                            // console.log("findData: " + JSON.stringify(findData));
+                            // console.log("findData.length: " + findData.length);
                             if (err) {
                                 responseData = {
                                     status: false,
@@ -193,13 +193,13 @@ module.exports.RemoteJoinCheck_schedule = function (req, res) {
                                     var ed = new Date(findData[0].endsAt);
                                     var newFormate_sd = new Date(sd.getFullYear(), sd.getMonth(), sd.getDate(), sd.getHours(), sd.getMinutes());
                                     var newFormated_ed = new Date(ed.getFullYear(), ed.getMonth(), ed.getDate(), ed.getHours(), ed.getMinutes());
-                                    console.log("newFormatedDate_currentDate: " + newFormatedDate_currentDate);
-                                    console.log("newFormate_sd: " + newFormate_sd);
+                                    // console.log("newFormatedDate_currentDate: " + newFormatedDate_currentDate);
+                                    // console.log("newFormate_sd: " + newFormate_sd);
                                     if ((newFormatedDate_currentDate <= newFormate_sd && newFormatedDate_currentDate >= newFormated_ed) || (newFormatedDate_currentDate >= newFormate_sd && newFormatedDate_currentDate <= newFormated_ed)) {
-                                        console.log("Allowed for conference");
+                                        // console.log("Allowed for conference");
                                         var joinEmails = findData[0].joinEmails;
-                                        console.log("joinEmails: " + JSON.stringify(joinEmails));
-                                        console.log("joinEmails.indexOf(req.body.careator_remoteEmail): " + joinEmails.indexOf(req.body.careator_remoteEmail));
+                                        // console.log("joinEmails: " + JSON.stringify(joinEmails));
+                                        // console.log("joinEmails.indexOf(req.body.careator_remoteEmail): " + joinEmails.indexOf(req.body.careator_remoteEmail));
                                         if (joinEmails.indexOf(req.body.careator_remoteEmail) < 0) {
                                             careatorEvents.update({ "sessionURL": url }, { $pull: { "leftEmails": remote_careatorEmail }, $addToSet: { "joinEmails": remote_careatorEmail } }, function (err, data) {
                                                 if (err) {
@@ -224,12 +224,12 @@ module.exports.RemoteJoinCheck_schedule = function (req, res) {
                                                 errorCode: "E0_alreadyInUse",
                                                 message: property.N0005
                                             };
-                                            console.log("responseData: " + JSON.stringify(responseData));
+                                            // console.log("responseData: " + JSON.stringify(responseData));
                                             res.status(400).send(responseData);
                                         }
                                     }
                                     else {
-                                        console.log("Not allowed for conference");
+                                        // console.log("Not allowed for conference");
                                         responseData = {
                                             status: false,
                                             errorCode: "E1_timeInvalid",
@@ -274,13 +274,13 @@ module.exports.RemoteJoinCheck_schedule = function (req, res) {
 
 module.exports.pswdCheckForSesstion = function (req, res) {
     console.log("pswdCheckForSesstion-->");
-    console.log("req.body.password: " + req.body.password + " req.body.careatorEmail: " + req.body.careatorEmail);
+    // console.log("req.body.password: " + req.body.password + " req.body.careatorEmail: " + req.body.careatorEmail);
     var password = req.body.password;
     var careatorEmail = req.body.careatorEmail;
     var url = req.body.sessionURL;
     if (general.emptyCheck(password) && general.emptyCheck(careatorEmail)) {
         var obj = { "email": careatorEmail }
-        console.log("obj: " + JSON.stringify(obj));
+        // console.log("obj: " + JSON.stringify(obj));
         careatorMaster.find(obj).toArray(function (err, findData) {
             //console.log("findData: " + JSON.stringify(findData));
             if (err) {
@@ -293,7 +293,7 @@ module.exports.pswdCheckForSesstion = function (req, res) {
                 if (findData.length > 0) {
                     if (findData[0].password == password) {
                         careatorMaster.find({ "instantConf.sessionURL": url }).project({ "instantConf.$": 1, "_id": 0 }).toArray(function (err, sessionURLFind) {
-                            console.log("*sessionURLFind*: " + JSON.stringify(sessionURLFind));
+                            // console.log("*sessionURLFind*: " + JSON.stringify(sessionURLFind));
                             if (err) {
                                 responseData = {
                                     status: false,
@@ -302,7 +302,7 @@ module.exports.pswdCheckForSesstion = function (req, res) {
                                 res.status(400).send(responseData);
                             } else {
                                 if (sessionURLFind.length > 0) {
-                                    console.log("sessionURLFind[0].instantConf[0]: " + JSON.stringify(sessionURLFind[0].instantConf[0]));
+                                    // console.log("sessionURLFind[0].instantConf[0]: " + JSON.stringify(sessionURLFind[0].instantConf[0]));
                                     if (sessionURLFind[0].instantConf[0].isDisconnected == 'yes') {
                                         responseData = {
                                             status: false,
@@ -313,12 +313,12 @@ module.exports.pswdCheckForSesstion = function (req, res) {
                                     }
                                     else {
                                         var joinEmails = sessionURLFind[0].instantConf[0].joinEmails;
-                                        console.log("joinEmails: " + JSON.stringify(joinEmails));
-                                        console.log("req.body.careatorEmail: " + req.body.careatorEmail);
-                                        console.log("joinEmails.indexOf(req.body.careatorEmail): " + joinEmails.indexOf(req.body.careatorEmail));
+                                        // console.log("joinEmails: " + JSON.stringify(joinEmails));
+                                        // console.log("req.body.careatorEmail: " + req.body.careatorEmail);
+                                        // console.log("joinEmails.indexOf(req.body.careatorEmail): " + joinEmails.indexOf(req.body.careatorEmail));
                                         if (joinEmails.indexOf(req.body.careatorEmail) < 0) {
                                             careatorMaster.update({ "instantConf.sessionURL": req.body.sessionURL }, { $pull: { "instantConf.$.leftEmails": careatorEmail }, $addToSet: { "instantConf.$.joinEmails": careatorEmail } }, function (err, data) {
-                                                console.log("sessionURLFind: " + JSON.stringify(sessionURLFind));
+                                                // console.log("sessionURLFind: " + JSON.stringify(sessionURLFind));
                                                 if (err) {
                                                     responseData = {
                                                         status: false,
@@ -341,7 +341,7 @@ module.exports.pswdCheckForSesstion = function (req, res) {
                                                 errorCode: "E0_alreadyInUse",
                                                 message: property.N0005
                                             };
-                                            console.log("responseData: " + JSON.stringify(responseData));
+                                            // console.log("responseData: " + JSON.stringify(responseData));
                                             res.status(400).send(responseData);
                                         }
                                     }
@@ -373,7 +373,7 @@ module.exports.pswdCheckForSesstion = function (req, res) {
                         status: false,
                         message: property.E0006
                     };
-                    console.log("responseData: " + JSON.stringify(responseData));
+                    // console.log("responseData: " + JSON.stringify(responseData));
                     res.status(400).send(responseData);
                 }
             }
@@ -384,22 +384,22 @@ module.exports.pswdCheckForSesstion = function (req, res) {
             status: false,
             message: property.N0003
         };
-        console.log("responseData: " + JSON.stringify(responseData));
+        // console.log("responseData: " + JSON.stringify(responseData));
         res.status(400).send(responseData);
     }
     console.log("<--pswdCheckForSesstion");
 }
 module.exports.pswdCheckForSession_schedule = function (req, res) {
     console.log("pswdCheckForSession_schedule-->");
-    console.log("req.body.password: " + req.body.password + " req.body.careatorEmail: " + req.body.careatorEmail);
+    // console.log("req.body.password: " + req.body.password + " req.body.careatorEmail: " + req.body.careatorEmail);
     var password = req.body.password;
     var careatorEmail = req.body.careatorEmail;
     var url = req.body.sessionURL;
     if (general.emptyCheck(password) && general.emptyCheck(careatorEmail)) {
         var obj = { "email": careatorEmail }
-        console.log("obj: " + JSON.stringify(obj));
+        // console.log("obj: " + JSON.stringify(obj));
         careatorMaster.find(obj).toArray(function (err, findData) {
-            console.log("findData: " + JSON.stringify(findData));
+            // console.log("findData: " + JSON.stringify(findData));
             if (err) {
                 responseData = {
                     status: false,
@@ -413,9 +413,9 @@ module.exports.pswdCheckForSession_schedule = function (req, res) {
                             "sessionURL": url,
                             "senderEmail": careatorEmail
                         }
-                        console.log("eventFindObj: " + eventFindObj);
+                        // console.log("eventFindObj: " + eventFindObj);
                         careatorEvents.find(eventFindObj).toArray(function (err, sessionURLFind) {
-                            console.log("sessionURLFind: " + JSON.stringify(sessionURLFind));
+                            // console.log("sessionURLFind: " + JSON.stringify(sessionURLFind));
                             if (err) {
                                 responseData = {
                                     status: false,
@@ -434,12 +434,12 @@ module.exports.pswdCheckForSession_schedule = function (req, res) {
                                     }
                                     else {
                                         var joinEmails = sessionURLFind[0].joinEmails;
-                                        console.log("joinEmails: " + JSON.stringify(joinEmails));
-                                        console.log("req.body.careatorEmail: " + req.body.careatorEmail);
-                                        console.log("joinEmails.indexOf(req.body.careatorEmail): " + joinEmails.indexOf(req.body.careatorEmail));
+                                        // console.log("joinEmails: " + JSON.stringify(joinEmails));
+                                        // console.log("req.body.careatorEmail: " + req.body.careatorEmail);
+                                        // console.log("joinEmails.indexOf(req.body.careatorEmail): " + joinEmails.indexOf(req.body.careatorEmail));
                                         if (joinEmails.indexOf(req.body.careatorEmail) < 0) {
                                             careatorEvents.update({ "sessionURL": req.body.sessionURL }, { $pull: { "leftEmails": careatorEmail }, $addToSet: { "joinEmails": careatorEmail } }, function (err, data) {
-                                                console.log("sessionURLFind: " + JSON.stringify(sessionURLFind));
+                                                // console.log("sessionURLFind: " + JSON.stringify(sessionURLFind));
                                                 if (err) {
                                                     responseData = {
                                                         status: false,
@@ -462,7 +462,7 @@ module.exports.pswdCheckForSession_schedule = function (req, res) {
                                                 errorCode: "E0_alreadyInUse",
                                                 message: property.N0005
                                             };
-                                            console.log("responseData: " + JSON.stringify(responseData));
+                                            // console.log("responseData: " + JSON.stringify(responseData));
                                             res.status(400).send(responseData);
                                         }
                                     }
@@ -494,7 +494,7 @@ module.exports.pswdCheckForSession_schedule = function (req, res) {
                         status: false,
                         message: property.E0006
                     };
-                    console.log("responseData: " + JSON.stringify(responseData));
+                    // console.log("responseData: " + JSON.stringify(responseData));
                     res.status(400).send(responseData);
                 }
             }
@@ -505,7 +505,7 @@ module.exports.pswdCheckForSession_schedule = function (req, res) {
             status: false,
             message: property.N0003
         };
-        console.log("responseData: " + JSON.stringify(responseData));
+        // console.log("responseData: " + JSON.stringify(responseData));
         res.status(400).send(responseData);
     }
     console.log("<--pswdCheckForSession_schedule");
@@ -513,7 +513,7 @@ module.exports.pswdCheckForSession_schedule = function (req, res) {
 module.exports.pswdCheck = function (req, res) {
     console.log("pswdCheck-->");
     var sessionRandomId = randomstring.generate(7);
-    console.log("req.body.password: " + req.body.password + " req.body.careatorEmail: " + req.body.careatorEmail);
+    // console.log("req.body.password: " + req.body.password + " req.body.careatorEmail: " + req.body.careatorEmail);
     var password = req.body.password;
     var careatorEmail = req.body.careatorEmail;
     var emailSplit = careatorEmail.split('@');
@@ -522,13 +522,13 @@ module.exports.pswdCheck = function (req, res) {
             "email": careatorEmail
         }
         if (careatorEmail == 'admin@vc4all.in') {
-            console.log("VC4ALL Admin login-->");
+            //console.log("VC4ALL Admin login-->");
             var obj = {
                 "email": careatorEmail
             }
-            console.log("obj: " + JSON.stringify(obj));
+            // console.log("obj: " + JSON.stringify(obj));
             careatorMaster.find(obj).toArray(function (err, findData) {
-                console.log("findData: " + JSON.stringify(findData));
+                //console.log("findData: " + JSON.stringify(findData));
                 if (err) {
                     responseData = {
                         status: false,
@@ -541,7 +541,7 @@ module.exports.pswdCheck = function (req, res) {
                             if (findData[0].password == password) {
                                 if (findData[0].logout == 'done' && findData[0].login == 'notDone') {
                                     careatorMaster.update({ "_id": ObjectId(findData[0]._id), "status": "active" }, { $set: { "password": password, "invite": [], "logout": "notDone", "login": "done", "sessionRandomId": sessionRandomId + findData[0]._id, "chatStatus":"Available" } }, function (err, data) {
-                                        console.log("data: " + JSON.stringify(data));
+                                        // console.log("data: " + JSON.stringify(data));
                                         if (err) {
                                             responseData = {
                                                 status: false,
@@ -592,7 +592,7 @@ module.exports.pswdCheck = function (req, res) {
                                                         data: findData[0],
                                                         "token": token
                                                     };
-                                                    console.log("responseData: " + JSON.stringify(responseData));
+                                                    // console.log("responseData: " + JSON.stringify(responseData));
                                                     
                                                     
                                                     
@@ -619,7 +619,7 @@ module.exports.pswdCheck = function (req, res) {
                                     status: false,
                                     message: property.E0005
                                 };
-                                console.log("responseData: " + JSON.stringify(responseData));
+                                // console.log("responseData: " + JSON.stringify(responseData));
                                 res.status(400).send(responseData);
                             }
                         }
@@ -628,7 +628,7 @@ module.exports.pswdCheck = function (req, res) {
                                 status: false,
                                 message: property.N0002
                             };
-                            console.log("responseData: " + JSON.stringify(responseData));
+                            // console.log("responseData: " + JSON.stringify(responseData));
                             res.status(400).send(responseData);
                         }
                     } else {
@@ -636,18 +636,18 @@ module.exports.pswdCheck = function (req, res) {
                             status: false,
                             message: property.E0006
                         };
-                        console.log("responseData: " + JSON.stringify(responseData));
+                        // console.log("responseData: " + JSON.stringify(responseData));
                         res.status(400).send(responseData);
                     }
                 }
             })
         }
         else if (emailSplit[1] != undefined) {
-            console.log("other employee login-->");
+            // console.log("other employee login-->");
             var domainCheck = {
                 "domain": emailSplit[1]
             }
-            console.log("domainCheck: " + JSON.stringify(domainCheck));
+            // console.log("domainCheck: " + JSON.stringify(domainCheck));
             organizations.find(domainCheck).toArray(function (err, organizationDomain) {
                 if (err) {
                     responseData = {
@@ -656,10 +656,10 @@ module.exports.pswdCheck = function (req, res) {
                     };
                     res.status(400).send(responseData);
                 } else {
-                    console.log("organizationDomain.length: " + organizationDomain.length);
+                    // console.log("organizationDomain.length: " + organizationDomain.length);
                     if (organizationDomain.length > 0) {
                         careatorMaster.find(obj).toArray(function (err, findData) {
-                            console.log("findData: " + JSON.stringify(findData));
+                            // console.log("findData: " + JSON.stringify(findData));
                             if (err) {
                                 responseData = {
                                     status: false,
@@ -672,7 +672,7 @@ module.exports.pswdCheck = function (req, res) {
                                         if (findData[0].password == password) {
                                             if (findData[0].logout == 'done' && findData[0].login == 'notDone') {
                                                 careatorMaster.update({ "_id": ObjectId(findData[0]._id), "status": "active" }, { $set: { "password": password, "invite": [], "logout": "notDone", "login": "done", "sessionRandomId": sessionRandomId + findData[0]._id, "chatStatus":"Available" } }, function (err, data) {
-                                                    console.log("data: " + JSON.stringify(data));
+                                                    // console.log("data: " + JSON.stringify(data));
                                                     if (err) {
                                                         responseData = {
                                                             status: false,
@@ -690,7 +690,7 @@ module.exports.pswdCheck = function (req, res) {
                                                                 res.status(400).send(responseData);
                                                             } else {
                                                                 // log.info("req.originalUrl: " + req.originalUrl + " Email: " + findData[0].email, " Date: (" + date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate() + ")" + " Time: (" + date.getHours() + ":" + date.getMinutes() + ")");
-                                                                console.log("loginData: " + JSON.stringify(loginData));
+                                                                // console.log("loginData: " + JSON.stringify(loginData));
                                                                 // console.log("loginData.insertedIds: " + loginData.insertedIds[0]);
                                                                 console.log("emit started to client-->");
                                                                 var io = req.app.get('socketio');
@@ -718,7 +718,7 @@ module.exports.pswdCheck = function (req, res) {
                                                                     sessionData: "79ea520a-3e67-11e8-9679-97fa7aeb8e97",
                                                                     data: findData[0]
                                                                 };
-                                                                console.log("responseData: " + JSON.stringify(responseData));
+                                                                // console.log("responseData: " + JSON.stringify(responseData));
                                                                 res.status(200).send(responseData);
                                                             }
                                                         })
@@ -741,7 +741,7 @@ module.exports.pswdCheck = function (req, res) {
                                                 status: false,
                                                 message: property.E0005
                                             };
-                                            console.log("responseData: " + JSON.stringify(responseData));
+                                            // console.log("responseData: " + JSON.stringify(responseData));
                                             res.status(400).send(responseData);
                                         }
                                     }
@@ -750,7 +750,7 @@ module.exports.pswdCheck = function (req, res) {
                                             status: false,
                                             message: property.N0002
                                         };
-                                        console.log("responseData: " + JSON.stringify(responseData));
+                                        // console.log("responseData: " + JSON.stringify(responseData));
                                         res.status(400).send(responseData);
                                     }
                                 } else {
@@ -758,7 +758,7 @@ module.exports.pswdCheck = function (req, res) {
                                         status: false,
                                         message: property.E0006
                                     };
-                                    console.log("responseData: " + JSON.stringify(responseData));
+                                    // console.log("responseData: " + JSON.stringify(responseData));
                                     res.status(400).send(responseData);
                                 }
                             }
@@ -769,7 +769,7 @@ module.exports.pswdCheck = function (req, res) {
                             status: false,
                             message: property.E0006
                         };
-                        console.log("responseData: " + JSON.stringify(responseData));
+                        // console.log("responseData: " + JSON.stringify(responseData));
                         res.status(400).send(responseData);
                     }
                 }
@@ -786,14 +786,14 @@ module.exports.pswdCheck = function (req, res) {
             status: false,
             message: property.N0003
         };
-        console.log("responseData: " + JSON.stringify(responseData));
+        // console.log("responseData: " + JSON.stringify(responseData));
         res.status(400).send(responseData);
     }
     console.log("<--pswdCheck");
 }
 module.exports.pswdGenerate = function (req, res) {
     console.log("pswdGenerate-->");
-    console.log("req.body.careatorEmail: " + req.body.careatorEmail);
+    // console.log("req.body.careatorEmail: " + req.body.careatorEmail);
     var email = req.body.careatorEmail;
     var emailSplit = email.split('@');
     var password = randomstring.generate(7);
@@ -806,11 +806,11 @@ module.exports.pswdGenerate = function (req, res) {
                 "password": password,
                 "invite": []
             }
-            console.log("obj: " + JSON.stringify(obj));
+            // console.log("obj: " + JSON.stringify(obj));
             careatorMaster.find({
                 "email": email
             }).toArray(function (err, findData) {
-                console.log("findData: " + JSON.stringify(findData));
+                // console.log("findData: " + JSON.stringify(findData));
                 if (findData.length > 0) {
                     if (findData[0].logout == 'done' && findData[0].login == 'notDone') {
                         careatorMaster.update({
@@ -824,7 +824,7 @@ module.exports.pswdGenerate = function (req, res) {
                                     "login": "done"
                                 }
                             }, function (err, data) {
-                                console.log("data: " + JSON.stringify(data));
+                                // console.log("data: " + JSON.stringify(data));
                                 if (err) {
                                     responseData = {
                                         status: true,
@@ -1197,7 +1197,7 @@ module.exports.getAllAdminObjectIdByOrgId = function (req, res) {
             };
             res.status(400).send(responseData);
         } else {
-            console.log("admin: " + JSON.stringify(admin));
+            // console.log("admin: " + JSON.stringify(admin));
             responseData = {
                 status: true,
                 message: property.S0008,
@@ -1715,7 +1715,7 @@ module.exports.careator_getChatRightsEmp = function (req, res) {
             };
             res.status(400).send(responseData);
         } else {
-            console.log("allEmp_chat: " + JSON.stringify(allEmp_chat));
+            // console.log("allEmp_chat: " + JSON.stringify(allEmp_chat));
             response = {
                 status: true,
                 message: property.S0008,
@@ -1875,7 +1875,7 @@ module.exports.getChatRights_emp = function (req, res) {
                 };
                 res.status(400).send(responseData);
             } else {
-                console.log("allEmp_chat: " + JSON.stringify(allEmp_chat));
+                // console.log("allEmp_chat: " + JSON.stringify(allEmp_chat));
                 response = {
                     status: true,
                     message: property.S0008,
@@ -1913,7 +1913,7 @@ module.exports.getVideoRights_emp = function (req, res) {
             };
             res.status(400).send(responseData);
         } else {
-            console.log("allEmp_chat: " + JSON.stringify(allEmp_chat));
+            // console.log("allEmp_chat: " + JSON.stringify(allEmp_chat));
             response = {
                 status: true,
                 message: property.S0008,
@@ -2025,7 +2025,7 @@ module.exports.careator_getChatGroupListById = function (req, res) {
                 };
                 res.status(400).send(responseData);
             } else {
-                console.log("data: " + JSON.stringify(data));
+                // console.log("data: " + JSON.stringify(data));
                 responseData = {
                     status: true,
                     errorCode: 200,
@@ -2108,7 +2108,7 @@ module.exports.careator_getChatRightsAllemp = function (req, res) {
                 };
                 res.status(400).send(responseData);
             } else {
-                console.log("allEmp_chat: " + JSON.stringify(allEmp_chat));
+                // console.log("allEmp_chat: " + JSON.stringify(allEmp_chat));
                 response = {
                     status: true,
                     message: property.S0008,
@@ -2146,7 +2146,7 @@ module.exports.careator_getChatRightsAllemp_byLoginId = function (req, res) {
                 };
                 res.status(400).send(responseData);
             } else {
-                console.log("allEmp_chat: " + JSON.stringify(allEmp_chat));
+                // console.log("allEmp_chat: " + JSON.stringify(allEmp_chat));
                 response = {
                     status: true,
                     message: property.S0008,
@@ -2181,7 +2181,7 @@ module.exports.careator_getChatRightsAllempWithSuperAdmin_byLoginId = function (
                 };
                 res.status(400).send(responseData);
             } else {
-                console.log("allEmp_chat: " + JSON.stringify(allEmp_chat));
+                // console.log("allEmp_chat: " + JSON.stringify(allEmp_chat));
                 response = {
                     status: true,
                     message: property.S0008,
@@ -2216,7 +2216,7 @@ module.exports.careator_getAllAdmins_byLoginId = function (req, res) {
                 };
                 res.status(400).send(responseData);
             } else {
-                console.log("allEmp_chat: " + JSON.stringify(allEmp_chat));
+                // console.log("allEmp_chat: " + JSON.stringify(allEmp_chat));
                 response = {
                     status: true,
                     message: property.S0008,
@@ -2765,7 +2765,7 @@ module.exports.careator_getUserById = function (req, res) {
                 };
                 res.status(400).send(responseData);
             } else {
-                console.log("allEmp_chat: " + JSON.stringify(allEmp_chat));
+               
                 response = {
                     status: true,
                     message: property.S0008,
@@ -2805,7 +2805,7 @@ module.exports.getChatListRecordById = function (req, res) {
                 };
                 res.status(400).send(response);
             } else {
-                console.log("allEmp_chat: " + JSON.stringify(findData));
+                // console.log("allEmp_chat: " + JSON.stringify(findData));
                 response = {
                     status: true,
                     message: property.S0008,
@@ -2844,7 +2844,7 @@ module.exports.careator_getGroupById = function (req, res) {
                 };
                 res.status(400).send(responseData);
             } else {
-                console.log("allEmp_chat: " + JSON.stringify(allEmp_chat));
+                // console.log("allEmp_chat: " + JSON.stringify(allEmp_chat));
                 response = {
                     status: true,
                     message: property.S0008,

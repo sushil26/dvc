@@ -1,7 +1,7 @@
 careatorApp.factory('careatorHttpFactory', function ($http, $q, $rootScope) {
     return {
         post: function (api, data) {
-            //console.log("legoHttpFactory: data: " + JSON.stringify(data));
+            console.log("legoHttpFactory: data: " + JSON.stringify(data));
 
             var dfd = $q.defer();
             // var postUrl = $rootScope.propertyJson.BASE_URL + api;
@@ -11,6 +11,7 @@ careatorApp.factory('careatorHttpFactory', function ($http, $q, $rootScope) {
                 method: 'POST',
                 url: api,
                 data: data
+                
             }).
                 then(function (data) {
                     //console.log(data);

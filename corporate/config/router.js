@@ -10,6 +10,8 @@ var cAdminAction = require('./controllers/cAdminAction')
 var record = require('./controllers/record');
 var capture = require('./controllers/capture');
 
+var verifyToken = require('./verify_token');
+
 module.exports = function (app) {
 
     app.post('/careator/pswdGenerate', careator.pswdGenerate);
@@ -36,7 +38,16 @@ module.exports = function (app) {
     app.get('/careator_getChatListRecordById/getChatListRecordById/:id', careator.getChatListRecordById);
     app.get('/careator_userDelete/userDeleteById/:id', careator.userDeleteById);
     app.get('/careator_groupDelete/groupDeleteById/:id', careator.groupDeleteById);
-    app.post('/careator/userEditById/:id', careator.userEditById);
+    
+
+
+
+    /******************************************************/
+    app.post('/careator/userEditById/:id', verifyToken, careator.userEditById);
+    /* *****************************************************/
+
+
+
     app.post('/careator/groupEditById/:id', careator.groupEditById);
     app.get('/careator_getUser/careator_getUserById/:id', careator.careator_getUserById);
     app.get('/careator_getGroup/careator_getGroupById/:id', careator.careator_getGroupById);

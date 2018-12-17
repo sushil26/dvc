@@ -1,0 +1,8 @@
+{
+    "secret": "THIS IS USED TO SIGN AND VERIFY JWT TOKENS, REPLACE IT WITH YOUR OWN SECRET, IT CAN BE ANY STRING",
+
+    "refreshTokenSecret": "some-secret-refresh-token-shit",
+    "tokenLife":  1440,
+    
+    "refreshTokenLife": 86400
+}

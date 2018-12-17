@@ -1,3 +1,6 @@
+const jwt = require('jsonwebtoken');
+const config = require('./../config.json');
+
 var db = require("../dbConfig.js").getDb();
 var general = require("../general.js");
 var property = require("../../property.json");
@@ -575,13 +578,25 @@ module.exports.pswdCheck = function (req, res) {
                                                     }); /* ### Note: Emit message to client ### */
                                                     findData[0].sessionRandomId = sessionRandomId + findData[0]._id;
                                                     findData[0].chatStatus = "Available";
+                                                    
+                                                    
+                                                    const token = jwt.sign(findData.email, config.secret, { expiresIn: config.tokenLife})
+                                                    // const refreshToken = jwt.sign(findData, config.refreshTokenSecret, { expiresIn: config.refreshTokenLife})
+                                                    //tokenList[refreshToken] = response
+                                                    
+                                                    
                                                     responseData = {
                                                         status: true,
                                                         message: property.S0005,
                                                         sessionData: "79ea520a-3e67-11e8-9679-97fa7aeb8e97",
-                                                        data: findData[0]
+                                                        data: findData[0],
+                                                        "token": token
                                                     };
                                                     console.log("responseData: " + JSON.stringify(responseData));
+                                                    
+                                                    
+                                                    
+                                                    
                                                     res.status(200).send(responseData);
                                                 }
                                             })
@@ -598,7 +613,7 @@ module.exports.pswdCheck = function (req, res) {
                                     };
                                     res.status(400).send(responseData);
                                 }
-
+   
                             } else {
                                 responseData = {
                                     status: false,

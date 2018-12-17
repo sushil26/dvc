@@ -682,7 +682,7 @@ module.exports.getAdminObjectId = function (req, res) {
             };
             res.status(400).send(responseData);
         } else {
-            console.log("admin: " + JSON.stringify(admin));
+            // console.log("admin: " + JSON.stringify(admin));
             responseData = {
                 status: true,
                 message: property.S0008,

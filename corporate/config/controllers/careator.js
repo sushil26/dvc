@@ -582,8 +582,11 @@ module.exports.pswdCheck = function (req, res) {
                                                     console.log("***********TokenCreation************findData.email: "+findData.email);
                                                     console.log("***********TokenCreation************config.secret: "+config.secret);
                                                     console.log("***********TokenCreation************config.tokenLife: "+config.tokenLife);
+                                                    var obj = {
+                                                        email: findData.email
+                                                    }
                                                     
-                                                    const token = jwt.sign(findData.email, config.secret, { expiresIn: config.tokenLife})
+                                                    const token = jwt.sign(obj, config.secret, { expiresIn: config.tokenLife})
                                                     // const refreshToken = jwt.sign(findData, config.refreshTokenSecret, { expiresIn: config.refreshTokenLife})
                                                     //tokenList[refreshToken] = response
                                                     

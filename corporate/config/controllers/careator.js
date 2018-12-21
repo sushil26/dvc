@@ -578,7 +578,10 @@ module.exports.pswdCheck = function (req, res) {
                                                     }); /* ### Note: Emit message to client ### */
                                                     findData[0].sessionRandomId = sessionRandomId + findData[0]._id;
                                                     findData[0].chatStatus = "Available";
-                                                    
+
+                                                    console.log("***********TokenCreation************findData.email: "+findData.email);
+                                                    console.log("***********TokenCreation************config.secret: "+config.secret);
+                                                    console.log("***********TokenCreation************config.tokenLife: "+config.tokenLife);
                                                     
                                                     const token = jwt.sign(findData.email, config.secret, { expiresIn: config.tokenLife})
                                                     // const refreshToken = jwt.sign(findData, config.refreshTokenSecret, { expiresIn: config.refreshTokenLife})

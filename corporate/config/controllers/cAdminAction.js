@@ -64,8 +64,8 @@ module.exports.organizationCreate = function (req, res) {
         "logout": "done",
         "sessionRandomId": sessionRandomId,
     }
-    console.log("organizationObj: " + JSON.stringify(organizationObj));
-    console.log("adminObj: " + JSON.stringify(adminObj));
+    // console.log("organizationObj: " + JSON.stringify(organizationObj));
+    // console.log("adminObj: " + JSON.stringify(adminObj));
     organizationModel.create(organizationObj, function (err, data) {
         console.log("data: " + JSON.stringify(data));
         if (err) {

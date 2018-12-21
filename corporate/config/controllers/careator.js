@@ -2865,7 +2865,7 @@ module.exports.careator_getGroupById = function (req, res) {
 }
 
 module.exports.userEditById = function (req, res) {
-    console.log("userEditById-->");
+    console.log("------------------------>userEditById-->");
     var response;
     var id = req.params.id;
     console.log("id: " + id);

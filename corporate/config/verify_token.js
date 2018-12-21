@@ -2,7 +2,7 @@ var jwt = require('jsonwebtoken');
 const config = require('./config.json');
 
 module.exports = function(req,res,next) {
-    console.log("verify_token----->");
+    console.log("------------------------------------->verify_token----->");
   var token = req.body.token ;
     if (token) {
         console.log("token present");

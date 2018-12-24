@@ -18,7 +18,7 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
 
     $scope.userData = careatorSessionAuth.getAccess("userData");
     console.log(" $scope.userData : " + JSON.stringify($scope.userData));
-    console.log(" access-token : " + careatorSessionAuth.getItem("access-token"));
+    // console.log(" access-token : " + careatorSessionAuth.getItem("access-token"));
 
     if ($scope.userData) {
         userName = $scope.userData.firstName + " " + $scope.userData.lastName;
@@ -287,9 +287,10 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
         localStorage.setItem("sessionRandomId", data.data.sessionRandomId);
         localStorage.setItem("sessionEnc", data.sessionData);
         localStorage.setItem("userId", data.data._id);
+        localStorage.setItem("access-token", data.token);
         console.log("localStorage.getItem(sessionEnc): " + localStorage.getItem("sessionEnc"));
         if (typeof (Storage) !== "undefined") {
-            localStorage.setItem("access-token", data.token);
+            
             var userData = {
                 "email": data.data.email,
                 "firstName": data.data.firstName,

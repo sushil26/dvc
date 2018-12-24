@@ -10,11 +10,7 @@ careatorApp.factory('careatorHttpFactory', function ($http, $q, $rootScope, $coo
             $http({
                 method: 'POST',
                 url: api,
-                data: data,
-                headers: {
-                    token: careatorSessionAuth.getItem("access-token")
-                }
-                
+                data: data
             }).
                 then(function (data) {
                     //console.log(data);
@@ -36,7 +32,9 @@ careatorApp.factory('careatorHttpFactory', function ($http, $q, $rootScope, $coo
             $http({
                 method: 'GET',
                 url: api,
-               
+                headers: {
+                    token: careatorSessionAuth.getItem("access-token")
+                }
                
             }).
                 then(function (data, status, headers, config) {

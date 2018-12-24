@@ -18,7 +18,7 @@ careatorApp.factory('careatorHttpFactory', function ($http, $q, $rootScope, $coo
                     dfd.resolve(data);
 
                 }, function (error) {
-                    console.log(error);
+                    //console.log(error);
                     dfd.resolve(error);
 
                 });
@@ -26,8 +26,8 @@ careatorApp.factory('careatorHttpFactory', function ($http, $q, $rootScope, $coo
             return dfd.promise;
         },
         get: function (api) {
-            console.log("get api-->");
-            console.log("token-->: "+$cookieStore.token);
+            //console.log("get api-->");
+          //  console.log("token-->: "+$cookieStore.accessInfo);
             var dfd = $q.defer();
 
             $http({

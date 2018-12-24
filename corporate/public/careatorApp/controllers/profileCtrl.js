@@ -9,7 +9,8 @@ careatorApp.controller('profileCtrl', function ($scope, $state, careatorHttpFact
         console.log("getUserDataById--> ");
         var api = "https://norecruits.com//careator_getUser/careator_getUserById/" + id;
         console.log("api: " + api);
-        careatorHttpFactory.get(api).then(function (data) {
+        var token = careatorSessionAuth.get("access-token");
+        careatorHttpFactory.get(api, token).then(function (data) {
             console.log("data--" + JSON.stringify(data.data));
             var checkStatus = careatorHttpFactory.dataValidation(data);
             if (checkStatus) {

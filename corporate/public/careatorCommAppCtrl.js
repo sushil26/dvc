@@ -18,6 +18,7 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
 
     $scope.userData = careatorSessionAuth.getAccess("userData");
     console.log(" $scope.userData : " + JSON.stringify($scope.userData));
+    console.log(" access-token : " + careatorSessionAuth.getAccess("access-token"));
 
     if ($scope.userData) {
         userName = $scope.userData.firstName + " " + $scope.userData.lastName;

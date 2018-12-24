@@ -26,7 +26,7 @@ careatorApp.factory('careatorHttpFactory', function ($http, $q, $rootScope, care
         },
         get: function (api) {
             //console.log("get api-->");
-            console.log("token-->: "+careatorSessionAuth.getItem("access-token"));
+            console.log("token-->: "+$cookieStore.get("access-token"));
             var dfd = $q.defer();
 
             $http({

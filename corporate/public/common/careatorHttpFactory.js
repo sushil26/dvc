@@ -1,4 +1,4 @@
-careatorApp.factory('careatorHttpFactory', function ($http, $q, $rootScope) {
+careatorApp.factory('careatorHttpFactory', function ($http, $q, $rootScope, $cookieStore) {
     return {
         post: function (api, data) {
             console.log("legoHttpFactory: data: " + JSON.stringify(data));
@@ -26,12 +26,14 @@ careatorApp.factory('careatorHttpFactory', function ($http, $q, $rootScope) {
             return dfd.promise;
         },
         get: function (api) {
-            //console.log("get api-->");
+            console.log("get api-->");
+            console.log("token-->: "+$cookieStore.token);
             var dfd = $q.defer();
 
             $http({
                 method: 'GET',
-                url: api
+                url: api,
+               
                
             }).
                 then(function (data, status, headers, config) {

@@ -10,7 +10,10 @@ careatorApp.factory('careatorHttpFactory', function ($http, $q, $rootScope, $coo
             $http({
                 method: 'POST',
                 url: api,
-                data: data
+                data: data,
+                headers: {
+                    token: careatorSessionAuth.getItem("access-token")
+                }
                 
             }).
                 then(function (data) {

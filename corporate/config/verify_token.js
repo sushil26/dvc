@@ -3,7 +3,8 @@ const config = require('./config.json');
 
 module.exports = function (req, res, next) {
     console.log("------------------------------------->verify_token----->");
-    var token = req.body.token;
+    console.log("headers: "+JSON.stringify(req.headers));
+    var token = req.headers.token;
     if (token) {
         console.log("token present");
         // verifies secret and checks exp

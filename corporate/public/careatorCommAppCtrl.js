@@ -289,6 +289,7 @@ careatorApp.controller("careatorCommAppCtrl", function ($scope, $state, careator
         localStorage.setItem("userId", data.data._id);
         localStorage.setItem("token", data.token);
         console.log("localStorage.getItem(sessionEnc): " + localStorage.getItem("sessionEnc"));
+        console.log("localStorage.getItem(token): " + localStorage.getItem("token"));
         if (typeof (Storage) !== "undefined") {
             
             var userData = {

@@ -26,7 +26,8 @@ careatorApp.factory('careatorHttpFactory', function ($http, $q, $rootScope) {
         },
         get: function (api, token) {
             console.log("get api-->");
-            console.log("token-->: "+token);
+            var token = localStorage.getItem("token");
+            console.log("token: "+JSON.stringify(token));
             var dfd = $q.defer();
 
             $http({

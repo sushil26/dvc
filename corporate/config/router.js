@@ -44,12 +44,13 @@ module.exports = function (app) {
 
     /******************************************************/
     app.post('/careator/userEditById/:id', verifyToken, careator.userEditById);
+    app.get('/careator_getUser/careator_getUserById/:id', verifyToken, careator.careator_getUserById);
     /* *****************************************************/
 
 
 
     app.post('/careator/groupEditById/:id', careator.groupEditById);
-    app.get('/careator_getUser/careator_getUserById/:id', careator.careator_getUserById);
+    
     app.get('/careator_getGroup/careator_getGroupById/:id', careator.careator_getGroupById);
     app.get('/careator/getChatRights_emp/:orgId', careator.getChatRights_emp);
     app.get('/careator/getVideoRights_emp', careator.getVideoRights_emp);

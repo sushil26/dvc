@@ -586,7 +586,7 @@ module.exports.pswdCheck = function (req, res) {
                                                         email: findData.email
                                                     }
                                                     
-                                                    const token = jwt.sign(obj, config.secret)
+                                                    const token = jwt.sign(obj, config.secret, { expiresIn: config.tokenLife})
                                                     // const refreshToken = jwt.sign(findData, config.refreshTokenSecret, { expiresIn: config.refreshTokenLife})
                                                     //tokenList[refreshToken] = response
                                                     

@@ -7,9 +7,9 @@ module.exports = function (req, res, next) {
     var token = req.headers.token;
     if (token) {
         console.log("token present");
-        console.log("config.jwt_secret: "+config.jwt_secret);
+        console.log("config.jwt_secret: "+config.secret);
         // verifies secret and checks exp
-        jwt.verify(token, config.jwt_secret, function (err, decoded) {
+        jwt.verify(token, config.secret, function (err, decoded) {
             if (err) { //failed verification.
                 console.log("err: "+JSON.stringify(err));
                 return res.json({

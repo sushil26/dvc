@@ -18,7 +18,9 @@ module.exports = function(req,res,next) {
         console.log("token not present");
         // forbidden without token
         return res.status(403).send({
-            "error": true
+            "error": true,
+            "status": 403,
+            "message": "You do not allowed for this resource"
         });
     }
 }

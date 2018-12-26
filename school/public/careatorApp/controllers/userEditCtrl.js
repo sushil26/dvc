@@ -22,6 +22,10 @@ careatorApp.controller('editUserCtrl', function ($scope, $state,careatorHttpFact
                 console.log(data.data.message);
             }
             else {
+                if(data.status==403){
+                    alert(error.message)
+                }
+                
                 console.log("Sorry");
                 console.log(data.data.message);
             }

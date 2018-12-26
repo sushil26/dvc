@@ -25,18 +25,16 @@ careatorApp.factory('careatorHttpFactory', function ($http, $q, $rootScope) {
             return dfd.promise;
         },
         get: function (api, token) {
-            console.log("get api-->");
             var token = localStorage.getItem("token");
-            console.log("token: "+JSON.stringify(token));
             var dfd = $q.defer();
 
             $http({
                 method: 'GET',
-                url: api
-                // headers: {
-                //     token: token
-                // }
-               
+                url: api,
+                headers: {
+                    token: token
+                }
+
             }).
                 then(function (data, status, headers, config) {
                     dfd.resolve(data);
@@ -132,7 +130,7 @@ careatorApp.factory('careatorHttpFactory', function ($http, $q, $rootScope) {
             }, function (error) {
                 console.log(error);
                 dfd.resolve(error);
-            }, function (evt) { 
+            }, function (evt) {
                 console.log(evt);
                 var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
                 console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
@@ -161,7 +159,7 @@ careatorApp.factory('careatorHttpFactory', function ($http, $q, $rootScope) {
             });
             return dfd.promise;
         },/* #### Note:Start: Image upload into directory  #### */
-        imageUpload: function (uploadUrl, file) { 
+        imageUpload: function (uploadUrl, file) {
             var dfd = $q.defer();
             var postUrl = uploadUrl;
             var fd = new FormData();

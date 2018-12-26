@@ -26,7 +26,7 @@ careatorApp.controller('profileCtrl', function ($scope, $state, careatorHttpFact
                 console.log("Sorry");
                 console.log("data.data.message: " + data.data.message);
                 if(data.data.errorCode == 403){
-                    alert(data.data.message)
+                    alert(data.data.message);
                 }
             }
         })

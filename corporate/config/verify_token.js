@@ -10,6 +10,7 @@ module.exports = function (req, res, next) {
         // verifies secret and checks exp
         jwt.verify(token, config.jwt_secret, function (err, decoded) {
             if (err) { //failed verification.
+                console.log("err: "+JSON.stringify(err));
                 return res.json({
                     "status": false,
                     "errorCode": 403,

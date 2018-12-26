@@ -15,6 +15,7 @@ careatorApp.controller('profileCtrl', function ($scope, $state, careatorHttpFact
         careatorHttpFactory.get(api).then(function (data) {
             console.log("data--" + JSON.stringify(data.data));
             var checkStatus = careatorHttpFactory.dataValidation(data);
+            console.log("checkStatus--" + checkStatus);
             if (checkStatus) {
                 var userDetails = data.data.data[0];
                 $scope.userDetails = userDetails;

@@ -32,10 +32,10 @@ careatorApp.factory('careatorHttpFactory', function ($http, $q, $rootScope) {
 
             $http({
                 method: 'GET',
-                url: api,
-                headers: {
-                    token: token
-                }
+                url: api
+                // headers: {
+                //     token: token
+                // }
                
             }).
                 then(function (data, status, headers, config) {
